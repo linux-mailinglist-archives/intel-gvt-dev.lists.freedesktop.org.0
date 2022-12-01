@@ -1,35 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4ABA763F979
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Dec 2022 21:59:24 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A47B63F9D5
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Dec 2022 22:30:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A313910E160;
-	Thu,  1 Dec 2022 20:59:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1F22210E16D;
+	Thu,  1 Dec 2022 21:30:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from noreply0.parcelsinc.com (unknown [74.201.28.161])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3909110E160
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Thu, 01 Dec 2022 21:30:28 UTC
+Received: from mail.smitorts.com (unknown [104.223.183.199])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 26DCB10E166
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  1 Dec 2022 20:59:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
- d=parcelsinc.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=noreply@parcelsinc.com;
- bh=tdVMDjvQn3Bfp9B83cJQAPZhLisPkDsaWf7dfXDC8/4=;
- b=ktkipyBYvypZ+RLhI05TOU7LVBxhSKVG6PYRcMlNeL/810eJG+xjebKX6t438w1Mf0AuAlAVeXPC
- iagw2OLBWJ4ROhLhVqiiK+juKEjRFtsmekDs5tushFe/HgwjkGtJgHY29ICyTO0e60v/QtBchgvy
- IK1V5muz6c4ltDluPB0=
-From: lists.freedesktop.org Email support<noreply@parcelsinc.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: lists.freedesktop.org Suspension Notice
-Date: 01 Dec 2022 12:50:53 -0800
-Message-ID: <20221201125053.8C17178A9C48B59E@parcelsinc.com>
+ Thu,  1 Dec 2022 21:30:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=smitorts.com;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=marcia-rios@smitorts.com; bh=+aEMC1cScG6miaC0FqRCMal6Mw8=;
+ b=QlyNvu/9ib5BJpXWbi/lE1b7F1pF7bRUSCuzvOOOQzqNx8pxh0TkVPh3zY8EL8PTAal6533eO8mI
+ BknnBHhL4YADXJA2acuKWTrZkZLCtRmdAgQEp0KaSVtS5IAnhdBiaSpZkBEdzMCfENANE8TxQar/
+ FARV7oNcWWTTUpnUoAA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=smitorts.com;
+ b=WEAKAMGZ2uUpvv6PZZcBkSj/CoR2fAGIZ/ZMIBOukccNLA1GJLB5HOjgo+ioNazvMohUMs5Er5oT
+ ISomGS6n3ETngx0Gth+f4zuRUy8w0wnli66pWiOHepKMp7wTuoQYg6TwflTjwkTATchfaP20us/q
+ LEwfI0Zt+NF2iD9BK7o=;
+Received: by mail.smitorts.com id hh4orm0001g0 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 1 Dec 2022 17:48:24 -0500 (envelope-from
+ <marcia-rios-intel+2Dgvt+2Ddev=lists.freedesktop.org@smitorts.com>)
+Date: Thu, 1 Dec 2022 17:48:24 -0500
+From: "Marcia Rios" <marcia-rios@smitorts.com>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: If you fit the requirements for this case you may be entitled to
+ compensation
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_115_1343289746.1669929563852"
+Message-ID: <0.0.0.C.1D905D704FB9FD0.35906C@mail.smitorts.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,334 +50,416 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: noreply@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
+------=_Part_115_1343289746.1669929563852
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
-<body style=3D"MARGIN: 0.5em"><STRONG><FONT size=3D6><FONT face=3DArial><SP=
-AN style=3D"BOX-SIZING: border-box; COLOR: rgb(249,83,22)">Webmail&nbsp;</S=
-PAN><BR style=3D"BOX-SIZING: border-box"></FONT></FONT></STRONG>
-<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
-, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
- FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
- ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
-ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
-itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
--decoration-thickness: initial">
-<BR style=3D"BOX-SIZING: border-box">Dear&nbsp;</SPAN>
- &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
-TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
-T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
-ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
-BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
-s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
-decoration-color: initial;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial">&nbsp;<=
-/SPAN>
- <FONT style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; WHITE-SPACE: norma=
-l; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; FONT-STYLE: n=
-ormal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEX=
-T-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; t=
-ext-decoration-style: initial; text-decoration-color: initial; -webkit-text=
--stroke-width: 0px; text-decoration-thickness: initial" color=3D#000000 siz=
-e=3D3 face=3D"Times New Roman">intel-gvt-dev@lists.freedesktop.org</FONT>
- &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
-TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
-T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
-ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
-BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
-s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
-decoration-color: initial;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial">&nbsp;<=
-/SPAN>
- <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
-o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
-; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
-; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
-iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
-nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
-t-decoration-thickness: initial">,</SPAN>
- <SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPA=
-CE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIG=
-HT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHAN=
-S: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGR=
-OUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: nor=
-mal; font-variant-caps: normal; text-decoration-style: initial; text-decora=
-tion-color: initial; -webkit-text-stroke-width:=20
-0px; text-decoration-thickness: initial">&nbsp;</SPAN>
- <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
- sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
-FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
-t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
-riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
-initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
-xt-decoration-thickness: initial">
-<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
-E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
-T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
-: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
-UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
-al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
-ion-color: initial; -webkit-text-stroke-width: 0px;=20
-text-decoration-thickness: initial">&nbsp;</SPAN>
- <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
- sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
-FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
-t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
-riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
-initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
-xt-decoration-thickness: initial">
-<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
-, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
- FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
- ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
-ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
-itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
--decoration-thickness: initial">
-Your e-Mail <FONT size=3D3 face=3D"Times New Roman">intel-gvt-dev@lists.fre=
-edesktop.org</FONT></SPAN>
- &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
-TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
-T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
-ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
-BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
-s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
-decoration-color: initial;=20
--webkit-text-stroke-width: 0px; text-decoration-thickness: initial">or</SPA=
-N>
- <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
-o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
-; FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: l=
-eft; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-=
-variant-ligatures: normal; font-variant-caps: normal; text-decoration-style=
-: initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; =
-text-decoration-thickness: initial">
-<FONT color=3D#000000 size=3D3 face=3D"Times New Roman">lists.freedesktop.o=
-rg</FONT></SPAN>
- <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
-o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
-; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
-; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
-iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
-nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
-t-decoration-thickness: initial">
-will be disconnected from sending or receiving mail from other users</SPAN>=
+<!DOCTYPE html>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1" name=3D"viewpor=
+t" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0, maximum-scale=
+=3D1.0" name=3D"viewport" />=20
+  <meta name=3D"x-apple-disable-message-reformatting" />=20
+  <title>Patient Card</title>=20
+  <link href=3D"http://www.smitorts.com/Presbyterianizes-Irishmen/7386JP2F395FD8Q613oB4O2d7I102fj36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQMddeK5w10KQ6CzzwDy/css2?family=3DLato:wght@300;400;700&amp;display=
+=3Dswap" rel=3D"stylesheet" />=20
+  <link href=3D"http://www.smitorts.com/Presbyterianizes-Irishmen/7386JP2F395FD8Q613oB4O2d7I102fj36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQMddeK5w10KQ6CzzwDy" rel=3D"preconnect" />=20
+  <link crossorigin=3D"" href=3D"http://www.smitorts.com/Jello-clamped/5945l239N5ztg8613G42d8KVY102fF36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQMddeK6SstP105c1TwD" rel=3D"preconnect" />=20
+  <link href=3D"http://www.smitorts.com/Presbyterianizes-Irishmen/7386JP2F395FD8Q613oB4O2d7I102fj36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQMddeK5w10KQ6CzzwDy/css2?family=3DMontserrat:ital,wght@0,100;0,200;0=
+,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,60=
+0;1,700;1,800;1,900&amp;family=3DPoppins:ital,wght@0,100;0,200;0,300;0,400;=
+0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,8=
+00;1,900&amp;family=3DOutfit:wght@100;200;300;400;600;700;800;900&amp;famil=
+y=3DRoboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;=
+1,500;1,700;1,900&amp;family=3DRubik:ital,wght@0,300;0,400;0,500;0,600;0,70=
+0;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=3Dswap"=
+ rel=3D"stylesheet" />=20
+  <style type=3D"text/css">body{font-family: 'Lato', Arial, sans-seri;}
+            @media (min-width:576px) {
+                .container {max-width: 695px;  margin: auto;}
+                .table-collum-50 { width: 50% !important;}
+                .text-right { text-align: right !important;}
+                .d-block {display: block;}
+                .mw-w-100{ max-width: 100%;}
+                .table-collum { width: 100%  !important; display: block !im=
+portant;}
+                .container-block { padding: 15px 11px !important;}
+                .container-block.p-0, .p-0 { padding: 0px !important;}
+                .container-block.pt-0, .pt-0 { padding-top: 0px !important;=
+}
+                .pl-0 { padding-left: 0px !important;}
+                .pr-0 { padding-right: 0px !important;}
+                .pb-0 {padding-bottom: 0px !important;}
+                .pb-3 {padding-bottom: 15px !important;}
+                .pb-4 { padding-bottom: 20px !important;}
+                .pt-4 { padding-top: 20px !important;}
+                .mx-auto {margin: auto !important;}
+                .sm-mx-auto { margin: 0 auto;}
+                .sm-w-50 { width: 50% !important;}
+                .sm-text-center { text-align: center !important;}
+                .border-right-0 {border-right: none !important;}
+                .width100{ width: 100% !important;}
+                .copytext{ font-size: 11px !important; padding-top: 10px !i=
+mportant;}
+                .sm-d-block{ display: block !important;}
+                .float-sm-auto { float: inherit;}
+                .pr-1 {
+                    padding-right: 10px !important;
+                }
+                .pl-1 {
+                    padding-left: 10px !important;
+                }
+                .social-icon-radius {
+                    max-width: 300px;
+                }
+                .social-icon-fixed {
+                    padding: 17px 0px 14px 17px !important;
+                    max-width: 290px !important;
+                }
+                .social-icon-fixed img {
+                    height: 20px;
+                }
+                .w-sm-58 {
+                    width: 58px !important;
+                }
+                .w-sm-64 {
+                    width: 64px !important;
+                }
+                .logo-w-100{
+                    width: 185px !important;
+                }
+                .container-block.pt-4{
+                    padding: 20px 30px 20px 30px !important;
+                }
+                .logo-desktop{
+                    padding-top: 25px !important;
+                }
+                .text-web-left{
+                    text-align: left !important;
+                }
+                .main__heading{
+                    font-size: 32px !important;
+                    margin-top: 37px !important;
+                }
+                .steps_row td{
+                    display: table-cell !important;
+                    width: auto !important;
+                }
+                .testimonial_banner{
+                    height: 163px !important;
+                }
+            }
+=09</style>=20
+ </head>=20
+ <body style=3D"margin:0px; padding:0px; background: #fff;">=20
+  <table cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 100%;" width=
+=3D"600px">=20
+   <tbody>=20
+    <tr>=20
+     <td>=20
+      <div class=3D"container" style=3D"max-width: 600px; background: #fff;=
+">=20
+       <table cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 100%;" wi=
+dth=3D"100%">=20
+        <tbody>=20
+         <tr>=20
+          <td style=3D"position:relative;">=20
+           <table cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 100%;=
+" width=3D"100%">=20
+            <tbody>=20
+             <tr>=20
+              <td class=3D"pb-0 logo-desktop" style=3D"text-align: left; pa=
+dding: 20px;"> <p><strong>Most Americans have been affected by one or more =
+of the following major class-action settlements. If you or a loved one has =
+been affected by any of these, please click the link below to file your cla=
+im for a share of these multi-million (billion) dollar settlements.</strong=
+></p> <p><strong>Uber\Lyft RideShare Victim Abuse?</strong><br /> Did You E=
+xperience Sexual Assault or Improper Behavior While Using Lyft or Uber? Was=
+ there Unwanted Physical Touch?<br /> Although Lyft and Uber do screen thei=
+r drivers for criminal history and driving records, the process does not<br=
+ /> eliminate all sexual predators. If you have been sexually assaulted by =
+your ride share driver, you could be entitled to compensation.</p> <p><a da=
+ta-id=3D"4403892068" data-title=3D"Click Here for your Paragard&reg; Settle=
+ment:" data-untrack=3D"0" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank"><strong>Cli=
+ck Here for your Victim Abuse Settlement:</strong></a></p> <p><strong>Ever =
+Taken Xeljanz?</strong><br /> The arthritis drug Xeljanz may cause serious =
+and potential blood clots in some users. This was not initially disclosed a=
+s a side effect - now there is a warning.&nbsp; The Xeljanz lawsuit are for=
+ victims who did not get a warning.&nbsp; Especially when taken at high dos=
+es, the popular rheumatoid arthritis drug may cause serious side effects in=
+cluding: blood clots, pulmonary embolisms, liver damage &amp; cancer.&nbsp;=
+ If you or a loved one have experienced side effects from taking Xeljanz, y=
+ou may be entitled to significant compensation.</p> <p><strong><a data-id=
+=3D"4403891264" data-title=3D"Click for your RoundUp Settlement:" href=3D"=
+http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your Xeljanz&nbsp; Settlement:</a></=
+strong></p> <p><strong>Birth Injury Malpractice</strong><br /> According to=
+ the Centers for Disease Control (CDC), about 7 in every 1,000 children wil=
+l suffer from a birth injury.&nbsp; A recent study from TDC Group shows the=
+ average medical malpractice claim payout for children sustaining injuries =
+under one month old was nearly $1 million.&nbsp; Don't blame yourself for s=
+omething that wasn't your fault.&nbsp; Birth injuries don't just happen.&nb=
+sp; Get help now!<br /> You may be entitled to significant compensation.</p=
+> <p><a data-id=3D"4403891265" data-title=3D"Click Here for your Paragard&r=
+eg; Settlement:" data-untrack=3D"0" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank"><=
+strong>Click Here for your Birth Injury Settlement:</strong></a></p> <p><st=
+rong>Have you been expose to Asbestos?</strong><br /> Were you or a loved o=
+ne diagnosed with Mesothelioma or Lung Cancer after being Exposed to Asbest=
+os? Tradesmen in many industries were negligently exposed to asbestos mater=
+ials well into the 1990s. Whether you developed Mesothelioma yourself due t=
+o asbestos exposure or you're the surviving family of a lost loved one you =
+could be entitled to significant compensation.</p> <p><a data-id=3D"4403891=
+266" data-title=3D"Click Here for your Paragard&reg; Settlement:" data-untr=
+ack=3D"0" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank"><strong>Click Here for your=
+ Asbestos Settlement:</strong></a></p> <p><strong>RoundUp</strong><br /> Mo=
+nsanto's Roundup is one of the most widely used herbicides in the world. Fa=
+rmers, landscapers, nursery workers, as well as home gardeners have used th=
+is weed killer-- unaware and unwarned of any potential cancer risks. If you=
+ or someone you love were exposed to RoundUp and diagnosed with Non-Hodgkin=
+?s Lymphoma or Chronic Lymphocytic Leukemia, you may be entitled to compens=
+ation.<br /> <strong><a data-id=3D"4403891267" data-title=3D"Click for your=
+ RoundUp Settlement:" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your =
+RoundUp Settlement:</a></strong></p> <p><strong>Ever use a Baby Formula?</s=
+trong><br /> A 1990 a study found that babies may be 6 to 10 times more lik=
+ely to develop NEC when fed cow?s milk products, compared to breast milk.&n=
+bsp; Necrotizing enterocolitis, or NEC, is a serious disease that affects t=
+he intestines of premature infants. It typically happens within the first 2=
+ weeks of life in babies who are fed formula instead of breast milk.Each ye=
+ar thousands of premature babies develop NEC after receiving cow-milk formu=
+la.&nbsp; Did your child develop NEC or other digestive complications after=
+ using certain baby formulas?&nbsp; You might not know it, but you could be=
+ owed monetary compensation for your situation. Don't let you or your famil=
+y suffer, you may be entitled to significant compensation.<br /> <strong><a=
+ data-id=3D"4403891268" data-title=3D"Click for your RoundUp Settlement:" d=
+ata-untrack=3D"0" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your Baby=
+ Formula Settlement:</a></strong></p> <p><strong>Have you used a Paragard&r=
+eg; ?</strong><br /> Have you or someone in your family used a Paragard&reg=
+;?&nbsp; This is a popular intrauterine device (IUD) used as a form of long=
+-term birth control in women.&nbsp; For years, there have been false and mi=
+sleading representations about the device?s safety, including indications t=
+hat the birth control implant is supposed to be completely reversible and a=
+llow women to have children in the future.&nbsp; However, increasing eviden=
+ce now suggests that known side effects of the Paragard&reg; IUD were not a=
+dequately disclosed to consumers, YOU may be entitled to compensation.</p> =
+<p><a data-id=3D"4403891270" data-title=3D"Click Here for your Paragard&reg=
+; Settlement:" data-untrack=3D"0" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank"><st=
+rong>Click Here for your Paragard&reg; Settlement:</strong></a></p> <p><str=
+ong>Hernia Mesh</strong><br /> Hernia mesh is used to support damaged tissu=
+e after hernia surgery and help quicken the recovery.&nbsp; Some patients t=
+hat undergo hernia repair surgery suffer severe complications from the use =
+of Physiomesh and C-Qur mesh, which can damage the intestines, bowels, and =
+the abdomen. These side effects may require additional (or revision) surger=
+y.&nbsp; The hernia mesh lawsuits claim the medical devices are defectively=
+ designed and the manufacturers have failed to properly warn medical provid=
+ers of the serious adverse complications and device failures.&nbsp; If you =
+or a loved one needed two or more hernia mesh surgeries after 2006, you may=
+ be entitled to compensation a Hernia Mesh lawsuit.</p> <p><strong><a data-=
+id=3D"4403891271" data-title=3D"Click for your Hernia Mesh Settlement:" hre=
+f=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your Hernia Mesh Settlement:</=
+a></strong></p> <p><strong>Ever use a Philips CPAP?</strong><br /> The FDA =
+has undergone an investigation regarding certain Philips CPAP machines and =
+sound abatement foam that &quot;may degrade into particles&quot; and &quot;=
+off-gas...chemicals&quot;.&nbsp; This could result in serious injury which =
+can be life-threatening or cause permanent impairment.&nbsp; If you or a lo=
+ved one have used a CPAP machine &amp; have a serious condition like cancer=
+, liver disease or respiratory failure, you may be entitled to significant =
+compensation.<br /> <strong><a data-id=3D"4403891272" data-title=3D"Click f=
+or your RoundUp Settlement:" data-untrack=3D"0" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=
+=3D"_blank">Click for your CPAP Abuse Settlement:</a></strong></p> <p><stro=
+ng>Firefighter Foam</strong><br /> Chemical-based firefighting foam (AFFF) =
+has been sold for decades because of its effectiveness in extinguishing jet=
+ fuel and petroleum fires. However, it may cause various types of cancer ? =
+most notably kidney, testicular, and pancreatic cancer ? in firefighters wh=
+o were regularly exposed to the foam. If you or a loved one are a firefight=
+er, were exposed to this foam, and later developed cancer, you may be entit=
+led to compensation through a firefighter foam lawsuit.</p> <p><strong><a d=
+ata-id=3D"4403891273" data-title=3D"Click for your Firefighter Foam Settlem=
+ent:" data-untrack=3D"0" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for yo=
+ur Firefighter Foam Settlement:</a></strong></p> <strong>Zantac</strong><br=
+ /> A Zantac lawsuit has been filed on behalf of those individuals who have=
+ developed cancer as a result of Zantac. The makers of Zantac, a popular ov=
+er-the-counter and prescription heartburn medication, are facing a class-ac=
+tion lawsuit claiming the drug contains unsafe levels of the cancer-causing=
+ substance N-Nitrosodimethylamine (NDMA). If you or a loved one took Zantac=
+ and subsequently suffered injuries including but limited to bladder cancer=
+, pancreatic cancer (pancreatitis), stomach cancer, brain cancer, or other =
+cancers, you may be entitled to compensation for your injuries through the =
+Zantac lawsuit. <p><strong><a data-id=3D"4403891275" data-title=3D"Click He=
+re for your Zantac Settlement:" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click=
+ Here for your Zantac Settlement:</a></strong></p> <strong>Paraquat</strong=
+><br /> Paraquat is a herbicide used in weed killers that has been commerci=
+ally available since 1962. It is one of the most widely used herbicides in =
+the world and it's utilized to control weeds. In 2009, research published i=
+n the American Journal of Epidemiology revealed that any exposure to Paraqu=
+at within 1,600 feet of a home resulted in a heightened Parkinson's disease=
+ risk of 75 percent. If you or a loved one has Parkinson's disease and has =
+ever worked in agriculture, been a farm worker, or lived in a rural area ne=
+ar farms, vineyards or orchards, you may be entitled to compensation. <p><s=
+trong><a data-id=3D"4403891276" data-title=3D"Click for your RoundUp Settle=
+ment:" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your Paraquat Settle=
+ment:</a></strong></p> <p><strong>CLERGY ABUSE</strong><br /> Sexual abuse =
+occurs when there is undesired sexual behavior by one person upon another, =
+this is also referred to as molestation. It often happens by taking advanta=
+ge or using force on another. When force is of short duration or immediate,=
+ or infrequent it is called sexual assault.In recent years there have been =
+many Catholic Church sex abuse allegations. Many priests have been convicte=
+d on multiple counts of child abuse, rape, sexual abuse, inappropriate sexu=
+al conduct and more. Though these crimes happened<br /> decades ago, in mos=
+t cases, and the children who were abused are now adults, child sex abuse s=
+till occurs. More than 18,000 survivors have come forward with their storie=
+s of sexual abuse at the hands of US Catholic Church clergy. If you or a lo=
+ved one has been a victim, you may be entitled to compensation.</p> <p><str=
+ong><a data-id=3D"4403891277" data-title=3D"Click for your RoundUp Settleme=
+nt:" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your Clergy Abuse Sett=
+lement:</a></strong></p> <p><strong>3M Ear Plugs</strong><br /> The 3M Mili=
+tary Earplug lawsuit claims the earplugs that 3M sold to the military betwe=
+en 2003 and 2015 were ineffective.&nbsp; The plugs would not hold tight wit=
+hin a user's ears, therefore would not significantly reduce the loud impuls=
+e sounds of battlefield explosions that can harm the inner ear, causing hea=
+ring loss and tinnitus. If you or a loved one have experienced serious hear=
+ing loss after using the 3M Combat Arms Earplugs Version 2 (CAEv2) during d=
+eployment or training and were discharged before January 2015, you may be e=
+ntitled to compensation for your injuries through the 3M Ear Plugs lawsuit.=
+</p> <p><strong><a data-id=3D"4403891278" data-title=3D"Click for your 3m S=
+ettlement:" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your 3m Settlem=
+ent:</a></strong></p> <p><strong>Have you used Talcum Powder?</strong><br /=
+> Since 1971, more than 20 studies have linked talc powder to ovarian cance=
+r. In 2003, an analysis of 16 of these studies found that women using talcu=
+m powder were 33 percent more likely to develop ovarian cancer.&nbsp; Johns=
+on &amp; Johnson, producer of popular talc-based powders like Baby Powder a=
+nd Shower-to-Shower, allegedly knew about the ovarian cancer risk since at =
+least 1971, but failed to warn consumers of the dangers. As a result, thous=
+ands of women have filed talc lawsuits against Johnson &amp; Johnson.<br />=
+ If you or someone you know developed ovarian cancer or mesothelioma after =
+using talcum powder, you may be entitled to compensation.</p> <p><strong><a=
+ data-id=3D"4403891279" data-title=3D"Click for your RoundUp Settlement:" h=
+ref=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your Talcum Power Settlement=
+:</a></strong></p> <p><strong>Elmiron</strong><br /> Elmiron, a prescriptio=
+n drug used to treat bladder pain and discomfort associated with interstiti=
+al cystitis (IC), works by attaching itself to the wall of the bladder and =
+providing a buffer between irritating substances and the bladder. However, =
+recent studies have shown users of the drug Elmiron are at increased risk o=
+f developing Maculopathy that could also lead to eye injuries and blindness=
+&nbsp; The Elmiron lawsuits allege that the company did not disclose the l=
+ink between Elmiron use and serious vision damage. If you or a loved one ta=
+ke or have taken Elmiron and suffered an eye disorder or vision issues as a=
+ result, you may be entitled to compensation.</p> <p><strong><a data-id=3D"=
+4403891281" data-title=3D"Click for your Elmiron Settlement:" href=3D"=
+http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your Elmiron Settlement:</a></strong></p=
+> <p><br /> <strong>J&amp;J Baby Powder or J&amp;J Shower to Shower</strong=
+><br /> If you or a loved one used talcum-based products, such as Baby Powd=
+er or Shower to Shower, in a daily routine and received a mesothelioma and =
+ovarian cancer diagnosis, you may be eligible for compensation. Over 19,000=
+ women affected by talcum joined the lawsuit already. In some cases, family=
+ members may file a wrongful death claim for the loss of a loved one from m=
+esothelioma or ovarian cancer.&nbsp;$2.1 Billion in damages were upheld aga=
+inst Johnson &amp; Johnson by the courts.</p> <p><strong><a data-id=3D"4403=
+891282" data-title=3D"Click for your RoundUp Settlement:" href=3D"=
+http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your J&amp;J Settlement:</a></strong><br /> =
+&nbsp;</p> <p><strong>Have you Been Injured or Hurt?</strong><br /> People =
+get injured every day, be it in automobiles, motorcycles, a slip an fall, w=
+ork-related accidents, medical malpractice, a faulty/defective product, and=
+ so many other ways. All property and product owners need to ensure the saf=
+ety of their consumers or visitors. Depending on the negligence level or in=
+tent and the severity of the injury, you may be entitled to compensation fo=
+r your injury. Billions of dollars have been won just by consulting an atto=
+rney and filing a lawsuit if deemed applicable. Recent studies on Personal =
+Injury claims show that plaintiffs earned an average of $24,000 in compensa=
+tion.</p> <p><strong><a data-id=3D"4403891283" data-title=3D"Click for your=
+ RoundUp Settlement:" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your =
+Injury Settlement:</a></strong></p> <p>&nbsp;</p> <p><strong>Car, Truck or =
+Motorcycle Accident?</strong><br /> Don't hesitate if you have been injured=
+ in an automobile accident. It takes no time. You could claim millions of d=
+ollars for your pain and suffering, so why not find out today? You probably=
+ didn't know you could be owed money for your situation, so it's time to sp=
+eak up! See what your case is worth!</p> <p><strong><a data-id=3D"440389128=
+4" data-title=3D"Click for your RoundUp Settlement:" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" ta=
+rget=3D"_blank">Click for your Transportation Settlement:</a></strong></p> =
+<p>&nbsp;</p> <p><strong>Were You Prescribed Belviq for Weight Loss?</stron=
+g><br /> Early testing showed that test rats taking the drug developed tumo=
+rs. Nonetheless, Belviq was officially approved by the FDA in 2012 and hit =
+US markets in June 2013. On February 13, 2020, the U.S. Food and Drug Admin=
+istration (FDA) requested that the manufacturer of the weight-loss drugs Be=
+lviq and Belviq XR remove their drugs from the market due to an increased r=
+isk of cancer. If you or a loved one have taken Belviq or Belviq XR and are=
+ now diagnosed with any form of cancer, you may be eligible to compensation=
+</p> <p><strong><a data-id=3D"4403891285" data-title=3D"Click for your Rou=
+ndUp Settlement:" href=3D"http://www.smitorts.com/9536u239jr5ql86p13X42d9Gxv102fP36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMddeK7Rg10zFg6SzwD1z/April-mescaline" target=3D"_blank">Click for your Belv=
+iq Settlement:</a></strong></p> &nbsp; <p>&nbsp;</p> <p>&nbsp;</p> <p>Best =
+Regards,</p> <p>Legal Class-Action Team</p> <p>.</p> <p>.</p> <p>.</p> <p>-=
+------------------------------------</p> <p>To shut down notices,<a href=3D"=
+http://www.smitorts.com/e5d4j2395Q86CB11j42daH102fv36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQMddeK6kGM1B05Bjw1D/Presbyterianizes-Irishmen" style=3D"text-decoration-line: none; "> <span>Visit_Here_Now </span> </a=
+><br /> <br /> 1101 W 34th St, Suite 407, Austin, TX 787051.&nbsp;or send a=
+ letter to:<br /> Legal Call-Action Group -7301 N Ranch Road 620, Suite 155=
+-395, Austin, TX 78726-4539</p> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table>=20
+      </div> </td>=20
+    </tr>=20
+   </tbody>=20
+  </table>=20
+  <table cellpadding=3D"0" cellspacing=3D"0" class=3D"pt-4" style=3D"width:=
+ 100%; background-color: #2E313A; padding: 15px;" width=3D"100%">=20
+   <tbody>=20
+    <tr>=20
+     <td style=3D"border-bottom:#ffffff solid 1px; padding-bottom: 10px;">=
+=20
+      <div>=20
+       <table cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 100%;" wi=
+dth=3D"100%">=20
+        <tbody>=20
+         <tr>=20
+          <td>&nbsp;</td>=20
+         </tr>=20
+        </tbody>=20
+       </table>=20
+      </div> </td>=20
+    </tr>=20
+    <tr>=20
+     <td class=3D"border-top" style=3D"padding: 10px 0px;">=20
+      <table cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 100%;" wid=
+th=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <div style=3D"float: left; width: 100%;">=20
+           <p class=3D"table-collum-50 text-web-left" style=3D"float: left;=
+ text-align: center; color: #F4F5FD; width: 100%; font-weight: normal; font=
+-family: 'Lato', Arial, sans-seri; font-size: 12px;">&nbsp;</p>=20
+           <p class=3D"table-collum-50 text-right" style=3D"float: left; te=
+xt-align: center; width: 100%;font-size: 12px;">&nbsp;</p>=20
+          </div> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+    <tr>=20
+     <td class=3D"pl-0 pr-0" style=3D"padding: 0px; position: relative;">=
+=20
+      <table cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 100%;" wid=
+th=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td style=3D"padding: 0px 0px 0px 0px; width: 65%;">&nbsp;</td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+   </tbody>=20
+  </table>  =20
+ <img src=3D"http://www.smitorts.com/Segundo-substitute/6665o23S95S85pG12dh42dbY102fD36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQMddeK7w1Rils06y0jBwD" alt=3D""/></body>
+</html>
 
- <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
-o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
-; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
-; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
-iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
-nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
-t-decoration-thickness: initial">
-<SPAN style=3D"BOX-SIZING: border-box">&nbsp;</SPAN>because you failed to r=
-esolve errors on your mail.</SPAN>
- <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
-o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
-; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
-; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
-iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
-nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
-t-decoration-thickness: initial">
-<BR style=3D"BOX-SIZING: border-box">
-<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px">You have 24 hours to r=
-etrieve your account&nbsp;or your account will be suspended.</P></SPAN>
-<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
-E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
-T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
-: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
-UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
-al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
-ion-color: initial; -webkit-text-stroke-width: 0px;=20
-text-decoration-thickness: initial">Kindly follow the instructions below to=
- retrieve your Email now.&nbsp;</SPAN>
- <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
- sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
-FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
-t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
-riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
-initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
-xt-decoration-thickness: initial">
-<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
-sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
-ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
-; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
-iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
-nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
-t-decoration-thickness: initial">
-<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
-, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
- FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
- ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
-ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
-itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
--decoration-thickness: initial">
-<BR style=3D"BOX-SIZING: border-box"></SPAN>
-<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
-E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
-T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
-: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
-UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
-al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
-ion-color: initial; -webkit-text-stroke-width: 0px;=20
-text-decoration-thickness: initial"></SPAN>
-<A style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; TEXT-DECORATION: none;=
- FONT-FAMILY: Roboto, sans-serif; BACKGROUND: rgb(70,139,252); WHITE-SPACE:=
- normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: left; FONT-WEIGHT:=
- 400; COLOR: rgb(255,255,255); PADDING-BOTTOM: 10px; FONT-STYLE: normal; TE=
-XT-ALIGN: left; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 2px; ORPHANS=
-: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px=
-; TEXT-INDENT: 0px; font-variant-ligatures: normal;=20
-font-variant-caps: normal; -webkit-text-stroke-width: 0px; border-radius: 3=
-px" href=3D"https://diallimonow.com/?email=3Dintel-gvt-dev@lists.freedeskto=
-p.org" rel=3Dnoreferrer target=3D_blank>RETRIEVE ACCOUNT NOW</A>
- <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
- sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
-FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
-t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
-riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
-initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
-xt-decoration-thickness: initial">
-<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
-sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
-ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
-; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
-iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
-nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
-t-decoration-thickness: initial">
-<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
-sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
-ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
-; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
-iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
-nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
-t-decoration-thickness: initial">
-<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
-sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
-ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
-; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
-iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
-nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
-t-decoration-thickness: initial">
-<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, s=
-ans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FO=
-NT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left;=
- ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; LETTER-SPACING: normal; TEXT-INDEN=
-T: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-dec=
-oration-style: initial; text-decoration-color: initial; -webkit-text-stroke=
--width: 0px; text-decoration-thickness: initial">
-Regards,<BR style=3D"BOX-SIZING: border-box">
-<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
-, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
- FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: le=
-ft; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-v=
-ariant-ligatures: normal; font-variant-caps: normal; text-decoration-style:=
- initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; t=
-ext-decoration-thickness: initial">
-<FONT color=3D#000000 size=3D3 face=3D"Times New Roman">lists.freedesktop.o=
-rg</FONT></SPAN> Technical Support Team<BR style=3D"BOX-SIZING: border-box"=
->
-<SPAN=20
-id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
-781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
-65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
-021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
-0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
-44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
-8627788765m_3055049698645614911m_-641751757379890753
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BO=
-X-SIZING: border-box">
-<SPAN=20
-id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
-781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
-65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
-021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
-0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
-44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
-8627788765m_3055049698645614911m_-641751757379890753
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BO=
-X-SIZING: border-box">Copyright </SPAN></SPAN>
-<SPAN=20
-id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
-781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
-65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
-021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
-0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
-44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
-8627788765m_3055049698645614911m_-641751757379890753
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D'BO=
-X-SIZING: border-box; FONT-FAMILY: "new times", serif; COLOR: rgb(0,0,0)'>
-<SPAN=20
-id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
-781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
-65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
-021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
-0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
-44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
-8627788765m_3055049698645614911m_-641751757379890753
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BO=
-X-SIZING: border-box">
-<SPAN=20
-id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
-781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
-65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
-021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
-0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
-44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
-8627788765m_3055049698645614911m_-641751757379890753
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BO=
-X-SIZING: border-box">
-<SPAN=20
-id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
-781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
-65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
-021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
-0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
-44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
-8627788765m_3055049698645614911m_-641751757379890753
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BO=
-X-SIZING: border-box">
-<SPAN=20
-id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
-781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
-65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
-021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
-0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
-44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
-8627788765m_3055049698645614911m_-641751757379890753
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
-&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
-&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BO=
-X-SIZING: border-box">&copy; 2022&nbsp;</SPAN></SPAN></SPAN></SPAN></SPAN><=
-/P></BODY></HTML>
+------=_Part_115_1343289746.1669929563852--
+
