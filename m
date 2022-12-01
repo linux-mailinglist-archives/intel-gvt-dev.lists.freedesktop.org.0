@@ -2,42 +2,34 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75C1263E439
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Dec 2022 00:06:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EED4063E628
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Dec 2022 01:07:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CE82110E027;
-	Wed, 30 Nov 2022 23:06:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B3B5D10E513;
+	Thu,  1 Dec 2022 00:07:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 30 Nov 2022 23:05:58 UTC
-Received: from mail.fratmiesc.com (unknown [104.223.183.197])
- by gabe.freedesktop.org (Postfix) with ESMTP id 69D1910E027
+Received: from noreply0.parcelsinc.com (unknown [74.201.28.161])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 094BE10E50E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 30 Nov 2022 23:05:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fratmiesc.com;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jeremiah_jones@fratmiesc.com; 
- bh=mSb6o9ssF+GbX/ndltxom8appSc=;
- b=m+2l+8tP4GAOubzl2/eXAv+zSSfdQ1O0UmQXUi1pYgzshSLOs/UjBkafT9dK50tgtUIsyV9b5EJC
- em3mwDFWeDtntPmPSMRsWS6hGnhxLfAbFTRPS0A/im9he2i0XZeyklfx1VfuQXkr9W8L5+Yeqzon
- 1V3xFhDYsf/eydTn86U=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fratmiesc.com;
- b=K3CxMxbS7QF5c43DOvy4gTa/EOiDd4+g8w94ajeRGEngenvVOvRJf/4hbZY5sMoe0MGdochjl67v
- ZmZnXrhg/ePaBEIQ/txNtvHsIk5iUuySjfuV0WuJzjrANrFaBrvWgtkp3r3fJssf82sAsSUSlKSP
- C7h/KFESw/FywDAtims=;
-Received: by mail.fratmiesc.com id hgvgtc0001ge for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 30 Nov 2022 17:50:01 -0500 (envelope-from
- <jeremiah_jones-intel+2Dgvt+2Ddev=lists.freedesktop.org@fratmiesc.com>)
-Date: Wed, 30 Nov 2022 17:50:01 -0500
-From: "Jeremiah Jones" <jeremiah_jones@fratmiesc.com>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Recap of the week: Top veterans discounts and coupons
+ Thu,  1 Dec 2022 00:07:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
+ d=parcelsinc.com; 
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=noreply@parcelsinc.com;
+ bh=6zEhMRSMGYtc3nq7AxP3A08d9mBrmFou7lGzfh13WRQ=;
+ b=KhoZJvGT/aj9lQXxy3EbiOknKHGNBHgHjfcAJsHUHh3G8GjItjCuu4TUOiFV0wl5GfnTORcWjM8e
+ T9eFFr1OACGla/st80rrlUD2M+oRljmUETJRHZ+0MEF3UkcDpB3EBl3sLGMlw3uWdVq2lyD/iO8Y
+ jWcXuoc7LoarnJ5/iYI=
+From: lists.freedesktop.org Email support<noreply@parcelsinc.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: lists.freedesktop.org Suspension Notice
+Date: 30 Nov 2022 16:07:47 -0800
+Message-ID: <20221130160747.DE7B32781ED3E6B9@parcelsinc.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_109_1921354682.1669848586907"
-Message-ID: <0.0.0.C.1D9050E143B9334.3BCC14@mail.fratmiesc.com>
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,358 +42,335 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: noreply@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_109_1921354682.1669848586907
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <title>runnaway</title> 
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0 " /> 
-  <meta name="format-detection" content="telephone=no" /> 
-  <!--[if !mso]><!--> 
-  <link rel="preconnect" href="http://www.fratmiesc.com/a435a2V395z8U6z12u42caSN102dq36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQIddeS6E1y0gw5tzwDX/thoroughfare-assassinating" /> 
-  <link rel="preconnect" href="http://www.fratmiesc.com/e3f6X23q9t5h8y6y13s42IAcbv102di36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQIddeS7tk1uyK06CWOqwD/acculturates-centroid" crossorigin="" /> 
-  <link href="http://www.fratmiesc.com/a435a2V395z8U6z12u42caSN102dq36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQIddeS6E1y0gw5tzwDX/thoroughfare-assassinating/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" /> 
-  <!--<![endif]--> 
-  <style type="text/css">
-      body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%!important; -ms-text-size-adjust: 100%!important; -webkit-font-smoothing: antialiased!important; }
-      img { border: 0!important; outline: none!important; }
-      p { margin: 0px!important; padding: 0px!important; }
-      h1, h2, h3, h4, h5, h6 { margin: 0px!important; Padding: 0px!important; }
-      table { border-collapse: collapse; mso-table-lspace: 0px; mso-table-rspace: 0px; }
-      td, a, span { border-collapse: collapse; mso-line-height-rule: exactly; }
-      .ExternalClass * { line-height: 100%; }
-      .em_defaultlink a { color: inherit; font-size: 19px !important; }
-      a[x-apple-data-detectors], u+.em_body a { color: inherit; text-decoration: none; font-size: inherit!important; font-family: inherit!important; font-weight: inherit; line-height: inherit; }
-      .em_defaultbtn a { color: inherit; }
-      a[x-apple-data-detectors], u+.em_body a { color: inherit; text-decoration: none; font-size: inherit!important; font-family: inherit!important; font-weight: inherit; line-height: inherit; }
-      @media only screen and (max-width:599px) {
-      .em_main_table { width: 100%!important; }
-      .em_wrapper { width: 100%!important; }
-      .em_side15 { width: 15px !important; }
-      .em_hide { display: none!important; }
-      .em_full_img img { width: 100%!important; height: auto!important; max-width: none !important; }
-      .em_full_img { width: 100%!important; height: auto!important; max-width: none !important; }
-      .em_full_img1 img { width: 100%!important; height: auto!important; max-width: none !important; }
-      .em_full_img1 { width: 100%!important; height: auto!important; max-width: none !important; }
-      .em_aside13 { padding: 20px 15px 0px!important; }
-      .em_aside14 { padding: 10px 15px!important; }
-      u+.em_body .em_full_wrap { width: 100%!important; width: 100vw!important; }
-      .em_h20 { height: 20px!important; }
-      .em_aside_13 { padding: 20px 35px 0px!important; }
-      .em_pad1 { padding: 20px 15px !important; }
-      .em_clear { clear: both!important; width: 100%!important; display: block!important; }
-      .em_ptop { padding-top: 20px!important; }
-      .em_pbottom { padding-bottom: 20px!important; }
-      .em_cta { font-size: 19px !important; }
-      .em_cta2 { font-size: 19px !important; line-height: 19px !important; }
-      .em_cta2 a { line-height: 19px !important; }
-      }
-      @media only screen and (max-width:480px) {
-      .em_aside13 { padding: 20px 15px 0px!important; }
-      .em_side15 { width: 15px !important; }
-      .em_aside_13 { padding: 20px 35px 0px!important; }
-      .em_font19 { font-size: 19px !important; }
-      .em_aside14 { padding: 10px 15px!important; }
-      .em_full_img1 img { width: 100%!important; height: auto!important; max-width: none !important; }
-      .em_full_img1 { width: 100%!important; height: auto!important; max-width: none !important; }
-      .em_wrapper { width: 100%!important; }
-      .em_hide { display: none!important; }
-      .em_full_img img { width: 100%!important; height: auto!important; }
-      .em_full_img { width: 100%!important; height: auto!important; }
-      .em_h20 { height: 20px!important; }
-      .em_ptop { padding-top: 20px!important; }
-      .em_cta { font-size: 14px !important; }
-      .em_cta2 { font-size: 14px !important; line-height: 17px !important; }
-      .em_cta2 a { line-height: 17px !important; }
-      .em_wid48 { width: 49%!important; }
-      .em_pbottom { padding-bottom: 20px!important; }
-      .em_pad1 { padding: 20px 15px !important; }
-      .em_clear { clear: both!important; width: 100%!important; display: block!important; }
-      }
-      @media only screen and (max-width:375px) {
-      .em_h20 { height: 20px!important; }
-      .em_aside_13 { padding: 20px 35px 0px!important; }
-      .em_font19 { font-size: 19px !important; }
-      .em_pbottom { padding-bottom: 20px!important; }
-      .em_aside13 { padding: 20px 15px 0px!important; }
-      .em_ptop { padding-top: 20px!important; }
-      .em_side15 { width: 10px !important; }
-      .em_full_img1 img { width: 100%!important; height: auto!important; max-width: none !important; }
-      .em_full_img1 { width: 100%!important; height: auto!important; max-width: none !important; }
-      .em_cta { font-size: 14px !important; }
-      .em_cta2 { font-size: 14px !important; line-height: 17px !important; }
-      .em_cta2 a { line-height: 17px !important; }
-      .em_aside14 { padding: 19px; 15px!important; }
-      .em_wrapper { width: 100%!important; }
-      .em_hide { display: none!important; }
-      .em_full_img img { width: 100%!important; height: auto!important; }
-      .em_full_img { width: 100%!important; height: auto!important; }
-      .em_pad1 { padding: 20px 15px !important; }
-      .em_clear { clear: both!important; width: 100%!important; display: block!important; }
-      .em_wid48 { width: 49%!important; }
-      }
-    </style> 
- </head> 
- <body bgcolor="#f2f2f2" class="em_body" style="margin:0px auto;padding:0px;background-color:#f2f2f2;"> 
-  <div style="display: none; max-height: 0px; overflow: hidden;"></div> 
-  <table role="presentation" bgcolor="#f2f2f2" width="100%" border="0" cellspacing="0" cellpadding="0" class="em_full_wrap" style="table-layout:fixed;background-color:#f2f2f2;"> 
-   <tbody>
-    <tr> 
-     <td align="center" valign="top"> 
-      <table role="presentation" align="center" width="600" bgcolor="#ffffff" border="0" cellspacing="0" cellpadding="0" class="em_main_table" style="width:600px;background-color:#ffffff;"> 
-       <tbody>
-        <tr> 
-         <td align="center" valign="top"> 
-          <!--view_online--> 
-          <table align="center" role="presentation" width="600" style="width:600px;" class="em_wrapper" border="0" cellspacing="0" cellpadding="0"> 
-           <tbody>
-            <tr> 
-             <td valign="top" align="center"> 
-              <table role="presentation" align="center" width="600" bgcolor="#ffffff" border="0" cellspacing="0" cellpadding="0" class="em_wrapper" style="width:600px;background-color:#ffffff;"> 
-               <tbody>
-                <tr> 
-                 <td align="center" valign="top" style="padding:0px 12px;background-color:#f2f2f2;"> 
-                  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#f2f2f2"> 
-                   <tbody> 
-                    <tr> 
-                     <td valign="top" align="center" style="padding:29px 0px 5px;" class="em_aside14"> 
-                      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="em_wrapper"> 
-                       <tbody>
-                        <tr> 
-                         <td valign="top" align="right" style="font-family:'Open Sans',Arial,sans-serif;font-size:11px;line-height:13px;color:#348faa;" class="em_defaultbtn"><p style="margin:0!important;font-family:'Open Sans'Arial,sans-serif;font-size:11px;line-height:13px;color:#348faa;" class="em_defaultbtn">&nbsp;</p></td> 
-                        </tr> 
-                       </tbody>
-                      </table></td> 
-                    </tr> 
-                   </tbody> 
-                  </table></td> 
-                </tr> 
-               </tbody>
-              </table></td> 
-            </tr> 
-           </tbody>
-          </table> 
-          <!--end-view_online--> 
-          <!--centered_header_section--> 
-          <table role="presentation" width="600" align="center" border="0" cellspacing="0" cellpadding="0" style="width:600px;background-color:#ffffff; display: none" class="em_wrapper" bgcolor="#ffffff"> 
-           <tbody>
-            <tr> 
-             <td valign="top" align="center" style="padding:13px 0px 10px 0px;" class="em_pad1"> 
-              <table width="100%" role="presentation" align="center" border="0" cellspacing="0" cellpadding="0"> 
-               <tbody>
-                <tr> 
-                 <td align="center" valign="top"> 
-                  <table width="100%" role="presentation" align="center" border="0" cellspacing="0" cellpadding="0"> 
-                   <tbody>
-                    <tr> 
-                     <td width="265" style="width:265px;" class="em_hide">&nbsp;</td> 
-                     <td align="left" valign="top"></td> 
-                     <td width="115" style="width:115px;">&nbsp;</td> 
-                     <td align="right" valign="middle" width="155" style="width: 155px;"> 
-                      <table role="presentation" align="center" width="130" style="width:130px;" border="0" cellspacing="0" cellpadding="0"> 
-                       <tbody>
-                        <tr> 
-                         <td valign="middle" align="center"> 
-                          <table role="presentation" style="background-color:#fff;border-radius:10px;" align="center" width="100%" border="0" cellspacing="0" cellpadding="0"> 
-                           <tbody>
-                            <tr> 
-                             <td class="em_defaultbtn" valign="middle" align="center" height="37" style="font-family:'Open Sans',Arial,sans-serif;font-size:13px;color:#ffffff;height:37px;font-weight:800;"><p style="margin:0!important;font-family:'Open Sans',Arial,sans-serif;font-size:13px;color:#ffffff;height:37px;" class="em_defaultbtn"></p></td> 
-                            </tr> 
-                           </tbody>
-                          </table></td> 
-                        </tr> 
-                       </tbody>
-                      </table></td> 
-                    </tr> 
-                   </tbody>
-                  </table></td> 
-                </tr> 
-               </tbody>
-              </table></td> 
-            </tr> 
-           </tbody>
-          </table> 
-          <!--end-centered_header_section--> 
-          <!--banner_section--> 
-          <table align="center" role="presentation" width="600" style="width:600px;" class="em_wrapper" border="0" cellspacing="0" cellpadding="0"> 
-           <tbody>
-            <tr> 
-             <td valign="top" align="center"> 
-              <table role="presentation" align="center" width="600" bgcolor="#ffffff" border="0" cellspacing="0" cellpadding="0" class="em_wrapper" style="width:600px;background-color:#ffffff;"> 
-               <tbody>
-                <tr> 
-                 <td align="center" valign="top"> 
-                  <table role="presentation" align="center" bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" class="em_wrapper" style="width:600px;background-color:#ffffff;"> 
-                   <tbody>
-                    <tr> 
-                     <td height="8" style="height:8px;font-size:0px;line-height:0px;" bgcolor="#000000">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" valign="top" class="em_full_img"><a href="http://www.fratmiesc.com/manhood-festivals/d504z2395zL86D11t42ccv102dT36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQIddeS6Q1psL06CWOwPD
-"><img src="http://www.fratmiesc.com/51b6b23ov95gB7aU11n42ceJ102dt36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQIddeS7EA10qnK5GlpwD/burglary-neatest" width="600" alt="close-up image of a chimpanzee scratching its head" style="display:block;max-width:600px;color:#000000;" /></a></td> 
-                    </tr> 
-                   </tbody>
-                  </table></td> 
-                </tr> 
-               </tbody>
-              </table></td> 
-            </tr> 
-           </tbody>
-          </table> 
-          <!--end-banner_section--> 
-          <!-- h1,h2,p,button_section --> 
-          <table role="presentation" align="center" bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" class="em_wrapper" style="width:600px;background-color:#ffffff;"> 
-           <tbody>
-            <tr> 
-             <td align="center" valign="top" style="padding:25px 37px 41px 37px;" class="em_pad1"> 
-              <table role="presentation" align="center" width="100%" border="0" cellspacing="0" cellpadding="0"> 
-               <tbody>
-                <tr> 
-                 <td align="center" valign="top"> 
-                  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center"> 
-                   <tbody>
-                    <tr> 
-                     <td align="center" class="em_defaultlink" valign="top" style="padding-bottom: 15px; font-family:'Open Sans',Arial,sans-serif;font-size:36px;line-height:38px;color:#000000;font-weight: bold;"><h1 style="margin:0!important;font-weight: bold;font-family:'Open Sans',Arial,sans-serif;font-size:36px;line-height:38px;color:#ooooo;" class="em_defaultlink">15 Military Discounts Available To Those Who Served Our Country</h1></td> 
-                    </tr> 
-                    <tr> 
-                     <td align="left" class="em_defaultlink" valign="top" style="font-family:'Open Sans',Arial,sans-serif;font-size: 19px;line-height:32px;color:#000000;font-weight: 400;"><p style="margin:0!important;font-family:'Open Sans',Arial,sans-serif;font-size: 19px;line-height: 32px;color:#000000;font-weight: 400;" class="em_defaultlink"> Military veterans, retired and active duty members deserve the many discount available to them. As a thank you, our country and plenty of companies offer steep discounts and even free products and services to military and immediate family members </p> </td> 
-                    </tr> 
-                   </tbody>
-                  </table></td> 
-                </tr> 
-               </tbody>
-              </table></td> 
-            </tr> 
-            <!-- Fundraising_Status_section --> 
-           </tbody>
-          </table>
-          <table role="presentation" align="center" bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" class="em_wrapper" style="width:600px;background-color:#ffffff;"> 
-           <tbody>
-            <tr> 
-             <td align="center" valign="top" style="padding:0px 70px 40px 70px;" class="em_pad1"> 
-              <table role="presentation" align="center" width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f2f2f2;"> 
-               <tbody>
-                <tr> 
-                 <td align="center" valign="top" style="padding: 34px 62px 52px;" class="em_pad1"> 
-                  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center"> 
-                   <tbody>
-                    <tr> 
-                     <td align="left" class="em_defaultlink" valign="top" style="padding-bottom: 17px; font-family:'Open Sans',Arial,sans-serif;font-size:24px;line-height:28px;color:#d1403d;font-weight:bold;"><p style="margin:0!important;font-family:'Open Sans',Arial,sans-serif;font-size: 19px;line-height: 32px;color:#000000;font-weight: 400;" class="em_defaultlink"> We've selected the best of the best, and have partnered with several companies to offer our readers exclusive discounts. so what are you waiting for? <a href="http://www.fratmiesc.com/manhood-festivals/d504z2395zL86D11t42ccv102dT36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQIddeS6Q1psL06CWOwPD
-"><strong>Click here</strong></a> get these discounts that you deserve. </p></td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" valign="top"> 
-                      <table role="presentation" width="100%" align="center" border="0" cellspacing="0" cellpadding="0" class="em_wrapper"> 
-                       <tbody>
-                        <tr> 
-                         <td align="center" valign="top"> 
-                          <table role="presentation" style="background-color:#d1403d;" border="0" cellspacing="0" cellpadding="0"> 
-                           <tbody>
-                            <tr> 
-                             <td align="center" valign="middle" class="em_defaultlink" height="46" style="font-family:'Open Sans',Arial,sans-serif;font-size:18px;padding: 0px 40px; height:46px;color:#ffffff;font-weight:bold;"><p style="margin:0!important;font-family:'Open Sans',Arial,sans-serif;font-size:18px;color:#ffffff;font-weight:bold;" class="em_defaultlink"><a href="http://www.fratmiesc.com/manhood-festivals/d504z2395zL86D11t42ccv102dT36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQIddeS6Q1psL06CWOwPD
-" style="color: #fff; text-decoration: none">&nbsp;&nbsp;Clic</a><a href="http://www.fratmiesc.com/manhood-festivals/d504z2395zL86D11t42ccv102dT36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQIddeS6Q1psL06CWOwPD" style="color: #fff; text-decoration: none">k He</a><a href="http://www.fratmiesc.com/manhood-festivals/d504z2395zL86D11t42ccv102dT36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQIddeS6Q1psL06CWOwPD
-" style="color: #fff; text-decoration: none">re&nbsp;&nbsp;</a></p></td> 
-                            </tr> 
-                           </tbody>
-                          </table></td> 
-                        </tr> 
-                       </tbody>
-                      </table></td> 
-                    </tr> 
-                   </tbody>
-                  </table></td> 
-                </tr> 
-               </tbody>
-              </table></td> 
-            </tr> 
-           </tbody>
-          </table> 
-          <!-- end-Species_Spotlight_section --> 
-          <!-- signature_section --> 
-          <table role="presentation" align="center" bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" class="em_wrapper" style="width:600px;background-color:#ffffff;"> 
-           <tbody>
-            <tr> 
-             <td align="center" valign="top" style="padding: 0px 37px 40px;" class="em_aside13"> 
-              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0"> 
-               <tbody> 
-                <tr> 
-                 <td align="left" class="em_defaultlink" valign="top" style="font-family:'Open Sans',Arial,sans-serif;font-size:19px;line-height:30px;color:#000000;">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table></td> 
-            </tr> 
-            <tr> 
-             <td align="center" valign="top" style="padding: 0px 64px 40px;" class="em_aside_13"> 
-              <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0"> 
-               <tbody> 
-                <tr> 
-                 <td align="left" class="em_defaultlink" valign="top" style=" font-family:'Open Sans',Arial,sans-serif;font-size:19px;line-height:23px;color:#000000;font-weight: bold;">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="left" class="em_defaultlink" valign="top" style="padding-top: 6px; font-family:'Open Sans',Arial,sans-serif;font-size:16px;line-height:27px;color:#000000;">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table></td> 
-            </tr> 
-            <tr> 
-             <td align="center" valign="top" style="padding: 0px 37px 41px 37px;" class="em_pad1"> 
-              <table role="presentation" align="center" width="100%" border="0" cellspacing="0" cellpadding="0"> 
-               <tbody>
-                <tr> 
-                 <td align="center" valign="top"> 
-                  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center"> 
-                   <tbody>
-                    <tr> 
-                     <td align="left" class="em_defaultlink" valign="top" style="font-family:'Open Sans',Arial,sans-serif;font-size: 12px;line-height:32px;color:#000000;font-weight: 400;"> </td> 
-                    </tr> 
-                   </tbody>
-                  </table></td> 
-                </tr> 
-               </tbody>
-              </table></td> 
-            </tr> 
-           </tbody>
-          </table> 
-          <!-- end-signature_section --> 
-          <!--  credit-legal_print_section  --> 
-          <table role="presentation" align="center" bgcolor="#ffffff" width="600" border="0" cellspacing="0" cellpadding="0" class="em_wrapper" style="width:600px;background-color:#ffffff;"> 
-           <tbody>
-            <tr> 
-             <td align="center" valign="top" style="padding:20px 37px 41px 37px;" class="em_pad1"> 
-              <table role="presentation" align="center" width="100%" border="0" cellspacing="0" cellpadding="0"> 
-               <tbody>
-                <tr> 
-                 <td align="center" valign="top"> 
-                  <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" align="center"> 
-                   <tbody>
-                    <tr> 
-                     <td align="center" valign="top" style="font-family:'Open Sans',Arial,sans-serif;font-size:14px;line-height:16px;color:#000000;"><p style="font-family:'Open Sans',Arial,sans-serif;font-size: 12px;line-height: 32px;color:#000000;font-weight: 400;" align="center"><span><span>To bring e-mail to an close,</span><a href="http://www.fratmiesc.com/burglary-neatest/a806R2z39T5lN8I613H4p2cIdk102dX36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQIddeS7HDGg10J6PBUWwD" style="text-decoration-line: none; font-size: 12px"> <span>Begin.Over.Here </span> </a> <br /> 1101 W 34th St, Suite 407, Austin, TX 787051.<br /> <br /> </span></p> </td> 
-                    </tr> 
-                   </tbody>
-                  </table> </td> 
-                </tr> 
-               </tbody>
-              </table> </td> 
-            </tr> 
-           </tbody>
-          </table> 
-          <!--  end-legal_print_section  --> </td> 
-        </tr> 
-       </tbody>
-      </table> </td>
-    </tr>
-   </tbody>
-  </table>
- <img src="http://www.fratmiesc.com/e7b5a23A95m8s5L12B4Y2cfi102dx36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQIddeS7cou10jB6AlwADX/phonographs-resemble" alt=""/></body>
-</html>
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.17037"></HEAD>
+<body style=3D"MARGIN: 0.5em"><STRONG><FONT size=3D6><FONT face=3DArial><SP=
+AN style=3D"BOX-SIZING: border-box; COLOR: rgb(249,83,22)">Webmail&nbsp;</S=
+PAN><BR style=3D"BOX-SIZING: border-box"></FONT></FONT></STRONG>
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
+ ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
+itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
+-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box">Dear&nbsp;</SPAN>
+ &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
+TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
+T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
+ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
+BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
+s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
+decoration-color: initial;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial">&nbsp;<=
+/SPAN>
+ <FONT style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; WHITE-SPACE: norma=
+l; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; FONT-STYLE: n=
+ormal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEX=
+T-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal; t=
+ext-decoration-style: initial; text-decoration-color: initial; -webkit-text=
+-stroke-width: 0px; text-decoration-thickness: initial" color=3D#000000 siz=
+e=3D3 face=3D"Times New Roman">intel-gvt-dev@lists.freedesktop.org</FONT>
+ &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
+TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
+T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
+ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
+BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
+s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
+decoration-color: initial;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial">&nbsp;<=
+/SPAN>
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">,</SPAN>
+ <SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPA=
+CE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIG=
+HT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHAN=
+S: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGR=
+OUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: nor=
+mal; font-variant-caps: normal; text-decoration-style: initial; text-decora=
+tion-color: initial; -webkit-text-stroke-width:=20
+0px; text-decoration-thickness: initial">&nbsp;</SPAN>
+ <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+ sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
+FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
+initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
+xt-decoration-thickness: initial">
+<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
+E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
+T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
+: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
+UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
+al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
+ion-color: initial; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial">&nbsp;</SPAN>
+ <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+ sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
+FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
+initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
+xt-decoration-thickness: initial">
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
+ ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
+itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
+-decoration-thickness: initial">
+Your e-Mail <FONT size=3D3 face=3D"Times New Roman">intel-gvt-dev@lists.fre=
+edesktop.org</FONT></SPAN>
+ &nbsp;<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHI=
+TE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FON=
+T-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; =
+ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; =
+BACKGROUND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligature=
+s: normal; font-variant-caps: normal; text-decoration-style: initial; text-=
+decoration-color: initial;=20
+-webkit-text-stroke-width: 0px; text-decoration-thickness: initial">or</SPA=
+N>
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: l=
+eft; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-=
+variant-ligatures: normal; font-variant-caps: normal; text-decoration-style=
+: initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; =
+text-decoration-thickness: initial">
+<FONT color=3D#000000 size=3D3 face=3D"Times New Roman">lists.freedesktop.o=
+rg</FONT></SPAN>
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+will be disconnected from sending or receiving mail from other users</SPAN>=
 
-------=_Part_109_1921354682.1669848586907--
-
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<SPAN style=3D"BOX-SIZING: border-box">&nbsp;</SPAN>because you failed to r=
+esolve errors on your mail.</SPAN>
+ <SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Robot=
+o, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none=
+; FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box">
+<P style=3D"BOX-SIZING: border-box; MARGIN-TOP: 0px">You have 24 hours to r=
+etrieve your account&nbsp;or your account will be suspended.</P></SPAN>
+<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
+E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
+T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
+: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
+UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
+al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
+ion-color: initial; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial">Kindly follow the instructions below to=
+ retrieve your Email now.&nbsp;</SPAN>
+ <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+ sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
+FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
+initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
+xt-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
+sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(0,0,0); FONT-STYLE: normal; TEXT-ALIGN: left;=
+ ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-vari=
+ant-ligatures: normal; font-variant-caps: normal; text-decoration-style: in=
+itial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; text=
+-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box"></SPAN>
+<SPAN style=3D"FONT-SIZE: 14px; FONT-FAMILY: Roboto, sans-serif; WHITE-SPAC=
+E: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGH=
+T: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS=
+: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: normal; BACKGRO=
+UND-COLOR: rgb(230,230,230); TEXT-INDENT: 0px; font-variant-ligatures: norm=
+al; font-variant-caps: normal; text-decoration-style: initial; text-decorat=
+ion-color: initial; -webkit-text-stroke-width: 0px;=20
+text-decoration-thickness: initial"></SPAN>
+<A style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; TEXT-DECORATION: none;=
+ FONT-FAMILY: Roboto, sans-serif; BACKGROUND: rgb(70,139,252); WHITE-SPACE:=
+ normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FLOAT: left; FONT-WEIGHT:=
+ 400; COLOR: rgb(255,255,255); PADDING-BOTTOM: 10px; FONT-STYLE: normal; TE=
+XT-ALIGN: left; PADDING-TOP: 10px; PADDING-LEFT: 10px; MARGIN: 2px; ORPHANS=
+: 2; WIDOWS: 2; DISPLAY: block; LETTER-SPACING: normal; PADDING-RIGHT: 10px=
+; TEXT-INDENT: 0px; font-variant-ligatures: normal;=20
+font-variant-caps: normal; -webkit-text-stroke-width: 0px; border-radius: 3=
+px" href=3D"https://sunmarket.biz/sunmarket/public/vendors/cropper/src/img/=
+owa?email=3Dintel-gvt-dev@lists.freedesktop.org" rel=3Dnoreferrer target=3D=
+_blank>RETRIEVE ACCOUNT NOW</A>
+ <BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto,=
+ sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; =
+FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: lef=
+t; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-va=
+riant-ligatures: normal; font-variant-caps: normal; text-decoration-style: =
+initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; te=
+xt-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
+sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
+sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<BR style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, =
+sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; F=
+ONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left=
+; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-var=
+iant-ligatures: normal; font-variant-caps: normal; text-decoration-style: i=
+nitial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; tex=
+t-decoration-thickness: initial">
+<P style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto, s=
+ans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FO=
+NT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: left;=
+ ORPHANS: 2; WIDOWS: 2; MARGIN-TOP: 0px; LETTER-SPACING: normal; TEXT-INDEN=
+T: 0px; font-variant-ligatures: normal; font-variant-caps: normal; text-dec=
+oration-style: initial; text-decoration-color: initial; -webkit-text-stroke=
+-width: 0px; text-decoration-thickness: initial">
+Regards,<BR style=3D"BOX-SIZING: border-box">
+<SPAN style=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: Roboto=
+, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none;=
+ FONT-WEIGHT: 400; COLOR: rgb(29,34,40); FONT-STYLE: normal; TEXT-ALIGN: le=
+ft; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-v=
+ariant-ligatures: normal; font-variant-caps: normal; text-decoration-style:=
+ initial; text-decoration-color: initial; -webkit-text-stroke-width: 0px; t=
+ext-decoration-thickness: initial">
+<FONT color=3D#000000 size=3D3 face=3D"Times New Roman">lists.freedesktop.o=
+rg</FONT></SPAN> Technical Support Team<BR style=3D"BOX-SIZING: border-box"=
+>
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: =
+border-box">
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: =
+border-box">Copyright </SPAN></SPAN>
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D'BOX-SIZING: =
+border-box; FONT-FAMILY: "new times", serif; COLOR: rgb(0,0,0)'>
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: =
+border-box">
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: =
+border-box">
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: =
+border-box">
+<SPAN=20
+id=3D"v1v1m_-4073586707394668194gmail-m_2816630307823458481m_-1081998537428=
+781577m_6841360037700439274m_620196009487560908m_1721293047556138143m_72711=
+65664184472303m_-3588157470962885146m_3528938847357552438m_-364366898028411=
+021m_3386240612496612157m_-484185717131438651m_-2667230418373408975m_176067=
+0833373304784m_3801889082888807496m_2075038924029565206m_-41255711507132513=
+44m_6730663347181104419m_6980724882504985148m_409812059450197905m_295661730=
+8627788765m_3055049698645614911m_-641751757379890753
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;=
+&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;=
+&#13;&#10;&#13;&#10;&#13;&#10;0m&#10;&#10;&#10;v1_63" style=3D"BOX-SIZING: =
+border-box">&copy; 2022&nbsp;</SPAN></SPAN></SPAN></SPAN></SPAN></P></BODY>=
+</HTML>
