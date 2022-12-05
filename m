@@ -1,66 +1,60 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A354642C93
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  5 Dec 2022 17:10:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9BC93642CF0
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  5 Dec 2022 17:34:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DE80110E24E;
-	Mon,  5 Dec 2022 16:10:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5B6B5892F2;
+	Mon,  5 Dec 2022 16:34:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x12c.google.com (mail-il1-x12c.google.com
- [IPv6:2607:f8b0:4864:20::12c])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2F6D910E0B5;
- Mon,  5 Dec 2022 16:10:24 +0000 (UTC)
-Received: by mail-il1-x12c.google.com with SMTP id q13so5287318ild.3;
- Mon, 05 Dec 2022 08:10:24 -0800 (PST)
+Received: from mail-ej1-x643.google.com (mail-ej1-x643.google.com
+ [IPv6:2a00:1450:4864:20::643])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6640D10E263
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  5 Dec 2022 16:34:32 +0000 (UTC)
+Received: by mail-ej1-x643.google.com with SMTP id x22so6796312ejs.11
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 05 Dec 2022 08:34:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=M9ZyX2rEEt8xF2wnMR144cVYnIHvQWhY/Asi+jCe8jQ=;
- b=BbF+/9gxLsIAvlzG5e99rniqZ8QtSEy3GUPRMo4iUlbF7n9TKdMzRkhwGZr0pZd83n
- BYSrKV8Z0spcFDmyZ5FkEKG78cH16hQo67px8xAk8O6oKXLKv1ko8/6J52VllQ/W4DM8
- pb84giAl7+/Am6D/aSKiqNwJGp/2XqSLKCiVmJNIM8GTRXqvc+mwZ5nRSYDp9HC4nOWV
- JvN8sK2Cb4S/uzfEx1kCXSOfMkuBWHLYSPDeGXEjJYS3iVhxhC9EVsKKcpIFRJk0lw8Z
- XNYraRQUc6f8ZuPEZWCWHcqDcihYp5aTyh3XOsSwLQrObF3DOFgig2vf83ntzXv4Skfw
- jPsA==
+ h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=O4WPtqOs6pYDke8VCfpzwsIX+8zN33o8tLS2XMy/lFU=;
+ b=M4hL4Dkh0GS+ejIid/YSsq8jpzXdTpGAgUJKycJ35EFDygxWeaszkk7Z6rnTlj8Hn+
+ NuQvQcVQMOFEzRX19K5Y1qo9cY3xjKlONbvZNOcKp/98mrRm1CKGttwKzdqvvqPMOe4A
+ 3mlI3wUilgBVy+Wqly7/hLRvzYcWi4MStMmcJnc62nvI81vAge4l628SQCDQWwMJ/LLZ
+ DtfBlL8NRNKRbfKvxz7qa+Qu1CFcWsvJrR6ppkf9ONYkGljYFc9SqXm3F4bNc22qctAr
+ 5d6UxG1WJ04P0X0t/6skAgZ1hjriOEdGIMRXyQGrfp+8Nfdhf3OouuOm9tmj93CJYtCE
+ Yzwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=M9ZyX2rEEt8xF2wnMR144cVYnIHvQWhY/Asi+jCe8jQ=;
- b=gssfs6I9ta2w0QfxmeWgb4GGGa5R027rUYnGG6munkbFZagepIudXtA2Ez7GvaPydR
- Ma+7at/7m7ipn5SogSIMpRcdZKnh3qr3esceHdNaiLZoAbvSMQ+nwVVdVgPAWgKKtvj8
- qJkyZuSNg/v3reqSxlBOT8ys+VilYGS7elWsZbVCynGsLhzxC+MNNorfBxdeQZ0S/v5R
- xDJ+AQqULBiSq3R16u8hjQQ+9qRj+fKQQD/p1U56z3GHXDYoy4cWhYtdrcKzVaUhaN+L
- Zgr0LPa2mCTODqZt6Kbfw17a8Dr5s+mUARAb0D1cvQdZksCgUoGllUkpoGt05eAcuLIj
- 0Fiw==
-X-Gm-Message-State: ANoB5pkb+5lDgfWnM5b/zmJS90834vcBb1Amk1cQBz7az2K2pVMeu6M+
- Nr8Rn13lJWJKXLFVOhrAkslv1jy7h5Q=
-X-Google-Smtp-Source: AA0mqf7gyM+3GXVNt+XxI7afuxs5bxazGf+dEtxuz9uSFRi6e0cSSJYTYUXq+1dhcZil9FTD4PvjiA==
-X-Received: by 2002:a05:6e02:1e05:b0:302:cc74:920c with SMTP id
- g5-20020a056e021e0500b00302cc74920cmr31013025ila.262.1670256623097; 
- Mon, 05 Dec 2022 08:10:23 -0800 (PST)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- g19-20020a05660226d300b006bcd45fe42bsm6017753ioo.29.2022.12.05.08.10.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Dec 2022 08:10:22 -0800 (PST)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Subject: [PATCH 2/2] drm_print: fix stale macro-name in comment
-Date: Mon,  5 Dec 2022 09:10:05 -0700
-Message-Id: <20221205161005.222274-3-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20221205161005.222274-1-jim.cromie@gmail.com>
-References: <20221205161005.222274-1-jim.cromie@gmail.com>
+ h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=O4WPtqOs6pYDke8VCfpzwsIX+8zN33o8tLS2XMy/lFU=;
+ b=W4N62kt28SgLljGXZszazeBm8BUpmFPzdgVZ6QTHwDJgzzfXClA8fM42MNQdPsTKwK
+ IF5BBifxBjR8izXAiqjfvS5li4UvjtSzhGEYgUeoy+PGGCrzgjiQf+spAoa9nm67kQQf
+ dVaeKhTO94RQFOi46mt4eS9swieLmn7+5F+lq3kFbiK/SrVlBfnqBdOJQQHjTK4QaPdf
+ wok0j6FMS2wjNKD+QGPCps8HLP8xqpWNwJd6pxLW2r8BHEx4lIDXOrF1u+PBxY5RUnih
+ bqXGdaAtJAQnpwmqomCaCCzHiNG0q0IkNYmFpHliujw82f29fiZ6dZ59ZnS9AgHAklbm
+ kvuQ==
+X-Gm-Message-State: ANoB5pnV+kGIiAUA/TzlSjhRYVNKTaGz1NS3T65R0KbTQwkOh5KsZE24
+ LPH4deUVsffC2rGhP+XBoyVojNxZu696ZlRrRbg=
+X-Google-Smtp-Source: AA0mqf4Fgg09FLsqqE3BrNtfLt56BRMkjH137pnBFQmTk19/gBlz8mHCBmdhXz0809KBf4m8ZHJEYSuDE16GSJgzhaI=
+X-Received: by 2002:a17:906:2404:b0:7ad:d411:30af with SMTP id
+ z4-20020a170906240400b007add41130afmr27376154eja.636.1670258070902; Mon, 05
+ Dec 2022 08:34:30 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a05:6f02:3b6:b0:27:90e6:e1d1 with HTTP; Mon, 5 Dec 2022
+ 08:34:30 -0800 (PST)
+From: Philip Manul <alomassou1972@gmail.com>
+Date: Mon, 5 Dec 2022 08:34:30 -0800
+Message-ID: <CA+_U6tjoYsXiWpQTRE+oV+pARumxEg919oTO_B7BXFDqCyL2TA@mail.gmail.com>
+Subject: REP:
+To: in <in@proposal.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,45 +67,16 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch,
- Jim Cromie <jim.cromie@gmail.com>, robdclark@gmail.com, seanpaul@chromium.org,
- ville.syrjala@linux.intel.com
+Reply-To: plml47@hotmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Cited commit uses stale macro name, fix this, and explain better.
-
-When DRM_USE_DYNAMIC_DEBUG=y, DYNDBG_CLASSMAP_DEFINE() maps DRM_UT_*
-onto BITs in drm.debug.  This still uses enum drm_debug_category, but
-it is somewhat indirect, with the ordered set of DRM_UT_* enum-vals.
-This requires that the macro args: DRM_UT_* list must be kept in sync
-and in order.
-
-Fixes: f158936b60a7 ("drm: POC drm on dyndbg - use in core, 2 helpers, 3 drivers.")
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
-. emphasize ABI non-change despite enum val change - Jani Nikula
-. reorder to back of patchset to follow API name changes.
----
- include/drm/drm_print.h | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
-index a44fb7ef257f..e4c0c7e6d49d 100644
---- a/include/drm/drm_print.h
-+++ b/include/drm/drm_print.h
-@@ -276,7 +276,10 @@ static inline struct drm_printer drm_err_printer(const char *prefix)
-  *
-  */
- enum drm_debug_category {
--	/* These names must match those in DYNAMIC_DEBUG_CLASSBITS */
-+	/*
-+	 * Keep DYNDBG_CLASSMAP_DEFINE args in sync with changes here,
-+	 * the enum-values define BIT()s in drm.debug, so are ABI.
-+	 */
- 	/**
- 	 * @DRM_UT_CORE: Used in the generic drm code: drm_ioctl.c, drm_mm.c,
- 	 * drm_memory.c, ...
--- 
-2.38.1
-
+--=20
+Guten tag,
+Mein Name ist Philip Manul. Ich bin von Beruf Rechtsanwalt. Ich habe
+einen verstorbenen Kunden, der zuf=C3=A4llig denselben Namen mit Ihnen
+teilt. Ich habe alle Papierdokumente in meinem Besitz. Ihr Verwandter,
+mein verstorbener Kunde, hat hier in meinem Land einen nicht
+beanspruchten Fonds zur=C3=BCckgelassen. Ich warte auf Ihre Antwort zum
+Verfahren.
+Philip Manul.
