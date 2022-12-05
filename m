@@ -1,108 +1,55 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 475C1640AE0
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  2 Dec 2022 17:33:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA46F642162
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  5 Dec 2022 03:08:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8355510E708;
-	Fri,  2 Dec 2022 16:33:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 51F8A10E093;
+	Mon,  5 Dec 2022 02:08:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2080.outbound.protection.outlook.com [40.107.244.80])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 15DA610E708
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0C27710E093
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  2 Dec 2022 16:33:29 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jHvizAvQiuCPZgKo7mbzLXhmnuybA4iFlTzUgZg9zU9fPQgzKE81B5MiB9pcouqc7CDdW7gA5qjyMCMcj1ayIBBxRFzqs3+D331sV60vWDcvqowTMqbtTFwqAsrF9uC3bV61mJ8K05F4KwTRvRYhSwOdmiJJgHsNY1tB0ihS7uGPdfirjcxptfahloddY+EO/40xIcfMFsNSP69mnqj2zI6fC8EvOuvJheLKlO8bjj0SNC5ojzlILBdHRucCJkDoF+COhTuZhYQEcAiMN/Pfdg4Y8ikiEw8vDj5pjJ2YN2hD53QqyrgyvEone9Ov9xFC3dDD76S8ZxHq/Ug4ZoU6Rg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HNW8oFnpYAndvfoVVucXJq2TqB8jr2Z2VUBAeMZbRws=;
- b=b1lj086kHuN4DXRDj0Q5HrEQL18RaoELEi0Z0RP807GQiDN5kz3mpqVsH/xpeguYwFxzcf0DBa+oebB6pHISqbR/Ec6zQN5BRDJRZ3bktVBqdz2q5rZ7ETVJTuT4j86luJo3eRnLu/Vmb4jfr0I4eUwvsahEBTzdRGOLmT8dgEGymuathDdEKHCM46kTmRCN9R/zFaWlVLZd7y/ah8ZEQyh//Fmf7h/V5XAKhPzmceZA74lY4Ih3JThXmWAa8cI0TFL0tu6rRDzKqkN3d4Wjiuvn+CjLiMp6pZbm7My6wmeoWRFcgNzin5IJBhL9KAhTp/rs98yNuI2j1BAPkKF0sg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HNW8oFnpYAndvfoVVucXJq2TqB8jr2Z2VUBAeMZbRws=;
- b=AOwEaIhtm0Xdzv1qsxOD2H/C+2MwAjh/nsnmlMNVWbMq6+OQuxbaEt+N2nDHwPboZVfEOsMA4tcrwdgbgD7SJz8HraAscq+6JScqf/T+vw9DcCe7pjaEODEn6+eXVfOtm/8F0r/luRep7sKebLjC+6cSbqMkFB3z+7DH8ljEja52HFOAJR/HV1bBqQdirKMxu+b4zzx55t5DYu0Hx8qJIP8PD7J34Itd1hMOMJJNbydpj0hDz/3FCcSeLflO14FZ6AH+hK5vmjljuFPKDNoSWP6+xeIV9C+WxR+HyrE38kfvobqTsw52DyYJztpIfmnQtrFHehZOONv/DRj6BUCB2g==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by MN0PR12MB5977.namprd12.prod.outlook.com (2603:10b6:208:37c::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5857.23; Fri, 2 Dec
- 2022 16:33:27 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f8b0:df13:5f8d:12a]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f8b0:df13:5f8d:12a%8]) with mapi id 15.20.5857.023; Fri, 2 Dec 2022
- 16:33:27 +0000
-Date: Fri, 2 Dec 2022 12:33:24 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
+ Mon,  5 Dec 2022 02:08:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1670206125; x=1701742125;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=Uwb0j0vOSLTTI1yh+/S8G5w86vEZ102AbpppaI2wcK8=;
+ b=IgqfUtPyXS1d74gHJ50eoBjyMktbfczowhczqGPcwZY6nUC2aSFrXgVN
+ Ow0Y8JWWJv8RmVK5hLhK77ALd+iAQ2EkGgv0JWJZ5UEC7hu1r9mYIXLE1
+ pAopteTUt3SHIY0fEV4QUqG/5eH9ybBP7KZ7gqkw6ZW+v68FwINhLWbLR
+ t3UX9rb4ajS37bT9q1MICGv4d5FLnlV3ubLylrQVf0H6e76rFKidW8vbe
+ rTSrbBJ2evLJiFlf/ITtwJtJiQ2VpqQrtpN1ShnVGmo2oUJ5hy/gsx+dA
+ Dl/LaKGB3puuB9QLRwrqVtW8hJtcGypfKS+9M2LO9peBG1/6SjkPuynTv A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10551"; a="343232985"
+X-IronPort-AV: E=Sophos;i="5.96,218,1665471600"; 
+ d="asc'?scan'208";a="343232985"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Dec 2022 18:08:36 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10551"; a="596028083"
+X-IronPort-AV: E=Sophos;i="5.96,218,1665471600"; 
+ d="asc'?scan'208";a="596028083"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
+ by orsmga003.jf.intel.com with ESMTP; 04 Dec 2022 18:08:32 -0800
+Date: Mon, 5 Dec 2022 10:07:08 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
 To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [[iommufd] PATCH v3 0/2] Make mdev driver dma_unmap callback
- tolerant to unmaps come before device open
-Message-ID: <Y4oo1DEuxFGeoYzy@nvidia.com>
+Subject: Re: [[iommufd] PATCH v3 1/2] i915/gvt: Move gvt mapping cache
+ initialization to intel_vgpu_init_dev()
+Message-ID: <20221205020708.GA30028@zhen-hp.sh.intel.com>
 References: <20221202135402.756470-1-yi.l.liu@intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221202135402.756470-1-yi.l.liu@intel.com>
-X-ClientProxiedBy: BL1PR13CA0327.namprd13.prod.outlook.com
- (2603:10b6:208:2c1::32) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+ <20221202135402.756470-2-yi.l.liu@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|MN0PR12MB5977:EE_
-X-MS-Office365-Filtering-Correlation-Id: 393c24d2-7900-4486-ce73-08dad482f0c1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: CZ1RjQsjKT1YSjwFdp49Z3RMzZQjr5X62y4BpLbLB8/gFczq7fhPjTcjQ612wOc68ddYQHxtjKaO2YTEsVzMyV1GNF8rJroIAWgN1mOI6K2UGRgGn1Q75iFqEnUGWGuEyg0sv0yEdPuBmR7uGeSwg5hGJsJsYRUqXcy8luFs6BsagLhMu64GU2W0EsvC+ersHVRzkNmFjc4lTrIFvxPRUto2ddO647t1F+qbFnj5oZi077t5pq6HlDB78J4PShuuDXPcQdwRy6VCVZkec+7rlwXjASYhBVJbNBtR21KKIaPSkHYmLrnQmJy3GVqOVmqtX3ExWaqbeM73Sml8NUHBcFxM+kCIsxb/OgUAoPmSXSLsTLqTYTycc38uqdRIkKfU/hmuV+BKyzoZtFOJ4EP8fXUlW/leIBhKfnFPrQ/rtMaa+/c1bYwP/l47JtMl6oJv09K0q6qhu3rtHW5o5AaLOi0gTrFOpP2sr5An1BkVcOAeR/yQPVptdfrh4o9unpE6Y3s2R2wR3ccaRCDmQyeJ84gOXg1ufcluB+94zwrXItwy8JG8neCFqMTxx4dy4lLkTxh+1kJG1Wr0YMkdJZKPrxrZMu+Gin9SbRcQY/aoF11KU8+a667pPhFs0X8+JgJv+rQv16cYHCPw4Qd82rpjmA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(4636009)(136003)(346002)(39860400002)(366004)(396003)(376002)(451199015)(26005)(6486002)(2616005)(6512007)(5660300002)(186003)(41300700001)(86362001)(66946007)(6506007)(4326008)(36756003)(2906002)(54906003)(316002)(6916009)(38100700002)(8936002)(478600001)(66476007)(8676002)(66556008)(7416002)(6666004)(4744005)(83380400001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?S8bfP1sxzNN2S+eBbDxHsQ4IVAaHT1KYdHylEFPp30kqXwH7uRKRz2++k33U?=
- =?us-ascii?Q?vvckUzcmjSZPU3luJD5bfVVLwL9AnFxryKMlz99p722CfmgSxyYTvLhhTq+v?=
- =?us-ascii?Q?kuwFxjqvX6JQAoapNqIEhiMG+CkwaE0XdR5u/edT4ixbgWdtbxy/bacq0J5H?=
- =?us-ascii?Q?cgmqmIFXVj/AH9/r8TqBSI0yXTYKgmXdZpZi0Z3+3fnufaSwRd7RKMipTrqI?=
- =?us-ascii?Q?Q9Q8FfNPVkxb+1oeuImF2s8LJgHhVE9FLSe6KB/wX8dvypZHwxz3D8AuORG1?=
- =?us-ascii?Q?XSbAN0zEsxFj+t/aATq4E0AKY3+qraqYIdJI2alwokRlUOAICcqpnHk8HG8n?=
- =?us-ascii?Q?cl6Gaw6Jall0zaP66TUITXXGqXJYUUG8POU/XSX8YqfsST9RHfmrl2WSMrP9?=
- =?us-ascii?Q?BklHRKy7piMf05okkReYTTrGoBCzX60Oi82W89jbxzR9gUycpgAmm3Cdr6Wc?=
- =?us-ascii?Q?8j3zhXIxwWn8w1T9MMzMtV35iQqR1CyBw1RMvuCG5CvmbxsirqbyCPp/gDDt?=
- =?us-ascii?Q?vLnaHh1SLVuzDTMtiTpONKd/iUC17g3fjpD8RNClqN5VvVUY3wye3VS2HFX8?=
- =?us-ascii?Q?hsxSa8Yx7PkztDVtnyWtCZgWuOru5pMXCEtdtDhH98RAyf+Jiqrt/p8Hh2+P?=
- =?us-ascii?Q?ZNm6GU2qdczfFrN5HxFo42aRoyBFbC1F9Ed4XNmo196aiDx2TBtfyakjzzpl?=
- =?us-ascii?Q?IcNZ6lO/fOD0K0mNow+ylEFLv6pHdoIfntC8Qv/Epnrn7odCIU6NqAkEI6TC?=
- =?us-ascii?Q?ZXRpeNMt+0YupkcakWElMIDycU6GehRHufOkqVzcBuoO4cjzuoMMjWgJmePV?=
- =?us-ascii?Q?hTjU86Ae/VObmiDbAbKTWrCjj38u3WoWGyj7LXL0XMTdvbFwpMwcGI00v9wY?=
- =?us-ascii?Q?r49XWxEw+xMX1Ushabfqi1B02TrcCJEohvWdvRF4XAbPYHqZFR50H3g2THT8?=
- =?us-ascii?Q?ohUJ+9DF3piX1PN1tGdDgvCvH9oabWs91Y2S/2LII6dk7gFe+e9ivQnkQP8I?=
- =?us-ascii?Q?jj+lKgvRGxXsvJzLes6ykp/sWYGkSmL+xiTyeXcyb8KzZJgRWAl0UPxrW7Qy?=
- =?us-ascii?Q?ZY2HcI5tOVj7IZnjmog852va3LtfkJTMC2FUDc0mhyYNZwX/StpWjlApMFYk?=
- =?us-ascii?Q?RpXoRqgIUbHQkVvs73EnDkL18o29u/YoPrBkrAeu8h0YYMpOtz6Z2IbxLCa8?=
- =?us-ascii?Q?LxNeQDHg8NNssUW1akes/7MJe1tVKC0wgqGZqIIlqoGZik27Tasgt6445ky6?=
- =?us-ascii?Q?tKWYhTpvPeyKDKjG5Iz+RbenA9H4pgH3sXitwmyZO9P77SxsRiXzCur/vtaT?=
- =?us-ascii?Q?gW39I1lsTfgU/UxPGLYBsyKLWvYs7npx5Dqfwbdjp/pWSe1j5z+8vodgrB/d?=
- =?us-ascii?Q?Ny5z/Xa5nVG5ay4AnQOlPCM4f9aFiCwpXCwMIcF/LAlt/nu2L+UOwIluQS50?=
- =?us-ascii?Q?J3AZRTMGcG+aCNlF6B2Je7dhVNwod7nDWyV+E+0IVxYAjomy0CsEGkDHIAW2?=
- =?us-ascii?Q?96y9qaWMBUvQqr04MhsCAiy6djwErL4BRbOB3FGVZFLt1tiMCFIcXUSlq15/?=
- =?us-ascii?Q?jDzEXhjOHsBfW1y6W5M=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 393c24d2-7900-4486-ce73-08dad482f0c1
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Dec 2022 16:33:27.7822 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: UkamLsJVlZs25yhmc0h0qGOY5F8bvWhok3YszIE9tvFwk4UVkaLduvmFckLGzkQ1
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5977
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="f6M9UaX53EEZorp0"
+Content-Disposition: inline
+In-Reply-To: <20221202135402.756470-2-yi.l.liu@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,25 +62,107 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Tony Krowiak <akrowiak@linux.ibm.com>, linux-s390@vger.kernel.org,
- kevin.tian@intel.com, yi.y.sun@linux.intel.com, mjrosato@linux.ibm.com,
- kvm@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- alex.williamson@redhat.com, chao.p.peng@linux.intel.com,
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: linux-s390@vger.kernel.org, kevin.tian@intel.com, yi.y.sun@linux.intel.com,
+ kvm@vger.kernel.org, mjrosato@linux.ibm.com,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, alex.williamson@redhat.com,
+ jgg@nvidia.com, chao.p.peng@linux.intel.com,
  intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Dec 02, 2022 at 05:54:00AM -0800, Yi Liu wrote:
 
-> Matthew Rosato (1):
->   iommufd PATCH v2 2/2] vfio/ap: validate iova during dma_unmap and
->     trigger irq disable
-> 
-> Yi Liu (1):
->   i915/gvt: Move gvt mapping cache initialization to
->     intel_vgpu_init_dev()
+--f6M9UaX53EEZorp0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I refreshed the patches with this version
+On 2022.12.02 05:54:01 -0800, Yi Liu wrote:
+> vfio container registers .dma_unmap() callback after the device is opened.
+> So it's fine for mdev drivers to initialize internal mapping cache in
+> .open_device(). See vfio_device_container_register().
+>=20
+> Now with iommufd an access ops with an unmap callback is registered
+> when the device is bound to iommufd which is before .open_device()
+> is called. This implies gvt's .dma_unmap() could be called before its
+> internal mapping cache is initialized.
+>=20
+> The fix is moving gvt mapping cache initialization to vGPU init. While
+> at it also move ptable initialization together.
+>=20
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Cc: Zhi Wang <zhi.a.wang@intel.com>
+> Cc: Kevin Tian <kevin.tian@intel.com>
+> Cc: intel-gvt-dev@lists.freedesktop.org
+> Reviewed-by: Zhi Wang <zhi.a.wang@intel.com>
+> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/kvmgt.c | 18 ++++++++++++++----
+>  1 file changed, 14 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/=
+kvmgt.c
+> index 7a45e5360caf..aaf0d9e8da95 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -671,9 +671,6 @@ static int intel_vgpu_open_device(struct vfio_device =
+*vfio_dev)
+> =20
+>  	vgpu->attached =3D true;
+> =20
+> -	kvmgt_protect_table_init(vgpu);
+> -	gvt_cache_init(vgpu);
+> -
+>  	vgpu->track_node.track_write =3D kvmgt_page_track_write;
+>  	vgpu->track_node.track_flush_slot =3D kvmgt_page_track_flush_slot;
+>  	kvm_page_track_register_notifier(vgpu->vfio_device.kvm,
+> @@ -718,6 +715,11 @@ static void intel_vgpu_close_device(struct vfio_devi=
+ce *vfio_dev)
+>  	kvmgt_protect_table_destroy(vgpu);
+>  	gvt_cache_destroy(vgpu);
+> =20
+> +	WARN_ON(vgpu->nr_cache_entries);
+> +
+> +	vgpu->gfn_cache =3D RB_ROOT;
+> +	vgpu->dma_addr_cache =3D RB_ROOT;
+> +
+>  	intel_vgpu_release_msi_eventfd_ctx(vgpu);
+> =20
+>  	vgpu->attached =3D false;
+> @@ -1451,9 +1453,17 @@ static int intel_vgpu_init_dev(struct vfio_device =
+*vfio_dev)
+>  	struct intel_vgpu *vgpu =3D vfio_dev_to_vgpu(vfio_dev);
+>  	struct intel_vgpu_type *type =3D
+>  		container_of(mdev->type, struct intel_vgpu_type, type);
+> +	int ret;
+> =20
+>  	vgpu->gvt =3D kdev_to_i915(mdev->type->parent->dev)->gvt;
+> -	return intel_gvt_create_vgpu(vgpu, type->conf);
+> +	ret =3D intel_gvt_create_vgpu(vgpu, type->conf);
+> +	if (ret)
+> +		return ret;
+> +
+> +	kvmgt_protect_table_init(vgpu);
+> +	gvt_cache_init(vgpu);
+> +
+> +	return 0;
+>  }
+> =20
+>  static void intel_vgpu_release_dev(struct vfio_device *vfio_dev)
+> --=20
 
-Jason
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+thanks!
+
+--f6M9UaX53EEZorp0
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY41SRgAKCRCxBBozTXgY
+Jz/rAKCf2XCkaQP0WhdwmGPDUwLtuGdwAgCfekY0SY9P43VoLP1yapxS6J6QSro=
+=Ndmv
+-----END PGP SIGNATURE-----
+
+--f6M9UaX53EEZorp0--
