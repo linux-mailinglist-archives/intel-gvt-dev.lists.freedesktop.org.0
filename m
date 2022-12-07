@@ -1,27 +1,28 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 65FE164532C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Dec 2022 05:48:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D990645667
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Dec 2022 10:25:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EFF8610E353;
-	Wed,  7 Dec 2022 04:48:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D19BA10E18E;
+	Wed,  7 Dec 2022 09:25:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1978 seconds by postgrey-1.36 at gabe;
- Wed, 07 Dec 2022 04:48:30 UTC
-Received: from qfubaqu.cn (unknown [106.75.7.23])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 08BDB10E350
+X-Greylist: delayed 3635 seconds by postgrey-1.36 at gabe;
+ Wed, 07 Dec 2022 09:25:52 UTC
+Received: from knifelover.com (unknown [41.216.188.97])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6539F10E04E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  7 Dec 2022 04:48:29 +0000 (UTC)
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-From: =?utf-8?q?etc-meisai?= <etc-meisai@qfubaqu.cn>
-Subject: =?utf-8?b?44CQRVRD44CR6YeN6KaB44Gq44GK55+l44KJ44Gb?=
-Date: Wed, 07 Dec 2022 12:05:24 +0800
+ Wed,  7 Dec 2022 09:25:52 +0000 (UTC)
 To: intel-gvt-dev@lists.freedesktop.org
+Subject: E-bike for this week
+Message-ID: <e72ea5f83ed2298d2924b5b4480535d5@cyclinghalloffame.com>
+Date: Wed, 07 Dec 2022 06:12:11 +0100
+From: "Jonathan Ryan" <jonathanyr@clear-spot.nl>
+MIME-Version: 1.0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -34,40 +35,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: jonathan@bdqb.net
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20221207044834.EFF8610E353@gabe.freedesktop.org>
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4KPEhUTUw+PEhFQUQ+CjxNRVRBIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYt
-OCIgaHR0cC1lcXVpdj1Db250ZW50LVR5cGU+CjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRlbnQ9
-Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+CjxCT0RZPgo8UD5FVEPjgrbjg7zjg5Pj
-grnjgpLjgZTliKnnlKjjgYTjgZ/jgaDjgY3jgYLjgorjgYzjgajjgYbjgZTjgZbjgYTjgb7jgZnj
-gII8L1A+CjxQPuODleOCo+ODg+OCt+ODs+OCsOODoeODvOODq+OBjOaxh+a/q+OBl+OAgeODpuOD
-vOOCtuODvOOBruiyoeeUo+OBq+iiq+Wus+OBjOWHuuOBpuOBhOOCi+OBk+OBqOOBi+OCieOAgeOC
-t+OCueODhuODoOOBruODquOCueOCr+euoeeQhuOCkuW8t+WMluOBl+OAgeitpuWvn+OChOmKgOih
-jOOBqOWNlOWKm+OBl+OBpuOAgeODpuODvOOCtuODvOOBruiyoeeUo+OBjOiiq+Wus+OCkuWPl+OB
-keOBquOBhOOCiOOBhuOBq+OBl+OBpuOBhOOCi+OAgjwvUD4KPHA+44K344K544OG44Og44Gu5oyH
-56S644KS5Y+X44GR44Gf5ZCO44CB5Y+j5bqn44Gu5L2/55So44KS5LiA5pmC5YGc5q2i44GX44CB
-6K2m6KaW5bqB54m55q6K6KmQ5qy65ouF5b2T44Gr6YCa55+l44GX44CB6YqA6KGM44Gr44Kv44Os
-44K444OD44OI44Kr44O844OJ44Go44Kr44O844OJ44Gu5YeN57WQ44KS6YCa55+l44GX44G+44GZ
-44CCPC9wPgo8cD7oraboppbluoHjga7oqLHmrLrpg6jploDjgYzmjZzmn7vjgavlhaXjgorjgb7j
-gZnjg6Hjg7zjg6vjgpLlj5fjgZHlj5bjgaPjgZ/jg6bjg7zjgrbjg7zjga/jgIHjgYLjgarjgZ/j
-ga7jgqLjgqvjgqbjg7Pjg4jjgavjg6rjgrnjgq/jgYzjgYLjgovjgZPjgajjgpLnpLrjgZnjg6Hj
-g7zjg6vjgpLlj5fkv6HjgZfjgabjgYvjgokxMuaZgumWk+S7peWGheOBq+ODreOCsOOCpOODs+OB
-l+OBpuOCouOCq+OCpuODs+ODiOOCkueiuuiqjeOBl+OBpuOBj+OBoOOBleOBhOOAguOBneOBhuOB
-l+OBquOBhOOBqEVUQ+OCouOCq+OCpuODs+ODiOOAgeOCr+ODrOOCuOODg+ODiOOCq+ODvOODieOA
-gemKgOihjOOCkuWIqeeUqOOBp+OBjeOBquOBj+OBquOCiuOBvuOBmeOAgjwvcD4KPHA+44GT44KM
-44KS44Kv44Oq44OD44Kv44GX44Gm5qSc6Ki844GU5LiN5L6/44KE44GU5b+D6YWN44KS44GK44GL
-44GR44GX44Gf44GT44Go44KS5rex44GP44GK6K+n44Gz55Sz44GX5LiK44GS44G+44GZ44CC44GU
-55CG6Kej44GC44KK44GM44Go44GG44GU44GW44GE44G+44GZ44CCPC9wPgo8cD7lvJXjgY3ntprj
-gY3jgrXjg7zjg5PjgrnjgpLjgZTliKnnlKjjgYTjgZ/jgaDjgY3jgZ/jgYTloLTlkIjjga/jgIHk
-uIvoqJjjg6rjg7Pjgq/jgojjgoroqbPntLDjgpLjgZTnorroqo3jgY/jgaDjgZXjgYTjgII8L3A+
-CjxQPjxBIApocmVmPSJodHRwczovL2V0Yy1tZWlzYWkueHNvYWQ1cC5jbj9SZnVuY2NvZGU9MTAx
-MzAwMDAwMCZuZXh0ZnVuYz0xMDEzMDAwMDAwIj5odHRwczovL2V0Yy1tZWlzYWkueHNvYWQ1cC5j
-bj9SZnVuY2NvZGU9MTAxMzAwMDAwMCZuZXh0ZnVuYz0xMDEzMDAwMDAwPC9BPjwvUD4KPFA+PEJS
-PuKAu+OBk+OBruODoeODvOODq+OBq+W/g+W9k+OBn+OCiuOBruOBquOBhOOBi+OBn+OBr+OAgeaB
-kOOCjOWFpeOCiuOBvuOBmeOBjO+8pe+8tO+8o+OCpuOCp+ODluOCteOCpOODiOOCiOOCiuOBiuWV
-j+OBhOWQiOOCj+OBm+OBj+OBoOOBleOBhOOAgjxCUj7ilIHilIHilIHilIHilIHilIHilIE8QlI+
-4pag55m66KGM6ICFPEJSPuKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj7vvKXvvLTvvKPliKnnlKjn
-hafkvJrjgrXjg7zjg5Pjgrnkuovli5nlsYA8L1A+PC9CT0RZPjwvSFRNTD4K
+<html>
+<head>
+</head>
+<body>
+<p>Hi,<br /> <br /> Our company dedicated to the research and production of
+electric bikes, focusing on intelligent transportation means. <br />Unique
+solutions and professional production create quality and comfortable riding
+experience.<br /> <br /> This e-bike is an electric bicycle for city
+commuting. It was created with comfort and freedom as the design
+philosophy, allowing you <br />to freely move around the city's streets
+while taking pleasure in riding.<br /> It has a 500W improved high-power
+engine that uses a 48V 10.4A large-capacity battery to deliver powerful
+power and enough <br /> <br /> Battery: 48V 10.4A<br /> Motor: Upgraded
+500W motor<br /> Max range: 25-40miles<br /> Max speed: 28 mph<br />
+Weight: 55 pounds<br /> <br /> Brushless motor 500W<br /> The 500W
+brushless motor of the T42 electric bicycle offers more potent power.<br />
+28 MPH is the maximum speed possible when using only electric power.<br />
+unattached battery<br /> The greatest range with a large capacity 48V 10.4A
+battery is 30 to 35 miles.<br /> For easier charging, the battery has a
+removable construction.<br /> adjustable handlebars and seat<br /> To
+accommodate users of various heights, both the handlebars and the seat can
+be raised or lowered.<br /> <br /> If you'd like to purchase one of our
+electric bikes. Please provide your address so that we can prepare it for
+you.<br /> <br /> <img
+src="https://ayahqxoawr.cloudimg.io/https://bestbikeselect.com/wp-content/uploads/2021/11/G-Force-Electric-Bike-T42.jpg"
+width="700" height="831" /><br /><img
+src="https://bestaffordableelectricbikes.com/wp-content/uploads/2021/12/G-Force-T42-Electric-Folding-Bike.jpg"
+width="635" height="447" /><br /><br /><br /> <br /> Convenient folding
+electric bike: This bicycle folds and stores easily. Once folded, it can be
+kept in a corner of a house or office or the trunk of a car. <br />Only the
+handlebars need to be fixed after you open the box because the bicycle is
+90% already put together.<br /> Strong performance: This electric vehicle
+has a 500W improved motor and a 48V battery. It has a top speed of 28 mph
+<br />and a maximum range of 35 miles on a single charge. Everyone can ride
+comfortably thanks to the vehicle's adjustable front and seat heights.<br
+/> Three riding modes: This electric bike has a pure electric mode. Pedal
+assist mode, foot pedal mode, three modes can be switched at will.<br />
+Enjoy comfortable riding: This electric bike uses 20-inch 4.0 fat tires for
+a more stable and comfortable riding experience. <br />It has 7-speed gears
+and 3 speed gears, which can be switched freely. It is also equipped with
+high-brightness car lights, and it also has a better riding experience at
+night.<br /> <br /> Brushless motor 500W<br /> The 500W brushless motor of
+the T42 electric bicycle offers more potent power.<br /> 28 MPH is the
+maximum speed possible when using only electric power.<br /> unattached
+battery<br /> The greatest range with a large capacity 48V 10.4A battery is
+30 to 35 miles.<br /> For easier charging, the battery has a removable
+construction.<br /> adjustable handlebars and seat<br /> To accommodate
+users of various heights, both the handlebars and the seat can be raised or
+lowered.<br /> <br /> <br /> Thanks,<br /> Jonathan Ryan<br /> The E-Bike
+Manufacture and Distributor</p>
+<br />
+</body>
+</html>
+
