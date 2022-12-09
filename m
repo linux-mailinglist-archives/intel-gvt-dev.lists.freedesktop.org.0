@@ -1,63 +1,59 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3D26647E48
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Dec 2022 08:08:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DAAD647E49
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Dec 2022 08:08:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8CE9B10E0C7;
-	Fri,  9 Dec 2022 07:08:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 17A4910E0C7;
+	Fri,  9 Dec 2022 07:08:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B8F5D10E0C7
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B91CC10E198
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  9 Dec 2022 07:08:26 +0000 (UTC)
+ Fri,  9 Dec 2022 07:08:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1670569706; x=1702105706;
+ t=1670569720; x=1702105720;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=m+xp3iYsAHudlkZ+Csq1wQ4toDaCdv6SA6uo5bd9eUs=;
- b=RZpc4dmLyqudA8xEuQJd+syUvRyDVJjj9JwLmtL2eKcJpoxhMdEk6nin
- 1G6UU2uhCjVjoZZrpZ5yty1rvDD7qwZddjLdsbWTblIUvA6BRpWzkmXIc
- 2IoNiJI0wZhLWOpuw1D9rFjAyMIjN04qra+xViEYSstAuQ18dGYrakScm
- 0632iY7RvG6J6eiA7WYHuL3mfU8AZn5RM79ya1Pi6eORSz5EMW8hbk4Tc
- LK4pYtVsns/broL6tRZt0ERNJhWyQQiIJyRN3mF1+parWYmT9cdQyfgt1
- ND+Pz1OlknPtRfIXSkeEMMbfX0JyqIqC+VGg5WQczJdNlB6wA0p+Ez6w3 Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10555"; a="379610488"
-X-IronPort-AV: E=Sophos;i="5.96,230,1665471600"; d="scan'208";a="379610488"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2022 23:08:25 -0800
+ bh=3vODhPyQFj8jEsv/JqFw0v91EZ6BbJDsOD/s4x8PkHo=;
+ b=axUcjeTdRVvbc2TkSoEvhlhAjpxLcVeeippZnAj6z5HKGJv5gYQFGXrM
+ I20vRguOgsDLC3B7pTuQFxzv3ENzOx2Zvi7xVubF7Lzlz/Fyirhngavo7
+ zgduO23TUg+SvW0aUFG9aWX3Q1sU1CaWo2aka6Ly+2UlZCDnUnVpUOv7F
+ 3u0NPJTiXceVi5iHkXYKe39r94pL599wAun0D5cyGhQFQ+zAwLsdOgrz/
+ SD+Q9NVxGshy400vIENseKoBL8vp+pA3vEmVlUnWCp0I3tw9inGw8qjKz
+ CbUj87RkunRrdcu7/RIaFaDQ9jOnAyeW+YUfen3sTdVWDErXHEoqira/8 Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10555"; a="316103687"
+X-IronPort-AV: E=Sophos;i="5.96,230,1665471600"; d="scan'208";a="316103687"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Dec 2022 23:08:40 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10555"; a="771774752"
-X-IronPort-AV: E=Sophos;i="5.96,230,1665471600"; d="scan'208";a="771774752"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga004.jf.intel.com with ESMTP; 08 Dec 2022 23:08:25 -0800
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6500,9779,10555"; a="736113381"
+X-IronPort-AV: E=Sophos;i="5.96,230,1665471600"; d="scan'208";a="736113381"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by FMSMGA003.fm.intel.com with ESMTP; 08 Dec 2022 23:08:40 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Thu, 8 Dec 2022 23:08:25 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ 15.1.2507.16; Thu, 8 Dec 2022 23:08:39 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Thu, 8 Dec 2022 23:08:24 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Thu, 8 Dec 2022 23:08:24 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.48) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2507.16 via Frontend Transport; Thu, 8 Dec 2022 23:08:39 -0800
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.171)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Thu, 8 Dec 2022 23:08:24 -0800
+ 15.1.2507.16; Thu, 8 Dec 2022 23:08:39 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JbP3/BcJLOAMzzbknOyGq0j1NvseQ+eL2eytAhkiTiu+eAn3uw6Jd95V0W18vYE7T+1YLQ+SNjC0XfC+SuKc6txe26wOTLpUhBFH7Ms049orYQIz+yKfau7aFx8bP/36EcLW9PLmUH2z1ffzfLI/WpZeg1MzzsK5OFNWzPW3ctKz2839WgVYPc0O9LixOPXOkVbyww1njD5ydw2dsZlVwCcau9z/WXHU9fu9DCBLg1WM7GrVRSYRuuoWnbDpBAtc9XvtF7Cg73E16kQDzq+Tfh2Ye1Dw23NUThr2j3NXnXxW9zOieOcZnEEg3PmOQqIUVvGXgJXefli9xtez2qdHAA==
+ b=NIcoKVYed8B3GcqzVJOWXzcSAxAv7cflL12R4wSZu3DmHRZFCRIWTOLkvTGhfHd++FXUd6pvDqPohZWqz1PHoxS+Ssx7ob1vrxS/wCQoUFll9NC7oRG5ki3rajs7WPn8eJwrI1QRtcjHovcJlXc0ylCnMCqJDs/s/B3SdDuCaVIhaZuYMezYWKCSHYwyPk2VMgq5jDnU57xX1Rcu9aIpNp0AlINrKW/QBkOCBTDUAr8IEl3NyRdk6/Y0VFJOU36tCCjKTaKEwts7QLJzXxgGu1qkvDbElHXqbrQTQ2m0Z+WDIQHJM47RCPwYQHQb02d8cC0n+dFgeT6vSJoMk/inrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RacuW7vTZjwtFJfXsn4Xjfo4V8BIHDbOSXwk9R9H8d0=;
- b=PQ1xy47vBSZFY+2h91gmhWCkeGytwnj2/vNEiAE5g6nBclfUR42f5T39DQ+uFgcQJXmEirwJ6bguItIfJV8IsKnuIdh36irWmpBW82846ecg6nVh9KelgG3Mdqm+C3Lvh2LdUbbMm08JJJaNmWTJ4jgKbAzRkLIpdyDepanPcEnWSNhNF/MYRHqZHrRQI5n3oFbSE+PU+vrkuMJUuSf272AbP690AO1bTxAaMyB5pw/yfWGeerJkFtfXKuISWRjkzJpzYKYwlzazoRcHZt9ciXM7E1d2zbwESLqP/X1ZkuYO2CyL0uqklOymaVOltNqq9JUqMGsA8hDem2CGXi1JNw==
+ bh=SzqwLYxW490KNcrVGhycrb0d52JnmRKBT9b0cO0LIU4=;
+ b=ZIIZSb4n8U9dbXtSTWwUwu35AMwmAYNiGxLift+MnzIAl7s0DlxxZOWrTVLEWStIYXKudyrMaak2AFYFFREEinIE/IpZ7KviN+M2kRMj2TCceG9VegpQJiDkmI5Rg5oyGY7J6hldRCwXASOUskCwfFtQJBIXozHSg1sux240LZrVKr2Z67Q97Yzi2t1OtpS0j1wTs1vSuu0Mbz/twPDLa/g2ibaZVt3qBOUeUxI7V9Je6EjlZAapS+Ge4q5R8hCjy3j6PUGU3Cto20BUUazEKiWo/t7NKAXVok2RLAiQmEjxJUhvPbLqKEJeYh+4fDqOyIagOBVymAyaxjPrgCinxQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -65,21 +61,21 @@ Received: from CH0PR11MB5538.namprd11.prod.outlook.com (2603:10b6:610:d5::23)
  by SA2PR11MB4812.namprd11.prod.outlook.com (2603:10b6:806:f8::5) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5880.16; Fri, 9 Dec
- 2022 07:08:23 +0000
+ 2022 07:08:37 +0000
 Received: from CH0PR11MB5538.namprd11.prod.outlook.com
  ([fe80::8db4:2bd7:1f20:1ff1]) by CH0PR11MB5538.namprd11.prod.outlook.com
  ([fe80::8db4:2bd7:1f20:1ff1%9]) with mapi id 15.20.5880.018; Fri, 9 Dec 2022
- 07:08:23 +0000
+ 07:08:37 +0000
 From: "Wang, Zhi A" <zhi.a.wang@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
-Subject: RE: [PATCH] drm/i915/gvt: fix gvt debugfs destroy
-Thread-Topic: [PATCH] drm/i915/gvt: fix gvt debugfs destroy
-Thread-Index: AQHZCu8pKtPoJvCMCE6WoyDYf7f/lq5lI+/w
-Date: Fri, 9 Dec 2022 07:08:22 +0000
-Message-ID: <CH0PR11MB5538B0BB4180DE6FE93EFBE0CA1C9@CH0PR11MB5538.namprd11.prod.outlook.com>
-References: <20221208103329.733843-1-zhenyuw@linux.intel.com>
-In-Reply-To: <20221208103329.733843-1-zhenyuw@linux.intel.com>
+Subject: RE: [PATCH] drm/i915/gvt: fix vgpu debugfs clean in remove
+Thread-Topic: [PATCH] drm/i915/gvt: fix vgpu debugfs clean in remove
+Thread-Index: AQHZCvUv+ybSkatoFk2tIhCCp3YWRa5lJClw
+Date: Fri, 9 Dec 2022 07:08:37 +0000
+Message-ID: <CH0PR11MB5538A592EA78A191D41036C8CA1C9@CH0PR11MB5538.namprd11.prod.outlook.com>
+References: <20221208111634.734185-1-zhenyuw@linux.intel.com>
+In-Reply-To: <20221208111634.734185-1-zhenyuw@linux.intel.com>
 Accept-Language: en-FI, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -88,54 +84,54 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: CH0PR11MB5538:EE_|SA2PR11MB4812:EE_
-x-ms-office365-filtering-correlation-id: 34048e9f-44d8-478d-6e8e-08dad9b428e2
+x-ms-office365-filtering-correlation-id: 10335ac0-a545-421d-7f96-08dad9b431ad
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 5mL5PjKKVw/fR1M9IYdRaIioT3kpFrHFCREYM9SPovAqDYCcGWRl5IIYbTc3D8uxOs8lxkqDPAyLFZR5H4RCfsN3YpR3+oQFNkD0ZgLVwd3rxI+l/mdHzi6iorUqNuaGExcnpSWRer9QPBDW2iSFZF/ZQPsMGjeejEoqRPhAvEBxGo6IsZfayyKB7kzqCFniG4icVazmZUTlUyOPbSd5hwazIZne3BjnsL3V9E98Nb2e06RW1gpX4dcbeoKb5GCUU1M8Z417kKA6ImazNyVUOM1IGlKBYRZyuZlSk5ZB4TbI1VTndt41ZTUQASH5JfeCK/mePTTiFoVEZf6oL4ySxz9GvcHakkMcOpdcS2+6fGxg5Yh5T1OV4yqk0td8bDDpAuH/fSyWRYEu1CfeX8FGigf2ijGCJMz6Pob05/2TrnE9SgWeB/e/NUp4EMWYcmtgIgUK1tSp3KfEoZHemCLtuBR3Nk8AQOrXcxGb2cU/PcPIC40X65AQtcFDzw/7hqvh3fi7e7EFdID97YYCqfaAHQqgNTujW6fzo/FI9HGUmVpeHzpTYgzUOpV5iTFNRCgI7Up6HJvT2YR3O6fzJzROHGn2J5NwnZO0Qf/54xzizvdZf2v1bHwBXEnGdjUgO5pzPm6QFymwgv9n0yMNQlOenC3BVyFjvWTvJeivA3+f7Uyp/TrDGG+itmAblQXHQHUDGQsvc98Hzzo2RXIfawzraw==
+x-microsoft-antispam-message-info: hjBTqyjTtCxGruCXIJvm0QRfgcCjv7Qldy6BXtU5t6hWBZyIOwfPkTYWrfG9pmKadihI4wPJg7Vt00JU7kaKTTVAH6hpeQwxA/b4fQEnJFwZ/Yo38ca6CCgDpNOlcroD3hXUequjG80H/5DSgsxLX3Xks5t8ZwuQfck05mLFj4ClQqnIX3fKJOwodxPm1N1mrmxmx5xknov7dGg1gOxVqiH0n8CA/u1Zxt1yGoBTAX0Fp1VBErGYayLbG7DPzm4LgYO2WOAY1pzJDfRvcSVtIBX61FCcZZdhx2sxh4pi1pD/tzJp9CJ6ehOBlZSorTQirOHMCoIAf3X9thr4nT+W0OcMJb/O7lY6WCVNFxeqvC5nZNjURe2bAWzFoGjXaPnhAdVSvE0Zg0EDGnVWeZUeKg44v23trdTLfWSaBB00j5O21WIAUPDRTNaEl98eAhdnpW44epAc5smYFGY/ah7H0G9jA6hQOLlfb9vTkTxhAkBO8kPVAnGPTrHrYbz55T7k1AgEsmVx/kVQz41SnCCa6NAzLiETaf2Bw0/TFIgJdCCOLQqIp2ygmAJBC9bs0Fpo2MXLpgtqpqq1UFva/0+Tak3lJnuBQiAcSiH1N/IFBnSaJsa/rEVo6Y/NgTPCtKtiO+LwJXRXhk0XUxsaIY4admAwFEQbwN9gv+R5CmgcVVPVe2JDASExA2K1WhrcpV1W/tD3cd7K8GRr3zb+0I30FQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CH0PR11MB5538.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230022)(39860400002)(396003)(346002)(136003)(366004)(376002)(451199015)(186003)(9686003)(26005)(5660300002)(83380400001)(2906002)(53546011)(7696005)(6506007)(38100700002)(8936002)(82960400001)(86362001)(122000001)(71200400001)(52536014)(478600001)(55016003)(316002)(66946007)(66446008)(8676002)(33656002)(4326008)(66556008)(64756008)(66476007)(76116006)(38070700005)(41300700001)(110136005)(54906003)(45080400002);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?tfzz0LginVYnmvA9iAIgZ42U8LmG5IIsyCtvunF5TCx1F3nxQ+eHI28tEwwW?=
- =?us-ascii?Q?CCBP1WVEjrEHOwb8+Vjf2PrIEgB8ryubE2SaqGoakhJi6J3JZu2uzaFP3Gx4?=
- =?us-ascii?Q?uKBNT+e+RgmX3z/gboPOGZmL5bxasmRdBIBnx/NmAcZO3jEraOjTiE8NHLBU?=
- =?us-ascii?Q?GGJXrBXqAbfXB+vJDYz/uSJupGvV3tW97eIwL0vUMxf/sCdcl03ifxl0AJC9?=
- =?us-ascii?Q?2gTgMJcNjErwZ5fOcKDsOmo/yrVcDvgwU7NHwmypT4C4IhRTVoAg4ZJzv7Qk?=
- =?us-ascii?Q?jfJKuzucf6p8HgDS3gSyWG1axgAOYEQY1dJ8KOlTO2VZdO/sHVfUT4kWGu2C?=
- =?us-ascii?Q?cVuyBQQ2UZUnmvsDaucQlDw3IhrQYjnrRDocbAeUq3hZl6HeZEE7oHeCPdMk?=
- =?us-ascii?Q?gxCteBsTJjPYcadI4CUbqiR0LFwFzYGJ4i/FMErg/KLHCeezuqHOLkxLEstY?=
- =?us-ascii?Q?qZ9wfi6WgetMXNr4MmPi++m/+SIJRGiIGNQTu15q8nF/CdR9wVCGgHkOA665?=
- =?us-ascii?Q?rnawmTuNyq1tpU2mAduoG/MQu92xOeCKslRAclKCPbNWH6iWDjYpPL+gN+Ki?=
- =?us-ascii?Q?s9Usr4e3EeSaMUmszwx6fYrKBMPWj++xIXye0vhiTUTcSJIfTMiwOsqJ/97R?=
- =?us-ascii?Q?udpSem9sv0RD+TqJVR9f/XqMYmT1uiqRd9DGHHxCxbBFDuMug1HS3+jeAZlF?=
- =?us-ascii?Q?mHAZGTK3h8Nb/PQimkuufkUrKDoLy2cowh9O5vG9ehQCrO6arQ8ffA3JwMOE?=
- =?us-ascii?Q?Zcs6ZFd+S9XXF6KptRbHapti4GscoKjSAUfndZqMOxO4FIdv/bBSGH8amV+P?=
- =?us-ascii?Q?6vOJvpdVw3OdftW7v+V/x64PsOHQxTH0TS5UrRFFg5Cz8IGJbqH24HSGiqYc?=
- =?us-ascii?Q?G3SQ78mChA7dNW6zJwGwPTKhfqMg22MZoU9/FLd+8nK8gjBnIHxlDQ1wk1HW?=
- =?us-ascii?Q?b8N0fmVDjsStBuuVux2ttAmo6CZceZG0t/vqvyMWhIYbRRskWlqUjwNpYCDC?=
- =?us-ascii?Q?mXc/TGwIo/v0vK/KSOkXXYuGbpgCX4b6T5MzQBcj+1SRXHWRkymXJVLNj5tv?=
- =?us-ascii?Q?r/PhFaC4kbuE2su8T7lY266Vv3rv88Itq01IOISCwUoam9C20DSlbdzNu8j/?=
- =?us-ascii?Q?hHA8vYpIlonB0pjfGaZYJjmvekTQFAYQXFtLfG47XEF2KzeTXCxZSmqoXer5?=
- =?us-ascii?Q?ZFC+TMMQB4OZjyAmger5/ceLbzmBF4La8mVztakcbIYkMaE60nwSTt6B9i/k?=
- =?us-ascii?Q?Wcdk9XPmXilARKQJJb4eveMX1uVi8gfT/i5piVCKFrhJSryuazZa4AmEPD0i?=
- =?us-ascii?Q?MW3GbDgmHfD4wkdjr/ki3vc7ty6Bq5YaqXCM+GU03xS1AtEXo9eXNS8P742s?=
- =?us-ascii?Q?+FyAmV7AxhWMDZ1aqkRZoCFClK30yB6nQLPTDOeGj8Sh0c3WrcLpIHBSnVvN?=
- =?us-ascii?Q?sy4ZB/hc48Pq7X3f9RQPDM0HM2Rz3HJosNP44rQcgm4Mvz7P41r8EML1f/WJ?=
- =?us-ascii?Q?l9NEC4S/TwD65u/5JECLqGzc9GcQO5td+7y9epAhX6YghNqrvQlo3E9QYbhI?=
- =?us-ascii?Q?GZ1TPEC29r871JTMULvo18B8PAApZr6ZDT1H4jcy?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?OKtBP6Zw6mk2bBA0zN/vxR04jhj9g3OvCXgBInxZvePVKh24zFOGr7bju6Pp?=
+ =?us-ascii?Q?s1cXjyXH3SmynFOvyy+KPu/R2wYenfv5y/JWO51TuZEbr2NfSJoXGwko/Cac?=
+ =?us-ascii?Q?aPLhVVmpJYmvK0XHwVZWueW5Xe1f45n6Ag/iJGsjanPF47LGVLLaFB5rpKzI?=
+ =?us-ascii?Q?2X11dgsan7X2pWGfUqOuj5u8NVhnlxr7fsN7MYhrJafg21ENs4/JElwiU602?=
+ =?us-ascii?Q?7mSoKJh4d+iRi3CL2TtWhsBY7N/N8dqSes1ar20rcHKRLtaBUacMsPLBv/5Y?=
+ =?us-ascii?Q?Djy0/BJS6Swe9zNfg1qF1oi3eUEERAN0n+tMV1T2cEAgHChfW0UoSuuXP96b?=
+ =?us-ascii?Q?RmZKkvvwYyv4fuot+VDTxyLi8pQoLqry+3ZQ1iV6m3S4RcYuNXb/5vdTY2Ij?=
+ =?us-ascii?Q?9RCxQL3PqzBIn/mP08kkvq8rGwG2YtlA30W13iB1zdJRJ7jKmcqO+pWmAym2?=
+ =?us-ascii?Q?bO6M0r2eak//6RoeQtXSsFYr6mV1Xr14ZMqGNarOFAoumBtz/GLlVEuIz7Ad?=
+ =?us-ascii?Q?CnSx2VGn5YcH54+qnbaB6FKnc6ZVhjVgWdcJSLdV3jZKUcpeyrAxdHbo2k2N?=
+ =?us-ascii?Q?EFrJr4ApksF2F11fwekCrmeSmmhjheD1djt68olaQUkEzuvyxQxF6xZ9crz4?=
+ =?us-ascii?Q?GmAs+XWA/MW86bJ4HjZ6nz16g+GYiaNFg7cG6txbq5xCwFg4LfHlvC7FBnwn?=
+ =?us-ascii?Q?8CpvisyEUPlyxj1ZFywB/hg5p29EWdZelprmv5AeIp9XPU4tBg/vPz3y1eK4?=
+ =?us-ascii?Q?ZRwO+cOSPV99EuxydcLYO1bxY4USfK3KdSqJHrcUoJDxO3irjXD0EQJ5myB9?=
+ =?us-ascii?Q?YeJck+Ue4hjUCHxYGGUXgF9xrCUAyZdRkI+zeQ5tpsLlZqq9wCYCYh9HyQJN?=
+ =?us-ascii?Q?RQX7kjxW02kwgR0aOTvxghLoZz0mMPiqw0vLlyE7VMkDioTjqRycZ9w3fuZl?=
+ =?us-ascii?Q?8Z1X/7l3lfizqhrV4zDFB/oG4oVHFAy3HyyltY6GdvLt8DJujKt7FuhQsw29?=
+ =?us-ascii?Q?KOB5mBZqbw4OVBqLEJmHPaF04X70uFTtzc9nZTx4w2KWsmMSB90mVJyKHC6e?=
+ =?us-ascii?Q?ao6yOBX0MYwgaQbISfYcbXcKSQUtOLR2PwR2+KDgRJPxxwbwoXURAPkd7/hP?=
+ =?us-ascii?Q?k39d5KKPDj3ZtJNByhb6Q16VrJaEWTqx2v91z7lDsmzhCXwAkyZMhJrdRO/f?=
+ =?us-ascii?Q?wkwKpDvHBo/o3N7OeS6XfHAaLUYZO6wvYRDxxGHU3OEW25KLHcXJPS6WoDOd?=
+ =?us-ascii?Q?eOtgxOEglyRvunQVdoAg5fgtZ6doHAJNVADdUrL8Yrgpi/HE6/dByuwhP5Vd?=
+ =?us-ascii?Q?0l82aSu3gwh5YbXFVZj2WxyZhFyRf6R76JWOiQGNFUvsx5PVDklx4JpiQrpH?=
+ =?us-ascii?Q?gWxHzlBG1jtLq1u66VTl2gVCCbY5sv2IRGAbklbIzkhXMq3qz12kotChXKtE?=
+ =?us-ascii?Q?l3NCo/O41pjDZISFjgl9kVOeuyXOTTEs9sqyocDArd+vPhGolphmwLvhPT1X?=
+ =?us-ascii?Q?opHkn8Pq3Sty50yk9uLntm6Wz2RVMP31SPd0fHfGCsGADcWCSMVMS5Llyn3U?=
+ =?us-ascii?Q?7hy9HufzS8XpC3JJTTlQHZKGSkXEfS2zevp8gI3E?=
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: CH0PR11MB5538.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 34048e9f-44d8-478d-6e8e-08dad9b428e2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Dec 2022 07:08:22.8990 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 10335ac0-a545-421d-7f96-08dad9b431ad
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Dec 2022 07:08:37.6984 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 5MgEX54eINkjtCUPooXSxYU+FOzgp0JLJMPM8VSkZctwfTtXrtp1q2FNYNGvb7XwWo9tE8d1sE/XzZ4f7w8l4w==
+X-MS-Exchange-CrossTenant-userprincipalname: cM1oCewxlX/8jCD1+oZuE2Ul1ak6CkGmQcMvJKvdC1c1ESKwiQmqPZczkzsFssFaolt4A+lr+wjgND0ccfdg1Q==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4812
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -150,7 +146,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "He, Yu" <yu.he@intel.com>, "Wang, Zhi A" <zhi.a.wang@intel.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>, "He, Yu" <yu.he@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
@@ -158,117 +154,134 @@ Reviewed-by: Zhi Wang <zhi.a.wang@intel.com>
 
 -----Original Message-----
 From: Zhenyu Wang <zhenyuw@linux.intel.com>=20
-Sent: Thursday, December 8, 2022 12:33 PM
+Sent: Thursday, December 8, 2022 1:17 PM
 To: intel-gvt-dev@lists.freedesktop.org
-Cc: Wang; Wang, Zhi A <zhi.a.wang@intel.com>; He; He, Yu <yu.he@intel.com>
-Subject: [PATCH] drm/i915/gvt: fix gvt debugfs destroy
+Cc: Wang, Zhi A <zhi.a.wang@intel.com>; He, Yu <yu.he@intel.com>; Alex Will=
+iamson <alex.williamson@redhat.com>
+Subject: [PATCH] drm/i915/gvt: fix vgpu debugfs clean in remove
 
-When gvt debug fs is destroyed, need to have a sane check if drm minor's de=
-bugfs root is still available or not, otherwise in case like device remove =
-through unbinding, drm minor's debugfs directory has already been removed, =
-then intel_gvt_debugfs_clean() would act upon dangling pointer like below o=
-ops.
+Check carefully on root debugfs available when destroying vgpu, e.g in remo=
+ve case drm minor's debugfs root might already be destroyed, which led to k=
+ernel oops like below.
 
-[   48.067618] i915 0000:00:02.0: Direct firmware load for i915/gvt/vid_0x8=
-086_did_0x1926_rid_0x0a.golden_hw_state failed with error -2
-[   48.070156] i915 0000:00:02.0: MDEV: Registered
-[   52.966222] Console: switching to colour dummy device 80x25
-[   53.403599] i915 0000:00:02.0: MDEV: Unregistering
-[   53.403730] BUG: kernel NULL pointer dereference, address: 0000000000000=
-0a0
-[   53.403735] #PF: supervisor write access in kernel mode
-[   53.403738] #PF: error_code(0x0002) - not-present page
-[   53.403740] PGD 0 P4D 0
-[   53.403744] Oops: 0002 [#1] PREEMPT SMP PTI
-[   53.403749] CPU: 2 PID: 2486 Comm: gfx-unbind.sh Tainted: G          I  =
-      6.1.0-rc8+ #15
-[   53.403754] Hardware name: Dell Inc. XPS 13 9350/0JXC1H, BIOS 1.13.0 02/=
-10/2020
-[   53.403756] RIP: 0010:down_write+0x1f/0x90
-[   53.403763] Code: 1d ff ff 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 53 48 =
-89 fb e8 62 c0 ff ff bf 01 00 00 00 e8 28 5e 31 ff 31 c0 ba 01 00 00 00 <f0=
-> 48 0f b1 13 75 33 65 48 8b 04 25 c0 bd 01 00 48 89 43 08 bf 01
-[   53.403767] RSP: 0018:ffff9eb3036ffcc8 EFLAGS: 00010246
-[   53.403771] RAX: 0000000000000000 RBX: 00000000000000a0 RCX: ffffff81000=
-00000
-[   53.403774] RDX: 0000000000000001 RSI: 0000000000000064 RDI: ffffffffa48=
-787a8
-[   53.403776] RBP: ffff9eb3036ffd30 R08: ffffeb1fc45a0608 R09: ffffeb1fc45=
-a05c0
-[   53.403779] R10: 0000000000000002 R11: 0000000000000000 R12: 00000000000=
-00000
-[   53.403781] R13: ffff91acc33fa328 R14: ffff91acc033f080 R15: ffff91acced=
-533e0
-[   53.403784] FS:  00007f6947bba740(0000) GS:ffff91ae36d00000(0000) knlGS:=
-0000000000000000
-[   53.403788] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[   53.403791] CR2: 00000000000000a0 CR3: 00000001133a2002 CR4: 00000000003=
-706e0
-[   53.403794] Call Trace:
-[   53.403797]  <TASK>
-[   53.403800]  simple_recursive_removal+0x9f/0x2a0
-[   53.403808]  ? start_creating.part.0+0x120/0x120
-[   53.403815]  ? _raw_spin_lock+0x13/0x40
-[   53.403820]  debugfs_remove+0x40/0x60
-[   53.403826]  intel_gvt_debugfs_clean+0x15/0x30 [kvmgt]
-[   53.403848]  intel_gvt_clean_device+0x49/0xe0 [kvmgt]
-[   53.403871]  intel_gvt_driver_remove+0x2f/0xb0
-[   53.403876]  i915_driver_remove+0xa4/0xf0
-[   53.403882]  i915_pci_remove+0x1a/0x30
-[   53.403886]  pci_device_remove+0x33/0xa0
-[   53.403892]  device_release_driver_internal+0x1b2/0x230
-[   53.403897]  unbind_store+0xe0/0x110
-[   53.403903]  kernfs_fop_write_iter+0x11b/0x1f0
-[   53.403909]  vfs_write+0x203/0x3d0
-[   53.403917]  ksys_write+0x63/0xe0
-[   53.403923]  do_syscall_64+0x37/0x90
-[   53.403928]  entry_SYSCALL_64_after_hwframe+0x63/0xcd
-[   53.403933] RIP: 0033:0x7f6947cb5190
-[   53.403938] Code: 40 00 48 8b 15 71 9c 0d 00 f7 d8 64 89 02 48 c7 c0 ff =
-ff ff ff eb b7 0f 1f 00 80 3d 51 24 0e 00 00 74 17 b8 01 00 00 00 0f 05 <48=
-> 3d 00 f0 ff ff 77 58 c3 0f 1f 80 00 00 00 00 48 83 ec 28 48 89
-[   53.403942] RSP: 002b:00007ffcbac45a28 EFLAGS: 00000202 ORIG_RAX: 000000=
-0000000001
-[   53.403946] RAX: ffffffffffffffda RBX: 000000000000000d RCX: 00007f6947c=
-b5190
-[   53.403949] RDX: 000000000000000d RSI: 0000555e35c866a0 RDI: 00000000000=
-00001
-[   53.403951] RBP: 0000555e35c866a0 R08: 0000000000000002 R09: 0000555e358=
-cb97c
-[   53.403954] R10: 0000000000000000 R11: 0000000000000202 R12: 00000000000=
-00001
-[   53.403956] R13: 000000000000000d R14: 0000000000000000 R15: 0000555e358=
-cb8e0
-[   53.403962]  </TASK>
-[   53.403963] Modules linked in: kvmgt
-[   53.403968] CR2: 00000000000000a0
-[   53.403971] ---[ end trace 0000000000000000 ]---
+Console: switching to colour dummy device 80x25
+i915 0000:00:02.0: MDEV: Unregistering
+intel_vgpu_mdev b1338b2d-a709-4c23-b766-cc436c36cdf0: Removing from iommu g=
+roup 14
+BUG: kernel NULL pointer dereference, address: 0000000000000150 PGD 0 P4D 0
+Oops: 0000 [#1] PREEMPT SMP
+CPU: 3 PID: 1046 Comm: driverctl Not tainted 6.1.0-rc2+ #6 Hardware name: H=
+P HP ProDesk 600 G3 MT/829D, BIOS P02 Ver. 02.44 09/13/2022
+RIP: 0010:__lock_acquire+0x5e2/0x1f90
+Code: 87 ad 09 00 00 39 05 e1 1e cc 02 0f 82 f1 09 00 00 ba 01 00 00 00 48 =
+83 c4 48 89 d0 5b 5d 41 5c 41 5d 41 5e 41 5f c3 45 31 ff <48> 81 3f 60 9e c=
+2 b6 45 0f 45 f8 83 fe 01 0f 87 55 fa ff ff 89 f0
+RSP: 0018:ffff9f770274f948 EFLAGS: 00010046
+RAX: 0000000000000003 RBX: 0000000000000000 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000150
+RBP: 0000000000000000 R08: 0000000000000001 R09: 0000000000000000
+R10: ffff8895d1173300 R11: 0000000000000001 R12: 0000000000000000
+R13: 0000000000000150 R14: 0000000000000000 R15: 0000000000000000
+FS:  00007fc9b2ba0740(0000) GS:ffff889cdfcc0000(0000) knlGS:000000000000000=
+0
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000150 CR3: 000000010fd93005 CR4: 00000000003706e0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400 Call Trac=
+e:
+ <TASK>
+ lock_acquire+0xbf/0x2b0
+ ? simple_recursive_removal+0xa5/0x2b0
+ ? lock_release+0x13d/0x2d0
+ down_write+0x2a/0xd0
+ ? simple_recursive_removal+0xa5/0x2b0
+ simple_recursive_removal+0xa5/0x2b0
+ ? start_creating.part.0+0x110/0x110
+ ? _raw_spin_unlock+0x29/0x40
+ debugfs_remove+0x40/0x60
+ intel_gvt_debugfs_remove_vgpu+0x15/0x30 [kvmgt]
+ intel_gvt_destroy_vgpu+0x60/0x100 [kvmgt]
+ intel_vgpu_release_dev+0xe/0x20 [kvmgt]
+ device_release+0x30/0x80
+ kobject_put+0x79/0x1b0
+ device_release_driver_internal+0x1b8/0x230
+ bus_remove_device+0xec/0x160
+ device_del+0x189/0x400
+ ? up_write+0x9c/0x1b0
+ ? mdev_device_remove_common+0x60/0x60 [mdev]
+ mdev_device_remove_common+0x22/0x60 [mdev]
+ mdev_device_remove_cb+0x17/0x20 [mdev]
+ device_for_each_child+0x56/0x80
+ mdev_unregister_parent+0x5a/0x81 [mdev]
+ intel_gvt_clean_device+0x2d/0xe0 [kvmgt]
+ intel_gvt_driver_remove+0x2e/0xb0 [i915]
+ i915_driver_remove+0xac/0x100 [i915]
+ i915_pci_remove+0x1a/0x30 [i915]
+ pci_device_remove+0x31/0xa0
+ device_release_driver_internal+0x1b8/0x230
+ unbind_store+0xd8/0x100
+ kernfs_fop_write_iter+0x156/0x210
+ vfs_write+0x236/0x4a0
+ ksys_write+0x61/0xd0
+ do_syscall_64+0x55/0x80
+ ? find_held_lock+0x2b/0x80
+ ? lock_release+0x13d/0x2d0
+ ? up_read+0x17/0x20
+ ? lock_is_held_type+0xe3/0x140
+ ? asm_exc_page_fault+0x22/0x30
+ ? lockdep_hardirqs_on+0x7d/0x100
+ entry_SYSCALL_64_after_hwframe+0x46/0xb0
+RIP: 0033:0x7fc9b2c9e0c4
+Code: 15 71 7d 0d 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 f3 =
+0f 1e fa 80 3d 3d 05 0e 00 00 74 13 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff f=
+f 77 54 c3 0f 1f 00 48 83 ec 28 48 89 54 24 18 48
+RSP: 002b:00007ffec29c81c8 EFLAGS: 00000202 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 000000000000000d RCX: 00007fc9b2c9e0c4
+RDX: 000000000000000d RSI: 0000559f8b5f48a0 RDI: 0000000000000001
+RBP: 0000559f8b5f48a0 R08: 0000559f8b5f3540 R09: 00007fc9b2d76d30
+R10: 0000000000000000 R11: 0000000000000202 R12: 000000000000000d
+R13: 00007fc9b2d77780 R14: 000000000000000d R15: 00007fc9b2d72a00  </TASK> =
+Modules linked in: sunrpc intel_rapl_msr intel_rapl_common intel_pmc_core_p=
+ltdrv intel_pmc_core intel_tcc_cooling x86_pkg_temp_thermal intel_powerclam=
+p coretemp kvm_intel ee1004 igbvf rapl vfat fat intel_cstate intel_uncore p=
+ktcdvd i2c_i801 pcspkr wmi_bmof i2c_smbus acpi_pad vfio_pci vfio_pci_core v=
+fio_virqfd zram fuse dm_multipath kvmgt mdev vfio_iommu_type1 vfio kvm irqb=
+ypass i915 nvme e1000e igb nvme_core crct10dif_pclmul crc32_pclmul crc32c_i=
+ntel polyval_clmulni polyval_generic serio_raw ghash_clmulni_intel sha512_s=
+sse3 dca drm_buddy intel_gtt video wmi drm_display_helper ttm
+CR2: 0000000000000150
+---[ end trace 0000000000000000 ]---
 
-Cc: Wang, Zhi <zhi.a.wang@intel.com>
-Cc: He, Yu <yu.he@intel.com>
+Cc: Wang Zhi <zhi.a.wang@intel.com>
+Cc: He Yu <yu.he@intel.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>
 Fixes: bc7b0be316ae ("drm/i915/gvt: Add basic debugfs infrastructure")
 Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 ---
- drivers/gpu/drm/i915/gvt/debugfs.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/gvt/debugfs.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/=
 debugfs.c
-index dfef822fdae0..e64d97e44716 100644
+index e64d97e44716..0616b73175f3 100644
 --- a/drivers/gpu/drm/i915/gvt/debugfs.c
 +++ b/drivers/gpu/drm/i915/gvt/debugfs.c
-@@ -216,6 +216,10 @@ void intel_gvt_debugfs_init(struct intel_gvt *gvt)
+@@ -192,8 +192,13 @@ void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vgp=
+u)
   */
- void intel_gvt_debugfs_clean(struct intel_gvt *gvt)  {
--	debugfs_remove_recursive(gvt->debugfs_root);
--	gvt->debugfs_root =3D NULL;
+ void intel_gvt_debugfs_remove_vgpu(struct intel_vgpu *vgpu)  {
+-	debugfs_remove_recursive(vgpu->debugfs);
+-	vgpu->debugfs =3D NULL;
++	struct intel_gvt *gvt =3D vgpu->gvt;
 +	struct drm_minor *minor =3D gvt->gt->i915->drm.primary;
 +
-+	if (minor->debugfs_root) {
-+		debugfs_remove_recursive(gvt->debugfs_root);
-+		gvt->debugfs_root =3D NULL;
++	if (minor->debugfs_root && gvt->debugfs_root) {
++		debugfs_remove_recursive(vgpu->debugfs);
++		vgpu->debugfs =3D NULL;
 +	}
  }
+=20
+ /**
 --
 2.38.1
 
