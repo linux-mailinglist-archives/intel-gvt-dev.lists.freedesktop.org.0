@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BC1964AA0D
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 12 Dec 2022 23:15:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D3B264BE30
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Dec 2022 22:05:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 603FF10E141;
-	Mon, 12 Dec 2022 22:15:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E9B0E10E35F;
+	Tue, 13 Dec 2022 21:05:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 12 Dec 2022 22:15:43 UTC
-Received: from mail.fa-colwerks.info (unknown [104.223.183.203])
- by gabe.freedesktop.org (Postfix) with ESMTP id D151E10E141
+X-Greylist: delayed 1666 seconds by postgrey-1.36 at gabe;
+ Tue, 13 Dec 2022 21:05:31 UTC
+Received: from mail.siplined-al.info (unknown [104.223.183.206])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3377C10E35F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 12 Dec 2022 22:15:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fa-colwerks.info;
+ Tue, 13 Dec 2022 21:05:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=siplined-al.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=brooke_wolfe@fa-colwerks.info; 
- bh=gp1DkoOUcyRNCANh2QaEWdxyZ18=;
- b=lb9gRm552sCPn8GlEug8ygPSPuAI481cl+SjqMnABggdvuUopx4wyEjFyppNzfmGH25+aSeNWaOk
- GojQdzeD6nSL8cnp4NEaeABRt9jijq89/awjNVyaWycj+GabR1KxVgoCC8fNPyFxkH5ACJtGugY3
- pucXT6MljTZ+adGCelE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fa-colwerks.info;
- b=QB3Ittry6ABjSIlp+67vVoqNpnmKC600Lmv2vkv/uPXkWTefwn2DTXbRYKb04SrV06ZFtOcMXEPc
- 0jmm4RKqp2wbOdH58k2ZkrDfebTFQ4+NzlezXGleZUXAN+rWp3taUfQkkuw/wCfckcT+0g/lMLSP
- xu47rcPlQ9DcfZymDHw=;
-Received: by mail.fa-colwerks.info id hiuk0u0001g6 for
+ i=harold.pearson@siplined-al.info; 
+ bh=zMA1uOeJ3W0y8WQYqKXiUvh7bdg=;
+ b=F9cTO99RqzwBceDkrZupIikEsDG3zy1QXHCoTtqn8TSd+trTyHMxpVYQr2OJ57V8GJWrMse+Flva
+ HnY6mBfo9zc/iufo0uzG1uape32kgZl1m5fnRq80LXFbEYBMdTFkL0eXs6XlbwTzxNmVoW9pawfF
+ +aQsbddRLLcCP8p75bg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=siplined-al.info;
+ b=Tnro9TraUpWAbGXJpX0XeChfOTGgEdX7TJvCRyWFx66QNaP3nsVzPq/IEQKsTSCc519rHIGsNgb8
+ 0JtKCS2EWUxYM/cJSQsFkiqUTIo1IdFeEhbzWlGjQVwvhg3Ej1w1o/igAtDa8TJ64kR42YJmhC8K
+ KLC9zmn26otLL5Em1og=;
+Received: by mail.siplined-al.info id hj3khm0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 12 Dec 2022 17:03:24 -0500 (envelope-from
- <brooke_wolfe-intel+2Dgvt+2Ddev=lists.freedesktop.org@fa-colwerks.info>)
-Date: Mon, 12 Dec 2022 17:03:24 -0500
-From: "Brooke Wolfe" <brooke_wolfe@fa-colwerks.info>
+ Tue, 13 Dec 2022 15:26:14 -0500 (envelope-from
+ <harold.pearson-intel+2Dgvt+2Ddev=lists.freedesktop.org@siplined-al.info>)
+Date: Tue, 13 Dec 2022 15:26:14 -0500
+From: "Harold Pearson" <harold.pearson@siplined-al.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Today's rewards on us to celebrate the holiday
+Subject: BONUS: $100 NetfIix Gift Card Opportunity
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_136_1476505660.1670882593375"
-Message-ID: <0.0.0.19A.1D90E758E3C7020.3CEAFC@mail.fa-colwerks.info>
+ boundary="----=_Part_148_1066003783.1670963148753"
+Message-ID: <0.0.0.23B.1D90F31258007EC.373981@mail.siplined-al.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,306 +53,149 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_136_1476505660.1670882593375
+------=_Part_148_1066003783.1670963148753
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html dir="ltr">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width" name="viewport" /> 
-  <title>do more saves</title> 
-  <style type="text/css">@media only screen {
-      html {
-        min-height: 100%;
-        background: #F7F8FA
-      }
-    }
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0;" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <style>
+/* Reset styles */ 
+body { margin: 0; padding: 0; min-width: 100%; width: 100% !important; height: 100% !important;}
+body, table, td, div, p, a { -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%; }
+table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; border-spacing: 0; }
+img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+#outlook a { padding: 0; }
+ReadMsgBody { width: 100%; } .ExternalClass { width: 100%; }
+ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
 
-    @media only screen and (max-width: 616px) {
-      .small-float-center {
-        margin: 0 auto !important;
-        float: none !important;
-        text-align: center !important
-      }
-    }
+/* Rounded corners for advanced mail clients only */ 
+@media all and (min-width: 560px) {
+	.container { border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; -khtml-border-radius: 8px;}
+}
 
-    @media only screen and (max-width: 616px) {
-      table.body img {
-        width: auto;
-        height: auto
-      }
 
-      table.body center {
-        min-width: 0 !important
-      }
+a, a:hover {
+	color: #127DB3;
+}
+footer a, .footer a:hover {
+	color: #999999;
+}
 
-      table.body .container {
-        width: 95% !important
-      }
-
-      table.body .columns {
-        height: auto !important;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        padding-left: 16px !important;
-        padding-right: 16px !important
-      }
-
-      table.body .columns .columns {
-        padding-left: 0 !important;
-        padding-right: 0 !important
-      }
-
-      table.body .collapse .columns {
-        padding-left: 0 !important;
-        padding-right: 0 !important
-      }
-
-      th.small-6 {
-        display: inline-block !important;
-        width: 50% !important
-      }
-
-      th.small-12 {
-        display: inline-block !important;
-        width: 100% !important
-      }
-
-      .columns th.small-12 {
-        display: block !important;
-        width: 100% !important
-      }
-
-      table.menu {
-        width: 100% !important
-      }
-
-      table.menu td,
-      table.menu th {
-        width: auto !important;
-        display: inline-block !important
-      }
-
-      table.menu.vertical td,
-      table.menu.vertical th {
-        display: block !important
-      }
-
-      table.menu[align=center] {
-        width: auto !important
-      }
-    }
-
-    @media screen and (max-width: 500px) {
-      .verification-row tr .right-img img {
-        display: none
-      }
-    }
-
-    @media screen and (max-width: 500px) {
-      .verification-row tr .left-img img {
-        display: none
-      }
-    }
-
-    @media screen and (max-width: 616px) {
-      .partner-cbs {
-        width: 86px !important;
-        height: 12px !important;
-        margin: 0 9px !important;
-      }
-
-      .partner-abc {
-        width: 22px !important;
-        height: 22px !important;
-        margin: 0 9px !important;
-      }
-
-      .partner-fox {
-        width: 35px !important;
-        height: 15px !important;
-        margin: 0 9px !important;
-      }
-
-      .partner-nbc {
-        width: 86px !important;
-        height: 12px !important;
-        margin: 0 9px !important;
-      }
-    }
-	</style> 
+ 	</style> 
+  <title>Welcome to Chained Thrift</title> 
  </head> 
- <body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1088.0" style="-moz-box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-box-sizing:border-box;-webkit-text-size-adjust:100%;Margin:0;background:#F7F8FA!important;box-sizing:border-box;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;min-width:100%;padding:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;text-align:left;width:100%!important"> 
-  <table class="body" style="margin: 0; background: #F7F8FA!important; border-collapse: collapse; border-spacing: 0; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; height: 100%; line-height: 1.3; text-align: left; vertical-align: top; width: 100%; padding: 0;"> 
-   <tbody> 
-    <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-     <td align="center" class="center" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 0;" valign="top"> 
-      <center style="min-width: 600px; width: 100%;"> 
-       <table align="center" class="container float-center" style="margin: 0 auto; background: #fefefe; border-collapse: collapse; border-spacing: 0; float: none; text-align: center; vertical-align: top; width: 600px; padding: 0;"> 
-        <tbody> 
-         <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-          <td style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 0;"> 
-           <table class="row" style="border-collapse: collapse; border-spacing: 0; display: table; padding: 0; position: relative; text-align: left; vertical-align: top; width: 100%;"> 
-            <tbody> 
-             <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-              <th class="header small-12 large-12 columns first last" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0 auto; background: #F7F8FA; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: center; vertical-align: top; width: 584px; word-wrap: break-word; padding: 44px 16px 36px 16px !important;"> 
-               <table style="border-collapse: collapse; border-spacing: 0; text-align: left; vertical-align: top; width: 100%; padding: 0;"> 
-                <tbody> 
-                 <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-                  <th style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 0;"> 
-                   <center style="min-width: 552px; width: 100%;">
-                    <a href="http://www.fa-colwerks.info/d314O2395N8z6H13t42fbsjA1034h36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQxddKR5gP10u5clkwD/socialized-homers"><img alt="" src="http://www.fa-colwerks.info/6655jI2395zX7aS11O4300Y1034B36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQxddKR6v1DPm06GkNMwD/desultory-approximating" style="max-width:300px" width="100%" /></a>
-                   </center> </th> 
-                  <th class="expander" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; padding: 0; text-align: left; vertical-align: top; visibility: hidden; width: 0; word-wrap: break-word;">&nbsp;</th> 
-                 </tr> 
-                </tbody> 
-               </table>  </th>
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="row" style="border-collapse: collapse; border-spacing: 0; display: table; padding: 0; position: relative; text-align: left; vertical-align: top; width: 100%;"> 
-            <tbody> 
-             <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-              <th class="small-12 large-12 columns first last" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0 auto; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; width: 584px; word-wrap: break-word; padding: 0 16px 16px 16px;"> 
-               <table style="border-collapse: collapse; border-spacing: 0; text-align: left; vertical-align: top; width: 100%; padding: 0;"> 
-                <tbody> 
-                 <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-                  <th style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 0;"> 
-                   <table class="top-img-table" style="border-collapse: collapse; border-spacing: 0; text-align: left; vertical-align: top; width: 100%; padding: 0;"> 
-                    <tbody> 
-                     <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-                      <td class="top-img-table__cell" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: center; vertical-align: top; word-wrap: break-word; padding: 48px 0 52px 0;"> <h1 class="main-header" style="margin: 0; margin-bottom: 10px; color: #192238; font-family: Helvetica,Arial,sans-serif; font-size: 24px; font-weight: bold; line-height: 118%; text-align: center; word-wrap: normal; padding: 0 0 28px 0;">Just a few clicks away<br /> to get started with your $100 SW Card</h1> 
-                       <center style="min-width: 552px; width: 100%;">
-                        <a href="http://www.fa-colwerks.info/d314O2395N8z6H13t42fbsjA1034h36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQxddKR5gP10u5clkwD/socialized-homers"><img alt="" src="http://www.fa-colwerks.info/89f4m2395j7aQo11o42fek1034M36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQxddKR5Pk10B6yyAwjD/desultory-approximating" style="
-                                        -ms-interpolation-mode: bicubic;
-                                        margin: 0 auto;
-                                        clear: both;
-                                        display: block;
-                                        float: none;
-                                        margin: 0 auto;
-                                        max-width: 100%;
-                                        outline: 0;
-                                        text-align: center;
-                                        text-decoration: none;
-                                        width: 465px;
-                                      " width="100%" /></a>
-                       </center> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </th>
-                 </tr>
-                </tbody>
-               </table>
-               <table class="welcome" style="border-collapse: collapse; border-spacing: 0; text-align: left; vertical-align: top; width: 100%; padding: 0;"> 
-                <tbody> 
-                 <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-                  <td style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 0 0 28px 0;"> 
-                   <center style="min-width: 552px; width: 100%;"> 
-                    <p align="center" class="float-center" style="margin: 0; margin-bottom: 0; color: #192238; font-family: Helvetica,Arial,sans-serif; font-size: 22px; font-weight: 400; line-height: 140%; max-width: 472px; text-align: center; padding: 0;"><b>Dear SW Traveler</b>.<br /> <br /> Your opinion is always appreciated and with simply 30-secs of your time to take our Service Survey about how your experience has been with us to get yours today.</p> 
-                   </center> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </th>
-             </tr>
-            </tbody>
-           </table>
-           <table class="verification-row" style="border-collapse: collapse; border-spacing: 0; text-align: left; vertical-align: top; width: 100%; padding: 0;  margin-bottom: 28px;"> 
-            <tbody> 
-             <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-              <td class="left-img" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: middle; word-wrap: break-word; padding: 0;">&nbsp;</td> 
-              <td class="verification-btn-wrapper" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: center; vertical-align: middle; word-wrap: break-word; padding: 0;"><a class="verification-btn" href="http://www.fa-colwerks.info/d314O2395N8z6H13t42fbsjA1034h36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQxddKR5gP10u5clkwD/socialized-homers" style="background: #F26A42; border-radius: 6px; color: #fff; font-family: Helvetica,Arial,sans-serif; font-size: 18px; font-weight: bold; line-height: 1.3; padding: 16px 27px; text-align: left; text-decoration: none;">Go Here To Start</a></td> 
-              <td class="right-img" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: middle; word-wrap: break-word; padding: 0;">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="star-separator" style="border-collapse: collapse; border-spacing: 0; text-align: left; vertical-align: top; width: 100%; padding: 0"> 
-            <tbody> 
-             <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-              <td style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 0;"> 
-               <center style="min-width: 552px; width: 100%;">
-                <br /> 
-                <span class="offer" style="
-                                      color: #000;
-                                      display: block;
-                                      font-size: 15px;
-                                      font-weight: 700;
-                                      padding-bottom: 25px;
-                                      text-align: center;
-                                    ">This ends on Dec 15th..</span>
-               </center> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="main-text" style="border-collapse: collapse; border-spacing: 0; text-align: left; vertical-align: top; width: 100%; padding: 0;"> 
-            <tbody> 
-             <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-              <td style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 0 0 23px 0;">&nbsp; &nbsp; <p>&nbsp;</p> <p>&nbsp;</p> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="help" style="border-collapse: collapse; border-spacing: 0; text-align: left; vertical-align: top; width: 100%; padding: 0;"> 
-            <tbody> 
-             <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-              <td style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 57px 0 20px 0;">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="feedback" style="border-collapse: collapse; border-spacing: 0; text-align: center; vertical-align: top; width: 100%; padding: 0;"> 
-            <tbody> 
-             <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-              <td style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 0 0 28px 0;"> 
-               <center style="min-width: 552px; width: 100%;"> 
-                <p align="center" class="float-center" style="margin: auto; margin-bottom: 10px; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; line-height: 1.3; max-width: 472px; text-align: center; padding: 0;">&nbsp;</p> 
-               </center> </td> 
-             </tr> 
-            </tbody> 
-           </table>  </td>
-          <th class="expander" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; padding: 0; text-align: left; vertical-align: top; visibility: hidden; width: 0; word-wrap: break-word;">&nbsp;</th> 
-         </tr> 
-        </tbody> 
-       </table>  
-      </center></td>
-    </tr> 
-   </tbody> 
-  </table> 
-  <table class="footer-block" style="background: #F7F8FA!important; border-collapse: collapse; border-spacing: 0; text-align: center; vertical-align: top; width: 100%; padding: 0;"> 
-   <tbody> 
-    <tr style="text-align: left; vertical-align: top; padding: 0px;"> 
-     <td class="footer-partners" style="margin: 0px; border-collapse: collapse !important; hyphens: auto; text-align: center; vertical-align: top; padding: 44px 0px 0px;"> 
-      <center style="min-width: 600px; width: 100%; text-align: center;">
-       &nbsp;
-      </center> </td> 
-    </tr> 
-    <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-     <td class="footer-text" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: left; vertical-align: top; word-wrap: break-word; padding: 52px 0 24px 0;"> 
-      <center style="min-width: 600px; width: 100%;"> 
-       <p align="center" class="float-center" style="margin: auto; margin-bottom: 10px; color: #848ea7; font-family: Helvetica,Arial,sans-serif; font-size: 14px; font-weight: 400; line-height: 140%; max-width: 472px; text-align: center; padding: 0;">No longer wish to receive notices from us?,<a href="http://www.fa-colwerks.info/e036B2H3T95U8tA613sY42fhcP1034n36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQxddKR5Cwt105qkwzD/rejoined-Reichstag" style="text-decoration-line: none; "> Begin This Way</a><br /> 917 East 19th Street New York, NY 10019&lt;</p> 
-      </center> </td> 
-    </tr> 
-    <tr style="text-align: left; vertical-align: top; padding: 0;"> 
-     <td class="footer-social" style="-moz-hyphens: auto; -webkit-hyphens: auto; margin: 0; border-collapse: collapse!important; color: #0a0a0a; font-family: Helvetica,Arial,sans-serif; font-size: 16px; font-weight: 400; hyphens: auto; line-height: 1.3; text-align: center; vertical-align: top; word-wrap: break-word; padding: 0 0 44px 0;"> 
-      <center style="min-width: 600px; width: 100%;">
-       &nbsp;
-      </center> </td> 
-    </tr> 
-   </tbody> 
-  </table>          
-  <div style="white-space:nowrap;font:15px courier;line-height:0">
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<big></big><font lang="electrophorus"></font><style id="meanings"><style face="outsiders"></style></style><span lang="refining"></span><span title="spurts"></span><span><font></span></font><small></small><style><span face="authorization"></style></span>
-  </div>  
-  <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration> 
- <img src="http://www.fa-colwerks.info/60b4b2395t85tR11S42ff_1034P36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQxddKR6u1Vo0B6l0PzwD/rejoined-Reichstag" alt=""/></body>
+ <body topmargin="0" rightmargin="0" bottommargin="0" leftmargin="0" marginwidth="0" marginheight="0" width="100%" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%; height: 100%; -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%;
+	background-color: #F0F0F0;
+	color: #000000;" bgcolor="#F0F0F0" text="#000000"> 
+  <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;" class="background">
+   <tbody>
+    <tr>
+     <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;" bgcolor="#F0F0F0"> 
+      <table border="0" cellpadding="0" cellspacing="0" align="center" width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" class="wrapper"> 
+       <tbody>
+        <tr> 
+         <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 20px;
+			padding-bottom: 20px;"> &nbsp; <h2 style="line-height: normal; font-family: sans-serif;">You are just a few clicks away to get <br />The <span style="color: #CE2626"><strong>$100 NETFLlX</strong></span> Card</h2> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <table border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#FFFFFF" width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" class="container"> 
+       <tbody>
+        <tr> 
+         <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; margin-bottom:10px; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 24px; font-weight: bold; line-height: 130%;
+			padding-top: 25px;
+			color: #000000;
+			font-family: sans-serif;" class="header"> <a href="http://www.siplined-al.info/6655n239w5F86VK12F43B06O1036M36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQkddKe5Sjn106K2lWwD/vaunted-infernos"> <img src="http://www.siplined-al.info/bathrobes-ameliorate/e5e6iM23I95U7saH13Km4T30aR1036i36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQkddKe5U10XC5OLkwD" alt="" width="100%" style="height:auto;display:block; max-width: 560px" /></a><br /> <br /> Simply complete our 20-Second Service Survey about how your experience has been with us lately. <br /> <br /> 
+          <table align="center" border="0" cellspacing="0" cellpadding="0" style="text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Roboto, Helvetica, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;"> 
+           <tbody>
+            <tr> 
+             <td align="center" bgcolor="#D00D28" style="border-radius: 100px; text-size-adjust: 100%; color: rgb(51, 51, 51); font-family: Roboto, Helvetica, sans-serif; border-collapse: collapse; border-spacing: 0px; border-width: 0px; border-style: none; font-size: 18px;"> <a href="http://www.siplined-al.info/6655n239w5F86VK12F43B06O1036M36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQkddKe5Sjn106K2lWwD/vaunted-infernos" target="_blank" style="font-size: 18px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #FFFFFF; text-decoration: none; padding: 10px 40px; border-radius:100px; font-weight:600; display: block;" rel="noopener noreferrer"> <span style="font-size: 18px; font-family: Roboto, Helvetica, Arial, sans-serif; color: #FFFFFF; font-weight:600;">Go Here To Start</span> </a> </td> 
+            </tr> 
+           </tbody>
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-bottom: 3px; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 18px; font-weight: 300; line-height: 150%;
+			padding-top: 5px;
+			color: #000000;
+			font-family: sans-serif;" class="subheader">&nbsp; </td> 
+        </tr> 
+        <tr>
+         <td valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+			padding-top: 20px;
+			color: #000000;
+			font-family: sans-serif;" class="paragraph"> 
+          <center>
+           <strong>We appreciate your opinion.</strong>
+          </center> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;" class="line">
+          <hr color="#E0E0E0" align="center" width="100%" size="1" noshade="" style="margin: 0; padding: 0;" /> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+			padding-top: 20px;
+			padding-bottom: 25px;
+			color: #000000;
+			font-family: sans-serif;" class="paragraph"> </td> 
+        </tr> 
+       </tbody>
+      </table> 
+      <table style="font-family:'Open Sans',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0"> 
+       <tbody> 
+        <tr> 
+         <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:14px;font-family:'Open Sans',sans-serif;" align="left"> 
+          <div align="center"> 
+           <div style="display: table; max-width:187px;"> 
+            <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 15px"> 
+             <tbody>
+              <tr style="vertical-align: top">
+               <td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top"> </td>
+              </tr> 
+             </tbody>
+            </table> 
+            <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 15px"> 
+             <tbody>
+              <tr style="vertical-align: top">
+               <td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top"> </td>
+              </tr> 
+             </tbody>
+            </table> 
+           </div> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <table border="0" cellpadding="0" cellspacing="0" align="center" width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" class="wrapper"> 
+       <tbody>
+        <tr> 
+         <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 13px; font-weight: 400; line-height: 150%;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			color: #999999;
+			font-family: sans-serif;" class="footer"> 
+          <div align="center">
+           <span><span>To update your email preferences,</span><a href="http://www.siplined-al.info/e994U2395b86Cq11B4307D1036g36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQkddKe7PZk1B0_5VkwDO/entertainments-Jonathan" style="text-decoration-line: none; "> <span>Continue_Over_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010</span>
+          </div> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <small></small><small></small><span color="creamers"></span><font><font id="osteopathy"></font></font> </td> 
+        </tr> 
+       </tbody>
+      </table> </td>
+    </tr>
+   </tbody>
+  </table>  
+ <img src="http://www.siplined-al.info/cb94Y2395e85LK12dI4309_1036G36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQkddKe7zk1Ugp05XTMwD/Cerberus-monitoring" alt=""/></body>
 </html>
 
-------=_Part_136_1476505660.1670882593375--
+------=_Part_148_1066003783.1670963148753--
 
