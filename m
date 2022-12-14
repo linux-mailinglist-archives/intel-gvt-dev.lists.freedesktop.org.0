@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A3C064D1C4
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Dec 2022 22:27:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B4CB964D204
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Dec 2022 22:59:27 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4015510E494;
-	Wed, 14 Dec 2022 21:27:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 70FBE10E49E;
+	Wed, 14 Dec 2022 21:58:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 14 Dec 2022 21:27:41 UTC
-Received: from mail.ad-wekelik.info (unknown [104.223.183.208])
- by gabe.freedesktop.org (Postfix) with ESMTP id D24FD10E492
+ Wed, 14 Dec 2022 21:58:54 UTC
+Received: from mail.cq-mewiks.info (unknown [104.223.183.210])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B841F10E49E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Dec 2022 21:27:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ad-wekelik.info; 
+ Wed, 14 Dec 2022 21:58:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cq-mewiks.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tracey.reeves@ad-wekelik.info; 
- bh=wxzV5ERxfaUaXMKM+EHIrlhdbLc=;
- b=jQ0zL5vj5n5bln+L8Xbr2Vn4YeWDG/5WemdF6eqCYdLFrNabhxufOxMdoI8xl1eimTMK/Gn8+oKN
- fRlJ2OKn15QYlqBi4EIEj2aMxhpBhaH9f/YvjA3Oz9jO41vyLfRVPNqYdFWsIVEXwzNCBr2Rl4DO
- LV688BiVT5NGWrhFb2U=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ad-wekelik.info;
- b=kFy9lKyqC/oLgdLoW2hCKWqS58uCVxc07PcXFbYEK9FsM+xCKDpeJ8F08Pz9mT3JfiCUTcIfeMPi
- crUM858aptSH3k6sV3MA+uSuDntbi8AIkEwWMku7W9igCO44aqfYz9Shrj9tBfXUqIRaDcB40cAW
- Gn7ep6thaNS2spuKR0g=;
-Received: by mail.ad-wekelik.info id hj8vsq0001g2 for
+ i=lois-mcbride@cq-mewiks.info; 
+ bh=f2n/FNSfid9jUcL7pI9m+Fzg2XE=;
+ b=eBaYYZ7wBh8AwROQ1odF/I10pe9RIXJi+81o/9qy1T+mJhM7qHpp7YuIst/oxT7UPIwflnk399RE
+ j8wCqdX6v1j2+SSkOtdwy2DvpbRJGDSsIPQFyBqpxjRaft9npDnZckt8s4f2/VkzndnatuygvgCc
+ USA1AOJbtAjz6QoVKAw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cq-mewiks.info;
+ b=Nd7ZJ2eKgpP1ZFZpjNwCqkmEOmhg9Z1bVICM1ZItt5dsYXdZVptjL850tZVL8cu554vu2iehABpX
+ tZPBjLMAzOLBG5HIN7VlrE49Bk2yghZG+yJ476NBhceY8xy1eohl/YNXXMShYX9maOZU4qPZjTGG
+ 0ROoi0LaIarKgibwh6U=;
+Received: by mail.cq-mewiks.info id hj9dsu0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Dec 2022 16:14:38 -0500 (envelope-from
- <tracey.reeves-intel+2Dgvt+2Ddev=lists.freedesktop.org@ad-wekelik.info>)
-Date: Wed, 14 Dec 2022 16:14:38 -0500
-From: "Tracey Reeves" <tracey.reeves@ad-wekelik.info>
+ Wed, 14 Dec 2022 18:09:44 -0500 (envelope-from
+ <lois-mcbride-intel+2Dgvt+2Ddev=lists.freedesktop.org@cq-mewiks.info>)
+Date: Wed, 14 Dec 2022 18:09:44 -0500
+From: "Lois Mcbride" <lois-mcbride@cq-mewiks.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best reward deal you can get for being a loyal customer
+Subject: Be next by leaving feedback.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_127_1606614105.1671052472250"
-Message-ID: <0.0.0.2D5.1D91001131D8A18.403D3E@mail.ad-wekelik.info>
+ boundary="----=_Part_133_7197142.1671054081639"
+Message-ID: <0.0.0.324.1D910112741B3B0.3B9AD0@mail.cq-mewiks.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,109 +53,223 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_127_1606614105.1671052472250
+------=_Part_133_7197142.1671054081639
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta charset="utf-8" /> 
-  <meta content="width=device-width,initial-scale=1" name="viewport" /> 
-  <meta name="x-apple-disable-message-reformatting" /> 
-  <title>fast my soul</title> 
-  <style type="text/css">table, td, div, h1, p {
-      font-family: Arial, sans-serif;
-    }
-    @media screen and (max-width: 530px) {
-      .unsub {
-        display: block;
-        padding: 8px;
-        margin-top: 14px;
-        border-radius: 6px;
-        background-color: #555555;
-        text-decoration: none !important;
-        font-weight: bold;
-      }
-      .col-lge {
-        max-width: 100% !important;
-      }
-    }
-    @media screen and (min-width: 531px) {
-      .col-sml {
-        max-width: 27% !important;
-      }
-      .col-lge {
-        max-width: 73% !important;
-      }
-    }
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" /> 
+  <meta content="width=device-width, initial-scale=1.0;" name="viewport" /> 
+  <meta content="telephone=no" name="format-detection" />
+  <!-- Responsive Mobile-First Email Template by Konstantin Savchenko, 2015. 	https://www.acgt2trk.com/2BNMKGSRD/3DD7K64/?sub1=b3&sub2=1214  --> 
+  <style type="text/css">/* Reset styles */ 
+body { margin: 0; padding: 0; min-width: 100%; width: 100% !important; height: 100% !important;}
+body, table, td, div, p, a { -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%; }
+table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; border-spacing: 0; }
+img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+#outlook a { padding: 0; }
+ReadMsgBody { width: 100%; } .ExternalClass { width: 100%; }
+ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
+
+/* Rounded corners for advanced mail clients only */ 
+@media all and (min-width: 560px) {
+	.container { border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; -khtml-border-radius: 8px;}
+}
+
+/* Set color for auto links (addresses, dates, etc.) */ 
+a, a:hover {
+	color: #127DB3;
+}
+footer a, .footer a:hover {
+	color: #999999;
+}
 	</style> 
+  <!-- MESSAGE SUBJECT --> 
+  <title>Welcome Vishnu!</title> 
  </head> 
- <body> 
-  <div aria-roledescription="email" lang="en" role="article" style="text-size-adjust:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#F9F9FB;"> 
-   <table role="presentation" style="width:100%;border:none;border-spacing:0;"> 
-    <tbody> 
-     <tr> 
-      <td align="center" style="padding:0;">
-       <!--[if mso]>
-          <table role="presentation" align="center" style="width:600px;">
-          <tr>
-          <td>
-          <![endif]--> 
-       <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;"> 
-        <tbody> 
-         <tr> 
-          <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;"> <h1 align="center" style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; color: hsla(0,100%,50%,1.00); font-size: 32px; line-height: normal">You are just a few clicks away<br /> to get The $100 CVS Card</h1> </td> 
-         </tr> 
-         <tr> 
-          <td style="padding:30px;background-color:#ffffff;"> <h1 style="margin-top:0;margin-bottom:16px;font: normal normal 600 19px/27px Creo;"><a href="http://www.ad-wekelik.info/d8b6M23k9q5j8i6n11q4310M1038Y36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQtdQmm6E1ISS06P2BwDl/nostalgic-shuffled"><img height="auto" src="http://www.ad-wekelik.info/e036l2VZ395MW7aT11m4313g1038F36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQtdQmm6SR10hD6Cll2wD/inventories-depositor" style="border:0;display:block;outline:none;text-decoration:none; width: 100%; max-width: 600px" width="100%" /> </a></h1> <p align="center" style="font-size: 32px"><strong>CVS</strong></p> <p style="margin:0;font: normal normal normal 13px/19px Creo; font-size: 22px; line-height: normal; text-align: center; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> 
-           <center>
-            &nbsp; 
-            <div style="background:#FF0000;color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:25px;font-weight:normal;line-height:120%;Margin:0;text-decoration:none;text-transform:none; border-radius: 6px; ; text-align: center; padding: 12px 50px; display: inline-block; margin: auto">
-             <a href="http://www.ad-wekelik.info/d8b6M23k9q5j8i6n11q4310M1038Y36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQtdQmm6E1ISS06P2BwDl/nostalgic-shuffled" style="text-decoration: none; color: #FFF">Get Started</a>
-            </div> 
-           </center> </td> 
-         </tr> 
-         <tr> 
-          <td style="padding: 0px 20px 20px 30px;background-color:#ffffff;"> <p style="visibility: collapse; display: none"><a href="http://www.ad-wekelik.info/behooves-distinctiveness/e405f239V5X86UT12B4311Mw1038S36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQtdQmm5goV106LywDXT" style="background: #cfedfd; text-decoration: none; padding: 12px 25px; color: #0079B7; border-radius: 12px; display:inline-block; mso-padding-alt:0;text-underline-color:#cfedfd"><span>on the morning</span></a></p> </td> 
-         </tr> 
-         <tr> 
-          <td style="padding:0px 30px 10px 30px;background-color:#ffffff;border-color:rgba(201,201,207,.35);"> 
-           <div style="padding: 10px;border-bottom:1px solid #f0f0f5"> 
-            <h2 align="center"><span><a href="http://www.ad-wekelik.info/d8b6M23k9q5j8i6n11q4310M1038Y36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQtdQmm6E1ISS06P2BwDl/nostalgic-shuffled">Spotlight on Weekly deals<br /> <br /> <br /> <img alt="" src="http://www.ad-wekelik.info/Putnam-Templeman/9ae5t23L95K7SJa11s4314w1038L36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQtdQmm7m10kqUw5tTwlD" style="width: 100%" width="100%" /> </a></span></h2> 
-           </div> </td> 
-         </tr> 
-         <tr> 
-          <td style="padding: 0px 30px 0px 30px;background-color:#ffffff;"> <h1 style="font: normal normal 600 16px/27px Creo;">&nbsp;</h1> </td> 
-         </tr> 
-         <tr> 
-          <td style="padding: 0px 30px 0px 30px;background-color:#ffffff;"> <p style="margin:0;font: normal normal normal 13px/19px Creo;">&nbsp;</p> </td> 
-         </tr> 
-         <tr> 
-          <td style="padding:30px;background-color:#ffffff;">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td style="padding:0px 30px 0px 30px;background-color:#ffffff;">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td style="padding:10px 30px 30px 30px;background-color:#ffffff;">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td style="padding:30px;background-color:#F9F9FB;">To shut down notifications,<a href="http://www.ad-wekelik.info/7375Q239D5tXW8612n431M2Q1038R36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQtdQmm6I1_0MS6zUl0wD/appendixes-nutshells" style="text-decoration-line: none;"> <span>Click This </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <small><small><small><small><style title="Australia"></style><big><style class="portent"></style><big><span></big><font dir="goddesses"></span></big></font><font></font><font lang="pharmacy"></font><font></font></small></small></small></small></td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <!--[if mso]>
-          </td>
-          </tr>
-          </table>
-          <![endif]--></td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.ad-wekelik.info/inventories-depositor/ed66zL239_5i8Os512O431V5L1038w36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQtdQmm6HI1ut06K2OwDz" alt=""/></body>
+ <!-- BODY -->
+ <!-- Set message background color (twice) and text color (twice) --> 
+ <body bgcolor="#F0F0F0" bottommargin="0" leftmargin="0" marginheight="0" marginwidth="0" rightmargin="0" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%; height: 100%; -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%;
+	background-color: #F0F0F0;
+	color: #000000;" text="#000000" topmargin="0" width="100%">
+  <!-- SECTION / BACKGROUND -->
+  <!-- Set message background color one again --> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" class="background" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center" bgcolor="#F0F0F0" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;" valign="top">
+      <!-- WRAPPER -->
+      <!-- Set wrapper width (twice) --> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="wrapper" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" width="560"> 
+       <tbody> 
+        <tr> 
+         <td align="center" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 20px;
+			padding-bottom: 20px;" valign="top">
+          <!-- PREHEADER -->
+          <!-- Set text color to background color --> 
+          <div class="preheader" style="display: none; visibility: hidden; overflow: hidden; opacity: 0; font-size: 1px; line-height: 1px; height: 0; max-height: 0; max-width: 0;
+			color: #F0F0F0;">
+           Successfully Onboard&nbsp;With&nbsp;CSummit
+          </div> 
+          <!-- LOGO -->
+          <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2. URL format: http://domain.com/?utm_source=Campaign-Source&utm_medium=email&utm_content=logo&utm_campaign=Campaign-Name -->&nbsp;</td> 
+        </tr> 
+        <!-- End of WRAPPER --> 
+       </tbody> 
+      </table> 
+      <!-- WRAPPER / CONTEINER -->
+      <!-- Set conteiner background color --> 
+      <table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="container" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" width="560">
+       <!-- HEADER -->
+       <!-- Set text color and font family ("sans-serif" or "Georgia, serif") --> 
+       <tbody> 
+        <tr> 
+         <td align="center" class="header" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 24px; font-weight: bold; line-height: 130%;
+			padding-top: 25px;
+			color: #000000;
+			font-family: sans-serif;" valign="top"> 
+          <center>
+           <a href="http://www.cq-mewiks.info/P4d4W2395Eh8J612G4W316Y1039Y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQXdQmn7S1AO0BC6s1wkD@/romantic-abstaining"><img alt="" src="http://www.cq-mewiks.info/Geary-retrieving/e045s2M395Hw7aT11k4318x1039G36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQXdQmn6vPnC105OX0wD" width="200" /></a>
+          </center> <br /> You are just a few clicks away to get The $100 Costco Card</td> 
+        </tr> 
+        <!-- SUBHEADER -->
+        <!-- Set text color and font family ("sans-serif" or "Georgia, serif") --> 
+        <tr> 
+         <td align="center" class="subheader" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-bottom: 3px; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 18px; font-weight: 300; line-height: 150%;
+			padding-top: 5px;
+			color: #000000;
+			font-family: sans-serif;" valign="top">&nbsp;</td> 
+        </tr> 
+        <!-- HERO IMAGE -->
+        <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 (wrapper x2). Do not set height for flexible images (including "auto").  --> 
+        <tr> 
+         <td align="center" class="hero" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+			padding-top: 20px;" valign="top"><a href="http://www.cq-mewiks.info/P4d4W2395Eh8J612G4W316Y1039Y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQXdQmn7S1AO0BC6s1wkD@/romantic-abstaining" style="text-decoration: none;" target="_blank"><img alt="Please enable images to view this content" border="0" hspace="0" src="http://www.cq-mewiks.info/iniquities-placements/f305V239g5JB7aV12f4319uR1039I36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQXdQmn5yZN106h0wDJ1" style="
+			width: 100%;
+			max-width: 560px;
+			color: #000000; font-size: 13px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;" title="Hero Image" vspace="0" width="560" /></a></td> 
+        </tr> 
+        <!-- PARAGRAPH -->
+        <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height --> 
+        <tr> 
+         <td align="center" class="paragraph" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 22px; font-weight: 400; line-height: 160%;
+			padding-top: 25px; 
+			color: #000000;
+			font-family: sans-serif;" valign="top">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</td> 
+        </tr> 
+        <!-- BUTTON -->
+        <!-- Set button background color at TD, link/text color at A and TD, font family ("sans-serif" or "Georgia, serif") at TD. For verification codes add "letter-spacing: 5px;". Link format:  --> 
+        <tr> 
+         <td align="center" class="button" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;
+			padding-bottom: 5px;" valign="top"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 240px; min-width: 120px; border-collapse: collapse; border-spacing: 0; padding: 0;"> 
+           <tbody> 
+            <tr> 
+             <td align="center" bgcolor="#E9703E" style="padding: 12px 24px; margin: 0; text-decoration: underline; border-collapse: collapse; border-spacing: 0; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px;" valign="middle"><a href="http://www.cq-mewiks.info/P4d4W2395Eh8J612G4W316Y1039Y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQXdQmn7S1AO0BC6s1wkD@/romantic-abstaining" style="text-decoration: underline;
+					color: #FFFFFF; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 120%; text-decoration: none" target="_blank"><strong>GO HERE TO START</strong> </a></td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <!-- LINE -->
+        <!-- Set line color --> 
+        <tr> 
+         <td align="center" class="line" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;" valign="top"> 
+          <hr align="center" color="#E0E0E0" noshade="noshade" size="1" style="margin: 0; padding: 0;" width="100%" /></td> 
+        </tr> 
+        <!-- LIST --> 
+        <tr> 
+         <td align="center" class="list-item" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%;" valign="top"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: inherit; margin: 0; padding: 0; border-collapse: collapse; border-spacing: 0;">
+           <!-- LIST ITEM --> 
+           <tbody> 
+            <tr>
+             <!-- LIST ITEM IMAGE -->
+             <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 --> 
+             <td align="left" style="border-collapse: collapse; border-spacing: 0;
+					padding-top: 30px;
+					padding-right: 20px;" valign="top">&nbsp;</td> 
+             <!-- LIST ITEM TEXT -->
+             <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height --> 
+             <td align="left" class="paragraph" style="font-size: 17px; font-weight: 400; line-height: 160%; border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+					padding-top: 25px;
+					color: #000000;
+					font-family: sans-serif;" valign="top">&nbsp;</td> 
+            </tr> 
+            <!-- LIST ITEM --> 
+            <tr>
+             <!-- LIST ITEM IMAGE -->
+             <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 --> 
+             <td align="left" style="border-collapse: collapse; border-spacing: 0;
+					padding-top: 30px;
+					padding-right: 20px;" valign="top">&nbsp;</td> 
+             <!-- LIST ITEM TEXT -->
+             <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height --> 
+             <td align="left" class="paragraph" style="font-size: 17px; font-weight: 400; line-height: 160%; border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+					padding-top: 25px;
+					color: #000000;
+					font-family: sans-serif;" valign="top">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <!-- LINE -->
+        <!-- Set line color --> 
+        <tr> 
+         <td align="center" class="line" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;" valign="top"> 
+          <hr align="center" color="#E0E0E0" noshade="noshade" size="1" style="margin: 0; padding: 0;" width="100%" /></td> 
+        </tr> 
+        <!-- PARAGRAPH -->
+        <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height --> 
+        <tr> 
+         <td align="center" class="paragraph" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+			padding-top: 20px;
+			padding-bottom: 25px;
+			color: #000000;
+			font-family: sans-serif;" valign="top">To shut down e-mail,<a href="http://www.cq-mewiks.info/a7f5A239o5K86IS12fX4317Q1039m36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXdQmn7wV10sIm5DlwUD/shines-revolter" style="text-decoration-line: none;"> <span>Start-Over-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> &nbsp;</td> 
+        </tr> 
+        <!-- End of WRAPPER --> 
+       </tbody> 
+      </table> 
+      <!-- WRAPPER -->
+      <!-- Set wrapper width (twice) --> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="wrapper" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" width="560">
+       <!-- SOCIAL NETWORKS -->
+       <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 --> 
+       <tbody> 
+        <tr> 
+         <td align="center" class="social-icons" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;" valign="top"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-spacing: 0; padding: 0;" width="256"> 
+          </table> </td> 
+        </tr> 
+        <!-- FOOTER -->
+        <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height --> 
+        <tr> 
+         <td align="center" class="footer" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 13px; font-weight: 400; line-height: 150%;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			color: #999999;
+			font-family: sans-serif;" valign="top"><small><small><small><small><style></style><big></big><font class="amendment"><big><big></big></font><style></style></big><font dir="Hapsburg"></font><font face="Axel"><style></font></style><style></style><font color="Waveland"></font></small></small></small></small> &nbsp;</td> 
+        </tr> 
+        <!-- End of WRAPPER --> 
+       </tbody> 
+      </table> 
+      <!-- End of SECTION / BACKGROUND --></td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.cq-mewiks.info/funnily-unfitness/7ec6J23Ux95Gjm8512Y4k31aG1039x36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQXdQmn7w1NC0OO6GzUwDl" alt=""/></body>
 </html>
 
-------=_Part_127_1606614105.1671052472250--
+------=_Part_133_7197142.1671054081639--
 
