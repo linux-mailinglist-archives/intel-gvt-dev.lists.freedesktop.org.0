@@ -2,57 +2,58 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5492E64D57A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Dec 2022 04:12:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E528964D9B4
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Dec 2022 11:47:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 491CD10E4EA;
-	Thu, 15 Dec 2022 03:12:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1F32210E524;
+	Thu, 15 Dec 2022 10:47:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x129.google.com (mail-lf1-x129.google.com
- [IPv6:2a00:1450:4864:20::129])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4BE8910E4E8
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 15 Dec 2022 03:11:57 +0000 (UTC)
-Received: by mail-lf1-x129.google.com with SMTP id c1so13625830lfi.7
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Dec 2022 19:11:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=iMgfh4dNrbZNC0zackE+NFoHodFU+BrSQXwCeyK59sA=;
- b=CfLbLlwQSce8fpDQKw6zgnHn2P0oFOD2MfGQXO+cMwZoUuCJqsDOpduzUY4n1QGc0Y
- gjUr+1idp7FwpovLYWyWjt7CrcSwXXBa9dvCRNDSO1ZdO0P+ZHC7qkyWGdDCkohwex4z
- L/qre98dIsb6ovkqgiaqSHdHjBRmKC5dS4qffgsXl3VK9V98By26tEB1TtKeLZam3q/R
- RAm0KAWXQXjAAsjWY5DDOBjowjJ1Z7RmdW5NlQYPpQKer+Y92R7eKldZvDJYtBczTfp3
- /EcjZO328ms3jbiV7c3owlVIGENMdwTuCswmz2y7m3ZfTZQseBroEMwycsIlhrUNZeBW
- zcrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=iMgfh4dNrbZNC0zackE+NFoHodFU+BrSQXwCeyK59sA=;
- b=F8w8T1fohsCTjLAxzam9Cwy5Whn7pe+1M7j1H3PS6d8zEiNl59HlMSVfN8499FqSHR
- Hoo555sFo2Vs8xwBkA43Wd6qHFbkoL8JWXsHTtfQDE3LFvbYmdoF98knj9NqwlmwXJgg
- TzZhhdmx9xk/GJ91uh8h4aqZuQN4p+0iMyBTIPG55j0dchvC76rHITXaGqBhETPw2XoY
- mrERCup8DiIyTKKiwIZ7DpVU4JhtUTEl8wthWC3JeQYFxv+QmUlP6YD7ac0sy3n8EBUg
- rTby/3jgu0hD+QyDRhlOnq+iMexiijSrG1ZibMk1uNlmXMDrqeP9YljLiI58w/KNJ2BU
- FfPQ==
-X-Gm-Message-State: ANoB5pl1dcc1jqMukewYzdclrRD92Cxh9GAqzbqJsXJDDNMkT9C49nsX
- jpoXeTfim3oT6VjbyJsdUaJMlfOp1Z5zd7db2DA=
-X-Google-Smtp-Source: AA0mqf4dl86iIAE7Utodcn/eNA//TgjPvB7InhtV5ws40bN9hrtMdNE3T82VBBZaon7filce00qFAh+RCtwtGii/3Jw=
-X-Received: by 2002:a05:6512:3e1c:b0:4b4:eb69:10dc with SMTP id
- i28-20020a0565123e1c00b004b4eb6910dcmr29168628lfv.552.1671073915586; Wed, 14
- Dec 2022 19:11:55 -0800 (PST)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1F2A410E534;
+ Thu, 15 Dec 2022 10:47:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1671101271; x=1702637271;
+ h=mime-version:content-transfer-encoding:in-reply-to:
+ references:cc:to:from:subject:message-id:date;
+ bh=zXYj1X5CN56Thb0qJ7a7VOyNGgqdnnoyOz96f3OSkIQ=;
+ b=oBwLuG6d6woeX1UwtYcqzOCZ2yZ336xc6NGjY67Ja3kSZTJqzwE0WwKh
+ WOan53kSGHg4FZapfpMCXSEN6vWU3SPG2UsPVHrtHjyI4yHkridqz8VIj
+ I1VR2hNWDnqydkh4ZjVz/Oc9z0Unos6vtdGDmERg3MlHCfzYHGy72bw2J
+ EeKJ+KvdaZVJ5/yXn0bD+pomVM/lXk7tHeF0zVKro6GO3OLWZr4Z3+SAe
+ zRe72A44h0tMWDEY/81kvn05qDz7nBD7ATbhTUhqpBSOiDV//fjEA7As0
+ GipOxBQdwno9NMXKP9kLlwDR1IeGFMkt9kX2l6hwWFatwVkpNlvimUXIK w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10561"; a="318688889"
+X-IronPort-AV: E=Sophos;i="5.96,247,1665471600"; d="scan'208";a="318688889"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2022 02:47:50 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10561"; a="712856394"
+X-IronPort-AV: E=Sophos;i="5.96,247,1665471600"; d="scan'208";a="712856394"
+Received: from wokeeffe-mobl1.ger.corp.intel.com (HELO localhost)
+ ([10.252.6.24])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2022 02:47:43 -0800
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Received: by 2002:ab2:7099:0:b0:179:cce9:816e with HTTP; Wed, 14 Dec 2022
- 19:11:55 -0800 (PST)
-From: "Mr.K.Mashal" <akatajude@gmail.com>
-Date: Thu, 15 Dec 2022 04:11:55 +0100
-Message-ID: <CAHzJTy2kBwztPS8iciiA9JWg4X8BDueLw2sqQAp21AFDmB8amw@mail.gmail.com>
-Subject: Profitable Business Concept.
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAPM=9twhAL+c8mOLmidY_tEhEKwCh-CTjfs5yryOk8oGjMxuug@mail.gmail.com>
+References: <Yz8rIxV7bVCcfZb0@kroah.com>
+ <20221007013708.1946061-1-zyytlz.wz@163.com>
+ <CAPM=9ty0+ouf+rQWhM=9XSKFOA2zxKfa00MsNBvwrQGPQm2uPQ@mail.gmail.com>
+ <CAJedcCwxioxr+4TBTdrEjAZh97J3oroSHSgax+bxSNRXCBvkRg@mail.gmail.com>
+ <CAPM=9twhAL+c8mOLmidY_tEhEKwCh-CTjfs5yryOk8oGjMxuug@mail.gmail.com>
+To: Dave Airlie <airlied@gmail.com>, Zheng Hacker <hackerzheng666@gmail.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+From: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+Subject: Re: [PATCH v3] drm/i915/gvt: fix double free bug in
+ split_2MB_gtt_entry
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Message-ID: <167110126066.5360.11413014428644610672@jlahtine-mobl.ger.corp.intel.com>
+User-Agent: alot/0.8.1
+Date: Thu, 15 Dec 2022 12:47:40 +0200
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,16 +66,50 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: nn9122250@gmail.com
+Cc: alex000young@gmail.com, security@kernel.org, airlied@linux.ie,
+ gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ 1002992920@qq.com, Zheng Wang <zyytlz.wz@163.com>,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Sir
+(+ Tvrtko as FYI)
 
-I have a Lucrative Investment business proposal/Next of Kin
-opportunity if interested kindly contact me for more details:(
-dalh52179@gmail.com )
+Zhenyu, can you take a look at the patch ASAP.
 
-Regards
-Mr.Khader Mashal
-( dalh52179@gmail.com )
+Regards, Joonas
+
+Quoting Dave Airlie (2022-10-27 08:12:31)
+> On Thu, 27 Oct 2022 at 13:26, Zheng Hacker <hackerzheng666@gmail.com> wro=
+te:
+> >
+> > Dave Airlie <airlied@gmail.com> =E4=BA=8E2022=E5=B9=B410=E6=9C=8827=E6=
+=97=A5=E5=91=A8=E5=9B=9B 08:01=E5=86=99=E9=81=93=EF=BC=9A
+> > >
+> > > On Fri, 7 Oct 2022 at 11:38, Zheng Wang <zyytlz.wz@163.com> wrote:
+> > > >
+> > > > If intel_gvt_dma_map_guest_page failed, it will call
+> > > > ppgtt_invalidate_spt, which will finally free the spt.
+> > > > But the caller does not notice that, it will free spt again in erro=
+r path.
+> > > >
+> > > > Fix this by spliting invalidate and free in ppgtt_invalidate_spt.
+> > > > Only free spt when in good case.
+> > > >
+> > > > Reported-by: Zheng Wang <hackerzheng666@gmail.com>
+> > > > Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> > >
+> > > Has this landed in a tree yet, since it's a possible CVE, might be
+> > > good to merge it somewhere.
+> > >
+> > > Dave.
+> > >
+> >
+> > Hi Dave,
+> >
+> > This patched hasn't been merged yet. Could you please help with this?
+>=20
+> I'll add some more people who can probably look at it.
+>=20
+> Dave.
