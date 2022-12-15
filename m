@@ -2,42 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61DE964D318
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Dec 2022 00:14:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A3D6964D579
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 15 Dec 2022 04:12:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 67E6710E4C1;
-	Wed, 14 Dec 2022 23:14:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5E7B910E4E9;
+	Thu, 15 Dec 2022 03:11:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 14 Dec 2022 23:14:22 UTC
-Received: from mail.lg-oistga.info (unknown [104.223.183.211])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8DB1010E4C4
+Received: from mail-lf1-x12d.google.com (mail-lf1-x12d.google.com
+ [IPv6:2a00:1450:4864:20::12d])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3373310E4E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Dec 2022 23:14:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lg-oistga.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=elena_george@lg-oistga.info; 
- bh=M0P5q0Elys/UA8KpR6Phd+EsXuI=;
- b=x+uHdJVdQYmak/yUcoA/F4QO5lb2goC9nePsLDjHSv/tQCOlu4KxebdDN/cH0Zu9X3fXW3tnbHHx
- hHrztj8Ibh2771CdwKijumG0ZAbjMzo9LXaEZ/cP7AHVo4vy4UDsAPF5U7P3vuTZC9rniPZn+qBD
- U4tby9b+uClCkFAXglo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lg-oistga.info;
- b=JVOnBu4N9W6qGD/owiwlyTcbgQyxT7ayS4ri4fWbFgaSv6wD3nEp5rxCbYBI72HsvrClUh+Idxys
- n4Qd0Mvze1O3kPsQGQJc/eRMkpu4h8julUkKI0b/CdBhS45e29stYQ24Uja3CudkH4jFuI00NNpE
- d0MnyVxzMAPyWvvwKDM=;
-Received: by mail.lg-oistga.info id hj9mnu0001g5 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 14 Dec 2022 19:17:09 -0500 (envelope-from
- <elena_george-intel+2Dgvt+2Ddev=lists.freedesktop.org@lg-oistga.info>)
-Date: Wed, 14 Dec 2022 19:17:09 -0500
-From: "Elena George" <elena_george@lg-oistga.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We appreciate your loyalty, pick any drink on us
+ Thu, 15 Dec 2022 03:11:57 +0000 (UTC)
+Received: by mail-lf1-x12d.google.com with SMTP id z26so13626235lfu.8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 14 Dec 2022 19:11:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=iMgfh4dNrbZNC0zackE+NFoHodFU+BrSQXwCeyK59sA=;
+ b=p6Gns1Kjmygo8Zk9Mr8DKS19oJv/xUdiw7IX66faVK+W/7jk8q5xL6/zgrrnqJB0mv
+ ZQFcWn9IOFsMfArWSn+D0mKP5KbgKeVdvbNIS4CINWgKI+80LODtOaZrpkzanfXGjYHo
+ ioG9IShzUTh2lbwhb/1hQDo0dWGeEA6dsilTUNdlWhQi5rz+259lEH9cUM9e4DpRErjN
+ 7fm6NBSbXWU1kO9RQyMDw/vMMsariR38luNj+vPhfu+vGlBTreU2Dovfx5wL3w5yM3GR
+ qVnE0mVCuDeYOCuRn+Mrl9sL4wZWZ61lAQ0+1AJJ59LfcLqL8d44WU00By+UEbzd7ms3
+ /gKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=iMgfh4dNrbZNC0zackE+NFoHodFU+BrSQXwCeyK59sA=;
+ b=eP4P27wXK2lWv4vhTAyXskCsLmQRrA5rWLa6PLMq8xIvr0XsErZoxNQIPZwAhRzl+K
+ kSrA16wlrGU3FjVQGAtPN4i8FRViUu47Ra9cXnXc5IfLaFiZDVBUgNEPK02BvEbQdPQE
+ XFu2PZdU65AoqHjxXDbUY1Y3bT6xBgXckyGNTgE4DB5s3ufQhQmQyFOixYFgZg0BUy8e
+ PNIQUcbIUNV/kresjHMn/IkmEW0Sc5fxN+r5uVFpWEJ5mFI/JUt2+ZtlbswbSUrQMkCO
+ lliiUNna8PBcbghEzKS/aFdONqdfq1UdUkKVyNgvFLd+fKmvnKKb2dRNXt4RHBOOPaAX
+ wX2Q==
+X-Gm-Message-State: ANoB5pnSk8UPVWecur4DCX0L79Rtaqtzm3L5hE7LTn94S2MhwZEB6rsB
+ AuOWzquaV0uhhF/RCCzIj3FXQSnwBTHHwYEsCUE=
+X-Google-Smtp-Source: AA0mqf4c0zDyED5AGpeCl3cKE80IoWP2kwRnvyc5fecjyMwAent4tNwl+fuWfXtc2wv5Xvb+YNT09o9eEpI3LkyaNDE=
+X-Received: by 2002:a05:6512:3baa:b0:4b6:f430:782 with SMTP id
+ g42-20020a0565123baa00b004b6f4300782mr554244lfv.146.1671073915361; Wed, 14
+ Dec 2022 19:11:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_475_1631973679.1671058067961"
-Message-ID: <0.0.0.398.1D9101A927C5046.28ADD7@mail.lg-oistga.info>
+Received: by 2002:ab2:7099:0:b0:179:cce9:816e with HTTP; Wed, 14 Dec 2022
+ 19:11:54 -0800 (PST)
+From: "Mr.K.Mashal" <akatajude@gmail.com>
+Date: Thu, 15 Dec 2022 04:11:54 +0100
+Message-ID: <CAHzJTy1RL=0e6CTr_co99NmdrmvPtygHc2atPbqEJv86atp15A@mail.gmail.com>
+Subject: Profitable Business Concept.
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,147 +65,16 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: nn9122250@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_475_1631973679.1671058067961
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Dear Sir
 
-<html lang="en">
- <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="x-apple-disable-message-reformatting" /> 
-  <title>vs tops</title> 
-  <style type="text/css">table{
-            background-color: #fff;
-        }
-        
-        table, p, tr, td {
-            margin: 0; 
-            border: 0;
-            padding: 0;
-            border-spacing: 0;
-            
-        }
+I have a Lucrative Investment business proposal/Next of Kin
+opportunity if interested kindly contact me for more details:(
+dalh52179@gmail.com )
 
-        p {
-            font-family: Rubik, Helvetica, Arial, sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 32px;
-            color: #231815;
-        }
-
-        li {
-            font-family: Rubik, Helvetica, Arial, sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 32px;
-            color: #231815;
-        }
-
-        @media screen and (min-width: 621px) {
-            table{
-                width: 500px;
-            }
-
-            .HorizontalTable_text {
-                width: 400px;
-            }
-
-            .verticalTable_2C{
-                width: 246px;
-            }
-
-            .verticalTable_3C{
-                width: 149px;
-            }
-            
-        }
-
-        @media only screen and (min-width: 320px) and (max-width: 500px) {
-
-            table {
-                width: 100%;
-            }
-
-            .centerMobile {
-                text-align: left;
-            }
-
-            .HorizontalTable_text {
-                padding-left: 0 !important;
-            }
-
-            .HorizontalTable_image {
-                padding: 10px;
-                display: block !important;
-                margin: 0 auto !important;
-            } 
-
-            .verticalTable_2C{
-                padding: 0 18px !important;
-                margin: 18px 0 18px 0;
-            }
-
-
-            .verticalTable_3C {
-                text-align: center;
-            }
-        }
-        </style> 
- </head> 
- <body autocomplete="off" data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1024.0" style="width:100%; margin:0; padding:0"> 
-  <div style="width:100%; margin:0; padding:0"> 
-   <div style="background-color: #F7F8F8;">
-    <!-- Header Logo --> 
-    <table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto; max-width: 500px;"> 
-     <tbody> 
-      <tr style="height: 100px; background-color:#ffffff;"> 
-       <td style="text-align: right;"><span style="text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><a href="http://www.lg-oistga.info/3ef4S2395oC8H613vB431emu103aq36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQLdQmo5c1OS06flwplD/angstrom-colloquial" style="text-decoration:none;"></a></span> 
-        <div> 
-         <p style="font-family: Rubik, Helvetica, Arial, sans-serif; font-size: 32px; font-weight: 500; line-height: 22px; color: #2b2b2b;margin-right: 10px; text-align: center"><strong>STARBUCKS COFFEE</strong> </p> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <!-- Plans --> 
-    <table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto; max-width: 500px;"> 
-     <tbody> 
-      <tr> 
-       <td style="padding: 1px px 1px 1px;"> <p style="font-family: Rubik, Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 500; line-height: 30px; color: #2b2b2b; text-align: center;"> <a href="http://www.lg-oistga.info/aqua-professes/a445il2395X8MM612V431bUU103aY36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQLdQmo5kWy105NM3wD"><img style="width: 100%; max-width: 500px" src="http://www.lg-oistga.info/sworn-marketed/15c4d2395yQ7ao13E43r1wcu103aS36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQLdQmo7w1tY0LC5aJMwD" alt="" /></a> </p> </td> 
-      </tr> 
-     </tbody> 
-     <!-- Colour Pad --> 
-    </table> 
-    <table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto; max-width: 500px;"> 
-     <tbody> 
-      <tr style=" background-color:#FCECEB;"> 
-       <td style="padding: 10px 0px 10px 0px;">
-        <!-- Colour Pad ? images--> <h3 align="center" style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 26px">Dear Starbucks Customer<br /> We appreciate your opinion.</h3> <br /> <p align="center" style="font-size: 22px; padding-left: 20px; padding-right: 10px">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <table border="0" cellpadding="0" cellspacing="0" style="margin:0 auto; max-width: 500px;"> 
-     <tbody> 
-      <tr style="height: 10px; background-color:#FCECEB;"> 
-       <td style="padding: 18px 36px;" align="center"><a href="http://www.lg-oistga.info/aqua-professes/a445il2395X8MM612V431bUU103aY36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQLdQmo5kWy105NM3wD" style="line-height: 24px; text-decoration: none; word-break: break-word; font-weight: 500; display: block; font-family: Rubik, Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; background-color: #0373F9;               padding:8px 40px; border-radius: 4px; width: fit-content;">Go Here To Start</a></td> 
-      </tr> 
-     </tbody> 
-     <tbody> 
-      <tr> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <!-- -->
-   </div>
-  </div>
- <img src="http://www.lg-oistga.info/angstrom-colloquial/d144e2395J85kN13Cn431dRt103ah36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQLdQmo6Nv10rW6KlTkwD" alt=""/></body>
-</html>
-
-------=_Part_475_1631973679.1671058067961--
-
+Regards
+Mr.Khader Mashal
+( dalh52179@gmail.com )
