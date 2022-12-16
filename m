@@ -2,41 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93C7D64EE13
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Dec 2022 16:46:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8848264F2B7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Dec 2022 21:54:09 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 578E610E5E1;
-	Fri, 16 Dec 2022 15:46:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3FF6710E632;
+	Fri, 16 Dec 2022 20:54:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 846 seconds by postgrey-1.36 at gabe;
- Fri, 16 Dec 2022 15:45:56 UTC
-Received: from mail.telbroe-na.info (unknown [104.223.183.216])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5B94510E5DE
+X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
+ Fri, 16 Dec 2022 20:53:59 UTC
+Received: from mail.reloekems.info (unknown [104.223.183.218])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EB41C10E62F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Dec 2022 15:45:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=telbroe-na.info; 
+ Fri, 16 Dec 2022 20:53:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=reloekems.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=pablo.rowe@telbroe-na.info; bh=kbCqVcfYnPawnsz35cU+Vnijds0=;
- b=F9JbFPwHbdgH82dd9nheQOtXBdQXoQRGaKRi6FYefISNXcf1njBfAAyDJkMnYkoLDC/MNPdSGUTH
- MbFtmHnO1EPxzNyspvHw9RH/2o58ctaWVgo6vImTXKE//DEsgkAhUSxPUy7zreuDSeE49Q747D/P
- h52Zf2jNREUyzCg4fzs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=telbroe-na.info;
- b=RtVFTTvP6fjfDIGgT+9LkPCQrrwyouhJFxt5x9jQku1/7fICB9x/aUoymVaUXSjrDec7ONnX/2Bh
- xWDO4Q/xt4e5qrtUO/uHXf18R7NHR6bgMSKST7K5G+2RLf8J0flILGZFKhadJl8iX4NAfSCBAfSp
- dMif9foInKCfMDlLEhI=;
-Received: by mail.telbroe-na.info id hji9b80001gb for
+ i=walgreens-user-feedback@reloekems.info; 
+ bh=qz2i9mvlEq2e6ZfTuyWMw1NPdHU=;
+ b=fEW4CEhjUK1ZjbEgYbqeUwlWLBqy8Bn5AuXrpUPzJSHYa0rdSUr77tlMlmz1M6/YDmXwrk8bgkeP
+ LhbduKYJBfMPBotcSOc+92mOQPv8dTiqKVBgXuTcM0jTK6E52HZnLrZrP5wbciqKWGIiwILS79nt
+ CBfgGBGEHNETq0m4NCQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=reloekems.info;
+ b=plstLgAOL5GgTWwY00q6D/n3wG3fJbfRQzAqhl1W3ClbY0V9x8/ktwlqXeLeDKVCPH2zUldilfkn
+ OvPM9G+LnHO/jtfXBalaq2gM36OtOgM4OxRuIrxRfOTVN+dQuLy3ZOOBc3tpaL6TEj816gAWT2Ju
+ hn1e6oMEXDCuXrr//bU=;
+Received: by mail.reloekems.info id hjjdeg0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Dec 2022 10:26:15 -0500 (envelope-from
- <pablo.rowe-intel+2Dgvt+2Ddev=lists.freedesktop.org@telbroe-na.info>)
-Date: Fri, 16 Dec 2022 10:26:15 -0500
-From: "Pablo Rowe" <pablo.rowe@telbroe-na.info>
+ Fri, 16 Dec 2022 15:36:23 -0500 (envelope-from
+ <walgreens-user-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@reloekems.info>)
+Date: Fri, 16 Dec 2022 15:36:23 -0500
+From: "Walgreens User Feedback" <walgreens-user-feedback@reloekems.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We appreciate your loyalty, pick any gift on us
+Subject: Your gift on us for the holidays,
+ a token of appreciation during holidays
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_499_853474639.1671204272434"
-Message-ID: <0.0.0.529.1D91162BC7E0396.3EC3A2@mail.telbroe-na.info>
+ boundary="----=_Part_640_621144056.1671222951382"
+Message-ID: <0.0.0.5E8.1D9118E0FB59C4C.D9049@mail.reloekems.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,505 +54,191 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_499_853474639.1671204272434
+------=_Part_640_621144056.1671222951382
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<html>
  <head> 
-  <title></title> 
+  <link href="http://www.reloekems.info/captains-Nottingham/af86a2zO395yT8q613g4W34L8T1041U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJdQnm7k1l0Hnm5BqwDN" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.reloekems.info/be76fT239q5s86Uj11d4349D1041i36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQJdQnm6f1Vk0v6OTwqJD/deliverers-flickering" rel="preconnect" /> 
+  <link href="http://www.reloekems.info/captains-Nottingham/af86a2zO395yT8q613g4W34L8T1041U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJdQnm7k1l0Hnm5BqwDN/css2?family=Titillium+Web:wght@200;300&amp;display=swap" rel="stylesheet" /> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <style type="text/css">a:link {color:#197bbd;font-weight:normal;text-decoration:underline;font-style:normal}
-a:visited {color:#197bbd;font-weight:normal;text-decoration:underline;font-style:normal}
-a:active {color:#197bbd;font-weight:normal;text-decoration:underline;font-style:normal}
-a:hover {color:#197bbd;font-weight:normal;text-decoration:underline;font-style:normal}
+  <title>missing you like crazy</title> 
+  <style type="text/css">/* What it does: Remove spaces around the email design added by some email clients. */
+      /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+html,  body {
+	margin: 0 !important;
+	padding: 0 !important;
+	height: 100% !important;
+	width: 100% !important;
+}
+/* What it does: Stops email clients resizing small text. */
+* {
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+/* What it does: Forces Outlook.com to display emails full width. */
+ExternalClass {
+	width: 100%;
+}
+/* What is does: Centers email on Android 4.4 */
+div[style*="margin: 16px 0"] {
+	margin: 0 !important;
+}
+/* What it does: Stops Outlook from adding extra spacing to tables. */
+table,  td {
+	mso-table-lspace: 0pt !important;
+	mso-table-rspace: 0pt !important;
+}
+/* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
+table {
+	border-spacing: 0 !important;
+	border-collapse: collapse !important;
+	table-layout: fixed !important;
+	margin: 0 auto !important;
+}
+table table table {
+	table-layout: auto;
+}
+/* What it does: Uses a better rendering method when resizing images in IE. */
+img {
+	-ms-interpolation-mode: bicubic;
+}
+/* What it does: Overrides styles added when Yahoo's auto-senses a link. */
+yshortcuts a {
+	border-bottom: none !important;
+}
+/* What it does: Another work-around for iOS meddling in triggered links. */
+a[x-apple-data-detectors] {
+	color: inherit !important;
+}
 	</style> 
-  <style type="text/css">@import url(https://static-forms.klaviyo.com/fonts/api/v1/Uq9kpP/custom_fonts.css);
-#outlook a {
-padding: 0
-}
-body {
-margin: 0;
-padding: 0;
--webkit-text-size-adjust: 100%;
--ms-text-size-adjust: 100%
-}
-table, td {
-border-collapse: collapse;
-mso-table-lspace: 0;
-mso-table-rspace: 0
-}
-img {
-border: 0;
-height: auto;
-line-height: 100%;
-outline: none;
-text-decoration: none;
--ms-interpolation-mode: bicubic
-}
-p {
-display: block;
-margin: 13px 0
-}
-@media only screen and (min-width: 480px) {
-mj-column-per-100 {
-width: 100% !important;
-max-width: 100%
-}
-mj-column-per-50 {
-width: 50% !important;
-max-width: 50%
-}
-mj-column-per-33-3334 {
-width: 33.3334% !important;
-max-width: 33.3334%
-}
-}
-moz-text-html .mj-column-per-100 {
-width: 100% !important;
-max-width: 100%
-}
-moz-text-html .mj-column-per-50 {
-width: 50% !important;
-max-width: 50%
-}
-moz-text-html .mj-column-per-33-3334 {
-width: 33.3334% !important;
-max-width: 33.3334%
-}
-hlb-subblk td {
-word-break: normal
-}
-@media only screen and (max-width: 480px) {
-hlb-wrapper > table > tbody > tr > td {
-padding: 9px !important
-}
-hlb-logo {
-padding-bottom: 9px !important
-}
-r2-tbl {
-width: 100%
-}
-r2-tbl .lnk {
-width: 100%
-}
-r2-tbl .hlb-subblk:last-child {
-padding-right: 0 !important
-}
-r2-tbl .hlb-subblk {
-padding-right: 10px !important
-}
-kl-hlb-stack {
-display: block !important;
-width: 100% !important;
-padding-right: 0 !important
-}
-kl-hlb-stack.vspc {
-margin-bottom: 9px
-}
-kl-hlb-wrap {
-display: inline-block !important;
-width: auto !important
-}
-kl-hlb-no-wrap {
-display: table-cell !important
-}
-kl-hlb-wrap.nospc.nospc {
-padding-right: 0 !important
-}
-}
-@media only screen and (max-width: 480px) {
-component-wrapper .mob-no-spc {
-padding-left: 0 !important;
-padding-right: 0 !important
-}
-}
-@media only screen and (max-width: 480px) {
-td.kl-img-base-auto-width {
-width: 100% !important
-}
-}
-@media only screen and (max-width: 480px) {
-kl-text {
-padding-right: 18px !important;
-padding-left: 18px !important
-}
-}
-kl-text-table-layout > table {
-table-layout: fixed
-}
-kl-text-table-layout > table > tbody > tr > td > table {
-table-layout: fixed
-}
-kl-button a {
-display: block !important
-}
-@media only screen and (max-width: 480px) {
-kl-product-cell-stack {
-display: block !important;
-width: 100% !important
-}
-}
-@media only screen and (max-width: 480px) {
-kl-split-subblock.top .spacer, .kl-split-subblock.bottom .spacer {
-padding: 0 !important
-}
-kl-split-subblock.top .spacer {
-padding-bottom: 9px !important
-}
-kl-split-subblock.top {
-display: table-header-group !important;
-width: 100% !important
-}
-kl-split-subblock.bottom {
-display: table-footer-group !important;
-width: 100% !important
-}
-}
-@media screen and (max-width: 480px) {
-kl-sl-stk {
-display: block !important;
-width: 100% !important;
-padding: 0 0 9px !important;
-text-align: center !important
-}
-kl-sl-stk.lbls {
-padding: 0 !important
-}
-kl-sl-stk.spcblk {
-display: none !important
-}
-}
-img {
-border: 0;
-height: auto;
-line-height: 100%;
-outline: none;
-text-decoration: none;
-max-width: 100%
-}
-root-container {
-background-repeat: repeat !important;
-background-size: auto !important;
-background-position: left top !important
-}
-root-container-spacing {
-padding-top: 50px !important;
-padding-bottom: 20px !important;
-font-size: 0 !important
-}
-content-padding {
-padding-left: 0 !important;
-padding-right: 0 !important
-}
-content-padding.first {
-padding-top: 0 !important
-}
-content-padding.last {
-padding-bottom: 0 !important
-}
-@media only screen and (max-width: 480px) {
-td.mobile-only {
-display: table-cell !important
-}
-div.mobile-only {
-display: block !important
-}
-table.mobile-only {
-display: table !important
-}
-desktop-only {
-display: none !important
-}
-}
-@media only screen and (max-width: 480px) {
-table-mobile-only {
-display: table-cell !important;
-max-height: none !important
-}
-table-mobile-only.block {
-display: block !important
-}
-table-mobile-only.inline-block {
-display: inline-block !important
-}
-table-desktop-only {
-max-height: 0 !important;
-display: none !important;
-mso-hide: all !important;
-overflow: hidden !important
-}
-}
-kl-text div {
-margin: 0
-}
-p {
-margin-left: 0;
-margin-right: 0;
-margin-top: 0;
-margin-bottom: 0;
-padding-bottom: 1em
-}
-@media only screen and (max-width: 480px) {
-kl-text div, .kl-table-subblock div, .kl-split-subblock div {
-font-size: 14px !important;
-line-height: 1.3 !important
-}
-}
-h1 {
-color: #222427;
-font-family: "Helvetica Neue", Arial;
-font-size: 40px;
-font-style: normal;
-font-weight: normal;
-line-height: 1.1;
-letter-spacing: 0;
-margin: 0;
-margin-bottom: 20px;
-text-align: left
-}
-@media only screen and (max-width: 480px) {
-h1 {
-font-size: 40px !important;
-line-height: 1.1 !important
-}
-}
-h2 {
-color: #222427;
-font-family: "Helvetica Neue", Arial;
-font-size: 32px;
-font-style: normal;
-font-weight: bold;
-line-height: 1.1;
-letter-spacing: 0;
-margin: 0;
-margin-bottom: 16px;
-text-align: left
-}
-@media only screen and (max-width: 480px) {
-h2 {
-font-size: 32px !important;
-line-height: 1.1 !important
-}
-}
-h3 {
-color: #222427;
-font-family: "Helvetica Neue", Arial;
-font-size: 24px;
-font-style: normal;
-font-weight: bold;
-line-height: 1.1;
-letter-spacing: 0;
-margin: 0;
-margin-bottom: 12px;
-text-align: left
-}
-@media only screen and (max-width: 480px) {
-h3 {
-font-size: 24px !important;
-line-height: 1.1 !important
-}
-}
-h4 {
-color: #222427;
-font-family: "Helvetica Neue", Arial;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 1.1;
-letter-spacing: 0;
-margin: 0;
-margin-bottom: 9px;
-text-align: left
-}
-@media only screen and (max-width: 480px) {
-h4 {
-font-size: 18px !important;
-line-height: 1.1 !important
-}
-}
-@media only screen and (max-width: 480px) {
-root-container {
-width: 100% !important
-}
-root-container-spacing {
-padding: 10px !important
-}
-content-padding {
-padding-left: 0 !important;
-padding-right: 0 !important
-}
-content-padding.first {
-padding-top: 0 !important
-}
-content-padding.last {
-padding-bottom: 0 !important
-}
-component-wrapper {
-padding-left: 0 !important;
-padding-right: 0 !important
-}
-}
+  <style type="text/css">/* What it does: Hover styles for buttons */
+        .button-td,
+        .button-a {
+            transition: all 100ms ease-in;
+        }
+        .button-td:hover,
+        .button-a:hover {
+            background: #555555 !important;
+            border-color: #555555 !important;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 600px) {
+
+            .email-container {
+                width: 100% !important;
+            }
+
+            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
+            .fluid,
+            .fluid-centered {
+                max-width: 100% !important;
+                height: auto !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            /* And center justify these ones. */
+            .fluid-centered {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            /* What it does: Forces table cells into full-width rows. */
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                direction: ltr !important;
+            }
+            /* And center justify these ones. */
+            .stack-column-center {
+                text-align: center !important;
+            }
+        
+            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+            .center-on-narrow {
+                text-align: center !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+                float: none !important;
+            }
+            table.center-on-narrow {
+                display: inline-block !important;
+            }
+                
+        }
 	</style> 
  </head> 
- <body style="word-spacing:normal;background-color:#f7f7f7;"> 
-  <div class="root-container" id="bodyTable" style="background-color:#f7f7f7;"> 
-   <div class="root-container-spacing"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td> 
-        <div style="margin:0px auto;max-width:600px;"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
-          <tbody> 
-           <tr> 
-            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;"> 
-             <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;border-radius:0px 0px 0px 0px;max-width:600px;"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;border-radius:0px 0px 0px 0px;"> 
-               <tbody> 
-                <tr> 
-                 <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:40px;padding-left:39px;padding-right:39px;padding-top:40px;text-align:center;"> 
-                  <div class="content-padding first last"> 
-                   <div class="kl-row" style="margin:0px auto;max-width:600px;"> 
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
-                     <tbody> 
-                      <tr> 
-                       <td style="direction:ltr;font-size:0px;padding:0;text-align:center;"> 
-                        <div class="mj-column-per-100 mj-outlook-group-fix kl-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;table-layout:fixed;" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td style="font-size:0px;word-break:break-word;" vertical-align="middle"> 
-                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper hlb-wrapper" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
-                               <tbody> 
-                                <tr> 
-                                 <td style="background-color:#eee;vertical-align:top;padding-top:24px;padding-right:18px;padding-bottom:0px;padding-left:18px;"> 
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td align="top" class="kl-header-link-bar" style="font-size:0px;padding:0px 0px 0px 0px;word-break:break-word;"> 
-                                      <table border="0" cellpadding="0" cellspacing="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:0;" width="100%"> 
-                                       <tbody> 
-                                        <tr> 
-                                         <td align="center" class="hlb-logo" style="display:table-cell;width:100%;padding-bottom:23px;"> 
-                                          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;"> 
-                                           <tbody> 
-                                            <tr> 
-                                             <td align="center" style="width:200px; text-align: center">&nbsp;</td> 
-                                            </tr> 
-                                           </tbody> 
-                                          </table> </td> 
-                                        </tr> 
-                                       </tbody> 
-                                      </table> </td> 
-                                    </tr> 
-                                   </tbody> 
-                                  </table> </td> 
-                                </tr> 
-                               </tbody> 
-                              </table> 
-                             </div> </td> 
-                           </tr> 
-                           <tr> 
-                            <td align="left" style="font-size:0px;word-break:break-word;"> 
-                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
-                               <tbody> 
-                                <tr> 
-                                 <td style="vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"> 
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td align="left" class="kl-image kl-image-618383" style="font-size:0px;word-break:break-word;"> 
-                                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;"> 
-                                       <tbody> 
-                                        <tr> 
-                                         <td class="kl-img-base-auto-width" style="width:600px;border:0;padding:0px 0px 0px 0px;" valign="top"> <h2 align="center" style="color:#029BD9; text-align: center; padding-top: 12px"><a href="http://www.telbroe-na.info/assassinate-Norwegian/80a4S2395j8AR611r4334s103fD36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQhdQmS5W10Yk6ApXwkD" style="color:#197bbd; font-style:normal; font-weight:normal; text-decoration:none; color: #fff" target="_blank">Walmart</a></h2> <a href="http://www.telbroe-na.info/assassinate-Norwegian/80a4S2395j8AR611r4334s103fD36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQhdQmS5W10Yk6ApXwkD" style="color:#197bbd; font-style:normal; font-weight:normal; text-decoration:underline"><img alt="jhdgf87937" src="http://www.telbroe-na.info/3b36E239Ck5b7Pat11j4335i103fn36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhdQmS7v10uyGM6UMwDjB/march-touchiest" style="display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px; max-width
- : 550px" title="jhdgf87937" width="600" /> </a></td> 
-                                        </tr> 
-                                       </tbody> 
-                                      </table> </td> 
-                                    </tr> 
-                                   </tbody> 
-                                  </table> </td> 
-                                </tr> 
-                               </tbody> 
-                              </table> 
-                             </div> </td> 
-                           </tr> 
-                           <tr> 
-                            <td style="font-size:0px;word-break:break-word;"> 
-                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
-                               <tbody> 
-                                <tr> 
-                                 <td style="vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"> 
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td style="font-size:0px;word-break:break-word;"> 
-                                      <div style="height:20px;line-height:20px;">
-                                       ?
-                                      </div> </td> 
-                                    </tr> 
-                                   </tbody> 
-                                  </table> </td> 
-                                </tr> 
-                               </tbody> 
-                              </table> 
-                             </div> </td> 
-                           </tr> 
-                           <tr> 
-                            <td style="font-size:0px;word-break:break-word;"> 
-                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
-                               <tbody> 
-                                <tr> 
-                                 <td style="vertical-align:top;padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;"> 
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td align="left" class="kl-text" style="font-size:19px;padding:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word;"> 
-                                      <div style="font-family:'Helvetica Neue',Arial;font-size:19px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.5;text-align:left;color:#333333;"> 
-                                       <div style="text-align: center;">
-                                        <span style="font-weight: bold; font-size: 19px;">Hey there </span>
-                                       </div>
-                                      </div></td>
-                                    </tr>
-                                   </tbody>
-                                  </table></td>
-                                </tr>
-                               </tbody>
-                              </table>
-                             </div></td>
-                           </tr>
-                          </tbody>
-                         </table>
-                        </div></td>
-                      </tr>
-                     </tbody>
-                    </table>
-                   </div>
-                  </div></td>
-                </tr>
-               </tbody>
-              </table>
-             </div></td>
-           </tr>
-          </tbody>
-         </table>
-        </div></td>
-      </tr>
-     </tbody>
-    </table>
-   </div>
-  </div>
- <img src="http://www.telbroe-na.info/bookings-existing/6c05Y2A395H8V5k11K4336O103fl36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhdQmS6ws1Q0X6I@2wjD" alt=""/></body>
+ <body bgcolor="#e0e0e0" style="margin: 0;" width="100%" yahoo="yahoo"> 
+  <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" height="100%" style="border-collapse:collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <center style="width: 100%;"> 
+       <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
+        &nbsp;
+       </div> 
+       <table align="center" bgcolor="#F4F4F4" border="0" cellpadding="0" cellspacing="0" class="email-container" width="600"> 
+        <tbody> 
+         <tr> 
+          <td class="full-width-image"> <p style="font-size: 22px; text-align: center; font-family: sans-serif"><strong>You are just a few clicks away<br /> to get The $100 Home Depot Card</strong></p> <a href="http://www.reloekems.info/c234H2395pk8I613S43gL4aM1041Q36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQJdQnm6buoK106D@wDB@/deliverers-flickering" target="_blank"><img alt="" src="http://www.reloekems.info/b6f4J2395Bm7qa11I434cm1041R36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQJdQnm6nn1i0r6X3wD2q/concoct-drippy" style="width: 100%; max-width: 600px" /></a></td> 
+         </tr> 
+         <tr> 
+          <td style="padding-top: 10px; padding-left: 30px; padding-right: 30px; text-align: left; font-family: arial; mso-height-rule: exactly; line-height: 24px; color: #555555;  background-repeat: no-repeat"> <p style="text-align: center; font-size: 23px; color: #000000; line-height: 28px"><strong>We At Walgreens Appreciate Your Opinion.</strong></p> <p style="font-size: 22px; text-align:center">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="button-td" style="border-radius: 50%; align-content: center; background: #DA2026; text-align: center;"><a class="button-a" href="http://www.reloekems.info/c234H2395pk8I613S43gL4aM1041Q36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQJdQnm6buoK106D@wDB@/deliverers-flickering" style="background: #DA2026; border: 15px solid #DA2026; padding: 0 10px; color: #ffffff; font-family: sans-serif; font-size: 23px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 12px; font-weight: bold;" target="_blank">Click OK to start</a></td> 
+             </tr> 
+            </tbody> 
+           </table> &nbsp; <p>&nbsp;</p> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" dir="rtl" style="padding: 10px;" valign="top" width="100%"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="stack-column-center" width="33.33%"> 
+               <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                <tbody> 
+                 <tr> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table border="0" cellpadding="0" cellspacing="0" class="center-on-narrow" style="float:left;"> 
+                <tbody> 
+                 <tr> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <table align="center" class="email-container" width="600"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <br /> <br /> To modify your email choices,<a href="http://www.reloekems.info/highwaymen-rename/d8c6q2VP395Cq86T13v434MbHi1041U36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQJdQnm7A1rPY0w5mNwBD" style="text-decoration-line: none;"> <span>Go.This.Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010 
+           <hr /> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <style class="galleried"><span id="sourer"></span></style><font class="classmates"></font><small></small><big><style title="vendor"></big><font face="strand"></font><style id="Midwesterners"></style><span style="retaliate"></span></style></td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </center> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.reloekems.info/6bf4m2395E8u5R11z434dV1041Q36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJdQnm6fi1F0P5MOMwD/thoughtlessly-Wilshire" alt=""/></body>
 </html>
 
-------=_Part_499_853474639.1671204272434--
+------=_Part_640_621144056.1671222951382--
 
