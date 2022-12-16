@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8848264F2B7
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Dec 2022 21:54:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F40464F43C
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Dec 2022 23:42:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3FF6710E632;
-	Fri, 16 Dec 2022 20:54:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E2DC810E05A;
+	Fri, 16 Dec 2022 22:41:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Fri, 16 Dec 2022 20:53:59 UTC
-Received: from mail.reloekems.info (unknown [104.223.183.218])
- by gabe.freedesktop.org (Postfix) with ESMTP id EB41C10E62F
+X-Greylist: delayed 1933 seconds by postgrey-1.36 at gabe;
+ Fri, 16 Dec 2022 22:41:39 UTC
+Received: from mail.rolefegaem.info (unknown [104.223.183.219])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4594210E625
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Dec 2022 20:53:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=reloekems.info; 
+ Fri, 16 Dec 2022 22:41:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=rolefegaem.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=walgreens-user-feedback@reloekems.info; 
- bh=qz2i9mvlEq2e6ZfTuyWMw1NPdHU=;
- b=fEW4CEhjUK1ZjbEgYbqeUwlWLBqy8Bn5AuXrpUPzJSHYa0rdSUr77tlMlmz1M6/YDmXwrk8bgkeP
- LhbduKYJBfMPBotcSOc+92mOQPv8dTiqKVBgXuTcM0jTK6E52HZnLrZrP5wbciqKWGIiwILS79nt
- CBfgGBGEHNETq0m4NCQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=reloekems.info;
- b=plstLgAOL5GgTWwY00q6D/n3wG3fJbfRQzAqhl1W3ClbY0V9x8/ktwlqXeLeDKVCPH2zUldilfkn
- OvPM9G+LnHO/jtfXBalaq2gM36OtOgM4OxRuIrxRfOTVN+dQuLy3ZOOBc3tpaL6TEj816gAWT2Ju
- hn1e6oMEXDCuXrr//bU=;
-Received: by mail.reloekems.info id hjjdeg0001gj for
+ i=ace_hardware_gift_card_chance@rolefegaem.info; 
+ bh=qZ6tYqevSH9zau8wKrWwHpDB+Gc=;
+ b=dWfdMzN6Po4PEpHvNUieXid/rwqHxvnWatjYbVng4yR2l2RVcUy05TwvDS9p8rhcP6hUIIB9vpxH
+ Yqcnu23k+3OdGf96bzSGSMrphTzczQ0z8jJeNHEsbg+ZGIf2elxfolIZ27JhAeE0ACe5fSJVOSGn
+ 4zXC/4yaaBfnhGlskHo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=rolefegaem.info;
+ b=VOl8kSI3aTRFbEW4yGBG3IEtr/aZGcZRHNuSnCd/O+/VMiwwMWeHam4Lal2kopVf5sXPKvWmMXdC
+ CZuR2e/lXuBw3ZeZ77zZdKa4+9o2lKWQ3UBvvDNLFsOYhT1vT4mRS6VauZ0aEuXRXZp70Q1/FN/d
+ adrkF0580NGAPFCIRy0=;
+Received: by mail.rolefegaem.info id hjjq260001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 16 Dec 2022 15:36:23 -0500 (envelope-from
- <walgreens-user-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@reloekems.info>)
-Date: Fri, 16 Dec 2022 15:36:23 -0500
-From: "Walgreens User Feedback" <walgreens-user-feedback@reloekems.info>
+ Fri, 16 Dec 2022 16:58:36 -0500 (envelope-from
+ <ace_hardware_gift_card_chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@rolefegaem.info>)
+Date: Fri, 16 Dec 2022 16:58:36 -0500
+From: "ACE Hardware Gift Card Chance"
+ <ace_hardware_gift_card_chance@rolefegaem.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your gift on us for the holidays,
- a token of appreciation during holidays
+Subject: We have some exciting news for you
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_640_621144056.1671222951382"
-Message-ID: <0.0.0.5E8.1D9118E0FB59C4C.D9049@mail.reloekems.info>
+ boundary="----=_Part_103_636153938.1671227892078"
+Message-ID: <0.0.0.60F.1D911998C71F108.2BBDF0@mail.rolefegaem.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,168 +54,264 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_640_621144056.1671222951382
+------=_Part_103_636153938.1671227892078
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <link href="http://www.reloekems.info/captains-Nottingham/af86a2zO395yT8q613g4W34L8T1041U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJdQnm7k1l0Hnm5BqwDN" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.reloekems.info/be76fT239q5s86Uj11d4349D1041i36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQJdQnm6f1Vk0v6OTwqJD/deliverers-flickering" rel="preconnect" /> 
-  <link href="http://www.reloekems.info/captains-Nottingham/af86a2zO395yT8q613g4W34L8T1041U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJdQnm7k1l0Hnm5BqwDN/css2?family=Titillium+Web:wght@200;300&amp;display=swap" rel="stylesheet" /> 
-  <meta charset="UTF-8" /> 
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" /> 
+  <meta content="telephone=no" name="format-detection" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <title>missing you like crazy</title> 
-  <style type="text/css">/* What it does: Remove spaces around the email design added by some email clients. */
-      /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
-html,  body {
-	margin: 0 !important;
-	padding: 0 !important;
-	height: 100% !important;
-	width: 100% !important;
-}
-/* What it does: Stops email clients resizing small text. */
-* {
-	-ms-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-}
-/* What it does: Forces Outlook.com to display emails full width. */
-ExternalClass {
-	width: 100%;
-}
-/* What is does: Centers email on Android 4.4 */
-div[style*="margin: 16px 0"] {
-	margin: 0 !important;
-}
-/* What it does: Stops Outlook from adding extra spacing to tables. */
-table,  td {
-	mso-table-lspace: 0pt !important;
-	mso-table-rspace: 0pt !important;
-}
-/* What it does: Fixes webkit padding issue. Fix for Yahoo mail table alignment bug. Applies table-layout to the first 2 tables then removes for anything nested deeper. */
-table {
-	border-spacing: 0 !important;
-	border-collapse: collapse !important;
-	table-layout: fixed !important;
-	margin: 0 auto !important;
-}
-table table table {
-	table-layout: auto;
-}
-/* What it does: Uses a better rendering method when resizing images in IE. */
-img {
-	-ms-interpolation-mode: bicubic;
-}
-/* What it does: Overrides styles added when Yahoo's auto-senses a link. */
-yshortcuts a {
-	border-bottom: none !important;
-}
-/* What it does: Another work-around for iOS meddling in triggered links. */
-a[x-apple-data-detectors] {
-	color: inherit !important;
-}
-	</style> 
-  <style type="text/css">/* What it does: Hover styles for buttons */
-        .button-td,
-        .button-a {
-            transition: all 100ms ease-in;
-        }
-        .button-td:hover,
-        .button-a:hover {
-            background: #555555 !important;
-            border-color: #555555 !important;
-        }
+  <meta content="IE=edge" http-equiv="x-ua-compatible" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&amp;display=swap" rel="stylesheet" /> 
+  <title>you nevewr see</title> 
+  <style type="text/css">@media only screen and (max-width: 540px){
+		body,table,td,p,a,li,blockquote{
+			-webkit-text-size-adjust:none !important;
+		}
 
-        /* Media Queries */
-        @media screen and (max-width: 600px) {
+}	@media only screen and (max-width: 540px){
+		body{
+			width:100% !important;
+			min-width:100% !important;
+		}
 
-            .email-container {
-                width: 100% !important;
-            }
+}	@media only screen and (max-width: 540px){
+		.mobile{
+			width:90% !important;
+		}
 
-            /* What it does: Forces elements to resize to the full width of their container. Useful for resizing images beyond their max-width. */
-            .fluid,
-            .fluid-centered {
-                max-width: 100% !important;
-                height: auto !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-            /* And center justify these ones. */
-            .fluid-centered {
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
+}	@media only screen and (max-width: 540px){
+		.full{
+			width:100% !important;
+		}
 
-            /* What it does: Forces table cells into full-width rows. */
-            .stack-column,
-            .stack-column-center {
-                display: block !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                direction: ltr !important;
-            }
-            /* And center justify these ones. */
-            .stack-column-center {
-                text-align: center !important;
-            }
-        
-            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
-            .center-on-narrow {
-                text-align: center !important;
-                display: block !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-                float: none !important;
-            }
-            table.center-on-narrow {
-                display: inline-block !important;
-            }
-                
-        }
+}	@media only screen and (max-width: 540px){
+		.inner{
+			width:90% !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.hide{
+			display:none !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.space-box{
+			padding:0 20px !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.headline{
+			padding:0 20px 20px !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.title{
+			padding:0 20px 5px !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.copy{
+			padding:5px 20px !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.name{
+			text-align:center !important;
+			padding:0;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.pos{
+			text-align:center !important;
+			padding:4px 0 20px;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.bio{
+			text-align:center !important;
+			padding:0 0 25px 20px;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.footer-logo{
+			text-align:center !important;
+			padding:0 0 20px !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.footer-soc{
+			text-align:center !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.footer-copy{
+			text-align:center !important;
+		}
+
+}	@media only screen and (max-width: 540px){
+		.sett{
+			text-align:center !important;
+		}
+
+}	@media only screen{
+		td{
+			font-family:'Open Sans',sans-seri !important;
+		}
+
+}
 	</style> 
  </head> 
- <body bgcolor="#e0e0e0" style="margin: 0;" width="100%" yahoo="yahoo"> 
-  <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" height="100%" style="border-collapse:collapse;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <center style="width: 100%;"> 
-       <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
-        &nbsp;
-       </div> 
-       <table align="center" bgcolor="#F4F4F4" border="0" cellpadding="0" cellspacing="0" class="email-container" width="600"> 
+ <body bgcolor="#fafafa" leftmargin="0" marginheight="0" marginwidth="0" offset="0" style="-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;margin: 0;padding: 0;height: 100% !important;width: 100% !important;" topmargin="0"> 
+  <center> 
+   <table align="center" bgcolor="#fafafa" border="0" cellpadding="0" cellspacing="0" id="wrapTable" style="height:100% !important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;margin:0;padding:0;border-collapse:collapse !important;width:100% !important;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" id="wrapCell" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;margin:0;padding:30px 0;height:100% !important;width:100% !important;" valign="top">
+       <!-- Email Body --> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="mobile" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="540">
+        <!-- Logo --> 
         <tbody> 
          <tr> 
-          <td class="full-width-image"> <p style="font-size: 22px; text-align: center; font-family: sans-serif"><strong>You are just a few clicks away<br /> to get The $100 Home Depot Card</strong></p> <a href="http://www.reloekems.info/c234H2395pk8I613S43gL4aM1041Q36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQJdQnm6buoK106D@wDB@/deliverers-flickering" target="_blank"><img alt="" src="http://www.reloekems.info/b6f4J2395Bm7qa11I434cm1041R36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQJdQnm6nn1i0r6X3wD2q/concoct-drippy" style="width: 100%; max-width: 600px" /></a></td> 
+          <td align="center" style="padding:0 0 15px 0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top"><span style="display: block; text-align: center; font-weight: bold; font-size: 27px">You are just a few clicks away<br /> to get The $100 ACE Card</span></td> 
          </tr> 
+         <!-- Logo -->
+         <!-- Part One --> 
          <tr> 
-          <td style="padding-top: 10px; padding-left: 30px; padding-right: 30px; text-align: left; font-family: arial; mso-height-rule: exactly; line-height: 24px; color: #555555;  background-repeat: no-repeat"> <p style="text-align: center; font-size: 23px; color: #000000; line-height: 28px"><strong>We At Walgreens Appreciate Your Opinion.</strong></p> <p style="font-size: 22px; text-align:center">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 0" width="100%"> 
+          <td align="center" style="background-color:#ffffff;border-radius:10px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="100%"> 
             <tbody> 
              <tr> 
-              <td class="button-td" style="border-radius: 50%; align-content: center; background: #DA2026; text-align: center;"><a class="button-a" href="http://www.reloekems.info/c234H2395pk8I613S43gL4aM1041Q36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQJdQnm6buoK106D@wDB@/deliverers-flickering" style="background: #DA2026; border: 15px solid #DA2026; padding: 0 10px; color: #ffffff; font-family: sans-serif; font-size: 23px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 12px; font-weight: bold;" target="_blank">Click OK to start</a></td> 
+              <td align="center" class="block" style="padding:0 0 20px 0;border-radius:10px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top"><a href="http://www.rolefegaem.info/4c16M239QC5JLy8613ywq434ev1042R36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQAdQnn7zTSVY106O2PwMD/subnet-witnessed"><img alt="pic1.png" src="http://www.rolefegaem.info/ed54Y2395MU7aM11J4350k1042l36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQAdQnn7YRM10Om6z1U0wD/subtleness-trivial" style="width:100%; max-width: 555PX" /></a></td> 
              </tr> 
+             <tr> 
+              <td align="center" class="headline" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#9774ae;font-size:42px;font-weight:600;padding:0 50px 35px 50px;line-height:38px;" valign="top"><span style="font-size:30px">We At ACE Appreciate<br /> Your Opinion. </span></td> 
+             </tr> 
+             <tr> 
+              <td align="center" class="headline" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#767f88;font-size:19px;font-weight:400;padding:0 50px 35px 50px;line-height:28px;" valign="top"><span>Simply complete our 20-Second Service Survey about how your experience has been with us lately. </span></td> 
+             </tr> 
+             <tr style="margin:0 50px 35px 50px;"> 
+              <td align="center" class="button mont" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#ffffff;font-size:19px;font-weight:700;padding:15px 10px;border-radius:25px;background-color:#9774AD;margin: 0px 50px 35px !important;display: block;" valign="top"><a href="http://www.rolefegaem.info/4c16M239QC5JLy8613ywq434ev1042R36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQAdQnn7zTSVY106O2PwMD/subnet-witnessed" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;color:#ffffff;text-decoration:none;display:block;max-width:300px;" target="_blank">Click OK to start</a></td> 
+             </tr> 
+             <!-- Spacer --> 
+             <tr> 
+              <td align="center" style="font-size:0;line-height:0;padding:10px 0 30px 0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top">&nbsp;</td> 
+             </tr> 
+             <!-- Spacer --> 
             </tbody> 
-           </table> &nbsp; <p>&nbsp;</p> </td> 
+           </table> </td> 
          </tr> 
+         <!-- Part One -->
+         <!-- Spacer --> 
          <tr> 
-          <td align="center" dir="rtl" style="padding: 10px;" valign="top" width="100%"> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+          <td align="center" style="font-size:0;line-height:0;padding:10px 0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top">&nbsp;</td> 
+         </tr> 
+         <!-- Spacer -->
+         <!-- Part Two --> 
+         <tr> 
+          <td align="center" style="background-color:#ffffff;border-radius:10px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="100%"> 
             <tbody> 
              <tr> 
-              <td class="stack-column-center" width="33.33%"> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                <tbody> 
+              <td align="center" class="headline" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#9774ae;font-size:25px;font-weight:300;padding:35px 15px 25px 15px;line-height:45px;" valign="top"><span style="font-weight: 600;font-size:36px;">&nbsp;</span></td> 
+             </tr> 
+             <tr> 
+              <td> 
+               <table border="0" cellpadding="0" cellspacing="0" class="mcnCaptionBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%"> 
+                <tbody class="mcnCaptionBlockOuter"> 
                  <tr> 
+                  <td class="mcnCaptionBlockInner" style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top"> <h2 style="color:#9774ae;font-size:65px;font-weight:900;padding:0px;line-height:45px;margin:25px 0px;">&nbsp;</h2> 
+                   <div style="padding: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #767f88;font-weight:300;font-family: Helvetica;font-size: 14px;line-height: 150%;text-align: left;">
+                    &nbsp;
+                   </div> </td> 
+                  <td class="mcnCaptionBlockInner" style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top"> <h2 style="color:#9774ae;font-size:65px;font-weight:900;padding:0px 15px 0px 15px;line-height:45px;margin:25px 0px;">&nbsp;</h2> 
+                   <div style="padding: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #767f88;font-weight:300;font-family: Helvetica;font-size: 14px;line-height: 150%;text-align: left;">
+                    &nbsp;
+                   </div> </td> 
+                  <td class="mcnCaptionBlockInner" style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top"> <h2 style="color:#9774ae;font-size:65px;font-weight:900;padding:0px 15px 0px 15px;line-height:45px;margin:25px 0px;">&nbsp;</h2> 
+                   <div style="padding: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #767f88;font-weight:300;font-family: Helvetica;font-size: 14px;line-height: 150%;text-align: left;">
+                    &nbsp;
+                   </div> </td> 
+                  <td class="mcnCaptionBlockInner" style="padding: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="top"> <h2 style="color:#9774ae;font-size:65px;font-weight:900;padding:0px 15px 0px 15px;line-height:45px;margin:25px 0px;">&nbsp;</h2> 
+                   <div style="padding: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #767f88;font-weight:300;font-family: Helvetica;font-size: 14px;line-height: 150%;text-align: left;">
+                    &nbsp;
+                   </div> </td> 
                  </tr> 
                 </tbody> 
-               </table> 
-               <table border="0" cellpadding="0" cellspacing="0" class="center-on-narrow" style="float:left;"> 
+               </table> </td> 
+             </tr> 
+             <!-- Spacer --> 
+             <tr> 
+              <td align="center" style="font-size:0;line-height:0;padding:10px 0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top">&nbsp;</td> 
+             </tr> 
+             <!-- Spacer --> 
+             <tr> 
+              <td align="center" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;" valign="top">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <!-- Part Two -->
+         <!-- Spacer --> 
+         <tr> 
+          <td align="center" style="font-size:0;line-height:0;padding:10px 0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top">&nbsp;</td> 
+         </tr> 
+         <!-- Spacer -->
+         <!-- Section Box Content -->
+         <!-- Section Box Content -->
+         <!-- Spacer --> 
+         <tr> 
+          <td align="center" style="font-size:0;line-height:0;padding:10px 0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top">&nbsp;</td> 
+         </tr> 
+         <!-- Spacer -->
+         <!-- Footer --> 
+         <tr> 
+          <td align="center" style="background-color:#252525;border-radius:10px;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="center" class="space-box" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;padding:0 50px;" valign="top"> 
+               <table align="center" border="0" cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="100%"> 
                 <tbody> 
                  <tr> 
+                  <td align="center" style="padding:25px 0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top"> 
+                   <table align="center" border="0" cellpadding="0" cellspacing="0" class="full" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="220"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center" class="footer-logo" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color: #fff" valign="top">No longer wish to receive notifications?,<a href="http://www.rolefegaem.info/ticked-evaporative/35a6lO2G395P8iO612e43T4fN1042l36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQAdQnn7vtY10i_6S@zwLD" style="text-decoration-line: none;"> <span style="color: red">Start_Right_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010 <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <big></big><big></big><style></style><small></small><span color="coliseum"></span><style style="baffler"></style><font class="uncapitalized"></font><big></big></td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                   <table align="left" border="0" cellpadding="0" cellspacing="0" class="full" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="220"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="right" class="footer-soc" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top">&nbsp;</td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;" valign="top"> 
+                   <table align="left" border="0" cellpadding="0" cellspacing="0" class="full" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="260"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="left" class="footer-copy" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#ffffff;font-size:11px;font-weight:400;line-height:22px;padding:0 0 0 0;" valign="top">&nbsp;</td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                   <table align="left" border="0" cellpadding="0" cellspacing="0" class="full" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse !important;" width="180"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="left" class="footer-copy" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#ffffff;font-size:11px;font-weight:400;line-height:22px;padding:0 0 0 0;" valign="top">&nbsp;</td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                 <tr> 
+                  <td align="right" class="sett" style="-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;mso-table-lspace:0pt;mso-table-rspace:0pt;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#8c8c8c;font-size:11px;padding:20px 0 30px 0;font-weight:400;" valign="top">&nbsp;</td> 
                  </tr> 
                 </tbody> 
                </table> </td> 
@@ -223,22 +319,18 @@ a[x-apple-data-detectors] {
             </tbody> 
            </table> </td> 
          </tr> 
+         <!-- Footer --> 
         </tbody> 
        </table> 
-       <table align="center" class="email-container" width="600"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <br /> <br /> To modify your email choices,<a href="http://www.reloekems.info/highwaymen-rename/d8c6q2VP395Cq86T13v434MbHi1041U36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQJdQnm7A1rPY0w5mNwBD" style="text-decoration-line: none;"> <span>Go.This.Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010 
-           <hr /> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <style class="galleried"><span id="sourer"></span></style><font class="classmates"></font><small></small><big><style title="vendor"></big><font face="strand"></font><style id="Midwesterners"></style><span style="retaliate"></span></style></td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </center> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.reloekems.info/6bf4m2395E8u5R11z434dV1041Q36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQJdQnm6fi1F0P5MOMwD/thoughtlessly-Wilshire" alt=""/></body>
+       <!-- // Email Body --></td> 
+      <!-- // wrapCell --> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <!-- // wrapTable -->
+  </center>   
+ <img src="http://www.rolefegaem.info/T896J239iW5h85JI13i435xV1i1042_36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQAdQnn5RK1Y06LT@jwD/subtleness-trivial" alt=""/></body>
 </html>
 
-------=_Part_640_621144056.1671222951382--
+------=_Part_103_636153938.1671227892078--
 
