@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F1639650211
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Dec 2022 17:42:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15EDA65042D
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Dec 2022 18:25:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B20CD10E278;
-	Sun, 18 Dec 2022 16:42:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D41DF10E1E7;
+	Sun, 18 Dec 2022 17:25:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Sun, 18 Dec 2022 16:42:00 UTC
-Received: from mail.rostmainf.info (unknown [104.223.183.223])
- by gabe.freedesktop.org (Postfix) with ESMTP id 86FD710E277
+ Sun, 18 Dec 2022 17:25:40 UTC
+Received: from mail.sogekng.info (unknown [104.223.183.224])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D02E610E0F0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Dec 2022 16:42:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=rostmainf.info; 
+ Sun, 18 Dec 2022 17:25:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sogekng.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=starbucks_love@rostmainf.info; 
- bh=e7m03MoLCx55PeNujW+Dv4AvtyM=;
- b=Un9v8z7OtjBZILZGGk9Lt1b08xNpmif6WXTFssWswlgm4uP0rNmoExxNohofX39VKZkSQ2p/8Tfb
- RB7vtbICxOyBpWhOTaYkUEBrf3UKFL5pymegwRIBF6637hmpSvnIUa6k4E+m8wqSOiFYICeUCXPp
- mcGDHTca1HMnSHWxeoU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=rostmainf.info;
- b=uQ29iI2uu9IbnLtypr+Bo4gNkREQgTQi1FfAs/Qrj7mPFt4RJN900LFFPx7K0Z3SPb2FDcUnglVs
- OrsU3ugFhsDXfJXL0HQPU/jhAIvLXvk6Mrhx4pjNmVXOO+fVJ5kcqUH2kYeJIp642cwpvLr81YJR
- Q2MqC8rrddQhKFI5guA=;
-Received: by mail.rostmainf.info id hjt1dg0001gi for
+ i=shirley_barton@sogekng.info; 
+ bh=Yphm+wRQk09vDWwTVW3Rt/7FrYI=;
+ b=VctANaw2RBv/GgcQVG3SWKYqmB/bRvcE5/FAjujr7DJ4vtrNZ+pqp1PVis852ZlAoZvp8nLxZ6Bb
+ nz9U6XQFb6BNH959+JBhaM8XUu6X53b8hevPGBiTdtahd5UQs3yCCanZqAfdZJorywdSak8dQeWU
+ Xh73145hzhMFLAv8nI0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sogekng.info;
+ b=M3xP55r26lo6dmSczEdbZt7+AUFwSVRIwu8/DMW6N/vf5bIw+IuKsiaIKeVYE110rIkn/oWG3+NS
+ hYFFwUNijJs+TYFJMuNSxYSK8lkUqC9qxEBaJIZ07Q5QWWDj3H2tfMaLbAQQcACwYVCrFp3ZIk0y
+ ynk9iK1yW3XjbcB5ZXA=;
+Received: by mail.sogekng.info id hjtgrs0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Dec 2022 11:30:20 -0500 (envelope-from
- <starbucks_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@rostmainf.info>)
-Date: Sun, 18 Dec 2022 11:30:20 -0500
-From: "Starbucks Love" <starbucks_love@rostmainf.info>
+ Sun, 18 Dec 2022 13:43:09 -0500 (envelope-from
+ <shirley_barton-intel+2Dgvt+2Ddev=lists.freedesktop.org@sogekng.info>)
+Date: Sun, 18 Dec 2022 13:43:09 -0500
+From: "Shirley Barton" <shirley_barton@sogekng.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Holiday appreciation is needed during these time,
- here's you gift on us
+Subject: Verification Number
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_415_1271612377.1671381006843"
-Message-ID: <0.0.0.F0.1D912FE05A51CAC.1DAB11@mail.rostmainf.info>
+ boundary="----=_Part_322_1088768738.1671383657722"
+Message-ID: <0.0.0.147.1D9131093184264.14288B@mail.sogekng.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,470 +53,198 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_415_1271612377.1671381006843
+------=_Part_322_1088768738.1671383657722
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
  <head> 
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
-  <title>mycolls</title> 
-  <style type="text/css">
-		.mobile-break{
-			display:none;
-		}
-		span,td,table,div{
-			font-family: 'helvetica', 'arial', sans-serif; !important;
-		}
-		.right{
-			float:right;
-		}
-	 	hr.divider {
-  			border: 1px solid #e6e6e6;
-			width: 100%
-		}
-	 	hr.divider-black {
-  			border: 1px solid #000000;
-			width: 90%
-		}
-	@media screen and (max-width: 600px){
-		.main-content .body-text{
-			font-size:22px !important;
-			line-height:40px !important;
-		}
+  <title></title> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <style type="text/css">a {z
+      text-decoration: underline;
+      text-underline-offset: 8px;
+    }
 
-}	@media screen and (max-width: 600px){
-		.main-content .headline{
-			font-size:30px !important;
-			line-height:40px !important;
-		}
+    .text-style {
+      line-height: 30px;
+      font-size: 16px;
+      margin: 0px;
+    }
 
-}	@media screen and (max-width: 600px){
-		.main-content .header-logo td{
-			clear:none !important;
-			display:block !important;
-		}
 
-}	@media screen and (max-width: 600px){
-		.mobile-break{
-			display:inline !important;
-		}
 
-}	@media screen and (max-width: 600px){
-		#main-wrapper{
-			width:100% !important;
-		}
+    .mail-color-1 {
+      background: #ebfdff !important;
+    }
 
-}	@media screen and (max-width: 600px){
-		.full-width{
-			width:100% !important;
-			height:auto !important;
-		}
+    .mail-color-2 {
+      background: #ebecff !important;
+    }
 
-}	@media screen and (max-width: 600px){
-		.fluid-img{
-			width:75% !important;
-			height:auto;
-			margin:auto !important;
-		}
+    .mail-color-3 {
+      background: #ebfff1 !important;
+    }
 
-}	@media screen and (max-width: 600px){
-		.stack{
-			display:block !important;
-			clear:both !important;
-			width:100% !important;
-		}
+    .mail-color-4 {
+      background: #fbedda !important;
+    }
 
-}	@media screen and (max-width: 600px){
-		.body-text{
-			font-size:22px !important;
-			line-height:22px !important;
-		}
-	
-}	@media screen and (max-width: 600px){
-		.body-text-small{
-			font-size:16px !important;
-			line-height:22px !important;
-		}
-	
-}	@media screen and (max-width: 600px){
-		.headline-text{
-			font-size:28px !important;
-			line-height:30px !important;
-			font-weight:bold;
-		}
+    .mail-color-5 {
+      background: #ffebeb !important;
+    }
 
-}	@media screen and (max-width: 600px){
-		.mobile-width{
-			width:90% !important;
-		}
 
-}	@media screen and (max-width: 600px){
-		.mobile{
-			width:100% !important;
-			height:auto !important;
-		}
 
-}	@media screen and (max-width: 600px){
-		.desktop{
-			width:0 !important;
-			height:0 !important;
-		}
+    .background_image_adtech {
+      background-image: url('https://d1syadtv5cx0g6.cloudfront.net/email/3342169702_wrapup-banner_3.jpg');
+      height: 330px;
+      width: 100%;
+      color: #fff;
+      background-repeat: no-repeat;
+      background-size: cover;
+      vertical-align: top;
+      cursor: pointer;
+    }
 
-}	@media screen and (max-width: 600px){
-		.mobile-center{
-			display:inline-block !important;
-		}
+    .frag {
+      padding: 40px 20px;
+      vertical-align: top;
+    }
 
-}	@media screen and (max-width: 600px){
-		.mobile-img-center{
-			margin:0 auto !important;
-			display:block;
-		}
+    .frag-heading {
+      margin: 8px 0;
+      font-size: 20px;
+      line-height: 25px;
+    }
 
-}	@media screen and (max-width: 600px){
-		.mobile-hide{
-			display:none !important;
-		}
-
-}	@media screen and (max-width: 600px){
-		.table-width-clear{
-			width:100% !important;
-		}
-
-}	@media screen and (max-width: 600px){
-		.mobile-img-center{
-			margin:0 auto !important;
-			display:block;
-		}
-
-}	@media screen and (max-width: 600px){
-		.right{
-			float:none;
-		}
-
-}</style> 
+    .frag-description {
+     
+      line-height: 20px;
+      margin-top: 12px;
+    }
+	</style> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #bcbcbc;"> 
-  <p style="margin:0;padding:0;"><span class="preheader" style="display: none !important; visibility: hidden; opacity: 0; color: #ffffff; height: 0; width: 0;">&nbsp;</span></p> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="main-wrapper" style="width:80%;max-width:600px;margin:auto; border-collapse: collapse"> 
-   <!--<![endif]--> 
+ <body style="font-family: sans-serif!important;"> 
+  <table cellpadding="0" cellspacing="0" role="presentation" style="background-color:#e4e4e4" width="100%"> 
    <tbody> 
-    <!-- Section 1 Logo --> 
-    <tr bgcolor="#FFFFFF" style="background-color:#FFFFFF"> 
-     <td align="center" bgcolor="#FFFFFF" style="background-color:#FFFFFF" valign="middle" width="100%"> 
-      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+    <tr> 
+     <td> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin-top:1px;width:100%;max-width:600px;background-color: #ffffff;" width="100%"> 
        <tbody> 
         <tr> 
-         <td width="100%" style="display: block; background-color:#FFFFFF" align="center" bgcolor="#FFFFFF"> 
-          <table width="100%%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="padding-top: 15px; padding-bottom: 15px"> <a href="http://www.rostmainf.info/Noreen-snatching/5b26QXC2395Q86MR13rm437m0m1046W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQkdQnS5zNw106kXP@wD" style="font-size: 29px; text-decoration: none; font-weight: 700; color: #1B6724">You are just a few clicks away to get The $100 Starbucks Card</a> </td> 
-            </tr> 
-           </tbody> 
-          </table> <a href="http://www.rostmainf.info/Noreen-snatching/5b26QXC2395Q86MR13rm437m0m1046W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQkdQnS5zNw106kXP@wD" target="_blank"><img alt="Stylist with hairdryer" src="http://www.rostmainf.info/bisects-swizzle/62a4l2395lo7Na13J4L372iK1046r36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQkdQnS5F1XS05Mlw3D" width="100%" style="max-width:600px; text-align: center;" /></a> </td> 
+         <td>&nbsp; <p align="center" style="font-size: 28px; padding-left: 20px; padding-right: 20px"><a href="http://www.sogekng.info/reluctant-contemplated/35a4G2395n8Ur612Q43I75D1047j36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQne6k1W0zW6Rq32wD" style="text-decoration: none; font-weight: bolder; color: #E7060E" target="_blank">You are just a few clicks away<br /> to get The $100 McDonalds Card</a></p> <a href="http://www.sogekng.info/reluctant-contemplated/35a4G2395n8Ur612Q43I75D1047j36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQne6k1W0zW6Rq32wD"><img height="auto" src="http://www.sogekng.info/da94k2395K7aSR13r4u3R76Q1047n36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQrdQne5FD10A6y3TMwD/Calvinist-do" style="width: 100%" width="100%" /></a></td> 
         </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
         <tr> 
-         <td style="line-height:30px;">&nbsp;</td> 
+         <td class="frag"> 
+          <div class="frag-description" style="margin:0; text-align: center; font-size: 25px; line-height: normal; color: #E7060E">
+           <strong>We At McDonalds Appreciate Your Opinion.</strong>
+          </div> 
+          <div class="frag-description" style="font-size: 25px; line-height: normal; text-align: center">
+           Simply complete our 20-Second Service Survey about how your experience has been with us lately.           </div> <br /> <a href="http://www.sogekng.info/reluctant-contemplated/35a4G2395n8Ur612Q43I75D1047j36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQne6k1W0zW6Rq32wD" style="text-decoration: none; color: #fff; text-align: center; font-weight: bold; font-size: 22px; border-radius: 6px; display: block"><span style="display: block; padding: 12px; background-color: hsla(358,96%,46%,1.00); border-radius: 6px">Go Here To Start</span></a><br /> <br /> <a href="http://www.sogekng.info/reluctant-contemplated/35a4G2395n8Ur612Q43I75D1047j36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQne6k1W0zW6Rq32wD"><img alt="" src="http://www.sogekng.info/8454a2395V7agM13Q4N3X77Z1047J36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQrdQne6h1rRF05QTwlD/Ukrainian-Peruvianize" width="100%" /></a></td> 
         </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Section 2--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
         <tr> 
-         <td width="100%" style="display: block;" align="center"> 
-          <div style="font-family: SF Pro Text, Helvetica, Arial, 'sans-serif'arial, sans-serif; color:#000000; font-size:20px; line-height: 32px; " class=""> 
-           <strong style="color: #1B6724; font-size: 25px">We At STARBUCKS AppreciateYour Opinion.</strong>
+         <td class="mail-color-4 frag"> 
+          <div>
+           &nbsp;
           </div> </td> 
         </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#FFFFFF" style=" background-color: #FFFFFF"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-      </table> </td> 
-    </tr> 
-    <!--Section 2--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" bgcolor="#FAFAFA" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse; background-color:#FAFAFA; border-radius: 12px"> 
-       <tbody>
         <tr> 
-         <td style="line-height:40px;"> <p style="text-align: center; padding-left: 10px; padding-right: 10px; font-size: 22px"> <br />Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p></td> 
+         <td>&nbsp;</td> 
         </tr> 
         <tr> 
-         <td bgcolor="" style="display: block; padding:0 20px" align="center"> 
-          <div style="font-family: Georgia, Times New Roman, 'serif'; color:#000000; font-size:38px; line-height: 44px;" class=""></div>
-          <div style="font-family: SF Pro Text, Helvetica, Arial, 'sans-serif'arial, sans-serif; color:#000000; font-size:20px; line-height: 32px; " class=""></div></td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:40px;"> 
-          <table align="center" style="background-color:#000000; border: solid 1px #000000; border-radius: 4px;" border="0"> 
+         <td> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
            <tbody> 
             <tr> 
-             <td align="center" style="color:#ffffff; font-size:20px; letter-spacing:px; line-height:150%; padding-top:8px; padding-right:40px; padding-bottom:8px; padding-left:40px;" valign="middle"><a href="http://www.rostmainf.info/Noreen-snatching/5b26QXC2395Q86MR13rm437m0m1046W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQkdQnS5zNw106kXP@wD" style="color:#ffffff; text-decoration:none; font-family: SF Pro Text, Helvetica, sans-serif; text-transform: uppercase" target="_blank"><strong>Go Here To Start</strong></a></td> 
+             <td class="mail-color-1 frag" style="width:50%;"> 
+              <div>
+               &nbsp;
+              </div> </td> 
+             <td class="mail-color-2 frag" style="width:50%;"> 
+              <div>
+               &nbsp;
+              </div> </td> 
             </tr> 
            </tbody> 
           </table> </td> 
         </tr> 
         <tr> 
-         <td width="100%" style="display: block; background-color:#FAFAFA" align="center" bgcolor="#FAFAFA"></td> 
+         <td> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="mail-color-3 frag" style="width:50%;"> 
+              <div> 
+               <h4 class="frag-heading">&nbsp;</h4> 
+               <div class="frag-description">
+                &nbsp;
+               </div> 
+               <div style="margin-top: 18px;">
+                &nbsp;
+               </div> 
+              </div> </td> 
+             <td class="mail-color-5 frag" style="width:50%;"> 
+              <div>
+               &nbsp;
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
         </tr> 
         <tr> 
-         <td style="line-height:10px;">&nbsp;</td> 
+         <td> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="mail-color-4 frag" style="width:50%;"> 
+              <div>
+               &nbsp;
+              </div> 
+              <div style="margin-top: 18px;">
+               &nbsp;
+              </div> </td> 
+             <td class="mail-color-1 frag" style="width:50%;"> 
+              <div>
+               &nbsp;
+              </div> 
+              <div>
+               &nbsp;
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
         </tr> 
         <tr> 
-         <td style="line-height:40px;"> <br /> <br /> <a href="http://www.rostmainf.info/Noreen-snatching/5b26QXC2395Q86MR13rm437m0m1046W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQkdQnS5zNw106kXP@wD"><img src="http://www.rostmainf.info/personnel-howler/51c5A2q395s7Xat12C43i73T1046u36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQkdQnS7UqI10Fv5U1wBD" alt="" /></a> </td> 
+         <td style="background-color:#f5f5f5"> 
+          <table align="left" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td style="height:unset;text-align: left; padding-bottom: 7px; padding-left: 30px; width: 70%; padding-top: 30px;">&nbsp;</td> 
+             <td style="height:unset;padding-bottom: 10px;  font-family: 'Source',Arial,sans-serif;padding-top: 30px;">&nbsp;</td> 
+             <td style="height:unset;padding-bottom: 10px;  padding-left: 10px; font-family: 'Source',Arial,sans-serif;padding-top: 30px;">&nbsp;</td> 
+             <td style="height:unset;padding-bottom: 10px;  padding-left: 10px; font-family: 'Source',Arial,sans-serif;padding-top: 30px;">&nbsp;</td> 
+             <td style="height:unset;padding-bottom: 10px;  padding-left: 10px; padding-right: 10px; font-family: 'Source',Arial,sans-serif;padding-top: 30px;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" cellpadding="0" cellspacing="0" role="presentation" style="width:500px" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td style="text-align:left;color:#959595;font-size:11px;line-height:18px;padding-top:10px;padding-bottom:50px; padding-top:50px; padding-left: 40px;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
         </tr> 
-        <tr> 
-         <td width="100%" style="display: block; background-color:#FAFAFA" align="center" bgcolor="#FAFAFA"></td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:10px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td width="100%" style="display: block; background-color:#FAFAFA" align="center" bgcolor="#FAFAFA"></td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:10px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:30px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:30px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Section 3--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td bgcolor="" style="display: block; padding:0 20px" align="center">
-          <div style="font-family: Georgia, Times New Roman, 'serif'; color:#000000; font-size:34px; line-height: 42px;" class=""></div> </td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:20px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="" style="display: block;" align="center">
-          <div style="font-family: SF Pro Text, Helvetica, Arial, 'sans-serif'arial, sans-serif; color:#000000; font-size:20px; line-height: 32px;" class="">
-           <span style="color:#000000;"></span>
-          </div></td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Section 4--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td width="100%" style="display: block; background-color:#FFFFFF" align="center" bgcolor="#FFFFFF">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:20px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="" style="display: block;" align="center">
-          <div style="font-family: SF Pro Text, Helvetica, Arial, 'sans-serif'arial, sans-serif; color:#000000; font-size:20px; line-height: 32px;" class="">
-           <span style="color:#000000;"></span>
-          </div></td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:30px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="" style="display: block; padding:0 20px" align="center"> </td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Section 4--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td width="100%" style="display: block; background-color:#FFFFFF" align="center" bgcolor="#FFFFFF">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:20px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:30px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#ffffff" style=" background-color: #ffffff"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#F2F2F2" style=" background-color: #F2F2F2"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td style="line-height:20px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!-- App Store --> 
-    <tr bgcolor="#F2F2F2" style=" background-color: #F2F2F2"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td width="180" align="center"></td> 
-         <td width="200" align="center"></td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#F2F2F2" style=" background-color: #F2F2F2"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td style="line-height:20px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#000000" style=" background-color: #000000"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!-- App Store --> 
-    <tr bgcolor="#000000" style=" background-color: #000000"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td align="center"></td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:20px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="font-family: SF Pro Text, Helvetica, Arial, 'sans-serif'arial, sans-serif; color:#ffffff; font-size:20px; line-height: 32px;" align="center"></td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:20px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="font-family: SF Pro Text, Helvetica, Arial, 'sans-serif'arial, sans-serif; color:#ffffff; font-size:18px; line-height: 30px;" align="center">To halt notices,<a href="http://www.rostmainf.info/personnel-howler/e405F2j395Xr8K612Kl4371L1046D36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkdQnS6S1g0YR5IAwPD" style="text-decoration-line: none; color:#D41215"> <span>Go This Way </span> </a> <br /> 126 E 23rd St New York, NY, US 10010 <br /><br /> <br /> <br /> <style class="Grecian"></style><span size="hemisphere"></span><span size="mangles"><font class="jawbone"></font><font title="vaulter"><span><font style="cylindrical"></font></span></span></font> </td> 
-        </tr> 
-        <tr> 
-         <td style="line-height:20px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="font-family: SF Pro Text, Helvetica, Arial, 'sans-serif'arial, sans-serif; color:#ffffff; font-size:18px; line-height: 30px;" align="center">&nbsp;</td> 
-        </tr> 
-       </tbody>
-      </table> </td> 
-    </tr> 
-    <!--Line Break--> 
-    <tr bgcolor="#000000" style=" background-color: #000000"> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%" style="border-collapse: collapse"> 
-       <tbody>
-        <tr> 
-         <td style="line-height:40px;">&nbsp;</td> 
-        </tr> 
-       </tbody>
+       </tbody> 
       </table> </td> 
     </tr> 
    </tbody> 
-  </table>  
- <img src="http://www.rostmainf.info/diligent-inker/d6e4b2395N8h5P13q43m74FX1046v36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQkdQnS6u1Fr0M5ej@wD" alt=""/></body>
+  </table>   
+ <img src="http://www.sogekng.info/De35E239y5K8sy513zK4378mQ1047s36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQrdQne5aP10N5b0wND/reluctant-contemplated" alt=""/></body>
 </html>
 
-------=_Part_415_1271612377.1671381006843--
+------=_Part_322_1088768738.1671383657722--
 
