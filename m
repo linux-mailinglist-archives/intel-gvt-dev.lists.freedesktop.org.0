@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15EDA65042D
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Dec 2022 18:25:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09BA565049A
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 18 Dec 2022 21:09:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D41DF10E1E7;
-	Sun, 18 Dec 2022 17:25:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7468B10E1C7;
+	Sun, 18 Dec 2022 20:03:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Sun, 18 Dec 2022 17:25:40 UTC
-Received: from mail.sogekng.info (unknown [104.223.183.224])
- by gabe.freedesktop.org (Postfix) with ESMTP id D02E610E0F0
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Sun, 18 Dec 2022 20:03:31 UTC
+Received: from mail.xma-closk.info (unknown [104.223.183.226])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5083610E1C7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Dec 2022 17:25:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sogekng.info;
+ Sun, 18 Dec 2022 20:03:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=xma-closk.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=shirley_barton@sogekng.info; 
- bh=Yphm+wRQk09vDWwTVW3Rt/7FrYI=;
- b=VctANaw2RBv/GgcQVG3SWKYqmB/bRvcE5/FAjujr7DJ4vtrNZ+pqp1PVis852ZlAoZvp8nLxZ6Bb
- nz9U6XQFb6BNH959+JBhaM8XUu6X53b8hevPGBiTdtahd5UQs3yCCanZqAfdZJorywdSak8dQeWU
- Xh73145hzhMFLAv8nI0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sogekng.info;
- b=M3xP55r26lo6dmSczEdbZt7+AUFwSVRIwu8/DMW6N/vf5bIw+IuKsiaIKeVYE110rIkn/oWG3+NS
- hYFFwUNijJs+TYFJMuNSxYSK8lkUqC9qxEBaJIZ07Q5QWWDj3H2tfMaLbAQQcACwYVCrFp3ZIk0y
- ynk9iK1yW3XjbcB5ZXA=;
-Received: by mail.sogekng.info id hjtgrs0001gp for
+ i=dunkin.opinion.requested@xma-closk.info; 
+ bh=8efMCXoVmICOdq0gz9udc2ZzOSs=;
+ b=cqTh5RIxhQOe9THeJT/eleCBtxVZMMy9Gpq3lFo5nf+TtI0f3MWMhKSsee6KLcL1sFQS2w6o4gha
+ 6VJVTbveZYoW+m9vDysVK9ZFPOrmuzl/JFlLAVLM3aiT8HHc5pPCCKU2vwgqfXw4TAojPRyBsQKz
+ Fg/LezJt7EzE1o5Ng4I=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=xma-closk.info;
+ b=mhqxGo0Ic08sKA3JyxIiHMCXFhxHuoX+7rwSZT0PYRcK3s7hkng5Tfddaq+BuFsOPtClbWfpwG3z
+ CSNF4wbPSraKntnkO6TI/0dJ1UydfyrOXSA53/VnmkZ3yGv1r6MZenWds/jwlri2njKdS3Xsw5OF
+ IYQAwMnPnEVCrYcfIys=;
+Received: by mail.xma-closk.info id hju3bq0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 18 Dec 2022 13:43:09 -0500 (envelope-from
- <shirley_barton-intel+2Dgvt+2Ddev=lists.freedesktop.org@sogekng.info>)
-Date: Sun, 18 Dec 2022 13:43:09 -0500
-From: "Shirley Barton" <shirley_barton@sogekng.info>
+ Sun, 18 Dec 2022 16:15:39 -0500 (envelope-from
+ <dunkin.opinion.requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@xma-closk.info>)
+Date: Sun, 18 Dec 2022 16:15:39 -0500
+From: "Dunkin Opinion Requested" <dunkin.opinion.requested@xma-closk.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Verification Number
+Subject: Your visits are now rewarded for your loyalty - Awesome
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_322_1088768738.1671383657722"
-Message-ID: <0.0.0.147.1D9131093184264.14288B@mail.sogekng.info>
+ boundary="----=_Part_79_2108761635.1671392833318"
+Message-ID: <0.0.0.1F0.1D91325E142B450.46EF85@mail.xma-closk.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,187 +53,250 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_322_1088768738.1671383657722
+------=_Part_79_2108761635.1671392833318
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <title></title> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <title>DALES</title> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">a {z
-      text-decoration: underline;
-      text-underline-offset: 8px;
-    }
+  <style type="text/css">* {
+			box-sizing: border-box;
+		}
 
-    .text-style {
-      line-height: 30px;
-      font-size: 16px;
-      margin: 0px;
-    }
+		body {
+			margin: 0;
+			padding: 0;
+		}
 
+		a[x-apple-data-detectors] {
+			color: inherit !important;
+			text-decoration: inherit !important;
+		}
 
+		#MessageViewBody a {
+			color: inherit;
+			text-decoration: none;
+		}
 
-    .mail-color-1 {
-      background: #ebfdff !important;
-    }
+		p {
+			line-height: inherit
+		}
 
-    .mail-color-2 {
-      background: #ebecff !important;
-    }
+		.desktop_hide,
+		.desktop_hide table {
+			mso-hide: all;
+			display: none;
+			max-height: 0px;
+			overflow: hidden;
+		}
 
-    .mail-color-3 {
-      background: #ebfff1 !important;
-    }
+		@media (max-width:620px) {
+			.desktop_hide table.icons-inner {
+				display: inline-block !important;
+			}
 
-    .mail-color-4 {
-      background: #fbedda !important;
-    }
+			.icons-inner {
+				text-align: center;
+			}
 
-    .mail-color-5 {
-      background: #ffebeb !important;
-    }
+			.icons-inner td {
+				margin: 0 auto;
+			}
 
+			.image_block img.big,
+			.row-content {
+				width: 100% !important;
+			}
 
+			.mobile_hide {
+				display: none;
+			}
 
-    .background_image_adtech {
-      background-image: url('https://d1syadtv5cx0g6.cloudfront.net/email/3342169702_wrapup-banner_3.jpg');
-      height: 330px;
-      width: 100%;
-      color: #fff;
-      background-repeat: no-repeat;
-      background-size: cover;
-      vertical-align: top;
-      cursor: pointer;
-    }
+			.stack .column {
+				width: 100%;
+				display: block;
+			}
 
-    .frag {
-      padding: 40px 20px;
-      vertical-align: top;
-    }
+			.mobile_hide {
+				min-height: 0;
+				max-height: 0;
+				max-width: 0;
+				overflow: hidden;
+				font-size: 0px;
+			}
 
-    .frag-heading {
-      margin: 8px 0;
-      font-size: 20px;
-      line-height: 25px;
-    }
-
-    .frag-description {
-     
-      line-height: 20px;
-      margin-top: 12px;
-    }
+			.desktop_hide,
+			.desktop_hide table {
+				display: table !important;
+				max-height: none !important;
+			}
+		}
 	</style> 
  </head> 
- <body style="font-family: sans-serif!important;"> 
-  <table cellpadding="0" cellspacing="0" role="presentation" style="background-color:#e4e4e4" width="100%"> 
+ <body style="background-color: #fafafa; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;"> 
+  <table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #fafafa;" width="100%"> 
    <tbody> 
     <tr> 
      <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin-top:1px;width:100%;max-width:600px;background-color: #ffffff;" width="100%"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
        <tbody> 
         <tr> 
-         <td>&nbsp; <p align="center" style="font-size: 28px; padding-left: 20px; padding-right: 20px"><a href="http://www.sogekng.info/reluctant-contemplated/35a4G2395n8Ur612Q43I75D1047j36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQne6k1W0zW6Rq32wD" style="text-decoration: none; font-weight: bolder; color: #E7060E" target="_blank">You are just a few clicks away<br /> to get The $100 McDonalds Card</a></p> <a href="http://www.sogekng.info/reluctant-contemplated/35a4G2395n8Ur612Q43I75D1047j36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQne6k1W0zW6Rq32wD"><img height="auto" src="http://www.sogekng.info/da94k2395K7aSR13r4u3R76Q1047n36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQrdQne5FD10A6y3TMwD/Calvinist-do" style="width: 100%" width="100%" /></a></td> 
-        </tr> 
-        <tr> 
-         <td class="frag"> 
-          <div class="frag-description" style="margin:0; text-align: center; font-size: 25px; line-height: normal; color: #E7060E">
-           <strong>We At McDonalds Appreciate Your Opinion.</strong>
-          </div> 
-          <div class="frag-description" style="font-size: 25px; line-height: normal; text-align: center">
-           Simply complete our 20-Second Service Survey about how your experience has been with us lately.           </div> <br /> <a href="http://www.sogekng.info/reluctant-contemplated/35a4G2395n8Ur612Q43I75D1047j36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQne6k1W0zW6Rq32wD" style="text-decoration: none; color: #fff; text-align: center; font-weight: bold; font-size: 22px; border-radius: 6px; display: block"><span style="display: block; padding: 12px; background-color: hsla(358,96%,46%,1.00); border-radius: 6px">Go Here To Start</span></a><br /> <br /> <a href="http://www.sogekng.info/reluctant-contemplated/35a4G2395n8Ur612Q43I75D1047j36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQne6k1W0zW6Rq32wD"><img alt="" src="http://www.sogekng.info/8454a2395V7agM13Q4N3X77Z1047J36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQrdQne6h1rRF05QTwlD/Ukrainian-Peruvianize" width="100%" /></a></td> 
-        </tr> 
-        <tr> 
-         <td class="mail-color-4 frag"> 
-          <div>
-           &nbsp;
-          </div> </td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
          <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 600px;" width="600"> 
            <tbody> 
             <tr> 
-             <td class="mail-color-1 frag" style="width:50%;"> 
-              <div>
-               &nbsp;
-              </div> </td> 
-             <td class="mail-color-2 frag" style="width:50%;"> 
-              <div>
-               &nbsp;
-              </div> </td> 
+             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 0px; padding-bottom: 20px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
+              <table border="0" cellpadding="0" cellspacing="0" class="image_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="padding-bottom:5px;padding-left:0px;padding-top:5px;width:100%;padding-right:0px;"> 
+                  <div align="left" class="alignment" style="line-height:10px">
+                   <a href="http://www.xma-closk.info/vilification-realizations/e9a5N239C5c8nO613tD437dUm1049y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQydQon6jiMI106yzwAND" style="outline:none" tabindex="-1" target="_blank"><img alt="Hubilo" src="http://www.xma-closk.info/Billikens-complimenter/ada4R2395wP7ag12f4U37fx1049i36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQydQon5i10WB5HjPwD" style="display: block; height: auto; border: 0; width: 100%; max-width: 100%;" title="Hubilo" width="100%" /></a>
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
             </tr> 
            </tbody> 
           </table> </td> 
         </tr> 
+       </tbody> 
+      </table> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+       <tbody> 
         <tr> 
          <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; border-radius: 0; width: 600px;" width="600"> 
            <tbody> 
             <tr> 
-             <td class="mail-color-3 frag" style="width:50%;"> 
-              <div> 
-               <h4 class="frag-heading">&nbsp;</h4> 
-               <div class="frag-description">
-                &nbsp;
-               </div> 
-               <div style="margin-top: 18px;">
-                &nbsp;
-               </div> 
-              </div> </td> 
-             <td class="mail-color-5 frag" style="width:50%;"> 
-              <div>
-               &nbsp;
-              </div> </td> 
+             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 0px; padding-bottom: 20px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
+              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="padding-left:40px;padding-right:40px;padding-top:10px;"> 
+                  <div style="color:#333132;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:24px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:left;mso-line-height-alt:36px;"> 
+                   <p align="center" style="margin: 0;"><strong>You are just a few clicks away to get The $100 Dunkin Card</strong></p> 
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table border="0" cellpadding="0" cellspacing="0" class="divider_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="padding-bottom:10px;padding-left:40px;padding-right:10px;padding-top:10px;"> 
+                  <div align="left" class="alignment"> 
+                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="10%"> 
+                    <tbody> 
+                     <tr> 
+                      <td class="divider_inner" style="font-size: 1px; line-height: 1px; border-top: 3px solid #AFC3CA;"><span>?</span></td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table border="0" cellpadding="0" cellspacing="0" class="image_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="padding-bottom:20px;padding-top:20px;width:100%;padding-right:0px;padding-left:0px;"> 
+                  <div align="center" class="alignment" style="line-height:10px">
+                   <a href="http://www.xma-closk.info/vilification-realizations/e9a5N239C5c8nO613tD437dUm1049y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQydQon6jiMI106yzwAND" style="outline:none" tabindex="-1" target="_blank"><img class="big" src="http://www.xma-closk.info/be76X2WA395Jm7aM11H4380j1049B36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydQon6EAMu105F1WwD/competence-pictures" style="display: block; height: auto; border: 0; width: 100%; max-width: 100%;" width="100%" /></a>
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="padding-bottom:5px;padding-left:40px;padding-right:40px;padding-top:5px;"> 
+                  <div style="color:#333132;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:left;mso-line-height-alt:24px;"> 
+                   <p align="center" style="margin: 0; font-size: 26px"><strong>We At Dunkin AppreciateYour Opinion.</strong></p> &nbsp; 
+                   <p style="margin: 0; font-size: 23px; text-align: center">Simply complete our 20-Second Service Survey about how your experience has been with us lately.&nbsp;</p> 
+                   <p>&nbsp;</p> 
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table border="0" cellpadding="20" cellspacing="0" class="button_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad"> 
+                  <div align="center" class="alignment">
+                   <a href="http://www.xma-closk.info/vilification-realizations/e9a5N239C5c8nO613tD437dUm1049y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQydQon6jiMI106yzwAND" style="text-decoration:none;display:inline-block;color:#333132;background-color:#EF6A00;border-radius:7px;width:auto;border-top:0px solid transparent;font-weight:700;border-right:0px solid transparent;border-bottom:0px solid transparent;border-left:0px solid transparent;padding-top:5px;padding-bottom:5px;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;text-align:center;mso-border-alt:none;word-break:keep-all;" target="_blank"><span style="padding-left:30px;padding-right:30px;font-size:26px;display:inline-block;letter-spacing:normal;"><span dir="ltr" style="word-break: break-word; line-height: 28.8px; color: #FFF">Go Here To Start</span></span></a>
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="padding-bottom:5px;padding-left:40px;padding-right:40px;padding-top:5px;"> 
+                  <div style="color:#333132;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:left;mso-line-height-alt:24px;">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-8" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="padding-bottom:5px;padding-left:40px;padding-right:40px;padding-top:5px;"> 
+                  <div style="color:#333132;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:left;mso-line-height-alt:24px;"> 
+                   <p style="margin: 0;">&nbsp;&nbsp;</p> 
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
             </tr> 
            </tbody> 
           </table> </td> 
         </tr> 
+       </tbody> 
+      </table> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+       <tbody> 
         <tr> 
          <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-radius: 0; color: #000000; background-color: #333132; width: 600px;" width="600"> 
            <tbody> 
             <tr> 
-             <td class="mail-color-4 frag" style="width:50%;"> 
-              <div>
-               &nbsp;
-              </div> 
-              <div style="margin-top: 18px;">
-               &nbsp;
-              </div> </td> 
-             <td class="mail-color-1 frag" style="width:50%;"> 
-              <div>
-               &nbsp;
-              </div> 
-              <div>
-               &nbsp;
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td style="background-color:#f5f5f5"> 
-          <table align="left" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td style="height:unset;text-align: left; padding-bottom: 7px; padding-left: 30px; width: 70%; padding-top: 30px;">&nbsp;</td> 
-             <td style="height:unset;padding-bottom: 10px;  font-family: 'Source',Arial,sans-serif;padding-top: 30px;">&nbsp;</td> 
-             <td style="height:unset;padding-bottom: 10px;  padding-left: 10px; font-family: 'Source',Arial,sans-serif;padding-top: 30px;">&nbsp;</td> 
-             <td style="height:unset;padding-bottom: 10px;  padding-left: 10px; font-family: 'Source',Arial,sans-serif;padding-top: 30px;">&nbsp;</td> 
-             <td style="height:unset;padding-bottom: 10px;  padding-left: 10px; padding-right: 10px; font-family: 'Source',Arial,sans-serif;padding-top: 30px;">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table align="left" cellpadding="0" cellspacing="0" role="presentation" style="width:500px" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td style="text-align:left;color:#959595;font-size:11px;line-height:18px;padding-top:10px;padding-bottom:50px; padding-top:50px; padding-left: 40px;">&nbsp;</td> 
+             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 20px; padding-bottom: 30px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
+              <table border="0" cellpadding="0" cellspacing="0" class="social_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="text-align:center;padding-right:0px;padding-left:0px;"> 
+                  <div class="alignment" style="text-align:center;"> 
+                   <table border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block;" width="210px"> 
+                    <tbody> 
+                     <tr> 
+                      <td style="padding:0 5px 0 5px;">&nbsp;</td> 
+                      <td style="padding:0 5px 0 5px;">&nbsp;</td> 
+                      <td style="padding:0 5px 0 5px;">&nbsp;</td> 
+                      <td style="padding:0 5px 0 5px;">&nbsp;</td> 
+                      <td style="padding:0 5px 0 5px;">&nbsp;</td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="pad" style="padding-left:40px;padding-right:40px;padding-top:20px;"> 
+                  <div style="color:#ffffff;direction:ltr;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:10px;font-weight:400;letter-spacing:0px;line-height:120%;text-align:center;mso-line-height-alt:12px;"> 
+                   <p style="margin: 0;">No longer wish to receive messages from us?,<a href="http://www.xma-closk.info/haply-Harrisonburg/26a5z239B5f_m8611Q437ep1049v36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydQon5ej10B6lTwpUD" style="text-decoration-line: none; color: #EF6A00"> <span>Click.Ahead.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span face="uncouth"></span><style face="coweringly"><small></style></small><span title="Isaacs"><big></big></span></p> 
+                   <p style="margin: 0;">&nbsp;</p> 
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
             </tr> 
            </tbody> 
           </table> </td> 
@@ -242,9 +305,10 @@ Content-Transfer-Encoding: 7bit
       </table> </td> 
     </tr> 
    </tbody> 
-  </table>   
- <img src="http://www.sogekng.info/De35E239y5K8sy513zK4378mQ1047s36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQrdQne5aP10N5b0wND/reluctant-contemplated" alt=""/></body>
+  </table> 
+  <!-- End -->  
+ <img src="http://www.xma-closk.info/twenties-quarters/3006k23nF95o85oD11a4381m1049l36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQydQon6W1_0Mv5HPqwD" alt=""/></body>
 </html>
 
-------=_Part_322_1088768738.1671383657722--
+------=_Part_79_2108761635.1671392833318--
 
