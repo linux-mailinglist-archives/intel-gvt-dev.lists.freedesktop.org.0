@@ -2,43 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4AA1650C2E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Dec 2022 13:52:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EFE4F650CDF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 19 Dec 2022 14:53:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5927810E29D;
-	Mon, 19 Dec 2022 12:52:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ADDD810E2A7;
+	Mon, 19 Dec 2022 13:53:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from m12.mail.163.com (m12.mail.163.com [220.181.12.215])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6770010E2A6;
- Mon, 19 Dec 2022 12:52:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=uxYH6
- rrU5fdjTZNUSkyInFLMBcyBhkRRS55I787F7LE=; b=c3MxkReacFwFpO3rkb5eb
- 2mvuGDoCXHLe55cZoIIPb8L90Gsq+IurHKy5SncT4Sjzlua9NpaN7cP34Q7rxQAp
- eWFbvqJQgZZHxNf0NsF4GYG9JwFPaK/9KRtdG5JUVEvbdhZ7aBD2iRAYhVGzmY47
- MYAJCI2jbepyCVq69pkrN8=
-Received: from leanderwang-LC2.localdomain (unknown [111.206.145.21])
- by zwqz-smtp-mta-g0-4 (Coremail) with SMTP id _____wA3hXZ1XqBjHoJ2AA--.37727S2;
- Mon, 19 Dec 2022 20:52:05 +0800 (CST)
-From: Zheng Wang <zyytlz.wz@163.com>
-To: zhi.a.wang@intel.com
-Subject: [RESEND PATCH v4] drm/i915/gvt: fix double free bug in
- split_2MB_gtt_entry
-Date: Mon, 19 Dec 2022 20:52:04 +0800
-Message-Id: <20221219125204.1001149-1-zyytlz.wz@163.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <11728bc1-7b59-1623-b517-d1a0d57eb275@intel.com>
-References: <11728bc1-7b59-1623-b517-d1a0d57eb275@intel.com>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5667510E2A7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 19 Dec 2022 13:53:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1671458019; x=1702994019;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=IbUkMrdd5439/WX0kV+ojOsF0VrveVn6NbNd14e3uNk=;
+ b=PG49b4obAxp807Oxk+bi6O78m+pA3lheMpEE/HpXAQpuEmUES8AiirG/
+ 7yePo3extslonHL5ggXefPL/XhdoecuRzKvkeqRBCSEKusRCstUagULTR
+ XSOX20y/qCvwHPmlzbnFDGNJ5y53tFrelEMo8HFPfX/ZgyDYvm3K8Q7lY
+ ci7qRh4xGNU7dR4R7OdjDDToJIk1IleIL294mYmEITsYczDIrW86VQEsH
+ r2Q8AYfes76SEBfI1SCq8j7M/P563UMPyamG8ihmtqBnB2uwLsB/0lUFm
+ 5F8Z+cb8YeTb4Juqswsotknz4Hn40QjQKOLgnkYKBuZX4Poscty+nLIfx w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="383693581"
+X-IronPort-AV: E=Sophos;i="5.96,255,1665471600"; d="scan'208";a="383693581"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Dec 2022 05:53:38 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="979381561"
+X-IronPort-AV: E=Sophos;i="5.96,255,1665471600"; d="scan'208";a="979381561"
+Received: from debian-skl.sh.intel.com ([10.239.159.40])
+ by fmsmga005.fm.intel.com with ESMTP; 19 Dec 2022 05:53:36 -0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: [PATCH 1/2] drm/i915/gvt: fix gvt debugfs destroy
+Date: Mon, 19 Dec 2022 22:03:56 +0800
+Message-Id: <20221219140357.769557-1-zhenyuw@linux.intel.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wA3hXZ1XqBjHoJ2AA--.37727S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxXry3Ar17WF1UKryrJr1UWrg_yoW5trWkpF
- WUWF45AF4xAF1IvryfWF18AFy3Z3W3Xa4xWrZ7K3WYkFsrtF1qyrWayFy3Jr9I9rZrWw4f
- CF4UJFZrC34jqa7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRYhFsUUUUU=
-X-Originating-IP: [111.206.145.21]
-X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/1tbiXB3cU1Xl5JmTlQAAsF
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,118 +55,96 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: alex000young@gmail.com, security@kernel.org,
- intel-gvt-dev@lists.freedesktop.org, tvrtko.ursulin@linux.intel.com,
- airlied@linux.ie, gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
- joonas.lahtinen@linux.intel.com, hackerzheng666@gmail.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- 1002992920@qq.com, zhenyuw@linux.intel.com, zyytlz.wz@163.com,
- airlied@gmail.com
+Cc: stable@vger.kernel.org, Yu <yu.he@intel.com>,
+	Wang@freedesktop.org, Zhi <zhi.a.wang@intel.com>, He@freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-If intel_gvt_dma_map_guest_page failed, it will call
- ppgtt_invalidate_spt, which will finally free the spt. But the caller does
- not notice that, it will free spt again in error path.
+When gvt debug fs is destroyed, need to have a sane check if drm
+minor's debugfs root is still available or not, otherwise in case like
+device remove through unbinding, drm minor's debugfs directory has
+already been removed, then intel_gvt_debugfs_clean() would act upon
+dangling pointer like below oops.
 
-Fix this by undoing the mapping of DMA address and freeing sub_spt.
+i915 0000:00:02.0: Direct firmware load for i915/gvt/vid_0x8086_did_0x1926_rid_0x0a.golden_hw_state failed with error -2
+i915 0000:00:02.0: MDEV: Registered
+Console: switching to colour dummy device 80x25
+i915 0000:00:02.0: MDEV: Unregistering
+BUG: kernel NULL pointer dereference, address: 00000000000000a0
+PGD 0 P4D 0
+Oops: 0002 [#1] PREEMPT SMP PTI
+CPU: 2 PID: 2486 Comm: gfx-unbind.sh Tainted: G          I        6.1.0-rc8+ #15
+Hardware name: Dell Inc. XPS 13 9350/0JXC1H, BIOS 1.13.0 02/10/2020
+RIP: 0010:down_write+0x1f/0x90
+Code: 1d ff ff 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 53 48 89 fb e8 62 c0 ff ff bf 01 00 00 00 e8 28 5e 31 ff 31 c0 ba 01 00 00 00 <f0> 48 0f b1 13 75 33 65 48 8b 04 25 c0 bd 01 00 48 89 43 08 bf 01
+RSP: 0018:ffff9eb3036ffcc8 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 00000000000000a0 RCX: ffffff8100000000
+RDX: 0000000000000001 RSI: 0000000000000064 RDI: ffffffffa48787a8
+RBP: ffff9eb3036ffd30 R08: ffffeb1fc45a0608 R09: ffffeb1fc45a05c0
+R10: 0000000000000002 R11: 0000000000000000 R12: 0000000000000000
+R13: ffff91acc33fa328 R14: ffff91acc033f080 R15: ffff91acced533e0
+FS:  00007f6947bba740(0000) GS:ffff91ae36d00000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00000000000000a0 CR3: 00000001133a2002 CR4: 00000000003706e0
+Call Trace:
+ <TASK>
+ simple_recursive_removal+0x9f/0x2a0
+ ? start_creating.part.0+0x120/0x120
+ ? _raw_spin_lock+0x13/0x40
+ debugfs_remove+0x40/0x60
+ intel_gvt_debugfs_clean+0x15/0x30 [kvmgt]
+ intel_gvt_clean_device+0x49/0xe0 [kvmgt]
+ intel_gvt_driver_remove+0x2f/0xb0
+ i915_driver_remove+0xa4/0xf0
+ i915_pci_remove+0x1a/0x30
+ pci_device_remove+0x33/0xa0
+ device_release_driver_internal+0x1b2/0x230
+ unbind_store+0xe0/0x110
+ kernfs_fop_write_iter+0x11b/0x1f0
+ vfs_write+0x203/0x3d0
+ ksys_write+0x63/0xe0
+ do_syscall_64+0x37/0x90
+ entry_SYSCALL_64_after_hwframe+0x63/0xcd
+RIP: 0033:0x7f6947cb5190
+Code: 40 00 48 8b 15 71 9c 0d 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b7 0f 1f 00 80 3d 51 24 0e 00 00 74 17 b8 01 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 58 c3 0f 1f 80 00 00 00 00 48 83 ec 28 48 89
+RSP: 002b:00007ffcbac45a28 EFLAGS: 00000202 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 000000000000000d RCX: 00007f6947cb5190
+RDX: 000000000000000d RSI: 0000555e35c866a0 RDI: 0000000000000001
+RBP: 0000555e35c866a0 R08: 0000000000000002 R09: 0000555e358cb97c
+R10: 0000000000000000 R11: 0000000000000202 R12: 0000000000000001
+R13: 000000000000000d R14: 0000000000000000 R15: 0000555e358cb8e0
+ </TASK>
+Modules linked in: kvmgt
+CR2: 00000000000000a0
+---[ end trace 0000000000000000 ]---
 
-Fixes: b901b252b6cf ("drm/i915/gvt: Add 2M huge gtt support")
-Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+Cc: Wang, Zhi <zhi.a.wang@intel.com>
+Cc: He, Yu <yu.he@intel.com>
+Cc: stable@vger.kernel.org
+Reviewed-by: Zhi Wang <zhi.a.wang@intel.com>
+Fixes: bc7b0be316ae ("drm/i915/gvt: Add basic debugfs infrastructure")
+Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 ---
-v4:
-- fix by undo the mapping of DMA address and free sub_spt suggested by Zhi
+ drivers/gpu/drm/i915/gvt/debugfs.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-v3:
-- correct spelling mistake and remove unused variable suggested by Greg
-
-v2: https://lore.kernel.org/all/20221006165845.1735393-1-zyytlz.wz@163.com/
-
-v1: https://lore.kernel.org/all/20220928033340.1063949-1-zyytlz.wz@163.com/
----
- drivers/gpu/drm/i915/gvt/gtt.c | 53 +++++++++++++++++++++++++++++-----
- 1 file changed, 46 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index 51e5e8fb505b..b472e021e5a4 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.c
-+++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -1192,11 +1192,11 @@ static int split_2MB_gtt_entry(struct intel_vgpu *vgpu,
+diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
+index 9f1c209d9251..d7df27feee8c 100644
+--- a/drivers/gpu/drm/i915/gvt/debugfs.c
++++ b/drivers/gpu/drm/i915/gvt/debugfs.c
+@@ -199,6 +199,10 @@ void intel_gvt_debugfs_init(struct intel_gvt *gvt)
+  */
+ void intel_gvt_debugfs_clean(struct intel_gvt *gvt)
  {
- 	const struct intel_gvt_gtt_pte_ops *ops = vgpu->gvt->gtt.pte_ops;
- 	struct intel_vgpu_ppgtt_spt *sub_spt;
--	struct intel_gvt_gtt_entry sub_se;
-+	struct intel_gvt_gtt_entry sub_se, e;
- 	unsigned long start_gfn;
- 	dma_addr_t dma_addr;
--	unsigned long sub_index;
--	int ret;
-+	unsigned long sub_index, parent_index;
-+	int ret, ret1;
- 
- 	gvt_dbg_mm("Split 2M gtt entry, index %lu\n", index);
- 
-@@ -1209,10 +1209,8 @@ static int split_2MB_gtt_entry(struct intel_vgpu *vgpu,
- 	for_each_shadow_entry(sub_spt, &sub_se, sub_index) {
- 		ret = intel_gvt_dma_map_guest_page(vgpu, start_gfn + sub_index,
- 						   PAGE_SIZE, &dma_addr);
--		if (ret) {
--			ppgtt_invalidate_spt(spt);
--			return ret;
--		}
-+		if (ret)
-+			goto err;
- 		sub_se.val64 = se->val64;
- 
- 		/* Copy the PAT field from PDE. */
-@@ -1231,6 +1229,47 @@ static int split_2MB_gtt_entry(struct intel_vgpu *vgpu,
- 	ops->set_pfn(se, sub_spt->shadow_page.mfn);
- 	ppgtt_set_shadow_entry(spt, se, index);
- 	return 0;
-+err:
-+	/* Undone the existing mappings of DMA addr. */
-+	for_each_present_shadow_entry(spt, &e, parent_index) {
-+		switch (e.type) {
-+		case GTT_TYPE_PPGTT_PTE_4K_ENTRY:
-+			gvt_vdbg_mm("invalidate 4K entry\n");
-+			ppgtt_invalidate_pte(spt, &e);
-+			break;
-+		case GTT_TYPE_PPGTT_PTE_64K_ENTRY:
-+			/* We don't setup 64K shadow entry so far. */
-+			WARN(1, "suspicious 64K gtt entry\n");
-+			continue;
-+		case GTT_TYPE_PPGTT_PTE_2M_ENTRY:
-+			gvt_vdbg_mm("invalidate 2M entry\n");
-+			continue;
-+		case GTT_TYPE_PPGTT_PTE_1G_ENTRY:
-+			WARN(1, "GVT doesn't support 1GB page\n");
-+			continue;
-+		case GTT_TYPE_PPGTT_PML4_ENTRY:
-+		case GTT_TYPE_PPGTT_PDP_ENTRY:
-+		case GTT_TYPE_PPGTT_PDE_ENTRY:
-+			gvt_vdbg_mm("invalidate PMUL4/PDP/PDE entry\n");
-+			ret1 = ppgtt_invalidate_spt_by_shadow_entry(
-+					spt->vgpu, &e);
-+			if (ret1) {
-+				gvt_vgpu_err("fail: shadow page %p shadow entry 0x%llx type %d\n",
-+				spt, e.val64, e.type);
-+				goto free_spt;
-+			}
-+			break;
-+		default:
-+			GEM_BUG_ON(1);
-+		}
+-	debugfs_remove_recursive(gvt->debugfs_root);
+-	gvt->debugfs_root = NULL;
++	struct drm_minor *minor = gvt->gt->i915->drm.primary;
++
++	if (minor->debugfs_root) {
++		debugfs_remove_recursive(gvt->debugfs_root);
++		gvt->debugfs_root = NULL;
 +	}
-+	/* Release the new alloced apt. */
-+free_spt:
-+	trace_spt_change(sub_spt->vgpu->id, "release", sub_spt,
-+		sub_spt->guest_page.gfn, sub_spt->shadow_page.type);
-+	ppgtt_free_spt(sub_spt);
-+	sub_spt = NULL;
-+	return ret;
  }
- 
- static int split_64KB_gtt_entry(struct intel_vgpu *vgpu,
 -- 
-2.25.1
+2.39.0
 
