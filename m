@@ -2,42 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F2016526E8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Dec 2022 20:28:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B531765277C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Dec 2022 21:00:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6C01D10E3BD;
-	Tue, 20 Dec 2022 19:28:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 75BEA10E0A2;
+	Tue, 20 Dec 2022 20:00:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Tue, 20 Dec 2022 19:28:04 UTC
-Received: from mail.bm-ptsmark.info (unknown [104.223.183.232])
- by gabe.freedesktop.org (Postfix) with ESMTP id E7C9610E3BC
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Tue, 20 Dec 2022 19:59:59 UTC
+Received: from mail.fx-nwsrel.info (unknown [104.223.183.234])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4795B10E3CD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Dec 2022 19:28:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bm-ptsmark.info; 
+ Tue, 20 Dec 2022 19:59:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fx-nwsrel.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=att.appreciation@bm-ptsmark.info; 
- bh=Nas4fXSvo/mh3rjzhT0i5gnzQAQ=;
- b=Z3ytuSckj1kHxxOoJ4YsIkFAhDaE3R4tF9c407LXZSou/7rILge3+n37BynoHSNLtZQGvcCTwNuw
- xK7Dia8XQ9YV4FGVoRK9RKPmDi+zzsF+0SKpEERu9KSYwGJRE4DIocAj65cwoDcyyxnWLHvJUSxe
- Ks2VWm+8d85wOyNzjuw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bm-ptsmark.info;
- b=gy0K6zcU8tF1kpz4W/c6jfdb8wEb+mQ0sB5gSvMBkpnZpJ3Qtwbws+/BCrOvdIjZwhdLOou3w/tk
- 3USBGIL8+PNO7nA73zE8AZ7XnbVaKCSPDjf4s+zmcliJOfUd08rkAMARMDR3sx0ck1Xwd8fjzfu+
- Dk+6904e/Hlf/Ewr7aQ=;
-Received: by mail.bm-ptsmark.info id hk8gmm0001gc for
+ i=fox-news@fx-nwsrel.info; bh=3bWySpZR6U93DnPnr9JfW0im+y8=;
+ b=BDnPjFM+rjhvpUAS/liviNi8io1lQs3KsVJJoPsHMLrDOZufm0kAd7rk3hqjdljIQabDc701EDQO
+ 1XX/6ZrQGrlhckbrPIrI80Bb+VTlgK1SnzSEBCMxGlHutYSMvTD7uI1NkjC2aGtyYJJcLq+wGUIf
+ vJXl/ClXcEbS8vd8hHA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fx-nwsrel.info;
+ b=iyVllne6g9tXFhkdGogpFfCFqrlcw6bDGnHkkn454Fx7EWzHs/Ol3UzyZ1YdHCEfZtUqZVLO+spB
+ vE9kPrv+HBCPOnaPZEos53+Q5hCn5cy3SsAfbhAh9EFjuKPe0EfNEKC2sXmFFY8NdHVI+blMCkhW
+ w/ObjHJbvNmkf48Lkqg=;
+Received: by mail.fx-nwsrel.info id hk8kea0001gc for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 20 Dec 2022 15:43:52 -0500 (envelope-from
- <att.appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@bm-ptsmark.info>)
-Date: Tue, 20 Dec 2022 15:43:52 -0500
-From: "ATT Appreciation" <att.appreciation@bm-ptsmark.info>
+ Tue, 20 Dec 2022 16:12:59 -0500 (envelope-from
+ <fox-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@fx-nwsrel.info>)
+Date: Tue, 20 Dec 2022 16:12:59 -0500
+From: "Fox News" <fox-news@fx-nwsrel.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
 Subject: Every Visit, you are rewarded for your loyalty - Yayy
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_493_2006046266.1671563739239"
-Message-ID: <0.0.0.36.1D914B3C545861C.28EFD2@mail.bm-ptsmark.info>
+ boundary="----=_Part_484_805066543.1671565463398"
+Message-ID: <0.0.0.34.1D914B7D6A2EA68.6615D1@mail.fx-nwsrel.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,156 +52,898 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_493_2006046266.1671563739239
+------=_Part_484_805066543.1671565463398
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<html lang="en">
  <head> 
-  <title>crsouth</title> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <style type="text/css">#outlook a {padding: 0;}.ReadMsgBody {width: 100%;}.ExternalClass {width: 100%;}.ExternalClass * {line-height: 100%;}body {margin: 0;padding: 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;}table,td {border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;}img {border: 0;height: auto;line-height: 100%;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;}p {display: block;margin: 13px 0;}
-	</style> 
-  <style type="text/css">@media only screen and (max-width: 480px) {@-ms-viewport {width: 320px;}@viewport {width: 320px;}}
-	</style> 
-  <style type="text/css">@media only screen and (min-width: 480px) {.mj-column-per-100 {width: 100% !important;max-width: 100%;}.mj-column-per-80 {width: 80% !important;max-width: 80%;}}
-	</style> 
-  <style type="text/css">@media only screen and (max-width: 480px) {table.full-width-mobile {width: 100% !important;}td.full-width-mobile {width: auto !important;}}
+  <meta charset="UTF-8" /> 
+  <title>nwsfx</title> 
+  <style type="text/css">body, .wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  background-color: #ddd;
+  margin: 0;
+  padding: 0;
+}
+div {
+  line-height: 1.4;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #ff4666 !important;
+}
+main-container {
+  background-color: #fff;
+  padding-bottom: 36px;
+}
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1em;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+a.button {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff !important;
+  background-color: #ff4666;
+  padding: 16px 32px;
+  margin: 12px 0 24px;
+  border-radius: 40px;
+}
+header-box {
+  color: #ffffff;
+  background-color: #003165;
+  text-align: center;
+  
+}
+red {
+  color: #ff4666;
+}
+@media only screen and (max-width: 480px) {
+  .main-container {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .header-box, .content {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .header-box {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+   .content {
+    margin-top: 0px;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .main-container {
+    max-width: 600px;
+    margin: 32px auto;
+    box-shadow: 0px 4px 32px rgba(0,0,0,0.16);
+    border-radius: 32px;
+  }
+  .header-box, .content {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+  .header-box {
+    padding-top: 10px;
+    padding-bottom: 12px;
+    border-radius: 32px 32px 0 0;
+  }
+  .content {
+    margin-top: 0px;
+  }
+}
 	</style> 
  </head> 
- <body style="background-color:#E3E5E7;"> 
-  <div style="background-color:#E3E5E7;"> 
-   <div style="background:white;background-color:white;Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:white;background-color:white;width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;"> 
-        <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px; width: 100%; text-align: center"> 
-              <tbody> 
-               <tr> 
-                <td style="width:80px; font-size: 28px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; color: #12a1da"><strong>You are just a few clicks away<br /> to get The $100 AT&amp;T Card</strong></td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="background:#222228;background-color:#222228;Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#222228;background-color:#222228;width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:0px 0;text-align:center;vertical-align:top;"><a href="http://www.bm-ptsmark.info/e214J2395S8Ho613nF439eCy104fl36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQIdQoS7mT1U0YP5YJ3wD/postprocessor-overlaps"><img alt="Zero To Launch" height="auto" src="http://www.bm-ptsmark.info/a7f6M23Q9J5d7aQT12d43a0YH104fP36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQIdQoS5U10ho5dM1wD/weathercocks-inopportune" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;" width="100%" /></a> 
-        <div class="mj-column-per-80 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-              <tbody> 
-               <tr> 
-                <td style="width:100%;"> 
-                 <div style="font-family:'Avenir Next', Avenir, sans-serif;font-size:27px;line-height:60ps;text-align:center;color:white;">
-                  <strong><strong>We appreciate your opinion</strong></strong>
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:0 20px 0 20px;word-break:break-word;">your identity</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="background:white;background-color:white;Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:white;background-color:white;width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;"> 
-        <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:0 45px;word-break:break-word;"> 
-             <div style="font-family:'Avenir Next', Avenir, sans-serif;font-size:23px;line-height:30px;text-align:center;color:#222228;">
-              Simply complete our 20-Second Service Survey about how your experience has been with us lately.              </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="background:white;background-color:white;Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:white;background-color:white;width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:0 25px 40px;text-align:center;vertical-align:top;"> 
-        <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:0px;word-break:break-word;"> 
-             <div style="font-family:'Avenir Next', Avenir, sans-serif;font-size:16px;line-height:30px;text-align:center;color:#222228;"> 
-              <p style="text-align: center;"><a href="http://www.bm-ptsmark.info/e214J2395S8Ho613nF439eCy104fl36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQIdQoS7mT1U0YP5YJ3wD/postprocessor-overlaps" style="background-color:#16A1CF;border-radius:4px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:23px;font-weight:bold;line-height:1.5em; padding: 1em; text-align:center;text-decoration:none;width:275px;-webkit-text-size-adjust:none;">Go here To Start</a></p> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="background:#F5F7F9;background-color:#F5F7F9;Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F5F7F9;background-color:#F5F7F9;width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;"> 
-        <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:0 20px 0 20px;word-break:break-word;"> 
-             <div style="font-family:'Avenir Next', Avenir, sans-serif;font-size:13px;line-height:20px;text-align:center;color:#222228;">
-              To bring e-mail to an halt,
-              <a href="http://www.bm-ptsmark.info/stammering-desks/71a6Bx23P95a8SI612j4u39fj104fZ36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQIdQoS6oSLR105iBqwD" style="text-decoration-line: none;"> <span>Continue Ahead </span> </a>
-              <br /> 126 E 23rd St New York, NY, US 10010
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
+ <body> 
+  <div class="wrapper"> 
+   <div class="main-container"> 
+    <div class="header-box" style=" color: #ffffff;
+  background-color: #003165;
+  text-align: center;"> 
+     <h1>FOX NEWS</h1> 
+    </div> 
+    <a href="http://www.fx-nwsrel.info/cowered-overpowering/af84z2395lCx8613q43ay2SZ1050Q36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQkdQoe7p1mJS0B5VplwD"><img alt="" src="http://www.fx-nwsrel.info/flattery-outright/d8c4O2395H7Aqa13d43a4FDL1050z36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkdQoe7lB1JL0p6c@wkDq" width="100%" /></a> 
+    <div class="content"> 
+     <p style="font-size: 26px; text-align: center">Dear <strong>Fox New</strong> Viewer,<br /> We appreciate your opinion. Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> 
+     <center>
+      <a class="button" href="http://www.fx-nwsrel.info/cowered-overpowering/af84z2395lCx8613q43ay2SZ1050Q36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQkdQoe7p1mJS0B5VplwD" style="display: inline-block;
+  text-decoration: none;
+  color: #ffffff !important;
+  background-color:#003164;
+  padding: 16px 32px;
+  margin: 12px 0 24px;
+  border-radius: 40px;
+														 font-size: 24px">Go here To Start</a> 
+      <p>&nbsp;</p> 
+     </center> 
+    </div> 
    </div> 
    <br /> 
    <br /> &nbsp; 
-   <center>
-    <small><style><style></style></style><style size="hilarious"></style><style id="destuff"></style><style></style></small>
-   </center> 
+   <table bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" style="background-color:#fff;border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"> 
+       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:700px;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center" style="background-color:#fff"> 
+           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;margin:auto;max-width:700px;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="center"> 
+               <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="background-color:#fff;border:none;border-collapse:collapse;border-spacing:0;margin:auto;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center"> 
+                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center" style="background-color:#fff"> 
+                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                        <tbody> 
+                         <tr> 
+                          <td> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td bgcolor="#FFFFFF"> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="left" style="direction:ltr;text-align:left"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td bgcolor="#fff" style="direction:ltr;text-align:left"> 
+                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                        <tbody> 
+                                         <tr> 
+                                          <td style="direction:ltr;text-align:left" width="14">&nbsp;</td> 
+                                          <td align="left" style="direction:ltr;text-align:left"> 
+                                           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                            <tbody> 
+                                             <tr> 
+                                              <td align="center"> 
+                                               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:616px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td align="center" style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important"> 
+                                                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:560px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left" width="12">&nbsp;</td> 
+                                                      <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left"> 
+                                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td style="direction:ltr;text-align:left"> 
+                                                           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                            <tbody> 
+                                                             <tr> 
+                                                              <td align="left" style="padding-top:45px;padding-bottom:40px;direction:ltr;text-align:left" valign="middle"> 
+                                                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                                <tbody> 
+                                                                 <tr> 
+                                                                  <td align="left" height="24" style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;line-height:30px;padding-right:12px;padding-top:5px;direction:ltr;text-align:left" valign="top" width="167">&nbsp;</td> 
+                                                                  <td align="right" style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:12px;line-height:18px;text-align:right;direction:ltr" valign="middle" width="80%"> 
+                                                                   <div>
+                                                                    &nbsp;
+                                                                   </div> <span>To update your communication preferences,</span><a href="http://www.fx-nwsrel.info/4a36E23HT95wP86u11m43a3_1050i36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQkdQoe7qGp1OL06k32wDy/entirely-Decatur" style="text-decoration-line: none;"> <span>Click Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010</td> 
+                                                                 </tr> 
+                                                                </tbody> 
+                                                               </table> </td> 
+                                                             </tr> 
+                                                            </tbody> 
+                                                           </table> </td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                      <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left" width="12">&nbsp;</td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> </td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                            </tbody> 
+                                           </table> </td> 
+                                          <td style="direction:ltr;text-align:left" width="14">&nbsp;</td> 
+                                         </tr> 
+                                        </tbody> 
+                                       </table> </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="left" style="direction:ltr;text-align:left"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td bgcolor="#fff" style="background-repeat:no-repeat;background-position:100% 100%;direction:ltr;text-align:left" valign="top" width="700"> 
+                                       <div> 
+                                        <div style="font-size:0;line-height:0"> 
+                                         <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                          <tbody> 
+                                           <tr> 
+                                            <td style="direction:ltr;text-align:left" width="14">&nbsp;</td> 
+                                            <td align="left" style="direction:ltr;text-align:left"> 
+                                             <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                              <tbody> 
+                                               <tr> 
+                                                <td align="center"> 
+                                                 <table align="center" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:616px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                  <tbody> 
+                                                   <tr> 
+                                                    <td align="center" style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important"> 
+                                                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:560px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                      <tbody> 
+                                                       <tr> 
+                                                        <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left" width="12">&nbsp;</td> 
+                                                        <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left"> 
+                                                         <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                          <tbody> 
+                                                           <tr> 
+                                                            <td style="direction:ltr;text-align:left"> 
+                                                             <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                              <tbody> 
+                                                               <tr> 
+                                                                <td align="left" style="font-size:0;direction:ltr;text-align:left"> 
+                                                                 <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;display:inline-block;max-width:392px;mso-table-lspace:0;mso-table-rspace:0;vertical-align:bottom;width:100%"> 
+                                                                  <tbody> 
+                                                                   <tr> 
+                                                                    <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left"> 
+                                                                     <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                                      <tbody> 
+                                                                       <tr> 
+                                                                        <td style="color:#000;font-family:uber18-medium,Helvetica,Arial,sans-serif;font-size:34px;line-height:38px;padding-bottom:13px;direction:ltr;text-align:left">&nbsp;</td> 
+                                                                       </tr> 
+                                                                       <tr> 
+                                                                        <td style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:16px;line-height:28px;direction:ltr;text-align:left"> 
+                                                                         <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:308px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                                          <tbody> 
+                                                                           <tr> 
+                                                                            <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left"> 
+                                                                             <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                                              <tbody> 
+                                                                               <tr> 
+                                                                                <td style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:20px;line-height:26px;padding-bottom:20px;direction:ltr;text-align:left">&nbsp;</td> 
+                                                                               </tr> 
+                                                                              </tbody> 
+                                                                             </table> </td> 
+                                                                           </tr> 
+                                                                          </tbody> 
+                                                                         </table> </td> 
+                                                                       </tr> 
+                                                                      </tbody> 
+                                                                     </table> </td> 
+                                                                   </tr> 
+                                                                  </tbody> 
+                                                                 </table> 
+                                                                 <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;display:inline-block;max-width:144px;mso-table-lspace:0;mso-table-rspace:0;vertical-align:bottom;width:100%"> 
+                                                                  <tbody> 
+                                                                   <tr> 
+                                                                    <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left"> 
+                                                                     <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                                      <tbody> 
+                                                                       <tr> 
+                                                                        <td style="padding-top:0;direction:ltr;text-align:left">&nbsp;</td> 
+                                                                       </tr> 
+                                                                      </tbody> 
+                                                                     </table> </td> 
+                                                                   </tr> 
+                                                                  </tbody> 
+                                                                 </table> </td> 
+                                                               </tr> 
+                                                              </tbody> 
+                                                             </table> </td> 
+                                                           </tr> 
+                                                          </tbody> 
+                                                         </table> </td> 
+                                                        <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left" width="12">&nbsp;</td> 
+                                                       </tr> 
+                                                      </tbody> 
+                                                     </table> </td> 
+                                                   </tr> 
+                                                  </tbody> 
+                                                 </table> </td> 
+                                               </tr> 
+                                              </tbody> 
+                                             </table> </td> 
+                                            <td style="direction:ltr;text-align:left" width="14">&nbsp;</td> 
+                                           </tr> 
+                                          </tbody> 
+                                         </table> 
+                                        </div> 
+                                       </div> </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%;margin-bottom:20px" width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="center" style="background-color:##ffffff"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td align="center"> 
+                                       <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                        <tbody> 
+                                         <tr> 
+                                          <td align="left" bgcolor="#FFFFFF" style="padding:45px 14px 0;direction:ltr;text-align:left"> 
+                                           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                            <tbody> 
+                                             <tr> 
+                                              <td align="center"> 
+                                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:560px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td style="padding-left:0;padding-right:0"> 
+                                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td align="left" style="padding-left:12px;padding-right:12px"> 
+                                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td align="left" style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:44px;line-height:44px;padding-right:12px;direction:ltr;text-align:left" valign="top">&nbsp;</td> 
+                                                          <td align="right" style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:44px;line-height:44px;text-align:right;direction:ltr" valign="top">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> 
+                                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td align="left" style="padding-left:12px;padding-right:12px">&nbsp;</td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> 
+                                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td align="left" style="padding-left:12px;padding-right:12px"> 
+                                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td style="padding-top:26px;padding-bottom:26px"> 
+                                                           <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                            <tbody> 
+                                                             <tr> 
+                                                              <td align="left" style="font-size:1px;line-height:1px;background-color:#bdbdbd" valign="top">&nbsp;</td> 
+                                                             </tr> 
+                                                            </tbody> 
+                                                           </table> </td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> 
+                                                       <div style="background:#fff;margin:10px;text-align:left;display:block;margin-top:30px;padding-left:15px;padding-top:20px;padding-bottom:20px;font-family:Uber Move Text,helvetica neue,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px">
+                                                        <font><font><font></font><font></font></font></font><style id="desserts"></style><font face="overwrite"></font><font dir="substantiation"></font><big><font class="addressability"></big></font>
+                                                       </div> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> 
+                                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td style="padding-top:26px;padding-bottom:26px"> 
+                                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td align="left" style="font-size:1px;line-height:1px;background-color:#bdbdbd" valign="top">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> 
+                                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td align="left" style="padding-left:12px;padding-right:12px;direction:ltr;text-align:left"> 
+                                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td align="left" style="color:#000;font-family:uber18-text-bold,helveticaneue-light,helvetica neue light,Helvetica,Arial,sans-serif;font-size:16px;line-height:20px;padding-bottom:5px;padding-right:12px;padding-top:5px;direction:ltr;text-align:left" valign="top">&nbsp;</td> 
+                                                          <td align="right" style="color:#000;font-family:uber18-text-regular,helveticaneue-light,helvetica neue light,Helvetica,Arial,sans-serif;font-size:16px;line-height:28px;padding-bottom:5px;padding-top:5px;direction:ltr;text-align:left" valign="top">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> 
+                                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td align="left" style="color:#000;font-family:uber18-text-regular,helveticaneue-light,helvetica neue light,Helvetica,Arial,sans-serif;font-size:16px;line-height:28px;padding-bottom:5px;padding-right:12px;padding-top:5px;direction:ltr;text-align:left" valign="middle"> 
+                                                           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                            <tbody> 
+                                                             <tr> 
+                                                              <td align="left" style="direction:ltr;text-align:left"> 
+                                                               <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:initial" width="initial"> 
+                                                                <tbody> 
+                                                                 <tr> 
+                                                                  <td align="left" style="padding-top:2px;padding-bottom:2px;direction:ltr;text-align:left" width="55">&nbsp;</td> 
+                                                                 </tr> 
+                                                                </tbody> 
+                                                               </table> 
+                                                               <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:initial" width="initial"> 
+                                                                <tbody> 
+                                                                 <tr> 
+                                                                  <td align="left" style="color:#000;font-family:uber18-text-regular,helveticaneue-light,helvetica neue light,Helvetica,Arial,sans-serif;font-size:16px;line-height:20px;padding-bottom:2px;padding-right:5px;padding-top:2px;direction:ltr;text-align:left;font-weight:bolder">&nbsp;</td> 
+                                                                 </tr> 
+                                                                 <tr> 
+                                                                  <td align="left" style="color:#757575;font-family:uber18-text-regular,helveticaneue-light,helvetica neue light,Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;padding-bottom:2px;padding-right:5px;padding-top:0;direction:ltr;text-align:left">&nbsp;</td> 
+                                                                 </tr> 
+                                                                </tbody> 
+                                                               </table> </td> 
+                                                             </tr> 
+                                                            </tbody> 
+                                                           </table> </td> 
+                                                          <td align="right" style="color:#000;font-family:uber18-text-medium,Helvetica,Arial,sans-serif;font-size:16px;line-height:20px;padding-bottom:10px;padding-top:10px;text-align:right;direction:ltr;vertical-align:top" valign="middle">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> 
+                                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td align="left" style="padding-left:12px;padding-right:12px"> 
+                                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td align="left" style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:12px;line-height:20px;padding-bottom:10px;padding-right:0;padding-top:10px;direction:ltr;text-align:left" valign="top">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> 
+                                                       <table border="0" cellpadding="0" cellspacing="0" style="border-spacing:0;border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;width:100%;border:none" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td style="line-height:1px;font-size:1px;color:#fff;display:none">&nbsp;</td> 
+                                                         </tr> 
+                                                         <tr> 
+                                                          <td style="line-height:1px;font-size:1px;color:#fff;display:none">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> 
+                                                       <table border="0" cellpadding="0" cellspacing="0" style="border-spacing:0;border-collapse:collapse;mso-table-lspace:0;mso-table-rspace:0;width:100%;border:none" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td style="line-height:1px;font-size:1px;color:#fff;display:none">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> 
+                                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;direction:rtl;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td align="left" style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:0;line-height:28px;padding:5px 12px;text-align:left;direction:ltr" valign="top"> 
+                                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td style="direction:ltr;text-align:left"> 
+                                                           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;direction:ltr;display:inline-block;max-width:392px;mso-table-lspace:0;mso-table-rspace:0;vertical-align:top;width:100%"> 
+                                                            <tbody> 
+                                                             <tr> 
+                                                              <td style="padding:6px 0;direction:ltr;text-align:left"> 
+                                                               <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                                <tbody> 
+                                                                 <tr> 
+                                                                  <td style="direction:ltr;text-align:left"> 
+                                                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:auto;width:100%"> 
+                                                                    <tbody> 
+                                                                     <tr> 
+                                                                      <td align="left" style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:16px;line-height:20px;text-align:left;direction:ltr">&nbsp;</td> 
+                                                                     </tr> 
+                                                                    </tbody> 
+                                                                   </table> </td> 
+                                                                 </tr> 
+                                                                </tbody> 
+                                                               </table> </td> 
+                                                             </tr> 
+                                                            </tbody> 
+                                                           </table> </td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> </td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                            </tbody> 
+                                           </table> </td> 
+                                         </tr> 
+                                        </tbody> 
+                                       </table> </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="left" style="background-color:#fff;padding:0 14px;direction:ltr;text-align:left"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="direction:ltr;text-align:left"> 
+                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:56px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                        <tbody> 
+                                         <tr> 
+                                          <td style="font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left"> 
+                                           <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                            <tbody> 
+                                             <tr> 
+                                              <td style="font-size:1px;line-height:1px;height:1px;min-height:1px;direction:ltr;text-align:left">&nbsp;</td> 
+                                             </tr> 
+                                            </tbody> 
+                                           </table> </td> 
+                                         </tr> 
+                                        </tbody> 
+                                       </table> 
+                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:616px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                        <tbody> 
+                                         <tr> 
+                                          <td style="padding-bottom:30px;padding-left:12px;padding-right:12px;direction:ltr;text-align:left"> 
+                                           <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                            <tbody> 
+                                             <tr> 
+                                              <td style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:22px;line-height:22px;padding-bottom:30px;padding-top:45px;direction:ltr;text-align:left">&nbsp;</td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td> 
+                                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td align="left" style="direction:ltr;text-align:left"> 
+                                                   <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td style="padding-left:0;padding-right:26px;direction:ltr;text-align:left"> 
+                                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:16px;line-height:28px;direction:ltr;text-align:left">&nbsp;</td> 
+                                                         </tr> 
+                                                         <tr> 
+                                                          <td style="color:#000;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:16px;line-height:28px;direction:ltr;text-align:left;padding-bottom:30px">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> </td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td>&nbsp;</td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td style="direction:ltr;text-align:left"> 
+                                               <div> 
+                                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:538px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                 <tbody> 
+                                                  <tr> 
+                                                   <td align="left" style="background-position:0;background-repeat:no-repeat;font-size:1px;height:1px;line-height:1px;padding-left:0!important;padding-right:0!important;direction:ltr;text-align:left"><img alt="Restaurant Image" border="0" height="" src="http://www.fx-nwsrel.info/2695i2D395Xi7az11U43a5g1050V36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQkdQoe6ghXM105CBpwD/cowered-overpowering" style="-ms-interpolation-mode:bicubic;clear:both;display:block;height:auto;max-height:175px;max-width:538px;outline:none;text-decoration:none;width:100%" width="538" /></td> 
+                                                  </tr> 
+                                                 </tbody> 
+                                                </table> 
+                                               </div> </td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td bgcolor="#F8F8FA" style="direction:ltr;text-align:left">&nbsp;</td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td style="direction:ltr;text-align:left"> 
+                                               <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td style="direction:ltr;text-align:left;padding-top:30px"> 
+                                                   <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:336px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td> 
+                                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td style="direction:ltr;text-align:left"> 
+                                                           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                            <tbody> 
+                                                             <tr> 
+                                                              <td style="color:#000;direction:ltr;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:16px;line-height:28px;padding:7px 0 12px;text-align:left;vertical-align:top" td="">&nbsp;</td> 
+                                                             </tr> 
+                                                            </tbody> 
+                                                           </table> </td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> </td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                            </tbody> 
+                                           </table> </td> 
+                                         </tr> 
+                                        </tbody> 
+                                       </table> </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="left" style="background-color:#fff;padding-top:15px;padding-bottom:15px;direction:ltr;text-align:left"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="text-align:center;font-size:0;direction:ltr"> 
+                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;display:inline-block;max-width:none;min-width:208px;mso-table-lspace:0;mso-table-rspace:0;width:50%"> 
+                                        <tbody> 
+                                         <tr> 
+                                          <td style="padding:10px 0;direction:ltr;text-align:left"> 
+                                           <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                            <tbody> 
+                                             <tr> 
+                                              <td align="center" style="padding-left:26px;padding-right:12px"> 
+                                               <div>
+                                                &nbsp;
+                                               </div> 
+                                               <div style="display:none;mso-hide:all">
+                                                &nbsp;
+                                               </div> </td> 
+                                              <td style="direction:ltr;text-align:left" valign="top" width="1"> 
+                                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td height="20" style="border-right-color:#000; direction:ltr;text-align:left" width="1">&nbsp;</td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                            </tbody> 
+                                           </table> </td> 
+                                         </tr> 
+                                        </tbody> 
+                                       </table> 
+                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;display:inline-block;max-width:none;min-width:208px;mso-table-lspace:0;mso-table-rspace:0;width:50%"> 
+                                        <tbody> 
+                                         <tr> 
+                                          <td style="padding:10px 0;direction:ltr;text-align:left"> 
+                                           <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                            <tbody> 
+                                             <tr> 
+                                              <td align="center" style="padding-left:26px;padding-right:12px">&nbsp;</td> 
+                                              <td style="direction:ltr;text-align:left" valign="top" width="1"> 
+                                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td height="20" style="direction:ltr;text-align:left" width="1">&nbsp;</td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                            </tbody> 
+                                           </table> </td> 
+                                         </tr> 
+                                        </tbody> 
+                                       </table> </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="left" style="background-color:#fff"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td align="center"> 
+                                       <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:700px;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                        <tbody> 
+                                         <tr> 
+                                          <td style="padding:0 26px"> 
+                                           <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                            <tbody> 
+                                             <tr> 
+                                              <td style="font-size:0;line-height:0;padding-top:20px">&nbsp;</td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td> 
+                                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td align="left"> 
+                                                   <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:335px;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td style="padding-top:40px"> 
+                                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td align="left">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> </td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td style="padding:40px 0 0"> 
+                                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td height="1" style="font-size:0;line-height:0;background:#333">&nbsp;</td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td> 
+                                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                <tbody> 
+                                                 <tr> 
+                                                  <td style="vertical-align:top" valign="top"> 
+                                                   <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:335px;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td align="left" style="padding-top:30px;vertical-align:top" valign="top"> 
+                                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td align="left" style="color:#fff;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:12px;line-height:26px">&nbsp;</td> 
+                                                         </tr> 
+                                                         <tr> 
+                                                          <td align="left" style="color:#9d9da3;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:12px;line-height:26px;padding-top:6px">&nbsp;</td> 
+                                                         </tr> 
+                                                         <tr> 
+                                                          <td align="left" style="color:#9d9da3;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:12px;line-height:26px;padding-top:6px">&nbsp;</td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> 
+                                                   <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:313px;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%"> 
+                                                    <tbody> 
+                                                     <tr> 
+                                                      <td> 
+                                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                                        <tbody> 
+                                                         <tr> 
+                                                          <td align="left"> 
+                                                           <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:195px;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%"> 
+                                                            <tbody> 
+                                                             <tr> 
+                                                              <td align="left" style="color:#9d9da3;font-family:UberMoveText,open sans,helvetica neue,Helvetica,sans-serif;font-size:12px;line-height:18px;padding-right:10px;padding-top:30px">&nbsp;</td> 
+                                                             </tr> 
+                                                            </tbody> 
+                                                           </table> </td> 
+                                                         </tr> 
+                                                        </tbody> 
+                                                       </table> </td> 
+                                                     </tr> 
+                                                    </tbody> 
+                                                   </table> </td> 
+                                                 </tr> 
+                                                </tbody> 
+                                               </table> </td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td>&nbsp;</td> 
+                                             </tr> 
+                                             <tr> 
+                                              <td style="font-size:0;line-height:0;padding-top:60px">&nbsp;</td> 
+                                             </tr> 
+                                            </tbody> 
+                                           </table> </td> 
+                                         </tr> 
+                                        </tbody> 
+                                       </table> </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%" width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="left" style="background-color:#f1f1f1;padding:0 14px;direction:ltr;text-align:left"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="direction:ltr;text-align:left"> 
+                                       <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;max-width:616px;mso-table-lspace:0;mso-table-rspace:0;width:100%"> 
+                                        <tbody> 
+                                         <tr> 
+                                          <td style="padding-left:12px;padding-right:12px;direction:ltr;text-align:left"> 
+                                           <table align="left" border="0" cellpadding="0" cellspacing="0" style="border:none;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;width:100%" width="100%"> 
+                                            <tbody> 
+                                            </tbody> 
+                                           </table> </td> 
+                                         </tr> 
+                                        </tbody> 
+                                       </table> </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> </td> 
+                         </tr> 
+                        </tbody> 
+                       </table> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
   </div>   
- <img src="http://www.bm-ptsmark.info/avoidable-Nelson/33c6vFG2395G8so513r4P3Va1i104fQ36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQIdQoS6C1gsk05r@jwD" alt=""/></body>
+ <img src="http://www.fx-nwsrel.info/cowered-overpowering/bca6Fh23q95ET85r11t43a6w1050N36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkdQoe6W1oHp05nWwBD" alt=""/></body>
 </html>
 
-------=_Part_493_2006046266.1671563739239--
+------=_Part_484_805066543.1671565463398--
 
