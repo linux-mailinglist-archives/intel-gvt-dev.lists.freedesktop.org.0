@@ -2,68 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25AA06519B7
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Dec 2022 04:41:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B6ECD651C4E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Dec 2022 09:25:36 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DDF9D10E055;
-	Tue, 20 Dec 2022 03:41:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 63D3D10E097;
+	Tue, 20 Dec 2022 08:25:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x1036.google.com (mail-pj1-x1036.google.com
- [IPv6:2607:f8b0:4864:20::1036])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B442610E055;
- Tue, 20 Dec 2022 03:41:24 +0000 (UTC)
-Received: by mail-pj1-x1036.google.com with SMTP id
- w4-20020a17090ac98400b002186f5d7a4cso15238321pjt.0; 
- Mon, 19 Dec 2022 19:41:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-disposition:mime-version:message-id:subject:cc:to:from:date
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xVh7BhiLAFK1y5fgqjdCBQvyDDgKeEj33/rk76TBR5s=;
- b=eIyMUGuhIXBj94VjBrAUhYLj+94tayhIXD10HOZKzIQ6CrgTN/phMZCweKAwIaCB8k
- oamV0qlLPDCgbgw7XnOEvPb4i4TP9cIkGd0h5jj5uofBKK52E7+6LLxTAhvXfkmkIBip
- VSX/P9iBKBhYtqZnVypFSj6sPW0lssLLdT4W0nQg2vMyQGXiWd6B4I7Fkx++aZ6uiZoA
- BgE3YZdcwBbhaAOm9F0Z/X++ekd/r+gI3p14y42+3M4stYmaJu2zuHihydMPYqQgxlf0
- a1c64nfggXO5y7B/yo7l9SuIvOrI0XMmDhcsfXkxUUYYMdTrJFeMwIoeTzYLQlXDqANx
- oUCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-disposition:mime-version:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xVh7BhiLAFK1y5fgqjdCBQvyDDgKeEj33/rk76TBR5s=;
- b=l5wsMSOqDSOK89ShuY6N0arp7H6RZ8wYzo70XeZyEt4koHIbEiunF7aZs2NVgRvpwz
- XVOjDD6snQKbWc8f9W8r5oX+tP/nTJLpfI6rwr4UC1UMjJMSLaPYkJO74huG6KbV86ql
- Jql/M+/rwN9rhuJkHVtPHd4SBUZPdu0u1qkIs4ddxyASXlOAzNwlcIFj28vIsJWPlg9R
- tAbEqS6exg7xzHUW8WGv+c0FXjWC/pleIv/kGJ9ss9/Fyhh2adPQM+1Yqtz0/jerxgeY
- NvjAswWv4zmjvGn0NWb9lWhHpQ7JYT1MraG3pbGpZt4692xzqgEqjFAI5QnyrEtdGm2j
- lDWQ==
-X-Gm-Message-State: ANoB5pl9kPdpp83nD8enBsSjd8HBUK6+PtWmIVXVoyBD4N+3mMPZnugo
- VylmvZKU4XcSK1+KP0zADOJp0jnzOdioO5IO
-X-Google-Smtp-Source: AA0mqf6scQ9/TUdhQyckyTVN2l+rTWw5xP6+kf2svgdOWFmDqEGeGWPdfv/YMte1IhWDSljq4EL8Fg==
-X-Received: by 2002:a17:902:6b08:b0:186:639f:6338 with SMTP id
- o8-20020a1709026b0800b00186639f6338mr11003150plk.6.1671507684172; 
- Mon, 19 Dec 2022 19:41:24 -0800 (PST)
-Received: from mail.google.com (125-237-37-88-fibre.sparkbb.co.nz.
- [125.237.37.88]) by smtp.gmail.com with ESMTPSA id
- y16-20020a17090322d000b001896af10ca7sm7974566plg.134.2022.12.19.19.41.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Dec 2022 19:41:23 -0800 (PST)
-Date: Tue, 20 Dec 2022 16:41:15 +1300
-From: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org
-Subject: [PATCH] [next] i915/gvt: Replace one-element array with
- flexible-array member
-Message-ID: <Y6Eu2604cqtryP4g@mail.google.com>
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DB84C10E06B;
+ Tue, 20 Dec 2022 08:24:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1671524697; x=1703060697;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=3Saonc4e64Y8dqAWVhyrq0LeRdHBKmGol/AJz6kvzNY=;
+ b=gcpfe8IFTGL+YdqrSXgcpCWdk40WNHhN7u6zLPjGzK7XMIIX9aS4w8E7
+ GwyeFfgfISzee55irzWegnxP64DO2ypqJ0cs2zgeKxXepvRzwygsMHlwH
+ 62C30eSWEyAcGIewkvE0rdovKPJz7nADy13ZbavkW+9sl8rNvXwdsjYUy
+ lwHBkgrQ7njjpvxNPvxXD0aAmHANaQAW5G8uD/jaaaaTlD/KSPqdF0sos
+ BMFP+ItKpWOVRfeFLifeMamTpma8b8vkkbwiI96dAtw9nQ5RDPImRCWuV
+ Q0jZInWBNM4tYdJz0Sr9FUEz7dYHupsC9kyY82gJ9eL2KjYV0ZgMNCnne g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="405809674"
+X-IronPort-AV: E=Sophos;i="5.96,258,1665471600"; 
+ d="asc'?scan'208";a="405809674"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Dec 2022 00:24:57 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10566"; a="683329366"
+X-IronPort-AV: E=Sophos;i="5.96,258,1665471600"; 
+ d="asc'?scan'208";a="683329366"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
+ by orsmga001.jf.intel.com with ESMTP; 20 Dec 2022 00:24:52 -0800
+Date: Tue, 20 Dec 2022 16:22:55 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Zheng Wang <zyytlz.wz@163.com>
+Subject: Re: [RESEND PATCH v4] drm/i915/gvt: fix double free bug in
+ split_2MB_gtt_entry
+Message-ID: <20221220082255.GE30028@zhen-hp.sh.intel.com>
+References: <11728bc1-7b59-1623-b517-d1a0d57eb275@intel.com>
+ <20221219125204.1001149-1-zyytlz.wz@163.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="c7rykKtsZvepKFKR"
 Content-Disposition: inline
+In-Reply-To: <20221219125204.1001149-1-zyytlz.wz@163.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,91 +61,167 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: paulo.miguel.almeida.rodenas@gmail.com, linux-kernel@vger.kernel.org,
- linux-hardening@vger.kernel.org
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: alex000young@gmail.com, security@kernel.org, tvrtko.ursulin@linux.intel.com,
+ airlied@linux.ie, gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, hackerzheng666@gmail.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ 1002992920@qq.com, zhenyuw@linux.intel.com, airlied@gmail.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-One-element arrays are deprecated, and we are replacing them with
-flexible array members instead. So, replace one-element array with
-flexible-array member in struct gvt_firmware_header and refactor the
-rest of the code accordingly.
 
-Additionally, previous implementation was allocating 8 bytes more than
-required to represent firmware_header + cfg_space data + mmio data.
+--c7rykKtsZvepKFKR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This helps with the ongoing efforts to tighten the FORTIFY_SOURCE
-routines on memcpy() and help us make progress towards globally
-enabling -fstrict-flex-arrays=3 [1].
+On 2022.12.19 20:52:04 +0800, Zheng Wang wrote:
+> If intel_gvt_dma_map_guest_page failed, it will call
+>  ppgtt_invalidate_spt, which will finally free the spt. But the caller do=
+es
+>  not notice that, it will free spt again in error path.
+>
 
-Link: https://github.com/KSPP/linux/issues/79
-Link: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=101836 [1]
-Signed-off-by: Paulo Miguel Almeida <paulo.miguel.almeida.rodenas@gmail.com>
----
-To make reviewing this patch easier, I'm pasting before/after struct
-sizes.
+It's not clear from this description which caller is actually wrong,
+better to clarify the problem in ppgtt_populate_spt_by_guest_entry() functi=
+on.
 
-pahole -C gvt_firmware_header before/drivers/gpu/drm/i915/gvt/firmware.o 
-struct gvt_firmware_header {
-	u64                        magic;                /*     0     8 */
-	u32                        crc32;                /*     8     4 */
-	u32                        version;              /*    12     4 */
-	u64                        cfg_space_size;       /*    16     8 */
-	u64                        cfg_space_offset;     /*    24     8 */
-	u64                        mmio_size;            /*    32     8 */
-	u64                        mmio_offset;          /*    40     8 */
-	unsigned char              data[1];              /*    48     1 */
+> Fix this by undoing the mapping of DMA address and freeing sub_spt.
+>=20
+> Fixes: b901b252b6cf ("drm/i915/gvt: Add 2M huge gtt support")
+> Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> ---
+> v4:
+> - fix by undo the mapping of DMA address and free sub_spt suggested by Zhi
+>=20
+> v3:
+> - correct spelling mistake and remove unused variable suggested by Greg
+>=20
+> v2: https://lore.kernel.org/all/20221006165845.1735393-1-zyytlz.wz@163.co=
+m/
+>=20
+> v1: https://lore.kernel.org/all/20220928033340.1063949-1-zyytlz.wz@163.co=
+m/
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c | 53 +++++++++++++++++++++++++++++-----
+>  1 file changed, 46 insertions(+), 7 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
+t.c
+> index 51e5e8fb505b..b472e021e5a4 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -1192,11 +1192,11 @@ static int split_2MB_gtt_entry(struct intel_vgpu =
+*vgpu,
+>  {
+>  	const struct intel_gvt_gtt_pte_ops *ops =3D vgpu->gvt->gtt.pte_ops;
+>  	struct intel_vgpu_ppgtt_spt *sub_spt;
+> -	struct intel_gvt_gtt_entry sub_se;
+> +	struct intel_gvt_gtt_entry sub_se, e;
+>  	unsigned long start_gfn;
+>  	dma_addr_t dma_addr;
+> -	unsigned long sub_index;
+> -	int ret;
+> +	unsigned long sub_index, parent_index;
+> +	int ret, ret1;
+> =20
+>  	gvt_dbg_mm("Split 2M gtt entry, index %lu\n", index);
+> =20
+> @@ -1209,10 +1209,8 @@ static int split_2MB_gtt_entry(struct intel_vgpu *=
+vgpu,
+>  	for_each_shadow_entry(sub_spt, &sub_se, sub_index) {
+>  		ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gfn + sub_index,
+>  						   PAGE_SIZE, &dma_addr);
+> -		if (ret) {
+> -			ppgtt_invalidate_spt(spt);
+> -			return ret;
+> -		}
+> +		if (ret)
+> +			goto err;
 
-	/* size: 56, cachelines: 1, members: 8 */
-	/* padding: 7 */
-	/* last cacheline: 56 bytes */
-};
+I think it's fine to remove this and leave to upper caller, but again please
+describe the behavior change in commit message as well, e.g to fix the sani=
+ty
+of spt destroy that leaving previous invalidate and free of spt to caller f=
+unction
+instead of within callee function.
 
-pahole -C gvt_firmware_header after/drivers/gpu/drm/i915/gvt/firmware.o 
-struct gvt_firmware_header {
-	u64                        magic;                /*     0     8 */
-	u32                        crc32;                /*     8     4 */
-	u32                        version;              /*    12     4 */
-	u64                        cfg_space_size;       /*    16     8 */
-	u64                        cfg_space_offset;     /*    24     8 */
-	u64                        mmio_size;            /*    32     8 */
-	u64                        mmio_offset;          /*    40     8 */
-	unsigned char              data[];               /*    48     0 */
+>  		sub_se.val64 =3D se->val64;
+> =20
+>  		/* Copy the PAT field from PDE. */
+> @@ -1231,6 +1229,47 @@ static int split_2MB_gtt_entry(struct intel_vgpu *=
+vgpu,
+>  	ops->set_pfn(se, sub_spt->shadow_page.mfn);
+>  	ppgtt_set_shadow_entry(spt, se, index);
+>  	return 0;
+> +err:
+> +	/* Undone the existing mappings of DMA addr. */
+> +	for_each_present_shadow_entry(spt, &e, parent_index) {
 
-	/* size: 48, cachelines: 1, members: 8 */
-	/* last cacheline: 48 bytes */
-};
+sub_spt? We're undoing what's mapped for sub_spt right?
 
-As you can see the additional byte of the fake-flexible array (data[1])
-forced the compiler to pad the struct but those bytes aren't actually used
-as first & last bytes (of both cfg_space and mmio) are controlled by the
-<>_size and <>_offset members present in the gvt_firmware_header struct.
----
- drivers/gpu/drm/i915/gvt/firmware.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> +		switch (e.type) {
+> +		case GTT_TYPE_PPGTT_PTE_4K_ENTRY:
+> +			gvt_vdbg_mm("invalidate 4K entry\n");
+> +			ppgtt_invalidate_pte(spt, &e);
+> +			break;
+> +		case GTT_TYPE_PPGTT_PTE_64K_ENTRY:
+> +			/* We don't setup 64K shadow entry so far. */
+> +			WARN(1, "suspicious 64K gtt entry\n");
+> +			continue;
+> +		case GTT_TYPE_PPGTT_PTE_2M_ENTRY:
+> +			gvt_vdbg_mm("invalidate 2M entry\n");
+> +			continue;
+> +		case GTT_TYPE_PPGTT_PTE_1G_ENTRY:
+> +			WARN(1, "GVT doesn't support 1GB page\n");
+> +			continue;
+> +		case GTT_TYPE_PPGTT_PML4_ENTRY:
+> +		case GTT_TYPE_PPGTT_PDP_ENTRY:
+> +		case GTT_TYPE_PPGTT_PDE_ENTRY:
 
-diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/gvt/firmware.c
-index a683c22d5b64..dce93738e98a 100644
---- a/drivers/gpu/drm/i915/gvt/firmware.c
-+++ b/drivers/gpu/drm/i915/gvt/firmware.c
-@@ -45,7 +45,7 @@ struct gvt_firmware_header {
- 	u64 cfg_space_offset;	/* offset in the file */
- 	u64 mmio_size;
- 	u64 mmio_offset;	/* offset in the file */
--	unsigned char data[1];
-+	unsigned char data[];
- };
- 
- #define dev_to_drm_minor(d) dev_get_drvdata((d))
-@@ -77,7 +77,7 @@ static int expose_firmware_sysfs(struct intel_gvt *gvt)
- 	unsigned long size, crc32_start;
- 	int ret;
- 
--	size = sizeof(*h) + info->mmio_size + info->cfg_space_size;
-+	size = offsetof(struct gvt_firmware_header, data) + info->mmio_size + info->cfg_space_size;
- 	firmware = vzalloc(size);
- 	if (!firmware)
- 		return -ENOMEM;
--- 
-2.38.1
+I don't think this all entry type makes sense, as here we just split
+2M entry for multiple 4K PTE entry.
 
+> +			gvt_vdbg_mm("invalidate PMUL4/PDP/PDE entry\n");
+> +			ret1 =3D ppgtt_invalidate_spt_by_shadow_entry(
+> +					spt->vgpu, &e);
+> +			if (ret1) {
+> +				gvt_vgpu_err("fail: shadow page %p shadow entry 0x%llx type %d\n",
+> +				spt, e.val64, e.type);
+> +				goto free_spt;
+> +			}
+
+for above reason, I don't think this is valid.
+
+> +			break;
+> +		default:
+> +			GEM_BUG_ON(1);
+> +		}
+> +	}
+> +	/* Release the new alloced apt. */
+> +free_spt:
+> +	trace_spt_change(sub_spt->vgpu->id, "release", sub_spt,
+> +		sub_spt->guest_page.gfn, sub_spt->shadow_page.type);
+> +	ppgtt_free_spt(sub_spt);
+> +	sub_spt =3D NULL;
+> +	return ret;
+>  }
+> =20
+>  static int split_64KB_gtt_entry(struct intel_vgpu *vgpu,
+> --=20
+> 2.25.1
+>=20
+
+--c7rykKtsZvepKFKR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY6Fw2gAKCRCxBBozTXgY
+J/tiAJ0chKIsYFFlZBTo+ayrE7mCyhznbwCgjL5xMyVtruGCC953PHVeafhZWoY=
+=8NeT
+-----END PGP SIGNATURE-----
+
+--c7rykKtsZvepKFKR--
