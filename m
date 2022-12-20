@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9769A651DAB
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Dec 2022 10:41:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8440F6526A4
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Dec 2022 19:56:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 399EE10E369;
-	Tue, 20 Dec 2022 09:41:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4DA9210E102;
+	Tue, 20 Dec 2022 18:56:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from m12.mail.163.com (m12.mail.163.com [220.181.12.216])
- by gabe.freedesktop.org (Postfix) with ESMTP id E697810E365;
- Tue, 20 Dec 2022 09:41:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=5U/Q0
- IzBncgGJ65mZDk0e6NuKaOGAn75Xs2OHH9bGHk=; b=SrkBw11w8K6FHxt1r/Cva
- GQWOb75ACnz7P5xM98IkqXOjfmO8KduGo4Pv8Xi7FjygF1zJFdFsOK1cgwI4gtKh
- IJ3JRQ+xud5UYjcCa/m1uk+LeX95NeT/jesrY9D1/ctk2Px2r0+2yJ7uTM6P29q3
- vrWyHZx9Z+ZeDdw9r7kMUo=
-Received: from leanderwang-LC2.localdomain (unknown [111.206.145.21])
- by zwqz-smtp-mta-g0-3 (Coremail) with SMTP id _____wB3j3r_gqFjgjtjAA--.34322S2;
- Tue, 20 Dec 2022 17:40:15 +0800 (CST)
-From: Zheng Wang <zyytlz.wz@163.com>
-To: zhi.a.wang@intel.com
-Subject: [PATCH v5] drm/i915/gvt: fix double free bug in split_2MB_gtt_entry
-Date: Tue, 20 Dec 2022 17:40:14 +0800
-Message-Id: <20221220094014.1128207-1-zyytlz.wz@163.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <11728bc1-7b59-1623-b517-d1a0d57eb275@intel.com>
-References: <11728bc1-7b59-1623-b517-d1a0d57eb275@intel.com>
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Tue, 20 Dec 2022 18:56:21 UTC
+Received: from mail.at-phnwers.info (unknown [104.223.183.231])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3071C10E102
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 20 Dec 2022 18:56:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=at-phnwers.info; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=tmobile@at-phnwers.info; bh=DUT4LPWHc+bw1ZOtHv1olKBZ/EM=;
+ b=EUNE0CjYkoYzV1LgNd1RQ1R0G78jdXkAqK8d4BVmNBMUiuQ2kv1OpiSQxO3f0zOYf7FB/pNOHyMp
+ nXfd8WDzb3euodYvnpKB+9b0tno4dzYoieWGOb2Rcbr6DhZJIZ58Kii/m2lA5Kc45R9W+9WyHNom
+ Du1rubORYoRLh/mNEL8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=at-phnwers.info;
+ b=CrRuA+UTWK0+rDq+d0d9H5L6/pONxD/exhrWVKDlj5TVdRqoy4BV1r39XOtqcUKQmsuEgyaexUj+
+ fhWe6F81Yqs+3y70/xaffGXKEQhlGQm9jzB/OXkO2qmy6kdTKykDZjIOefZZDdqcYWFfngtPX6uG
+ VWO6z+YaWmMlE4EJ32g=;
+Received: by mail.at-phnwers.info id hk8cvm0001gp for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 20 Dec 2022 15:14:49 -0500 (envelope-from
+ <tmobile-intel+2Dgvt+2Ddev=lists.freedesktop.org@at-phnwers.info>)
+Date: Tue, 20 Dec 2022 15:14:49 -0500
+From: TMOBILE <tmobile@at-phnwers.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Holiday appreciation is needed during these time,
+ here's you gift on us
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wB3j3r_gqFjgjtjAA--.34322S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7AFW8WFy7XF4DtF17trWxtFb_yoW5JF43pF
- W8XF4YyF48ZF1Ivw47uF18AFy3Z3W3Xa48WrZ7Ka4Ykrs0qF1qkr90yFW5Xr97uFWDAw4f
- Cr4DJrW3Ca4jvaDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRomh7UUUUU=
-X-Originating-IP: [111.206.145.21]
-X-CM-SenderInfo: h2113zf2oz6qqrwthudrp/xtbBzgbdU2I0W3z3ogAAsi
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_682_647819113.1671561976658"
+Message-ID: <0.0.0.4B.1D914AFB68AD7B6.FE23@mail.at-phnwers.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,82 +50,201 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: alex000young@gmail.com, security@kernel.org,
- intel-gvt-dev@lists.freedesktop.org, tvrtko.ursulin@linux.intel.com,
- airlied@linux.ie, gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
- joonas.lahtinen@linux.intel.com, hackerzheng666@gmail.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- 1002992920@qq.com, zhenyuw@linux.intel.com, zyytlz.wz@163.com,
- airlied@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-If intel_gvt_dma_map_guest_page failed, it will call
- ppgtt_invalidate_spt, which will finally free the spt. But the
- caller function ppgtt_populate_spt_by_guest_entry does not notice
- that, it will free spt again in its error path.
+------=_Part_682_647819113.1671561976658
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Fix this by undoing the mapping of DMA address and freeing sub_spt.
-Besides, leave the handle of spt destroy to caller function instead of
-callee function when error occurs.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <!-- Facebook sharing information tags --> 
+  <meta content="subject" property="og:title" /> 
+  <title>toptmob</title> 
+ </head> 
+ <body bgcolor="#FAFAFA" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; height: 100% !important; width: 100% !important; background-color: #FAFAFA; margin: 0; padding: 0;"> 
+  <style type="text/css">#outlook a {
+          padding: 0;
+      }
+      .body{
+          width: 100% !important;
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+          margin: 0;
+          padding: 0;
+      }
+      .ExternalClass {
+          width:100%;
+      }
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {
+          line-height: 100%;
+      }
+      img {
+          outline: none;
+          text-decoration: none;
+          -ms-interpolation-mode: bicubic;
+      }
+      a img {
+          border: none;
+      }
+      p {
+          margin: 1em 0;
+      }
+      table td {
+          border-collapse: collapse;
+      }
+      /* hide unsubscribe from forwards*/
+      blockquote .original-only, .WordSection1 .original-only {
+        display: none !important;
+      }
 
-Fixes: b901b252b6cf ("drm/i915/gvt: Add 2M huge gtt support")
-Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
----
-v5:
-- remove unnecessary switch-case code for there is only one particular case,
-correct the unmap target from parent_spt to sub_spt.add more details in
-commit message. All suggested by Zhenyu
+      @media only screen and (max-width: 480px){
+        body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:none !important;} /* Prevent Webkit platforms from changing default text sizes */
+                body{width:100% !important; min-width:100% !important;} /* Prevent iOS Mail from adding padding to the body */
 
-v4:
-- fix by undo the mapping of DMA address and free sub_spt suggested by Zhi
+        #bodyCell{padding:10px !important;}
 
-v3:
-- correct spelling mistake and remove unused variable suggested by Greg
+        #templateContainer{
+          max-width:600px !important;
+          width:100% !important;
+        }
 
-v2: https://lore.kernel.org/all/20221006165845.1735393-1-zyytlz.wz@163.com/
+        h1{
+          font-size:24px !important;
+          line-height:100% !important;
+        }
 
-v1: https://lore.kernel.org/all/20220928033340.1063949-1-zyytlz.wz@163.com/
----
- drivers/gpu/drm/i915/gvt/gtt.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+        h2{
+          font-size:20px !important;
+          line-height:100% !important;
+        }
 
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index 51e5e8fb505b..4d478a59eb7d 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.c
-+++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -1209,10 +1209,8 @@ static int split_2MB_gtt_entry(struct intel_vgpu *vgpu,
- 	for_each_shadow_entry(sub_spt, &sub_se, sub_index) {
- 		ret = intel_gvt_dma_map_guest_page(vgpu, start_gfn + sub_index,
- 						   PAGE_SIZE, &dma_addr);
--		if (ret) {
--			ppgtt_invalidate_spt(spt);
--			return ret;
--		}
-+		if (ret)
-+			goto err;
- 		sub_se.val64 = se->val64;
- 
- 		/* Copy the PAT field from PDE. */
-@@ -1231,6 +1229,18 @@ static int split_2MB_gtt_entry(struct intel_vgpu *vgpu,
- 	ops->set_pfn(se, sub_spt->shadow_page.mfn);
- 	ppgtt_set_shadow_entry(spt, se, index);
- 	return 0;
-+err:
-+	/* Undone the existing mappings of DMA addr. */
-+	for_each_present_shadow_entry(sub_spt, &sub_se, sub_index) {
-+		gvt_vdbg_mm("invalidate 4K entry\n");
-+		ppgtt_invalidate_pte(sub_spt, &sub_se);
-+	}
-+	/* Release the new allocated spt. */
-+	trace_spt_change(sub_spt->vgpu->id, "release", sub_spt,
-+		sub_spt->guest_page.gfn, sub_spt->shadow_page.type);
-+	ppgtt_free_spt(sub_spt);
-+	sub_spt = NULL;
-+	return ret;
- }
- 
- static int split_64KB_gtt_entry(struct intel_vgpu *vgpu,
--- 
-2.25.1
+        h3{
+          font-size:18px !important;
+          line-height:100% !important;
+        }
+
+        h4{
+          font-size:16px !important;
+          line-height:100% !important;
+        }
+
+        #templatePreheader{display:none !important;} /* Hide the template preheader to save space */
+
+        #headerImage{
+          height:auto !important;
+          max-width:600px !important;
+          width:100% !important;
+        }
+
+        .headerContent{
+          font-size:20px !important;
+          line-height:125% !important;
+        }
+
+        .bodyContent{
+          font-size:18px !important;
+          line-height:125% !important;
+        }
+
+        .footerContent{
+          font-size:14px !important;
+          line-height:115% !important;
+        }
+
+        .footerContent a{display:block !important;} /* Place footer social and utility links on their own lines, for easier access */
+      }
+</style> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="bodyTable" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: none; border-collapse: collapse !important; height: 100% !important; margin: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0; width: 100% !important" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center" id="bodyCell" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; height: 100% !important; width: 100% !important; border-top-width: 4px; border-top-color: #dddddd; border-top-style: solid; margin: 0; padding: 20px;" valign="top">
+      <!-- BEGIN TEMPLATE // --> 
+      <table border="0" cellpadding="0" cellspacing="0" id="templateContainer" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; width: 100%; border: 0px solid #dddddd; max-width: 500px"> 
+       <tbody> 
+        <tr> 
+         <td align="center" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top"> 
+          <table border="0" cellpadding="0" cellspacing="0" id="templatePreheader" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: none; border-bottom-color: #CCCCCC; border-bottom-style: solid; border-bottom-width: 0px; border-collapse: collapse !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt" width="100%"> 
+           <tbody> 
+            <tr style=""> 
+             <td align="left" class="preheaderContent" pardot-region="preheader_content00" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #808080; font-family: Helvetica; font-size: 10px; line-height: 12.5px; text-align: left; padding: 10px 20px 10px 0;" valign="top">&nbsp;</td> 
+             <td align="left" class="preheaderContent" pardot-region="preheader_content01" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #808080; font-family: Helvetica; font-size: 10px; line-height: 12.5px; text-align: right; padding: 10px 0px 10px 0;" valign="top" width="180">&nbsp;<br /> &nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> <h2 style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; color: #A0004B; font-size: 29px">You are just a few clicks away<br /> to get The $100 T-Mobile Card</h2> <a href="http://www.at-phnwers.info/junctions-booms/30N4V2395gi8w613Po43Q9ai104ey36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQBdQoR5St1m05n2wDk"><img alt="" src="http://www.at-phnwers.info/month-Sabbathize/a624P2395oo7aY12H439ciL104ex36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQBdQoR5cv1A05KjwDP" width="100%" /></a> 
+          <!-- // END PREHEADER --></td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" vertical-align="top">
+          <!-- BEGIN BODY // --> 
+          <table border="0" cellpadding="0" cellspacing="0" id="templateBody" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #FFFFFF; border-bottom-color: #CCCCCC; border-bottom-style: solid; border-bottom-width: 0px; border-collapse: collapse !important; border-top-color: #FFFFFF; border-top-style: solid; border-top-width: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
+           <tbody> 
+            <tr pardot-repeatable="" style=""> 
+             <td align="left" class="bodyContent" pardot-region="body_content" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #505050; font-family: Helvetica; font-size: 16px; line-height: 0em; text-align: left;" vertical-align="top">&nbsp;</td> 
+            </tr> 
+            <tr pardot-repeatable="" style=""> 
+             <td align="left" class="bodyContent" pardot-data="" pardot-region="body_content" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #505050; background-color: #B62D5C; font-family: Helvetica; font-size: 16px; line-height: 1.5em; text-align: left; padding: 10px 20px 10px 20px;" valign="top">&nbsp;</td> 
+            </tr> 
+            <tr pardot-repeatable="" style=""> 
+             <td align="left" class="bodyContent" pardot-region="body_content" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #505050; font-family: Helvetica; font-size: 16px; line-height: 0em; text-align: left;" vertical-align="top">&nbsp;</td> 
+            </tr> 
+            <tr pardot-repeatable="" style=""> 
+             <td align="left" class="bodyContent" pardot-region="body_content" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #505050; font-family: Helvetica; font-size: 16px; line-height: 1.5em; text-align: left; padding: 10px 20px 10px 20px;" valign="top"> <p align="center" style="font-size: 26px"><strong>We appreciate your opinion</strong>.<br /> <br /> Simply complete our 20-Second Service Survey about how your experience has been with us lately. &nbsp;</p> <p style="text-align: center;"><a href="http://www.at-phnwers.info/junctions-booms/30N4V2395gi8w613Po43Q9ai104ey36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQBdQoR5St1m05n2wDk" style="background-color:#000;border-radius:4px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:23px;font-weight:bold;line-height:1.5em; padding: 1em; text-align:center;text-decoration:none;width:275px;-webkit-text-size-adjust:none;">Go here To Start</a></p> <p style=
+ "text-align: center; ">&nbsp;</p> </td> 
+            </tr> 
+            <tr pardot-repeatable="" style=""> 
+             <td align="left" class="bodyContent" pardot-region="body_content" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #E20074; color: #505050; font-family: Helvetica; font-size: 16px; line-height: 1.5em; text-align: left; padding: 10px 20px 10px 20px;" valign="top"> <p>&nbsp;</p> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <!-- // END BODY --></td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top">
+          <!-- BEGIN FOOTER // --> 
+          <table border="0" cellpadding="0" cellspacing="0" id="templateFooter" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: none; border-collapse: collapse !important; border-top-color: #FFFFFF; border-top-style: solid; border-top-width: 1px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%^"> 
+           <tbody> 
+            <tr style=""> 
+             <td align="left" class="footerContent" pardot-region="footer_content01" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #808080; font-family: Helvetica; font-size: 10px; line-height: 15px; text-align: left; padding: 0 20px 20px;" valign="top">&nbsp;</td> 
+            </tr> 
+            <tr style=""> 
+             <td align="left" class="footerContent original-only" pardot-region="footer_content02" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #808080; font-family: Helvetica; font-size: 10px; line-height: 15px; text-align: left; padding: 0 20px 40px;" valign="top"> 
+              <div style="text-align: center;">
+               <br /> 
+               <br /> 
+               <br /> 
+               <br /> 
+               <br /> 
+               <br /> 
+               <span>To edit your subscription options,</span>
+               <a href="http://www.at-phnwers.info/raided-multiplied/6c06S23Uk95uG86m12i4P39bj104eL36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQBdQoR7wRmvQ105BJ@wD" style="text-decoration-line: none;"> <span>Visit Over Here </span> </a>
+               <br /> 126 E 23rd St New York, NY, US 10010
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <!-- // END FOOTER --></td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <!-- // END TEMPLATE --><br /> <br /> <br /> <br /> <br /> <span></span><style></style><small><span></small></span><style lang="enlivened"></style></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <br /> 
+  <!--
+          This email was originally designed by the wonderful folks at MailChimp and remixed by Pardot.           It is licensed under CC BY-SA 3.0
+        -->  
+ <img src="http://www.at-phnwers.info/fraying-dispute/6665o23A95W8k5r11n439dv104eO36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQBdQoR5MS1K06WJpwDl" alt=""/></body>
+</html>
+
+------=_Part_682_647819113.1671561976658--
 
