@@ -2,52 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0AB3652B7F
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Dec 2022 03:32:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5CE4652BA8
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Dec 2022 04:01:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6BEA710E027;
-	Wed, 21 Dec 2022 02:32:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5729110E420;
+	Wed, 21 Dec 2022 03:01:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B6D1510E027
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Dec 2022 02:32:13 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A867A10E027;
+ Wed, 21 Dec 2022 03:01:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1671589935; x=1703125935;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=war6KidvJVgrTrOpVMEVXoGEHasSQilUMpRK3uc47BQ=;
- b=MEuMGWXe+nhcMufNw8g9NXDk/TlCR4VygvDqFlF86KGrsscUbV7ufc/H
- cGot2iBSgevwzWiK2dGoYwgj5K8QR+ctMqFzrf/Uax06RKODYaQjR76hR
- f84hvPVHErZrD2iN7yjNkuGGNIeE7n/9tV6Dlzab2QwK3szE604H3df4Z
- /6UbP+UCnuU68sCVC0rZTwUXUYz4Dx9e1UUQWNAR21/2JjUfhXTf/Vc53
- wbz7mpqkzooYyUugwgPckoUkVs6cjzoHHzOV8L3+TTV+Fzk5EPnZxuTru
- aKToVu0bEeMT3VFi/ABPWqdpWfp+psp0iXSzIOWl0rGWXohPnp6zSjsbk A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10567"; a="303192234"
-X-IronPort-AV: E=Sophos;i="5.96,261,1665471600"; d="scan'208";a="303192234"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Dec 2022 18:32:12 -0800
+ t=1671591660; x=1703127660;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=ngIptXVnxZMIe4OUDAY5u4LE/bWGVw3oiibRWxIuKl4=;
+ b=n18zwGiLowolA8DGOyPXeA1oWgFCtRqecwolloDAZhx53wMA1e+KgiTQ
+ r3VQHs9k4vFkT5ziVBCByUtY2hkxI+1qkKaWkd2c43Rk4KTV0BVojSB9a
+ 8efNP81X9Tmg3yB7Ec0zuhRVAIm5kFAFApr51/2i61o6DsoNLbyk9qXv4
+ cZALisoPgrL2ejcyfhKMQptNG5RZrrixEoU6Pru0BchYGGnaTQ0viaVR1
+ r6ozM+U1Z6u+IRX+QxxZJxkoRwKNGva0vXaUZixc2VhEAganUzrI0xXjT
+ HDrKWAxYMcOMv9llV/rDHFymeQRgo5CXtS7oBbMijUqCQGYE6AFW+ofxT Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10567"; a="317407628"
+X-IronPort-AV: E=Sophos;i="5.96,261,1665471600"; 
+ d="asc'?scan'208";a="317407628"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Dec 2022 19:01:00 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10567"; a="653339587"
-X-IronPort-AV: E=Sophos;i="5.96,261,1665471600"; d="scan'208";a="653339587"
-Received: from lkp-server01.sh.intel.com (HELO b5d47979f3ad) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 20 Dec 2022 18:32:09 -0800
-Received: from kbuild by b5d47979f3ad with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1p7ots-0009m3-2K;
- Wed, 21 Dec 2022 02:32:08 +0000
-Date: Wed, 21 Dec 2022 10:30:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt:gvt-fixes] BUILD SUCCESS
- 6dca27b063e466f68bd7b7679e5a168ec857deb1
-Message-ID: <63a26fc3.98n1VScPghv05j8P%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=McAfee;i="6500,9779,10567"; a="758359486"
+X-IronPort-AV: E=Sophos;i="5.96,261,1665471600"; 
+ d="asc'?scan'208";a="758359486"
+Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
+ by fmsmga002.fm.intel.com with ESMTP; 20 Dec 2022 19:00:56 -0800
+Date: Wed, 21 Dec 2022 10:58:57 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Zheng Wang <zyytlz.wz@163.com>
+Subject: Re: [PATCH v5] drm/i915/gvt: fix double free bug in
+ split_2MB_gtt_entry
+Message-ID: <20221221025857.GG30028@zhen-hp.sh.intel.com>
+References: <11728bc1-7b59-1623-b517-d1a0d57eb275@intel.com>
+ <20221220094014.1128207-1-zyytlz.wz@163.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="iRaAnoDFBoP0sW/E"
+Content-Disposition: inline
+In-Reply-To: <20221220094014.1128207-1-zyytlz.wz@163.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,94 +61,122 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: alex000young@gmail.com, security@kernel.org, tvrtko.ursulin@linux.intel.com,
+ airlied@linux.ie, gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, hackerzheng666@gmail.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ 1002992920@qq.com, zhenyuw@linux.intel.com, airlied@gmail.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-fixes
-branch HEAD: 6dca27b063e466f68bd7b7679e5a168ec857deb1  drm/i915/gvt: fix vgpu debugfs clean in remove
 
-elapsed time: 1181m
+--iRaAnoDFBoP0sW/E
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-configs tested: 68
-configs skipped: 2
+On 2022.12.20 17:40:14 +0800, Zheng Wang wrote:
+> If intel_gvt_dma_map_guest_page failed, it will call
+>  ppgtt_invalidate_spt, which will finally free the spt. But the
+>  caller function ppgtt_populate_spt_by_guest_entry does not notice
+>  that, it will free spt again in its error path.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+indent
 
-gcc tested configs:
-x86_64                          rhel-8.3-func
-x86_64                           rhel-8.3-bpf
-x86_64                    rhel-8.3-kselftests
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-x86_64                           rhel-8.3-syz
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-ia64                             allmodconfig
-m68k                             allyesconfig
-um                             i386_defconfig
-powerpc                           allnoconfig
-s390                             allyesconfig
-i386                                defconfig
-x86_64                               rhel-8.3
-um                           x86_64_defconfig
-m68k                             allmodconfig
-s390                                defconfig
-sh                               allmodconfig
-arc                              allyesconfig
-arm                                 defconfig
-x86_64                              defconfig
-mips                             allyesconfig
-alpha                            allyesconfig
-powerpc                          allmodconfig
-i386                 randconfig-a004-20221219
-i386                 randconfig-a001-20221219
-i386                 randconfig-a003-20221219
-x86_64                           allyesconfig
-x86_64                            allnoconfig
-x86_64               randconfig-a003-20221219
-riscv                randconfig-r042-20221218
-i386                 randconfig-a002-20221219
-arm64                            allyesconfig
-x86_64               randconfig-a001-20221219
-i386                 randconfig-a006-20221219
-x86_64               randconfig-a004-20221219
-x86_64               randconfig-a006-20221219
-x86_64               randconfig-a005-20221219
-arm                              allyesconfig
-i386                 randconfig-a005-20221219
-x86_64               randconfig-a002-20221219
-i386                             allyesconfig
-arc                  randconfig-r043-20221219
-arm                  randconfig-r046-20221219
-arc                  randconfig-r043-20221218
-s390                 randconfig-r044-20221218
+>=20
+> Fix this by undoing the mapping of DMA address and freeing sub_spt.
+> Besides, leave the handle of spt destroy to caller function instead of
+> callee function when error occurs.
+>=20
+> Fixes: b901b252b6cf ("drm/i915/gvt: Add 2M huge gtt support")
+> Signed-off-by: Zheng Wang <zyytlz.wz@163.com>
+> ---
+> v5:
+> - remove unnecessary switch-case code for there is only one particular ca=
+se,
+> correct the unmap target from parent_spt to sub_spt.add more details in
+> commit message. All suggested by Zhenyu
+>=20
+> v4:
+> - fix by undo the mapping of DMA address and free sub_spt suggested by Zhi
+>=20
+> v3:
+> - correct spelling mistake and remove unused variable suggested by Greg
+>=20
+> v2: https://lore.kernel.org/all/20221006165845.1735393-1-zyytlz.wz@163.co=
+m/
+>=20
+> v1: https://lore.kernel.org/all/20220928033340.1063949-1-zyytlz.wz@163.co=
+m/
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c | 18 ++++++++++++++----
+>  1 file changed, 14 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gt=
+t.c
+> index 51e5e8fb505b..4d478a59eb7d 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -1209,10 +1209,8 @@ static int split_2MB_gtt_entry(struct intel_vgpu *=
+vgpu,
+>  	for_each_shadow_entry(sub_spt, &sub_se, sub_index) {
+>  		ret =3D intel_gvt_dma_map_guest_page(vgpu, start_gfn + sub_index,
+>  						   PAGE_SIZE, &dma_addr);
+> -		if (ret) {
+> -			ppgtt_invalidate_spt(spt);
+> -			return ret;
+> -		}
+> +		if (ret)
+> +			goto err;
+>  		sub_se.val64 =3D se->val64;
+> =20
+>  		/* Copy the PAT field from PDE. */
+> @@ -1231,6 +1229,18 @@ static int split_2MB_gtt_entry(struct intel_vgpu *=
+vgpu,
+>  	ops->set_pfn(se, sub_spt->shadow_page.mfn);
+>  	ppgtt_set_shadow_entry(spt, se, index);
+>  	return 0;
+> +err:
+> +	/* Undone the existing mappings of DMA addr. */
 
-clang tested configs:
-x86_64                          rhel-8.3-rust
-x86_64               randconfig-a011-20221219
-x86_64               randconfig-a012-20221219
-x86_64               randconfig-a014-20221219
-arm                  randconfig-r046-20221218
-hexagon              randconfig-r041-20221218
-hexagon              randconfig-r045-20221219
-x86_64               randconfig-a013-20221219
-s390                 randconfig-r044-20221219
-x86_64               randconfig-a016-20221219
-hexagon              randconfig-r041-20221219
-x86_64               randconfig-a015-20221219
-hexagon              randconfig-r045-20221218
-i386                 randconfig-a014-20221219
-i386                 randconfig-a012-20221219
-i386                 randconfig-a013-20221219
-riscv                randconfig-r042-20221219
-i386                 randconfig-a015-20221219
-i386                 randconfig-a016-20221219
-i386                 randconfig-a011-20221219
+We need a verb here for Undo.
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+> +	for_each_present_shadow_entry(sub_spt, &sub_se, sub_index) {
+> +		gvt_vdbg_mm("invalidate 4K entry\n");
+> +		ppgtt_invalidate_pte(sub_spt, &sub_se);
+> +	}
+> +	/* Release the new allocated spt. */
+> +	trace_spt_change(sub_spt->vgpu->id, "release", sub_spt,
+> +		sub_spt->guest_page.gfn, sub_spt->shadow_page.type);
+> +	ppgtt_free_spt(sub_spt);
+> +	sub_spt =3D NULL;
+
+Not need to reset local variable that has no use then.
+
+I'll handle these trivial fixes during the merge.
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+thanks
+
+> +	return ret;
+>  }
+> =20
+>  static int split_64KB_gtt_entry(struct intel_vgpu *vgpu,
+> --=20
+> 2.25.1
+>=20
+
+--iRaAnoDFBoP0sW/E
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY6J2bAAKCRCxBBozTXgY
+J4GiAJsFOKAdtGPzsQN3CVsAcH45M9QuNQCdE4KWAAIn09n29aAGm2FukS+JhgE=
+=xGqD
+-----END PGP SIGNATURE-----
+
+--iRaAnoDFBoP0sW/E--
