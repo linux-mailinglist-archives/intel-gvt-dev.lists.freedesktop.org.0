@@ -2,42 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD13F652C06
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Dec 2022 05:05:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98366652C37
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Dec 2022 06:01:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A838A10E118;
-	Wed, 21 Dec 2022 04:05:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 64F3F10E00B;
+	Wed, 21 Dec 2022 05:01:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 459 seconds by postgrey-1.36 at gabe;
- Wed, 21 Dec 2022 04:05:50 UTC
-Received: from prmufovs.maryiacofano.com (prmufovs.maryiacofano.com
- [88.209.254.60])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 588C310E00B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Dec 2022 04:05:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=maryiacofano.com;
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=faa.coo@maryiacofano.com; bh=0kGu+96ocW80Rtpos2ra+D9ghDs=;
- b=CVPG5jqsH2v/lHJjWLQLthw/eTW/nf4ilCXRzoL9VlexX1G2TC1xLq6M3qEOeO6hfQiaLqKYzk7E
- L067pAummr+G9gUovm04hywaE0N9a/rhAOKMpQ/uzBYjd4qdg0cNAWT1wAgQhUalvTgTvTpeP3L/
- 9Ec8HpE+/9kHOWCvsktH7Vlwi6EzWxIsQRdQffCO/95+8c2akFq5/U8QkNKKNbKZ3Sp6/G37SsFs
- 0HwlYfSC/ir9ntG36MBmBYNvMfiTwgamHUg4uHJAE3F2YACmF3npT4hSLr1di1fFZkImY5cxD0hM
- E5Gf9jQmYGTu+ImQdapq8HBFUwqUtAD/0Ww9lw==
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maryiacofano.com;
- b=ec1KMvQG34Z9uPj0MZmBoCP8AHf6oMJRUxhFdOvkc7tyNz9GWsoZHWMll6FebzIzvDBqUfxSbeNB
- UFnr1vi+tbdtMBtCRB8hyTjheAAL6vhdcuOIIAu4ocEBZQti8qM3N+lWoB5imHWNRlmyJEs+ARKf
- oY4KsxEqyxD2aEqVX/0G8ux8gbC9ECIQ5VV8+Vif+s0vCEyoyrX9AHWvjj8zet9VB8h5vc6n+woB
- V8lhfyk9HutGNS3ttI3eLxnF04bbo8YV9eEvRLlPUEuTTAV2w3nLzrVZ3zECPwP4mxsybIsWsqI9
- cFbPGImkyrTZVlZmpyCLcgS0agiOCf9tWdF26A==;
-From: MACKENZIE SCOTT (The Scott Foundation) <faa.coo@maryiacofano.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Re: CONGRATULATION.
-Date: 20 Dec 2022 19:40:53 -0800
-Message-ID: <20221220194053.43CCCE351E178C6E@maryiacofano.com>
+Received: from mail-ot1-x32e.google.com (mail-ot1-x32e.google.com
+ [IPv6:2607:f8b0:4864:20::32e])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 929D510E00B;
+ Wed, 21 Dec 2022 05:01:38 +0000 (UTC)
+Received: by mail-ot1-x32e.google.com with SMTP id
+ j16-20020a056830271000b0067202045ee9so8439182otu.7; 
+ Tue, 20 Dec 2022 21:01:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=uDUOHVCc9K3hdDQtTl6zCt6I0//F7xbzgiL5zzmDHKU=;
+ b=meh0/v7prpFdpKiPJ2jFndEeeaLwe28XcA3Wg4xD2/6znobuR8gOtGAT62vSkwC/y3
+ bUaZKxv6XpNj0JW3vKL5hqC9tW5LPcucYX09ux9reWhiU9gIdavVc1E6DVwW2m1geAbz
+ J+B+aL17Me09HsYZR3ecaY/VTK0codX/zMleIguScWjX/nZ5mnbnJTAzYqsCAf0hH8NS
+ oapnDOL3/5601W6BxO5x1miXR1WtbM5i1M+eyppj8QT6SV32q+olRoVOm6TjiSecc9sF
+ ltkd9asgtFUyObo5WUS6NtA2Ocw7oc258SBFzcjx3XrwaFYczF3+Np64hDi1usb8MRw1
+ r5zQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=uDUOHVCc9K3hdDQtTl6zCt6I0//F7xbzgiL5zzmDHKU=;
+ b=M12arGmswzyADbjiIXPwyS4eSbMLHN3vZodfujVReyZSH1DqiIVeOLR+ZcgD1MDLrg
+ LaVWwmO+ljjmMk78KKg5gysWzfcLlQXwdazoLgAdEcKPwqsoKBRG1+4TQUoEMH/SqIbY
+ mD0K6lpGyEK27Bgk+yIQDN/zVYwYARzhIUz28Yey3e+1eBYyidte7Xm3GnSA1yx7xOIM
+ 6Olyr1upc7QhDqAEywsaR3i437gLP8h+yuxNXZ0rKc9FM/qCryU6ncaFLs8XE7tYX71P
+ bS9HEWdNnFeAQ9vhtKJCARBJl40hun5ol8rV/K0jreEG4ov18nHghWsp7ZTv6f4GDc1I
+ qHsQ==
+X-Gm-Message-State: AFqh2kqzPpsPy0+f49HCT/EOUmoEkSnGoWnp+VfdHYW8dMKuXCuOfopc
+ f4UvmIiT+i8tyQokDgAatrCCYnqo8dCYFddKrts=
+X-Google-Smtp-Source: AMrXdXtS1JI4CuCqdbp9KkbNyVpLqhCpVOQBSeOh2PyUNfq8iexFzbkqPy13qZFcsTa54khLLs/pav+EzFCl8ZS6zV8=
+X-Received: by 2002:a05:6830:3095:b0:670:7942:b562 with SMTP id
+ g21-20020a056830309500b006707942b562mr41452ots.84.1671598897767; Tue, 20 Dec
+ 2022 21:01:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="utf-8"
+References: <11728bc1-7b59-1623-b517-d1a0d57eb275@intel.com>
+ <20221220094014.1128207-1-zyytlz.wz@163.com>
+ <20221221025857.GG30028@zhen-hp.sh.intel.com>
+In-Reply-To: <20221221025857.GG30028@zhen-hp.sh.intel.com>
+From: Zheng Hacker <hackerzheng666@gmail.com>
+Date: Wed, 21 Dec 2022 13:01:26 +0800
+Message-ID: <CAJedcCyvSW_RAOrzUkWM8Li8x6Jkd0FL6uCXCz2Jzk33dng4jQ@mail.gmail.com>
+Subject: Re: [PATCH v5] drm/i915/gvt: fix double free bug in
+ split_2MB_gtt_entry
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -51,33 +70,62 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ameliaalexander@scotsfoundation.org
+Cc: alex000young@gmail.com, security@kernel.org, tvrtko.ursulin@linux.intel.com,
+ airlied@linux.ie, gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
+ joonas.lahtinen@linux.intel.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, 1002992920@qq.com, airlied@gmail.com,
+ Zheng Wang <zyytlz.wz@163.com>, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Beneficiary,
+Zhenyu Wang <zhenyuw@linux.intel.com> =E4=BA=8E2022=E5=B9=B412=E6=9C=8821=
+=E6=97=A5=E5=91=A8=E4=B8=89 11:01=E5=86=99=E9=81=93=EF=BC=9A
+>
+> On 2022.12.20 17:40:14 +0800, Zheng Wang wrote:
+> > If intel_gvt_dma_map_guest_page failed, it will call
+> >  ppgtt_invalidate_spt, which will finally free the spt. But the
+> >  caller function ppgtt_populate_spt_by_guest_entry does not notice
+> >  that, it will free spt again in its error path.
+>
+> indent
 
-After signing the Giving Pledge in 2019, I decided I was going to=20
-give away at least half of my fortune to charity and towards=20
-improving the lives of those in dire need of immediate support as=20
-a result of the Covid-19 pandemic. So far I have been able to=20
-give out $12 billion USD to charities, schools, churches,=20
-businesses and individuals across the globe through The Scott=20
-Foundation. I'm currently donating another $4 billion to charity.
+Yeap :)
 
-An online ballot was conducted from which your email emerged as=20
-one of the beneficiaries of my $6,850,000.00 USD donation to=20
-enable you resolve your financial challenges and to also reach=20
-out to those in need of support around your neighborhood. You are=20
-to contact MRS. AMELIA ALEXANDER for more information if you're=20
-interested in receiving this donation.
+> > +             if (ret)
+> > +                     goto err;
+> >               sub_se.val64 =3D se->val64;
+> >
+> >               /* Copy the PAT field from PDE. */
+> > @@ -1231,6 +1229,18 @@ static int split_2MB_gtt_entry(struct intel_vgpu=
+ *vgpu,
+> >       ops->set_pfn(se, sub_spt->shadow_page.mfn);
+> >       ppgtt_set_shadow_entry(spt, se, index);
+> >       return 0;
+> > +err:
+> > +     /* Undone the existing mappings of DMA addr. */
+>
+> We need a verb here for Undo.
 
-MRS. AMELIA ALEXANDER
-ameliaalexander@scotsfoundation.org
+Get it.
 
-Congratulations.
+>
+> > +     for_each_present_shadow_entry(sub_spt, &sub_se, sub_index) {
+> > +             gvt_vdbg_mm("invalidate 4K entry\n");
+> > +             ppgtt_invalidate_pte(sub_spt, &sub_se);
+> > +     }
+> > +     /* Release the new allocated spt. */
+> > +     trace_spt_change(sub_spt->vgpu->id, "release", sub_spt,
+> > +             sub_spt->guest_page.gfn, sub_spt->shadow_page.type);
+> > +     ppgtt_free_spt(sub_spt);
+> > +     sub_spt =3D NULL;
+>
+> Not need to reset local variable that has no use then.
+>
+> I'll handle these trivial fixes during the merge.
+>
 
-Yours Sincerely,
-Mary Lacofano
-(For)
-Mackenzie Scott
+Very thanks for that.
+
+Best regards,
+Zheng Wang
