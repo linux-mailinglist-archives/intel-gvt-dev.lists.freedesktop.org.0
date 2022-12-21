@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B924F65373A
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Dec 2022 20:51:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB2E765384F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 21 Dec 2022 22:51:24 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1E57F10E4A5;
-	Wed, 21 Dec 2022 19:51:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9E90610E4D9;
+	Wed, 21 Dec 2022 21:51:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
- Wed, 21 Dec 2022 19:51:33 UTC
-Received: from mail.my-trgteer.info (unknown [104.223.183.239])
- by gabe.freedesktop.org (Postfix) with ESMTP id F138510E49C
+ Wed, 21 Dec 2022 21:51:21 UTC
+Received: from mail.dnsyview-my.info (unknown [104.223.183.236])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4176210E4D9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Dec 2022 19:51:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=my-trgteer.info; 
+ Wed, 21 Dec 2022 21:51:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dnsyview-my.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=target.user.feedback@my-trgteer.info; 
- bh=ut4rnFGnsNwY6+ai8ltM9LoTAWM=;
- b=c8N+oFRJ/Ilw2eGozi7x/yejx8qHKzxBSwLXMoW/5jklHQ1PGsdAMMf/jVvAQ+TUilWudSVNFMee
- 5qnaag1vzcZMlbz2cd45oDPdLZ62F3UnXBO8HmmJvROYGKIyQ2flhhfc+nraJnsKGlJY0Ehm54q3
- 697e78hXKMW9Iy067fE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=my-trgteer.info;
- b=c7boqXUhlWkPlj6r9nZvkiZOv0DF6lWU2Z6gfc0e+3pegFcI+7Miswd1/NbttUsj74yfKVCn35zn
- Xsdwo0lMrwU82yEzGwsXlWKKzxrg08dwYvw4pmyMQyW9MiP2QTp6nvhm6LGESuizb7VH/wZjykek
- 8he53LCPrlWF7YpjDug=;
-Received: by mail.my-trgteer.info id hkds6k0001gn for
+ i=now.on.disney@dnsyview-my.info; 
+ bh=zmMgmRQ25GJrj7gyirXfxkHFTTY=;
+ b=BYErsHC7gUBo9hlfKSW/zT+OQVdAO18GyX1TQp57SYHJy20jU1ZRP9hmGrWYjSickzaxTWO7rTmu
+ BDmtqxHiORG+p+hGRWNanIzW814SsU/J8i6CK2tn9+Vx/J81YzkZfbKuGVloj0zsxVYq+rHmlyX+
+ GvloOgaD8KGijXwlQNg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dnsyview-my.info;
+ b=WnGX0ansIfhXP6+qqTJO5JJzOEdzjnFLp0kF+saPmKa73SZYUUCnnkxsZfaajNhGP8uN6g767dOD
+ BT2s8frbKg1IpG47NjtSCfP8rkZq4qArV2yGKX9FI/BZ2CPedVxYr3L4P0DHzfRmGop/Po1dzF//
+ j27Uco1wVoDZV3ehkn0=;
+Received: by mail.dnsyview-my.info id hkdvti0001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 21 Dec 2022 16:05:47 -0500 (envelope-from
- <target.user.feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@my-trgteer.info>)
-Date: Wed, 21 Dec 2022 16:05:47 -0500
-From: "Target User Feedback" <target.user.feedback@my-trgteer.info>
+ Wed, 21 Dec 2022 16:37:26 -0500 (envelope-from
+ <now.on.disney-intel+2Dgvt+2Ddev=lists.freedesktop.org@dnsyview-my.info>)
+Date: Wed, 21 Dec 2022 16:37:26 -0500
+From: "Now On Disney" <now.on.disney@dnsyview-my.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your visits are now rewarded for your loyalty - Awesome
+Subject: Pick any gift on us, as token of appreciation for your loyalty
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_475_2041477611.1671651441771"
-Message-ID: <0.0.0.34.1D9157FFF5CDB44.4DF746@mail.my-trgteer.info>
+ boundary="----=_Part_769_302113253.1671658619999"
+Message-ID: <0.0.0.55.1D915846B379EE0.58867B@mail.dnsyview-my.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,399 +53,132 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_475_2041477611.1671651441771
+------=_Part_769_302113253.1671658619999
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <meta charset="utf-8" /> 
-  <title>bientwo</title> 
+  <title>myulot]</title> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+  <style type="text/css">#outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+	</style> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;display=swap" rel="stylesheet" type="text/css" /> 
+  <style type="text/css">@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;display=swap);
+	</style> 
+  <style type="text/css">@media only screen and (min-width:480px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+
+      .mj-column-per-50 {
+        width: 50% !important;
+        max-width: 50%;
+      }
+    }
+	</style> 
+  <style type="text/css">@media only screen and (max-width:480px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
+    }
+	</style> 
+  <style type="text/css">a,
+    span,
+    td,
+    th {
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+	</style> 
  </head> 
- <body> 
-  <div style="background-color:#f4f4f5"> 
-   <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden">
-    &nbsp;
+ <body style="background-color:#F4F8FA;"> 
+  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+   Preview - Welcome to Coded Mails
+  </div> 
+  <div style="background-color:#F4F8FA;"> 
+   <div style="margin:0px auto;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td style="font-size:0px;word-break:break-word;"> 
+             <div style="height:5px;">
+              &nbsp;
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
    </div> 
-   <div style="background-color:#f4f4f5"> 
-    <div style="background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:640px"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%"> 
+   <div style="background:#F4F8FA;background-color:#5432D3;;margin:0px auto;border-radius:16px;max-width:800px;"> 
+    <div style="line-height:0;font-size:0;"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F4F8FA;background-color:#5432D3;"> 
       <tbody> 
        <tr> 
-        <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-         <div> 
-          <div style="background:#001f3c;background-color:#fff;Margin:0px auto;max-width:640px"> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#fff;background-color:#fff;width:100%"> 
-            <tbody> 
-             <tr> 
-              <td style="direction:ltr;font-size:0px;padding:15px 30px;text-align:center;vertical-align:top"> 
-               <div class="m_-2980755060843392613mj-column-per-100" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr"> 
-                <div class="m_-2980755060843392613mj-column-per-50" style="font-size:13px;text-align:center;direction:ltr;display:inline-block;vertical-align:top;width:100%"> 
-                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                  <tbody> 
-                   <tr> 
-                    <td style="vertical-align:top;padding:0"> 
-                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="center" style="font-size:0px;padding:0;word-break:break-word"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="center" style="width:100%"> <p style="
-																font-size: 25pt; line-height: normal; font-family: arial; color: #CC0000"><strong>You are just a few clicks away<br /> to get The $100 Target Card</strong></p> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> </td> 
-                   </tr> 
-                  </tbody> 
-                 </table> 
-                </div> 
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> 
-         </div> 
-         <div> 
-          <div class="m_-2980755060843392613intro-copy" style="Margin:0px auto;max-width:640px"> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"> 
-            <tbody> 
-             <tr> 
-              <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-               <div style="Margin:0px auto;max-width:640px"> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-                    <div class="m_-2980755060843392613mj-column-per-100" style="background:#eee;background-color:#eee;font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"> 
-                     <table bgcolor="#eee" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#eee" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td style="vertical-align:top;padding:0px 00px"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="left" style="font-size:0px;padding:0px 0 0;word-break:break-word"><a href="http://www.my-trgteer.info/Dominique-legend/d326o239Ko5M8zL611G43b3k1054Z36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQMdQ9o6m1_yv05EpwXD"><img alt="" src="http://www.my-trgteer.info/6476p23W9J5z7PTa12v43hb5n1054i36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQMdQ9o6YZxX105c1wDM/proficiently-Parkersburg" style="width: 100%" /></a> 
-                             <div style="font-family:Arial,sans-serif;font-size:26px;font-weight:700;line-height:31px;text-align:left;color:#333; padding: 15px"> 
-                              <div> 
-                               <div style="text-align:center">
-                                <span style="font-size:24px">We appreciate your opinion </span> 
-                                <p><span style="font-size:24px;text-align:center; font-weight: normal">Simply complete our 20-Second Service Survey about how your experience has been with us lately</span></p> 
-                               </div> 
-                              </div> 
-                             </div> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> 
-         </div> 
-         <div> 
-          <div style="Margin:0px auto;max-width:640px"> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"> 
-            <tbody> 
-             <tr> 
-              <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-               <div style="Margin:0px auto;max-width:640px"> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-                    <div class="m_-2980755060843392613mj-column-per-100" style="background:#001f3c;background-color:#001f3c;font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"> 
-                     <table bgcolor="#DE2C2C" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#DE2C2C" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td style="vertical-align:top;padding:30px 30px"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="center" style="font-size:0px;padding:0;word-break:break-word"> 
-                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:340px;line-height:100%"> 
-                              <tbody> 
-                               <tr> 
-                                <td align="center" bgcolor="#fff" role="presentation" style="border:none;border-radius:3px;padding:10px 25px;background:#fff" valign="middle"><a href="http://www.my-trgteer.info/Dominique-legend/d326o239Ko5M8zL611G43b3k1054Z36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQMdQ9o6m1_yv05EpwXD" style="background:#fff;color:#001f3c;font-family:'Amazon Ember',Arial,sans-serif;font-size:20px;font-weight:400;line-height:120%;Margin:0;text-decoration:none;text-transform:none" target="_blank"><strong>Go here To Start </strong></a></td> 
-                               </tr> 
-                              </tbody> 
-                             </table> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> 
-         </div> 
-         <div> 
-          <div class="m_-2980755060843392613copy-helper" style="background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:640px"> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%"> 
-            <tbody> 
-             <tr> 
-              <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-               <div style="background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:640px"> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td style="direction:ltr;font-size:0px;padding:30px 30px;text-align:center;vertical-align:top"> 
-                    <div class="m_-2980755060843392613mj-column-per-25" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"> 
-                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td style="vertical-align:top;padding:0"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="center" class="m_-2980755060843392613block-img" style="font-size:0px;padding:0;word-break:break-word"> 
-                             <table border="0" cellpadding="0" cellspacing="0" class="m_-2980755060843392613full-width-mobile" role="presentation" style="border-collapse:collapse;border-spacing:0px"> 
-                              <tbody> 
-                               <tr> 
-                                <td class="m_-2980755060843392613full-width-mobile" style="width:106px">&nbsp;</td> 
-                               </tr> 
-                              </tbody> 
-                             </table> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <div class="m_-2980755060843392613mj-column-per-75" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"> 
-                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td style="vertical-align:top;padding:0"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="left" class="m_-2980755060843392613center-mob" style="font-size:0px;padding:10px 10px 5px;word-break:break-word"> 
-                             <div style="font-family:'Amazon Ember',Arial,sans-serif;font-size:20px;font-weight:700;line-height:26px;text-align:left;color:#222d3a"> 
-                              <div>
-                               &nbsp;
-                              </div> 
-                             </div> </td> 
-                           </tr> 
-                           <tr> 
-                            <td align="left" class="m_-2980755060843392613center-mob" style="font-size:0px;padding:0 10px;word-break:break-word"> 
-                             <div style="font-family:'Amazon Ember',Arial,sans-serif;font-size:16px;font-weight:400;line-height:26px;text-align:left;color:#222d3a"> 
-                              <div>
-                               &nbsp;
-                              </div> 
-                             </div> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> 
-         </div> 
-         <div> 
-          <div class="m_-2980755060843392613intro-copy" style="Margin:0px auto;max-width:640px"> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"> 
-            <tbody> 
-             <tr> 
-              <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-               <div style="Margin:0px auto;max-width:640px"> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-                    <div class="m_-2980755060843392613mj-column-per-100" style="background:#f4f4f5;background-color:#f4f4f5;font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"> 
-                     <table bgcolor="#f4f4f5" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f4f4f5" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td style="vertical-align:top;padding:15px 30px"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="left" style="font-size:0px;padding:0px 0 0;word-break:break-word"> 
-                             <div style="font-family:'Amazon Ember',Arial,sans-serif;font-size:13px;line-height:20px;text-align:left;color:#001f3c">
-                              &nbsp;
-                             </div> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-    <div style="Margin:0px auto;max-width:640px"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"> 
-      <tbody> 
-       <tr> 
-        <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top"> 
-         <div class="m_-2980755060843392613footer" style="background:#001f3c;background-color:#001f3c;Margin:0px auto;max-width:640px"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#001f3c;background-color:#001f3c;width:100%"> 
+        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
            <tbody> 
             <tr> 
-             <td style="direction:rtl;font-size:0px;padding:30px 0;text-align:center;vertical-align:top"> 
-              <div class="m_-2980755060843392613mj-column-per-25" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"> 
-               <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td style="vertical-align:top;padding:0 30px 20px"> 
-                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td class="m_-2980755060843392613social" style="font-size:0px;padding:0;word-break:break-word"> 
-                       <div class="m_-2980755060843392613mj-column-per-100 m_-2980755060843392613social" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr"> 
-                        <div class="m_-2980755060843392613mj-column-per-33" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:33%"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td style="vertical-align:top;padding:0"> 
-                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                              <tbody> 
-                               <tr> 
-                                <td align="center" style="font-size:0px;padding:0;word-break:break-word"> 
-                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px"> 
-                                  <tbody> 
-                                   <tr> 
-                                    <td style="width:24px">&nbsp;</td> 
-                                   </tr> 
-                                  </tbody> 
-                                 </table> </td> 
-                               </tr> 
-                              </tbody> 
-                             </table> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> 
-                        </div> 
-                        <div class="m_-2980755060843392613mj-column-per-33" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:33%"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td style="vertical-align:top;padding:0"> 
-                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                              <tbody> 
-                               <tr> 
-                                <td align="center" style="font-size:0px;padding:0;word-break:break-word"> 
-                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px"> 
-                                  <tbody> 
-                                   <tr> 
-                                    <td style="width:24px">&nbsp;</td> 
-                                   </tr> 
-                                  </tbody> 
-                                 </table> </td> 
-                               </tr> 
-                              </tbody> 
-                             </table> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> 
-                        </div> 
-                        <div class="m_-2980755060843392613mj-column-per-33" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:33%"> 
-                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td style="vertical-align:top;padding:0"> 
-                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                              <tbody> 
-                               <tr> 
-                                <td align="center" style="font-size:0px;padding:0;word-break:break-word"> 
-                                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px"> 
-                                  <tbody> 
-                                   <tr> 
-                                    <td style="width:24px">&nbsp;</td> 
-                                   </tr> 
-                                  </tbody> 
-                                 </table> </td> 
-                               </tr> 
-                              </tbody> 
-                             </table> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> 
-                        </div> 
-                       </div> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> 
-              <div class="m_-2980755060843392613mj-column-per-75" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"> 
-               <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td style="vertical-align:top;padding:0"> 
-                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" style="font-size:0px;padding:0 30px 10px;word-break:break-word"> 
-                       <div style="font-family:'Amazon Ember',Arial,sans-serif;font-size:12px;line-height:14px;text-align:left;color:#ffffff"> 
-                        <div> 
-                         <p>&nbsp;</p> 
-                        </div> 
-                       </div> </td> 
-                     </tr> 
-                     <tr> 
-                      <td align="left" style="font-size:0px;padding:0 30px 10px;word-break:break-word"> 
-                       <div style="font-family:'Amazon Ember',Arial,sans-serif;font-size:12px;line-height:14px;text-align:left;color:#ffffff"> 
-                        <div> 
-                         <p align="center">To change your communication elections,<a href="http://www.my-trgteer.info/5b14V2395zA86Q12jW43b4z1054o36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQMdQ9o5q1Ir05LWwDk/Dominique-legend" style="text-decoration-line: none;"> <span style="color: #DE2C2C">Start Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010</p> 
-                        </div> 
-                       </div> </td> 
-                     </tr> 
-                     <tr> 
-                      <td align="left" style="font-size:0px;padding:0 30px 10px;word-break:break-word"> 
-                       <div style="font-family:'Amazon Ember',Arial,sans-serif;font-size:12px;line-height:14px;text-align:left;color:#ffffff"> 
-                        <div> 
-                         <p align="center"><br /> <br /> <style id="nonidempotent"></style><style><font id="obviates"></font></style><style><style></style></style><span class="pi"></span><font></font></p> 
-                        </div> 
-                       </div> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
+             <td align="center" style="font-size:0px;padding:8px 0;word-break:break-word;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
+               <tbody> 
+                <tr> 
+                 <td style="width:280px; font-size: 29pt; line-height: normal; text-align: center; font-family: verdana; color: #fff"><strong>DISNEY+</strong></td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+            <tr> 
+             <td style="font-size:0px;word-break:break-word;"> 
+              <div style="height:auto;">
+               &nbsp;
               </div> </td> 
             </tr> 
            </tbody> 
@@ -456,9 +189,329 @@ Content-Transfer-Encoding: 7bit
      </table> 
     </div> 
    </div> 
+   <div style="background:#F4F8FA;background-color:#F4F8FA;margin:0px auto;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F4F8FA;background-color:#F4F8FA;width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:10px;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;border-radius:8px;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;border-radius:8px;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:0px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:0px 25px;word-break:break-word;"> 
+             <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:24px;font-weight:600;line-height:30px;text-align:center;color:#6E92A4;"> 
+              <h3 style="line-height: normal; margin-top: none; color: #6421FF">You are just a few clicks away<br /> to get The $100 Disney+ Card</h3> 
+              <a href="http://www.dnsyview-my.info/Singborg-toggle/pe45JZ2395w8AU613tA43bmfQ1057Q36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQadQ9R6tg10ps5QpkwD"><img alt="" src="http://www.dnsyview-my.info/Gestapo-bulldozes/dc85PF2395YX7Xa13FL43cF1C1057l36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQadQ9R5pK1k06qOpOwD" style="width: 100%" /></a>
+              <br /> &nbsp; 
+              <h2 style="margin: 0; font-weight: 600; font-size: 29px; line-height: 24px; color: #6421FF">We at Disney+ appreciate your opinion</h2> 
+             </div> </td> 
+           </tr> 
+           <tr> 
+            <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#6E92A4;"> 
+              <p style="text-align: center; font-size: 24px; line-height: normal">Simply complete our 20-Second Service Survey about how your<br /> experience has been with us lately</p> &nbsp; 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" bgcolor="#0092C8" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding:10px 45px;background:#0092C8;" valign="middle"><a href="http://www.dnsyview-my.info/Singborg-toggle/pe45JZ2395w8AU613tA43bmfQ1057Q36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQadQ9R6tg10ps5QpkwD" style="display: inline-block; background: #0065E9; color: #ffffff; font-family: Inter, Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 500; line-height: 24px; margin: 0; text-decoration: none; text-transform: none; padding: 20px 55px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank">Go here To Start </a></td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <br /> &nbsp;
+             </div> <br /> <br /> &nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#F4F8FA;background-color:#F4F8FA;margin:0px auto;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F4F8FA;background-color:#F4F8FA;width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:10px;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;border-radius:8px;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;border-radius:8px;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div style="margin:0px auto;max-width:800px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;"> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:20px;font-weight:400;line-height:30px;text-align:center;color:#6E92A4;">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <div style="margin:0px auto;max-width:800px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+             <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" class="mj-full-width-mobile" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
+                   <tbody> 
+                    <tr> 
+                     <td class="mj-full-width-mobile" style="width:250px;">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> 
+             <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:20px;font-weight:400;line-height:30px;text-align:left;color:#6E92A4;">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#6E92A4;">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle"> 
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" bgcolor="#0092C8" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#0092C8;" valign="middle">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <div style="margin:0px auto;max-width:800px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+             <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:20px;font-weight:400;line-height:30px;text-align:left;color:#6E92A4;">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#6E92A4;">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> 
+             <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" class="mj-full-width-mobile" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
+                   <tbody> 
+                    <tr> 
+                     <td class="mj-full-width-mobile" style="width:250px;">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#F4F8FA;background-color:#F4F8FA;margin:0px auto;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F4F8FA;background-color:#F4F8FA;width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:10px;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#F4F8FA;background-color:#F4F8FA;margin:0px auto;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F4F8FA;background-color:#F4F8FA;width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:10px;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#edeef6;background-color:#edeef6;margin:0px auto;border-radius:8px;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#edeef6;background-color:#edeef6;width:100%;border-radius:8px;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:22px;text-align:center;color:#6E92A4;">
+              <span>To edit your email options,</span>
+              <a href="http://www.dnsyview-my.info/morphology-bouquets/6fc5a2P395z8T6x13S43FcY0M1057Z36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQadQ9R7ylB10xo6F2wjPD" style="text-decoration-line: none;"> <span style="color: #DE2C2C">Start_Here </span> </a>
+              <br /> 126 E 23rd St New York, NY, US 10010
+             </div> </td> 
+           </tr> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <div style="font-family:Inter, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:22px;text-align:center;color:#6E92A4;">
+              &nbsp;
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="margin:0px auto;max-width:800px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td style="font-size:0px;word-break:break-word;"> 
+             <div style="height:1px;">
+              &nbsp;
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> <span size="Gothicize"><font lang="landscape"></span><span face="distortion"></span><font face="accenting"><font size="bulldozed"><font dir="avoidably"></font><span dir="sublime"></span></font><font class="hotly"></font></font></font></td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
   </div>   
- <img src="http://www.my-trgteer.info/petticoat-archiving/6486gY2y395l8L5T12X43bJ6y1054Q36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQMdQ9o5l1p0R5CjXwD" alt=""/></body>
+ <img src="http://www.dnsyview-my.info/b8d6rt239j5iG85R11P43c2G1057w36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQadQ9R6eLS1n06z1wMXD/cybernetics-budding" alt=""/></body>
 </html>
 
-------=_Part_475_2041477611.1671651441771--
+------=_Part_769_302113253.1671658619999--
 
