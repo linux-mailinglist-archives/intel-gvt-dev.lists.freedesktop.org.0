@@ -2,140 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 617F4654E66
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Dec 2022 10:29:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 59EA16553A9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Dec 2022 19:35:35 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ADC4B10E62E;
-	Fri, 23 Dec 2022 09:28:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 24D1610E1D2;
+	Fri, 23 Dec 2022 18:35:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9A6AD10E62E;
- Fri, 23 Dec 2022 09:28:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1671787726; x=1703323726;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- in-reply-to:mime-version;
- bh=A45r+fZqSulzcta1a4U/8ZumkyXycFUIKS48jfGr8jc=;
- b=kUzStuxwxkq95z2PH/jYmCGPFB5Y7NSQ7WRqkGbt1SAY12RnzsZufZ02
- ITpkoH2o2m/2EFGNxWNgaV2/Rdyc+kL1btlF/U8w4VhCbrsXIv4fAkc//
- UwFvX3IIr6fiwSwuOlD/KjJEtaw057qJBJYhH5w2Uku5236t9YRif3Tp4
- jffhgtkVqbnV8tIc95lDOQ6VVXYs1ML4D9uIRjVyM+AnAiPwkyMFJS+ab
- R+a9SXxUf/NhU0Vdx9wb2AvhWjpyKrQCR7JYekf8UlRBBKVERBb7kzd2U
- +mJPeUYdk8jVaxkSIU7OjIdb/iZV4JP/hGCsbr+A6mNjnE8oWqrr02KG7 g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10569"; a="308018714"
-X-IronPort-AV: E=Sophos;i="5.96,268,1665471600"; d="scan'208";a="308018714"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Dec 2022 01:28:45 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10569"; a="776311168"
-X-IronPort-AV: E=Sophos;i="5.96,268,1665471600"; d="scan'208";a="776311168"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga004.jf.intel.com with ESMTP; 23 Dec 2022 01:28:45 -0800
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Fri, 23 Dec 2022 01:28:45 -0800
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Fri, 23 Dec 2022 01:28:45 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Fri, 23 Dec 2022 01:28:45 -0800
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Fri, 23 Dec 2022 01:28:45 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EL7lpl3eAMiN3saqFCdvzpEv5v2EdGsIuiQZF+2pGAx0vJS5u2SlYpimrZZc36l58r0/+jYz67/Hmyp1DsBvRYNWSGdOfWfKzltZYswxCfnmyPHvbMdXCifWcF+Xc1fzdGB8kJGTjK6782updwtFMEGKBeKz+YyD01G+CLZX+FWl6BrskY8HN4cSIYqfVnJKL2Dox/a61OidegiQ6PKxnh9TcI3OQ38mIOl9XdVPAu2/aXFbYgD1nvN3JrGru0YRfiA4yZiPKfPlO0UulJUYTzlomFD7du4hzgAKPlv1DJ2wi72tVY28MVC6xeMRNnWEZFwfup64KDjLW/c051H6sg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vY94zKD53p8/MegOCd0700ScIOKpu6e7dVQ8Mfx4xcg=;
- b=Cb0atYQdltruK8717wagF8Ay2kEUHjS62MALebhDpU7zKd9jTwe0LzXcFc1TUSPAkpwq8oMAPcG2P5m81EzGvl95FHFxS2WwY1Fyk9Gd9u3Oo/I8HAKfcHVLZmAaCA/pOIwe00fan3k+moXEpx+vtqjwPYrgyFsaQ93sN6zORuyKpU140a0sqwrHvCCZpdKM4iVqA+KVz0fGQIK7iN/xwaowvcFPE8bK5qGPpKzEya7tQiRUObA60yIbaP9xaf2gIioyZ6W/IaAbNQ9Nuv2YGOMt8ar4ondDVxROGQlEDoLCFVymBLzMGNpnsEjtlamaborhCvGWuCXNQCZi/4jE9Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
- BL1PR11MB5415.namprd11.prod.outlook.com (2603:10b6:208:315::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5924.16; Fri, 23 Dec
- 2022 09:28:41 +0000
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::bd50:2cf7:f362:3734]) by DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::bd50:2cf7:f362:3734%7]) with mapi id 15.20.5944.006; Fri, 23 Dec 2022
- 09:28:40 +0000
-Date: Fri, 23 Dec 2022 17:05:26 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Sean Christopherson <seanjc@google.com>
-Subject: Re: [PATCH 00/27] drm/i915/gvt: KVM: KVMGT fixes and page-track
- cleanups
-Message-ID: <Y6VvVrYURd/an3Zp@yzhao56-desk.sh.intel.com>
-References: <20221223005739.1295925-1-seanjc@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20221223005739.1295925-1-seanjc@google.com>
-X-ClientProxiedBy: SG2PR06CA0187.apcprd06.prod.outlook.com (2603:1096:4:1::19)
- To DS7PR11MB5966.namprd11.prod.outlook.com
- (2603:10b6:8:71::6)
+X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
+ Fri, 23 Dec 2022 18:35:31 UTC
+Received: from mail.tm-helps.info (unknown [104.223.183.250])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A48CD10E1D2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 23 Dec 2022 18:35:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tm-helps.info;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=now.on.tmobile@tm-helps.info; 
+ bh=fX1l8CrFdWUMYqjTTtvaTLeXXLw=;
+ b=skQkp9CumiG9tCgVaQ40iQ1stmgsH4fnpBfZZtSlDNkNeF5OxtdM171KzJKUViemI0fqSt9WYzhG
+ f+lq/0MTH3gVmJNH9ePz5LvYoHrZ4PHtxilD6qH5NOA5w070U60aIpUeUC0/fT1+/GS4rCFpLZmG
+ Z3vYpgnjQuYukQfrBwA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tm-helps.info;
+ b=O11TNB+VvXMz6pLqC5jK+Sfuo/Taz5+0FtbP+431w9qO2fqaLQ63no+ISvqv/ArmKsUT/a/l9OKu
+ 0fUxALYNTSxGANmZ/Mh+QfpSH3tgtHS293FfuCczzth6peiJj9Wlahxh8qFoIfXb/J9xLm99mW1p
+ WCktQtoqfLFfBYKaXr8=;
+Received: by mail.tm-helps.info id hknqf60001gg for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 23 Dec 2022 13:20:50 -0500 (envelope-from
+ <now.on.tmobile-intel+2Dgvt+2Ddev=lists.freedesktop.org@tm-helps.info>)
+Date: Fri, 23 Dec 2022 13:20:50 -0500
+From: "Now On TMOBILE" <now.on.tmobile@tm-helps.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Best reward deal you can get for being a loyal customer
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|BL1PR11MB5415:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6eb1eede-b9c6-434d-8488-08dae4c813ff
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: l+dbvzo2E8TG1qVVE2Wp8+w491sGeJ1cnU5qfpF6VzRlVsV3PMvtgK4yhMlHUWwpqa1T1r68JDxTpNZ2FxRyXeKZqAq8oqslbn1hiTqPbG1HYnThsBcuAt0Zu3iROTV3f5tr5fcTTbm2ZqFoWsUmpW4QIwgzndnd2m3xHh8gf0IAxYSM2vCAONNXVEFFfrtplUVV0BZazjfkFlYhgx3+dIrSJ4rOp3cfTGqM6Mlqm1UO9V8CC85ytIrVIx4/RZ9GXfdG+EnZ1UwewO+QIQLuAiaF3/Llt7jgSe6E0Vwu13gI+xplNrJgp3KvKai7B/UNFLCpYb5fdWJZJ0QUZ81Jnh33WYgNomQyJIpogxtA90YWDg4qgn6SlQkRCah3NWl5tXdGh4nxj2mimCL00YYCWLc7B2YnuBch36t6NTaXqiolP+zBzQO6IKMUvnKQ7o6WiNxkrW7fGgwVs5gKk98xvKbQFGVpnH0zivjRgoPcl1qYoObk+ceDsrbfJAPR10Qqklt5S+JnBBN2GvOsla1sgvxpfW+13jKeuOzjwB6qHUetd/FZr1HW/OwlhahXUbjXZhZ5CaifyHEg4/69F2fzm5Q4uOypMpBBAuqVC0DQ5rB4P3pUey5rdXJ3jiKY4Gf4A+pDJnIl3+ppFqcyXqD+TUQdXTpp8D1QOcm5n1rYMb/6xTnRFQhXKc69lQKKUDqu
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(396003)(366004)(376002)(346002)(39860400002)(136003)(451199015)(8936002)(6512007)(54906003)(6916009)(26005)(41300700001)(186003)(4326008)(66556008)(66476007)(66946007)(8676002)(316002)(86362001)(38100700002)(83380400001)(5660300002)(82960400001)(478600001)(2906002)(6486002)(6506007)(3450700001)(966005)(6666004);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+PQeDjW/fnuIZfDUX1nXeppf8JHgpRv9+ZtgTIn1SoiSvUuSdmfXAZfqOOIc?=
- =?us-ascii?Q?PgX9ET5DCjfDLLfUKjYWsbJ1lLOEWph3iV6tRRFlde1XFfkb7JaBKXleyvlF?=
- =?us-ascii?Q?Knz4Y2brlUZKzzU9+/v9bAjpIPWn2vrVe4sUVPxMOFCXG7gMtLN+vHNefwMB?=
- =?us-ascii?Q?WmrX2i5wbeFvN2xlz5eRFFy0nEqQcrD0sNBl7lcxxsiK0s1r/W6uJ6Kwtpyu?=
- =?us-ascii?Q?rJtGf4Dh1ImTkoqkO6GcEKaq/LfYkeJnW+K5HnC5uLshA/5PVdJrQVKsFw4y?=
- =?us-ascii?Q?Lob9AzKHSqneK8g8M+wNoWEbJx7enDG5YsYUFcn5JxmNREYHUpoDPuGxqP5U?=
- =?us-ascii?Q?vdaOZstR2FZBEW0pwrpbTLaA6kok3OzqtJa17Qc3CRulW1O05lK3GtO/XrHx?=
- =?us-ascii?Q?Qm5/X6TrdFka2WwcazlHB3FCYvJXuLsmTfJOnWD8HmSRVYtRQjhRyMjM2S08?=
- =?us-ascii?Q?C69zhyYMXswmHVmWDBSpVNBVJhzkCCNC+kUpTHR5PdUeJXjR8Q3XMrg28P3G?=
- =?us-ascii?Q?ys/c20Ip47K6E2Iq8/cBlv9O7Zy1DBZsj0Yfcsuj6N1zg0GL+/A/F9RZXTEJ?=
- =?us-ascii?Q?qAgJ8+8EfQX+mruV004oiifALgSJYKUaBt1iHPoua/NILz324P6HGy0sG6SL?=
- =?us-ascii?Q?cfY1snzloBBjlAHgk1x0lXChgSMloOZc7s2DXbjMuD8k9Z2sbmfLykSDkzFG?=
- =?us-ascii?Q?JR669Bz38Y0h+xEHfS+CJVWvorzjMyhshBBF8Cvd0W7qYIdPpsstLGFY+twY?=
- =?us-ascii?Q?yFOFJ6SQxWqygPTJfh0CkaNA+Ejv4lccf8DXzhhAox6fh3WE0TWLk6l5quVJ?=
- =?us-ascii?Q?R9fOC4LcdS4Dkhd37iyqU97noULyJIywNDm1vie1caWPVb66PWg3RFAEgnra?=
- =?us-ascii?Q?FS7gpBQp5idOCTUPzEuxEapsW7OWtQ0OnuZ6zMACzQgSPhwTieU7bgWpWpwU?=
- =?us-ascii?Q?+qibCExN9zPdfn4o0SXbIkwCz8k9yJbP9/bKm9XhyEe9QIlPfYocEh6rK7H3?=
- =?us-ascii?Q?3yVgIvGJ8B8HJaa25cTMpgk6+v4kExD8oTWcNhe+kxkWtczqTWmSEyUTThhY?=
- =?us-ascii?Q?wnkRHbu3FZhfxTxILa4UH3KAvAyxaRUa+bn1DarVJ1ux2ct4nKhXg/MP/j6l?=
- =?us-ascii?Q?LNw/48N2/yIuNTeoPRsstQ67dv1GC2P1DLzWomOzYJEGhNKVX0KC9xBdm7Xf?=
- =?us-ascii?Q?j3H4MQBzoEdrw7polqT5B0fH3j2Tmdfqf2Uhrm+1oAKIl67z/+WTh1rGlSks?=
- =?us-ascii?Q?52/MT1iS6EQ7gy6GHNlnZXIpYu0CM/UHMsS1D77xis+vqBNUwcbfW/J7X/fA?=
- =?us-ascii?Q?kS4PudaHaGYfEcn1W0VSU3CzMnxDt8BAXVei8fDbMMRK3lWiXqDBRZ8WC450?=
- =?us-ascii?Q?Q6vDxzEGWAlI2DnghY+hiNFPGXx1cZzVoAwzWq/yz7MIqT3jM3lnqQW8Qsku?=
- =?us-ascii?Q?iAFq3fur+OQsyonGtHPFpp4S3Y6qvAdVgZz6E61meK1VxzkPkmpIKyqPj/Rb?=
- =?us-ascii?Q?sWzPzToY9VXh0Ihwxn4iFU7CPwqO2mUznMrqo2MCo7b8TOskYPbXZhP9I6dg?=
- =?us-ascii?Q?4lCPKzjwC8FGFnvMjXVQhGhfjDBQpX+m+9yOhoxoQ7SbR/ZMUsr1meNsMxJp?=
- =?us-ascii?Q?Bg=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6eb1eede-b9c6-434d-8488-08dae4c813ff
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Dec 2022 09:28:40.8494 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CK86Uytd5vr4+0rko7DYDHVqHJ8iuUGWet7I5z5qMAs6PmlgvFYL8ek71Xs3wrTKrgS/4WJEjUGZCtiyRch3/w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5415
-X-OriginatorOrg: intel.com
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_127_1913127981.1671819641232"
+Message-ID: <0.0.0.F.1D916FB48F93564.5D803E@mail.tm-helps.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -148,50 +50,679 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Dec 23, 2022 at 12:57:12AM +0000, Sean Christopherson wrote:
-> Fix a variety of found-by-inspection bugs in KVMGT, and overhaul KVM's
-> page-track APIs to provide a leaner and cleaner interface.  The motivation
-> for this series is to (significantly) reduce the number of KVM APIs that
-> KVMGT uses, with a long-term goal of making all kvm_host.h headers
-> KVM-internal.  That said, I think the cleanup itself is worthwhile,
-> e.g. KVMGT really shouldn't be touching kvm->mmu_lock.
-> 
-> Note!  The KVMGT changes are compile tested only as I don't have the
-> necessary hardware (AFAIK).  Testing, and lots of it, on the KVMGT side
-> of things is needed and any help on that front would be much appreciated.
-hi Sean,
-Thanks for the patch!
-Could you also provide the commit id that this series is based on?
-I applied them on top of latest master branch (6.1.0+,
-8395ae05cb5a2e31d36106e8c85efa11cda849be) in repo
-https://github.com/torvalds/linux.git, yet met some conflicts and I
-fixed them manually. (patch 11 and patch 25).
+------=_Part_127_1913127981.1671819641232
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-A rough test shows that below mutex_init is missing.
-But even with this fix, I still met guest hang during guest boots up.
-Will look into it and have a detailed review next week.
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+ <head> 
+  <title>boosting</title> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+  <style type="text/css">a:link {color:#15c;font-weight:normal;text-decoration:underline;font-style:normal}
+a:visited {color:#15c;font-weight:normal;text-decoration:underline;font-style:normal}
+a:active {color:#15c;font-weight:normal;text-decoration:underline;font-style:normal}
+a:hover {color:#15c;font-weight:normal;text-decoration:underline;font-style:normal}
+	</style> 
+  <style type="text/css">#outlook a {
+padding: 0
+}
+body {
+margin: 0;
+padding: 0;
+-webkit-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%
+}
+table, td {
+border-collapse: collapse;
+mso-table-lspace: 0;
+mso-table-rspace: 0
+}
+img {
+border: 0;
+height: auto;
+line-height: 100%;
+outline: none;
+text-decoration: none;
+-ms-interpolation-mode: bicubic
+}
+p {
+display: block;
+margin: 13px
+}
+@media only screen and (min-width: 480px) {
+mj-column-per-100 {
+width: 100% !important;
+max-width: 100%
+}
+}
+moz-text-html .mj-column-per-100 {
+width: 100% !important;
+max-width: 100%
+}
+@media only screen and (max-width: 480px) {
+kl-text {
+padding-right: 18px !important;
+padding-left: 18px !important
+}
+}
+kl-text-table-layout > table {
+table-layout: fixed
+}
+kl-text-table-layout > table > tbody > tr > td > table {
+table-layout: fixed
+}
+@media only screen and (max-width: 480px) {
+component-wrapper .mob-no-spc {
+padding-left: 0 !important;
+padding-right: 0 !important
+}
+}
+@media only screen and (max-width: 480px) {
+td.kl-img-base-auto-width {
+width: 100% !important
+}
+}
+kl-button a {
+display: block !important
+}
+@media screen and (max-width: 480px) {
+kl-sl-stk {
+display: block !important;
+width: 100% !important;
+padding: 0 0 9px !important;
+text-align: center !important
+}
+kl-sl-stk.lbls {
+padding: 0 !important
+}
+kl-sl-stk.spcblk {
+display: none !important
+}
+}
+@media only screen and (max-width: 480px) {
+table.mj-full-width-mobile {
+width: 100% !important
+}
+td.mj-full-width-mobile {
+width: auto !important
+}
+}
+img {
+border: 0;
+height: auto;
+line-height: 100%;
+outline: none;
+text-decoration: none;
+max-width: 100%
+}
+root-container {
+background-repeat: repeat !important;
+background-size: auto !important;
+background-position: left top !important
+}
+root-container-spacing {
+padding-top: 50px !important;
+padding-bottom: 20px !important;
+font-size: 0 !important
+}
+content-padding {
+padding-left: 0 !important;
+padding-right: 0 !important
+}
+content-padding.first {
+padding-top: 0 !important
+}
+content-padding.last {
+padding-bottom: 0 !important
+}
+@media only screen and (max-width: 480px) {
+td.mobile-only {
+display: table-cell !important
+}
+div.mobile-only {
+display: block !important
+}
+table.mobile-only {
+display: table !important
+}
+desktop-only {
+display: none !important
+}
+}
+@media only screen and (max-width: 480px) {
+table-mobile-only {
+display: table-cell !important;
+max-height: none !important
+}
+table-mobile-only.block {
+display: block !important
+}
+table-mobile-only.inline-block {
+display: inline-block !important
+}
+table-desktop-only {
+max-height: 0 !important;
+display: none !important;
+mso-hide: all !important;
+overflow: hidden !important
+}
+}
+kl-text div {
+margin: 0
+}
+p {
+margin-left: 0;
+margin-right: 0;
+margin-top: 0;
+margin-bottom: 0;
+padding-bottom: 1em
+}
+@media only screen and (max-width: 480px) {
+kl-text div, .kl-table-subblock div, .kl-split-subblock div {
+font-size: 14px !important;
+line-height: 1.3 !important
+}
+}
+h1 {
+color: #222;
+font-family: "Helvetica Neue", Arial;
+font-size: 40px;
+font-style: normal;
+font-weight: normal;
+line-height: 1.1;
+letter-spacing: 0;
+margin: 0;
+margin-bottom: 20px;
+text-align: left
+}
+@media only screen and (max-width: 480px) {
+h1 {
+font-size: 40px !important;
+line-height: 1.1 !important
+}
+}
+h2 {
+color: #222;
+font-family: "Helvetica Neue", Arial;
+font-size: 32px;
+font-style: normal;
+font-weight: bold;
+line-height: 1.1;
+letter-spacing: 0;
+margin: 0;
+margin-bottom: 16px;
+text-align: left
+}
+@media only screen and (max-width: 480px) {
+h2 {
+font-size: 32px !important;
+line-height: 1.1 !important
+}
+}
+h3 {
+color: #222;
+font-family: "Helvetica Neue", Arial;
+font-size: 24px;
+font-style: normal;
+font-weight: bold;
+line-height: 1.1;
+letter-spacing: 0;
+margin: 0;
+margin-bottom: 12px;
+text-align: left
+}
+@media only screen and (max-width: 480px) {
+h3 {
+font-size: 24px !important;
+line-height: 1.1 !important
+}
+}
+h4 {
+color: #222;
+font-family: "Helvetica Neue", Arial;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.1;
+letter-spacing: 0;
+margin: 0;
+margin-bottom: 9px;
+text-align: left
+}
+@media only screen and (max-width: 480px) {
+h4 {
+font-size: 18px !important;
+line-height: 1.1 !important
+}
+}
+@media only screen and (max-width: 480px) {
+root-container {
+width: 100% !important
+}
+root-container-spacing {
+padding: 10px !important
+}
+content-padding {
+padding-left: 0 !important;
+padding-right: 0 !important
+}
+content-padding.first {
+padding-top: 0 !important
+}
+content-padding.last {
+padding-bottom: 0 !important
+}
+component-wrapper {
+padding-left: 0 !important;
+padding-right: 0 !important
+}
+}
+	</style> 
+ </head> 
+ <body style="word-spacing:normal;background-color:#f7f7f7;"> 
+  <div class="root-container" id="bodyTable" style="background-color:#f7f7f7;"> 
+   <div class="root-container-spacing"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td> 
+        <div style="margin:0px auto;max-width:600px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;"> 
+             <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;border-radius:0px 0px 0px 0px;max-width:600px;"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;border-radius:0px 0px 0px 0px;"> 
+               <tbody> 
+                <tr> 
+                 <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:center;"> 
+                  <div class="content-padding first"> 
+                   <div class="kl-row" style="margin:0px auto;max-width:600px;"> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+                     <tbody> 
+                      <tr> 
+                       <td style="direction:ltr;font-size:0px;padding:0;text-align:center;"> 
+                        <div class="mj-column-per-100 mj-outlook-group-fix kl-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;table-layout:fixed;" width="100%"> 
+                          <tbody> 
+                           <tr> 
+                            <td style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper kl-text-table-layout" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td align="left" class="kl-text" style="font-size:0px;padding:0px;padding-top:18px;padding-right:18px;padding-bottom:12px;padding-left:18px;word-break:break-word;"> 
+                                      <div style="font-family:'Helvetica Neue',Arial;font-size:14px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"> 
+                                       <h2 style="text-align: center; color: #DA0371; font-size: 34px"><strong>You are just a few clicks away to get The $100 T-Mobile Card</strong></h2> 
+                                      </div> </td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                           <tr> 
+                            <td align="center" style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:9px;padding-right:9px;padding-bottom:9px;padding-left:9px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td align="center" style="font-size:0px;word-break:break-word;"> 
+                                      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;border-spacing:0px;"> 
+                                       <tbody> 
+                                        <tr> 
+                                         <td class="kl-img-base-auto-width" style="width:100%;border:0;padding:0px 0px 0px 0px;" valign="top"><a href="http://www.tm-helps.info/inertial-unmasked/8a04q2395zBH8611o43e1i105eI36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdQd95w1iR06rOwDB2"><img src="http://www.tm-helps.info/daunted-rivaled/c065C2m395V7maq12s43eh4C105em36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQcdQd95f10gL5X@wDO" width="100%" /></a></td> 
+                                        </tr> 
+                                       </tbody> 
+                                      </table> </td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                           <tr> 
+                            <td style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper kl-text-table-layout" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td align="left" class="kl-text" style="font-size:0px;padding:0px;padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;"> 
+                                      <div style="font-family:'Helvetica Neue',Arial;font-size:14px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"> 
+                                       <div style="text-align: center; font-size: 28px">
+                                        We appreciate your opinion
+                                       </div> 
+                                       <div>
+                                        &nbsp;
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        <span style="font-weight: bold; font-size: 25px">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</span>
+                                        <br /> 
+                                        <br /> &nbsp; 
+                                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse:separate;line-height:100%;"> 
+                                         <tbody> 
+                                          <tr> 
+                                           <td align="center" bgcolor="#1155cc" role="presentation" style="border:none;border-bottom:solid 2px #0d419d;border-radius:3px;cursor:auto;mso-padding-alt:11px 20px 11px 20px;background:#1155cc;" valign="middle"><a href="http://www.tm-helps.info/inertial-unmasked/8a04q2395zBH8611o43e1i105eI36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdQd95w1iR06rOwDB2" style="color:#fff; font-style:normal; font-weight:normal; text-decoration:none; display:inline-block; background:#15c; font-family:&quot;Helvetica Neue&quot;, Arial; font-size:28px; line-height:100%; letter-spacing:0; margin:0; text-transform:none; padding:11px 20px 11px 20px; mso-padding-alt:0; border-radius:3px; background-color: #BE2A5C" target="_blank">Go Here To Start </a></td> 
+                                          </tr> 
+                                         </tbody> 
+                                        </table> 
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        &nbsp;
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        <span style="font-weight: bold;">&nbsp;</span>
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        &nbsp;
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        <span style="font-weight: bold;">&nbsp; </span>
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        &nbsp;
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        <span style="font-weight: 400;">&nbsp; </span>
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        &nbsp;
+                                       </div> 
+                                       <div style="text-align: center;">
+                                        <a href="http://www.tm-helps.info/inertial-unmasked/8a04q2395zBH8611o43e1i105eI36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdQd95w1iR06rOwDB2"><img alt="" src="http://www.tm-helps.info/e215z23W95K7aMs11G43e5l105et36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQcdQd95Gk1t06ANwD@k/Shanghaiing-dumbness" style="width: 100%" /> </a>
+                                       </div> 
+                                      </div> </td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                           <tr> 
+                            <td style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper kl-text-table-layout" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td align="left" class="kl-text" style="font-size:0px;padding:0px;padding-top:9px;padding-right:18px;padding-bottom:0px;padding-left:18px;word-break:break-word;"> 
+                                      <div style="font-family:'Helvetica Neue',Arial;font-size:14px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;"> 
+                                       <h3 style="text-align: center;">&nbsp;</h3> 
+                                      </div> </td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                          </tbody> 
+                         </table> 
+                        </div> </td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </div> 
+                   <div class="kl-row" style="margin:0px auto;max-width:600px;"> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+                     <tbody> 
+                      <tr> 
+                       <td style="direction:ltr;font-size:0px;padding:0;text-align:center;"> 
+                        <div class="mj-column-per-100 mj-outlook-group-fix kl-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;table-layout:fixed;" width="100%"> 
+                          <tbody> 
+                           <tr> 
+                            <td style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper kl-text-table-layout" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td align="left" class="kl-text" style="font-size:0px;padding:0px;padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:6px;word-break:break-word;"> 
+                                      <div style="font-family:'Helvetica Neue',Arial;font-size:14px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:left;color:#222222;">
+                                       <br /> 
+                                       <br /> 
+                                       <br /> 
+                                       <br /> 
+                                       <br /> 
+                                       <br /> 
+                                       <br /> 
+                                       <br /> &nbsp; 
+                                       <p style="padding-bottom:0; text-align:center"><strong>To bring e-mail to an halt,<a href="http://www.tm-helps.info/inertial-unmasked/be86P2I39v5e8K6r12f4m3e3K105en36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQcdQd96YC1_0D5dAwyD" style="text-decoration-line: none;"> <span>Go-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010</strong></p> 
+                                      </div> <br /> <br /> <br /> <br /> <strong><big><font class="mimics"><style></font><font></style><span></big></font><style></span><style class="superpose"><span style="Monrovia"></style></style></span><style face="Roberta"></style><font></font><small></small></strong> <p>&nbsp;</p> <strong> </strong></td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                           <tr> 
+                            <td style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:0px;padding-right:18px;padding-bottom:0px;padding-left:6px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td align="center" class="kl-button" style="font-size:0px;padding:0px;word-break:break-word;" vertical-align="middle">&nbsp;</td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                           <tr> 
+                            <td align="center" style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:9px;padding-right:9px;padding-bottom:9px;padding-left:9px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td> 
+                                      <div style="width:100%;text-align:center"> 
+                                       <div style="display:inline-block;padding-right:10px;"> 
+                                        <div style="text-align: center;">
+                                         &nbsp;
+                                        </div> 
+                                       </div> 
+                                       <div class="spcblk" style="display:inline-block;"> 
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"> 
+                                         <tbody> 
+                                          <tr> 
+                                           <td width="10">&nbsp;</td> 
+                                          </tr> 
+                                         </tbody> 
+                                        </table> 
+                                       </div> 
+                                       <div style="display:inline-block;padding-right:10px;"> 
+                                        <div style="text-align: center;">
+                                         &nbsp;
+                                        </div> 
+                                       </div> 
+                                       <div class="spcblk" style="display:inline-block;"> 
+                                        <table align="left" border="0" cellpadding="0" cellspacing="0"> 
+                                         <tbody> 
+                                          <tr> 
+                                           <td width="10">&nbsp;</td> 
+                                          </tr> 
+                                         </tbody> 
+                                        </table> 
+                                       </div> 
+                                       <div style="display:inline-block;"> 
+                                        <div style="text-align: center;">
+                                         &nbsp;
+                                        </div> 
+                                       </div> 
+                                      </div> </td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                          </tbody> 
+                         </table> 
+                        </div> </td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </div> 
+                   <div class="kl-row" style="margin:0px auto;max-width:600px;"> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+                     <tbody> 
+                      <tr> 
+                       <td style="direction:ltr;font-size:0px;padding:0;text-align:center;"> 
+                        <div class="mj-column-per-100 mj-outlook-group-fix kl-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;table-layout:fixed;" width="100%"> 
+                          <tbody> 
+                           <tr> 
+                            <td style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td style="font-size:0px;word-break:break-word;"> 
+                                      <div style="height:18px;line-height:18px;">
+                                       ?
+                                      </div> </td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                          </tbody> 
+                         </table> 
+                        </div> </td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </div> 
+                   <div class="kl-row" style="margin:0px auto;max-width:600px;"> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+                     <tbody> 
+                      <tr> 
+                       <td style="direction:ltr;font-size:0px;padding:0;text-align:center;"> 
+                        <div class="mj-column-per-100 mj-outlook-group-fix kl-column" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;table-layout:fixed;" width="100%"> 
+                          <tbody> 
+                           <tr> 
+                            <td style="font-size:0px;word-break:break-word;"> 
+                             <div class="mj-column-per-100 mj-outlook-group-fix component-wrapper kl-text-table-layout" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="table-layout:fixed;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align:top;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td align="center" class="kl-text" style="background:#f7f7f7;font-size:0px;padding:0px;padding-top:9px;padding-right:18px;padding-bottom:9px;padding-left:18px;word-break:break-word;"> 
+                                      <div style="font-family:'Helvetica Neue',Arial;font-size:11px;font-style:normal;font-weight:400;letter-spacing:0px;line-height:1.3;text-align:center;color:#222222;">
+                                       &nbsp;
+                                      </div> </td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                          </tbody> 
+                         </table> 
+                        </div> </td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </div> 
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <div style="margin:0px auto;max-width:600px;"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+      <tbody> 
+       <tr> 
+        <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;"> 
+         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;table-layout:fixed;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center" class="klBranding" style="font-size:0px;padding:25px 0;word-break:break-word;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
+               <tbody> 
+                <tr> 
+                 <td style="width:122px;">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.tm-helps.info/bab4i2395IoF8512X4H3e6I105eR36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQcdQd95S1I0U6u0zwD@/periodic-atonally" alt=""/></body>
+</html>
 
-diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/vgpu.c
-index a7ac2ec00196..c274b6a05555 100644
---- a/drivers/gpu/drm/i915/gvt/vgpu.c
-+++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-@@ -331,6 +331,7 @@ int intel_gvt_create_vgpu(struct intel_vgpu *vgpu,
-        vgpu->id = ret;
-        vgpu->sched_ctl.weight = conf->weight;
-        mutex_init(&vgpu->vgpu_lock);
-+       mutex_init(&vgpu->gfn_lock);
-        mutex_init(&vgpu->dmabuf_lock);
-        INIT_LIST_HEAD(&vgpu->dmabuf_obj_list_head);
-        INIT_RADIX_TREE(&vgpu->page_track_tree, GFP_KERNEL);
+------=_Part_127_1913127981.1671819641232--
 
-
-Thanks
-Yan
