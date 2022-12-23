@@ -2,60 +2,60 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDD8A654A0E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Dec 2022 01:58:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 32A146549EF
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Dec 2022 01:58:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 086B410E601;
-	Fri, 23 Dec 2022 00:57:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CBDD910E61B;
+	Fri, 23 Dec 2022 00:58:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
- [IPv6:2607:f8b0:4864:20::b49])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5C92410E5F1
+Received: from mail-pl1-x64a.google.com (mail-pl1-x64a.google.com
+ [IPv6:2607:f8b0:4864:20::64a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CABC810E5F1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Dec 2022 00:57:56 +0000 (UTC)
-Received: by mail-yb1-xb49.google.com with SMTP id
- y6-20020a25b9c6000000b006c1c6161716so3624859ybj.8
+ Fri, 23 Dec 2022 00:57:57 +0000 (UTC)
+Received: by mail-pl1-x64a.google.com with SMTP id
+ u6-20020a170903124600b00188cd4769bcso2410481plh.0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 22 Dec 2022 16:57:56 -0800 (PST)
+ Thu, 22 Dec 2022 16:57:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:from:to:cc:subject:date:message-id:reply-to;
- bh=bmfAlTw7KPee5BT5ARosoNOxp58PoziaZSGblHMcfn4=;
- b=amS6AkiqMBz2E56adUfZiZ0qlzFza/fJe6yjksEjN98poxV1G9yKoHPq4XyIgUDl6W
- b0j6KpXbhKHQIta4bAmN85o52XADQ8scOEOZSLR5KbrWNt/rUmlxexxrVEftn9sSpavR
- D/DVLsAt87QaZI94sXNT6csbY/FBT+eVhyy3di1Vx8TMTAiJc1tP+z0E7pDkuhB2ozgN
- PpCTfzSt+VrBnQFSog2A7devVxciaxdcDmjgsHqiNCufShQRC4ex5XadOqvSOrUJCwA0
- +AJG0WHNAN/z7DeX5h4b84L91y+VXfruFFfgNxuCH7pE6WWTh8H8aE2+WdP6oyi1ga2f
- FmZw==
+ bh=8k64KFPY2FFl58dlOKiSt/6ffoasCJxRfQQP/flk2s8=;
+ b=ADGdSRhE19CpKn3Mx8Gw1o4OLrTbUVUIoTOjSZyGWqJNQL1SN7v8qQsh4q5cXqj6ZL
+ hD6fxxwCTl4y/NNCwu4uuodODhWf/UAdCQYUzyxbDjQPykN+rUTv5icpILVoRgxBnOw/
+ yeOcWPtNLNwR3Y/uk6j76NAwfZg7MRzWvFz7ko8kkCzO6CB+8LvhG1Xfv7qgN06BwTPR
+ tE+2BbMHDSCHA/Y16iC2bZMsqqlYWqoBvXSOH7eVW1O1/dc8s+Fc+brkRiaAncEhUjUu
+ kRfRqXhHbJkZXcp9gW5MeZZhEQ+HG6DbvBb/0kC1i/PgW4/d5vbzVWUhK143REl6RJgm
+ KT7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=bmfAlTw7KPee5BT5ARosoNOxp58PoziaZSGblHMcfn4=;
- b=5iCuTb2cujvsIUACUaDBqPce+4bdTIrNNvKxMgv21svrG1OS8w+UBdN1af9cBFCqUg
- iNP6HSWP1A8qcuZNV2pB4oZ2OOamuC3hwBWp60uwcg7Xmf2v4MQJoQ/jEbWWPa1t9ZsW
- ymdMz0gR5LQGvjSs4MpZYpK7lLe4a/UVExANNPnrF6ZLkYmuV6cfR26eKXbAH3QQqUDs
- IFPAySj2OxKlYjd17vO0TeDj6OusSBCpJlVpNua0OwcpXqjj7oyK+fONwK8sQNcIgJMO
- NuH4SO0nj/A/I++xuw3nMzmYOdKGMMOAGW3tzhYDVIwK/snMwWrOjKJjUwbbE4jIC0Si
- J7BQ==
-X-Gm-Message-State: AFqh2krG1cJ1rw47rWqsPSwQicCjUnGsb3ge50uhRfWEmNikwxpd7Mz6
- 8DD+ahQwAwcwiAu5GV12l5pKm0GBl5M=
-X-Google-Smtp-Source: AMrXdXuelVqYRvBCw91exHE5VvR3XEOzgowyFkxm9PKa7uAoxnrWKeIzL7byPsTWp4O1/ngYmKJObusY+/c=
+ bh=8k64KFPY2FFl58dlOKiSt/6ffoasCJxRfQQP/flk2s8=;
+ b=OBp2bpN9WnfqGoVGL+xNrBIYZm54jrgWi6IiFoZaaam9OoYZudxMZC7OaloQ9TkBFf
+ +Z8KSclGeGZ5qAmOAUs+brb8Z2/JgdODthpaUI6j3A84MnRoInx28y4bF0KJeQ5NwDAk
+ Ffuclle0RvU2cOGcxpd1s3dpbohKjeDlSVMoadL/YnOOeYtq82i5nfyLuC9R7kmi8WaH
+ X07YZYMxXwx3j8FEzTdl4eHnizscCk/pW0TL1lifNcUQO/rK6z4B7ARm7j5yKY7zQ466
+ yJzNEw1wJDg8LgL+Py5jByNfudEwFQd3NxtdlxA4FGA7aEG6hOL1Urc5nnAJ34FkKzpB
+ rkYw==
+X-Gm-Message-State: AFqh2kp8PuzvoZq58JDOtekuR2T0f4xcAZb+kwfxy76G1TbIZCNIeNcw
+ 378Kk4CeUOA35wpelgapetoRFsvHgLY=
+X-Google-Smtp-Source: AMrXdXtZzqXSfhAfIWlCK+WT2T5JZRV5LJOH9tPTZxKT6bo1HSjiqq3ll6wCTHVFE26Ee59g4OXn+ZR2sNc=
 X-Received: from zagreus.c.googlers.com
  ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a05:690c:582:b0:466:a29c:3cf7 with SMTP id
- bo2-20020a05690c058200b00466a29c3cf7mr450161ywb.270.1671757075486; Thu, 22
- Dec 2022 16:57:55 -0800 (PST)
-Date: Fri, 23 Dec 2022 00:57:18 +0000
+ (user=seanjc job=sendgmr) by 2002:a17:902:7794:b0:189:6936:7031 with SMTP id
+ o20-20020a170902779400b0018969367031mr457317pll.31.1671757077092; Thu, 22 Dec
+ 2022 16:57:57 -0800 (PST)
+Date: Fri, 23 Dec 2022 00:57:19 +0000
 In-Reply-To: <20221223005739.1295925-1-seanjc@google.com>
 Mime-Version: 1.0
 References: <20221223005739.1295925-1-seanjc@google.com>
 X-Mailer: git-send-email 2.39.0.314.g84b9a713c41-goog
-Message-ID: <20221223005739.1295925-7-seanjc@google.com>
-Subject: [PATCH 06/27] drm/i915/gvt: Don't rely on KVM's gfn_to_pfn() to query
- possible 2M GTT
+Message-ID: <20221223005739.1295925-8-seanjc@google.com>
+Subject: [PATCH 07/27] drm/i915/gvt: Use an "unsigned long" to iterate over
+ memslot gfns
 From: Sean Christopherson <seanjc@google.com>
 To: Sean Christopherson <seanjc@google.com>,
  Paolo Bonzini <pbonzini@redhat.com>, 
@@ -80,105 +80,29 @@ Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Now that gvt_pin_guest_page() explicitly verifies the pinned PFN is a
-transparent hugepage page, don't use KVM's gfn_to_pfn() to pre-check if a
-2M GTT entry is possible and instead just try to map the GFN with a 2MB
-entry.  Using KVM to query pfn that is ultimately managed through VFIO is
-odd, and KVM's gfn_to_pfn() is not intended for non-KVM consumption; it's
-exported only because of KVM vendor modules (x86 and PPC).
+Use an "unsigned long" instead of an "int" when iterating over the gfns
+in a memslot.  The number of pages in the memslot is tracked as an
+"unsigned long", e.g. KVMGT could theoretically break if a KVM memslot
+larger than 16TiB were deleted (2^32 * 4KiB).
 
 Signed-off-by: Sean Christopherson <seanjc@google.com>
 ---
- drivers/gpu/drm/i915/gvt/gtt.c | 33 +++++++++++----------------------
- 1 file changed, 11 insertions(+), 22 deletions(-)
+ drivers/gpu/drm/i915/gvt/kvmgt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index 9936f8bd19af..59ba6639e622 100644
---- a/drivers/gpu/drm/i915/gvt/gtt.c
-+++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -1167,21 +1167,19 @@ static inline void ppgtt_generate_shadow_entry(struct intel_gvt_gtt_entry *se,
- }
- 
- /*
-- * Check if can do 2M page
-+ * Try to map a 2M gtt entry.
-  * @vgpu: target vgpu
-  * @entry: target pfn's gtt entry
-  *
-- * Return 1 if 2MB huge gtt shadowing is possible, 0 if miscondition,
-- * negative if found err.
-+ * Return 1 if 2MB huge gtt shadow was creation, 0 if the entry needs to be
-+ * split, negative if found err.
-  */
--static int is_2MB_gtt_possible(struct intel_vgpu *vgpu,
--	struct intel_gvt_gtt_entry *entry)
-+static int try_map_2MB_gtt_entry(struct intel_vgpu *vgpu,
-+	struct intel_gvt_gtt_entry *entry, dma_addr_t *dma_addr)
+diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+index 6f358b4fe406..5d0e029d60d7 100644
+--- a/drivers/gpu/drm/i915/gvt/kvmgt.c
++++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+@@ -1635,7 +1635,7 @@ static void kvmgt_page_track_flush_slot(struct kvm *kvm,
+ 		struct kvm_memory_slot *slot,
+ 		struct kvm_page_track_notifier_node *node)
  {
- 	const struct intel_gvt_gtt_pte_ops *ops = vgpu->gvt->gtt.pte_ops;
- 	unsigned long gfn = ops->get_pfn(entry);
--	kvm_pfn_t pfn;
- 	int max_level;
--	int ret;
- 
- 	if (!HAS_PAGE_SIZES(vgpu->gvt->gt->i915, I915_GTT_PAGE_SIZE_2M))
- 		return 0;
-@@ -1194,16 +1192,7 @@ static int is_2MB_gtt_possible(struct intel_vgpu *vgpu,
- 	if (max_level < PG_LEVEL_2M)
- 		return 0;
- 
--	pfn = gfn_to_pfn(vgpu->vfio_device.kvm, gfn);
--	if (is_error_noslot_pfn(pfn))
--		return -EINVAL;
--
--	if (!pfn_valid(pfn))
--		return -EINVAL;
--
--	ret = PageTransHuge(pfn_to_page(pfn));
--	kvm_release_pfn_clean(pfn);
--	return ret;
-+	return intel_gvt_dma_map_guest_page(vgpu, gfn, I915_GTT_PAGE_SIZE_2M, dma_addr);
- }
- 
- static int split_2MB_gtt_entry(struct intel_vgpu *vgpu,
-@@ -1290,7 +1279,7 @@ static int ppgtt_populate_shadow_entry(struct intel_vgpu *vgpu,
- {
- 	const struct intel_gvt_gtt_pte_ops *pte_ops = vgpu->gvt->gtt.pte_ops;
- 	struct intel_gvt_gtt_entry se = *ge;
--	unsigned long gfn, page_size = PAGE_SIZE;
-+	unsigned long gfn;
- 	dma_addr_t dma_addr;
- 	int ret;
- 
-@@ -1313,13 +1302,12 @@ static int ppgtt_populate_shadow_entry(struct intel_vgpu *vgpu,
- 		return split_64KB_gtt_entry(vgpu, spt, index, &se);
- 	case GTT_TYPE_PPGTT_PTE_2M_ENTRY:
- 		gvt_vdbg_mm("shadow 2M gtt entry\n");
--		ret = is_2MB_gtt_possible(vgpu, ge);
-+		ret = try_map_2MB_gtt_entry(vgpu, ge, &dma_addr);
- 		if (ret == 0)
- 			return split_2MB_gtt_entry(vgpu, spt, index, &se);
- 		else if (ret < 0)
- 			return ret;
--		page_size = I915_GTT_PAGE_SIZE_2M;
--		break;
-+		goto set_shadow_entry;
- 	case GTT_TYPE_PPGTT_PTE_1G_ENTRY:
- 		gvt_vgpu_err("GVT doesn't support 1GB entry\n");
- 		return -EINVAL;
-@@ -1328,10 +1316,11 @@ static int ppgtt_populate_shadow_entry(struct intel_vgpu *vgpu,
- 	}
- 
- 	/* direct shadow */
--	ret = intel_gvt_dma_map_guest_page(vgpu, gfn, page_size, &dma_addr);
-+	ret = intel_gvt_dma_map_guest_page(vgpu, gfn, PAGE_SIZE, &dma_addr);
- 	if (ret)
- 		return -ENXIO;
- 
-+set_shadow_entry:
- 	pte_ops->set_pfn(&se, dma_addr >> PAGE_SHIFT);
- 	ppgtt_set_shadow_entry(spt, &se, index);
- 	return 0;
+-	int i;
++	unsigned long i;
+ 	gfn_t gfn;
+ 	struct intel_vgpu *info =
+ 		container_of(node, struct intel_vgpu, track_node);
 -- 
 2.39.0.314.g84b9a713c41-goog
 
