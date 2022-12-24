@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D6E865540E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Dec 2022 20:53:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ABE50655ADE
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Dec 2022 18:49:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E2F5D10E241;
-	Fri, 23 Dec 2022 19:53:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C8E3B10E201;
+	Sat, 24 Dec 2022 17:41:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Fri, 23 Dec 2022 19:53:39 UTC
-Received: from mail.my-rewrdse.info (unknown [104.223.183.248])
- by gabe.freedesktop.org (Postfix) with ESMTP id C4FE310E241
+X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
+ Sat, 24 Dec 2022 17:41:10 UTC
+Received: from mail.di-krgrshop.info (unknown [104.223.183.251])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5039B10E201
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Dec 2022 19:53:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=my-rewrdse.info; 
+ Sat, 24 Dec 2022 17:41:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=di-krgrshop.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=verizon@my-rewrdse.info; bh=B+vQtnrOtQC3FSREPDEvis+prZI=;
- b=oNs1ZeXEz+wLq6icG2WtgwLMsTr7vZwlSkoPbNOyJUSQ1WTMMXypSn4CZW7ronG2fjDXvW/qjdqd
- dhgFjNj5EaZgnAA3zyx59lAd9+TC6uJDtPN8AgVPaq5yw/FV4hm8l83YLOqOUK/AY0Qbnagrr1Rt
- z5LyKU/YJwlkfFgcC7A=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=my-rewrdse.info;
- b=SpEvUg6CMGrCV3Gfj1F1kNOoFqI0qLmtwoT9y6XCwFmF97eFodYtdJ2oD33j9jQNALqDMmdslryV
- NtHNpU11k5SBG399Wdu1W2Cr4WUuQ5MQQ25XqygwjJCLdZ7OJmFB6QypxChJ0u1BhafLqFHsI+WD
- 1QChJjJx6znheBKmwMY=;
-Received: by mail.my-rewrdse.info id hkodu80001gn for
+ i=now_on_kroger@di-krgrshop.info; 
+ bh=0G1DafELDSU+y+XZTN3XIGSaU7U=;
+ b=BwfTkZE2xVTO3cWqEUOSLST/57/rmjKLHPvTB2TxONlrtUaiY2VkpeWLsoHfwEZYPLoVv6EToqHF
+ /GPCBvSDBxx8xM78nsm3mtcKi/IZPmH8mc4a9jcWRmO8Aco/D2DO+cBnYa8IFjkWK/XiPzEOBNxP
+ Ey7b/pNXPyzmf7OfAqg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=di-krgrshop.info;
+ b=A/SsUXHa/2fUBB0vurW0iwq8KOSMfkfEPGiyChzzvdrrZsdi6he7QeDqJ7Ar+ncRJ2pepOS2TEC5
+ w9ZpSxOGjs+48klTjMYUBm63Nz9/0oDgVXgQJhy+MZSFkHf1XBSsBkxytfxZdcMvw9knEVWM32n/
+ BL/v0hA1nG13fuEWQew=;
+Received: by mail.di-krgrshop.info id hkssrc0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 23 Dec 2022 16:08:07 -0500 (envelope-from
- <verizon-intel+2Dgvt+2Ddev=lists.freedesktop.org@my-rewrdse.info>)
-Date: Fri, 23 Dec 2022 16:08:07 -0500
-From: VERIZON <verizon@my-rewrdse.info>
+ Sat, 24 Dec 2022 12:27:07 -0500 (envelope-from
+ <now_on_kroger-intel+2Dgvt+2Ddev=lists.freedesktop.org@di-krgrshop.info>)
+Date: Sat, 24 Dec 2022 12:27:07 -0500
+From: "Now On Kroger" <now_on_kroger@di-krgrshop.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every visit a new reward that could get you anything on us
+Subject: We are here for your next shopping spree - Gifts on us!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_466_1659368680.1671824377651"
-Message-ID: <0.0.0.33.1D91712A8006CF0.666FF1@mail.my-rewrdse.info>
+ boundary="----=_Part_40_2046062456.1671902817323"
+Message-ID: <0.0.0.4.1D917BCF2CB740A.1BF2F@mail.di-krgrshop.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,99 +53,576 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_466_1659368680.1671824377651
+------=_Part_40_2046062456.1671902817323
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html dir="ltr" lang="en" style="margin: 0px; min-width: 100%; padding: 0px; width: 100%;" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
- <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="WordFly 3.1.0" name="generator" />
-  <!-- Derived from Starter A -->
-  <!-- Welcome WordFly user! This is your HTML, we're just guests here. 		Please don't modify attributes and styles with 'wf' in them, those are for our editor. -->
-  <!-- Tell Outlook to use best available rendering engine. --> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-  <!-- For responsive email layout --> 
-  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" name="viewport" /> 
-  <title>i made you look</title> 
- </head> 
- <body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1058.0" style="margin: 0px; min-width: 100%; padding: 0px; width: 100%; background-color: rgb(240, 240, 240); color: rgb(0, 0, 0); font-family: Arial, Verdana, Helvetica, sans-serif;"> 
-  <div data-wfeviltwin="align: center; width: 600px" id="email-container" style="background-color: rgb(255, 255, 255); margin-left: auto; margin-right: auto; max-width: 600px; padding: 0px 0px 15px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-   <div class="desktop-hide mobile-hide" id="email-preview" style="display: none; float: left; max-height: 0px; max-width: 0px; text-indent: 999999px; visibility: hidden; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);">
-    &nbsp;
-   </div> 
-   <div class="text-block block" id="text-block-1663946053637" style="overflow: hidden; zoom: 1; margin-left: 20px; max-width: none; margin-right: 20px; background-color: rgba(0, 0, 0, 0); margin-bottom: 10px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-    <div style="font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0); text-align: center"> 
-     <table width="100%%"> 
-      <tbody> 
-       <tr> 
-        <td align="center"><strong style="color: #000; font-size: 52px"><span style="color: #E60000">V</span>erizon</strong></td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <h1 align="center" style="text-align: center; margin: 10px 0px; padding: 0px; font-size: 36.5px; font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-weight: 700; letter-spacing: -1px;"><b>You are just a few clicks away to get The $100 <strong style="color: #E60000">VERIZON</strong> Card</b></h1> 
-    </div> 
-   </div> 
-   <div class="image-block block" id="image-block-1569513844340" style="clear: both; overflow: hidden; zoom: 1; line-height: 0px; margin-bottom: 20px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);">
-    <a href="http://www.my-rewrdse.info/9536O2m3s95MA86H12S43kf8N1060o36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQgdQdR7r10DTVR5dywDP/notifies-moneyed" style="color: rgb(0, 0, 0);line-height: 0px;text-decoration: underline;font-family: Arial, Verdana, Helvetica, sans-serif;text-decoration-color: #E22237 !important;" target="_blank"><img alt="Carnegie Hall" class="full-width" src="http://www.my-rewrdse.info/5394z2395OSR7a11H43faI1060l36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQgdQdR7Mq1g0qw5qzwzD/Carlsbads-ultimate" style="border: 0px none rgb(0, 0, 0); outline: rgb(0, 0, 0) none 0px; text-decoration: none; width: 100%; font-size: 18px; margin: 0px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);" /></a>
-   </div> 
-   <div class="text-block block" id="text-block-1663946053637" style="overflow: hidden; zoom: 1; margin-left: 20px; max-width: none; margin-right: 20px; background-color: rgba(0, 0, 0, 0); margin-bottom: 10px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-    <div style="font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0); text-align: center"> 
-     <h1 align="center" style="text-align: center; margin: 10px 0px; padding: 0px; font-size: 36.5px; font-family: Arial, sans-serif; color: rgb(0, 0, 0); font-weight: 700; letter-spacing: -1px;"><b>We appreciate your opinion</b></h1> 
-    </div> 
-    <p style="text-align: center; font-size: 24px">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> &nbsp; 
-    <center> 
-     <div style="border-radius: 6px; background-color:#E60000; padding: 12px 60px; display: inline-block; margin: auto; color: #fff; font-size: 24px">
-      <a href="http://www.my-rewrdse.info/9536O2m3s95MA86H12S43kf8N1060o36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQgdQdR7r10DTVR5dywDP/notifies-moneyed" style="color: #fff; font-size: 32px"><strong>Go here To Start</strong></a>
-     </div> 
-    </center> 
-   </div> 
-   <div class="container-block block" id="container-block-1663946029683" style="overflow: hidden; zoom: 1; margin-bottom: 15px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-    <div class="text-block block" id="text-block-1663697493404" style="overflow: hidden; zoom: 1; margin-left: 20px; max-width: 600px; margin-right: 20px; margin-bottom: 0px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-     <div style="font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-      <p style="text-align: left; margin: 0px 0px 16px; font-size: 16px; line-height: 24px; color: rgb(0, 0, 0); font-family: Arial, sans-serif;">&nbsp;</p> 
-      <p class="fine-print" style="text-align: left; margin: 0px 0px 10px; font-size: 10px; color: rgb(86, 86, 86); line-height: 24px; font-family: Arial, sans-serif;">&nbsp;</p> 
-      <p style="text-align: left; margin: 0px 0px 16px; font-size: 16px; line-height: 24px; color: rgb(0, 0, 0); font-family: Arial, sans-serif;">&nbsp;</p> 
-      <p style="text-align: left; margin: 0px 0px 16px; font-size: 16px; line-height: 24px; color: rgb(0, 0, 0); font-family: Arial, sans-serif;"><a href="http://www.my-rewrdse.info/9536O2m3s95MA86H12S43kf8N1060o36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQgdQdR7r10DTVR5dywDP/notifies-moneyed"><img alt="" src="http://www.my-rewrdse.info/orchestras-tantrum/6846JQu2395dL7aD12H4r3fbw1060m36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQgdQdR6rRz10w5EJlwD" width="100%" /></a></p> 
-      <p style="text-align: left; margin: 0px 0px 16px; font-size: 16px; line-height: 24px; color: rgb(0, 0, 0); font-family: Arial, sans-serif;">&nbsp;</p> 
-     </div> 
-    </div> 
-    <div class="text-block block" id="text-block-1622571498660" style="overflow: hidden; zoom: 1; margin-left: 20px; max-width: none; margin-right: 20px; background-color: rgba(0, 0, 0, 0); margin-bottom: 10px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-     <div style="font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-      <h2 style="text-align: left; margin: 0px; padding: 0px; font-size: 25px; font-family: Arial, Verdana, sans-serif; color: rgb(0, 0, 0); font-weight: 700;">&nbsp;</h2> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="text-block block" style="overflow: hidden; zoom: 1; margin-left: auto; max-width: 570px; margin-right: auto; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-    <div style="font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-     <h5 style="margin: 0px; padding: 0px; text-align: center; color: rgb(86, 86, 86); font-size: 16px; font-weight: 400; font-family: Arial, Verdana, sans-serif;">&nbsp;</h5> 
-    </div> 
-   </div> 
-   <div class="social-links-block block" id="social-links-block-1568821130588" style="overflow: hidden; zoom: 1; margin-top: 30px; margin-left: 20px; margin-right: 20px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-    <div class="social-links" style="padding-top: 20px; text-align: center; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-     <p style="text-align: left; margin: 0px 0px 16px; font-size: 16px; line-height: 24px; color: rgb(0, 0, 0); font-family: Arial, Verdana, Helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> 
-     <div style="padding-bottom:0; text-align:center; font-size: 17px; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; color: #000; font-weight: normal">
-      <strong>To drop communications,<a href="http://www.my-rewrdse.info/yellowed-allocated/5ee6c2V3l95Xx86s13I43f9kWR1060V36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQgdQdR7d1Akg0s6eJwyTD" style="text-decoration-line: none;"> <span>Go.Here.Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010</strong>
-     </div> 
-     <br /> 
-     <br /> 
-     <br /> 
-     <br /> 
-     <strong><span><span title="durabilities"></span></span><font title="pivots"></font><style><style lang="Antilles"></style></style><style></style><span lang="based"></span><span></span><font></font> </strong>
-    </div> 
-   </div> 
-   <div class="text-block block" id="text-block-1569514220041" style="overflow: hidden; zoom: 1; margin-left: 20px; max-width: 600px; margin-right: 20px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-    <div style="font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);"> 
-     <p class="fine-print" style="text-align: left; margin: 0px 0px 10px; font-size: 10px; color: rgb(86, 86, 86); line-height: 14px; font-family: Arial, Verdana, Helvetica, sans-serif;"><strong>&nbsp;&nbsp;&nbsp;</strong></p> 
-     <p class="fine-print" style="text-align: left; margin: 0px 0px 10px; font-size: 10px; color: rgb(86, 86, 86); line-height: 14px; font-family: Arial, Verdana, Helvetica, sans-serif;">&nbsp;</p> 
-     <p class="fine-print" style="text-align: left; margin: 0px 0px 10px; font-size: 10px; color: rgb(86, 86, 86); line-height: 14px; font-family: Arial, Verdana, Helvetica, sans-serif;">&nbsp;</p> 
-     <p class="fine-print" style="text-align: left; margin: 0px 0px 10px; font-size: 10px; color: rgb(86, 86, 86); line-height: 14px; font-family: Arial, Verdana, Helvetica, sans-serif;">&nbsp;</p> 
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.my-rewrdse.info/Carlsbads-ultimate/8dc5V2U395KT8R513j4B3fcTQ1060n36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQgdQdR6pg1S0z6h@PwDW" alt=""/></body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+ <head>=20
+  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1" name=3D"viewpor=
+t" />=20
+  <title></title>=20
+  <style type=3D"text/css">@media only screen and (max-width:480px){body,ta=
+ble,td,p,a,li,blockquote{-webkit-text-size-adjust:none !important}body{widt=
+h:100% !important;min-width:100% !important}#bodyCell{padding:10px !importa=
+nt}table.kmMobileHide{display:none !important}table.kmDesktopOnly,td.kmDesk=
+topOnly,th.kmDesktopOnly,tr.kmDesktopOnly,td.kmDesktopWrapHeaderMobileNone{=
+display:none !important}table.kmMobileOnly{display:table !important}tr.kmMo=
+bileOnly{display:table-row !important}td.kmMobileOnly,td.kmDesktopWrapHeade=
+r,th.kmMobileOnly{display:table-cell !important}tr.kmMobileNoAlign,table.km=
+MobileNoAlign{float:none !important;text-align:initial !important;vertical-=
+align:middle !important;table-layout:fixed !important}tr.kmMobileCenterAlig=
+n{float:none !important;text-align:center !important;vertical-align:middle =
+!important;table-layout:fixed !important}td.kmButtonCollection{padding-left=
+:9px !important;padding-right:9px !important;padding-top:9px !important;pad=
+ding-bottom:9px !important}td.kmMobileHeaderStackDesktopNone,img.kmMobileHe=
+aderStackDesktopNone,td.kmMobileHeaderStack{display:block !important;margin=
+-left:auto !important;margin-right:auto !important;padding-bottom:9px !impo=
+rtant;padding-right:0 !important;padding-left:0 !important}td.kmMobileWrapH=
+eader,td.kmMobileWrapHeaderDesktopNone{display:inline-block !important}td.k=
+mMobileHeaderSpacing{padding-right:10px !important}td.kmMobileHeaderNoSpaci=
+ng{padding-right:0 !important}table.kmDesktopAutoWidth{width:inherit !impor=
+tant}table.kmMobileAutoWidth{width:100% !important}table.kmTextContentConta=
+iner{width:100% !important}table.kmBoxedTextContentContainer{width:100% !im=
+portant}td.kmImageContent{padding-left:0 !important;padding-right:0 !import=
+ant}img.kmImage{width:100% !important}td.kmMobileStretch{padding-left:0 !im=
+portant;padding-right:0 !important}table.kmSplitContentLeftContentContainer=
+,table.kmSplitContentRightContentContainer,table.kmColumnContainer,td.kmVer=
+ticalButtonBarContentOuter table.kmButtonBarContent,td.kmVerticalButtonColl=
+ectionContentOuter table.kmButtonCollectionContent,table.kmVerticalButton,t=
+able.kmVerticalButtonContent{width:100% !important}td.kmButtonCollectionInn=
+er{padding-left:9px !important;padding-right:9px !important;padding-top:9px=
+ !important;padding-bottom:9px !important}td.kmVerticalButtonIconContent,td=
+kmVerticalButtonTextContent,td.kmVerticalButtonContentOuter{padding-left:0=
+ !important;padding-right:0 !important;padding-bottom:9px !important}table.=
+kmSplitContentLeftContentContainer td.kmTextContent,table.kmSplitContentRig=
+htContentContainer td.kmTextContent,table.kmColumnContainer td.kmTextConten=
+t,table.kmSplitContentLeftContentContainer td.kmImageContent,table.kmSplitC=
+ontentRightContentContainer td.kmImageContent{padding-top:9px !important}td=
+rowContainer.kmFloatLeft,td.rowContainer.kmFloatLeft,td.rowContainer.kmFlo=
+atLeft.firstColumn,td.rowContainer.kmFloatLeft.firstColumn,td.rowContainer.=
+kmFloatLeft.lastColumn,td.rowContainer.kmFloatLeft.lastColumn{float:left;cl=
+ear:both;width:100% !important}table.templateContainer,table.templateContai=
+ner.brandingContainer,div.templateContainer,div.templateContainer.brandingC=
+ontainer,table.templateRow{max-width:600px !important;width:100% !important=
+}h1{font-size:40px !important;line-height:1.1 !important}h2{font-size:32px =
+!important;line-height:1.1 !important}h3{font-size:24px !important;line-hei=
+ght:1.1 !important}h4{font-size:18px !important;line-height:1.1 !important}=
+td.kmTextContent{font-size:14px !important;line-height:1.3 !important}td.km=
+TextBlockInner td.kmTextContent{padding-right:18px !important;padding-left:=
+18px !important}table.kmTableBlock.kmTableMobile td.kmTableBlockInner{paddi=
+ng-left:9px !important;padding-right:9px !important}table.kmTableBlock.kmTa=
+bleMobile td.kmTableBlockInner .kmTextContent{font-size:14px !important;lin=
+e-height:1.3 !important;padding-left:4px !important;padding-right:4px !impo=
+rtant}}
+=09</style>=20
+  <style type=3D"text/css">span.yshortcuts:hover {background-color:none !im=
+portant;border:none !important}
+span.yshortcuts:active {background-color:none !important;border:none !impor=
+tant}
+span.yshortcuts:focus {background-color:none !important;border:none !import=
+ant}
+rowContainer .kmTextContent a:link {color:#15C;font-weight:normal;text-dec=
+oration:underline}
+rowContainer .kmTextContent a:visited {color:#15C;font-weight:normal;text-=
+decoration:underline}
+kmTable .kmTableRow:last-child > td {border-bottom:none !important}
+=09</style>=20
+ </head>=20
+ <body style=3D"margin:0; padding:0; background-color:#FFF">=20
+  <center>=20
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ data-upload-file-url=3D"/ajax/email-editor/file/upload" data-upload-files-=
+url=3D"/ajax/email-editor/files/upload" id=3D"bodyTable" style=3D"border-co=
+llapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: a=
+uto; margin: 0; padding: 0; background-color: #fff; height: 100%; width: 10=
+0%;" width=3D"100%">=20
+    <tbody>=20
+     <tr>=20
+      <td align=3D"center" id=3D"bodyCell" style=3D"border-collapse: collap=
+se; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: auto; margin: 0=
+; border-top: 0; height: 100%; width: 100%; padding: 50px 20px 20px 20px;" =
+valign=3D"top">=20
+       <div class=3D"templateContainer" style=3D"background-color: #fff; bo=
+rder: 0 none #aaa; border-radius: 0; display: table; width: 600px;">=20
+        <div class=3D"templateContainerInner" style=3D"padding: 0;">=20
+         <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"b=
+order-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-l=
+ayout: fixed;" width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td align=3D"center" style=3D"border-collapse: collapse; mso-ta=
+ble-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" valign=3D"top">=
+=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"templateRow" style=3D"border-collapse: collapse; mso-table-lspace: 0; m=
+so-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td class=3D"rowContainer kmFloatLeft" style=3D"border-coll=
+apse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fix=
+ed;" valign=3D"top">=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kmImageBlock" style=3D"border-collapse: collapse; mso-table-lspace: =
+0; mso-table-rspace: 0; table-layout: fixed; min-width: 100%;" width=3D"100=
+%">=20
+                  <tbody class=3D"kmImageBlockOuter">=20
+                   <tr>=20
+                    <td class=3D"kmImageBlockInner" style=3D"border-collaps=
+e: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;=
+ padding: 0; padding-right: 9; padding-left: 9;" valign=3D"top">=20
+                     <table align=3D"left" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" class=3D"kmImageContentContainer" style=3D"border-collapse=
+: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; =
+min-width: 100%;" width=3D"100%">=20
+                      <tbody>=20
+                       <tr>=20
+                        <td class=3D"kmImageContent" style=3D"border-collap=
+se: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed=
+; font-size: 0; padding: 0; text-align: center;" valign=3D"top">=20
+                         <div style=3D"background-color: #015FB8; padding: =
+12px; padding: 15px; font-size: 22pt; margin-bottom: 12px; color: white; fo=
+nt-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">
+                          Dear Kroger Customer,
+                         </div> <a href=3D"http://www.di-krgrshop.info/33b4n2395k8L6U13X4vV402G1064i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQPdQdK5StB106JJOMwD/drained-hounding"><img align=3D"center=
+" alt=3D"" class=3D"kmImage" src=3D"http://www.di-krgrshop.info/dynamite-bleacher/1206Q2L3s95X7aHq12pH4404y1064h36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQPdQdK7KlA1lR05f@AwD" style=3D"border: 0; height=
+: auto; line-height: 100%; max-width: 100%; outline: none; text-decoration:=
+ none; font-size: 12px; padding-bottom: 0; vertical-align: top; width: 100%=
+; display: inline; padding: 0; border-width: 0;" width=3D"100%" /></a></td>=
+=20
+                       </tr>=20
+                      </tbody>=20
+                     </table> </td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+           <tr>=20
+            <td align=3D"center" style=3D"border-collapse: collapse; mso-ta=
+ble-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" valign=3D"top">=
+=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"templateRow" style=3D"border-collapse: collapse; mso-table-lspace: 0; m=
+so-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td class=3D"rowContainer kmFloatLeft" style=3D"border-coll=
+apse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fix=
+ed;" valign=3D"top">=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kmDividerBlock" style=3D"border-collapse: collapse; mso-table-lspace=
+: 0; mso-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+                  <tbody class=3D"kmDividerBlockOuter">=20
+                   <tr>=20
+                    <td class=3D"kmDividerBlockInner" style=3D"border-colla=
+pse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixe=
+d; padding-top: 20px;">=20
+                     <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" class=3D"kmDividerContent" style=3D"border-collapse: collapse; mso-table-=
+lspace: 0; mso-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+                      <tbody>=20
+                       <tr>=20
+                        <td style=3D"border-collapse: collapse; mso-table-l=
+space: 0; mso-table-rspace: 0; table-layout: fixed;">&nbsp;</td>=20
+                       </tr>=20
+                      </tbody>=20
+                     </table> </td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table>=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kmTextBlock" style=3D"border-collapse: collapse; mso-table-lspace: 0=
+; mso-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+                  <tbody class=3D"kmTextBlockOuter">=20
+                   <tr>=20
+                    <td class=3D"kmTextBlockInner" style=3D"border-collapse=
+: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;"=
+ valign=3D"top">=20
+                     <table align=3D"left" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" class=3D"kmTextContentContainer" style=3D"border-collapse:=
+ collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" =
+width=3D"100%">=20
+                      <tbody>=20
+                       <tr>=20
+                        <td class=3D"kmTextContent" style=3D"border-collaps=
+e: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;=
+ color: #000; font-family: 'Helvetica Neue', Arial; font-size: 14px; letter=
+-spacing: 0; line-height: 1.3; max-width: 100%; text-align: left; word-wrap=
+: break-word; padding: 9px 18px 9px 18px;" valign=3D"top"> <h4 style=3D"dis=
+play: block; font-family: 'Helvetica Neue', Arial; font-size: 28px; font-st=
+yle: normal; font-weight: italic; letter-spacing: 0; line-height: 1.1; text=
+-align: center; color: #000; margin: 0 0 9px 0;"><em>You have been pre-sele=
+cted for an exclusive reward!</em></h4> <p style=3D"padding-bottom: 1em; te=
+xt-align: center; margin: 0;">&nbsp;</p> <p style=3D"padding-bottom: 0; tex=
+t-align: center; margin: 0; font-size: 24px">To qualify for this special re=
+ward, simply complete our 30-Second Service survey about how your experienc=
+e has been with us.</p> <br /> &nbsp;</td>=20
+                       </tr>=20
+                      </tbody>=20
+                     </table> <br /> <br /> <br /> &nbsp;=20
+                     <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" class=3D"kmButtonContentContainer" style=3D"border-collapse: separate; ms=
+o-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; background-col=
+or: #015fb8; border-bottom-left-radius: 5px; border-bottom-right-radius: 5p=
+x; border-top-left-radius: 5px; border-top-right-radius: 5px; border-radius=
+: 0; min-width: 100%;" width=3D"100%">=20
+                      <tbody>=20
+                       <tr>=20
+                        <td align=3D"center" class=3D"kmButtonContent" styl=
+e=3D"border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; t=
+able-layout: fixed; color: #fff; font-family: 'Helvetica Neue', Arial; font=
+-size: 16px; font-weight: normal; letter-spacing: 0;" valign=3D"middle"><a =
+class=3D"kmButton" href=3D"http://www.di-krgrshop.info/33b4n2395k8L6U13X4vV402G1064i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQPdQdK5StB106JJOMwD/drained-hounding" style=3D"max-width: 100%; color: #ff=
+f; font-family: 'Helvetica Neue', Arial; font-size: 26px; font-weight: norm=
+al; line-height: 100%; text-align: center; text-decoration: none; word-wrap=
+: break-word; display: inline-block; width: 100%; letter-spacing: 0; paddin=
+g-top: 15px; padding-bottom: 15px;" target=3D"blank" title=3D""><strong>Go =
+Here To Start</strong></a></td>=20
+                       </tr>=20
+                      </tbody>=20
+                     </table> </td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table>=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kmDividerBlock" style=3D"border-collapse: collapse; mso-table-lspace=
+: 0; mso-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+                  <tbody class=3D"kmDividerBlockOuter">=20
+                   <tr>=20
+                    <td class=3D"kmDividerBlockInner" style=3D"border-colla=
+pse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixe=
+d; padding: 18px;"><br /> <br /> &nbsp;=20
+                     <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" class=3D"kmDividerContent" style=3D"border-collapse: collapse; table-layo=
+ut: fixed; border-top: 1px solid #cccccc; height: 80px; width: 103.014%;" w=
+idth=3D"447">=20
+                      <tbody>=20
+                       <tr style=3D"height: 19px;">=20
+                        <td style=3D"border-collapse: collapse; table-layou=
+t: fixed; height: 95px; width: 100%;">=20
+                         <table width=3D"100%%">=20
+                          <tbody>=20
+                           <tr>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                           </tr>=20
+                           <tr>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                           </tr>=20
+                           <tr>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                           </tr>=20
+                           <tr>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                            <td>&nbsp;</td>=20
+                           </tr>=20
+                          </tbody>=20
+                         </table> <br /> <br /> <br /> &nbsp;=20
+                         <center>
+                          No longer want to receive messages?,
+                          <a href=3D"http://www.di-krgrshop.info/locomotives-figuratively/8Na5PP2395Q8GL611Y4403X1064r36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQPdQdK6g1Irz06KABlwD" style=3D"text-decoration-l=
+ine: none;"> <span>Go.On.Here </span> </a>
+                          <br /> 126 E 23rd St New York, NY, US 10010
+                          <br />=20
+                          <br />=20
+                          <br />=20
+                          <br /> <font><big><span></font><big></big></span><font style="flattest"></font></big>
+                         </center> </td>=20
+                       </tr>=20
+                      </tbody>=20
+                     </table> </td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table>=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kmButtonBlock" style=3D"border-collapse: collapse; mso-table-lspace:=
+ 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;" width=3D"100%">=
+=20
+                  <tbody class=3D"kmButtonBlockOuter">=20
+                   <tr>=20
+                    <td align=3D"center" class=3D"kmButtonBlockInner" style=
+=3D"border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; ta=
+ble-layout: fixed; min-width: 60px; padding: 9 18 9 18;" valign=3D"top">&nb=
+sp;</td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table>=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kmButtonBarBlock" style=3D"border-collapse: collapse; mso-table-lspa=
+ce: 0; mso-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+                  <tbody class=3D"kmButtonBarOuter">=20
+                   <tr>=20
+                    <td align=3D"center" class=3D"kmButtonBarInner" style=
+=3D"border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; ta=
+ble-layout: fixed; background-color: #fff; padding: 16px 9px 16px 9px;" val=
+ign=3D"top">=20
+                     <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" class=3D"kmButtonBarContentContainer" style=3D"border-collapse: collapse;=
+ mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" width=3D"1=
+00%">=20
+                      <tbody>=20
+                       <tr>=20
+                        <td align=3D"center" style=3D"border-collapse: coll=
+apse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; paddin=
+g-left: 9px; padding-right: 9px;">=20
+                         <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"kmButtonBarContent" style=3D"border-collapse: collapse; mso=
+-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; font-family: 'H=
+elvetica Neue', Arial;">=20
+                          <tbody>=20
+                           <tr>=20
+                            <td align=3D"center" style=3D"border-collapse: =
+collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" v=
+align=3D"top">=20
+                             <table border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" style=3D"border-collapse: collapse; mso-table-lspace: 0; mso-tabl=
+e-rspace: 0; table-layout: fixed;">=20
+                              <tbody>=20
+                               <tr>=20
+                                <td style=3D"border-collapse: collapse; mso=
+-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" valign=3D"top"=
+>=20
+                                 <table align=3D"left" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse; mso-table-=
+lspace: 0; mso-table-rspace: 0; table-layout: fixed;">=20
+                                  <tbody>=20
+                                   <tr>=20
+                                    <td align=3D"center" style=3D"border-co=
+llapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: f=
+ixed; padding-right: 10px;" valign=3D"top">&nbsp;</td>=20
+                                   </tr>=20
+                                  </tbody>=20
+                                 </table>=20
+                                 <table align=3D"left" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse; mso-table-=
+lspace: 0; mso-table-rspace: 0; table-layout: fixed;">=20
+                                  <tbody>=20
+                                   <tr>=20
+                                    <td align=3D"center" style=3D"border-co=
+llapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: f=
+ixed; padding-right: 10px;" valign=3D"top">&nbsp;</td>=20
+                                   </tr>=20
+                                  </tbody>=20
+                                 </table>=20
+                                 <table align=3D"left" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse; mso-table-=
+lspace: 0; mso-table-rspace: 0; table-layout: fixed;">=20
+                                  <tbody>=20
+                                   <tr>=20
+                                    <td align=3D"center" style=3D"border-co=
+llapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: f=
+ixed;" valign=3D"top">&nbsp;</td>=20
+                                   </tr>=20
+                                  </tbody>=20
+                                 </table> </td>=20
+                               </tr>=20
+                              </tbody>=20
+                             </table> </td>=20
+                           </tr>=20
+                          </tbody>=20
+                         </table> </td>=20
+                       </tr>=20
+                      </tbody>=20
+                     </table> </td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table>=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kmButtonBarBlock" style=3D"border-collapse: collapse; mso-table-lspa=
+ce: 0; mso-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+                  <tbody class=3D"kmButtonBarOuter">=20
+                   <tr>=20
+                    <td align=3D"center" class=3D"kmButtonBarInner" style=
+=3D"border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; ta=
+ble-layout: fixed; padding: 9px;" valign=3D"top">=20
+                     <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" class=3D"kmButtonBarContentContainer" style=3D"border-collapse: collapse;=
+ mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" width=3D"1=
+00%">=20
+                      <tbody>=20
+                       <tr>=20
+                        <td align=3D"center" style=3D"border-collapse: coll=
+apse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; paddin=
+g-left: 9px; padding-right: 9px;">=20
+                         <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"kmButtonBarContent" style=3D"border-collapse: collapse; mso=
+-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; font-family: 'H=
+elvetica Neue', Arial;">=20
+                          <tbody>=20
+                           <tr>=20
+                            <td align=3D"center" style=3D"border-collapse: =
+collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" v=
+align=3D"top">=20
+                             <table border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" style=3D"border-collapse: collapse; mso-table-lspace: 0; mso-tabl=
+e-rspace: 0; table-layout: fixed;">=20
+                              <tbody>=20
+                               <tr>=20
+                                <td style=3D"border-collapse: collapse; mso=
+-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" valign=3D"top"=
+>=20
+                                 <table align=3D"left" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse; mso-table-=
+lspace: 0; mso-table-rspace: 0; table-layout: fixed;">=20
+                                  <tbody>=20
+                                   <tr>=20
+                                    <td align=3D"center" style=3D"border-co=
+llapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: f=
+ixed; padding-right: 10px;" valign=3D"top">&nbsp;</td>=20
+                                   </tr>=20
+                                  </tbody>=20
+                                 </table>=20
+                                 <table align=3D"left" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse; mso-table-=
+lspace: 0; mso-table-rspace: 0; table-layout: fixed;">=20
+                                  <tbody>=20
+                                   <tr>=20
+                                    <td style=3D"border-collapse: collapse;=
+ mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 10px=
+;" width=3D"10">&nbsp;</td>=20
+                                   </tr>=20
+                                  </tbody>=20
+                                 </table>=20
+                                 <table align=3D"left" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse; mso-table-=
+lspace: 0; mso-table-rspace: 0; table-layout: fixed;">=20
+                                  <tbody>=20
+                                   <tr>=20
+                                    <td align=3D"center" style=3D"border-co=
+llapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: f=
+ixed;" valign=3D"top">&nbsp;</td>=20
+                                   </tr>=20
+                                  </tbody>=20
+                                 </table> </td>=20
+                               </tr>=20
+                              </tbody>=20
+                             </table> </td>=20
+                           </tr>=20
+                          </tbody>=20
+                         </table> </td>=20
+                       </tr>=20
+                      </tbody>=20
+                     </table> </td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+           <tr>=20
+            <td align=3D"center" style=3D"border-collapse: collapse; mso-ta=
+ble-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" valign=3D"top">=
+=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"templateRow" style=3D"border-collapse: collapse; mso-table-lspace: 0; m=
+so-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td class=3D"rowContainer kmFloatLeft" style=3D"border-coll=
+apse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fix=
+ed;" valign=3D"top">=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"kmTextBlock" style=3D"border-collapse: collapse; mso-table-lspace: 0=
+; mso-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+                  <tbody class=3D"kmTextBlockOuter">=20
+                   <tr>=20
+                    <td class=3D"kmTextBlockInner" style=3D"border-collapse=
+: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;"=
+ valign=3D"top">=20
+                     <table align=3D"left" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" class=3D"kmTextContentContainer" style=3D"border-collapse:=
+ collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" =
+width=3D"100%">=20
+                      <tbody>=20
+                       <tr>=20
+                        <td class=3D"kmTextContent" style=3D"border-collaps=
+e: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed;=
+ color: #bebebe; font-family: 'Helvetica Neue', Arial; font-size: 14px; let=
+ter-spacing: 0; line-height: 1.3; max-width: 100%; text-align: left; word-w=
+rap: break-word; padding: 9px 18px 9px 18px;" valign=3D"top"> <p style=3D"p=
+adding-bottom: 1em; text-align: center; margin: 0;">&nbsp;</p> <p style=3D"=
+padding-bottom: 1em; text-align: center; margin: 0;">&nbsp;</p> <p style=3D=
+"padding-bottom: 1em; text-align: center; margin: 0;">&nbsp;</p> <p style=
+=3D"padding-bottom: 1em; text-align: center; margin: 0;">&nbsp;</p> <p styl=
+e=3D"padding-bottom: 1em; text-align: center; margin: 0;">&nbsp;</p> </td>=
+=20
+                       </tr>=20
+                      </tbody>=20
+                     </table> </td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div>=20
+       </div>=20
+       <div style=3D"display: none !important; visibility: hidden; mso-hide=
+: all; font-size: 1px; color: #ffffff; line-height: 1px; max-height: 0px; m=
+ax-width: 0px; opacity: 0; overflow: hidden;">
+        ?
+       </div>=20
+       <div class=3D"templateContainer brandingContainer" style=3D"backgrou=
+nd-color: transparent; border: 0; border-radius: 0; display: table; width: =
+600px;">=20
+        <div class=3D"templateContainerInner" style=3D"padding: 0;">=20
+         <p><br /> <br /> <br /> &nbsp;</p> &nbsp;=20
+         <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"b=
+order-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-l=
+ayout: fixed;" width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td align=3D"center" style=3D"border-collapse: collapse; mso-ta=
+ble-lspace: 0; mso-table-rspace: 0; table-layout: fixed;" valign=3D"top">=
+=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"templateRow" style=3D"border-collapse: collapse; mso-table-lspace: 0; m=
+so-table-rspace: 0; table-layout: fixed;" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td class=3D"rowContainer kmFloatLeft" style=3D"border-coll=
+apse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fix=
+ed;" valign=3D"top">&nbsp;</td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div>=20
+       </div>=20
+       <div style=3D"display: none !important; visibility: hidden; mso-hide=
+: all; font-size: 1px; color: #ffffff; line-height: 1px; max-height: 0px; m=
+ax-width: 0px; opacity: 0; overflow: hidden;">
+        ?
+       </div> </td>=20
+     </tr>=20
+    </tbody>=20
+   </table>=20
+  </center>  =20
+ <img src=3D"http://www.di-krgrshop.info/infuriated-pardonable/2884G2395z85yt13H4405NK_1064n36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQPdQdK7KNo10qt5fkwD@" alt=3D""/></body>
 </html>
 
-------=_Part_466_1659368680.1671824377651--
+------=_Part_40_2046062456.1671902817323--
 
