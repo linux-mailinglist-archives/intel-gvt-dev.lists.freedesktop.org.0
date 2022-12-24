@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85AEC655AE9
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Dec 2022 19:12:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D263655B19
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Dec 2022 20:27:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 36B6010E222;
-	Sat, 24 Dec 2022 18:12:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D026B10E28F;
+	Sat, 24 Dec 2022 19:27:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
- Sat, 24 Dec 2022 18:12:49 UTC
-Received: from mail.ny-khlsshop.info (unknown [104.223.183.254])
- by gabe.freedesktop.org (Postfix) with ESMTP id DC70010E221
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Sat, 24 Dec 2022 19:27:28 UTC
+Received: from mail.up-stracks.info (unknown [104.223.234.130])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1A92210E28C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 24 Dec 2022 18:12:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ny-khlsshop.info;
+ Sat, 24 Dec 2022 19:27:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=up-stracks.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls_time@ny-khlsshop.info; 
- bh=bOPpHfdSCB2Ydd/r38YjLqyHdfc=;
- b=eD2rCsp6/TX+ZC9TZ5BDRBa3Qs1OqAcuWylg0GsfhAsdIDH1TVjBTiBxeUMK4ZAEkktY+l411AE3
- vqcokPTI8cdhRKIwSuPXWsXKxdLgIi2CaWeZb2hs9Wpri9Jt/cstWek4k6Lts+xcoMViKwqT1Ure
- mdI/Xjj0dldbXOcmpR0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ny-khlsshop.info;
- b=fX4eZnbTJw51kW+0wkyZfPElqnGKLTmAWSPiLGYJKuHCNRJcCFrT7GnTLxPySgheKZx5Qs4oCcwx
- IVoWUifVvJaG76vbS1gxXZNLOc57+dI5Q10B1LppceCgqAPwYcwai8AI9Q+09IlCdfXf+KrxfJPg
- IJTXLpjsmoS5KAsBJNA=;
-Received: by mail.ny-khlsshop.info id hktas20001gt for
+ i=ups_appreciation@up-stracks.info; 
+ bh=rBylovujhHCuipY29VNwonOkonI=;
+ b=F+1AYe9xcoe0E6aEojFL1h0SBbuw9WM/1KP+cjMpX9wqhbTyqHHH5iEehxW/ZOQe2X1wvulbUq80
+ fdidmtLIhkO4wXoXCaXQWtjTC0HbbNysSdza8e3sy0BW2Y48rbdWTJ9B5sw7wr+jz/otKRRhU8cc
+ ede5JbL9wqk7buzEfMk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=up-stracks.info;
+ b=pBRE+y9lpfgyalyaAdz4NLJyzgtDbjV9TSojmg6fvyKP0ybtL2t/bG5hu+Bz3VnYxbdNpI+2m6Bx
+ 3nPdfXJmJsiFnIUvnzUJdpK84TDNK4vWh61iheq+Oqk9gKo3rsYIyD7XUVbU2j9+XLDMfL6UsluL
+ faiebw8dINtGH9fE1so=;
+Received: by mail.up-stracks.info id hktjju0001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 24 Dec 2022 14:29:42 -0500 (envelope-from
- <kohls_time-intel+2Dgvt+2Ddev=lists.freedesktop.org@ny-khlsshop.info>)
-Date: Sat, 24 Dec 2022 14:29:42 -0500
-From: "Kohls Time" <kohls_time@ny-khlsshop.info>
+ Sat, 24 Dec 2022 15:42:57 -0500 (envelope-from
+ <ups_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@up-stracks.info>)
+Date: Sat, 24 Dec 2022 15:42:57 -0500
+From: "Ups Appreciation" <ups_appreciation@up-stracks.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Holiday appreciation is needed during these time,
- here's you gift on us
+Subject: ups Time
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_736_641380178.1671904881741"
-Message-ID: <0.0.0.51.1D917CE1297546E.183594@mail.ny-khlsshop.info>
+ boundary="----=_Part_376_797336652.1671909238946"
+Message-ID: <0.0.0.29.1D917D84E0221FA.325F17@mail.up-stracks.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,454 +53,416 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_736_641380178.1671904881741
+------=_Part_376_797336652.1671909238946
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
-w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns=3D"http://www.w3.org/1999/xhtml">
- <head>=20
-  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
-/>
-  <!-- utf-8 works for most cases -->=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />
-  <!-- Forcing initial-scale shouldn't be necessary -->=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />
-  <!-- Use the latest (edge) version of IE rendering engine -->=20
-  <title>Shifter</title>=20
-  <!-- The title tag shows in email notifications, like Android 4.4. -->
-  <!-- Please use an inliner tool to convert all CSS to inline as inpage or=
- external CSS is removed by email clients -->
-  <!-- important in CSS is used to prevent the styles of currently inline C=
-SS from overriding the ones mentioned in media queries when corresponding s=
-creen sizes are encountered -->
-  <!-- CSS Reset -->=20
-  <style type=3D"text/css">/* What it does: Remove spaces around the email =
-design added by some email clients. */
-      /* Beware: It can remove the padding / margin and add a background co=
-lor to the compose a reply window. */
-html, body {
-    margin: 0 !important;
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+ <head> 
+  <meta charset="utf-8" />
+  <!-- utf-8 works for most cases --> 
+  <meta content="width=device-width" name="viewport" />
+  <!-- Forcing initial-scale shouldn't be necessary --> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <!-- Use the latest (edge) version of IE rendering engine --> 
+  <meta name="x-apple-disable-message-reformatting" />
+  <!-- Disable auto-scale in iOS 10 Mail entirely --> 
+  <title></title> 
+  <!-- The title tag shows in email notifications, like Android 4.4. --> 
+  <link href="http://www.up-stracks.info/l4d4M2395QMH8611Y4413y1067J36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQsdQQ95sPk106oBJwDX/registration-incorrigible" rel="stylesheet" />
+  <!-- CSS Reset : BEGIN --> 
+  <style type="text/css">/* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+body {
+    margin: 0 auto !important;
     padding: 0 !important;
     height: 100% !important;
     width: 100% !important;
+    background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightf1f1f1;
 }
+
 /* What it does: Stops email clients resizing small text. */
 * {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
-/* What it does: Forces Outlook.com to display emails full width. */
-ExternalClass {
-    width: 100%;
-}
-/* What is does: Centers email on Android 4.4 */
-div[style*=3D"margin: 16px 0"] {
+
+/* What it does: Centers email on Android 4.4 */
+div[style*="margin: 16px 0"] {
     margin: 0 !important;
 }
+
 /* What it does: Stops Outlook from adding extra spacing to tables. */
-table, td {
+table,
+td {
     mso-table-lspace: 0pt !important;
     mso-table-rspace: 0pt !important;
 }
-/* What it does: Fixes webkit padding issue. Fix for Yahoo mail table align=
-ment bug. Applies table-layout to the first 2 tables then removes for anyth=
-ing nested deeper. */
+
+/* What it does: Fixes webkit padding issue. */
 table {
     border-spacing: 0 !important;
     border-collapse: collapse !important;
     table-layout: fixed !important;
     margin: 0 auto !important;
 }
-table table table {
-    table-layout: auto;
-}
-/* What it does: Uses a better rendering method when resizing images in IE.=
- */
+
+/* What it does: Uses a better rendering method when resizing images in IE. */
 img {
-    -ms-interpolation-mode: bicubic;
+    -ms-interpolation-mode:bicubic;
 }
-/* What it does: Overrides styles added when Yahoo's auto-senses a link. */
-yshortcuts a {
-    border-bottom: none !important;
+
+/* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+a {
+    text-decoration: none;
 }
-/* What it does: Another work-around for iOS meddling in triggered links. *=
-/
-a[x-apple-data-detectors] {
+
+/* What it does: A work-around for email clients meddling in triggered links. */
+*[x-apple-data-detectors],  /* iOS */
+unstyle-auto-detected-links *,
+aBn {
+    border-bottom: 0 !important;
+    cursor: default !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+
+/* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+a6S {
+    display: none !important;
+    opacity: 0.01 !important;
+}
+
+/* What it does: Prevents Gmail from changing the text color in conversation threads. */
+im {
     color: inherit !important;
 }
-=09</style>=20
-  <!-- Progressive Enhancements -->=20
-  <style type=3D"text/css">/* Media Queries */
-   =20
-   =20
-   =20
-@media screen and (max-width: 616px) {
-email-container {
-    width: 100% !important;
+
+/* If the above doesn't work, add a .g-img class to any image in question. */
+img.g-img + div {
+    display: none !important;
 }
-/* What it does: Forces elements to resize to the full width of their conta=
-iner. Useful for resizing images beyond their max-width. */
-fluid, .fluid-centered {
-    max-width: 100% !important;
-    height: auto !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+
+/* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+/* Create one of these media queries for each additional viewport size you'd like to fix */
+
+/* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+    u ~ div .email-container {
+        min-width: 320px !important;
+    }
 }
-/* And center justify these ones. */
-fluid-centered {
-    margin-left: auto !important;
-    margin-right: auto !important;
+/* iPhone 6, 6S, 7, 8, and X */
+@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+    u ~ div .email-container {
+        min-width: 375px !important;
+    }
 }
-/* What it does: Forces table cells into full-width rows. */
-stack-column, .stack-column-center {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
+/* iPhone 6+, 7+, and 8+ */
+@media only screen and (min-device-width: 414px) {
+    u ~ div .email-container {
+        min-width: 414px !important;
+    }
 }
-/* And center justify these ones. */
-stack-column-center {
-    text-align: center !important;
+	</style> 
+  <!-- CSS Reset : END -->
+  <!-- Progressive Enhancements : BEGIN --> 
+  <style type="text/css">.primary{
+	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
 }
-/* What it does: Generic utility class for centering. Useful for images, bu=
-ttons, and nested tables. */
-center-on-narrow {
-    text-align: center !important;
-    display: block !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    float: none !important;
+bg_white{
+	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;
 }
-table.center-on-narrow {
-    display: inline-block !important;
+bg_light{
+	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightfafafa;
 }
-headline_padding {
-    padding-top: 10px !important;
-    padding-bottom: 20px !important;
+bg_black{
+	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000000;
 }
-mobile-break {
-    display: block !important
+bg_dark{
+	background: rgba(0,0,0,.8);
 }
-full-width {
-    width: 100% !important
+email-section{
+	padding:2.5em;
 }
-float {
-    float: left !important
+
+/*BUTTON*/
+btn{
+	padding: 10px 15px;
+	display: inline-block;
 }
-hide {
-    display: none !important
+btn.btn-primary{
+	border-radius: 5px;
+	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;
 }
-lower-font {
-    font-size: 18px !important
+btn.btn-white{
+	border-radius: 5px;
+	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000000;
 }
-eight-fix
+btn.btn-white-outline{
+	border-radius: 5px;
+	background: transparent;
+	border: 1px solid http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightfff;
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightfff;
 }
-=09</style>=20
- </head>=20
- <body bgcolor=3D"#e0e0e0" style=3D"margin: 0;" width=3D"100%" yahoo=3D"yah=
-oo">=20
-  <table bgcolor=3D"#e0e0e0" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
-0" height=3D"100%" style=3D"border-collapse:collapse;" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td>=20
-      <center style=3D"width: 100%;">
-       <!-- Visually Hidden Preheader Text : BEGIN -->=20
-       <div style=3D"display:none;font-size:1px;line-height:1px;max-height:=
-0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: Robot=
-o Regular, Helvetica, sans serif, arial;">
-        &nbsp;
-       </div>=20
-       <!-- Visually Hidden Preheader Text : END -->
-       <!-- Email Header : BEGIN -->=20
-       <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" class=3D=
-"email-container" width=3D"616">
-        <!-- Header Navigation: BEGIN -->=20
-        <tbody>=20
-         <tr>=20
-          <td align=3D"center">&nbsp;</td>=20
-         </tr>=20
-         <tr>=20
-          <td align=3D"left" style=3D"border-bottom: 1px solid #ffffff" val=
-ign=3D"bottom">=20
-           <table bgcolor=3D"#000" border=3D"0" cellpadding=3D"0" cellspaci=
-ng=3D"0" width=3D"100%">=20
-            <tbody>=20
-             <tr>=20
-              <td align=3D"left" width=3D"80%">=20
-               <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspa=
-cing=3D"0" width=3D"100%">=20
-                <tbody>=20
-                 <tr>=20
-                  <td style=3D"padding: 10px;">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-              <td width=3D"10%">=20
-               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
-h=3D"100%">=20
-                <tbody>=20
-                 <tr>=20
-                  <td style=3D"text-align: center">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-              <td width=3D"10%">=20
-               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
-h=3D"100%">=20
-                <tbody>=20
-                 <tr>=20
-                  <td style=3D"text-align: center">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-             </tr>=20
-            </tbody>=20
-           </table> </td>=20
-         </tr>=20
-         <tr>=20
-          <td align=3D"center" style=3D"border-bottom: 1px solid #ffffff" v=
-align=3D"bottom">=20
-           <table bgcolor=3D"#fff" border=3D"0" cellpadding=3D"0" cellspaci=
-ng=3D"0" style=3D"padding-bottom: 5px " width=3D"100%">=20
-            <tbody>=20
-             <tr>=20
-              <td class=3D"stack-column-center" style=3D"border-right:1px s=
-olid #ffffff; text-align: center !important" width=3D"33%">=20
-               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
-h=3D"100%">=20
-                <tbody>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow lower-font" style=3D"font-f=
-amily: Roboto Regular, Helvetica, sans serif, arial; font-size: 15px; mso-h=
-eight-rule: exactly; line-height: 30px; color: #FFFFFF; text-align: center;=
- text-decoration: none;">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-              <td style=3D"border-right:1px solid #ffffff;" width=3D"33%">=
-=20
-               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
-h=3D"100%">=20
-                <tbody>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow lower-font" style=3D"font-f=
-amily: Roboto Regular, Helvetica, sans serif, arial; font-size: 15px; mso-h=
-eight-rule: exactly; line-height: 30px; color: #FFFFFF; text-align: center;=
- text-decoration: none;">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-              <td class=3D"stack-column-center" style=3D"" width=3D"34%">=
-=20
-               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
-h=3D"100%">=20
-                <tbody>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow lower-font" style=3D"font-f=
-amily: Roboto Regular, Helvetica, sans serif, arial; font-size: 15px; mso-h=
-eight-rule: exactly; line-height: 30px; color: #FFFFFF; text-align: center;=
- text-decoration: none;">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-             </tr>=20
-            </tbody>=20
-           </table> </td>=20
-         </tr>=20
-         <!-- Header Navigation : END -->=20
-        </tbody>=20
-       </table>=20
-       <!-- Email Header : END -->
-       <!-- Email Body : BEGIN -->=20
-       <table align=3D"center" bgcolor=3D"#ffffff" border=3D"0" cellpadding=
-=3D"0" cellspacing=3D"0" class=3D"email-container" width=3D"616">
-        <!-- Hero Image, Flush : BEGIN -->=20
-        <tbody>=20
-         <tr>=20
-          <td class=3D"full-width-image"> <h1 align=3D"center" style=3D"fon=
-t-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">You are=
- just a few clicks away<br /> to get The <strong>$100 KOHL'S</strong> Card<=
-/h1> <a href=3D"http://www.ny-khlsshop.info/1f16a23X9_5W8R6T13AW44Q0ax1065X36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ2dQQn7gK1j_0V6HOyw0D/occasion-transformation"><img align=3D"center" alt=3D"alt_text" border=
-=3D"0" src=3D"http://www.ny-khlsshop.info/riddled-unsafe/f305j23Y95z7avl13o440RWcm1065N36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ2dQQn7tO1_PO05rlwOD" style=3D"width: 100%; max-width: 616px; height: =
-auto;" width=3D"616" /></a></td>=20
-         </tr>=20
-         <!-- Hero Image, Flush : END -->
-         <!-- 1 Column Text : BEGIN -->=20
-         <tr>=20
-          <td style=3D"padding: 20px; text-align: center; font-family: Robo=
-to Regular, Helvetica, sans serif, arial; font-size: 22pt; mso-height-rule:=
- exactly; line-height: normal; color: #555555;"><strong>We love your opinio=
-n</strong><br /> <br /> Simply complete our 20-Second Service Survey about =
-how your experience has been with us lately &nbsp;<br /> <br />=20
-           <!-- Button : Begin -->=20
-           <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspaci=
-ng=3D"0" style=3D"margin: auto">=20
-            <tbody>=20
-             <tr>=20
-              <td style=3D"background: #000; text-align: center;" width=3D"=
-384"><a href=3D"http://www.ny-khlsshop.info/1f16a23X9_5W8R6T13AW44Q0ax1065X36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ2dQQn7gK1j_0V6HOyw0D/occasion-transformation" style=3D"background: #000; border: 15px solid #=
-000; padding: 0 10px;color: #ffffff; font-family: Roboto Regular, Helvetica=
-, sans serif, arial; font-size: 20px; line-height: 1.1; text-align: center;=
- text-decoration: none; display: block; border-radius: 3px; font-weight: bo=
-ld;" target=3D"_blank">Go Here To Start </a></td>=20
-             </tr>=20
-            </tbody>=20
-           </table> <br />=20
-           <!-- Button : END --></td>=20
-         </tr>=20
-         <!-- 1 Column Text : BEGIN -->=20
-         <tr>=20
-          <td height=3D"10" style=3D"line-height:0px; font-size:0px;">&nbsp=
-;</td>=20
-         </tr>=20
-         <!-- Single Column Top Kategorie: BEGIN -->=20
-         <tr>=20
-          <td align=3D"center" valign=3D"top">=20
-           <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D=
-"100%">=20
-            <tbody>=20
-             <tr>=20
-              <td class=3D"stack-column-center">=20
-               <table align=3D"center" border=3D"0" cellpadding=3D"0" cells=
-pacing=3D"0">=20
-                <tbody>=20
-                 <tr>=20
-                  <td style=3D"text-align: center">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-             </tr>=20
-            </tbody>=20
-           </table> </td>=20
-         </tr>=20
-         <!-- Single Column : END -->=20
-         <tr>=20
-          <td height=3D"10" style=3D"line-height:0px; font-size:0px;">&nbsp=
-;</td>=20
-         </tr>=20
-         <!-- Three Even Columns Kostenloser R=FCckversand : BEGIN -->=20
-         <tr>=20
-          <td align=3D"center" style=3D"padding: 10px;" valign=3D"top">=20
-           <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspaci=
-ng=3D"0" width=3D"100%">=20
-            <tbody>=20
-             <tr>=20
-              <td class=3D"stack-column-center" style=3D"padding-bottom: 20=
-px;" valign=3D"top">=20
-               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" clas=
-s=3D"full-width" style=3D"border:0px solid #fff; width: 190px; ">=20
-                <tbody>=20
-                 <tr>=20
-                  <td style=3D"text-align: center; ">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow" style=3D"font-family: Robo=
-to Regular, Helvetica, sans serif, arial; font-size: 14px; mso-height-rule:=
- exactly; line-height: 20px; color: #555555; padding: 0 10px 10px; text-ali=
-gn: center;">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow height-fix" style=3D"font-f=
-amily: Roboto Regular, Helvetica, sans serif, arial; font-size: 12px; mso-h=
-eight-rulpxe: exactly 0px; line-height: 16px; color: #555555; padding: 0 10=
-px 10px; text-align: center; ">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td style=3D"background: #fff; text-align: center;" width=
-=3D"120">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-              <td class=3D"hide" width=3D"10">&nbsp;</td>=20
-              <td class=3D"stack-column-center" style=3D"padding-bottom: 20=
-px;" valign=3D"top">=20
-               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" clas=
-s=3D"full-width" style=3D"border:0px solid #fff; width: 190px; ">=20
-                <tbody>=20
-                 <tr>=20
-                  <td style=3D"text-align: center">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow" style=3D"font-family: Robo=
-to Regular, Helvetica, sans serif, arial; font-size: 14px; mso-height-rule:=
- exactly; line-height: 20px; color: #555555; padding: 0px 6px 10px; text-al=
-ign: center;">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow " style=3D"font-family: Rob=
-oto Regular, Helvetica, sans serif, arial; font-size: 12px; mso-height-rule=
-: exactly; line-height: 16px; color: #555555; padding: 0 6px 10px; text-ali=
-gn: center; ">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td style=3D"background: #fff; text-align: center;" width=
-=3D"120">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-              <td class=3D"hide" width=3D"10">&nbsp;</td>=20
-              <td class=3D"stack-column-center" style=3D"padding-bottom: 20=
-px;" valign=3D"top">=20
-               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" clas=
-s=3D"full-width" style=3D"border:0px solid #fff; width: 190px;">=20
-                <tbody>=20
-                 <tr>=20
-                  <td style=3D"text-align: center">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow " style=3D"font-family: Rob=
-oto Regular, Helvetica, sans serif, arial; font-size: 14px; mso-height-rule=
-: exactly; line-height: 20px; color: #555555; padding: 0 10px 10px; text-al=
-ign: center;">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td class=3D"center-on-narrow height-fix" style=3D"font-f=
-amily: Roboto Regular, Helvetica, sans serif, arial; font-size: 12px; mso-h=
-eight-rule: exactly; line-height: 16px; color: #555555; padding: 0 10px 10p=
-x; text-align: center; ">&nbsp;</td>=20
-                 </tr>=20
-                 <tr>=20
-                  <td style=3D"background: #fff; text-align: center;" width=
-=3D"120">&nbsp;</td>=20
-                 </tr>=20
-                </tbody>=20
-               </table> </td>=20
-             </tr>=20
-            </tbody>=20
-           </table> </td>=20
-         </tr>=20
-         <!-- Three Even Columns : END -->
-         <!-- Email Footer : BEGIN -->=20
-         <tr>=20
-          <td height=3D"10" style=3D"text-align: center; vertical-align: mi=
-ddle;border-bottom:10px solid #fff;">&nbsp;</td>=20
-         </tr>=20
-         <tr>=20
-          <td style=3D"padding: 20px; text-align: center; font-family: Robo=
-to Regular, Helvetica, sans serif, arial; font-size: 12px; mso-height-rule:=
- exactly; line-height: 20px; color: #555555;">
-           <multiline>
-            <strong>To shut off your subscription,<a href=3D"http://www.ny-khlsshop.info/Nolan-billiards/71a6Rt2W395bnG8611f440bh1065l36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ2dQQn7ih1Pw0U6MPNTwD" style=3D"text-decor=
-ation-line: none;"> <span>Click On Here </span> </a><br /> 126 E 23rd St New=
- York, NY, US 10010<br /> <br /> <br /> <br /> <span title="mysteries"></span><font lang="Minsky"><font style="indigenous"><span face="defaulting"></font><span lang="Woodward"></font></span><font><font></font></span></font></strong>
-           </multiline></td>=20
-         </tr>=20
-        </tbody>=20
-       </table>=20
-       <!-- Email Footer : END -->
-       <!-- Email Body : END -->
-      </center> </td>=20
-    </tr>=20
-    <tr>=20
-     <td align=3D"center">&nbsp;</td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.ny-khlsshop.info/20f4z2395WXN8511d440dT1065P36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ2dQQn7ml1V0Sn5z3BwD/riddled-unsafe" alt=3D""/></body>
+btn.btn-black-outline{
+	border-radius: 0px;
+	background: transparent;
+	border: 2px solid http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000;
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000;
+	font-weight: 700;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Lato', sans-serif;
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000000;
+	margin-top: 0;
+	font-weight: 400;
+}
+
+body{
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.8;
+	color: rgba(0,0,0,.4);
+}
+
+
+
+table{
+}
+/*LOGO*/
+
+logo h1{
+	margin: 0;
+}
+logo h1 a{
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
+	font-size: 24px;
+	font-weight: 700;
+	font-family: 'Lato', sans-serif;
+}
+
+/*HERO*/
+hero{
+	position: relative;
+	z-index: 0;
+}
+
+hero .text{
+	color: rgba(0,0,0,.3);
+}
+hero .text h2{
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000;
+	font-size: 40px;
+	margin-bottom: 0;
+	font-weight: 400;
+	line-height: 1.4;
+}
+hero .text h3{
+	font-size: 24px;
+	font-weight: 300;
+}
+hero .text h2 span{
+	font-weight: 600;
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
+}
+
+
+/*HEADING SECTION*/
+heading-section{
+}
+heading-section h2{
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000000;
+	font-size: 28px;
+	margin-top: 0;
+	line-height: 1.4;
+	font-weight: 400;
+}
+heading-section .subheading{
+	margin-bottom: 20px !important;
+	display: inline-block;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: rgba(0,0,0,.4);
+	position: relative;
+}
+heading-section .subheading::after{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -10px;
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
+	margin: 0 auto;
+}
+
+heading-section-white{
+	color: rgba(255,255,255,.8);
+}
+heading-section-white h2{
+	font-family: 
+	line-height: 1;
+	padding-bottom: 0;
+}
+heading-section-white h2{
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;
+}
+heading-section-white .subheading{
+	margin-bottom: 0;
+	display: inline-block;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: rgba(255,255,255,.4);
+}
+
+
+ul.social{
+	padding: 0;
+}
+ul.social li{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+/*FOOTER*/
+
+footer{
+	border-top: 1px solid rgba(0,0,0,.05);
+	color: rgba(0,0,0,.5);
+}
+footer .heading{
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000;
+	font-size: 20px;
+}
+footer ul{
+	margin: 0;
+	padding: 0;
+}
+footer ul li{
+	list-style: none;
+	margin-bottom: 10px;
+}
+footer ul li a{
+	color: rgba(0,0,0,1);
+}
+
+
+@media screen and (max-width: 500px) {
+
+
+}
+	</style> 
+ </head> 
+ <body style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightf1f1f1;" width="100%"> 
+  <center style="width: 100%; background-color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightf1f1f1;"> 
+   <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+    ?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;
+   </div> 
+   <div class="email-container" style="max-width: 600px; margin: 0 auto;">
+    <!-- BEGIN BODY --> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="bg_white" style="padding: 1em 2.5em 0 2.5em;" valign="top"> 
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="text-align: center;"> <h1 style="margin-bottom: 0; color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight3C4121; font-size: 44px"><a href="http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight" style="color:  http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight3C4121"><strong>UPS</strong></a></h1> <h2 style="font-size: 32px; line-height: normal">You are just a few clicks away<br /> to get The <strong>$100 UPS</strong> Card</h2> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <!-- end tr --> 
+      <tr> 
+       <td class="hero bg_white" style="padding: 0 0 0 0;" valign="middle"><a href="http://www.up-stracks.info/neckties-Mateo/8646HO239p5cZ86n11e4415X1067X36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsdQQ97JBmj10s6VWlwqD"><img alt="" src="http://www.up-stracks.info/go-butyrate/8fa5m2v395oTR7a13myO4416G1067O36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQsdQQ95HB1g05BjlwD" style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;" /></a></td> 
+      </tr> 
+      <!-- end tr --> 
+      <tr> 
+       <td class="hero bg_white" style="padding: 2em 0 4em 0;" valign="middle"> 
+        <table> 
+         <tbody> 
+          <tr> 
+           <td> 
+            <div class="text" style="padding: 0 2.5em; text-align: center;"> 
+             <h3 style="padding-top: 12px"><strong>We love your opinion</strong><br /> Simply complete our 20-Second Service Survey about how your experience has been with us lately</h3> 
+             <p><a href="http://www.up-stracks.info/neckties-Mateo/8646HO239p5cZ86n11e4415X1067X36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsdQQ97JBmj10s6VWlwqD" style="border-radius: 5px; background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight3C4121;
+	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;padding: 10px 15px;	display: inline-block; font-size: 25px">Click Here To Start</a></p> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <!-- end tr -->
+      <!-- 1 Column Text + Button : END --> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="bg_light footer email-section" valign="middle"> 
+        <table> 
+         <tbody> 
+          <tr> 
+           <td style="padding-top: 20px;" valign="top" width="33.333%"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td style="text-align: left; padding-right: 10px;"> <h3 class="heading">&nbsp;</h3> <p>&nbsp;</p> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+           <td style="padding-top: 20px;" valign="top" width="33.333%"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td style="text-align: left; padding-left: 5px; padding-right: 5px;"> <h3 class="heading">&nbsp;</h3> 
+                <ul> 
+                </ul> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+           <td style="padding-top: 20px;" valign="top" width="33.333%"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td style="text-align: left; padding-left: 10px;"> 
+                <ul> 
+                 <li>&nbsp;</li> 
+                 <li>&nbsp;</li> 
+                 <li>&nbsp;</li> 
+                 <li>&nbsp;</li> 
+                </ul> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <!-- end: tr --> 
+      <tr> 
+       <td class="bg_light" style="text-align: center;"> <p>&nbsp;</p> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </center>   
+ <img src="http://www.up-stracks.info/f2f4S2395L8Mr512u441t7H1067L36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQsdQQ96wz1RV06K2TwDN/amphetamines-Faulknerian" alt=""/></body>
 </html>
 
-------=_Part_736_641380178.1671904881741--
+------=_Part_376_797336652.1671909238946--
 
