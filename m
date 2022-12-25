@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D263655B19
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 24 Dec 2022 20:27:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 523CF655E1A
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 25 Dec 2022 19:55:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D026B10E28F;
-	Sat, 24 Dec 2022 19:27:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1321210E0A6;
+	Sun, 25 Dec 2022 18:55:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sat, 24 Dec 2022 19:27:28 UTC
-Received: from mail.up-stracks.info (unknown [104.223.234.130])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1A92210E28C
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Sun, 25 Dec 2022 18:55:13 UTC
+Received: from mail.mc-dnldshop.info (unknown [104.223.234.133])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E627810E098
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 24 Dec 2022 19:27:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=up-stracks.info; 
+ Sun, 25 Dec 2022 18:55:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mc-dnldshop.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups_appreciation@up-stracks.info; 
- bh=rBylovujhHCuipY29VNwonOkonI=;
- b=F+1AYe9xcoe0E6aEojFL1h0SBbuw9WM/1KP+cjMpX9wqhbTyqHHH5iEehxW/ZOQe2X1wvulbUq80
- fdidmtLIhkO4wXoXCaXQWtjTC0HbbNysSdza8e3sy0BW2Y48rbdWTJ9B5sw7wr+jz/otKRRhU8cc
- ede5JbL9wqk7buzEfMk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=up-stracks.info;
- b=pBRE+y9lpfgyalyaAdz4NLJyzgtDbjV9TSojmg6fvyKP0ybtL2t/bG5hu+Bz3VnYxbdNpI+2m6Bx
- 3nPdfXJmJsiFnIUvnzUJdpK84TDNK4vWh61iheq+Oqk9gKo3rsYIyD7XUVbU2j9+XLDMfL6UsluL
- faiebw8dINtGH9fE1so=;
-Received: by mail.up-stracks.info id hktjju0001gn for
+ i=mcdonalds-app@mc-dnldshop.info; 
+ bh=gpxXkDc+UtQMiC/hV/wiS6dBtVE=;
+ b=eiNAdYsdU4jq1v2jPBdMR5R/3C85/GeNUouUffAglUM7h76veYYU+7sDygcD3MwSnJwZxBZjpx8n
+ 1JuO8qP5HO82475pk7R+iRJnVzZMmEc00x+DNCbKEA+CrVJtnQ95mxb8PCsF1+WPwgRgbUVcN8TG
+ pI0AafZIDwBlk0G4z8k=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mc-dnldshop.info;
+ b=ModMD1l2enDCXqlGbuZ96+xUc8oteb7/lEJ+dcsaXC0RP7KEd8Zc+wHtldSSeUSv4myu+CxcOkUm
+ wYzqXoojR6JqFLducyqCAt6fmYZJfxZV5eTgh+DBP3NiKsSWBBCkF55weHQW2+wBiwsg8zZEE/41
+ JccSnoxRnLbn/O412Dc=;
+Received: by mail.mc-dnldshop.info id hl2e920001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 24 Dec 2022 15:42:57 -0500 (envelope-from
- <ups_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@up-stracks.info>)
-Date: Sat, 24 Dec 2022 15:42:57 -0500
-From: "Ups Appreciation" <ups_appreciation@up-stracks.info>
+ Sun, 25 Dec 2022 13:45:16 -0500 (envelope-from
+ <mcdonalds-app-intel+2Dgvt+2Ddev=lists.freedesktop.org@mc-dnldshop.info>)
+Date: Sun, 25 Dec 2022 13:45:16 -0500
+From: "McDonalds App" <mcdonalds-app@mc-dnldshop.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: ups Time
+Subject: We heard your need to be rewarded for being a loyal customer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_376_797336652.1671909238946"
-Message-ID: <0.0.0.29.1D917D84E0221FA.325F17@mail.up-stracks.info>
+ boundary="----=_Part_793_414726655.1671993896671"
+Message-ID: <0.0.0.58.1D918910802880C.3CA44A@mail.mc-dnldshop.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +53,29 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_376_797336652.1671909238946
+------=_Part_793_414726655.1671993896671
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
  <head> 
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /> 
   <!-- utf-8 works for most cases --> 
-  <meta content="width=device-width" name="viewport" />
+  <meta name="viewport" content="width=device-width" /> 
   <!-- Forcing initial-scale shouldn't be necessary --> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
   <!-- Use the latest (edge) version of IE rendering engine --> 
-  <meta name="x-apple-disable-message-reformatting" />
+  <meta name="x-apple-disable-message-reformatting" /> 
   <!-- Disable auto-scale in iOS 10 Mail entirely --> 
-  <title></title> 
+  <title>ourstory</title> 
   <!-- The title tag shows in email notifications, like Android 4.4. --> 
-  <link href="http://www.up-stracks.info/l4d4M2395QMH8611Y4413y1067J36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQsdQQ95sPk106oBJwDX/registration-incorrigible" rel="stylesheet" />
+  <link href="http://www.mc-dnldshop.info/disseminated-Brady/b166D239NA5bA86G11h4418G1068v36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQMdQQd6k1s0pK6iWwDMA" rel="stylesheet" /> 
+  <link href="http://www.mc-dnldshop.info/6a15OS2395u86Au11m4419v1068k36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQMdQQd6eV1D0r6gy1JwD/reconverts-jovial" rel="stylesheet" /> 
   <!-- CSS Reset : BEGIN --> 
-  <style type="text/css">/* What it does: Remove spaces around the email design added by some email clients. */
+  <style>
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
         /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
         html,
 body {
@@ -80,7 +83,7 @@ body {
     padding: 0 !important;
     height: 100% !important;
     width: 100% !important;
-    background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightf1f1f1;
+    background: #f1f1f1;
 }
 
 /* What it does: Stops email clients resizing small text. */
@@ -170,20 +173,23 @@ img.g-img + div {
         min-width: 414px !important;
     }
 }
-	</style> 
-  <!-- CSS Reset : END -->
+
+    </style> 
+  <!-- CSS Reset : END --> 
   <!-- Progressive Enhancements : BEGIN --> 
-  <style type="text/css">.primary{
-	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
+  <style>
+
+	    .primary{
+	background: #EEE;
 }
 bg_white{
-	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;
+	background: #ffffff;
 }
 bg_light{
-	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightfafafa;
+	background: #fafafa;
 }
 bg_black{
-	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000000;
+	background: #000000;
 }
 bg_dark{
 	background: rgba(0,0,0,.8);
@@ -194,36 +200,39 @@ email-section{
 
 /*BUTTON*/
 btn{
-	padding: 10px 15px;
+	padding: 5px 20px;
 	display: inline-block;
 }
 btn.btn-primary{
-	border-radius: 5px;
-	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;
+	
 }
 btn.btn-white{
 	border-radius: 5px;
-	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000000;
+	background: #ffffff;
+	color: #000000;
 }
 btn.btn-white-outline{
 	border-radius: 5px;
 	background: transparent;
-	border: 1px solid http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightfff;
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightfff;
+	border: 1px solid #fff;
+	color: #fff;
+}
+btn.btn-black{
+	border-radius: 0px;
+	background: #000;
+	color: #fff;
 }
 btn.btn-black-outline{
 	border-radius: 0px;
 	background: transparent;
-	border: 2px solid http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000;
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000;
+	border: 2px solid #000;
+	color: #000;
 	font-weight: 700;
 }
 
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Lato', sans-serif;
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000000;
+	font-family: 'Playfair Display', sans-serif;
+	color: #000000;
 	margin-top: 0;
 	font-weight: 400;
 }
@@ -233,10 +242,12 @@ body{
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 1.8;
-	color: rgba(0,0,0,.4);
+	color: rgba(0,0,0,.5);
 }
 
-
+a{
+	color: #ffc0d0;
+}
 
 table{
 }
@@ -246,10 +257,34 @@ logo h1{
 	margin: 0;
 }
 logo h1 a{
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
-	font-size: 24px;
+	color: #000000;
+	font-size: 30px;
 	font-weight: 700;
-	font-family: 'Lato', sans-serif;
+	/*text-transform: uppercase;*/
+	font-family: 'Playfair Display', sans-serif;
+	font-style: italic;
+}
+
+navigation{
+	padding: 0;
+	padding: 1em 0;
+	/*background: rgba(0,0,0,1);*/
+	border-top: 1px solid rgba(0,0,0,.05);
+	border-bottom: 1px solid rgba(0,0,0,.05);
+	margin-bottom: 0;
+}
+navigation li{
+	list-style: none;
+	display: inline-block;;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-size: 13px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+navigation li a{
+	color: rgba(0,0,0,1);
 }
 
 /*HERO*/
@@ -257,32 +292,75 @@ hero{
 	position: relative;
 	z-index: 0;
 }
-
+hero .overlay{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '';
+	width: 100%;
+	background: #000000;
+	z-index: -1;
+	opacity: .2;
+}
 hero .text{
-	color: rgba(0,0,0,.3);
+	color: rgba(255,255,255,.9);
+		margin: 0 auto 0;
 }
 hero .text h2{
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000;
-	font-size: 40px;
+	color: #fff;
+	font-size: 30px;
 	margin-bottom: 0;
-	font-weight: 400;
-	line-height: 1.4;
-}
-hero .text h3{
-	font-size: 24px;
 	font-weight: 300;
+	line-height: 1.4;
 }
 hero .text h2 span{
 	font-weight: 600;
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
+	color: #ffc0d0;
 }
 
+/*INTRO*/
+intro{
+	position: relative;
+	z-index: 0;
+}
+
+intro .text{
+	color: rgba(0,0,0,.3);
+}
+intro .text h2{
+	color: #000;
+	font-size: 34px;
+	margin-bottom: 0;
+	font-weight: 300;
+}
+intro .text h2 span{
+	font-weight: 600;
+	color: #ffc0d0;
+}
+
+
+/*PRODUCT*/
+text-product{
+}
+text-product .price{
+	font-size: 20px;
+	color: #fff;
+	display: inline-block;;
+	margin-bottom: 1em;
+	border: 2px solid #fff;
+	padding: 0 10px;
+}
+text-product h2{
+	font-family: 'Lato', sans-serif;
+}
 
 /*HEADING SECTION*/
 heading-section{
 }
 heading-section h2{
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000000;
+	color: #000000;
 	font-size: 28px;
 	margin-top: 0;
 	line-height: 1.4;
@@ -305,7 +383,7 @@ heading-section .subheading::after{
 	content: '';
 	width: 100%;
 	height: 2px;
-	background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight30e3ca;
+	background: #ffc0d0;
 	margin: 0 auto;
 }
 
@@ -318,7 +396,7 @@ heading-section-white h2{
 	padding-bottom: 0;
 }
 heading-section-white h2{
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;
+	color: #ffffff;
 }
 heading-section-white .subheading{
 	margin-bottom: 0;
@@ -345,7 +423,7 @@ footer{
 	color: rgba(0,0,0,.5);
 }
 footer .heading{
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight000;
+	color: #000;
 	font-size: 20px;
 }
 footer ul{
@@ -365,104 +443,321 @@ footer ul li a{
 
 
 }
-	</style> 
+
+
+    </style> 
  </head> 
- <body style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightf1f1f1;" width="100%"> 
-  <center style="width: 100%; background-color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightf1f1f1;"> 
+ <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;"> 
+  <center style="width: 100%; background-color: #f1f1f1;"> 
    <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-    ?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;
+     ?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp; 
    </div> 
-   <div class="email-container" style="max-width: 600px; margin: 0 auto;">
+   <div style="max-width: 600px; margin: 0 auto;" class="email-container"> 
     <!-- BEGIN BODY --> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
-     <tbody> 
+    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;"> 
+     <tbody>
       <tr> 
-       <td class="bg_white" style="padding: 1em 2.5em 0 2.5em;" valign="top"> 
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-         <tbody> 
+       <td valign="top" class="bg_white" style="padding: 1em 2.5em 0 2.5em;"> 
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody>
           <tr> 
-           <td style="text-align: center;"> <h1 style="margin-bottom: 0; color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight3C4121; font-size: 44px"><a href="http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight" style="color:  http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight3C4121"><strong>UPS</strong></a></h1> <h2 style="font-size: 32px; line-height: normal">You are just a few clicks away<br /> to get The <strong>$100 UPS</strong> Card</h2> </td> 
+           <td class="logo" style="text-align: center;"> <h1 style="font-family: arial; line-height: normal"><strong>You are just a few clicks away to get The $100 McDonald Card</strong></h1> </td> 
           </tr> 
-         </tbody> 
+         </tbody>
         </table> </td> 
-      </tr> 
+      </tr>
       <!-- end tr --> 
       <tr> 
-       <td class="hero bg_white" style="padding: 0 0 0 0;" valign="middle"><a href="http://www.up-stracks.info/neckties-Mateo/8646HO239p5cZ86n11e4415X1067X36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsdQQ97JBmj10s6VWlwqD"><img alt="" src="http://www.up-stracks.info/go-butyrate/8fa5m2v395oTR7a13myO4416G1067O36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQsdQQ95HB1g05BjlwD" style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;" /></a></td> 
-      </tr> 
+       <td valign="top" class="bg_white" style="padding: 0;"> 
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody>
+          <tr> 
+           <td width="60%" style="text-align: center;"> <br /> </td> 
+          </tr> 
+         </tbody>
+        </table> </td> 
+      </tr>
       <!-- end tr --> 
       <tr> 
-       <td class="hero bg_white" style="padding: 2em 0 4em 0;" valign="middle"> 
+       <td bgcolor="#fff" valign="middle"> 
+        <div class="overlay"></div> 
         <table> 
-         <tbody> 
+         <tbody>
+          <tr> 
+           <td> 
+            <div class="text" style="padding: 0; text-align: center;"> 
+             <a href="http://www.mc-dnldshop.info/d8b6g2ni395D86Bt12h441apq1068i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQMdQQd6Eg1t0p6LULwlD/mediates-lordship"><img width="100%" style="width: 100%; max-width: 600px" src="http://www.mc-dnldshop.info/demountable-holden/dc85h_2395E7aoY12Q4I41co1068m36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQMdQQd6r1j0Lg6dlMXwD" alt="" /></a> 
+             <h2 style="padding-left: 12px; padding-right: 12px; font-family: arial; font-size: 24px">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</h2> 
+             <p><a href="http://www.mc-dnldshop.info/d8b6g2ni395D86Bt12h441apq1068i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQMdQQd6Eg1t0p6LULwlD/mediates-lordship" style="padding: 15px 30px;
+	display: inline-block;border-radius: 5px;	background: #DD2B2B;	color: #ffffff; font-size: 24px">Go Here To Start</a></p> 
+            </div> </td> 
+          </tr> 
+         </tbody>
+        </table> </td> 
+      </tr>
+      <!-- end tr --> 
+      <tr> 
+       <td valign="middle" class="intro bg_white" style="padding: 2em 0 4em 0;"> 
+        <table> 
+         <tbody>
           <tr> 
            <td> 
             <div class="text" style="padding: 0 2.5em; text-align: center;"> 
-             <h3 style="padding-top: 12px"><strong>We love your opinion</strong><br /> Simply complete our 20-Second Service Survey about how your experience has been with us lately</h3> 
-             <p><a href="http://www.up-stracks.info/neckties-Mateo/8646HO239p5cZ86n11e4415X1067X36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsdQQ97JBmj10s6VWlwqD" style="border-radius: 5px; background: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straight3C4121;
-	color: http://www.up-stracks.info/7375cq2395W86XY13JL4414ro1067r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsdQQ95CP1z05NzwDp/mariner-straightffffff;padding: 10px 15px;	display: inline-block; font-size: 25px">Click Here To Start</a></p> 
+             <h2>We appreciate your Mc opinion</h2> 
+             <a href="http://www.mc-dnldshop.info/d8b6g2ni395D86Bt12h441apq1068i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQMdQQd6Eg1t0p6LULwlD/mediates-lordship"><img width="100%" src="http://www.mc-dnldshop.info/d6d6SU2n395qQD7a12L441dNr1068k36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQMdQQd5B1F0V6yWwyDP/disseminated-Brady" style="width: 100%; max-width: 600px" alt="" /></a> 
+             <p>&nbsp;</p> 
+             <p>&nbsp;</p> 
             </div> </td> 
           </tr> 
-         </tbody> 
+         </tbody>
         </table> </td> 
-      </tr> 
-      <!-- end tr -->
-      <!-- 1 Column Text + Button : END --> 
-     </tbody> 
-    </table> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
-     <tbody> 
+      </tr>
+      <!-- end tr --> 
       <tr> 
-       <td class="bg_light footer email-section" valign="middle"> 
-        <table> 
-         <tbody> 
+       <td class="bg_white"> 
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+         <tbody>
           <tr> 
-           <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-             <tbody> 
+           <td class="primary email-section" style="padding: 0; width: 100%;"> 
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody>
               <tr> 
-               <td style="text-align: left; padding-right: 10px;"> <h3 class="heading">&nbsp;</h3> <p>&nbsp;</p> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td class="text-product" style="text-align: left; padding: 20px 30px;"> 
+                    <div class="heading-section"> 
+                     <span></span> 
+                     <h2 style="font-size: 20px;"></h2> 
+                     <p></p> 
+                     <p></p> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
               </tr> 
-             </tbody> 
+             </tbody>
             </table> </td> 
-           <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-             <tbody> 
+          </tr>
+          <!-- end: tr --> 
+          <tr> 
+           <td class="primary email-section" style="padding: 0; width: 100%;"> 
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody>
               <tr> 
-               <td style="text-align: left; padding-left: 5px; padding-right: 5px;"> <h3 class="heading">&nbsp;</h3> 
-                <ul> 
-                </ul> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td class="text-product" style="text-align: left; padding: 20px 30px;"> 
+                    <div class="heading-section"> 
+                     <span></span> 
+                     <h2 style="font-size: 20px;"></h2> 
+                     <p></p> 
+                     <p></p> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
               </tr> 
-             </tbody> 
+             </tbody>
             </table> </td> 
-           <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-             <tbody> 
+          </tr>
+          <!-- end: tr --> 
+          <tr> 
+           <td class="primary email-section" style="padding: 0; width: 100%;"> 
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody>
               <tr> 
-               <td style="text-align: left; padding-left: 10px;"> 
-                <ul> 
-                 <li>&nbsp;</li> 
-                 <li>&nbsp;</li> 
-                 <li>&nbsp;</li> 
-                 <li>&nbsp;</li> 
-                </ul> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td class="text-product" style="text-align: left; padding: 20px 30px;"> 
+                    <div class="heading-section"> 
+                     <span></span> 
+                     <h2 style="font-size: 20px;"></h2> 
+                     <p></p> 
+                     <p></p> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
               </tr> 
-             </tbody> 
+             </tbody>
             </table> </td> 
-          </tr> 
-         </tbody> 
+          </tr>
+          <!-- end: tr --> 
+          <tr> 
+           <td class="primary email-section" style="padding: 0; width: 100%;"> 
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody>
+              <tr> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td class="text-product" style="text-align: left; padding: 20px 30px;"> 
+                    <div class="heading-section"> 
+                     <span></span> 
+                     <h2 style="font-size: 20px;"></h2> 
+                     <p></p> 
+                     <p></p> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+              </tr> 
+             </tbody>
+            </table> </td> 
+          </tr>
+          <!-- end: tr --> 
+          <tr> 
+           <td class="primary email-section" style="padding: 0; width: 100%;"> 
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody>
+              <tr> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td class="text-product" style="text-align: left; padding: 20px 30px;"> 
+                    <div class="heading-section"> 
+                     <span></span> 
+                     <h2 style="font-size: 20px;"></h2> 
+                     <p></p> 
+                     <p></p> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+              </tr> 
+             </tbody>
+            </table> </td> 
+          </tr>
+          <!-- end: tr --> 
+          <tr> 
+           <td class="primary email-section" style="padding: 0; width: 100%;"> 
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody>
+              <tr> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+               <td valign="middle" width="50%"> 
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> 
+                 <tbody>
+                  <tr> 
+                   <td class="text-product" style="text-align: left; padding: 20px 30px;"> 
+                    <div class="heading-section"> 
+                     <span></span> 
+                     <h2 style="font-size: 20px;"></h2> 
+                     <p></p> 
+                     <p></p> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody>
+                </table> </td> 
+              </tr> 
+             </tbody>
+            </table> </td> 
+          </tr>
+          <!-- end: tr --> 
+         </tbody>
         </table> </td> 
-      </tr> 
+      </tr>
+      <!-- end:tr --> 
+      <tr> 
+       <td valign="middle" class="bg_white" style="padding: 2em 0;"> <p align="center">To change your subscription options,<a href="http://www.mc-dnldshop.info/hatched-malcontent/31e5A2z395D8ZV613C4z41bOC1068u36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQMdQQd6V1Q0SH6tkqwDl" style="text-decoration-line: none;"> <span>Follow Here </span> </a> <br /> 126 E 23rd St New York, NY, US 10010 <br /> <br /> <br /> <br /> <big><span><style class="freshening"><span class="attainment"></span></style></span></big><span dir="recycling"></span><span size="imitations"></span><font></font><font><span></span></font><font></font></p> 
+        <table> 
+         <tbody>
+          <tr> 
+           <td> 
+            <div class="text" style="padding: 0 2.5em; text-align: center;"> 
+             <p>&nbsp;</p> 
+            </div> </td> 
+          </tr> 
+         </tbody>
+        </table> </td> 
+      </tr>
+      <!-- end tr --> 
+      <!-- 1 Column Text + Button : END --> 
+     </tbody>
+    </table> 
+    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;"> 
+     <tbody>
+      <tr> 
+       <td valign="middle" class="bg_white footer"> 
+        <table> 
+         <tbody>
+          <tr style="text-align: left;"> 
+           <td valign="middle" width="60%" style="padding-top: 20px; text-align: left;"> <h3 class="heading"></h3> </td> 
+           <td valign="middle" width="40%" style="padding-top: 20px; text-align: right;"> 
+            <ul class="social"> 
+             <li></li> 
+             <li></li> 
+             <li></li> 
+            </ul> </td> 
+          </tr> 
+         </tbody>
+        </table> </td> 
+      </tr>
       <!-- end: tr --> 
       <tr> 
-       <td class="bg_light" style="text-align: center;"> <p>&nbsp;</p> </td> 
+       <td class="bg_light" style="text-align: center;"> </td> 
       </tr> 
-     </tbody> 
+     </tbody>
     </table> 
    </div> 
-  </center>   
- <img src="http://www.up-stracks.info/f2f4S2395L8Mr512u441t7H1067L36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQsdQQ96wz1RV06K2TwDN/amphetamines-Faulknerian" alt=""/></body>
+  </center>  
+ <img src="http://www.mc-dnldshop.info/reassemble-masters/eb86M23r9t5IS8i513mR44T1ei1068o36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQMdQQd5C1p0C5p1wqD" alt=""/></body>
 </html>
 
-------=_Part_376_797336652.1671909238946--
+------=_Part_793_414726655.1671993896671--
 
