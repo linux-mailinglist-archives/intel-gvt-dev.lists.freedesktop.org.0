@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3ECA2656530
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Dec 2022 22:45:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 139B365654F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Dec 2022 23:32:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0913910E2C5;
-	Mon, 26 Dec 2022 21:45:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2948B10E2C8;
+	Mon, 26 Dec 2022 22:32:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Mon, 26 Dec 2022 21:45:54 UTC
-Received: from mail.jump-cstco.info (unknown [104.223.234.138])
- by gabe.freedesktop.org (Postfix) with ESMTP id B4CE810E2C5
+ Mon, 26 Dec 2022 22:32:02 UTC
+Received: from mail.alt-mirclesht.info (unknown [104.223.234.136])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7731710E2C5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Dec 2022 21:45:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jump-cstco.info; 
+ Mon, 26 Dec 2022 22:32:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=alt-mirclesht.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=costco_love@jump-cstco.info; 
- bh=yzagtGc8gxf+M6rgTK0gV9eqMD0=;
- b=YmRejPTtC6ASEqIX1QcPNAReLqaUKPnQjEFznipgmaJOrBL3KuORH1CtkQNaqvIAbT9RBZUHsmzM
- O9g8aO8QZJ5Yp7T+xaOfZ87An4U7YtlTI55xY2PEKrQc0OoMwgftZrkpuS3GNgf6ykTeEkAPxJQW
- TUrcblrJT9vlinfmeKg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jump-cstco.info;
- b=hz98FzqQKe3ixrUN02Wjr/Nsf944ZU4lpi/bw8hphOjQaOn9khXcBAMtvhp6oH2NRenDd85C6mRF
- nDvp1muYPpiIxjVVZ0AOE4IsyuvpUR4GoF1kRd82n+A+TovuEaa5epT8EMOlqQJk7o8IhlDEIoRH
- yLOMOgMkcKSCUZ3ayU8=;
-Received: by mail.jump-cstco.info id hl8b140001gj for
+ i=miracle.sheets.team@alt-mirclesht.info; 
+ bh=BGyP9FIDAklh7fP2gsIbnZqi1Uo=;
+ b=gfUKtXPFQTLFhcE4455qFUP99vHWQ8Z+d0+pvhSMdRFtAL4vNr1Yoowbz4xOQSM+tjCwggf70AM9
+ w1F2/zzSaLgy+qxSZwy7pRL694q4k/zHNqFp2bdgUXptChFvMhyybwebyGfgkqxcL3ZJ4ZSRjUCu
+ c1WETBpYzJrnyMHoxbE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=alt-mirclesht.info; 
+ b=iWpFD1VhOhdh9G5aRKmJ7PutdWDSTOZGycFlPmn8Qw9UVliYaoRYPcpAtWeyrOEAc7wOBsbKoLc0
+ wjMNNmGmjk8CaaeONJkCJ8jnxSsmpShmyFkIZp0eKsgSHaoQ8Hg++tcuaMh5+/L0eSAFxWnDw+1R
+ TpvfrdqM93dxYX9Kaik=;
+Received: by mail.alt-mirclesht.info id hl8ge40001g7 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 26 Dec 2022 16:33:46 -0500 (envelope-from
- <costco_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@jump-cstco.info>)
-Date: Mon, 26 Dec 2022 16:33:46 -0500
-From: "Costco Love" <costco_love@jump-cstco.info>
+ Mon, 26 Dec 2022 17:19:34 -0500 (envelope-from
+ <miracle.sheets.team-intel+2Dgvt+2Ddev=lists.freedesktop.org@alt-mirclesht.info>)
+Date: Mon, 26 Dec 2022 17:19:34 -0500
+From: "Miracle Sheets Team" <miracle.sheets.team@alt-mirclesht.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Be next by leaving feedback.
+Subject: 
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_496_1144423103.1672090406473"
-Message-ID: <0.0.0.37.1D91971BC703934.38F865@mail.jump-cstco.info>
+ boundary="----=_Part_226_1857151395.1672093160474"
+Message-ID: <0.0.0.19.1D91978220A1CDC.3F5093@mail.alt-mirclesht.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_496_1144423103.1672090406473
+------=_Part_226_1857151395.1672093160474
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,7 +64,7 @@ Content-Transfer-Encoding: 7bit
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
   <meta name="x-apple-disable-message-reformatting" /> 
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>perfect stranger</title> 
+  <title></title> 
   <style media="all" rel="stylesheet" type="text/css">/* Base ------------------------------ */
     
     @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap");
@@ -181,11 +182,7 @@ Content-Transfer-Encoding: 7bit
     }
     
     .button--green {
-      background-color: #22BC66;
-      border-top: 10px solid #22BC66;
-      border-right: 18px solid #22BC66;
-      border-bottom: 10px solid #22BC66;
-      border-left: 18px solid #22BC66;
+      
     }
     
     .button--red {
@@ -437,7 +434,7 @@ Content-Transfer-Encoding: 7bit
     }
     
     .content-cell {
-      padding: 15px;
+      padding: 45px;
     }
     /*Media Queries ------------------------------ */
     
@@ -458,7 +455,7 @@ Content-Transfer-Encoding: 7bit
       <table cellpadding="0" cellspacing="0" class="email-content" role="presentation" width="100%"> 
        <tbody> 
         <tr> 
-         <td align="center" class="email-masthead" style="font-size: 25pt; font-weight: bold; text-align: center">You are just a few clicks away<br /> to get The $100 COSTCO Card</td> 
+         <td class="email-masthead">&nbsp;</td> 
         </tr> 
         <!-- Email Body --> 
         <tr> 
@@ -469,21 +466,12 @@ Content-Transfer-Encoding: 7bit
             <tr> 
              <td class="content-cell"> 
               <div class="f-fallback"> 
-               <center> 
-                <h1 align="center" style="margin-bottom: 0"><a href="http://www.jump-cstco.info/hottest-enrolls/b344z2395L8WO612zi443dk106eV36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQxdQRm7M1L_nC05nU1wD"><img src="http://www.jump-cstco.info/6476p2w3t95Q7laq12d443_fv106ew36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQxdQRm7HlCR10y5AqOwD/glued-telegram" style="display:block;height:auto;border:0;width:250px;max-width:100%; margin: auto" width="250" /></a></h1> 
+               <center>
+                <a href="http://www.alt-mirclesht.info/paraffin-nationalizing/y6c4U2395m8Ty611a4442I106fO36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQWdQRn6p10DZz5rTw1D"><img alt="" border="0" src="http://www.alt-mirclesht.info/15b5L23F95Py7Ba11d4444R106fH36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQWdQRn5t1l0t6yXLlwD/reconfiguring-scuttle" style="display:block; width: 100%; max-width: 100%;" /></a> 
+                <h1 align="center" style="text-align: center; padding-top: 12px; font-size: 36px"><strong>Say Goodbye To Dirty<br /> Sheets This Christmas</strong></h1> 
                </center> 
-               <table width="100%%"> 
-                <tbody> 
-                 <tr> 
-                  <td><a href="http://www.jump-cstco.info/hottest-enrolls/b344z2395L8WO612zi443dk106eV36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQxdQRm7M1L_nC05nU1wD"><img alt="" src="http://www.jump-cstco.info/e5d4u2395h7aHv12Q44W40h106eA36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQxdQRm7tJ10AZP5UlpwD/glued-telegram" style="width: 100%; max-width: 580px" width="100%" /></a></td> 
-                 </tr> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <h1 align="center" style="text-align: center">We At COSTCO AppreciateYour Opinion.</h1> 
-               <p style="margin:0;font-size:22px;mso-line-height-alt:14.399999999999999px; text-align: center"><span style="font-size:22px;">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</span></p> 
+               <p><a href="http://www.alt-mirclesht.info/paraffin-nationalizing/y6c4U2395m8Ty611a4442I106fO36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQWdQRn6p10DZz5rTw1D"><img alt="" src="http://www.alt-mirclesht.info/cd76X2yU395r7TQa11A4445X106fk36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQWdQRn7AWz1V0F5pywDB/natures-imagine" style="width: 100%" width="100%" /></a></p> 
+               <p style="font-size: 25px; text-align: center">Are you tired of washing your sheets just for them to get smelly and dirty again? it's time to say goddbye to sweaty sleepless nights!</p> 
                <!-- Action --> 
                <table align="center" cellpadding="0" cellspacing="0" class="body-action" role="presentation" width="100%"> 
                 <tbody> 
@@ -494,7 +482,7 @@ Content-Transfer-Encoding: 7bit
                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
                     <tbody> 
                      <tr> 
-                      <td align="center"><a href="http://www.jump-cstco.info/hottest-enrolls/b344z2395L8WO612zi443dk106eV36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQxdQRm7M1L_nC05nU1wD" style=" background-color: #3869D4;
+                      <td align="center"><a class="f-fallback button" href="http://www.alt-mirclesht.info/paraffin-nationalizing/y6c4U2395m8Ty611a4442I106fO36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQWdQRn6p10DZz5rTw1D" style=" background-color: #3869D4;
       border-top: 10px solid #3869D4;
       border-right: 18px solid #3869D4;
       border-bottom: 10px solid #3869D4;
@@ -505,14 +493,17 @@ Content-Transfer-Encoding: 7bit
       border-radius: 3px;
       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
       -webkit-text-size-adjust: none;
-      box-sizing: border-box; font-size: 25px" target="_blank"><strong>Go Here To Start</strong></a></td> 
+      box-sizing: border-box;background-color: #22BC66;
+      border-top: 10px solid #22BC66;
+      border-right: 18px solid #22BC66;
+      border-bottom: 10px solid #22BC66;
+      border-left: 18px solid #22BC66; font-size: 26px" target="_blank"><strong>BUY MIRACLE SHEETS NOW</strong></a></td> 
                      </tr> 
                     </tbody> 
                    </table> </td> 
                  </tr> 
                 </tbody> 
-               </table> 
-               <p>&nbsp;</p> 
+               </table> &nbsp; 
                <table cellpadding="0" cellspacing="0" class="attributes" role="presentation" width="100%"> 
                 <tbody> 
                  <tr> 
@@ -520,23 +511,14 @@ Content-Transfer-Encoding: 7bit
                    <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
                     <tbody> 
                      <tr> 
-                      <td class="attributes_item"><span class="f-fallback">&nbsp; </span></td> 
+                      <td class="attributes_item"> 
+                       <div class="f-fallback"> 
+                        <h1 align="center" style="text-align: center; margin-bottom: 0"><strong>30 DAYS MONEY BACK GUARANTEE</strong></h1> 
+                       </div> </td> 
                      </tr> 
                      <tr> 
-                      <td class="attributes_item"><span class="f-fallback">&nbsp; </span></td> 
+                      <td class="attributes_item">&nbsp;</td> 
                      </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <p>&nbsp;</p> 
-               <table cellpadding="0" cellspacing="0" class="attributes" role="presentation" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="attributes_content"> 
-                   <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-                    <tbody> 
                      <tr> 
                       <td class="attributes_item">&nbsp;</td> 
                      </tr> 
@@ -553,23 +535,23 @@ Content-Transfer-Encoding: 7bit
            </tbody> 
           </table> </td> 
         </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td> 
-      <table align="center" cellpadding="0" cellspacing="0" class="email-footer" role="presentation" width="570"> 
-       <tbody> 
         <tr> 
-         <td align="center" class="content-cell"> <p class="f-fallback sub align-center">To suspend communication,<a href="http://www.jump-cstco.info/claimants-fortress/51c6PU23g95gC8U613W4D43PeH106ew36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQxdQRm7vo1LHD06qkWwDk" style="text-decoration-line: none;"> <span>Go Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font><font class="carves"></font><font lang="psychotherapist"></font><span dir="seasonal"></font></span><span title="fungible"></span><big></big><big></big><font class="Glaswegian"></font></p> </td> 
+         <td> 
+          <table align="center" cellpadding="0" cellspacing="0" class="email-footer" role="presentation" width="570"> 
+           <tbody> 
+            <tr> 
+             <td align="center" class="content-cell"><br /> <br /> To bring your subscription to an end,<a href="http://www.alt-mirclesht.info/crustacean-faithlessness/8dc4R2395QL86j11n4443r106fv36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQWdQRn7S1zP0HJ6z@wNDl" style="text-decoration-line: none;"> <span>Begin_Over_Here </span> </a><br /> 1501 Haines St. | Jacksonville, FL 32206<br /> <br /> <br /> <span><big></big><font color="punishing"></font><font lang="Normanizer"></span></font><big><style></style><font></big><style></style></font></td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.jump-cstco.info/claimants-fortress/6de6S239UI5L8KW511y4441I106eK36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQxdQRm6CL10ln5mWMwD" alt=""/></body>
+ <img src="http://www.alt-mirclesht.info/98f4R2395Jrh8513p44_h46i106fz36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQWdQRn7EpnuY105KjlwD/blackmail-protested" alt=""/></body>
 </html>
 
-------=_Part_496_1144423103.1672090406473--
+------=_Part_226_1857151395.1672093160474--
 
