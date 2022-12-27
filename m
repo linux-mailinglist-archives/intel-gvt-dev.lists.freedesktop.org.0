@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A8B8656DD3
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Dec 2022 19:06:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD722656E7F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 27 Dec 2022 21:04:17 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4F7F110E31E;
-	Tue, 27 Dec 2022 18:06:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 392CC10E335;
+	Tue, 27 Dec 2022 20:04:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Tue, 27 Dec 2022 18:06:19 UTC
-Received: from mail.at-tmobi.info (unknown [104.223.234.139])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3AD8010E31E
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Tue, 27 Dec 2022 20:04:13 UTC
+Received: from mail.flex-veriz.info (unknown [104.223.234.141])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BA91E10E335
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Dec 2022 18:06:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=at-tmobi.info;
+ Tue, 27 Dec 2022 20:04:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flex-veriz.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tmobile-supplies@at-tmobi.info; 
- bh=UoBmBlU9eBxKk6VlesBV2kZPLX8=;
- b=NYjgqMitehkY4sGoByr30+DKegkiPSAffrY9HO4aUwWJoPWBQkfDpZzM1/wfgX7wCxK2P7Fq1dvt
- jw3XnUu+oR/cwNgQZDLL3Hck1fuVRRbCm+EIHMBzs6N0oz1CQFvofpPfzXlQDw6eyO+uMEyn7ibG
- sSn2crqIMEGIKmq0A/8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=at-tmobi.info;
- b=zlZBwYATNFpJjIB0Zd4oZRi85U9fyauXFPWr7qW9lG49USfewjRXCyuSOm0TviSapCU+Ri9YhB7z
- 936eoE8X516Y5U0ftZC5Yb4y1aglz6+N1v5Krd3sY5lQ1vcRl3BJuqFfj/xmj7I3/JfPmaGjGkoH
- MF+HK0VW/R6fyP2rXyw=;
-Received: by mail.at-tmobi.info id hlcq1m0001gk for
+ i=verizon.user.feedback@flex-veriz.info; 
+ bh=J0s+pSaAjkrkg/0vffXib+q8TGY=;
+ b=MnpNlpuC2XxeukIG86IdlIkr07B0VNNYk852WvTzmClGQTXu4V7kSphCkieuGF5B5ixvfzTYRME0
+ DlPY6pjlpfaqfIMJDg9VFkPn1D6+sN/dpYPecTKY7RweG9TwiPqR83YMAHaBA4+/J92TXueUI83S
+ ytMXZAfE03t8yGdXy60=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flex-veriz.info;
+ b=O8Z7sGTN2tLFRXGYUCW8XE7o8Zq59qc8aBsyX5cZibY2/9HNshrC7tJ0m/CbqcpwqGB3D7RuZJxR
+ dzzT0kEzjaVkbZftXbDxliw0AB1G8+ga8PabFpI1vhuKfw6M7X9d6BJpw1ZhEIfpq6HUsUBqSSt1
+ 7/7XhCk3unBWoh59jxA=;
+Received: by mail.flex-veriz.info id hld7rq0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 27 Dec 2022 12:54:57 -0500 (envelope-from
- <tmobile-supplies-intel+2Dgvt+2Ddev=lists.freedesktop.org@at-tmobi.info>)
-Date: Tue, 27 Dec 2022 12:54:57 -0500
-From: "TMOBILE Supplies" <tmobile-supplies@at-tmobi.info>
+ Tue, 27 Dec 2022 14:50:58 -0500 (envelope-from
+ <verizon.user.feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@flex-veriz.info>)
+Date: Tue, 27 Dec 2022 14:50:58 -0500
+From: "VERIZON User Feedback" <verizon.user.feedback@flex-veriz.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your visits are now rewarded for your loyalty - Awesome
+Subject: Every visit a new reward that could get you anything on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_487_1562482161.1672163671463"
-Message-ID: <0.0.0.37.1D91A1C5509D4A2.46D627@mail.at-tmobi.info>
+ boundary="----=_Part_127_1954474578.1672170646264"
+Message-ID: <0.0.0.E.1D91A2C8A25CF5A.35835@mail.flex-veriz.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,380 +53,340 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_487_1562482161.1672163671463
+------=_Part_127_1954474578.1672170646264
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternationwww.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternationwww.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
   <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <title>Narrative Survey Email</title> 
-  <style type="text/css">/* Take care of image borders and formatting */
-
-  img {
-    max-width: 600px;
-    outline: none;
-    text-decoration: none;
-    -ms-interpolation-mode: bicubic;
-  }
-
-  a {
-    border: 0;
-    outline: none;
-  }
-
-  a img {
-    border: none;
-  }
-
-  /* General styling */
-
-  td, h1, h2, h3  {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 400;
-  }
-
-  td {
-    font-size: 13px;
-    line-height: 150%;
-    text-align: left;
-  }
-
-  body {
-    -webkit-font-smoothing:antialiased;
-    -webkit-text-size-adjust:none;
-    width: 100%;
-    height: 100%;
-    color: #37302d;
-    background: #ffffff;
-  }
-
-  table {
-    border-collapse: collapse !important;
-  }
+  <title>Oxygen Upsell</title> 
+  <style type="text/css">/* Take care of image borders and formatting, client hacks */
+    img { max-width: 600px; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;}
+    a img { border: none; }
+    table { border-collapse: collapse !important;}
+    #outlook a { padding:0; }
+    .ReadMsgBody { width: 100%; }
+    .ExternalClass { width: 100%; }
+    .backgroundTable { margin: 0 auto; padding: 0; width: 100% !important; }
+    table td { border-collapse: collapse; }
+    .ExternalClass * { line-height: 115%; }
+    .container-for-gmail-android { min-width: 600px; }
 
 
-  h1, h2, h3 {
-    padding: 0;
-    margin: 0;
-    color: #444444;
-    font-weight: 400;
-    line-height: 110%;
-  }
+    /* General styling */
+    * {
+      font-family: Helvetica, Arial, sans-serif;
+    }
 
-  h1 {
-    font-size: 35px;
-  }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: none;
+      width: 100% !important;
+      margin: 0 !important;
+      height: 100%;
+      color: #676767;
+    }
 
-  h2 {
-    font-size: 30px;
-  }
+    td {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #777777;
+      text-align: center;
+      line-height: 21px;
+    }
 
-  h3 {
-    font-size: 24px;
-  }
+    a {
+      color: #676767;
+      text-decoration: none !important;
+    }
 
-  h4 {
-    font-size: 18px;
-    font-weight: normal;
-  }
+    .pull-left {
+      text-align: left;
+    }
 
-  .important-font {
-    color: #21BEB4;
-    font-weight: bold;
-  }
+    .pull-right {
+      text-align: right;
+    }
 
-  .hide {
-    display: none !important;
-  }
+    .header-lg,
+    .header-md,
+    .header-sm {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: normal;
+      padding: 0px 0 0;
+      color: #4d4d4d;
+    }
 
-  .force-full-width {
-    width: 100% !important;
-  }
+    .header-md {
+      font-size: 24px;
+    }
 
-  .pusher {
-    width: 70px;
-  }
+    .header-sm {
+      padding: 5px 0;
+      font-size: 18px;
+      line-height: 1.3;
+    }
 
-  .rate-num {
-    text-align: center;
-    padding-right: 8px;
-  }
+    .content-padding {
+      padding: 20px 0 30px;
+    }
 
-  .survey-info-left {
-    text-align: right;
-    padding-right: 325px;
-  }
+    .mobile-header-padding-right {
+      width: 290px;
+      text-align: right;
+      padding-left: 10px;
+    }
 
-  .survey-info-right {
-    text-align: left;
-    padding-right: 45px;
-  }
+    .mobile-header-padding-left {
+      width: 290px;
+      text-align: left;
+      padding-left: 10px;
+    }
+
+    .free-text {
+      width: 100% !important;
+      padding: 10px 60px 0px;
+    }
+
+    .block-rounded {
+      border-radius: 5px;
+      border: 1px solid #e5e5e5;
+      vertical-align: top;
+    }
+
+    .button {
+      padding: 30px 0;
+    }
+
+    .info-block {
+      padding: 0 20px;
+      width: 260px;
+    }
+
+    .block-rounded {
+      width: 260px;
+    }
+
+    .info-img {
+      width: 258px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .force-width-gmail {
+      min-width:600px;
+      height: 0px !important;
+      line-height: 1px !important;
+      font-size: 1px !important;
+    }
+
+    .button-width {
+      width: 228px;
+    }
+	</style> 
+  <style media="screen" type="text/css">@import url(http://fonts.googleapis.com/css?family=Oxygen:400,700);
 	</style> 
   <style media="screen" type="text/css">@media screen {
-        @import url(http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternationfonts.googleapis.com/css?family=Open+Sans:400);
-
-        /* Thanks Outlook 2013! */
-        td, h1, h2, h3 {
-          font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-        }
+      /* Thanks Outlook 2013! */
+      * {
+        font-family: 'Oxygen', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
       }
+    }
 	</style> 
-  <style media="only screen and (max-width: 600px)" type="text/css">/* Mobile styles */
-    @media only screen and (max-width: 600px) {
+  <style media="only screen and (max-width: 480px)" type="text/css">/* Mobile styles */
+    @media only screen and (max-width: 480px) {
+
+      table[class*="container-for-gmail-android"] {
+        min-width: 290px !important;
+        width: 100% !important;
+      }
 
       table[class="w320"] {
         width: 320px !important;
       }
 
-      table[class="w300"] {
-        width: 300px !important;
-      }
-
-      table[class="w290"] {
-        width: 290px !important;
-      }
-
-      td[class="w320"] {
-        width: 320px !important;
-      }
-
-      td[class~="mobile-padding"] {
-        padding-left: 14px !important;
-        padding-right: 14px !important;
-      }
-
-      td[class*="mobile-padding-left"] {
-        padding-left: 14px !important;
-      }
-
-      td[class*="mobile-padding-right"] {
-        padding-right: 14px !important;
-      }
-
-      td[class*="mobile-block"] {
-        display: block !important;
-        width: 100% !important;
-        text-align: left !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        padding-bottom: 15px !important;
-      }
-
-      td[class*="mobile-no-padding-bottom"] {
-        padding-bottom: 0 !important;
-      }
-
-      td[class~="mobile-center"] {
-        text-align: center !important;
-      }
-
-      table[class*="mobile-center-block"] {
-        float: none !important;
-        margin: 0 auto !important;
-      }
-
-      *[class*="mobile-hide"] {
+      img[class="force-width-gmail"] {
         display: none !important;
         width: 0 !important;
         height: 0 !important;
-        line-height: 0 !important;
-        font-size: 0 !important;
       }
 
-      td[class*="mobile-border"] {
-        border: 0 !important;
+      td[class*="mobile-header-padding-left"] {
+        width: 160px !important;
+        padding-left: 0 !important;
       }
 
-
-      td[class*="pusher"] {
-        width: 0px !important;
-        display: none !important;
+      td[class*="mobile-header-padding-right"] {
+        width: 160px !important;
+        padding-right: 0 !important;
       }
 
-      td[class="survey-info-right"] {
-        text-align: right !important;
-        padding: 0 !important;
+      td[class="header-lg"] {
+        font-size: 24px !important;
+        padding-bottom: 5px !important;
       }
 
-      td[class="survey-info-left"] {
-        text-align: left !important;
-        padding: 0 !important;
+      a[class="button-width"],
+      a[class="button-mobile"] {
+        width: 248px !important;
       }
 
-
-      a[class="mobile-dot"] {
-        width: 26px !important;
-        height: 23px !important
+      td[class="header-md"] {
+        font-size: 18px !important;
+        padding-bottom: 5px !important;
       }
 
-      td[class="rate-num"] {
-        padding:0 !important;
+      td[class="content-padding"] {
+        padding: 5px 0 30px !important;
+      }
+
+       td[class="button"] {
+        padding: 5px !important;
+      }
+
+      td[class*="free-text"] {
+        padding: 10px 18px 30px !important;
+      }
+
+      td[class="info-block"] {
+        display: block !important;
+        width: 280px !important;
+        padding-bottom: 40px !important;
+      }
+
+      td[class="info-img"],
+      img[class="info-img"] {
+        width: 278px !important;
       }
     }
 	</style> 
  </head> 
- <body bgcolor="#ffffff" class="body" style="padding:0; margin:0; display:block; background:#ffffff; -webkit-text-size-adjust:none"> 
-  <table align="center" cellpadding="0" cellspacing="0" height="100%" width="100%"> 
+ <body bgcolor="#f7f7f7"> 
+  <table align="center" cellpadding="0" cellspacing="0" class="container-for-gmail-android" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center" bgcolor="#ffffff" valign="top" width="100%"> 
-      <table cellpadding="0" cellspacing="0" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="background:#1f1f1f" width="100%"> 
-          <center> 
-           <table cellpadding="0" cellspacing="0" class="w320" width="600"> 
+     <td align="left" style="" valign="top" width="100%"> 
+      <center> 
+       <table background="http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg" bgcolor="#ffffff" cellpadding="0" cellspacing="0" style="background-color:transparent" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td height="80" style="text-align: center; vertical-align:middle;" valign="top" width="100%"> 
+           <center> 
+            <table cellpadding="0" cellspacing="0" class="w320" width="600"> 
+             <tbody> 
+              <tr> 
+               <td class="pull-left mobile-header-padding-left" style="vertical-align: middle;"><strong style="color: #000; font-size: 52px"><span style="color: #E60000">V</span>erizon</strong></td> 
+               <td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </center> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </center> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" class="content-padding" style="background-color: #fff;" valign="top" width="100%"> 
+      <center> 
+       <table cellpadding="0" cellspacing="0" class="w320" width="600"> 
+        <tbody> 
+         <tr> 
+          <td class="header-lg"><a href="http://www.flex-veriz.info/teams-lightface/42c4S2395j8pQ612q4457VU1073L36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQWdQRQ6tu_10C5UJTwD" style="color: rgb(0, 0, 0);line-height: 0px;text-decoration: underline;font-family: Arial, Verdana, Helvetica, sans-serif;text-decoration-color: #E22237 !important;" target="_blank"><img alt="Carnegie Hall" class="full-width" src="http://www.flex-veriz.info/finding-congratulate/f304K2395v7Fak13n4HK45ao1073T36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQWdQRQ6g1KR0u5j0OwD" style="border: 0px none rgb(0, 0, 0); outline: rgb(0, 0, 0) none 0px; text-decoration: none; width: 100%; font-size: 18px; margin: 0px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);" /></a> We appreciate your opinion</td> 
+         </tr> 
+         <tr> 
+          <td class="free-text" style="font-size: 22px; line-height: normal">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</td> 
+         </tr> 
+         <tr> 
+          <td class="button"> 
+           <div>
+            <a class="button-mobile" href="http://www.flex-veriz.info/teams-lightface/42c4S2395j8pQ612q4457VU1073L36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQWdQRQ6tu_10C5UJTwD" style="background-color:#ff6f6f;border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:24px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:255px;-webkit-text-size-adjust:none;mso-hide:all;"><strong>Go here To Start</strong></a>
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </center> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" style="background-color: #ffffff;  border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;" valign="top" width="100%"> 
+      <center> 
+       <table cellpadding="0" cellspacing="0" class="w320" width="600"> 
+        <tbody> 
+         <tr> 
+          <td class="content-padding"> 
+           <table cellpadding="0" cellspacing="0" width="100%"> 
             <tbody> 
              <tr> 
-              <td class="mobile-block mobile-no-padding-bottom mobile-center" style="background:#1f1f1f;padding:10px 10px 10px 20px;" valign="top" width="270">&nbsp;</td> 
-              <td class="mobile-block mobile-center" style="background:#1f1f1f;padding:10px 15px 10px 10px" valign="top" width="270"> 
-               <table align="right" border="0" cellpadding="0" cellspacing="0" class="mobile-center-block"> 
-                <tbody> 
-                 <tr> 
-                  <td align="right">&nbsp;</td> 
-                  <td align="right" style="padding-left:5px">&nbsp;</td> 
-                  <td align="right" style="padding-left:5px">&nbsp;</td> 
-                  <td align="right" style="padding-left:5px">&nbsp;</td> 
-                  <td align="right" style="padding-left:5px">&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
+              <td class="header-md">Check out some of our upgraded deals!<br /> <br /> <a href="http://www.flex-veriz.info/teams-lightface/42c4S2395j8pQ612q4457VU1073L36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQWdQRQ6tu_10C5UJTwD"><img alt="" src="http://www.flex-veriz.info/7734N2395qG7_a12w445ZbX1073Q36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQWdQRQ6D1gj0_5w3wXD/bobolinks-capacitance" width="100%" /></a></td> 
              </tr> 
             </tbody> 
-           </table> 
-          </center> </td> 
-        </tr> 
-        <tr> 
-         <td style="border-bottom:1px solid #e7e7e7;"> 
-          <center> 
-           <table cellpadding="0" cellspacing="0" class="w320" width="600"> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td style="padding-bottom: 75px;"> 
+           <table cellpadding="0" cellspacing="0" style="border-collapse:separate !important;" width="100%"> 
             <tbody> 
              <tr> 
-              <td align="left" class="mobile-padding" style="padding:20px"> <h2 align="center"><strong>T-MOBILE</strong></h2> &nbsp; 
-               <table cellpadding="10" width="100%"> 
+              <td class="info-block"> 
+               <table cellpadding="0" cellspacing="0" style="border-collapse:separate !important;" width="100%"> 
                 <tbody> 
                  <tr> 
-                  <th align="center" style="text-align: center; color: #DA0371; font-size: 34px; line-height: normal">You are just a few clicks away to get The $100 T-Mobile Card</th> 
-                 </tr> 
-                 <tr> 
-                  <td style="padding-top: 20px"><a href="http://www.at-tmobi.info/b8d4Y2395lXj8612A444coK1071_36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQXdQR97dMQn1M05rWwDM/antagonized-agencies"><img src="http://www.at-tmobi.info/penitentiary-consternation/eI46S2h3i95RR7Ia12l444ifB1071x36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQXdQR97i10JZyN5jXw2D" width="100%" /></a></td> 
-                 </tr> 
-                 <tr> 
-                  <th align="center" style="text-align: center; font-size: 26px; padding: 15px"><strong>We appreciate your opinion</strong></th> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <table width="100%%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" style="text-align: center; font-size: 22px">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center"> <p style="cursor:pointer; background-color: #000; border-radius: 100px; padding: 12px; display: block; padding: 12px 30px; font-size: 26px; margin: auto; max-width: 260px; text-align: center; margin-top: 20px; margin-bottom: 20px"><a href="http://www.at-tmobi.info/b8d4Y2395lXj8612A444coK1071_36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQXdQR97dMQn1M05rWwDM/antagonized-agencies" style="color:#FFFFFF;text-decoration:none;cursor:pointer;" target="_blank"><strong>Go here To Start</strong></a></p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </center> </td> 
-        </tr> 
-        <tr> 
-         <td style="background-color:#f8f8f8;border-bottom:1px solid #e7e7e7;" valign="top"> 
-          <center> 
-           <table border="0" cellpadding="0" cellspacing="0" class="w320" style="height:100%;" width="600"> 
-            <tbody> 
-             <tr> 
-              <td class="mobile-padding" style="padding:20px;" valign="top"> 
-               <center>
-                <a href="http://www.at-tmobi.info/b8d4Y2395lXj8612A444coK1071_36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQXdQR97dMQn1M05rWwDM/antagonized-agencies"><img alt="" src="http://www.at-tmobi.info/da94A2395j7QaK12gA4450M1071O36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQXdQR96mi10vj6E@lwD2/Beaverton-abet" style="width: 100%" /> </a>
-               </center> 
-               <table cellpadding="0" cellspacing="0" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="survey-info-left">&nbsp;</td> 
-                  <td class="survey-info-right">&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <table cellpadding="0" cellspacing="0" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="pusher">&nbsp;</td> 
                   <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td> 
-                   <div>
-                    <a class="mobile-dot" href="http://www.at-tmobi.info/2876h23A9r5s8zy613r4M44Ddu1071Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXdQR97s1qT0gY5zL2wD/penitentiary-consternation" style="background-color:#f8f8f8;background-image:url(https://www.filepicker.io/api/file/gfdSlreTSXaa07axKLVO);color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:23px;text-align:center;text-decoration:none;width:34px;-webkit-text-size-adjust:none;mso-hide:all;">&nbsp;</a>
-                   </div> </td> 
-                  <td class="pusher">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td class="pusher">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="rate-num">&nbsp;</td> 
-                  <td class="pusher">&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <table cellpadding="0" cellspacing="0" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td style="padding-top:50px;"> 
                    <table cellpadding="0" cellspacing="0" width="100%"> 
                     <tbody> 
                      <tr> 
-                      <td align="center" style="vertical-align:top; text-align: center" width="350">To cut off communications,<a href="http://www.at-tmobi.info/paged-flaunted/51c4a2395Q8oR613K4U4R4ew1071j36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQXdQR95WN1W05Mkw2D" style="text-decoration-line: none;"> <span>Click-On-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <style><small></style><big></big></small><small></small><style></style></td> 
+                      <td class="info-img"></td> 
+                     </tr> 
+                     <tr> 
+                      <td style="padding: 15px;"> 
+                       <table cellpadding="0" cellspacing="0" width="100%"> 
+                        <tbody> 
+                         <tr> 
+                          <td style="text-align:left; width:155px">&nbsp;</td> 
+                         </tr> 
+                        </tbody> 
+                       </table> </td> 
+                     </tr> 
+                     <tr> 
+                      <td style="padding: 15px;"> 
+                       <div>
+                        &nbsp;
+                       </div> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+              <td class="info-block"> 
+               <table cellpadding="0" cellspacing="0" style="border-collapse:separate !important;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td> 
+                   <table cellpadding="0" cellspacing="0" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td class="info-img"></td> 
+                     </tr> 
+                     <tr> 
+                      <td style="padding: 15px;"> 
+                       <table cellpadding="0" cellspacing="0" width="100%"> 
+                        <tbody> 
+                         <tr> 
+                          <td style="text-align:left; width:155px"><br /> &nbsp;</td> 
+                          <td style="text-align:right; vertical-align: top;">&nbsp;</td> 
+                         </tr> 
+                        </tbody> 
+                       </table> </td> 
+                     </tr> 
+                     <tr> 
+                      <td style="padding: 15px;"> 
+                       <div>
+                        &nbsp;
+                       </div> </td> 
                      </tr> 
                     </tbody> 
                    </table> </td> 
@@ -435,28 +395,47 @@ Content-Transfer-Encoding: 7bit
                </table> </td> 
              </tr> 
             </tbody> 
-           </table> 
-          </center> </td> 
-        </tr> 
-        <tr> 
-         <td style="background-color:#1f1f1f;"> 
-          <center> 
-           <table bgcolor="#1f1f1f" border="0" cellpadding="0" cellspacing="0" class="w320" style="height:100%;color:#ffffff" width="600"> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </center> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" style="background-color: #f7f7f7; height: 100px;" valign="top" width="100%"> 
+      <center> 
+       <table cellpadding="0" cellspacing="0" class="w320" width="600"> 
+        <tbody> 
+         <tr> 
+          <td style="padding: 25px 0 25px">To halt messages,<a href="http://www.flex-veriz.info/thickens-prize/3f05e23_95ix86h13v4MC458Q1073p36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQWdQRQ6sk10GV6QlwDX@" style="text-decoration-line: none;"> <span>Visit_Here_Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> &nbsp; 
+           <table width="100%"> 
             <tbody> 
              <tr> 
-              <td align="right" class="mobile-padding" style="font-size:12px;padding:20px; background-color:#1f1f1f; color:#ffffff; text-align:left; " valign="middle">&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
              </tr> 
             </tbody> 
-           </table> 
-          </center> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+           </table> <font class="needs"></font><style size="chinning"><font></font></style><font style="tabulation"></font><span></span><span></span></td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </center> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.at-tmobi.info/Gascony-briefed/5765nU2395tY85G13S4x45L1x1071X36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQXdQR96HD10OP6SNwqLD" alt=""/></body>
+ <img src="http://www.flex-veriz.info/jackpot-defensive/9ae4U2395Mj8r512E44K5cG1073H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQWdQRQ6Y1Uu0J5oUwDL" alt=""/></body>
 </html>
 
-------=_Part_487_1562482161.1672163671463--
+------=_Part_127_1954474578.1672170646264--
 
