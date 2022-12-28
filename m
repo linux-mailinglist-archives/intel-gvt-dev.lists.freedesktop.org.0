@@ -2,140 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E1216573DD
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Dec 2022 09:21:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 582CB658563
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 28 Dec 2022 18:48:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C32A410E181;
-	Wed, 28 Dec 2022 08:21:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0C18E10E3D8;
+	Wed, 28 Dec 2022 17:48:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 581A310E181;
- Wed, 28 Dec 2022 08:21:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1672215667; x=1703751667;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- in-reply-to:mime-version;
- bh=ud7x6N/VZcwlByuAmjb9pzAZL7D+9DkcF39pzl8gafg=;
- b=WkuM642R93shMC6s5dfcE3VqfQ5OPVApOQ51imTs/LxxGp5OqbVlVs/v
- RfkGVQTe+bQozbwEpfzcsCvP6PVnsPsKPWqhG9L+RaAKjADPAlsq2/yTX
- 1jPUckN4tNUTOODqgz5Fw5Z2eaWDIxJ4nkL17XhHhapUsEX0tJ6Gnb8+L
- 1mNW5RXjOK4tiAwZUt40ZFyi7ryztuOkMUgVhty+MshiBZcZx/yf/YeGR
- gyQo3zUJxpQHS7kDfLkEVvZLqJZCnIoN1Kq4Phhiuv6D30zyCdUnNv+PU
- MW5FFXjhq8A4ORybdEHIR7eAxQSDS6Zk1jYLOzw53Y/9OOtQPss2loZQB A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10573"; a="385254447"
-X-IronPort-AV: E=Sophos;i="5.96,280,1665471600"; d="scan'208";a="385254447"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Dec 2022 00:20:57 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10573"; a="741960554"
-X-IronPort-AV: E=Sophos;i="5.96,280,1665471600"; d="scan'208";a="741960554"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by FMSMGA003.fm.intel.com with ESMTP; 28 Dec 2022 00:20:56 -0800
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Wed, 28 Dec 2022 00:20:56 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Wed, 28 Dec 2022 00:20:55 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Wed, 28 Dec 2022 00:20:55 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.44) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Wed, 28 Dec 2022 00:20:54 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cJrgOksYzcrB1WlDpiKTdSmi5nt8Ags/N1bhIUSzxkKSqRyqPqZ+XKR8eeF3qUHr3+suPbLr+e6v/wEOLGUGK8YjaWG2XjOj668HjB+juwaaudUg79ppX2Qn0JnoF2moo3pJNMcYjCa7ftvTnX8LubqxSKh347katiyo2N2u6lf36OXRmJHPULnWy94wWT+P2Jj8VaoD89hSu0x5CccFaDKFws5D6+e9WoEgO6LoY4Nogi/Tp+REP1jxD8Y42dPOALaqEJ0ry2hdsFNkwoushj2i+Mm7ccx7IOPts8eym5/rFdi7q44snGmiCCBgXXm5uPvWZwJPjAk98WPW/regCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WqQ/5NNio99xdIHKJklsNsbv45dQMESCeDa7qx1Xfqs=;
- b=MiMNROK/79fM8WQYxVyy5wF3fxtmxQDjduMi+fFXg8v+601mGgIfujOMU8/7CJDXkChJ/Jxsm2VFmdrIyNcLOtuGd0cbBVgwswDz3EimS9GzpJmm9P2YK7S/QriECjLynxL8KinbcgyKTAObTQM1znwnZjQ4pLV2mIS9TzRoYZQcE5p6t+Uv7EjxcED6G2+Fj+Ptcym64fxf2XE9lwRsdWcAHFQ4g145napMq1j3f+pK1rvbPKpf69KpqUZnWTFROxKAbu1PkE98AcASG5haIA+Jp3qGbpoKSVec/288UdoZ3VZabHPoGyEUFHzPLItNx/Iubny9NYtNp413mT//ow==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
- MN6PR11MB8146.namprd11.prod.outlook.com (2603:10b6:208:470::9) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5944.16; Wed, 28 Dec 2022 08:20:52 +0000
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::bd50:2cf7:f362:3734]) by DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::bd50:2cf7:f362:3734%9]) with mapi id 15.20.5944.016; Wed, 28 Dec 2022
- 08:20:52 +0000
-Date: Wed, 28 Dec 2022 15:57:39 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Sean Christopherson <seanjc@google.com>
-Subject: Re: [PATCH 26/27] KVM: x86/mmu: Add page-track API to query if a gfn
- is valid
-Message-ID: <Y6v287BFez8tU43e@yzhao56-desk.sh.intel.com>
-References: <20221223005739.1295925-1-seanjc@google.com>
- <20221223005739.1295925-27-seanjc@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20221223005739.1295925-27-seanjc@google.com>
-X-ClientProxiedBy: SG2PR02CA0113.apcprd02.prod.outlook.com
- (2603:1096:4:92::29) To DS7PR11MB5966.namprd11.prod.outlook.com
- (2603:10b6:8:71::6)
+X-Greylist: delayed 330 seconds by postgrey-1.36 at gabe;
+ Wed, 28 Dec 2022 17:48:43 UTC
+Received: from mail.fn-krogrs.info (unknown [104.223.234.144])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9267410E3CE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 28 Dec 2022 17:48:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fn-krogrs.info; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=kroger.user.feedback@fn-krogrs.info; 
+ bh=Xmqi+CNatN3wgE6n1xKa/oOhUOc=;
+ b=DQpQxvse3TxONphrWOpocu5ZCXulCxoEE8Clxe3pyh+kJ8olesm2oeOF0NU3Sc0GtIun/FxxIh7u
+ R6hmMoMbnc6oMp5k8INkvHI2bIc2t+///kYp3E6TNU5QxbbsXhURP8cXw1hg93nTY+742qbiSME5
+ 1fMnOyNep1hgNvAdv0k=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fn-krogrs.info;
+ b=oaVExBEnBuIpswp6A2iKeTITqglNpDn8mfoKYJ6EHD+2HIsRHuNCsJA9A2u0SB/c8+MMGJlovllI
+ /wHqwTCGz3DluBP15aWvE6iZfmTIWsmCdLM9WlbcxpCOZpszm1ryEAJq0BU9D0al4Rb4ly++bE/A
+ zShCwIUfNfrEwBwZErg=;
+Received: by mail.fn-krogrs.info id hli0nm0001g6 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 28 Dec 2022 12:35:41 -0500 (envelope-from
+ <kroger.user.feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@fn-krogrs.info>)
+Date: Wed, 28 Dec 2022 12:35:41 -0500
+From: "Kroger User Feedback" <kroger.user.feedback@fn-krogrs.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|MN6PR11MB8146:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2a2dfd25-7208-435d-e0ed-08dae8ac6eb8
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: MW8cJPDR1G3DZ2MDYSnl9U8/RLsUDbNs6DoPffkZxg/7QLJUV0CqqJETfPh+rNC5xoWOHoHE/s/MmW2eySl596vSWRn3e7ivuTRpDqfbMioOh/2Vy955gp9/X7bfN/ZcnfBK3Avpo5hmcI2lKjL7UqTuNwHWQkzzmJCOynrb2hPPpz5peMwTcONvtylmspC+MTAFf7d8WlX+wXo1CzYGTy4Uw5gNjTATAMRpXHtZDiJPgTkAIdnUhGe9LBixpemEPqHh47IwPVsS9kvc/VWRgcldyteA8NId9y2LG0v4cyqvBGVO6S37kffJKaLBoze1RATwMFDFdhQHVp4TWH+xXi6O4K47NmL0IcSAb5VMD8aew25QBJ+xBy0aS2LcPslUDxKa8tV4rbRj+jorI3FAglmtLtueUvJ19mYBBT96tcaSyhQnFN2aOrXvzNNXVG9kG7H0eUF2qpMQZzExpVIiNs0W5X/ju+iwLLCF94aVD0/5AruTVyiAwJP6AJSwL7vcNhHissXnKOsj5N96cXfcT47JCrafNVPo282GGIct46O3vKHFufWj9UpzA+YoqCJhC+2n5izYTCIbBvk809zWHXN65ioPtgxLrnv4AymDFFe3KUFvpLs1BcV/oPxPEWtBDDybelQtPkDaIMiWQ+d3NAYpDWU27pqxjTPtKQalFftSMrp5p5djoO8FGcZ5VImg
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(346002)(366004)(136003)(39860400002)(376002)(396003)(451199015)(2906002)(3450700001)(8936002)(5660300002)(41300700001)(4326008)(8676002)(66556008)(66476007)(66946007)(86362001)(6916009)(54906003)(6506007)(82960400001)(316002)(38100700002)(6486002)(478600001)(83380400001)(6666004)(186003)(26005)(6512007)(21314003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?RRw1Q8UaSChSylELz2ZWGYU3qkXzF5DtTtcw3x73DC1PatTdeSRrEiA6Wb9g?=
- =?us-ascii?Q?BkpE2xTjPstwSiP9JjMPuutHbzc1x6DofsTgCXHQ+qAGzH4SG0CvIhCoPHgY?=
- =?us-ascii?Q?wrRONDmbVA0EPkSpLerqfWddPT/FOMBX9mqCgtiu9cPYIoqdiGjBqRIZo8Gp?=
- =?us-ascii?Q?YVK/Z1LEopv6VTPumoAo4qJnFHUK4K9Wav27P/9uYVj743Emid+lmr5I8fV1?=
- =?us-ascii?Q?QbI2xxGozEpikxz/EtR+PTxGwQr11fDIwV0rOgQ8CrMeF7VgToESoKBC5May?=
- =?us-ascii?Q?omma7wj6m+2vLZW2kOT5t62FF3ZlJe7OTK4RYT7DdAi3vkXVzT7NCmUbmhh8?=
- =?us-ascii?Q?gT66ynCZd/P4b3ncE3m5IgISkPvyCclgcfajk8lym6in4yYKb6NoJlULyubV?=
- =?us-ascii?Q?7vO6c3C7vDFpRoBuBFb7CUqJ2aJ58gpqrRP2x9l4OSAF0rLh3lJUD/sQfoI+?=
- =?us-ascii?Q?uC3FAA1W15P/ZlbPlxSu1Oe0DlSKOvEHBXHRABPCEMQThGswXyvfvjqdoSPG?=
- =?us-ascii?Q?TTJl63sLnCExCfpqDIoTI+kpqvkCuhGN0SLSBZclPuhkmnPzWyfbRB3WITr0?=
- =?us-ascii?Q?F4AoUNb6l6APjCM2RSVIEwOEyCtdWAZAQEEh+QkVCwsO2P+Pxl8PExRxr7nA?=
- =?us-ascii?Q?+VCj+GkQ8ptl4RvIdOfEUGqy1ocjORhK4rmYXKIsW1NbydhyeJ4ij4KzoTci?=
- =?us-ascii?Q?5h5S3G9W1jr7wwjQcLaoao0kmCXsnKTpdfgZSxjeMpXD3xp9umnmMd/glmkW?=
- =?us-ascii?Q?seN/cJW3F75z7Q1yRFD5EJwAS0mLEcPjEmA4nSEOcHc8X15haIfLNWbGlqfI?=
- =?us-ascii?Q?BJTlmjmD2FtHeuPiF9ziW4ctpwYCWUN3+r1b2SWmt+PmUL7gOAIydzGY0wYt?=
- =?us-ascii?Q?Yen5jm2u2sT9P5bZByBoGm1TNddkDPlJPwbC/gvRnw+qL0wkkS6+iIcJlZqb?=
- =?us-ascii?Q?PjKef90v3gNCvBtKXYzUzhIDJMSGxtaEG62Uinyu/wAq2vqyyI62sOjx65Q/?=
- =?us-ascii?Q?tG1Bvqt4MZOpqDxXth6mj4Qy0LcLxcG2+ypQIfepSxJJ0bw/sfC2HKe3+W3p?=
- =?us-ascii?Q?SBLxLzJ935Gsnp1vNRZ9qvCbqoX3OGCLwGMT/3Tjq3bPJcf6bFYuM/MyDsdx?=
- =?us-ascii?Q?w4PxqrC0bvvsgkPPiMlOct/5Ev5SNIszteSPWflMCy+l/l8wKENLu4omjzaw?=
- =?us-ascii?Q?vygObCBi3P5hzCCnFExlP9M1aFX0TyePUhWxiXugtgYhR4E7b4oHrevO3bQk?=
- =?us-ascii?Q?KjENMW5cFg/twFY8InpkFe/F4ON02Pm2e5UCa69oOxvDdq7St5ha64vEwVd3?=
- =?us-ascii?Q?gqWIBoAGOHPVkmwfjdkYQyaBeoGlalIMIxmAjhMfI4k6CmxfxzAJNNl0b4wC?=
- =?us-ascii?Q?MQFUiEqW5jhEQKYSl73mPeL5xb1PDeJo1YOxCkITvLK2BTQ0rYA/HgQVtAaj?=
- =?us-ascii?Q?k8CCmjug4qMI/n3o6irjYL7kpPmxnmKFadjuMaZFl80cvkSkaUipa0a72t3l?=
- =?us-ascii?Q?/LE9l53xVcrm9SFCcvTPhyI1LtsUQhjdlhawbx553ZlOsGg8OYUojGiPIMoP?=
- =?us-ascii?Q?fpPX3jk3bErhwueD/ocxG+jB51y3OZEuIoZqChiX?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2a2dfd25-7208-435d-e0ed-08dae8ac6eb8
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Dec 2022 08:20:51.7536 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LoZ2zFwCQycLPt1PLW6CRQmLBZcjO5BMT+GWLfaBsTnaUovBuy1TD9DqGjDZVMl9NvDF5ECO4NE+S22meG5mwA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR11MB8146
-X-OriginatorOrg: intel.com
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_355_339480952.1672248932541"
+Message-ID: <0.0.0.27.1D91AE2CEC74B6E.1FC9D3@mail.fn-krogrs.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -148,102 +50,716 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Dec 23, 2022 at 12:57:38AM +0000, Sean Christopherson wrote:
-> Add a page-track API to query if a gfn is "valid", i.e. is backed by a
-> memslot and is visible to the guest.  This is one more step toward
-> removing KVM internal details from the page-track APIs.
-> 
-> Add a FIXME to call out that intel_gvt_is_valid_gfn() is broken with
-> respect to 2MiB (or larger) guest entries, e.g. if the starting gfn is
-> valid but a 2MiB page starting at the gfn covers "invalid" memory due
-> to running beyond the memslot.
-> 
-> No functional change intended.
-> 
-> Signed-off-by: Sean Christopherson <seanjc@google.com>
-> ---
->  arch/x86/include/asm/kvm_page_track.h |  1 +
->  arch/x86/kvm/mmu/page_track.c         | 13 +++++++++++++
->  drivers/gpu/drm/i915/gvt/gtt.c        | 11 ++---------
->  3 files changed, 16 insertions(+), 9 deletions(-)
-> 
-> diff --git a/arch/x86/include/asm/kvm_page_track.h b/arch/x86/include/asm/kvm_page_track.h
-> index 66a0d7c34311..99e1d6eeb0fb 100644
-> --- a/arch/x86/include/asm/kvm_page_track.h
-> +++ b/arch/x86/include/asm/kvm_page_track.h
-> @@ -52,6 +52,7 @@ int kvm_page_track_register_notifier(struct kvm *kvm,
->  void kvm_page_track_unregister_notifier(struct kvm *kvm,
->  					struct kvm_page_track_notifier_node *n);
->  
-> +bool kvm_page_track_is_valid_gfn(struct kvm *kvm, gfn_t gfn);
->  int kvm_write_track_add_gfn(struct kvm *kvm, gfn_t gfn);
->  int kvm_write_track_remove_gfn(struct kvm *kvm, gfn_t gfn);
->  #endif /* CONFIG_KVM_EXTERNAL_WRITE_TRACKING */
-> diff --git a/arch/x86/kvm/mmu/page_track.c b/arch/x86/kvm/mmu/page_track.c
-> index 1af431a41f71..9da071a514b3 100644
-> --- a/arch/x86/kvm/mmu/page_track.c
-> +++ b/arch/x86/kvm/mmu/page_track.c
-> @@ -264,6 +264,19 @@ enum pg_level kvm_page_track_max_mapping_level(struct kvm *kvm, gfn_t gfn,
->  }
->  EXPORT_SYMBOL_GPL(kvm_page_track_max_mapping_level);
->  
-> +bool kvm_page_track_is_valid_gfn(struct kvm *kvm, gfn_t gfn)
-> +{
-> +	bool ret;
-> +	int idx;
-> +
-> +	idx = srcu_read_lock(&kvm->srcu);
-> +	ret = kvm_is_visible_gfn(kvm, gfn);
-> +	srcu_read_unlock(&kvm->srcu, idx);
-> +
-> +	return ret;
-> +}
-> +EXPORT_SYMBOL_GPL(kvm_page_track_is_valid_gfn);
-This implementation is only to check whether a GFN is within a visible
-kvm memslot. So, why this helper function is named kvm_page_track_xxx()?
-Don't think it's anything related to page track, and not all of its callers
-in KVMGT are for page tracking.
+------=_Part_355_339480952.1672248932541
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Thanks
-Yan
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+ <head> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <meta name="x-apple-disable-message-reformatting" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title></title> 
+  <style type="text/css">@media screen {
+      @font-face {
+        font-family: 'Fira Sans'; 
+        font-style: normal; 
+        font-weight: 400; 
+        src: local('Fira Sans Regular'), local('FiraSans-Regular'), url(https://fonts.gstatic.com/s/firasans/v8/va9E4kDNxMZdWfMOD5Vvl4jLazX3dA.woff2) format('woff2'); 
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; 
+      }
+      @font-face {
+        font-family: 'Fira Sans'; 
+        font-style: normal; 
+        font-weight: 400; 
+        src: local('Fira Sans Regular'), local('FiraSans-Regular'), url(https://fonts.gstatic.com/s/firasans/v8/va9E4kDNxMZdWfMOD5Vvk4jLazX3dGTP.woff2) format('woff2'); 
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; 
+      }
+      @font-face {
+        font-family: 'Fira Sans'; 
+        font-style: normal; 
+        font-weight: 500; 
+        src: local('Fira Sans Medium'), local('FiraSans-Medium'), url(https://fonts.gstatic.com/s/firasans/v8/va9B4kDNxMZdWfMOD5VnZKveRhf6Xl7Glw.woff2) format('woff2'); 
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; 
+      }
+      @font-face {
+        font-family: 'Fira Sans'; 
+        font-style: normal; 
+        font-weight: 500; 
+        src: local('Fira Sans Medium'), local('FiraSans-Medium'), url(https://fonts.gstatic.com/s/firasans/v8/va9B4kDNxMZdWfMOD5VnZKveQhf6Xl7Gl3LX.woff2) format('woff2'); 
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; 
+      }
+      @font-face {
+        font-family: 'Fira Sans'; 
+        font-style: normal; 
+        font-weight: 700; 
+        src: local('Fira Sans Bold'), local('FiraSans-Bold'), url(https://fonts.gstatic.com/s/firasans/v8/va9B4kDNxMZdWfMOD5VnLK3eRhf6Xl7Glw.woff2) format('woff2'); 
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; 
+      }
+      @font-face {
+        font-family: 'Fira Sans'; 
+        font-style: normal; 
+        font-weight: 700; 
+        src: local('Fira Sans Bold'), local('FiraSans-Bold'), url(https://fonts.gstatic.com/s/firasans/v8/va9B4kDNxMZdWfMOD5VnLK3eQhf6Xl7Gl3LX.woff2) format('woff2'); 
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; 
+      }
+      @font-face {
+        font-family: 'Fira Sans'; 
+        font-style: normal; 
+        font-weight: 800; 
+        src: local('Fira Sans ExtraBold'), local('FiraSans-ExtraBold'), url(https://fonts.gstatic.com/s/firasans/v8/va9B4kDNxMZdWfMOD5VnMK7eRhf6Xl7Glw.woff2) format('woff2'); 
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; 
+      }
+      @font-face {
+        font-family: 'Fira Sans'; 
+        font-style: normal; 
+        font-weight: 800; 
+        src: local('Fira Sans ExtraBold'), local('FiraSans-ExtraBold'), url(https://fonts.gstatic.com/s/firasans/v8/va9B4kDNxMZdWfMOD5VnMK7eQhf6Xl7Gl3LX.woff2) format('woff2'); 
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; 
+      }
+    }
 
-> +
->  /*
->   * add guest page to the tracking pool so that corresponding access on that
->   * page will be intercepted.
-> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-> index 59ba6639e622..43c4fc23205d 100644
-> --- a/drivers/gpu/drm/i915/gvt/gtt.c
-> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-> @@ -51,18 +51,11 @@ static int preallocated_oos_pages = 8192;
->  
->  static bool intel_gvt_is_valid_gfn(struct intel_vgpu *vgpu, unsigned long gfn)
->  {
-> -	struct kvm *kvm = vgpu->vfio_device.kvm;
-> -	int idx;
-> -	bool ret;
-> -
->  	if (!vgpu->attached)
->  		return false;
->  
-> -	idx = srcu_read_lock(&kvm->srcu);
-> -	ret = kvm_is_visible_gfn(kvm, gfn);
-> -	srcu_read_unlock(&kvm->srcu, idx);
-> -
-> -	return ret;
-> +	/* FIXME: This doesn't properly handle guest entries larger than 4K. */
-> +	return kvm_page_track_is_valid_gfn(vgpu->vfio_device.kvm, gfn);
->  }
->  
->  /*
-> -- 
-> 2.39.0.314.g84b9a713c41-goog
-> 
+    #outlook a {
+      padding: 0; 
+    }
+
+    .ExternalClass,
+    .ReadMsgBody {
+      width: 100%; 
+    }
+
+    .ExternalClass,
+    .ExternalClass p,
+    .ExternalClass td,
+    .ExternalClass div,
+    .ExternalClass span,
+    .ExternalClass font {
+      line-height: 100%; 
+    }
+
+    div[style*="margin: 14px 0; "],
+    div[style*="margin: 16px 0; "] {
+      margin: 0 !important; 
+    }
+
+    @media only screen and (min-width:621px) {
+      .pc-container {
+        width: 620px !important; 
+      }
+    }
+
+    @media only screen and (max-width:620px) {
+      .pc-footer-box-s2,
+      .pc-footer-box-s4,
+      .pc-header-box-s3 .pc-header-box-in {
+        padding-left: 30px !important; 
+        padding-right: 30px !important
+      }
+      .pc-spacing.pc-m-header-4 td {
+        font-size: 53px !important; 
+        height: 53px !important; 
+        line-height: 53px !important
+      }
+      .pc-features-box-s4 {
+        padding: 35px 10px 30px !important
+      }
+      .pc-features-row-s1 .pc-features-row-col {
+        max-width: 50% !important
+      }
+      .pc-content-box-s2 {
+        padding: 35px 10px 15px !important
+      }
+      .pc-cta-box-s14 .pc-cta-box-in {
+        padding-bottom: 35px !important; 
+        padding-top: 35px !important
+      }
+      .pc-footer-row-s2 .pc-footer-row-col {
+        width: 100% !important
+      }
+      .pc-mobile-text-centered {
+        text-align: center !important
+      }
+      .pc-spacing.pc-m-footer-h-59 td {
+        font-size: 20px !important; 
+        height: 20px !important; 
+        line-height: 20px !important
+      }
+    }
+
+    @media only screen and (max-width:525px) {
+      .pc-header-box-s3 .pc-header-box-in {
+        padding: 25px 20px 20px !important
+      }
+      .pc-spacing.pc-m-header-4 td {
+        font-size: 43px !important; 
+        height: 43px !important; 
+        line-height: 43px !important
+      }
+      .pc-header-cta-s2 .pc-header-cta-title {
+        font-size: 30px !important; 
+        line-height: 1.42 !important
+      }
+      .pc-cta-text br,
+      .pc-cta-title br,
+      .pc-footer-text-s2 br,
+      .pc-header-cta-text br,
+      .pc-header-cta-title br {
+        display: none !important
+      }
+      .pc-features-box-s4 {
+        padding: 25px 0 20px !important
+      }
+      .pc-features-row-s1 .pc-features-row-col {
+        max-width: 100% !important
+      }
+      .pc-content-box-s2 {
+        padding: 25px 0 5px !important
+      }
+      .pc-cta-box-s14 .pc-cta-box-in,
+      .pc-footer-box-s2 {
+        padding: 25px 20px !important
+      }
+      .pc-cta-s1 .pc-cta-title {
+        font-size: 24px !important; 
+        line-height: 1.42 !important
+      }
+      .pc-footer-box-s4 {
+        padding: 15px 20px 25px !important
+      }
+      .pc-cta-icon.pc-m-module-18 {
+        height: auto !important; 
+        width: 72px !important
+      }
+      .pc-footer-socials-s2 {
+        font-size: 14px !important
+      }
+    }
+	</style> 
+ </head> 
+ <body bgcolor="#f4f4f4" class="pc-fb-font" style="background-color: #f4f4f4; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; width: 100% !important; Margin: 0 !important; padding: 0; line-height: 1.5; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%"> 
+  <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center" style="padding: 0; vertical-align: top; " valign="top"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="pc-container" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; Margin: 0 auto; max-width: 620px; " width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="left" style="vertical-align: top; padding: 0 10px; " valign="top"> 
+          <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+           <tbody> 
+            <tr> 
+             <td style="vertical-align: top; padding: 0; height: 20px; font-size: 20px; line-height: 20px; " valign="top">&nbsp; </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1)"> 
+           <tbody> 
+            <tr> 
+             <td>
+              <!-- START MODULE: Header 4 --> 
+              <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td bgcolor="#ffffff" class="pc-header-box-s3" style="vertical-align: top; background-color: #ffffff" valign="top"> 
+                  <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td class="pc-header-box-in" style="vertical-align: top; padding: 34px 40px 55px; " valign="top"> 
+                      <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" bgcolor="#015FB8" style="vertical-align: top; " valign="top"> 
+                          <table align="center" border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 330px; " width="330"> 
+                           <tbody> 
+                            <tr> 
+                             <td style="vertical-align: top; text-align: center; padding: 12px; color: #fff; font-size: 25px" valign="top"><strong>Dear Kroger Customer,</strong></td> 
+                            </tr> 
+                           </tbody> 
+                          </table> </td> 
+                        </tr> 
+                        <tr> 
+                         <td style="vertical-align: top; " valign="top">&nbsp; 
+                          <table border="0" cellpadding="0" cellspacing="0" class="pc-header-cta-s2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                           <tbody> 
+                            <tr> 
+                             <td align="center" class="pc-header-cta-title pc-fb-font" style="vertical-align: top; padding: 12px 0 0; text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 800; line-height: 1.28; letter-spacing: -0.6px; color: #1B1B1B; " valign="top">You have been pre-selected for an exclusive reward!</td> 
+                            </tr> 
+                            <tr> 
+                             <td align="center" style="vertical-align: top; padding: 30px 0 0 0; text-align: center; " valign="top"><a href="http://www.fn-krogrs.info/31d5L23N95s8KM613y44W6H7W1076U36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQpdQRK5Iu1V06GUzwWD/biblical-trouser"><img align="center" alt="" class="kmImage" src="http://www.fn-krogrs.info/c5v4n2395NTN7a11F4469O1076z36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQpdQRK5F10ML6y@XwDL/Shapiro-venturer" style="border: 0; height: auto; line-height: 100%; max-width: 600px; outline: none; text-decoration: none; font-size: 12px; padding-bottom: 0; vertical-align: top; width: 100%; display: inline; padding: 0; border-width: 0; width: 100%" width="100%" /></a></td> 
+                            </tr> 
+                            <tr> 
+                             <td align="center" class="pc-header-cta-text pc-fb-font" style="vertical-align: top; padding: 30px 0 0 0; text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 23px; font-weight: 300; line-height: 1.56; letter-spacing: -0.2px; color: #9B9B9B; " valign="top">To qualify for this special reward, simply complete our 30-Second Service survey about how your experience has been with us.</td> 
+                            </tr> 
+                            <tr> 
+                             <td style="vertical-align: top; " valign="top"> 
+                              <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td style="vertical-align: top; height: 24px; line-height: 24px; font-size: 24px; " valign="top">&nbsp; </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> </td> 
+                            </tr> 
+                            <tr> 
+                             <td align="center" style="vertical-align: top; padding: 5px 0; " valign="top"> 
+                              <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto; "> 
+                               <tbody> 
+                                <tr> 
+                                 <td align="center" bgcolor="#1595E7" style="vertical-align: top; border-radius: 8px; text-align: center; background-color: #1595E7; " valign="top"><a href="http://www.fn-krogrs.info/31d5L23N95s8KM613y44W6H7W1076U36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQpdQRK5Iu1V06GUzwWD/biblical-trouser" style="line-height: 1.5; text-decoration: none; margin: 0; padding: 13px 17px; white-space: nowrap; border-radius: 8px; font-weight: 500; display: inline-block; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 26px; cursor: pointer; background-color: #1595E7; color: #ffffff; border: 1px solid #1595E7; ">Go Here To Start</a></td> 
+                                </tr> 
+                                <tr> 
+                                 <td align="center" style="vertical-align: top; text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-weight: 500; font-size: 14px; color: #40BE65; " valign="top"><br /> We Appreciate Your Oppinion</td> 
+                                </tr> 
+                               </tbody> 
+                              </table> </td> 
+                            </tr> 
+                           </tbody> 
+                          </table> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <!-- END MODULE: Header 4 -->
+              <!-- START MODULE: Feature 5 --> 
+              <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td bgcolor="#ffffff" class="pc-features-box-s4" style="vertical-align: top; padding: 40px 20px 35px; background-color: #ffffff" valign="top"> 
+                  <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" class="pc-fb-font" style="vertical-align: top; text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 1.42; letter-spacing: -0.4px; color: #151515; padding: 0 20px; " valign="top">&nbsp; </td> 
+                    </tr> 
+                    <tr> 
+                     <td style="vertical-align: top; " valign="top"> 
+                      <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td style="vertical-align: top; height: 10px; font-size: 10px; line-height: 10px; " valign="top">&nbsp; </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" class="pc-fb-font" style="vertical-align: top; text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 1.56; letter-spacing: -0.2px; color: #9B9B9B; padding: 0 20px; " valign="top">&nbsp; </td> 
+                    </tr> 
+                    <tr> 
+                     <td style="vertical-align: top; " valign="top"> 
+                      <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td style="vertical-align: top; height: 20px; font-size: 20px; line-height: 20px; " valign="top">&nbsp; </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                    <tr> 
+                     <td> 
+                      <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" class="pc-features-row-s1" style="vertical-align: top; font-size: 0; text-align: center; " valign="top">
+                          <!--[if (gte mso 9)|(IE)]>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="33%" valign="top">
+                                    <![endif]--> 
+                          <div class="pc-features-row-col" style="display: inline-block; width: 100%; max-width: 186px; vertical-align: top; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td style="vertical-align: top; padding: 20px; " valign="top"> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="center" style="vertical-align: top; text-align: center; " valign="top">&nbsp; </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td style="vertical-align: top; " valign="top"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="vertical-align: top; height: 13px; font-size: 13px; line-height: 13px; " valign="top">&nbsp; </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td align="center" class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; line-height: 1.33; letter-spacing: -0.2px; color: #1B1B1B; text-align: center; " valign="top">&nbsp; </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td style="vertical-align: top; " valign="top"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="vertical-align: top; height: 7px; font-size: 7px; line-height: 7px; " valign="top">&nbsp; </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td align="center" class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; line-height: 1.43; letter-spacing: -0.2px; color: #fff; text-align: center; visibility: " valign="top">Bushwick meh Blue Bottle pork belly mustache sk.</td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td width="33%" valign="top">
+                                    <![endif]--> 
+                          <div class="pc-features-row-col" style="display: inline-block; width: 100%; max-width: 186px; vertical-align: top; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td style="vertical-align: top; padding: 20px; " valign="top"> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="center" style="vertical-align: top; text-align: center; " valign="top">&nbsp; </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td style="vertical-align: top; " valign="top"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="vertical-align: top; height: 13px; font-size: 13px; line-height: 13px; " valign="top">&nbsp; </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td align="center" class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; line-height: 1.33; letter-spacing: -0.2px; color: #1B1B1B; text-align: center; " valign="top">&nbsp; </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td style="vertical-align: top; " valign="top"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="vertical-align: top; height: 7px; font-size: 7px; line-height: 7px; " valign="top">&nbsp; </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td align="center" class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; line-height: 1.43; letter-spacing: -0.2px; color: #fff; text-align: center; " valign="top">Keytar McSweeney' s Williamsburg, readymade legg.</td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td width="33%" valign="top">
+                                    <![endif]--> 
+                          <div class="pc-features-row-col" style="display: inline-block; width: 100%; max-width: 186px; vertical-align: top; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td style="vertical-align: top; padding: 20px; " valign="top"> 
+                               <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="center" style="vertical-align: top; text-align: center; " valign="top">&nbsp; </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td style="vertical-align: top; " valign="top"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="vertical-align: top; height: 13px; font-size: 13px; line-height: 13px; " valign="top">&nbsp; </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td align="center" class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; line-height: 1.33; letter-spacing: -0.2px; color: #1B1B1B; text-align: center; " valign="top">&nbsp; </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td style="vertical-align: top; " valign="top"> 
+                                   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                                    <tbody> 
+                                     <tr> 
+                                      <td style="vertical-align: top; height: 7px; font-size: 7px; line-height: 7px; " valign="top">&nbsp; </td> 
+                                     </tr> 
+                                    </tbody> 
+                                   </table> </td> 
+                                 </tr> 
+                                 <tr> 
+                                  <td align="center" class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 300; line-height: 1.43; letter-spacing: -0.2px; color: #fff; text-align: center; " valign="top">Hella narwhal Cosby sweater McSweeney' s, salvia.</td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                    <tr> 
+                     <td style="vertical-align: top; " valign="top"> 
+                      <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td style="vertical-align: top; height: 25px; font-size: 25px; line-height: 25px; font-size: 12px; text-align: center" valign="top">&nbsp; To cut communication,<a href="http://www.fn-krogrs.info/5ed5X239V5t8s6q11E4468U1076j36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQpdQRK6zPm10L6BPzwDy/mutableness-Rican" style="text-decoration-line: none; "> <span>Click Over Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <font></font><font></font><font class="officials"><font size="Macdougall"></font><span size="straggler"><span lang="intermission"></span></span><big></big><style dir="presumptive"></font></style><span class="innocuously"></span><span face="admittance"></span></td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" style="vertical-align: top; padding: 5px 0; " valign="top">&nbsp; </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <!-- END MODULE: Feature 5 -->
+              <!-- START MODULE: Content 4 --> 
+              <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td bgcolor="#ffffff" class="pc-content-box-s2" style="vertical-align: top; padding: 40px 20px 20px; background-color: #ffffff" valign="top"> 
+                  <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" class="pc-fb-font" style="vertical-align: top; padding: 0 20px; text-align: center; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 1.42; letter-spacing: -0.4px; color: #151515; " valign="top">&nbsp; </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" class="pc-fb-font" style="vertical-align: top; padding: 0 20px; text-align: center; line-height: 1.56; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; color: #9B9B9B; letter-spacing: -0.2px; " valign="top">&nbsp; </td> 
+                    </tr> 
+                    <tr> 
+                     <td style="vertical-align: top; height: 20px; font-size: 20px; line-height: 20px; " valign="top">&nbsp; </td> 
+                    </tr> 
+                    <tr> 
+                     <td> 
+                      <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" style="vertical-align: top; font-size: 0; text-align: center; " valign="top"> 
+                          <div style="display: inline-block; width: 100%; max-width: 140px; vertical-align: middle; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 20px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <div style="display: inline-block; width: 100%; max-width: 140px; vertical-align: middle; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 20px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <div style="display: inline-block; width: 100%; max-width: 140px; vertical-align: middle; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 20px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <div style="display: inline-block; width: 100%; max-width: 140px; vertical-align: middle; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 20px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> </td> 
+                        </tr> 
+                        <tr> 
+                         <td align="center" style="vertical-align: top; font-size: 0; text-align: center; " valign="top"> 
+                          <div style="display: inline-block; width: 100%; max-width: 140px; vertical-align: middle; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 20px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <div style="display: inline-block; width: 100%; max-width: 140px; vertical-align: middle; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 20px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <div style="display: inline-block; width: 100%; max-width: 140px; vertical-align: middle; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 20px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <div style="display: inline-block; width: 100%; max-width: 140px; vertical-align: middle; "> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 20px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <!-- END MODULE: Content 4 -->
+              <!-- START MODULE: Call to action 19 --> 
+              <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td bgcolor="#ffffff" class="pc-cta-box-s14" style="vertical-align: top; background-color: #ffffff" valign="top"> 
+                  <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td class="pc-cta-box-in" style="vertical-align: top; padding: 40px 30px 32px; " valign="top"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="pc-cta-s1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" style="vertical-align: top; text-align: center; " valign="top">&nbsp; </td> 
+                        </tr> 
+                        <tr> 
+                         <td style="vertical-align: top; height: 14px; font-size: 14px; line-height: 14px; " valign="top">&nbsp; </td> 
+                        </tr> 
+                        <tr> 
+                         <td align="center" class="pc-cta-title pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; color: #151515; font-size: 24px; font-weight: 700; line-height: 1.42; letter-spacing: -0.4px; text-align: center; " valign="top">&nbsp; </td> 
+                        </tr> 
+                        <tr> 
+                         <td style="vertical-align: top; height: 10px; font-size: 10px; line-height: 10px; " valign="top">&nbsp; </td> 
+                        </tr> 
+                        <tr> 
+                         <td align="center" class="pc-cta-text pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 1.56; color: #9B9B9B; text-align: center; " valign="top">&nbsp; </td> 
+                        </tr> 
+                        <tr> 
+                         <td style="vertical-align: top; height: 2px; font-size: 2px; line-height: 2px; " valign="top">&nbsp; </td> 
+                        </tr> 
+                        <tr> 
+                         <td align="center" style="vertical-align: top; font-size: 0; text-align: center; padding: 9px 0 0" valign="top"> 
+                          <div style="display: inline-block; vertical-align: top"> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 8px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> 
+                          <div style="display: inline-block; vertical-align: top"> 
+                           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center" style="vertical-align: top; padding: 8px; text-align: center; " valign="top">&nbsp; </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <!-- END MODULE: Call to action 19 -->
+              <!-- START MODULE: Footer 3 --> 
+              <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td bgcolor="#ffffff" class="pc-footer-box-s4" style="vertical-align: top; padding: 31px 40px; background-color: #ffffff" valign="top"> 
+                  <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td class="pc-footer-row-s2" style="vertical-align: top; " valign="top"> 
+                      <table align="center" border="0" cellpadding="0" cellspacing="0" class="pc-footer-row-col" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; "> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" class="pc-footer-text-s2 pc-mobile-text-centered pc-fb-font" style="vertical-align: top; line-height: 1.43; letter-spacing: -0.2px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; color: #9B9B9B; padding: 10px 0; " valign="top">&nbsp; </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                      <table align="right" border="0" cellpadding="0" cellspacing="0" class="pc-footer-row-col" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; "> 
+                       <tbody> 
+                        <tr> 
+                         <td align="left" class="pc-mobile-text-centered" style="vertical-align: top; line-height: 1.3; font-size: 20px; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; padding: 4px 0 10px; text-align: left; " valign="top"><span>&nbsp; &nbsp; </span> <span>&nbsp; &nbsp; </span> <span>&nbsp; &nbsp; </span></td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                  <table border="0" cellpadding="0" cellspacing="0" class="pc-spacing pc-m-footer-h-59" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="vertical-align: top; height: 59px; line-height: 59px; font-size: 59px; " valign="top">&nbsp; </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                  <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" class="pc-fb-font" style="vertical-align: top; text-align: center; line-height: 1.43; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; color: #9B9B9B; " valign="top">&nbsp; </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <!-- END MODULE: Footer 3 --></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; " width="100%"> 
+           <tbody> 
+            <tr> 
+             <td style="vertical-align: top; padding: 0; height: 20px; font-size: 20px; line-height: 20px; " valign="top">&nbsp; </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.fn-krogrs.info/1015K239X5WC8i512a44q6at1076O36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQpdQRK6r10wup6tpJwDX/damages-readjusted" alt=""/></body>
+</html>
+
+------=_Part_355_339480952.1672248932541--
+
