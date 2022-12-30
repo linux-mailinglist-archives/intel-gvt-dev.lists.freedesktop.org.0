@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE4CA659B91
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Dec 2022 20:08:17 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C66D9659C55
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Dec 2022 21:59:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7992710E491;
-	Fri, 30 Dec 2022 19:08:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2AF6810E09F;
+	Fri, 30 Dec 2022 20:59:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Fri, 30 Dec 2022 19:08:14 UTC
-Received: from mail.letverizn-do.info (unknown [45.95.212.170])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1C6AD10E48C
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Fri, 30 Dec 2022 20:59:33 UTC
+Received: from mail.all-mcdls.info (unknown [45.95.212.171])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 44A4A10E09E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 30 Dec 2022 19:08:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=letverizn-do.info;
+ Fri, 30 Dec 2022 20:59:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=all-mcdls.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=verizon-gift-card-chance@letverizn-do.info; 
- bh=G7lPWKi9t8gARMFaTO38Chu2BPs=;
- b=ucvMioRJcOSWQVlH1PWJipIg3a5t5nOULIGay90eEL0grFIDp+RA8UEok2K4BbTTJJ5o3uduRkZz
- qYapMXQ1zDMtoMYBoAkabFfFhdvYLqPRQENBtjWRmvPvHdNUeQm6FbDpINywYu759C1sdDRqUu0c
- 5ZjgsKnRuXVwi7hHtBk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=letverizn-do.info; 
- b=AVB0g15AhHByAM2FqvOFA7Nf9TExLNDVZDymzzhoUiKPYhjE8vJhs64faX2OoDy4Q/rRgfQ+UZcg
- FN2P5GVqTvH5FLWeA9Ng9h4Vv0z3srLJUNUOczsVh5gdOS1DyZ62qsfqE/iPheEhx8GaiG4I554B
- ++UcIxbekQ8jKjoqZtM=;
-Received: by mail.letverizn-do.info id hlsrhs0001gv for
+ i=mcdonalds_appreciation@all-mcdls.info; 
+ bh=XWRPFjT52ycywwwLasMXI/W+Ud0=;
+ b=sfpIOi8FJPfnz0xUsOaZimRYUEgTVUFEJr0tzTcgnIoEZIAqDVHJCa1shkU5bDOTEtHLu1PoizIN
+ 7kxnNdUt5y9GuPr/2zL91iO5P/VroQ1XbL4paSor374nirWQebFB4h/4Xp6zcTcuQnHMyx472BVD
+ s6ppMAGlfs9eMdyjuEY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=all-mcdls.info;
+ b=PskoiaCMotRxu/eESdcZVbpgYef81PCMXju6OiTP3X88Pm59+MjfavOvrXTDj6+I5OvIxj5chvlN
+ 5eDGgsTSq0+MrVrwvZrtO02LSf718QGXw4X9J/RRqf3eWzXR1Khx/BSUpIGQ2CUXj5FGOKEsY0Dm
+ bD4l50ms0rhFmSGw4i0=;
+Received: by mail.all-mcdls.info id hlt8ja0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 30 Dec 2022 13:53:25 -0500 (envelope-from
- <verizon-gift-card-chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@letverizn-do.info>)
-Date: Fri, 30 Dec 2022 13:53:25 -0500
-From: "VERIZON Gift Card Chance" <verizon-gift-card-chance@letverizn-do.info>
+ Fri, 30 Dec 2022 15:45:18 -0500 (envelope-from
+ <mcdonalds_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@all-mcdls.info>)
+Date: Fri, 30 Dec 2022 15:45:18 -0500
+From: "McDonalds Appreciation" <mcdonalds_appreciation@all-mcdls.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Holiday appreciation is needed during these time,
- here's you gift on us
+Subject: We heard your need to be rewarded for being a loyal customer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_589_1089144920.1672426384226"
-Message-ID: <0.0.0.42.1D91C7FFF24E4D0.244EB0@mail.letverizn-do.info>
+ boundary="----=_Part_145_1441133487.1672433105565"
+Message-ID: <0.0.0.10.1D91C8FA07A852E.7C7974@mail.all-mcdls.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,302 +53,523 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_589_1089144920.1672426384226
+------=_Part_145_1441133487.1672433105565
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <title>suirio</title> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <style type="text/css">#outlook a {
-            padding: 0;
-        }
-
-        .ReadMsgBody {
+  <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" name="viewport" /> 
+  <meta content="width=600,initial-scale = 2.3,user-scalable=no" name="viewport" /> 
+  <link href="http://www.all-mcdls.info/designate-electoral/abc6gv239g5Ih86O12JN44b7N1083K36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ.dQeo6hpr10W5yNywD" rel="stylesheet" /> 
+  <link href="http://www.all-mcdls.info/be75d2A395N86JI11I44b8k1083B36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ.dQeo5Q10Yv6B1@wDj/mulberry-miserably" rel="stylesheet" /> 
+  <title>Abacus Product - a template from EmailOctopus</title> 
+  <style type="text/css">body {
             width: 100%;
-        }
-
-        .ExternalClass {
-            width: 100%;
-        }
-
-        .ExternalClass * {
-            line-height: 100%;
-        }
-
-        body {
+            background-color: #ffffff;
             margin: 0;
             padding: 0;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            mso-margin-top-alt: 0px;
+            mso-margin-bottom-alt: 0px;
+            mso-padding-alt: 0px 0px 0px 0px;
         }
 
-        table,
-        td {
-            border-collapse: collapse;
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
+        p,
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
         }
 
-        img {
+        span.preheader {
+            display: none;
+            font-size: 1px;
+        }
+
+        html {
+            width: 100%;
+        }
+
+        table {
+            font-size: 14px;
             border: 0;
-            height: auto;
-            line-height: 100%;
-            outline: none;
-            text-decoration: none;
-            -ms-interpolation-mode: bicubic;
+        }
+        /* ----------- responsivity ----------- */
+
+        @media only screen and (max-width: 640px) {
+            /*------ top header ------ */
+            .main-header {
+                font-size: 20px !important;
+            }
+            .main-section-header {
+                font-size: 28px !important;
+            }
+            .show {
+                display: block !important;
+            }
+            .hide {
+                display: none !important;
+            }
+            .align-center {
+                text-align: center !important;
+            }
+            .no-bg {
+                background: none !important;
+            }
+            /*----- main image -------*/
+            .main-image img {
+                width: 440px !important;
+                height: auto !important;
+            }
+            /* ====== divider ====== */
+            .divider img {
+                width: 440px !important;
+            }
+            /*-------- container --------*/
+            .container590 {
+                width: 440px !important;
+            }
+            .container580 {
+                width: 400px !important;
+            }
+            .main-button {
+                width: 220px !important;
+            }
+            /*-------- secions ----------*/
+            .section-img img {
+                width: 320px !important;
+                height: auto !important;
+            }
+            .team-img img {
+                width: 100% !important;
+                height: auto !important;
+            }
         }
 
-        p {
-            display: block;
-            margin: 13px 0;
-        }
-	</style> 
-  <!--[if !mso]><!--> 
-  <style type="text/css">@media only screen and (max-width:480px) {
-            @-ms-viewport {
-                width: 320px;
+        @media only screen and (max-width: 479px) {
+            /*------ top header ------ */
+            .main-header {
+                font-size: 18px !important;
             }
-            @viewport {
-                width: 320px;
+            .main-section-header {
+                font-size: 26px !important;
+            }
+            /* ====== divider ====== */
+            .divider img {
+                width: 280px !important;
+            }
+            /*-------- container --------*/
+            .container590 {
+                width: 280px !important;
+            }
+            .container590 {
+                width: 280px !important;
+            }
+            .container580 {
+                width: 260px !important;
+            }
+            /*-------- secions ----------*/
+            .section-img img {
+                width: 280px !important;
+                height: auto !important;
             }
         }
-	</style> 
-  <style type="text/css">@media only screen and (min-width:480px) {
-            .mj-column-per-100 {
-                width: 100% !important;
-            }
-        }
-	</style> 
-  <style type="text/css">
 	</style> 
  </head> 
- <body style="background-color:#f9f9f9;"> 
-  <div style="background-color:#f9f9f9;"> 
-   <div style="background:#f9f9f9;background-color:#f9f9f9;Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f9f9f9;background-color:#f9f9f9;width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="border-bottom:#333957 solid 5px;direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="background:#fff;background-color:#fff;Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#fff;background-color:#fff;width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="border:#dddddd solid 1px;border-top:0px;direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;"> 
-        <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:bottom;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-              <tbody> 
-               <tr> 
-                <td align="center" style="width:264px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><strong style="color: #000; font-size: 52px"><span style="color: #E60000">V</span>erizon</strong></td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;padding-bottom:40px;word-break:break-word;"><span style="display: block"><a href="http://www.letverizn-do.info/conscientious-Charles/Y8a5Cn2395rT86M12K44b1Ai1082G36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQZdQen5JX1N05sj2wD" style="color: rgb(0, 0, 0);line-height: 0px;text-decoration: underline;font-family: Arial, Verdana, Helvetica, sans-serif;text-decoration-color: #E22237 !important;" target="_blank"><img alt="ALLIN" class="full-width" src="http://www.letverizn-do.info/d136VB2h395QP7oa13D4Z4ub4J1082o36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQZdQen6Y1t0li6l@3wDO/brittle-fervently" style="border: 0px none rgb(0, 0, 0); outline: rgb(0, 0, 0) none 0px; text-decoration: none; width: 100%; font-size: 18px; margin: 0px; font-family: Arial, Verdana, Helvetica, sans-serif; color: rgb(0, 0, 0);" /></a></span> 
-             <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:28px;font-weight:bold;line-height:1;text-align:center;color:#555;">
-              We appreciate your opinion
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-             <div align="center" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:28px;line-height:normal;text-align:center;color:#555;">
-              Simply complete our 20-Second Service Survey about how your experience has been with us lately.              </div> </td> 
-           </tr> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;padding-top:30px;padding-bottom:50px;word-break:break-word;"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;"> 
-              <tbody> 
-               <tr> 
-                <td align="center" bgcolor="#E60000" role="presentation" style="border:none;border-radius:3px;color:#ffffff;cursor:auto;padding:15px 25px;" valign="middle"> <p style="background:#E60000;color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:25px;font-weight:normal;line-height:120%;Margin:0;text-decoration:none;text-transform:none;"><a href="http://www.letverizn-do.info/conscientious-Charles/Y8a5Cn2395rT86M12K44b1Ai1082G36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQZdQen5JX1N05sj2wD" style=" text-decoration: none; color: #FFF"><strong>Click Here To Start</strong> </a></p> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-           <tr> 
-            <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-             <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:24px;line-height:20px;text-align:left;color:#525252; text-align: center">
-              Check out some of our upgraded deals!
-              <br /> 
-              <br /> 
-              <a href="http://www.letverizn-do.info/conscientious-Charles/Y8a5Cn2395rT86M12K44b1Ai1082G36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQZdQen5JX1N05sj2wD"><img alt="" src="http://www.letverizn-do.info/exponentiation-redirections/f305A239M5Css7a13h44b5NHT1082N36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQZdQen7Mn10htk5f@wPD" width="100%" /></a>
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;"> 
-        <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td style="vertical-align:bottom;padding:0;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td align="center" style="font-size:0px;padding:0;word-break:break-word;"> 
-                 <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:300;line-height:1;text-align:center;color:#575757;"> 
-                  <table width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                  <br /> 
-                  <br /> &nbsp; 
-                  <table width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                  <br /> 
-                  <br /> 
-                  <br /> To refrain from messages,
-                  <a href="http://www.letverizn-do.info/a7f5c2r395C8NT612r44bK3I1082D36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQZdQen5qI1S05KLwTD/brawn-beautifiers" style="text-decoration-line: none;"> <span>Visit_Ahead_Here </span> </a>
-                  <br /> 126 E 23rd St New York, NY, US 10010
-                  <br /> 
-                  <br /> 
-                  <br /> 
-                  <br /> 
-                  <br /> 
-                  <br /> <small><style size="Greekize"></style></small><span size="thruster"></span><span></span><style size="staunch"></style><small></small>
-                 </div> </td> 
-               </tr> 
-               <tr> 
-                <td align="center" style="font-size:0px;padding:10px;word-break:break-word;"> 
-                 <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:300;line-height:1;text-align:center;color:#575757;">
-                  &nbsp;
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </div> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <!-- HEADER --> 
-  <table bgcolor="#eee" class="head-wrap"> 
+ <body class="respond" leftmargin="0" marginheight="0" marginwidth="0" topmargin="0">
+  <!-- ======= pre-header ======= --> 
+  <table style="display:none!important;"> 
    <tbody> 
     <tr> 
-     <td>&nbsp;</td> 
-     <td class="header container"> 
-      <div class="content"> 
-       <table bgcolor="#eee"> 
-        <tbody> 
-         <tr> 
-          <td>&nbsp;</td> 
-          <td align="right"> <h6 class="collapse">&nbsp;</h6> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
+     <td> 
+      <div style="overflow:hidden;display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;maxheight:0px;max-width:0px;opacity:0;">
+       Pre-header for the newsletter template
       </div> </td> 
-     <td>&nbsp;</td> 
     </tr> 
    </tbody> 
   </table> 
-  <!-- /HEADER -->
-  <!-- BODY --> 
-  <table class="body-wrap"> 
+  <!-- ======= pre-header end ======= -->
+  <!-- ======= header ======= --> 
+  <table bgcolor="ffffff" border="0" cellpadding="0" cellspacing="0" width="100%"> 
    <tbody> 
     <tr> 
-     <td>&nbsp;</td> 
-     <td bgcolor="#FFFFFF" class="container"> 
-      <div class="content"> 
-       <table> 
-        <tbody> 
-         <tr> 
-          <td>&nbsp; <h3>&nbsp;</h3> 
-           <!-- You may like to include a Hero Image --> <p>&nbsp;</p> 
-           <!-- /Hero Image --> <p>&nbsp;</p> &nbsp; <p style="text-align:center;">&nbsp;</p> <p>&nbsp;</p> &nbsp; <p>&nbsp;</p> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> </td> 
-     <td>&nbsp;</td> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="container590" width="590"> 
+       <tbody> 
+        <tr> 
+         <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center"> 
+          <table align="center" bgcolor="#FFBC0D" border="0" cellpadding="0" cellspacing="0" class="container590" width="590"> 
+           <tbody> 
+            <tr> 
+             <td align="center" height="90" style="height:90px;"><a href="http://www.all-mcdls.info/proper-prolongs/2a64t2395qw8y613b44b9WKm1083M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.dQeo7H1oZ0gN5Q2ywD" style="display: block; border-style: none !important; border: 0 !important; text-decoration: none; font-size: 34px; font-weight: bold; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; color: #D90007">Mc Donalds </a></td> 
+            </tr> 
+            <tr> 
+             <td align="center"> 
+              <table border="0" cellpadding="0" cellspacing="0" class="container590 hide" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="360 "> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;" width="120"><a href="http://www.all-mcdls.info/proper-prolongs/2a64t2395qw8y613b44b9WKm1083M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.dQeo7H1oZ0gN5Q2ywD" style="color: #312c32; text-decoration: none;">Our Menu </a></td> 
+                 <td align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;" width="120"><a href="http://www.all-mcdls.info/proper-prolongs/2a64t2395qw8y613b44b9WKm1083M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.dQeo7H1oZ0gN5Q2ywD" style="color: #312c32; text-decoration: none;">Exclusive Deals </a></td> 
+                 <td align="center" style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;" width="120"><a href="http://www.all-mcdls.info/proper-prolongs/2a64t2395qw8y613b44b9WKm1083M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.dQeo7H1oZ0gN5Q2ywD" style="color: #312c32; text-decoration: none;">Locate</a></td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <!-- /BODY -->
-  <!-- FOOTER --> 
-  <table bgcolor="#ff4259" class="footer-wrap"> 
+  <!-- ======= end header ======= -->
+  <!-- ======= big image section ======= --> 
+  <table bgcolor="ffffff" border="0" cellpadding="0" cellspacing="0" class="bg_color" width="100%"> 
    <tbody> 
     <tr> 
-     <td>&nbsp;</td> 
-     <td class="container">
-      <!-- content --> 
-      <div class="content"> 
-       <table> 
-        <tbody> 
-         <tr> 
-          <td align="center">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> 
-      <!-- /content --></td> 
-     <td>&nbsp;</td> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="container590" width="590"> 
+       <tbody> 
+        <tr> 
+         <td align="center" class="section-img"><a href="http://www.all-mcdls.info/proper-prolongs/2a64t2395qw8y613b44b9WKm1083M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.dQeo7H1oZ0gN5Q2ywD" style=" border-style: none !important; display: block; border: 0 !important;"><img alt="" border="0" src="http://www.all-mcdls.info/diagonal-waning/eb84X2395H7asG11E44bbh1083R36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ.dQeo7eVQT1D05JAwWD" style="display: block; width: 590px;" width="590" /></a></td> 
+        </tr> 
+        <tr> 
+         <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center" class="main-header" style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;">
+          <!-- ======= section text ====== --> 
+          <div style="line-height:normal; padding-bottom: 12px">
+           You are just a few clicks away to get The $100 Mc Donalds Card
+          </div> <a href="http://www.all-mcdls.info/proper-prolongs/2a64t2395qw8y613b44b9WKm1083M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.dQeo7H1oZ0gN5Q2ywD"><img alt="" src="http://www.all-mcdls.info/shareholders-suitor/d6e5S2r395f7azp13K44bXcIS1083X36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.dQeo6gI1D0m6jT2PwD" style="width: 100%" width="100%" /></a></td> 
+        </tr> 
+        <tr> 
+         <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center"> 
+          <table align="center" bgcolor="eeeeee" border="0" cellpadding="0" cellspacing="0" width="40"> 
+           <tbody> 
+            <tr> 
+             <td height="2" style="font-size: 2px; line-height: 2px;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="container590" width="400"> 
+           <tbody> 
+            <tr> 
+             <td align="center" style="color: #888888; font-size:28px; font-family: 'Work Sans', Calibri, sans-serif; line-height: normal;">
+              <!-- ======= section text ====== --> 
+              <div style="line-height: normal">
+               Simply complete our 20-Second Service Survey about how your experience has been with us lately.               </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center"> 
+          <table align="center" bgcolor="#E12F2F" border="0" cellpadding="0" cellspacing="0" style="" width="260"> 
+           <tbody> 
+            <tr> 
+             <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" style="color: #ffffff; font-size: 24px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 26px;">
+              <!-- ======= main section button ======= --> 
+              <div style="line-height: 26px;">
+               <a href="http://www.all-mcdls.info/proper-prolongs/2a64t2395qw8y613b44b9WKm1083M36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.dQeo7H1oZ0gN5Q2ywD" style="color: #ffffff; text-decoration: none;"><strong>SHOP NOW</strong></a>
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <!-- /FOOTER -->  
- <img src="http://www.letverizn-do.info/merges-bursty/ed66hVg2395P85Lr11n44b6u1082U36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQZdQen7q1QHmG06zOwqUD" alt=""/></body>
+  <!-- ======= end section ======= -->
+  <!-- ======= divider ======= --> 
+  <table bgcolor="ffffff" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+   <tbody> 
+    <tr class="hide"> 
+     <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td height="50" style="font-size: 50px; line-height: 50px;">&nbsp;</td> 
+    </tr> 
+    <tr>
+     <!-- ======= divider  ======= --> 
+     <td align="center" class="divider"><img alt="" border="0" height="1" src="http://www.all-mcdls.info/lacerated-weekend/30X5Hk2395Pn7aX12b44Pbdz1083T36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ.dQeo6j1VB0B5zzwlD" style="display: block; width: 590px; height: 1px;" width="590" /></td> 
+    </tr> 
+    <tr> 
+     <td height="40" style="font-size: 40px; line-height: 40px;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <!-- ======= end divider ======= -->
+  <!-- ======= 3 columns features ======= --> 
+  <table bgcolor="ffffff" border="0" cellpadding="0" cellspacing="0" class="bg_color" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="container590" width="590"> 
+       <tbody> 
+        <tr> 
+         <td align="center" class="main-header" style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;">
+          <!-- ======= section text ====== --> 
+          <div style="line-height: 35px">
+           Featured Favorites
+          </div> </td> 
+        </tr> 
+        <tr class="hide"> 
+         <td height="15" style="font-size: 15px; line-height: 15px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="170"> 
+           <tbody> 
+            <tr>
+             <!-- ======= image ======= --> 
+             <td align="center"><a href="" style=" border-style: none !important; display: block; border: 0 !important;"><img alt="" border="0" src="http://www.all-mcdls.info/Z115w23C95N7aqF12s44FbeR1083v36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ.dQeo6gzI1l06PUwJDz/voluntary-knowhow" style="display: block; width: 170PX;" width="170" /></a></td> 
+            </tr> 
+            <tr> 
+             <td height="15" style="font-size: 15px; line-height: 15px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" style="color: #333333; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; font-weight: 500; line-height: 20px;">
+              <!-- ======= section text ====== --> 
+              <div style="line-height: 20px">
+               Crispy Sandwich
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="40"> 
+           <tbody> 
+            <tr> 
+             <td height="50" style="font-size: 50px; line-height: 50px;" width="40">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="170"> 
+           <tbody> 
+            <tr>
+             <!-- ======= image ======= --> 
+             <td align="center"><a href="" style=" border-style: none !important; display: block; border: 0 !important;"><img alt="" border="0" src="http://www.all-mcdls.info/arrangements-Marcus/3d24G2395pp7na12Yl44bfn1083J36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.dQeo6UD10BQ6JXUwBD" style="display: block; width: 170PX;" width="170" /></a></td> 
+            </tr> 
+            <tr> 
+             <td height="15" style="font-size: 15px; line-height: 15px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" style="color: #333333; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; font-weight: 500; line-height: 20px;">
+              <!-- ======= section text ====== --> 
+              <div style="line-height: 20px">
+               Big Mac
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="40"> 
+           <tbody> 
+            <tr> 
+             <td height="50" style="font-size: 50px; line-height: 50px;" width="40">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="170"> 
+           <tbody> 
+            <tr>
+             <!-- ======= image ======= --> 
+             <td align="center"><a href="" style=" border-style: none !important; display: block; border: 0 !important;"><img alt="" border="0" src="http://www.all-mcdls.info/a255Gi2395LM7aq12N44Tc0z1083G36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ.dQeo7S1tBu0A5azLwD/mulberry-miserably" style="display: block; width: 170PX;" width="170" /></a></td> 
+            </tr> 
+            <tr> 
+             <td height="15" style="font-size: 15px; line-height: 15px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" style="color: #333333; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; font-weight: 500; line-height: 20px;">
+              <!-- ======= section text ====== --> 
+              <div style="line-height: 20px">
+               Chicken Nuggets
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <tr class="hide"> 
+     <td height="30" style="font-size: 30px; line-height: 30px;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td height="70" style="font-size: 70px; line-height: 70px;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <!-- ======= end section ======= -->
+  <!-- ======= contact section ======= --> 
+  <table bgcolor="ffffff" border="0" cellpadding="0" cellspacing="0" class="bg_color" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td height="60" style="border-top: 5px solid #000;font-size: 60px; line-height: 60px;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="container590 bg_color" width="590"> 
+       <tbody> 
+        <tr> 
+         <td> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="300"> 
+           <tbody> 
+            <tr>
+             <!-- ======= logo ======= --> 
+             <td align="left"></td> 
+            </tr> 
+            <tr> 
+             <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="left" class="text_color" style="color: #888888; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 23px;"> 
+              <div style="color: #333333; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; font-weight: 600; mso-line-height-rule: exactly; line-height: 23px;">
+               &nbsp;
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="2"> 
+           <tbody> 
+            <tr> 
+             <td height="10" style="font-size: 10px; line-height: 10px;" width="2">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="right" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="200"> 
+           <tbody> 
+            <tr> 
+             <td class="hide" height="45" style="font-size: 45px; line-height: 45px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td height="15" style="font-size: 15px; line-height: 15px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td> 
+              <table align="right" border="0" cellpadding="0" cellspacing="0"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                 <td>&nbsp;</td> 
+                 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <tr> 
+     <td height="60" style="font-size: 60px; line-height: 60px;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <!-- ======= end section ======= -->
+  <!-- ======= footer ====== --> 
+  <table bgcolor="f4f4f4" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="container590" width="590"> 
+       <tbody> 
+        <tr> 
+         <td> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"> 
+           <tbody> 
+            <tr> 
+             <td align="left" style="color: #aaaaaa; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;"> 
+              <div style="line-height: 24px;">
+               <span style="color: #333333;">No longer wish to receive notices?,</span>
+               <a href="http://www.all-mcdls.info/1975qS2395L8YJ612Y44baIG1083M36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.dQeo7wxo1Zn05cypwD/diagonal-waning" style="text-decoration-line: none;"> <span>Click.This </span> </a>
+               <br /> 126 E 23rd St New York, NY, US 10010
+               <br /> 
+               <br /> 
+               <br /> 
+               <br /> 
+               <br /> 
+               <br /> <small><span title="rattled"></small></span><font style="impermeable"><span></font></span><style title="Larson"></style><big><font title="Byzantinizes"></font></big><span></span>
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" width="5"> 
+           <tbody> 
+            <tr> 
+             <td height="20" style="font-size: 20px; line-height: 20px;" width="5">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="right" border="0" cellpadding="0" cellspacing="0" class="container590" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0"> 
+               <tbody> 
+                <tr> 
+                 <td align="center">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <tr> 
+     <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <!-- ======= end footer ====== -->  
+ <img src="http://www.all-mcdls.info/mulberry-miserably/5b26W2pA395Um85D12P44mc1O1083C36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ.dQeo6d1syw05OUwUD" alt=""/></body>
 </html>
 
-------=_Part_589_1089144920.1672426384226--
+------=_Part_145_1441133487.1672433105565--
 
