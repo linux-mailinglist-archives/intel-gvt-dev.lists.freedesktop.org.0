@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66E76659AE4
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Dec 2022 18:18:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CE91659B37
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 30 Dec 2022 19:06:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AAC3510E45D;
-	Fri, 30 Dec 2022 17:18:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C52B810E47D;
+	Fri, 30 Dec 2022 18:06:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 30 Dec 2022 17:18:53 UTC
-Received: from mail.mn-coffebuck.info (unknown [45.95.212.168])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5041010E45D
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Fri, 30 Dec 2022 18:06:45 UTC
+Received: from mail.sp-attmobil.info (unknown [45.95.212.169])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 84B0310E476
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 30 Dec 2022 17:18:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mn-coffebuck.info;
+ Fri, 30 Dec 2022 18:06:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sp-attmobil.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tmobile-gift-opportunity@mn-coffebuck.info; 
- bh=t5JlopQ/D7in5WbRA+YFQGem/UY=;
- b=VLYqD2diQuf/VZdR9qyAm6lRyDt/eGdF20rDZkexC8BNTlLic4z2ZYtskzQlnwEJj/ry6Jbwk3Wq
- 5DajyszmmE4C0KoLbsAg05f2OmtZlqLagN8Qu9mMkdpfG9k8dFX0kO8O4g0Qj+G5VBDeQZfclQ1F
- 7vw+kyTofXuFroiUnak=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mn-coffebuck.info; 
- b=O50O+dpAe9J4pAQrA8JP5E3I8XQlFCzzS7dyocHiFDQpicBfSTqgcNtLsOrplifHuCdPdaChXAjw
- 8elOLiarnEMlfu+QJ50aiqT01pvoKgFxYCMWDK8ti6oLixJwqF06exUOc8ZoTajjxQOrfYdbYdB1
- C1QOKcu/Nn6qdhf1tt4=;
-Received: by mail.mn-coffebuck.info id hlsenq0001ga for
+ i=now-on-att@sp-attmobil.info; 
+ bh=fRySCISY0r/ViyTPFMdFnnWE6M8=;
+ b=BWjW6BFbpLvYRMkIH6eUAFvFxOeKp2ozxeYNOpW+woYidGUKm7JcDeC5wt0ELa68pkc2SAX2VbeC
+ B8zHMGrUV5HOxQ4mYCxfWBHnHxOtrx4y18buSK3hh9/BYwhtUTpmE57a5YDMq/yhyOx183J1X0D5
+ gwgW5wELP99sHsSyZQQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sp-attmobil.info;
+ b=MEl6u8UtXX2ujzfGAu2YVsawZ49wjnirFyrS/MdgVwuISFh43SfbQY9KC5nRPCXtmJ8pJXKNhKSE
+ yXIzD8qe6/CpXwpqaD7e0OfuXbi1qq9n7bgAnCpKLDpzOyiyTzoBLw2V9K23fl6JPTg6DVu5/s8p
+ RGFVOnGNNC09LSofDqY=;
+Received: by mail.sp-attmobil.info id hlskba0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 30 Dec 2022 12:03:50 -0500 (envelope-from
- <tmobile-gift-opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@mn-coffebuck.info>)
-Date: Fri, 30 Dec 2022 12:03:50 -0500
-From: "TMOBILE Gift Opportunity" <tmobile-gift-opportunity@mn-coffebuck.info>
+ Fri, 30 Dec 2022 12:51:16 -0500 (envelope-from
+ <now-on-att-intel+2Dgvt+2Ddev=lists.freedesktop.org@sp-attmobil.info>)
+Date: Fri, 30 Dec 2022 12:51:16 -0500
+From: "Now On ATT" <now-on-att@sp-attmobil.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Holiday appreciation is needed during these time,
- here's you gift on us
+Subject: Impressive Gifts coming your way this season
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_91_1703319891.1672419810038"
-Message-ID: <0.0.0.A.1D91C70B07EC4A4.178505@mail.mn-coffebuck.info>
+ boundary="----=_Part_148_1071420864.1672422660741"
+Message-ID: <0.0.0.10.1D91C7750D119BA.5276BC@mail.sp-attmobil.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,291 +53,520 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_91_1703319891.1672419810038
+------=_Part_148_1071420864.1672422660741
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <meta charset="utf-8" /> 
-  <title>Deriv</title> 
-  <meta content="width=device-width" name="viewport" /> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-type" /> 
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-  <!-- Character encoding --> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-  <!-- Set 100% scale, allow zoom --> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <style type="text/css">/* FONTS */
-            @media screen {
-                /* latin */
-                @font-face {
-                font-family: 'IBM Plex Sans';
-                font-style: normal;
-                font-weight: 400;
-                font-display: swap;
-                src: local('IBM Plex Sans'), local('IBMPlexSans'), url(https://fonts.gstatic.com/s/ibmplexsans/v7/zYXgKVElMYYaJe8bpLHnCwDKhdHeFaxOedc.woff2) format('woff2');
-                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-                }
-                /* latin */
-                @font-face {
-                font-family: 'IBM Plex Sans';
-                font-style: normal;
-                font-weight: 500;
-                font-display: swap;
-                src: local('IBM Plex Sans Medium'), local('IBMPlexSans-Medium'), url(https://fonts.gstatic.com/s/ibmplexsans/v7/zYX9KVElMYYaJe8bpLHnCwDKjSL9AIFsdP3pBms.woff2) format('woff2');
-                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-                }
-                /* latin */
-                @font-face {
-                font-family: 'IBM Plex Sans';
-                font-style: normal;
-                font-weight: 700;
-                font-display: swap;
-                src: local('IBM Plex Sans Bold'), local('IBMPlexSans-Bold'), url(https://fonts.gstatic.com/s/ibmplexsans/v7/zYX9KVElMYYaJe8bpLHnCwDKjWr7AIFsdP3pBms.woff2) format('woff2');
-                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-                }
-            }
-            /* CLIENT-SPECIFIC STYLES */
-            body, table, td, a {
-                -webkit-text-size-adjust: 100%;
-                -ms-text-size-adjust: 100%;
-            }
-            table, td {
-                mso-table-lspace: 0pt;
-                mso-table-rspace: 0pt;
-            }
-            img {
-                -ms-interpolation-mode: bicubic;
-            }
-            /* RESET STYLES */
-            img {
-                border: 0;
-                height: auto;
-                line-height: 100%;
-                outline: none;
-                text-decoration: none;
-            }
-            table {
-                border-collapse: collapse !important;
-            }
-            body {
-                height: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                width: 100% !important;
-                font-family: 'IBM Plex Sans', Arial, sans-serif;
-            }
-            /* iOS BLUE LINKS */
-            a[x-apple-data-detectors] {
-                color: inherit !important;
-                text-decoration: none !important;
-                font-size: inherit !important;
-                font-family: inherit !important;
-                font-weight: inherit !important;
-                line-height: inherit !important;
-            }
-            /* ANDROID CENTER FIX */
-            div[style*="margin: 16px 0;"] {
-                margin: 0 !important;
-            }
-            /* Deriv */
-            a, a:visited {
-                color: #ff444f;
-                text-decoration: none;
-            }
-            a:hover {text-decoration: underline;}
-            a.button {
-                text-decoration: none;
-                text-align: center;
-                line-height: 20px;
-                padding: 10px 16px;
-                display: inline-block;
-                font-weight: bold;
-                font-family: 'IBM Plex Sans', Arial, sans-serif;
-                font-size: 14px;
-                border-radius: 4px;
-                overflow: visible;
-                border: 0;
-                color: #ffffff;
-                background: #ff444f;
-            }
-            .button:hover {
-                background-color: #d43e47;
-            }
-            a.button-secondary {
-                height: 18px !important;
-                text-decoration: none;
-                text-align: center;
-                line-height: 20px;
-                padding: 10px 16px;
-                display: inline-block;
-                font-weight: 600;
-                font-family: 'IBM Plex Sans', Arial, sans-serif;
-                font-size: 14px;
-                border-radius: 4px;
-                overflow: visible;
-                border: 2px solid #999999;
-                color: #333333;
-                background: #ffffff;
-            }
-            h1 {
-                font-family: 'IBM Plex Sans', Arial, sans-serif;
-                font-size: 48px;
-                line-height: 60px;
-                font-weight: bold;
-                margin: 0;
-            }
-            h2 {
-                font-size: 32px;
-                line-height: 40px;
-                margin: 0;
-            }
-            .justify-word {
-                text-align: justify;
-                text-justify: inter-word;
-            }
+  <title></title> 
+  <style media="screen" type="text/css">body {
+        padding: 0 !important;
+        margin: 0 auto !important;
+        display: block !important;
+        min-width: 100% !important;
+        width: 100% !important;
+        background: #fffffe;
+        -webkit-text-size-adjust: none
+      }
 
-            @media screen and (max-width: 590px)  {
-                .button, .button-secondary {
-                    margin: 5px 0 !important;
-                }
-            }
-            /* MOBILE STYLES */
-            @media screen and (max-width: 620px) {
-                .img-max {
-                    width: 100% !important;
-                    max-width: 100% !important;
-                    height: auto !important;
-                }
-                .max-width {
-                    max-width: 100% !important;
-                }
-                .mobile-wrapper {
-                    width: 100% !important;
-                    max-width: 100% !important;
-                }
-                .mobile-visible {
-                    display:inline-block !important;
-                }
-                .mobile-hide {
-                    display:none !important;
-                }
-                .mobile-lowpadding-top {
-                    padding-top: 1px !important;
-                }
-                .mobile-lowsidepadding {
-                    padding-right: 15px !important;
-                    padding-left: 15px !important;
-                }
-                .mobile-negmargin {
-                    margin-top: -15px !important;
-                }
-                .mobile-center {
-                    text-align:center !important;
-                }
-                .mobile-unvisible {
-                    display: none!important;
-                }
-                .mobile-bgcolor-gray {
-                    background-color: #eeeeee !important;
-                }
-            }
+      a {
+        color: #d7282f;
+        text-decoration: none
+      }
+
+      p {
+        padding: 0 !important;
+        margin: 0 !important
+      }
+
+      img {
+        margin: 0 !important;
+        -ms-interpolation-mode: bicubic;
+        /* Allow smoother rendering of resized image in Internet Explorer */
+      }
+
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: inherit !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+
+      .btn-20 a {
+        display: block;
+        padding: 20px 35px;
+        text-decoration: none;
+      }
+
+      .l-white a {
+        color: #fffffe;
+      }
+
+      .l-black a {
+        color: #000001;
+      }
+
+      .l-blue a {
+        color: #00416b;
+      }
+
+      .l-grey a {
+        color: #69788b;
+      }
+
+      .tdn,
+      .tdn a,
+      .tdn span {
+        text-decoration: none;
+      }
+
+      :root {
+        color-scheme: light dark;
+        supported-color-schemes: light dark;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .c-white {
+          color: #fffffe !important
+        }
+
+        .c-black {
+          color: #000001 !important
+        }
+
+        .c-blue {
+          color: #00416b !important
+        }
+
+        .c-grey {
+          color: #69788b !important
+        }
+
+        .l-white a {
+          color: #fffffe !important
+        }
+
+        .l-black a {
+          color: #000001 !important
+        }
+
+        .l-blue a {
+          color: #00416b !important
+        }
+
+        .l-grey a {
+          color: #69788b !important
+        }
+
+        .bg-footer {
+          background: #f0f5fb !important;
+        }
+
+        .bg-white {
+          background: #fffffe !important;
+        }
+      }
+
+      [data-ogsc] .c-white {
+        color: #fffffe !important
+      }
+
+      [data-ogsc] .c-black {
+        color: #000001 !important
+      }
+
+      [data-ogsc] .c-blue {
+        color: #00416b !important
+      }
+
+      [data-ogsc] .c-grey {
+        color: #69788b !important
+      }
+
+      [data-ogsc] .l-white a {
+        color: #fffffe !important
+      }
+
+      [data-ogsc] .l-black a {
+        color: #000001 !important
+      }
+
+      [data-ogsc] .l-blue a {
+        color: #00416b !important
+      }
+
+      [data-ogsc] .l-grey a {
+        color: #69788b !important
+      }
+
+      [data-ogsc] .bg-footer {
+        background: #f0f5fb !important;
+      }
+
+      [data-ogsc] .bg-white {
+        background: #fffffe !important;
+      }
+
+      /* Mobile styles */
+      @media only screen and (max-device-width: 800px),
+      only screen and (max-width: 800px) {
+        .mnp-t {
+          padding-left: 0px !important;
+          padding-right: 0px !important;
+        }
+      }
+
+      @media only screen and (max-device-width: 320px),
+      only screen and (max-width: 320px) {
+        .mpa-24px {
+          padding-left: 24px !important;
+          padding-right: 24px !important;
+        }
+      }
+
+      @media only screen and (max-device-width: 480px),
+      only screen and (max-width: 480px) {
+        .mpx-15 {
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+        }
+
+        .mpx-30 {
+          padding-left: 30px !important;
+          padding-right: 30px !important;
+        }
+
+        .mpx-40 {
+          padding-left: 40px !important;
+          padding-right: 40px !important;
+        }
+
+        .mpx-10 {
+          padding-left: 10px !important;
+          padding-right: 10px !important;
+        }
+
+        .mfz-16 {
+          font-size: 14px !important;
+        }
+
+        .mfz-20 {
+          font-size: 16px !important;
+        }
+
+        .mlh-20 {
+          line-height: 20px !important;
+        }
+
+        .mlh-28 {
+          line-height: 28px !important;
+        }
+
+        .mfz-34 {
+          font-size: 34px !important;
+        }
+
+        .mlh-42 {
+          line-height: 42px !important;
+        }
+
+        .mpt-30 {
+          padding-top: 30px !important
+        }
+
+        .mnp {
+          padding-left: 0px !important;
+          padding-right: 0px !important;
+        }
+
+        u+body .gwfw {
+          width: 100% !important;
+          width: 100vw !important;
+        }
+
+        .td,
+        .m-shell {
+          width: 100% !important;
+          min-width: 100% !important;
+        }
+
+        .mt-left {
+          text-align: left !important;
+        }
+
+        .mt-center {
+          text-align: center !important;
+        }
+
+        .mt-right {
+          text-align: right !important;
+        }
+
+        .me-left {
+          margin-right: auto !important;
+        }
+
+        .me-center {
+          margin: 0 auto !important;
+        }
+
+        .me-right {
+          margin-left: auto !important;
+        }
+
+        .mh-auto {
+          height: auto !important;
+        }
+
+        .mw-auto {
+          width: auto !important;
+        }
+
+        .fluid-img img {
+          width: 100% !important;
+          max-width: 100% !important;
+          height: auto !important;
+        }
+
+        .column,
+        .column-top,
+        .column-dir,
+        .column-dir-top {
+          float: left !important;
+          width: 100% !important;
+          display: block !important;
+        }
+
+        .m-hide {
+          display: none !important;
+          width: 0 !important;
+          height: 0 !important;
+          font-size: 0 !important;
+          line-height: 0 !important;
+          min-height: 0 !important;
+        }
+
+        .m-block {
+          display: block !important;
+        }
+
+        .mw-15 {
+          width: 15px !important;
+        }
+
+        .mw-25 {
+          width: 25px !important;
+        }
+
+        .mw-img-90p img {
+          width: 100% !important;
+        }
+
+        .mw-2p {
+          width: 2% !important;
+        }
+
+        .mw-32p {
+          width: 32% !important;
+        }
+
+        .mw-49p {
+          width: 49% !important;
+        }
+
+        .mw-50p {
+          width: 50% !important;
+        }
+
+        .mw-100p {
+          width: 100% !important;
+        }
+
+        .m-full {
+          width: 95% !important;
+        }
+
+        .m-full td {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+      }
+	</style> 
+  <style type="text/css">@font-face {
+        font-family: 'Futura PT';
+        src: url('https://extfonts.s3.amazonaws.com/email-fonts/FuturaPTBold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Futura PT';
+        src: url('https://extfonts.s3.amazonaws.com/email-fonts/FuturaPTDemi.woff') format('woff');
+        font-weight: 600;
+        font-style: normal;
+      }
 	</style> 
  </head> 
- <body style="background-color: #eeeeee; margin: 0 !important; padding: 0 !important;"> 
-  <table border="0" cellpadding="0" cellspacing="0" class="darkmodelowblack" width="100%">
-   <!-- HERO CARD --> 
-   <tbody> 
-    <tr> 
-     <td align="center" bgcolor="#eeeeee" class="mobile-lowpadding-top" style="padding: 40px 0px 0px 0px;"> 
-      <table border="0" cellpadding="0" cellspacing="0" class="darkmodelowblack" style="background-color: #DA0371; max-width: 600px;" width="100%">
-       <!-- COPY --> 
-       <tbody> 
-        <tr> 
-         <td align="center" bgcolor="#DA0371" class="darkmodelowblack" style="padding: 40px 30px 35px; font-size: 34px; font-weight: bold; color: #fff">You are just a few clicks away to get The $100 T-Mobile Card</td> 
-        </tr> 
-        <tr> 
-         <td align="center" bgcolor="#0e0e0e" class="mobile-lowsidepadding darkmodelowblack" style="padding: 0px 0px 5px; background-color: #0e0e0e;"><a href="http://www.mn-coffebuck.info/51b4Q2395sY86I13S4Xn49bL1080I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdQSK7U1C0mkY5clwDN/westward-wealths"><img src="http://www.mn-coffebuck.info/westward-wealths/8645L239p5wwr7a12r449TeA1080K36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQVdQSK6axz10L5HjwDp" width="100%" /></a></td> 
-        </tr> 
-        <tr> 
-         <td align="center" bgcolor="#0e0e0e" class="mobile-lowsidepadding darkmodelowblack" style="padding: 15px 30px 30px 30px;"> <p style=" font-family: 'IBM Plex Sans', Arial, sans-serif; color: #ffffff ; font-size: 28px; font-weight: bold; line-height: 1.25; margin: 0px;">We appreciate your opinion</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td align="center" bgcolor="#eeeeee" style="padding: 0px;"> 
-      <table border="0" cellpadding="0" cellspacing="0" class="darkmodeblack" style="background-color: #ffffff; max-width: 600px; table-layout: fixed;" width="100%">
-       <!-- COPY --> 
-       <tbody> 
-        <tr> 
-         <td align="left" bgcolor="#ffffff" class="darkmodeblack mobile-lowsidepadding" style="padding: 30px 30px 0px;"> <p class="darkcolor-subtext" style="font-family: 'IBM Plex Sans', Arial, sans-serif; color: #333333; font-size: 26px; font-weight: 400; line-height: 1.5; margin: 10px 0px 0px 0px; text-align: center">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> </td> 
-        </tr> 
-        <tr> 
-         <td align="left" bgcolor="#ffffff" class="darkmodeblack" style="padding: 10px 30px;"> 
-          <div style="padding: 1%"> 
-           <div style="padding: 1%"> 
-            <div style="padding: 1px"> 
-             <div style="padding: 1px"> 
-              <div align="center" n="" style="padding: 1px">
-               <a href="http://www.mn-coffebuck.info/51b4Q2395sY86I13S4Xn49bL1080I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdQSK7U1C0mkY5clwDN/westward-wealths" style="color: #fff; font-size: 25px"><span style="display: block; background-color: #CE086E; padding: 14px; max-width: 60%; margin: auto"><strong>Go Here To Start</strong></span></a>
-              </div> 
-             </div> 
-            </div> 
-           </div> 
-          </div> <p class="darkcolor-subtext" style="font-family: 'IBM Plex Sans', Arial, sans-serif; color: #333333; font-size: 16px; font-weight: 400; line-height: 1.5;margin: 0px;">&nbsp;</p> </td> 
-        </tr> 
-        <tr> 
-         <td align="left" bgcolor="#ffffff" class="darkmodeblack mobile-lowsidepadding" style="padding: 0 30px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="left" bgcolor="#ffffff" class="darkmodeblack" style="padding: 0 30px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="left" bgcolor="#ffffff" class="darkmodeblack" style="padding:15px 30px 30px;"> <p class="darkcolor-subtext" style="font-family: 'IBM Plex Sans', Arial, sans-serif; color: #333333; font-size: 16px; font-weight: 400; line-height: 1.5; margin: 0px;"><a href="http://www.mn-coffebuck.info/51b4Q2395sY86I13S4Xn49bL1080I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdQSK7U1C0mkY5clwDN/westward-wealths"><img alt="" src="http://www.mn-coffebuck.info/westward-wealths/8824z2395f_i7a13YM449fWz1080Q36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVdQSK7eA1h0iW6PMW2wD" style="width: 100%" /> </a></p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!-- End Email Text-->
-    <!-- FOOTER --> 
-    <tr> 
-     <td align="center" bgcolor="#eeeeee" style="padding: 0px;"> 
-      <table bgcolor="#f3f5f6" border="0" cellpadding="0" cellspacing="0" class="darkmodelowblack" style="max-width: 600px;" width="100%">
-       <!-- Footer logo --> 
-       <tbody> 
-        <tr> 
-         <td align="center" class="darkmodelowblack" style="padding: 40px 0px 20px 0px;"> 
-          <div align="center" class="dark-img" style="display:none; overflow:hidden; float:left; width:0px; max-height:0px; max-width:0px; line-height:0px; visibility:hidden;">
-           <a href="http://www.mn-coffebuck.info/denigrated-burgeoned/4fe4N2395w8MW613FK4w49cO1080X36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQVdQSK5C1N0D5vypwD"><img alt="Deriv.com" border="0" class="dark-img" height="25" src="http://www.mn-coffebuck.info/strike-groveled/31e5o239I5HT7Ja12t44a0mv1080h36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQVdQSK6kPrg105v0TwD" style="color: #ffffff; font-family:'proxima_nova', Helvetica, Arial, sans-serif; text-align:center; font-weight:bold; font-size:36px; line-height:40px; text-decoration: none; margin: 0 auto; padding: 0;" width="140" /> </a>
-          </div> </td> 
-        </tr> 
-        <!-- SOCIAL --> 
-        <tr> 
-         <td align="center" class="darkmodelowblack" style="padding: 20px 0px 20px 0px; color: #ffffff; font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;"> <p style="margin: 0;"><a href="http://www.mn-coffebuck.info/51b4Q2395sY86I13S4Xn49bL1080I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdQSK7U1C0mkY5clwDN/westward-wealths" style="text-decoration: none;"><img alt="Deriv.com on Twitter" height="32" src="http://www.mn-coffebuck.info/narrows-exclaimers/c7e4j2395G7raw11p44a1V1080I36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQVdQSK7lnS10tr5iTWwD" title="Deriv.com on Twitter" width="32" /> </a>&nbsp;&nbsp; <img alt="Deriv.com on Facebook" height="32" src="http://www.mn-coffebuck.info/honeybee-drawbridges/e7c6s2o39p5Q7kRa13b44Ma2lx1080B36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQVdQSK6o1QF0g5kOlwD" title="Deriv.com on Facebook" width="32" /> &nbsp;&nbsp; <img alt="Deriv.com on Instagram" height="32" src="http://www.mn-coffebuck.info/deni
- grated-burgeoned/je44c2395znV7a12E44a3si1080o36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQVdQSK7dWJ1g0l6ezwL@D" title="Deriv.com on Instagram" width="32" /> &nbsp;&nbsp; <img alt="Deriv.com on Telegram" height="32" src="http://www.mn-coffebuck.info/fathers-intrastate/1b66hI2Z395FM7ay11m44a4w1080u36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVdQSK5pr10s5WNw@D" title="Deriv.com on Telegram" width="32" /> &nbsp;&nbsp; <img alt="Deriv.com on Youtube" height="32" src="http://www.mn-coffebuck.info/demandingly-shrivel/6484i2395E7YCa13n44Sa5GT1080D36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdQSK5zo10J5CqwD1" title="Deriv.com on Youtube" width="32" /></p> </td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="darkmodelowblack" style="padding: 20px 0px 10px 0px;" valign="top"> 
-          <table bgcolor="#f3f5f6" border="0" cellpadding="0" cellspacing="0" class="darkmodelowblack" style="max-width: 600px;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" bgcolor="#f3f5f6" class="darkmodelowblack" style="color: #646464;font-family: 'IBM Plex Sans', Arial, sans-serif;font-size: 12px;font-weight: 500;line-height: 16px;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;"><br /> <br /> &nbsp; <p class="darkmodegray " style="padding: 0px 30px 0px 30px;font-family: 'IBM Plex Sans', Arial, sans-serif; color: #646464; font-size: 12px; font-weight: 400; line-height: 16px; margin: 0px 0px 5px 0px;">To refrain from notifications,<a href="http://www.mn-coffebuck.info/denigrated-burgeoned/b164i2395nP86A11s449dk1080x36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQVdQSK7A1PO0rp5tzwPD" style="text-decoration-line: none;"> <span>Start-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <font></font><style></style><font face="Grossman"><font size="comprehensibility"><font></font></font></font><font color="Palmyra"><font class="elemental"><style><big
- ></style></big></font></font></p> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>  
-  <!-- end message template --> 
- <img src="http://www.mn-coffebuck.info/demandingly-shrivel/be86Ep239M5s8X5N13h44ai6BP1080j36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQVdQSK7BZ10_UF6E1wLD@" alt=""/></body>
+ <body class="body bg-white" style="padding:0 !important; margin:0 auto !important; display:block !important; min-width:100% !important; width:100% !important; background:#fffffe; -webkit-text-size-adjust:none;"> 
+  <center> 
+   <table bgcolor="#fffffe" border="0" cellpadding="0" cellspacing="0" class="gwfw bg-white" style="margin: 0; padding: 0; width: 100%; height: 100%;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" style="margin: 0; padding: 0; width: 100%; height: 100%;" valign="top"> 
+       <table border="0" cellpadding="0" cellspacing="0" class="m-shell" width="600"> 
+        <tbody> 
+         <tr> 
+          <td class="td" style="width:600px; min-width:600px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;"> 
+           <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <!-- Preview Text --> 
+            <tbody> 
+             <tr class="m-hide" style="mso-hide: all;"> 
+              <td style="font-size: 0pt; line-height: 0pt;">Whatcha sippin' this season?</td> 
+             </tr> 
+             <!-- END Preview Text -->
+             <!-- Main --> 
+             <tr> 
+              <td> 
+               <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <!-- Section - Intro --> 
+                <tbody> 
+                 <tr> 
+                  <td class="pb-50" style="padding-bottom: 60px;"> 
+                   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <!-- Header --> 
+                    <tbody> 
+                     <tr> 
+                      <td class="fluid-img img-center p-35 mw-img-90p" style="font-size:30pt;  text-align:center; padding: 40px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif';"><br /> <br /> <strong style="color: #16A1CF">AT&amp;T</strong></td> 
+                     </tr> 
+                     <!-- END Header -->
+                     <!-- Image 1 --> 
+                     <tr> 
+                      <td class="fluid-img pb-15" style="font-size:0pt; line-height:0pt; text-align:center; padding-bottom: 0px;"><a href="http://www.sp-attmobil.info/formulas-anion/1b66b2x39r5X8z6w11A44a7L1081S36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdQem6b1is0G6MzXJwD"><img alt="Zero To Launch" height="auto" src="http://www.sp-attmobil.info/espousing-compactors/6845G2U395p7aSz12W44aamt1081N36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQrdQem6y10hLk6e2wW3D" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%; margin-top: 12pxz" width="100%" /></a></td> 
+                     </tr> 
+                     <!-- End Image 1 -->
+                     <!-- Subhead 1 --> 
+                     <tr> 
+                      <td class="a-center pb-15 px-15 mfz-42 mlh-42 mpt-30 mnp-t" style="font-size:42px; line-height:52px; color:#00416b; font-family:'Futura', Arial, sans-serif; text-align:center; padding-bottom:15px; padding-left: 0px; padding-right: 0px;font-weight: bold; padding-top: 20px;"><strong>You are just a few clicks away<br /> to get The $100 AT&amp;T Card</strong></td> 
+                     </tr> 
+                     <!-- END Subhead 1 -->
+                     <!-- Body Copy 1 --> 
+                     <tr> 
+                      <td class="w-600 a-center px-60 mpa-24px mpx-30" style="font-size:26px; line-height:normal; color:#00416b; font-family:'Futura', Arial, sans-serif; text-align:center; padding-bottom: 20px; padding-left: 55px; padding-right: 55px; letter-spacing: 1px;">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</td> 
+                     </tr> 
+                     <!-- END Body Copy 1 -->
+                     <!-- Button 1 --> 
+                     <tr> 
+                      <td align="center" class="mptb-30" style="padding:30px 0;"> 
+                       <table border="0" cellpadding="0" cellspacing="0" width="60%"> 
+                        <tbody> 
+                         <tr> 
+                          <td bgcolor="#00416b" height="64" style="font-size:30px; line-height:24px; font-family:'Futura', Arial, sans-serif; text-align:center; font-weight: normal; color:#ffffff; letter-spacing: 1px; height: 64px;border: 1px solid #ffffff;"><a class="link c-white" href="http://www.sp-attmobil.info/Tioga-labels/a9e4S2395f86Zg12u44a_8m1081g36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQrdQem7roi1Dm05f3LwD" style="display: block; padding: 20px 36px; text-decoration:none;letter-spacing: 1px; color:#ffffff;font-weight:normal;" target="_blank"><span class="link c-white" style="text-decoration:none; color:#ffffff;">Click Here To Start</span> </a></td> 
+                         </tr> 
+                        </tbody> 
+                       </table> </td> 
+                     </tr> 
+                     <!-- BEGIN Fine Print --> 
+                     <tr> 
+                      <td class="text-16 fw-600 a-center pb-15 mpx-30" style="font-size:12px; line-height:16px; color:#00416b; font-family:'Futura', Arial, sans-serif; text-align:center; padding-top: 40px; padding-left:0px; padding-right:0px; padding-bottom: 10px;"><a href="http://www.sp-attmobil.info/Tioga-labels/a9e4S2395f86Zg12u44a_8m1081g36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQrdQem7roi1Dm05f3LwD"><img alt="" src="http://www.sp-attmobil.info/Tioga-labels/1d45PT2395N7PFa11m44abQ1081x36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQrdQem6SOu10k6Dy3@wD" style="margin-top: 50px" width="100%" /></a> &nbsp;</td> 
+                     </tr> 
+                     <!-- END Fine Print --> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                 <!-- END Button 1 --> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+             <!-- END Section - Intro --> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <!-- END Main -->
+         <!-- Footer --> 
+         <tr> 
+          <td bgcolor="#f0f5fb" class="py-40 px-100 mpx-15 bg-footer" style="padding-top: 40px; padding-bottom: 40px; padding-left: 80px; padding-right: 80px;"> 
+           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="center" class="pb-25" style="padding-bottom: 25px;">
+               <!-- BEGIN Member Points --> 
+               <table border="0" cellpadding="0" cellspacing="0"> 
+                <tbody> 
+                 <tr> 
+                  <td class="text-16 fw-600 a-center pb-15 mpx-30" style="font-size:22px; line-height:22px; color:#00416b; font-family:'Futura', Arial, sans-serif; font-weight: 600; text-align:center; padding:0 60px 32px;"><strong class="fw-600" style="font-weight: 600;">We appreciate your opinion</strong></td> 
+                 </tr> 
+                 <!-- END Member Points -->
+                 <!-- BEGIN Socials --> 
+                 <tr> 
+                  <td align="center" class="pb-25" style="padding-bottom:32px;"> 
+                   <table border="0" cellpadding="0" cellspacing="0"> 
+                    <tbody> 
+                     <tr> 
+                      <td class="img" style="font-size:0pt; line-height:0pt; text-align:left;" width="14"><a href="http://www.sp-attmobil.info/Tioga-labels/a9e4S2395f86Zg12u44a_8m1081g36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQrdQem7roi1Dm05f3LwD" target="_blank"><img alt="" border="0" height="28" src="http://www.sp-attmobil.info/Gilchrist-instrumentalist/13e5A23S95w7aVw11z44ack1081k36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQrdQem7VIKy10j6mMwDkq" width="28" /></a></td> 
+                      <td class="img" style="font-size:0pt; line-height:0pt; text-align:left;" width="25">&nbsp;</td> 
+                      <td class="img" style="font-size:0pt; line-height:0pt; text-align:left;" width="16"><a href="http://www.sp-attmobil.info/Tioga-labels/a9e4S2395f86Zg12u44a_8m1081g36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQrdQem7roi1Dm05f3LwD" target="_blank"><img alt="" border="0" height="29" src="http://www.sp-attmobil.info/Tioga-labels/a445A239m5C7MFa11O44adq1081u36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQrdQem6Okrq105clwDy" width="29" /></a></td> 
+                      <td class="img" style="font-size:0pt; line-height:0pt; text-align:left;" width="25">&nbsp;</td> 
+                      <td class="img" style="font-size:0pt; line-height:0pt; text-align:left;" width="16"><a href="http://www.sp-attmobil.info/Tioga-labels/a9e4S2395f86Zg12u44a_8m1081g36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQrdQem7roi1Dm05f3LwD" target="_blank"><img alt="" border="0" height="24" src="http://www.sp-attmobil.info/Tioga-labels/4a44R2395N7nSa13S4K4aeZv1081_36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQrdQem7QFUz10D5AWw0D" width="29" /></a></td> 
+                      <td class="img" style="font-size:0pt; line-height:0pt; text-align:left;" width="25">&nbsp;</td> 
+                      <td class="img" style="font-size:0pt; line-height:0pt; text-align:left;" width="13"><a href="http://www.sp-attmobil.info/Tioga-labels/a9e4S2395f86Zg12u44a_8m1081g36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQrdQem7roi1Dm05f3LwD" target="_blank"><img alt="" border="0" height="28" src="http://www.sp-attmobil.info/backing-embedded/eb85z239A5k7pHa12N44afiJ1081u36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQrdQem7vTUO10A5BW2wD" width="25" /></a></td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                 <!-- END Socials -->
+                 <!-- BEGIN Privacy | Terms | Visit Dutch --> 
+                 <tr> 
+                  <td class="text-16 fw-600 a-center pb-15" style="font-size:16px; line-height:22px; color:#00416b; font-family:'Futura', Arial, sans-serif; font-weight: 600; text-align:center; padding-bottom: 15px;">&nbsp;</td> 
+                 </tr> 
+                 <!-- END Privacy | Terms | Visit Dutch -->
+                 <!-- BEGIN Customer Experience Contacts --> 
+                 <tr> 
+                  <td class="text-16 fw-600 a-center pb-15" style="font-size:12px; line-height:22px; color:#00416b; font-family:'Futura', Arial, sans-serif; font-weight: 600; text-align:center; padding: 0px 38px 15px 38px;">&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td class="text-16 fw-600 a-center pb-15 mnp" style="font-size:12px; line-height:22px; color:#00416b; font-family:'Futura', Arial, sans-serif; font-weight: 600; text-align:center; padding: 0px 38px 15px 38px;">&nbsp;</td> 
+                 </tr> 
+                 <!-- END Customer Experience Contacts -->
+                 <!-- BEGIN Dutch Location Address + Windmill --> 
+                 <tr> 
+                  <td class="text-16 fw-600 a-center pb-25" style="font-size:16px; line-height:22px; color:#00416b; font-family:'Futura', Arial, sans-serif; font-weight: 600; text-align:center; padding-bottom: 25px;">&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td class="img-center pb-25" style="font-size:0pt; line-height:0pt; text-align:center; padding-bottom: 25px;">&nbsp;</td> 
+                 </tr> 
+                 <!-- END Dutch Location Address + Windmill -->
+                 <!-- BEGIN Copyright --> 
+                 <tr> 
+                  <td class="text-16 fw-600 a-center pb-15" style="font-size:12px; line-height:22px; color:#00416b; font-family:'Futura', Arial, sans-serif; font-weight: 600; text-align:center; padding-bottom: 30px;">To cut off messages,<a href="http://www.sp-attmobil.info/8094j2395n86hx11g44a9G1081r36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQrdQem6OOu1n05QNwDM/backing-embedded" style="text-decoration-line: none;"> <span>Visit_Right_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <span><small></span></small><style></style><font></font><font color="cubs"><font lang="Planck"></font></font><font><span dir="softly"></font></span><font style="sluice"></font><style></style><span class="binomial"></span></td> 
+                 </tr> 
+                 <!-- END Copyright -->
+                 <!-- BEGIN Unsubscribe --> 
+                 <tr> 
+                  <td class="text-16 fw-600 a-center pb-15" style="font-size:12px; line-height:22px; color:#00416b; font-family:'Futura', Arial, sans-serif; font-weight: 600; text-align:center; padding-bottom: 15px;">&nbsp;</td> 
+                 </tr> 
+                 <!-- END Unsubscribe --> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+             <!-- END Footer --> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </center>   
+ <img src="http://www.sp-attmobil.info/e3f5d2N395lw8M513jv4Q4b0V1081U36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQrdQem6P1lr0w5f@wD0/Tioga-labels" alt=""/></body>
 </html>
 
-------=_Part_91_1703319891.1672419810038--
+------=_Part_148_1071420864.1672422660741--
 
