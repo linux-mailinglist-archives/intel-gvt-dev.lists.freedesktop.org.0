@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7102665A5DD
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 31 Dec 2022 18:05:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC1DC65A603
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 31 Dec 2022 19:03:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 383F910E13D;
-	Sat, 31 Dec 2022 17:05:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 554A210E1C2;
+	Sat, 31 Dec 2022 18:03:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sat, 31 Dec 2022 17:05:28 UTC
-Received: from mail.co-krogrs.info (unknown [45.95.212.173])
- by gabe.freedesktop.org (Postfix) with ESMTP id B9F1B10E120
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Sat, 31 Dec 2022 18:03:36 UTC
+Received: from mail.pal-topays.info (unknown [45.95.212.174])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 563B710E1C2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 31 Dec 2022 17:05:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=co-krogrs.info; 
+ Sat, 31 Dec 2022 18:03:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pal-topays.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=now-on-kroger@co-krogrs.info; 
- bh=HjhFVLmLD1yIA8nRvfEU9fpND9o=;
- b=BEcXNPlHB+RW6huj3OZlGG7lbLjnyxdoNDLDnfn7BTCJjsGvFgGvnlm5dJ2mIf82M0EzD3tSRptw
- SD+teI91DhjL85StL0xuB/X0aUGUDdX4wtZ7OiEOajtEMdDhWYSVbDf9otVTpB/p/oxxuZjnGz3g
- u/o0m6KAP04UdQtFJL4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=co-krogrs.info;
- b=C4C7y1q4EQw6AOcK3O8DlRK+SBe7unZN/0dUweYGWHhX5odb9bd1vzZF44QdPxqkMVIHvgGKyw6F
- 7H36I8bn1VVpTu9a9TcAMFDCz1anOPzv7jLzhS+reVidm9i4pH+xVZz+g0I8oITkRHgG8V0u76hh
- i3M/KswV1Uv2w1ZaexU=;
-Received: by mail.co-krogrs.info id hm1ltg0001gf for
+ i=paypal-news@pal-topays.info; 
+ bh=cFbajvWxDLB1DPtCYwTdndV/SVw=;
+ b=xolnOvHNiS1GZCmexoyQ8eQ6NGrIOspFnlkByLbcu2g1Kp5UDzjaxVpQiy4Ys1B7sSEh8pkHtGEw
+ ApTGxJk+gsQeG1dih2/GafsqZuTQ/hDOg9c8l1uCwhEBCp5XckZNjxDzVCjTO/AEJr3ilhmP37Av
+ 0Z7n+wjmGA7OiQF03sI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pal-topays.info;
+ b=Y6OcH6dsM/NAq7ZqjOZTDQ2z1YDLbD7nP7zz7hNh4QNDGg22acyWaugEPL/71WbWxr1gUCWC+AaL
+ 06OxhNBb2eC5sNQG3JrqeLnBgLhVrZhZikkSUSdsMpwQMDR6gUS4I4vO/ocHycfK9C6vOxARzeO7
+ MJhHwSXQjMJ/yrLJ8Wk=;
+Received: by mail.pal-topays.info id hm1sng0001gc for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 31 Dec 2022 11:54:37 -0500 (envelope-from
- <now-on-kroger-intel+2Dgvt+2Ddev=lists.freedesktop.org@co-krogrs.info>)
-Date: Sat, 31 Dec 2022 11:54:37 -0500
-From: "Now On Kroger" <now-on-kroger@co-krogrs.info>
+ Sat, 31 Dec 2022 12:52:11 -0500 (envelope-from
+ <paypal-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@pal-topays.info>)
+Date: Sat, 31 Dec 2022 12:52:11 -0500
+From: "Paypal News" <paypal-news@pal-topays.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your gift on us for the holidays,
- a token of appreciation during holidays
+Subject: Holiday appreciation is needed during these time,
+ here's you gift on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_742_1371328382.1672505664241"
-Message-ID: <0.0.0.51.1D91D389147AECA.34BC90@mail.co-krogrs.info>
+ boundary="----=_Part_544_64422608.1672509117332"
+Message-ID: <0.0.0.3C.1D91D409C279104.5BBABF@mail.pal-topays.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,376 +54,154 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_742_1371328382.1672505664241
+------=_Part_544_64422608.1672509117332
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <title></title>=20
-  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
-/>=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1" name=3D"viewpor=
-t" />=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
-  <style type=3D"text/css">/* FONTS */
-    @media screen {
-=09=09@font-face {
-=09=09  font-family: 'Lato';
-=09=09  font-style: normal;
-=09=09  font-weight: 400;
-=09=09  src: local('Lato Regular'), local('Lato-Regular'), url(https://font=
-s.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) =
-format('woff');
-=09=09}
-=09=09
-=09=09@font-face {
-=09=09  font-family: 'Lato';
-=09=09  font-style: normal;
-=09=09  font-weight: 700;
-=09=09  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gsta=
-tic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format=
-('woff');
-=09=09}
-=09=09
-=09=09@font-face {
-=09=09  font-family: 'Lato';
-=09=09  font-style: italic;
-=09=09  font-weight: 400;
-=09=09  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.=
-gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) fo=
-rmat('woff');
-=09=09}
-=09=09
-=09=09@font-face {
-=09=09  font-family: 'Lato';
-=09=09  font-style: italic;
-=09=09  font-weight: 700;
-=09=09  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https=
-://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU=
-woff) format('woff');
-=09=09}
-    }
-   =20
-    /* CLIENT-SPECIFIC STYLES */
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adju=
-st: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-    img { -ms-interpolation-mode: bicubic; }
-
-    /* RESET STYLES */
-    img { border: 0; height: auto; line-height: 100%; outline: none; text-d=
-ecoration: none; }
-    table { border-collapse: collapse !important; }
-    body { height: 100% !important; margin: 0 !important; padding: 0 !impor=
-tant; width: 100% !important; }
-
-    /* iOS BLUE LINKS */
-    a[x-apple-data-detectors] {
-        color: inherit !important;
-        text-decoration: none !important;
-        font-size: inherit !important;
-        font-family: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-    }
-   =20
-=09/* MOBILE STYLES */
-=09@media screen and (max-width:600px){
-=09=09h1 {
-=09=09=09font-size: 32px !important;
-=09=09=09line-height: 32px !important;
-=09=09}
-=09}
-
-    /* ANDROID CENTER FIX */
-    div[style*=3D"margin: 16px 0;"] { margin: 0 !important; }
-=09</style>=20
- </head>=20
- <body style=3D"background-color: #f4f4f4; margin: 0 !important; padding: 0=
- !important;">
-  <!-- HIDDEN PREHEADER TEXT -->=20
-  <div style=3D"display: none; font-size: 1px; color: #fefefe; line-height:=
- 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; m=
-ax-width: 0px; opacity: 0; overflow: hidden;">
-   We've added a ton of features to your account. Check out the biggest cha=
-nges below or log in to view them all.   </div>=20
-  <!-- Get rid of unwanted preview text. -->=20
-  <div style=3D"display: none; max-height: 0px; overflow: hidden;">
-   &nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;
-  </div>=20
-  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentat=
-ion" width=3D"100%">
-   <!-- LOGO -->=20
-   <tbody>=20
-    <tr>=20
-     <td align=3D"center" bgcolor=3D"#539be2">
-      <!--[if (gte mso 9)|(IE)]>
-            <table role=3D"presentation" align=3D"center" border=3D"0" cell=
-spacing=3D"0" cellpadding=3D"0" width=3D"600">
-            <tr>
-            <td align=3D"center" valign=3D"top" width=3D"600">
-            <![endif]-->=20
-      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
-ntation" style=3D"max-width: 600px;" width=3D"100%">=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"center" style=3D"padding: 40px 10px 40px 10px;" valig=
-n=3D"top"> <h1 style=3D"margin: 0; color: #fff; font-family: Gotham, 'Helve=
-tica Neue', Helvetica, Arial, 'sans-serif'">Dear Kroger Customer,</h1> </td=
->=20
-        </tr>=20
-       </tbody>=20
-      </table>=20
-      <!--[if (gte mso 9)|(IE)]>
-            </td>
-            </tr>
-            </table>
-            <![endif]--></td>=20
-    </tr>=20
-    <!-- HERO -->=20
-    <tr>=20
-     <td align=3D"center" bgcolor=3D"#539be2" style=3D"padding: 0px 10px 0p=
-x 10px;">
-      <!--[if (gte mso 9)|(IE)]>
-            <table role=3D"presentation" align=3D"center" border=3D"0" cell=
-spacing=3D"0" cellpadding=3D"0" width=3D"600">
-            <tr>
-            <td align=3D"center" valign=3D"top" width=3D"600">
-            <![endif]-->=20
-      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
-ntation" style=3D"max-width: 600px;" width=3D"100%">=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"center" bgcolor=3D"#ffffff" style=3D"padding: 40px 20=
-px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: =
-'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; le=
-tter-spacing: 4px; line-height: 48px;" valign=3D"top"> <h1 style=3D"font-si=
-ze: 38px; font-weight: 400; margin: 0;">You have been pre-selected for an e=
-xclusive reward!</h1> </td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-    <!-- COPY BLOCK -->=20
-    <tr>=20
-     <td align=3D"center" bgcolor=3D"#f4f4f4" style=3D"padding: 0px 10px 0p=
-x 10px;">=20
-      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
-ntation" style=3D"max-width: 600px;" width=3D"100%">
-       <!-- COPY -->=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
- 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-ser=
-if; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style=3D"mar=
-gin: 0;"><a href=3D"http://www.co-krogrs.info/4c15V2x395S86Io12Q44pcaQ1085n36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ0dQed7Fqi1q0v6pOMw3D/Fullerton-dislocation"><img align=3D"center" alt=3D"" class=3D"kmI=
-mage" src=3D"http://www.co-krogrs.info/22d6z23pv95n7jNa11e44ccX1085W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ0dQed6Px1h0i5klw0D/dissociated-modifiability" style=3D"border: 0; height: auto; line-height: 10=
-0%; max-width: 600px; outline: none; text-decoration: none; font-size: 12px=
-; padding-bottom: 0; vertical-align: top; width: 100%; display: inline; pad=
-ding: 0; border-width: 0; width: 100%" width=3D"100%" /></a></p> </td>=20
-        </tr>=20
-        <tr>=20
-         <td align=3D"center" bgcolor=3D"#ffffff" style=3D"padding: 40px 30=
-px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-s=
-erif; font-size: 26px; font-weight: 400; line-height: normal;"> <p style=3D=
-"margin: 0;">To qualify for this special reward, simply complete our 30-Sec=
-ond Service survey about how your experience has been with us.</p> &nbsp;=
-=20
-          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"p=
-resentation">=20
-           <tbody>=20
-            <tr>=20
-             <td align=3D"center" bgcolor=3D"#539be2" style=3D"border-radiu=
-s: 3px;"><a href=3D"http://www.co-krogrs.info/4c15V2x395S86Io12Q44pcaQ1085n36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ0dQed7Fqi1q0v6pOMw3D/Fullerton-dislocation" style=3D"font-size: 25px; font-family: Helv=
-etica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ff=
-ffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border=
-: 1px solid #539be2; display: inline-block;" target=3D"_blank">Go Here To S=
-tart</a></td>=20
-            </tr>=20
-           </tbody>=20
-          </table> </td>=20
-        </tr>=20
-        <!-- COPY HEADING -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 0px 30px =
-0px 30px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif=
-; font-size: 18px; font-weight: 400; line-height: 25px;"> <h2 style=3D"font=
--size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> </td>=20
-        </tr>=20
-        <!-- COPY -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
- 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
-f; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style=3D"marg=
-in: 0;">&nbsp;</p> </td>=20
-        </tr>=20
-        <!-- COPY -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
- 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-ser=
-if; font-size: 18px; font-weight: 400; line-height: 25px;">&nbsp;</td>=20
-        </tr>=20
-        <!-- COPY HEADING -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 0px 30px =
-0px 30px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif=
-; font-size: 18px; font-weight: 400; line-height: 25px;"> <h2 style=3D"font=
--size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> </td>=20
-        </tr>=20
-        <!-- COPY -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
- 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-ser=
-if; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style=3D"mar=
-gin: 0;">&nbsp;</p> </td>=20
-        </tr>=20
-        <!-- COPY HEADING -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 0px 30px =
-0px 30px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif=
-; font-size: 18px; font-weight: 400; line-height: 25px;"> <h2 style=3D"font=
--size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> </td>=20
-        </tr>=20
-        <!-- COPY -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
- 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-ser=
-if; font-size: 18px; font-weight: 400; line-height: 25px;"> <p align=3D"rig=
-ht" style=3D"margin: 0;">To change your email choices,<a href=3D"http://www.co-krogrs.info/shares-closures/6484A2395z8Vy613gB44cbDD1085r36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ0dQed7BR1ynk05P@TwD" style=3D"text-=
-decoration-line: none;"> <span>Click.Right.Here </span> </a><br /> 126 E 23rd S=
-t New York, NY, US 10010<br /> <br /> <br /> <br /> <span lang="police"></span><font></font><style><small></small><small></style></small><font size="lobbied"></font><span lang="inhospitable"></span></p> </td>=
-=20
-        </tr>=20
-        <!-- BULLETPROOF BUTTON -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#ffffff">=20
-          <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"p=
-resentation" width=3D"100%">=20
-           <tbody>=20
-            <tr>=20
-             <td align=3D"center" bgcolor=3D"#ffffff" style=3D"padding: 20p=
-x 30px 60px 30px;">&nbsp;</td>=20
-            </tr>=20
-           </tbody>=20
-          </table> </td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-    <!-- COPY CALLOUT -->=20
-    <tr>=20
-     <td align=3D"center" bgcolor=3D"#f4f4f4" style=3D"padding: 0px 10px 0p=
-x 10px;">=20
-      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
-ntation" style=3D"max-width: 600px;" width=3D"100%">
-       <!-- HEADLINE -->=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#111111" style=3D"padding: 40px 30px=
- 20px 30px; color: #ffffff; font-family: 'Lato', Helvetica, Arial, sans-ser=
-if; font-size: 18px; font-weight: 400; line-height: 25px;"> <h2 style=3D"fo=
-nt-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> </td>=20
-        </tr>=20
-        <!-- COPY -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#111111" style=3D"padding: 0px 30px =
-20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
-f; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style=3D"marg=
-in: 0;">&nbsp;</p> </td>=20
-        </tr>=20
-        <!-- COPY -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#111111" style=3D"padding: 0px 30px =
-40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'La=
-to', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-=
-height: 25px;">&nbsp;</td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-    <!-- SUPPORT CALLOUT -->=20
-    <tr>=20
-     <td align=3D"center" bgcolor=3D"#f4f4f4" style=3D"padding: 30px 10px 0=
-px 10px;">=20
-      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
-ntation" style=3D"max-width: 600px;" width=3D"100%">
-       <!-- HEADLINE -->=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"center" bgcolor=3D"#B3E5FC" style=3D"padding: 30px 30=
-px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: =
-'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; li=
-ne-height: 25px;">&nbsp;</td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-    <!-- FOOTER -->=20
-    <tr>=20
-     <td align=3D"center" bgcolor=3D"#f4f4f4" style=3D"padding: 0px 10px 0p=
-x 10px;">=20
-      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
-ntation" style=3D"max-width: 600px;" width=3D"100%">
-       <!-- NAVIGATION -->=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#f4f4f4" style=3D"padding: 30px 30px=
- 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-ser=
-if; font-size: 14px; font-weight: 400; line-height: 18px;"> <p style=3D"mar=
-gin: 0;">&nbsp;</p> </td>=20
-        </tr>=20
-        <!-- PERMISSION REMINDER -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#f4f4f4" style=3D"padding: 0px 30px =
-30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
-f; font-size: 14px; font-weight: 400; line-height: 18px;"> <p style=3D"marg=
-in: 0;">&nbsp;</p> </td>=20
-        </tr>=20
-        <!-- UNSUBSCRIBE -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#f4f4f4" style=3D"padding: 0px 30px =
-30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
-f; font-size: 14px; font-weight: 400; line-height: 18px;"> <p style=3D"marg=
-in: 0;">&nbsp;</p> </td>=20
-        </tr>=20
-        <!-- ADDRESS -->=20
-        <tr>=20
-         <td align=3D"left" bgcolor=3D"#f4f4f4" style=3D"padding: 0px 30px =
-30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
-f; font-size: 14px; font-weight: 400; line-height: 18px;"> <p style=3D"marg=
-in: 0;">&nbsp;</p> </td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.co-krogrs.info/taxonomically-subdued/6a25g239B5ey85n13gX44cdou1085y36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ0dQed6aH1q0i6fjNwD@" alt=3D""/></body>
+<html>
+ <head> 
+  <meta content="width=device-width" name="viewport" /> 
+  <meta content="Password Reset - Ar18 - Email Templates for developers" name="description" /> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>gassss</title> 
+  <style type="text/css">html,
+			body {
+				margin: 0 auto !important;
+				padding: 0 !important;
+				width: 100% !important;
+				font-family: sans-serif;
+				line-height: 1.4;
+				-webkit-font-smoothing: antialiased;
+				-ms-text-size-adjust: 100%;
+				-webkit-text-size-adjust: 100%; 
+			}
+			* {
+				-ms-text-size-adjust: 100%;
+			}
+			table,
+			td {
+				mso-table-lspace: 0pt !important;
+				mso-table-rspace: 0pt !important;
+			}
+			img {
+				display: block;
+        border: none;
+        max-width: 100%; 
+        -ms-interpolation-mode: bicubic;
+      }
+			a {
+				text-decoration: none;
+			}
+	</style> 
+ </head> 
+ <body bgcolor="#F8F8F8" leftmargin="0" marginheight="0" marginwidth="0" offset="0" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background: #F8F8F8;" topmargin="0" width="100%">
+  <!-- HEADER --> 
+  <table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" height="100%" style="padding: 0; margin: 0; width: 100%; background: #FFFFFF" valign="top" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="max-width: 500px; background: #ffffff" valign="top" width="500"> 
+       <tbody> 
+        <tr> 
+         <td height="30" style="height: 30px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center"> <p style="color: #505050; font-size: 26px"><strong>You are just a few clicks away<br /> to get The $100 PayPal Card</strong></p> 
+          <div style="padding: 1.5px"> 
+           <div style="padding: 1.5px"> 
+            <div style="padding: 1.5px"> 
+             <div style="padding: 1.5px">
+              <!-- LOGO -->
+              <a href="http://www.pal-topays.info/4df5P23U95V8wR613q44cJerO1086s36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPdQeQ7z1BZnZ05HXPwD/addressable-perfectness"><img alt="" src="http://www.pal-topays.info/aI76VV239G5zL7za11o44d1h1086_36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQPdQeQ7uS1N0vZ6mBLwlD/assumption-synchronizers" width="100%" /></a>
+             </div> 
+            </div> 
+           </div> 
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td height="30" style="height: 30px;">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <!-- END HEADER --> 
+  <table align="center" bgcolor="#F8F8F8" border="0" cellpadding="0" cellspacing="0" height="100%" style="padding: 0; margin: 0; width: 100%; background: #F8F8F8" valign="top" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td>
+      <!-- MAIN --> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 500px" valign="top" width="500"> 
+       <tbody> 
+        <tr> 
+         <td height="50" style="height: 50px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td> <h4 align="center" style="font-family: Arial, Helvetica;
+										font-size: 25px;
+										color: #010E28;
+										margin: 0;
+										padding: 0;
+										font-weight: normal;">Simply complete our 20-Second Service Survey about how your experience has been with us lately</h4> </td> 
+        </tr> 
+        <tr> 
+         <td height="10" style="height: 10px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center">&nbsp; 
+          <div class="temp-button-styles" style="background-color: rgb(235, 28, 48); border-radius: 100px; font-weight: bold; padding: 12px 40px 10px; max-width: 80%">
+           <a href="http://www.pal-topays.info/4df5P23U95V8wR613q44cJerO1086s36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPdQeQ7z1BZnZ05HXPwD/addressable-perfectness" rel="noopener noreferrer" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; line-height: 1.15em; color: rgb(255, 255, 255); text-decoration: none; border-radius: 100px; display: inline-block; text-size-adjust: 100%;" target="_blank"><span style="font-size: 26px; font-family: Helvetica, Arial, sans-serif; line-height:1.15em;  color: #FFFFFF;">Go Here To Start</span> </a>
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td height="20" style="height: 20px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td> <p style="font-family: Arial, Helvetica;
+										font-size: 35px;
+										color: #010E28;
+										margin: 0;
+										padding: 0;
+										line-height: 30px;
+										text-align: left;">&nbsp;</p> </td> 
+        </tr> 
+        <tr> 
+         <td height="50" style="height: 50px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td> <p align="center" style="font-family: Arial, Helvetica;
+										font-size: 14px;
+										color: #5B6987;
+										margin: 0;
+										padding: 0;
+										line-height: 30px;"><br /> <br /> <br /> <br /> <br /> <br /> <br /> No longer want to receive email messages from us?,<a href="http://www.pal-topays.info/7374D2395bFy8611W44cfW1086S36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQPdQeQ7Epmv10M6olwODP/reclassification-Presbyterianism" style="text-decoration-line: none; color: red"> <span>Continue_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <style></style><small></small><span title="tubers"></span><small></small><font title="unprojected"></font></p> </td> 
+        </tr> 
+        <tr> 
+         <td height="10" style="height: 10px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td> <p style="font-family: Arial, Helvetica;
+										font-size: 14px;
+										color: #5B6987;
+										margin: 0;
+										margin-bottom: 10px;
+										padding: 0;
+										line-height: 20px;
+										text-align: left;">&nbsp;</p> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <!-- END MAIN --> 
+    </tr> 
+    <tr> 
+     <td height="40" style="height: 40px;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.pal-topays.info/4c16h239vv5o8_y511N44d2l1086_36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQPdQeQ5Dr10x6CTAAwD/couched-criminals" alt=""/></body>
 </html>
 
-------=_Part_742_1371328382.1672505664241--
+------=_Part_544_64422608.1672509117332--
 
