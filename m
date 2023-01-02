@@ -1,42 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C63C865B75E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Jan 2023 22:33:49 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B99B65B7A8
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Jan 2023 23:32:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0946610E210;
-	Mon,  2 Jan 2023 21:33:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A8F1310E394;
+	Mon,  2 Jan 2023 22:32:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Mon, 02 Jan 2023 21:33:45 UTC
-Received: from mail.att-mymble.info (unknown [45.95.212.181])
- by gabe.freedesktop.org (Postfix) with ESMTP id B33D410E1E8
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Mon, 02 Jan 2023 22:32:47 UTC
+Received: from mail.vrzn-total.info (unknown [45.95.212.182])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E9DA910E390
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Jan 2023 21:33:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=att-mymble.info; 
+ Mon,  2 Jan 2023 22:32:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vrzn-total.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=att_news@att-mymble.info; bh=UQ8+dZKYehMOfLpEmz31qv2ANQg=;
- b=cce8KjlH5qH3gHhoeRiGRSFF5qindbv0hmzCEaRGQDZcg9x7H6IVft851IWo+3C3Jjl9+SJ8iG7R
- dAPIbxo7vy4qp5KlN/RnryW06HGxFnS7ZUDP8oosry8946fiQZHv+jHBiPEHcR1BVrbc7GjK3g5t
- uqG7U5SeBT+pOxg2dyg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=att-mymble.info;
- b=KmPUYQjwH67HoS+pOnWAHBhGtEH1jcIK+lDmn4XfPV+xd8fTOrgiNfsosxElrCRo3eiA2bIb6uPy
- tV6qIprXOzzVWd++NQZgYYfKL5te+zD715ZS5mx0B8z0wTYqATImmFMvn9XYIsdYj5hTG+36ez1O
- 3+4Q9anBopCfBa+nuB4=;
-Received: by mail.att-mymble.info id hmd6ri0001gk for
+ i=verizon@vrzn-total.info; bh=zXS0/pJIs9gr2mPjKtGkqc1B1r0=;
+ b=ckd9+KhlKqoj5rF+AscW1x+lruXM9gT1DtiINQasck4RectYuBNBGOFyEYtuayZOs5nNU1xJUh/P
+ 50sAk5KUYO4KnLxB5bXPurZXRJrnNxnRc9SQNCwxYSkdkf1BE4Qak0Xbb/kgzhT0thvhyyhc2CWH
+ j8vVoutPXI9MdXr9hFk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vrzn-total.info;
+ b=do1mwCffjyvmglOIrc2f3Spm/flD22ME/H/a7/jFt30kj+MO9dJ5df9Y+n03mlCEt4qBeS2y6hqI
+ e+MjkF7jwATWPaTzkZCJyWGQZBgyiXRDXWNN2u/rrACEwfEYQm2vwDO1dBmteYBKZx887NUoO0FL
+ pVqwi2SjcpSPG5zVlmQ=;
+Received: by mail.vrzn-total.info id hmdo1u0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 2 Jan 2023 16:23:57 -0500 (envelope-from
- <att_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@att-mymble.info>)
-Date: Mon, 2 Jan 2023 16:23:57 -0500
-From: "ATT News" <att_news@att-mymble.info>
+ Mon, 2 Jan 2023 18:48:46 -0500 (envelope-from
+ <verizon-intel+2Dgvt+2Ddev=lists.freedesktop.org@vrzn-total.info>)
+Date: Mon, 2 Jan 2023 18:48:46 -0500
+From: VERIZON <verizon@vrzn-total.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We have some exciting news for you
+Subject: We appreciate your loyalty, pick any gift on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_739_1822383798.1672694631137"
-Message-ID: <0.0.0.51.1D91EF0862DDE10.1CBA78@mail.att-mymble.info>
+ boundary="----=_Part_484_2080584918.1672698046052"
+Message-ID: <0.0.0.35.1D91F04C149303A.64F73D@mail.vrzn-total.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,446 +52,558 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_739_1822383798.1672694631137
+------=_Part_484_2080584918.1672698046052
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <meta content="width=device-width" name="viewport" /> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>GoNevis</title> 
-  <style type="text/css">img {
-      border: none;
-      -ms-interpolation-mode: bicubic;
-      max-width: 100%;
-    }
-    
-    body {
-      background-color: #f6f6f6;
-      font-family: sans-serif;
-      -webkit-font-smoothing: antialiased;
-      font-size: 14px;
-      line-height: 1.4;
-      margin: 0;
-      padding: 0;
-      -ms-text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-    }
-    
-    table {
-      border-collapse: separate;
-      mso-table-lspace: 0pt;
-      mso-table-rspace: 0pt;
-      width: 100%;
-    }
-    
-    table td {
-      font-family: sans-serif;
-      font-size: 14px;
-      vertical-align: top;
-    }
-    
-    .body {
-      background-color: #f6f6f6;
-      width: 100%;
-    }
-    
-    .main-container {
-      Margin: 0 auto !important;
-      max-width: 580px;
-      padding: 10px;
-      width: 580px;
-    }
-    
-    .content {
-      box-sizing: border-box;
-      display: block;
-      Margin: 0 auto;
-      max-width: 580px;
-      padding: 10px;
-    }
-    
-    .main {
-      background: #ffffff;
-      border-radius: 3px;
-      width: 100%;
-    }
-    
-    .wrapper {
-      box-sizing: border-box;
-      padding: 20px;
-    }
-    
-    .content-block {
-      padding-bottom: 10px;
-      padding-top: 10px;
-    }
-    
-    .footer {
-      clear: both;
-      Margin-top: 10px;
-      text-align: center;
-      width: 100%;
-    }
-    
-    .footer td,
-    .footer p,
-    .footer span {
-      color: #999999;
-      font-size: 12px;
-      text-align: center;
-    }
-    
-    .footer a {
-      text-decoration: none;
-    }
-    
-    .footer .heart {
-      color: #e74c3c;
-    }
-    
-    h1,
-    h2,
-    h3,
-    h4 {
-      color: #000000;
-      font-family: sans-serif;
-      font-weight: 400;
-      line-height: 1.4;
-      margin: 0;
-      Margin-bottom: 30px;
-    }
-    
-    h1 {
-      font-size: 35px;
-      font-weight: 300;
-      text-align: center;
-      text-transform: capitalize;
-    }
-    
-    p,
-    ul,
-    ol {
-      font-family: sans-serif;
-      font-size: 14px;
-      font-weight: normal;
-      margin: 0;
-      Margin-bottom: 15px;
-    }
-    
-    p li,
-    ul li,
-    ol li {
-      list-style-position: inside;
-      margin-left: 5px;
-    }
-    
-    a {
-      color: #d17100;
-      text-decoration: none !important;
-    }
+  <meta charset="utf-8" />
+  <!-- utf-8 works for most cases --> 
+  <meta content="width=device-width" name="viewport" />
+  <!-- Forcing initial-scale shouldn't be necessary --> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <!-- Use the latest (edge) version of IE rendering engine --> 
+  <meta name="x-apple-disable-message-reformatting" />
+  <!-- Disable auto-scale in iOS 10 Mail entirely --> 
+  <title></title> 
+  <!-- The title tag shows in email notifications, like Android 4.4. --> 
+  <link href="http://www.vrzn-total.info/3956dw23k95W8nM612l44Lf5D108ew36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ1dQKd5JL1U05EjkwD/Vikings-heartbreak" rel="stylesheet" />
+  <!-- CSS Reset : BEGIN --> 
+  <style type="text/css">/* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+body {
+    margin: 0 auto !important;
+    padding: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    background: #f1f1f1;
+}
 
-    a.main-link {
-      font-weight: bold;
-      font-size: 2em;
-      display: block;
-      width: 100%;
-      text-align: center !important;
-      text-decoration: none;
-    }
+/* What it does: Stops email clients resizing small text. */
+* {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
 
-    a.mute {
-      color: #aaa;
-      text-decoration: none;
-      font-style: italic;
+/* What it does: Centers email on Android 4.4 */
+div[style*="margin: 16px 0"] {
+    margin: 0 !important;
+}
+
+/* What it does: Stops Outlook from adding extra spacing to tables. */
+table,
+td {
+    mso-table-lspace: 0pt !important;
+    mso-table-rspace: 0pt !important;
+}
+
+/* What it does: Fixes webkit padding issue. */
+table {
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    margin: 0 auto !important;
+}
+
+/* What it does: Uses a better rendering method when resizing images in IE. */
+img {
+    -ms-interpolation-mode:bicubic;
+}
+
+/* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+a {
+    text-decoration: none;
+}
+
+/* What it does: A work-around for email clients meddling in triggered links. */
+*[x-apple-data-detectors],  /* iOS */
+unstyle-auto-detected-links *,
+aBn {
+    border-bottom: 0 !important;
+    cursor: default !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+
+/* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+a6S {
+    display: none !important;
+    opacity: 0.01 !important;
+}
+
+/* What it does: Prevents Gmail from changing the text color in conversation threads. */
+im {
+    color: inherit !important;
+}
+
+/* If the above doesn't work, add a .g-img class to any image in question. */
+img.g-img + div {
+    display: none !important;
+}
+
+/* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+/* Create one of these media queries for each additional viewport size you'd like to fix */
+
+/* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+    u ~ div .email-container {
+        min-width: 320px !important;
     }
-    
-    .button {
-      box-sizing: border-box;
-      width: 100%;
+}
+/* iPhone 6, 6S, 7, 8, and X */
+@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+    u ~ div .email-container {
+        min-width: 375px !important;
     }
-    
-    .button>tbody>tr>td {
-      padding-bottom: 15px;
+}
+/* iPhone 6+, 7+, and 8+ */
+@media only screen and (min-device-width: 414px) {
+    u ~ div .email-container {
+        min-width: 414px !important;
     }
-    
-    .button table {
-      width: auto;
-    }
-    
-    .button table td {
-      background-color: #ffffff;
-      border-radius: 5px;
-      text-align: center;
-    }
-    
-    .button a {
-      background-color: #ffffff;
-      border: solid 1px #d17100;
-      border-radius: 5px;
-      box-sizing: border-box;
-      color: #d17100;
-      cursor: pointer;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: bold;
-      margin: 0;
-      padding: 12px 25px;
-      text-decoration: none;
-      text-transform: capitalize;
-    }
-    
-    .button-primary table td {
-      background-color: #d17100;
-    }
-    
-    .button-primary a {
-      background-color: #d17100;
-      border-color: #d17100;
-      color: #ffffff;
-    }
-    
-    .last {
-      margin-bottom: 0;
-    }
-    
-    .first {
-      margin-top: 0;
-    }
-    
-    .align-center {
-      text-align: center;
-    }
-    
-    .align-right {
-      text-align: right;
-    }
-    
-    .align-left {
-      text-align: left;
-    }
-    
-    .clear {
-      clear: both;
-    }
-    
-    .mt0 {
-      margin-top: 0;
-    }
-    
-    .mb0 {
-      margin-bottom: 0;
-    }
-    
-    .preheader {
-      color: transparent;
-      display: none;
-      height: 0;
-      max-height: 0;
-      max-width: 0;
-      opacity: 0;
-      overflow: hidden;
-      mso-hide: all;
-      visibility: hidden;
-      width: 0;
-    }
-    
-    .powered-by a {
-      text-decoration: none;
-    }
-    
-    hr {
-      border: 0;
-      border-bottom: 1px solid #f6f6f6;
-      Margin: 20px 0;
-    }
-    
-    @media only screen and (max-width: 620px) {
-      table[class=body] h1 {
-        font-size: 28px !important;
-        margin-bottom: 10px !important;
-      }
-      table[class=body] p,
-      table[class=body] ul,
-      table[class=body] ol,
-      table[class=body] td,
-      table[class=body] span,
-      table[class=body] a {
-        font-size: 22x !important;
-      }
-      table[class=body] .wrapper,
-      table[class=body] .article {
-        padding: 10px !important;
-      }
-      table[class=body] .content {
-        padding: 0 !important;
-      }
-      table[class=body] .main-container {
-        padding: 0 !important;
-        width: 100% !important;
-      }
-      table[class=body] .main {
-        border-left-width: 0 !important;
-        border-radius: 0 !important;
-        border-right-width: 0 !important;
-      }
-      table[class=body] .button table {
-        width: 100% !important;
-      }
-      table[class=body] .button a {
-        width: 100% !important;
-      }
-      table[class=body] .img-responsive {
-        height: auto !important;
-        max-width: 100% !important;
-        width: auto !important;
-      }
-    }
-    
-    @media all {
-      .ExternalClass {
-        width: 100%;
-      }
-      .ExternalClass,
-      .ExternalClass p,
-      .ExternalClass span,
-      .ExternalClass font,
-      .ExternalClass td,
-      .ExternalClass div {
-        line-height: 100%;
-      }
-      .apple-link a {
-        color: inherit !important;
-        font-family: inherit !important;
-        font-size: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-        text-decoration: none !important;
-      }
-      .button-primary table td:hover {
-        background-color: #34495e !important;
-      }
-      .button-primary a:hover {
-        background-color: #34495e !important;
-        border-color: #34495e !important;
-      }
-    }
+}
+	</style> 
+  <!-- CSS Reset : END -->
+  <!-- Progressive Enhancements : BEGIN --> 
+  <style type="text/css">.primary{
+	background: #dd0a35;
+}
+bg_white{
+	background: #ffffff;
+}
+bg_light{
+	background: #fafafa;
+}
+bg_black{
+	background: #000000;
+}
+bg_dark{
+	background: rgba(0,0,0,.8);
+}
+email-section{
+	padding:2.5em;
+}
+
+/*BUTTON*/
+btn{
+	padding: 5px 15px;
+	display: inline-block;
+}
+btn.btn-primary{
+	border-radius: 30px;
+	background: #dd0a35;
+	color: #ffffff;
+}
+btn.btn-white{
+	border-radius: 30px;
+	background: #ffffff;
+	color: #000000;
+}
+btn.btn-white-outline{
+	border-radius: 30px;
+	background: transparent;
+	border: 1px solid #fff;
+	color: #fff;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Work Sans', sans-serif;
+	margin-top: 0;
+	font-weight: normal;
+	color: rgba(255,255,255,.9);
+}
+
+body{
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.8;
+	color: rgba(255,255,255,.5);
+}
+
+a{
+	color: #dd0a35;
+}
+
+table{
+}
+/*LOGO*/
+
+logo{
+	margin: 0;
+	display: inline-block;
+	position: absolute;
+	top: 10px;
+	left: 0;
+	right: 0;
+	margin-bottom: 0;
+}
+
+logo a{
+	color: #fff;
+	font-size: 24px;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-family: 'Work Sans', sans-serif;
+	display: inline-block;
+	border: 2px solid #fff;
+	line-height: 1.3;
+	padding: 10px 15px 4px 15px;
+	margin: 0;
+}
+logo h1 a span{
+	line-height: 1;
+}
+
+navigation{
+	padding: 0;
+}
+navigation li{
+	list-style: none;
+	display: inline-block;;
+	margin-left: 5px;
+	font-size: 13px;
+	font-weight: 500;
+}
+navigation li a{
+	color: rgba(0,0,0,.4);
+}
+
+/*HERO*/
+hero{
+	position: relative;
+	z-index: 0;
+}
+
+hero .overlay{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	content: '';
+	width: 100%;
+	background: #000;
+	z-index: -1;
+	opacity: .3;
+}
+
+hero .text{
+	color: rgba(255,255,255,.9);
+}
+hero .text h2{
+	color: #fff;
+	font-size: 40px;
+	margin-bottom: 20px;
+	font-weight: 300;
+	line-height: 1.3;
+	/*text-transform: uppercase;*/
+}
+hero .text .icon{
+	position: absolute;
+	bottom: -30px;
+	left: 0;
+	right: 0;
+}
+
+
+/*HEADING SECTION*/
+heading-section{
+}
+heading-section h2{
+	color: rgba(255,255,255,.9);
+	font-size: 28px;
+	margin-top: 0;
+	line-height: 1.4;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+heading-section .subheading{
+	margin-bottom: 20px !important;
+	display: inline-block;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: rgba(255,255,255,.4);
+	position: relative;
+}
+heading-section .subheading::after{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -5px;
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: #dd0a35;
+	margin: 0 auto;
+}
+heading-section .subheading::before{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: -10px;
+	content: '';
+	width: 70%;
+	height: 2px;
+	background: #dd0a35;
+	margin: 0 auto;
+}
+
+heading-section-white{
+	color: rgba(255,255,255,.8);
+}
+heading-section-white h2{
+	font-family: 
+	line-height: 1;
+	padding-bottom: 0;
+}
+heading-section-white h2{
+	color: #ffffff;
+}
+heading-section-white .subheading{
+	margin-bottom: 0;
+	display: inline-block;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: rgba(255,255,255,.4);
+}
+
+
+/*TRAINER*/
+trainer{
+
+}
+trainer h2{
+	margin-bottom: 5px;
+}
+trainer span{
+	text-transform: uppercase;
+	color: rgba(255,255,255,.2);
+}
+
+/*PROGRAM*/
+text-program .price{
+	font-size: 20px;
+	margin-bottom: 0;
+	color: #dd0a35;
+}
+text-program h2{
+	font-size: 18px;
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+text-program p{
+	margin-top: 0;
+}
+
+/*FOOTER*/
+
+footer{
+	color: rgba(255,255,255,.5);
+
+}
+footer .heading{
+	color: #ffffff;
+	font-size: 20px;
+}
+footer ul{
+	margin: 0;
+	padding: 0;
+}
+footer ul li{
+	list-style: none;
+	margin-bottom: 10px;
+}
+footer ul li a{
+	color: rgba(255,255,255,1);
+}
+
+
+@media screen and (max-width: 500px) {
+
+
+}
 	</style> 
  </head> 
- <body> 
-  <table border="0" cellpadding="0" cellspacing="0" class="body"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td class="main-container"> 
-      <div class="content"> 
-       <table class="main"> 
-        <tbody> 
-         <tr> 
-          <td class="wrapper"> 
-           <table border="0" cellpadding="0" cellspacing="0"> 
-            <tbody> 
-             <tr> 
-              <td> 
-               <div style="padding: 1px; width: 100%"> 
-                <div style="padding: 1px; width: 100%"> 
-                 <div style="padding: 1px; width: 100%"> 
-                  <div style="padding: 1px; width: 100%"> 
-                   <div style="padding: 1px; width: 100%"> 
-                    <div style="padding: 1px; width: 100%"> 
-                     <div style="padding: 1px; width: 100%">
-                      <span style="display: block; text-align: center; font-size: 32px; color: #0BA3DE"><strong>You are just a few clicks away to get The $100 AT&amp;T Card</strong> </span>
-                     </div> 
-                    </div> 
-                   </div> 
-                  </div> 
-                 </div> 
-                </div> 
-               </div> 
-               <div style="padding: 1px; width: 100%"> 
-                <div style="padding: 1px; width: 100%"> 
-                 <div style="padding: 1px; width: 100%"> 
-                  <div style="padding: 1px; width: 100%"> 
-                   <div style="padding: 1px; width: 100%"> 
-                    <div style="padding: 1px; width: 100%"> 
-                     <div style="padding: 1px; width: 100%">
-                      <span><a href="http://www.att-mymble.info/slothful-notions/3004a2395jA8L613D44fYT0Y108dz36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQgdQK97urTg10h5m3XwD"><img alt="" src="http://www.att-mymble.info/Lindy-soundings/b344W2395S7ags12V44f2ZC108dp36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQgdQK97N1yt0qv6SU2@wD" width="100%" /></a></span>
-                     </div> 
-                    </div> 
-                   </div> 
-                  </div> 
-                 </div> 
-                </div> 
-               </div> 
-               <div style="padding: 1px; width: 100%"> 
-                <div style="padding: 1px; width: 100%"> 
-                 <div style="padding: 1px; width: 100%"> 
-                  <div style="padding: 1px; width: 100%"> 
-                   <div style="padding: 1px; width: 100%"> 
-                    <div style="padding: 1px; width: 100%"> 
-                     <div style="padding: 1px; width: 100%"> 
-                      <table cellpadding="1" cellspacing="1" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td style="font-size: 23px; text-align: center">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> 
-                    </div> 
-                   </div> 
-                  </div> 
-                 </div> 
-                </div> 
-               </div> 
-               <div style="padding: 1px; width: 100%"> 
-                <div style="padding: 1px; width: 100%"> 
-                 <div style="padding: 1px; width: 100%"> 
-                  <div style="padding: 1px; width: 100%"> 
-                   <div style="padding: 1px; width: 100%"> 
-                    <div style="padding: 1px; width: 100%"> 
-                     <div style="padding: 1px; width: 100%"> 
-                      <table cellpadding="1" cellspacing="1" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td style="font-size: 23px; text-align: center"><a href="http://www.att-mymble.info/slothful-notions/3004a2395jA8L613D44fYT0Y108dz36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQgdQK97urTg10h5m3XwD" style="background-color: #0DA5DB; display: block; max-width: 260px; margin: auto auto; text-align: center; text-decoration: none; padding: 12px"><span style="color: #fff; padding: 12px; margin: auto; display: block; text-align: center; color:#fff; font-size: 20pt"><strong>Go Here To Start</strong></span></a></td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> 
-                    </div> 
-                   </div> 
-                  </div> 
-                 </div> 
-                 <br /> 
-                 <br /> 
-                 <a href="http://www.att-mymble.info/slothful-notions/3004a2395jA8L613D44fYT0Y108dz36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQgdQK97urTg10h5m3XwD"><img alt="" src="http://www.att-mymble.info/nasally-deviations/e045zY2395s7aTP11y44f3s108dr36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQgdQK97b10Czht5QkwUD" /></a>
-                </div> 
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <div class="footer"> 
-        <table border="0" cellpadding="0" cellspacing="0"> 
+ <body style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;" width="100%"> 
+  <center style="width: 100%; background-color: #f1f1f1;"> 
+   <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+    &nbsp;
+   </div> 
+   <div class="email-container" style="max-width: 600px; margin: 0 auto;">
+    <!-- BEGIN BODY -->--&gt; 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="hero bg_white" style="background-size: cover;" valign="middle"> 
+        <table width="100%"> 
          <tbody> 
           <tr> 
-           <td class="content-block"><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> To shut down messages,<a href="http://www.att-mymble.info/6dd5D23G95O8lO611H44f1y108dD36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQgdQK96u1F0VH6AqXwyD/Frederick-report" style="text-decoration-line: none;"> <span>Go Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <font><small></small></font><big></big><span></span><span face="pleasantness"></span></td> 
+           <td> 
+            <div style="padding: 20; text-align: center; padding-left: 20px; padding-right: 20px; font-size: 22px; line-height: normal">
+             &nbsp; 
+             <h2 style="color:#DD0A35"><strong>You are just a few clicks away to get The $100 Verizon Card</strong></h2> 
+             <div>
+              <a href="http://www.vrzn-total.info/benefiting-electricalness/c9c5PK2395QsS8611k44f6q108eR36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ1dQKd5E10mp6UzwD@A"><img alt="" src="http://www.vrzn-total.info/meaty-cusp/8be5E23Z95LQ7pa11w44f8C108eL36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ1dQKd5Xn1z05dkPwD" style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block;" /> </a>
+             </div> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <!-- end tr --> 
+      <tr> 
+       <td class="bg_black email-section" style="text-align:center; padding-top: 10px;"> 
+        <div class="heading-section heading-section-white"> 
+         <p style="font-size: 22px">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> 
+         <p style="background-color:#CD0401; padding: 12px; border-radius: 5px; display: inline-block; margin-top: 10px"><a href="http://www.vrzn-total.info/benefiting-electricalness/c9c5PK2395QsS8611k44f6q108eR36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ1dQKd5E10mp6UzwD@A" style="color: #fff; font-size: 28px"><strong>Go Here To Start</strong></a></p> 
+        </div> </td> 
+      </tr> 
+      <!-- end: tr --> 
+      <tr> 
+       <td style="width: 100%;"><a href="http://www.vrzn-total.info/benefiting-electricalness/c9c5PK2395QsS8611k44f6q108eR36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ1dQKd5E10mp6UzwD@A"><img alt="" src="http://www.vrzn-total.info/brews-aggregating/dc86Ry239R5D7aPK12cZ44f9B108eP36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ1dQKd7s1_wO0w5cOlwD" width="100%" /></a> 
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td valign="middle" width="50%"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td>&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+           <td valign="middle" width="50%"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="trainer" style="text-align: left; padding:25px;"> <h2>&nbsp;</h2> <p>&nbsp;</p> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <!-- end: tr --> 
+      <tr> 
+       <td style="text-align:center; padding: 2.5em 0 0 0;"> 
+        <div class="heading-section heading-section-white">
+         &nbsp;
+        </div> 
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td width="50%"> 
+            <div class="project-entry">
+             &nbsp;
+            </div> </td> 
+           <td width="50%"> 
+            <div class="project-entry">
+             &nbsp;
+            </div> </td> 
           </tr> 
          </tbody> 
         </table> 
-       </div> 
-      </div> </td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.att-mymble.info/ed56e2u39j5rO85t13B44CfY4i108dA36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQgdQK96uuCt106dBwDpk/Frederick-report" alt=""/></body>
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td width="50%"> 
+            <div class="project-entry">
+             &nbsp;
+            </div> </td> 
+           <td width="50%"> 
+            <div class="project-entry">
+             &nbsp;
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <!-- end: tr --> 
+      <tr> 
+       <td> 
+        <div class="heading-section" style="text-align: center; padding: 0 30px;"> 
+         <h2>&nbsp;</h2> 
+        </div> 
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="padding-bottom: 30px;"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td valign="middle" width="50%"> 
+                <div class="text-program" style="text-align: left; padding-left:25px;">
+                 &nbsp;
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+          <tr> 
+           <td style="padding-bottom: 30px;"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td valign="middle" width="50%"> 
+                <div class="text-program" style="text-align: left; padding-left:25px;">
+                 &nbsp;
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <!-- end: tr -->
+      <!-- 1 Column Text + Button : END --> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="bg_black footer email-section" valign="middle"> 
+        <table> 
+         <tbody> 
+          <tr> 
+           <td valign="top" width="100%"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td style="text-align: left; padding-right: 10px;"> <p>No longer want to receive email notices?,<a href="http://www.vrzn-total.info/bc94R2395poB8613zYK44f7J108eg36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ1dQKd7pr1vmW05NzwDp/reservoirs-Hebrews" style="text-decoration-line: none;"> <span>Continue_Over_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <font lang="buildup"><style><font></font></style></font><big></big><font lang="extending"><font></font></font><style title="cottages"><span face="amalgamation"><big></style><style dir="ohmmeter"></span></big></style><style></style></p> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+           <td valign="top" width="301"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td style="text-align: right; padding-left: 5px; padding-right: 5px;"> <p>&nbsp;</p> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </center>   
+ <img src="http://www.vrzn-total.info/southern-initialed/d8c5W239r5a8h5O12U44fgaj108eR36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ1dQKd5mGq106gPwTjD" alt=""/></body>
 </html>
 
-------=_Part_739_1822383798.1672694631137--
+------=_Part_484_2080584918.1672698046052--
 
