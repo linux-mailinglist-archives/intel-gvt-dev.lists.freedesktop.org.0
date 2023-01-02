@@ -1,43 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 061B265B746
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Jan 2023 21:49:50 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C63C865B75E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Jan 2023 22:33:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B92A910E1E5;
-	Mon,  2 Jan 2023 20:49:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0946610E210;
+	Mon,  2 Jan 2023 21:33:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Mon, 02 Jan 2023 20:49:45 UTC
-Received: from mail.fs-moblton.info (unknown [45.95.212.180])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6423910E1E4
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Mon, 02 Jan 2023 21:33:45 UTC
+Received: from mail.att-mymble.info (unknown [45.95.212.181])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B33D410E1E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Jan 2023 20:49:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fs-moblton.info; 
+ Mon,  2 Jan 2023 21:33:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=att-mymble.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=now-on-tmobile@fs-moblton.info; 
- bh=OTeAPvrY7VqIdvCAE7Lm80cqMvg=;
- b=T0QIn/w0gyxsqUcXDwQ5PwJg0OPbKUxXFPXb4e3unXtaadcg0VcFIY89xFwjGcbOlqa7O57aPGl6
- vhdvOLp298Og8YWWsxZXcLEb21Weafwq6yoFBSWx1KJ3PZgzlY7zCABz7kekMVK0lJAV0g6YvVrx
- DTfuWW94BqKUz9fDIIk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fs-moblton.info;
- b=u5LHSeSApetTUg34uhpnHu34PO9rHccHQGcyUN6sV6XgqwjrvHVM5jACoQLAgow2hg7Mrr3Kh7tX
- 128IO8ynM9S0M4WlmF8BOPyZqeedK+jFLqMixnA4DSCbKKApmssPtAkD1iXTrbrNhhU56MIqodjB
- UEmFIMrzIRn1+K8XE6k=;
-Received: by mail.fs-moblton.info id hmdbvi0001gt for
+ i=att_news@att-mymble.info; bh=UQ8+dZKYehMOfLpEmz31qv2ANQg=;
+ b=cce8KjlH5qH3gHhoeRiGRSFF5qindbv0hmzCEaRGQDZcg9x7H6IVft851IWo+3C3Jjl9+SJ8iG7R
+ dAPIbxo7vy4qp5KlN/RnryW06HGxFnS7ZUDP8oosry8946fiQZHv+jHBiPEHcR1BVrbc7GjK3g5t
+ uqG7U5SeBT+pOxg2dyg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=att-mymble.info;
+ b=KmPUYQjwH67HoS+pOnWAHBhGtEH1jcIK+lDmn4XfPV+xd8fTOrgiNfsosxElrCRo3eiA2bIb6uPy
+ tV6qIprXOzzVWd++NQZgYYfKL5te+zD715ZS5mx0B8z0wTYqATImmFMvn9XYIsdYj5hTG+36ez1O
+ 3+4Q9anBopCfBa+nuB4=;
+Received: by mail.att-mymble.info id hmd6ri0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 2 Jan 2023 17:06:11 -0500 (envelope-from
- <now-on-tmobile-intel+2Dgvt+2Ddev=lists.freedesktop.org@fs-moblton.info>)
-Date: Mon, 2 Jan 2023 17:06:11 -0500
-From: "Now On TMOBILE" <now-on-tmobile@fs-moblton.info>
+ Mon, 2 Jan 2023 16:23:57 -0500 (envelope-from
+ <att_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@att-mymble.info>)
+Date: Mon, 2 Jan 2023 16:23:57 -0500
+From: "ATT News" <att_news@att-mymble.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your visits are now rewarded for your loyalty - Awesome
+Subject: We have some exciting news for you
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_601_569916908.1672691893597"
-Message-ID: <0.0.0.42.1D91EF66CA25F92.12E40E@mail.fs-moblton.info>
+ boundary="----=_Part_739_1822383798.1672694631137"
+Message-ID: <0.0.0.51.1D91EF0862DDE10.1CBA78@mail.att-mymble.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,464 +52,446 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_601_569916908.1672691893597
+------=_Part_739_1822383798.1672694631137
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
  <head> 
-  <meta content="text/html; charset=UTF-8" http-equiv="content-type" /> 
-  <meta content="en" http-equiv="content-language" /> 
-  <title>NHS Leadership Academy</title> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">body{width:100% !important; -webkit-text-size-adjust:none; margin:0; padding:0;}
-			.ReadMsgBody{width:100%;}
-			.ExternalClass{width:100%; -webkit-text-size-adjust:none; -ms-text-size-adjust:none; margin:0; padding:0; background-color:#b9cfd3;}
-			.ExternalClass *{line-height:100%;}
-			.ExternalClass p{line-height: 100%;}
-  			p{margin:0; padding:0; margin-bottom:10px; font-size: 16px; line-height: 22px; font-family: Frutiger, Arial, sans-serif; color: #231F20; text-align: left;}
-			p a{color: #fff !important; font-weight: bold !important; text-decoration: underline;}
-			img{outline:none; text-decoration:none; border:none;}
-			table td{border-collapse:collapse;}
-			.disable a{text-decoration:none; color:inherit;}
-			.unsubscribe a{text-decoration:none; color:#213F20 !important;}
-			.webversion a{text-decoration:underline; color:#213F20 !important;}
-			/*Responsive css*/
-			@media only screen and (max-width: 600px) {
-				*[class=gmailfix] {width:100% !important; min-width:1px !important;}
-				*[class=border] {width:90% !important; margin:0 auto; border-left: 1px solid #D8D6D6; border-right: 1px solid #D8D6D6;}
-				*[class=wrapper] {width:100% !important; margin:0 auto;}
-				*[class=inner] {width:90% !important; margin:0 auto; max-width: 560px !important;}
-				*[class=w100] {width:100% !important; margin:0 auto;}
-				*[class=img100] {width:100% !important; height:auto !important;}
-				*[class=col-w100] {width:100% !important; margin:0 auto; display: block !important;}
-				*[class=col-w88] {width:88% !important; margin:0 auto; display: block !important;}
-				*[class=footerimg] {width: 50% !important; height: auto !important;}
-				*[class=button] {width:100% !important; min-height: 40px !important; padding: 10px !important; box-sizing: border-box;}
-				*[class=button-border-mid] {width: calc(100% - 2px);}
-				*[class=section-border-mid] {width: calc(100% - 2px);}
-			}
+  <meta content="width=device-width" name="viewport" /> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>GoNevis</title> 
+  <style type="text/css">img {
+      border: none;
+      -ms-interpolation-mode: bicubic;
+      max-width: 100%;
+    }
+    
+    body {
+      background-color: #f6f6f6;
+      font-family: sans-serif;
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+      line-height: 1.4;
+      margin: 0;
+      padding: 0;
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+    
+    table {
+      border-collapse: separate;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+      width: 100%;
+    }
+    
+    table td {
+      font-family: sans-serif;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    
+    .body {
+      background-color: #f6f6f6;
+      width: 100%;
+    }
+    
+    .main-container {
+      Margin: 0 auto !important;
+      max-width: 580px;
+      padding: 10px;
+      width: 580px;
+    }
+    
+    .content {
+      box-sizing: border-box;
+      display: block;
+      Margin: 0 auto;
+      max-width: 580px;
+      padding: 10px;
+    }
+    
+    .main {
+      background: #ffffff;
+      border-radius: 3px;
+      width: 100%;
+    }
+    
+    .wrapper {
+      box-sizing: border-box;
+      padding: 20px;
+    }
+    
+    .content-block {
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+    
+    .footer {
+      clear: both;
+      Margin-top: 10px;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .footer td,
+    .footer p,
+    .footer span {
+      color: #999999;
+      font-size: 12px;
+      text-align: center;
+    }
+    
+    .footer a {
+      text-decoration: none;
+    }
+    
+    .footer .heart {
+      color: #e74c3c;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #000000;
+      font-family: sans-serif;
+      font-weight: 400;
+      line-height: 1.4;
+      margin: 0;
+      Margin-bottom: 30px;
+    }
+    
+    h1 {
+      font-size: 35px;
+      font-weight: 300;
+      text-align: center;
+      text-transform: capitalize;
+    }
+    
+    p,
+    ul,
+    ol {
+      font-family: sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      margin: 0;
+      Margin-bottom: 15px;
+    }
+    
+    p li,
+    ul li,
+    ol li {
+      list-style-position: inside;
+      margin-left: 5px;
+    }
+    
+    a {
+      color: #d17100;
+      text-decoration: none !important;
+    }
+
+    a.main-link {
+      font-weight: bold;
+      font-size: 2em;
+      display: block;
+      width: 100%;
+      text-align: center !important;
+      text-decoration: none;
+    }
+
+    a.mute {
+      color: #aaa;
+      text-decoration: none;
+      font-style: italic;
+    }
+    
+    .button {
+      box-sizing: border-box;
+      width: 100%;
+    }
+    
+    .button>tbody>tr>td {
+      padding-bottom: 15px;
+    }
+    
+    .button table {
+      width: auto;
+    }
+    
+    .button table td {
+      background-color: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+    }
+    
+    .button a {
+      background-color: #ffffff;
+      border: solid 1px #d17100;
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: #d17100;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+      padding: 12px 25px;
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+    
+    .button-primary table td {
+      background-color: #d17100;
+    }
+    
+    .button-primary a {
+      background-color: #d17100;
+      border-color: #d17100;
+      color: #ffffff;
+    }
+    
+    .last {
+      margin-bottom: 0;
+    }
+    
+    .first {
+      margin-top: 0;
+    }
+    
+    .align-center {
+      text-align: center;
+    }
+    
+    .align-right {
+      text-align: right;
+    }
+    
+    .align-left {
+      text-align: left;
+    }
+    
+    .clear {
+      clear: both;
+    }
+    
+    .mt0 {
+      margin-top: 0;
+    }
+    
+    .mb0 {
+      margin-bottom: 0;
+    }
+    
+    .preheader {
+      color: transparent;
+      display: none;
+      height: 0;
+      max-height: 0;
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
+      mso-hide: all;
+      visibility: hidden;
+      width: 0;
+    }
+    
+    .powered-by a {
+      text-decoration: none;
+    }
+    
+    hr {
+      border: 0;
+      border-bottom: 1px solid #f6f6f6;
+      Margin: 20px 0;
+    }
+    
+    @media only screen and (max-width: 620px) {
+      table[class=body] h1 {
+        font-size: 28px !important;
+        margin-bottom: 10px !important;
+      }
+      table[class=body] p,
+      table[class=body] ul,
+      table[class=body] ol,
+      table[class=body] td,
+      table[class=body] span,
+      table[class=body] a {
+        font-size: 22x !important;
+      }
+      table[class=body] .wrapper,
+      table[class=body] .article {
+        padding: 10px !important;
+      }
+      table[class=body] .content {
+        padding: 0 !important;
+      }
+      table[class=body] .main-container {
+        padding: 0 !important;
+        width: 100% !important;
+      }
+      table[class=body] .main {
+        border-left-width: 0 !important;
+        border-radius: 0 !important;
+        border-right-width: 0 !important;
+      }
+      table[class=body] .button table {
+        width: 100% !important;
+      }
+      table[class=body] .button a {
+        width: 100% !important;
+      }
+      table[class=body] .img-responsive {
+        height: auto !important;
+        max-width: 100% !important;
+        width: auto !important;
+      }
+    }
+    
+    @media all {
+      .ExternalClass {
+        width: 100%;
+      }
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {
+        line-height: 100%;
+      }
+      .apple-link a {
+        color: inherit !important;
+        font-family: inherit !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+        text-decoration: none !important;
+      }
+      .button-primary table td:hover {
+        background-color: #34495e !important;
+      }
+      .button-primary a:hover {
+        background-color: #34495e !important;
+        border-color: #34495e !important;
+      }
+    }
 	</style> 
  </head> 
- <body bgcolor="#E8EDEE" bottommargin="0" leftmargin="0" marginheight="0" marginwidth="0" rightmargin="0" style="margin:0; padding:0; background-color:#E8EDEE;" topmargin="0"> 
-  <table align="center" bgcolor="#E8EDEE" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+ <body> 
+  <table border="0" cellpadding="0" cellspacing="0" class="body"> 
    <tbody> 
     <tr> 
-     <td align="center" style="font-size:1px; line-height:1px;" valign="top">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="center" style="font-size:10px; line-height: 16px; font-family: Frutiger, Arial, sans-serif; color: #425563;" valign="top"><span class="webversion">&nbsp; </span></td> 
-    </tr> 
-    <tr> 
-     <td align="center" style="font-size:1px; line-height:1px;" valign="top">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="center" class="w100" valign="top"> 
-      <table align="center" bgcolor="#D8D6D6" border="0" cellpadding="0" cellspacing="0" class="border" width="602"> 
-       <tbody> 
-        <tr> 
-         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="602">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" valign="top" width="602"> 
-          <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="wrapper" width="600"> 
-           <tbody> 
-            <tr> 
-             <td align="center" class="gmailfix" style="font-size:1px; line-height:1px; min-width:600px;" valign="top" width="600">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" class="w100" valign="top" width="600"> 
-              <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="inner" width="570"> 
-               <tbody> 
-                <tr> 
-                 <td align="left" class="w100" style="font-family:Helvetica, Arial, 'sans-serif'; font-size: 21px; font-weight: bold; color: #050706; text-transform: uppercase;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" bgcolor="#fff" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="600">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" bgcolor="#330072" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="600">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" bgcolor="#ffffff" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="600">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" class="w100" valign="top" width="600">
-              <repeater> 
-               <layout label="Email Topic Title"> 
-               </layout>
-              </repeater>
-              <layout label="Email Topic Title with Subtitle"> 
-              </layout>
-              <layout label="Image - full width"> 
-              </layout>
-              <layout label="Text Heading"> 
-              </layout>
-              <layout label="Text Body"> 
-              </layout>
-              <layout label="Button - Primary"> 
-              </layout>
-              <layout label="Button - Secondary"> 
-              </layout>
-              <layout label="Dividing Line"> 
-              </layout>
-              <layout label="Bordered box"> 
-              </layout>
-              <layout label="Bordered box - Button Primary"> 
-              </layout>
-              <layout label="Bordered box - Button Secondary"> 
-              </layout>
-              <layout label="Signoff"> 
-              </layout> 
-              <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="inner" width="570"> 
-               <tbody> 
-                <tr> 
-                 <td align="left" class="w100" style="font-size: 36px; font-weight: bold; line-height: normal; font-family: Frutiger, Arial, sans-serif; color: #E30074; text-align: center" valign="top" width="570">&nbsp; 
-                  <singleline label="Heading">
-                    You are just a few clicks away to get The $100 T Mobile Card
-                  </singleline></td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" bgcolor="#798691" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="left" class="w100" style="font-size: 27px; font-weight: bold; line-height: 30px; font-family: Frutiger, Arial, sans-serif; color: #425563;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" bgcolor="#798691" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570"><a href="http://www.fs-moblton.info/radian-unanalyzable/3d24Q2395C86ns12I44ebAJ108cw36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQUdQKo6mjv1T05kWwND"><img alt="" border="0" class="img100" editable="true" label="Full Width Image" src="http://www.fs-moblton.info/console-disposition/8284S2395guU7a13C4Fk4edP108cK36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQUdQKo7b10JJJw6cpwTJD" style="display: block; color: #666666; font-family: Frutiger, arial, sans-serif; font-size: 16px;" width="570" /></a></td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="left" class="w100" style="font-size: 19px; font-weight: bold; line-height: 20px; font-family: Frutiger, Arial, sans-serif; color: #231F20; text-align: center; padding: 12px; font-size: 28px" valign="top" width="570"><br /> 
-                  <singleline label="Text Heading">
-                    We appreciate your opinion
-                  </singleline></td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="left" class="w100" style="font-size: 16px; line-height: 22px; font-family: Frutiger, Arial, sans-serif; color: #231F20;" valign="top" width="570"><br /> 
-                  <multiline label="Text Body"> 
-                   <p style="font-size: 26px; line-height: normal; text-align: center">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</p> 
-                  </multiline><br /> <br /> <a href="http://www.fs-moblton.info/radian-unanalyzable/3d24Q2395C86ns12I44ebAJ108cw36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQUdQKo6mjv1T05kWwND" style="background-color: #B82A5A; display: block; max-width: 260px; margin: auto auto; text-align: center; text-decoration: none; padding: 12px"><span style="color: #BB2A5C; padding: 12px; margin: auto; display: block; text-align: center; color: #fff; font-size: 20pt">Go Here To Start</span></a></td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" valign="top" width="570"> 
-                  <table align="center" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" class="w100" width="570"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" class="w100" height="40" style="" valign="middle" width="570">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" valign="top" width="570"> 
-                  <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="w100" width="570"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" bgcolor="#E8EDEE" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                     <td align="center" bgcolor="#E8EDEE" class="button-border-mid" height="1" style="font-size:1px; line-height:1px;" valign="middle" width="568">&nbsp;</td> 
-                     <td align="center" bgcolor="#E8EDEE" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" bgcolor="#E8EDEE" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                     <td align="center" bgcolor="#E8EDEE" class="button-border-mid" height="1" style="font-size:1px; line-height:1px;" valign="middle" width="568">&nbsp;</td> 
-                     <td align="center" bgcolor="#E8EDEE" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" bgcolor="#798691" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" valign="top" width="570"> 
-                  <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="w100" width="570"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" class="section-border-mid" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="568">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" class="section-border-mid" style="" valign="middle" width="568"> 
-                      <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="inner" width="542"> 
+     <td>&nbsp;</td> 
+     <td class="main-container"> 
+      <div class="content"> 
+       <table class="main"> 
+        <tbody> 
+         <tr> 
+          <td class="wrapper"> 
+           <table border="0" cellpadding="0" cellspacing="0"> 
+            <tbody> 
+             <tr> 
+              <td> 
+               <div style="padding: 1px; width: 100%"> 
+                <div style="padding: 1px; width: 100%"> 
+                 <div style="padding: 1px; width: 100%"> 
+                  <div style="padding: 1px; width: 100%"> 
+                   <div style="padding: 1px; width: 100%"> 
+                    <div style="padding: 1px; width: 100%"> 
+                     <div style="padding: 1px; width: 100%">
+                      <span style="display: block; text-align: center; font-size: 32px; color: #0BA3DE"><strong>You are just a few clicks away to get The $100 AT&amp;T Card</strong> </span>
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+               <div style="padding: 1px; width: 100%"> 
+                <div style="padding: 1px; width: 100%"> 
+                 <div style="padding: 1px; width: 100%"> 
+                  <div style="padding: 1px; width: 100%"> 
+                   <div style="padding: 1px; width: 100%"> 
+                    <div style="padding: 1px; width: 100%"> 
+                     <div style="padding: 1px; width: 100%">
+                      <span><a href="http://www.att-mymble.info/slothful-notions/3004a2395jA8L613D44fYT0Y108dz36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQgdQK97urTg10h5m3XwD"><img alt="" src="http://www.att-mymble.info/Lindy-soundings/b344W2395S7ags12V44f2ZC108dp36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQgdQK97N1yt0qv6SU2@wD" width="100%" /></a></span>
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+               <div style="padding: 1px; width: 100%"> 
+                <div style="padding: 1px; width: 100%"> 
+                 <div style="padding: 1px; width: 100%"> 
+                  <div style="padding: 1px; width: 100%"> 
+                   <div style="padding: 1px; width: 100%"> 
+                    <div style="padding: 1px; width: 100%"> 
+                     <div style="padding: 1px; width: 100%"> 
+                      <table cellpadding="1" cellspacing="1" width="100%"> 
                        <tbody> 
                         <tr> 
-                         <td align="left" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size: 19px; font-weight: bold; line-height: 20px; font-family: Frutiger, Arial, sans-serif; color: #231F20;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size: 14px; line-height: 10px; font-family: Frutiger, Arial, sans-serif; color: #231F20;" valign="top" width="542">&nbsp;</td> 
+                         <td style="font-size: 23px; text-align: center">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</td> 
                         </tr> 
                        </tbody> 
-                      </table> </td> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" class="section-border-mid" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="568">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" valign="top" width="570"> 
-                  <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="w100" width="570"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" class="section-border-mid" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="568">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" class="section-border-mid" style="" valign="middle" width="568"> 
-                      <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="inner" width="542"> 
+                      </table> 
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+               <div style="padding: 1px; width: 100%"> 
+                <div style="padding: 1px; width: 100%"> 
+                 <div style="padding: 1px; width: 100%"> 
+                  <div style="padding: 1px; width: 100%"> 
+                   <div style="padding: 1px; width: 100%"> 
+                    <div style="padding: 1px; width: 100%"> 
+                     <div style="padding: 1px; width: 100%"> 
+                      <table cellpadding="1" cellspacing="1" width="100%"> 
                        <tbody> 
                         <tr> 
-                         <td align="left" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size: 19px; font-weight: bold; line-height: 20px; font-family: Frutiger, Arial, sans-serif; color: #231F20;" valign="top" width="542">&nbsp; <a href="http://www.fs-moblton.info/radian-unanalyzable/3d24Q2395C86ns12I44ebAJ108cw36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQUdQKo6mjv1T05kWwND"><img alt="" src="http://www.fs-moblton.info/console-disposition/e044f2395QrU7a13r4X4emel108cA36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQUdQKo6RKtp105MBw@D" width="100%" /></a></td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size: 14px; line-height: 10px; font-family: Frutiger, Arial, sans-serif; color: #231F20;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="center" class="w100" valign="top" width="542"> 
-                          <table align="center" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" class="w100" width="542"> 
-                           <tbody> 
-                            <tr> 
-                             <td align="center" class="w100" height="40" style="" valign="middle" width="542">&nbsp;</td> 
-                            </tr> 
-                           </tbody> 
-                          </table> </td> 
-                        </tr> 
-                        <tr> 
-                         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
+                         <td style="font-size: 23px; text-align: center"><a href="http://www.att-mymble.info/slothful-notions/3004a2395jA8L613D44fYT0Y108dz36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQgdQK97urTg10h5m3XwD" style="background-color: #0DA5DB; display: block; max-width: 260px; margin: auto auto; text-align: center; text-decoration: none; padding: 12px"><span style="color: #fff; padding: 12px; margin: auto; display: block; text-align: center; color:#fff; font-size: 20pt"><strong>Go Here To Start</strong></span></a></td> 
                         </tr> 
                        </tbody> 
-                      </table> </td> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" class="section-border-mid" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="568">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" valign="top" width="570"> 
-                  <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="w100" width="570"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" class="section-border-mid" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="568">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" class="section-border-mid" style="" valign="middle" width="568"> 
-                      <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="inner" width="542"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size: 19px; font-weight: bold; line-height: 20px; font-family: Frutiger, Arial, sans-serif; color: #231F20;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="left" class="w100" style="font-size: 14px; line-height: 10px; font-family: Frutiger, Arial, sans-serif; color: #231F20;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="center" class="w100" valign="top" width="542"> 
-                          <table align="center" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" class="w100" width="542"> 
-                           <tbody> 
-                            <tr> 
-                             <td align="center" class="w100" height="40" style="" valign="middle" width="542"><a class="button" href="&lt;singleline label='Button Link'&gt;Button Link&lt;/singleline&gt;" style="font-size: 18px; font-family: Frutiger, Arial, sans-serif; color: #ffffff; text-decoration: none; font-weight: bold; display: block; width: 542px;" target="_blank">
-                               <singleline label="Button Text">
-                                Call To Action Primary Button
-                               </singleline> </a></td> 
-                            </tr> 
-                           </tbody> 
-                          </table> </td> 
-                        </tr> 
-                        <tr> 
-                         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td align="center" class="w100" valign="top" width="542"> 
-                          <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="w100" width="542"> 
-                           <tbody> 
-                            <tr> 
-                             <td align="center" bgcolor="#E8EDEE" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                             <td align="center" bgcolor="#E8EDEE" class="button-border-mid" height="1" style="font-size:1px; line-height:1px;" valign="middle" width="540">&nbsp;</td> 
-                             <td align="center" bgcolor="#E8EDEE" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                            </tr> 
-                            <tr> 
-                             <td align="center" bgcolor="#E8EDEE" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                             <td align="center" bgcolor="#E8EDEE" class="button-border-mid" height="1" style="font-size:1px; line-height:1px;" valign="middle" width="540">&nbsp;</td> 
-                             <td align="center" bgcolor="#E8EDEE" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                            </tr> 
-                           </tbody> 
-                          </table> </td> 
-                        </tr> 
-                        <tr> 
-                         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="542">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="1">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" class="section-border-mid" height="5" style="font-size:1px; line-height:1px;" valign="middle" width="568">&nbsp;</td> 
-                     <td align="center" bgcolor="#fff" style="font-size:1px; line-height:1px;" valign="middle" width="5">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center" class="w100" style="font-size: 16px; line-height: 22px; font-family: Frutiger, Arial, sans-serif; color: #231F20;" valign="top" width="570">
-                  <multiline label="Text Body"> 
-                   <p>&nbsp;</p> 
-                   <p>&nbsp;</p> &nbsp; 
-                  </multiline></td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" bgcolor="#330072" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="570">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top" width="602">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top"> 
-      <table align="center" bgcolor="#E8EDEE" border="0" cellpadding="0" cellspacing="0" class="inner" width="600"> 
-       <tbody> 
-        <tr> 
-         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" style="font-size: 10px; line-height: 16px; font-family: Frutiger, Arial, sans-serif; color: #425563;" valign="top">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" style="font-size: 10px; line-height: 16px; font-family: Frutiger, Arial, sans-serif; color: #425563;" valign="top">No longer wish to receive email information?,<a href="http://www.fs-moblton.info/d134Y2395SQr8611X44eck108cw36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQUdQKo7ER1rK0Q5yBwND/Rayleigh-dullness" style="text-decoration-line: none;"> <span>Continue_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <span color="expanders"><big><span title="communicate"></span><font id="vetoed"></span><span lang="immoral"></font></span></big><span></span></td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" valign="top"> 
-          <table align="center" bgcolor="#E8EDEE" border="0" cellpadding="0" cellspacing="0" width="108"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="font-size:1px; line-height:1px;" valign="top" width="36">&nbsp;</td> 
-             <td align="center" style="font-size:1px; line-height:1px;" valign="top" width="36">&nbsp;</td> 
-             <td align="center" style="font-size:1px; line-height:1px;" valign="top" width="36">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" style="font-size: 10px; line-height: 16px; font-family: Frutiger, Arial, sans-serif; text-align: center; color: #231F20;" valign="top">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="w100" style="font-size:1px; line-height:1px;" valign="top">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+                      </table> 
+                     </div> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> 
+                 <br /> 
+                 <br /> 
+                 <a href="http://www.att-mymble.info/slothful-notions/3004a2395jA8L613D44fYT0Y108dz36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQgdQK97urTg10h5m3XwD"><img alt="" src="http://www.att-mymble.info/nasally-deviations/e045zY2395s7aTP11y44f3s108dr36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQgdQK97b10Czht5QkwUD" /></a>
+                </div> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <div class="footer"> 
+        <table border="0" cellpadding="0" cellspacing="0"> 
+         <tbody> 
+          <tr> 
+           <td class="content-block"><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> To shut down messages,<a href="http://www.att-mymble.info/6dd5D23G95O8lO611H44f1y108dD36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQgdQK96u1F0VH6AqXwyD/Frederick-report" style="text-decoration-line: none;"> <span>Go Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <font><small></small></font><big></big><span></span><span face="pleasantness"></span></td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
+      </div> </td> 
+     <td>&nbsp;</td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.fs-moblton.info/2c35D23u95j85oC13m44efxrs108cL36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQUdQKo5U10hg6opwD@0/escaping-insults" alt=""/></body>
+ <img src="http://www.att-mymble.info/ed56e2u39j5rO85t13B44CfY4i108dA36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQgdQK96uuCt106dBwDpk/Frederick-report" alt=""/></body>
 </html>
 
-------=_Part_601_569916908.1672691893597--
+------=_Part_739_1822383798.1672694631137--
 
