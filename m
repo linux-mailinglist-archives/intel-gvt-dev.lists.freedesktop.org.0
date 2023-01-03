@@ -1,42 +1,69 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5739E65C7BB
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 20:51:05 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 02EC765C84B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 21:43:26 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 298BE10E4CC;
-	Tue,  3 Jan 2023 19:51:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C1FA110E21B;
+	Tue,  3 Jan 2023 20:43:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Tue, 03 Jan 2023 19:51:01 UTC
-Received: from mail.bh-svngups.info (unknown [45.95.212.187])
- by gabe.freedesktop.org (Postfix) with ESMTP id C03B310E002
+Received: from mail-pj1-x102e.google.com (mail-pj1-x102e.google.com
+ [IPv6:2607:f8b0:4864:20::102e])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A360010E21C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Jan 2023 19:51:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bh-svngups.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups-news@bh-svngups.info; bh=6J8aCtDVRITBfGBw7984ci2EW/I=;
- b=UC1y/sp+vRLcKQG0fk6Rna+smIkFY0RqbFVMXBCYnTvcGY2oaZu70TTWXaBGsU+KOWyevzUmGBlZ
- Zy2W/zmIq1RAkWzWkYM+UA5QTvvH4G2t8IV8SfDeubtv4fV1JtZG7xD/7DPmammYdt5TQGXqyUt7
- f/cqe34d68P0PTa6MAU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bh-svngups.info;
- b=V8/9G4CMk5njJ8iXX2RDEpE6g7VfZUFAX9kUpyLYb813PiLzY5wZzgxNAA3DD7Fj/sFVHCRUP/H9
- yf46qJljGUSWiRM9gp1DorjC1avphXDY8e2x5urR4g69i7Gi30E0PNjly+uXUS+JzChwddD4ih05
- RQtyUAftDioCz0skvKk=;
-Received: by mail.bh-svngups.info id hmi3ia0001gv for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 3 Jan 2023 14:38:12 -0500 (envelope-from
- <ups-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@bh-svngups.info>)
-Date: Tue, 3 Jan 2023 14:38:12 -0500
-From: "Ups News" <ups-news@bh-svngups.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: ups User Feedback
+ Tue,  3 Jan 2023 20:43:21 +0000 (UTC)
+Received: by mail-pj1-x102e.google.com with SMTP id
+ o31-20020a17090a0a2200b00223fedffb30so32330368pjo.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 03 Jan 2023 12:43:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=xa61Ou7j/846wt97LkeShrQLxxw8hvcUHjRwhnCxBCc=;
+ b=TRm8LLcbBZjdkaye1ciJYctw6wm9URMlqbJ1906WJVxLDuKmUx722YaaZouoCB+fM/
+ fx7xcyib0PtiWeUlApsonrBo5Qi5OZO5MatQeKw68gjkWsuYOsTkMR69iP4M8rDi1RrG
+ +yB0Xg0oyShcZT+u0OaOXMecYFnIFyLe9cBVIsCTCJHFUH9mufMqZgrQGPv845H9x8Im
+ oLQY3EzoIHULs3TQlMcP36a18sgdW9CtLFirUBznKSMM4V+FS7zmwX0YYO4BST1+yvCi
+ LulcuShq9RZKVGqael5KMpKjulXoP2pEXztql/1ZIOMcGNV9rw6f0MKqvRd2rox3NBFs
+ cWFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xa61Ou7j/846wt97LkeShrQLxxw8hvcUHjRwhnCxBCc=;
+ b=3D2ZAz1wqS/oL0dG8f2fAAHntwi3HNHOt4Qa5DV5tOqOY/Y/xH5Qa5dO0avTy6gJlj
+ LvIV73ciLUvTehHFPoEEs9CGa9OaqNrxi7KGVFJLz+nso7xyTRmviUVn0pui5HcCOsCC
+ KhMs68GFha+8Z8SBaWvTc+2u6qNecO4ibqDP63tzKJJNcS5KwShw6fnXetj8WgG0+4df
+ 2qFMdblu2cniUOdU0bIF8bdptU7dn7r1vpmh1itLNoUwQRWW8DEHGTfTb9q4kvqRgDok
+ a1AesZ7zvGPCZq4QnW0ZQ4ZHFJkd3KcQ5BgScfKvLBMnMlZNWy4MWnD4nZwClPQofPOR
+ lexQ==
+X-Gm-Message-State: AFqh2kpoiceTodXM48O8ws7wbfhGDimCE2caQhbuyzaV/RO2UnhHRAdz
+ rU4wQwCzRlhnHqrNfgWh+tG6oA==
+X-Google-Smtp-Source: AMrXdXunwdEn9XsOkAK37phwnHpqU8JPscGX/vIB459rXA0SHYQW7eVPVrszViDVGf0nnCl3jmsVxQ==
+X-Received: by 2002:a17:903:41ca:b0:189:6624:58c0 with SMTP id
+ u10-20020a17090341ca00b00189662458c0mr4304764ple.3.1672778601095; 
+ Tue, 03 Jan 2023 12:43:21 -0800 (PST)
+Received: from google.com (7.104.168.34.bc.googleusercontent.com.
+ [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
+ t14-20020a1709027fce00b0019141c79b1dsm22670248plb.254.2023.01.03.12.43.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Jan 2023 12:43:20 -0800 (PST)
+Date: Tue, 3 Jan 2023 20:43:17 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH 09/27] drm/i915/gvt: Protect gfn hash table with
+ dedicated mutex
+Message-ID: <Y7STZZkd3EaRXLTC@google.com>
+References: <20221223005739.1295925-1-seanjc@google.com>
+ <20221223005739.1295925-10-seanjc@google.com>
+ <Y6vOEjHZhOWulyo1@yzhao56-desk.sh.intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_679_20660099.1672774677431"
-Message-ID: <0.0.0.4A.1D91FAAEAAD428A.396DE8@mail.bh-svngups.info>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y6vOEjHZhOWulyo1@yzhao56-desk.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,344 +76,115 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_679_20660099.1672774677431
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Wed, Dec 28, 2022, Yan Zhao wrote:
+> On Fri, Dec 23, 2022 at 12:57:21AM +0000, Sean Christopherson wrote:
+> > Add and use a new mutex, gfn_lock, to protect accesses to the hash table
+> > used to track which gfns are write-protected when shadowing the guest's
+> > GTT.  This fixes a bug where kvmgt_page_track_write(), which doesn't hold
+> > kvm->mmu_lock, could race with intel_gvt_page_track_remove() and trigger
+> > a use-after-free.
+> > 
+> > Fixing kvmgt_page_track_write() by taking kvm->mmu_lock is not an option
+> > as mmu_lock is a r/w spinlock, and intel_vgpu_page_track_handler() might
+> > sleep when acquiring vgpu->cache_lock deep down the callstack:
+> > 
+> >   intel_vgpu_page_track_handler()
+> >   |
+> >   |->  page_track->handler / ppgtt_write_protection_handler()
+> >        |
+> >        |-> ppgtt_handle_guest_write_page_table_bytes()
+> >            |
+> >            |->  ppgtt_handle_guest_write_page_table()
+> >                 |
+> >                 |-> ppgtt_handle_guest_entry_removal()
+> >                     |
+> >                     |-> ppgtt_invalidate_pte()
+> >                         |
+> >                         |-> intel_gvt_dma_unmap_guest_page()
+> >                             |
+> >                             |-> mutex_lock(&vgpu->cache_lock);
+> > 
+> This gfn_lock could lead to deadlock in below sequence.
+> 
+> (1) kvm_write_track_add_gfn() to GFN 1
+> (2) kvmgt_page_track_write() for GFN 1
+> kvmgt_page_track_write()
+> |
+> |->mutex_lock(&info->vgpu_lock)
+> |->intel_vgpu_page_track_handler (as is kvmgt_gfn_is_write_protected)
+>    |
+>    |->page_track->handler() (ppgtt_write_protection_handler())
+>       |	
+>       |->ppgtt_handle_guest_write_page_table_bytes()
+>          |
+>          |->ppgtt_handle_guest_write_page_table()
+> 	    |
+> 	    |->ppgtt_handle_guest_entry_add() --> new_present
+> 	       |
+> 	       |->ppgtt_populate_spt_by_guest_entry()
+> 	          |
+> 		  |->intel_vgpu_enable_page_track() --> for GFN 2
+> 		     |
+> 		     |->intel_gvt_page_track_add()
+> 		        |
+> 			|->mutex_lock(&info->gfn_lock) ===>deadlock
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title></title> 
-  <style type="text/css">* {
-	-webkit-font-smoothing: antialiased;
-}
-body {
-	Margin: 0;
-	padding: 0;
-	min-width: 100%;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	mso-line-height-rule: exactly;
-}
-table {
-	border-spacing: 0;
-	color: #333333;
-	font-family: Arial, sans-serif;
-}
-img {
-	border: 0;
-}
-wrapper {
-	width: 100%;
-	table-layout: fixed;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-}
-webkit {
-	max-width: 600px;
-}
-outer {
-	Margin: 0 auto;
-	width: 100%;
-	max-width: 600px;
-}
-full-width-image img {
-	width: 100%;
-	max-width: 600px;
-	height: auto;
-}
-inner {
-	padding: 10px;
-}
-p {
-	Margin: 0;
-	padding-bottom: 10px;
-}
-h1 {
-	font-size: 21px;
-	font-weight: bold;
-	Margin-top: 15px;
-	Margin-bottom: 5px;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-h2 {
-	font-size: 18px;
-	font-weight: bold;
-	Margin-top: 10px;
-	Margin-bottom: 5px;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-one-column .contents {
-	text-align: left;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-one-column p {
-	font-size: 14px;
-	Margin-bottom: 10px;
-	font-family: Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-}
-two-column {
-	text-align: center;
-	font-size: 0;
-}
-two-column .column {
-	width: 100%;
-	max-width: 300px;
-	display: inline-block;
-	vertical-align: top;
-}
-contents {
-	width: 100%;
-}
-two-column .contents {
-	font-size: 14px;
-	text-align: left;
-}
-two-column img {
-	width: 100%;
-	max-width: 280px;
-	height: auto;
-}
-two-column .text {
-	padding-top: 10px;
-}
-three-column {
-	text-align: center;
-	font-size: 0;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-three-column .column {
-	width: 100%;
-	max-width: 200px;
-	display: inline-block;
-	vertical-align: top;
-}
-three-column .contents {
-	font-size: 14px;
-	text-align: center;
-}
-three-column img {
-	width: 100%;
-	max-width: 180px;
-	height: auto;
-}
-three-column .text {
-	padding-top: 10px;
-}
-img-align-vertical img {
-	display: inline-block;
-	vertical-align: middle;
-}
-@media only screen and (max-device-width: 480px) {
-table[class=hide], img[class=hide], td[class=hide] {
-	display: none !important;
-}
-contents1 {
-	width: 100%;
-}
-contents1 {
-	width: 100%;
-}
-	</style> 
- </head> 
- <body style="Margin:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;min-width:100%;background-color:#f3f2f0;"> 
-  <center class="wrapper" style="width:100%;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#f3f2f0;"> 
-   <table bgcolor="#f3f2f0;" border="0" cellpadding="0" cellspacing="0" style="background-color:#f3f2f0;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td width="100%"> 
-       <div class="webkit" style="max-width:600px;Margin:0 auto;">
-        <!-- ======= start main body ======= --> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer" style="border-spacing:0;Margin:0 auto;width:100%;max-width:600px;"> 
-         <tbody> 
-          <tr> 
-           <td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
-            <!-- ======= start header ======= --> 
-            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td> 
-                <table border="0" cellpadding="0" cellspacing="0" style="width:100%;"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center"> 
-                    <center> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="Margin: 0 auto;" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td bgcolor="#FFFFFF" class="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
-                         <!-- ======= start header ======= --> 
-                         <table bgcolor="#f3f2f0" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:left;font-size:0;"> 
-                             <div class="column" style="width:100%;max-width:80px;display:inline-block;vertical-align:top;"> 
-                              <table class="contents" style="border-spacing:0; width:100%"> 
-                               <tbody> 
-                                <tr> 
-                                 <td align="left" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:5px;">&nbsp;</td> 
-                                </tr> 
-                               </tbody> 
-                              </table> 
-                             </div> 
-                             <div class="column" style="width:100%;max-width:518px;display:inline-block;vertical-align:top;"> 
-                              <table border="0" cellpadding="0" cellspacing="0" style="border-spacing:0" width="100%"> 
-                               <tbody> 
-                                <tr> 
-                                 <td class="inner" style="padding-top:0px;padding-bottom:10px; padding-right:10px;padding-left:10px;"> 
-                                  <table border="0" cellpadding="0" cellspacing="0" class="contents" style="border-spacing:0; width:100%"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td align="left" valign="top">&nbsp;</td> 
-                                    </tr> 
-                                    <tr> 
-                                     <td align="right" valign="top">&nbsp;<font style="font-size:11px; text-decoration:none; color:#474b53; font-family: Verdana, Geneva, sans-serif; text-align:left; line-height:16px; padding-bottom:30px">&nbsp;</font></td> 
-                                    </tr> 
-                                   </tbody> 
-                                  </table> </td> 
-                                </tr> 
-                               </tbody> 
-                              </table> 
-                             </div> </td> 
-                           </tr> 
-                           <tr> 
-                            <td>&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </center> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <!-- ======= end header ======= -->
-            <!-- ======= start hero ======= --> 
-            <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="one-column" style="border-spacing:0; border-left:1px solid #e8e7e5; border-right:1px solid #e8e7e5; border-bottom:1px solid #e8e7e5; border-top:1px solid #e8e7e5" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="center" bgcolor="#351C15" height="303" style="padding:50px 50px 50px 50px" valign="top" width="600"> 
-                <div> 
-                 <table align="right" border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;"> 
-                  <tbody> 
-                   <tr> 
-                    <td align="center"> 
-                     <table border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="center" bgcolor="#262626" height="40" style="-moz-border-radius:10px; -webkit-border-radius:10px; border-radius: 10px;" width="95"><font style="color:#ffffff; font-size:36px; text-align:center; font-family: Verdana, Geneva, sans-serif"><strong>UPS</strong></font></td> 
-                       </tr> 
-                      </tbody> 
-                     </table> </td> 
-                   </tr> 
-                  </tbody> 
-                 </table> 
-                 <br /> 
-                 <br /> 
-                 <br /> &nbsp; 
-                 <p style="color:#ffffff; font-size:40px; text-align:center; font-family: Verdana, Geneva, sans-serif">We value your feedback and appreciate your loyalty to UPS.</p> &nbsp; 
-                 <p style="color:#ffffff; font-size:25px; text-align:center; font-family: Verdana, Geneva, sans-serif; line-height:normal ">That's why we want to invite you to participate in a brief survey about your shopping experience with us.</p> 
-                </div> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <!-- ======= end hero  ======= -->
-            <!-- ======= start article ======= --> 
-            <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="one-column" style="border-spacing:0; border-left:1px solid #e8e7e5; border-right:1px solid #e8e7e5; border-bottom:1px solid #e8e7e5; border-top:1px solid #e8e7e5" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="center" style="padding:50px 50px 50px 50px"> <p style="color:#262626; font-size:24px; text-align:center; font-family: Verdana, Geneva, sans-serif"><strong><a href="http://www.bh-svngups.info/ad96AH239A5zZu8613u451R0oI1093i36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQcdQKK5z10OV6hLkzwD/unrest-McKesson"><img alt="" src="http://www.bh-svngups.info/baptizes-closing/d325q_2395z7Rqa12R4X512h1093j36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQcdQKK7Lkx10sG6Q12LwD" width="100%" /></a></strong></p> <p style="color:#262626; font-size:22px; text-align:center; font-family: Verdana, Geneva, sans-serif; line-height:normal">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a $100 UPS gift card to one lucky survey participant<br /> &nbsp;</p> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center"> 
-                    <table border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;"> 
-                     <tbody> 
-                      <tr> 
-                       <td align="center" bgcolor="#351C15" height="60" style="-moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px;" width="300"><a class="button_link" href="http://www.bh-svngups.info/ad96AH239A5zZu8613u451R0oI1093i36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQcdQKK5z10OV6hLkzwD/unrest-McKesson" style="width:300; display:block; text-decoration:none; border:0; text-align:center; font-weight:bold;font-size:18px; font-family: Arial, sans-serif; color: #ffffff">Go And Start Now</a></td> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> <p style="color:#000000; font-size:12px; text-align:center; font-family: Verdana, Geneva, sans-serif; line-height:22px ">&nbsp;</p> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <!-- ======= end article ======= -->
-            <!-- ======= start footer ======= --> 
-            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td height="30">&nbsp;</td> 
-              </tr> 
-              <tr> 
-               <td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;"> 
-                <div class="column" style="width:100%;max-width:350px;display:inline-block;vertical-align:top;"> 
-                 <table class="contents" style="border-spacing:0; width:100%"> 
-                  <tbody> 
-                   <tr> 
-                    <td align="right" style="padding-top:0;padding-bottom:0;padding-right:0px;padding-left:0;" width="39%">&nbsp;</td> 
-                    <td align="left" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" valign="middle" width="61%"> <p style="color:#787777; font-size:13px; text-align:left; font-family: Verdana, Geneva, sans-serif">&nbsp;</p> </td> 
-                   </tr> 
-                  </tbody> 
-                 </table> 
-                </div> 
-                <div class="column" style="width:100%;max-width:248px;display:inline-block;vertical-align:top;"> 
-                 <table style="border-spacing:0" width="100%"> 
-                  <tbody> 
-                   <tr> 
-                    <td class="inner" style="padding-top:0px;padding-bottom:10px; padding-right:10px;padding-left:10px;"> 
-                     <table class="contents" style="border-spacing:0; width:100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="center" style="padding-top:10px" valign="top" width="32%"> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="150"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="center" width="33">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> </td> 
-                   </tr> 
-                  </tbody> 
-                 </table> 
-                </div> </td> 
-              </tr> 
-              <tr> 
-               <td height="30" style="font-size: 12.5px"><br /> <br /> <br /> <br /> To cut off communication,<a href="http://www.bh-svngups.info/b156gC23t95SM8N611b4511W1093p36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdQKK6gmK1i05HpwD@/outwits-passwords" style="text-decoration-line: none;"> <span>Begin-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <style></style><big><big><span size="movements"><font></font><small><span></span></big></small></span></big><big></big></td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <!-- ======= end footer ======= --></td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </center>   
- <img src="http://www.bh-svngups.info/barging-believer/6666U2rP395OJ85_11M4513Q1093l36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdQKK6z1vGJ05ilwTD" alt=""/></body>
-</html>
+Or even more simply, 
 
-------=_Part_679_20660099.1672774677431--
+  kvmgt_page_track_write()
+  |
+  -> intel_vgpu_page_track_handler()
+     |
+     -> intel_gvt_page_track_remove()
 
+> 
+> Below fix based on this patch is to reuse vgpu_lock to protect the hash table
+> info->ptable.
+> Please check if it's good.
+> 
+> 
+> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> index b924ed079ad4..526bd973e784 100644
+> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> @@ -364,7 +364,7 @@ __kvmgt_protect_table_find(struct intel_vgpu *info, gfn_t gfn)
+>  {
+>         struct kvmgt_pgfn *p, *res = NULL;
+> 
+> -       lockdep_assert_held(&info->gfn_lock);
+> +       lockdep_assert_held(&info->vgpu_lock);
+> 
+>         hash_for_each_possible(info->ptable, p, hnode, gfn) {
+>                 if (gfn == p->gfn) {
+> @@ -388,7 +388,7 @@ static void kvmgt_protect_table_add(struct intel_vgpu *info, gfn_t gfn)
+>  {
+>         struct kvmgt_pgfn *p;
+> 
+> -       lockdep_assert_held(&info->gfn_lock);
+> +       lockdep_assert_held(&info->vgpu_lock);
+
+I'll just delete these assertions, the one in __kvmgt_protect_table_find() should
+cover everything and is ultimately the assert that matters.
+
+> @@ -1629,12 +1629,11 @@ static void kvmgt_page_track_remove_region(gfn_t gfn, unsigned long nr_pages,
+>         struct intel_vgpu *info =
+>                 container_of(node, struct intel_vgpu, track_node);
+>  
+> -       mutex_lock(&info->gfn_lock);
+> +       lockdep_assert_held(&info->vgpu_lock);
+
+This path needs to manually take vgpu_lock as it's called from KVM.  IIRC, this
+is the main reason I tried adding a new lock.  That and I had a hell of a time
+figuring out whether or not vgpu_lock would actually be held.
+
+Looking at this with fresh eyes, AFAICT intel_vgpu_reset_gtt() is the only other
+path that can reach __kvmgt_protect_table_find() without holding vgpu_lock, by
+way of intel_gvt_page_track_remove().  But unless there's magic I'm missing, that's
+dead code and can simply be deleted.
