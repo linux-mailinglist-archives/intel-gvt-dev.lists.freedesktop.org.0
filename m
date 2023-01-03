@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA8D865C5D2
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 19:12:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CD5D65C6DC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 20:02:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6B52F10E401;
-	Tue,  3 Jan 2023 18:12:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E551510E4AF;
+	Tue,  3 Jan 2023 19:02:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Tue, 03 Jan 2023 18:12:52 UTC
-Received: from mail.at-krgershp.info (unknown [45.95.212.185])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2D13A10E3FE
+ Tue, 03 Jan 2023 19:02:34 UTC
+Received: from mail.in-mypaypl.info (unknown [45.95.212.190])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BF09310E4AA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Jan 2023 18:12:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=at-krgershp.info;
+ Tue,  3 Jan 2023 19:02:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=in-mypaypl.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kroger_appreciation@at-krgershp.info; 
- bh=/3onaBN8+1ydQNwVcvQngHdprOA=;
- b=iq0xgEs21Dd+gxsQrVWnzsXhouqgipSqP4qRtdA8NDtxgCv6nkEkwRF0fuWrxUxvHZ9YLbRq8UhH
- EDR9YfJjRvLQFMtnZAG7sFs3EEwMDp/vb9o8OA6m/fESB1SCDVq3wYLmBmqlv0SgXcvDb39cEuty
- afFV2DqdruYnPcWS0Ko=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=at-krgershp.info;
- b=kKLQxtao+apYnT6CZ0W1oAdMnqYluqtM9Knk7YP4eKV8om/SwOhyz6Yq9ZxyidY9o4AkchJFyRo5
- xufLcBQ9YoJsSwKUSf/eoTYbu4D+HPVpAyxfTfFzyHuGmniufxfW6XErzbMxho3qcn72+c9Nbj4J
- GOknMK8hBDrkzC/Vsgw=;
-Received: by mail.at-krgershp.info id hmho280001gl for
+ i=paypal.time@in-mypaypl.info; 
+ bh=6UN1nqSGkM7/kqD4zWtJ6xB+e6I=;
+ b=qrg06SG+Vs+bxXMxcDKcrr0ibDkh1pGrnA7C0JULeHOExJYFduwW9hnlonAOUEuBfkvf73pwRndJ
+ LDPviVtOs4lB85fFKftYPPaIbimvsTQZXBZiL/Ycu7PdQN1qftqXSAeejzaLhmjqtzZN3J9pvN2A
+ mcyIu5rDl3l8uYlvn64=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=in-mypaypl.info;
+ b=CfpGyR81sOsI2Btt85+xa3KPvh9Jey9UB6lNLa2KGssv5bDKsNIQDBBD5NrXmXfLNHjt79FblVff
+ NbJEZCN3dqa0wGVmX+ivAG9i3ww8NwnuwzBkJnkK+v60HEpcz87+ztPCxD1rRt0Gys4A/S1LYTkW
+ IpGfPm5MEUHzgFQPJx0=;
+Received: by mail.in-mypaypl.info id hmi85g0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 3 Jan 2023 12:57:17 -0500 (envelope-from
- <kroger_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@at-krgershp.info>)
-Date: Tue, 3 Jan 2023 12:57:17 -0500
-From: "Kroger Appreciation" <kroger_appreciation@at-krgershp.info>
+ Tue, 3 Jan 2023 15:19:29 -0500 (envelope-from
+ <paypal.time-intel+2Dgvt+2Ddev=lists.freedesktop.org@in-mypaypl.info>)
+Date: Tue, 3 Jan 2023 15:19:29 -0500
+From: "Paypal Time" <paypal.time@in-mypaypl.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Kroger reward is just a few clicks away - While supplies last
+Subject: Every visit a new reward that could get you anything on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_472_1785374934.1672768603723"
-Message-ID: <0.0.0.34.1D91F9CD14477F4.2BB25C@mail.at-krgershp.info>
+ boundary="----=_Part_412_295300014.1672771891962"
+Message-ID: <0.0.0.2D.1D91FB0AF3089FA.60F2AB@mail.in-mypaypl.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,189 +53,199 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_472_1785374934.1672768603723
+------=_Part_412_295300014.1672771891962
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <title>dorfensmidth</title> 
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <style type="text/css">/* FONTS */
-    @media screen {
-		@font-face {
-		  font-family: 'SharpSans';
-		  font-style: normal;
-		  font-weight: 400;
-		  src: local('SharpSans Medium'), local('SharpSans-Medium'), url(https://p3.zdassets.com/hc/theme_assets/707950/115000099625/SharpSansNo1-Medium.woff) format('woff');
-		}
-
-		@font-face {
-		  font-family: 'SharpSans';
-		  font-style: normal;
-		  font-weight: 700;
-		  src: local('SharpSans SemiBold'), local('SharpSans-SemiBold'), url(https://p3.zdassets.com/hc/theme_assets/707950/115000099625/SharpSansNo1-Semibold.woff) format('woff');
-		}
-
-		@font-face {
-		  font-family: 'SharpSans';
-		  font-style: italic;
-		  font-weight: 400;
-		  src: local('SharpSans Medium Italic'), local('SharpSans-MediumItalic'), url(https://p3.zdassets.com/hc/theme_assets/707950/115000099625/SharpSansNo1-MediumItalic.woff) format('woff');
-		}
-
-		@font-face {
-		  font-family: 'SharpSans';
-		  font-style: italic;
-		  font-weight: 700;
-		  src: local('SharpSans SemiBold Italic'), local('SharpSans-SemiBoldItalic'), url(https://p3.zdassets.com/hc/theme_assets/707950/115000099625/SharpSansNo1-SemiboldItalic.woff) format('woff');
-		}
-    }
-
-    /* CLIENT-SPECIFIC STYLES */
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-    img { -ms-interpolation-mode: bicubic; }
-
-    /* RESET STYLES */
-    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
-    table { border-collapse: collapse !important; }
-    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
-
-    /* iOS BLUE LINKS */
-    a[x-apple-data-detectors] {
-        color: inherit !important;
-        text-decoration: none !important;
-        font-size: inherit !important;
-        font-family: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-    }
-
-	/* MOBILE STYLES */
-	@media screen and (max-width:600px){
-		h1 {
-			font-size: 32px !important;
-			line-height: 32px !important;
-		}
-	}
-
-    /* ANDROID CENTER FIX */
-    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+  <meta content="initial-scale=1" name="viewport" /> 
+  <title>frecco</title> 
+  <style type="text/css">html, body {padding: 0; margin: 0; font-family: sans-serif; color: #153643;}
+	a {color: #ffffff; text-decoration: none;}
+	.content {width: 100%; max-width: 600px;}
+	.innerpadding {padding: 40px 30px 20px 30px;}
+	.borderbottom {border-bottom: 0px solid #dddddd;}
+	.textcentered {text-align: center;}
+	.h1, .h2 {font-size: 26px; color: #153643; font-family: sans-serif; letter-spacing: 1px; font-weight: bold;}
+	.h2 {font-size: 18px; padding-bottom: 20px; font-weight: normal;}
+	.p {font-size: 18px; font-family: sans-serif;}
+	.portrait {padding: 0 20px 20px 0;}
+	.t-shirts {padding: 0 20px 0 20px;}
+	.col430 {width: 100%; }
+	.button {width: 250px; padding: 10px 20px 10px 20px; color: #ffffff; line-height: 2; font-size: 25px; display: flex; justify-content: center; border-radius: 15px;  }
+	.merchandise {padding-top: 8px;}
 	</style> 
  </head> 
- <body style="background-color: #F3F0EE; margin: 0 !important; padding: 0 !important;">
-  <!-- HIDDEN PREHEADER TEXT --> 
-  <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'SharpSans', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
-   &nbsp;
-  </div> 
-  <table border="0" cellpadding="0" cellspacing="0" width="100%">
-   <!-- LOGO --> 
+ <body bgcolor="#eeeeee"> 
+  <table bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center" bgcolor="#F3F0EE"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
+     <td> 
+      <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content"> 
        <tbody> 
         <tr> 
-         <td align="center" style="padding: 0px 0px 0px 0px; color: #F3F0EE;" valign="top">delimiter</td> 
+         <td> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="h1 innerpadding borderbottom textcentered"><span style="color: #fff; font-size: 38px; display: block; background-color: #00529C; padding-top: 15px; padding-bottom: 15px">Dear PayPal User,</span> 
+              <table border="0" width="0"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                 <td style="font-size: 23px; padding: 15px; align-content: center; font-weight: normal">We value your feedback and appreciate your loyalty to <strong>PayPal</strong>. That's why we want to invite you to participate in a brief survey about your shopping experience with us.</td> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
         </tr> 
-       </tbody> 
-      </table> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
-       <tbody> 
         <tr> 
-         <td align="center" style="padding: 10px 10px 10px 10px;" valign="top">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!-- HERO --> 
-    <tr> 
-     <td align="center" bgcolor="#F3F0EE" style="padding: 0px 10px 0px 10px;"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" bgcolor="#418FE1" style="padding: 20px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #FFFFFF; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; letter-spacing: 1px; line-height: 24px;" valign="top"> <p style="font-size: 18px; font-weight: 400; margin: 0; font-size: 29px; font-weight: bold">Dear Kroger Customer,</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!-- COPY BLOCK --> 
-    <tr> 
-     <td align="center" bgcolor="#F3F0EE" style="padding: 0px 10px 0px 10px;"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%">
-       <!-- COPY --> 
-       <tbody> 
-        <tr> 
-         <td align="left" bgcolor="#ffffff" style="padding: 20px 30px 40px 30px; color: #404040; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 16px;"> <p align="center" style="font-size: 24px; line-height: normal">We value your feedback and appreciate your loyalty to Kroger. That's why we want to invite you to participate in a brief survey about your shopping experience with us.</p> <a href="http://www.at-krgershp.info/unlinked-unrealistic/7744Q2395ek86U12Wx4508M1091v36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQUdQKS7Px1LJ0n5lJwDJ"><img alt="" src="http://www.at-krgershp.info/mutative-vexing/eI45q23C95hw7Ka13M450aRkO1091W36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQUdQKS5qCF105QTwND" style="max-width: 600px" width="100%" /></a></td> 
-        </tr> 
-        <!-- COPY --> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!-- COPY CALLOUT --> 
-    <tr> 
-     <td align="center" bgcolor="#F3F0EE" style="padding: 0px 10px 0px 10px;"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%">
-       <!-- HEADLINE --> 
-       <tbody> 
-        <tr> 
-         <td align="left" bgcolor="#03363D" style="padding: 30px 30px 20px 30px; color: #ffffff; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 20px;"> <p align="center" style="font-size: 24px; line-height: normal">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a <strong>$100 Kroger gift card</strong> to one lucky survey participant.</p> 
-          <table cellpadding="1" cellspacing="1" width="100%"> 
+         <td> 
+          <div> 
+           <p>&nbsp;</p> 
+          </div> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="col430"> 
+           <tbody> 
+            <tr> 
+             <td align="center" class="h2"><a href="http://www.in-mypaypl.info/2a55S239t5i8gW613t450ic_x1092G36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ6dQKe6Ypz1A05KqwDU/Hammett-throughput"><img a="" src="http://www.in-mypaypl.info/pools-fantasize/1b65K23D95U7TaB12I4h50eO1092Y36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ6dQKe6qj1Zy05E1w@D" style="display: block; text-align: center; display: flex; justify-content: center; align-content: center" width="100%" /> </a></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table border="0" width="0"> 
            <tbody> 
             <tr> 
              <td>&nbsp;</td> 
              <td> 
-              <div style="background-color: #428FE1; border-radius: 5px; padding: 20px; text-align: center; font-size: 35px">
-               <a href="http://www.at-krgershp.info/unlinked-unrealistic/7744Q2395ek86U12Wx4508M1091v36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQUdQKS7Px1LJ0n5lJwDJ" style="text-decoration: none; color: white"><strong>Go and start now</strong></a>
-              </div> </td> 
+              <table border="0" width="0"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                 <td style="font-size: 23px; padding: 15px; align-content: center; text-align: center">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a <strong>$100 PayPal gift card</strong> to one lucky survey participant.</td> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
              <td>&nbsp;</td> 
             </tr> 
            </tbody> 
           </table> </td> 
         </tr> 
-        <!-- COPY --> 
         <tr> 
-         <td align="left" bgcolor="#03363D" style="padding: 0px 30px 20px 30px; color: #F3F0EE; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 20px; border-radius: 0px 0px 4px 4px;"> <p style="margin: 0;">&nbsp;</p> </td> 
+         <td align="center" style="padding: 15px"> 
+          <table border="0" cellpadding="0" cellspacing="0"> 
+           <tbody> 
+            <tr> 
+             <td align="center" bgcolor="#e74c3c" class="p button" style=""><a href="http://www.in-mypaypl.info/2a55S239t5i8gW613t450ic_x1092G36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ6dQKe6Ypz1A05KqwDU/Hammett-throughput" style="display: block">Go And Start Now </a></td> 
+            </tr> 
+           </tbody> 
+          </table> <br /> &nbsp;</td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
-    <!-- SUPPORT CALLOUT --> 
     <tr> 
-     <td align="center" bgcolor="#F3F0EE" style="padding: 30px 10px 0px 10px;"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%">
-       <!-- HEADLINE --> 
+     <td class="innerpadding borderbottom"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0"> 
        <tbody> 
         <tr> 
-         <td align="center" bgcolor="#dedede" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">&nbsp;</td> 
+         <td> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="h1 textcentered" style="padding-bottom: 15px;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="t-shirts"> 
+           <tbody> 
+            <tr> 
+             <td style="padding-top: 15px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="t-shirts"> 
+           <tbody> 
+            <tr> 
+             <td style="padding-top: 15px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="left" border="0" cellpadding="0" cellspacing="0" class="t-shirts"> 
+           <tbody> 
+            <tr> 
+             <td style="padding-top: 15px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
-    <!-- FOOTER --> 
     <tr> 
-     <td align="center" bgcolor="#F3F0EE" style="padding: 0px 10px 0px 10px;"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%">
-       <!-- PERMISSION REMINDER --> 
+     <td bgcolor="#44525f" class="innerpadding"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="color: #ffffff; font-size: 15px; text-align: center;"> 
        <tbody> 
         <tr> 
-         <td align="left" bgcolor="#F3F0EE" style="padding: 30px 30px 30px 30px; color: #666666; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;"> <p align="center" style="margin: 0;">To put an end to communications,<a href="http://www.at-krgershp.info/interdependent-pseudoinstruction/abc5O2Y395ROD8612u45i09V1091A36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQUdQKS5R1Fr05ULAwD" style="text-decoration-line: none;"> <span>Visit-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <span style="holes"></span><font class="paralyzed"></font><font class="anthracite"><big></big><font color="adducible"></font></font><style></style></p> </td> 
+         <td style="padding-bottom: 10px;"><br /> <br /> <br /> <br /> <br /> No longer wish to receive email communication?,<a href="http://www.in-mypaypl.info/pools-fantasize/ed64V2395N86qX11e450dm1092q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ6dQKe7zO1w0LZ5Aqw1D" style="text-decoration-line: none;"> <span>ClickHere </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <span lang="doctor"></span><big><big></big><span color="Sifford"></big><span lang="Maurice"></span><span face="attainable"></span><font lang="colonial"></span></font><font class="professionals"><span title="rebutted"></font></span><font face="mythologies"></font></td> 
         </tr> 
-        <!-- ADDRESS --> 
         <tr> 
-         <td align="left" bgcolor="#F3F0EE" style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">&nbsp;</td> 
+         <td style="padding-bottom: 10px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="padding: 10px 0 20px 0;"> 
+           <tbody> 
+            <tr> 
+             <td> 
+              <table align="left" border="0" cellpadding="0" cellspacing="0" style="padding: 0 10px 0 10px;"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table align="left" border="0" cellpadding="0" cellspacing="0" style="padding: 0 10px 0 10px;"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.at-krgershp.info/reluctant-reload/9ea5XI2395o8Rl512X45t0bA1091K36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQUdQKS5C1vK05sLwDX" alt=""/></body>
+ <img src="http://www.in-mypaypl.info/e3f5a23y95llX8511I450fX1092H36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ6dQKe7L1z0wJv6yUwDLl/pools-fantasize" alt=""/></body>
 </html>
 
-------=_Part_472_1785374934.1672768603723--
+------=_Part_412_295300014.1672771891962--
 
