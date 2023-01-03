@@ -1,43 +1,69 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F78D65C88E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 22:03:08 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC2CE65C8AF
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 22:14:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 63DE010E21B;
-	Tue,  3 Jan 2023 21:03:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 59AE410E22E;
+	Tue,  3 Jan 2023 21:14:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 03 Jan 2023 21:03:04 UTC
-Received: from mail.am-smsclubs.info (unknown [45.95.212.188])
- by gabe.freedesktop.org (Postfix) with ESMTP id 48F9510E21B
+Received: from mail-pj1-x1030.google.com (mail-pj1-x1030.google.com
+ [IPv6:2607:f8b0:4864:20::1030])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 400C510E22E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Jan 2023 21:03:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=am-smsclubs.info;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sams_club_time@am-smsclubs.info; 
- bh=StaJGcPMDywwiVbHQBcgdoO2m9g=;
- b=XJQPYhwh8mtRDBCUyZ3obc+eds8t+15YmYpywwVpucYNB23yJ8io5yqaduqGoDX1Qw0S+IQgU4Zk
- oQqD2PAeXE+GQnseT7XPitqz9VhjqFVDg1AzdER3tkuOaLCK0C7fEf1lVLxRFmI2OBuMatsaTnnn
- JrceraB5UYGb3g2po1M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=am-smsclubs.info;
- b=daj3v8rxA8SGlH3BTxUewL3SGwyJ2sshJigutdE/HojBGS4aUDJ/ZpH3bdy9NfyYw3unZ8UhKtRn
- W8wXgAQjb9xH1yYrpjoQdrFAuhFcZA1VQwt3gEMjg0SJfPQ6NxGFG8/lgyNKQtGg9wpfjpcG7BbQ
- W8DGedLj1Wgs83f5CT4=;
-Received: by mail.am-smsclubs.info id hmic0g0001go for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 3 Jan 2023 15:51:35 -0500 (envelope-from
- <sams_club_time-intel+2Dgvt+2Ddev=lists.freedesktop.org@am-smsclubs.info>)
-Date: Tue, 3 Jan 2023 15:51:35 -0500
-From: "Sams Club Time" <sams_club_time@am-smsclubs.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best reward deal you can get for being a loyal customer
+ Tue,  3 Jan 2023 21:13:59 +0000 (UTC)
+Received: by mail-pj1-x1030.google.com with SMTP id
+ n65-20020a17090a2cc700b0021bc5ef7a14so32442363pjd.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 03 Jan 2023 13:13:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=9p6xOAllsdwmLNRF1CYEiIp55ypvlzYzax0rYzleWNo=;
+ b=ciy1v2owEhU15SQWAmYsdnJ1U5xMAuX9wzmG43dAuqW7vCvtsEpJkV55tG9JuZSJTS
+ fkvXO7rqR96Q01Np531KBtWzzBAiqUHSw/2uwB4qMojVHHvYWrsBgarkdFofh14rFl46
+ 5ARxqE5hr1JAnrDVEFTfxpMNxqTaY+rrkJQcMQOr4UVOQZHdDLS/hwXhHwcwbA/IY8po
+ qXiNsF0hj8M1B7TphtxcQfzfMw/zLvuuRxxIH1zB1J8kDFkEljiJjUoh2A49ocsY8i22
+ wer+iZUB0riKCypu60lSg3hRyA4GpRQsKFwwsgPYHJr/3UMjMrruzD2CC22ebXuacWn7
+ 9bNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9p6xOAllsdwmLNRF1CYEiIp55ypvlzYzax0rYzleWNo=;
+ b=FngRolvjWIkchKMoQ49g9vYj8UW6ieLBCBLcO9iEaorrzt8WWlU8YOm5uY085ZR/6o
+ r36K0TeNElyCwWLZri2nrezTAGgZAp8Bf64SzFbAd8uh1H9vJC7z9l5E79SWPIj9vFgP
+ leuQjDg4Bb6wVyIDzVd0cYGpZ/XQCTFoMRBWn2L9O8OkPwQoq/whjQRojOdLJsusRf8m
+ OdR+pcQnZ9OPo8YgTifzkV3ENWvDW9TmLrYujJTBv7GfNEXOToiZple0J+Ueh1SA2cgl
+ AgETC106vRRLB6RRARIDkryFU7AiA3iXgSxMCaNtNEoXQhJB90A0U/glrD/FwnTJKGtF
+ M+qg==
+X-Gm-Message-State: AFqh2krLbWtME6nLO1JJUQWsGGLgWrEsPcd6mlhZ/C2G99NcrORetmJB
+ tmm5wPdzkMxGSi/SQzkCu6GtxqcJrLfe4loe
+X-Google-Smtp-Source: AMrXdXsUJWWyS0pzIR8xoON1mt4qFc3XLmvSjOul9xU40XtPwpStroqnw3FiN9s3u4jye6EKg+pYPw==
+X-Received: by 2002:a17:902:ce90:b0:192:8a1e:9bc7 with SMTP id
+ f16-20020a170902ce9000b001928a1e9bc7mr2157751plg.0.1672780438696; 
+ Tue, 03 Jan 2023 13:13:58 -0800 (PST)
+Received: from google.com (7.104.168.34.bc.googleusercontent.com.
+ [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
+ h11-20020a170902680b00b00192849d1209sm3321073plk.96.2023.01.03.13.13.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Jan 2023 13:13:58 -0800 (PST)
+Date: Tue, 3 Jan 2023 21:13:54 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH 03/27] drm/i915/gvt: Incorporate KVM memslot info into
+ check for 2MiB GTT entry
+Message-ID: <Y7SaklDQD0EoIs8l@google.com>
+References: <20221223005739.1295925-1-seanjc@google.com>
+ <20221223005739.1295925-4-seanjc@google.com>
+ <Y6vXTcxDNovrmeVB@yzhao56-desk.sh.intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_190_1556425826.1672779078109"
-Message-ID: <0.0.0.15.1D91FB52B3B4356.1BB1E2@mail.am-smsclubs.info>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y6vXTcxDNovrmeVB@yzhao56-desk.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,198 +76,81 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_190_1556425826.1672779078109
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Wed, Dec 28, 2022, Yan Zhao wrote:
+> On Fri, Dec 23, 2022 at 12:57:15AM +0000, Sean Christopherson wrote:
+> > Honor KVM's max allowed page size when determining whether or not a 2MiB
+> > GTT shadow page can be created for the guest.  Querying KVM's max allowed
+> > size is somewhat odd as there's no strict requirement that KVM's memslots
+> > and VFIO's mappings are configured with the same gfn=>hva mapping, but
+> Without vIOMMU, VFIO's mapping is configured with the same as KVM's
+> memslots, i.e. with the same gfn==>HVA mapping
 
-<html>
- <head> 
-  <title></title> 
-  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" /> 
-  <style type="text/css">body{background-color:#e5e5e5 !important;}
-@media only screen and (max-width:640px){
-table[id="ns"] table[class="ct"]{width:304px !important;}
-table[id="ns"] table[class="s"]{width:270px !important;}
-table[id="ns"] td[class="so"] img{width:28px !important;height:28px !important;}
-table[id="ns"] td[class="ho"]{padding-left:15px !important;}
-table[id="ns"] td[class="st"] img{width:74px !important;height:26px !important;}
-table[id="ns"] div[class="ft"]{font-size:11px;}
-table[id="ns"] .nsm{display:none;}
-table[id="ns"] td[class="cc"]{padding:15px !important;}
-table[id="ns"] td[class="ccline"]{padding:15px !important;}
-table[id="ns"] .tt{width:270px !important;}
-table[id="ns"] .vm{max-height:none !important;width:auto !important;margin-left:-15px !important;margin-right:-15px !important;padding-bottom:15px !important;}
-table[id="ns"] .x2m{max-height:none !important;width:auto !important;}
-table[id="ns"] .he{display:block !important;font-size:12px !important;max-height:none !important;line-height:1.5 !important;}
-table[id="ns"] img.he{width:auto !important;}
-table[id="ns"] .x2, table[id="ns"] .x4{padding-left:10px !important;padding-right:10px !important;padding-top:5px !important;padding-bottom:20px !important;}
-table[id="ns"] .x2 .t{padding-bottom:8px !important;padding-top:20px !important;}
-table[id="ns"] .x2t{width:135px;}
-table[id="ns"] .x2i{padding:7px !important;}
-table[id="ns"] .x2i table{width:113px !important;} 
-table[id="ns"] .df{margin-left:-5px !important;margin-right:-5px !important;padding-bottom:15px !important;}
-table[id="ns"] .x4t.first{padding-bottom:10px !important;}
-table[id="ns"] .x4t.odd{padding-right:2px !important;}
-table[id="ns"] .x4t.even{padding-right:0px !important;margin-right:0px !important;}
-table[id="ns"] .tt td{padding-bottom:0 !important;}
-table[id="ns"] .na{padding-top:5px !important;}
-table[id="ns"] .x4{padding-top:20px !important;}
-table[id="ns"] .bx2 .cc{padding:15px 10px !important;}
-table[id="ns"] .bx2 .cc table:first-of-type td{padding-right:0px !important;padding-bottom:10px !important;}
-table[id="ns"] .ap td{padding-top:5px !important;padding-bottom:5px !important;}
-table[id="ns"] .dfi td, .mai td{padding-bottom:5px !important;}
-table[id="ns"] .bm{padding:0 10px !important;}
-table[id="ns"] .mia td{padding-right:0 !important;margin-left:-6px !important;margin-right:-5px !important;padding-bottom:15px !important;}
-table[id="ns"] .mai .description{height:70px !important;}
-table[id="ns"] .cw{margin-left:-15px !important;margin-right:-15px !important;padding-bottom:15px !important;}
-table[id="ns"] .yd{padding-bottom:10px !important;}
-table[id="ns"] .ait{width:252px !important;}
-table[id="ns"] .app-img{padding-right:0 !important;margin-left:-6px !important;margin-right:-5px !important;padding-bottom:15px !important;}
-table[id="ns"] .ap-img{padding-right:0 !important;}
-table[id="ns"] .bax{background-color:#32323a !important;color:#ffffff !important; }
-table[id="ns"] .blx{background-color:#1990db !important;color:#ffffff !important;}
-table[id="ns"] .gx{background-color:#73be00 !important;color:#ffffff !important;}
-table[id="ns"] .rx{background-color:#eb232d !important;color:#ffffff !important;}
-table[id="ns"] img.dvm{width:100% !important;}
-table[id="ns"] .ntx td{height:115px !important;}
-table[id="ns"] img[id="mastheadmobile"] {max-height: none !important;width: 280px !important;}
-table[id="ns"] img[id="mastheadmobiletrue"] {max-height: none !important;width: 300px !important;}
+But that's controlled by userspace, correct?
+
+> > the check will be accurate if userspace wants to have a functional guest,
+> > and at the very least checking KVM's memslots guarantees that the entire
+> > 2MiB range has been exposed to the guest.
+> 
+> I think just check the entrie 2MiB GFN range are all within KVM memslot is
+> enough.
+
+Strictly speaking, no.  E.g. if a 2MiB region is covered with multiple memslots
+and the memslots have different properties.
+
+> If for some reason, KVM maps a 2MiB range in 4K sizes, KVMGT can still map
+> it in IOMMU size in 2MiB size as long as the PFNs are continous and the
+> whole range is all exposed to guest.
+
+I agree that practically speaking this will hold true, but if KVMGT wants to honor
+KVM's memslots then checking that KVM allows a hugepage is correct.  Hrm, but on
+the flip side, KVMGT ignores read-only memslot flags, so KVMGT is already ignoring
+pieces of KVM's memslots.
+
+I have no objection to KVMGT defining its ABI such that KVMGT is allowed to create
+2MiB so long as (a) the GFN is contiguous according to VFIO, and (b) that the entire
+2MiB range is exposed to the guest.
+
+That said, being fully permissive also seems wasteful, e.g. KVM would need to
+explicitly support straddling multiple memslots.
+
+As a middle ground, what about tweaking kvm_page_track_is_valid_gfn() to take a
+range, and then checking that the range is contained in a single memslot?
+
+E.g. something like:
+
+bool kvm_page_track_is_contiguous_gfn_range(struct kvm *kvm, gfn_t gfn,
+					    unsigned long nr_pages)
+{
+	struct kvm_memory_slot *memslot;
+	bool ret;
+	int idx;
+
+	idx = srcu_read_lock(&kvm->srcu);
+	memslot = gfn_to_memslot(kvm, gfn);
+	ret = kvm_is_visible_memslot(memslot) &&
+	      gfn + nr_pages <= memslot->base_gfn + memslot->npages;
+	srcu_read_unlock(&kvm->srcu, idx);
+
+	return ret;
 }
-	</style> 
- </head> 
- <body bgcolor="#e5e5e5" style="background-color:#e5e5e5 !important"> 
-  <table bgcolor="#e5e5e5" border="0" cellpadding="0" cellspacing="0" id="ns" style="border-spacing:0px" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td style="width:50%"></td> 
-     <td> 
-      <table border="0" cellpadding="0" cellspacing="0" class="ct" style="border-spacing:0px" width="644"> 
-       <tbody style="-webkit-text-size-adjust:none;font-family:helvetica, arial, sans-serif"> 
-        <tr style="height:18px"> 
-         <td></td> 
-        </tr> 
-        <!-- HEADER --> 
-        <tr style="color:#e5e5e5"> 
-         <td bgcolor="#e5e5e5" style="background-color:#e5e5e5"> 
-          <div style="background-color:#e5e5e5;border-bottom-color:#cccccc;border-bottom-style:none;border-bottom-width:1px;border-left-color:#cccccc;border-left-style:none;border-left-width:1px;border-right-color:#cccccc;border-right-style:none;border-right-width:1px;border-top-color:#cccccc;border-top-style:none;border-top-width:1px"> 
-           <table class="ct" style="border-spacing:0px;width:640px"> 
-            <tbody> 
-             <tr> 
-              <td align="center" bgcolor="#ffffff" style="background-color:#e5e5e5;padding-bottom: 0px;padding-left:0;padding-right:0;padding-top:0px;"><strong style="color: #0067A0; font-size: 36px">SamsClub &lt;&gt;</strong></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> </td> 
-        </tr> 
-        <tr style="height:10px"> 
-         <td></td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- INTRO --> 
-      <table border="0" cellpadding="0" cellspacing="0" class="ct" style="border-spacing:0px" width="644"> 
-       <tbody style="-webkit-text-size-adjust:none;font-family:helvetica, arial, sans-serif"> 
-        <tr style="font-size:15px"> 
-         <td bgcolor="#ffffff" class="cc" style="background-color:#ffffff;border-left-color:#cccccc;border-left-style:solid;border-left-width:1px;border-right-color:#cccccc;border-right-style:solid;border-right-width:1px;border-top-color:#cccccc;border-top-style:solid;border-top-width:1px;padding-bottom:30px;padding-left:30px;padding-right:30px;padding-top:30px"> 
-          <div style="background-color:#ffffff;border-bottom-color:#cccccc;border-bottom-style:none;border-bottom-width:1px;border-left-color:#cccccc;border-left-style:none;border-left-width:1px;border-right-color:#cccccc;border-right-style:none;border-right-width:1px;border-top-color:#cccccc;border-top-style:none;border-top-width:1px;margin-bottom:0px"> 
-           <table style="border-spacing:0px;width:100%"> 
-            <tbody> 
-             <tr class="yd" style="color:#333333;padding-bottom:0px"> 
-             </tr> 
-             <tr> 
-              <td class="yd" style="color:#666666;font-size:14px;line-height:16px"> 
-               <div align="center" style="color: #b5b5b5;"> 
-                <h2 align="center" style="line-height: normal; font-size: 29px; color: #333"><font face="helvetica, arial, sans-serif">We value your feedback and appreciate your loyalty to SamsClub.</font></h2> 
-                <p style="font-size: 22px; line-height: normal; color: #999"><font face="helvetica, arial, sans-serif">That's why we want to invite you to participate in a brief survey about your shopping experience with us.</font></p> 
-                <font face="helvetica, arial, sans-serif"><a href="http://www.am-smsclubs.info/illiteracy-sounding/d145s2Y395wVr8612f4Q514m1094p36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ1dRmm5kR1z05h3qwD"><img alt="" src="http://www.am-smsclubs.info/2e14q2395e7aGT12E4516wY1094H36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ1dRmm5hT10Z6rJ0wDM/inductee-Weibull" width="100%" /></a> </font>
-               </div> <p style="font-size: 22px; line-height: normal; text-align: center"><font face="helvetica, arial, sans-serif">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a <strong>$100 SamsClub gift card</strong> to one lucky survey participant</font></p> <a href="http://www.am-smsclubs.info/illiteracy-sounding/d145s2Y395wVr8612f4Q514m1094p36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ1dRmm5kR1z05h3qwD" style="text-decoration: none"><span style="background-color: #0067A0; padding: 22px; display: block; margin: auto; max-width: 299px; text-align: center; color: #fff; font-size: 28px">Go And Start Now</span></a></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- END LINE --> 
-      <table border="0" cellpadding="0" cellspacing="0" class="ct" style="border-spacing:0px" width="644"> 
-       <tbody style="-webkit-text-size-adjust:none;font-family:helvetica, arial, sans-serif"> 
-        <tr style="font-size:0px"> 
-         <td bgcolor="#ffffff" class="cc" style="background-color:#ffffff;border-left-color:#cccccc;border-left-style:solid;border-left-width:1px;border-right-color:#cccccc;border-right-style:solid;border-right-width:1px;border-bottom-color:#cccccc;border-bottom-style:solid;border-bottom-width:1px"> 
-          <div style="background-color:#ffffff;border-bottom-color:#cccccc;border-bottom-style:none;border-bottom-width:1px;border-left-color:#cccccc;border-left-style:none;border-left-width:1px;border-right-color:#cccccc;border-right-style:none;border-right-width:1px;border-bottom-color:#cccccc;border-bottom-style:none;border-bottom-width:1px"> 
-           <table style="border-spacing:0px;width:100%"> 
-            <tbody> 
-             <tr class="yd" style="color:#333333"> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- FOOTER --> 
-      <table border="0" cellpadding="0" cellspacing="0" class="ct" style="border-spacing:0px" width="644"> 
-       <tbody style="-webkit-text-size-adjust:none;font-family:helvetica, arial, sans-serif">
-        <!-- FOOTER --> 
-        <tr style="height:10px"> 
-         <td></td> 
-        </tr> 
-        <tr style="font-size:15px"> 
-         <td align="center" bgcolor="#ffffff" style="background-color:#ffffff"> 
-          <div style="background-color:#ffffff;border-bottom-color:#cccccc;border-bottom-style:solid;border-bottom-width:1px;border-left-color:#cccccc;border-left-style:solid;border-left-width:1px;border-right-color:#cccccc;border-right-style:solid;border-right-width:1px;border-top-color:#cccccc;border-top-style:solid;border-top-width:1px"> 
-           <table border="0" cellpadding="0" cellspacing="0" class="s" style="border-spacing:0px" width="580"> 
-            <tbody> 
-             <tr> 
-              <td bgcolor="#ffffff" class="so" style="background-color:#ffffff;padding-top:10px" width="40%"><br /> <a href="http://www.am-smsclubs.info/illiteracy-sounding/d145s2Y395wVr8612f4Q514m1094p36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ1dRmm5kR1z05h3qwD"><img alt="" src="http://www.am-smsclubs.info/unambitious-incompleteness/c066A239FA5Lh7Ca11t4517h1094p36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ1dRmm6aO1Sr06dBJwXD" width="100%" /></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" class="s" style="border-spacing:0px" width="580"> 
-            <tbody> 
-             <tr> 
-              <td align="center" bgcolor="#ffffff" style="background-color:#ffffff;color:#999999;font-size:9px;padding-bottom:0px;padding-top:0px">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> </td> 
-        </tr> 
-        <tr style="height:18px"> 
-         <td align="center"> 
-          <div style="padding-top: 10%"> 
-           <div style="padding-top: 10%"> 
-            <div style="padding-top: 10%"> 
-             <div style="padding-top: 10%"> 
-              <div style="padding-top: 10%"> 
-               <div style="padding-top: 10%"> 
-                <div style="padding-top: 10%"> 
-                 <div style="padding-top: 10%"> 
-                  <div style="padding-top: 10%">
-                   To shut down your subscription,
-                   <a href="http://www.am-smsclubs.info/7eb4U2395c8Nk613i4s515PB1094w36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ1dRmm6I1gD0l6njlwAD/psychologically-bereave" style="text-decoration-line: none;"> <span>Visit-Here </span> </a>
-                   <br /> 126 E 23rd St New York, NY, US 10010
-                   <br /> 
-                   <br /> 
-                   <br /> <span><style size="untouchable"></span></style><style><style size="monkeyed"><style></style></style></style>
-                  </div> 
-                 </div> 
-                </div> 
-               </div> 
-              </div> 
-             </div> 
-            </div> 
-           </div> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td style="width:50%">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.am-smsclubs.info/perform-blasted/7564W2395cO85h11K4518p1094y36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ1dRmm5z1X_05F@2wD" alt=""/></body>
-</html>
 
-------=_Part_190_1556425826.1672779078109--
+> Actually normal device passthrough with VFIO-PCI also maps GFNs in a
+> similar way, i.e. maps a guest visible range in as large size as
+> possible as long as the PFN is continous. 
+> > 
+> > Note, KVM may also restrict the mapping size for reasons that aren't
+> > relevant to KVMGT, e.g. for KVM's iTLB multi-hit workaround or if the gfn
+> Will iTLB multi-hit affect DMA?
 
+I highly doubt it, I can't imagine an IOMMU would have a dedicated instruction
+TLB :-)
+
+> AFAIK, IOMMU mappings currently never sets exec bit (and I'm told this bit is
+> under discussion to be removed).
