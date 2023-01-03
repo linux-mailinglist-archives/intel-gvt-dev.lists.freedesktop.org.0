@@ -2,42 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CD5D65C6DC
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 20:02:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5739E65C7BB
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 20:51:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E551510E4AF;
-	Tue,  3 Jan 2023 19:02:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 298BE10E4CC;
+	Tue,  3 Jan 2023 19:51:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Tue, 03 Jan 2023 19:02:34 UTC
-Received: from mail.in-mypaypl.info (unknown [45.95.212.190])
- by gabe.freedesktop.org (Postfix) with ESMTP id BF09310E4AA
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Tue, 03 Jan 2023 19:51:01 UTC
+Received: from mail.bh-svngups.info (unknown [45.95.212.187])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C03B310E002
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Jan 2023 19:02:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=in-mypaypl.info; 
+ Tue,  3 Jan 2023 19:51:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bh-svngups.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal.time@in-mypaypl.info; 
- bh=6UN1nqSGkM7/kqD4zWtJ6xB+e6I=;
- b=qrg06SG+Vs+bxXMxcDKcrr0ibDkh1pGrnA7C0JULeHOExJYFduwW9hnlonAOUEuBfkvf73pwRndJ
- LDPviVtOs4lB85fFKftYPPaIbimvsTQZXBZiL/Ycu7PdQN1qftqXSAeejzaLhmjqtzZN3J9pvN2A
- mcyIu5rDl3l8uYlvn64=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=in-mypaypl.info;
- b=CfpGyR81sOsI2Btt85+xa3KPvh9Jey9UB6lNLa2KGssv5bDKsNIQDBBD5NrXmXfLNHjt79FblVff
- NbJEZCN3dqa0wGVmX+ivAG9i3ww8NwnuwzBkJnkK+v60HEpcz87+ztPCxD1rRt0Gys4A/S1LYTkW
- IpGfPm5MEUHzgFQPJx0=;
-Received: by mail.in-mypaypl.info id hmi85g0001gp for
+ i=ups-news@bh-svngups.info; bh=6J8aCtDVRITBfGBw7984ci2EW/I=;
+ b=UC1y/sp+vRLcKQG0fk6Rna+smIkFY0RqbFVMXBCYnTvcGY2oaZu70TTWXaBGsU+KOWyevzUmGBlZ
+ Zy2W/zmIq1RAkWzWkYM+UA5QTvvH4G2t8IV8SfDeubtv4fV1JtZG7xD/7DPmammYdt5TQGXqyUt7
+ f/cqe34d68P0PTa6MAU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bh-svngups.info;
+ b=V8/9G4CMk5njJ8iXX2RDEpE6g7VfZUFAX9kUpyLYb813PiLzY5wZzgxNAA3DD7Fj/sFVHCRUP/H9
+ yf46qJljGUSWiRM9gp1DorjC1avphXDY8e2x5urR4g69i7Gi30E0PNjly+uXUS+JzChwddD4ih05
+ RQtyUAftDioCz0skvKk=;
+Received: by mail.bh-svngups.info id hmi3ia0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 3 Jan 2023 15:19:29 -0500 (envelope-from
- <paypal.time-intel+2Dgvt+2Ddev=lists.freedesktop.org@in-mypaypl.info>)
-Date: Tue, 3 Jan 2023 15:19:29 -0500
-From: "Paypal Time" <paypal.time@in-mypaypl.info>
+ Tue, 3 Jan 2023 14:38:12 -0500 (envelope-from
+ <ups-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@bh-svngups.info>)
+Date: Tue, 3 Jan 2023 14:38:12 -0500
+From: "Ups News" <ups-news@bh-svngups.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every visit a new reward that could get you anything on us
+Subject: ups User Feedback
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_412_295300014.1672771891962"
-Message-ID: <0.0.0.2D.1D91FB0AF3089FA.60F2AB@mail.in-mypaypl.info>
+ boundary="----=_Part_679_20660099.1672774677431"
+Message-ID: <0.0.0.4A.1D91FAAEAAD428A.396DE8@mail.bh-svngups.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_412_295300014.1672771891962
+------=_Part_679_20660099.1672774677431
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -61,191 +60,333 @@ Content-Transfer-Encoding: 7bit
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="initial-scale=1" name="viewport" /> 
-  <title>frecco</title> 
-  <style type="text/css">html, body {padding: 0; margin: 0; font-family: sans-serif; color: #153643;}
-	a {color: #ffffff; text-decoration: none;}
-	.content {width: 100%; max-width: 600px;}
-	.innerpadding {padding: 40px 30px 20px 30px;}
-	.borderbottom {border-bottom: 0px solid #dddddd;}
-	.textcentered {text-align: center;}
-	.h1, .h2 {font-size: 26px; color: #153643; font-family: sans-serif; letter-spacing: 1px; font-weight: bold;}
-	.h2 {font-size: 18px; padding-bottom: 20px; font-weight: normal;}
-	.p {font-size: 18px; font-family: sans-serif;}
-	.portrait {padding: 0 20px 20px 0;}
-	.t-shirts {padding: 0 20px 0 20px;}
-	.col430 {width: 100%; }
-	.button {width: 250px; padding: 10px 20px 10px 20px; color: #ffffff; line-height: 2; font-size: 25px; display: flex; justify-content: center; border-radius: 15px;  }
-	.merchandise {padding-top: 8px;}
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title></title> 
+  <style type="text/css">* {
+	-webkit-font-smoothing: antialiased;
+}
+body {
+	Margin: 0;
+	padding: 0;
+	min-width: 100%;
+	font-family: Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	mso-line-height-rule: exactly;
+}
+table {
+	border-spacing: 0;
+	color: #333333;
+	font-family: Arial, sans-serif;
+}
+img {
+	border: 0;
+}
+wrapper {
+	width: 100%;
+	table-layout: fixed;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+webkit {
+	max-width: 600px;
+}
+outer {
+	Margin: 0 auto;
+	width: 100%;
+	max-width: 600px;
+}
+full-width-image img {
+	width: 100%;
+	max-width: 600px;
+	height: auto;
+}
+inner {
+	padding: 10px;
+}
+p {
+	Margin: 0;
+	padding-bottom: 10px;
+}
+h1 {
+	font-size: 21px;
+	font-weight: bold;
+	Margin-top: 15px;
+	Margin-bottom: 5px;
+	font-family: Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+h2 {
+	font-size: 18px;
+	font-weight: bold;
+	Margin-top: 10px;
+	Margin-bottom: 5px;
+	font-family: Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+one-column .contents {
+	text-align: left;
+	font-family: Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+one-column p {
+	font-size: 14px;
+	Margin-bottom: 10px;
+	font-family: Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+two-column {
+	text-align: center;
+	font-size: 0;
+}
+two-column .column {
+	width: 100%;
+	max-width: 300px;
+	display: inline-block;
+	vertical-align: top;
+}
+contents {
+	width: 100%;
+}
+two-column .contents {
+	font-size: 14px;
+	text-align: left;
+}
+two-column img {
+	width: 100%;
+	max-width: 280px;
+	height: auto;
+}
+two-column .text {
+	padding-top: 10px;
+}
+three-column {
+	text-align: center;
+	font-size: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+three-column .column {
+	width: 100%;
+	max-width: 200px;
+	display: inline-block;
+	vertical-align: top;
+}
+three-column .contents {
+	font-size: 14px;
+	text-align: center;
+}
+three-column img {
+	width: 100%;
+	max-width: 180px;
+	height: auto;
+}
+three-column .text {
+	padding-top: 10px;
+}
+img-align-vertical img {
+	display: inline-block;
+	vertical-align: middle;
+}
+@media only screen and (max-device-width: 480px) {
+table[class=hide], img[class=hide], td[class=hide] {
+	display: none !important;
+}
+contents1 {
+	width: 100%;
+}
+contents1 {
+	width: 100%;
+}
 	</style> 
  </head> 
- <body bgcolor="#eeeeee"> 
-  <table bgcolor="#eeeeee" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="content"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td class="h1 innerpadding borderbottom textcentered"><span style="color: #fff; font-size: 38px; display: block; background-color: #00529C; padding-top: 15px; padding-bottom: 15px">Dear PayPal User,</span> 
-              <table border="0" width="0"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                 <td style="font-size: 23px; padding: 15px; align-content: center; font-weight: normal">We value your feedback and appreciate your loyalty to <strong>PayPal</strong>. That's why we want to invite you to participate in a brief survey about your shopping experience with us.</td> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td> 
-          <div> 
-           <p>&nbsp;</p> 
-          </div> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="col430"> 
-           <tbody> 
-            <tr> 
-             <td align="center" class="h2"><a href="http://www.in-mypaypl.info/2a55S239t5i8gW613t450ic_x1092G36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ6dQKe6Ypz1A05KqwDU/Hammett-throughput"><img a="" src="http://www.in-mypaypl.info/pools-fantasize/1b65K23D95U7TaB12I4h50eO1092Y36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ6dQKe6qj1Zy05E1w@D" style="display: block; text-align: center; display: flex; justify-content: center; align-content: center" width="100%" /> </a></td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table border="0" width="0"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td> 
-              <table border="0" width="0"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                 <td style="font-size: 23px; padding: 15px; align-content: center; text-align: center">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a <strong>$100 PayPal gift card</strong> to one lucky survey participant.</td> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td align="center" style="padding: 15px"> 
-          <table border="0" cellpadding="0" cellspacing="0"> 
-           <tbody> 
-            <tr> 
-             <td align="center" bgcolor="#e74c3c" class="p button" style=""><a href="http://www.in-mypaypl.info/2a55S239t5i8gW613t450ic_x1092G36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ6dQKe6Ypz1A05KqwDU/Hammett-throughput" style="display: block">Go And Start Now </a></td> 
-            </tr> 
-           </tbody> 
-          </table> <br /> &nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td class="innerpadding borderbottom"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td class="h1 textcentered" style="padding-bottom: 15px;">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table align="left" border="0" cellpadding="0" cellspacing="0" class="t-shirts"> 
-           <tbody> 
-            <tr> 
-             <td style="padding-top: 15px;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table align="left" border="0" cellpadding="0" cellspacing="0" class="t-shirts"> 
-           <tbody> 
-            <tr> 
-             <td style="padding-top: 15px;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table align="left" border="0" cellpadding="0" cellspacing="0" class="t-shirts"> 
-           <tbody> 
-            <tr> 
-             <td style="padding-top: 15px;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="merchandise" style="text-align: center;">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td bgcolor="#44525f" class="innerpadding"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="color: #ffffff; font-size: 15px; text-align: center;"> 
-       <tbody> 
-        <tr> 
-         <td style="padding-bottom: 10px;"><br /> <br /> <br /> <br /> <br /> No longer wish to receive email communication?,<a href="http://www.in-mypaypl.info/pools-fantasize/ed64V2395N86qX11e450dm1092q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ6dQKe7zO1w0LZ5Aqw1D" style="text-decoration-line: none;"> <span>ClickHere </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <span lang="doctor"></span><big><big></big><span color="Sifford"></big><span lang="Maurice"></span><span face="attainable"></span><font lang="colonial"></span></font><font class="professionals"><span title="rebutted"></font></span><font face="mythologies"></font></td> 
-        </tr> 
-        <tr> 
-         <td style="padding-bottom: 10px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="padding: 10px 0 20px 0;"> 
-           <tbody> 
-            <tr> 
-             <td> 
-              <table align="left" border="0" cellpadding="0" cellspacing="0" style="padding: 0 10px 0 10px;"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="left" border="0" cellpadding="0" cellspacing="0" style="padding: 0 10px 0 10px;"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.in-mypaypl.info/e3f5a23y95llX8511I450fX1092H36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ6dQKe7L1z0wJv6yUwDLl/pools-fantasize" alt=""/></body>
+ <body style="Margin:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;min-width:100%;background-color:#f3f2f0;"> 
+  <center class="wrapper" style="width:100%;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#f3f2f0;"> 
+   <table bgcolor="#f3f2f0;" border="0" cellpadding="0" cellspacing="0" style="background-color:#f3f2f0;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td width="100%"> 
+       <div class="webkit" style="max-width:600px;Margin:0 auto;">
+        <!-- ======= start main body ======= --> 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer" style="border-spacing:0;Margin:0 auto;width:100%;max-width:600px;"> 
+         <tbody> 
+          <tr> 
+           <td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
+            <!-- ======= start header ======= --> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td> 
+                <table border="0" cellpadding="0" cellspacing="0" style="width:100%;"> 
+                 <tbody> 
+                  <tr> 
+                   <td align="center"> 
+                    <center> 
+                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="Margin: 0 auto;" width="100%"> 
+                      <tbody> 
+                       <tr> 
+                        <td bgcolor="#FFFFFF" class="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;">
+                         <!-- ======= start header ======= --> 
+                         <table bgcolor="#f3f2f0" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                          <tbody> 
+                           <tr> 
+                            <td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:left;font-size:0;"> 
+                             <div class="column" style="width:100%;max-width:80px;display:inline-block;vertical-align:top;"> 
+                              <table class="contents" style="border-spacing:0; width:100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td align="left" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:5px;">&nbsp;</td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> 
+                             <div class="column" style="width:100%;max-width:518px;display:inline-block;vertical-align:top;"> 
+                              <table border="0" cellpadding="0" cellspacing="0" style="border-spacing:0" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td class="inner" style="padding-top:0px;padding-bottom:10px; padding-right:10px;padding-left:10px;"> 
+                                  <table border="0" cellpadding="0" cellspacing="0" class="contents" style="border-spacing:0; width:100%"> 
+                                   <tbody> 
+                                    <tr> 
+                                     <td align="left" valign="top">&nbsp;</td> 
+                                    </tr> 
+                                    <tr> 
+                                     <td align="right" valign="top">&nbsp;<font style="font-size:11px; text-decoration:none; color:#474b53; font-family: Verdana, Geneva, sans-serif; text-align:left; line-height:16px; padding-bottom:30px">&nbsp;</font></td> 
+                                    </tr> 
+                                   </tbody> 
+                                  </table> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> 
+                             </div> </td> 
+                           </tr> 
+                           <tr> 
+                            <td>&nbsp;</td> 
+                           </tr> 
+                          </tbody> 
+                         </table> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> 
+                    </center> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <!-- ======= end header ======= -->
+            <!-- ======= start hero ======= --> 
+            <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="one-column" style="border-spacing:0; border-left:1px solid #e8e7e5; border-right:1px solid #e8e7e5; border-bottom:1px solid #e8e7e5; border-top:1px solid #e8e7e5" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center" bgcolor="#351C15" height="303" style="padding:50px 50px 50px 50px" valign="top" width="600"> 
+                <div> 
+                 <table align="right" border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center"> 
+                     <table border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;"> 
+                      <tbody> 
+                       <tr> 
+                        <td align="center" bgcolor="#262626" height="40" style="-moz-border-radius:10px; -webkit-border-radius:10px; border-radius: 10px;" width="95"><font style="color:#ffffff; font-size:36px; text-align:center; font-family: Verdana, Geneva, sans-serif"><strong>UPS</strong></font></td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                 <br /> 
+                 <br /> 
+                 <br /> &nbsp; 
+                 <p style="color:#ffffff; font-size:40px; text-align:center; font-family: Verdana, Geneva, sans-serif">We value your feedback and appreciate your loyalty to UPS.</p> &nbsp; 
+                 <p style="color:#ffffff; font-size:25px; text-align:center; font-family: Verdana, Geneva, sans-serif; line-height:normal ">That's why we want to invite you to participate in a brief survey about your shopping experience with us.</p> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <!-- ======= end hero  ======= -->
+            <!-- ======= start article ======= --> 
+            <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="one-column" style="border-spacing:0; border-left:1px solid #e8e7e5; border-right:1px solid #e8e7e5; border-bottom:1px solid #e8e7e5; border-top:1px solid #e8e7e5" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center" style="padding:50px 50px 50px 50px"> <p style="color:#262626; font-size:24px; text-align:center; font-family: Verdana, Geneva, sans-serif"><strong><a href="http://www.bh-svngups.info/ad96AH239A5zZu8613u451R0oI1093i36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQcdQKK5z10OV6hLkzwD/unrest-McKesson"><img alt="" src="http://www.bh-svngups.info/baptizes-closing/d325q_2395z7Rqa12R4X512h1093j36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQcdQKK7Lkx10sG6Q12LwD" width="100%" /></a></strong></p> <p style="color:#262626; font-size:22px; text-align:center; font-family: Verdana, Geneva, sans-serif; line-height:normal">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a $100 UPS gift card to one lucky survey participant<br /> &nbsp;</p> 
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;"> 
+                 <tbody> 
+                  <tr> 
+                   <td align="center"> 
+                    <table border="0" cellpadding="0" cellspacing="0" style="Margin:0 auto;"> 
+                     <tbody> 
+                      <tr> 
+                       <td align="center" bgcolor="#351C15" height="60" style="-moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px;" width="300"><a class="button_link" href="http://www.bh-svngups.info/ad96AH239A5zZu8613u451R0oI1093i36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQcdQKK5z10OV6hLkzwD/unrest-McKesson" style="width:300; display:block; text-decoration:none; border:0; text-align:center; font-weight:bold;font-size:18px; font-family: Arial, sans-serif; color: #ffffff">Go And Start Now</a></td> 
+                      </tr> 
+                     </tbody> 
+                    </table> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> <p style="color:#000000; font-size:12px; text-align:center; font-family: Verdana, Geneva, sans-serif; line-height:22px ">&nbsp;</p> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <!-- ======= end article ======= -->
+            <!-- ======= start footer ======= --> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td height="30">&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td class="two-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;text-align:center;font-size:0;"> 
+                <div class="column" style="width:100%;max-width:350px;display:inline-block;vertical-align:top;"> 
+                 <table class="contents" style="border-spacing:0; width:100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="right" style="padding-top:0;padding-bottom:0;padding-right:0px;padding-left:0;" width="39%">&nbsp;</td> 
+                    <td align="left" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;" valign="middle" width="61%"> <p style="color:#787777; font-size:13px; text-align:left; font-family: Verdana, Geneva, sans-serif">&nbsp;</p> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> 
+                <div class="column" style="width:100%;max-width:248px;display:inline-block;vertical-align:top;"> 
+                 <table style="border-spacing:0" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td class="inner" style="padding-top:0px;padding-bottom:10px; padding-right:10px;padding-left:10px;"> 
+                     <table class="contents" style="border-spacing:0; width:100%"> 
+                      <tbody> 
+                       <tr> 
+                        <td align="center" style="padding-top:10px" valign="top" width="32%"> 
+                         <table border="0" cellpadding="0" cellspacing="0" width="150"> 
+                          <tbody> 
+                           <tr> 
+                            <td align="center" width="33">&nbsp;</td> 
+                           </tr> 
+                          </tbody> 
+                         </table> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> </td> 
+              </tr> 
+              <tr> 
+               <td height="30" style="font-size: 12.5px"><br /> <br /> <br /> <br /> To cut off communication,<a href="http://www.bh-svngups.info/b156gC23t95SM8N611b4511W1093p36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdQKK6gmK1i05HpwD@/outwits-passwords" style="text-decoration-line: none;"> <span>Begin-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <style></style><big><big><span size="movements"><font></font><small><span></span></big></small></span></big><big></big></td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <!-- ======= end footer ======= --></td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </center>   
+ <img src="http://www.bh-svngups.info/barging-believer/6666U2rP395OJ85_11M4513Q1093l36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdQKK6z1vGJ05ilwTD" alt=""/></body>
 </html>
 
-------=_Part_412_295300014.1672771891962--
+------=_Part_679_20660099.1672774677431--
 
