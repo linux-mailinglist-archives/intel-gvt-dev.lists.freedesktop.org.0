@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FBCA65C132
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 14:53:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA8D865C5D2
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Jan 2023 19:12:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ED72E10E3CF;
-	Tue,  3 Jan 2023 13:53:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6B52F10E401;
+	Tue,  3 Jan 2023 18:12:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Tue, 03 Jan 2023 13:53:54 UTC
-Received: from mail.olt-sheetop.info (unknown [45.95.212.184])
- by gabe.freedesktop.org (Postfix) with ESMTP id 541C310E267
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Tue, 03 Jan 2023 18:12:52 UTC
+Received: from mail.at-krgershp.info (unknown [45.95.212.185])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2D13A10E3FE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Jan 2023 13:53:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=olt-sheetop.info;
+ Tue,  3 Jan 2023 18:12:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=at-krgershp.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=shopmiraclebrandco-partner@olt-sheetop.info; 
- bh=frgJdd5ZzfYnC0lR/UQZ6hWoDaQ=;
- b=NE+hbmpRHCRtJ+6h65clgA+9u5FR6HXowbehOO38sK89Vrl0ZM1b77K59aD3i3d4zyXzpmWrEvN0
- s+0fDt9YQaKA3IRFXfIc5EkmFYbtoCeNyp0WX8duNKO1wsL8hkmFe/OOY4yyvzGP43YBiqlWXrV/
- cWGjMrH05WIMasiTz4A=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=olt-sheetop.info;
- b=kCFJC5IXpwTG29Yb13iGrUIZihqPUXnolzCfc1lKNOdFkzr+cHW4iCQIE7iQlwnG15dID/jaj4wq
- Hxp68/rGXgU5J+X88rDzV7b9+z0M8kSnbnXvr+S+42pOTyYnv80wGHAJWHs0C2zXOoS1GH+GxtvJ
- FEzs4E2AgUC339ANdJI=;
-Received: by mail.olt-sheetop.info id hmh4000001g3 for
+ i=kroger_appreciation@at-krgershp.info; 
+ bh=/3onaBN8+1ydQNwVcvQngHdprOA=;
+ b=iq0xgEs21Dd+gxsQrVWnzsXhouqgipSqP4qRtdA8NDtxgCv6nkEkwRF0fuWrxUxvHZ9YLbRq8UhH
+ EDR9YfJjRvLQFMtnZAG7sFs3EEwMDp/vb9o8OA6m/fESB1SCDVq3wYLmBmqlv0SgXcvDb39cEuty
+ afFV2DqdruYnPcWS0Ko=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=at-krgershp.info;
+ b=kKLQxtao+apYnT6CZ0W1oAdMnqYluqtM9Knk7YP4eKV8om/SwOhyz6Yq9ZxyidY9o4AkchJFyRo5
+ xufLcBQ9YoJsSwKUSf/eoTYbu4D+HPVpAyxfTfFzyHuGmniufxfW6XErzbMxho3qcn72+c9Nbj4J
+ GOknMK8hBDrkzC/Vsgw=;
+Received: by mail.at-krgershp.info id hmho280001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 3 Jan 2023 10:09:41 -0500 (envelope-from
- <shopmiraclebrandco-partner-intel+2Dgvt+2Ddev=lists.freedesktop.org@olt-sheetop.info>)
-Date: Tue, 3 Jan 2023 10:09:41 -0500
-From: "Shopmiraclebrand.co Partner"
- <shopmiraclebrandco-partner@olt-sheetop.info>
+ Tue, 3 Jan 2023 12:57:17 -0500 (envelope-from
+ <kroger_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@at-krgershp.info>)
+Date: Tue, 3 Jan 2023 12:57:17 -0500
+From: "Kroger Appreciation" <kroger_appreciation@at-krgershp.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: These Sheets Are Self-Cleaning And Cooling
+Subject: Kroger reward is just a few clicks away - While supplies last
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_655_1454247944.1672753277641"
-Message-ID: <0.0.0.48.1D91F8567D94D42.32E28F@mail.olt-sheetop.info>
+ boundary="----=_Part_472_1785374934.1672768603723"
+Message-ID: <0.0.0.34.1D91F9CD14477F4.2BB25C@mail.at-krgershp.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,209 +53,189 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_655_1454247944.1672753277641
+------=_Part_472_1785374934.1672768603723
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
  <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="ie=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="text/html charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.olt-sheetop.info/preview-ailerons/cf64y2395y8C6Q13t45K02KY1090t36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQcdQKR6e1LX0t5S1wDP" rel="icon" sizes="16x16" type="image/png" /> 
-  <title>Gomble- Web- Play</title> 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&amp;display=swap" rel="stylesheet" /> 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&amp;display=swap" rel="stylesheet" /> 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet" /> 
-  <style type="text/css">* {
-      box-sizing: border-box;
-      margin: 0 auto;
+  <title>dorfensmidth</title> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <style type="text/css">/* FONTS */
+    @media screen {
+		@font-face {
+		  font-family: 'SharpSans';
+		  font-style: normal;
+		  font-weight: 400;
+		  src: local('SharpSans Medium'), local('SharpSans-Medium'), url(https://p3.zdassets.com/hc/theme_assets/707950/115000099625/SharpSansNo1-Medium.woff) format('woff');
+		}
+
+		@font-face {
+		  font-family: 'SharpSans';
+		  font-style: normal;
+		  font-weight: 700;
+		  src: local('SharpSans SemiBold'), local('SharpSans-SemiBold'), url(https://p3.zdassets.com/hc/theme_assets/707950/115000099625/SharpSansNo1-Semibold.woff) format('woff');
+		}
+
+		@font-face {
+		  font-family: 'SharpSans';
+		  font-style: italic;
+		  font-weight: 400;
+		  src: local('SharpSans Medium Italic'), local('SharpSans-MediumItalic'), url(https://p3.zdassets.com/hc/theme_assets/707950/115000099625/SharpSansNo1-MediumItalic.woff) format('woff');
+		}
+
+		@font-face {
+		  font-family: 'SharpSans';
+		  font-style: italic;
+		  font-weight: 700;
+		  src: local('SharpSans SemiBold Italic'), local('SharpSans-SemiBoldItalic'), url(https://p3.zdassets.com/hc/theme_assets/707950/115000099625/SharpSansNo1-SemiboldItalic.woff) format('woff');
+		}
     }
 
-    body {
-      margin: 0px;
-      padding: 0px;
-      background: white;
+    /* CLIENT-SPECIFIC STYLES */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; }
+
+    /* RESET STYLES */
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
     }
 
-    @media (max-width: 484px) {
-      .main {
-        width: 95% !important;
-      }
+	/* MOBILE STYLES */
+	@media screen and (max-width:600px){
+		h1 {
+			font-size: 32px !important;
+			line-height: 32px !important;
+		}
+	}
 
-      .invitaion-image__con {
-        width: 80% !important;
-      }
-
-      tr {
-        margin: auto;
-      }
-    }
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
 	</style> 
  </head> 
- <body style="background:#f5f7fa"> 
-  <table border="0" cellpadding="8" cellspacing="0" class="main" width="600"> 
+ <body style="background-color: #F3F0EE; margin: 0 !important; padding: 0 !important;">
+  <!-- HIDDEN PREHEADER TEXT --> 
+  <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'SharpSans', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+   &nbsp;
+  </div> 
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+   <!-- LOGO --> 
    <tbody> 
-    <tr cellpadding="0" cellspacing="0" class="space"> 
-     <td align="center" cellpadding="0" cellspacing="0" style="border-bottom: 1.5px solid #f5f7fa;" valign="middle">&nbsp;</td> 
-    </tr> 
-    <tr class="before-header "> 
-     <td align="center" valign="middle"> 
-      <table border="0" cellpadding="8" cellspacing="0" width="100%"> 
+    <tr> 
+     <td align="center" bgcolor="#F3F0EE"> 
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
        <tbody> 
         <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr class="header"> 
-     <td align="center" style="background: #fff;border-radius: 15px 15px 0px 0;border-bottom: 1.5px solid #f5f7fa;" valign="middle"> 
-      <table border="0" cellpadding="0" cellspacing="0" class="invitaion-image__con" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" cellpadding="0" valign="middle"><a href="http://www.olt-sheetop.info/af76J239Vr5FII8613eTX4503w1090y36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdQKR5RR1B06gqkw0D/soothe-joked"><img alt="" border="0" src="http://www.olt-sheetop.info/3d14B2395E7aZs12c45V05n1090o36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQcdQKR6X1LpB06NlkzwD/interlisp-yelling" style="display:block; width: 100%; max-width: 100%; border-top-right-radius: 7px; border-top-left-radius: 7px" /></a> <h2 style=" font-family: 'Inter', sans-serif; margin: 0;color: #242424; max-width: 350px; font-weight: 700;border-radius: 5px 0;font-size: 20px;">&nbsp;</h2> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr class="body"> 
-     <td align="center" style="background: #fff" valign="middle"> 
-      <table border="0" cellpadding="25" cellspacing="0" width="92%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" valign="middle"> <h4 style=" font-family: 'Inter', sans-serif; margin: 0;color: #242424; max-width: 350px; ; font-weight: 600;font-size: 34px;">Say Goodbye To Dirty Sheets This Christmas</h4> </td> 
+         <td align="center" style="padding: 0px 0px 0px 0px; color: #F3F0EE;" valign="top">delimiter</td> 
         </tr> 
        </tbody> 
       </table> 
-      <table border="0" cellpadding="3" cellspacing="0" width="92%"> 
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
        <tbody> 
         <tr> 
-         <td align="center" valign="middle"><a href="http://www.olt-sheetop.info/af76J239Vr5FII8613eTX4503w1090y36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdQKR5RR1B06gqkw0D/soothe-joked"><img alt="" src="http://www.olt-sheetop.info/ruffle-relieves/4fe6zDm2395hw7aH12w45B06M1090r36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQcdQKR6L1WMS05s1wDp" style="width: 100%" width="100%" /></a> <p style="font-family: 'Inter', sans-serif; margin: 0;color: #242424;  line-height: normal;font-size: 24px;font-weight: 400; text-align: center;">Are you tired of washing your sheets just for them to get smelly and dirty again? it's time to say goddbye to sweaty sleepless nights!</p> </td> 
+         <td align="center" style="padding: 10px 10px 10px 10px;" valign="top">&nbsp;</td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
-    <tr class="verify-btn"> 
-     <td align="center" bgcolor="#fff" valign="middle"> 
-      <table border="0" cellpadding="5" cellspacing="0" width="75%"> 
+    <!-- HERO --> 
+    <tr> 
+     <td align="center" bgcolor="#F3F0EE" style="padding: 0px 10px 0px 10px;"> 
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
        <tbody> 
         <tr> 
-         <td> 
-          <table bgcolor="#FC68A2" border="0" borderspacing="0" cellpadding="8" cellspacing="0" style="border-radius: 10px;" width="88%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" valign="middle"> <h4 style=" font-family: 'Inter', sans-serif; color: #FFFFFF; letter-spacing: 2px; line-height: 38px;font-size: 18px;font-weight: 600;text-align: center;"><a href="http://www.olt-sheetop.info/af76J239Vr5FII8613eTX4503w1090y36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdQKR5RR1B06gqkw0D/soothe-joked" style="text-decoration: none; color: WHITE">BUY MIRACLE SHEETS NOW </a></h4> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
+         <td align="center" bgcolor="#418FE1" style="padding: 20px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #FFFFFF; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; letter-spacing: 1px; line-height: 24px;" valign="top"> <p style="font-size: 18px; font-weight: 400; margin: 0; font-size: 29px; font-weight: bold">Dear Kroger Customer,</p> </td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
-    <tr class="browse-links"> 
-     <td align="center" style="background: #fff;background: #fff;border-radius: 0px 0px 20px 20px;" valign="middle"> 
-      <table border="0" cellpadding="10" cellspacing="0" width=""> 
+    <!-- COPY BLOCK --> 
+    <tr> 
+     <td align="center" bgcolor="#F3F0EE" style="padding: 0px 10px 0px 10px;"> 
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%">
+       <!-- COPY --> 
        <tbody> 
         <tr> 
-         <td align="center" valign="middle"> <p style="font-family: 'Inter', sans-serif; margin: 0;color: #242424; max-width: 350px; line-height: 24px;font-size: 22px; text-align: center;">30 DAYS MONEY BACK GUARANTEE&nbsp;!</p> <p td="">&nbsp;</p> </td> 
+         <td align="left" bgcolor="#ffffff" style="padding: 20px 30px 40px 30px; color: #404040; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 16px;"> <p align="center" style="font-size: 24px; line-height: normal">We value your feedback and appreciate your loyalty to Kroger. That's why we want to invite you to participate in a brief survey about your shopping experience with us.</p> <a href="http://www.at-krgershp.info/unlinked-unrealistic/7744Q2395ek86U12Wx4508M1091v36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQUdQKS7Px1LJ0n5lJwDJ"><img alt="" src="http://www.at-krgershp.info/mutative-vexing/eI45q23C95hw7Ka13M450aRkO1091W36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQUdQKS5qCF105QTwND" style="max-width: 600px" width="100%" /></a></td> 
         </tr> 
-       </tbody> 
-      </table> 
-      <table cellpadding="7"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
+        <!-- COPY --> 
        </tbody> 
       </table> </td> 
     </tr> 
-    <tr class="space"> 
-     <td align="center" valign="middle"> 
-      <table cellpadding="3" cellspacing="0"> 
+    <!-- COPY CALLOUT --> 
+    <tr> 
+     <td align="center" bgcolor="#F3F0EE" style="padding: 0px 10px 0px 10px;"> 
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%">
+       <!-- HEADLINE --> 
        <tbody> 
         <tr> 
-         <td align="center" style="border-bottom: 1.5px solid #f5f7fa;" valign="middle">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr class="help-team"> 
-     <td align="center" style="background: #fff;border-radius: 15px 15px 0px 0px;border-bottom: 1.5px solid #f5f7fa;" valign="middle"> 
-      <table border="0" cellpadding="8" cellspacing="0" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" valign="middle"> 
+         <td align="left" bgcolor="#03363D" style="padding: 30px 30px 20px 30px; color: #ffffff; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 20px;"> <p align="center" style="font-size: 24px; line-height: normal">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a <strong>$100 Kroger gift card</strong> to one lucky survey participant.</p> 
           <table cellpadding="1" cellspacing="1" width="100%"> 
            <tbody> 
             <tr> 
              <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
+             <td> 
+              <div style="background-color: #428FE1; border-radius: 5px; padding: 20px; text-align: center; font-size: 35px">
+               <a href="http://www.at-krgershp.info/unlinked-unrealistic/7744Q2395ek86U12Wx4508M1091v36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQUdQKS7Px1LJ0n5lJwDJ" style="text-decoration: none; color: white"><strong>Go and start now</strong></a>
+              </div> </td> 
              <td>&nbsp;</td> 
             </tr> 
            </tbody> 
           </table> </td> 
         </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr class="social-links"> 
-     <td align="center" style="background: #fff;border-radius: 0px 0px 15px 15px;line-height: 40px;" valign="middle"> 
-      <table cellpadding="4"> 
-       <tbody> 
+        <!-- COPY --> 
         <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> &nbsp; 
-      <table border="0" cellpadding="10" cellspacing="0" width="100%"> 
-      </table> </td> 
-    </tr> 
-    <tr class="copyright"> 
-     <td align="center" valign="middle"> 
-      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" valign="middle">&nbsp; <p style="font-family: 'Inter', sans-serif; margin: 0;color: #242424; max-width: 350px; line-height: 48px;font-size: 12px; text-align: center;">To halt communications,<a href="http://www.olt-sheetop.info/ruffle-codifying/7ce5Xw2395f8W6W11N4504o1090z36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcdQKR7f1Q_ih06gyTwzD" style="text-decoration-line: none;"> <span>Continue Ahead </span> </a><br /> 1501 Haines St. | Jacksonville, FL 32206</p> </td> 
+         <td align="left" bgcolor="#03363D" style="padding: 0px 30px 20px 30px; color: #F3F0EE; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 20px; border-radius: 0px 0px 4px 4px;"> <p style="margin: 0;">&nbsp;</p> </td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
-    <tr class="space"> 
-     <td align="center" valign="middle"> 
-      <table border="0" cellpadding="8" cellspacing="0" width="100%"> 
+    <!-- SUPPORT CALLOUT --> 
+    <tr> 
+     <td align="center" bgcolor="#F3F0EE" style="padding: 30px 10px 0px 10px;"> 
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%">
+       <!-- HEADLINE --> 
        <tbody> 
         <tr> 
-         <td align="center" valign="middle">&nbsp;</td> 
+         <td align="center" bgcolor="#dedede" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <!-- FOOTER --> 
+    <tr> 
+     <td align="center" bgcolor="#F3F0EE" style="padding: 0px 10px 0px 10px;"> 
+      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%">
+       <!-- PERMISSION REMINDER --> 
+       <tbody> 
+        <tr> 
+         <td align="left" bgcolor="#F3F0EE" style="padding: 30px 30px 30px 30px; color: #666666; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;"> <p align="center" style="margin: 0;">To put an end to communications,<a href="http://www.at-krgershp.info/interdependent-pseudoinstruction/abc5O2Y395ROD8612u45i09V1091A36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQUdQKS5R1Fr05ULAwD" style="text-decoration-line: none;"> <span>Visit-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <span style="holes"></span><font class="paralyzed"></font><font class="anthracite"><big></big><font color="adducible"></font></font><style></style></p> </td> 
+        </tr> 
+        <!-- ADDRESS --> 
+        <tr> 
+         <td align="left" bgcolor="#F3F0EE" style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'SharpSans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;">&nbsp;</td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.olt-sheetop.info/interlisp-yelling/3004M2395lRi8513v4507LGR1090Y36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQcdQKR5bS10Y6rp1wDB" alt=""/></body>
+ <img src="http://www.at-krgershp.info/reluctant-reload/9ea5XI2395o8Rl512X45t0bA1091K36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQUdQKS5C1vK05sLwDX" alt=""/></body>
 </html>
 
-------=_Part_655_1454247944.1672753277641--
+------=_Part_472_1785374934.1672768603723--
 
