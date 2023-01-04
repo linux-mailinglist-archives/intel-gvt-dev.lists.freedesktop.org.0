@@ -1,49 +1,49 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39B4A65DD21
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Jan 2023 20:53:14 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C28465DD22
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Jan 2023 20:53:15 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F139C10E073;
-	Wed,  4 Jan 2023 19:53:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 039C610E090;
+	Wed,  4 Jan 2023 19:53:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9996510E073
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1DA5810E090
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  4 Jan 2023 19:53:11 +0000 (UTC)
+ Wed,  4 Jan 2023 19:53:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1672861991; x=1704397991;
+ t=1672861992; x=1704397992;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=V03KAXXJm5pWBl5xlwo5Xd2/1wsKpr3yYlIai9nEK2c=;
- b=g2uEhTcPmLbPfV/D/A4y2EZ5SMl+rQpb2stfOck5+GCnWalKwrVFKwKa
- nwbpM+X1yEiU6QDZ+ZTwSDAECDSdVBb/AdC2U5yk6Gi+DFCXcttRzPQsT
- 01K5XStBCaE0VuXnrKlH0PnHQT9RpksWXNBYpBiuFk55Dt6g0RpungdtR
- pxQatEVbGiXwj/cFdIgJY4MgbXjlTjv+POej2oSA/BKgxKEZlk/+pYrHd
- G+M6GrfRg+xgVfie0s+ub2ZmUNSI7sSQmyeh7imJfxFo59jv8zTOYVQ+l
- 7LFolTutDC6/uh43uE4P0gHuT6GueSjqmCad8Yp4AOfo/IcLnNpZudPt5 g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10580"; a="305530885"
-X-IronPort-AV: E=Sophos;i="5.96,300,1665471600"; d="scan'208";a="305530885"
+ bh=DT+dLRVMyQVO80WFakrNgTfWR6yRKeKp3nEDZJo0bvE=;
+ b=Bc7prm7U1MHlnaHRi4l7R68jZ0VlBudILJ0ojO4J4dozw9z6CGtD00xd
+ GcTrxebjGIChv2pFsDbX1QysW7ZO+84UH+CSQQcSzXAcdVpXRJwKlJElC
+ XQKKyueadDGimCODWGkTIeXnuqrarIiJRS09iLNBaZH7i0/XGf+XNSLBP
+ zu0IbHEyo6XYly+bCEiwmmVSe+ct/Nvc2gEGmlemM+LTBd94lEeGRcVjO
+ SkiH7nEn4EMfS4yK3P1ZCh2L1BaHlXaHI+24M+GKZmIvinRS+6PFogk3o
+ c5DjNgMQDnGZtkhBAXBitvHORJK4pYsbS0LhnC1MF0iFbajWiECBF/mYY A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10580"; a="305530887"
+X-IronPort-AV: E=Sophos;i="5.96,300,1665471600"; d="scan'208";a="305530887"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  04 Jan 2023 11:53:10 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10580"; a="723775308"
-X-IronPort-AV: E=Sophos;i="5.96,300,1665471600"; d="scan'208";a="723775308"
+X-IronPort-AV: E=McAfee;i="6500,9779,10580"; a="723775311"
+X-IronPort-AV: E=Sophos;i="5.96,300,1665471600"; d="scan'208";a="723775311"
 Received: from lkp-server02.sh.intel.com (HELO f1920e93ebb5) ([10.239.97.151])
  by fmsmga004.fm.intel.com with ESMTP; 04 Jan 2023 11:53:08 -0800
 Received: from kbuild by f1920e93ebb5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pD9oy-0000iW-0A;
- Wed, 04 Jan 2023 19:53:08 +0000
-Date: Thu, 05 Jan 2023 03:52:24 +0800
+ (envelope-from <lkp@intel.com>) id 1pD9ox-0000iS-3B;
+ Wed, 04 Jan 2023 19:53:07 +0000
+Date: Thu, 05 Jan 2023 03:52:30 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt:gvt-staging] BUILD SUCCESS
- 1a164503255e329558afa8f944abeb1c4f10cc37
-Message-ID: <63b5d8f8.TxcPY4a6p74F08oG%lkp@intel.com>
+Subject: [intel-gvt:gvt-fixes] BUILD SUCCESS
+ 601fd0f6b2a4c776a21ab8300fe0de0726937623
+Message-ID: <63b5d8fe.C7uxe0fIQ2jpmZVV%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -65,88 +65,87 @@ Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-staging
-branch HEAD: 1a164503255e329558afa8f944abeb1c4f10cc37  gvt-staging: 2023y-01m-04d-15h-34m-54s CST integration manifest
+tree/branch: https://github.com/intel/gvt-linux.git gvt-fixes
+branch HEAD: 601fd0f6b2a4c776a21ab8300fe0de0726937623  drm/i915/gvt: fix double free bug in split_2MB_gtt_entry
 
 elapsed time: 722m
 
-configs tested: 68
+configs tested: 67
 configs skipped: 2
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
 gcc tested configs:
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
 x86_64                            allnoconfig
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-s390                                defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+powerpc                           allnoconfig
 x86_64                              defconfig
-s390                             allyesconfig
-sh                               allmodconfig
 x86_64                               rhel-8.3
-m68k                             allyesconfig
-mips                             allyesconfig
-m68k                             allmodconfig
-i386                                defconfig
 alpha                            allyesconfig
-i386                 randconfig-a004-20230102
 x86_64                           allyesconfig
+arc                                 defconfig
+ia64                             allmodconfig
 i386                 randconfig-a003-20230102
-arc                              allyesconfig
+x86_64                           rhel-8.3-bpf
+s390                             allmodconfig
 i386                 randconfig-a001-20230102
+m68k                             allyesconfig
+x86_64                           rhel-8.3-syz
+m68k                             allmodconfig
 i386                 randconfig-a002-20230102
+alpha                               defconfig
 i386                 randconfig-a005-20230102
 i386                 randconfig-a006-20230102
-i386                             allyesconfig
-arm                                 defconfig
-x86_64                          rhel-8.3-func
+arc                              allyesconfig
 x86_64                    rhel-8.3-kselftests
-x86_64                           rhel-8.3-bpf
-x86_64               randconfig-a004-20230102
-x86_64               randconfig-a002-20230102
-x86_64               randconfig-a003-20230102
-x86_64               randconfig-a005-20230102
-x86_64                           rhel-8.3-syz
-x86_64               randconfig-a006-20230102
-ia64                             allmodconfig
-x86_64                         rhel-8.3-kunit
-x86_64               randconfig-a001-20230102
-x86_64                           rhel-8.3-kvm
-arm64                            allyesconfig
-arm                              allyesconfig
+s390                             allyesconfig
+s390                                defconfig
+x86_64                          rhel-8.3-func
+i386                                defconfig
+sh                               allmodconfig
+arm                                 defconfig
+mips                             allyesconfig
 riscv                randconfig-r042-20230101
+powerpc                          allmodconfig
 s390                 randconfig-r044-20230101
 arc                  randconfig-r043-20230102
+x86_64               randconfig-a001-20230102
+x86_64               randconfig-a004-20230102
+x86_64               randconfig-a002-20230102
 arm                  randconfig-r046-20230102
+x86_64               randconfig-a003-20230102
+x86_64               randconfig-a006-20230102
 arc                  randconfig-r043-20230101
+x86_64               randconfig-a005-20230102
+x86_64                           rhel-8.3-kvm
+x86_64                         rhel-8.3-kunit
+i386                             allyesconfig
+arm64                            allyesconfig
+arm                              allyesconfig
 
 clang tested configs:
-x86_64               randconfig-a011-20230102
 x86_64                          rhel-8.3-rust
-i386                 randconfig-a012-20230102
-x86_64               randconfig-a014-20230102
-x86_64               randconfig-a012-20230102
-i386                 randconfig-a011-20230102
-x86_64               randconfig-a013-20230102
-i386                 randconfig-a014-20230102
-i386                 randconfig-a013-20230102
-x86_64               randconfig-a015-20230102
-i386                 randconfig-a016-20230102
-i386                 randconfig-a015-20230102
-x86_64               randconfig-a016-20230102
+x86_64               randconfig-a011-20230102
 hexagon              randconfig-r041-20230102
 s390                 randconfig-r044-20230102
 hexagon              randconfig-r045-20230101
 hexagon              randconfig-r045-20230102
 arm                  randconfig-r046-20230101
+x86_64               randconfig-a014-20230102
 riscv                randconfig-r042-20230102
 hexagon              randconfig-r041-20230101
+x86_64               randconfig-a015-20230102
+x86_64               randconfig-a016-20230102
+x86_64               randconfig-a012-20230102
+x86_64               randconfig-a013-20230102
+i386                 randconfig-a013-20230102
+i386                 randconfig-a012-20230102
+i386                 randconfig-a011-20230102
+i386                 randconfig-a014-20230102
+i386                 randconfig-a015-20230102
+i386                 randconfig-a016-20230102
 
 -- 
 0-DAY CI Kernel Test Service
