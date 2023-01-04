@@ -1,69 +1,68 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEF3F65CB19
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Jan 2023 01:50:43 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E73BC65CB28
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Jan 2023 02:01:20 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0D97110E41E;
-	Wed,  4 Jan 2023 00:50:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A664B10E41E;
+	Wed,  4 Jan 2023 01:01:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com
- [IPv6:2607:f8b0:4864:20::1035])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6779E10E2A8
+Received: from mail-pj1-x1036.google.com (mail-pj1-x1036.google.com
+ [IPv6:2607:f8b0:4864:20::1036])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0F83210E41E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  4 Jan 2023 00:50:38 +0000 (UTC)
-Received: by mail-pj1-x1035.google.com with SMTP id
- v13-20020a17090a6b0d00b00219c3be9830so32801600pjj.4
+ Wed,  4 Jan 2023 01:01:18 +0000 (UTC)
+Received: by mail-pj1-x1036.google.com with SMTP id
+ o31-20020a17090a0a2200b00223fedffb30so32841855pjo.3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 03 Jan 2023 16:50:38 -0800 (PST)
+ Tue, 03 Jan 2023 17:01:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=qiXxV2Hfa6NF/4ylZM+g7WvF4+7PZbuEwjwOszBrON4=;
- b=X1gfDcjSYLcBbE0MBBhwhK7htLKCvb7xiAhW84JJ8aR2Pj4C/Pqyu1xYLrpco24N6I
- C9J4IiYkw3j/UaqXUUFDvfYuxTV/W1PEByDZO0nLhXVDhQBEEYbkWvAc/QrdgV/sWe9p
- yd8EukT4278a/13eUsqTspQqTK+PO/lrb3dgkeuFP/Ggm6iHdv5OIvhBRaqiDmz+DT6m
- G5aOcyJFapCbF7bqQlrlr6MLuKYN3wDADKSYL+m4fAeRxOZiGuwWYXVA3rpzpNcqEhgh
- G851VezyQ+DuRZMMfEVjF8ForgLRPohL1fV6h73KcisSwFQS0nRBEESKvhxtVc2Sx9vL
- 9xpA==
+ bh=B1SMUQWNqPdQW0vO6rH84bqxMDgoVgXICRobpbo8urw=;
+ b=DRqws/vK/yhWoIfP64vLyodOJO4aCujC4wtDuEc4ApqYy8FwZmg5t+EYLiXT5evOXC
+ jcnpHczN04p7z4HPZvK1/Tm34zMcYewsweOd9ZXvrMrJQncMzmxUO5IbCa+iT/C2Qv1t
+ jugot8Wk4KWUoeV849df+IpR59GKuNLabhlwRmnbRqv4B/EueamuxkWBYHlqr42yD45y
+ Zl3hXc4nm1ucdN7hMhhbOTAeeQeEY3Qtb7usTkQB3GemLvrlmU+ysAMc22HonWftP6nx
+ 6sNDRBe9XQhEryl/Rbg4G6tV41jJfOPH6jWsCYOioTC30FSFddiIoAAT0Fj8S8qLJc8U
+ qN8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qiXxV2Hfa6NF/4ylZM+g7WvF4+7PZbuEwjwOszBrON4=;
- b=3MfLun330upU2Ini3JNZA8+6KM8QANaknpJh68pN1KoW71KkMfSHFFouvO13U2v8hO
- 4tjr5yL6UcCkiJTM0X8ZNSPfi3SfoJFNG1Lj6WpZkz3C+T4AteAz2M6K8OIQqcprLq4k
- eBhRuaWRtfkaEhuA4ttgeFfxsdjKAsumFNaTra5EmmKB4Y8+Ncgv6A6aJfY80JKnKq08
- 3GeDCz0vX1oOfd34Vp+AuVNGmBDsH5sNow768h7HHKc8KBry6tcPH2valDkiPpwV/FJ4
- BPXQCeJ9CtUxe52KJWKAHvaAsAFOgjiIThtoc2UEh0OoPtg/1MQm8H/h2gvLnBkw5nQN
- 1j/Q==
-X-Gm-Message-State: AFqh2kp1ROFZm0W9R1vNyB0avMGra29uNcE0MD27mMmQaq/KzgStcDeh
- 0s+kQVIARv0xVGIPh2Ee9+o9WA==
-X-Google-Smtp-Source: AMrXdXvtFqhaSn3Tw9QYHWUPgyOXDjo3XDFOrsnNrIE80F2Yb82IIBW1/ye7zb7YefnrkcgKD3AD/w==
-X-Received: by 2002:a17:90a:8b8c:b0:219:c2f2:f83c with SMTP id
- z12-20020a17090a8b8c00b00219c2f2f83cmr3726315pjn.2.1672793437914; 
- Tue, 03 Jan 2023 16:50:37 -0800 (PST)
+ bh=B1SMUQWNqPdQW0vO6rH84bqxMDgoVgXICRobpbo8urw=;
+ b=icDHCJYjBvTURN6soZ11p2590Adn83RG+77VmzL4sjPF4zTIwTaC3AjkoJsXC58qhA
+ tQmNvwwSzvNO3V+0+e15UzPD08NI1QpRIoHs/cuKkW858903REBaKJhPqZ9SlFvNr7Mw
+ Yn1DCY+5l4H6met0eWMCCYysFgveZDZwugZw281s/WaQP5CWJPQrIyWIR5C5soirSH7N
+ 2NcFUY4NDDp7MouENr74MBbeMBhflMFUcrTUXnHkLHYoX/VaO2Jw0zTSeEuMo/tNutGB
+ lJ6UWj5Lom9io2UaPo1BAfpBqm7SCG2okUFa6nMWEOSXA5gkX3fchw1CCWK4FIg4/izL
+ H+QA==
+X-Gm-Message-State: AFqh2kqwXiq89pnkkT2K9XOmJICVJdXzXBL5YUvd2PtwkJAfZ03KFiNB
+ 5Hw5pN+dy7OtZsydNg2qjjqAqA==
+X-Google-Smtp-Source: AMrXdXsm/+/BaD9fLXEmdyPUwmXboK5FhSwSBAmF4xBlElysJQkpfj+2+SO3cgOhhSP9sHTKG4Q2yw==
+X-Received: by 2002:a17:902:ce90:b0:192:8a1e:9bc7 with SMTP id
+ f16-20020a170902ce9000b001928a1e9bc7mr2235855plg.0.1672794077489; 
+ Tue, 03 Jan 2023 17:01:17 -0800 (PST)
 Received: from google.com (7.104.168.34.bc.googleusercontent.com.
  [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
- mt2-20020a17090b230200b00225dfb6e8b3sm16083571pjb.11.2023.01.03.16.50.37
+ z11-20020a170902d54b00b0018941395c40sm22630397plf.285.2023.01.03.17.01.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Jan 2023 16:50:37 -0800 (PST)
-Date: Wed, 4 Jan 2023 00:50:33 +0000
+ Tue, 03 Jan 2023 17:01:17 -0800 (PST)
+Date: Wed, 4 Jan 2023 01:01:13 +0000
 From: Sean Christopherson <seanjc@google.com>
 To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: [PATCH 19/27] KVM: x86/mmu: Use page-track notifiers iff there
- are external users
-Message-ID: <Y7TNWYaJ9PA6HZL0@google.com>
+Subject: Re: [PATCH 00/27] drm/i915/gvt: KVM: KVMGT fixes and page-track
+ cleanups
+Message-ID: <Y7TP2R01VAbmmfcT@google.com>
 References: <20221223005739.1295925-1-seanjc@google.com>
- <20221223005739.1295925-20-seanjc@google.com>
- <Y6vogAvkktOPLwK9@yzhao56-desk.sh.intel.com>
+ <Y6VvVrYURd/an3Zp@yzhao56-desk.sh.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y6vogAvkktOPLwK9@yzhao56-desk.sh.intel.com>
+In-Reply-To: <Y6VvVrYURd/an3Zp@yzhao56-desk.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,40 +82,38 @@ Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Dec 28, 2022, Yan Zhao wrote:
-> On Fri, Dec 23, 2022 at 12:57:31AM +0000, Sean Christopherson wrote:
-> > diff --git a/arch/x86/kvm/mmu/page_track.c b/arch/x86/kvm/mmu/page_track.c
-> > index 2b302fd2c5dd..f932909aa9b5 100644
-> > --- a/arch/x86/kvm/mmu/page_track.c
-> > +++ b/arch/x86/kvm/mmu/page_track.c
-> > @@ -193,6 +193,7 @@ bool kvm_slot_page_track_is_active(struct kvm *kvm,
-> >  	return !!READ_ONCE(slot->arch.gfn_track[mode][index]);
-> >  }
-> >  
-> > +#ifdef CONFIG_KVM_EXTERNAL_WRITE_TRACKING
-> >  void kvm_page_track_cleanup(struct kvm *kvm)
-> >  {
-> >  	struct kvm_page_track_notifier_head *head;
-> > @@ -208,6 +209,7 @@ int kvm_page_track_init(struct kvm *kvm)
-> >  	head = &kvm->arch.track_notifier_head;
-> >  	INIT_HLIST_HEAD(&head->track_notifier_list);
-> >  	return init_srcu_struct(&head->track_srcu);
-> > +	return 0;
-> Double "return"s.
+On Fri, Dec 23, 2022, Yan Zhao wrote:
+> On Fri, Dec 23, 2022 at 12:57:12AM +0000, Sean Christopherson wrote:
+> > Fix a variety of found-by-inspection bugs in KVMGT, and overhaul KVM's
+> > page-track APIs to provide a leaner and cleaner interface.  The motivation
+> > for this series is to (significantly) reduce the number of KVM APIs that
+> > KVMGT uses, with a long-term goal of making all kvm_host.h headers
+> > KVM-internal.  That said, I think the cleanup itself is worthwhile,
+> > e.g. KVMGT really shouldn't be touching kvm->mmu_lock.
+> > 
+> > Note!  The KVMGT changes are compile tested only as I don't have the
+> > necessary hardware (AFAIK).  Testing, and lots of it, on the KVMGT side
+> > of things is needed and any help on that front would be much appreciated.
+> hi Sean,
+> Thanks for the patch!
+> Could you also provide the commit id that this series is based on?
 
-Huh, I'm surprised this didn't throw a warning.  I'm pretty sure I screwed up a
-refactoring, I originally had the "return 0" in an #else branch.
+The commit ID is provided in the cover letter:
 
-> > +#endif /* CONFIG_KVM_EXTERNAL_WRITE_TRACKING */
-> > +
-> > +static inline void kvm_page_track_write(struct kvm_vcpu *vcpu, gpa_t gpa,
-> > +					const u8 *new, int bytes)
-> > +{
-> > +	__kvm_page_track_write(vcpu, gpa, new, bytes);
-> > +
-> Why not convert "vcpu" to "kvm" in __kvm_page_track_write() ?
+  base-commit: 9d75a3251adfbcf444681474511b58042a364863
 
-No reason, I just overlooked the opportunistic cleanup.  I'll do this in the next
+Though you might have a hard time finding that commit as it's from an old
+version of kvm/queue that's probably since been force pushed.
+
+> I applied them on top of latest master branch (6.1.0+,
+> 8395ae05cb5a2e31d36106e8c85efa11cda849be) in repo
+> https://github.com/torvalds/linux.git, yet met some conflicts and I
+> fixed them manually. (patch 11 and patch 25).
+> 
+> A rough test shows that below mutex_init is missing.
+> But even with this fix, I still met guest hang during guest boots up.
+> Will look into it and have a detailed review next week.
+
+Thanks again for the reviews and testing!  I'll get a v2 out in the next week or
+so (catching up from holidays) and will be more explicit in documenting the base
 version.
-
-Thanks much for the reviews!
