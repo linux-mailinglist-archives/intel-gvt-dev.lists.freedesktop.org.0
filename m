@@ -2,42 +2,69 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77EA665F2BD
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Jan 2023 18:32:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FF5565F2FC
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Jan 2023 18:40:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 425C610E139;
-	Thu,  5 Jan 2023 17:32:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0E9CA10E7E5;
+	Thu,  5 Jan 2023 17:40:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Thu, 05 Jan 2023 17:32:09 UTC
-Received: from mail.be-paytop.info (unknown [193.160.141.76])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4B5BB10E11D
+Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
+ [IPv6:2607:f8b0:4864:20::62a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 34ED610E7E3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  5 Jan 2023 17:32:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=be-paytop.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal_gift_card_chance@be-paytop.info; 
- bh=TMlHV/b7FxYoWTi3nOhemyzHGQk=;
- b=cItl+SMcUYFLxkG1op6j88413lVjI9Tgv/viWqJEdrBBc9V6UedHsL6KEJy4hlsbxbMIwSGd3Fxl
- 8CA2+i2f0h/1nkS5KHJd9YDmgzf20k8GINNmeTF0uaRThVnvuxGRVYUo/NyaySuNnvWMqggeCagS
- 6GS1lawX7EBJW4jp3fQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=be-paytop.info;
- b=IuCxffp3NYDGOfw36+zNb/IGYtBQlKMi2MNSVSLt186/0PWnq2jFC9SAPG/ZCV4YrTqLMUPPudBv
- lMu0TmCRLRq0aIkY6stoyCevk8mB6bj8uNHh6Qj3+jUWpmkhlfT9XUqcs/iQWnw8t+QNUidlH9wS
- ha4PaibXx/mbAStNwZ8=;
-Received: by mail.be-paytop.info id hms4pi0001g5 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 5 Jan 2023 12:21:46 -0500 (envelope-from
- <paypal_gift_card_chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@be-paytop.info>)
-Date: Thu, 5 Jan 2023 12:21:46 -0500
-From: "Paypal Gift Card Chance" <paypal_gift_card_chance@be-paytop.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best reward deal you can get for being a loyal customer
+ Thu,  5 Jan 2023 17:40:40 +0000 (UTC)
+Received: by mail-pl1-x62a.google.com with SMTP id jl4so33776058plb.8
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 05 Jan 2023 09:40:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=0kbXgKOJsS8Z+jbEn56fulyxmGj5FZh1oxId45OhR8M=;
+ b=N8XIhK045MkkRIiP6O5EdZ7OigBujdKSVRsliZrO2igyKTDNqw+6zG4NuTIjXnrm9n
+ /aENa52CaJYwGt45hRQMIHj3cF7y6pgc4/fZAC8RLOcwl610aBTkiQlsDwrap/yJtFMz
+ YvcNKNGhnbLHKd9jpzfUewGfN8u470pWga6OUDWMj264VwXQdqtfv3m8B9G+NXr1mMh+
+ lIapdYshhh4t4u4bZMAMiCsKc16p+Xqn5rduSXP6ThQc0n86DYpFgfc9oARWSesGmQKL
+ Igg1CRErPZLx16gHnRbE9DCGaFKzrrtmEw4/8vHok1Yn7Ox+Z1urn7Q8xJMA1ODmTrRH
+ 4A2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=0kbXgKOJsS8Z+jbEn56fulyxmGj5FZh1oxId45OhR8M=;
+ b=36lE2KpjeGTJ+530dnK0r5b3MVp+DTQ32NSEhkzxwUl2e4n1WMqQ9gP46/5yescPTB
+ lhNM2JnagoYqtf8JAW+SbOc/tTcsUsqk/kodNsuliyhMF8v1EgSBlVfPdPCiKPc9fjwX
+ YQlPhf2sK+DphnhKDmMoELa/yNNQcsubOlLv9RB4Q/l9fLXTxxqRCTBzNkjMNZ5WIhKd
+ 42aW/BLj9EACtouyTmT8BDFY75vrZEYdgxmmNiqjnpsuMhXrjYdkAtCLWym4umuV1Bsj
+ 3KLVkmq7f403G6JsZqtSU+Rtx9DeohXUTD+dQoFrRDUT10dQfVYmcsz+nMor3FNKmBg9
+ t5Rw==
+X-Gm-Message-State: AFqh2krOinMEVqaFweoXy+qD0eSq4YuK14ixCMZENne3hJmshA7MbMbT
+ HfPvqjPq8V4Xiiage1NZAUobSg==
+X-Google-Smtp-Source: AMrXdXvePNSVad+Quj8sWC2rRAHirPmdt1mq9PKarW0GCZMUR3HO7TrM/aj7vHPEwJOF/+hzfbe9Qg==
+X-Received: by 2002:a05:6a20:9e49:b0:a3:49d2:9504 with SMTP id
+ mt9-20020a056a209e4900b000a349d29504mr250818pzb.3.1672940439549; 
+ Thu, 05 Jan 2023 09:40:39 -0800 (PST)
+Received: from google.com (7.104.168.34.bc.googleusercontent.com.
+ [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
+ i12-20020a63584c000000b004785a63b44bsm21924802pgm.43.2023.01.05.09.40.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Jan 2023 09:40:37 -0800 (PST)
+Date: Thu, 5 Jan 2023 17:40:32 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH 03/27] drm/i915/gvt: Incorporate KVM memslot info into
+ check for 2MiB GTT entry
+Message-ID: <Y7cLkLUMCy+XLRwm@google.com>
+References: <20221223005739.1295925-1-seanjc@google.com>
+ <20221223005739.1295925-4-seanjc@google.com>
+ <Y6vXTcxDNovrmeVB@yzhao56-desk.sh.intel.com>
+ <Y7SaklDQD0EoIs8l@google.com>
+ <Y7Y+759IN2DH5h3h@yzhao56-desk.sh.intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_532_1659995568.1672939295715"
-Message-ID: <0.0.0.3B.1D9212A2FECEA32.3E6DF1@mail.be-paytop.info>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y7Y+759IN2DH5h3h@yzhao56-desk.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,185 +77,158 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_532_1659995568.1672939295715
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Thu, Jan 05, 2023, Yan Zhao wrote:
+> On Tue, Jan 03, 2023 at 09:13:54PM +0000, Sean Christopherson wrote:
+> > On Wed, Dec 28, 2022, Yan Zhao wrote:
+> > > On Fri, Dec 23, 2022 at 12:57:15AM +0000, Sean Christopherson wrote:
+> > > > Honor KVM's max allowed page size when determining whether or not a 2MiB
+> > > > GTT shadow page can be created for the guest.  Querying KVM's max allowed
+> > > > size is somewhat odd as there's no strict requirement that KVM's memslots
+> > > > and VFIO's mappings are configured with the same gfn=>hva mapping, but
+> > > Without vIOMMU, VFIO's mapping is configured with the same as KVM's
+> > > memslots, i.e. with the same gfn==>HVA mapping
+> > 
+> > But that's controlled by userspace, correct?
+> 
+> Yes, controlled by QEMU.
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
- <head> 
-  <title>Mister Mover</title> 
-  <!--[if !mso]><!-- --> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-  <!--<![endif]--> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <!--[if !mso]><!--> 
-  <style type="text/css">@media only screen and (max-width:480px) {
-      @-ms-viewport {
-        width: 320px;
-      }
+...
 
-      @viewport {
-        width: 320px;
-      }
-    }
-	</style> 
-  <style type="text/css">@media only screen and (min-width:480px) {
-      .mj-column-per-100 {
-        width: 100% !important;
-        max-width: 100%;
-      }
+> > Strictly speaking, no.  E.g. if a 2MiB region is covered with multiple memslots
+> > and the memslots have different properties.
+> > 
+> > > If for some reason, KVM maps a 2MiB range in 4K sizes, KVMGT can still map
+> > > it in IOMMU size in 2MiB size as long as the PFNs are continous and the
+> > > whole range is all exposed to guest.
+> > 
+> > I agree that practically speaking this will hold true, but if KVMGT wants to honor
+> > KVM's memslots then checking that KVM allows a hugepage is correct.  Hrm, but on
+> > the flip side, KVMGT ignores read-only memslot flags, so KVMGT is already ignoring
+> > pieces of KVM's memslots.
+> KVMGT calls dma_map_page() with DMA_BIDIRECTIONAL after checking gvt_pin_guest_page().
+> Though for a read-only memslot, DMA_TO_DEVICE should be used instead
+> (see dma_info_to_prot()),
+> as gvt_pin_guest_page() checks (IOMMU_READ | IOMMU_WRITE) permission for each page,
+> it actually ensures that the pinned GFN is not in a read-only memslot.
+> So, it should be fine.
+> 
+> > 
+> > I have no objection to KVMGT defining its ABI such that KVMGT is allowed to create
+> > 2MiB so long as (a) the GFN is contiguous according to VFIO, and (b) that the entire
+> > 2MiB range is exposed to the guest.
+> > 
+> sorry. I may not put it clearly enough.
+> for a normal device pass-through via VFIO-PCI, VFIO maps IOMMU mappings in this way:
+> 
+> (a) fault in PFNs in a GFN range within the same memslot (VFIO saves dma_list, which is
+> the same as memslot list when vIOMMU is not on or not in shadow mode).
+> (b) map continuous PFNs into iommu driver (honour ro attribute and can > 2MiB as long as
+> PFNs are continuous).
+> (c) IOMMU driver decides to map in 2MiB or in 4KiB according to its setting.
+> 
+> For KVMGT, gvt_dma_map_page() first calls gvt_pin_guest_page() which
+> (a) calls vfio_pin_pages() to check each GFN is within allowed dma_list with
+> (IOMMU_READ | IOMMU_WRITE) permission and fault-in page. 
+> (b) checks PFNs are continuous in 2MiB,
+> 
+> Though checking kvm_page_track_max_mapping_level() is also fine, it makes DMA
+> mapping size unnecessarily smaller.
 
-      .mj-column-per-50 {
-        width: 50% !important;
-        max-width: 50%;
-      }
-    }
-	</style> 
-  <style type="text/css">@media only screen and (max-width:480px) {
-      table.full-width-mobile {
-        width: 100% !important;
-      }
+Yeah, I got all that.  What I'm trying to say, and why I asked about whether or
+not userspace controls the mappings, is that AFAIK there is nothing in the kernel
+that coordinates mappings between VFIO and KVM.  So, very technically, userspace
+could map a 2MiB range contiguous in VFIO but not in KVM, or RW in VFIO but RO in KVM.
 
-      td.full-width-mobile {
-        width: auto !important;
-      }
-    }
-	</style> 
- </head> 
- <body style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #E7E7E7;"> 
-  <div class="body-section" style="-webkit-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); -moz-box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.15); Margin: 0px auto; max-width: 600px;"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" style="padding: 0px 0; text-align: center; vertical-align: top; background: #ffffff; border-bottom: 1px dashed #bcbcc3" valign="top"> <h1 style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; color: #00529C">Dear PayPal User,</h1> </td> 
-     </tr> 
-     <tr> 
-      <td align="center" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; direction: ltr; font-size: 0px; padding: 20px 0; padding-bottom: 0px; padding-top: 0; text-align: center; vertical-align: top;" valign="top"> 
-       <div style="background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px;"> 
-        <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff; background-color: #ffffff; width: 100%;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="center" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; direction: ltr; font-size: 0px; padding: 0px 0; padding-left: 15px; padding-right: 15px; text-align: center; vertical-align: top;" valign="top"> 
-            <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: top;" valign="top" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td align="left" style="padding: 20px 25px; word-break: break-word;"> 
-                 <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:25px;font-weight:bold;line-height:auto;text-align:center;color:#212b35; text-transform: capitalize;">
-                  We value your feedback and appreciate your loyalty to PayPal.                  </div> </td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 10px 25px; word-break: break-word;"> 
-                 <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">
-                  <span style="padding: 0.5px; display: block"><span style="padding: 0.5px; display: block"><span style="padding: 0.5px; display: block"><span style="padding: 0.5px; display: block"><span style="padding: 0.5px; display: block"><a href="http://www.be-paytop.info/e3f5m2O395B8Ng612Qm4554V10a0S36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQOdRno7E1J_Xx05m2XwD/modifiers-frightfulness"><img alt="" src="http://www.be-paytop.info/d4f4Q2395t7Mna11F4556V10a0B36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQOdRno5Mn10N5I1qwD/Owens-Dundee" width="100%" /></a> </span> </span> </span> </span> </span>
-                 </div> </td> 
-               </tr> 
-               <tr> 
-                <td align="center" style="padding: 5px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:22px;font-weight:400;line-height:24px;text-align:center;color:#0e0456;">That's why we want to invite you to participate in a brief survey about your shopping experience with us.<br /> <br /> <br /> <span style="padding: 1.5px; display: block; background-color: #eee"><span style="padding: 1.5px; display: block"><span style="padding: 1.5px; display: block"><span style="padding: 1.5px; display: block"><span style="padding: 0.5px; display: block">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a $100 PayPal gift card to one lucky survey participant. </span></span></span></span></span> 
-                 <table cellpadding="1" cellspacing="1" width="100%"> 
-                  <tbody> 
-                   <tr> 
-                    <td align="center"> <p style="padding:20px; background-color: #00529C; display: inline-block"><span style="padding: 1.5px; display: block; background-color: #eee"><span style="padding: 1.5px; display: block"><span style="padding: 1.5px; display: block"><span style="padding: 1.5px; display: block"><span style="padding: 0.5px; display: block"><span style="padding: 1px"><span style="padding: 1px"><span style="padding: 1px"><span style="padding: 1px"><span style="padding: 1px"><a href="http://www.be-paytop.info/e3f5m2O395B8Ng612Qm4554V10a0S36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQOdRno7E1J_Xx05m2XwD/modifiers-frightfulness" style="color: #fff;background-color: #00529C">Go And Start Now</a></span></span></span></span></span></span></span></span></span></span></p> </td> 
-                   </tr> 
-                  </tbody> 
-                 </table> <span style="padding: 1.5px; display: block; background-color: #eee"><span style="padding: 1.5px; display: block"><span style="padding: 1.5px; display: block"><span style="padding: 1.5px; display: block"><span style="padding: 0.5px; display: block"> </span> </span> </span> </span> </span></td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 0px 0px; word-break: break-word;">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:10px;text-align:left;color:#0e0456;">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 0px 0px; word-break: break-word;">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 0px 25px; word-break: break-word;"> 
-                 <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:24px;text-align:left;color:#0e0456;">
-                  &nbsp;
-                 </div> </td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 0px 05px; word-break: break-word;">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 0px 05px; word-break: break-word;">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 0px 05px; word-break: break-word;">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="left" style="padding: 0px 05px; word-break: break-word;">&nbsp;</td> 
-               </tr> 
-              </tbody> 
-             </table> 
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background: #fff" valign="top" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="left" style="padding: 10px 45px; padding-bottom: 0px; word-break: break-word;"> 
-       <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13px;font-weight:bold;line-height:24px;text-align:left;text-transform:capitalize;color:#212b35;">
-        &nbsp;
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td align="left" style="padding: 10px 45px; padding-bottom: 0px; word-break: break-word;"> 
-       <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13px;font-weight:bold;line-height:24px;text-align:left;text-transform:capitalize;color:#212b35;">
-        &nbsp;
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td align="left" style="padding: 10px 5px; padding-top: 0; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td align="left" style="padding: 0px 25px;  vertical-align: top;">&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td align="left" style="padding: 10px 25px; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;"><span style="font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #868686;  line-height: 20px;">No longer wish to receive email messages?,</span><a href="http://www.be-paytop.info/abridged-golfers/3b45B239V5zO8w613q45y5q5D10a0z36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQOdRno5R1HU06g1@AwD" style="text-decoration-line: none;"> <span>Click-Ahead-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010 
-       <table cellpadding="1" cellspacing="1" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td> 
-           <div style="padding-top: 7.5px"> 
-            <div style="padding-top: 5px"> 
-             <div style="padding-top: 7.5px"> 
-              <div style="padding-top: 5px"> 
-               <div style="padding-top: 7.5px"> 
-                <div style="padding-top: 5px">
-                 <big><big></big></big><big><style dir="Wakefield"></big></style>
-                </div> 
-               </div> 
-              </div> 
-             </div> 
-            </div> 
-           </div> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.be-paytop.info/multiplier-inherited/15c6B2q3Z95q_8U513Q4H5R57h10a0W36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQOdRno6z1LzM06uNNwkD" alt=""/></body>
-</html>
+I can't imagine there's a real use case for doing so, and arguably there's no
+requirement that KVMGT honor KVM's memslot.  But because KVMGT taps into KVM's
+page-tracking, KVMGT _does_ honor KVM's memslots to some extent because KVMGT
+needs to know whether or not a given GFN can be write-protected.
 
-------=_Part_532_1659995568.1672939295715--
+I'm totally fine if KVMGT's ABI is that VFIO is the source of truth for mappings
+and permissions, and that the only requirement for KVM memslots is that GTT page
+tables need to be visible in KVM's memslots.  But if that's the ABI, then
+intel_gvt_is_valid_gfn() should be probing VFIO, not KVM (commit cc753fbe1ac4
+("drm/i915/gvt: validate gfn before set shadow page entry").
 
+In other words, pick either VFIO or KVM.  Checking that X is valid according to
+KVM and then mapping X through VFIO is confusing and makes assumptions about how
+userspace configures KVM and VFIO.  It works because QEMU always configures KVM
+and VFIO as expected, but IMO it's unnecessarily fragile and again confusing for
+unaware readers because the code is technically flawed.
+
+On a related topic, ppgtt_populate_shadow_entry() should check the validity of the
+gfn.  If I'm reading the code correctly, checking only in ppgtt_populate_spt() fails
+to handle the case where the guest creates a bogus mapping when writing an existing
+GTT PT.
+
+Combing all my trains of thought, what about this as an end state for this series?
+(completely untested at this point).  Get rid of the KVM mapping size checks,
+verify the validity of the entire range being mapped, and add a FIXME to complain
+about using KVM instead of VFIO to determine the validity of ranges.
+
+static bool intel_gvt_is_valid_gfn(struct intel_vgpu *vgpu, unsigned long gfn,
+				   enum intel_gvt_gtt_type type)
+{
+	unsigned long nr_pages;
+
+	if (!vgpu->attached)
+		return false;
+
+	if (type == GTT_TYPE_PPGTT_PTE_64K_ENTRY)
+		nr_pages = I915_GTT_PAGE_SIZE_64K >> PAGE_SHIFT;
+	else if (type == GTT_TYPE_PPGTT_PTE_2M_ENTRY)
+		nr_pages = I915_GTT_PAGE_SIZE_2M >> PAGE_SHIFT;
+	else
+		nr_pages = 1;
+
+	/*
+	 * FIXME: Probe VFIO, not KVM.  VFIO is the source of truth for KVMGT
+	 * mappings and permissions, KVM's involvement is purely to handle
+	 * write-tracking of GTT page tables.
+	 */
+	return kvm_page_track_is_contiguous_gfn_range(vgpu->vfio_device.kvm,
+						      gfn, nr_pages);
+}
+
+static int try_map_2MB_gtt_entry(struct intel_vgpu *vgpu, unsigned long gfn,
+				 dma_addr_t *dma_addr)
+{
+	if (!HAS_PAGE_SIZES(vgpu->gvt->gt->i915, I915_GTT_PAGE_SIZE_2M))
+		return 0;
+
+	return intel_gvt_dma_map_guest_page(vgpu, gfn,
+					    I915_GTT_PAGE_SIZE_2M, dma_addr);
+}
+
+static int ppgtt_populate_shadow_entry(struct intel_vgpu *vgpu,
+	struct intel_vgpu_ppgtt_spt *spt, unsigned long index,
+	struct intel_gvt_gtt_entry *ge)
+{
+	const struct intel_gvt_gtt_pte_ops *pte_ops = vgpu->gvt->gtt.pte_ops;
+	dma_addr_t dma_addr = vgpu->gvt->gtt.scratch_mfn << PAGE_SHIFT;
+	struct intel_gvt_gtt_entry se = *ge;
+	unsigned long gfn;
+	int ret;
+
+	if (!pte_ops->test_present(ge))
+		goto set_shadow_entry;
+
+	gfn = pte_ops->get_pfn(ge);
+	if (!intel_gvt_is_valid_gfn(vgpu, gfn, ge->type))
+		goto set_shadow_entry;
+
+	...
+
+
+set_shadow_entry:
+	pte_ops->set_pfn(&se, dma_addr >> PAGE_SHIFT);
+	ppgtt_set_shadow_entry(spt, &se, index);
+	return 0;
+}
