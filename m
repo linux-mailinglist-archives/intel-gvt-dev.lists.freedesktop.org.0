@@ -2,142 +2,70 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A983E65E392
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Jan 2023 04:37:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3CF765EAE0
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Jan 2023 13:46:08 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7756210E631;
-	Thu,  5 Jan 2023 03:37:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7CA3010E706;
+	Thu,  5 Jan 2023 12:46:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 491C310E631;
- Thu,  5 Jan 2023 03:37:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1672889822; x=1704425822;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- in-reply-to:mime-version;
- bh=BgySq6x7KRl07uyRwOVfi2wpna/2sslE/U6p6S/HT/8=;
- b=K4PiKFcQbykOLshrbM3tADcFMQ8+tzDn3xFBVfebfWwXejP/h4X/2A6I
- MKeaWBGE7CZFJXVrrFzWS6104KHXzUGF1Jee2KZkst1fZxqL/VrX+IS6O
- jyYDUeEYg8P8tzX6sVRzRcVJd57z0pmHDlFbcbB6zEQiQz0KPiuKLlFCT
- VcodGC0hluVe9sErCru6eVsrVZKP2uViI7u8IQLFJGQ3FdZ1T8SEvyH0s
- BFHv8HQn9NpPZTNnLv5gvK17CYakCcaWX+pNb8vfYCkZrOiDzuLzixq0A
- 9rDB8Xu20faq6NOfZAdR0lAd9rL3txgzqz93JuRGRp6KFZxdS0YDePU4K w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10580"; a="309876935"
-X-IronPort-AV: E=Sophos;i="5.96,301,1665471600"; d="scan'208";a="309876935"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jan 2023 19:37:01 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10580"; a="685951965"
-X-IronPort-AV: E=Sophos;i="5.96,301,1665471600"; d="scan'208";a="685951965"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga008.jf.intel.com with ESMTP; 04 Jan 2023 19:37:01 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Wed, 4 Jan 2023 19:37:00 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Wed, 4 Jan 2023 19:37:00 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Wed, 4 Jan 2023 19:37:00 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.176)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Wed, 4 Jan 2023 19:36:59 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XJmoMdFb+hbDGZVcZWqerMc61L+0qTWtqKevD7uiy8pnvUoSnDsWdCBsVhRwNw4eTWW6h/yuBH6xd384J4oPga8AZrmIhHfKZS0+KBNs37v+RDIDnj7QgOfmjsw/xkW6F8g6JMoeB6rgIlFcbe8Gdk46ptzDGezmOXW4k4tPCn77HATSp1q2YvlxxsdjYJaBqazvAwgWPNeGFqAPFHCP1HFWsnnZY3JiIHaw0hJWxufDh9ASYyw3g0pc+s5zOQNCX5xXjCMwDIVZK6c7kadkdGzoi1UTch9uyWR/JOOEfD3u2nuLGxrfbBKBVd1nNTjJ9hujxTXO6fGigydjsQg6yg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=a/DyXqmP3F6CVlUYHLZ0WLGmypnU5HHJ8urGuEZ8Jw8=;
- b=ZjmIcuBszzxxa+En/5nmYl01QAzBR+osHTXAYE4IejD0CdPegJED1IP+TSjfLPRs4ql/k3l6DFFKwj1Ka1HFZoWQaWrBUjKjJFFrKpCiUfd6PPIdvmbIutw2EQpOllipX8L8DNFoTIT7krm+QYsJin3BdUxDYFyqtHeg9w3CqQD3B7lgZV0cOKFIEwPqNfq9svPt1CdEvxefmY1zBQ5fTaNRjpNfpOv6xdjKyt3q+tKurMbc9VofKOov5/ewx0F25xGRv3b6jA3eYWBSSPe48hTSGHeJLbRUOuskWNtXX2L12B6ZEWtW8JUnG5xFaOJEjMeNuO1yM0kbYBmgGNjZcg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
- DS7PR11MB6149.namprd11.prod.outlook.com (2603:10b6:8:9e::19) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5944.19; Thu, 5 Jan 2023 03:36:57 +0000
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::bd50:2cf7:f362:3734]) by DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::bd50:2cf7:f362:3734%8]) with mapi id 15.20.5944.019; Thu, 5 Jan 2023
- 03:36:57 +0000
-Date: Thu, 5 Jan 2023 11:13:41 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Sean Christopherson <seanjc@google.com>
-Subject: Re: [PATCH 00/27] drm/i915/gvt: KVM: KVMGT fixes and page-track
- cleanups
-Message-ID: <Y7ZAZRK9NEvfV+J2@yzhao56-desk.sh.intel.com>
-References: <20221223005739.1295925-1-seanjc@google.com>
- <Y6VvVrYURd/an3Zp@yzhao56-desk.sh.intel.com>
- <Y7TP2R01VAbmmfcT@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <Y7TP2R01VAbmmfcT@google.com>
-X-ClientProxiedBy: SI1PR02CA0017.apcprd02.prod.outlook.com
- (2603:1096:4:1f4::10) To DS7PR11MB5966.namprd11.prod.outlook.com
- (2603:10b6:8:71::6)
+Received: from mail-wm1-x330.google.com (mail-wm1-x330.google.com
+ [IPv6:2a00:1450:4864:20::330])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 25C0810E708
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu,  5 Jan 2023 12:46:05 +0000 (UTC)
+Received: by mail-wm1-x330.google.com with SMTP id g10so14125347wmo.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 05 Jan 2023 04:46:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Y9xXl14PCVE29MkdwtvkTcX1xvCBJefYJ2FTCbbS6Hg=;
+ b=gq3PmjMXQdLNMZ10lm5bQgk7hLavAgr9iaWM9vrmdnielcaJg2rcuS1cxhOVSwFG6w
+ bRQHl3cYv6lKMHB1Oc+xUNZb49/kNEivUcnofGo2rEnDqWVo0eBcuzi81FRQ5OyiTE/g
+ RTB2v0vp6J8deZTYchJKVbyBORcSHn2TG6yps=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Y9xXl14PCVE29MkdwtvkTcX1xvCBJefYJ2FTCbbS6Hg=;
+ b=xrm3LkM6jhMEbNNBkGb7PxC9pLETEUuLAIk1Rc1jeMGSLyunh9spEoVVXDy9BGYWtk
+ 4i4tUkZyuoD3w0Dct0k+UFc1Wx23b/e1fx4gLT3t0ZLPNhx5WGLV4ceLRK4zgSQIPS4I
+ a4eqBcGvzX9Fead1pwXzqVRMlvdVMVWezV1QlyGW95uwu65nYX41kvD22iq9vEC/tE2i
+ fhWuspLBUWcOAK7+pql+fHGlKwH2C3u2iPssrYE//P5acBOWO0ZQkVVwrcl4taPJF9Sa
+ fEIEqgQ8e1BXtMCzdwKLrIsLWXSwYBs8fSZEkst0xv/PYCwJ2c5tMfJn2+OeSxY7fYid
+ HZEg==
+X-Gm-Message-State: AFqh2krXBIWNHjGUdYUWdHAGfhJ00qSvxfcq6RXbzsFGZ1jHFhTHkAA3
+ LQniFeGM+bclp58lBAjJZrj0mg==
+X-Google-Smtp-Source: AMrXdXuqSw1FVHs5PwiAM9n3YvkppTDiHVB/7BeoCZ4NppJTjmSCLUJB1wIJqtttsELRlIeBuBA0+Q==
+X-Received: by 2002:a05:600c:510b:b0:3d2:392e:905f with SMTP id
+ o11-20020a05600c510b00b003d2392e905fmr37059958wms.24.1672922763553; 
+ Thu, 05 Jan 2023 04:46:03 -0800 (PST)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id
+ u18-20020a05600c4d1200b003c21ba7d7d6sm2131795wmp.44.2023.01.05.04.46.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Jan 2023 04:46:02 -0800 (PST)
+Date: Thu, 5 Jan 2023 13:46:00 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Jim Cromie <jim.cromie@gmail.com>
+Subject: Re: [PATCH 2/2] drm_print: fix stale macro-name in comment
+Message-ID: <Y7bGiLRanR3Y7tXM@phenom.ffwll.local>
+Mail-Followup-To: Jim Cromie <jim.cromie@gmail.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, jani.nikula@intel.com,
+ ville.syrjala@linux.intel.com, seanpaul@chromium.org,
+ robdclark@gmail.com
+References: <20221205161005.222274-1-jim.cromie@gmail.com>
+ <20221205161005.222274-3-jim.cromie@gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|DS7PR11MB6149:EE_
-X-MS-Office365-Filtering-Correlation-Id: fcf3ccdf-b47a-48bd-37a7-08daeece189a
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: bK7Rfjrw1HvSy/JezbIvsj0JmH7ySf5k42rXL/pEfORZM7q9oKaC7n6LIBkv0TgX2n8hFcdsplgLY+bJTjwFVzrKeiKTxmz09Y9NEKNBeQN1Bif/Ik8dhq9ZsEZGofaX8KPLTdCTn98+O5NyMcPrSPvAgpOsMIyhDSOKPenwMGJfkYlg+e55V0dGHlKLB0rQWfWAQI5P793XgnVXWKOQKp28IHbe0BfjMdzHc2QJdMequum2OWj9hr3wKhlLv1GWEXWoMfmNhsN45o7NeonvCVitDQt+gwHzr0+Z006XtSoWpndmkf+pa9u/sktr9MWb1MVUDrPNRPTamm6ezwEyH5tRgP/OH9UeKmyZl1cGdhzjATtay82lg+6w6hjC0f/jUPajKV879uWDDzd5xA8RbfsWdvd6qGzCEsqLZbklXtrYpr/uWNKjSmWHoRliRVr7nDrhAoyvdA8eSIsSeNRFMkX679Uv+SUdwmioNUqdbHDImlTb5Qh+KnC7astpxlPsMUpIEVEgMnUf1PXtfhjVuRTohCOmjqqjCp7xKwI2nNSlWOPIBGrB+/mzxPC05xij8h/HE0fStZeS5yZ1lbB87MXVcW5R+/pLfayYpY8OfTB99cBkXSBAOfEkKd7a/M1xqeg0Poubt+iSHEEwSARaal96JcVd+VN1DTSwKv6/Epqo4tVaX751at9c2neqJeOnqpKSjwCuzr1vQybPad4kX0tQp1iNWxIkWGTZoYCZMmU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(346002)(376002)(136003)(39860400002)(396003)(366004)(451199015)(8936002)(38100700002)(2906002)(5660300002)(41300700001)(83380400001)(86362001)(3450700001)(54906003)(966005)(66946007)(6916009)(6486002)(82960400001)(66556008)(478600001)(6666004)(4326008)(66476007)(316002)(26005)(8676002)(186003)(6512007)(6506007)(67856001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HkIodUZLjV9YALDx8ADLZBIMENo6Nn8jy4vCUpyG6fagLmOPmUCSKS8+l5o/?=
- =?us-ascii?Q?i8dJj2P8mD0zYLsz5F478PnbYmrRB1UPo044ofsgC04iEYwrDZR2LSHp7U9u?=
- =?us-ascii?Q?hjf07Da/TqyCzbUgS6slssiLEbwj0y6m8T6vZ4g9dECryDV/pGWkSg+sKqNP?=
- =?us-ascii?Q?7mwBBkapQC/I7WtACeVJ6sS7XLzCykX23Y7M7c5Dh7HyXgWo8JTfrIb9ws1V?=
- =?us-ascii?Q?Ud4GG2Y46x42QBCokkNYsvM0CZFwMxt6P3J8nquVSOosM01cmbISSLZzeyiO?=
- =?us-ascii?Q?h1D/r5TE/lzkcwEO2c4ougLZP9jpts3n8tKYtezPW7mLO2BvR4TxWFhKDx87?=
- =?us-ascii?Q?IMfBDv+auN5bizx65OaUF6ke4TkpbYPa9wFRIFG+l4WZcpFhh2j4b+I0EZKm?=
- =?us-ascii?Q?FfD0m0e3TIGeGtDUgVHYsFSGiPF/PcSqH/iF510nqc4PB2Xjd3pigNuJZgls?=
- =?us-ascii?Q?o0G80H0BxFf3zrW6Ys+gGGRI8Cs7NhuW+XRwutw/iBViksQyZI1cMTLTDJAM?=
- =?us-ascii?Q?6KIF5K216XnX2B3vJ4EkapqNBqpPiz1XpKouo/zGu1VUFAOt5kuKEPaAZ4Wm?=
- =?us-ascii?Q?Bt/G3I14Bju3ql/7DD+dIZVzm/kG3/N/VCeM0DmKkUPOBgZy4CDUrGZcBe2/?=
- =?us-ascii?Q?Jt5zj7G6K523gffeDVNvuQyXfmaSwDfe53LHGl/33ENL/7VtH7xfD0CsRIN6?=
- =?us-ascii?Q?bWQ5emcXU7xc3lqJulfFSXjgdBs4KflW92nlVQCX68bov51OAqkCav0pJ3G5?=
- =?us-ascii?Q?cZGJ42ECs8CzY1xKlFXrtIzuFFsWCC8Fj5W+2b6WGTSPtF5KmgA3KstDGoQD?=
- =?us-ascii?Q?JKuTU/MJwui1/SJxulvGEb7Ie3XyrukUkvRNvn6VRSe4aRDLDRUeOkTnZSEk?=
- =?us-ascii?Q?M+2Km/89euBdVF+f/h/XxtKsAp24WmUbqaRVEJjO1/PdTsXX95Fo30mk6D4H?=
- =?us-ascii?Q?BNAtPprDctObe6N4d/KCkwzDlut6A54cNcR8/E413ZdDPjGnIc+Y8VNHvYdt?=
- =?us-ascii?Q?pGnSiOZjvVeqLag/X+VoXcs4/0+fUgsgeaF9kk6g+tGcPIQ8O78FsGNFs8PD?=
- =?us-ascii?Q?RFHCLhBWsE5guiMD4hOoH85T9kJL+aT5wraHrgnXKNW0IlugbquDxmP1ady0?=
- =?us-ascii?Q?jZxxSXCGgbuA5xCfBxneZgrp8b/91kcP+dTf2Adg3sgKJw+ivnOF2fzrBwpO?=
- =?us-ascii?Q?F6IkUqnMioS6Ai+b9P9plH6AZGbo4a6sHCKk9eGErCM7CEfPSz8yaC4zKMFV?=
- =?us-ascii?Q?xLDe/tkhaLI3x4o/DCtFi4SXH83NIffEjfwXR7MH/w7ewp5h9cKYCbB/x5ku?=
- =?us-ascii?Q?PpCpZugorban2AxCh5N9/b+/CkcTZGLk+PKll16T2yJPHUKC92qcDKe9l7mA?=
- =?us-ascii?Q?PZhnS31aebnL/thzE0/G2OO5O+ozlZk7Q4NRAUgwLUWjMvgUJjaFNQ0olQRN?=
- =?us-ascii?Q?QSrMYqchszljrYib9Lg63JJyVWYu6FfvEkZKmMx+z487Ia6RGGHMMkS/ahJ9?=
- =?us-ascii?Q?7xsNnR0zUAWAilwb+jfQ0pZhtQjGeDqmPrmcLNiknQa0pBRPwQsN17EyKnMB?=
- =?us-ascii?Q?xSjWX5jc7PiFmhvi1yJWbn4ksKJPNoMnW5uzsAMjAhxepdwOYw5rIsiL/EHO?=
- =?us-ascii?Q?rg=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: fcf3ccdf-b47a-48bd-37a7-08daeece189a
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jan 2023 03:36:57.1498 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: olks6nUL1cDvorkWgJmsoc934iyUWwR8+3Lp7YaBLU5zn56zANYGHdV6OdyjITn35VpRSNULuccxXiNK4EuOPQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB6149
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221205161005.222274-3-jim.cromie@gmail.com>
+X-Operating-System: Linux phenom 5.19.0-2-amd64 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -150,48 +78,60 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, robdclark@gmail.com, seanpaul@chromium.org,
+ dri-devel@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jan 04, 2023 at 01:01:13AM +0000, Sean Christopherson wrote:
-> On Fri, Dec 23, 2022, Yan Zhao wrote:
-> > On Fri, Dec 23, 2022 at 12:57:12AM +0000, Sean Christopherson wrote:
-> > > Fix a variety of found-by-inspection bugs in KVMGT, and overhaul KVM's
-> > > page-track APIs to provide a leaner and cleaner interface.  The motivation
-> > > for this series is to (significantly) reduce the number of KVM APIs that
-> > > KVMGT uses, with a long-term goal of making all kvm_host.h headers
-> > > KVM-internal.  That said, I think the cleanup itself is worthwhile,
-> > > e.g. KVMGT really shouldn't be touching kvm->mmu_lock.
-> > > 
-> > > Note!  The KVMGT changes are compile tested only as I don't have the
-> > > necessary hardware (AFAIK).  Testing, and lots of it, on the KVMGT side
-> > > of things is needed and any help on that front would be much appreciated.
-> > hi Sean,
-> > Thanks for the patch!
-> > Could you also provide the commit id that this series is based on?
+On Mon, Dec 05, 2022 at 09:10:05AM -0700, Jim Cromie wrote:
+> Cited commit uses stale macro name, fix this, and explain better.
 > 
-> The commit ID is provided in the cover letter:
+> When DRM_USE_DYNAMIC_DEBUG=y, DYNDBG_CLASSMAP_DEFINE() maps DRM_UT_*
+> onto BITs in drm.debug.  This still uses enum drm_debug_category, but
+> it is somewhat indirect, with the ordered set of DRM_UT_* enum-vals.
+> This requires that the macro args: DRM_UT_* list must be kept in sync
+> and in order.
 > 
->   base-commit: 9d75a3251adfbcf444681474511b58042a364863
+> Fixes: f158936b60a7 ("drm: POC drm on dyndbg - use in core, 2 helpers, 3 drivers.")
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+
+What's the status of this series?
+
+Greg, you landed the original entire pile that wasn't quite ready yet? Or
+should I apply these two?
+-Daniel
+
+> ---
+> . emphasize ABI non-change despite enum val change - Jani Nikula
+> . reorder to back of patchset to follow API name changes.
+> ---
+>  include/drm/drm_print.h | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 > 
-> Though you might have a hard time finding that commit as it's from an old
-> version of kvm/queue that's probably since been force pushed.
+> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
+> index a44fb7ef257f..e4c0c7e6d49d 100644
+> --- a/include/drm/drm_print.h
+> +++ b/include/drm/drm_print.h
+> @@ -276,7 +276,10 @@ static inline struct drm_printer drm_err_printer(const char *prefix)
+>   *
+>   */
+>  enum drm_debug_category {
+> -	/* These names must match those in DYNAMIC_DEBUG_CLASSBITS */
+> +	/*
+> +	 * Keep DYNDBG_CLASSMAP_DEFINE args in sync with changes here,
+> +	 * the enum-values define BIT()s in drm.debug, so are ABI.
+> +	 */
+>  	/**
+>  	 * @DRM_UT_CORE: Used in the generic drm code: drm_ioctl.c, drm_mm.c,
+>  	 * drm_memory.c, ...
+> -- 
+> 2.38.1
 > 
-> > I applied them on top of latest master branch (6.1.0+,
-> > 8395ae05cb5a2e31d36106e8c85efa11cda849be) in repo
-> > https://github.com/torvalds/linux.git, yet met some conflicts and I
-> > fixed them manually. (patch 11 and patch 25).
-> > 
-> > A rough test shows that below mutex_init is missing.
-> > But even with this fix, I still met guest hang during guest boots up.
-> > Will look into it and have a detailed review next week.
-> 
-> Thanks again for the reviews and testing!  I'll get a v2 out in the next week or
-> so (catching up from holidays) and will be more explicit in documenting the base
-> version.
-That's fine and it's a pleasure to me :)
+
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
