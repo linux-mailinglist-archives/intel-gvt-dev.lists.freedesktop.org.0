@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63EA7660866
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Jan 2023 21:42:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AC3AE6608DF
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Jan 2023 22:40:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 306C010E159;
-	Fri,  6 Jan 2023 20:42:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5669A10E086;
+	Fri,  6 Jan 2023 21:40:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Fri, 06 Jan 2023 20:42:44 UTC
-Received: from mail.my-dpthome.info (unknown [193.160.141.82])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3BAF710E0E3
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 06 Jan 2023 21:40:47 UTC
+Received: from mail.cm-hmdpots.info (unknown [193.160.141.83])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 35FB610E086
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Jan 2023 20:42:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=my-dpthome.info; 
+ Fri,  6 Jan 2023 21:40:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cm-hmdpots.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=costco_love@my-dpthome.info; 
- bh=Bx1mAsRH3TuZ/FqsUQn8y/ELZ7A=;
- b=iH1XcTGlepSJMClTxs2rLq+BUbXI1zv4z3OvRh6biOQxqatU7TP0yHWQHwE/tWFiwGMR1idKYg9F
- ZEaGfHZ/Sr2u9AoCPrNOb2Ks3bb4+q5kSM4aJ86YR97K0c7SG802cRTU1avbuEDWsARRAXQpsW6b
- 9u8A2z8Re/1bZ2bth9o=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=my-dpthome.info;
- b=ashwglFoFcqFoYtGkK82fZ2v1et5kmLcwSaJ3LygDBHgwJl6wz2IAUwSrCGic8vyoZn4Zti3Z9AM
- k3PH7LmYZJM5D4ROd3PwXoPEsK9y3whtc+3s3NQvpbYtYFgEOBpxBdfO9bUQYheXxiGJL/gHhksS
- q9iMqsEU1Ddv69rMiHw=;
-Received: by mail.my-dpthome.info id hn2e4o0001g7 for
+ i=hdconsumersurvey@cm-hmdpots.info; 
+ bh=nJdrzY6OPfGUVyh0k+SshDfEJJc=;
+ b=CEw7V0324U2EiEJmvSDBRcRzWflSqTxcZu4JZ07u55Oyd/wFvLouDJh/4GItgEu1qCy2Q2RyVlgF
+ d/mJsTWsUV+KN9NUUNRGN+4SjrC+8YCJGDRt2kqGeohDn/t2sDSlrVhotrBcP2IWhXdblBLyDNwJ
+ zjTsXyAjgQ9l+QWwS9Q=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cm-hmdpots.info;
+ b=hN8WXqwt66M5CwXOAnSLEOFZ438nNdUlXTflzSYs+fxs6Ox6jTBmRYr5bfvpkP+blp+5BZAUIzx3
+ mq1nEbMPe0/Lw7veg/by1g/DfoFdonCHvm2veuc36tGxtH+84+JCctTYmK+Nv2klwvkHge79w3fp
+ y+raICLfkd2z5rvnbys=;
+Received: by mail.cm-hmdpots.info id hn2alu0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 6 Jan 2023 17:00:55 -0500 (envelope-from
- <costco_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@my-dpthome.info>)
-Date: Fri, 6 Jan 2023 17:00:55 -0500
-From: "Costco Love" <costco_love@my-dpthome.info>
+ Fri, 6 Jan 2023 16:28:20 -0500 (envelope-from
+ <hdconsumersurvey-intel+2Dgvt+2Ddev=lists.freedesktop.org@cm-hmdpots.info>)
+Date: Fri, 6 Jan 2023 16:28:20 -0500
+From: HDConsumerSurvey <hdconsumersurvey@cm-hmdpots.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Leave feedback to maybe win
+Subject: Today's rewards on us for being a loyal customer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_673_1315869319.1673037174538"
-Message-ID: <0.0.0.4A.1D9221A5A0EF3A0.276791@mail.my-dpthome.info>
+ boundary="----=_Part_238_605857752.1673040485363"
+Message-ID: <0.0.0.1A.1D92215CCBC87DC.4D4311@mail.cm-hmdpots.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,157 +53,92 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_673_1315869319.1673037174538
+------=_Part_238_605857752.1673040485363
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang=3D"en" xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns=
-:v=3D"urn:schemas-microsoft-com:vml">
+<html lang=3D"en-GB" xmlns:o=3D"urn:schemas-microsoft-com:office:office" xm=
+lns:v=3D"urn:schemas-microsoft-com:vml">
  <head>=20
-  <title></title>=20
-  <meta charset=3D"utf-8" />=20
+  <title>daks</title>=20
+  <meta charset=3D"UTF-8" />=20
   <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
 ort" />=20
-  <link href=3D"http://www.my-dpthome.info/throat-Saviour/b526R239hH5u86Ao12S457l8p10a6i36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQAdRnK6q1yHC05MywD@" rel=3D"stylesheet" type=3D"text/css" />=20
-  <link href=3D"http://www.my-dpthome.info/navigator-toned/17a5O23U95YZ8n611P4579F10a6L36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQAdRnK6Qs1Oj05JLwDl" rel=3D"stylesheet" type=3D"text/css" />=20
-  <link href=3D"http://www.my-dpthome.info/15b4r2395L8yy613d457Vaop10a6R36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQAdRnK6bKL1B06F0jwOD/talent-Metzler" rel=3D"stylesheet" type=3D"text/css" />=20
-  <link href=3D"http://www.my-dpthome.info/throat-Saviour/7564Y2395n86Iz11c457bw10a6B36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQAdRnK6K1Ah0H5mywDB" rel=3D"stylesheet" type=3D"text/css" />
-  <!--<![endif]-->=20
-  <style type=3D"text/css">* {
-=09=09=09box-sizing: border-box;=20
+  <link href=3D"http://www.cm-hmdpots.info/eb75R2M395ym8j613p458S1_X10a7v36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ6dRom5O1V0z6ulwNDA/pigments-phosgene" rel=3D"preconnect" />=20
+  <link crossorigin=3D"" href=3D"http://www.cm-hmdpots.info/1794n2395ND8n612U45Y82x10a7G36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ6dRom6pm10pp6jBBqwD/bookkeeper-hexagon" rel=3D"preconnect" />=20
+  <link href=3D"http://www.cm-hmdpots.info/eb75R2M395ym8j613p458S1_X10a7v36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ6dRom5O1V0z6ulwNDA/pigments-phosgene/css2?family=3DManrope:wght@300;400;700&amp;famil=
+y=3DSen:wght@400;700&amp;display=3Dswap" rel=3D"stylesheet" />=20
+  <style type=3D"text/css">*{
+=09=09=09box-sizing:border-box;
+=09=09}
+=09=09body{
+=09=09=09margin:0;
+=09=09=09padding:0;
+=09=09}
+=09=09a[x-apple-data-detectors]{
+=09=09=09color:inherit !important;
+=09=09=09text-decoration:inherit !important;
+=09=09}
+=09=09#MessageViewBody a{
+=09=09=09color:inherit;
+=09=09=09text-decoration:none;
+=09=09}
+=09=09p{
+=09=09=09line-height:inherit;
+=09=09}
+=09@media (max-width:660px){
+=09=09.row-content{
+=09=09=09width:100% !important;
 =09=09}
 
-=09=09body {
-=09=09=09margin: 0;=20
-=09=09=09padding: 0;=20
+}=09@media (max-width:660px){
+=09=09.image_block img.big{
+=09=09=09width:auto !important;
 =09=09}
 
-=09=09a[x-apple-data-detectors] {
-=09=09=09color: inherit !important;=20
-=09=09=09text-decoration: inherit !important;=20
+}=09@media (max-width:660px){
+=09=09.stack .column{
+=09=09=09width:100%;
+=09=09=09display:block;
 =09=09}
 
-=09=09#MessageViewBody a {
-=09=09=09color: inherit;=20
-=09=09=09text-decoration: none;=20
-=09=09}
-
-=09=09p {
-=09=09=09line-height: inherit
-=09=09}
-
-=09=09@media (max-width:620px) {
-=09=09=09.row-content {
-=09=09=09=09width: 100% !important;=20
-=09=09=09}
-
-=09=09=09.stack .column {
-=09=09=09=09width: 100%;=20
-=09=09=09=09display: block;=20
-=09=09=09}
-
-=09=09=09.reverse {
-=09=09=09=09display: table;=20
-=09=09=09=09width: 100%;=20
-=09=09=09}
-
-=09=09=09.reverse .column.first {
-=09=09=09=09display: table-footer-group !important;=20
-=09=09=09}
-
-=09=09=09.reverse .column.last {
-=09=09=09=09display: table-header-group !important;=20
-=09=09=09}
-
-=09=09=09.row-1 td.column.first>table,
-=09=09=09.row-1 td.column.last>table {
-=09=09=09=09padding-left: 0;=20
-=09=09=09=09padding-right: 0;=20
-=09=09=09}
-=09=09}
+}
 =09</style>=20
  </head>=20
  <body style=3D"background-color: #FFFFFF; margin: 0; padding: 0; -webkit-t=
-ext-size-adjust: none; text-size-adjust: none; ">=20
+ext-size-adjust: none; text-size-adjust: none;">=20
   <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"nl-conta=
 iner" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-table-rspac=
-e: 0pt; background-color: #FFFFFF; " width=3D"100%">=20
+e: 0pt; background-color: #FFFFFF;" width=3D"100%">=20
    <tbody>=20
     <tr>=20
      <td>=20
       <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
 "0" class=3D"row row-1" role=3D"presentation" style=3D"mso-table-lspace: 0p=
-t; mso-table-rspace: 0pt; " width=3D"100%">=20
+t; mso-table-rspace: 0pt;" width=3D"100%">=20
        <tbody>=20
         <tr>=20
          <td>=20
           <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
 g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
-e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 600px; " width=
-=3D"600">=20
+e-lspace: 0pt; mso-table-rspace: 0pt; background-color: #fff8f0; color: #00=
+0000; width: 640px;" width=3D"640">=20
            <tbody>=20
-            <tr class=3D"reverse">=20
-             <td class=3D"column first" style=3D"mso-table-lspace: 0pt; mso=
--table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top=
-; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;=
- " width=3D"100%">=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; bord=
+er-bottom: 0px; border-left: 0px;" width=3D"100%">=20
               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
 =3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
-table-rspace: 0pt; " width=3D"100%">=20
+table-rspace: 0pt;" width=3D"100%">=20
                <tbody>=20
                 <tr>=20
-                 <td style=3D"padding-bottom:20px; padding-left:40px; paddi=
-ng-right:20px; padding-top:25px; width:100%; ">=20
-                  <div style=3D"line-height:10px">
-                   &nbsp;=20
-                  </div> </td>=20
-                </tr>=20
-               </tbody>=20
-              </table>=20
-              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
-=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
-able-rspace: 0pt; word-break: break-word; " width=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td align=3D"center" style=3D"padding-left:0px; padding-to=
-p:30px; padding-bottom:5px; text-align: center">=20
-                  <div align=3D"center" style=3D"font-family: sans-serif; w=
-idth: 100%">=20
-                   <div align=3D"center" style=3D"font-size: 12px; font-fam=
-ily: sans-serif; mso-line-height-alt: 18px; color: #000000; line-height: 1.=
-5; ">=20
-                    <p style=3D"margin: 0; font-size: 30px; text-align: lef=
-t; mso-line-height-alt: 45px; letter-spacing: normal; text-align: center"><=
-span style=3D"font-size:30px; "><strong><span style=3D""><span style=3D"fon=
-t-family:'Oswald', sans-serif; font-size:39px; color:#333333; ">D<span styl=
-e=3D"font-size:7px; ">&nbsp; </span>e<span style=3D"font-size:7px; ">&nbsp;=
- </span>a<span style=3D"font-size:7px; ">&nbsp; </span>r <span style=3D"fon=
-t-size:7px; ">&nbsp; </span>Co<span style=3D"font-size:7px; ">&nbsp; </span=
->s<span style=3D"font-size:7px; ">&nbsp; </span>tco<span style=3D"font-size=
-:7px; ">&nbsp; </span> S<span style=3D"font-size:7px; ">&nbsp; </span>h<spa=
-n style=3D"font-size:7px; ">&nbsp; </span>o<span style=3D"font-size:7px; ">=
-&nbsp; </span>p<span style=3D"font-size:7px; ">&nbsp; </span>p<span style=
-=3D"font-size:7px; ">&nbsp; </span>e<span style=3D"font-size:7px; ">&nbsp; =
-</span>r </span></span></strong></span></p>=20
-                   </div>=20
-                  </div> </td>=20
-                </tr>=20
-               </tbody>=20
-              </table> </td>=20
-             <td class=3D"column last" style=3D"mso-table-lspace: 0pt; mso-=
-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top;=
- border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; =
-" width=3D"50%">=20
-              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
-=3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
-table-rspace: 0pt; " width=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td style=3D"width:100%; padding-right:0px; padding-left:0=
-px; padding-top:5px; padding-bottom:5px; ">=20
-                  <div align=3D"right" style=3D"line-height:10px">
-                   &nbsp;=20
+                 <td style=3D"width:100%;padding-right:0px;padding-left:0px=
+;">=20
+                  <div align=3D"center" style=3D"line-height:10px">
+                   &nbsp;
                   </div> </td>=20
                 </tr>=20
                </tbody>=20
@@ -216,86 +151,57 @@ px; padding-top:5px; padding-bottom:5px; ">=20
       </table>=20
       <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
 "0" class=3D"row row-2" role=3D"presentation" style=3D"mso-table-lspace: 0p=
-t; mso-table-rspace: 0pt; " width=3D"100%">=20
+t; mso-table-rspace: 0pt; background-image: url('https://d15k2d11r6t6rl.clo=
+udfront.net/public/users/Integrators/BeeProAgency/759140_742575/background_=
+1.png'); background-position: top center; background-repeat: no-repeat;" wi=
+dth=3D"100%">=20
        <tbody>=20
         <tr>=20
          <td>=20
           <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
 g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
-e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 600px; " width=
-=3D"600">=20
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
            <tbody>=20
             <tr>=20
              <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
--rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
-ing-top: 10px; padding-bottom: 5px; border-top: 0px; border-right: 0px; bor=
-der-bottom: 0px; border-left: 0px; " width=3D"100%">=20
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; bord=
+er-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" widt=
+h=3D"58.333333333333336%">=20
               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
 =3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
-able-rspace: 0pt; word-break: break-word; " width=3D"100%">=20
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
                <tbody>=20
                 <tr>=20
-                 <td style=3D"padding-bottom:10px; padding-left:20px; paddi=
-ng-right:20px; padding-top:10px; ">=20
-                  <div style=3D"font-family: sans-serif">=20
-                   <div style=3D"font-size: 12px; font-family: sans-serif; =
-mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8; ">
-                    <a href=3D"http://www.my-dpthome.info/6296rV2Z395R8lv613A4B5s7cg10a6O36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQAdRnK7rtC1Fv06z2pBwD/milliwatt-shrouded"><img alt=3D"" src=3D"http://www.my-dpthome.info/milliwatt-shrouded/2c46b23T9F5f7ahs11G457ey10a6g36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQAdRnK5X10Cj5hNzwD=
-" width=3D"100%" /></a>=20
-                    <p style=3D"margin: 0; font-size: 24px; text-align: cen=
-ter; "><span style=3D"font-size:24px; color:rgba(45, 44, 52, 0.6); ">Get ju=
-st a few clicks away from The $100 <b>Costco Card</b> by completing our 20-=
-Second Service Survey about your recent experience with us.</span></p>=20
-                   </div>=20
-                  </div> </td>=20
-                </tr>=20
-               </tbody>=20
-              </table>=20
-              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
-=3D"button_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso=
--table-rspace: 0pt; " width=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td style=3D"padding-bottom:30px; padding-left:20px; paddi=
-ng-right:20px; padding-top:30px; text-align:center; "><a href=3D"http://www.my-dpthome.info/6296rV2Z395R8lv613A4B5s7cg10a6O36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQAdRnK7rtC1Fv06z2pBwD/milliwatt-shrouded=
-" style=3D"text-decoration:none; display:inline-block; color:#ffffff; backg=
-round-color:#DA1F26; border-radius:4px; width:auto; border-top:1px solid #D=
-A1F26; border-right:1px solid #DA1F26; border-bottom:1px solid #DA1F26; bor=
-der-left:1px solid #DA1F26; padding-top:15px; padding-bottom:15px; font-fam=
-ily:sans-serif; text-align:center; mso-border-alt:none; word-break:keep-all=
-; " target=3D"_blank"><span style=3D"padding-left:60px; padding-right:60px;=
- font-size:14px; display:inline-block; letter-spacing:normal; "><span style=
-=3D"font-size: 16px; margin: 0; line-height: 2; word-break: break-word; mso=
--line-height-alt: 32px; "><span data-mce-style=3D"font-size: 14px; line-hei=
-ght: 28px; " style=3D"font-size: 24px; line-height: 28px; "><b><span style=
-=3D"font-family:'Oswald', sans-serif; font-size:29px; color:#fff; ">S<span =
-style=3D"font-size:7px; ">&nbsp; </span>t<span style=3D"font-size:7px; ">&n=
-bsp; </span>a<span style=3D"font-size:7px; ">&nbsp; </span>r<span style=3D"=
-font-size:7px; ">&nbsp; </span>t<span style=3D"font-size:7px; ">&nbsp; </sp=
-an><span style=3D"font-size:7px; ">&nbsp; </span><span style=3D"font-size:7=
-px; ">&nbsp; </span><span style=3D"font-size:7px; ">&nbsp; </span>N<span st=
-yle=3D"font-size:7px; ">&nbsp; </span>o<span style=3D"font-size:7px; ">&nbs=
-p; </span>w<span style=3D"font-size:7px; ">&nbsp; </span><span style=3D"fon=
-t-size:7px; ">&nbsp; </span><span style=3D"font-size:7px; ">&nbsp; </span>H=
-<span style=3D"font-size:7px; ">&nbsp; </span>e<span style=3D"font-size:7px=
-; ">&nbsp; </span>r<span style=3D"font-size:7px; ">&nbsp; </span>e</span></=
-b></span></span></span></a></td>=20
-                </tr>=20
-               </tbody>=20
-              </table>=20
-              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
-=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
-able-rspace: 0pt; word-break: break-word; " width=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td style=3D"padding-bottom:10px; padding-left:20px; paddi=
-ng-right:20px; padding-top:10px; ">=20
-                  <div style=3D"font-family: sans-serif">=20
-                   <div style=3D"font-size: 12px; font-family: sans-serif; =
-mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8; ">=20
-                    <p align=3D"center" style=3D"margin: 0; mso-line-height=
--alt: 25.2px; font-size: 22px"><span style=3D"color:rgba(45, 44, 52, 0.6); =
-font-size:22px; ">Your Opinion Is Appreciated</span></p>=20
+                 <td style=3D"padding-left:30px;padding-right:10px;padding-=
+top:80px;">=20
+                  <center>
+                   <img alt=3D"" src=3D"http://www.cm-hmdpots.info/pigments-phosgene/6de5Q2m395ao7xa13IO45y85u10a7U36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ6dRom7fpI1Z0P5PM1wD" width=3D"400px" />
+                  </center>=20
+                  <table cellpadding=3D"1" cellspacing=3D"1" width=3D"100%"=
+>=20
+                   <tbody>=20
+                    <tr>=20
+                     <td>=20
+                      <table cellpadding=3D"1" cellspacing=3D"1" width=3D"1=
+00%">=20
+                       <tbody>=20
+                        <tr>=20
+                         <td><br /> <a href=3D"http://www.cm-hmdpots.info/glacier-Pensacola/44a6N2JW395ML8H611j4583p10a7u36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ6dRom6DGP1C05KlwDk"><img alt=3D"" sr=
+c=3D"http://www.cm-hmdpots.info/60b4J2395BT7Ra12O458g6H10a7U36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ6dRom6BWs_106uBwLDj/outbreak-Morehouse" width=3D"100%" /></a></td>=20
+                        </tr>=20
+                       </tbody>=20
+                      </table> </td>=20
+                    </tr>=20
+                   </tbody>=20
+                  </table>=20
+                  <div style=3D"font-family: Sen">=20
+                   <div align=3D"center" style=3D"font-size: 12px; font-fam=
+ily: Sen, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #F5=
+8861; line-height: 1.2;">=20
+                    <p style=3D"margin: 0; font-size: 50px; text-align: cen=
+ter;"><strong><span style=3D"font-size:30px;">Your Opinion Is Appreciated <=
+/span></strong></p>=20
                    </div>=20
                   </div> </td>=20
                 </tr>=20
@@ -303,96 +209,713 @@ font-size:22px; ">Your Opinion Is Appreciated</span></p>=20
               </table>=20
               <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
 =3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
-able-rspace: 0pt; word-break: break-word; " width=3D"100%">=20
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
                <tbody>=20
                 <tr>=20
-                 <td style=3D"padding-bottom:15px; padding-left:20px; paddi=
-ng-right:20px; padding-top:15px; ">=20
-                  <div style=3D"font-family: sans-serif">=20
-                   <div style=3D"font-size: 14px; font-family: sans-serif; =
-mso-line-height-alt: 16.8px; color: #ec632d; line-height: 1.2; ">=20
-                    <p style=3D"margin: 0; font-size: 14px; text-align: lef=
-t; "><a href=3D"http://www.my-dpthome.info/throat-Saviour/cba6Jz239Z5jH86O11O457dz10a6Y36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQAdRnK5WW1I05ilwDU" rel=3D"noopener" style=3D"text-decoration: unde=
-rline; color: #ec632d; " target=3D"_blank" title=3D"Iaapa form"><strong><sp=
-an style=3D"font-size:16px; "><u><span style=3D"color:#ec632d; ">&nbsp; </s=
-pan></u></span></strong></a></p>=20
+                 <td style=3D"padding-bottom:15px;padding-left:30px;padding=
+-right:10px;padding-top:10px;">=20
+                  <div style=3D"font-family: Sen">=20
+                   <div align=3D"center" style=3D"font-size: 12px; font-fam=
+ily: Sen,sans-serif; mso-line-height-alt: 14.399999999999999px; color: #000=
+; line-height: 1.2;">=20
+                    <p style=3D"margin: 0; font-size: 16px; text-align: cen=
+ter;"><span style=3D"font-size:22px;">Get just a few clicks away from The $=
+100 <b>Home Depot</b> by completing our 20-Second Service Survey about your=
+ recent experience with us.</span></p>=20
+                    <br />=20
+                    <br />=20
+                    <a href=3D"http://www.cm-hmdpots.info/glacier-Pensacola/44a6N2JW395ML8H611j4583p10a7u36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ6dRom6DGP1C05KlwDk" style=3D"text-decoration:none;di=
+splay:inline-block;color:#ffffff;background-color:#EE7125;border-radius:15p=
+x;width:auto;border-top:0px solid #;border-right:0px solid #EE7125;border-b=
+ottom:0px solid #EE7125;border-left:0px solid #EE7125;padding-top:5px;paddi=
+ng-bottom:5px;font-family:Manrope,sans-serif;text-align:center;mso-border-a=
+lt:none;word-break:keep-all;" target=3D"_blank"><span style=3D"padding-left=
+:40px;padding-right:40px;font-size:18px;display:inline-block;letter-spacing=
+:1px; padding-top: 10px; padding-bottom: 10px"><span style=3D"font-size: 16=
+px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><sp=
+an style=3D"font-size: 18px; line-height: normal; display: block"><span sty=
+le=3D"font-family:'Oswald', sans-serif; font-size:29px; color:#fff;">S<span=
+ style=3D"font-size:7px;">&nbsp;</span>t<span style=3D"font-size:7px;">&nbs=
+p;</span>a<span style=3D"font-size:7px;">&nbsp;</span>r<span style=3D"font-=
+size:7px;">&nbsp;</span>t<span style=3D"font-size:7px;">&nbsp;</span><span =
+style=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;=
+</span><span style=3D"font-size:7px;">&nbsp;</span>N<span style=3D"font-siz=
+e:7px;">&nbsp;</span>o<span style=3D"font-size:7px;">&nbsp;</span>w<span st=
+yle=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</=
+span><span style=3D"font-size:7px;">&nbsp;</span>H<span style=3D"font-size:=
+7px;">&nbsp;</span>e<span style=3D"font-size:7px;">&nbsp;</span>r<span styl=
+e=3D"font-size:7px;">&nbsp;</span>e</span></span></span></span></a>
                    </div>=20
-                  </div> </td>=20
-                </tr>=20
-               </tbody>=20
-              </table>=20
-              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
-=3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
-table-rspace: 0pt; " width=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td style=3D"padding-top:30px; width:100%; padding-right:0=
-px; padding-left:0px; ">=20
-                  <div align=3D"center" style=3D"line-height:10px">
-                   &nbsp;=20
-                  </div> </td>=20
-                </tr>=20
-               </tbody>=20
-              </table>=20
-              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
-=3D"heading_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
-o-table-rspace: 0pt; " width=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td style=3D"padding-top:10px; text-align:center; width:10=
-0%; "> <h3 style=3D"margin: 0; color: #000000; direction: ltr; font-family:=
- sans-serif; font-size: 12px; font-weight: normal; letter-spacing: normal; =
-line-height: 180%; text-align: center; margin-top: 0; margin-bottom: 0; ">&=
-nbsp; </h3> </td>=20
-                </tr>=20
-               </tbody>=20
-              </table>=20
-              <table border=3D"0" cellpadding=3D"10" cellspacing=3D"0" clas=
-s=3D"divider_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; m=
-so-table-rspace: 0pt; " width=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td>=20
-                  <div align=3D"center">=20
-                   <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
-role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt=
-; " width=3D"100%">=20
-                    <tbody>=20
-                     <tr>=20
-                      <td class=3D"divider_inner" style=3D"font-size: 1px; =
-line-height: 1px; border-top: 9px solid #D5FD51; "><span>&acirc;??</span></=
-td>=20
-                     </tr>=20
-                    </tbody>=20
-                   </table>=20
                   </div> </td>=20
                 </tr>=20
                </tbody>=20
               </table> </td>=20
             </tr>=20
            </tbody>=20
-          </table> &nbsp;=20
-          <center>
-           To withdraw from messages,
-           <a href=3D"http://www.my-dpthome.info/f2f6c23I9Q5mC86B12R4580WZ10a6o36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQAdRnK7p1HLT_06o@l2wD/ingenuity-ravages" style=3D"text-decoration-line: none; "> <=
-span>Get Started Here </span> </a>
-           <br /> 126 E 23rd St New York, NY, US 10010
-           <br />=20
-           <br />=20
-           <br /> &nbsp;=20
-           <table cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=20
-            <tbody>=20
-             <tr>=20
-              <td>&nbsp; </td>=20
-              <td>&nbsp; </td>=20
-              <td>&nbsp; </td>=20
-              <td>&nbsp; </td>=20
-             </tr>=20
-            </tbody>=20
-           </table>=20
-           <br />=20
-           <br /> <font><big><style lang="Taiwanese"></font></big></style><font size="prize"><font><span id="CENTREX"></span></font></font><font style="spanking"></font><big></big><font></font>
-          </center> </td>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-3" role=3D"presentation" style=3D"mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; bord=
+er-bottom: 0px; border-left: 0px;" width=3D"100%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:10px;padding-left:40px;padding=
+-right:40px;padding-top:10px;">=20
+                  <div style=3D"font-family: Sen">=20
+                   <div style=3D"font-size: 14px; font-family: Sen,sans-ser=
+if; mso-line-height-alt: 21px; color: #f28444; line-height: 1.5;">
+                    &nbsp;
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"heading_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-left:40px;padding-right:40px;padding-=
+top:10px;text-align:center;width:100%;">&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:10px;padding-left:40px;padding=
+-right:40px;padding-top:10px;">=20
+                  <div style=3D"font-family: Manrope">=20
+                   <div style=3D"font-size: 14px; font-family: Manrope, san=
+s-serif; mso-line-height-alt: 21px; color: #10172a; line-height: 1.5;">=20
+                    <p dir=3D"ltr" style=3D"margin: 0; font-size: 14px; mso=
+-line-height-alt: 27px; letter-spacing: normal;">&nbsp;</p>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"heading_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-left:40px;padding-right:40px;padding-=
+top:10px;text-align:center;width:100%;"> <h1 style=3D"margin: 0; color: #10=
+d065; direction: ltr; font-family: Manrope, sans-serif; font-size: 21px; fo=
+nt-weight: normal; letter-spacing: normal; line-height: 180%; text-align: l=
+eft; margin-top: 0; margin-bottom: 0;">&nbsp;</h1> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:40px;padding-left:40px;padding=
+-right:40px;padding-top:10px;">=20
+                  <div style=3D"font-family: Manrope">=20
+                   <div style=3D"font-size: 14px; font-family: Manrope, san=
+s-serif; mso-line-height-alt: 21px; color: #10172a; line-height: 1.5;">=20
+                    <p style=3D"margin: 0; font-size: 14px; mso-line-height=
+-alt: 27px; letter-spacing: normal;">&nbsp;</p>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-4" role=3D"presentation" style=3D"mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; bord=
+er-bottom: 0px; border-left: 0px;" width=3D"100%">&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-5" role=3D"presentation" style=3D"mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; bord=
+er-bottom: 0px; border-left: 0px;" width=3D"100%">&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-6" role=3D"presentation" style=3D"mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-left: 10px; padding-right: 10px; border-top: 0px; border-right: 0px; bo=
+rder-bottom: 0px; border-left: 0px;" width=3D"25%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"width:100%;padding-right:0px;padding-left:0px=
+;padding-top:5px;padding-bottom:5px;">=20
+                  <div align=3D"center" style=3D"line-height:10px">
+                   &nbsp;
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; bord=
+er-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" widt=
+h=3D"75%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"heading_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-left:20px;padding-right:20px;padding-=
+top:15px;text-align:center;width:100%;">&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:15px;padding-left:20px;padding=
+-right:20px;">=20
+                  <div style=3D"font-family: Manrope">=20
+                   <div style=3D"font-size: 14px; font-family: Manrope, san=
+s-serif; mso-line-height-alt: 21px; color: #10172a; line-height: 1.5;">=20
+                    <p style=3D"margin: 0; font-size: 14px; mso-line-height=
+-alt: 27px; letter-spacing: normal;">&nbsp;</p>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-7" role=3D"presentation" style=3D"mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-left: 10px; padding-right: 10px; border-top: 0px; border-right: 0px; bo=
+rder-bottom: 0px; border-left: 0px;" width=3D"25%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"width:100%;padding-right:0px;padding-left:0px=
+;padding-top:5px;padding-bottom:5px;">=20
+                  <div align=3D"center" style=3D"line-height:10px">
+                   &nbsp;
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; bord=
+er-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" widt=
+h=3D"75%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"heading_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-left:20px;padding-right:20px;text-ali=
+gn:center;width:100%;padding-top:5px;"> <h2 style=3D"margin: 0; color: #f28=
+444; direction: ltr; font-family: Manrope, sans-serif; font-size: 21px; fon=
+t-weight: normal; letter-spacing: normal; line-height: 120%; text-align: le=
+ft; margin-top: 0; margin-bottom: 0;">&nbsp;</h2> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:15px;padding-left:20px;padding=
+-right:20px;padding-top:10px;">=20
+                  <div style=3D"font-family: manrope">=20
+                   <div style=3D"font-size: 14px; font-family: Manrope, san=
+s-serif; mso-line-height-alt: 21px; color: #10172a; line-height: 1.5;">=20
+                    <p style=3D"margin: 0; font-size: 14px; mso-line-height=
+-alt: 27px; letter-spacing: normal;">&nbsp;</p>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-8" role=3D"presentation" style=3D"mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-left: 10px; padding-right: 10px; border-top: 0px; border-right: 0px; bo=
+rder-bottom: 0px; border-left: 0px;" width=3D"25%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"width:100%;padding-right:0px;padding-left:0px=
+;padding-top:5px;padding-bottom:30px;">=20
+                  <div align=3D"center" style=3D"line-height:10px">
+                   &nbsp;
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; bord=
+er-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" widt=
+h=3D"75%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"heading_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-left:20px;padding-right:20px;text-ali=
+gn:center;width:100%;padding-top:5px;"> <h2 style=3D"margin: 0; color: #f28=
+444; direction: ltr; font-family: Manrope, sans-serif; font-size: 21px; fon=
+t-weight: normal; letter-spacing: normal; line-height: 120%; text-align: le=
+ft; margin-top: 0; margin-bottom: 0;">&nbsp;</h2> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:15px;padding-left:20px;padding=
+-right:20px;padding-top:10px;">=20
+                  <div style=3D"font-family: manrope">=20
+                   <div style=3D"font-size: 14px; font-family: Manrope, san=
+s-serif; mso-line-height-alt: 21px; color: #10172a; line-height: 1.5;">=20
+                    <p style=3D"margin: 0; font-size: 14px; mso-line-height=
+-alt: 27px; letter-spacing: normal;">&nbsp;</p>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-9" role=3D"presentation" style=3D"mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-left: 10px; padding-right: 10px; border-top: 0px; border-right: 0px; bo=
+rder-bottom: 0px; border-left: 0px;" width=3D"25%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"width:100%;padding-right:0px;padding-left:0px=
+;padding-top:5px;padding-bottom:5px;">=20
+                  <div align=3D"center" style=3D"line-height:10px">
+                   &nbsp;
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; bord=
+er-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" widt=
+h=3D"75%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"heading_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-left:20px;padding-right:20px;text-ali=
+gn:center;width:100%;padding-top:5px;"> <h2 style=3D"margin: 0; color: #f28=
+444; direction: ltr; font-family: Manrope, sans-serif; font-size: 21px; fon=
+t-weight: normal; letter-spacing: normal; line-height: 120%; text-align: le=
+ft; margin-top: 0; margin-bottom: 0;">&nbsp;</h2> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:15px;padding-left:20px;padding=
+-right:20px;padding-top:10px;">=20
+                  <div style=3D"font-family: manrope">=20
+                   <div style=3D"font-size: 14px; font-family: Manrope, san=
+s-serif; mso-line-height-alt: 21px; color: #10172a; line-height: 1.5;">=20
+                    <p style=3D"margin: 0; font-size: 14px; mso-line-height=
+-alt: 27px; letter-spacing: normal;">&nbsp;</p>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-10" role=3D"presentation" style=3D"mso-table-lspace: 0=
+pt; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-left: 10px; padding-right: 10px; border-top: 0px; border-right: 0px; bo=
+rder-bottom: 0px; border-left: 0px;" width=3D"25%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"width:100%;padding-right:0px;padding-left:0px=
+;padding-top:5px;padding-bottom:5px;">=20
+                  <div align=3D"center" style=3D"line-height:10px">
+                   &nbsp;
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; bord=
+er-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" widt=
+h=3D"75%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"heading_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-left:20px;padding-right:20px;text-ali=
+gn:center;width:100%;padding-top:5px;"> <h2 style=3D"margin: 0; color: #f28=
+444; direction: ltr; font-family: Manrope, sans-serif; font-size: 21px; fon=
+t-weight: normal; letter-spacing: normal; line-height: 120%; text-align: le=
+ft; margin-top: 0; margin-bottom: 0;">&nbsp;</h2> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:15px;padding-left:20px;padding=
+-right:20px;padding-top:10px;">=20
+                  <div style=3D"font-family: manrope">=20
+                   <div style=3D"font-size: 14px; font-family: Manrope, san=
+s-serif; mso-line-height-alt: 21px; color: #10172a; line-height: 1.5;">=20
+                    <p style=3D"margin: 0; font-size: 14px; mso-line-height=
+-alt: 27px; letter-spacing: normal;">&nbsp;</p>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-11" role=3D"presentation" style=3D"mso-table-lspace: 0=
+pt; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 640px;" width=
+=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-left: 30px; padding-right: 30px; padding-top: 5px; padding-bottom: 50px=
+; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;=
+" width=3D"100%">=20
+              <table border=3D"0" cellpadding=3D"10" cellspacing=3D"0" clas=
+s=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td>=20
+                  <div style=3D"font-family: Manrope">=20
+                   <div style=3D"font-size: 14px; font-family: Manrope, san=
+s-serif; mso-line-height-alt: 25.2px; color: #10172a; line-height: 1.8;">=
+=20
+                    <p style=3D"margin: 0; font-size: 14px; mso-line-height=
+-alt: 32.4px; letter-spacing: normal;">&nbsp;</p>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"10" cellspacing=3D"0" clas=
+s=3D"button_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td>&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-12" role=3D"presentation" style=3D"mso-table-lspace: 0=
+pt; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; background-color: #222222; color: #00=
+0000; width: 640px;" width=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-left: 10px; padding-right: 10px; border-top: 0px; border-right: 0px; bo=
+rder-bottom: 0px; border-left: 0px;" width=3D"50%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"image_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:35px;padding-left:30px;padding=
+-right:30px;padding-top:35px;width:100%;">=20
+                  <div align=3D"center" style=3D"line-height:10px">
+                   &nbsp;
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; bord=
+er-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" widt=
+h=3D"50%">=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"social_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso=
+-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:35px;padding-left:30px;padding=
+-right:30px;padding-top:35px;text-align:center;">=20
+                  <table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" class=3D"social-table" role=3D"presentation" style=3D"mso-t=
+able-lspace: 0pt; mso-table-rspace: 0pt;" width=3D"126px">=20
+                   <tbody>=20
+                    <tr>=20
+                     <td style=3D"padding:0 5px 0 5px;">&nbsp;</td>=20
+                     <td style=3D"padding:0 5px 0 5px;">&nbsp;</td>=20
+                     <td style=3D"padding:0 5px 0 5px;">&nbsp;</td>=20
+                    </tr>=20
+                   </tbody>=20
+                  </table> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"row row-13" role=3D"presentation" style=3D"mso-table-lspace: 0=
+pt; mso-table-rspace: 0pt;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"row-content stack" role=3D"presentation" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; background-color: #222222; color: #00=
+0000; width: 640px;" width=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"column" style=3D"mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padd=
+ing-top: 5px; padding-bottom: 50px; border-top: 0px; border-right: 0px; bor=
+der-bottom: 0px; border-left: 0px;" width=3D"100%">=20
+              <table border=3D"0" cellpadding=3D"10" cellspacing=3D"0" clas=
+s=3D"divider_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td>=20
+                  <div align=3D"center">=20
+                   <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+;" width=3D"100%">=20
+                    <tbody>=20
+                     <tr>=20
+                      <td class=3D"divider_inner" style=3D"font-size: 1px; =
+line-height: 1px; border-top: 2px solid #FFFFFF;"><span>?</span></td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"text_block" role=3D"presentation" style=3D"mso-table-lspace: 0pt; mso-t=
+able-rspace: 0pt; word-break: break-word;" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"padding-bottom:10px;padding-left:30px;padding=
+-right:10px;padding-top:30px;">=20
+                  <div style=3D"font-family: Sen">=20
+                   <div style=3D"font-size: 12px; font-family: Sen,sans-ser=
+if; mso-line-height-alt: 14.399999999999999px; color: #C0C0C0; line-height:=
+ 1.2;">=20
+                    <p style=3D"margin: 0; font-size: 12px; text-align: lef=
+t; letter-spacing: normal;">&nbsp;</p>=20
+                    <center>
+                     To cut off email,
+                     <a href=3D"http://www.cm-hmdpots.info/7914G2395Eg86A11h4584k10a7h36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ6dRom7L1HxkU05WpBwD/bookkeeper-hexagon" style=3D"text-decoration-line: =
+none;"> <span>GoHere </span> </a>
+                     <br /> 126 E 23rd St New York, NY, US 10010
+                     <br />=20
+                     <br />=20
+                     <br />=20
+                     <br />=20
+                     <br /> <big></big><span size="availing"><font id="rowed"><style title="concerts"></font></span></style><big></big>=20
+                     <p>&nbsp;</p>=20
+                    </center>=20
+                   </div>=20
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
         </tr>=20
        </tbody>=20
       </table> </td>=20
@@ -400,8 +923,8 @@ span>Get Started Here </span> </a>
    </tbody>=20
   </table>=20
   <!-- End --> =20
- <img src=3D"http://www.my-dpthome.info/7194R2395ex85O13Fw45P7fj10a6I36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQAdRnK6bY1M0_5A01wD/milliwatt-shrouded" alt=3D""/></body>
+ <img src=3D"http://www.cm-hmdpots.info/4df6LS2V395X8NN513d4I5A87i10a7l36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ6dRom7lOpiI106l@wDjT/muskox-discouraged" alt=3D""/></body>
 </html>
 
-------=_Part_673_1315869319.1673037174538--
+------=_Part_238_605857752.1673040485363--
 
