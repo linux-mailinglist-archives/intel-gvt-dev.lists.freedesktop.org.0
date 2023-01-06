@@ -2,42 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82FB0660766
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Jan 2023 20:52:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 60F1B660805
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Jan 2023 21:17:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3348110E8D4;
-	Fri,  6 Jan 2023 19:52:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 30EC910E8E9;
+	Fri,  6 Jan 2023 20:17:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Fri, 06 Jan 2023 19:52:35 UTC
-Received: from mail.on-aceshpr.info (unknown [193.160.141.80])
- by gabe.freedesktop.org (Postfix) with ESMTP id 23BC810E8CF
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 06 Jan 2023 20:17:11 UTC
+Received: from mail.cast-lowesshp.info (unknown [193.160.141.81])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 01FBF10E8E6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Jan 2023 19:52:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=on-aceshpr.info; 
+ Fri,  6 Jan 2023 20:17:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=cast-lowesshp.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace.hardware.news@on-aceshpr.info; 
- bh=nOT1KkAIZxAMy75aCIVOEUHRG1U=;
- b=h4XhrKFnF1BB4076Sthpm54yxsz/m5+2Jbu8RDJoxDVItXcJw+y5oVnlBUtwjMtORNHbvRkNFaaa
- CsVEd+wCeT4n5cwnrw9MQUXKldlAW6orG9CdFhYC0eieyQZLgU18mZ/GpDu13LnnCsJE0YuNTt9y
- 0kPLX+Pdpqr65sCnq2g=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=on-aceshpr.info;
- b=BMiygfQjSuPE9WDrzGwptKEzoGEf2Ko0sgJTF57SPb9hLdQlrPKlRUMpbyP6LW4zftEUMHCbBcux
- Xq4HjfzP7K35XEh5/FPP3p47inVpQ90xj2KFHoFOTrMyZ2zrDHs0tl+TR7/NsYByNGCbJb+YTv/7
- KSB3iLnY9RSLvWDkqiM=;
-Received: by mail.on-aceshpr.info id hn1u060001ge for
+ i=lowes.hardware.gift.opportunity@cast-lowesshp.info; 
+ bh=Gua7SdRCUlnTHrxZxYUlVCTWNLw=;
+ b=iulzd+jnUrJy1nzC3hzu6pIF3b7U4uvWw++2fBReegUc2zzX3EM4HX2ghkqanj0nXm0zj0T1KyeO
+ GJDMZzNOUnCNwzrKC18NHCaHDdcpDTSnaP56mEgBCV5CuvP4p91OcRM3+3mzXRBuQG8BAv+mKs9b
+ rjYFtAn8A0OQ4kGVSTk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cast-lowesshp.info; 
+ b=AhRByGrj6LbgV8DZAnD+8TsIat/NxvkzYEYQFheRWmfjvHbU0hHBEV3cu5rRA+sPL2joRykTzh7v
+ mSwnWNItF8oF0L7HZKDwBREoJe3GhsNQT8egNxB+mBeBsbFK92RgSjtz8fh4d7oeldXPw9YNJ4lr
+ kElvIaP0Ju0gUtYH/0o=;
+Received: by mail.cast-lowesshp.info id hn20sg0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 6 Jan 2023 14:42:29 -0500 (envelope-from
- <ace.hardware.news-intel+2Dgvt+2Ddev=lists.freedesktop.org@on-aceshpr.info>)
-Date: Fri, 6 Jan 2023 14:42:29 -0500
-From: "ACE Hardware News" <ace.hardware.news@on-aceshpr.info>
+ Fri, 6 Jan 2023 15:07:29 -0500 (envelope-from
+ <lowes.hardware.gift.opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@cast-lowesshp.info>)
+Date: Fri, 6 Jan 2023 15:07:29 -0500
+From: "LOWES Hardware Gift Opportunity"
+ <lowes.hardware.gift.opportunity@cast-lowesshp.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We appreciate your loyalty, pick any gift on us
+Subject: Pick any gift on us, as token of appreciation for your loyalty
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_712_2029305649.1673034130028"
-Message-ID: <0.0.0.50.1D9220702E57440.14C27D@mail.on-aceshpr.info>
+ boundary="----=_Part_748_147125386.1673035636035"
+Message-ID: <0.0.0.53.1D9220A80F11558.69A60@mail.cast-lowesshp.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,251 +55,322 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_712_2029305649.1673034130028
+------=_Part_748_147125386.1673035636035
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:o=3D"urn:schemas-microso=
+ft-com:office:office" xmlns:v=3D"urn:schemas-microsoft-com:vml">
  <head>=20
-  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+  <title></title>=20
+  <!--[if !mso]><!-- -->=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />
+  <!--<![endif]-->=20
+  <meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Type" =
 />=20
-  <title>Our sharings</title>=20
-  <style type=3D"text/css">@media only screen and (max-width: 660px) {
-                table.container { width: 480px !important; }
-
-=09=09=09=09td.logo img { display: none; }
-=09=09=09=09td.logo { background: #fff url(images/logo_medium.gif) no-repea=
-t 10px 10px; height: 45px; }
-
-=09=09=09=09td.headline { padding: 5px 0px 0px 30px !important; }
-=09=09=09=09td.headline h1 { font-size: 28px !important; }
-
-=09=09=09=09td.banner img { display: none; }
-                td.banner { width: 480px; height: 150px; background: url(im=
-ages/banner_medium.jpg) no-repeat 0px 0px; }
-
-=09=09=09=09td.content { padding-bottom: 30px !important; background-image:=
- url(images/banner_medium_ghost.jpg) !important; }
-=09=09=09=09td.content table.button { width: auto; }
-=09=09=09=09td.content table.button td a { font-size: 14px !important }
-
-=09=09=09=09td.promos table { width: 200px !important; }
-=09=09=09=09td.promos table td h3 { margin-bottom: 8px; }
-=09=09=09=09td.promos table td img { display: none; }
-=09=09=09=09td.promos table.promo_1 td { background: url(images/promo_1_med=
-ium.jpg) no-repeat 0px 0px; padding: 100px 0px 0px 0px; }
-=09=09=09=09td.promos table.promo_2 td { background: url(images/promo_2_med=
-ium.jpg) no-repeat 0px 0px; padding: 100px 0px 0px 0px; }
-
-=09=09=09=09td.callout table { width: 50% !important; margin-bottom: 40px; =
-}
-=09=09=09=09td.callout table img { display: none; }
-=09=09=09=09td.callout table br { display: none; }
-=09=09=09=09td.callout table a { display: block; margin-top: 10px; }
-=09=09=09=09td.callout table td { background-size: 65px 65px; }
-=09=09=09=09td.callout table.callout_1 td { padding: 0px 30px 0px 60px !imp=
-ortant; background: url(images/icon_grapes.gif) no-repeat 0px -13px; }
-=09=09=09=09td.callout table.callout_2 td { padding: 0px 20px 0px 60px !imp=
-ortant; background: url(images/icon_bottle.gif) no-repeat 10px -3px; }
-=09=09=09=09td.callout table.callout_3 td { padding: 0px 30px 0px 60px !imp=
-ortant; background: url(images/icon_basket.gif) no-repeat 0px -13px; }
-=09=09=09=09td.callout table.callout_4 td { padding: 0px 20px 0px 60px !imp=
-ortant; background: url(images/icon_camera.gif) no-repeat 10px -23px; }
-
-=09=09=09}
-=09=09=09
-=09=09=09@media only screen and (max-width: 510px) {
-=09=09=09=09table.container { width: 100% !important; }
-                table.container td { border: none !important; }
-
-=09=09=09=09td.logo { background: #fff url(images/logo_small.gif) no-repeat=
- center 10px; height: 32px; }
-
-=09=09=09=09td.headline h1 { font-size: 24px !important; text-align: center=
-; }
-
-=09=09=09=09td.banner { height: 115px; background: url(images/banner_small.=
-jpg) no-repeat right 0px;}
-
-=09=09=09=09td.content { line-height: 20px !important; padding-bottom: 10px=
- !important; background: #f5f2e5 url(images/banner_small_ghost.jpg) no-repe=
-at right 0px !important; }
-
-=09=09=09=09td.footer { padding: 20px 30px !important; }
-
-=09=09=09=09td.promos table.promo_1 { width: 100% !important; border-top: 1=
-px solid #71a412; }
-=09=09=09=09td.promos table.promo_1 td { background: url(images/promo_1_sma=
-ll.jpg) no-repeat 0px 40px; padding: 20px 0px 40px 110px; }
-=09=09=09=09td.promos table.promo_2 { width: 100% !important;}
-=09=09=09=09td.promos table.promo_2 td { background: url(images/promo_2_sma=
-ll.jpg) no-repeat 0px 20px; padding: 0px 0px 0px 110px; clear: left; }
-
-=09=09=09}
+  <meta content=3D"width=3Ddevice-width,initial-scale=3D1" name=3D"viewport=
+" />=20
+  <style type=3D"text/css">#outlook a { padding:0; }
+          .ReadMsgBody { width:100%; }
+          .ExternalClass { width:100%; }
+          .ExternalClass * { line-height:100%; }
+          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-=
+size-adjust:100%; }
+          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-tab=
+le-rspace:0pt; }
+          img { border:0;height:auto;line-height:100%; outline:none;text-de=
+coration:none;-ms-interpolation-mode:bicubic; }
+          p { display:block;margin:13px 0; }
+=09</style>=20
+  <!--[if !mso]><!-->=20
+  <style type=3D"text/css">@media only screen and (max-width:480px) {
+            @-ms-viewport { width:320px; }
+            @viewport { width:320px; }
+          }
+=09</style>=20
+  <link href=3D"https://fonts.googleapis.com/css2?family=3DAleo:wght@400;70=
+0&amp;display=3Dswap" rel=3D"stylesheet" type=3D"text/css" />=20
+  <style type=3D"text/css">@import url(https://fonts.googleapis.com/css2?fa=
+mily=3DAleo:wght@400;700&display=3Dswap);
+=09</style>=20
+  <!--<![endif]-->=20
+  <style type=3D"text/css">@media only screen and (min-width:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+mj-column-per-70 { width:70% !important; max-width: 70%; }
+mj-column-per-75 { width:75% !important; max-width: 75%; }
+      }
+=09</style>=20
+  <style type=3D"text/css">@media only screen and (max-width:480px) {
+      table.full-width-mobile { width: 100% !important; }
+      td.full-width-mobile { width: auto !important; }
+    }
 =09</style>=20
  </head>=20
- <body bgcolor=3D"#eee">=20
-  <table bgcolor=3D"#eee" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
-width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td>=20
-      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
-"0" class=3D"container" width=3D"640">=20
-       <tbody>=20
-        <tr>=20
-         <td bgcolor=3D"#ffffff" class=3D"logo" style=3D"padding: 10px 20px=
- 0px 30px; border-left: 1px solid #0060A9; border-right: 1px solid #0060A9;=
- border-top: 1px solid #0060A9;" valign=3D"top">&nbsp;</td>=20
-        </tr>=20
-        <tr>=20
-         <td bgcolor=3D"#ffffff" class=3D"headline" style=3D"padding: 15px =
-20px 5px 30px; border-left: 1px solid #0060A9; border-right: 1px solid #006=
-0A9; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-heigh=
-t: 22px;" valign=3D"top"> <h1 align=3D"center" style=3D"margin: 0px 0px 15p=
-x 0px; font-weight: normal; font-size: 32px; color: #723c7f"><span style=3D=
-"font-family:'Oswald', sans-serif; font-size:39px; color:#333333;">D<span s=
-tyle=3D"font-size:7px;">&nbsp;</span>e<span style=3D"font-size:7px;">&nbsp;=
-</span>a<span style=3D"font-size:7px;">&nbsp;</span>r <span style=3D"font-s=
-ize:7px;">&nbsp;</span>A<span style=3D"font-size:7px;">&nbsp;</span>C<span =
-style=3D"font-size:7px;">&nbsp;</span>E<span style=3D"font-size:7px;">&nbsp=
-;</span> S<span style=3D"font-size:7px;">&nbsp;</span>h<span style=3D"font-=
-size:7px;">&nbsp;</span>o<span style=3D"font-size:7px;">&nbsp;</span>p<span=
- style=3D"font-size:7px;">&nbsp;</span>p<span style=3D"font-size:7px;">&nbs=
-p;</span>e<span style=3D"font-size:7px;">&nbsp;</span>r </span></h1>=20
-          <div>
-           <a href=3D"http://www.on-aceshpr.info/acquaintances-thrashed/e9a4S2395z8N6w13Q4I56I8n10a4A36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkdRnR6JZDP106e10wD@"><img alt=3D"" src=3D"http://www.on-aceshpr.info/4df6J2s3Y95zHR7a12q4t56at10a4m36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQkdRnR5oo10o5DLwDl/gator-derailed" style=
-=3D"width: 100%; max-width: 560px" /></a>=20
-           <div align=3D"center">=20
-            <p style=3D"font-size: 25px; line-height: normal">Get just a fe=
-w clicks away from The $100 <b>ACE Hardware Card</b> by completing our 20-S=
-econd Service Survey about your recent experience with us.</p>=20
-            <div>=20
-             <table align=3D"center" class=3D"button" style=3D"margin: 0px =
-0px 10px 30px;" width=3D"260">=20
+ <body>=20
+  <div>=20
+   <div style=3D"Margin:0px auto;max-width:600px;">=20
+    <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" style=3D"width:100%;">=20
+     <tbody>=20
+      <tr>=20
+       <td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center=
+;vertical-align:top;">=20
+        <div class=3D"mj-column-per-100 outlook-group-fix" style=3D"font-si=
+ze:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:t=
+op;width:100%;">=20
+         <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"background-color:#3097B5;vertical-align:top;" width=3D=
+"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td align=3D"center" style=3D"font-size:0px;padding:10px 25px;w=
+ord-break:break-word;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"border-collapse:collapse;border-spacing:0px;">=
+=20
               <tbody>=20
                <tr>=20
-                <td style=3D"text-align: center; background-color: #DA1F26;=
- padding: 20px 15px; border-radius: 5px;"><a href=3D"http://www.on-aceshpr.info/acquaintances-thrashed/e9a4S2395z8N6w13Q4I56I8n10a4A36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkdRnR6JZDP106e10wD@" style=3D"c=
-olor: #fff; font-size: 28px; letter-spacing: 1px; text-decoration: none; te=
-xt-shadow: 0px 2px 2px #3a5606; font-family: Arial, Arial, Helvetica, sans-=
-serif; display: block"><span style=3D"font-family:'Oswald', sans-serif; fon=
-t-size:29px; color:#fff;">S<span style=3D"font-size:7px;">&nbsp;</span>t<sp=
-an style=3D"font-size:7px;">&nbsp;</span>a<span style=3D"font-size:7px;">&n=
-bsp;</span>r<span style=3D"font-size:7px;">&nbsp;</span>t<span style=3D"fon=
-t-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><span=
- style=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp=
-;</span>N<span style=3D"font-size:7px;">&nbsp;</span>o<span style=3D"font-s=
-ize:7px;">&nbsp;</span>w<span style=3D"font-size:7px;">&nbsp;</span><span s=
-tyle=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;<=
-/span>H<span style=3D"font-size:7px;">&nbsp;</span>e<span style=3D"font-siz=
-e:7px;">&nbsp;</span>r<span style=3D"font-size:7px;">&nbsp;</span>e</span><=
-/a></td>=20
+                <td align=3D"center" style=3D"width:350px;"><b><span style=
+=3D"font-family:'Oswald', sans-serif; font-size:29px; color:#fff;">D<span s=
+tyle=3D"font-size:7px;">&nbsp;</span>e<span style=3D"font-size:7px;">&nbsp;=
+</span>a<span style=3D"font-size:7px;">&nbsp;</span>r<span style=3D"font-si=
+ze:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><span sty=
+le=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</s=
+pan><span style=3D"font-size:7px;">&nbsp;</span>Lo<span style=3D"font-size:=
+7px;">&nbsp;</span>w<span style=3D"font-size:7px;">&nbsp;</span>e's<span st=
+yle=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</=
+span><span style=3D"font-size:7px;">&nbsp;</span>Sh<span style=3D"font-size=
+:7px;">&nbsp;</span>op<span style=3D"font-size:7px;">&nbsp;</span>p<span st=
+yle=3D"font-size:7px;">&nbsp;</span>er</span></b></td>=20
                </tr>=20
               </tbody>=20
-             </table>=20
-             <br /> Your Opinion Is Appreciated
-             <br /> &nbsp;=20
-             <div>
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </div>=20
+   <div style=3D"Margin:0px auto;max-width:600px;">=20
+    <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" style=3D"width:100%;">=20
+     <tbody>=20
+      <tr>=20
+       <td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center=
+;vertical-align:top;">=20
+        <div class=3D"mj-column-per-100 outlook-group-fix" style=3D"font-si=
+ze:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:t=
+op;width:100%;">=20
+         <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td style=3D"vertical-align:top;padding:0;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"center" style=3D"font-size:0px;padding:0;word-=
+break:break-word;">=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"border-collapse:collapse;border-spacing:0px;">=
+=20
+                  <tbody>=20
+                   <tr>=20
+                    <td style=3D"width:600px;"><a href=3D"http://www.cast-lowesshp.info/attackers-Ozzie/7ec4O2395yN86j12q45B6cw10a5g36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQidRnS5Q1uR05gXw3D"><img =
+alt=3D"end of year savings are almost over!" height=3D"auto" src=3D"=
+http://www.cast-lowesshp.info/brevity-fuzzier/1204I2395Kp7Ja13y4ww56eu10a5n36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQidRnS5U1Y0r5vAwXD" style=3D"border:0;display:block;outline:none;text-decoration:none;hei=
+ght:auto;width:100%;" width=3D"600" /></a></td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </div>=20
+   <div style=3D"Margin:0px auto;max-width:600px;">=20
+    <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" style=3D"width:100%;">=20
+     <tbody>=20
+      <tr>=20
+       <td style=3D"direction:ltr;font-size:0px;padding:20px 0;text-align:c=
+enter;vertical-align:top;">=20
+        <div class=3D"mj-column-per-70 outlook-group-fix" style=3D"font-siz=
+e:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:to=
+p;width:100%;">=20
+         <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"vertical-align:top;" width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td align=3D"center" style=3D"font-size:0px;padding:0;word-brea=
+k:break-word;">&nbsp;</td>=20
+           </tr>=20
+           <tr>=20
+            <td align=3D"center" style=3D"font-size:0px;padding:10px;word-b=
+reak:break-word;">=20
+             <div style=3D"font-family:Aleo, serif;font-size:24px;letter-sp=
+acing:0.5px;line-height:1.75;text-align:center;color:#767575; width:400px; =
+padding-bottom: 20px">
+              Get just a few clicks away from The $100=20
+              <b>Lowe's Card</b> by completing our 20-Second Service Survey=
+ about your recent experience with us.              </div> &nbsp;=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"border-collapse:separate;line-height:100%;">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"center" bgcolor=3D"#358760" role=3D"presentati=
+on" style=3D"border:none;border-radius:0;cursor:auto;padding:15px 35px;back=
+ground:#358760;" valign=3D"middle"><a href=3D"http://www.cast-lowesshp.info/attackers-Ozzie/7ec4O2395yN86j12q45B6cw10a5g36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQidRnS5Q1uR05gXw3D" style=3D"backgrou=
+nd:#358760;color:#ffffff;font-family:Aleo, serif;font-size:18px;font-weight=
+:700;line-height:120%;Margin:0;text-decoration:none;text-transform:none;" t=
+arget=3D"_blank"><span style=3D"font-family:'Oswald', sans-serif; font-size=
+:29px; color:#fff;">S<span style=3D"font-size:7px;">&nbsp;</span>t<span sty=
+le=3D"font-size:7px;">&nbsp;</span>a<span style=3D"font-size:7px;">&nbsp;</=
+span>r<span style=3D"font-size:7px;">&nbsp;</span>t<span style=3D"font-size=
+:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><span style=
+=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</spa=
+n>N<span style=3D"font-size:7px;">&nbsp;</span>o<span style=3D"font-size:7p=
+x;">&nbsp;</span>w<span style=3D"font-size:7px;">&nbsp;</span><span style=
+=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</spa=
+n>H<span style=3D"font-size:7px;">&nbsp;</span>e<span style=3D"font-size:7p=
+x;">&nbsp;</span>r<span style=3D"font-size:7px;">&nbsp;</span>e</span></a><=
+/td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </div>=20
+   <div style=3D"Margin:50px auto;max-width:600px;">=20
+    <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" style=3D"width:100%;">=20
+     <tbody>=20
+      <tr>=20
+       <td style=3D"direction:ltr;font-size:0px;padding:20px 0;padding-top:=
+30px;text-align:center;vertical-align:top;">=20
+        <div class=3D"mj-column-per-75 outlook-group-fix" style=3D"font-siz=
+e:19px;text-align:left;direction:ltr;display:inline-block;vertical-align:to=
+p;width:100%; font">=20
+         <center>
+          Your Opinion Is Appreciated
+         </center>=20
+         <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"vertical-align:top;" width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td align=3D"center" style=3D"font-size:0px;padding:0;word-brea=
+k:break-word;">=20
+             <div style=3D"font-family:Aleo, serif;font-size:18px;font-weig=
+ht:700;letter-spacing:1px;line-height:1.75;text-align:center;color:#1C628F;=
+">
               &nbsp;
-             </div>=20
-            </div>=20
-           </div>=20
-          </div> </td>=20
-        </tr>=20
-        <tr>=20
-         <td bgcolor=3D"#f5f2e5" class=3D"banner" style=3D"border-left: 1px=
- solid #0060A9; border-right: 1px solid #0060A9;" valign=3D"top">&nbsp;</td=
->=20
-        </tr>=20
-        <tr>=20
-         <td bgcolor=3D"#f5f2e5" class=3D"content" style=3D"background: #f5=
-f2e5 url(images/banner_large_ghost.jpg) no-repeat 0px 0px; padding: 30px 30=
-px 10px 30px; border-right: 1px solid #0060A9; border-left: 1px solid #0060=
-A9; font-family:Arial, Helvetica, sans-serif; font-size: 16px; line-height:=
-22px; color: #654308;" valign=3D"top">&nbsp;</td>=20
-        </tr>=20
-        <tr>=20
-         <td bgcolor=3D"#f5f2e5" class=3D"promos" style=3D"padding: 10px 30=
-px 25px 30px; border-right:1px solid #0060A9; border-left:1px solid #0060A9=
-; background-color: #f5f2e5; font-family: Arial, Helvetica, sans-serif;" va=
-lign=3D"top">=20
-          <table align=3D"left" class=3D"promo_1" width=3D"270">=20
-           <tbody>=20
-            <tr>=20
-             <td> <h3 style=3D"font-size:16px;">&nbsp;</h3> </td>=20
-            </tr>=20
-           </tbody>=20
-          </table>=20
-          <table align=3D"right" class=3D"promo_2" width=3D"270">=20
-           <tbody>=20
-            <tr>=20
-             <td> <h3 style=3D"font-size:16px;">&nbsp;</h3> </td>=20
-            </tr>=20
-           </tbody>=20
-          </table> </td>=20
-        </tr>=20
-        <tr>=20
-         <td bgcolor=3D"#55315d" class=3D"callout" style=3D"background-colo=
-r: #55315d; padding: 30px; border-right: 1px solid #0060A9; border-bottom: =
-1px solid #0060A9; border-left: 1px solid #0060A9;" valign=3D"top">=20
-          <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" class=3D"callout_1" width=3D"135">=20
-           <tbody>=20
-            <tr>=20
-             <td style=3D"padding-left: 10px; padding-right: 10px; font-fam=
-ily:Arial, Helvetica, sans-serif; font-size:13px; line-height: 16px; color:=
- #ffffff;" valign=3D"top" width=3D"135">&nbsp;</td>=20
-            </tr>=20
-           </tbody>=20
-          </table>=20
-          <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" class=3D"callout_2" width=3D"135">=20
-           <tbody>=20
-            <tr>=20
-             <td style=3D"padding-left: 10px; padding-right: 10px; font-fam=
-ily:Arial, Helvetica, sans-serif; font-size:13px; line-height: 16px; color:=
- #ffffff;" valign=3D"top" width=3D"135">&nbsp;</td>=20
-            </tr>=20
-           </tbody>=20
-          </table>=20
-          <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" class=3D"callout_3" width=3D"135">=20
-           <tbody>=20
-            <tr>=20
-             <td style=3D"padding-left: 10px; padding-right: 10px; font-fam=
-ily: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 16px; colo=
-r: #ffffff;" valign=3D"top" width=3D"135">&nbsp;</td>=20
-            </tr>=20
-           </tbody>=20
-          </table>=20
-          <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" class=3D"callout_4" width=3D"135">=20
-           <tbody>=20
-            <tr>=20
-             <td style=3D"padding-left: 10px; padding-right: 10px; font-fam=
-ily: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 16px; colo=
-r: #ffffff;" valign=3D"top" width=3D"135">&nbsp;</td>=20
-            </tr>=20
-           </tbody>=20
-          </table> </td>=20
-        </tr>=20
-        <tr>=20
-         <td align=3D"center" class=3D"footer" style=3D"padding: 10px 0px 3=
-0px 0px; font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:=
- #999;" valign=3D"top">&nbsp;<br /> <br /> To bring messages to an halt,<a href=3D"=
-http://www.on-aceshpr.info/completed-bee/4866k239wo5l8X6H11X4569w10a4t36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkdRnR5Mn1i06mXkw2D" style=3D"text-decoration-line: none;"> <span>Visit.This.Way </span> </a><=
-br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /=
-> <small></small><span lang="paten"></span><span></span><style><small></style></small><span class="washing"><small></span></small><span title="augments"></span><style color="cranium"><style><span class="interchanges"></style></span></style></td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.on-aceshpr.info/execute-surgically/44a4e2395w8h5B13L45p6FbY10a4D36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQkdRnR7yl10Dlx6CqXwXD" alt=3D""/></body>
+             </div> </td>=20
+           </tr>=20
+           <tr>=20
+            <td align=3D"center" style=3D"font-size:0px;padding:10px 25px;p=
+adding-top:10px;word-break:break-word;">=20
+             <div style=3D"font-family:Aleo, serif;font-size:14px;letter-sp=
+acing:0.5px;line-height:1.75;text-align:center;color:#767575;">
+              &nbsp;
+             </div> </td>=20
+           </tr>=20
+           <tr>=20
+            <td align=3D"center" style=3D"font-size:0px;padding:30px 0;word=
+-break:break-word;">&nbsp;</td>=20
+           </tr>=20
+           <tr>=20
+            <td align=3D"center" style=3D"font-size:0px;padding:10px 25px;p=
+adding-top:10px;word-break:break-word;">=20
+             <div style=3D"font-family:Aleo, serif;font-size:10px;font-styl=
+e:italic;letter-spacing:0.5px;line-height:1.75;text-align:center;color:#767=
+575;">
+              To modify your communication elections,
+              <a href=3D"http://www.cast-lowesshp.info/1d35v239_5CO8C613Wx45O6dM10a5H36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQidRnS7Hih10Cr5SAwUD/Kirov-suggested" style=3D"text-decoration-line: none;">=
+ <span>Visit Here Now </span> </a>
+              <br /> 126 E 23rd St New York, NY, US 10010
+              <br />=20
+              <br />=20
+              <br /> &nbsp;=20
+              <table cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td>&nbsp;</td>=20
+                 <td>&nbsp;</td>=20
+                 <td>&nbsp;</td>=20
+                 <td>&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <br />=20
+              <br /> <style size="Italians"><font lang="lazily"><font dir="encountering"><font dir="boarded"></font><style lang="opportunely"></style></font><span></style></span><style><font title="Kenneth"></font></style></font><span face="morality"></span>
+             </div> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </div>=20
+   <div style=3D"Margin:0px auto;max-width:600px;">=20
+    <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" role=3D"presentation" style=3D"width:100%;">=20
+     <tbody>=20
+      <tr>=20
+       <td style=3D"direction:ltr;font-size:0px;padding:0;text-align:center=
+;vertical-align:top;">=20
+        <div class=3D"mj-column-per-100 outlook-group-fix" style=3D"font-si=
+ze:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:t=
+op;width:100%;">=20
+         <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td style=3D"vertical-align:top;padding:0;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"center" style=3D"font-size:0px;padding:0;word-=
+break:break-word;">=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"border-collapse:collapse;border-spacing:0px;">=
+=20
+                  <tbody>=20
+                   <tr>=20
+                    <td style=3D"width:600px;">&nbsp;</td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </div>=20
+  </div>  =20
+ <img src=3D"http://www.cast-lowesshp.info/attackers-Ozzie/3f05d23o95e85kp12H456Lfh10a5n36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQidRnS7C1Q_gw06LjywOD" alt=3D""/></body>
 </html>
 
-------=_Part_712_2029305649.1673034130028--
+------=_Part_748_147125386.1673035636035--
 
