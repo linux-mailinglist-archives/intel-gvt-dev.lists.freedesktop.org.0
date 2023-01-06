@@ -2,93 +2,96 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E510865F889
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Jan 2023 02:05:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C2B265F878
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Jan 2023 02:03:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C33DC10E2A5;
-	Fri,  6 Jan 2023 01:05:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 94C5B10E2A5;
+	Fri,  6 Jan 2023 01:03:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
+X-Greylist: delayed 2811 seconds by postgrey-1.36 at gabe;
+ Fri, 06 Jan 2023 01:03:41 UTC
 Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
  [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E1EE010E2A5;
- Fri,  6 Jan 2023 01:05:06 +0000 (UTC)
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 46EFB10E2A5;
+ Fri,  6 Jan 2023 01:03:41 +0000 (UTC)
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 305NrhdD009127; Fri, 6 Jan 2023 00:16:43 GMT
+ 3060xRJs027071; Fri, 6 Jan 2023 01:03:37 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=message-id : date :
  mime-version : subject : to : cc : references : from : in-reply-to :
  content-type : content-transfer-encoding; s=pp1;
- bh=0txPS+Fe0isHMMMFB0nqnr3ibkapoxzfGBRriG2Fuvk=;
- b=Uih3Yx6jybaiL7rHKpItc8pwIG2PQps4Q/ip2lgwGXT5cWjUk8IY7W+5MXr/UOl8Jd4l
- KxbeuuOwhpPwnl4nheUkK4FScIomRN1J9l1nj6RLcQmJHay63m70D065EI9OJxR+1Ow4
- kHP+bH6VJXg8FeX/47mFR2WvHQPTZhwC2MdvAiXu0znTSfbkQCZDAofiJUeKNW22VMSq
- t9DySDUXp4hWXHyo5MKL70Ry756UK+7iGmWp+3EAp2YJvoYYHFb86bvijLay6BCQz/WN
- sIIAlwIiCmuIo9p+YAMv8uxU1b7w+1aCO8+8nJZyGz2DOIw+/QU+3urDNWMdoevQmirW rA== 
+ bh=H3o6tON5owMSXwvuPyf2voj0PCtiOis55aqH7xs9h+Q=;
+ b=qGD9nV9Wwn5xkJP5ZW8DYBQZnIPjLy37H/l+TB+mrQv2bvMvFOyVFoC/BcUSUuVjbMRH
+ 8pSV2BNyTAus8E+Z608QE70pROq/AZDvpRo34zwiy5fLvzCl+TfWBJPa2C+pJ7NFeKmN
+ wYMeCxy6rgh94KDdHK4lqrH0UrhjXkSGpVLf3YZsdbAH/rhW+3caQXGulz61ifux6UDS
+ 9XgS4Up5n7mgDGyEMyXl0QFN4/D+iGp7vC5shDMCwelaY4KLmSEQpf9u2igWrba0ODte
+ m5dQu28/42T7OjJSOHw1xomfFfZiw6GZdd1B9wQ/4C4ftt83YMTfvqoUwRXyxyC2lyb5 cg== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3mx8mgremj-1
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3mx9k983hu-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 06 Jan 2023 00:16:43 +0000
-Received: from m0098396.ppops.net (m0098396.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 3060Fp7a021830;
- Fri, 6 Jan 2023 00:16:42 GMT
-Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
- [169.53.41.122])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3mx8mgrem0-1
+ Fri, 06 Jan 2023 01:03:37 +0000
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 30610808030362;
+ Fri, 6 Jan 2023 01:03:37 GMT
+Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.10])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3mx9k983hb-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 06 Jan 2023 00:16:42 +0000
-Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
- by ppma04dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 305NgNCn026033;
- Fri, 6 Jan 2023 00:16:41 GMT
-Received: from smtprelay01.wdc07v.mail.ibm.com ([9.208.129.119])
- by ppma04dal.us.ibm.com (PPS) with ESMTPS id 3mtcq80q65-1
+ Fri, 06 Jan 2023 01:03:36 +0000
+Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
+ by ppma02dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 305NmnaV020198;
+ Fri, 6 Jan 2023 01:03:35 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([9.208.130.97])
+ by ppma02dal.us.ibm.com (PPS) with ESMTPS id 3mtcq80w9w-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 06 Jan 2023 00:16:41 +0000
+ Fri, 06 Jan 2023 01:03:35 +0000
 Received: from smtpav03.dal12v.mail.ibm.com (smtpav03.dal12v.mail.ibm.com
  [10.241.53.102])
- by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 3060Gdvj38732206
+ by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 30613Y4K46334654
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 6 Jan 2023 00:16:39 GMT
+ Fri, 6 Jan 2023 01:03:34 GMT
 Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 554A65803F;
- Fri,  6 Jan 2023 00:16:39 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 54CC858064;
+ Fri,  6 Jan 2023 01:03:34 +0000 (GMT)
 Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 030FC5805A;
- Fri,  6 Jan 2023 00:16:38 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 77CA458056;
+ Fri,  6 Jan 2023 01:03:32 +0000 (GMT)
 Received: from [9.160.126.91] (unknown [9.160.126.91])
  by smtpav03.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Fri,  6 Jan 2023 00:16:37 +0000 (GMT)
-Message-ID: <5e17a35d-2a94-f482-c466-521afcab80b8@linux.ibm.com>
-Date: Thu, 5 Jan 2023 19:16:37 -0500
+ Fri,  6 Jan 2023 01:03:32 +0000 (GMT)
+Message-ID: <d0e55400-d749-23a2-c88f-a2272723bc65@linux.ibm.com>
+Date: Thu, 5 Jan 2023 20:03:32 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.1
 Subject: Re: [PATCH v3 1/1] vfio: remove VFIO_GROUP_NOTIFY_SET_KVM
 Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>,
- Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
 References: <20220519183311.582380-1-mjrosato@linux.ibm.com>
  <20220519183311.582380-2-mjrosato@linux.ibm.com>
  <20230105150930.6ee65182.alex.williamson@redhat.com>
  <Y7dehnZSC6ukNxKU@nvidia.com>
+ <5e17a35d-2a94-f482-c466-521afcab80b8@linux.ibm.com>
+ <Y7dsJpudKGtM0kbl@nvidia.com>
 From: Matthew Rosato <mjrosato@linux.ibm.com>
-In-Reply-To: <Y7dehnZSC6ukNxKU@nvidia.com>
+In-Reply-To: <Y7dsJpudKGtM0kbl@nvidia.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: pCL2byT9YMSbrJE2QEZagmKhcozVLM0p
-X-Proofpoint-GUID: aib17-pDe8mHzMc8KvnEyz30qyj7uOqn
+X-Proofpoint-GUID: qSA-WQm0cN_f2KPomMfKGbg7bJ0EykJW
+X-Proofpoint-ORIG-GUID: K0or9jUZQNxgyJRFdIz7eHqAFs_WqRdN
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.205,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
- definitions=2023-01-05_13,2023-01-05_02,2022-06-22_01
+ definitions=2023-01-05_14,2023-01-05_02,2022-06-22_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 bulkscore=0
- spamscore=0 priorityscore=1501 lowpriorityscore=0 adultscore=0
- impostorscore=0 phishscore=0 mlxlogscore=999 clxscore=1011 mlxscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2301050189
+ clxscore=1015 mlxlogscore=999
+ spamscore=0 suspectscore=0 adultscore=0 mlxscore=0 phishscore=0
+ bulkscore=0 impostorscore=0 lowpriorityscore=0 malwarescore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2301060006
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,42 +108,37 @@ Cc: jjherne@linux.ibm.com, akrowiak@linux.ibm.com,
  Kevin Tian <kevin.tian@intel.com>, kvm@vger.kernel.org, hch@infradead.org,
  linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org, cohuck@redhat.com,
  linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com, pasic@linux.ibm.com,
- borntraeger@linux.ibm.com, intel-gvt-dev@lists.freedesktop.org,
- Christoph Hellwig <hch@lst.de>, zhi.a.wang@intel.com
+ Alex Williamson <alex.williamson@redhat.com>, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, Christoph Hellwig <hch@lst.de>,
+ zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 1/5/23 6:34 PM, Jason Gunthorpe wrote:
-> On Thu, Jan 05, 2023 at 03:09:30PM -0700, Alex Williamson wrote:
->> On Thu, 19 May 2022 14:33:11 -0400
->> Matthew Rosato <mjrosato@linux.ibm.com> wrote:
->>
->>> Rather than relying on a notifier for associating the KVM with
->>> the group, let's assume that the association has already been
->>> made prior to device_open.  The first time a device is opened
->>> associate the group KVM with the device.
->>>
->>> This fixes a user-triggerable oops in GVT.
->>
->> It seems this has traded an oops for a deadlock, which still exists
->> today in both GVT-g and vfio-ap.  These are the only vfio drivers that
->> care about kvm, so they make use of kvm_{get,put}_kvm(), where the
-
-vfio-pci-zdev also
-
->> latter is called by their .close_device() callbacks.
-
-Huh, I've never seen this deadlock with vfio-pci-zdev or vfio-ap, but I see what you're saying...  I guess it's not seen under typical circumstances with QEMU because kvm_vfio_group_del would have already been triggered via KVM_DEV_VFIO_GROUP_DEL by the time we close the device, such that the group would not be found during the kvm_vfio_destroy call?  (I'm not at all suggesting that we should rely on userspace behaving in this order, just wondering why I never saw it while testing)
-
+On 1/5/23 7:32 PM, Jason Gunthorpe wrote:
+> On Thu, Jan 05, 2023 at 07:16:37PM -0500, Matthew Rosato wrote:
 > 
-> Bleck
+>> Yeah, this is also what I was thinking, replace the direct
+>> kvm_put_kvm calls with, say, schedule_delayed_work in each driver,
+>> where the delayed task just does the kvm_put_kvm (along with a brief
+>> comment explaining why we handle the put asynchronously).
 > 
-> It is pretty common to run the final part of 'put' from a workqueue
-> specifically to avoid stuff like this, eg fput does it
+> Don't put that in every driver, do something like mmput_async() where
+> the core code has all of this.
 > 
-> Maybe that is the simplest?
 
-Yeah, this is also what I was thinking, replace the direct kvm_put_kvm calls with, say, schedule_delayed_work in each driver, where the delayed task just does the kvm_put_kvm (along with a brief comment explaining why we handle the put asynchronously).
+If the core vfio code were to add logic to invoke kvm_put_kvm and kvm_get_kvm, won't this introduce a vfio dependency on kvm?  If I recall, we have the drivers handling the kvm reference today in order to avoid that..
 
-Other than that..  The goal of this patch originally was to get the kvm reference at first open_device and release it with the very last close_device, so the only other option I could think of would be to take the responsibility back from the vfio drivers and do the kvm_get_kvm and kvm_put_kvm directly in vfio_main after dropping the  (but that would result in some ugly symbol linkage and would acquire kvm references that a driver maybe does not care about so I don't really like that idea)
+>> Other than that..  The goal of this patch originally was to get the
+>> kvm reference at first open_device and release it with the very last
+>> close_device, so the only other option I could think of would be to
+>> take the responsibility back from the vfio drivers and do the
+>> kvm_get_kvm and kvm_put_kvm directly in vfio_main after dropping the
+>> (but that would result in some ugly symbol linkage and would acquire
+>> kvm references that a driver maybe does not care about so I don't
+>> really like that idea)
+> 
+> And we still have the deadlock problem anyhow..
+
+Looks like I never finished my sentence here -- I meant call kvm_put_kvm directly in vfio_main after dropping the group lock (e.g. when we set device->kvm = NULL;). But I think we'd still have the kvm dependency issue
+
 
