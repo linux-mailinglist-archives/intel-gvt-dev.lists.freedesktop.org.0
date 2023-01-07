@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0258660FEA
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Jan 2023 16:20:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4986661057
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Jan 2023 18:02:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8F8E310E2ED;
-	Sat,  7 Jan 2023 15:20:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 97EA110E331;
+	Sat,  7 Jan 2023 17:02:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sat, 07 Jan 2023 15:20:42 UTC
-Received: from mail.ac-mobilex.info (unknown [193.160.141.85])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6E6B710E2EB
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Sat, 07 Jan 2023 17:02:15 UTC
+Received: from mail.bella-sheet.info (unknown [193.160.141.89])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1B3F710E330
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  7 Jan 2023 15:20:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ac-mobilex.info; 
+ Sat,  7 Jan 2023 17:02:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bella-sheet.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tmobile_love@ac-mobilex.info; 
- bh=5kP6tPIRyek0B+gIGTslhuijKiw=;
- b=XNI88zr0lWRtOogugo7IuLIXV6xnfLtqeGlr5IeeI511dZqB+QHzYuZeAa+oFPU9pXoCkX4K14II
- EyIXkFmsnk1ovn1zFQEVpr+kWmw1mH3CylksW3vQ4nJ10pUdiHVcVZTn/gMD+cGRLGtnw+BwRuqu
- 1hMCpwYvpvwxyjYT8Bg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ac-mobilex.info;
- b=C8EhnV5oWkA5kCCKOXCyAx80ZTGbc/Xj/iUtIrKlW/Mxq4HYPI5sMUgxDP34XvdV/nHI6nVwi9qF
- 6yxjlfpougM6woJyZywDuWth7M0bE46YCrfL6Qqs7VvXdp/7yAy3RKUNdbEuME145cuSrsieNBmk
- B4UypZ7EgX94mnIdVv4=;
-Received: by mail.ac-mobilex.info id hn66sk0001gv for
+ i=shopmiraclebrandco-35-off-more@bella-sheet.info; 
+ bh=r9JsrT2TN3iyLwQCtItFyl5Ce5s=;
+ b=pROStINPLELHvDh0mV9Ttch7M/sERs+OJjkq2AKWpKf4KNCwiHSRKcUaNauEj+o+1uvBWGxaH9n8
+ OyDoUkUkID/jBgxpkqOO8BISDJEoKPfQ4awNyOqRudJd+FGkZ8i4zf5/JHkEpi+8tWraCruk3I7b
+ 7C2sLQImwxykmpn3Esg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bella-sheet.info;
+ b=gTiRnwdZh2xiJl9nsisC6s3JbV1y629iq6ZZidI7HBQf3PtmojqbN9oqYkJjv4dxUZMgoXFuQPO0
+ bZ54swBtn++/PcUYgQ7pozYvI3UVXB8GsCEXBIhOth/u5MLvbLhfWBcmX2sAb2nmyRDEj1YkV5Hx
+ EB5bL1Eo1c8JWiz7UgA=;
+Received: by mail.bella-sheet.info id hn6ipe0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 7 Jan 2023 10:07:36 -0500 (envelope-from
- <tmobile_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@ac-mobilex.info>)
-Date: Sat, 7 Jan 2023 10:07:36 -0500
-From: "TMOBILE Love" <tmobile_love@ac-mobilex.info>
+ Sat, 7 Jan 2023 11:50:43 -0500 (envelope-from
+ <shopmiraclebrandco-35-off-more-intel+2Dgvt+2Ddev=lists.freedesktop.org@bella-sheet.info>)
+Date: Sat, 7 Jan 2023 11:50:43 -0500
+From: "Shopmiraclebrand.co 35 Off More"
+ <shopmiraclebrandco-35-off-more@bella-sheet.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Impressive Gifts coming your way this season
+Subject: Make sleep luxurious
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_157_1936493073.1673104037632"
-Message-ID: <0.0.0.11.1D922A9C6F445A8.1813BC@mail.ac-mobilex.info>
+ boundary="----=_Part_382_24576276.1673110215673"
+Message-ID: <0.0.0.2A.1D922B82E7547BE.685D47@mail.bella-sheet.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,445 +54,307 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_157_1936493073.1673104037632
+------=_Part_382_24576276.1673110215673
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <meta charset="utf-8" />
-  <!-- utf-8 works for most cases --> 
-  <meta content="width=device-width" name="viewport" />
-  <!-- Forcing initial-scale shouldn"t be necessary --> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+  <!--[if !mso]><!--> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-  <!-- Use the latest (edge) version of IE rendering engine --> 
-  <meta name="x-apple-disable-message-reformatting" />
-  <!-- Disable auto-scale in iOS 10 Mail entirely --> 
+  <!--<![endif]--> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
   <title></title> 
-  <!-- The title tag shows in email notifications, like Android 4.4. --> 
-  <link href="http://www.ac-mobilex.info/twilight-befuddle/a626d23T9j5tz8i613U4J5_8dA10a9F36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQUdRoo7vXsZn106g@1ywD" rel="stylesheet" />
-  <!-- CSS Reset : BEGIN --> 
-  <style type="text/css">html,
+  <!--<link rel="stylesheet" type="text/css" href="http://www.bella-sheet.info/professorial-Lenny/8be5e239k5K8A6o11Q45a2M10adp36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQtdRoR7vJgy10n6l1wD@B" />--> 
+  <style type="text/css">body, * {
+            margin: 0;
+            padding: 0;
+        }
         body {
-            margin: 0 auto !important;
-            padding: 0 !important;
-            height: 100% !important;
-            width: 100% !important;
-            background: #f1f1f1;
+            background-color: #ffffff;
         }
-
-        /* What it does: Stops email clients resizing small text. */
-        * {
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        /* What it does: Centers email on Android 4.4 */
-        div[style*="margin: 16px 0"] {
-            margin: 0 !important;
-        }
-
-        /* What it does: Stops Outlook from adding extra spacing to tables. */
-        table,
-        td {
-            mso-table-lspace: 0pt !important;
-            mso-table-rspace: 0pt !important;
-        }
-
-        /* What it does: Fixes webkit padding issue. */
         table {
-            border-spacing: 0 !important;
-            border-collapse: collapse !important;
-            table-layout: fixed !important;
-            margin: 0 auto !important;
+            border-spacing: 0;
+            font-family: sans-serif;
         }
-
-        /* What it does: Uses a better rendering method when resizing images in IE. */
         img {
-            -ms-interpolation-mode: bicubic;
+            border: 0;
         }
-
-        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
         a {
-            text-decoration: none;
+            color:#193A81;
+            text-decoration: underline;
         }
-
-        /* What it does: A work-around for email clients meddling in triggered links. */
-        *[x-apple-data-detectors],
-        /* iOS */
-        .unstyle-auto-detected-links *,
-        .aBn {
-            border-bottom: 0 !important;
-            cursor: default !important;
-            color: inherit !important;
-            text-decoration: none !important;
-            font-size: inherit !important;
-            font-family: inherit !important;
-            font-weight: inherit !important;
-            line-height: inherit !important;
+        h1 {
+            font-size: 34px;
+            font-weight: bold;
+            margin: 25px 0;
+            color: white;
+            line-height: 1.2;
+            letter-spacing: 1.2px;
         }
-
-        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
-        .a6S {
-            display: none !important;
-            opacity: 0.01 !important;
-        }
-
-        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
-        .im {
-            color: inherit !important;
-        }
-
-        /* If the above doesn"t work, add a .g-img class to any image in question. */
-        img.g-img+div {
-            display: none !important;
-        }
-
-        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
-        /* Create one of these media queries for each additional viewport size you"d like to fix */
-
-        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
-        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-            u~div .email-container {
-                min-width: 320px !important;
-            }
-        }
-
-        /* iPhone 6, 6S, 7, 8, and X */
-        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
-            u~div .email-container {
-                min-width: 375px !important;
-            }
-        }
-
-        /* iPhone 6+, 7+, and 8+ */
-        @media only screen and (min-device-width: 414px) {
-            u~div .email-container {
-                min-width: 414px !important;
-            }
-        }
-	</style> 
-  <!-- CSS Reset : END -->
-  <!-- Progressive Enhancements : BEGIN --> 
-  <style type="text/css">.primary {
-            background: #448ef6;
-        }
-
-        .bg_white {
-            background: #ffffff;
-        }
-
-        .bg_light {
-            background: #fafafa;
-        }
-
-        .bg_black {
-            background: #861F42;
-        }
-
-        .bg_dark {
-            background: rgba(0, 0, 0, .8);
-        }
-
-        .email-section {
-            padding: 2.5em;
-        }
-
-        /*BUTTON*/
-        .btn {
-            padding: 5px 15px;
-            display: inline-block;
-        }
-
-        .btn.btn-primary {
-            border-radius: 30px;
-            background: #448ef6;
-            color: #ffffff;
-        }
-
-        .btn.btn-white {
-            border-radius: 30px;
-            background: #ffffff;
+        h4 {
+            font-weight: bold;
+            font-size: 16px;
             color: #000000;
+            letter-spacing: 1px;
+            margin: 10px 0;
         }
-
-        .btn.btn-white-outline {
-            border-radius: 30px;
-            background: transparent;
-            border: 1px solid #fff;
-            color: #fff;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: "Work Sans", sans-serif;
+        p {
+            font-size: 12px;
             color: #000000;
-            margin-top: 0;
-            font-weight: 400;
-        }
-
-        body {
-            font-family: "Work Sans", sans-serif;
-            font-weight: 400;
-            font-size: 15px;
-            line-height: 1.8;
-            color: rgba(0, 0, 0, .4);
-        }
-
-        a {
-            color: #448ef6;
-        }
-
-        table {}
-
-        /*LOGO*/
-
-        .logo h1 {
-            margin: 0;
-        }
-
-        .logo h1 a {
-            color: #000000;
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-family: "Poppins", sans-serif;
-        }
-
-        .navigation {
-            padding: 0;
-        }
-
-        .navigation li {
-            list-style: none;
-            display: inline-block;
-            ;
-            margin-left: 5px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .navigation li a {
-            color: rgba(0, 0, 0, .4);
-        }
-
-        /*HERO*/
-        .hero {
-            position: relative;
-            z-index: 0;
-        }
-
-        .hero .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            content: "";
-            width: 100%;
-            background: #000000;
-            z-index: -1;
-            opacity: .3;
-        }
-
-        .hero .text {
-            color: rgba(255, 255, 255, .9);
-        }
-
-        .hero .text h2 {
-            color: #fff;
-            font-size: 50px;
-            margin-bottom: 0;
-            font-weight: 300;
-            line-height: 1;
-        }
-
-        .hero .text h2 span {
-            font-weight: 600;
-            color: #448ef6;
-        }
-
-
-        /*HEADING SECTION*/
-        .heading-section {}
-
-        .heading-section h2 {
-            color: #000000;
-            font-size: 28px;
-            margin-top: 0;
-            line-height: 1.4;
-            font-weight: 400;
-        }
-
-        .heading-section .subheading {
-            margin-bottom: 20px !important;
-            display: inline-block;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: rgba(0, 0, 0, .4);
-            position: relative;
-        }
-
-        .heading-section .subheading::after {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -10px;
-            content: "";
-            width: 100%;
-            height: 2px;
-            background: #448ef6;
-            margin: 0 auto;
-        }
-
-        .heading-section-white {
-            color: rgba(255, 255, 255, .8);
-        }
-
-        .heading-section-white h2 {
-            font-family:
-                line-height: 1;
-            padding-bottom: 0;
-        }
-
-        .heading-section-white h2 {
-            color: #ffffff;
-        }
-
-        .heading-section-white .subheading {
-            margin-bottom: 0;
-            display: inline-block;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: rgba(255, 255, 255, .4);
-        }
-
-
-        /*BLOG*/
-        .text-services .meta {
-            text-transform: uppercase;
-            font-size: 14px;
-            margin-bottom: 0;
-        }
-
-        /*FOOTER*/
-
-        .footer {
-            color: rgba(255, 255, 255, .5);
-
-        }
-
-        .footer .heading {
-            color: #ffffff;
-            font-size: 20px;
-        }
-
-        .footer ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        .footer ul li {
-            list-style: none;
             margin-bottom: 10px;
         }
-
-        .footer ul li a {
-            color: rgba(255, 255, 255, 1);
+        .wrapper {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            table-layout: fixed;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        .outer-table {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+        }
+        .start-table {
+            padding: 0 10px;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .logo {
+            color: #ffffff;
+            margin-left: 15px;
+        }
+        .logo-cell {
+            background: ;
+            background-color:;
+            padding: 5px 0 3px;
+            overflow: hidden;
+        }
+        .main-table {
+            margin-top: 10px;
+        }
+        .main-text {
+            padding: 0px 60px 50px;
+            text-align: center;
+        }
+        .cta-table {
+            margin: 0px auto 60px;
+        }
+        .cta-btn {
+            border-radius: 3px;
+        }
+        .cta-btn a {
+            padding: 15px 30px;
+            border-radius: 2px;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 22px;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-block;  
+            background: linear-gradient(to bottom, #ffffff, #9ECCD9);
+            letter-spacing: 1px;
+        }
+        .inner-img-table {
+            padding: 40px 40px 25px;
+        }
+        .inner-img {
+            border: 15px solid #D6ECF8;
+        }
+        .logos {
+            border-bottom: 1px solid #eee;
+            padding: 0 60px;
+            margin: 0 auto;
+        }
+        .foot-logo {
+            padding: 0 10px;
+            border-right: 2px solid #777;
+        }
+        .foot-logo-last {
+            border-right: none;
+        }
+        .footer-text {
+            padding: 10px;
+            text-align: justify;
+        }
+        .footer-text p a {
+            color: #000000;
+        }
+        .social-icon {
+            margin: 5px 10px 10px 0;
+            display: inline-block;
+        }
+        .main-p {
+            margin: 0;
+            color: white;
+            font-size: 16px;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .full-width-image img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
         }
 
 
-        @media screen and (max-width: 500px) {}
+        /*Media Queries*/
+        @media screen and (max-width: 500px) {
+            .main-text {
+                padding: 0px 30px 40px;
+            }
+            .inner-img-table {
+                padding: 10px 25px 20px;
+            }
+            .main-p {
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 26px;
+            }
+            h4 {
+                font-size: 14px;
+            }
+            p {
+                font-size: 10px;
+            }
+            .logos {
+                padding: 0;
+            }
+        }
 	</style> 
  </head> 
- <body style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;" width="100%"> 
-  <center style="width: 100%; background-color: #f1f1f1;"> 
-   <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-    ?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;
+ <body> 
+  <div class="wrapper"> 
+   <table align="center" cellpadding="0" cellspacing="0" class="outer-table"> 
+    <tbody> 
+     <tr> 
+      <td> 
+       <table cellpadding="0" cellspacing="0" class="start-table" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td> <p>&nbsp;</p> </td> 
+          <td> <p class="text-right">&nbsp;</p> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <!-- HEADER/HERO SECTION --> 
+       <table cellpadding="0" cellspacing="0" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="logo-cell">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <table cellpadding="0" cellspacing="0" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="full-width-image header-img">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <!-- MAIN CONTENT TABLE --> 
+       <table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="main-table" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td>
+           <!-- MAIN CONTENT TEXT --> 
+           <table align="center" cellpadding="0" cellspacing="0"> 
+            <tbody> 
+             <tr> 
+              <td class="main-text"> <h1 style="color: #000000"><img alt="" src="http://www.bella-sheet.info/limiters-Mafiosi/e4q5N239l5b7aIM13n45aD_6x10adx36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQtdRoR6nnI1F05bXwDl" /></h1> <p class="main-p" style="color: #000000; font-size: 19px">&nbsp;</p> 
+               <div>
+                <a href="http://www.bella-sheet.info/4fd4F2395R86jk11l45a3N10ady36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQtdRoR6z1AV0A6p@lwlD/Abernathy-irons"><img alt="" src="http://www.bella-sheet.info/6835Q239z5s7xpa13d4I5Ca7O10adM36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQtdRoR5Y10PU5mPwDB/recant-Cassius" style="width: 100%" /></a>
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- CTA TABLE --> 
+           <table align="center" cellpadding="0" cellspacing="0" class="cta-table"> 
+            <tbody> 
+             <tr> 
+              <td bgcolor="#193A81" class="cta-btn">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- BORDERED IMAGE --> 
+           <table align="center" cellpadding="0" cellspacing="0" class="inner-img-table"> 
+            <tbody> 
+             <tr> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- MAIN CONTENT TEXT - 2nd PART --> 
+           <table align="center" cellpadding="0" cellspacing="0"> 
+            <tbody> 
+             <tr> 
+              <td class="main-text"> <h1 style="color: #000000">&nbsp;</h1> <p class="main-p" style="color: #000000">&nbsp;</p> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <!-- MAIN FULL WIDTH IMAGE --> 
+       <table align="center" cellpadding="0" cellspacing="0" class="main-img-last" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="full-width-image">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <!-- FOOTER TABLE--> 
+       <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td>
+           <!-- LOGOS TABLE--> 
+           <table cellpadding="0" cellspacing="0" class="logos" width="70%"> 
+            <tbody> 
+             <tr> 
+              <td align="center">&nbsp;</td> 
+              <td align="center">&nbsp;</td> 
+              <td align="center">&nbsp;</td> 
+              <td align="center">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- FOOTER SOCIALS + TEXT SECTION--> 
+           <table cellpadding="0" cellspacing="0" class="footer-text"> 
+            <tbody> 
+             <tr> 
+              <td align="center" class="social-icon">&nbsp;</td> 
+              <td class="social-icon">&nbsp;</td> 
+              <td class="social-icon">&nbsp;</td> 
+              <td class="social-icon">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td> <h4>&nbsp;</h4> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h6 style="text-align: center">&nbsp;</h6> 
+   <div>
+    <a href="http://www.bella-sheet.info/c054A2395Q86ZI11F45a4p10adH36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQtdRoR5y1ty05GBwDX/migrate-announcing" style="text-decoration: underline!important; font-family: sans-serif; line-height: 14px; text-align: center; color: #999;">Miracle Sheets</a>&nbsp;|&nbsp; No longer wish to receive information?,
+    <a href="http://www.bella-sheet.info/connector-repudiating/9ae6JG23Q95M8sh613cy45na5W10adt36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQtdRoR7SOoV1J05Hl1wD" style="text-decoration-line: none;"> <span>Go.On.Here </span> </a>
+    <br /> 
+    <br /> 1501 Haines St. | Jacksonville, FL 32206 
+    <p>&nbsp;</p> 
    </div> 
-   <div class="email-container" style="max-width: 600px; margin: 0 auto;">
-    <!-- BEGIN BODY --> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td class="bg_white" style="padding: 1em 2.5em;" valign="top"> 
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="logo" style="text-align: center;"> <h1 style="font-size:25px">&nbsp;</h1> <h1 style="font-size: 17px;">&nbsp;</h1> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <!-- end tr --> 
-      <tr> 
-       <td class="bg_white email-section"> 
-        <div class="heading-section" style="padding: 0 30px;"> 
-         <h2 style="text-align: center"><span style="font-size:35px; color: #861F42 "><strong>Dear T-Mobile customer</strong></span></h2> 
-         <p style="color: #000000; line-height: normal;text-align: center;font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif';font-size: 19px">We value your feedback and appreciate your loyalty to T-Mobile. That's why we want to invite you to participate in a brief survey about your shopping experience with us.</p> 
-         <p><a href="http://www.ac-mobilex.info/lossier-Lindsey/a264o2395vV8v612q458eDI10a9T36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQUdRoo5G1zA05RLAwD"><img alt="" src="http://www.ac-mobilex.info/7194A2395RPi7a11y4590R10a9G36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQUdRoo6phi_105DMw@D/lossier-Lindsey" width="100%" /></a></p> 
-         <p style="text-align: center; line-height: normal"><span style="color: #000000; line-height: normal;text-align: center;font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif';font-size: 19px;">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a $100 <strong>T-Mobile </strong> gift card to one lucky survey participant.</span></p> &nbsp; 
-         <div style="padding-left: 15%; padding-right: 15%"> 
-          <p style="color: #FFFFFF; line-height: normal; text-align: center; font-size: 30px; background: #B92C5C; padding: 17px; border-radius: 10px"><a href="http://www.ac-mobilex.info/lossier-Lindsey/a264o2395vV8v612q458eDI10a9T36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQUdRoo5G1zA05RLAwD" style="text-decoration: none; color: #FFFFFF"><strong>Go And Start Now</strong></a></p> 
-         </div> 
-        </div> <br /> <br /> <br /> <br /> <br /> &nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td class="bg_black footer email-section" valign="middle"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td style="text-align: left; padding-left: 5px; padding-right: 5px;"> <h3 class="heading">&nbsp;</h3> 
-                <ul> 
-                 <li>&nbsp;</li> 
-                 <li>&nbsp;</li> 
-                 <li>&nbsp;</li> 
-                </ul> </td> 
-              </tr> 
-              <tr> 
-               <td style="text-align: left; padding-left: 5px; padding-right: 5px;"> <h3 class="heading">&nbsp;</h3> 
-                <ul> 
-                 <li>&nbsp;</li> 
-                </ul> </td> 
-              </tr> 
-              <tr> 
-               <td style="text-align: left; padding-left: 5px; padding-right: 5px;"> <h3 class="heading">&nbsp;</h3> 
-                <ul> 
-                 <li> <p style="margin: 0; font-size: 12px; text-align: left; letter-spacing: normal; colro">&nbsp;</p> 
-                  <center>
-                   <span class="text">To dispense with your subscription,<a href="http://www.ac-mobilex.info/twilight-befuddle/1985BX2395Ns86g12D45o8fw10a9C36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQUdRoo6ACH1J06BJ2zwD" style="text-decoration-line: none;"> <span>Click This </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <font class="spanning"></font><span color="Huntley"><span style="tooler"><style class="Aristotle"><font style="Josef"></style></font><style color="Bonn"></span></span></style><style><span color="contrivance"></style><small></span></small><small></small> </span> 
-                   <p>&nbsp;</p> 
-                  </center> </li> 
-                </ul> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <!-- end: tr --> 
-     </tbody> 
-    </table> 
-   </div> 
-  </center>   
- <img src="http://www.ac-mobilex.info/peripheries-existed/4Ae5AZ2395CR85H12a4591II10a9w36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQUdRoo7A1RzKy06UqwXlD" alt=""/></body>
+  </div>   
+ <img src="http://www.bella-sheet.info/scowled-enlists/5ee6KM23i95yj8w511z45a8m10adl36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQtdRoR5L1k0O5n1wqD" alt=""/></body>
 </html>
 
-------=_Part_157_1936493073.1673104037632--
+------=_Part_382_24576276.1673110215673--
 
