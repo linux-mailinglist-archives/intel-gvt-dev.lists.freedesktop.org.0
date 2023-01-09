@@ -1,87 +1,107 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 774A3663102
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Jan 2023 21:10:58 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 636DA663119
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Jan 2023 21:13:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4CBB510E502;
-	Mon,  9 Jan 2023 20:10:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 268BC10E08B;
+	Mon,  9 Jan 2023 20:13:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 240A910E4FF;
- Mon,  9 Jan 2023 20:10:52 +0000 (UTC)
-Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 309JuEd7007452; Mon, 9 Jan 2023 20:10:49 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=WbMDgdUJZVKJs0Nl9/VYi0q97VLNPhEA1RGhIIXexw4=;
- b=tICUTTr25xyQuaVIfVsGyhVM3CaIMsA4ASISY+XYNFT6hzBme/UIOlxZ367da1OIEEqr
- sOQ/n0nGWPCf9F0JptTssk+P0mma08DiuHwqn8IylSE6eKiV3feBtwcHCAiJY8BUNEoV
- jrI/ZfzfT1a8LEL3dtUdA2BWE9dxbQ39gf/fI+G6RInnWnY8MEhahe+O/UZXN3Ayzh62
- 8XmRJmBf8gIsbpnR4XX2bf6hkQO0c7X3PcwS3oZ1t39DBJlUVeihOfVgEQ6vmhtQY7Bt
- /ac8A9WUbhz3JvqDabAObQqr4Le03mkIuaqmv1zckMeszyksbl/YvE8se4SD8/ZywQDb zw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3myjw3qdqg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Jan 2023 20:10:48 +0000
-Received: from m0098416.ppops.net (m0098416.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 309Jt5o8015678;
- Mon, 9 Jan 2023 20:10:48 GMT
-Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.27])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3myjw3qdq5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Jan 2023 20:10:48 +0000
-Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
- by ppma05wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 309IIJIf007444;
- Mon, 9 Jan 2023 20:10:47 GMT
-Received: from smtprelay02.dal12v.mail.ibm.com ([9.208.130.97])
- by ppma05wdc.us.ibm.com (PPS) with ESMTPS id 3my0c75qk1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 09 Jan 2023 20:10:47 +0000
-Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
- [10.39.53.233])
- by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 309KAkr826804658
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 9 Jan 2023 20:10:46 GMT
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id DF68958054;
- Mon,  9 Jan 2023 20:10:45 +0000 (GMT)
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 815195803F;
- Mon,  9 Jan 2023 20:10:43 +0000 (GMT)
-Received: from li-2311da4c-2e09-11b2-a85c-c003041e9174.ibm.com.com (unknown
- [9.65.251.44]) by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  9 Jan 2023 20:10:43 +0000 (GMT)
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-To: alex.williamson@redhat.com, pbonzini@redhat.com
-Subject: [PATCH 2/2] KVM: s390: pci: use asyncronous kvm put
-Date: Mon,  9 Jan 2023 15:10:37 -0500
-Message-Id: <20230109201037.33051-3-mjrosato@linux.ibm.com>
-X-Mailer: git-send-email 2.39.0
-In-Reply-To: <20230109201037.33051-1-mjrosato@linux.ibm.com>
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2055.outbound.protection.outlook.com [40.107.93.55])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 23E5710E08B;
+ Mon,  9 Jan 2023 20:13:31 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dWcD5JwHzoO7nuChwng99et5kC8UrgLFE24aANU/KErzdVqW1f3emIzpx946rugcT5ohpuGEthwWnYZNb23ayHhvsDt1C1QMkArydyxLZb8hsNuMo0rtTLmCCCIaKhvEXtTl9A+ENnojnYiOQda5hHZnKZyeMgJ5N84nj2VL6HVrQF0uzlydRPs8/v7bl3T33Q/lYqnmCJ085krkoZ5ptletUE8S22Z9QrP16N2jMzGIMPtCBg/X6suKpOTmilTHA5VFWb0wXE+odbHLD+9BYb/IXqZAwhpuRc/h0Uc81MtUnaX2pjK0ADdoArhiM5OXc61G/wiMJwBdfp+FlzR+Sw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Q2NYdG+PgMDxwVGkLC21QbF8DQnBf+7ac+2/3GhBBzs=;
+ b=ZbJSmeIt715O/5i7XpKG/GM4h36gzTWo8AykPTz+9NVFzTgKnJRLdHLIR+fzJhaqc5i1eSXT9iJyPt9CfLtTqm9Z/V05EKAEa2oNnTr6d6mRY+FIHcHEDoSzWNh2Ep8joIIlVdvzA26Tt+f+XDLqMt/5l97lYhLk6y/7Uur1z3ogmtwwCpBC78kVv8FxItBqkRESnH5NctsvGubEVgDpyyZ3KSokETT1Z5fwDp12rQRXZTOYD5yErHLOqJZZ1e3JGxJf+ODZaXzbuSdFtTqYy9YaZMa2uz4mWWjmOWHBeMbalqJFoyy04uVOGSKzf13NjA0AYIKTeM+LBCaRzTZlsg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Q2NYdG+PgMDxwVGkLC21QbF8DQnBf+7ac+2/3GhBBzs=;
+ b=ocg8cH4WsdfigbEjHfVNK9bzhZPkmWWE8R/mvHed9Jtk9TWJU0fYQFmX5QxCzOyc5eWYZtDR0LtKLiMu3nKWjVeBo1P75Xb4/Pj7RYsuvnqRj4KcyB1ewU2S0jrKVjf7BxNrg4XeWeUn10K7XVDNDfI6I/iCB8Gsf6jGNb9QBsJEc+awp/BKXQlQ8Krwz7nkDMux9IAASxC1Nqyhi8YIIFuZu6fb1NMioV2rXT+597NBRV6CjYTciy9RIxXyeTbnG5DHMAYQIQ2ZXqoWF0/U4szlN8Y5cmyo7toqG2e76ZW/doEAEd8c2G6ZQBOV5u1VM2w1QooQTegGJTWjEI79dg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by CH0PR12MB5281.namprd12.prod.outlook.com (2603:10b6:610:d4::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Mon, 9 Jan
+ 2023 20:13:29 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f8b0:df13:5f8d:12a]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f8b0:df13:5f8d:12a%8]) with mapi id 15.20.5986.018; Mon, 9 Jan 2023
+ 20:13:29 +0000
+Date: Mon, 9 Jan 2023 16:13:27 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>
+Subject: Re: [PATCH 1/2] KVM: async kvm_destroy_vm for vfio devices
+Message-ID: <Y7x1Z64g4H0kWOo/@nvidia.com>
 References: <20230109201037.33051-1-mjrosato@linux.ibm.com>
+ <20230109201037.33051-2-mjrosato@linux.ibm.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230109201037.33051-2-mjrosato@linux.ibm.com>
+X-ClientProxiedBy: BL1PR13CA0179.namprd13.prod.outlook.com
+ (2603:10b6:208:2bd::34) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: Oy22cas3PYwW1KMUoEHNyWu-S5fSk_fC
-X-Proofpoint-GUID: uWY384HuphX1JMDaGrC_ZMgCEmJTwW4n
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
- definitions=2023-01-09_14,2023-01-09_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 mlxscore=0
- malwarescore=0 lowpriorityscore=0 bulkscore=0 mlxlogscore=999 phishscore=0
- spamscore=0 clxscore=1015 impostorscore=0 suspectscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
- definitions=main-2301090141
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|CH0PR12MB5281:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8e744c70-a4ac-458b-3e24-08daf27df905
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: KVzOu/2OZ/HCfnozulhGMbAqnU6SDxFJzRMnx+3iU6vcm+TqhEqnOv6apPKE1yfF5bJkeUS8FUcIIkEJfldh7Ez2ZTLw3gCkqave1YwP7YTYwjU9rJ0bqyghh4bZ4oLt4+0BG/CqQ9BaJj2tExBY5r7FGLtl4SqLQ5cl1p5YHwCdAnrQQsE3AZCrI/rkZhtH2SU3u+kDFMPmYL6lMw6ht2+maHaZIU1sXjqcZVcDjcvTIvs/6JGqOb/qL77M76n3o6fAKCQHlq3BceNwC4/J0IloKsr04ie3re9hqxLufEJeBXzx9ydtNVBIu9y/hanbh31K3GuySEw9crGVAGnFb6NfBDnK5OlVeLPT45SuRxGk2sXrXgfVmRuHy62N/2I2oAYqTyXsiXOwarJykSrWZjE/7ZOb9LXmtyaBowCM8RvvZn8XpP91TYUD8sE70p/lOqlwAqNhr14CFZUE1gKgUD+qEJUIZbQxgz9a0bWhwRumLKZYBspwGp8h+yH4Hs4h/f09Sa0FnjHb29fE1xcxTDjmYe6j0AydGphgNSF8+4S9fsmpslnOSkHawoHmqIq92Qd4ucIFt+Kf39ODbWfaQcwXESrDU1qEZw5JGjUzV6Eun+3yNtMy+Eum/gtU5A2aneHjqj9068bT2Xvk3ROEMQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(4636009)(346002)(396003)(366004)(376002)(39860400002)(136003)(451199015)(6506007)(38100700002)(2906002)(478600001)(6486002)(2616005)(26005)(6512007)(186003)(316002)(5660300002)(7416002)(83380400001)(8936002)(36756003)(86362001)(41300700001)(8676002)(66476007)(66556008)(66946007)(6916009)(4326008);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cQGkv9WK05Q0FMNC625sVEr1puvhlB1fwM+TP1bOpXrE7SXgZsMkrurgs8XJ?=
+ =?us-ascii?Q?YOL5mHRVAhD1dQg1EGC+lzZ3GUspDxIiNF3pAaESv9qqdjzJ0jRZPkAg0OF+?=
+ =?us-ascii?Q?CQ4XbdBUrj4S/QG1jUt+BD7e7yuOjJsterB+tcVl8jfKW/n3gubjPbWXOBO3?=
+ =?us-ascii?Q?MaxdLD4iqL8UYnXH3+pWTlNqXrHrWQKrdFG8v4IbxfMFKCAsG795uNqhauhS?=
+ =?us-ascii?Q?Yp/tWsfmZLLfTpeOxjfPzIgPJFot5M9VBjOxpwLSM6P15L1EV/c10NGvyQNu?=
+ =?us-ascii?Q?EHUwjTktEyrg0IhYEJPd4YtIIHOoYH1IDaZ6pVTkqHftKvmD0SjBaRrMbO1f?=
+ =?us-ascii?Q?MQfffLRmOpMeINhM2PhatXuVtTkVE7Qv0lTbyzpzeKOKs4eNnjO4mVX4zl27?=
+ =?us-ascii?Q?B3oSAHcRQ8T3/Ur6u5SplCA/tRKlhpP75MpzhXqn+M311IZZxYfUtrzTLuF1?=
+ =?us-ascii?Q?02x2iCiQXYYg+2rJgdtQS1bX4g/rrRwiT9811dnsAvBRUMn9V/K1Pe+rOz7J?=
+ =?us-ascii?Q?0GX1NRgDr55KV0gIO/7UWBNQmhZoIU6UBxcwO6XYCJq+Dci30OgHi9pGdwmP?=
+ =?us-ascii?Q?Wf/x4HemWCHyuLdvFUg0Hk5LXbyoLUk3A56N/0n3Jg0cAEdlxXmulXPUpC7y?=
+ =?us-ascii?Q?KtTeEMiM6n2EHvM4TuzCeU2GKwCk/tpu9P4+OE/4PdBSuNISUtJjgY89xe1K?=
+ =?us-ascii?Q?9620UuvzGYNPpN213/xpsXvBjl6GsnVnfplGNXikRrdadmhBolcDjfSRUNIU?=
+ =?us-ascii?Q?HlqUND5mMWHpu+mxrweSsnptTP+tsZH79qaNJvZaOMddCOgmwA+0oUANbhkM?=
+ =?us-ascii?Q?o4a8pA/O6st+zk822o70GvMXqwzZRQ1U2Ddl1+cUCLDJHPuALJyTtWzju5wp?=
+ =?us-ascii?Q?IHkgx6HlomuN0X8B3Y7U0MC9RkeOyeNP06WX2AFyHpx4JIq2goTRF6n5QQgE?=
+ =?us-ascii?Q?Okn2a/J9E9MwM+BHaxvVKaiNdaV27ZHMAmEE2pWwFBUqLkxZ0reTbUxSfSlH?=
+ =?us-ascii?Q?7Gr/H5LvldZuyeCtzupAF+SOQgBvclXU6hbKfMf0qEdAPQTBjrPh83rZPkfd?=
+ =?us-ascii?Q?OSo664gHgmmqaQMn4OPFwmwYxh5YxJAljKETCsvub1i2xrRRpkLY0nQr3dij?=
+ =?us-ascii?Q?OQ3ZZi4jjamjIFaQKO+eNKDcfa27hIhCaRFIktHLnpm2+ZGx3WGZUoCmC5ce?=
+ =?us-ascii?Q?ngYBwJ+CNgp9EX3oUNEqo5g6rfSPeWqWRxa9A7emYrsgJHQ2Y8Jm0eGoFuuU?=
+ =?us-ascii?Q?/dlpa9tz0eTDrOHy9oz6F9q3/uIUSPP1bSF2i/FoiUFgi0o5Ud8FvrjOJECW?=
+ =?us-ascii?Q?TBXAlXcTzaDVH8F0NImRu2APeGsMNjhZ74UTvraHTnCdzGixe4RcCHn+3mx6?=
+ =?us-ascii?Q?VuKgSRFBLAV3eIwnWhYlyKaPt4LHyJnN6oMmLxfhwsrfzY92lCWzOBEq8K6z?=
+ =?us-ascii?Q?nWTzS8UIc39FACDIZmKfk3ocdv24Zawg2WQAQkozfYBTyQ1AofJ94rkHgyf8?=
+ =?us-ascii?Q?ZK+PRAj0R+or0nXoGq5Ddr/YuiIJRuc6VRUPIiAgI9EKnyiYJu/Eeu+YpdLx?=
+ =?us-ascii?Q?4+tZRic4jUKFev2dB0cR44FAhAYIsg9IRw7bmV9f?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8e744c70-a4ac-458b-3e24-08daf27df905
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jan 2023 20:13:29.1393 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2RnyAtYdkgBhSvKiZ3Oaq0i75GYQi0f4aaGGt/eIlKDxaJf1aJs0nN8kMKq159We
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR12MB5281
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,49 +118,43 @@ Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
  imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
  david@redhat.com, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
  cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, jgg@nvidia.com, kvm@vger.kernel.org,
- borntraeger@linux.ibm.com, intel-gvt-dev@lists.freedesktop.org,
- zhi.a.wang@intel.com
+ pasic@linux.ibm.com, alex.williamson@redhat.com, kvm@vger.kernel.org,
+ pbonzini@redhat.com, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-It's possible that the kvm refcount will reach 0 at this point while the
-associated device is still in kvm device list - this would result in a
-deadlock on the vfio group lock.  Avoid this possibility by using
-kvm_put_kvm_async to do the kvm_destroy_vm asynchronously.
+On Mon, Jan 09, 2023 at 03:10:36PM -0500, Matthew Rosato wrote:
+> Currently it is possible that the final put of a KVM reference comes from
+> vfio during its device close operation.  This occurs while the vfio group
+> lock is held; however, if the vfio device is still in the kvm device list,
+> then the following call chain could result in a deadlock:
+> 
+> kvm_put_kvm
+>  -> kvm_destroy_vm
+>   -> kvm_destroy_devices
+>    -> kvm_vfio_destroy
+>     -> kvm_vfio_file_set_kvm
+>      -> vfio_file_set_kvm
+>       -> group->group_lock/group_rwsem
+> 
+> Avoid this scenario by adding kvm_put_kvm_async which will perform the
+> kvm_destroy_vm asynchronously if the refcount reaches 0.
+> 
+> Fixes: 421cfe6596f6 ("vfio: remove VFIO_GROUP_NOTIFY_SET_KVM")
+> Reported-by: Alex Williamson <alex.williamson@redhat.com>
+> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/kvmgt.c  |  6 +++++-
+>  drivers/s390/crypto/vfio_ap_ops.c |  7 ++++++-
+>  include/linux/kvm_host.h          |  3 +++
+>  virt/kvm/kvm_main.c               | 22 ++++++++++++++++++++++
+>  4 files changed, 36 insertions(+), 2 deletions(-)
 
-Fixes: 09340b2fca00 ("KVM: s390: pci: add routines to start/stop interpretive execution")
-Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
----
- arch/s390/kvm/pci.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+Why two patches?
 
-diff --git a/arch/s390/kvm/pci.c b/arch/s390/kvm/pci.c
-index ec51e810e381..d1d528438138 100644
---- a/arch/s390/kvm/pci.c
-+++ b/arch/s390/kvm/pci.c
-@@ -509,7 +509,7 @@ static int kvm_s390_pci_register_kvm(void *opaque, struct kvm *kvm)
- 		kvm_s390_pci_dev_release(zdev);
- 	mutex_unlock(&kvm->lock);
- 	mutex_unlock(&zdev->kzdev_lock);
--	kvm_put_kvm(kvm);
-+	kvm_put_kvm_async(kvm);
- 	return rc;
- }
- 
-@@ -567,7 +567,11 @@ static void kvm_s390_pci_unregister_kvm(void *opaque)
- 	mutex_unlock(&kvm->lock);
- 	mutex_unlock(&zdev->kzdev_lock);
- 
--	kvm_put_kvm(kvm);
-+	/*
-+	 * Avoid possible deadlock on any currently-held vfio lock by
-+	 * ensuring the potential kvm_destroy_vm call is done asynchronously
-+	 */
-+	kvm_put_kvm_async(kvm);
- }
- 
- void kvm_s390_pci_init_list(struct kvm *kvm)
--- 
-2.39.0
+It looks OK to me
 
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+
+Jason
