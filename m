@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12F35662BB5
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Jan 2023 17:51:56 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 176EE662C70
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Jan 2023 18:16:21 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D173B10E4C1;
-	Mon,  9 Jan 2023 16:51:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D833810E4C3;
+	Mon,  9 Jan 2023 17:16:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Mon, 09 Jan 2023 16:51:51 UTC
-Received: from mail.mo-jankrger.info (unknown [193.160.141.90])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2841410E449
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Mon, 09 Jan 2023 17:16:18 UTC
+Received: from mail.clap-paypl.info (unknown [193.160.141.91])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7F50810E4C3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Jan 2023 16:51:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mo-jankrger.info;
+ Mon,  9 Jan 2023 17:16:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=clap-paypl.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kroger_appreciation@mo-jankrger.info; 
- bh=+KCQMy1h+Q1NLLQEsJej+sTZMhc=;
- b=J81j8+614EHiSS0xYTpPr0+fn3SA2WQnYOYKxWF0fI5HQKmUaPvAiBhKDxDUcTEzphlGaSjRGpNb
- xPcZqEcmXaLAQL0MuVec1BjaQoJpD9846adQOYDffElhtVnf9JFnWBkxO39XGj1LtOeduV/QqvwV
- qz1mQQdri7y4QITL6oU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mo-jankrger.info;
- b=HYpzETJtZZLQ+4seyTt7/YVpoZcNQMIFNu+s+pNnjxrog1ej3QhI477q6t2k6vS16GxV734enL9W
- PncvuOa4T/q9Hevy/y7owMRy0D3a5x1WWzZGzRXT9MnxT41oJPM+NQUXex4d7cOkuSadl/UuyE/9
- JCqBSPuWnOMJNorqcpw=;
-Received: by mail.mo-jankrger.info id hnh32e0001g9 for
+ i=paypal_gift_opportunity@clap-paypl.info; 
+ bh=W7Aok5/6U1QBczRHSIxNPlY6XCQ=;
+ b=Tity6dehjQZ5epyelMf1oyO+SdB3A+tCT9kLSIHB+r6F00alIpjpyT9WpyH1CHwRxc55sWeyKl8n
+ OZg4mB24pWrSw8ytJ+rklZH9O7xRZVZRzfMYAT/Hhsc7v1Fz0pUpHyioRJ3bxk8zdnkYzgpcsNyu
+ O40wKsBm4D6R22RIyQ0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=clap-paypl.info;
+ b=B8qmWhmkwrUfdCWze/tVJKsYjRf9DIrZbr0bBP60w7jgD682it1EUg1O5EofYP0657bZD2vKIY1p
+ K+Am3CLZElck8aM7+3PCGOJwzhTpU9hq+eQnkpl2q4GKIDXhy150ltPd21dmUVoKbRxSx/Qi7+f9
+ uKNOu5/DFeDK9hVPxfY=;
+Received: by mail.clap-paypl.info id hnh5u40001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 9 Jan 2023 11:41:32 -0500 (envelope-from
- <kroger_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@mo-jankrger.info>)
-Date: Mon, 9 Jan 2023 11:41:32 -0500
-From: "Kroger Appreciation" <kroger_appreciation@mo-jankrger.info>
+ Mon, 9 Jan 2023 12:06:14 -0500 (envelope-from
+ <paypal_gift_opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@clap-paypl.info>)
+Date: Mon, 9 Jan 2023 12:06:14 -0500
+From: "Paypal Gift Opportunity" <paypal_gift_opportunity@clap-paypl.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every Visit, you are rewarded for your loyalty - Yayy
+Subject: Every visit a new reward that could get you anything on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_688_1062444363.1673282470154"
-Message-ID: <0.0.0.4C.1D924493AD572C6.BF45@mail.mo-jankrger.info>
+ boundary="----=_Part_667_1051544496.1673283952351"
+Message-ID: <0.0.0.4A.1D9244CAE2DEF2A.156D97@mail.clap-paypl.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,314 +53,115 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_688_1062444363.1673282470154
+------=_Part_667_1051544496.1673283952351
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
 <html lang="en">
  <head> 
-  <meta charset="utf-8" /> 
-  <meta content="width=device-width" name="viewport" /> 
-  <title>kroger</title> 
-  <style type="text/css">#outlook a {
-        padding: 0; /* Force Outlook to provide a "view in browser" message
-      }
-
-      .ReadMsgBody {
-        width: 100%; /* Force Hotmail to display emails at full width */
-      }
-
-      .ExternalClass {
-        width: 100%; /* Force Hotmail to display emails at full width */
-      }
-
-      .ExternalClass,
-      .ExternalClass p,
-      .ExternalClass span, 
-      .ExternalClass font,
-      .ExternalClass td,
-      .ExternalClass div {
-        line-height: 100%; /* Force Hotmail to display normal line spacing */
-      }
-
-      body, table, td, a { /* Prevent Webkit and Windows mobile from changing default text sizes */
-        -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
-      }
-
-      table, td { /* Remove spacing between tables in Outlook 2007 and up */
-        mso-table-lspace: 0pt;
-        mso-table-rspace: 0pt;
-      }
-
-      img { /* Allow smoother rendering of resized image in IE */
-        -ms-interpolation-mode: bicubic;
-      }
-
-      /* RESET STYLES ---------------------------------------- */
-
-      body {
-        height: 100% !important;
-        width: 100% !important;
-        margin: 0;
-        padding: 0;
-      }
-
-      img {
-        border: 0;
-        height: auto;
-        line-height: 100%;
-        outline: none;
-        text-decoration: none;
-      }
-
-      table {
-        border-collapse: collapse !important;
-      }
-
-      /* iOS BLUE LINKS ---------------------------------------- */
-
-      .apple-links a {
-        color: #999999;
-        text-decoration: none;
-      }
-
-      /* SMALL-SCREEN STYLES ---------------------------------------- */
-      @media screen and (max-width: 600px) {
-
-        table[class="wrapper"] {
-          width: 100% !important;
-        }
-
-        td[class="logo"] img {
-          margin: 0 auto !important;
-        }
-
-        td[class="hide"] {
-          display: none !important;
-        }
-      
-        img[class="fluid-image"] {
-          width: 100% !important;
-          height: auto !important;
-        }
-
-        td[class="mobile-button"] {
-          padding: 12px 60px 12px 60px !important;
-        }
-
-        td[class="mobile-button"] a {
-          font-size: 24px !important;
-        }
-
-        td[class="mobile-image-pad"] {
-          padding: 0 10px 0 10px !important;
-        }
-
-        td[class="mobile-title-pad"] {
-          padding: 10px 10px 10px 10px !important;
-        }
-
-        td[class="mobile-text-pad"] {
-          padding: 10px 10px 10px 10px !important;
-        }
-
-        td[class="mobile-column-right"] {
-          padding-top: 10px !important;
-        }
-
-      }
-	</style> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>Paypal</title> 
  </head> 
- <body style="margin: 0; padding: 0;">
-  <!--  container table --> 
-  <table border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center" bgcolor="#FFFFFF" style="padding: 20px 0 20px 0;">
-      <!-- hidden preheader --> 
-      <div style="display: none; font-size: 1px; color: #333333; line-height: 1px; font-family: Arial, sans-serif; max-height: 0px max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all;">
-       This won't show in the design but will be visible in the inbox preview.       </div> 
-      <!-- wrapper table --> 
-      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" width="600"> 
-       <tbody> 
-        <tr> 
-         <td>
-          <!-- content table --> 
-          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="left" class="logo">&nbsp;</td> 
-             <td align="right" class="hide" style="color: #aaaaaa; font-family: Arial, sans-serif; font-weight: normal; font-size: 14px; line-height: 18px;">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <!--  container table --> 
-  <table border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center" bgcolor="#FFFFFF" style="padding: 20px 0 20px 0;">
-      <!-- wrapper table --> 
-      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" width="600"> 
-       <tbody> 
-        <tr> 
-         <td>
-          <!-- content table --> 
-          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td class="mobile-image-pad">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="padding: 20px 0 10px 0; color: #000000; font-family: Arial, sans-serif; font-weight: bold; font-size: 32px; line-height: 36px; margin: 0px; padding-left: 5%; padding-right: 5%"> 
-              <div style="font-size: 35px; font-family: Cambria, 'Hoefler Text', 'Liberation Serif', Times, 'Times New Roman', 'serif'; color: #FFFFFF; background: #B31B30; padding: 30px; border-radius: 5px ">
-               Dear Kroger Customer
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="padding: 20px 15px 25px 15px; color: #000000; font-family: Arial, sans-serif; font-weight: normal; font-size: 22px; line-height: 22px; text-align: center; line-height: normal">We value your feedback and appreciate your loyalty to Kroger. That's why we want to invite you to participate in a brief survey about your shopping experience with us. 
-              <div>
-               <a href="http://www.mo-jankrger.info/isthmus-intervene/8be4v2395b8I6F12U4u5b0t10afm36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQcdRoe7oH10Hir5rqzwD"><img alt="" src="http://www.mo-jankrger.info/Perle-recompiled/22e6C23To95rW7aw11h45b2M10afk36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQcdRoe5GDz106VkA3wD" style="width: 100%" /></a>
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="padding: 0px 15px 25px 15px; color: #000000; font-family: Arial, sans-serif; font-weight: normal; font-size: 22px; line-height: normal; text-align: center; line-height: normal"> 
-              <div>
-               Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a $100 Kroger gift card to one lucky survey participant.               </div> <br /> &nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="padding: 10px 0 10px 0;">
-              <!-- TABLE-BASED BUTTON --> 
-              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" style="padding: 20px 0 0 0;"> 
-                  <table border="0" cellpadding="0" cellspacing="0"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" bgcolor="#B31B30" class="mobile-button" style="padding: 12px 18px 12px 18px; -webkit-border-radius:3px; border-radius:3px"><a href="http://www.mo-jankrger.info/isthmus-intervene/8be4v2395b8I6F12U4u5b0t10afm36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQcdRoe7oH10Hir5rqzwD" style="font-size: 40px; font-family: Arial, sans-serif; font-weight: normal; color: #ffffff; text-decoration: none;">Go And Start Now</a></td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <!--  container table --> 
-  <table border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center" style="padding: 40px 0 40px 0;">
-      <!-- wrapper table --> 
-      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" width="600"> 
-       <tbody> 
-        <tr> 
-         <td>
-          <!-- two columns --> 
-          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td>
-              <!-- left column --> 
-              <table align="left" border="0" cellpadding="0" cellspacing="0" class="wrapper" width="47%"> 
-               <tbody> 
-                <tr> 
-                 <td> 
-                  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td class="mobile-image-pad">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="left" class="mobile-title-pad" style="padding: 20px 0 0 0; color: #111111; font-family: Arial, sans-serif; font-weight: bold; font-size: 18px; line-height: 22px;">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="left" class="mobile-text-pad" style="padding: 10px 0 10px 0; color: #666666; font-family: Arial, sans-serif; font-weight: normal; font-size: 18px; line-height: 22px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <!-- right column --> 
-              <table align="right" border="0" cellpadding="0" cellspacing="0" class="wrapper" width="47%"> 
-               <tbody> 
-                <tr> 
-                 <td class="mobile-column-right"> 
-                  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td class="mobile-image-pad">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="left" class="mobile-title-pad" style="padding: 20px 0 0 0; color: #111111; font-family: Arial, sans-serif; font-weight: bold; font-size: 18px; line-height: 22px;">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="left" class="mobile-text-pad" style="padding: 10px 0 10px 0; color: #666666; font-family: Arial, sans-serif; font-weight: normal; font-size: 18px; line-height: 22px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <!--  footer table --> 
-  <table border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center" style="padding: 20px 0 20px 0;">
-      <!-- wrapper table --> 
-      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" width="600"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style="padding: 10px 0 10px 0; color: #666666; font-family: Arial, sans-serif; font-weight: normal; font-size: 14px; line-height: 18px;"> 
-          <div font-size:="" letter-spacing:="" margin:="" style="&gt;&lt;p style=" text-align:=""> 
-           <center>
-            To sever notifications,
-            <a href="http://www.mo-jankrger.info/4c14M2395JJ86n12JC45b1B10afF36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcdRoe6o1kQ0Y6zUwzDL/oceanography-assassins" style="text-decoration-line: none;"> <span>Click.Ahead.Here </span> </a>
-            <br /> 126 E 23rd St New York, NY, US 10010
-            <br /> 
-            <br /> 
-            <br /> 
-            <br /> 
-            <br /> <style><style><big></big><span face="perusal"></style></style><span color="reverie"></span></span><small></small><style class="archdioceses"></style> 
-            <p>&nbsp;</p> 
-           </center> 
-          </div> </td> 
-        </tr> 
-        <tr> 
-         <td align="center" style="padding: 10px 0 10px 0; color: #666666; font-family: Arial, sans-serif; font-weight: normal; font-size: 14px; line-height: 18px;">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.mo-jankrger.info/directrices-salvager/c244S2395lCk8511X45b3m10afZ36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQcdRoe7j1gF0rj5V3jwD" alt=""/></body>
+ <body style="margin: 80px; max-width: 700px">
+  <!-- Container --> 
+  <div style="background-color: #4185a4;background: linear-gradient(
+          120deg,
+          rgba(21, 81, 107, 1) 0%,
+          rgba(65, 133, 164, 1) 35%,
+          rgba(140, 189, 210, 1) 100%
+        );
+        border: 1rem solid #e1e9f2;
+        font-family: Arial, Helvetica, sans-serif;
+        position: relative;">
+   <!-- Header --> 
+   <div style="display: block; text-align: center">
+    <!-- Title --> 
+    <h1 style="color: white;
+            filter: drop-shadow(0 0 8px rgba(65, 133, 164, 0.85));
+            font-size: 3rem;
+            margin: 1rem 0;
+            -webkit-text-stroke: 1px rgba(65, 133, 164, 0.1);">PayPal</h1> 
+   </div> 
+   <!-- Content --> 
+   <div style="background-color: white; box-shadow: 0 8px 32px rgba(65, 133, 164, 0.5); width: 100%">
+    <!-- Card --> 
+    <p style="color: rgba(0, 0, 0, 0.65)">&nbsp;</p> 
+    <div style="padding: 5px">
+     <!-- Subtitle --> 
+     <h3 style="color: rgba(0, 0, 0, 0.5); text-align: center; font-size: 40px">Dear PayPal User</h3> 
+     <!-- Texts --> 
+     <table border="0" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td>&nbsp;</td> 
+        <td> 
+         <div style="color: rgba(65, 133, 164, 0.85); font-size: 23px; text-align: center">
+          We value your feedback and appreciate your loyalty to Paypal. That's why we want to invite you to participate in a brief survey about your shopping experience with us.          </div> </td> 
+        <td>&nbsp;</td> 
+       </tr> 
+       <tr> 
+        <td>&nbsp;</td> 
+        <td> 
+         <table border="0" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td>&nbsp;</td> 
+            <td><a href="http://www.clap-paypl.info/investigating-bumpers/a9e5W23L95v8O6O11P45b4P10b0s36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQzdRoK7G10lUHN6Qlyw1D"><img alt="" src="http://www.clap-paypl.info/spigot-pudding/51c5A23F95yGu7a13P4s5b6LK10b0S36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQzdRoK7BL10OLP5o0wDM" style="width: 100%" /></a><br /> &nbsp; 
+             <div style="color: rgba(65, 133, 164, 0.85); font-size: 22px; text-align: center; ">
+              Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a $100 
+              <strong>Paypal</strong> gift card to one lucky survey participant.              </div> <br /> <br /> <br /> <br /> &nbsp; 
+             <div style="text-align: center; ">
+              <a href="http://www.clap-paypl.info/investigating-bumpers/a9e5W23L95v8O6O11P45b4P10b0s36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQzdRoK7G10lUHN6Qlyw1D" style="text-decoration: none;"><span style="color: #FFFFFF;font-size: 30px;background: #00529C; padding: 25px; border-radius: 10px"><strong>Go And Start Now</strong></span></a>
+             </div> <br /> &nbsp;</td> 
+            <td>&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> </td> 
+        <td>&nbsp;</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <p>&nbsp;</p> 
+     <!-- Signature --> 
+     <div style="
+              align-items: center;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: flex-start;
+            ">
+      <!-- Logo --> 
+      <div style="margin-right: 0.5rem">
+       &nbsp;
+      </div> 
+      <!-- Contact --> 
+      <div style=" text-align: center;"> 
+       <p style="color: #4185a4; margin-bottom: 8px; font-size: 0.85rem">&nbsp;</p> 
+       <p style="color: rgba(65, 133, 164, 0.85); font-size: 0.65rem; margin: 4px 0">&nbsp;</p> 
+       <p style="color: rgba(65, 133, 164, 0.85); font-size: 0.65rem; margin: 4px 0">&nbsp;</p> 
+       <p style="color: rgba(65, 133, 164, 0.85); font-size: 0.65rem; margin: 4px 0">&nbsp;</p> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <div style="text-align: center;padding: 30px; background: #BDDEE9"> 
+   <p style="margin: 0; font-size: 12px; text-align: left; letter-spacing: normal;">&nbsp;</p> 
+   <center>
+    <span>To abandon communications,<a href="http://www.clap-paypl.info/shrubbery-draught/24c5D239q5Uw8I611Q45b5z10b0t36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQzdRoK6C1RF0X6d3LwDT" style="text-decoration-line: none;"> <span>Begin_Over_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <style><style></style><style title="manifests"></style><big></style></big><style color="anion"><small><small></style></small><span></small></span><span></span> </span> 
+    <p>&nbsp;</p> 
+   </center> 
+  </div>   
+ <img src="http://www.clap-paypl.info/15b5S23K95qB85A13G4l5Vb7D10b0C36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQzdRoK6X10iNO5Ij2wD/cowling-matriculate" alt=""/></body>
 </html>
 
-------=_Part_688_1062444363.1673282470154--
+------=_Part_667_1051544496.1673283952351--
 
