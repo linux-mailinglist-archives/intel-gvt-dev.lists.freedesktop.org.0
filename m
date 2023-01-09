@@ -2,42 +2,84 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DDF5662F0D
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Jan 2023 19:29:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9384663101
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Jan 2023 21:10:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C9C3910E4ED;
-	Mon,  9 Jan 2023 18:29:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EAF8910E486;
+	Mon,  9 Jan 2023 20:10:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Mon, 09 Jan 2023 18:29:21 UTC
-Received: from mail.get-kohls.info (unknown [193.160.141.93])
- by gabe.freedesktop.org (Postfix) with ESMTP id D15CD10E4F2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Jan 2023 18:29:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=get-kohls.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls.appreciation@get-kohls.info; 
- bh=fsrEk1PtdWHW4o0DuXCglVYv1IY=;
- b=h2rNeMaGMCgUEUfzylZdrlqjT1FLZTskgz7nL37ASafGZYz9DMOj1niJ3RZ1BT5uduWSQMJyQAiS
- mFIC8s7FILkeKLcT3bUbzGmf1h6OmG+XLkI2an++AqgVFIdbtOv4jto4bZT++mUtcD1o05FStSHH
- STbTAvkR9RUH6Cc/i3I=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=get-kohls.info;
- b=cQWOGEYEIyTof1qUKaMvnWvjUj2aM1nwTd7pn3VX2j8nvjeFhIxM2DNWASHEt3jQK+s+QjWnwHtI
- cqpcJjPeNMO913KyZXRY8poOB2gSNUcv7Kv/fRlrROpMnJJ3fs/UjYCh//n3ql2Pqx15XcgJrzHg
- /IfppzVwFChP3f6aZkc=;
-Received: by mail.get-kohls.info id hnheg40001gs for
- <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 9 Jan 2023 13:18:25 -0500 (envelope-from
- <kohls.appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@get-kohls.info>)
-Date: Mon, 9 Jan 2023 13:18:25 -0500
-From: "Kohls Appreciation" <kohls.appreciation@get-kohls.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Kohl's reward is just a few clicks away - While supplies last
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6F11110E08B;
+ Mon,  9 Jan 2023 20:10:49 +0000 (UTC)
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 309I2Gbh015694; Mon, 9 Jan 2023 20:10:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : content-transfer-encoding : mime-version; s=pp1;
+ bh=jUANk1sUBjvkcXo4F7E4VJUiJF91U0hygswuYCgVs9o=;
+ b=sjKuOj87quOPL4x97JCGT0n6j4OvaKo9JgreUK02MoRAF4ooP8XDOXxMSsOU4j1aBLge
+ H/JeaMEy9Jufyw59x6j1vtNdHmprb3dR1f2iy1dE588DAp1czBd5WWFebNm48YAt1VQh
+ +4sGzPZrhi9tkl6QBJ3z/+D6I+Wcu7X+0AsSH5St09nihBdjwC/08+5OyKoEa7PyryX4
+ KWTqu/FfuVI1k/7546M3PKoYlxUEsKOEvPZQJUCstUTWOGA6AC1aPyl1J4AQmNC4Rl97
+ vt/tWyy3Lq4C17Qz/laPsT1QXR5n0ooiz/WMJF550w7/OzUScdg/TwFPZYMfAp9n4jfT GA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3myjp27s2j-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Jan 2023 20:10:44 +0000
+Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 309K7u9K003676;
+ Mon, 9 Jan 2023 20:10:44 GMT
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
+ [169.63.214.131])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3myjp27s1k-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Jan 2023 20:10:44 +0000
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+ by ppma01dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 309JF8Ep021950;
+ Mon, 9 Jan 2023 20:10:42 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([9.208.129.114])
+ by ppma01dal.us.ibm.com (PPS) with ESMTPS id 3my0c7s311-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 09 Jan 2023 20:10:42 +0000
+Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
+ [10.39.53.233])
+ by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 309KAfb624773194
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 9 Jan 2023 20:10:41 GMT
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id EC6575803F;
+ Mon,  9 Jan 2023 20:10:40 +0000 (GMT)
+Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id A465D5804E;
+ Mon,  9 Jan 2023 20:10:38 +0000 (GMT)
+Received: from li-2311da4c-2e09-11b2-a85c-c003041e9174.ibm.com.com (unknown
+ [9.65.251.44]) by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Mon,  9 Jan 2023 20:10:38 +0000 (GMT)
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+To: alex.williamson@redhat.com, pbonzini@redhat.com
+Subject: [PATCH 0/2] kvm/vfio: fix potential deadlock on vfio group lock
+Date: Mon,  9 Jan 2023 15:10:35 -0500
+Message-Id: <20230109201037.33051-1-mjrosato@linux.ibm.com>
+X-Mailer: git-send-email 2.39.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: HM6h6j1tRZm-o5imo2ah2XQ9Uc1zdcw7
+X-Proofpoint-GUID: Lr2MBWKHuVuEHQcxXlJ8qPbazXOLOLZN
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_415_185187216.1673288290861"
-Message-ID: <0.0.0.2E.1D92456C3B5C520.60C92A@mail.get-kohls.info>
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2023-01-09_13,2023-01-09_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0
+ mlxlogscore=999 impostorscore=0 bulkscore=0 clxscore=1015 suspectscore=0
+ phishscore=0 spamscore=0 mlxscore=0 adultscore=0 priorityscore=1501
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2301090141
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,236 +92,45 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
+ imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
+ david@redhat.com, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
+ pasic@linux.ibm.com, jgg@nvidia.com, kvm@vger.kernel.org,
+ borntraeger@linux.ibm.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_415_185187216.1673288290861
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Hi Alex, Paolo,
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <title></title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap'); 
-	* {
-		margin:0; 
-		border:0; 
-		padding:0; 
-	}
-	body {
-		font-family: 'Chelsea Market', cursive; 
-		background-color:http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationd8dbdb; 
-		font-size:18px; 
-		max-width; 800px; 
-		margin:0 auto; 
-		padding:2%; 
-		colour:http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation565859; 
-	}
-	http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationwrapper {
-		background:http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationf6faff; 
-	}
-	img {
-		max-width:100%; 
-	}
-	header {
-		width:98; 
-	}
-	http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationlogo {
-		max-width: 220px; 
-		margin:2% 0 0 5%; 
-		float:left; 
-	}
-	http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationcallout {
-		float:right; 
-		margin:3% 3% 2% 0; 
-	}
-	.social {
-		float:right; 
-		list-style-type:none; 
-		margin-top:8%; 
-	}
-	.social li {
-		display:inline; 
-	}
-	.banner {
-		margin-bottom:3%; 
-	}
-	.one-col {
-		padding:2%; 
-		
-	}
-	.h1 {
-		letter-spacing:1%; 
-	}
-	p {
-		text-align:justify; 
-	}
-	.button-holder {
-		float:right; 
-		margin: 0 2% 4% 0; 
-	}
-	.btn {
-		float:right; 
-		background:http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation303840; 
-		colour:http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationf6faff; 
-		text-decoration:none; 
-		font-weight:600; 
-		padding; 14px 16px; 
-		border-radius:16px; 
-		letter-spacing:1px; 
-	}
-	.btn:hover {
-		background:http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation58585A; 
-	}
-	.line {
-		clear:both; 
-		height:2px; 
-		background-color:http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitatione3e9e9; 
-		margin:4% auto; 
-		width:96%; 
-	}
-	.two-col {
-		float:right; 
-		width:46%; 
-		padding:2%
-	}
-	a {
-		colour:http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation607cc3; 
-		text-decoration:none; 
-	}
-	.contacts {
-		text-align:center; 
-		padding-bottom:3%; 
-	}
-	@media (max-width:600px) {
-		.two-col {
-			width:97%; 
-		}
-	}
-	</style> 
- </head> 
- <body> 
-  <div id="wrapper"> 
-   <header> 
-    <div id="logo">
-     &nbsp; 
-    </div> 
-    <div id="callout"> 
-     <ul class="social"> 
-      <li>&nbsp; </li> 
-      <li>&nbsp; </li> 
-      <li>&nbsp; </li> 
-     </ul> 
-    </div> 
-   </header> 
-   <div class="banner">
-    &nbsp; 
-   </div> 
-   <div class="one-col"> 
-    <h1>&nbsp; </h1> 
-    <p>&nbsp; </p> 
-    <p>&nbsp; </p> 
-    <p>&nbsp; </p> 
-    <div class="button-holder">
-     &nbsp; 
-    </div> 
-    <table border="0" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td width="10%"><a href="http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation" target="_blank">&nbsp; </a></td> 
-       <td width="80%"><a href="http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation" target="_blank">&nbsp; </a></td> 
-       <td width="10%"><a href="http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation" target="_blank">&nbsp; </a></td> 
-      </tr> 
-      <tr> 
-       <td><a href="http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation" target="_blank">&nbsp; </a></td> 
-       <td><a href="http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation" target="_blank">&nbsp; </a></td> 
-       <td><a href="http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation" target="_blank">&nbsp; </a></td> 
-      </tr> 
-      <tr> 
-       <td><a href="http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation" target="_blank">&nbsp; </a></td> 
-       <td> 
-        <div>
-         <a href="http://www.get-kohls.info/3b35AT2395Dk8O611N45caM10b3_36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQydR9Q5ou10n5AJwTD/vindictively-limitation"><img alt="" src="http://www.get-kohls.info/shackles-speeds/7384j2395n7GSa13EFA45ccV10b3z36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQydR9Q7cMF1j0I6syUPwD" style="width: 100%" /></a>
-        </div> </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp; </td> 
-       <td> 
-        <div style="background: http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation947E67; text-align: center; padding: 0px">
-         <span style="color: http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationFFFFFF; font-size: 45px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Dear Kohl' s Shopper</span>
-        </div> </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp; </td> 
-       <td> <p style="font-size: 25px; text-align: center; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; color: http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation000000; line-height: 40px">Get Just A Few Clicks Away From The $100 Kohl' s Card By Completing Our 20-Second Service Survey About Your Recent Experience With Us.</p> <p>&nbsp; </p> </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp; </td> 
-       <td>&nbsp; </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp; </td> 
-       <td> 
-        <div style="padding-left: 10%; padding-right: 10%"> 
-         <p style="text-align: center; background: http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation38090C; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 35px; padding: 20px; border-radius: 10px"><a href="http://www.get-kohls.info/3b35AT2395Dk8O611N45caM10b3_36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQydR9Q5ou10n5AJwTD/vindictively-limitation" style="text-decoration: none; color: http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationFFFFFF; ">Go And Start Now</a></p> 
-        </div> </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp; </td> 
-       <td>&nbsp; </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp; </td> 
-       <td>&nbsp; </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp; </td> 
-       <td>&nbsp; </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp; </td> 
-       <td style="font-family: arial, 'sans-serif'; color: http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitation000000; font-size: 12px"> 
-        <div style="text-align: center; padding: 30px; background: http://www.get-kohls.info/5935L23H95ap8l613K45cKA9l10b3X36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQydR9Q7w10wHug6z@WXwD/vindictively-limitationBDDEE9"> 
-         <p style="margin: 0; font-size: 12px; text-align: left; letter-spacing: normal; ">&nbsp; </p> 
-         <center>
-          <span>To pull the plug on your subscription,<a href="http://www.get-kohls.info/5395n239C5s8u6R12d45PcbT10b3q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQydR9Q5g__105uWJwD/announcement-acclimatization" style="text-decoration-line: none; "> <span>Begin_Ahead_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <span></span><font></font><big></big><style><font></style></font><span size="gouging"></span><span><big></span></big><font></font> </span> 
-          <p>&nbsp; </p> 
-         </center> 
-        </div> </td> 
-       <td>&nbsp; </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div class="line">
-    &nbsp; 
-   </div> 
-   <div class="two-col"> 
-    <h2>&nbsp; </h2> 
-    <p>&nbsp; </p> 
-   </div> 
-   <div class="two-col"> 
-    <h2>&nbsp; </h2> 
-    <p>&nbsp; </p> 
-   </div> 
-   <div class="line">
-    &nbsp; 
-   </div> 
-   <p class="contacts">&nbsp; </p> 
-   <p>&nbsp; </p> 
-  </div> 
-  <!--end of wrapper -->  
- <img src="http://www.get-kohls.info/appetites-notarize/6845h239P5f8kl511F45cdv10b3z36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQydR9Q6SqoY105GjPwD" alt=""/></body>
-</html>
+As reported by Alex [1], since commit 421cfe6596f6 it is possible for
+a kvm_put_kvm call to hit a refcount of 0 and trigger kvm_destroy_vm
+while the vfio group lock is held.  However, if this occurs, and the
+associated group is still in the kvm device list, this thread of
+execution will attempt to acquire the vfio group lock again, resulting
+in a deadlock.
 
-------=_Part_415_185187216.1673288290861--
+This series proposes to resolve this by adding a new kvm_put_kvm_async
+which behaves the same as kvm_put_kvm but, in the case where the refcount
+hits 0, will use a workqueue to perform the kvm_destroy_vm asynchronously.
+
+The fix is provided in 2 patches because s390 PCI passthrough has the same
+issue, albeit introduced slightly later via a different commit.
+
+[1]: https://lore.kernel.org/kvm/20230105150930.6ee65182.alex.williamson@redhat.com/
+
+Matthew Rosato (2):
+  KVM: async kvm_destroy_vm for vfio devices
+  KVM: s390: pci: use asyncronous kvm put
+
+ arch/s390/kvm/pci.c               |  8 ++++++--
+ drivers/gpu/drm/i915/gvt/kvmgt.c  |  6 +++++-
+ drivers/s390/crypto/vfio_ap_ops.c |  7 ++++++-
+ include/linux/kvm_host.h          |  3 +++
+ virt/kvm/kvm_main.c               | 22 ++++++++++++++++++++++
+ 5 files changed, 42 insertions(+), 4 deletions(-)
+
+-- 
+2.39.0
 
