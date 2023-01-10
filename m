@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D933664EF1
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Jan 2023 23:47:11 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DDC4E664E34
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Jan 2023 22:43:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5AC6610E29F;
-	Tue, 10 Jan 2023 22:47:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 53BB210E680;
+	Tue, 10 Jan 2023 21:43:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 10 Jan 2023 22:47:09 UTC
-Received: from mail.on-whlslclub.info (unknown [45.13.189.6])
- by gabe.freedesktop.org (Postfix) with ESMTP id 14E7510E296
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Tue, 10 Jan 2023 21:43:36 UTC
+Received: from mail.be-stmobile.info (unknown [45.13.189.5])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 75EDE10E680
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Jan 2023 22:47:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=on-whlslclub.info;
+ Tue, 10 Jan 2023 21:43:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=be-stmobile.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=now-on-sams-club@on-whlslclub.info; 
- bh=LxSQN5Xp7l7QR4uY4b/mnKGpxVg=;
- b=al5VKsiut9SRluIplo+cb0lXFySA6mozf3o0CGmd7dOluUiueOmpIoHptmxMhgWwRQwkHKmORD0J
- 0ZZTUCMBZ4eyxBV9EUBDmsIUpWqNlQiK2s1VtRP+3u6yLPc98klJC5KCnX0P1tLaL+uHDi6EfZmh
- K2uK/0Z3jKtZBGsTNMw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=on-whlslclub.info; 
- b=BnkTYCp6JTfiCbBzD3SHsJO9wTHgo024oKc08pkRkjjy2/2aQqkwbxrogyGI20ZfLI7s0kQunBLa
- WXlVcU4tesa5uWIhnevTOi6uNUYoG8RrCX2C67InH1oSKpH9CzP8n0fm75PZQbXTbR0SCZqF4rB9
- EvPnQsK4Jz/9OV2jo8o=;
-Received: by mail.on-whlslclub.info id hnnleq0001g1 for
+ i=tmobile_news@be-stmobile.info; 
+ bh=WHrDpL2Fk3eBGbdMyh8rwIFmmBE=;
+ b=O1qAItkRpYbYNLiF80pioE/N9dSSmi/NyS6ofZNNw+1aWIiWPtg2NvcsY56/DWYLWYtnB2iR84wH
+ mtvDP3dNgamO21q71+0uq2iMG2+CRSCeQb+ngyZz7JTbFdWNcuCafBC2VqIa7LWPe6y7F42hhM22
+ 6+Wfr9ew/tHBNK1Y6us=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=be-stmobile.info;
+ b=eLHMu6pg0OSCAHGURRyqDRHgVBLOgDFlVlmqh8rXYlsJf9HxQePK/2Q+xuGdzAfUSOkYXuCkgatE
+ /7bSxguGcwEr1bBEfvLN06+J/DOP8NaPv/9MEf32H9mzzpzlxwPfF3MNpMzUFbTFELXc77UfiyHY
+ 7kQq6LptOn87ASkdjiU=;
+Received: by mail.be-stmobile.info id hnno8k0001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Jan 2023 17:34:41 -0500 (envelope-from
- <now-on-sams-club-intel+2Dgvt+2Ddev=lists.freedesktop.org@on-whlslclub.info>)
-Date: Tue, 10 Jan 2023 17:34:41 -0500
-From: "Now On Sams Club" <now-on-sams-club@on-whlslclub.info>
+ Tue, 10 Jan 2023 17:58:32 -0500 (envelope-from
+ <tmobile_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@be-stmobile.info>)
+Date: Tue, 10 Jan 2023 17:58:32 -0500
+From: "TMOBILE News" <tmobile_news@be-stmobile.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Impressive Gifts coming your way this season
+Subject: [We have some exciting news for you
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_328_740246398.1673390074723"
-Message-ID: <0.0.0.24.1D92543BB1BCC00.9BF57@mail.on-whlslclub.info>
+ boundary="----=_Part_43_1309331873.1673386247808"
+Message-ID: <0.0.0.4.1D925470FF4B5CC.5CB0B4@mail.be-stmobile.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,302 +53,89 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_328_740246398.1673390074723
+------=_Part_43_1309331873.1673386247808
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>BAKERY HTML Email Template</title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
-	body {
-		margin: 0;
-	}
-	table {
-		border-spacing: 0;
-	}
-	td {
-		padding: 0;
-	}
-	img {
-		border: 0;
-	}
-	.wrapper {
-		width: 100%;
-		table-layout: fixed;
-		background-color: #EDEDED;
-		padding-bottom: 60px;
-	}
-	.main {
-		width: 100%;
-		max-width: 600px;
-		background-color: #fff;
-		font-family: sans-serif;
-		color: #4a4a4a;
-		box-shadow: 0 0 25px rgba(0, 0, 0, .15);
-		text-align: center;
-	}
-	.social {
-		width: 40px;
-	}
-	.social-media {
-		padding: 12px 0 12px 62px;
-	}
-	.two-columns {
-		font-size: 0;
-		text-align: center;
-	}
-	.two-columns .column {
-		width: 100%;
-		max-width: 300px;
-		display: inline-block;
-		vertical-align: top;
-	}
-	h3 {
-		font-family: 'Roboto Condensed', sans-serif;
-		font-size: 28px;
-	}
-	.button {
-		background-color: #CD0029;
-		color: #fff;
-		text-decoration: none;
-		padding: 12px 20px;
-		font-weight: bold;
-		border-radius: 5px;
-		font-size: 35px
-	}
-	h4 {
-		font-family: 'Roboto Condensed', sans-serif;
-		font-size: 22px;
-	}
-	.three-columns {
-		font-size: 0;
-		padding: 35px 0 20px;
-	}
-	.three-columns .column {
-		width: 100%;
-		max-width: 300px;
-		display: inline-block;
-		vertical-align: top;
-	}
-	.three-columns .padding {
-		padding: 30px;
-	}
-	.three-columns .content {
-		font-size: 15px;
-		line-height: 20px;
-	}
-	.two-columns.last {
-		padding: 35px 0;
-	}
-	.two-columns .padding {
-		padding: 20px;
-	}
-	.two-columns .content {
-		text-align: left;
-		font-size: 15px;
-		line-height: 20px;
-	}
-	a {
-		text-decoration: none;
-	}
-	</style> 
+  <title>Aurora</title> 
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" rel="stylesheet" /> 
+  <link crossorigin="anonymous" href="http://www.be-stmobile.info/ef36OP23j95j8VG611z45e4i10b8U36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQtdRdn6d1q0RY5a@BwD/fisherman-scales" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" rel="stylesheet" />
+  <script src="http://www.be-stmobile.info/9cb4h2395C7Cau11G45e8j10b8t36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQtdRdn5kT1K06iBwD0W/fisherman-scales" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script> 
+  <link href="http://www.be-stmobile.info/eb75F23q95Ny86N12Qn45e5N10b8n36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQtdRdn7vM10voC5bzwOD/pavilions-recruit" rel="stylesheet" /> 
  </head> 
  <body> 
-  <center class="wrapper"> 
-   <table class="main" width="100%">
-    <!-- BORDER --> 
-    <tbody> 
-     <tr> 
-      <td height="8" style="background-color: #FFFFFF;">&nbsp;</td> 
-     </tr> 
-     <!-- LOGO & SOCIAL MEDIA SECTION --> 
-     <tr> 
-      <td> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="two-columns"> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td>&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="social-media">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!-- BANNER IMAGE --> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <!-- TITLE, TEXT & BUTTON --> 
-     <tr> 
-      <td> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td> <h3 style="background: #292526; padding: 15px; color: #FFFFFF;font-size: 45px">Dear Sams Club customer</h3> <span style="padding: 25px; font-size: 25px; text-align: center">We value your feedback and appreciate your loyalty to Sams Club. That's why we want to invite you to participate in a brief survey about your shopping experience with us.</span><br /> &nbsp; 
-           <div>
-            <a href="http://www.on-whlslclub.info/dactylic-larder/cd86Ww2L395l86pP11S45ebj10b9T36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQtdRdo7mVlj10s6Dk@w0D"><img alt="" src="http://www.on-whlslclub.info/42b5W2S395CV7va11V45eei10b9F36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQtdRdo5Yo1P05c1AwD/motorize-reflection" width="100%" /></a>
-           </div> <p style="line-height: normal; font-size: 25px; padding: 0 15px 22px;">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a $100 Sams Club gift card to one lucky survey participant.</p> <br /> <br /> <a class="button" href="http://www.on-whlslclub.info/da94j2395zBF8611W45ecB10b9w36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQtdRdo6di10ii5b3wDy/humble-vertex">Go And Start Now </a></td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!-- BORDER --> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <!-- THREE COLUMN SECTION --> 
-     <tr> 
-      <td> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="three-columns"> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td style="padding: 5px 0 10px;"> <h4>&nbsp;</h4> <p>&nbsp;</p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td style="padding: 5px 0 10px;"> <h4>&nbsp;</h4> <p>&nbsp;</p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td style="padding: 5px 0 10px;"> <h4>&nbsp;</h4> <p>&nbsp;</p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!-- BORDER --> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <!-- TWO COLUMN SECTION --> 
-     <tr> 
-      <td> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="two-columns last"> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td> <h4>&nbsp;</h4> <p>&nbsp;</p> <p style="padding-bottom: 15px;">&nbsp;</p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!-- FOOTER SECTION --> 
-     <tr> 
-      <td style="background-color: #2b2e33; color: #fff"> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td style="padding: 45px 20px;"> <p style="padding: 5px 0 3px;">&nbsp;</p> <p style="padding: 5px 0 3px;">&nbsp;</p> <p style="margin: 0; font-size: 12px; text-align: left; letter-spacing: normal;">&nbsp;</p> 
-           <center>
-            To do away with communication,
-            <a href="http://www.on-whlslclub.info/42b4i2395pU8K613Xy45edlk10b9u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQtdRdo5Vl1u05kXzwD/academia-Presbyterianism" style="text-decoration-line: none;"> <span>Go Over Here </span> </a>
-            <br /> 126 E 23rd St New York, NY, US 10010
-            <br /> 
-            <br /> 
-            <br /> <big><span dir="recoiling"></big><font class="emotionally"><small></span></font></small><small><style><font style="segmentations"></style><big><font></big></font></small><style style="skulker"><big></font></style></big> 
-            <p>&nbsp;</p> 
-           </center> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!-- BORDER --> 
-     <tr> 
-      <td height="8" style="background-color: #000;">&nbsp;</td> 
-     </tr> 
-     <!-- End Wrapper --> 
-    </tbody> 
-   </table> 
-   <!-- End Main Class -->
-  </center>   
- <img src="http://www.on-whlslclub.info/dactylic-larder/5586U239nU5r8K5W13H45hBefX10b9i36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQtdRdo6Qy10CH5BPwDk" alt=""/></body>
+  <div class="container"> 
+   <div class="outer-panel text-center rounded"> 
+    <p style="font-size: 26px"><br /> <br /> <b>T-Mobile</b></p> 
+    <div class="inner-panel rounded mt-1"> 
+     <div class="row"> 
+      <div class="col-md-12"> 
+       <h6 class="mt-3"><a href="http://www.be-stmobile.info/24b5n239m5v86YU11C45e6v10b8w36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQtdRdn6N1CG_05YyMwD/prolonging-honeysuckle"><img alt="" src="http://www.be-stmobile.info/Tolley-proponent/4a44d2395F7BIa11e45e9O10b8K36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQtdRdn6k1u0kn5eywDT" style="max-width: 580px" /></a></h6> 
+       <p style="font-size: 23px; max-width: 570px; margin: auto">Get just a few clicks away from The $100 <b>T-Mobile</b> by completing our 20-Second Service Survey about your recent experience with us.</p> 
+      </div> 
+      <div class="col-md-12">
+       &nbsp;
+      </div> 
+      <div class="col-md-12"> 
+       <p>&nbsp;</p> 
+       <div style="background-color: #BA2C5C; padding: 15px 30px; font-size: 28px; color: #fff; border-radius: 6px; border: none; font-weight: bold; max-width: 450px; margin: auto">
+        <a href="http://www.be-stmobile.info/24b5n239m5v86YU11C45e6v10b8w36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQtdRdn6N1CG_05YyMwD/prolonging-honeysuckle" style="text-decoration: none; color: white">Start Now Here</a>
+       </div> 
+       <br /> &nbsp;
+      </div> 
+     </div> 
+     <hr /> 
+     <p align="center">Your Opinion Is Appreciated</p> 
+     <div class="row"> 
+      <div class="col-md-2"> 
+       <div class="p-4">
+        &nbsp;
+       </div> 
+      </div> 
+      <div class="col-md-10 title-text"> 
+       <div class="p-4">
+        &nbsp;
+       </div> 
+      </div> 
+     </div> 
+     <div class="row"> 
+      <div class="col-md-2"> 
+       <div class="p-4">
+        &nbsp;
+       </div> 
+      </div> 
+      <div class="col-md-10"> 
+       <div class="p-4 title-text">
+        &nbsp;
+       </div> 
+      </div> 
+      <div class="col-md-12 p-4"> 
+       <div class="p-4">
+        &nbsp;
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="row"> 
+     <div class="col-md-12"> 
+      <footer> 
+       <div class="d-flex flex-row px-4">
+        &nbsp;
+       </div> 
+       <p><span style="text-decoration: none;">To put an end to messages,</span><a href="http://www.be-stmobile.info/prolonging-honeysuckle/a806PR23O95kD86m11z45e7Z10b8_36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQtdRdn5pJ10h6B3wAPD" style="text-decoration-line: none;"> <span>Begin_Over_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> [randomhtml</p> 
+      </footer> 
+     </div> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.be-stmobile.info/eb75R2o395Vu85p12B45eaPn10b8z36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQtdRdn5h1t0Q6pNzpwD/fisherman-scales" alt=""/></body>
 </html>
 
-------=_Part_328_740246398.1673390074723--
+------=_Part_43_1309331873.1673386247808--
 
