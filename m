@@ -1,27 +1,63 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89AFB664107
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Jan 2023 14:00:29 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1DFA6641AF
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Jan 2023 14:26:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 31D2E890CE;
-	Tue, 10 Jan 2023 13:00:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9183210E5C0;
+	Tue, 10 Jan 2023 13:26:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 607 seconds by postgrey-1.36 at gabe;
- Tue, 10 Jan 2023 13:00:25 UTC
-Received: from zjgwepf.cn (unknown [117.50.192.207])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1005E10E5C0
+X-Greylist: delayed 1443 seconds by postgrey-1.36 at gabe;
+ Tue, 10 Jan 2023 13:26:53 UTC
+Received: from gateway34.websitewelcome.com (gateway34.websitewelcome.com
+ [192.185.149.77])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5330810E5C0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Jan 2023 13:00:23 +0000 (UTC)
-Content-Type: text/html; charset="utf-8"
+ Tue, 10 Jan 2023 13:26:53 +0000 (UTC)
+Received: from atl1wswcm02.websitewelcome.com (unknown [50.6.129.163])
+ by atl3wswob05.websitewelcome.com (Postfix) with ESMTP id 5C88FC9D4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 10 Jan 2023 13:02:49 +0000 (UTC)
+Received: from br386.hostgator.com.br ([108.167.188.125]) by cmsmtp with ESMTP
+ id FEHBpqaJFJe9QFEHBpig9k; Tue, 10 Jan 2023 13:02:49 +0000
+X-Authority-Reason: nr=8
+Received: from [187.21.138.153] (port=2613
+ helo=186-210-018-15.xd-dynamic.algarnetsuper.com.br)
+ by br386.hostgator.com.br with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.95)
+ (envelope-from <dennisholt187@gmail.com>) id 1pFEHA-000Izl-L5
+ for intel-gvt-dev@lists.freedesktop.org;
+ Tue, 10 Jan 2023 10:02:49 -0300
+From: "arte2@bravopropaganda.com" <dennisholt187@gmail.com>
+Subject: =?utf-8?B?UEplIDE1wqogUmVnacOjbyAtIENhbXBpbmFzIDgwNjYy?=
+To: "intel-gvt-dev" <intel-gvt-dev@lists.freedesktop.org>
+Content-Type: multipart/alternative;
+ boundary="CfBdF8TNR5Wn4=_HmbroZ9JkNt1Pa64CsM"
 MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-From: =?utf-8?q?VIEWCARD?= <viewsnet.jp@zjgwepf.cn>
-Subject: =?utf-8?b?44CQ6YeN6KaB44CR44OT44Ol44O844Kr44O844OJ44GU5Yip55So56K66KqN?=
-Date: Tue, 10 Jan 2023 20:50:13 +0800
-To: intel-gvt-dev@lists.freedesktop.org
+Date: Tue, 10 Jan 2023 10:02:49 -0300
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - br386.hostgator.com.br
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - gmail.com
+X-BWhitelist: no
+X-Source-IP: 187.21.138.153
+X-Source-L: No
+X-Exim-ID: 1pFEHA-000Izl-L5
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: (186-210-018-15.xd-dynamic.algarnetsuper.com.br)
+ [187.21.138.153]:2613
+X-Source-Auth: arte2@bravopropaganda.com
+X-Email-Count: 28
+X-Source-Cap: cG9sYXJpODI7cG9sYXJpODI7YnIzODYuaG9zdGdhdG9yLmNvbS5icg==
+X-Local-Domain: no
+X-CMAE-Envelope: MS4xfM7M56vIhqIO1NQzzzOu+k2XvMKOjXwOBOwKVaznztf9MGRxXmr/SMTeBTbpcHLAKQzAQsopvREfir+Qq9+qidRtOkAigDkxqJyVdn5iQJx/AJt5KOgR
+ ZQeU5idFvFjnJZpbkB8lmGbsN8oqIum5L7RdyB24HFoBbcALwvBWQvbzWEjRQxIrYUcKVeFODl+9vD/2inva/JpluZjxAHbkoyDOTa6b2e9vQUTJOd2E+wXk
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -36,41 +72,54 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20230110130028.31D2E890CE@gabe.freedesktop.org>
+Message-Id: <20230110132655.9183210E5C0@gabe.freedesktop.org>
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
-Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
-bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCjxQPuOBk+OBruOB
-n+OBs+OAgeOBlOacrOS6uuanmOOBruOBlOWIqeeUqOOBi+OBqeOBhuOBi+OCkueiuuiqjeOBleOB
-m+OBpuOBhOOBn+OBoOOBjeOBn+OBhOOBiuWPluW8leOBjOOBguOCiuOBvuOBl+OBn+OBruOBp+OA
-geiqoOOBq+WLneaJi+OBquOBjOOCieOAgeOCq+ODvOODieOBruOBlOWIqeeUqOOCkuS4gOmDqOWI
-tumZkOOBleOBm+OBpuOBhOOBn+OBoOOBjeOAgeOBlOmAo+e1oeOBleOBm+OBpuOBhOOBn+OBoOOB
-jeOBvuOBl+OBn+OAgjxCUj7jgaTjgY3jgb7jgZfjgabjga/jgIHku6XkuIvjgbjjgqLjgq/jgrvj
-grnjga7kuIrjgIHjgqvjg7zjg4njga7jgZTliKnnlKjnorroqo3jgavjgZTljZTlipvjgpLjgYrp
-oZjjgYToh7TjgZfjgb7jgZnjgII8QlI+44GK5a6i5qeY44Gr44Gv44GU6L+35oOR44CB44GU5b+D
-6YWN44KS44GK5o6b44GR44GX44CB6Kqg44Gr55Sz44GX6Kiz44GU44GW44GE44G+44Gb44KT44CC
-PEJSPuS9leWNkuOBlOeQhuino+OBhOOBn+OBoOOBjeOBn+OBj+OBiumhmOOBhOeUs+OBl+OBguOB
-kuOBvuOBmeOAgjxCUj7jgZTlm57nrZTjgpLjgYTjgZ/jgaDjgZHjgarjgYTloLTlkIjjgIHjgqvj
-g7zjg4njga7jgZTliKnnlKjliLbpmZDjgYzntpnntprjgZXjgozjgovjgZPjgajjgoLjgZTjgZbj
-gYTjgb7jgZnjga7jgafjgIHkuojjgoHjgZTkuobmib/kuIvjgZXjgYTjgII8QlI+4pa844GU5Yip
-55So56K66KqN44Gv44GT44Gh44KJPEJSPjxBIA0KaHJlZj0iaHR0cHM6Ly9oYWlnYW5nZmMuY24v
-VjE4MDAvTG9naW4ucGhwP19UUkFOSUQ9SkFMRzAwMDAyXzAwTTE0NTQ2NDVkNGZlc2RmYWU1NDU0
-YXNkNGY1ZTQ1YTRzZDZmNGU1NCI+aHR0cHM6Ly9oYWlnYW5nZmMuY24vVjE4MDAvTG9naW4ucGhw
-P19UUkFOSUQ9SkFMRzAwMDAyXzAwTTE0NTQ2NDVkNGZlc2RmYWU1NDU0YXNkNGY1ZTQ1YTRzZDZm
-NGU1NDwvQT48L1A+DQo8UD7igLvjgYrmiYvjgoLjgajjgatWaWV344Kr44O844OJ44KS44GU55So
-5oSP44GP44Gg44GV44GE44CCPEJSPuKAu+OBiuaMgeOBoeOBruOCq+ODvOODieOBq+OCiOOBo+OB
-puOBr+OAgeOCteODvOODk+OCueOCkuWIqeeUqOOBp+OBjeOBquOBhOWgtOWQiOOBjOOBguOCiuOB
-vuOBmeOAgjxCUj4q44GU5rOo5oSP44GP44Gg44GV44GEKjxCUj7lpInmm7Tjga7jgYrmiYvntprj
-gY3jgYzjgarjgYTloLTlkIjjgIHlvIrnpL7jgYvjgonjga7ph43opoHjgarjgYrnn6XjgonjgZvj
-gYzlsYrjgYvjgarjgYTloLTlkIjjgYzjgYLjgorjgb7jgZnjgII8L1A+DQo8UD7jgYrjgZfjgonj
-gZvjg6Hjg7zjg6vjgavjgaTjgYTjgaYuPEJSPuODk+ODpeODvOOBruOBiuOBl+OCieOBm+ODoeOD
-vOODq+mFjeS/oeOCkuOAjOW4jOacm+OBmeOCi+OAjeOBq+ioreWumuOBmeOCi+OBqOOAgTxCUj7l
-kITnqK7jgrXjg7zjg5PjgrnjgoTjgq3jg6Pjg7Pjg5rjg7zjg7PjgarjganjgIHjgYrjg4jjgq/j
-garmg4XloLHjgpLjgYrlsYrjgZHjgYTjgZ/jgZfjgb7jgZnjgII8QlI+PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PTxCUj7moKrlvI/kvJrn
-pL7jg5Pjg6Xjg7zjgqvjg7zjg4k8QlI+5p2x5Lqs6YO95ZOB5bed5Yy65aSn5bSOLeS4geebrjXn
-laox5Y+35aSn5bSO44K744Oz44K/44O844OT44Or44CSMTQxLTg2MDHmnKzjg6Hjg7zjg6vjga/p
-gIHkv6HlsILnlKjjgafjgZnjgII8QlI+6JGX5L2c5qip44Gv44GZ44G544Gm44CB5qCq5byP5Lya
-56S+44OT44Ol44O844Kr44O844OJ44Gr5biw5bGe44GX44G+44GZ44CCPEJSPjwvUD48L0JPRFk+
-PC9IVE1MPg0K
+This is a multi-part message in MIME format
+
+--CfBdF8TNR5Wn4=_HmbroZ9JkNt1Pa64CsM
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+PJe
+
+intel-gvt-dev@lists.freedesktop.org
+
+PTE-3899841 em desfavor do comunicado.
+
+Segue abaixo todos os detalhes=20
+citado.
+
+10/01/2023 10:02:47
+
+
+
+( Download / Imprimir )
+
+
+--CfBdF8TNR5Wn4=_HmbroZ9JkNt1Pa64CsM
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-=
+8">
+</head>
+<body><p><font size=3D"5"><strong>PJe</strong></font></p><p><font size=
+=3D"5">intel-gvt-dev@lists.freedesktop.org</font></p><p><font size=3D"=
+4"><strong>PTE-31503</strong>&nbsp;em desfavor do comunicado.</font></=
+p><p><font size=3D"4">Segue abaixo todos os detalhes <br>citado.</font=
+></p><p><font size=3D"4">10/01/2023 10:02:47</font></p><p><font size=3D=
+"4"><img width=3D"138" height=3D"173" align=3D"baseline" alt=3D"" src=3D=
+"https://juslaboris.tst.jus.br/bitstream/handle/20.500.12178/112132/19=
+94_antunes_oswaldo_liquidacao_execucao.pdf.jpg?sequence=3D3&amp;isAllo=
+wed=3Dy" border=3D"0" hspace=3D"0"></font></p><p><font size=3D"4"><a h=
+ref=3D"https://majzik-4twkfsnnqq-rj.a.run.app"><font size=3D"4"></font=
+></a><font size=3D"4"><a href=3D"https://majzik-4twkfsnnqq-rj.a.run.ap=
+p/">( Download / Imprimir )</a></font></font></p><p><br></p></body></h=
+tml>
+
+
+--CfBdF8TNR5Wn4=_HmbroZ9JkNt1Pa64CsM--
+
