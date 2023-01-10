@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD343664BE3
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Jan 2023 20:04:09 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3148664C8D
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Jan 2023 20:34:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5509710E646;
-	Tue, 10 Jan 2023 19:04:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E61F810E653;
+	Tue, 10 Jan 2023 19:33:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 10 Jan 2023 19:04:05 UTC
-Received: from mail.tp-acehrdw.info (unknown [45.13.189.1])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2521D10E646
+ Tue, 10 Jan 2023 19:33:56 UTC
+Received: from mail.go-toolslws.info (unknown [45.13.189.2])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1E54B10E650
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Jan 2023 19:04:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tp-acehrdw.info; 
+ Tue, 10 Jan 2023 19:33:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=go-toolslws.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace-hardware@tp-acehrdw.info; 
- bh=cAczLfP9948llIC53FRZcax4YlU=;
- b=pcMfcGx+4XDYxdaWhuD/1GHyGHWclwAYWAdVTGVtJPLlk7mW8dS1NWWhXCol7XB2+6049OFwDMDe
- h8ILB1GFE+AH7PzKPiR3qMZZTNgsBllXdnxExZ1JOPgBHR2VFatwGokBsgVEHrj0UST/z27RWOug
- Qr3UphhWU3pA875hMBI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tp-acehrdw.info;
- b=LC1IJuXdkr/3v5avCM8ZG5TnYMAiwlg9kl2kxN7zK/cakbqOY2HYOzMRvoIvO+7tJyKb1rgOXypk
- CXKRmJi957usppPAAjp5L2zTPjTIdrr/r0MBUY27taVBYl7VsgDHwkAvdskjZwxPcYiJ01Ck1J9Y
- T7mY99PAD0dyit7gly8=;
-Received: by mail.tp-acehrdw.info id hnmraa0001gq for
+ i=now_on_lowes_hardware@go-toolslws.info; 
+ bh=Jzjuy/ik/D/X0m0B8SNZvgE1SNk=;
+ b=cOpCDSQYP2P4w7thOmalGhebCsEVUEXM5de7qioqu7GBVa4l6dcJomgGTPS8Xuj1mevAFXTA2b2Z
+ 9KayqtKWBks/GbC7Y9cV6r3IJ3iRuqjcg7QKhIpL/11kv7wQ52pxXZ6nKtWjU1u//8G6GmNAI2lr
+ 8bbu6WEjmw4hRW4OpNg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=go-toolslws.info;
+ b=Dr2kKaJytiDjVf6c+RVcBiAA/gqwcb4BR4wiw0sNwNev9BnuJaESpWCwBYonhc/psPE+yMiG+AWp
+ pU8LD1HiKAUa28dw9OZeMblpupC9Nf0TRFJlt4kyfXraxPFXRAQBMjHm2XiFzM4BCioP53vvgVTM
+ IrYRNXRUdC5cXhTlR2o=;
+Received: by mail.go-toolslws.info id hnmuq80001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Jan 2023 13:51:21 -0500 (envelope-from
- <ace-hardware-intel+2Dgvt+2Ddev=lists.freedesktop.org@tp-acehrdw.info>)
-Date: Tue, 10 Jan 2023 13:51:21 -0500
-From: "ACE Hardware" <ace-hardware@tp-acehrdw.info>
+ Tue, 10 Jan 2023 14:23:02 -0500 (envelope-from
+ <now_on_lowes_hardware-intel+2Dgvt+2Ddev=lists.freedesktop.org@go-toolslws.info>)
+Date: Tue, 10 Jan 2023 14:23:02 -0500
+From: "Now On LOWES Hardware" <now_on_lowes_hardware@go-toolslws.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best way to show appreciation for your loyalty
+Subject: Pick any gift on us, as token of appreciation for your loyalty
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_436_1827063926.1673376660482"
-Message-ID: <0.0.0.30.1D9252487C06060.13EE15@mail.tp-acehrdw.info>
+ boundary="----=_Part_559_1834377029.1673378518456"
+Message-ID: <0.0.0.3E.1D92528F50BBA12.43CD4@mail.go-toolslws.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_436_1827063926.1673376660482
+------=_Part_559_1834377029.1673378518456
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,19 +62,30 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <link href="http://www.tp-acehrdw.info/b6f5ly2395k8hl613r4h5Oceg10b4s36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ4dR9R6oB10DR6eN@@wD/unshared-placards" rel="stylesheet" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Tooti Store Summer Collection</title> 
-  <style type="text/css">body {
+  <title>LOE Mag - Jan 2020 Ed. 88</title> 
+  <style type="text/css">a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+    }
+
+        /* Basics */
+
+body {
+    
     margin: 0 !important;
     padding: 0;
-    background-color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlingf5f5f6;
+    background-color: #f2f2f2;
     font-smoothing: antialiased;
     -webkit-font-smoothing: antialiased;
 }
 table {
     border-spacing: 0;
-    color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling333333;
+    color: #333333;
     border-collapse: collapse;
     margin: 0;
     padding: 0;
@@ -86,34 +97,18 @@ td {
 img {
     border: 0;
     display: block;
-    height: auto;
     
 }
 div { 
     margin:0 !important;
 }
-p {
-	-webkit-margin-before: 0 !important;
-    -webkit-margin-after: 0 !important;
-    Margin: 0;
-}
 
 a {
-    color:http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling384049;
+    color: #c70d3a;
     text-decoration: none;
     font-weight: normal;
 }
 
-a[x-apple-data-detectors] {
-    color: inherit !important;
-    text-decoration: none !important;
-    font-size: inherit !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-    line-height: inherit !important;
-}
-
-/*Responsive Classes*/
 wrapper {
     width: 100%;
     table-layout: fixed;
@@ -121,32 +116,33 @@ wrapper {
     -ms-text-size-adjust: 100%;
 }
 webkit {
-    max-width: 600px;
+    max-width: 475px;
     margin: 0 auto;
+}
+
+
+
+/*Responsive Classes*/
+full-width-image img {
+    width: 100%;
+    max-width: 475px;
+    height: auto;
+}
+max-400-img img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+max-405-img img {
+    width: 100%;
+    max-width: 405px;
+    height: auto;
 }
 outer {
     Margin: 0 auto;
     width: 100%;
-    max-width: 600px;
+    max-width: 475px;
 }
-full-width-image img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-}
-dont-break  {
-  white-space: nowrap;
-}
-mobile-image {width: 150px;}
-
-mobile-image-footer {width: 260px;}
-
-responsive-button {width: 57%;}
-
-/*Background Colours*/
-grey-background {background-color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlingf5f5f6;}
-black-background {background-color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling000000;}
-white-background {background-color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlingffffff;}
 
 /*Two column layout*/
 two-column {
@@ -156,14 +152,7 @@ two-column {
 }
 two-column .column {
     width: 100%;
-    max-width: 290px;
-    display: inline-block;
-    vertical-align: top;
-
-}
-two-column .column-footer {
-    width: 100%;
-    max-width: 280px;
+    max-width: 202.5px;
     display: inline-block;
     vertical-align: top;
 
@@ -171,652 +160,725 @@ two-column .column-footer {
 two-column img {
     width: 100%;
     height: auto;
-    background-color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlingffffff;
+    background-color: #ffffff;
 }
 
-/*Text Classes*/
+/*Background Colours*/
+gray-background {
+    background-color: #f2f2f2;
+}
+
+blue-background {
+    background-color: #1a2849;
+}
+white-background {
+    background-color: #ffffff;
+}
+yellow-background {
+    background-color: #ffd369;
+}
+green-background {
+    background-color: #43ab92;
+}
+
+
+/*Text and font classes*/
 p {
-	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-	font-size: 10px;
-	line-height: 18px;
-	font-weight: normal;
-	color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling1a1a1a;
-	text-align: center;
+
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 340;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-smoothing: antialiased;
+    letter-spacing: .04em;
+    margin: 0;
 }
 
-header-link-text {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	letter-spacing: .5px;
+ .textleft {
+        text-align: left;
+    }
+textcenter {
+        text-align: center;
+    }
+textright {
+        text-align: right;
+    }
+white-text {
+    color: #ffffff;
 }
 
-header-link-styles {
-	color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling7b7b82;
-	text-decoration: none;
+black-text {
+    color: #404040;
+    font-weight: 350;
+}
+two-column-blurb {
+    font-size: 14px;
+    font-weight: 370;
+}
+footer {
+    font-size: 12px;
+    color: #404000 !important;
 }
 
+date-time {
+    font-size: 14px;
+    text-align: center;
+}
+
+#date-left {
+    text-align: left;
+}
 h1 {
-	font-family: Oswald, Arial, sans-serif;
-	font-size: 42px;
-	line-height: 44px;
-	text-transform: uppercase;
+    font-size: 19px;
+    line-height: 25px;
+    font-weight: 700;
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    text-align: center;
+    color: #4a4a4a;
+}
+h1-white {
+    color: #ffffff;
+    font-size: 19px;
+    line-height: 25px;
+    font-weight: 700;
+    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+    text-align: center;
+}
+blue-module-article {
+    color: #ffffff;
+    text-align: center;
 }
 
-alt-text-hero {
-	font-family: Oswald, Arial, sans-serif;
-	font-size: 50px;
-	line-height: 54px;
-	text-transform: uppercase;
-	color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling1a1a1a;
-	display: block;
+/* Padding Classes */
+top-article {
+    padding-top: 40px;
+    padding-left: 35px;
+    padding-bottom: 20px;
+    padding-right: 35px;
+}
+article {
+    padding-left: 35px;
+    padding-bottom: 20px;
+    padding-right: 35px;
+}
+padding-two-column-whole {
+    padding-top: 40px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+padding-two-column-whole-last {
+    padding-top: 40px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 40px;
 }
 
+padding-two-column-single {
+    padding-bottom: 25px
+}
+spacer-padding {
+     padding-left: 35px;
+     padding-bottom: 40px;
+     padding-right:  35px;
+}
+footer-padding{
+    padding-top: 40px;
+    padding-left: 35px;
+    padding-bottom: 40px;
+    padding-right: 35px;
+}
+top-box-padding {
+        padding-bottom: 0px;
+    }
 
-hero-text {
-	font-family:'Raleway', 'Helvetica Neue', Helvetica, sans-serif;
-	font-size: 20px;
-	line-height: 30px;
-	color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling2F4F4F;
+    .pa-35 {padding: 35px;}
+
+    .pt-5 {padding-top: 5px;}
+    .pt-10 {padding-top: 10px;}
+    .pt-15 {padding-top: 15px;}
+    .pt-20 {padding-top: 20px;}
+    .pt-25 {padding-top: 25px;}
+    .pt-30 {padding-top: 30px;}
+    .pt-35 {padding-top: 35px;}
+    .pt-40 {padding-top: 40px;}
+
+    .pb-5 {padding-left: 5px;}
+    .pl-10 {padding-left: 10px;}
+    .pl-15 {padding-left: 15px;}
+    .pl-20 {padding-left: 20px;}
+    .pl-25 {padding-left: 25px;}
+    .pl-30 {padding-left: 30px;}
+    .pl-35 {padding-left: 35px;}
+    .pl-40 {padding-left: 40px;}
+
+    .pb-5 {padding-bottom: 5px;}
+    .pb-10 {padding-bottom: 10px;}
+    .pb-15 {padding-bottom: 15px;}
+    .pb-20 {padding-bottom: 20px;}
+    .pb-25 {padding-bottom: 25px;}
+    .pb-30 {padding-bottom: 30px;}
+    .pb-35 {padding-bottom: 35px;}
+    .pb-40 {padding-bottom: 40px;}
+
+    .pb-5 {padding-right: 5px;}
+    .pr-10 {padding-right: 10px;}
+    .pr-15 {padding-right: 15px;}
+    .pr-20 {padding-right: 20px;}
+    .pr-25 {padding-right: 25px;}
+    .pr-30 {padding-right: 30px;}
+    .pr-35 {padding-right: 35px;}
+    .pr-40 {padding-right: 40px;}
+
+
+    .responsive-pb-25 {padding-bottom: 25px;}
+    .responsive-pb-40 {padding-bottom: 40px;}
+
+/*Media Queries*/
+@media screen and (max-width: 448px) {
+two-column .column,
+    .two-column img {
+        max-width: 100% !important;
+    }
+    .top-box-padding {
+        padding-bottom: 20px;
+    }
+    .responsive-pb-40 {
+        padding-bottom: 30px;
+        padding-top: 20px;
+    }
+     .responsive-pb-25 {
+        padding-bottom: 60px;
+    }
 }
 
-footer-links a {
-	color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling7b7b82;
-	text-decoration: none;
-}
-
-footer-text {
-	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-	color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling59595b;
-}
-
-buttons-text {
-	font-family: Oswald, 'Helvetica Neue', Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 14px;
-	color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling000000;
-	text-decoration: none;
-	display: block;
-}
-footer-logo-type {
-	font-family: Oswald, Arial, sans-serif;
-	font-weight: bold;
-	font-size: 17px;
-	line-height: 18px;
-	color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling000000;
-	text-transform: uppercase;
-	text-decoration: none;
-}
-
-text-left {text-align: left;}
-
-
-/*padding-classes*/
-http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlinglogo-padding-top {
-  padding-top: 35px;
-  padding-bottom: 10px;
-}
-
-http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlinglogo-padding-bottom {
-  padding-top: 0px;
-  padding-bottom: 15px;
-}
-
-http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlingh1-padding {
-	padding-bottom: 20px;
-}
-
-http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlinghero-text-padding { padding: 30px 50px;}
-padding-two-column-whole { padding: 5px 0;}
-two-column-images-padding { padding: 10px;}
-
-images-section1-padding {padding: 10px 10px 0 10px;}
-images-section23-padding {padding: 0 10px 0 10px;}
-images-section4-padding {padding: 0 10px 0 10px;}
-
-collections-text-padding { padding: 10px 0;}
-
-button-padding {padding: 40px 0 80px 0;}
-
-
-social-media-icons-padding td {padding: 0 20px;}
-footer-links-padding td {padding: 0 10px;}
-padding-two-column-whole-footer { padding: 45px 20px 0 20px;}
-
-@media screen and (max-width: 600px) {
-
-two-column .column { max-width: 100% !important;}
-two-column .column-footer { max-width: 100% !important;}
-
-mobile-image { width: 100% !important;}
-
-mobile-image-footer {width: 100% !important;}
-
-}
-@media screen and (max-width: 400px) {
-responsive-button {width: 80% !important; font-size: 20px !important;}
-}
+@media screen and (min-width: 449px) and (max-width: 620px) {
+    .two-column .column {
+        max-width: 50% !important;
+    }
 }
 	</style> 
  </head> 
- <body>
-  <!--[if mso]>
-    <style type="text/css">
-    body, table, td, p, .hero-text, .footer-text, .buttons-text {font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif !important !important;}
-    .header-link-text {font-family: Arial, Helvetica, sans-serif;}
-    .h1, .alt-text-hero, .product-text {font-family: Arial, sans-serif;}
-    </style>
-    <![endif]--> 
+ <body> 
   <center class="wrapper"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" class="grey-background" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"> 
-       <div class="webkit"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+   <div class="webkit">
+    <!--logo--> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer gray-background"> 
+     <tbody> 
+      <tr> 
+       <td align="center" class="pt-35 pb-15">&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td align="center"> <p class="h1 pb-30"><span style="padding: 5px 20px; background-color: #012169; color: #fff; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 29px"><b>Lowe's</b></span></p> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <!--Blue Module--> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td align="center" class="full-width-image"><a href="http://www.go-toolslws.info/a9d5N239A5M8Qi612wH45d4w10b5s36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQadR9S7zN10PYH5bPMwD/surcharge-caking"><img alt="" src="http://www.go-toolslws.info/7915Dh2395Jr7an13N4jV5d6j10b5Z36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQadR9S6W1HYH06Ez@kwD/guide-slopped" width="100%" /></a></td> 
+      </tr> 
+      <tr> 
+       <td class="blue-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
          <tbody> 
           <tr> 
-           <td class="white-background"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="center" id="logo-padding-top"><a href="http://www.tp-acehrdw.info/3595E2p395L8k6O12u45Fcfv10b4U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ4dR9R6Qu1Bv06mJywlD/singles-distorted"><img alt="Tooti store Logo" height="35" src="http://www.tp-acehrdw.info/transformations-northerner/9ea6Ri239x5nQl7a11z45d2y10b4B36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ4dR9R7fP1Z0Hi5EqywD" width="100%" /></a></td> 
-              </tr> 
-              <tr> 
-               <td align="center" id="h1-padding"> <p class="h1" style="color: http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlingCD0029">Ace Hardware</p> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <!--header links--> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
-         <tbody> 
-          <tr> 
-           <td align="center" class="white-background" style="padding-bottom: 10px;"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0"> 
-             <tbody> 
-              <tr> 
-               <td style="padding-right: 15px;"> <p><a class="header-link-text" href="http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling"><span class="header-link-styles">Deparments</span></a></p> </td> 
-               <td style="padding-left: 15px; padding-right: 15px;"> <p><a class="header-link-text" href="http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling"><span class="header-link-styles">Sales &amp; Specials</span></a></p> </td> 
-               <td style="padding-left: 15px;"> <p><a class="header-link-text" href="http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling"><span class="header-link-styles">Handyman Services</span></a></p> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <!--hero banner--> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer black-background"> 
-         <tbody> 
-          <tr> 
-           <td align="center" class="full-width-image" valign="botom">&nbsp;</td> 
-          </tr> 
-          <tr> 
-           <td class="white-background"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td id="hero-text-padding"> <p class="hero-text" style="font-size: 26px"><em>Get just a few clicks away from The $100 <b>Ace Hardware</b> Card by completing our 20-Second Service Survey about your recent experience with us.</em></p> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <!--Products Section 1--> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
-         <tbody> 
-          <tr> 
-           <td class="black-background"> 
+           <td class="pa-35"> 
             <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
              <tbody> 
               <tr> 
-               <td class="images-section1-padding"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" class="two-column"> 
-                    <div class="column"> 
-                     <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td> 
-                         <table align="center" border="0" cellpadding="0" cellspacing="0"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <div class="column"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
+               <td class="white-text"> <p class="white-text date-time" id="date-left" style="font-size: 22px; line-height: normal; text-align: center">Get just a few clicks away from The $100 <b>Lowe's Card</b> by completing our 20-Second Service Survey about your recent experience with us.</p> </td> 
+              </tr> 
+              <tr> 
+               <td align="center" class="blue-background pt-40 pb-30" valign="baseline"> 
+                <div>
+                 <a class="responsive-button footer-logo-type" href="http://www.go-toolslws.info/a9d5N239A5M8Qi612wH45d4w10b5s36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQadR9S7zN10PYH5bPMwD/surcharge-caking" style="background-color:#ffffff;border:1px solid #ffffff;border-radius:4px;color:#000000;display:inline-block;font-family: 'Raleway', Helvetica, Arial, sans-serif !important;font-size:28px;font-weight:bold;line-height:45px;text-align:center;text-decoration:none; width:345px;-webkit-text-size-adjust:none;mso-hide:all;">Start Now Here</a>
+                </div> </td> 
               </tr> 
              </tbody> 
             </table> </td> 
           </tr> 
          </tbody> 
-        </table> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <!--Article 1--> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
          <tbody> 
           <tr> 
-           <td class="black-background"> 
+           <td class="top-article"> 
             <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
              <tbody> 
               <tr> 
-               <td class="images-section23-padding"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" class="two-column"> 
-                    <div class="column"> 
-                     <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td> 
-                         <table align="center" border="0" cellpadding="0" cellspacing="0"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <div class="column"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
+               <td class="pb-10"> <p align="center" class="h3 black-text">Your Opinion Is Appreciated</p> <p class="h1 black-text">&nbsp;</p> <p class="date-time black-text">&nbsp;</p> </td> 
+              </tr> 
+              <tr> 
+               <td align="center" class="pb-10 max-405-img">&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td>&nbsp;</td> 
               </tr> 
              </tbody> 
             </table> </td> 
           </tr> 
          </tbody> 
-        </table> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
          <tbody> 
           <tr> 
-           <td class="black-background"> 
+           <td class="spacer-padding">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <!--Article 2--> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="article"> 
             <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
              <tbody> 
               <tr> 
-               <td class="images-section23-padding"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" class="two-column"> 
-                    <div class="column"> 
-                     <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td> 
-                         <table align="center" border="0" cellpadding="0" cellspacing="0"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <div class="column"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
+               <td class="pb-10"> <p class="textcenter">&nbsp;</p> </td> 
+              </tr> 
+              <tr> 
+               <td align="center" class="pb-10 max-405-img">&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td> <p class="h3 black-text">&nbsp;</p> </td> 
               </tr> 
              </tbody> 
             </table> </td> 
           </tr> 
          </tbody> 
-        </table> 
-        <!--Products Section 4--> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
          <tbody> 
           <tr> 
-           <td class="black-background"> 
+           <td class="spacer-padding">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <!--Article 3--> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="article"> 
             <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
              <tbody> 
               <tr> 
-               <td class="images-section4-padding"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" class="two-column"> 
-                    <div class="column"> 
-                     <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td> 
-                         <table align="center" border="0" cellpadding="0" cellspacing="0"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                        <td align="center"> 
-                         <table border="0" cellpadding="0" cellspacing="0"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <div class="column"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                        <td> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td class="images-padding">&nbsp;</td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
+               <td class="pb-10"> <p class="h1 black-text">&nbsp;</p> <p class="date-time black-text">&nbsp;</p> </td> 
+              </tr> 
+              <tr> 
+               <td align="center" class="pb-10 full-width-image">&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td> <p class="h3 black-text">&nbsp;</p> </td> 
               </tr> 
              </tbody> 
             </table> </td> 
           </tr> 
          </tbody> 
-        </table> 
-        <!--Responsive Buttons--> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
          <tbody> 
           <tr> 
-           <td class="black-background"> 
+           <td class="spacer-padding">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <!--Article 4--> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="article"> 
             <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
              <tbody> 
               <tr> 
-               <td class="button-padding"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" class="pb-35"> 
-                    <div>
-                     <a class="responsive-button footer-logo-type" href="http://www.tp-acehrdw.info/3595E2p395L8k6O12u45Fcfv10b4U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ4dR9R6Qu1Bv06mJywlD/singles-distorted" style="background-color:http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlingffffff;border:1px solid http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustlingffffff;border-radius:4px;color:http://www.tp-acehrdw.info/2ff6A2N_395t8W6A12J4p5d0v10b4o36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4dR9R6X1BLs05zAwD@/Meredith-bustling0000000;display:inline-block;font-family: 'Raleway', Helvetica, Arial, sans-serif !important;font-size:28px;font-weight:bold;line-height:45px;text-align:center;text-decoration:none; width:345px;-webkit-text-size-adjust:none;mso-hide:all;">Start Now Here</a>
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
+               <td class="pb-10"> <p class="textcenter">&nbsp;</p> <p class="date-time black-text">&nbsp;</p> </td> 
+              </tr> 
+              <tr> 
+               <td align="center" class="pb-10 full-width-image">&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td> <p class="h3 black-text" style="font-size: 15px; text-align: center">To halt e-mail,<a href="http://www.go-toolslws.info/Harpy-alternate/d8c4p2395JF86z12n4g5d5F10b5U36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQadR9S5sA10t6HWXwDl" style="text-decoration-line: none;"> <span>Begin Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> [randomhtml</p> </td> 
               </tr> 
              </tbody> 
             </table> </td> 
           </tr> 
          </tbody> 
-        </table> 
-        <!--footer--> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr>
+       <!--Blue Article Module--> 
+       <td class="blue-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
          <tbody> 
           <tr> 
-           <td class="white-background"> 
+           <td align="center" class="pa-35"> 
             <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
              <tbody> 
               <tr> 
-               <td class="padding-two-column-whole-footer"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" class="two-column"> 
-                    <div class="column-footer"> 
-                     <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td class="two-column-images-padding"> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td>&nbsp;</td> 
-                           </tr> 
-                           <tr> 
-                            <td class="collections-text-padding"> <p class="text-left">&nbsp;</p> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <div class="column-footer"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td class="two-column-images-padding"> 
-                         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td>&nbsp;</td> 
-                           </tr> 
-                           <tr> 
-                            <td class="collections-text-padding"> <p class="text-left">&nbsp;</p> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
+               <td align="center" class="pb-10">&nbsp;</td> 
               </tr> 
               <tr> 
-               <td> 
-                <table border="0" cellpadding="0" cellspacing="0" height="1" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td class="full-width-image" height="1">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
+               <td> <p class="h1-white">&nbsp;</p> <p class="blue-module-article">&nbsp;</p> </td> 
               </tr> 
               <tr> 
-               <td align="center" style="padding: 45px 0;"> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" class="social-media-icons-padding"> 
-                 <tbody> 
-                  <tr> 
-                   <td>&nbsp;</td> 
-                   <td>&nbsp;</td> 
-                   <td>&nbsp;</td> 
-                   <td>&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-              <tr> 
-               <td> 
-                <table border="0" cellpadding="0" cellspacing="0" height="1" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td class="full-width-image" height="1">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-              <tr> 
-               <td style="padding: 85px 0 0 0;"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" id="logo-padding-bottom">&nbsp;</td> 
-                  </tr> 
-                  <tr> 
-                   <td style="padding: 0 0 15px 0;"> <p class="footer-logo-type">&nbsp;</p> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-              <tr> 
-               <td style="padding: 0 0 50px 0;"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" class="footer-links-padding" style="padding: 0 0 40px 0;"> 
-                    <table border="0" cellpadding="0" cellspacing="0" width="250px"> 
-                     <tbody> 
-                      <tr> 
-                       <td> <p class="footer-text">&nbsp;</p> </td> 
-                       <td> <p class="footer-text">&nbsp;</p> </td> 
-                       <td> <p class="footer-text">&nbsp;</p> </td> 
-                       <td> <p class="footer-text">&nbsp;</p> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-              <tr> 
-               <td> 
-                <table border="0" cellpadding="0" cellspacing="0" height="1" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td class="full-width-image" height="1">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-              <tr> 
-               <td style="padding: 50px 30px 15px 30px;"> <p class="footer-text">No longer wish to receive email messages?,<a href="http://www.tp-acehrdw.info/Bernstein-easterner/4684J2395lK86k13nl45jd1U10b4u36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ4dR9R7eIL1v0o6fBLMwD" style="text-decoration-line: none;"> <span>Click On Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <span><style></span></style><style lang="subjective"><small><span class="Cummins"></style></span></small><span color="Earthmen"></span><style></style></p> </td> 
-              </tr> 
-              <tr> 
-               <td style="padding: 0 30px 80px 30px"> <p class="footer-text">&nbsp;</p> </td> 
+               <td align="center" class="pt-20 max-405-img">&nbsp;</td> 
               </tr> 
              </tbody> 
             </table> </td> 
           </tr> 
          </tbody> 
-        </table> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr>
+       <!--Green Podcast Module--> 
+       <td class="green-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="pa-35"> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center" class="pb-10">&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td> <p class="blue-module-article">&nbsp;</p> </td> 
+              </tr> 
+              <tr> 
+               <td align="center" class="pt-10">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="padding-two-column-whole"> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="responsive-pb-40"> <p class="h1 textcenter">&nbsp;</p> </td> 
+              </tr> 
+              <tr> 
+               <td class="two-column"> 
+                <div class="column"> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" class="padding-two-column-single"> 
+                     <table border="0" cellpadding="0" cellspacing="0" width="185"> 
+                      <tbody> 
+                       <tr> 
+                        <td>&nbsp;</td> 
+                       </tr> 
+                       <tr> 
+                        <td class="pt-15"> <p class="two-column-blurb">&nbsp;</p> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> 
+                <div class="column"> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" class="padding-two-column-single"> 
+                     <table border="0" cellpadding="0" cellspacing="0" width="185"> 
+                      <tbody> 
+                       <tr> 
+                        <td>&nbsp;</td> 
+                       </tr> 
+                       <tr> 
+                        <td class="pt-15"> <p class="two-column-blurb">&nbsp;</p> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="padding-two-column-whole"> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="two-column"> 
+                <div class="column"> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" class="padding-two-column-single"> 
+                     <table border="0" cellpadding="0" cellspacing="0" width="185"> 
+                      <tbody> 
+                       <tr> 
+                        <td>&nbsp;</td> 
+                       </tr> 
+                       <tr> 
+                        <td class="pt-15"> <p class="two-column-blurb">&nbsp;</p> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> 
+                <div class="column"> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" class="padding-two-column-single"> 
+                     <table border="0" cellpadding="0" cellspacing="0" width="185"> 
+                      <tbody> 
+                       <tr> 
+                        <td>&nbsp;</td> 
+                       </tr> 
+                       <tr> 
+                        <td class="pt-15"> <p class="two-column-blurb">&nbsp;</p> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="white-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="padding-two-column-whole-last"> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="two-column"> 
+                <div class="column"> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" class="padding-two-column-single"> 
+                     <table border="0" cellpadding="0" cellspacing="0" width="185"> 
+                      <tbody> 
+                       <tr> 
+                        <td>&nbsp;</td> 
+                       </tr> 
+                       <tr> 
+                        <td class="pt-15"> <p class="two-column-blurb">&nbsp;</p> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> 
+                <div class="column"> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" class="padding-two-column-single"> 
+                     <table border="0" cellpadding="0" cellspacing="0" width="185"> 
+                      <tbody> 
+                       <tr> 
+                        <td>&nbsp;</td> 
+                       </tr> 
+                       <tr> 
+                        <td class="pt-15"> <p class="two-column-blurb">&nbsp;</p> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="yellow-background"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="pa-35"> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td> <p class="two-column-blurb textcenter">&nbsp;</p> </td> 
+              </tr> 
+              <tr> 
+               <td align="center" class="pb-10 max-405-img">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer"> 
+     <tbody> 
+      <tr> 
+       <td class="footer-padding"> 
+        <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="pb-5"> <p class="footer">&nbsp;</p> </td> 
+          </tr> 
+          <tr> 
+           <td class="two-column"> 
+            <div class="column"> 
+             <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="185"> 
+                  <tbody> 
+                   <tr> 
+                    <td> <p class="footer">&nbsp;</p> <p>&nbsp;</p> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </div> 
+            <div class="column"> 
+             <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="185"> 
+                  <tbody> 
+                   <tr> 
+                    <td> <p class="footer">&nbsp;</p> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </div> </td> 
+          </tr> 
+          <tr> 
+           <td class="pt-5"> <p class="footer">&nbsp;</p> </td> 
+          </tr> 
+          <tr> 
+           <td class="pt-20 pb-10"> <p class="h1">&nbsp;</p> </td> 
+          </tr> 
+          <tr> 
+           <td> <p class="footer">&nbsp;</p> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
   </center>   
- <img src="http://www.tp-acehrdw.info/4fd6yW23P95Kq8j513qj45Gd3S10b4s36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4dR9R6zD10SR6X2w2Dk/recast-extremists" alt=""/></body>
+ <img src="http://www.go-toolslws.info/a255vi2395fV85h13M4G5Bd8w10b5v36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQadR9S6KIU10A5jOqwD/Harpy-alternate" alt=""/></body>
 </html>
 
-------=_Part_436_1827063926.1673376660482--
+------=_Part_559_1834377029.1673378518456--
 
