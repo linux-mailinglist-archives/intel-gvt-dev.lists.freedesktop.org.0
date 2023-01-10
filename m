@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03B48664FF8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 00:31:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E70A0665030
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 01:02:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CBB8F10E11E;
-	Tue, 10 Jan 2023 23:31:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BCFB010E6A7;
+	Wed, 11 Jan 2023 00:02:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Tue, 10 Jan 2023 23:31:38 UTC
-Received: from mail.box-atandt.info (unknown [45.13.189.8])
- by gabe.freedesktop.org (Postfix) with ESMTP id ADF1010E11E
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Wed, 11 Jan 2023 00:02:28 UTC
+Received: from mail.veri-vrzon.info (unknown [45.13.189.9])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BB0F910E6A0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Jan 2023 23:31:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=box-atandt.info; 
+ Wed, 11 Jan 2023 00:02:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=veri-vrzon.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=att-news@box-atandt.info; bh=W8Xn2AaIOATJKXL1PQtvNj27Oi0=;
- b=sj0ORC/qWkd3yK8ptiUjupy4BKlKuxsxmyJ0u35zcDDuAhrPK3oILRDw4N1yZhR9eGYb348A8Xln
- gMWLiWcwcm6vrorh2fOuqNQ1fqmbUfeQ+g9s9hfLxgT+9jzX6PAUD+mI2VAxoTaO4AlmAnhzbiC7
- jC67EXjlX3eLPa3UMbY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=box-atandt.info;
- b=bvf7AwQXcuqX6oUw5zTxjmVx4lkJzZ0rE2WSTxpF1sM7J6jBv6oZ2RUcpW4wONT1fPeiGH1jfPjH
- Ea1lkqYayojuxOfNeGoVxSvbEytBDDHYSJugRfFULOV9396UliqCrcrhGv5wWMt+js5B2gqMd+BI
- FmpdS8ZnBih0tdaXc9k=;
-Received: by mail.box-atandt.info id hnnqlk0001gr for
+ i=verizon_time@veri-vrzon.info; 
+ bh=NbZB+BBedoKw7glODqPLtFqg82g=;
+ b=JyLzEHoTYa5C46pnKGSNylORN4cOtFuLvHRndHF9IujmB8SZn8CPlmN/e4j+w/GgdbmfiIGgmAzN
+ DAJIC6owmLo3XL9Uc+81ulxxYR3rgQyB3KWtrpAwYAlcLYcndOpL3OXjc0+otql0ihBv61BHVqFg
+ JG5NI3fb6zadrASA98g=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=veri-vrzon.info;
+ b=jlwHiSXyAKpyI9847VQtxFP2ATFhvmchG0wIwgd92k+BCsyTXI7NxO2Iysfe98Q40qkqHV5ybE1x
+ j6pjq2qX4JXjecNz2hAlmoNKZpZprL+jgUYNkCmDbCfP90cCZXucDINGJYWJZHPwatWjVczTHGo+
+ SG0p2e0U5IF2+ZdzN50=;
+Received: by mail.veri-vrzon.info id hnnu980001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Jan 2023 18:15:10 -0500 (envelope-from
- <att-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@box-atandt.info>)
-Date: Tue, 10 Jan 2023 18:15:10 -0500
-From: "ATT News" <att-news@box-atandt.info>
+ Tue, 10 Jan 2023 18:51:45 -0500 (envelope-from
+ <verizon_time-intel+2Dgvt+2Ddev=lists.freedesktop.org@veri-vrzon.info>)
+Date: Tue, 10 Jan 2023 18:51:45 -0500
+From: "VERIZON Time" <verizon_time@veri-vrzon.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Pick any gift on us, as token of appreciation for your loyalty
+Subject: Best way to show appreciation for your loyalty
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_220_636701285.1673392503430"
-Message-ID: <0.0.0.18.1D92549631CBD7E.33A45E@mail.box-atandt.info>
+ boundary="----=_Part_625_972182486.1673394681437"
+Message-ID: <0.0.0.46.1D9254E7EF8D7F8.3D2EE5@mail.veri-vrzon.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,497 +53,258 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_220_636701285.1673392503430
+------=_Part_625_972182486.1673394681437
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
 <html>
  <head> 
-  <title></title> 
-  <meta content="text/html charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <link href="http://www.box-atandt.info/Jules-roundly/6fc6m2L3w95DT8r611i45f0n10baI36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQwdRd97SY1k0Yw6LzkwDU" rel="stylesheet" /> 
-  <style type="text/css">body {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-      }
+  <meta content="width=device-width" name="viewport" /> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>Essential Email Template</title> 
+  <style type="text/css">* {
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+  line-height: 26px;
+  margin: 0;
+  padding: 0;
+}
 
-      img {
-        max-width: 100%;
-      }
+a {
+  color: #2d99eb;
+  text-decoration: none;
+}
 
-      /* Remove text Decoration on Links */
-      .em_defaultlink a {
-      	color: inherit !important;
-	      text-decoration: none !important;
-      }
+img {
+  max-width: 100%;
+  width: auto;
+}
 
-      /* helper classes */
-      .bm-image {
-        margin-bottom: -7px;
-      }
+h1,
+h2,
+h3 {
+  color: #171717;
+  font-family: Arial, sans-serif;
+  font-weight: 200;
+  line-height: 1.2em;
+  margin: 40px 0 10px;
+}
 
-      .m-0 {
-        margin: 0;
-      }
+h1 {
+  font-size: 36px;
+}
+h2 {
+  font-size: 28px;
+}
+h3 {
+  font-size: 22px;
+}
 
-      .yellow-bg {
-        background: rgb(247,170,49); /* Old browsers */
-        background: -moz-linear-gradient(-45deg, rgba(247,170,49,1) 0%, rgba(247,204,49,1) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(-45deg, rgba(247,170,49,1) 0%,rgba(247,204,49,1) 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(135deg, rgba(247,170,49,1) 0%,rgba(247,204,49,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7aa31', endColorstr='#f7cc31',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-      }
+p,
+ul,
+ol {
+  font-weight: normal;
+  margin-bottom: 10px;
+  font-size: 11pt;
+  line-height: 26px;
+  color: #323b43;
+}
 
-      .blue-bg {
-        background: rgb(86,158,187); /* Old browsers */
-        background: -moz-linear-gradient(-45deg, rgba(86,158,187,1) 0%, rgba(81,127,216,1) 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(-45deg, rgba(86,158,187,1) 0%,rgba(81,127,216,1) 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(135deg, rgba(86,158,187,1) 0%,rgba(81,127,216,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#569ebb', endColorstr='#517fd8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-      }
+ul li,
+ol li {
+  margin-left: 5px;
+  list-style-position: inside;
+}
 
-      /* Header */
-      .main-header {
-        background-color: #FFFFFF;
-      }
-      .email-wrapper {
-        max-width: 600px;
-        width: 100%;
-      }
+body {
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  -webkit-text-size-adjust: none;
+  width: 100% !important;
+}
 
-      /* Featured Auction */
-      .featured-auction {
-      }
+table.wrapper {
+  padding: 20px;
+  width: 100%;
+}
 
-      .featured-auction__banner {
-        background-color: #012169;
-      }
+table.wrapper .container {
+  border: 1px solid #f0f0f0;
+}
 
-      .title__featured-auction {
-        color: white;
-        display: inline-block;
-        font-weight: 300;
-        margin: 0;
-      }
+table.wrapper .container.top-part {
+  border: none
+}
 
-      .featured-auction__details {
-        background-image: url('');
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        height: ;
-		width: 100%
-      }
+container {
+  clear: both !important;
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 560px !important;
+  border-radius:3px;
+}
+wrapper .container {
+  padding: 20px;
+}
+wrapper .container.top-part {
+  padding:20px 0
+}
+content {
+  display: block;
+  margin: 0 auto;
+  max-width: 560px;
+}
 
-       .featured-auction__details__title,
-       .featured-auction__details__date-time {
-         font-weight: 300;
-         font-size: 25px;
-         display: inline-block;
-         padding: 4px 15px;
-         border-radius: 8px;
-         margin: 0;
-       }
+content table {
+  width: 100%;
+}
 
-      .featured-auction__details__title {
-        background-color: rgba(255,255,255,0.70);
-        color: #000000;
-      }
+logo {
+  color: #2D99EB;
+  font-weight:bold
+}
 
-      .featured-auction__details__text {
-        color: white;
-        font-size: 20px;
-        width: 350px;
-        margin: 8px auto 8px auto;
-        text-shadow: 0px 2px 4px rgba(0,0,0,0.5);
-      }
+navigation {
+  color: #2D99EB;
+  margin-left:20px;
+}
 
-      .featured-auction__details__date-time {
-        background-color: #FFFFFF;
-      }
+button {
+  Margin-bottom: 10px;
+  width: 60% !important;
 
-      /* Event Details */
-      .event-details {
-        background-color: #FFFFFF;
-      }
 
-      .event-details__td {
-        padding-top: 20px;
-        padding-bottom: 20px;
-      }
+}
 
-      .event-details__title {
-        font-weight: 600;
-        font-size: 26px;
-      }
+button td {
+  background-color: #F24E25;
+  border-radius: 3px;
+  font-family: Arial, sans-serif;
+  font-size: 30px; 
+  text-align: center;
+   
+}
 
-      .event-details__text {
-        width: 220px;
-        color: white;
-        font-weight: 300;
-        margin-top: 5px;
-      }
+button td a {
+  
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  background: #F24E25;
+  border: 1px solid #F24E25;
+  
+ text-align: center
+}
 
-      /* Photo Section */
-      .pickup-image {
-        margin-bottom: -6px;
-      }
+text-left {
+  text-align: left;
+}
 
-      .inline-image {
+text-right {
+  text-align: right;
+}
 
-      }
+table.footer-wrapper {
+  clear: both !important;
+  width: 100%;
+}
 
-      /* Equipment Info Block */
-      .equipment-info-block {
-        padding: 20px 0;
-      }
+footer-wrapper .container p {
+  color: #4c4c4c;
+  font-size: 12px;
 
-      .equipment-info__title {
-        color: white;
-        letter-spacing: 1px;
-        font-size: 22px;
-        margin: 0;
-      }
+}
 
-      .equipment-info__text {
-        max-width: 500px;
-      }
-
-      .equipment-info__link {
-        color: white;
-        font-size: 20px;
-      }
-
-      .everything-sells__title {
-        color: white;
-        font-size: 28px;
-		padding: 0px 80px 0px;
-		
-      }
-
-      .everything-sells__subtitle {
-        font-size: 24px;
-      }
-
-      /* Terms & Question Info */
-      .terms-block__title,
-      .quest-info__title {
-        margin: 0;
-      }
-
-      .terms-block__text,
-      .quest-info__text {
-        color: white;
-        font-weight: 300;
-      }
-
-      .terms-block__link,
-      .quest-info__link {
-        color: #F7CC31;
-      }
-
-      /* Footer */
-      .footer {
-        background-color: #2E67CA;
-        padding: 30px 0;
-      }
-
-      .footer__text {
-        color: white;
-        font-size: 18px;
-        font-weight: 300;
-        margin-bottom: 5px;
-      }
-
-      @media only screen and (max-width: 449px) {
-        /* Adjusts 2 Column Tables */
-        table.event-details__col-1,
-        table.event-details__col-2,
-        table.terms__col-1,
-        table.terms__col-2 {
-          width: 100% !important;
-        }
-
-        table.terms__col-1 {
-          margin-bottom: 20px !important;
-        }
-
-        td.img-1-4 {
-          width: 50% !important;
-          display: inline-block !important;
-        }
-
-        /* Yellow Block with Sale Line Items listing */
-        .equipment-info__text {
-          width: 90% !important;
-        }
-
-      }
-
-      @media only screen and (min-width: 600px) {
-        table.event-details__col-1,
-        table.event-details__col-2,
-        table.terms__col-1,
-        table.terms__col-2
-         {
-          width: 50% !important;
-        }
-      }
+table.footer-wrapper a {
+  color: #666;
+}
 	</style> 
  </head> 
- <body>
-  <!-- Start of HTML Email --> 
-  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+ <body bgcolor="#f6f6f6"> 
+  <table bgcolor="#f6f6f6" class="wrapper"> 
    <tbody> 
     <tr> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="email-wrapper"> 
-       <tbody> 
-        <tr class="row-1"> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="main-header" style="height: 100%;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="container" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif; padding: 10px" width="100%"> 
-               <tbody> 
-                <tr style="font-size: 14px; font-weight: 600;"> 
-                 <td align="center">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr class="row-2"> 
-         <td> 
-          <table align="center" cellpadding="0" cellspacing="0" class="featured-auction" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="100%"> 
-           <tbody> 
-            <tr align="center" class="featured-auction__banner" style="display: block;padding: 8px;"> 
-             <td class="featured-auction__text"> <h3 class="title__featured-auction" style="font-size: 30px"><strong>Dear AT&amp;T Customer</strong></h3> </td> 
-            </tr> 
-            <tr class="featured-auction__details"> 
-             <td> 
-              <table align="center" cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="100%"> 
-               <tbody> 
-                <tr align="center"> 
-                 <td> 
-                  <div>
-                   <a href="http://www.box-atandt.info/proudest-intricacy/7384Q2395h8Jp612D45f1rn10bao36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwdRd95rg10X6OTJwDL"><img alt="" src="http://www.box-atandt.info/proudest-intricacy/7ec4S2395U_7aY13s45sfN3g10bak36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQwdRd95YK10T6zUNwBD" style="width: " /></a>
-                  </div> 
-                  <div style="padding-top: 15px">
-                   <span style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 27px; text-align: center; margin: 0px 10px 20px">Get just a few clicks away from The $100 <strong>AT&amp;T</strong> Card by completing our 20-Second Service Survey about your recent experience with us. </span>
-                  </div> <br /> <br /> &nbsp; <p style="background: #A2D45E; display: inline-block; padding: 20px 40px"><span style=""><a href="http://www.box-atandt.info/proudest-intricacy/7384Q2395h8Jp612D45f1rn10bao36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwdRd95rg10X6OTJwDL" style="text-decoration: none; font-size: 35px; color: #FFFFFF"><strong>Go And Start Now</strong> </a></span></p> </td> 
-                </tr> 
-                <tr align="center"> 
-                 <td> <p class="featured-auction__details__text">&nbsp;</p> </td> 
-                </tr> 
-                <tr align="center"> 
-                 <td> 
-                  <blockquote> 
-                   <p class="featured-auction__details__date-time">&nbsp;</p> 
-                  </blockquote> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr class="row-3 event-details"> 
-         <td class="event-details__td"> 
-          <table align="left" cellpadding="0" cellspacing="0" class="event-details__col-1" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="50%"> 
-           <tbody> 
-            <tr> 
-             <td align="center">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" class="event-details__title">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center"> <p class="event-details__text">&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table align="left" cellpadding="0" cellspacing="0" class="event-details__col-2" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="50%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" height="37px">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" class="event-details__title">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center"> <p class="event-details__text">&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr class="row-4"> 
-         <td> 
-          <table cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;"> 
-           <tbody> 
-            <tr> 
-             <td colspan="2">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr class="row-5"> 
-         <td class="equipment-info-block #FFFFFF-bg"> 
-          <table align="center" cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;"> 
-           <tbody> 
-            <tr align="center"> 
-             <td> <h3 class="equipment-info__title">&nbsp;</h3> </td> 
-            </tr> 
-            <tr> 
-             <td align="center"> <p class="equipment-info__text">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td align="center">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr class="row-6"> 
-         <td> 
-          <table align="center" cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;"> 
-           <tbody> 
-            <tr> 
-             <td class="img-1-4">&nbsp;</td> 
-             <td class="img-1-4">&nbsp;</td> 
-             <td class="img-1-4">&nbsp;</td> 
-             <td class="img-1-4">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" colspan="4" style="padding: 20px 0;"> 
-              <table align="center" cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;"> 
-               <tbody> 
-                <tr> 
-                 <td> <h4 class="m-0 everything-sells__title">&nbsp;</h4> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" colspan="4"> <h5 class="m-0 everything-sells__subtitle">&nbsp;</h5> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr class="row-7"> 
-         <td align="center" class="#FFFFFF-bg" style="padding: 40px 0"> 
-          <table align="left" cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="100%"> 
-           <tbody> 
-            <tr>
-             <!-- Column 1 'Auction Terms' --> 
-             <td> 
-              <table align="left" cellpadding="0" cellspacing="0" class="terms__col-1" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="50%"> 
-               <tbody align="center"> 
-                <tr> 
-                 <td> <h2 class="terms-block__title">&nbsp;</h2> </td> 
-                </tr> 
-                <tr> 
-                 <td> <p class="terms-block__text">&nbsp;</p> </td> 
-                </tr> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="left" cellpadding="0" cellspacing="0" class="terms__col-2" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="50%"> 
-               <tbody align="center"> 
-                <tr> 
-                 <td> <h2 class="quest-info__title">&nbsp;</h2> </td> 
-                </tr> 
-                <tr> 
-                 <td> <p class="quest-info__text">&nbsp;</p> </td> 
-                </tr> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <!-- End of row 7 -->
-        <!-- Start of row 8 -->
-        <!-- Footer --> 
-        <tr class="row-8"> 
-         <td class="footer"> 
-          <table align="left" cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" colspan="4"> <p class="footer__text">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" colspan="4"> <p class="footer__text">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td align="center">
-              <!-- Social Icons --> 
-              <table align="center" cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="250"> 
-               <tbody> 
-                <tr> 
-                 <td align="center"></td> 
-                 <td align="center"></td> 
-                 <td align="center"></td> 
-                 <td align="center"></td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr>
-             <!-- Yellow Line --> 
-             <td> 
-              <hr class="yellow-bg" width="300" /></td> 
-            </tr> 
-            <tr> 
-             <td> 
-              <table align="center" cellpadding="0" cellspacing="0" style="font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;" width="350"> 
-               <tbody> 
-                <tr> 
-                 <td align="center">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center"> <p style="margin: 0; font-size: 12px; text-align: left; letter-spacing: normal;">&nbsp;</p> 
-                  <center>
-                   <small style="color: white; font-weight: 300; font-size: 10px">No longer want to receive information?,<a href="http://www.box-atandt.info/Anglicans-Pomeranian/9ea4J2395Uu86j13ol45fQ2t10baN36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQwdRd97zNs1zX05o0@wD" style="text-decoration-line: none;color: #000000"> <span><strong>Click Right Here</strong> </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <small><style><span class="worshipful"><font><big></style></small></big><font color="mechanically"></font></span></font><font></font><font style="canine"></font> </small> 
-                   <p>&nbsp;</p> 
-                   <small style="color: white; font-weight: 300; font-size: 10px"> </small>
-                  </center> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <!-- End of row 8 'Footer' --> 
-       </tbody> 
-      </table> 
-      <!-- End of Page Wrapper --></td> 
+     <td>&nbsp;</td> 
+     <td class="container top-part"> 
+      <div class="content"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td class="text-left"><a class="logo" href="http://www.veri-vrzon.info/9356S23lZ95e8_6X13j45lf5iQ10bbX36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQtdRdd6CIx10S5GAWwD/powerfulness-unpacked">
+            <!--Developers' Kit--> </a></td> 
+          <td class="text-right">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> </td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td bgcolor="#ffffff" class="container"> 
+      <div class="content"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td> 
+           <div style="text-align: center"> 
+            <p style="font-size: 35px"><strong>Dear Verizon Customer</strong></p> 
+           </div> &nbsp; <p style="font-size: 22px; text-align: center;font-family: sans-serif">We value your feedback and appreciate your loyalty to Verizon. That's why we want to invite you to participate in a brief survey about your shopping experience with us.</p> &nbsp; <p><a href="http://www.veri-vrzon.info/20f6cQ23V95D8p6y12Q45f6uB10bbX36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQtdRdd6b1j0ih5JUwMD/treatise-rundown"><img alt="" src="http://www.veri-vrzon.info/9174F2395F7UDa11t45f9W10bbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQtdRdd5H1RX05mpwND/equalizer-Bertram" style="width: 100%" /></a></p> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="align-items: center"> 
+            <tbody> 
+             <tr> 
+              <td> <p style="font-size: 22px; text-align: center;font-family: sans-serif">Your input is important to us and will help us improve our stores and the products and services we offer. As a thank you for your time, we are offering a chance to win a $100 <strong>Verizon</strong> gift card to one lucky survey participant.</p> <br /> <br /> <br /> &nbsp; 
+               <div style="padding-left: 8%; padding-right: 8%">
+                <a href="http://www.veri-vrzon.info/Rosella-interpersonal/cF66q23py95fF8k611h45f7i10bbD36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQtdRdd5e1MW05ryOwD" style="text-decoration: none;color: #FFFFFF"><span style=" border-radius: 8px ;background: #B6571C; padding: 25px; display: block;text-align: center;font-size: 35px"><strong>Go And Start Now</strong></span></a>
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> &nbsp; <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> </td> 
+     <td>&nbsp;</td> 
     </tr> 
    </tbody> 
   </table> 
-  <!-- End of HTML Email -->  
- <img src="http://www.box-atandt.info/proudest-intricacy/7745M23p95IXK8512w45fN4z10baK36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQwdRd96Hm1_0I5QTAwD" alt=""/></body>
+  <table class="footer-wrapper"> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td class="container"> 
+      <div class="content"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td align="center"> <p>&nbsp;</p> </td> 
+         </tr> 
+         <tr> 
+          <td align="center"> <p>&nbsp;</p> <p style="margin: 0; font-size: 12px; text-align: left; letter-spacing: normal;">&nbsp;</p> 
+           <center>
+            To shut down email,
+            <a href="http://www.veri-vrzon.info/a434c2395O86KQ11l45f8z10bbZ36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQtdRdd6GTvh105VOwWD/indestructible-forecasts" style="text-decoration-line: none;"> <span>Get Started Here </span> </a>
+            <br /> 126 E 23rd St New York, NY, US 10010
+            <br /> 
+            <br /> 
+            <br /> <style color="adopting"><font style="generalities"><span size="Woonsocket"><span title="method"></style></span><font color="forties"></span></font><big></big><span size="instructors"><big></font><big></big><style></span></style></big><span class="described"></span> 
+            <p>&nbsp;</p> 
+            <p>&nbsp;</p> 
+           </center> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> </td> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.veri-vrzon.info/2875RK2395wg85S11S45faD10bbH36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQtdRdd5V1R0A5myw3D/Rosella-interpersonal" alt=""/></body>
 </html>
 
-------=_Part_220_636701285.1673392503430--
+------=_Part_625_972182486.1673394681437--
 
