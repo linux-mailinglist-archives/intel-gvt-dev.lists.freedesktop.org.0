@@ -1,43 +1,75 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D23766623A
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 18:43:06 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6726E666254
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 18:55:11 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AEC3810E7CC;
-	Wed, 11 Jan 2023 17:43:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 33D1210E7D2;
+	Wed, 11 Jan 2023 17:55:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Wed, 11 Jan 2023 17:43:01 UTC
-Received: from mail.simpl-shop.info (unknown [45.13.189.11])
- by gabe.freedesktop.org (Postfix) with ESMTP id D979C10E7C9
+Received: from mail-pj1-x1034.google.com (mail-pj1-x1034.google.com
+ [IPv6:2607:f8b0:4864:20::1034])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A710C10E7D4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 17:43:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=simpl-shop.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kroger.opinion.requested@simpl-shop.info; 
- bh=C8TpngNehB4T/yoIIPUriPgix/g=;
- b=YaWfDg6/7kfTsUnMryO7hanqUCMkSPXjDufOI7VBhpdGVG7khH8T0dY3wqvIv9pqWOWktAWXrwUR
- WNg4jkvPHp4+x9Xm+VoHrx4ufEdqq9eJjHjwHKiBjMrWXLlC/hqdPY1hhFeb4PlZa/eBD8NDki54
- P000M7pPjIJFDZjQuTc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=simpl-shop.info;
- b=qm4LVvq6joGUpYH981UVnjc2EElE3BEuz+MPJAu1zrVB3hGNan4RI3uCdmFzux1tmkcTIJoKpuKB
- ZAgs7lzBaStn9+BSgTWAaFPVlrZTipGeQvaVKTuCWRKmpS559MRBSEZDjIkHwQQcVTSqIOPFkHKZ
- 1c89Myh54hJ39r5h030=;
-Received: by mail.simpl-shop.info id hnrqic0001g8 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 12:33:31 -0500 (envelope-from
- <kroger.opinion.requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@simpl-shop.info>)
-Date: Wed, 11 Jan 2023 12:33:31 -0500
-From: "Kroger Opinion Requested" <kroger.opinion.requested@simpl-shop.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Impressive Gifts coming your way this season
+ Wed, 11 Jan 2023 17:55:08 +0000 (UTC)
+Received: by mail-pj1-x1034.google.com with SMTP id
+ z9-20020a17090a468900b00226b6e7aeeaso18066373pjf.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 11 Jan 2023 09:55:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=i7Y/8dpiTrt5XwA66qUKG1WmzZB0zeXo7IcqUJW6CPQ=;
+ b=MczkQLZ8ed6AHL2OMQOdtKRAQGm0lp4zyPT4PoqgM9PtkQnELcpd3qDLIXLvCdG3h2
+ 4K8vLqwwOaHavSfJsui7fuj5PJwnk4FFc0w3xGvI6TP5DH1s36+dDr1Ra6PsFByduW6g
+ jb9dMI/SU+HRDQTAjwvjwyrpQVeErh+7G8aXwo6ZLT10mPle+5tAXecVjxxlWymPe7CY
+ e9utDW6Czu0ww0QlRo80dD/SUZSVBE/EIG7td4Tewom5dIo15jQCg5q5ABjL1KYa6Na8
+ qa8d3Z3OmPQLE5t2D1DPIATNRL/yT3aiktPdUbKc/3Vn/nOi2R0nOGd3MNRgx4BQx576
+ LrVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=i7Y/8dpiTrt5XwA66qUKG1WmzZB0zeXo7IcqUJW6CPQ=;
+ b=08RPN1+bGcXxOaT/eEveK1uMP3pV+RlMni+T1CT9LytNRIB8DAumgBeQa5KJPxxQSz
+ S3chRIRl87KyMG9xArN1CsqhDDLmDmHzGQeUws7RukMXhkI3IOHQX7D2ID/8ZiI5Lkvg
+ vfMSmkX9nca4YPLF6RzeZGd+mLFwcIDQ5fnihS4gUKiyw8OYZ3PZaR2j9OLVWBjDg2YF
+ q0CS+PSDjGeSc/VNuh26RORvjEU1ysUYLdzH73NGM3D4NG4ig+Zt45ZOp1eDrbKJ7Aa4
+ 7j2fr0GGH6Xna8ERpIJ/s6TexFx+x5J1z8JDxje5jaMc2HlmZiGVb/N0Oa2NC8Iiv1f3
+ YcTw==
+X-Gm-Message-State: AFqh2kqbJU//kzELN6CzfE5Nywmfuc31rGZQISS+m7kcdASSakaVfQin
+ 1ISx/AH/E41xarpHDyp+kVRRtw==
+X-Google-Smtp-Source: AMrXdXsvU/ZwNX4itatc02092RMPqShT3EdhbakJAAkdRuwYzzFKWTW7c7/5rgO8QBFQNdhstw5LwA==
+X-Received: by 2002:a05:6a20:47de:b0:b3:66b7:24ff with SMTP id
+ ey30-20020a056a2047de00b000b366b724ffmr438100pzb.1.1673459708056; 
+ Wed, 11 Jan 2023 09:55:08 -0800 (PST)
+Received: from google.com (7.104.168.34.bc.googleusercontent.com.
+ [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
+ i131-20020a628789000000b00573eb4a775esm10591458pfe.17.2023.01.11.09.55.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Jan 2023 09:55:07 -0800 (PST)
+Date: Wed, 11 Jan 2023 17:55:04 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Subject: Re: [PATCH 03/27] drm/i915/gvt: Incorporate KVM memslot info into
+ check for 2MiB GTT entry
+Message-ID: <Y773+EB35bAchVTC@google.com>
+References: <20221223005739.1295925-1-seanjc@google.com>
+ <20221223005739.1295925-4-seanjc@google.com>
+ <Y6vXTcxDNovrmeVB@yzhao56-desk.sh.intel.com>
+ <Y7SaklDQD0EoIs8l@google.com>
+ <Y7Y+759IN2DH5h3h@yzhao56-desk.sh.intel.com>
+ <Y7cLkLUMCy+XLRwm@google.com>
+ <Y7e3fT8/V2NoXAUP@yzhao56-desk.sh.intel.com>
+ <Y7ioYegkgKIH8uJL@google.com>
+ <Y7vlOCKkJ+QyO3EM@yzhao56-desk.sh.intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_721_1337821641.1673458320767"
-Message-ID: <0.0.0.50.1D925E2D2FC0FB6.4F1AE4@mail.simpl-shop.info>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y7vlOCKkJ+QyO3EM@yzhao56-desk.sh.intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,264 +82,83 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_721_1337821641.1673458320767
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Mon, Jan 09, 2023, Yan Zhao wrote:
+> On Fri, Jan 06, 2023 at 11:01:53PM +0000, Sean Christopherson wrote:
+> > On Fri, Jan 06, 2023, Yan Zhao wrote:
+> > > On Thu, Jan 05, 2023 at 05:40:32PM +0000, Sean Christopherson wrote:
+> > > > On Thu, Jan 05, 2023, Yan Zhao wrote:
+> > > > I'm totally fine if KVMGT's ABI is that VFIO is the source of truth for mappings
+> > > > and permissions, and that the only requirement for KVM memslots is that GTT page
+> > > > tables need to be visible in KVM's memslots.  But if that's the ABI, then
+> > > > intel_gvt_is_valid_gfn() should be probing VFIO, not KVM (commit cc753fbe1ac4
+> > > > ("drm/i915/gvt: validate gfn before set shadow page entry").
+> > > > 
+> > > > In other words, pick either VFIO or KVM.  Checking that X is valid according to
+> > > > KVM and then mapping X through VFIO is confusing and makes assumptions about how
+> > > > userspace configures KVM and VFIO.  It works because QEMU always configures KVM
+> > > > and VFIO as expected, but IMO it's unnecessarily fragile and again confusing for
+> > > > unaware readers because the code is technically flawed.
+> > > >
+> > > Agreed. 
+> > > Then after some further thought, I think maybe we can just remove
+> > > intel_gvt_is_valid_gfn() in KVMGT, because
+> > > 
+> > > (1) both intel_gvt_is_valid_gfn() in emulate_ggtt_mmio_write() and
+> > > ppgtt_populate_spt() are not for page track purpose, but to validate bogus
+> > > GFN.
+> > > (2) gvt_pin_guest_page() with gfn and size can do the validity checking,
+> > > which is called in intel_gvt_dma_map_guest_page(). So, we can move the
+> > > mapping of scratch page to the error path after intel_gvt_dma_map_guest_page().
+> > 
+> > IIUC, that will re-introduce the problem commit cc753fbe1ac4 ("drm/i915/gvt: validate
+> > gfn before set shadow page entry") solved by poking into KVM.  Lack of pre-validation
+> > means that bogus GFNs will trigger error messages, e.g.
+> > 
+> > 			gvt_vgpu_err("vfio_pin_pages failed for iova %pad, ret %d\n",
+> > 				     &cur_iova, ret);
+> > 
+> > and
+> > 
+> > 			gvt_vgpu_err("fail to populate guest ggtt entry\n");
+> 
+> Thanks for pointing it out.
+> I checked this commit message and found below original intentions to introduce
+> pre-validation:
 
-<html data-editor-version="2" xmlns="http://www.w3.org/1999/xhtml">
- <head> 
-  <title>igotafeeling</title> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
- </head> 
- <body> 
-  <style type="text/css">body,
-		p,
-		div {
-			font-family: inherit;
-			font-size: 14px;
-		}
+...
 
-		body {
-			color: #333;
-		}
+> (I actually found that the original code will print "invalid entry type"
+> warning which indicates it's broken for a while due to lack of test in
+> this invalid gfn path)
+> 
+> 
+> > One thought would be to turn those printks into tracepoints to eliminate unwanted
+> > noise, and to prevent the guest from spamming the host kernel log by programming
+> > garbage into the GTT (gvt_vgpu_err() isn't ratelimited).
+> As those printks would not happen in normal conditions and printks may have
+> some advantages to discover the attack or bug, could we just convert
+> gvt_vgpu_err() to be ratelimited ?
 
-		body a {
-			color: #1188E6;
-			text-decoration: none;
-		}
+That's ultimately a decision that needs to be made by the GVT maintainers, as the
+answer depends on the use case.  E.g. if most users of KVMGT run a single VM and
+the guest user is also the host admin, then pr_err_ratelimited() is likely an
+acceptable/preferable choice as there's a decent chance a human will see the errors
+in the host kernel logs and be able to take action.
 
-		p {
-			margin: 0;
-			padding: 0;
-		}
+But if there's unlikely to be a human monitoring the host logs, and/or the guest
+user is unrelated to the host admin, then a ratelimited printk() is less useful.
+E.g. if there's no one monitoring the logs, then losing messages due to
+ratelimiting provides a worse debug experience overall than having to manually
+enable tracepoints.   And if there may be many tens of VMs (seems unlikely?), then
+ratelimited printk() is even less useful because errors for a specific VM may be
+lost, i.e. the printk() can't be relied upon in any way to detect issues.
 
-		table.wrapper {
-			width: 100% !important;
-			table-layout: fixed;
-			-webkit-font-smoothing: antialiased;
-			-webkit-text-size-adjust: 100%;
-			-moz-text-size-adjust: 100%;
-			-ms-text-size-adjust: 100%;
-		}
-
-		img.max-width {
-			max-width: 100% !important;
-		}
-
-		.column.of-2 {
-			width: 50%;
-		}
-
-		.column.of-3 {
-			width: 33.333%;
-		}
-
-		.column.of-4 {
-			width: 25%;
-		}
-
-		ul ul ul ul {
-			list-style-type: disc !important;
-		}
-
-		ol ol {
-			list-style-type: lower-roman !important;
-		}
-
-		ol ol ol {
-			list-style-type: lower-latin !important;
-		}
-
-		ol ol ol ol {
-			list-style-type: decimal !important;
-		}
-
-		@media screen and (max-width:480px) {
-
-			.preheader .rightColumnContent,
-			.footer .rightColumnContent {
-				text-align: left !important;
-			}
-
-			.preheader .rightColumnContent div,
-			.preheader .rightColumnContent span,
-			.footer .rightColumnContent div,
-			.footer .rightColumnContent span {
-				text-align: left !important;
-			}
-
-			.preheader .rightColumnContent,
-			.preheader .leftColumnContent {
-				font-size: 80% !important;
-				padding: 5px 0;
-			}
-
-			table.wrapper-mobile {
-				width: 100% !important;
-				table-layout: fixed;
-			}
-
-			img.max-width {
-				height: auto !important;
-				max-width: 100% !important;
-			}
-
-			a.bulletproof-button {
-				display: block !important;
-				width: auto !important;
-				font-size: 80%;
-				padding-left: 0 !important;
-				padding-right: 0 !important;
-			}
-
-			.columns {
-				width: 100% !important;
-			}
-
-			.column {
-				display: block !important;
-				width: 100% !important;
-				padding-left: 0 !important;
-				padding-right: 0 !important;
-				margin-left: 0 !important;
-				margin-right: 0 !important;
-			}
-
-			.social-icon-column {
-				display: inline-block !important;
-			}
-		}
-</style> 
-  <!--user entered Head Start--> 
-  <link href="http://www.simpl-shop.info/5cf6z2j3p95WwD8611n4606S10bet36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQTdRdS6zj1B0z5m2wD@/tends-forwardness" rel="stylesheet" /> 
-  <style type="text/css">body {
-			font-family: 'Chivo', sans-serif;
-		}
-</style> 
-  <!--End Head user entered--> 
-  <center class="wrapper" data-body-style="font-size:14px; font-family:inherit; color:#333; background-color:#FFFFFF;" data-link-color="#1188E6"> 
-   <div class="webkit"> 
-    <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="wrapper" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td bgcolor="#FFFFFF" valign="top" width="100%"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer" role="content-container" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td width="100%"> 
-            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="left" bgcolor="#FFFFFF" role="modules-container" style="padding:0px 0px 0px 0px; color:#fff; text-align:left;" width="100%"> 
-                    <table align="center" bgcolor="#225DB2" border="0" cellpadding="0" cellspacing="0" class="wrapper" data-muid="9bb94d6b-a9d9-4d66-b867-f52241c7c7c5" data-type="image" role="module" style="table-layout: fixed; width:265px; border-spacing: 0; border: none; border-radius: 10px; border-collapse:collapse; margin:40px 0px 0px;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td align="center" style="font-size:56px; line-height:normal; padding: 25px; color: #fff" valign="top"><img alt="" src="http://www.simpl-shop.info/Dusenberg-safeguarded/8dc5f2h395QG7ag13Pz460Qau10beD36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQTdRdS7gw10UVV6jjwDPW" style="width: 60px; position: relative; top: 8px" /> Kroger</td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                    <table align="center" bgcolor="#FFF" border="0" cellpadding="0" cellspacing="0" data-distribution="1" data-type="columns" role="module" style="padding:30px 20px 40px 30px;" width="100%"> 
-                     <tbody> 
-                      <tr role="module-content"> 
-                       <td height="100%" valign="top"> 
-                        <table align="left" bgcolor="" border="0" cellpadding="0" cellspacing="0" class="column column-0" style="width:530px; border-spacing:0; border-collapse:collapse; margin:0px 10px 0px 10px;" width="530"> 
-                         <tbody> 
-                          <tr> 
-                           <td style="padding:0px;margin:0px;border-spacing:0;"> 
-                            <table border="0" cellpadding="0" cellspacing="0" class="module" data-mc-module-version="2019-10-22" data-muid="8c54c8a5-caee-4b33-b6b0-e8aaed51c545" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
-                             <tbody> 
-                              <tr> 
-                               <td bgcolor="" height="100%" role="module-content" style="padding:18px 10px 18px 10px; line-height:32px; text-align:inherit;" valign="top"> 
-                                <div> 
-                                 <div style="font-family: inherit; text-align: center"> 
-                                  <div>
-                                   <a href="http://www.simpl-shop.info/4df6DTM2395v86vj13fK4607Hl10beW36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQTdRdS6Qq1v0C5RqjwD/Dusenberg-safeguarded"><img alt="" src="http://www.simpl-shop.info/roadside-happens/cba5r239z5MK7aK12X46U0bw10beH36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQTdRdS7dGTO10W6GlwzXD" width="100%" /></a>
-                                  </div> 
-                                  <br /> 
-                                  <span style="color: #333; font-size: 25px">Get just a few clicks away from The $100 <b>Kroger</b> Card, by completing our 20-Second Service Survey about your recent experience with us. </span>
-                                 </div> 
-                                 <div>
-                                  &nbsp;
-                                 </div> 
-                                </div> </td> 
-                              </tr> 
-                             </tbody> 
-                            </table> 
-                            <table border="0" cellpadding="0" cellspacing="0" class="module" data-mc-module-version="2019-10-22" data-muid="8c54c8a5-caee-4b33-b6b0-e8aaed51c545" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
-                             <tbody> 
-                              <tr> 
-                               <td bgcolor="" height="100%" role="module-content" style="padding:18px 10px 18px 10px; line-height:32px; text-align:inherit;" valign="top"> 
-                                <div style="color: #333;"> 
-                                 <p align="center">&nbsp;</p> 
-                                 <div style="background-color: #225DB2; padding: 15px 30px; font-size: 28px; color: #fff; border-radius: 6px; border: none; font-weight: bold; max-width: 450px; margin: auto; text-align: center">
-                                  <a href="http://www.simpl-shop.info/4df6DTM2395v86vj13fK4607Hl10beW36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQTdRdS6Qq1v0C5RqjwD/Dusenberg-safeguarded" style="text-decoration: none; color: #fff">Start Now Here</a>
-                                 </div> 
-                                 <p>&nbsp;</p> 
-                                 <p>&nbsp;</p> 
-                                 <p>&nbsp;</p> 
-                                 <p>&nbsp;</p> 
-                                 <p style="padding: 25px;">&nbsp;</p> 
-                                 <p style="mso-line-height-rule:exactly; line-height:150%; text-align: center; font-size: 22px">Your input is important to us and will help us improve our stores and the products and services we offer</p> 
-                                </div> </td> 
-                              </tr> 
-                             </tbody> 
-                            </table> </td> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                    <table border="0" cellpadding="0" cellspacing="0" class="module" data-mc-module-version="2019-10-22" data-muid="0afefc1a-f10c-40df-9c38-62839d740a0c" data-type="text" role="module" style="table-layout: fixed; border-radius: 10px; overflow: hidden;" width="100%"> 
-                     <tbody> 
-                      <tr bgcolor="#F6F6F6"> 
-                       <td height="100%" role="module-content" style="padding:30px; line-height:32px; text-align:inherit;" valign="center">&nbsp;</td> 
-                       <td height="100%" role="module-content" style="padding:10px; line-height:32px; text-align:inherit;" valign="center"> 
-                        <div align="center" height="100%"> 
-                         <div style="font-family: inherit; text-align: center">
-                          &nbsp;
-                         </div> 
-                        </div> 
-                        <table border="0"> 
-                         <tbody> 
-                          <tr> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                    <div class="module" data-muid="4e838cf3-9892-4a6d-94d6-170e474d21e5" data-role="module-unsubscribe" data-type="unsubscribe" role="module" style="color:#444444; font-size:12px; line-height:20px; padding:16px 16px 16px 16px; text-align:Center;"> 
-                     <div class="Unsubscribe--addressLine" style="color: #8F8F8F;"> 
-                      <p class="Unsubscribe--senderName" style="font-size:12px; line-height:20px;"><span style="text-decoration: none;">No longer want to receive messages from us?,</span><a href="http://www.simpl-shop.info/a436zh239I5QWI8612c4609CB10beC36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQTdRdS7dL1P0lq6WUlwLD/longest-slumber" style="text-decoration-line: none;"> <span>Click This </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> [randomhtml</p> 
-                     </div> 
-                     <p style="font-size:12px; line-height:20px;">&nbsp;</p> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </center>  
- <img src="http://www.simpl-shop.info/6Rb6S2gC395Q85zU13u4vN60cn10beU36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQTdRdS5hBz106X3lJwD/Dusenberg-safeguarded" alt=""/></body>
-</html>
-
-------=_Part_721_1337821641.1673458320767--
-
+FWIW, in KVM proper, use of printk() to capture guest "errors" is strongly discourage
+for exactly these reasons.
