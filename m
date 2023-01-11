@@ -1,53 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB884665BEF
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 14:00:39 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 987A9665E75
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 15:54:12 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 11DC710E092;
-	Wed, 11 Jan 2023 13:00:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D361210E752;
+	Wed, 11 Jan 2023 14:54:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 02BD410E092
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 13:00:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673442035; x=1704978035;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=KIN1VB5kqNZgFXK74RgLSCNoUCFxz/cliAbgR0eNl/Q=;
- b=WPDmgUmS0cv9x3esI+5iw+eS2Fg9fjvH98xtRdSLW5IjteOYY+94/ulA
- Z3h6A3JJHeBBRC/rWFjEaXvLdkz9kkG5dqCutWjZU4IbcRO3QAE5Ah6R5
- X+PpozII71FgSX/YdiwFv6ry15pi5O5D/bP7XhdwzimEEAg1gfUJPrkaI
- URXOIbHiTMVoozPJDittbgSd3bTCMUXFmLJbFholuspffuGAn8ajLRhCk
- +X0gmgQYCtXaMjXW1UFeg6Itb+rdzA/0UfgsB1IU5Ulu9An3ZMtGYjH0t
- 9u/Df2tSf4J4PLpHM6CxrSumM97dcJsIl/95WfM/p70Z6eV2rv6tHSOvq A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="325413010"
-X-IronPort-AV: E=Sophos;i="5.96,317,1665471600"; d="scan'208";a="325413010"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2023 05:00:32 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10586"; a="986155332"
-X-IronPort-AV: E=Sophos;i="5.96,317,1665471600"; d="scan'208";a="986155332"
-Received: from lkp-server02.sh.intel.com (HELO f1920e93ebb5) ([10.239.97.151])
- by fmsmga005.fm.intel.com with ESMTP; 11 Jan 2023 05:00:30 -0800
-Received: from kbuild by f1920e93ebb5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pFaiT-000996-1j;
- Wed, 11 Jan 2023 13:00:29 +0000
-Date: Wed, 11 Jan 2023 20:59:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt:gvt-fixes] BUILD SUCCESS
- 4a61648af68f5ba4884f0e3b494ee1cabc4b6620
-Message-ID: <63beb2ba.WyJD3kzmQD1i/WE3%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-Greylist: delayed 73476 seconds by postgrey-1.36 at gabe;
+ Wed, 11 Jan 2023 14:54:07 UTC
+Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CBAF710E74D;
+ Wed, 11 Jan 2023 14:54:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+ t=1673448834; bh=a11Jae44KwYy9o132mfW4/D3Q6MsuBCwY//ZPSTrHIE=;
+ h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+ MIME-Version:Content-Type:In-Reply-To;
+ b=DbODQAoQHEZM/a/K4lMO2lGSRed0mwdw/Q3CVDpxU+BhbaswYuKWxAFnSbGbU4Tc5
+ y/2fIb+0O+0MX0uFej35x1bRvj7oRDMYmfNuGSD7V4zUeoKm6cDIrpUj4EGaZs4Ob7
+ TYECBqUpJP5DYqOj9CngNXl088/DL3pt7JOOqzDY=
+Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
+ via ip-206.mailobj.net [213.182.55.206]
+ Wed, 11 Jan 2023 15:53:54 +0100 (CET)
+X-EA-Auth: ZaAip+CTSc67ezFnDCoiEjLGiYvViKUlZn4iLe6bFNCGMtOK77A5JE91WLoajOWI0y3PFRk9lHMnGddwMmGr2P7TgjIZ9KEO
+Date: Wed, 11 Jan 2023 20:23:49 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Subject: Re: [PATCH 2/2] drm/i915/gvt: Avoid full proxy f_ops for vgpu_status
+ debug attributes
+Message-ID: <Y77NfeKbLL4s/Ibg@ubun2204.myguest.virtualbox.org>
+References: <cover.1673375066.git.drv@mailo.com>
+ <188df08e0feba0cda2c92145f513dd4e57c6e6cf.1673375066.git.drv@mailo.com>
+ <Y72zVXYLVHXuyK05@intel.com> <Y76JGj0cJpYr6/rv@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+In-Reply-To: <Y76JGj0cJpYr6/rv@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,264 +50,92 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Praveen Kumar <kumarpraveen@linux.microsoft.com>,
+ intel-gfx@lists.freedesktop.org, Saurabh Singh Sengar <ssengar@microsoft.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-fixes
-branch HEAD: 4a61648af68f5ba4884f0e3b494ee1cabc4b6620  drm/i915/gvt: fix double free bug in split_2MB_gtt_entry
+On Wed, Jan 11, 2023 at 05:02:02AM -0500, Rodrigo Vivi wrote:
+> On Tue, Jan 10, 2023 at 01:49:57PM -0500, Rodrigo Vivi wrote:
+> > On Wed, Jan 11, 2023 at 12:00:12AM +0530, Deepak R Varma wrote:
+> > > Using DEFINE_SIMPLE_ATTRIBUTE macro with the debugfs_create_file()
+> > > function adds the overhead of introducing a proxy file operation
+> > > functions to wrap the original read/write inside file removal protection
+> > > functions. This adds significant overhead in terms of introducing and
+> > > managing the proxy factory file operations structure and function
+> > > wrapping at runtime.
+> > > As a replacement, a combination of DEFINE_DEBUGFS_ATTRIBUTE macro paired
+> > > with debugfs_create_file_unsafe() is suggested to be used instead.  The
+> > > DEFINE_DEBUGFS_ATTRIBUTE utilises debugfs_file_get() and
+> > > debugfs_file_put() wrappers to protect the original read and write
+> > > function calls for the debug attributes. There is no need for any
+> > > runtime proxy file operations to be managed by the debugfs core.
+> > > Following coccicheck make command helped identify this change:
+> > > 
+> > > make coccicheck M=drivers/gpu/drm/i915/ MODE=patch COCCI=./scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
+> > > 
+> > > Signed-off-by: Deepak R Varma <drv@mailo.com>
+> > 
+> > I believe these 2 gvt cases could be done in one patch.
+> > But anyways,
+> > 
+> > Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> > 
+> > for both patches... and will leave these 2 patches for gvt folks
+> > to apply. Unless they ack and I apply in the drm-intel along with the other ones.
+> 
+> Actually, could you please address the checkpatch issues before we can push?
+> Sorry about that, but just noticed now when I was going to push the other ones.
 
-elapsed time: 9351m
+Hello Rodrigo,
+The checkpatch warning is associated with the long "make coccicheck ..." command
+in the commit message. It is not part of the code, so is should not be carried
+forward into the code base.
+If you still want me to correct it, I will need to split it into two lines which
+I think still violates the commit description guidelines.
 
-configs tested: 234
-configs skipped: 5
+Let me know what you think.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Thank you,
+./drv
 
-gcc tested configs:
-alpha                            allyesconfig
-arc                              allyesconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-arc                                 defconfig
-alpha                               defconfig
-powerpc                           allnoconfig
-sh                               allmodconfig
-s390                             allmodconfig
-mips                             allyesconfig
-um                             i386_defconfig
-x86_64                            allnoconfig
-s390                                defconfig
-um                           x86_64_defconfig
-x86_64                           rhel-8.3-bpf
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-s390                             allyesconfig
-powerpc                          allmodconfig
-x86_64                              defconfig
-arm                                 defconfig
-arc                  randconfig-r043-20230105
-s390                 randconfig-r044-20230105
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-arm64                            allyesconfig
-x86_64                        randconfig-a006
-arm                              allyesconfig
-riscv                randconfig-r042-20230105
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                                defconfig
-i386                          randconfig-a005
-i386                          randconfig-a014
-i386                          randconfig-a012
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                        randconfig-a015
-i386                          randconfig-a016
-i386                             allyesconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-csky                                defconfig
-ia64                             allmodconfig
-i386                          debian-10.3-kvm
-i386                        debian-10.3-kunit
-i386                         debian-10.3-func
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-loongarch                           defconfig
-loongarch                         allnoconfig
-loongarch                        allmodconfig
-i386                          randconfig-c001
-riscv                               defconfig
-sh                           sh2007_defconfig
-riscv                            allyesconfig
-arc                     nsimosci_hs_defconfig
-arm                           imxrt_defconfig
-riscv             nommu_k210_sdcard_defconfig
-arm                          gemini_defconfig
-powerpc                          allyesconfig
-riscv                            allmodconfig
-sh                   sh7724_generic_defconfig
-ia64                             allyesconfig
-powerpc                      chrp32_defconfig
-nios2                            allyesconfig
-nios2                               defconfig
-parisc                              defconfig
-parisc64                            defconfig
-parisc                           allyesconfig
-sparc                             allnoconfig
-arc                     haps_hs_smp_defconfig
-ia64                      gensparse_defconfig
-powerpc                      pasemi_defconfig
-sparc                       sparc32_defconfig
-sh                           se7721_defconfig
-arm                          exynos_defconfig
-x86_64                        randconfig-c001
-arm                  randconfig-c002-20230106
-sparc                               defconfig
-xtensa                           allyesconfig
-sparc                            allyesconfig
-x86_64                                  kexec
-sh                             sh03_defconfig
-ia64                         bigsur_defconfig
-sh                           se7751_defconfig
-mips                         cobalt_defconfig
-arc                      axs103_smp_defconfig
-powerpc                      cm5200_defconfig
-arc                          axs101_defconfig
-powerpc                 mpc8540_ads_defconfig
-powerpc                     mpc83xx_defconfig
-mips                             allmodconfig
-ia64                            zx1_defconfig
-s390                       zfcpdump_defconfig
-arc                            hsdk_defconfig
-sh                              ul2_defconfig
-arm                       multi_v4t_defconfig
-mips                           gcw0_defconfig
-nios2                         3c120_defconfig
-mips                           jazz_defconfig
-arm                           sama5_defconfig
-powerpc                     asp8347_defconfig
-arm                  randconfig-c002-20230108
-sh                   rts7751r2dplus_defconfig
-sh                                  defconfig
-powerpc                  storcenter_defconfig
-mips                     loongson1b_defconfig
-xtensa                          iss_defconfig
-sh                          landisk_defconfig
-powerpc                      mgcoge_defconfig
-xtensa                    smp_lx200_defconfig
-arm64                               defconfig
-arm                              allmodconfig
-m68k                                defconfig
-ia64                                defconfig
-m68k                       m5208evb_defconfig
-arm                       imx_v6_v7_defconfig
-arm                             rpc_defconfig
-xtensa                              defconfig
-arm                        multi_v7_defconfig
-openrisc                       virt_defconfig
-xtensa                generic_kc705_defconfig
-powerpc                        warp_defconfig
-arm                           stm32_defconfig
-mips                         db1xxx_defconfig
-powerpc                 linkstation_defconfig
-sh                           se7619_defconfig
-arm                       omap2plus_defconfig
-um                                  defconfig
-openrisc                         alldefconfig
-m68k                           sun3_defconfig
-sparc64                          alldefconfig
-powerpc                 mpc837x_rdb_defconfig
-arm                        oxnas_v6_defconfig
-m68k                          hp300_defconfig
-arm                         s3c6400_defconfig
-powerpc                      makalu_defconfig
-arm                          iop32x_defconfig
-m68k                       bvme6000_defconfig
-i386                 randconfig-a015-20230109
-i386                 randconfig-a011-20230109
-i386                 randconfig-a013-20230109
-i386                 randconfig-a014-20230109
-i386                 randconfig-a016-20230109
-i386                 randconfig-a012-20230109
-s390                 randconfig-r044-20230109
-arc                  randconfig-r043-20230108
-arc                  randconfig-r043-20230109
-arm                  randconfig-r046-20230108
-riscv                randconfig-r042-20230109
-riscv                randconfig-r042-20230110
-s390                 randconfig-r044-20230110
-arc                  randconfig-r043-20230110
-arm                         lubbock_defconfig
-powerpc                     redwood_defconfig
-sh                          rsk7203_defconfig
-sh                            hp6xx_defconfig
-m68k                            q40_defconfig
-sh                           se7780_defconfig
-sh                         ap325rxa_defconfig
-arm                               allnoconfig
-m68k                        mvme16x_defconfig
-sparc                            alldefconfig
-arm                            hisi_defconfig
-xtensa                  audio_kc705_defconfig
-arc                           tb10x_defconfig
-alpha                             allnoconfig
-powerpc                 mpc834x_mds_defconfig
-mips                     decstation_defconfig
-mips                           ci20_defconfig
-powerpc                      pcm030_defconfig
-arm                          pxa3xx_defconfig
-arm                         assabet_defconfig
-arm                           h3600_defconfig
-mips                 decstation_r4k_defconfig
-arm                          pxa910_defconfig
-m68k                       m5249evb_defconfig
-openrisc                            defconfig
+> 
+> > 
+> > > ---
+> > >  drivers/gpu/drm/i915/gvt/debugfs.c | 6 +++---
+> > >  1 file changed, 3 insertions(+), 3 deletions(-)
+> > > 
+> > > diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
+> > > index 03f081c3d9a4..baccbf1761b7 100644
+> > > --- a/drivers/gpu/drm/i915/gvt/debugfs.c
+> > > +++ b/drivers/gpu/drm/i915/gvt/debugfs.c
+> > > @@ -165,7 +165,7 @@ static int vgpu_status_get(void *data, u64 *val)
+> > >  	return 0;
+> > >  }
+> > >  
+> > > -DEFINE_SIMPLE_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx\n");
+> > > +DEFINE_DEBUGFS_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx\n");
+> > >  
+> > >  /**
+> > >   * intel_gvt_debugfs_add_vgpu - register debugfs entries for a vGPU
+> > > @@ -182,8 +182,8 @@ void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vgpu)
+> > >  			    &vgpu_mmio_diff_fops);
+> > >  	debugfs_create_file_unsafe("scan_nonprivbb", 0644, vgpu->debugfs, vgpu,
+> > >  				   &vgpu_scan_nonprivbb_fops);
+> > > -	debugfs_create_file("status", 0644, vgpu->debugfs, vgpu,
+> > > -			    &vgpu_status_fops);
+> > > +	debugfs_create_file_unsafe("status", 0644, vgpu->debugfs, vgpu,
+> > > +				   &vgpu_status_fops);
+> > >  }
+> > >  
+> > >  /**
+> > > -- 
+> > > 2.34.1
+> > > 
+> > > 
+> > > 
 
-clang tested configs:
-arm                  randconfig-r046-20230105
-hexagon              randconfig-r041-20230105
-hexagon              randconfig-r045-20230105
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-x86_64                        randconfig-a005
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-x86_64                        randconfig-a012
-i386                          randconfig-a013
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a011
-i386                          randconfig-a015
-s390                 randconfig-r044-20230106
-hexagon              randconfig-r041-20230106
-hexagon              randconfig-r045-20230106
-riscv                randconfig-r042-20230106
-x86_64                        randconfig-k001
-x86_64                           allyesconfig
-arm                       aspeed_g4_defconfig
-powerpc                     mpc5200_defconfig
-arm                          moxart_defconfig
-arm                        neponset_defconfig
-mips                 randconfig-c004-20230106
-x86_64                        randconfig-c007
-i386                          randconfig-c001
-s390                 randconfig-c005-20230106
-arm                  randconfig-c002-20230106
-riscv                randconfig-c006-20230106
-powerpc              randconfig-c003-20230106
-i386                             allyesconfig
-powerpc                      acadia_defconfig
-mips                          rm200_defconfig
-arm                          collie_defconfig
-powerpc                   microwatt_defconfig
-powerpc                 mpc832x_rdb_defconfig
-arm                          pcm027_defconfig
-powerpc                       ebony_defconfig
-s390                 randconfig-r044-20230108
-hexagon              randconfig-r041-20230108
-hexagon              randconfig-r045-20230108
-riscv                randconfig-r042-20230108
-x86_64               randconfig-a001-20230109
-x86_64               randconfig-a002-20230109
-x86_64               randconfig-a004-20230109
-x86_64               randconfig-a003-20230109
-x86_64               randconfig-a006-20230109
-x86_64               randconfig-a005-20230109
-arm                  colibri_pxa300_defconfig
-x86_64                          rhel-8.3-rust
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
