@@ -1,67 +1,108 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DC49666422
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 20:54:58 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4BAD66647D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 21:05:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 27E6610E7FA;
-	Wed, 11 Jan 2023 19:54:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A5EAF10E802;
+	Wed, 11 Jan 2023 20:05:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x102c.google.com (mail-pj1-x102c.google.com
- [IPv6:2607:f8b0:4864:20::102c])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C7D6310E7FF
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 19:54:55 +0000 (UTC)
-Received: by mail-pj1-x102c.google.com with SMTP id
- b9-20020a17090a7ac900b00226ef160dcaso16657872pjl.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 11:54:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=Ee/v08QHfLLFjdeXhNUw+rKnRh9GF2x4adAxhgB0GYM=;
- b=mUty29aJZngvM3haGgNz0VtX+oT1nq5NwGEIr+ywfTh11/SN5fAx8wJb3/AxwaV1IB
- 4fOLCF8Gt45RMnvd0FJPDGVCRtB65sGAnTnl2gvNSr25eaYWay+OCHLe12RQxNxI+uJ7
- 5kYKYjDUcHYnrs6l3M6L1KbEQhYV5D62TF38qCYkTXwjaK+f5NtvUlZlCgscCq8J7O5a
- cFrNZdYpUthCuh4JWxIaHdv6KkGy7YvA0hNl80XsdOfzgo+Wyt1R1n7GaAcPdN90cK1L
- tDvuY4iQ5Oi8XKJAFnLQc0Wu9A0lE/lOWo/eVhjs/O0IKSk8JTk8UHczuiPeZ6NLNiPn
- S1Ug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Ee/v08QHfLLFjdeXhNUw+rKnRh9GF2x4adAxhgB0GYM=;
- b=QYWtPVYQ0SnmgmGS0GnMKPtzdwAIWRNzHhW5fbVB3TU5iOL/ydPBY0PydKrNkhSrae
- rlptGgfSRLSRY1VK/MJtsKLkKThBHhSprsnpgPZZL8Q+YPe112AZoInzKeWpXw8jbUio
- 1f0pD3PfqwvmU1uyEbvH2iaOtGljiGDyFtwhuaRBPJ0jzG1s6g2ODkxW0UoDiMi3ryEq
- bOwnIshOtmjKWih3hbuESHVieD5T95TjBp8oEpf6ERD/93U4wpo+55cbQ4vV2sJHBUBP
- KSEyzoeBoTdAGHICvlHb0FtCT5yvX2epk9PmFWQQcOjUvnvk8sD9jaf+q9FidUOidRpJ
- ewEA==
-X-Gm-Message-State: AFqh2koUrh3CH7CUEpJNFL35vjyBPRJ3eR0kLzVj7G2SW3fg3ILNVIgr
- EZZvGguoTufZiRG/OxRZ4wLqtw==
-X-Google-Smtp-Source: AMrXdXsUGcan4Od1kkbsywDEb3Eqlo0h8a16FR71K8XMA8z2GmZHxW9H5FaMeLYfZPUCz0pASaTbQw==
-X-Received: by 2002:a05:6a20:c527:b0:9d:c38f:9bdd with SMTP id
- gm39-20020a056a20c52700b0009dc38f9bddmr557202pzb.2.1673466895257; 
- Wed, 11 Jan 2023 11:54:55 -0800 (PST)
-Received: from google.com (7.104.168.34.bc.googleusercontent.com.
- [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
- t18-20020a62d152000000b00580f445d1easm10245195pfl.216.2023.01.11.11.54.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Jan 2023 11:54:54 -0800 (PST)
-Date: Wed, 11 Jan 2023 19:54:51 +0000
-From: Sean Christopherson <seanjc@google.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2043.outbound.protection.outlook.com [40.107.237.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BE8AF10E7FA;
+ Wed, 11 Jan 2023 20:05:43 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A6HuHcRWfy8ZhtRYJvIrWxISfgtcR1AZ8o1FB14pJMLhMwemiqkBhbOPmGDu2/68i6pin2S14nU3tql59cWuN06DvNG+G0yQqRaL+EIA+FFvLInFInNDtg8e/xuOJtox6983yEPBE4Bk5bNJZgHn/xewEhpVx8MPabTlY4CK77f9llTYf6xeg4OZvvSUz2WWZK98YUA+K/mYgbZicuatn0hGcknzUkTl8un0TG9C3q26nB176kUU2XIwoM6gCWfqDqBtbRrkXIXOyFLAXYYgmetAga3SV32GG9rJRYSRLqYDzICE3H50j1+p9h/zsWwDsTu1g8zSRJp6C6ELOJVpAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xt2ukDMVqYKWAhqLxCmKVvcA4i4CxMbXPvDlZL7FZy0=;
+ b=Ae2lGpy0rsb+OKvUhIGR6zl+okV3mOaEnnvKlSWH0tqVKkNHhMq64OgFTOXIEfGrxJqGIznpChMEdQQMSnyXlULAM8YxaLwXkQ1GPOI7F/z8mR7P+WeoAO1dJ5vPsRrT2fziMaXIlZQprQvilcioXovpLGvGVHhP33n48Q52EjK2q9kY69xXDDWRddOEu4fF89gn3Ly26AdIFVGReKOonAWLbdg1id7gihqaB+44EsZ2bFsm72asoOP23/HNZYj12D1LQ23Ez0h1uk3ea+fUoXFvH+Lfzesnd5H4J9KxappAP2UwAs2g26yykM6NYWv0yBl8zRgR99ZjGDCXdZQABQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xt2ukDMVqYKWAhqLxCmKVvcA4i4CxMbXPvDlZL7FZy0=;
+ b=W1QsvQ4wloskNfc7z9yKI9kcrbUv9NDiFhpXYwY93wsPkX5VXR9oK1yIKYLvEkN94zT6HjKcONFf6PJ8iuVtcVe5NsOfh9s70swAFYPhSWJ8+Tj6xIMu0VosspMWzpXWB5JIoUgiqYYA4WeCWJil0BJe1xQMji9GOIm8B4K1RZUm5NQXJxfdkq73sOMHH851xgmiQHtDyHd9m4atr1auR0nxM7m8FUafxKivtj3aVwunQRgLurjmRKxf3Yqfe3JDOlB18AZV7mKg1AolEzWKy2uL+3Asmnlabx3hTI8pxN0nVbO3wM6QjVAsYsE03+RONhCx//SmLz/Y/tWt0bML8g==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by BY5PR12MB4935.namprd12.prod.outlook.com (2603:10b6:a03:1d9::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Wed, 11 Jan
+ 2023 20:05:41 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f8b0:df13:5f8d:12a]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f8b0:df13:5f8d:12a%9]) with mapi id 15.20.6002.013; Wed, 11 Jan 2023
+ 20:05:41 +0000
+Date: Wed, 11 Jan 2023 16:05:39 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Sean Christopherson <seanjc@google.com>
 Subject: Re: [PATCH 1/2] KVM: async kvm_destroy_vm for vfio devices
-Message-ID: <Y78UCz5oeuntSQtK@google.com>
+Message-ID: <Y78Wk2/P5+gLMdpk@nvidia.com>
 References: <20230109201037.33051-1-mjrosato@linux.ibm.com>
  <20230109201037.33051-2-mjrosato@linux.ibm.com>
-MIME-Version: 1.0
+ <Y78UCz5oeuntSQtK@google.com>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230109201037.33051-2-mjrosato@linux.ibm.com>
+In-Reply-To: <Y78UCz5oeuntSQtK@google.com>
+X-ClientProxiedBy: BL1PR13CA0374.namprd13.prod.outlook.com
+ (2603:10b6:208:2c0::19) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|BY5PR12MB4935:EE_
+X-MS-Office365-Filtering-Correlation-Id: fb4e6071-8626-46ef-398a-08daf40f36ca
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: HAa813yoz6EdhKKhfMXZf1ITQyeMxYm3u1nsQs75Gf0odKIWvKTKDff9SnJjLLmxUSp2NYcOMejRYbMEAJtf5aZL+bQZrdxr9amwfYNkTydMBLbWMtnfdTeht+K4PB3bLpoiDGPyp6BCKQhNrmUf/VxDoJPV7LK4tsRZW7pNyhdpEmTbE2gpYsY6HAvQtZW5FkUnhJ/Cm5A6AMOYwmpUVQBFyfmbh2/+Y4TzCBfUB2QTcwjGCn6hBMg/G98jbs04wGhrHbBI8kA/pUhaXU6Qww3pyVthuf7pejfsn3bjIwidGdBTFBOkiDYs3wM6qiVVthubi5knjehEBLX75lpHJgOFKFiZMYqOBBnwFSxkPrh2GxpszkYLWzJqV9FYNumQxOo/obkcP9MwFQSrbUfdZkrOVr7H9Yw862u3C8jfDceBWcKBQNVOKdyH1MFdbJ4VuyQDafkLUswn6Ggrg8nFJsP7c6pAiB1qQH28t0J5toJQQ/9gN2Jk2mr3GlPcxH57K5ygFTsLT66jmWsQMXK/OVfnCv6GRqK26QDgXr/KDorvc/ZChGp0k/dVLRDiSp70/9DFe8KhIRpi3UIO8uL0FT9pYJHx6UTPA5Inc3FHD5MU3paVAuhLiUFHYi5QrYjGfXl80cqFjR89o9c1XxpyHg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(4636009)(396003)(376002)(346002)(39860400002)(366004)(136003)(451199015)(86362001)(6506007)(186003)(26005)(6512007)(36756003)(316002)(38100700002)(478600001)(6916009)(2906002)(6486002)(83380400001)(41300700001)(2616005)(7416002)(5660300002)(4744005)(66946007)(4326008)(66556008)(66476007)(8676002)(8936002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?hr7sYkZK7JmRPuF7AOi7inrJDuFi1goWnynUV1yL0JDKPgP7M849xtWUOqh+?=
+ =?us-ascii?Q?LPu6SaJdqFzJRTeKrKQM+WEz7+aqMoPcimQ9kTQKKx9poInCiXlzbNtYuZQp?=
+ =?us-ascii?Q?3dpAeA1XTMZVpWjenSNipp/HNF3FNLWCz97FVg83ZO3Y+br5Y6NOEpm4nNa1?=
+ =?us-ascii?Q?vc4Q+64t1ji6TXrHIv6SkfAnMO1Hxpb/Se0BPxtqcd0myMI72ZSDenZLz6mK?=
+ =?us-ascii?Q?3GKrZlTS9/24NSm7WteHM7EW76Hp9Z2x8vggI/YlsLXl8qcreXT2s7+r3lYn?=
+ =?us-ascii?Q?XmuFnp5ZRZd2bu+h6Nit1fBRS5QmDRCSv+Hof5DIgWYHUd6831WLdCS/gDfX?=
+ =?us-ascii?Q?1j/RPqaNqhMv4SrDCco+6dfm5VmOCw8wEOQzDzuQduc/0c+FVR99P0BVEkCL?=
+ =?us-ascii?Q?ayohBwRNQXLham/epi7TT8YUy6eb3VoVwhzrW85drHj+deZzuqFk9QsFdlQW?=
+ =?us-ascii?Q?+L6Fs8PtkSV1wU0VWNHEEpwHMLr3EYe8NUTqhKkIk1v37eI9O979T4TzTkiB?=
+ =?us-ascii?Q?tX0aojsIRg2U1Z/5g2cHUltF5bZ4T4WgI48Zyb8Vp8sU1CXJe8PUIJwzjiqU?=
+ =?us-ascii?Q?h1h5+jchRQYsiaLd//xDE+YVGWDqJVemKtIKUW439W9OklMWadgcas4LcDek?=
+ =?us-ascii?Q?g6F56ROD3xU45wftQi93LOu8SD79qSo5bPr3eW2P2dg8cVBWjukpYDqObBGv?=
+ =?us-ascii?Q?JQY8zaC5r3XGiSpjcxUZbENblaDLUre3HkL35seC2qe8rIdIsclRPIFCS5bj?=
+ =?us-ascii?Q?UZsC4FaKdxyE5XEKjKCzp7VayoKhlrHyIt/TMrFcN3jcF7HigBxdcmuhGqQ7?=
+ =?us-ascii?Q?zWJZeT2mqfobagqQ5QWfheruq47yklr24RCf98xbqhuSnajFi2zf6+FGEB02?=
+ =?us-ascii?Q?gl/5x1GTstXErIViyQtoQt/q/p3MeBrKlbsd5u1WDuaGWwnPAuRVwRqdXz5a?=
+ =?us-ascii?Q?xkzOJLIXnD+YM9uUPl625zc/1p32bTAdZvOZ9/rct9jsSdnOIhpFBeExsVfM?=
+ =?us-ascii?Q?hdf3r7jKw7rzQpQy7uYsP/GIMk4ivZjoZpg73k2FP8j7RJWc5lxH+XJFMANl?=
+ =?us-ascii?Q?h+n7QNez/ta2qz49nlLvmiaMpBbN+OjP/DUSjnvrK0mjOTwS4qxOQpQX49IZ?=
+ =?us-ascii?Q?mAz7cX1YjAjd+aZdtz3Leg6H73Ds0nItogI8EZF6LSlzEcHKh1+RQTheI6o4?=
+ =?us-ascii?Q?+DpBei/QLQm+xcrc62SRKWQFeOvGM+u15igIGo6LfnImuUU22E/Wjn1A7yYE?=
+ =?us-ascii?Q?rpC47+JnNNbMQbj/eM393NnUG8oXo8qBniBQVLlO2e/SwpmWJdN811hX9gw3?=
+ =?us-ascii?Q?OjdX/NMd5b1kX4GhM3uyok17zxgJ+kfCP2Rg/20yVnq8hzmJ8503Huze0gkU?=
+ =?us-ascii?Q?vUNpyNnLbPgUMjILcb07nEF9oEcd/kWAOJ2YOl4YsObXbz7HYIhlknuo74Tv?=
+ =?us-ascii?Q?RDex7L2wmgMIZLQveBM+hwyfKwsEYpNBfY7lsf0TUyQNvls4ZS2dbHUDWrO1?=
+ =?us-ascii?Q?+NItz4VCkPgf5neYvxqfzy9LcXuEtJW/j766xflwekWN7T5/v203v19oNhi7?=
+ =?us-ascii?Q?SZMjbPQCmkigiAeilW3EUF6k3U+Gres0f9vZWTMz?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fb4e6071-8626-46ef-398a-08daf40f36ca
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jan 2023 20:05:40.9286 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2amaGh9cLYLxLHhDrwLRXuqsnwMeboU0vUKiM+cDrZ5uJZ7BA70JF0V+9GR7/ewI
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4935
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,114 +116,36 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
- imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
- david@redhat.com, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, alex.williamson@redhat.com, jgg@nvidia.com,
- kvm@vger.kernel.org, pbonzini@redhat.com, borntraeger@linux.ibm.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+ imbrenda@linux.ibm.com, Matthew Rosato <mjrosato@linux.ibm.com>,
+ pmorel@linux.ibm.com, david@redhat.com, linux-s390@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, cohuck@redhat.com,
+ linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com, pasic@linux.ibm.com,
+ alex.williamson@redhat.com, kvm@vger.kernel.org, pbonzini@redhat.com,
+ borntraeger@linux.ibm.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com, frankja@linux.ibm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Jan 09, 2023, Matthew Rosato wrote:
-> Currently it is possible that the final put of a KVM reference comes from
-> vfio during its device close operation.  This occurs while the vfio group
-> lock is held; however, if the vfio device is still in the kvm device list,
-> then the following call chain could result in a deadlock:
-> 
-> kvm_put_kvm
->  -> kvm_destroy_vm
->   -> kvm_destroy_devices
->    -> kvm_vfio_destroy
->     -> kvm_vfio_file_set_kvm
->      -> vfio_file_set_kvm
->       -> group->group_lock/group_rwsem
-> 
-> Avoid this scenario by adding kvm_put_kvm_async which will perform the
-> kvm_destroy_vm asynchronously if the refcount reaches 0.
+On Wed, Jan 11, 2023 at 07:54:51PM +0000, Sean Christopherson wrote:
 
-Something feels off.  If KVM's refcount is 0, then accessing device->group->kvm
-in vfio_device_open() can't happen unless there's a refcounting bug somewhere.
+> Something feels off.  If KVM's refcount is 0, then accessing device->group->kvm
+> in vfio_device_open() can't happen unless there's a refcounting bug somewhere.
 
-E.g. if this snippet holds group_lock
+The problem is in close, not open.
 
-		mutex_lock(&device->group->group_lock);
-		device->kvm = device->group->kvm;
+Specifically it would be very hard to avoid holding the group_lock
+during close which is when the put is done.
 
-		if (device->ops->open_device) {
-			ret = device->ops->open_device(device);
-			if (ret)
-				goto err_undo_count;
-		}
-		vfio_device_container_register(device);
-		mutex_unlock(&device->group->group_lock);
+> Rather than force devices to get KVM references, why not handle that in common
+> VFIO code and drop KVM refcountin from devices?  Worst case scenario KVM is pinned
+> by a device that doesn't need KVM but is in a group associated with KVM.  If that's
+> a concern, it seems easy enough to add a flag to vfio_device_ops to enumerate
+> whether or not the device depends on KVM.
 
-and kvm_vfio_destroy() has already been invoked and is waiting on group_lock in
-vfio_file_set_kvm(), then device->ops->open_device() is being called with a
-non-NULL device->kvm that has kvm->users_count==0.  And intel_vgpu_open_device()
-at least uses kvm_get_kvm(), i.e. assumes kvm->users_count > 0.
+We can't make cross-dependencies between kvm and core VFIO - it is why
+so much of this is soo ugly.
 
-If there's no refcounting bug then kvm_vfio_destroy() doesn't need to call
-kvm_vfio_file_set_kvm() since the only way there isn't a refcounting bug is if
-group->kvm is unreachable.  This seems unlikely.
+The few device drivers that unavoidably have KVM involvment already
+have a KVM module dependency, so they can safely do the get/put
 
-Assuming there is indeed a refcounting issue, one solution would be to harden all
-->open_device() implementations to use kvm_get_kvm_safe().  I'd prefer not to have
-to do that since it will complicate those implementations and also requires KVM
-to support an async put.
-
-Rather than force devices to get KVM references, why not handle that in common
-VFIO code and drop KVM refcountin from devices?  Worst case scenario KVM is pinned
-by a device that doesn't need KVM but is in a group associated with KVM.  If that's
-a concern, it seems easy enough to add a flag to vfio_device_ops to enumerate
-whether or not the device depends on KVM.
-
----
- drivers/vfio/vfio_main.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-index 6e8804fe0095..fb43212d77a0 100644
---- a/drivers/vfio/vfio_main.c
-+++ b/drivers/vfio/vfio_main.c
-@@ -772,6 +772,13 @@ static struct file *vfio_device_open(struct vfio_device *device)
- 		 * reference and release it during close_device.
- 		 */
- 		mutex_lock(&device->group->group_lock);
-+
-+		if (device->group->kvm &&
-+		    !kvm_get_kvm_safe(device->group->kvm->kvm)) {
-+			ret = -ENODEV;
-+			goto err_undo_count;
-+		}
-+
- 		device->kvm = device->group->kvm;
- 
- 		if (device->ops->open_device) {
-@@ -823,8 +830,10 @@ static struct file *vfio_device_open(struct vfio_device *device)
- err_undo_count:
- 	mutex_unlock(&device->group->group_lock);
- 	device->open_count--;
--	if (device->open_count == 0 && device->kvm)
-+	if (device->open_count == 0 && device->kvm) {
-+		kvm_put_kvm(device->kvm);
- 		device->kvm = NULL;
-+	}
- 	mutex_unlock(&device->dev_set->lock);
- 	module_put(device->dev->driver->owner);
- err_unassign_container:
-@@ -1039,8 +1048,10 @@ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
- 	}
- 	mutex_unlock(&device->group->group_lock);
- 	device->open_count--;
--	if (device->open_count == 0)
-+	if (device->open_count == 0 && device->kvm) {
-+		kvm_put_kvm(device->kvm);
- 		device->kvm = NULL;
-+	}
- 	mutex_unlock(&device->dev_set->lock);
- 
- 	module_put(device->dev->driver->owner);
-
-base-commit: d52444c7a90fc551b4c3b0bda7d3f0b2ca9fc84d
--- 
+Jason
