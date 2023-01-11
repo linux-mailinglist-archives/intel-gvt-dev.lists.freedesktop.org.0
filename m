@@ -2,42 +2,66 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D762A666368
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 20:17:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DC49666422
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 20:54:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 95A9210E7EE;
-	Wed, 11 Jan 2023 19:17:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 27E6610E7FA;
+	Wed, 11 Jan 2023 19:54:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 11 Jan 2023 19:17:48 UTC
-Received: from mail.take-ups.info (unknown [45.13.189.13])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7F0C210E7ED
+Received: from mail-pj1-x102c.google.com (mail-pj1-x102c.google.com
+ [IPv6:2607:f8b0:4864:20::102c])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C7D6310E7FF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 19:17:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=take-ups.info;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups_user_feedback@take-ups.info; 
- bh=omEuVor20zKr5XgCLl4GDwk7wFM=;
- b=xh79Y7aj/oUY+PKazMy9VbvXaKlF4ZtKUWRuimP2hsLMhFXkltHkr4Qc3rqZSYgRJAhZ3q0DMh1a
- LtdkBXnUJtbY33RF2dujR5yVF/p9WGHBRga+Ls4RQVDBgK4FXaDum5z/YBdNxK7qQUGDyChtd6zQ
- /efYjDyD4BX3Ne+gTts=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=take-ups.info;
- b=f/vqMBM1bpj+jxGx2de1byB+O6UrM0I/a/XvGs86g026rUCGyim6sPwoA2shIinaWuaw/HCkuXLz
- BQEuITxrieEIwbx1pTmmaLyKHebeQ8Mhy71hkwSCY8vRGUwL3wDUfyDNrkPJazSRFaNF2UNOy0yZ
- VN7Kq2wXwiXzciHvjbk=;
-Received: by mail.take-ups.info id hns5lo0001g3 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 14:07:39 -0500 (envelope-from
- <ups_user_feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@take-ups.info>)
-Date: Wed, 11 Jan 2023 14:07:39 -0500
-From: "Ups User Feedback" <ups_user_feedback@take-ups.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: ups Gift Opportunity
+ Wed, 11 Jan 2023 19:54:55 +0000 (UTC)
+Received: by mail-pj1-x102c.google.com with SMTP id
+ b9-20020a17090a7ac900b00226ef160dcaso16657872pjl.2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 11 Jan 2023 11:54:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=Ee/v08QHfLLFjdeXhNUw+rKnRh9GF2x4adAxhgB0GYM=;
+ b=mUty29aJZngvM3haGgNz0VtX+oT1nq5NwGEIr+ywfTh11/SN5fAx8wJb3/AxwaV1IB
+ 4fOLCF8Gt45RMnvd0FJPDGVCRtB65sGAnTnl2gvNSr25eaYWay+OCHLe12RQxNxI+uJ7
+ 5kYKYjDUcHYnrs6l3M6L1KbEQhYV5D62TF38qCYkTXwjaK+f5NtvUlZlCgscCq8J7O5a
+ cFrNZdYpUthCuh4JWxIaHdv6KkGy7YvA0hNl80XsdOfzgo+Wyt1R1n7GaAcPdN90cK1L
+ tDvuY4iQ5Oi8XKJAFnLQc0Wu9A0lE/lOWo/eVhjs/O0IKSk8JTk8UHczuiPeZ6NLNiPn
+ S1Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Ee/v08QHfLLFjdeXhNUw+rKnRh9GF2x4adAxhgB0GYM=;
+ b=QYWtPVYQ0SnmgmGS0GnMKPtzdwAIWRNzHhW5fbVB3TU5iOL/ydPBY0PydKrNkhSrae
+ rlptGgfSRLSRY1VK/MJtsKLkKThBHhSprsnpgPZZL8Q+YPe112AZoInzKeWpXw8jbUio
+ 1f0pD3PfqwvmU1uyEbvH2iaOtGljiGDyFtwhuaRBPJ0jzG1s6g2ODkxW0UoDiMi3ryEq
+ bOwnIshOtmjKWih3hbuESHVieD5T95TjBp8oEpf6ERD/93U4wpo+55cbQ4vV2sJHBUBP
+ KSEyzoeBoTdAGHICvlHb0FtCT5yvX2epk9PmFWQQcOjUvnvk8sD9jaf+q9FidUOidRpJ
+ ewEA==
+X-Gm-Message-State: AFqh2koUrh3CH7CUEpJNFL35vjyBPRJ3eR0kLzVj7G2SW3fg3ILNVIgr
+ EZZvGguoTufZiRG/OxRZ4wLqtw==
+X-Google-Smtp-Source: AMrXdXsUGcan4Od1kkbsywDEb3Eqlo0h8a16FR71K8XMA8z2GmZHxW9H5FaMeLYfZPUCz0pASaTbQw==
+X-Received: by 2002:a05:6a20:c527:b0:9d:c38f:9bdd with SMTP id
+ gm39-20020a056a20c52700b0009dc38f9bddmr557202pzb.2.1673466895257; 
+ Wed, 11 Jan 2023 11:54:55 -0800 (PST)
+Received: from google.com (7.104.168.34.bc.googleusercontent.com.
+ [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
+ t18-20020a62d152000000b00580f445d1easm10245195pfl.216.2023.01.11.11.54.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Jan 2023 11:54:54 -0800 (PST)
+Date: Wed, 11 Jan 2023 19:54:51 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>
+Subject: Re: [PATCH 1/2] KVM: async kvm_destroy_vm for vfio devices
+Message-ID: <Y78UCz5oeuntSQtK@google.com>
+References: <20230109201037.33051-1-mjrosato@linux.ibm.com>
+ <20230109201037.33051-2-mjrosato@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_595_1675545440.1673463983232"
-Message-ID: <0.0.0.42.1D925EFF92973D8.105C04@mail.take-ups.info>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230109201037.33051-2-mjrosato@linux.ibm.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,283 +74,115 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
+ imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
+ david@redhat.com, linux-s390@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
+ pasic@linux.ibm.com, alex.williamson@redhat.com, jgg@nvidia.com,
+ kvm@vger.kernel.org, pbonzini@redhat.com, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_595_1675545440.1673463983232
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Mon, Jan 09, 2023, Matthew Rosato wrote:
+> Currently it is possible that the final put of a KVM reference comes from
+> vfio during its device close operation.  This occurs while the vfio group
+> lock is held; however, if the vfio device is still in the kvm device list,
+> then the following call chain could result in a deadlock:
+> 
+> kvm_put_kvm
+>  -> kvm_destroy_vm
+>   -> kvm_destroy_devices
+>    -> kvm_vfio_destroy
+>     -> kvm_vfio_file_set_kvm
+>      -> vfio_file_set_kvm
+>       -> group->group_lock/group_rwsem
+> 
+> Avoid this scenario by adding kvm_put_kvm_async which will perform the
+> kvm_destroy_vm asynchronously if the refcount reaches 0.
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
- <head> 
-  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" /> 
-  <meta content="width=device-width" name="viewport" /> 
-  <title>NC State</title> 
- </head> 
- <body bgcolor="#FFFFFF" marginheight="0" style="font-family: arial,sans-serif;" topmargin="0"> 
-  <style type="text/css">body {
-	margin: 0;
-	padding: 0;
-	font-family: arial, sans-serif !important;
-}
+Something feels off.  If KVM's refcount is 0, then accessing device->group->kvm
+in vfio_device_open() can't happen unless there's a refcounting bug somewhere.
 
-tr, td {
-	margin, padding: 0;
-}
+E.g. if this snippet holds group_lock
 
-table[class="wrapper"] {
-	width: 100%;
-	margin: auto;
-	padding: 0;
-	font-size: 14px;
-	border: 1px solid #333;
-    
-}
+		mutex_lock(&device->group->group_lock);
+		device->kvm = device->group->kvm;
 
-div[class="header"] {
-	background-color: #333;
-	
-	width: 100%;
-}
+		if (device->ops->open_device) {
+			ret = device->ops->open_device(device);
+			if (ret)
+				goto err_undo_count;
+		}
+		vfio_device_container_register(device);
+		mutex_unlock(&device->group->group_lock);
 
-div[class="header"] img {
-	margin-left: 10%;
-	height: 60px;
-	width: 125px;
-}
+and kvm_vfio_destroy() has already been invoked and is waiting on group_lock in
+vfio_file_set_kvm(), then device->ops->open_device() is being called with a
+non-NULL device->kvm that has kvm->users_count==0.  And intel_vgpu_open_device()
+at least uses kvm_get_kvm(), i.e. assumes kvm->users_count > 0.
 
-div[class="title"] {
-	width: 90%;
-	margin: 0 5%;
-	padding-top: 45px;
-}
+If there's no refcounting bug then kvm_vfio_destroy() doesn't need to call
+kvm_vfio_file_set_kvm() since the only way there isn't a refcounting bug is if
+group->kvm is unreachable.  This seems unlikely.
 
-div[class="title"] h1 {
-	text-align: center;
-	text-transform: uppercase;
-	font-size: 1.6em;
-}
+Assuming there is indeed a refcounting issue, one solution would be to harden all
+->open_device() implementations to use kvm_get_kvm_safe().  I'd prefer not to have
+to do that since it will complicate those implementations and also requires KVM
+to support an async put.
 
-div[class="date"] {
-	width: 90%;
-	padding: 2% 0 0 5%;
-}
+Rather than force devices to get KVM references, why not handle that in common
+VFIO code and drop KVM refcountin from devices?  Worst case scenario KVM is pinned
+by a device that doesn't need KVM but is in a group associated with KVM.  If that's
+a concern, it seems easy enough to add a flag to vfio_device_ops to enumerate
+whether or not the device depends on KVM.
 
-div[class="date"] p {
-	color: #cc0000;
-	font-size: 1.2em;
-	margin: 0;
-}
+---
+ drivers/vfio/vfio_main.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
-div[class="news_story"] {
-	/*border-top: 3px solid #000;*/
-	width: 90%;
-	padding: 0 10% 0 0;
-	line-height: 130%;
-	clear: both;
-}
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index 6e8804fe0095..fb43212d77a0 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -772,6 +772,13 @@ static struct file *vfio_device_open(struct vfio_device *device)
+ 		 * reference and release it during close_device.
+ 		 */
+ 		mutex_lock(&device->group->group_lock);
++
++		if (device->group->kvm &&
++		    !kvm_get_kvm_safe(device->group->kvm->kvm)) {
++			ret = -ENODEV;
++			goto err_undo_count;
++		}
++
+ 		device->kvm = device->group->kvm;
+ 
+ 		if (device->ops->open_device) {
+@@ -823,8 +830,10 @@ static struct file *vfio_device_open(struct vfio_device *device)
+ err_undo_count:
+ 	mutex_unlock(&device->group->group_lock);
+ 	device->open_count--;
+-	if (device->open_count == 0 && device->kvm)
++	if (device->open_count == 0 && device->kvm) {
++		kvm_put_kvm(device->kvm);
+ 		device->kvm = NULL;
++	}
+ 	mutex_unlock(&device->dev_set->lock);
+ 	module_put(device->dev->driver->owner);
+ err_unassign_container:
+@@ -1039,8 +1048,10 @@ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
+ 	}
+ 	mutex_unlock(&device->group->group_lock);
+ 	device->open_count--;
+-	if (device->open_count == 0)
++	if (device->open_count == 0 && device->kvm) {
++		kvm_put_kvm(device->kvm);
+ 		device->kvm = NULL;
++	}
+ 	mutex_unlock(&device->dev_set->lock);
+ 
+ 	module_put(device->dev->driver->owner);
 
-div[class="news_story"] img {
-	float: left;
-	width: 25%;
-	max-width: 150px;
-	padding: 3% 0 0 5%;
-}
-
-div[class="news_story"] div[class="story_teaser"] {
-	float: left;
-	width: 65%;
-	padding: 0 0 7% 5%;
-}
-
-div[class="news_story"] div[class="story_teaser"] h2 {
-	margin: 3% 0 3% 0;
-	line-height: 1.3em;
-	font-size: 1.5em;
-}
-
-div[class="news_story"] div[class="story_teaser"] p {
-	margin: 0;
-	clear: both;
-}
-
-div[class="news_story"] div[class="story_teaser"] a {
-	color: #cc0000;
-	text-decoration: none;
-}
-
-div[class="call-to-action"] {
-	width: 90%;
-	padding: 1% 0 2% 5%;
-	clear: both;
-}
-
-div[class="call-to-action"] p a {
-	color: #cc0000;
-	text-decoration: none;
-	font-weight: bold;
-	font-size: 1.3em;
-	margin: 0;
-}
-
-div[class="footer"] {
-	width: 100%;
-	background-color: #cc0000;
-	color: #fff;
-	text-align: center;
-	font-size: 0.8em;
-	padding: 1em 0 2em 0;
-}
-
-div[class="footer"] a {
-	color: #fff;
-}
-
-div[class="footer"] p[class="social"] {
-	margin: 0;
-	font-size: 0.8em;
-	font-weight: bold;
-}
-
-div[class="footer"] p[class="social"] a {
-	text-decoration: none;
-}
-
-@media only screen and (max-device-width: 675px) {
-
-	table[class="wrapper"] {
-		width: 100% !important;
-	}
-	
-	div[class="header"] img {
-		margin-left: 2em !important;
-	}
-	
-	div[class="news_story"] img {
-		width: 100% !important;
-		max-width: 150px !important;
-		height: auto;
-	}
-
-	div[class="news_story"] div[class="story_teaser"] {
-		width: 90% !important;
-		padding: 0 0 0 5% !important;
-		margin-left: 0 !important;
-	}
-	
-	div[class="news_story"] div[class="story_teaser"] h2 {
-		font-size: 1.8em !important;
-	}
-	
-	div[class="news_story"] p[class="copy"] {
-		font-size: 1.3em !important;
-		line-height: 140% !important;
-	}
-
-}
-</style> 
-  <center> 
-   <table cellpadding="0" cellspacing="0" class="wrapper" style="max-width: 550px"> 
-    <tbody> 
-     <tr> 
-      <td> 
-       <div class="header" style="line-height: normal; padding: 0px"> 
-        <div style="line-height: normal; padding: 12px; color: #fff"> 
-         <p style="margin: 0">January 11, 2023</p> 
-        </div> 
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td> 
-       <div class="title"> 
-        <h1 style="font-size: 40pt; padding: 0px; margin: 0">UPS</h1> 
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td> 
-       <table cellpadding="1" cellspacing="1" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> 
-           <table cellpadding="1" cellspacing="1" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center"> 
-               <table cellpadding="1" cellspacing="1" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> 
-                   <table cellpadding="1" cellspacing="1" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center"> 
-                       <table cellpadding="1" cellspacing="1" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center"><a href="http://www.take-ups.info/1016G2_H395N8YJ612KV4611Z10c0l36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQHdRdK6ri1M0N6mqywDX/rafts-obligation"><img alt="" src="http://www.take-ups.info/optimizations-Jaime/71a4L2395z7Nar13K4B613IP10c0v36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQHdRdK7C1OYy0R5FqpwD" width="100%" /> </a></td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <div class="date"> 
-        <p align="center" style="font-size: 22pt; color: #000">Get just a few clicks away from The $100 <b>UPS</b> Card, by completing our 20-Second Service Survey about your recent experience with us.</p> &nbsp; 
-        <center>
-         <a href="http://www.take-ups.info/1016G2_H395N8YJ612KV4611Z10c0l36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQHdRdK6ri1M0N6mqywDX/rafts-obligation" style="text-decoration: none; font-size: 26px; color:#3C4121"><span style="display: block; max-width: 200px; border: solid 2px #3C4121; padding: 15px; border-radius: 5px; text-align: center; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><b>Start Now Here</b></span></a>
-         <br /> &nbsp; 
-         <p style="mso-line-height-rule:exactly; line-height:150%; text-align: center; font-size: 22px">Your input is important to us and will help us improve our stores and the products and services we offer</p> 
-        </center> 
-       </div> 
-       <div class="news_story"> 
-        <div class="story_teaser"> 
-         <h2 class="headline">&nbsp;</h2> 
-         <p class="copy">&nbsp;</p> 
-         <p class="copy">&nbsp;</p> 
-        </div> 
-       </div> 
-       <div class="news_story"> 
-        <div class="story_teaser"> 
-         <h2 class="headline">&nbsp;</h2> 
-         <p class="copy">&nbsp;</p> 
-         <p class="copy">&nbsp;</p> 
-        </div> 
-       </div> 
-       <div class="news_story"> 
-        <div class="story_teaser"> 
-         <h2>&nbsp;</h2> 
-         <p class="copy">&nbsp;</p> 
-         <p class="copy">&nbsp;</p> 
-        </div> 
-       </div> 
-       <div class="call-to-action"> 
-        <p>&nbsp;</p> 
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td> 
-       <div class="footer"> 
-        <p>&nbsp;</p> 
-        <p>&nbsp;</p> 
-        <p>&nbsp;</p> 
-        <p class="social" style="font-size: 14px; font-weight: normal"><span style="text-decoration: none;">To conclude email,</span><a href="http://www.take-ups.info/solemnly-enables/31e4t2395dPh8611p4612I10c0k36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQHdRdK6f1wwT06B3OzwD" style="text-decoration-line: none; color: red"> <span>Start_Right_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> [randomhtml</p> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </center>   
- <img src="http://www.take-ups.info/6dd4M2395w85xB12j4614Dr10c0g36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQHdRdK7Qx1BB0Z5bkwBD/encircles-misty" alt=""/></body>
-</html>
-
-------=_Part_595_1675545440.1673463983232--
-
+base-commit: d52444c7a90fc551b4c3b0bda7d3f0b2ca9fc84d
+-- 
