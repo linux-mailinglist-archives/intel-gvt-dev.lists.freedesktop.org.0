@@ -2,74 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6726E666254
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 18:55:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CAAD6662D6
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 19:33:59 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 33D1210E7D2;
-	Wed, 11 Jan 2023 17:55:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6E3CD10E7A5;
+	Wed, 11 Jan 2023 18:33:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x1034.google.com (mail-pj1-x1034.google.com
- [IPv6:2607:f8b0:4864:20::1034])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A710C10E7D4
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Wed, 11 Jan 2023 18:33:55 UTC
+Received: from mail.rely-pals.info (unknown [45.13.189.12])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 10B5410E7A5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 17:55:08 +0000 (UTC)
-Received: by mail-pj1-x1034.google.com with SMTP id
- z9-20020a17090a468900b00226b6e7aeeaso18066373pjf.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 09:55:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=i7Y/8dpiTrt5XwA66qUKG1WmzZB0zeXo7IcqUJW6CPQ=;
- b=MczkQLZ8ed6AHL2OMQOdtKRAQGm0lp4zyPT4PoqgM9PtkQnELcpd3qDLIXLvCdG3h2
- 4K8vLqwwOaHavSfJsui7fuj5PJwnk4FFc0w3xGvI6TP5DH1s36+dDr1Ra6PsFByduW6g
- jb9dMI/SU+HRDQTAjwvjwyrpQVeErh+7G8aXwo6ZLT10mPle+5tAXecVjxxlWymPe7CY
- e9utDW6Czu0ww0QlRo80dD/SUZSVBE/EIG7td4Tewom5dIo15jQCg5q5ABjL1KYa6Na8
- qa8d3Z3OmPQLE5t2D1DPIATNRL/yT3aiktPdUbKc/3Vn/nOi2R0nOGd3MNRgx4BQx576
- LrVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=i7Y/8dpiTrt5XwA66qUKG1WmzZB0zeXo7IcqUJW6CPQ=;
- b=08RPN1+bGcXxOaT/eEveK1uMP3pV+RlMni+T1CT9LytNRIB8DAumgBeQa5KJPxxQSz
- S3chRIRl87KyMG9xArN1CsqhDDLmDmHzGQeUws7RukMXhkI3IOHQX7D2ID/8ZiI5Lkvg
- vfMSmkX9nca4YPLF6RzeZGd+mLFwcIDQ5fnihS4gUKiyw8OYZ3PZaR2j9OLVWBjDg2YF
- q0CS+PSDjGeSc/VNuh26RORvjEU1ysUYLdzH73NGM3D4NG4ig+Zt45ZOp1eDrbKJ7Aa4
- 7j2fr0GGH6Xna8ERpIJ/s6TexFx+x5J1z8JDxje5jaMc2HlmZiGVb/N0Oa2NC8Iiv1f3
- YcTw==
-X-Gm-Message-State: AFqh2kqbJU//kzELN6CzfE5Nywmfuc31rGZQISS+m7kcdASSakaVfQin
- 1ISx/AH/E41xarpHDyp+kVRRtw==
-X-Google-Smtp-Source: AMrXdXsvU/ZwNX4itatc02092RMPqShT3EdhbakJAAkdRuwYzzFKWTW7c7/5rgO8QBFQNdhstw5LwA==
-X-Received: by 2002:a05:6a20:47de:b0:b3:66b7:24ff with SMTP id
- ey30-20020a056a2047de00b000b366b724ffmr438100pzb.1.1673459708056; 
- Wed, 11 Jan 2023 09:55:08 -0800 (PST)
-Received: from google.com (7.104.168.34.bc.googleusercontent.com.
- [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
- i131-20020a628789000000b00573eb4a775esm10591458pfe.17.2023.01.11.09.55.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Jan 2023 09:55:07 -0800 (PST)
-Date: Wed, 11 Jan 2023 17:55:04 +0000
-From: Sean Christopherson <seanjc@google.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Subject: Re: [PATCH 03/27] drm/i915/gvt: Incorporate KVM memslot info into
- check for 2MiB GTT entry
-Message-ID: <Y773+EB35bAchVTC@google.com>
-References: <20221223005739.1295925-1-seanjc@google.com>
- <20221223005739.1295925-4-seanjc@google.com>
- <Y6vXTcxDNovrmeVB@yzhao56-desk.sh.intel.com>
- <Y7SaklDQD0EoIs8l@google.com>
- <Y7Y+759IN2DH5h3h@yzhao56-desk.sh.intel.com>
- <Y7cLkLUMCy+XLRwm@google.com>
- <Y7e3fT8/V2NoXAUP@yzhao56-desk.sh.intel.com>
- <Y7ioYegkgKIH8uJL@google.com>
- <Y7vlOCKkJ+QyO3EM@yzhao56-desk.sh.intel.com>
+ Wed, 11 Jan 2023 18:33:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=rely-pals.info; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=paypal-user-feedback@rely-pals.info; 
+ bh=D9TzeLDJ1W9vhxwHN/wiouZOn6E=;
+ b=MC/fSWdD3z4GR/wkj9xIK6Y5NdZv7cQAB8GQm/TepZm/2TWEAwVUM8kzoLxMU0StEpJwV5JQVzLa
+ C2/iyAjdYnCvKiHm/eIm+sw1gIJmT8W6n93FSUQbhu92ch+RJOOyqxYZe35OKXKAkjhSECEkMXB0
+ nVzxlZckt1GmPH+R41Q=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=rely-pals.info;
+ b=UEQXtl+T2lYyGPgm28cnsuPG1yU+g+eWD6xEqrYhHhuM6xOMT2Ou4GdLKUPDGG0zQCxFbsOxMtHl
+ 1T/HKUGOTVv2WoiBjx2IP+XcGUc1yN0xNRbLqiU1+t41eP1hnQKv+hsF1rdLoima5sIVBfQa3mUh
+ +f1SvnLMMp1vGJuabSw=;
+Received: by mail.rely-pals.info id hnsap60001gu for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 11 Jan 2023 14:48:47 -0500 (envelope-from
+ <paypal-user-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@rely-pals.info>)
+Date: Wed, 11 Jan 2023 14:48:47 -0500
+From: "Paypal User Feedback" <paypal-user-feedback@rely-pals.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Best way to show appreciation for your loyalty
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y7vlOCKkJ+QyO3EM@yzhao56-desk.sh.intel.com>
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_529_2084378696.1673461204354"
+Message-ID: <0.0.0.3A.1D925F5B895ABE2.53380C@mail.rely-pals.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,83 +50,296 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Jan 09, 2023, Yan Zhao wrote:
-> On Fri, Jan 06, 2023 at 11:01:53PM +0000, Sean Christopherson wrote:
-> > On Fri, Jan 06, 2023, Yan Zhao wrote:
-> > > On Thu, Jan 05, 2023 at 05:40:32PM +0000, Sean Christopherson wrote:
-> > > > On Thu, Jan 05, 2023, Yan Zhao wrote:
-> > > > I'm totally fine if KVMGT's ABI is that VFIO is the source of truth for mappings
-> > > > and permissions, and that the only requirement for KVM memslots is that GTT page
-> > > > tables need to be visible in KVM's memslots.  But if that's the ABI, then
-> > > > intel_gvt_is_valid_gfn() should be probing VFIO, not KVM (commit cc753fbe1ac4
-> > > > ("drm/i915/gvt: validate gfn before set shadow page entry").
-> > > > 
-> > > > In other words, pick either VFIO or KVM.  Checking that X is valid according to
-> > > > KVM and then mapping X through VFIO is confusing and makes assumptions about how
-> > > > userspace configures KVM and VFIO.  It works because QEMU always configures KVM
-> > > > and VFIO as expected, but IMO it's unnecessarily fragile and again confusing for
-> > > > unaware readers because the code is technically flawed.
-> > > >
-> > > Agreed. 
-> > > Then after some further thought, I think maybe we can just remove
-> > > intel_gvt_is_valid_gfn() in KVMGT, because
-> > > 
-> > > (1) both intel_gvt_is_valid_gfn() in emulate_ggtt_mmio_write() and
-> > > ppgtt_populate_spt() are not for page track purpose, but to validate bogus
-> > > GFN.
-> > > (2) gvt_pin_guest_page() with gfn and size can do the validity checking,
-> > > which is called in intel_gvt_dma_map_guest_page(). So, we can move the
-> > > mapping of scratch page to the error path after intel_gvt_dma_map_guest_page().
-> > 
-> > IIUC, that will re-introduce the problem commit cc753fbe1ac4 ("drm/i915/gvt: validate
-> > gfn before set shadow page entry") solved by poking into KVM.  Lack of pre-validation
-> > means that bogus GFNs will trigger error messages, e.g.
-> > 
-> > 			gvt_vgpu_err("vfio_pin_pages failed for iova %pad, ret %d\n",
-> > 				     &cur_iova, ret);
-> > 
-> > and
-> > 
-> > 			gvt_vgpu_err("fail to populate guest ggtt entry\n");
-> 
-> Thanks for pointing it out.
-> I checked this commit message and found below original intentions to introduce
-> pre-validation:
+------=_Part_529_2084378696.1673461204354
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-...
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+ <head> 
+  <title>you can dance</title> 
+  <meta name="x-apple-disable-message-reformatting" /> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <meta content="HubSpot" name="generator" /> 
+  <meta content="http://dedoco-8520956.hs-sites.com/7dea362b-3fac-3e00-956a-4952a3d4f474" property="og:url" /> 
+  <meta content="noindex,follow" name="robots" /> 
+  <style type="text/css">.moz-text-html .hse-column-container{max-width:600px !important;width:600px !important}
+moz-text-html .hse-column{display:table-cell;vertical-align:top}.moz-text-html .hse-section .hse-size-3{max-width:150px !important;width:150px !important}
+moz-text-html .hse-section .hse-size-4{max-width:200px !important;width:200px !important}
+moz-text-html .hse-section .hse-size-5{max-width:250px !important;width:250px !important}
+moz-text-html .hse-section .hse-size-6{max-width:300px !important;width:300px !important}
+moz-text-html .hse-section .hse-size-7{max-width:350px !important;width:350px !important}
+moz-text-html .hse-section .hse-size-8{max-width:400px !important;width:400px !important}
+moz-text-html .hse-section .hse-size-9{max-width:450px !important;width:450px !important}
+moz-text-html .hse-section .hse-size-12{max-width:600px !important;width:600px !important}
+[owa] .hse-column-container{max-width:600px !important;width:600px !important}[owa] .hse-column{display:table-cell;vertical-align:top}
+[owa] .hse-section .hse-size-3{max-width:150px !important;width:150px !important}
+[owa] .hse-section .hse-size-4{max-width:200px !important;width:200px !important}
+[owa] .hse-section .hse-size-5{max-width:250px !important;width:250px !important}
+[owa] .hse-section .hse-size-6{max-width:300px !important;width:300px !important}
+[owa] .hse-section .hse-size-7{max-width:350px !important;width:350px !important}
+[owa] .hse-section .hse-size-8{max-width:400px !important;width:400px !important}
+[owa] .hse-section .hse-size-9{max-width:450px !important;width:450px !important}
+[owa] .hse-section .hse-size-12{max-width:600px !important;width:600px !important}
+@media only screen and (min-width:640px){.hse-column-container{max-width:600px !important;width:600px !important}
+hse-column{display:table-cell;vertical-align:top}.hse-section .hse-size-3{max-width:150px !important;width:150px !important}
+hse-section .hse-size-4{max-width:200px !important;width:200px !important}.hse-section .hse-size-5{max-width:250px !important;width:250px !important}
+hse-section .hse-size-6{max-width:300px !important;width:300px !important}.hse-section .hse-size-7{max-width:350px !important;width:350px !important}
+hse-section .hse-size-8{max-width:400px !important;width:400px !important}.hse-section .hse-size-9{max-width:450px !important;width:450px !important}
+hse-section .hse-size-12{max-width:600px !important;width:600px !important}}@media only screen and (max-width:639px){img.stretch-on-mobile,.hs_rss_email_entries_table img,.hs-stretch-cta .hs-cta-img{height:auto !important;width:100% !important}
+display_block_on_small_screens{display:block}.hs_padded{padding-left:20px !important;padding-right:20px !important}
+ul,blockquote{margin:0;padding:1em 40px}}@media screen and (max-width:639px){.social-network-cell{display:inline-block}
+}
+	</style> 
+  <!--<![endif]--> 
+  <style type="text/css">body[data-outlook-cycle] img.stretch-on-mobile,body[data-outlook-cycle] .hs_rss_email_entries_table img{height:auto !important;width:100% !important}
+body[data-outlook-cycle] .hs_padded{padding-left:20px !important;padding-right:20px !important}
+a[x-apple-data-detectors]{color:inherit !important;text-decoration:none !important;font-size:inherit !important;font-family:inherit !important;font-weight:inherit !important;line-height:inherit !important}
+#outlook a{padding:0}.yshortcuts a{border-bottom:none !important}a{text-decoration:underline}
+ExternalClass{width:100%}.ExternalClass,.ExternalClass p,.ExternalClass td,.ExternalClass div,.ExternalClass span,.ExternalClass font{line-height:100%}
+p{margin:0}body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased;moz-osx-font-smoothing:grayscale}
+@media only screen and (max-width:639px){img.stretch-on-mobile,.hs_rss_email_entries_table img,.hs-stretch-cta .hs-cta-img{height:auto !important;width:100% !important}
+}
+	</style> 
+ </head> 
+ <body bgcolor="#e2e2e2" style="margin:0 !important; padding:0 !important; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word"> 
+  <div bgcolor="#e2e2e2" class="hse-body-background" style="background-color:#e2e2e2"> 
+   <table cellpadding="0" cellspacing="0" class="hse-body-wrapper-table" height="100%" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; margin:0; padding:0; width:100% !important; min-width:320px !important; height:100% !important" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td class="hse-body-wrapper-td" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding-top:20px" valign="top"> 
+       <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_dnd_area" data-hs-cos-general-type="widget" data-hs-cos-type="dnd_area" id="hs_cos_wrapper_main" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+        <div class="hse-section hse-section-first" id="section-0" style="padding-left:10px; padding-right:10px"> 
+         <div bgcolor="#ffffff" class="hse-column-container" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; background-color:#ffffff; padding-bottom:5px; padding-top:15px"> 
+          <div class="hse-column hse-size-12" id="column-0-0"> 
+           <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-0-0-0" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+            <table cellpadding="0" cellspacing="0" class="hse-image-wrapper" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="left" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; color:#23496d; word-break:break-word; text-align:left; padding:10px 40px 20px 25px; font-size:30pt; text-align: center; color: #00ADF2" valign="top"><b>Pay<span style="color: #031B4E"><i>Pal</i></span></b></td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="hse-section" id="section-1" style="padding-left:10px; padding-right:10px"> 
+         <div bgcolor="#ffffff" class="hse-column-container" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; background-color:#ffffff"> 
+          <div class="hse-column hse-size-12" id="column-1-0"> 
+           <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-1-0-0" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+            <table cellpadding="0" cellspacing="0" class="hse-image-wrapper" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; color:#23496d; word-break:break-word; text-align:center; padding:30px 20px 10px; font-size:0px" valign="top"><a href="http://www.rely-pals.info/ef36NtH2395R86Fy13P4T60dHN10bfu36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQOdRde7mPqhv106kL@lwD/Buddhist-Knutson"><img align="middle" alt="Accessible-3" src="http://www.rely-pals.info/Buddhist-Knutson/b344M2395l7akx13g4jB60f_10bfZ36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQOdRde7ARV1V0h5k3LwD" style="outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; max-width:100%; font-size:16px" width="560" /></a></td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="hse-section" id="section-2" style="padding-left:10px; padding-right:10px"> 
+         <div bgcolor="#ffffff" class="hse-column-container" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; background-color:#ffffff; padding-bottom:30px; padding-top:30px"> 
+          <div class="hse-column hse-size-12" id="column-2-0"> 
+           <table cellpadding="0" cellspacing="0" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="hs_padded" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:10px 40px"> 
+               <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-2-0-0" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text" id="hs_cos_wrapper_module-2-0-0_" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                 <h2 align="center" style="margin:0; mso-line-height-rule:exactly; font-size:28px; line-height:150%; font-weight:bold; text-align:center"><span style="color: #666; font-family: Arial, sans-serif;">Get just a few clicks away from The $100 Paypal Card, by completing our 20-Second Service Survey about your recent experience with us.</span></h2> &nbsp; 
+                 <center> 
+                  <div style="background-color: #00529C; padding: 15px; border-radius: 8px; display: inline-block; margin: auto; color: #fff; font-size: 25px">
+                   <a href="http://www.rely-pals.info/ef36NtH2395R86Fy13P4T60dHN10bfu36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQOdRde7mPqhv106kL@lwD/Buddhist-Knutson"><b>Start Now Here</b></a>
+                  </div> 
+                 </center> 
+                </div> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table cellpadding="0" cellspacing="0" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="hs_padded" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:10px 40px"> 
+               <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-2-0-1" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text" id="hs_cos_wrapper_module-2-0-1_" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                 <p style="mso-line-height-rule:exactly; line-height:150%">&nbsp;</p> 
+                 <p style="mso-line-height-rule:exactly; line-height:150%">&nbsp;</p> 
+                 <p style="mso-line-height-rule:exactly; line-height:150%">&nbsp;</p> 
+                 <p style="mso-line-height-rule:exactly; line-height:150%; text-align: center; font-size: 22px">Your input is important to us and will help us improve our stores and the products and services we offer</p> 
+                 <p style="mso-line-height-rule:exactly; line-height:150%">&nbsp;</p> 
+                </div> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="hse-section" id="section-3" style="padding-left:10px; padding-right:10px"> 
+         <div bgcolor="#ffffff" class="hse-column-container" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; background-color:#ffffff"> 
+          <div class="hse-column hse-size-12" id="column-3-0"> 
+           <table cellpadding="0" cellspacing="0" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="hs_padded" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:10px 40px"> 
+               <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-3-0-0" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text" id="hs_cos_wrapper_module-3-0-0_" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                 <h2 align="left" style="margin:0; mso-line-height-rule:exactly; font-size:28px; line-height:150%; font-weight:bold; text-align:left">&nbsp;</h2> 
+                </div> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="hse-section" id="section-4" style="padding-left:10px; padding-right:10px"> 
+         <div bgcolor="#ffffff" class="hse-column-container" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; background-color:#ffffff"> 
+          <div class="hse-column hse-size-4" id="column-4-0"> 
+           <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-4-0-0" style="color: inherit; font-size: inherit; line-height: inherit;">
+            &nbsp;
+           </div> 
+          </div> 
+          <div class="hse-column hse-size-4" id="column-4-1"> 
+           <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-4-1-0" style="color: inherit; font-size: inherit; line-height: inherit;">
+            &nbsp;
+           </div> 
+          </div> 
+          <div class="hse-column hse-size-4" id="column-4-2"> 
+           <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-4-2-0" style="color: inherit; font-size: inherit; line-height: inherit;">
+            &nbsp;
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="hse-section" id="section-5" style="padding-left:10px; padding-right:10px"> 
+         <div bgcolor="#ffffff" class="hse-column-container" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; background-color:#ffffff"> 
+          <div class="hse-column hse-size-12" id="column-5-0"> 
+           <table cellpadding="0" cellspacing="0" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="hs_padded" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:10px 40px"> 
+               <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-5-0-0" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text" id="hs_cos_wrapper_module-5-0-0_" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                 <p style="mso-line-height-rule:exactly; line-height:150%">&nbsp;</p> 
+                 <p style="mso-line-height-rule:exactly; line-height:150%">&nbsp;</p> 
+                 <p style="mso-line-height-rule:exactly; line-height:175%">&nbsp;</p> 
+                 <p style="mso-line-height-rule:exactly; line-height:175%">&nbsp;</p> 
+                </div> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-5-0-1" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+            <table cellpadding="0" cellspacing="0" class="hse-image-wrapper" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="left" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; color:#23496d; word-break:break-word; text-align:left; padding:10px 20px 10px 25px; font-size:0px" valign="top">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="hse-section" id="section-6" style="padding-left:10px; padding-right:10px"> 
+         <div bgcolor="#221630" class="hse-column-container" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; background-color:#221630"> 
+          <div class="hse-column hse-size-12" id="column-6-0"> 
+           <table cellpadding="0" cellspacing="0" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:18px 0px 5px"> 
+               <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-6-0-0" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                <table align="center" class="hs_cos_wrapper_type_social_module" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; width:auto; text-align:center" width="auto"> 
+                 <tbody> 
+                  <tr align="center"> 
+                   <td class="social-network-cell" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word"> 
+                    <table align="center" class="hs_cos_wrapper_type_social_module_single" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; width:auto; text-align:center" width="auto"> 
+                     <tbody> 
+                      <tr align="center"> 
+                       <td class="display_block_on_small_screens" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:8px 5px; line-height:1; vertical-align:middle" valign="middle">&nbsp;</td> 
+                      </tr> 
+                     </tbody> 
+                    </table> </td> 
+                   <td class="social-network-cell" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word"> 
+                    <table align="center" class="hs_cos_wrapper_type_social_module_single" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; width:auto; text-align:center" width="auto"> 
+                     <tbody> 
+                      <tr align="center"> 
+                       <td class="display_block_on_small_screens" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:8px 5px; line-height:1; vertical-align:middle" valign="middle">&nbsp;</td> 
+                      </tr> 
+                     </tbody> 
+                    </table> </td> 
+                   <td class="social-network-cell" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word"> 
+                    <table align="center" class="hs_cos_wrapper_type_social_module_single" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; width:auto; text-align:center" width="auto"> 
+                     <tbody> 
+                      <tr align="center"> 
+                       <td class="display_block_on_small_screens" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:8px 5px; line-height:1; vertical-align:middle" valign="middle">&nbsp;</td> 
+                      </tr> 
+                     </tbody> 
+                    </table> </td> 
+                   <td class="social-network-cell" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word"> 
+                    <table align="center" class="hs_cos_wrapper_type_social_module_single" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; width:auto; text-align:center" width="auto"> 
+                     <tbody> 
+                      <tr align="center"> 
+                       <td class="display_block_on_small_screens" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:8px 5px; line-height:1; vertical-align:middle" valign="middle">&nbsp;</td> 
+                      </tr> 
+                     </tbody> 
+                    </table> </td> 
+                   <td class="social-network-cell" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word"> 
+                    <table align="center" class="hs_cos_wrapper_type_social_module_single" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; width:auto; text-align:center" width="auto"> 
+                     <tbody> 
+                      <tr align="center"> 
+                       <td class="display_block_on_small_screens" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:8px 5px; line-height:1; vertical-align:middle" valign="middle">&nbsp;</td> 
+                      </tr> 
+                     </tbody> 
+                    </table> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="hse-section hse-section-last" id="section-7" style="padding-left:10px; padding-right:10px; padding-bottom:20px"> 
+         <div bgcolor="#221630" class="hse-column-container" style="min-width:280px; max-width:600px; width:100%; Margin-left:auto; Margin-right:auto; border-collapse:collapse; border-spacing:0; background-color:#221630"> 
+          <div class="hse-column hse-size-12" id="column-7-0"> 
+           <table cellpadding="0" cellspacing="0" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="hs_padded" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; padding:11px 20px 20px"> 
+               <div class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" data-hs-cos-general-type="widget" data-hs-cos-type="module" id="hs_cos_wrapper_module-7-0-0" style="color: inherit; font-size: inherit; line-height: inherit;"> 
+                <table cellpadding="0" cellspacing="0" class="hse-footer hse-secondary" role="presentation" style="border-spacing:0 !important; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; font-family:Arial, sans-serif; font-size:12px; line-height:135%; color:#23496d; margin-bottom:0; padding:0" width="100%"> 
+                 <tbody> 
+                  <tr> 
+                   <td align="center" style="border-collapse:collapse; mso-line-height-rule:exactly; font-family:Arial, sans-serif; font-size:15px; color:#23496d; word-break:break-word; text-align:center; margin-bottom:0; line-height:135%; padding:10px 20px" valign="top"> <p style="mso-line-height-rule:exactly; font-size:12px; line-height:125%"><span style="font-family: Helvetica, Arial, sans-serif; color: #eeeeee;"><span style="text-decoration: none;">To get rid of communication,</span><a href="http://www.rely-pals.info/8bd4h2395PV86S11V460eQ10bfn36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQOdRde5MA1W06KjWwDJ/aggrieving-pends" style="text-decoration-line: none; color: red"> <span>Go-This-Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> [randomhtml</span></p> <p style="mso-line-height-rule:exactly; font-size:12px; line-height:125%">&nbsp;</p> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </div> 
+         </div> 
+        </div> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.rely-pals.info/chattel-scalable/9905S2_395t85nm12U46G10Z10bft36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQOdRde6q10wkB6BklwD1" alt=""/></body>
+</html>
 
-> (I actually found that the original code will print "invalid entry type"
-> warning which indicates it's broken for a while due to lack of test in
-> this invalid gfn path)
-> 
-> 
-> > One thought would be to turn those printks into tracepoints to eliminate unwanted
-> > noise, and to prevent the guest from spamming the host kernel log by programming
-> > garbage into the GTT (gvt_vgpu_err() isn't ratelimited).
-> As those printks would not happen in normal conditions and printks may have
-> some advantages to discover the attack or bug, could we just convert
-> gvt_vgpu_err() to be ratelimited ?
+------=_Part_529_2084378696.1673461204354--
 
-That's ultimately a decision that needs to be made by the GVT maintainers, as the
-answer depends on the use case.  E.g. if most users of KVMGT run a single VM and
-the guest user is also the host admin, then pr_err_ratelimited() is likely an
-acceptable/preferable choice as there's a decent chance a human will see the errors
-in the host kernel logs and be able to take action.
-
-But if there's unlikely to be a human monitoring the host logs, and/or the guest
-user is unrelated to the host admin, then a ratelimited printk() is less useful.
-E.g. if there's no one monitoring the logs, then losing messages due to
-ratelimiting provides a worse debug experience overall than having to manually
-enable tracepoints.   And if there may be many tens of VMs (seems unlikely?), then
-ratelimited printk() is even less useful because errors for a specific VM may be
-lost, i.e. the printk() can't be relied upon in any way to detect issues.
-
-FWIW, in KVM proper, use of printk() to capture guest "errors" is strongly discourage
-for exactly these reasons.
