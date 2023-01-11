@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D2CB66641F
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 20:53:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CF44666613
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Jan 2023 23:17:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2BD7310E7F6;
-	Wed, 11 Jan 2023 19:53:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D8AF610E161;
+	Wed, 11 Jan 2023 22:17:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 11 Jan 2023 19:53:35 UTC
-Received: from mail.ido-khls.info (unknown [45.13.189.14])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2308210E7E7
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Wed, 11 Jan 2023 22:17:02 UTC
+Received: from mail.cam-verizn.info (unknown [45.13.189.16])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E1C2210E161
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 19:53:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ido-khls.info;
+ Wed, 11 Jan 2023 22:17:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cam-verizn.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls.gift.card.chance@ido-khls.info; 
- bh=N/eCb3a2Mrgogx35fu5p5JeCGow=;
- b=Kylg5G2VW8xUBGXbaCABhZcr9pW5kD7yuIsck1qnekpq4+E1khElfxzxDASwVoeoLQ5xy1zgmln8
- PB19+LYaRWl0Z7FuuQmWUlrs/QVhGwtkIfvrt3c1YEBySSCixg2B0GSHGYHEwqdxQ6JlBNZvcTup
- 2JUCnjkB7zO+Z4/7Vdo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ido-khls.info;
- b=HJ0JqvvxJJYY8fN6HxPIb4I23BkAGCb1ncP07VPXstnjGcUOScdJYUuqIDKyBKc2n1qdj9VAqbE+
- GsIbKBZxRGIgAFoVNe1urh7qebPAZEBEbpWj/UMi5R39LiLYS3rjhL74KGDzZI94eAo9iWVnWuPH
- KQRm4oRzmbVmku+uesI=;
-Received: by mail.ido-khls.info id hnsk3u0001g2 for
+ i=now-on-verizon@cam-verizn.info; 
+ bh=eNq7SXzZKXZWPy+S3PIsCwa+erU=;
+ b=SNxHHjp8cq+gqL90ivGJI+Oqwl0Jo27S5lXoNsjpKvYeFHD4JfFcCdZgrUGHZZN/cO7s68JT1wdF
+ rneiX68nvzZtZRBjExBYLyQastePljfeFpDYwsqNckp0ZXp4bd8n+/rx5wJRaPB7owkea3Oxa62F
+ c9B28fxrms2Z6W+LQMc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cam-verizn.info;
+ b=QtMOVv/7VBNNmw6Bb5pQ7gj7tIc0CUuY3Uwc35+g5GvdeS2G0MP2L8U23KsZ2oXcPuLm78WG3WQR
+ oCJIrFftVj+GfEY8+VY1okR/0Pm3ZkN6ktJvfSulJ/CLdTmyzFBcUR+N+GMTrE7jM2+afDmJUbjx
+ yjBDrTgmmkY+em8DBRE=;
+Received: by mail.cam-verizn.info id hnsqlu0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Jan 2023 16:08:43 -0500 (envelope-from
- <kohls.gift.card.chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@ido-khls.info>)
-Date: Wed, 11 Jan 2023 16:08:43 -0500
-From: "Kohls Gift Card Chance" <kohls.gift.card.chance@ido-khls.info>
+ Wed, 11 Jan 2023 17:04:33 -0500 (envelope-from
+ <now-on-verizon-intel+2Dgvt+2Ddev=lists.freedesktop.org@cam-verizn.info>)
+Date: Wed, 11 Jan 2023 17:04:33 -0500
+From: "Now On VERIZON" <now-on-verizon@cam-verizn.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your gift on us for the holidays,
- a token of appreciation during holidays
+Subject: We appreciate your loyalty, pick any gift on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_79_1343241211.1673466058199"
-Message-ID: <0.0.0.8.1D92600E31044EE.430417@mail.ido-khls.info>
+ boundary="----=_Part_319_1604073914.1673474656440"
+Message-ID: <0.0.0.23.1D92608AFEA5868.380B50@mail.cam-verizn.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,262 +53,223 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_79_1343241211.1673466058199
+------=_Part_319_1604073914.1673474656440
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" /> 
-  <meta content="width=device-width" name="viewport" /> 
-  <title>NC State</title> 
-  <style type="text/css">/* Default and Desktop Styles */
-body {
-	font-family:arial,sans-serif;
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>Title goes here</title> 
+  <style type="text/css">.ReadMsgBody { width: 100%; }
+ExternalClass { width: 100%; }
+ExternalClass * { line-height: 100%; }
+div, p, a, li, td { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; }
+TD IMG { display: block; border: 0; }
+table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+table td { border-collapse: collapse; }
+a:link { color: #000001; text-decoration: none; }
+a:active { color: #000001; text-decoration: none; }
+a:visited { color: #000001; text-decoration: none; }
+a:hover { color: #000001; text-decoration: none; }
+textarea { resize: none; }
+textarea:focus, input:focus { outline: none; }
+body { background-color: #ffffff; margin: 0; }
+appleLinks a { color: inherit !important; text-decoration: none; }
+ @-ms-viewport { width: device-width; }
+@media only screen and (max-width: 480px) {
+body[yahoo] .container { width: 100% !important; }
+body[yahoo] .mobile-hidden { display: none !important; }
+body[yahoo] .photo { width: 100% !important; height: auto !important; }
+body[yahoo] .mobile-padding { padding-right: 15px !important; padding-left: 15px !important; }
+body[yahoo] .drop { width: 100% !important; float: left !important; }
+body[yahoo] .center { margin: 0 auto !important; overflow: hidden !important; }
+body[yahoo] .show { display: block !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; width: auto !important; max-height: inherit !important; }
+body[yahoo] .text-center { text-align: center !important; }
 }
-
-table[class="wrapper"] {
-	width: 600px;
-}
-
-td[class="headline"] {
-	width: 600px;
-	text-align: left;
-	padding-top: 30px;
-	padding-left: 40px;
-	padding-bottom: 5px;
-}
-
-h1[class="headline"] {
-	width: 90%;
-	font-size: 28px;
-	text-transform: uppercase;
-}
-
-h2[class="headline-tag"] {
-	font-weight: normal; font-size: 16px; color: #cc0000; margin-bottom: 5px; margin-left: 3px;
-}
-
-table[class="main_content"] {
-	width: 600px;
-	padding-left: 40px;
-	padding-right: 20px;
-	padding-top: 0px;
-	padding-bottom: 35px;
-}
-
-table[class="footer"] {
-	width: 600px;
-	height: 60px;
-	padding-bottom: 15px;
-	background-color: #cc0000;
-}
-
-img[class="logo"] {
-	height: 50px;
-}
-
-img[class="header_image"] {
-	width: 600px;
-}
-
-img[class="footer_image"] {
-	width: 600px;
-}
-
-p[class="copy"] {
-	font-size: 12px;
-	line-height:19px;
-	color: #333333;
-	font-family:arial,sans-serif;
-	text-align: left;
-	width:80%;
-}
-
-p[class="copy"] a {
-	text-decoration: underline !important;
-	font-weight: normal !important;
-}
-p[class="call_to_action"] {
-	font-size: 20px;
-	line-height:20px;
-	color: #333333;
-	font-family:arial,sans-serif;
-	width: 60%;
-}
-
-p[class="footer"] {
-	font-size:11px;
-	color:#FFFFFF;
-	line-height:15px;
-	font-family:arial,sans-serif;
-}
-
-h1[class="heading"] {
-	font-size:34px;
-	color: #333333;
-	line-height:28px;
-	font-family:arial,sans-serif;
-}
-
-h2[class="subheading"] {
-	font-size:13px;
-	color: #CC0000;
-	line-height:19px;
-	font-weight:bold;
-	font-family:arial,sans-serif;
-}
-
-a {
-	color: #CC0000;
-	text-decoration: none;
-	font-weight:bold;
-	font-family:arial,sans-serif;
-}
-
-@media only screen and (max-device-width: 480px) {
-	/* Mobile Styles */	
-	table[class="wrapper"] {
-		width: 480px !important;
-	}
-	
-	td[class="headline"] {
-		padding-bottom: 17px;
-	}
-	
-	h1[class="headline"] {
-		width: 90% !important;
-		font-size: 32px !important;
-	}
-	
-	h2[class="headline-tag"] {
-		width: 90% !important;
-		font-weight: normal;
-		font-size: 24px;
-		color: #cc0000;
-		margin-bottom: 3px;
-		margin-left: 3px;
-	}
-	
-	table[class="main_content"] {
-		width: 480px !important;
-		padding-left: 40px !important;
-		padding-right: 15px !important;
-		padding-top: 0px;
-		
-	}
-	
-	table[class="footer"] {
-		width: 480px !important;
-		height: 25px !important;
-	}
-	
-	img[class="logo"] {
-		height: 70px;
-	}
-	
-	img[class="header_image"] {
-		width: 480px !important;
-	}
-	
-	img[class="footer_image"] {
-		width: 480px !important;
-	}
-	
-	p[class="copy"] {
-		font-size: 25px !important;
-		 line-height:30px !important;
-	}
-	
-	p[class="call_to_action"] {
-		font-size: 30px !important;
-		line-height:35px !important;
-		width: 80% !important;
-	}
-	
-	p[class="footer"] {
-		font-size: 14px !important;
-		line-height: 16px !important;
-	}
-	
-	h1[class="heading"] {
-		padding-top: 25px !important;
-		padding-bottom: 25px !important;
-	}
-	
-	h2[class="subheading"] {
-		font-size: 22px !important;
-		line-height:30px !important;
-	}
-}
-
--->
 	</style> 
  </head> 
- <body bgcolor="#e4e4e4" marginheight="0" style="font-family: arial,sans-serif;" topmargin="0">
-  <!-- begin body --> 
-  <table align="center" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" class="wrapper" style="background-color: #FFFFFF;width: 600px;"> 
+ <body bgcolor="#ffffff" style="margin: 0px; padding: 0px; -webkit-text-size-adjust: none; -ms-text-size-adjust: none;" yahoo="fix"> 
+  <table border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center" valign="top">
-      <!-- begin header -->
-      <!-- end header --> 
-      <table border="0" cellpadding="0" cellspacing="0"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style="padding: 15px; font-size: 39px"><b>KOHL'S</b></td> 
-        </tr> 
-        <tr> 
-         <td align="left" class="headline" style="width: 600px;text-align: left;padding-top: 30px;padding-left: 40px;padding-bottom: 5px;"> <h1 align="center" class="headline" style="margin-top: 0;width: 90%;font-size: 28px;text-transform: uppercase;">Dear Customer</h1> </td> 
-        </tr> 
-       </tbody> 
-      </table> <a href="http://www.ido-khls.info/3d16r2R3v95jL86A13DL46U15y10c1R36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ3dRQm5S10ms6I1NXwD/benchmark-inductee"><img alt="" border="0" class="header_image" src="http://www.ido-khls.info/computerizing-brass/e224l2395ywh7a12eo4617M10c1J36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ3dRQm7wrYt10D6PBwkzD" style="width: 600px;" /></a> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="main_content" style="width: 600px;padding-left: 20px;padding-right: 20px;padding-top: 0px;padding-bottom: 35px;"> 
-       <tbody> 
-        <tr>
-         <!-- begin content --> 
-         <td align="left" valign="top">&nbsp; 
-          <div style="padding: 1.3px"> 
-           <div style="padding: 1.3px"> 
-            <div style="padding: 1.3px"> 
-             <div style="padding: 1.3px"> 
-              <div style="padding: 1.3px"> 
-               <div style="padding: 1.3px; font-size: 24px; text-align: center">
-                Get just a few clicks away from The $100 
-                <b>Kohl's</b> Card, by completing our 20-Second Service Survey about your recent experience with us.                 <br /> &nbsp; 
-                <center>
-                 <a href="http://www.ido-khls.info/3d16r2R3v95jL86A13DL46U15y10c1R36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ3dRQm5S10ms6I1NXwD/benchmark-inductee" style="-webkit-text-size-adjust: none; text-decoration: none; display: inline-block; color: #fff; background-color: #000; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; width: auto; width: auto; border-top: 0px solid #000; border-right: 0px solid #000; border-bottom: 0px solid #000; border-left: 0px solid #000; padding-top: 5px; padding-bottom: 5px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;" target="_blank"><span style="padding-left:30px;padding-right:30px;font-size:22px;display:inline-block;letter-spacing:undefined;"><span style="font-size: 22px; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;">Start Now Here</span></span></a>
-                 <br /> &nbsp; 
-                 <p style="mso-line-height-rule:exactly; line-height:150%; text-align: center; font-size: 22px">Your input is important to us and will help us improve our stores and the products and services we offer</p> 
-                </center> 
-               </div> 
-              </div> 
-             </div> 
-            </div> 
-           </div> 
-          </div> <p class="copy" style="font-size: 12px;line-height: 19px;color: #333333;font-family: arial,sans-serif;text-align: left;width: 80%;">&nbsp;</p> <p class="copy" style="font-size: 12px;line-height: 19px;color: #333333;font-family: arial,sans-serif;text-align: left;width: 80%;">&nbsp;</p> <p class="call_to_action" style="font-size: 20px;line-height: 20px;color: #333333;font-family: arial,sans-serif;width: 60%;">&nbsp;</p> </td> 
-         <!--end content --> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- begin footer --> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="footer" style="width: 600px;height: 50px;padding-bottom: 15px;background-color: #cc0000;"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style="background-color:#CC0000;" valign="middle">&nbsp; <p class="footer" style="font-size: 11px;color: #FFFFFF;line-height: 15px;font-family: arial,sans-serif;"><br /> <br /> <span style="text-decoration: none;">To dispense with notifications,</span><a href="http://www.ido-khls.info/systematizing-spoils/ed64n2395w86mN11F4616M10c1K36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ3dRQm7v10lQSJ6wkPw0D" style="text-decoration-line: none; color: red"> <span>Start Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <font face="Durrell"></font><small></small><span></span><font></font><small></small></p> <br /> <br /> &nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- end footer --></td> 
+     <td align="center" bgcolor="#ffffff" valign="top"> 
+      <div align="center"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="container" width="600"> 
+        <tbody> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'" valign="top"> 
+           <table role="presentation" style="
+        width: 100%;
+        border-collapse: collapse;
+        border: 0;
+        border-spacing: 0;
+        background-color: #fafafa;
+        height: 100%;
+      "> 
+            <tbody> 
+             <tr> 
+              <td style="padding: 30px 0"> 
+               <table align="center" role="presentation" style="
+              border-collapse: collapse;
+              border-spacing: 0;
+              max-width: 600px;
+              width: 100%;
+              border-radius: 10px;
+              background-color: #ffffff;
+            " width="600"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center" style="border-radius: 10px; text-align: center"> 
+                   <table role="presentation" style="border-collapse: collapse; border-spacing: 0" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center"> <h1 style="
+                          font-size: 54px;
+                          padding-bottom: 0px;
+                          border-bottom: 2px solid #fff; margin: 0
+                        "><span style="color: #EE0000">V</span>erizon</h1> <a href="http://www.cam-verizn.info/5b14G2395vr86J13i461HeRm10c3g36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5dRQo6I10Wvo5yLzwD/manic-stationmaster"><img alt="" src="http://www.cam-verizn.info/ad95b23F95yP7aN12Q462Z0H10c3B36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ5dRQo6mP1R0p5N2TwD/enterprising-intuitions" /></a></td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                 <tr> 
+                  <td> 
+                   <table role="presentation" style="border-collapse: collapse; border-spacing: 0" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td> 
+                       <table width="100%"> 
+                        <tbody> 
+                         <tr> 
+                          <td align="center" class="padding" style="
+                              border: 2px solid #fff;
+                              border-radius: 10px;
+                                   background-color: #EE0000"> 
+                           <table class="content" width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td> <p style="padding: 12px; color: #fff; font-size: 25px; text-align: center">Get just a few clicks away from The $100 <b style="color: #000">Verizon</b> Card, by completing our 20-Second Service Survey about your recent experience with us.</p> </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> </td> 
+                         </tr> 
+                        </tbody> 
+                       </table> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" style="background-color: #fff; max-width: 300px"> 
+                   <table style="text-align: center" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td style="padding: 5px; margin: 0"> <p style="width: 100%; margin: 0 auto"><a href="http://www.cam-verizn.info/5b14G2395vr86J13i461HeRm10c3g36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5dRQo6I10Wvo5yLzwD/manic-stationmaster" style="
+                            text-decoration: none;
+                            background-color: #000;
+                            color: #ffffff;
+                            padding: 10px;
+                            border-radius: 5px;
+                            display: block;
+                            font-weight: bold;
+                            text-shadow: 1px 2px 3px #333; font-size: 29px
+                          ">Start Here Now</a></p> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                 <tr> 
+                  <td> 
+                   <table role="presentation" style="border-collapse: collapse; border-spacing: 0" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td class="two-columns"> 
+                       <table class="column"> 
+                        <tbody> 
+                         <tr> 
+                          <td class="padding"> 
+                           <table class="content"> 
+                            <tbody> 
+                             <tr> 
+                              <td style="padding: 15px; text-align: center">Your input is important to us and will help us improve our stores and the products and services we offer</td> 
+                             </tr> 
+                            </tbody> 
+                           </table> </td> 
+                         </tr> 
+                        </tbody> 
+                       </table> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#ffffff" valign="top"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td style="max-width: 385px"> <p style="color: #999999; font-size: 11px"><span style="text-decoration: none;">To edit your subscription options,</span><a href="http://www.cam-verizn.info/40d4S2395im8v611f461fv10c3T36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ5dRQo7C1j0GUX6CJwPlD/jawbone-grosses" style="text-decoration-line: none; color: red"> <span>Start-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style><span size="corrects"><span size="Sanders"><font style="resumed"><span dir="penguin"></span></span></style><big></big></span></font><span></span><font lang="conundrum"></font></p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <br /> 
-  <br /> 
-  <!-- end body -->  
- <img src="http://www.ido-khls.info/distant-Nicosia/1b64K2395eq85o11p4618Z10c1N36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ3dRQm5ijX106SA2wkD" alt=""/></body>
+  <!--Inserted to Prevent Gmail Font Resizing//--> 
+  <div style="display:none; white-space:nowrap; font:15px courier; color:#ffffff;">
+   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  </div> 
+  <!--//Inserted to Prevent Gmail Font Resizing-->  
+ <img src="http://www.cam-verizn.info/60b6f2l3u95t8B5M13w4T6W21p10c3X36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ5dRQo7F1x0ypG6o2wMpD/enterprising-intuitions" alt=""/></body>
 </html>
 
-------=_Part_79_1343241211.1673466058199--
+------=_Part_319_1604073914.1673474656440--
 
