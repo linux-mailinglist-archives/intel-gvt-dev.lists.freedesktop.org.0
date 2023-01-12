@@ -2,90 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B97C2668634
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 22:51:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E3AEE668655
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 23:07:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 872DF10E92E;
-	Thu, 12 Jan 2023 21:51:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ACAFC10E93F;
+	Thu, 12 Jan 2023 22:07:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id EAF7E10E92C;
- Thu, 12 Jan 2023 21:51:47 +0000 (UTC)
-Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 30CLNM77010407; Thu, 12 Jan 2023 21:51:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=yseCAGFHWJF/XEKirxsDHH2GXFOhfmVKoHpWCCrZDcw=;
- b=lhZiDG0UrKu+Tn5HA1DuidGAjbmXZJWhEtputbAha3NHQlbUuVBXq2HEHG4sKShcLSuL
- 7fK2lXfUqPYE2T4hGpDooAht7PNXKh5+w5aXAqDAuzMandjaH4MnxHwAHjGVfrOsRT2P
- 7yKkciwy9ry7Yd9IaNZW4BNOckc04BeykOqaSUFvJP6Dndd/ViiwTJ7xk7mjjWbCMgjT
- QWSJwo2aUicgpc4mjugiER9bcwkTc8P473z7hHIEAPlDL8WtOzHSFc73Z6Ask2FNViIo
- Zxkslx7RXSd9p6DpgxI4hiK9x23Bqj2DVCn1S0+20VRpoFPTZXVLLHvW8szSYTN2y9dI ZA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3n2t308jn8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 12 Jan 2023 21:51:42 +0000
-Received: from m0098417.ppops.net (m0098417.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 30CLZxsK016080;
- Thu, 12 Jan 2023 21:51:42 GMT
-Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
- [169.55.91.170])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3n2t308jn1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 12 Jan 2023 21:51:42 +0000
-Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
- by ppma02wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 30CKebok018943;
- Thu, 12 Jan 2023 21:51:41 GMT
-Received: from smtprelay03.wdc07v.mail.ibm.com ([9.208.129.113])
- by ppma02wdc.us.ibm.com (PPS) with ESMTPS id 3n1knv3rjn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 12 Jan 2023 21:51:41 +0000
-Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
- [10.39.53.233])
- by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 30CLpd7156426976
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 12 Jan 2023 21:51:39 GMT
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A92935804E;
- Thu, 12 Jan 2023 21:51:39 +0000 (GMT)
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 3E58D58055;
- Thu, 12 Jan 2023 21:51:37 +0000 (GMT)
-Received: from [9.160.94.233] (unknown [9.160.94.233])
- by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 12 Jan 2023 21:51:37 +0000 (GMT)
-Message-ID: <bce7912a-f904-b5a3-d234-c3e2c42d9e54@linux.ibm.com>
-Date: Thu, 12 Jan 2023 16:51:36 -0500
+X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
+ Thu, 12 Jan 2023 22:06:59 UTC
+Received: from mail.nw-mbldeal.info (unknown [45.13.189.23])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 99DC810E938
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 12 Jan 2023 22:06:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nw-mbldeal.info; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=att_user_feedback@nw-mbldeal.info; 
+ bh=QdRxde0HqOYwY9qrnoLbnA+sZ1Y=;
+ b=t/DScK8LVvpmjTrQxpG9WBmt2xtCVNr7158dMED2HoX+kcsVKNg8w975I5QraW1shWbtWv+ozVL6
+ vG9zwmFC8PQrY24cqb6SWKebG8DkIzl9dTciLiCILF+rn+whlPc4jFZQ+hk2ZIfNyDrnVOvrnabI
+ ExbvxGrQfJAf+HZt+K0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nw-mbldeal.info;
+ b=cbdPpsCBsJU+38M7wxcfW86zLZgTDBHlXityIRE2qn3QYLBVuEJu9CCXMWwrz6eezJoiz9DmUXjR
+ DFztSHCgPFyChaes1Zb8yjiFSao6pUh/CQ/KEYzWks/zHIE8nHZgFhizobxnFZTW9lL4BlIJ6tiW
+ /eC1GjQhIvXAUzv9QsA=;
+Received: by mail.nw-mbldeal.info id ho22860001gm for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 12 Jan 2023 16:53:14 -0500 (envelope-from
+ <att_user_feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@nw-mbldeal.info>)
+Date: Thu, 12 Jan 2023 16:53:14 -0500
+From: "ATT User Feedback" <att_user_feedback@nw-mbldeal.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Best way to show appreciation for your loyalty
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v2] vfio: fix potential deadlock on vfio group lock
-Content-Language: en-US
-To: Alex Williamson <alex.williamson@redhat.com>
-References: <20230112203844.41179-1-mjrosato@linux.ibm.com>
- <20230112140517.6db5b346.alex.williamson@redhat.com>
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-In-Reply-To: <20230112140517.6db5b346.alex.williamson@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: gzwbKjnFP3psyl5oYC90NE-LbRy9Vf9K
-X-Proofpoint-ORIG-GUID: 74Thb5xo_o4wAWVs6kBZAp8L9VN9h2G8
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
- definitions=2023-01-12_12,2023-01-12_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- suspectscore=0 malwarescore=0 adultscore=0 priorityscore=1501 spamscore=0
- lowpriorityscore=0 clxscore=1015 bulkscore=0 mlxscore=0 mlxlogscore=999
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2301120153
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_379_1959844124.1673560354089"
+Message-ID: <0.0.0.2A.1D926D0457C607A.478DAF@mail.nw-mbldeal.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,193 +50,381 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
- imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
- david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, jgg@nvidia.com, kvm@vger.kernel.org, pbonzini@redhat.com,
- linux-s390@vger.kernel.org, borntraeger@linux.ibm.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 1/12/23 4:05 PM, Alex Williamson wrote:
-> On Thu, 12 Jan 2023 15:38:44 -0500
-> Matthew Rosato <mjrosato@linux.ibm.com> wrote:
-> 
->> Currently it is possible that the final put of a KVM reference comes from
->> vfio during its device close operation.  This occurs while the vfio group
->> lock is held; however, if the vfio device is still in the kvm device list,
->> then the following call chain could result in a deadlock:
->>
->> kvm_put_kvm
->>  -> kvm_destroy_vm
->>   -> kvm_destroy_devices
->>    -> kvm_vfio_destroy
->>     -> kvm_vfio_file_set_kvm
->>      -> vfio_file_set_kvm
->>       -> group->group_lock/group_rwsem  
->>
->> Avoid this scenario by having vfio core code acquire a KVM reference
->> the first time a device is opened and hold that reference until the
->> device fd is closed, at a point after the group lock has been released.
->>
->> Fixes: 421cfe6596f6 ("vfio: remove VFIO_GROUP_NOTIFY_SET_KVM")
->> Reported-by: Alex Williamson <alex.williamson@redhat.com>
->> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
->> ---
->> Changes from v1:
->> * Re-write using symbol get logic to get kvm ref during first device
->>   open, release the ref during device fd close after group lock is
->>   released
->> * Drop kvm get/put changes to drivers; now that vfio core holds a
->>   kvm ref until sometime after the device_close op is called, it
->>   should be fine for drivers to get and put their own references to it.
->> ---
->>  drivers/vfio/group.c     |  6 ++---
->>  drivers/vfio/vfio_main.c | 48 +++++++++++++++++++++++++++++++++++++---
->>  include/linux/vfio.h     |  1 -
->>  3 files changed, 48 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
->> index bb24b2f0271e..2b0da82f82f4 100644
->> --- a/drivers/vfio/group.c
->> +++ b/drivers/vfio/group.c
->> @@ -165,9 +165,9 @@ static int vfio_device_group_open(struct vfio_device *device)
->>  	}
->>  
->>  	/*
->> -	 * Here we pass the KVM pointer with the group under the lock.  If the
->> -	 * device driver will use it, it must obtain a reference and release it
->> -	 * during close_device.
->> +	 * Here we pass the KVM pointer with the group under the lock.  A
->> +	 * reference will be obtained the first time the device is opened and
->> +	 * will be held until the device fd is closed.
->>  	 */
->>  	ret = vfio_device_open(device, device->group->iommufd,
->>  			       device->group->kvm);
->> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
->> index 5177bb061b17..c969e2a0ecd3 100644
->> --- a/drivers/vfio/vfio_main.c
->> +++ b/drivers/vfio/vfio_main.c
->> @@ -16,6 +16,7 @@
->>  #include <linux/fs.h>
->>  #include <linux/idr.h>
->>  #include <linux/iommu.h>
->> +#include <linux/kvm_host.h>
->>  #include <linux/list.h>
->>  #include <linux/miscdevice.h>
->>  #include <linux/module.h>
->> @@ -344,6 +345,35 @@ static bool vfio_assert_device_open(struct vfio_device *device)
->>  	return !WARN_ON_ONCE(!READ_ONCE(device->open_count));
->>  }
->>  
->> +static bool vfio_kvm_get_kvm_safe(struct kvm *kvm)
->> +{
->> +	bool (*fn)(struct kvm *kvm);
->> +	bool ret;
->> +
->> +	fn = symbol_get(kvm_get_kvm_safe);
->> +	if (WARN_ON(!fn))
->> +		return false;
->> +
->> +	ret = fn(kvm);
->> +
->> +	symbol_put(kvm_get_kvm_safe);
->> +
->> +	return ret;
->> +}
->> +
->> +static void vfio_kvm_put_kvm(struct kvm *kvm)
->> +{
->> +	void (*fn)(struct kvm *kvm);
->> +
->> +	fn = symbol_get(kvm_put_kvm);
->> +	if (WARN_ON(!fn))
->> +		return;
->> +
->> +	fn(kvm);
->> +
->> +	symbol_put(kvm_put_kvm);
->> +}
->> +
->>  static int vfio_device_first_open(struct vfio_device *device,
->>  				  struct iommufd_ctx *iommufd, struct kvm *kvm)
->>  {
->> @@ -361,16 +391,24 @@ static int vfio_device_first_open(struct vfio_device *device,
->>  	if (ret)
->>  		goto err_module_put;
->>  
->> +	if (kvm && !vfio_kvm_get_kvm_safe(kvm)) {
->> +		ret = -ENOENT;
->> +		goto err_unuse_iommu;
->> +	}
->>  	device->kvm = kvm;
-> 
-> This could just as easily be:
-> 
-> 	if (kvm && vfio_kvm_get_kvm_safe(kvm))
-> 		device->kvm = kvm;
-> 
-> Right?  The error path would test device->kvm and we already use
-> device->kvm in the release path.
+------=_Part_379_1959844124.1673560354089
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Yeah, with a slight change (see below)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <title>WHAT YOU THINK!</title> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0 " name="viewport" /> 
+  <meta content="telephone=no" name="format-detection" />
+  <!--[if !mso]><!--> 
+  <link href="http://www.nw-mbldeal.info/Anatolia-steady/9365SS2395K8NN611S4638y10c9U36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgdRQK7cu1Bon05hjwDN" rel="stylesheet" />
+  <!--<![endif]--> 
+  <style type="text/css">body {
+      -webkit-text-size-adjust: 100% !important;
+      -ms-text-size-adjust: 100% !important;
+      -webkit-font-smoothing: antialiased !important;
+      }
+      img {
+      border: 0 !important;
+      outline: none !important;
+      }
+      p {
+      Margin: 0px !important;
+      Padding: 0px !important;
+      }
+      table {
+      border-collapse: collapse;
+      mso-table-lspace: 0px;
+      mso-table-rspace: 0px;
+      }
+      td, a, span {
+      border-collapse: collapse;
+      mso-line-height-rule: exactly;
+      }
+      .ExternalClass * {
+      line-height: 100%;
+      }
+      span.MsoHyperlink {
+      mso-style-priority:99;
+      color:inherit;}
+      span.MsoHyperlinkFollowed {
+      mso-style-priority:99;
+      color:inherit;}
+	</style> 
+  <style media="only screen and (min-width:481px) and (max-width:599px)" type="text/css">@media only screen and (min-width:481px) and (max-width:599px) {
+      table[class=em_main_table] {
+      width: 100% !important;
+      }
+      table[class=em_wrapper] {
+      width: 100% !important;
+      }
+      td[class=em_hide], br[class=em_hide] {
+      display: none !important;
+      }
+      img[class=em_full_img] {
+      width: 100% !important;
+      height: auto !important;
+      }
+      td[class=em_align_cent] {
+      text-align: center !important;
+      }
+      td[class=em_aside]{
+      padding-left:10px !important;
+      padding-right:10px !important;
+      }
+      td[class=em_height]{
+      height: 20px !important;
+      }
+      td[class=em_space]{
+      width:10px !important;	
+      }
+      td[class=em_font]{
+      font-size:14px !important;	
+      }
+      td[class=em_align_cent1] {
+      text-align: center !important;
+      padding-bottom: 10px !important;
+      }
+      }
+	</style> 
+  <style media="only screen and (max-width:480px)" type="text/css">@media only screen and (max-width:480px) {
+      table[class=em_main_table] {
+      width: 100% !important;
+      }
+      table[class=em_wrapper] {
+      width: 100% !important;
+      }
+      td[class=em_hide], br[class=em_hide], span[class=em_hide] {
+      display: none !important;
+      }
+      img[class=em_full_img] {
+      width: 100% !important;
+      height: auto !important;
+      }
+      td[class=em_align_cent] {
+      text-align: center !important;
+      }
+      td[class=em_height]{
+      height: 20px !important;
+      }
+      td[class=em_aside]{
+      padding-left:10px !important;
+      padding-right:10px !important;
+      } 
+      td[class=em_font]{
+      font-size:14px !important;
+      line-height:28px !important;
+      }
+      td[class=em_space]{
+      width:10px !important;	
+      }
+      span[class=em_br]{
+      display:block !important;
+      }
+      td[class=em_align_cent1] {
+      text-align: center !important;
+      padding-bottom: 10px !important;
+      }
+      }
+	</style> 
+ </head> 
+ <body bgcolor="#ffffff" style="margin:0px; padding:0px;"> 
+  <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+   <!-- === PRE HEADER SECTION=== --> 
+   <tbody> 
+    <tr> 
+     <td align="center" bgcolor="#30373b" valign="top"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_main_table" style="table-layout:fixed;" width="600"> 
+       <tbody> 
+        <tr> 
+         <td bgcolor="#30373b" class="em_hide" style="line-height:0px; font-size:0px;" width="600">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td valign="top"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" width="600"> 
+           <tbody> 
+            <tr> 
+             <td class="em_height" height="10" style="font-size:1px; line-height:1px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td valign="top"> 
+              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td valign="top"> 
+                  <table align="right" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" width="150"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="right" class="em_align_cent1" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:16px; color:#848789; text-decoration:underline;">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                  <table align="left" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" width="400"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="left" class="em_align_cent" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789; text-decoration:none;">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+            <tr> 
+             <td class="em_height" height="10" style="font-size:1px; line-height:1px;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <!-- === //PRE HEADER SECTION=== --> 
+    <tr> 
+     <td align="center" bgcolor="#ffffff" valign="top"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_main_table" style="table-layout:fixed;" width="600">
+       <!-- === LOGO SECTION === --> 
+       <tbody> 
+        <tr> 
+         <td class="em_height" height="40">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center"> 
+          <fieldset style="border-style: solid; border-bottom: none; border-left: none; border-right: none">
+           <legend style="padding: 15px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 38px; color: #027CD5"><b>AT&amp;T</b></legend>
+          </fieldset> </td> 
+        </tr> 
+        <tr> 
+         <td class="em_height" height="30">&nbsp;</td> 
+        </tr> 
+        <!-- === //LOGO SECTION === -->
+        <!-- === NEVIGATION SECTION === --> 
+        <tr> 
+         <td bgcolor="#fed69c" height="1" style="font-size:0px; line-height:0px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td height="14" style="font-size:1px; line-height:1px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center" class="em_font" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:18px; color:#30373b; text-transform:uppercase; font-weight:bold;"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="text-decoration:none; color:#30373b;" target="_blank">Deals</a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="text-decoration:none; color:#30373b;" target="_blank">Phone &amp; Devices</a><span class="em_hide"> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="text-decoration:none; color:#30373b;" target="_blank">Wireless</
+ a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="text-decoration:none; color:#30373b;" target="_blank">Internet</a></td> 
+        </tr> 
+        <tr> 
+         <td height="14" style="font-size:1px; line-height:1px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td bgcolor="#fed69c" height="1" style="font-size:0px; line-height:0px;">&nbsp;</td> 
+        </tr> 
+        <!-- === //NEVIGATION SECTION === -->
+        <!-- === RATE OUR SERVICE SECTION === --> 
+        <tr> 
+         <td class="em_aside" valign="top"> 
+          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="em_height" height="36">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:28px; font-weight:bold; line-height:20px; text-transform:uppercase; color:#129DDC;"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD"><img alt="" src="http://www.nw-mbldeal.info/31d5qB2395h7kza12z46Y3bI10c9o36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQgdRQK5QK1v06d0NMwD/enervate-aerosolize" width="100%" /></a><br /> <br /> The AT&amp;T difference<br /> &nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:25px; line-height:normal; color:#999999;">Get just a few clicks away from The <b>$100 AT&amp;T Card</b>, by completing our 20-Second Service Survey about your recent experience with us.</td> 
+            </tr> 
+            <tr> 
+             <td height="16" style="font-size:1px; line-height:1px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" class="em_height" height="41"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" bgcolor="" style="border-radius:3px;color:#8999ca;cursor:auto;" valign="middle"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="display:inline-block;text-decoration:none;background:none;border:solid #8999ca;border-radius:3px;color:#8999ca;font-family:Helvetica;font-size:23px;font-weight:bold;padding:10px 25px;margin:0px;" target="_blank">Go And Start Now </a></td> 
+                </tr> 
+               </tbody> 
+              </table> <br /> &nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" valign="top"> 
+              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td bgcolor="#129DDC" width="1">&nbsp;</td> 
+                 <td align="center" valign="top"> 
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td bgcolor="#129DDC" height="1" style="line-height:0px; font-size:0px;">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td class="em_height" height="36">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:18px; font-weight:bold; line-height:20px; text-transform:uppercase; color:#129DDC;"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#129DDC; text-decoration:none;" target="_blank">Click to rate our services</a></td> 
+                    </tr> 
+                    <tr> 
+                     <td height="18" style="font-size:1px; line-height:1px;">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" valign="top"> 
+                      <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" style="max-width:400px;" width="400"> 
+                       <tbody> 
+                        <tr> 
+                         <td width="9">&nbsp;</td> 
+                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">1</a></td> 
+                         <td class="em_space" width="39">&nbsp;</td> 
+                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">2</a></td> 
+                         <td class="em_space" width="39">&nbsp;</td> 
+                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">3</a></td> 
+                         <td class="em_space" width="39">&nbsp;</td> 
+                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">4</a></td> 
+                         <td class="em_space" width="39">&nbsp;</td> 
+                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">5</a></td> 
+                         <td width="10">&nbsp;</td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                    <tr> 
+                     <td class="em_height" height="36">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td bgcolor="#129DDC" height="1" style="line-height:0px; font-size:0px;">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                 <td bgcolor="#129DDC" width="1">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+            <tr> 
+             <td bgcolor="#d8e4f0" height="1" style="font-size:0px;line-height:0px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td class="em_height" height="35">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td class="em_height" height="31">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <!-- === RATE OUR SERVICE SECTION === --> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <!-- === FOOTER SECTION === --> 
+    <tr> 
+     <td align="center" bgcolor="#30373b" class="em_aside" valign="top"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_main_table" style="table-layout:fixed;" width="600"> 
+       <tbody> 
+        <tr> 
+         <td class="em_height" height="35">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center" valign="top"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0"> 
+           <tbody> 
+            <tr> 
+             <td valign="top">&nbsp;</td> 
+             <td width="7">&nbsp;</td> 
+             <td valign="top">&nbsp;</td> 
+             <td width="7">&nbsp;</td> 
+             <td valign="top">&nbsp;</td> 
+             <td width="7">&nbsp;</td> 
+             <td valign="top">&nbsp;</td> 
+             <td width="7">&nbsp;</td> 
+             <td valign="top">&nbsp;</td> 
+             <td width="7">&nbsp;</td> 
+             <td valign="top">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td class="em_height" height="22">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;"><span style="text-decoration: none; ">To withdraw from communications,</span><a href="http://www.nw-mbldeal.info/c415f2Z395Q8sI613S463KZaJ10c9L36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQgdRQK7SSsw1U06tpwDlA/counselors-Hitlerites" style="text-decoration-line: none;"> <span style="color: red">Visit Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style face="redcoat"><small></small></style><style lang="audience"></style><style color="Epicurean"></style><font><font><style></font></font></style><style></style></td> 
+        </tr> 
+        <tr> 
+         <td height="10" style="font-size:1px; line-height:1px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;text-transform:uppercase;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td height="10" style="font-size:1px; line-height:1px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;text-transform:uppercase;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td class="em_height" height="35">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <!-- === //FOOTER SECTION === --> 
+   </tbody> 
+  </table> 
+  <div style="display:none; white-space:nowrap; font:20px courier; color:#ffffff; background-color:#ffffff;">
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  </div>   
+ <img src="http://www.nw-mbldeal.info/incompetents-ascended/2a66t2w39I5hCi8513L46V3csT10c9k36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQgdRQK5CF1L06bTy0wD" alt=""/></body>
+</html>
 
-> 
-> Otherwise, in the off chance userspace hits this error, what's the
-> value in generating a failure here for a device that may or may not
-> have a kvm dependency.  A driver with a dependency should fail if
-> device->kvm is NULL.
-
-Hmm, you have a point.  Yes, I agree that any driver that needs device->kvm is responsible for checking it for NULL.  I guess I was viewing this case as 'oh, we must already be on the kvm_destroy_vm path for this group' but that just means group->kvm is about to go NULL and doesn't necessarily mean that the vfio group is also going away.
-
-Will change.
-
-> 
->>  	if (device->ops->open_device) {
->>  		ret = device->ops->open_device(device);
->>  		if (ret)
->> -			goto err_unuse_iommu;
->> +			goto err_put_kvm;
->>  	}
->>  	return 0;
->>  
->> +err_put_kvm:
->> +	if (kvm) {
-
-s/kvm/device->kvm/ here to go along with your suggestion above, that way we only do the kvm_put if we previously had a successful kvm_get
-
->> +		vfio_kvm_put_kvm(kvm);
->> +		device->kvm = NULL;
->> +	}
->>  err_unuse_iommu:
->> -	device->kvm = NULL;
->>  	if (iommufd)
->>  		vfio_iommufd_unbind(device);
->>  	else
->> @@ -387,7 +425,6 @@ static void vfio_device_last_close(struct vfio_device *device,
->>  
->>  	if (device->ops->close_device)
->>  		device->ops->close_device(device);
->> -	device->kvm = NULL;
->>  	if (iommufd)
->>  		vfio_iommufd_unbind(device);
->>  	else
->> @@ -465,6 +502,11 @@ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
->>  
->>  	vfio_device_group_close(device);
->>  
->> +	if (device->open_count == 0 && device->kvm) {
->> +		vfio_kvm_put_kvm(device->kvm);
->> +		device->kvm = NULL;
->> +	}
-> 
-> IIUC, device->open_count is protected by device->dev_set->lock.  Thanks,
-
-Yep, thanks.  I will surround this bit of code with
-
-mutex_lock(&device->dev_set->lock);
-..
-mutex_unlock(&device->dev_set->lock);
+------=_Part_379_1959844124.1673560354089--
 
