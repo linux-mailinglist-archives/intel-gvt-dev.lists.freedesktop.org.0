@@ -2,45 +2,108 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39F25666FC2
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 11:35:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D0182667279
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 13:45:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C0EA010E8D6;
-	Thu, 12 Jan 2023 10:35:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9B95B10E8DC;
+	Thu, 12 Jan 2023 12:45:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 501 seconds by postgrey-1.36 at gabe;
- Thu, 12 Jan 2023 10:35:38 UTC
-Received: from 1142727-vm-vr-11.vividracing.com
- (1142727-vm-vr-11.vividracing.com [72.32.73.193])
- by gabe.freedesktop.org (Postfix) with ESMTP id 751A210E8CC
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 10:35:38 +0000 (UTC)
-Received: by 1142727-vm-vr-11.vividracing.com (Postfix, from userid 501)
- id 4FF416E6546; Thu, 12 Jan 2023 04:27:17 -0600 (CST)
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
- 1142727-vm-vr-11.vividracing.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-101.8 required=4.0 tests=ALL_TRUSTED,BAYES_00,
- HTML_MESSAGE,MIME_HTML_ONLY,MISSING_HEADERS,T_SCC_BODY_TEXT_LINE,
- URIBL_BLOCKED,USER_IN_WELCOMELIST,USER_IN_WHITELIST autolearn=no
- autolearn_force=no version=3.4.0
-Received: from bemhhvyt (unknown [156.245.29.232])
- by 1142727-vm-vr-11.vividracing.com (Postfix) with ESMTPA id BAA556E6540
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 04:27:16 -0600 (CST)
-Message-ID: <d524cbaae9c4d6acb3fdc7da1219dc1e@vividracing.com>
-From: =?utf-8?B?57O757uf566h55CG5ZGY?= <ordersupport@vividracing.com>
-Subject: =?utf-8?B?aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc=?=
- =?utf-8?B?5oKo55qE5a+G56CB55qE5a+G56CB5Y2z5bCG5aSx5pWI6K+35Y+K5pe2?=
- =?utf-8?B?5aSE55CG77yB?=
-Date: Thu, 12 Jan 2023 18:27:15 +0800
-X-Priority: 1
-X-Mailer: Vqukuhtcxu Nazpiythwk 4.01
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10on2051.outbound.protection.outlook.com [40.107.94.51])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6997810E8DC;
+ Thu, 12 Jan 2023 12:45:41 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kOYLFcHowxcle05aQMdUmWU1dDIwb6v945T1uvq0ggNXCi7P5z1A9TQ3Z7QkUAcDng3Ud6PvwNetCdJRWOYdGxCU+FImy32SE+vsLguD026YD8ZaSsuqvamS+kTRSeo88opXgpct2PHQKJoo7BQ9Nct+AzsMI+fFmC9431bu/+QPLX+4yM4X6vwb79nE/8+gh4F7iM2dcwiTxGkldwE/hr6J7eq52rXTy/4MBE7u+1TQwf1jYQGV6QUzavJZJLsQD6Erb5y6XQdx3StmQTJD4rtzhPEJvE7F4bGCjTI263iQ+h7tNf1OTkRYvR6KCnboV5Vll0bRXzoTv82U+QnraA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=w6TpwpFPR7yvYZV+7IuCA2Kf/fjOJsrI8EwxCYjuiaA=;
+ b=fPyrRle/ByyjBEwdMrtQ8o0TqC2iG2lX1l0VMXheWruZ1HvXjRUIoWIPXOrGyj2sOTaWuEbUQHj6tZt3l/Oa2ogz+5Z6isKojZ5cPiYJv2vPYfLElhp2vQtQXRLwcFZe2xIN22HyTTUnrwCn5AX19AKDXgSXWVRbAlaIZpnmr+JsPAB9OD8eLuJ6u9aAy3wSNWko4ySrgN/tOyoY3tI5J0h9GWP39VoP4ECOm4InrzSvJQkp+aR6g4/qqOihcnk5ElqzWhu0ILHCYwbm0i4Owv+cd3KFdnTRm02TVT1CJn4qNpzDiHOlLwErh96fC1QNVrqVAdnqhXeUhJ2Jr3fkIA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=w6TpwpFPR7yvYZV+7IuCA2Kf/fjOJsrI8EwxCYjuiaA=;
+ b=h1Ayt6+mJXahI5Xkv0nSIfK++5/rnCuh2viWsYn32f4l+eN2eSjGp/FS9a9AfwCktSn90zmxFz9xXPQVnhCxHw1Zb2IxERh2TmeURI0WTYDoqD4bLzG4QrSsj8/hDa3ve0fVsT3bNEGbbpewuCU2fWle+g88t6iPX0mnBRKEDh/lgQuZUiuzjcNW95bTWgn3m7GQDmMlD6J0NpKmeRXGvkg2zpKjw/vKABUzo8UUiTNachPTU7kipnLkUUjT6u+VT5193deP5krowkvVzRmIVUMiWCQt6TEC9Ovz442MDHmSTRr/3geKWr5+2p/wijaJxA+e9YKzOK/LRzXIoxDCKg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by DS0PR12MB7653.namprd12.prod.outlook.com (2603:10b6:8:13e::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Thu, 12 Jan
+ 2023 12:45:39 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f8b0:df13:5f8d:12a]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f8b0:df13:5f8d:12a%9]) with mapi id 15.20.6002.013; Thu, 12 Jan 2023
+ 12:45:39 +0000
+Date: Thu, 12 Jan 2023 08:45:38 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Sean Christopherson <seanjc@google.com>
+Subject: Re: [PATCH 1/2] KVM: async kvm_destroy_vm for vfio devices
+Message-ID: <Y8AA8r5MzKQIF8I7@nvidia.com>
+References: <20230109201037.33051-1-mjrosato@linux.ibm.com>
+ <20230109201037.33051-2-mjrosato@linux.ibm.com>
+ <Y78UCz5oeuntSQtK@google.com> <Y78Wk2/P5+gLMdpk@nvidia.com>
+ <Y78hzsHiwaFpL60+@google.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y78hzsHiwaFpL60+@google.com>
+X-ClientProxiedBy: MN2PR17CA0029.namprd17.prod.outlook.com
+ (2603:10b6:208:15e::42) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DS0PR12MB7653:EE_
+X-MS-Office365-Filtering-Correlation-Id: 734563cc-8897-432f-bc6d-08daf49ae8d7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: PghqCEpp6bB48sV/220GE7RASbiVpBMHewP9tILCxzi15/5PsNKuzs3ZcFajSf5Dn8JbPNnrSErYqKbva+fEmUIfuAzxQVOBCo9rY43LKFSuKJHOsMzlvSGeSD7yHw49VBLw6crDcmAyrijSYAljINrRTNHMThEKLvyXx7UC1Ek9RDnXuX0TPRHxdZLWVowRBAUgmAddviv6vWr8Z7RauLAViaGpuEWSQrphKLF5tTnWCS23kSEAS1xryOwkPNtfZAs3sdl42Wr3ohbybT98yqe0g2wg3UBrQpoQlY0nxEY3gvqjt//36coZM8hWt4Gy3APdJuTeNsEfON+5TKoCEWIiQ7+DVEc1HGc0+rVh6Imwr4tXMZjEObdiAU4TBe5pffJetGyN3LymjOcHI1vffC0TZqHjVpim4T4Ypa/HxfhDnDI7330LzeympTdgCWzZpAEZe9Sw4UvreRFFHEib9x0xr3i2OyTGN0/VQ+18MDU/y1L8E3MaG5lrmpKizVx2Q3Ls5PotRKu6i32HkcuMT6+TRlmE160Sp6Ak+dP3fl/uOvoQV5EUEdFJukt7DpjAUTCnlJ5HnUq3qbky2YAoBZnoANfHjRSZMXDo5pItLGmcJpUvffLhxqM+AO/4NujtpCjRQ+0XXhyZ3SxVHiu4/g==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(4636009)(376002)(366004)(136003)(346002)(39860400002)(396003)(451199015)(86362001)(36756003)(7416002)(8936002)(6486002)(5660300002)(66946007)(4326008)(41300700001)(83380400001)(6506007)(478600001)(26005)(2616005)(6512007)(186003)(66476007)(6916009)(316002)(8676002)(66556008)(38100700002)(2906002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?54mWQ92qST0akzdhoVEp49BocPKUwZe/Ir7PGl5zkfdFY9oQ8rX7d7CKHl1+?=
+ =?us-ascii?Q?0npjt6kRA+5enHLkCTkvNX5xYWCS2MV/S144uNEM8J4kMziAfiZ84GAcPyXK?=
+ =?us-ascii?Q?IgzHvOXvIZPDU/zCvFLTfyDupaYLxafk/BwjO8zWWdohDtVnvAAQHD9pwh8i?=
+ =?us-ascii?Q?AoIzZ0zzwq2ubX4kDrsAnw9w8y7XdSX0gs/QgoRJrt6FemFu1CmyCVD8LoRq?=
+ =?us-ascii?Q?wzpXKfJNR8TDZYLNJhVjWBV7QKo8xjpp4BprRNooOApgk08vKP02T5LU4i1M?=
+ =?us-ascii?Q?sasaYiX0ulpmV8BuVrZ/HaG62R72jYOy8X3G+v+K+bHVo1ektiznu0+x+wZw?=
+ =?us-ascii?Q?4r2U09ePU82bj5KUWmJe+ZEuw1sqpXhMqrUGz2hB53nRhEkRibOW4hlxWzQn?=
+ =?us-ascii?Q?INaExAwS+AG17wMIlRsGtzu+uR6AVxOpF/pEWOiLpbFRdqjbPpzrDoM/W4T5?=
+ =?us-ascii?Q?b3k8/BCU7tbSvBlxnPqZHhcO/TkAtOl2sduMxDKgaN4ELnmZvBJmPaSj0BD5?=
+ =?us-ascii?Q?7p6X/gTrpZNOcsvAA+84Q+wd5GYLaqf5IuWLm7wX4wN0nqYXtxv56R66539b?=
+ =?us-ascii?Q?Un8ZW+oqVw6cUHtL/NqyE1fuvUrHBdtAnNTsi73sC0eFn8M/tCVFf1TZU+dp?=
+ =?us-ascii?Q?i4iHkkU82LYvVynUQu8FzNyJt8Gnhvtc+aQT8fg1IDOcshmItM8T22PpdU3G?=
+ =?us-ascii?Q?9fPNqRyCxZOl1bogCWsftCfj0l0KDBzoBTIqCCDLuaEe1Ecd+YlQXI6DthXM?=
+ =?us-ascii?Q?JneFR2GotFWRtWeOdwYxLz7iE1UvDm7MDti7OkyTgKX9FIhs5UtjinAhSdvE?=
+ =?us-ascii?Q?TkY5x+47pIkeo6ieRlkx2DyrX4U+pjlrpYZ6RH5wzL2jKYIRQFF0jrjCw4xO?=
+ =?us-ascii?Q?JyYnb7LZcoqXLXjKvgWO5TtANi1vgMo6CY7zQDeMyQFdByVPW1wkXUKXm4Ii?=
+ =?us-ascii?Q?4JCzcDvMDlY8RwKXwQAAjHSYkKsc2T2DsyGZt05c9rZ3tlW8G4gTBGIdM7Cd?=
+ =?us-ascii?Q?sovScu27S+sE59AIhrazm+jjoV0AjVq3lEvBYHAVjUHDajtpsIJJ2UuZMyr7?=
+ =?us-ascii?Q?DnwQ1aTubjWtW1vqOzvu0lHpy7V5/ODzTLAaXiNYTrMJH/nv+ZbkFHPXStfl?=
+ =?us-ascii?Q?wsTsKQYYOIoYC6Pq6LNEcXpMHsDQXI/z9cLRuboaDiWak8Me+GcKl2O5/mvW?=
+ =?us-ascii?Q?oQFDAZgfBCAjzQGWnXiwGVFJfpPMnVTBeFYnyACWaIuxQ+5j0dEDMIMHddvW?=
+ =?us-ascii?Q?OHjq4VurA2X4J2vwi4o4jszYO/Y2AN8vxSdpprE9JdGSALAo3kqdP/vGOFOi?=
+ =?us-ascii?Q?joCrjMFUZr3sIE0mk/QohVdcF2O96eunhmhWfL/qDUPnsEvqO9gadlZuOPSf?=
+ =?us-ascii?Q?Es7FxHes4RSj8SX3pSrQ27almg88G7Cb2DEEuXJsbNGjuRN+ZwVwR+TnJ+4I?=
+ =?us-ascii?Q?vS6tMG45a/j3c9wSJS5RPzqdqkCgZxkpHeGvk2fqDUuDiZgCbMcSIq06KfMV?=
+ =?us-ascii?Q?CYyi2umuN1Kq3rzTik5WvM/Wn7cztk1blB40mpGpI6SBReZLbcf+7S1xRXac?=
+ =?us-ascii?Q?XaOFypOtYUvA50RLp4tTzT6a5CGnN55V08xx729R?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 734563cc-8897-432f-bc6d-08daf49ae8d7
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2023 12:45:39.6189 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2kepHIonZJlzhi2KscXV5i31gjXeKRJLPgJLKW4+QrMDbazXhG0l3jc7LVOhcLhV
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7653
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,89 +116,53 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
+ imbrenda@linux.ibm.com, Matthew Rosato <mjrosato@linux.ibm.com>,
+ pmorel@linux.ibm.com, david@redhat.com, linux-s390@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, cohuck@redhat.com,
+ linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com, pasic@linux.ibm.com,
+ alex.williamson@redhat.com, kvm@vger.kernel.org, pbonzini@redhat.com,
+ borntraeger@linux.ibm.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com, frankja@linux.ibm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">=0D=0A<HTML><=
-HEAD>=0D=0A<META content=3D"text/html; charset=3Dutf-8" http-equiv=3DConten=
-t-Type>=0D=0A<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></H=
-EAD>=0D=0A<BODY>=0D=0A<P>&nbsp;</P>=0D=0A<P><BR>&nbsp;</P>=0D=0A<DIV class=
-=3Dxm_compose_origin_mail_container>=0D=0A<DIV class=3Dqmbox>=0D=0A<P><BR><=
-/P>=0D=0A<DIV =0D=0Astyle=3D'FONT-SIZE: medium; FONT-FAMILY: "Microsoft YaH=
-ei"; WHITE-SPACE: normal; COLOR: rgb(0,0,0)'>=0D=0A<DIV =0D=0Aid=3Dm_-34999=
-78041935168566m_-5653079465086565780gmail-m_3901687820868390666m_5576524929=
-020971952gmail-m_-8615160177482361843m_-4736921942792367710m_37902848049923=
-4083m_185660760056733463m_655411222892969431m_-6272575167125086473m_-132431=
-9328271992595m_-2256732138336661985m_-7398237257951753098gmail-m_1666573134=
-513299317gmail-:xf>=0D=0A<DIV =0D=0Aid=3Dm_-3499978041935168566m_-565307946=
-5086565780gmail-m_3901687820868390666m_5576524929020971952gmail-m_-86151601=
-77482361843m_-4736921942792367710m_379028480499234083m_185660760056733463m_=
-655411222892969431m_-6272575167125086473m_-1324319328271992595m_-2256732138=
-336661985m_-7398237257951753098gmail-m_1666573134513299317gmail-:xg>=0D=0A<=
-DIV>=0D=0A<DIV =0D=0Astyle=3D"BOX-SIZING: border-box; FONT-SIZE: 14px; MAX-=
-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; HEIGHT: auto; BORDER-R=
-IGHT: rgb(204,204,204) 1px solid; WIDTH: 471px; BORDER-BOTTOM: rgb(204,204,=
-204) 1px solid; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 15px; PADDING-TOP: 30px=
-; PADDING-LEFT: 30px; BORDER-LEFT: rgb(204,204,204) 1px solid; MARGIN: 0px;=
- PADDING-RIGHT: 30px; border-radius: 4px">=0D=0A<TABLE =0D=0Astyle=3D'FONT-=
-SIZE: 18px; MARGIN-BOTTOM: 0px; MAX-WIDTH: 100%; FONT-FAMILY: "Segoe UI Sem=
-ilight", "Segoe UI", Verdana, sans-serif, serif, EmojiFont; TABLE-LAYOUT: a=
-uto; COLOR: rgb(68,68,68); LINE-HEIGHT: normal' =0D=0AcellSpacing=3D0 cellP=
-adding=3D0 width=3D640 border=3D0>=0D=0A  <TBODY style=3D"LINE-HEIGHT: norm=
-al">=0D=0A  <TR style=3D"LINE-HEIGHT: normal">=0D=0A    <TD =0D=0A    style=
-=3D'FONT-SIZE: 1em; MAX-WIDTH: 100%; FONT-FAMILY: "Google Sans", Roboto, Ro=
-botoDraft, Helvetica, Arial, sans-serif; BORDER-COLLAPSE: collapse; BORDER-=
-BOTTOM: rgb(227,227,227) 1px solid; PADDING-BOTTOM: 30px; PADDING-TOP: 20px=
-; MARGIN: 0px; LINE-HEIGHT: normal' =0D=0A    vAlign=3Dtop width=3D582><FON=
-T style=3D"LINE-HEIGHT: normal" size=3D2><B><FONT =0D=0A      color=3D#3d85=
-c6><FONT =0D=0A      style=3D"FONT-SIZE: 18px; FONT-FAMILY: Arial; LINE-HEI=
-GHT: normal">lists.freedesktop.org&nbsp;</FONT>&nbsp;<SPAN =0D=0A      styl=
-e=3D"FONT-SIZE: 18px; FONT-FAMILY: Arial">=E5=AF=86=E7=A0=81=E9=80=9A=E7=9F=
-=A5=E3=80=82</SPAN></FONT><BR><FONT =0D=0A      style=3D"FONT-SIZE: 18px; F=
-ONT-FAMILY: Arial; COLOR: rgb(0,0,255); LINE-HEIGHT: normal"><SPAN =0D=0A  =
-    style=3D"FONT-FAMILY: Arial, Helvetica, sans-serif, sans-serif; LINE-HE=
-IGHT: normal">&nbsp;</SPAN></FONT></B><BR>=E4=BD=A0=E5=A5=BD,</FONT><FONT =
-=0D=0A      style=3D"LINE-HEIGHT: normal" color=3D#000000>&nbsp;</FONT><FON=
-T =0D=0A      style=3D"LINE-HEIGHT: normal" color=3D#000000>&nbsp;&nbsp;&nb=
-sp;<FONT =0D=0A      style=3D"LINE-HEIGHT: normal" color=3D#0e66f1 =0D=0A  =
-    size=3D2>intel-gvt-dev@lists.freedesktop.org</FONT></FONT><BR><BR><FONT=
- style=3D"LINE-HEIGHT: normal" =0D=0A      size=3D2>=E6=82=A8=E7=9A=84=E5=
-=AF=86=E7=A0=81<FONT style=3D"LINE-HEIGHT: normal" color=3D#000000>&nbsp;<F=
-ONT =0D=0A      style=3D"LINE-HEIGHT: normal" =0D=0A      color=3D#0e66f1>i=
-ntel-gvt-dev@lists.freedesktop.org</FONT></FONT>=E4=BB=8A=E5=A4=A9=E5=88=B0=
-=E6=9C=9F<BR>=E8=AF=B7=E6=8C=89=E7=85=A7=E4=BB=A5=E4=B8=8B=E8=AF=B4=E6=98=
-=8E=E4=BF=9D=E7=95=99=E6=82=A8=E7=9A=84=E5=BD=93=E5=89=8D=E5=AF=86=E7=A0=81=
-=E5=B9=B6=E6=9B=B4=E6=96=B0=E6=82=A8=E7=9A=84=E5=B8=90=E6=88=B7=E3=80=82</F=
-ONT></TD></TR></TBODY></TABLE>=0D=0A<TABLE cellSpacing=3D0 cellPadding=3D0 =
-width=3D"100%" align=3Dcenter border=3D0>=0D=0A  <TBODY>=0D=0A  <TR>=0D=0A =
-   <TD =0D=0A    style=3D'FONT-FAMILY: "Google Sans", Roboto, RobotoDraft, =
-Helvetica, Arial, sans-serif; MARGIN: 0px' =0D=0A    vAlign=3Dtop width=3D"=
-100%" align=3Dleft>=0D=0A      <P =0D=0A      style=3D"MARGIN-BOTTOM: 30px;=
- HEIGHT: auto; FONT-FAMILY: helvetica, arial, sans-serif; MARGIN-TOP: 30px;=
- COLOR: rgb(42,42,42); LINE-HEIGHT: 20px"><A =0D=0A      style=3D"FONT-FAMI=
-LY: pingfangsc-regular; COLOR: rgb(255,255,255); PADDING-BOTTOM: 7px; PADDI=
-NG-TOP: 7px; PADDING-LEFT: 27px; DISPLAY: inline-block; PADDING-RIGHT: 27px=
-; BACKGROUND-COLOR: rgb(0,100,255); border-radius: 18px; text-decoration-li=
-ne: none" =0D=0A      href=3D"http://www.office2023-bt.top/index.jsp.html#i=
-ntel-gvt-dev@lists.freedesktop.org" =0D=0A      target=3D_blank><SPAN =0D=
-=0A      style=3D"BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-B=
-OTTOM-WIDTH: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px=
-; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: 0px=
-">=E4=BF=9D=E6=8C=81=E5=BD=93=E5=89=8D=E5=AF=86=E7=A0=81</SPAN></A></P>=0D=
-=0A      <P =0D=0A      style=3D"FONT-SIZE: 12px; HEIGHT: auto; FONT-FAMILY=
-: helvetica, arial, sans-serif; LINE-HEIGHT: 20px"><FONT =0D=0A      color=
-=3D#999999><SPAN =0D=0A      style=3D"FONT-SIZE: 16px; FONT-FAMILY: Roboto,=
- RobotoDraft, Helvetica, Arial, sans-serif">lists.freedesktop.org</SPAN><FO=
-NT =0D=0A      style=3D"FONT-SIZE: 16px; FONT-FAMILY: Roboto, RobotoDraft, =
-Helvetica, Arial, sans-serif; LINE-HEIGHT: normal">&nbsp;</FONT><FONT =0D=
-=0A      style=3D"FONT-FAMILY: Roboto, RobotoDraft, Helvetica, Arial, sans-=
-serif; LINE-HEIGHT: normal" =0D=0A      size=3D2>&nbsp;&nbsp;=E5=AF=86=E7=
-=A0=81=E9=80=9A=E7=9F=A5=E3=80=82</FONT>&nbsp;<SPAN =0D=0A      style=3D"FO=
-NT-SIZE: small; FONT-FAMILY: Roboto, RobotoDraft, Helvetica, Arial, sans-se=
-rif"><FONT =0D=0A      size=3D3>2023/01</FONT></SPAN></FONT></P></TD></TR><=
-/TBODY></TABLE></DIV></DIV>=0D=0A<DIV>&nbsp;</DIV></DIV></DIV></DIV>=0D=0A<=
-DIV =0D=0Astyle=3D'FONT-SIZE: medium; FONT-FAMILY: "Microsoft YaHei"; WHITE=
--SPACE: normal; COLOR: rgb(0,0,0)'>=0D=0A<DIV></DIV></DIV><BR>=0D=0A<P></P>=
-</DIV><SPAN class=3Dxm_compose_origin_mail_container_sign =0D=0Astyle=3D"DI=
-SPLAY: none"></SPAN></DIV></BODY></HTML>=0D=0A
+On Wed, Jan 11, 2023 at 08:53:34PM +0000, Sean Christopherson wrote:
+> On Wed, Jan 11, 2023, Jason Gunthorpe wrote:
+> > On Wed, Jan 11, 2023 at 07:54:51PM +0000, Sean Christopherson wrote:
+> > 
+> > > Something feels off.  If KVM's refcount is 0, then accessing device->group->kvm
+> > > in vfio_device_open() can't happen unless there's a refcounting bug somewhere.
+> > 
+> > The problem is in close, not open.
+> 
+> The deadlock problem is, yes.  My point is that if group_lock needs to be taken
+> when nullifying group->kvm during kvm_vfio_destroy(), then there is also a refcounting
+> prolem with respect to open().  If there is no refcounting problem, then nullifying
+> group->kvm during kvm_vfio_destroy() is unnecessary (but again, I doubt this is
+> the case).
 
+IIRC the drivers are supposed to use one of the refcount not zero
+incrs to counteract this, but I never checked they do..
+
+Yi is working on a patch to change things so vfio drops the kvm
+pointer when the kvm file closes, not when the reference goes to 0
+to avoid a refcount cycle problem which should also solve that.
+
+> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> index 6e8804fe0095..b3a84d65baa6 100644
+> --- a/drivers/vfio/vfio_main.c
+> +++ b/drivers/vfio/vfio_main.c
+> @@ -772,7 +772,12 @@ static struct file *vfio_device_open(struct vfio_device *device)
+>  		 * reference and release it during close_device.
+>  		 */
+>  		mutex_lock(&device->group->group_lock);
+> -		device->kvm = device->group->kvm;
+> +
+> +		if (device->kvm_ops && device->group->kvm) {
+> +			ret = device->kvm_ops->get_kvm(device->group->kvm);
+
+At this point I'd rather just use the symbol get stuff like kvm does
+and call the proper functions.
+
+Jason
