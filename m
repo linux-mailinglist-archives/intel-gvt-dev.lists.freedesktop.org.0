@@ -1,42 +1,77 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F1FA668403
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 21:20:57 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id CBEC56684FD
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 22:05:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F1E610E908;
-	Thu, 12 Jan 2023 20:20:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 98BA810E925;
+	Thu, 12 Jan 2023 21:05:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Thu, 12 Jan 2023 20:20:54 UTC
-Received: from mail.whlsle-up.info (unknown [45.13.189.21])
- by gabe.freedesktop.org (Postfix) with ESMTP id 28D7610E36D
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0A47910E925
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 20:20:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=whlsle-up.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=costco-time@whlsle-up.info; bh=sr6jw439Kr3M1OPMzHDTLErR+ko=;
- b=ZIrEQxCRC/zQvqhcfAbNYaX8UAqj6o2EERT9CPx0I3tKAbBgNuXWTQqgEoRpuAsfAJw0c+0SU3gD
- OrMRwDIF9hYtiENoU0zGoAAFOW1O95WslYTMO7MFNvQOncK+8nIIbhynojBAcCzOQpmBHjZloF9T
- 5u3qOL3HQz7rKYKLFBw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=whlsle-up.info;
- b=w/B699qbAyIDWshdG/pm+d70Aj8VEFW2LjboZTyzk2chz+P6G9YdO/DhJmeP6Zvn9vi/gH2UaCRr
- 0OORFmxQPrs7T3ipK/Erncjpf/LxMrfmrdHzky2A9wZbvxK18x9WcYzy+f0pkpnTg6Ri64VC1XZd
- NimoPVnhyMFYP1VvZFM=;
-Received: by mail.whlsle-up.info id ho20280001gg for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 16:39:39 -0500 (envelope-from
- <costco-time-intel+2Dgvt+2Ddev=lists.freedesktop.org@whlsle-up.info>)
-Date: Thu, 12 Jan 2023 16:39:39 -0500
-From: "Costco Time" <costco-time@whlsle-up.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Provide feedback to have a chance to win
+ Thu, 12 Jan 2023 21:05:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1673557521;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=h6f/xkDFcthJcSJTvgCInVgMfaXKqM0yPFFK06gOaJY=;
+ b=PycuaJQbxERzObE4747hpGlSSt/IhF3CIX2INuu5ZT5AsCEYJhwR8egmVsnpAqdYBChtj3
+ TVYaTbI6F1/qZRkBbq28YKdvDHPVIVFH7jdYgN0bPP37A7iZ9i2nxfC664j+dQVNjUQfhT
+ Fg2BYoNiIKtfCevRuthmmhz0Y4QCoDU=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-512-N9JCF0-SMvOwA8DttMDWEw-1; Thu, 12 Jan 2023 16:05:20 -0500
+X-MC-Unique: N9JCF0-SMvOwA8DttMDWEw-1
+Received: by mail-il1-f200.google.com with SMTP id
+ x8-20020a056e021ca800b0030c075dc55dso14275330ill.7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 12 Jan 2023 13:05:20 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=h6f/xkDFcthJcSJTvgCInVgMfaXKqM0yPFFK06gOaJY=;
+ b=nTfDYDV7JQD0jJLfISxQA5Sy694zCyA4lDuVm+YsPkOqI69S/jbrEX2sHQIvyDdOBl
+ I9uODs2866EJQbtUmTUEFX7dINPKkG6vke0/LRwR5wTE103imMFejEf9TeajkrDmgO9I
+ KugqyGbmpVHkj93oHtNzfzsULs01Q9sdlL6Q+CDh9h8YI4K5UUk+UkGbi1V7edHinzb4
+ XziXBk0aWRXBca6l3JaHI6zkscuVZuI7qTHyAD9rAUptwPhuJ52Q4EK/l9lbP4fSv8Ab
+ WmlaetzwOFUYeZK51jAr1sHv9OkcZ0jqgVyom/NuqK4ZD6ZGcvvlO0S/E2ck7PP3PJi3
+ TZzg==
+X-Gm-Message-State: AFqh2kphB2Vad+55Fwr8luAPsj8Av0DUQ2fKgm+dEgkKUfLGBpZtu4mO
+ qZJ9+mLuwWjCFroi0mvl6+CZ5xf/kxmf/aizSSg2gFSgYjslmtEyN7Wz39CbSx1hEvLaoBAGdkd
+ 2N61w771VKcTgvIq0wQlE2RrqKmFdgdp7cg==
+X-Received: by 2002:a05:6e02:1d88:b0:30d:7cf4:5d5c with SMTP id
+ h8-20020a056e021d8800b0030d7cf45d5cmr31649893ila.31.1673557519945; 
+ Thu, 12 Jan 2023 13:05:19 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXvrH5SQuIa+SM0JX2id5B1E3t2j9jN9JvjT6ILFvMMJfCCKm4aTtrr6JdMNkSQtGVDDL9mJbQ==
+X-Received: by 2002:a05:6e02:1d88:b0:30d:7cf4:5d5c with SMTP id
+ h8-20020a056e021d8800b0030d7cf45d5cmr31649859ila.31.1673557519587; 
+ Thu, 12 Jan 2023 13:05:19 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ a17-20020a92d591000000b0030be6c79645sm5428334iln.68.2023.01.12.13.05.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Jan 2023 13:05:19 -0800 (PST)
+Date: Thu, 12 Jan 2023 14:05:17 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>
+Subject: Re: [PATCH v2] vfio: fix potential deadlock on vfio group lock
+Message-ID: <20230112140517.6db5b346.alex.williamson@redhat.com>
+In-Reply-To: <20230112203844.41179-1-mjrosato@linux.ibm.com>
+References: <20230112203844.41179-1-mjrosato@linux.ibm.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_754_1996153916.1673554262557"
-Message-ID: <0.0.0.53.1D926CE5FC14D4E.3903A1@mail.whlsle-up.info>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,287 +84,194 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
+ imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
+ david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
+ pasic@linux.ibm.com, jgg@nvidia.com, kvm@vger.kernel.org, pbonzini@redhat.com,
+ linux-s390@vger.kernel.org, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_754_1996153916.1673554262557
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+On Thu, 12 Jan 2023 15:38:44 -0500
+Matthew Rosato <mjrosato@linux.ibm.com> wrote:
 
-<!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>ny life</title>=20
-  <style type=3D"text/css">@import url('https://fonts.googleapis.com/css2?f=
-amily=3DM+PLUS+1:wght@300&display=3Dswap');
-        *{
-            margin: 0;
-            padding: 0;
-            border: 0;
-        }
-       =20
-        body{
-            font-family: 'M PLUS 1', sans-serif;
-            background-color: #FFFFFF;
-            max-width: 800px;
-            font-size: 20px;
-            margin: 0 auto;
-            padding: 3%;
-            text-align: center;
-        }
-       =20
-        #wrapper{
-            background-color: #FFFFFF;
-        }
-       =20
-        #banner{
-            padding:2% 0% 0% 2%;
-        }
-        #banner > img{
-            max-width: 100%;
-            margin: auto;
-        }
+> Currently it is possible that the final put of a KVM reference comes from
+> vfio during its device close operation.  This occurs while the vfio group
+> lock is held; however, if the vfio device is still in the kvm device list,
+> then the following call chain could result in a deadlock:
+> 
+> kvm_put_kvm
+>  -> kvm_destroy_vm
+>   -> kvm_destroy_devices
+>    -> kvm_vfio_destroy
+>     -> kvm_vfio_file_set_kvm
+>      -> vfio_file_set_kvm
+>       -> group->group_lock/group_rwsem  
+> 
+> Avoid this scenario by having vfio core code acquire a KVM reference
+> the first time a device is opened and hold that reference until the
+> device fd is closed, at a point after the group lock has been released.
+> 
+> Fixes: 421cfe6596f6 ("vfio: remove VFIO_GROUP_NOTIFY_SET_KVM")
+> Reported-by: Alex Williamson <alex.williamson@redhat.com>
+> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> ---
+> Changes from v1:
+> * Re-write using symbol get logic to get kvm ref during first device
+>   open, release the ref during device fd close after group lock is
+>   released
+> * Drop kvm get/put changes to drivers; now that vfio core holds a
+>   kvm ref until sometime after the device_close op is called, it
+>   should be fine for drivers to get and put their own references to it.
+> ---
+>  drivers/vfio/group.c     |  6 ++---
+>  drivers/vfio/vfio_main.c | 48 +++++++++++++++++++++++++++++++++++++---
+>  include/linux/vfio.h     |  1 -
+>  3 files changed, 48 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+> index bb24b2f0271e..2b0da82f82f4 100644
+> --- a/drivers/vfio/group.c
+> +++ b/drivers/vfio/group.c
+> @@ -165,9 +165,9 @@ static int vfio_device_group_open(struct vfio_device *device)
+>  	}
+>  
+>  	/*
+> -	 * Here we pass the KVM pointer with the group under the lock.  If the
+> -	 * device driver will use it, it must obtain a reference and release it
+> -	 * during close_device.
+> +	 * Here we pass the KVM pointer with the group under the lock.  A
+> +	 * reference will be obtained the first time the device is opened and
+> +	 * will be held until the device fd is closed.
+>  	 */
+>  	ret = vfio_device_open(device, device->group->iommufd,
+>  			       device->group->kvm);
+> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> index 5177bb061b17..c969e2a0ecd3 100644
+> --- a/drivers/vfio/vfio_main.c
+> +++ b/drivers/vfio/vfio_main.c
+> @@ -16,6 +16,7 @@
+>  #include <linux/fs.h>
+>  #include <linux/idr.h>
+>  #include <linux/iommu.h>
+> +#include <linux/kvm_host.h>
+>  #include <linux/list.h>
+>  #include <linux/miscdevice.h>
+>  #include <linux/module.h>
+> @@ -344,6 +345,35 @@ static bool vfio_assert_device_open(struct vfio_device *device)
+>  	return !WARN_ON_ONCE(!READ_ONCE(device->open_count));
+>  }
+>  
+> +static bool vfio_kvm_get_kvm_safe(struct kvm *kvm)
+> +{
+> +	bool (*fn)(struct kvm *kvm);
+> +	bool ret;
+> +
+> +	fn = symbol_get(kvm_get_kvm_safe);
+> +	if (WARN_ON(!fn))
+> +		return false;
+> +
+> +	ret = fn(kvm);
+> +
+> +	symbol_put(kvm_get_kvm_safe);
+> +
+> +	return ret;
+> +}
+> +
+> +static void vfio_kvm_put_kvm(struct kvm *kvm)
+> +{
+> +	void (*fn)(struct kvm *kvm);
+> +
+> +	fn = symbol_get(kvm_put_kvm);
+> +	if (WARN_ON(!fn))
+> +		return;
+> +
+> +	fn(kvm);
+> +
+> +	symbol_put(kvm_put_kvm);
+> +}
+> +
+>  static int vfio_device_first_open(struct vfio_device *device,
+>  				  struct iommufd_ctx *iommufd, struct kvm *kvm)
+>  {
+> @@ -361,16 +391,24 @@ static int vfio_device_first_open(struct vfio_device *device,
+>  	if (ret)
+>  		goto err_module_put;
+>  
+> +	if (kvm && !vfio_kvm_get_kvm_safe(kvm)) {
+> +		ret = -ENOENT;
+> +		goto err_unuse_iommu;
+> +	}
+>  	device->kvm = kvm;
 
-        #social{
-            clear: both;
-            float: right;
-            list-style-type: none;
-            margin: 3% 10px 3% 10px;
-        }
-       =20
-        #social > li{
-            display: inline;
-        }
-       =20
-        #social > li > a > img{
-            max-width: 30px;
-            height: auto;
-        }
-        header{
-            max-width: 98%;
-        }
+This could just as easily be:
 
-        h1,p{
-            margin: 3%;
-        }
+	if (kvm && vfio_kvm_get_kvm_safe(kvm))
+		device->kvm = kvm;
 
-        .btn{
-            float: center;
-            margin: 0% 2% 4% 0%;
-            background-color: rgb(95, 167, 190);
-            color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            letter-spacing: 2px;
-        }
+Right?  The error path would test device->kvm and we already use
+device->kvm in the release path.
 
-        hr{
-            height: 1px;
-            clear: both;
-            background-color: darkslategray;
-            width: 96%;
-            margin: auto;
-        }
+Otherwise, in the off chance userspace hits this error, what's the
+value in generating a failure here for a device that may or may not
+have a kvm dependency.  A driver with a dependency should fail if
+device->kvm is NULL.
 
-        footer{
-            text-align: center;
-            font-size: 10px;
-            padding-bottom: 1%;
-        }
-=09</style>=20
- </head>=20
- <body style=3D"padding: 0">=20
-  <div id=3D"wrapper" style=3D"max-width: 560px; margin: auto">=20
-   <header>=20
-    <div>=20
-     <ul id=3D"social">=20
-     </ul>=20
-    </div>=20
-   </header> &nbsp;=20
-   <div class=3D"one-col">=20
-    <h1 style=3D"margin: 0"><span style=3D"display: block; max-width: 544px=
-; padding: 1px; margin: 1px"><span style=3D"display: block; max-width: 544p=
-x; padding: 1px; margin: 1px"><span style=3D"display: block; max-width: 544=
-px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width: 54=
-4px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width: 5=
-44px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width: =
-544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width:=
- 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width=
-: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-widt=
-h: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-wid=
-th: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-wi=
-dth: 544px; padding: 1px; margin: 1px"><a href=3D"http://www.whlsle-up.info/cf54F2395dQ86U13GZ4j62fI10c7K36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQjdRQS6bv1qq05QkJwD/chanting-docket"><img alt=3D""=
- src=3D"http://www.whlsle-up.info/modeling-infects/1b64S2395pJW7a12g46J31i10c7W36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQjdRQS7hv10QTh5zkwDM" width=3D"190px" /></a></span></span></span></span></sp=
-an></span></span></span></span></span></span></h1>=20
-    <span style=3D"display: block; max-width: 544px; padding: 1px; margin: =
-1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin:=
- 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin=
-: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"><a href=3D"http://www.whlsle-up.info/cf54F2395dQ86U13GZ4j62fI10c7K36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQjdRQS6bv1qq05QkJwD/chanting-docket"><img alt=3D"" src=3D"http://www.whlsle-up.info/clockers-decreasingly/62a5l239v5mry7a13I4tA632v10c7N36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQjdRQS6g1qgH06zywBD2" wid=
-th=3D"100%" /></a> </span></span></span></span></span></span></span></span>=
-</span></span></span>=20
-    <p><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1p=
-x; margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1=
-px; margin: 1px"><span style=3D"display: block; max-width: 544px; padding: =
-1px; margin: 1px">Get just a few clicks away from The <b>$100 Costco Card</=
-b>, by completing our 20-Second Service Survey about your recent experience=
- with us. </span></span></span></span></span></span></span></span></span></=
-span></span></p>=20
-    <span style=3D"display: block; max-width: 544px; padding: 1px; margin: =
-1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin:=
- 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin=
-: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"> </span></span></span></span></span></span></span></span></s=
-pan></span></span>=20
-    <div style=3D"text-align: center; display: block">
-     <span style=3D"display: block; max-width: 544px; padding: 1px; margin:=
- 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin=
-: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1p=
-x; margin: 1px"><a href=3D"http://www.whlsle-up.info/cf54F2395dQ86U13GZ4j62fI10c7K36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQjdRQS6bv1qq05QkJwD/chanting-docket" style=3D" float: center;
-            margin: 0% 2% 4% 0%;
-            background-color:#0160A4;
-            color: white;
-            text-decoration: none;
-            padding: 8px 42px;
-            border-radius: 8px;
-            letter-spacing: 2px;"><strong>Go And Start Now</strong> </a></s=
-pan></span></span></span></span></span></span></span></span></span></span>
-    </div>=20
-    <span style=3D"display: block; max-width: 544px; padding: 1px; margin: =
-1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin:=
- 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin=
-: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"> </span></span></span></span></span></span></span></span></s=
-pan></span></span>=20
-    <p><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1p=
-x; margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1=
-px; margin: 1px"><span style=3D"display: block; max-width: 544px; padding: =
-1px; margin: 1px">Your input is important to us and will help us improve ou=
-r stores and the products and services we offer.</span></span></span></span=
-></span></span></span></span></span></span></span></p>=20
-    <span style=3D"display: block; max-width: 544px; padding: 1px; margin: =
-1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin:=
- 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin=
-: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"> </span></span></span></span></span></span></span></span></s=
-pan></span></span>
-    <br />=20
-    <br />=20
-    <br /> &nbsp;=20
-    <hr />
-    <span style=3D"display: block; max-width: 544px; padding: 1px; margin: =
-1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin:=
- 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin=
-: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"> </span></span></span></span></span></span></span></span></s=
-pan></span></span>=20
-    <footer>
-     &nbsp;=20
-     <p>&nbsp;</p>=20
-     <div style=3D"text-align: center; font-size: 12px ">
-      &nbsp;=20
-      <p class=3D"unsubscribe"><span style=3D"display: block; max-width: 54=
-4px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width: 5=
-44px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width: =
-544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width:=
- 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-width=
-: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-widt=
-h: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-wid=
-th: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-wi=
-dth: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-w=
-idth: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max-=
-width: 544px; padding: 1px; margin: 1px"><span style=3D"display: block; max=
--width: 544px; padding: 1px; margin: 1px"><span style=3D"text-decoration: n=
-one; ">To bring e-mail to an close,</span><a href=3D"http://www.whlsle-up.info/a256vB23W95c8t6V13a4q630yP10c7T36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQjdRQS5D1VL06gTzzwD/kitten-mares" style=3D"text-decoration-=
-line: none;"> <span>Go Right Here </span> </a><br /> 126 E 23rd St New York,=
- NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> [randomhtml </span><=
-/span></span></span></span></span></span></span></span></span></span></p>=
-=20
-      <br /> &nbsp;
-     </div>=20
-     <p>&nbsp;</p>=20
-    </footer>=20
-    <span style=3D"display: block; max-width: 544px; padding: 1px; margin: =
-1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin:=
- 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margin=
-: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; margi=
-n: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; marg=
-in: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; mar=
-gin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; ma=
-rgin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; m=
-argin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px; =
-margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px;=
- margin: 1px"><span style=3D"display: block; max-width: 544px; padding: 1px=
-; margin: 1px"> </span></span></span></span></span></span></span></span></s=
-pan></span></span>
-   </div>=20
-  </div>  =20
- <img src=3D"http://www.whlsle-up.info/basil-lacked/1205Bu2395KXu8513D4633urP10c7l36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQjdRQS5P_10G6eONqwD" alt=3D""/></body>
-</html>
+>  	if (device->ops->open_device) {
+>  		ret = device->ops->open_device(device);
+>  		if (ret)
+> -			goto err_unuse_iommu;
+> +			goto err_put_kvm;
+>  	}
+>  	return 0;
+>  
+> +err_put_kvm:
+> +	if (kvm) {
+> +		vfio_kvm_put_kvm(kvm);
+> +		device->kvm = NULL;
+> +	}
+>  err_unuse_iommu:
+> -	device->kvm = NULL;
+>  	if (iommufd)
+>  		vfio_iommufd_unbind(device);
+>  	else
+> @@ -387,7 +425,6 @@ static void vfio_device_last_close(struct vfio_device *device,
+>  
+>  	if (device->ops->close_device)
+>  		device->ops->close_device(device);
+> -	device->kvm = NULL;
+>  	if (iommufd)
+>  		vfio_iommufd_unbind(device);
+>  	else
+> @@ -465,6 +502,11 @@ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
+>  
+>  	vfio_device_group_close(device);
+>  
+> +	if (device->open_count == 0 && device->kvm) {
+> +		vfio_kvm_put_kvm(device->kvm);
+> +		device->kvm = NULL;
+> +	}
 
-------=_Part_754_1996153916.1673554262557--
+IIUC, device->open_count is protected by device->dev_set->lock.  Thanks,
+
+Alex
+
+> +
+>  	vfio_device_put_registration(device);
+>  
+>  	return 0;
+> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> index 35be78e9ae57..3ff7e9302cc1 100644
+> --- a/include/linux/vfio.h
+> +++ b/include/linux/vfio.h
+> @@ -46,7 +46,6 @@ struct vfio_device {
+>  	struct vfio_device_set *dev_set;
+>  	struct list_head dev_set_list;
+>  	unsigned int migration_flags;
+> -	/* Driver must reference the kvm during open_device or never touch it */
+>  	struct kvm *kvm;
+>  
+>  	/* Members below here are private, not for driver use */
 
