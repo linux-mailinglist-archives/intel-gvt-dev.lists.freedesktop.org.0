@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC32E667E2D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 19:32:41 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 662FF667E99
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 20:04:36 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9BD6610E32D;
-	Thu, 12 Jan 2023 18:32:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2ABDF10E91E;
+	Thu, 12 Jan 2023 19:04:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Thu, 12 Jan 2023 18:32:39 UTC
-Received: from mail.go-onace.info (unknown [45.13.189.18])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0BB3710E33B
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Thu, 12 Jan 2023 19:04:32 UTC
+Received: from mail.do-hrdwr.info (unknown [45.13.189.19])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B451D10E907
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 18:32:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=go-onace.info;
+ Thu, 12 Jan 2023 19:04:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=do-hrdwr.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace-hardware-love@go-onace.info; 
- bh=fGhjlD92LNQgPhDsc/2Zej02BqQ=;
- b=Ez5cKjQY6PEZSbfYtBwASTC9GSxwOsR6Vd9wlox2we70C7JFu6QnLHnNit1pwt8mOlqtOmrQxwXp
- UEJU+gLJqpTxPEdfre/IO2ZKzFZLTKWpmRsj1rs8Zw9usVOWEFyVAclveq+ZY8jcpuEZGLR4T9yV
- auV8LRzRVNMe9msesX4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=go-onace.info;
- b=RGEGCjod7g2cpeGGH3zJjQ8/8QgPQbxuPIin14bzOQxuOc/488+kVGR22EO0AHF9Ocz0lrPGKXll
- fc1Mb7kze8V+XTqimU1gJwMgrz+5ZaIb6y9qYD66vBG/ld4t8CuBvLLCKNv4697tdAsWarJPFj9v
- UP7/8dWw+U2/bAM4a7k=;
-Received: by mail.go-onace.info id ho194e0001gq for
+ i=lowes-hardware-supplies@do-hrdwr.info; 
+ bh=kkEnXwlx1ttFiGe94t8YzUah1ec=;
+ b=kMjpiVM4agdmXRPEQ8C1yRnkO3sDVXzAY7TBQG/3DvQP4c+Vxs/twP4GK3zPIK14+CyEZUOB3DM8
+ WhSYlu9+mZOIqUkmSQ3mQ4F66H5hedty3GBP/KHyUe8g2aszduksg6R4IzwWUkyn3qkiRUHiY0rH
+ GT8jEpDETfJMMd/eJ0E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=do-hrdwr.info;
+ b=oo0oW1ZxLM/U5IVg9Psutt2O4CDjRyFixYHHFYPQs5FiNz1is3M4o6+PvYf4vgjYEE90deLLGQo5
+ mBll8vXTnXbmd40O010qP9eDEWUz7JGb/lktZly6pMnvOhkGu3V3/ajYN7cO9+iE55EWd+EHUZdJ
+ /50AuQOg393OI69NqZs=;
+Received: by mail.do-hrdwr.info id ho1n3u0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 13:23:25 -0500 (envelope-from
- <ace-hardware-love-intel+2Dgvt+2Ddev=lists.freedesktop.org@go-onace.info>)
-Date: Thu, 12 Jan 2023 13:23:25 -0500
-From: "ACE Hardware Love" <ace-hardware-love@go-onace.info>
+ Thu, 12 Jan 2023 15:21:50 -0500 (envelope-from
+ <lowes-hardware-supplies-intel+2Dgvt+2Ddev=lists.freedesktop.org@do-hrdwr.info>)
+Date: Thu, 12 Jan 2023 15:21:50 -0500
+From: "LOWES Hardware Supplies" <lowes-hardware-supplies@do-hrdwr.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every Visit, you are rewarded for your loyalty - Yayy
+Subject: Best reward deal you can get for being a loyal customer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_775_351845246.1673547686934"
-Message-ID: <0.0.0.56.1D926B2F61D2072.2C4E6D@mail.go-onace.info>
+ boundary="----=_Part_691_797074831.1673549552017"
+Message-ID: <0.0.0.4C.1D926C380E480BE.47507D@mail.do-hrdwr.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,405 +53,416 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_775_351845246.1673547686934
+------=_Part_691_797074831.1673549552017
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en" style="height: 100%;">
+<html lang="en">
  <head> 
   <title></title> 
   <meta charset="utf-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
   <meta content="" name="keywords" /> 
   <meta content="" name="description" /> 
-  <style type="text/css">html, body {
-			height: 100%;
-		}
-		
-		* {
+  <style type="text/css">* {
 			margin: 0;
 			padding: 0;
 		}
-
-		.col-1 a:hover {
-			color: #313fa8!important;
-			background-color: #ececec!important;
-			font-weight: bold!important;
-			font-size: 11px!important;
-			box-shadow: none!important;
+		#btn:hover {
+			background-color: #0174C0!important;
+			color: #000!important;
+			
 		}
 
 
 
-		.col-2 ul li {
-			margin: 0;
+		#footer a:hover {
+			color: #000!important;
 		}
-
 
 
 
 
 		@media (max-width: 480px) {
-			.col-1, .col-2 {
-				display: block;
-				width: auto!important;
-			}
-
-
-
-			.col-1 {
-				border-radius: 20px 20px 0 0!important;
-			}
-			#shoe-img {
-				width: 220px!important;
-			}
-
-
-
-			.col-2 {
-				border-radius: 0 0 20px 20px!important;
-				text-align: center;
-			}
-		}
-		@media (min-width: 480px) and (max-width: 550px) {
-			#shoe-img {
-				width: 180px!important;
-			}
-		}
-		@media (max-width: 550px) {
-			#logo {
-				width: 50px!important;
-			}
-			.col-1 h3 {
-				font-size: 15px!important;
-			}
-			.col-1 a {
-				width: 110px!important;
-				padding: 9px 0!important;
-				font-size: 11px!important;
-			}
-			.col-1 a:hover {
-				font-size: 10px!important;
-			}
-			.col-1 p {
-				font-size: 10px!important;
-			}
-
-
-
-			.col-2 .head, .col-2 .li-2 h2 {
-				font-size: 17px!important;
-			}
-			.col-2 .para {
-				font-size: 11px!important;
-			}
-			.col-2 ul p, .col-2 ul h5 {
-				font-size: 10px!important;
-			}
-			.col-1 ul h5 {
-				margin: 5px 0 17px!important;
-			}
-			.li-1 {
-				margin-top: 30px!important;
-			}
-		}
-		@media (min-width: 550px) and (max-width: 620px) {
-			#logo {
-				width: 60px!important;
-			}
-			#shoe-img {
-				width: 200px!important;
-			}
-
-
-
-			.col-2 .head, .col-2 .li-2 h2 {
-				font-size: 20px;
-			}
-			.col-2 .para {
-				font-size: 12px!important;
-			}
-			.col-2 ul p, .col-2 ul h5 {
-				font-size: 11px!important;
-			}
-		}
-		@media (min-width: 620px) and (max-width: 780px) {
-			#logo {
-				width: 60px!important;
-			}
-			#shoe-img {
-				width: 220px!important;
-			}
-
-
-
-			.col-2 .head, .col-2 .li-2 h2 {
-				font-size: 20px;
-			}
-		}
-		@media (max-width: 780px) {
-			#main {
+			#body {
 				width: 90%!important;
+				padding-top: 20px!important;
+				padding-bottom: 20px!important;
+				padding-left: 5px!important;
+				padding-right: 5px!important;
 			}
-			.col-1, .col-2 {
-				padding: 20px!important;
-			}
-		}
-		@media (min-width: 780px) and (max-width: 880px) {
-			#logo {
-				width: 60px!important;
-			}
-			#shoe-img {
-				width: 220px!important;
+			#main {
+				width: 95%!important;
 			}
 
-
-
-			.col-2 .head, .col-2 .li-2 h2 {
-				font-size: 20px;
+			#head img {
+				width: 30px!important;
 			}
-		}
-		@media (max-width: 880px) {
-			.col-1 {
-				width: 0%;
+			#head h1 {
+				font-size: 14px!important;
+				margin-top: 15px!important;
 			}
 
 
 
-			#logo {
+			#table-1-th th {
+				font-size: 11px!important;
+			}
+
+			#table-1 {
+				font-size: 9px!important;
+			}
+			#table-1 td img {
+				width: 15px!important;
+			}
+
+			#total {
+				font-size: 13px!important;
+				margin-bottom: 30px!important;
+			}
+
+
+
+			#table-2 {
+				font-size: 8px!important;
+				margin-bottom: 0!important;
+			}
+
+
+
+			#btn {
+				width: 70%!important;
+				min-width: 100px!important;
 				margin-top: 20px!important;
 			}
-			#shoe-img {
-				margin-top: 30px!important;
+			#btn p {
+				font-size: 12px!important;
+				padding-top: 10px!important;
+				padding-bottom: 10px!important;
+				padding-left: 0!important;
+				padding-right: 0!important;
 			}
 
 
 
-			.col-2 {
-				width: 50%;
+			#track-id {
+				font-size: 10px!important;
+			}
+
+
+
+			#footer {
+				font-size: 8px!important;
+				margin-top: 30px!important;
+			}
+			#footer a {
+				font-size: 10px!important;
+			}
+		}
+		@media (min-width: 480px) and (max-width: 650px) {
+			#head h1 {
+				font-size: 20px!important;
+			}
+
+			#body {
+				padding-top: 40px!important;
+				padding-bottom: 40px!important;
+				padding-left: 20px!important;
+				padding-right: 20px!important;
+				width: 80%;
+			}
+
+			#table-1-th th {
+				font-size: 12px!important;
+			}
+
+			#table-1 {
+				font-size: 11px!important;
+			}
+
+
+			#total {
+				font-size: 18px!important;
+			}
+			#table-2 {
+				font-size: 15px!important;
+			}
+		}
+		@media (max-width: 650px) {
+			#bg {
+				background-size: 100%!important;
+			}
+			
+			#head-con {
+				width: 100%!important;
+			}
+			#head h1 {
+				margin-bottom: 30px!important;
+			}
+		}
+		@media (min-width: 750px) and (max-width: 810px) {
+			#bg {
+				background-position: right!important;
+			}
+
+			#table-1-th th {
+				font-size: 12px!important;
+			}
+
+			#table-1 {
+				font-size: 11px!important;
+			}
+		}
+		@media (min-width: 810px) and (max-width: 868px) {
+			#table-1-th th {
+				font-size: 12px!important;
+			}
+
+			#table-1 {
+				font-size: 11px!important;
 			}
 		}
 	</style> 
  </head> 
- <body style="margin: 0; padding: 0; height: 100%;"> 
-  <style type="text/css">html, body {
-			height: 100%;
-		}
-		
-		* {
+ <body style="margin: 0; padding: 0;"> 
+  <style type="text/css">* {
 			margin: 0;
 			padding: 0;
 		}
-
-		.col-1 a:hover {
-			color: #313fa8!important;
-			background-color: #ececec!important;
-			font-weight: bold!important;
-			font-size: 11px!important;
-			box-shadow: none!important;
+		#btn:hover {
+			background-color: #0174C0!important;
+			color: #fff!important;
 		}
 
 
 
-		.col-2 ul li {
-			margin: 0;
+		#footer a:hover {
+			color: #000!important;
 		}
-
 
 
 
 
 		@media (max-width: 480px) {
-			.col-1, .col-2 {
-				display: block;
-				width: auto!important;
-			}
-
-
-
-			.col-1 {
-				border-radius: 20px 20px 0 0!important;
-			}
-			#shoe-img {
-				width: 220px!important;
-			}
-
-
-
-			.col-2 {
-				border-radius: 0 0 20px 20px!important;
-				text-align: center;
-			}
-		}
-		@media (min-width: 480px) and (max-width: 550px) {
-			#shoe-img {
-				width: 180px!important;
-			}
-		}
-		@media (max-width: 550px) {
-			#logo {
-				width: 50px!important;
-			}
-			.col-1 h3 {
-				font-size: 15px!important;
-			}
-			.col-1 a {
-				width: 110px!important;
-				padding: 9px 0!important;
-				font-size: 11px!important;
-			}
-			.col-1 a:hover {
-				font-size: 10px!important;
-			}
-			.col-1 p {
-				font-size: 10px!important;
-			}
-
-
-
-			.col-2 .head, .col-2 .li-2 h2 {
-				font-size: 17px!important;
-			}
-			.col-2 .para {
-				font-size: 11px!important;
-			}
-			.col-2 ul p, .col-2 ul h5 {
-				font-size: 10px!important;
-			}
-			.col-1 ul h5 {
-				margin: 5px 0 17px!important;
-			}
-			.li-1 {
-				margin-top: 30px!important;
-			}
-		}
-		@media (min-width: 550px) and (max-width: 620px) {
-			#logo {
-				width: 60px!important;
-			}
-			#shoe-img {
-				width: 200px!important;
-			}
-
-
-
-			.col-2 .head, .col-2 .li-2 h2 {
-				font-size: 20px;
-			}
-			.col-2 .para {
-				font-size: 12px!important;
-			}
-			.col-2 ul p, .col-2 ul h5 {
-				font-size: 11px!important;
-			}
-		}
-		@media (min-width: 620px) and (max-width: 780px) {
-			#logo {
-				width: 60px!important;
-			}
-			#shoe-img {
-				width: 220px!important;
-			}
-
-
-
-			.col-2 .head, .col-2 .li-2 h2 {
-				font-size: 20px;
-			}
-		}
-		@media (max-width: 780px) {
-			#main {
+			#body {
 				width: 90%!important;
+				padding-top: 20px!important;
+				padding-bottom: 20px!important;
+				padding-left: 5px!important;
+				padding-right: 5px!important;
 			}
-			.col-1, .col-2 {
-				padding: 20px!important;
-			}
-		}
-		@media (min-width: 780px) and (max-width: 880px) {
-			#logo {
-				width: 60px!important;
-			}
-			#shoe-img {
-				width: 220px!important;
+			#main {
+				width: 95%!important;
 			}
 
-
-
-			.col-2 .head, .col-2 .li-2 h2 {
-				font-size: 20px;
+			#head img {
+				width: 30px!important;
 			}
-		}
-		@media (max-width: 880px) {
-			.col-1 {
-				width: 0%;
+			#head h1 {
+				font-size: 14px!important;
+				margin-top: 15px!important;
 			}
 
 
 
-			#logo {
+			#table-1-th th {
+				font-size: 11px!important;
+			}
+
+			#table-1 {
+				font-size: 9px!important;
+			}
+			#table-1 td img {
+				width: 15px!important;
+			}
+
+			#total {
+				font-size: 13px!important;
+				margin-bottom: 30px!important;
+			}
+
+
+
+			#table-2 {
+				font-size: 8px!important;
+				margin-bottom: 0!important;
+			}
+
+
+
+			#btn {
+				width: 70%!important;
+				min-width: 100px!important;
 				margin-top: 20px!important;
 			}
-			#shoe-img {
-				margin-top: 30px!important;
+			#btn p {
+				font-size: 12px!important;
+				padding-top: 10px!important;
+				padding-bottom: 10px!important;
+				padding-left: 0!important;
+				padding-right: 0!important;
 			}
 
 
 
-			.col-2 {
-				width: 50%;
+			#track-id {
+				font-size: 10px!important;
+			}
+
+
+
+			#footer {
+				font-size: 8px!important;
+				margin-top: 30px!important;
+			}
+			#footer a {
+				font-size: 10px!important;
+			}
+		}
+		@media (min-width: 480px) and (max-width: 650px) {
+			#head h1 {
+				font-size: 20px!important;
+			}
+
+			#body {
+				padding-top: 40px!important;
+				padding-bottom: 40px!important;
+				padding-left: 20px!important;
+				padding-right: 20px!important;
+				width: 80%;
+			}
+
+			#table-1-th th {
+				font-size: 12px!important;
+			}
+
+			#table-1 {
+				font-size: 11px!important;
+			}
+
+
+			#total {
+				font-size: 18px!important;
+			}
+			#table-2 {
+				font-size: 15px!important;
+			}
+		}
+		@media (max-width: 650px) {
+			#bg {
+				background-size: 100%!important;
+			}
+			
+			#head-con {
+				width: 100%!important;
+			}
+			#head h1 {
+				margin-bottom: 30px!important;
+			}
+		}
+		@media (min-width: 750px) and (max-width: 810px) {
+			#bg {
+				background-position: right!important;
+			}
+
+			#table-1-th th {
+				font-size: 12px!important;
+			}
+
+			#table-1 {
+				font-size: 11px!important;
+			}
+		}
+		@media (min-width: 810px) and (max-width: 868px) {
+			#table-1-th th {
+				font-size: 12px!important;
+			}
+
+			#table-1 {
+				font-size: 11px!important;
 			}
 		}
 </style> 
-  <table style="background-color: #FFFFFF; width: 100%; font-family: Arial, Helvetica, sans-serif; height: 100%;"> 
+  <table id="bg" style="width: 100%; border-spacing: 0; background-color: #f9f9f9; padding-top: 70px; padding-left: 0; padding-right: 0; padding-bottom: 140px;"> 
    <tbody> 
     <tr> 
      <td> 
-      <table id="main" style="width: 80%; max-width: 670px; margin: 100px auto; border-radius: 20px; box-shadow: 5px 5px 30px rgba(0,0,0,0.4); border-spacing: 0;"> 
+      <table id="body" style="border-spacing: 0; width: 95%; max-width: 500px; margin-top: 0; margin-bottom: 0; margin-left: auto; margin-right: auto; background-color: rgba(255,255,255,1); border-radius: 20px; box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1); border-top-width: 2px; border-left-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-color: rgba(153,153,153,0.3); border-style: solid; padding: 30px 5px; font-family: Arial, Helvetica, sans-serif;"> 
        <tbody> 
         <tr> 
-         <td style="background-color: #FFFFFF; padding: 40px; vertical-align: top; border-radius: 20px; width: 100%; max-width: 700px"> <h3 style="text-align: center; margin: 10px 0 0; color: #FFFFFF;font-size: 35px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; background: #FF070B; padding: 15px;">Ace Hardware</h3> &nbsp; 
-          <div>
-           <a href="http://www.go-onace.info/8f96zV239x5En86B13K46tG22D10c4s36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQsdRQd6pp10AS5akkwD/husker-testimony"><img alt="" src="http://www.go-onace.info/intends-chassis/d326Ay239V5L7akX12j4624rV10c4_36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQsdRQd5ND1q05J2wD@" style="width: 100%" /></a>
-          </div> <p style="text-align: center; color: #000000; font-size: 24px; margin: 15px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-weight: normal">Get just a few clicks away from The $100 <strong>Ace</strong> Card, by completing our 20-Second Service Survey about your recent experience with us.</p> 
-          <div>
-           &nbsp; 
-           <div style="display: block; text-align: center; padding-right: 10%; padding-left: 15%"> 
-            <p style="background: #D8002F; padding: 25px;font-size: 35px; border-radius: 8px"><a href="http://www.go-onace.info/8f96zV239x5En86B13K46tG22D10c4s36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQsdRQd6pp10AS5akkwD/husker-testimony" style="text-decoration: none; color: white"><strong>Go And Start Now</strong></a></p> 
-           </div> &nbsp; 
-           <h2 class="head" style="color: #000000; margin: 0;">&nbsp;</h2> 
-           <div style="font-size: 22px; line-height: normal; text-align: center; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif';font-weight: normal; margin: 15px">
-            <small>Your input is important to us and will help us improve our stores and the products and services we offer.</small>
-           </div> 
-          </div> 
-          <ul class="li-1" style="margin: 40px 0 0; list-style: none; padding: 0; color: #b1b1b1;"> 
-           <li> <p style="margin: 0; font-size: 12px;">&nbsp;</p> </li> 
-           <li> <h5 style="color: #6b6b6b; margin: 7px 0 20px; font-size: 12px;">&nbsp;</h5> </li> 
-           <li> <p style="margin: 0; font-size: 12px;">&nbsp;</p> </li> 
-           <li> <h5 style="color: #6b6b6b; margin: 7px 0 20px; font-size: 12px;">&nbsp;</h5> </li> 
-           <li> <p style="margin: 0; font-size: 12px;">&nbsp;</p> </li> 
-           <li> <h5 style="color: #6b6b6b; margin: 7px 0 20px; font-size: 12px;">&nbsp;</h5> </li> 
-           <li> <p>&nbsp;</p> </li> 
-           <li>&nbsp;</li> 
-           <li> <p style="margin: 0; font-size: 12px;">&nbsp;</p> </li> 
-           <li> <h5 style="color: #6b6b6b; margin: 7px 0 20px; font-size: 12px;">&nbsp;</h5> </li> 
-           <li> <p style="margin: 0; font-size: 12px;">&nbsp;</p> </li> 
-           <li> <h5 style="color: #6b6b6b; margin: 7px 0 20px; font-size: 12px;">&nbsp;</h5> </li> 
-          </ul> 
-          <ul class="li-2" style="margin: 0; padding: 0; list-style: none;"> 
-           <li> <p style="color: #9f9f9f; margin: 0; font-size: 12px;">&nbsp;</p> <h2 style="color: #4a5ece; margin: 5px 0;">&nbsp;</h2> </li> 
-          </ul> </td> 
+         <td id="main" style="width: 90%; display: block; margin-top: 0; margin-bottom: 0; margin-left: auto; margin-right: auto;"> 
+          <table id="head-con" style="border-spacing: 0; width: 100%; margin-top: 0; margin-bottom: 0; margin-left: auto; margin-right: auto;"> 
+           <tbody> 
+            <tr> 
+             <td id="head"> <h1 style="text-align: center; font-size: 45px; margin-top: 0px; margin-left: 0; margin-right: 0; margin-bottom: 15px;color: #012169; ">Dear Lowe's Customer</h1> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table id="table-1-th" style="width: 100%;"> 
+           <tbody> 
+            <tr> 
+             <td style="font-size: 20px; text-align: center; line-height: normal; padding: 0px"> 
+              <div> 
+               <div> 
+                <div> 
+                 <div> 
+                  <div>
+                   <a href="http://www.do-hrdwr.info/beatnik-retirement/dc84R2395In86k13V46O26nB10c5m36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQZdRQQ7SIAR10A6Kl1wDl"><img alt="" src="http://www.do-hrdwr.info/89f5My2395CB7aO13PZ462P8B10c5m36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQZdRQQ7Fwn1IX05gXwDz/contained-Sabina" width="100%" /></a>
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> <br /> Get just a few clicks away from The $100 <strong>Lowe's</strong> Card, by completing our 20-Second Service Survey about your recent experience with us. 
+              <div style="display: block">
+               &nbsp;
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table id="table-1" style="font-size: 17px; color: #999999; width: 100%; margin-top: 5px; margin-bottom: 5px; margin-left: 0; margin-right: 0; padding-top: 12px; padding-left: 0; padding-right: 0; padding-bottom: 0;  border-bottom-width: 1px; border-left-width: 0; border-right-width: 0; " width="100%"> 
+           <tbody> 
+            <tr> 
+             <td style="padding-bottom: 12px;">&nbsp;</td> 
+             <td style="padding-bottom: 12px;" width="91%"> <p style="font-size: 22px; padding-top: 15px; padding-bottom: 15px; padding-left: 0; padding-right: 0; margin: 0;"><a href="http://www.do-hrdwr.info/beatnik-retirement/dc84R2395In86k13V46O26nB10c5m36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQZdRQQ7SIAR10A6Kl1wDl" id="btn" style="margin-top: 5px; margin-left: auto; margin-right: auto; margin-bottom: 0; width: 60%;  text-decoration: none; display: block; text-align: center; color: #f1f1f1; background-color: #000; border-radius: 50px;"><b>Go And Start Now</b></a></p> </td> 
+             <td style="padding-bottom: 12px; padding-left: 5px; text-align: right;" width="5%">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td colspan="3" style="padding-top: 20px;"> 
+              <div style="text-align: center"> 
+               <p style="font-size: 16px; color: #000000; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; line-height: 25px; ">Your input is important to us and will help us improve our stores and the products and services we offer.</p> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td style="padding-bottom: 12px;">&nbsp;</td> 
+             <td style="padding-bottom: 12px;">&nbsp;</td> 
+             <td style="padding-bottom: 12px; padding-left: 5px; text-align: right;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> <h2 id="total" style="text-align: right; float: right; margin-top: 5px; margin-left: 0; margin-right: 0; margin-bottom: 60px; font-size: 23px;">&nbsp;</h2> 
+          <table id="table-2" style="border-spacing: 0; font-size: 18px; width: 100%; margin-top: 0; margin-left: 0; margin-right: 0; margin-bottom: 20px; text-align: left;"> 
+           <tbody> 
+            <tr> 
+             <th style="padding-bottom: 15px;">&nbsp;</th> 
+             <td style="color: #999999; text-align: right; padding-bottom: 0px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <th style="padding-bottom: 0px;">&nbsp;</th> 
+             <td style="color: #999999; text-align: right; padding-bottom: 0px;">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> <p id="track-id" style="margin-top: 10px; margin-left: 0; margin-right: 0; margin-bottom: 0; text-align: center;  color: #696969;">&nbsp;</p> <p id="footer" style="color: #999999; text-align: center; margin-top: 50px; margin-left: 0; margin-right: 0; margin-bottom: 0;">&nbsp;</p> </td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <p class="unsubscribe"><span style="text-align: center"><span style="text-decoration: none;">To change your subscription elections,</span><a href="http://www.go-onace.info/bemoaning-embroider/cba5G2Q395EI8H611e4623M10c4G36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQsdRQd5Bk1v06F@@ywD" style="text-decoration-line: none;"> <span>Start Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> [randomhtml </span></p> 
-  <br /> 
+  <h5 style="text-align: center; background: #97CAEA; padding: 30px">&nbsp;</h5> 
+  <p class="unsubscribe"><span style="text-decoration: none;">To cancel communication,</span><a href="http://www.do-hrdwr.info/4674v2395V86MJ12uJ4627F10c5n36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQZdRQQ5u1hs06ClwDWT/restrainers-sables" style="text-decoration-line: none;"> <span>Go This Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> [randomhtml</p> 
   <br /> &nbsp;  
- <img src="http://www.go-onace.info/ed54S2395dlF8513fA462j5J10c4D36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQsdRQd5jP10Q6JzwDBp/casserole-parses" alt=""/></body>
+ <img src="http://www.do-hrdwr.info/beatnik-retirement/lc64D2395h8Ft513u4TP629N10c5U36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQZdRQQ6Bj1VM06fywMUD" alt=""/></body>
 </html>
 
-------=_Part_775_351845246.1673547686934--
+------=_Part_691_797074831.1673549552017--
 
