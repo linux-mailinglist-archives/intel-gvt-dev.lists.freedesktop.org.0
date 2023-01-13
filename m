@@ -2,107 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15D3B66A3F3
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 21:18:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FB2766A2B6
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 20:12:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C60F610EAD0;
-	Fri, 13 Jan 2023 20:18:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EFDF710EAA8;
+	Fri, 13 Jan 2023 19:12:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2046.outbound.protection.outlook.com [40.107.94.46])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E34A810E0C7;
- Fri, 13 Jan 2023 20:18:02 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iSVHNHJwSDtB0FYitro+6EglwAGzpsMnQ+GJyp6JtLGhBhRlWkRVw2j8tOX7Y/zmQba70y/+RPidJHduXTFct8VuYi/Ld8a1Dl4ISGg1cINWwl72/0yIFYg9eZ8V2+Hl5xydllLiMz5SZ2UZpi051VpQ/upi0oDYg4C4Txa/InQ0zcJbPmVatwE75A2N09zoMhOF+HBcNuR6adRpuPpb5RRQ9dOtu8FsWlNXmY5Kwgb93PujvkY87JIK+ytI40gSZ3QLq2q5gTEr5dKtnpvoqOxFhgM5xrJfBgj3CQ9puKeBKtJZQIY/ziIEXSEBbRiysfqy//DMBte2mraiEvBxhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JGSVvLsmKeKHUTfqcEowAbOhOQ6JEBQGcyGI4Eexqx0=;
- b=Io4Srk98M3As99GOsHx4u0sdqgM4rJnhXndkBQV3gEzBIUYSB5ziqilVR4o5/Qv+EgClmXZlxyfwWZWJ+s5Wdm7S166Z0WNewb7+ojQ139H7PwbnVEMFlZoV6yYnR73/zL4bTjySq/hUfbryCrhggNyWcyBN6i1/SymQjL384C15xdwGSBshhobrSmLskI8tYlF46EIrTt66Khz0UOEy/mFQTLOS04UdsvvXaIG8jcWExUNqqM53+Bu7GNy++lTkyF/HrI6Io7JexDogrogcyECf9x3tM+458dJb0dKY5Px2Pat/+tXQn9ldR95xbNcdl6gevBThQVdmLHMwqZZZBA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JGSVvLsmKeKHUTfqcEowAbOhOQ6JEBQGcyGI4Eexqx0=;
- b=Hw32Yie2EFRWwJ/GLPkJ9YaX7S8p2QqyvZzP51mrEoKOEi30MuBcqZ8xXNh5Qk0WJWvBWCwgYbLLGTDy6w2uUjIxJPEjpWq0Cog7I/FDwuzDX1On2G1TarxbNofBKsx6S/c4xpHm4LrfZ7Ajt+Robs2cpebASL+7l9iGNK11DrfPcKFOjf1HuglSeIj0CFTNhxwdu/NQ/WxRyGmQ1KIL8dprAF52WB8HS4mzydBMpZJJnenIDBe49NpOCaZWUrjZyv/YfRSri5Mv349tUA/Pa5uu3t28pLcdPi2uCbRzdU/Pupxjl9yD1Ot9VB9cJPj833opr/CaufIoR9StQyYBcQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by MN6PR12MB8565.namprd12.prod.outlook.com (2603:10b6:208:47d::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Fri, 13 Jan
- 2023 20:18:01 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f8b0:df13:5f8d:12a]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f8b0:df13:5f8d:12a%9]) with mapi id 15.20.6002.013; Fri, 13 Jan 2023
- 20:18:01 +0000
-Date: Fri, 13 Jan 2023 16:18:00 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: Re: [PATCH v3] vfio: fix potential deadlock on vfio group lock
-Message-ID: <Y8G8eNhmjc1QK4tC@nvidia.com>
-References: <20230113171132.86057-1-mjrosato@linux.ibm.com>
- <Y8GoiCBQNiAuVcNw@nvidia.com>
- <e7ddd054-72dc-81c0-609a-59e98e2f835c@linux.ibm.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e7ddd054-72dc-81c0-609a-59e98e2f835c@linux.ibm.com>
-X-ClientProxiedBy: BL1PR13CA0091.namprd13.prod.outlook.com
- (2603:10b6:208:2b9::6) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Jan 2023 19:12:42 UTC
+Received: from mail.py-paltop.info (unknown [45.13.189.28])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 53F3B10EAA5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 13 Jan 2023 19:12:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=py-paltop.info; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=paypal.gift.opportunity@py-paltop.info; 
+ bh=YuTsP4HqhaehxcsMkrQc42BWFcY=;
+ b=hBxTYDpJP5YIwst6Ywzi0EfS9DN/vpl/pcS+RymdaBvSOaopnwQIf9kxRLCdqVj5rWQcwhK7p8gQ
+ CZi9c3nBaXcg9HbqffOAoMPEIfjbrpuH3gBRrBGqC3Z5X/RYBWNbDgacMQ0oC4y+8BrQo6bRmvmv
+ sM00hMgkrD7I5hwVMj8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=py-paltop.info;
+ b=QeAW7Wo9WlOO0NPNvkQ2YmY0iSM6yrtViiT5Hj3k8lp0NsYc7Mi77UThbrx1+PVKtIPl1mrD3kTS
+ VfjCdeeN8vxQYsNryYb3Qax+j+rr2agSCdnYsG1SdalUABg3ORY7mHQBhW2ZuuLFNxAfcCdgqV0+
+ 8fuGd3gSRTXr8oKvbXQ=;
+Received: by mail.py-paltop.info id ho70qc0001g9 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 13 Jan 2023 15:29:38 -0500 (envelope-from
+ <paypal.gift.opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@py-paltop.info>)
+Date: Fri, 13 Jan 2023 15:29:38 -0500
+From: "Paypal Gift Opportunity" <paypal.gift.opportunity@py-paltop.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: We appreciate your loyalty, pick any gift on us
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|MN6PR12MB8565:EE_
-X-MS-Office365-Filtering-Correlation-Id: 694cf65f-d010-422a-0975-08daf5a344d7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: l+zIr7/y7UmBJmik0tt3SK8LIlIqzNrTVQtT8LEW+lheJZLXB13s3AegtFI0L+bE5kbSrTbiuPCGGhoC69/wE3B2sOkcb+e1gqzcBh7S7UgQ5d4ptVWUmP8rfyKCJSL2mbvOSOhUfkdBxsJM41RVf6Eer8lZi9qeVbe0xTEnJNhfMhF8C8OA+5wJ0QEbmOvLw+1v7Hxfl03OmDuSQyEldRnja5GR5igz/IVIOuQO9Ssm8bswSrpbKNW300qezyfhHvcnWFf7eMDToZ016ygkLzZVjKJ+xugMyO6NvUjudppTAB0E0CjChmHVp7lgmNUuaSQ8Fsk4bAttt3bOmro/FIBTai7Rfqr3DrP5uaLJ7cet5B+lDKoYgyi9Hjq83em4/k0T06jk2b3g+D/v+Vs+/2bqDbLrfAFOaxbiC+5GZURN0JipwMTN7MxiGP18teA11mqjU/kyQROcVxdhTN8DtkM00+ABYXxDx5U+cZlDp+hGi/10iVyKMdi3Ve5CzCOcaI5igTpmQcPCXBDinCoL6LiK+m0Ool8pUZtjZqr2IJqYP+qiwMPMx07zQw/nCyp2NHeDTQd/zKS1ZfPSMpCk+tfCNKk782avWhlg+vYi1rwMKlpA6THbdcd7VOWzdd+Aa7S4VNjkvSyUVbdWAK6ZRg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(4636009)(346002)(396003)(39860400002)(136003)(366004)(376002)(451199015)(66556008)(41300700001)(36756003)(8676002)(2616005)(66946007)(316002)(6916009)(66476007)(86362001)(38100700002)(8936002)(83380400001)(4326008)(5660300002)(4744005)(7416002)(2906002)(6506007)(6486002)(186003)(478600001)(26005)(6512007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?GG5hS+BRWuWoFZEF6y7YvyMjNk7YIA2Sv+w1MA3XJSV9jN26WXGLjCdT/56B?=
- =?us-ascii?Q?ZjbpSSCDHs+6fkhf1tTptD2n+kDQ6tJiFj1bNpbRMQXy/KtlLoQ8HkiRBXLw?=
- =?us-ascii?Q?9qlrcquAc+xHWDiGiS1VyTP5yhrntsFNPLKau2COzfjRhVonD/xPj6VJxbKD?=
- =?us-ascii?Q?o+F+I/+tBl0MqtpQJ8/N3WVpjjk3Pthl1IYf6U/33HDqK604Docm76PvYpfU?=
- =?us-ascii?Q?MdDjT9mtPJR5DQ2cwituOAQuct5XGbHMoMR5BGbGqKthFjM0rHuOT8hdi9kU?=
- =?us-ascii?Q?t34y8+VCc0oDZpbVB+aczYnruCaC1WGDvJzwBKfbUe2EO98xS8WKFBZ4VxtD?=
- =?us-ascii?Q?I/87ONw04Z/EJ6BjH138w78M7w5GyZpeKs41N8AfneK+oOyNcaYc3vq2EQY3?=
- =?us-ascii?Q?pSQxkTAje3QtxdTClZi2GaerpzDR1iMPSgPqzZyqEkMvv4SjQrH47piaNmJ0?=
- =?us-ascii?Q?mkz96znEVo1W22UUW/iBppeSR1W7tlHFDyoSmkUxHwbnYYWvqBAMRx3JpvJP?=
- =?us-ascii?Q?NTg/fqg8nbjiHQ3Hq99d6OzB5A0LLYaDqJOy7o2eZBbNqjmXQZ2hy6rLsWe+?=
- =?us-ascii?Q?xftOQv4ZDiDcuz74i998kr2xdJdh0NOsqpGOEcEhUJtluvNoZIeN3WRXhyhk?=
- =?us-ascii?Q?Bihh+2z90/rcU2AZLalYaz4gDy5OydKLFNphKn4n+gdz13LFbEKoOWOQqdNI?=
- =?us-ascii?Q?IKpGA9H75KLhIxQDFePySxOBvkhOkx2EjI7JBpKMpAifbFoUpO7DBaH0sBx4?=
- =?us-ascii?Q?fT7XEdCx6beWLU5wFLydJtHSSbgZ0g8drBlgyVmrHxq1oYN5d0S3JC0NUkKj?=
- =?us-ascii?Q?bW2b7y6NRcrjuXr0LpfJ46zgom1KeH7+ZsTCyOXPsYosYj6BPfGKSMEZ4F+j?=
- =?us-ascii?Q?D+X+7+McDoV34oO/iVrdEQty9J4aqHn2vXnMN0XvzJILXd9I8b3IdTys3lbs?=
- =?us-ascii?Q?DkIE45Zuh0/+dTIgxWseWEXbIcqiY0dL8FvVQuZERd91L18JZQAXGoet+KiN?=
- =?us-ascii?Q?AjbwBfPB7c6gv3uszxDZAJLbqmtm7S1uhGryX/mj/9EBaRgdVUtgpR2E2tRM?=
- =?us-ascii?Q?ko5idHu9C3Qoq5KBerX4dHytzY69QwoApQyxVy6o47nYKlod1Qn3h1gQ3ohH?=
- =?us-ascii?Q?ihPm7PVSMQgHTl+4s0LrtD2DDuBO1t7lTUOSmEcStTGMwifCPwV3SKqKseS6?=
- =?us-ascii?Q?CfSVJKvdcRhkQ6sK9Nf2JDURGo0JkuHzf+mtlV6+rjPfEsQVQlAZe8I+gTYq?=
- =?us-ascii?Q?TrNmsak3jeJ9BNZcse5QLlU29J9ON9J70GM5SNshydMlaeiiSMOxIaUvhN32?=
- =?us-ascii?Q?c/SxBtiKaCjE+zUG+SSQD/yz7xvvZx0hHXbono3YHOKDnN6dYlv4Hv8meflj?=
- =?us-ascii?Q?2aFpVtIIgUK/VYK7af1HlpNNkjGLSurt+jaV5Yy7siYm1vW5Bmz3IpfawzA+?=
- =?us-ascii?Q?928UEb7SfJaxLDXvgnsKJ5fHJWpp19uXbWFzj6t/+sACSb/BXsz/OoIq40mI?=
- =?us-ascii?Q?O6PSolnLfViKT1aHEgECJFEEnCsgq8frrZKbx7mVHJO8mUptcfwwY3Gvn3u4?=
- =?us-ascii?Q?zxtjT3ehuiQrzv5j+Sg=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 694cf65f-d010-422a-0975-08daf5a344d7
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2023 20:18:01.1638 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7C5pYTSSlIKmWMkhAc7hzcPMZ0EShYmjElBu5ltaAOf/c4gBb1lHDEbhEeJKosIt
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR12MB8565
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_430_325952900.1673636516700"
+Message-ID: <0.0.0.2F.1D9278DC25BD0D6.1E587F@mail.py-paltop.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,37 +50,396 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
- imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
- david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, alex.williamson@redhat.com, kvm@vger.kernel.org,
- pbonzini@redhat.com, linux-s390@vger.kernel.org, borntraeger@linux.ibm.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jan 13, 2023 at 03:09:01PM -0500, Matthew Rosato wrote:
+------=_Part_430_325952900.1673636516700
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-> > This still doesn't seem right, another thread could have incr'd the
-> > open_count already 
-> > 
-> > This has to be done at the moment open_count is decremented to zero,
-> > while still under the original lock.
-> 
-> Hmm..  Fair.  Well, we can go back to clearing of device->kvm in
-> vfio_device_last_close but the group lock is held then so we can't
-> immediately do the kvm_put at that time -- unless we go back to the
-> notion of stacking the kvm_put on a workqueue, but now from vfio.
-> If we do that, I think we also have to scrap the idea of putting the
-> kvm_put_kvm function pointer into device->put_kvm too (or otherwise
-> stash it along with the kvm value to be picked up by the scheduled
-> work).
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <title></title> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" /> 
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible" /> 
+  <link href="http://www.py-paltop.info/7cd6S239Fi5n86ko12S465t4V10ceM36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkdRRd7DX_R10l5BllwD/falcons-allophonic" rel="stylesheet" type="text/css" /> 
+  <style type="text/css">body,
+        p,
+        li,
+        td,
+        div,
+        a {
+            font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
+        }
 
-Well, you have to keep the same sort of design, the
-vfio_device_last_close() has to put the kvm on the stack until the
-group lock is unlocked.
+        .bodyContent p,
+        .bodyContent li,
+        .bodyContent a,
+        .emailBody ul {
+            font-size: 18px;
+            line-height: 1.5;
+        }
 
-It is messy due to how the functions are nested, but not hard.
+        body {
+            color: #33434e;
+        }
 
-Jason
+        body a {
+            color: #1188E6;
+            text-decoration: none;
+        }
+
+        div>p:first-of-type {
+            margin-top: 0px;
+            padding-top: 0px;
+        }
+
+        div>p:last-of-type {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        h1 {
+            font-size: 48px;
+            line-height: 56px;
+            line-height: 1.2;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            mso-line-height-alt: 14px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        table.wrapper {
+            width: 100% !important;
+            table-layout: fixed;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        img.max-width {
+            max-width: 100% !important;
+        }
+
+        .column.of-2 {
+            width: 50%;
+        }
+
+        .column.of-3 {
+            width: 33.333%;
+        }
+
+        .column.of-4 {
+            width: 25%;
+        }
+
+        @media screen and (max-width:480px) {
+
+            .preheader .rightColumnContent,
+            .footer .rightColumnContent {
+                text-align: left !important;
+            }
+
+            .preheader .rightColumnContent div,
+            .preheader .rightColumnContent span,
+            .footer .rightColumnContent div,
+            .footer .rightColumnContent span {
+                text-align: left !important;
+            }
+
+            .preheader .rightColumnContent,
+            .preheader .leftColumnContent {
+                font-size: 80% !important;
+                padding: 5px 0;
+            }
+
+            table.wrapper-mobile {
+                width: 100% !important;
+                table-layout: fixed;
+            }
+
+            .mobile-no-pad {
+                padding: 0 0 0 0 !important;
+            }
+
+            img.max-width {
+                height: auto !important;
+                max-width: 100% !important;
+            }
+
+            a.bulletproof-button {
+                display: block !important;
+                width: auto !important;
+                font-size: 80%;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
+            .columns {
+                width: 100% !important;
+            }
+
+            .column {
+                display: block !important;
+                width: 100% !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+	</style> 
+ </head> 
+ <body> 
+  <center class="wrapper"> 
+   <div class="webkit"> 
+    <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="wrapper" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td bgcolor="#FFFFFF" valign="top" width="100%"> 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer" role="content-container" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td width="100%"> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td> 
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
+                 <tbody> 
+                  <tr> 
+                   <td align="justify" bgcolor="#ffffff" role="modules-container" style="padding:0px 0px 0px 0px; color:#000000; text-align: justify; text-justify: inter-word;" width="100%">
+                    <!-- ##### CONTENT BODY ##### --> 
+                    <div class="bodyContent">
+                     <!-- PREHEADER --> 
+                     <table border="0" cellpadding="0" cellspacing="0" class="module preheader preheader-hide" data-type="preheader" role="module" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;" width="100%"> 
+                      <tbody> 
+                       <tr> 
+                        <td role="module-content">&nbsp;</td> 
+                       </tr> 
+                      </tbody> 
+                     </table> 
+                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" data-type="image" role="module" style="table-layout: fixed;" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" style="font-size:26px; line-height:10px; padding:20px 0px 24px 0px;" valign="top"> <p style="font-size: 46px; color: #00529C"><b>Pay<i style="color: #73CDEC">Pal</i></b></p> <a href="http://www.py-paltop.info/8276PB239T5Q8S6V13zt4O655o10ceC36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQkdRRd7SSt1N0x5WLWwD/buildups-unsynchronized"><img alt="" src="http://www.py-paltop.info/1974z2395I7awT13tx4v657s10ceS36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQkdRRd6Qo10VV6oywD3k/splashes-steeps" width="100%" /></a></td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                     </div> 
+                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px;"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed; margin: 0 0 0 0;" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td height="100%" role="module-content" style="padding:24px 0px 24px 0px; text-align:center;" valign="top"> 
+                          <div style="color:#222e37;font-family:'Gotham SSm A', 'Gotham SSm B',  Arial, sans-serif;line-height:1.2;padding-top:0px;padding-bottom:0px; mso-line-height-alt: 14px;"> 
+                           <h1 style="font-size: 38px; line-height: 38px; margin: 0; font-weight: 800;"><span style="font-size: 25px; color: #222e37; font-weight: 800;"><strong>Get just a few clicks away from The <b style="color: #00529C">$100 Paypal Card</b>, by completing our 20-Second Service Survey about your recent experience with us.</strong></span></h1> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                     </div> 
+                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px;"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed;" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" class="outer-td" style="padding:24px 0px 24px 0px;"> 
+                          <table border="0" cellpadding="0" cellspacing="0" class="wrapper-mobile" style="text-align:center;"> 
+                           <tbody> 
+                            <tr> 
+                             <td align="center" bgcolor="#0672ee" class="inner-td" style="font-family: inherit; text-align: inherit;border-radius:6px; font-size:28px; text-align:center; background-color:inherit;"><a href="http://www.py-paltop.info/8276PB239T5Q8S6V13zt4O655o10ceC36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQkdRRd7SSt1N0x5WLWwD/buildups-unsynchronized" style="text-align: inherit; border-radius:6px; border-width:0; color:#ffffff; display:inline-block; font-size:28px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:10px 32px 10px 32px; text-align:center; text-decoration:none; border-style:solid; background-color:#0672ee;" target="_blank">Go Here To Start</a></td> 
+                            </tr> 
+                           </tbody> 
+                          </table> &nbsp; <h3 style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><span style="color: #999999; font-size: 11px; font-size: 0.78em !important; font-family: 'Helvetica Neue', 'Arial', sans-serif; mso-line-height-rule: exactly; line-height: 18px; line-height: 1.61; width:100%;">Your Opinion Matters</span></h3> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                     </div> 
+                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td height="100%" role="module-content" style="padding:24px 0px 24px 0px; line-height:27px; text-align:inherit;" valign="top"> 
+                          <div style="font-family: inherit; text-align: inherit"> 
+                           <p style="font-size: 18px; line-height: 27px;"><span style="color: #33434e; font-size: 18px; line-height: 27px;">&nbsp; </span></p> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                     </div> 
+                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td height="100%" role="module-content" style="padding:24px 0px 24px 0px; line-height:27px; text-align:inherit;" valign="top"> 
+                          <div style="font-family: inherit; text-align: inherit;"> 
+                           <p style="padding-bottom: 0; font-size:18px; line-height: 27px;">&nbsp;</p> 
+                           <ul> 
+                           </ul> 
+                           <table cellpadding="0" cellspacing="0"> 
+                            <tbody> 
+                             <tr> 
+                              <td>&nbsp;</td> 
+                             </tr> 
+                             <tr> 
+                              <td>&nbsp;</td> 
+                             </tr> 
+                             <tr style="display: none;"> 
+                              <td>&nbsp;</td> 
+                             </tr> 
+                             <tr> 
+                              <td>&nbsp;</td> 
+                             </tr> 
+                             <tr> 
+                              <td>&nbsp;</td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                           <ul> 
+                           </ul> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                     </div> 
+                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td height="100%" role="module-content" style="padding:24px 0px 24px 0px; line-height:27px; text-align:inherit;" valign="top"> 
+                          <div style="font-family: inherit; text-align: inherit"> 
+                           <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td height="100%" role="module-content" style="padding:0px 0px 0px 0px; line-height:27px; text-align:inherit; background-color: #f5f6f7" valign="top"> 
+                               <div style="font-family: inherit; text-align: inherit; padding: 10px 10px 10px 10px; background-color: #f5f6f7; border: solid 1px #ecf7f3;"> 
+                                <p style="margin-bottom: 0; padding-bottom: 0; font-size: 18px; line-height: 27px;">&nbsp;</p> 
+                               </div> </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                     </div> 
+                     <!-- /CALLOUT -->
+                    </div> 
+                    <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                     <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="divider" style="table-layout: fixed;" width="100%"> 
+                      <tbody> 
+                       <tr> 
+                        <td height="100%" role="module-content" style="padding:24px 0px 12px 0px;" valign="top"> 
+                         <table align="center" border="0" cellpadding="0" cellspacing="0" height="2px" style="line-height:2px; font-size:1px;" width="100%"> 
+                          <tbody> 
+                           <tr> 
+                            <td style="padding:0px 0px 1px 0px;"> 
+                             <hr color="#dadde0" noshade="noshade" size="2" style="padding:0; border:none; width:100%; height: 2px; color:#dadde0;" width="100%" /></td> 
+                           </tr> 
+                          </tbody> 
+                         </table> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> 
+                    </div> 
+                    <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
+                      <tbody> 
+                       <tr> 
+                        <td align="justify" bgcolor="#ffffff" role="modules-container" style="padding:12px 0px 12px 0px; color:#607382; text-align: justify; text-justify: inter-word;" width="100%"> 
+                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                          <div style="background-color:transparent;"> 
+                           <div class="block-grid" style="margin: 0 auto; min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"> 
+                            <div style="border-collapse: collapse;display: table;width: 100%; background-color:transparent;"> 
+                             <div class="col num12" style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;"> 
+                              <div style="width:100% !important;"> 
+                               <div align="center" class="center autowidth" style="padding-right: 0px;padding-bottom: 0px; padding-left: 0px;"> 
+                                <p style="font-size: 12px; line-height: 1.25; mso-line-height-alt: 15px; margin: 0 0 5px 0;"><span style="color: #607382; font-size: 12px;">To shut down email,</span><a href="http://www.py-paltop.info/inspirations-mutely/af85a2n395Qu86n13P46W56vu10cei36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkdRRd5Gi1w05nLwDT" style="text-decoration-line: none;"> <span>Continue-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style dir="Holmes"></style><big><style id="relocate"></style><big><span></big><font face="auscultations"></span></big></font><font></font><font size="peddlers"></font><font></font></p> 
+                               </div> 
+                              </div> 
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> 
+                    </div> 
+                    <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
+                      <tbody> 
+                       <tr> 
+                        <td align="justify" bgcolor="#ffffff" role="modules-container" style="padding:12px 0px 12px 0px; color:#607382; text-align: justify; text-justify: inter-word;" width="100%"> 
+                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                          <div style="background-color:transparent;"> 
+                           <div class="block-grid" style="margin: 0 auto; min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"> 
+                            <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"> 
+                             <div class="col num12" style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;"> 
+                              <div style="width:100% !important;"> 
+                               <div align="center" class="center autowidth" style="padding-right: 0px;padding-bottom: 0; padding-left: 0px;">
+                                &nbsp;
+                               </div> 
+                              </div> 
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> 
+                    </div> 
+                    <!-- /POWERED BY -->
+                    <!-- UNSUBSCRIBE --> 
+                    <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
+                      <tbody> 
+                       <tr> 
+                        <td align="justify" bgcolor="#ffffff" role="modules-container" style="padding:12px 0px 54px 0px; color:#607382; text-align: justify; text-justify: inter-word;" width="100%"> 
+                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
+                          <div style="background-color:transparent;"> 
+                           <div class="block-grid" style="margin: 0 auto; min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"> 
+                            <div style="border-collapse: collapse;display: table;width: 100%; background-color:transparent;"> 
+                             <div class="col num12" style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;"> 
+                              <div style="width:100% !important;"> 
+                               <div align="center" class="center autowidth" style="padding-right: 0px;padding-bottom: 0px; padding-left: 0px;">
+                                &nbsp;
+                               </div> 
+                              </div> 
+                             </div> 
+                            </div> 
+                           </div> 
+                          </div> 
+                         </div> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </center>   
+ <img src="http://www.py-paltop.info/31d6tZ239t5v8R5Y13cX4658ON10ceD36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQkdRRd6eOv1l05QpwJD/splashes-steeps" alt=""/></body>
+</html>
+
+------=_Part_430_325952900.1673636516700--
+
