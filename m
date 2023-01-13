@@ -1,44 +1,63 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BAF1066A20D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 19:28:44 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E6EB966A2F9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 20:30:41 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8330F10EA93;
-	Fri, 13 Jan 2023 18:28:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 82A4C10EAB4;
+	Fri, 13 Jan 2023 19:30:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Fri, 13 Jan 2023 18:28:40 UTC
-Received: from mail.slvv-krogr.info (unknown [45.13.189.27])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8C84C10EA92
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 18:28:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=slvv-krogr.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kroger-love@slvv-krogr.info; 
- bh=61VZPE5W+7FkSHe7N5mLo8PIuLY=;
- b=hdnTnbLgf9SozVeZ2dg+jCMDXJm+EChVy994kwZHtgDlVjhCa3sN4R8q53a+MWpj5JR+60OJZUTm
- Y7G9AL0WRn/vz8z108Yp6QfdIzN5o4TOG0R9/l8b2sZj+d8yLfggtFGYke1QJ35iakTMvcTj5U+S
- 4RPUXyy8RAYfnm356WI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=slvv-krogr.info;
- b=rkWDNNPrSELBVNBF9xXyKxAiBZj6OdDNRHpE0i58m2w5gNOmjHSEpwSCKR9PVgPf3FJ02OdU3+rA
- z8Rq3pl1i6Eh+1YsElghK1ABnJqGxa5vGGw4v/iR4CA+svB07B4xlk8lExo6SgT3DLwM35h6A9wQ
- g2yAIfLtgLBiW/D2j7A=;
-Received: by mail.slvv-krogr.info id ho6rla0001gq for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 14:45:38 -0500 (envelope-from
- <kroger-love-intel+2Dgvt+2Ddev=lists.freedesktop.org@slvv-krogr.info>)
-Date: Fri, 13 Jan 2023 14:45:38 -0500
-From: "Kroger Love" <kroger-love@slvv-krogr.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your gift on us for the holidays,
- a token of appreciation during holidays
+Received: from mail-io1-xd35.google.com (mail-io1-xd35.google.com
+ [IPv6:2607:f8b0:4864:20::d35])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DC4DD10EAB0;
+ Fri, 13 Jan 2023 19:30:36 +0000 (UTC)
+Received: by mail-io1-xd35.google.com with SMTP id q190so10873988iod.10;
+ Fri, 13 Jan 2023 11:30:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=XnRopoNlvG+D9+iG6iHQg7VYyXddiuMiUnVKRk8Wero=;
+ b=FsKBh0Q3tsVo23MPYkHFDzPoXjUHgdkXT2HbSmfopFfzvxa6ltz2dNshkCX97+cU9y
+ RKrsm2QjpmObKwRAX9N5GBxcawNa3zlFk6MTLs9zjwIv9G8UHF6xCzCAGJod7AHyt/jg
+ fztSybcn8xZKzZpi+mIJoap+uRR6e2sAvTtE33CPtjZgySXX9VN5Nt9Gy+Wq5x1BBE1I
+ A0X5K626ijRF6IgPCiUJWT3oWU6IMaSSpfANTfu7GkCfuPREX/zu7jpVYMDI1GI/Yej6
+ 7YX5PdI7M901SEqlk1tr70rIiBRBluOXqUCTnjZRadhpUF/18a6u4eB6uZHzqvUlE0Nz
+ itgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XnRopoNlvG+D9+iG6iHQg7VYyXddiuMiUnVKRk8Wero=;
+ b=1VRRjcZhiYB62hAV/o2umavNrDSLWE3Jz1s3Pb3zTZnU+iipJ2NNhEJc9lRvVoNIPQ
+ iAPo2g8PB6cJjjP89lJYB44zfcVtMkU6Ey0ksWlsblCZkrO802msg8qwBqT8f62CPDkW
+ ULgkKzxaBOpbWDJjG6YzSI/4yWPLrrrlOoLXXkoc+h4aNTbwrixEBH28BG/kYrvXrcBB
+ FRfrjFi8IzdQejSbFwvD6G1Vc+SmtwSqpWOnQHQk6U7Eu+KBlUxcKXFOX+YiRHQsU2rf
+ y+jfXcKrzjCDOU+DW36a1nDu8jd+82/h4ajFKMCQtMws/yy5NfxRRFn8nODxICrpxNlL
+ hpVw==
+X-Gm-Message-State: AFqh2koPsTKsg2ocNDj4pA1C5NkyPFtswMWcwb0Id1Rk8PPGniMZAKpE
+ MtwERZuG3r/QYT/1K2QCT74=
+X-Google-Smtp-Source: AMrXdXsvsEdVppqpUgTBThUpljvrv0u87YuCqPZ9oMX0E0AEKYLxffD0Nagju1YYFIHmIif6je00Hw==
+X-Received: by 2002:a5e:8401:0:b0:704:8128:3aae with SMTP id
+ h1-20020a5e8401000000b0070481283aaemr3973437ioj.13.1673638235955; 
+ Fri, 13 Jan 2023 11:30:35 -0800 (PST)
+Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
+ by smtp.googlemail.com with ESMTPSA id
+ e32-20020a026d60000000b0039e583abceasm6497289jaf.68.2023.01.13.11.30.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Jan 2023 11:30:35 -0800 (PST)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Subject: [PATCH v2 00/20] DRM_USE_DYNAMIC_DEBUG regression
+Date: Fri, 13 Jan 2023 12:29:56 -0700
+Message-Id: <20230113193016.749791-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_430_602414281.1673633873197"
-Message-ID: <0.0.0.2F.1D927879C78BF1A.367EC5@mail.slvv-krogr.info>
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,214 +70,550 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch, jbaron@akamai.com,
+ Jim Cromie <jim.cromie@gmail.com>, robdclark@gmail.com, seanpaul@chromium.org,
+ gregkh@linuxfoundation.org, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_430_602414281.1673633873197
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Hi everyone,
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <meta content="telephone=no" name="format-detection" /> 
-  <title>Subject Line (for proofing, doesn't show in actual email)</title> 
-  <style type="text/css">/* Force Hotmail to display emails at full width */
-ReadMsgBody {
-width: 100%;
-background-color: #eeeeee;
+DRM_USE_DYNAMIC_DEBUG=y has a regression enabling drm.debug in drivers
+
+It is due to a chicken-egg problem loading modules; on `modprobe
+i915`, drm is loaded 1st, and drm/parameters/debug is set.  When
+drm_debug_enabled() tested it at runtime, things just worked.
+
+But with DRM_USE_DYNAMIC_DEBUG=y, the runtime test is replaced with a
+post-insmod enablement of drm_dbg/dyndbg callsites, via dyndbg's
+callback on __drm_debug.  So with drm.ko loaded before the dependent
+modules, their debug callsites arent present to be enabled.
+
+OVERVIEW
+
+As Jani Nikula noted rather more gently, DECLARE_DYNDBG_CLASSMAP is
+error-prone enough to call broken: it relied upon identical classmap
+definitions in all modules using DRM_UT_*.  IOW, it muddled the K&R
+distinction between a (single) definition, and multiple references.
+
+So 4 patches here split it into:
+
+DYNDBG_CLASSMAP_DEFINE	used once per subsystem to define each classmap.
+DYNDBG_CLASSMAP_USE	declare dependence on a DEFINEd classmap.
+
+This makes the weird coordinated-changes-by-identical-classmaps
+"feature" unnecessary.
+
+DYNDBG_CLASSMAP_DEFINE initializes the classmap, stores it into the
+(existing) __dyndbg_classes section, and exports the struct var
+(unlike DECLARE_DYNDBG_CLASSMAP).
+
+DYNDBG_CLASSMAP_USE initializes a class-ref struct, containing the
+user-module-name, and a ref to the exported classmap var.
+
+The distinction allows separate treatment of classmaps and
+classmap-refs, the latter getting additional behavior to propagate
+class'd prdbg settings to modules being loaded.
+
+Consider i915.ko, a DYNDBG_CLASSMAP_USEr: due to dependencies,
+`modprobe drm debug=$val` is done 1st.  For DRM_USE_DYNAMIC_DEBUG=y,
+drm.debug=$val invokes dyndbg's kparam callback, which applies "class
+DRM_UT_*" >controls as given by the bits.  But i915.ko isn't modprobed
+yet, so misses those >controls.  These must be 're-delivered' when
+i915 is modprobed.
+
+Recapitulating ddebug_attach_module_classes(1) for (existing) classes;
+ddebug_attach_client_module_classes(2) does this for (new) class-refs,
+as they are found when modprobing drm-drivers.
+
+2 calls ddebug_apply_parents_params(3) on each referred classmap defn.
+
+3 scans kernel-params owned by the module DEFINEing the classmap,
+either builtin or loadable, calls ddebug_match_apply_kparam(4) on each.
+
+4 finds those kparams wired to dyndbg's param-ops, which are therefore
+castable to struct ddebug_class_param, and have a ref to the classmap
+that they "control".  So 4 finds classmap definitions whose owner
+matches the user-module being loaded, and applies the kparam's state
+(__drm_debug in this case) by calling ddebug_apply_class_bitmap().
+
+test_dynamic_debug is extended to recreate DRM's multi-module
+regression, it builds both test_dynamic_debug.ko and _submod.ko, with
+an ifdef to _DEFINE in the main module, and _USE in the submod.  This
+gives both modules identical set of prdbgs, which is helpful for
+humans comparing results.
+
+STATUS
+
+here it is, "working":
+
+doing class DRM_UT_CORE -p
+[ 9904.961750] dyndbg: read 21 bytes from userspace
+[ 9904.962286] dyndbg: query 0: "class DRM_UT_CORE -p" mod:*
+[ 9904.962848] dyndbg: split into words: "class" "DRM_UT_CORE" "-p"
+[ 9904.963444] dyndbg: op='-' flags=0x0 maskp=0xfffffffe
+[ 9904.963945] dyndbg: parsed: func="" file="" module="" format="" lineno=0-0 class=DRM_UT_CORE
+[ 9904.964781] dyndbg: good-class: drm.DRM_UT_CORE  module:drm nd:302 nc:1 nu:0
+[ 9904.966411] dyndbg: class-ref: drm_kms_helper.DRM_UT_CORE  module:drm_kms_helper nd:95 nc:0 nu:1
+[ 9904.967265] dyndbg: class-ref: drm_display_helper.DRM_UT_CORE  module:drm_display_helper nd:150 nc:0 nu:1
+[ 9904.968349] dyndbg: class-ref: i915.DRM_UT_CORE  module:i915 nd:1659 nc:0 nu:1
+[ 9904.969801] dyndbg: class-ref: amdgpu.DRM_UT_CORE  module:amdgpu nd:4425 nc:0 nu:1
+[ 9904.977079] dyndbg: class-ref: nouveau.DRM_UT_CORE  module:nouveau nd:103 nc:0 nu:1
+[ 9904.977830] dyndbg: processed 1 queries, with 507 matches, 0 errs
+doing class DRM_UT_DRIVER +p
+[ 9906.151761] dyndbg: read 23 bytes from userspace
+[ 9906.152241] dyndbg: query 0: "class DRM_UT_DRIVER +p" mod:*
+[ 9906.152793] dyndbg: split into words: "class" "DRM_UT_DRIVER" "+p"
+[ 9906.153388] dyndbg: op='+' flags=0x1 maskp=0xffffffff
+[ 9906.153896] dyndbg: parsed: func="" file="" module="" format="" lineno=0-0 class=DRM_UT_DRIVER
+[ 9906.154746] dyndbg: good-class: drm.DRM_UT_DRIVER  module:drm nd:302 nc:1 nu:0
+[ 9906.155433] dyndbg: class-ref: drm_kms_helper.DRM_UT_DRIVER  module:drm_kms_helper nd:95 nc:0 nu:1
+[ 9906.156267] dyndbg: class-ref: drm_display_helper.DRM_UT_DRIVER  module:drm_display_helper nd:150 nc:0 nu:1
+[ 9906.157365] dyndbg: class-ref: i915.DRM_UT_DRIVER  module:i915 nd:1659 nc:0 nu:1
+[ 9906.163848] dyndbg: class-ref: amdgpu.DRM_UT_DRIVER  module:amdgpu nd:4425 nc:0 nu:1
+[ 9906.178963] dyndbg: class-ref: nouveau.DRM_UT_DRIVER  module:nouveau nd:103 nc:0 nu:1
+[ 9906.179934] dyndbg: processed 1 queries, with 1286 matches, 0 errs
+
+It is still WIP, but Daniel Vetter inquired, so I figured Id send what I got.
+
+The series ends in an RFC patch; __jump_label_patch can "crash the
+box" when the jump-entry is in the wrong state.  The code makes no
+distinction between a well-formed "toggled" state and "insane".  This
+patch gets me past some mis-initialization problem Im still probing.
+
+Things seem to be mostly working.
+
+Heres the script that Ive been testing with:
+(see submod_test at bottom)
+
+#!/bin/bash
+
+# shell funcs to test module load behavior of dynamic-debug, using
+# test_dynamic_debug module.  Meant to be useful at shell command
+# line, after sourcing this.
+
+PS1=":#> "	# obvious clue we're in the "environment"
+
+# grease for use/play
+alias ddcmd='echo $* > /proc/dynamic_debug/control'
+
+# support modprobe foo dyndbg=$VAR testing
+export THML="class HI +p;class MID +p;class LOW +p;"
+export TLVLS="class L1 +p;class L2 +p;class L3 +p;class L4 -p;"
+
+alias lmt='modprobe test_dynamic_debug dyndbg=+pmf'
+alias rmt='rmmod test_dynamic_debug'
+alias look='grep test_dynamic_debug /proc/dynamic_debug/control'
+
+alias mpd='modprobe $1 dyndbg="$2"'
+alias mpt='modprobe test_dynamic_debug dyndbg="$*"'
+
+alias skt='cd /sys/kernel/tracing'
+alias smtddp='cd /sys/module/test_dynamic_debug/parameters'
+
+alias cget='grep $1 /proc/dynamic_debug/control'
+lookfor () {
+    grep $1 /proc/dynamic_debug/control
 }
 
-/* Force Hotmail to display emails at full width */
-ExternalClass {
-width: 100%;
-background-color: #eeeeee;
+vx() {
+    echo $* > /sys/module/dynamic_debug/parameters/verbose
 }
 
-/* Forces Hotmail to display normal line spacing. */
-ExternalClass,
-ExternalClass p,
-ExternalClass span,
-ExternalClass font,
-ExternalClass td,
-ExternalClass div {
-line-height:100%;
+# amdgpu has ~2200 pr-debugs (before drm-debug-on-dyndbg),
+# use them to prove kernel has both DYNAMIC_DEBUG and a DRM module
+# and modprobe <mod> dyndbg=+p works
+
+load_drm_mod_test() {
+    local mod=${1:-amdgpu}
+    rmmod $mod 2>/dev/null
+    modprobe $mod dyndbg=+pfm
+    let count=$(grep =pmf /proc/dynamic_debug/control | grep $mod | wc -l)
+    rmmod $mod
+
+    if [ $count -gt 100 ] ; then
+	echo $mod has $count pr-dbgs
+	return 0
+    else
+	echo $mod: too few sites: $count, suspect bad config
+	return -1
+    fi
 }
 
-/* Resolves webkit padding issue. */
-table {
-border-spacing:0;
+
+SMTDDP=/sys/module/test_dynamic_debug/parameters
+
+function doit() {
+    cat $SMTDDP/do_prints
+}
+qry_cmd() { # like ddcmd, with feedback
+    echo "QCMD: $* to-control" >&2
+    echo $* > /proc/dynamic_debug/control
 }
 
-/* Resolves the Outlook 2007, 2010, and Gmail td padding issue. */
-table td {
-border-collapse:collapse;
+# exercise class FOO behavior of test_dynamic_debug module
+ttest_module__() {
+    flg=$1
+    dmesg -C
+    modprobe test_dynamic_debug dyndbg=+pfm
+    doit
+
+    for cls in L1 L2 L3; do
+	qry_cmd module test_dynamic_debug class $cls $flg
+	doit
+    done
+    doit
+
+    for cls in LOW MID HI; do
+	qry_cmd module test_dynamic_debug class $cls $flg
+	doit
+    done
+    doit
+
+    for cls in D2_CORE D2_KMS D2_DRIVER; do
+	qry_cmd module test_dynamic_debug class $cls $flg
+	doit
+    done
+    doit
+
+    dmesg | grep class
 }
 
-/* Yahoo auto-sensing link color and border */
-yshortcuts a {
-border-bottom: none !important;
+ttest_module() {
+
+    ttest_module__ +p
+    ttest_module__ -p
+
+    #ttest_module__ +T
+    #ttest_module__ -T
 }
 
-/* Start of template styling */
-img {height: auto;}
-a img {border: none;}
-a {color: #0190de; text-decoration:none; font-weight: bold;}
-a:hover {text-decoration: underline;}
 
-h1 {
-    font-family: 'Helvetica Neue', 'Arial', sans-serif;
-    font-size: 2em;
-    font-weight: bold;
-    color: #595959;
-    margin: 0 0 0 0;
-    line-height: 1.21;
+# use/test bitmaps
+# knob is a sysfs-node
+
+tddm_is_knob_() {
+    knob=$1;
+    if [ -f $SMTDDP/$knob ]; then
+	return 0
+    else
+	echo missing sysfs node: $knob, skipping tests
+	return 1
+    fi
 }
 
-h2 {
-    font-family: 'Helvetica Neue', 'Arial', sans-serif;
-    color: #595959;
-    font-size: 1.5em;
-    font-weight: bold;
-    line-height: 1.33;
-    margin: 0 0 0 0;
+tddm_set_knob_() {
+    knob=$1;
+    val=$2;
+    expect=$3;
+    [[ -z $knob || -z $val ]] && echo "expecting 2+args: knob val [result]" && return
     
+    echo "TDDM: $val >$knob" >&2 && sleep 0.1
+    echo $val > $SMTDDP/$knob
+    echo "? $?"
+
+    val=`cat $SMTDDP/$knob`
+    [[ -z $expect ]] && expect=$val
+
+    if [[ $val == $expect ]]; then
+	echo pass-ish $val
+    else
+	echo fail $val != $expect
+    fi
 }
 
-body-copy{
-    font-size: 1em;
+tddm_knob_clname_() {
+    targ=$1
+    cls=$2
+    res=$3
+    tddm_is_knob_ $targ || continue;
+    tddm_set_knob_ $targ $cls $res
+    cat $SMTDDP/do_prints
 }
 
-btn-primary {
-   
+tddm_knob_classes_() {
+    targ=$1
+    shift
+    cls=$*
+
+    tddm_is_knob_ $targ || return;
+    for bitsym in $cls;
+    do
+	tddm_knob_clname_ $targ $bitsym 
+	cat $SMTDDP/do_prints
+    done
 }
 
-table[class="btn-primary"] {
-    padding: 0;
+# round-trip-test - args: node val want explanation
+rtt_nvwx() {
+    node=$1	# to this
+    val=$2	# write this
+    want=$3	# expect this on readback
+    [ -z $3 ] && echo "want args: node input result" && return
+
+    shift 3;
+    echo "RTT: $val -> $node : $want :: DOING: $*" >&2 && sleep 0.1
+
+    echo $val > $SMTDDP/$node
+    rc=$(cat $SMTDDP/$node)
+    # echo rc $rc
+    # pretty literal test
+    [[ $rc != $want ]] && echo crap [[ $rc != $want ]] && return 1
 }
 
-email-wrapper{
-    width: 100%;
-    max-width: 600px;
+# test-round-trip, using above.
+
+# test disjoint - disjoint interface
+trx_disjoint_names() {
+    nm=$1
+    rtt_nvwx $nm -HI,-MID,-LOW 0x0  all-off
+    rtt_nvwx $nm HI 0x4  hi
+    rtt_nvwx $nm MID 0x6  mid,hi
+    rtt_nvwx $nm LOW 0x7  low,mid,hi
+    rtt_nvwx $nm -HI 0x3  -hi,low,mid
+    rtt_nvwx $nm -MID 0x1  -mid,low
+    rtt_nvwx $nm -LOW 0x0  -low
+
+    # multi-bit update
+    rtt_nvwx $nm +LOW,MID,HI 0x7  3-on
+
+    # same-bit, multi-toggle (for exersize)
+    rtt_nvwx $nm -LOW,+LOW,-LOW,LOW,-LOW,LOW 0x7  on-off-repeat
+}
+trt_disjoint_names() {
+    trx_disjoint_names T_disjoint_names
+}
+trp_disjoint_names() {
+    trx_disjoint_names p_disjoint_names
 }
 
-content-padding{
-    padding: 0;
+# traditional bitmap
+trx_disjoint_bits() {
+    nm=$1
+    echo 0 > $SMTDDP/$nm
+    rtt_nvwx $nm  0x0  0x0	no change
+    rtt_nvwx $nm  0x1  0x1	disjoint_CORE
+    rtt_nvwx $nm  0x2  0x2	disjoint_DRIVER,
+    rtt_nvwx $nm  0x4  0x4	disjoint_KMS,
+    rtt_nvwx $nm  0x10  0x10	disjoint_PRIME,
+    rtt_nvwx $nm  0x20  0x20	disjoint_ATOMIC,
+    rtt_nvwx $nm  0x40  0x40	disjoint_VBL,
+    rtt_nvwx $nm  0x80  0x80	disjoint_STATE,
+    rtt_nvwx $nm  0x100 0x100	disjoint_LEASE,
+
+    rtt_nvwx $nm  0x4f  0x4f	disjoint_VBL and below
+}
+trt_disjoint_bits() {
+    trx_disjoint_bits T_disjoint_bits
+}
+trp_disjoint_bits() {
+    trx_disjoint_bits p_disjoint_bits
 }
 
-/* End of template styling */
+# traditional numeric verbose
+trx_level_num() {
+    nm=$1
+    echo 0 > $SMTDDP/$nm
+    rtt_nvwx $nm 0  0  clear all
+    rtt_nvwx $nm 1  1  level 1
+    rtt_nvwx $nm 2  2  levels 2,1
+    rtt_nvwx $nm 3  3  levels 3,2,1
+    rtt_nvwx $nm 4  4  levels 4-1
+    rtt_nvwx $nm 5  5  levels 5-1
+    rtt_nvwx $nm 6  6  levels 6-1
+    rtt_nvwx $nm 7  7  levels 7-1
+    rtt_nvwx $nm 2  2  levels 2,1
+}
+trt_level_num() {
+    trx_level_num T_level_num
+}
+trp_level_num() {
+    trx_level_num p_level_num
+}
 
-/* Apple Mail doesn't support max-width, so we use media queries to constrain the email width. */
-@media only screen and (min-width: 601px) {
-email-wrapper {
-width: 600px !important;
+#  levels
+trx_level_names() {
+    nm=$1
+    rtt_nvwx $nm -L0 0  clear all
+    rtt_nvwx $nm L0  0  clear all
+    rtt_nvwx $nm L1  1  level 1
+    rtt_nvwx $nm L2  2  levels 2,1
+    rtt_nvwx $nm L3  3  levels 3-1
+    rtt_nvwx $nm L4  4  levels 4-1
+    rtt_nvwx $nm L5  5  levels 5-1
+    rtt_nvwx $nm L7  7  levels 7-1
 }
+trt_level_names() {
+    trx_level_names T_level_names
 }
-  
-/* Media query targeting tablets and phones */
-@media only screen and (max-width: 600px) {
-    .content-padding{
-        padding: 12px 18px 12px 18px !important;
-    }
-    
-    .body-copy{font-size: 1.14em;}
-    h1{font-size: 1.625em;}
-    h2{font-size: 1.5em;}
+trp_level_names() {
+    trx_level_names p_level_names
 }
-	</style> 
- </head> 
- <body leftmargin="0" marginheight="0" marginwidth="0" style="margin:0; padding:0;-webkit-text-size-adjust:none; -ms-text-size-adjust:none;background: #e8e8e8;" topmargin="0"> 
-  <table bgcolor="#e8e8e8" border="0" cellpadding="0" cellspacing="0" height="100%" style="background-color: #e8e8e8; font-size:14px;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td valign="top"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="email-wrapper" style="margin: auto; font-size: 14px;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="padding: 0 6px 0 6px;"> 
-          <table border="0" cellpadding="0" cellspacing="0" height="36" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="left" height="24" style="font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 0.78em; color: #999999;">&nbsp;</td> 
-             <td align="right">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td align="center" bgcolor="#FFFFFF" class="content-padding body-copy" style="font-family: 'Helvetica Neue', 'Arial', sans-serif; mso-line-height-rule: exactly; line-height: 24px; line-height: 1.7143; color: #595959;">&nbsp; <h1 style="font-size: 45px">Kroger Shop</h1> </td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="#0190de" class="content-padding"> 
-          <table bgcolor="#0190de" border="0" cellpadding="" cellspacing="0" height="48" width="100%"> 
-           <tbody> 
-            <tr>
-             <!-- Hoiio Logo --> 
-             <td align="left"><a href="http://www.slvv-krogr.info/guaranteers-garland/abc5R23n95wT86k12h4650QX10cdO36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2dRR96NXP10u5sj@wD" target="_blank"><img alt="hoiio-logo" src="http://www.slvv-krogr.info/truthfully-Keynes/33c5BK2395S7mDa11Q4652i10cdn36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ2dRR96z10zAm6XlwqD0" width="100%" /> </a></td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td align="center" bgcolor="#FFFFFF" class="content-padding body-copy" style="font-family: 'Helvetica Neue', 'Arial', sans-serif; mso-line-height-rule: exactly; line-height: 24px; line-height: 1.7143; color: #595959; padding-left: 25px; padding-right: 25px; font-size: 22px"><br /> Get just a few clicks away from The <b>$100 Kroger Card</b>, by completing our 20-Second Service Survey about your recent experience with us.<br /> <br /> <a href="http://www.slvv-krogr.info/guaranteers-garland/abc5R23n95wT86k12h4650QX10cdO36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2dRR96NXP10u5sj@wD" style=" display: inline-block;
-    background-color: #0190de;
-    border-color: #0081c7;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 3px 3px 3px 3px;
-    padding: 12px 20px 12px 20px;
-    text-decoration: none;
-    color: #FFFFFF;
-    font-size: 24px;
-    font-family: 'Helvetica Neue', 'Arial', sans-serif;" target="_blank">Go Here To Start</a><br /> &nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" bgcolor="#FFFFFF" class="content-padding" style="border-top: 1px solid #e8e8e8;"> <h3 style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><span style="color: #999999; font-size: 11px; font-size: 0.78em !important; font-family: 'Helvetica Neue', 'Arial', sans-serif; mso-line-height-rule: exactly; line-height: 18px; line-height: 1.61; width:100%;">Your Opinion Matters</span></h3> &nbsp; 
-          <table cellpadding="1" cellspacing="1" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> <span style=" line-height: normal">No longer want to receive notifications?,</span><a href="http://www.slvv-krogr.info/7735h2K395I86tA13EC4W651U10cdB36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ2dRR97W1M_OG06IXwPDk/guaranteers-garland" style="text-decoration-line: none;"> <span>Begin_This_Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font lang="Medicaid"></font><font><style></style></font><font color="questionable"></font><span id="monotone"></span><style dir="honeymooning"></style></td> 
-        </tr> 
-        <!-- Footer section : END --> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.slvv-krogr.info/phoneme-cotyledons/60c4n2395B8gp513mi46o53D10cdN36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ2dRR95Mq10F5jTPwD" alt=""/></body>
-</html>
 
-------=_Part_430_602414281.1673633873197--
+# these are more like exersize
+#tddm_syslog_classes_1
+#tddm_syslog_classes_2
+#tddm_syslog_prio
+#tddm_syslog_verbose
+
+
+trt_all() {
+    # 1st, cuz its got base = 0, simplest
+    trt_disjoint_bits
+    trt_disjoint_names
+    trt_level_names
+    trt_level_num
+}
+trp_all() {
+    # 1st, cuz its got base = 0, simplest
+    trp_disjoint_bits
+    trp_disjoint_names
+    trp_level_names
+    trp_level_num
+}
+
+init () {
+    modprobe test_dynamic_debug
+    smtddp
+    echo 0 > p_disjoint_names
+    echo 0 > p_level_names
+    echo 0 > p_level_num
+    echo 0 > p_disjoint_bits
+}
+init_ () {
+    echo 0 > T_disjoint_names
+    echo 0 > T_level_names
+    echo 0 > T_level_num
+    echo 0 > T_disjoint_bits
+}
+
+alias refresh="cd -; . test-funcs.rc; cd -"
+
+
+# need tests for
+# p_disjoint_bits
+# p_disjoint_names
+# p_level_num
+
+submod () {
+    # set dyndbg-params at load
+    echo  mp test_dynamic_debug p_disjoint_bits=${1:-0} p_level_num=${2:-0}
+    modprobe test_dynamic_debug p_disjoint_bits=${1:-0} p_level_num=${2:-0} dyndbg=+p
+    modprobe test_dynamic_debug_submod dyndbg=+p
+}
+unmod () {
+    rmmod test_dynamic_debug_submod
+    rmmod test_dynamic_debug
+}
+
+ddgrep () {
+    grep $1 /proc/dynamic_debug/control
+}
+
+
+# these dont use bitmap interface:
+# so no levels behavior is available here
+
+
+VX="V0 V1 V2 V3 V4 V5 V6"
+
+for_X () {
+    flag=$1
+    classes=$2
+    for C in $classes; do
+	ddc_grep class:$C
+	qry_cmd class $C $flag
+	ddc_grep class:$C
+    done
+}
+for_Vn () {
+    flag=$1
+    for C in V0 V1 V2 V3 V4 V5 V6; do
+	ddgrep class:$C
+	qry_cmd class $C $flag
+	ddgrep class:$C
+    done
+}
+
+for_D2 () {
+    flag=$1
+    for C in D2_CORE D2_DRIVER D2_KMS D2_PRIME D2_ATOMIC D2_VBL D2_STATE D2_LEASE D2_DP D2_DRMRES; do
+	ddgrep class:$C
+	qry_cmd class $C $flag
+	ddgrep class:$C
+    done
+}
+
+toggle_D2 () {
+    for_D2 -p
+    for_D2 +p
+}
+
+toggle_Vn () {
+    for_Vn +p
+    for_Vn -p
+}
+
+
+submod_test () {
+    vx 4
+    unmod
+    submod 0x3ff 3
+
+    ddgrep _submod
+    echo 1 > /sys/module/test_dynamic_debug/parameters/do_prints
+    echo 1 > /sys/module/test_dynamic_debug_submod/parameters/do_prints 
+
+    echo 0 > /sys/module/test_dynamic_debug/parameters/p_disjoint_bits
+    echo 0x2ff > /sys/module/test_dynamic_debug/parameters/p_disjoint_bits
+
+    echo 1 > /sys/module/test_dynamic_debug/parameters/do_prints 
+    echo 1 > /sys/module/test_dynamic_debug_submod/parameters/do_prints 
+}
+
+
+Jim Cromie (20):
+  test-dyndbg: fixup CLASSMAP usage error
+  test-dyndbg: show that DEBUG enables prdbgs at compiletime
+  dyndbg: replace classmap list with a vector
+  dyndbg: make ddebug_apply_class_bitmap more selective
+  dyndbg: split param_set_dyndbg_classes to inner/outer
+  dyndbg: drop NUM_TYPE_ARRAY
+  dyndbg: reduce verbose/debug clutter
+  dyndbg: tighten ddebug_class_name() 1st arg
+  dyndbg: constify ddebug_apply_class_bitmap args
+  dyndbg-API: split DECLARE_(DYNDBG_CLASSMAP) to $1(_DEFINE|_USE)
+  dyndbg-API: specialize DYNDBG_CLASSMAP_(DEFINE|USE)
+  dyndbg-API: DYNDBG_CLASSMAP_USE drop extra args
+  dyndbg-API: DYNDBG_CLASSMAP_DEFINE() improvements
+  drm_print: fix stale macro-name in comment
+  test-dyndbg: build test_dynamic_debug_submod
+  test-dyndbg: rename DD_SYS_WRAP to DYNDBG_CLASSMAP_PARAM
+  test-dyndbg: disable WIP dyndbg-trace params
+  test-dyndbg: tune sub-module behavior
+  dyndbg: unwrap __ddebug_add_module inner function NOTYET
+  jump_label: RFC - tolerate toggled state
+
+ arch/x86/kernel/jump_label.c            |  26 ++-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c |  14 +-
+ drivers/gpu/drm/display/drm_dp_helper.c |  14 +-
+ drivers/gpu/drm/drm_crtc_helper.c       |  14 +-
+ drivers/gpu/drm/drm_print.c             |  22 +-
+ drivers/gpu/drm/i915/i915_params.c      |  14 +-
+ drivers/gpu/drm/nouveau/nouveau_drm.c   |  14 +-
+ include/asm-generic/vmlinux.lds.h       |   3 +
+ include/drm/drm_print.h                 |   6 +-
+ include/linux/dynamic_debug.h           |  57 +++--
+ include/linux/map.h                     |  54 +++++
+ kernel/module/main.c                    |   2 +
+ lib/Makefile                            |   3 +-
+ lib/dynamic_debug.c                     | 268 +++++++++++++++++-------
+ lib/test_dynamic_debug.c                | 116 ++++++----
+ lib/test_dynamic_debug_submod.c         |  10 +
+ 16 files changed, 437 insertions(+), 200 deletions(-)
+ create mode 100644 include/linux/map.h
+ create mode 100644 lib/test_dynamic_debug_submod.c
+
+-- 
+2.39.0
 
