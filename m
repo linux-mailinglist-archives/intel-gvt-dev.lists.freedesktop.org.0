@@ -1,43 +1,84 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FB5D66A014
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 18:20:42 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1491669F12
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 18:11:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 885B010EA86;
-	Fri, 13 Jan 2023 17:20:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E5AC210EA76;
+	Fri, 13 Jan 2023 17:11:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 13 Jan 2023 17:20:37 UTC
-Received: from mail.shp-verzon.info (unknown [45.13.189.25])
- by gabe.freedesktop.org (Postfix) with ESMTP id EDA3D10EA7C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 17:20:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shp-verzon.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=verizon-appreciation@shp-verzon.info; 
- bh=Gqgu6m2dLSU/N5v1ODYRiZ4qUwY=;
- b=KhHQUDXqErFAaHkB4J50CVOc2TJy5Qr76MFYWH2TeyiLWQjCo5pTMz8eFxQGQQXXhIIKDG29v82J
- csmI8R3Wu8cv68PvFExUXsNP6iMzYg4/Sbg9hUcYos6v+3ozho37Rv1FBwpTWHwSNqaOSPT1uObD
- Qj5BY00IrG4BhvLp6CM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shp-verzon.info;
- b=fuAdl4OXhq9aJ7eHzO3x8WLd+EUiU/xFy/uAOLlbXBqeY9TRRb/k+2ToiL1kkqrpRZ7OTUfxDIuv
- tPEpJAMrlaxe/inuzEAyc4HCKveGB7LepEs2EmyM2eWzqG+o2j7gYOAF9hk8WNhFZqLtFlFFXij3
- LYKW6qgSGnPDu3CYe3o=;
-Received: by mail.shp-verzon.info id ho69ec0001gl for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 12:08:20 -0500 (envelope-from
- <verizon-appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@shp-verzon.info>)
-Date: Fri, 13 Jan 2023 12:08:20 -0500
-From: "VERIZON Appreciation" <verizon-appreciation@shp-verzon.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We have some exciting news for you
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B49C510EA74;
+ Fri, 13 Jan 2023 17:11:44 +0000 (UTC)
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 30DGHISV003143; Fri, 13 Jan 2023 17:11:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=rmB3tNOfF0Nb80BWV6tyA3MrK480SPOHdQYPYzfIaAw=;
+ b=tk+WdoeNY3GHmvOEt47ul0guggng+K3Y1oW3457egKdKkbBsAcre6o6U2KZYqlWm4hiE
+ ZjH7n42XNtY3EmepVBAtgM+VBi7HuIkFEAVL3plggkG+sSITzVJAAN+v/eDsLlpdfYvH
+ 4e3QL/jkNR+k04P6PR5biPDTWcu4tzHLfCAS6LR5AnvKGetKQtZWFj+4hMfktmFTluZf
+ s6avs9eiSM+hzf5ZW0wHEkqwXYNu0suPVRMfh2KB60AYhBAhgFo2XZVWZuf9B+kWhevU
+ /96sDhL1vAnhNZ4Rpp2968qgX7FhwGuydXZYSnzoN0YxcH6d7qErm4vFsNuksB2rELgb wA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3n3apk1e3h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 13 Jan 2023 17:11:39 +0000
+Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 30DGLBT3018627;
+ Fri, 13 Jan 2023 17:11:38 GMT
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
+ [169.63.214.131])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3n3apk1e38-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 13 Jan 2023 17:11:38 +0000
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+ by ppma01dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 30DF4L7i014717;
+ Fri, 13 Jan 2023 17:11:37 GMT
+Received: from smtprelay04.dal12v.mail.ibm.com ([9.208.130.102])
+ by ppma01dal.us.ibm.com (PPS) with ESMTPS id 3n1kv5n01y-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 13 Jan 2023 17:11:37 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 30DHBZNJ197232
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 13 Jan 2023 17:11:36 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B715B58043;
+ Fri, 13 Jan 2023 17:11:35 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 380B25805F;
+ Fri, 13 Jan 2023 17:11:33 +0000 (GMT)
+Received: from li-2311da4c-2e09-11b2-a85c-c003041e9174.ibm.com.com (unknown
+ [9.160.94.233]) by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 13 Jan 2023 17:11:33 +0000 (GMT)
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+To: alex.williamson@redhat.com, pbonzini@redhat.com
+Subject: [PATCH v3] vfio: fix potential deadlock on vfio group lock
+Date: Fri, 13 Jan 2023 12:11:32 -0500
+Message-Id: <20230113171132.86057-1-mjrosato@linux.ibm.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_571_1419656576.1673629679557"
-Message-ID: <0.0.0.3F.1D92771A2F9A77A.36F571@mail.shp-verzon.info>
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 9vANe1Lemnb7dlBI2iIfePB6DG5MqF7U
+X-Proofpoint-GUID: S_fuYn6ObG9fDFiFS789j50vp3mf3-hc
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.562,FMLib:17.11.122.1
+ definitions=2023-01-13_08,2023-01-13_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 spamscore=0
+ clxscore=1015 suspectscore=0 mlxlogscore=999 lowpriorityscore=0
+ phishscore=0 mlxscore=0 malwarescore=0 impostorscore=0 adultscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2301130110
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,520 +91,222 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
+ imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
+ david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
+ pasic@linux.ibm.com, jgg@nvidia.com, kvm@vger.kernel.org,
+ linux-s390@vger.kernel.org, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_571_1419656576.1673629679557
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Currently it is possible that the final put of a KVM reference comes from
+vfio during its device close operation.  This occurs while the vfio group
+lock is held; however, if the vfio device is still in the kvm device list,
+then the following call chain could result in a deadlock:
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.shp-verzon.info/8db5mG2395DG86s11a4647V10cbB36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQWdRRn6X1kH0_6bPJqwD/aboveboard-Dunkirk" rel="stylesheet" type="text/css" /> 
-  <title>gate opned</title> 
-  <style type="text/css">div,
-    p,
-    a,
-    li,
-    td {
-      -webkit-text-size-adjust: none
-    }
+kvm_put_kvm
+ -> kvm_destroy_vm
+  -> kvm_destroy_devices
+   -> kvm_vfio_destroy
+    -> kvm_vfio_file_set_kvm
+     -> vfio_file_set_kvm
+      -> group->group_lock/group_rwsem
 
-    .ReadMsgBody {
-      width: 100%; 
-      background-color: #cecece
-    }
+Avoid this scenario by having vfio core code acquire a KVM reference
+the first time a device is opened and hold that reference until the
+device fd is closed, at a point after the group lock has been released.
 
-    .ExternalClass {
-      width: 100%; 
-      background-color: #cecece
-    }
+Fixes: 421cfe6596f6 ("vfio: remove VFIO_GROUP_NOTIFY_SET_KVM")
+Reported-by: Alex Williamson <alex.williamson@redhat.com>
+Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+---
+Changes from v2:
+* Re-arrange vfio_kvm_set_kvm_safe error path to still trigger
+  device_open with device->kvm=NULL (Alex)
+* get device->dev_set->lock when checking device->open_count (Alex)
+* but don't hold it over the kvm_put_kvm (Jason)
+* get kvm_put symbol upfront and stash it in device until close (Jason)
+* check CONFIG_HAVE_KVM to avoid build errors on architectures without
+  KVM support
 
-    body {
-      width: 100%; 
-      height: 100%; 
-      background-color: #cecece; 
-      margin: 0; 
-      padding: 0; 
-      -webkit-font-smoothing: antialiased
-    }
+Changes from v1:
+* Re-write using symbol get logic to get kvm ref during first device
+  open, release the ref during device fd close after group lock is
+  released
+* Drop kvm get/put changes to drivers; now that vfio core holds a
+  kvm ref until sometime after the device_close op is called, it
+  should be fine for drivers to get and put their own references to it.
+---
+ drivers/vfio/group.c     |  6 ++--
+ drivers/vfio/vfio_main.c | 78 +++++++++++++++++++++++++++++++++++++---
+ include/linux/vfio.h     |  2 +-
+ 3 files changed, 77 insertions(+), 9 deletions(-)
 
-    html {
-      width: 100%
-    }
-
-    img {
-      border: none
-    }
-
-    table td.show {
-      display: none !important
-    }
-
-    @media only screen and (max-width:640px) {
-      table.full {
-        width: 100% !important
-      }
-      table.devicewidth {
-        width: 100% !important; 
-        padding-left: 20px !important; 
-        padding-right: 20px !important
-      }
-      table.inner {
-        width: 100% !important; 
-        text-align: center !important; 
-        clear: both
-      }
-      table.inner-centerd {
-        width: 78% !important; 
-        text-align: center !important; 
-        clear: both; 
-        float: none !important; 
-        margin: 0 auto !important
-      }
-      table td.hide,
-      .hide {
-        display: none !important
-      }
-      table td.show,
-      .show {
-        display: block !important
-      }
-      img.responsiveimg {
-        width: 100% !important; 
-        height: atuo !important; 
-        display: block !important
-      }
-      table.btnalign {
-        float: left !important
-      }
-      table.btnaligncenter {
-        float: none !important; 
-        margin: 0 auto !important
-      }
-      table td.textalignleft {
-        text-align: left !important; 
-        padding: 0 !important
-      }
-      table td.textaligcenter {
-        text-align: center !important
-      }
-      table td.heightsmalldevices {
-        height: 45px !important
-      }
-      table td.heightSDBottom {
-        height: 28px !important
-      }
-      table.adjustblock {
-        width: 87% !important
-      }
-      table.resizeblock {
-        width: 92% !important
-      }
-      table td.smallfont {
-        font-size: 8px !important
-      }
-    }
-
-    @media only screen and (max-width:520px) {
-      table td.heading {
-        font-size: 24px !important
-      }
-      table td.heading01 {
-        font-size: 18px !important
-      }
-      table td.heading02 {
-        font-size: 27px !important
-      }
-      table td.text01 {
-        font-size: 22px !important
-      }
-      table.full.mhide,
-      table tr.mhide {
-        display: none !important
-      }
-    }
-
-    @media only screen and (max-width:480px) {
-      table {
-        border-collapse: collapse
-      }
-      table#colaps-inhiret01,
-      table#colaps-inhiret02,
-      table#colaps-inhiret03,
-      table#colaps-inhiret04,
-      table#colaps-inhiret05,
-      table#colaps-inhiret06,
-      table#colaps-inhiret07,
-      table#colaps-inhiret08,
-      table#colaps-inhiret09 {
-        border-collapse: inherit !important
-      }
-    }
-	</style> 
- </head> 
- <body>
-  &nbsp; 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="full" width="100%" zp-module="noshow" zp-sortable="true"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidth" width="600"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="full" style="background-color:#ffffff; border-radius:5px 5px 0 0; " width="100%" zp-bg-color="Module-Background"> 
-           <tbody> 
-            <tr> 
-             <td> 
-              <table align="left" border="0" cellpadding="0" cellspacing="0" class="inner" style="text-align:center; " width="265"> 
-               <tbody> 
-                <tr> 
-                 <td height="52">&nbsp; </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" style="font:700 37px 'Montserrat', Helvetica, Arial, sans-serif; color:#000; text-transform:uppercase" valign="middle"><a href="http://www.shp-verzon.info/5b14L2395OT8u612r4t648s10cbl36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQWdRRn5K1o0z5qzWwD/source-disputes" style="text-decoration: none; color: #000"><span style="display: inline-block; font-size: 49px; color:#EE0000 ">V</span>erizon </a></td> 
-                </tr> 
-                <tr> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="right" border="0" cellpadding="0" cellspacing="0" class="inner" style="text-align:center; " width="255"> 
-               <tbody> 
-                <tr> 
-                 <td class="hide" height="22">&nbsp; </td> 
-                </tr> 
-                <tr> 
-                 <td height="10">&nbsp; </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" valign="middle"> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="191"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" bgcolor="#000" height="57" style="border-radius:28px; " zp-bg-color="Button"><a href="http://www.shp-verzon.info/5b14L2395OT8u612r4t648s10cbl36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQWdRRn5K1o0z5qzWwD/source-disputes" style="font:700 14px/57px 'Montserrat', Helvetica, Arial, sans-serif; color:#ffffff; text-decoration:none; text-transform:uppercase; display:block; overflow:hidden; " zp-editable="" zp-font-color="Button" zp-font-size="Button">GO TO VERIZON APP</a></td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td height="40">&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="full" width="100%" zp-module="Features" zp-sortable="true"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidth" width="600"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="full" style="text-align:center; border-bottom:1px solid #e5e5e5; " width="100%" zp-bg-color="Module-Background"> 
-           <tbody> 
-            <tr> 
-             <td> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="text-align:center; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="heading" style="font:500 23px 'Montserrat', Helvetica, Arial, sans-serif; color:#000; "><br /> <font zp-editable="" zp-font-color="Heading-1" zp-font-size="Heading-1">Get just a few clicks away from The <b>$100 Verizon Card</b>, by completing our 20-Second Service Survey about your recent experience with us.</font> <a href="http://www.shp-verzon.info/5b14L2395OT8u612r4t648s10cbl36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQWdRRn5K1o0z5qzWwD/source-disputes"><img alt="" src="http://www.shp-verzon.info/apiaries-plaintive/a446D23Dx95u7aJL11S464au10cbA36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQWdRRn5So1y06JNLpwD" style="display: block; margin: auto" width="90%" /></a> <font zp-editable="" zp-font-color="Heading-1" zp-font-size="Heading-1"> Your input is important to us and will help us improve our stores and the products and services we offer</font><br /> &nbsp; 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="292"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" bgcolor="#000" height="61" style="border-radius:28px; " zp-bg-color="Button"><a href="http://www.shp-verzon.info/5b14L2395OT8u612r4t648s10cbl36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQWdRRn5K1o0z5qzWwD/source-disputes" style="font:700 16px/61px 'Montserrat', Helvetica, Arial, sans-serif; color:#ffffff; text-decoration:none; text-transform:uppercase; display:block; overflow:hidden; outline:none; " zp-editable="" zp-font-color="Button" zp-font-size="Button">Go Here To Start</a></td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td class="heightSDBottom" height="47">&nbsp; </td> 
-                </tr> 
-                <tr> 
-                 <td> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" class="adjustblock" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; " width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td> 
-                      <table bgcolor="#EE0000" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="100%" zp-bg-color="Title-Background"> 
-                       <tbody> 
-                        <tr> 
-                         <td height="56">&nbsp; </td> 
-                        </tr> 
-                        <tr> 
-                         <td class="text01" style="font:700 26px 'Montserrat', Helvetica, Arial, sans-serif; color:#ffffff; text-transform:uppercase; padding:0 5% 0 5%; "><font zp-editable="" zp-font-color="Heading-2" zp-font-size="Heading-2">Your Opinion Matters </font></td> 
-                        </tr> 
-                        <tr> 
-                         <td height="56">&nbsp; </td> 
-                        </tr> 
-                        <tr> 
-                         <td> 
-                          <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; border:1px solid #EE0000; " width="100%" zp-bg-color="Module-Background"> 
-                           <tbody> 
-                            <tr> 
-                             <td bgcolor="#f8f8f8" height="25" zp-bg-color="Sub-Title">&nbsp; </td> 
-                            </tr> 
-                            <tr> 
-                             <td bgcolor="#f8f8f8" style="font:26px Arial, Helvetica, sans-serif; color:#3a3a3a; " zp-bg-color="Sub-Title">&nbsp; </td> 
-                            </tr> 
-                            <tr> 
-                             <td bgcolor="#f8f8f8" height="25" zp-bg-color="Sub-Title">&nbsp; </td> 
-                            </tr> 
-                            <tr> 
-                             <td height="25">&nbsp; </td> 
-                            </tr> 
-                            <tr> 
-                             <td style="font:bold 16px Arial, Helvetica, sans-serif; color:#4a4a4a; padding:0 5% 0 5%; ">&nbsp; </td> 
-                            </tr> 
-                            <tr> 
-                             <td height="25">&nbsp; </td> 
-                            </tr> 
-                            <tr> 
-                             <td> 
-                              <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; " width="100%"> 
-                               <tbody> 
-                                <tr> 
-                                 <td> 
-                                  <table align="left" border="0" cellpadding="0" cellspacing="0" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="195"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td width="20">&nbsp; </td> 
-                                     <td> 
-                                      <table align="center" border="0" cellpadding="0" cellspacing="0" class="whuusblock02" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="100%"> 
-                                       <tbody> 
-                                        <tr> 
-                                         <td height="21">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td align="center"> 
-                                          <table align="center" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" class="btnalign" height="57" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; border-radius:28px; " width="57" zp-bg-color="Numbers-Background"> 
-                                           <tbody> 
-                                            <tr> 
-                                             <td height="57" style="font:bold 12px Arial, Helvetica, sans-serif; color:#ffffff; ">&nbsp; </td> 
-                                            </tr> 
-                                           </tbody> 
-                                          </table> </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="30">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td class="textalignleft" style="font:700 14px 'Montserrat', Helvetica, Arial, sans-serif; color:#4e4e4e; text-transform:uppercase; ">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="20">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td class="textalignleft" style="font:15px/22px Arial, Helvetica, sans-serif; color:#4a4a4a; ">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="20">&nbsp; </td> 
-                                        </tr> 
-                                       </tbody> 
-                                      </table> </td> 
-                                     <td width="16">&nbsp; </td> 
-                                    </tr> 
-                                   </tbody> 
-                                  </table> 
-                                  <table align="left" border="0" cellpadding="0" cellspacing="0" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="195"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td width="20">&nbsp; </td> 
-                                     <td> 
-                                      <table align="center" border="0" cellpadding="0" cellspacing="0" class="whuusblock02" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="100%"> 
-                                       <tbody> 
-                                        <tr> 
-                                         <td height="21">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td align="center"> 
-                                          <table align="center" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" class="btnalign" height="57" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; border-radius:28px; " width="57" zp-bg-color="Numbers-Background"> 
-                                           <tbody> 
-                                            <tr> 
-                                             <td height="57" style="font:bold 12px Arial, Helvetica, sans-serif; color:#ffffff; ">&nbsp; </td> 
-                                            </tr> 
-                                           </tbody> 
-                                          </table> </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="30">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td class="textalignleft" style="font:700 14px 'Montserrat', Helvetica, Arial, sans-serif; color:#4e4e4e; text-transform:uppercase; ">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="20">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td class="textalignleft" style="font:15px/22px Arial, Helvetica, sans-serif; color:#4a4a4a; ">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="20">&nbsp; </td> 
-                                        </tr> 
-                                       </tbody> 
-                                      </table> </td> 
-                                     <td width="16">&nbsp; </td> 
-                                    </tr> 
-                                   </tbody> 
-                                  </table> 
-                                  <table align="left" border="0" cellpadding="0" cellspacing="0" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="195"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td width="20">&nbsp; </td> 
-                                     <td> 
-                                      <table align="center" border="0" cellpadding="0" cellspacing="0" class="whuusblock02" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="100%"> 
-                                       <tbody> 
-                                        <tr> 
-                                         <td height="21">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td align="center"> 
-                                          <table align="center" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" class="btnalign" height="57" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; border-radius:28px; " width="57" zp-bg-color="Numbers-Background"> 
-                                           <tbody> 
-                                            <tr> 
-                                             <td height="57" style="font:bold 12px Arial, Helvetica, sans-serif; color:#ffffff; ">&nbsp; </td> 
-                                            </tr> 
-                                           </tbody> 
-                                          </table> </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="30">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td class="textalignleft" style="font:700 14px 'Montserrat', Helvetica, Arial, sans-serif; color:#4e4e4e; text-transform:uppercase; ">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="20">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td class="textalignleft" style="font:15px/22px Arial, Helvetica, sans-serif; color:#4a4a4a; ">&nbsp; </td> 
-                                        </tr> 
-                                        <tr> 
-                                         <td height="20">&nbsp; </td> 
-                                        </tr> 
-                                       </tbody> 
-                                      </table> </td> 
-                                     <td width="16">&nbsp; </td> 
-                                    </tr> 
-                                   </tbody> 
-                                  </table> </td> 
-                                </tr> 
-                               </tbody> 
-                              </table> </td> 
-                            </tr> 
-                           </tbody> 
-                          </table> </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td class="heightsmalldevices" height="89">&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="full" width="100%" zp-module="noshow" zp-sortable="true"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="devicewidth" width="600"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" bgcolor="#000" border="0" cellpadding="0" cellspacing="0" class="full" style="border-radius:0 0 5px 5px; " width="100%" zp-bg-color="Module-Background"> 
-           <tbody> 
-            <tr> 
-             <td height="18">&nbsp; </td> 
-            </tr> 
-            <tr> 
-             <td> 
-              <table align="right" border="0" cellpadding="0" cellspacing="0" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="340"> 
-               <tbody> 
-                <tr> 
-                 <td width="21">&nbsp; </td> 
-                 <td> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td> 
-                      <table align="center" border="0" cellpadding="0" cellspacing="0" class="full" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center" style="font:11px Helvetica,  Arial, sans-serif; color:#383838; ">&nbsp; </td> 
-                         <td style="color:#ffffff; ">&nbsp; </td> 
-                         <td align="center" style="font:11px Helvetica,  Arial, sans-serif; color:#383838; ">&nbsp; </td> 
-                         <td style="color:#ffffff; ">&nbsp; </td> 
-                         <td align="center" style="font:11px Helvetica,  Arial, sans-serif; color:#383838; ">&nbsp; </td> 
-                         <td align="right" class="hide" width="40">&nbsp; </td> 
-                        </tr> 
-                        <tr> 
-                         <td height="18">&nbsp; </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="left" border="0" cellpadding="0" cellspacing="0" class="inner" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center; " width="230"> 
-               <tbody> 
-                <tr> 
-                 <td width="21">&nbsp; </td> 
-                 <td> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" style="font:11px Helvetica,  Arial, sans-serif; color:#ffffff; ">&nbsp; </td> 
-                    </tr> 
-                    <tr> 
-                     <td height="18">&nbsp; </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                 <td width="21">&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr class="mhide"> 
-         <td align="center" height="100"><br /> <br /> To quit notifications,<a href="http://www.shp-verzon.info/a074E2395Bj86q13y464RS9H10cbr36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQWdRRn6LWYZ106rOTwpD/vulnerability-slippage" style="text-decoration-line: none; "> <span>Go.Ahead.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font color="disjunctive"></font><span style="ciphertexts"></span><span dir="partakes"><font lang="Isaiah"></font></span><font style="futuristic"></font><font></font></td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <br /> &nbsp;   
- <img src="http://www.shp-verzon.info/1976t239_P5po85L13NhW464bz10cbM36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQWdRRn6jr1G0K5VqwlD/aboveboard-Dunkirk" alt=""/></body>
-</html>
-
-------=_Part_571_1419656576.1673629679557--
+diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+index bb24b2f0271e..2b0da82f82f4 100644
+--- a/drivers/vfio/group.c
++++ b/drivers/vfio/group.c
+@@ -165,9 +165,9 @@ static int vfio_device_group_open(struct vfio_device *device)
+ 	}
+ 
+ 	/*
+-	 * Here we pass the KVM pointer with the group under the lock.  If the
+-	 * device driver will use it, it must obtain a reference and release it
+-	 * during close_device.
++	 * Here we pass the KVM pointer with the group under the lock.  A
++	 * reference will be obtained the first time the device is opened and
++	 * will be held until the device fd is closed.
+ 	 */
+ 	ret = vfio_device_open(device, device->group->iommufd,
+ 			       device->group->kvm);
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index 5177bb061b17..dbdf16903d52 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -16,6 +16,9 @@
+ #include <linux/fs.h>
+ #include <linux/idr.h>
+ #include <linux/iommu.h>
++#ifdef CONFIG_HAVE_KVM
++#include <linux/kvm_host.h>
++#endif
+ #include <linux/list.h>
+ #include <linux/miscdevice.h>
+ #include <linux/module.h>
+@@ -344,6 +347,57 @@ static bool vfio_assert_device_open(struct vfio_device *device)
+ 	return !WARN_ON_ONCE(!READ_ONCE(device->open_count));
+ }
+ 
++#ifdef CONFIG_HAVE_KVM
++static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
++{
++	void (*pfn)(struct kvm *kvm);
++	bool (*fn)(struct kvm *kvm);
++	bool ret;
++
++	pfn = symbol_get(kvm_put_kvm);
++	if (WARN_ON(!pfn))
++		return false;
++
++	fn = symbol_get(kvm_get_kvm_safe);
++	if (WARN_ON(!fn)) {
++		symbol_put(kvm_put_kvm);
++		return false;
++	}
++
++	ret = fn(kvm);
++	if (ret)
++		device->put_kvm = pfn;
++	else
++		symbol_put(kvm_put_kvm);
++
++	symbol_put(kvm_get_kvm_safe);
++
++	return ret;
++}
++
++static void vfio_kvm_put_kvm(struct vfio_device *device, struct kvm *kvm)
++{
++	if (WARN_ON(!device->put_kvm))
++		return;
++
++	device->put_kvm(kvm);
++
++	device->put_kvm = NULL;
++
++	symbol_put(kvm_put_kvm);
++}
++#else
++static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
++{
++	return false;
++}
++
++static void vfio_kvm_put_kvm(struct vfio_device *device, struct kvm *kvm)
++{
++
++}
++#endif
++
+ static int vfio_device_first_open(struct vfio_device *device,
+ 				  struct iommufd_ctx *iommufd, struct kvm *kvm)
+ {
+@@ -361,16 +415,21 @@ static int vfio_device_first_open(struct vfio_device *device,
+ 	if (ret)
+ 		goto err_module_put;
+ 
+-	device->kvm = kvm;
++	if (kvm && vfio_kvm_get_kvm_safe(device, kvm))
++		device->kvm = kvm;
++
+ 	if (device->ops->open_device) {
+ 		ret = device->ops->open_device(device);
+ 		if (ret)
+-			goto err_unuse_iommu;
++			goto err_put_kvm;
+ 	}
+ 	return 0;
+ 
+-err_unuse_iommu:
+-	device->kvm = NULL;
++err_put_kvm:
++	if (device->kvm) {
++		vfio_kvm_put_kvm(device, device->kvm);
++		device->kvm = NULL;
++	}
+ 	if (iommufd)
+ 		vfio_iommufd_unbind(device);
+ 	else
+@@ -387,7 +446,6 @@ static void vfio_device_last_close(struct vfio_device *device,
+ 
+ 	if (device->ops->close_device)
+ 		device->ops->close_device(device);
+-	device->kvm = NULL;
+ 	if (iommufd)
+ 		vfio_iommufd_unbind(device);
+ 	else
+@@ -462,9 +520,19 @@ static inline void vfio_device_pm_runtime_put(struct vfio_device *device)
+ static int vfio_device_fops_release(struct inode *inode, struct file *filep)
+ {
+ 	struct vfio_device *device = filep->private_data;
++	struct kvm *kvm = NULL;
+ 
+ 	vfio_device_group_close(device);
+ 
++	mutex_lock(&device->dev_set->lock);
++	if (device->open_count == 0 && device->kvm) {
++		kvm = device->kvm;
++		device->kvm = NULL;
++	}
++	mutex_unlock(&device->dev_set->lock);
++	if (kvm)
++		vfio_kvm_put_kvm(device, kvm);
++
+ 	vfio_device_put_registration(device);
+ 
+ 	return 0;
+diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+index 35be78e9ae57..87ff862ff555 100644
+--- a/include/linux/vfio.h
++++ b/include/linux/vfio.h
+@@ -46,7 +46,6 @@ struct vfio_device {
+ 	struct vfio_device_set *dev_set;
+ 	struct list_head dev_set_list;
+ 	unsigned int migration_flags;
+-	/* Driver must reference the kvm during open_device or never touch it */
+ 	struct kvm *kvm;
+ 
+ 	/* Members below here are private, not for driver use */
+@@ -58,6 +57,7 @@ struct vfio_device {
+ 	struct list_head group_next;
+ 	struct list_head iommu_entry;
+ 	struct iommufd_access *iommufd_access;
++	void (*put_kvm)(struct kvm *kvm);
+ #if IS_ENABLED(CONFIG_IOMMUFD)
+ 	struct iommufd_device *iommufd_device;
+ 	struct iommufd_ctx *iommufd_ictx;
+-- 
+2.39.0
 
