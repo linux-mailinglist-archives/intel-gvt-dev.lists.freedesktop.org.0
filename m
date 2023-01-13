@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FB2766A2B6
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 20:12:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37E2C66A3C2
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 20:56:09 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EFDF710EAA8;
-	Fri, 13 Jan 2023 19:12:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 08F5F10EAD0;
+	Fri, 13 Jan 2023 19:56:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Fri, 13 Jan 2023 19:12:42 UTC
-Received: from mail.py-paltop.info (unknown [45.13.189.28])
- by gabe.freedesktop.org (Postfix) with ESMTP id 53F3B10EAA5
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Jan 2023 19:56:06 UTC
+Received: from mail.go-trckups.info (unknown [45.13.189.29])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 768D410EACE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 19:12:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=py-paltop.info; 
+ Fri, 13 Jan 2023 19:56:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=go-trckups.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal.gift.opportunity@py-paltop.info; 
- bh=YuTsP4HqhaehxcsMkrQc42BWFcY=;
- b=hBxTYDpJP5YIwst6Ywzi0EfS9DN/vpl/pcS+RymdaBvSOaopnwQIf9kxRLCdqVj5rWQcwhK7p8gQ
- CZi9c3nBaXcg9HbqffOAoMPEIfjbrpuH3gBRrBGqC3Z5X/RYBWNbDgacMQ0oC4y+8BrQo6bRmvmv
- sM00hMgkrD7I5hwVMj8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=py-paltop.info;
- b=QeAW7Wo9WlOO0NPNvkQ2YmY0iSM6yrtViiT5Hj3k8lp0NsYc7Mi77UThbrx1+PVKtIPl1mrD3kTS
- VfjCdeeN8vxQYsNryYb3Qax+j+rr2agSCdnYsG1SdalUABg3ORY7mHQBhW2ZuuLFNxAfcCdgqV0+
- 8fuGd3gSRTXr8oKvbXQ=;
-Received: by mail.py-paltop.info id ho70qc0001g9 for
+ i=ups-gift-card-chance@go-trckups.info; 
+ bh=Fl5Hiq5maWPXB38s2crxY8U2DZY=;
+ b=ndaeE33Hrp98S9RZ+uOe0BoVEaVARJ81LGlsTQjSeNjaFgQgaZBiujGmwFuX1/haX4/8Ti3UC9R0
+ BOtQrI6TJ2LAb5hkhChhS9rTGPR3SMj8V2d6WCXNVLVWi4M/D+AZnAZqM5iMtPVU+0RSP3JWLYfU
+ hRVWUJzcM2RNgXNg7Aw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=go-trckups.info;
+ b=wBchXl27HR0wVHOfnSOwYeOM86Uiq2JlVcvM+OW8eVyzEGCOlypMZPJd8bIKVmNoPtKqqj64svtw
+ BXgrCp687siJ+hbXqTaNqwmmceFXg6oB37k10GTfMU/dmZTVA8MxYpTcjAzW0dcuHhcl4TPQKvXc
+ 6l3gJhEziMxmhyccFW4=;
+Received: by mail.go-trckups.info id ho75t40001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 15:29:38 -0500 (envelope-from
- <paypal.gift.opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@py-paltop.info>)
-Date: Fri, 13 Jan 2023 15:29:38 -0500
-From: "Paypal Gift Opportunity" <paypal.gift.opportunity@py-paltop.info>
+ Fri, 13 Jan 2023 16:12:56 -0500 (envelope-from
+ <ups-gift-card-chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@go-trckups.info>)
+Date: Fri, 13 Jan 2023 16:12:56 -0500
+From: "Ups Gift Card Chance" <ups-gift-card-chance@go-trckups.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We appreciate your loyalty, pick any gift on us
+Subject: ups Gift Opportunity
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_430_325952900.1673636516700"
-Message-ID: <0.0.0.2F.1D9278DC25BD0D6.1E587F@mail.py-paltop.info>
+ boundary="----=_Part_412_75775956.1673639110415"
+Message-ID: <0.0.0.2D.1D92793CEAAB5B8.8A16E@mail.go-trckups.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,393 +53,311 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_430_325952900.1673636516700
+------=_Part_412_75775956.1673639110415
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <title></title> 
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" /> 
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible" /> 
-  <link href="http://www.py-paltop.info/7cd6S239Fi5n86ko12S465t4V10ceM36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkdRRd7DX_R10l5BllwD/falcons-allophonic" rel="stylesheet" type="text/css" /> 
-  <style type="text/css">body,
-        p,
-        li,
-        td,
-        div,
-        a {
-            font-family: 'Gotham SSm A', 'Gotham SSm B', Arial, sans-serif;
-        }
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>Frank HTML Email</title> 
+  <style type="text/css">body {
+			Margin: 0;
+			padding: 0;
+			background-color: #f6f9fc;
+			overflow-x: hidden;
+		}
 
-        .bodyContent p,
-        .bodyContent li,
-        .bodyContent a,
-        .emailBody ul {
-            font-size: 18px;
-            line-height: 1.5;
-        }
+		a {
+			text-decoration: none;
+			color: #388cda;
+			font-size: 16px;
+		}
 
-        body {
-            color: #33434e;
-        }
+		table {
+			width: 100%;
+			border-spacing: 0;
+		}
 
-        body a {
-            color: #1188E6;
-            text-decoration: none;
-        }
+		td {
+			padding: 0;
+		}
 
-        div>p:first-of-type {
-            margin-top: 0px;
-            padding-top: 0px;
-        }
+		img {
+			border: 0;
+		}
 
-        div>p:last-of-type {
-            margin-bottom: 0px;
-            padding-bottom: 0px;
-        }
+		.wrapper {
+			width: 100%;
+			table-layout: fixed;
+			background-color: #f6f9fc;
+			padding-bottom: 40px;
+		}
 
-        h1 {
-            font-size: 48px;
-            line-height: 56px;
-            line-height: 1.2;
-            padding-top: 0px;
-            padding-bottom: 0px;
-            mso-line-height-alt: 14px;
-        }
+		.webkit {
+			max-width: 600px;
+			background-color: #ffffff;
+		}
 
-        h2 {
-            font-size: 18px;
-            font-weight: 500;
-        }
+		.outer {
+			/* Capital M with margin for Outlook compatibility */
+			Margin: 0 auto;
+			width: 100%;
+			max-width: 600px;
+			border-spacing: 0;
+			font-family: sans-serif;
+			color: #4a4a4a;
+		}
 
-        table.wrapper {
-            width: 100% !important;
-            table-layout: fixed;
-            -webkit-font-smoothing: antialiased;
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
+		.innertable {
+			background-color: #FFF;
+			padding: 10px;
+			text-align: right;
+		}
 
-        img.max-width {
-            max-width: 100% !important;
-        }
+		.logo {
+			width: 180px;
+		}
 
-        .column.of-2 {
-            width: 50%;
-        }
+		.banner {
+			width: 600px;
+			max-width: 100%;
 
-        .column.of-3 {
-            width: 33.333%;
-        }
+		}
 
-        .column.of-4 {
-            width: 25%;
-        }
+		.main {
+			width: 100%;
+			border-spacing: 0;
+		}
 
-        @media screen and (max-width:480px) {
+		.three-columns {
+			text-align: center;
+			font-size: 0;
+			padding-top: 40px;
+			padding-bottom: 30px;
+		}
 
-            .preheader .rightColumnContent,
-            .footer .rightColumnContent {
-                text-align: left !important;
-            }
+		.three-columns .column {
+			width: 100%;
+			max-width: 200px;
+			display: inline-block;
+			vertical-align: top;
+		}
 
-            .preheader .rightColumnContent div,
-            .preheader .rightColumnContent span,
-            .footer .rightColumnContent div,
-            .footer .rightColumnContent span {
-                text-align: left !important;
-            }
+		.three-columns .column-content {
+			font-size: 20px;
+			line-height: 20px;
+		}
 
-            .preheader .rightColumnContent,
-            .preheader .leftColumnContent {
-                font-size: 80% !important;
-                padding: 5px 0;
-            }
+		.padding {
+			padding: 15px;
+		}
 
-            table.wrapper-mobile {
-                width: 100% !important;
-                table-layout: fixed;
-            }
+		.column-content-paragraph {
+			padding: 10px;
+			font-size: 16px;
+		}
 
-            .mobile-no-pad {
-                padding: 0 0 0 0 !important;
-            }
+		.column-img {
+			width: 150px;
+			max-width: 150px;
+		}
 
-            img.max-width {
-                height: auto !important;
-                max-width: 100% !important;
-            }
 
-            a.bulletproof-button {
-                display: block !important;
-                width: auto !important;
-                font-size: 80%;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
+		.footer {
+			background-color: #6F1F3A;
+			padding: 15px;
+			text-align: center;
 
-            .columns {
-                width: 100% !important;
-            }
+			font-size: 18px;
+			color: #FFF;
+			Margin-bottom: 13px;
+		}
 
-            .column {
-                display: block !important;
-                width: 100% !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-        }
+		.social-icon {
+			width: 30px;
+		}
+
+		@media screen and (max-width: 600px) {
+			img.third-last-img {
+				width: 200px !important;
+				max-width: 200px !important;
+			}
+
+			.padding {
+				padding-right: 0 !important;
+				padding-left: 0 !important;
+			}
+		}
+
+		@media screen and (max-width: 400px) {
+			img.third-img {
+				width: 200px !important;
+				max-width: 200px !important;
+			}
+		}
 	</style> 
  </head> 
  <body> 
   <center class="wrapper"> 
    <div class="webkit"> 
-    <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="wrapper" width="100%"> 
+    <table alifgn="center" class="outer"> 
      <tbody> 
       <tr> 
-       <td bgcolor="#FFFFFF" valign="top" width="100%"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="outer" role="content-container" width="100%"> 
+       <td> 
+        <table> 
          <tbody> 
           <tr> 
-           <td width="100%"> 
-            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+           <td align="right" class="innertable"> <h1 style="font-size: 55px; padding-right: 25px">UPS</h1> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td><a href="http://www.go-trckups.info/a9d6wj23R95VZ86N11D4659N10cfx36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjdRRQ7Yx1iy0Y6llBwUD/morphological-Vincent"><img alt="Banner" class="banner" src="http://www.go-trckups.info/precedent-parenthetic/71a6NXV2395P7Aqa11z465bT10cfx36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQjdRRQ5K_1u06y1PwAD" /></a></td> 
+      </tr> 
+      <tr> 
+       <td style="padding: 15px; font-size: 29px; text-align: center">Get just a few clicks away from The <b style="color: #3C4121">$100 UPS Card</b>, by completing our 20-Second Service Survey about your recent experience with us.<br /> &nbsp; 
+        <div style="padding-top: 1px; padding-left: 5px"> 
+         <div style="padding-top: 1px; padding-left: 5px"> 
+          <div style="padding-top: 1px; padding-left: 5px"> 
+           <div style="padding-top: 1px; padding-left: 5px"> 
+            <div style="padding-top: 1px; padding-left: 5px"> 
+             <div style="padding-top: 1px; padding-left: 5px"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 360px; min-width: 120px; border-collapse: collapse; border-spacing: 0; padding: 0;"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" valign="middle"> 
+                  <div style="
+                        padding: 14px 40px;
+                        margin: 0;
+                        text-decoration: none;
+                        font-weight: 500;
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        border-radius: 4px;
+                        background: #3C4121;
+                        border-bottom: 2px solid #F5AB6C; 
+                        ">
+                   <a href="http://www.go-trckups.info/a9d6wj23R95VZ86N11D4659N10cfx36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjdRRQ7Yx1iy0Y6llBwUD/morphological-Vincent" style="
+                            font-weight: 600 !important;
+                            text-decoration: none;
+                            color: #FFFFFF; font-family: 'DM Sans',sans-serif; font-size: 27px; font-weight: 400; line-height: 120%;" target="_blank">Go Here To Start</a>
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <table class="main"> 
+         <tbody> 
+          <tr> 
+           <td class="three-columns">
+            <!-- First Column Puppet --> 
+            <table class="column"> 
              <tbody> 
               <tr> 
-               <td> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
+               <td class="padding"> 
+                <table class="column-content"> 
                  <tbody> 
                   <tr> 
-                   <td align="justify" bgcolor="#ffffff" role="modules-container" style="padding:0px 0px 0px 0px; color:#000000; text-align: justify; text-justify: inter-word;" width="100%">
-                    <!-- ##### CONTENT BODY ##### --> 
-                    <div class="bodyContent">
-                     <!-- PREHEADER --> 
-                     <table border="0" cellpadding="0" cellspacing="0" class="module preheader preheader-hide" data-type="preheader" role="module" style="display: none !important; mso-hide: all; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0;" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td role="module-content">&nbsp;</td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" data-type="image" role="module" style="table-layout: fixed;" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center" style="font-size:26px; line-height:10px; padding:20px 0px 24px 0px;" valign="top"> <p style="font-size: 46px; color: #00529C"><b>Pay<i style="color: #73CDEC">Pal</i></b></p> <a href="http://www.py-paltop.info/8276PB239T5Q8S6V13zt4O655o10ceC36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQkdRRd7SSt1N0x5WLWwD/buildups-unsynchronized"><img alt="" src="http://www.py-paltop.info/1974z2395I7awT13tx4v657s10ceS36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQkdRRd6Qo10VV6oywD3k/splashes-steeps" width="100%" /></a></td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> 
-                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px;"> 
-                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed; margin: 0 0 0 0;" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td height="100%" role="module-content" style="padding:24px 0px 24px 0px; text-align:center;" valign="top"> 
-                          <div style="color:#222e37;font-family:'Gotham SSm A', 'Gotham SSm B',  Arial, sans-serif;line-height:1.2;padding-top:0px;padding-bottom:0px; mso-line-height-alt: 14px;"> 
-                           <h1 style="font-size: 38px; line-height: 38px; margin: 0; font-weight: 800;"><span style="font-size: 25px; color: #222e37; font-weight: 800;"><strong>Get just a few clicks away from The <b style="color: #00529C">$100 Paypal Card</b>, by completing our 20-Second Service Survey about your recent experience with us.</strong></span></h1> 
-                          </div> </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> 
-                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px;"> 
-                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-role="module-button" data-type="button" role="module" style="table-layout:fixed;" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center" class="outer-td" style="padding:24px 0px 24px 0px;"> 
-                          <table border="0" cellpadding="0" cellspacing="0" class="wrapper-mobile" style="text-align:center;"> 
-                           <tbody> 
-                            <tr> 
-                             <td align="center" bgcolor="#0672ee" class="inner-td" style="font-family: inherit; text-align: inherit;border-radius:6px; font-size:28px; text-align:center; background-color:inherit;"><a href="http://www.py-paltop.info/8276PB239T5Q8S6V13zt4O655o10ceC36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQkdRRd7SSt1N0x5WLWwD/buildups-unsynchronized" style="text-align: inherit; border-radius:6px; border-width:0; color:#ffffff; display:inline-block; font-size:28px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:10px 32px 10px 32px; text-align:center; text-decoration:none; border-style:solid; background-color:#0672ee;" target="_blank">Go Here To Start</a></td> 
-                            </tr> 
-                           </tbody> 
-                          </table> &nbsp; <h3 style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><span style="color: #999999; font-size: 11px; font-size: 0.78em !important; font-family: 'Helvetica Neue', 'Arial', sans-serif; mso-line-height-rule: exactly; line-height: 18px; line-height: 1.61; width:100%;">Your Opinion Matters</span></h3> </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> 
-                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td height="100%" role="module-content" style="padding:24px 0px 24px 0px; line-height:27px; text-align:inherit;" valign="top"> 
-                          <div style="font-family: inherit; text-align: inherit"> 
-                           <p style="font-size: 18px; line-height: 27px;"><span style="color: #33434e; font-size: 18px; line-height: 27px;">&nbsp; </span></p> 
-                          </div> </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> 
-                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td height="100%" role="module-content" style="padding:24px 0px 24px 0px; line-height:27px; text-align:inherit;" valign="top"> 
-                          <div style="font-family: inherit; text-align: inherit;"> 
-                           <p style="padding-bottom: 0; font-size:18px; line-height: 27px;">&nbsp;</p> 
-                           <ul> 
-                           </ul> 
-                           <table cellpadding="0" cellspacing="0"> 
-                            <tbody> 
-                             <tr> 
-                              <td>&nbsp;</td> 
-                             </tr> 
-                             <tr> 
-                              <td>&nbsp;</td> 
-                             </tr> 
-                             <tr style="display: none;"> 
-                              <td>&nbsp;</td> 
-                             </tr> 
-                             <tr> 
-                              <td>&nbsp;</td> 
-                             </tr> 
-                             <tr> 
-                              <td>&nbsp;</td> 
-                             </tr> 
-                            </tbody> 
-                           </table> 
-                           <ul> 
-                           </ul> 
-                          </div> </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> 
-                     <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                      <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td height="100%" role="module-content" style="padding:24px 0px 24px 0px; line-height:27px; text-align:inherit;" valign="top"> 
-                          <div style="font-family: inherit; text-align: inherit"> 
-                           <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="text" role="module" style="table-layout: fixed;" width="100%"> 
-                            <tbody> 
-                             <tr> 
-                              <td height="100%" role="module-content" style="padding:0px 0px 0px 0px; line-height:27px; text-align:inherit; background-color: #f5f6f7" valign="top"> 
-                               <div style="font-family: inherit; text-align: inherit; padding: 10px 10px 10px 10px; background-color: #f5f6f7; border: solid 1px #ecf7f3;"> 
-                                <p style="margin-bottom: 0; padding-bottom: 0; font-size: 18px; line-height: 27px;">&nbsp;</p> 
-                               </div> </td> 
-                             </tr> 
-                            </tbody> 
-                           </table> 
-                          </div> </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> 
-                     <!-- /CALLOUT -->
-                    </div> 
-                    <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                     <table border="0" cellpadding="0" cellspacing="0" class="module" data-type="divider" style="table-layout: fixed;" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td height="100%" role="module-content" style="padding:24px 0px 12px 0px;" valign="top"> 
-                         <table align="center" border="0" cellpadding="0" cellspacing="0" height="2px" style="line-height:2px; font-size:1px;" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td style="padding:0px 0px 1px 0px;"> 
-                             <hr color="#dadde0" noshade="noshade" size="2" style="padding:0; border:none; width:100%; height: 2px; color:#dadde0;" width="100%" /></td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="justify" bgcolor="#ffffff" role="modules-container" style="padding:12px 0px 12px 0px; color:#607382; text-align: justify; text-justify: inter-word;" width="100%"> 
-                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                          <div style="background-color:transparent;"> 
-                           <div class="block-grid" style="margin: 0 auto; min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"> 
-                            <div style="border-collapse: collapse;display: table;width: 100%; background-color:transparent;"> 
-                             <div class="col num12" style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;"> 
-                              <div style="width:100% !important;"> 
-                               <div align="center" class="center autowidth" style="padding-right: 0px;padding-bottom: 0px; padding-left: 0px;"> 
-                                <p style="font-size: 12px; line-height: 1.25; mso-line-height-alt: 15px; margin: 0 0 5px 0;"><span style="color: #607382; font-size: 12px;">To shut down email,</span><a href="http://www.py-paltop.info/inspirations-mutely/af85a2n395Qu86n13P46W56vu10cei36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkdRRd5Gi1w05nLwDT" style="text-decoration-line: none;"> <span>Continue-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style dir="Holmes"></style><big><style id="relocate"></style><big><span></big><font face="auscultations"></span></big></font><font></font><font size="peddlers"></font><font></font></p> 
-                               </div> 
-                              </div> 
-                             </div> 
-                            </div> 
-                           </div> 
-                          </div> 
-                         </div> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="justify" bgcolor="#ffffff" role="modules-container" style="padding:12px 0px 12px 0px; color:#607382; text-align: justify; text-justify: inter-word;" width="100%"> 
-                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                          <div style="background-color:transparent;"> 
-                           <div class="block-grid" style="margin: 0 auto; min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"> 
-                            <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;"> 
-                             <div class="col num12" style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;"> 
-                              <div style="width:100% !important;"> 
-                               <div align="center" class="center autowidth" style="padding-right: 0px;padding-bottom: 0; padding-left: 0px;">
-                                &nbsp;
-                               </div> 
-                              </div> 
-                             </div> 
-                            </div> 
-                           </div> 
-                          </div> 
-                         </div> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> 
-                    <!-- /POWERED BY -->
-                    <!-- UNSUBSCRIBE --> 
-                    <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="width:100%; max-width:600px;" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="justify" bgcolor="#ffffff" role="modules-container" style="padding:12px 0px 54px 0px; color:#607382; text-align: justify; text-justify: inter-word;" width="100%"> 
-                         <div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0; padding-bottom:0px;"> 
-                          <div style="background-color:transparent;"> 
-                           <div class="block-grid" style="margin: 0 auto; min-width: 320px; max-width: 640px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;"> 
-                            <div style="border-collapse: collapse;display: table;width: 100%; background-color:transparent;"> 
-                             <div class="col num12" style="min-width: 320px; max-width: 640px; display: table-cell; vertical-align: top; width: 640px;"> 
-                              <div style="width:100% !important;"> 
-                               <div align="center" class="center autowidth" style="padding-right: 0px;padding-bottom: 0px; padding-left: 0px;">
-                                &nbsp;
-                               </div> 
-                              </div> 
-                             </div> 
-                            </div> 
-                           </div> 
-                          </div> 
-                         </div> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> </td> 
+                   <td>&nbsp;</td> 
+                  </tr> 
+                  <tr> 
+                   <td class="column-content-paragraph">&nbsp;</td> 
                   </tr> 
                  </tbody> 
                 </table> </td> 
               </tr> 
              </tbody> 
-            </table> </td> 
+            </table> 
+            <!-- First cokumn End -->
+            <!-- First column End -->
+            <!-- Second Column Prodigy --> 
+            <table class="column"> 
+             <tbody> 
+              <tr> 
+               <td class="padding"> 
+                <table class="column-content"> 
+                 <tbody> 
+                  <tr> 
+                   <td>&nbsp;</td> 
+                  </tr> 
+                  <tr> 
+                   <td class="column-content-paragraph">&nbsp;</td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <!-- Second column End -->
+            <!-- Third Column Pippet --> 
+            <table class="column"> 
+             <tbody> 
+              <tr> 
+               <td class="padding"> 
+                <table class="column-content"> 
+                 <tbody> 
+                  <tr> 
+                   <td>&nbsp;</td> 
+                  </tr> 
+                  <tr> 
+                   <td class="column-content-paragraph">&nbsp;</td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <!-- Third column End --></td> 
           </tr> 
          </tbody> 
         </table> </td> 
       </tr> 
+      <!-- Footer	Start --> 
+      <tr> 
+       <td> 
+        <table> 
+         <tbody> 
+          <tr> 
+           <td class="footer"> <p>Your Opinion Matters</p> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <!-- Footer	 End--> 
      </tbody> 
     </table> 
    </div> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <center>
+    <span style="color: #607382; ">To cut out email,</span>
+    <a href="http://www.go-trckups.info/8456V239Tv5CQ8V611s465aS10cfr36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQjdRRQ6OIH10U5SlwND/astuteness-irregulars" style="text-decoration-line: none;"> <span>Continue.Over.Here </span> </a>
+    <br /> 126 E 23rd St New York, NY, US 10010
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> <font><big></font></big><font></font><font dir="Richard"></font><span size="gleanings"></span><font dir="vetoer"></font><font></font><style></style>
+   </center> 
   </center>   
- <img src="http://www.py-paltop.info/31d6tZ239t5v8R5Y13cX4658ON10ceD36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQkdRRd6eOv1l05QpwJD/splashes-steeps" alt=""/></body>
+ <img src="http://www.go-trckups.info/precedent-parenthetic/be86rZ23L95mC8J511i465cP10cfu36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQjdRRQ7WM1Nng06KJ2wAD" alt=""/></body>
 </html>
 
-------=_Part_430_325952900.1673636516700--
+------=_Part_412_75775956.1673639110415--
 
