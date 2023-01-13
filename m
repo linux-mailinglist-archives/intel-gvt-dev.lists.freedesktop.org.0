@@ -1,80 +1,69 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9AD5A6688C6
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 01:56:58 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2137666895E
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 03:05:24 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 635BC10E1B7;
-	Fri, 13 Jan 2023 00:56:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 64C1510E971;
+	Fri, 13 Jan 2023 02:05:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 96CE310E1B7
+Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com
+ [IPv6:2607:f8b0:4864:20::631])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 71E7410E971
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 00:56:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1673571413;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XG7oCthi1cz9qA5sCXs+Yfwmmh8peH0gCPI3GPwykJs=;
- b=JvzreIi9alzklcFGDRo5do/TjaanqVRFieRK+1vcvdF4hQc2FinhJ6JljbyeHcsahp9I3X
- cBusJ9zsSZhTE7Pjqn/8vdKmL/8UOqEFu9sgFYoWuee55JjsKmt7cIZn3spoyWM64yZ1Tj
- w6X57Ufu0FRPQalsckXK1UPljTzkQo4=
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-662-FZiQFKQ4NaeG_CEWa18E3w-1; Thu, 12 Jan 2023 19:56:52 -0500
-X-MC-Unique: FZiQFKQ4NaeG_CEWa18E3w-1
-Received: by mail-il1-f200.google.com with SMTP id
- z8-20020a056e02088800b0030c247efc7dso14701518ils.15
+ Fri, 13 Jan 2023 02:05:19 +0000 (UTC)
+Received: by mail-pl1-x631.google.com with SMTP id 17so22076884pll.0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 16:56:52 -0800 (PST)
+ Thu, 12 Jan 2023 18:05:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=imvHeHfSB76NKxqNg7yS5d0bnfZ/68ukGArZSjXXLbU=;
+ b=gfL4hh/PAfTWoPxrgPNOjugdRQT6/WV65DgBrSnpV5ljD3nsqQZO//RzEo7T4oLQqx
+ c4Q0mI405eGfoj8LuS0wI2sQdlqaeNnCgTAsK9ojs6iEaCaHua6vjwZaKDc+OIsKFBm9
+ w5TSAgwjkuR9lTRDlbRtIxIeYn77XVQL36m+j6TNN1IPYFjq7eERVWltVZh8xI+AuS6x
+ Ebb8o0T31ad1vrZqKXtO581o4RiY7HqEeVSqH6w/J7bYR6aLkGoMN3t0S7fDWdcn2JdL
+ sRmydefKjnfHqNzBKp647Hzmqgin/vcHPGOfInZ9RvBNC86xV/kMej7ry3nwiPeZw8Hm
+ rb1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=XG7oCthi1cz9qA5sCXs+Yfwmmh8peH0gCPI3GPwykJs=;
- b=f5TeqN9jXAo5yvW2eAqbljsIhySORppmtGqBCJXj71+bEFwkTH/El0q7gIATPtXLO7
- QmoAXbuh1ZxRW20jstr0lwexs9p2feMLhGVRK0fuPTYPbpep+cCiCegfLQ7PzH6C+Qof
- iFZ8mugTMNWCCWpvtV96JaXy/JhG+gIvEWUD+CsJefTyh2m0My4qNCFbT9yBnIIu8gc9
- fU+sO+7jUAkeEcT+Gco4w0uxqNmQcx+/evEhU3+EVMwx9rceNLmz3l3C1GM1iOzr5nI+
- hTfQBcqfdOhAnNJ19S7gMO13kH083isLv0CaMSs1wPlglcFPemvYLzgdBzjYy5MUXhPC
- XwgQ==
-X-Gm-Message-State: AFqh2ko9IMgaxrmUn1FOQZYsczidMdw4eki5+qg4qVSYJsvJchSPjq02
- k15ZtmSSexfzptgt2zGTe2/qyQVDhVQhyPGGa8X6CD4nh/bDlupGeV7rCniVWeBt6WHn7O4z0kJ
- n4MGZe3ASfnGGJDferDOoprpf8CbJe9wzCg==
-X-Received: by 2002:a5d:8c88:0:b0:6f1:f493:7240 with SMTP id
- g8-20020a5d8c88000000b006f1f4937240mr6277500ion.3.1673571411513; 
- Thu, 12 Jan 2023 16:56:51 -0800 (PST)
-X-Google-Smtp-Source: AMrXdXvsA3h8dnBWYocee5XN2BqUQKDNeUrvNWtFiPzDqbJBlxeKo+IUAua2OcaVeTDIIuJpIjdmug==
-X-Received: by 2002:a5d:8c88:0:b0:6f1:f493:7240 with SMTP id
- g8-20020a5d8c88000000b006f1f4937240mr6277474ion.3.1673571411216; 
- Thu, 12 Jan 2023 16:56:51 -0800 (PST)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- e18-20020a022112000000b0039e048ad8e7sm5624918jaa.59.2023.01.12.16.56.50
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=imvHeHfSB76NKxqNg7yS5d0bnfZ/68ukGArZSjXXLbU=;
+ b=RwPQLEe0GbLfQDt51j8hajEKdjNPxaq86otEzuSVqemug1E7b3AqZtIiQR6Xz582Lc
+ 1a8BhSIqFgbncBtDqCjPOODjR7OJKqpu8FPM6TQkzP/3LG+0e11KxUw2QyVh7AW8iyLB
+ WBkiecOgyNL99/u4CcUlQ8tQkrgdjH+UhS+9YeJ3Ab1E6oPZF4ARmb/2Oprb70p03Ecg
+ tCtgXpaaz0ORCucmlzFq34BcMWu2bQT8l4I3Q/jyfe7MJDufbu9F/tqWkoAN+o3m2gok
+ 4spsWOkJwsZHPGIZNQxvP9qjIKOJGHi0fT+KvXLvfR8ymsMpir3cRuuDdgZXP4dQ0cZB
+ nVNQ==
+X-Gm-Message-State: AFqh2kqmo3yEneLpEvkJmhrm2zttdwzDZ472kDqNC6Tj6TY8qI4BbarY
+ S19u0Bwex1rBi60GSh2KSiDAFw==
+X-Google-Smtp-Source: AMrXdXt5UhWv4+gCCOg9vsmsrXhYZBecqcoz5x+/Oa5eI3PEct7oPHliTdSgvAqHMlV57ui5SVshog==
+X-Received: by 2002:a17:902:b10e:b0:191:4367:7fde with SMTP id
+ q14-20020a170902b10e00b0019143677fdemr994708plr.0.1673575518755; 
+ Thu, 12 Jan 2023 18:05:18 -0800 (PST)
+Received: from google.com (7.104.168.34.bc.googleusercontent.com.
+ [34.168.104.7]) by smtp.gmail.com with ESMTPSA id
+ d22-20020a170902aa9600b001871461688esm12835625plr.175.2023.01.12.18.05.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Jan 2023 16:56:50 -0800 (PST)
-Date: Thu, 12 Jan 2023 17:56:48 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Sean Christopherson <seanjc@google.com>
+ Thu, 12 Jan 2023 18:05:18 -0800 (PST)
+Date: Fri, 13 Jan 2023 02:05:14 +0000
+From: Sean Christopherson <seanjc@google.com>
+To: Alex Williamson <alex.williamson@redhat.com>
 Subject: Re: [PATCH v2] vfio: fix potential deadlock on vfio group lock
-Message-ID: <20230112175648.158dca5f.alex.williamson@redhat.com>
-In-Reply-To: <Y8CX8YwT/T9v4U/D@google.com>
+Message-ID: <Y8C8WpkjgFelldTQ@google.com>
 References: <20230112203844.41179-1-mjrosato@linux.ibm.com>
  <20230112140517.6db5b346.alex.williamson@redhat.com>
  <bce7912a-f904-b5a3-d234-c3e2c42d9e54@linux.ibm.com>
  <Y8CX8YwT/T9v4U/D@google.com>
-Organization: Red Hat
+ <20230112175648.158dca5f.alex.williamson@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230112175648.158dca5f.alex.williamson@redhat.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,57 +87,38 @@ Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 12 Jan 2023 23:29:53 +0000
-Sean Christopherson <seanjc@google.com> wrote:
-
-> On Thu, Jan 12, 2023, Matthew Rosato wrote:
-> > On 1/12/23 4:05 PM, Alex Williamson wrote:  
-> > > On Thu, 12 Jan 2023 15:38:44 -0500
-> > > Matthew Rosato <mjrosato@linux.ibm.com> wrote:  
-> > >> @@ -344,6 +345,35 @@ static bool vfio_assert_device_open(struct vfio_device *device)
-> > >>  	return !WARN_ON_ONCE(!READ_ONCE(device->open_count));
-> > >>  }
-> > >>  
-> > >> +static bool vfio_kvm_get_kvm_safe(struct kvm *kvm)
-> > >> +{
-> > >> +	bool (*fn)(struct kvm *kvm);
-> > >> +	bool ret;
-> > >> +
-> > >> +	fn = symbol_get(kvm_get_kvm_safe);
-> > >> +	if (WARN_ON(!fn))  
+On Thu, Jan 12, 2023, Alex Williamson wrote:
+> On Thu, 12 Jan 2023 23:29:53 +0000
+> Sean Christopherson <seanjc@google.com> wrote:
 > 
-> In a related vein to Alex's comments about error handling, this should not WARN.
-> WARNing during vfio_kvm_put_kvm() makes sense, but the "get" is somewhat blind.
-
-It's not exactly blind though, we wouldn't have a kvm pointer if the
-kvm-vfio device hadn't stuffed one into the group.  We only call into
-here if we have a non-NULL pointer, so it wouldn't simply be that the
-kvm module isn't available for this to fire, but more that we have an
-API change to make the symbol no longer exist.  A WARN for that doesn't
-seem unreasonable.  Thanks,
-
-Alex
-
-> > >> +		return false;
-> > >> +
-> > >> +	ret = fn(kvm);
-> > >> +
-> > >> +	symbol_put(kvm_get_kvm_safe);
-> > >> +
-> > >> +	return ret;
-> > >> +}
-> > >> +
-> > >> +static void vfio_kvm_put_kvm(struct kvm *kvm)
-> > >> +{
-> > >> +	void (*fn)(struct kvm *kvm);
-> > >> +
-> > >> +	fn = symbol_get(kvm_put_kvm);
-> > >> +	if (WARN_ON(!fn))
-> > >> +		return;
-> > >> +
-> > >> +	fn(kvm);
-> > >> +
-> > >> +	symbol_put(kvm_put_kvm);
-> > >> +}  
+> > On Thu, Jan 12, 2023, Matthew Rosato wrote:
+> > > On 1/12/23 4:05 PM, Alex Williamson wrote:  
+> > > > On Thu, 12 Jan 2023 15:38:44 -0500
+> > > > Matthew Rosato <mjrosato@linux.ibm.com> wrote:  
+> > > >> @@ -344,6 +345,35 @@ static bool vfio_assert_device_open(struct vfio_device *device)
+> > > >>  	return !WARN_ON_ONCE(!READ_ONCE(device->open_count));
+> > > >>  }
+> > > >>  
+> > > >> +static bool vfio_kvm_get_kvm_safe(struct kvm *kvm)
+> > > >> +{
+> > > >> +	bool (*fn)(struct kvm *kvm);
+> > > >> +	bool ret;
+> > > >> +
+> > > >> +	fn = symbol_get(kvm_get_kvm_safe);
+> > > >> +	if (WARN_ON(!fn))  
+> > 
+> > In a related vein to Alex's comments about error handling, this should not WARN.
+> > WARNing during vfio_kvm_put_kvm() makes sense, but the "get" is somewhat blind.
 > 
+> It's not exactly blind though, we wouldn't have a kvm pointer if the
+> kvm-vfio device hadn't stuffed one into the group.  We only call into
+> here if we have a non-NULL pointer, so it wouldn't simply be that the
+> kvm module isn't available for this to fire, but more that we have an
+> API change to make the symbol no longer exist.  A WARN for that doesn't
+> seem unreasonable.  Thanks,
 
+Hmm, I was thinking that it might be possible for kvm.ko to be on its way out,
+but barring use of force module unload, which breaks things left and right, kvm.ko
+can only be going if all VMs have been destroyed.
+
+Agreed, WARN is fine.
