@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3AEE668655
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Jan 2023 23:07:03 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06A9E6687B5
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 00:02:20 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ACAFC10E93F;
-	Thu, 12 Jan 2023 22:07:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CD97610E959;
+	Thu, 12 Jan 2023 23:02:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
- Thu, 12 Jan 2023 22:06:59 UTC
-Received: from mail.nw-mbldeal.info (unknown [45.13.189.23])
- by gabe.freedesktop.org (Postfix) with ESMTP id 99DC810E938
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Thu, 12 Jan 2023 23:02:16 UTC
+Received: from mail.slvr-sheets.info (unknown [45.13.189.24])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1013810E956
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 22:06:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nw-mbldeal.info; 
+ Thu, 12 Jan 2023 23:02:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=slvr-sheets.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=att_user_feedback@nw-mbldeal.info; 
- bh=QdRxde0HqOYwY9qrnoLbnA+sZ1Y=;
- b=t/DScK8LVvpmjTrQxpG9WBmt2xtCVNr7158dMED2HoX+kcsVKNg8w975I5QraW1shWbtWv+ozVL6
- vG9zwmFC8PQrY24cqb6SWKebG8DkIzl9dTciLiCILF+rn+whlPc4jFZQ+hk2ZIfNyDrnVOvrnabI
- ExbvxGrQfJAf+HZt+K0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nw-mbldeal.info;
- b=cbdPpsCBsJU+38M7wxcfW86zLZgTDBHlXityIRE2qn3QYLBVuEJu9CCXMWwrz6eezJoiz9DmUXjR
- DFztSHCgPFyChaes1Zb8yjiFSao6pUh/CQ/KEYzWks/zHIE8nHZgFhizobxnFZTW9lL4BlIJ6tiW
- /eC1GjQhIvXAUzv9QsA=;
-Received: by mail.nw-mbldeal.info id ho22860001gm for
+ i=miracle.sheets.offer@slvr-sheets.info; 
+ bh=BgjchFwyk7RRtygDioFPgRl9z7Q=;
+ b=Vb/18R4+BHUmUjPyYzODoK/BHLdxTb2SDVUSj8Q6kh/4mLa+2Iz6EEcH0nHor1qe/Pg5gU58LRa9
+ IwTmu3vpvcaVDEm3+wcxlZBZa11H392cc2suhKN7Yz7lN414DRHvqaj36NL7BAQsE/e6/MhfhOcu
+ AiuB6YjAGomAIHr+pzA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=slvr-sheets.info;
+ b=ahl5Y91r50YAI3GARtuZpj8Oe2e14gsqfjBxZd1qRjRsco7MP76oF2Z4wNzkknQBlool1acYTWU+
+ x9pIEEATIhVhz2pNXqbv31zmWdHIMkBJpsfCej1fSZKwWYNF6vF6OmVzw28TcEXWxrB6+Cpckv4x
+ sk/v7AMYq/w2CIFFv28=;
+Received: by mail.slvr-sheets.info id ho2ivc0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Jan 2023 16:53:14 -0500 (envelope-from
- <att_user_feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@nw-mbldeal.info>)
-Date: Thu, 12 Jan 2023 16:53:14 -0500
-From: "ATT User Feedback" <att_user_feedback@nw-mbldeal.info>
+ Thu, 12 Jan 2023 19:17:08 -0500 (envelope-from
+ <miracle.sheets.offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@slvr-sheets.info>)
+Date: Thu, 12 Jan 2023 19:17:08 -0500
+From: "Miracle Sheets Offer" <miracle.sheets.offer@slvr-sheets.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best way to show appreciation for your loyalty
+Subject: Make sleep luxurious
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_379_1959844124.1673560354089"
-Message-ID: <0.0.0.2A.1D926D0457C607A.478DAF@mail.nw-mbldeal.info>
+ boundary="----=_Part_214_1320900897.1673563769971"
+Message-ID: <0.0.0.17.1D926E45FCD2B94.3A1BFB@mail.slvr-sheets.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,378 +53,174 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_379_1959844124.1673560354089
+------=_Part_214_1320900897.1673563769971
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
  <head> 
-  <title>WHAT YOU THINK!</title> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0 " name="viewport" /> 
-  <meta content="telephone=no" name="format-detection" />
-  <!--[if !mso]><!--> 
-  <link href="http://www.nw-mbldeal.info/Anatolia-steady/9365SS2395K8NN611S4638y10c9U36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgdRQK7cu1Bon05hjwDN" rel="stylesheet" />
-  <!--<![endif]--> 
-  <style type="text/css">body {
-      -webkit-text-size-adjust: 100% !important;
-      -ms-text-size-adjust: 100% !important;
-      -webkit-font-smoothing: antialiased !important;
-      }
-      img {
-      border: 0 !important;
-      outline: none !important;
-      }
-      p {
-      Margin: 0px !important;
-      Padding: 0px !important;
-      }
-      table {
-      border-collapse: collapse;
-      mso-table-lspace: 0px;
-      mso-table-rspace: 0px;
-      }
-      td, a, span {
-      border-collapse: collapse;
-      mso-line-height-rule: exactly;
-      }
-      .ExternalClass * {
+  <title>myboo</title> 
+  <meta charset="utf-8" /> 
+  <style type="text/css">#outlook a {
+      padding: 0;
+    }
+    
+    .ReadMsgBody {
+      width: 100%;
+    }
+    
+    .ExternalClass {
+      width: 100%;
+    }
+    
+    .ExternalClass * {
       line-height: 100%;
-      }
-      span.MsoHyperlink {
-      mso-style-priority:99;
-      color:inherit;}
-      span.MsoHyperlinkFollowed {
-      mso-style-priority:99;
-      color:inherit;}
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+    
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+    
+    p {
+      display: block;
+      margin: 13px 0;
+    }
 	</style> 
-  <style media="only screen and (min-width:481px) and (max-width:599px)" type="text/css">@media only screen and (min-width:481px) and (max-width:599px) {
-      table[class=em_main_table] {
-      width: 100% !important;
+  <style type="text/css">@media only screen and (max-width:480px) {
+      @-ms-viewport {
+        width: 320px;
       }
-      table[class=em_wrapper] {
-      width: 100% !important;
+      @viewport {
+        width: 320px;
       }
-      td[class=em_hide], br[class=em_hide] {
-      display: none !important;
-      }
-      img[class=em_full_img] {
-      width: 100% !important;
-      height: auto !important;
-      }
-      td[class=em_align_cent] {
-      text-align: center !important;
-      }
-      td[class=em_aside]{
-      padding-left:10px !important;
-      padding-right:10px !important;
-      }
-      td[class=em_height]{
-      height: 20px !important;
-      }
-      td[class=em_space]{
-      width:10px !important;	
-      }
-      td[class=em_font]{
-      font-size:14px !important;	
-      }
-      td[class=em_align_cent1] {
-      text-align: center !important;
-      padding-bottom: 10px !important;
-      }
-      }
+    }
 	</style> 
-  <style media="only screen and (max-width:480px)" type="text/css">@media only screen and (max-width:480px) {
-      table[class=em_main_table] {
-      width: 100% !important;
+  <link href="http://www.slvr-sheets.info/cr55s2k395u8mJ611U463dH10caT36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQcdRRm6lIs1m06bXM@wD/thousand-Mayfair" rel="stylesheet" type="text/css" /> 
+  <style type="text/css">@import url(http://www.slvr-sheets.info/cr55s2k395u8mJ611U463dH10caT36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQcdRRm6lIs1m06bXM@wD/thousand-Mayfair);
+	</style> 
+  <style type="text/css">@media only screen and (min-width:480px) {
+      .mj-column-per-100,
+      * [aria-labelledby="mj-column-per-100"] {
+        width: 100%!important;
       }
-      table[class=em_wrapper] {
-      width: 100% !important;
+    }
+	</style> 
+  <style type="text/css">@media only screen and (max-width:480px) {
+      .mj-hero-content {
+        width: 100% !important;
       }
-      td[class=em_hide], br[class=em_hide], span[class=em_hide] {
-      display: none !important;
-      }
-      img[class=em_full_img] {
-      width: 100% !important;
-      height: auto !important;
-      }
-      td[class=em_align_cent] {
-      text-align: center !important;
-      }
-      td[class=em_height]{
-      height: 20px !important;
-      }
-      td[class=em_aside]{
-      padding-left:10px !important;
-      padding-right:10px !important;
-      } 
-      td[class=em_font]{
-      font-size:14px !important;
-      line-height:28px !important;
-      }
-      td[class=em_space]{
-      width:10px !important;	
-      }
-      span[class=em_br]{
-      display:block !important;
-      }
-      td[class=em_align_cent1] {
-      text-align: center !important;
-      padding-bottom: 10px !important;
-      }
-      }
+    }
 	</style> 
  </head> 
- <body bgcolor="#ffffff" style="margin:0px; padding:0px;"> 
-  <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
-   <!-- === PRE HEADER SECTION=== --> 
-   <tbody> 
-    <tr> 
-     <td align="center" bgcolor="#30373b" valign="top"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_main_table" style="table-layout:fixed;" width="600"> 
-       <tbody> 
-        <tr> 
-         <td bgcolor="#30373b" class="em_hide" style="line-height:0px; font-size:0px;" width="600">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td valign="top"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" width="600"> 
-           <tbody> 
-            <tr> 
-             <td class="em_height" height="10" style="font-size:1px; line-height:1px;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td valign="top"> 
-              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td valign="top"> 
-                  <table align="right" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" width="150"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="right" class="em_align_cent1" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:16px; color:#848789; text-decoration:underline;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                  <table align="left" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" width="400"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="left" class="em_align_cent" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789; text-decoration:none;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr> 
-             <td class="em_height" height="10" style="font-size:1px; line-height:1px;">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!-- === //PRE HEADER SECTION=== --> 
-    <tr> 
-     <td align="center" bgcolor="#ffffff" valign="top"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_main_table" style="table-layout:fixed;" width="600">
-       <!-- === LOGO SECTION === --> 
-       <tbody> 
-        <tr> 
-         <td class="em_height" height="40">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center"> 
-          <fieldset style="border-style: solid; border-bottom: none; border-left: none; border-right: none">
-           <legend style="padding: 15px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 38px; color: #027CD5"><b>AT&amp;T</b></legend>
-          </fieldset> </td> 
-        </tr> 
-        <tr> 
-         <td class="em_height" height="30">&nbsp;</td> 
-        </tr> 
-        <!-- === //LOGO SECTION === -->
-        <!-- === NEVIGATION SECTION === --> 
-        <tr> 
-         <td bgcolor="#fed69c" height="1" style="font-size:0px; line-height:0px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td height="14" style="font-size:1px; line-height:1px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" class="em_font" style="font-family:'Open Sans', Arial, sans-serif; font-size:15px; line-height:18px; color:#30373b; text-transform:uppercase; font-weight:bold;"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="text-decoration:none; color:#30373b;" target="_blank">Deals</a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="text-decoration:none; color:#30373b;" target="_blank">Phone &amp; Devices</a><span class="em_hide"> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; </span><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="text-decoration:none; color:#30373b;" target="_blank">Wireless</
- a> &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="text-decoration:none; color:#30373b;" target="_blank">Internet</a></td> 
-        </tr> 
-        <tr> 
-         <td height="14" style="font-size:1px; line-height:1px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="#fed69c" height="1" style="font-size:0px; line-height:0px;">&nbsp;</td> 
-        </tr> 
-        <!-- === //NEVIGATION SECTION === -->
-        <!-- === RATE OUR SERVICE SECTION === --> 
-        <tr> 
-         <td class="em_aside" valign="top"> 
-          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td class="em_height" height="36">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:28px; font-weight:bold; line-height:20px; text-transform:uppercase; color:#129DDC;"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD"><img alt="" src="http://www.nw-mbldeal.info/31d5qB2395h7kza12z46Y3bI10c9o36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQgdRQK5QK1v06d0NMwD/enervate-aerosolize" width="100%" /></a><br /> <br /> The AT&amp;T difference<br /> &nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:25px; line-height:normal; color:#999999;">Get just a few clicks away from The <b>$100 AT&amp;T Card</b>, by completing our 20-Second Service Survey about your recent experience with us.</td> 
-            </tr> 
-            <tr> 
-             <td height="16" style="font-size:1px; line-height:1px;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" class="em_height" height="41"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" bgcolor="" style="border-radius:3px;color:#8999ca;cursor:auto;" valign="middle"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="display:inline-block;text-decoration:none;background:none;border:solid #8999ca;border-radius:3px;color:#8999ca;font-family:Helvetica;font-size:23px;font-weight:bold;padding:10px 25px;margin:0px;" target="_blank">Go And Start Now </a></td> 
-                </tr> 
-               </tbody> 
-              </table> <br /> &nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" valign="top"> 
-              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td bgcolor="#129DDC" width="1">&nbsp;</td> 
-                 <td align="center" valign="top"> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td bgcolor="#129DDC" height="1" style="line-height:0px; font-size:0px;">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td class="em_height" height="36">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:18px; font-weight:bold; line-height:20px; text-transform:uppercase; color:#129DDC;"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#129DDC; text-decoration:none;" target="_blank">Click to rate our services</a></td> 
-                    </tr> 
-                    <tr> 
-                     <td height="18" style="font-size:1px; line-height:1px;">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" valign="top"> 
-                      <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" style="max-width:400px;" width="400"> 
-                       <tbody> 
-                        <tr> 
-                         <td width="9">&nbsp;</td> 
-                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">1</a></td> 
-                         <td class="em_space" width="39">&nbsp;</td> 
-                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">2</a></td> 
-                         <td class="em_space" width="39">&nbsp;</td> 
-                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">3</a></td> 
-                         <td class="em_space" width="39">&nbsp;</td> 
-                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">4</a></td> 
-                         <td class="em_space" width="39">&nbsp;</td> 
-                         <td align="center" bgcolor="#129DDC" height="45" style="font-family:'Open Sans', Arial, sans-serif; font-size:17px; font-weight:bold; color:#ffffff;" width="45"><a href="http://www.nw-mbldeal.info/synchronizes-serenity/1026rZJ2395pl8Q613F4639tTm10c9M36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQgdRQK7CH1WyT05BMPwD" style="color:#ffffff; text-decoration:none;" target="_blank">5</a></td> 
-                         <td width="10">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                    <tr> 
-                     <td class="em_height" height="36">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td bgcolor="#129DDC" height="1" style="line-height:0px; font-size:0px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                 <td bgcolor="#129DDC" width="1">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr> 
-             <td bgcolor="#d8e4f0" height="1" style="font-size:0px;line-height:0px;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="em_height" height="35">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="em_height" height="31">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <!-- === RATE OUR SERVICE SECTION === --> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!-- === FOOTER SECTION === --> 
-    <tr> 
-     <td align="center" bgcolor="#30373b" class="em_aside" valign="top"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="em_main_table" style="table-layout:fixed;" width="600"> 
-       <tbody> 
-        <tr> 
-         <td class="em_height" height="35">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" valign="top"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0"> 
-           <tbody> 
-            <tr> 
-             <td valign="top">&nbsp;</td> 
-             <td width="7">&nbsp;</td> 
-             <td valign="top">&nbsp;</td> 
-             <td width="7">&nbsp;</td> 
-             <td valign="top">&nbsp;</td> 
-             <td width="7">&nbsp;</td> 
-             <td valign="top">&nbsp;</td> 
-             <td width="7">&nbsp;</td> 
-             <td valign="top">&nbsp;</td> 
-             <td width="7">&nbsp;</td> 
-             <td valign="top">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td class="em_height" height="22">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;"><span style="text-decoration: none; ">To withdraw from communications,</span><a href="http://www.nw-mbldeal.info/c415f2Z395Q8sI613S463KZaJ10c9L36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQgdRQK7SSsw1U06tpwDlA/counselors-Hitlerites" style="text-decoration-line: none;"> <span style="color: red">Visit Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style face="redcoat"><small></small></style><style lang="audience"></style><style color="Epicurean"></style><font><font><style></font></font></style><style></style></td> 
-        </tr> 
-        <tr> 
-         <td height="10" style="font-size:1px; line-height:1px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;text-transform:uppercase;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td height="10" style="font-size:1px; line-height:1px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td align="center" style="font-family:'Open Sans', Arial, sans-serif; font-size:12px; line-height:18px; color:#848789;text-transform:uppercase;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td class="em_height" height="35">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!-- === //FOOTER SECTION === --> 
-   </tbody> 
-  </table> 
-  <div style="display:none; white-space:nowrap; font:20px courier; color:#ffffff; background-color:#ffffff;">
-   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ <!--[if !mso]><!-->
+ <!--<![endif]--> 
+ <body style="padding: 0; margin: 0"> 
+  <div style="margin:0;padding:0;background:#efefef"> 
+   <table align="center" cellpadding="0" cellspacing="0" width="500"> 
+    <tbody> 
+     <tr> 
+      <td height="60">&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td> 
+       <table bgcolor="#fff" cellspacing="0" style="padding:0 25px" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td style="text-align:center"><a href="http://www.slvr-sheets.info/submariner-equated/3006o2n39o5m86_R13L46R3eyt10cau36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdRRm5f1l0O6E2NwD3"><img alt="" src="http://www.slvr-sheets.info/7cd4I2395B7ORa11A4642R10caH36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQcdRRm5k1yK06tMU1wD/thousand-Mayfair" width="100%" /></a></td> 
+         </tr> 
+         <tr> 
+          <td height="40">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td style="color:#747e7e;font-family:Lato,Helvetica,Arial,sans-serif;text-align:center;font-size:18px;font-weight:normal"><i>Fast free USA Shipping!<br /> Limited, 30 Days Money Back Guaranteed!</i><br /> &nbsp; 
+           <table cellpadding="1" cellspacing="1" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="center" style="padding: 12px"> <h2 style="color: #00237E">Don't Sweat it, These Miracle Sheets Will Help You Stay Cooler And Cleaner This Summer</h2> <a href="http://www.slvr-sheets.info/submariner-equated/3006o2n39o5m86_R13L46R3eyt10cau36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdRRm5f1l0O6E2NwD3"><img alt="" src="http://www.slvr-sheets.info/1d36hhP2395Avu7a13wy464p3X10caG36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQcdRRm6M1A0Oj5qlwBD/hindsight-sustenance" width="100%" /> </a><a href="http://www.slvr-sheets.info/submariner-equated/3006o2n39o5m86_R13L46R3eyt10cau36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdRRm5f1l0O6E2NwD3"> <img alt="Giving Tuesday - Dec. 1, 2020" class="model" src="http://www.slvr-sheets.info/thousand-Mayfair/60c4b2395I7atr11m4644q10caP36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQcdRRm6vo1M0g5z2wDL" style="display: block; max-width: 560px;  border-width: 0px; border-style: none; line-height: 100%; max-width: 100%; outline-width: medium; outline-style: 
+ none; text-decoration: none; padding: 0px; width: 100%" width="560" /></a> 
+               <table cellpadding="1" cellspacing="1" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center" style="font-size: 24px">Are you tired of washing your sheets just for them to get smelly and dirty again? it's time to say goddbye to sweaty sleepless nights!</td> 
+                 </tr> 
+                </tbody> 
+               </table> <br /> <br /> <a href="http://www.slvr-sheets.info/submariner-equated/3006o2n39o5m86_R13L46R3eyt10cau36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdRRm5f1l0O6E2NwD3" style="color: #fff"><img alt="" src="http://www.slvr-sheets.info/blasting-idiosyncrasies/e9a6p239Y_5S7axO12i4Y645I10caX36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdRRm6f10QMU5RqwDz" width="100%" /> </a> <h3 style="color: #00237E; font-weight: normal;">Premium Sheets Made With all-Natural Silver That <b>Prevents 99.9% of Bacteria</b><br /> <br /> <a href="http://www.slvr-sheets.info/submariner-equated/3006o2n39o5m86_R13L46R3eyt10cau36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQcdRRm5f1l0O6E2NwD3">Go Here And Start Now</a></h3> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td height="30">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td width="100%"> 
+           <table cellpadding="0" cellspacing="0" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td height="30">&nbsp;</td> 
+              <td height="30">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td style="border-bottom:1px solid #e3e5e5;padding:0 0 30px 20px;text-align:left;font-size:14px;font-family:Lato,Helvetica,Arial,sans-serif;color:#747e7e;font-weight:bold" width="20%">&nbsp;</td> 
+              <td style="border-bottom:1px solid #e3e5e5;padding:0 0 30px 20px;text-align:left;font-size:14px;font-family:Lato,Helvetica,Arial,sans-serif;color:#747e7e" width="80%">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td height="30">&nbsp;</td> 
+              <td height="30">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td style="border-bottom:1px solid #e3e5e5;padding:0 0 30px 20px;text-align:left;font-size:14px;font-family:Lato,Helvetica,Arial,sans-serif;color:#747e7e;font-weight:bold" width="20%">&nbsp;</td> 
+              <td style="border-bottom:1px solid #e3e5e5;padding:0 0 30px 20px;text-align:left;font-size:14px;font-family:Lato,Helvetica,Arial,sans-serif;color:#747e7e" width="80%">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td height="30">&nbsp;</td> 
+              <td height="30">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td colspan="2" style="padding:0 0 30px 20px;text-align:left;font-size:14px;font-family:Lato,Helvetica,Arial,sans-serif;color:#747e7e;font-weight:bold">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td colspan="2" style="padding:0 0 20px 20px;text-align:left;font-size:14px;font-family:Lato,Helvetica,Arial,sans-serif;color:#747e7e">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td height="60">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td height="60" style="padding:20px;text-align:center;font-size:11px;font-family:Lato,Helvetica,Arial,sans-serif;color:#747e7e; line-height: 30px"><a href="http://www.slvr-sheets.info/submariner-equated/9365hF2395ui86n12D4640UI10caV36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQcdRRm7Cp_O10z5ETkwD" style="text-decoration: underline!important; font-family: sans-serif; line-height: 14px; text-align: center; color: #999;">Miracle Sheets</a>&nbsp;|&nbsp; 
+       <!-- BRAND NAME : END --> 
+       <!-- ADDRESS : BEGIN --> No longer want to receive email notices?,<a href="http://www.slvr-sheets.info/e214e2395p86Oj11W4641Q10caM36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQcdRRm5tQ1V06apU1wD/typhoid-ribbon" style="text-decoration-line: none;"> <span>Follow Here </span> </a><br /> <br /> 1501 Haines St. | Jacksonville, FL 32206<br /> <br /> <br /> <br /> <br /> <br /> <style face="motivation"></style><span color="Muhammad"><small></span><span dir="immigrated"><span class="solitary"></span></small></span><span></span><big></big><br /> &nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
   </div>   
- <img src="http://www.nw-mbldeal.info/incompetents-ascended/2a66t2w39I5hCi8513L46V3csT10c9k36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQgdRQK5CF1L06bTy0wD" alt=""/></body>
+ <img src="http://www.slvr-sheets.info/typhoid-ribbon/daa5I2x395u85lO11a4646v10caj36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQcdRRm6l1U0kI6aLAw3D" alt=""/></body>
 </html>
 
-------=_Part_379_1959844124.1673560354089--
+------=_Part_214_1320900897.1673563769971--
 
