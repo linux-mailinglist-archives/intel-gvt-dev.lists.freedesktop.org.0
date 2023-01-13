@@ -1,62 +1,72 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A35B66A217
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 19:30:29 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 261DD66A259
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 19:48:12 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 24B3F10EA98;
-	Fri, 13 Jan 2023 18:30:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8653C10EA93;
+	Fri, 13 Jan 2023 18:48:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-xe32.google.com (mail-vs1-xe32.google.com
- [IPv6:2607:f8b0:4864:20::e32])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4D2F610EA93;
- Fri, 13 Jan 2023 18:30:24 +0000 (UTC)
-Received: by mail-vs1-xe32.google.com with SMTP id q125so11326695vsb.0;
- Fri, 13 Jan 2023 10:30:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=CXzwvPSlVj3I6D/88tyYLanpnLn/NDNCNzhBeAOiGYM=;
- b=I531NW5K7Qsn31FeCSrTjL5IBfAkbpXCnoHEFr59z0it+fWxQgQ2vRsLj0jxooBany
- mW3Zb1fi8SHgMf2OmV3QbrQU2eIha8LYe3KuOy2clkf15zGa0GcwbXAedwfHSL7A5pdP
- AQ/Lq6p7WFT6cUIKi6WQX0gyXrV+VV1ReisvGai0o15pGQZn34m9FjlZS/OjbM9/6Vth
- vzJFRvcVMUpFlKu2rmSOmAumQIfShzuPXMxHKwv4gYjRjGQf4TwdeddAz7pzNHF5JnBZ
- avR/hHNGYwz0T9RaqlvtqWN/p0PEK3XRxzTw7dr9chCOOIOG+CxBFk42EUQfmmwnJ7zF
- yA6w==
+Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
+ [IPv6:2a00:1450:4864:20::62d])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 43D2E10EA93
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 13 Jan 2023 18:48:09 +0000 (UTC)
+Received: by mail-ej1-x62d.google.com with SMTP id ss4so47070107ejb.11
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 13 Jan 2023 10:48:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=EG7jr/g9OljSlpvTsWEcmSixEQmShFVdzLVLaGMM5uM=;
+ b=FHNytH06W0UmXriNfArsKvuBHWyeeP40z9gCwoD//tkNxKoF3yEHvkTmM2lpJYyPvh
+ aUyQRjEdDyKDeYHV4ZnvgLw5xckxaKf3W0c5KQwF8eb11onD2e1VJmqQ2Atq0Kyojgno
+ GKVKsYXK5U/vmuLBdCYPIZKreg21A3xg5cKdE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=CXzwvPSlVj3I6D/88tyYLanpnLn/NDNCNzhBeAOiGYM=;
- b=jljcVQXiaYopbFQ4KTUr+5eajdBmh4CxXQ1zIMnQO9qit+p7655iafzch0J/4hSBmx
- WvNXaGMIcdwpY4Lq/QILkNETvaO4czhihQ8pWrwCze0QjFv3Py7jOjAw+wETCFgiZ/i+
- AUR+OjmeJnynjoms1hw1wLSST4k+95xYQ7bVITjk4+IbY1yvJu9VryaLGQtu+EYXkn1L
- l8rmvsPZN8xZq67F/U7wuAwAcrPO24ruVtvx71Dq2pPT3yYGO9xW0x+FM7kc27KspS54
- dV9cgq3uFAkL+1gCjW11Jt5/p6o2HNjARuE2OUfoTJ+vItf2+IDkzqz4CQIdwk6M5P7d
- 6+2w==
-X-Gm-Message-State: AFqh2kr7YT3Xe6RByDAdbQ4oyCGeWkcyPkZGfMIHnEctaSxKEJMYMbJj
- DbN6vC8tZpC+W+1DImhUxVNCU0Irv8Ypt0iqUAs=
-X-Google-Smtp-Source: AMrXdXsHLZ8s1p6LZJ4XXpzy/6UHD2QthJavSExaGcngbBLrF89HjvbE6MXSPcEdIEPY0Fsy++ntWEVFZC4rdd6wqVM=
-X-Received: by 2002:a05:6102:c8b:b0:3b2:ebc9:6307 with SMTP id
- f11-20020a0561020c8b00b003b2ebc96307mr12162616vst.73.1673634623018; Fri, 13
- Jan 2023 10:30:23 -0800 (PST)
-MIME-Version: 1.0
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EG7jr/g9OljSlpvTsWEcmSixEQmShFVdzLVLaGMM5uM=;
+ b=8DAmk22aePiiXr3VnwCowjqYvWj+SgV9LWsi3Sh2JJytUztwELRkQzsrxojimD+hMo
+ EdT0MGLm7pJ94eXD2OXtJroedCYopKql4elvAMBX9A29XH3WqyRJOCYO0SDTrKHt8uW+
+ C8Nt4FgLi/L049Q/wOIuV5WWzwKS6Jvct9lH6JYmFti0b//h6eJ2jjuRz0nGeotKybVF
+ IBpdY0bB9sp/xWdnUnXcwAQBzyR4gVx7jdAVRXqrvrpps4CZNoGpg+ZBwFIw6Mp40Sj3
+ dDJREr+TWFXJr9hu9+9eZFXHDK/Jrkigxc0l/Aa56YC9YmYpwXaul4VxmSaalwrEmBLV
+ Llaw==
+X-Gm-Message-State: AFqh2krgH4j8Jq5YD7t7mhHcCYEfNFKwXwmwBju0pDxRGMCojZwIG/Q7
+ 7OquqHzaBKNOVHWjDW2AtQxdbw==
+X-Google-Smtp-Source: AMrXdXsDpOBPrtmtkIdWBJZbgTmyQYDq0rUmqeQfEqwOFTt1cJYFl4hQ+nnqLt3BH5+kuiBBd52u2A==
+X-Received: by 2002:a17:906:cec4:b0:84d:269c:760a with SMTP id
+ si4-20020a170906cec400b0084d269c760amr23264615ejb.51.1673635687677; 
+ Fri, 13 Jan 2023 10:48:07 -0800 (PST)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id
+ k2-20020a170906970200b0073dbaeb50f6sm8691799ejx.169.2023.01.13.10.48.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Jan 2023 10:48:05 -0800 (PST)
+Date: Fri, 13 Jan 2023 19:48:03 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: jim.cromie@gmail.com
+Subject: Re: [RFC PATCH 00/17] DRM_USE_DYNAMIC_DEBUG regression
+Message-ID: <Y8GnY7k22KkG/AmN@phenom.ffwll.local>
+Mail-Followup-To: jim.cromie@gmail.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, jani.nikula@intel.com,
+ ville.syrjala@linux.intel.com, seanpaul@chromium.org,
+ robdclark@gmail.com, jbaron@akamai.com, gregkh@linuxfoundation.org
 References: <20221206003424.592078-1-jim.cromie@gmail.com>
  <Y79Btep8JnPKvuAp@phenom.ffwll.local>
-In-Reply-To: <Y79Btep8JnPKvuAp@phenom.ffwll.local>
-From: jim.cromie@gmail.com
-Date: Fri, 13 Jan 2023 11:29:57 -0700
-Message-ID: <CAJfuBxxZ0Kjc0G5Ngv7bmokkC4AJKZ07OMCKyLmHBGSsjG7qfA@mail.gmail.com>
-Subject: Re: [RFC PATCH 00/17] DRM_USE_DYNAMIC_DEBUG regression
-To: Jim Cromie <jim.cromie@gmail.com>, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org, 
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, 
- jani.nikula@intel.com, ville.syrjala@linux.intel.com, seanpaul@chromium.org, 
- robdclark@gmail.com, jbaron@akamai.com, gregkh@linuxfoundation.org
-Content-Type: text/plain; charset="UTF-8"
+ <CAJfuBxxZ0Kjc0G5Ngv7bmokkC4AJKZ07OMCKyLmHBGSsjG7qfA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAJfuBxxZ0Kjc0G5Ngv7bmokkC4AJKZ07OMCKyLmHBGSsjG7qfA@mail.gmail.com>
+X-Operating-System: Linux phenom 5.19.0-2-amd64 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,55 +79,69 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: daniel.vetter@ffwll.ch
+Cc: jani.nikula@intel.com, gregkh@linuxfoundation.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, robdclark@gmail.com, seanpaul@chromium.org,
+ dri-devel@lists.freedesktop.org, daniel.vetter@ffwll.ch, jbaron@akamai.com,
+ intel-gvt-dev@lists.freedesktop.org, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jan 11, 2023 at 4:09 PM Daniel Vetter <daniel@ffwll.ch> wrote:
->
-> On Mon, Dec 05, 2022 at 05:34:07PM -0700, Jim Cromie wrote:
-> > Hi everyone,
+On Fri, Jan 13, 2023 at 11:29:57AM -0700, jim.cromie@gmail.com wrote:
+> On Wed, Jan 11, 2023 at 4:09 PM Daniel Vetter <daniel@ffwll.ch> wrote:
 > >
-> > DRM_USE_DYNAMIC_DEBUG=y has a regression on rc-*
+> > On Mon, Dec 05, 2022 at 05:34:07PM -0700, Jim Cromie wrote:
+> > > Hi everyone,
+> > >
+> > > DRM_USE_DYNAMIC_DEBUG=y has a regression on rc-*
+> > >
+> > > Regression is due to a chicken-egg problem loading modules; on
+> > > `modprobe i915`, drm is loaded 1st, and drm.debug is set.  When
+> > > drm_debug_enabled() tested __drm_debug at runtime, that just worked.
+> > >
+> > > But with DRM_USE_DYNAMIC_DEBUG=y, the runtime test is replaced with a
+> > > post-load enablement of drm_dbg/dyndbg callsites (static-keys), via
+> > > dyndbg's callback on __drm_debug.  Since all drm-drivers need drm.ko,
+> > > it is loaded 1st, then drm.debug=X is applied, then drivers load, but
+> > > too late for drm_dbgs to be enabled.
+> > >
+> > > STATUS
+> > >
+> > > For all-loadable drm,i915,amdgpu configs, it almost works, but
+> > > propagating drm.debug to dependent modules doesnt actually apply,
+> > > though the motions are there.  This is not the problem I want to chase
+> > > here.
+> > >
+> > > The more basic trouble is:
+> > >
+> > > For builtin drm + helpers, things are broken pretty early; at the
+> > > beginning of dynamic_debug_init().  As the ddebug_sanity() commit-msg
+> > > describes in some detail, the records added by _USE fail to reference
+> > > the struct ddebug_class_map created and exported by _DEFINE, but get
+> > > separate addresses to "other" data that segv's when used as the
+> > > expected pointer. FWIW, the pointer val starts with "revi".
 > >
-> > Regression is due to a chicken-egg problem loading modules; on
-> > `modprobe i915`, drm is loaded 1st, and drm.debug is set.  When
-> > drm_debug_enabled() tested __drm_debug at runtime, that just worked.
+> > So I honestly have no idea here, linker stuff is way beyond where I have
+> > clue. So what's the way forward here?
 > >
-> > But with DRM_USE_DYNAMIC_DEBUG=y, the runtime test is replaced with a
-> > post-load enablement of drm_dbg/dyndbg callsites (static-keys), via
-> > dyndbg's callback on __drm_debug.  Since all drm-drivers need drm.ko,
-> > it is loaded 1st, then drm.debug=X is applied, then drivers load, but
-> > too late for drm_dbgs to be enabled.
-> >
-> > STATUS
-> >
-> > For all-loadable drm,i915,amdgpu configs, it almost works, but
-> > propagating drm.debug to dependent modules doesnt actually apply,
-> > though the motions are there.  This is not the problem I want to chase
-> > here.
-> >
-> > The more basic trouble is:
-> >
-> > For builtin drm + helpers, things are broken pretty early; at the
-> > beginning of dynamic_debug_init().  As the ddebug_sanity() commit-msg
-> > describes in some detail, the records added by _USE fail to reference
-> > the struct ddebug_class_map created and exported by _DEFINE, but get
-> > separate addresses to "other" data that segv's when used as the
-> > expected pointer. FWIW, the pointer val starts with "revi".
->
-> So I honestly have no idea here, linker stuff is way beyond where I have
-> clue. So what's the way forward here?
->
+> 
+> Ive fixed this aspect.
+> Unsurprisingly, it wasnt the linker :-}
 
-Ive fixed this aspect.
-Unsurprisingly, it wasnt the linker :-}
+Awesome!
 
-> The DEFINE/USE split does like the right thing to do at least from the
-> "how it's used in drivers" pov. But if we're just running circles not
-> quite getting there I dunno :-/
-> -Daniel
->
+> > The DEFINE/USE split does like the right thing to do at least from the
+> > "how it's used in drivers" pov. But if we're just running circles not
+> > quite getting there I dunno :-/
+> > -Daniel
+> >
+> 
+> Sending new rev next.
+> I think its getting close.
 
-Sending new rev next.
-I think its getting close.
+Thanks a lot for keeping on pushing this.
+-Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
