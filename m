@@ -2,83 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1491669F12
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 18:11:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 275C666A13D
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 18:56:15 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E5AC210EA76;
-	Fri, 13 Jan 2023 17:11:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E030E10E070;
+	Fri, 13 Jan 2023 17:56:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B49C510EA74;
- Fri, 13 Jan 2023 17:11:44 +0000 (UTC)
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 30DGHISV003143; Fri, 13 Jan 2023 17:11:39 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding; s=pp1;
- bh=rmB3tNOfF0Nb80BWV6tyA3MrK480SPOHdQYPYzfIaAw=;
- b=tk+WdoeNY3GHmvOEt47ul0guggng+K3Y1oW3457egKdKkbBsAcre6o6U2KZYqlWm4hiE
- ZjH7n42XNtY3EmepVBAtgM+VBi7HuIkFEAVL3plggkG+sSITzVJAAN+v/eDsLlpdfYvH
- 4e3QL/jkNR+k04P6PR5biPDTWcu4tzHLfCAS6LR5AnvKGetKQtZWFj+4hMfktmFTluZf
- s6avs9eiSM+hzf5ZW0wHEkqwXYNu0suPVRMfh2KB60AYhBAhgFo2XZVWZuf9B+kWhevU
- /96sDhL1vAnhNZ4Rpp2968qgX7FhwGuydXZYSnzoN0YxcH6d7qErm4vFsNuksB2rELgb wA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3n3apk1e3h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 13 Jan 2023 17:11:39 +0000
-Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 30DGLBT3018627;
- Fri, 13 Jan 2023 17:11:38 GMT
-Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
- [169.63.214.131])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3n3apk1e38-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 13 Jan 2023 17:11:38 +0000
-Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
- by ppma01dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 30DF4L7i014717;
- Fri, 13 Jan 2023 17:11:37 GMT
-Received: from smtprelay04.dal12v.mail.ibm.com ([9.208.130.102])
- by ppma01dal.us.ibm.com (PPS) with ESMTPS id 3n1kv5n01y-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 13 Jan 2023 17:11:37 +0000
-Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
- [10.39.53.232])
- by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 30DHBZNJ197232
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 13 Jan 2023 17:11:36 GMT
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B715B58043;
- Fri, 13 Jan 2023 17:11:35 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 380B25805F;
- Fri, 13 Jan 2023 17:11:33 +0000 (GMT)
-Received: from li-2311da4c-2e09-11b2-a85c-c003041e9174.ibm.com.com (unknown
- [9.160.94.233]) by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Fri, 13 Jan 2023 17:11:33 +0000 (GMT)
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-To: alex.williamson@redhat.com, pbonzini@redhat.com
-Subject: [PATCH v3] vfio: fix potential deadlock on vfio group lock
-Date: Fri, 13 Jan 2023 12:11:32 -0500
-Message-Id: <20230113171132.86057-1-mjrosato@linux.ibm.com>
-X-Mailer: git-send-email 2.39.0
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Jan 2023 17:56:10 UTC
+Received: from mail.in-khls.info (unknown [45.13.189.26])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CDE9310E1F4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 13 Jan 2023 17:56:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=in-khls.info;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=kohls_gift_opportunity@in-khls.info; 
+ bh=18+VSg36ZglXK8ETEpfLTtOvmCU=;
+ b=febYj8Pl9YYR5h8wC0lZvS2ZvHQCQDzSnWTrh/rQp5H2bKblS2YhTWeDcaQLM7OP1mbbsoejJRYe
+ MMbWFYAksU1apbHB+ZBXeD/4xQw7YtIzj4Gh5vybVqcRiPB4bFTXzwhYAcULmDm6Wq0Y4EGMBBWq
+ YDh0NhgfFsSZCsZ9FyA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=in-khls.info;
+ b=CbALgP8Bk/H+XZQsZqKVMmg2SJg9h9rQJgdW9Vjb73s/EN1worBN79jPIP6dI92NN1aKLsXZotep
+ DBJSGk/CbvLaYmkafZ1blWj4b3aiOv1iJCl2HT/JwdEjp3NN888y1coZtf7hiLhHhiL88iq9W305
+ 9mRw5lEmJUy6q4XJAlE=;
+Received: by mail.in-khls.info id ho6djk0001gk for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 13 Jan 2023 12:43:23 -0500 (envelope-from
+ <kohls_gift_opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@in-khls.info>)
+Date: Fri, 13 Jan 2023 12:43:23 -0500
+From: "Kohls Gift Opportunity" <kohls_gift_opportunity@in-khls.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: We have some exciting news for you
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: 9vANe1Lemnb7dlBI2iIfePB6DG5MqF7U
-X-Proofpoint-GUID: S_fuYn6ObG9fDFiFS789j50vp3mf3-hc
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.562,FMLib:17.11.122.1
- definitions=2023-01-13_08,2023-01-13_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 spamscore=0
- clxscore=1015 suspectscore=0 mlxlogscore=999 lowpriorityscore=0
- phishscore=0 mlxscore=0 malwarescore=0 impostorscore=0 adultscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2301130110
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_310_1331779205.1673631790049"
+Message-ID: <0.0.0.22.1D9277688B835D4.112CE8@mail.in-khls.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,222 +50,336 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
- imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
- david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, jgg@nvidia.com, kvm@vger.kernel.org,
- linux-s390@vger.kernel.org, borntraeger@linux.ibm.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Currently it is possible that the final put of a KVM reference comes from
-vfio during its device close operation.  This occurs while the vfio group
-lock is held; however, if the vfio device is still in the kvm device list,
-then the following call chain could result in a deadlock:
+------=_Part_310_1331779205.1673631790049
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 
-kvm_put_kvm
- -> kvm_destroy_vm
-  -> kvm_destroy_devices
-   -> kvm_vfio_destroy
-    -> kvm_vfio_file_set_kvm
-     -> vfio_file_set_kvm
-      -> group->group_lock/group_rwsem
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+ <head>=20
+  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1, maximum-scale=
+=3D1" name=3D"viewport" />=20
+  <title>come to greatness</title>=20
+  <style media=3D"screen" type=3D"text/css">/* CSS reset */
+body, p{margin:0; padding:0; margin-bottom:0; -webkit-text-size-adjust:none=
+; -ms-text-size-adjust:none;} img{line-height:100%; outline:none; text-deco=
+ration:none; -ms-interpolation-mode: bicubic;} a img{border: none;} #backgr=
+oundTable {margin:0; padding:0; width:100% !important; } a, a:link{color:#2=
+c6fba; text-decoration: underline;} .ExternalClass {display: block !importa=
+nt; width:100%;} .ExternalClass, .ExternalClass p, .ExternalClass span, .Ex=
+ternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%=
+; } table td {border-collapse:collapse;} sup{position: relative; top: 4px; =
+line-height:7px !important;font-size:11px !important;} .mobile_link a[href=
+^=3D"tel"], .mobile_link a[href^=3D"sms"] {text-decoration: default; color=
+: #5b5e5e !important; /* set link color */ pointer-events: auto; cursor: de=
+fault;} .no-detect a{text-decoration: none; color: #5b5e5e; /* set text col=
+or */ pointer-events: auto; cursor: default;} .no-detect-local a{color: #5b=
+5e5e;} span {color: inherit; border-bottom: none;} span:hover { background-=
+color: transparent;}
 
-Avoid this scenario by having vfio core code acquire a KVM reference
-the first time a device is opened and hold that reference until the
-device fd is closed, at a point after the group lock has been released.
+/* CSS for mobile view */
+@media only screen and (max-width: 640px) {
+body[yahoo] .mobpadding {padding: 0 10px;}
+body[yahoo] .container {width: 320px; min-width: 320px !important; padding=
+: 0 5px;}
+body[yahoo] .appwidth {width: 320px; min-width: 320px !important;}
+body[yahoo] .floatleft {float: left;}
+body[yahoo] .floatright {float: right;}
+body[yahoo] .elastic {-ms-interpolation-mode: bicubic; width: 100%; min-wi=
+dth: 320px; max-width: 640px;}
+body[yahoo] .webonly {display: none !important;}
+body[yahoo] .toggle {display: block !important; height: auto !important; w=
+idth: auto !important;}
+body[yahoo] .prehdr_lft {display: none !important;}
+body[yahoo] .prehdr_rgt {width: 280px !important;}
+body[yahoo] .toptxt {font-size: 12px !important;}
+body[yahoo] .topborder {border-top: 10px solid #ffffff;}
+body[yahoo] .mobwidth10 {width: 10px !important;}
+body[yahoo] .mobwidth20 {width: 20px !important;}
+body[yahoo] .mobheight10 {height: 10px;}
+body[yahoo] .mobheight30 {height: 30px;}
+body[yahoo] .ftrtxt {line-height: 18px !important; padding-bottom: 20px;}
+/* variable content  */
 
-Fixes: 421cfe6596f6 ("vfio: remove VFIO_GROUP_NOTIFY_SET_KVM")
-Reported-by: Alex Williamson <alex.williamson@redhat.com>
-Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
----
-Changes from v2:
-* Re-arrange vfio_kvm_set_kvm_safe error path to still trigger
-  device_open with device->kvm=NULL (Alex)
-* get device->dev_set->lock when checking device->open_count (Alex)
-* but don't hold it over the kvm_put_kvm (Jason)
-* get kvm_put symbol upfront and stash it in device until close (Jason)
-* check CONFIG_HAVE_KVM to avoid build errors on architectures without
-  KVM support
+}
+=09</style>=20
+ </head>=20
+ <body yahoo=3D"fix">=20
+  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=
+=20
+   <tbody>=20
+    <tr>=20
+     <td align=3D"center">
+      <!-- PREHEADER -->=20
+      <table bgcolor=3D"#ffffff" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobpadding" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center">=20
+          <table align=3D"center" bgcolor=3D"#f3f3f3" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"container" width=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"mobwidth20" width=3D"30">&nbsp;</td>=20
+             <td>=20
+              <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" class=3D"prehdr_lft">=20
+               <tbody>=20
+                <tr>=20
+                 <td align=3D"left" class=3D"prehdrtxt" height=3D"30" style=
+=3D"font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height=
+: 14px; color: #a6a9aa;" valign=3D"middle">&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table align=3D"right" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" class=3D"prehdr_rgt">=20
+               <tbody>=20
+                <tr>=20
+                 <td align=3D"center" class=3D"prehdrtxt" height=3D"30" sty=
+le=3D"font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-heig=
+ht: 14px; color: #a6a9aa;" valign=3D"middle">=20
+                  <div id=3D"MASECTION" maconstraint=3D"SYSTEM.MAIL=3D1">
+                   &nbsp;
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"mobwidth20" width=3D"30">&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <!-- /PREHEADER -->
+      <!-- TOP -->=20
+      <table bgcolor=3D"#ffffff" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobpadding" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center">=20
+          <table align=3D"center" bgcolor=3D"#fff" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"container" width=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td class=3D"mobwidth20" width=3D"30">&nbsp;</td>=20
+             <td>=20
+              <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0">=20
+               <tbody>=20
+                <tr>=20
+                 <td height=3D"60" style=3D"font-family: Arial, Helvetica, =
+sans-serif; font-size: 16px; color: #ffffff; font-weight: bold; text-transf=
+orm: uppercase;" valign=3D"middle">&nbsp;</td>=20
+                 <td width=3D"30">&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table align=3D"right" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0">=20
+               <tbody>=20
+                <tr>=20
+                 <td class=3D"toptxt" height=3D"60" style=3D"font-family: '=
+Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 13px; font-weight: =
+bold; color: #ffffff; text-transform: uppercase;" valign=3D"middle">&nbsp;<=
+/td>=20
+                 <td align=3D"right" valign=3D"middle" width=3D"30">&nbsp;<=
+/td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" class=3D"webonly">=20
+               <tbody>=20
+                <tr>=20
+                 <td height=3D"60" style=3D"font-family: 'Trebuchet MS', Ar=
+ial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #fff=
+fff; text-transform: uppercase;" valign=3D"middle">&nbsp;</td>=20
+                 <td width=3D"20">&nbsp;</td>=20
+                 <td style=3D"font-family: 'Trebuchet MS', Arial, Helvetica=
+, sans-serif; font-size: 13px; font-weight: bold; color: #ffffff; text-tran=
+sform: uppercase;" valign=3D"middle">&nbsp;</td>=20
+                 <td width=3D"20">&nbsp;</td>=20
+                 <td style=3D"font-family: 'Trebuchet MS', Arial, Helvetica=
+, sans-serif; font-size: 13px; font-weight: bold; color: #ffffff; text-tran=
+sform: uppercase;" valign=3D"middle">&nbsp;</td>=20
+                 <td width=3D"20">&nbsp;</td>=20
+                 <td style=3D"font-family: 'Trebuchet MS', Arial, Helvetica=
+, sans-serif; font-size: 13px; font-weight: bold; color: #ffffff; text-tran=
+sform: uppercase;" valign=3D"middle">&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"mobwidth20" width=3D"25">&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"center" class=3D"mobheight10" height=3D"20" style=3D"=
+font-size: 29px; font-family: sans-serif">=20
+          <center>=20
+           <table cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=20
+            <tbody>=20
+             <tr>=20
+              <td align=3D"center"><a href=3D"http://www.in-khls.info/d8b4S2395mZk8612O4q64cp10ccl36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ2dRRo6QPY1C05NlwXD/abstention-activator"><img alt=3D"" src=
+=3D"http://www.in-khls.info/sputter-forlornly/e224F2395i7aGA12u464eYW10ccT36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ2dRRo7D1VO0KT5wy@wD" style=3D"max-width: 600px; margin: auto" width=3D"100%" />=
+</a></td>=20
+             </tr>=20
+            </tbody>=20
+           </table>=20
+          </center> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"container" width=3D"640">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center" style=3D"font-family: Gotham, 'Helvetica Neue=
+', Helvetica, Arial, 'sans-serif'; font-size: 24px; line-height: 35px; padd=
+ing-top: 20px; padding-bottom: 20px" valign=3D"top">Get just a few clicks a=
+way from The <b>$100 Kohl's Card</b>, by completing our 20-Second Service S=
+urvey about your recent experience with us.=20
+          <table cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td align=3D"center"><br /> <a href=3D"http://www.in-khls.info/d8b4S2395mZk8612O4q64cp10ccl36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ2dRRo6QPY1C05NlwXD/abstention-activator" style=3D"co=
+lor: #fff; text-decoration: none"><span style=3D"border-radius: 100px; back=
+ground-color: #000; padding: 19px; display: block; max-width: 299px"><b>Go =
+Here To Start</b></span></a></td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <table bgcolor=3D"#ffffff" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mobpadding" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center">=20
+          <table align=3D"center" bgcolor=3D"#f9f9f9" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"container" width=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td align=3D"center" colspan=3D"3" height=3D"20">&nbsp; <h3 st=
+yle=3D"font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif=
+'">Your Opinion Matters</h3>=20
+              <hr color=3D"#000" width=3D"40" /></td>=20
+            </tr>=20
+            <tr>=20
+             <td class=3D"mobwidth20" width=3D"30">&nbsp;</td>=20
+             <td>
+              <!--[if gte mso 9]>
+                                    <table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" width=3D"100%">
+                                    =09<tr>
+                                    =09=09<td valign=3D"top">
+                                    <![endif]-->=20
+              <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0">=20
+               <tbody>=20
+                <tr>=20
+                 <td height=3D"30" style=3D"font-family: 'Trebuchet MS', Ar=
+ial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: #5b5=
+e5e; text-transform: uppercase;" valign=3D"middle">&nbsp;</td>=20
+                 <td class=3D"webonly" width=3D"46">&nbsp;</td>=20
+                 <td class=3D"webonly" style=3D"font-family: 'Trebuchet MS'=
+, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold; color: =
+#5b5e5e; text-transform: uppercase;" valign=3D"middle">&nbsp;</td>=20
+                 <td class=3D"webonly" width=3D"46">&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table>=20
+              <table align=3D"right" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0">=20
+               <tbody>=20
+                <tr>=20
+                 <td>&nbsp;</td>=20
+                 <td width=3D"2">&nbsp;</td>=20
+                 <td>&nbsp;</td>=20
+                 <td width=3D"2">&nbsp;</td>=20
+                 <td>&nbsp;</td>=20
+                 <td width=3D"2">&nbsp;</td>=20
+                 <td>&nbsp;</td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"mobwidth20" width=3D"30">&nbsp;</td>=20
+            </tr>=20
+            <tr>=20
+             <td colspan=3D"3" height=3D"20">&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"center">=20
+          <table align=3D"center" bgcolor=3D"#f3f3f3" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"container" width=3D"640">=20
+           <tbody>=20
+            <tr>=20
+             <td colspan=3D"3" height=3D"20">&nbsp;</td>=20
+            </tr>=20
+            <tr>=20
+             <td class=3D"mobwidth20" width=3D"30">&nbsp;</td>=20
+             <td>=20
+              <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0">=20
+               <tbody>=20
+                <tr>=20
+                 <td>=20
+                  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" w=
+idth=3D"100%">=20
+                   <tbody>=20
+                    <tr>=20
+                     <td align=3D"left" class=3D"ftrtxt" style=3D"font-fami=
+ly: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; color=
+: #a6a9aa;">&nbsp;</td>=20
+                     <td class=3D"webonly" width=3D"30">&nbsp;</td>=20
+                     <td align=3D"right" class=3D"webonly" style=3D"font-fa=
+mily: Arial, Helvetica, sans-serif; font-size: 16px; color: #2c6fba; font-w=
+eight: bold; text-transform: uppercase;" valign=3D"middle">&nbsp;</td>=20
+                    </tr>=20
+                   </tbody>=20
+                  </table> </td>=20
+                </tr>=20
+                <tr>=20
+                 <td align=3D"right" height=3D"1"><br /> <br /> <br /> <br =
+/> <br /> <br /> <br /> <span style=3D" line-height: normal">To modify your communication preferences,<=
+/span><a href=3D"http://www.in-khls.info/leftovers-fungi/1f24z2395pz8M613K4I64hdv10ccX36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2dRRo6pK1rH05hjwLD" style=3D"text-decoration-line: none;"> <span>=
+Visit_Right_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <=
+br /> <br /> <br /> <font style="Charlemagne"><span size="undaunted"></span><style></font></style><style></style><span><font color="conventionally"><span size="confiscation"></span></font></span><small></small><style title="affliction"></style><span lang="corrupted"></span>=20
+                  <!--<![endif]--></td>=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+             <td class=3D"mobwidth20" width=3D"30">&nbsp;</td>=20
+            </tr>=20
+            <tr>=20
+             <td colspan=3D"3" height=3D"20">&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <!-- /FOOTER --></td>=20
+    </tr>=20
+    <tr>=20
+     <td height=3D"30">&nbsp;</td>=20
+    </tr>=20
+   </tbody>=20
+  </table>  =20
+ <img src=3D"http://www.in-khls.info/da95Gt2395gut8512z464Jfw10cck36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ2dRRo6P1nw0m5c0TwD/pagers-planets" alt=3D""/></body>
+</html>
 
-Changes from v1:
-* Re-write using symbol get logic to get kvm ref during first device
-  open, release the ref during device fd close after group lock is
-  released
-* Drop kvm get/put changes to drivers; now that vfio core holds a
-  kvm ref until sometime after the device_close op is called, it
-  should be fine for drivers to get and put their own references to it.
----
- drivers/vfio/group.c     |  6 ++--
- drivers/vfio/vfio_main.c | 78 +++++++++++++++++++++++++++++++++++++---
- include/linux/vfio.h     |  2 +-
- 3 files changed, 77 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-index bb24b2f0271e..2b0da82f82f4 100644
---- a/drivers/vfio/group.c
-+++ b/drivers/vfio/group.c
-@@ -165,9 +165,9 @@ static int vfio_device_group_open(struct vfio_device *device)
- 	}
- 
- 	/*
--	 * Here we pass the KVM pointer with the group under the lock.  If the
--	 * device driver will use it, it must obtain a reference and release it
--	 * during close_device.
-+	 * Here we pass the KVM pointer with the group under the lock.  A
-+	 * reference will be obtained the first time the device is opened and
-+	 * will be held until the device fd is closed.
- 	 */
- 	ret = vfio_device_open(device, device->group->iommufd,
- 			       device->group->kvm);
-diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-index 5177bb061b17..dbdf16903d52 100644
---- a/drivers/vfio/vfio_main.c
-+++ b/drivers/vfio/vfio_main.c
-@@ -16,6 +16,9 @@
- #include <linux/fs.h>
- #include <linux/idr.h>
- #include <linux/iommu.h>
-+#ifdef CONFIG_HAVE_KVM
-+#include <linux/kvm_host.h>
-+#endif
- #include <linux/list.h>
- #include <linux/miscdevice.h>
- #include <linux/module.h>
-@@ -344,6 +347,57 @@ static bool vfio_assert_device_open(struct vfio_device *device)
- 	return !WARN_ON_ONCE(!READ_ONCE(device->open_count));
- }
- 
-+#ifdef CONFIG_HAVE_KVM
-+static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
-+{
-+	void (*pfn)(struct kvm *kvm);
-+	bool (*fn)(struct kvm *kvm);
-+	bool ret;
-+
-+	pfn = symbol_get(kvm_put_kvm);
-+	if (WARN_ON(!pfn))
-+		return false;
-+
-+	fn = symbol_get(kvm_get_kvm_safe);
-+	if (WARN_ON(!fn)) {
-+		symbol_put(kvm_put_kvm);
-+		return false;
-+	}
-+
-+	ret = fn(kvm);
-+	if (ret)
-+		device->put_kvm = pfn;
-+	else
-+		symbol_put(kvm_put_kvm);
-+
-+	symbol_put(kvm_get_kvm_safe);
-+
-+	return ret;
-+}
-+
-+static void vfio_kvm_put_kvm(struct vfio_device *device, struct kvm *kvm)
-+{
-+	if (WARN_ON(!device->put_kvm))
-+		return;
-+
-+	device->put_kvm(kvm);
-+
-+	device->put_kvm = NULL;
-+
-+	symbol_put(kvm_put_kvm);
-+}
-+#else
-+static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
-+{
-+	return false;
-+}
-+
-+static void vfio_kvm_put_kvm(struct vfio_device *device, struct kvm *kvm)
-+{
-+
-+}
-+#endif
-+
- static int vfio_device_first_open(struct vfio_device *device,
- 				  struct iommufd_ctx *iommufd, struct kvm *kvm)
- {
-@@ -361,16 +415,21 @@ static int vfio_device_first_open(struct vfio_device *device,
- 	if (ret)
- 		goto err_module_put;
- 
--	device->kvm = kvm;
-+	if (kvm && vfio_kvm_get_kvm_safe(device, kvm))
-+		device->kvm = kvm;
-+
- 	if (device->ops->open_device) {
- 		ret = device->ops->open_device(device);
- 		if (ret)
--			goto err_unuse_iommu;
-+			goto err_put_kvm;
- 	}
- 	return 0;
- 
--err_unuse_iommu:
--	device->kvm = NULL;
-+err_put_kvm:
-+	if (device->kvm) {
-+		vfio_kvm_put_kvm(device, device->kvm);
-+		device->kvm = NULL;
-+	}
- 	if (iommufd)
- 		vfio_iommufd_unbind(device);
- 	else
-@@ -387,7 +446,6 @@ static void vfio_device_last_close(struct vfio_device *device,
- 
- 	if (device->ops->close_device)
- 		device->ops->close_device(device);
--	device->kvm = NULL;
- 	if (iommufd)
- 		vfio_iommufd_unbind(device);
- 	else
-@@ -462,9 +520,19 @@ static inline void vfio_device_pm_runtime_put(struct vfio_device *device)
- static int vfio_device_fops_release(struct inode *inode, struct file *filep)
- {
- 	struct vfio_device *device = filep->private_data;
-+	struct kvm *kvm = NULL;
- 
- 	vfio_device_group_close(device);
- 
-+	mutex_lock(&device->dev_set->lock);
-+	if (device->open_count == 0 && device->kvm) {
-+		kvm = device->kvm;
-+		device->kvm = NULL;
-+	}
-+	mutex_unlock(&device->dev_set->lock);
-+	if (kvm)
-+		vfio_kvm_put_kvm(device, kvm);
-+
- 	vfio_device_put_registration(device);
- 
- 	return 0;
-diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index 35be78e9ae57..87ff862ff555 100644
---- a/include/linux/vfio.h
-+++ b/include/linux/vfio.h
-@@ -46,7 +46,6 @@ struct vfio_device {
- 	struct vfio_device_set *dev_set;
- 	struct list_head dev_set_list;
- 	unsigned int migration_flags;
--	/* Driver must reference the kvm during open_device or never touch it */
- 	struct kvm *kvm;
- 
- 	/* Members below here are private, not for driver use */
-@@ -58,6 +57,7 @@ struct vfio_device {
- 	struct list_head group_next;
- 	struct list_head iommu_entry;
- 	struct iommufd_access *iommufd_access;
-+	void (*put_kvm)(struct kvm *kvm);
- #if IS_ENABLED(CONFIG_IOMMUFD)
- 	struct iommufd_device *iommufd_device;
- 	struct iommufd_ctx *iommufd_ictx;
--- 
-2.39.0
+------=_Part_310_1331779205.1673631790049--
 
