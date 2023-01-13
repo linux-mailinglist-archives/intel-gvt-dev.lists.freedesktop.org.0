@@ -2,105 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66FBB66A262
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 19:53:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BAF1066A20D
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 19:28:44 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 334F610EAA5;
-	Fri, 13 Jan 2023 18:53:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8330F10EA93;
+	Fri, 13 Jan 2023 18:28:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM02-BN1-obe.outbound.protection.outlook.com
- (mail-bn1nam02on2041.outbound.protection.outlook.com [40.107.212.41])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 994DC10E1F9;
- Fri, 13 Jan 2023 18:52:59 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nvLBVGcBeupYCjijsIN+FHYb2FBBPKCJJxpUcwocVp2DsAr3ZiS41vG3DZClVagICjtbSD0p1RQKF6spVxrgTxNQrpTZq8y77kluvRJCowtBR2DB97vA2i/alCWSNcPtX4rthvouokTSmdyi1EpQ3sAPBYf+qQitpEceqOhr95VXDTpT+MCYhb8X68GVspta4KHAsepvn5u2EKJkyjRzllO+quDiy2etpS5eGrWWVYrSFdtArsmo3f0OA3Cihl5R7ecupkO101pMmU5VDloNQfUleLcuBLMylDtUbEG9rXs7DSo5LMxjzeXcWwQ3ZqZ0mbA+mHVbYBS+haqDdxxZ2w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tSnVaVzwRzi5/Y6iGq6bdWY3VspgrXK1BwMadvyf8uQ=;
- b=c/xmtuIcGZyePgcHZ7on1y+5vIeFKmuN4n1Y3YuW/joyE30wOOQGakUNvU+b9hG6K/9bakvWuGmoyCxIfqs6cq4IQ2BVRgHiYlwHhkci3Zy9xNcC4kD1wvJj4f3Daj/7TvLyBIK7D14UxcZkBlmwc+7N/GM6TaX6VgnYffVr7cHZkNZ4pI8ZC/G5yHZZrA68zcrPQ95kw1VwydPEc52yNubactocVI4uWJwloCOOwU40Xsd/hxadkExwsT1t+a+Pn9kM9NcPyNY0cT2EFa03cSkqzpSOZnvarZNP/tzNWr6V3VAdZFnHEICJNBwZiDVr0KoVubAsjF64LuPr2iuHXg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tSnVaVzwRzi5/Y6iGq6bdWY3VspgrXK1BwMadvyf8uQ=;
- b=hsDwVA0O7RSy48Mhe7NWMb8tjn15TWEJoVlt3QzkzavAnaXOL8kEGS01VnU9cLjhCRRPPcSfoDzeMzJXYhOMOuox/Ot4I12ZYCdzsk/GjBnBITzcUsTQP7xN3s8/8Sv/UDVM5/xApqXFM+WVsSCdOnXfIz4zy1D3mAOS7Y8SNemMQsUxXtxTKEaT0HRbgbO9p7qsvsW/eE2+eT00vBlSi0E/01JxVszazTvISYG0Wfanvt1EvktpUrsZ0JjwNoW+Tilv5KeD7M06rdYN+4BSEBrQunQlXoIBDZR2qnMAqTNNYxoTtmYti4bZWLqDIYk2sm0FuOGclYXgNl2w+/WTbA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by SN7PR12MB7129.namprd12.prod.outlook.com (2603:10b6:806:2a1::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.13; Fri, 13 Jan
- 2023 18:52:57 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f8b0:df13:5f8d:12a]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f8b0:df13:5f8d:12a%9]) with mapi id 15.20.6002.013; Fri, 13 Jan 2023
- 18:52:57 +0000
-Date: Fri, 13 Jan 2023 14:52:56 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: Re: [PATCH v3] vfio: fix potential deadlock on vfio group lock
-Message-ID: <Y8GoiCBQNiAuVcNw@nvidia.com>
-References: <20230113171132.86057-1-mjrosato@linux.ibm.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230113171132.86057-1-mjrosato@linux.ibm.com>
-X-ClientProxiedBy: BL1PR13CA0181.namprd13.prod.outlook.com
- (2603:10b6:208:2be::6) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Jan 2023 18:28:40 UTC
+Received: from mail.slvv-krogr.info (unknown [45.13.189.27])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8C84C10EA92
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 13 Jan 2023 18:28:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=slvv-krogr.info; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=kroger-love@slvv-krogr.info; 
+ bh=61VZPE5W+7FkSHe7N5mLo8PIuLY=;
+ b=hdnTnbLgf9SozVeZ2dg+jCMDXJm+EChVy994kwZHtgDlVjhCa3sN4R8q53a+MWpj5JR+60OJZUTm
+ Y7G9AL0WRn/vz8z108Yp6QfdIzN5o4TOG0R9/l8b2sZj+d8yLfggtFGYke1QJ35iakTMvcTj5U+S
+ 4RPUXyy8RAYfnm356WI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=slvv-krogr.info;
+ b=rkWDNNPrSELBVNBF9xXyKxAiBZj6OdDNRHpE0i58m2w5gNOmjHSEpwSCKR9PVgPf3FJ02OdU3+rA
+ z8Rq3pl1i6Eh+1YsElghK1ABnJqGxa5vGGw4v/iR4CA+svB07B4xlk8lExo6SgT3DLwM35h6A9wQ
+ g2yAIfLtgLBiW/D2j7A=;
+Received: by mail.slvv-krogr.info id ho6rla0001gq for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 13 Jan 2023 14:45:38 -0500 (envelope-from
+ <kroger-love-intel+2Dgvt+2Ddev=lists.freedesktop.org@slvv-krogr.info>)
+Date: Fri, 13 Jan 2023 14:45:38 -0500
+From: "Kroger Love" <kroger-love@slvv-krogr.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Your gift on us for the holidays,
+ a token of appreciation during holidays
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SN7PR12MB7129:EE_
-X-MS-Office365-Filtering-Correlation-Id: f3ee1e7a-0170-44d6-6458-08daf59762b6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: E7ydpYnXQmh9K31D3wl4tzrdkCKlrkGRBZGa4WgXUHoPQXJldi2dyctCm7GT9xyt7cMw5R9Mc3tj7JnwXEGfM0Ws2nD9sb0voZ4sUV1AojPjhaXmpLr6qewNGJ2E1z4YgaTisBvW/P11JqKCBi+PgtrLa6tvaEMz7o1yJdZEL8mVAuIO1aNjy2WCgk7RC1YFHmKsPGJhdTQlRxOKAwTc64DzbVxH4hn602sMCc6eXyoNRL6SozXVJI6RWuH8niz2kKnV1IBz0CL9VQNngUrM+B8n3YgdNhmhxIlA4Fg5LFWxTHUIev260xlRiIj/01IaMgEX84Mkfp6cZKboAaE3ZlSmefhoZfPKWx85mGfRr8x3FE8XKUd55JkfLsFovGOHmQmxCFkOhw+B6zZJXDTHUIOyjtVCYd7OAPrmy4oBDcCmx9cP309DqXDsyvcZnZxRYT3b5KT+dsUAoVm7kpCMhDngr+c0LMlHuNssLTyOpWMXpFJpK8cremFBFdSOjWiibGxMqZDOZXwO7kb5JMKHXEsvn5gmEpY66TfTPWLQMBIZSD8k4axvHu0lIZrnAKWY1Wzy4BSJnE1UJoPAudBkXMkbivWTzf+XUgrpQUet8/LiLmh854/ma1OMZTqltdrIB2GzzxBfEUNQ3kC6c3F69A==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(4636009)(39860400002)(396003)(136003)(346002)(366004)(376002)(451199015)(6506007)(7416002)(36756003)(2906002)(5660300002)(83380400001)(8936002)(4744005)(6916009)(4326008)(8676002)(38100700002)(6512007)(6486002)(41300700001)(478600001)(66946007)(66556008)(186003)(66476007)(26005)(86362001)(2616005)(316002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?xrLkPnGGNn+PcR00I/9tYoYSk9RB1brWY24QGJYS1bAN26dqbfMFywwuYari?=
- =?us-ascii?Q?8JAZDbf9oPvDC622gGOsb3Bo7HX5jm/nK54j1zX7EEAr0zU4tMC82Zxq3TRZ?=
- =?us-ascii?Q?QEysvzfraaQfAWOLAwSsxW1IdHbPeh+djNq4XXZNMTbA7HKxLdbKFwAO6wP0?=
- =?us-ascii?Q?4CDc3CVHprYqcpvYSDTX8uaYavs3+pXz+T88QTQoiDYVerjknANOWOj2Ecjp?=
- =?us-ascii?Q?hD90a7CJwrqgyGflFvAJ7qABSRLm6LqmGYgQ+ysdjZSqVQkoabWjccn0ibGW?=
- =?us-ascii?Q?EJYsQQWuOylSc9ydktJbNzrozu1mqBfgmP3FgWr2+rJ6wbJ/KSZT8w3spOS+?=
- =?us-ascii?Q?8ReMD4E92+Ql/QgLmN7ESIG2Bo0bz/8iDm7UGYSzQXG8foXTD4PiiSsi0BWS?=
- =?us-ascii?Q?pqxPUVNwq2LRhQWhi75TSW5KaizrJWEW43YqD2nm73hqPX7giaLH/VV33NEd?=
- =?us-ascii?Q?EzmgjLAJ51XRfXIucqsbvEFaJYdHfYhtFft8C49XDfsx37UBRVnHeqAenlL1?=
- =?us-ascii?Q?agyXQMd+3UkUo8XZqAgYYW3cSBU6gdXtNUBlirnxtAUiGa/gDP/MVm6VONbw?=
- =?us-ascii?Q?ypopkSDGGSl+5gGHSVcukbQgqsqIkhVBxkd0f1sQgaYvL+qFQwPhYpYeklAh?=
- =?us-ascii?Q?BC5WNhWwmKjs7x2Zub6NBYSIFZh6TfDKDakkarZg0uEh3Mq8rC4tkxvqwoZj?=
- =?us-ascii?Q?KOrkpAoaAZLI6aE+HVvvW10Wr1uxdqb8B1NX5/9J2+s3YGLznCs4EGjihNGn?=
- =?us-ascii?Q?u04sbgrRKdha1svnuDOd5DM4j9Qro5FFVMuSj11DHrkvatgR3WGtfOyfuixk?=
- =?us-ascii?Q?ZgISldEE4F8hjuoiFv99WFwaZXs75nwTt33/U28aL1nsc/xZkC+ZeStFaUub?=
- =?us-ascii?Q?/Y3w4wLDkHUx3X+kco7R78UqmB3qI0lml+X76KmpGdV71gLEOfwG0YQts7Cg?=
- =?us-ascii?Q?lh4fX2JPCv2OXBt9ZHxe0rCwQsKaJ/qUfRHZhUChVCybdTnfgaDD9VVl8QGm?=
- =?us-ascii?Q?zGWbeoFNrd89MobHqwWfaIXTGKE5J9vJ7Fe5+Y84+mweAN8slPFx1/AayHy/?=
- =?us-ascii?Q?on6w2/zNZixCwRo4fxZgrPANr8rUrJILgTS2nYnquSeo/V/r/guNall3mbsj?=
- =?us-ascii?Q?FVWilGUpyP3QqSq79PeDaTlOXHTFgOuGpBYMRnOyGclw2/FT/4b5FuEyFQad?=
- =?us-ascii?Q?ZunLqpLjdU1LYX9a804yatBft560OZCZ0foJr5+WWixYEnzEi64hXw4Wglp7?=
- =?us-ascii?Q?iFO1uri956GsJpiLDe0DYu8jit8d6sWqKEraJY2muKjwHmdcYM9YPiHhs3eW?=
- =?us-ascii?Q?Fb/x4znYl1d5FSH8/GZaS4GDunnI/OgJOAtKNw4Wkfych3JqrNpQe2KAgVf5?=
- =?us-ascii?Q?ATF4AxwKXMBiwaCCI6qKew4dY0nWEGu8QuilnIBniLQsKslf2GFoghpeU+BN?=
- =?us-ascii?Q?LUilpeyQuVsx/gCOElzZ7C9IZEYE42bXw6ZAEUWdqsPDFjBkqvO2TOR9djkz?=
- =?us-ascii?Q?jam4aNh7MXbR651Y8DCsBzKG0AfXNsc6yR2UdSOvZf9GE6OGo7b2z25CS/Ca?=
- =?us-ascii?Q?GdFKL0iJ++dQtkc0P1Bl8LGfCAXImHm/6qxuZZZ1?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f3ee1e7a-0170-44d6-6458-08daf59762b6
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2023 18:52:57.3833 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LxeqD03n/2RS/HBYEjNeoOWYcOzMBYVX7D+CvGBA75Y6jUSuQXRwy6AwA2va0jOT
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7129
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_430_602414281.1673633873197"
+Message-ID: <0.0.0.2F.1D927879C78BF1A.367EC5@mail.slvv-krogr.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,36 +51,214 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
- imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
- david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, alex.williamson@redhat.com, kvm@vger.kernel.org,
- pbonzini@redhat.com, linux-s390@vger.kernel.org, borntraeger@linux.ibm.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jan 13, 2023 at 12:11:32PM -0500, Matthew Rosato wrote:
-> @@ -462,9 +520,19 @@ static inline void vfio_device_pm_runtime_put(struct vfio_device *device)
->  static int vfio_device_fops_release(struct inode *inode, struct file *filep)
->  {
->  	struct vfio_device *device = filep->private_data;
-> +	struct kvm *kvm = NULL;
->  
->  	vfio_device_group_close(device);
->  
-> +	mutex_lock(&device->dev_set->lock);
-> +	if (device->open_count == 0 && device->kvm) {
-> +		kvm = device->kvm;
-> +		device->kvm = NULL;
-> +	}
-> +	mutex_unlock(&device->dev_set->lock);
+------=_Part_430_602414281.1673633873197
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-This still doesn't seem right, another thread could have incr'd the
-open_count already 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <title>Subject Line (for proofing, doesn't show in actual email)</title> 
+  <style type="text/css">/* Force Hotmail to display emails at full width */
+ReadMsgBody {
+width: 100%;
+background-color: #eeeeee;
+}
 
-This has to be done at the moment open_count is decremented to zero,
-while still under the original lock.
+/* Force Hotmail to display emails at full width */
+ExternalClass {
+width: 100%;
+background-color: #eeeeee;
+}
 
-Jason
+/* Forces Hotmail to display normal line spacing. */
+ExternalClass,
+ExternalClass p,
+ExternalClass span,
+ExternalClass font,
+ExternalClass td,
+ExternalClass div {
+line-height:100%;
+}
+
+/* Resolves webkit padding issue. */
+table {
+border-spacing:0;
+}
+
+/* Resolves the Outlook 2007, 2010, and Gmail td padding issue. */
+table td {
+border-collapse:collapse;
+}
+
+/* Yahoo auto-sensing link color and border */
+yshortcuts a {
+border-bottom: none !important;
+}
+
+/* Start of template styling */
+img {height: auto;}
+a img {border: none;}
+a {color: #0190de; text-decoration:none; font-weight: bold;}
+a:hover {text-decoration: underline;}
+
+h1 {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    color: #595959;
+    margin: 0 0 0 0;
+    line-height: 1.21;
+}
+
+h2 {
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    color: #595959;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 1.33;
+    margin: 0 0 0 0;
+    
+}
+
+body-copy{
+    font-size: 1em;
+}
+
+btn-primary {
+   
+}
+
+table[class="btn-primary"] {
+    padding: 0;
+}
+
+email-wrapper{
+    width: 100%;
+    max-width: 600px;
+}
+
+content-padding{
+    padding: 0;
+}
+
+/* End of template styling */
+
+/* Apple Mail doesn't support max-width, so we use media queries to constrain the email width. */
+@media only screen and (min-width: 601px) {
+email-wrapper {
+width: 600px !important;
+}
+}
+  
+/* Media query targeting tablets and phones */
+@media only screen and (max-width: 600px) {
+    .content-padding{
+        padding: 12px 18px 12px 18px !important;
+    }
+    
+    .body-copy{font-size: 1.14em;}
+    h1{font-size: 1.625em;}
+    h2{font-size: 1.5em;}
+}
+	</style> 
+ </head> 
+ <body leftmargin="0" marginheight="0" marginwidth="0" style="margin:0; padding:0;-webkit-text-size-adjust:none; -ms-text-size-adjust:none;background: #e8e8e8;" topmargin="0"> 
+  <table bgcolor="#e8e8e8" border="0" cellpadding="0" cellspacing="0" height="100%" style="background-color: #e8e8e8; font-size:14px;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td valign="top"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="email-wrapper" style="margin: auto; font-size: 14px;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td style="padding: 0 6px 0 6px;"> 
+          <table border="0" cellpadding="0" cellspacing="0" height="36" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="left" height="24" style="font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 0.78em; color: #999999;">&nbsp;</td> 
+             <td align="right">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" bgcolor="#FFFFFF" class="content-padding body-copy" style="font-family: 'Helvetica Neue', 'Arial', sans-serif; mso-line-height-rule: exactly; line-height: 24px; line-height: 1.7143; color: #595959;">&nbsp; <h1 style="font-size: 45px">Kroger Shop</h1> </td> 
+        </tr> 
+        <tr> 
+         <td bgcolor="#0190de" class="content-padding"> 
+          <table bgcolor="#0190de" border="0" cellpadding="" cellspacing="0" height="48" width="100%"> 
+           <tbody> 
+            <tr>
+             <!-- Hoiio Logo --> 
+             <td align="left"><a href="http://www.slvv-krogr.info/guaranteers-garland/abc5R23n95wT86k12h4650QX10cdO36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2dRR96NXP10u5sj@wD" target="_blank"><img alt="hoiio-logo" src="http://www.slvv-krogr.info/truthfully-Keynes/33c5BK2395S7mDa11Q4652i10cdn36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ2dRR96z10zAm6XlwqD0" width="100%" /> </a></td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" bgcolor="#FFFFFF" class="content-padding body-copy" style="font-family: 'Helvetica Neue', 'Arial', sans-serif; mso-line-height-rule: exactly; line-height: 24px; line-height: 1.7143; color: #595959; padding-left: 25px; padding-right: 25px; font-size: 22px"><br /> Get just a few clicks away from The <b>$100 Kroger Card</b>, by completing our 20-Second Service Survey about your recent experience with us.<br /> <br /> <a href="http://www.slvv-krogr.info/guaranteers-garland/abc5R23n95wT86k12h4650QX10cdO36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2dRR96NXP10u5sj@wD" style=" display: inline-block;
+    background-color: #0190de;
+    border-color: #0081c7;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px 3px 3px 3px;
+    padding: 12px 20px 12px 20px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;" target="_blank">Go Here To Start</a><br /> &nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td align="center" bgcolor="#FFFFFF" class="content-padding" style="border-top: 1px solid #e8e8e8;"> <h3 style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><span style="color: #999999; font-size: 11px; font-size: 0.78em !important; font-family: 'Helvetica Neue', 'Arial', sans-serif; mso-line-height-rule: exactly; line-height: 18px; line-height: 1.61; width:100%;">Your Opinion Matters</span></h3> &nbsp; 
+          <table cellpadding="1" cellspacing="1" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> <span style=" line-height: normal">No longer want to receive notifications?,</span><a href="http://www.slvv-krogr.info/7735h2K395I86tA13EC4W651U10cdB36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ2dRR97W1M_OG06IXwPDk/guaranteers-garland" style="text-decoration-line: none;"> <span>Begin_This_Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font lang="Medicaid"></font><font><style></style></font><font color="questionable"></font><span id="monotone"></span><style dir="honeymooning"></style></td> 
+        </tr> 
+        <!-- Footer section : END --> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.slvv-krogr.info/phoneme-cotyledons/60c4n2395B8gp513mi46o53D10cdN36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ2dRR95Mq10F5jTPwD" alt=""/></body>
+</html>
+
+------=_Part_430_602414281.1673633873197--
+
