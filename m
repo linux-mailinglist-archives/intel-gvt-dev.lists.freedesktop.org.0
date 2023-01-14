@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CC3366AE3E
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Jan 2023 23:07:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4144566AE5D
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Jan 2023 23:59:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6726F10E099;
-	Sat, 14 Jan 2023 22:07:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CF60E10E295;
+	Sat, 14 Jan 2023 22:59:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sat, 14 Jan 2023 22:07:10 UTC
-Received: from mail.eternalisto.info (unknown [45.13.189.37])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1749610E099
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Sat, 14 Jan 2023 22:59:40 UTC
+Received: from mail.fancyishtioope.info (unknown [45.13.189.39])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0AA9010E0C5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 14 Jan 2023 22:07:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=eternalisto.info;
+ Sat, 14 Jan 2023 22:59:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=fancyishtioope.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups.gift.card.chance@eternalisto.info; 
- bh=cCBPGSZjaHvp7N5oNW5ORHwrMDI=;
- b=gfvQ2juu8onr3GHMTJyP8RwUqyt2T/bk4F5WoEXGEvT3bC90iwW+Ai36ceMZ4XqVp/sL6y5accJF
- JbWANoAyTUUdQgBvVHJrOSO81ryEmaEBgpxXoP5MMR805qIn3Gyp3ZtNeTZYKhef47vvsAuaoLxu
- fuk2XBfw6/c5ohhVhRU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=eternalisto.info;
- b=0sEV3YwZdoq+gK6WZmbt4ekbubFqBfqxfZUjy2aDPdd7kYySUXcxjGTRKzMxLCUugf7Mv5J5hM/L
- tMhBEP2uY6Hj/v0TpYzujsS5SkhbHVjsWZnC8IQNYiGt4sWzmo02VgIlgOTJ9338gYEGiwFAI/13
- vklNtH50RiYgi7feWQw=;
-Received: by mail.eternalisto.info id hocjos0001g3 for
+ i=mcdonalds.special.deal@fancyishtioope.info; 
+ bh=be+bWrvfbJJf7F1ndb2+RqRYQJ8=;
+ b=CqBh0PnEBYkykIWmXdgNgx0PeRsKWQwZ/YYpYevxmharEh43mexjVcgzTHHSDrXN3pKAvEEEX8E7
+ UhkMFPfSL850+OBjMa8T13f/8Mmf0I2yCFcDTf/6bSTOUmmhEKVVu36rEI07S5t9vCIE2LcElSfB
+ NhvGEtD7oW5DBIPKL+Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fancyishtioope.info;
+ b=NP4QANpInDUI6V6vHK0qcpNjd+I/97gtqdHakPIPpq1XewyRX0hqflbNlS3PhcTeliHjRn+kQSgr
+ Utg4WcP3CxLDTRmb6mtOdLR5dWJ8Qilv5bTx59iCnA7FG3jDb7D3ogPuvMzR6P3ZcJjUWyL/rrr1
+ 23fr1WE7Zl2bjkT5tLI=;
+Received: by mail.fancyishtioope.info id hocptq0001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 14 Jan 2023 16:59:24 -0500 (envelope-from
- <ups.gift.card.chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@eternalisto.info>)
-Date: Sat, 14 Jan 2023 16:59:24 -0500
-From: "Ups Gift Card Chance" <ups.gift.card.chance@eternalisto.info>
+ Sat, 14 Jan 2023 17:46:36 -0500 (envelope-from
+ <mcdonalds.special.deal-intel+2Dgvt+2Ddev=lists.freedesktop.org@fancyishtioope.info>)
+Date: Sat, 14 Jan 2023 17:46:36 -0500
+From: "McDonalds Special Deal" <mcdonalds.special.deal@fancyishtioope.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: ups Supplies
+Subject: [new_mc_donalds_subjects]
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_364_59496306.1673733513283"
-Message-ID: <0.0.0.28.1D928637693682C.17FB08@mail.eternalisto.info>
+ boundary="----=_Part_280_1747786179.1673736338600"
+Message-ID: <0.0.0.1F.1D9286A0E969562.4AEDA@mail.fancyishtioope.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,414 +54,529 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_364_59496306.1673733513283
+------=_Part_280_1747786179.1673736338600
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta charset="utf-8" />
-  <!-- utf-8 works for most cases --> 
-  <meta content="width=device-width" name="viewport" />
-  <!-- Forcing initial-scale shouldn't be necessary --> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-  <!-- Use the latest (edge) version of IE rendering engine --> 
-  <meta name="x-apple-disable-message-reformatting" />
-  <!-- Disable auto-scale in iOS 10 Mail entirely --> 
-  <title></title> 
-  <!-- The title tag shows in email notifications, like Android 4.4. --> 
-  <link href="http://www.eternalisto.info/Miltonist-median/c604q2395R8U6B12C4A67eQ10d7l36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQJdRS95jJV106m2wDWp" rel="stylesheet" />
-  <!-- CSS Reset : BEGIN --> 
-  <style type="text/css">html,
-body {
-    margin: 0 auto !important; 
-    padding: 0 !important; 
-    height: 100% !important; 
-    width: 100% !important; 
-    background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinaf1f1f1; 
-}
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>the skye</title> 
+  <style type="text/css">#outlook a{padding:0; } 
+			.ReadMsgBody{width:100%; } .ExternalClass{width:100%; } 
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%; } 
+			body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; } 
+			table, td{mso-table-lspace:0pt; mso-table-rspace:0pt; } 
+			img{-ms-interpolation-mode:bicubic; } 
 
+			
+			body{margin:0; padding:0; }
+			img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
+			table{border-collapse:collapse !important; }
+			body, #bodyTable, #bodyCell{height:100% !important; margin:0; padding:0; width:100% !important; }
 
-* {
-    -ms-text-size-adjust: 100%; 
-    -webkit-text-size-adjust: 100%; 
-}
+			
 
+			
 
-div[style*="margin: 16px 0"] {
-    margin: 0 !important; 
-}
+			#bodyCell{padding:20px; }
+			#templateContainer{width:600px; }
 
+			
+			body, #bodyTable{
+				 background-color:#DEE0E2; 
+			}
 
-table,
-td {
-    mso-table-lspace: 0pt !important; 
-    mso-table-rspace: 0pt !important; 
-}
+			
+			#bodyCell{
+				 border-top:4px solid #BBBBBB; 
+			}
 
+			
+			#templateContainer{
+				 border:1px solid #BBBBBB; 
+			}
 
-table {
-    border-spacing: 0 !important; 
-    border-collapse: collapse !important; 
-    table-layout: fixed !important; 
-    margin: 0 auto !important; 
-}
+			
+			h1{
+				 color:#202020 !important; 
+				display:block; 
+				 font-family:Helvetica; 
+				 font-size:26px; 
+				 font-style:normal; 
+				 font-weight:bold; 
+				 line-height:100%; 
+				 letter-spacing:normal; 
+				margin-top:0; 
+				margin-right:0; 
+				margin-bottom:10px; 
+				margin-left:0; 
+				 text-align:left; 
+			}
 
+			
+			h2{
+				 color:#404040 !important; 
+				display:block; 
+				 font-family:Helvetica; 
+				 font-size:20px; 
+				 font-style:normal; 
+				 font-weight:bold; 
+				 line-height:100%; 
+				 letter-spacing:normal; 
+				margin-top:0; 
+				margin-right:0; 
+				margin-bottom:10px; 
+				margin-left:0; 
+				 text-align:left; 
+			}
 
-img {
-    -ms-interpolation-mode:bicubic; 
-}
+			
+			h3{
+				 color:#606060 !important; 
+				display:block; 
+				 font-family:Helvetica; 
+				 font-size:16px; 
+				 font-style:italic; 
+				 font-weight:normal; 
+				 line-height:100%; 
+				 letter-spacing:normal; 
+				margin-top:0; 
+				margin-right:0; 
+				margin-bottom:10px; 
+				margin-left:0; 
+				 text-align:left; 
+			}
 
+			
+			h4{
+				 color:#808080 !important; 
+				display:block; 
+				 font-family:Helvetica; 
+				 font-size:14px; 
+				 font-style:italic; 
+				 font-weight:normal; 
+				 line-height:100%; 
+				 letter-spacing:normal; 
+				margin-top:0; 
+				margin-right:0; 
+				margin-bottom:10px; 
+				margin-left:0; 
+				 text-align:left; 
+			}
 
-a {
-    text-decoration: none; 
-}
+			
 
+			
+			#templatePreheader{
+				 background-color:#F4F4F4; 
+				 border-bottom:1px solid #CCCCCC; 
+			}
 
-*[x-apple-data-detectors],  
-unstyle-auto-detected-links *,
-aBn {
-    border-bottom: 0 !important; 
-    cursor: default !important; 
-    color: inherit !important; 
-    text-decoration: none !important; 
-    font-size: inherit !important; 
-    font-family: inherit !important; 
-    font-weight: inherit !important; 
-    line-height: inherit !important; 
-}
+			
+			.preheaderContent{
+				 color:#808080; 
+				 font-family:Helvetica; 
+				 font-size:10px; 
+				 line-height:125%; 
+				 text-align:left; 
+			}
 
+			
+			.preheaderContent a:link, .preheaderContent a:visited,  .preheaderContent a .yshortcuts {
+				 color:#606060; 
+				 font-weight:normal; 
+				 text-decoration:underline; 
+			}
 
-a6S {
-    display: none !important; 
-    opacity: 0.01 !important; 
-}
+			
+			#templateHeader{
+				 background-color:#F4F4F4; 
+				 border-top:1px solid #FFFFFF; 
+				 border-bottom:1px solid #CCCCCC; 
+			}
 
+			
+			.headerContent{
+				 color:#505050; 
+				 font-family:Helvetica; 
+				 font-size:20px; 
+				 font-weight:bold; 
+				 line-height:100%; 
+				 padding-top:0; 
+				 padding-right:0; 
+				 padding-bottom:0; 
+				 padding-left:0; 
+				 text-align:left; 
+				 vertical-align:middle; 
+			}
 
-im {
-    color: inherit !important; 
-}
+			
+			.headerContent a:link, .headerContent a:visited,  .headerContent a .yshortcuts {
+				 color:#EB4102; 
+				 font-weight:normal; 
+				 text-decoration:underline; 
+			}
 
+			#headerImage{
+				height:auto; 
+				max-width:600px; 
+			}
 
-img.g-img + div {
-    display: none !important; 
-}
+			
 
+			
+			#templateBody{
+				 background-color:#F4F4F4; 
+				 border-top:1px solid #FFFFFF; 
+				 border-bottom:1px solid #CCCCCC; 
+			}
 
+			
+			.bodyContent{
+				 color:#505050; 
+				 font-family:Helvetica; 
+				 font-size:16px; 
+				 line-height:150%; 
+				padding-top:20px; 
+				padding-right:20px; 
+				padding-bottom:20px; 
+				padding-left:20px; 
+				 text-align:left; 
+			}
 
+			
+			.bodyContent a:link, .bodyContent a:visited,  .bodyContent a .yshortcuts {
+				 color:#EB4102; 
+				 font-weight:normal; 
+				 text-decoration:underline; 
+			}
 
+			.bodyContent img{
+				display:inline; 
+				height:auto; 
+				max-width:560px; 
+			}
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-    u ~ div .email-container {
-        min-width: 320px !important; 
-    }
-}
+			
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
-    u ~ div .email-container {
-        min-width: 375px !important; 
-    }
-}
+			.templateColumnContainer{display:inline; width:260px; }
 
-@media only screen and (min-device-width: 414px) {
-    u ~ div .email-container {
-        min-width: 414px !important; 
-    }
-}
-	</style> 
-  <!-- CSS Reset : END -->
-  <!-- Progressive Enhancements : BEGIN --> 
-  <style type="text/css">.primary{
-	background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina30e3ca; 
-}
-bg_white{
-	background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinaffffff; 
-}
-bg_light{
-	background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinafafafa; 
-}
-bg_black{
-	background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina000000; 
-}
-bg_dark{
-	background: rgba(0,0,0,.8); 
-}
-email-section{
-	padding:2.5em; 
-}
+			
+			#templateColumns{
+				 background-color:#F4F4F4; 
+				 border-top:1px solid #FFFFFF; 
+				 border-bottom:1px solid #CCCCCC; 
+			}
 
+			
+			.leftColumnContent{
+				 color:#505050; 
+				 font-family:Helvetica; 
+				 font-size:14px; 
+				 line-height:150%; 
+				padding-top:0; 
+				padding-right:0; 
+				padding-bottom:20px; 
+				padding-left:0; 
+				 text-align:left; 
+			}
 
-btn{
-	padding: 10px 15px; 
-	display: inline-block; 
-}
-btn.btn-primary{
-	border-radius: 5px; 
-	background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina30e3ca; 
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinaffffff; 
-}
-btn.btn-white{
-	border-radius: 5px; 
-	background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinaffffff; 
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina000000; 
-}
-btn.btn-white-outline{
-	border-radius: 5px; 
-	background: transparent; 
-	border: 1px solid http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinafff; 
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinafff; 
-}
-btn.btn-black-outline{
-	border-radius: 0px; 
-	background: transparent; 
-	border: 2px solid http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina000; 
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina000; 
-	font-weight: 700; 
-}
+			
+			.leftColumnContent a:link, .leftColumnContent a:visited,  .leftColumnContent a .yshortcuts {
+				 color:#EB4102; 
+				 font-weight:normal; 
+				 text-decoration:underline; 
+			}
 
-h1,h2,h3,h4,h5,h6{
-	font-family: 'Lato', sans-serif; 
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina000000; 
-	margin-top: 0; 
-	font-weight: 400; 
-}
+			
+			.rightColumnContent{
+				 color:#505050; 
+				 font-family:Helvetica; 
+				 font-size:14px; 
+				 line-height:150%; 
+				padding-top:0; 
+				padding-right:0; 
+				padding-bottom:20px; 
+				padding-left:0; 
+				 text-align:left; 
+			}
 
-body{
-	font-family: 'Lato', sans-serif; 
-	font-weight: 400; 
-	font-size: 15px; 
-	line-height: 1.8; 
-	color: rgba(0,0,0,.4); 
-}
+			
+			.rightColumnContent a:link, .rightColumnContent a:visited,  .rightColumnContent a .yshortcuts {
+				 color:#EB4102; 
+				 font-weight:normal; 
+				 text-decoration:underline; 
+			}
 
+			.leftColumnContent img, .rightColumnContent img{
+				display:inline; 
+				height:auto; 
+				max-width:260px; 
+			}
 
+			
 
-table{
-}
+			
+			#templateFooter{
+				 background-color:#F4F4F4; 
+				 border-top:1px solid #FFFFFF; 
+			}
 
+			
+			.footerContent{
+				 color:#808080; 
+				 font-family:Helvetica; 
+				 font-size:10px; 
+				 line-height:150%; 
+				padding-top:20px; 
+				padding-right:20px; 
+				padding-bottom:20px; 
+				padding-left:20px; 
+				 text-align:left; 
+			}
 
-logo h1{
-	margin: 0; 
-}
-logo h1 a{
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina30e3ca; 
-	font-size: 24px; 
-	font-weight: 700; 
-	font-family: 'Lato', sans-serif; 
-}
+			
+			.footerContent a:link, .footerContent a:visited,  .footerContent a .yshortcuts, .footerContent a span {
+				 color:#606060; 
+				 font-weight:normal; 
+				 text-decoration:underline; 
+			}
 
+			
 
-hero{
-	position: relative; 
-	z-index: 0; 
-}
+            @media only screen and (max-width: 480px){
+				
+				body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:none !important; } 
+                body{width:100% !important; min-width:100% !important; } 
 
-hero .text{
-	color: rgba(0,0,0,.3); 
-}
-hero .text h2{
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina000; 
-	font-size: 40px; 
-	margin-bottom: 0; 
-	font-weight: 400; 
-	line-height: 1.4; 
-}
-hero .text h3{
-	font-size: 24px; 
-	font-weight: 300; 
-}
-hero .text h2 span{
-	font-weight: 600; 
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina30e3ca; 
-}
+				
+				#bodyCell{padding:10px !important; }
 
+				
 
+				
 
-heading-section{
-}
-heading-section h2{
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina000000; 
-	font-size: 28px; 
-	margin-top: 0; 
-	line-height: 1.4; 
-	font-weight: 400; 
-}
-heading-section .subheading{
-	margin-bottom: 20px !important; 
-	display: inline-block; 
-	font-size: 13px; 
-	text-transform: uppercase; 
-	letter-spacing: 2px; 
-	color: rgba(0,0,0,.4); 
-	position: relative; 
-}
-heading-section .subheading::after{
-	position: absolute; 
-	left: 0; 
-	right: 0; 
-	bottom: -10px; 
-	content: ''; 
-	width: 100%; 
-	height: 2px; 
-	background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina30e3ca; 
-	margin: 0 auto; 
-}
+				
+				#templateContainer{
+					max-width:600px !important; 
+					 width:100% !important; 
+				}
 
-heading-section-white{
-	color: rgba(255,255,255,.8); 
-}
-heading-section-white h2{
-	font-family: 
-	line-height: 1; 
-	padding-bottom: 0; 
-}
-heading-section-white h2{
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinaffffff; 
-}
-heading-section-white .subheading{
-	margin-bottom: 0; 
-	display: inline-block; 
-	font-size: 13px; 
-	text-transform: uppercase; 
-	letter-spacing: 2px; 
-	color: rgba(255,255,255,.4); 
-}
+				
+				h1{
+					 font-size:24px !important; 
+					 line-height:100% !important; 
+				}
 
+				
+				h2{
+					 font-size:20px !important; 
+					 line-height:100% !important; 
+				}
 
-ul.social{
-	padding: 0; 
-}
-ul.social li{
-	display: inline-block; 
-	margin-right: 10px; 
-}
+				
+				h3{
+					 font-size:18px !important; 
+					 line-height:100% !important; 
+				}
 
+				
+				h4{
+					 font-size:16px !important; 
+					 line-height:100% !important; 
+				}
 
+				
 
-footer{
-	border-top: 1px solid rgba(0,0,0,.05); 
-	color: rgba(0,0,0,.5); 
-}
-footer .heading{
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina000; 
-	font-size: 20px; 
-}
-footer ul{
-	margin: 0; 
-	padding: 0; 
-}
-footer ul li{
-	list-style: none; 
-	margin-bottom: 10px; 
-}
-footer ul li a{
-	color: rgba(0,0,0,1); 
-}
+				#templatePreheader{display:none !important; } 
 
+				
+				#headerImage{
+					height:auto !important; 
+					 max-width:600px !important; 
+					 width:100% !important; 
+				}
 
-@media screen and (max-width: 500px) {
+				
+				.headerContent{
+					 font-size:20px !important; 
+					 line-height:125% !important; 
+				}
 
+				
 
-}
+				
+				#bodyImage{
+					height:auto !important; 
+					 max-width:560px !important; 
+					 width:100% !important; 
+				}
+
+				
+				.bodyContent{
+					 font-size:18px !important; 
+					 line-height:125% !important; 
+				}
+
+				
+
+				.templateColumnContainer{display:block !important; width:100% !important; }
+
+				
+				.columnImage{
+					height:auto !important; 
+					 max-width:260px !important; 
+					 width:100% !important; 
+				}
+
+				
+				.leftColumnContent{
+					 font-size:16px !important; 
+					 line-height:125% !important; 
+				}
+
+				
+				.rightColumnContent{
+					 font-size:16px !important; 
+					 line-height:125% !important; 
+				}
+
+				
+
+				
+				.footerContent{
+					 font-size:14px !important; 
+					 line-height:115% !important; 
+				}
+
+				.footerContent a{display:block !important; } 
+			}
 	</style> 
  </head> 
- <body style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinaf1f1f1; " width="100%"> 
-  <center style="width: 100%; background-color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinaf1f1f1; "> 
-   <div style="display: none; font-size: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif; ">
-    ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;
-   </div> 
-   <div class="email-container" style="max-width: 600px; margin: 0 auto; ">
-    <!-- BEGIN BODY --> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto; " width="100%"> 
-     <tbody> 
-      <tr> 
-       <td class="bg_white" style="padding: 1em 2.5em 0 2.5em; " valign="top"> 
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td style="text-align: center; "> <h1 style="margin-bottom: 0; color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina3C4121; font-size: 44px"><a href="http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina" style="color:  http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina3C4121"><strong>UPS</strong></a></h1> <h2 style="font-size: 32px; line-height: normal">You are just a few clicks away<br /> to get The <strong>$100 UPS</strong> Card</h2> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <!-- end tr --> 
-      <tr> 
-       <td class="hero bg_white" style="padding: 0 0 0 0; " valign="middle"><a href="http://www.eternalisto.info/e036iQY2395H8h6F11E4680s10d7N36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQJdRS96S10JXS5apBwD/arrowheads-Carolina"><img alt="" src="http://www.eternalisto.info/arrowheads-Carolina/ed65n2Q395JKA7a11E4681G10d7u36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQJdRS97I10ADUX5nNwWD" style="width: 100%; max-width: 600px; height: auto; margin: auto; display: block; " /></a></td> 
-      </tr> 
-      <!-- end tr --> 
-      <tr> 
-       <td class="hero bg_white" style="padding: 2em 0 4em 0; " valign="middle"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td> 
-            <div class="text" style="padding: 0 2.5em; text-align: center; "> 
-             <h3 style="padding-top: 12px"><strong>We love your opinion</strong><br /> Simply complete our 20-Second Service Survey about how your experience has been with us lately</h3> 
-             <p><a href="http://www.eternalisto.info/e036iQY2395H8h6F11E4680s10d7N36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQJdRS96S10JXS5apBwD/arrowheads-Carolina" style="border-radius: 5px; background: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolina3C4121; 
-	color: http://www.eternalisto.info/cb96F23Wp95BR8p612fh467fg10d7s36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQJdRS96LRty105OjWwD/arrowheads-Carolinaffffff; padding: 10px 15px; 	display: inline-block; font-size: 25px">Click Here To Start</a></p> 
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <!-- end tr -->
-      <!-- 1 Column Text + Button : END --> 
-     </tbody> 
-    </table> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto; " width="100%"> 
-     <tbody> 
-      <tr> 
-       <td class="bg_light footer email-section" valign="middle"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td style="padding-top: 20px; " valign="top" width="33.333%"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td style="text-align: left; padding-right: 10px; "> <h3 class="heading">&nbsp;</h3> <p>&nbsp;</p> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-           <td style="padding-top: 20px; " valign="top" width="33.333%"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td style="text-align: left; padding-left: 5px; padding-right: 5px; "> <h3 class="heading">&nbsp;</h3> 
-                <ul> 
-                </ul> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-           <td style="padding-top: 20px; " valign="top" width="33.333%"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td style="text-align: left; padding-left: 10px; "> 
-                <ul> 
-                 <li>&nbsp;</li> 
-                 <li>&nbsp;</li> 
-                 <li>&nbsp;</li> 
-                 <li>&nbsp;</li> 
-                </ul> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <!-- end: tr --> 
-      <tr> 
-       <td class="bg_light" style="text-align: center; "> <p>&nbsp;</p> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
+ <body leftmargin="0" marginheight="0" marginwidth="0" offset="0" topmargin="0"> 
+  <center> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" id="bodyTable" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" id="bodyCell" valign="top">
+       <!-- BEGIN TEMPLATE // --> 
+       <table border="0" cellpadding="0" cellspacing="0" id="templateContainer"> 
+        <tbody> 
+         <tr> 
+          <td align="center" valign="top">
+           <!-- BEGIN PREHEADER // --> 
+           <table border="0" cellpadding="0" cellspacing="0" id="templatePreheader" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="preheaderContent" mc:edit="preheader_content00" style="padding-top:10px; padding-right:20px; padding-bottom:10px; padding-left:20px; " valign="top">&nbsp;</td> 
+              <!-- *|IFNOT:ARCHIVE_PAGE|* --> 
+              <td class="preheaderContent" mc:edit="preheader_content01" style="padding-top:10px; padding-right:20px; padding-bottom:10px; padding-left:0; " valign="top" width="180">&nbsp;</td> 
+              <!-- *|END:IF|* --> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- // END PREHEADER --></td> 
+         </tr> 
+         <tr> 
+          <td align="center" valign="top">
+           <!-- BEGIN HEADER // --> 
+           <table border="0" cellpadding="0" cellspacing="0" id="templateHeader" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="headerContent" valign="top"><a href="http://www.fancyishtioope.info/sprang-things/2c44j2395hg86q13RX468u6N10d9r36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQPdRSQ5QR10V5plBwD"><img id="headerImage" mc:allowdesigner="" mc:allowtext="" mc:edit="header_image" mc:label="header_image" src="http://www.fancyishtioope.info/da94u2395KX7aF12K468N7x10d9x36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQPdRSQ6e1hnz05b@@wD/availers-provably" style="max-width:600px; " /></a></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- // END HEADER --></td> 
+         </tr> 
+         <tr> 
+          <td align="center" valign="top">
+           <!-- BEGIN BODY // --> 
+           <table border="0" cellpadding="0" cellspacing="0" id="templateBody" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="bodyContent" mc:edit="body_content00" valign="top"> <h1 align="center" style="text-align: center">You are just a few clicks away<br /> to get The $100 Mc Donalds Card</h1> <br /> <a href="http://www.fancyishtioope.info/sprang-things/2c44j2395hg86q13RX468u6N10d9r36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQPdRSQ5QR10V5plBwD"><img alt="" src="http://www.fancyishtioope.info/kidnaps-shading/ed64z2395NS7ta13b468Rj8H10d9O36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQPdRSQ6mjU10H6KzywDP" style="max-width: 100%; width: 100%" /></a><br /> &nbsp; 
+               <center>
+                <strong style="font-size: 22px">We appreciate your opinion</strong>
+                <br /> 
+                <br /> 
+                <span style="font-size: 26px; line-height: normal">Simply complete our 20-Second Service Survey about how your experience has been with us lately.</span>
+               </center> </td> 
+             </tr> 
+             <tr> 
+              <td align="center" class="bodyContent" style="padding-top:0; padding-bottom:0; "> 
+               <center>
+                <a class="button-mobile" href="http://www.fancyishtioope.info/sprang-things/2c44j2395hg86q13RX468u6N10d9r36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQPdRSQ5QR10V5plBwD" style="background-color:#EA3838; border-radius:5px; color:#fff; display:inline-block; font-family:'Cabin', Helvetica, Arial, sans-serif; font-size:24px; font-weight:regular; line-height:45px; text-align:center; text-decoration:none; width:255px; -webkit-text-size-adjust:none; mso-hide:all; margin: auto"><strong>Go here To Start</strong></a>
+               </center> </td> 
+             </tr> 
+             <tr> 
+              <td class="bodyContent" mc:edit="body_content01" valign="top">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- // END BODY --></td> 
+         </tr> 
+         <tr> 
+          <td align="center" valign="top">
+           <!-- BEGIN COLUMNS // --> 
+           <table border="0" cellpadding="20" cellspacing="0" id="templateColumns" width="100%"> 
+            <tbody> 
+             <tr mc:repeatable=""> 
+              <td align="left" style="padding-bottom:0; " valign="top"> 
+               <table align="left" border="0" cellpadding="0" cellspacing="0" class="templateColumnContainer"> 
+                <tbody> 
+                 <tr> 
+                  <td class="leftColumnContent">&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td class="leftColumnContent" mc:edit="left_column_content" valign="top">&nbsp;</td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table align="right" border="0" cellpadding="0" cellspacing="0" class="templateColumnContainer"> 
+                <tbody> 
+                 <tr> 
+                  <td class="rightColumnContent">&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td class="rightColumnContent" mc:edit="right_column_content" valign="top">&nbsp;</td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- // END COLUMNS --></td> 
+         </tr> 
+         <tr> 
+          <td align="center" valign="top">
+           <!-- BEGIN FOOTER // --> 
+           <table border="0" cellpadding="0" cellspacing="0" id="templateFooter" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="footerContent" mc:edit="footer_content00" valign="top">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td class="footerContent" mc:edit="footer_content01" style="padding-top:0; " valign="top">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td class="footerContent" mc:edit="footer_content02" style="padding-top:0; " valign="top">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <!-- // END FOOTER --></td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <!-- // END TEMPLATE --></td> 
+     </tr> 
+    </tbody> 
+   </table> 
   </center>   
- <img src="http://www.eternalisto.info/cb95q23K95JU85p12n46y82K10d7_36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQJdRS96ljF1t06oBwDXL/consulted-retrofitting" alt=""/></body>
+ <img src="http://www.fancyishtioope.info/contiguity-trowels/b704M2395M8_5o11P4689O10d9J36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQPdRSQ5kQ1i06S@wXDX" alt=""/></body>
 </html>
 
-------=_Part_364_59496306.1673733513283--
+------=_Part_280_1747786179.1673736338600--
 
