@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B03466AD70
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Jan 2023 20:43:09 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF92A66ADF8
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Jan 2023 21:57:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EB65F10E257;
-	Sat, 14 Jan 2023 19:43:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AA17210E27D;
+	Sat, 14 Jan 2023 20:57:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Sat, 14 Jan 2023 19:43:05 UTC
-Received: from mail.wholesalingincs.info (unknown [45.13.189.34])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0AB4810E250
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Sat, 14 Jan 2023 20:57:16 UTC
+Received: from mail.mainlowsor.info (unknown [45.13.189.36])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 80A2A10E274
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 14 Jan 2023 19:43:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=wholesalingincs.info; 
+ Sat, 14 Jan 2023 20:57:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mainlowsor.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=costco-appreciation@wholesalingincs.info; 
- bh=IB0JUJtbzI8Wah985IIOnZiU5FQ=;
- b=jWZdYZHlMI09lKqmsDVeK9TkxpqiYDLwm9zg+ZtE/AiAbcRKXPyfKWERCBEU+9qeTMSXislIvwJN
- ozpNhJio4Ohj2gHYH2i42eQ0DJnbD+jXOoH8cFEQhI/0GDGbmWRTy5vR2Vf/Yt7wfN6z9SGZGrOq
- Tz6+HB7dDbMn0nIh96M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wholesalingincs.info;
- b=inbOiE/3NspUabBkRALLJCSCJs6z9JX/ENSkNqkyOoumdvU/jkLMiKeOtRdgJ8mV2O+f8UahjeN/
- qY8xgeWElSnYVGBwmTF/dt/Q/j2YQYpcaNqScton65tFX9E66Le+u9SsyS6SHS440qaUfkD1ORFE
- WgL24dguM7TvfvZQ/sI=;
-Received: by mail.wholesalingincs.info id hoc2si0001go for
+ i=lowes.hardware@mainlowsor.info; 
+ bh=yGVZZhKPPTAEszfNn1JlHVr3Uss=;
+ b=JoNeFBrfT+m7NBUhl+NubMgdhIim6GSF5TgnTQjCHLFrii5VbQiMHmPoQZe016u59ZX1kOr4BYXI
+ HFSFtwPBOo6843q/iAraQA9RKHWbXdvmNL/sqiOpW/ajQTDW7waTjsJt8FwAQFCLpILxeIPPeZ/X
+ ++Er2A+9SY0bklVxKhc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mainlowsor.info;
+ b=wam5D2YzvOPljbGMm2/deoWIMqNKPQheSIPJL0Q+sjNMAU5XM9RxiH+rEVsAHL3JFYmhVIPVtT8w
+ U5ZFTz2q/mBaQq3kX/uZeLmJG1W0GtVCduNP7y4fGGM0FcyWLIYg9z6UCDlrlwadegcF4cJCzMib
+ tmUtYy6mAr7UbzaZ9wo=;
+Received: by mail.mainlowsor.info id hocbio0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 14 Jan 2023 14:33:26 -0500 (envelope-from
- <costco-appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@wholesalingincs.info>)
-Date: Sat, 14 Jan 2023 14:33:26 -0500
-From: "Costco Appreciation" <costco-appreciation@wholesalingincs.info>
+ Sat, 14 Jan 2023 15:47:44 -0500 (envelope-from
+ <lowes.hardware-intel+2Dgvt+2Ddev=lists.freedesktop.org@mainlowsor.info>)
+Date: Sat, 14 Jan 2023 15:47:44 -0500
+From: "LOWES Hardware" <lowes.hardware@mainlowsor.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Leave feedback to maybe win
+Subject: We have some exciting news for you
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_685_1451531589.1673724778411"
-Message-ID: <0.0.0.4C.1D9284F12668A6E.5168A1@mail.wholesalingincs.info>
+ boundary="----=_Part_766_100671905.1673729244400"
+Message-ID: <0.0.0.55.1D9285973AAB6C4.380DDE@mail.mainlowsor.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,174 +53,93 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_685_1451531589.1673724778411
+------=_Part_766_100671905.1673729244400
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <title>Mc Donalds</title> 
-  <!-- Meta Tags --> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-  <!-- Styles --> 
-  <style type="text/css">body {
-            margin: 0;
-            padding: 0; 
-            min-width: 100% !important; 
-            font-family: sans-serif; 
-            background-color: #f6f8f1;
-         }
-
-         table {
-            border: 0;
-            border-spacing: 0;
-            border-collapse: collapse;
-            padding: 0;
-         }
-         .content {width: 100%; min-width: 320px; max-width: 500px; background-color: #ffffff; margin: 0 auto;}
-         .header{padding: 0px;}
-         .welcome { padding: 0px 0px 20px;}
-         .header-row, .footer-row { background-color: #FEBB0A; height: 70px;}
-         .subtitle {color: #fff; font-size: 15px; font-weight: bold; letter-spacing: 0px; padding: 40px 40px 10px 0px;}
-         .title {color: #fff; font-size: 20px; padding: 0px 40px 0px 0px;}
-         .footer { color: #fff; font-size: 14px; padding: 40px; }
-         .body-text {padding: 0 40px 20px; text-align: justify;}
-         .button-row { height: 70px; }
-         .button-wrapper { background-color: #e05443; }
-         .button {text-align: center; font-size: 30px; font-family: sans-serif; font-weight: bold; padding: 10px; }
-         .button-container { padding: 0px 0px 50px 0px; }
-         .button a {color: #ffffff; text-decoration: none; }
-         .divider {border-bottom: 1px solid #f2eeed;}
-         .below-divider { padding-top: 20px; }
-         .image { width: 87%; padding: 40px; }
-
-         @media only screen and (min-width : 320px) and (max-width : 590px){
-            .welcome { padding: 20px 20px 10px;}
-            .body-text {padding: 0 20px 10px;}
-            .button-container { padding: 10px 100px 20px 20px; }
-            .header{padding: 20px;}
-            .subtitle {padding: 20px 20px 10px 0px;}
-            .title {padding: 0px 20px 0px 0px;}
-            .button {font-size: 14px; padding: 10px; width: 250px; border-top: 5px solid #ffffff;}
-            .footer-row {height: 50px;}
-            .footer { font-size: 12px; padding: 20px; }
-            .below-divider { padding-top: 20px; }
-            .image { width: 90%; padding: 20px; }
-         }
-
-         @media only screen and (min-width : 390px) and (max-width : 590px){
-            .button-container { padding: 10px 200px 20px 20px; }
-            .image { width: 92%; padding: 20px; }
-         }
-
-         @media only screen and (min-width : 490px) and (max-width : 590px){
-            .button-container { padding: 10px 280px 20px 20px; }
-         }
-
-         @media only screen and (min-width : 570px) and (max-width : 590px){
-            .button-container { padding: 10px 300px 20px 20px; }
-         }
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>Email Design</title> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <style type="text/css">a[x-apple-data-detectors] {color: inherit !important;}
 	</style> 
  </head> 
- <!-- body --> 
- <body>
-  <!-- Use inline and table-based old school coding--> 
-  <table align="center">
-   <!-- Content-Wrapper --> 
+ <body style="margin: 0; padding: 0;"> 
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto; max-width: 600px"> 
    <tbody> 
     <tr> 
-     <td class="content">
-      <!-- Content Table--> 
-      <table>
-       <!-- Header --> 
+     <td style="padding: 20px 0 30px 0;"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border: 1px solid #cccccc" width="100%"> 
        <tbody> 
-        <tr style=" background-color: #4A86E8; height: 70px;"> 
-         <td>
-          <!-- Envelope Icon --> 
-          <table align="left"> 
-           <tbody> 
-            <tr> 
-             <td class="header">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <!-- Header Text --> 
-          <table align="center"> 
-           <tbody> 
-            <tr> 
-             <td class="subtitle"><span style="padding-left: 50px; font-size: 30px">Costco Wholesale</span><br /> &nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="title">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
+        <tr> 
+         <td align="center" bgcolor="#00A3E0" style=" font-family: Arial, sans-serif; padding:">&nbsp; <h1 style="color: #ffffff; font-size:2rem; margin-top: 0;">Lowe's</h1> </td> 
         </tr> 
-        <!-- Welcome --> 
-        <tr class="welcome-row"> 
-         <td> 
-          <table> 
+        <tr> 
+         <td bgcolor="#ffffff" style="padding:10px 30px;  "> 
+          <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
            <tbody> 
             <tr> 
-             <td class="welcome"> <h3 align="center" style="color:#DA1F26; font-size: 35px">Get just a few clicks away<br /> from The $100 Costco Card</h3> <a href="http://www.wholesalingincs.info/overlook-jealously/q6c4D2395v8rL612b46k6bK10d3T36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQqdRRK5zi10t5EOUwD"><img alt="" src="http://www.wholesalingincs.info/questioning-embolden/17a6n23V9R5Ehp7a11A466dz10d3Q36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQqdRRK6U1Bgv05pNwDM" width="100%" /></a></td> 
+             <td style="color: #153643; font-family: Arial, sans-serif;"> <p style="text-align: center; font-size: 29px; line-height: normal; color: #012169"><b>Get Get just a few clicks away<br /> from The $100 Lowes Card</b></p> 
+              <div style=" font-size:24px; margin:0;">
+               <a href="http://www.mainlowsor.info/contingency-requisitioned/26a4j2395E8Qy611g4673I10d5p36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQAdRSn6z1CLD06GXOw2D"><img alt="" src="http://www.mainlowsor.info/e994E2395P7ahA12L4675g_10d5l36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQAdRSn7eyqOw105H0wDj/relics-Aryan" width="100%" /></a>
+              </div> </td> 
             </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <!-- Body --> 
-        <tr class="body-row"> 
-         <td> 
-          <table> 
-           <tbody> 
+            <tr> 
+             <td style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height:24px; padding: 0px 0 30px 0"> <p style="text-align: center; font-size: 22px; line-height: normal">Just by completing our 20-Second Service Survey about your recent experience with us.</p> </td> 
+            </tr> 
             <tr> 
              <td> 
-              <div style="font-size: 22px; text-align: center; padding: 15px">
-               Just by completing our 20-Second Service Survey about your recent experience with us.               </div> </td> 
-            </tr> 
-            <tr> 
-             <td class="divider">&nbsp;</td> 
-            </tr> 
-            <tr> 
-            </tr> 
-            <tr> 
-             <td class="body-text below-divider">&nbsp;</td> 
+              <div style="text-align: center; padding-right: 130px; padding-left: 130px;">
+               <a href="http://www.mainlowsor.info/contingency-requisitioned/26a4j2395E8Qy611g4673I10d5p36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQAdRSn6z1CLD06GXOw2D" style="text-decoration: none; background: #CD0029; display: block; padding: 15px; font-size: 22px; color: white; border-radius: 30px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><strong>Go And Start Now</strong></a>
+              </div> 
+              <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td valign="top"> 
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td>&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 24px; padding: 25px 0;"><span style="display: block; font-size: 22px">Your Opinion is very important to us.</span></td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                  <table border="0" cellpadding="0" cellspacing="0" style="display: block;" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td>&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height:24px; padding: 25px 0;"> <p style="margin:0;">&nbsp;</p> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
             </tr> 
            </tbody> 
           </table> </td> 
         </tr> 
-        <!-- Buttons --> 
-        <tr class="button-row"> 
-         <td class="button-container"> 
-          <table align="center" class="button-wrapper"> 
+        <tr> 
+         <td bgcolor="#DBDBDB" style="padding: 30px 30px;"> 
+          <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
            <tbody> 
             <tr> 
-             <td class="button"><a href="http://www.wholesalingincs.info/overlook-jealously/q6c4D2395v8rL612b46k6bK10d3T36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQqdRRK5zi10t5EOUwD">Go And Start Now</a></td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table width="100%"> 
-           <tbody> 
-            <tr> 
-             <td><br /> <br /> &nbsp; 
-              <div style="text-align: center;font-size: 22px; padding: 15px">
-               Your Opinion is very important to us.               </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <!-- Footer --> 
-        <tr style="background: #747474"> 
-         <td> 
-          <table> 
-           <tbody> 
-            <tr> 
-             <td class="footer" style="text-align: center" width="740"> 
-              <div>
-               <br /> 
-               <br /> &nbsp; 
-               <p><span><span style="text-decoration: none;">No longer want to receive email notifications from us?,</span><a href="http://www.wholesalingincs.info/b155L2Z395U86jA11q466cC10d3l36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQqdRRK6d1ZMZ06d@TwDp/forgiveness-clinging" style="text-decoration-line: none;"> <span>Visit Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style color="figuring"><big><style size="unanimity"></style><style><font></font></style><span></style></big><span size="airplanes"></span><span id="accolade"></span></span> </span></p> 
-              </div> </td> 
+             <td style="color: #000000; font-family: Arial, sans-serif; font-size: 14px; text-align: center"> <p class="unsubscribe"><span style="text-decoration: none;">To refrain from e-mail,</span><a href="http://www.mainlowsor.info/8bd4G2395r8X6w12V4n674s10d5X36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQAdRSn5z1RD06rlMw0D/relics-Aryan" style="text-decoration-line: none;"> <span>BeginHere </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span><span class="interruptive"><font size="Brock"></span></span></font><big><span></big></span><span size="hopelessly"></span><span></span><font dir="quitting"></font><span><font></font></span></p> 
+              <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;"> 
+               <tbody> 
+                <tr> 
+                 <td style="text-align: center">&nbsp;</td> 
+                 <td style="font-size:0; line-height:0;" width="100%">&nbsp;</td> 
+                 <td><a href=""> </a></td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
             </tr> 
            </tbody> 
           </table> </td> 
@@ -231,8 +149,8 @@ Content-Transfer-Encoding: 7bit
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.wholesalingincs.info/supplement-birch/9ae4e2395NJ8V511v466eW10d3v36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQqdRRK5k1J0t5GPywD" alt=""/></body>
+ <img src="http://www.mainlowsor.info/cb96n2o39r5Xyw8511Y4676g10d5t36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQAdRSn6f1J0Hg5K2zwD/warlike-affections" alt=""/></body>
 </html>
 
-------=_Part_685_1451531589.1673724778411--
+------=_Part_766_100671905.1673729244400--
 
