@@ -2,42 +2,83 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37E2C66A3C2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Jan 2023 20:56:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8354666A757
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 14 Jan 2023 01:04:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 08F5F10EAD0;
-	Fri, 13 Jan 2023 19:56:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A473010E243;
+	Sat, 14 Jan 2023 00:04:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Fri, 13 Jan 2023 19:56:06 UTC
-Received: from mail.go-trckups.info (unknown [45.13.189.29])
- by gabe.freedesktop.org (Postfix) with ESMTP id 768D410EACE
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 19:56:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=go-trckups.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups-gift-card-chance@go-trckups.info; 
- bh=Fl5Hiq5maWPXB38s2crxY8U2DZY=;
- b=ndaeE33Hrp98S9RZ+uOe0BoVEaVARJ81LGlsTQjSeNjaFgQgaZBiujGmwFuX1/haX4/8Ti3UC9R0
- BOtQrI6TJ2LAb5hkhChhS9rTGPR3SMj8V2d6WCXNVLVWi4M/D+AZnAZqM5iMtPVU+0RSP3JWLYfU
- hRVWUJzcM2RNgXNg7Aw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=go-trckups.info;
- b=wBchXl27HR0wVHOfnSOwYeOM86Uiq2JlVcvM+OW8eVyzEGCOlypMZPJd8bIKVmNoPtKqqj64svtw
- BXgrCp687siJ+hbXqTaNqwmmceFXg6oB37k10GTfMU/dmZTVA8MxYpTcjAzW0dcuHhcl4TPQKvXc
- 6l3gJhEziMxmhyccFW4=;
-Received: by mail.go-trckups.info id ho75t40001g3 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Jan 2023 16:12:56 -0500 (envelope-from
- <ups-gift-card-chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@go-trckups.info>)
-Date: Fri, 13 Jan 2023 16:12:56 -0500
-From: "Ups Gift Card Chance" <ups-gift-card-chance@go-trckups.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: ups Gift Opportunity
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ED7C810E241;
+ Sat, 14 Jan 2023 00:04:02 +0000 (UTC)
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 30DNt0S9021145; Sat, 14 Jan 2023 00:04:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=from : to : cc : subject
+ : date : message-id : mime-version : content-transfer-encoding; s=pp1;
+ bh=pebRGAVC+dkDU7+HrWNEdoGsEveXfipktrtq3c/Wv18=;
+ b=YT27CmBXcSKrSTnkpIpasUbNBf/ARWi7vvPKktjevB9qhrsJmt0tAGwCf60f/LQUB0gD
+ UYLOTWeX9hTlqXwjIdAQbwIJ8AD1FPfHhWQoHVy7UlmXwl4p56eVn2At1LFnbXr5Ps2V
+ xMddkLGVm2HOxSLIIv2USYwBuoQrxPfRxTigW6gXovuHymT9Mh1uTHLaOTLu//+PU1V7
+ J/F85+xuCep8qSBUsgqizeUrtoAErJ0QxGs+cVYSw007Z+hpFMwRpIPhQcjeDgFelT24
+ adwLi0M9193k1/mvEbFWAai60rwM8ucTucmXQvkEaSV3ryosFecjg0SAGkf5ahVpbc4C hQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3n3hd2856y-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 14 Jan 2023 00:04:00 +0000
+Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 30E00IXs003434;
+ Sat, 14 Jan 2023 00:03:59 GMT
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3n3hd2856e-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 14 Jan 2023 00:03:59 +0000
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 30DNElU6001732;
+ Sat, 14 Jan 2023 00:03:58 GMT
+Received: from smtprelay07.dal12v.mail.ibm.com ([9.208.130.99])
+ by ppma04wdc.us.ibm.com (PPS) with ESMTPS id 3n1kmatkg0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Sat, 14 Jan 2023 00:03:58 +0000
+Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
+ [10.241.53.105])
+ by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 30E03vAI32899818
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 14 Jan 2023 00:03:57 GMT
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0EF9958059;
+ Sat, 14 Jan 2023 00:03:57 +0000 (GMT)
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 41EF658055;
+ Sat, 14 Jan 2023 00:03:53 +0000 (GMT)
+Received: from li-2311da4c-2e09-11b2-a85c-c003041e9174.ibm.com.com (unknown
+ [9.65.223.110]) by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Sat, 14 Jan 2023 00:03:53 +0000 (GMT)
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+To: alex.williamson@redhat.com, pbonzini@redhat.com
+Subject: [PATCH v4] vfio: fix potential deadlock on vfio group lock
+Date: Fri, 13 Jan 2023 19:03:51 -0500
+Message-Id: <20230114000351.115444-1-mjrosato@linux.ibm.com>
+X-Mailer: git-send-email 2.39.0
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_412_75775956.1673639110415"
-Message-ID: <0.0.0.2D.1D92793CEAAB5B8.8A16E@mail.go-trckups.info>
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 0edGTxN3xbEPbpEK0r8yN8pop-E30Ibp
+X-Proofpoint-GUID: HyJxKZ6KO3NbcwfPqy5FjSLyQ5jtSjtI
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.562,FMLib:17.11.122.1
+ definitions=2023-01-13_11,2023-01-13_02,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 clxscore=1015
+ mlxscore=0 phishscore=0 bulkscore=0 spamscore=0 suspectscore=0
+ priorityscore=1501 mlxlogscore=999 malwarescore=0 lowpriorityscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2301130161
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,314 +91,252 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
+ imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
+ david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
+ pasic@linux.ibm.com, jgg@nvidia.com, kvm@vger.kernel.org,
+ linux-s390@vger.kernel.org, borntraeger@linux.ibm.com,
+ intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_412_75775956.1673639110415
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Currently it is possible that the final put of a KVM reference comes from
+vfio during its device close operation.  This occurs while the vfio group
+lock is held; however, if the vfio device is still in the kvm device list,
+then the following call chain could result in a deadlock:
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Frank HTML Email</title> 
-  <style type="text/css">body {
-			Margin: 0;
-			padding: 0;
-			background-color: #f6f9fc;
-			overflow-x: hidden;
-		}
+kvm_put_kvm
+ -> kvm_destroy_vm
+  -> kvm_destroy_devices
+   -> kvm_vfio_destroy
+    -> kvm_vfio_file_set_kvm
+     -> vfio_file_set_kvm
+      -> group->group_lock/group_rwsem
 
-		a {
-			text-decoration: none;
-			color: #388cda;
-			font-size: 16px;
-		}
+Avoid this scenario by having vfio core code acquire a KVM reference
+the first time a device is opened and hold that reference until right
+after the group lock is released after the last device is closed.
 
-		table {
-			width: 100%;
-			border-spacing: 0;
-		}
+Fixes: 421cfe6596f6 ("vfio: remove VFIO_GROUP_NOTIFY_SET_KVM")
+Reported-by: Alex Williamson <alex.williamson@redhat.com>
+Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+---
+Changes from v3:
+* Can't check for open_count after the group lock has been dropped because
+  it would be possible for the count to change again once the group lock
+  is dropped (Jason)
+  Solve this by stashing a copy of the kvm and put_kvm while the group
+  lock is held, nullifying the device copies of these in device_close()
+  as soon as the open_count reaches 0, and then checking to see if the
+  device->kvm changed before dropping the group lock.  If it changed
+  during close, we can drop the reference using the stashed kvm and put
+  function after dropping the group lock.
 
-		td {
-			padding: 0;
-		}
+Changes from v2:
+* Re-arrange vfio_kvm_set_kvm_safe error path to still trigger
+  device_open with device->kvm=NULL (Alex)
+* get device->dev_set->lock when checking device->open_count (Alex)
+* but don't hold it over the kvm_put_kvm (Jason)
+* get kvm_put symbol upfront and stash it in device until close (Jason)
+* check CONFIG_HAVE_KVM to avoid build errors on architectures without
+  KVM support
 
-		img {
-			border: 0;
-		}
+Changes from v1:
+* Re-write using symbol get logic to get kvm ref during first device
+  open, release the ref during device fd close after group lock is
+  released
+* Drop kvm get/put changes to drivers; now that vfio core holds a
+  kvm ref until sometime after the device_close op is called, it
+  should be fine for drivers to get and put their own references to it.
+---
+ drivers/vfio/group.c     | 23 +++++++++++++--
+ drivers/vfio/vfio.h      |  9 ++++++
+ drivers/vfio/vfio_main.c | 61 +++++++++++++++++++++++++++++++++++++---
+ include/linux/vfio.h     |  2 +-
+ 4 files changed, 87 insertions(+), 8 deletions(-)
 
-		.wrapper {
-			width: 100%;
-			table-layout: fixed;
-			background-color: #f6f9fc;
-			padding-bottom: 40px;
-		}
-
-		.webkit {
-			max-width: 600px;
-			background-color: #ffffff;
-		}
-
-		.outer {
-			/* Capital M with margin for Outlook compatibility */
-			Margin: 0 auto;
-			width: 100%;
-			max-width: 600px;
-			border-spacing: 0;
-			font-family: sans-serif;
-			color: #4a4a4a;
-		}
-
-		.innertable {
-			background-color: #FFF;
-			padding: 10px;
-			text-align: right;
-		}
-
-		.logo {
-			width: 180px;
-		}
-
-		.banner {
-			width: 600px;
-			max-width: 100%;
-
-		}
-
-		.main {
-			width: 100%;
-			border-spacing: 0;
-		}
-
-		.three-columns {
-			text-align: center;
-			font-size: 0;
-			padding-top: 40px;
-			padding-bottom: 30px;
-		}
-
-		.three-columns .column {
-			width: 100%;
-			max-width: 200px;
-			display: inline-block;
-			vertical-align: top;
-		}
-
-		.three-columns .column-content {
-			font-size: 20px;
-			line-height: 20px;
-		}
-
-		.padding {
-			padding: 15px;
-		}
-
-		.column-content-paragraph {
-			padding: 10px;
-			font-size: 16px;
-		}
-
-		.column-img {
-			width: 150px;
-			max-width: 150px;
-		}
-
-
-		.footer {
-			background-color: #6F1F3A;
-			padding: 15px;
-			text-align: center;
-
-			font-size: 18px;
-			color: #FFF;
-			Margin-bottom: 13px;
-		}
-
-		.social-icon {
-			width: 30px;
-		}
-
-		@media screen and (max-width: 600px) {
-			img.third-last-img {
-				width: 200px !important;
-				max-width: 200px !important;
-			}
-
-			.padding {
-				padding-right: 0 !important;
-				padding-left: 0 !important;
-			}
-		}
-
-		@media screen and (max-width: 400px) {
-			img.third-img {
-				width: 200px !important;
-				max-width: 200px !important;
-			}
-		}
-	</style> 
- </head> 
- <body> 
-  <center class="wrapper"> 
-   <div class="webkit"> 
-    <table alifgn="center" class="outer"> 
-     <tbody> 
-      <tr> 
-       <td> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td align="right" class="innertable"> <h1 style="font-size: 55px; padding-right: 25px">UPS</h1> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <tr> 
-       <td><a href="http://www.go-trckups.info/a9d6wj23R95VZ86N11D4659N10cfx36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjdRRQ7Yx1iy0Y6llBwUD/morphological-Vincent"><img alt="Banner" class="banner" src="http://www.go-trckups.info/precedent-parenthetic/71a6NXV2395P7Aqa11z465bT10cfx36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQjdRRQ5K_1u06y1PwAD" /></a></td> 
-      </tr> 
-      <tr> 
-       <td style="padding: 15px; font-size: 29px; text-align: center">Get just a few clicks away from The <b style="color: #3C4121">$100 UPS Card</b>, by completing our 20-Second Service Survey about your recent experience with us.<br /> &nbsp; 
-        <div style="padding-top: 1px; padding-left: 5px"> 
-         <div style="padding-top: 1px; padding-left: 5px"> 
-          <div style="padding-top: 1px; padding-left: 5px"> 
-           <div style="padding-top: 1px; padding-left: 5px"> 
-            <div style="padding-top: 1px; padding-left: 5px"> 
-             <div style="padding-top: 1px; padding-left: 5px"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 360px; min-width: 120px; border-collapse: collapse; border-spacing: 0; padding: 0;"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" valign="middle"> 
-                  <div style="
-                        padding: 14px 40px;
-                        margin: 0;
-                        text-decoration: none;
-                        font-weight: 500;
-                        border-collapse: collapse;
-                        border-spacing: 0;
-                        border-radius: 4px;
-                        background: #3C4121;
-                        border-bottom: 2px solid #F5AB6C; 
-                        ">
-                   <a href="http://www.go-trckups.info/a9d6wj23R95VZ86N11D4659N10cfx36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjdRRQ7Yx1iy0Y6llBwUD/morphological-Vincent" style="
-                            font-weight: 600 !important;
-                            text-decoration: none;
-                            color: #FFFFFF; font-family: 'DM Sans',sans-serif; font-size: 27px; font-weight: 400; line-height: 120%;" target="_blank">Go Here To Start</a>
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </div> 
-            </div> 
-           </div> 
-          </div> 
-         </div> 
-        </div> 
-        <table class="main"> 
-         <tbody> 
-          <tr> 
-           <td class="three-columns">
-            <!-- First Column Puppet --> 
-            <table class="column"> 
-             <tbody> 
-              <tr> 
-               <td class="padding"> 
-                <table class="column-content"> 
-                 <tbody> 
-                  <tr> 
-                   <td>&nbsp;</td> 
-                  </tr> 
-                  <tr> 
-                   <td class="column-content-paragraph">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <!-- First cokumn End -->
-            <!-- First column End -->
-            <!-- Second Column Prodigy --> 
-            <table class="column"> 
-             <tbody> 
-              <tr> 
-               <td class="padding"> 
-                <table class="column-content"> 
-                 <tbody> 
-                  <tr> 
-                   <td>&nbsp;</td> 
-                  </tr> 
-                  <tr> 
-                   <td class="column-content-paragraph">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <!-- Second column End -->
-            <!-- Third Column Pippet --> 
-            <table class="column"> 
-             <tbody> 
-              <tr> 
-               <td class="padding"> 
-                <table class="column-content"> 
-                 <tbody> 
-                  <tr> 
-                   <td>&nbsp;</td> 
-                  </tr> 
-                  <tr> 
-                   <td class="column-content-paragraph">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <!-- Third column End --></td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <!-- Footer	Start --> 
-      <tr> 
-       <td> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="footer"> <p>Your Opinion Matters</p> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <!-- Footer	 End--> 
-     </tbody> 
-    </table> 
-   </div> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <center>
-    <span style="color: #607382; ">To cut out email,</span>
-    <a href="http://www.go-trckups.info/8456V239Tv5CQ8V611s465aS10cfr36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQjdRRQ6OIH10U5SlwND/astuteness-irregulars" style="text-decoration-line: none;"> <span>Continue.Over.Here </span> </a>
-    <br /> 126 E 23rd St New York, NY, US 10010
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> <font><big></font></big><font></font><font dir="Richard"></font><span size="gleanings"></span><font dir="vetoer"></font><font></font><style></style>
-   </center> 
-  </center>   
- <img src="http://www.go-trckups.info/precedent-parenthetic/be86rZ23L95mC8J511i465cP10cfu36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQjdRRQ7WM1Nng06KJ2wAD" alt=""/></body>
-</html>
-
-------=_Part_412_75775956.1673639110415--
+diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+index bb24b2f0271e..b396c17d7390 100644
+--- a/drivers/vfio/group.c
++++ b/drivers/vfio/group.c
+@@ -165,9 +165,9 @@ static int vfio_device_group_open(struct vfio_device *device)
+ 	}
+ 
+ 	/*
+-	 * Here we pass the KVM pointer with the group under the lock.  If the
+-	 * device driver will use it, it must obtain a reference and release it
+-	 * during close_device.
++	 * Here we pass the KVM pointer with the group under the lock.  A
++	 * reference will be obtained the first time the device is opened and
++	 * will be held until the open_count reaches 0.
+ 	 */
+ 	ret = vfio_device_open(device, device->group->iommufd,
+ 			       device->group->kvm);
+@@ -179,9 +179,26 @@ static int vfio_device_group_open(struct vfio_device *device)
+ 
+ void vfio_device_group_close(struct vfio_device *device)
+ {
++	void (*put_kvm)(struct kvm *kvm);
++	struct kvm *kvm;
++
+ 	mutex_lock(&device->group->group_lock);
++	kvm = device->kvm;
++	put_kvm = device->put_kvm;
+ 	vfio_device_close(device, device->group->iommufd);
++	if (kvm == device->kvm)
++		kvm = NULL;
+ 	mutex_unlock(&device->group->group_lock);
++
++	/*
++	 * The last kvm reference will trigger kvm_destroy_vm, which can in
++	 * turn re-enter vfio and attempt to acquire the group lock.  Therefore
++	 * we get a copy of the kvm pointer and the put function under the
++	 * group lock but wait to put that reference until after releasing the
++	 * lock.
++	 */
++	if (kvm)
++		vfio_kvm_put_kvm(put_kvm, kvm);
+ }
+ 
+ static struct file *vfio_device_open_file(struct vfio_device *device)
+diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+index f8219a438bfb..08a5a23d6fef 100644
+--- a/drivers/vfio/vfio.h
++++ b/drivers/vfio/vfio.h
+@@ -251,4 +251,13 @@ extern bool vfio_noiommu __read_mostly;
+ enum { vfio_noiommu = false };
+ #endif
+ 
++#ifdef CONFIG_HAVE_KVM
++void vfio_kvm_put_kvm(void (*put)(struct kvm *kvm), struct kvm *kvm);
++#else
++static inline void vfio_kvm_put_kvm(void (*put)(struct kvm *kvm),
++				    struct kvm *kvm)
++{
++}
++#endif
++
+ #endif
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index 5177bb061b17..c6bb07af46b8 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -16,6 +16,9 @@
+ #include <linux/fs.h>
+ #include <linux/idr.h>
+ #include <linux/iommu.h>
++#ifdef CONFIG_HAVE_KVM
++#include <linux/kvm_host.h>
++#endif
+ #include <linux/list.h>
+ #include <linux/miscdevice.h>
+ #include <linux/module.h>
+@@ -344,6 +347,49 @@ static bool vfio_assert_device_open(struct vfio_device *device)
+ 	return !WARN_ON_ONCE(!READ_ONCE(device->open_count));
+ }
+ 
++#ifdef CONFIG_HAVE_KVM
++static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
++{
++	void (*pfn)(struct kvm *kvm);
++	bool (*fn)(struct kvm *kvm);
++	bool ret;
++
++	pfn = symbol_get(kvm_put_kvm);
++	if (WARN_ON(!pfn))
++		return false;
++
++	fn = symbol_get(kvm_get_kvm_safe);
++	if (WARN_ON(!fn)) {
++		symbol_put(kvm_put_kvm);
++		return false;
++	}
++
++	ret = fn(kvm);
++	if (ret)
++		device->put_kvm = pfn;
++	else
++		symbol_put(kvm_put_kvm);
++
++	symbol_put(kvm_get_kvm_safe);
++
++	return ret;
++}
++
++void vfio_kvm_put_kvm(void (*put)(struct kvm *kvm), struct kvm *kvm)
++{
++	if (WARN_ON(!put))
++		return;
++
++	put(kvm);
++	symbol_put(kvm_put_kvm);
++}
++#else
++static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
++{
++	return false;
++}
++#endif
++
+ static int vfio_device_first_open(struct vfio_device *device,
+ 				  struct iommufd_ctx *iommufd, struct kvm *kvm)
+ {
+@@ -361,16 +407,22 @@ static int vfio_device_first_open(struct vfio_device *device,
+ 	if (ret)
+ 		goto err_module_put;
+ 
+-	device->kvm = kvm;
++	if (kvm && vfio_kvm_get_kvm_safe(device, kvm))
++		device->kvm = kvm;
++
+ 	if (device->ops->open_device) {
+ 		ret = device->ops->open_device(device);
+ 		if (ret)
+-			goto err_unuse_iommu;
++			goto err_put_kvm;
+ 	}
+ 	return 0;
+ 
+-err_unuse_iommu:
+-	device->kvm = NULL;
++err_put_kvm:
++	if (device->kvm) {
++		vfio_kvm_put_kvm(device->put_kvm, device->kvm);
++		device->put_kvm = NULL;
++		device->kvm = NULL;
++	}
+ 	if (iommufd)
+ 		vfio_iommufd_unbind(device);
+ 	else
+@@ -388,6 +440,7 @@ static void vfio_device_last_close(struct vfio_device *device,
+ 	if (device->ops->close_device)
+ 		device->ops->close_device(device);
+ 	device->kvm = NULL;
++	device->put_kvm = NULL;
+ 	if (iommufd)
+ 		vfio_iommufd_unbind(device);
+ 	else
+diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+index 35be78e9ae57..87ff862ff555 100644
+--- a/include/linux/vfio.h
++++ b/include/linux/vfio.h
+@@ -46,7 +46,6 @@ struct vfio_device {
+ 	struct vfio_device_set *dev_set;
+ 	struct list_head dev_set_list;
+ 	unsigned int migration_flags;
+-	/* Driver must reference the kvm during open_device or never touch it */
+ 	struct kvm *kvm;
+ 
+ 	/* Members below here are private, not for driver use */
+@@ -58,6 +57,7 @@ struct vfio_device {
+ 	struct list_head group_next;
+ 	struct list_head iommu_entry;
+ 	struct iommufd_access *iommufd_access;
++	void (*put_kvm)(struct kvm *kvm);
+ #if IS_ENABLED(CONFIG_IOMMUFD)
+ 	struct iommufd_device *iommufd_device;
+ 	struct iommufd_ctx *iommufd_ictx;
+-- 
+2.39.0
 
