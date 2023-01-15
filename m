@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07E2966B34C
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Jan 2023 18:58:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D35966B36D
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Jan 2023 19:34:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CA8C810E38D;
-	Sun, 15 Jan 2023 17:58:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CCB5810E394;
+	Sun, 15 Jan 2023 18:34:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
- Sun, 15 Jan 2023 17:58:27 UTC
-Received: from mail.point-cstco.info (unknown [45.13.189.42])
- by gabe.freedesktop.org (Postfix) with ESMTP id 044DE10E38B
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sun, 15 Jan 2023 18:34:29 UTC
+Received: from mail.send-tbile.info (unknown [45.13.189.43])
+ by gabe.freedesktop.org (Postfix) with ESMTP id AC6DB10E11D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Jan 2023 17:58:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=point-cstco.info;
+ Sun, 15 Jan 2023 18:34:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=send-tbile.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=costco.news@point-cstco.info; 
- bh=HDLNbmr4TQ1wPVgFv7AZEvysK3U=;
- b=PAafFoQ+BSUeR0dHVZ5FEtJzNIpiCjmLUtHedW/THlRfvKrPiwjTy0npy25IAyaImgCHY00Rjibz
- vNKGULlBUda7iqMC7UkqfU9p3ZRVaSFya2yOxsDV/3198Kfdm0YbXMKGvJw2gMhlsNk9yx64FBfd
- BLN0J4qJBtk3z/3gLUw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=point-cstco.info;
- b=TaW55b3HjFe0540dHjIPN7OQwGCxsW6cb3y8B4TuQTJaJkGjdj6tAlKD1ypz5QKl9be5G59bVQHv
- mK90r2xWEYsNTVqKmM/ksjikdjAZLYIQcFho6ZOETT09KOCF2xOrTttJxX7hKK1Pj4yWu7l+sLeG
- 3Yy0uFFxp/PsAvbDaWc=;
-Received: by mail.point-cstco.info id hogvc60001gt for
+ i=tmobile.appreciation@send-tbile.info; 
+ bh=F/pzrLxJAIwOAOOLKiy/HHUX9Qc=;
+ b=zVjI79QKxZB7aAoCffv54H/2Raj0jWOTfIrV5N6v4x2FWeVm0b0Z3tsyzhiYLL1rMxspjBsHPDGv
+ 8xmEL8Ixmb7tVqYsErGNCBtCG2RTV0dFV6YxgEpoV2ovg+Xfv2G6EHF0zwDfDq27d2FQlWh58ObI
+ JwLIk/iFj09ldJq7fRE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=send-tbile.info;
+ b=giBLM/UVXQnRUvAEzKLC0CJ8GUKpgkLoKs6oCOusaHd/QrNysd9KpUDQ2MTNx1LVaRUklSFmgXR5
+ FhXh4RiYE6FQY7a0DAOuEyIadvfMxyhRkpyiea+g3GewZAKZ0+424DHtHRytQWhq4KOiTyeGe6M9
+ spsjzf1JRAtApOxRP9g=;
+Received: by mail.send-tbile.info id hoh3ja0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Jan 2023 12:45:15 -0500 (envelope-from
- <costco.news-intel+2Dgvt+2Ddev=lists.freedesktop.org@point-cstco.info>)
-Date: Sun, 15 Jan 2023 12:45:15 -0500
-From: "Costco News" <costco.news@point-cstco.info>
+ Sun, 15 Jan 2023 13:21:05 -0500 (envelope-from
+ <tmobile.appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@send-tbile.info>)
+Date: Sun, 15 Jan 2023 13:21:05 -0500
+From: "TMOBILE Appreciation" <tmobile.appreciation@send-tbile.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You could win by leaving feedback.
+Subject: Your gift on us for the holidays,
+ a token of appreciation during holidays
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_67_1969430351.1673804698884"
-Message-ID: <0.0.0.8.1D929091FE02F32.55F2B4@mail.point-cstco.info>
+ boundary="----=_Part_28_1144970309.1673806859451"
+Message-ID: <0.0.0.3.1D9290E215EA7C6.5386BC@mail.send-tbile.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,701 +54,548 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_67_1969430351.1673804698884
+------=_Part_28_1144970309.1673806859451
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <title></title> 
+  <meta charset="utf-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link rel="https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css" /> 
-  <title>costco</title> 
-  <style type="text/css">/* cyrillic-ext */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Cormorant Garamond Light'), local('CormorantGaramond-Light'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQAllfsw-IxBSL_g94.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+  <style type="text/css">body {
+	Margin: 0!important;
+	padding: 8px;
+	background-color: #FFF;
 }
-/* cyrillic */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Cormorant Garamond Light'), local('CormorantGaramond-Light'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQAllfug-IxBSL_g94.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+wrapper {
+	width: 100%;
+	table-layout: fixed;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Cormorant Garamond Light'), local('CormorantGaramond-Light'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQAllfsQ-IxBSL_g94.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+wrapper-inner {
+	width: 100%;
+	background-color: #FFF3F8;
+	max-width: 670px;
+	Margin: 0 auto;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Cormorant Garamond Light'), local('CormorantGaramond-Light'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQAllfsA-IxBSL_g94.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+table {
+	border-spacing: 0;
+	font-family: sans-serif;
+	color: #727f80;
 }
-/* latin */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Cormorant Garamond Light'), local('CormorantGaramond-Light'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3YmX5slCNuHLi8bLeY9MK7whWMhyjQAllfvg-IxBSL_g.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+outer-table {
+	width: 100%;
+	max-width: 670px;
+	margin: 0 auto;
+	background-color: #FFF;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Cormorant Garamond Regular'), local('CormorantGaramond-Regular'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYpHtKky2F7i6C.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+td {
+    padding: 0;
 }
-/* cyrillic */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Cormorant Garamond Regular'), local('CormorantGaramond-Regular'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYrXtKky2F7i6C.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+header {
+    background-color: #FFFFFF;
+    border-bottom: 3px solid #aaaaaa;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Cormorant Garamond Regular'), local('CormorantGaramond-Regular'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYpntKky2F7i6C.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+p {
+    Margin:0;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Cormorant Garamond Regular'), local('CormorantGaramond-Regular'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYp3tKky2F7i6C.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+header p {
+    text-align: center;
+    padding: 1%;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
 }
-/* latin */
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Cormorant Garamond Regular'), local('CormorantGaramond-Regular'), url(https://fonts.gstatic.com/s/cormorantgaramond/v7/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+a {
+    color: #F1F1F1;
+    text-decoration: none;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v13/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-NfNkCY95WamXgHlIbvw.woff) format('woff');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+/*--- End Outer Table 1 --*/
+main-table-first {
+	width: 100%;
+	max-width: 610px;
+	Margin: 0 auto;
+	background-color: #FFF;
+	border-radius: 6px;
+	margin-top: 25px;
 }
-/* cyrillic */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v13/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-NfNkAI95WamXgHlIbvw.woff) format('woff');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+/*--- Start Two Column Sections --*/
+two-column {
+    text-align: center;
+    font-size: 0;
+    padding: 5px 0 10px 0;
 }
-/* greek-ext */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v13/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-NfNkCI95WamXgHlIbvw.woff) format('woff');
-  unicode-range: U+1F00-1FFF;
+two-column .section {
+    width: 100%;
+    max-width: 300px;
+    display: inline-block;
+    vertical-align: top;
 }
-/* greek */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v13/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-NfNkB495WamXgHlIbvw.woff) format('woff');
-  unicode-range: U+0370-03FF;
+two-column .content {
+    font-size: 16px;
+    line-height: 20px;
+    text-align: justify;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v13/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-NfNkC495WamXgHlIbvw.woff) format('woff');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+content {
+    width: 100%;
+    padding-top: 0px;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v13/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-NfNkCo95WamXgHlIbvw.woff) format('woff');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+center {
+    display: table;
+    Margin: 0 auto;
 }
-/* latin */
-@font-face {
-  font-family: 'EB Garamond';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ebgaramond/v13/SlGDmQSNjdsmc35JDF1K5E55YMjF_7DPuGi-NfNkBI95WamXgHlI.woff) format('woff');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+img {
+    border: 0;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_cJD3gTD_vx3rCubqg.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+img.logo {
+    float: left;
+    Margin-left: 5%;
+    max-width: 160px!important;
 }
-/* cyrillic */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_cJD3g3D_vx3rCubqg.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+#callout {
+    float: right;
+    Margin: 4% 5% 2% 0;
+    height: auto;
+    overflow: hidden;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_cJD3gbD_vx3rCubqg.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+#callout img {
+    max-width: 20px;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_cJD3gfD_vx3rCubqg.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+social {
+    list-style-type: none;
+    Margin-top: 1%;
+    padding: 0;
 }
-/* latin */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Montserrat Light'), local('Montserrat-Light'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_cJD3gnD_vx3rCs.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+social li {
+    display: inline-block;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WRhyyTh89ZNpQ.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+social li img {
+    max-width: 20px;
+    Margin-bottom: 0;
+    padding-bottom: 0;
 }
-/* cyrillic */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459W1hyyTh89ZNpQ.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+/*--- Start Outer Table Banner Image, Text & Button --*/
+image img {
+    width: 100%;
+    max-width: 670px;
+    height: auto;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WZhyyTh89ZNpQ.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+main-table {
+    width: 100%;
+    max-width: 610px;
+    margin: 0 auto;
+    background-color: #FFF;
+    border-radius: 6px;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WdhyyTh89ZNpQ.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+one-column .inner-td {
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
 }
-/* latin */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+inner-td {
+    padding: 0px;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gTD_vx3rCubqg.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 45px;
+    
+    color: #FFFFFF;
+	
 }
-/* cyrillic */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3g3D_vx3rCubqg.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+p.center {
+    text-align: center;
+    max-width: 580px;
+    font-size: 25px;
+	padding: 20px;
+	line-height: 40px;
+	color:#000000
+		
 }
-/* vietnamese */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gbD_vx3rCubqg.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+button-holder-center {
+    text-align: center;
+    Margin: 5% 2% 3% 0;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gfD_vx3rCubqg.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+button-holder {
+    float: right;
+    Margin: 5% 0 3% 0;
 }
-/* latin */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gnD_vx3rCs.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+btn {
+    font-size: 28px;
+    font-weight: 300;
+    background: #000000;
+    color: #FFF;
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 28px;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+/*--- Start Two Column Image & Text Sections --*/
+two-column img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
 }
-/* cyrillic */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+two-column .text {
+    padding: 10px 0;
 }
-/* greek-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');
-  unicode-range: U+1F00-1FFF;
+/*--- Start 3 Column Image & Text Section --*/
+outer-table-2 {
+	width: 100%;
+	max-width: 670px;
+	margin: 22px auto;
+	background-color: #C2C1C1;
+    border-bottom: 3px solid #aaa;
+    border-top: 3px solid #aaa;
 }
-/* greek */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');
-  unicode-range: U+0370-03FF;
+three-column {
+    text-align: center;
+    font-size: 0;
+    padding: 10px 0 30px 0;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+three-column .section {
+    width: 100%;
+    max-width: 200px;
+    display: inline-block;
+    vertical-align: top;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+three-column .content {
+    font-size: 16px;
+    line-height: 20px;
 }
-/* latin */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+three-column img {
+    width: 100%;
+    max-width: 125px;
+    height: auto;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCRc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+outer-table-2 p {
+	margin-top: 6px;
+	color: #FFF;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 23px;
 }
-/* cyrillic */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+/*--- Start Two Column Article Section --*/
+outer-table-3 {
+    width: 100%;
+    max-width: 670px;
+    margin: 22px auto;
+    background-color: #C2C1C1;
+    border-top: 3px solid #aaa;
 }
-/* greek-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCBc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+1F00-1FFF;
+h3 {
+	text-align: center;
+	font-size: 21px;
+	font-weight: 600;
+	Margin-bottom: 8px;
+	color: #4A4A4A;
 }
-/* greek */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBxc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0370-03FF;
+/*--- Start Bottom One Column Section --*/
+inner-bottom {
+	padding: 22px;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCxc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+h1 {
+    text-align: center!important;
+    font-size: 25px!important;
+    font-weight: 600;
+    line-height: 45px;
+    Margin: 12px 0 20px 0;
+    color: #4A4A4A;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fChc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+inner-bottom p {
+	font-size: 16px;
+	line-height: 24px;
+	text-align: justify;
 }
-/* latin */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+/*--- Start Footer Section --*/
+footer {
+	width: 100%;
+	background-color: #C2C1C1;
+	Margin: 0 auto;
+    color: #FFF;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCRc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+footer  img {
+	max-width: 135px;
+	Margin: 0 auto;
+	display: block;
+	padding: 4% 0 1% 0;
 }
-/* cyrillic */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfABc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+p.footer {
+	text-align: center;
+	color: #FFF!important;
+	line-height: 30px;
+	padding-bottom: 4%;
+    text-transform: uppercase;
 }
-/* greek-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCBc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+1F00-1FFF;
+/*--- Media Queries --*/
+@media screen and (max-width: 400px) {
+	.h1 {
+		font-size: 22px;
+	}
+	.two-column .column, .three-column .column {
+		max-width: 100%!important;
+	}
+	.two-column img {
+		width: 100%!important;
+	}
+	.three-column img {
+		max-width: 60%!important;
+	}
 }
-/* greek */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBxc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0370-03FF;
+@media screen and (min-width: 401px) and (max-width: 400px) {
+
+	.two-column .column {
+		max-width: 50%!important;
+	}
+	.three-column .column {
+		max-width: 33%!important;
 }
-/* vietnamese */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfCxc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfChc4AMP6lbBP.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+@media screen and (max-width:768px) {
+img.logo {
+	float:none !important;
+	margin-left:0% !important;
+	max-width: 200px!important;
 }
-/* latin */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+
+#callout {
+	float:none !important;
+	margin: 0% 0% 0% 0;
+	height: auto;
+	text-align:center;
+	overflow: hidden;
 }
-		body {
-			Margin: 0;
-			padding: 0;
-			background-color: white;
-		}
-		table {
-			border-spacing: 0;
-		}
-		td {
-			padding: 0;
-		}
-		img {
-			border: 0;
-		}
-		h1{
-			Margin: 0;
-			padding: 0;
-			font-family: 'EB Garamond', serif;
-			font-size: 55px;
-			font-weight: 600;
-			line-height: 66px;
-			color: black;
-		}
-		h2{
-			Margin: 0;
-			margin-top: 10px;
-			margin-bottom: 10px;
-			padding: 0;
-			font-family: 'Cormorant Garamond', serif;
-			font-weight: 300;
-			font-size: 17px;
-			color: black;
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-		h3{
-			font-size: xx-large;
-			color: #001352;
-			margin-top: 15px;
-			margin-bottom: 15px;
-		}
-		.wrapper {
-			width: 100%;
-			table-layout: fixed;
-			background-color: #E1E1E1;
-			padding-bottom: 40px;
-		}
-		.webkit {
-			max-width: 600px;
-			background-color: #ffffff;
-		}
-		.outer{
-			margin: 0, auto;
-			width: 100%;
-			max-width: 600px;
-			border-spacing: 0;
-			font-family: sans-serif;
-			color: #4a4a4a;
-		}
-		.newsimage{
-			padding-left: 40px;
-			padding-right: 40px;
-		}
-		.newscontent{
-			padding-left: 40px;
-			padding-right: 40px;
-			font-family: 'Montserrat', Verdana, sans-serif;
-		}
-		.newstext{
-			font-size: large;
-			line-height: 25px;
-			color: #707070;
-		}
-		.roboto{
-			font-family: 'Roboto', sans-serif;
-			font-weight: 500;
-			color: #707070;
-		}
-		@media screen and (max-width: 600px) { 
-		}
-		@media screen and (max-width: 400px) { 
-		}
+#callout img {
+    max-width:26px !important;
+}
+two-column .section {
+	width: 100% !important;
+	max-width: 100% !important;
+	display: inline-block;
+	vertical-align: top;
+}
+
+two-column img {
+	width: 100% !important;
+ 	height: auto !important;
+}
+img.img-responsive {
+    width:100% !important;
+    height:auto !important;
+    max-width:100% !important;
+}
+content {
+	width: 100%;
+	padding-top:0px !important;
+}
+}
 	</style> 
  </head> 
  <body> 
-  <center class="wrapper"> 
-   <div class="webkit"> 
-    <table align="center" class="outer"> 
+  <div class="wrapper"> 
+   <div class="wrapper-inner"> 
+    <table class="outer-table"> 
      <tbody> 
       <tr> 
-       <td> 
-        <table style="border-spacing: 0;" width="100%"> 
-         <tbody> 
-          <tr style="background-color: #FFFFFF; padding: 10px;"> 
-           <th align="left" style="padding-left: 60px;"> <h2>&nbsp;</h2> <h1>&nbsp;</h1> </th> 
-           <th>
-            <!-- use base64 img--></th> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table style="border-spacing: 0;" width="100%"> 
-         <tbody> 
-          <tr style="background-color: #FFFFFF;"> 
-           <th align="left"> <h2 style="padding-left: 60px; margin-top: 5px;">&nbsp;</h2> </th> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
+       <td class="header"> <p>&nbsp;</p> </td> 
       </tr> 
+      <!-- End Header --> 
+     </tbody> 
+    </table> 
+    <!-- End Outer Table --> 
+    <table class="main-table-first"> 
+     <tbody> 
       <tr> 
-       <td style="background-color:rgba(255,255,255,1.00); padding: 60px; padding-top: 5px; padding-bottom: 5px; line-height: 30px;"> <p style="color: white; font-family: 'Montserrat', sans-serif;">&nbsp;</p> </td> 
+       <td class="two-column"> 
+        <div class="section"> 
+         <table width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="inner-td"> 
+             <table class="content"> 
+              <tbody> 
+               <tr> 
+                <td align="center">&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <!-- End First Column of Two Columns --> 
+        <div class="section"> 
+         <table width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="inner-td"> 
+             <table class="content"> 
+              <tbody> 
+               <tr> 
+                <td> 
+                 <div id="callout">
+                  &nbsp;
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <!-- End Second Column of Two Columns --></td> 
       </tr> 
+      <!-- End Two Column Section --> 
+     </tbody> 
+    </table> 
+    <!-- End Main Table --> 
+    <table class="main-table"> 
+     <tbody> 
       <tr> 
-       <td> <p style="margin: 40px; border: 2px solid #e7b5b5; background-color: #DEC0FE; padding: 20px; line-height: 25px; color: #707070; font-family: 'Montserrat', Verdana, sans-serif; font-size: 25px; text-align: center; font-weight: 900; color: #000000">Costco Wholesale</p> </td> 
-      </tr> 
-      <tr> 
-       <td> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="newsimage"> <h3 style="text-align: center; font-size: 23px; padding-right: 25px; padding-left: 25px">Get just a few clicks away from The $100 Costco Card</h3> <a href="http://www.point-cstco.info/days-starkly/b526R_239Q5E86Sp11U4696Z10dcP36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQudRSe7dZ1Rx0k5Elw1D"><img alt="" src="http://www.point-cstco.info/8276ri2I395E7ahL13o4h6q98p10dck36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQudRSe5o1N0Z6CylJwD/wettest-Latinization" style="width: 100%; max-width: 720px;" /> </a></td> 
-          </tr> 
-          <tr> 
-           <td class="newscontent"> <h3 style="text-align: center;font-size: 25px">Just by completing our 20-Second Service Survey about your recent experience with us.</h3> <p class="newstext">&nbsp;</p> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <tr> 
-       <td style="border-bottom:1px dashed #ccc;">&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td><br /> &nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td> 
-        <table style="border-spacing: 0;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="newsimage">&nbsp;</td> 
-          </tr> 
-          <tr> 
-           <td class="newscontent"> <h3>&nbsp;</h3> <p class="newstext">&nbsp;</p> <span style="padding-left: 20px; padding-right: 20px; text-align: center;display: block"><a href="http://www.point-cstco.info/days-starkly/b526R_239Q5E86Sp11U4696Z10dcP36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQudRSe7dZ1Rx0k5Elw1D" style="text-decoration: none;background: #BF84FF; padding: 20px;font-size: 25px;font-weight: 900; border-radius: 5px; color: #FFFFFF">Go And Star Now</a></span></td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <tr> 
-       <td style="border-bottom:0px dashed #ccc;">&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td style="border-bottom:0px dashed #ccc; text-align: center;font-weight: 600"><br /> <br /> Your Opinion is very important to us.</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td style="border-bottom:0px dashed #ccc;">&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td> 
-        <table> 
+       <td class="one-column"> 
+        <table width="100%"> 
          <tbody> 
           <tr> 
-           <td class="newscontent"> <p class="newstext" style="font-size:12px;">&nbsp;</p> </td> 
+           <td class="inner-td"> <p class="h2" style="background: #000000">T-Mobile</p> <p class="center">Get just a few clicks away<br /> from The $100 <strong>T-Mobile</strong> Card</p> <a href="http://www.send-tbile.info/8f96zp2o395l8yN613Q46M9wav10ddt36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ1dRSK7zUlYR105P2wDj/Madeleine-heralded"><img alt="" src="http://www.send-tbile.info/thatch-chargers/8a05j23o95U7aPP13n469cTLs10ddv36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ1dRSK5lw1K06qy2wDl" width="100%" /></a> 
+            <div style="text-align: center;font-size: 25px;line-height: 30px; padding: 20px;color: #000000">
+             Just by completing our 20-Second Service Survey about your recent experience with us.             </div> <p class="button-holder-center"><a class="btn" href="http://www.send-tbile.info/8f96zp2o395l8yN613Q46M9wav10ddt36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ1dRSK7zUlYR105P2wDj/Madeleine-heralded">Go And Star Now</a></p> <br /> <br /> <span style="text-align: center;font-size: 18px; color: #BA2C5C">Your Opinion Matters</span></td> 
           </tr> 
          </tbody> 
         </table> </td> 
       </tr> 
+      <!-- End Heading, Paragraph & Button Section --> 
       <tr> 
-       <td> 
-        <table style="border-spacing: 0;" width="100%"> 
+       <td class="two-column"> 
+        <div class="section"> 
+         <table width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="inner-td"> 
+             <table class="content"> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+               </tr> 
+               <tr> 
+                <td class="text"> <p>&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <!-- End First Column of Two Columns --> 
+        <div class="section"> 
+         <table width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="inner-td"> 
+             <table class="content"> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+               </tr> 
+               <tr> 
+                <td class="text"> <p>&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <!-- End Second Column of Two Columns --></td> 
+      </tr> 
+      <!-- End Two Column Section --> 
+     </tbody> 
+    </table> 
+    <!-- End Main Table --> 
+    <table class="main-table"> 
+     <tbody> 
+      <tr> 
+       <td class="two-column"> 
+        <div class="section"> 
+         <table width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="inner-td"> 
+             <table class="content"> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+               </tr> 
+               <tr> 
+                <td class="text"> <p class="h3">&nbsp;</p> <p>&nbsp;</p> &nbsp; <p>&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <div class="section"> 
+         <table width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="inner-td"> 
+             <table class="content"> 
+              <tbody> 
+               <tr> 
+                <td class="text"> <p class="h3">&nbsp;</p> <p>&nbsp;</p> &nbsp; <p>&nbsp;</p> </td> 
+               </tr> 
+               <tr> 
+                <td>&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <!-- End Second Column of Two Columns --></td> 
+      </tr> 
+      <!-- End Two Column Section --> 
+      <tr> 
+       <td class="one-column"> 
+        <table width="100%"> 
          <tbody> 
           <tr> 
-           <td style="padding:70px; text-align:center">&nbsp;</td> 
+           <td class="inner-bottom"> <p class="h1">&nbsp;</p> <p>&nbsp;</p> &nbsp; <p>&nbsp;</p> 
+            <div class="button-holder">
+             &nbsp;
+            </div> </td> 
           </tr> 
          </tbody> 
         </table> </td> 
       </tr> 
+      <!-- End Heading, Text & Button Section --> 
+     </tbody> 
+    </table> 
+    <!-- End Main Table --> 
+    <table class="outer-table-3"> 
+     <tbody> 
       <tr> 
-       <td> 
-        <table style="border-spacing: 0;" width="100%"> 
+       <td class="one-column"> 
+        <table width="100%"> 
          <tbody> 
           <tr> 
-           <td style="text-align:center; font-size: 12px"> <p class="unsubscribe"><span style="text-decoration: none; ">To update your communication preferences,</span><a href="http://www.point-cstco.info/choreography-serviceman/17a6L23xi95u8Bu611V4697K10dcY36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQudRSe6l1q0Pg6lywpTD" style="text-decoration-line: none; color: "> <span>Start Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <big><style></big></style><font></font><big><font style="Fogarty"></font></big><font size="ranter"></font></p> </td> 
+           <td class="footer" style="text-align: center; font-size: 12px; color: #000000; padding: 20px"> <p class="unsubscribe"><span style="text-decoration: none; ">To drop notices,</span><a href="http://www.send-tbile.info/wrestlings-overdue/5ee5p23m95C8h6Z11C469bj10ddH36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ1dRSK7MUOA1r05zkPwD" style="text-decoration-line: none; color:#0A00FF "> <span>Get Started Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style color="violinists"></style><big></big><big></big><big><style id="unlinks"></big></style><style id="modularizing"></style><font dir="circulates"></font></p> </td> 
           </tr> 
          </tbody> 
         </table> </td> 
       </tr> 
      </tbody> 
     </table> 
+    <!-- End Main Table -->
    </div> 
-  </center>   
- <img src="http://www.point-cstco.info/a254I2395wB85F13fK46X99p10dcW36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQudRSe7MSs10lv6gByBwD/choreography-serviceman" alt=""/></body>
+   <!-- End Wrapper Inner -->
+  </div> 
+  <!-- End Wrapper -->  
+ <img src="http://www.send-tbile.info/4494q2395k8S5i13H4F6F9dv10ddL36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ1dRSK6jS10FH5FJJwD/wrestlings-overdue" alt=""/></body>
 </html>
 
-------=_Part_67_1969430351.1673804698884--
+------=_Part_28_1144970309.1673806859451--
 
