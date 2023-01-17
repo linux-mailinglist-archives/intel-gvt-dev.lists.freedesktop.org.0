@@ -2,142 +2,53 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A42B66D93F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Jan 2023 10:05:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A49D66DD49
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Jan 2023 13:15:11 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6355310E527;
-	Tue, 17 Jan 2023 09:05:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2D6F810E521;
+	Tue, 17 Jan 2023 12:15:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1262910E521;
- Tue, 17 Jan 2023 09:05:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1673946347; x=1705482347;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=h1Of50d8Yu0OzWbDE4ng7esHgtW5geQ7YBDKkySnS9s=;
- b=Fq0MHg0tVp4Z0HiNXnDOom2g2pnEGyBe+fYyPVAuc5JUte1D7Ser2FM4
- 184XoymVY9tDQ4EzDnHPDEF05QVJMDhaphb9xlvDL+K2Z1NjZ/ahCMOht
- L2/FJK27FFycul1dZ9GKoQmsjUH7fja0Oui6+Bi7Y4rhT4OSI2cT1+H+p
- SGI4eljs+z7OdKsOAiQ/C1UKx4c3Nn4oo7yfZmynrq8mxN2rmLHCzJ6u/
- TGlqkeniJsYU7SLahi3zM1JW13FHRhA1vek4Htp6Vb/zBADKoFuFAa5Hl
- vrDORizoNgQVDNbHzEr7cuBqjAlES9kUqMcBtl27FqqIwuO36Rn1hqMSD w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10592"; a="322335706"
-X-IronPort-AV: E=Sophos;i="5.97,222,1669104000"; d="scan'208";a="322335706"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2023 01:05:46 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10592"; a="691512680"
-X-IronPort-AV: E=Sophos;i="5.97,222,1669104000"; d="scan'208";a="691512680"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga001.jf.intel.com with ESMTP; 17 Jan 2023 01:05:45 -0800
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 17 Jan 2023 01:05:44 -0800
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 17 Jan 2023 01:05:44 -0800
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Tue, 17 Jan 2023 01:05:44 -0800
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.174)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Tue, 17 Jan 2023 01:05:43 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=F9w6oyZI/4K4PGmdYiKPSy9wbyTuBaQX+fsjK8YXdKiFalDOXYW85Igo4Quvbq5Z1mUQWQY0UhYWXHSOpKc+V1gOt5RTz+/ya9sDujHMDHrfohD3qokxBrQxSBvJTDz6j9wT+KHZmUoeQZvtXyTFJ3eZL6Na/3fI0THEVdzFIGI9nggjfnxfREIuhzkm05vCNyXRvmtPKrFZF4lrd3WMkFWhkIxvaz1fueUgl6KIKQEBoDWS6it6enqimjjqkp7bHQSVTiykN3tnhtrCLNcvMH0KgrZMzJzWLW7Cdm+w/HMNxD54CPn0DURIn8wd/8H1l8HZOoU46PO9nUbFEB2tyw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ulKtGX03fhrSml/ORl5KKXkicwMLrC6F2a5wc/j8UrI=;
- b=XKIMaSewY8keS9/auBdf34VXVKEmx/Io+xHFk0RgwWNHnUTB/e8rX8pQYOO0QvNvYgzO0ZaW7Fat+yTUsSd/ErNSSDj26OrMMz1Er8ugdx9eVql5wjtSABY+CctuLfPCNeo3TZ02nNNseacrtLFTrq7DAQOHihT++b/PweM4qXnl+TSn6vwG6XPq0IyQ2WdLE1da/Ox/kXexIbtZOSsFDLIXQPbll3MIojf5GYmtTtQeUwwQMumix+pPdsR91UqSGjFp528IIacgYm/KM3ZmZFAhgOaP5UJHCkBVtyVpr5pn7fbSp7dbsvpZDapKHuQXPZFTMvn4pcvQAddRjVxM0A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by SN7PR11MB7089.namprd11.prod.outlook.com (2603:10b6:806:298::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Tue, 17 Jan
- 2023 09:05:41 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::6a8d:b95:e1b5:d79d]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::6a8d:b95:e1b5:d79d%9]) with mapi id 15.20.5986.023; Tue, 17 Jan 2023
- 09:05:41 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>
-Subject: RE: [PATCH v4] vfio: fix potential deadlock on vfio group lock
-Thread-Topic: [PATCH v4] vfio: fix potential deadlock on vfio group lock
-Thread-Index: AQHZJ6vANRoQ9x2rxUaXBLM6X5ngE66iVZeQ
-Date: Tue, 17 Jan 2023 09:05:40 +0000
-Message-ID: <BN9PR11MB52761554526A0278B13CB2B18CC69@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <20230114000351.115444-1-mjrosato@linux.ibm.com>
-In-Reply-To: <20230114000351.115444-1-mjrosato@linux.ibm.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SN7PR11MB7089:EE_
-x-ms-office365-filtering-correlation-id: 5fb3d0f3-8df5-4dfa-e352-08daf86a0204
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: rk20/YXzW1VPzoCsktmEQgpOn+s/HaqYojEczST7ssbBkjJxTBOgN8j8DjSnCal1TvqYEPr89uTEi14yrccVI4j26I2bAh/mn/qj0K9va1k9r7im+E0+3qfL+xD4kjBRIdbRhj8kAb/P9OUDCXM3FgEtmsLSwDTTfK80iyyODogdw5tSv7v+/Uqbul1+RNYSesqR/IMPde0duUMHKS5si9QmANbC8AZYpuc5cI6F+TVWZU8ydne68Wz/j9j/wEaPpIfriMu1adcXKAhWCfd1DtKE7buR7ZPzGZ+2tvPSedoa+GNBsmzoXT+kgS3GlW4clm2o7zRXJoSP7iRBeusTQWpk5kadEmfM4Lqs+TlVNHtv3epEG0OlveX8Xt2mnhq/MMXlZhmbAs5k/Byjl3ugnfPKdIUf3HzNqEypRKmFUfKhoYrMthkLr8e6vZ9yBswfATxzF616wCRKJvHaksFsL/wS11jEvy8+LEodRypvmklfEkCEEtwSvJRvUMiWTFurnJn063SVx4JyeZmi9oLOws13tuNA1PtvHK7Q6JhqekDv3pV1cJG9UDHDQE0ciL8TqQc3tWZAjO33SFiQGNW91XplEfLkSrwjb0n5dYNM02Z6XQx8sG33QSyLqpcxxX64Lz+XX3A7UiIXgR0GHfnG+x95J0LzTJ9dq+qzQby94WY+bg5SIRWpL07mEKXIv7AOs7GODUVFshDkTIufeFzd2A==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230022)(136003)(346002)(376002)(366004)(396003)(39860400002)(451199015)(66946007)(110136005)(64756008)(76116006)(8676002)(66476007)(66556008)(66446008)(41300700001)(316002)(4326008)(82960400001)(55016003)(4744005)(38070700005)(8936002)(122000001)(83380400001)(33656002)(54906003)(52536014)(38100700002)(86362001)(5660300002)(7416002)(2906002)(71200400001)(6506007)(26005)(7696005)(478600001)(186003)(9686003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?rzoo8yFm1BbYcB4ASEHHrXC26nH3uY0EIgk1KxJCNZMye4678BSJaqp4pARO?=
- =?us-ascii?Q?7DgTge1PjBUOf283YwKljEFmqIZWTxM+7/q1NAaey4LidyKfNQYIJUtfNxqr?=
- =?us-ascii?Q?ycyDv1a+pWOgmdl0M1Kp0WZmd3LoHCOwtTQupWUUJTKiEffIyak9xkshaIsv?=
- =?us-ascii?Q?rovJrXW/fpyLTHsPfySGGlK5rsRwSO/ZtGcNN5sk40x9/F8Gf/W8E5CsMZTm?=
- =?us-ascii?Q?slSEas6M+7Pf7rEDNJurc32LGHis+uP2OFAapt84QB/WlgLlmtWI824SdCfe?=
- =?us-ascii?Q?E+7UK6OZm+d3RfKZLh703KXFa8GxNF/dwe/aKKAXoBF9abmc/cn2TqwFbkcB?=
- =?us-ascii?Q?CKuYfrjYJW7Zj9tGv7WH6bixDOtpr/KyjUPMPl3vuYCm4UZwu0ZqwWWsEAlA?=
- =?us-ascii?Q?YSE8dtRt4XKQ//C0hQNDrVlPPBXv41wKPc5eGW2SE1LiUnSMHCNqHwz2q8AE?=
- =?us-ascii?Q?DAqfdPo95ugHu2j0AiRwNJUWQX5hLJpxnpiHWrg8Zo+VVkqQoXde1i/9+Wdl?=
- =?us-ascii?Q?trn2FcEdfRQJyT1OdXY7xRrfya8sX5DeO0DdjMN5o0vdHG6ghSqFPtwcbbnI?=
- =?us-ascii?Q?iM9BeZSck4mEyeU6wVWVns/cZqrYqBZNajJoVIkJgypmjP6LYO2q0/iJiu9t?=
- =?us-ascii?Q?i3BJe6QhFcu5vig+l1KZHHOfKlDbnLzIag0e7Qda4Ybn8I5wskVVtj1aCOr/?=
- =?us-ascii?Q?0gzUWwer7r6+Kvm4Gk2F2tQFu0KgDZ5rEnWi0LwdfYNJDn25iDO2b7TsjT0y?=
- =?us-ascii?Q?K9DPjVegBD+vMPuKXzs8LhI5YfL22AFlyWoy5ipNvvD1SlqfXggX1TsjK1Q0?=
- =?us-ascii?Q?+uUO8IRlp/FiSFDUjMWrkSbKfz+LSsFGcmQ+/47fsEf8VRkcRqRC9nbbCVq6?=
- =?us-ascii?Q?DyO/07UVFDGZWXWBEfZazgHQ9s41e/sHBm9m+ZFxxvvLglAIK6osX5ZSBobt?=
- =?us-ascii?Q?bIQXXo1Im4yohpwPLdh0dVcuDN3u+aXDZsHdYaFKGVVc35xCdfYgvzSRIJBH?=
- =?us-ascii?Q?Q79C+ptqRRqUYNfcBaMYFiedsohGbWD2NYHSv7JtYPhola358+hE9kSCRxxz?=
- =?us-ascii?Q?k/z9AdrfKuLhr+B7hoZ5LyOgxIRdvl+mQVXMr6H4BmydSid7PHhDYuOTu+x4?=
- =?us-ascii?Q?f+58v7omSUNIPH1v7uZywiWBR+rrSQfpj/LHni9oiBWoNfvzrB97zlA5uj4T?=
- =?us-ascii?Q?hsPD9hPWR40grd2J33tuYWhdWdpynfH93YlIZTHWeKEXpKIUQ9r4U9sE5HVv?=
- =?us-ascii?Q?4wvgIgpjdOusZywTNw3tkVagoN2g5BAAPgcljVcPV9XPCFd0YdQnlN/KTKuy?=
- =?us-ascii?Q?ZNomDguLeM74vmlrmeNbWrrfoJZmybxI2boS3KdaQbsXbRbyh9wM8EL4QxOY?=
- =?us-ascii?Q?PrWX3gUQ+XhMx9Qk/uy+8RjGTAY6t3tt87Ua50otCrupjWfsUAgmAqzfBE3g?=
- =?us-ascii?Q?q4mPBDGj2zmH7+6XqwVvn7ndz9jWQwJpw3V1NReLS000cFRzuODyrL6z5hBN?=
- =?us-ascii?Q?HbhZuwpD3tuWVzWzjP/gRP0Yg9bNe3vs7iirCKeveRG+nkFfuE+pu2/mV7KA?=
- =?us-ascii?Q?s3WNvrl6MltTXcyd8/zX3dfK8ZhZbJEkqWtJRWLn?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-Greylist: delayed 1030 seconds by postgrey-1.36 at gabe;
+ Tue, 17 Jan 2023 12:15:08 UTC
+Received: from casper.infradead.org (casper.infradead.org
+ [IPv6:2001:8b0:10b:1236::1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A40B310E521;
+ Tue, 17 Jan 2023 12:15:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=a+Z1S1xLoCDY3+cEJ4MNUOsPlXtKXXWmP1+DQ4QDsac=; b=evMQhc5/xMEy+lhk6J7pBkUh8b
+ nhYD9qQYyxgSYOKUhBcEB6FN+q4d3+76POpvVi3Kwnh4t6iZr9bnzmPH35XwZsEWX9VpjSu/iJ2qY
+ 6FGKZPeNYW/xByoKChnP3sj3BHAv59X36zTLnB5UsmYB1c2exkEiNof3OiLa1AwTelAJirDSum+UT
+ vWX4iTxx0P7lzSf/2wPpcYks84YO0dhwXEfyNc2Nn3XvSVMdvZ4RyR+W4Fq7VqLZBxaW8J5v53pyQ
+ Vr4BXcj2QDslVT5oi5ZePwjDOBaKrA0qbKvLGDog/P3faF8Cgt638yoYmaBgjpHoIHCB8UnuDr4M7
+ kF/EBoZw==;
+Received: from j130084.upc-j.chello.nl ([24.132.130.84]
+ helo=noisy.programming.kicks-ass.net)
+ by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1pHkbC-009ec6-W2; Tue, 17 Jan 2023 11:57:55 +0000
+Received: from hirez.programming.kicks-ass.net
+ (hirez.programming.kicks-ass.net [192.168.1.225])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (Client did not present a certificate)
+ by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id A904A300094;
+ Tue, 17 Jan 2023 12:57:39 +0100 (CET)
+Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
+ id 8495A2B305DE7; Tue, 17 Jan 2023 12:57:39 +0100 (CET)
+Date: Tue, 17 Jan 2023 12:57:39 +0100
+From: Peter Zijlstra <peterz@infradead.org>
+To: Jim Cromie <jim.cromie@gmail.com>
+Subject: Re: [PATCH v2 20/20] jump_label: RFC - tolerate toggled state
+Message-ID: <Y8aNMxHpvZ8qecSc@hirez.programming.kicks-ass.net>
+References: <20230113193016.749791-1-jim.cromie@gmail.com>
+ <20230113193016.749791-21-jim.cromie@gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5fb3d0f3-8df5-4dfa-e352-08daf86a0204
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jan 2023 09:05:41.0286 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: g3StiB8+Z989hVN2++amwhbNWQuy6B4Wg9ZJSF5D0J5e2WliDjUC5eW29nN8cC6MlF9IZfX0V7SSPr8CSLu4qQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7089
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230113193016.749791-21-jim.cromie@gmail.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -150,51 +61,51 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
- "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
- "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
- "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
- "david@redhat.com" <david@redhat.com>, "Christopherson, ,
- Sean" <seanjc@google.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Wang, Zhi A" <zhi.a.wang@intel.com>
+Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, robdclark@gmail.com, seanpaul@chromium.org,
+ dri-devel@lists.freedesktop.org, gregkh@linuxfoundation.org, jbaron@akamai.com,
+ intel-gvt-dev@lists.freedesktop.org, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Matthew Rosato <mjrosato@linux.ibm.com>
-> Sent: Saturday, January 14, 2023 8:04 AM
->
->  void vfio_device_group_close(struct vfio_device *device)
->  {
-> +	void (*put_kvm)(struct kvm *kvm);
-> +	struct kvm *kvm;
-> +
->  	mutex_lock(&device->group->group_lock);
-> +	kvm =3D device->kvm;
-> +	put_kvm =3D device->put_kvm;
->  	vfio_device_close(device, device->group->iommufd);
-> +	if (kvm =3D=3D device->kvm)
-> +		kvm =3D NULL;
+On Fri, Jan 13, 2023 at 12:30:16PM -0700, Jim Cromie wrote:
+> __jump_label_patch currently will "crash the box" if it finds a
+> jump_entry not as expected.  ISTM this overly harsh; it doesn't
+> distinguish between "alternate/opposite" state, and truly
+> "insane/corrupted".
+> 
+> The "opposite" (but well-formed) state is a milder mis-initialization
+> problem, and some less severe mitigation seems practical.  ATM this
+> just warns about it; a range/enum of outcomes: warn, crash, silence,
+> ok, fixup-continue, etc, are possible on a case-by-case basis.
+> 
+> Ive managed to create this mis-initialization condition with
+> test_dynamic_debug.ko & _submod.ko.  These replicate DRM's regression
+> on DRM_USE_DYNAMIC_DEBUG=y; drm.debug callsites in drivers/helpers
+> (dependent modules) are not enabled along with those in drm.ko itself.
+> 
 
-Add a simple comment that this check is to detect the last close
+> Ive hit this case a few times, but havent been able to isolate the
+> when and why.
+> 
+> warn-only is something of a punt, and I'm still left with remaining
+> bugs which are likely related; I'm able to toggle the p-flag on
+> callsites in the submod, but their enablement still doesn't yield
+> logging activity.
 
-> +void vfio_kvm_put_kvm(void (*put)(struct kvm *kvm), struct kvm *kvm)
-> +{
-> +	if (WARN_ON(!put))
-> +		return;
+Right; having been in this is state is bad since it will generate
+inconsistent code-flow. Full on panic *might* not be warranted (as it
+does for corrupted text) but it is still a fairly bad situation -- so
+I'm not convinced we want to warn and carry on.
 
-also WARN_ON(!kvm)?
+It would be really good to figure out why the site was skipped over and
+got out of skew.
 
-otherwise this looks good to me:
+Given it's all module stuff, the 'obvious' case would be something like
+a race between adding the new sites and flipping it, but I'm not seeing
+how -- things are rather crudely serialized by jump_label_mutex.
 
-Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+The only other option I can come up with is that somehow the update
+condition in jump_label_add_module() is somehow wrong.
+
