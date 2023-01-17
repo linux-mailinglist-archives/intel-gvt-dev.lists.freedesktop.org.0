@@ -1,43 +1,143 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A93266D1DE
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 16 Jan 2023 23:44:31 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A42B66D93F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Jan 2023 10:05:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 883A310E16B;
-	Mon, 16 Jan 2023 22:44:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6355310E527;
+	Tue, 17 Jan 2023 09:05:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Mon, 16 Jan 2023 22:44:27 UTC
-Received: from mail.seekto-tget.info (unknown [45.13.189.54])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4747B10E163
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 16 Jan 2023 22:44:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=seekto-tget.info;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=target-shopping-updates@seekto-tget.info; 
- bh=VR65XN6UgXgmKhUBctH+76a+Dg8=;
- b=gvIyqwEIoFJpC+Uve2S09NdANDAnWVf/2ObJa1hu/Fsre/wyMl6W3LtzPMywQRSHP3gMHnTGLh7Y
- rykXX6KVvj4GtXgwAgNtYXSwUhQj1/7PEMlJWdq6kkeTUkgqrwJoDEhBIWeLXse0fM4kGyG2qtQs
- 5m02Vz6L2i9ZSihMAKY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=seekto-tget.info;
- b=BSf4QCi/0POSprdrcg2x/C4yI9wWzcY63GSAioUeWhpX8dLM11NkY22MMKAqMEeuOgJHYlz+R3pE
- 8icBTmZXh+/HO09whPHhBtGGWC7IfSysgulAftIa0gEodCOQeZ95sQHGq8MHVjwCyvnyMtTpvJKD
- NGsUsZWCyEXit8GAeIw=;
-Received: by mail.seekto-tget.info id hon9km0001g4 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 16 Jan 2023 17:33:39 -0500 (envelope-from
- <target-shopping-updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@seekto-tget.info>)
-Date: Mon, 16 Jan 2023 17:33:39 -0500
-From: "Target Shopping Updates" <target-shopping-updates@seekto-tget.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best way to show appreciation for your loyalty
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1262910E521;
+ Tue, 17 Jan 2023 09:05:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1673946347; x=1705482347;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=h1Of50d8Yu0OzWbDE4ng7esHgtW5geQ7YBDKkySnS9s=;
+ b=Fq0MHg0tVp4Z0HiNXnDOom2g2pnEGyBe+fYyPVAuc5JUte1D7Ser2FM4
+ 184XoymVY9tDQ4EzDnHPDEF05QVJMDhaphb9xlvDL+K2Z1NjZ/ahCMOht
+ L2/FJK27FFycul1dZ9GKoQmsjUH7fja0Oui6+Bi7Y4rhT4OSI2cT1+H+p
+ SGI4eljs+z7OdKsOAiQ/C1UKx4c3Nn4oo7yfZmynrq8mxN2rmLHCzJ6u/
+ TGlqkeniJsYU7SLahi3zM1JW13FHRhA1vek4Htp6Vb/zBADKoFuFAa5Hl
+ vrDORizoNgQVDNbHzEr7cuBqjAlES9kUqMcBtl27FqqIwuO36Rn1hqMSD w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10592"; a="322335706"
+X-IronPort-AV: E=Sophos;i="5.97,222,1669104000"; d="scan'208";a="322335706"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2023 01:05:46 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10592"; a="691512680"
+X-IronPort-AV: E=Sophos;i="5.97,222,1669104000"; d="scan'208";a="691512680"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga001.jf.intel.com with ESMTP; 17 Jan 2023 01:05:45 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 17 Jan 2023 01:05:44 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 17 Jan 2023 01:05:44 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Tue, 17 Jan 2023 01:05:44 -0800
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.174)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Tue, 17 Jan 2023 01:05:43 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=F9w6oyZI/4K4PGmdYiKPSy9wbyTuBaQX+fsjK8YXdKiFalDOXYW85Igo4Quvbq5Z1mUQWQY0UhYWXHSOpKc+V1gOt5RTz+/ya9sDujHMDHrfohD3qokxBrQxSBvJTDz6j9wT+KHZmUoeQZvtXyTFJ3eZL6Na/3fI0THEVdzFIGI9nggjfnxfREIuhzkm05vCNyXRvmtPKrFZF4lrd3WMkFWhkIxvaz1fueUgl6KIKQEBoDWS6it6enqimjjqkp7bHQSVTiykN3tnhtrCLNcvMH0KgrZMzJzWLW7Cdm+w/HMNxD54CPn0DURIn8wd/8H1l8HZOoU46PO9nUbFEB2tyw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ulKtGX03fhrSml/ORl5KKXkicwMLrC6F2a5wc/j8UrI=;
+ b=XKIMaSewY8keS9/auBdf34VXVKEmx/Io+xHFk0RgwWNHnUTB/e8rX8pQYOO0QvNvYgzO0ZaW7Fat+yTUsSd/ErNSSDj26OrMMz1Er8ugdx9eVql5wjtSABY+CctuLfPCNeo3TZ02nNNseacrtLFTrq7DAQOHihT++b/PweM4qXnl+TSn6vwG6XPq0IyQ2WdLE1da/Ox/kXexIbtZOSsFDLIXQPbll3MIojf5GYmtTtQeUwwQMumix+pPdsR91UqSGjFp528IIacgYm/KM3ZmZFAhgOaP5UJHCkBVtyVpr5pn7fbSp7dbsvpZDapKHuQXPZFTMvn4pcvQAddRjVxM0A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by SN7PR11MB7089.namprd11.prod.outlook.com (2603:10b6:806:298::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5986.18; Tue, 17 Jan
+ 2023 09:05:41 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d%9]) with mapi id 15.20.5986.023; Tue, 17 Jan 2023
+ 09:05:41 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>
+Subject: RE: [PATCH v4] vfio: fix potential deadlock on vfio group lock
+Thread-Topic: [PATCH v4] vfio: fix potential deadlock on vfio group lock
+Thread-Index: AQHZJ6vANRoQ9x2rxUaXBLM6X5ngE66iVZeQ
+Date: Tue, 17 Jan 2023 09:05:40 +0000
+Message-ID: <BN9PR11MB52761554526A0278B13CB2B18CC69@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230114000351.115444-1-mjrosato@linux.ibm.com>
+In-Reply-To: <20230114000351.115444-1-mjrosato@linux.ibm.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SN7PR11MB7089:EE_
+x-ms-office365-filtering-correlation-id: 5fb3d0f3-8df5-4dfa-e352-08daf86a0204
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: rk20/YXzW1VPzoCsktmEQgpOn+s/HaqYojEczST7ssbBkjJxTBOgN8j8DjSnCal1TvqYEPr89uTEi14yrccVI4j26I2bAh/mn/qj0K9va1k9r7im+E0+3qfL+xD4kjBRIdbRhj8kAb/P9OUDCXM3FgEtmsLSwDTTfK80iyyODogdw5tSv7v+/Uqbul1+RNYSesqR/IMPde0duUMHKS5si9QmANbC8AZYpuc5cI6F+TVWZU8ydne68Wz/j9j/wEaPpIfriMu1adcXKAhWCfd1DtKE7buR7ZPzGZ+2tvPSedoa+GNBsmzoXT+kgS3GlW4clm2o7zRXJoSP7iRBeusTQWpk5kadEmfM4Lqs+TlVNHtv3epEG0OlveX8Xt2mnhq/MMXlZhmbAs5k/Byjl3ugnfPKdIUf3HzNqEypRKmFUfKhoYrMthkLr8e6vZ9yBswfATxzF616wCRKJvHaksFsL/wS11jEvy8+LEodRypvmklfEkCEEtwSvJRvUMiWTFurnJn063SVx4JyeZmi9oLOws13tuNA1PtvHK7Q6JhqekDv3pV1cJG9UDHDQE0ciL8TqQc3tWZAjO33SFiQGNW91XplEfLkSrwjb0n5dYNM02Z6XQx8sG33QSyLqpcxxX64Lz+XX3A7UiIXgR0GHfnG+x95J0LzTJ9dq+qzQby94WY+bg5SIRWpL07mEKXIv7AOs7GODUVFshDkTIufeFzd2A==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(136003)(346002)(376002)(366004)(396003)(39860400002)(451199015)(66946007)(110136005)(64756008)(76116006)(8676002)(66476007)(66556008)(66446008)(41300700001)(316002)(4326008)(82960400001)(55016003)(4744005)(38070700005)(8936002)(122000001)(83380400001)(33656002)(54906003)(52536014)(38100700002)(86362001)(5660300002)(7416002)(2906002)(71200400001)(6506007)(26005)(7696005)(478600001)(186003)(9686003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?rzoo8yFm1BbYcB4ASEHHrXC26nH3uY0EIgk1KxJCNZMye4678BSJaqp4pARO?=
+ =?us-ascii?Q?7DgTge1PjBUOf283YwKljEFmqIZWTxM+7/q1NAaey4LidyKfNQYIJUtfNxqr?=
+ =?us-ascii?Q?ycyDv1a+pWOgmdl0M1Kp0WZmd3LoHCOwtTQupWUUJTKiEffIyak9xkshaIsv?=
+ =?us-ascii?Q?rovJrXW/fpyLTHsPfySGGlK5rsRwSO/ZtGcNN5sk40x9/F8Gf/W8E5CsMZTm?=
+ =?us-ascii?Q?slSEas6M+7Pf7rEDNJurc32LGHis+uP2OFAapt84QB/WlgLlmtWI824SdCfe?=
+ =?us-ascii?Q?E+7UK6OZm+d3RfKZLh703KXFa8GxNF/dwe/aKKAXoBF9abmc/cn2TqwFbkcB?=
+ =?us-ascii?Q?CKuYfrjYJW7Zj9tGv7WH6bixDOtpr/KyjUPMPl3vuYCm4UZwu0ZqwWWsEAlA?=
+ =?us-ascii?Q?YSE8dtRt4XKQ//C0hQNDrVlPPBXv41wKPc5eGW2SE1LiUnSMHCNqHwz2q8AE?=
+ =?us-ascii?Q?DAqfdPo95ugHu2j0AiRwNJUWQX5hLJpxnpiHWrg8Zo+VVkqQoXde1i/9+Wdl?=
+ =?us-ascii?Q?trn2FcEdfRQJyT1OdXY7xRrfya8sX5DeO0DdjMN5o0vdHG6ghSqFPtwcbbnI?=
+ =?us-ascii?Q?iM9BeZSck4mEyeU6wVWVns/cZqrYqBZNajJoVIkJgypmjP6LYO2q0/iJiu9t?=
+ =?us-ascii?Q?i3BJe6QhFcu5vig+l1KZHHOfKlDbnLzIag0e7Qda4Ybn8I5wskVVtj1aCOr/?=
+ =?us-ascii?Q?0gzUWwer7r6+Kvm4Gk2F2tQFu0KgDZ5rEnWi0LwdfYNJDn25iDO2b7TsjT0y?=
+ =?us-ascii?Q?K9DPjVegBD+vMPuKXzs8LhI5YfL22AFlyWoy5ipNvvD1SlqfXggX1TsjK1Q0?=
+ =?us-ascii?Q?+uUO8IRlp/FiSFDUjMWrkSbKfz+LSsFGcmQ+/47fsEf8VRkcRqRC9nbbCVq6?=
+ =?us-ascii?Q?DyO/07UVFDGZWXWBEfZazgHQ9s41e/sHBm9m+ZFxxvvLglAIK6osX5ZSBobt?=
+ =?us-ascii?Q?bIQXXo1Im4yohpwPLdh0dVcuDN3u+aXDZsHdYaFKGVVc35xCdfYgvzSRIJBH?=
+ =?us-ascii?Q?Q79C+ptqRRqUYNfcBaMYFiedsohGbWD2NYHSv7JtYPhola358+hE9kSCRxxz?=
+ =?us-ascii?Q?k/z9AdrfKuLhr+B7hoZ5LyOgxIRdvl+mQVXMr6H4BmydSid7PHhDYuOTu+x4?=
+ =?us-ascii?Q?f+58v7omSUNIPH1v7uZywiWBR+rrSQfpj/LHni9oiBWoNfvzrB97zlA5uj4T?=
+ =?us-ascii?Q?hsPD9hPWR40grd2J33tuYWhdWdpynfH93YlIZTHWeKEXpKIUQ9r4U9sE5HVv?=
+ =?us-ascii?Q?4wvgIgpjdOusZywTNw3tkVagoN2g5BAAPgcljVcPV9XPCFd0YdQnlN/KTKuy?=
+ =?us-ascii?Q?ZNomDguLeM74vmlrmeNbWrrfoJZmybxI2boS3KdaQbsXbRbyh9wM8EL4QxOY?=
+ =?us-ascii?Q?PrWX3gUQ+XhMx9Qk/uy+8RjGTAY6t3tt87Ua50otCrupjWfsUAgmAqzfBE3g?=
+ =?us-ascii?Q?q4mPBDGj2zmH7+6XqwVvn7ndz9jWQwJpw3V1NReLS000cFRzuODyrL6z5hBN?=
+ =?us-ascii?Q?HbhZuwpD3tuWVzWzjP/gRP0Yg9bNe3vs7iirCKeveRG+nkFfuE+pu2/mV7KA?=
+ =?us-ascii?Q?s3WNvrl6MltTXcyd8/zX3dfK8ZhZbJEkqWtJRWLn?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_670_1554752953.1673908398285"
-Message-ID: <0.0.0.4A.1D929FA94D04DA8.379729@mail.seekto-tget.info>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5fb3d0f3-8df5-4dfa-e352-08daf86a0204
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Jan 2023 09:05:41.0286 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: g3StiB8+Z989hVN2++amwhbNWQuy6B4Wg9ZJSF5D0J5e2WliDjUC5eW29nN8cC6MlF9IZfX0V7SSPr8CSLu4qQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7089
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,149 +150,51 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_670_1554752953.1673908398285
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+> From: Matthew Rosato <mjrosato@linux.ibm.com>
+> Sent: Saturday, January 14, 2023 8:04 AM
+>
+>  void vfio_device_group_close(struct vfio_device *device)
+>  {
+> +	void (*put_kvm)(struct kvm *kvm);
+> +	struct kvm *kvm;
+> +
+>  	mutex_lock(&device->group->group_lock);
+> +	kvm =3D device->kvm;
+> +	put_kvm =3D device->put_kvm;
+>  	vfio_device_close(device, device->group->iommufd);
+> +	if (kvm =3D=3D device->kvm)
+> +		kvm =3D NULL;
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <meta content="ie=edge" http-equiv="X-UA-Compatible" /> 
-  <title>Target</title> 
-  <link href="http://www.seekto-tget.info/5574Q2395pzH8613A46d1VzO10e9T36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQzdRKo6zu1P0J6PUwDMT/result-compliant" rel="stylesheet" /> 
-  <link href="http://www.seekto-tget.info/praiser-subsegments/8284H2395GY8P613E4r6dH2u10e9A36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQzdRKo5o1YW06rzwD0J" rel="stylesheet" /> 
- </head> 
- <body>
-  <!-- navbar --> 
-  <header>
-   &nbsp;
-  </header> 
-  <div style="background-color:#f9f9f9; padding-top: 35px; max-width: 600px; margin: auto"> 
-   <div style="max-width:640px;margin:0 auto;box-shadow:0px 1px 5px rgba(255,255,255,0.10);border-radius:4px;overflow:hidden;"> 
-    <div style="margin:0px auto; width: 100%; background:rgba(255,255,255,0.80);"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-size:0px;width:100%;background:rgba(233,233,233,1.00); border-radius: 10px"> 
-      <tbody> 
-       <tr> 
-        <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:57px;"> 
-         <div style="cursor:auto;color:#fff;font-family:Trebuchet MS;font-size:28px; line-height:36px;text-align:center; color: #000000"> 
-          <p>Don't miss out! Just a few clicks away from a chance to win a $100 <strong style="color: #FF0002">Target</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
-          <a href="http://www.seekto-tget.info/cf54M2395S8LD613G4t6Vd3k10e9F36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQzdRKo7Oh1R0rg6XANwDW/baseman-thereby"><img alt="" src="http://www.seekto-tget.info/regular-hikes/9cc6ly239U5yWX7a11h46d5T10e9V36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQzdRKo7M_yz1D05pNwD@" width="100%" /></a>
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-    <div style="margin:0px auto;max-width:640px;background:#fff;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-size:0px;width:100%;background:#fff;"> 
-      <tbody> 
-       <tr> 
-        <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:40px 70px;"> 
-         <div aria-labelledby="mj-column-per-100" class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="left" style="word-break:break-word;font-size:0px;padding:0px 0px 20px;"> 
-              <div style="cursor:auto;color:#737F8D;font-family:Trebuchet MS;font-size:16px;line-height:24px;text-align:center;"> 
-               <p>&nbsp;</p> 
-               <h2 style="font-family: Trebuchet MS;font-weight: 600;font-size: 22px; color: rgba(169,34,34,1.00); letter-spacing: 0.27px;">We appreciate your opinion</h2> 
-               <p>&nbsp;</p> 
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="word-break:break-word;font-size:0px;padding:10px 25px;"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" bgcolor="#7289DA" style="background:rgba(174,35,34,1.00); border:none;border-radius:3px;color:#fff;cursor:auto;padding:15px 19px;" valign="middle"><a href="http://www.seekto-tget.info/cf54M2395S8LD613G4t6Vd3k10e9F36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQzdRKo7Oh1R0rg6XANwDW/baseman-thereby" style="text-decoration:none;line-height:100%;color:#fff;font-family: Trebuchet MS;font-size:25px;font-weight:bold;text-transform:none;margin:0px;">Go And Start Now</a></td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-   </div> 
-   <div style="margin:0px auto;max-width:640px;background:transparent;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-size:0px;width:100%;background:transparent;"> 
-     <tbody> 
-      <tr> 
-       <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:0px;"> 
-        <div aria-labelledby="mj-column-per-100" class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td style="word-break:break-word;font-size:0px;"> 
-             <div style="font-size:1px;line-height:12px;">
-              &nbsp;
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="margin:0 auto;max-width:640px;background:#fff;box-shadow:0px 1px 5px rgba(0,0,0,0.1);border-radius:4px;overflow:hidden;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="font-size:0px;width:100%;background:#fff;"> 
-     <tbody> 
-      <tr> 
-       <td style="text-align:center;vertical-align:top;font-size:0px;padding:0px;"> 
-        <div aria-labelledby="mj-column-per-100" class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="word-break:break-word;font-size:0px;padding:30px 70px 0px 70px;"> 
-             <div style="cursor:auto;color:#43B581;font-family:Trebuchet MS;font-size:18px;font-weight:bold;line-height:16px;text-align:center;">
-              &nbsp;
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td align="center" style="word-break:break-word;font-size:0px;padding:14px 70px 30px 70px;"> 
-             <div style="cursor:auto;color:#000000;font-family:Trebuchet MS;font-size:12px;line-height:22px;text-align:center;"> 
-              <p class="unsubscribe"><span style="text-decoration: none; ">To cancel messages,</span><a href="http://www.seekto-tget.info/redder-frequenting/9366hLP2395i86ZB13bN46dz4u10e9v36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQzdRKo5Wm10y5L0wXD" style="text-decoration-line: none; color:"> <span>Begin Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <small><style color="hedge"></style></small><span></span><font></font><style></style><style></style><big><small></big></small></p> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="margin:0px auto;max-width:640px;background:transparent;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-size:0px;width:100%;background:transparent;"> 
-     <tbody> 
-      <tr> 
-       <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:20px 0px;"> 
-        <div aria-labelledby="mj-column-per-100" class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="word-break:break-word;font-size:0px;padding:0px;"> 
-             <div style="cursor:auto;color:#99AAB5;font-family:Trebuchet MS;font-size:12px;line-height:24px;text-align:center;">
-              &nbsp;
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </div>   
- <img src="http://www.seekto-tget.info/7cd6gCG2395G85GM13f46od6hS10e9C36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQzdRKo5p10Vq5H@kwD/carbonization-survivors" alt=""/></body>
-</html>
+Add a simple comment that this check is to detect the last close
 
-------=_Part_670_1554752953.1673908398285--
+> +void vfio_kvm_put_kvm(void (*put)(struct kvm *kvm), struct kvm *kvm)
+> +{
+> +	if (WARN_ON(!put))
+> +		return;
 
+also WARN_ON(!kvm)?
+
+otherwise this looks good to me:
+
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
