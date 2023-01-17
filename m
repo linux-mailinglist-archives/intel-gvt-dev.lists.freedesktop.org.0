@@ -1,54 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A49D66DD49
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Jan 2023 13:15:11 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19E7C66E208
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Jan 2023 16:25:41 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2D6F810E521;
-	Tue, 17 Jan 2023 12:15:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6CCDD10E565;
+	Tue, 17 Jan 2023 15:25:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1030 seconds by postgrey-1.36 at gabe;
- Tue, 17 Jan 2023 12:15:08 UTC
-Received: from casper.infradead.org (casper.infradead.org
- [IPv6:2001:8b0:10b:1236::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A40B310E521;
- Tue, 17 Jan 2023 12:15:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=a+Z1S1xLoCDY3+cEJ4MNUOsPlXtKXXWmP1+DQ4QDsac=; b=evMQhc5/xMEy+lhk6J7pBkUh8b
- nhYD9qQYyxgSYOKUhBcEB6FN+q4d3+76POpvVi3Kwnh4t6iZr9bnzmPH35XwZsEWX9VpjSu/iJ2qY
- 6FGKZPeNYW/xByoKChnP3sj3BHAv59X36zTLnB5UsmYB1c2exkEiNof3OiLa1AwTelAJirDSum+UT
- vWX4iTxx0P7lzSf/2wPpcYks84YO0dhwXEfyNc2Nn3XvSVMdvZ4RyR+W4Fq7VqLZBxaW8J5v53pyQ
- Vr4BXcj2QDslVT5oi5ZePwjDOBaKrA0qbKvLGDog/P3faF8Cgt638yoYmaBgjpHoIHCB8UnuDr4M7
- kF/EBoZw==;
-Received: from j130084.upc-j.chello.nl ([24.132.130.84]
- helo=noisy.programming.kicks-ass.net)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1pHkbC-009ec6-W2; Tue, 17 Jan 2023 11:57:55 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id A904A300094;
- Tue, 17 Jan 2023 12:57:39 +0100 (CET)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id 8495A2B305DE7; Tue, 17 Jan 2023 12:57:39 +0100 (CET)
-Date: Tue, 17 Jan 2023 12:57:39 +0100
-From: Peter Zijlstra <peterz@infradead.org>
-To: Jim Cromie <jim.cromie@gmail.com>
-Subject: Re: [PATCH v2 20/20] jump_label: RFC - tolerate toggled state
-Message-ID: <Y8aNMxHpvZ8qecSc@hirez.programming.kicks-ass.net>
-References: <20230113193016.749791-1-jim.cromie@gmail.com>
- <20230113193016.749791-21-jim.cromie@gmail.com>
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Tue, 17 Jan 2023 15:25:36 UTC
+Received: from mail.mcd-nalds.info (unknown [45.13.189.55])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2D3A210E565
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 17 Jan 2023 15:25:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mcd-nalds.info; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=mcdonalds.sub@mcd-nalds.info; 
+ bh=t0Q1FhyYxmq+aFMtmHlovQUNUa0=;
+ b=oF1NyxU6uhHo0VNVzYNLu71NtyQErVlLtU3FC8WtEkADVM3BHcCMFntPVAhUkD9VXF1RBb6PhDzI
+ TN86YYXoC0blQI0KK+oyfkw1Y7B0php7zwNh0a67wOVL69LoaTm7MTaV5MiCvaqFSGeOrmB3nj0L
+ EbvoEuWMfmO7SdUY248=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mcd-nalds.info;
+ b=CHl6ObFMxbaG30Ubflg1rbpj+/w72UhDf0TMcTdLKMD7HzOs+ewXoS+rKJtRHHoeFvWtR5VbnDfk
+ b7gXmQ7hSmVnWWjRgQvmy29othRdeMvIUBJO3j36yPurp/hFCSIBhzMNNeHe23S4DEv0kveq36in
+ I6LwQ8LroohVruBjUWc=;
+Received: by mail.mcd-nalds.info id hoquv00001g3 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 17 Jan 2023 10:14:34 -0500 (envelope-from
+ <mcdonalds.sub-intel+2Dgvt+2Ddev=lists.freedesktop.org@mcd-nalds.info>)
+Date: Tue, 17 Jan 2023 10:14:34 -0500
+From: "Mcdonalds Sub" <mcdonalds.sub@mcd-nalds.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: You + us = Rewards all day everyday on us
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230113193016.749791-21-jim.cromie@gmail.com>
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_496_349857908.1673968468824"
+Message-ID: <0.0.0.37.1D92A866849DA10.374B58@mail.mcd-nalds.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,51 +50,205 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, robdclark@gmail.com, seanpaul@chromium.org,
- dri-devel@lists.freedesktop.org, gregkh@linuxfoundation.org, jbaron@akamai.com,
- intel-gvt-dev@lists.freedesktop.org, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jan 13, 2023 at 12:30:16PM -0700, Jim Cromie wrote:
-> __jump_label_patch currently will "crash the box" if it finds a
-> jump_entry not as expected.  ISTM this overly harsh; it doesn't
-> distinguish between "alternate/opposite" state, and truly
-> "insane/corrupted".
-> 
-> The "opposite" (but well-formed) state is a milder mis-initialization
-> problem, and some less severe mitigation seems practical.  ATM this
-> just warns about it; a range/enum of outcomes: warn, crash, silence,
-> ok, fixup-continue, etc, are possible on a case-by-case basis.
-> 
-> Ive managed to create this mis-initialization condition with
-> test_dynamic_debug.ko & _submod.ko.  These replicate DRM's regression
-> on DRM_USE_DYNAMIC_DEBUG=y; drm.debug callsites in drivers/helpers
-> (dependent modules) are not enabled along with those in drm.ko itself.
-> 
+------=_Part_496_349857908.1673968468824
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-> Ive hit this case a few times, but havent been able to isolate the
-> when and why.
-> 
-> warn-only is something of a punt, and I'm still left with remaining
-> bugs which are likely related; I'm able to toggle the p-flag on
-> callsites in the submod, but their enablement still doesn't yield
-> logging activity.
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+ <head> 
+  <title>McDonalds</title> 
+  <!--[if !mso]><!--> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <!--<![endif]--> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+  <style type="text/css">#outlook a {
+      padding: 0;
+    }
 
-Right; having been in this is state is bad since it will generate
-inconsistent code-flow. Full on panic *might* not be warranted (as it
-does for corrupted text) but it is still a fairly bad situation -- so
-I'm not convinced we want to warn and carry on.
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
 
-It would be really good to figure out why the site was skipped over and
-got out of skew.
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
 
-Given it's all module stuff, the 'obvious' case would be something like
-a race between adding the new sites and flipping it, but I'm not seeing
-how -- things are rather crudely serialized by jump_label_mutex.
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
 
-The only other option I can come up with is that somehow the update
-condition in jump_label_add_module() is somehow wrong.
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+	</style> 
+  <link href="http://www.mcd-nalds.info/c414I2395b8FZ613wo46_d9P10eaR36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQVdRK96OW10gN6QLjywD/lecturers-indirectly" rel="stylesheet" type="text/css" /> 
+  <style type="text/css">@import url(http://www.mcd-nalds.info/c414I2395b8FZ613wo46_d9P10eaR36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQVdRK96OW10gN6QLjywD/lecturers-indirectly);
+	</style> 
+  <!--<![endif]--> 
+  <style type="text/css">@media only screen and (min-width:480px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+    }
+	</style> 
+  <style media="screen and (min-width:480px)" type="text/css">.moz-text-html .mj-column-per-100 {
+      width: 100% !important;
+      max-width: 100%;
+    }
+	</style> 
+  <style type="text/css">@media only screen and (max-width:480px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
+
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
+    }
+	</style> 
+  <style type="text/css">
+	</style> 
+ </head> 
+ <body style="word-spacing:normal;background-color:#ffffff;"> 
+  <div style="background-color:#ffffff;"> 
+   <div style="margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
+              <tbody> 
+               <tr> 
+                <td style="width:200px;">&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="border:10px solid #eee;border-bottom:none; direction: ltr; font-size:0px; padding: 20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix main" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color:#ffffff;vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word; background: #FFFFFF"> 
+             <div style="font-family:'Gotham', Arial, san-serif;font-size:13px;line-height:20px;text-align:center;color:#000000;"> 
+              <h1>Mc Donalds</h1> 
+              <a href="http://www.mcd-nalds.info/e3f5pV2395B86wR12D46dWai10eah36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdRK97o1gloH05C@3wD/avoidably-idolatry"><img alt="" src="http://www.mcd-nalds.info/da94F2395kT7Aa11v46dco10ear36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQVdRK97SB1jFx05LBywD/disheartening-savaged" width="100%" /></a> 
+              <p style="font-size: 23px;line-height: 28px; ">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Mc Donalds</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+              <a href="http://www.mcd-nalds.info/e3f5pV2395B86wR12D46dWai10eah36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdRK97o1gloH05C@3wD/avoidably-idolatry"><img alt="" src="http://www.mcd-nalds.info/antitoxin-stubbornly/c245L239K5p7_ka11r46ddp10eaY36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQVdRK96fzyh106DpLwDN" width="100%" /></a>
+              <br /> 
+              <br /> &nbsp; 
+              <div style="font-size: 18px;font-weight: bold;background: #FCAD00;padding: 20px;border-radius: 8px">
+               <a href="http://www.mcd-nalds.info/e3f5pV2395B86wR12D46dWai10eah36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdRK97o1gloH05C@3wD/avoidably-idolatry" style="display: block;text-decoration: none;color: #FFFFFF; padding: 0% 25%">Go And Start Now </a>
+              </div> &nbsp; 
+              <p style="font-size: 15px "><strong>We appreciate your opinion</strong></p> 
+              <p>&nbsp;</p> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;background-color:#FFFFFF;width:100%;"> 
+     <tbody> 
+      <tr> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="border:10px solid #eee;border-top:none;direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <div style="font-family:'Gotham', Arial, san-serif;font-size:13px;line-height:20px;text-align:center;color:#000000;"> 
+              <p style="font-size: 20px">&nbsp;</p> 
+              <p>&nbsp;</p> 
+             </div> </td> 
+           </tr> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;"> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <div style="font-family:'Gotham', Arial, san-serif;font-size:10px;line-height:20px;text-align:center;color:#000000;"> 
+              <p class="unsubscribe"><span style="text-decoration: none; ">To put an end to e-mail,</span><a href="http://www.mcd-nalds.info/2e14N2395oF8q613o4A6dbhp10eaP36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQVdRK96w10zuC5yXwDJ/misspelling-McIntosh" style="text-decoration-line: none; color:"> <span>Go_Here_Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <font face="banisters"></font><span color="waterfalls"><style></span></style><style></style><style></style><span title="together"></span><small></small><style style="Howard"></style><span class="nucleotides"></span><span size="fabrication"><font></font></span></p> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </div>   
+ <img src="http://www.mcd-nalds.info/2e16f2Pq395WA85i13N46dnveQ10eaO36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQVdRK97yX10gI_6AJXwJD/Maplecrest-contrast" alt=""/></body>
+</html>
+
+------=_Part_496_349857908.1673968468824--
 
