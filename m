@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF248672933
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 21:23:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B84C672A2C
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 22:15:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 78C1910E029;
-	Wed, 18 Jan 2023 20:23:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7075C10E029;
+	Wed, 18 Jan 2023 21:15:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A37B210E029;
- Wed, 18 Jan 2023 20:23:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
- t=1674073393; bh=Q7RlEaXnEqFwS+6rzjpHzGGEkndrB2oRtxww9YVShds=;
- h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:MIME-Version:
- Content-Type;
- b=n4ZGttawAHvU+kKNEXJmVo4kpmwLy1iWS4BTcFlEPCl+hd0lPTOxGbbFKxrJQOhpa
- V2U8kWqW+c+Vc7u0MmR0RqwkXEvwQvr5iP6eAtGCuRELu8nLKOHGvfSI0kR7J7J0UD
- dPMSrwtWERQ72yGh6ET0fbHadmoYQtIrYrZcv714=
-Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
- via ip-206.mailobj.net [213.182.55.206]
- Wed, 18 Jan 2023 21:23:13 +0100 (CET)
-X-EA-Auth: rt16gkipC8f0Y+X3/lLm2PRNoHDAozsEuaaEmgxjkK3S+royuqWHBe42Ov9MyTNsYUoydczrlMr84oArRF+WkOASpSQ3shXh
-Date: Thu, 19 Jan 2023 01:53:07 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2] drm/i915/gvt: Avoid full proxy f_ops for debugfs attributes
-Message-ID: <Y8hVK6wuqm50iADP@ubun2204.myguest.virtualbox.org>
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Wed, 18 Jan 2023 21:15:39 UTC
+Received: from mail.basic-ups.info (unknown [45.13.189.71])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E324310E029
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 18 Jan 2023 21:15:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=basic-ups.info; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=ups_transit_updates@basic-ups.info; 
+ bh=elY0DyLF6fUEDu+8RxHuyyS8Fv8=;
+ b=ItivRrBq6FHa8zRHxrhSymRtjka1CduZDqGtvJz+NJUADJQHUjy2lRhEehIPcSKZ6a4C2v0GoznU
+ av3l4C6TLHcEfJmJ1Bs55o0Fc1MG6FGNMrjgqySpmzNdox1u0XqDIEA8A9kLvG+C0GOMcsaJinzI
+ +0TeZE+dm+juNZoBtfo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=basic-ups.info;
+ b=LZbjeR6TfUhwwuyV++5E1z2mJx/+mV0mFTy68Ng0EjiBGfTucqTp6N22BzwAbDuQOCWNX45g7pxC
+ Ty9GN+6WdNdgT5xVlh1yeAPBkJQ6HkSaaacVL8++4ATnp1DLyVy0BiGNxbDfrFtwTLHxGKBNGoF/
+ bPNOLDZwPWYD7ijb+ZA=;
+Received: by mail.basic-ups.info id hp1gno0001g7 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 18 Jan 2023 16:02:33 -0500 (envelope-from
+ <ups_transit_updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@basic-ups.info>)
+Date: Wed, 18 Jan 2023 16:02:33 -0500
+From: "UPS Transit Updates" <ups_transit_updates@basic-ups.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Qualify for a $100 UPS gift card as a shopper.
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_64_1111427299.1674075728196"
+Message-ID: <0.0.0.8.1D92B802F25BD6C.4D556F@mail.basic-ups.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,83 +50,90 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Praveen Kumar <kumarpraveen@linux.microsoft.com>,
- Saurabh Singh Sengar <ssengar@microsoft.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Using DEFINE_SIMPLE_ATTRIBUTE macro with the debugfs_create_file()
-function adds the overhead of introducing a proxy file operation
-functions to wrap the original read/write inside file removal protection
-functions. This adds significant overhead in terms of introducing and
-managing the proxy factory file operations structure and function
-wrapping at runtime.
-As a replacement, a combination of DEFINE_DEBUGFS_ATTRIBUTE macro paired
-with debugfs_create_file_unsafe() is suggested to be used instead.  The
-DEFINE_DEBUGFS_ATTRIBUTE utilises debugfs_file_get() and
-debugfs_file_put() wrappers to protect the original read and write
-function calls for the debug attributes. There is no need for any
-runtime proxy file operations to be managed by the debugfs core.
-Following coccicheck make command helped identify this change:
+------=_Part_64_1111427299.1674075728196
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-make coccicheck M=drivers/gpu/drm/i915/ MODE=patch COCCI=./scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
+<html>
+ <head> 
+  <title>Email Signature Template</title> 
+  <meta content="Vinit Shahdeo" name="author" /> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="telephone=no" name="format-detection" /> 
+  <link href="http://www.basic-ups.info/2ff4z2395Y8mN611e4729n10fap36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQhdSno6g1N0vS5SNwDl/rusher-uprightness" rel="stylesheet" /> 
+  <link href="https://fonts.googleapis.com/css?family=Caveat|Cookie&amp;disp???? rel=" link="" /> 
+  <link href="http://www.basic-ups.info/4496u239rR5i8j6z11r472aQ10faK36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhdSno7M10lLqV5Qz@wD/consular-legally" link="" /> 
+  <link crossorigin="anonymous" href="http://www.basic-ups.info/7734e2395C8Dx612V472LbF10faQ36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQhdSno6kv1Ut05EOwDl/rusher-uprightness" rel="stylesheet" /> 
+  <style type="text/css">a.link {margin:0;padding:0;border:none;text-decoration:none;}
+         a {color:#273746;}
+         p { font-family: 'Delius', cursive; }
+         #sig {font-family: 'Dosis', sans-serif;}
+         table, tr, td {margin:0;padding:0;line-height: 1.8em;}
+         td a {margin:0 1.2em 0 0}
+         .container {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         background-color: #ECEFF1;
+         width: 100%;
+         height: auto;
+         border-radius: 10px;
+         overflow: hidden;
+         padding: 50px;
+         }
+	</style> 
+ </head> 
+ <body style="background: #E1E1E1"> 
+  <div style="max-width: 600px; margin: auto; text-align: center;background: #FFFFFF">
+   &nbsp; 
+   <h1>&nbsp;</h1> 
+   <a href="http://www.basic-ups.info/consular-legally/2884l2395l86Tt12n472cWw10faV36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQhdSno7O1qXi0V6yp0wyD"><img alt="" src="http://www.basic-ups.info/c234g2395aK7Fa13n472HeJP10faU36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQhdSno6Rr10Vs5k3TwD/layman-lovably" width="100%" /></a> 
+   <table border-spacing="0" cellpadding="0" cellspacing="0" style="text-align: center" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td> <p style="text-align: center; font-size: 22px; padding: 20px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>UPS</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> </td> 
+     </tr> 
+     <tr> 
+      <td> 
+       <div style="background: #3C4121; color: white; padding: 15px; font-size: 20px;font-weight: bold;display: block; border-radius: 50px; color: #FFFFFF">
+        <a href="http://www.basic-ups.info/consular-legally/2884l2395l86Tt12n472cWw10faV36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQhdSno7O1qXi0V6yp0wyD" style="display: block; text-decoration: none; padding: 0px 28%; color: #FFFFFF">Go And Start Now</a>
+       </div> </td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <div style="text-align: center; font-size: 12px; background: #FFFFFF"> 
+    <p class="unsubscribe"><span style="text-decoration: none; ">To cut off your subscription,</span><a href="http://www.basic-ups.info/6dd4J2395SuC8612k472dRZ10faF36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQhdSno7C1LI0HV6DJlw1D/healthful-Gardner" style="text-decoration-line: none; color:"> <span>Go Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span lang="mousetrap"><small></span><style></style><big></big><font dir="firepower"><span style="indigenous"></small></font></span><span size="leathered"></span><span><font lang="systematizing"></span></font></p> 
+    <br /> &nbsp;
+   </div> 
+  </div>   
+ <img src="http://www.basic-ups.info/6bf4w2395f8sP513k4h72fTY10faU36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQhdSno7Lz10Ynk6GOwJqD/consular-legally" alt=""/></body>
+</html>
 
-Signed-off-by: Deepak R Varma <drv@mailo.com>
-Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
-Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
----
-Changes in v2:
-   - Following changes as suggested by Rodrigo Vivi <rodrigo.vivi@intel.com>
-      - Combine 2 patch series in a single patch 
-      - Base the patch on the i915/gvt to avoid conflicts
-
-
- drivers/gpu/drm/i915/gvt/debugfs.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
-index 0616b73175f3..baccbf1761b7 100644
---- a/drivers/gpu/drm/i915/gvt/debugfs.c
-+++ b/drivers/gpu/drm/i915/gvt/debugfs.c
-@@ -147,9 +147,9 @@ vgpu_scan_nonprivbb_set(void *data, u64 val)
- 	return 0;
- }
- 
--DEFINE_SIMPLE_ATTRIBUTE(vgpu_scan_nonprivbb_fops,
--			vgpu_scan_nonprivbb_get, vgpu_scan_nonprivbb_set,
--			"0x%llx\n");
-+DEFINE_DEBUGFS_ATTRIBUTE(vgpu_scan_nonprivbb_fops,
-+			 vgpu_scan_nonprivbb_get, vgpu_scan_nonprivbb_set,
-+			 "0x%llx\n");
- 
- static int vgpu_status_get(void *data, u64 *val)
- {
-@@ -165,7 +165,7 @@ static int vgpu_status_get(void *data, u64 *val)
- 	return 0;
- }
- 
--DEFINE_SIMPLE_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx\n");
-+DEFINE_DEBUGFS_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx\n");
- 
- /**
-  * intel_gvt_debugfs_add_vgpu - register debugfs entries for a vGPU
-@@ -180,10 +180,10 @@ void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vgpu)
- 
- 	debugfs_create_file("mmio_diff", 0444, vgpu->debugfs, vgpu,
- 			    &vgpu_mmio_diff_fops);
--	debugfs_create_file("scan_nonprivbb", 0644, vgpu->debugfs, vgpu,
--			    &vgpu_scan_nonprivbb_fops);
--	debugfs_create_file("status", 0644, vgpu->debugfs, vgpu,
--			    &vgpu_status_fops);
-+	debugfs_create_file_unsafe("scan_nonprivbb", 0644, vgpu->debugfs, vgpu,
-+				   &vgpu_scan_nonprivbb_fops);
-+	debugfs_create_file_unsafe("status", 0644, vgpu->debugfs, vgpu,
-+				   &vgpu_status_fops);
- }
- 
- /**
--- 
-2.34.1
-
-
+------=_Part_64_1111427299.1674075728196--
 
