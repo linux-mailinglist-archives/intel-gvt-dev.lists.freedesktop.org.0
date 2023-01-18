@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B84C672A2C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 22:15:43 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B3A9672B04
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 23:03:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7075C10E029;
-	Wed, 18 Jan 2023 21:15:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D560E10E204;
+	Wed, 18 Jan 2023 22:03:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Wed, 18 Jan 2023 21:15:39 UTC
-Received: from mail.basic-ups.info (unknown [45.13.189.71])
- by gabe.freedesktop.org (Postfix) with ESMTP id E324310E029
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Wed, 18 Jan 2023 22:03:50 UTC
+Received: from mail.ohmy-ace.info (unknown [45.13.189.72])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D2A4210E204
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Jan 2023 21:15:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=basic-ups.info; 
+ Wed, 18 Jan 2023 22:03:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ohmy-ace.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups_transit_updates@basic-ups.info; 
- bh=elY0DyLF6fUEDu+8RxHuyyS8Fv8=;
- b=ItivRrBq6FHa8zRHxrhSymRtjka1CduZDqGtvJz+NJUADJQHUjy2lRhEehIPcSKZ6a4C2v0GoznU
- av3l4C6TLHcEfJmJ1Bs55o0Fc1MG6FGNMrjgqySpmzNdox1u0XqDIEA8A9kLvG+C0GOMcsaJinzI
- +0TeZE+dm+juNZoBtfo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=basic-ups.info;
- b=LZbjeR6TfUhwwuyV++5E1z2mJx/+mV0mFTy68Ng0EjiBGfTucqTp6N22BzwAbDuQOCWNX45g7pxC
- Ty9GN+6WdNdgT5xVlh1yeAPBkJQ6HkSaaacVL8++4ATnp1DLyVy0BiGNxbDfrFtwTLHxGKBNGoF/
- bPNOLDZwPWYD7ijb+ZA=;
-Received: by mail.basic-ups.info id hp1gno0001g7 for
+ i=ace-tools-savings@ohmy-ace.info; 
+ bh=V/rnYsX/EUy7AXQmdyfzFyOND04=;
+ b=PiTAiv0JOPlm5+mtoEcN3YVf7ZmIQzKBQoHM2mzfJWG3tMh1vVS0Ex1wflIjvjlDYLWd/fB4o2SW
+ XmsClBx4Fl7kRCAEjwzpV9r+zIwBFda+m/XunfSxjqScPRwd71eaVfPzPnZqJ+fPF5EbP7ssR/hU
+ uxmAGx6Rg6xwMC/T6Js=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ohmy-ace.info;
+ b=RkbLVP3Z3vtyD2Hc7kJ7HukVbcbhbhxTAIdFM1CC5CMHFwKnlcBohIM36Q18O9jvbW8rPY7gvOJX
+ n8KTHbj4mL9eQfC6hPKA0GaNtP3t3NOqRO69n2pAH6eXBB0LjMPWeDu6Z4oroLeglJz037x3c04/
+ MP6kHAPMvOwA6Ef2dyk=;
+Received: by mail.ohmy-ace.info id hp20jk0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Jan 2023 16:02:33 -0500 (envelope-from
- <ups_transit_updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@basic-ups.info>)
-Date: Wed, 18 Jan 2023 16:02:33 -0500
-From: "UPS Transit Updates" <ups_transit_updates@basic-ups.info>
+ Wed, 18 Jan 2023 18:22:07 -0500 (envelope-from
+ <ace-tools-savings-intel+2Dgvt+2Ddev=lists.freedesktop.org@ohmy-ace.info>)
+Date: Wed, 18 Jan 2023 18:22:07 -0500
+From: "ACE Tools Savings" <ace-tools-savings@ohmy-ace.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Qualify for a $100 UPS gift card as a shopper.
+Subject: Your loyalty pays off - awesome rewards await you.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_64_1111427299.1674075728196"
-Message-ID: <0.0.0.8.1D92B802F25BD6C.4D556F@mail.basic-ups.info>
+ boundary="----=_Part_772_1145647744.1674078844091"
+Message-ID: <0.0.0.55.1D92B93AE9512F6.551409@mail.ohmy-ace.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,87 +53,300 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_64_1111427299.1674075728196
+------=_Part_772_1145647744.1674078844091
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-<html>
- <head> 
-  <title>Email Signature Template</title> 
-  <meta content="Vinit Shahdeo" name="author" /> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="telephone=no" name="format-detection" /> 
-  <link href="http://www.basic-ups.info/2ff4z2395Y8mN611e4729n10fap36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQhdSno6g1N0vS5SNwDl/rusher-uprightness" rel="stylesheet" /> 
-  <link href="https://fonts.googleapis.com/css?family=Caveat|Cookie&amp;disp???? rel=" link="" /> 
-  <link href="http://www.basic-ups.info/4496u239rR5i8j6z11r472aQ10faK36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhdSno7M10lLqV5Qz@wD/consular-legally" link="" /> 
-  <link crossorigin="anonymous" href="http://www.basic-ups.info/7734e2395C8Dx612V472LbF10faQ36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQhdSno6kv1Ut05EOwDl/rusher-uprightness" rel="stylesheet" /> 
-  <style type="text/css">a.link {margin:0;padding:0;border:none;text-decoration:none;}
-         a {color:#273746;}
-         p { font-family: 'Delius', cursive; }
-         #sig {font-family: 'Dosis', sans-serif;}
-         table, tr, td {margin:0;padding:0;line-height: 1.8em;}
-         td a {margin:0 1.2em 0 0}
-         .container {
-         position: absolute;
-         top: 50%;
-         left: 50%;
-         transform: translate(-50%, -50%);
-         background-color: #ECEFF1;
-         width: 100%;
-         height: auto;
-         border-radius: 10px;
-         overflow: hidden;
-         padding: 50px;
-         }
-	</style> 
- </head> 
- <body style="background: #E1E1E1"> 
-  <div style="max-width: 600px; margin: auto; text-align: center;background: #FFFFFF">
-   &nbsp; 
-   <h1>&nbsp;</h1> 
-   <a href="http://www.basic-ups.info/consular-legally/2884l2395l86Tt12n472cWw10faV36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQhdSno7O1qXi0V6yp0wyD"><img alt="" src="http://www.basic-ups.info/c234g2395aK7Fa13n472HeJP10faU36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQhdSno6Rr10Vs5k3TwD/layman-lovably" width="100%" /></a> 
-   <table border-spacing="0" cellpadding="0" cellspacing="0" style="text-align: center" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td> <p style="text-align: center; font-size: 22px; padding: 20px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>UPS</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> </td> 
-     </tr> 
-     <tr> 
-      <td> 
-       <div style="background: #3C4121; color: white; padding: 15px; font-size: 20px;font-weight: bold;display: block; border-radius: 50px; color: #FFFFFF">
-        <a href="http://www.basic-ups.info/consular-legally/2884l2395l86Tt12n472cWw10faV36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQhdSno7O1qXi0V6yp0wyD" style="display: block; text-decoration: none; padding: 0px 28%; color: #FFFFFF">Go And Start Now</a>
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <div style="text-align: center; font-size: 12px; background: #FFFFFF"> 
-    <p class="unsubscribe"><span style="text-decoration: none; ">To cut off your subscription,</span><a href="http://www.basic-ups.info/6dd4J2395SuC8612k472dRZ10faF36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQhdSno7C1LI0HV6DJlw1D/healthful-Gardner" style="text-decoration-line: none; color:"> <span>Go Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span lang="mousetrap"><small></span><style></style><big></big><font dir="firepower"><span style="indigenous"></small></font></span><span size="leathered"></span><span><font lang="systematizing"></span></font></p> 
-    <br /> &nbsp;
-   </div> 
-  </div>   
- <img src="http://www.basic-ups.info/6bf4w2395f8sP513k4h72fTY10faU36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQhdSno7Lz10Ynk6GOwJqD/consular-legally" alt=""/></body>
+<!DOCTYPE html>
+<html lang=3D"en">
+ <head>=20
+  <title></title>=20
+  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1" name=3D"viewpor=
+t" />=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
+  <style type=3D"text/css">
+    @media screen {
+=09=09@font-face {
+=09=09  font-family: 'Lato';=20
+=09=09  font-style: normal;=20
+=09=09  font-weight: 400;=20
+=09=09  src: local('Lato Regular'), local('Lato-Regular'), url(https://font=
+s.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) =
+format('woff');=20
+=09=09}
+=09=09
+=09=09@font-face {
+=09=09  font-family: 'Lato';=20
+=09=09  font-style: normal;=20
+=09=09  font-weight: 700;=20
+=09=09  src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gsta=
+tic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format=
+('woff');=20
+=09=09}
+=09=09
+=09=09@font-face {
+=09=09  font-family: 'Lato';=20
+=09=09  font-style: italic;=20
+=09=09  font-weight: 400;=20
+=09=09  src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.=
+gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) fo=
+rmat('woff');=20
+=09=09}
+=09=09
+=09=09@font-face {
+=09=09  font-family: 'Lato';=20
+=09=09  font-style: italic;=20
+=09=09  font-weight: 700;=20
+=09=09  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https=
+://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU=
+woff) format('woff');=20
+=09=09}
+    }
+   =20
+  =20
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adju=
+st: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; }
+
+   =20
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-d=
+ecoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !impor=
+tant; width: 100% !important; }
+
+   =20
+    a[x-apple-data-detectors] {
+        color: inherit !important;=20
+        text-decoration: none !important;=20
+        font-size: inherit !important;=20
+        font-family: inherit !important;=20
+        font-weight: inherit !important;=20
+        line-height: inherit !important;=20
+    }
+   =20
+=09
+=09@media screen and (max-width:600px){
+=09=09h1 {
+=09=09=09font-size: 32px !important;=20
+=09=09=09line-height: 32px !important;=20
+=09=09}
+=09}
+
+ =20
+    div[style*=3D"margin: 16px 0; "] { margin: 0 !important; }
+=09</style>=20
+ </head>=20
+ <body style=3D"background-color: #f4f4f4; margin: 0 !important; padding: 0=
+ !important; ">=20
+  <div style=3D"display: none; font-size: 1px; color: #fefefe; line-height:=
+ 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; m=
+ax-width: 0px; opacity: 0; overflow: hidden; ">
+   We' ve added a ton of features to your account. Check out the biggest ch=
+anges below or log in to view them all.   </div>=20
+  <div style=3D"display: none; max-height: 0px; overflow: hidden; ">
+   &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nb=
+sp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=
+ ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? =
+&nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp; ? &nbsp;=20
+  </div>=20
+  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentat=
+ion" width=3D"100%">=20
+   <tbody>=20
+    <tr>=20
+     <td align=3D"center" bgcolor=3D"#F4F4F4">=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"max-width: 600px; " width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center" style=3D"padding: 40px 10px 40px 10px; " vali=
+gn=3D"top">&nbsp; </td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+    <tr>=20
+     <td align=3D"center" bgcolor=3D"#F4F4F4" style=3D"padding: 0px 10px 0p=
+x 10px; ">=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"max-width: 600px; " width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center" bgcolor=3D"#ffffff" style=3D"padding: 40px 20=
+px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: =
+'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; le=
+tter-spacing: 4px; line-height: 48px; " valign=3D"top"> <h1 style=3D"font-s=
+ize: 48px; font-weight: 400; margin: 0; ">Ace Hardware</h1> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+    <tr>=20
+     <td align=3D"center" bgcolor=3D"#f4f4f4" style=3D"padding: 0px 10px 0p=
+x 10px; ">=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"max-width: 600px; " width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
+ 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
+f; font-size: 18px; font-weight: 400; line-height: 25px; "><a href=3D"=
+http://www.ohmy-ace.info/6fb6X23Ns95eh86A12C4730o_10fbF36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQYdSn96M10uwi5D2TwD/couples-bookcases"><img alt=3D"" src=3D"http://www.ohmy-ace.info/e3f5W239x5Q7xaG11N4732A10fbu36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQYdSn96F1v0wh6oT0wLD/tickled-arrestingly" width=3D"100%" /></a></td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 0px 0px 0=
+px 0px; ">&nbsp; </td>=20
+        </tr>=20
+        <!-- COPY -->=20
+        <tr>=20
+         <td align=3D"center" bgcolor=3D"#ffffff" style=3D"padding: 40px 30=
+px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-s=
+erif; font-size: 22px; font-weight: 400; "> <p style=3D"margin: 0; text-ali=
+gn-last: center; color: #000000; line-height: 30px">Don' t miss out! Just a=
+ few clicks away from a chance to win a $100 <strong>Ace Hardware</strong> =
+Card by completing our quick 20-second survey about your recent experience =
+with us.</p> </td>=20
+        </tr>=20
+        <!-- COPY HEADING -->=20
+        <tr>=20
+         <td align=3D"center" bgcolor=3D"#ffffff" style=3D"padding: 0px 30p=
+x 0px 30px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-ser=
+if; font-size: 18px; font-weight: 400; line-height: 25px; "><a href=3D"=
+http://www.ohmy-ace.info/6fb6X23Ns95eh86A12C4730o_10fbF36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQYdSn96M10uwi5D2TwD/couples-bookcases" style=3D"display: inline-block; background: #CC012A; color: white; =
+font-family: Muli, Arial, sans-serif; font-size: 22px; font-weight: 700; li=
+ne-height: 30px; margin: 0; text-decoration: none; text-transform: none; pa=
+dding: 10px 25px; mso-padding-alt: 0px; border-radius: 0px; " target=3D"_bl=
+ank"><strong>Go And Start Now </strong> </a></td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
+ 0px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
+f; font-size: 18px; font-weight: 400; line-height: 25px; "> <p style=3D"mar=
+gin: 0; ">&nbsp; </p> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
+ 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-ser=
+if; font-size: 18px; font-weight: 400; line-height: 25px; "> <p style=3D"ma=
+rgin: 0; ">&nbsp; </p> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 0px 30px =
+0px 30px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif=
+; font-size: 18px; font-weight: 400; line-height: 25px; "> <h2 style=3D"fon=
+t-size: 24px; font-weight: 400; margin: 0; ">&nbsp; </h2> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 20px 30px=
+ 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-ser=
+if; font-size: 18px; font-weight: 400; line-height: 25px; "> <p style=3D"ma=
+rgin: 0; ">&nbsp; </p> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"center" bgcolor=3D"#ffffff" style=3D"padding: 0px 30p=
+x 0px 30px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-ser=
+if; font-size: 18px; font-weight: 400; line-height: 25px; "> <h2 style=3D"f=
+ont-size: 24px; font-weight: 400; margin: 0; ">&nbsp; </h2> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"center" bgcolor=3D"#ffffff" style=3D"padding: 20px 30=
+px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: =
+'Lato', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 400; li=
+ne-height: 25px; "><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> =
+<br /> &nbsp; <p class=3D"unsubscribe"><span style=3D"text-decoration: none=
+; ">To modify your subscription choices,</span><a href=3D"http://www.ohmy-ace.info/couples-bookcases/Fc64m2395W8hQ612D47t31O10fbH36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQYdSn96Q10YVR5vkOwD" style=3D"text-decoration-lin=
+e: none; color:"> <span>Go_Here </span> </a><br /> 126 E 23rd St New Y=
+ork, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span></span><span color="drawback"></span><span title="earned"></span><big><small></small></big><style dir="paraboloid"></style><span><small></small><style></span></style></p>=
+ </td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+    <tr>=20
+     <td align=3D"center" bgcolor=3D"#f4f4f4" style=3D"padding: 30px 10px 0=
+px 10px; ">=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"max-width: 600px; " width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center" bgcolor=3D"#F4F4F4" style=3D"padding: 30px 30=
+px 30px 30px; border-radius: 4px 4px 4px 4px; color: #F4F4F4; font-family: =
+'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; li=
+ne-height: 25px; "> <h2 style=3D"font-size: 20px; font-weight: 400; color: =
+#111111; margin: 0; ">&nbsp; </h2> <p style=3D"margin: 0; ">&nbsp; </p> </t=
+d>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+    <tr>=20
+     <td align=3D"center" bgcolor=3D"#FFFFFF" style=3D"padding: 0px 10px 0p=
+x 10px; ">=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"max-width: 600px; " width=3D"100%">
+       <!-- NAVIGATION -->=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center" bgcolor=3D"#FFFFFF" style=3D"padding: 30px 30=
+px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-s=
+erif; font-size: 12px; font-weight: 400; line-height: 18px; ">&nbsp; </td>=
+=20
+        </tr>=20
+        <!-- PERMISSION REMINDER -->=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#FFFFFF" style=3D"padding: 0px 30px =
+30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
+f; font-size: 14px; font-weight: 400; line-height: 18px; "> <p style=3D"mar=
+gin: 0; ">&nbsp; </p> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#FFFFFF" style=3D"padding: 0px 30px =
+30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
+f; font-size: 14px; font-weight: 400; line-height: 18px; "> <p style=3D"mar=
+gin: 0; ">&nbsp; </p> </td>=20
+        </tr>=20
+        <!-- ADDRESS -->=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#FFFFFF" style=3D"padding: 0px 30px =
+30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-seri=
+f; font-size: 14px; font-weight: 400; line-height: 18px; "> <p style=3D"mar=
+gin: 0; ">&nbsp; </p> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+   </tbody>=20
+  </table>  =20
+ <img src=3D"http://www.ohmy-ace.info/6835tl2395KuB8512G473Z3O10fbT36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQYdSn96lUF1K06HJywD2/antisemitic-reselecting" alt=3D""/></body>
 </html>
 
-------=_Part_64_1111427299.1674075728196--
+------=_Part_772_1145647744.1674078844091--
 
