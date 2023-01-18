@@ -2,90 +2,93 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F2E6671F29
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 15:15:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 51B43672051
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 15:55:53 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B581710E752;
-	Wed, 18 Jan 2023 14:15:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8217D10E761;
+	Wed, 18 Jan 2023 14:55:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
  [148.163.158.5])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 07A3610E101;
- Wed, 18 Jan 2023 14:15:42 +0000 (UTC)
-Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3148B10E6F6;
+ Wed, 18 Jan 2023 14:55:48 +0000 (UTC)
+Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
  by mx0b-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 30IEEltD013534; Wed, 18 Jan 2023 14:15:37 GMT
+ 30IDKcQY027120; Wed, 18 Jan 2023 14:55:44 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
  h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=zNgauiiPSZAOPqccmEqKSs5PwauFDdxol+5ou+GSZXE=;
- b=UkS7CrSVtLatXqAjcrxnFJV9KKhc6wRKKds+JOamAtvMtICaxURVsjRa4Qe6ct2yusqe
- xynY3SpqA7xzI67LUeKJVzoVaIfiO9oJZ2Cg6KsSzl0r/Qia62iOAFQdaZuGLHfOieyB
- ovNEIHaAQewlWkSTUxkjgsjwRYtlcGIqHT5aBToZEkjxTGlDBIRmbq0jdaMOhW9IEPgr
- UdVE5SF9UJxJs7LtfNw9UofXHTpr8FlnrvuBrvlH6/cmTLFXg7NHG/P9kTpATl8jVXsm
- hCrOSyuWmzENzsVh41fgvhkvJOih3wDwPM5qEcv7m/py/f9HFFYG43D4UiwKphHCOFo2 WA== 
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=/asgtMy/qhWFY2TxHCd85ee3a9Lem+Noi/OHiwyhihU=;
+ b=OdH3NOykV8G0o/SZKaiUxLOSFcaNT5x//YXBz32ZNiOA3blUq1AgBdH6vwSEs8zHW+BD
+ 4kk1YfzfS4M+LF0aXhEf4t1xY00kdiWBgVPMB/elluMSnc7VsC/oXLwiYyROgzBlJpb7
+ QgcHERvG/utRVZhIJ1/9hEUAiGlDUyg02XEZF6WA/9jAw+UXBz5c1MknacGlBoxBF8BP
+ +gwUYCgPwFFfdCVlyiARmTeGFgcnVhYdCd9eQxc6kjUUJOWGHZc/qYADvQ6rHYrG0wFJ
+ dAkycZVl1Sgb3rQ92R5dRDwZB61VQNZoyuN6hxfUHwuPXeR7s/ZbLWtD43opjt/7/bvf qQ== 
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3n6jby80d2-1
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3n6f91wtvx-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 18 Jan 2023 14:15:37 +0000
-Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 30IEFaV7016694;
- Wed, 18 Jan 2023 14:15:36 GMT
-Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
- [169.53.41.122])
- by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3n6jby80cu-1
+ Wed, 18 Jan 2023 14:55:44 +0000
+Received: from m0098416.ppops.net (m0098416.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 30IE0Tbh022576;
+ Wed, 18 Jan 2023 14:55:43 GMT
+Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.10])
+ by mx0b-001b2d01.pphosted.com (PPS) with ESMTPS id 3n6f91wtvp-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 18 Jan 2023 14:15:36 +0000
-Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
- by ppma04dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 30ICLspE025481;
- Wed, 18 Jan 2023 14:15:36 GMT
-Received: from smtprelay05.dal12v.mail.ibm.com ([9.208.130.101])
- by ppma04dal.us.ibm.com (PPS) with ESMTPS id 3n3m17wksp-1
+ Wed, 18 Jan 2023 14:55:43 +0000
+Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
+ by ppma02dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 30ICc6Ua005708;
+ Wed, 18 Jan 2023 14:55:42 GMT
+Received: from smtprelay07.dal12v.mail.ibm.com ([9.208.130.99])
+ by ppma02dal.us.ibm.com (PPS) with ESMTPS id 3n3m17nrtm-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 18 Jan 2023 14:15:36 +0000
+ Wed, 18 Jan 2023 14:55:42 +0000
 Received: from smtpav03.dal12v.mail.ibm.com (smtpav03.dal12v.mail.ibm.com
  [10.241.53.102])
- by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 30IEFYXM59441642
+ by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 30IEtfje29622842
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 18 Jan 2023 14:15:34 GMT
+ Wed, 18 Jan 2023 14:55:41 GMT
 Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id ADEA05805A;
- Wed, 18 Jan 2023 14:15:34 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 2463D58056;
+ Wed, 18 Jan 2023 14:55:41 +0000 (GMT)
 Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 356505803F;
- Wed, 18 Jan 2023 14:15:33 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 9D2485803F;
+ Wed, 18 Jan 2023 14:55:39 +0000 (GMT)
 Received: from [9.60.89.243] (unknown [9.60.89.243])
  by smtpav03.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Wed, 18 Jan 2023 14:15:33 +0000 (GMT)
-Message-ID: <40a2c8c9-819f-b30e-e151-2ea224961a57@linux.ibm.com>
-Date: Wed, 18 Jan 2023 09:15:32 -0500
-MIME-Version: 1.0
+ Wed, 18 Jan 2023 14:55:39 +0000 (GMT)
+Message-ID: <b5a7efc9-7cfa-3314-fe36-b8da4a25265d@linux.ibm.com>
+Date: Wed, 18 Jan 2023 09:55:39 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.6.0
 Subject: Re: [PATCH v4] vfio: fix potential deadlock on vfio group lock
-To: Alex Williamson <alex.williamson@redhat.com>
+Content-Language: en-US
+To: "Tian, Kevin" <kevin.tian@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>
 References: <20230114000351.115444-1-mjrosato@linux.ibm.com>
  <20230117142252.70cc85c7.alex.williamson@redhat.com>
-Content-Language: en-US
+ <BN9PR11MB52763D861C254248FD33F65C8CC79@BN9PR11MB5276.namprd11.prod.outlook.com>
 From: Matthew Rosato <mjrosato@linux.ibm.com>
-In-Reply-To: <20230117142252.70cc85c7.alex.williamson@redhat.com>
+In-Reply-To: <BN9PR11MB52763D861C254248FD33F65C8CC79@BN9PR11MB5276.namprd11.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: rhYa3TPlqZKdPTjFC1c-e4g2VLiRQ4gO
-X-Proofpoint-GUID: 1QCP2Bx7hgwGUlReO2Gu_589xvkUUhiw
+X-Proofpoint-GUID: TfmjtY4Qpflu2Wdc05rgEibVTFbw_JpY
+X-Proofpoint-ORIG-GUID: 1ul9rd7a7oGMvAucLJJS3iFU0CRQHuJl
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+MIME-Version: 1.0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.219,Aquarius:18.0.923,Hydra:6.0.562,FMLib:17.11.122.1
  definitions=2023-01-18_05,2023-01-18_01,2022-06-22_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- suspectscore=0 mlxscore=0 bulkscore=0 adultscore=0 lowpriorityscore=0
- phishscore=0 mlxlogscore=999 spamscore=0 clxscore=1015 priorityscore=1501
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2301180121
+ suspectscore=0 phishscore=0
+ adultscore=0 clxscore=1015 impostorscore=0 malwarescore=0 mlxlogscore=999
+ bulkscore=0 spamscore=0 priorityscore=1501 lowpriorityscore=0 mlxscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
+ definitions=main-2301180124
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,124 +101,84 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: akrowiak@linux.ibm.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
- imbrenda@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
- david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- pasic@linux.ibm.com, jgg@nvidia.com, kvm@vger.kernel.org, pbonzini@redhat.com,
- linux-s390@vger.kernel.org, borntraeger@linux.ibm.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+ "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 1/17/23 4:22 PM, Alex Williamson wrote:
-> On Fri, 13 Jan 2023 19:03:51 -0500
-> Matthew Rosato <mjrosato@linux.ibm.com> wrote:
+On 1/18/23 4:03 AM, Tian, Kevin wrote:
+>> From: Alex Williamson
+>> Sent: Wednesday, January 18, 2023 5:23 AM
+>>
+>> On Fri, 13 Jan 2023 19:03:51 -0500
+>> Matthew Rosato <mjrosato@linux.ibm.com> wrote:
+>>
+>>>  void vfio_device_group_close(struct vfio_device *device)
+>>>  {
+>>> +	void (*put_kvm)(struct kvm *kvm);
+>>> +	struct kvm *kvm;
+>>> +
+>>>  	mutex_lock(&device->group->group_lock);
+>>> +	kvm = device->kvm;
+>>> +	put_kvm = device->put_kvm;
+>>>  	vfio_device_close(device, device->group->iommufd);
+>>> +	if (kvm == device->kvm)
+>>> +		kvm = NULL;
+>>
+>> Hmm, so we're using whether the device->kvm pointer gets cleared in
+>> last_close to detect whether we should put the kvm reference.  That's a
+>> bit obscure.  Our get and put is also asymmetric.
+>>
+>> Did we decide that we couldn't do this via a schedule_work() from the
+>> last_close function, ie. implementing our own version of an async put?
+>> It seems like that potentially has a cleaner implementation, symmetric
+>> call points, handling all the storing and clearing of kvm related
+>> pointers within the get/put wrappers, passing only a vfio_device to the
+>> put wrapper, using the "vfio_device_" prefix for both.  Potentially
+>> we'd just want an unconditional flush outside of lock here for
+>> deterministic release.
+>>
+>> What's the downside?  Thanks,
+>>
 > 
->> Currently it is possible that the final put of a KVM reference comes from
->> vfio during its device close operation.  This occurs while the vfio group
->> lock is held; however, if the vfio device is still in the kvm device list,
->> then the following call chain could result in a deadlock:
->>
->> kvm_put_kvm
->>  -> kvm_destroy_vm
->>   -> kvm_destroy_devices
->>    -> kvm_vfio_destroy
->>     -> kvm_vfio_file_set_kvm
->>      -> vfio_file_set_kvm
->>       -> group->group_lock/group_rwsem  
->>
->> Avoid this scenario by having vfio core code acquire a KVM reference
->> the first time a device is opened and hold that reference until right
->> after the group lock is released after the last device is closed.
->>
->> Fixes: 421cfe6596f6 ("vfio: remove VFIO_GROUP_NOTIFY_SET_KVM")
->> Reported-by: Alex Williamson <alex.williamson@redhat.com>
->> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
->> ---
->> Changes from v3:
->> * Can't check for open_count after the group lock has been dropped because
->>   it would be possible for the count to change again once the group lock
->>   is dropped (Jason)
->>   Solve this by stashing a copy of the kvm and put_kvm while the group
->>   lock is held, nullifying the device copies of these in device_close()
->>   as soon as the open_count reaches 0, and then checking to see if the
->>   device->kvm changed before dropping the group lock.  If it changed
->>   during close, we can drop the reference using the stashed kvm and put
->>   function after dropping the group lock.
->>
->> Changes from v2:
->> * Re-arrange vfio_kvm_set_kvm_safe error path to still trigger
->>   device_open with device->kvm=NULL (Alex)
->> * get device->dev_set->lock when checking device->open_count (Alex)
->> * but don't hold it over the kvm_put_kvm (Jason)
->> * get kvm_put symbol upfront and stash it in device until close (Jason)
->> * check CONFIG_HAVE_KVM to avoid build errors on architectures without
->>   KVM support
->>
->> Changes from v1:
->> * Re-write using symbol get logic to get kvm ref during first device
->>   open, release the ref during device fd close after group lock is
->>   released
->> * Drop kvm get/put changes to drivers; now that vfio core holds a
->>   kvm ref until sometime after the device_close op is called, it
->>   should be fine for drivers to get and put their own references to it.
->> ---
->>  drivers/vfio/group.c     | 23 +++++++++++++--
->>  drivers/vfio/vfio.h      |  9 ++++++
->>  drivers/vfio/vfio_main.c | 61 +++++++++++++++++++++++++++++++++++++---
->>  include/linux/vfio.h     |  2 +-
->>  4 files changed, 87 insertions(+), 8 deletions(-)
->>
->> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
->> index bb24b2f0271e..b396c17d7390 100644
->> --- a/drivers/vfio/group.c
->> +++ b/drivers/vfio/group.c
->> @@ -165,9 +165,9 @@ static int vfio_device_group_open(struct vfio_device *device)
->>  	}
->>  
->>  	/*
->> -	 * Here we pass the KVM pointer with the group under the lock.  If the
->> -	 * device driver will use it, it must obtain a reference and release it
->> -	 * during close_device.
->> +	 * Here we pass the KVM pointer with the group under the lock.  A
->> +	 * reference will be obtained the first time the device is opened and
->> +	 * will be held until the open_count reaches 0.
->>  	 */
->>  	ret = vfio_device_open(device, device->group->iommufd,
->>  			       device->group->kvm);
->> @@ -179,9 +179,26 @@ static int vfio_device_group_open(struct vfio_device *device)
->>  
->>  void vfio_device_group_close(struct vfio_device *device)
->>  {
->> +	void (*put_kvm)(struct kvm *kvm);
->> +	struct kvm *kvm;
->> +
->>  	mutex_lock(&device->group->group_lock);
->> +	kvm = device->kvm;
->> +	put_kvm = device->put_kvm;
->>  	vfio_device_close(device, device->group->iommufd);
->> +	if (kvm == device->kvm)
->> +		kvm = NULL;
+> btw I guess this can be also fixed by Yi's work here:
 > 
-> Hmm, so we're using whether the device->kvm pointer gets cleared in
-> last_close to detect whether we should put the kvm reference.  That's a
-> bit obscure.  Our get and put is also asymmetric.
+> https://lore.kernel.org/kvm/20230117134942.101112-6-yi.l.liu@intel.com/
 > 
-> Did we decide that we couldn't do this via a schedule_work() from the
-> last_close function, ie. implementing our own version of an async put?
-> It seems like that potentially has a cleaner implementation, symmetric
-> call points, handling all the storing and clearing of kvm related
-> pointers within the get/put wrappers, passing only a vfio_device to the
-> put wrapper, using the "vfio_device_" prefix for both.  Potentially
-> we'd just want an unconditional flush outside of lock here for
-> deterministic release.
-> 
-> What's the downside?  Thanks,
-> 
+> with set_kvm(NULL) moved to the release callback of kvm_vfio device,
+> such circular lock dependency can be avoided too.
 
+Oh, interesting...  It seems to me that this would eliminate the reported call chain altogether:
 
-I did mention something like this as a possibility when discussing v3..  It's doable, the main issue with doing schedule_work() of an async put is that we can't actually use the device->kvm / device->put_kvm values during the scheduled work task as they become unreliable once we drop the group lock -- e.g. schedule_work() some put call while under the group lock, drop the group lock and then another thread gets the group lock and does a new open_device() before that async put task fires; device->kvm and (less likely) put_kvm might have changed in between.
+kvm_put_kvm
+ -> kvm_destroy_vm
+  -> kvm_destroy_devices
+   -> kvm_vfio_destroy (starting here -- this would no longer be executed)
+    -> kvm_vfio_file_set_kvm
+     -> vfio_file_set_kvm
+      -> group->group_lock/group_rwsem
 
-I think in that case we would need to stash the kvm and put_kvm values in some secondary structure to be processed off a queue by the schedule_work task (an example of what I mean would be bio_dirty_list in block/bio.c).  Very unlikely that this queue would ever have more than 1 element in it.
+because kvm_destroy_devices now can't end up calling kvm_vfio_destroy and friends, it won't try and acquire the group lock a 2nd time making a kvm_put_kvm while the group lock is held OK to do.  The vfio_file_set_kvm call will now always come from a separate thread of execution, kvm_vfio_group_add, kvm_vfio_group_del or the release thread:
 
+kvm_device_release (where the group->group_lock would not be held since vfio does not trigger closing of the kvm fd)
+ -> kvm_vfio_destroy (or, kvm_vfio_release)
+  -> kvm_vfio_file_set_kvm
+   -> vfio_file_set_kvm
+    -> group->group_lock/group_rwsem
