@@ -1,43 +1,144 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 785636712C6
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 05:48:32 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF2DC6716F4
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 10:03:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 276B010E677;
-	Wed, 18 Jan 2023 04:48:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B530110E6AF;
+	Wed, 18 Jan 2023 09:03:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2BEC810E046;
- Wed, 18 Jan 2023 04:48:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
- t=1674017295; bh=CrkLUeMtrNdwnxo7dSQaVwIRujSfMbGdt5IVuAFQz3k=;
- h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
- MIME-Version:Content-Type:In-Reply-To;
- b=DrUYygIy8N0vpXuxg5PaiBxDOdSmFRoXgm3FAnIuReaTrFLWDpDYq9pAtZHcwLkPR
- e/rWsAqZ1JT+sLxgQ7bBgx6yu7l36GrfPy1JEEXuHRrxFFYimGFFs508YtEmHzVyYm
- AaNGoO6EVCVifJK3yz9ZTHy2z1VThMG8BXsANbgI=
-Received: by b-4.in.mailobj.net [192.168.90.14] with ESMTP
- via ip-206.mailobj.net [213.182.55.206]
- Wed, 18 Jan 2023 05:48:15 +0100 (CET)
-X-EA-Auth: 0H2RaE5We5J7qEl4sTPdiDLLdShReSlIjm3JvD6yCBtdwCoUmnZ1e4mcFnjvlIWsg/cpckZCiDWRzndLuqYvZuXD0zsTIdt6
-Date: Wed, 18 Jan 2023 10:18:11 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Rodrigo Vivi <rodrigo.vivi@intel.com>
-Subject: Re: [Intel-gfx] [PATCH 2/2] drm/i915/gvt: Avoid full proxy f_ops for
- vgpu_status debug attributes
-Message-ID: <Y8d6CwD3dHLKOUZ5@ubun2204.myguest.virtualbox.org>
-References: <cover.1673375066.git.drv@mailo.com>
- <188df08e0feba0cda2c92145f513dd4e57c6e6cf.1673375066.git.drv@mailo.com>
- <Y72zVXYLVHXuyK05@intel.com>
- <Y8TkTi+/GQwhiMvO@zhen-hp.sh.intel.com>
- <Y8b3IRhx976Ke99X@intel.com>
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AD11D10E6AF;
+ Wed, 18 Jan 2023 09:03:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674032626; x=1705568626;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=+DqGMM7FK//HvRCeoew/HBwRh/IgD+YzFPi1adu/6ls=;
+ b=dMTchO8rNEjNTM4WNfSbpjFrOA7lHkxh7eO3SSpOvvRV3qy3nhXxGSpA
+ ChfeDSf4+VPfpjpPWvrZ6tgzc9FQEMDfuJ6GpLV8mzJwai23qtA42/Uqu
+ gSilWXZrrsGEp3Ez/kFHA78sBeg84M0n6dv0Wks3ecvbyYdEe5kmqyylF
+ pnmS2PINWP6ZdEu1AcnEO8Cepdqu0q2AJXbVMigoQrv8+QjbG0O88ljwt
+ i8K8ZjH7HqGJjK09HRPYpPakbFJ6/N7dZruEP1BKq9I6qyQP7xKXqgj/6
+ fOj1j9mboWFO+1wsXXGhRJXurY311e34N8PuXcVsYDT3KggYD4I4g43XU A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="387286550"
+X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; d="scan'208";a="387286550"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jan 2023 01:03:45 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10593"; a="690106625"
+X-IronPort-AV: E=Sophos;i="5.97,224,1669104000"; d="scan'208";a="690106625"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga008.jf.intel.com with ESMTP; 18 Jan 2023 01:03:34 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Wed, 18 Jan 2023 01:03:33 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Wed, 18 Jan 2023 01:03:33 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Wed, 18 Jan 2023 01:03:33 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.106)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Wed, 18 Jan 2023 01:03:33 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Azx+2PrIG9D6biwx+1q038lcfib3sJJFLTYfHiXSSZJaNE6czjvGU0NCoP+ENEx4fzwR+BXclU0Xf2XKJr8NoF4FdRYU8+hOP/6POnGgacAd87isqTJzMBMHM13gquZo+Bk78xl8bsEu3cMrX+TR3MgozyuDZ9rtVA7g33w6sewes0G5UpzhR1WFB3O7QNLl7IvwDg3V+Ii8GuuJ22fmqY73RH5R+G8umeC9ZnZ480uM5ri44pzevDONvMjWcO9czJ8wudzG+47OEqRs0jO0TxZMpr4DBxlki32NrwJok6AO5yDqUHMJxqOyveS7U4bMfnJAwDwylfd4cgeYipB0Yw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ohEwB7gkjQkf0KTJ9KuC1Y8F2yCy5MX2wGjQgKc15mk=;
+ b=YilDPRfNiS9gIVlptirnzZyWkAgYn0PTxzAowZjw4fHd/wWhgjzLDMpsOQAOQRES4D8iMs5AYJLwMe5llj8ujFfaHI0EaVOePtVrQtn3IHhs+YnsD6BcdcxSZIupqNYjfjyPDThdGIzY5tghhF31DGtpGiFu8amz8w3Y3qIADbaHUb/ks5vh317P4tiraHfD+oZcFNiFerF/JGI4XC4Mg8Wm37S2OB9x0eqFdGOSe2zoT7QI7o7gzDzPWgpWEL6Z4yYK9TjM+ocy1nSBJoC2Q9RZgHJ1GEPaUZ0eSiNgKqWT8APgskJSNVW/NyOtAzi5nDXV/c+qZX5HRpOBztenIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by SJ0PR11MB4831.namprd11.prod.outlook.com (2603:10b6:a03:2d2::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.24; Wed, 18 Jan
+ 2023 09:03:30 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d%9]) with mapi id 15.20.5986.023; Wed, 18 Jan 2023
+ 09:03:30 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>
+Subject: RE: [PATCH v4] vfio: fix potential deadlock on vfio group lock
+Thread-Topic: [PATCH v4] vfio: fix potential deadlock on vfio group lock
+Thread-Index: AQHZJ6vANRoQ9x2rxUaXBLM6X5ngE66jJF8AgADCPMA=
+Date: Wed, 18 Jan 2023 09:03:30 +0000
+Message-ID: <BN9PR11MB52763D861C254248FD33F65C8CC79@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230114000351.115444-1-mjrosato@linux.ibm.com>
+ <20230117142252.70cc85c7.alex.williamson@redhat.com>
+In-Reply-To: <20230117142252.70cc85c7.alex.williamson@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SJ0PR11MB4831:EE_
+x-ms-office365-filtering-correlation-id: c6fbaf06-41dd-45cc-1238-08daf932de9e
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ViDXmfTXbharyN9okBC8Mo+J2583UO5favjJLkfEudBvya5LZaqmJ88kVgMPTEuWRptmFww2W+AoBpVQhQzxv0OP/hLi7kbjbD9jpDGzcToFbmVu+ZahsaoaCFAuyh79n/DSevDQUaHU3RPfagw2nxBcbZ0y9h2LtNAZa8JI5wrB1pvBWkHos7v3Xhcf3jX4n0Ydh6hIGRxBDN1F5et1ve2dUx6aZKGWZ+Q8iYqpz+wTUgjZIkGhZ+JhGrcCU8J3bNWKlA4SdZ6IyxB7yG206Ay1RB6T8JhnHK7WHh8FTK/n+Bnxideu64IPQ1cdvkcGLGvE/wg/rz9YMzaHosMUYGc4cKgHqGg3v03kfCJC8Tz8jmucHDend5OEDGfRhpG78f//gZ4USP7nKm4oc47GLktos/hRLcoRF8n1CdLSNnxKCIcg919n6IFKGT108zIxgZ8qrkKY/OgJhnxuFhnLfzbAN5oW4vrRETQAf48zJ+aRyEz+hA0cEcs6be19zyiEEs89+MaEzNnmnSFWyD4bvx3Js64QdAieSAXabyhFmh8TDCc5EdM1iHaUwRD+5jaWqPAh+yqQrWCK1BHT17cWij9ODXJOJf6uWubNjp+9skbZAGsbj4gFeJxWwk812qLKIaaBc9mkLjUeZ6pmK4Ke74c/dKUDHzi8OOwHwQnJjNPrt8MB1m9h+S/gtiucnIRaeB5KChNQQn1ZQoxCY06Ct0KaGKyfy78lBvf34845ryM=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(376002)(136003)(39860400002)(396003)(346002)(366004)(451199015)(38070700005)(33656002)(86362001)(2906002)(7416002)(52536014)(66556008)(55016003)(66476007)(76116006)(66946007)(8936002)(5660300002)(82960400001)(122000001)(38100700002)(316002)(71200400001)(7696005)(54906003)(110136005)(966005)(6506007)(478600001)(41300700001)(8676002)(66446008)(64756008)(4326008)(186003)(26005)(83380400001)(9686003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?w16QGxzuI6P3GQ9yGqXexPojEepje9l3Q5puR+NO9Z6cU9OgVEkE3R/GDA4B?=
+ =?us-ascii?Q?lVp7FXyyYILcsd8p5QW3tq4xEKXISRMrVsBAYTYhmVImyrP55W5TVPSbUos6?=
+ =?us-ascii?Q?Pr3NqQYeRqW4Ye3D2YpolsdnVaIe1lHk0PoB4sa5Zx3200Mlmc+2WJYSnPl8?=
+ =?us-ascii?Q?JXpBaIhd2Uykw+Xk1kHIp7MsC6mHAl8XzzjP+P5MRc5YozuqWGlsRhtdmIcg?=
+ =?us-ascii?Q?8fSbmwtXniZ34jB03Q899mBqNeDYMQWFsJGs2s1TwtRPXf2IweMlhmuZr1E9?=
+ =?us-ascii?Q?h4mVUPCJLvEc9IH0EsbOGmLz54Lo99id2MSddWXKO0NMxT8xp6SmrB5DLFDJ?=
+ =?us-ascii?Q?8e3di8mbMheIgWeA6frevWtGBSoExi1KzYDEQ/meyqexldpC0e4QNG1KcveZ?=
+ =?us-ascii?Q?mXzVIpAL9+SlHSEp+ja9Y7iRPwzHrnE3mGoQx71gTC/5K0kyPb2J2fOdKOTr?=
+ =?us-ascii?Q?8UaMUpUPIBsHT2IZlKXgL9c3Bhpogh7dZyQRPdGAkqfu0ct0kzDj/fVMovoD?=
+ =?us-ascii?Q?rI7+HdSQW+kRLkwjFVUtD3lkRSh70wHU3aA7l23sLwCCCnTmf8rF8qW/iV4z?=
+ =?us-ascii?Q?+2V25MsH6aM10l82TuLowsXwH3MvIYTcUwHjXqF9PjjijSPi151NM31C6Ash?=
+ =?us-ascii?Q?mXEqVjDrBEm6VYXvBwkasPQqpUWo18YpBIighi7x/qdyJqw+O+hCANq412v7?=
+ =?us-ascii?Q?n5T0gSpuMsBClRnvrHPUJ6g87RZTj5nuY69Xsu2/Mtu/l3rvISRHoODXMq1A?=
+ =?us-ascii?Q?1/gzv3pl8FiGYTB7kyoODPDpTgxMNWOuMqjCBlNXTU4W1Rx7vQlCkuna+kJH?=
+ =?us-ascii?Q?qACk91TgYbdD82k7WKqy1L+6s7Vj7KANQzLKh6Wdbsx7whp92V9rLPsk1giS?=
+ =?us-ascii?Q?4zmwTFd/juas91SVIOtYDgu3k/bqDfxj2q0w7C12VI0VtC2UqFdyDxdmPGlT?=
+ =?us-ascii?Q?q6o/AzKocqHxcMjljh3DpvMcvE4T6Wk0SHVwAaf92XbqmDKnr8hC36K5eVNQ?=
+ =?us-ascii?Q?I9Y06OLB39htpA7VbrKZzKGb5OJiTkpFPLFe7dTlpXAmRttzliUZ1In7KkCp?=
+ =?us-ascii?Q?gQODpVvgAPqe/1xv+kV8EpUaLKLsxsiNUTUtjm8j39vYwLcWGSkTDWQKu0nG?=
+ =?us-ascii?Q?91mt6P1k//3004O2JN1HSQwiC9QPCbm1iaQkfxX+4QSFZirIntNVfMxmXhgq?=
+ =?us-ascii?Q?6CKvx53Xh9GncqrAOBTFOkKcLIYbO0fdMIatcM2RBaASgv6/sZgqy+LEui17?=
+ =?us-ascii?Q?+c1LA0LzMNIrB7tcXs5Yi2uZEc9qSFe9RWuVWG7+bWxbcZZ50rtMhTlV/1Tx?=
+ =?us-ascii?Q?6pzeGxiG7zB3T4eHCLWeql8gPfo2sEdugyB1HUU+Tj3xrGyaPUmGH6Z8E80T?=
+ =?us-ascii?Q?cXjzGs3WhT9ZAlFeRGXrGyxYZ5bVFIE7D367D80ZTcj69dLwLurkz3/E022Z?=
+ =?us-ascii?Q?qDmJHZr7u0HOGkPBTDix7Jkdkr/jKoWroUGAJLLFvYkKjoImtYLlpfa/ziKc?=
+ =?us-ascii?Q?6zsj78Riq8MGq3Eh4s1OxeedxGe0o5IQIMS/63TndVuopMNwGqpbEYJa56s1?=
+ =?us-ascii?Q?D3OOv2Kjxb/6RC0CEeikAGzY7qAXhwsEEEtFOGeR?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y8b3IRhx976Ke99X@intel.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c6fbaf06-41dd-45cc-1238-08daf932de9e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Jan 2023 09:03:30.4772 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: elifOfvBBwlgjVVY5I6EnPM0MjpHo6XHlBTiujoXoI2Z23M9biv45Ubh8gQqGDxMiPECbeqkKzcOCSAuJWrJug==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB4831
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,99 +151,65 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Praveen Kumar <kumarpraveen@linux.microsoft.com>,
- David Airlie <airlied@gmail.com>, intel-gfx@lists.freedesktop.org,
- Saurabh Singh Sengar <ssengar@microsoft.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Daniel Vetter <daniel@ffwll.ch>, intel-gvt-dev@lists.freedesktop.org
+Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+ "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jan 17, 2023 at 02:29:37PM -0500, Rodrigo Vivi wrote:
-> On Mon, Jan 16, 2023 at 01:44:46PM +0800, Zhenyu Wang wrote:
-> > On 2023.01.10 13:49:57 -0500, Rodrigo Vivi wrote:
-> > > On Wed, Jan 11, 2023 at 12:00:12AM +0530, Deepak R Varma wrote:
-> > > > Using DEFINE_SIMPLE_ATTRIBUTE macro with the debugfs_create_file()
-> > > > function adds the overhead of introducing a proxy file operation
-> > > > functions to wrap the original read/write inside file removal protection
-> > > > functions. This adds significant overhead in terms of introducing and
-> > > > managing the proxy factory file operations structure and function
-> > > > wrapping at runtime.
-> > > > As a replacement, a combination of DEFINE_DEBUGFS_ATTRIBUTE macro paired
-> > > > with debugfs_create_file_unsafe() is suggested to be used instead.  The
-> > > > DEFINE_DEBUGFS_ATTRIBUTE utilises debugfs_file_get() and
-> > > > debugfs_file_put() wrappers to protect the original read and write
-> > > > function calls for the debug attributes. There is no need for any
-> > > > runtime proxy file operations to be managed by the debugfs core.
-> > > > Following coccicheck make command helped identify this change:
-> > > > 
-> > > > make coccicheck M=drivers/gpu/drm/i915/ MODE=patch COCCI=./scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
-> > > > 
-> > > > Signed-off-by: Deepak R Varma <drv@mailo.com>
-> > > 
-> > > I believe these 2 gvt cases could be done in one patch.
-> > > But anyways,
-> > > 
-> > > Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
-> > > 
-> > > for both patches... and will leave these 2 patches for gvt folks
-> > > to apply. Unless they ack and I apply in the drm-intel along with the other ones.
-> > >
-> > 
-> > yeah, they're fine with me, feel free to apply them directly.
-> > 
-> > Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-> 
-> Unfortunately I got some conflicts when trying to apply on drm-intel-next.
-> 
-> We probably need a new version, and probably through gvt branches it
-> will be easier to handle conflicts if they appear.
+> From: Alex Williamson
+> Sent: Wednesday, January 18, 2023 5:23 AM
+>=20
+> On Fri, 13 Jan 2023 19:03:51 -0500
+> Matthew Rosato <mjrosato@linux.ibm.com> wrote:
+>=20
+> >  void vfio_device_group_close(struct vfio_device *device)
+> >  {
+> > +	void (*put_kvm)(struct kvm *kvm);
+> > +	struct kvm *kvm;
+> > +
+> >  	mutex_lock(&device->group->group_lock);
+> > +	kvm =3D device->kvm;
+> > +	put_kvm =3D device->put_kvm;
+> >  	vfio_device_close(device, device->group->iommufd);
+> > +	if (kvm =3D=3D device->kvm)
+> > +		kvm =3D NULL;
+>=20
+> Hmm, so we're using whether the device->kvm pointer gets cleared in
+> last_close to detect whether we should put the kvm reference.  That's a
+> bit obscure.  Our get and put is also asymmetric.
+>=20
+> Did we decide that we couldn't do this via a schedule_work() from the
+> last_close function, ie. implementing our own version of an async put?
+> It seems like that potentially has a cleaner implementation, symmetric
+> call points, handling all the storing and clearing of kvm related
+> pointers within the get/put wrappers, passing only a vfio_device to the
+> put wrapper, using the "vfio_device_" prefix for both.  Potentially
+> we'd just want an unconditional flush outside of lock here for
+> deterministic release.
+>=20
+> What's the downside?  Thanks,
+>=20
 
-Hello Rodrigo,
-Sure. I will send in a new version. I am current using linux-next git repo as my
-remote origin [tag 20230113]. Are there any specific instruction/location from
-where I should access the gvt branch?
+btw I guess this can be also fixed by Yi's work here:
 
-Thank you.
+https://lore.kernel.org/kvm/20230117134942.101112-6-yi.l.liu@intel.com/
 
-> 
-> > 
-> > thanks!
-> > 
-> > > > ---
-> > > >  drivers/gpu/drm/i915/gvt/debugfs.c | 6 +++---
-> > > >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
-> > > > index 03f081c3d9a4..baccbf1761b7 100644
-> > > > --- a/drivers/gpu/drm/i915/gvt/debugfs.c
-> > > > +++ b/drivers/gpu/drm/i915/gvt/debugfs.c
-> > > > @@ -165,7 +165,7 @@ static int vgpu_status_get(void *data, u64 *val)
-> > > >  	return 0;
-> > > >  }
-> > > >  
-> > > > -DEFINE_SIMPLE_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx\n");
-> > > > +DEFINE_DEBUGFS_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx\n");
-> > > >  
-> > > >  /**
-> > > >   * intel_gvt_debugfs_add_vgpu - register debugfs entries for a vGPU
-> > > > @@ -182,8 +182,8 @@ void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vgpu)
-> > > >  			    &vgpu_mmio_diff_fops);
-> > > >  	debugfs_create_file_unsafe("scan_nonprivbb", 0644, vgpu->debugfs, vgpu,
-> > > >  				   &vgpu_scan_nonprivbb_fops);
-> > > > -	debugfs_create_file("status", 0644, vgpu->debugfs, vgpu,
-> > > > -			    &vgpu_status_fops);
-> > > > +	debugfs_create_file_unsafe("status", 0644, vgpu->debugfs, vgpu,
-> > > > +				   &vgpu_status_fops);
-> > > >  }
-> > > >  
-> > > >  /**
-> > > > -- 
-> > > > 2.34.1
-> > > > 
-> > > > 
-> > > > 
-> 
-> 
-
-
+with set_kvm(NULL) moved to the release callback of kvm_vfio device,
+such circular lock dependency can be avoided too.
