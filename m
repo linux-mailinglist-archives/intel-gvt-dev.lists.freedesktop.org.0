@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6BF25672642
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 19:04:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 44F6867280A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 20:19:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1961A10E7F3;
-	Wed, 18 Jan 2023 18:04:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 156CE10E80A;
+	Wed, 18 Jan 2023 19:19:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Wed, 18 Jan 2023 18:04:39 UTC
-Received: from mail.ninja-khls.info (unknown [45.13.189.67])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1912510E7D1
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Wed, 18 Jan 2023 19:19:11 UTC
+Received: from mail.gro-ceriesup.info (unknown [45.13.189.69])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 39A5410E7FF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Jan 2023 18:04:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ninja-khls.info; 
+ Wed, 18 Jan 2023 19:19:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gro-ceriesup.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls.gift.selection@ninja-khls.info; 
- bh=kSbdjCf7IF5j9mUxcSQwuz5opOo=;
- b=jPq31ynpXRa1uujaaPIv0gDIscnkt4G/GmN7/oosjwEVTPyW68Tsrnm5+FqCQlou+zslREG1CyAR
- xEh6MWfutHhAQAhtKymkkPqM+LxUlWrMdMjbXYZxQOVWe5Q+SpQ/wBYeMzIhBWVJLAfr3jBkGpa7
- mpahWtsUEe4OsQuh3Bc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ninja-khls.info;
- b=ZOp7W7P8VB1tDTnAMQDN0T6rz60Jg26wYz7/iehPrDmSrUJ5HClxn4+ONA9aCiMu0tj0MTVZkUqP
- 395H8x90+zVY3e2X4c7tSq8XmIhA03qQJsSxmkSocQm5oNyYlxs5wKFfaC8CoyYpCQGTitjhfKoG
- DsXO9gVXTRG54aXvjq4=;
-Received: by mail.ninja-khls.info id hp0qbe0001g6 for
+ i=kroger_reward_program@gro-ceriesup.info; 
+ bh=JuEUGCvX3DfdyuwYzSHF+Lje/Qk=;
+ b=DFSHu+Qn8QsudllM4jbcR21aCo2p7ZIHSJsoM1TSrfFgH9kB9cpXl4Kr4dcGD4oz+vZWz4u45/Wk
+ 9Gom14ec9bKe02CVCF0txhQB1aHmRxS3ys2pkR6CW0JrVWrBvz24YvFpasgzgJpdkT714w0HLKM1
+ J4xibS3FjAIeo6Zdpng=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gro-ceriesup.info; 
+ b=vSNjDW6ghOTAX/MitzGdyOcyjr2vqwcqV8V9dds1TEq6BcTcqVwW8+qrXHmo8krNE7i7f/VwR8kJ
+ F3WMCe3FGPW3yYLV/PydQpupRn4G2yKiBcFLO4R1F/9cTsNeWoEAO438v8OacVjJiiD5poirQnd8
+ DqvAvNtKn8eqT8Q1HXY=;
+Received: by mail.gro-ceriesup.info id hp132u0001g7 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Jan 2023 12:53:05 -0500 (envelope-from
- <kohls.gift.selection-intel+2Dgvt+2Ddev=lists.freedesktop.org@ninja-khls.info>)
-Date: Wed, 18 Jan 2023 12:53:05 -0500
-From: "Kohls Gift Selection" <kohls.gift.selection@ninja-khls.info>
+ Wed, 18 Jan 2023 14:08:00 -0500 (envelope-from
+ <kroger_reward_program-intel+2Dgvt+2Ddev=lists.freedesktop.org@gro-ceriesup.info>)
+Date: Wed, 18 Jan 2023 14:08:00 -0500
+From: "Kroger Reward Program" <kroger_reward_program@gro-ceriesup.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every visit brings new rewards,
- including the chance to get anything on us for free
+Subject: Show appreciation for your loyalty with a gift on us.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_544_51927604.1674064347258"
-Message-ID: <0.0.0.3C.1D92B65B78A93F0.14BF21@mail.ninja-khls.info>
+ boundary="----=_Part_589_2077765952.1674068876624"
+Message-ID: <0.0.0.41.1D92B702EE5F926.24D423@mail.gro-ceriesup.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,983 +53,343 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_544_51927604.1674064347258
+------=_Part_589_2077765952.1674068876624
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
+  <title>X</title> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /> 
-  <meta name="x-apple-disable-message-reformatting" /> 
-  <meta content="telephone=no,address=no,email=no,date=no,url=no" name="format-detection" /> 
-  <title>Respmail is a response HTML email designed to work on all major email platforms and smartphones</title> 
-  <style type="text/css">html { background-color:#E1E1E1; margin:0; padding:0; }
-			body, #bodyTable, #bodyCell, #bodyCell{height:100% !important; margin:0; padding:0; width:100% !important;font-family:Helvetica, Arial, "Lucida Grande", sans-serif;}
-			table{border-collapse:collapse;}
-			table[id=bodyTable] {width:100%!important;margin:auto;max-width:500px!important;color:#7A7A7A;font-weight:normal;}
-			img, a img{border:0; outline:none; text-decoration:none;height:auto; line-height:100%;}
-			a {text-decoration:none !important;border-bottom: 1px solid;}
-			h1, h2, h3, h4, h5, h6{color:#5F5F5F; font-weight:normal; font-family:Helvetica; font-size:20px; line-height:125%; text-align:Left; letter-spacing:normal;margin-top:0;margin-right:0;margin-bottom:10px;margin-left:0;padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;}
+  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+  <style type="text/css">#outlook a {
+      padding: 0;
+    }
 
-			
-			.ReadMsgBody{width:100%;} .ExternalClass{width:100%;} 
-			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div{line-height:100%;} 
-			table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} 
-			img{-ms-interpolation-mode: bicubic;display:block;outline:none; text-decoration:none;} 
-			body, table, td, p, a, li, blockquote{-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; font-weight:normal!important;} 
-			.ExternalClass td[class="ecxflexibleContainerBox"] h3 {padding-top: 10px !important;} 
-			h1{display:block;font-size:26px;font-style:normal;font-weight:normal;line-height:100%;}
-			h2{display:block;font-size:20px;font-style:normal;font-weight:normal;line-height:120%;}
-			h3{display:block;font-size:17px;font-style:normal;font-weight:normal;line-height:110%;}
-			h4{display:block;font-size:18px;font-style:italic;font-weight:normal;line-height:100%;}
-			.flexibleImage{height:auto;}
-			.linkRemoveBorder{border-bottom:0 !important;}
-			table[class=flexibleContainerCellDivider] {padding-bottom:0 !important;padding-top:0 !important;}
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
 
-			body, #bodyTable{background-color:#E1E1E1;}
-			#emailHeader{background-color:#E1E1E1;}
-			#emailBody{background-color:#FFFFFF;}
-			#emailFooter{background-color:#E1E1E1;}
-			.nestedContainer{background-color:#F8F8F8; border:1px solid #CCCCCC;}
-			.emailButton{background-color:#205478; border-collapse:separate;}
-			.buttonContent{color:#FFFFFF; font-family:Helvetica; font-size:18px; font-weight:bold; line-height:100%; padding:15px; text-align:center;}
-			.buttonContent a{color:#FFFFFF; display:block; text-decoration:none!important; border:0!important;}
-			.emailCalendar{background-color:#FFFFFF; border:1px solid #CCCCCC;}
-			.emailCalendarMonth{background-color:#205478; color:#FFFFFF; font-family:Helvetica, Arial, sans-serif; font-size:16px; font-weight:bold; padding-top:10px; padding-bottom:10px; text-align:center;}
-			.emailCalendarDay{color:#205478; font-family:Helvetica, Arial, sans-serif; font-size:60px; font-weight:bold; line-height:100%; padding-top:20px; padding-bottom:20px; text-align:center;}
-			.imageContentText {margin-top: 10px;line-height:0;}
-			.imageContentText a {line-height:0;}
-			#invisibleIntroduction {display:none !important;} 
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
 
-			
-			span[class=ios-color-hack] a {color:#275100!important;text-decoration:none!important;}
-			span[class=ios-color-hack2] a {color:#205478!important;text-decoration:none!important;}
-			span[class=ios-color-hack3] a {color:#8B8B8B!important;text-decoration:none!important;}
-			
-			.a[href^="tel"], a[href^="sms"] {text-decoration:none!important;color:#606060!important;pointer-events:none!important;cursor:default!important;}
-			.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {text-decoration:none!important;color:#606060!important;pointer-events:auto!important;cursor:default!important;}
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
 
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+	</style> 
+  <link href="http://www.gro-ceriesup.info/b154L2395i86kA12XF471fn10f8V36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQvdSnm6F1S0Kg6D@wPDX/extremely-disagreements" rel="stylesheet" type="text/css" /> 
+  <style type="text/css">@import url(http://www.gro-ceriesup.info/b154L2395i86kA12XF471fn10f8V36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQvdSnm6F1S0Kg6D@wPDX/extremely-disagreements);
+	</style> 
+  <style type="text/css">@media only screen and (min-width:480px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+    }
+	</style> 
+  <style type="text/css">@media only screen and (max-width:480px) {
+      table.mj-full-width-mobile {
+        width: 100% !important;
+      }
 
-		
-			@media only screen and (max-width: 480px){
-				
-				body{width:100% !important; min-width:100% !important;} 
-				table[id="emailHeader"],
-				table[id="emailBody"],
-				table[id="emailFooter"],
-				table[class="flexibleContainer"],
-				td[class="flexibleContainerCell"] {width:100% !important;}
-				td[class="flexibleContainerBox"], td[class="flexibleContainerBox"] table {display: block;width: 100%;text-align: left;}
-				
-				td[class="imageContent"] img {height:auto !important; width:100% !important; max-width:100% !important; }
-				img[class="flexibleImage"]{height:auto !important; width:100% !important;max-width:100% !important;}
-				img[class="flexibleImageSmall"]{height:auto !important; width:auto !important;}
-
-
-				
-				table[class="flexibleContainerBoxNext"]{padding-top: 10px !important;}
-
-				
-				table[class="emailButton"]{width:100% !important;}
-				td[class="buttonContent"]{padding:0 !important;}
-				td[class="buttonContent"] a{padding:15px !important;}
-
-			}
-
-			
-			@media only screen and (-webkit-device-pixel-ratio:.75){
-				
-			}
-
-			@media only screen and (-webkit-device-pixel-ratio:1){
-				
-			}
-
-			@media only screen and (-webkit-device-pixel-ratio:1.5){
-				
-			
-			@media only screen and (min-device-width : 320px) and (max-device-width:568px) {
-
-			}
+      td.mj-full-width-mobile {
+        width: auto !important;
+      }
+    }
+	</style> 
+  <style type="text/css">a,
+    span,
+    td,
+    th {
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
 	</style> 
  </head> 
- <body bgcolor="#E1E1E1" leftmargin="0" marginheight="0" marginwidth="0" offset="0" topmargin="0"> 
-  <center aria-label="email name" aria-roledescription="email" dir="ltr" lang="en" role="article" style="background-color:#E1E1E1;"> 
-   <table border="0" cellpadding="0" cellspacing="0" height="100%" id="bodyTable" style="table-layout: fixed;max-width:100% !important;width: 100% !important;min-width: 100% !important;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" id="bodyCell" valign="top"> 
-       <table bgcolor="#E1E1E1" border="0" cellpadding="0" cellspacing="0" id="emailHeader" width="500"> 
-        <tbody> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="10" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500"> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" id="invisibleIntroduction" style="display:none !important; mso-hide:all;" valign="middle"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width:100%;" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent"> 
-                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-                            &nbsp;
-                           </div> </td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" valign="middle"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width:100%;" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent"> 
-                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#828282;text-align:center;line-height:120%;">
-                            &nbsp;
-                           </div> </td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" id="emailBody" width="500"> 
-        <tbody> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="color:#FFFFFF;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" class="textContent" valign="top"> <h1 style="color:#000000;line-height:100%;font-family:Helvetica,Arial,sans-serif;font-size:25px;font-weight:normal;margin-bottom:5px;text-align:center;">&nbsp;</h1> 
-                       <div style="display: inline;font-weight: bold">
-                        &nbsp;
-                       </div> <br /> <a href="http://www.ninja-khls.info/9e95g239V5pP86G11R471bm10f7F36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQWdSmK7kQv1DK06PP31wD/allusions-Smythe"><img alt="" src="http://www.ninja-khls.info/calcium-Bourbaki/d144M2395hZv7a11o471dm10f7r36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQWdSmK6g1OUj06ajN2wD" width="100%" /></a></td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr mc:hideable=""> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500"> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> 
-                       <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainerBoxNext" style="width: 100%; padding: 20px;line-height: 28px; font-size: 22px;color: #263175" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center" class="textContent"> 
-                           <div>
-                            Don't miss out! Just a few clicks away from a chance to win a $100 
-                            <strong>KOHL'S</strong> Card by completing our quick 20-second survey about your recent experience with us.                            </div> </td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr style="padding-top:0;"> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" style="padding-top:0;" valign="top" width="500"> 
-                   <table border="0" cellpadding="0" cellspacing="0" class="emailButton" style="background-color: #272526;" width="50%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" class="buttonContent" style="padding-top:15px;padding-bottom:15px;padding-right:15px;padding-left:15px;" valign="middle"><a href="http://www.ninja-khls.info/9e95g239V5pP86G11R471bm10f7F36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQWdSmK7kQv1DK06PP31wD/allusions-Smythe" style="color:#FFFFFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;font-size:20px;line-height:135%;" target="_blank">Go And Start Now</a></td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table bgcolor="#F8F8F8" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="text-align: center; font-size: 13px;" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td class="textContent" valign="top">Your input is important to us and will help us improve our stores and the products and services we offer</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500"> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" valign="middle"> 
-                       <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainerBoxNext" style="max-width: 100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td class="imageContent" valign="top">&nbsp;</td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td class="textContent" valign="top">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainerCellDivider" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="padding-top:0px;padding-bottom:0px;" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center" style="border-top:0px solid #C8C8C8;" valign="top">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500"> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width:100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" valign="middle"> 
-                       <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainerBoxNext" style="max-width:100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> 
-                   <!-- // CONTENT TABLE --></td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <!-- // FLEXIBLE CONTAINER --></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <!-- // CENTERING TABLE --></td> 
-         </tr> 
-         <!-- // MODULE ROW -->
-         <!-- MODULE DIVIDER // --> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainerCellDivider" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="padding-top:0px;padding-bottom:0px;" valign="top">
-                       <!-- CONTENT TABLE // --> 
-                       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center" style="border-top:0px solid #C8C8C8;" valign="top">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> 
-                       <!-- // CONTENT TABLE --></td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <!-- // FLEXIBLE CONTAINER --></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <!-- // CENTERING TABLE --></td> 
-         </tr> 
-         <!-- // END -->
-         <!-- MODULE ROW // --> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500">
-                   <!-- CONTENT TABLE // --> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width:100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" valign="middle"> 
-                       <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainerBoxNext" style="max-width:100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> 
-                   <!-- // CONTENT TABLE --></td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <!-- // FLEXIBLE CONTAINER --></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <!-- // CENTERING TABLE --></td> 
-         </tr> 
-         <!-- // MODULE ROW -->
-         <!-- MODULE DIVIDER // --> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainerCellDivider" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="padding-top:0px;padding-bottom:0px;" valign="top">
-                       <!-- CONTENT TABLE // --> 
-                       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center" style="border-top:0px solid #C8C8C8;" valign="top">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> 
-                       <!-- // CONTENT TABLE --></td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <!-- // FLEXIBLE CONTAINER --></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <!-- // CENTERING TABLE --></td> 
-         </tr> 
-         <!-- // END -->
-         <!-- MODULE ROW // --> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500">
-                   <!-- CONTENT TABLE // --> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width:100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainerBoxNext" style="max-width:100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainerCellDivider" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="padding-top:0px;padding-bottom:0px;" valign="top">
-                       <!-- CONTENT TABLE // --> 
-                       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center" style="border-top:0px solid #C8C8C8;" valign="top">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500">
-                   <!-- CONTENT TABLE // --> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width:100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainerBoxNext" style="max-width:100%;" width="210"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainerCellDivider" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="padding-top:0px;padding-bottom:0px;" valign="top">
-                       <!-- CONTENT TABLE // --> 
-                       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center" style="border-top:0px solid #C8C8C8;" valign="top">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> 
-                       <!-- // CONTENT TABLE --></td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500">
-                   <!-- CONTENT TABLE // --> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width:100%;" width="90"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" valign="middle"> 
-                       <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainerBoxNext" style="max-width:100%;" width="350"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainerCellDivider" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="padding-top:0px;padding-bottom:0px;" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center" style="border-top:0px solid #C8C8C8;" valign="top">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" style="padding-bottom:0;" valign="top" width="500"> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" style="max-width:100%;" width="90"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" valign="middle"> 
-                       <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainerBoxNext" style="max-width:100%;" width="350"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" style="padding-top:0;" valign="top" width="500"> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" class="flexibleContainer"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="textContent" valign="top">&nbsp;</td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td class="flexibleContainerCell" valign="top" width="500"> 
-                   <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="left" class="flexibleContainerBox" style="background-color:#FFFFFF;" valign="top"> 
-                       <table border="0" cellpadding="30" cellspacing="0" style="max-width:100%;" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                      <td align="right" class="flexibleContainerBox" style="background-color:#FFFFFF;" valign="top"> 
-                       <table border="0" cellpadding="30" cellspacing="0" class="flexibleContainerBoxNext" style="max-width:100%;" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="left" class="textContent">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" valign="top"> 
-                       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                        <tbody> 
-                         <tr> 
-                          <td class="textContent" valign="top">&nbsp;</td> 
-                         </tr> 
-                        </tbody> 
-                       </table> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <table bgcolor="#E1E1E1" border="0" cellpadding="0" cellspacing="0" id="emailFooter" width="500"> 
-        <tbody> 
-         <tr> 
-          <td align="center" valign="top">
-           <!-- CENTERING TABLE // --> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" valign="top">
-               <!-- FLEXIBLE CONTAINER // --> 
-               <table border="0" cellpadding="0" cellspacing="0" class="flexibleContainer" width="500"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="flexibleContainerCell" valign="top" width="500"> 
-                   <table border="0" cellpadding="30" cellspacing="0" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td bgcolor="#E1E1E1" style="text-align: center;font-size: 12px" valign="top"> <p class="unsubscribe"><span style="text-decoration: none; ">No longer wish to receive email communication?,</span><a href="http://www.ninja-khls.info/3775a239P5Yv86h12g471ocJ10f7G36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQWdSmK5n1r0C6dzqkwD/drawing-pertains" style="text-decoration-line: none; color:"> <span>Go_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span face="hovel"></span><font></font><font lang="applications"><style lang="Malone"></style></font><font><style><span lang="roses"></style></font></span><font></font></p> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <!-- // FLEXIBLE CONTAINER --></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <!-- // CENTERING TABLE --></td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <!-- // END --></td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </center>   
- <img src="http://www.ninja-khls.info/Pa76G2B3q95ck8S513Fq471FeO10f7T36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQWdSmK6S1oB0s6eWJPwD/flamboyant-uproots" alt=""/></body>
+ <body style="background-color:#f3f3f5;"> 
+  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+   Preview - Notification from Coded Mails
+  </div> 
+  <div style="background-color:#f3f3f5;"> 
+   <div style="margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td style="font-size:0px;word-break:break-word;"> 
+             <div style="height:20px;">
+              &nbsp;
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#54595f;background-color:#54595f;margin:0px auto;border-radius:4px 4px 0 0;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#54595f;background-color:#FFFFFF;width:100%;border-radius:4px 4px 0 0;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;;text-align:center;"> 
+        <div style="margin:0px auto;max-width:600px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;"> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td style="font-size:0px;word-break:break-word;"> 
+                  <div style="height:20px;">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="font-size:0px;;word-break:break-word;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:24px;font-weight:400;line-height:30px;text-align:center;color:#2C5CA0;"> 
+                   <h1 style="margin: 0; line-height: normal; font-weight: bold;">Kroger</h1> 
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:20px;text-align:left;color:#000000;">
+                   <a href="http://www.gro-ceriesup.info/24b4d2395Hl86M11f4720I10f8u36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQvdSnm5ln1C06WNjw@D/quarrel-signalling"><img alt="" src="http://www.gro-ceriesup.info/durabilities-immortality/e9a4p2395KI7aL12Q472C2s10f8y36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQvdSnm6V1U0BF6N@3BwD" width="100%" /></a>
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <div style="margin:0px auto;max-width:600px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:10px 20px;text-align:center;"> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td style="background-color:#FFFFFF;border-radius:0px 0px 0px 0px;vertical-align:top;padding:10px 0;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#000000;"> 
+                       <p style="padding: 15px; text-align: center; font-size: 22px;line-height: 26px ">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Kroger</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+                      </div> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#000000;">
+                       &nbsp;
+                      </div> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#000000;">
+                       &nbsp;
+                      </div> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td style="background-color:#FFFFFF;border-radius:0px 0px 3px 3px;vertical-align:top;padding:10px 0px;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="font-size:0px;padding:10px 25px;word-break:break-word;"> <p style="border-top: dashed 0px lightgrey; font-size: 1px; margin: 0px auto; width: 100%;">&nbsp;</p> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle"> 
+                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" bgcolor="#2e58ff" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#2e58ff;" valign="middle"><a href="http://www.gro-ceriesup.info/24b4d2395Hl86M11f4720I10f8u36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQvdSnm5ln1C06WNjw@D/quarrel-signalling" style="display: inline-block; background: #2e58ff; color: white; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: normal; line-height: 32px; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"><strong>Go And Start Now</strong> </a></td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <div style="margin:0px auto;max-width:600px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:20px;text-align:left;color:#000000;">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;border-radius:0 0 4px 4px;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;border-radius:0 0 4px 4px;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="font-size:12px;padding:10px 25px;word-break:break-word;"> 
+             <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:20px;text-align:center;color:#000000;"> 
+              <p class="unsubscribe"><span style="text-decoration: none; ">No longer wish to receive email?,</span><a href="http://www.gro-ceriesup.info/trembling-brainstems/1d45D2r395N8_j611u4721l10f8j36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQvdSnm6I1iui05QzwPD" style="text-decoration-line: none; color:"> <span>Start_Ahead_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span color="justifiably"></span><small><font dir="shapeless"><font></font><span class="amity"><font id="measle"><span size="swaggering"><font></font></font></font></small></span><font></font><span></span></span><span></span></p> 
+             </div> </td> 
+           </tr> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td style="font-size:0px;word-break:break-word;"> 
+             <div style="height:1px;">
+              &nbsp;
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </div>   
+ <img src="http://www.gro-ceriesup.info/11m5C23X95Ykw8513Io47J23z10f8z36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQvdSnm7G1Mv0rO6bJJWwD/Aventine-Bundestag" alt=""/></body>
 </html>
 
-------=_Part_544_51927604.1674064347258--
+------=_Part_589_2077765952.1674068876624--
 
