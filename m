@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D258670E71
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 01:12:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B8240670D2D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Jan 2023 00:21:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 01D2810E610;
-	Wed, 18 Jan 2023 00:12:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8B97D10E5FA;
+	Tue, 17 Jan 2023 23:21:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 328 seconds by postgrey-1.36 at gabe;
- Wed, 18 Jan 2023 00:12:14 UTC
-Received: from mail.mk-kohlson.info (unknown [45.13.189.64])
- by gabe.freedesktop.org (Postfix) with ESMTP id 70D7610E610
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Tue, 17 Jan 2023 23:21:39 UTC
+Received: from mail.shp-clubs.info (unknown [45.13.189.63])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B5AC910E5F8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Jan 2023 00:12:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mk-kohlson.info; 
+ Tue, 17 Jan 2023 23:21:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shp-clubs.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls-opinion-matter@mk-kohlson.info; 
- bh=5/1gRhnSz1E+KUQHFj42cvPKZmo=;
- b=NPoiBdT0BiC37baQkmn9pEjlaz66wSuEYPAPfrFES9EbJD3vGl1zsTKtqAEpO0Fa3Op6DRF/rrRn
- mBCszNRSNu+6uvh2uuj1Nxouhc56TyFCrgsd89r6FdSb+EdF8iyrMZNXhr5VIdXm1y0/59FW9tOH
- BHvFhkvlyvdMLLaztOA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mk-kohlson.info;
- b=jG/vtnpmfUOhzz/1EKfyXjxG700nTEaJzJMsSddoq90cbILgotxFp8hEV7+s1ktQtnq2GtnO/h3B
- pXLAmvuouAW3cY8Y28g1CNwsxBWK37uhXsoxNNl03NtBxB/5cLPbOx2/fWTUkumthWSEJavGORpA
- Acj+bJWT4wL7uMwjakM=;
-Received: by mail.mk-kohlson.info id hossls0001gh for
+ i=sams-club-time@shp-clubs.info; 
+ bh=NkzQXTEGFsig+k3csNNoCrlmlhE=;
+ b=elItjcKjxAu5ZlmVCjHE2Ge1ZMN+WDYEyHQpKEf0H4eV8HmHNxhiaGyNnKK1HxRQBp/zMoYzSWhf
+ hc34TysV45r/ZLCerrBcjmodifiWWLNaD/3Zh6JJywnOC7bobWDy3GsDnLKw9t3Lo8H+LBfPFceF
+ bUqL1Dcav0ZludSiExQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shp-clubs.info;
+ b=jRQMJ9WNBEatFVg9b0hgFbVDiLO5odF6oWWJziMOcYonmNM2UL5bX4FVd0Yh0Ku+6OmFHN3H3LFQ
+ rQ9GhjdlXHWPxV1/S/AGD8HCbgB+2FM6RaWztIJv4g1KvsOKhc3x2kl4DKvvdid/vTJlM++efK5e
+ pWgUYoYha4PGWFST14c=;
+Received: by mail.shp-clubs.info id hot0vi0001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 17 Jan 2023 18:59:30 -0500 (envelope-from
- <kohls-opinion-matter-intel+2Dgvt+2Ddev=lists.freedesktop.org@mk-kohlson.info>)
-Date: Tue, 17 Jan 2023 18:59:30 -0500
-From: "Kohls Opinion Matter" <kohls-opinion-matter@mk-kohlson.info>
+ Tue, 17 Jan 2023 19:35:17 -0500 (envelope-from
+ <sams-club-time-intel+2Dgvt+2Ddev=lists.freedesktop.org@shp-clubs.info>)
+Date: Tue, 17 Jan 2023 19:35:17 -0500
+From: "Sams Club Time" <sams-club-time@shp-clubs.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Showing appreciation during the holidays with free gifts for you
+Subject: Every Visit, you are rewarded for your loyalty - Yayy
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_325_1239036389.1673999957707"
-Message-ID: <0.0.0.24.1D92ACFBD109CC0.24D265@mail.mk-kohlson.info>
+ boundary="----=_Part_34_418824308.1673996875183"
+Message-ID: <0.0.0.3.1D92AD4BD2B731A.2E2540@mail.shp-clubs.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,239 +53,335 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_325_1239036389.1673999957707
+------=_Part_34_418824308.1673996875183
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="telephone=no" name="format-detection" /> 
   <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;" name="viewport" /> 
   <meta content="IE=9; IE=8; IE=7; IE=EDGE" http-equiv="X-UA-Compatible" /> 
-  <title>Page title</title> 
-  <style type="text/css">@import url(http://fonts.googleapis.com/css?family=Roboto:300); /*Calling our web font*/
+  <meta content="#EEEEEE" name="sr bgcolor" /> 
+  <meta charset="utf-8" /> 
+  <title>Sams Club</title> 
+  <style type="text/css">#outlook a {
+			padding: 0;
+		}
 
-        /* Some resets and issue fixes */
-        #outlook a { padding:0; }
-        body{ width:100% !important; -webkit-text; size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; }     
-        .ReadMsgBody { width: 100%; }
-        .ExternalClass {width:100%;} 
-        .backgroundTable {margin:0 auto; padding:0; width:100%;!important;} 
-        table td {border-collapse: collapse;}
-        .ExternalClass * {line-height: 115%;}           
-        /* End reset */
+		.ReadMsgBody {
+			width: 100%;
+		}
 
+		.ExternalClass {
+			width: 100%;
+		}
 
-        /* These are our tablet/medium screen media queries */
-        @media screen and (max-width: 630px) {
-			   /* Display block allows us to stack elements */                      
-               *[class="mobile-column"] {display: block;} 
+		.ExternalClass {
+			line-height: 100%;
+		}
 
-                /* Some more stacking elements */
-                *[class="mob-column"] {float: none !important;width: 100% !important;}     
+		.ExternalClass p {
+			line-height: 100%;
+		}
 
-                /* Hide stuff */
-                *[class="hide"] {display:none !important;}          
+		.ExternalClass span {
+			line-height: 100%;
+		}
 
-                /* This sets elements to 100% width and fixes the height issues too, a god send */
-                *[class="100p"] {width:100% !important; height:auto !important;}                    
+		.ExternalClass font {
+			line-height: 100%;
+		}
 
-                /* For the 2x2 stack */         
-                *[class="condensed"] {padding-bottom:40px !important; display: block;}
+		.ExternalClass td {
+			line-height: 100%;
+		}
 
-                /* Centers content on mobile */
-                *[class="center"] {text-align:center !important; width:100% !important; height:auto !important;}            
+		.ExternalClass div {
+			line-height: 100%;
+		}
 
-                /* 100percent width section with 20px padding */
-                *[class="100pad"] {width:100% !important; padding:20px;} 
+		a {
+			color: #0081C3;
+			text-decoration: none;
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+			font-family: arial, "sans-serif";
+			font-weight: 400;
+			text-decoration: none;
+		}
 
-                /* 100percent width section with 20px padding left & right */
-                *[class="100padleftright"] {width:100% !important; padding:0 20px 0 20px;} 
+		a:hover {
+			text-decoration: underline;
+			opacity: 1;
+			transition: all .25s ease-in-out
+		}
 
-                /* 100percent width section with 20px padding top & bottom */
-                *[class="100padtopbottom"] {width:100% !important; padding:20px 0px 20px 0px;} 
+		body {
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+			font-family: arial, "sans-serif";
+			font-weight: 400;
+			margin: 0;
+			padding: 0;
+			height: 100% !important;
+			margin: 0;
+			padding: 0;
+			width: 100% !important;
+		}
 
+		table table table {
+			table-layout: auto;
+		}
 
-        }
+		table {
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+			font-family: Arial, sans-serif;
+			font-weight: 400;
+			border-collapse: collapse !important;
+			border-spacing: 0;
+			table-layout: fixed;
+			/*margin: 0 auto;*/
+		}
+
+		td {
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+			font-family: arial, "sans-serif";
+			font-weight: 400;
+		}
+
+		p {
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+			font-family: Arial, "sans-serif";
+			font-weight: 400;
+		}
+
+		li {
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+			font-weight: 400;
+		}
+
+		blockquote {
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+			font-family: arial, "sans-serif";
+			font-weight: 400;
+		}
+
+		img {
+			-ms-interpolation-mode: bicubic;
+			border: 0;
+			height: auto;
+			line-height: 100%;
+			outline: none;
+			text-decoration: none;
+		}
+
+		#bodyTable {
+			height: 100% !important;
+			margin: 0;
+			padding: 0;
+			width: 100% !important;
+		}
+
+		#bodyCell {
+			height: 100% !important;
+			margin: 0;
+			padding: 0;
+			width: 100% !important;
+		}
+
+		
+
+		@media only screen and (max-width: 639px) {
+			body {
+				width: auto !important;
+			}
+
+			table[class="container"] {
+				width: 100% !important;
+				padding-left: 20px !important;
+				padding-right: 20px !important;
+			}
+
+			table[class="body"] {
+				width: 100% !important;
+			}
+
+			table[class="row"] {
+				width: 100% !important;
+			}
+
+			td[class="side-pad"] {
+				padding-left: 20px !important;
+				padding-right: 20px !important;
+			}
+
+			.img-responsive {
+				width: 100% !important;
+			}
+
+			.img-center {
+				margin: 0 auto !important;
+			}
+
+			.tb-center {
+				margin: 0 auto !important;
+			}
+		}
+
+		/*css media query 540px*/
+		@media only screen and (max-width: 540px) {
+			table[class="body"] .collapse {
+				width: 100% !important;
+			}
+
+			table[class="body"] .column {
+				width: 100% !important;
+				display: block !important;
+			}
+
+			.center {
+				text-align: center !important;
+			}
+
+			table[class="body"] .logo {
+				margin-bottom: 10px;
+			}
+
+			table[class="body"] .remove {
+				display: none !important;
+			}
+
+			table[class="container"] {
+				width: 100% !important;
+				padding-left: 20px !important;
+				padding-right: 20px !important;
+			}
+
+			table[class="tb-center"] {
+				margin: 0 auto !important;
+			}
+
+			table[class="no-border-right"] {
+				border-right: 0px !important;
+			}
+
+			.no-border-right {
+				border-right: none !important;
+			}
+		}
 	</style> 
  </head> 
- <body style="padding:0; margin:0; background: #E5E5E5"> 
-  <table border="0" cellpadding="0" cellspacing="0" style="margin: 0; padding: 0; max-width: 600px; margin: auto"> 
-   <tbody> 
-    <tr> 
-     <td align="center" valign="top"> 
-      <table bgcolor="#" cellpadding="0" cellspacing="0" class="100p" style="max-width: 650px"> 
-       <tbody> 
-        <tr> 
-         <td background="blank1.png" bgcolor="#FFFFFF" class="100p" valign="top" width="640"> 
-          <div> 
-           <table border="0" cellpadding="20" cellspacing="0" class="100p" width="640"> 
+ <body style="font-family:Arial, sans-serif; -webkit-text-size-adjust:none; background-color:#d9d9d9;"> 
+  <div style=" max-width: 600px; margin: auto; display: block"> 
+   <table border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; background-color: #ffffff; " width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" bgcolor="#d9d9d9" valign="top">&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td align="center" bgcolor="#d9d9d9" valign="top"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="body" style="font-family: Arial, sans-serif; width: 100%; background-color: #ffffff; margin: 0px auto;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center" class="side-pad img-full"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" class="container" width="100%"> 
             <tbody> 
              <tr> 
-              <td valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="100p" width="600"> 
+              <td align="center" class="column" valign="top" width="100%">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <table border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; background-color: #ffffff;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" bgcolor="#d9d9d9" valign="top"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="body" style="font-family: Arial, sans-serif; width: 100% px; background-color: #ffffff; margin: 0px auto;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center" class="side-pad">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="side-pad"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" class="container" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="center" class="column" valign="top" width="100%"> 
+               <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
                 <tbody> 
                  <tr> 
-                  <td align="left" class="100p" width="50%">&nbsp;</td> 
-                  <td align="right" class="hide" style="font-size:16px; color:#FFFFFF;" width="50%">&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <table border="0" cellpadding="0" cellspacing="0" class="100p" width="600"> 
-                <tbody> 
-                 <tr> 
-                  <td height="35">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" style="color:#FFFFFF; font-size:24px;"><font face="'Roboto', Arial, sans-serif"><span style="font-size:30px; color: black; font-weight: bold">KOHL'S</span> <a href="http://www.mk-kohlson.info/3d14e2395l8FD611z4707n10f3Y36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQhdSm95PN1U05zJwD3/adjudicates-sentences"><img alt="" src="http://www.mk-kohlson.info/e034t2395VV7aK12O4A709O10f3L36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQhdSm95z1Ss05o2BwD/suitableness-expressive" width="100%" /></a> </font> 
-                   <table> 
-                    <tbody> 
-                     <tr> 
-                      <td>&nbsp;</td> 
-                     </tr> 
-                    </tbody> 
-                   </table> <font face="'Roboto', Arial, sans-serif"> </font></td> 
-                 </tr> 
-                 <tr> 
-                  <td>&nbsp;</td> 
+                  <td style="font-family: Arial, Helvetica, sans-serif; font-size: 35px; color: #0e3997; font-weight: bold; padding: 10px 0; border-bottom: 0px solid #0e3997;" width="100%"> 
+                   <div style="text-align:center;">
+                    Sams Club
+                   </div> </td> 
                  </tr> 
                 </tbody> 
                </table> </td> 
              </tr> 
             </tbody> 
-           </table> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table border="0" cellspacing="0" class="100p" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style="font-size:24px; background: #FFFFFF"> <p style="color: #000000;  padding: 0px 50px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>KOHL'S</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> &nbsp; 
-          <div style="font-size: 20px;font-weight: bold;background: #2C292A;padding: 12px;border-radius: 8px">
-           <a href="http://www.mk-kohlson.info/3d14e2395l8FD611z4707n10f3Y36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQhdSm95PN1U05zJwD3/adjudicates-sentences" style="display: block;text-decoration: none;color: #FFFFFF; padding: 0% 35%">Go And Start Now </a>
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table bgcolor="#FFFFFF" border="0" cellpadding="20" cellspacing="0" class="100p" width="640"> 
-       <tbody> 
-        <tr> 
-         <td align="center" valign="top"> 
-          <table border="0" cellpadding="0" cellspacing="0" class="100padtopbottom" width="600"> 
-           <tbody> 
-            <tr> 
-             <td align="left" class="condensed" valign="top"> 
-              <table align="left" border="0" cellpadding="0" cellspacing="0" class="mob-column" width="290"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" valign="top"> 
-                  <table border="0" cellpadding="0" cellspacing="0"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" class="100padleftright" valign="top"> 
-                      <table border="0" cellpadding="0" cellspacing="0"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center" width="135">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                    <tr> 
-                     <td height="10">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" class="100padleftright" valign="top"> 
-                      <table border="0" cellpadding="0" cellspacing="0"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center" style="font-size:16px; color:#2a8e9d;" valign="top" width="135">&nbsp;</td> 
-                         <td width="20">&nbsp;</td> 
-                         <td align="center" style="font-size:16px; color:#2a8e9d;" valign="top" width="135">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-             <td class="hide" width="20">&nbsp;</td> 
-             <td align="left" class="condensed" valign="top"> 
-              <table align="left" border="0" cellpadding="0" cellspacing="0" class="mob-column" width="290"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" valign="top"> 
-                  <table border="0" cellpadding="0" cellspacing="0"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" class="100padleftright" valign="top"> 
-                      <table border="0" cellpadding="0" cellspacing="0"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center" width="135">&nbsp;</td> 
-                         <td width="20">&nbsp;</td> 
-                         <td align="center" width="135">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                    <tr> 
-                     <td height="10">&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" class="100padleftright" valign="top"> 
-                      <table border="0" cellpadding="0" cellspacing="0"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center" style="font-size:16px; color:#2a8e9d;" valign="top" width="135">&nbsp;</td> 
-                         <td width="20">&nbsp;</td> 
-                         <td align="center" style="font-size:16px; color:#2a8e9d;" valign="top" width="135">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table bgcolor="#ffffff" border="0" cellpadding="20" cellspacing="0" class="100p" width="640"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style="font-size:16px; color:#848484;"><br /> &nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="100p" width="640"> 
-       <tbody> 
-        <tr> 
-         <td align="center">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table bgcolor="#3F3F3F" border="0" cellpadding="20" cellspacing="0" class="100p" width="640"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style="font-size:12px; color:#ffffff;"> <p class="unsubscribe"><font face="'Roboto', Arial, sans-serif"><span style="text-decoration: none; ">No longer want to receive e-mail?,</span><a href="http://www.mk-kohlson.info/drafts-flowcharting/b344Q2395ml8O611b4708m10f3I36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQhdSm95S1lz06b0pwzD" style="text-decoration-line: none; color:"> <span>Continue_Over_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span><span></span><style size="polls"></span></style><span></span><style style="Ottomanizations"></style> </font></p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.mk-kohlson.info/adjudicates-sentences/c7e5M2W395d8Q5M12q4G70aY10f3B36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQhdSm97PQ1Cw0j6EXywjD" alt=""/></body>
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <table border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; background-color: #ffffff;" width="100%"> 
+    <tbody> 
+     <tr> 
+     </tr> 
+     <tr> 
+      <td align="center" bgcolor="#d9d9d9" valign="top"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="body" style="font-family: Arial, sans-serif; max-width: 100%; background-color: #ffffff; margin: 0px auto;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center" class="side-pad">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="side-pad"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" class="container" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="left" class="column" valign="top" width="100%"> 
+               <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #555; line-height: 20px;" width="100%"><a href="http://www.shp-clubs.info/mismatch-tested/31e6m2O3F95Czp8613wJ4703Y_10f2m36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQrdSmo5BAK106eNTUwD"><img alt="" src="http://www.shp-clubs.info/bab4V2395IB7Ma12l4A705W10f2T36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQrdSmo5W1C0g5h23wD/decomposable-marry" width="100%" /></a><br /> &nbsp; <p style="text-align: center;font-size: 23px;line-height: 28px;padding: 0px 30px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong style="color: #050D41">Sams Club</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> &nbsp; 
+                   <div style="background: #07114B;text-align: center;color: white;padding: 20px 0px;font-size: 24px">
+                    <a href="http://www.shp-clubs.info/mismatch-tested/31e6m2O3F95Czp8613wJ4703Y_10f2m36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQrdSmo5BAK106eNTUwD" style="text-decoration: none;color: #FFFFFF; padding-right: 20%; padding-left: 20%; display: block"><strong>Go And Start Now</strong></a>
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="side-pad" style="font-size: 12px; background: "><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> &nbsp; 
+           <div style="background: #E9ECFF; padding: 20px"> 
+            <p class="unsubscribe"><span style="text-decoration: none; ">To modify your email elections,</span><a href="http://www.shp-clubs.info/serious-Iranians/7b04M2395rnT8613b47_04gO10f2n36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQrdSmo5Q1Iu05t@wD@" style="text-decoration-line: none; color:black"> <span>Click-Ahead-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <font><font></font><span lang="brook"></font></span><span></span><small></small></p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.shp-clubs.info/leeway-straighten/2884D2395z8zs513R47y0P6D10f2Y36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQrdSmo7pKt10jM6NlqywD" alt=""/></body>
 </html>
 
-------=_Part_325_1239036389.1673999957707--
+------=_Part_34_418824308.1673996875183--
 
