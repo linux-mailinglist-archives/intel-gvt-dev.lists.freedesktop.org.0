@@ -1,52 +1,62 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FE2A672E75
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 02:50:01 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D1C71672F74
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 04:19:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A7AB910E88A;
-	Thu, 19 Jan 2023 01:49:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 49C4210E88E;
+	Thu, 19 Jan 2023 03:19:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D57C610E226;
- Thu, 19 Jan 2023 01:49:53 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 45B2310E6F4;
+ Thu, 19 Jan 2023 03:19:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674092993; x=1705628993;
+ t=1674098382; x=1705634382;
  h=date:from:to:cc:subject:message-id:reply-to:references:
  mime-version:in-reply-to;
- bh=z+r26atOHYpjx3EjwFle3hiTih2WoOd+oZxdqvV1Bc8=;
- b=SkUQP+5q68RIKK2kUZZuiIO8J5VcicyVw5kbbj2lLam7pFo7Ujniu9lF
- pvkKxpZgcWHhFXeF1Xo8CGSdHm9/iidQN5qeN3yQ1mHR+BlEInPEDYwEa
- mZZ05c7bTvBaalrXvy2wXygljo6OlWj8i3sMom9+TI1iA2x+ERlzb3hOK
- eqCb0kZWtdTwlq4alP75WhHWiXp4ot6Wu+FOhHVJBEy0xnmgKBlNDQsdJ
- ytG5cXTRFWacCPzbAa2N1hhsl/+QMpgqiTVdH3o1lTovFA+DE+XP2CiHs
- KRrgG/iZwu2BbaiNRUqWRAYKeSBgOspuoVWcD4kZFMCLCBZ0mnM5T7WLW A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="313039114"
+ bh=gHEAWULJPAmzCEthGwZ7zuKWudmRxTX2m7Zgvz5sX3Y=;
+ b=fH/WTPjRXc3kG+DzsaHJXl0X0NvP/QPEu3zHYai6wWtI9xSwbNAPUign
+ GIp3R1UCFwkpi7kspZxMQoJnZZkHhfPe8JjxNW5gqLB9GZi2CeYFGupOJ
+ oUx54e9irVvEp14h4g17K3jOXVpY6mJeZA+sok3hJX+ClDkDm62e4uSVE
+ y3J1/mALF75JBCaLTFur+2YG4cLZf12Fqb1OeLIM9SNLQizahnLezpScN
+ GWFrKCnv8LjoKsFi0huqdKTQ/pYFt8UMrsFZ8D+J2mmv3QkpRmvMFjq57
+ 1anV6kBS49rKvOEXatDVqeaicSOqy08S8/Vtar0xb0UreyRyl0txWVcAh Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="322868082"
 X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; 
- d="asc'?scan'208";a="313039114"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2023 17:49:53 -0800
+ d="asc'?scan'208";a="322868082"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jan 2023 19:19:41 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="661957728"
+X-IronPort-AV: E=McAfee;i="6500,9779,10594"; a="802467938"
 X-IronPort-AV: E=Sophos;i="5.97,226,1669104000"; 
- d="asc'?scan'208";a="661957728"
+ d="asc'?scan'208";a="802467938"
 Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by fmsmga007.fm.intel.com with ESMTP; 18 Jan 2023 17:49:49 -0800
-Date: Thu, 19 Jan 2023 09:28:52 +0800
+ by fmsmga001.fm.intel.com with ESMTP; 18 Jan 2023 19:19:39 -0800
+Date: Thu, 19 Jan 2023 10:58:42 +0800
 From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Deepak R Varma <drv@mailo.com>
-Subject: Re: [PATCH] drm/i915/gvt: Remove extra semicolon
-Message-ID: <Y8ic1B4erlEuWk9V@zhen-hp.sh.intel.com>
-References: <Y8LNbzgTf/1kYJX/@ubun2204.myguest.virtualbox.org>
+To: Sean Christopherson <seanjc@google.com>
+Subject: Re: [PATCH 03/27] drm/i915/gvt: Incorporate KVM memslot info into
+ check for 2MiB GTT entry
+Message-ID: <Y8ix4lqk8QYH4g3h@zhen-hp.sh.intel.com>
+References: <20221223005739.1295925-1-seanjc@google.com>
+ <20221223005739.1295925-4-seanjc@google.com>
+ <Y6vXTcxDNovrmeVB@yzhao56-desk.sh.intel.com>
+ <Y7SaklDQD0EoIs8l@google.com>
+ <Y7Y+759IN2DH5h3h@yzhao56-desk.sh.intel.com>
+ <Y7cLkLUMCy+XLRwm@google.com>
+ <Y7e3fT8/V2NoXAUP@yzhao56-desk.sh.intel.com>
+ <Y7ioYegkgKIH8uJL@google.com>
+ <Y7vlOCKkJ+QyO3EM@yzhao56-desk.sh.intel.com>
+ <Y773+EB35bAchVTC@google.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="rBD0G7EoTHOadgGA"
+ protocol="application/pgp-signature"; boundary="RHzMosFFWrhGOrzc"
 Content-Disposition: inline
-In-Reply-To: <Y8LNbzgTf/1kYJX/@ubun2204.myguest.virtualbox.org>
+In-Reply-To: <Y773+EB35bAchVTC@google.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,61 +70,142 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Saurabh Singh Sengar <ssengar@microsoft.com>, dri-devel@lists.freedesktop.org,
- Praveen Kumar <kumarpraveen@linux.microsoft.com>,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@gmail.com>,
+Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Ben Gardon <bgardon@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, intel-gvt-dev@lists.freedesktop.org,
  Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 
---rBD0G7EoTHOadgGA
+--RHzMosFFWrhGOrzc
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On 2023.01.14 21:12:39 +0530, Deepak R Varma wrote:
-> Remove the extra semicolon at end. Issue identified using
-> semicolon.cocci Coccinelle semantic patch.
+On 2023.01.11 17:55:04 +0000, Sean Christopherson wrote:
+> On Mon, Jan 09, 2023, Yan Zhao wrote:
+> > On Fri, Jan 06, 2023 at 11:01:53PM +0000, Sean Christopherson wrote:
+> > > On Fri, Jan 06, 2023, Yan Zhao wrote:
+> > > > On Thu, Jan 05, 2023 at 05:40:32PM +0000, Sean Christopherson wrote:
+> > > > > On Thu, Jan 05, 2023, Yan Zhao wrote:
+> > > > > I'm totally fine if KVMGT's ABI is that VFIO is the source of tru=
+th for mappings
+> > > > > and permissions, and that the only requirement for KVM memslots i=
+s that GTT page
+> > > > > tables need to be visible in KVM's memslots.  But if that's the A=
+BI, then
+> > > > > intel_gvt_is_valid_gfn() should be probing VFIO, not KVM (commit =
+cc753fbe1ac4
+> > > > > ("drm/i915/gvt: validate gfn before set shadow page entry").
+> > > > >=20
+> > > > > In other words, pick either VFIO or KVM.  Checking that X is vali=
+d according to
+> > > > > KVM and then mapping X through VFIO is confusing and makes assump=
+tions about how
+> > > > > userspace configures KVM and VFIO.  It works because QEMU always =
+configures KVM
+> > > > > and VFIO as expected, but IMO it's unnecessarily fragile and agai=
+n confusing for
+> > > > > unaware readers because the code is technically flawed.
+> > > > >
+> > > > Agreed.=20
+> > > > Then after some further thought, I think maybe we can just remove
+> > > > intel_gvt_is_valid_gfn() in KVMGT, because
+> > > >=20
+> > > > (1) both intel_gvt_is_valid_gfn() in emulate_ggtt_mmio_write() and
+> > > > ppgtt_populate_spt() are not for page track purpose, but to validat=
+e bogus
+> > > > GFN.
+> > > > (2) gvt_pin_guest_page() with gfn and size can do the validity chec=
+king,
+> > > > which is called in intel_gvt_dma_map_guest_page(). So, we can move =
+the
+> > > > mapping of scratch page to the error path after intel_gvt_dma_map_g=
+uest_page().
+> > >=20
+> > > IIUC, that will re-introduce the problem commit cc753fbe1ac4 ("drm/i9=
+15/gvt: validate
+> > > gfn before set shadow page entry") solved by poking into KVM.  Lack o=
+f pre-validation
+> > > means that bogus GFNs will trigger error messages, e.g.
+> > >=20
+> > > 			gvt_vgpu_err("vfio_pin_pages failed for iova %pad, ret %d\n",
+> > > 				     &cur_iova, ret);
+> > >=20
+> > > and
+> > >=20
+> > > 			gvt_vgpu_err("fail to populate guest ggtt entry\n");
+> >=20
+> > Thanks for pointing it out.
+> > I checked this commit message and found below original intentions to in=
+troduce
+> > pre-validation:
 >=20
-> Signed-off-by: Deepak R Varma <drv@mailo.com>
-> ---
->  drivers/gpu/drm/i915/gvt/vgpu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> ...
 >=20
-> diff --git a/drivers/gpu/drm/i915/gvt/vgpu.c b/drivers/gpu/drm/i915/gvt/v=
-gpu.c
-> index a5497440484f..08ad1bd651f1 100644
-> --- a/drivers/gpu/drm/i915/gvt/vgpu.c
-> +++ b/drivers/gpu/drm/i915/gvt/vgpu.c
-> @@ -323,7 +323,7 @@ int intel_gvt_create_vgpu(struct intel_vgpu *vgpu,
->  	ret =3D idr_alloc(&gvt->vgpu_idr, vgpu, IDLE_VGPU_IDR + 1, GVT_MAX_VGPU,
->  		GFP_KERNEL);
->  	if (ret < 0)
-> -		goto out_unlock;;
-> +		goto out_unlock;
-> =20
->  	vgpu->id =3D ret;
->  	vgpu->sched_ctl.weight =3D conf->weight;
-> --=20
+> > (I actually found that the original code will print "invalid entry type"
+> > warning which indicates it's broken for a while due to lack of test in
+> > this invalid gfn path)
+> >=20
+> >=20
+> > > One thought would be to turn those printks into tracepoints to elimin=
+ate unwanted
+> > > noise, and to prevent the guest from spamming the host kernel log by =
+programming
+> > > garbage into the GTT (gvt_vgpu_err() isn't ratelimited).
+> > As those printks would not happen in normal conditions and printks may =
+have
+> > some advantages to discover the attack or bug, could we just convert
+> > gvt_vgpu_err() to be ratelimited ?
+>=20
+> That's ultimately a decision that needs to be made by the GVT maintainers=
+, as the
+> answer depends on the use case.  E.g. if most users of KVMGT run a single=
+ VM and
+> the guest user is also the host admin, then pr_err_ratelimited() is likel=
+y an
+> acceptable/preferable choice as there's a decent chance a human will see =
+the errors
+> in the host kernel logs and be able to take action.
+>=20
+> But if there's unlikely to be a human monitoring the host logs, and/or th=
+e guest
+> user is unrelated to the host admin, then a ratelimited printk() is less =
+useful.
+> E.g. if there's no one monitoring the logs, then losing messages due to
+> ratelimiting provides a worse debug experience overall than having to man=
+ually
+> enable tracepoints.   And if there may be many tens of VMs (seems unlikel=
+y?), then
+> ratelimited printk() is even less useful because errors for a specific VM=
+ may be
+> lost, i.e. the printk() can't be relied upon in any way to detect issues.
+>=20
+> FWIW, in KVM proper, use of printk() to capture guest "errors" is strongl=
+y discourage
+> for exactly these reasons.
 
-Thanks for catching that!
+Current KVMGT usage is mostly in controlled mode, either user is own host a=
+dmin,
+or host admin would pre-configure specific limited number of VMs for KVMGT =
+use.
+I think printk on error should be fine, we don't need rate limit, and adding
+extra trace monitor for admin might not be necessary. So I'm towards to kee=
+p to
+use current error message.
 
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+thanks
 
---rBD0G7EoTHOadgGA
+--RHzMosFFWrhGOrzc
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY8ic1AAKCRCxBBozTXgY
-J4oSAJ0b42wwImxB+8ewhGLo62rlJ/h5RQCfdBJOl5fRSYVgpckeJlWrImX8bCQ=
-=c61Z
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY8ix3QAKCRCxBBozTXgY
+J4qHAJsEvRUf15RF9hsDYy/tIRkTiOSYkQCgnkyM5EFADi+LMKdieUHUeP/y9aE=
+=2IMQ
 -----END PGP SIGNATURE-----
 
---rBD0G7EoTHOadgGA--
+--RHzMosFFWrhGOrzc--
