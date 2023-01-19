@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 370CF67405A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 18:54:15 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA228674126
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 19:42:20 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 05CBE10E132;
-	Thu, 19 Jan 2023 17:54:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 909EB10E216;
+	Thu, 19 Jan 2023 18:42:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Thu, 19 Jan 2023 17:54:11 UTC
-Received: from mail.recpt-mbile.info (unknown [45.13.189.77])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9011E10E0E5
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Thu, 19 Jan 2023 18:42:18 UTC
+Received: from mail.hardwr-lows.info (unknown [45.13.189.78])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9B25610E1C8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Jan 2023 17:54:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=recpt-mbile.info;
+ Thu, 19 Jan 2023 18:42:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hardwr-lows.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=now.on.verizon@recpt-mbile.info; 
- bh=ELmjErZufekPaaLrRB2p943tGK0=;
- b=B0TVcSWFPZzaQ6sKXyCmvWkd3pgitsF8+qnG0PLtBQ1JsZjJuLFHMsIjjbwSJKeG4rALkODKwuNa
- 0pRKPpyhkkZJj0k02bxBMmaIYthSr8rhxNdiSpmNOjYz4G/9nmGoYjOuJWMjnatuB8gin6p2jOtn
- KuXAMN7/4jKQfxehj9k=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=recpt-mbile.info;
- b=kOb4gHs9Sl69d/u+qI+KRFUlNQB80AOInHKHYzT5+YhRYZh5w0ZpRk0jqM54jl4IHAPz5DbcuVj1
- JIL69Ud5vYjy4/XJJXTh2zxUfDCAdTI47wo9tlCC/h1tNsrDo5PArCEWrtwOrPGKd/fJO/Yazuzo
- sBGxIZsPcbQPcQPB8R0=;
-Received: by mail.recpt-mbile.info id hp61s60001g4 for
+ i=lowes_hardware_opinion_requested@hardwr-lows.info; 
+ bh=Qkm6xeUK/gMFXuzuOuCXmXUO5hY=;
+ b=bsawPsapDsYDmPrehRqYZg7hKAeANMW+u77z6xbF/NLOZDFN2k7l1h0x7zJFOO7LA+l0COYW84Ry
+ Q2VOPIEFg0nLZm7XE+SzefQm5LpTA4GkqUWKVfalegJQpGsSTXh19XlyyZQGJiDz9VTkNr+W6k8M
+ RTA7yEnbCJK6wNHJf2c=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hardwr-lows.info;
+ b=drGk6VEksjOzqKahCtuVoLsivNvibAFYXVoJdFdeztMKNaleKHgIkqm8UCgPLHkYj2DGbdmseboO
+ BrBK9TRtIO9+MrsCUzpCRY+77z8YSNpK0itHLJG1iyQLRCWN4T5xHMd2EvcvvJmvPJ4GFBnsTs3y
+ 6VceFJ2R5WW52ILHXf4=;
+Received: by mail.hardwr-lows.info id hp6hno0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Jan 2023 12:43:39 -0500 (envelope-from
- <now.on.verizon-intel+2Dgvt+2Ddev=lists.freedesktop.org@recpt-mbile.info>)
-Date: Thu, 19 Jan 2023 12:43:39 -0500
-From: "Now On VERIZON" <now.on.verizon@recpt-mbile.info>
+ Thu, 19 Jan 2023 15:00:33 -0500 (envelope-from
+ <lowes_hardware_opinion_requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@hardwr-lows.info>)
+Date: Thu, 19 Jan 2023 15:00:33 -0500
+From: "LOWES Hardware Opinion Requested"
+ <lowes_hardware_opinion_requested@hardwr-lows.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every Visit, you are rewarded for your loyalty - Yayy
+Subject: Best reward deal you can get for being a loyal customer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_478_1417661948.1674150207314"
-Message-ID: <0.0.0.35.1D92C2D90712EFA.3C418B@mail.recpt-mbile.info>
+ boundary="----=_Part_718_781151520.1674153162034"
+Message-ID: <0.0.0.4F.1D92C40B081397A.2EE504@mail.hardwr-lows.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,374 +54,341 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_478_1417661948.1674150207314
+------=_Part_718_781151520.1674153162034
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
 <html>
  <head> 
+  <meta content="width=device-width" name="viewport" /> 
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width,initial-scale=1" name="viewport" /> 
-  <title>Habitica</title> 
-  <link href="http://www.recpt-mbile.info/c236t23Qn95Wn8L611t4749o1100s36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQgdSne5s1u_05d@w@D/consultation-Bologna" rel="stylesheet" /> 
-  <style type="text/css">img, img a {
-				border: none;
-				max-width: 100%;
-				outline: none;
-				
-				-ms-interpolation-mode: bicubic;
-			}
+  <title>GoNevis</title> 
+  <style type="text/css">img {
+      border: none;
+      -ms-interpolation-mode: bicubic;
+      max-width: 100%;
+    }
+    
+    body {
+      background-color: #f6f6f6;
+      font-family: sans-serif;
+      -webkit-font-smoothing: antialiased;
+      font-size: 14px;
+      line-height: 1.4;
+      margin: 0;
+      padding: 0;
+      -ms-text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+    
+    table {
+      border-collapse: separate;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+      width: 100%;
+    }
+    
+    table td {
+      font-family: sans-serif;
+      font-size: 14px;
+      vertical-align: top;
+    }
+    
+    .body {
+      background-color: #f6f6f6;
+      width: 100%;
+    }
+    
+    .main-container {
+      Margin: 0 auto !important;
+      max-width: 580px;
+      padding: 10px;
+      width: 580px;
+    }
+    
+    .content {
+      box-sizing: border-box;
+      display: block;
+      Margin: 0 auto;
+      max-width: 580px;
+      padding: 10px;
+    }
+    
+    .main {
+      background: #ffffff;
+      border-radius: 3px;
+      width: 100%;
+    }
+    
+    .wrapper {
+      box-sizing: border-box;
+      padding: 20px;
+    }
+    
+    .content-block {
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+    
+    .footer {
+      clear: both;
+      Margin-top: 10px;
+      text-align: center;
+      width: 100%;
+    }
+    
+    .footer td,
+    .footer p,
+    .footer span {
+      color: #999999;
+      font-size: 12px;
+      text-align: center;
+    }
+    
+    .footer a {
+      text-decoration: none;
+    }
+    
+    .footer .heart {
+      color: #e74c3c;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #000000;
+      font-family: sans-serif;
+      font-weight: 400;
+      line-height: 1.4;
+      margin: 0;
+      Margin-bottom: 30px;
+    }
+    
+    h1 {
+      font-size: 35px;
+      font-weight: 300;
+      text-align: center;
+      text-transform: capitalize;
+    }
+    
+    p,
+    ul,
+    ol {
+      font-family: sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      margin: 0;
+      Margin-bottom: 15px;
+    }
+    
+    p li,
+    ul li,
+    ol li {
+      list-style-position: inside;
+      margin-left: 5px;
+    }
+    
+    a {
+      color: #d17100;
+      text-decoration: none !important;
+    }
 
-			body {
-				background-color: #E8E8E8;
-				font-family: "Roboto", sans-serif;
-				font-size: 1rem;
-				line-height: 1.5; 
-				margin: 0;
-				padding: 0;
-				
-				-webkit-font-smoothing: antialiased;
-				
-				-ms-text-size-adjust: 100%;
-				-webkit-text-size-adjust: 100%;
-			}
+    a.main-link {
+      font-weight: bold;
+      font-size: 2em;
+      display: block;
+      width: 100%;
+      text-align: center !important;
+      text-decoration: none;
+    }
 
-			hr {
-				border: 0;
-				border-bottom: 1px solid #EDECEE;
-				margin: 1.25rem 0;
-			}
-
-			table {
-				border: none;
-				border-collapse: separate;
-				border-spacing: 0;
-				width: 100%;
-				
-				mso-table-lspace: 0pt;
-				mso-table-rspace: 0pt;
-			}
-
-			table td {
-				font-family: "Roboto", sans-serif;
-				font-size: 1rem;
-				vertical-align: top;
-			}
-
-		
-			.body {
-				background-color: #E8E8E8;
-				width: 100%;
-			}
-
-			.container {
-				display: block; 
-				margin: 0 auto !important; 
-				max-width: 35rem; 
-				padding: .5rem;
-				width: 35rem;
-			}
-
-			.content {
-				box-sizing: border-box;
-				display: block; 
-				margin: 0 auto;
-				max-width: 35rem;
-				padding: 0;
-			}
-
-			
-			.preheader {
-				color: transparent;
-				display: none;
-				height: 0;
-				max-height: 0;
-				max-width: 0;
-				opacity: 0;
-				overflow: hidden;
-				mso-hide: all;
-				visibility: hidden;
-				width: 0;
-			}
-
-			.logo {
-				display: block;
-				margin: 1rem 0 .5rem 0;
-				padding: 0;
-				text-align: center; 
-			}
-
-			.logo img { max-height: 2.5rem !important; }
-
-			.header-image { margin-bottom: 1rem; }
-
-			.main {
-				background-color: #FFFFFF;
-				border-radius: 8px 8px 0 0;
-				width: 100%;
-			}
-
-			.wrapper {
-				box-sizing: border-box;
-				padding: 1.5rem 1.5rem 0 1.5rem;
-			}
-
-			.bullets {
-				margin: 0;
-				padding: 0 3rem 0 1rem;
-			}
-
-			.bullets img {
-				min-height: 3rem !important;
-				min-width: 3rem !important;
-			}
-
-			.bullets p {
-				margin: 0 0 1.5rem 1rem;
-				padding: 0;
-			}
-
-			.app-footer {
-				background-color: #F9F9F9;
-				border-radius: 0 0 .5rem .5rem;
-				padding: 1rem 0 0 0;
-				text-align: center;
-			}
-
-			.app-footer img {
-				margin: 0 .375rem .25rem .375rem;
-				max-height: 2rem !important;
-			}
-
-			.app-footer p {
-				color: #686274;
-				font-size: .75rem; 
-				line-height: 1.34;
-				margin-bottom: .75rem;
-			}
-
-			.content-block {
-				margin: 0;
-				padding: 0;
-			}
-
-			.footer {
-				clear: both;
-				margin: .5rem 0 1.5rem 0;
-				text-align: center;
-				width: 100%
-			}
-
-			.footer p,
-			.footer td,
-			.footer span,
-			.footer a {
-				color: #000000;
-				font-size: .75rem;
-				line-height: 1.34;
-				margin: 0;
-				text-align: center;
-			}
-
-			.footer a { text-decoration: underline; }
-
-			.footer img { max-height: 2rem !important; }
-
-			
-			h1,
-			h2,
-			h3,
-			h4 {
-				color: #34313A;
-				font-family: "Roboto", sans-serif;
-				font-weight: 400;
-				margin: 0;
-				margin-bottom: 1rem;
-			}
-
-			h1 {
-				color: #686274;
-				font-size: 1.25rem;
-				line-height: 1.2;
-				text-align: center;
-				text-transform: capitalize;
-			}
-
-			p,
-			ul,
-			ol {
-				color: #34313A;
-				font-family: "Roboto", sans-serif;
-				font-size: 1rem;
-				font-weight: normal;
-				line-height: 1.5;
-				list-style-position: outside;
-				margin: 0 0 1.5rem 0;
-			}
-
-			p li,
-			ul li,
-			ol li { margin-bottom: .5rem; }
-
-			a {
-				color: #2995CD;
-				text-decoration: none;
-			}
-
-			.small {
-				font-size: .75rem;
-				line-height: 1.34;
-				margin-bottom: .75rem;
-			}
-
-			.small-caps {
-				color: #EE9109;
-				font-size: .75rem;
-				font-weight: 600;
-				line-height: 1.34;
-				margin: 1rem 0 .5rem 0;
-			}
-
-			/* Buttons */
-			.btn {
-				box-sizing: border-box;
-				width: 100%;
-			}
-
-			.btn > tbody > tr > td { padding-bottom: 1.5rem; }
-			.btn table { width: auto; }
-
-			.btn table td {
-				background-color: #FFFFFF;
-				border-radius: .25rem;
-				text-align: center;
-			}
-
-			.btn a {
-				background-color: #FFFFFF;
-				border: none;
-				border-radius: .25rem;
-				box-sizing: border-box;
-				color: #2995CD;
-				cursor: pointer;
-				display: inline-block;
-				font-size: 1rem;
-				font-weight: 600;
-				margin: 0;
-				padding: .875rem 2rem;
-				text-decoration: none;
-			}
-
-			.btn-primary table td { background-color: #2995CD; }
-
-			.btn-primary a {
-				background-color: #000000;
-				border-color: #2995CD;
-				color: #FFFFFF;
-			}
-
-			/* Responsive */
-			@media only screen and (max-width: 40rem) {
-				table[class=body] .logo,
-				table[class=body] .header-image { margin-bottom: .5rem !important; }
-				table[class=body] .logo img { max-height: 2rem !important; }
-
-				table[class=body] h1 {
-					font-size: 1.25rem !important;
-					line-height: 1.4 !important;
-					margin-bottom: 1rem !important;
-				}
-
-				table[class=body] p,
-				table[class=body] ul,
-				table[class=body] ol,
-				table[class=body] td,
-				table[class=body] span,
-				table[class=body] a {
-					font-size: .875rem !important;
-					line-height: 1.34 !important;
-				}
-
-				table[class=body] ul, ol { padding-left: 1.5rem !important; }
-
-				table[class=body] .wrapper,
-				table[class=body] .article { padding: 1rem 1rem 0 1rem !important; }
-
-				table[class=body] .content { padding: 0 1rem !important; }
-
-				table[class=body] .container {
-					padding: 0 !important;
-					width: 100% !important;
-				}
-
-				table[class=body] .main {
-					border-left-width: 0 !important;
-					border-radius: .25rem .25rem 0 0 !important;
-					border-right-width: 0 !important;
-				}
-
-				.bullets {
-					margin: 0 !important;
-					padding: 0 1rem 0 0 !important;
-				}
-
-				.bullets img {
-					display: none !important;
-					height: 0 !important;
-					max-height: 0 !important;
-					max-width: 0 !important;
-					opacity: 0 !important;
-					overflow: hidden !important;
-					mso-hide: all !important;
-					visibility: hidden !important;
-					width: 0 !important;
-				}
-
-				table[class=body] .btn table,
-				table[class=body] .btn a { width: 100% !important; }
-
-				table[class=body] .img-responsive {
-					height: auto !important;
-					max-width: 100% !important;
-					width: auto !important;
-				}
-			}
-
-		
-			@media all {
-				.ExternalClass{ width: 100%; }
-
-				.ExternalClass,
-				.ExternalClass p,
-				.ExternalClass span,
-				.ExternalClass font,
-				.ExternalClass td,
-				.ExternalClass div {
-					line-height: 100%;
-				}
-
-				.social-link a {
-					color: inherit !important;
-					font-family: inherit !important;
-					font-size: inherit !important;
-					font-weight: inherit !important;
-					line-height: inherit !important;
-					text-decoration: none !important;
-				}
-			}
+    a.mute {
+      color: #aaa;
+      text-decoration: none;
+      font-style: italic;
+    }
+    
+    .button {
+      box-sizing: border-box;
+      width: 100%;
+    }
+    
+    .button>tbody>tr>td {
+      padding-bottom: 15px;
+    }
+    
+    .button table {
+      width: auto;
+    }
+    
+    .button table td {
+      background-color: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+    }
+    
+    .button a {
+      background-color: #ffffff;
+      border: solid 1px #d17100;
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: #d17100;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+      padding: 12px 25px;
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+    
+    .button-primary table td {
+      background-color: #d17100;
+    }
+    
+    .button-primary a {
+      background-color: #d17100;
+      border-color: #d17100;
+      color: #ffffff;
+    }
+    
+    .last {
+      margin-bottom: 0;
+    }
+    
+    .first {
+      margin-top: 0;
+    }
+    
+    .align-center {
+      text-align: center;
+    }
+    
+    .align-right {
+      text-align: right;
+    }
+    
+    .align-left {
+      text-align: left;
+    }
+    
+    .clear {
+      clear: both;
+    }
+    
+    .mt0 {
+      margin-top: 0;
+    }
+    
+    .mb0 {
+      margin-bottom: 0;
+    }
+    
+    .preheader {
+      color: transparent;
+      display: none;
+      height: 0;
+      max-height: 0;
+      max-width: 0;
+      opacity: 0;
+      overflow: hidden;
+      mso-hide: all;
+      visibility: hidden;
+      width: 0;
+    }
+    
+    .powered-by a {
+      text-decoration: none;
+    }
+    
+    hr {
+      border: 0;
+      border-bottom: 1px solid #f6f6f6;
+      Margin: 20px 0;
+    }
+    
+    @media only screen and (max-width: 620px) {
+      table[class=body] h1 {
+        font-size: 28px !important;
+        margin-bottom: 10px !important;
+      }
+      table[class=body] p,
+      table[class=body] ul,
+      table[class=body] ol,
+      table[class=body] td,
+      table[class=body] span,
+      table[class=body] a {
+        font-size: 16px !important;
+      }
+      table[class=body] .wrapper,
+      table[class=body] .article {
+        padding: 10px !important;
+      }
+      table[class=body] .content {
+        padding: 0 !important;
+      }
+      table[class=body] .main-container {
+        padding: 0 !important;
+        width: 100% !important;
+      }
+      table[class=body] .main {
+        border-left-width: 0 !important;
+        border-radius: 0 !important;
+        border-right-width: 0 !important;
+      }
+      table[class=body] .button table {
+        width: 100% !important;
+      }
+      table[class=body] .button a {
+        width: 100% !important;
+      }
+      table[class=body] .img-responsive {
+        height: auto !important;
+        max-width: 100% !important;
+        width: auto !important;
+      }
+    }
+    
+    @media all {
+      .ExternalClass {
+        width: 100%;
+      }
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {
+        line-height: 100%;
+      }
+      .apple-link a {
+        color: inherit !important;
+        font-family: inherit !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+        text-decoration: none !important;
+      }
+      .button-primary table td:hover {
+        background-color: #34495e !important;
+      }
+      .button-primary a:hover {
+        background-color: #34495e !important;
+        border-color: #34495e !important;
+      }
+    }
 	</style> 
  </head> 
  <body> 
   <table border="0" cellpadding="0" cellspacing="0" class="body"> 
    <tbody> 
     <tr> 
-     <td class="container"> 
+     <td>&nbsp;</td> 
+     <td class="main-container"> 
       <div class="content"> 
-       <div class="logo">
-        &nbsp;
-       </div> 
        <table class="main"> 
         <tbody> 
          <tr> 
@@ -428,63 +396,32 @@ Content-Transfer-Encoding: 7bit
            <table border="0" cellpadding="0" cellspacing="0"> 
             <tbody> 
              <tr> 
-              <td> <h1>&nbsp;</h1> 
-               <div style="display: inline; font-size: 35px; color: red">
-                <strong>V</strong> 
-                <div style="display: inline; font-size: 34px;color: black">
-                 <strong>erizon</strong>
-                </div> 
-               </div> 
-               <hr /><a href="http://www.recpt-mbile.info/6a14c2395t8G6x12h474Mal1100H36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQgdSne6N1F_U06w1wzDl/triples-clamored"><img alt="" src="http://www.recpt-mbile.info/40d4t2395D7laB13QT47z4cg1100r36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQgdSne6q1ihM06Q2LwDN/engineered-Whitfield" width="100%" /></a> <p style="text-align: center;font-size: 22px;">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Verizon</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
-               <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> 
-                   <table border="0" cellpadding="0" cellspacing="0"> 
-                    <tbody> 
-                     <tr> 
-                      <td><a href="http://www.recpt-mbile.info/6a14c2395t8G6x12h474Mal1100H36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQgdSne6N1F_U06w1wzDl/triples-clamored">Go And Start Now</a></td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> <p>&nbsp;</p> </td> 
+              <td style="text-align: center; color: #000000"> <h1 style="font-weight: bold">LOWE'S</h1> <a href="http://www.hardwr-lows.info/d6d4G2395BRV8613f474etOA1101A36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQDdSnK7w1SM0pP6wlwDAj/longer-grape"><img alt="" src="http://www.hardwr-lows.info/e3f4r2395gv7ay11r4750k1101N36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQDdSnK5vs10J5ujw2D/applicable-gulfs" width="100%" /></a><br /> &nbsp; <p style="text-align: center; padding: px;font-size: 23px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Lowe's</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> <br /> <br /> &nbsp; 
+               <div style="background: #012168;font-weight: bold; padding: 20px;font-size: 18px; border-radius: 5px ">
+                <a href="http://www.hardwr-lows.info/d6d4G2395BRV8613f474etOA1101A36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQDdSnK7w1SM0pP6wlwDAj/longer-grape" style="text-decoration: none;color: #FFFFFF; display: block; padding: 0px 28%">Go And Start Now</a>
+               </div> </td> 
              </tr> 
             </tbody> 
            </table> </td> 
          </tr> 
         </tbody> 
        </table> 
-       <div class="app-footer"> 
-        <table border="0" cellpadding="0" cellspacing="0"> 
-         <tbody> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> 
        <div class="footer"> 
         <table border="0" cellpadding="0" cellspacing="0"> 
          <tbody> 
           <tr> 
-           <td class="content-block"> 
-            <div style="padding: 20px"> 
-             <p class="unsubscribe"><span style="text-decoration: none; ">To modify your subscription choices,</span><a href="http://www.recpt-mbile.info/7374S2395PQp8611o474bR1100K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQgdSne6p1kJZ05S3wjD/satellites-biannual" style="text-decoration-line: none; color: white"> <span>Visit-This-Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <small><font size="capriciously"></small></font><font></font><font></font><span></span></p> 
-            </div> </td> 
+           <td class="content-block;" style="background: #C1EFFF; padding: 20px; color: #000000"> <p class="unsubscribe"><span style="text-decoration: none; ">To bring communication to an halt,</span><a href="http://www.hardwr-lows.info/creditable-radium/1b66eC23h95XoN8611o474fZ1101S36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQDdSnK5C10Nr6HWUwDJ" style="text-decoration-line: none; color: white"> <span>Continue Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <big></big><style style="venomous"></style><font id="Parrish"><span lang="alias"></span></font><font id="victimizing"><style><span id="meaningless"></style></span></font><small></small></p> </td> 
           </tr> 
          </tbody> 
         </table> 
        </div> 
-       <!-- END FOOTER -->
-      </div> 
-      <!-- END CENTERED WHITE CONTENT --></td> 
+      </div> </td> 
+     <td>&nbsp;</td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.recpt-mbile.info/unrecognized-Ludmilla/cd84K2395n8G5u13P4BP74dl1100M36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQgdSne6aZvp106HJAw@D" alt=""/></body>
+ <img src="http://www.hardwr-lows.info/8454W2395n85AU11i4751T1101i36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQDdSnK7hR1XqZ06F0wDOX/recapitulation-Ultrix" alt=""/></body>
 </html>
 
-------=_Part_478_1417661948.1674150207314--
+------=_Part_718_781151520.1674153162034--
 
