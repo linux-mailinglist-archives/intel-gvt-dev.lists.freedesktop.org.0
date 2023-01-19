@@ -1,61 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AF5D674969
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 03:41:25 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9A5A674AE4
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 05:40:17 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B5F7010EA11;
-	Fri, 20 Jan 2023 02:41:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 190C610EA1B;
+	Fri, 20 Jan 2023 04:40:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 91FA610E93F;
- Fri, 20 Jan 2023 02:41:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674182480; x=1705718480;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- mime-version:in-reply-to;
- bh=xrL5fnmNBnIXgqAfypEkNdzoxAHEnUF6zyRBUREec7I=;
- b=aclFXqlsmRGzN1lNog70/96FEAfvP6IsG/QPS1XVfWjHBxrXNIqJ6uuX
- HQWKBhH9C6hFG0xQy5ZfLAbgjY4SeqW54P0yegcdzqtQkNVNCrmlX8xep
- 0Az8cRTtvZQ660qGD7VaCND+LqdvQgGTnCSD2iDITpjGuzPQzPLbofBkt
- /qMX8bg+nb87SNMWA5Boe7nYHrBIZ47fRlQXyENr/NZvUeDQgm+ftkF/3
- UcmRCIdeYrefziIBFBMNDQIa08WR74dW8QFl0esea8WIVD5CZNp3RGRo1
- cDXySwg/lj4Lr5IucZ8hBoq1/LiL/68WvcI1tVOMsrE8/B4k9dySvPOyM A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="352748255"
-X-IronPort-AV: E=Sophos;i="5.97,230,1669104000"; 
- d="asc'?scan'208";a="352748255"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2023 18:41:19 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="690897048"
-X-IronPort-AV: E=Sophos;i="5.97,230,1669104000"; 
- d="asc'?scan'208";a="690897048"
-Received: from zhen-hp.sh.intel.com (HELO zhen-hp) ([10.239.159.108])
- by orsmga008.jf.intel.com with ESMTP; 19 Jan 2023 18:41:16 -0800
-Date: Fri, 20 Jan 2023 10:20:17 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Rodrigo Vivi <rodrigo.vivi@intel.com>
-Subject: Re: [Intel-gfx] [PATCH 2/2] drm/i915/gvt: Avoid full proxy f_ops for
- vgpu_status debug attributes
-Message-ID: <Y8n6YWMjRpT812B+@zhen-hp.sh.intel.com>
-References: <cover.1673375066.git.drv@mailo.com>
- <188df08e0feba0cda2c92145f513dd4e57c6e6cf.1673375066.git.drv@mailo.com>
- <Y72zVXYLVHXuyK05@intel.com>
- <Y8TkTi+/GQwhiMvO@zhen-hp.sh.intel.com>
- <Y8b3IRhx976Ke99X@intel.com>
- <Y8d6CwD3dHLKOUZ5@ubun2204.myguest.virtualbox.org>
- <Y8giB988U5cqsGdd@intel.com>
- <Y8icPEqkdF+7mg7E@zhen-hp.sh.intel.com>
- <Y8m+xBhGCa3kgcO2@intel.com>
+Received: from webserver1.peerlesselectronicssupplies.com (unknown
+ [66.84.10.225])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B3BA910EA1B;
+ Fri, 20 Jan 2023 04:40:13 +0000 (UTC)
+Received: from [::1] (port=51860 helo=User)
+ by webserver1.peerlesselectronicssupplies.com with smtp (Exim 4.86_1)
+ (envelope-from <francis.john@onet.pl>)
+ id 1pIQVs-0003LS-50; Thu, 19 Jan 2023 03:43:12 -0500
+From: "Francis John"<francis.john@onet.pl>
+Subject: Re: Good Day
+Date: Thu, 19 Jan 2023 08:43:12 -0000
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="m1aJLFosZhJsVcOI"
-Content-Disposition: inline
-In-Reply-To: <Y8m+xBhGCa3kgcO2@intel.com>
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - webserver1.peerlesselectronicssupplies.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - onet.pl
+X-Get-Message-Sender-Via: webserver1.peerlesselectronicssupplies.com: acl_c_authenticated_local_user:
+ root
+X-Authenticated-Sender: webserver1.peerlesselectronicssupplies.com: root
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,37 +52,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Deepak R Varma <drv@mailo.com>, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, Saurabh Singh Sengar <ssengar@microsoft.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Praveen Kumar <kumarpraveen@linux.microsoft.com>,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>
+Reply-To: francis.john@onet.com.pl
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20230120044016.190C610EA1B@gabe.freedesktop.org>
 
+<html>
 
---m1aJLFosZhJsVcOI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Greetings</title>
+</head>
 
-On 2023.01.19 17:05:56 -0500, Rodrigo Vivi wrote:
->=20
-> It still doesn't apply in drm-intel-next.
-> Could you please take it through your branch?
->=20
+<body>
 
-sure, I'll pick it.
+<p><font face="Euphemia" style="font-size: 13pt">Greetings,<br>
+<br>
+I sent you an email regarding my “deceased Client” recently<br>
+to this your email address, I was wondering if you had a chance<br>
+to peruse through it? I understand that you are busy, but I would<br>
+appreciate it if you could review this brief message and respond<br>
+to me as quickly as possible.<br>
+<br>
+My name is Francis John of the Global Financial Consultant.<br>
+This proposal is strictly based on trust, a political class<br>
+whose name was withheld from the Island due to strict note<br>
+he left behind after his death. He left behind €55,000,000.00<br>
+(Fifty Five Million Euros) for his retirement, he later died<br>
+of Corvid in 2019.<br>
+&nbsp;<br>
+He had no next of Kin and I am contacting you today because<br>
+you can inherit this fortune through some legal procedures if<br>
+you can play the role of his next of Kin.<br>
+&nbsp;<br>
+If you accept this proposal half of the amount €55,000,000.00<br>
+(Fifty five Million euro) will be transferred to you via wire<br>
+transfer while the other half will be for the lawyer and I.<br>
+If you are interested, kindly get back to me urgently so that<br>
+I can explain to you all the relevant details for us to proceed<br>
+with the legal binding documents.<br>
+&nbsp;<br>
+I look forward to your quick response. Kindly reply to this my<br>
+private email address <font color="#0000FF">francis.john@op.pl</font> with your 
+contact<br>information, thanks.<br>
+<br>
+<br>
+Yours faithfully,<br>
+&nbsp;<br>
+Francis John<br>
+<b>Global Financial Consultant</b><br>
+<font color="#0000FF">francis@gfconsultant.org</font></font></p>
 
---m1aJLFosZhJsVcOI
-Content-Type: application/pgp-signature; name="signature.asc"
+</body>
 
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY8n6WwAKCRCxBBozTXgY
-J5SvAJ9C8g+BYbyVNlEdPG78ayrJ8RcOigCeJUNQO9mDJImWIsvnkOvowvuLr/A=
-=KrnD
------END PGP SIGNATURE-----
-
---m1aJLFosZhJsVcOI--
+</html>
