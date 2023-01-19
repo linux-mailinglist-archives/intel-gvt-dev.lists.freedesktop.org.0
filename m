@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 248B9673DBE
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 16:42:10 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B3DF673EED
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 17:33:11 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E629C10E98B;
-	Thu, 19 Jan 2023 15:42:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 015F810E9C3;
+	Thu, 19 Jan 2023 16:33:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Thu, 19 Jan 2023 15:42:06 UTC
-Received: from mail.nu-mceating.info (unknown [45.13.189.75])
- by gabe.freedesktop.org (Postfix) with ESMTP id 894B510E984
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Thu, 19 Jan 2023 16:33:07 UTC
+Received: from mail.sheetat-slvr.info (unknown [45.13.189.76])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 13FE910E9BE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Jan 2023 15:42:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nu-mceating.info;
+ Thu, 19 Jan 2023 16:33:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sheetat-slvr.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=mcdonalds.app@nu-mceating.info; 
- bh=ioSMYT14rSL8KpVQDSGK1Q4mw3k=;
- b=TFfe3saIurFyS7zLAZA2hAONqtTY5PxojOh5a9qZtqqDndhPCwgwMNgUzHAzIJKyUlBG0M5zcd+L
- NQ17GgQ84Q7Ce95x1h/MQHWg3pVKwqsNkdBdInMK7Cvx7MK6fKFHcB7pUUiR6QHi1HPnciBkMM+3
- RlTPIHrQBuj8gk5rPiw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nu-mceating.info;
- b=MjRQ1015JV0kvzpE0O06jsv8/B3wIsrxv1FiWUiuZW7CepbnJzJV7KQHTvNApb638duz7ld9zdx2
- +XIU7qRRRlxObeZSXwd6LaTh3Ic4fGyaTOb6LKszztG++3Cy8sY3QxIh+pX84yOuSRIrWqJHyTAj
- jy9YKxZCYPcAAoim93A=;
-Received: by mail.nu-mceating.info id hp5ics0001gu for
+ i=miraclesheetsup-to-35-off@sheetat-slvr.info; 
+ bh=wTqyKRSG0CfeFnGmQjKMwy6BaYs=;
+ b=IZV2cwrZYnHZG8reD98yDqhWwUCTe2EhZlvN5F/o9coa4gxn8S3mzOQlSLMyGbHn9gATgnYJDDlx
+ iIFUIyGrQPj3QvmUKyN3tBdTIbLXxIy9fXgULdIuWt1fhgNCmA0vz0jpRIXn+Df2QWTsMcsBEUt/
+ 5wXaVb4TG8nkFUU/vHk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sheetat-slvr.info; 
+ b=IZ7l1RtnkDdDpqNpSGBUgy4w8ZBtBMJXsNAb99j31Os1kDUHMq3Uk8bK1+b+/blI+FoUgIN0ZrhZ
+ GwAju8Jzt/RqTfSpHuy+XFpt/r3hgmIauY8NpWwOj/9ssAF/Tgl4VQ0Y6WQWCrUMiuTwX/AXa/dG
+ nwhAagLcPEoKRjMl0ks=;
+Received: by mail.sheetat-slvr.info id hp5oc60001ge for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Jan 2023 10:30:55 -0500 (envelope-from
- <mcdonalds.app-intel+2Dgvt+2Ddev=lists.freedesktop.org@nu-mceating.info>)
-Date: Thu, 19 Jan 2023 10:30:55 -0500
-From: "McDonalds App" <mcdonalds.app@nu-mceating.info>
+ Thu, 19 Jan 2023 11:21:13 -0500 (envelope-from
+ <miraclesheetsup-to-35-off-intel+2Dgvt+2Ddev=lists.freedesktop.org@sheetat-slvr.info>)
+Date: Thu, 19 Jan 2023 11:21:13 -0500
+From: "MiracleSheetsUp To 35 Off" <miraclesheetsup-to-35-off@sheetat-slvr.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get any sandwich on us today! Is appreciation day
+Subject: Protect yourself and your family from bacteria with our
+ anti-microbial sheets.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_472_545365999.1674142234591"
-Message-ID: <0.0.0.34.1D92C1B058B6466.14B410@mail.nu-mceating.info>
+ boundary="----=_Part_337_399663350.1674145256087"
+Message-ID: <0.0.0.25.1D92C220C636E12.11275@mail.sheetat-slvr.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,72 +54,143 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_472_545365999.1674142234591
+------=_Part_337_399663350.1674145256087
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml">
+<html lang="en">
  <head> 
-  <meta charset="utf-8" /> 
-  <meta name="x-apple-disable-message-reformatting" /> 
-  <meta content="ie=edge" http-equiv="x-ua-compatible" /> 
+  <title></title> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
   <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <meta content="telephone=no, date=no, address=no, email=no" name="format-detection" /> 
-  <meta content="light dark" name="color-scheme" /> 
-  <meta content="light dark" name="supported-color-schemes" /> 
-  <title>Confirm Change of Email</title> 
-  <style type="text/css">.hover-bg-blue-600:hover {
-      background-color: #2563eb !important;
-    }
-    .hover-text-decoration-underline:hover {
-      text-decoration: underline;
-    }
-    @media (max-width: 600px) {
-      .sm-h-8 {
-        height: 32px !important;
-      }
-      .sm-w-full {
-        width: 100% !important;
-      }
-      .sm-px-6 {
-        padding-left: 24px !important;
-        padding-right: 24px !important;
-      }
-      .sm-pb-3 {
-        padding-bottom: 12px !important;
-      }
-    }
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <link href="http://www.sheetat-slvr.info/1G15wz2395p86Ni12d4n741W10ffg36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQVdSnS5A1F0p6m0UlwD/embroidery-sacrifice" /> 
+  <title></title> 
+  <style type="text/css">body,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        /* Reset style*/
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        body {
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        /*iOS Blue links*/
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
 	</style> 
  </head> 
- <body style="background-color: #F1F1F1"> 
-  <div style="word-break: break-word; -webkit-font-smoothing: antialiased; margin: 0; max-width: 600px; margin: auto;background-color: #e5e7eb; padding: 0"> 
-   <div aria-label="Confirm Change of Email" aria-roledescription="email" lang="en" role="article"> 
-    <table cellpadding="0" cellspacing="0" role="presentation" style="width: 100%; font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"> 
+ <body id="body" style="margin: 0 !important; padding: 0 !important; background-color: #F7F7F7"> 
+  <div style="color: black; font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 17x;margin: 0 auto; max-width: 600px; background-color: #FFFFFF ">
+   <br /> 
+   <br /> 
+   <a href="http://www.sheetat-slvr.info/9cb4c2395dZ8F612Dp4742T10ff_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVdSnS7w1sSX0P6w3wDTX/demoralizing-additivity"><img alt="" src="http://www.sheetat-slvr.info/vindictive-antarctic/f126h23LC95QS7ao11o4745W10ffU36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQVdSnS6t10qSr5HjwpD" width="100%" /></a> 
+   <p style="margin: 40px 0px; font-size: 25px; text-align: center;color: #0C317B; font-weight: bold">Enjoy Sheets That Stays Fresher<br /> And Longer With Miracle</p> 
+   <a href="http://www.sheetat-slvr.info/9cb4c2395dZ8F612Dp4742T10ff_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVdSnS7w1sSX0P6w3wDTX/demoralizing-additivity"><img alt="" src="http://www.sheetat-slvr.info/eb75m23i95fm7aP11o4746B10ffo36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQVdSnS6b1z0th6jBPMwD/demoralizing-additivity" width="100%" /></a> 
+   <p style="text-align: center; font-size: 22px; padding: 20px">Are you tired of washing your sheets just for them to get smelly and dirty again? it's time to say goddbye to sweaty sleepless nights!</p> 
+   <div> 
+    <div style="margin: 50px 0 60px 0; text-align: center;">
+     <button onclick="location.href='http://www.sheetat-slvr.info/9535H23p95gHv8611w4743n10ffo36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQVdSnS6y10SjF5bp1wD/unmistakable-villagers'" style="background-color: #0C317B; opacity: 0.8; border: none; border-radius:50px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:18px;font-weight:bold;line-height:60px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;" type="button">Go And Start Now</button>
+    </div> 
+    <p style="text-align: center;font-size: 18px; padding: 0px 70px">Premium sheets made with all-natural silver that <strong>prevents 99.99% of bacteria</strong></p> 
+    <ul inside="" list-style-position:="" style="color: #000000; padding-left: 200px; line-height: 30px"> 
+     <li>Promotes Healthy Skins</li> 
+     <li>Fights Unwanted Odors</li> 
+     <li>Luxuriously soft supima cotton</li> 
+    </ul> 
+    <a href="http://www.sheetat-slvr.info/9cb4c2395dZ8F612Dp4742T10ff_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVdSnS7w1sSX0P6w3wDTX/demoralizing-additivity"><img alt="" src="http://www.sheetat-slvr.info/vindictive-antarctic/4685t23i95Kp7aT12R47u47H10ffA36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQVdSnS5ag10_6wAwyDX" width="100%" /></a> 
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
      <tbody> 
       <tr> 
-       <td align="center" style="background-color: #FFFFFF; padding-top: 24px; padding-bottom: 0px"> 
-        <table cellpadding="0" cellspacing="0" class="sm-w-full" role="presentation" style="width: 100%"> 
+       <td> 
+        <table align="left" border="0" cellpadding="0" cellspacing="0" class="block" role="presentation" width="48%"> 
          <tbody> 
           <tr> 
-           <td class="sm-pb-3" style="padding-bottom: 0px; text-align: center"> <h1 style="font-size: 28px; font-weight: 600; color: #000">Mc Donalds</h1> </td> 
+           <td style="padding: 20px;">&nbsp;</td> 
           </tr> 
+         </tbody> 
+        </table> 
+        <table align="right" border="0" cellpadding="0" cellspacing="0" class="block" role="presentation" width="48%"> 
+         <tbody> 
           <tr> 
-           <td align="center" class="sm-px-6"> 
-            <table cellpadding="0" cellspacing="0" class="sm-w-full" role="presentation" style="width: 100%"> 
-             <tbody> 
-              <tr> 
-               <td class="sm-px-6" style="background-color: #fff; padding: 25px; text-align: center"><a href="http://www.nu-mceating.info/creative-contrariness/b8e6t2i3G95FoM8613K47X3lcX10fej36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQpdSnR7h10YSkB5DpLwD"><img alt="" src="http://www.nu-mceating.info/7734W2395N7Ia_12H4G73ex10feq36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQpdSnR6Vhi1n06HWlLwD/interspersion-coincident" style="display: block" width="100%" /></a> <a href="http://www.nu-mceating.info/creative-contrariness/b8e6t2i3G95FoM8613K47X3lcX10fej36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQpdSnR7h10YSkB5DpLwD"><img alt="" src="http://www.nu-mceating.info/7af6kv23K95h7TaO13dG473Xfi10feU36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQpdSnR6VIV10v5RpzwD/Kingsley-submodes" style="display: block" width="100%" /></a> <p style="font-size: 22px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Mc Donalds</strong> Card by completing our quick 20-second survey about your recent experi
- ence with us.</p> <br /> <a class="hover-bg-#FDBC1D-600" href="http://www.nu-mceating.info/creative-contrariness/b8e6t2i3G95FoM8613K47X3lcX10fej36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQpdSnR7h10YSkB5DpLwD" style="text-decoration: none; display: inline-block; border-radius: 4px; background-color: #FDBC1D; padding: 20px 24px; font-size: 14px; font-weight: 600; text-transform: uppercase; line-height: 1; color: #fff"><span style="mso-text-raise: 13pt"><strong>Go And Start Now</strong></span></a><br /> <br /> <br /> <br /> &nbsp;</td> 
-              </tr> 
-              <tr> 
-               <td style=" background-color: #FFFFFF">&nbsp;</td> 
-              </tr> 
-              <tr> 
-               <td style="padding: 32px; text-align: center; font-size: 12px; color: #000000; background: #B8B8B8"> <p class="unsubscribe"><span style="text-decoration: none; ">To change your notification preferences,</span><a href="http://www.nu-mceating.info/c235P2n395Vo86v12t473drq10feC36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQpdSnR6z1_0SR6cUwjDp/greedily-recomputed" style="text-decoration-line: none; color: white"> <span>Visit Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <small><style class="disabling"></style><big></big><span><span></small><style></style></span></span><font face="flounder"></font></p> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
+           <td style="padding: 20px;"> <h2 style="font-size: 14px; margin: 0 0 20px 0;">&nbsp;</h2> <p style="font-size: 12px; margin: 0;">&nbsp;</p> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td> 
+        <table align="left" border="0" cellpadding="0" cellspacing="0" class="block" role="presentation" width="48%"> 
+         <tbody> 
+          <tr> 
+           <td style="padding: 20px;">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table align="right" border="0" cellpadding="0" cellspacing="0" class="block" role="presentation" width="48%"> 
+         <tbody> 
+          <tr> 
+           <td style="padding: 20px;"> <h2 style="font-size: 14px; margin: 0 0 20px 0;">&nbsp;</h2> <p style="font-size: 12px; margin: 0;">&nbsp;</p> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td> 
+        <table align="left" border="0" cellpadding="0" cellspacing="0" class="block" role="presentation" width="48%"> 
+         <tbody> 
+          <tr> 
+           <td style="padding: 20px;">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table align="right" border="0" cellpadding="0" cellspacing="0" class="block" role="presentation" width="48%"> 
+         <tbody> 
+          <tr> 
+           <td style="padding: 20px;"> <h2 style="font-size: 14px; margin: 0 0 20px 0;">&nbsp;</h2> <p style="font-size: 12px; margin: 0;">&nbsp;</p> </td> 
           </tr> 
          </tbody> 
         </table> </td> 
@@ -126,63 +198,60 @@ Content-Transfer-Encoding: 7bit
      </tbody> 
     </table> 
    </div> 
-  </div> 
-  <table border="0" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td colspan="3" rowspan="5" style="width: 75%"> 
-      <table border="0" width="75%"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td>&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.nu-mceating.info/Boyd-permutations/d146h23S9z5iy8t511Q4740i10feI36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQpdSnR5Q1xD06dUwjUD" alt=""/></body>
+   <center style="padding-top: 20px;"> 
+    <p style="padding: 20px;">&nbsp;</p> 
+    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" height="100%" valign="top" width="100%"> 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width:660px;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td align="center" style="font-size:0;" valign="top"> 
+            <div style="display:inline-block; max-width:33.3333%; min-width:200px; vertical-align:top; width:95%;"> 
+             <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:200px;" width="95%"> 
+              <tbody> 
+               <tr> 
+                <td align="center" valign="top"> <p style="color:#000000; font:14px Poppins, sans-serif, normal; margin:0; padding:10px;">&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </div> 
+            <div style="display:inline-block; max-width:33.3333%; min-width:200px; vertical-align:top; width:95%;"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width:200px;" width="95%"> 
+              <tbody> 
+               <tr> 
+                <td align="center" valign="top"> <p style="color:#000000; font:14px Poppins, sans-serif, normal; margin:0; padding:10px;">&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </div> 
+            <div style="display:inline-block; max-width:33.3333%; min-width:200px; vertical-align:top; width:95%;"> 
+             <table align="right" border="0" cellpadding="0" cellspacing="0" style="max-width:200px; float: right;" width="95%"> 
+              <tbody> 
+               <tr> 
+                <td align="center" valign="top"> <p style="color:#000000; font:14px Poppins, sans-serif, normal; margin:0; padding:10px;">&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </center> 
+   <!--Footer--> 
+   <footer style="color: gray; font-family: 'Poppins', sans-serif; font-size: 9px; line-height: 11x; max-width: 600px; text-align: center; padding: 10px; color: #000000; background-color: #CFCFCF"> 
+    <p>&nbsp;</p> 
+    <p>&nbsp;</p> 
+    <p class="unsubscribe"><span style="text-decoration: none; ">No longer wish to receive communication from us?,</span><a href="http://www.sheetat-slvr.info/detracts-reassignments/1f26y2WY395yrC8611I4744T10ffR36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVdSnS6Xz1qQ06e0@1wD" style="text-decoration-line: none; color: white"> <span>Get Started Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span face="volition"></span><font style="headroom"><span></font></span><font face="Clinton"></font></p> 
+    <p>&nbsp;</p> 
+   </footer> 
+  </div>   
+ <img src="http://www.sheetat-slvr.info/detracts-reassignments/4e04z2395qI8_513o4y748Qy10ffm36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQVdSnS6z10nzT5AJNwD" alt=""/></body>
 </html>
 
-------=_Part_472_545365999.1674142234591--
+------=_Part_337_399663350.1674145256087--
 
