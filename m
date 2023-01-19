@@ -1,44 +1,147 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79E5E67433D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 21:03:14 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B28C867457C
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 23:06:08 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4910A10E254;
-	Thu, 19 Jan 2023 20:03:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7EDA910E269;
+	Thu, 19 Jan 2023 22:06:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Thu, 19 Jan 2023 20:03:10 UTC
-Received: from mail.hwlsales-cstco.info (unknown [45.13.189.80])
- by gabe.freedesktop.org (Postfix) with ESMTP id C565510E255
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Jan 2023 20:03:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=hwlsales-cstco.info; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=costco-supplies@hwlsales-cstco.info; 
- bh=Vby3r1SY6TQWn+MS1fO8hMf0Bps=;
- b=NLx+JpRw+KcT2W761xCEo8snj7NLjL/h0Ircyxs+EbOgOPGdRlw5kwmYQbHTKPLcXz42zNSjh063
- 34lgSaKQYkZ0xzKeUCwOxPb3puGhp8DIweBzi6ozu9ASN5118NoIjNjtlCaP62/6OmLvFinCC5rX
- C21ZhjGytOrTWmuNchg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hwlsales-cstco.info;
- b=E54dWRR6DKQkmvrXa7rWGW04gaQUkufjVoe9Sphf+/ziKUnDz3vzLnJFyZPq17Uj0x7EHE3WkgOI
- y0Q8Kayqadwgd8Y/haMV4JbHVAA98WtM9cV7fNQiwk29URo2yPXLNvVjcxvz3k6otvqWCzJ7EY96
- ZXbothNAmYVL2ha6cmc=;
-Received: by mail.hwlsales-cstco.info id hp6gvs0001gc for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Jan 2023 14:53:09 -0500 (envelope-from
- <costco-supplies-intel+2Dgvt+2Ddev=lists.freedesktop.org@hwlsales-cstco.info>)
-Date: Thu, 19 Jan 2023 14:53:09 -0500
-From: "Costco Supplies" <costco-supplies@hwlsales-cstco.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Provide feedback to have a chance to win
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 82DE010E269;
+ Thu, 19 Jan 2023 22:06:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1674165966; x=1705701966;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=7Gbcpl+Lav+jvU7PIvH2NlsAuLetOrzRpdQhhoF/wuI=;
+ b=B3zqRi9d58uT6u4bP7UtUTuL881L7q1vbxciLVf7x8wv/Z5fhOa3WDvW
+ iYrC+GK55YjaTshED6P3lEyxHZQ8HGrwMD8R0sSHd9T9JFaqj4U7IuTFo
+ UQqslupyCCjMbKUvdztcNwjcKjYsnIW3Ozsi4JbmqEPIPDJf1ycZXphmQ
+ 7GDmrrkb+Mg0WYoKVzB9iVauaIs1f6f5W8yVsDFDd1YHL1zIUVU+kURdo
+ ZCE2YylkoDD0IRLU+DsVJCeEfh1LT2il2pmn/QSJpTCPHIus6R17GQVFJ
+ 7n9PR6zhIdYLsVrVlcgO2JDOES3NhLipdINwftEnmSQeRW7gYAqVPEWRj A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="309016940"
+X-IronPort-AV: E=Sophos;i="5.97,230,1669104000"; d="scan'208";a="309016940"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jan 2023 14:06:05 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10595"; a="723683526"
+X-IronPort-AV: E=Sophos;i="5.97,230,1669104000"; d="scan'208";a="723683526"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga008.fm.intel.com with ESMTP; 19 Jan 2023 14:06:05 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Thu, 19 Jan 2023 14:06:04 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Thu, 19 Jan 2023 14:06:04 -0800
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Thu, 19 Jan 2023 14:06:04 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Thu, 19 Jan 2023 14:06:04 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NENhUUZQmR2NiGpjXlp0bNhRJySvVPR7s0J458xviYr9hp2wgVjtdZn2mDC9ltXRaKsFOsci9rWuQq18sclKxVCnn7Un1I17CQvSqSOHltYlzFIn2gXDT39C9W/NooR/NFk3j2hbLk3Acs2ZeKyX6HOsRqSWomCYcOiy/iG9EwvdEZZdJT+Oiklr/DI6P5jkfb/5DWgHI4iLuW1xy6WqtfukVtkajMzUVSDRhJq/t21DmyvXzbVdvNyyD7gHptiKMFFQfQmMKCgDNdN5EoV7Ru57zajTg7HEtPeWSxydpRTIvxR4HuEAJu8rmNnIijy1lGcjUYZcYypawTSgS273Lg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=o4W/akzkeUC24Iyj+B08ERmZp6mX0V0s7w/TWnYzFGU=;
+ b=bjXLdaIt2s9rncI3KQR0E4Yt3i4DNYfw5uQaURZsQWuiHZD97XQSZMrKbeWdVwxeUry2+kRhXEob5ee/8SKXPTcpZ3v4CSinpUnW8oXN7HT6ki6fLnWMfkqxSTVMcOOeadO8mLgu2ZfVQYO7lfjqgvYqveE9VrVw9Anlj+wZWQk+11CgugqHEPkHDscBoQiQ+AV6JUMrTp7yDvBJnGS4B51Ahpop9LeyxuMWd8iTURmWuoUi9dT38X7vwIlNYmIUUYC0jhsKsZFewvzgLJZ4fuLq9cFCKTomDIjTW+juPR9jpDDxwQ/ycfKiJJNvXWxzMXjxKk/lXUXuI1SDkKF7Fw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from MN0PR11MB6059.namprd11.prod.outlook.com (2603:10b6:208:377::9)
+ by PH0PR11MB5045.namprd11.prod.outlook.com (2603:10b6:510:3f::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6002.24; Thu, 19 Jan
+ 2023 22:06:01 +0000
+Received: from MN0PR11MB6059.namprd11.prod.outlook.com
+ ([fe80::1818:e39d:454d:a930]) by MN0PR11MB6059.namprd11.prod.outlook.com
+ ([fe80::1818:e39d:454d:a930%4]) with mapi id 15.20.6002.025; Thu, 19 Jan 2023
+ 22:06:01 +0000
+Date: Thu, 19 Jan 2023 17:05:56 -0500
+From: Rodrigo Vivi <rodrigo.vivi@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: Re: [Intel-gfx] [PATCH 2/2] drm/i915/gvt: Avoid full proxy f_ops for
+ vgpu_status debug attributes
+Message-ID: <Y8m+xBhGCa3kgcO2@intel.com>
+References: <cover.1673375066.git.drv@mailo.com>
+ <188df08e0feba0cda2c92145f513dd4e57c6e6cf.1673375066.git.drv@mailo.com>
+ <Y72zVXYLVHXuyK05@intel.com>
+ <Y8TkTi+/GQwhiMvO@zhen-hp.sh.intel.com>
+ <Y8b3IRhx976Ke99X@intel.com>
+ <Y8d6CwD3dHLKOUZ5@ubun2204.myguest.virtualbox.org>
+ <Y8giB988U5cqsGdd@intel.com>
+ <Y8icPEqkdF+7mg7E@zhen-hp.sh.intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <Y8icPEqkdF+7mg7E@zhen-hp.sh.intel.com>
+X-ClientProxiedBy: BYAPR08CA0040.namprd08.prod.outlook.com
+ (2603:10b6:a03:117::17) To MN0PR11MB6059.namprd11.prod.outlook.com
+ (2603:10b6:208:377::9)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_136_788464205.1674157963351"
-Message-ID: <0.0.0.90.1D92C3FA79985E8.329B24@mail.hwlsales-cstco.info>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN0PR11MB6059:EE_|PH0PR11MB5045:EE_
+X-MS-Office365-Filtering-Correlation-Id: c8939b6e-d5c1-4ba9-7464-08dafa6959f8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: LnsYCvuXcGdQYz8XQFQsOPgh/Bcy+o6ZwhKPaik8neJv1JmFqa64vdIvT8mxwuLnump0Lj7Zjx547rY1mRCP1iqRjoteshxXkc0w5jcs4X0b4b4MI9KO/EX8fDRX1Xa56wDZcttqcP86de/v4A+zf213ZuiUaBhkg7Eu32fVcrAKsx1qpE7rRT4ZhNmsJ+prBkGwNLLWN4/+YXsi0v1NhCv77tOeUMtrfl1Fcut9l4hYfvOU9BAP7eG9qP8l+J/VnDpRD8/kfFuQHGcqgHsY7KCzFfP7uYV0k4NxtMrGBjF58pEtoH0ZDo7s91bqlTChN17sJ7nfWyigQu8C/H3wrJGPa/e1w4KmSuVmDtZm+zbMsfsoJIiBUZaoEqbrT3Qsm5VkYVb3wW+dXQHNMtADHHjw1CvlfFHGGL9O8A9vE2/fEDyzcIqGhAIvBxJalWn+MuoCdJd633NBhM4fdr7XIfrbQ3peHsUVlloA5oapiPUuM8UOeoaloOYbgzmrmg5UQUsZFKgj1YXnuUaO4K9FS6W+ipMZHnmPg4N9VMaGJYhCg5+9Q324STInWp+sltl1c6qtzs7VlLthny3M7NAVGr9P2jBZL3P5jcAXcOJvKTGNK6AQLXw4pxCb4gtIyDQhGDQywJYo2F6UexmskxfXb1oJyZ3Jbm7P0KeSn+2Ij9UUnHPuIsyJqFJdCNmoAUMSNz7ZHZlW5+vw0A6ExWh7iJOv9VKPof8MPOaLQjrkGL0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN0PR11MB6059.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230022)(39860400002)(376002)(366004)(396003)(136003)(346002)(451199015)(38100700002)(36756003)(82960400001)(86362001)(2616005)(6666004)(186003)(6506007)(53546011)(6486002)(478600001)(44832011)(26005)(966005)(6512007)(5660300002)(8936002)(7416002)(2906002)(41300700001)(66556008)(66946007)(6916009)(66476007)(54906003)(4326008)(8676002)(316002)(83380400001)(67856001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3l9Xxy53yxM7MMT09jR/OHPecoxN4a3PYoVKaal9W8zNvWWqrmIWF2Lkg8FZ?=
+ =?us-ascii?Q?+dFLHyt232QhQu442sdCWxuIV9GMm5B/gk2yrcLB6PTA9nJaR39CQk2K2kzd?=
+ =?us-ascii?Q?eD6WsjK/SGp3liJrJiOD8nmlRFTfZeNap796SAKmhqqv/eczw5oBBt7yjm6m?=
+ =?us-ascii?Q?1untaf7bFh0f17B0bnND0pkRvIw1rSjuaGiu5BZkNiwR3RhEf+9wn4veUid3?=
+ =?us-ascii?Q?JrZQ100vw1StftMgHZKGRIS1RQYPPl9MD4B5wiEsO2T35c8BWInOTTQUd/sc?=
+ =?us-ascii?Q?rl4biSAEpoxEtLUlPNgB2InE3kzxnvClP3Zra3IGamNFnF1Vs0VSCJRlaHxM?=
+ =?us-ascii?Q?G/CUN3NbzFovGEEp1Hc+mGaG4jUEVNLpGc11gh6gCLtlE+Mc+HzVINlZgmVg?=
+ =?us-ascii?Q?g4SHfIxnDD2Gz0oWl8PLh8+HT/msTWmnrrKBPjpOdjKKPrxV6MWYqbQtMico?=
+ =?us-ascii?Q?I1IVKcfGgPexrYVXVh5f8Zi1m6BxlWtME6q1iD7HO31Ab0zSzyxNgWGm3oDk?=
+ =?us-ascii?Q?Ofi7HuN/BGLQl4pCHEw1rdwq2gY36wFi0iw+R1dPrdcgi7RPqcyOnd7KziSI?=
+ =?us-ascii?Q?TuFa7BzJrUHvV+1naL1FqsCnNa04sbDYzY+GgWLKOKF7GH2cWnv8lC15dwvp?=
+ =?us-ascii?Q?Nzdiwyd2/8DwxYnGIiSfk3keR5sCC3me1ANFJZ2KgY98y1T9HxW4sty+kJih?=
+ =?us-ascii?Q?LWvN9dJa1oqvl0y460KNclHzuIK8SeYJvPlhjNXJMF1FnEREHlXLnCzLG+tS?=
+ =?us-ascii?Q?Ql0yclcf5Bup2jDJUfK5zLb5iD6lZ3EOjTUpANSeF7tJO9jZUwlsIhYSbwUe?=
+ =?us-ascii?Q?6BDRcpsdUFkDrBciWYf5XTO5rL2FTJAIm6sQuNB/VGlcIPLSjHgjnb99BuQH?=
+ =?us-ascii?Q?ufNHMTbvMK1Bxnwy8/wcxLNp7Rkdn03fp/Ok/N2We65sjFXqjhJgs+sdfO0d?=
+ =?us-ascii?Q?2jg7SA8PHXv3nyoPdIMQ91NsJajBOCMzpiDaVNrILI8z9VdbWUqNad6cSswp?=
+ =?us-ascii?Q?LNHQH0xIgOrn4r+XtuyZEEm9JK/+ba6Gswl8vppmNwIUr+bvSco1q+bwn7IE?=
+ =?us-ascii?Q?bT8NsG71B5ioj52K0k5cU3IsHYYdOXpcrOcY8Bw7U6lcbmGnUkYhdCI8UJUf?=
+ =?us-ascii?Q?xDVd0YIT0bZ2y+raAVrHbAqifA7jy8PPxmeJHLL0lgY2Ics3kN6HNQnLlwwd?=
+ =?us-ascii?Q?2vBbx3cVD3eJUHt158bEcpkdG77j4K9wDZ7pljLaof5hbJCTfoXxyh92AdTE?=
+ =?us-ascii?Q?q3dq+rpmUTBOOMHKwqmqTrdIPAo0biI11YDW4/29HlOxQF5tk8i7KjRSGati?=
+ =?us-ascii?Q?s/AO133pACRpR4dyKO87oYrj91kP/eq8M3TOr8ByeZeNdEF1vnfoK5FLQYFq?=
+ =?us-ascii?Q?i5HpjJdjhk6EhcED+V0atUqIAldjQMScVi7LpRlK4IqmGqm/MFScZk/c1Yem?=
+ =?us-ascii?Q?h/mCQNscpl7Ij/bo8NpF+cXMokit7KHS4eJMCOVQWXHU0RlyMoiPDcgPiZGt?=
+ =?us-ascii?Q?a7z4Td380fAsxRQ+BTyaVDTw7Q4/tVpI9BTtt8cb//6GW6zsJpyc/68DQNrX?=
+ =?us-ascii?Q?82hMp6lT5PGQ6kn11qresZ0uc3S1j8/mwtw8qAFT886rWyOh4zqbRZXjvT2r?=
+ =?us-ascii?Q?kA=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: c8939b6e-d5c1-4ba9-7464-08dafa6959f8
+X-MS-Exchange-CrossTenant-AuthSource: MN0PR11MB6059.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jan 2023 22:06:01.7137 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Qz7Q4wKYj1yt1F0vDx+Xxgx85nGeqhdFDcl1oX4m6GjADUJgQyBHsFY5vXWXI90tgTpbMleHq991pMxGHQPnIg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5045
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,278 +154,117 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Deepak R Varma <drv@mailo.com>, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, Saurabh Singh Sengar <ssengar@microsoft.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Praveen Kumar <kumarpraveen@linux.microsoft.com>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_136_788464205.1674157963351
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Thu, Jan 19, 2023 at 09:26:20AM +0800, Zhenyu Wang wrote:
+> On 2023.01.18 11:44:55 -0500, Rodrigo Vivi wrote:
+> > On Wed, Jan 18, 2023 at 10:18:11AM +0530, Deepak R Varma wrote:
+> > > On Tue, Jan 17, 2023 at 02:29:37PM -0500, Rodrigo Vivi wrote:
+> > > > On Mon, Jan 16, 2023 at 01:44:46PM +0800, Zhenyu Wang wrote:
+> > > > > On 2023.01.10 13:49:57 -0500, Rodrigo Vivi wrote:
+> > > > > > On Wed, Jan 11, 2023 at 12:00:12AM +0530, Deepak R Varma wrote:
+> > > > > > > Using DEFINE_SIMPLE_ATTRIBUTE macro with the debugfs_create_file()
+> > > > > > > function adds the overhead of introducing a proxy file operation
+> > > > > > > functions to wrap the original read/write inside file removal protection
+> > > > > > > functions. This adds significant overhead in terms of introducing and
+> > > > > > > managing the proxy factory file operations structure and function
+> > > > > > > wrapping at runtime.
+> > > > > > > As a replacement, a combination of DEFINE_DEBUGFS_ATTRIBUTE macro paired
+> > > > > > > with debugfs_create_file_unsafe() is suggested to be used instead.  The
+> > > > > > > DEFINE_DEBUGFS_ATTRIBUTE utilises debugfs_file_get() and
+> > > > > > > debugfs_file_put() wrappers to protect the original read and write
+> > > > > > > function calls for the debug attributes. There is no need for any
+> > > > > > > runtime proxy file operations to be managed by the debugfs core.
+> > > > > > > Following coccicheck make command helped identify this change:
+> > > > > > > 
+> > > > > > > make coccicheck M=drivers/gpu/drm/i915/ MODE=patch COCCI=./scripts/coccinelle/api/debugfs/debugfs_simple_attr.cocci
+> > > > > > > 
+> > > > > > > Signed-off-by: Deepak R Varma <drv@mailo.com>
+> > > > > > 
+> > > > > > I believe these 2 gvt cases could be done in one patch.
+> > > > > > But anyways,
+> > > > > > 
+> > > > > > Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> > > > > > 
+> > > > > > for both patches... and will leave these 2 patches for gvt folks
+> > > > > > to apply. Unless they ack and I apply in the drm-intel along with the other ones.
+> > > > > >
+> > > > > 
+> > > > > yeah, they're fine with me, feel free to apply them directly.
+> > > > > 
+> > > > > Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > > > 
+> > > > Unfortunately I got some conflicts when trying to apply on drm-intel-next.
+> > > > 
+> > > > We probably need a new version, and probably through gvt branches it
+> > > > will be easier to handle conflicts if they appear.
+> > > 
+> > > Hello Rodrigo,
+> > > Sure. I will send in a new version. I am current using linux-next git repo as my
+> > > remote origin [tag 20230113]. Are there any specific instruction/location from
+> > > where I should access the gvt branch?
+> > 
+> > https://github.com/intel/gvt-linux.git
+> > 
+> > but with the linux-next your patch is probably right for them.
+> > 
+> 
+> yeah, I think so as currently from last pull request I don't have
+> other updates in gvt tree, maybe it's just d-i-n hasn't included
+> recent gvt change.
+> 
+> I saw Deepak sent a new one, feel free to apply. Let me know if
+> there's still any issue.
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <meta charset="UTF-8" /> 
-  <title>executing</title> 
-  <style type="text/css">.bd-specific .header-mini-banner .container-inner div .left-lg { text-align: left; padding: 0.6875rem 0px; }
-@media (min-width: 668px) {
-  .bd-specific .header-mini-banner .container-inner div .left-lg { float: left; }
-}
-bd-specific .header-mini-banner .container-inner div .left-lg > div { margin: 0px; padding-right: 25px; display: inline; }
-bd-specific .header-mini-banner .container-inner div .left-lg > div > a { display: inline-block; }
-bd-specific .header-mini-banner .container-inner div .left-lg > div > a > i.co-arrow-right { position: relative; left: 0.4375rem; }
-bd-specific .header-mini-banner .container-inner div .left-lg ul { display: inline; }
-@media (max-width: 1024px) {
-  .bd-specific .header-mini-banner .container-inner div .left-lg ul { display: block; }
-}
-bd-specific .header-mini-banner .container-inner div .left-lg ul li { display: inline; }
-bd-specific .header-mini-banner .container-inner div .left-lg ul li:not(:last-child)::after { padding: 0px 0.3125rem; content: "|"; }
-@media (min-width: 668px) {
-  .bd-specific .header-mini-banner .container-inner div .right-lg { float: right; text-align: right; }
-}
-@media (min-width: 1px) and (max-width: 667px) {
-  .bd-specific .header-mini-banner .container-inner div .right-lg { text-align: center; }
-}
-@media (min-width: 769px) {
-  .bd-specific .header-mini-banner .container-inner div .right-xl { float: right; text-align: right; }
-}
-bd-specific .header-mini-banner .container-inner div .help-icon { margin-left: 0.3125rem; }
-bd-specific .header-mini-banner .container-inner div #set-zip-code-parent { position: relative; }
-bd-specific .header-mini-banner .container-inner div #set-zip-code-parent .popover.bottom { margin-top: -0.0625rem; position: absolute !important; }
-@media (min-width: 668px) {
-  .bd-specific .header-mini-banner .container-inner div #set-zip-code-parent .popover { left: 0px !important; }
-}
-bd-specific .header-mini-banner .container-inner div #set-zip-code-parent .no-cursor { cursor: default; }
-@media (min-width: 1025px) {
-  .bd-specific .header-mini-banner .container-inner div .quick-cart-summary > span:not(:last-child)::after { padding: 0px 0.3125rem; content: "|"; }
-}
-bd-specific .header-mini-banner .container-inner div .quick-cart-summary .visiblity-hidden { visibility: hidden; }
-bd-specific .zip_flyout_container .zip_flyout_block { width: 100%; }
-@media (min-width: 376px) {
-  .bd-specific .zip_flyout_container .zip_flyout_block.fixed-width { width: 284px; }
-}
-bd-specific .zip_flyout_container .zip_flyout_block .text-shoot { margin-bottom: 0.75rem; }
-bd-specific .zip_flyout_container .zip_flyout_block .get-zip-code-form .form-group { margin-bottom: 1.25rem; }
-bd-specific .zip_flyout_container .zip_flyout_block .get-zip-code-form .form-group:last-child { margin-bottom: 0px; }
-bd-specific .zip_flyout_container .zip_flyout_block .add-gap { margin-bottom: 0.1875rem; }
-bd-specific .zip_flyout_container .zip_flyout_block .invite-sign-up { margin-top: 0.9375rem; }
-bd-specific .zip_flyout_container .zip_flyout_block .invite-sign-up + .add-gap { margin-bottom: 0px; }
-bd-specific .zip_flyout_container .zip_flyout_block .zip-setup-notification { margin-bottom: 0.75rem; }
-bd-specific .zip_flyout_container .zip_flyout_block .commercial-notification { margin-bottom: 1.25rem; }
-bd-specific .zip_flyout_container .zip_flyout_block .general-notification { font-size: 14px; line-height: 21px; color: rgb(51, 51, 51); padding: 15px; background-color: rgb(239, 247, 251); border: 2px solid rgb(48, 113, 169); border-radius: 3px; }
-bd-specific .zip_flyout_container .zip_flyout_block .general-notification div { padding: 0px; margin: 0px 0px 10px; }
-bd-specific .zip_flyout_container .zip_flyout_block .general-notification div:last-of-type { margin: 0px; }
-bd-specific .zip_flyout_container .zip-code-warn-body .change-warning-text, .bd-specific .zip_flyout_container .zip-code-warn-body .change-warning-text p { margin-bottom: 0px; }
-bd-specific .zip_flyout_container .zip-code-warn-body .change-warning-text p:first-child { margin-bottom: 1.5rem; }
-bd-specific .zip_flyout_container .zip-code-warn-footer .action-btn { margin-bottom: 1.25rem; }
-@media (min-width: 668px) {
-  .bd-specific .zip_flyout_container .zip-code-warn-footer .action-btn { margin-bottom: 0px; float: right; }
-}
-bd-specific .zip_flyout_container .zip-code-warn-footer .action-btn:last-child { margin-bottom: 0px; }
-bd-specific .zip_flyout_container .form-group label.error { margin: 0.625rem 0px 0px; }
-bd-specific .zip_flyout_container.mini-banner-padding { padding: 1.0625rem 1rem; }
-bd-specific .costco-page { padding-bottom: 2.5rem; padding-top: 1.25rem; }
-@media (min-width: 668px) {
-  .bd-specific .costco-page { padding-bottom: 3.75rem; }
-}
-@media (min-width: 1025px) {
-  .bd-specific .costco-page { padding-bottom: 5rem; }
-}
-bd-specific .ip-sniffer-close-link { margin-top: 0.9375rem; text-align: center; }
-bd-specific .ip-sniffer-close-link + .add-gap { margin-bottom: 0px; }
-bd-specific .text-shoot-ip-sniffer { margin-bottom: 0.75rem; min-width: 200px; }
-bd-specific .addresstype-help { margin-left: 0.3125rem; }
-bd-specific .sigin-section .panel { margin-bottom: 0px; }
-bd-specific .sigin-section + .sigin-section { margin-top: 1.5625rem; }
-@media (min-width: 668px) {
-  .bd-specific .d-flex { display: flex; }
-  .bd-specific .d-flex.f-column { -webkit-box-orient: vertical; -webkit-box-direction: normal; flex-direction: column; }
-  .bd-specific .d-flex .span-100 { -webkit-box-flex: 1; flex: 1 1 0%; }
-}
-#delivery-postal-code-popover-container .primary-slim.btn { color: rgb(255, 255, 255); background-color: rgb(48, 113, 169); }
-h2#costcoModalTitle.modal-title { font-size: 1.5em; }
-style-select.multiline-dropbox-selection-v2 { z-index: auto; }
-style-select.multiline-dropbox-selection-v2 .costco.dropdown button { height: auto; }
-style-select.multiline-dropbox-selection-v2 .costco.dropdown button a, .style-select.multiline-dropbox-selection-v2 .costco.dropdown button a:hover { text-decoration: none; color: rgb(51, 51, 51); }
-style-select.multiline-dropbox-selection-v2 .costco.dropdown button:empty { min-height: 80px; }
-style-select.multiline-dropbox-selection-v2 button, .style-select.multiline-dropbox-selection-v2 ul { border-radius: 3px; }
-style-select.multiline-dropbox-selection-v2::after { margin-top: 25px; font-size: 0.75rem; }
-style-select.singleline-dropbox-selection-v2 { z-index: auto; }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown .has-value { border: 1px solid rgb(51, 51, 51); }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown .has-value ~ label { color: rgb(51, 51, 51); }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown select { font-size: 14px; text-align: left; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); height: 40px; transition: all 0.3s ease 0s; outline: 0px; box-shadow: none; border: 1px solid rgb(144, 144, 144); box-sizing: border-box; border-radius: 3px; }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown select:focus:not([readonly]) { border: 2px solid rgb(48, 113, 169); }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown select:focus:not([readonly]) ~ label { color: rgb(48, 113, 169); }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown select:focus:not([readonly]) ~ label:not(.error), .style-select.singleline-dropbox-selection-v2 .costco.dropdown select ~ label.active:not(.error) { transform: translate3d(0px, -95%, 0px); background: rgb(255, 255, 255); padding-right: 5px; padding-left: 5px; margin-top: 0px; font-size: 12px; left: 8px; z-index: 1; }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown select.error { border: 2px solid rgb(229, 25, 55) !important; }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown label.label-outline { font-size: 14px; position: absolute; margin-top: 4px; top: 8.2px; left: 0px; line-height: normal; padding-left: 12.5px; transition: all 0.2s ease-out 0s; cursor: text; color: rgb(95, 95, 95); z-index: 0; pointer-events: none; }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown label.error { font-size: 12px; color: rgb(229, 25, 55) !important; font-weight: 700 !important; margin-top: 8px !important; margin-left: 12px !important; }
-style-select.singleline-dropbox-selection-v2 .costco.dropdown .input-outline.error:focus:not([readonly]) ~ label, .style-select.singleline-dropbox-selection-v2 .costco.dropdown .input-outline.error ~ label { color: rgb(211, 32, 41); }
-style-select.singleline-dropbox-selection-v2::after { right: 20px; top: 5px; font-size: 0.75rem; }
-style-select.singleline-dropbox-selection-v2.arrow-hidden::after { display: none; }
-style-select.singleline-dropbox-selection-v2 em, .style-select.singleline-dropbox-selection-v2.arrow-hidden > .dropdown > i { font-size: 14px; position: relative; top: -22px; right: 15px; line-height: normal; width: 21px; height: 12px; color: rgb(0, 96, 169); pointer-events: none; }
-input-field-v2 .outline { position: relative; }
-input-field-v2 .outline textarea.form-control { height: 100px; resize: none; }
-input-field-v2 .outline .comment-char-content { padding: 6px 12px 0px; }
-input-field-v2 .outline .comment-char-content span { color: rgb(51, 51, 51); font-size: 14px; line-height: 20px; margin: 0px; padding: 0px; }
-input-field-v2 .input-outline { height: 40px; transition: all 0.3s ease 0s; outline: 0px; box-shadow: none; border: 1px solid rgb(144, 144, 144); border-radius: 3px; box-sizing: border-box; }
-input-field-v2 .input-outline .disabled { background-color: transparent; }
-input-field-v2 .input-outline:focus:not([readonly]) { border: 2px solid rgb(48, 113, 169); }
-input-field-v2 .input-outline:focus:not([readonly]) ~ label { color: rgb(48, 113, 169); }
-input-field-v2 .input-outline:focus:not([readonly]) ~ label:not(.error), .input-field-v2 .input-outline ~ label.active:not(.error) { transform: translate3d(0px, -95%, 0px); background: rgb(255, 255, 255); padding-right: 5px; padding-left: 5px; margin-top: 0px; font-size: 12px; left: 8px; z-index: 1; }
-input-field-v2 .input-outline.valid:focus:not([readonly]) { border: 2px solid rgb(48, 113, 169); }
-input-field-v2 .input-outline.valid:focus:not([readonly]) ~ label { color: rgb(48, 113, 169); }
-input-field-v2 .input-outline.valid:not([readonly]) { border: 1px solid rgb(144, 144, 144); }
-input-field-v2 .input-outline.error:focus:not([readonly]) { border: 2px solid rgb(211, 32, 41); }
-input-field-v2 .input-outline.error:focus:not([readonly]) ~ label { color: rgb(211, 32, 41); }
-input-field-v2 .input-outline.error:not([readonly]) { border: 2px solid rgb(211, 32, 41); }
-input-field-v2 .input-outline.error ~ label { color: rgb(211, 32, 41); }
-input-field-v2 label.label-outline { font-size: 14px; position: absolute; margin-top: 4px; top: 8.2px; left: 0px; line-height: normal; padding-left: 12.5px; transition: all 0.2s ease-out 0s; cursor: text; color: rgb(95, 95, 95); z-index: 0; }
-input-field-v2 label.label-outline .disabled { pointer-events: none; }
-input-field-v2 label.error { font-size: 14px; margin-top: 4px; margin-bottom: 0px; line-height: 12px; }
-input-field-v2 .form-control { font-size: 14px; color: rgb(51, 51, 51); }
-quantity-selector-v2 { display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; flex-direction: row; margin-bottom: 20px; }
-quantity-selector-v2 .unit-content { display: inline-block; border-width: 1px 0px; border-top-style: solid; border-bottom-style: solid; border-top-color: rgb(156, 156, 156); border-bottom-color: rgb(156, 156, 156); border-image: initial; border-left-style: initial; border-left-color: initial; border-right-style: initial; border-right-color: initial; width: 80px; text-align: center; height: 40px; }
-quantity-selector-v2 .unit-content input { border: 0px; box-shadow: none; display: inline-block; text-align: right; height: 38px; width: 40px !important; }
-quantity-selector-v2 .unit-content input.error { border-bottom: 2px solid rgb(211, 32, 41); color: rgb(51, 51, 51) !important; }
-quantity-selector-v2 .unit-content.error label { color: rgb(51, 51, 51) !important; }
-quantity-selector-v2 .unit-content .unit { display: inline-block; width: 30px; text-align: left; }
-quantity-selector-v2 .error { border: 2px solid rgb(211, 32, 41); }
-quantity-selector-v2 button { min-width: 0px; padding-left: 6px; padding-right: 6px; border: 1px solid rgb(144, 144, 144); color: rgb(0, 96, 169); width: 35px; height: 40px; background-color: rgb(234, 234, 234); font-size: 18px; }
-quantity-selector-v2 button em, .quantity-selector-v2 button i { position: relative; top: 1px; }
-quantity-selector-v2 button img { position: relative; top: -2px; }
-quantity-selector-v2 button.disabled > i, .quantity-selector-v2 button.disabled em { color: rgb(95, 95, 95); }
-quantity-selector-v2 button[name="minusQty"] { border-radius: 3px 0px 0px 3px; }
-quantity-selector-v2 button[name="plusQty"] { border-radius: 0px 3px 3px 0px; }
-quantity-selector-v2 input { min-width: 0px; width: 40px; height: 40px; text-align: center; border-width: 1px 0px; border-top-style: solid; border-bottom-style: solid; border-top-color: rgb(144, 144, 144); border-bottom-color: rgb(144, 144, 144); border-image: initial; border-left-style: initial; border-left-color: initial; border-right-style: initial; border-right-color: initial; padding: 0px; }
-quantity-selector-v2 input.has-qty-error { border: 2px solid rgb(211, 32, 41); }
-quantity-selector-v2 input.error { color: rgb(51, 51, 51) !important; }
-@media (min-width: 1025px) {
-  .item-quantity-validation-error { width: 175px; }
-}
-@media (max-width: 768px) {
-  .item-quantity-validation-error { margin-bottom: 20px; }
-}
-item-quantity-validation-error label:not(:empty) { font-size: 14px; font-weight: 700; margin-bottom: 20px !important; margin-top: -15px !important; }
-selection-box-v3 { margin-bottom: 15px; }
-selection-box-v3 input[type="radio"] { width: 0px; height: 0px; margin: 0px; }
-selection-box-v3 .selection-item { background: rgb(255, 255, 255); border: 1px solid rgb(144, 144, 144); border-radius: 3px; padding: 11px; display: block; }
-selection-box-v3 .selection-item div, .selection-box-v3 .selection-item span { display: block; font-size: 14px; margin-bottom: 5px; line-height: 1.2em; }
-selection-box-v3 .selection-item div:last-child, .selection-box-v3 .selection-item span:last-child { margin-bottom: 0px; }
-selection-box-v3 .selection-item:hover { background: rgb(245, 245, 245); cursor: pointer; }
-selection-box-v3 input:checked ~ label.selection-item, .selection-box-v3 input:checked ~ span.selection-item { background: rgb(245, 245, 245); border-width: 2px; padding: 10px; border-color: rgb(48, 113, 169); box-shadow: rgb(48, 113, 169) 0px 0px 4px; }
-selection-box-v3 input:checked ~ label.selection-item span.ship-type-and-cost, .selection-box-v3 input:checked ~ span.selection-item span.ship-type-and-cost { font-weight: 700; }
-selection-box-v3 input:focus ~ label.selection-item, .selection-box-v3 input:focus ~ span.selection-item { background: rgb(245, 245, 245); border-width: 2px; padding: 10px; border-color: rgb(48, 113, 169); box-shadow: rgb(48, 113, 169) 0px 0px 4px; }
-selection-box-v3 input:focus-visible ~ label.selection-item, .selection-box-v3 input:focus-visible ~ span.selection-item { outline: highlight solid 2px; outline-offset: -5px; }
-@media (-webkit-min-device-pixel-ratio: 0) {
-  .selection-box-v3 input:focus-visible ~ label.selection-item, .selection-box-v3 input:focus-visible ~ span.selection-item { outline-color: -webkit-focus-ring-color; outline-style: auto; }
-}
-selection-box-v3 label { margin-bottom: 0px; display: block; }
-selection-box-v3 label.selection-item-label { height: 40px; font-size: 14px; padding-left: 40px !important; margin-left: 0px !important; padding-top: 10px !important; padding-bottom: 10px !important; }
-selection-box-v3 .co-calendar { color: rgb(48, 113, 169); font-size: 20px; margin-right: 20px; margin-top: 10px; position: absolute; right: 0px; pointer-events: none; z-index: 1; }
-selection-box-v3 .date-input { font-size: 14px; background: rgb(255, 255, 255); display: inline-block; vertical-align: sub; border-radius: 3px; }
-selection-box-v3 span.selection-radio-button { float: left; top: 8px; left: 10px; }
-selection-box-v3 span.selection-radio-button::after, .selection-box-v3 span.selection-radio-button::before { height: 14px !important; width: 14px !important; }
-span.selection-radio-button { float: left; top: 8px; left: 10px; }
-span.selection-radio-button::after, span.selection-radio-button::before { height: 14px !important; width: 14px !important; }
-selection-box-v2 { margin-bottom: 15px; }
-selection-box-v2 .selection-item { background: rgb(255, 255, 255); border: 1px solid rgb(144, 144, 144); border-radius: 3px; padding: 11px; display: block; }
-selection-box-v2 .selection-item div, .selection-box-v2 .selection-item span { display: block; font-size: 14px; margin-bottom: 5px; line-height: 1.2em; }
-selection-box-v2 .selection-item div:last-child, .selection-box-v2 .selection-item span:last-child { margin-bottom: 0px; }
-selection-box-v2 input:checked ~ div.selection-item, .selection-box-v2 input:checked ~ span.selection-item { background: rgb(245, 245, 245); border-width: 2px; padding: 10px; border-color: rgb(48, 113, 169); box-shadow: rgb(48, 113, 169) 0px 0px 4px; }
-selection-box-v2 input:checked ~ div.selection-item span.ship-type-and-cost, .selection-box-v2 input:checked ~ span.selection-item span.ship-type-and-cost { font-weight: 700; }
-selection-box-v2 .selection-item:hover { background: rgb(245, 245, 245); cursor: pointer; }
-selection-box-v2 input:checked ~ div.selection-item, .selection-box-v2 input:focus ~ span.selection-item { background: rgb(245, 245, 245); border-width: 2px; padding: 10px; border-color: rgb(48, 113, 169); box-shadow: rgb(48, 113, 169) 0px 0px 4px; }
-selection-box-v2 label { margin-bottom: 0px; display: block; }
-selection-box-v2 .co-calendar { color: rgb(48, 113, 169); font-size: 20px; margin-right: 20px; margin-top: 10px; position: absolute; right: 0px; pointer-events: none; z-index: 1; }
-selection-box-v2 .date-input { font-size: 14px; background: rgb(255, 255, 255); display: inline-block; vertical-align: sub; border-radius: 3px; }
-preferred-arrival-date-v2 label.label-outline { transform: translateY(12px); font-size: 14px !important; }
-preferred-arrival-date-v2 label.active, .preferred-arrival-date-v2 label.label-outline { position: absolute; padding-right: 5px; padding-left: 5px; margin-top: 0px; left: 8px; cursor: text; color: rgb(95, 95, 95); z-index: 1; line-height: normal !important; }
-preferred-arrival-date-v2 label.active { transform: translateY(-7px); background: rgb(250, 250, 250); font-size: 12px !important; }
-preferred-arrival-date-v2 label.active.cart-calendar-label { color: rgb(211, 32, 41); }
-radio-fieldset input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
-	</style> 
- </head> 
- <body data-gr-ext-installed="" data-new-gr-c-s-check-loaded="14.1094.0" data-new-gr-c-s-loaded="14.1094.0"> 
-  <center> 
-   <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-    -
-   </div> 
-   <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-    -
-   </div> 
-   <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-    -
-   </div> 
-   <div align="center">
-    <font face="sans-serif"><strong style="font-size: 29px">Now On Costco</strong></font>
-   </div> 
-   <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-    -
-   </div> 
-   <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-    -
-   </div> 
-   <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-    -
-   </div> 
-   <table align="center" border="0" cellpadding="2" cellspacing="2" style="max-width: 558px" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td> <p><a href="http://www.hwlsales-cstco.info/2a55U239P5iM8l611z4757t1103B36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQwdSon7nDB10tw5wqPwD/nonmilitary-Stevens"><img alt="" src="http://www.hwlsales-cstco.info/Kobayashi-tippers/40e4P2395lA7ha12Q4m759J1103G36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQwdSon6SJ1ZL05INJwD" width="100%" /></a></p> 
-       <table align="center" border="0" cellpadding="2" cellspacing="2" style="max-width: 558px" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td> <p align="center" style="font-family: sans-serif; font-size: 24px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Costco</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
-           <table align="center" border="0" cellpadding="2" cellspacing="2" style="max-width: 558px" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td>&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <center> 
-            <p><a href="http://www.hwlsales-cstco.info/2a55U239P5iM8l611z4757t1103B36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQwdSon7nDB10tw5wqPwD/nonmilitary-Stevens" style="background-color: #0161AA; padding:2px; display: block; border-radius: 12px; color: #fff; text-decoration: none; font-family: sans-serif; font-size: 26px">Go And Start Now</a></p> 
-           </center> 
-           <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td>&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <center>
-        <br /> 
-        <br /> 
-        <br /> &nbsp; 
-        <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-         -
-        </div> 
-        <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-         -
-        </div> 
-        <div style="display: inline-block; width: auto; margin: 5px 5px 5px 5px">
-         -
-        </div> 
-        <br /> 
-        <br /> To modify your communication choices,
-        <a href="http://www.hwlsales-cstco.info/9cb4m2395K8DF613Q4i75U8P1103w36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQwdSon5Hv10Y6o@wDLL/activations-Janos" style="text-decoration-line: none;"> <span>Begin-This-Way </span> </a>
-        <br /> 126 E 23rd St New York, NY, US 10010
-        <br /> 
-        <br /> 
-        <br /> 
-        <br /> 
-        <br /> <span dir="Procrusteanize"></span><span title="needlessness"></span><style></style><span><span dir="pinpoint"></span><span></span></span><style style="stocks"></style><big></big><span dir="Assyriology"></span><big></big>
-       </center> <br /> <br /> <br /> <br /> <br /> &nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </center>  
-  <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration> 
- <img src="http://www.hwlsales-cstco.info/6476o239Vu5YO85M12N475laj1103N36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQwdSon5Wjx105zp2wD/carriage-Vikram" alt=""/></body>
-</html>
+It still doesn't apply in drm-intel-next.
+Could you please take it through your branch?
 
-------=_Part_136_788464205.1674157963351--
+> 
+> thanks!
+> 
+> > > > > 
+> > > > > > > ---
+> > > > > > >  drivers/gpu/drm/i915/gvt/debugfs.c | 6 +++---
+> > > > > > >  1 file changed, 3 insertions(+), 3 deletions(-)
+> > > > > > > 
+> > > > > > > diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
+> > > > > > > index 03f081c3d9a4..baccbf1761b7 100644
+> > > > > > > --- a/drivers/gpu/drm/i915/gvt/debugfs.c
+> > > > > > > +++ b/drivers/gpu/drm/i915/gvt/debugfs.c
+> > > > > > > @@ -165,7 +165,7 @@ static int vgpu_status_get(void *data, u64 *val)
+> > > > > > >  	return 0;
+> > > > > > >  }
+> > > > > > >  
+> > > > > > > -DEFINE_SIMPLE_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx\n");
+> > > > > > > +DEFINE_DEBUGFS_ATTRIBUTE(vgpu_status_fops, vgpu_status_get, NULL, "0x%llx\n");
+> > > > > > >  
+> > > > > > >  /**
+> > > > > > >   * intel_gvt_debugfs_add_vgpu - register debugfs entries for a vGPU
+> > > > > > > @@ -182,8 +182,8 @@ void intel_gvt_debugfs_add_vgpu(struct intel_vgpu *vgpu)
+> > > > > > >  			    &vgpu_mmio_diff_fops);
+> > > > > > >  	debugfs_create_file_unsafe("scan_nonprivbb", 0644, vgpu->debugfs, vgpu,
+> > > > > > >  				   &vgpu_scan_nonprivbb_fops);
+> > > > > > > -	debugfs_create_file("status", 0644, vgpu->debugfs, vgpu,
+> > > > > > > -			    &vgpu_status_fops);
+> > > > > > > +	debugfs_create_file_unsafe("status", 0644, vgpu->debugfs, vgpu,
+> > > > > > > +				   &vgpu_status_fops);
+> > > > > > >  }
+> > > > > > >  
+> > > > > > >  /**
+> > > > > > > -- 
+> > > > > > > 2.34.1
+> > > > > > > 
+> > > > > > > 
+> > > > > > > 
+> > > > 
+> > > > 
+> > > 
+> > > 
+
 
