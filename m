@@ -2,43 +2,80 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA228674126
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 19:42:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F34FD67420E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Jan 2023 20:05:23 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 909EB10E216;
-	Thu, 19 Jan 2023 18:42:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 76DF810E9D0;
+	Thu, 19 Jan 2023 19:05:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Thu, 19 Jan 2023 18:42:18 UTC
-Received: from mail.hardwr-lows.info (unknown [45.13.189.78])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9B25610E1C8
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6BD7B10E9C8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Jan 2023 18:42:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hardwr-lows.info;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes_hardware_opinion_requested@hardwr-lows.info; 
- bh=Qkm6xeUK/gMFXuzuOuCXmXUO5hY=;
- b=bsawPsapDsYDmPrehRqYZg7hKAeANMW+u77z6xbF/NLOZDFN2k7l1h0x7zJFOO7LA+l0COYW84Ry
- Q2VOPIEFg0nLZm7XE+SzefQm5LpTA4GkqUWKVfalegJQpGsSTXh19XlyyZQGJiDz9VTkNr+W6k8M
- RTA7yEnbCJK6wNHJf2c=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hardwr-lows.info;
- b=drGk6VEksjOzqKahCtuVoLsivNvibAFYXVoJdFdeztMKNaleKHgIkqm8UCgPLHkYj2DGbdmseboO
- BrBK9TRtIO9+MrsCUzpCRY+77z8YSNpK0itHLJG1iyQLRCWN4T5xHMd2EvcvvJmvPJ4GFBnsTs3y
- 6VceFJ2R5WW52ILHXf4=;
-Received: by mail.hardwr-lows.info id hp6hno0001g1 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Jan 2023 15:00:33 -0500 (envelope-from
- <lowes_hardware_opinion_requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@hardwr-lows.info>)
-Date: Thu, 19 Jan 2023 15:00:33 -0500
-From: "LOWES Hardware Opinion Requested"
- <lowes_hardware_opinion_requested@hardwr-lows.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best reward deal you can get for being a loyal customer
+ Thu, 19 Jan 2023 19:05:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1674155119;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xI3gAlOvH6+nGCjjMQeJA8j8339HePE6Q0SOl9Tovc0=;
+ b=C/FtD8BqnPUY7adbDRud+ySFekNSCc+0+lilsx1+6ezCUP2Y4+Z2hPdafCyG191XccyfmD
+ 9uUSCnPgK/L6wUYSzuXAV2aiomyhKnSYa16KNxv0huT1dI0cahHhlMoFaegTqD4FVMeOB/
+ kgJKmFNmUESOCmAup2ExjZLO4cg1Ofg=
+Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
+ [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-343-c8QOcQEcPHirmdx6yosjyQ-1; Thu, 19 Jan 2023 14:05:17 -0500
+X-MC-Unique: c8QOcQEcPHirmdx6yosjyQ-1
+Received: by mail-io1-f69.google.com with SMTP id
+ b21-20020a5d8d95000000b006fa39fbb94eso1621230ioj.17
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 19 Jan 2023 11:05:16 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=qxwOPOgGhsGm2CilOB8QktAtozAzPUo8tE7EUr+QkN4=;
+ b=45tRB6mUBV0UeX4L35iqLKqJ3p+fhN/f90fKcDSPgEbUr7MatDQUghGwbx/bjAWvRh
+ uNtMsHo4/HdpLfbj1REU5qVRzLYh/c1Bx22/CtZhLMjDLG39G7IFzM24O/e0ZrKXqmZu
+ 7aNA/sb+rbY3f+HW/d+C7gzUNjrBwNNMLsSivH0bFUAOsURgDuYLCjOO++olhdOCVdZ1
+ qPkBx06/JKLwdgVKlm2uScG8DUfo40k604iw4WcSISf7jFD7E5h7LYBtyDeKVf3y4nu4
+ CKEAGLpWPU2HdPFC0ditWUARNvthONDtif2rzvjzcqFHGRxHms1usHUnDq3N6qK/BP+e
+ RbAg==
+X-Gm-Message-State: AFqh2kpCY+QGNFpVq2HWFN1NRDwIg2KthIV4yY9Hcw+QG3adJZIJMp/o
+ nVne60OeUnCMHZ/0BoZaEI89nyrOnYqICQCDQoc22mE6dqXnfV2bBCzuMScJIpjDgpzYS5pJB3B
+ MV5nKo7fhQyY9KXU1PxhvX/GVE+oPKR2YyA==
+X-Received: by 2002:a6b:dc12:0:b0:707:5b8d:745 with SMTP id
+ s18-20020a6bdc12000000b007075b8d0745mr5702699ioc.15.1674155116321; 
+ Thu, 19 Jan 2023 11:05:16 -0800 (PST)
+X-Google-Smtp-Source: AMrXdXtAMnL3Goqn5o+Ir8AcCe1SjWgVNFXCOrdiM/sijKRrcXt8wW9+Bm8x+wiDCw846gf100RgOg==
+X-Received: by 2002:a6b:dc12:0:b0:707:5b8d:745 with SMTP id
+ s18-20020a6bdc12000000b007075b8d0745mr5702666ioc.15.1674155116049; 
+ Thu, 19 Jan 2023 11:05:16 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ m4-20020a056638224400b0036c8a246f54sm11646670jas.142.2023.01.19.11.05.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Jan 2023 11:05:15 -0800 (PST)
+Date: Thu, 19 Jan 2023 12:05:13 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Subject: Re: [PATCH v4] vfio: fix potential deadlock on vfio group lock
+Message-ID: <20230119120513.3976cda7.alex.williamson@redhat.com>
+In-Reply-To: <BN9PR11MB5276CC29F17B87D14D1E61FF8CC49@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230114000351.115444-1-mjrosato@linux.ibm.com>
+ <20230117142252.70cc85c7.alex.williamson@redhat.com>
+ <BN9PR11MB52763D861C254248FD33F65C8CC79@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <b5a7efc9-7cfa-3314-fe36-b8da4a25265d@linux.ibm.com>
+ <BN9PR11MB5276CC29F17B87D14D1E61FF8CC49@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_718_781151520.1674153162034"
-Message-ID: <0.0.0.4F.1D92C40B081397A.2EE504@mail.hardwr-lows.info>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,377 +88,116 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>, "Wang,
+ Zhi A" <zhi.a.wang@intel.com>, "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_718_781151520.1674153162034
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Thu, 19 Jan 2023 03:43:36 +0000
+"Tian, Kevin" <kevin.tian@intel.com> wrote:
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <meta content="width=device-width" name="viewport" /> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>GoNevis</title> 
-  <style type="text/css">img {
-      border: none;
-      -ms-interpolation-mode: bicubic;
-      max-width: 100%;
-    }
-    
-    body {
-      background-color: #f6f6f6;
-      font-family: sans-serif;
-      -webkit-font-smoothing: antialiased;
-      font-size: 14px;
-      line-height: 1.4;
-      margin: 0;
-      padding: 0;
-      -ms-text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-    }
-    
-    table {
-      border-collapse: separate;
-      mso-table-lspace: 0pt;
-      mso-table-rspace: 0pt;
-      width: 100%;
-    }
-    
-    table td {
-      font-family: sans-serif;
-      font-size: 14px;
-      vertical-align: top;
-    }
-    
-    .body {
-      background-color: #f6f6f6;
-      width: 100%;
-    }
-    
-    .main-container {
-      Margin: 0 auto !important;
-      max-width: 580px;
-      padding: 10px;
-      width: 580px;
-    }
-    
-    .content {
-      box-sizing: border-box;
-      display: block;
-      Margin: 0 auto;
-      max-width: 580px;
-      padding: 10px;
-    }
-    
-    .main {
-      background: #ffffff;
-      border-radius: 3px;
-      width: 100%;
-    }
-    
-    .wrapper {
-      box-sizing: border-box;
-      padding: 20px;
-    }
-    
-    .content-block {
-      padding-bottom: 10px;
-      padding-top: 10px;
-    }
-    
-    .footer {
-      clear: both;
-      Margin-top: 10px;
-      text-align: center;
-      width: 100%;
-    }
-    
-    .footer td,
-    .footer p,
-    .footer span {
-      color: #999999;
-      font-size: 12px;
-      text-align: center;
-    }
-    
-    .footer a {
-      text-decoration: none;
-    }
-    
-    .footer .heart {
-      color: #e74c3c;
-    }
-    
-    h1,
-    h2,
-    h3,
-    h4 {
-      color: #000000;
-      font-family: sans-serif;
-      font-weight: 400;
-      line-height: 1.4;
-      margin: 0;
-      Margin-bottom: 30px;
-    }
-    
-    h1 {
-      font-size: 35px;
-      font-weight: 300;
-      text-align: center;
-      text-transform: capitalize;
-    }
-    
-    p,
-    ul,
-    ol {
-      font-family: sans-serif;
-      font-size: 14px;
-      font-weight: normal;
-      margin: 0;
-      Margin-bottom: 15px;
-    }
-    
-    p li,
-    ul li,
-    ol li {
-      list-style-position: inside;
-      margin-left: 5px;
-    }
-    
-    a {
-      color: #d17100;
-      text-decoration: none !important;
-    }
+> > From: Matthew Rosato <mjrosato@linux.ibm.com>
+> > Sent: Wednesday, January 18, 2023 10:56 PM
+> >=20
+> > On 1/18/23 4:03 AM, Tian, Kevin wrote: =20
+> > >> From: Alex Williamson
+> > >> Sent: Wednesday, January 18, 2023 5:23 AM
+> > >>
+> > >> On Fri, 13 Jan 2023 19:03:51 -0500
+> > >> Matthew Rosato <mjrosato@linux.ibm.com> wrote:
+> > >> =20
+> > >>>  void vfio_device_group_close(struct vfio_device *device)
+> > >>>  {
+> > >>> +=09void (*put_kvm)(struct kvm *kvm);
+> > >>> +=09struct kvm *kvm;
+> > >>> +
+> > >>>  =09mutex_lock(&device->group->group_lock);
+> > >>> +=09kvm =3D device->kvm;
+> > >>> +=09put_kvm =3D device->put_kvm;
+> > >>>  =09vfio_device_close(device, device->group->iommufd);
+> > >>> +=09if (kvm =3D=3D device->kvm)
+> > >>> +=09=09kvm =3D NULL; =20
+> > >>
+> > >> Hmm, so we're using whether the device->kvm pointer gets cleared in
+> > >> last_close to detect whether we should put the kvm reference.  That'=
+s a
+> > >> bit obscure.  Our get and put is also asymmetric.
+> > >>
+> > >> Did we decide that we couldn't do this via a schedule_work() from th=
+e
+> > >> last_close function, ie. implementing our own version of an async pu=
+t?
+> > >> It seems like that potentially has a cleaner implementation, symmetr=
+ic
+> > >> call points, handling all the storing and clearing of kvm related
+> > >> pointers within the get/put wrappers, passing only a vfio_device to =
+the
+> > >> put wrapper, using the "vfio_device_" prefix for both.  Potentially
+> > >> we'd just want an unconditional flush outside of lock here for
+> > >> deterministic release.
+> > >>
+> > >> What's the downside?  Thanks,
+> > >> =20
+> > >
+> > > btw I guess this can be also fixed by Yi's work here:
+> > >
+> > > https://lore.kernel.org/kvm/20230117134942.101112-6-yi.l.liu@intel.co=
+m/
+> > >
+> > > with set_kvm(NULL) moved to the release callback of kvm_vfio device,
+> > > such circular lock dependency can be avoided too. =20
+> >=20
+> > Oh, interesting...  It seems to me that this would eliminate the report=
+ed call
+> > chain altogether:
+> >=20
+> > kvm_put_kvm =20
+> >  -> kvm_destroy_vm
+> >   -> kvm_destroy_devices
+> >    -> kvm_vfio_destroy (starting here -- this would no longer be execut=
+ed)
+> >     -> kvm_vfio_file_set_kvm
+> >      -> vfio_file_set_kvm
+> >       -> group->group_lock/group_rwsem =20
+> >=20
+> > because kvm_destroy_devices now can't end up calling kvm_vfio_destroy
+> > and friends, it won't try and acquire the group lock a 2nd time making =
+a
+> > kvm_put_kvm while the group lock is held OK to do.  The vfio_file_set_k=
+vm
+> > call will now always come from a separate thread of execution,
+> > kvm_vfio_group_add, kvm_vfio_group_del or the release thread:
+> >=20
+> > kvm_device_release (where the group->group_lock would not be held since
+> > vfio does not trigger closing of the kvm fd) =20
+> >  -> kvm_vfio_destroy (or, kvm_vfio_release)
+> >   -> kvm_vfio_file_set_kvm
+> >    -> vfio_file_set_kvm
+> >     -> group->group_lock/group_rwsem =20
+>=20
+> Yes, that's my point. If Alex/Jason are also OK with it probably Yi can
+> send that patch separately as a fix to this issue. It's much simpler. =F0=
+=9F=98=8A
 
-    a.main-link {
-      font-weight: bold;
-      font-size: 2em;
-      display: block;
-      width: 100%;
-      text-align: center !important;
-      text-decoration: none;
-    }
+If we can extract that flow separate from the cdev refactoring, ideally
+something that matches the stable kernel backport rules, then that
+sounds like the preferred solution.  Thanks,
 
-    a.mute {
-      color: #aaa;
-      text-decoration: none;
-      font-style: italic;
-    }
-    
-    .button {
-      box-sizing: border-box;
-      width: 100%;
-    }
-    
-    .button>tbody>tr>td {
-      padding-bottom: 15px;
-    }
-    
-    .button table {
-      width: auto;
-    }
-    
-    .button table td {
-      background-color: #ffffff;
-      border-radius: 5px;
-      text-align: center;
-    }
-    
-    .button a {
-      background-color: #ffffff;
-      border: solid 1px #d17100;
-      border-radius: 5px;
-      box-sizing: border-box;
-      color: #d17100;
-      cursor: pointer;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: bold;
-      margin: 0;
-      padding: 12px 25px;
-      text-decoration: none;
-      text-transform: capitalize;
-    }
-    
-    .button-primary table td {
-      background-color: #d17100;
-    }
-    
-    .button-primary a {
-      background-color: #d17100;
-      border-color: #d17100;
-      color: #ffffff;
-    }
-    
-    .last {
-      margin-bottom: 0;
-    }
-    
-    .first {
-      margin-top: 0;
-    }
-    
-    .align-center {
-      text-align: center;
-    }
-    
-    .align-right {
-      text-align: right;
-    }
-    
-    .align-left {
-      text-align: left;
-    }
-    
-    .clear {
-      clear: both;
-    }
-    
-    .mt0 {
-      margin-top: 0;
-    }
-    
-    .mb0 {
-      margin-bottom: 0;
-    }
-    
-    .preheader {
-      color: transparent;
-      display: none;
-      height: 0;
-      max-height: 0;
-      max-width: 0;
-      opacity: 0;
-      overflow: hidden;
-      mso-hide: all;
-      visibility: hidden;
-      width: 0;
-    }
-    
-    .powered-by a {
-      text-decoration: none;
-    }
-    
-    hr {
-      border: 0;
-      border-bottom: 1px solid #f6f6f6;
-      Margin: 20px 0;
-    }
-    
-    @media only screen and (max-width: 620px) {
-      table[class=body] h1 {
-        font-size: 28px !important;
-        margin-bottom: 10px !important;
-      }
-      table[class=body] p,
-      table[class=body] ul,
-      table[class=body] ol,
-      table[class=body] td,
-      table[class=body] span,
-      table[class=body] a {
-        font-size: 16px !important;
-      }
-      table[class=body] .wrapper,
-      table[class=body] .article {
-        padding: 10px !important;
-      }
-      table[class=body] .content {
-        padding: 0 !important;
-      }
-      table[class=body] .main-container {
-        padding: 0 !important;
-        width: 100% !important;
-      }
-      table[class=body] .main {
-        border-left-width: 0 !important;
-        border-radius: 0 !important;
-        border-right-width: 0 !important;
-      }
-      table[class=body] .button table {
-        width: 100% !important;
-      }
-      table[class=body] .button a {
-        width: 100% !important;
-      }
-      table[class=body] .img-responsive {
-        height: auto !important;
-        max-width: 100% !important;
-        width: auto !important;
-      }
-    }
-    
-    @media all {
-      .ExternalClass {
-        width: 100%;
-      }
-      .ExternalClass,
-      .ExternalClass p,
-      .ExternalClass span,
-      .ExternalClass font,
-      .ExternalClass td,
-      .ExternalClass div {
-        line-height: 100%;
-      }
-      .apple-link a {
-        color: inherit !important;
-        font-family: inherit !important;
-        font-size: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-        text-decoration: none !important;
-      }
-      .button-primary table td:hover {
-        background-color: #34495e !important;
-      }
-      .button-primary a:hover {
-        background-color: #34495e !important;
-        border-color: #34495e !important;
-      }
-    }
-	</style> 
- </head> 
- <body> 
-  <table border="0" cellpadding="0" cellspacing="0" class="body"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td class="main-container"> 
-      <div class="content"> 
-       <table class="main"> 
-        <tbody> 
-         <tr> 
-          <td class="wrapper"> 
-           <table border="0" cellpadding="0" cellspacing="0"> 
-            <tbody> 
-             <tr> 
-              <td style="text-align: center; color: #000000"> <h1 style="font-weight: bold">LOWE'S</h1> <a href="http://www.hardwr-lows.info/d6d4G2395BRV8613f474etOA1101A36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQDdSnK7w1SM0pP6wlwDAj/longer-grape"><img alt="" src="http://www.hardwr-lows.info/e3f4r2395gv7ay11r4750k1101N36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQDdSnK5vs10J5ujw2D/applicable-gulfs" width="100%" /></a><br /> &nbsp; <p style="text-align: center; padding: px;font-size: 23px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Lowe's</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> <br /> <br /> &nbsp; 
-               <div style="background: #012168;font-weight: bold; padding: 20px;font-size: 18px; border-radius: 5px ">
-                <a href="http://www.hardwr-lows.info/d6d4G2395BRV8613f474etOA1101A36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQDdSnK7w1SM0pP6wlwDAj/longer-grape" style="text-decoration: none;color: #FFFFFF; display: block; padding: 0px 28%">Go And Start Now</a>
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <div class="footer"> 
-        <table border="0" cellpadding="0" cellspacing="0"> 
-         <tbody> 
-          <tr> 
-           <td class="content-block;" style="background: #C1EFFF; padding: 20px; color: #000000"> <p class="unsubscribe"><span style="text-decoration: none; ">To bring communication to an halt,</span><a href="http://www.hardwr-lows.info/creditable-radium/1b66eC23h95XoN8611o474fZ1101S36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQDdSnK5C10Nr6HWUwDJ" style="text-decoration-line: none; color: white"> <span>Continue Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <big></big><style style="venomous"></style><font id="Parrish"><span lang="alias"></span></font><font id="victimizing"><style><span id="meaningless"></style></span></font><small></small></p> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> 
-      </div> </td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.hardwr-lows.info/8454W2395n85AU11i4751T1101i36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQDdSnK7hR1XqZ06F0wDOX/recapitulation-Ultrix" alt=""/></body>
-</html>
-
-------=_Part_718_781151520.1674153162034--
+Alex
 
