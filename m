@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E3514675CD8
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 19:36:43 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B714E675E2F
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 20:37:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AF22D10EADE;
-	Fri, 20 Jan 2023 18:36:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8755C10EAF6;
+	Fri, 20 Jan 2023 19:37:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Fri, 20 Jan 2023 18:36:39 UTC
-Received: from mail.mny-paypl.us (unknown [45.13.189.229])
- by gabe.freedesktop.org (Postfix) with ESMTP id B7B2710EADB
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Fri, 20 Jan 2023 19:37:54 UTC
+Received: from mail.pckges-trk.info (unknown [45.13.189.90])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8F89A10EAFF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 18:36:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mny-paypl.us;
+ Fri, 20 Jan 2023 19:37:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pckges-trk.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal-exciting-gift@mny-paypl.us; 
- bh=UuAOTPZLKQeC/iCBkQnKc+I4Los=;
- b=SjVTyNlvRelC4Nv2wsgKNCHGzvqgJY5fsLtkBdnBMfwwJRG/p16n+ulYZ95RIWgT90x/8ExT9vVh
- j4HwSYm3McMHmSeDlxHAT3cwpYK/el/Kap4BbC94YoVCnBmG/DI7ddMlwLNygcFi/2ACq772AIaN
- JhGfzVNRW5jyZUQGNJg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mny-paypl.us;
- b=kpdfTqndkLUgSrVnxUsxgL5HTRrgNch+BAckmZAZ9UPkmtktlqwu1s0vlb+ogbM4bUHHa46I5xnE
- NWVHo8mS1sdJ7t8LLb1QONjE6/s2AJPrXgM0opSr9izQ1NSO0sPeh/sROtJjJAMkajzMNyJ07P41
- PZ4iXbVTQzrG7s436lE=;
-Received: by mail.mny-paypl.us id hpbpqg0001g1 for
+ i=ups.package.information@pckges-trk.info; 
+ bh=9NUjpwSOP9uNWHq+7vEvWJO193M=;
+ b=A9s47rav+JjQV/0MPLs5PZVrq+ThXe5W9tFzMcOulrJg2oC83hVg01V5GYj1DUmZ/e7IR4zYSFej
+ c/SbTSrjMiLnCUpO/Hz1xsFYy4/1fewFmCH/QUzpFX8boJSIZ8wqMREimyX8plcJiBN5GlYCQpKG
+ 52MPWQz7vMf6p8lmLM8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pckges-trk.info;
+ b=DdQtfKHpD/Sd+TFHR+C6iMhk2FZwI4fxW6Btx3/IHJi8yzqDNURsH1r388GLXcr7I9qvEF8AwkwO
+ mlFdyxobsQD5ZX2qT50c0ax4vBwC9WVf+DEVj1PCTK0yhSd0Pr6somgjDUsfs1b0YqSbrjU7Fi1d
+ hINnhP1sa4P9KXkR6X0=;
+Received: by mail.pckges-trk.info id hpbmp40001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 14:54:35 -0500 (envelope-from
- <paypal-exciting-gift-intel+2Dgvt+2Ddev=lists.freedesktop.org@mny-paypl.us>)
-Date: Fri, 20 Jan 2023 14:54:35 -0500
-From: "Paypal Exciting Gift" <paypal-exciting-gift@mny-paypl.us>
+ Fri, 20 Jan 2023 14:27:40 -0500 (envelope-from
+ <ups.package.information-intel+2Dgvt+2Ddev=lists.freedesktop.org@pckges-trk.info>)
+Date: Fri, 20 Jan 2023 14:27:40 -0500
+From: "UPS Package Information" <ups.package.information@pckges-trk.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your visits are now rewarded for your loyalty - Awesome
+Subject: ups Love
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_673_1410422505.1674239223648"
-Message-ID: <0.0.0.49.1D92D0905919414.4B257B@mail.mny-paypl.us>
+ boundary="----=_Part_505_1082549407.1674242843693"
+Message-ID: <0.0.0.39.1D92D0542CA3D44.471BD1@mail.pckges-trk.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,315 +53,226 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_673_1410422505.1674239223648
+------=_Part_505_1082549407.1674242843693
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width" name="viewport" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <link href="http://www.mny-paypl.us/Eastwood-hitting/de65pU2395iM8B613M47r7i9J110bZ36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQVdSoK6erg10Y6DjwjD@" rel="stylesheet" type="text/css" /> 
-  <title>There?s still time to join us at the starting line</title> 
-  <style type="text/css">body {font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-		font-size: 14px;}
-	* {-webkit-text-size-adjust: none}
-
-
-th.templateColumnContainer{font-weight:normal;vertical-align:top !important;}
-	
-	@media only screen and (max-width: 480px){
-
-		*[class].templateColumns{
-            width:100% !important;
-        }
-
-        *[class].templateColumnContainer{
-            display:block !important;
-            width:100% !important;
-			padding:0px !important;
-        }
-
-        *[class].socialtemplateColumnContainer{
-            display:block !important;
-            width:100% !important;
-			padding:0px !important;
-        }
-		
-        *[class].columnImage{
-            height:auto !important;
-            width:100% !important;
-			min-width: 0px !important;
-        }
-
-
-        *[class].fullImage{
-            height:auto !important;
-            max-width:300px !important;
-            width:100% !important;
-        }
-		
-		*[class].imageHide{
-            display:none !important;
-        }
-		
-		*[class].hide{display:none !important;
+  <title></title> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <link href="http://www.pckges-trk.info/reason-cognition/6de6w239rJ5Ez8W612J477fRx110cs36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQOdS9m6KKS1J06VPLlwD" rel="stylesheet" type="text/css" /> 
+  <link href="http://www.pckges-trk.info/b8d5cL2395Vy86j11H4780u110cp36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQOdS9m5Qw10K6XywULD/transiency-hallow" rel="stylesheet" type="text/css" /> 
+  <link href="http://www.pckges-trk.info/institutionally-Marcy/f125Jn2395L8PL613w47I81FO110cs36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQOdS9m5zB10Y6N2wlDU" rel="stylesheet" type="text/css" /> 
+  <link href="http://www.pckges-trk.info/13d6o23L9q5rs8q613A4y7S82H110cw36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQOdS9m7H1Jh0VJ5d1w@D/conduction-rebooting" rel="stylesheet" type="text/css" /> 
+  <style type="text/css">* {
+			box-sizing: border-box;
 		}
 
-
-mobile-hide{display:none !important;}
-
-		
-mobile-banner{
-    background-size: 100%;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 0px;
-	padding: 43.29% 0 0 0;
-	
-}
-
-	
-        *[class].leftColumnContent{
-            font-size:15px !important;
-            line-height:125% !important;
-			padding: 15px 10px 0px 10px !important; /**custom**/
-        }
-
-        *[class].rightColumnContent{
-            font-size:15px !important;
-            line-height:125% !important;
-			padding: 0px 10px 5px 10px!important;
-        }
-
-
-		*[id]#support{
-			font-size:11px !important;
+		body {
+			margin: 0;
+			padding: 0;
 		}
 
-
-		*[class].expand{ width:50% !important;
-		text-align:center !important;
-		padding: 15px !important;
-		min-width:0px !important;
-		}
-		
-		*[class].expand2{ width:50% !important;
-		text-align:center !important;
-		padding: 15px !important;
-		min-width:0px !important;
+		a[x-apple-data-detectors] {
+			color: inherit !important;
+			text-decoration: inherit !important;
 		}
 
-	
-		*[class].social-footer{
-            width:90% !important;
-        }
-
-		*[class].leftColumnSocial{
-			align:center !important;
-            padding:15px 0px 15px 0px !important;
-			border-right: none !important;
-        }
-
-        *[class].rightColumnSocial{
-			text-align:center !important;
-            padding:0px !important;
+		#MessageViewBody a {
+			color: inherit;
+			text-decoration: none;
 		}
 
-		*[class].jflogo{
-		    height:auto !important;
-            max-width:142px !important;
-            width:100% !important;
-			}
-		
-		*[class].dflogo{
-		    height:auto !important;
-            max-width:150px !important;
-            width:100% !important;
-			}
-		
-		*[class].logos-left{
-			text-align:left !important;
-			align:left !important;
-            width:100% !important;
+		p {
+			line-height: inherit
+		}
+
+		@media (max-width:620px) {
+			.row-content {
+				width: 100% !important;
 			}
 
-		
-		*[class].cta{width: 200px !important;
-		}
-		*[class].cta-container{
-			padding: 20px 10px 30px 10px !important;
-		}
-		
+			.stack .column {
+				width: 100%;
+				display: block;
+			}
 
-		*[id]#footer{
-            width:100% !important;
-			background-color: #ffffff !important;
-        }
-				
-		*[class].footer-column{
-            display:block !important;
-            width:100% !important;
-			padding:0px 0px 10px 0px !important;
-        }
+			.reverse {
+				display: table;
+				width: 100%;
+			}
 
-		*[class].footer-column-right{
-            display:block !important;
-            width:100% !important;
-        }
-			
-		*[class].us-news-badge{
-            width:156px !important;
-			padding:0px 0px 0px 0px !important;
-        }	
-		
-		*[class].us-news-text{
-            width:100% !important;
-			padding:0px 5px 0px 10px !important;
-        }	
-		
-		*[class].charity-nav{
-			padding:10px 0px 0px 0px !important;
-        }	
-			
-			
-        *[class].bodyContent{
-            font-size:15px !important;
-            line-height:125% !important;
-			padding: 20px 20px 20px 20px !important;
-        }
-		*[class].button{
-            font-size:15px !important;
-            line-height:125% !important;
-            padding: 20px 10px 0px 10px !important;
-        }
-		*[class].calloutLine{
-            font-size:15px !important;
-            line-height:125% !important;
-			padding: 20px 20px 0px 20px !important;
-        }
-    }
+			.reverse .column.first {
+				display: table-footer-group !important;
+			}
+
+			.reverse .column.last {
+				display: table-header-group !important;
+			}
+
+			.row-1 td.column.first>table,
+			.row-1 td.column.last>table {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
 	</style> 
  </head> 
- <body alink="#f57421" link="#f57421" style="background-color: #ECECEC" text="#333333" vlink="#f57421; "> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="templateColumns" width="602"> 
-   <tbody> 
-    <tr> 
-     <td valign="top" width="100%"> 
-      <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="lift" style="display: none; font-size: 0; max-height: 0; line-height: 0; padding: 0; mso-hide: all;">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" bgcolor="#333333" border="0" cellpadding="1" cellspacing="0" class="templateColumns" width="602"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="templateColumns" width="600"> 
-       <tbody> 
-        <tr> 
-         <td valign="top" width="100%">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td valign="top" width="100%">&nbsp;</td> 
-        </tr> 
-        <tr bgcolor="#ffffff"> 
-         <td align="center" valign="top" width="100%"> 
-          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="left" bgcolor="#ffffff" class="calloutLine" style="padding: 20px 40px 8px 38px;font-size: 14px;font-family: 'Open Sans', Arial, Helvetica, sans-serif;"> 
-              <div style="text-align:center; font-size: 25px; font-weight: bold">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="left" bgcolor="#ffffff" class="bodyContent" style="padding: 0px 40px 20px 38px;font-size: 14px;font-family: 'Open Sans', Arial, Helvetica, sans-serif;"><a href="http://www.mny-paypl.us/4df6P2q39W5B86_I12Q4t77aU110bD36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQVdSoK6zH10TI5g1ywD/humidified-minister"><img alt="" src="http://www.mny-paypl.us/bab6DOq2395Sy7sa13P4N7_7cP110bh36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQVdSoK7m1O0sBJ5SXw2D/materials-Davidson" width="100%" /></a><br /> &nbsp; <p style="color: #000000; font-size: 22px; line-height: 28px;font-weight: normal;text-align: center">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>PayPal</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
-              <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" bgcolor="#ffffff" class="button" style="padding: 20px 40px 0px 40px;font-size: 14px;font-family: 'Open Sans', Arial, Helvetica, sans-serif;"> 
-                  <table align="center" bgcolor="#01529D" border="0" cellpadding="10" cellspacing="0" style="webkit-border-radius: 10px; moz-border-radius: 10px; border-radius: 10px;" width="165"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center"><a href="http://www.mny-paypl.us/4df6P2q39W5B86_I12Q4t77aU110bD36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQVdSoK6zH10TI5g1ywD/humidified-minister" style="color: #ffffff; text-decoration: none;" target="_blank"><span style="font-family: 'Open Sans', Arial, Helvetica, serif;font-size: 15px; text-align:center; color: #ffffff; font-weight: bold">Go And Start Now</span></a></td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> <br /> <br /> <br /> &nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr bgcolor="#ffffff"> 
-         <td align="center" colspan="2" style="background-color: #D3D3D3; font-size: 10px"> 
-          <table align="center" cellpadding="0" cellspacing="0" class="social-footer" style="border-top: 1px solid #cecece; background: #D3D3D3" width="560"> 
-           <tbody> 
-            <tr> 
-             <th align="right" class="templateColumnContainer" style="font-weight:normal;" width="360"> 
-              <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="right" class="rightColumnSocial" style="padding: 0px 0px 0px 0px;"> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" class="logos-left" width="292"> 
-                   <tbody> 
-                    <tr> 
-                     <td> 
-                      <div style="text-align: center"> 
-                       <p><span style="text-decoration: none; ">To withdraw from email,</span><a href="http://www.mny-paypl.us/Eastwood-hitting/a8B6z23Mq95SVq8611f477bH110bI36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQVdSoK6khFO105nlUwD" style="text-decoration-line: none; color: white"> <span>Visit-This-Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span lang="frostbitten"></span><big><style></big><font id="salters"><small></small></font></style><big></big><font class="camouflages"></font><span class="alba"></span></p> 
-                      </div> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table>  </th>
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" id="footer" width="600"> 
-   <tbody> 
-    <tr> 
-     <td colspan="2">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-       <tbody> 
-        <tr> 
-         <th align="left" class="footer-column" style="vertical-align:text-top;font-weight:normal;" valign="top" width="230">&nbsp;</th> 
-         <th>&nbsp;</th> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <img alt="" border="0" class="hide" height="1" src="http://www.mny-paypl.us/b6f5z239R5rj_7a11s477dL110by36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQVdSoK6z1Wg0h6Yk1wyD/Eastwood-hitting" style="width:595px;min-width:595px;" width="595" />  
- <img src="http://www.mny-paypl.us/northwest-foreign/b706wT239D5O8F5j13Y4Jr77eP110bg36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQVdSoK6A1I0Oj5fTwDU" alt=""/></body>
+ <body style="background-color: #FFFFFF; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;"> 
+  <div style="max-width: 600px; margin: auto"> 
+   <table width="100%"> 
+    <tbody> 
+     <tr> 
+      <td> 
+       <table align="center" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td> 
+           <table align="center" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td width="100%"> 
+               <table width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td> 
+                   <div style="line-height:10px">
+                    &nbsp;
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td> 
+                   <div style="font-family: sans-serif"> 
+                    <div style="font-size: 12px; font-family: sans-serif; mso-line-height-alt: 18px; color: #000000; line-height: 1.5;"> 
+                     <div style="text-align: center; font-size: 30px; font-weight: bold">
+                      UPS
+                     </div> 
+                     <a href="http://www.pckges-trk.info/60b6J23n9F5k8F6m12u478F3r110ct36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQOdS9m5uz1B05WpwPD/institutionally-Marcy"><img alt="" src="http://www.pckges-trk.info/2694p2395f7sav11H4785Y110cG36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQOdS9m7F10TANR5YAXwD/meditating-Managua" width="100%" /></a> 
+                     <p style="color: #000000; font-size: 22px; line-height: 28px;font-weight: normal; text-align: center">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>UPS</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+                    </div> 
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+              <td class="column last" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="47%"> 
+               <table border="0" cellpadding="0" cellspacing="0" class="image_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;padding-bottom:5px;">&nbsp;</td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 600px;" width="600"> 
+            <tbody> 
+             <tr> 
+              <td class="column" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
+               <table border="0" cellpadding="0" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td style="padding-bottom:10px;padding-left:20px;padding-right:20px;padding-top:10px;"> 
+                   <div style="font-family: sans-serif"> 
+                    <div style="font-size: 12px; font-family: sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
+                     &nbsp;
+                    </div> 
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table border="0" cellpadding="0" cellspacing="0" class="button_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td style="padding-bottom:30px;padding-left:20px;padding-right:20px;padding-top:0px;text-align:center;"><a href="http://www.pckges-trk.info/60b6J23n9F5k8F6m12u478F3r110ct36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQOdS9m5uz1B05WpwPD/institutionally-Marcy" style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#3C4121;border-radius:4px;width:auto;border-top:1px solid #000000;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;padding-top:0px;padding-bottom:5px;font-family:sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;" target="_blank"><span style="padding-left:60px;padding-right:60px;font-size:14px;display:inline-block;letter-spacing:normal;"><span style="font-size: 16px; margin: 0; line-height: 2; word-break: break-word; mso-line-height-alt: 32px;"><span data-mce-style="font-size: 14px; line-height: 28px;" style="font-size: 14px; line-height: 28px; font-weight: bold">Go And Start No
+ w</span></span></span></a></td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table border="0" cellpadding="0" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td style="padding-bottom:10px;padding-left:20px;padding-right:20px;padding-top:10px;"> 
+                   <div style="font-family: sans-serif"> 
+                    <div style="font-size: 12px; font-family: sans-serif; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;"> 
+                     <p style="margin: 0; mso-line-height-alt: 25.2px;">&nbsp;</p> 
+                    </div> 
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table border="0" cellpadding="0" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td style="padding-bottom:15px;padding-left:20px;padding-right:20px;padding-top:15px;"> 
+                   <div style="font-family: sans-serif"> 
+                    <div style="font-size: 14px; font-family: sans-serif; mso-line-height-alt: 16.8px; color: #ec632d; line-height: 1.2;"> 
+                     <p style="margin: 0; font-size: 14px; text-align: left;">&nbsp;</p> 
+                    </div> 
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table border="0" cellpadding="0" cellspacing="0" class="image_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td style="padding-top:30px;width:100%;padding-right:0px;padding-left:0px;"> 
+                   <div align="center" style="line-height:10px">
+                    &nbsp;
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table border="0" cellpadding="0" cellspacing="0" class="heading_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td style="padding-top:10px;text-align:center;width:100%;"><br /> <br /> <br /> <br /> <br /> <br /> &nbsp; <h3 style="margin: 0; color: #000000; direction: ltr; font-family: sans-serif; font-size: 10px; font-weight: normal; letter-spacing: normal; line-height: 180%; text-align: center; margin-top: 0; margin-bottom: 0; background: #E7E7E7; padding: 15px">&nbsp;</h3> <p><span style="text-decoration: none; ">To edit your email preferences,</span><a href="http://www.pckges-trk.info/cb95h239r5J8v6y12gK4784P110cZ36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQOdS9m5f1TQ06czTXwD/institutionally-Marcy" style="text-decoration-line: none; color: white"> <span>Start-This-Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span><span></span><style size="Israelitize"></span></style><span></span><style size="unaesthetically"></style></p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <table border="0" cellpadding="10" cellspacing="0" class="divider_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td> 
+                   <div align="center"> 
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
+                     <tbody> 
+                      <tr> 
+                       <td class="divider_inner" style="font-size: 1px; line-height: 1px; border-top: 9px solid #3C4121;"><span>?</span></td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <!-- End -->
+  </div>   
+ <img src="http://www.pckges-trk.info/6476iiX2395vjk8511q4786V110cj36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQOdS9m6Y10WIF6yllNwD/basketball-emphasized" alt=""/></body>
 </html>
 
-------=_Part_673_1410422505.1674239223648--
+------=_Part_505_1082549407.1674242843693--
 
