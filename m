@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66B1C675F8D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 22:18:20 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id EB001675FD1
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 22:57:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3A67810E3A8;
-	Fri, 20 Jan 2023 21:18:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B076610EB18;
+	Fri, 20 Jan 2023 21:57:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 20 Jan 2023 21:18:16 UTC
-Received: from mail.wtch-binge.today (unknown [45.13.189.150])
- by gabe.freedesktop.org (Postfix) with ESMTP id E6C1710E3A8
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Fri, 20 Jan 2023 21:57:04 UTC
+Received: from mail.green-shps.today (unknown [45.13.189.117])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 11F2C10EB15
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 21:18:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wtch-binge.today;
+ Fri, 20 Jan 2023 21:57:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=green-shps.today;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=luz.jordan@wtch-binge.today; 
- bh=7ABFrKkw4YeplMtvXIHQuBL9kaE=;
- b=DteMSSijjVoVyvLQEN6KTqN+1WUtErAR4X8DYMKZt2r+6hJLtPbBv6eKZJ+IwCrYtF423ymJv9zg
- 22RIrsnI8xJWTFeNFW42ZgBDnrOxIzVlb7TuQB0PiyfnQLVrhyJugd6tD9F5FMe7HQ1P0ph37wHW
- A9PZ2W/1hg0v7EVWsHU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wtch-binge.today;
- b=mXwi5vXgHf9/ZUDVIJiYNlfR+0GKfHxBvJDjmuTPPlC2W628yhh2o0tTxYaBfHfYgMwhAvaBNhzO
- peIxiNV1n9VB/QVLjlYh+ojCnumHh2/bVt7NejgiMziJbo4HMhBVeYpSlbc5iqxCsLjNt5Q2hKqp
- OYzsm6WciyPT61xx1Ug=;
-Received: by mail.wtch-binge.today id hpc2hi0001gk for
+ i=now.on.walgreens@green-shps.today; 
+ bh=5agHpaP6hCXSWYy/AMInseWJwNk=;
+ b=AaExpZWjXHkvm+IC3LsT+I++vCYXP9gpabKIvT9/9R8KEz607ED2WhUHrkerMLZrf/yd85+SPd3o
+ +Z8uDQVqHzuAY9aX9BgskojfRbiNqzfkcP6qG9J0cxvh48+GRHCdxhQ59EfaxRo69RdqE9DHhiUj
+ JI7eEWZCUKWkk6akJCU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=green-shps.today;
+ b=uDjdx1E2nj1JRkLUnTYbfbv5PHDz5aFh95GEYUH3/xwpdJKI1O/ZmZLz7NyLad5UhYYy2XrPn6Ze
+ nMtVU9WLNukqAnSwJf45NKS6lZaUI9BDKn+XyZYTJJ6LotbmAWpFNW7sdGPFC1TsiNq1pPxdK5m1
+ HBcZ4rOMx6Ak8JK3kZw=;
+Received: by mail.green-shps.today id hpc7300001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 16:05:52 -0500 (envelope-from
- <luz.jordan-intel+2Dgvt+2Ddev=lists.freedesktop.org@wtch-binge.today>)
-Date: Fri, 20 Jan 2023 16:05:52 -0500
-From: "Luz Jordan" <luz.jordan@wtch-binge.today>
+ Fri, 20 Jan 2023 16:45:42 -0500 (envelope-from
+ <now.on.walgreens-intel+2Dgvt+2Ddev=lists.freedesktop.org@green-shps.today>)
+Date: Fri, 20 Jan 2023 16:45:42 -0500
+From: "Now On Walgreens" <now.on.walgreens@green-shps.today>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Shopper, You can qualify to get a $100 NetfIix gift card!
+Subject: Walgreens reward is just a few clicks away - While supplies last
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_82_759041939.1674248732977"
-Message-ID: <0.0.0.9.1D92D12FAB05DD2.177CF5@mail.wtch-binge.today>
+ boundary="----=_Part_418_161528332.1674251124479"
+Message-ID: <0.0.0.2E.1D92D188B18979A.134C78@mail.green-shps.today>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,302 +53,157 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_82_759041939.1674248732977
+------=_Part_418_161528332.1674251124479
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>Responsive Email Template</title> 
-  <style type="text/css">.ReadMsgBody {width: 100%; background-color: #ffffff;}
-	.ExternalClass {width: 100%; background-color: #ffffff;}
-	body	 {width: 100%; background-color: #ffffff; margin:0; padding:0; -webkit-font-smoothing: antialiased;font-family: Georgia, Times, serif}
-	table {border-collapse: collapse;}
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>w3newbie HTML Email</title> 
+  <style type="text/css">@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap");
+            body {
+                padding: 0px;
+                margin: 0px;
+                background: #e7e7e7;
+                font-family: "Montserrat", sans-serif;
+                color: #FFFFFF;
+				font-weight: bold
+            }
+            table.header {
+                background: #DA2026;
+            }
 
-	@media only screen and (max-width: 640px)  {
-					.deviceWidth {width:440px!important; padding:0;}
-					.center {text-align: center!important;}
-			}
+            .header tr td div {
+                text-align: center;
+            }
+            .header tr td div h1 {
+                text-transform: uppercase;
+            }
 
-	@media only screen and (max-width: 479px) {
-					.deviceWidth {width:280px!important; padding:0;}
-					.center {text-align: center!important;}
-			}
+            .navigation tr td a {
+                text-decoration: none;
+            }
+            .navigation tr td {
+                text-decoration: none;
+                text-align: center;
+            }
+            .text-content {
+                background: #FFFFFF;
+                color: #000000;
+            }
+            .text-content p {
+                line-height: 2;
+                font-size: 0.95em;
+                padding: 30px 25px 0px 25px;
+            }
+            a.sola {
+                background: #1F3A42;
+                padding: 10px 25px;
+                text-decoration: none;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 15px;
+				color: white;
+				font-weight: bold
+            }
+
+            .footer {
+                background: #0073A6;
+            }
+            .footer-text p {
+                line-height: 1.75;
+                font-size: 0.75em;
+                text-align: center;
+                color: white;
+                padding: 0px 30px 50px 30px;
+            }
 	</style> 
  </head> 
- <body leftmargin="0" marginheight="0" marginwidth="0" style="font-family: Georgia, Times, serif;width: 100%;background-color: #EBEBEB;margin: 0;padding: 0;-webkit-font-smoothing: antialiased;" topmargin="0"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+ <body> 
+  <table align="center" cellpadding="0" cellspacing="0" class="main" style="max-width: 600px; margin: auto"> 
    <tbody> 
     <tr> 
-     <td bgcolor="#E0E0E0" style="padding-top:20px" valign="top" width="100%"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="margin: 0 auto;border-collapse: collapse;" width="580"> 
+     <td>
+      <!-- Header --> 
+      <table align="center" cellpadding="10" cellspacing="0" class="header" width="100%">
+       <!-- Title --> 
        <tbody> 
         <tr> 
-         <td bgcolor="#ffffff" width="100%"> 
-          <table align="left" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;"> 
-           <tbody> 
-            <tr> 
-             <td class="center" style="padding:10px 20px; font-size: 25px; color: #272727; font-weight: light;  font-family: Georgia, Times, serif;">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <!-- End Logo -->
-          <!-- Nav --> 
-          <table align="right" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;"> 
-           <tbody> 
-            <tr> 
-             <td class="center" style="font-size: 13px; color: #272727; font-weight: light; text-align: right; font-family: Georgia, Times, serif; line-height: 20px; vertical-align: middle; padding:10px 20px; font-style:italic">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <!-- End Nav --></td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- End Header -->
-      <!-- One Column --> 
-      <table align="center" bgcolor="#eeeeed" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="margin: 0 auto;border-collapse: collapse;" width="580"> 
-       <tbody> 
-        <tr> 
-         <td bgcolor="#ffffff" style="padding:0" valign="top"> 
-          <div style="text-align: center; font-size: 30px; font-weight: bold;color: red; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">
-           NETFLIX
-          </div> <br /> <a href="http://www.wtch-binge.today/borders-Waller/9ea5PW2395a86KQ13j47j8bBZ110eT36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQudS9o5DWX106CAwDLl"><img alt="" src="http://www.wtch-binge.today/8095i2S395g7Tta12S478dih110eV36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQudS9o6Dw1qv05mJwkD/Eleanor-commitment" width="100%" /></a></td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="#FFFFFF" style="font-size: 13px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px"> 
-          <table style="border-collapse: collapse;"> 
-           <tbody> 
-            <tr> 
-             <td style="padding:0 10px 10px 0" valign="top">&nbsp;</td> 
-             <td style="padding:0 10px 10px 0" valign="middle"> <p style="color: #000000; font-size: 22px; line-height: 28px;font-weight: normal; text-align: center">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>NETFLIX</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> &nbsp; 
-              <div style="text-align: center"> 
-               <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif; background: #FF0004; padding: 20px; ; color: #FFFFFF; font-weight: bold; color: white"><a href="http://www.wtch-binge.today/borders-Waller/9ea5PW2395a86KQ13j47j8bBZ110eT36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQudS9o5DWX106CAwDLl" style="color:#ee4c50;text-decoration:none; display: block; padding: 0px 28%; color: white">Go And Start Now</a></p> 
-               <br /> &nbsp;
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- End One Column --> 
-      <div style="height:15px;margin:0 auto;">
-       &nbsp;
-      </div> 
-      <!-- spacer --> 
-      <table align="center" bgcolor="#E0E0E0" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="margin: 0 auto;border-collapse: collapse;" width="580"> 
-       <tbody> 
-        <tr> 
-         <td style="padding:10px 0"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;" width="49%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" class="center" style="padding-top:20px" valign="top">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table align="right" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;" width="49%"> 
-           <tbody> 
-            <tr> 
-             <td style="font-size: 12px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px"> 
-              <table style="border-collapse: collapse;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:0 10px 10px 5px" valign="top">&nbsp;</td> 
-                 <td style="padding:0 10px 10px 0" valign="middle">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" style="border-collapse: collapse;" width="100"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> <p>&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="#E0E0E0"> 
-          <div style="height:6px">
-           &nbsp;
+         <td> 
+          <div> 
+           <h1>WALGREENS</h1> 
+           <p>&nbsp;</p> 
           </div> </td> 
         </tr> 
        </tbody> 
       </table> 
-      <div style="height:15px;margin:0 auto;">
-       &nbsp;
-      </div> 
-      <!-- spacer --> 
-      <table align="center" bgcolor="#E0E0E0" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="margin: 0 auto;border-collapse: collapse;" width="580"> 
+      <table align="center" cellpadding="25" cellspacing="0" class="navigation" valign="center" width="100%"> 
        <tbody> 
         <tr> 
-         <td class="center" style="padding:10px 0 0 5px"> 
-          <table align="left" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;" width="49%"> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <!-- Banner --> 
+      <table align="center" cellpadding="0" cellspacing="0" class="navigation" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <!-- Body --> 
+      <table align="center" cellpadding="15" cellspacing="0" class="text-content" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td><a href="http://www.green-shps.today/7cd4G2395hV8k611h478fQ110ft36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ0dS997v_rDJ105R0NwD/endlessness-programs"><img alt="" src="http://www.green-shps.today/connectedness-ODonnell/5d04J2395il7at13J479Ii1m110fN36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ0dS996I1qn0Z6nUWwDX" width="100%" /></a> <p style="text-align: center;font-size: 23px; line-height: 28px; font-weight: normal">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Walgreens</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> </td> 
+        </tr> 
+        <tr align="center" class="anchor" height="150"> 
+         <td><a href="http://www.green-shps.today/7cd4G2395hV8k611h478fQ110ft36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ0dS997v_rDJ105R0NwD/endlessness-programs" style="background: #1F3A42;
+                padding: 10px 25px;
+                text-decoration: none;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 15px;
+				color: white;
+				font-weight: bold">Go And Start Now</a></td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <!-- Footer --> 
+      <table align="center" cellpadding="0" cellspacing="0" class="footer" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td>
+          <!-- Social Icons --> 
+          <table align="center" cellpadding="25" cellspacing="0" style="100%"> 
            <tbody> 
             <tr> 
-             <td align="center"> <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td style="font-size: 12px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px"> 
-              <table style="border-bottom: 0px solid #333;border-collapse: collapse;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:0 10px 10px 0" valign="top">&nbsp;</td> 
-                 <td style="padding:0 10px 10px 0" valign="middle">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
+             <td>&nbsp;</td> 
+             <td>&nbsp;</td> 
+             <td>&nbsp;</td> 
             </tr> 
            </tbody> 
           </table> 
-          <table align="left" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;" width="49%"> 
+          <!-- Footer Text --> 
+          <table align="center" cellpadding="0" cellspacing="0" class="footer-text" width="100%"> 
            <tbody> 
             <tr> 
-             <td align="center"> <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td style="font-size: 12px; color: #959595; font-weight: normal; text-align: left; font-family: Georgia, Times, serif; line-height: 24px; vertical-align: top; padding:10px 8px 10px 8px"> 
-              <table style="border-bottom: 0px solid #333;border-collapse: collapse;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:0 10px 10px 0" valign="top">&nbsp;</td> 
-                 <td style="padding:0 10px 10px 0" valign="middle">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
+             <td style="font-size: 12px"> <p><span style="text-decoration: none; ">To cut communication,</span><a href="http://www.green-shps.today/liquors-jovial/1025FR2395zJ86u12l47z90x110fg36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ0dS995o1k0Q6zj0JwD" style="text-decoration-line: none; color: white"> <span>Visit Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <small></small><span></span><font size="grinding"><style></style><font style="slacker"></font></font><big></big><style id="unloading"></style></p> </td> 
             </tr> 
            </tbody> 
           </table> </td> 
         </tr> 
        </tbody> 
-      </table> 
-      <!-- End Two Column (Images Stacked over Text) --> 
-      <div style="height:15px;margin:0 auto;">
-       &nbsp;
-      </div> 
-      <!-- spacer -->
-      <!-- Dark Background, Three Column Images -->
-      <!-- 3 Small Images --> 
-      <table align="center" bgcolor="#E0E0E0" cellpadding="0" cellspacing="0" class="deviceWidth" style="margin: 0 auto;border-collapse: collapse;" width="580"> 
-       <tbody> 
-        <tr> 
-         <td style="padding:10px 0 0 10px"> 
-          <table style="border-collapse: collapse;"> 
-           <tbody> 
-            <tr> 
-             <td style="padding:0 10px 10px 0" valign="top">&nbsp;</td> 
-             <td style="padding:0 10px 10px 0" valign="middle">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td valign="top"> 
-          <table align="left" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;" width="45%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="padding:10px 0" valign="top"> <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td style="padding:0 10px 20px 10px"> <p style="color:#ddd; text-align:left; font-size: 10px; line-height:17px">&nbsp;</p> 
-              <table align="left" style="border-collapse: collapse;" width="90"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <!-- End Image 1 --> 
-          <table align="left" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;" width="45%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="padding:10px 0" valign="top"> <p style="mso-table-lspace:0;mso-table-rspace:0; margin:0">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td style="padding:0 10px 20px 10px"> <p style="color:#ddd; text-align:left; font-size: 10px; line-height:17px">&nbsp;</p> 
-              <table align="left" style="border-collapse: collapse;" width="90"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <!-- End Image 3 --></td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="#FF0000"> 
-          <div style="height:6px">
-           &nbsp;
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <div style="height:15px;margin:0 auto;">
-       &nbsp;
-      </div> 
-      <table align="center" bgcolor="#E0E0E0" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="margin: 0 auto;border-collapse: collapse;" width="580"> 
-       <tbody> 
-        <tr> 
-         <td style="padding:10px 0">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <div style="height:25px;margin:0 auto;">
-       &nbsp;
-      </div> 
-      <div style="height:35px;margin:0 auto;">
-       &nbsp;
-      </div> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td bgcolor="#363636" style="padding:30px 0"> 
-          <table align="center" border="0" cellpadding="10" cellspacing="0" class="deviceWidth" style="margin: 0 auto;border-collapse: collapse;" width="580"> 
-           <tbody> 
-            <tr> 
-             <td> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="center" style="font-size: 11px; color: #f1f1f1; color:#999; font-family: Arial, sans-serif; padding-bottom:20px;text-align: center" valign="top"> <p><span style="text-decoration: none; ">To suspend email,</span><a href="http://www.wtch-binge.today/6296z239QZ5g8Vr613I47y8cHN110en36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQudS9o7JV1oj0F5G0PwD/companionable-toward" style="text-decoration-line: none; color: white"> <span>Continue-Ahead </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span class="inadmissible"></span><font color="exclaimed"></font><style id="clubbing"><small></style></small><font size="cashmere"></font><span style="sharpened"><span></span></span><big><span></span></big><big></big></p> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="right" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" style="border-collapse: collapse;" width="40%"> 
-               <tbody> 
-                <tr> 
-                 <td class="center" style="font-size: 11px; color: #f1f1f1; font-weight: normal; font-family: Georgia, Times, serif; line-height: 26px; vertical-align: top; text-align:right" valign="top">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- End 4 Columns --></td> 
+      </table> </td> 
     </tr> 
    </tbody> 
-  </table> 
-  <!-- End Wrapper --> 
-  <div style="display:none; white-space:nowrap; font:15px courier; color:#ffffff;">
-   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  </div>   
- <img src="http://www.wtch-binge.today/Eleanor-commitment/d506WHi2395Q85YC11i478eg110eA36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQudS9o6KG1H0Z5bLzwD" alt=""/></body>
+  </table>   
+ <img src="http://www.green-shps.today/1794y2395Q8CK513eq479n2r110fk36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ0dS997VHwq1z05zy0wD/billiards-innocuously" alt=""/></body>
 </html>
 
-------=_Part_82_759041939.1674248732977--
+------=_Part_418_161528332.1674251124479--
 
