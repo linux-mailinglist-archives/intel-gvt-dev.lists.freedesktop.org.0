@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB001675FD1
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 22:57:07 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B1626761C1
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 00:49:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B076610EB18;
-	Fri, 20 Jan 2023 21:57:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6CD3310EB40;
+	Fri, 20 Jan 2023 23:49:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Fri, 20 Jan 2023 21:57:04 UTC
-Received: from mail.green-shps.today (unknown [45.13.189.117])
- by gabe.freedesktop.org (Postfix) with ESMTP id 11F2C10EB15
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 20 Jan 2023 23:49:49 UTC
+Received: from mail.got-tckts.today (unknown [45.13.189.86])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1367A10EB3B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 21:57:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=green-shps.today;
+ Fri, 20 Jan 2023 23:49:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=got-tckts.today; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=now.on.walgreens@green-shps.today; 
- bh=5agHpaP6hCXSWYy/AMInseWJwNk=;
- b=AaExpZWjXHkvm+IC3LsT+I++vCYXP9gpabKIvT9/9R8KEz607ED2WhUHrkerMLZrf/yd85+SPd3o
- +Z8uDQVqHzuAY9aX9BgskojfRbiNqzfkcP6qG9J0cxvh48+GRHCdxhQ59EfaxRo69RdqE9DHhiUj
- JI7eEWZCUKWkk6akJCU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=green-shps.today;
- b=uDjdx1E2nj1JRkLUnTYbfbv5PHDz5aFh95GEYUH3/xwpdJKI1O/ZmZLz7NyLad5UhYYy2XrPn6Ze
- nMtVU9WLNukqAnSwJf45NKS6lZaUI9BDKn+XyZYTJJ6LotbmAWpFNW7sdGPFC1TsiNq1pPxdK5m1
- HBcZ4rOMx6Ak8JK3kZw=;
-Received: by mail.green-shps.today id hpc7300001gh for
+ i=heather-hadel@got-tckts.today; 
+ bh=YmTFaId152GxO8+4ROTkilrbI90=;
+ b=eBzQ5xDLaA/X9Zn9CDM0RTdOkLW0ywe5RNNwrnDIZofu3lMYIt41qJKy/t6/KYrfWg8e7P4hMBkc
+ X7R23eoseBUPY9FXsS7djx88SY1se6BADKS2P3lCLn8Y3CkYbQwduBUnr4iPBfcVe/BmpF8hmk9q
+ 1iEuMl4gaLgJUvXDYWg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=got-tckts.today;
+ b=QaGC/1eNMItnGkjdayUT4GBsfaYlP4c8pEZ2PitWkdlx296SlXqJ+cXHunm4YCGKGoX12oLDMjOh
+ qCGTkbIzOmYqa9dORomp0I6xqhGoRJ2rizmzNT40+ecARC2m8alsdfSd9lJ/enRPSJM9PoiLEhBt
+ Od33Q6/T1UjgfCs3IQI=;
+Received: by mail.got-tckts.today id hpck9q0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 16:45:42 -0500 (envelope-from
- <now.on.walgreens-intel+2Dgvt+2Ddev=lists.freedesktop.org@green-shps.today>)
-Date: Fri, 20 Jan 2023 16:45:42 -0500
-From: "Now On Walgreens" <now.on.walgreens@green-shps.today>
+ Fri, 20 Jan 2023 18:38:13 -0500 (envelope-from
+ <heather-hadel-intel+2Dgvt+2Ddev=lists.freedesktop.org@got-tckts.today>)
+Date: Fri, 20 Jan 2023 18:38:13 -0500
+From: Heather Hadel <heather-hadel@got-tckts.today>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Walgreens reward is just a few clicks away - While supplies last
+Subject: Up to $1OO Bonus for your feedback about Southwest
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_418_161528332.1674251124479"
-Message-ID: <0.0.0.2E.1D92D188B18979A.134C78@mail.green-shps.today>
+ boundary="----=_Part_328_160555154.1674257880625"
+Message-ID: <0.0.0.24.1D92D2843093A6C.3A1AA7@mail.got-tckts.today>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,157 +53,317 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_418_161528332.1674251124479
+------=_Part_328_160555154.1674257880625
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>w3newbie HTML Email</title> 
-  <style type="text/css">@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap");
-            body {
-                padding: 0px;
-                margin: 0px;
-                background: #e7e7e7;
-                font-family: "Montserrat", sans-serif;
-                color: #FFFFFF;
-				font-weight: bold
-            }
-            table.header {
-                background: #DA2026;
-            }
+  <title>Document</title> 
+  <style type="text/css">body{
+            margin: 0;
+            background-color: #cccccc;
+        }
+        table{
+            border-spacing: 0;
 
-            .header tr td div {
-                text-align: center;
-            }
-            .header tr td div h1 {
-                text-transform: uppercase;
-            }
+        }
+        td{
+            padding: 0;
 
-            .navigation tr td a {
-                text-decoration: none;
-            }
-            .navigation tr td {
-                text-decoration: none;
-                text-align: center;
-            }
-            .text-content {
-                background: #FFFFFF;
-                color: #000000;
-            }
-            .text-content p {
-                line-height: 2;
-                font-size: 0.95em;
-                padding: 30px 25px 0px 25px;
-            }
-            a.sola {
-                background: #1F3A42;
-                padding: 10px 25px;
-                text-decoration: none;
-                text-align: center;
-                text-transform: uppercase;
-                font-size: 15px;
-				color: white;
-				font-weight: bold
-            }
+        }
+        img{
+            border: 0;
 
-            .footer {
-                background: #0073A6;
-            }
-            .footer-text p {
-                line-height: 1.75;
-                font-size: 0.75em;
-                text-align: center;
-                color: white;
-                padding: 0px 30px 50px 30px;
-            }
+        }
+        .wrapper{
+            width: 100%;
+            table-layout: fixed;
+            background-color: #cccccc;
+            padding-bottom: 60px;
+        }
+        .main{
+            background-color: #ffffff;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            border-spacing: 0;
+            font-family: sans-serif;
+            color:#171a1b ;
+
+        }
+        .two-column{
+            text-align: center;
+            font-size: 0;
+        }
+        .two-column .column{
+            width: 100%;
+            max-width: 300px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }
+        .three-column{
+            text-align: center;
+            font-size: 0;
+            padding: 15px 0 25px;
+        }
+        .three-column .column{
+            width: 100%;
+            max-width: 200px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }
+        .three-column .padding{
+            padding: 15px;
+        }
+        .three-column .content{
+            font-size: 15px;
+            line-height: 20px;
+            padding: 0 5px;
+
+        }
+        .two-column.last{
+            padding: 15px 0;
+        }
+        .two-column .padding{
+            padding:20px ;
+
+
+        }
+        .two-column .content{
+            font-size: 15px;
+            line-height: 20px;
+            text-align: center;
+        }
+        .button{
+            background-color: #ffffff;
+            color: #171a1b;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+
+        }
+        .button-dark{
+            background-color: #154BB7;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+
+        }
 	</style> 
  </head> 
  <body> 
-  <table align="center" cellpadding="0" cellspacing="0" class="main" style="max-width: 600px; margin: auto"> 
-   <tbody> 
-    <tr> 
-     <td>
-      <!-- Header --> 
-      <table align="center" cellpadding="10" cellspacing="0" class="header" width="100%">
-       <!-- Title --> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <div> 
-           <h1>WALGREENS</h1> 
-           <p>&nbsp;</p> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" cellpadding="25" cellspacing="0" class="navigation" valign="center" width="100%"> 
-       <tbody> 
-        <tr> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- Banner --> 
-      <table align="center" cellpadding="0" cellspacing="0" class="navigation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- Body --> 
-      <table align="center" cellpadding="15" cellspacing="0" class="text-content" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td><a href="http://www.green-shps.today/7cd4G2395hV8k611h478fQ110ft36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ0dS997v_rDJ105R0NwD/endlessness-programs"><img alt="" src="http://www.green-shps.today/connectedness-ODonnell/5d04J2395il7at13J479Ii1m110fN36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ0dS996I1qn0Z6nUWwDX" width="100%" /></a> <p style="text-align: center;font-size: 23px; line-height: 28px; font-weight: normal">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Walgreens</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> </td> 
-        </tr> 
-        <tr align="center" class="anchor" height="150"> 
-         <td><a href="http://www.green-shps.today/7cd4G2395hV8k611h478fQ110ft36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ0dS997v_rDJ105R0NwD/endlessness-programs" style="background: #1F3A42;
-                padding: 10px 25px;
-                text-decoration: none;
-                text-align: center;
-                text-transform: uppercase;
-                font-size: 15px;
-				color: white;
-				font-weight: bold">Go And Start Now</a></td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!-- Footer --> 
-      <table align="center" cellpadding="0" cellspacing="0" class="footer" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td>
-          <!-- Social Icons --> 
-          <table align="center" cellpadding="25" cellspacing="0" style="100%"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <!-- Footer Text --> 
-          <table align="center" cellpadding="0" cellspacing="0" class="footer-text" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td style="font-size: 12px"> <p><span style="text-decoration: none; ">To cut communication,</span><a href="http://www.green-shps.today/liquors-jovial/1025FR2395zJ86u12l47z90x110fg36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ0dS995o1k0Q6zj0JwD" style="text-decoration-line: none; color: white"> <span>Visit Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <small></small><span></span><font size="grinding"><style></style><font style="slacker"></font></font><big></big><style id="unloading"></style></p> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.green-shps.today/1794y2395Q8CK513eq479n2r110fk36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ0dS997VHwq1z05zy0wD/billiards-innocuously" alt=""/></body>
+  <center class="wrapper"> 
+   <table class="main" width="100%">
+    <!--Top Border--> 
+    <tbody> 
+     <tr> 
+      <td height="8" style="background-color: #171a1b;">&nbsp;</td> 
+     </tr> 
+     <!--Logo Section--> 
+     <tr> 
+      <td style="padding: 14px 0 4px;"> 
+       <table border="0" width="100%"> 
+        <tbody align="center"> 
+         <tr> 
+          <td width="5%">&nbsp;</td> 
+          <td width="90%"><br /> <br /> &nbsp; 
+           <div style="font-weight: bold;font-size: 30px">
+            &nbsp;
+           </div> <a href="http://www.got-tckts.today/c9b5n_2395LA86p13g4u793kO1110N36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTdS9d6qg10os5bqlwD/crashes-predicated"><img alt="" src="http://www.got-tckts.today/Bellwood-uniformity/6666w2G39X5SSk7a13fu479g5F1110z36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQTdS9d6jB1m0I6l1NwDA" width="60%" /></a><br /> <br /> <a href="http://www.got-tckts.today/c9b5n_2395LA86p13g4u793kO1110N36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTdS9d6qg10os5bqlwD/crashes-predicated"><img src="http://www.got-tckts.today/skills-stingy/H305W239K5y7ans13K4l79I6_1110n36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQTdS9d5V1To06iMlUwD" title="source: imgur.com" width="80%" /></a> <p style="color: #000000; font-size: 22px; line-height: 33px;font-weight: normal; padding: 20px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Southwest</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> &nbsp; <p style="font: size 20px;
+ font-weight:bold;"><a class="button-dark" href="http://www.got-tckts.today/c9b5n_2395LA86p13g4u793kO1110N36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTdS9d6qg10os5bqlwD/crashes-predicated">Go And Start Now</a></p> </td> 
+          <td width="5%">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+          <td>&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="two-column"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td>asdasdasdasdasd</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td style="padding: 10px 72px;">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <!--Banner Image--> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <!--Three Column Section--> 
+     <tr> 
+      <td> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="three-column"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td> <p style="font-weight: bold; font-size: 20px;">&nbsp;</p> <p>&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td> <p style="font-weight: bold; font-size: 20px;">&nbsp;</p> <p>&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <!-- Two Colimn Section--> 
+     <tr> 
+      <td style="background-color: #FFFFFF;color:#ffffff;"> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="two-column last"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td> <p style="font-weight: bold; font-size: 18px;">&nbsp;</p> <p>&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <!--Title Text and Button--> 
+     <tr> 
+      <td style="padding: 15px 0 50px;"> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td style="text-align: center; padding: 15px;">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <!--Footer--> 
+     <tr> 
+      <td style="background-color: #21529E;"> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td style="text-align: center;padding: 45px 20px;color: #ffffff; font-size: 10px"> <p><span style="text-decoration: none; ">To abandon email,</span><a href="http://www.got-tckts.today/spares-intricacies/1986uvg2395S8v6U13wTm4794R1110G36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQTdS9d7p1KRx0i5Yq3wD" style="text-decoration-line: none; color: white"> <span>Visit_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span color="Carboloy"></span><span dir="handmaid"><big><small></span><font></big></font><font></small></font><span><font id="damnation"></font><span id="intemperate"><style></style><style></span></span></style></p> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </center>   
+ <img src="http://www.got-tckts.today/4676jQ239N5w8F5x13y47YZ97W1110p36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQTdS9d5tF10D5k@wDA/Eurydice-cathedrals" alt=""/></body>
 </html>
 
-------=_Part_418_161528332.1674251124479--
+------=_Part_328_160555154.1674257880625--
 
