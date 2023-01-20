@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 328BB675A51
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 17:43:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 415EE67595D
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Jan 2023 16:56:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F22A810EAAE;
-	Fri, 20 Jan 2023 16:43:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 07B2510EA9A;
+	Fri, 20 Jan 2023 15:56:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Fri, 20 Jan 2023 16:43:35 UTC
-Received: from mail.shp-walmrt.online (unknown [45.13.189.164])
- by gabe.freedesktop.org (Postfix) with ESMTP id F34AA10EAAE
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 20 Jan 2023 15:56:43 UTC
+Received: from mail.hardw-are.today (unknown [45.13.189.107])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DA77610EA9A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 16:43:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shp-walmrt.online;
+ Fri, 20 Jan 2023 15:56:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hardw-are.today; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=walmart@shp-walmrt.online; bh=isehqgzq4eAhlPM/STsg2+Pr97E=;
- b=hhTlEoVqrhBksTxS04JrbcDgHbR5oEiZzkoLWCpGD/+chNAHOF2XAJi8MspkhWwVYc/oM0jwn2Iw
- noIeI9NqfbJ22jBrMk+aplHIQkesH1Vc5jOxfNUttyqrG+VN9mqf45lSNA2JyF3V2YyQvOHduNQg
- Q04Vss2Gy7IJV0wUYY4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shp-walmrt.online; 
- b=xpgk9uh3XY2UCEZCDu/lP/KubFB/uEaMSijNgBMEr1jTesoqP/KXpqdVVf6scEG46sEvcCYZCqfn
- WbhxQ9r73GTV4lwH8J1mq+/uyA9DPaUCFgpaWB/OHHjENDaJmU1rjwtoq1fd0u8iMHmgidP1XiTO
- 7ky+TLlWYePzVJkA4P4=;
-Received: by mail.shp-walmrt.online id hpb2bg0001gb for
+ i=ace.hardware.essentials@hardw-are.today; 
+ bh=2oL4uicVTmP+Nw7zGbStEq47IYM=;
+ b=sjbSLUw6YmxMDBrsMkkg8Lf3eTZtfvYL+PjEq1GRmckT/elxTaLwF/6tYdIFvdHVxgxPfEK+7XOo
+ beAhz23u6BbbVJMx8vDMnFdz9L3RJcfkeuFPHOxsU9WLkjxgTdAb94NcXIXLgrFxLVTzBc+r+3fA
+ +VJB8FoduGqp0pvBgmY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hardw-are.today;
+ b=qRrK9E5Kd2+6sZUqaJOjjpqPBT6RXuC9/mcYHboo0je10O0T4TMw4uZx77mxrnxlAL0HKPqAA38c
+ JaUkwiiY9Kr+USbnq4hRnPjZpIyy/zh8AFz/IMP/Wg1Lfz6IcsvZ7Hfhrl2kuyeBQm2+eoGNbI02
+ hw9Vno1QZNYxYOFskho=;
+Received: by mail.hardw-are.today id hpb72o0001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 11:32:27 -0500 (envelope-from
- <walmart-intel+2Dgvt+2Ddev=lists.freedesktop.org@shp-walmrt.online>)
-Date: Fri, 20 Jan 2023 11:32:27 -0500
-From: Walmart <walmart@shp-walmrt.online>
+ Fri, 20 Jan 2023 12:13:45 -0500 (envelope-from
+ <ace.hardware.essentials-intel+2Dgvt+2Ddev=lists.freedesktop.org@hardw-are.today>)
+Date: Fri, 20 Jan 2023 12:13:45 -0500
+From: "ACE Hardware Essentials" <ace.hardware.essentials@hardw-are.today>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We are here for your next shopping spree - Gifts on us!
+Subject: Something exciting is happening - stay tuned for more information.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_334_1299728.1674232313631"
-Message-ID: <0.0.0.25.1D92CECC874C4E6.3AA204@mail.shp-walmrt.online>
+ boundary="----=_Part_493_2118242033.1674229576724"
+Message-ID: <0.0.0.36.1D92CF28DD897F8.4F58FE@mail.hardw-are.today>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,135 +53,46 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_334_1299728.1674232313631
+------=_Part_493_2118242033.1674229576724
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
  <head> 
-  <meta charset="utf-8" /> 
-  <meta content="ie=edge" http-equiv="x-ua-compatible" /> 
-  <title>Email Template Base</title> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <style type="text/css">@media screen {
-    @font-face {
-      font-family: 'Source Sans Pro';
-      font-style: normal;
-      font-weight: 400;
-      src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
-    }
-
-    @font-face {
-      font-family: 'Source Sans Pro';
-      font-style: normal;
-      font-weight: 700;
-      src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format('woff');
-    }
-  }
-
-  body,
-  table,
-  td,
-  a {
-    -ms-text-size-adjust: 100%; 
-    -webkit-text-size-adjust: 100%; 
-  }
-
- 
-  table,
-  td {
-    mso-table-rspace: 0pt;
-    mso-table-lspace: 0pt;
-  }
-
- 
-  img {
-    -ms-interpolation-mode: bicubic;
-  }
-
-
-  a[x-apple-data-detectors] {
-    font-family: inherit !important;
-    font-size: inherit !important;
-    font-weight: inherit !important;
-    line-height: inherit !important;
-    color: inherit !important;
-    text-decoration: none !important;
-  }
-
-  
-  div[style*="margin: 16px 0;"] {
-    margin: 0 !important;
-  }
-
-  body {
-    width: 100% !important;
-    height: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-
-  table {
-    border-collapse: collapse !important;
-  }
-
-  a {
-    color: #1a82e2;
-  }
-
-  img {
-    height: auto;
-    line-height: 100%;
-    text-decoration: none;
-    border: 0;
-    outline: none;
-  }
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width,initial-scale=1" name="viewport" /> 
+  <meta name="x-apple-disable-message-reformatting" /> 
+  <title></title> 
+  <style type="text/css">table, td, div, h1, p {font-family: Arial, sans-serif;}
 	</style> 
  </head> 
- <body style="background-color: #e9ecef;"> 
-  <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-   A preheader is the short summary text that follows the subject line when an email is viewed in the inbox.   </div> 
-  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+ <body style="margin:0;padding:0;"> 
+  <table role="presentation" style="max-width: 600px; margin: auto;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;"> 
    <tbody> 
     <tr> 
-     <td align="center" bgcolor="#e9ecef"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
+     <td align="center" style="padding:0;"> 
+      <table role="presentation" style="width:100%px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;"> 
        <tbody> 
         <tr> 
-         <td align="center" style="padding: 36px 24px;" valign="top">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td align="center" bgcolor="#e9ecef"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;"> <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">&nbsp;</h1> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td align="center" bgcolor="#e9ecef"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;"><a href="http://www.shp-walmrt.online/c415w2i395vm8V612Q4M773S1109j36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQNdSoS7SDs10wA6aBMw2D/aftermath-retainment"><img alt="" src="http://www.shp-walmrt.online/c7d6fl2k395m7Rma12mr4771X1109x36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNdSoS6t1lXW06ezyAwD/parentage-protest" width="100%" /></a> <p style="margin: 0; font-size: 22px; padding: 20px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Walmart Rewards</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> </td> 
+         <td align="center" style="padding:15px 0 30px 0;background:#2B2B2B;">&nbsp;</td> 
         </tr> 
         <tr> 
-         <td align="left" bgcolor="#ffffff"> 
-          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+         <td style="padding:36px 30px 42px 30px;"> 
+          <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
            <tbody> 
             <tr> 
-             <td align="center" bgcolor="#ffffff" style="padding: 12px;"> 
-              <table border="0" cellpadding="0" cellspacing="0"> 
+             <td style="padding:0 0 36px 0;color:#153643; text-align: center"> <h1 style="font-size:28px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Ace Hardware</h1> <a href="http://www.hardw-are.today/a255q2p395cq8o611e476cO1108B36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQadSoR6zD1OM05k@@wD/itinerary-barbells"><img alt="" src="http://www.hardw-are.today/qa75k2G395Q7aNG12j47B6ej1108q36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQadSoR7Vj10wuR6bAwDAl/dialing-reducing" width="100%" /></a><br /> &nbsp; <p style="margin:0 0 12px 0;font-size:20px;line-height:30px;font-family:Arial,sans-serif;">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Ace Hardware</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> &nbsp; <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif; background: #000000; padding: 20px; border-radius: 50px; color: #FFFFFF; font-weight: bold; color: white"><a href="http://www.hardw-
+ are.today/a255q2p395cq8o611e476cO1108B36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQadSoR6zD1OM05k@@wD/itinerary-barbells" style="color:#ee4c50;text-decoration:none; display: block; padding: 0px 28%; color: white">Go And Start Now</a></p> </td> 
+            </tr> 
+            <tr> 
+             <td style="padding:0;"> 
+              <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
                <tbody> 
                 <tr> 
-                 <td align="center" bgcolor="#000000" style="border-radius: 6px;"><a href="http://www.shp-walmrt.online/c415w2i395vm8V612Q4M773S1109j36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQNdSoS7SDs10wA6aBMw2D/aftermath-retainment" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: bold" target="_blank">Go And Start Now</a></td> 
+                 <td style="width:100%px;padding:0;vertical-align:top;color:#153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
+                 <td style="width:100%;padding:0;font-size:0;line-height:0;">&nbsp;</td> 
+                 <td style="width:100%;padding:0;vertical-align:top;color:#153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
                 </tr> 
                </tbody> 
               </table> </td> 
@@ -189,33 +101,30 @@ Content-Transfer-Encoding: 7bit
           </table> </td> 
         </tr> 
         <tr> 
-         <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;"> <p style="margin: 0;">&nbsp;</p> <p style="margin: 0;">&nbsp;</p> </td> 
-        </tr> 
-        <tr> 
-         <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf"> <p style="margin: 0;">&nbsp;</p> </td> 
+         <td style="padding:30px;background:#B3B3B3;"> 
+          <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;"> 
+           <tbody> 
+            <tr> 
+             <td align="center" style="padding:0;width:100%; font-size: 12px"> <p><span style="text-decoration: none; ">No longer want to receive email from us?,</span><a href="http://www.hardw-are.today/11f6P239Xg5k8Js613bF47Y6dJ1108B36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQadSoR6SiCm106zN0zwD/dialing-reducing" style="text-decoration-line: none; color: white"> <span>Head Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <big></big><font><font></font><span dir="architectural"><span style="haunts"><style></span></font></span></style><big><big></big></big></p> </td> 
+             <td align="right" style="padding:0;width:100%;"> 
+              <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;"> 
+               <tbody> 
+                <tr> 
+                 <td style="padding:0 0 0 10px;width:100%;">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
-    <tr> 
-     <td align="center" bgcolor="#e9ecef" style="padding: 24px;"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="max-width: 600px;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;"> <p style="margin: 0;">&nbsp;</p> </td> 
-        </tr> 
-        <tr> 
-         <td align="center" bgcolor="#B5B5B5" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #FFFFFF;"> <p><span style="text-decoration: none; ">To do away with notices,</span><a href="http://www.shp-walmrt.online/parentage-protest/4fe6u2nk395S8x6v11l4770T1109D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQNdSoS5q1s0N6FlkzwD" style="text-decoration-line: none; color: white"> <span>Visit-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span id="lunched"><span></span><style id="rejoiced"></span></style><span title="renders"><span face="lobbied"></span></span><big></big><style lang="impending"></style><font face="Gutenberg"></font><span></span></p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <!-- end footer --> 
    </tbody> 
-  </table> 
-  <!-- end body -->  
- <img src="http://www.shp-walmrt.online/unionizes-amphitheater/2886lI23B95g8U5i13v4R77m2G1109F36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQNdSoS7Q10pGBZ6M@LlwD" alt=""/></body>
+  </table>   
+ <img src="http://www.hardw-are.today/13d4K2395h85II11i476fV1108h36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQadSoR5zmx105OOlwD/contributes-categorizes" alt=""/></body>
 </html>
 
-------=_Part_334_1299728.1674232313631--
+------=_Part_493_2118242033.1674229576724--
 
