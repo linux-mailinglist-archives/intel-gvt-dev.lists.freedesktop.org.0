@@ -2,42 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B1626761C1
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 00:49:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D6F5676251
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 01:22:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6CD3310EB40;
-	Fri, 20 Jan 2023 23:49:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6114E10EB57;
+	Sat, 21 Jan 2023 00:22:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 20 Jan 2023 23:49:49 UTC
-Received: from mail.got-tckts.today (unknown [45.13.189.86])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1367A10EB3B
+ Sat, 21 Jan 2023 00:22:38 UTC
+Received: from mail.amzing-sheet.today (unknown [45.13.189.186])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2F4D910EB4C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 23:49:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=got-tckts.today; 
+ Sat, 21 Jan 2023 00:22:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=amzing-sheet.today; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=heather-hadel@got-tckts.today; 
- bh=YmTFaId152GxO8+4ROTkilrbI90=;
- b=eBzQ5xDLaA/X9Zn9CDM0RTdOkLW0ywe5RNNwrnDIZofu3lMYIt41qJKy/t6/KYrfWg8e7P4hMBkc
- X7R23eoseBUPY9FXsS7djx88SY1se6BADKS2P3lCLn8Y3CkYbQwduBUnr4iPBfcVe/BmpF8hmk9q
- 1iEuMl4gaLgJUvXDYWg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=got-tckts.today;
- b=QaGC/1eNMItnGkjdayUT4GBsfaYlP4c8pEZ2PitWkdlx296SlXqJ+cXHunm4YCGKGoX12oLDMjOh
- qCGTkbIzOmYqa9dORomp0I6xqhGoRJ2rizmzNT40+ecARC2m8alsdfSd9lJ/enRPSJM9PoiLEhBt
- Od33Q6/T1UjgfCs3IQI=;
-Received: by mail.got-tckts.today id hpck9q0001gi for
+ i=shopmiraclebrandco.partner@amzing-sheet.today; 
+ bh=MILD8eS3HihriCpBMpHk4Ah/jzk=;
+ b=tMXWz3lwLV3v0hFagomcQsDuFSguD745ytBnNtMcTp9A3J/awH8n3dYBqWSbME68F3O7YjP386qm
+ oXYwolfL/m0WjVs7jVtbew+SR6stTP9BV13gr4/A2GZ2scnX5wuQngipiHmIwnxrv2ZQ0JQyIL+N
+ QwUC20PUYSwfB4901wY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=amzing-sheet.today; 
+ b=KI6JI4hawZlpDLnwucPsXk7d/vhxZnE4qv1E/NleV5KziiiBDMQkY+vWqMNt5p8hRl3lJ18btAwd
+ IR2T6M1f8qvLdfthHGNTIZT0mdniK+lXjOIrZdfyBTkZxugoDGG8kv2maoN5OXxl/0l4+jLbVrnY
+ DStLr5W4zag6OJfeERE=;
+Received: by mail.amzing-sheet.today id hpco4s0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Jan 2023 18:38:13 -0500 (envelope-from
- <heather-hadel-intel+2Dgvt+2Ddev=lists.freedesktop.org@got-tckts.today>)
-Date: Fri, 20 Jan 2023 18:38:13 -0500
-From: Heather Hadel <heather-hadel@got-tckts.today>
+ Fri, 20 Jan 2023 19:11:00 -0500 (envelope-from
+ <shopmiraclebrandco.partner-intel+2Dgvt+2Ddev=lists.freedesktop.org@amzing-sheet.today>)
+Date: Fri, 20 Jan 2023 19:11:00 -0500
+From: "Shopmiraclebrand.co Partner"
+ <shopmiraclebrandco.partner@amzing-sheet.today>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Up to $1OO Bonus for your feedback about Southwest
+Subject: Transform your sleep experience with our luxury sheets.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_328_160555154.1674257880625"
-Message-ID: <0.0.0.24.1D92D2843093A6C.3A1AA7@mail.got-tckts.today>
+ boundary="----=_Part_382_1732819517.1674259809036"
+Message-ID: <0.0.0.2A.1D92D2CD7FE8B3C.2E021D@mail.amzing-sheet.today>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,317 +55,473 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_328_160555154.1674257880625
+------=_Part_382_1732819517.1674259809036
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Document</title> 
-  <style type="text/css">body{
-            margin: 0;
-            background-color: #cccccc;
-        }
-        table{
-            border-spacing: 0;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+ <head>=20
+  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>
+  <!--[if !mso]><!-->=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />
+  <!--<![endif]-->=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title></title>=20
+  <style type=3D"text/css">/* Basics */
+    body {
+    margin: 0 !important;
+    padding: 0;
+    background-color: #ffffff;
+    }
+    table {
+    border-spacing: 0;
+    font-family: sans-serif;
+    color: #333333;
+    }
+    td {
+    padding: 0;
+    }
+    img {
+    border: 0;
+    }
+    div[style*=3D"margin: 16px 0"] {
+    margin:0 !important;
+    }
+    .wrapper {
+    width: 100%;
+    table-layout: fixed;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+=09=09background-color: #E1E1E1
+    }
+    .webkit {
+    max-width: 600px;
+    margin: 0 auto;
+=09=09background-color: #FFFFFF
+    }
+    .outer {
+    Margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    }
+    .inner {
+    padding: 10px;
+    }
+    .contents {
+    width: 100%;
+    }
+    p {
+    Margin: 0;
+    }
+    a {
+    color: #ee6a56;
+    text-decoration: underline;
+    }
+    .h1 {
+    font-size: 21px;
+    font-weight: bold;
+    Margin-bottom: 18px;
+    }
+    .h2 {
+    font-size: 18px;
+    font-weight: bold;
+    Margin-bottom: 12px;
+    }
+    .full-width-image img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    }
 
-        }
-        td{
-            padding: 0;
+    /* One column layout */
+    .one-column .contents {
+    text-align: left;
+    }
+    .one-column p {
+    font-size: 14px;
+    Margin-bottom: 10px;
+    }
 
-        }
-        img{
-            border: 0;
+    /*Two column layout*/
+    .two-column {
+    text-align: center;
+    font-size: 0;
+    }
+    .two-column .column {
+    width: 100%;
+    max-width: 300px;
+    display: inline-block;
+    vertical-align: top;
+    }
+    .two-column .contents {
+    font-size: 14px;
+    text-align: left;
+    }
+    .two-column img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    }
+    .two-column .text {
+    padding-top: 10px;
+    }
 
-        }
-        .wrapper{
-            width: 100%;
-            table-layout: fixed;
-            background-color: #cccccc;
-            padding-bottom: 60px;
-        }
-        .main{
-            background-color: #ffffff;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 600px;
-            border-spacing: 0;
-            font-family: sans-serif;
-            color:#171a1b ;
+    /*Three column layout*/
+    .three-column {
+    text-align: center;
+    font-size: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    .three-column .column {
+    width: 100%;
+    max-width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    }
+    .three-column img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    }
+    .three-column .contents {
+    font-size: 14px;
+    text-align: center;
+    }
+    .three-column .text {
+    padding-top: 10px;
+    }
 
-        }
-        .two-column{
-            text-align: center;
-            font-size: 0;
-        }
-        .two-column .column{
-            width: 100%;
-            max-width: 300px;
-            display: inline-block;
-            vertical-align: top;
-            text-align: center;
-        }
-        .three-column{
-            text-align: center;
-            font-size: 0;
-            padding: 15px 0 25px;
-        }
-        .three-column .column{
-            width: 100%;
-            max-width: 200px;
-            display: inline-block;
-            vertical-align: top;
-            text-align: center;
-        }
-        .three-column .padding{
-            padding: 15px;
-        }
-        .three-column .content{
-            font-size: 15px;
-            line-height: 20px;
-            padding: 0 5px;
+    /* Left sidebar layout */
+    .left-sidebar {
+    text-align: center;
+    font-size: 0;
+    }
+    .left-sidebar .column {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    }
+    .left-sidebar .left {
+    max-width: 100px;
+    }
+    .left-sidebar .right {
+    max-width: 500px;
+    }
+    .left-sidebar .img {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    }
+    .left-sidebar .contents {
+    font-size: 14px;
+    text-align: center;
+    }
+    .left-sidebar a {
+    color: #85ab70;
+    }
 
-        }
-        .two-column.last{
-            padding: 15px 0;
-        }
-        .two-column .padding{
-            padding:20px ;
+    /* Right sidebar layout */
+    .right-sidebar {
+    text-align: center;
+    font-size: 0;
+    }
+    .right-sidebar .column {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    }
+    .right-sidebar .left {
+    max-width: 100px;
+    }
+    .right-sidebar .right {
+    max-width: 500px;
+    }
+    .right-sidebar .img {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    }
+    .right-sidebar .contents {
+    font-size: 14px;
+    text-align: center;
+    }
+    .right-sidebar a {
+    color: #70bbd9;
+    }
 
+    /*Media Queries*/
+    @media screen and (max-width: 400px) {
+    .two-column .column,
+    .three-column .column {
+      max-width: 100% !important;
+    }
+    .two-column img {
+      max-width: 100% !important;
+    }
+    .three-column img {
+      max-width: 50% !important;
+    }
+    }
 
+    @media screen and (min-width: 401px) and (max-width: 620px) {
+    .three-column .column {
+      max-width: 33% !important;
+    }
+    .two-column .column {
+      max-width: 50% !important;
+    }
+    }
+=09</style>=20
+  <style type=3D"text/css">/*Media Queries*/
+      @media screen and (max-width: 400px) {
+      .two-column .column,
+        .three-column .column {
+            max-width: 100% !important;
         }
-        .two-column .content{
-            font-size: 15px;
-            line-height: 20px;
-            text-align: center;
+        .two-column img {
+            max-width: 100% !important;
         }
-        .button{
-            background-color: #ffffff;
-            color: #171a1b;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            font-weight: bold;
+        .three-column img {
+            max-width: 50% !important;
+        }
+      }
 
+      @media screen and (min-width: 401px) and (max-width: 620px) {
+        .three-column .column {
+                max-width: 33% !important;
+            }
+            .two-column .column {
+                max-width: 50% !important;
+            }
         }
-        .button-dark{
-            background-color: #154BB7;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-
-        }
-	</style> 
- </head> 
- <body> 
-  <center class="wrapper"> 
-   <table class="main" width="100%">
-    <!--Top Border--> 
-    <tbody> 
-     <tr> 
-      <td height="8" style="background-color: #171a1b;">&nbsp;</td> 
-     </tr> 
-     <!--Logo Section--> 
-     <tr> 
-      <td style="padding: 14px 0 4px;"> 
-       <table border="0" width="100%"> 
-        <tbody align="center"> 
-         <tr> 
-          <td width="5%">&nbsp;</td> 
-          <td width="90%"><br /> <br /> &nbsp; 
-           <div style="font-weight: bold;font-size: 30px">
-            &nbsp;
-           </div> <a href="http://www.got-tckts.today/c9b5n_2395LA86p13g4u793kO1110N36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTdS9d6qg10os5bqlwD/crashes-predicated"><img alt="" src="http://www.got-tckts.today/Bellwood-uniformity/6666w2G39X5SSk7a13fu479g5F1110z36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQTdS9d6jB1m0I6l1NwDA" width="60%" /></a><br /> <br /> <a href="http://www.got-tckts.today/c9b5n_2395LA86p13g4u793kO1110N36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTdS9d6qg10os5bqlwD/crashes-predicated"><img src="http://www.got-tckts.today/skills-stingy/H305W239K5y7ans13K4l79I6_1110n36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQTdS9d5V1To06iMlUwD" title="source: imgur.com" width="80%" /></a> <p style="color: #000000; font-size: 22px; line-height: 33px;font-weight: normal; padding: 20px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Southwest</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> &nbsp; <p style="font: size 20px;
- font-weight:bold;"><a class="button-dark" href="http://www.got-tckts.today/c9b5n_2395LA86p13g4u793kO1110N36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTdS9d6qg10os5bqlwD/crashes-predicated">Go And Start Now</a></p> </td> 
-          <td width="5%">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-          <td>&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="two-column"> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td>asdasdasdasdasd</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td style="padding: 10px 72px;">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!--Banner Image--> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <!--Three Column Section--> 
-     <tr> 
-      <td> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="three-column"> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td> <p style="font-weight: bold; font-size: 20px;">&nbsp;</p> <p>&nbsp;</p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td> <p style="font-weight: bold; font-size: 20px;">&nbsp;</p> <p>&nbsp;</p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!-- Two Colimn Section--> 
-     <tr> 
-      <td style="background-color: #FFFFFF;color:#ffffff;"> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="two-column last"> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td> <p style="font-weight: bold; font-size: 18px;">&nbsp;</p> <p>&nbsp;</p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!--Title Text and Button--> 
-     <tr> 
-      <td style="padding: 15px 0 50px;"> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td style="text-align: center; padding: 15px;">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <!--Footer--> 
-     <tr> 
-      <td style="background-color: #21529E;"> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td style="text-align: center;padding: 45px 20px;color: #ffffff; font-size: 10px"> <p><span style="text-decoration: none; ">To abandon email,</span><a href="http://www.got-tckts.today/spares-intricacies/1986uvg2395S8v6U13wTm4794R1110G36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQTdS9d7p1KRx0i5Yq3wD" style="text-decoration-line: none; color: white"> <span>Visit_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span color="Carboloy"></span><span dir="handmaid"><big><small></span><font></big></font><font></small></font><span><font id="damnation"></font><span id="intemperate"><style></style><style></span></span></style></p> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </center>   
- <img src="http://www.got-tckts.today/4676jQ239N5w8F5x13y47YZ97W1110p36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQTdS9d5tF10D5k@wDA/Eurydice-cathedrals" alt=""/></body>
+=09</style>=20
+ </head>=20
+ <body>=20
+  <center class=3D"wrapper">=20
+   <div class=3D"webkit">=20
+    <table align=3D"center" class=3D"outer">=20
+     <tbody>=20
+      <tr>=20
+       <td class=3D"full-width-image">&nbsp;</td>=20
+      </tr>=20
+      <tr>=20
+       <td class=3D"one-column">=20
+        <table width=3D"100%">=20
+         <tbody>=20
+          <tr>=20
+           <td class=3D"inner contents"><br /> <br /> <a href=3D" http://fi=
+reflymix.com/a4f71eea27c2f74fda77f69551315f8cc/?sid1=3Db100120" style=3D"pa=
+dding-left: 50px"><img alt=3D"" src=3D"http://www.amzing-sheet.today/craftspeople-interpretable/bca5d2Z395Vp7_a13k47T9Fa_1111Q36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ.dS9Q5zk1S06CXwMDM" width=3D"85%" /></a> <p=
+ style=3D"font-size: 30px;text-align: center;font-weight: bold; color: #0F3=
+47B">Enjoy Sheets That Stays Fresher<br /> And Longer With Miracle</p> <a h=
+ref=3D" http://fireflymix.com/a4f71eea27c2f74fda77f69551315f8cc/?sid1=3Db10=
+0120"><img alt=3D"" src=3D"http://www.amzing-sheet.today/9354Y2395i7VaQ11s479bz1111r36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ.dS9Q7a10kYiI6rjWMwD/Akers-aped" width=3D"100%" /></a> <p style=3D"t=
+ext-align: center; font-size: 23px; padding: 20px; line-height: 35px">Are y=
+ou tired of washing your sheets just for them to get smelly and dirty again=
+? it's time to say goddbye to sweaty sleepless nights!</p> &nbsp;=20
+            <div style=3D"text-align: center">=20
+             <p style=3D"margin:0;font-size:16px;line-height:24px;font-fami=
+ly:Arial,sans-serif; background: #496ECC; padding: 15px; border-radius: 3px=
+; color: #FFFFFF; font-weight: bold; color: white"><a href=3D" http://firef=
+lymix.com/a4f71eea27c2f74fda77f69551315f8cc/?sid1=3Db100120" style=3D"color=
+:#ee4c50;text-decoration:none; display: block; padding: 0px 28%; color: whi=
+te">Go And Start Now</a></p>=20
+            </div> <br /> <br /> &nbsp; <p style=3D"font-size: 22px; text-a=
+lign: center; line-height: 30px">Premium sheets made with all-natural silve=
+r that<br /> <strong>prevents 99.99% of bacteria</strong></p>=20
+            <div style=3D"line-height: 30px; font-size: 20px;font-weight: 5=
+00;padding-left: 120px">=20
+             <ul>=20
+              <li>Promotes Healthy Skins</li>=20
+              <li>Fights Unwanted Odors</li>=20
+              <li>Luxuriously soft supima cotton</li>=20
+             </ul>=20
+            </div> <a href=3D" http://fireflymix.com/a4f71eea27c2f74fda77f6=
+9551315f8cc/?sid1=3Db100120"><img alt=3D"" src=3D"http://www.amzing-sheet.today/7af6K239WR5o7aZh12R47y9cw1111L36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ.dS9Q5h1J0x5plqwD/corrode-Jehovah" width=3D"100=
+%" /></a></td>=20
+          </tr>=20
+         </tbody>=20
+        </table> </td>=20
+      </tr>=20
+      <tr>=20
+       <td class=3D"two-column">=20
+        <div class=3D"column">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner">=20
+             <table class=3D"contents">=20
+              <tbody>=20
+               <tr>=20
+                <td>&nbsp;</td>=20
+               </tr>=20
+               <tr>=20
+                <td class=3D"text">&nbsp;</td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div>=20
+        <div class=3D"column">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner">=20
+             <table class=3D"contents">=20
+              <tbody>=20
+               <tr>=20
+                <td>&nbsp;</td>=20
+               </tr>=20
+               <tr>=20
+                <td class=3D"text">&nbsp;</td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+      <tr>=20
+       <td class=3D"three-column">=20
+        <div class=3D"column">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner">=20
+             <table class=3D"contents">=20
+              <tbody>=20
+               <tr>=20
+                <td>&nbsp;</td>=20
+               </tr>=20
+               <tr>=20
+                <td class=3D"text">&nbsp;</td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div>=20
+        <div class=3D"column">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner">=20
+             <table class=3D"contents">=20
+              <tbody>=20
+               <tr>=20
+                <td>&nbsp;</td>=20
+               </tr>=20
+               <tr>=20
+                <td class=3D"text">&nbsp;</td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div>=20
+        <div class=3D"column">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner">=20
+             <table class=3D"contents">=20
+              <tbody>=20
+               <tr>=20
+                <td>&nbsp;</td>=20
+               </tr>=20
+               <tr>=20
+                <td class=3D"text">&nbsp;</td>=20
+               </tr>=20
+              </tbody>=20
+             </table> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+      <tr>=20
+       <td class=3D"left-sidebar">=20
+        <div class=3D"column left">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner">&nbsp;</td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div>=20
+        <div class=3D"column right">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner contents">&nbsp;</td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+      <tr>=20
+       <td class=3D"right-sidebar" dir=3D"rtl">=20
+        <div class=3D"column left" dir=3D"ltr">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner contents">&nbsp;</td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div>=20
+        <div class=3D"column right" dir=3D"ltr">=20
+         <table width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td class=3D"inner contents">&nbsp;</td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </div>=20
+   <table border=3D"0" width=3D"100%">=20
+    <tbody>=20
+     <tr>=20
+      <td width=3D"5%">&nbsp;</td>=20
+      <td style=3D"background-color: #D3D5EF" width=3D"90%"> <p style=3D"te=
+xt-align: center; font-size: 12px; padding: 15px">&nbsp;If you do not wish =
+to receive future messages stand here to <span class=3D"unstyle-auto-detect=
+ed-links"> <span class=3D"unstyle-auto-detected-links"><a href=3D"=
+http://www.amzing-sheet.today/craftspeople-interpretable/9186Sl239L5W8oK612yi4798Q1111y36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ.dS9Q5PI1l06G@0wD@" style=3D"text-decoration: underline!important; font-family: sans-serif; =
+font-size: 10px; line-height: 14px; color: #999;">Leave</a></span><br /> <b=
+r /> <span class=3D"unstyle-auto-detected-links"><a href=3D"http://www.amzing-sheet.today/a434o2395o86JA12R479V9n1111G36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ.dS9Q6B1C0DT6pM3@wD/Mueller-Willied" sty=
+le=3D"text-decoration: underline!important; font-family: sans-serif; font-s=
+ize: 10px; line-height: 14px; text-align: center; color: #999;">Miracle She=
+ets</a>&nbsp;|&nbsp; 1501 Haines St. | Jacksonville, FL 32206 </span><br />=
+ <br /> <span class=3D"unstyle-auto-detected-links">&lt;a style=3D&quot;tex=
+t-decoration: underline!important; font-family: sans-serif; font-size: 10px=
+; line-height: 14px; text-align: center; color: #999;&quot; href=3D&quot;ht=
+tp://fireflymix.com/a4f71eea27c2f74fda77f69551315f8cc/?sid1=3D&amp;sidx&gt;=
+Miracle Sheets&nbsp;|&nbsp; 1501 Haines St. | Jacksonville, FL 32206 </span=
+></span></p> <br /> <br /> <br /> &nbsp;</td>=20
+      <td width=3D" 5%"><span class=3D"unstyle-auto-detected-links"><span c=
+lass=3D"unstyle-auto-detected-links">&nbsp;</span></span></td>=20
+     </tr>=20
+    </tbody>=20
+   </table>=20
+  </center>  =20
+ <img src=3D"http://www.amzing-sheet.today/utilized-generalists/4686c2F3s95Nr8t512w479dRn1111g36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ.dS9Q5J1F0F5mqlwD" alt=3D""/></body>
 </html>
 
-------=_Part_328_160555154.1674257880625--
+------=_Part_382_1732819517.1674259809036--
 
