@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15C21676907
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 21:15:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C89E676971
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 21:50:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C0D4D10E43D;
-	Sat, 21 Jan 2023 20:15:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 37BFC10E454;
+	Sat, 21 Jan 2023 20:50:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Sat, 21 Jan 2023 20:15:29 UTC
-Received: from mail.oplhom-pot.today (unknown [45.13.189.149])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7C06E10E439
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 21 Jan 2023 20:50:29 UTC
+Received: from mail.wopco-tco.today (unknown [45.13.189.163])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E24C410E454
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 21 Jan 2023 20:15:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=oplhom-pot.today;
+ Sat, 21 Jan 2023 20:50:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wopco-tco.today; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=hd-shopper-survey@oplhom-pot.today; 
- bh=1X+Zw40VBiOq1JW23Z1G5RhDP90=;
- b=UqSCMx85RA8Nr/rkXhpQB+itRDC0ffbMvLb0Vsjtfs/aCjtiztwhCMp89/dkrrI6tErIy3k6j9X1
- cmMx4JuoTOJX5YCEwe7cFQAVGU43mbHBhs6wYP+K+DbisbUEitTxUH/4Pbgp5KlL4d0NN2m68i1p
- fz5fivmXbqDbAMPK0dk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=oplhom-pot.today;
- b=caF43GyKgXs/HufH8rci7MB5xOR8W0rHfcMqGf8AgrAXhHnA0rDQFp9booXHOl1+XsS8L/gQf50J
- JM2+QkbawBrd+GaqLRFK8o7tgGohR+Fu1vPhdPM9DoVP6ZNlpG/ETcN0786KWyegIkt6UKLxZ0Fw
- QLhe2DnmwBYjudq0znw=;
-Received: by mail.oplhom-pot.today id hph3u20001gn for
+ i=now-on-costco@wopco-tco.today; 
+ bh=62A21b85S/oe2OV3om4Twk2CMIY=;
+ b=kfE4SyCyEuG6sIIHlnlxVisRkTJ5NJadEh4zYAcBfS1afVWlXJxsfydHmXXMUry+bV5fa0oT4uve
+ 37COA8dWpdj29Wx9TRQ0OXkPMDfvssL4guMpijnNT6jdQeJWc50/IqzNlccDJj7FKBvm7dB4sSue
+ DT7hCSrrfgeIhV42kIU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wopco-tco.today;
+ b=hVp2S98F4ENYCYGQwKmSCA7uqmmSuceJH21GaRw1izZv5CAOItdKZSHuQHj0aBjGjrkMNasp79bi
+ wGY7s/t0mc15WbpR196DapT2QoeP6VHmtSBXNXOK/VhWnjeIP+tgLbEbqjNrUG5NnVPKU+MAyv6k
+ 6bCNol34U7fZiaoF0Nk=;
+Received: by mail.wopco-tco.today id hph81c0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 21 Jan 2023 15:06:04 -0500 (envelope-from
- <hd-shopper-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@oplhom-pot.today>)
-Date: Sat, 21 Jan 2023 15:06:04 -0500
-From: "HD Shopper Survey" <hd-shopper-survey@oplhom-pot.today>
+ Sat, 21 Jan 2023 15:38:27 -0500 (envelope-from
+ <now-on-costco-intel+2Dgvt+2Ddev=lists.freedesktop.org@wopco-tco.today>)
+Date: Sat, 21 Jan 2023 15:38:27 -0500
+From: "Now On Costco" <now-on-costco@wopco-tco.today>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Today's rewards on us to celebrate the holiday
+Subject: Leave feedback to maybe win
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_658_1720542649.1674331555213"
-Message-ID: <0.0.0.49.1D92DD3CAB862C0.31A910@mail.oplhom-pot.today>
+ boundary="----=_Part_202_1715481665.1674333488250"
+Message-ID: <0.0.0.16.1D92DD850B04BDC.59D8E9@mail.wopco-tco.today>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,216 +53,305 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_658_1720542649.1674331555213
+------=_Part_202_1715481665.1674333488250
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta charset="UTF-8" /> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Document</title> 
-  <link href="http://www.oplhom-pot.today/8f95sV2395H8g6w11k47b2z1116_36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQidSdm6jty10H5MNwD@/gusto-mentality" rel="preconnect" /> 
-  <link crossorigin="  " href="http://www.oplhom-pot.today/24b4k2395Q8R6T12j4p7b3C1116C36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQidSdm6B1A0Us6dBwPDN/Avernus-focussed" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" /> 
-  <style type="text/css">* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            margin: 0px auto;
-        }
+  <title>Email Template</title> 
+  <style type="text/css">body {
+		margin: 0;
+		background-color: #cccccc;
+	}
+	table {
+		border-spacing: 0;
+	}
+	td {
+		padding: 0;
+	}
+	img {
+		border: 0;
+	}
+	.wrapper{
+		width: 100%;
+		table-layout: fixed;
+		background-color: #cccccc;
+		padding-bottom: 60px;
 
-        header {
-            width: 98vw;
-            height: 130vh;
-            background-color: #fff;
-            margin: 0;
-            padding: 0;
-        }
+	}
+	.main {
+		background-color: #fff;
+		margin: 0 auto;
+		width: 100%;
+		max-width: 600px;
+		border-spacing: 0;
+		font-family: sans-serif;
+		color: #4a4a4a;
+	}
+	.two-columns{
+		text-align: center;
+		font-size: 0;
+	
+	}
 
-        .main_container {
-            width: 60vw;
-            border: 2px solid #cccccc;
-        }
+	.two-columns .column {
+		width: 100%;
+		max-width: 300px;
+		display: inline-block;
+		vertical-align: top;
 
-        .container {
-            background-color: #BD5B1A;
-            padding: 3px; border-radius: 15px
-        }
+	}
+	.button {
+		background-color: #289dcf;
+		color: #fff;
+		text-decoration: none;
+		padding: 12px 20px;
+		font-weight: bold;
+		border-radius: 5px;
+	}
+	.three-columns{
+		text-align: center;
+		font-size: 0;
+		padding: 35px 0 20px;
+	}
+	.three-columns .column{
+		width: 100%;
+		max-width: 200px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.three-columns .padding {
+		padding: 15px;
 
-        .header_section img {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+	}
+	.three-columns .content {
+		font-size: 15px;
+		line-height: 20px;
+	}
+	.two-columns.last {
+		padding: 35px 0;
+	}
 
-        .header_section h4 {
-            text-align: center;
-            font-size: 22px;
-            text-transform: uppercase;
-            letter-spacing: 10px;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .header_section h1 {
-            text-align: center;
-            font-size: 3rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: bolder;
-        }
-
-        .header_section span {
-            color: #fff;
-        }
-
-        .second_header_section {
-            /* width: 60vw; */
-            padding: 20px;
-            /* border: 1px solid #cccccc; */
-        }
-
-        .second_header_section h3 {
-            font-size: 1.6rem;
-            font-family: 'Poppins', sans-serif;
-            margin: 20px 0px;
-        }
-
-        .second_header_section p {
-            text-align: justify;
-            font-weight: 600;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .third_header_section {
-            /* width: 60vw; */
-            padding: 0px 10px;
-            /* border: 1px solid #cccccc; */
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-gap: 10px;
-            align-items: stretch;
-            text-justify: stretch;
-        }
-
-        .third_header_section .first_img img {
-            width: 350px;
-            margin-left: 5%;
-        }
-
-        .third_header_section .first_img p {
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            padding: 10px;
-            font-weight: 600;
-        }
-
-        .third_header_section .second_img img {
-            width: 350px;
-            margin-left: 5%;
-            margin-top: 6px;
-        }
-
-        .third_header_section .second_img p {
-            text-align: center;
-            padding: 10px;
-            font-weight: 600;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .forth_header_section {
-            
-            padding: 40px;
-            
-            background-color: #F15124;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
-			text-align: center; font-size: 12px
-        }
-
-        .forth_header_section .email_text p {
-            color: #fff;
-        }
-
-        .forth_header_section .social_icon {
-            font-size: 2.5rem;
-            color: #7c4142;
-        }
-
-        .forth_header_section .social_icon i {
-            margin: -10px;
-            border: 2px solid #7c4142;
-            padding: 10px;
-            border-radius: 50%;
-            width: 60px;
-            align-items: center;
-            margin-left: 10px;
-        }
+	.two-columns .padding{
+		padding: 20px;
+	}
+	.two-columns .content {
+		font-size: 15px;
+		line-height: 20px;
+		text-align: left;
+	}
 	</style> 
  </head> 
  <body> 
-  <header> 
-   <div style="max-width: 600px; margin: auto"> 
-    <div class="container"> 
-     <div class="header_section"> 
-      <h4>&nbsp;</h4> 
-      <h1>&nbsp;</h1> 
-     </div> 
-    </div> 
-    <div class="second_header_section"> 
-     <table border="0" style="text-align: center" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td width="100%"><a href="http://www.oplhom-pot.today/trickiness-willingly/c7e5D2A395vG86k11a47b4_1116M36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQidSdm7A1gT0hk5V0wD@"><img alt="" src="http://www.oplhom-pot.today/commerce-whispered/8645S239w5No7aC11z47b6M1116y36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQidSdm7OnIw10p5YWqwD" style="" width="80%" /></a> <a href="http://www.oplhom-pot.today/trickiness-willingly/c7e5D2A395vG86k11a47b4_1116M36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQidSdm7A1gT0hk5V0wD@"><img alt="" src="http://www.oplhom-pot.today/98f4e2395n7zaM11L47b7J1116h36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQidSdm5cG10S6lPJwpD/amounters-touchiness" width="100%" /></a></td> 
-        <td>&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td> <p style="text-align: center;font-size: 21px; padding: 15px; font-weight: 500">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Home Deptop</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> </td> 
-        <td>&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td style="text-align: center">&nbsp; 
-         <div style="font-weight: bold;font-size: 20px; background-color: #CB611E; padding: 15px; border-radius: 5px; display: block;">
-          <a href="http://www.oplhom-pot.today/trickiness-willingly/c7e5D2A395vG86k11a47b4_1116M36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQidSdm7A1gT0hk5V0wD@" style=" text-decoration: none; color: white; display: block; padding: 0px 150px">Go And Start Now</a>
-         </div> </td> 
-        <td>&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td>&nbsp;</td> 
-        <td>&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td>&nbsp;</td> 
-        <td>&nbsp;</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <p>&nbsp;</p> 
-    </div> 
-    <div class="third_header_section"> 
-     <div class="first_img"> 
-      <p>&nbsp;</p> 
-     </div> 
-     <div class="second_img"> 
-      <p>&nbsp;</p> 
-     </div> 
-    </div> 
-    <div class="forth_header_section"> 
-     <div class="email_text"> 
-      <p><span style="text-decoration: none; ">To change your notification preferences,</span><a href="http://www.oplhom-pot.today/7af6Cg2l395m86hS13Q47tby5P1116w36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQidSdm7g1XZj0w6H2wqAD/commerce-whispered" style="text-decoration-line: none; color: white"> <span>Begin-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style style="disabilities"></style><style style="plasma"></style><big></big><small><span style="Wheller"></small><style lang="ingredient"></style></span><big><font dir="Schelling"></font><font></big></font><big></big><small></small></p> 
-     </div> 
-     <div class="social_icon">
-      &nbsp;
-     </div> 
-    </div> 
-   </div> 
-  </header>   
- <img src="http://www.oplhom-pot.today/f2f5U239Y5cgW8511z47b8m1116U36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQidSdm5J1O0K5Sy@wD/gusto-mentality" alt=""/></body>
+  <center class="wrapper"> 
+   <table border="0" class="main" style="text-align: center" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td width="90%">&nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td> <h1>Now On Costco</h1> </td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td><a href="http://www.wopco-tco.today/plenary-exec/c9c6zkD2395csZ8613h4G7by9w1117z36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQXdSdn5jD10r6Ml1wDl"><img alt="" src="http://www.wopco-tco.today/3b34h2395o7Baq13K4o7bIbg1117o36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQXdSdn5kjo106BklwDz/parakeet-despairing" width="100%" /></a></td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td> <p style="text-align: center;font-size: 20px; padding: 15px; font-weight: 500; color: #000000">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Costco</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> </td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td><br /> <br /> <br /> <a class="button" href="http://www.wopco-tco.today/plenary-exec/c9c6zkD2395csZ8613h4G7by9w1117z36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQXdSdn5jD10r6Ml1wDl">Go And Start Now</a></td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <table class="main" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td height="8" style="background-color:#FFFFFF ;">&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td style="padding: 14px 0 4px;"> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="two-columns"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td style="padding:0 62px 10px ;">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td style="padding:10px 68px ;">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <!-- BANNER IMAGE --> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <!-- TITLE, TEXT & BUTTON --> 
+     <tr> 
+      <td style="padding:5px 0 50px ;"> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td style="text-align:center ; padding: 15px;"> <p>&nbsp;</p> <p style="font-size:15px ; line-height:23px; padding: 5px 0 15px ">&nbsp;</p> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <!-- BLUE BORDER --> 
+     <tr> 
+      <td height="0" style="background-color:#a6d8ee ;">&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="three-columns"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td> <p style="font-weight:bold;  font-size: 17px; ">&nbsp;</p> <p>&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td> <p style="font-weight:bold;  font-size: 17px; ">&nbsp;</p> <p>&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td> <p style="font-weight:bold;  font-size: 17px; ">&nbsp;</p> <p>&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td height="0" style="background-color:#a6d8ee ;">&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="two-columns last"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td> <p style="font-size:17px; font-weight:bold; ">&nbsp;</p> <p>&nbsp;</p> <p style="padding-bottom:15px;">&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <!-- FOOTER SECTION --> 
+     <tr> 
+      <td style="background-color:#565656; color: #fff; "> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td style="text-align:center; padding: 45px 20px; font-size: 12px "> <p><span style="text-decoration: none; ">To change your notification preferences,</span><a href="http://www.wopco-tco.today/odorously-superscripting/8646X2Y39C5RnY8611S47bam1117m36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQXdSdn7E1vJl0M6DAkwDz" style="text-decoration-line: none; color: white"> <span>Continue.Over.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span lang="bestirring"><font></font><span></span><font face="swamping"></font></span><small></small><big></big></p> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td height="8" style="background-color:#FFFFFF ;">&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </center>   
+ <img src="http://www.wopco-tco.today/cb94p2395Uw8t512c47blcX1117g36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXdSdn7SOLq1G05SAwDl/colonizer-Hokan" alt=""/></body>
 </html>
 
-------=_Part_658_1720542649.1674331555213--
+------=_Part_202_1715481665.1674333488250--
 
