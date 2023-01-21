@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B3B3676727
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 16:31:22 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 217A6676825
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 19:57:10 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EE0F310E18E;
-	Sat, 21 Jan 2023 15:31:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E0AA910E3BD;
+	Sat, 21 Jan 2023 18:57:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sat, 21 Jan 2023 15:31:18 UTC
-Received: from mail.mclopp-shee.today (unknown [45.13.189.106])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9EC7310E138
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Sat, 21 Jan 2023 18:57:06 UTC
+Received: from mail.allvrz-roz.today (unknown [45.13.189.116])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1A22B10E2E3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 21 Jan 2023 15:31:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mclopp-shee.today;
+ Sat, 21 Jan 2023 18:57:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=allvrz-roz.today;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=miracle.sheets.affiliate.partner@mclopp-shee.today; 
- bh=Z3A62++0rCIlhKH5Id0vGZqY+uc=;
- b=B4HXmuHMkxmNxFfBvWUQG9GtukW6PgVtUG8OhPiOwviYHZya7h8/ilI/AdmJuSp9jUHgaC/vXezq
- CgG/nlJ1laV4LiJg0cqv67xrZ6Mw9/oIXIi2vxHuD2dG/zr//Y8Nv2IkFCFnZKbKkCQFhiYmQ/HU
- vBwTm89YaBHdS98sjSY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mclopp-shee.today; 
- b=JL+tvjjU4D6XxIAOmyxO5rv8UqeR0VCoTvjwqazixkuYm00ZpazYfNflHjiXUi4u+j0/9k9HFvvU
- s7MVQs92f9dtVr6vcOER3jvxXJg3KEaENgToziLx4zwF1b0UEMNld5yDv7SuDFh2iGPuIxFvg7kX
- 6MuCHpATIDhiQ2puLGc=;
-Received: by mail.mclopp-shee.today id hpgcra0001gk for
+ i=verizon-gift-card-chance@allvrz-roz.today; 
+ bh=oyQbCcLXz/UtgafhcLdJkMrMaAM=;
+ b=QceoPh33p7cHKRcHXSCGfd+NZEsF1W7if/8koxthvtibjd+xr7WnGXGV4rLz6Ezq6hGMJK2Xt+pu
+ RzMwyci5wBppi1ddpNAEGSJLDyOSGhLQ8Ej3gRCtSlv4FouuwZLA6WFSqv8s0u2hgqsiKXv6ryNf
+ C21SH6i158tDJqEfop0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=allvrz-roz.today;
+ b=loDLlKVQi09lwplK/aytGtzUwG2oviy0SgUOX1JNo3N8qdJtemIDQoNpz/p1kQwY4BGDe66nC+2a
+ +x2hsAk1gRaNNyVcfQXj4wD4ut3Ma4XU4r+a9ZXNrUscFbAN3+mlwO4VZVHGQoylQDacs533BltC
+ AEDPSN3J2FiXd/64VzI=;
+Received: by mail.allvrz-roz.today id hpgqo40001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 21 Jan 2023 11:46:45 -0500 (envelope-from
- <miracle.sheets.affiliate.partner-intel+2Dgvt+2Ddev=lists.freedesktop.org@mclopp-shee.today>)
-Date: Sat, 21 Jan 2023 11:46:45 -0500
-From: "Miracle Sheets Affiliate Partner"
- <miracle.sheets.affiliate.partner@mclopp-shee.today>
+ Sat, 21 Jan 2023 13:46:02 -0500 (envelope-from
+ <verizon-gift-card-chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@allvrz-roz.today>)
+Date: Sat, 21 Jan 2023 13:46:02 -0500
+From: "VERIZON Gift Card Chance" <verizon-gift-card-chance@allvrz-roz.today>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Elevate your sleep experience with our top-of-the-line luxury sheets.
+Subject: Pick any gift on us, as token of appreciation for your loyalty
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_358_1454007677.1674314342205"
-Message-ID: <0.0.0.27.1D92DB7F253FF5E.198D6B@mail.mclopp-shee.today>
+ boundary="----=_Part_472_122244128.1674326733717"
+Message-ID: <0.0.0.34.1D92DC89C46B3F2.4E626@mail.allvrz-roz.today>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,179 +53,127 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_358_1454007677.1674314342205
+------=_Part_472_122244128.1674326733717
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta content="width=device-width" name="viewport" /> 
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>A2E Prematch Failure Email</title> 
-  <style type="text/css">@media only screen and (max-width: 620px) {
-            table[class=body] h1 {
-                font-size: 28px !important;
-                margin-bottom: 10px !important;
-            }
-            table[class=body] p,
-            table[class=body] ul,
-            table[class=body] ol,
-            table[class=body] td,
-            table[class=body] span,
-            table[class=body] a {
-                font-size: 16px !important;
-            }
-            table[class=body] .wrapper,
-            table[class=body] .article {
-                padding: 10px !important;
-            }
-            table[class=body] .content {
-                padding: 0 !important;
-            }
-            table[class=body] .container {
-                padding: 0 !important;
-                width: 100% !important;
-            }
-            table[class=body] .main {
-                border-left-width: 0 !important;
-                border-radius: 0 !important;
-                border-right-width: 0 !important;
-            }
-            table[class=body] .btn table {
-                width: 100% !important;
-            }
-            table[class=body] .btn a {
-                width: 100% !important;
-            }
-            table[class=body] .img-responsive {
-                height: auto !important;
-                max-width: 100% !important;
-                width: auto !important;
-            }
-        }
-
-      
-
-        @media all {
-            .ExternalClass {
-                width: 100%;
-            }
-            .ExternalClass,
-            .ExternalClass p,
-            .ExternalClass span,
-            .ExternalClass font,
-            .ExternalClass td,
-            .ExternalClass div {
-                line-height: 100%;
-            }
-            .apple-link a {
-                color: inherit !important;
-                font-family: inherit !important;
-                font-size: inherit !important;
-                font-weight: inherit !important;
-                line-height: inherit !important;
-                text-decoration: none !important;
-            }
-            .btn-primary table td:hover {
-                background-color: #34495e !important;
-            }
-            .btn-primary a:hover {
-                background-color: #34495e !important;
-                border-color: #34495e !important;
-            }
-        }
+  <title>Lea Fox Junior Developer</title> 
+  <meta content="initial-scale=1.0" name="viewport" /> 
+  <style type="text/css">
 	</style> 
  </head> 
- <body style="background-color: #E0E0E0"> 
-  <div style="background-color: #FFFFFF; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; max-width: 600px; margin: auto"> 
-   <table border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #f6f6f6;"> 
-    <tbody> 
-     <tr> 
-      <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td> 
-      <td class="container" style="font-family: sans-serif; font-size: 14px; vertical-align: top; display: block; Margin: 0 auto; max-width: 580px; padding: 10px; width: 580px;"> 
-       <div class="content" style="box-sizing: border-box; display: block; Margin: 0 auto; max-width: 580px; padding: 10px;"> 
-        <table background="" class="repository" style="padding:0px;border:0px;width:100%;color:#606060;font-size:18px;margin-bottom:15px;margin-top:15px;"> 
-         <tbody> 
-          <tr style="padding:0px;border:0px;"> 
-           <td style="padding:0px;border:0px;vertical-align:middle">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table style="padding:0px;border:0px;width:100%;border-spacing:0"> 
-         <thead> 
-          <tr style="padding:0px;border:0px;font-weight:700;font-size:18px;background-color:#E7E7E7;color:#df192a"> 
-           <td style="border:0px;padding:0px 20px 0px 0px;border-top:1px solid #808080;border-bottom:1px solid #adadad;width:50px;padding:0px;text-align:center;vertical-align:middle;padding-top:5px;border-left:1px solid #606060;border-top-left-radius:5px"> 
-            <div class="status-image" style="width:25px;background-size:25px;height:30px;margin-left:15px;margin-top:0px;vertical-align:middle">
-             &nbsp;
-            </div> </td> 
-           <td class="build-message" style="padding:0px;border:0px;padding:0px 20px 0px 0px;vertical-align:middle;border-top:1px solid #808080;border-bottom:1px solid #adadad">&nbsp;</td> 
-           <td align="right" class="time" style="padding:0px;border:0px;font-weight:normal;font-size:12px;padding:0px 20px 0px 0px;vertical-align:middle;border-top:1px solid #808080;border-bottom:1px solid #adadad;border-right:1px solid #606060;border-top-right-radius:5px"> 
-            <div class="stop-watch" style="vertical-align:middle;padding:0px;background-size:20px;display:inline-block;width:20px;height:20px">
-             &nbsp;
-            </div> </td> 
-          </tr> 
-         </thead> 
-        </table> 
-        <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-bottom-right-radius:5px;border-bottom-left-radius:5px;border-right:1px solid #adadad;border-left:1px solid #adadad;border-bottom:1px solid #adadad;border-top: 0px;"> 
-         <tbody> 
-          <tr> 
-           <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;"> 
-            <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;"> 
-             <tbody> 
-              <tr> 
-               <td width="100%"><a href=" http://fireflymix.com/a4f71eea27c2f74fda77f69551315f8cc/?sid1=b20121" style="padding-left: 50px"><img alt="" src="http://www.mclopp-shee.today/e5d6i23Qx95mQ7as12Q47aS5K1113M36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQudS9S6CW1t0v5E2UwD/cartography-introduces" width="85%" /></a> <p style="font-size: 30px;text-align: center;font-weight: bold; color: #0F347B">Enjoy Sheets That Stays Fresher<br /> And Longer With Miracle</p> <a href=" http://fireflymix.com/a4f71eea27c2f74fda77f69551315f8cc/?sid1=b20121"><img alt="" src="http://www.mclopp-shee.today/be75HZ2395Em7aU13HK47aG6Q1113o36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQudS9S5f10Jy6aplwDl/reopened-burners" width="100%" /></a> <p style="text-align: center; font-size: 23px; padding: 20px; line-height: 35px">Are you tired of washing your sheets just for them to get smelly and dirty again? it's time to say goddbye to sweaty sleepless nights!</p> &nbsp; 
-                <div style="text-align: center"> 
-                 <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif; background: #496ECC; padding: 15px; border-radius: 3px; color: #FFFFFF; font-weight: bold; color: white"><a href=" http://fireflymix.com/a4f71eea27c2f74fda77f69551315f8cc/?sid1=b20121" style="color:#ee4c50;text-decoration:none; display: block; padding: 0px 28%; color: white">Go And Start Now</a></p> 
-                </div> <br /> <br /> &nbsp; <p style="font-size: 22px; text-align: center; line-height: 30px">Premium sheets made with all-natural silver that<br /> <strong>prevents 99.99% of bacteria</strong></p> 
-                <div style="line-height: 30px; font-size: 20px;font-weight: 500;padding-left: 120px"> 
-                 <ul> 
-                  <li>Promotes Healthy Skins</li> 
-                  <li>Fights Unwanted Odors</li> 
-                  <li>Luxuriously soft supima cotton</li> 
-                 </ul> 
-                </div> <a href=" http://fireflymix.com/a4f71eea27c2f74fda77f69551315f8cc/?sid1=b20121"><img alt="" src="http://www.mclopp-shee.today/f2f4F2395K7aUu11a47a7I1113G36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQudS9S7z1P0xuG5zl0wD/cartography-introduces" width="100%" /></a> 
-                <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;"> <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">&nbsp;</p> <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">.</p> 
-                    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"> 
-                     <tbody> 
-                      <tr> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table border="0" class="footer" style="padding:0px;border:0px;width:100%;background-color:#e9e6e7;border-radius:5px;border:1px solid #adadad;padding:10px;margin-top:20px;font-size:12px;width:560px;line-height:16px"> 
-         <tbody> 
-          <tr style="padding:0px;border:0px"> 
-           <td style="padding:0px;border:0px; text-align: center">&nbsp;If you do not wish to receive future messages stand here to <span class="unstyle-auto-detected-links"><a href="http://www.mclopp-shee.today/Kigali-cauldrons/80a5l239K5kv8i612K47aR3z1113S36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQudS9S7zBm1i0z5dyzwD" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">Leave</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.mclopp-shee.today/Kigali-cauldrons/1r24a2395P8GT613Cm47pa4p1113y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQudS9S7mCvy1Y05SXwyD" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Miracle Sheets</a>&nbsp;|&nbsp; 1501 Haines St. | Jacksonville, FL 32206 </span></td> 
-           <td class="3D" style="padding:0px;border:0px;color:#808080;">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table style="padding-top: 8px;"> 
-         <tbody> 
-          <tr> 
-           <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 11px; color: #999999;">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.mclopp-shee.today/9716M2CF395n85Vi11S47a8G1113u36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQudS9S6WVL1o06LlBwlD/cartography-introduces" alt=""/></body>
+ <body style="margin: 0; padding: 0; min-width: 100%!important; background-color: #C8C8C8"> 
+  <table cellpadding="0" cellspacing="0" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <table align="center" cellpadding="0" cellspacing="0" class="content" style="border: 1px solid #cccccc; border-collapse: collapse; width: 100%; max-width: 600px;"> 
+       <tbody> 
+        <tr> 
+         <td align="center" bgcolor="#FF0004" style="padding: 8px 0 8px 0;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td bgcolor="#FFFFFF" style="padding: 40px 30px 40px 30px;"> 
+          <table cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px;"> 
+           <tbody> 
+            <tr> 
+             <td style="color: #153643; font-family: Arial, sans-serif; font-size: 50px; text-align: center"><b style=""><b style="color: #FF0004">V</b>erizon </b></td> 
+            </tr> 
+            <tr> 
+             <td style="padding: 20px 0 30px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;"><a href="http://www.allvrz-roz.today/4c16QC239v5Q8n6H12y47aM9_1114W36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ5dS9e5zh10D5HPqwD/clothes-nurses"><img alt="" src="http://www.allvrz-roz.today/clothes-nurses/2885o2t395W7aNz11Q47abj1114F36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5dS9e5SF10z6W0TlwD" width="100%" /></a> 
+              <div style="text-align: center"> 
+               <p style="text-align: ;font-size: 20px; padding: 10px; line-height: 28px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Verizon</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+              </div> &nbsp; 
+              <div style="text-align: center">
+               <a href="http://www.allvrz-roz.today/4c16QC239v5Q8n6H12y47aM9_1114W36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ5dS9e5zh10D5HPqwD/clothes-nurses" style="   background-color: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-weight: bold; font-size: 18px">Go And Start Now</a>
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td> 
+              <table cellpadding="0" cellspacing="0" class="col540" style="width: 100%; max-width: 540px;"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" valign="top" width="100%"> 
+                  <div style=" display:inline-block; margin:0; padding: 0;"> 
+                   <table border="0" cellpadding="0" cellspacing="0" style="min-width:256px" width="256"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center" style="padding: 6px 0 6px 0; border: 0px solid #cccccc;" width="100%">&nbsp;</td> 
+                     </tr> 
+                     <tr> 
+                      <td style="padding: 25px 0 50px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">&nbsp;</td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                  </div> 
+                  <div style="height:441px; display:inline-block; border:0px solid black; margin:0; padding:0;"> 
+                   <table border="0" cellpadding="0" cellspacing="0" style="min-width:256px" width="256"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center" style="border: 0px solid #cccccc; padding:6px 0 6px 0;" width="100%">&nbsp;</td> 
+                     </tr> 
+                     <tr> 
+                      <td style="padding: 25px 0 50px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">&nbsp;</td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                  </div> </td> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+            <tr> 
+             <td bgcolor="#B0B0B0" style=""> 
+              <table cellpadding="0" cellspacing="0" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="color: #153643; font-family: Arial, sans-serif; font-size: 16px;" width="100%">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="center"> 
+                  <table cellpadding="0" cellspacing="0" style="padding-top:10px"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="text-align: center; font-size: 12px"> <p><span style="text-decoration: none; ">To suspend notifications,</span><a href="http://www.allvrz-roz.today/unnoticed-outruns/3t06c2L3y95jpC8612is47aaI1114J36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ5dS9e6rpP10B6GlwzlD" style="text-decoration-line: none; color: white"> <span>Begin-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style></style><style><font class="popularize"><span class="teenage"></span><font></font></font></style><span class="unravels"></span><span color="cobbler"></span><small><big></small></big><font title="crimsoning"></font></p> </td> 
+                     <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td> 
+                     <td style="text-align: center;font-size: 10px">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <!--[if (gte mso 9)|(IE)]>
+                      </td>
+                    </tr>
+                  </table>
+                <![endif]--></td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <!--[if (gte mso 9)|(IE)]>
+          </td>
+        </tr>
+      </table>
+    <![endif]--></td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.allvrz-roz.today/prepend-Haskins/c426QT2q395Qw85z13cW4O7acm1114L36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5dS9e6s10tsr5sy3wD" alt=""/></body>
 </html>
 
-------=_Part_358_1454007677.1674314342205--
+------=_Part_472_122244128.1674326733717--
 
