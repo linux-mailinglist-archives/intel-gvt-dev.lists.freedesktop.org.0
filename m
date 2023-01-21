@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 217A6676825
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 19:57:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A4F1C67688E
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Jan 2023 20:39:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E0AA910E3BD;
-	Sat, 21 Jan 2023 18:57:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5B07210E3CA;
+	Sat, 21 Jan 2023 19:39:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Sat, 21 Jan 2023 18:57:06 UTC
-Received: from mail.allvrz-roz.today (unknown [45.13.189.116])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1A22B10E2E3
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Sat, 21 Jan 2023 19:38:59 UTC
+Received: from mail.pwl-towes.today (unknown [45.13.189.129])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 06A1710E3C7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 21 Jan 2023 18:57:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=allvrz-roz.today;
+ Sat, 21 Jan 2023 19:38:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pwl-towes.today; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=verizon-gift-card-chance@allvrz-roz.today; 
- bh=oyQbCcLXz/UtgafhcLdJkMrMaAM=;
- b=QceoPh33p7cHKRcHXSCGfd+NZEsF1W7if/8koxthvtibjd+xr7WnGXGV4rLz6Ezq6hGMJK2Xt+pu
- RzMwyci5wBppi1ddpNAEGSJLDyOSGhLQ8Ej3gRCtSlv4FouuwZLA6WFSqv8s0u2hgqsiKXv6ryNf
- C21SH6i158tDJqEfop0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=allvrz-roz.today;
- b=loDLlKVQi09lwplK/aytGtzUwG2oviy0SgUOX1JNo3N8qdJtemIDQoNpz/p1kQwY4BGDe66nC+2a
- +x2hsAk1gRaNNyVcfQXj4wD4ut3Ma4XU4r+a9ZXNrUscFbAN3+mlwO4VZVHGQoylQDacs533BltC
- AEDPSN3J2FiXd/64VzI=;
-Received: by mail.allvrz-roz.today id hpgqo40001gf for
+ i=lowes.hardware.gift.card.chance@pwl-towes.today; 
+ bh=SQD5y39BxUm5IdGenIyf+RFKugI=;
+ b=R3SWnIrVzYvNBAUCOOrDsQyHeZOPNYqC0vn3Sj9eC9UF5Yvvgx4j3XW8wln6rpA9gS1h6MqZaao5
+ bADjXFelLrAXGVY6li3tOwySMd2QNwklGxMV5QuelCYZmOaR5HVwfA0Y6L8wpqn1YqtodSWV8zKs
+ lOJwPADj3KUJjWHLJwo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pwl-towes.today;
+ b=chfo3sIQvqy45uqd8msF1y2wF3SpgfwJ/9BeGK52Mc/OM4gPYQ2fIRZC7AbzHxyOlKhA4XrHs5W/
+ m9rwnPv0IzQOZPb/joIhMKDoUnlpDKpI4DFSHQFdOdhtqGuEOZ03PR3VmTHztzWbsbv4WTMRmgkW
+ XDf0qe1FOBbz5wcsvZk=;
+Received: by mail.pwl-towes.today id hpgvl60001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 21 Jan 2023 13:46:02 -0500 (envelope-from
- <verizon-gift-card-chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@allvrz-roz.today>)
-Date: Sat, 21 Jan 2023 13:46:02 -0500
-From: "VERIZON Gift Card Chance" <verizon-gift-card-chance@allvrz-roz.today>
+ Sat, 21 Jan 2023 14:28:44 -0500 (envelope-from
+ <lowes.hardware.gift.card.chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@pwl-towes.today>)
+Date: Sat, 21 Jan 2023 14:28:44 -0500
+From: "LOWES Hardware Gift Card Chance"
+ <lowes.hardware.gift.card.chance@pwl-towes.today>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Pick any gift on us, as token of appreciation for your loyalty
+Subject: Best way to show appreciation for your loyalty
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_472_122244128.1674326733717"
-Message-ID: <0.0.0.34.1D92DC89C46B3F2.4E626@mail.allvrz-roz.today>
+ boundary="----=_Part_586_631450486.1674329307747"
+Message-ID: <0.0.0.41.1D92DCE93B1D072.455F95@mail.pwl-towes.today>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,127 +54,104 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_472_122244128.1674326733717
+------=_Part_586_631450486.1674329307747
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
  <head> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>Lea Fox Junior Developer</title> 
-  <meta content="initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">
+  <meta charset="utf-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1.0; user-scalable=0;" name="viewport" /> 
+  <title>:: Zaggle Template ::</title> 
+  <link href="http://www.pwl-towes.today/casualty-abnormally/e405e2T395whV8612JD47adM1115u36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQCdS9K5o1o0S5X1wDP" /> 
+  <style rel="stylesheet" type="text/css">body{
+    background-color: fff; font-family: 'Roboto', sans-serif; margin: 0px 0px; padding: 0px 0px;
+}
+mainWrap {
+    width: 600px; margin: 0px auto;
+}
+banner { width: 100%;}
+banner img { width: 100%;}
+clear { clear: both;}
+contTop { text-align: center;}
+contTop h2 {
+    padding: 20px 60px; margin: 0px 0px; font-size: 16px; font-weight: 500; color: #666; line-height: 22px;
+}
+contTop ul { padding: 0px 0px; margin: 0px 0px;}
+contTop ul li {
+    width: 28.333%; display: inline-block; padding: 2% 2% 5%; font-size: 13px; font-weight: 400; color: #454545;
+}
+contTop ul li img {width: auto;}
+contTop ul li p { padding: 0px 0px 5px; margin: 0px 0px; font-size: 14px; font-weight: 500; color: #333;}
+line { width: 70%; height: 0px; background-color: #ccc; margin: 10px auto;}
+contMed {
+    width: auto; background-image: url(images/img1.jpg); background-repeat: no-repeat; background-position: right center; padding: 0px 0px 50px 0px;
+}
+contMed h2 {
+    padding: 20px 60px 10px; margin: 0px 0px; font-size: 16px; font-weight: 500; color: #454545; line-height: 22px; text-align: center;
+}
+btn{
+    background-color: #0E9BCD; text-align: center; padding: 16px 0px; font-size: 19px; font-weight: 400; color: #fff;
+    display: block; font-weight: bold;text-decoration: none;
+}
+contMed p {
+    padding: 10px 250px 10px 0px; margin: 0px 0px; font-size: 15px; font-weight: 400; color: #454545; line-height: 20px; text-align: left;
+}
+contMed ul { padding: 0px 0px; margin: 0px 0px;}
+contMed ul li {
+    list-style-type: none; padding: 6px 0px 6px 22px; font-size: 14px; font-weight: 400; color: #454545;
+    background-image: url(check.jpg); background-repeat: no-repeat; background-position: left center;
+}
+appWrap {width: auto; text-align: center; padding: 20px 0px;}
+appWrap p {font-size: 13px; font-weight: 500; color: #454545; padding: 0px 0px 10px; margin: 0px 0px;}
+appWrap a { display: inline-block; padding: 0px 5px;}
+footer { background-color: #87DFFF; padding: 15px 5px; text-align: center; font-size: 12px}
+footer a { font-size: 11px; color: #fff; display: inline-block; padding: 0px 8px; line-height: 22px; text-decoration: none;}
+footer a img { display: inline-block; position: relative; top: 3px; left: -3px;}
+
+social { float: right;}
+social a {padding: 0px 4px; top:0px; left: 0px;}
+
+@media screen and (max-width:590px){
+mainWrap { width: 100%;}
+contTop h2 { padding: 20px;}
+contTop ul li { width: 94%;}
+contMed {background-position: right 50px; background-size: 50%;}
+contMed p {padding: 10px 160px 10px 15px;}
+contMed ul { padding: 0px 15px;}
+social { float: none; width: 100%; text-align: center;}
+    
+}
 	</style> 
  </head> 
- <body style="margin: 0; padding: 0; min-width: 100%!important; background-color: #C8C8C8"> 
-  <table cellpadding="0" cellspacing="0" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <table align="center" cellpadding="0" cellspacing="0" class="content" style="border: 1px solid #cccccc; border-collapse: collapse; width: 100%; max-width: 600px;"> 
-       <tbody> 
-        <tr> 
-         <td align="center" bgcolor="#FF0004" style="padding: 8px 0 8px 0;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td bgcolor="#FFFFFF" style="padding: 40px 30px 40px 30px;"> 
-          <table cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px;"> 
-           <tbody> 
-            <tr> 
-             <td style="color: #153643; font-family: Arial, sans-serif; font-size: 50px; text-align: center"><b style=""><b style="color: #FF0004">V</b>erizon </b></td> 
-            </tr> 
-            <tr> 
-             <td style="padding: 20px 0 30px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;"><a href="http://www.allvrz-roz.today/4c16QC239v5Q8n6H12y47aM9_1114W36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ5dS9e5zh10D5HPqwD/clothes-nurses"><img alt="" src="http://www.allvrz-roz.today/clothes-nurses/2885o2t395W7aNz11Q47abj1114F36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5dS9e5SF10z6W0TlwD" width="100%" /></a> 
-              <div style="text-align: center"> 
-               <p style="text-align: ;font-size: 20px; padding: 10px; line-height: 28px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Verizon</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
-              </div> &nbsp; 
-              <div style="text-align: center">
-               <a href="http://www.allvrz-roz.today/4c16QC239v5Q8n6H12y47aM9_1114W36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ5dS9e5zh10D5HPqwD/clothes-nurses" style="   background-color: #000000;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            font-weight: bold; font-size: 18px">Go And Start Now</a>
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td> 
-              <table cellpadding="0" cellspacing="0" class="col540" style="width: 100%; max-width: 540px;"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" valign="top" width="100%"> 
-                  <div style=" display:inline-block; margin:0; padding: 0;"> 
-                   <table border="0" cellpadding="0" cellspacing="0" style="min-width:256px" width="256"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="padding: 6px 0 6px 0; border: 0px solid #cccccc;" width="100%">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td style="padding: 25px 0 50px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">&nbsp;</td> 
-                     </tr> 
-                    </tbody> 
-                   </table> 
-                  </div> 
-                  <div style="height:441px; display:inline-block; border:0px solid black; margin:0; padding:0;"> 
-                   <table border="0" cellpadding="0" cellspacing="0" style="min-width:256px" width="256"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="border: 0px solid #cccccc; padding:6px 0 6px 0;" width="100%">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td style="padding: 25px 0 50px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">&nbsp;</td> 
-                     </tr> 
-                    </tbody> 
-                   </table> 
-                  </div> </td> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr> 
-             <td bgcolor="#B0B0B0" style=""> 
-              <table cellpadding="0" cellspacing="0" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" style="color: #153643; font-family: Arial, sans-serif; font-size: 16px;" width="100%">&nbsp;</td> 
-                </tr> 
-                <tr> 
-                 <td align="center"> 
-                  <table cellpadding="0" cellspacing="0" style="padding-top:10px"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="text-align: center; font-size: 12px"> <p><span style="text-decoration: none; ">To suspend notifications,</span><a href="http://www.allvrz-roz.today/unnoticed-outruns/3t06c2L3y95jpC8612is47aaI1114J36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ5dS9e6rpP10B6GlwzlD" style="text-decoration-line: none; color: white"> <span>Begin-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style></style><style><font class="popularize"><span class="teenage"></span><font></font></font></style><span class="unravels"></span><span color="cobbler"></span><small><big></small></big><font title="crimsoning"></font></p> </td> 
-                     <td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td> 
-                     <td style="text-align: center;font-size: 10px">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <!--[if (gte mso 9)|(IE)]>
-                      </td>
-                    </tr>
-                  </table>
-                <![endif]--></td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <!--[if (gte mso 9)|(IE)]>
-          </td>
-        </tr>
-      </table>
-    <![endif]--></td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.allvrz-roz.today/prepend-Haskins/c426QT2q395Qw85z13cW4O7acm1114L36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5dS9e6s10tsr5sy3wD" alt=""/></body>
+ <body style="background-color: #C8C8C8"> 
+  <div class="mainWrap" style="background-color: #FFFFFF"> 
+   <section class="banner">
+    &nbsp;
+   </section> 
+   <section class="contTop"> 
+    <h2>&nbsp;</h2> 
+    <div style="width: 100%; text-align: center"> 
+     <h1 style="font-weight: bold; font-size: 30px; color: #012168;line-height: 0; ">Lowe's</h1> 
+     <a href="http://www.pwl-towes.today/c414t2395qCI8613NmH47aeK1115v36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQCdS9K5ez1T05NPTwD/blueberries-repeals" style="display: block"><img alt="" src="http://www.pwl-towes.today/chastises-involves/e226ix239C5U7aSz12Y47bA0R1115h36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQCdS9K6D1ujF05ozLwD" width="100%" /></a> 
+     <p style="text-align: ;font-size: 22px; padding: 15px">Don't miss out! Just a few clicks away from a chance to win a $100 <strong>Lowe's</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+    </div> 
+    <a class="btn" href="http://www.pwl-towes.today/c414t2395qCI8613NmH47aeK1115v36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQCdS9K5ez1T05NPTwD/blueberries-repeals">Go And Start Now</a>
+   </section> 
+   <section class="contMed">
+    &nbsp;
+   </section> 
+   <section class="appWrap">
+    &nbsp;
+   </section> 
+   <section class="footer"> 
+    <p><span style="text-decoration: none; ">To break off e-mail,</span><a href="http://www.pwl-towes.today/11f5X2j395Qv8g612Yh47afQ1115C36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQCdS9K7F1Unpq06Q@w@Dq/reflectivity-gator" style="text-decoration-line: none; color: white"> <span>Follow This Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <font color="aspirins"><span dir="adhesions"></font></span><small><span title="municipality"><font size="Brainards"></font><small></small></span><span><font></font></span></small><big></big><span dir="peppered"></span></p> 
+   </section> 
+  </div>   
+ <img src="http://www.pwl-towes.today/dc75S23h95N8Y5V13k4w7bH1V1115T36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQCdS9K7em1W0QG5zp2wD/disallowed-dynamically" alt=""/></body>
 </html>
 
-------=_Part_472_122244128.1674326733717--
+------=_Part_586_631450486.1674329307747--
 
