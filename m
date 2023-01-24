@@ -2,45 +2,48 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49EEE679F19
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Jan 2023 17:45:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4B27679F78
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Jan 2023 18:02:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1605710E05C;
-	Tue, 24 Jan 2023 16:45:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B0FDE10E0B1;
+	Tue, 24 Jan 2023 17:02:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 24 Jan 2023 16:45:14 UTC
-Received: from mail.onw-khls.info (unknown [45.13.189.102])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8122510E6C3
+X-Greylist: delayed 670 seconds by postgrey-1.36 at gabe;
+ Tue, 24 Jan 2023 17:02:54 UTC
+Received: from o46.p38.mailjet.com (o46.p38.mailjet.com [185.250.237.46])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0CB6F10E6D0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 24 Jan 2023 16:45:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=onw-khls.info;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls-opinion-matter@onw-khls.info; 
- bh=X9G9oOi7PZdt65D3brfUgaO5ExI=;
- b=Zi7hjm4QSlqzJephkpNA60bohEpYCDI3vwl0RO8r/VVtCAmxfZke37t/DXYpV/PPeYDXE48zvWhq
- v9GxbB7WTs37Q/cNQDJp5IBJiDLHZXgqaXJGyGM1w2Q/YVszdsPF6RXUkKH2JURPVpgeIdK6uhGa
- uH4XjB43gZpuBIfyEY8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=onw-khls.info;
- b=XBbqeXn8/9U/26slAbz6Ovb/Hds9U0AIbgLKICZ9sjFg7d5i5tcEhaY7oni+8dfvgSDn2LhqmdZ+
- n4fQOlBIZeGiXNChVBygw52g0KRnsILItSOzrWU+bA7YLdouChXG8pH/UoynuyuMaQyRh+KFynsv
- hI1NaKKVM9r/hokQutc=;
-Received: by mail.onw-khls.info id hq05hk0001gq for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 24 Jan 2023 11:34:41 -0500 (envelope-from
- <kohls-opinion-matter-intel+2Dgvt+2Ddev=lists.freedesktop.org@onw-khls.info>)
-Date: Tue, 24 Jan 2023 11:34:41 -0500
-From: "Kohls Opinion Matter" <kohls-opinion-matter@onw-khls.info>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every visit earns you loyalty rewards - yay!
+ Tue, 24 Jan 2023 17:02:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+ d=bnc3.mailjet.com; i=jesse.cypresstech=3Dgmail.com@a1189921.bnc3.mailjet.com;
+ s=mailjet2; x=1674666501; 
+ h=message-id:mime-version:from:from:to:to:subject:subject:date:date:list-id:list-unsubscribe:
+ list-unsubscribe-post:feedback-id:precedence:x-campaignid:x-csa-complaints:
+ x-mj-mid:x-mj-smtpguid:x-report-abuse-to:content-type;
+ bh=vTRHE7SehxxmC7Gk3kR8+P9ZPUA8BWkkvFoQ6q/0Xhw=;
+ b=F1w3gTTHWlAUFcTxrgxE3sHYsUF6XzjGygLVxF/xoKpPOtFtlIvyDOvXD
+ o+Dt9iXt5a5nbL9u+rsrIYwQiF6lMmSliMheImf8NJc7txbHLSJ+ea6SNYAA
+ lD5M1BZOUdcJh8NIwNOksm0DW23IY0rdb7POnqKPz0lpk652tP3/GE=
+Message-Id: <c6d6cd69.AWQAAAx6H3MAAcjYpAYAAM5Ee0IAAYCsb78AnNMcABIoIQBj0Ayd@mailjet.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_172_828968085.1674578066824"
-Message-ID: <0.0.0.15F.1D93011C260D298.C9446@mail.onw-khls.info>
+From: Jesse Dougherty <jesse.cypresstech@gmail.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Hewlett-Packard Unix MPE/iX servers / workstations disaster
+ back-ups, spare parts & ABB Advant RTA
+Date: Tue, 24 Jan 2023 16:51:41 +0000 (UTC)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-Id: 42.1189921.1191387:MJ
+Precedence: bulk
+X-CampaignID: 7664608262
+X-CSA-Complaints: csa-complaints@eco.de
+X-MJ-Mid: AWQAAAx6H3MAAcjYpAYAAM5Ee0IAAYCsb78AnNMcABIoIQBj0AydPtk85IHFQWyCHccumseMBAASLds
+X-MJ-SMTPGUID: 3ed93ce4-81c5-416c-821d-c72e9ac78c04
+X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
+ abuse@mailjet.com with a copy of the message
+Content-Type: multipart/alternative; boundary="=-caLiUpoRTjbD6mIEqtbI"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: "Intel GVT \(Graphics Virtualization\) development list"
  <intel-gvt-dev.lists.freedesktop.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gvt-dev>, 
@@ -53,285 +56,204 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_172_828968085.1674578066824
-Content-Type: text/html; charset=us-ascii
+--=-caLiUpoRTjbD6mIEqtbI
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
-w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns=3D"http://www.w3.org/1999/xhtml">
- <head>=20
-  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
-/>=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>more on my winter season</title>=20
-  <style type=3D"text/css">.main {
-
-            background-color: #ffffffff;
-
-            margin: 0 auto;
-
-            width: 100%;
-
-            max-width: 600px;
-
-            border-spacing: 0;
-
-            font-family: sans-serif;
-
-            color: #171a1b;
-
-
-
-        }
-
-
-
-        .blackLine {
-
-            background-color: #FFFFFF;
-
-            height: 50px;
-
-        }
-
-
-
-        body {
-
-            margin: 0;
-
-            margin-top: 20px;
-
-            background-color: #F1F1F1;
-
-            text-align: center;
-
-        }
-
-
-
-        table {
-
-            border-spacing: 0;
-
-        }
-
-
-
-        #table2 {
-
-            background-color: #ffffffff;
-
-
-
-            margin: 0 auto;
-
-            width: 100%;
-
-            max-width: 600px;
-
-            border-spacing: 0;
-
-            font-family: sans-serif;
-
-            color: #171a1b;
-
-            text-align: center;
-
-        }
-
-
-
-        #table2 img {
-
-            margin-top: 20px;
-
-
-
-        }
-
-
-
-        #table2 p {
-
-            font-size: 15px;
-
-        }
-
-
-
-        #table3 td img {
-
-            margin-top: 20px;
-
-        }
-
-
-
-        #table5 td p {
-
-            text-align: center;
-
-        }
-
-
-
-        #table5 td p {
-
-            margin-top: 0;
-
-            margin-bottom: 0;
-
-        }
-
-
-
-        td {
-
-            padding: 0;
-
-        }
-
-
-
-        img {
-
-            border: 0;
-
-        }
-
-
-
-        @media screen and (max-width: 600px) {}
-=09</style>=20
- </head>=20
- <body>=20
-  <table class=3D"main" width=3D"100%">=20
-   <thead>=20
-   </thead>=20
-   <caption>
-    &nbsp;
-   </caption>=20
-   <tbody>=20
-    <tr>=20
-     <td>=20
-      <div style=3D"width: 100%; text-align: center">
-       <span style=3D"font-size: 26px; font-family: Gotham, 'Helvetica Neue=
-', Helvetica, Arial, 'sans-serif'; display: block; padding: 20px">Are you l=
-ooking for the perfect g<span style=3D"letter-spacing: -10px; font-size: 1p=
-t; color: #fff">fv</span>f<span style=3D"letter-spacing: -10px; font-size: =
-1pt; color: #fff">ac</span>t for a loved one or yourself? You are just a fe=
-w clicks away to get the <strong>$<span style=3D"letter-spacing: -10px; fon=
-t-size: 1pt; color: #fff">pol</span>100 Kohl's Gi<span style=3D"letter-spac=
-ing: -10px; font-size: 1pt; color: #fff">ch</span>ft C<span style=3D"letter=
--spacing: -10px; font-size: 1pt; color: #fff">rs</span>ard</strong></span>=
-=20
-       <a href=3D"http://www.onw-khls.info/closers-genuineness/8464Y2395C8YA612w47Lf5H1125W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQYdSQQ7COX10NX5Xj@wD"><img alt=3D"" src=3D"http://www.onw-khls.info/closers-genuineness/d6e5rk2395hn7an13a47fID7Z1125w36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQYdSQQ6WoBx105CBXwD" width=3D"10=
-0%" /></a>=20
-       <div>=20
-        <p style=3D"font-weight: normal;font-size: 22px; padding: 28px; lin=
-e-height: 32px">Share your thoughts and win a $100 Kohl's g <span style=3D"=
-letter-spacing: -10px; font-size: 1pt; color: #fff">pe</span>if<span style=
-=3D"letter-spacing: -10px; font-size: 1pt; color: #fff">ro</span>t ca<span =
-style=3D"letter-spacing: -10px; font-size: 1pt; color: #fff">bu</span>rd! W=
-e're eager to hear your feedback on our products, services, and stores. Whe=
-ther you're in need of clothing, home decor, or kitchen essentials, Kohl<sp=
-an style=3D"letter-spacing: -10px; font-size: 1pt; color: #fff">ra</span>'s=
- has everything you need to make your life more comfortable. .</p>=20
-       </div>=20
-      </div> <p style=3D"background: #D00003; padding: 15px; font-weight: b=
-old; color: #FFFFFF; box-shadow: 0px 0px 8px 1px #000000; border-radius: 6p=
-x"><a href=3D"http://www.onw-khls.info/closers-genuineness/8464Y2395C8YA612w47Lf5H1125W36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQYdSQQ7COX10NX5Xj@wD" style=3D"text-decoration: none; padding: 0px 190p=
-x; display: block">Go <span style=3D"letter-spacing: -10px; font-size: 1pt;=
- color: #fff">so</span>And St<span style=3D"letter-spacing: -10px; font-siz=
-e: 1pt; color: #fff">dim</span>art Now</a></p> </td>=20
-    </tr>=20
-   </tbody>=20
-  </table>=20
-  <table class=3D"table2" id=3D"table2" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td class=3D"two-colums">&nbsp;</td>=20
-     <td class=3D"two-colums">&nbsp;</td>=20
-     <td class=3D"two-colums">&nbsp;</td>=20
-    </tr>=20
-    <tr>=20
-     <td>&nbsp;</td>=20
-    </tr>=20
-   </tbody>=20
-  </table>=20
-  <table class=3D"main" id=3D"table3" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td>&nbsp;=20
-      <div style=3D"width: 450px; border: 1px #C0D62C solid; margin: auto">
-       &nbsp;
-      </div> &nbsp;=20
-      <div style=3D"width: 350px; border: 1px #BFD822 solid; margin: auto">
-       &nbsp;
-      </div> &nbsp;=20
-      <div style=3D"width: 250px; border: 1px #C0D62C solid; margin: auto">
-       &nbsp;
-      </div> <br /> <br /> Don't miss out on this limited time of<span styl=
-e=3D"letter-spacing: -10px; font-size: 1pt; color: #fff">sd</span>fer.<br /=
-> <strong>#KOHLS #GIFTCARD #SHOPNOW</strong></td>=20
-    </tr>=20
-   </tbody>=20
-  </table>=20
-  <table class=3D"main" id=3D"table4" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <th height=3D"200px" style=3D"background-color: #FFFFFF;">&nbsp;</th>=
-=20
-    </tr>=20
-   </tbody>=20
-  </table>=20
-  <table class=3D"main" id=3D"table5" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td> <p>&nbsp;</p> </td>=20
-     <td>&nbsp;</td>=20
-    </tr>=20
-    <tr>=20
-     <td> <p>&nbsp;</p> </td>=20
-    </tr>=20
-   </tbody>=20
-  </table>=20
-  <p><span style=3D"max-width: 570px; font-size: 12px; padding: 15px; backg=
-round-color: #BFBFBF; display: block; margin: auto"><span style=3D"text-dec=
-oration: none; ">To end notifications,</span><a href=3D"http://www.onw-khls.info/d8b6g2t39z5Jm86I13e47fov6J1125n36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQYdSQQ7HS1Wq0D5CAOwD/pooch-grange" style=3D"text-d=
-ecoration-line: none; color: white"> <span>Continue.Over.Here </span> </a><br /> =
-126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br =
-/> <span><font class="infectiously"></font></span><font class="forfeiture"></font><font face="protons"></font><font id="Galileo"><span lang="nerve"></font></span><style style="specifying"><style face="footprint"></style></style><style lang="causeway"></style><style style="predominately"></style><font id="colorless"></font> </span></p>=20
-  <p style=3D"font-size: 4px; color: #BFBFBF"><span style=3D"max-width: 570=
-px; font-size: 12px; padding: 15px; background-color: #BFBFBF; display: blo=
-ck; margin: auto">emory In a waking state we have indeed memories which app=
-ear and disappear occupying our mind in turn But they are always memories w=
-hich are closely connected with our present situation our present occupatio=
-n our present action I recall at this moment the book of M d'Hervey on drea=
-ms that is because I am discussing the subject of dreams and this act orien=
-ts in a certain particular direction the activity of my memory The memories=
- that we evoke while waking however distant they may at first appear to 33 =
-be from the present action are always connected with it in some way What is=
- the rle of memory in an animal It is to recall to him in any circumstance =
-the advantageous or injurious consequences which have formerly arisen in an=
-alogous circumstances in order to<br /> <br /> instruct him as to what he o=
-ught to do In man memory is doubtless less the slave of action but still it=
- sticks to it Our memories at any given moment form a solid whole a pyramid=
- so to speak whose point is inserted precisely into our present action But =
-behind the memories which are concerned in our occupations and are revealed=
- by means of it there are others thousands of others stored below the scene=
- illuminated by consciousness Yes I believe indeed that all our past life i=
-s there preserved even to the most infinitesimal details and that we forget=
- nothing and that all that we have felt perceived thought willed from the f=
-irst awakening of our consciousness survives indestructibly But the memorie=
-s which are preserved in these obscure depths are there in the state of 34<=
-/span></p>  =20
- <img src=3D"http://www.onw-khls.info/monetary-phantom/1026I239XA5zR8O513vQ47f8MA1125G36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQYdSQQ7A10pBti6rBPw3D" alt=3D""/></body>
-</html>
-
-------=_Part_172_828968085.1674578066824--
+Hewlett-Packard hardware (Buy, Sell, Repair, & Support)=C2=A0
+
+Cypress Technology, Inc. is a HP hardware vendor specializing in selling an=
+d supporting classic Hewlett-Packard infrastructure. We offer HP hardware f=
+rom the early 1990's to the current date. We sell and support the following=
+:.
+
+ * HP IA64 Itanium Integrity (RX) servers=C2=A0
+ * HP 9000 Enterprise servers
+ * HP 3000 Enterprise servers=C2=A0
+ * HP 1000 Series servers
+ * HP 9000 Unix workstations =C2=A0/ controllers=C2=A0
+ * HP-UX & MPE/iX servers and related hardware
+ * HP ABB Advant Stations, RTA Real Time Accelerator platform / OSC / 800xA
+ * =C2=A0
+ * =C2=A0 =C2=A0 disaster back-up, clone replicas, spare parts, and add on =
+peripherals
+ * =C2=A0 =C2=A0 replacement parts for discontinued HP systems=C2=A0
+ * =C2=A0 =C2=A0 buy - off lease bulk, surplus, & unused HP hardware
+ * =C2=A0 =C2=A0 ship / export Worldwide to every country
+
+Contact us if you wish to buy, sell, or RFQ on any HP hardware. Contact wit=
+h any questions, requests, or assistance.=C2=A0
+
+ * =C2=A0 =C2=A0 Thank you
+ * =C2=A0 =C2=A0 Jesse Dougherty
+ * =C2=A0 =C2=A0 Cypress Technology, Inc.
+ * =C2=A0 =C2=A0 Land O Lakes, Florida USA
+ * =C2=A0 =C2=A0 Phone 888-954-3414 / (direct) 412-589-3779
+ * =C2=A0 =C2=A0=C2=A0jesse@cypress-tech.com [jesse@cypress-tech.com]
+ * =C2=A0 =C2=A0=C2=A0www.Cypress-Tech.com [http://www.Cypress-Tech.com]
+
+=C2=A0
+
+
+
+This e-mail has been sent to intel-gvt-dev@lists.freedesktop.org, click her=
+e to unsubscribe http://xz01x.mjt.lu/unsub2?hl=3Den&m=3DAWQAAAx6H3MAAcjYpAY=
+AAM5Ee0IAAYCsb78AnNMcABIoIQBj0AydPtk85IHFQWyCHccumseMBAASLds&b=3Dc6d6cd69&e=
+=3D5c4b6198&x=3DT9ZTD0d7I8nWexNjwtFGOiDda_TnMPeFq7gyjrD4UrPTf9rVFgDeeiePdwr=
+slDcy.=
+
+--=-caLiUpoRTjbD6mIEqtbI
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title>Hewlett-Packard Unix MPE/iX servers / workstations disaste=
+r back-ups, spare parts & ABB Advant RTA</title><!--[if !mso]><!--><meta ht=
+tp-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><!--<![endif]--><meta ht=
+tp-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8"><meta name=
+=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1"><style typ=
+e=3D"text/css">#outlook a { padding:0; }
+          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-=
+size-adjust:100%; }
+          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-tab=
+le-rspace:0pt; }
+          img { border:0;height:auto;line-height:100%; outline:none;text-de=
+coration:none;-ms-interpolation-mode:bicubic; }
+          p { display:block;margin:13px 0; }</style><!--[if mso]>
+        <noscript>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        </noscript>
+        <![endif]--><!--[if lte mso 11]>
+        <style type=3D"text/css">
+          .mj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]--><style type=3D"text/css">@media only screen and (min-wi=
+dth:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+      }</style><style media=3D"screen and (min-width:480px)">.moz-text-html=
+ .mj-column-per-100 { width:100% !important; max-width: 100%; }</style><sty=
+le type=3D"text/css">[owa] .mj-column-per-100 { width:100% !important; max-=
+width: 100%; }</style><style type=3D"text/css"></style></head><body style=
+=3D"word-spacing:normal;background-color:#F4F4F4;"><div style=3D"background=
+-color:#F4F4F4;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" style=3D"background:#ffffff;background=
+-color:#ffffff;width:100%;"><tbody><tr><td><!--[if mso | IE]><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" rol=
+e=3D"presentation" style=3D"width:600px;" width=3D"600" bgcolor=3D"#ffffff"=
+ ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exact=
+ly;"><![endif]--><div style=3D"margin:0px auto;max-width:600px;"><table ali=
+gn=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font-=
+size:0px;padding:20px 0px 20px 0px;padding-left:0px;padding-right:0px;text-=
+align:center;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-al=
+ign:top;width:600px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlo=
+ok-group-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:=
+inline-block;vertical-align:top;width:100%;"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"vertical-align:top=
+;" width=3D"100%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;padd=
+ing:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><d=
+iv style=3D"font-family:Arial, sans-serif;font-size:18px;letter-spacing:nor=
+mal;line-height:1;text-align:left;color:#000000;"><p class=3D"text-build-co=
+ntent" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0; margin-top: 10px;=
+"><span style=3D"color:#000000;font-family:Arial, sans-serif;font-size:18px=
+;"><b>Hewlett-Packard hardware (Buy, Sell, Repair, &amp; Support)&nbsp;</b>=
+</span></p><p class=3D"text-build-content" data-testid=3D"XOg3BoD5V" style=
+=3D"margin: 10px 0;"><span style=3D"color:#000000;font-family:Arial;font-si=
+ze:16px;">Cypress Technology, Inc. is a HP hardware vendor specializing in =
+selling and supporting classic Hewlett-Packard infrastructure. We offer HP =
+hardware from the early 1990's to the current date. We sell and support the=
+ following:.</span></p><ul><li><span style=3D"color:#000000;font-family:Ari=
+al;font-size:16px;">HP IA64 Itanium Integrity (RX) servers&nbsp;</span></li=
+><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;">HP 900=
+0 Enterprise servers</span></li><li><span style=3D"color:#000000;font-famil=
+y:Arial;font-size:16px;">HP 3000 Enterprise servers&nbsp;</span></li><li><s=
+pan style=3D"color:#000000;font-family:Arial;font-size:16px;">HP 1000 Serie=
+s servers</span></li><li><span style=3D"color:#000000;font-family:Arial;fon=
+t-size:16px;">HP 9000 Unix workstations &nbsp;/ controllers&nbsp;</span></l=
+i><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;">HP-UX=
+ &amp; MPE/iX servers and related hardware</span></li><li><span style=3D"co=
+lor:#000000;font-family:Arial;font-size:16px;">HP ABB Advant Stations, RTA =
+Real Time Accelerator platform / OSC / 800xA</span></li><li>&nbsp;</li><li>=
+<span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nbsp; &nbs=
+p; disaster back-up, clone replicas, spare parts, and add on peripherals</s=
+pan></li><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;=
+">&nbsp; &nbsp; replacement parts for discontinued HP systems&nbsp;</span><=
+/li><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nb=
+sp; &nbsp; buy - off lease bulk, surplus, &amp; unused HP hardware</span></=
+li><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nbs=
+p; &nbsp; ship / export Worldwide to every country</span></li></ul><p class=
+=3D"text-build-content" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"=
+><span style=3D"color:#000000;font-family:Arial;font-size:16px;">Contact us=
+ if you wish to buy, sell, or RFQ on any HP hardware. Contact with any ques=
+tions, requests, or assistance.&nbsp;</span></p><ul><li><span style=3D"colo=
+r:#000000;font-family:Arial;font-size:16px;">&nbsp; &nbsp; Thank you</span>=
+</li><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;">&n=
+bsp; &nbsp; Jesse Dougherty</span></li><li><span style=3D"color:#000000;fon=
+t-family:Arial;font-size:16px;">&nbsp; &nbsp; Cypress Technology, Inc.</spa=
+n></li><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;">=
+&nbsp; &nbsp; Land O Lakes, Florida USA</span></li><li><span style=3D"color=
+:#000000;font-family:Arial;font-size:16px;">&nbsp; &nbsp; Phone 888-954-341=
+4 / (direct) 412-589-3779</span></li><li><span style=3D"color:#000000;font-=
+family:Arial;font-size:16px;">&nbsp; &nbsp;&nbsp;</span><a class=3D"link-bu=
+ild-content" style=3D"color:inherit;; text-decoration: none;" href=3D"mailt=
+o:jesse@cypress-tech.com"><span style=3D"color:#55575d;font-family:Arial;fo=
+nt-size:16px;"><u>jesse@cypress-tech.com</u></span></a></li><li><span style=
+=3D"color:#000000;font-family:Arial;font-size:16px;">&nbsp; &nbsp;&nbsp;</s=
+pan><a class=3D"link-build-content" style=3D"color:inherit;; text-decoratio=
+n: none;" target=3D"_blank" href=3D"http://xz01x.mjt.lu/lnk/AWQAAAx6H3MAAcj=
+YpAYAAM5Ee0IAAYCsb78AnNMcABIoIQBj0AydPtk85IHFQWyCHccumseMBAASLds/1/vfSI8Y6W=
+CY7TAfsvoHLnfQ/aHR0cDovL3d3dy5DeXByZXNzLVRlY2guY29t"><span style=3D"color:#=
+55575d;font-family:Arial;font-size:16px;"><u>www.Cypress-Tech.com</u></span=
+></a></li></ul><p class=3D"text-build-content" data-testid=3D"XOg3BoD5V" st=
+yle=3D"margin: 10px 0; margin-bottom: 10px;">&nbsp;</p></div></td></tr></tb=
+ody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr=
+></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td=
+></tr></tbody></table><!--[if mso | IE]><table align=3D"center" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" styl=
+e=3D"width:600px;" width=3D"600" ><tr><td style=3D"line-height:0px;font-siz=
+e:0px;mso-line-height-rule:exactly;"><![endif]--><div style=3D"margin:0px a=
+uto;max-width:600px;"><table align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr>=
+<td style=3D"direction:ltr;font-size:0px;padding:20px 0px 20px 0px;text-ali=
+gn:center;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align=
+:top;width:600px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-=
+group-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:inl=
+ine-block;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"vertical-align:top;=
+" width=3D"100%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;paddi=
+ng:0px 20px 0px 20px;padding-top:0px;padding-bottom:0px;word-break:break-wo=
+rd;"><div style=3D"font-family:Arial, sans-serif;font-size:13px;letter-spac=
+ing:normal;line-height:1;text-align:left;color:#000000;"><p class=3D"text-b=
+uild-content" style=3D"text-align: center; margin: 10px 0; margin-top: 10px=
+; margin-bottom: 10px;" data-testid=3D"h4QAoZveqV24o"><span style=3D"color:=
+#55575d;font-family:Arial;font-size:13px;line-height:22px;">This e-mail has=
+ been sent to intel-gvt-dev@lists.freedesktop.org, </span><a class=3D"link-=
+build-content" style=3D"color:inherit;; text-decoration: none;" target=3D"_=
+blank" href=3D"http://xz01x.mjt.lu/unsub2?hl=3Den&amp;m=3DAWQAAAx6H3MAAcjYp=
+AYAAM5Ee0IAAYCsb78AnNMcABIoIQBj0AydPtk85IHFQWyCHccumseMBAASLds&amp;b=3Dc6d6=
+cd69&amp;e=3D5c4b6198&amp;x=3DT9ZTD0d7I8nWexNjwtFGOiDda_TnMPeFq7gyjrD4UrPTf=
+9rVFgDeeiePdwrslDcy"><span style=3D"color:#55575d;font-family:Arial;font-si=
+ze:13px;line-height:22px;">click here to unsubscribe</span></a><span style=
+=3D"color:#55575d;font-family:Arial;font-size:13px;line-height:22px;">.</sp=
+an></p></div></td></tr><tr><td align=3D"left" style=3D"font-size:0px;paddin=
+g:0px 20px 0px 20px;padding-top:0px;padding-bottom:0px;word-break:break-wor=
+d;"><div style=3D"font-family:Arial, sans-serif;font-size:13px;letter-spaci=
+ng:normal;line-height:1;text-align:left;color:#000000;"></div></td></tr></t=
+body></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></t=
+r></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></d=
+iv>
+<br/><img src=3D"http://xz01x.mjt.lu/oo/AWQAAAx6H3MAAcjYpAYAAM5Ee0IAAYCsb78=
+AnNMcABIoIQBj0AydPtk85IHFQWyCHccumseMBAASLds/be1cdfa3/e.gif" height=3D"1" w=
+idth=3D"1" alt=3D"" border=3D"0" style=3D"height:1px;width:1px;border:0;"/>
+</body></html>=
+
+--=-caLiUpoRTjbD6mIEqtbI--
 
