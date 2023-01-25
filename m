@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5227567B88C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Jan 2023 18:29:31 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BF94467B9AC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Jan 2023 19:40:08 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2415710E7F5;
-	Wed, 25 Jan 2023 17:29:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9473810E806;
+	Wed, 25 Jan 2023 18:40:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Wed, 25 Jan 2023 17:29:26 UTC
-Received: from mail.atthehealth.info (unknown [45.13.189.220])
- by gabe.freedesktop.org (Postfix) with ESMTP id D513810E377
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Wed, 25 Jan 2023 18:40:05 UTC
+Received: from mail.altcoverges.info (unknown [45.13.189.172])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 36B4910E09A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Jan 2023 17:29:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=atthehealth.info;
+ Wed, 25 Jan 2023 18:40:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=altcoverges.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=healthcare.enrollment@atthehealth.info; 
- bh=NQCri45MGY3Kh877tRoSJYX0/3Y=;
- b=X8iy5+FGTGFcbsBAlynD9b4ES5P2BFin27UpZB93eaEJjJ3L2pu0DgGFr6tR66SPy0BqfoL9nvov
- YNkWAWaZUQnCvlxRlp9Xj9NKsg2mNu6+xdxYc0PXQ4ehIh6O8BHL3+AaZf83uFj2qXke0HNUtkBZ
- oNoDQht4yuMsINxqX0o=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=atthehealth.info;
- b=p9TwExjNPoVsm28Mbnf6TeyOF0IUO/4Xg0BakIV3wuuzCMcvXEtQlgCl3pr4Hq4ZiYs2nJd+NELu
- TEaJypWGqR57GVkMtL4wb1jhgmcCw30aEEmW6iiyk9G/+2th+bAgyFze+q1Qa2uTuxJ3LnKHInSx
- C/WJW88g6H7rJNtP98g=;
-Received: by mail.atthehealth.info id hq5tls0001gb for
+ i=connect.life.insurance.life.advertisement@altcoverges.info; 
+ bh=3bJ3cbDzcoWfaLXewsu+S5RHAgQ=;
+ b=COq5PH7ScigsutOpZLiS8X5ToTl6pj1NGWi9G8CUYavqMEnnXWQPYvQMipuGsQ1fzozNWuceI7jY
+ PWXaj0m2nQPjSADo03oFHESTpoj3banULxCeUd0UE3GkKcJeE+6sLN1JVuMmyiOQeh0qftg2l4Lb
+ k4NlImB6lcrgVFV9ahA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=altcoverges.info;
+ b=PlClJo0NL5THFU0iWORz19BCHNki+dKB+KcLlCpCRKfHDow8ifB04NgoaaZyNmVah0Hue4XZa72B
+ T2fL8tdmM390ZerH4rmJEx9SUwUyLLqj9V5HlLqxMjb7DOfzdsNwuSNu1sDUfEB1oiVy+AxFezIx
+ 5XAEswvY1ZSeEgUw8Kg=;
+Received: by mail.altcoverges.info id hq65uo0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Jan 2023 13:44:23 -0500 (envelope-from
- <healthcare.enrollment-intel+2Dgvt+2Ddev=lists.freedesktop.org@atthehealth.info>)
-Date: Wed, 25 Jan 2023 13:44:23 -0500
-From: "Healthcare Enrollment" <healthcare.enrollment@atthehealth.info>
+ Wed, 25 Jan 2023 14:54:34 -0500 (envelope-from
+ <connect.life.insurance.life.advertisement-intel+2Dgvt+2Ddev=lists.freedesktop.org@altcoverges.info>)
+Date: Wed, 25 Jan 2023 14:54:34 -0500
+From: "Connect Life Insurance Life Advertisement"
+ <connect.life.insurance.life.advertisement@altcoverges.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: you could save money on health insurance in only 2 minutes!
+Subject: Get a free life insurance quote in seconds
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_151_1365218643.1674667004770"
-Message-ID: <0.0.0.10.1D930ED0B327108.107033@mail.atthehealth.info>
+ boundary="----=_Part_349_503433561.1674671196210"
+Message-ID: <0.0.0.73.1D930F6D9121412.46D5B4@mail.altcoverges.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,365 +54,500 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_151_1365218643.1674667004770
+------=_Part_349_503433561.1674671196210
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html lang=3D"en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
+<html>
  <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <meta content=3D"ie=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
-  <title>Valvo</title>=20
-  <style type=3D"text/css">body {
-            margin: 0px;
-            padding: 0px;
-            text-align: center;
-            }
-
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            }
-
-        h1,h2,h3,h4,h5,h6,p {
-            color: #414146;;
-            }
-
-        #container {
-            width: 100%;
-            margin: auto;
-            padding-top: 20px;
-=09=09=09max-width: 499px
-=09=09=09
-=09=09=09
-            }  =20
-
-        .header {
-            width: 457px;
-            margin: auto;
-            text-align: center;
-            }
-
-        .header p {
-            font-size: 11.5px;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #adadad;
-            }
-
-        .header a {
-            color: #adadad;  =20
-            }
-
-        .company-logo{
-           margin: 25px 0px;
-            }
-
-        .header h4 {
-            text-transform: uppercase;
-            font-family: Arial, Helvetica, sans-serif;
-            letter-spacing: 3px;
-            font-weight: 500;
-            margin-bottom: 40px;
-            }
-       =20
-        .first-body-title h4 {
-            margin: 30px 0px;
-            letter-spacing: 2.5px;
-            font-weight: 300;
-            font-size: 23px;
-            font-family: Arial, Helvetica, sans-serif;
-            }
-
-        .first-body-content p {=20
-            font-family: Helvetica;
-            font-size: 16px;
-            font-weight: 200;
-            letter-spacing: 1px;
-            line-height:25px;
-            padding: 10px 0px;
-            }
-
-        .first-body-content h3 {
-            letter-spacing: 1.5px;
-            font-family: helvetica;
-            font-size: 16px;
-            line-height: 25px;
-            font-weight: 600;
-            }
-
-        ul {
-            list-style: none;
-            width: 50%;
-            height: auto;
-            margin: auto;
-            letter-spacing: 2px;
-            padding: 20px 10px ;
-            border: 1px solid #414146;
-            text-align: center;
-           }
-
-        .first-body-link li a {
-            text-decoration: none;
-            text-transform: uppercase;
-            color: #414146;  =20
-           }
-
-        .first-body-link {
-            margin: 40px 0px 60px 0px;
-          }
-
-        .second-body-content {
-            display: flex;
-            background-color:#f5f7f9;
-            margin-bottom: 20px;
-         }
-
-        .right-second-body-content h2, .left-second-body-content h2 {
-            font-size: 17px;
-            line-height: 20px;=20
-            letter-spacing: 1px;
-            font-weight: 400;
-            padding: 25px 0px;
-        }
-
-        .right-second-body-content ul, .left-second-body-content ul {
-           border-style: none;
-           width: 100%;
-           font-family: helvetica;
-           font-size: 14px;
-       =20
-        }
-
-        .right-second-body-content li, .left-second-body-content li {
-           padding-top: 10px;
-        }
-
-        .accessory{
-            height: 150px;
-            padding: 5px;
-        }
-
-        .social {
-            display: inline-block;
-        }
-       =20
-        .social ul {
-            width: 100%;
-            border-style: none;
-        }
-
-        .social ul li {
-            float:left;
-            padding: 30px;
-        }
-
-        footer {
-            margin:10px 0px;
-            padding: 10px 0px;
-        }
-
-        footer p {
-            padding-top: 15px;
-            font-size: 12px;
-            color: #414146;
-        }
-
-        .footer-link {
-            color: #414146;
-            font-size: 12.5px;
-            text-decoration: none;
-            text-transform: uppercase;
-            border-bottom: 1px solid #414146 ;
-        }
-
-        .footer-message {
-            font-size: 12px;
-            font-weight: 600;
-            color:black;
-            font-family: helvetica;
-            text-align: center;
-            line-height: 20px;
-        }
-
-        @media only screen and (max-width: 668px) {
-        /* For mobile phones: */
-                body {
-                    padding:0px;
-                    margin:0px;
-                }
-
-                .header {
-                    width:100%;
-                    margin: auto;
-                    text-align: center;
-                }
-
-                #container {
-                    width:100%;
-                    overflow: hidden;
-                }
-
-                .second-body-content {
-                    display: block;
-                }
-
-                .banner-img {
-                    width: 100%;
-                }
-
-                .accessory{
-                     height: auto;
-                }
-        }
-}
-=09</style>=20
+  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>=20
+  <meta content=3D"width=3Ddevice-width" name=3D"viewport" />=20
+  <meta content=3D"telephone=3Dno, date=3Dno, address=3Dno, email=3Dno, url=
+=3Dno" name=3D"format-detection" />=20
+  <title>Buy Together! Buy Cheaper! - WayGather</title>=20
  </head>=20
- <body style=3D"width: 100%">=20
-  <div id=3D"container">
-   <!--Header Section-->=20
-   <div class=3D"header">
-    &nbsp;=20
-    <h3 style=3D"margin: 0"><a href=3D"http://www.atthehealth.info/6295q23X95c8FR613Q4R80fjW112cA36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQUdSRn6lti1v06KLWwDJ/unwritten-finalizes">Find The Best Plan</a></=
-h3>=20
-    <a href=3D"http://www.atthehealth.info/6295q23X95c8FR613Q4R80fjW112cA36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQUdSRn6lti1v06KLWwDJ/unwritten-finalizes"><img alt=3D"" class=3D"company-logo" src=3D"=
-http://www.atthehealth.info/13d6GA23S95q7yaK11D4811Y112cw36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQUdSRn7s1M0ANS5plMwD/Hinkle-Shakespeare" /></a>=20
-    <h4>&nbsp;</h4>=20
-   </div>=20
-   <!--Header Section Ends here-->
-   <!--Body Section Starts here-->=20
-   <div class=3D"body">
-    <!--body banner image-->=20
-    <section>
-     &nbsp;
-    </section>=20
-    <section>
-     <!--First Section Starts here-->=20
-     <div class=3D"first-body-title">=20
-      <h4>&nbsp;</h4>=20
-     </div>=20
-     <div class=3D"first-body-content">=20
-      <p style=3D"font-size: 12px">In order to remove yourself from future =
-mailings from this advertiser, please <a href=3D"http://www.atthehealth.info/irking-stagecoach/e405f239w5UyI8612U4810pn112co36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQUdSRn7fP10ijO5lBUwD" style=3D"color=
-: #3498db ;" target=3D"_blank">click here to unsubscribe</a> or write to:<b=
-r /> 382 NE 191st Street, Ste 57537<br /> Miami, FL 33179</p>=20
-      <h3>&nbsp;</h3>=20
-     </div>=20
-    </section>=20
-    <!--First Section ends here-->
-    <!--Second Section Starts here-->=20
-    <div class=3D"second-body-content">=20
-     <div class=3D"right-second-body-content">=20
-      <h2>&nbsp;</h2>=20
-      <div class=3D"accessory">=20
-       <ul>=20
-        <li style=3D"visibility: collapse">----mUP2trij;oPeqkn----f33Kpa8m;=
-aaYTww ----gY5KVOXx;eWrFzC----2oV1VaIu;tybpWx ----59teX8Zs;sYfvfv----bYZtNZ=
-Ou;BInxJQ</li>=20
-        <li style=3D"visibility: collapse">gmz--ulfej--timt----------------=
------------------------jyh--yoxri--wabk</li>=20
-       </ul>=20
-      </div>=20
-      <div class=3D"price-tag">=20
-       <h2 style=3D"color: #F5F7F8">Best regards ROSTA USA CORP. 7960 Kalam=
-azoo Street US - South Haven, Michigan 35031 Phone: +1 (0)269 841-1411 Fax:=
- +1 (0)269 924-2453 E-Mail: info@ ----iyOaX1pW;FmPmoT----ulAwFpWb;efWoJD --=
---yY8Omamv;PQZtDB----VrrDlqUV;gghMYL Thank you for your interest in Portlan=
-d Center Stage at The Armory! To complete your subscription, click below. x=
- If you've changed your mind or received this in error, please disregard. Y=
-ou will not be added to our list unless you click the link. Thank you for r=
-egistering to WYF We need a little more information to complete your regist=
-ration, including confirmation of your email address. Click below to confir=
-m your email address Verify Button not working? Copy and paste this link to=
- your address bar This is an auto-generated email from in response to your =
-recent account registration. Thank you for registering. Click here to activ=
-ate your account. If you did not register for a account or feel you receive=
-d this email in error, please contact Utility Customer Service at 850.891.4=
-YOU (4968) Monday ? Sunday from 7 a.m. ? 11 p.m. or email us. Please click =
-the green button to verify that this is your email address or enter your ve=
-rification code into the page you were just on: click here to verify your e=
-mail address OR enter your verification code: Welcome to Parchment! We are =
-really happy to have you here. Thank you, The Parchment Team ----gaoHj7xQ;r=
-GWUOz----6XmT4tFi;ypKStX</h2>=20
-      </div>=20
-     </div>=20
-    </div>=20
-    <!--Second Section Ends here-->
-   </div>=20
-   <!--Body ends here-->=20
-   <div class=3D"social" style=3D"max-width: 500px">=20
-    <section>=20
-     <ul>=20
-      <li>&nbsp;</li>=20
-      <li style=3D"visibility: collapse">??????????????????????????????????=
-????????????????????????????????????????????????? ?????????????????????????=
-???????????? Infos ????????????????????????????????????? ? ??????????? ? ? =
-Combo: GzTryHarD:pow231t12 ? ? Verified: false | Region: na | GameRegion: b=
-r | Level: 71 ? ? Rank: Silver 3 | Last Played: 2022-12-21 20:46:11 ? ? Cre=
-ated: 2022-03-03 00:31:34 ? ? Valorant Points: 375 | Radianite: 85 | Skins:=
- 18 ? ?????????????????????????????????????????????????????????????????????=
-?????????????? ????????????????????????????????????? Skins ????????????????=
-????????????????????? ? ??????????? ? ??1??? Striker Classic ? ??2??? Strik=
-er Operator ? ??3??? Spitfire Frenzy ? ??4??? Striker Spectre ? ??5??? Divi=
-ne Swine Ares ? ??6??? Divine Swine Marshal ? ??7??? Lycan's Bane Stinger ?=
- ??8??? Divine Swine Judge ? ??9??? Shimmer Classic ? ??10??? RGX 11z Pro V=
-andal ? ??11??? Striker Bulldog ? ??12??? Striker Knife ? ??13??? Divine Sw=
-ine Frenzy ? ??14??? Lycan's Bane Vandal ? ??15??? Immortalized Sheriff ? ?=
-?16??? Lycan's Bane Odin ? ??17??? Lycan's Bane Ghost ? ??18??? Reaver Kara=
-mbit ? ????????????????????????????????????????????????????????????????????=
-??????????????? ????????????????????????????????????? Chromas ?????????????=
-???????????????????????? ? ??????????? ? ??1??? RGX 11z Pro Vandal Level 2 =
-? ??2??? RGX 11z Pro Vandal Level 4 ? ??3??? Reaver Karambit Level 2 ? ??4?=
-?? RGX 11z Pro Vandal Level 3 ? ??5??? RGX 11z Pro Vandal Level 5 ? ???????=
-???????????????????????????????????????????????????????????????????????????=
-?</li>=20
-      <li> <p style=3D"visibility: collapse; display: none">Computers: We p=
-rovide computers for student use in the student lounge, and students will n=
-ot require a laptop for their classwork. If you do wish to bring a laptop, =
-however, wifi is available in local caf&eacute;s. Finally, please remember =
-that YOU will be responsible for carrying your own luggage at all times, so=
- try to be as realistic as possible about what you will need. Electricity i=
-n France Please keep in mind that electricity in France is different than i=
-n the U.S. Thus, please do not bring irons, hair dryers, or other electrica=
-l equipment. Even with a transformer, they will often short out. If necessa=
-ry, cheap appliances can be bought in France and used just for the month. C=
-hecklist 1. TO DO IMMEDIATELY (_____) Check that your passport is valid and=
- will not expire while you are in France. (_____) If you are not a US, Cana=
-dian or European Union citizen, contact your local French Embassy to determ=
-ine whether you need to apply for an entry visa to France. 2. ADVANCE PLANN=
-ING (_____) Order your debit/credit card. Make a copy of it in case it gets=
- lost. (_____) Make 3 photocopies of your passport &amp; birth certificate:=
- one to leave with your family and two to carry with you while you travel. =
-() Confirm your plane reservation with the airline, as well as the time, fl=
-ight number and departure terminal. NOTE: DO THIS 72 HOURS BEFORE YOU LEAVE=
-! 3. PACKING TIME () Make sure that any breakables in your suitcase are wel=
-l-wrapped or protected, or placed in your hand luggage. (_____) Think throu=
-gh how much clothing you will need this summer. (Each year most students br=
-ing far too much, so try to adhere to the packing list.) 4. BEFORE YOU LEAV=
-E THE HOUSE (You MUST include all these items in your carry-on bag) (_____)=
- Your passport (and visa paperwork, if applicable) (_____) A copy of your p=
-assport in another place from the original, with a second copy left at home=
- with your parents () Your plane tickets (_____) Your spending money (packe=
-d securely). () The Acad&eacute;mie de France program office telephone numb=
-ers and addresses (_____) Name &amp; address labels, plus ?OXBRIDGE? luggag=
-e tags, on your luggage (sent by mail) 5. AT THE AIRPORT (_____) Keep the b=
-ar-coded luggage stubs, given to you by the airline at check-in, in a safe =
-place in your carry-on luggage. Happy travels from wherever you may be in t=
-he world, and we will see you in France in early July! Map of Montpellier I=
-nternat d?Excellence Montpellier 4, rue du 81&egrave;me r&eacute;giment d'i=
-nfanterie 34090 Montpellier France</p> </li>=20
-      <li>&nbsp;</li>=20
-     </ul>=20
-    </section>=20
-   </div>=20
-   <footer>
-    &nbsp;
-   </footer>=20
-  </div>  =20
- <img src=3D"http://www.atthehealth.info/6474n2395b8H5L12N48z12y112ch36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQUdSRn5h1Ux06MywO@D/unwritten-finalizes" alt=3D""/></body>
+ <body style=3D"margin: 0; padding: 0;">
+  <!-- background begin -->=20
+  <table cellpadding=3D"0" cellspacing=3D"0" style=3D"margin: 0; padding: 0=
+; width: 100%;
+                border-collapse: collapse; border-spacing: 0;
+                background-color: #f5f5f5;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;" width=3D"100%">=20
+   <tbody>=20
+    <tr>=20
+     <td>&nbsp;</td>=20
+     <!-- left blank col -->=20
+     <td width=3D"600">
+      <!-- mid col begin -->
+      <!-- email top begin -->=20
+      <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td height=3D"36" style=3D"padding-top: 20px; padding-bottom: 15px=
+;">&nbsp;</td>=20
+         <td width=3D"140">&nbsp;</td>=20
+         <td align=3D"center">&nbsp;</td>=20
+         <td align=3D"center" style=3D"padding-left: 20px;">&nbsp;</td>=20
+         <td align=3D"right" style=3D"padding-left: 20px;">&nbsp;</td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <!-- email top end -->
+      <!-- email hero begin -->=20
+      <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <!-- email hero end -->
+      <!-- product info begin -->=20
+      <table cellpadding=3D"0" cellspacing=3D"0" style=3D"background-color:=
+ #fff; margin-top: 20px;" width=3D"100%">=20
+       <tbody>=20
+        <tr>
+         <!-- product text begin -->=20
+         <td>=20
+          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+           <tbody>=20
+            <tr>
+             <!-- text begin -->=20
+             <td>&nbsp;</td>=20
+             <td align=3D"center" style=3D"font-family: 'Open Sans', Helvet=
+ica, Arial, sans-serif;
+                                   font-size: 18px; line-height: 1.4;
+                                   color: #333;
+                                   padding-top: 21px;" width=3D"400"><a hre=
+f=3D"http://www.altcoverges.info/bumping-surprising/22e6uT2X395fl86s11L4813r112dJ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQkdSRo5XA10N5HXwpD">Compare plans and find the right coverage</a></td>=20
+             <td>&nbsp;</td>=20
+            </tr>=20
+            <!-- text end -->=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+        <!-- product text end -->=20
+        <tr>
+         <!-- product image full width begin -->=20
+         <td>=20
+          <table cellpadding=3D"0" cellspacing=3D"0" style=3D"padding-top: =
+40px;" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td>&nbsp;</td>=20
+             <td align=3D"center" style=3D"padding-bottom: 30px;
+                                   border-bottom: 1px solid #e0e0e0;" width=
+=3D"540"><a href=3D"http://www.altcoverges.info/bumping-surprising/22e6uT2X395fl86s11L4813r112dJ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQkdSRo5XA10N5HXwpD"><img alt=3D"" border=3D"0" src=3D"=
+http://www.altcoverges.info/89f4m2395j7aFA11O4815k112dY36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQkdSRo6Ir1J0p5CAwDq/destruction-pointedly" style=3D"max-width: 500px; width: 100%" width=3D"100%" /> </a></td>=20
+             <td>&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+        <!-- product image full width end -->=20
+        <tr>
+         <!-- product image half width begin -->=20
+         <td>=20
+          <table cellpadding=3D"0" cellspacing=3D"0" style=3D"padding-top: =
+30px;" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td>&nbsp;</td>=20
+             <td align=3D"center" width=3D"270">&nbsp;</td>=20
+             <td align=3D"center" width=3D"270">&nbsp;</td>=20
+             <td>&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+        <!-- product image half width end -->=20
+        <tr>
+         <!-- button begin -->=20
+         <td align=3D"center" style=3D"padding-top: 40px;
+                           padding-bottom: 50px;"><a href=3D""> </a></td>=
+=20
+        </tr>=20
+        <!-- button end -->=20
+       </tbody>=20
+      </table>=20
+      <!-- product info end -->
+      <!-- text block begin -->=20
+      <table cellpadding=3D"0" cellspacing=3D"0" style=3D"margin-top: 20px;
+                        padding-bottom: 50px;
+                        background-color: #fff;
+                        background-repeat: no-repeat;
+                        background-position: right bottom;
+                        background-image: url('img/illu-WayGather-logo-icon=
+-231x229.png');" width=3D"100%">=20
+       <tbody>=20
+        <tr>
+         <!-- why what -->=20
+         <td>&nbsp;</td>=20
+         <td style=3D"padding-top: 40px;" width=3D"540">=20
+          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td style=3D"font-family: 'Open Sans', Helvetica, Arial, sans-=
+serif;
+                                     font-size: 16px; line-height: 1.2;
+                                     font-weight: 600;
+                                     color: #333;" width=3D"470">&nbsp;</td=
+>=20
+             <td width=3D"70">&nbsp;</td>=20
+            </tr>=20
+            <tr>=20
+             <td style=3D"font-family: 'Open Sans', Helvetica, Arial, sans-=
+serif;
+                                     font-size: 14px; line-height: 1.4;
+                                     color: #333;
+                                     padding-top: 14px;" width=3D"470">&nbs=
+p;</td>=20
+             <td width=3D"70">&nbsp;</td>=20
+            </tr>=20
+            <tr>=20
+             <td style=3D"font-family: 'Open Sans', Helvetica, Arial, sans-=
+serif;
+                                     font-size: 16px; line-height: 1.2;
+                                     font-weight: 600;
+                                     color: #333;
+                                     padding-top: 28px;" width=3D"470">&nbs=
+p;</td>=20
+             <td width=3D"70">&nbsp;</td>=20
+            </tr>=20
+            <tr>=20
+             <td style=3D"font-family: 'Open Sans', Helvetica, Arial, sans-=
+serif;
+                                     font-size: 14px; line-height: 1.4;
+                                     color: #333;
+                                     padding-top: 14px;" width=3D"470">&nbs=
+p;</td>=20
+             <td width=3D"70">&nbsp;</td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+        <!-- why what -->=20
+        <tr>
+         <!-- business item begin -->=20
+         <td>&nbsp;</td>=20
+         <td style=3D"padding-top: 21px;" width=3D"540">=20
+          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td style=3D"padding-left: 24px; padding-right: 24px" width=3D=
+"32">&nbsp;</td>=20
+             <td>=20
+              <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"font-family: 'Open Sans', Helvetica, Arial, s=
+ans-serif;
+                                           font-size: 16px; line-height: 1.=
+2;
+                                           font-weight: 600;">&nbsp;</td>=
+=20
+                </tr>=20
+                <tr>=20
+                 <td style=3D"font-family: 'Open Sans', Helvetica, Arial, s=
+ans-serif;
+                                           font-size: 14px; line-height: 1.=
+4;
+                                           color: #333;
+                                           padding-top: 5px;">&nbsp;</td>=
+=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+        <!-- business item end -->=20
+        <tr>
+         <!-- business item begin -->=20
+         <td>&nbsp;</td>=20
+         <td style=3D"padding-top: 21px;" width=3D"540">=20
+          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td style=3D"padding-left: 24px; padding-right: 24px" width=3D=
+"32">&nbsp;</td>=20
+             <td>=20
+              <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"font-family: 'Open Sans', Helvetica, Arial, s=
+ans-serif;
+                                           font-size: 16px; line-height: 1.=
+2;
+                                           font-weight: 600;">&nbsp;</td>=
+=20
+                </tr>=20
+                <tr>=20
+                 <td style=3D"font-family: 'Open Sans', Helvetica, Arial, s=
+ans-serif;
+                                           font-size: 14px; line-height: 1.=
+4;
+                                           color: #333;
+                                           padding-top: 5px;">&nbsp;</td>=
+=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+        <!-- business item end -->=20
+        <tr>
+         <!-- business item begin -->=20
+         <td>&nbsp;</td>=20
+         <td style=3D"padding-top: 21px;" width=3D"540">=20
+          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td style=3D"padding-left: 24px; padding-right: 24px" width=3D=
+"32">&nbsp;</td>=20
+             <td>=20
+              <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"font-family: 'Open Sans', Helvetica, Arial, s=
+ans-serif;
+                                           font-size: 16px; line-height: 1.=
+2;
+                                           font-weight: 600;">&nbsp;</td>=
+=20
+                </tr>=20
+                <tr>=20
+                 <td style=3D"font-family: 'Open Sans', Helvetica, Arial, s=
+ans-serif;
+                                           font-size: 14px; line-height: 1.=
+4;
+                                           color: #333;
+                                           padding-top: 5px;">&nbsp;</td>=
+=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+        <!-- business item end -->=20
+        <tr>
+         <!-- business item begin -->=20
+         <td>&nbsp;</td>=20
+         <td style=3D"padding-top: 21px;" width=3D"540">=20
+          <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td style=3D"padding-left: 24px; padding-right: 24px" width=3D=
+"32">&nbsp;</td>=20
+             <td>=20
+              <table cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+               <tbody>=20
+                <tr>=20
+                 <td style=3D"font-family: 'Open Sans', Helvetica, Arial, s=
+ans-serif;
+                                           font-size: 16px; line-height: 1.=
+2;
+                                           font-weight: 600;">&nbsp;</td>=
+=20
+                </tr>=20
+                <tr>=20
+                 <td style=3D"font-family: 'Open Sans', Helvetica, Arial, s=
+ans-serif;
+                                           font-size: 14px; line-height: 1.=
+4;
+                                           color: #333;
+                                           padding-top: 5px;">&nbsp;</td>=
+=20
+                </tr>=20
+               </tbody>=20
+              </table> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+        <!-- business item end -->=20
+       </tbody>=20
+      </table>=20
+      <!-- text block end -->
+      <!-- footer begin -->=20
+      <table cellpadding=3D"0" cellspacing=3D"0" style=3D"margin-top: 40px;=
+ padding-bottom: 40px;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td width=3D"40">&nbsp;</td>=20
+         <td style=3D"font-family: 'Open Sans', Helvetica, Arial, sans-seri=
+f;
+                         font-size: 12px; line-height: 1.4;
+                         color: #b0b0b0;
+                         text-align: center;
+                         padding-top: 28px;
+                         border-top: 1px solid #e0e0e0;
+                         -webkit-text-size-adjust: 100%" width=3D"520">This=
+ is an ad. You are receiving this message because you opted-in to receive m=
+essages from marketing affiliates of Connect Life Insurance. This message w=
+as delivered by a marketing associate of Connect Life Insurance, not Connec=
+t Life Insurance itself. To stop receiving email advertisements, please cli=
+ck <span class=3D"unstyle-auto-detected-links"><a href=3D"http://www.altcoverges.info/9cb5Ml2395o86Mj11P4814U112dZ36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQkdSRo5HNn105U2wND/reassign-southerner" style=
+=3D"text-decoration: underline!important; font-family: sans-serif; font-siz=
+e: 10px; line-height: 14px; color: #999;">here</a></span> or write us direc=
+tly at 30190 US Highway 19N #1046, Clearwater, FL 33761 . Please allow up t=
+o 10 business days to fully cease all email ad messaging.</td>=20
+         <td width=3D"40">&nbsp;</td>=20
+        </tr>=20
+        <tr>=20
+         <td height=3D"14" width=3D"40">&nbsp;</td>=20
+         <td height=3D"14" style=3D"font-family: 'Open Sans', Helvetica, Ar=
+ial, sans-serif;
+                         font-size: 12px; line-height: 1.4;
+                         text-align: center;
+                         padding-top: 28px;
+                         -webkit-text-size-adjust: 100%" width=3D"520">&nbs=
+p;=20
+          <fieldset class=3D"moz-mime-attachment-header">
+           &nbsp;
+          </fieldset> <span style=3D"color: #F5F5F6">----Gj;lqpc;zmh Bonjou=
+r femhbj arwhhg, &iexcl;Gracias por suscribirte! | Thanks for subscribing! =
+| Merci pour votre subscription! Oui, inscris moi sur cette liste. Merci de=
+ l'int&eacute;r&ecirc;t que vous portez &agrave; notre contenu ! Cliquez su=
+r le bouton pour confirmer votre inscription &agrave; la newsletter Easyhoz=
+xob. Nous vous remercions de votre confiance. activation de compte sur Insc=
+ription-Facile Votre compte a &eacute;t&eacute; cr&eacute;&eacute;, mais il=
+ doit encore &ecirc;tre activ&eacute;. </span> <p><span style=3D"color: #F5=
+F5F6">Thanks for asking. There?s a ?forgot password? link on the login scre=
+en in the app. (see image beside when login).</span></p> <span style=3D"col=
+or: #F5F5F6"> </span> <p><span style=3D"color: #F5F5F6">In addition to that=
+, there are a couple other options on the web (but not in the app):</span><=
+/p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"color: #F5F5F=
+6">Please Reset Your Password For your security, we are strengthening our p=
+assword requirements and as a result, your existing password has been disab=
+led.</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"c=
+olor: #F5F5F6">.</span></p> <span style=3D"color: #F5F5F6"> </span> <p><spa=
+n style=3D"color: #F5F5F6">Please enter your email and click &quot;Continue=
+&quot; below to send a password reset message to the email associated with =
+your account. This email will contain a link to reset your password that wi=
+ll expire within 24 hours.</span></p> <span style=3D"color: #F5F5F6"> ----g=
+5x1gXe4;iXxPjm----yJBpp6Pc;UdSWoU ----DWt7E8jx;lknUjT----TbktGMgM;HEjuLI </=
+span> <p><span style=3D"color: #F5F5F6">Thanks for signing up to receive em=
+ails from the Children's Museum of Phoenix. Now you won't miss out on our s=
+pecial events, programs, discounts and so much more!</span></p> <span style=
+=3D"color: #F5F5F6"> </span> <p><span style=3D"color: #F5F5F6">INSCRIPTIONS=
+ 2018-2019 Publi&eacute; le 2 septembre 2018 par joel Bonjour, Le processus=
+ d?inscription se modernise, car nous avons mis en place cette ann&eacute;e=
+ un site WEB vous permettant de r&eacute;aliser cette op&eacute;ration depu=
+is chez vous &agrave; partir du lien situ&eacute; en bas de ce message.Cepe=
+ndant, si vous rencontrez des difficult&eacute;s, des permanences sont mise=
+s en places au gymnase Henri Barbusse, tous les soirs de 17h00 &agrave; 19h=
+00 pour vous aider en cas de besoin, pour faire votre inscription en ligne.=
+</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"color=
+: #F5F5F6">Madame, Monsieur,</span></p> <span style=3D"color: #F5F5F6"> </s=
+pan> <p><span style=3D"color: #F5F5F6">Please remember to drop your regalia=
+ back to the regalia room at Claudelands.</span></p> <span style=3D"color: =
+#F5F5F6"> </span> <p><span style=3D"color: #F5F5F6">Xfinity Forum Archive..=
+</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"colo=
+r: #F5F5F6">Also, make sure to bookmark (Your Seller ID) as a favorite sell=
+er.</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"co=
+lor: #F5F5F6">Thank you again, it has been a pleasure doing business with y=
+ou. If you have any questions, please contact me directly at (your email ad=
+dress).</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=
+=3D"color: #F5F5F6">This is an archived section of the community.</span></p=
+> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"color: #F5F5F6"=
+>City: City</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span sty=
+le=3D"color: #F5F5F6">Your personal data Note: Your personal data listed be=
+low will only be used as shipping address and will not be stored in any dat=
+abase.</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D=
+"color: #F5F5F6">Your personal data Note: Your personal data listed below w=
+ill only be used as shipping address and will not be stored in any database=
+</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"colo=
+r: #F5F5F6">(Your Seller ID) </span></p> <span style=3D"color: #F5F5F6"> </=
+span> <p><span style=3D"color: #F5F5F6">Ordered Publications in printed for=
+m publications</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span =
+style=3D"color: #F5F5F6">Bonjour Hugo nous n'envoyons plus de courriels car=
+ nous tenons &agrave; ce que les chauffeurs se connectent sur le site, rega=
+rdent les noms des passagers et d&eacute;clarent le d&eacute;part complet. =
+C'est une &eacute;tape suppl&eacute;mentaire mais nous tenons &agrave; fiab=
+iliser le service au maximum. Merci pour votre commentaire Myriam Agente Am=
+igoExpress</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span styl=
+e=3D"color: #F5F5F6">Dear CUSTOMER NAME,</span></p> <span style=3D"color: #=
+F5F5F6"> </span> <p><span style=3D"color: #F5F5F6">This is an archived sect=
+ion of the community.</span></p> <span style=3D"color: #F5F5F6"> </span> <p=
+><span style=3D"color: #F5F5F6">Mardi 2 et Mercredi 3 f&eacute;vrier auront=
+ lieu les &eacute;lections des repr&eacute;sentants &eacute;tudiants &agrav=
+e; l'universit&eacute; de Bourgogne. ARTenko s'engage, et fait le choix de =
+soutenir Associatifs Ind&eacute;pendants !</span></p> <span style=3D"color:=
+ #F5F5F6"> </span> <p><span style=3D"color: #F5F5F6">Company: Company</span=
+></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"color: #F5F=
+5F6">Les &eacute;tudiants d'A&amp;I sont issus d'associations &eacute;tudia=
+ntes ce qui permet de cibler au mieux les probl&eacute;matiques de chaque f=
+ili&egrave;re. Ils sont ind&eacute;pendants car certains &eacute;lus ne son=
+t pas issus d'associations &eacute;tudiantes mais surtout ils ne suivent pa=
+s une id&eacute;ologie politique, syndicale ou religieuse ! Le r&eacute;sea=
+u d'Associatifs &amp; Ind&eacute;pendants et les listes pr&eacute;sent&eacu=
+te;es aux Conseils Centraux de l'uB repr&eacute;sentent le mieux toutes les=
+ fili&egrave;res. L'histoire de l'art et arch&eacute;ologie aussi !</span><=
+/p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"color: #F5F5F=
+6">Street: Street</span></p> <span style=3D"color: #F5F5F6"> </span> <p><sp=
+an style=3D"color: #F5F5F6">This change was done in an effort to make the f=
+orum easier to use and to keep only the most helpful and recent content act=
+ive.</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"c=
+olor: #F5F5F6">This change was done in an effort to make the forum easier t=
+o use and to keep only the most helpful and recent content active.</span></=
+p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"color: #F5F5F6=
+">Last name: Last name</span></p> <span style=3D"color: #F5F5F6"> </span> <=
+p><span style=3D"color: #F5F5F6">Chers &eacute;tudiants, ch&egrave;res &eac=
+ute;tudiantes,</span></p> <span style=3D"color: #F5F5F6"> </span> <p>&nbsp;=
+</p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"color: #F5F5=
+F6">Thank you for your order! Your order has been successfully transmitted.=
+ </span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"colo=
+r: #F5F5F6">Regards,</span></p> <span style=3D"color: #F5F5F6"> </span> <p>=
+<span style=3D"color: #F5F5F6">Nous avons reu votre demande d'inscription l=
+a newsletter.</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span s=
+tyle=3D"color: #F5F5F6">First name: First name</span></p> <span style=3D"co=
+lor: #F5F5F6"> </span> <p><span style=3D"color: #F5F5F6">La page n'existe p=
+as La page que vous recherchez n'existe pas ou a &eacute;t&eacute; supprim&=
+eacute;e. Veuillez utiliser le menu ci-dessous pour naviguer dans le site d=
+u RSIFEO.</span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=
+=3D"color: #F5F5F6">Pour annuler votre participation &agrave; un des stages=
+, envoyer simplement un e-mail mentionnant le stage auquel vous vous d&eacu=
+te;sistez. Le remboursement des arrhes mentionn&eacute; aux conditions ci-d=
+essous sera effectu&eacute; au plus tard &agrave; la fin du mois en cours.<=
+/span></p> <span style=3D"color: #F5F5F6"> </span> <p><span style=3D"color:=
+ #F5F5F6">Company: Company</span></p> <span style=3D"color: #F5F5F6"> </spa=
+n> <p><span style=3D"color: #F5F5F6">Bonjour Hugo nous n'envoyons plus de c=
+ourriels car nous tenons &agrave; ce que les chauffeurs se connectent sur l=
+e site, regardent les noms des passagers et d&eacute;clarent le d&eacute;pa=
+rt complet. C'est une &eacute;tape suppl&eacute;mentaire mais nous tenons &=
+agrave; fiabiliser le service au maximum. Merci pour votre commentaire Myri=
+am Agente AmigoExpress</span></p> <span style=3D"color: #F5F5F6"> </span></=
+td>=20
+         <td height=3D"14" width=3D"40">&nbsp;</td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <!-- footer end --></td>=20
+     <!-- mid col end -->=20
+     <td>&nbsp;</td>=20
+     <!-- right blank col -->=20
+    </tr>=20
+   </tbody>=20
+  </table>=20
+  <!-- background end --> =20
+ <img src=3D"http://www.altcoverges.info/e035q239I5Qv8N513G481X6Tx112du36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQkdSRo6lx10pJ5mBlwD/incorrectness-suspends" alt=3D""/></body>
 </html>
 
-------=_Part_151_1365218643.1674667004770--
+------=_Part_349_503433561.1674671196210--
 
