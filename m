@@ -1,67 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7A8D67BCDD
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Jan 2023 21:38:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id F245267D05A
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Jan 2023 16:38:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D3D8110E8A9;
-	Wed, 25 Jan 2023 20:38:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BFB2C10E076;
+	Thu, 26 Jan 2023 15:38:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x12b.google.com (mail-il1-x12b.google.com
- [IPv6:2607:f8b0:4864:20::12b])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4A7A710E8A1;
- Wed, 25 Jan 2023 20:38:18 +0000 (UTC)
-Received: by mail-il1-x12b.google.com with SMTP id m15so18690ilq.2;
- Wed, 25 Jan 2023 12:38:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XWAR+JVdClFEqIZLwZS5aE51GB9NDfpmdgMKWd8ije0=;
- b=QMXKd9QMmknSmmF7xgTJxJ9O+qq3gyirSe0CZ4JneajnNjpjWjf1WrQIQCbxsvRDip
- jmh38Hd9YHADa8zwWSHo6Zec9Jz6SXAxjwXFvOPh9R/jM3PlDzNrmRmrCtuhRy8654pf
- Ea4uoKqpza1mRyBJAoXJQJIdhUPLzRM4YmCX0QxYGgdNzUpv/+dqH+AdulLIOrx7143T
- n2u0eNxbmLL8LUnwnfn5+btR9BmnPaLE9LRMOBgeivQe2DR+WtzLWP6KSn3+bxhfVKf/
- kQ9UngLTQ2mLOIrRaOT2Zv/NATcKvTI2QZkdTmXLKb/Tmq9vBcf6o8fXjWIt4zeTCBh9
- NKNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=XWAR+JVdClFEqIZLwZS5aE51GB9NDfpmdgMKWd8ije0=;
- b=lA9XE+ZfUDi12we8KqRvuwncMM3FsV3yigDwWKQEOs27pKe1SofB9lH6gUfbw1tFBv
- x0ag8TXooR96w6vummGPCrb7Ksbaxq168jczg7WuMGGsYWZB+mhSZOMYeo6vfxrFjEHA
- NZUUpOxcQFYNaN6vakQAQNNC8VLyC7TCX1OUviSo10nDg2F+LJlAzYFUWFDBBFM067nN
- sNFr/XSvngXgY1cQfGSe87ZsU89BenAW9T0BZsmv8xFklrb8wgzNDjIrZXQsssaXTbjO
- usMiK+iz3GiKT1CCqSWwLFZQ6VJ/objEMMvTsvBC/tcGV/6M/lR/efAw0LJvd71jw/Ki
- RUkg==
-X-Gm-Message-State: AFqh2koIvneTVQurTIbZDpW6xgEaR1Xldn5WTFn/RFGyH8hchhkDgzKW
- RfavwtqmmOHp+RtIOjDVIknpCUGMzyw=
-X-Google-Smtp-Source: AMrXdXv5sI27NHK/DU4zL2fgUW55Vh2RtE6AIBo5tBNme+LX0WkcmiwMNZ9WpjUbGhKy7zxeGIjadw==
-X-Received: by 2002:a05:6e02:1345:b0:30f:4cac:e011 with SMTP id
- k5-20020a056e02134500b0030f4cace011mr15327238ilr.29.1674679097769; 
- Wed, 25 Jan 2023 12:38:17 -0800 (PST)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- y11-20020a056e02128b00b00310a599fd43sm665104ilq.46.2023.01.25.12.38.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Jan 2023 12:38:17 -0800 (PST)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Subject: [PATCH v3 19/19] jump_label: RFC / temporary for CI - tolerate
- toggled state
-Date: Wed, 25 Jan 2023 13:37:43 -0700
-Message-Id: <20230125203743.564009-20-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.39.1
-In-Reply-To: <20230125203743.564009-1-jim.cromie@gmail.com>
-References: <20230125203743.564009-1-jim.cromie@gmail.com>
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Thu, 26 Jan 2023 15:38:35 UTC
+Received: from mail.cn-kohlewps.info (unknown [107.158.12.134])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3EBF110E076
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Jan 2023 15:38:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cn-kohlewps.info;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=kohls_customer_voice@cn-kohlewps.info; 
+ bh=XLwOrxNJCfkQ3dRMAtjlaKR/MFk=;
+ b=fItdBMxdVdoiV2aDwzUKMgPQetxFXoKTxr1k0PT180Srcb5xv10mx5LHNQOAI5ar/yBJJeyMsK3D
+ TxF7BkALgO73P3MztaZbCxUuPBnwbo0sfjhFWc5Yx4ZZjSCNpOIe2Uys5pJBFZ+918STnFRnNONF
+ iop2Y+56ejzG5Ud6WG8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cn-kohlewps.info;
+ b=jB3r4Z+f6LgV/gwIs012WQdrtF9xt2j0h4cnNEtmPFSx71jy+m8K77wbmAp4G4Gqbfn8Pla8cO/C
+ Yo8BRzp5s5/pzqHxRvYgFgEka2TU1fa3jNdOJo0j2hz9eVGfNiAgXAJvztz3Wfc0S3pMX4gpI5eh
+ pLaDTlSijfne8+xM+y4=;
+Received: by mail.cn-kohlewps.info id hqaf7m0001ge for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 26 Jan 2023 10:24:29 -0500 (envelope-from
+ <kohls_customer_voice-intel+2Dgvt+2Ddev=lists.freedesktop.org@cn-kohlewps.info>)
+Date: Thu, 26 Jan 2023 10:24:29 -0500
+From: "Kohls Customer Voice" <kohls_customer_voice@cn-kohlewps.info>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Reward yourself for being a loyal customer with the best deal around
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_316_1801567744.1674746643272"
+Message-ID: <0.0.0.A4.1D9319A48B83172.25DC5D@mail.cn-kohlewps.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,368 +50,1027 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Peter Zijlstra <peterz@infradead.org>, jani.nikula@intel.com,
- daniel.vetter@ffwll.ch, Jason Baron <jbaron@akamai.com>,
- Jim Cromie <jim.cromie@gmail.com>, robdclark@gmail.com, seanpaul@chromium.org,
- ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-__jump_label_patch currently will "crash the box" if it finds a
-jump_entry not as expected; it makes no allowances for the well-formed
-but incorrect "toggled" state.  This patch changes panic-on-toggled
-into a warning, allowing to reduce the problem to a repeatable script.
+------=_Part_316_1801567744.1674746643272
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 
-note: this patch is arch/x86 only, so might not help CI at all.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+ <head>=20
+  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>neptu</title>=20
+  <style type=3D"text/css">body {
+=09=09=09margin: 0;
+=09=09=09background-color: #cccccc;
+=09=09}
 
-submod () {
-    # set drm.debug analogues
-    echo  MP test_dynamic_debug p_disjoint_bits=${1:-0} p_level_num=${2:-0}
-    modprobe test_dynamic_debug p_disjoint_bits=${1:-0} p_level_num=${2:-0} dyndbg=+p
-    # _submod should pick up kparams
-    echo  MP test_dynamic_debug_submod dyndbg=+pmf
-    modprobe test_dynamic_debug_submod dyndbg=+pmf
-}
-unmod () {
-    rmmod test_dynamic_debug_submod
-    rmmod test_dynamic_debug
-}
-note () {
-    echo NOTE: $* >&2
-    sleep 0.1
-}
+=09=09table {
+=09=09=09border-spacing: 0;
+=09=09}
 
-submod_probe () {
+=09=09td {
+=09=09=09padding: 0;
+=09=09}
 
-    echo 4 > /sys/module/dynamic_debug/parameters/verbose
-    unmod
-    submod $*
+=09=09img {
+=09=09=09border: 0;
+=09=09}
 
-    note submod prdbgs are supposedly enabled
-    grep test_dynamic_debug /proc/dynamic_debug/control
-    cat /sys/module/test_dynamic_debug/parameters/do_prints
+=09=09.wrapper {
+=09=09=09width: 100%;
+=09=09=09table-layout: fixed;
+=09=09=09background-color: #cccccc;
+=09=09=09padding-bottom: 60px;
+=09=09}
 
-    note but they dont print here
-    cat /sys/module/test_dynamic_debug_submod/parameters/do_prints
+=09=09.main {
+=09=09=09background-color: #ffffff;
+=09=09=09margin: 0 auto;
+=09=09=09width: 100%;
+=09=09=09max-width: 600px;
+=09=09=09border-spacing: 0;
+=09=09=09font-family: sans-serif;
+=09=09=09color: #171a1b;
+=09=09}
 
-    note if D2_CORE in $1, trigger toggled warning
-    note echo class D2_CORE -p
-    echo class D2_CORE -p > /proc/dynamic_debug/control
-}
+=09=09.two-columns {
+=09=09=09text-align: center;
+=09=09=09font-size: 0;
+=09=09}
 
-heres the repeatable results
+=09=09.two-columns .column {
+=09=09=09width: 100%;
+=09=09=09max-width: 300px;
+=09=09=09display: inline-block;
+=09=09=09vertical-align: top;
+=09=09=09text-align: center;
+=09=09}
 
-[   17.023758] virtme-init: triggering udev coldplug
-[   18.285949] virtme-init: waiting for udev to settle
-[   22.550866] i2c_piix4: module verification failed: signature and/or required key missing - tainting kernel
-[   22.551945] dyndbg: add-module: i2c_piix4 12 sites 0.0
-[   22.552277] dyndbg:  12 debug prints in module i2c_piix4
-[   22.555099] piix4_smbus 0000:00:01.3: SMBus Host Controller at 0x700, revision 0
-[   22.597344] dyndbg: add-module: serio_raw 2 sites 0.0
-[   22.597633] dyndbg:   2 debug prints in module serio_raw
-[   22.603506] input: PC Speaker as /devices/platform/pcspkr/input/input4
-[   23.556657] dyndbg: add-module: intel_rapl_common 12 sites 0.0
-[   23.557000] dyndbg:  12 debug prints in module intel_rapl_common
-[   23.759499] dyndbg: add-module: intel_rapl_msr 2 sites 0.0
-[   23.759928] dyndbg:   2 debug prints in module intel_rapl_msr
-[   26.081050] virtme-init: udev is done
-virtme-init: console is ttyS0
-bash-5.2# . test-funcs.rc
-:#> submod_probe 1 0
-rmmod: ERROR: Module test_dynamic_debug_submod is not currently loaded
-rmmod: ERROR: Module test_dynamic_debug is not currently loaded
-MP test_dynamic_debug p_disjoint_bits=1 p_level_num=0 dyndbg=+pm
-[   61.712445] dyndbg: add-module: test_dynamic_debug 33 sites 4.0
-[   61.712789] dyndbg: classes[0..]: module:test_dynamic_debug base:22 len:8 ty:3
-[   61.713144] dyndbg: module:test_dynamic_debug attached 4 classes
-[   61.713894] dyndbg:  33 debug prints in module test_dynamic_debug
-[   61.715486] dyndbg: bits:0x1 > *.p_disjoint_bits
-[   61.715732] dyndbg: apply bitmap: 0x1 to: 0x0 for '*'
-[   61.715983] dyndbg: query 0: "class D2_CORE +p" mod:*
-[   61.716253] dyndbg: split into words: "class" "D2_CORE" "+p"
-[   61.716539] dyndbg: op='+' flags=0x1 maskp=0xffffffff
-[   61.716794] dyndbg: parsed: func="" file="" module="" format="" lineno=0-0 class=D2_CORE
-[   61.717232] dyndbg: good-class: test_dynamic_debug.D2_CORE  module:test_dynamic_debug nd:33 nc:4 nu:0
-[   61.717690] dyndbg: processed 1 queries, with 1 matches, 0 errs
-[   61.717982] dyndbg: bit_0: 1 matches on class: D2_CORE -> 0x1
-[   61.718283] dyndbg: applied bitmap: 0x1 to: 0x0 for '*'
-[   61.718542] dyndbg: p_disjoint_bits: total matches: 1
-[   61.718799] dyndbg: lvl:0 bits:0x0 > p_level_num
-[   61.719029] dyndbg: p_level_num: total matches: 0
-[   61.719279] dyndbg: module: test_dynamic_debug dyndbg="+pm"
-[   61.719554] dyndbg: query 0: "+pm" mod:test_dynamic_debug
-[   61.719824] dyndbg: split into words: "+pm"
-[   61.720034] dyndbg: op='+' flags=0x3 maskp=0xffffffff
-[   61.720299] dyndbg: parsed: func="" file="" module="test_dynamic_debug" format="" lineno=0-0 class=(null)
-[   61.720786] dyndbg: changed lib/test_dynamic_debug.c:206 [test_dynamic_debug]test_dynamic_debug_exit p => pm
-[   61.721289] dyndbg: changed lib/test_dynamic_debug.c:200 [test_dynamic_debug]test_dynamic_debug_init p => pm
-[   61.721778] dyndbg: changed lib/test_dynamic_debug.c:198 [test_dynamic_debug]test_dynamic_debug_init p => pm
-[   61.722283] dyndbg: changed lib/test_dynamic_debug.c:191 [test_dynamic_debug]do_prints p => pm
-[   61.722711] dyndbg: changed lib/test_dynamic_debug.c:170 [test_dynamic_debug]do_levels p => pm
-[   61.723128] dyndbg: changed lib/test_dynamic_debug.c:150 [test_dynamic_debug]do_cats p => pm
-[   61.723554] dyndbg: processed 1 queries, with 6 matches, 0 errs
-[   61.725233] test_dynamic_debug: test_dd: init start
-[   61.725487] test_dynamic_debug: test_dd: do_prints:
-[   61.725745] test_dynamic_debug: test_dd: doing categories
-[   61.726011] test_dd: LOW msg
-[   61.726176] test_dd: MID msg
-[   61.726328] test_dd: HI msg
-[   61.726470] test_dd: D2_CORE msg
-[   61.726640] test_dd: D2_DRIVER msg
-[   61.726815] test_dd: D2_KMS msg
-[   61.726976] test_dd: D2_PRIME msg
-[   61.727144] test_dd: D2_ATOMIC msg
-[   61.727332] test_dd: D2_VBL msg
-[   61.727494] test_dd: D2_STATE msg
-[   61.727669] test_dd: D2_LEASE msg
-[   61.727839] test_dd: D2_DP msg
-[   61.727996] test_dd: D2_DRMRES msg
-[   61.728187] test_dynamic_debug: test_dd: doing levels
-[   61.728440] test_dd: V1 msg
-[   61.728585] test_dd: V2 msg
-[   61.728737] test_dd: V3 msg
-[   61.728882] test_dd: V4 msg
-[   61.729028] test_dd: V5 msg
-[   61.729201] test_dd: V6 msg
-[   61.729365] test_dd: V7 msg
-[   61.729510] test_dd: L1 msg
-[   61.729660] test_dd: L2 msg
-[   61.729804] test_dd: L3 msg
-[   61.729949] test_dd: L4 msg
-[   61.730093] test_dd: L5 msg
-[   61.730256] test_dd: L6 msg
-[   61.730402] test_dd: L7 msg
-[   61.730547] test_dynamic_debug: test_dd: init done
-MP test_dynamic_debug_submod dyndbg=+pmf
-[   61.908067] dyndbg: add-module: test_dynamic_debug_submod 33 sites 0.4
-[   61.908669] dyndbg: class_ref[0] test_dynamic_debug_submod -> test_dynamic_debug
-[   61.909089] dyndbg: class_ref[1] test_dynamic_debug_submod -> test_dynamic_debug
-[   61.909466] dyndbg: class_ref[2] test_dynamic_debug_submod -> test_dynamic_debug
-[   61.909841] dyndbg: class_ref[3] test_dynamic_debug_submod -> test_dynamic_debug
-[   61.910232] dyndbg: loaded class: module:test_dynamic_debug base:22 len:8 type:3
-[   61.910599] dyndbg: found kp:p_level_names =0x0
-[   61.910601] dyndbg: mapped to: module:test_dynamic_debug base:22 len:8 type:3
-[   61.911275] dyndbg: loaded class: module:test_dynamic_debug base:14 len:8 type:1
-[   61.911672] dyndbg: found kp:p_level_num =0x0
-[   61.911674] dyndbg: mapped to: module:test_dynamic_debug base:14 len:8 type:1
-[   61.912318] dyndbg: loaded class: module:test_dynamic_debug base:10 len:3 type:2
-[   61.912739] dyndbg: found kp:p_disjoint_names =0x0
-[   61.912741] dyndbg: mapped to: module:test_dynamic_debug base:10 len:3 type:2
-[   61.913373] dyndbg: loaded class: module:test_dynamic_debug base:0 len:10 type:0
-[   61.913746] dyndbg: found kp:p_disjoint_bits =0x1
-[   61.913747] dyndbg: mapped to: module:test_dynamic_debug base:0 len:10 type:0
-[   61.914347] dyndbg: apply bitmap: 0x1 to: 0x0 for test_dynamic_debug_submod
-[   61.914695] dyndbg: query 0: "class D2_CORE +p" mod:test_dynamic_debug_submod
-[   61.915086] dyndbg: split into words: "class" "D2_CORE" "+p"
-[   61.915413] dyndbg: op='+' flags=0x1 maskp=0xffffffff
-[   61.915692] dyndbg: parsed: func="" file="" module="test_dynamic_debug_submod" format="" lineno=0-0 class=D2_CORE
-[   61.916321] dyndbg: class-ref: test_dynamic_debug_submod.D2_CORE  module:test_dynamic_debug_submod nd:33 nc:0 nu:4
-[   61.916912] dyndbg: changed lib/test_dynamic_debug.c:156 [test_dynamic_debug_submod]do_cats _ => p
-[   61.917391] dyndbg: processed 1 queries, with 1 matches, 0 errs
-[   61.917691] dyndbg: bit_0: 1 matches on class: D2_CORE -> 0x1
-[   61.917980] dyndbg: applied bitmap: 0x1 to: 0x0 for test_dynamic_debug_submod
-[   61.918341] dyndbg: attach-client-module:  module:test_dynamic_debug_submod nd:33 nc:0 nu:4
-[   61.918755] dyndbg:  33 debug prints in module test_dynamic_debug_submod
-[   61.919314] dyndbg: module: test_dynamic_debug_submod dyndbg="+pmf"
-[   61.919668] dyndbg: query 0: "+pmf" mod:test_dynamic_debug_submod
-[   61.920028] dyndbg: split into words: "+pmf"
-[   61.920282] dyndbg: op='+' flags=0x7 maskp=0xffffffff
-[   61.920576] dyndbg: parsed: func="" file="" module="test_dynamic_debug_submod" format="" lineno=0-0 class=(null)
-[   61.921419] dyndbg: changed lib/test_dynamic_debug.c:206 [test_dynamic_debug_submod]test_dynamic_debug_exit _ => pmf
-[   61.921990] dyndbg: changed lib/test_dynamic_debug.c:200 [test_dynamic_debug_submod]test_dynamic_debug_init _ => pmf
-[   61.922559] dyndbg: changed lib/test_dynamic_debug.c:198 [test_dynamic_debug_submod]test_dynamic_debug_init _ => pmf
-[   61.923165] dyndbg: changed lib/test_dynamic_debug.c:191 [test_dynamic_debug_submod]do_prints _ => pmf
-[   61.923802] dyndbg: changed lib/test_dynamic_debug.c:170 [test_dynamic_debug_submod]do_levels _ => pmf
-[   61.924584] dyndbg: changed lib/test_dynamic_debug.c:150 [test_dynamic_debug_submod]do_cats _ => pmf
-[   61.925161] dyndbg: processed 1 queries, with 6 matches, 0 errs
-[   61.926602] test_dynamic_debug_submod:test_dynamic_debug_init: test_dd_submod: init start
-[   61.927092] test_dynamic_debug_submod:do_prints: test_dd_submod: do_prints:
-[   61.927557] test_dynamic_debug_submod:do_cats: test_dd_submod: doing categories
-[   61.928130] test_dynamic_debug_submod:do_levels: test_dd_submod: doing levels
-[   61.928731] test_dynamic_debug_submod:test_dynamic_debug_init: test_dd_submod: init done
-NOTE: submod prdbgs are supposedly enabled
-lib/test_dynamic_debug.c:150 [test_dynamic_debug]do_cats =pm "doing categories\n"
-lib/test_dynamic_debug.c:152 [test_dynamic_debug]do_cats =p "LOW msg\n" class:LOW
-lib/test_dynamic_debug.c:153 [test_dynamic_debug]do_cats =p "MID msg\n" class:MID
-lib/test_dynamic_debug.c:154 [test_dynamic_debug]do_cats =p "HI msg\n" class:HI
-lib/test_dynamic_debug.c:156 [test_dynamic_debug]do_cats =p "D2_CORE msg\n" class:D2_CORE
-lib/test_dynamic_debug.c:157 [test_dynamic_debug]do_cats =p "D2_DRIVER msg\n" class:D2_DRIVER
-lib/test_dynamic_debug.c:158 [test_dynamic_debug]do_cats =p "D2_KMS msg\n" class:D2_KMS
-lib/test_dynamic_debug.c:159 [test_dynamic_debug]do_cats =p "D2_PRIME msg\n" class:D2_PRIME
-lib/test_dynamic_debug.c:160 [test_dynamic_debug]do_cats =p "D2_ATOMIC msg\n" class:D2_ATOMIC
-lib/test_dynamic_debug.c:161 [test_dynamic_debug]do_cats =p "D2_VBL msg\n" class:D2_VBL
-lib/test_dynamic_debug.c:162 [test_dynamic_debug]do_cats =p "D2_STATE msg\n" class:D2_STATE
-lib/test_dynamic_debug.c:163 [test_dynamic_debug]do_cats =p "D2_LEASE msg\n" class:D2_LEASE
-lib/test_dynamic_debug.c:164 [test_dynamic_debug]do_cats =p "D2_DP msg\n" class:D2_DP
-lib/test_dynamic_debug.c:165 [test_dynamic_debug]do_cats =p "D2_DRMRES msg\n" class:D2_DRMRES
-lib/test_dynamic_debug.c:170 [test_dynamic_debug]do_levels =pm "doing levels\n"
-lib/test_dynamic_debug.c:172 [test_dynamic_debug]do_levels =p "V1 msg\n" class:V1
-lib/test_dynamic_debug.c:173 [test_dynamic_debug]do_levels =p "V2 msg\n" class:V2
-lib/test_dynamic_debug.c:174 [test_dynamic_debug]do_levels =p "V3 msg\n" class:V3
-lib/test_dynamic_debug.c:175 [test_dynamic_debug]do_levels =p "V4 msg\n" class:V4
-lib/test_dynamic_debug.c:176 [test_dynamic_debug]do_levels =p "V5 msg\n" class:V5
-lib/test_dynamic_debug.c:177 [test_dynamic_debug]do_levels =p "V6 msg\n" class:V6
-lib/test_dynamic_debug.c:178 [test_dynamic_debug]do_levels =p "V7 msg\n" class:V7
-lib/test_dynamic_debug.c:180 [test_dynamic_debug]do_levels =p "L1 msg\n" class:L1
-lib/test_dynamic_debug.c:181 [test_dynamic_debug]do_levels =p "L2 msg\n" class:L2
-lib/test_dynamic_debug.c:182 [test_dynamic_debug]do_levels =p "L3 msg\n" class:L3
-lib/test_dynamic_debug.c:183 [test_dynamic_debug]do_levels =p "L4 msg\n" class:L4
-lib/test_dynamic_debug.c:184 [test_dynamic_debug]do_levels =p "L5 msg\n" class:L5
-lib/test_dynamic_debug.c:185 [test_dynamic_debug]do_levels =p "L6 msg\n" class:L6
-lib/test_dynamic_debug.c:186 [test_dynamic_debug]do_levels =p "L7 msg\n" class:L7
-lib/test_dynamic_debug.c:191 [test_dynamic_debug]do_prints =pm "do_prints:\n"
-lib/test_dynamic_debug.c:198 [test_dynamic_debug]test_dynamic_debug_init =pm "init start\n"
-lib/test_dynamic_debug.c:200 [test_dynamic_debug]test_dynamic_debug_init =pm "init done\n"
-lib/test_dynamic_debug.c:206 [test_dynamic_debug]test_dynamic_debug_exit =pm "exited\n"
-lib/test_dynamic_debug.c:150 [test_dynamic_debug_submod]do_cats =pmf "doing categories\n"
-lib/test_dynamic_debug.c:152 [test_dynamic_debug_submod]do_cats =_ "LOW msg\n" class:LOW
-lib/test_dynamic_debug.c:153 [test_dynamic_debug_submod]do_cats =_ "MID msg\n" class:MID
-lib/test_dynamic_debug.c:154 [test_dynamic_debug_submod]do_cats =_ "HI msg\n" class:HI
-lib/test_dynamic_debug.c:156 [test_dynamic_debug_submod]do_cats =p "D2_CORE msg\n" class:D2_CORE
-lib/test_dynamic_debug.c:157 [test_dynamic_debug_submod]do_cats =_ "D2_DRIVER msg\n" class:D2_DRIVER
-lib/test_dynamic_debug.c:158 [test_dynamic_debug_submod]do_cats =_ "D2_KMS msg\n" class:D2_KMS
-lib/test_dynamic_debug.c:159 [test_dynamic_debug_submod]do_cats =_ "D2_PRIME msg\n" class:D2_PRIME
-lib/test_dynamic_debug.c:160 [test_dynamic_debug_submod]do_cats =_ "D2_ATOMIC msg\n" class:D2_ATOMIC
-lib/test_dynamic_debug.c:161 [test_dynamic_debug_submod]do_cats =_ "D2_VBL msg\n" class:D2_VBL
-lib/test_dynamic_debug.c:162 [test_dynamic_debug_submod]do_cats =_ "D2_STATE msg\n" class:D2_STATE
-lib/test_dynamic_debug.c:163 [test_dynamic_debug_submod]do_cats =_ "D2_LEASE msg\n" class:D2_LEASE
-lib/test_dynamic_debug.c:164 [test_dynamic_debug_submod]do_cats =_ "D2_DP msg\n" class:D2_DP
-lib/test_dynamic_debug.c:165 [test_dynamic_debug_submod]do_cats =_ "D2_DRMRES msg\n" class:D2_DRMRES
-lib/test_dynamic_debug.c:170 [test_dynamic_debug_submod]do_levels =pmf "doing levels\n"
-lib/test_dynamic_debug.c:172 [test_dynamic_debug_submod]do_levels =_ "V1 msg\n" class:V1
-lib/test_dynamic_debug.c:173 [test_dynamic_debug_submod]do_levels =_ "V2 msg\n" class:V2
-lib/test_dynamic_debug.c:174 [test_dynamic_debug_submod]do_levels =_ "V3 msg\n" class:V3
-lib/test_dynamic_debug.c:175 [test_dynamic_debug_submod]do_levels =_ "V4 msg\n" class:V4
-lib/test_dynamic_debug.c:176 [test_dynamic_debug_submod]do_levels =_ "V5 msg\n" class:V5
-lib/test_dynamic_debug.c:177 [test_dynamic_debug_submod]do_levels =_ "V6 msg\n" class:V6
-lib/test_dynamic_debug.c:178 [test_dynamic_debug_submod]do_levels =_ "V7 msg\n" class:V7
-lib/test_dynamic_debug.c:180 [test_dynamic_debug_submod]do_levels =_ "L1 msg\n" class:L1
-lib/test_dynamic_debug.c:181 [test_dynamic_debug_submod]do_levels =_ "L2 msg\n" class:L2
-lib/test_dynamic_debug.c:182 [test_dynamic_debug_submod]do_levels =_ "L3 msg\n" class:L3
-lib/test_dynamic_debug.c:183 [test_dynamic_debug_submod]do_levels =_ "L4 msg\n" class:L4
-lib/test_dynamic_debug.c:184 [test_dynamic_debug_submod]do_levels =_ "L5 msg\n" class:L5
-lib/test_dynamic_debug.c:185 [test_dynamic_debug_submod]do_levels =_ "L6 msg\n" class:L6
-lib/test_dynamic_debug.c:186 [test_dynamic_debug_submod]do_levels =_ "L7 msg\n" class:L7
-lib/test_dynamic_debug.c:191 [test_dynamic_debug_submod]do_prints =pmf "do_prints:\n"
-lib/test_dynamic_debug.c:198 [test_dynamic_debug_submod]test_dynamic_debug_init =pmf "init start\n"
-lib/test_dynamic_debug.c:200 [test_dynamic_debug_submod]test_dynamic_debug_init =pmf "init done\n"
-lib/test_dynamic_debug.c:206 [test_dynamic_debug_submod]test_dynamic_debug_exit =pmf "exited\n"
-[   62.186979] test_dynamic_debug: test_dd: do_prints:
-[   62.187728] test_dynamic_debug: test_dd: doing categories
-[   62.188004] test_dd: LOW msg
-[   62.188167] test_dd: MID msg
-[   62.188319] test_dd: HI msg
-[   62.188463] test_dd: D2_CORE msg
-[   62.188632] test_dd: D2_DRIVER msg
-[   62.188807] test_dd: D2_KMS msg
-[   62.188968] test_dd: D2_PRIME msg
-[   62.189138] test_dd: D2_ATOMIC msg
-[   62.189321] test_dd: D2_VBL msg
-[   62.189487] test_dd: D2_STATE msg
-[   62.189661] test_dd: D2_LEASE msg
-[   62.189832] test_dd: D2_DP msg
-[   62.189991] test_dd: D2_DRMRES msg
-[   62.190175] test_dynamic_debug: test_dd: doing levels
-[   62.190431] test_dd: V1 msg
-[   62.190577] test_dd: V2 msg
-[   62.190725] test_dd: V3 msg
-[   62.190870] test_dd: V4 msg
-[   62.191014] test_dd: V5 msg
-[   62.191169] test_dd: V6 msg
-[   62.191316] test_dd: V7 msg
-[   62.191460] test_dd: L1 msg
-[   62.191605] test_dd: L2 msg
-[   62.191759] test_dd: L3 msg
-[   62.191903] test_dd: L4 msg
-[   62.192047] test_dd: L5 msg
-[   62.192200] test_dd: L6 msg
-[   62.192376] test_dd: L7 msg
-did do_prints
-NOTE: but they dont print here
-[   62.348171] test_dynamic_debug_submod:do_prints: test_dd_submod: do_prints:
-[   62.348940] test_dynamic_debug_submod:do_cats: test_dd_submod: doing categories
-[   62.349740] test_dynamic_debug_submod:do_levels: test_dd_submod: doing levels
-did do_prints
-NOTE: if D2_CORE in 1, trigger toggled warning
-NOTE: echo class D2_CORE -p
-[   62.632634] dyndbg: read 17 bytes from userspace
-[   62.633077] dyndbg: query 0: "class D2_CORE -p" mod:*
-[   62.633523] dyndbg: split into words: "class" "D2_CORE" "-p"
-[   62.634646] dyndbg: op='-' flags=0x0 maskp=0xfffffffe
-[   62.635636] dyndbg: parsed: func="" file="" module="" format="" lineno=0-0 class=D2_CORE
-[   62.637202] dyndbg: good-class: test_dynamic_debug.D2_CORE  module:test_dynamic_debug nd:33 nc:4 nu:0
-[   62.639078] dyndbg: changed lib/test_dynamic_debug.c:156 [test_dynamic_debug]do_cats p => _
-[   62.640840] dyndbg: class-ref: test_dynamic_debug_submod.D2_CORE  module:test_dynamic_debug_submod nd:33 nc:0 nu:4
-[   62.642777] jump_label: found toggled op at do_cats+0x11/0x180 [test_dynamic_debug_submod] [000000002815e1ff] (0f 1f 44 00 00 != e9 fe 00 00 00)) size:5 type:0
-[   62.645454] dyndbg: changed lib/test_dynamic_debug.c:156 [test_dynamic_debug_submod]do_cats p => _
-[   62.647335] dyndbg: processed 1 queries, with 2 matches, 0 errs
-:#>
+=09=09.three-columns {
+=09=09=09text-align: center;
+=09=09=09font-size: 0;
+=09=09=09padding: 15px 0 25px;
+=09=09}
 
-The warning is on submod.ko's D2_CORE prdbg, the -p change finds the
-callsite already disabled.  That same callsite was supposedly enabled
-earlier, but did not actually print when submod.pr_cats was called.
-So it begs the question, what did get enabled earlier, that didnt draw
-an error but also failed to enable the callsite ?
+=09=09.three-columns .column {
+=09=09=09width: 100%;
+=09=09=09max-width: 200px;
+=09=09=09display: inline-block;
+=09=09=09vertical-align: top;
+=09=09=09text-align: center;
+=09=09}
 
-The initial value dependence is a strong hint, but I havent decoded it yet.
+=09=09.three-columns .padding {
+=09=09=09padding: 15px;
+=09=09}
 
-CC: Jason Baron <jbaron@akamai.com>
-CC: Peter Zijlstra <peterz@infradead.org>
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
----
- arch/x86/kernel/jump_label.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+=09=09.three-columns .content {
+=09=09=09font-size: 15px;
+=09=09=09height: 20px;
+=09=09=09padding: 0 5px;
+=09=09}
 
-diff --git a/arch/x86/kernel/jump_label.c b/arch/x86/kernel/jump_label.c
-index f5b8ef02d172..6c76bb8aed54 100644
---- a/arch/x86/kernel/jump_label.c
-+++ b/arch/x86/kernel/jump_label.c
-@@ -35,7 +35,7 @@ struct jump_label_patch {
- static struct jump_label_patch
- __jump_label_patch(struct jump_entry *entry, enum jump_label_type type)
- {
--	const void *expect, *code, *nop;
-+	const void *expect, *code, *nop, *toggled;
- 	const void *addr, *dest;
- 	int size;
- 
-@@ -57,20 +57,28 @@ __jump_label_patch(struct jump_entry *entry, enum jump_label_type type)
- 	default: BUG();
- 	}
- 
--	if (type == JUMP_LABEL_JMP)
-+	if (type == JUMP_LABEL_JMP) {
- 		expect = nop;
--	else
-+		toggled = code;
-+	} else {
- 		expect = code;
--
-+		toggled = nop;
-+	}
- 	if (memcmp(addr, expect, size)) {
- 		/*
--		 * The location is not an op that we were expecting.
--		 * Something went wrong. Crash the box, as something could be
-+		 * The location is not the op that we were expecting.
-+		 * If its a well-formed toggled op, then warn,
-+		 * otherwise crash the box, as something could be
- 		 * corrupting the kernel.
- 		 */
--		pr_crit("jump_label: Fatal kernel bug, unexpected op at %pS [%p] (%5ph != %5ph)) size:%d type:%d\n",
-+		if (memcmp(addr, toggled, size)) {
-+			pr_crit("jump_label: Fatal kernel bug, unexpected op at %pS [%p] (%5ph != %5ph)) size:%d type:%d\n",
-+				addr, addr, addr, expect, size, type);
-+			BUG();
-+		} else {
-+			pr_warn("jump_label: found toggled op at %pS [%p] (%5ph != %5ph)) size:%d type:%d\n",
- 				addr, addr, addr, expect, size, type);
--		BUG();
-+		}
- 	}
- 
- 	if (type == JUMP_LABEL_NOP)
--- 
-2.39.1
+=09=09.two-columns.last {
+=09=09=09padding: 15px 0;
+=09=09}
+
+=09=09.two-columns .padding {
+=09=09=09padding: 20px;
+=09=09}
+
+=09=09.two-columns .content {
+=09=09=09font-size: 15px;
+=09=09=09line-height: 20px;
+=09=09=09text-align: left;
+=09=09}
+
+=09=09.button {
+=09=09=09background-color: #ffffff;
+=09=09=09color: #171a1b;
+=09=09=09text-decoration: none;
+=09=09=09padding: 12px 20px;
+=09=09=09border-radius: 5px;
+=09=09=09font-weight: bold;
+=09=09}
+
+=09=09.button-dark {
+=09=09=09background-color: #171a1b;
+=09=09=09color: #ffffff;
+=09=09=09text-decoration: none;
+=09=09=09padding: 12px 20px;
+=09=09=09border-radius: 5px;
+=09=09=09font-weight: bold; font-size: 25px
+=09=09}
+=09</style>=20
+ </head>=20
+ <body class=3D"squarespace-config squarespace-system-page">=20
+  <center class=3D"wrapper">=20
+   <table class=3D"main" width=3D"100%">=20
+    <tbody>=20
+     <tr>=20
+      <td height=3D"0" style=3D"background-color: #FFFFFF;">&nbsp;</td>=20
+     </tr>=20
+     <tr>=20
+      <td style=3D"padding: 14px 0 4px; ;text-align: center"> <p style=3D"t=
+ext-align: center; font-size: 25px; padding: 0px 30px">You're just a few cl=
+icks away from getting the Ninja Knife Set with a <strong>Kohl's Rewards </=
+strong>Card.</p> <a href=3D"http://www.cn-kohlewps.info/7eb4j2395YV86i12z4817xv112em36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTdSR95fB1L05K0qwD/postcondition-Flanagan"><img alt=3D"" src=3D"http://www.cn-kohlewps.info/1d35N239g5dm7ua13hJt4819A112ev36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQTdSR95wI10h5hNwLD/assistants-locking" w=
+idth=3D"100%" /></a>=20
+       <div style=3D"text-align: center; font-size: 25px; padding-right: 40=
+px; padding-left: 40px">
+        Complete our survey and get a chance to win a=20
+        <strong>Ninja Knife Set</strong>! Share your thoughts on our produc=
+ts, services, and customer support to help us improve.         <br />=20
+        <br /> Don't miss out on this opportunity to upgrade your shopping =
+experience.        </div> <br /> <br /> <br /> <br /> <a class=3D"button-da=
+rk" href=3D"http://www.cn-kohlewps.info/7eb4j2395YV86i12z4817xv112em36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTdSR95fB1L05K0qwD/postcondition-Flanagan">Start Now And Get Yours</a><br /> <br /> &nbsp; <p =
+style=3D"line-height: 23px;font-size: 15px;padding: 5px 0 15px;">We Appreci=
+ate Your Opinion</p>=20
+       <table width=3D"100%">=20
+        <tbody>=20
+         <tr>=20
+          <td class=3D"two-columns">=20
+           <table class=3D"column">=20
+            <tbody>=20
+             <tr>=20
+              <td style=3D"padding: 0 62px 10px;">&nbsp;</td>=20
+             </tr>=20
+            </tbody>=20
+           </table>=20
+           <table class=3D"column">=20
+            <tbody>=20
+             <tr>=20
+              <td style=3D"padding: 10px 72px;">&nbsp;</td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table> </td>=20
+     </tr>=20
+     <tr>=20
+      <td>&nbsp;</td>=20
+     </tr>=20
+     <tr>=20
+      <td>=20
+       <table width=3D"100%">=20
+        <tbody>=20
+         <tr>=20
+          <td class=3D"three-columns">=20
+           <table class=3D"column">=20
+            <tbody>=20
+             <tr>=20
+              <td class=3D"padding">=20
+               <table class=3D"content">=20
+                <tbody>=20
+                 <tr>=20
+                  <td>&nbsp;</td>=20
+                 </tr>=20
+                 <tr>=20
+                  <td> <p style=3D"font-weight: bold; font-size: 17px;">&nb=
+sp;</p> <p>&nbsp;</p> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table>=20
+           <table class=3D"column">=20
+            <tbody>=20
+             <tr>=20
+              <td class=3D"padding">=20
+               <table class=3D"content">=20
+                <tbody>=20
+                 <tr>=20
+                  <td>&nbsp;</td>=20
+                 </tr>=20
+                 <tr>=20
+                  <td> <p style=3D"font-weight: bold; font-size: 17px;">&nb=
+sp;</p> <p>&nbsp;</p> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table>=20
+           <table class=3D"column">=20
+            <tbody>=20
+             <tr>=20
+              <td class=3D"padding">=20
+               <table class=3D"content">=20
+                <tbody>=20
+                 <tr>=20
+                  <td>&nbsp;</td>=20
+                 </tr>=20
+                 <tr>=20
+                  <td> <p style=3D"font-weight: bold; font-size: 17px;">&nb=
+sp;</p> <p>&nbsp;</p> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table> </td>=20
+     </tr>=20
+     <tr>=20
+      <td style=3D"background-color: #FFFFFF; color: #ffffff;">=20
+       <table width=3D"100%">=20
+        <tbody>=20
+         <tr>=20
+          <td class=3D"two-columns last">=20
+           <table class=3D"column">=20
+            <tbody>=20
+             <tr>=20
+              <td class=3D"padding">=20
+               <table class=3D"content">=20
+                <tbody>=20
+                 <tr>=20
+                  <td>&nbsp;</td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table>=20
+           <table class=3D"column">=20
+            <tbody>=20
+             <tr>=20
+              <td class=3D"padding">=20
+               <table class=3D"content">=20
+                <tbody>=20
+                 <tr>=20
+                  <td> <p style=3D"font-weight: bold; font-size: 18px;">&nb=
+sp;</p> <p style=3D"padding-bottom: 16px;">&nbsp;</p> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table> </td>=20
+     </tr>=20
+     <tr>=20
+      <td style=3D"padding: 15px 0 50px">=20
+       <table width=3D"100%">=20
+        <tbody>=20
+         <tr>=20
+          <td style=3D"text-align: center; padding: 15px;"> <p style=3D"fon=
+t-size: 20px; font-weight:bold;">&nbsp;</p> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table> </td>=20
+     </tr>=20
+     <tr>=20
+      <td style=3D"background-color: #26292b;">=20
+       <table width=3D"100%">=20
+        <tbody>=20
+         <tr>=20
+          <td style=3D"text-align: center;padding: 45px 20px;color: #ffffff=
+; font-size: 12px"> <p><span style=3D"text-decoration: none; ">To cut communications=
+,</span><a href=3D"http://www.cn-kohlewps.info/d4f5c2Y395y8rw611w4818B112eF36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQTdSR95R10xH6P1lTwD/assistants-locking" style=3D"text-decoration-line: none; color: =
+white"> <span>Go-On-Here </span> </a><br /> 126 E 23rd St New York, NY, U=
+S 10010<br /> <br /> <br /> <br /> <br /> <br /> <style size="agar"></style><style style="contrariness"></style><span><font face="encrust"></font></span><small><style face="eliminations"></style></small><font><font class="bearings"></font><font dir="stings"></font></font><font id="ordain"></font><style></style></p> <br /> <b=
+r /> &nbsp;=20
+           <table border=3D"0" cellpadding=3D"2" cellspacing=3D"2" width=3D=
+"50%">=20
+            <tbody>=20
+             <tr>=20
+              <td>&nbsp;</td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table> </td>=20
+     </tr>=20
+    </tbody>=20
+   </table>=20
+  </center>=20
+  <div style=3D"display: none">
+   <!--<p>Post your questions in the Xfinity Community</p>
+
+<p>RENDEZ-VOUS MARDI & MERCREDI (muni de votre carte =E9tudiante, salle Mau=
+rice Cozian autour du patio droit-lettres pour l'UFR Sciences Humaines)</p>
+
+<p>Last name: Last name</p>
+
+----HJT9VCTq;JZTxUE----0bfTnuqA;iZwDVt
+<p> Computers: We provide computers for student use in the student lounge, =
+and students will not require a laptop for their classwork. If you do wish =
+to bring a laptop, however, wifi is available in local caf=E9s. Finally, pl=
+ease remember that YOU will be responsible for carrying your own luggage at=
+ all times, so try to be as realistic as possible about what you will need.=
+ Electricity in France Please keep in mind that electricity in France is di=
+fferent than in the U.S. Thus, please do not bring irons, hair dryers, or o=
+ther electrical equipment. Even with a transformer, they will often short o=
+ut. If necessary, cheap appliances can be bought in France and used just fo=
+r the month.  Checklist 1. TO DO IMMEDIATELY (_____) Check that your passpo=
+rt is valid and will not expire while you are in France. (_____) If you are=
+ not a US, Canadian or European Union citizen, contact your local French Em=
+bassy to determine whether you need to apply for an entry visa to France. 2=
+ ADVANCE PLANNING (_____) Order your debit/credit card. Make a copy of it =
+in case it gets lost. (_____) Make 3 photocopies of your passport & birth c=
+ertificate: one to leave with your family and two to carry with you while y=
+ou travel. () Confirm your plane reservation with the airline, as well as t=
+he time, flight number and departure terminal. NOTE: DO THIS 72 HOURS BEFOR=
+E YOU LEAVE! 3. PACKING TIME () Make sure that any breakables in your suitc=
+ase are well-wrapped or protected, or placed in your hand luggage. (_____) =
+Think through how much clothing you will need this summer. (Each year most =
+students bring far too much, so try to adhere to the packing list.) 4. BEFO=
+RE YOU LEAVE THE HOUSE (You MUST include all these items in your carry-on b=
+ag) (_____) Your passport (and visa paperwork, if applicable) (_____) A cop=
+y of your passport in another place from the original, with a second copy l=
+eft at home with your parents () Your plane tickets (_____) Your spending m=
+oney (packed securely). () The Acad=E9mie de France program office telephon=
+e numbers and addresses (_____) Name & address labels, plus ?OXBRIDGE? lugg=
+age tags, on your luggage (sent by mail) 5. AT THE AIRPORT (_____) Keep the=
+ bar-coded luggage stubs, given to you by the airline at check-in, in a saf=
+e place in your carry-on luggage. Happy travels from wherever you may be in=
+ the world, and we will see you in France in early July! Map of Montpellier=
+ Internat d?Excellence Montpellier 4, rue du 81=E8me r=E9giment d'infanteri=
+e 34090 Montpellier France</p>
+----fTpJ2gCB;WwXhij----xGcXFLW7;ETCwwC
+----kteutPHZ;oskPvK----evNyD2Qr;oGjwjP
+Confirm Your Email
+=20
+Hey Smiles Davis,
+=20
+We received a request to set your HireClub email to hello@. If this is corr=
+ect, please confirm by clicking the button below. =20
+Confirm Email=20
+
+https:///co8NO92StvL317H
+=20
+Confirm your account
+
+Click the button below to confirm your Dauntless account.=20
+Click here to confirm your account
+
+? or ?
+
+You can manually confirm your account by pasting the following code into th=
+e empty field at
+
+ ----wJepp1E3;DQlrRb----OdHu5ZIp;eipAue
+
+----6z6pXhRp;KqFNPQ----ugA5OLd3;iusfid
+Sehr geehrte Frau lwxjx
+
+Herzlichen Dank f=FCr Ihr Interesse am Denner Newsletter!
+
+Best=E4tigen Sie Ihre Anmeldung bitte durch Anklicken dieses Links.=20
+
+Sollten Sie diese Anmeldung des Newsletters nicht angefordert haben, dann b=
+itten wir Sie, den Link zu ignorieren. Sie werden dann in Zukunft keine wei=
+teren E-Mails von uns erhalten.=20
+Freundliche Gr=FCsse
+Denner
+----tIow17u9;KjUoHw----PQiDfnhA;gsFLZF
+----uZDJyDF1;GJUqPo----T1tt4dju;UjwWZw
+
+
+Dear MF dlyuh,
+
+Please confirm this E-Mail and you will receive our news messages. To do th=
+is click on following link:
+
+
+
+
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" bgco=
+lor=3D"#f4f6f9" class=3D"email-content-table-outer">
+    <tr>
+      <td valign=3D"top" align=3D"center" style=3D"border-top: 4px solid #2=
+B96D4; font-family: SalesforceSans, Helvetica Neue, Helvetica, Arial; font-=
+size: 14px;" class=3D"td-outer">
+       =20
+        <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"em=
+ail-content-table" style=3D"width: 100%; border: 0; padding: 0; margin: 0;"=
+>
+          <tr>
+            <td style=3D"border: 0; padding: 0; margin: 0;">
+           =20
+              <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"16" bo=
+rder=3D"0" class=3D"email-content-table-sub" style=3D"border: 0; padding: 0=
+; margin: 0;">
+                <tr>
+                  <td align=3D"center" class=3D"layout-td-width td-logo" st=
+yle=3D"border: 0; padding: 0; margin: 0; font-size: 0px;"></td>
+                </tr>
+              </table>
+             =20
+            </td>
+          </tr>
+          <tr class=3D"tr-top">
+            <td style=3D"border: 0; padding: 0; margin: 0;">
+           =20
+              <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" class=3D"email-content-table-sub" style=3D"border: 0; padding: 0;=
+ margin: 0;">
+                <tr>
+                  <td align=3D"right" valign=3D"bottom" style=3D"width: 16p=
+x; height: 17px; font-size: 0;" class=3D"shadow-pixel-td"></td>
+                  <td align=3D"center" bgcolor=3D"#4B9EE4" style=3D"width: =
+624px; height: 17px; font-size: 0;" class=3D"layout-td-width"></td>
+                  <td align=3D"left" valign=3D"bottom" style=3D"width: 16px=
+; height: 17px; font-size: 0;" class=3D"shadow-pixel-td"></td>
+                </tr>
+              </table>
+             =20
+            </td>
+          </tr>
+          <tr>
+            <td style=3D"border: 0; padding: 0; margin: 0;">
+           =20
+              <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" class=3D"email-content-table-sub email-content-table-sub-with-act=
+ual" style=3D"border: 0; padding: 0; margin: 0;">
+                <tr>
+                  <td bgcolor=3D"#efefef" width=3D"1" class=3D"shadow-pixel=
+-td"></td>
+                  <td bgcolor=3D"#e9e9e9" width=3D"1" class=3D"shadow-pixel=
+-td"></td>
+                  <td bgcolor=3D"#e0e0e0" width=3D"1" class=3D"shadow-pixel=
+-td"></td>
+                  <td bgcolor=3D"#4B9EE4" width=3D"650" class=3D"layout-td-=
+width">
+                   =20
+                    <table width=3D"650" cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0" class=3D"email-content-table-actual email-content-table-actu=
+al-top">
+                      <tr>
+                        <td align=3D"center" bgcolor=3D"#4B9EE4" style=3D"w=
+idth: 100%; background: #4B9EE4; color: #ffffff; font-family: SalesforceSan=
+sLight, Helvetica Neue, Helvetica, Arial; font-size: 32px; padding: 16px 0 =
+24px 0;" class=3D"layout-td-width td-title"><span style=3D"padding: 0 20px;=
+ display: block;">Thanks for signing up with Salesforce!</span></td>
+                      </tr>
+                      <tr>
+                        <td align=3D"center" style=3D"width: 100%; font-siz=
+e: 0;" class=3D"layout-td-width"></td>
+                      </tr>
+                    </table>
+
+
+
+
+
+
+<k> </h>
+<c> </b>
+<!--This has polling place link and the written material -->
+   <j>=20
+    <!-- search parameters -->=20
+    <u>=20
+     <d>=20
+      <!--This has polling place link and the written material -->=20
+      <q>=20
+       <!-- search parameters -->=20
+       <h style=3D"height: 15px; width: 3.00926%;">=20
+        <i style=3D"height: 15px; width: 8.91204%;">=20
+         <h style=3D"height: 15px; width: 19.6759%;">=20
+         </h></i>=20
+        <h align=3D"left" style=3D"width: 1.04167%; height: 15px;" valign=
+=3D"top">=20
+         <o style=3D"height: 15px; width: 9.83796%;">=20
+          <e style=3D"height: 15px; width: 15.8565%;">=20
+           <r align=3D"left" style=3D"width: 3.00926%; height: 15px;" valig=
+n=3D"top">=20
+           </r>
+          </e>=20
+          <c style=3D"height: 15px; width: 37.1528%;">=20
+           <e style=3D"height: 15px; width: 3.00926%;">=20
+            <l class=3D"TitleMessageTableStyle" colspan=3D"6" style=3D"heig=
+ht: 15px; width: 56.5972%;">
+             Voter Information=20
+             <x align=3D"left" class=3D"TitleMessageTableStyle" colspan=3D"=
+1" style=3D"height: 15px; width: 3.00926%;" valign=3D"top">=20
+              <h style=3D"height: 15px; width: 37.1528%;">=20
+              </h>
+             </x>
+            </l>
+           </e>
+          </c>
+         </o>
+        </h>
+       </h>
+       <r style=3D"width: 3.00926%;" valign=3D"top">=20
+        <y class=3D"GenLabelBold" style=3D"width: 8.91204%;" valign=3D"top"=
+>=20
+         <b style=3D"width: 19.6759%;" valign=3D"top">=20
+          <w align=3D"left" style=3D"width: 1.04167%;" valign=3D"top">=20
+           <f style=3D"width: 1.27315%;" valign=3D"top">=20
+            <c class=3D"GenLabelBold" style=3D"width: 9.83796%;" valign=3D"=
+top">=20
+             <f style=3D"width: 15.8565%;" valign=3D"top">=20
+              <x align=3D"left" style=3D"width: 3.00926%;" valign=3D"top">=
+=20
+              </x>
+             </f>
+            </c>
+           </f>
+          </w></b>=20
+         <s style=3D"width: 37.1528%;" valign=3D"top"> </s>
+        </y>
+       </r><s style=3D"width: 37.1528%;" valign=3D"top"><a style=3D"width: =
+3.00926%;" valign=3D"top">=20
+         <h class=3D"GenLabelBold" style=3D"width: 8.91204%;" valign=3D"top=
+">=20
+         </h></a></s></q>=20
+      <p nowrap=3D"nowrap" style=3D"width: 19.6759%;" valign=3D"top"><q><s =
+style=3D"width: 37.1528%;" valign=3D"top"><a style=3D"width: 3.00926%;" val=
+ign=3D"top"> </a> </s></q></p>=20
+      <p align=3D"left" style=3D"width: 1.04167%;" valign=3D"top"><q><s sty=
+le=3D"width: 37.1528%;" valign=3D"top">
+         <z style=3D"width: 1.27315%;" valign=3D"top">=20
+          <z class=3D"GenLabelBold" style=3D"width: 9.83796%;" valign=3D"">=
+=20
+           <w nowrap=3D"nowrap" style=3D"width: 15.8565%;" valign=3D"top">=
+=20
+            <y align=3D"left" style=3D"width: 3.00926%;" valign=3D"top">=20
+            </y>=20
+            <e style=3D"width: 37.1528%;" valign=3D"top">=20
+            </e>
+           </w>
+          </z>
+         </z></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top">
+        <w style=3D"width: 3.00926%; height: 12px;" valign=3D"top">=20
+         <b class=3D"GenLabelBold" style=3D"width: 8.91204%; height: 12px;"=
+ valign=3D"top"> <s style=3D"width: 19.6759%; height: 12px;" valign=3D"top"=
+> <i align=3D"left" style=3D"width: 1.04167%; height: 12px;" valign=3D"top"=
+>=20
+            <h style=3D"width: 1.27315%; height: 12px;" valign=3D"top">=20
+             <z class=3D"GenLabelBold" style=3D"width: 9.83796%; height: 12=
+px;" valign=3D"top">=20
+              <n style=3D"width: 15.8565%; height: 12px;" valign=3D"top">=
+=20
+              </n>
+             </z>
+            </h></i></s><i align=3D"left" style=3D"width: 1.04167%; height:=
+ 12px;" valign=3D"top">=20
+           <k align=3D"left" style=3D"width: 3.00926%; height: 12px;" valig=
+n=3D"top">=20
+            <x style=3D"height: 12px; width: 37.1528%;" valign=3D"top">=20
+             <p>&nbsp;</p>=20
+            </x>
+           </k></i></b>
+        </w></s><s style=3D"width: 37.1528%;" valign=3D"top"><b class=3D"Ge=
+nLabelBold" style=3D"width: 8.91204%; height: 12px;" valign=3D"top"><i alig=
+n=3D"left" style=3D"width: 1.04167%; height: 12px;" valign=3D"top">
+          <g style=3D"width: 3.00926%; height: 43px;" valign=3D"top">=20
+           <u class=3D"GenLabelBold" style=3D"width: 8.91204%; height: 43px=
+;" valign=3D"top"> <u nowrap=3D"nowrap" style=3D"width: 19.6759%; height: 4=
+3px;" valign=3D"top">=20
+             <y align=3D"left" style=3D"width: 1.04167%; height: 43px;" val=
+ign=3D"top">=20
+              <p>&nbsp;</p>=20
+              <n style=3D"width: 1.27315%; height: 43px;" valign=3D"top">=
+=20
+              </n>
+             </y> <s class=3D"GenLabelBold" style=3D"width: 9.83796%; heigh=
+t: 43px;" valign=3D"top"> <s nowrap=3D"nowrap" style=3D"width: 15.8565%; he=
+ight: 43px;" valign=3D"top"> </s> </s></u></u>=20
+           <p align=3D"left" style=3D"width: 3.00926%; height: 43px;" valig=
+n=3D"top"><u class=3D"GenLabelBold" style=3D"width: 8.91204%; height: 43px;=
+" valign=3D"top"><u nowrap=3D"nowrap" style=3D"width: 19.6759%; height: 43p=
+x;" valign=3D"top"><s class=3D"GenLabelBold" style=3D"width: 9.83796%; heig=
+ht: 43px;" valign=3D"top">
+               <f style=3D"height: 43px; width: 37.1528%;" valign=3D"top">=
+=20
+               </f></s></u></u></p>=20
+          </g></i></b></s><s style=3D"width: 37.1528%;" valign=3D"top"><b c=
+lass=3D"GenLabelBold" style=3D"width: 8.91204%; height: 12px;" valign=3D"to=
+p"><i align=3D"left" style=3D"width: 1.04167%; height: 12px;" valign=3D"top=
+"><u class=3D"GenLabelBold" style=3D"width: 8.91204%; height: 43px;" valign=
+=3D"top"><u nowrap=3D"nowrap" style=3D"width: 19.6759%; height: 43px;" vali=
+gn=3D"top"><s class=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px=
+;" valign=3D"top">
+             <k style=3D"width: 3.00926%; height: 24px;" valign=3D"top">=20
+              <g class=3D"GenLabelBold" style=3D"width: 8.91204%; height: 2=
+4px;" valign=3D"top">=20
+               <s nowrap=3D"nowrap" style=3D"width: 19.6759%; height: 24px;=
+" valign=3D"top"> <a align=3D"left" style=3D"width: 1.04167%; height: 24px;=
+" valign=3D"top"> </a><a style=3D"height: 24px; width: 1.27315%;"> </a></s>
+              </g>
+             </k></s></u></u></i></b><i align=3D"left" style=3D"width: 1.04=
+167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBold" style=3D"widt=
+h: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"nowrap" style=3D"wi=
+dth: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"GenLabelBold" styl=
+e=3D"width: 9.83796%; height: 43px;" valign=3D"top"><s nowrap=3D"nowrap" st=
+yle=3D"width: 19.6759%; height: 24px;" valign=3D"top"><a style=3D"height: 2=
+4px; width: 1.27315%;">=20
+              <v style=3D"height: 24px; width: 9.83796%;">=20
+               <f colspan=3D"5" style=3D"height: 24px; width: 58.3333%;" va=
+lign=3D"top">=20
+               </f>
+              </v></a></s></s></u></u></i></s><s style=3D"width: 37.1528%;"=
+ valign=3D"top"><i align=3D"left" style=3D"width: 1.04167%; height: 12px;" =
+valign=3D"top"><u class=3D"GenLabelBold" style=3D"width: 8.91204%; height: =
+43px;" valign=3D"top"><u nowrap=3D"nowrap" style=3D"width: 19.6759%; height=
+: 43px;" valign=3D"top"><s class=3D"GenLabelBold" style=3D"width: 9.83796%;=
+ height: 43px;" valign=3D"top"><s nowrap=3D"nowrap" style=3D"width: 19.6759=
+%; height: 24px;" valign=3D"top"><a style=3D"height: 24px; width: 1.27315%;=
+">
+              <h style=3D"width: 3.00926%;">=20
+              </h></a></s></s></u></u></i></s><s style=3D"width: 37.1528%;"=
+ valign=3D"top"><i align=3D"left" style=3D"width: 1.04167%; height: 12px;" =
+valign=3D"top"><u class=3D"GenLabelBold" style=3D"width: 8.91204%; height: =
+43px;" valign=3D"top"><u nowrap=3D"nowrap" style=3D"width: 19.6759%; height=
+: 43px;" valign=3D"top"><s class=3D"GenLabelBold" style=3D"width: 9.83796%;=
+ height: 43px;" valign=3D"top"><s nowrap=3D"nowrap" style=3D"width: 19.6759=
+%; height: 24px;" valign=3D"top"><a style=3D"height: 24px; width: 1.27315%;=
+"><s style=3D"width: 3.00926%;">=20
+               <w align=3D"center" colspan=3D"6" style=3D"width: 56.5972%;"=
+>
+                <br />=20
+                <h align=3D"left" colspan=3D"1" style=3D"width: 3.00926%;" =
+valign=3D"top">=20
+                </h>
+               </w></s></a><s style=3D"width: 3.00926%;">=20
+              <z style=3D"width: 37.1528%;">=20
+              </z></s></s></s></u></u></i></s><s style=3D"width: 37.1528%;"=
+ valign=3D"top"><i align=3D"left" style=3D"width: 1.04167%; height: 12px;" =
+valign=3D"top"><u class=3D"GenLabelBold" style=3D"width: 8.91204%; height: =
+43px;" valign=3D"top"><u nowrap=3D"nowrap" style=3D"width: 19.6759%; height=
+: 43px;" valign=3D"top"><s class=3D"GenLabelBold" style=3D"width: 9.83796%;=
+ height: 43px;" valign=3D"top"><s nowrap=3D"nowrap" style=3D"width: 19.6759=
+%; height: 24px;" valign=3D"top"><s style=3D"width: 3.00926%;">
+              <d style=3D"width: 8px;">=20
+               <f width=3D"15%">=20
+                <p>&nbsp;</p>=20
+                <a style=3D"width: 186px;"> </a>=20
+                <p>&nbsp;</p>=20
+                <a style=3D"width: 186px;">=20
+                 <y width=3D"2%">=20
+                 </y></a>
+               </f>
+              </d></s><a style=3D"width: 186px;">=20
+              <d width=3D"11%">=20
+               <j style=3D"width: 142px;">=20
+                <e width=3D"33%">=20
+                </e>
+               </j>
+              </d></a></s><a style=3D"width: 186px;"> </a></s></u></u></i><=
+/s><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" style=3D"=
+width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBold" st=
+yle=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"nowrap" =
+style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"GenLabe=
+lBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a style=3D"=
+width: 186px;">
+             <o style=3D"width: 8px;">=20
+              <p>&nbsp;</p>=20
+              <k colspan=3D"6">=20
+               <e style=3D"width: 8px;">=20
+               </e>
+              </k>
+             </o></a></s></u></u></i></s></q>=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"widt=
+h: 100%;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+        </tr>=20
+        <tr style=3D"height: 2px;">=20
+        </tr>=20
+        <tr>=20
+        </tr>=20
+        <tr>=20
+        </tr>=20
+        <tr>=20
+        </tr>=20
+        <tr>=20
+        </tr>=20
+        <tr style=3D"height: 15px;">=20
+        </tr>=20
+        <tr>=20
+        </tr>=20
+       </tbody>=20
+       <tbody>=20
+        <tr>=20
+        </tr>=20
+        <tr>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;">=20
+             <!-- end of code-->=20
+             <g style=3D"width: 8px;">=20
+              <t style=3D"width: 593px;">=20
+               <div>
+                &nbsp;
+               </div>=20
+              </t>
+             </g></a></s></u></u></i></s></q>=20
+      <table border=3D"0px" cellpadding=3D"0" cellspacing=3D"0" id=3D"GridV=
+iewTable">=20
+       <tbody>=20
+        <tr>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;">=20
+             <!-- Global site tag (gtag.js) - Google Analytics --> epc--ryf=
+ap--beyn---------------------------------------kcr--ihixr--rhwy </a></s></u=
+></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">Hello ,</a></s></u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">Thank you for registering with qctoxf.</a></s></u=
+></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">To confirm your email, click the button below.</a=
+></s></u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">Confirm my email If the button does not work for =
+some reason, enter the following code at the confirmation page: 663242</a><=
+/s></u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">After confirming your email address, you will rec=
+eive only important messages from hcloul, notifications about the status of=
+ the account and new special offers.</a></s></u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">Thank you for choosing sbkrtg!</a></s></u></u></i=
+></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">Best regards, ujuior Team You recieved this email=
+ because you are a client of fqpwqy.</a></s></u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">Keynotes<br /> Expo Hall<br /> Arm TechCon Theate=
+r<br /> Networking Receptions (Oct. 9-10)<br /> Sponsored Sessions and Spon=
+sored Workshops<br /> Click here to review or update your account details b=
+y entering your email and password in the &quot;Login&quot; section of the =
+page.</a></s></u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">Hotel Arrangements:</a></s></u></u></i></s></q></=
+p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">If your requested hotel accommodations, you will =
+receive a separate hotel confirmation once your reservation is fully proces=
+sed. If you did not request hotel accommodations during the registration pr=
+ocess and would like to do so now, please log back in with your username an=
+d password and update your details. Reservation requests are subject to ava=
+ilability.</a></s></u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">For more information about Arm TechCon 2019, plea=
+se visit the Arm TechCon 2019 website.</a></s></u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">Should you need assistance or have any questions =
+please contact the Arm TechCon Support Team at armtechcon@nthdegreecom. We =
+will respond to your email within one business day.</a></s></u></u></i></s>=
+</q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">We look forward to seeing you in October!</a></s>=
+</u></u></i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> </a></s></u></u></i></s></q>=20
+      <p><q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" =
+style=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabe=
+lBold" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D=
+"nowrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=
+=3D"GenLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><=
+a style=3D"width: 186px;">The Arm TechCon Registration Team</a></s></u></u>=
+</i></s></q></p>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> jee--wthfc--qutn-------------------------------------=
+--nwl--ndtzh--rvxb ----yKjwRcfb;eeJJXN----9AX5nTze;gnpSCF <script>
+
+    YUI(YUI_CONFIG).use('squarespace-common', 'squarespace-system-page', fu=
+nction(Y) {
+
+      Y.on("domready", function() {
+
+        var lb =3D new Y.Squarespace.Lightbox({
+          disableNormalClose: true,
+          clickAnywhereToExit: false,
+          content: '<div class=3D"bigtext"><div class=3D"title">Website Exp=
+ired</div><div class=3D"description">This account has expired.  If you are =
+the site owner, click below to login.</div><div class=3D"buttons"><input ty=
+pe=3D"button" class=3D"login-button" name=3D"login" value=3D"Owner Login"/>=
+</div></div>',
+          margin: 100,
+          noHeightConstrain: true
+        });
+
+        lb.show();
+
+        lb.getContentEl().on("click", function(e) {
+          if (e.target.ancestor(".login-button", true)) {
+            document.location.href =3D '/config/';
+          }
+        });
+
+      });
+
+    });
+
+  </script> </a></s></u></u></i></s></q>=20
+      <div class=3D"minimal-logo">
+       &nbsp;
+      </div>=20
+      <q><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" sty=
+le=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBo=
+ld" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"no=
+wrap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"G=
+enLabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a sty=
+le=3D"width: 186px;"> &quot;The battle in the heavens has left a target on =
+Lindon?s back. His most reliable ally is gone, the Monarchs see him as a th=
+reat, and he has inherited one of the most valuable facilities in the world=
+ At any moment, his enemies could band together to kill him. If it weren?t=
+ for the Dreadgods. All four are empowered and unleashed, rampaging through=
+ Cradle, and grudges old and new must be set aside. The Monarchs need every=
+ capable fighter to help them defend their territory. And Lindon needs time=
+ While he fights, he sends his friends off to train. They?ll need to advan=
+ce impossibly fast if they want to join him in battle against the kings and=
+ queens of Cradle. Together, they will need power enough to rival a Dreadgo=
+d.&quot; ----pEvzjgyH;Kiowgk----tnxGzOdP;UetVEL ----vr3srLN3;QddNND----L4wQ=
+Gab5;eBYrJX ----1Sl9eJdv;naxJeq----7FeDxHbV;poWdEK Njvxvh tjvxvh ujvxvh ajv=
+xvh Tjvxvh Ujvxvh tjvxvh Ujvxvh xjvxvh Cjvxvh Cjvxvh Zjvxvh Ljvxvh Xjvxvh E=
+jvxvh mjvxvh fjvxvh fjvxvh ejvxvh Ajvxvh sjvxvh xjvxvh Tjvxvh fjvxvh Zjvxvh=
+ Ajvxvh kjvxvh sjvxvh tjvxvh sjvxvh Ojvxvh ijvxvh sjvxvh Fjvxvh ljvxvh fjvx=
+vh Ojvxvh Kjvxvh hjvxvh rjvxvh Gjvxvh gjvxvh Kjvxvh njvxvh Kjvxvh Vjvxvh Fj=
+vxvh ojvxvh Vjvxvh Xjvxvh Jjvxvh ajvxvh Fjvxvh gjvxvh Bjvxvh djvxvh ljvxvh =
+Qjvxvh ujvxvh xjvxvh Fjvxvh ljvxvh Xjvxvh sjvxvh ljvxvh mjvxvh Gjvxvh Mjvxv=
+h ajvxvh Yjvxvh rjvxvh yjvxvh Kjvxvh djvxvh Ojvxvh vjvxvh Bjvxvh fjvxvh vjv=
+xvh ijvxvh ujvxvh Mjvxvh Qjvxvh Xjvxvh Ejvxvh Ljvxvh Ojvxvh cjvxvh pjvxvh y=
+jvxvh kjvxvh mjvxvh Hjvxvh Cjvxvh qjvxvh Xjvxvh Mjvxvh wjvxvh djvxvh Qjvxvh=
+ Xjvxvh Djvxvh Xjvxvh djvxvh Qjvxvh ljvxvh vjvxvh mjvxvh Zjvxvh Pjvxvh Bjvx=
+vh Mjvxvh Gjvxvh Ejvxvh Sjvxvh ojvxvh ljvxvh Qjvxvh ijvxvh Mjvxvh Vjvxvh Wj=
+vxvh Ajvxvh Wjvxvh hjvxvh Ejvxvh zjvxvh Bjvxvh Pjvxvh Hjvxvh ljvxvh jjvxvh =
+Ljvxvh qjvxvh cjvxvh Ejvxvh Xjvxvh Njvxvh Kjvxvh ljvxvh cjvxvh Fjvxvh Hjvxv=
+h Yjvxvh ----u0if9RYC;QvsteH----GmvS1rQj;TxneYR ----dTXYUaX2;YlzgyT----eRIv=
+ZWaX;rGPIJu--&gt; </a></s></u></u></i></s></q>
+     </d></u>
+   </j>
+  </div>=20
+  <u><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" style=
+=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBold=
+" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"nowr=
+ap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"Gen=
+LabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a style=
+=3D"width: 186px;"> </a></s></u></u></i></s></u>
+  <u><s style=3D"width: 37.1528%;" valign=3D"top"><i align=3D"left" style=
+=3D"width: 1.04167%; height: 12px;" valign=3D"top"><u class=3D"GenLabelBold=
+" style=3D"width: 8.91204%; height: 43px;" valign=3D"top"><u nowrap=3D"nowr=
+ap" style=3D"width: 19.6759%; height: 43px;" valign=3D"top"><s class=3D"Gen=
+LabelBold" style=3D"width: 9.83796%; height: 43px;" valign=3D"top"><a style=
+=3D"width: 186px;"> </a></s></u></u></i></s></u> =20
+ <img src=3D"http://www.cn-kohlewps.info/galleys-vouching/8a06p2k3H95nk85I11P481aH112eh36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQTdSR97twP1j0A6CABNwD" alt=3D""/></body>
+</html>
+
+------=_Part_316_1801567744.1674746643272--
 
