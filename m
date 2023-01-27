@@ -2,57 +2,55 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C07C67E790
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Jan 2023 14:59:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A259767F112
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 27 Jan 2023 23:21:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3C75B10E98C;
-	Fri, 27 Jan 2023 13:59:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7064D10E1D9;
+	Fri, 27 Jan 2023 22:21:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
- [IPv6:2607:f8b0:4864:20::102f])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4BFFE10E98C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 27 Jan 2023 13:59:31 +0000 (UTC)
-Received: by mail-pj1-x102f.google.com with SMTP id j5so4697074pjn.5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 27 Jan 2023 05:59:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ddKdS4x8c4ZSI9PbKdla4xMHlbecpUYnHnf7KqPY/v4=;
- b=ELPVJ6i19uUILwOmXwVpuGn4gzTgyON58i8xqHbMYXlfy2iRtxyJ8s7uo39722KKSx
- HcDnR7OB2QxiqN+RcogiSUqWUaleVvxo/+uNXa/UiTLbvomtU+9b+BITIOW26BFnQuH1
- k+niwm9t5dTHl1vPrVIEOZG1eNvmYhbhvmMxiiXTf8vfSqLN7SQjJB4O+ArD0xILJjMS
- +nUzJS7niyA2WkVtXPaWI4tjkpbGhs1bp3cchJz6DuORfK+wBhD08Vx15WodHrUffJmJ
- x4afNqMzgneZ5kcgWlVf+2cD1G4PzOZrEcpLXvXw0VLI/NPo4Qa/cqO4Hb3lre9w/WhH
- UfxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ddKdS4x8c4ZSI9PbKdla4xMHlbecpUYnHnf7KqPY/v4=;
- b=bODbZ7mF3q4p+ZQ+REgZYi97IAPkDpcoPYGBOcfKEBFwF+ursitr6Z312QeQ/Mvbzh
- bd+XlmcTK4e199sXh/VEKZbbXHQw/HiQRGUmqySFsgHdNh75sYQVRPQPRJxsQedfB6yI
- QRv8fquIoOkJ61EztCBY268hgY3rMdL+uz5ElueP30/FaCYiG8b9nqa/Bg6j/z5NnCYy
- 9AVzFxyLw3wcej8wVijvSBhzZWPjpSKbW4J7whPfs6EgIi+FSkrkFk+tmCTbev3xj/Gr
- Ge0YZhaWkFAAowU2BpkRwTDG0Gy/bbkjy4iISWorrlh6XupTT875FGZL+VlfkWOpXrrY
- cZDg==
-X-Gm-Message-State: AO0yUKUQhWFmwOYqmyZNPQQPWaoXvxjpOY/tGfXNjnx3azUbJOhLa3g8
- 2TRT/89FhYAxOlEE2RHZ2p+cx1HtEkpSU79253U=
-X-Google-Smtp-Source: AK7set+4WmzbnJlNrHx7tyGhJd0zG3D3J+Dv1SvQoK6Y+75Njg3rEtc/tZCYc7dqpUOuGWZ1IKvznTcxn/LP4yr/aGE=
-X-Received: by 2002:a17:90a:d809:b0:22c:22e9:b614 with SMTP id
- a9-20020a17090ad80900b0022c22e9b614mr1104391pjv.91.1674827970862; Fri, 27 Jan
- 2023 05:59:30 -0800 (PST)
+X-Greylist: delayed 27522 seconds by postgrey-1.36 at gabe;
+ Fri, 27 Jan 2023 22:21:28 UTC
+Received: from Server.Textcodesoftware.com (Server.Textcodesoftware.com
+ [103.171.44.236])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0553810E1CA;
+ Fri, 27 Jan 2023 22:21:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=darshildentalcare.com; s=default; h=Reply-To:Date:From:To:Subject:
+ Content-Description:Content-Transfer-Encoding:MIME-Version:Content-Type:
+ Sender:Message-ID:Cc:Content-ID:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=qpiBTKnflDBchsXByxrcZHKEjnGzL6w6HmRv4JSA970=; b=eTrkHarhpOBOAokZ8Ruxt7mYQv
+ Kkg5vPJ5gg5w/quXA0+PuMfrulHti/c2PEhEDWCTD7b3nDfU/QhAQIxtF2eMsmg7nfRJf6iKVdh2C
+ txjwP1PvKj7N/QbQNPf1x9k/0T0BVRt2gaWScN8btiJ/Ld+yXq7LNcFpEGU+RW1HdYTdTZpkb0sVo
+ 7YGIs70K8U7S5gKde/gQ6Rc3qWqrfvixvHZNfAVqPGbzfl5JqsEe4/DKR6+6iprgP4xlpQPet+XY6
+ ixnCUT5d7frEgJmJ+bIAxrI92bWwZdKi92gL8HX3aIpD92+nxxgZOW7EjDKnoiRFivqfcVuTf5mnt
+ Fs7MQ1OQ==;
+Received: from [197.234.221.185] (port=59161 helo=[192.168.43.3])
+ by server.textcodesoftware.com with esmtpa (Exim 4.95)
+ (envelope-from <test@briefsmania.com>) id 1pLPw6-0000Xu-HS;
+ Fri, 27 Jan 2023 20:12:35 +0530
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Received: by 2002:a05:6a10:2d44:b0:3bf:7a41:d805 with HTTP; Fri, 27 Jan 2023
- 05:59:30 -0800 (PST)
-From: Bikram Susan <susanbikram73@gmail.com>
-Date: Fri, 27 Jan 2023 05:59:30 -0800
-Message-ID: <CALpyRY02w4-Df99UXm_7SkjVMYBsdZm0B8CinVA16Kv33h0ADQ@mail.gmail.com>
-Subject: please can i have your attention
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: =?utf-8?b?VnQ6IEh5dsOkw6QgaHVvbWVudGE=?=
+To: Recipients <test@briefsmania.com>
+From: "Mrs EVE." <test@briefsmania.com>
+Date: Fri, 27 Jan 2023 15:44:42 +0100
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server.textcodesoftware.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - briefsmania.com
+X-Get-Message-Sender-Via: server.textcodesoftware.com: authenticated_id:
+ smtpfox-fv3l4@darshildentalcare.com
+X-Authenticated-Sender: server.textcodesoftware.com: smtpfox-fv3l4@darshildentalcare.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,16 +63,30 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: subik7633@gmail.com
+Reply-To: madis.scarl@terlera.it
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20230127222130.7064D10E1D9@gabe.freedesktop.org>
 
-Dear ,
+Hei hyv=E4=E4 huomenta,
+T=E4ll=E4 haluamme huomauttaa, ett=E4 kaikki yrityksemme ovat sinuun yhteyd=
+ess=E4
+t=E4m=E4n kautta s=E4hk=F6postiosoitteesi ep=E4onnistui. Ota yst=E4v=E4llis=
+esti yhteytt=E4 asianajajaan.
+Steven Mike { mbarrsteven@gmail.com } yksityisess=E4 s=E4hk=F6postissaan
+vaatimus korvausoikeudesta
 
-Please can I have your attention and possibly help me for humanity's
-sake please. I am writing this message with a heavy heart filled with
-sorrows and sadness.
-Please if you can respond, i have an issue that i will be most
-grateful if you could help me deal with it please.
+Huomautus: Sinun on maksettava toimitusmaksu.
+Vilpitt=F6m=E4sti sinun
+Rouva EVE LEWIS
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+Hello Good Morning,
+This is to bring to your notice that all our efforts to contact you
+through this your email ID failed Please Kindly contact Barrister.
+Steven Mike { mbarrsteven@gmail.com } on his private email for the
+claim of your compensation entitlement
 
-Susan
+Note: You have to pay for the delivery fee.
+Yours Sincerely
+Mrs EVE LEWIS
