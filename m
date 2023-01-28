@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68F5467FAAC
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 28 Jan 2023 21:00:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E880C67FB10
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 28 Jan 2023 22:15:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3DC2710E070;
-	Sat, 28 Jan 2023 20:00:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B33C710E07D;
+	Sat, 28 Jan 2023 21:15:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sat, 28 Jan 2023 20:00:43 UTC
-Received: from mail.new-acevz.info (unknown [107.158.12.157])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6288710E1F0
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 28 Jan 2023 21:15:37 UTC
+Received: from mail.clka-ceh.info (unknown [107.158.12.130])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3DA3F10E07D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 28 Jan 2023 20:00:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=new-acevz.info; 
+ Sat, 28 Jan 2023 21:15:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=clka-ceh.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=verizon.gift.card.chance@new-acevz.info; 
- bh=EjDv+3LdSwVfKUjtddt9qQx78OI=;
- b=P8R/Gdy1xz+4ooGoe8N+VQy6/bVwbw0d65FlBwfcPgkzhh8eXekh5XoSTrVlXRUqXcR89K92OQza
- VRWG6X2poZuTv+G3CnlpZoD3a2lnUq6yw0cCNFZmj0tGGU0O8AekCuTpat2Oo0anrnKLmusYRC31
- KFGkUomeVk7tLTOo9oY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=new-acevz.info;
- b=J9NtbzHS5szCjDZmOijvY0U0P2OVwTw8nafZVLy5DoleSRPusJZbp65U7RDbZMqyj3cPKCofRv0i
- wmanhrn2ptMRyzY4dr3Ir8dJlEd/akevnJeGWfnbrjUyCvHIPmI6TbQrnqleP2Hajj2nf6jVuJpV
- wAgd74l3uSYc5CWdSRg=;
-Received: by mail.new-acevz.info id hqlvem0001g8 for
+ i=ace.hardware.value@clka-ceh.info; 
+ bh=1fRj77288Ve94fAZGGaCA5vOkLg=;
+ b=he+v/BD40JTCpVUra+YVtr+gSxqnpjFmLM/h6bhtig7zuZJbD0F85MViRkiMWkZkNh7rehzUTq1E
+ Jz89gZXJDJUqwfVSqYwn+Cttrjir+fy7WDsZ0giFgW4KM+6aUWX83QcxjrF8bfkJy5Qbqo1OVnWI
+ Yu+v7cR6fGK/GaiWQBU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=clka-ceh.info;
+ b=hJ0w6PUdzLGUHqjB1ikLlQho24caunJKrlYYKPqLCErKc4un0sr2UTS8DuPuhVmO4eEIn+oeZRT0
+ CCazLIUrHfvN7AXQWOy8aJxVyhXsLwyQc7dP0WRhKaHhCRob0yX0ykdNXPyzsZPuusBy6WBTxxxl
+ O8505rWwfHkDfO1AgzU=;
+Received: by mail.clka-ceh.info id hqm87i0001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 28 Jan 2023 14:52:52 -0500 (envelope-from
- <verizon.gift.card.chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@new-acevz.info>)
-Date: Sat, 28 Jan 2023 14:52:52 -0500
-From: "VERIZON Gift Card Chance" <verizon.gift.card.chance@new-acevz.info>
+ Sat, 28 Jan 2023 16:07:32 -0500 (envelope-from
+ <ace.hardware.value-intel+2Dgvt+2Ddev=lists.freedesktop.org@clka-ceh.info>)
+Date: Sat, 28 Jan 2023 16:07:32 -0500
+From: "ACE Hardware Value" <ace.hardware.value@clka-ceh.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your visits are now rewarded for your loyalty - Awesome
+Subject: The ultimate way to show appreciation for your loyalty.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_334_136568745.1674935537016"
-Message-ID: <0.0.0.25.1D933521B5C371E.2AF85D@mail.new-acevz.info>
+ boundary="----=_Part_319_2016922416.1674940032826"
+Message-ID: <0.0.0.23.1D9335C89BDD0D2.12216@mail.clka-ceh.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,96 +53,141 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_334_136568745.1674935537016
+------=_Part_319_2016922416.1674940032826
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <title>openers and friends</title> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width,initial-scale=1" name="viewport" /> 
-  <meta name="x-apple-disable-message-reformatting" /> 
-  <style type="text/css">table, td, div, h1, p {font-family: Trebuchet, sans-serif;}
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>Lovere</title> 
+  <style type="text/css">@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,900;1,700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #dddee1;
+        font-size: 20px;
+        font-family: "Montserrat", sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 3%;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      header {
+        width: 98%;
+      }
+
+      #logo {
+        max-width: 80px;
+        margin: 3% 0 3% 3%;
+        float: left;
+      }
+
+      #wrapper {
+        background-color: #d9c1c6;
+      }
+
+      #social {
+        float: right;
+        margin: 6% 2% 4% 3%;
+        list-style-type: none;
+      }
+
+      #social > li {
+        display: inline;
+      }
+
+      #social > li > a > img {
+        max-width: 35px;
+      }
+
+      h1,
+      p {
+        margin: 3%;
+      }
+
+      .btn {
+        float: right;
+        margin: 0 2% 4% 0;
+        background-color: #303840;
+        color: #f6faff;
+        text-decoration: none;
+        font-weight: 800;
+        padding: 8px 12px;
+        border-radius: 8px;
+        letter-spacing: 2px;
+      }
+
+      hr {
+        height: 1px;
+        background-color: #303840;
+        clear: both;
+        width: 96%;
+        margin: auto;
+      }
+
+      #contact {
+        text-align: center;
+        font-size: 14px;
+        line-height: 14px;
+        padding-bottom: 3%;
+      }
 	</style> 
  </head> 
- <body style="margin: 0;padding:0;"> 
-  <table role="presentation" style="width: 100%;border-collapse:collapse;border:0;border-spacing:0;background:#fffff;"> 
-   <tbody> 
-    <tr> 
-     <td align="center" style="padding:0;"> 
-      <table role="presentation" style="width:605px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style="padding:5px 0 0px;background-color:#3E3E3E;"> <h1 style="padding: 20px 20px 0px;color: #FFFFFF">Get Closer To A $100 <b style="color: #FF0004">V</b>erizon Gift Card With Just A Few Clicks!</h1> 
-          <div style="background-color: #FFFFFF; width: 100%; ">
-           &nbsp;
-          </div> <br /> <a href="http://www.new-acevz.info/13d6F239SY5Dw86p11n4876B1142H36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQLdSe97A10xQPj6VA1UwD/martial-Byzantinizes"><img alt="" src="http://www.new-acevz.info/decompression-qualifications/5585U2p395B7GUa11D4878L1142h36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQLdSe97l_u10hy5QNwDy" style="display: block" width="100%" /></a> 
-          <div style="background-color: #FFFFFF; display: block; padding: 25px; font-size: 22px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; line-height: 30px; font-weight: 600;">
-           <strong>Tell</strong> us how we're doing and get a $100 gift card to 
-           <strong style="color: #FF0004">V</strong>erizon and upgrade your mobile service!
-           <br /> 
-           <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us.           </div> 
-          <div style="background-color: #FFFFFF">
-           <br /> &nbsp;
-          </div> 
-          <div style="background-color: #FFFFFF">
-           <a href="http://www.new-acevz.info/13d6F239SY5Dw86p11n4876B1142H36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQLdSe97A10xQPj6VA1UwD/martial-Byzantinizes" style="text-decoration:none; color: #FFFFFF; background-color: #FFFFFF"><span style="background-color: #FF0004;font-weight: bold;font-size: 20px; padding: 15px 20px;">Go And Start Now</span></a>
-          </div> </td> 
-        </tr> 
-        <tr> 
-         <td style="padding:36px 30px 42px 30px;"> 
-          <table role="presentation" style="width: 100%;border-collapse:collapse;border:0;border-spacing:0;background:#fffff;"> 
-           <tbody> 
-            <tr> 
-             <td style="padding:0 0 36px 0;color:#153643;"> <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">&nbsp;</h1> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td style="padding:0;"> 
-              <table role="presentation" style="width: 100%;border-collapse:collapse;border:0;border-spacing:0;background:#fffff;"> 
-               <tbody> 
-                <tr> 
-                 <td style="width:260px;padding:0;vertical-align:top;color:#153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
-                 <td style="width:20px;padding:0;font-size:0;line-height:0;">&nbsp;</td> 
-                 <td style="width:260px;padding:0;vertical-align:top;color:#153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td style="padding:30px;background-color:#0B426F; color: #FFFFFF"> 
-          <div style="text-align: center; font-size: 12px"> 
-           <p><span style="text-decoration: none; ">To edit your email elections,</span><a href="http://www.new-acevz.info/5cf6O23XJ95v8xS611Q4877g1142W36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQLdSe96b1U0xJ5iTWwD/relieve-reusing" style="text-decoration-line: none; color: white"> <span>Go On Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <style dir="patties"><style lang="Sutherland"><small><font style="shoals"><small><span size="corrupts"></small></style></small></font></span></style><small></small></p> 
-          </div> 
-          <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;font-size:9px;font-family:Arial,sans-serif;"> 
-           <tbody> 
-            <tr> 
-             <td style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;"> <p>&nbsp;</p> </td> 
-             <td align="right" style="padding:0;width:50%;"> 
-              <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:0 0 0 10px;width:38px;">&nbsp;</td> 
-                 <td style="padding:0 0 0 10px;width:38px;">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.new-acevz.info/15b6HK239y5Q85RS12ts4879Q1142i36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQLdSe97zM1x0Lx5HApwD/martial-Byzantinizes" alt=""/></body>
+ <body> 
+  <div class="unico" style="max-width: 600px; margin: auto; background-color: #FFFFFF; box-shadow: 0px 0px 30px 5px #FFDFDF"> 
+   <div id="wrapper"> 
+    <header> 
+     <div id="logo">
+      &nbsp;
+     </div> 
+     <div id="social">
+      &nbsp;
+     </div> 
+    </header> 
+    <div id="banner">
+     &nbsp;
+    </div> 
+    <div class="one-col"> 
+     <div class="unico" style="width: 100%; background-color: #FFFFFF; text-align: center"> 
+      <p style="font-family: Impact, Haettenschweiler, 'Franklin Gothic Bold', 'Arial Black', 'sans-serif'; font-size: 23px; padding: 20px 10px 20px; letter-spacing: 2px">Get your hands on a $100 <b style="color: #FF0004">Ace</b> Hardware<br /> gift card with just a few simple clicks!</p> 
+      <a href="http://www.clka-ceh.info/taproot-singer/3006i23zK95I86Ny12L4Y87ax1143i36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQVdSed6XL1mD05G3wDz"><img alt="" src="http://www.clka-ceh.info/e036Q2z39H5s7aBz12BF487cB1143O36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQVdSed5S1_0F6VzAJwD/detestable-Barr" width="100%" /></a> 
+      <p style="padding: 0px 10px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: 600; line-height: 30px">Complete Our Customer Survey And Get A Chance To Win A $100 <b style="color: #FF0004">Ace</b> Hardware Gift Card. Your Feedback Helps Us Improve, And We Value Your Opinions.</p> &nbsp; 
+      <div style="background-color: #FF0004; font-size: 18px; padding: 15px 20px; border: #FFFFFF double; font-weight: bold; border-radius: 5px">
+       <a href="http://www.clka-ceh.info/taproot-singer/3006i23zK95I86Ny12L4Y87ax1143i36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQVdSed6XL1mD05G3wDz" style="text-decoration: none; color: #FFFFFF; display: block;; padding-right: 150px; padding-left: 150px">Go And Start Now</a>
+      </div> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <br /> &nbsp;
+     </div> 
+     <footer style="text-align: center; font-size: 12px; padding: 20px; background-color: #626262; color: #FFFFFF; border: dotted #000000"> 
+      <p><span style="text-decoration: none; ">To halt email,</span><a href="http://www.clka-ceh.info/b514y2395B8C6k11z487bB1143z36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQVdSed5k10gN5CPwDy/clanging-fanaticism" style="text-decoration-line: none; color: white"> <span>Go_Ahead_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <span dir="Genevieve"></span><style id="diplomat"><style lang="assignee"><font face="thrifty"></style></style></font><style dir="Weissmuller"><span face="nephews"></span></style></p> 
+     </footer> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.clka-ceh.info/sponsors-nostalgic/62a4o2395Uwi8511Q487dU1143O36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQVdSed7e1Vvwh05y@wkD" alt=""/></body>
 </html>
 
-------=_Part_334_136568745.1674935537016--
+------=_Part_319_2016922416.1674940032826--
 
