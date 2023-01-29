@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16CA867FB66
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 28 Jan 2023 23:47:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 69B66680043
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 29 Jan 2023 17:40:52 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D002A10E002;
-	Sat, 28 Jan 2023 22:47:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DA4FF10E20C;
+	Sun, 29 Jan 2023 16:40:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sat, 28 Jan 2023 22:47:51 UTC
-Received: from mail.hope-kger.info (unknown [107.158.12.148])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3D8F310E002
+ Sun, 29 Jan 2023 16:40:49 UTC
+Received: from mail.shop-les.info (unknown [45.13.189.167])
+ by gabe.freedesktop.org (Postfix) with ESMTP id ED0F910E20C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 28 Jan 2023 22:47:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hope-kger.info; 
+ Sun, 29 Jan 2023 16:40:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shop-les.info;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kroger.bonus.surprises@hope-kger.info; 
- bh=klAbO1VrJdU3qP6t8Km8aYjg8NI=;
- b=XSL+Qrix4WR/HurxmQEfu4POWWpGbB7/olq5oaa+88qeUI8PFrx3zz9Pg+HSzlNUxpv5xcWW/Pv8
- o9u3yPxOtH8MnodwjAUcnNPF0Qw0Hc9p3d/1Wd2Bx1yF7bS/OBkhtDoJB+1257YFt/8hO6U2QiBO
- ERrzXamsV83PLyg/BcQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hope-kger.info;
- b=EWJFgmskcM1qtJ0//DXGtEpzPDFm29LjIZGC2Wm4ufHLnNic6T4pDQhMXsM9ZpCClXRgVm5R20IT
- YcSgrJN8szK52YCNigrNZm6OOwSg+EXvMbm83hNfVPMcClpin2vUes2GKrBvKAojxFbOBE0HZfNf
- FNy4UYbwMYOEal6LGWQ=;
-Received: by mail.hope-kger.info id hqmj1e0001gg for
+ i=harry-page@shop-les.info; bh=1cvK6Ny6DZKyomqnGwgLXSDxGE4=;
+ b=oX28G8C6LkSY3p0o385L1PSLV3ON0wA6tL4oJt88Ie0DN0YliS80o//5dLTo1ZmQD2Pk011r/2ST
+ q3iFFGn2/F4sYy/2hSa/Q0IsublzG97Bv3pJHoyxtmjQUCt3AxYd5ugLPyCFqbsWMiEp8A93PY/1
+ /3s1EI5KFUQDWWdj0j4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shop-les.info;
+ b=r9rCErlBm5WwcROidKvFAxCKMU0Lhl2jaZry0nyCkJrALCa2aOyIQZZN2UsCXYY1f2yG5awhRvaM
+ uBWw304NX+ps2lITmI7jSYY8QHnYEkCN4v+cfJEJ3+pMzwkpTyJnzw0K80I0Pg3HsHHmIIBDVQgV
+ 7eawB2P8pZMKpYQnGXo=;
+Received: by mail.shop-les.info id hqqgp40001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 28 Jan 2023 17:38:07 -0500 (envelope-from
- <kroger.bonus.surprises-intel+2Dgvt+2Ddev=lists.freedesktop.org@hope-kger.info>)
-Date: Sat, 28 Jan 2023 17:38:07 -0500
-From: "Kroger Bonus Surprises" <kroger.bonus.surprises@hope-kger.info>
+ Sun, 29 Jan 2023 11:31:46 -0500 (envelope-from
+ <harry-page-intel+2Dgvt+2Ddev=lists.freedesktop.org@shop-les.info>)
+Date: Sun, 29 Jan 2023 11:31:46 -0500
+From: "Harry Page" <harry-page@shop-les.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We have some exciting news for you
+Subject: Your gift on us for the holidays,
+ a token of appreciation during holidays
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_175_1875408501.1674945456741"
-Message-ID: <0.0.0.14.1D9336931764E4C.1709E0@mail.hope-kger.info>
+ boundary="----=_Part_157_1606614105.1675009891414"
+Message-ID: <0.0.0.11.1D933FF2DED8F42.2D7D35@mail.shop-les.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,141 +53,272 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_175_1875408501.1674945456741
+------=_Part_157_1606614105.1675009891414
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width" name="viewport" /> 
-  <title>Email Template</title> 
-  <style type="text/css">.ExternalClass {
-  width: 100%; }
-  .ExternalClass,
-  .ExternalClass p,
-  .ExternalClass span,
-  .ExternalClass font,
-  .ExternalClass td,
-  .ExternalClass div {
-    line-height: 100%; }
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>Insight HTML Email Template</title> 
+  <style type="text/css">body {
+		margin: 0; 
+		background-color: #cccccc; 
+	}
+	table {
+		border-spacing: 0;    
+	}
+	td {
+		padding: 0; 
+	}
+	img {
+		border: 0; 
+	}
+	.wrapper{
+		width: 100%; 
+		table-layout: fixed; 
+		background-color: #cccccc; 
+		padding-bottom: 60px; 
+	}
+	.main{
+		background-color: #ffffff; 
+		margin: 0 auto; 
+		width: 100%; 
+		max-width: 600px; 
+		border-spacing: 0; 
+		font-family: sans-serif; 
+		color: #4a4a4a; 
+	}
+	.two-columns{
+		text-align: center; 
+		font-size: 0; 
+	}
+	.two-columns .column{
+		width: 100%; 
+		max-width: 300px; 
+		display: inline-block; 
+		vertical-align: top; 	
+	}
+	.button{
+		background-color: #0175C0; 
+		color: #ffffff; 
+		text-decoration: none; 
+		padding: 12px 20px; 
+		font-weight: bold; 
+		border-radius: 5px; 
+	}
+	.three-columns{
+		text-align: center; 
+		font-size: 0; 
+		padding: 35px 0 20px; 	
+	}
+	.three-columns .column{
+		width: 100%; 
+		max-width: 200px; 
+		display: inline-block; 
+		vertical-align: top; 
+	}
+	.three-columns .padding{
+		padding: 15px; 
 
+	}
+	.three-columns .content{
+		font-size: 15px; 
+		line-height: 20px; 
+	}
+	.two-columns.last{
+		padding: 35px 0; 
+	}
+	.two-columns .padding{
+		padding: 20px; 
+	}
+	.two-columns .content{
+		font-size: 15px; 
+		line-height: 20px; 
+		text-align: left; 
 
- {
-  margin: 0;
-  Margin: 0;
-  padding: 0;
-  width: 100% !important;
-  line-height: 100% !important; }
-
- {
-  outline: none;
-  text-decoration: none;
-  width: auto;
-  max-width:100%;
-  height:auto;
-  clear: both;
-  border:solid 2.5px black;
-  border-spacing: none;
-  border-collapse:separate;
-             }
-
- {
-  margin: 0 0 0 10px;
-  Margin: 0 0 0 10px; }
-
- {
-  border-spacing: 0;
-  border-collapse: collapse;
-  }
-
-{
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
-  border: solid 5px black;
-  border-collapse:collapse;
-                          }
-
-   {
-     word-wrap:break-word;
-     -webkit-hyphens: auto;
-     -moz-hyphens: auto;
-     hyphens:auto;
-	 width:100%;
-	 border-collapse:collapse;
-                       }
-{
-  padding: 0;
-  vertical-align: top;
-  border: 0px solid black;
-  text-align: left;
-  border-spacing: 10px;
-  border-collapse:collapse;
-  padding:none;
-  max-width:600px;
-  max-height:600px }
+	}
 	</style> 
  </head> 
- <body style="padding: 0px; margin: 0px ; background-color: #E4E4E4; padding-top: 40px"> 
-  <div style="max-width: 600px; background-color: #FFFFFF; text-align: center; margin: auto; background-color: #FFFFFF; padding-top: 40px"> 
-   <div style="width: 100%; text-align: center"> 
-    <div style="padding-right: 25px; padding-left: 25px">
-     <span style="font-size: 22px; padding: 0px 50px; display: block; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding-bottom: 10px; background-color: #418FE2; padding: 15px; border-radius: 80px; color: aliceblue; border: double #FFFFFF 15px"><b>Get Your Hands On A $100 <b style="color: #B21B30;">Kroger</b><br /> Gift Card With Just A Few Simple Clicks!</b></span>
-    </div> 
-    <a href="http://www.hope-kger.info/3b35gP2395z8r6p11S4883I1145o36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQXdSeR7Hx1GT0A5SjjwD/reservations-Luftwaffe"><img alt="" src="http://www.hope-kger.info/5395n23y95e7aTr13zM4m885_1145_36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQXdSeR5IH1k06zXwqDz/sadden-stabbed" style="display: block" width="100%" /></a> 
-    <div style="font-size: 22px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding: 25px 30px; line-height: 35px;font-weight: bold;display: block;background-color: #2D60A5; color: #FFFFFF; border-top: solid #FF0000 5px; border-bottom: solid #FF0000 5px">
-     Complete Our Customer Survey And Get A Chance To Win A $100 Kroger Gift Card. Your Feedback Helps Us Improve, And We Value Your Opinions.     </div> 
-    <br /> 
-    <br /> &nbsp; 
-    <div style="background-color: #2D60A5; font-size: 18px; padding: 15px 20px; border: #FFFFFF groove 5px ; font-weight: bold; border-radius: 20px">
-     <a href="http://www.hope-kger.info/3b35gP2395z8r6p11S4883I1145o36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQXdSeR7Hx1GT0A5SjjwD/reservations-Luftwaffe" style="text-decoration: none; color: #FFFFFF; display: block;; padding-right: 180px; padding-left: 180px">Go And Start Now</a>
-    </div> 
-    <br /> 
-    <br /> 
-    <br /> &nbsp; 
-    <p><b>We Love Your Opinion</b></p> 
-    <br /> &nbsp;
-   </div> 
-   <table> 
-   </table> 
-   <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
+ <body> 
+  <center class="wrapper"> 
+   <table class="main" width="100%"> 
     <tbody> 
      <tr> 
-      <td align="left" class="column" colspan="2" height="180" style="padding: 10px 20px 20px 20px; background:#FFFFFF; font-family: arial,sans-serif; font-size: 14px; line-height: 18px; color:white ;" valign="top" width="600"> <h1>&nbsp;</h1> <p style="color:white;">&nbsp;</p> </td> 
+      <td height="8" style="background-color: #FFFFFF; "> 
+       <div style="max-width: 600px; margin: auto; text-align: center"> 
+        <p style="padding: 30px 20px 0px; font-family: Broadway; font-size: 22px; line-height: 30px ">Dear valued customer You Are Just A Few Clicks Away To Get The <b style="color: #012168">Lowe' s</b> Card.</p> 
+       </div> <a href="http://www.shop-les.info/3d14h2395oBH8611j488bF1147o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQIdSee7M1iJ_Y05lO2wD/plotters-unfriendliness"><img alt="" src="http://www.shop-les.info/51b4i2395y7amI13HV488_dl1147A36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQIdSee7X10NCTt5JLwDN/inhibitions-capital" style="border-top: solid 5px #012168" width="100%" /></a> 
+       <div style="border-top: solid #012168 5px; border-bottom: solid #012168 5px"> 
+        <p style="text-align: center; padding: 20px; font-size: 22px; font-family: Cooper Black; ">At Lowe' s, we are committed to providing the best service and selection for all your home improvement needs.<br /> <br /> By completing our short survey, you will have the opportunity to share your thoughts on our products, services, and store experience</p> 
+       </div> <br /> <br /> <br /> &nbsp; 
+       <div style="text-align: center">
+        <a class="button" href="http://www.shop-les.info/3d14h2395oBH8611j488bF1147o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQIdSee7M1iJ_Y05lO2wD/plotters-unfriendliness">Go And Start Now</a>
+       </div> </td> 
+     </tr> 
+     <tr> 
+      <td style="padding: 14px 0 4px; "> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="two-columns"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td style="padding: 0 62px 10px; ">&nbsp; </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td style="padding: 10px 68px ; ">&nbsp; </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp; </td> 
+     </tr> 
+     <tr> 
+      <td style="padding: 0px 0 50px; "> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td style="text-align: center; padding: 15px; "> <p style="font-size: 20px; font-weight: bold; ">&nbsp; </p> <p style="font-size: 15px; line-height: 23px; padding: 5px 0 15px; ">&nbsp; </p> <br /> <br /> <br /> <br /> &nbsp; <p style="text-align: center; font-size: 12px; font-weight: bold; ">We Love Your Opinion</p> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td height="2" style="background-color: #FFFFFF; ">&nbsp; </td> 
+     </tr> 
+     <tr> 
+      <td> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="three-columns"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp; </td> 
+                 </tr> 
+                 <tr> 
+                  <td style="padding: 10px; "> <p style="font-weight: bold; font-size: 17px; ">&nbsp; </p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp; </td> 
+                 </tr> 
+                 <tr> 
+                  <td style="padding: 10px; "> <p style="font-weight: bold; font-size: 17px; ">&nbsp; </p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp; </td> 
+                 </tr> 
+                 <tr> 
+                  <td style="padding: 10px; "> <p style="font-weight: bold; font-size: 17px; ">&nbsp; </p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td height="2" style="background-color: #FFFFFF; ">&nbsp; </td> 
+     </tr> 
+     <tr> 
+      <td> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="two-columns last"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp; </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td> <p style="font-size: 17px; font-weight: bold; ">&nbsp; </p> <p>&nbsp; </p> <p style="padding-bottom: 15px; ">&nbsp; </p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td style="background-color: #565656; color: #ffffff; "> 
+       <table width="100%"> 
+        <tbody> 
+         <tr> 
+          <td style="text-align: center; padding: 45px 20px; font-size: 12px"> <p><span style="text-decoration: none; ">No longer want to receive messages from us?,</span><a href="http://www.shop-les.info/2e16iQY2395iM8_612k48z8cj1147X36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQIdSee7S1M0jOJ5OlwDP/estimation-leadership" style="text-decoration-line: none; color: white"> <span>Begin Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <font id="Macedon"></font><style size="curriculum"><font lang="conceptualization"></style><big><font></font></big></font></p> </td> 
+         </tr> 
+         <tr> 
+          <td height="8" style="background-color: #2210FF; ">&nbsp; </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
      </tr> 
     </tbody> 
    </table> 
-   <table align="center"> 
-    <tbody> 
-     <tr> 
-      <td align="center" class="column" style=" background: #FFFFFF; font-family: arial,sans-serif; font-size: 14px; line-height: 18px; color: #000;" valign="top" width="50%"> <h2 style="border: 0;">&nbsp;</h2> <p>&nbsp;</p> </td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td align="center" class="column" style=" background: #FFFFFF; font-family: arial,sans-serif; font-size: 14px; line-height: 18px; color: #000;" valign="top" width="50%"> <h2 align="center;">&nbsp;</h2> <p>&nbsp;</p> </td> 
-      <td class="img hide">&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table align="center" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="left" colspan="2" height="180" style="padding: 10px 20px 20px 20px; background:#FFFFFF; font-family: arial,sans-serif; font-size: 14px; line-height: 18px; color:white;" valign="top" width="600"> <h1>&nbsp;</h1> <p style="color:white;">&nbsp;</p> </td> 
-     </tr> 
-     <tr> 
-      <td align="left" class="column" colspan="2" height="70" style="padding: 10px 20px 20px 20px; background:#FFFFFF; font-family: arial,sans-serif; font-size: 14px; line-height: 18px; color:white;" valign="top" width="600"> <p style="color:black;">&nbsp;</p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <div style="width: 93.4%; text-align: center;font-size: 12px; background-color: #727272; padding: 20px"> 
-    <p><span style="text-decoration: none; ">To suspend communications,</span><a href="http://www.hope-kger.info/sadden-stabbed/6oc5X23B95p8_6L12t4884KG1145Z36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQXdSeR6h10ylT5s@MwD" style="text-decoration-line: none; color: white"> <span>Go This Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <style class="canonicalization"></style><font style="Argentinian"></font><small><span><span></span><font color="questioning"></small></span></font><font color="conjecture"><style></font></style><small></small><font></font></p> 
-   </div> 
-  </div>   
- <img src="http://www.hope-kger.info/muffler-prudently/c426b2xV395Mu85U13P488tB6m1145K36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXdSeR6pF1Vh05KTwDM" alt=""/></body>
+  </center>   
+ <img src="http://www.shop-les.info/inhibitions-capital/ef44J2395mW85B13rh488Ser1147Y36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQIdSee5R10OR5bOwDX" alt=""/></body>
 </html>
 
-------=_Part_175_1875408501.1674945456741--
+------=_Part_157_1606614105.1675009891414--
 
