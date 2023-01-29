@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69B66680043
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 29 Jan 2023 17:40:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CB528680061
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 29 Jan 2023 18:15:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DA4FF10E20C;
-	Sun, 29 Jan 2023 16:40:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 43BDC10E05C;
+	Sun, 29 Jan 2023 17:15:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 29 Jan 2023 16:40:49 UTC
-Received: from mail.shop-les.info (unknown [45.13.189.167])
- by gabe.freedesktop.org (Postfix) with ESMTP id ED0F910E20C
+X-Greylist: delayed 588 seconds by postgrey-1.36 at gabe;
+ Sun, 29 Jan 2023 17:15:39 UTC
+Received: from mail.mstam-cbs.info (unknown [45.13.189.144])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DB39210E05C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 29 Jan 2023 16:40:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shop-les.info;
+ Sun, 29 Jan 2023 17:15:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mstam-cbs.info; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=harry-page@shop-les.info; bh=1cvK6Ny6DZKyomqnGwgLXSDxGE4=;
- b=oX28G8C6LkSY3p0o385L1PSLV3ON0wA6tL4oJt88Ie0DN0YliS80o//5dLTo1ZmQD2Pk011r/2ST
- q3iFFGn2/F4sYy/2hSa/Q0IsublzG97Bv3pJHoyxtmjQUCt3AxYd5ugLPyCFqbsWMiEp8A93PY/1
- /3s1EI5KFUQDWWdj0j4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shop-les.info;
- b=r9rCErlBm5WwcROidKvFAxCKMU0Lhl2jaZry0nyCkJrALCa2aOyIQZZN2UsCXYY1f2yG5awhRvaM
- uBWw304NX+ps2lITmI7jSYY8QHnYEkCN4v+cfJEJ3+pMzwkpTyJnzw0K80I0Pg3HsHHmIIBDVQgV
- 7eawB2P8pZMKpYQnGXo=;
-Received: by mail.shop-les.info id hqqgp40001gd for
+ i=sams.club.love@mstam-cbs.info; 
+ bh=NUlx2/8EQqMYq+lUlTx0JsHP4Jg=;
+ b=k9fKmtbDGEMoqvdPrbOgCwTpnW1vO2NXuMC5YkjWhDY/aVlNmOzbjXWwgSklg9SfnProWVxnR6Bx
+ UgCUribVoeDv2o8fC05SZgaheeKrjridNmdS1MV6k/9L08fmk4y1pyWmbvDp8f24Jx1pQ9ULQ7y8
+ EgGrV+WVr9Zd0iqtVfY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mstam-cbs.info;
+ b=tu9s6tymBhbgBwTuy2EelI59QfFImmgt+AqZa0TdUuq+Rasr4Stu9tvuDXcTcEVWaUPx7stZTHhT
+ 8ccu+XWDz+Tbr7ZDj6dvlZ/c4ZxzTCPvKDgYPii2eOFCjL4MZMjnZODyT8iVNCjB8tFqMTf0rPJi
+ OzeyT+kloWzpBvnnPKE=;
+Received: by mail.mstam-cbs.info id hqqkro0001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 29 Jan 2023 11:31:46 -0500 (envelope-from
- <harry-page-intel+2Dgvt+2Ddev=lists.freedesktop.org@shop-les.info>)
-Date: Sun, 29 Jan 2023 11:31:46 -0500
-From: "Harry Page" <harry-page@shop-les.info>
+ Sun, 29 Jan 2023 12:01:20 -0500 (envelope-from
+ <sams.club.love-intel+2Dgvt+2Ddev=lists.freedesktop.org@mstam-cbs.info>)
+Date: Sun, 29 Jan 2023 12:01:20 -0500
+From: "Sams Club Love" <sams.club.love@mstam-cbs.info>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your gift on us for the holidays,
- a token of appreciation during holidays
+Subject: Sam's Club reward is just a few clicks away - While supplies last
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_157_1606614105.1675009891414"
-Message-ID: <0.0.0.11.1D933FF2DED8F42.2D7D35@mail.shop-les.info>
+ boundary="----=_Part_22_1014313887.1675011674117"
+Message-ID: <0.0.0.2.1D934034F86449C.43F7B9@mail.mstam-cbs.info>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,129 +53,76 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_157_1606614105.1675009891414
+------=_Part_22_1014313887.1675011674117
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Insight HTML Email Template</title> 
-  <style type="text/css">body {
-		margin: 0; 
-		background-color: #cccccc; 
-	}
-	table {
-		border-spacing: 0;    
-	}
-	td {
-		padding: 0; 
-	}
-	img {
-		border: 0; 
-	}
-	.wrapper{
-		width: 100%; 
-		table-layout: fixed; 
-		background-color: #cccccc; 
-		padding-bottom: 60px; 
-	}
-	.main{
-		background-color: #ffffff; 
-		margin: 0 auto; 
-		width: 100%; 
-		max-width: 600px; 
-		border-spacing: 0; 
-		font-family: sans-serif; 
-		color: #4a4a4a; 
-	}
-	.two-columns{
-		text-align: center; 
-		font-size: 0; 
-	}
-	.two-columns .column{
-		width: 100%; 
-		max-width: 300px; 
-		display: inline-block; 
-		vertical-align: top; 	
-	}
-	.button{
-		background-color: #0175C0; 
-		color: #ffffff; 
-		text-decoration: none; 
-		padding: 12px 20px; 
-		font-weight: bold; 
-		border-radius: 5px; 
-	}
-	.three-columns{
-		text-align: center; 
-		font-size: 0; 
-		padding: 35px 0 20px; 	
-	}
-	.three-columns .column{
-		width: 100%; 
-		max-width: 200px; 
-		display: inline-block; 
-		vertical-align: top; 
-	}
-	.three-columns .padding{
-		padding: 15px; 
-
-	}
-	.three-columns .content{
-		font-size: 15px; 
-		line-height: 20px; 
-	}
-	.two-columns.last{
-		padding: 35px 0; 
-	}
-	.two-columns .padding{
-		padding: 20px; 
-	}
-	.two-columns .content{
-		font-size: 15px; 
-		line-height: 20px; 
-		text-align: left; 
-
-	}
-	</style> 
+  <title>HTML Email Template</title> 
  </head> 
  <body> 
-  <center class="wrapper"> 
-   <table class="main" width="100%"> 
+  <div style="max-width: 600px; margin: auto; text-align: center; "> 
+   <table cellpadding="10" cellspacing="0" width="100%"> 
     <tbody> 
      <tr> 
-      <td height="8" style="background-color: #FFFFFF; "> 
-       <div style="max-width: 600px; margin: auto; text-align: center"> 
-        <p style="padding: 30px 20px 0px; font-family: Broadway; font-size: 22px; line-height: 30px ">Dear valued customer You Are Just A Few Clicks Away To Get The <b style="color: #012168">Lowe' s</b> Card.</p> 
-       </div> <a href="http://www.shop-les.info/3d14h2395oBH8611j488bF1147o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQIdSee7M1iJ_Y05lO2wD/plotters-unfriendliness"><img alt="" src="http://www.shop-les.info/51b4i2395y7amI13HV488_dl1147A36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQIdSee7X10NCTt5JLwDN/inhibitions-capital" style="border-top: solid 5px #012168" width="100%" /></a> 
-       <div style="border-top: solid #012168 5px; border-bottom: solid #012168 5px"> 
-        <p style="text-align: center; padding: 20px; font-size: 22px; font-family: Cooper Black; ">At Lowe' s, we are committed to providing the best service and selection for all your home improvement needs.<br /> <br /> By completing our short survey, you will have the opportunity to share your thoughts on our products, services, and store experience</p> 
-       </div> <br /> <br /> <br /> &nbsp; 
-       <div style="text-align: center">
-        <a class="button" href="http://www.shop-les.info/3d14h2395oBH8611j488bF1147o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQIdSee7M1iJ_Y05lO2wD/plotters-unfriendliness">Go And Start Now</a>
-       </div> </td> 
+      <td bgcolor="#363636"> <p align="center" style="
+              color: #ffffff;
+              font-size: 12px;
+              font-family: 'Trebuchet MS', Arial, Verdana, sans-serif;
+            ">&nbsp;</p> 
+       <div style="width: 100%; font-size: 30px;font-weight: bold; color: #FFFFFF;">
+        Sams Club
+       </div> <p>&nbsp;</p> </td> 
      </tr> 
      <tr> 
-      <td style="padding: 14px 0 4px; "> 
-       <table width="100%"> 
+      <td bgcolor="#C9C9C9"> 
+       <table align="center" cellpadding="0" width="100%"> 
         <tbody> 
          <tr> 
-          <td class="two-columns"> 
-           <table class="column"> 
+          <td bgcolor="#ffffff"> 
+           <table cellpadding="10" width="100%"> 
             <tbody> 
              <tr> 
-              <td style="padding: 0 62px 10px; ">&nbsp; </td> 
+              <td> 
+               <div style="width: 100%">
+                <a href="http://www.mstam-cbs.info/complainers-lathe/7386hV239W5C86RP12q488fnZ1148R36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQXdSeK5i10Tm5slwDl"><img alt="" src="http://www.mstam-cbs.info/3ef6b2_3V95H7laO12su4891I1148X36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQXdSeK5k1OB06t0wOBD/shredding-learning" width="100%" /></a> 
+                <div style="font-size: 25px; padding: 20px; font-family: Berlin Sans FB">
+                 Don't miss out! Just a few clicks away from a chance to win a $100 
+                 <b style="color: #010E93">Sams Club</b> Card by completing our quick 20-second survey about your recent experience with us.                 </div> 
+               </div> <br /> <br /> &nbsp; 
+               <div style="background-color: #00BBFF; font-size: 20px; padding: 20px;font-weight: bold;font-family: Berlin Sans FB; border-radius: 50px ">
+                <a href="http://www.mstam-cbs.info/complainers-lathe/7386hV239W5C86RP12q488fnZ1148R36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQXdSeK5i10Tm5slwDl" style="text-decoration: none; color: #FFFFFF; display: block;padding-left: 20%; padding-right: 20%">Go And Start Now</a>
+               </div> <h1 align="center" style="color: #b93f3f; font-size: 24px">&nbsp;</h1> <p style="
+                          font-family: 'Trebuchet MS', Arial, Verdana,
+                            sans-serif;
+                        ">&nbsp;</p> </td> 
              </tr> 
             </tbody> 
            </table> 
-           <table class="column"> 
+           <table cellpadding="0" cellspacing="0" width="100%"> 
             <tbody> 
              <tr> 
-              <td style="padding: 10px 68px ; ">&nbsp; </td> 
+              <td bgcolor="#FFFFFF" colspan="2"> <p style="
+                          font-size: 12px;
+                          font-family: 'Trebuchet MS', Arial, Verdana,
+                            sans-serif;
+                          padding: 0 10px;
+                        ">&nbsp;</p> </td> 
+             </tr> 
+             <tr> 
+              <td width="100%">&nbsp;</td> 
+              <td bgcolor="#FFFFFF" width="100%"> <p style="
+                          color: #ffffff;
+                          font-family: 'Trebuchet MS', Arial, Verdana,
+                            sans-serif;
+                          padding: 0 10px;
+                        ">&nbsp;</p> </td> 
              </tr> 
             </tbody> 
            </table> </td> 
@@ -184,141 +131,17 @@ Content-Transfer-Encoding: 7bit
        </table> </td> 
      </tr> 
      <tr> 
-      <td>&nbsp; </td> 
-     </tr> 
-     <tr> 
-      <td style="padding: 0px 0 50px; "> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td style="text-align: center; padding: 15px; "> <p style="font-size: 20px; font-weight: bold; ">&nbsp; </p> <p style="font-size: 15px; line-height: 23px; padding: 5px 0 15px; ">&nbsp; </p> <br /> <br /> <br /> <br /> &nbsp; <p style="text-align: center; font-size: 12px; font-weight: bold; ">We Love Your Opinion</p> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <tr> 
-      <td height="2" style="background-color: #FFFFFF; ">&nbsp; </td> 
-     </tr> 
-     <tr> 
-      <td> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="three-columns"> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp; </td> 
-                 </tr> 
-                 <tr> 
-                  <td style="padding: 10px; "> <p style="font-weight: bold; font-size: 17px; ">&nbsp; </p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp; </td> 
-                 </tr> 
-                 <tr> 
-                  <td style="padding: 10px; "> <p style="font-weight: bold; font-size: 17px; ">&nbsp; </p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp; </td> 
-                 </tr> 
-                 <tr> 
-                  <td style="padding: 10px; "> <p style="font-weight: bold; font-size: 17px; ">&nbsp; </p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <tr> 
-      <td height="2" style="background-color: #FFFFFF; ">&nbsp; </td> 
-     </tr> 
-     <tr> 
-      <td> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="two-columns last"> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp; </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table class="column"> 
-            <tbody> 
-             <tr> 
-              <td class="padding"> 
-               <table class="content"> 
-                <tbody> 
-                 <tr> 
-                  <td> <p style="font-size: 17px; font-weight: bold; ">&nbsp; </p> <p>&nbsp; </p> <p style="padding-bottom: 15px; ">&nbsp; </p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-     <tr> 
-      <td style="background-color: #565656; color: #ffffff; "> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td style="text-align: center; padding: 45px 20px; font-size: 12px"> <p><span style="text-decoration: none; ">No longer want to receive messages from us?,</span><a href="http://www.shop-les.info/2e16iQY2395iM8_612k48z8cj1147X36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQIdSee7S1M0jOJ5OlwDP/estimation-leadership" style="text-decoration-line: none; color: white"> <span>Begin Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <font id="Macedon"></font><style size="curriculum"><font lang="conceptualization"></style><big><font></font></big></font></p> </td> 
-         </tr> 
-         <tr> 
-          <td height="8" style="background-color: #2210FF; ">&nbsp; </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
+      <td bgcolor="#363636" style="font-size: 12px; color: #FFFFFF"> <p align="center" style="
+              color: #ffffff;
+              font-size: 12px;
+              font-family: 'Trebuchet MS', Arial, Verdana, sans-serif;
+            ">&nbsp;</p> <p><span style="text-decoration: none; ">To suspend notices,</span><a href="http://www.mstam-cbs.info/5ed5B23G95Rh86Q12L4m890v1148l36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQXdSeK5aZ10s5LM0wD/pedant-educators" style="text-decoration-line: none; color: white"> <span>Go Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <span color="hostile"><span face="robing"><font dir="drawers"></font></span><span lang="ensuring"></span></span><font class="lookers"></font><span style="spites"><small></small></span><small><span lang="devised"></span><big></big></small></p> <p>&nbsp;</p> </td> 
      </tr> 
     </tbody> 
    </table> 
-  </center>   
- <img src="http://www.shop-les.info/inhibitions-capital/ef44J2395mW85B13rh488Ser1147Y36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQIdSee5R10OR5bOwDX" alt=""/></body>
+  </div>   
+ <img src="http://www.mstam-cbs.info/minicomputer-jacking/4fe6Q2YI395HRR8512FZ4892Y1148X36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQXdSeK7RKNOT105Jy2wD" alt=""/></body>
 </html>
 
-------=_Part_157_1606614105.1675009891414--
+------=_Part_22_1014313887.1675011674117--
 
