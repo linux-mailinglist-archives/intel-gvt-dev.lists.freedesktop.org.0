@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 531916817D7
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Jan 2023 18:37:43 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A167681A90
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Jan 2023 20:34:13 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1DD5A10E064;
-	Mon, 30 Jan 2023 17:37:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 42B1D10E126;
+	Mon, 30 Jan 2023 19:34:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 30 Jan 2023 17:37:39 UTC
-Received: from mail.kholdyss.top (unknown [45.13.189.96])
- by gabe.freedesktop.org (Postfix) with ESMTP id EA84110E012
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Mon, 30 Jan 2023 19:34:10 UTC
+Received: from mail.stnleylwes.top (unknown [45.13.189.133])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 695C310E118
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 30 Jan 2023 17:37:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=kholdyss.top;
+ Mon, 30 Jan 2023 19:34:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=stnleylwes.top; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls-member-benefit@kholdyss.top; 
- bh=mY2vvarMw2LD59NNXNoJNGelzPw=;
- b=iheNv+AHsMN7L9K68PNr5Fh8ZTjWlHftzAR9o8+6rlqq+zqE6SKahB2WTOTGzd1K5cQ4LZxxpivg
- GVyu829acIgvzWJZ8zs0aAd4aPmOIGXZ/NzfGPMtonl8TP9dgVr8CopR281hCxE3kxNh+kCS7Bm5
- qyPyfe+JpO9togZ8pG4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kholdyss.top;
- b=qbW9lXiREUv+d4Ad27aea9tXeukCvdh0sy8KX5qwQ8dsubojcWdvJ5qrnWGrZglE1DQyIrm3o/4s
- 3rxJqiB+7CRLaFnvSdpJtlY4/xPga2DWYMGVHNoFOoRkMKwkMB41UMSkzlCpr89Toq/IwGJ9e0Xo
- TzHRgUYIBO8Vc9kr6Rw=;
-Received: by mail.kholdyss.top id hr00680001gl for
+ i=lowes.rewards@stnleylwes.top; 
+ bh=PkDru7tN0J/aSCafaoOmwMNk/Jk=;
+ b=lDeZFhrCxGY87+x0DJSKCyoPH4V4ZZfFIQp6YGiXL3Bq30jJG6fkKOKd7VpwdHhPLMFDYfDiiSGx
+ TTYLzxJhlB95AcvVzzKZzB5LzhlX7dTYRPTGOHdxjxNS/gSrjIj1fIeAcTCBkMeKJxgoxbe5sbpw
+ 2kr+2fv2Xhj4FKpAbbc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=stnleylwes.top;
+ b=EeCXMzj4fDHg3MAN169QOBWh3MiRpRW34BBD3VlADAlJiEIA1v9p5DPlvg1oEfiMOM77d6NQniOa
+ yMB+yGJQfWDd9P9yr9RjqREPUKDKO6Q15N8SiPS3MlFI7IxtQb0Jajo6OPMg22TBeNEAGonPvcps
+ fFi/fSKX90Nz4XZB/Fg=;
+Received: by mail.stnleylwes.top id hr0dr40001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 30 Jan 2023 12:27:40 -0500 (envelope-from
- <kohls-member-benefit-intel+2Dgvt+2Ddev=lists.freedesktop.org@kholdyss.top>)
-Date: Mon, 30 Jan 2023 12:27:40 -0500
-From: "Kohls Member Benefit" <kohls-member-benefit@kholdyss.top>
+ Mon, 30 Jan 2023 14:22:55 -0500 (envelope-from
+ <lowes.rewards-intel+2Dgvt+2Ddev=lists.freedesktop.org@stnleylwes.top>)
+Date: Mon, 30 Jan 2023 14:22:55 -0500
+From: "Lowes Rewards" <lowes.rewards@stnleylwes.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get a free Knife Set from Kohl's, while supplies last
+Subject: Get your one-of-a-kind Stanley Tool Set from Lowe's without charge
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_76_844045778.1675099638655"
-Message-ID: <0.0.0.3B.1D934D027BADC2A.5122C7@mail.kholdyss.top>
+ boundary="----=_Part_595_1492121702.1675106530493"
+Message-ID: <0.0.0.A6.1D934E0414BABAA.5DB446@mail.stnleylwes.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,177 +53,192 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_76_844045778.1675099638655
+------=_Part_595_1492121702.1675106530493
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <title>street fighter</title> 
-  <style type="text/css">@media only screen and (min-device-width: 541px) {
-      .content {
-        width: 540px !important;
+ </head> 
+ <body class="clean-body u_body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #f9f9f9;color: #000000">
+  &nbsp;  
+  <br /> 
+  <title></title> 
+  <style type="text/css">@media only screen and (min-width: 620px) {
+      .u-row {
+        width: 600px !important;
+      }
+      .u-row .u-col {
+        vertical-align: top;
+      }
+      .u-row .u-col-100 {
+        width: 600px !important;
       }
     }
-
+    
+    @media (max-width: 620px) {
+      .u-row-container {
+        max-width: 100% !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+      }
+      .u-row .u-col {
+        min-width: 320px !important;
+        max-width: 100% !important;
+        display: block !important;
+      }
+      .u-row {
+        width: calc(100% - 40px) !important;
+      }
+      .u-col {
+        width: 100% !important;
+      }
+      .u-col>div {
+        margin: 0 auto;
+      }
+    }
+    
     body {
-      background-color: #EEEEEE;
-      color: #666666;
-      font-family: sans-serif;
-      font-size: 14px;
+      margin: 0;
+      padding: 0;
     }
-
-    .main-container {
-      max-width: 700px;
-      margin-right: auto;
-      margin-left: auto;
-      border: 1px solid #CCCCCC;
-      background-color: #ffffff;
-      padding: 0px;
+    
+    table,
+    tr,
+    td {
+      vertical-align: top;
+      border-collapse: collapse;
     }
-
-    .main-container th, tr, td, tbody {
-      padding: 0px;
-      border: 0px;
+    
+    p {
+      margin: 0;
     }
-
-    .head-table {
-      background-color: #2976bb;
-      color: #ffffff;
-      margin: 0px;
-      padding: 10px;
+    
+    .ie-container table,
+    .mso-container table {
+      table-layout: fixed;
     }
-
-    .head-table img {
-      max-height: 50px;
+    
+    * {
+      line-height: inherit;
     }
-
-    .video td{
-      text-align: center;
+    
+    a[x-apple-data-detectors='true'] {
+      color: inherit !important;
+      text-decoration: none !important;
     }
-
-    h1, h2 {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 700;
+    
+    table,
+    td {
+      color: #000000;
     }
-    a {
-      color:#2976bb;
-      text-decoration: none;
-    }
-    .video img {
-      max-width: 250px;
-      border: 1px solid #cccccc;
-    }
-
-    .body-table {
-      padding: 15px;
-    }
-
-    .button {
-      background-color: #2976bb;
-      color: #ffffff;
-      font-size: 20px;
-      vertical-align: center;
-      border: 1px solid #0A1334;
-      padding: 10px;
-      text-decoration: none;
-      display: inline-block;
-      border-radius: 5px;
-    }
-
-    a.button:hover {
-      background-color: #388ad3;
-    }
-
-    .full-width {
-      width: 100%;
-      margin: 0px;
-    }
-
-    .center {
-      text-align: center;
-    }
-
-    img.center {
-      display: block;
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    .blue {
-      color: #2976bb;
-    }
-	</style> 
- </head> 
- <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="content" style="width: 100%;max-width:540px; border: 1px solid #000; background-color: #ffffff;"> 
+</style> 
+  <link href="http://www.stnleylwes.top/a7f5p2F395l8M6Q12f4_8a4l114cP36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQjdSKd7og1M0hR5tAwDz/candle-undeleted" rel="stylesheet" type="text/css" /> 
+  <table cellpadding="0" cellspacing="0" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #f9f9f9;width:100%"> 
    <tbody> 
-    <tr> 
-     <td> 
-      <table class="head-table full-width" style=" background-color: #000;
-      color: #ffffff;
-      margin: 0px;
-      padding: 10px;"> 
-       <tbody> 
-        <tr> 
-         <td align="center"> 
-          <div> 
-           <div> 
-            <div> 
-             <div>
-              <span><span><span><span><strong><span style="font-size: bolder; font-size: 44px; text-align: center; color: #A5292A">KOHL'S</span> &nbsp;<span style="font-size: 44px; font-family: Constantia, 'Lucida Bright', 'DejaVu Serif', Georgia, 'serif'; font-weight: normal">Rewards</span></strong> </span></span></span></span>
-             </div> 
-            </div> 
+    <tr style="vertical-align: top"> 
+     <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top"> 
+      <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
+       <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;"> 
+        <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;"> 
+         <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
+          <div style="height: 100%;width: 100% !important;">
+           <!--[if (!mso)&(!IE)]><!--> 
+           <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:'Cabin',sans-serif;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="left" style="overflow-wrap:break-word;word-break:break-word;padding:0px;font-family:'Cabin',sans-serif;"> 
+                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                 <tbody> 
+                  <tr> 
+                   <td align="center" style="padding-right: 0px;padding-left: 0px;">&nbsp; <p class="center" style="color: #999999; font-size: 20px; font-size: 22px">Special Gift for intel-gvt-dev@lists.freedesktop.org</p> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
            </div> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td> 
-      <table class="body-table full-width"> 
-       <tbody> 
-        <tr> 
-         <td> <p class="center" style="color: #999999; font-size: 20px; font-size: 32px">Dear intel-gvt-dev@lists.freedesktop.org</p> <p style="margin: 0"><a href="http://www.kholdyss.top/9716h23wL95e8_6h13z489cHZT114b_36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqdSKo7sl10UXX5H0lwD/tails-petitions"><img alt="" src="http://www.kholdyss.top/3d16kp2t395NM7Na13U489f_tr114br36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQqdSKo6DqQ10x5b2wD0/Larkin-appendices" width="100%" /></a></p> <h2 class="blue center" style="padding: 0px; margin-top: 0">&nbsp;</h2> 
-          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td><a href="http://www.kholdyss.top/9716h23wL95e8_6h13z489cHZT114b_36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqdSKo7sl10UXX5H0lwD/tails-petitions"><img alt="" src="http://www.kholdyss.top/8275LW2395OXU7a12t48Ta0D114bk36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQqdSKo7h1RXAM06lAwXAD/pothole-injures" width="100%" /></a></td> 
-             <td><img alt="" src="http://www.kholdyss.top/Isaac-whistling/3964I2395FDr7a11b48a1T114bk36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQqdSKo5k1o0h6h03OwD" width="100%" /></td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"><a href="http://www.kholdyss.top/9716h23wL95e8_6h13z489cHZT114b_36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqdSKo7sl10UXX5H0lwD/tails-petitions"><img alt="" src="http://www.kholdyss.top/2696f239mQ5jy7aX13R48uaj2w114bS36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQqdSKo6LHSh106jMwqD2/rebroadcasting-demoralized" width="100%" /></a></td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <hr /> <h2 align="center" style="font-size: 12px">*Only Pay A Small S&amp;H Fee</h2> <p>&nbsp;</p> 
-          <table class="full-width video"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp; <p class="video-title"><a href="http://www.kholdyss.top/Isaac-whistling/cd85C23T95Xo8_613mC489UdM114bp36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQqdSKo6rqZ1x05z@wkD">&nbsp;</a></p> </td> 
-             <td>&nbsp; <p class="video-title"><a href="http://www.kholdyss.top/Isaac-whistling/cd85C23T95Xo8_613mC489UdM114bp36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQqdSKo6rqZ1x05z@wkD">&nbsp;</a></p> </td> 
-            </tr> 
-           </tbody> 
-          </table> &nbsp; 
-          <hr /></td> 
-        </tr> 
-        <tr> 
-         <td> <p align="center"><span style="text-decoration: none; ">To end e-mail,</span><a href="http://www.kholdyss.top/2e16z23xF95qHv8612S489QeP114bL36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQqdSKo6u10nVU6F0UwDN/pothole-injures" style="text-decoration-line: none; color: 999"> <span>Continue-Ahead </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <span dir="spooling"><small></span></small><style class="viscous"></style><font><style id="commuters"></style></font><big><big></big></big><span lang="establish"></span><span lang="nationalist"></span><font face="curtate"></font></p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
+       <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #fffbfb;"> 
+        <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;"> 
+         <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
+          <div style="height: 100%;width: 100% !important;"> 
+           <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:'Cabin',sans-serif;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="left" style="overflow-wrap:break-word;word-break:break-word;padding:33px 5px;font-family:'Cabin',sans-serif;"> 
+                <div style="line-height: 160%; text-align: left; word-wrap: break-word;"> 
+                 <p align="center" style="font-size: 14px; line-height: 160%;"><a href="http://www.stnleylwes.top/candle-undeleted/2886C2r3h95B8W6Y11S48abD114cG36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQjdSKd6i1iCt06Q1wNDk"><img alt="LASTELLIS" src="http://www.stnleylwes.top/melodramatic-graven/a624V2395d7api13IS48a7Op114cB36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQjdSKd7J1L_0OO5Xkw0D" style="max-width: 600PX" width="100%" /></a></p> 
+                 <p align="center"><img alt="ASTERIZ" src="http://www.stnleylwes.top/a255C2Y395z7Wua13u4z8an8j114co36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQjdSKd6zAJL106RP3kwD/thieve-weathercocks" style="max-width: 600PX" width="100%" /></p> 
+                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;"><a href="http://www.stnleylwes.top/candle-undeleted/2886C2r3h95B8W6Y11S48abD114cG36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQjdSKd6i1iCt06Q1wNDk"><img alt="syrrojos" src="http://www.stnleylwes.top/inaccurate-scenery/4er4t2395X7xYa11N48a9I114cA36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQjdSKd7gk1I0oJ6zU3wTD" style="max-width: 600PX" width="100%" /></a></span></p> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:'Cabin',sans-serif;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="left" style="overflow-wrap:break-word;word-break:break-word;padding:0px 55px 60px;font-family:'Cabin',sans-serif;"> 
+                <div style="line-height: 160%; text-align: left; word-wrap: break-word;"> 
+                 <p align="center" style="line-height: 160%; font-size: 14px;"><span style="font-size: 28px; line-height: 28.8px;"><a href="http://www.stnleylwes.top/candle-undeleted/2886C2r3h95B8W6Y11S48abD114cG36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQjdSKd6i1iCt06Q1wNDk">Take Me To The SURVEY!</a></span></p> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
+       <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #003399;"> 
+        <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;"> 
+         <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
+          <div style="height: 100%;width: 100% !important;"> 
+           <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:'Cabin',sans-serif;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="left" style="overflow-wrap:break-word;word-break:break-word;padding:0px;font-family:'Cabin',sans-serif;"> 
+                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                 <tbody> 
+                  <tr> 
+                   <td align="center" style="padding-right: 0px;padding-left: 0px;">&nbsp;</td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <div align="center" style="padding-top: 15px; font-size: 12px; color: #fff">
+             <span style="text-decoration: none;  color: #fff">To sever your subscription,</span>
+             <a href="http://www.stnleylwes.top/flocking-rotated/1b66fO239W5SW8O611j48a6k114cT36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjdSKd5a1kI06tjBlwD" style="text-decoration-line: none; color: #eee"> <span>StartHere </span> </a>
+             <br /> 126 E 23rd St New York, NY, US 10010
+            </div> 
+            <br /> 
+            <br /> 
+            <br /> 
+            <br /> &nbsp;
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> </td> 
     </tr> 
    </tbody> 
-  </table>   
- <img src="http://www.kholdyss.top/depletes-auditioning/30Y4J2395YN8y511d48a3P114bO36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQqdSKo7vH10uIP6KXA1wD" alt=""/></body>
+  </table> 
+ <img src="http://www.stnleylwes.top/bolt-granary/8ua6l239LO5C8z5V11S48aaB114cg36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQjdSKd7b1mS0MG5STwjD" alt=""/></body>
 </html>
 
-------=_Part_76_844045778.1675099638655--
+------=_Part_595_1492121702.1675106530493--
 
