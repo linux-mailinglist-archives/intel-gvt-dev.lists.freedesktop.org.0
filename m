@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4EE7C681DF2
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Jan 2023 23:22:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D421682029
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Jan 2023 00:59:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 262A010E18C;
-	Mon, 30 Jan 2023 22:22:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C88C810E13C;
+	Mon, 30 Jan 2023 23:59:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Mon, 30 Jan 2023 22:22:27 UTC
-Received: from mail.gostclam.top (unknown [45.13.189.160])
- by gabe.freedesktop.org (Postfix) with ESMTP id D948310E185
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Mon, 30 Jan 2023 23:59:44 UTC
+Received: from mail.onmetmbl.top (unknown [45.13.189.182])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E66A010E13C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 30 Jan 2023 22:22:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gostclam.top;
+ Mon, 30 Jan 2023 23:59:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=onmetmbl.top;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=walmart_love@gostclam.top; bh=Yd2OWK7Df49dLbkX0MC90DhZLy8=;
- b=XR/BEkhhvjvQCZgj7qRLcB2BOBLD8D3N+9B1Tas32PY2FU+Q0bjq7s0zaoAHp3hNEZjZnIjhgmBK
- 1qd4ljngITt5dTo8I3+XyGPC61bBfQpbTW3hm0ynn2Opcb4SAXEcdTyP0eyPdJBov+FtOC8mCRI3
- sKWYiXmBSWJOt68spxo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gostclam.top;
- b=JyJB6igN2bcOZuRnOd5zEStcUz6Ni3NXDRqJjHk+hw46nPbq6BLWMATuLQwTWQ0uZzZJdMDoJ2uX
- /JRVc9qaUe5YFLESJwQCTfH9byh0skiyyn3n+Ni9KbzDUPqZn+GoydvzSwk7gxyCYegAwGZUYmoU
- WO42qnKuOoXy+E3k5wg=;
-Received: by mail.gostclam.top id hr1bo40001gd for
+ i=now.on.tmobile@onmetmbl.top; 
+ bh=FXjdCSEQFL2NTOcKpYbom44MZgw=;
+ b=TUggbCfUTYLi0Ms8gDmx4d1j8P+12gUVhddxq91MJXpxw8YUjTz9XP4yBqV+TNnvCiPYOPd4Bebs
+ X4KioSYgvX9hxgmldOqJYuzUZ/I1M4NlfAmFFPUIRDE7MuTFYVq/CyRnlyPABwECKS/rNZaKIW5T
+ AR1zFNrDAfhXvjOUC/I=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=onmetmbl.top;
+ b=ha3eJpBfxSwjI3D8me/jM/SeyBz2cLs8sYYtsmQyu2LGyktXbAfg4Xtnd0WBcCOujSJ11MyCPy25
+ 6psULWJVxYu+HJtoCg3hfFnqAku9Av8e2/RCPPATIXsXTSY92gfHRofOpDqkK70fplEcXr5SzR5R
+ vyWoquLB5hxTeHp43Aw=;
+Received: by mail.onmetmbl.top id hr1cv20001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 30 Jan 2023 18:39:10 -0500 (envelope-from
- <walmart_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@gostclam.top>)
-Date: Mon, 30 Jan 2023 18:39:10 -0500
-From: "Walmart Love" <walmart_love@gostclam.top>
+ Mon, 30 Jan 2023 18:52:19 -0500 (envelope-from
+ <now.on.tmobile-intel+2Dgvt+2Ddev=lists.freedesktop.org@onmetmbl.top>)
+Date: Mon, 30 Jan 2023 18:52:19 -0500
+From: "Now On TMOBILE" <now.on.tmobile@onmetmbl.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Limited offer: Free Irobot vacuum cleaner from Walmart
+Subject: Pick any gift on us, as token of appreciation for your loyalty
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_124_933210764.1675116717896"
-Message-ID: <0.0.0.101.1D935040D847AC6.55547@mail.gostclam.top>
+ boundary="----=_Part_451_1562692764.1675122716932"
+Message-ID: <0.0.0.32.1D93505E3B5CF9A.36713C@mail.onmetmbl.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,103 +53,112 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_124_933210764.1675116717896
+------=_Part_451_1562692764.1675122716932
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
  <head> 
+  <meta charset="utf-8" /> 
+  <meta content="width=device-width,initial-scale=1" name="viewport" /> 
+  <meta name="x-apple-disable-message-reformatting" /> 
   <title></title> 
+  <style type="text/css">{
+      font-family: Arial, sans-serif; 
+    }
+    @media screen and (max-width: 530px) {
+     
+    }
+    @media screen and (min-width: 531px) {
+      
+    }
+	</style> 
  </head> 
- <body> 
-  <div align="center" class="gisty" id="lowmbe"> 
-   <h3 style="color: #CF2A33; font-size: 22px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><strong>Special gift just&nbsp;for intel-gvt-dev@lists.freedesktop.org</strong></h3> 
-   <table border="0" cellpadding="0" cellspacing="0" class="em_wrapper" style="width:600px; " width="600"> 
-    <tbody> 
-     <tr> 
-      <td width="30">&nbsp;</td> 
-      <td valign="top"> 
-       <table border="0" cellpadding="0" cellspacing="0" class="em_wrapper" style="width:540px;" width="540"> 
-        <tbody> 
-         <tr> 
-          <td valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" class="em_wrapper" style="width:540px; " width="540"> 
-            <tbody> 
-             <tr> 
-              <td valign="top"> 
-               <table align="left" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" style="width:160px; " width="160"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" valign="top"> 
-                   <div class="mktEditable" id="img1" style="margin-top: 27px;">
-                    <img alt="mables" border="0" class="em_img" height="163" src="http://www.gostclam.top/deliverables-smuggles/7b05f23v95gC7aj11l48b5p114en36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQAdSKS5iv10T5f@1wD" style="display:block; max-width:160px;" width="160" />
-                   </div> </td> 
-                 </tr> 
-                 <tr> 
-                  <td height="5">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" class="em_red" style="font-size:12px; line-height:20px; color:#000000; font-family:Helvetica, Arial, sans-serif; " valign="top">I Robot Roomba</td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <table align="right" border="0" cellpadding="0" cellspacing="0" class="em_wrapper" style="width:360px;" width="360"> 
-                <tbody> 
-                 <tr> 
-                  <td height="20">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="left" class="em_centertop" style="font-size:22px; line-height:26px; color:#000000; font-family:Helvetica, Arial, sans-serif;" valign="top"> 
-                   <div class="mktEditable" id="title1">
-                    <span class="em_blk"><strong>We are giving away</strong> the iRobot Roomba i1+ (1552) Wi-Fi Connected Self-Emptying Robot Vacuum, Ideal for Pet Hair, Carpets</span>
-                   </div> <p style="font-size: 14px; line-height: normal; margin-bottom: 0">We would like to offer you a unique opportunity to receive a brand new DeWalt Drill Set! To claim, simply take this short survey about your experience with Walmart.</p> </td> 
-                 </tr> 
-                 <tr> 
-                  <td height="20">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="left" class="em_red" style="font-size:12px; line-height:20px; color:#000000; font-family:Helvetica, Arial, sans-serif; " valign="top"> 
-                   <div class="mktEditable" id="txt1"> 
-                    <p><img alt="" src="http://www.gostclam.top/categorizers-entertain/c425K23T95v7JRa13RS48by7q114eg36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQAdSKS7tWPJ_105pOwOD" style="display: block" width="100%" /><a href="http://www.gostclam.top/a075Ax2395Sq8k612k4n8ban114eP36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQAdSKS5d1PM05e33wD/Boise-permeate"><img alt="" src="http://www.gostclam.top/d4f5S23s95yK7ua11h48b8O114eG36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQAdSKS6vwV1V06NjXwDk/eighties-Tzeltal" style="display: block" width="100%" /></a></p> 
-                    <p align="center" style="font-size: 17px">Get This Free Gift - Or Choose From <span style="color: red">5 Other Offers!</span> S&amp;H as low as $5.80</p> 
-                    <p align="center"><a href="http://www.gostclam.top/a075Ax2395Sq8k612k4n8ban114eP36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQAdSKS5d1PM05e33wD/Boise-permeate" style="font-size: 23px"><strong>Take Our Survey </strong></a></p> 
-                    <a href="http://www.gostclam.top/a075Ax2395Sq8k612k4n8ban114eP36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQAdSKS5d1PM05e33wD/Boise-permeate"><img alt="vesfa" src="http://www.gostclam.top/ordinariness-investigations/bca6g2G39T5Sh7aA12c4F8b6P114em36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQAdSKS7w10xzoY6XlJw0D" style="max-width: 400px" width="100%" /></a>
-                   </div> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td height="20">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" class="em_wrapper" style="width:540px;" width="540"> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-      <td width="30">&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <div align="center" style="padding-top: 15px; font-size: 12px; color: #999">
-    <span style="text-decoration: none;  color: #999">To modify your notification preferences,</span>
-    <a href="http://www.gostclam.top/fragmenting-sustaining/40e6a2H39n5J86Yv11N48b4I114eR36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQAdSKS5c1V0p5i2qwD" style="text-decoration-line: none; color: #999"> <span>Click This </span> </a>
-    <br /> 126 E 23rd St New York, NY, US 10010
+ <body style="margin:0; padding:0; word-spacing:normal; background-color:#C0C0C0; "> 
+  <div style="max-width: 600px; margin: auto; text-align: center; background-color: #FFFFFF; border: double 2px; "> 
+   <div style="width: 100%; background-color: #FFFFFF; padding-top: 40px; display: block"> 
+    <div style=" background-color: #3A3A3A; padding: 0px; border-top:  solid #BA2C5C 8px; border-bottom: solid #BA2C5C 8px"> 
+     <p style="color: #000000; font-size: 22px; line-height: 25px; padding: 0px 0px 0px; font-family: arial; color: #FFFFFF; padding: 0px; display: ; line-height: 40px; font-weight: bold; text-align: center">Get closer to a $100 T-Mobile<br /> Gift Card With Just a Few Clicks!</p> 
+    </div> 
+    <a href="http://www.onmetmbl.top/5575QR2395e86Xp12D48c1Hk1150K36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.dSKK7wy1hH0S5b2UwD/bumblebees-woodcocks"><img alt="" src="http://www.onmetmbl.top/af74q2395Yu7an13qTH48c3J1150k36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.dSKK7Et10uIS6fNkwD@/governor-Charles" style="display: block" width="100%" /></a> 
+    <div style="color: #000000; font-size: 18px; line-height: 30px; padding: 0px 25px; font-family: arial; padding-top: 20px; font-size: 22px; border-top: double #000000 10px; border-bottom:  #BA2C5C 8px; padding-bottom: 25px; font-weight: bold">
+     Tell us how we' re doing and get a $100 gift card to T-Mobile and upgrade your mobile service!
+     <br /> 
+     <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us.     </div> 
+    <br /> 
+    <br /> &nbsp; 
+    <div style="font-size: 20px; color:white; background: #000000; font-weight: bold; padding: 18px; display: block; border-radius: 5px">
+     <a href="http://www.onmetmbl.top/5575QR2395e86Xp12D48c1Hk1150K36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.dSKK7wy1hH0S5b2UwD/bumblebees-woodcocks" style="text-decoration: none; padding: 0px 25%; display: block; color: #FFFFFF">Go And Start Now</a>
+    </div> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <a href="http://www.onmetmbl.top/5575QR2395e86Xp12D48c1Hk1150K36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.dSKK7wy1hH0S5b2UwD/bumblebees-woodcocks"><img alt="" src="http://www.onmetmbl.top/southerner-archiver/6664c2395F7mya11P48c4T1150l36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.dSKK7fF1Zp0j6s@AwDO" style="border-top: solid #000000 4px; border-bottom: solid #000000 4px" width="100%" /></a>
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> &nbsp; 
+    <div style="display: block; border: ridge #828282 8px; font-size: 25px; background-color: #000000; color: #FFFFFF; font-weight: bold; padding: 10px">
+     We Appreciate Your Opinion
+    </div> 
+   </div> 
+   <div aria-roledescription="email" lang="en" role="article" style="text-size-adjust:100%; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background-color:#FFFFFF; "> 
+    <table role="presentation" style="width:100%; border:none; border-spacing:0; "> 
+     <tbody> 
+      <tr> 
+       <td align="center" style="padding:0; "> 
+        <table role="presentation" style="width:100%; max-width:600px; border:none; border-spacing:0; text-align:left; font-family:Arial,sans-serif; font-size:16px; line-height:22px; color:#363636; "> 
+         <tbody> 
+          <tr> 
+           <td style="padding:40px 30px 30px 30px; text-align:center; font-size:24px; font-weight:bold; ">&nbsp; </td> 
+          </tr> 
+          <tr> 
+           <td style="padding:0; font-size:24px; line-height:28px; font-weight:bold; ">&nbsp; </td> 
+          </tr> 
+          <tr> 
+           <td style="padding:30px; background-color:#ffffff; font-size:14px; ">&nbsp; </td> 
+          </tr> 
+          <tr> 
+           <td style="padding:35px 30px 11px 30px; font-size:0; background-color:#ffffff; "> 
+            <div class="col-sml" style="display:inline-block; width:100%; max-width:270px; vertical-align:top; text-align:left; font-family:Arial,sans-serif; font-size:14px; color:#363636; "> 
+             <p style="margin:0; margin-top:45px; font-size:18px; font-weight:bold; text-align:right; padding-right:35px">&nbsp; </p> 
+            </div> 
+            <div class="col-lge" style="display:inline-block; width:100%; vertical-align:top; padding-bottom:20px; font-family:Arial,sans-serif; font-size:16px; line-height:22px; color:#363636; ">
+             &nbsp; 
+            </div> </td> 
+          </tr> 
+          <tr> 
+           <td style="padding:30px; background-color:#ffffff; font-size:14px; "> <p style="margin:0">&nbsp; </p> &nbsp; <p style="margin:0; ">&nbsp; </p> &nbsp; <p style="margin:0; font-weight:bold; ">&nbsp; </p> <p style="margin:0; ">&nbsp; </p> <p style="margin:0; ">&nbsp; </p> </td> 
+          </tr> 
+          <tr> 
+           <td style="padding:35px 30px 11px 30px; font-size:0; background-color:#ffffff; padding-top: 50px; "> 
+            <div class="col-sml" style="display:inline-block; width:100%; max-width:270px; vertical-align:top; text-align:left; font-family:Arial,sans-serif; font-size:14px; color:#363636; ">
+             &nbsp; 
+            </div> 
+            <div class="col-lge" style="display:inline-block; width:100%; max-width:260px; vertical-align:top; padding-bottom:20px; padding-left:10px; font-family:Arial,sans-serif; font-size:16px; line-height:normal; color:#363636; "> 
+             <p style="margin:0; margin-top: 50px; font-weight:bold; font-size:16px; ">&nbsp; </p> 
+             <p style="margin:0; font-weight:900; font-size:32px; line-height:32px; ">&nbsp; </p> 
+             <p style="margin:0; font-weight:bold; font-size:16px; ">&nbsp; </p> 
+             <p style="margin:0; margin-top:16px; text-align:center; ">&nbsp; </p> 
+            </div> </td> 
+          </tr> 
+          <tr> 
+           <td style="padding:30px; text-align:center; font-size:12px; background-color:#404040; color:#cccccc; "> <p><span style="text-decoration: none; ">To cancel notices,</span><a href="http://www.onmetmbl.top/c5f4k2395bu86O11E48c2J1150A36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ.dSKK5qU1L05eUwlD/bumblebees-woodcocks" style="text-decoration-line: none; color: white"> <span>Go On Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <small></small><font dir="grammatical"></font><big><span face="notebook"><span dir="belches"></span></span></big><small></small></p> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
    </div> 
   </div>   
- <img src="http://www.gostclam.top/shadowed-unaltered/8dc4s2395ux8G512g4Z8b9V114er36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQAdSKS6ViRI105a@3wD" alt=""/></body>
+ <img src="http://www.onmetmbl.top/60b5m23T95Roq8511A48c5x1150r36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.dSKK6zVk1D05gXwD@/entrenches-inconsistent" alt=""/></body>
 </html>
 
-------=_Part_124_933210764.1675116717896--
+------=_Part_451_1562692764.1675122716932--
 
