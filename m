@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A167681A90
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Jan 2023 20:34:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C89C0681BA0
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 30 Jan 2023 21:37:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 42B1D10E126;
-	Mon, 30 Jan 2023 19:34:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 992DB10E285;
+	Mon, 30 Jan 2023 20:37:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Mon, 30 Jan 2023 19:34:10 UTC
-Received: from mail.stnleylwes.top (unknown [45.13.189.133])
- by gabe.freedesktop.org (Postfix) with ESMTP id 695C310E118
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Mon, 30 Jan 2023 20:37:04 UTC
+Received: from mail.amidaceh.top (unknown [45.13.189.139])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C0CC310E284
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 30 Jan 2023 19:34:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=stnleylwes.top; 
+ Mon, 30 Jan 2023 20:37:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=amidaceh.top;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes.rewards@stnleylwes.top; 
- bh=PkDru7tN0J/aSCafaoOmwMNk/Jk=;
- b=lDeZFhrCxGY87+x0DJSKCyoPH4V4ZZfFIQp6YGiXL3Bq30jJG6fkKOKd7VpwdHhPLMFDYfDiiSGx
- TTYLzxJhlB95AcvVzzKZzB5LzhlX7dTYRPTGOHdxjxNS/gSrjIj1fIeAcTCBkMeKJxgoxbe5sbpw
- 2kr+2fv2Xhj4FKpAbbc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=stnleylwes.top;
- b=EeCXMzj4fDHg3MAN169QOBWh3MiRpRW34BBD3VlADAlJiEIA1v9p5DPlvg1oEfiMOM77d6NQniOa
- yMB+yGJQfWDd9P9yr9RjqREPUKDKO6Q15N8SiPS3MlFI7IxtQb0Jajo6OPMg22TBeNEAGonPvcps
- fFi/fSKX90Nz4XZB/Fg=;
-Received: by mail.stnleylwes.top id hr0dr40001g9 for
+ i=ace.tools.accessibility@amidaceh.top; 
+ bh=WvTpMUEZ+IkvitgRhEP6f4ZDyf8=;
+ b=j54X3IBuoy7CoPLpQ/L/YWS2B8ndNunIcsTZb0EYFw1mRu0GVrvSk363TAsUQnv3OX8duE1Bcg7w
+ On3vcBRYxi07Bx8HugZPDyePGRmaZyShUKiyrUTBpVGdoUssCeNUTkABe31IP/aDfnbVU3dUXgx8
+ AqYyPLHGohA348HVw74=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=amidaceh.top;
+ b=ZJ3bxsBUX8vT34pBnIK72IjqpVLPjQ16YwMSRmpOgBJUuS8+m+8Qh89fRih0evNROjDt7/ElVdId
+ mROXcJVibTDnp+U7+DaZWOUZzULsYEu3+Ed3qXPEHeTv1X1fWwpizgnE8InHy+CdEhUpPQmZUHd7
+ krVr8QvSOwTFIHM0XMs=;
+Received: by mail.amidaceh.top id hr0vcu0001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 30 Jan 2023 14:22:55 -0500 (envelope-from
- <lowes.rewards-intel+2Dgvt+2Ddev=lists.freedesktop.org@stnleylwes.top>)
-Date: Mon, 30 Jan 2023 14:22:55 -0500
-From: "Lowes Rewards" <lowes.rewards@stnleylwes.top>
+ Mon, 30 Jan 2023 16:55:31 -0500 (envelope-from
+ <ace.tools.accessibility-intel+2Dgvt+2Ddev=lists.freedesktop.org@amidaceh.top>)
+Date: Mon, 30 Jan 2023 16:55:31 -0500
+From: "ACE Tools Accessibility" <ace.tools.accessibility@amidaceh.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get your one-of-a-kind Stanley Tool Set from Lowe's without charge
+Subject: Free DeWalt Drill Set from Lowe's, limited availability
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_595_1492121702.1675106530493"
-Message-ID: <0.0.0.A6.1D934E0414BABAA.5DB446@mail.stnleylwes.top>
+ boundary="----=_Part_331_1684926111.1675110492191"
+Message-ID: <0.0.0.E7.1D934F592AE687E.E632A@mail.amidaceh.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,192 +53,50 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_595_1492121702.1675106530493
+------=_Part_331_1684926111.1675110492191
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html>
  <head> 
- </head> 
- <body class="clean-body u_body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #f9f9f9;color: #000000">
-  &nbsp;  
-  <br /> 
   <title></title> 
-  <style type="text/css">@media only screen and (min-width: 620px) {
-      .u-row {
-        width: 600px !important;
-      }
-      .u-row .u-col {
-        vertical-align: top;
-      }
-      .u-row .u-col-100 {
-        width: 600px !important;
-      }
-    }
-    
-    @media (max-width: 620px) {
-      .u-row-container {
-        max-width: 100% !important;
-        padding-left: 0px !important;
-        padding-right: 0px !important;
-      }
-      .u-row .u-col {
-        min-width: 320px !important;
-        max-width: 100% !important;
-        display: block !important;
-      }
-      .u-row {
-        width: calc(100% - 40px) !important;
-      }
-      .u-col {
-        width: 100% !important;
-      }
-      .u-col>div {
-        margin: 0 auto;
-      }
-    }
-    
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    
-    table,
-    tr,
-    td {
-      vertical-align: top;
-      border-collapse: collapse;
-    }
-    
-    p {
-      margin: 0;
-    }
-    
-    .ie-container table,
-    .mso-container table {
-      table-layout: fixed;
-    }
-    
-    * {
-      line-height: inherit;
-    }
-    
-    a[x-apple-data-detectors='true'] {
-      color: inherit !important;
-      text-decoration: none !important;
-    }
-    
-    table,
-    td {
-      color: #000000;
-    }
+ </head> 
+ <body> 
+  <center>
+   &nbsp; 
+   <p>&nbsp;</p> 
+   <strong>Special gift just&nbsp;for intel-gvt-dev@lists.freedesktop.org</strong>
+   <br /> 
+   <br /> 
+   <a href="http://www.amidaceh.top/talkative-peppering/a624f2395Og86M13z48WaFcP114dh36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQUdSKQ7tOWo1D05HpwDq" id="novols"><img alt="" src="http://www.amidaceh.top/6835S23h95b7aDg11q48aeX114dn36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQUdSKQ7Lyqs10n6tAwNDl/piles-buttoned" width="498" /></a>
+   <br /> &nbsp; 
+   <p class="corzao" id="vegap"><a href="http://www.amidaceh.top/talkative-peppering/a624f2395Og86M13z48WaFcP114dh36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQUdSKQ7tOWo1D05HpwDq" id="novols"><img alt="" src="http://www.amidaceh.top/dependents-twelve/7564E2395Pk7Ia11E48afR114dT36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQUdSKQ6DnS10j6XAAwD2" width="498px" /><br /> <span style="font-size:28px; color: #CC0028"><strong>Take Me To The SURVEY!</strong></span> </a></p> 
+   <a href="http://www.amidaceh.top/talkative-peppering/a624f2395Og86M13z48WaFcP114dh36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQUdSKQ7tOWo1D05HpwDq" id="novols"> <img alt="" src="http://www.amidaceh.top/dependents-twelve/d505v239X5YD7aG11S48b0m114dF36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQUdSKQ6rms10A5i@wD@" /></a>
+   <br /> 
+   <br /> 
+   <a href="http://www.amidaceh.top/talkative-peppering/a624f2395Og86M13z48WaFcP114dh36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQUdSKQ7tOWo1D05HpwDq"><img alt="" id="despch" src="http://www.amidaceh.top/universality-neutralized/4686b2w39v5P7mSa11q48b1z114dO36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQUdSKQ6IotJ105jOLwD" width="498" /></a>
+   <br /> 
+   <br /> &nbsp; 
+   <p class="casssion">&nbsp;</p> &nbsp; 
+   <p class="altuv">&nbsp;</p> 
+   <br /> 
+   <br /> 
+   <style type="text/css">
 </style> 
-  <link href="http://www.stnleylwes.top/a7f5p2F395l8M6Q12f4_8a4l114cP36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQjdSKd7og1M0hR5tAwDz/candle-undeleted" rel="stylesheet" type="text/css" /> 
-  <table cellpadding="0" cellspacing="0" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #f9f9f9;width:100%"> 
-   <tbody> 
-    <tr style="vertical-align: top"> 
-     <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top"> 
-      <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
-       <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;"> 
-        <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;"> 
-         <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
-          <div style="height: 100%;width: 100% !important;">
-           <!--[if (!mso)&(!IE)]><!--> 
-           <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:'Cabin',sans-serif;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="left" style="overflow-wrap:break-word;word-break:break-word;padding:0px;font-family:'Cabin',sans-serif;"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" style="padding-right: 0px;padding-left: 0px;">&nbsp; <p class="center" style="color: #999999; font-size: 20px; font-size: 22px">Special Gift for intel-gvt-dev@lists.freedesktop.org</p> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> 
-          </div> 
-         </div> 
-        </div> 
-       </div> 
-      </div> 
-      <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
-       <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #fffbfb;"> 
-        <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;"> 
-         <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
-          <div style="height: 100%;width: 100% !important;"> 
-           <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:'Cabin',sans-serif;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="left" style="overflow-wrap:break-word;word-break:break-word;padding:33px 5px;font-family:'Cabin',sans-serif;"> 
-                <div style="line-height: 160%; text-align: left; word-wrap: break-word;"> 
-                 <p align="center" style="font-size: 14px; line-height: 160%;"><a href="http://www.stnleylwes.top/candle-undeleted/2886C2r3h95B8W6Y11S48abD114cG36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQjdSKd6i1iCt06Q1wNDk"><img alt="LASTELLIS" src="http://www.stnleylwes.top/melodramatic-graven/a624V2395d7api13IS48a7Op114cB36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQjdSKd7J1L_0OO5Xkw0D" style="max-width: 600PX" width="100%" /></a></p> 
-                 <p align="center"><img alt="ASTERIZ" src="http://www.stnleylwes.top/a255C2Y395z7Wua13u4z8an8j114co36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQjdSKd6zAJL106RP3kwD/thieve-weathercocks" style="max-width: 600PX" width="100%" /></p> 
-                 <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;"><a href="http://www.stnleylwes.top/candle-undeleted/2886C2r3h95B8W6Y11S48abD114cG36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQjdSKd6i1iCt06Q1wNDk"><img alt="syrrojos" src="http://www.stnleylwes.top/inaccurate-scenery/4er4t2395X7xYa11N48a9I114cA36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQjdSKd7gk1I0oJ6zU3wTD" style="max-width: 600PX" width="100%" /></a></span></p> 
-                </div> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:'Cabin',sans-serif;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="left" style="overflow-wrap:break-word;word-break:break-word;padding:0px 55px 60px;font-family:'Cabin',sans-serif;"> 
-                <div style="line-height: 160%; text-align: left; word-wrap: break-word;"> 
-                 <p align="center" style="line-height: 160%; font-size: 14px;"><span style="font-size: 28px; line-height: 28.8px;"><a href="http://www.stnleylwes.top/candle-undeleted/2886C2r3h95B8W6Y11S48abD114cG36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQjdSKd6i1iCt06Q1wNDk">Take Me To The SURVEY!</a></span></p> 
-                </div> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> 
-          </div> 
-         </div> 
-        </div> 
-       </div> 
-      </div> 
-      <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
-       <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #003399;"> 
-        <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;"> 
-         <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
-          <div style="height: 100%;width: 100% !important;"> 
-           <div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family:'Cabin',sans-serif;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="left" style="overflow-wrap:break-word;word-break:break-word;padding:0px;font-family:'Cabin',sans-serif;"> 
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" style="padding-right: 0px;padding-left: 0px;">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-            <div align="center" style="padding-top: 15px; font-size: 12px; color: #fff">
-             <span style="text-decoration: none;  color: #fff">To sever your subscription,</span>
-             <a href="http://www.stnleylwes.top/flocking-rotated/1b66fO239W5SW8O611j48a6k114cT36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjdSKd5a1kI06tjBlwD" style="text-decoration-line: none; color: #eee"> <span>StartHere </span> </a>
-             <br /> 126 E 23rd St New York, NY, US 10010
-            </div> 
-            <br /> 
-            <br /> 
-            <br /> 
-            <br /> &nbsp;
-           </div> 
-          </div> 
-         </div> 
-        </div> 
-       </div> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
- <img src="http://www.stnleylwes.top/bolt-granary/8ua6l239LO5C8z5V11S48aaB114cg36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQjdSKd7b1mS0MG5STwjD" alt=""/></body>
+   <br /> &nbsp; 
+   <p class="bestros">&nbsp;</p> &nbsp; 
+   <div align="center" style="padding-top: 15px; font-size: 12px; color: #999">
+    <span style="text-decoration: none;  color: #999">To bring messages to an close,</span>
+    <a href="http://www.amidaceh.top/severest-dreary/24c5sl2395DS8k611Q48adY114dK36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQUdSKQ6MQ1Su05Q@wND" style="text-decoration-line: none; color: #999"> <span>Click-On-Here </span> </a>
+    <br /> 126 E 23rd St New York, NY, US 10010
+   </div> 
+   <p class="calton">&nbsp;</p> &nbsp; 
+   <p class="bestros">&nbsp;</p> &nbsp; 
+   <p class="horizons">&nbsp;</p> 
+  </center>   
+ <img src="http://www.amidaceh.top/7af5R2l395ft85o11m48b2C114dX36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQUdSKQ5OU1u05ezwDl/talkative-peppering" alt=""/></body>
 </html>
 
-------=_Part_595_1492121702.1675106530493--
+------=_Part_331_1684926111.1675110492191--
 
