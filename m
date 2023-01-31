@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 690116838E8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Jan 2023 22:50:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CEBC86839B2
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Jan 2023 23:54:17 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 32E178921E;
-	Tue, 31 Jan 2023 21:50:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 597D310E2BA;
+	Tue, 31 Jan 2023 22:54:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 31 Jan 2023 21:50:50 UTC
-Received: from mail.calldpts.top (unknown [45.13.189.238])
- by gabe.freedesktop.org (Postfix) with ESMTP id E7E4910E2BA
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 31 Jan 2023 22:54:13 UTC
+Received: from mail.runwholsle.top (unknown [45.13.189.207])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 032DA10E2BA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 31 Jan 2023 21:50:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=calldpts.top;
+ Tue, 31 Jan 2023 22:54:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=runwholsle.top; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=hdconsumersurvey@calldpts.top; 
- bh=o/6QP8VFy/191M0n4Kx5FLDJGC8=;
- b=KldUqN6zwlTOOurN5qVcMhDM6RRwmARumUhqTp/ewKgmkN9N/aSr9gerNS69bgMqSBAtBM92z8Jn
- s395mPxrsr3mXN/2dymqFwlXMOOF96tn6lmxOD4XOxd5lTZfcZx2JbIwuQ+Ba7Pi1v9QDizFfovc
- DKvDuuKriYB0v8ZS7DY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=calldpts.top;
- b=mSQo2q/yC+ceY00rtsWl7wuQwbpN8oGFLyhCBdme9Tk3HfTLJM2+U2/mp6th5skknvCdJfCPeFxQ
- o7qn3j7HEjC9htAyrzul1+PX/pZWhyUM3pK4/NSSP7JDSZBpEfgW3EStbu+y+FONQ+M09+gYmD7d
- BfbBABRxJMioMghLJmc=;
-Received: by mail.calldpts.top id hr66jm0001gu for
+ i=costco.gift.opportunity@runwholsle.top; 
+ bh=hM8F5kV0WU3dL9NMIJh4BVtm/3k=;
+ b=TbQLzirmDq2K0QU+XqopkMczjVdQmuE9j3Z5n7RB+AKOoYNMuImYP5jfv9XkEd2Ttfk1+wYtswTL
+ zRQOSiXVPC6f+bKnLDqesu3zx1VYBLFaPchb5Rcrb9mz7baAFQzKevz1Ui9tDykrYB3TXgvNqQ/U
+ 8MDNXEpEulmhpnq/pT8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=runwholsle.top;
+ b=FGY92zoWKgXakirCwNq07FMiRZyj1lSs056zQsz5aABHugq9H5iyy7ZqAkBqMWsvjdGBceV3Ds6X
+ uFtokrjjXzD7evzO2JgEO+1JgmtMPpwUbIv/ZxPZsRiRB6MztAMPIi59/QE+165pzBEO5Aj04IDC
+ oHEm7SNSm+oT8XOo7QQ=;
+Received: by mail.runwholsle.top id hr6e1c0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 31 Jan 2023 16:39:47 -0500 (envelope-from
- <hdconsumersurvey-intel+2Dgvt+2Ddev=lists.freedesktop.org@calldpts.top>)
-Date: Tue, 31 Jan 2023 16:39:47 -0500
-From: HDConsumerSurvey <hdconsumersurvey@calldpts.top>
+ Tue, 31 Jan 2023 17:44:35 -0500 (envelope-from
+ <costco.gift.opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@runwholsle.top>)
+Date: Tue, 31 Jan 2023 17:44:35 -0500
+From: "Costco Gift Opportunity" <costco.gift.opportunity@runwholsle.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Today is for winners and you have been selected.
+Subject: Feedback needed.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_91_779569561.1675201152575"
-Message-ID: <0.0.0.127.1D935BC8A4CBE02.635C2@mail.calldpts.top>
+ boundary="----=_Part_28_1737755849.1675205071312"
+Message-ID: <0.0.0.152.1D935C597F75F54.4E1DC9@mail.runwholsle.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,342 +53,366 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_91_779569561.1675201152575
+------=_Part_28_1737755849.1675205071312
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <meta content="telephone=no" name="format-detection" /> 
-  <meta name="x-apple-disable-message-reformatting" /> 
   <title></title> 
-  <style type="text/css">body {
-        margin: 0;
-        padding: 0;
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
+  <style type="text/css">#outlook a {
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
+
+    p {
+      display: block;
+      margin: 13px 0;
+    }
+	</style> 
+  <link href="http://www.runwholsle.top/7eb6bu239J5lw86z13V4lo8deY1157K36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.demQ6YtGX106QLMwDU/firepower-skillfulness" rel="stylesheet" type="text/css" /> 
+  <style type="text/css">@import url(http://www.runwholsle.top/7eb6bu239J5lw86z13V4lo8deY1157K36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.demQ6YtGX106QLMwDU/firepower-skillfulness);
+	</style> 
+  <!--<![endif]--> 
+  <style type="text/css">@media only screen and (min-width:480px) {
+      .mj-column-per-100 {
+        width: 100% !important;
+        max-width: 100%;
+      }
+    }
+	</style> 
+  <style type="text/css">@media only screen and (max-width:480px) {
+      table.mj-full-width-mobile {
         width: 100% !important;
       }
 
-      a {
-        color: inherit;
+      td.mj-full-width-mobile {
+        width: auto !important;
       }
-
-      a[x-apple-data-detectors] {
-        color: inherit !important;
-        text-decoration: none !important;
-      }
-
-      img {
-        border: 0;
-        outline: none;
-        line-height: 100%;
-        text-decoration: none;
-        -ms-interpolation-mode: bicubic;
-      }
-
-      table,
-      td {
-        mso-table-lspace: 0;
-        mso-table-rspace: 0;
-      }
-
-      table,
-      tr,
-      td {
-        border-collapse: collapse;
-      }
-
-      table.template-container {
-        width: 600px;
-        margin: 0 auto;
-      }
-
-
-      body,
-      td,
-      th,
-      p,
-      div,
-      li,
-      a,
-      span {
-        -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
-        mso-line-height-rule: exactly;
-      }
-
-      p:first-of-type {
-        margin-top: 0 !important;
-      }
-
-      .gmail-fix {
-        display: none !important;
-      }
-
-      .sm-right {
-        text-align: right;
-        margin-left: auto;
-      }
-
-      .sm-center {
-        text-align: center;
-      }
-
-      .sm-padding-left-30 {
-        padding-left: 30px;
-      }
-
-      .sm-padding-right-20 {
-        padding-right: 20px;
-      }
-
-      .post-col-left {
-        padding-right: 10px;
-      }
-
-      .post-col-right {
-        padding-left: 10px;
-      }
-
-      .sm-col-25 {
-        width: 25%;
-      }
-
-      .sm-col-33 {
-        width: 33%;
-      }
-
-      .sm-col-50 {
-        width: 50%;
-      }
-
-      @media screen and (max-width:620px) {
-        table.template-container {
-          width: 320px !important;
-          margin: 0 auto;
-          white-space: normal;
-        }
-
-        .xs-col {
-          width: 100% !important;
-        }
-
-        .xs-spacing {
-          margin: 10px 0 !important;
-        }
-
-        .xs-mb-10 {
-          margin-bottom: 10px;
-        }
-
-        .xs-mb-20 {
-          margin-bottom: 20px;
-        }
-
-        .xs-center {
-          text-align: center;
-        }
-
-        .xs-table-center {
-          text-align: center;
-          margin: 0 auto;
-        }
-
-        .sm-padding-left-30 {
-          padding-left: 0;
-        }
-
-        .sm-padding-right-20 {
-          padding-right: 0;
-        }
-
-        .post-col-left {
-          padding-right: 0;
-        }
-
-        .post-col-right {
-          padding-left: 0;
-        }
-      }
+    }
+	</style> 
+  <style type="text/css">a,
+    span,
+    td,
+    th {
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
 	</style> 
  </head> 
- <body style="width: 100% !important; margin: 0; padding: 0; mso-line-height-rule: exactly; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #F5F5F5; background-image: url(''); background-position: center; background-repeat: no-repeat; background-size: cover"> 
-  <table border="0" cellpadding="0" cellspacing="0" class="template-body" height="100%" role="presentation" style="padding: 50px 0px; table-layout: fixed;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td style="vertical-align: top;">&nbsp; &nbsp; 
-      <table border="0" cellpadding="0" cellspacing="0" class="template-container" role="presentation" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="template__inner">&nbsp; 
-          <table cellpadding="0" cellspasing="0" class="components" role="presentation" style="border-collapse: collapse; width: 100%;"> 
-           <tbody class="components__item"> 
-            <tr> 
-             <td> 
-              <table border="0" cellpadding="0" cellspacing="0" class="component menu-3" role="presentation" style="width: 100%; border-collapse: collapse;"> 
+ <body style="background-color:#f3f3f5;"> 
+  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+   Preview - Notification from Coded Mails
+  </div> 
+  <div style="background-color:#f3f3f5;"> 
+   <div style="margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td style="font-size:0px;word-break:break-word;"> 
+             <div style="height:0px;">
+              &nbsp;
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#54595f;background-color:#FFFFFF;margin:0px auto;border-radius:4px 4px 0 0;max-width:600px; padding-top: 10px"> 
+    <div style="width: 100%; text-align: center;"> 
+     <p style="padding: 20px; font-size: 22px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: bold;">A Few Clicks Stand Between You And The Perfect Gift - A 100$ Costco Gift Card.</p> 
+     <a href="http://www.runwholsle.top/a7f4r2395NF86G13P48dIVfU1157D36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ.demQ5I1N0X6kkJwD2/Skippy-appended"><img alt="" src="http://www.runwholsle.top/b154p2395WqN7a11w48e1T1157N36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ.demQ6f1s0Gh5KBwDA/Skippy-appended" style="border: solid 2px " width="99%" /></a> 
+     <div style="padding: 10px 50px; font-size: 22px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: 500; ">
+      We at Costco are dedicated to providing the best shopping experience for our members. In order to continue improving our services, we would like to hear your feedback.       <br /> 
+      <br /> By completing our short surplivey, you will have the opportunity to share your thoughts on our store, products and services. As a token of our appreciation for your time, all surahjvey participants will be entered into a drawing to win a $100 Costco gift card.      </div> 
+    </div> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#54595f;background-color:#FFFFFF;width:100%;border-radius:4px 4px 0 0;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div style="margin:0px auto;max-width:600px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;"> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
                <tbody> 
                 <tr> 
-                 <td style="padding: 15px 0px; background-color: rgba(255,255,255,1.00); border-radius: 5px;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" class="sm-col xs-col xs-center xs-mb-20" role="presentation" style="display: inline-table; vertical-align: top; float: center; width: 100%px;"> 
+                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
                    <tbody> 
                     <tr> 
-                     <td align=" center" width="100%"><a href="http://www.calldpts.top/coverage-carriers/24c4I2395u8KK611r48d9_1156C36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQOdemd7AX1q0vq5w3wjD"><img alt="" src="http://www.calldpts.top/ratios-automaton/33c6tk23R95k7May13jw48dRbS1156Z36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQOdemd7XY1Z0mg5E@wDJ" width="75%" /></a></td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                  <table border="0" cellpadding="0" cellspacing="0" class="wrapper sm-col xs-col xs-center" role="presentation" style="margin: 0px;"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center"> 
-                      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation"> 
-                       <tbody> 
-                        <tr> 
-                         <td style="padding-top: 0px; padding-right: 20px;">&nbsp;</td> 
-                         <td style="padding-top: 0px; padding-right: 20px;">&nbsp;</td> 
-                         <td style="padding-top: 0px;">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr class="card-spacing" height="10" style="font-size: 0px;"> 
-            </tr> 
-           </tbody> 
-           <tbody class="components__item"> 
-            <tr> 
-             <td> 
-              <table border="0" cellpadding="0" cellspacing="0" class="component cta-1" role="presentation" style="width: 100%; border-collapse: collapse; margin-bottom: 550px; "> 
-               <tbody> 
-                <tr> 
-                 <td style="padding: 0px; background-color: rgba(208,208,208,1.00); background-repeat: no-repeat; background-size: cover; background-position: center center; border-radius: 5px;"> 
-                  <table cellpadding="0" cellspacing="0" role="presentation" style="width: 100%;"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 5px;"> 
-                      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="width: 100%;"> 
-                       <tbody> 
-                        <tr> 
-                         <td style="padding: 30px 35px 0px;"> 
-                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="white-space: normal; border-collapse: collapse; width: 100%;"> 
-                           <tbody> 
-                            <tr> 
-                             <td align="center" style="background-color: #FFFFFF"> 
-                              <div style="max-width: 600px; margin: auto; text-align: center"> 
-                               <div style="padding-top: 10px"> 
-                                <p style="display: inline; font-size: 22px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: bold; color: #3D3D3D;">Dear valued customer You Are Just A Few Clicks Away To Get The Home Depot Card.</p> 
-                               </div> 
-                               <br /> 
-                               <a href="http://www.calldpts.top/coverage-carriers/24c4I2395u8KK611r48d9_1156C36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQOdemd7AX1q0vq5w3wjD"><img alt="" src="http://www.calldpts.top/da95I2m395q7gHa11E48dcN1156Q36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQOdemd6M1nGx06SMwyND/reaping-passport" width="100%" /></a> 
-                               <div style="background-color: #FFFFFF">
-                                <br /> 
-                                <br /> 
-                                <span style="display: inline; font-size: 20px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: bold; color: #3D3D3D; padding: 20px; font-weight: 500;">At Home Depot, we are committed to providing the best service and selection for all your home improvement needs.<br /> <br /> By completing our short survey, you will have the opportunity to share your thoughts on our products, services, and store experience </span>
-                                <br /> &nbsp;
-                               </div> 
-                              </div> <p style="color: rgba(0,0,0,1.00); font-family: Arial, Helvetica, sans-serif; font-size: 16px;">&nbsp;</p> <p style="color: rgba(0,0,0,1.00); font-family: Arial, Helvetica, sans-serif; font-size: 16px;">&nbsp;</p> <p style="color: rgba(0,0,0,1.00); font-family: Arial, Helvetica, sans-serif; font-size: 16px;">&nbsp;</p> </td> 
-                            </tr> 
-                           </tbody> 
-                          </table> 
-                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%; border-collapse: collapse;"> 
-                           <tbody> 
-                            <tr> 
-                             <td height="0" style="font-size: 1px; line-height: 1px;">&nbsp;</td> 
-                            </tr> 
-                           </tbody> 
-                          </table> 
-                          <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="width: 100%;"> 
-                           <tbody> 
-                            <tr> 
-                             <td align="center"> 
-                              <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="display: inline-table;"> 
-                               <tbody> 
-                                <tr> 
-                                 <td style="padding: 50px;" valign="top"> 
-                                  <table cellpadding="0" cellspacing="0" class="button" role="presentation" style="position: relative; display: inline-table;"> 
-                                   <tbody> 
-                                    <tr> 
-                                     <td style="background-color: rgb(64, 158, 255); border-radius: 3px; font-size: 14px; font-weight: 600; padding: 14px 20px; color: rgb(255, 255, 255);"><a href="http://www.calldpts.top/coverage-carriers/24c4I2395u8KK611r48d9_1156C36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQOdemd7AX1q0vq5w3wjD" style="text-decoration: none; line-height: 16px;"><span style="font-size: 19px; font-family: Arial, Helvetica, sans-serif; color: rgb(255, 255, 255); ">Go And Start Now</span></a></td> 
-                                    </tr> 
-                                   </tbody> 
-                                  </table> </td> 
-                                </tr> 
-                               </tbody> 
-                              </table> </td> 
-                            </tr> 
-                           </tbody> 
-                          </table> </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
+                     <td style="width:150px;">&nbsp;</td> 
                     </tr> 
                    </tbody> 
                   </table> </td> 
                 </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table border="0" cellpadding="0" cellspacing="0" class="component footer-1" role="presentation" style="width: 100%; border-collapse: collapse;"> 
-           <tbody> 
-            <tr> 
-             <td style="padding: 10px 15px; background-color: rgba(150,150,150,1.00); border-radius: 5px;"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="white-space: normal; border-collapse: collapse; width: 100%; background-color: "> 
-               <tbody> 
                 <tr> 
-                 <td align="center" style="text-align:center; font-size: 12px; background-color: #3D3D3D; padding: 20px; color: #FFFFFF"> <p><span style="text-decoration: none; ">To conclude communication,</span><a href="http://www.calldpts.top/cb96L2k39q5XG86z12yV48daS1156g36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQOdemd6V10IPK5f0wDX/coverage-carriers" style="text-decoration-line: none; color: white"> <span>Click.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style><big></style></big><style lang="Fortran"><font></style><span></span></font><style class="kinetic"></style><font size="series"></font></p> </td> 
+                 <td style="text-align: center; padding-top: 25px; color: #000000"> 
+                  <div style="width: 100%; text-align: center;"> 
+                   <div style="padding-right: 30%; padding-left: 30%"> 
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%; width: 100%"> 
+                     <tbody> 
+                      <tr style="width: 100%"> 
+                       <td align="center" bgcolor="#2e58ff" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#2e58ff;" valign="middle"><a href="http://www.runwholsle.top/a7f4r2395NF86G13P48dIVfU1157D36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ.demQ5I1N0X6kkJwD2/Skippy-appended" style="display: inline-block; background: #2e58ff; color: white; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: normal; line-height: 32px; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"><strong>Go And Starte Now</strong></a></td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </div> 
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="width:64px;">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:24px;font-weight:400;line-height:30px;text-align:center;color:#ffffff;"> 
+                   <h1 style="margin: 0; font-size: 24px; line-height: normal; font-weight: 400;">&nbsp;</h1> 
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;"> 
+                   <p style="margin: 0;">&nbsp;</p> 
+                  </div> </td> 
                 </tr> 
                </tbody> 
               </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="width: 100%;"> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <div style="margin:0px auto;max-width:600px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:10px 20px;text-align:center;"> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
                <tbody> 
                 <tr> 
-                 <td align="center"> 
-                  <table cellpadding="0" cellspacing="0" class="sm-col xs-col xs-center" role="presentation" style="display: inline-table; padding-top: 2px;"> 
+                 <td style="background-color:#FFFFFF;border-radius:3px 3px 0px 0px;vertical-align:top;padding:10px 0;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
                    <tbody> 
                     <tr> 
-                     <td style="padding-right: 10px;">&nbsp;</td> 
-                     <td style="padding-right: 10px;">&nbsp;</td> 
-                     <td style="padding-right: 0px;">&nbsp;</td> 
+                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;"> 
+                       <p style="margin: 0;">&nbsp;</p> 
+                      </div> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;">
+                       &nbsp;
+                      </div> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;">
+                       &nbsp;
+                      </div> </td> 
                     </tr> 
                    </tbody> 
                   </table> </td> 
                 </tr> 
                </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr class="card-spacing" height="10" style="font-size: 0px;"> 
-        </tr> 
-       </tbody> 
-       <tbody> 
-        <tr class="card-spacing" height="0" style="font-size: 0px;"> 
-        </tr> 
-       </tbody> 
-       <tbody class="components__item"> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div class="gmail-fix" style="white-space: nowrap; font: 15px courier; line-height: 0;">
-   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              </table> 
+             </div> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td style="background-color:#FFFFFF;border-radius:0px 0px 3px 3px;vertical-align:top;padding:10px 0px;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="font-size:0px;padding:10px 25px;word-break:break-word;"> <p style="border-top: dashed 0px lightgrey; font-size: 1px; margin: 0px auto; width: 100%;">&nbsp;</p> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <div style="margin:0px auto;max-width:600px;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+          <tbody> 
+           <tr> 
+            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;">
+                   If you have any questions simply reply to this email and we would be more than happy to reply. :)
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;border-radius:0 0 4px 4px;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;border-radius:0 0 4px 4px;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:20px;text-align:center;color:#FFFFFF;background-color: #353535; padding: 15px"> 
+              <p><span style="text-decoration: none; ">To drop messages,</span><a href="http://www.runwholsle.top/quantified-goody/7b06S2i3p95Y8K6F12R48eS0o1157W36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ.demQ5Q10gJ5QpwD2" style="text-decoration-line: none; color: white"> <span>Visit-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <font style="parametric"></font><span id="enumerate"></span><small><big></big><style></small></style><font size="madder"></font><style><big></style></big><span lang="commending"></span></p> 
+             </div> </td> 
+           </tr> 
+           <tr> 
+            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
+              <tbody> 
+               <tr> 
+                <td style="padding:4px;"> 
+                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
+                  <tbody> 
+                   <tr> 
+                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="margin:0px auto;max-width:600px;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+     <tbody> 
+      <tr> 
+       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
+        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td style="font-size:0px;word-break:break-word;"> 
+             <div style="height:1px;">
+              &nbsp;
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
   </div>   
- <img src="http://www.calldpts.top/reaping-passport/4686Uz239G5u8uC512Y48yddv1156J36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQOdemd7mSpC1x06L@lwPD" alt=""/></body>
+ <img src="http://www.runwholsle.top/5ed6JV2O395L8Dp511s48e2h1157X36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ.demQ5tK1F05F2MwD/masterpieces-Melville" alt=""/></body>
 </html>
 
-------=_Part_91_779569561.1675201152575--
+------=_Part_28_1737755849.1675205071312--
 
