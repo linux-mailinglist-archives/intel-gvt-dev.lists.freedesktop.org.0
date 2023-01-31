@@ -2,106 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E6D468377C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Jan 2023 21:25:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 401A26838C8
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Jan 2023 22:37:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 88F658911F;
-	Tue, 31 Jan 2023 20:25:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0B47110E2BA;
+	Tue, 31 Jan 2023 21:37:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on20605.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:7e89::605])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8B5E610E2AE;
- Tue, 31 Jan 2023 20:25:33 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Sv+iW8keHnV2qkN5GLC4ltP/QiI67LKmBXe1TNW1hXdNjwJrCm8Vh+Wplqh9Lr1EYPgUs05YNOkNymySEmYKpbNKDAXLgy2uh+Sdhq3lNt3LO5wcDElK8mDjwPd9sQJrmBnBflIFkjeflD/29EE9zcJ8W4VMSuEVlIUW32MEzRedjP8PAkf131zjzbaN5eH9ZP9WgGJFnB8oAxxPRU25++QgR/9HnVhq/la+Hx95YARDzjj0ivmwqGlLqTo1eifYZsyHPgdRhhdQ7obytvjn3+XjnZlQUgOLB84O7BdBHk52/iILsZaTtYmzdsf34GxM0BX9ArIxSR4PlbDuWD/ENw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xRUtnIZcaJ1yRdWaakwW2etm91jUrtQjbJjbdM+er3g=;
- b=NfVYHX/eL/OKq1BFnVnwhfujS4ydt4KLxrNMhk5uG6FBdwFMwTfA+PfAmno1a5y9v7TJirUjuVgd9ToCgpdf0EfLyh66KEYk/coIAGghitiBvWiE+Yo4Lods90gd1WD9VhutdEcfsrIUq/lTbVNCJYGVXkvdVmGeYeON73pS5w1LZjIOXMXQ2QJyMqA1u7OGmYkZmYvpH5xVgAhUcL5yC+uCbKFKdHxB34iFZ6xYOcG7gq21ODcxoQ0XPlO9qJSMhfK57yTt+/9Gaha2L6Efk2UO6416TnIc/WHOZ5c8Y9oZARD63+rkBe7vBi3sqcbRHzn5LwQIW3SOJe8Bq2Y3bA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xRUtnIZcaJ1yRdWaakwW2etm91jUrtQjbJjbdM+er3g=;
- b=DE3U8G2xQFjVPb4Vjfy0hC2Ld2IktrXyiONVZ6BC4IL53P2dhojf5dr56u3eoFNbwcLfAfN1xQ8k8EX/EHCFFPzAIffBqrUEuCORL2mXxbScJ6mF9RLXYk0AI9on+sx4ZfzScOGVk0DLfi7MlMl5Sab2aKtCQek+8Q3g7gj94eflAuwoTweCBV7X1/QWtFXiBKZyxOrBoNmVvhDwJXFvti2f9lHmn4fCdffASUsntHOBDH0ZPzbaLKqA4aA+tfQLQ6A0C+6XYxl5rFDK5GwKsHrLL0xKT3aCJnT9ar599WBwg1REexoBZnIOWNsX47hpN3t6zYSLfbaKp/yoPmg77w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by SN7PR12MB7372.namprd12.prod.outlook.com (2603:10b6:806:29b::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.36; Tue, 31 Jan
- 2023 20:25:32 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::3cb3:2fce:5c8f:82ee]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::3cb3:2fce:5c8f:82ee%4]) with mapi id 15.20.6043.038; Tue, 31 Jan 2023
- 20:25:32 +0000
-Date: Tue, 31 Jan 2023 16:25:30 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: Re: [PATCH] vfio: fix deadlock between group lock and kvm lock
-Message-ID: <Y9l5OmCRGYZM2nPy@nvidia.com>
-References: <20230131200635.44227-1-mjrosato@linux.ibm.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230131200635.44227-1-mjrosato@linux.ibm.com>
-X-ClientProxiedBy: MN2PR03CA0002.namprd03.prod.outlook.com
- (2603:10b6:208:23a::7) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5BC0310E2BA
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 31 Jan 2023 21:37:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675201048; x=1706737048;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=NA8PIp/qAQ9S8IAfY+mK4wzu9/p8Qj4gOa/Dv1ywC/E=;
+ b=FhGCOudaqDWWVbz00CSYINflFQIgoMs8Syt9Nr2XTfOWhm6KzPhdUHe9
+ VpCv82QXo8j8t1sp43+kcXNDZDxXNeVqPLl++xko5IfFlLaxzZ7rTQfyV
+ My9XpnaWHsBjbvGxbZ9IowTGRsR6PHfTleHxFQ3Lkw53VXBHncBGY4sDp
+ j+nsDGyaklVUhRwi8d7zdamSUIpwt7o1RGv9bfonMQCV3SmulQJ8gmb8F
+ WAEbQpvJD25S8BaZ2fMLPCEEixQOoE+t3kVl7Me0+xqXaeU/XhE7mHTjc
+ uC+lf9B44o7mko5VX7B9M3MNK1k7dyyxL+bb3w1d++MDC1E8/xAFqDxcS g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="311592415"
+X-IronPort-AV: E=Sophos;i="5.97,261,1669104000"; d="scan'208";a="311592415"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jan 2023 13:37:27 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="773159163"
+X-IronPort-AV: E=Sophos;i="5.97,261,1669104000"; d="scan'208";a="773159163"
+Received: from lkp-server01.sh.intel.com (HELO ffa7f14d1d0f) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 31 Jan 2023 13:37:25 -0800
+Received: from kbuild by ffa7f14d1d0f with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pMyJh-0004iY-0G;
+ Tue, 31 Jan 2023 21:37:25 +0000
+Date: Wed, 01 Feb 2023 05:36:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [intel-gvt:gvt-next] BUILD SUCCESS
+ c351c2be08711bf367cefd15d40d7a13bc5755c7
+Message-ID: <63d989f0.UmP7AJs1EqmdgEy6%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SN7PR12MB7372:EE_
-X-MS-Office365-Filtering-Correlation-Id: e66afa24-e4a8-491c-b82a-08db03c94cf9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: a5cCI/ReQA6KL5f7naTwhQwfO88J6BcFD291Ll1Yy8CH8yo0BDTNAxkJfydQ3zHK4Mg2yTOy66/mRRFK/TO5350MlQqwz/UJgCADbMiVNFNVE4HpTzpxxNa0BcPm3svERAAis+zsc/k7t+NpajbZ1VhCvWBcRl+nDQcwpc+uxbxTarvpsC+fp/xD8zp7fbSLzQ5rO/BFvel/cSpIT/iVEuKeXJgNFqac1CbUOlKxBrTZ6mPLWl0VncasCmogXzZaRMSQdjaXbJ0vjqmjIurh7KJwDe0GnZoSf8b4rhZ6Z+hFxulpjpl7fTH5slBS+bYAkm+RW6kPPOpk2RzhL0hGGeAwsnsPrD9ckC2DrzgxFUuyQyrygqL3h0LziboE+ubmnRWziMe0lJUqKFIA+bPaongo80NwXS4gxtSZmp5RZp+SuiXk+Qy/To3lnCYNfiTUlf3mmKH4D7MrefjJ0/hyg4LaDk1JCf31sPPlMRtTsR0cSE1BrfINI7U1+RJYT2FPKdddAaxvD4bWqyFpJkjZWMbz+mw69pLVkROQyWCa4+S3tmNSXPknxn6FvdeU3L3Awf0RXDHb7EOBsypb55Gu+US8cs0wYMLOwT8RBb6OKDI5X8ggrRLZfsvaDt3ejdUd7mCduVwvEB1oayfHSk+fTQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(366004)(346002)(376002)(396003)(136003)(451199018)(38100700002)(83380400001)(36756003)(6506007)(2906002)(7416002)(4744005)(26005)(66556008)(66476007)(2616005)(86362001)(66946007)(6512007)(6486002)(478600001)(186003)(8936002)(6916009)(4326008)(316002)(41300700001)(8676002)(5660300002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0GjSC7zIVdGDGR0UNwkGfpbuYK9AnPKZ8b9gd4K3KTBrSgfgg4zlJkn0S7ea?=
- =?us-ascii?Q?hyBZIHXJYhWWkjNHV1OsNM/MwarFICPZ+/tqhinzJSKqdxipXOXiRzzyNb2q?=
- =?us-ascii?Q?DfRn38QRjpWASn6lN37tFsykQpct7mVjBRlpgakWUXEiPn/6RX4q+f+ZBx6v?=
- =?us-ascii?Q?qOadO7BtPIsj7V3M32RRHgBqV0vvQQvzaE/cRdzz7fI98JVVdugTADWE8s5G?=
- =?us-ascii?Q?caf38ck4zYv94xZojqjr6/irtJcfhnSs49Je3x08Ubpa55B+TmOlZPpA0zIn?=
- =?us-ascii?Q?cyVlAa921VN/zRvIAehVGOhOI8E8yfFBDcgvIW4i1LF3GonpHwA4LhdXWcU/?=
- =?us-ascii?Q?nAmAWvSMYlA5/2plt/0BSPDlE/5sH4SdYYhRULR1jADqq8BYt1baiNUL0IXV?=
- =?us-ascii?Q?5SwYklZo3NkxKY189yWHYde7Jb9dDYbAEnR03O3E3QMfLm8+kNgRyeUhB1u1?=
- =?us-ascii?Q?K3Yjm2zx16/gjDInqLOeWCIdnJMSGD2U/91NsHXCWAWZC7EJlc93dWXrYEax?=
- =?us-ascii?Q?Dmctm/zKiED5MFEQQVqOtv6rF4qwWUHbiMWeL2J4xFVjNDEEbbQcX0tvr2p4?=
- =?us-ascii?Q?vEI1DraiIzgK6ybssHVcBB0FVDPIXeygvvHy+fzcDDL3XzdvgsCOWRcUULXS?=
- =?us-ascii?Q?rsJViWI/h/DyLCk8PbHPOYK1qyls4hLsnmqxpiPPd4WxxaSAfa2hm+UVe97N?=
- =?us-ascii?Q?3HEBeS1PZ4yAfb6KgbmW5t6knOGo5g/e5izzovxson0pYbWaQD3a3E32Wvbh?=
- =?us-ascii?Q?xFf6sVlXgpVKLFNi/8WIVvfpeZBR3aZkSSRDcHn8dnctDq3P/Hdf7q0Dp+AM?=
- =?us-ascii?Q?z7lI0vvJG1AAVsjZDfmXUJd5YsjeJB9V0CKB/++05uFIXZSmhHdWcbNBPbtZ?=
- =?us-ascii?Q?ztjLChEQuHpGEeXWzaUb7mZSejBJz3EOSqR36SIcgMDqtfzV3X936XyZY0jr?=
- =?us-ascii?Q?K3+OhkedRmexybsm1SJ5pfIrv4W1gAS8Hk0HOfY8rYQoPkEMz6w4dLC6c/mJ?=
- =?us-ascii?Q?Jqlzs3WbID/VI1Mbvw3HeDvFjf9dbrX4SwRf2NLr37biQOdbEutLIJNYoz9h?=
- =?us-ascii?Q?BW8m9DtY8jeGLw1D6mcnWKyKjE9DgILKkVetgYZet0HVUXGoXZb7/TEFHYkO?=
- =?us-ascii?Q?9nwBQtZ6DQzgXmufQqqrzWNGnM76WfG1fo68py9Mmjumny3yo/glSW9RcfOm?=
- =?us-ascii?Q?rlvW2JP91YAgdzu6zmfyrWh4YOefEKyOwC6WMbDHd9tHoz4X65d8M26/vvHk?=
- =?us-ascii?Q?AdSNMuXwStqz0FKWzWmf7I+5JxW4IFBlnFZ99wnWhXXM+Gwc4/AujMabSPn5?=
- =?us-ascii?Q?DMNW9F+I9o12ZMMN8oMb4qkie9ZqGfjsByicV2Cf/mEYJW4NdQ8VCp68XXJP?=
- =?us-ascii?Q?Fs4/3cn2t9a1DXWCLWRX62MigYsy+eWZs9RjkIOEQvMoH9a66AmKS1uYhHaD?=
- =?us-ascii?Q?BKVYX0vydVEKkzn1xIX81XuA/PDzU36ljWxhP55dpkUNof6bM3UunAGlVYko?=
- =?us-ascii?Q?eiAD/k+kH55amdp0EoA2kO74ywl/Gi0feUCAHBVGM3cyfjzt+BZ44pK51n45?=
- =?us-ascii?Q?GjQm6T0gE9MOoZW3Ma+7/4OzkGTC/tk0DxQNyUzS?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e66afa24-e4a8-491c-b82a-08db03c94cf9
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jan 2023 20:25:31.9675 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZR59IwsbFxbhXGQ3Pn60ncaOIqjp0bmw/wK3D8xtbd2ORf5pA1fuPJCgd/mRmkBM
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7372
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,38 +60,93 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, david@redhat.com, kevin.tian@intel.com,
- imbrenda@linux.ibm.com, linux-s390@vger.kernel.org, yi.l.liu@intel.com,
- frankja@linux.ibm.com, pasic@linux.ibm.com, borntraeger@linux.ibm.com,
- zhi.a.wang@intel.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
- intel-gfx@lists.freedesktop.org, zhenyuw@linux.intel.com,
- alex.williamson@redhat.com, intel-gvt-dev@lists.freedesktop.org,
- akrowiak@linux.ibm.com, pmorel@linux.ibm.com, seanjc@google.com,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, pbonzini@redhat.com
+Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ zhenyu.z.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Jan 31, 2023 at 03:06:35PM -0500, Matthew Rosato wrote:
-> @@ -799,13 +794,14 @@ EXPORT_SYMBOL_GPL(vfio_file_enforced_coherent);
->  void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
->  {
->  	struct vfio_group *group = file->private_data;
-> +	unsigned long flags;
->  
->  	if (!vfio_file_is_group(file))
->  		return;
->  
-> -	mutex_lock(&group->group_lock);
-> +	spin_lock_irqsave(&group->kvm_ref_lock, flags);
->  	group->kvm = kvm;
-> -	mutex_unlock(&group->group_lock);
-> +	spin_unlock_irqrestore(&group->kvm_ref_lock, flags);
+tree/branch: https://github.com/intel/gvt-linux.git gvt-next
+branch HEAD: c351c2be08711bf367cefd15d40d7a13bc5755c7  drm/i915/gvt: Remove extra semicolon
 
-We know we are in a sleeping context here so these are just
-'spin_lock()', same with the other one
+elapsed time: 721m
 
-Otherwise it seems Ok to me
+configs tested: 67
+configs skipped: 2
 
-Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Jason
+gcc tested configs:
+x86_64                            allnoconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                          rhel-8.3-func
+x86_64                    rhel-8.3-kselftests
+s390                             allyesconfig
+alpha                            allyesconfig
+arc                                 defconfig
+m68k                             allmodconfig
+s390                             allmodconfig
+alpha                               defconfig
+m68k                             allyesconfig
+s390                                defconfig
+arc                              allyesconfig
+ia64                             allmodconfig
+x86_64                              defconfig
+x86_64               randconfig-a001-20230130
+x86_64               randconfig-a003-20230130
+x86_64               randconfig-a002-20230130
+x86_64                               rhel-8.3
+x86_64               randconfig-a004-20230130
+x86_64                           allyesconfig
+x86_64               randconfig-a006-20230130
+i386                 randconfig-a002-20230130
+i386                 randconfig-a001-20230130
+x86_64                           rhel-8.3-kvm
+x86_64                           rhel-8.3-bpf
+i386                 randconfig-a004-20230130
+x86_64                           rhel-8.3-syz
+x86_64                         rhel-8.3-kunit
+i386                 randconfig-a003-20230130
+i386                 randconfig-a005-20230130
+i386                 randconfig-a006-20230130
+arc                  randconfig-r043-20230129
+arm                  randconfig-r046-20230129
+arm                  randconfig-r046-20230130
+arc                  randconfig-r043-20230130
+powerpc                           allnoconfig
+mips                             allyesconfig
+sh                               allmodconfig
+powerpc                          allmodconfig
+arm                                 defconfig
+arm64                            allyesconfig
+i386                                defconfig
+arm                              allyesconfig
+i386                             allyesconfig
+
+clang tested configs:
+x86_64                          rhel-8.3-rust
+hexagon              randconfig-r041-20230129
+riscv                randconfig-r042-20230129
+x86_64               randconfig-a014-20230130
+riscv                randconfig-r042-20230130
+hexagon              randconfig-r045-20230130
+x86_64               randconfig-a012-20230130
+hexagon              randconfig-r041-20230130
+x86_64               randconfig-a013-20230130
+hexagon              randconfig-r045-20230129
+x86_64               randconfig-a011-20230130
+s390                 randconfig-r044-20230129
+x86_64               randconfig-a015-20230130
+x86_64               randconfig-a016-20230130
+s390                 randconfig-r044-20230130
+i386                 randconfig-a013-20230130
+i386                 randconfig-a011-20230130
+i386                 randconfig-a012-20230130
+i386                 randconfig-a014-20230130
+i386                 randconfig-a015-20230130
+i386                 randconfig-a016-20230130
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
