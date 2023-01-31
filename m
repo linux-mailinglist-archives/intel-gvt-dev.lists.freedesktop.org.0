@@ -1,43 +1,107 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79580683791
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Jan 2023 21:31:04 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E6D468377C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Jan 2023 21:25:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4D76510E2AE;
-	Tue, 31 Jan 2023 20:31:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 88F658911F;
+	Tue, 31 Jan 2023 20:25:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 31 Jan 2023 20:31:00 UTC
-Received: from mail.ongsams.top (unknown [45.13.189.224])
- by gabe.freedesktop.org (Postfix) with ESMTP id 005C210E2AE
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 31 Jan 2023 20:31:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ongsams.top;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sams-club-appreciation@ongsams.top; 
- bh=qSiZn0bcK/+x4pLUNoMSdwLuwQc=;
- b=iEabg3+xYbMHuPOQ0Mqs21PBEZV/zLaJUQTx4pjw+oXyA2wYzIF0AJkvmXlr7RhNX1/SNDiv2X5N
- BWVlGPqCWnF8xc6ASMH1hFLLO5RFSAtAYrOPMEAD7vVBFT6MlhqRDKtzv7HoVp1F6+lBnWjcgRwg
- Yb098iya3XK8NbM9+XU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ongsams.top;
- b=RRwOP/kk4g71ibdgZ2IPW4mbzZQ3vK2vttocTDRUEAAbTyaJbpJYXfSj90GqooEPW08hiV4Xf29j
- UtDmB8xwJcQxoG7ejQWcnWFjRhWYjF54GQLCdRHeLLxDV/XIMRbGG9akyue/Zd73e7HvkbN23m3r
- 800FaqhE5lFhBvz1FkM=;
-Received: by mail.ongsams.top id hr5t8a0001g1 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 31 Jan 2023 15:22:57 -0500 (envelope-from
- <sams-club-appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@ongsams.top>)
-Date: Tue, 31 Jan 2023 15:22:57 -0500
-From: "Sams Club Appreciation" <sams-club-appreciation@ongsams.top>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best way to show appreciation for your loyalty
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10on20605.outbound.protection.outlook.com
+ [IPv6:2a01:111:f400:7e89::605])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8B5E610E2AE;
+ Tue, 31 Jan 2023 20:25:33 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Sv+iW8keHnV2qkN5GLC4ltP/QiI67LKmBXe1TNW1hXdNjwJrCm8Vh+Wplqh9Lr1EYPgUs05YNOkNymySEmYKpbNKDAXLgy2uh+Sdhq3lNt3LO5wcDElK8mDjwPd9sQJrmBnBflIFkjeflD/29EE9zcJ8W4VMSuEVlIUW32MEzRedjP8PAkf131zjzbaN5eH9ZP9WgGJFnB8oAxxPRU25++QgR/9HnVhq/la+Hx95YARDzjj0ivmwqGlLqTo1eifYZsyHPgdRhhdQ7obytvjn3+XjnZlQUgOLB84O7BdBHk52/iILsZaTtYmzdsf34GxM0BX9ArIxSR4PlbDuWD/ENw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xRUtnIZcaJ1yRdWaakwW2etm91jUrtQjbJjbdM+er3g=;
+ b=NfVYHX/eL/OKq1BFnVnwhfujS4ydt4KLxrNMhk5uG6FBdwFMwTfA+PfAmno1a5y9v7TJirUjuVgd9ToCgpdf0EfLyh66KEYk/coIAGghitiBvWiE+Yo4Lods90gd1WD9VhutdEcfsrIUq/lTbVNCJYGVXkvdVmGeYeON73pS5w1LZjIOXMXQ2QJyMqA1u7OGmYkZmYvpH5xVgAhUcL5yC+uCbKFKdHxB34iFZ6xYOcG7gq21ODcxoQ0XPlO9qJSMhfK57yTt+/9Gaha2L6Efk2UO6416TnIc/WHOZ5c8Y9oZARD63+rkBe7vBi3sqcbRHzn5LwQIW3SOJe8Bq2Y3bA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xRUtnIZcaJ1yRdWaakwW2etm91jUrtQjbJjbdM+er3g=;
+ b=DE3U8G2xQFjVPb4Vjfy0hC2Ld2IktrXyiONVZ6BC4IL53P2dhojf5dr56u3eoFNbwcLfAfN1xQ8k8EX/EHCFFPzAIffBqrUEuCORL2mXxbScJ6mF9RLXYk0AI9on+sx4ZfzScOGVk0DLfi7MlMl5Sab2aKtCQek+8Q3g7gj94eflAuwoTweCBV7X1/QWtFXiBKZyxOrBoNmVvhDwJXFvti2f9lHmn4fCdffASUsntHOBDH0ZPzbaLKqA4aA+tfQLQ6A0C+6XYxl5rFDK5GwKsHrLL0xKT3aCJnT9ar599WBwg1REexoBZnIOWNsX47hpN3t6zYSLfbaKp/yoPmg77w==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by SN7PR12MB7372.namprd12.prod.outlook.com (2603:10b6:806:29b::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.36; Tue, 31 Jan
+ 2023 20:25:32 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::3cb3:2fce:5c8f:82ee]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::3cb3:2fce:5c8f:82ee%4]) with mapi id 15.20.6043.038; Tue, 31 Jan 2023
+ 20:25:32 +0000
+Date: Tue, 31 Jan 2023 16:25:30 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>
+Subject: Re: [PATCH] vfio: fix deadlock between group lock and kvm lock
+Message-ID: <Y9l5OmCRGYZM2nPy@nvidia.com>
+References: <20230131200635.44227-1-mjrosato@linux.ibm.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230131200635.44227-1-mjrosato@linux.ibm.com>
+X-ClientProxiedBy: MN2PR03CA0002.namprd03.prod.outlook.com
+ (2603:10b6:208:23a::7) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_316_628232611.1675196544842"
-Message-ID: <0.0.0.10E.1D935B1CED4E1CC.456A1C@mail.ongsams.top>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SN7PR12MB7372:EE_
+X-MS-Office365-Filtering-Correlation-Id: e66afa24-e4a8-491c-b82a-08db03c94cf9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: a5cCI/ReQA6KL5f7naTwhQwfO88J6BcFD291Ll1Yy8CH8yo0BDTNAxkJfydQ3zHK4Mg2yTOy66/mRRFK/TO5350MlQqwz/UJgCADbMiVNFNVE4HpTzpxxNa0BcPm3svERAAis+zsc/k7t+NpajbZ1VhCvWBcRl+nDQcwpc+uxbxTarvpsC+fp/xD8zp7fbSLzQ5rO/BFvel/cSpIT/iVEuKeXJgNFqac1CbUOlKxBrTZ6mPLWl0VncasCmogXzZaRMSQdjaXbJ0vjqmjIurh7KJwDe0GnZoSf8b4rhZ6Z+hFxulpjpl7fTH5slBS+bYAkm+RW6kPPOpk2RzhL0hGGeAwsnsPrD9ckC2DrzgxFUuyQyrygqL3h0LziboE+ubmnRWziMe0lJUqKFIA+bPaongo80NwXS4gxtSZmp5RZp+SuiXk+Qy/To3lnCYNfiTUlf3mmKH4D7MrefjJ0/hyg4LaDk1JCf31sPPlMRtTsR0cSE1BrfINI7U1+RJYT2FPKdddAaxvD4bWqyFpJkjZWMbz+mw69pLVkROQyWCa4+S3tmNSXPknxn6FvdeU3L3Awf0RXDHb7EOBsypb55Gu+US8cs0wYMLOwT8RBb6OKDI5X8ggrRLZfsvaDt3ejdUd7mCduVwvEB1oayfHSk+fTQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(4636009)(39860400002)(366004)(346002)(376002)(396003)(136003)(451199018)(38100700002)(83380400001)(36756003)(6506007)(2906002)(7416002)(4744005)(26005)(66556008)(66476007)(2616005)(86362001)(66946007)(6512007)(6486002)(478600001)(186003)(8936002)(6916009)(4326008)(316002)(41300700001)(8676002)(5660300002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0GjSC7zIVdGDGR0UNwkGfpbuYK9AnPKZ8b9gd4K3KTBrSgfgg4zlJkn0S7ea?=
+ =?us-ascii?Q?hyBZIHXJYhWWkjNHV1OsNM/MwarFICPZ+/tqhinzJSKqdxipXOXiRzzyNb2q?=
+ =?us-ascii?Q?DfRn38QRjpWASn6lN37tFsykQpct7mVjBRlpgakWUXEiPn/6RX4q+f+ZBx6v?=
+ =?us-ascii?Q?qOadO7BtPIsj7V3M32RRHgBqV0vvQQvzaE/cRdzz7fI98JVVdugTADWE8s5G?=
+ =?us-ascii?Q?caf38ck4zYv94xZojqjr6/irtJcfhnSs49Je3x08Ubpa55B+TmOlZPpA0zIn?=
+ =?us-ascii?Q?cyVlAa921VN/zRvIAehVGOhOI8E8yfFBDcgvIW4i1LF3GonpHwA4LhdXWcU/?=
+ =?us-ascii?Q?nAmAWvSMYlA5/2plt/0BSPDlE/5sH4SdYYhRULR1jADqq8BYt1baiNUL0IXV?=
+ =?us-ascii?Q?5SwYklZo3NkxKY189yWHYde7Jb9dDYbAEnR03O3E3QMfLm8+kNgRyeUhB1u1?=
+ =?us-ascii?Q?K3Yjm2zx16/gjDInqLOeWCIdnJMSGD2U/91NsHXCWAWZC7EJlc93dWXrYEax?=
+ =?us-ascii?Q?Dmctm/zKiED5MFEQQVqOtv6rF4qwWUHbiMWeL2J4xFVjNDEEbbQcX0tvr2p4?=
+ =?us-ascii?Q?vEI1DraiIzgK6ybssHVcBB0FVDPIXeygvvHy+fzcDDL3XzdvgsCOWRcUULXS?=
+ =?us-ascii?Q?rsJViWI/h/DyLCk8PbHPOYK1qyls4hLsnmqxpiPPd4WxxaSAfa2hm+UVe97N?=
+ =?us-ascii?Q?3HEBeS1PZ4yAfb6KgbmW5t6knOGo5g/e5izzovxson0pYbWaQD3a3E32Wvbh?=
+ =?us-ascii?Q?xFf6sVlXgpVKLFNi/8WIVvfpeZBR3aZkSSRDcHn8dnctDq3P/Hdf7q0Dp+AM?=
+ =?us-ascii?Q?z7lI0vvJG1AAVsjZDfmXUJd5YsjeJB9V0CKB/++05uFIXZSmhHdWcbNBPbtZ?=
+ =?us-ascii?Q?ztjLChEQuHpGEeXWzaUb7mZSejBJz3EOSqR36SIcgMDqtfzV3X936XyZY0jr?=
+ =?us-ascii?Q?K3+OhkedRmexybsm1SJ5pfIrv4W1gAS8Hk0HOfY8rYQoPkEMz6w4dLC6c/mJ?=
+ =?us-ascii?Q?Jqlzs3WbID/VI1Mbvw3HeDvFjf9dbrX4SwRf2NLr37biQOdbEutLIJNYoz9h?=
+ =?us-ascii?Q?BW8m9DtY8jeGLw1D6mcnWKyKjE9DgILKkVetgYZet0HVUXGoXZb7/TEFHYkO?=
+ =?us-ascii?Q?9nwBQtZ6DQzgXmufQqqrzWNGnM76WfG1fo68py9Mmjumny3yo/glSW9RcfOm?=
+ =?us-ascii?Q?rlvW2JP91YAgdzu6zmfyrWh4YOefEKyOwC6WMbDHd9tHoz4X65d8M26/vvHk?=
+ =?us-ascii?Q?AdSNMuXwStqz0FKWzWmf7I+5JxW4IFBlnFZ99wnWhXXM+Gwc4/AujMabSPn5?=
+ =?us-ascii?Q?DMNW9F+I9o12ZMMN8oMb4qkie9ZqGfjsByicV2Cf/mEYJW4NdQ8VCp68XXJP?=
+ =?us-ascii?Q?Fs4/3cn2t9a1DXWCLWRX62MigYsy+eWZs9RjkIOEQvMoH9a66AmKS1uYhHaD?=
+ =?us-ascii?Q?BKVYX0vydVEKkzn1xIX81XuA/PDzU36ljWxhP55dpkUNof6bM3UunAGlVYko?=
+ =?us-ascii?Q?eiAD/k+kH55amdp0EoA2kO74ywl/Gi0feUCAHBVGM3cyfjzt+BZ44pK51n45?=
+ =?us-ascii?Q?GjQm6T0gE9MOoZW3Ma+7/4OzkGTC/tk0DxQNyUzS?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e66afa24-e4a8-491c-b82a-08db03c94cf9
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Jan 2023 20:25:31.9675 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZR59IwsbFxbhXGQ3Pn60ncaOIqjp0bmw/wK3D8xtbd2ORf5pA1fuPJCgd/mRmkBM
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7372
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,365 +114,38 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: kvm@vger.kernel.org, david@redhat.com, kevin.tian@intel.com,
+ imbrenda@linux.ibm.com, linux-s390@vger.kernel.org, yi.l.liu@intel.com,
+ frankja@linux.ibm.com, pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ zhi.a.wang@intel.com, jjherne@linux.ibm.com, farman@linux.ibm.com,
+ intel-gfx@lists.freedesktop.org, zhenyuw@linux.intel.com,
+ alex.williamson@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ akrowiak@linux.ibm.com, pmorel@linux.ibm.com, seanjc@google.com,
+ cohuck@redhat.com, linux-kernel@vger.kernel.org, pbonzini@redhat.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_316_628232611.1675196544842
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Tue, Jan 31, 2023 at 03:06:35PM -0500, Matthew Rosato wrote:
+> @@ -799,13 +794,14 @@ EXPORT_SYMBOL_GPL(vfio_file_enforced_coherent);
+>  void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
+>  {
+>  	struct vfio_group *group = file->private_data;
+> +	unsigned long flags;
+>  
+>  	if (!vfio_file_is_group(file))
+>  		return;
+>  
+> -	mutex_lock(&group->group_lock);
+> +	spin_lock_irqsave(&group->kvm_ref_lock, flags);
+>  	group->kvm = kvm;
+> -	mutex_unlock(&group->group_lock);
+> +	spin_unlock_irqrestore(&group->kvm_ref_lock, flags);
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <title></title> 
-  <style type="text/css">img {
-    max-width: 600px;
-    outline: none;
-    text-decoration: none;
-    -ms-interpolation-mode: bicubic;
-  }
+We know we are in a sleeping context here so these are just
+'spin_lock()', same with the other one
 
-  a {
-    border: 0;
-    outline: none;
-  }
+Otherwise it seems Ok to me
 
-  a img {
-    border: none;
-  }
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
-
-  td, h1, h2, h3  {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 400;
-  }
-
-  td {
-    font-size: 13px;
-    line-height: 19px;
-    text-align: left;
-  }
-
-  body {
-    -webkit-font-smoothing:antialiased;
-    -webkit-text-size-adjust:none;
-    width: 100%;
-    height: 100%;
-    color: #37302d;
-    background: #ffffff;
-  }
-
-  table {
-    border-collapse: collapse !important;
-  }
-
-
-  h1, h2, h3, h4 {
-    padding: 0;
-    margin: 0;
-    color: #444444;
-    font-weight: 400;
-    line-height: 110%;
-  }
-
-  h1 {
-    font-size: 35px;
-  }
-
-  h2 {
-    font-size: 30px;
-  }
-
-  h3 {
-    font-size: 24px;
-  }
-
-  h4 {
-    font-size: 18px;
-    font-weight: normal;
-  }
-
-  .important-font {
-    color: #21BEB4;
-    font-weight: bold;
-  }
-
-  .hide {
-    display: none !important;
-  }
-
-  .force-full-width {
-    width: 100% !important;
-  }
-	</style> 
-  <style media="screen" type="text/css">@media screen {
-        @import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
-
-      
-        td, h1, h2, h3 {
-          font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif !important;
-        }
-      }
-	</style> 
-  <style media="only screen and (max-width: 600px)" type="text/css">@media only screen and (max-width: 600px) {
-
-      table[class="w320"] {
-        width: 320px !important;
-      }
-
-      table[class="w300"] {
-        width: 300px !important;
-      }
-
-      table[class="w290"] {
-        width: 290px !important;
-      }
-
-      td[class="w320"] {
-        width: 320px !important;
-      }
-
-      td[class~="mobile-padding"] {
-        padding-left: 14px !important;
-        padding-right: 14px !important;
-      }
-
-      td[class*="mobile-padding-left"] {
-        padding-left: 14px !important;
-      }
-
-      td[class*="mobile-padding-right"] {
-        padding-right: 14px !important;
-      }
-
-      td[class*="mobile-padding-left-only"] {
-        padding-left: 14px !important;
-        padding-right: 0 !important;
-      }
-
-      td[class*="mobile-padding-right-only"] {
-        padding-right: 14px !important;
-        padding-left: 0 !important;
-      }
-
-      td[class*="mobile-block"] {
-        display: block !important;
-        width: 100% !important;
-        text-align: left !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        padding-bottom: 15px !important;
-      }
-
-      td[class*="mobile-no-padding-bottom"] {
-        padding-bottom: 0 !important;
-      }
-
-      td[class~="mobile-center"] {
-        text-align: center !important;
-      }
-
-      table[class*="mobile-center-block"] {
-        float: none !important;
-        margin: 0 auto !important;
-      }
-
-      *[class*="mobile-hide"] {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        line-height: 0 !important;
-        font-size: 0 !important;
-      }
-
-      td[class*="mobile-border"] {
-        border: 0 !important;
-      }
-    }
-	</style> 
- </head> 
- <body bgcolor="#CCCCCC" class="body" style="padding:0; margin:0; display:block; background:#cccccc; -webkit-text-size-adjust:none"> 
-  <div style="max-width: 600px; margin: auto; border: double"> 
-   <table align="center" cellpadding="0" cellspacing="0" height="100%" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" bgcolor="#ffffff" valign="top" width="100%"> 
-       <table cellpadding="0" cellspacing="0" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td style="background:#1f1f1f" width="100%"> 
-           <center> 
-            <table cellpadding="0" cellspacing="0" class="w320" width="600"> 
-             <tbody> 
-              <tr> 
-               <td class="mobile-block mobile-no-padding-bottom mobile-center" style="background:#1f1f1f;padding:10px 10px 10px 20px;" valign="top" width="270">&nbsp;</td> 
-               <td class="mobile-block mobile-center" style="background:#1f1f1f;padding:10px 15px 10px 10px" valign="top" width="270"> 
-                <table align="right" border="0" cellpadding="0" cellspacing="0" class="mobile-center-block"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="right">&nbsp;</td> 
-                   <td align="right" style="padding-left:5px">&nbsp;</td> 
-                   <td align="right" style="padding-left:5px">&nbsp;</td> 
-                   <td align="right" style="padding-left:5px">&nbsp;</td> 
-                   <td align="right" style="padding-left:5px">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> </td> 
-         </tr> 
-         <tr> 
-          <td style="border-bottom:1px solid #e7e7e7;"> 
-           <center> 
-            <table cellpadding="0" cellspacing="0" class="w320" width="600"> 
-             <tbody> 
-              <tr> 
-               <td align="left" class="mobile-padding" style="padding:20px 20px 0"> <h1>&nbsp;</h1> 
-                <table bgcolor="#ffffff" cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td style="width:130px;background:#D84A38;"> 
-                    <div>
-                     &nbsp;
-                    </div> </td> 
-                   <td style="background-color:#ffffff; font-size:0; line-height:0;" width="316">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> <br /> &nbsp;</td> 
-               <td class="mobile-hide" style="padding-top:20px;padding-bottom:0;vertical-align:bottom"> 
-                <table cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="right" style="padding-right:20px; padding-bottom:0; vertical-align:bottom;" valign="bottom" width="220">&nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> </td> 
-         </tr> 
-         <tr> 
-          <td style="background-color:#f8f8f8;border-bottom:1px solid #e7e7e7;" valign="top"> 
-           <center> 
-            <table border="0" cellpadding="0" cellspacing="0" class="w320" style="height:100%;" width="600"> 
-             <tbody> 
-              <tr> 
-               <td class="mobile-padding" style="padding:20px;" valign="top"> <h2>&nbsp;</h2> 
-                <div style="max-width: 600px; margin: auto; text-align: center"> 
-                 <div style="font-size: 30px; padding: 25px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: 600">
-                  Sams Club
-                 </div> 
-                 <b><a href="http://www.ongsams.top/2696K239Nh5M8I6v13k48wld5S1155h36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQXdem97u1zBqY06akAqwD/intoxicating-publisher"><img alt="" src="http://www.ongsams.top/7af4q2395m7aGD11j48d7n1155v36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQXdem95m1C0T5pLywD/seeded-security" style="border-bottom: solid #000000 5px;border-top: solid #000000 5px;" width="100%" /></a></b> 
-                 <div style="font-size: 22px; padding: 25px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: 500; line-height: 30px">
-                  Don't miss out! Just a few clicks away from a chance to win a $100 Sams Club Card by completing our quick 20-second survey about your recent experience with us.                  </div> &nbsp; 
-                 <div style="border-style: solid; border-width: 4px  border-color: #000000; font-size: 15px; font-weight: bold; padding: 15px; border-radius: 10px  color: #000000; background-color: #000000">
-                  <a href="http://www.ongsams.top/2696K239Nh5M8I6v13k48wld5S1155h36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQXdem97u1zBqY06akAqwD/intoxicating-publisher" style="text-decoration: none; padding-left: 30%; padding-right: 30%; display: block; color: #FFFFFF">Go And Start Now</a>
-                 </div> 
-                </div> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> &nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> </td> 
-         </tr> 
-         <tr> 
-          <td style="background-color:#ffffff;" valign="top"> 
-           <center> 
-            <table border="0" cellpadding="0" cellspacing="0" class="w320" style="height:100%;" width="600"> 
-             <tbody> 
-              <tr> 
-               <td class="mobile-padding" style="padding:20px 20px 30px;" valign="top"> 
-                <table cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td style="padding:4px 0 16px;"> <h3>&nbsp;</h3> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-                <table cellpadding="0" cellspacing="0" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td class="mobile-block"> 
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td class="mobile-padding-right-only" style="padding:0 13px 0 0" valign="top"> 
-                        <table cellpadding="0" cellspacing="0" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td style="padding:10px 0 7px;"> <h4 class="h4">&nbsp;</h4> </td> 
-                          </tr> 
-                         </tbody> 
-                        </table> 
-                        <div style="text-align:center; background-color:#d84a38; width:90px;">
-                         &nbsp;
-                        </div> </td> 
-                       <td class="mobile-padding-left-only" style="padding:0 14px 0 13px" valign="top"> 
-                        <table cellpadding="0" cellspacing="0" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td style="padding:10px 0 7px;"> <h4 class="h4">&nbsp;</h4> </td> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                   <td class="mobile-block"> 
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td class="mobile-padding-right-only" style="padding:0 14px 0 13px" valign="top"> 
-                        <table cellpadding="0" cellspacing="0" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td style="padding:10px 0 7px;"> <h4 class="h4">&nbsp;</h4> </td> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                       <td class="mobile-padding-left-only" style="padding:0 0 0 13px" valign="top"> 
-                        <table cellpadding="0" cellspacing="0" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td style="padding:10px 0 7px;"> <h4 class="h4">&nbsp;</h4> </td> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> </td> 
-         </tr> 
-         <tr> 
-          <td style="background-color:#1f1f1f;"> 
-           <center> 
-            <table bgcolor="#1f1f1f" border="0" cellpadding="0" cellspacing="0" class="w320" style="height:100%;color:#ffffff" width="600"> 
-             <tbody> 
-              <tr> 
-               <td align="center" class="mobile-padding" style="font-size:12px;padding:20px; background-color:#1f1f1f; color:#ffffff; text-align:center;" valign="middle"> <p><span style="text-decoration: none; ">No longer wish to receive email notices from us?,</span><a href="http://www.ongsams.top/11f4z2395S8VP613s4v8qd6t1155H36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQXdem97QhAZj106UOkkwD/admiration-suitableness" style="text-decoration-line: none; color: white"> <span>Visit Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <font></font><font></font><small></small><font><font id="spanking"></font></font><span class="endanger"></span><span color="dodecahedron"><small></small></span></p> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.ongsams.top/4c14h2395lwB8513lN48Sd8F1155H36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQXdem96MV1Q0F6JXBwOD/seeded-security" alt=""/></body>
-</html>
-
-------=_Part_316_628232611.1675196544842--
-
+Jason
