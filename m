@@ -2,42 +2,143 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEBC86839B2
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 31 Jan 2023 23:54:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16291685FAB
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  1 Feb 2023 07:13:24 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 597D310E2BA;
-	Tue, 31 Jan 2023 22:54:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2EE4710E082;
+	Wed,  1 Feb 2023 06:13:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 31 Jan 2023 22:54:13 UTC
-Received: from mail.runwholsle.top (unknown [45.13.189.207])
- by gabe.freedesktop.org (Postfix) with ESMTP id 032DA10E2BA
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 31 Jan 2023 22:54:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=runwholsle.top; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=costco.gift.opportunity@runwholsle.top; 
- bh=hM8F5kV0WU3dL9NMIJh4BVtm/3k=;
- b=TbQLzirmDq2K0QU+XqopkMczjVdQmuE9j3Z5n7RB+AKOoYNMuImYP5jfv9XkEd2Ttfk1+wYtswTL
- zRQOSiXVPC6f+bKnLDqesu3zx1VYBLFaPchb5Rcrb9mz7baAFQzKevz1Ui9tDykrYB3TXgvNqQ/U
- 8MDNXEpEulmhpnq/pT8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=runwholsle.top;
- b=FGY92zoWKgXakirCwNq07FMiRZyj1lSs056zQsz5aABHugq9H5iyy7ZqAkBqMWsvjdGBceV3Ds6X
- uFtokrjjXzD7evzO2JgEO+1JgmtMPpwUbIv/ZxPZsRiRB6MztAMPIi59/QE+165pzBEO5Aj04IDC
- oHEm7SNSm+oT8XOo7QQ=;
-Received: by mail.runwholsle.top id hr6e1c0001gu for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 31 Jan 2023 17:44:35 -0500 (envelope-from
- <costco.gift.opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@runwholsle.top>)
-Date: Tue, 31 Jan 2023 17:44:35 -0500
-From: "Costco Gift Opportunity" <costco.gift.opportunity@runwholsle.top>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Feedback needed.
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9DC5310E082;
+ Wed,  1 Feb 2023 06:13:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675231999; x=1706767999;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=NOcRz6AHnf2EEpjaG75o00nAPYXD0vmkS05N2OVgszU=;
+ b=LV4Tvk5R1qmuefw2SR7+7htgwxQ2UGC128p0TemnYt/kDCGlFIxybfnl
+ EUY8uWz/JacqmZGEmubaLl+s53P+N6qmbjeGVPiY344ozA9/pF16FTl7H
+ A9J8mKFovQuaIlZkSZa2O0OYsYWXpwnq77AgI551wpNXcURO7iI5cjldI
+ BUgLFi2V2Zrv3pw76edJWRArfizZCF3oZ4WzNPCHBbOsg5+zpQ5dgNnHz
+ RE1QxckQtE8v24cpiGsum2z4JQWW5sPDTIKlz6z3A3YgLdCMh+w5uNHbO
+ kxyWaANNFZOgOrrvQ3WED7zHjgwNxEDD7xvChKSKkwFvK5muDUnJWTsAv A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="308399770"
+X-IronPort-AV: E=Sophos;i="5.97,263,1669104000"; d="scan'208";a="308399770"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jan 2023 22:13:19 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10607"; a="733435021"
+X-IronPort-AV: E=Sophos;i="5.97,263,1669104000"; d="scan'208";a="733435021"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmsmga004.fm.intel.com with ESMTP; 31 Jan 2023 22:13:18 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 31 Jan 2023 22:13:18 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Tue, 31 Jan 2023 22:13:17 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Tue, 31 Jan 2023 22:13:17 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.107)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Tue, 31 Jan 2023 22:13:16 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Vtcw0GfXHLtylU3Bw9XnBnzH3zj7JFOv9DQ7vrn5tfXAOMa66WLtjjfMQsK4h1U+wwxVGZXdEyXAky5GGgjEenDWUdyH6cs1bgSArQpkD7CLqmwenpeJbnp/HkwmBo3ja1/QM07uZkBekx/W5e5U2o0vrxWnejJjvr25ykPWj5/8tk12BcKb54Fzjnp1BwZFqerQrsUa14RsGUr2wcuLFwd9M1M15XOLk/RLRt++cd9w8oR1o6geinNEuZcXsyvt4wyslWKYJ8embMtlHb1CzeR5HkfpmLatcS83Pgpq8tsB+6rcpPEBs9SCUpD6xdB5o87lUeq6oCatONo9YEDMFw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jTZhPxTc9pQxWUPWC6wU1QqsO+psGX/pyKKKKYC5jRQ=;
+ b=OIak6Rwve1sAk4U4d1SoB1snqdS38ya7DtvarEh3jFJWDmKvsjAw75evZfP2gfcdP6peZ4HGprjAclIk8rWSf9pNS9eXKwFlpxweTI+79ao1ShBGRgG3j8DiAOsvujBFzmGUsMKtfP9Keph3lNfUf/NLiz75vwckC1l5Uo0tFkBBggL7/SV4wEdK8jQ0j11ZMjrRSWXAAs/t6QoH+Nq8hPUY0jpxka2n24Lqnuuv1rkfhfUCOfqvfnIpqhdrafnYquJSjPv6nhJ+YH7rHnfVN9ILbIrsL1E1OO4y2gNWz4ZfKpRHwfmhBU3+odcp6HMp0QNf8HTMdbJoPr88iANmZQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by MW3PR11MB4650.namprd11.prod.outlook.com (2603:10b6:303:54::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6043.36; Wed, 1 Feb
+ 2023 06:13:11 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d%8]) with mapi id 15.20.6043.038; Wed, 1 Feb 2023
+ 06:13:11 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "Liu, Yi L" <yi.l.liu@intel.com>, "jgg@nvidia.com" <jgg@nvidia.com>
+Subject: RE: [PATCH] vfio: fix deadlock between group lock and kvm lock
+Thread-Topic: [PATCH] vfio: fix deadlock between group lock and kvm lock
+Thread-Index: AQHZNa+R583ZmSphd0KoWT4U1RM7h665mpXw
+Date: Wed, 1 Feb 2023 06:13:11 +0000
+Message-ID: <BN9PR11MB5276E39EE37A7BA2E1B896278CD19@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230131200635.44227-1-mjrosato@linux.ibm.com>
+In-Reply-To: <20230131200635.44227-1-mjrosato@linux.ibm.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|MW3PR11MB4650:EE_
+x-ms-office365-filtering-correlation-id: 3a4318ff-3288-4025-0c9f-08db041b656e
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: FC80QSG4cVqVtEglNPFpHEBwZI0Awln4DrtkesL8+bwheYRIY8uMwr5aOiwt1HuZ+GfTsPXrVoKJIVF/uf0Dn+b6/DHGuT1lP2KuXux/KR7yVLzA00qUmXIYgrmG3f1JykZ9ez2Jn7T8f37+dgx+YjvQoTOXlDfU9FcbD9TDo+6vfcFWCcYEoDAPmLXimeSpTl/Pmoh1L1q0gFEkTS3W7RMUYWGuGunIbFy5/N2D0uGbyNqKgbe3VLuYws0WwrX9SH8xykN7ZVJTG21tH/5vcyFbV67D7R3w1RpNsUp+xmQQLnujbRiZXaY3rsFHSxyBTCWYN7Ldz8byH9v6ypAs6Pq7YmBLsciq9yeBWwCeVJScSv3mlhRDBLfibUr9U8fEIIL4Ou/GRFM7GyR3rHGoNqmAB0JpEHMv92LwLYWCUpv7I3r4fdcOd9Q2evsoSsjr7dkNJtS6U4m/HoyHs/3kRarU801vZHgXEhyocJ/OZDfUO4eB39IKUS18tG2msSb2rNMAyJ2GFJF6TBO0euLVGodcqeYslZjluit3dK+aD2TTo2Skf+CeXIsSWQZ6yDy8TCBHsKD4lJOmwaCZt3/y2rux9GxIsPBxRqSNWcOD5Dqo+Vg3Q13NMgbNwqH6GsrZcalEeXuI2nppJSqSP+FCr2IpSosKQsh+rmeuBBoYU3hB5jpHnF08nyqt4NXIBvxuXlxP2xr4Mn5e2B8kpVRggA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(366004)(376002)(396003)(39860400002)(346002)(136003)(451199018)(76116006)(83380400001)(82960400001)(86362001)(33656002)(55016003)(38070700005)(122000001)(4744005)(71200400001)(41300700001)(2906002)(7696005)(52536014)(8936002)(38100700002)(110136005)(54906003)(5660300002)(7416002)(316002)(66446008)(64756008)(8676002)(66946007)(66556008)(66476007)(26005)(4326008)(186003)(9686003)(6506007)(478600001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?0Jd3QvKq1hLo8N1C1LU4q/FvMYvxlqz25rD9s6PCPBB5o2iNHV45wry/PjwT?=
+ =?us-ascii?Q?r66qWHpmsih8+WQjdUfE7TZfWSONJbmHvY9Cy5l5phE/dUIp0ntM4PTRgwUH?=
+ =?us-ascii?Q?BXwYEx+d1e4a4vBMQREGcaLm1RCVEbhuLjAA3PDl76MaOYEHEyCeDTNplRT9?=
+ =?us-ascii?Q?wM6l/4EVPDPeevtoUSGzYOoQta3F4EaVDUnTEkwfnH+CN6r35P3Jwn3rbYlD?=
+ =?us-ascii?Q?vccJEELZD4gX+6wRbTsLg21Y1wTA1naigFKekFbpQZsIkQylogWtvLZfgtWr?=
+ =?us-ascii?Q?bVPBXpYt+yn2cYI4FcMTjQjsEptUIQ/StpkCt8EnAMw/UkWkSC/wTfmgqt9T?=
+ =?us-ascii?Q?GPMNBaNwwcxpae6feZLloww4Bjvq8P4ZjRCVzO8sAnihiuotQyZfFoI9Ujeo?=
+ =?us-ascii?Q?aw+va5n2XoyL9T141HAJXJY+kakVloQmE5//SUrDuja9rUNh997jN6x/uQAJ?=
+ =?us-ascii?Q?p/V7DKwkB67zeI1umHqj5P684OhaIjOUDPcAN5eK7URzLEoVULSrCDN84gRZ?=
+ =?us-ascii?Q?HNwy81L75L99TpRn+MG/ziLqdJIf3v4bA5IT65zoriugMD2chtr1chPwz8P6?=
+ =?us-ascii?Q?7TRqaF7e4uyYnYwZw/fwlXJij3OkzxU/Sr9AX4/0s4eUHGy8cFnUaKk95QGM?=
+ =?us-ascii?Q?FbzQL7YlpoFqCPy1X8woAmUS1x78OQUFBi6I+DwpfppOhKFxeKjY4IIQ/ajS?=
+ =?us-ascii?Q?i0CUgU9+nwUnesePS2/SCZD2eCc/k90NptCvOGqSd1eeerxebcz/yylVzMUv?=
+ =?us-ascii?Q?SCRnwEdIbueH2rWgiSiz5lmww7QvYGq+uQAEPYA00d8a5IqEY2uBna0/1igH?=
+ =?us-ascii?Q?gbO4ryGomSE53iEDuxljfymw7zMtca4vA6ybZnYVM5F3Wd2KL0u8RsSFgEJu?=
+ =?us-ascii?Q?P8JZIha0iIuY3nyVI1A3hdcnq7VzndTpqw8D05i5RJ0S+Mk4EE4/hY0iDoQU?=
+ =?us-ascii?Q?e1hnhc0Zc31QBjr/3rrYtgZSKw+MSIGpv//wdeYBPpMQ6OPrUzsCoPRK3HNp?=
+ =?us-ascii?Q?mPKamx/i46H5mhlnCQa6jJKW/P8xLeXA8m9X0bpFvGFBQHiIcmQyEhXEGjAQ?=
+ =?us-ascii?Q?/QrFOYWgolfDC06JtR7UFg6OtrTwlDLDEFXmEJ1npS946V34ISBLzBnrS2m0?=
+ =?us-ascii?Q?bvqTT5tXN93hCuA/SG/V72Ox+NwlbLI3e0KyDEbaYVUatKaplfrvgXyQxbCv?=
+ =?us-ascii?Q?pCeGo4KJoMt4L3h2Z1WCeTiff3Pw20WMymkGLuhyzkmbZi06da1YzIitPuc0?=
+ =?us-ascii?Q?r91ER6NKqXp6BuPw7Gd0eBPp+BQhh2K/qO5kkxO6xJOkCaJn330/CAJ5VMOW?=
+ =?us-ascii?Q?nSeohdYQZ4/+HaOMEiXdwtJlWeFxR0uJFBxFl2kWEchBZUwfKLOKR13s/Vst?=
+ =?us-ascii?Q?KfuQZBHuKjzgy71Fxs769jG/GS6Id7jSG6zmzglpfNN7tmlPkJCyGgtENeq/?=
+ =?us-ascii?Q?chmjQ2N/RH1GNdBR1VzJAV3j+0PbHigxrO7uYzsNv/eLgD0DEFnq1ALkrC5u?=
+ =?us-ascii?Q?oAoXkXyEWH9ogPoQTTb2qarL9Fsc99WcRfQEq+zdNjjdXNiDdxqZcRtlek9e?=
+ =?us-ascii?Q?ZsA7rAR4VyWqWrJ0BKrAXzMMySMEaKQ9/06L0qNL?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_28_1737755849.1675205071312"
-Message-ID: <0.0.0.152.1D935C597F75F54.4E1DC9@mail.runwholsle.top>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3a4318ff-3288-4025-0c9f-08db041b656e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Feb 2023 06:13:11.5083 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 45mM72OfXruzXbyChhbQvOBcQ0Wgkc3HcLcHIc5Ca1e4fsrkRhe74QEez5Dej+u87vYwWjriyZmDM5M8fa6ixA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4650
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,369 +151,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+ "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_28_1737755849.1675205071312
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+> From: Matthew Rosato <mjrosato@linux.ibm.com>
+> Sent: Wednesday, February 1, 2023 4:07 AM
+>=20
+> -	device->kvm =3D kvm;
+> +	/*
+> +	 * Get the KVM pointer currently associated with the group, if there
+> +	 * is one, and obtain a reference now that will be held until the
+> +	 * open_count reaches 0.  Save the pointer in the device for use by
+> +	 * drivers.
+> +	 */
+> +	spin_lock_irqsave(&group->kvm_ref_lock, flags);
+> +	if (group->kvm && vfio_kvm_get_kvm_safe(device, group->kvm))
+> +		device->kvm =3D group->kvm;
+> +	spin_unlock_irqrestore(&group->kvm_ref_lock, flags);
+> +
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
- <head> 
-  <title></title> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <style type="text/css">#outlook a {
-      padding: 0;
-    }
+No group reference in vfio_main.c.=20
 
-    body {
-      margin: 0;
-      padding: 0;
-      -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-    }
+btw Yi, looks the deadlock issue also exists in your cdev work.
 
-    table,
-    td {
-      border-collapse: collapse;
-      mso-table-lspace: 0pt;
-      mso-table-rspace: 0pt;
-    }
+kvm_vfio_release() holds kvm lock and then try to acquire
+device->device_set->lock in vfio_device_file_set_kvm().
 
-    img {
-      border: 0;
-      height: auto;
-      line-height: 100%;
-      outline: none;
-      text-decoration: none;
-      -ms-interpolation-mode: bicubic;
-    }
+vfio_device_ioctl_bind_iommufd() holds device->device_set->lock
+and then call vfio_device_open() which finally hit kvm lock
+acquisition in driver's open_device routine (e.g. vfio-ap).
 
-    p {
-      display: block;
-      margin: 13px 0;
-    }
-	</style> 
-  <link href="http://www.runwholsle.top/7eb6bu239J5lw86z13V4lo8deY1157K36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.demQ6YtGX106QLMwDU/firepower-skillfulness" rel="stylesheet" type="text/css" /> 
-  <style type="text/css">@import url(http://www.runwholsle.top/7eb6bu239J5lw86z13V4lo8deY1157K36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ.demQ6YtGX106QLMwDU/firepower-skillfulness);
-	</style> 
-  <!--<![endif]--> 
-  <style type="text/css">@media only screen and (min-width:480px) {
-      .mj-column-per-100 {
-        width: 100% !important;
-        max-width: 100%;
-      }
-    }
-	</style> 
-  <style type="text/css">@media only screen and (max-width:480px) {
-      table.mj-full-width-mobile {
-        width: 100% !important;
-      }
+A similar fix is required in your series.
 
-      td.mj-full-width-mobile {
-        width: auto !important;
-      }
-    }
-	</style> 
-  <style type="text/css">a,
-    span,
-    td,
-    th {
-      -webkit-font-smoothing: antialiased !important;
-      -moz-osx-font-smoothing: grayscale !important;
-    }
-	</style> 
- </head> 
- <body style="background-color:#f3f3f5;"> 
-  <div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
-   Preview - Notification from Coded Mails
-  </div> 
-  <div style="background-color:#f3f3f5;"> 
-   <div style="margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td style="font-size:0px;word-break:break-word;"> 
-             <div style="height:0px;">
-              &nbsp;
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="background:#54595f;background-color:#FFFFFF;margin:0px auto;border-radius:4px 4px 0 0;max-width:600px; padding-top: 10px"> 
-    <div style="width: 100%; text-align: center;"> 
-     <p style="padding: 20px; font-size: 22px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: bold;">A Few Clicks Stand Between You And The Perfect Gift - A 100$ Costco Gift Card.</p> 
-     <a href="http://www.runwholsle.top/a7f4r2395NF86G13P48dIVfU1157D36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ.demQ5I1N0X6kkJwD2/Skippy-appended"><img alt="" src="http://www.runwholsle.top/b154p2395WqN7a11w48e1T1157N36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ.demQ6f1s0Gh5KBwDA/Skippy-appended" style="border: solid 2px " width="99%" /></a> 
-     <div style="padding: 10px 50px; font-size: 22px; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', Cambria, Dubai, 'Footlight MT Light'; font-weight: 500; ">
-      We at Costco are dedicated to providing the best shopping experience for our members. In order to continue improving our services, we would like to hear your feedback.       <br /> 
-      <br /> By completing our short surplivey, you will have the opportunity to share your thoughts on our store, products and services. As a token of our appreciation for your time, all surahjvey participants will be entered into a drawing to win a $100 Costco gift card.      </div> 
-    </div> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#54595f;background-color:#FFFFFF;width:100%;border-radius:4px 4px 0 0;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-        <div style="margin:0px auto;max-width:600px;"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
-          <tbody> 
-           <tr> 
-            <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;"> 
-             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="width:150px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td style="text-align: center; padding-top: 25px; color: #000000"> 
-                  <div style="width: 100%; text-align: center;"> 
-                   <div style="padding-right: 30%; padding-left: 30%"> 
-                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%; width: 100%"> 
-                     <tbody> 
-                      <tr style="width: 100%"> 
-                       <td align="center" bgcolor="#2e58ff" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#2e58ff;" valign="middle"><a href="http://www.runwholsle.top/a7f4r2395NF86G13P48dIVfU1157D36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ.demQ5I1N0X6kkJwD2/Skippy-appended" style="display: inline-block; background: #2e58ff; color: white; font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: normal; line-height: 32px; margin: 0; text-decoration: none; text-transform: none; padding: 10px 25px; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"><strong>Go And Starte Now</strong></a></td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> 
-                  </div> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="width:64px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:24px;font-weight:400;line-height:30px;text-align:center;color:#ffffff;"> 
-                   <h1 style="margin: 0; font-size: 24px; line-height: normal; font-weight: 400;">&nbsp;</h1> 
-                  </div> </td> 
-                </tr> 
-                <tr> 
-                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;"> 
-                   <p style="margin: 0;">&nbsp;</p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> 
-        <div style="margin:0px auto;max-width:600px;"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
-          <tbody> 
-           <tr> 
-            <td style="direction:ltr;font-size:0px;padding:10px 20px;text-align:center;"> 
-             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td style="background-color:#FFFFFF;border-radius:3px 3px 0px 0px;vertical-align:top;padding:10px 0;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;"> 
-                       <p style="margin: 0;">&nbsp;</p> 
-                      </div> </td> 
-                    </tr> 
-                    <tr> 
-                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;">
-                       &nbsp;
-                      </div> </td> 
-                    </tr> 
-                    <tr> 
-                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;">
-                       &nbsp;
-                      </div> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </div> 
-             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td style="background-color:#FFFFFF;border-radius:0px 0px 3px 3px;vertical-align:top;padding:10px 0px;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="font-size:0px;padding:10px 25px;word-break:break-word;"> <p style="border-top: dashed 0px lightgrey; font-size: 1px; margin: 0px auto; width: 100%;">&nbsp;</p> </td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> 
-        <div style="margin:0px auto;max-width:600px;"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
-          <tbody> 
-           <tr> 
-            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-             <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-                  <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:20px;text-align:left;color:#ffffff;">
-                   If you have any questions simply reply to this email and we would be more than happy to reply. :)
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;border-radius:0 0 4px 4px;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;border-radius:0 0 4px 4px;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-             <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:20px;text-align:center;color:#FFFFFF;background-color: #353535; padding: 15px"> 
-              <p><span style="text-decoration: none; ">To drop messages,</span><a href="http://www.runwholsle.top/quantified-goody/7b06S2i3p95Y8K6F12R48eS0o1157W36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ.demQ5Q10gJ5QpwD2" style="text-decoration-line: none; color: white"> <span>Visit-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <font style="parametric"></font><span id="enumerate"></span><small><big></big><style></small></style><font size="madder"></font><style><big></style></big><span lang="commending"></span></p> 
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-              <tbody> 
-               <tr> 
-                <td style="padding:4px;"> 
-                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
-                  <tbody> 
-                   <tr> 
-                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
-                   </tr> 
-                  </tbody> 
-                 </table> </td> 
-               </tr> 
-              </tbody> 
-             </table> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-              <tbody> 
-               <tr> 
-                <td style="padding:4px;"> 
-                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
-                  <tbody> 
-                   <tr> 
-                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
-                   </tr> 
-                  </tbody> 
-                 </table> </td> 
-               </tr> 
-              </tbody> 
-             </table> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-              <tbody> 
-               <tr> 
-                <td style="padding:4px;"> 
-                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
-                  <tbody> 
-                   <tr> 
-                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
-                   </tr> 
-                  </tbody> 
-                 </table> </td> 
-               </tr> 
-              </tbody> 
-             </table> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-              <tbody> 
-               <tr> 
-                <td style="padding:4px;"> 
-                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:3px;width:24px;"> 
-                  <tbody> 
-                   <tr> 
-                    <td style="font-size:0;height:24px;vertical-align:middle;width:24px;">&nbsp;</td> 
-                   </tr> 
-                  </tbody> 
-                 </table> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td style="font-size:0px;word-break:break-word;"> 
-             <div style="height:1px;">
-              &nbsp;
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </div>   
- <img src="http://www.runwholsle.top/5ed6JV2O395L8Dp511s48e2h1157X36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ.demQ5tK1F05F2MwD/masterpieces-Melville" alt=""/></body>
-</html>
-
-------=_Part_28_1737755849.1675205071312--
-
+Thanks
+Kevin
