@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A562D688547
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 18:20:32 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 271DC68856F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 18:32:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7991910E5C2;
-	Thu,  2 Feb 2023 17:20:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC70410E5B3;
+	Thu,  2 Feb 2023 17:32:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 731 seconds by postgrey-1.36 at gabe;
- Thu, 02 Feb 2023 17:20:28 UTC
-Received: from mail.rplcwindow.monster (unknown [45.13.189.114])
- by gabe.freedesktop.org (Postfix) with ESMTP id C8DAC10E57D
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Thu, 02 Feb 2023 17:32:54 UTC
+Received: from mail.leavebest.monster (unknown [45.13.189.91])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3C92210E5B3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Feb 2023 17:20:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=rplcwindow.monster; 
+ Thu,  2 Feb 2023 17:32:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=leavebest.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=renewalbyandersen@rplcwindow.monster; 
- bh=hMJGn42QCoBwPUl9QlethB44NWU=;
- b=A7rJ0gbVqTOfspFPyGWxqETgC1nYYVTS7FIy1C/Uc9QCCCw/JrPPSZkjaUpoImmVXzqc59PdzjQz
- yC9oO7YtpdanVNFQILkHwyjeAm9ufldy5AatVJkEI3B2SWtgFjL2DH1Q6G4jRNRFqSlVQUaZT8Rj
- 9KPdfL3TnR3RGK/KXAI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=rplcwindow.monster; 
- b=N00tFvGyFqy/NcACb3WGbkYp1j9uohROlu0OySMpuGmeC4bfbIgXGvgxhHrCWB1Fyh0ETrNmE6Bt
- RSoI9Lhborc+O4nP/ezv8+hge9P4KpyBeSVFFAJAsD7dbORieXZSan4vYg2r19ZvFEQZkfgYw4pY
- vB2YvU6NZtM7O6vXJj8=;
-Received: by mail.rplcwindow.monster id hrfodo0001gp for
+ i=leaffilter_affiliate@leavebest.monster; 
+ bh=igRo+Fse+b+E4BrUdk2bf+5OEfk=;
+ b=j9RbH7eIz/7oQa0pYmDSdsVjTohz5YBv82dBm1NqY6XIYtPqh9hgtDHrC00IeFoLhxgVFvkrtyk/
+ hJQj+Joh0FPzxETHqD/Ttg6lqR0DQa1NX+HDI+ulcQuR6MwgI+Asaa4u6wk167lkEeuRpQcvD3v/
+ 4XsXNNWSSy+FULNzj2U=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=leavebest.monster; 
+ b=E+0r7VOYK6uu+NMijpd2lXefKOkvyL+Cau/ZO0aNP070Ib8onXdD+GWhfuW/ojHSugOWC7bpMy/Q
+ 3QLM9XQ4obVR6c98xiM56Pkh6HPFRNpk0+MK1Z5FYZCHI2T2kzsB0OnGGmu8+T4Ax31uTWbOhKV/
+ TQj+27f+ThY8TSb6hwc=;
+Received: by mail.leavebest.monster id hrfpsc0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Feb 2023 10:08:35 -0500 (envelope-from
- <renewalbyandersen-intel+2Dgvt+2Ddev=lists.freedesktop.org@rplcwindow.monster>)
-Date: Thu, 2 Feb 2023 10:08:35 -0500
-From: RenewalbyAndersen <renewalbyandersen@rplcwindow.monster>
+ Thu, 2 Feb 2023 12:21:48 -0500 (envelope-from
+ <leaffilter_affiliate-intel+2Dgvt+2Ddev=lists.freedesktop.org@leavebest.monster>)
+Date: Thu, 2 Feb 2023 12:21:48 -0500
+From: "LeafFilter Affiliate" <leaffilter_affiliate@leavebest.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don't Wait - Fix your Leaky Windows
+Subject: LeafFilter: Never climb the ladder again
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_193_1233360048.1675350462088"
-Message-ID: <0.0.0.1CF.1D93718387BEB18.19A339@mail.rplcwindow.monster>
+ boundary="----=_Part_406_1499084783.1675358420405"
+Message-ID: <0.0.0.238.1D9372AD51A7658.17FB5F@mail.leavebest.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_193_1233360048.1675350462088
+------=_Part_406_1499084783.1675358420405
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,66 +61,70 @@ Content-Transfer-Encoding: 7bit
 <html>
  <head> 
   <meta charset="UTF-8" /> 
-  <title>teacher</title> 
+  <title></title> 
  </head> 
- <body bgcolor="#F0F0F0"> 
-  <div align="center" class="combination">
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-   <a href="http://www.rplcwindow.monster/bisected-reassign/c9c4A2395eD8Z613d48erCaO1159N36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQrdemS7ojq10BQ6zlwTlD" id="accountant"> <img alt="suite" src="http://www.rplcwindow.monster/33b6Q2_39q5L7ZTa13d4h8edxB1159t36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQrdemS7gY1A0yU5byLwD/undesirability-overshadows" style="max-width: 500px; width: 100%" /></a> 
-   <span id="page">&nbsp;</span> 
-   <span class="unlikely">&nbsp;</span> 
-   <span id="shorts">&nbsp;</span> 
-   <span class="chimpanzee">&nbsp;</span> 
-   <span id="variety">&nbsp;</span> 
-   <span class="crevice">&nbsp;</span>
-   <br /> 
-   <span>.</span>
-   <span>.</span>
-   <span>.</span>
-   <span>.</span>
-   <span>.</span> 
-   <div align="center" id="overview" style="background-color: #F3F3F3; border: dashed 1px #fff">
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> &nbsp; 
-    <div style="max-width: 500px;">
-     <font class="division" face="verdana"><small><small><small>This is an ad. This message has been sent to you through an affiliate of Renewal by Andersen. </small></small></small><br /> <br /> <span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>To be removed from receiving future emails, <a href="http://www.rplcwindow.monster/5cf6JoX2395Wnr8613R48YebQj1159g36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQrdemS6aQNh106qTlwDL/hardcopy-provable">Unsubscribe here.</a></b></span></font> 
-     <p>&nbsp;</p> 
-     <font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"> </span></font> 
-     <p style="font-size:12px"><font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>If you have questions or concerns, contact our customer support team, <a href="http://www.rplcwindow.monster/hilariously-blender/6485o239L5hAA8613d48esucR1159_36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQrdemS5c10v_6FMJwPD"> here.</a></b></span></font></p> 
-     <font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"> 2040 Merrick Road Unit 408 Merrick, NY 11566 </span></font>
-     <br /> &nbsp;
-    </div> 
-    <br /> &nbsp;
+ <body> 
+  <div class="physics" id="ordinary"> 
+   <p align="center"><span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><a class="harbor" href="http://www.leavebest.monster/clapboard-Microsoft/31e6SqP2395i8QA613C4M8eRfW115aN36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQVdeme6V10KmU6rTpwDJ"><img alt="comprehensive" src="http://www.leavebest.monster/situates-expands/26a6XO23I95dJ7Da12M48Tf1q115an36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQVdeme7A1Yyw0n5EzwJD" style="max-width: 550px" /></a></span></p> &nbsp; 
+   <div class="hemisphere" id="skin">
+    <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9">&nbsp;</span>
    </div> 
-   <p class="vegetation">&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <p class="headlinesatellite">&nbsp;</p> 
-   <p class="referee">&nbsp;</p> 
-   <p class="weave">&nbsp;</p> 
-   <p class="bird">&nbsp;</p> 
-   <p class="relax">&nbsp;</p> 
-   <p class="broken">&nbsp;</p> 
-   <p class="tense">&nbsp;</p> 
-   <p class="sailor">&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <p>&nbsp;</p> 
-   <center>
-    &nbsp;
-   </center> 
+   <div class="selection" id="nuance">
+    <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9">&nbsp;</span>
+   </div> 
+   <div class="first" id="respectable">
+    <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9">&nbsp;</span>
+   </div> 
+   <div class="ignorant" id="behave">
+    <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9">&nbsp;</span>
+   </div> 
+   <div class="context" id="bishop">
+    <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9">&nbsp;</span>
+   </div> 
+   <p><span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9">&nbsp;</span></p> &nbsp; 
+   <div align="center" class="frown" id="descent" style="max-width: 550px; margin: auto; background-color: #fff; font-size: 12px">
+    <br /> 
+    <br /> 
+    <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">This is an ad. This message has been sent to you through an affiliate. this expires 12/31/23 </font></span>
+    <br /> &nbsp; 
+    <div align="center" class="production" id="absorb" style="max-width: 550px; margin: auto; ">
+     <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">To be removed from receiving future messages, <a href="http://www.leavebest.monster/4a35c239g5S86yl13G4j8fp0X115ar36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVdeme7z1C0AFz6hPkw3D/amaze-Brookfield" style="font-style: normal; font-weight: normal; text-decoration: underline;" target="_blank">leave here</a>. </font></span>
+     <br /> &nbsp; 
+     <div class="active" id="disagreement">
+      <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">Converge Direct LLC | 2 Depot Plaza, Suite 401 Bedford Hills, NY 10507</font></span>
+     </div> 
+     <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma"> </font></span>
+     <br /> &nbsp; 
+     <div class="active" id="disagreement" style="color: #fff; font-size: 9px">
+      <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">there was a young astronaut named Luna who dreamed of exploring the universe. She trained for years and finally got her chance to join a mission to a distant planet. As she gazed out the window of her spacecraft, she marveled at the vastness of space. The stars seemed to stretch on forever and she felt a sense of wonder and awe at the mysteries that lay beyond. </font></span>
+      <br /> 
+      <br /> &nbsp; 
+      <div class="potential" id="satellite">
+       <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">As Luna and her team approached the planet, they encountered strange, floating creatures unlike anything they had seen before. They were colorful and pulsing with energy, and Luna felt drawn to them. She put on her spacesuit and ventured outside the spacecraft to get a closer look. As she approached the creatures, they suddenly surrounded her and she felt a surge of energy pass through her body. She was filled with a sense of peace and understanding, as if the creatures were communicating with her. </font></span>
+       <br /> &nbsp; 
+       <div class="dominate" id="practice">
+        <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">Luna returned to the spacecraft with a newfound sense of purpose. She realized that space held many wonders and secrets, and she was determined to explore them all. From that day forward, she dedicated herself to becoming the greatest space explorer the universe had ever known. With each mission she undertook, she discovered new and amazing things, and her name became known throughout the galaxy as the greatest space adventurer of her time. </font></span> 
+        <div class="force" id="rally"> 
+         <p><span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">&nbsp;</font></span></p> 
+         <div class="category" id="break"> 
+          <p><span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">&nbsp;</font></span></p> 
+          <div class="compartment" id="original"> 
+           <p><span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma">&nbsp;</font></span></p> 
+          </div> 
+         </div> 
+        </div> 
+        <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma"> </font></span>
+       </div> 
+       <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma"> </font></span>
+      </div> 
+     </div> 
+     <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma"> </font></span>
+    </div> 
+    <span class="pyramid" id="dimension" style="display: block; background-color: #F9F9F9"><font face="tahoma"> </font></span>
+   </div> 
   </div>   
- <img src="http://www.rplcwindow.monster/hardcopy-provable/26a5A239I5yRx8512y48eeNm1159u36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQrdemS7SG10jVX6WANwD3" alt=""/></body>
+ <img src="http://www.leavebest.monster/2ff5C23_95g8rn512c4F8f2_115am36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQVdeme6i1TkX05YlMwD/situates-expands" alt=""/></body>
 </html>
 
-------=_Part_193_1233360048.1675350462088--
+------=_Part_406_1499084783.1675358420405--
 
