@@ -1,82 +1,81 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92E446873A9
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 04:09:06 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16C8968741C
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 04:47:10 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1C9FA10E2E1;
-	Thu,  2 Feb 2023 03:09:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3B9F710E1BD;
+	Thu,  2 Feb 2023 03:47:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3FF6610E2DF;
- Thu,  2 Feb 2023 03:09:03 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 97CB810E1BD;
+ Thu,  2 Feb 2023 03:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1675307343; x=1706843343;
+ t=1675309624; x=1706845624;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=cMzybbSOw9x0qlF8rd5qPN4goU9/bAw4xdRCtG7pFEc=;
- b=DkIQ6/sf5aoUVNXkOKuKapBrpFqtbs3e18r4MKc7jIgiCFW8E2GtvdKU
- yM4ZnfNYmmR2fHZNK2E7fd2FK3b4+/AJEzh0BAKW658FhqrlGCwXv6qXL
- 5wZ0b2NPm9SPB74MRwJdr6fN5Eo3zUNVIYdLl4wr7dFz3kmtELjvo0HpK
- 4C/fiUJyFYkVV5TgJcHfTaGEUgzOgh7aql11I4NWF7mvo2/LVdQwW9QQS
- 38nZwbC5t374/bXU9At00rfsiXDd2GdiU5/H1OYdsa1hQ7Q4o4ZfpxXzX
- yZs59lYjV6ev7FYvwjpcmw4VgnQ+/7+oMjwIS2rddjsT9bF3iulOSNOrA g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10608"; a="326038219"
-X-IronPort-AV: E=Sophos;i="5.97,266,1669104000"; d="scan'208";a="326038219"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Feb 2023 19:09:02 -0800
+ bh=6AEr5Bj2x6U7zZJfVN5SpcVOrOpJrgNUqhoImx4sE+A=;
+ b=BJeFrUUQwuNsovrdQ9Mglti2oI/GZJ+3Q2NyVIGo+hXaKoY2EkLuZpCF
+ 6RzRn2M+fgqbafYhWWoaoRyLrGvntD1k1nUnsxEnYw8tyFME1qGLiM/8G
+ D5GsifAtoPhWYTBT20moTVaBcx/iEwkiNpCv8hup7nlKh+UhxuA2e3yCe
+ mC/Bt9OvXbFtkgcRGK2oon1mrI9F9Gggxm6NS0xTJ3FQgseM/ei9o8nGi
+ Neb2hCHZwHzNS4k9v3yntw2YJzywFVZo+ZXa/jstVkzMuLkx0Yqsi1rLk
+ Kh/3YjkPjcfPKBYEtlNuDx4E0WqTvikUxiKQcmc1cX80AdgDxnbSFzsJy Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10608"; a="392924048"
+X-IronPort-AV: E=Sophos;i="5.97,266,1669104000"; d="scan'208";a="392924048"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Feb 2023 19:47:04 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10608"; a="667139101"
-X-IronPort-AV: E=Sophos;i="5.97,266,1669104000"; d="scan'208";a="667139101"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga007.fm.intel.com with ESMTP; 01 Feb 2023 19:09:01 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6500,9779,10608"; a="658570200"
+X-IronPort-AV: E=Sophos;i="5.97,266,1669104000"; d="scan'208";a="658570200"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga007.jf.intel.com with ESMTP; 01 Feb 2023 19:47:03 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Wed, 1 Feb 2023 19:09:01 -0800
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ 15.1.2507.16; Wed, 1 Feb 2023 19:47:02 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Wed, 1 Feb 2023 19:09:01 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.172)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2507.16 via Frontend Transport; Wed, 1 Feb 2023 19:47:02 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.104)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Wed, 1 Feb 2023 19:09:00 -0800
+ 15.1.2507.16; Wed, 1 Feb 2023 19:47:02 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TGD6uNsakNq2Wqt+jc4NtK4DqNIRzK96xjWQbuFPs5N8gVMawbQk/vSK+pQ/QdXdyuYyrcZk5HTyKUYuP0aB6dcPHgQVNPheyVxUoVfP3jAkSWEcygaidPAAFSvw0qMgBvOuR8D/k9nfA1CuG2BpxMUG9Czuen2QMZEur5yAWjuAWOVAz06NaSRCzsEmbdbStsBi7DIN3PMNEHgWlJKS/ipuPM4lpiZHAz4+yda9S9KqFFh8LE3ykSn0uxj+Da/kIACgGC/rkwG8R/GV2hocpf7bPl1Y/cxLrZQV/zO66z2HNSI0WP2u19js7ob6/uzEh+jHZe6gJhadhzAuQYpIkQ==
+ b=d/PLgp4/Iu8lEpgmKKbhdbEJ7zUnl7imEZE+xlLf26MjP+XfvfwWZ3Y0IAT3mXblELgAwnms4UmpfylQZBz20wCXG8N5yhMLZVWfzNOrjZCc5b/pj91yhw9uhe6uOM2kVlFEqDSD5eiYBX+/L9AOr69/DE1JUHR1oni/YMGJ39vytvzIfRmpf3CCJQ0WmDnV1ReEM5AGTdC57VZ2HH62V+FGDFf4Lxf4qwuWtmSQztVXUwRTMRIB344DDQtz0yq78+/hbP46z7ovYrwazdLNAtKKO6IlIzGXJGh5ou1r867DBY/YG7DPBQi43VWOrmsDJ5NmE6n363Zx3JMPCjJMUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cMzybbSOw9x0qlF8rd5qPN4goU9/bAw4xdRCtG7pFEc=;
- b=GBreky83frf9UyPh6LPq3WnH482hqRiZaZlOn2eF5IgfYqjEUOWaFztEw9k6V+xytND7acFx3coDWIRsPXQP9kP8MBP7vSMjtsr+6HB+2Ni6ugthnGFB7xBsJU4MRIU7ECal/gb4B6cL52tP5TzXMLMAn2xLtLeht52DaZMJ+IOApWzvPqxlQNZ1oaDQ02uPP0FT6kv4Jy4jFh9dTq2MAo38dEv+830H4ySQDjNWY4b+IdaINoZknuPYLw5yMUS5JR/dNK006LAUnZB7NV5TQzzZRF1otlhF/LO4wzItTjlm0la/vsTXKNc+NM3x+RuPqe1xty7Na4zCM+JJfbzvQg==
+ bh=Szp9QYdfkNIea9cT1rD5E+/mM0FxkA7lgfpYQ8rUDOE=;
+ b=d8IUQ2D1msUrFq22wdPh+1J8vbNzDGom059TbSQhSZvbRGjEqzStuZt/RpUsPeikf5GNEL5zDWOqGRbLMivfHd4Rc5uEAHiE4xXW07uVCzsipP4SqoKJXr3Hk+FPn6p1gwXbpdeK5Ar1MWQeh1hE8sa/2114ZxQP+iMkOOmdszFVBZn66sD2soYZUav7ftU+ofg+JNPVgxan08F8dLrPP0Cosh0pkDa0IN1bf8VV3KSd7Lpg2WQZVTgUg//c2IMoHbKLPfdIdktztYNgzjbzr+IMBK+nXkxwOO9sXrEIL0XZEKdqVQftYKp4eCLF3Mf7LmK09f5qBVFebc2LUx1gFw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by SN7PR11MB6994.namprd11.prod.outlook.com (2603:10b6:806:2ad::19) with
+ by DM4PR11MB7351.namprd11.prod.outlook.com (2603:10b6:8:104::21) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.25; Thu, 2 Feb
- 2023 03:08:52 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.27; Thu, 2 Feb
+ 2023 03:47:00 +0000
 Received: from DS0PR11MB7529.namprd11.prod.outlook.com
  ([fe80::e1fa:abbe:2009:b0a3]) by DS0PR11MB7529.namprd11.prod.outlook.com
  ([fe80::e1fa:abbe:2009:b0a3%4]) with mapi id 15.20.6064.024; Thu, 2 Feb 2023
- 03:08:52 +0000
+ 03:46:59 +0000
 From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>, Jason Gunthorpe <jgg@nvidia.com>
-Subject: RE: [PATCH] vfio: fix deadlock between group lock and kvm lock
-Thread-Topic: [PATCH] vfio: fix deadlock between group lock and kvm lock
-Thread-Index: AQHZNa+RvE0EhcYo6EGu/ai3XoxXDK64+PMAgAERCqCAACGMgIAA0A1A
-Date: Thu, 2 Feb 2023 03:08:51 +0000
-Message-ID: <DS0PR11MB7529AB85290B910D910BB15BC3D69@DS0PR11MB7529.namprd11.prod.outlook.com>
-References: <20230131200635.44227-1-mjrosato@linux.ibm.com>
- <Y9l5OmCRGYZM2nPy@nvidia.com>
- <DS0PR11MB7529D62614A5DFC56920EE96C3D19@DS0PR11MB7529.namprd11.prod.outlook.com>
- <3b52ffdb-c18c-f3d4-559d-9838419e2bc7@linux.ibm.com>
-In-Reply-To: <3b52ffdb-c18c-f3d4-559d-9838419e2bc7@linux.ibm.com>
+To: Alex Williamson <alex.williamson@redhat.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>
+Subject: RE: [PATCH v2] vfio: fix deadlock between group lock and kvm lock
+Thread-Topic: [PATCH v2] vfio: fix deadlock between group lock and kvm lock
+Thread-Index: AQHZNnJFDhMzPRK6pEGcr6itqpvSQ666vJwAgAA/7dA=
+Date: Thu, 2 Feb 2023 03:46:59 +0000
+Message-ID: <DS0PR11MB75298437F96D08758DB92368C3D69@DS0PR11MB7529.namprd11.prod.outlook.com>
+References: <20230201192010.42748-1-mjrosato@linux.ibm.com>
+ <20230201162730.685b5332.alex.williamson@redhat.com>
+In-Reply-To: <20230201162730.685b5332.alex.williamson@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -84,66 +83,57 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|SN7PR11MB6994:EE_
-x-ms-office365-filtering-correlation-id: 7a330b0e-618a-4338-bacb-08db04cacfd2
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|DM4PR11MB7351:EE_
+x-ms-office365-filtering-correlation-id: 7ec14ef4-b44c-4200-8954-08db04d02339
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: joFZQ4fjXkfuhPjIobi737KX8B5hTfAo31SFa8ChxPZrAAKm6P48rMgXelX/cRICIM1bLMsWrthHCmyfjig+xOAEVcRVhu14wMz0FrHOIl2RnGu3ZwlzQX6+Y1Q4B4M4NAFp4CgIZa4fyaR0lAlxcYAACdrRGHTbW7NCaUYk8GY73Km4AV7bRea+oyHVlhQuktS8iRYQk6+IbL2gCCERxcXTjYeOYdrWBZv7Q44xj38o5q+kcmEBl4yuN1yyGBeQlZn0poxYQZGwFjsbDm9xuS50Y1GNb7ZuzSEKe+nvaLGckZYj8mo8Wi1wZZpJKhOeRzaCeijrr3ILM6Wmlp9KW99kKtjE5VYDsZ4pUbaAUoZLtxNbYwhWuJ43gACc5C5ittJ3tAVvZl1n/73Nwd3/aW1kSU+aRub/FUuJd+0FF2svsaZcpZzcblNOhPiaINWS3yFpTgnURr39aEQilOrPLF69h0FwYfHP7W85za+Ww4K+c1+vbBZG+2p/+Ps54El6OFHRAgn15DGBLG8tB2gv2WpKVWU8QQC5RwaLyviZbAMXaoriHT7FQTq/2EKfajyfm7W8EYM+I3OTpZCSmTN3GbySakOPcffYnxfNbFNaoP91tVG1m0CCWUkNskzBJycr3fkDOLqvCbeXLlCzUZf6e+QdMI9FRygfyKJRRqgmphWA/RdB2KqZXdgVMSbc75IMNAeNuoHUrflWgnc4LEQYw1iqLF9Z72vFRTJIJo+tQ9w=
+x-microsoft-antispam-message-info: cMo95HlkU/n/UgmswnCbczRZlmULuOQ5H57it+aneSnnzAtXo4HmtDiNpwl8BPsQyTrZn2Tw/94fLcAHU4vgjF6s1DtTUCbvFAhCuDOv4ERRVxhAyPyOQRy+TUT1IQMGGX44bQmMpJWQXluHUPMGBoga4ODybj0H+6WrwL/U/vbyhwpK/1TaAZXPK1iNCTXE9lOGuvGRgSfI2v5TxvSxa+Vesgmo38F81XEim7PRKeuog0ic0f/QjTgOi0AYuNnN8S/UgubzoCsrW+mS25g/rqcF+UyRVCdKImfuLPh7BmRiReQCLtD/NE5/YlOHJRn3PaZCuXcsnA02ZLheWHMtpIPHVGzUmTOE7IgRhaiHF8a799DN+GfeiDuZB2qC3/tCYhxRjA/oMT57xohI8uxL2YIjXUShLQiDv9KlPSZQM7xi2JgFAZHPLUSa3svwM95YKhpbSDsWQIb0zPmkAM1X7JSwL1EBKZk0gJmm8CUpK3UW9U4mOr1c3tlV6+C+upelqKTKmMlxFgqdlD2IEgtmC938imjbjImmIgafn13Dajt28E19u5Pcsk2FNtc7Oy+ecMskMI0lEQt6QBiSvoi0Dzx6SGB67tP72GatLea4QxxL83HqV6Y3XslOUnEgusFXdxFTXSO9ORn/7W5Wsce24Mp6XhOerEfIXTck3t8yHMhTCTXyeS5IJLAWb8172dJDuVejDRm3ZJs/1KrQHxxwFZVFG2IPIz4weH9KHxvFI1w=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(376002)(39860400002)(366004)(136003)(396003)(346002)(451199018)(9686003)(6506007)(86362001)(186003)(26005)(38070700005)(122000001)(82960400001)(7696005)(33656002)(478600001)(53546011)(71200400001)(38100700002)(66946007)(66556008)(66476007)(66446008)(64756008)(54906003)(2906002)(110136005)(316002)(52536014)(7416002)(8676002)(55016003)(5660300002)(8936002)(4326008)(83380400001)(76116006)(41300700001)(13296009);
+ SFS:(13230025)(39860400002)(366004)(376002)(346002)(136003)(396003)(451199018)(52536014)(8936002)(316002)(86362001)(6506007)(71200400001)(7696005)(478600001)(38100700002)(82960400001)(38070700005)(26005)(186003)(9686003)(122000001)(7416002)(5660300002)(54906003)(110136005)(55016003)(2906002)(33656002)(83380400001)(4326008)(41300700001)(8676002)(66556008)(66476007)(66946007)(64756008)(66446008)(76116006)(13296009);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ODQ4eWpJakowdnlwd013UTJVa2MwZkd3L05DQklaTEorRS9RQ3paTUNiU0Yz?=
- =?utf-8?B?QnFPMERMUmVrSDdqZjlRTjJrZjFhZWlaU052c0JPSUhpeDZPQjdCM2lHS0Zl?=
- =?utf-8?B?L25wVjlEcE1sS0puK00vbEluc1Y1WElXTDQ2ZmdWZUFTUk9oSExmS2FmS2tG?=
- =?utf-8?B?WmR3ZlYrLzZ5byt3NURlL3U4U2VnaUYrbjRkQ09lajBoelN3ZXlPTldyYitO?=
- =?utf-8?B?cVE5a2ZHR0ZrS0pya1BHVnBMTHVGSjFub2h1QVk5MXp4U2FqVHJndEo1UjJ6?=
- =?utf-8?B?SDZTdWlPNjBReE9ra0taMmhzSnhPVldsNWlPcU1uK0lwYm9qbmJGNVV4eDdy?=
- =?utf-8?B?ZmoveUVOTGoxTWxoSVZ1OWZYZ2k3SVQxMy9iaXh4Q1dzYStBTVF3TEZnMjV2?=
- =?utf-8?B?dWJzeHhtVDVGeWVaZFc2YTdYSEg0MEpTeUJ1QWhwMlN2LzUrejREUXl3UXg2?=
- =?utf-8?B?Ykd4WTZLRzFxbmo0L0QrZ0M3elcvMjFsZVNmYTEwR0FtWkJTQnc4NzZtdnpp?=
- =?utf-8?B?ZldUd0VxWmExaXFpeDRjMXJIUStkbm5UYjRVbS9SZjBQZ1lLSVRmVXRRaFZy?=
- =?utf-8?B?amZtMi83L1EvTy9icndmNlU1SDdWRFUvYTl0K29ML3pONjZOK2ZFUkRIR0VU?=
- =?utf-8?B?QUl2eHp5NGlwSStkc3MxN3JGSUdsOTlKZE5nd1J6aldlQS9KTTA1V2J2WHZ4?=
- =?utf-8?B?eXRZNkNXdjlPUGpxRzNQU1pPRmhDM1FCYW15M3RjeS9sVDNCaEZLSUExdGhj?=
- =?utf-8?B?amNxVmptZW1yUjlTSll2Ri9ncFFpVzQwR1ZodC9HMDZvelBkU3QrRFFYbWhT?=
- =?utf-8?B?ZlhjWmEvQ0k5QzYyc0FrSTdkbXM4MmIrUHpMUzl5Z3paLzN2YTllQWxrcFc4?=
- =?utf-8?B?U09WUjdvRDFBMHhMbkJ2QlNZMXBGdlRBUEV2dXFaSk1GeGprdXBKS2twU2lW?=
- =?utf-8?B?cmZqcllyNVZzNUR1UFpOc1UzT2NsS1lDVWZRaXFyR3VDcCtlRW9pbkI3SmFl?=
- =?utf-8?B?VUhPYmxvb1Q0dWV3RzBuMmVneTNiY0djeE10SDJYb0t3aWxXUEdMZmF2aEE3?=
- =?utf-8?B?SFJWSTRydXpMdzQrbFpIRVlYa0tMNVdQWTdFNGVXNWJkMkltdksvWERsdjlV?=
- =?utf-8?B?ZjkwWjBoSUFQR0xKd2dDaTF0THhZUFQvaGoxblphUXdQMDJ4dHQ1VjhQVGNH?=
- =?utf-8?B?S3RRVGo1SHJLQ3FIREF4Q2ZYM0xyVWpxZmdqUCtIblJSM3hIR0xVVk8xREk5?=
- =?utf-8?B?cGU5Q1JsT2hSamVCV295eWZhZENqd3pGK3MyYnVGelRIYyt0aEo1d3g5S2do?=
- =?utf-8?B?SDJNcUU3ejhJSW5ZVlQ2ZTZlRDJPWU8zdmNBSi9rdVgrNE9mMUYzNG9uTUpX?=
- =?utf-8?B?Y1BibkZiVkpJU0d2dFh0TFh0czRwNmduT3o1NzlLU1VGVE85c21PTFFWOUZJ?=
- =?utf-8?B?MTVHT1BRUU5RMmZJSS85YU91NzRYbm1WeUZFTmM2WWhZZFFrOUIzczBQa3dq?=
- =?utf-8?B?OGJPSGFSZDhUUThKaGNncEZrY0hkNXJ6eVliREx4OEh4ZGRuYWYxbllEZlRD?=
- =?utf-8?B?ZHMyL21yQ2xSSzlJL1NraERvcG9LeXNpZDFLTWtPRklUV3dPSkdKNDZBVk16?=
- =?utf-8?B?OE1nYkY3ZDdoWG5rbGxLSkN6YnZoaTdieEZPSXVhNkNHeG1IcmFydWhsRFRz?=
- =?utf-8?B?SXdTTWUyUlJwRWFnNUYweElXd01YeC9GNkErQlhPdUhKRExVNzZaOEUwTzlt?=
- =?utf-8?B?K3B6MEo4MUx6YU1zLy9uQ2RPakhBWXBwT2pDOE9kNnliMkpJVUt4QnhkTWpz?=
- =?utf-8?B?Tm9XRFV0L3FmVTBUYjF6QTU0dVIxNk1nMzhDWnF2QjZEK2pDTS9OaWZWZ21U?=
- =?utf-8?B?SkpJc205aVdEcDFmc0pycEJNNFE4SjVkcysyTTJILzBRYUFqTVdGSVpmN3FY?=
- =?utf-8?B?MmhET1VNOUxMOEJQTFFnVnZOd2V0cGVqZ1VvQlpScUFTZ0Q1WkdHdXFwWVNN?=
- =?utf-8?B?bkRlMkJ0UXlpZG8yN3puNUZTdFNHWDUvMjNKQVA4TGx5dDlwNTVWb2d1czV1?=
- =?utf-8?B?ZEhGZnRTaVlQMmk1STVTTjM2QlpVZ3l6azRNTjBHUStnK3VtbW1Oa3k4VGRN?=
- =?utf-8?Q?AHgppQNlWhNBOvEunjLgsk/Nd?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?W/QUfnDG5tk/AIjnSLZEGEHBPQlQolihrxYfqcHcw9NFKcoctgHqpteqfdg0?=
+ =?us-ascii?Q?tong8tmq4JCSxpOQa3tdAeb63KS4h9Zsx7Tk91ZP/wzp7EkV8kwCJmB3rwWw?=
+ =?us-ascii?Q?Kw7leGVEb3EkPrQZmc+ZL8GMTltAlsLHe8A3eKduBCA9C566ahdsV2C/9QZC?=
+ =?us-ascii?Q?AM1J1bHXt9TDtAyJ2Lgb//agNIdnjKagiX7kARCGEVMsart35fZvFOCVXNr5?=
+ =?us-ascii?Q?VAzhyJm2cAhk95IjDxrIPo9B6mD4bUpDnZgCnYmcWKwCuiv2SgtYhyJBWvRS?=
+ =?us-ascii?Q?czKKsDZrG1/0clrMp7dkVbxP5+Nn7LUHO7hDLPzLtHSKShJ/kNANx6hp67EN?=
+ =?us-ascii?Q?9tsC15Mj0JClLV2viRoPpQpDiSfAjIT55jUW0LdzAXXwVcxD5WzJYUYlJK/v?=
+ =?us-ascii?Q?E9l7Q2mFSlU/UCrqO2a2GDZycQ+3lkzvHmhJ8pfNl0ixyJoJNen+qIVpaaEz?=
+ =?us-ascii?Q?NxnuBzsSatzdKZbFvcHMwM413OP7W2/6ddLYUa6INxamA8B9jGzbUPEUZF0f?=
+ =?us-ascii?Q?TGhb5/9/qa/BtphuYGVtYkkOU2mO5UIBExTTnR2JMuT8s+bDoYERWbPAHdrY?=
+ =?us-ascii?Q?4ILMAwYB9dsO0LYDR+vP4hoBlM2+0eev/Qxrn1W38qZLRymXdLg64271lo/8?=
+ =?us-ascii?Q?UBKzZ6DBOJjNrHSLBI5G+tIzsnBaCIorvCl0e6a5++x+7BFsClVT3lEHCLsx?=
+ =?us-ascii?Q?Q5pQKiaddA7zM/VYPYkN3qPWWXox7/1hLYmodHbxf7C39BV7ebxP/jDMh5lP?=
+ =?us-ascii?Q?qG7x4bxqJRCEpckXowZiQPy8JI9DyQEsLlBk/kp8rTLGWimPq3IQf/GVnRFF?=
+ =?us-ascii?Q?+SyD7Y+8GEjf3YqDrJfaAenUmzl9QtA00vjgahp0nobXnMQ5FS7cHEuA+OBe?=
+ =?us-ascii?Q?Zefviv4wWS2mzQN0opaR+eTVQFlo2amSHlK2Wu7Bxr6nmuHffERnjL7JWIPQ?=
+ =?us-ascii?Q?1rk5EZwOuBOJeipTa0LfQ2gU4yVIxmGtskikOrfQUIWKkRV6NUMWlWAExZH2?=
+ =?us-ascii?Q?KY+NFPRdGdy4V5K3wTw/J0GFTdXaw3vsivRAmlneq8mjtahSefxuNbHvxSJf?=
+ =?us-ascii?Q?u5YQMubDgCuh4RwTWXNED5qJ4OJFWViOeNokglGYRz8Y5F/KBJj+6ZBSO9wP?=
+ =?us-ascii?Q?EsadJ/5PEVFp4c0IztFWiAFYBhn/CSqenF5o6OoMEVw/ohAxqs9dVboHssRX?=
+ =?us-ascii?Q?fJpNeM5i8KPfSiDKRyjeul0G58PzmdET2YCRj0mH9NvTM8NI1xy4rMKymCsY?=
+ =?us-ascii?Q?3GI3YUKi7hc+GVruzglPOYkDE2ogbu1E3YGFgzy6AiO48Nx9Rs7Lg9aGSIDj?=
+ =?us-ascii?Q?Pu3Uyn1xOAg4zOobg53lDls2qNXVTAJyXNBIQyfP3Tq57BLiXGe2mLshD8uq?=
+ =?us-ascii?Q?cJ2YlNwg4jyz1xweAdA+uN4/PIu9CjYi5pI3F0OYBI42pVP92FFieHZYYY1r?=
+ =?us-ascii?Q?WHeb+sP1E+e1ap3GF26N81YYjTyPG894Twww6OYY0liyh4VFxovvbJL37V5o?=
+ =?us-ascii?Q?4Ir3LZIiyYgcrzvhxDuDw8DAM6G8pKXmKo2/Y2sJ69XXLN2M0nqANa0bN2d3?=
+ =?us-ascii?Q?JrWtPRjFIhiAap9+FviwxMl8WF66ensbZUNq4OJC?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a330b0e-618a-4338-bacb-08db04cacfd2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Feb 2023 03:08:51.9031 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7ec14ef4-b44c-4200-8954-08db04d02339
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Feb 2023 03:46:59.3582 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 0lE7txsD9DoOV7HCQI7GM/Qhnj8yFHF4rx7XN5EtUa/TCZGavOjyIUUJx9gmnwk+FWrOeOkqkuc9YzoCI0UrEw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB6994
+X-MS-Exchange-CrossTenant-userprincipalname: 6KKH0XDqF5rMKKzePZZ0oAcOinSK0k3PoxHUwp6fhNes8jV/Yj9S7bb11HznOGe/owFrVnxwzK/kc2l6lOETfw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB7351
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -169,8 +159,7 @@ Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
  "cohuck@redhat.com" <cohuck@redhat.com>, "Tian, Kevin" <kevin.tian@intel.com>,
  "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
  "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "pbonzini@redhat.com" <pbonzini@redhat.com>,
  "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
@@ -180,29 +169,179 @@ Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-PiBGcm9tOiBNYXR0aGV3IFJvc2F0byA8bWpyb3NhdG9AbGludXguaWJtLmNvbT4NCj4gU2VudDog
-V2VkbmVzZGF5LCBGZWJydWFyeSAxLCAyMDIzIDEwOjQzIFBNDQo+IA0KPiBPbiAyLzEvMjMgNzo0
-MyBBTSwgTGl1LCBZaSBMIHdyb3RlOg0KPiA+PiBGcm9tOiBKYXNvbiBHdW50aG9ycGUgPGpnZ0Bu
-dmlkaWEuY29tPg0KPiA+PiBTZW50OiBXZWRuZXNkYXksIEZlYnJ1YXJ5IDEsIDIwMjMgNDoyNiBB
-TQ0KPiA+Pg0KPiA+PiBPbiBUdWUsIEphbiAzMSwgMjAyMyBhdCAwMzowNjozNVBNIC0wNTAwLCBN
-YXR0aGV3IFJvc2F0byB3cm90ZToNCj4gPj4+IEBAIC03OTksMTMgKzc5NCwxNCBAQA0KPiA+PiBF
-WFBPUlRfU1lNQk9MX0dQTCh2ZmlvX2ZpbGVfZW5mb3JjZWRfY29oZXJlbnQpOw0KPiA+Pj4gIHZv
-aWQgdmZpb19maWxlX3NldF9rdm0oc3RydWN0IGZpbGUgKmZpbGUsIHN0cnVjdCBrdm0gKmt2bSkN
-Cj4gPj4+ICB7DQo+ID4+PiAgCXN0cnVjdCB2ZmlvX2dyb3VwICpncm91cCA9IGZpbGUtPnByaXZh
-dGVfZGF0YTsNCj4gPj4+ICsJdW5zaWduZWQgbG9uZyBmbGFnczsNCj4gPj4+DQo+ID4+PiAgCWlm
-ICghdmZpb19maWxlX2lzX2dyb3VwKGZpbGUpKQ0KPiA+Pj4gIAkJcmV0dXJuOw0KPiA+Pj4NCj4g
-Pj4+IC0JbXV0ZXhfbG9jaygmZ3JvdXAtPmdyb3VwX2xvY2spOw0KPiA+Pj4gKwlzcGluX2xvY2tf
-aXJxc2F2ZSgmZ3JvdXAtPmt2bV9yZWZfbG9jaywgZmxhZ3MpOw0KPiA+Pj4gIAlncm91cC0+a3Zt
-ID0ga3ZtOw0KPiA+Pj4gLQltdXRleF91bmxvY2soJmdyb3VwLT5ncm91cF9sb2NrKTsNCj4gPj4+
-ICsJc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmZ3JvdXAtPmt2bV9yZWZfbG9jaywgZmxhZ3MpOw0K
-PiA+Pg0KPiA+PiBXZSBrbm93IHdlIGFyZSBpbiBhIHNsZWVwaW5nIGNvbnRleHQgaGVyZSBzbyB0
-aGVzZSBhcmUganVzdA0KPiA+PiAnc3Bpbl9sb2NrKCknLCBzYW1lIHdpdGggdGhlIG90aGVyIG9u
-ZQ0KPiA+DQo+ID4gYSBkdW1iIHF1ZXN0aW9uLiBXaHkgc3BpbmxvY2sgaXMgcmVxdWlyZWQgaGVy
-ZT8g8J+Yig0KPiA+DQo+IA0KPiBZb3UgbWVhbiBhcyBvcHBvc2VkIHRvIGFub3RoZXIgbXV0ZXg/
-ICBJIGRvbid0IHRoaW5rIGl0J3MgcmVxdWlyZWQgcGVyIHNlDQo+ICh3ZSBhcmUgcmVwbGFjaW5n
-IGEgbXV0ZXggc28gd2UgY291bGQgaGF2ZSBhZ2FpbiB1c2VkIGFub3RoZXIgbXV0ZXgNCj4gaGVy
-ZSksIGJ1dCBhbGwgY3VycmVudCB1c2VycyBvZiB0aGlzIG5ldyBsb2NrIGhvbGQgaXQgb3ZlciBh
-IHZlcnkgc2hvcnQgd2luZG93DQo+IChlLmcuIHNldCBhIHBvaW50ZXIgYXMgYWJvdmUsIG9yIHJl
-ZmNvdW50KysgYW5kIGNvcHkgdGhlIHBvaW50ZXIgYXMgaW4gdGhlDQo+IGZpcnN0IGRldmljZV9v
-cGVuKQ0KDQpJIHNlZS4gSnVzdCBub3Qgc3VyZSBpZiBzcGlubG9jayBpcyByZXF1aXJlZCBmb3Ig
-YSBzcGVjaWFsIHJlYXNvbi4NCg0KUmVnYXJkcywNCllpIExpdQ0K
+> From: Alex Williamson <alex.williamson@redhat.com>
+> Sent: Thursday, February 2, 2023 7:28 AM
+>=20
+> On Wed,  1 Feb 2023 14:20:10 -0500
+> Matthew Rosato <mjrosato@linux.ibm.com> wrote:
+>=20
+> > After 51cdc8bc120e, we have another deadlock scenario between the
+> > kvm->lock and the vfio group_lock with two different codepaths acquirin=
+g
+> > the locks in different order.  Specifically in vfio_open_device, vfio
+> > holds the vfio group_lock when issuing device->ops->open_device but
+> some
+> > drivers (like vfio-ap) need to acquire kvm->lock during their open_devi=
+ce
+> > routine;  Meanwhile, kvm_vfio_release will acquire the kvm->lock first
+> > before calling vfio_file_set_kvm which will acquire the vfio group_lock=
+.
+> >
+> > To resolve this, let's remove the need for the vfio group_lock from the
+> > kvm_vfio_release codepath.  This is done by introducing a new spinlock =
+to
+> > protect modifications to the vfio group kvm pointer, and acquiring a kv=
+m
+> > ref from within vfio while holding this spinlock, with the reference he=
+ld
+> > until the last close for the device in question.
+> >
+> > Fixes: 51cdc8bc120e ("kvm/vfio: Fix potential deadlock on vfio group_lo=
+ck")
+> > Reported-by: Anthony Krowiak <akrowiak@linux.ibm.com>
+> > Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+> > Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> > ---
+> > Changes from v1:
+> > * use spin_lock instead of spin_lock_irqsave (Jason)
+> > * clear device->kvm_put as part of vfio_kvm_put_kvm (Yi)
+> > * Re-arrange code to avoid referencing the group contents from within
+> >   vfio_main (Kevin) which meant moving most of the code in this patch
+> >   to group.c along with getting/dropping of the dev_set lock
+> > ---
+> >  drivers/vfio/group.c     | 90
+> +++++++++++++++++++++++++++++++++++++---
+> >  drivers/vfio/vfio.h      |  1 +
+> >  drivers/vfio/vfio_main.c | 11 ++---
+> >  include/linux/vfio.h     |  2 +-
+> >  4 files changed, 91 insertions(+), 13 deletions(-)
+> >
+> > diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+> > index bb24b2f0271e..52f434861294 100644
+> > --- a/drivers/vfio/group.c
+> > +++ b/drivers/vfio/group.c
+> > @@ -13,6 +13,9 @@
+> >  #include <linux/vfio.h>
+> >  #include <linux/iommufd.h>
+> >  #include <linux/anon_inodes.h>
+> > +#ifdef CONFIG_HAVE_KVM
+> > +#include <linux/kvm_host.h>
+> > +#endif
+> >  #include "vfio.h"
+> >
+> >  static struct vfio {
+> > @@ -154,6 +157,55 @@ static int vfio_group_ioctl_set_container(struct
+> vfio_group *group,
+> >  	return ret;
+> >  }
+> >
+> > +#ifdef CONFIG_HAVE_KVM
+> > +static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct
+> kvm *kvm)
+>=20
+> I'm tempted to name these vfio_device_get_kvm_safe() and only pass the
+> vfio_device, where of course we can get the kvm pointer from the group
+> internally.
+>=20
+> > +{
+> > +	void (*pfn)(struct kvm *kvm);
+> > +	bool (*fn)(struct kvm *kvm);
+> > +	bool ret;
+> > +
+>=20
+> We should assert_lockdep_held(&device->dev_set->lock) in both of these
+> since that seems to be what's protecting device->kvm and
+> device->put_kvm.
+>=20
+> If we change as above to get the kvm pointer from the group within this
+> function, we can also move the kvm_ref_lock here, which seems to
+> simplify the caller quite a bit.
+>=20
+> > +	pfn =3D symbol_get(kvm_put_kvm);
+> > +	if (WARN_ON(!pfn))
+> > +		return false;
+> > +
+> > +	fn =3D symbol_get(kvm_get_kvm_safe);
+> > +	if (WARN_ON(!fn)) {
+> > +		symbol_put(kvm_put_kvm);
+> > +		return false;
+> > +	}
+> > +
+> > +	ret =3D fn(kvm);
+> > +	if (ret)
+> > +		device->put_kvm =3D pfn;
+> > +	else
+> > +		symbol_put(kvm_put_kvm);
+> > +
+> > +	symbol_put(kvm_get_kvm_safe);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static void vfio_kvm_put_kvm(struct vfio_device *device)
+> > +{
+> > +	if (WARN_ON(!device->kvm || !device->put_kvm))
+> > +		return;
+>=20
+> It simplifies the caller if we can use this even in the !device->kvm
+> case.
+>=20
+> > +
+> > +	device->put_kvm(device->kvm);
+> > +	device->put_kvm =3D NULL;
+> > +	symbol_put(kvm_put_kvm);
+> > +}
+> > +
+> > +#else
+> > +static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct
+> kvm *kvm)
+> > +{
+> > +	return false;
+> > +}
+> > +
+> > +static void vfio_kvm_put_kvm(struct vfio_device *device)
+> > +{
+> > +}
+> > +#endif
+> > +
+> >  static int vfio_device_group_open(struct vfio_device *device)
+> >  {
+> >  	int ret;
+> > @@ -164,14 +216,32 @@ static int vfio_device_group_open(struct
+> vfio_device *device)
+> >  		goto out_unlock;
+> >  	}
+> >
+> > +	mutex_lock(&device->dev_set->lock);
+> > +
+> >  	/*
+> > -	 * Here we pass the KVM pointer with the group under the lock.  If
+> the
+> > -	 * device driver will use it, it must obtain a reference and release =
+it
+> > -	 * during close_device.
+> > +	 * Before the first device open, get the KVM pointer currently
+> > +	 * associated with the group (if there is one) and obtain a reference
+> > +	 * now that will be held until the open_count reaches 0 again.  Save
+> > +	 * the pointer in the device for use by drivers.
+> >  	 */
+> > +	if (device->open_count =3D=3D 0) {
+> > +		spin_lock(&device->group->kvm_ref_lock);
+> > +		if (device->group->kvm &&
+> > +		    vfio_kvm_get_kvm_safe(device, device->group->kvm))
+> > +			device->kvm =3D device->group->kvm;
+> > +		spin_unlock(&device->group->kvm_ref_lock);
+> > +	}
+> > +
+> >  	ret =3D vfio_device_open(device, device->group->iommufd,
+> >  			       device->group->kvm);
+>=20
+> We're using device->group->kvm outside of kvm_ref_lock here, it should
+> be using device->kvm.
+
+Existing code set device->kvm in the vfio_device_first_open() which is
+called by vfio_device_open(). After above change, seems not necessary
+to pass kvm pointer into the call chain. Isn't it?
+
+Regards,
+Yi Liu
