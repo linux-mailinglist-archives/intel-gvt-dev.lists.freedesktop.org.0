@@ -2,43 +2,143 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9977868891E
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 22:42:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D77E8688A71
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 00:05:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5202A10E2C8;
-	Thu,  2 Feb 2023 21:42:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A76B010E66B;
+	Thu,  2 Feb 2023 23:05:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Thu, 02 Feb 2023 21:42:54 UTC
-Received: from mail.mrecanvas.monster (unknown [45.13.189.132])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4293B10E1F4
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Feb 2023 21:42:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mrecanvas.monster;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=canvasprints_affiliate@mrecanvas.monster; 
- bh=8LzxOdCOjepprsGZWl5b2udY0CI=;
- b=UYxv++i/YjqdfahNEc/9vjYZazATo3UBkFx8RbwELzB8Dxrh8a0un/kkykOJ04G7RlH2PvifOMUd
- sY1ZnYxxWO43++xzHpZ46qeWPdmZAkq5s8G+/hqT3PVX036i6UGXmz9PZmmFWQkvjCMsoFS1PxC8
- CGRi/4bKG+dW+oJVPXk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mrecanvas.monster; 
- b=QiKm1fBM1wYU33vsTcaB0j5GU8VYia5INO/NwnS/GDx7sHh+eiVNwbXfJG8YmWN3+Nf9X1crsfU7
- SW7bam0SG2O8s+iPXxEgzu7l4qxM37bkEvRPxXbjdBqas5qwtWQm+Jcml+wqv5O9NR4xGKUImpuj
- uEqXsbsYFS5CSJxEeWM=;
-Received: by mail.mrecanvas.monster id hrh1be0001ge for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Feb 2023 18:01:10 -0500 (envelope-from
- <canvasprints_affiliate-intel+2Dgvt+2Ddev=lists.freedesktop.org@mrecanvas.monster>)
-Date: Thu, 2 Feb 2023 18:01:10 -0500
-From: "CanvasPrints Affiliate" <canvasprints_affiliate@mrecanvas.monster>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Capture Your Memories With Our Winter Sale! 11x14 Custom Canvas for
- Only $9.99!
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6598010E66B;
+ Thu,  2 Feb 2023 23:05:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675379115; x=1706915115;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=9A02vOBtiyi0KjufMxU4bs/JzlS+rsSRuujCtM123xg=;
+ b=g8sGZEdAr53+J0+QxfqAIde+VzEuWtN0ZdC2MWtdowXuYlFJcse7ITEj
+ exL4b0xAnFSUJK9zSxV4V9mc4K3VLPhT7+ypChjN77k+tA4MclDMN2Rba
+ E3RSnsoHD8Wh1H6bKXTDNhunnv12CejiX6TiRzOJel4zt46j2Xx5D1mog
+ CEc5JteH9nBc4ZxCn78pkY+/GoDr34Qc2aSNS4dLPhVO1tAJCorZ6qj7k
+ wKaPu5Ab6V60wTNsYniDn1PGxZBqp+halubDxB/ZEKlm3W/37M6Q/4Bh4
+ 5sWjQLuhA/lGDxZUpJRMRTEp2QKeb83SbXLXUS/TB56spnJOknp6Ciqe0 Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10609"; a="414804348"
+X-IronPort-AV: E=Sophos;i="5.97,268,1669104000"; d="scan'208";a="414804348"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Feb 2023 15:04:44 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10609"; a="665483741"
+X-IronPort-AV: E=Sophos;i="5.97,268,1669104000"; d="scan'208";a="665483741"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga002.jf.intel.com with ESMTP; 02 Feb 2023 15:04:18 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Thu, 2 Feb 2023 15:04:18 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Thu, 2 Feb 2023 15:04:18 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Thu, 2 Feb 2023 15:04:18 -0800
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.100)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Thu, 2 Feb 2023 15:04:18 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZIo/+Z0lHncQGQdIKRMwcykQ01sfAG+phimNaezi7RInqLjDzzMsK7S7MjAUjubTUjcuVYaFGOm+JILf/GUecSOHVNFGcK5wAMiiClxFhDtYhQ4ZoumodWm0E8nOunQkLPdJ9WS8eFy/P9eLA/oQcflr37y6UVBaJBDV4O0d2nQwtMkh9VsTtC6nhTotQEVwntu9EbdPamdrTVTJ0SQae2FiYdBL5bJQM0wx0oph08Sg554NrEemxh8a4svZ/0ybdRUKkwRmJmbgSsL66/HbEsPydWW+aof8GNnfIvNmd2ObmSdlNme6D7+DvaMptaAO0L/NMdROF4c9CR9fN1Y3Qw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0+8awIdNGKhJ/VRiVk2p+jl2LL7bfVT3xbTIQSyHECI=;
+ b=IjcLKXsnb2pH/1H+lzvE2UcTi9GaHJhZjHIwutqX3ZFRWxeksmGSPiTHit3dwSNpKe6rs5tyBCel6iIJhr/YsFhzzOZA0x0qAp4rJrRW/sSvlQkzY9ZbZp0QYbjr6zvAFX0VBeGzsMJ6LNyLMRDY3yOU2kBiV3jH3tbrFbDaJ8yORwpwcB6Ics0NId4hdkAbifLplYBlyU/+Jbj5Z9Q/qDcb8ok45EEGH/jdakvPrOY1+fu3LOWMGj4KI72L7NciptroluHxDClseW7ngMelUp+SIxBIRHKXq6cHQC4vDXjWugB/Qwqd04cx1aSIMi+CCi0H+ThjLwF4h/44gyQTKw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by PH7PR11MB7146.namprd11.prod.outlook.com (2603:10b6:510:1ed::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.24; Thu, 2 Feb
+ 2023 23:04:10 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d%8]) with mapi id 15.20.6064.027; Thu, 2 Feb 2023
+ 23:04:10 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>
+Subject: RE: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
+Thread-Topic: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
+Thread-Index: AQHZNyMj/DyFlYgOy0urx1B0EjoKIa68DpoAgAA1mqA=
+Date: Thu, 2 Feb 2023 23:04:10 +0000
+Message-ID: <BN9PR11MB527618E281BEB8E479ABB0418CD69@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230202162442.78216-1-mjrosato@linux.ibm.com>
+ <20230202124210.476adaf8.alex.williamson@redhat.com>
+In-Reply-To: <20230202124210.476adaf8.alex.williamson@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|PH7PR11MB7146:EE_
+x-ms-office365-filtering-correlation-id: da9353e5-7eb1-41c3-4517-08db0571cb2d
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: OapXXy/fyjFpVymo+mcJaju3+SaFAg/XeMMX8XCEUjeNFQzNoQjFJEyOaYAQsNreper3TFkUxYaYUF2HblZlIr01jvzAXJKYakwHMEFgvLDuy7IbFhEpgbY8it9m0cHjc95PytsoLPskk5CeB/sbZmWzTPhexBVmDS0r2wjXLSe6+vcRNI0aGFsMCmBtv24InVmIIWzZx1pdZDmHYV4PTnOtycvtX/KPbdLUZifWm9bwvrermpZ25z6UxMYmc+BX2NkcetILKifapRvq+iFHkY10+GtkUYOnxlhCYyAqLEHtu86QvVimijc0Fry8XFETcHpVHHaGR+lwy89yFEHTkDgNPdnTacESo4JppMZCzqxM/lTlda+0KQUvoQTYe9eha7MErbsA28zp6JIYBlRNqzjOLX5IQibOHBrReTkN4v7aeAIm+51DE5q8u95MY2xSadb2Nrb02dTQaVy0o99MBqfguHLVoFsE9s5+47LkpWNvgVq3+oL7IlLSGGs6siwXsRvjcK6aFa1jn+SfX/LkbZi5WUJyYuxb+0qjk2zZRdwzqj7y7o1TQdCpVqKF6AGBWeQ/ZvsoXiIsLNeWpCVuVsPkPxTb36TWm0c3VHrwuOn7KInXs4b30EL3Orme3Zmn88uI26ixX5duzaC5528gCgRAT9cOAnrbYpTspKRiXkkC559I5u9c+zF6G07vzGdWMSzq10ydr6nFmI4SLamfIQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(346002)(366004)(39860400002)(376002)(136003)(396003)(451199018)(76116006)(186003)(8676002)(38070700005)(38100700002)(122000001)(316002)(110136005)(54906003)(5660300002)(2906002)(7416002)(8936002)(82960400001)(66446008)(6506007)(66556008)(52536014)(4326008)(64756008)(66946007)(41300700001)(66476007)(83380400001)(55016003)(9686003)(26005)(71200400001)(33656002)(7696005)(478600001)(86362001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?zcNDVPKE6Lhp0zSTQtQ9dBUbmntlY+ONfpNFqmlMZxTDEsNRougQGGjPJ/ai?=
+ =?us-ascii?Q?PLAuEnO2Rf1/GIcNF0CPLP32D30xO7y/BM41KN/ErVbdiRftETTe1Iy4bpb/?=
+ =?us-ascii?Q?K5dK8doAew0s7OkqRio0c9z8hH5HMmXKSUP46wDcmC61SxECEtncasrDjnc3?=
+ =?us-ascii?Q?+zdt5GUsy4soY9fn0lAnJiQH6i5J+WTVCawSDJvlUiuRb218Rchn4jyRA/Dr?=
+ =?us-ascii?Q?mX36SN/AQpDL/yvjwbgQLWkvSTZEIKuhpapgEFIyHjuNZiHJ108raqxo7BHR?=
+ =?us-ascii?Q?v51zssdRxdAuwzfCtQrNtDvdpnzaj0l06Zp0c7i9vFtj9y18Q/xKDFG7zZI3?=
+ =?us-ascii?Q?g7RMeTSqExYOT7Sg+2JRUZ+MUCzGESd+47TlSPOk4tgiwLZB0V6xapLNVY5j?=
+ =?us-ascii?Q?E9ZLbIz+RjgUsF0nt5Q/ICGX+12BIE98vpApmo8MIb7Zta4uob9RwVmzfYM1?=
+ =?us-ascii?Q?jj9nMcMuWqWAnvfqIM9R8eQf8+1EAcajvmF1TuzLVXH9QHmme/SiQMu8clus?=
+ =?us-ascii?Q?unuj0B8UXH6hNOH5Oq9uzWH5jMCdyPUj0IV2A1CQfFw6ZywJkQLD4Bcv7BFm?=
+ =?us-ascii?Q?65txeOnxHG+CJJHreaaIQJGgJAEL64k9GbtZy32dpIiGTztP0ThaS0Se6359?=
+ =?us-ascii?Q?tLO3oIJXMI6+kXpmY+mckF2n1WZQd+eZmU9pYXI/Yc2bg6GJtzMybHrbfucv?=
+ =?us-ascii?Q?4Jy/kfXTBreaqfzRtDObeKwmqzG3wvRzjRRn/w5q+FMQO58EfwmGJ3Z60R/e?=
+ =?us-ascii?Q?oOGEkRWoc3G/hz2PEAOi0e8YUrE/YqLM8jyrguHYee0fOtxXYUSr4Cpp2jnS?=
+ =?us-ascii?Q?TLOUvy5vfhXT7YcF0ckta7mppFm/mVz5VlUCbHPdyKiyzohiFHxOCc7qTu/E?=
+ =?us-ascii?Q?I/bPboJKI12nJCb4SN9dMtcD07mkHa8swaJRahF4gj7G+icglFQ5PZkK1SMw?=
+ =?us-ascii?Q?PTysxpIIEuLXBjlxuOptMA0D32AplANrf+cDB0I3DErYPmUDYYVxhDMN8YWV?=
+ =?us-ascii?Q?pSGqjuhd95XtXKeQhb1hzXffo8ambvOShG8w6XaRKDeLoVzYB2GjHm9XwhKb?=
+ =?us-ascii?Q?d2cnc4fMIr5nULnEYLYyYShrw4TBLbRbuYIrB9rqJAH/lv51UW+i5MAS31CN?=
+ =?us-ascii?Q?rXhCcR3GO+nd7gteYVYkQC7RDIpEqOSo8yn1lqkqWZ/vk0siOo5QSttmsXgP?=
+ =?us-ascii?Q?OY4Y7Lj+Yxe39TMFi13lQ2Yructt4LMc3q1LFvxpSBdxr4h6lixUSC9McrIM?=
+ =?us-ascii?Q?fLPBUxpbOkC1m5vTirlJ6WITMvJUg6LCusBpQJRkip2ddZpIzligc/wPQ3U8?=
+ =?us-ascii?Q?kq/pIoZe5kLeHS9zI0rZ6+tsMX/iOnA4s7LpqJMygnCBeMkIAE1+oAOZzzGV?=
+ =?us-ascii?Q?R0Hj/vsRnKzacJ9YH/KoDGj2HJLMHEGA35Qb2677ee5i0Cz8SLRIFMqdQryW?=
+ =?us-ascii?Q?s5KHuYbsXuo/+hMSRDXE/idxmAH8mSNSqaE8TYuokkx28BEdfaud8zBcAYu5?=
+ =?us-ascii?Q?rmSIf7dIoaaKoaUGMqf4MZ6KdbCbbqnJkYXtJrMpFQyusVYOGWDNPl15Nviq?=
+ =?us-ascii?Q?SbSnY15c/Zg6oBFs94MUZYepr+Js2zyD18s2yIHm?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_430_1952580233.1675373564798"
-Message-ID: <0.0.0.322.1D9375A3D5D8A64.1123B0@mail.mrecanvas.monster>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: da9353e5-7eb1-41c3-4517-08db0571cb2d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Feb 2023 23:04:10.0617 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 6O95gKukaSnRu6TBdcPRyB1SEXbO/HiRqbehD7aBKeOo1NIVzUluFHzHIDrZ7oz8bT5C36t9DQx1Ac0FlnSKDw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7146
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,72 +151,107 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_430_1952580233.1675373564798
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+> From: Alex Williamson <alex.williamson@redhat.com>
+> Sent: Friday, February 3, 2023 3:42 AM
+>=20
+> On Thu,  2 Feb 2023 11:24:42 -0500
+> Matthew Rosato <mjrosato@linux.ibm.com> wrote:
+>=20
+> > After 51cdc8bc120e, we have another deadlock scenario between the
+> > kvm->lock and the vfio group_lock with two different codepaths acquirin=
+g
+> > the locks in different order.  Specifically in vfio_open_device, vfio
+> > holds the vfio group_lock when issuing device->ops->open_device but
+> some
+> > drivers (like vfio-ap) need to acquire kvm->lock during their open_devi=
+ce
+> > routine;  Meanwhile, kvm_vfio_release will acquire the kvm->lock first
+> > before calling vfio_file_set_kvm which will acquire the vfio group_lock=
+.
+> >
+> > To resolve this, let's remove the need for the vfio group_lock from the
+> > kvm_vfio_release codepath.  This is done by introducing a new spinlock =
+to
+> > protect modifications to the vfio group kvm pointer, and acquiring a kv=
+m
+> > ref from within vfio while holding this spinlock, with the reference he=
+ld
+> > until the last close for the device in question.
+> >
+> > Fixes: 51cdc8bc120e ("kvm/vfio: Fix potential deadlock on vfio group_lo=
+ck")
+> > Reported-by: Anthony Krowiak <akrowiak@linux.ibm.com>
+> > Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+> > Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> > ---
+> > Changes from v2:
+> > * Relocate the new functions back to vfio_main and externalize to call
+> >   from group (Kevin) since cdev will need this too
+> > * s/vfio_kvm_*_kvm/vfio_device_*_kvm/ and only pass device as input.
+> >   Handle new kvm_ref_lock directly inside vfio_device_get_kvm (Alex)
+> > * Add assert_lockdep_held for dev_set lock (Alex)
+> > * Internalize error paths for vfio_device_get_kvm_safe and now return
+> >   void - either device->kvm is set with a ref taken or is NULL (Alex)
+> > * Other flow suggestions to make the call path cleaner - Thanks! (Alex)
+> > * Can't pass group->kvm to vfio_device_open, as it references the value
+> >   outside of new lock.  Pass device->kvm to minimize changes in this
+> >   fix (Alex, Yi)
+> > Changes from v1:
+> > * use spin_lock instead of spin_lock_irqsave (Jason)
+> > * clear device->kvm_put as part of vfio_kvm_put_kvm (Yi)
+> > * Re-arrange code to avoid referencing the group contents from within
+> >   vfio_main (Kevin) which meant moving most of the code in this patch
+> >   to group.c along with getting/dropping of the dev_set lock
+> > ---
+> >  drivers/vfio/group.c     | 32 ++++++++++++++----
+> >  drivers/vfio/vfio.h      | 14 ++++++++
+> >  drivers/vfio/vfio_main.c | 70 ++++++++++++++++++++++++++++++++++++--
+> --
+> >  include/linux/vfio.h     |  2 +-
+> >  4 files changed, 103 insertions(+), 15 deletions(-)
+>=20
+> LGTM.  I'm not sure moving the functions to vfio_main really buys us
+> anything since we're making so much use of group fields.  The cdev
+> approach will necessarily be different, so the bulk of the get code will
+> likely need to move back to group.c anyway.
+>=20
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <meta charset="UTF-8" /> 
-  <title></title> 
- </head> 
- <body> 
-  <p id="separate"><a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank">&nbsp;</a></p> 
-  <table border="0" cellpadding="3" cellspacing="3" class="integrity" style="display: inline-block" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td><a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank">&nbsp;</a></td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table border="0" cellpadding="3" cellspacing="3" id="ambiguity" style="display: inline-block" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td><a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank">&nbsp;</a></td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <ul style="list-style-type: none; margin: 0"> 
-   <li style="text-align: center"> <p id="perceive"><a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank">&nbsp;</a></p> 
-    <center>
-     <a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank"><img alt="federation" src="http://www.mrecanvas.monster/antihistorical-appointing/42c6d23CA95zu7aR13k48hfCfN115dt36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQVdenn5Q_1B05h@wqD" /></a>
-    </center> </li> 
-   <!-- scientists have made a historic discovery that could change the course of space exploration. After years of extensive research, the team has confirmed the existence of liquid water on the surface of Mars. The discovery was made using the Mars Reconnaissance Orbiter, which detected strong evidence of subsurface liquid water flows on the planet. 
---> 
-   <li> 
-    <center> 
-     <table border="0" cellpadding="2" cellspacing="2" class="yard" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td>&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td>&nbsp;</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </center> </li> 
-   <!--		This finding is significant because liquid water is a key ingredient for life as we know it. The presence of water on Mars opens up the possibility for finding microbial life and supports the potential for human exploration and settlement on the planet in the future. The discovery also sheds light on the history of Mars, suggesting that it was once a more hospitable place with a thicker atmosphere and a warmer climate.--> 
-   <li> 
-    <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> <p align="center" class="lemon" id="shortage" style="font-size: 10px; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'">&nbsp;If you do not wish to receive future messages click here to <span class="unstyle-auto-detected-links"><a href="http://www.mrecanvas.monster/a9d5Jo2395QT86q13i48ufOdj115dA36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQVdenn6Wn1qN05SqkwD/canceled-Visigoths" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">get me out</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.mrecanvas.monster/b514j2395n86Hs12MR48feP115di36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQVdenn7uq1orC06Ilz3wD/Tucson-drooped" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Easy Canvas Prints</a>&nbsp;|&nbsp; 11525a Stonehollow Dr #100 | 
- Austin, TX 78758</span></p> </li> 
-  </ul>   
- <img src="http://www.mrecanvas.monster/diagnostics-distillers/e9a5P2D395C85Gw13t4w90_0o115dw36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQVdenn5nX10J6E1TwDj" alt=""/></body>
-</html>
+well my last comment was based on Matthew's v2 where the get code
+gets a kvm passed in instead of implicitly retrieving group ref_lock
+internally. In that case the get/put helpers only contain device logic
+thus fit in vfio_main.c.
 
-------=_Part_430_1952580233.1675373564798--
+with v3 then they have to be in group.c since we don't want to use
+group fields in vfio_main.c.
 
+but I still think v2 of the helpers is slightly better. The only difference
+between cdev and group when handling this race is using different
+ref_lock. the symbol get/put part is exactly same. So even if we
+merge v3 like this, very likely Yi has to change it back to v2 style
+to share the get/put helpers while just leaving the ref_lock part
+handled differently between the two path.
+
+Thanks
+Kevin
