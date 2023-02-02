@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6356B68875E
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 20:11:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E7F82688939
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 22:49:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A694810E5E8;
-	Thu,  2 Feb 2023 19:11:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0B31310E64E;
+	Thu,  2 Feb 2023 21:49:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Thu, 02 Feb 2023 19:11:40 UTC
-Received: from mail.ameriperks.click (unknown [45.13.189.109])
- by gabe.freedesktop.org (Postfix) with ESMTP id CDB2C10E5E8
+X-Greylist: delayed 2193 seconds by postgrey-1.36 at gabe;
+ Thu, 02 Feb 2023 21:49:53 UTC
+Received: from mail.brainups.click (unknown [45.13.189.119])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 53E3E10E64B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Feb 2023 19:11:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ameriperks.click;
+ Thu,  2 Feb 2023 21:49:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=brainups.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=myseniorperks_19_financial_secrets@ameriperks.click; 
- bh=TB8w4bileEYcqdgasU7F60EPOfg=;
- b=VLzgS41mbzZaM0SIp4nhmdL6j5gmnz325qciS7cFyUMFu8itRB5PxGWYbQ2gmKVOvITYc8ky4Qf1
- 24OVT46HpiOpRbfxD61XK0opLHyikhMu2lmERo7J7BiUf+Y4e0SaHQ/BRMG+AmWJPfMkxI1dxsDS
- baRWYDQAwVWhhxjhj/I=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ameriperks.click;
- b=JGL+M9IdKyjfX6anq0Xim/IWQZ0CL7xwFdwSX7JxYdM7MWudh4snKm+7ZocXcKeszMOUDaBILsIQ
- VzaLDOW1TDZ4IDb2I8O/kH7Pad+yen14FQnEUuP7WsTk/Rnsbq6tUiMgdOa/9kjkmpQIeKXearuY
- mYN2rnlTV9TjFsW2dBY=;
-Received: by mail.ameriperks.click id hrgfkc0001gs for
+ i=brain_blueprint_news@brainups.click; 
+ bh=G7FsPQoMaPIBLDDLlV6/OZGJqAE=;
+ b=aI7WRfCIHIGwPd53vSftsSfDqhEGeSLAz4nJNQNt2SW4nBBvPhW1gBgVZ8/ZJgT7kA53I4ROqE0L
+ 3RNYVWA2bm16665zQve/90Po7i3aVrZAMz7PosptEbITAo0bUPEA0V+Ua6wjtw/68VjcqaAfEir8
+ f6Z5wDaKAwmLX+LkH6g=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=brainups.click;
+ b=OP3KJ663Kj/YbXYUW4RTBdxfWUjHQaYAfcDuaMDnH2Enj3Q7kFlDr0Gtkpaec8koOX3QkiohDyBm
+ 4vl5Np51Ssbrrq76nqnwiyEkJ7rBy0avwqiIVplobvzHDUnIl1Nr4PdA6KxnriptIG09XPCUXUOE
+ OApZ6o1Qpag7Zc2Yw3o=;
+Received: by mail.brainups.click id hrgo020001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Feb 2023 15:29:29 -0500 (envelope-from
- <myseniorperks_19_financial_secrets-intel+2Dgvt+2Ddev=lists.freedesktop.org@ameriperks.click>)
-Date: Thu, 2 Feb 2023 15:29:29 -0500
-From: "MySeniorPerks 19 Financial Secrets"
- <myseniorperks_19_financial_secrets@ameriperks.click>
+ Thu, 2 Feb 2023 15:34:15 -0500 (envelope-from
+ <brain_blueprint_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@brainups.click>)
+Date: Thu, 2 Feb 2023 15:34:15 -0500
+From: "Brain Blueprint News" <brain_blueprint_news@brainups.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: 18 American Senior Discounts You Didn't Know About
+Subject: FOR "3Ways" CREATIVE: 3 simple ways to prevent or reverse dementia
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_340_607521473.1675364498724"
-Message-ID: <0.0.0.288.1D937450D21AB9C.1C3999@mail.ameriperks.click>
+ boundary="----=_Part_391_1396660266.1675369956849"
+Message-ID: <0.0.0.2CD.1D93745B792DF2E.40E021@mail.brainups.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,59 +53,78 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_340_607521473.1675364498724
+------=_Part_391_1396660266.1675369956849
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head> 
-  <title></title> 
+  <title>happening</title> 
  </head> 
- <body>
-  &nbsp; 
-  <table align="center" bgcolor="#eee" border="0" cellpadding="2" cellspacing="2" width="100%"> 
+ <body style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"> 
+  <div class="generate" id="headline"> 
+   <p class="presentation" id="complete">A new study from Harvard Scientists has revealed<br /> that <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">ONE of the following foods</a> is linked to combating<br /> Alzheimer's and dementia. Can you guess which it is?</p> 
+  </div> 
+  <div class="eyebrow" id="swipe"> 
+   <p class="scandal" id="federation">1. <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Red wine</a></p> 
+  </div> 
+  <div class="strikebreaker" id="essay"> 
+   <p class="pumpkin" id="knowledge">2. <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Fish</a></p> 
+  </div> 
+  <div class="village" id="motorist"> 
+   <p class="ignite" id="wound">3. <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Avocados</a></p> 
+  </div> 
+  <div class="constitutional" id="participate"> 
+   <p class="craftsman" id="category">4. <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Clams</a></p> 
+  </div> Select your answer to find out...   <br /> &nbsp; 
+  <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
    <tbody> 
     <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
+     <td> 
+      <div class="character" id="relative">
+       <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank"><img alt="alzheimers and sleep" src="http://www.brainups.click/airplane-heretofore/4e05m2S395f7hwa13i4J8faGY115cv36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQVdenm6UDTZ105zlzwD" style="max-width:40%;" title="alzheimers and sleep" /></a>
+      </div> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <p class="available" id="ambiguity" style="margin: auto; max-width: 552px"><a href="http://www.ameriperks.click/Bigelow-cafe/80a5G2J395SvT8612S48fv3L115bv36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQZdemK6zPoV106jTNBwD"><img alt="genetic" src="http://www.ameriperks.click/contestable-doctorate/p6c4S2395aJ7aD12KL48f6I115bx36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQZdemK5P10AF6kpyUwD" width="100%" /></a></p> 
-  <p class="change" id="adjust" style="display: inline-block">&nbsp;</p> 
-  <p class="change" id="adjust" style="display: inline-block">&nbsp;</p> 
-  <p class="conference" id="return" style="display: inline-block">&nbsp;</p> 
-  <p class="family" id="response" style="display: inline-block">&nbsp;</p> 
-  <p class="strain" id="instruction" style="display: inline-block">&nbsp;</p> 
-  <table align="center" bgcolor="#eee" border="0" cellpadding="2" cellspacing="2" width="100%"> 
+  <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
    <tbody> 
     <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
+     <td> 
+      <div class="labour" id="occupy">
+       <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Or click HERE to see the answer &gt;&gt; &gt;&gt;</a>
+      </div> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <center> 
-   <p class="manufacturer" id="implication" style="display: inline-block">*</p> 
-   <p class="manufacturer" id="implication" style="display: inline-block">*</p> 
-   <p class="waterfall" id="directory" style="display: inline-block">*</p> 
-   <p class="bracket" id="active" style="display: inline-block">*</p> 
-   <p class="figure" id="admiration" style="display: inline-block">*</p> 
-  </center> 
-  <p class="harvest" id="acquit">&nbsp;</p> 
-  <p align="center" class="dress" id="slogan">If you'd prefer not to receive future messages, <a href="http://www.ameriperks.click/Bigelow-cafe/13e6Elr2395k8L_612S4k8f4r115bl36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQZdemK5G1r0h6AjqwjD"><font color="#666666">leave Here</font></a>.</p> 
-  <p align="center" class="accept" id="elegant"><a href="http://www.ameriperks.click/boasting-inspirations/ie45R2k395H_H8611r48f5x115bW36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQZdemK6moJ10p6q@2NwD"><font color="#666666">My Senior Perks</font></a> | 302 Washington St #150-7835 San Diego, CA 92103</p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <p class="sweep" id="piece">&nbsp;</p> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp;  
- <img src="http://www.ameriperks.click/1796l23Om95M8i5R12X48Yf7B115bO36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQZdemK6e10m_Q6iBTlwD/searchers-location" alt=""/></body>
+  <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp; 
+      <div class="dialect" id="brainstorm">
+       To your health,
+       <br /> Dr. Will Mitchell, DOM, MS Nutrition
+       <br /> 
+       <br /> &nbsp; 
+       <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td> 
+           <hr style="display: inline-block" width="10" /> 
+           <hr style="display: inline-block" width="10" /> 
+           <hr style="display: inline-block" width="10" /> 
+           <hr style="display: inline-block" width="10" /> 
+           <hr style="display: inline-block" width="10" /><br /> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">If you'd prefer not to receive future messages, <a href="http://www.brainups.click/routed-ungrateful/8fa5BF2395w8y6B12S48f9kt115cS36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQVdenm5nJV106QkUpwD"><font color="#666666">leave us Here</font></a>.<br /> <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@">Brain Blueprint</a> 321 N Central Expressway Suite 351 - McKinney, TX 75070 </font></td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.brainups.click/routed-ungrateful/eb86A23n9y5b8vD513U48qVfbr115cA36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQVdenm5Xv10B6ABwjDP" alt=""/></body>
 </html>
 
-------=_Part_340_607521473.1675364498724--
+------=_Part_391_1396660266.1675369956849--
 
