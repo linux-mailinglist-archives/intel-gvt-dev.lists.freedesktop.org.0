@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7F82688939
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 22:49:56 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9977868891E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 22:42:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0B31310E64E;
-	Thu,  2 Feb 2023 21:49:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5202A10E2C8;
+	Thu,  2 Feb 2023 21:42:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 2193 seconds by postgrey-1.36 at gabe;
- Thu, 02 Feb 2023 21:49:53 UTC
-Received: from mail.brainups.click (unknown [45.13.189.119])
- by gabe.freedesktop.org (Postfix) with ESMTP id 53E3E10E64B
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Thu, 02 Feb 2023 21:42:54 UTC
+Received: from mail.mrecanvas.monster (unknown [45.13.189.132])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4293B10E1F4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Feb 2023 21:49:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=brainups.click; 
+ Thu,  2 Feb 2023 21:42:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mrecanvas.monster;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=brain_blueprint_news@brainups.click; 
- bh=G7FsPQoMaPIBLDDLlV6/OZGJqAE=;
- b=aI7WRfCIHIGwPd53vSftsSfDqhEGeSLAz4nJNQNt2SW4nBBvPhW1gBgVZ8/ZJgT7kA53I4ROqE0L
- 3RNYVWA2bm16665zQve/90Po7i3aVrZAMz7PosptEbITAo0bUPEA0V+Ua6wjtw/68VjcqaAfEir8
- f6Z5wDaKAwmLX+LkH6g=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=brainups.click;
- b=OP3KJ663Kj/YbXYUW4RTBdxfWUjHQaYAfcDuaMDnH2Enj3Q7kFlDr0Gtkpaec8koOX3QkiohDyBm
- 4vl5Np51Ssbrrq76nqnwiyEkJ7rBy0avwqiIVplobvzHDUnIl1Nr4PdA6KxnriptIG09XPCUXUOE
- OApZ6o1Qpag7Zc2Yw3o=;
-Received: by mail.brainups.click id hrgo020001gh for
+ i=canvasprints_affiliate@mrecanvas.monster; 
+ bh=8LzxOdCOjepprsGZWl5b2udY0CI=;
+ b=UYxv++i/YjqdfahNEc/9vjYZazATo3UBkFx8RbwELzB8Dxrh8a0un/kkykOJ04G7RlH2PvifOMUd
+ sY1ZnYxxWO43++xzHpZ46qeWPdmZAkq5s8G+/hqT3PVX036i6UGXmz9PZmmFWQkvjCMsoFS1PxC8
+ CGRi/4bKG+dW+oJVPXk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mrecanvas.monster; 
+ b=QiKm1fBM1wYU33vsTcaB0j5GU8VYia5INO/NwnS/GDx7sHh+eiVNwbXfJG8YmWN3+Nf9X1crsfU7
+ SW7bam0SG2O8s+iPXxEgzu7l4qxM37bkEvRPxXbjdBqas5qwtWQm+Jcml+wqv5O9NR4xGKUImpuj
+ uEqXsbsYFS5CSJxEeWM=;
+Received: by mail.mrecanvas.monster id hrh1be0001ge for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Feb 2023 15:34:15 -0500 (envelope-from
- <brain_blueprint_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@brainups.click>)
-Date: Thu, 2 Feb 2023 15:34:15 -0500
-From: "Brain Blueprint News" <brain_blueprint_news@brainups.click>
+ Thu, 2 Feb 2023 18:01:10 -0500 (envelope-from
+ <canvasprints_affiliate-intel+2Dgvt+2Ddev=lists.freedesktop.org@mrecanvas.monster>)
+Date: Thu, 2 Feb 2023 18:01:10 -0500
+From: "CanvasPrints Affiliate" <canvasprints_affiliate@mrecanvas.monster>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: FOR "3Ways" CREATIVE: 3 simple ways to prevent or reverse dementia
+Subject: Capture Your Memories With Our Winter Sale! 11x14 Custom Canvas for
+ Only $9.99!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_391_1396660266.1675369956849"
-Message-ID: <0.0.0.2CD.1D93745B792DF2E.40E021@mail.brainups.click>
+ boundary="----=_Part_430_1952580233.1675373564798"
+Message-ID: <0.0.0.322.1D9375A3D5D8A64.1123B0@mail.mrecanvas.monster>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,78 +54,69 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_391_1396660266.1675369956849
+------=_Part_430_1952580233.1675373564798
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
  <head> 
-  <title>happening</title> 
+  <meta charset="UTF-8" /> 
+  <title></title> 
  </head> 
- <body style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"> 
-  <div class="generate" id="headline"> 
-   <p class="presentation" id="complete">A new study from Harvard Scientists has revealed<br /> that <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">ONE of the following foods</a> is linked to combating<br /> Alzheimer's and dementia. Can you guess which it is?</p> 
-  </div> 
-  <div class="eyebrow" id="swipe"> 
-   <p class="scandal" id="federation">1. <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Red wine</a></p> 
-  </div> 
-  <div class="strikebreaker" id="essay"> 
-   <p class="pumpkin" id="knowledge">2. <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Fish</a></p> 
-  </div> 
-  <div class="village" id="motorist"> 
-   <p class="ignite" id="wound">3. <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Avocados</a></p> 
-  </div> 
-  <div class="constitutional" id="participate"> 
-   <p class="craftsman" id="category">4. <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Clams</a></p> 
-  </div> Select your answer to find out...   <br /> &nbsp; 
-  <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+ <body> 
+  <p id="separate"><a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank">&nbsp;</a></p> 
+  <table border="0" cellpadding="3" cellspacing="3" class="integrity" style="display: inline-block" width="100%"> 
    <tbody> 
     <tr> 
-     <td> 
-      <div class="character" id="relative">
-       <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank"><img alt="alzheimers and sleep" src="http://www.brainups.click/airplane-heretofore/4e05m2S395f7hwa13i4J8faGY115cv36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQVdenm6UDTZ105zlzwD" style="max-width:40%;" title="alzheimers and sleep" /></a>
-      </div> </td> 
+     <td><a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank">&nbsp;</a></td> 
     </tr> 
    </tbody> 
   </table> 
-  <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+  <table border="0" cellpadding="3" cellspacing="3" id="ambiguity" style="display: inline-block" width="100%"> 
    <tbody> 
     <tr> 
-     <td> 
-      <div class="labour" id="occupy">
-       <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@" target="_blank">Or click HERE to see the answer &gt;&gt; &gt;&gt;</a>
-      </div> </td> 
+     <td><a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank">&nbsp;</a></td> 
     </tr> 
    </tbody> 
   </table> 
-  <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp; 
-      <div class="dialect" id="brainstorm">
-       To your health,
-       <br /> Dr. Will Mitchell, DOM, MS Nutrition
-       <br /> 
-       <br /> &nbsp; 
-       <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td> 
-           <hr style="display: inline-block" width="10" /> 
-           <hr style="display: inline-block" width="10" /> 
-           <hr style="display: inline-block" width="10" /> 
-           <hr style="display: inline-block" width="10" /> 
-           <hr style="display: inline-block" width="10" /><br /> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">If you'd prefer not to receive future messages, <a href="http://www.brainups.click/routed-ungrateful/8fa5BF2395w8y6B12S48f9kt115cS36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQVdenm5nJV106QkUpwD"><font color="#666666">leave us Here</font></a>.<br /> <a href="http://www.brainups.click/divergence-clogging/8826A23j9_5S8J6l13S48fv8DG115cC36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQVdenm6mYLv106pAwD2@">Brain Blueprint</a> 321 N Central Expressway Suite 351 - McKinney, TX 75070 </font></td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.brainups.click/routed-ungrateful/eb86A23n9y5b8vD513U48qVfbr115cA36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQVdenm5Xv10B6ABwjDP" alt=""/></body>
+  <ul style="list-style-type: none; margin: 0"> 
+   <li style="text-align: center"> <p id="perceive"><a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank">&nbsp;</a></p> 
+    <center>
+     <a href="http://www.mrecanvas.monster/quakes-explosively/af86Fv23s95Sk8p613U4m90h1l115dI36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQVdenn7Up10ZYm5alwDy" style="text-decoration: none" target="_blank"><img alt="federation" src="http://www.mrecanvas.monster/antihistorical-appointing/42c6d23CA95zu7aR13k48hfCfN115dt36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQVdenn5Q_1B05h@wqD" /></a>
+    </center> </li> 
+   <!-- scientists have made a historic discovery that could change the course of space exploration. After years of extensive research, the team has confirmed the existence of liquid water on the surface of Mars. The discovery was made using the Mars Reconnaissance Orbiter, which detected strong evidence of subsurface liquid water flows on the planet. 
+--> 
+   <li> 
+    <center> 
+     <table border="0" cellpadding="2" cellspacing="2" class="yard" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td>&nbsp;</td> 
+        <td>&nbsp;</td> 
+       </tr> 
+       <tr> 
+        <td>&nbsp;</td> 
+        <td>&nbsp;</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </center> </li> 
+   <!--		This finding is significant because liquid water is a key ingredient for life as we know it. The presence of water on Mars opens up the possibility for finding microbial life and supports the potential for human exploration and settlement on the planet in the future. The discovery also sheds light on the history of Mars, suggesting that it was once a more hospitable place with a thicker atmosphere and a warmer climate.--> 
+   <li> 
+    <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> <p align="center" class="lemon" id="shortage" style="font-size: 10px; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'">&nbsp;If you do not wish to receive future messages click here to <span class="unstyle-auto-detected-links"><a href="http://www.mrecanvas.monster/a9d5Jo2395QT86q13i48ufOdj115dA36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQVdenn6Wn1qN05SqkwD/canceled-Visigoths" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">get me out</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.mrecanvas.monster/b514j2395n86Hs12MR48feP115di36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQVdenn7uq1orC06Ilz3wD/Tucson-drooped" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Easy Canvas Prints</a>&nbsp;|&nbsp; 11525a Stonehollow Dr #100 | 
+ Austin, TX 78758</span></p> </li> 
+  </ul>   
+ <img src="http://www.mrecanvas.monster/diagnostics-distillers/e9a5P2D395C85Gw13t4w90_0o115dw36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQVdenn5nX10J6E1TwDj" alt=""/></body>
 </html>
 
-------=_Part_391_1396660266.1675369956849--
+------=_Part_430_1952580233.1675373564798--
 
