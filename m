@@ -1,77 +1,150 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBA3F6871E4
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 00:27:41 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 92E446873A9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Feb 2023 04:09:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9E1E510E1B0;
-	Wed,  1 Feb 2023 23:27:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1C9FA10E2E1;
+	Thu,  2 Feb 2023 03:09:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 76D2910E1B0
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  1 Feb 2023 23:27:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675294056;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sXoQvVrTzYsdEyLij+fdiknvHP5DRqaJ4e72GDsPbAA=;
- b=SmNRQbRztMB37W27sztXlpPZp7I7niL0PseTnIJDXDU8qm3xSyimF2qeTZXNnknOWULIi3
- 3Wl9n0WS7091Ko4fut355L/bBpIDpVeOaTjjk/o1ozeEBEMxfi4f4FiSCcyeJQ7BqXTYTk
- H6Wlx+Kb362DZIfNtnkj+e8/jZ3t3Zk=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-113-vQvJ7-KgOV658V0VPzdY9A-1; Wed, 01 Feb 2023 18:27:35 -0500
-X-MC-Unique: vQvJ7-KgOV658V0VPzdY9A-1
-Received: by mail-io1-f69.google.com with SMTP id
- b10-20020a5ea70a000000b0071a96a509a7so146202iod.22
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 01 Feb 2023 15:27:35 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sXoQvVrTzYsdEyLij+fdiknvHP5DRqaJ4e72GDsPbAA=;
- b=Rrzzoay/W3Erhw4JFQVOFt6paFnl3LeWWHj3eLtYeYrJWkOhSH5mRIDK9lHTiB0FHH
- zmKomaqPeU62k8t8r4Wkd1b0BM4EBist31eV1IonpyOcoaymWb14mnUCdTMErHFrefLH
- B0/F0FGFH0JGP1JqJvcNgnjuhRVsm85pW8MQ9DeqUobuXH+RJuAqM7R4SvQdHtD0xbYH
- WSs3QH++f+7TfPRS7XatEk5+LapgpGy31o7gCmMt3a/J7vjXhHscNhCC8fEGZs4v0bdD
- fIxxYMeYJffjtBiQ3n1tdfjVBI3NuNSKvBLgw46f2ZbeONzJqYVXfK3aUoFSNfCuT1NK
- Goog==
-X-Gm-Message-State: AO0yUKUG7vlw0xS/rt+zXI9HqEeaoVIlh0Fa3F5f6FdXdMdKHE9M1u7o
- NvWqj41kr1uPPNv1eg60gCA9t32P+KGMOY6+GBYbiMerW/05M1FLX8vrtpEgIiksdy4xgPKyZRe
- 6Up9B8RiC1SaBPcvWD/tGPtz+cdGY6vOpiQ==
-X-Received: by 2002:a92:1a49:0:b0:312:7a4e:e94d with SMTP id
- z9-20020a921a49000000b003127a4ee94dmr1722571ill.2.1675294054456; 
- Wed, 01 Feb 2023 15:27:34 -0800 (PST)
-X-Google-Smtp-Source: AK7set9MjiBziwTIHNmlWFdw11glj8cooml8tewS+nx1zwidAC5HMpy92oxemwoUyVXyjV7jd9LSyA==
-X-Received: by 2002:a92:1a49:0:b0:312:7a4e:e94d with SMTP id
- z9-20020a921a49000000b003127a4ee94dmr1722541ill.2.1675294054113; 
- Wed, 01 Feb 2023 15:27:34 -0800 (PST)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- v4-20020a02b904000000b003b15f4ecde8sm3127725jan.88.2023.02.01.15.27.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 01 Feb 2023 15:27:33 -0800 (PST)
-Date: Wed, 1 Feb 2023 16:27:30 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: Re: [PATCH v2] vfio: fix deadlock between group lock and kvm lock
-Message-ID: <20230201162730.685b5332.alex.williamson@redhat.com>
-In-Reply-To: <20230201192010.42748-1-mjrosato@linux.ibm.com>
-References: <20230201192010.42748-1-mjrosato@linux.ibm.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3FF6610E2DF;
+ Thu,  2 Feb 2023 03:09:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675307343; x=1706843343;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=cMzybbSOw9x0qlF8rd5qPN4goU9/bAw4xdRCtG7pFEc=;
+ b=DkIQ6/sf5aoUVNXkOKuKapBrpFqtbs3e18r4MKc7jIgiCFW8E2GtvdKU
+ yM4ZnfNYmmR2fHZNK2E7fd2FK3b4+/AJEzh0BAKW658FhqrlGCwXv6qXL
+ 5wZ0b2NPm9SPB74MRwJdr6fN5Eo3zUNVIYdLl4wr7dFz3kmtELjvo0HpK
+ 4C/fiUJyFYkVV5TgJcHfTaGEUgzOgh7aql11I4NWF7mvo2/LVdQwW9QQS
+ 38nZwbC5t374/bXU9At00rfsiXDd2GdiU5/H1OYdsa1hQ7Q4o4ZfpxXzX
+ yZs59lYjV6ev7FYvwjpcmw4VgnQ+/7+oMjwIS2rddjsT9bF3iulOSNOrA g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10608"; a="326038219"
+X-IronPort-AV: E=Sophos;i="5.97,266,1669104000"; d="scan'208";a="326038219"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Feb 2023 19:09:02 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10608"; a="667139101"
+X-IronPort-AV: E=Sophos;i="5.97,266,1669104000"; d="scan'208";a="667139101"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by fmsmga007.fm.intel.com with ESMTP; 01 Feb 2023 19:09:01 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Wed, 1 Feb 2023 19:09:01 -0800
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Wed, 1 Feb 2023 19:09:01 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.172)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Wed, 1 Feb 2023 19:09:00 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TGD6uNsakNq2Wqt+jc4NtK4DqNIRzK96xjWQbuFPs5N8gVMawbQk/vSK+pQ/QdXdyuYyrcZk5HTyKUYuP0aB6dcPHgQVNPheyVxUoVfP3jAkSWEcygaidPAAFSvw0qMgBvOuR8D/k9nfA1CuG2BpxMUG9Czuen2QMZEur5yAWjuAWOVAz06NaSRCzsEmbdbStsBi7DIN3PMNEHgWlJKS/ipuPM4lpiZHAz4+yda9S9KqFFh8LE3ykSn0uxj+Da/kIACgGC/rkwG8R/GV2hocpf7bPl1Y/cxLrZQV/zO66z2HNSI0WP2u19js7ob6/uzEh+jHZe6gJhadhzAuQYpIkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=cMzybbSOw9x0qlF8rd5qPN4goU9/bAw4xdRCtG7pFEc=;
+ b=GBreky83frf9UyPh6LPq3WnH482hqRiZaZlOn2eF5IgfYqjEUOWaFztEw9k6V+xytND7acFx3coDWIRsPXQP9kP8MBP7vSMjtsr+6HB+2Ni6ugthnGFB7xBsJU4MRIU7ECal/gb4B6cL52tP5TzXMLMAn2xLtLeht52DaZMJ+IOApWzvPqxlQNZ1oaDQ02uPP0FT6kv4Jy4jFh9dTq2MAo38dEv+830H4ySQDjNWY4b+IdaINoZknuPYLw5yMUS5JR/dNK006LAUnZB7NV5TQzzZRF1otlhF/LO4wzItTjlm0la/vsTXKNc+NM3x+RuPqe1xty7Na4zCM+JJfbzvQg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by SN7PR11MB6994.namprd11.prod.outlook.com (2603:10b6:806:2ad::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.25; Thu, 2 Feb
+ 2023 03:08:52 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::e1fa:abbe:2009:b0a3]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::e1fa:abbe:2009:b0a3%4]) with mapi id 15.20.6064.024; Thu, 2 Feb 2023
+ 03:08:52 +0000
+From: "Liu, Yi L" <yi.l.liu@intel.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>, Jason Gunthorpe <jgg@nvidia.com>
+Subject: RE: [PATCH] vfio: fix deadlock between group lock and kvm lock
+Thread-Topic: [PATCH] vfio: fix deadlock between group lock and kvm lock
+Thread-Index: AQHZNa+RvE0EhcYo6EGu/ai3XoxXDK64+PMAgAERCqCAACGMgIAA0A1A
+Date: Thu, 2 Feb 2023 03:08:51 +0000
+Message-ID: <DS0PR11MB7529AB85290B910D910BB15BC3D69@DS0PR11MB7529.namprd11.prod.outlook.com>
+References: <20230131200635.44227-1-mjrosato@linux.ibm.com>
+ <Y9l5OmCRGYZM2nPy@nvidia.com>
+ <DS0PR11MB7529D62614A5DFC56920EE96C3D19@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <3b52ffdb-c18c-f3d4-559d-9838419e2bc7@linux.ibm.com>
+In-Reply-To: <3b52ffdb-c18c-f3d4-559d-9838419e2bc7@linux.ibm.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|SN7PR11MB6994:EE_
+x-ms-office365-filtering-correlation-id: 7a330b0e-618a-4338-bacb-08db04cacfd2
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: joFZQ4fjXkfuhPjIobi737KX8B5hTfAo31SFa8ChxPZrAAKm6P48rMgXelX/cRICIM1bLMsWrthHCmyfjig+xOAEVcRVhu14wMz0FrHOIl2RnGu3ZwlzQX6+Y1Q4B4M4NAFp4CgIZa4fyaR0lAlxcYAACdrRGHTbW7NCaUYk8GY73Km4AV7bRea+oyHVlhQuktS8iRYQk6+IbL2gCCERxcXTjYeOYdrWBZv7Q44xj38o5q+kcmEBl4yuN1yyGBeQlZn0poxYQZGwFjsbDm9xuS50Y1GNb7ZuzSEKe+nvaLGckZYj8mo8Wi1wZZpJKhOeRzaCeijrr3ILM6Wmlp9KW99kKtjE5VYDsZ4pUbaAUoZLtxNbYwhWuJ43gACc5C5ittJ3tAVvZl1n/73Nwd3/aW1kSU+aRub/FUuJd+0FF2svsaZcpZzcblNOhPiaINWS3yFpTgnURr39aEQilOrPLF69h0FwYfHP7W85za+Ww4K+c1+vbBZG+2p/+Ps54El6OFHRAgn15DGBLG8tB2gv2WpKVWU8QQC5RwaLyviZbAMXaoriHT7FQTq/2EKfajyfm7W8EYM+I3OTpZCSmTN3GbySakOPcffYnxfNbFNaoP91tVG1m0CCWUkNskzBJycr3fkDOLqvCbeXLlCzUZf6e+QdMI9FRygfyKJRRqgmphWA/RdB2KqZXdgVMSbc75IMNAeNuoHUrflWgnc4LEQYw1iqLF9Z72vFRTJIJo+tQ9w=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(376002)(39860400002)(366004)(136003)(396003)(346002)(451199018)(9686003)(6506007)(86362001)(186003)(26005)(38070700005)(122000001)(82960400001)(7696005)(33656002)(478600001)(53546011)(71200400001)(38100700002)(66946007)(66556008)(66476007)(66446008)(64756008)(54906003)(2906002)(110136005)(316002)(52536014)(7416002)(8676002)(55016003)(5660300002)(8936002)(4326008)(83380400001)(76116006)(41300700001)(13296009);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ODQ4eWpJakowdnlwd013UTJVa2MwZkd3L05DQklaTEorRS9RQ3paTUNiU0Yz?=
+ =?utf-8?B?QnFPMERMUmVrSDdqZjlRTjJrZjFhZWlaU052c0JPSUhpeDZPQjdCM2lHS0Zl?=
+ =?utf-8?B?L25wVjlEcE1sS0puK00vbEluc1Y1WElXTDQ2ZmdWZUFTUk9oSExmS2FmS2tG?=
+ =?utf-8?B?WmR3ZlYrLzZ5byt3NURlL3U4U2VnaUYrbjRkQ09lajBoelN3ZXlPTldyYitO?=
+ =?utf-8?B?cVE5a2ZHR0ZrS0pya1BHVnBMTHVGSjFub2h1QVk5MXp4U2FqVHJndEo1UjJ6?=
+ =?utf-8?B?SDZTdWlPNjBReE9ra0taMmhzSnhPVldsNWlPcU1uK0lwYm9qbmJGNVV4eDdy?=
+ =?utf-8?B?ZmoveUVOTGoxTWxoSVZ1OWZYZ2k3SVQxMy9iaXh4Q1dzYStBTVF3TEZnMjV2?=
+ =?utf-8?B?dWJzeHhtVDVGeWVaZFc2YTdYSEg0MEpTeUJ1QWhwMlN2LzUrejREUXl3UXg2?=
+ =?utf-8?B?Ykd4WTZLRzFxbmo0L0QrZ0M3elcvMjFsZVNmYTEwR0FtWkJTQnc4NzZtdnpp?=
+ =?utf-8?B?ZldUd0VxWmExaXFpeDRjMXJIUStkbm5UYjRVbS9SZjBQZ1lLSVRmVXRRaFZy?=
+ =?utf-8?B?amZtMi83L1EvTy9icndmNlU1SDdWRFUvYTl0K29ML3pONjZOK2ZFUkRIR0VU?=
+ =?utf-8?B?QUl2eHp5NGlwSStkc3MxN3JGSUdsOTlKZE5nd1J6aldlQS9KTTA1V2J2WHZ4?=
+ =?utf-8?B?eXRZNkNXdjlPUGpxRzNQU1pPRmhDM1FCYW15M3RjeS9sVDNCaEZLSUExdGhj?=
+ =?utf-8?B?amNxVmptZW1yUjlTSll2Ri9ncFFpVzQwR1ZodC9HMDZvelBkU3QrRFFYbWhT?=
+ =?utf-8?B?ZlhjWmEvQ0k5QzYyc0FrSTdkbXM4MmIrUHpMUzl5Z3paLzN2YTllQWxrcFc4?=
+ =?utf-8?B?U09WUjdvRDFBMHhMbkJ2QlNZMXBGdlRBUEV2dXFaSk1GeGprdXBKS2twU2lW?=
+ =?utf-8?B?cmZqcllyNVZzNUR1UFpOc1UzT2NsS1lDVWZRaXFyR3VDcCtlRW9pbkI3SmFl?=
+ =?utf-8?B?VUhPYmxvb1Q0dWV3RzBuMmVneTNiY0djeE10SDJYb0t3aWxXUEdMZmF2aEE3?=
+ =?utf-8?B?SFJWSTRydXpMdzQrbFpIRVlYa0tMNVdQWTdFNGVXNWJkMkltdksvWERsdjlV?=
+ =?utf-8?B?ZjkwWjBoSUFQR0xKd2dDaTF0THhZUFQvaGoxblphUXdQMDJ4dHQ1VjhQVGNH?=
+ =?utf-8?B?S3RRVGo1SHJLQ3FIREF4Q2ZYM0xyVWpxZmdqUCtIblJSM3hIR0xVVk8xREk5?=
+ =?utf-8?B?cGU5Q1JsT2hSamVCV295eWZhZENqd3pGK3MyYnVGelRIYyt0aEo1d3g5S2do?=
+ =?utf-8?B?SDJNcUU3ejhJSW5ZVlQ2ZTZlRDJPWU8zdmNBSi9rdVgrNE9mMUYzNG9uTUpX?=
+ =?utf-8?B?Y1BibkZiVkpJU0d2dFh0TFh0czRwNmduT3o1NzlLU1VGVE85c21PTFFWOUZJ?=
+ =?utf-8?B?MTVHT1BRUU5RMmZJSS85YU91NzRYbm1WeUZFTmM2WWhZZFFrOUIzczBQa3dq?=
+ =?utf-8?B?OGJPSGFSZDhUUThKaGNncEZrY0hkNXJ6eVliREx4OEh4ZGRuYWYxbllEZlRD?=
+ =?utf-8?B?ZHMyL21yQ2xSSzlJL1NraERvcG9LeXNpZDFLTWtPRklUV3dPSkdKNDZBVk16?=
+ =?utf-8?B?OE1nYkY3ZDdoWG5rbGxLSkN6YnZoaTdieEZPSXVhNkNHeG1IcmFydWhsRFRz?=
+ =?utf-8?B?SXdTTWUyUlJwRWFnNUYweElXd01YeC9GNkErQlhPdUhKRExVNzZaOEUwTzlt?=
+ =?utf-8?B?K3B6MEo4MUx6YU1zLy9uQ2RPakhBWXBwT2pDOE9kNnliMkpJVUt4QnhkTWpz?=
+ =?utf-8?B?Tm9XRFV0L3FmVTBUYjF6QTU0dVIxNk1nMzhDWnF2QjZEK2pDTS9OaWZWZ21U?=
+ =?utf-8?B?SkpJc205aVdEcDFmc0pycEJNNFE4SjVkcysyTTJILzBRYUFqTVdGSVpmN3FY?=
+ =?utf-8?B?MmhET1VNOUxMOEJQTFFnVnZOd2V0cGVqZ1VvQlpScUFTZ0Q1WkdHdXFwWVNN?=
+ =?utf-8?B?bkRlMkJ0UXlpZG8yN3puNUZTdFNHWDUvMjNKQVA4TGx5dDlwNTVWb2d1czV1?=
+ =?utf-8?B?ZEhGZnRTaVlQMmk1STVTTjM2QlpVZ3l6azRNTjBHUStnK3VtbW1Oa3k4VGRN?=
+ =?utf-8?Q?AHgppQNlWhNBOvEunjLgsk/Nd?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7a330b0e-618a-4338-bacb-08db04cacfd2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Feb 2023 03:08:51.9031 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0lE7txsD9DoOV7HCQI7GM/Qhnj8yFHF4rx7XN5EtUa/TCZGavOjyIUUJx9gmnwk+FWrOeOkqkuc9YzoCI0UrEw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB6994
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,413 +157,52 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, david@redhat.com, kevin.tian@intel.com,
- imbrenda@linux.ibm.com, linux-s390@vger.kernel.org, yi.l.liu@intel.com,
- frankja@linux.ibm.com, pasic@linux.ibm.com, jgg@nvidia.com,
- borntraeger@linux.ibm.com, zhi.a.wang@intel.com, jjherne@linux.ibm.com,
- farman@linux.ibm.com, intel-gfx@lists.freedesktop.org, zhenyuw@linux.intel.com,
- intel-gvt-dev@lists.freedesktop.org, akrowiak@linux.ibm.com,
- pmorel@linux.ibm.com, seanjc@google.com, cohuck@redhat.com,
- linux-kernel@vger.kernel.org, pbonzini@redhat.com
+Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>, "Tian, Kevin" <kevin.tian@intel.com>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed,  1 Feb 2023 14:20:10 -0500
-Matthew Rosato <mjrosato@linux.ibm.com> wrote:
-
-> After 51cdc8bc120e, we have another deadlock scenario between the
-> kvm->lock and the vfio group_lock with two different codepaths acquiring
-> the locks in different order.  Specifically in vfio_open_device, vfio
-> holds the vfio group_lock when issuing device->ops->open_device but some
-> drivers (like vfio-ap) need to acquire kvm->lock during their open_device
-> routine;  Meanwhile, kvm_vfio_release will acquire the kvm->lock first
-> before calling vfio_file_set_kvm which will acquire the vfio group_lock.
-> 
-> To resolve this, let's remove the need for the vfio group_lock from the
-> kvm_vfio_release codepath.  This is done by introducing a new spinlock to
-> protect modifications to the vfio group kvm pointer, and acquiring a kvm
-> ref from within vfio while holding this spinlock, with the reference held
-> until the last close for the device in question.
-> 
-> Fixes: 51cdc8bc120e ("kvm/vfio: Fix potential deadlock on vfio group_lock")
-> Reported-by: Anthony Krowiak <akrowiak@linux.ibm.com>
-> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
-> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
-> ---
-> Changes from v1:
-> * use spin_lock instead of spin_lock_irqsave (Jason)
-> * clear device->kvm_put as part of vfio_kvm_put_kvm (Yi)
-> * Re-arrange code to avoid referencing the group contents from within
->   vfio_main (Kevin) which meant moving most of the code in this patch 
->   to group.c along with getting/dropping of the dev_set lock
-> ---
->  drivers/vfio/group.c     | 90 +++++++++++++++++++++++++++++++++++++---
->  drivers/vfio/vfio.h      |  1 +
->  drivers/vfio/vfio_main.c | 11 ++---
->  include/linux/vfio.h     |  2 +-
->  4 files changed, 91 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-> index bb24b2f0271e..52f434861294 100644
-> --- a/drivers/vfio/group.c
-> +++ b/drivers/vfio/group.c
-> @@ -13,6 +13,9 @@
->  #include <linux/vfio.h>
->  #include <linux/iommufd.h>
->  #include <linux/anon_inodes.h>
-> +#ifdef CONFIG_HAVE_KVM
-> +#include <linux/kvm_host.h>
-> +#endif
->  #include "vfio.h"
->  
->  static struct vfio {
-> @@ -154,6 +157,55 @@ static int vfio_group_ioctl_set_container(struct vfio_group *group,
->  	return ret;
->  }
->  
-> +#ifdef CONFIG_HAVE_KVM
-> +static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
-
-I'm tempted to name these vfio_device_get_kvm_safe() and only pass the
-vfio_device, where of course we can get the kvm pointer from the group
-internally.
-
-> +{
-> +	void (*pfn)(struct kvm *kvm);
-> +	bool (*fn)(struct kvm *kvm);
-> +	bool ret;
-> +
-
-We should assert_lockdep_held(&device->dev_set->lock) in both of these
-since that seems to be what's protecting device->kvm and
-device->put_kvm.
-
-If we change as above to get the kvm pointer from the group within this
-function, we can also move the kvm_ref_lock here, which seems to
-simplify the caller quite a bit.
-
-> +	pfn = symbol_get(kvm_put_kvm);
-> +	if (WARN_ON(!pfn))
-> +		return false;
-> +
-> +	fn = symbol_get(kvm_get_kvm_safe);
-> +	if (WARN_ON(!fn)) {
-> +		symbol_put(kvm_put_kvm);
-> +		return false;
-> +	}
-> +
-> +	ret = fn(kvm);
-> +	if (ret)
-> +		device->put_kvm = pfn;
-> +	else
-> +		symbol_put(kvm_put_kvm);
-> +
-> +	symbol_put(kvm_get_kvm_safe);
-> +
-> +	return ret;
-> +}
-> +
-> +static void vfio_kvm_put_kvm(struct vfio_device *device)
-> +{
-> +	if (WARN_ON(!device->kvm || !device->put_kvm))
-> +		return;
-
-It simplifies the caller if we can use this even in the !device->kvm
-case.
-
-> +
-> +	device->put_kvm(device->kvm);
-> +	device->put_kvm = NULL;
-> +	symbol_put(kvm_put_kvm);
-> +}
-> +
-> +#else
-> +static bool vfio_kvm_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
-> +{
-> +	return false;
-> +}
-> +
-> +static void vfio_kvm_put_kvm(struct vfio_device *device)
-> +{
-> +}
-> +#endif
-> +
->  static int vfio_device_group_open(struct vfio_device *device)
->  {
->  	int ret;
-> @@ -164,14 +216,32 @@ static int vfio_device_group_open(struct vfio_device *device)
->  		goto out_unlock;
->  	}
->  
-> +	mutex_lock(&device->dev_set->lock);
-> +
->  	/*
-> -	 * Here we pass the KVM pointer with the group under the lock.  If the
-> -	 * device driver will use it, it must obtain a reference and release it
-> -	 * during close_device.
-> +	 * Before the first device open, get the KVM pointer currently
-> +	 * associated with the group (if there is one) and obtain a reference
-> +	 * now that will be held until the open_count reaches 0 again.  Save
-> +	 * the pointer in the device for use by drivers.
->  	 */
-> +	if (device->open_count == 0) {
-> +		spin_lock(&device->group->kvm_ref_lock);
-> +		if (device->group->kvm &&
-> +		    vfio_kvm_get_kvm_safe(device, device->group->kvm))
-> +			device->kvm = device->group->kvm;
-> +		spin_unlock(&device->group->kvm_ref_lock);
-> +	}
-> +
->  	ret = vfio_device_open(device, device->group->iommufd,
->  			       device->group->kvm);
-
-We're using device->group->kvm outside of kvm_ref_lock here, it should
-be using device->kvm.
-
->  
-> +	if (ret && device->kvm && device->open_count == 0) {
-
-Slightly redundant, if device->open_count == 0 here, we can infer ret
-is non-zero.
-
-I fiddled with it a little further, see if you like anything from the
-version below and incorporate what you do.  Thanks,
-
-Alex
-
-diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-index bb24b2f0271e..5121a34e1489 100644
---- a/drivers/vfio/group.c
-+++ b/drivers/vfio/group.c
-@@ -13,6 +13,9 @@
- #include <linux/vfio.h>
- #include <linux/iommufd.h>
- #include <linux/anon_inodes.h>
-+#ifdef CONFIG_HAVE_KVM
-+#include <linux/kvm_host.h>
-+#endif
- #include "vfio.h"
- 
- static struct vfio {
-@@ -154,6 +157,64 @@ static int vfio_group_ioctl_set_container(struct vfio_group *group,
- 	return ret;
- }
- 
-+#ifdef CONFIG_HAVE_KVM
-+static void vfio_device_get_kvm_safe(struct vfio_device *device)
-+{
-+	void (*pfn)(struct kvm *kvm);
-+	bool (*fn)(struct kvm *kvm);
-+	bool ret;
-+
-+	lockdep_assert_held(&device->dev_set->lock);
-+
-+	spin_lock(&device->group->kvm_ref_lock);
-+	if (!device->group->kvm)
-+		goto unlock;
-+
-+	pfn = symbol_get(kvm_put_kvm);
-+	if (WARN_ON(!pfn))
-+		goto unlock;
-+
-+	fn = symbol_get(kvm_get_kvm_safe);
-+	if (WARN_ON(!fn)) {
-+		symbol_put(kvm_put_kvm);
-+		goto unlock;
-+	}
-+
-+	ret = fn(device->group->kvm);
-+	symbol_put(kvm_get_kvm_safe);
-+	if (!ret) {
-+		symbol_put(kvm_put_kvm);
-+		goto unlock;
-+	}
-+
-+	device->put_kvm = pfn;
-+	device->kvm = device->group->kvm;
-+unlock:
-+	spin_unlock(&device->group->kvm_ref_lock);
-+}
-+
-+static void vfio_device_put_kvm(struct vfio_device *device)
-+{
-+	lockdep_assert_held(&device->dev_set->lock);
-+
-+	if (!device->kvm)
-+		return;
-+
-+	if (WARN_ON(!device->put_kvm))
-+		goto clear;
-+
-+	device->put_kvm(device->kvm);
-+	device->put_kvm = NULL;
-+	symbol_put(kvm_put_kvm);
-+
-+clear:
-+	device->kvm = NULL;
-+}
-+#else
-+static void vfio_device_get_kvm_safe(struct vfio_device *device) {}
-+static void vfio_device_put_kvm(struct vfio_device *device) {}
-+#endif
-+
- static int vfio_device_group_open(struct vfio_device *device)
- {
- 	int ret;
-@@ -164,13 +225,23 @@ static int vfio_device_group_open(struct vfio_device *device)
- 		goto out_unlock;
- 	}
- 
-+	mutex_lock(&device->dev_set->lock);
-+
- 	/*
--	 * Here we pass the KVM pointer with the group under the lock.  If the
--	 * device driver will use it, it must obtain a reference and release it
--	 * during close_device.
-+	 * Before the first device open, get the KVM pointer currently
-+	 * associated with the group (if there is one) and obtain a reference
-+	 * now that will be held until the open_count reaches 0 again.  Save
-+	 * the pointer in the device for use by drivers.
- 	 */
--	ret = vfio_device_open(device, device->group->iommufd,
--			       device->group->kvm);
-+	if (device->open_count == 0)
-+		vfio_device_get_kvm_safe(device);
-+
-+	ret = vfio_device_open(device, device->group->iommufd, device->kvm);
-+
-+	if (device->open_count == 0)
-+		vfio_device_put_kvm(device);
-+
-+	mutex_unlock(&device->dev_set->lock);
- 
- out_unlock:
- 	mutex_unlock(&device->group->group_lock);
-@@ -180,7 +251,14 @@ static int vfio_device_group_open(struct vfio_device *device)
- void vfio_device_group_close(struct vfio_device *device)
- {
- 	mutex_lock(&device->group->group_lock);
-+	mutex_lock(&device->dev_set->lock);
-+
- 	vfio_device_close(device, device->group->iommufd);
-+
-+	if (device->open_count == 0)
-+		vfio_device_put_kvm(device);
-+
-+	mutex_unlock(&device->dev_set->lock);
- 	mutex_unlock(&device->group->group_lock);
- }
- 
-@@ -450,6 +528,7 @@ static struct vfio_group *vfio_group_alloc(struct iommu_group *iommu_group,
- 
- 	refcount_set(&group->drivers, 1);
- 	mutex_init(&group->group_lock);
-+	spin_lock_init(&group->kvm_ref_lock);
- 	INIT_LIST_HEAD(&group->device_list);
- 	mutex_init(&group->device_lock);
- 	group->iommu_group = iommu_group;
-@@ -803,9 +882,9 @@ void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
- 	if (!vfio_file_is_group(file))
- 		return;
- 
--	mutex_lock(&group->group_lock);
-+	spin_lock(&group->kvm_ref_lock);
- 	group->kvm = kvm;
--	mutex_unlock(&group->group_lock);
-+	spin_unlock(&group->kvm_ref_lock);
- }
- EXPORT_SYMBOL_GPL(vfio_file_set_kvm);
- 
-diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-index f8219a438bfb..20c6bc249cb8 100644
---- a/drivers/vfio/vfio.h
-+++ b/drivers/vfio/vfio.h
-@@ -74,6 +74,7 @@ struct vfio_group {
- 	struct file			*opened_file;
- 	struct blocking_notifier_head	notifier;
- 	struct iommufd_ctx		*iommufd;
-+	spinlock_t			kvm_ref_lock;
- };
- 
- int vfio_device_set_group(struct vfio_device *device,
-diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-index 5177bb061b17..14dbf781ea8c 100644
---- a/drivers/vfio/vfio_main.c
-+++ b/drivers/vfio/vfio_main.c
-@@ -361,7 +361,6 @@ static int vfio_device_first_open(struct vfio_device *device,
- 	if (ret)
- 		goto err_module_put;
- 
--	device->kvm = kvm;
- 	if (device->ops->open_device) {
- 		ret = device->ops->open_device(device);
- 		if (ret)
-@@ -370,7 +369,6 @@ static int vfio_device_first_open(struct vfio_device *device,
- 	return 0;
- 
- err_unuse_iommu:
--	device->kvm = NULL;
- 	if (iommufd)
- 		vfio_iommufd_unbind(device);
- 	else
-@@ -387,7 +385,6 @@ static void vfio_device_last_close(struct vfio_device *device,
- 
- 	if (device->ops->close_device)
- 		device->ops->close_device(device);
--	device->kvm = NULL;
- 	if (iommufd)
- 		vfio_iommufd_unbind(device);
- 	else
-@@ -400,14 +397,14 @@ int vfio_device_open(struct vfio_device *device,
- {
- 	int ret = 0;
- 
--	mutex_lock(&device->dev_set->lock);
-+	lockdep_assert_held(&device->dev_set->lock);
-+
- 	device->open_count++;
- 	if (device->open_count == 1) {
- 		ret = vfio_device_first_open(device, iommufd, kvm);
- 		if (ret)
- 			device->open_count--;
- 	}
--	mutex_unlock(&device->dev_set->lock);
- 
- 	return ret;
- }
-@@ -415,12 +412,12 @@ int vfio_device_open(struct vfio_device *device,
- void vfio_device_close(struct vfio_device *device,
- 		       struct iommufd_ctx *iommufd)
- {
--	mutex_lock(&device->dev_set->lock);
-+	lockdep_assert_held(&device->dev_set->lock);
-+
- 	vfio_assert_device_open(device);
- 	if (device->open_count == 1)
- 		vfio_device_last_close(device, iommufd);
- 	device->open_count--;
--	mutex_unlock(&device->dev_set->lock);
- }
- 
- /*
-diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index 35be78e9ae57..87ff862ff555 100644
---- a/include/linux/vfio.h
-+++ b/include/linux/vfio.h
-@@ -46,7 +46,6 @@ struct vfio_device {
- 	struct vfio_device_set *dev_set;
- 	struct list_head dev_set_list;
- 	unsigned int migration_flags;
--	/* Driver must reference the kvm during open_device or never touch it */
- 	struct kvm *kvm;
- 
- 	/* Members below here are private, not for driver use */
-@@ -58,6 +57,7 @@ struct vfio_device {
- 	struct list_head group_next;
- 	struct list_head iommu_entry;
- 	struct iommufd_access *iommufd_access;
-+	void (*put_kvm)(struct kvm *kvm);
- #if IS_ENABLED(CONFIG_IOMMUFD)
- 	struct iommufd_device *iommufd_device;
- 	struct iommufd_ctx *iommufd_ictx;
-
+PiBGcm9tOiBNYXR0aGV3IFJvc2F0byA8bWpyb3NhdG9AbGludXguaWJtLmNvbT4NCj4gU2VudDog
+V2VkbmVzZGF5LCBGZWJydWFyeSAxLCAyMDIzIDEwOjQzIFBNDQo+IA0KPiBPbiAyLzEvMjMgNzo0
+MyBBTSwgTGl1LCBZaSBMIHdyb3RlOg0KPiA+PiBGcm9tOiBKYXNvbiBHdW50aG9ycGUgPGpnZ0Bu
+dmlkaWEuY29tPg0KPiA+PiBTZW50OiBXZWRuZXNkYXksIEZlYnJ1YXJ5IDEsIDIwMjMgNDoyNiBB
+TQ0KPiA+Pg0KPiA+PiBPbiBUdWUsIEphbiAzMSwgMjAyMyBhdCAwMzowNjozNVBNIC0wNTAwLCBN
+YXR0aGV3IFJvc2F0byB3cm90ZToNCj4gPj4+IEBAIC03OTksMTMgKzc5NCwxNCBAQA0KPiA+PiBF
+WFBPUlRfU1lNQk9MX0dQTCh2ZmlvX2ZpbGVfZW5mb3JjZWRfY29oZXJlbnQpOw0KPiA+Pj4gIHZv
+aWQgdmZpb19maWxlX3NldF9rdm0oc3RydWN0IGZpbGUgKmZpbGUsIHN0cnVjdCBrdm0gKmt2bSkN
+Cj4gPj4+ICB7DQo+ID4+PiAgCXN0cnVjdCB2ZmlvX2dyb3VwICpncm91cCA9IGZpbGUtPnByaXZh
+dGVfZGF0YTsNCj4gPj4+ICsJdW5zaWduZWQgbG9uZyBmbGFnczsNCj4gPj4+DQo+ID4+PiAgCWlm
+ICghdmZpb19maWxlX2lzX2dyb3VwKGZpbGUpKQ0KPiA+Pj4gIAkJcmV0dXJuOw0KPiA+Pj4NCj4g
+Pj4+IC0JbXV0ZXhfbG9jaygmZ3JvdXAtPmdyb3VwX2xvY2spOw0KPiA+Pj4gKwlzcGluX2xvY2tf
+aXJxc2F2ZSgmZ3JvdXAtPmt2bV9yZWZfbG9jaywgZmxhZ3MpOw0KPiA+Pj4gIAlncm91cC0+a3Zt
+ID0ga3ZtOw0KPiA+Pj4gLQltdXRleF91bmxvY2soJmdyb3VwLT5ncm91cF9sb2NrKTsNCj4gPj4+
+ICsJc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmZ3JvdXAtPmt2bV9yZWZfbG9jaywgZmxhZ3MpOw0K
+PiA+Pg0KPiA+PiBXZSBrbm93IHdlIGFyZSBpbiBhIHNsZWVwaW5nIGNvbnRleHQgaGVyZSBzbyB0
+aGVzZSBhcmUganVzdA0KPiA+PiAnc3Bpbl9sb2NrKCknLCBzYW1lIHdpdGggdGhlIG90aGVyIG9u
+ZQ0KPiA+DQo+ID4gYSBkdW1iIHF1ZXN0aW9uLiBXaHkgc3BpbmxvY2sgaXMgcmVxdWlyZWQgaGVy
+ZT8g8J+Yig0KPiA+DQo+IA0KPiBZb3UgbWVhbiBhcyBvcHBvc2VkIHRvIGFub3RoZXIgbXV0ZXg/
+ICBJIGRvbid0IHRoaW5rIGl0J3MgcmVxdWlyZWQgcGVyIHNlDQo+ICh3ZSBhcmUgcmVwbGFjaW5n
+IGEgbXV0ZXggc28gd2UgY291bGQgaGF2ZSBhZ2FpbiB1c2VkIGFub3RoZXIgbXV0ZXgNCj4gaGVy
+ZSksIGJ1dCBhbGwgY3VycmVudCB1c2VycyBvZiB0aGlzIG5ldyBsb2NrIGhvbGQgaXQgb3ZlciBh
+IHZlcnkgc2hvcnQgd2luZG93DQo+IChlLmcuIHNldCBhIHBvaW50ZXIgYXMgYWJvdmUsIG9yIHJl
+ZmNvdW50KysgYW5kIGNvcHkgdGhlIHBvaW50ZXIgYXMgaW4gdGhlDQo+IGZpcnN0IGRldmljZV9v
+cGVuKQ0KDQpJIHNlZS4gSnVzdCBub3Qgc3VyZSBpZiBzcGlubG9jayBpcyByZXF1aXJlZCBmb3Ig
+YSBzcGVjaWFsIHJlYXNvbi4NCg0KUmVnYXJkcywNCllpIExpdQ0K
