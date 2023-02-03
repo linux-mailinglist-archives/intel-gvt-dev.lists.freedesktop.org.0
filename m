@@ -2,42 +2,85 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F7AD68A27E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 20:05:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16C5D68A398
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 21:35:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DFA0F10E895;
-	Fri,  3 Feb 2023 19:05:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D99CE10E0A4;
+	Fri,  3 Feb 2023 20:35:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 335 seconds by postgrey-1.36 at gabe;
- Fri, 03 Feb 2023 19:05:05 UTC
-Received: from mail.go-andhear.click (unknown [45.13.189.234])
- by gabe.freedesktop.org (Postfix) with ESMTP id C251610E882
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E4EC010E0A4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Feb 2023 19:05:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=go-andhear.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=hearing_aid_reviews@go-andhear.click; 
- bh=CaAof/P814ogQJhfhEOOTM5Wx5g=;
- b=vnkqmmNj1qWk+i4/9PcYcLkBSY2qZr8Af+Ve4M6rN7GiWAlhjf+b5j3JIN05NqncaeHIDZT3xSsj
- m+EIsTxpY4xLtxK1MDvcttC/ObWBMQNINNPCg2Q3TjddxMPebx1l5Da+Q44jI1BoCOTfX4j3mTdy
- 09JNmavkVArk5kcJ+yE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=go-andhear.click;
- b=dd2lIVDI0+IyN02hkMJFVQyzKS9jQfxDo5nRmgoor7oryggB68IfgzJYdarVSjrPHDewzhZZ04C+
- oH5aCWBw1/Nfl1kPNcE0IChzOfM3doNR87tzH3/qMC+Y3VW9wuTWOlG626nF9927LheaV55IjD1a
- Bg9VfjgNiYHTvDKW9M4=;
-Received: by mail.go-andhear.click id hrlde20001gf for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 3 Feb 2023 13:47:41 -0500 (envelope-from
- <hearing_aid_reviews-intel+2Dgvt+2Ddev=lists.freedesktop.org@go-andhear.click>)
-Date: Fri, 3 Feb 2023 13:47:41 -0500
-From: "Hearing Aid Reviews" <hearing_aid_reviews@go-andhear.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Test the latest German hearing aids today
+ Fri,  3 Feb 2023 20:35:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1675456512;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=viFRJZV2q4SezGlI/FWcxb2WITMhrV1J+/DY3bMPspI=;
+ b=VTnyHbok4VDVDp+LMyBQEwc7D632yPHPNgln7ED55pBdX730hRCOqIlRycPmLygfyaYe8h
+ ktrQMH8mslecXZaGp1z2TO/QdEZURmqJKdMcVfqdV8uAx8uNGTshun5//tmp3aloE0LgGB
+ 33kKTfmApVQFLDd4pG8cwy83bLfcvQQ=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-214-nU59Ht_sPoSm6PTWQLVgoQ-1; Fri, 03 Feb 2023 15:35:08 -0500
+X-MC-Unique: nU59Ht_sPoSm6PTWQLVgoQ-1
+Received: by mail-il1-f199.google.com with SMTP id
+ s12-20020a056e021a0c00b0030efd0ed890so4002720ild.7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 03 Feb 2023 12:35:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=JitJ+EzQFI4tRE7oSO6h0RzqVsLIaAm1WlJEalphUB8=;
+ b=em3IM7ayZ44zxay6I3rshyxUMwxjVbPRlqrUsXtn1M7mhtzIrHseTFtPMaLYmmCvEL
+ ZEPUDYSvfQVwvg5++QhSIGD0qmrSlWD8TjDPFfu43vmkUWok/jnkOkN2oKNyIy93YkDn
+ x5QfQgLxT0OlkOnCCmI35mHdDXwuRVFuO+3T36mP+o3O3w+tBOvoINJTxD/uacVyHYdq
+ GB89EEKB9rwtb9m+t8c7JmrtQ2T1kypId6VxgSdrPGRLUi1rVmeEf1EF1bMByrGrPsJq
+ er4N5RWQ5d8TGHy6nQEEtyAeZ9CNvzw/8ehXGY0M3tC3kp0FKhaRCkTKE7XAj1addeJd
+ a+6Q==
+X-Gm-Message-State: AO0yUKWGy1TXaNIAkvvg1MtfGHd9DTxInkhzyHJeQZgQDezXFqB0paxW
+ hsatpJVnmetSGOd4KAIlGQdvWVkygwURTOCbJxzLkHsNETZoHpXEM8Xafs+klEO+6YitVqSVBCV
+ A4dppPjqbadNLMkbYxnkv+nwZZcXdoPF+JA==
+X-Received: by 2002:a05:6e02:2194:b0:310:be24:260a with SMTP id
+ j20-20020a056e02219400b00310be24260amr9908892ila.30.1675456507687; 
+ Fri, 03 Feb 2023 12:35:07 -0800 (PST)
+X-Google-Smtp-Source: AK7set9GIBfAjhIj5v0BQS/LjNDFZ4r0AnKB0rNTkxdvIO9fwIpXafr9OOmCRq/tq2BYChRorlbGeA==
+X-Received: by 2002:a05:6e02:2194:b0:310:be24:260a with SMTP id
+ j20-20020a056e02219400b00310be24260amr9908859ila.30.1675456507248; 
+ Fri, 03 Feb 2023 12:35:07 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ d71-20020a0285cd000000b003b02df3521dsm1128406jai.93.2023.02.03.12.35.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Feb 2023 12:35:06 -0800 (PST)
+Date: Fri, 3 Feb 2023 13:35:03 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>
+Subject: Re: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
+Message-ID: <20230203133503.4d8fb3e8.alex.williamson@redhat.com>
+In-Reply-To: <ed030aa5-b3af-638e-6e26-4e3a20b98ef4@linux.ibm.com>
+References: <20230202162442.78216-1-mjrosato@linux.ibm.com>
+ <20230202124210.476adaf8.alex.williamson@redhat.com>
+ <BN9PR11MB527618E281BEB8E479ABB0418CD69@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20230202161307.0c6aa23e.alex.williamson@redhat.com>
+ <BN9PR11MB5276017F9CEBB4BAE58C40E88CD79@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <DS0PR11MB7529050661FCE4A5AC4B17C3C3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230203064940.435e4d65.alex.williamson@redhat.com>
+ <DS0PR11MB75297154376388A3698C5CCAC3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230203081942.64fbf9f1.alex.williamson@redhat.com>
+ <ed030aa5-b3af-638e-6e26-4e3a20b98ef4@linux.ibm.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_67_1925394680.1675450036552"
-Message-ID: <0.0.0.E3.1D937FFFEE966B2.F8C0F8@mail.go-andhear.click>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,610 +93,309 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "david@redhat.com" <david@redhat.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>, "Wang,
+ Zhi A" <zhi.a.wang@intel.com>, "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_67_1925394680.1675450036552
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Fri, 3 Feb 2023 12:29:01 -0500
+Matthew Rosato <mjrosato@linux.ibm.com> wrote:
 
-<!DOCTYPE html>
-<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
- <head> 
-  <title></title> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.go-andhear.click/a7i4e2395uFR8612a493M9r1164J36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydene6rOu10r6sjqwTD/nodes-stationary" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/c056O2pY395Win8613vNr493an1164G36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQydene5s10IU6nX0TwD/stylistically-remodeling" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/7196oN23K95K8V6z13Q4m9P3bS1164K36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQydene5M10UB6ujwpD1/Schubert-incessant" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/nodes-stationary/9ea4Y2395wA86q12e49p3ct1164C36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQydene5tt1F06LqLlwD" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/utilizes-Marquette/17a4U2395g86NC13B49Qp3dS1164N36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQydene6K1u0Kh5UpwzD" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/Victrola-Tinseltown/3004G2395Ij86R12Q493oeO1164U36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQydene7CO1n0mP5NywDN" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/f2f6IBq2395WI86B12b493flM1164z36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQydene5r1UH05ilwDP/Townsend-declarations" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/blabbermouth-addressability/9544R2395Y8si613m49g4Q0B1164U36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQydene5E1m0R6eWwMyD" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/9cb5U23W95S8UN612q4941_Z1164q36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQydene7EUzY10Y6JO1wDN/stylistically-remodeling" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/Townsend-declarations/13e4y2395Fij8611l4942s1164p36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydene6gZ1y0Z5DPw2D" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/nodes-stationary/15c5Vi2395l8LJ612u4z943N1164p36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQydene6gy1N0V5Q@wDA" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/be75PZ2395dh86N13F4944TAl1164i36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQydene6gQ10Rk6rOlw@D/manipulates-thrusts" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/stylistically-remodeling/8286a23y9Y5n86qV12Rk4945q1164m36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQydene6QRq1n05qPwLD" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/5b16S23gS95LWU8613S4sJ946Y1164Y36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQydene5jD10U5vWBwD/Schubert-incessant" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/blabbermouth-addressability/2106A23v9L5sY86x11l4947p1164A36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQydene7U1RPN0Z6HJBwzD" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/manipulates-thrusts/c246Kw2B395r86TV11z4948q1164p36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQydene6Q_s10u6eLw@DO" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/3595o23M95S86lS12z494l9P1164G36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQydene6RQDy106CTwDWP/stylistically-remodeling" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/Townsend-declarations/b706l2Ds395S8R6P12t494aSK1164X36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQydene7y1CGsz05RJzwD" rel="stylesheet" type="text/css" /> 
-  <link href="http://www.go-andhear.click/40d4A2395gT8G613B494qNbl1164g36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQydene5r1_0g6XATwDB/utilizes-Marquette" rel="stylesheet" type="text/css" /> 
-  <style type="text/css">* {
-			box-sizing: border-box;
-		}
+> On 2/3/23 10:19 AM, Alex Williamson wrote:
+> > On Fri, 3 Feb 2023 14:54:44 +0000
+> > "Liu, Yi L" <yi.l.liu@intel.com> wrote:
+> >  =20
+> >>> From: Alex Williamson <alex.williamson@redhat.com>
+> >>> Sent: Friday, February 3, 2023 9:50 PM
+> >>>
+> >>> On Fri, 3 Feb 2023 13:32:09 +0000
+> >>> "Liu, Yi L" <yi.l.liu@intel.com> wrote:
+> >>>    =20
+> >>>>> From: Tian, Kevin <kevin.tian@intel.com>
+> >>>>> Sent: Friday, February 3, 2023 10:00 AM
+> >>>>>   =20
+> >>>>>> From: Alex Williamson <alex.williamson@redhat.com>
+> >>>>>> Sent: Friday, February 3, 2023 7:13 AM
+> >>>>>>
+> >>>>>> On Thu, 2 Feb 2023 23:04:10 +0000
+> >>>>>> "Tian, Kevin" <kevin.tian@intel.com> wrote:
+> >>>>>>   =20
+> >>>>>>>> From: Alex Williamson <alex.williamson@redhat.com>
+> >>>>>>>> Sent: Friday, February 3, 2023 3:42 AM
+> >>>>>>>>
+> >>>>>>>>
+> >>>>>>>> LGTM.  I'm not sure moving the functions to vfio_main really buy=
+s   =20
+> >>> us   =20
+> >>>>>>>> anything since we're making so much use of group fields.  The cd=
+ev
+> >>>>>>>> approach will necessarily be different, so the bulk of the get c=
+ode   =20
+> >>> will   =20
+> >>>>>>>> likely need to move back to group.c anyway.
+> >>>>>>>>   =20
+> >>>>>>>
+> >>>>>>> well my last comment was based on Matthew's v2 where the get   =
+=20
+> >>> code   =20
+> >>>>>>> gets a kvm passed in instead of implicitly retrieving group ref_l=
+ock
+> >>>>>>> internally. In that case the get/put helpers only contain device =
+logic
+> >>>>>>> thus fit in vfio_main.c.
+> >>>>>>>
+> >>>>>>> with v3 then they have to be in group.c since we don't want to us=
+e
+> >>>>>>> group fields in vfio_main.c.
+> >>>>>>>
+> >>>>>>> but I still think v2 of the helpers is slightly better. The only =
+difference
+> >>>>>>> between cdev and group when handling this race is using different
+> >>>>>>> ref_lock. the symbol get/put part is exactly same. So even if we
+> >>>>>>> merge v3 like this, very likely Yi has to change it back to v2 st=
+yle
+> >>>>>>> to share the get/put helpers while just leaving the ref_lock part
+> >>>>>>> handled differently between the two path.   =20
+> >>>>>>
+> >>>>>> I'm not really a fan of the asymmetry of the v2 version where the =
+get
+> >>>>>> helper needs to be called under the new kvm_ref_lock, but the put
+> >>>>>> helper does not.  Having the get helper handle that makes the call=
+er
+> >>>>>> much cleaner.  Thanks,
+> >>>>>>   =20
+> >>>>>
+> >>>>> What about passing the lock pointer into the helper? it's still sli=
+ghtly
+> >>>>> asymmetry as the put helper doesn't carry the lock pointer but it
+> >>>>> could also be interpreted as if the pointer has been saved in the g=
+et
+> >>>>> then if it needs to be referenced by the put there is no need to pa=
+ss
+> >>>>> it in again.   =20
+> >>>>
+> >>>> For cdev, I may modify vfio_device_get_kvm_safe() to accept
+> >>>> struct kvm and let its caller hold a kvm_ref_lock (field within
+> >>>> struct vfio_device_file). Meanwhile, the group path holds
+> >>>> the group->kvm_ref_lock before invoking vfio_device_get_kvm_safe().
+> >>>> vfio_device_get_kvm_safe() just includes the symbol get/put and
+> >>>> the device->kvm and put_kvm set.   =20
+> >>>
+> >>> Sounds a lot like v2 :-\    =20
+> >>
+> >> Yes, like v2. =F0=9F=98=8A
+> >> =20
+> >>> I'd look more towards group and cdev specific
+> >>> helpers that handle the locking so that the callers aren't exposed to
+> >>> the asymmetry of get vs put, and reduce a new
+> >>> _vfio_device_get_kvm_safe() in common code that only does the symbol
+> >>> work.  Thanks,   =20
+> >>
+> >> If so, looks like Matthew needs a v4. I'm waiting for the final versio=
+n
+> >> of this patch and sending a new cdev series based on it. wish to see
+> >> it soon ^_^. =20
+> >=20
+> > cdev support is a future feature, why does it become a requirement for
+> > a fix to the current base?  The refactoring could also happen in the
+> > cdev series.  Thanks,
+> >=20
+> > Alex
+> >  =20
+>=20
+> FWIW, that would bloat the fix by a bit and it's already a decent-sized f=
+ix...  I took a quick stab and such a v4 would end up with a total of 120 i=
+nsertions(+), 15 deletions(-).  See below for a diff of what I tried on top=
+ of v3. The idea would be to move the serialization and setting/clearing of=
+ device->kvm into group/cdev and use device->kvm as the value within vfio_d=
+evice_get_kvm_safe for getting the kvm ref.  Wrappers in group/cdev would t=
+hen be responsible for backing that device->kvm setting out on ref failure.
+> Each side (group/cdev) can wrap their own serialization / load device->kv=
+m from the appropriate location / handle the failed get / clear device->kvm=
+ when done (since get doesn't set it, put shouldn't clear it).
+>=20
+> If Alex wants, I can wrap something like this into a v4 -- Or, if we don'=
+t want to include this kind of infrastructure in the fix, then Yi please fe=
+el free to use it as a starting point for what you need in cdev.
+>=20
+> Thanks,
+> Matt
+>=20
+> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+> index 7fed4233ca23..261af23975ae 100644
+> --- a/drivers/vfio/group.c
+> +++ b/drivers/vfio/group.c
+> @@ -154,6 +154,31 @@ static int vfio_group_ioctl_set_container(struct vfi=
+o_group *group,
+>  =09return ret;
+>  }
+> =20
+> +static void vfio_device_group_get_kvm(struct vfio_device *device)
+> +{
+> +=09lockdep_assert_held(&device->dev_set->lock);
+> +
+> +=09spin_lock(&device->group->kvm_ref_lock);
+> +
+> +=09if (!device->group->kvm)
+> +=09=09goto unlock;
+> +
+> +=09device->kvm =3D device->group->kvm;
+> +=09if (!vfio_device_get_kvm_safe(device))
 
-		body {
-			margin: 0;
-			padding: 0;
-		}
+I'd probably go back to making this:
 
-		a[x-apple-data-detectors] {
-			color: inherit !important;
-			text-decoration: inherit !important;
-		}
+void _vfio_device_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)=
+;
 
-		#MessageViewBody a {
-			color: inherit;
-			text-decoration: none;
-		}
+so the vfio_main function would handle setting and clearing
+device->kvm.  That way we could also move the lockdep into the
+vfio_main functions.  Once we do that, there's no reason to have a
+group vs cdev put function and we end up with only a wrapper on the get
+function, which should really never be used directly, so we prefix it
+with an underscore.
 
-		p {
-			line-height: inherit
-		}
+At that point (see incremental diff below), it's about a wash.  Current v3:
 
-		.desktop_hide,
-		.desktop_hide table {
-			mso-hide: all;
-			display: none;
-			max-height: 0px;
-			overflow: hidden;
-		}
+ drivers/vfio/group.c     |   32 +++++++++++++----
+ drivers/vfio/vfio.h      |   14 +++++++
+ drivers/vfio/vfio_main.c |   70 +++++++++++++++++++++++++++++++++++----
+ include/linux/vfio.h     |    2 -
+ 4 files changed, 103 insertions(+), 15 deletions(-)
 
-		@media (max-width:700px) {
+Folding in below:
 
-			.desktop_hide table.icons-inner,
-			.social_block.desktop_hide .social-table {
-				display: inline-block !important;
-			}
+ drivers/vfio/group.c     |   44 ++++++++++++++++++++++-----
+ drivers/vfio/vfio.h      |   15 +++++++++
+ drivers/vfio/vfio_main.c |   63 ++++++++++++++++++++++++++++++++++-----
+ include/linux/vfio.h     |    2 -
+ 4 files changed, 109 insertions(+), 15 deletions(-)
 
-			.icons-inner {
-				text-align: center;
-			}
+Unfortunately it seems I've talked myself into the answer that we
+should maybe just pre-enable cdev by not adding a group reference in
+vfio_main.  Thanks,
 
-			.icons-inner td {
-				margin: 0 auto;
-			}
+Alex
 
-			.fullMobileWidth,
-			.image_block img.big,
-			.row-content {
-				width: 100% !important;
-			}
-
-			.mobile_hide {
-				display: none;
-			}
-
-			.stack .column {
-				width: 100%;
-				display: block;
-			}
-
-			.mobile_hide {
-				min-height: 0;
-				max-height: 0;
-				max-width: 0;
-				overflow: hidden;
-				font-size: 0px;
-			}
-
-			.desktop_hide,
-			.desktop_hide table {
-				display: table !important;
-				max-height: none !important;
-			}
-
-			.reverse {
-				display: table;
-				width: 100%;
-			}
-
-			.reverse .column.last {
-				display: table-header-group !important;
-			}
-
-			.row-7 td.column.last .border {
-				padding-left: 0;
-				padding-right: 40px;
-				border-top: 0;
-				border-right: 0px;
-				border-bottom: 0;
-				border-left: 0;
-			}
-		}
-	</style> 
- </head> 
- <body style="background-color: #eef6f9; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;"> 
-  <table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #eef6f9;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #eee; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 10px; padding-right: 10px; vertical-align: top; padding-top: 10px; padding-bottom: 10px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="text-align:center;width:100%;"> <h1 style="margin: 0; color: #c9dae2; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 400; letter-spacing: normal; line-height: 150%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder"><a href="http://www.go-andhear.click/Victrola-Tinseltown/eb86j23DM95JO8K611w494cA1164v36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQydene6kk1pP05KkTwD"><img alt="" src="http://www.go-andhear.click/a7f5a23r95SP7Na13O4V9u4ei1164r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQydene6ADt10t5M0wyD/nodes-stationary" width="100%" /></a></span></h1> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #c9dae2; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="text-align:center;width:100%;padding-top:35px; padding-left: 20px; padding-right: 20px"> <h1 style="margin: 0; color: #171817; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 39px; font-weight: 400; letter-spacing: 0px; line-height: 150%; text-align: center; margin-top: 0; margin-bottom: 0; font-weight: bolder">Hearing aids just got their biggest upgrade yet... now everyone wants a pair</h1> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="image_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:20px;padding-left:30px;padding-right:30px;padding-top:10px;width:100%;"> 
-                  <div align="center" class="alignment" style="line-height:10px">
-                   &nbsp;
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 0px; padding-bottom: 0px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="image_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;"> 
-                  <div align="center" class="alignment" style="line-height:10px">
-                   &nbsp;
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; background-color: #ffffff; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 30px; padding-right: 30px; vertical-align: top; padding-top: 30px; padding-bottom: 30px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:10px;padding-left:30px;padding-right:30px;padding-top:0px;text-align:center;width:100%;"><a href="http://www.go-andhear.click/Victrola-Tinseltown/eb86j23DM95JO8K611w494cA1164v36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQydene6kk1pP05KkTwD"><img alt="" src="http://www.go-andhear.click/bab5W239o5F7iaS12K494wfk1164r36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQydene6I1FA0v6NpXjwD/Schubert-incessant" width="100%" /></a> <h1 style="margin: 0; color: #171817; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bolder; letter-spacing: 0px; line-height: 150%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder"><strong>Ever heard the saying, &quot;good things come in small packages?&quot;</strong></span></h1> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="10" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad"> 
-                  <div style="font-family: sans-serif"> 
-                   <div style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #1d1d1b; line-height: 1.5;"> 
-                    <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 24px;"><span style="font-size:16px;">Well, it's certainly true for the latest breakthrough in hearing tech: a device that packs an extraordinary amount of power into a truly tiny design.<br /> <br /> Two years ago, our engineers unveiled the virtually invisible Horizon hearing aids and it quickly became a best-seller. Now, they're back with yet another innovation?Horizon AX?and experts are calling it<b><mark style="background-color: #D8EEFF;color: black;"> the biggest upgrade in sound and speech clarity the industry has ever seen.</mark></b></span></p> 
-                    <br /> 
-                    <br /> 
-                    <b><a href="http://www.go-andhear.click/Victrola-Tinseltown/eb86j23DM95JO8K611w494cA1164v36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQydene6kk1pP05KkTwD"><img alt="" src="http://www.go-andhear.click/6835L23C95v7TaI11F4950g1164r36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQydene5u1L0r6IOwTDO/manipulates-thrusts" width="100%" /></a> </b>
-                    <br /> &nbsp; 
-                    <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 24px;"><b><span style="font-size:16px;"><b>The big upgrade:</b> Horizon AX has the world's first-ever dual processing system, meaning it has not one, but two state-of-the-art computer chips. And with double the power comes double the clarity...</span></b></p> 
-                    <b> </b>
-                   </div> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="button_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="text-align:center;"> 
-                  <div align="center" class="alignment">
-                   <br /> 
-                   <a href="http://www.go-andhear.click/Victrola-Tinseltown/eb86j23DM95JO8K611w494cA1164v36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQydene6kk1pP05KkTwD" style="text-decoration:none;display:inline-block;color:#383838;background-color:transparent;border-radius:0px;width:auto;border-top:2px solid #383838;font-weight:400;border-right:2px solid #383838;border-bottom:2px solid #383838;border-left:2px solid #383838;padding-top:5px;padding-bottom:5px;font-family:Poppins, Arial, Helvetica, sans-serif;font-size:16px;text-align:center;mso-border-alt:none;word-break:keep-all;" target="_blank"><span style="padding-left:40px;padding-right:40px;font-size:16px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word;"><span data-mce-style="" style="line-height: 32px;"><strong>Check if you Qualify</strong></span></span></span></a>
-                   <br /> &nbsp; 
-                   <hr /> 
-                   <h1 style="margin: 0; color: #171817; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bolder; letter-spacing: 0px; line-height: 150%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder"><strong>You might be a good candidate for the Horizon AX if you meet the following criteria:</strong></span></h1> &nbsp; 
-                   <div style="margin: 0; color: #171817; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 24px; font-weight: normal; letter-spacing: 0px; line-height: 150%; text-align: center; margin-top: 0; margin-bottom: 0; text-align: left">
-                    <a href="http://www.go-andhear.click/Victrola-Tinseltown/eb86j23DM95JO8K611w494cA1164v36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQydene6kk1pP05KkTwD"><img alt="dancesd" src="http://www.go-andhear.click/finishes-cables/7386n2oW395Rl7au12e495Z1C1164X36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQydene7zO10mOp6HLyw0D" style="max-width: 270px; display: inline-block; float: left; margin-right: 20px" /></a> ? 50 years or older
-                    <br /> ? Having trouble hearing
-                    <br /> ? Live in the U.S.                     <br /> 
-                    <br /> 
-                    <a href="http://www.go-andhear.click/Victrola-Tinseltown/eb86j23DM95JO8K611w494cA1164v36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQydene6kk1pP05KkTwD" style="text-decoration:none;display:inline-block;color:#383838;background-color:transparent;border-radius:0px;width:auto;border-top:2px solid #383838;font-weight:400;border-right:2px solid #383838;border-bottom:2px solid #383838;border-left:2px solid #383838;padding-top:5px;padding-bottom:5px;font-family:Poppins, Arial, Helvetica, sans-serif;font-size:16px;text-align:center;mso-border-alt:none;word-break:keep-all;" target="_blank"><span style="padding-left:40px;padding-right:40px;font-size:16px;display:inline-block;letter-spacing:normal;"><span style="word-break: break-word;"><span data-mce-style="" style="line-height: 32px;"><strong>Check if you Qualify</strong></span></span></span></a>
-                   </div> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-7" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:10px;padding-left:30px;padding-right:30px;padding-top:90px;text-align:center;width:100%;"> <h1 style="margin: 0; color: #171817; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; letter-spacing: 3px; line-height: 150%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">&nbsp;</span></h1> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="50%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;"> 
-                  <div align="center" class="alignment" style="line-height:10px">
-                   &nbsp;
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-             <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #ffffff; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="50%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;"> 
-                  <div align="center" class="alignment" style="line-height:10px">
-                   &nbsp;
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 40px; padding-right: 40px; vertical-align: top; padding-top: 40px; padding-bottom: 40px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="text_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:30px;padding-top:20px;"> 
-                  <div style="font-family: sans-serif"> 
-                   <div style="font-size: 12px; font-family: Poppins, Arial, Helvetica, sans-serif; mso-line-height-alt: 18px; color: #1d1d1b; line-height: 1.5;"> 
-                    <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 21px;">&nbsp;</p> 
-                   </div> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="button_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="text-align:left;padding-bottom:30px;"> 
-                  <div align="left" class="alignment">
-                   &nbsp;
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-7" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #7b7b7b; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr class="reverse"> 
-             <td class="column column-1 last" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-right: 40px; vertical-align: top; padding-top: 0px; padding-bottom: 0px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <div class="border"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="pad" style="padding-bottom:10px;padding-left:40px;padding-top:10px;text-align:center;width:100%;"> <h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 400; letter-spacing: 3px; line-height: 150%; text-align: left; margin-top: 0; margin-bottom: 0;">&nbsp;</h1> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-8" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-9" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #171817; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 30px; padding-right: 30px; vertical-align: top; padding-top: 30px; padding-bottom: 30px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="text-align:center;width:100%;"> <h2 style="margin: 0; color: #dbe9f2; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; letter-spacing: 1px; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">If you wish to get out from future mailings please <a href="http://www.go-andhear.click/nodes-stationary/eb85X239h5Si8W613QsD494dB1164R36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQydene5RW10q5w3MwD" style="color: red">visit here</a>,<br /> or write to: Corporate Trust Center, 1209 Orange Street, Wilmington, Delaware 19801</span></h2> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-10" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-11" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-12" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-13" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-14" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ececec; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <div class="spacer_block" style="height:10px;line-height:10px;font-size:1px;">
-               ?
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-15" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ececec; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 5px; padding-right: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="icons_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="vertical-align: middle; color: #3c3838; font-family: inherit; font-size: 16px; padding-bottom: 30px; padding-top: 20px; text-align: center;"> 
-                  <table cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td class="alignment" style="vertical-align: middle; text-align: center;"> 
-                      <table cellpadding="0" cellspacing="0" class="icons-inner" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;"> 
-                       <tbody> 
-                        <tr> 
-                         <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 25px; padding-left: 30px; padding-right: 10px;">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td style="font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 16px; color: #3c3838; vertical-align: middle; letter-spacing: undefined; text-align: center;">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-             <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 5px; padding-right: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="icons_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="vertical-align: middle; color: #3c3838; font-family: inherit; font-size: 16px; padding-bottom: 20px; padding-top: 20px; text-align: center;"> 
-                  <table cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td class="alignment" style="vertical-align: middle; text-align: center;"> 
-                      <table cellpadding="0" cellspacing="0" class="icons-inner" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;"> 
-                       <tbody> 
-                        <tr> 
-                         <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 25px; padding-left: 30px; padding-right: 30px;">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td style="font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 16px; color: #3c3838; vertical-align: middle; letter-spacing: undefined; text-align: center;">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-             <td class="column column-3" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 5px; padding-right: 5px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="icons_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="vertical-align: middle; color: #3c3838; font-family: inherit; font-size: 16px; padding-bottom: 20px; padding-top: 20px; text-align: center;"> 
-                  <table cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td class="alignment" style="vertical-align: middle; text-align: center;"> 
-                      <table cellpadding="0" cellspacing="0" class="icons-inner" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;"> 
-                       <tbody> 
-                        <tr> 
-                         <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 25px; padding-left: 30px; padding-right: 30px;">&nbsp;</td> 
-                        </tr> 
-                        <tr> 
-                         <td style="font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 16px; color: #3c3838; vertical-align: middle; letter-spacing: undefined; text-align: center;">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-16" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ececec; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <div class="spacer_block" style="height:10px;line-height:10px;font-size:1px;">
-               ?
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-17" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #1c1c1c; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 15px; padding-bottom: 15px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <table border="0" cellpadding="30" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad"> <h3 style="margin: 0; color: #ffffff; direction: ltr; font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0;">&nbsp;</h3> <p><br /> <br /> <span class="tinyMce-placeholder"><span style="text-decoration: none; "><font style="coequal"><span><style color="trolls"><small><font class="hesitates"><font dir="pneumatic"></font></span></font></small></font></style><style id="buffoons"></style> </span></span></p> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-18" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 680px;" width="680"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="icons_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="vertical-align: middle; color: #9d9d9d; font-family: inherit; font-size: 15px; padding-bottom: 5px; padding-top: 5px; text-align: center;"> 
-                  <table cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td class="alignment" style="vertical-align: middle; text-align: center;"> 
-                      <table cellpadding="0" cellspacing="0" class="icons-inner" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px;"> 
-                       <tbody> 
-                        <tr> 
-                         <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 6px;">&nbsp;</td> 
-                         <td style="font-family: Poppins, Arial, Helvetica, sans-serif; font-size: 15px; color: #9d9d9d; vertical-align: middle; letter-spacing: undefined; text-align: center;">&nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.go-andhear.click/1f16k2g3l95G8oh512m4B952H1164C36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQydene5wlM106uyTLwD/finishes-cables" alt=""/></body>
-</html>
-
-------=_Part_67_1925394680.1675450036552--
+diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+index 7fed4233ca23..98621ac082f0 100644
+--- a/drivers/vfio/group.c
++++ b/drivers/vfio/group.c
+@@ -154,6 +154,18 @@ static int vfio_group_ioctl_set_container(struct vfio_=
+group *group,
+ =09return ret;
+ }
+=20
++static void vfio_device_group_get_kvm_safe(struct vfio_device *device)
++{
++=09spin_lock(&device->group->kvm_ref_lock);
++=09if (!device->group->kvm)
++=09=09goto unlock;
++
++=09_vfio_device_get_kvm_safe(device, device->group->kvm);
++
++unlock:
++=09spin_unlock(&device->group->kvm_ref_lock);
++}
++
+ static int vfio_device_group_open(struct vfio_device *device)
+ {
+ =09int ret;
+@@ -173,7 +185,7 @@ static int vfio_device_group_open(struct vfio_device *d=
+evice)
+ =09 * the pointer in the device for use by drivers.
+ =09 */
+ =09if (device->open_count =3D=3D 0)
+-=09=09vfio_device_get_kvm_safe(device);
++=09=09vfio_device_group_get_kvm_safe(device);
+=20
+ =09ret =3D vfio_device_open(device, device->group->iommufd, device->kvm);
+=20
+diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+index 20d715b0a3a8..24d6cd285945 100644
+--- a/drivers/vfio/vfio.h
++++ b/drivers/vfio/vfio.h
+@@ -253,10 +253,11 @@ enum { vfio_noiommu =3D false };
+ #endif
+=20
+ #ifdef CONFIG_HAVE_KVM
+-void vfio_device_get_kvm_safe(struct vfio_device *device);
++void _vfio_device_get_kvm_safe(struct vfio_device *device, struct kvm *kvm=
+);
+ void vfio_device_put_kvm(struct vfio_device *device);
+ #else
+-static inline void vfio_device_get_kvm_safe(struct vfio_device *device)
++static inline void _vfio_device_get_kvm_safe(struct vfio_device *device,
++=09=09=09=09=09     struct kvm *kvm)
+ {
+ }
+=20
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index 4762550e9f42..00d4d5167d6c 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -342,7 +342,7 @@ void vfio_unregister_group_dev(struct vfio_device *devi=
+ce)
+ EXPORT_SYMBOL_GPL(vfio_unregister_group_dev);
+=20
+ #ifdef CONFIG_HAVE_KVM
+-void vfio_device_get_kvm_safe(struct vfio_device *device)
++void _vfio_device_get_kvm_safe(struct vfio_device *device, struct kvm *kvm=
+)
+ {
+ =09void (*pfn)(struct kvm *kvm);
+ =09bool (*fn)(struct kvm *kvm);
+@@ -350,32 +350,25 @@ void vfio_device_get_kvm_safe(struct vfio_device *dev=
+ice)
+=20
+ =09lockdep_assert_held(&device->dev_set->lock);
+=20
+-=09spin_lock(&device->group->kvm_ref_lock);
+-=09if (!device->group->kvm)
+-=09=09goto unlock;
+-
+ =09pfn =3D symbol_get(kvm_put_kvm);
+ =09if (WARN_ON(!pfn))
+-=09=09goto unlock;
++=09=09return;
+=20
+ =09fn =3D symbol_get(kvm_get_kvm_safe);
+ =09if (WARN_ON(!fn)) {
+ =09=09symbol_put(kvm_put_kvm);
+-=09=09goto unlock;
++=09=09return;
+ =09}
+=20
+ =09ret =3D fn(device->group->kvm);
+ =09symbol_put(kvm_get_kvm_safe);
+ =09if (!ret) {
+ =09=09symbol_put(kvm_put_kvm);
+-=09=09goto unlock;
++=09=09return;
+ =09}
+=20
+ =09device->put_kvm =3D pfn;
+-=09device->kvm =3D device->group->kvm;
+-
+-unlock:
+-=09spin_unlock(&device->group->kvm_ref_lock);
++=09device->kvm =3D kvm;
+ }
+=20
+ void vfio_device_put_kvm(struct vfio_device *device)
 
