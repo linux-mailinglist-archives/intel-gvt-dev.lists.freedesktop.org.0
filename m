@@ -2,93 +2,150 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0730A689B87
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 15:26:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D82A2689C21
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 15:48:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C7B4510E04B;
-	Fri,  3 Feb 2023 14:26:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9F9A010E7AD;
+	Fri,  3 Feb 2023 14:48:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 69A5A10E04B;
- Fri,  3 Feb 2023 14:26:24 +0000 (UTC)
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 313EC6jX010015; Fri, 3 Feb 2023 14:26:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=q7liJYzUncL3AKyLjQjPcWYMHH0iXSgpqJKN0MpU4FI=;
- b=BvO/2C04jM+KdRCRB92ICnXSLQQITcAROmU0K10KMbdKXpFOdwA6WXZnruc9tDTwY09R
- 5m6O5yvX+9kMEG6fxezhrDrWrA3EKTbWwQHM2t7ViRWFQdui/A8vao57RuZ70GXP1Kk7
- K2P7zTf35r5WBw+flQ6Yr9dK2BplEd2/tmNzjtQDG3Offd/F6EaoA1t4BvSYAmqFclDD
- 3haw0ROutNcNS4iXgA5j+fOgkP3r6nykhAj3/dDxWQLmLFnU8B9zhjOjhbsoxmwtOeuu
- DTxpiapQ/ad3KZGrJ/R5dWFBQ9ijfeMCbq87D4fcS9GEp1Aei9IuT/poOhsAv2QGldXH rQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3nh3tq8bna-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 Feb 2023 14:26:22 +0000
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 313EQLxx024915;
- Fri, 3 Feb 2023 14:26:21 GMT
-Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
- [169.53.41.122])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3nh3tq8bmu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 Feb 2023 14:26:21 +0000
-Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
- by ppma04dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 313DUIk8008447;
- Fri, 3 Feb 2023 14:26:20 GMT
-Received: from smtprelay03.wdc07v.mail.ibm.com ([9.208.129.113])
- by ppma04dal.us.ibm.com (PPS) with ESMTPS id 3ncvw39ea5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 Feb 2023 14:26:20 +0000
-Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
- [10.39.53.232])
- by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 313EQIVV64946586
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 3 Feb 2023 14:26:18 GMT
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B569158059;
- Fri,  3 Feb 2023 14:26:18 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 429F358043;
- Fri,  3 Feb 2023 14:26:16 +0000 (GMT)
-Received: from [9.65.253.123] (unknown [9.65.253.123])
- by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Fri,  3 Feb 2023 14:26:16 +0000 (GMT)
-Message-ID: <d322c7d4-9643-a0f4-1575-0cf4c3eb2bc8@linux.ibm.com>
-Date: Fri, 3 Feb 2023 09:26:15 -0500
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.0
-Subject: Re: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
-Content-Language: en-US
-To: "Liu, Yi L" <yi.l.liu@intel.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "jgg@nvidia.com"
- <jgg@nvidia.com>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2728010E7A8;
+ Fri,  3 Feb 2023 14:48:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675435712; x=1706971712;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=3ZXfW3OZ9rOl30CkxCVAbG0KUPE0+HfzveRINET94sI=;
+ b=hwXXzUmksa7dRiQ8cRQ2DIJh8jwrv7D3JteHIBWe4TNI+qvLBoOdgsDS
+ MaZZS39hUR71zL+Z+LfBEHxbleUM0MsJiC7v5SETKF3SpKonQ5F3pwwIz
+ Rj+FVrZw+RmnmTNSS9DP0xlfvuahxN8kruCQ+0YRegvVUc/TWw5Ho8qo0
+ ulZz0LtNqSPmhZjkIN81Yx+8TAZSzk7PmyuTL1a9YjHcQhg6n7vlaB+0X
+ G9foC31ZwEI6a2nROz3Q+Oiu4rDuKDONGUymK/iIkKyoJNlRFI54X+GHc
+ yP7QexbmBvlzeKpmEd+sE1qalA9umOuaGOkhcTe08mdFvDSUUPyvIucXR g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="326459101"
+X-IronPort-AV: E=Sophos;i="5.97,270,1669104000"; d="scan'208";a="326459101"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Feb 2023 06:48:31 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="729284308"
+X-IronPort-AV: E=Sophos;i="5.97,270,1669104000"; d="scan'208";a="729284308"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga008.fm.intel.com with ESMTP; 03 Feb 2023 06:48:31 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Fri, 3 Feb 2023 06:48:30 -0800
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Fri, 3 Feb 2023 06:48:30 -0800
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.46) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Fri, 3 Feb 2023 06:48:30 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gYj9mCSrRDxq3Fwqh0jQ0j2lSqF587KkjI6y9O336U4ttziUzTKvZV4Nqq4hGWQs+1qFFruG1v15CtaVJ1k+nl0GE23NLMq6rGJasHMPYlnJvOC737H5i0BhGEW9tcSuUTPfxvHOX1K967cgTmOqw1mMp03x738cVwKBLb1+vS8Wu+iKQs4NYvKLws0N9NbMMYLXd0bDGJhmIEVJFDIHiOK8VkCDN0Ym8tXtXGRJ/OuqSb2YHw4zp8goHbQSIL+pABdRaf1HGIQmmHfnaNPRSuJ34A1xswS9BSvQaYkGV/JXrUeMNs1BFRrw67Yn6qcPsRUOPZpC1T05k+ymRbjmeg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3ZXfW3OZ9rOl30CkxCVAbG0KUPE0+HfzveRINET94sI=;
+ b=C5l2rb+zO2EhLeUFg1orZdEGE5uWKHAmkvLBtIoZogV9YZ9BRIBPyZBdiMMiweHTk4g5xzE1Wb0aoi/nMGD9HHKCIslV4FoYpb1AWG4q37tGV4TgiKDuVwfbBwv83qoe3B9UMVwyHue9ibln68WqASDSwBAO4GtoFPG3cfZKjEY4MTlsFVTf0ma+f2ZBTh/9xTRYK/8l/r5TJH2nfTvQKNw8CpkXiYFVLnQ96kL/EsSYDdqCQcPCfSshiiUkswSDModZydtdbwN8g3+FMBCIxXaTmbPMJ4CqULyc9fBjrDeCJtHNnLQJWx015IbYCb0JohsEKSMhf9JpFh7PbDB3Vg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by CY8PR11MB6867.namprd11.prod.outlook.com (2603:10b6:930:5d::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.31; Fri, 3 Feb
+ 2023 14:48:26 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::e1fa:abbe:2009:b0a3]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::e1fa:abbe:2009:b0a3%4]) with mapi id 15.20.6064.024; Fri, 3 Feb 2023
+ 14:48:26 +0000
+From: "Liu, Yi L" <yi.l.liu@intel.com>
+To: Matthew Rosato <mjrosato@linux.ibm.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>
+Subject: RE: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
+Thread-Topic: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
+Thread-Index: AQHZNyMjAB7EXHsi0Ue5s99XWjtHT6687BlAgABckoCAAAYT4A==
+Date: Fri, 3 Feb 2023 14:48:26 +0000
+Message-ID: <DS0PR11MB75294E12D65903C07AAD8F92C3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
 References: <20230202162442.78216-1-mjrosato@linux.ibm.com>
  <DS0PR11MB75295F851A74ACE7CAFB0ACCC3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-In-Reply-To: <DS0PR11MB75295F851A74ACE7CAFB0ACCC3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: PoR_GFerNq64v6aRPlKwlphLaRL9OeR7
-X-Proofpoint-GUID: d9k1tya9GGzmwfkDZwjVnPu74WbqkhGy
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.122.1
- definitions=2023-02-03_08,2023-02-03_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 phishscore=0
- clxscore=1015 adultscore=0 impostorscore=0 lowpriorityscore=0 bulkscore=0
- spamscore=0 mlxlogscore=999 mlxscore=0 priorityscore=1501 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
- definitions=main-2302030130
+ <d322c7d4-9643-a0f4-1575-0cf4c3eb2bc8@linux.ibm.com>
+In-Reply-To: <d322c7d4-9643-a0f4-1575-0cf4c3eb2bc8@linux.ibm.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|CY8PR11MB6867:EE_
+x-ms-office365-filtering-correlation-id: efdd87fa-335c-41e4-4a7d-08db05f5b4f2
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: h9TOQ5ny+Xp4jYus25mg2zfBlQ97yhEmTj4A0FRNoWktzj7DWZjaMpMfdN7//a5Hkajv+T9U0vjDI0XwOQDqGYoXkOpBcS2O8BPKjbMcQwnxeooP0pdHg96o1UnndDprZxgVSJQX5WcL3VRezk1Z8O1yLw/PqfNHuJFKirpSCW05CQrxf40FgXPWf30A5WMWszGKk3Rgfa/kl3SozyFCfSbZ5Zb498CsVqTucqDLlfYa1Qu8XeroA7gG0qVEeAfw/ynxh7lOu7DOJ2S4elnTyj5MI+DyAWhICCdhNBE19mzaONZrSM899cmXm9okl6uNZ21+n0jUVhBjKvWOa6sr8yrMM6tAliMkJBb7ueogQZL1TQdCNzWcqua3bl5p5c/iCwIiDuGUFOj27kpkRSC9wigZGIaNKqZQzD+ilXezKxF6IvK/Vv2SI8jFoSyMP55VrjXGCQCHgSPcQHouBRmZ4pWlTFmNcXknV2LUdMzi3CZqmtErMW1zPxSbNiz1+WO2ReQCCDsGL9P3D+v9auEoVewPadcyy+CMlbHje1ET1p+nhAEQHvyjd5vCPCyZjU6oWM5/nYNsQpDR8biCwf20gk9HrZx74FoHjoSbhvEh1y9/NISERA42qktuj20u9qWWewWBo4qIy6hxNoPKK9pMsp1GqwDzW2m9L4+E4zB7jmH/uaCFpvJyjZ5hrYe81n0A09cNfli9WvI66cZw1qH+8TNcPTgb2oiwDMervKObZTo=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(136003)(376002)(396003)(366004)(39860400002)(346002)(451199018)(33656002)(82960400001)(86362001)(122000001)(38100700002)(478600001)(53546011)(6506007)(83380400001)(9686003)(186003)(26005)(38070700005)(54906003)(110136005)(2906002)(8676002)(76116006)(66476007)(5660300002)(4326008)(316002)(66946007)(66556008)(66446008)(7696005)(71200400001)(64756008)(7416002)(41300700001)(8936002)(52536014)(55016003)(13296009);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?K0lVbHJQZFQ3ZzVkeFhsRHNjR05YZlo5K2RPRll2U21Dakp3L1BKNlNmN2xt?=
+ =?utf-8?B?VmlyUURzeCtkY2dJRldReGovRmdabldNNWVvZEZNaXozYktHRTJNdXdHREhY?=
+ =?utf-8?B?cEU3bHk4aXFQQ3dRR1BhY1l1NXhRTEZ6Q3Z5Z1hkUVJDbVZ6b1ZRdXZNQzVh?=
+ =?utf-8?B?aW9nWU80eVoyalpJT1ZIMHlDVno2akNnamVnRjVkcXVDaU1ZMzFWV2o2VXFm?=
+ =?utf-8?B?UkFHTzVqV3ptTzVwbGxDRktMbWZUdDFmdlQ2b0xoVDIvamp4WS9wN29XVFcw?=
+ =?utf-8?B?eHFXcmRPc29vMWZQUmo4N3FBRzQvQUx0bnBOU0t6UUo0d01EQ0xUT21vMloy?=
+ =?utf-8?B?QitXcDJCeXFnbGdMcGpMY1dIR0E3WnFCaGhjNmxPT0xlRVM3dlRBOVJzbDRw?=
+ =?utf-8?B?RmZaWjJFM2RMQXFrdytRUk5Jck1WS0Z4ZlJld0JHcWVUUHY5V3BIMm9sQjA5?=
+ =?utf-8?B?Z2pRTGhCUEhwWFNZT2VwdHQ3bmxuQVFLUURKWXE1SmxnUGI1U2xPbm5TSkJ4?=
+ =?utf-8?B?VVJXN2FhTEF5YzBjdHB3WDNLUUE0MnJZQjFvZEwrNXE0NEcwZkh4eWxiMzA2?=
+ =?utf-8?B?R1Z5NVRiWXliRzRodGJ5TjFaODJ0NTV4OEJMOXJNTzg0V2pMbG1OVW9Id0Iz?=
+ =?utf-8?B?di9OUm9Vd0F3dGxoLzQ1N0FjOEpKYmhZZ0M5WDhWcS9hN2pXbTNyZ0hLd3dY?=
+ =?utf-8?B?dzNGSHZzMzh6ZW4wSnRhcnNKTEZZYlFlRS9qTTFuNlNTdFdiS2k5QWVzaWVG?=
+ =?utf-8?B?ZjlOcWZCVmFuUkVsUDRBaUZGMXRWUExNVUlaZmh5bDZuaXdNYmtPN0poc095?=
+ =?utf-8?B?UFVYNGNkTVc5NzFyWGpSU0lqL3cvNE9jb2FaSjBDUmpaTzZlQWlTa1ZnNHVR?=
+ =?utf-8?B?RGowOEw0MmNwMCtkd2pkQ1ExaWgvaG5YM0RWeFc4TnNGTnJXQnBodE9HY21w?=
+ =?utf-8?B?VVVPYndQSGU4bkF2WlJkR2Z1VzhHMS8zQk1oSmNXMksyVkFSRFBGamoyanZN?=
+ =?utf-8?B?QWpRTmZpRWE5Zk9SWW5GNncrZEdycTU5SmY4dWpPUmhzN0wxWEJwbTJzZ3lN?=
+ =?utf-8?B?Y0hPK09kRGVUSHIyN1JxUFBaTXFVV3g1a3J1MlMxdm42cEZNanJtZy9sbHgy?=
+ =?utf-8?B?cmZDbzNHZE93MXByV1hJeGgvWklNb1JZLzByU0pZeDYyZmM5VHNLVm5ET2RW?=
+ =?utf-8?B?bWtFQ1piN0psR0hJS0U0NHFuemV2OUM5b3U0dy9uYXc1OUxhNDZSNERCRXNq?=
+ =?utf-8?B?TGdEWFgzNE9JU2hoc3E1NDR4ek5WMGtnelkrRCswZDl0L1Eya3FCNHVEdEhY?=
+ =?utf-8?B?SC9TYXo5RWQ4SE84QXA3R1FDaTYzQUVZbGNZWGJ4Z204ak1CWS95N253NnlF?=
+ =?utf-8?B?QlNxcXlGUllrbEcvVTRCL3l6b1pKMmxXY0FXZDhvODNTVzFuNXVtUjlJV2hx?=
+ =?utf-8?B?UTZJTC85T09HQ3FZS3A4SFB3Z29hbnlONjZpOVdUSnNOUHJxNHFScjhtT0or?=
+ =?utf-8?B?OHFjMUdaWThlSHdiWTd6THBWR2x4R21TRmFpYVY0VDVNSU9McUg2aEtONnNt?=
+ =?utf-8?B?TE9oczl3SFJWZTE4MFI4dUpjdnZvc3hFN2wyTmdxUUh3OGt4RUd2b2tSU212?=
+ =?utf-8?B?RnU4UXhWMW10SDJtaHcxYkpMN0ZwSDZwWUVkcjJIVWQ2M1RaN1g0SXp0SkNu?=
+ =?utf-8?B?N2lDRkI2VE4vN3RpSmFGN0hDRmdLRUkxRXRGQXVDQU5lT2pCNzdWOHlGNUYv?=
+ =?utf-8?B?YVBVNWMrNnQyM0hWSjk2SkxKc242ZHZESW9PdUkzdkZBQUlOMUxZV1FnUnRh?=
+ =?utf-8?B?c0xYaHhjL2VXSHFHbWtVQ1NuQUpvTGJWZURKUXV4TE1qWkJLNC9zTXhOMHlC?=
+ =?utf-8?B?allSUTFqN0E0UHFoR2VtQzFmYzNFejVMaCsvenhhR29xOE45cFFjS2syck1S?=
+ =?utf-8?B?RWVQaUNkcWxjbG9tU0JWSXRSbytpR0VmSjRySFZWdzl3TmlkRVJiQ2Q3NEQz?=
+ =?utf-8?B?VU5mWUZNK25wa21mYUx6cUtWNFBwRFdYNmQ0L3cxY3k5eUp5ZllLbWlLMlBn?=
+ =?utf-8?B?MXZBYlFOaWtSVjBGNDlaaUdjR3VLMnl2TGpkVXB2SEtxOVB4UzdQTE1wZFVy?=
+ =?utf-8?Q?L+8JIWz4qXZOQ1wp/5daVlcY/?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: efdd87fa-335c-41e4-4a7d-08db05f5b4f2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Feb 2023 14:48:26.3805 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: AKoCJJtc06dIdgcFvKkczZER1pcYiXuEpBLQls8ygJf1mPg1fiwS4u22nekhZRDKePmTkWWQoS+vF2lWSjWyxA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB6867
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,7 +167,8 @@ Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
  "david@redhat.com" <david@redhat.com>, "Christopherson, ,
  Sean" <seanjc@google.com>,
  "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>, "Tian, Kevin" <kevin.tian@intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>, "Tian, 
+ Kevin" <kevin.tian@intel.com>,
  "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
@@ -122,33 +180,27 @@ Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 2/3/23 3:58 AM, Liu, Yi L wrote:
-> Hi Matthew,
-> 
-...
->> * Can't pass group->kvm to vfio_device_open, as it references the value
->>   outside of new lock.  Pass device->kvm to minimize changes in this
->>   fix (Alex, Yi)
-...
->> @@ -361,7 +420,6 @@ static int vfio_device_first_open(struct vfio_device
->> *device,
->>  	if (ret)
->>  		goto err_module_put;
->>
->> -	device->kvm = kvm;
-> 
-> Since you've deleted the only usage of kvm pointer in this function, I
-> guess you can remove the kvm parameter from vfio_device_open()
-> and vfio_device_first_open(). :-) if it makes this patch too big, may
-> just have another patch to do it.
-> 
-
-Hi Yi,
-
-Yeah, I mentioned it briefly (and vaguely I guess) in the cover, that was intentionally left out to reduce the patch size since this is a fix.  I thought that was the consensus from the v2 comments anyway.
-
-If I end up doing a v4 for this I can just include the removal as a 2nd patch (without a fixes tag) and Alex can squash or keep separate as preferred -- if not you can feel free to do that removal with your cdev follow-up that exploits this work.   
-
-Thanks,
-Matt
-
+PiBGcm9tOiBNYXR0aGV3IFJvc2F0byA8bWpyb3NhdG9AbGludXguaWJtLmNvbT4NCj4gU2VudDog
+RnJpZGF5LCBGZWJydWFyeSAzLCAyMDIzIDEwOjI2IFBNDQo+IA0KPiBPbiAyLzMvMjMgMzo1OCBB
+TSwgTGl1LCBZaSBMIHdyb3RlOg0KPiA+IEhpIE1hdHRoZXcsDQo+ID4NCj4gLi4uDQo+ID4+ICog
+Q2FuJ3QgcGFzcyBncm91cC0+a3ZtIHRvIHZmaW9fZGV2aWNlX29wZW4sIGFzIGl0IHJlZmVyZW5j
+ZXMgdGhlIHZhbHVlDQo+ID4+ICAgb3V0c2lkZSBvZiBuZXcgbG9jay4gIFBhc3MgZGV2aWNlLT5r
+dm0gdG8gbWluaW1pemUgY2hhbmdlcyBpbiB0aGlzDQo+ID4+ICAgZml4IChBbGV4LCBZaSkNCj4g
+Li4uDQo+ID4+IEBAIC0zNjEsNyArNDIwLDYgQEAgc3RhdGljIGludCB2ZmlvX2RldmljZV9maXJz
+dF9vcGVuKHN0cnVjdA0KPiB2ZmlvX2RldmljZQ0KPiA+PiAqZGV2aWNlLA0KPiA+PiAgCWlmIChy
+ZXQpDQo+ID4+ICAJCWdvdG8gZXJyX21vZHVsZV9wdXQ7DQo+ID4+DQo+ID4+IC0JZGV2aWNlLT5r
+dm0gPSBrdm07DQo+ID4NCj4gPiBTaW5jZSB5b3UndmUgZGVsZXRlZCB0aGUgb25seSB1c2FnZSBv
+ZiBrdm0gcG9pbnRlciBpbiB0aGlzIGZ1bmN0aW9uLCBJDQo+ID4gZ3Vlc3MgeW91IGNhbiByZW1v
+dmUgdGhlIGt2bSBwYXJhbWV0ZXIgZnJvbSB2ZmlvX2RldmljZV9vcGVuKCkNCj4gPiBhbmQgdmZp
+b19kZXZpY2VfZmlyc3Rfb3BlbigpLiA6LSkgaWYgaXQgbWFrZXMgdGhpcyBwYXRjaCB0b28gYmln
+LCBtYXkNCj4gPiBqdXN0IGhhdmUgYW5vdGhlciBwYXRjaCB0byBkbyBpdC4NCj4gPg0KPiANCj4g
+SGkgWWksDQo+IA0KPiBZZWFoLCBJIG1lbnRpb25lZCBpdCBicmllZmx5IChhbmQgdmFndWVseSBJ
+IGd1ZXNzKSBpbiB0aGUgY292ZXIsIHRoYXQgd2FzDQo+IGludGVudGlvbmFsbHkgbGVmdCBvdXQg
+dG8gcmVkdWNlIHRoZSBwYXRjaCBzaXplIHNpbmNlIHRoaXMgaXMgYSBmaXguICBJIHRob3VnaHQN
+Cj4gdGhhdCB3YXMgdGhlIGNvbnNlbnN1cyBmcm9tIHRoZSB2MiBjb21tZW50cyBhbnl3YXkuDQo+
+IA0KPiBJZiBJIGVuZCB1cCBkb2luZyBhIHY0IGZvciB0aGlzIEkgY2FuIGp1c3QgaW5jbHVkZSB0
+aGUgcmVtb3ZhbCBhcyBhIDJuZCBwYXRjaA0KPiAod2l0aG91dCBhIGZpeGVzIHRhZykgYW5kIEFs
+ZXggY2FuIHNxdWFzaCBvciBrZWVwIHNlcGFyYXRlIGFzIHByZWZlcnJlZCAtLSBpZg0KPiBub3Qg
+eW91IGNhbiBmZWVsIGZyZWUgdG8gZG8gdGhhdCByZW1vdmFsIHdpdGggeW91ciBjZGV2IGZvbGxv
+dy11cCB0aGF0DQo+IGV4cGxvaXRzIHRoaXMgd29yay4NCg0KU3VyZS4g8J+Yig0KDQpSZWdhcmRz
+LA0KWWkgTGl1DQo=
