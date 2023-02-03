@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E24A2688C6C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 02:23:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2998688CDA
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 03:03:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F16710E6E3;
-	Fri,  3 Feb 2023 01:23:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A42A710E6ED;
+	Fri,  3 Feb 2023 02:03:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 03 Feb 2023 01:23:16 UTC
-Received: from mail.nodull.click (unknown [45.13.189.183])
- by gabe.freedesktop.org (Postfix) with ESMTP id EA09910E6E3
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 03 Feb 2023 02:03:02 UTC
+Received: from mail.stnleytool.click (unknown [45.13.189.213])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8F9D410E6ED
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Feb 2023 01:23:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nodull.click;
+ Fri,  3 Feb 2023 02:03:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=stnleytool.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls-deals@nodull.click; bh=1gI3jMuFrXDfq2srnANmGBXmR94=;
- b=EY0YLJyXYnRFiZhC/3QppAIQlw7UWEIsGuTPwBrY6MbcvSNiMcyIoCUAog1vNuM4CnIHyFID5RhX
- tzJIuHWrb8XFbZLtS/7sePL09JG5LwZOqSSCrtCnZsPgLAMd2A9PEtdvHj+LNx7JFFeexRDTyk7J
- PZAV5W1pbUSuxYBQrOY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nodull.click;
- b=ZbZT8YRue2I6NUWWft3LnVnT9feTuYC/Jlu0Ur/maP2PKgja0Cb5h2T5ThnnK5tqogrtBXrqYh5o
- KqYm7HDLO0KIwVa3dwc4csoi2JHqClC0d3ohPjApMW4QwD8sIzMB8gbDp0tevjTxivfSmwhFDBNa
- UpyJvodrBuFHcufBAWE=;
-Received: by mail.nodull.click id hrhh0a0001gh for
+ i=jeffery_underwood@stnleytool.click; 
+ bh=z7BV6CkLAJzV59ThlzB/bqH5C6Y=;
+ b=unKyFaiXLq1cqxQOWOHmdzJIkEbNnSbs56bZEtf/GF6JKtaDjyb3Ri6++Ac9cAuluJQz2/1mq7es
+ fhwuKs+nrhdwz0UTGF4SGAKlOcc7g2MzISGvfiRWumikbDQf89NXJP+qEghTVVzB5mbESOiLUE/I
+ s4aEp5r/Jbkl2sYvAsg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=stnleytool.click;
+ b=MgzA08u0VnRlsX13xZbkExLeOEgqPNjTwvA+GHUtxxx8C4vXB00H1hInRaw2JwdsqMku8ZjUIWMW
+ Q0xF5V5JmhePZ37yPsWFySXtZa5CPNUMDpc3SrLjuTvJ3gBSHMt94Aqd3h1ItRkWviKWjAiiJCyZ
+ R2J37zkvwydENOJ7nEg=;
+Received: by mail.stnleytool.click id hrhllc0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Feb 2023 20:13:42 -0500 (envelope-from
- <kohls-deals-intel+2Dgvt+2Ddev=lists.freedesktop.org@nodull.click>)
-Date: Thu, 2 Feb 2023 20:13:42 -0500
-From: "Kohls Deals" <kohls-deals@nodull.click>
+ Thu, 2 Feb 2023 20:51:45 -0500 (envelope-from
+ <jeffery_underwood-intel+2Dgvt+2Ddev=lists.freedesktop.org@stnleytool.click>)
+Date: Thu, 2 Feb 2023 20:51:45 -0500
+From: "Jeffery Underwood" <jeffery_underwood@stnleytool.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Limited offer: Free Knife Set from Kohl's
+Subject: Claim your free Stanley Tool Set from Lowe's, limited time offer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_274_1886920490.1675386802012"
-Message-ID: <0.0.0.1E.1D9376CC123B9E2.5F362C@mail.nodull.click>
+ boundary="----=_Part_472_1847363424.1675389074058"
+Message-ID: <0.0.0.34.1D9377211F5B6CC.3A1BDC@mail.stnleytool.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,522 +53,981 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_274_1886920490.1675386802012
+------=_Part_472_1847363424.1675389074058
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
- <head> 
-  <title></title> 
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.nodull.click/6a15S239F5QA86s11R4924o1161u36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQIdenQ7Ro10Hgo6nXAw@D/spurned-watered" rel="stylesheet" type="text/css" /> 
-  <style type="text/css">* {
-			box-sizing: border-box; 
-		}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:o=3D"urn:schemas-microso=
+ft-com:office:office" xmlns:v=3D"urn:schemas-microsoft-com:vml">
+ <head>=20
+  <meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Type" =
+/>=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <meta name=3D"x-apple-disable-message-reformatting" />=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />
+  <!--<![endif]-->=20
+  <title></title>=20
+  <style type=3D"text/css">@media only screen and (min-width: 620px) {
+  .u-row {
+    width: 600px !important;
+  }
+  .u-row .u-col {
+    vertical-align: top;
+  }
 
-		body {
-			margin: 0; 
-			padding: 0; 
-		}
+  .u-row .u-col-50 {
+    width: 300px !important;
+  }
 
-		a[x-apple-data-detectors] {
-			color: inherit !important; 
-			text-decoration: inherit !important; 
-		}
+  .u-row .u-col-100 {
+    width: 600px !important;
+  }
 
-		#MessageViewBody a {
-			color: inherit; 
-			text-decoration: none; 
-		}
+}
 
-		p {
-			line-height: inherit
-		}
+@media (max-width: 620px) {
+  .u-row-container {
+    max-width: 100% !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .u-row .u-col {
+    min-width: 320px !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+  .u-row {
+    width: 100% !important;
+  }
+  .u-col {
+    width: 100% !important;
+  }
+  .u-col > div {
+    margin: 0 auto;
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+}
 
-		.desktop_hide,
-		.desktop_hide table {
-			mso-hide: all; 
-			display: none; 
-			max-height: 0px; 
-			overflow: hidden; 
-		}
+table,
+tr,
+td {
+  vertical-align: top;
+  border-collapse: collapse;
+}
 
-		@media (max-width:670px) {
+p {
+  margin: 0;
+}
 
-			.desktop_hide table.icons-inner,
-			.social_block.desktop_hide .social-table {
-				display: inline-block !important; 
-			}
+ie-container table,
+mso-container table {
+  table-layout: fixed;
+}
 
-			.icons-inner {
-				text-align: center; 
-			}
+* {
+  line-height: inherit;
+}
 
-			.icons-inner td {
-				margin: 0 auto; 
-			}
+a[x-apple-data-detectors=3D'true'] {
+  color: inherit !important;
+  text-decoration: none !important;
+}
 
-			.image_block img.big,
-			.row-content {
-				width: 100% !important; 
-			}
+@media (max-width: 480px) {
+  .hide-mobile {
+    max-height: 0px;
+    overflow: hidden;
+    display: none !important;
+  }
+}
 
-			.mobile_hide {
-				display: none; 
-			}
-
-			.stack .column {
-				width: 100%; 
-				display: block; 
-			}
-
-			.mobile_hide {
-				min-height: 0; 
-				max-height: 0; 
-				max-width: 0; 
-				overflow: hidden; 
-				font-size: 0px; 
-			}
-
-			.desktop_hide,
-			.desktop_hide table {
-				display: table !important; 
-				max-height: none !important; 
-			}
-		}
-	</style> 
- </head> 
- <body style="margin: 0; background-color: #C1C1C1; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none; "> 
-  <table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; background-color: #B5B5B5; background-image: none; background-position: top left; background-repeat: no-repeat; " width="100%"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #B5B5B5; background-size: auto; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; background-image: url('images/dot-safran.png'); background-repeat: repeat; background-size: auto; color: #000000; width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:30px; padding-top:5px; text-align:center; width:100%; ">&nbsp; <h1 style="margin: 0; color: #000000; direction: ltr; font-family: 'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 36px; font-weight: 400; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0; "><a href="http://www.nodull.click/5ed6V23qs95eg86F11K4925l1161D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQIdenQ7wAm1L0H5EkMwD/hotel-invisibly" rel="noopener" style="text-decoration: none; color: #000000; " target="_blank"><span class="tinyMce-placeholder"><strong><b style="color: #800002">KOHL' S</b> Rewards</strong></span></a></h1> <br /> <br /> <a href="http://www.nodull.click/5ed6V23qs95eg86F11K4925l1161D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQIdenQ7wAm1L0H5EkMwD/hotel-invisibly"><img alt="" src="http://www.nodull.click/Hobbs-reducibility/1206qU2A395U7aYI12e4928lU1161K36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQIdenQ
- 6iJis105nWJwD" width="70%" /></a> <p style="font-size: 22px; color: #555555; font-family:  Impact, Haettenschweiler, 'Franklin Gothic Bold', 'Arial Black', 'sans-serif'">intel-gvt-dev@lists.freedesktop.org</p> 
-                  <div style="text-align: left; padding-left: 0px; display: inline">
-                   <a href="http://www.nodull.click/5ed6V23qs95eg86F11K4925l1161D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQIdenQ7wAm1L0H5EkMwD/hotel-invisibly"><img alt="" src="http://www.nodull.click/b335s2X395S_7oa12i4929_C1161P36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQIdenQ6u_1A0K6iywPD@/sexton-Oedipally" width="25%" /></a>
-                  </div> <a href="http://www.nodull.click/5ed6V23qs95eg86F11K4925l1161D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQIdenQ7wAm1L0H5EkMwD/hotel-invisibly"><img alt="" src="http://www.nodull.click/chickadees-discourse/6fc4r2395uUs7a12u492avK1161s36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQIdenQ6po1S0i6vNTwDW" width="55%" /></a><br /> <br /> <br /> <br /> <br /> <a href="http://www.nodull.click/5ed6V23qs95eg86F11K4925l1161D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQIdenQ7wAm1L0H5EkMwD/hotel-invisibly"><img alt="" src="http://www.nodull.click/4675S239A5sm7ia13HS4r92bh1161j36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQIdenQ5EU10g6hLw0AD/upward-schemer" width="100%" /></a></td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="10" cellspacing="0" class="button_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad"> 
-                  <div align="center" class="alignment">
-                   &nbsp; 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="text-align:center; width:100%; "> <h1 style="margin: 0; color: #000000; direction: ltr; font-family: arial; font-size: 20px; font-weight: 400;  line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0; "><span class="tinyMce-placeholder">&nbsp; *Only Pay A Small S&amp; H Fee</span></h1> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="image_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="width:100%; padding-right:0px; padding-left:0px; "> 
-                  <div align="center" class="alignment" style="line-height:10px">
-                   &nbsp; 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:10px; padding-left:35px; padding-right:35px; padding-top:10px; ">&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="button_block block-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:20px; padding-left:10px; padding-right:10px; padding-top:10px; text-align:center; "> 
-                  <div align="center" class="alignment">
-                   &nbsp; 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #f3f3f3; background-size: auto; color: #000000; width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="100%"> 
-              <div class="spacer_block" style="height:20px; line-height:20px; font-size:1px; ">
-               ?
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp; </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #19132a; background-size: auto; color: #000000; width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="button_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:0px; padding-left:30px; padding-right:30px; padding-top:20px; text-align:center; ">&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-left:30px; padding-right:30px; text-align:center; width:100%; "> <h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: 'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 39px; font-weight: 400; letter-spacing: normal; line-height: 120%; text-align: center; margin-top: 0; margin-bottom: 0; ">&nbsp; </h1> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td> 
-                  <div style="color:#ffffff; direction:ltr; font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:150%; text-align:center; mso-line-height-alt:24px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="button_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-repeat: no-repeat; background-size: auto; color: #000000; background-color: #ffffff; background-image: url('images/dot-safran.png'); width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="100%"> 
-              <div class="spacer_block" style="height:20px; line-height:20px; font-size:1px; "> 
-               <div style="color:#000000; direction:ltr; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:12px; font-weight:400; letter-spacing:0px; line-height:150%; text-align:center; mso-line-height-alt:24px; "> 
-                <p style="margin: 0; ">&nbsp; </p> 
-                <p><span style="text-decoration: none; ">No longer want to receive communications?,</span><a href="http://www.nodull.click/Hobbs-reducibility/30D6e2o39h5N8U6y12L492F6p1161s36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQIdenQ5O1Vi05vPkwD" style="text-decoration-line: none; color: white"> <span style="color: #000000">Start-This-Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span title="lever"></span><span></span><style face="falsity"></style><font color="atrophies"><big><font id="clutter"></font></font><small></big></small><style><big></big></style><small></small></p> 
-                <p>&nbsp; </p> 
-               </div> 
-              </div> <br /> <br /> <br /> <br /> &nbsp; </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; background-image: url('images/dot-safran.png'); background-repeat: repeat; background-size: auto; color: #000000; width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="41.666666666666664%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="button_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:10px; padding-left:30px; padding-right:30px; padding-top:15px; text-align:left; ">&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-left:30px; padding-right:30px; text-align:center; width:100%; "> <h1 style="margin: 0; color: #000000; direction: ltr; font-family: 'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 39px; font-weight: 400; letter-spacing: normal; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0; ">&nbsp; </h1> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:10px; padding-left:30px; padding-right:30px; padding-top:10px; "> 
-                  <div style="color:#706f6f; direction:ltr; font-family:'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:150%; text-align:left; mso-line-height-alt:24px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="button_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:10px; padding-left:30px; padding-right:30px; padding-top:10px; text-align:left; ">&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-             <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="58.333333333333336%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="width:100%; padding-right:0px; padding-left:0px; padding-top:5px; "> 
-                  <div align="center" class="alignment" style="line-height:10px">
-                   &nbsp; 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-7" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #19132a; color: #000000; width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="100%"> 
-              <div class="spacer_block" style="height:20px; line-height:20px; font-size:1px; ">
-               ?
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-8" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #000000; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #19132a; color: #000000; width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="41.666666666666664%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:30px; padding-left:30px; padding-right:30px; padding-top:10px; text-align:center; width:100%; "> <h1 style="margin: 0; color: #ffffff; direction: ltr; font-family: 'Oswald', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 26px; font-weight: 400; letter-spacing: normal; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0; ">&nbsp; </h1> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-left:30px; padding-right:30px; text-align:center; width:100%; "> <h3 style="margin: 0; color: #ffffff; direction: ltr; font-family: Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size: 20px; font-weight: 400; line-height: 200%; text-align: left; margin-top: 0; margin-bottom: 0; ">&nbsp; </h3> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:15px; padding-left:30px; padding-right:30px; padding-top:10px; "> 
-                  <div style="color:#ffffff; direction:ltr; font-family:Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:180%; text-align:left; mso-line-height-alt:28.8px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-             <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="25%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-left:30px; padding-right:30px; text-align:center; width:100%; padding-top:5px; "> <h3 style="margin: 0; color: #ffffff; direction: ltr; font-family: Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size: 20px; font-weight: 400; line-height: 200%; text-align: left; margin-top: 0; margin-bottom: 0; ">&nbsp; </h3> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-left:30px; padding-right:30px; padding-top:10px; "> 
-                  <div style="color:#ffffff; direction:ltr; font-family:Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:180%; text-align:left; mso-line-height-alt:28.8px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-left:30px; padding-right:30px; padding-top:10px; "> 
-                  <div style="color:#ffffff; direction:ltr; font-family:Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:180%; text-align:left; mso-line-height-alt:28.8px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-left:30px; padding-right:30px; padding-top:10px; "> 
-                  <div style="color:#ffffff; direction:ltr; font-family:Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:180%; text-align:left; mso-line-height-alt:28.8px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:10px; padding-left:30px; padding-right:30px; padding-top:10px; "> 
-                  <div style="color:#ffffff; direction:ltr; font-family:Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:180%; text-align:left; mso-line-height-alt:28.8px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-             <td class="column column-3" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="33.333333333333336%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="heading_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-left:30px; padding-right:30px; text-align:center; width:100%; padding-top:5px; "> <h3 style="margin: 0; color: #ffffff; direction: ltr; font-family: Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size: 20px; font-weight: 400; line-height: 200%; text-align: left; margin-top: 0; margin-bottom: 0; ">&nbsp; </h3> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:5px; padding-left:30px; padding-right:30px; padding-top:10px; "> 
-                  <div style="color:#ffffff; direction:ltr; font-family:Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:180%; text-align:left; mso-line-height-alt:28.8px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="paragraph_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:5px; padding-left:30px; padding-right:30px; padding-top:10px; "> 
-                  <div style="color:#ffffff; direction:ltr; font-family:Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size:16px; font-weight:400; letter-spacing:0px; line-height:180%; text-align:left; mso-line-height-alt:28.8px; "> 
-                   <p style="margin: 0; ">&nbsp; </p> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table border="0" cellpadding="0" cellspacing="0" class="social_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="padding-bottom:15px; padding-left:20px; padding-right:20px; padding-top:10px; text-align:left; "> 
-                  <div align="left" class="alignment"> 
-                   <table border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; " width="144px"> 
-                    <tbody> 
-                     <tr> 
-                      <td style="padding:0 4px 0 0; ">&nbsp; </td> 
-                      <td style="padding:0 4px 0 0; ">&nbsp; </td> 
-                      <td style="padding:0 4px 0 0; ">&nbsp; </td> 
-                      <td style="padding:0 4px 0 0; ">&nbsp; </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-9" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #19132a; color: #000000; width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="100%"> 
-              <div class="spacer_block" style="height:20px; line-height:20px; font-size:1px; ">
-               ?
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-10" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-       <tbody> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 650px; " width="650"> 
-           <tbody> 
-            <tr> 
-             <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px; " width="100%"> 
-              <table border="0" cellpadding="0" cellspacing="0" class="icons_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="pad" style="vertical-align: middle; color: #9d9d9d; font-family: inherit; font-size: 15px; padding-bottom: 5px; padding-top: 5px; text-align: center; "> 
-                  <table cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; " width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td class="alignment" style="vertical-align: middle; text-align: center; "> 
-                      <table cellpadding="0" cellspacing="0" class="icons-inner" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block; margin-right: -4px; padding-left: 0px; padding-right: 0px; "> 
-                       <tbody> 
-                        <tr> 
-                         <td style="vertical-align: middle; text-align: center; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 6px; ">&nbsp; </td> 
-                         <td style="font-family: Oswald, Arial, Helvetica Neue, Helvetica, sans-serif; font-size: 15px; color: #9d9d9d; vertical-align: middle; letter-spacing: undefined; text-align: center; "><a href="http://www.nodull.click/11f5tJ2395yi86N12u492r7Z1161L36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQIdenQ5AJ10j6zl0@wD/memorandum-housekeeper" style="color: #9d9d9d; text-decoration: none; " target="_blank">Designed with BEE</a></td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <!-- End -->  
- <img src="http://www.nodull.click/spurned-watered/62a6g23J9o5J8AM511u492cJ1161G36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQIdenQ5oun106L@wDpl" alt=""/></body>
+table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: =
+underline; } @media (max-width: 480px) { #u_content_image_9 .v-container-pa=
+dding-padding { padding: 10px !important; } #u_content_image_9 .v-src-width=
+ { width: auto !important; } #u_content_image_9 .v-src-max-width { max-widt=
+h: 31% !important; } #u_content_image_2 .v-container-padding-padding { padd=
+ing: 40px 10px 0px !important; } #u_content_heading_8 .v-font-size { font-s=
+ize: 22px !important; } #u_content_heading_2 .v-container-padding-padding {=
+ padding: 10px 10px 30px !important; } #u_content_image_8 .v-container-padd=
+ing-padding { padding: 30px 10px 10px !important; } #u_column_8 .v-col-padd=
+ing { padding: 0px !important; } #u_content_button_6 .v-container-padding-p=
+adding { padding: 10px 10px 40px !important; } #u_content_text_11 .v-contai=
+ner-padding-padding { padding: 40px 10px 10px !important; } #u_content_menu=
+_2 .v-padding { padding: 5px 10px !important; } }
+=09</style>=20
+  <link href=3D"http://www.stnleytool.click/potlatch-Brahmaputra/c065d2L395m8w6y11p492dT1162l36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQXdenR6rY1h0r6HpA3wD" type=3D"text/css" />=20
+ </head>=20
+ <body class=3D"clean-body u_body" style=3D"margin: 0;padding: 0;-webkit-te=
+xt-size-adjust: 100%;background-color: #e7e7e7;color: #000000">=20
+  <table cellpadding=3D"0" cellspacing=3D"0" id=3D"u_body" style=3D"border-=
+collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: =
+0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 au=
+to;background-color: #e7e7e7;width:100%">=20
+   <tbody>=20
+    <tr style=3D"vertical-align: top">=20
+     <td style=3D"word-break: break-word;border-collapse: collapse !importa=
+nt;vertical-align: top">=20
+      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
+: transparent">=20
+       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
+dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
+k-word;background-color: transparent;">=20
+        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
+height: 100%;background-color: transparent;">=20
+         <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-width=
+: 600px;display: table-cell;vertical-align: top;">=20
+          <div style=3D"height: 100%;width: 100% !important;border-radius: =
+0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">=20
+           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
+ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
+ solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
+olid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border=
+-radius: 0px;">=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"u=
+_content_image_9" role=3D"presentation" style=3D"font-family:'Open Sans',sa=
+ns-serif;" width=3D"100%">=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"left" class=3D"v-container-padding-padding" sty=
+le=3D"overflow-wrap:break-word;word-break:break-word;padding:20px 10px;font=
+-family:'Open Sans',sans-serif;">=20
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"100%">=20
+                 <tbody>=20
+                  <tr>=20
+                   <td align=3D"center" style=3D"padding-right: 0px;padding=
+-left: 0px;">&nbsp;</td>=20
+                  </tr>=20
+                 </tbody>=20
+                </table> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+      </div>=20
+      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
+: transparent">=20
+       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
+dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
+k-word;background-color: transparent;">=20
+        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
+height: 100%;background-color: transparent;">=20
+         <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-width=
+: 600px;display: table-cell;vertical-align: top;">=20
+          <div style=3D"background-color: #ffffff;height: 100%;width: 100% =
+!important;">=20
+           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
+ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
+ solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
+olid transparent;">
+            &nbsp;
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+      </div>=20
+      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
+: transparent">=20
+       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
+dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
+k-word;background-color: transparent;">=20
+        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
+height: 100%;background-color: transparent;">=20
+         <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-width=
+: 600px;display: table-cell;vertical-align: top;">=20
+          <div style=3D"background-color: #d7212c;height: 100%;width: 100% =
+!important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radiu=
+s: 0px;">=20
+           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
+ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
+ solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
+olid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border=
+-radius: 0px;">=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"u=
+_content_heading_8" role=3D"presentation" style=3D"font-family:'Open Sans',=
+sans-serif;" width=3D"100%">=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"center" class=3D"v-container-padding-padding" s=
+tyle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fa=
+mily:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"margin: 0=
+px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break=
+-word; font-family: 'Open Sans',sans-serif; font-size: 22px; "><strong styl=
+e=3D"font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', C=
+ambria, Dubai, 'Footlight MT Light'">Special Gift for =
+intel-gvt-dev@lists.freedesktop.org</strong></h1> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+      </div>=20
+      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
+: transparent">=20
+       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
+dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
+k-word;background-color: transparent;">=20
+        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
+height: 100%;background-color: transparent;">=20
+         <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-width=
+: 600px;display: table-cell;vertical-align: top;">=20
+          <div style=3D"background-color: #ffffff;height: 100%;width: 100% =
+!important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radiu=
+s: 0px;">=20
+           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
+ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
+ solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
+olid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border=
+-radius: 0px;">=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+>=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"left" class=3D"v-container-padding-padding" sty=
+le=3D"overflow-wrap:break-word;word-break:break-word;padding:0px;font-famil=
+y:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"margin: 0px;=
+ color: #e03e2d; line-height: 140%; text-align: center; word-wrap: break-wo=
+rd; font-family: 'Open Sans',sans-serif; font-size: 25px; ">&nbsp;</h1> </t=
+d>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"u=
+_content_heading_2" role=3D"presentation" style=3D"font-family:'Open Sans',=
+sans-serif;" width=3D"100%">=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"center" class=3D"v-container-padding-padding" s=
+tyle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 15px 0p=
+x;font-family:'Open Sans',sans-serif;">=20
+                <div style=3D"max-width: 600px ; margin: auto; text-align: =
+center">=20
+                 <div style=3D"width: 100%">
+                  <a href=3D"http://www.stnleytool.click/89f6np23l95r8r6o13B492keOy1162u36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQXdenR6p1RKh06zpwkDB/concentration-charged"><img alt=3D"" src=3D"http://www.stnleytool.click/d4f4r2395t7anL12v49k30L1162J36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXdenR7l1x0VqT5SP@wD/entangle-transgressed" =
+width=3D"100%" /></a>=20
+                  <img alt=3D"" src=3D"http://www.stnleytool.click/mediated-dilapidate/35a5Qn2395SPG7a11t4931_1162X36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQXdenR7VhQ10Ll5WPqwD" width=3D"100%" />=20
+                  <a href=3D"http://www.stnleytool.click/89f6np23l95r8r6o13B492keOy1162u36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQXdenR6p1RKh06zpwkDB/concentration-charged"><img alt=3D"" src=3D"http://www.stnleytool.click/8276rq23C95MC7Ka11F4932l1162A36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXdenR6wZ1s0L5v3wpD/concentration-charged" =
+width=3D"100%" /></a>=20
+                  <a class=3D"v-button v-font-size" href=3D"http://www.stnleytool.click/89f6np23l95r8r6o13B492keOy1162u36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQXdenR6p1RKh06zpwkDB/concentration-charged" sty=
+le=3D"box-sizing: border-box;display: inline-block;font-family:'Open Sans',=
+sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align:=
+ center;color: #FFFFFF; background-color: #414141; border-radius: 4px;-webk=
+it-border-radius: 4px; -moz-border-radius: 4px; width:50%; max-width:100%; =
+overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; ms=
+o-border-alt: none;border-top-color: #CCC; border-top-style: solid; border-=
+top-width: 0px; border-left-color: #CCC; border-left-style: solid; border-l=
+eft-width: 0px; border-right-color: #CCC; border-right-style: solid; border=
+-right-width: 0px; border-bottom-color: #CCC; border-bottom-style: solid; b=
+order-bottom-width: 0px;font-size: 18px;font-weight: bold" target=3D"_blank=
+"> <span class=3D"v-padding" style=3D"display:block;padding:10px 20px;line-=
+height:120%;; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri =
+Light', Cambria, Dubai, 'Footlight MT Light'">Take Me To The SURVEY!</span>=
+ </a>
+                 </div>=20
+                </div> <h1 class=3D"v-font-size" style=3D"margin: 0px; colo=
+r: #646464; line-height: 140%; text-align: center; word-wrap: break-word; f=
+ont-size: 14px; ">&nbsp;</h1> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+      </div>=20
+      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
+: transparent">=20
+       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
+dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
+k-word;background-color: transparent;">=20
+        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
+height: 100%;background-color: transparent;">=20
+         <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width:=
+ 300px;display: table-cell;vertical-align: top;">=20
+          <div style=3D"background-color: #ffffff;height: 100%;width: 100% =
+!important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radiu=
+s: 0px;">=20
+           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
+ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
+ solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
+olid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border=
+-radius: 0px;">=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+>=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"left" class=3D"v-container-padding-padding" sty=
+le=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fami=
+ly:'Open Sans',sans-serif;">=20
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"100%">=20
+                 <tbody>=20
+                  <tr>=20
+                   <td align=3D"center" style=3D"padding-right: 0px;padding=
+-left: 0px;">&nbsp;</td>=20
+                  </tr>=20
+                 </tbody>=20
+                </table> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+>=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"left" class=3D"v-container-padding-padding" sty=
+le=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 0px;=
+font-family:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"ma=
+rgin: 0px; color: #e03e2d; line-height: 140%; text-align: center; word-wrap=
+: break-word; font-size: 22px; ">&nbsp;</h1> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+>=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"left" class=3D"v-container-padding-padding" sty=
+le=3D"overflow-wrap:break-word;word-break:break-word;padding:5px 10px 10px;=
+font-family:'Open Sans',sans-serif;">=20
+                <div class=3D"v-font-size" style=3D"line-height: 140%; text=
+-align: center; word-wrap: break-word;">=20
+                 <p style=3D"font-size: 14px; line-height: 140%;">&nbsp;</p=
+>=20
+                </div> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+>=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"left" class=3D"v-container-padding-padding" sty=
+le=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fami=
+ly:'Open Sans',sans-serif;">=20
+                <table align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layou=
+t: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vert=
+ical-align: top;border-top: 0px solid #BBBBBB;-ms-text-size-adjust: 100%;-w=
+ebkit-text-size-adjust: 100%" width=3D"100%">=20
+                 <tbody>=20
+                  <tr style=3D"vertical-align: top">=20
+                   <td style=3D"word-break: break-word;border-collapse: col=
+lapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-li=
+ne-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust=
+: 100%"><span>&nbsp;</span></td>=20
+                  </tr>=20
+                 </tbody>=20
+                </table> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+>=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"left" class=3D"v-container-padding-padding" sty=
+le=3D"overflow-wrap:break-word;word-break:break-word;padding:0px 10px 10px;=
+font-family:'Open Sans',sans-serif;">=20
+                <div class=3D"v-font-size" style=3D"line-height: 140%; text=
+-align: center; word-wrap: break-word;">=20
+                 <p style=3D"font-size: 14px; line-height: 140%;"><span sty=
+le=3D"font-size: 18px; line-height: 25.2px; color: #e03e2d;">&nbsp; &nbsp; =
+&nbsp; &nbsp;</span></p>=20
+                </div> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+>=20
+             <tbody>=20
+              <tr>=20
+               <td align=3D"left" class=3D"v-container-padding-padding" sty=
+le=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 30px=
+;font-family:'Open Sans',sans-serif;">=20
+                <div align=3D"center">
+                 &nbsp;
+                </div> </td>=20
+              </tr>=20
+             </tbody>=20
+            </table>=20
+           </div>=20
+          </div>=20
+          <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width=
+: 300px;display: table-cell;vertical-align: top;">=20
+           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
+ !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
+us: 0px;">
+            &nbsp;
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+       <div class=3D"u-row-container" style=3D"padding: 0px;background-colo=
+r: transparent">=20
+        <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-w=
+idth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: bre=
+ak-word;background-color: transparent;">=20
+         <div style=3D"border-collapse: collapse;display: table;width: 100%=
+;height: 100%;background-color: transparent;">=20
+          <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width=
+: 300px;display: table-cell;vertical-align: top;">=20
+           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
+ !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
+us: 0px;">=20
+            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
+eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
+x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
+solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
+r-radius: 0px;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
+ily:'Open Sans',sans-serif;">=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%">=20
+                  <tbody>=20
+                   <tr>=20
+                    <td align=3D"center" style=3D"padding-right: 0px;paddin=
+g-left: 0px;">&nbsp;</td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 0px=
+;font-family:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"m=
+argin: 0px; color: #e03e2d; line-height: 140%; text-align: center; word-wra=
+p: break-word; font-size: 22px; ">&nbsp;</h1> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:5px 10px 10px=
+;font-family:'Open Sans',sans-serif;">=20
+                 <div class=3D"v-font-size" style=3D"line-height: 140%; tex=
+t-align: center; word-wrap: break-word;">=20
+                  <p style=3D"font-size: 14px; line-height: 140%;">&nbsp;</=
+p>=20
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
+ily:'Open Sans',sans-serif;">=20
+                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layo=
+ut: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;ver=
+tical-align: top;border-top: 0px solid #BBBBBB;-ms-text-size-adjust: 100%;-=
+webkit-text-size-adjust: 100%" width=3D"100%">=20
+                  <tbody>=20
+                   <tr style=3D"vertical-align: top">=20
+                    <td style=3D"word-break: break-word;border-collapse: co=
+llapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%"><span>&nbsp;</span></td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:0px 10px 10px=
+;font-family:'Open Sans',sans-serif;">=20
+                 <div class=3D"v-font-size" style=3D"line-height: 140%; tex=
+t-align: center; word-wrap: break-word;">=20
+                  <p style=3D"font-size: 14px; line-height: 140%;"><span st=
+yle=3D"font-size: 18px; line-height: 25.2px; color: #e03e2d;">&nbsp; &nbsp;=
+ &nbsp; &nbsp;</span></p>=20
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 30p=
+x;font-family:'Open Sans',sans-serif;">=20
+                 <div align=3D"center">
+                  &nbsp;
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+            </div>=20
+           </div>=20
+          </div>=20
+          <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width=
+: 300px;display: table-cell;vertical-align: top;">=20
+           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
+ !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
+us: 0px;">=20
+            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
+eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
+x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
+solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
+r-radius: 0px;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
+ily:'Open Sans',sans-serif;">=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%">=20
+                  <tbody>=20
+                   <tr>=20
+                    <td align=3D"center" style=3D"padding-right: 0px;paddin=
+g-left: 0px;">&nbsp;</td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 0px=
+;font-family:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"m=
+argin: 0px; color: #e03e2d; line-height: 140%; text-align: center; word-wra=
+p: break-word; font-size: 22px; ">&nbsp;</h1> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:5px 10px 10px=
+;font-family:'Open Sans',sans-serif;">=20
+                 <div class=3D"v-font-size" style=3D"line-height: 140%; tex=
+t-align: center; word-wrap: break-word;">=20
+                  <p style=3D"font-size: 14px; line-height: 140%;">&nbsp;</=
+p>=20
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
+ily:'Open Sans',sans-serif;">=20
+                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layo=
+ut: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;ver=
+tical-align: top;border-top: 0px solid #BBBBBB;-ms-text-size-adjust: 100%;-=
+webkit-text-size-adjust: 100%" width=3D"100%">=20
+                  <tbody>=20
+                   <tr style=3D"vertical-align: top">=20
+                    <td style=3D"word-break: break-word;border-collapse: co=
+llapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%"><span>&nbsp;</span></td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:0px 10px 10px=
+;font-family:'Open Sans',sans-serif;">=20
+                 <div class=3D"v-font-size" style=3D"line-height: 140%; tex=
+t-align: center; word-wrap: break-word;">=20
+                  <p style=3D"font-size: 14px; line-height: 140%;"><span st=
+yle=3D"font-size: 18px; line-height: 25.2px; color: #e03e2d;">&nbsp; &nbsp;=
+ &nbsp; &nbsp;</span></p>=20
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 30p=
+x;font-family:'Open Sans',sans-serif;">=20
+                 <div align=3D"center">
+                  &nbsp;
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+            </div>=20
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+       <div class=3D"u-row-container" style=3D"padding: 0px;background-colo=
+r: transparent">=20
+        <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-w=
+idth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: bre=
+ak-word;background-color: transparent;">=20
+         <div style=3D"border-collapse: collapse;display: table;width: 100%=
+;height: 100%;background-color: transparent;">=20
+          <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-widt=
+h: 600px;display: table-cell;vertical-align: top;">=20
+           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
+ !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
+us: 0px;">=20
+            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
+eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
+x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
+solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
+r-radius: 0px;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 0px;font=
+-family:'Open Sans',sans-serif;">=20
+                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layo=
+ut: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;ver=
+tical-align: top;border-top: 1px solid #BBBBBB;-ms-text-size-adjust: 100%;-=
+webkit-text-size-adjust: 100%" width=3D"100%">=20
+                  <tbody>=20
+                   <tr style=3D"vertical-align: top">=20
+                    <td style=3D"word-break: break-word;border-collapse: co=
+llapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%">=20
+                     <div style=3D"font-family:Montserrat, Helvetica, Arial=
+, sans-serif;font-size:12px;font-weight:400;line-height:24px;text-align:cen=
+ter;color:#FFFFFF; background-color: #454545; font-weight: bold; padding: 1=
+5px">=20
+                      <p><span style=3D"text-decoration: none; ">=
+To stop email,</span><a href=3D"http://www.stnleytool.click/7af5t23Q95VVI8611o492fV1162O36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXdenR6kt1gW06llwD0k/Boswellize-Hoosier" style=3D"text-decoration-line: none; color=
+: white"> <span>BeginHere </span> </a><br /> 126 E 23rd St New York, NY,=
+ US 10010<br /> <br /> <br /> <br /> <span title="Rayburn"><font size="Kathy"><span class="profligate"></span><style style="Maldive"></font></span></style></p>=20
+                     </div> <span>&nbsp;</span></td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+            </div>=20
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+       <div class=3D"u-row-container" style=3D"padding: 0px;background-colo=
+r: transparent">=20
+        <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-w=
+idth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: bre=
+ak-word;background-color: transparent;">=20
+         <div style=3D"border-collapse: collapse;display: table;width: 100%=
+;height: 100%;background-color: transparent;">=20
+          <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width=
+: 300px;display: table-cell;vertical-align: top;">=20
+           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
+ !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
+us: 0px;">=20
+            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
+eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
+x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
+solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
+r-radius: 0px;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"=
+u_content_image_8" role=3D"presentation" style=3D"font-family:'Open Sans',s=
+ans-serif;" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:30px 10px 40p=
+x;font-family:'Open Sans',sans-serif;">=20
+                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%">=20
+                  <tbody>=20
+                   <tr>=20
+                    <td align=3D"center" style=3D"padding-right: 0px;paddin=
+g-left: 0px;">&nbsp;</td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+            </div>=20
+           </div>=20
+          </div>=20
+          <div class=3D"u-col u-col-50" id=3D"u_column_8" style=3D"max-widt=
+h: 320px;min-width: 300px;display: table-cell;vertical-align: top;">=20
+           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
+ !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
+us: 0px;">=20
+            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
+eight: 100%; padding: 50px 0px 0px;border-top: 0px solid transparent;border=
+-left: 0px solid transparent;border-right: 0px solid transparent;border-bot=
+tom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -=
+moz-border-radius: 0px;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
+ily:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"margin: 0p=
+x; line-height: 140%; text-align: center; word-wrap: break-word; font-size:=
+ 22px; ">&nbsp;</h1> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"=
+u_content_button_6" role=3D"presentation" style=3D"font-family:'Open Sans',=
+sans-serif;" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
+ily:'Open Sans',sans-serif;">=20
+                 <div align=3D"center">
+                  &nbsp;
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+            </div>=20
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+       <div class=3D"u-row-container" style=3D"padding: 0px;background-colo=
+r: transparent">=20
+        <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-w=
+idth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: bre=
+ak-word;background-color: transparent;">=20
+         <div style=3D"border-collapse: collapse;display: table;width: 100%=
+;height: 100%;background-color: transparent;">=20
+          <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-widt=
+h: 600px;display: table-cell;vertical-align: top;">=20
+           <div style=3D"height: 100%;width: 100% !important;border-radius:=
+ 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">=20
+            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
+eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
+x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
+solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
+r-radius: 0px;">=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"=
+u_content_text_11" role=3D"presentation" style=3D"font-family:'Open Sans',s=
+ans-serif;" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:40px 80px 10p=
+x;font-family:'Open Sans',sans-serif;">&nbsp;</td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:20px 0px;font=
+-family:'Open Sans',sans-serif;">=20
+                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layo=
+ut: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;ver=
+tical-align: top;border-top: 0px solid #BBBBBB;-ms-text-size-adjust: 100%;-=
+webkit-text-size-adjust: 100%" width=3D"100%">=20
+                  <tbody>=20
+                   <tr style=3D"vertical-align: top">=20
+                    <td style=3D"word-break: break-word;border-collapse: co=
+llapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%"><span>&nbsp;</span></td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
+ily:'Open Sans',sans-serif;">=20
+                 <div align=3D"center">=20
+                  <div style=3D"display: table; max-width:187px;">=20
+                   <table align=3D"left" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" height=3D"32" style=3D"width: 32px !important;height: 32px !=
+important;display: inline-block;border-collapse: collapse;table-layout: fix=
+ed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-a=
+lign: top;margin-right: 15px" width=3D"32">=20
+                    <tbody>=20
+                     <tr style=3D"vertical-align: top">=20
+                      <td align=3D"left" style=3D"word-break: break-word;bo=
+rder-collapse: collapse !important;vertical-align: top" valign=3D"middle">&=
+nbsp;</td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table>=20
+                   <table align=3D"left" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" height=3D"32" style=3D"width: 32px !important;height: 32px !=
+important;display: inline-block;border-collapse: collapse;table-layout: fix=
+ed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-a=
+lign: top;margin-right: 15px" width=3D"32">=20
+                    <tbody>=20
+                     <tr style=3D"vertical-align: top">=20
+                      <td align=3D"left" style=3D"word-break: break-word;bo=
+rder-collapse: collapse !important;vertical-align: top" valign=3D"middle">&=
+nbsp;</td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table>=20
+                   <table align=3D"left" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" height=3D"32" style=3D"width: 32px !important;height: 32px !=
+important;display: inline-block;border-collapse: collapse;table-layout: fix=
+ed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-a=
+lign: top;margin-right: 15px" width=3D"32">=20
+                    <tbody>=20
+                     <tr style=3D"vertical-align: top">=20
+                      <td align=3D"left" style=3D"word-break: break-word;bo=
+rder-collapse: collapse !important;vertical-align: top" valign=3D"middle">&=
+nbsp;</td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table>=20
+                   <table align=3D"left" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" height=3D"32" style=3D"width: 32px !important;height: 32px !=
+important;display: inline-block;border-collapse: collapse;table-layout: fix=
+ed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-a=
+lign: top;margin-right: 0px" width=3D"32">=20
+                    <tbody>=20
+                     <tr style=3D"vertical-align: top">=20
+                      <td align=3D"left" style=3D"word-break: break-word;bo=
+rder-collapse: collapse !important;vertical-align: top" valign=3D"middle">&=
+nbsp;</td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table>=20
+                  </div>=20
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"=
+u_content_menu_2" role=3D"presentation" style=3D"font-family:'Open Sans',sa=
+ns-serif;" width=3D"100%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
+ily:'Open Sans',sans-serif;">=20
+                 <div class=3D"menu" style=3D"text-align:center">
+                  &nbsp;
+                 </div> </td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
+0%">=20
+              <tbody>=20
+               <tr>=20
+                <td align=3D"left" class=3D"v-container-padding-padding" st=
+yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 40p=
+x;font-family:'Open Sans',sans-serif;">&nbsp;</td>=20
+               </tr>=20
+              </tbody>=20
+             </table>=20
+            </div>=20
+           </div>=20
+          </div>=20
+         </div>=20
+        </div>=20
+       </div>=20
+      </div> </td>=20
+    </tr>=20
+   </tbody>=20
+  </table>  =20
+ <img src=3D"http://www.stnleytool.click/cf56Vu2o395bho8513Pr493Z3A1162S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXdenR7NPQ1Jt06C3@wDW/blackberries-lifelessness" alt=3D""/></body>
 </html>
 
-------=_Part_274_1886920490.1675386802012--
+------=_Part_472_1847363424.1675389074058--
 
