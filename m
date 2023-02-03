@@ -1,82 +1,94 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7C2B689A0D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 14:49:48 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0730A689B87
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 15:26:27 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 73AFE10E7A2;
-	Fri,  3 Feb 2023 13:49:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C7B4510E04B;
+	Fri,  3 Feb 2023 14:26:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DA90010E7A2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Feb 2023 13:49:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1675432185;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DMeV+PbsytnfwB8y571EgKoPuO8SIcRtHzLsbHY4Ecg=;
- b=h7wHtt70Y/5q4rfYhnw4XZgraJc5XL8WbkbLgArz6gjNUIiMWp4orZo3Qq5BszqQI6biIV
- XdllTxmfy9nCuKW16+kHV/WQKhhb0joY8ke5dDWFDU2gqJO+74hUpQZf7gr8rSScuRSmD2
- 6n69SJd4X4V8xYNci0FAEG0tJsFkz0c=
-Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
- [209.85.166.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
- us-mta-590-KCyeWNcTOz2nmB_52JyF5A-1; Fri, 03 Feb 2023 08:49:43 -0500
-X-MC-Unique: KCyeWNcTOz2nmB_52JyF5A-1
-Received: by mail-io1-f71.google.com with SMTP id
- n64-20020a6b8b43000000b00719e397eac0so3025379iod.14
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 03 Feb 2023 05:49:43 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=DMeV+PbsytnfwB8y571EgKoPuO8SIcRtHzLsbHY4Ecg=;
- b=pYEAxJxUVvjF3Bw5jv7eSDHGXOUMNymR9iBbqCnJFMSMC+ng7SrKpowVJ9HjnVKbcX
- 1TsuWWLsgtag8WWw0LfjdUyRr2mISBzXWyA2pRzaTFCLjM7qt3KVat8bUFX6JgFLx4EP
- nEn26WDY02Cc6KtvjiPJqFINZ7Le1zgVx4IpDSAc+bm+FlaMhfY4rxZCnAL9hu9awYI7
- FqceAqIaTUvGJZ28WpDuJSw/qKHPEXefZfS5iC3BEhA4wXP1TTzb2uTIhtx9ra94I7jj
- m2Nzj9kGmS5Wso88spZApk1kdpALkRfma7H9Hg44eYMH7asjm/OMnTEGFdKctrccqouR
- KTDg==
-X-Gm-Message-State: AO0yUKWoVI3n7hkE8jzjKueql+S2qWqcFwfrPoi/qKgqwD/l/BiSefbT
- iwvcCU0S1QhQJwczAO910XGJ9AZBoD8Wf1iXj6CaLaVUeDFB4juXc7YTJwV7gp8ds2YjBg1Xmvn
- P+ZdMFOjstzs477o0u762ACAm7RDxTFnfzg==
-X-Received: by 2002:a05:6e02:b29:b0:312:75a8:befd with SMTP id
- e9-20020a056e020b2900b0031275a8befdmr7401942ilu.31.1675432183115; 
- Fri, 03 Feb 2023 05:49:43 -0800 (PST)
-X-Google-Smtp-Source: AK7set+DXLFqJ2WVCxfMNKF0qA9WvYBQ4q7md2UoZyoOfbxX57I1uo2kCZVCiLHw1lEdIjP9+dyEFw==
-X-Received: by 2002:a05:6e02:b29:b0:312:75a8:befd with SMTP id
- e9-20020a056e020b2900b0031275a8befdmr7401929ilu.31.1675432182869; 
- Fri, 03 Feb 2023 05:49:42 -0800 (PST)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- h22-20020a022b16000000b003a958069dbfsm853822jaa.8.2023.02.03.05.49.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Feb 2023 05:49:42 -0800 (PST)
-Date: Fri, 3 Feb 2023 06:49:40 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
-Message-ID: <20230203064940.435e4d65.alex.williamson@redhat.com>
-In-Reply-To: <DS0PR11MB7529050661FCE4A5AC4B17C3C3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
-References: <20230202162442.78216-1-mjrosato@linux.ibm.com>
- <20230202124210.476adaf8.alex.williamson@redhat.com>
- <BN9PR11MB527618E281BEB8E479ABB0418CD69@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20230202161307.0c6aa23e.alex.williamson@redhat.com>
- <BN9PR11MB5276017F9CEBB4BAE58C40E88CD79@BN9PR11MB5276.namprd11.prod.outlook.com>
- <DS0PR11MB7529050661FCE4A5AC4B17C3C3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
-Organization: Red Hat
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 69A5A10E04B;
+ Fri,  3 Feb 2023 14:26:24 +0000 (UTC)
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 313EC6jX010015; Fri, 3 Feb 2023 14:26:22 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=q7liJYzUncL3AKyLjQjPcWYMHH0iXSgpqJKN0MpU4FI=;
+ b=BvO/2C04jM+KdRCRB92ICnXSLQQITcAROmU0K10KMbdKXpFOdwA6WXZnruc9tDTwY09R
+ 5m6O5yvX+9kMEG6fxezhrDrWrA3EKTbWwQHM2t7ViRWFQdui/A8vao57RuZ70GXP1Kk7
+ K2P7zTf35r5WBw+flQ6Yr9dK2BplEd2/tmNzjtQDG3Offd/F6EaoA1t4BvSYAmqFclDD
+ 3haw0ROutNcNS4iXgA5j+fOgkP3r6nykhAj3/dDxWQLmLFnU8B9zhjOjhbsoxmwtOeuu
+ DTxpiapQ/ad3KZGrJ/R5dWFBQ9ijfeMCbq87D4fcS9GEp1Aei9IuT/poOhsAv2QGldXH rQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3nh3tq8bna-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 03 Feb 2023 14:26:22 +0000
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 313EQLxx024915;
+ Fri, 3 Feb 2023 14:26:21 GMT
+Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
+ [169.53.41.122])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3nh3tq8bmu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 03 Feb 2023 14:26:21 +0000
+Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
+ by ppma04dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 313DUIk8008447;
+ Fri, 3 Feb 2023 14:26:20 GMT
+Received: from smtprelay03.wdc07v.mail.ibm.com ([9.208.129.113])
+ by ppma04dal.us.ibm.com (PPS) with ESMTPS id 3ncvw39ea5-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 03 Feb 2023 14:26:20 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay03.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 313EQIVV64946586
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 3 Feb 2023 14:26:18 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B569158059;
+ Fri,  3 Feb 2023 14:26:18 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 429F358043;
+ Fri,  3 Feb 2023 14:26:16 +0000 (GMT)
+Received: from [9.65.253.123] (unknown [9.65.253.123])
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Fri,  3 Feb 2023 14:26:16 +0000 (GMT)
+Message-ID: <d322c7d4-9643-a0f4-1575-0cf4c3eb2bc8@linux.ibm.com>
+Date: Fri, 3 Feb 2023 09:26:15 -0500
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.0
+Subject: Re: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
+Content-Language: en-US
+To: "Liu, Yi L" <yi.l.liu@intel.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, "jgg@nvidia.com"
+ <jgg@nvidia.com>
+References: <20230202162442.78216-1-mjrosato@linux.ibm.com>
+ <DS0PR11MB75295F851A74ACE7CAFB0ACCC3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
+From: Matthew Rosato <mjrosato@linux.ibm.com>
+In-Reply-To: <DS0PR11MB75295F851A74ACE7CAFB0ACCC3D79@DS0PR11MB7529.namprd11.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: PoR_GFerNq64v6aRPlKwlphLaRL9OeR7
+X-Proofpoint-GUID: d9k1tya9GGzmwfkDZwjVnPu74WbqkhGy
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.122.1
+ definitions=2023-02-03_08,2023-02-03_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 phishscore=0
+ clxscore=1015 adultscore=0 impostorscore=0 lowpriorityscore=0 bulkscore=0
+ spamscore=0 mlxlogscore=999 mlxscore=0 priorityscore=1501 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2212070000
+ definitions=main-2302030130
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,88 +101,54 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Matthew Rosato <mjrosato@linux.ibm.com>,
- "david@redhat.com" <david@redhat.com>, "Tian, Kevin" <kevin.tian@intel.com>,
- "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
- "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>, "Wang,
- Zhi A" <zhi.a.wang@intel.com>, "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
  "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
  "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
- "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
- "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>, "Christopherson, ,
- Sean" <seanjc@google.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "cohuck@redhat.com" <cohuck@redhat.com>, "Tian, Kevin" <kevin.tian@intel.com>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 3 Feb 2023 13:32:09 +0000
-"Liu, Yi L" <yi.l.liu@intel.com> wrote:
-
-> > From: Tian, Kevin <kevin.tian@intel.com>
-> > Sent: Friday, February 3, 2023 10:00 AM
-> >   
-> > > From: Alex Williamson <alex.williamson@redhat.com>
-> > > Sent: Friday, February 3, 2023 7:13 AM
-> > >
-> > > On Thu, 2 Feb 2023 23:04:10 +0000
-> > > "Tian, Kevin" <kevin.tian@intel.com> wrote:
-> > >  
-> > > > > From: Alex Williamson <alex.williamson@redhat.com>
-> > > > > Sent: Friday, February 3, 2023 3:42 AM
-> > > > >
-> > > > >
-> > > > > LGTM.  I'm not sure moving the functions to vfio_main really buys us
-> > > > > anything since we're making so much use of group fields.  The cdev
-> > > > > approach will necessarily be different, so the bulk of the get code will
-> > > > > likely need to move back to group.c anyway.
-> > > > >  
-> > > >
-> > > > well my last comment was based on Matthew's v2 where the get code
-> > > > gets a kvm passed in instead of implicitly retrieving group ref_lock
-> > > > internally. In that case the get/put helpers only contain device logic
-> > > > thus fit in vfio_main.c.
-> > > >
-> > > > with v3 then they have to be in group.c since we don't want to use
-> > > > group fields in vfio_main.c.
-> > > >
-> > > > but I still think v2 of the helpers is slightly better. The only difference
-> > > > between cdev and group when handling this race is using different
-> > > > ref_lock. the symbol get/put part is exactly same. So even if we
-> > > > merge v3 like this, very likely Yi has to change it back to v2 style
-> > > > to share the get/put helpers while just leaving the ref_lock part
-> > > > handled differently between the two path.  
-> > >
-> > > I'm not really a fan of the asymmetry of the v2 version where the get
-> > > helper needs to be called under the new kvm_ref_lock, but the put
-> > > helper does not.  Having the get helper handle that makes the caller
-> > > much cleaner.  Thanks,
-> > >  
-> > 
-> > What about passing the lock pointer into the helper? it's still slightly
-> > asymmetry as the put helper doesn't carry the lock pointer but it
-> > could also be interpreted as if the pointer has been saved in the get
-> > then if it needs to be referenced by the put there is no need to pass
-> > it in again.  
+On 2/3/23 3:58 AM, Liu, Yi L wrote:
+> Hi Matthew,
 > 
-> For cdev, I may modify vfio_device_get_kvm_safe() to accept
-> struct kvm and let its caller hold a kvm_ref_lock (field within
-> struct vfio_device_file). Meanwhile, the group path holds
-> the group->kvm_ref_lock before invoking vfio_device_get_kvm_safe().
-> vfio_device_get_kvm_safe() just includes the symbol get/put and
-> the device->kvm and put_kvm set.
+...
+>> * Can't pass group->kvm to vfio_device_open, as it references the value
+>>   outside of new lock.  Pass device->kvm to minimize changes in this
+>>   fix (Alex, Yi)
+...
+>> @@ -361,7 +420,6 @@ static int vfio_device_first_open(struct vfio_device
+>> *device,
+>>  	if (ret)
+>>  		goto err_module_put;
+>>
+>> -	device->kvm = kvm;
+> 
+> Since you've deleted the only usage of kvm pointer in this function, I
+> guess you can remove the kvm parameter from vfio_device_open()
+> and vfio_device_first_open(). :-) if it makes this patch too big, may
+> just have another patch to do it.
+> 
 
-Sounds a lot like v2 :-\  I'd look more towards group and cdev specific
-helpers that handle the locking so that the callers aren't exposed to
-the asymmetry of get vs put, and reduce a new
-_vfio_device_get_kvm_safe() in common code that only does the symbol
-work.  Thanks,
+Hi Yi,
 
-Alex
+Yeah, I mentioned it briefly (and vaguely I guess) in the cover, that was intentionally left out to reduce the patch size since this is a fix.  I thought that was the consensus from the v2 comments anyway.
+
+If I end up doing a v4 for this I can just include the removal as a 2nd patch (without a fixes tag) and Alex can squash or keep separate as preferred -- if not you can feel free to do that removal with your cdev follow-up that exploits this work.   
+
+Thanks,
+Matt
 
