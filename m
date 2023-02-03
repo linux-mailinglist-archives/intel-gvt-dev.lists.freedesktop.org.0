@@ -2,42 +2,140 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2998688CDA
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 03:03:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C129688CD0
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Feb 2023 03:00:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A42A710E6ED;
-	Fri,  3 Feb 2023 02:03:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1E71610E6EB;
+	Fri,  3 Feb 2023 02:00:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 03 Feb 2023 02:03:02 UTC
-Received: from mail.stnleytool.click (unknown [45.13.189.213])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8F9D410E6ED
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Feb 2023 02:03:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=stnleytool.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jeffery_underwood@stnleytool.click; 
- bh=z7BV6CkLAJzV59ThlzB/bqH5C6Y=;
- b=unKyFaiXLq1cqxQOWOHmdzJIkEbNnSbs56bZEtf/GF6JKtaDjyb3Ri6++Ac9cAuluJQz2/1mq7es
- fhwuKs+nrhdwz0UTGF4SGAKlOcc7g2MzISGvfiRWumikbDQf89NXJP+qEghTVVzB5mbESOiLUE/I
- s4aEp5r/Jbkl2sYvAsg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=stnleytool.click;
- b=MgzA08u0VnRlsX13xZbkExLeOEgqPNjTwvA+GHUtxxx8C4vXB00H1hInRaw2JwdsqMku8ZjUIWMW
- Q0xF5V5JmhePZ37yPsWFySXtZa5CPNUMDpc3SrLjuTvJ3gBSHMt94Aqd3h1ItRkWviKWjAiiJCyZ
- R2J37zkvwydENOJ7nEg=;
-Received: by mail.stnleytool.click id hrhllc0001g6 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Feb 2023 20:51:45 -0500 (envelope-from
- <jeffery_underwood-intel+2Dgvt+2Ddev=lists.freedesktop.org@stnleytool.click>)
-Date: Thu, 2 Feb 2023 20:51:45 -0500
-From: "Jeffery Underwood" <jeffery_underwood@stnleytool.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim your free Stanley Tool Set from Lowe's, limited time offer
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3EAB610E03C;
+ Fri,  3 Feb 2023 02:00:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675389626; x=1706925626;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=F7TseLMnowiHkGNTpHykyn/jZTR2d8S7bB4MZGdHAC0=;
+ b=iqgr2ZUYbo82hhaM08VHZMZ732RAqch8Cmy9/jAknQYmAGXfYS0BRNJQ
+ 0wa7uMSkwB+StG5jWH4C+clXvvjtq3odAKp7TQM9Qg0Ndw4YsLWS10Cr5
+ pk8Kg1UlxBQn2utzdFcjUw4khznVdMOnC9Foaq9o/MdD7DXjQAEFM2GPG
+ Tjn2sin/X26IxuD3zuBXfpfYhIGW2/H/acsPem8JImlUQUVQ58CnUlsdJ
+ vGXctqPsgm3gV5l/o2hFyowLNeWtLDgoacqDDXymre6wDHxOLFmeAKDtT
+ KSasjcezWsOuUy9msddyizrHB7onS1mc0Npea0+fafWa20vYm8M2FSiuG A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10609"; a="355973103"
+X-IronPort-AV: E=Sophos;i="5.97,269,1669104000"; d="scan'208";a="355973103"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Feb 2023 18:00:25 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10609"; a="774128036"
+X-IronPort-AV: E=Sophos;i="5.97,269,1669104000"; d="scan'208";a="774128036"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga002.fm.intel.com with ESMTP; 02 Feb 2023 18:00:24 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Thu, 2 Feb 2023 18:00:24 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Thu, 2 Feb 2023 18:00:24 -0800
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.43) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Thu, 2 Feb 2023 18:00:24 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=RDCzktI87I7MtyNAjPgEd3BV2mZz04qXrFA9GeHaOJLqI+q6FTdNdhLV6cKp66JvS8kTm18052yTFQj3MG5hAEg93JsJltIH7GTH9/0drtlbZvz5C5fT7IFljTRXvucigjFVT4MBKhFCWiPLbUCDXQ0REv9QZ6Qr+vWklYJX4eSedYi2oh21O97uJxNSDBEnVDoYUnCaDB5NvmfsvzVh6fj+38rrBN7Fu0g8KOIJIjkUmdjvbuoJ/IQGnpgqcaEcdOdm8UfOBDPJ3MosKTaq7PRbumIVvjUaz7XYgEDJEnho20fjvu5+E/8SHm6pjuCfwDQ7TkN4FBtu/tiV+oVH/g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FCB6NTKfTirGBIF9r4o1aiTma41j8bPeb9o6Ox4cBVc=;
+ b=GrmFOpzucXPvnwBZVVwOlEDLYF1IKsPG4KmIzirpydRKWmn4ru9cLLF6EamtFeCmI3Ja6Sl53Od61TxNbeVaiUIKc5dKj2MxkhgivvRXl6w7nZN6OyMwuqU9D7Xycx6EtYuaEan+6AO0nNXLNebOpofBaQix6ZyWXiTVw4J3Io63BUqoRhCoHYFvUO7YYOUlvgt11/jRs5gHoAfp8YuauDbZdgW6DrN8snJ9npddXfwudfTSNvg1BthVnldUP+2YpxH/UDGS5LTPGsZXC7PIey7NmC7ucPyonBFw08Eu8Tt+eAvx5xPMQm5LdUahj/G3k6joIqZtaPhRR8BZr+u5oQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by CO1PR11MB4835.namprd11.prod.outlook.com (2603:10b6:303:9e::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.24; Fri, 3 Feb
+ 2023 02:00:22 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d%8]) with mapi id 15.20.6064.027; Fri, 3 Feb 2023
+ 02:00:21 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: RE: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
+Thread-Topic: [PATCH v3] vfio: fix deadlock between group lock and kvm lock
+Thread-Index: AQHZNyMj/DyFlYgOy0urx1B0EjoKIa68DpoAgAA1mqCAAAVXgIAALINA
+Date: Fri, 3 Feb 2023 02:00:21 +0000
+Message-ID: <BN9PR11MB5276017F9CEBB4BAE58C40E88CD79@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230202162442.78216-1-mjrosato@linux.ibm.com>
+ <20230202124210.476adaf8.alex.williamson@redhat.com>
+ <BN9PR11MB527618E281BEB8E479ABB0418CD69@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20230202161307.0c6aa23e.alex.williamson@redhat.com>
+In-Reply-To: <20230202161307.0c6aa23e.alex.williamson@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|CO1PR11MB4835:EE_
+x-ms-office365-filtering-correlation-id: c1a4f503-9901-4ca6-2388-08db058a686c
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: X8q/Kd9UdsuVujHELDwFZZsVODyYbMxkvRpFl6JBErlXLqUeEBkMc48N2d8RjOYDpgBB/C55ovIu2ryVSB6RstwhtvP+RRJzVglmLAmLdZzL3ZZFK89l5n4L/Wr5/yA7HmYrtGCzKkTYo2s5bGIFfB78mLUF/2Jdve0rYozlfQCeUqWkWT9xQ3LZTQOCtfAyPR6su+8QThGBGYn5UsD79gTuwwD1VPV8XEn35Px0SmzfO3i7ZM1OeuPdNW6SF5YLnRvv/Y23Zv4mYfFKjBEQ5A4uZYksEfIgLFzQPhKcVzQ/CQ8+ginfCV8YMzUiGmRoYkNOfBD600NhVtK/ko1qlB7t91U9Kpm3RRT9fQJT2vDIaxAZ08vw75Bxn2irWrnogFfit91IdJ51WeOooqd9Jqg/WYaJnl+hbzHgql9T+Z2Fog8Ez52b41UyH1o8dFdZ79UB+FWJNHwCRdcDGJARqI52z7bYYezckfW23XRA0wTa4f2RpB75D2mk53oCnb+9JKmZmw30b2qBv2Zz6/NC30l0M+tKj0vW4qaJmEWOBs/RgpO4gW9snFyzfH969+Pk21gbcJBd2CmNj5JFCdGJywOOvfwcn9vJHOJuYnMCYE5tWr8zf+oeKzdxmgLEV6HxPy2/yfJtYcu43vOAF1144aHywXxZIxl8aIG2uTIBZAiMhaZPE0BVzz54LR15ZLYJGcc0B6SYKZoJJHHPpb7pYA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(39860400002)(396003)(376002)(136003)(366004)(346002)(451199018)(83380400001)(2906002)(6506007)(52536014)(41300700001)(7416002)(33656002)(7696005)(71200400001)(9686003)(5660300002)(122000001)(186003)(26005)(8936002)(55016003)(54906003)(86362001)(316002)(38100700002)(478600001)(82960400001)(66476007)(66446008)(8676002)(76116006)(4326008)(66556008)(38070700005)(6916009)(66946007)(64756008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?B4VWbod3lorMFyHUfjgeU/7m7kzZArNOE0LuLx8KMekDxw6qTo9g6tT/hRVQ?=
+ =?us-ascii?Q?ScyOAJcCqwdbT2gGL/TcoVHRLZOtcYiCipTai/XSD0lBZY3jyHrtmUGItfXF?=
+ =?us-ascii?Q?Equ/YftueCiuwoOlFhQcxiWWyRtmsPWLIkMhArwVZmqOXtP62q19yPcdRfSl?=
+ =?us-ascii?Q?gDJUO2GJgHxwfyXo3dUmvPY2UvH7Z4PELODBGplgsFSSR3qwb7xBXL1c7B3F?=
+ =?us-ascii?Q?SvcxwNpzRa+oGqE6HvkXy0hEFc/2VJviRpmsFHpOj+E/B9nxrWQcv+6HfoTx?=
+ =?us-ascii?Q?QbN8AsQK+yDhfkzphptqatiIvlihr8AXvn6+M4i2AOlBTAyJ1g00FuVyzPWJ?=
+ =?us-ascii?Q?GR3oq6r5BdI5annGwhbt1tDiFxe5+qlUbw5r/rlYdPTvuGutUe1wnvYCVQnx?=
+ =?us-ascii?Q?r8jbvU3ta0HkAbWPPoEETFybfHKIsR9CvHMc7Of1GlLKnFtV+wt2qOU+6wWZ?=
+ =?us-ascii?Q?Dei2mebXJZJmHAnu6mLACxVqSrBLc0uZ5nm05PF1wHfBg1l0f3IhEQCHQEOI?=
+ =?us-ascii?Q?Gl3Ns+Os0hAS0j0bIaTF13WlOQnACgKZIz9D05FqczwytLC39flG5M5ubmPS?=
+ =?us-ascii?Q?al943ez8iu4DOV0SZHZLANolDXVHBgEhbiSY0hWUmnYDEebJN0hyJbiJFFaR?=
+ =?us-ascii?Q?lo2hstn5x6P0IJJoxuk6TuwXHvfwoKP22M/SyqMpBttUkLpKDAO9GAGaeP32?=
+ =?us-ascii?Q?I9ALW+EXcx6WhshBfsiAVXbb0KS71xMH4c7A25bO47MI0o4Ke/OoTs67VKmZ?=
+ =?us-ascii?Q?okIqEEakKNRlRJBXqt73TbqHp9kZzwgGhP0MpIC5eBfFz2gWlknwVsU30T7p?=
+ =?us-ascii?Q?zWzLEZAuvfxTo/PgwunFh1i72j2icXkRsbl8rA37NfJP2e4ZlZFfdYrUtEUR?=
+ =?us-ascii?Q?eyCM4QH9X9Hhcbq1kqwNel6iOtTApvdhsCw15hHkgLXLrKZxQnW4UwNpTqSY?=
+ =?us-ascii?Q?qw073dROx2DWKI0/KN1itIeRs2XNiva01N7kdg17gLrnLUpxKK+L0TolPuvr?=
+ =?us-ascii?Q?kTdkXd2kuP5DDY5kox7lmHeJK90qUeP+7hw6Z2Hz8ZQ9vzPaA/mqIq+7XAtG?=
+ =?us-ascii?Q?vxfy7jOyNR7cgHi3Mn2/kmQTZek6VW+qYEiwC9ALL/PEO6ov9rihQffY+etq?=
+ =?us-ascii?Q?ke+5kAMpHO77ysZ8FpAbcKmxhRpanw9iaSRdVwoXlm1iA/Tx812/CBBt53/V?=
+ =?us-ascii?Q?3YjkCYOcGjb6PlNLFUSj45JnnokecOYjD5DlpRMILFezpopyhqzWbd7PD2PR?=
+ =?us-ascii?Q?+1XGnmn8X2jOPug7lZlQZhnsU4ahAj/EePJsmFXVuR/EUVQS7juv0o8aJbRE?=
+ =?us-ascii?Q?bp08TrdCeZ5eQl80cWH70tRWbC0eVujPcupuMM4GssY1k/Q7EPvMSHwCHMRo?=
+ =?us-ascii?Q?WAbIdot3HjW05uV1EcksIkegTjCxbTpdh7U8VZl25H1dZ8tONHh6zJLdV28n?=
+ =?us-ascii?Q?WEv5FBpeNBXmOkMkWAlceBTWtir26QDXba5FYmItTDsfUIuO/dXdla50v2I8?=
+ =?us-ascii?Q?G5YmPtg1Lw2NypWWUG8kzgvGiBFmhkVQOOcw8ut4kEMNjXmIIEwtb9Nioyfc?=
+ =?us-ascii?Q?RyAgU7jodwRg6aoi5Aqlxe2XXw2Ugma0qP2nzI3Q?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_472_1847363424.1675389074058"
-Message-ID: <0.0.0.34.1D9377211F5B6CC.3A1BDC@mail.stnleytool.click>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c1a4f503-9901-4ca6-2388-08db058a686c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Feb 2023 02:00:21.8444 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: BE5KNnAIQhLv4gElSrkVufuR5Dv/zwV+SxOYWBJEe1FVPhbwR3A006c0vhIvboxbyXsmPAi1QmpDEZfsCmLeOA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4835
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,984 +148,68 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>,
+ "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>, "Wang,
+ Zhi A" <zhi.a.wang@intel.com>, "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_472_1847363424.1675389074058
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
-w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:o=3D"urn:schemas-microso=
-ft-com:office:office" xmlns:v=3D"urn:schemas-microsoft-com:vml">
- <head>=20
-  <meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Type" =
-/>=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <meta name=3D"x-apple-disable-message-reformatting" />=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />
-  <!--<![endif]-->=20
-  <title></title>=20
-  <style type=3D"text/css">@media only screen and (min-width: 620px) {
-  .u-row {
-    width: 600px !important;
-  }
-  .u-row .u-col {
-    vertical-align: top;
-  }
-
-  .u-row .u-col-50 {
-    width: 300px !important;
-  }
-
-  .u-row .u-col-100 {
-    width: 600px !important;
-  }
-
-}
-
-@media (max-width: 620px) {
-  .u-row-container {
-    max-width: 100% !important;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
-  .u-row .u-col {
-    min-width: 320px !important;
-    max-width: 100% !important;
-    display: block !important;
-  }
-  .u-row {
-    width: 100% !important;
-  }
-  .u-col {
-    width: 100% !important;
-  }
-  .u-col > div {
-    margin: 0 auto;
-  }
-}
-body {
-  margin: 0;
-  padding: 0;
-}
-
-table,
-tr,
-td {
-  vertical-align: top;
-  border-collapse: collapse;
-}
-
-p {
-  margin: 0;
-}
-
-ie-container table,
-mso-container table {
-  table-layout: fixed;
-}
-
-* {
-  line-height: inherit;
-}
-
-a[x-apple-data-detectors=3D'true'] {
-  color: inherit !important;
-  text-decoration: none !important;
-}
-
-@media (max-width: 480px) {
-  .hide-mobile {
-    max-height: 0px;
-    overflow: hidden;
-    display: none !important;
-  }
-}
-
-table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: =
-underline; } @media (max-width: 480px) { #u_content_image_9 .v-container-pa=
-dding-padding { padding: 10px !important; } #u_content_image_9 .v-src-width=
- { width: auto !important; } #u_content_image_9 .v-src-max-width { max-widt=
-h: 31% !important; } #u_content_image_2 .v-container-padding-padding { padd=
-ing: 40px 10px 0px !important; } #u_content_heading_8 .v-font-size { font-s=
-ize: 22px !important; } #u_content_heading_2 .v-container-padding-padding {=
- padding: 10px 10px 30px !important; } #u_content_image_8 .v-container-padd=
-ing-padding { padding: 30px 10px 10px !important; } #u_column_8 .v-col-padd=
-ing { padding: 0px !important; } #u_content_button_6 .v-container-padding-p=
-adding { padding: 10px 10px 40px !important; } #u_content_text_11 .v-contai=
-ner-padding-padding { padding: 40px 10px 10px !important; } #u_content_menu=
-_2 .v-padding { padding: 5px 10px !important; } }
-=09</style>=20
-  <link href=3D"http://www.stnleytool.click/potlatch-Brahmaputra/c065d2L395m8w6y11p492dT1162l36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQXdenR6rY1h0r6HpA3wD" type=3D"text/css" />=20
- </head>=20
- <body class=3D"clean-body u_body" style=3D"margin: 0;padding: 0;-webkit-te=
-xt-size-adjust: 100%;background-color: #e7e7e7;color: #000000">=20
-  <table cellpadding=3D"0" cellspacing=3D"0" id=3D"u_body" style=3D"border-=
-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: =
-0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 au=
-to;background-color: #e7e7e7;width:100%">=20
-   <tbody>=20
-    <tr style=3D"vertical-align: top">=20
-     <td style=3D"word-break: break-word;border-collapse: collapse !importa=
-nt;vertical-align: top">=20
-      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
-: transparent">=20
-       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
-dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
-k-word;background-color: transparent;">=20
-        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
-height: 100%;background-color: transparent;">=20
-         <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-width=
-: 600px;display: table-cell;vertical-align: top;">=20
-          <div style=3D"height: 100%;width: 100% !important;border-radius: =
-0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">=20
-           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
-ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
- solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
-olid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border=
--radius: 0px;">=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"u=
-_content_image_9" role=3D"presentation" style=3D"font-family:'Open Sans',sa=
-ns-serif;" width=3D"100%">=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"left" class=3D"v-container-padding-padding" sty=
-le=3D"overflow-wrap:break-word;word-break:break-word;padding:20px 10px;font=
--family:'Open Sans',sans-serif;">=20
-                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
-th=3D"100%">=20
-                 <tbody>=20
-                  <tr>=20
-                   <td align=3D"center" style=3D"padding-right: 0px;padding=
--left: 0px;">&nbsp;</td>=20
-                  </tr>=20
-                 </tbody>=20
-                </table> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-      </div>=20
-      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
-: transparent">=20
-       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
-dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
-k-word;background-color: transparent;">=20
-        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
-height: 100%;background-color: transparent;">=20
-         <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-width=
-: 600px;display: table-cell;vertical-align: top;">=20
-          <div style=3D"background-color: #ffffff;height: 100%;width: 100% =
-!important;">=20
-           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
-ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
- solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
-olid transparent;">
-            &nbsp;
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-      </div>=20
-      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
-: transparent">=20
-       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
-dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
-k-word;background-color: transparent;">=20
-        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
-height: 100%;background-color: transparent;">=20
-         <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-width=
-: 600px;display: table-cell;vertical-align: top;">=20
-          <div style=3D"background-color: #d7212c;height: 100%;width: 100% =
-!important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radiu=
-s: 0px;">=20
-           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
-ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
- solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
-olid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border=
--radius: 0px;">=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"u=
-_content_heading_8" role=3D"presentation" style=3D"font-family:'Open Sans',=
-sans-serif;" width=3D"100%">=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"center" class=3D"v-container-padding-padding" s=
-tyle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fa=
-mily:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"margin: 0=
-px; color: #ffffff; line-height: 140%; text-align: center; word-wrap: break=
--word; font-family: 'Open Sans',sans-serif; font-size: 22px; "><strong styl=
-e=3D"font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri Light', C=
-ambria, Dubai, 'Footlight MT Light'">Special Gift for =
-intel-gvt-dev@lists.freedesktop.org</strong></h1> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-      </div>=20
-      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
-: transparent">=20
-       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
-dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
-k-word;background-color: transparent;">=20
-        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
-height: 100%;background-color: transparent;">=20
-         <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-width=
-: 600px;display: table-cell;vertical-align: top;">=20
-          <div style=3D"background-color: #ffffff;height: 100%;width: 100% =
-!important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radiu=
-s: 0px;">=20
-           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
-ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
- solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
-olid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border=
--radius: 0px;">=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
-"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+> From: Alex Williamson <alex.williamson@redhat.com>
+> Sent: Friday, February 3, 2023 7:13 AM
 >=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"left" class=3D"v-container-padding-padding" sty=
-le=3D"overflow-wrap:break-word;word-break:break-word;padding:0px;font-famil=
-y:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"margin: 0px;=
- color: #e03e2d; line-height: 140%; text-align: center; word-wrap: break-wo=
-rd; font-family: 'Open Sans',sans-serif; font-size: 25px; ">&nbsp;</h1> </t=
-d>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"u=
-_content_heading_2" role=3D"presentation" style=3D"font-family:'Open Sans',=
-sans-serif;" width=3D"100%">=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"center" class=3D"v-container-padding-padding" s=
-tyle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 15px 0p=
-x;font-family:'Open Sans',sans-serif;">=20
-                <div style=3D"max-width: 600px ; margin: auto; text-align: =
-center">=20
-                 <div style=3D"width: 100%">
-                  <a href=3D"http://www.stnleytool.click/89f6np23l95r8r6o13B492keOy1162u36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQXdenR6p1RKh06zpwkDB/concentration-charged"><img alt=3D"" src=3D"http://www.stnleytool.click/d4f4r2395t7anL12v49k30L1162J36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXdenR7l1x0VqT5SP@wD/entangle-transgressed" =
-width=3D"100%" /></a>=20
-                  <img alt=3D"" src=3D"http://www.stnleytool.click/mediated-dilapidate/35a5Qn2395SPG7a11t4931_1162X36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQXdenR7VhQ10Ll5WPqwD" width=3D"100%" />=20
-                  <a href=3D"http://www.stnleytool.click/89f6np23l95r8r6o13B492keOy1162u36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQXdenR6p1RKh06zpwkDB/concentration-charged"><img alt=3D"" src=3D"http://www.stnleytool.click/8276rq23C95MC7Ka11F4932l1162A36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXdenR6wZ1s0L5v3wpD/concentration-charged" =
-width=3D"100%" /></a>=20
-                  <a class=3D"v-button v-font-size" href=3D"http://www.stnleytool.click/89f6np23l95r8r6o13B492keOy1162u36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQXdenR6p1RKh06zpwkDB/concentration-charged" sty=
-le=3D"box-sizing: border-box;display: inline-block;font-family:'Open Sans',=
-sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align:=
- center;color: #FFFFFF; background-color: #414141; border-radius: 4px;-webk=
-it-border-radius: 4px; -moz-border-radius: 4px; width:50%; max-width:100%; =
-overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; ms=
-o-border-alt: none;border-top-color: #CCC; border-top-style: solid; border-=
-top-width: 0px; border-left-color: #CCC; border-left-style: solid; border-l=
-eft-width: 0px; border-right-color: #CCC; border-right-style: solid; border=
--right-width: 0px; border-bottom-color: #CCC; border-bottom-style: solid; b=
-order-bottom-width: 0px;font-size: 18px;font-weight: bold" target=3D"_blank=
-"> <span class=3D"v-padding" style=3D"display:block;padding:10px 20px;line-=
-height:120%;; font-family: Montserrat, 'Montserrat Black', Arial, 'Calibri =
-Light', Cambria, Dubai, 'Footlight MT Light'">Take Me To The SURVEY!</span>=
- </a>
-                 </div>=20
-                </div> <h1 class=3D"v-font-size" style=3D"margin: 0px; colo=
-r: #646464; line-height: 140%; text-align: center; word-wrap: break-word; f=
-ont-size: 14px; ">&nbsp;</h1> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-      </div>=20
-      <div class=3D"u-row-container" style=3D"padding: 0px;background-color=
-: transparent">=20
-       <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-wi=
-dth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: brea=
-k-word;background-color: transparent;">=20
-        <div style=3D"border-collapse: collapse;display: table;width: 100%;=
-height: 100%;background-color: transparent;">=20
-         <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width:=
- 300px;display: table-cell;vertical-align: top;">=20
-          <div style=3D"background-color: #ffffff;height: 100%;width: 100% =
-!important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radiu=
-s: 0px;">=20
-           <div class=3D"v-col-padding" style=3D"box-sizing: border-box; he=
-ight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px=
- solid transparent;border-right: 0px solid transparent;border-bottom: 0px s=
-olid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border=
--radius: 0px;">=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
-"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+> On Thu, 2 Feb 2023 23:04:10 +0000
+> "Tian, Kevin" <kevin.tian@intel.com> wrote:
 >=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"left" class=3D"v-container-padding-padding" sty=
-le=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fami=
-ly:'Open Sans',sans-serif;">=20
-                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
-th=3D"100%">=20
-                 <tbody>=20
-                  <tr>=20
-                   <td align=3D"center" style=3D"padding-right: 0px;padding=
--left: 0px;">&nbsp;</td>=20
-                  </tr>=20
-                 </tbody>=20
-                </table> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
-"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+> > > From: Alex Williamson <alex.williamson@redhat.com>
+> > > Sent: Friday, February 3, 2023 3:42 AM
+> > >
+> > >
+> > > LGTM.  I'm not sure moving the functions to vfio_main really buys us
+> > > anything since we're making so much use of group fields.  The cdev
+> > > approach will necessarily be different, so the bulk of the get code w=
+ill
+> > > likely need to move back to group.c anyway.
+> > >
+> >
+> > well my last comment was based on Matthew's v2 where the get code
+> > gets a kvm passed in instead of implicitly retrieving group ref_lock
+> > internally. In that case the get/put helpers only contain device logic
+> > thus fit in vfio_main.c.
+> >
+> > with v3 then they have to be in group.c since we don't want to use
+> > group fields in vfio_main.c.
+> >
+> > but I still think v2 of the helpers is slightly better. The only differ=
+ence
+> > between cdev and group when handling this race is using different
+> > ref_lock. the symbol get/put part is exactly same. So even if we
+> > merge v3 like this, very likely Yi has to change it back to v2 style
+> > to share the get/put helpers while just leaving the ref_lock part
+> > handled differently between the two path.
 >=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"left" class=3D"v-container-padding-padding" sty=
-le=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 0px;=
-font-family:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"ma=
-rgin: 0px; color: #e03e2d; line-height: 140%; text-align: center; word-wrap=
-: break-word; font-size: 22px; ">&nbsp;</h1> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
-"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
+> I'm not really a fan of the asymmetry of the v2 version where the get
+> helper needs to be called under the new kvm_ref_lock, but the put
+> helper does not.  Having the get helper handle that makes the caller
+> much cleaner.  Thanks,
 >=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"left" class=3D"v-container-padding-padding" sty=
-le=3D"overflow-wrap:break-word;word-break:break-word;padding:5px 10px 10px;=
-font-family:'Open Sans',sans-serif;">=20
-                <div class=3D"v-font-size" style=3D"line-height: 140%; text=
--align: center; word-wrap: break-word;">=20
-                 <p style=3D"font-size: 14px; line-height: 140%;">&nbsp;</p=
->=20
-                </div> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
-"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
->=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"left" class=3D"v-container-padding-padding" sty=
-le=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fami=
-ly:'Open Sans',sans-serif;">=20
-                <table align=3D"center" border=3D"0" cellpadding=3D"0" cell=
-spacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layou=
-t: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vert=
-ical-align: top;border-top: 0px solid #BBBBBB;-ms-text-size-adjust: 100%;-w=
-ebkit-text-size-adjust: 100%" width=3D"100%">=20
-                 <tbody>=20
-                  <tr style=3D"vertical-align: top">=20
-                   <td style=3D"word-break: break-word;border-collapse: col=
-lapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-li=
-ne-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust=
-: 100%"><span>&nbsp;</span></td>=20
-                  </tr>=20
-                 </tbody>=20
-                </table> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
-"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
->=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"left" class=3D"v-container-padding-padding" sty=
-le=3D"overflow-wrap:break-word;word-break:break-word;padding:0px 10px 10px;=
-font-family:'Open Sans',sans-serif;">=20
-                <div class=3D"v-font-size" style=3D"line-height: 140%; text=
--align: center; word-wrap: break-word;">=20
-                 <p style=3D"font-size: 14px; line-height: 140%;"><span sty=
-le=3D"font-size: 18px; line-height: 25.2px; color: #e03e2d;">&nbsp; &nbsp; =
-&nbsp; &nbsp;</span></p>=20
-                </div> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
-"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"100%"=
->=20
-             <tbody>=20
-              <tr>=20
-               <td align=3D"left" class=3D"v-container-padding-padding" sty=
-le=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 30px=
-;font-family:'Open Sans',sans-serif;">=20
-                <div align=3D"center">
-                 &nbsp;
-                </div> </td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-           </div>=20
-          </div>=20
-          <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width=
-: 300px;display: table-cell;vertical-align: top;">=20
-           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
- !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
-us: 0px;">
-            &nbsp;
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-       <div class=3D"u-row-container" style=3D"padding: 0px;background-colo=
-r: transparent">=20
-        <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-w=
-idth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: bre=
-ak-word;background-color: transparent;">=20
-         <div style=3D"border-collapse: collapse;display: table;width: 100%=
-;height: 100%;background-color: transparent;">=20
-          <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width=
-: 300px;display: table-cell;vertical-align: top;">=20
-           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
- !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
-us: 0px;">=20
-            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
-eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
-x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
-solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
-r-radius: 0px;">=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
-ily:'Open Sans',sans-serif;">=20
-                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
-dth=3D"100%">=20
-                  <tbody>=20
-                   <tr>=20
-                    <td align=3D"center" style=3D"padding-right: 0px;paddin=
-g-left: 0px;">&nbsp;</td>=20
-                   </tr>=20
-                  </tbody>=20
-                 </table> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 0px=
-;font-family:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"m=
-argin: 0px; color: #e03e2d; line-height: 140%; text-align: center; word-wra=
-p: break-word; font-size: 22px; ">&nbsp;</h1> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:5px 10px 10px=
-;font-family:'Open Sans',sans-serif;">=20
-                 <div class=3D"v-font-size" style=3D"line-height: 140%; tex=
-t-align: center; word-wrap: break-word;">=20
-                  <p style=3D"font-size: 14px; line-height: 140%;">&nbsp;</=
-p>=20
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
-ily:'Open Sans',sans-serif;">=20
-                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layo=
-ut: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;ver=
-tical-align: top;border-top: 0px solid #BBBBBB;-ms-text-size-adjust: 100%;-=
-webkit-text-size-adjust: 100%" width=3D"100%">=20
-                  <tbody>=20
-                   <tr style=3D"vertical-align: top">=20
-                    <td style=3D"word-break: break-word;border-collapse: co=
-llapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-l=
-ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
-t: 100%"><span>&nbsp;</span></td>=20
-                   </tr>=20
-                  </tbody>=20
-                 </table> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:0px 10px 10px=
-;font-family:'Open Sans',sans-serif;">=20
-                 <div class=3D"v-font-size" style=3D"line-height: 140%; tex=
-t-align: center; word-wrap: break-word;">=20
-                  <p style=3D"font-size: 14px; line-height: 140%;"><span st=
-yle=3D"font-size: 18px; line-height: 25.2px; color: #e03e2d;">&nbsp; &nbsp;=
- &nbsp; &nbsp;</span></p>=20
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 30p=
-x;font-family:'Open Sans',sans-serif;">=20
-                 <div align=3D"center">
-                  &nbsp;
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div>=20
-           </div>=20
-          </div>=20
-          <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width=
-: 300px;display: table-cell;vertical-align: top;">=20
-           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
- !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
-us: 0px;">=20
-            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
-eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
-x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
-solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
-r-radius: 0px;">=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
-ily:'Open Sans',sans-serif;">=20
-                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
-dth=3D"100%">=20
-                  <tbody>=20
-                   <tr>=20
-                    <td align=3D"center" style=3D"padding-right: 0px;paddin=
-g-left: 0px;">&nbsp;</td>=20
-                   </tr>=20
-                  </tbody>=20
-                 </table> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 0px=
-;font-family:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"m=
-argin: 0px; color: #e03e2d; line-height: 140%; text-align: center; word-wra=
-p: break-word; font-size: 22px; ">&nbsp;</h1> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:5px 10px 10px=
-;font-family:'Open Sans',sans-serif;">=20
-                 <div class=3D"v-font-size" style=3D"line-height: 140%; tex=
-t-align: center; word-wrap: break-word;">=20
-                  <p style=3D"font-size: 14px; line-height: 140%;">&nbsp;</=
-p>=20
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
-ily:'Open Sans',sans-serif;">=20
-                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layo=
-ut: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;ver=
-tical-align: top;border-top: 0px solid #BBBBBB;-ms-text-size-adjust: 100%;-=
-webkit-text-size-adjust: 100%" width=3D"100%">=20
-                  <tbody>=20
-                   <tr style=3D"vertical-align: top">=20
-                    <td style=3D"word-break: break-word;border-collapse: co=
-llapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-l=
-ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
-t: 100%"><span>&nbsp;</span></td>=20
-                   </tr>=20
-                  </tbody>=20
-                 </table> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:0px 10px 10px=
-;font-family:'Open Sans',sans-serif;">=20
-                 <div class=3D"v-font-size" style=3D"line-height: 140%; tex=
-t-align: center; word-wrap: break-word;">=20
-                  <p style=3D"font-size: 14px; line-height: 140%;"><span st=
-yle=3D"font-size: 18px; line-height: 25.2px; color: #e03e2d;">&nbsp; &nbsp;=
- &nbsp; &nbsp;</span></p>=20
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 30p=
-x;font-family:'Open Sans',sans-serif;">=20
-                 <div align=3D"center">
-                  &nbsp;
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div>=20
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-       <div class=3D"u-row-container" style=3D"padding: 0px;background-colo=
-r: transparent">=20
-        <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-w=
-idth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: bre=
-ak-word;background-color: transparent;">=20
-         <div style=3D"border-collapse: collapse;display: table;width: 100%=
-;height: 100%;background-color: transparent;">=20
-          <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-widt=
-h: 600px;display: table-cell;vertical-align: top;">=20
-           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
- !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
-us: 0px;">=20
-            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
-eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
-x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
-solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
-r-radius: 0px;">=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 0px;font=
--family:'Open Sans',sans-serif;">=20
-                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layo=
-ut: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;ver=
-tical-align: top;border-top: 1px solid #BBBBBB;-ms-text-size-adjust: 100%;-=
-webkit-text-size-adjust: 100%" width=3D"100%">=20
-                  <tbody>=20
-                   <tr style=3D"vertical-align: top">=20
-                    <td style=3D"word-break: break-word;border-collapse: co=
-llapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-l=
-ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
-t: 100%">=20
-                     <div style=3D"font-family:Montserrat, Helvetica, Arial=
-, sans-serif;font-size:12px;font-weight:400;line-height:24px;text-align:cen=
-ter;color:#FFFFFF; background-color: #454545; font-weight: bold; padding: 1=
-5px">=20
-                      <p><span style=3D"text-decoration: none; ">=
-To stop email,</span><a href=3D"http://www.stnleytool.click/7af5t23Q95VVI8611o492fV1162O36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXdenR6kt1gW06llwD0k/Boswellize-Hoosier" style=3D"text-decoration-line: none; color=
-: white"> <span>BeginHere </span> </a><br /> 126 E 23rd St New York, NY,=
- US 10010<br /> <br /> <br /> <br /> <span title="Rayburn"><font size="Kathy"><span class="profligate"></span><style style="Maldive"></font></span></style></p>=20
-                     </div> <span>&nbsp;</span></td>=20
-                   </tr>=20
-                  </tbody>=20
-                 </table> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div>=20
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-       <div class=3D"u-row-container" style=3D"padding: 0px;background-colo=
-r: transparent">=20
-        <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-w=
-idth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: bre=
-ak-word;background-color: transparent;">=20
-         <div style=3D"border-collapse: collapse;display: table;width: 100%=
-;height: 100%;background-color: transparent;">=20
-          <div class=3D"u-col u-col-50" style=3D"max-width: 320px;min-width=
-: 300px;display: table-cell;vertical-align: top;">=20
-           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
- !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
-us: 0px;">=20
-            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
-eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
-x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
-solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
-r-radius: 0px;">=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"=
-u_content_image_8" role=3D"presentation" style=3D"font-family:'Open Sans',s=
-ans-serif;" width=3D"100%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:30px 10px 40p=
-x;font-family:'Open Sans',sans-serif;">=20
-                 <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
-dth=3D"100%">=20
-                  <tbody>=20
-                   <tr>=20
-                    <td align=3D"center" style=3D"padding-right: 0px;paddin=
-g-left: 0px;">&nbsp;</td>=20
-                   </tr>=20
-                  </tbody>=20
-                 </table> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div>=20
-           </div>=20
-          </div>=20
-          <div class=3D"u-col u-col-50" id=3D"u_column_8" style=3D"max-widt=
-h: 320px;min-width: 300px;display: table-cell;vertical-align: top;">=20
-           <div style=3D"background-color: #ffffff;height: 100%;width: 100%=
- !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radi=
-us: 0px;">=20
-            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
-eight: 100%; padding: 50px 0px 0px;border-top: 0px solid transparent;border=
--left: 0px solid transparent;border-right: 0px solid transparent;border-bot=
-tom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -=
-moz-border-radius: 0px;">=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
-ily:'Open Sans',sans-serif;"> <h1 class=3D"v-font-size" style=3D"margin: 0p=
-x; line-height: 140%; text-align: center; word-wrap: break-word; font-size:=
- 22px; ">&nbsp;</h1> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"=
-u_content_button_6" role=3D"presentation" style=3D"font-family:'Open Sans',=
-sans-serif;" width=3D"100%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
-ily:'Open Sans',sans-serif;">=20
-                 <div align=3D"center">
-                  &nbsp;
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div>=20
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-       <div class=3D"u-row-container" style=3D"padding: 0px;background-colo=
-r: transparent">=20
-        <div class=3D"u-row" style=3D"Margin: 0 auto;min-width: 320px;max-w=
-idth: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: bre=
-ak-word;background-color: transparent;">=20
-         <div style=3D"border-collapse: collapse;display: table;width: 100%=
-;height: 100%;background-color: transparent;">=20
-          <div class=3D"u-col u-col-100" style=3D"max-width: 320px;min-widt=
-h: 600px;display: table-cell;vertical-align: top;">=20
-           <div style=3D"height: 100%;width: 100% !important;border-radius:=
- 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">=20
-            <div class=3D"v-col-padding" style=3D"box-sizing: border-box; h=
-eight: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0p=
-x solid transparent;border-right: 0px solid transparent;border-bottom: 0px =
-solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-borde=
-r-radius: 0px;">=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"=
-u_content_text_11" role=3D"presentation" style=3D"font-family:'Open Sans',s=
-ans-serif;" width=3D"100%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:40px 80px 10p=
-x;font-family:'Open Sans',sans-serif;">&nbsp;</td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:20px 0px;font=
--family:'Open Sans',sans-serif;">=20
-                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" height=3D"0px" style=3D"border-collapse: collapse;table-layo=
-ut: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;ver=
-tical-align: top;border-top: 0px solid #BBBBBB;-ms-text-size-adjust: 100%;-=
-webkit-text-size-adjust: 100%" width=3D"100%">=20
-                  <tbody>=20
-                   <tr style=3D"vertical-align: top">=20
-                    <td style=3D"word-break: break-word;border-collapse: co=
-llapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-l=
-ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
-t: 100%"><span>&nbsp;</span></td>=20
-                   </tr>=20
-                  </tbody>=20
-                 </table> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
-ily:'Open Sans',sans-serif;">=20
-                 <div align=3D"center">=20
-                  <div style=3D"display: table; max-width:187px;">=20
-                   <table align=3D"left" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" height=3D"32" style=3D"width: 32px !important;height: 32px !=
-important;display: inline-block;border-collapse: collapse;table-layout: fix=
-ed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-a=
-lign: top;margin-right: 15px" width=3D"32">=20
-                    <tbody>=20
-                     <tr style=3D"vertical-align: top">=20
-                      <td align=3D"left" style=3D"word-break: break-word;bo=
-rder-collapse: collapse !important;vertical-align: top" valign=3D"middle">&=
-nbsp;</td>=20
-                     </tr>=20
-                    </tbody>=20
-                   </table>=20
-                   <table align=3D"left" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" height=3D"32" style=3D"width: 32px !important;height: 32px !=
-important;display: inline-block;border-collapse: collapse;table-layout: fix=
-ed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-a=
-lign: top;margin-right: 15px" width=3D"32">=20
-                    <tbody>=20
-                     <tr style=3D"vertical-align: top">=20
-                      <td align=3D"left" style=3D"word-break: break-word;bo=
-rder-collapse: collapse !important;vertical-align: top" valign=3D"middle">&=
-nbsp;</td>=20
-                     </tr>=20
-                    </tbody>=20
-                   </table>=20
-                   <table align=3D"left" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" height=3D"32" style=3D"width: 32px !important;height: 32px !=
-important;display: inline-block;border-collapse: collapse;table-layout: fix=
-ed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-a=
-lign: top;margin-right: 15px" width=3D"32">=20
-                    <tbody>=20
-                     <tr style=3D"vertical-align: top">=20
-                      <td align=3D"left" style=3D"word-break: break-word;bo=
-rder-collapse: collapse !important;vertical-align: top" valign=3D"middle">&=
-nbsp;</td>=20
-                     </tr>=20
-                    </tbody>=20
-                   </table>=20
-                   <table align=3D"left" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" height=3D"32" style=3D"width: 32px !important;height: 32px !=
-important;display: inline-block;border-collapse: collapse;table-layout: fix=
-ed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-a=
-lign: top;margin-right: 0px" width=3D"32">=20
-                    <tbody>=20
-                     <tr style=3D"vertical-align: top">=20
-                      <td align=3D"left" style=3D"word-break: break-word;bo=
-rder-collapse: collapse !important;vertical-align: top" valign=3D"middle">&=
-nbsp;</td>=20
-                     </tr>=20
-                    </tbody>=20
-                   </table>=20
-                  </div>=20
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" id=3D"=
-u_content_menu_2" role=3D"presentation" style=3D"font-family:'Open Sans',sa=
-ns-serif;" width=3D"100%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px;font-fam=
-ily:'Open Sans',sans-serif;">=20
-                 <div class=3D"menu" style=3D"text-align:center">
-                  &nbsp;
-                 </div> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
-=3D"presentation" style=3D"font-family:'Open Sans',sans-serif;" width=3D"10=
-0%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"left" class=3D"v-container-padding-padding" st=
-yle=3D"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 40p=
-x;font-family:'Open Sans',sans-serif;">&nbsp;</td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div>=20
-           </div>=20
-          </div>=20
-         </div>=20
-        </div>=20
-       </div>=20
-      </div> </td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.stnleytool.click/cf56Vu2o395bho8513Pr493Z3A1162S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXdenR7NPQ1Jt06C3@wDW/blackberries-lifelessness" alt=3D""/></body>
-</html>
 
-------=_Part_472_1847363424.1675389074058--
-
+What about passing the lock pointer into the helper? it's still slightly
+asymmetry as the put helper doesn't carry the lock pointer but it
+could also be interpreted as if the pointer has been saved in the get
+then if it needs to be referenced by the put there is no need to pass
+it in again.
