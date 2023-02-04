@@ -1,147 +1,79 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E5DF68A892
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Feb 2023 07:24:02 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A08B68AA8C
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Feb 2023 15:25:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 53A9610E97E;
-	Sat,  4 Feb 2023 06:24:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E859510E220;
+	Sat,  4 Feb 2023 14:25:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7E44E10E060;
- Sat,  4 Feb 2023 06:23:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1675491838; x=1707027838;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=a4RIp32ZP48FWHUjJO4WhA9g7Ha02faAdYWXCZDUA4s=;
- b=VZLmXlgY4HbbdFTpENSVxmwVgStvfvUff0KOmMxIoTERZSoc3BcfJc5s
- W7liBZc/3x8TroA2YDTme7zKlJdE2aKqH0hPlo//yUDvxB4A7np/denho
- UrBInrAA4ZRP0FwqKJvxWc3m/CFYLNwoogkSqqqVWAc01YAP2DF+Zx6Lw
- Xd/teIovJnfGqKUy8w1ycdQP26ewYfDSwid8fpsbrBwhWoFW3sYmfL4x6
- UBnYwETfReY96UoLKH6essXz3pLnOPfXglUV14uTzZWd+YWLG6xoZ5AnR
- eMJhyMs/Rvmxmon4JkRSbRNHMQd7fpUIYiNLWDMc737pqPuDcHIXbJ8Vm g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="312578732"
-X-IronPort-AV: E=Sophos;i="5.97,272,1669104000"; d="scan'208";a="312578732"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Feb 2023 22:23:57 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10610"; a="615933427"
-X-IronPort-AV: E=Sophos;i="5.97,272,1669104000"; d="scan'208";a="615933427"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga003.jf.intel.com with ESMTP; 03 Feb 2023 22:23:56 -0800
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Fri, 3 Feb 2023 22:23:56 -0800
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Fri, 3 Feb 2023 22:23:55 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Fri, 3 Feb 2023 22:23:55 -0800
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.100)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Fri, 3 Feb 2023 22:23:54 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=k+4/TXkNWbIJKfT5bO73IrwvsAo1jLlEzCI37bYX1AjTKZnWP3cZKFbvHg2TeMpBA0NGQ7AdBu7WazgIYE8EOGfBN0Rnst/gyGxdFhfyBxoclBd42gJSULfAfEaK4Co8a9v6lGSYVyyy0ZvKcxjjOzYpnxi0v5DDzXceBChTwlRBwRtT0cVQaNnReYFU30G44aHAbm5yKNNPGR7Ix8XUomaQ29vbKyoy6OqxUTBb47JyRgfdj8i5nopoH5eWi8CQiPLQygi5fl26c9uY8zQ+6LyPgiSfeH8eZ5OlkpUsRLmbKNla6l+4DG21V0pwIYEozm4aMVNqDMJek04Uv6WhUQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=AE6eQ3fhpZ96KQnB6v5UGtCicgSGGhHZiMEXHWbhL8s=;
- b=hto5m/oXoS5vmE9rhvejH9qAt9yXcMCqmtt+xfCPmPBcwf7S7wQB1SgjWNt7tz3tiKJastvqDOleJj2/Y7CQYwOPd1hamVtmzP0txQZOW62KhqGg6kKMRtmh/1Q86yJOs7K0yCUwBWTD8aeXtxcBhq0/ad0VujswpYOoBOjVyWk70EAo9TjM/WkEBxlSVVIwYpd1HEEPwqW8OHaNSR0ej4KD4279HCxaR7AF93k9zH1RTNuqw2BEivCpcGNLPkHHnXpVw7dcMjZi9VnUST9y/5DZqv2XTFqj6AObgr449bvfCzx0ny6XgPc6ZvQ9hizeSU/jd9TJVCIUKYTDt9tSXA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by BL3PR11MB6315.namprd11.prod.outlook.com (2603:10b6:208:3b2::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.27; Sat, 4 Feb
- 2023 06:23:52 +0000
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::e1fa:abbe:2009:b0a3]) by DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::e1fa:abbe:2009:b0a3%4]) with mapi id 15.20.6064.024; Sat, 4 Feb 2023
- 06:23:52 +0000
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Matthew Rosato <mjrosato@linux.ibm.com>, "alex.williamson@redhat.com"
- <alex.williamson@redhat.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "jgg@nvidia.com" <jgg@nvidia.com>
-Subject: RE: [PATCH v4 2/2] vfio: no need to pass kvm pointer during device
- open
-Thread-Topic: [PATCH v4 2/2] vfio: no need to pass kvm pointer during device
- open
-Thread-Index: AQHZOBmTn221w5MAG0K+5msUC0tdgK6+Uf8g
-Date: Sat, 4 Feb 2023 06:23:51 +0000
-Message-ID: <DS0PR11MB7529C0AF0C079748413999C3C3D49@DS0PR11MB7529.namprd11.prod.outlook.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 606A710E220
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat,  4 Feb 2023 14:25:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1675520724;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BPb3zmrBo8hI1QaL+QoDXfm9YTI2O8rGNvKyRtuVNJ4=;
+ b=TEbjoqJS9KO5VroVSWszpzn+LsWOIeSbxytx+JCy9tH9WVPvTME+WC6ZTuPlEYgqAqEPj1
+ 3U0Ns1cf/UW7dOv5pAYRvh+uIipTW6iF6CNiVI4d6ngn6P32j9LKtEp+6vp9l2dP1mrdV8
+ xUcDtSMNzJ0nuPl96LVckIsRs1GSKrY=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-121-iQEpv6SGPkGRqrvKhmvlVA-1; Sat, 04 Feb 2023 09:25:21 -0500
+X-MC-Unique: iQEpv6SGPkGRqrvKhmvlVA-1
+Received: by mail-il1-f200.google.com with SMTP id
+ s12-20020a056e021a0c00b0030efd0ed890so5134837ild.7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 04 Feb 2023 06:25:21 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=BPb3zmrBo8hI1QaL+QoDXfm9YTI2O8rGNvKyRtuVNJ4=;
+ b=AmRkJ3TxTzuwFxs3g6Lr0DxrYsh5SZFuuEB12bVC+WxudwpfG5mbY+/2dlTI9dWr9m
+ 2G6pmU7w7u3evB3d2HEEqYWjApAhTXDr6hllJOkgSXrsb85TQBcaMGvZzWNeu3euocRe
+ IlvOpZfp9jVe5epZBSw9IzVBXJeU1IuA/YWBqKZMcvldr2WAl0aySVDPN5mglaDwkE7x
+ cLo8kHJBHSjDb3tHINnIzk9n7PpErR2P5h+MJ+YBoB2b89OetkBloDXAahHs+26GtW/J
+ xYNZmCnxv8hFtdx1HtficGrZozTgdQVSWtdSboTGBVGDGNVox2H+Nowwu+siMRLdADrI
+ Z3GQ==
+X-Gm-Message-State: AO0yUKVQ4gi6eojWcdEoqUTNUi4VnvxL90+DLdo8W3ysKZ2Vn7z62qKB
+ Gb/FE+uOUKREQ2RdXt2KpdyVTWzxh29dsCYPMx7kk+zEnlf0eFGS4YSdf4p0uKKxMoxhvro/L/9
+ fA9Uh4deo+te1OaXpLeSwyqTp8ZfysWB76g==
+X-Received: by 2002:a5d:8e0c:0:b0:729:63de:4546 with SMTP id
+ e12-20020a5d8e0c000000b0072963de4546mr4655320iod.3.1675520721121; 
+ Sat, 04 Feb 2023 06:25:21 -0800 (PST)
+X-Google-Smtp-Source: AK7set8hCr+StI5YhRk/qZS/3KcSos6ZFduXHTX04WfBJmgHPj/mpHyfvyuLXevwkRlA04qUDb9YPw==
+X-Received: by 2002:a5d:8e0c:0:b0:729:63de:4546 with SMTP id
+ e12-20020a5d8e0c000000b0072963de4546mr4655303iod.3.1675520720796; 
+ Sat, 04 Feb 2023 06:25:20 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ u13-20020a02aa8d000000b003a9595b7e3asm1806920jai.46.2023.02.04.06.25.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 04 Feb 2023 06:25:19 -0800 (PST)
+Date: Sat, 4 Feb 2023 07:25:18 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>
+Subject: Re: [PATCH v4 1/2] vfio: fix deadlock between group lock and kvm lock
+Message-ID: <20230204072518.537ab50b.alex.williamson@redhat.com>
+In-Reply-To: <DS0PR11MB7529CE3027A713D6F2EE7F68C3D49@DS0PR11MB7529.namprd11.prod.outlook.com>
 References: <20230203215027.151988-1-mjrosato@linux.ibm.com>
- <20230203215027.151988-3-mjrosato@linux.ibm.com>
-In-Reply-To: <20230203215027.151988-3-mjrosato@linux.ibm.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|BL3PR11MB6315:EE_
-x-ms-office365-filtering-correlation-id: cd61d9ea-c9b6-4752-e366-08db0678625c
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 8vuAk5B/UO7guHBAaLhMwyWpgz8gUl51ogzivEdAe7MzsitttAegzl4OuG2C4hiO8y+uPVgX0rdZ9ujyuB3DsVzldssZ6DixtqoLkDVo0Kq6uc5/Wzg+HGTO4Ck52/77TEovosGPsNiTupmorXommGbV0Lj1pZqhZDvbqdDk7tLYNHyikWFWiCkwW5k0LGZObd624U6mzesxD9h7Oz0wZQlBuc9JALxPv7HLev8fYOk5m4INJ6Mn6BMaC4T+Yh3jEBesFRbMSS/X4EkPKIZOJruD+4jn3MlU0WFmW+/M9UReZ5rE6StgPlcBA7j3PBnbW2MDMs+WQSZ3xoH3LiFGZsHhK9yVv0EE+dWqK0xm0F/SH2liJj1XuzWqnC/5XXE+tR4ICO6uN9n75/rYBzYjxpvCheG4J68DVfMCdQ4lGqsHqjMV/o8WcHGKrNv78rM6Gd/17dQxAxj2YyUYQrJ3UFzaAl4fsySf0GTF1QgO6OK0wtStOvZzKKXgKSSD1beyFiwYswFNa7q5b1lmvb/DBBe9EPH3ef25K7zh5lWBrTmXF6lDyw/zvQUxQ0cp4uT9nve7VDBoMozlhRk/aBY+AVTwN6cB6zEBsNpAjKg21LmPX8H4xE6y7RV2wnkrQ/opKNa31800juDVghpRdKj/KnfawBqwcv6YQW7Z6It+iTK0XZYVhDi+d1qA8KKId1wzLLLF9BJzUN0z7awFggkafNADpbVwJo9L9Vc+hvpQZws=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(346002)(136003)(376002)(396003)(39860400002)(366004)(451199018)(41300700001)(478600001)(33656002)(82960400001)(66556008)(38100700002)(122000001)(4326008)(66476007)(8676002)(83380400001)(54906003)(64756008)(316002)(66446008)(110136005)(5660300002)(186003)(71200400001)(26005)(7416002)(76116006)(9686003)(6506007)(86362001)(38070700005)(52536014)(7696005)(55016003)(8936002)(66946007)(2906002)(13296009);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?fR0yqHQWolRJ8LLZWjuWE7Gik6BxsVh4zRLXEg6zDrrBkANfXOLYspNARB2r?=
- =?us-ascii?Q?Q94KZ5JSOYYyocj3ZeaLyvX4J8HvZJJ9t4xH2EVAk3k80uX7P3WUI9GIAQjl?=
- =?us-ascii?Q?Mz321hmbnLrlApugeqHVyTVUCMSktTEinQLKlqHkAeRBDjW0h7odHKDW7v/v?=
- =?us-ascii?Q?X4V0wB6+sK/Oy7QACbDCKquiRCOw602v9vpysFToRewJN7WclnZNZpNR7kyH?=
- =?us-ascii?Q?7oSxQtKjkOJCL6c/zrX3J9XXpzRsURUQtp5RGOQvUiycbe5MPq3BTp/P/pQQ?=
- =?us-ascii?Q?rrhGCWMqhQIddE7Ow/hLo8IGeKDOF9vnE/aBkzHlOYRk6HQGoyHjbjAcvXHq?=
- =?us-ascii?Q?gQ7HqFLtdYf4ew2XYCH46i/qYirWuH35uTZNsQGKdxQVCIQPBWu1Jrg/NOfH?=
- =?us-ascii?Q?+Lhd9GzelWf6z+9QucGM4PowOwGcF7UlZfkFfcV5h0GI4X5leWSKtN9P6ipY?=
- =?us-ascii?Q?cKyDXwqf0Z5mUXY/qVJNFH7HMT5npX+TUCuk43yiGgkf/kC+NWUB0JL1ZaRK?=
- =?us-ascii?Q?2yf3bSu3xUllIvzjUbMcBICZFIs1YhFxqFkeV4mbrbzZrPBft5olweb5+MD5?=
- =?us-ascii?Q?c3aChKCnFXtMyEghHmQPCIB+i7GSJ/x+s+Mq9J4aDnmEjit5UHamB8oTt0B7?=
- =?us-ascii?Q?9+ywU8tqyG+o3GJ7Rm6o2D3bLT7qZTMa32onMed23v624HaD9d/6YWWY3F06?=
- =?us-ascii?Q?+OkUHRZEPeIlIWbCOrGr4XHoWTW2HEufJb6cGKrXoy0rTiZVdJfhJ9oV8YU0?=
- =?us-ascii?Q?XHgxnyMK7a0SizD2io6c95kR/kDsnOpJCAr54sBDDXzq6zzUoANfGZwCg/+X?=
- =?us-ascii?Q?fNx/BYk90ryEY2sHXsGZP7FKCxaqO6NKD4EM92PDfgIZirq/Aih2xvFnEdi6?=
- =?us-ascii?Q?+at3q8Z8NXNOwFUJMt7P3rhTB2isreSjATrbL/xgn5kuyV3qwMpFtwW+/ms3?=
- =?us-ascii?Q?8kkYBRT2Tf0tIJ0Gxazw2cUMDqsza1jWz2HfRZ9fiSaIQdX+y4ad+ZxTyRWD?=
- =?us-ascii?Q?s5PFWsiaKyCbey7csHfuCrhZrhkTPun/4hClDYMCdUrdqbYyqrv53mcz5B/D?=
- =?us-ascii?Q?OykUdvKiQl2M6eo8Fp/NUp6JxTe58P+JZuaxUAbm1bJrk93IrVI3h1xT8GrM?=
- =?us-ascii?Q?xxDjcFbc8hymtgP5daVnmUniPK9ytKnraG90s5XbjP1gyFjuBfGS52jUbY1d?=
- =?us-ascii?Q?0ZV7mtjz1NR3kQ6e9dwmM8TzNEjtPJuoliRPcQtmmS+eOlI1r9RJIUBe3SSH?=
- =?us-ascii?Q?UL4rATggLOGc31L532ye324toRBa2wEUxx/XA+lJ2yFEBiveTnpEZ0N5nCdv?=
- =?us-ascii?Q?JkB7chkRQRAxwrLj+BIQ0MVBxwsMq3Qkbk8ABnsIzcc2xqwcQ7gyQ0HBkBtS?=
- =?us-ascii?Q?hbvUmNKKh3+G1uCFPgsh8IAnXRGp7gHg4vCdf5hxyRTQUnAAH0/LYERqpS4B?=
- =?us-ascii?Q?FouVMrgil1gFcOn2F+3Bg4b3uZyoFjYBIYM1pnRjs4cxrt4jdOnZXRY0ZIv2?=
- =?us-ascii?Q?XooQ4H3B4OAuP5txu5nBJ1XwcnZuaI8yOc4XQwOyd2Obs8VxCa4m7F5Az8Cu?=
- =?us-ascii?Q?ItnDFM9HCueYNepR23EFl3ku1PTOGtKPhE+4FhYF?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <20230203215027.151988-2-mjrosato@linux.ibm.com>
+ <DS0PR11MB7529CE3027A713D6F2EE7F68C3D49@DS0PR11MB7529.namprd11.prod.outlook.com>
+Organization: Red Hat
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cd61d9ea-c9b6-4752-e366-08db0678625c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Feb 2023 06:23:51.8685 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 8OucVwq0R8zIwRIR2dGt8Z+j4VSVu0gExEZcoiZHyLvusgKYIZ306eKOy2DHvkNzwd1rpD07mIKlEupg6Ef3zw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR11MB6315
-X-OriginatorOrg: intel.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -154,112 +86,354 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
- "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
- "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
- "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
- "david@redhat.com" <david@redhat.com>, "Christopherson, ,
- Sean" <seanjc@google.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>, "Tian, 
+Cc: Matthew Rosato <mjrosato@linux.ibm.com>,
+ "david@redhat.com" <david@redhat.com>, "Tian, 
  Kevin" <kevin.tian@intel.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
  "imbrenda@linux.ibm.com" <imbrenda@linux.ibm.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>, "Wang,
+ Zhi A" <zhi.a.wang@intel.com>, "jjherne@linux.ibm.com" <jjherne@linux.ibm.com>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "Wang, Zhi A" <zhi.a.wang@intel.com>
+ "frankja@linux.ibm.com" <frankja@linux.ibm.com>,
+ "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
+ "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>, "Christopherson, ,
+ Sean" <seanjc@google.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Matthew Rosato <mjrosato@linux.ibm.com>
-> Sent: Saturday, February 4, 2023 5:50 AM
->=20
-> Nothing uses this value during vfio_device_open anymore so it's safe
-> to remove it.
->=20
-> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
-> ---
->  drivers/vfio/group.c     | 2 +-
->  drivers/vfio/vfio.h      | 3 +--
->  drivers/vfio/vfio_main.c | 7 +++----
->  3 files changed, 5 insertions(+), 7 deletions(-)
+On Sat, 4 Feb 2023 06:21:48 +0000
+"Liu, Yi L" <yi.l.liu@intel.com> wrote:
 
-Reviewed-by: Yi Liu <yi.l.liu@intel.com>
+> > From: Matthew Rosato <mjrosato@linux.ibm.com>
+> > Sent: Saturday, February 4, 2023 5:50 AM
+> > To: alex.williamson@redhat.com; pbonzini@redhat.com; Liu, Yi L
+> > 
+> > After 51cdc8bc120e, we have another deadlock scenario between the
+> > kvm->lock and the vfio group_lock with two different codepaths acquiring
+> > the locks in different order.  Specifically in vfio_open_device, vfio
+> > holds the vfio group_lock when issuing device->ops->open_device but
+> > some
+> > drivers (like vfio-ap) need to acquire kvm->lock during their open_device
+> > routine;  Meanwhile, kvm_vfio_release will acquire the kvm->lock first
+> > before calling vfio_file_set_kvm which will acquire the vfio group_lock.
+> > 
+> > To resolve this, let's remove the need for the vfio group_lock from the
+> > kvm_vfio_release codepath.  This is done by introducing a new spinlock to
+> > protect modifications to the vfio group kvm pointer, and acquiring a kvm
+> > ref from within vfio while holding this spinlock, with the reference held
+> > until the last close for the device in question.
+> > 
+> > Fixes: 51cdc8bc120e ("kvm/vfio: Fix potential deadlock on vfio group_lock")
+> > Reported-by: Anthony Krowiak <akrowiak@linux.ibm.com>
+> > Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+> > Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> > ---
+> >  drivers/vfio/group.c     | 44 +++++++++++++++++++++++-----
+> >  drivers/vfio/vfio.h      | 15 ++++++++++
+> >  drivers/vfio/vfio_main.c | 63
+> > +++++++++++++++++++++++++++++++++++-----
+> >  include/linux/vfio.h     |  2 +-
+> >  4 files changed, 109 insertions(+), 15 deletions(-)
+> > 
+> > diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+> > index bb24b2f0271e..98621ac082f0 100644
+> > --- a/drivers/vfio/group.c
+> > +++ b/drivers/vfio/group.c
+> > @@ -154,6 +154,18 @@ static int vfio_group_ioctl_set_container(struct
+> > vfio_group *group,
+> >  	return ret;
+> >  }
+> > 
+> > +static void vfio_device_group_get_kvm_safe(struct vfio_device *device)
+> > +{
+> > +	spin_lock(&device->group->kvm_ref_lock);
+> > +	if (!device->group->kvm)
+> > +		goto unlock;
+> > +
+> > +	_vfio_device_get_kvm_safe(device, device->group->kvm);
+> > +
+> > +unlock:
+> > +	spin_unlock(&device->group->kvm_ref_lock);
+> > +}
+> > +
+> >  static int vfio_device_group_open(struct vfio_device *device)
+> >  {
+> >  	int ret;
+> > @@ -164,13 +176,23 @@ static int vfio_device_group_open(struct
+> > vfio_device *device)
+> >  		goto out_unlock;
+> >  	}
+> > 
+> > +	mutex_lock(&device->dev_set->lock);
+> > +
+> >  	/*
+> > -	 * Here we pass the KVM pointer with the group under the lock.  If
+> > the
+> > -	 * device driver will use it, it must obtain a reference and release it
+> > -	 * during close_device.
+> > +	 * Before the first device open, get the KVM pointer currently
+> > +	 * associated with the group (if there is one) and obtain a reference
+> > +	 * now that will be held until the open_count reaches 0 again.  Save  
+> 
+> Nit: a redundant space before "Save". Other part looks good to me.
 
-Regards,
-Yi Liu
+Two spaces between sentences is a common standard.  Not everyone
+prefers this, but I do.  Thanks,
 
-> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-> index 98621ac082f0..0e9036e2b9c4 100644
-> --- a/drivers/vfio/group.c
-> +++ b/drivers/vfio/group.c
-> @@ -187,7 +187,7 @@ static int vfio_device_group_open(struct vfio_device
-> *device)
->  	if (device->open_count =3D=3D 0)
->  		vfio_device_group_get_kvm_safe(device);
->=20
-> -	ret =3D vfio_device_open(device, device->group->iommufd, device-
-> >kvm);
-> +	ret =3D vfio_device_open(device, device->group->iommufd);
->=20
->  	if (device->open_count =3D=3D 0)
->  		vfio_device_put_kvm(device);
-> diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-> index 24d6cd285945..4f39ab549a80 100644
-> --- a/drivers/vfio/vfio.h
-> +++ b/drivers/vfio/vfio.h
-> @@ -18,8 +18,7 @@ struct vfio_container;
->=20
->  void vfio_device_put_registration(struct vfio_device *device);
->  bool vfio_device_try_get_registration(struct vfio_device *device);
-> -int vfio_device_open(struct vfio_device *device,
-> -		     struct iommufd_ctx *iommufd, struct kvm *kvm);
-> +int vfio_device_open(struct vfio_device *device, struct iommufd_ctx
-> *iommufd);
->  void vfio_device_close(struct vfio_device *device,
->  		       struct iommufd_ctx *iommufd);
->=20
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index 28c47cd6a6b5..3a597e799918 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -397,7 +397,7 @@ static bool vfio_assert_device_open(struct
-> vfio_device *device)
->  }
->=20
->  static int vfio_device_first_open(struct vfio_device *device,
-> -				  struct iommufd_ctx *iommufd, struct kvm
-> *kvm)
-> +				  struct iommufd_ctx *iommufd)
->  {
->  	int ret;
->=20
-> @@ -444,8 +444,7 @@ static void vfio_device_last_close(struct vfio_device
-> *device,
->  	module_put(device->dev->driver->owner);
->  }
->=20
-> -int vfio_device_open(struct vfio_device *device,
-> -		     struct iommufd_ctx *iommufd, struct kvm *kvm)
-> +int vfio_device_open(struct vfio_device *device, struct iommufd_ctx
-> *iommufd)
->  {
->  	int ret =3D 0;
->=20
-> @@ -453,7 +452,7 @@ int vfio_device_open(struct vfio_device *device,
->=20
->  	device->open_count++;
->  	if (device->open_count =3D=3D 1) {
-> -		ret =3D vfio_device_first_open(device, iommufd, kvm);
-> +		ret =3D vfio_device_first_open(device, iommufd);
->  		if (ret)
->  			device->open_count--;
->  	}
-> --
-> 2.39.1
+Alex
+
+> Reviewed-by: Yi Liu <yi.l.liu@intel.com>
+> 
+> Regards,
+> Yi Liu
+> 
+> > +	 * the pointer in the device for use by drivers.
+> >  	 */
+> > -	ret = vfio_device_open(device, device->group->iommufd,
+> > -			       device->group->kvm);
+> > +	if (device->open_count == 0)
+> > +		vfio_device_group_get_kvm_safe(device);
+> > +
+> > +	ret = vfio_device_open(device, device->group->iommufd, device->kvm);
+> > +
+> > +	if (device->open_count == 0)
+> > +		vfio_device_put_kvm(device);
+> > +
+> > +	mutex_unlock(&device->dev_set->lock);
+> > 
+> >  out_unlock:
+> >  	mutex_unlock(&device->group->group_lock);
+> > @@ -180,7 +202,14 @@ static int vfio_device_group_open(struct
+> > vfio_device *device)
+> >  void vfio_device_group_close(struct vfio_device *device)
+> >  {
+> >  	mutex_lock(&device->group->group_lock);
+> > +	mutex_lock(&device->dev_set->lock);
+> > +
+> >  	vfio_device_close(device, device->group->iommufd);
+> > +
+> > +	if (device->open_count == 0)
+> > +		vfio_device_put_kvm(device);
+> > +
+> > +	mutex_unlock(&device->dev_set->lock);
+> >  	mutex_unlock(&device->group->group_lock);
+> >  }
+> > 
+> > @@ -450,6 +479,7 @@ static struct vfio_group *vfio_group_alloc(struct
+> > iommu_group *iommu_group,
+> > 
+> >  	refcount_set(&group->drivers, 1);
+> >  	mutex_init(&group->group_lock);
+> > +	spin_lock_init(&group->kvm_ref_lock);
+> >  	INIT_LIST_HEAD(&group->device_list);
+> >  	mutex_init(&group->device_lock);
+> >  	group->iommu_group = iommu_group;
+> > @@ -803,9 +833,9 @@ void vfio_file_set_kvm(struct file *file, struct kvm
+> > *kvm)
+> >  	if (!vfio_file_is_group(file))
+> >  		return;
+> > 
+> > -	mutex_lock(&group->group_lock);
+> > +	spin_lock(&group->kvm_ref_lock);
+> >  	group->kvm = kvm;
+> > -	mutex_unlock(&group->group_lock);
+> > +	spin_unlock(&group->kvm_ref_lock);
+> >  }
+> >  EXPORT_SYMBOL_GPL(vfio_file_set_kvm);
+> > 
+> > diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+> > index f8219a438bfb..24d6cd285945 100644
+> > --- a/drivers/vfio/vfio.h
+> > +++ b/drivers/vfio/vfio.h
+> > @@ -74,6 +74,7 @@ struct vfio_group {
+> >  	struct file			*opened_file;
+> >  	struct blocking_notifier_head	notifier;
+> >  	struct iommufd_ctx		*iommufd;
+> > +	spinlock_t			kvm_ref_lock;
+> >  };
+> > 
+> >  int vfio_device_set_group(struct vfio_device *device,
+> > @@ -251,4 +252,18 @@ extern bool vfio_noiommu __read_mostly;
+> >  enum { vfio_noiommu = false };
+> >  #endif
+> > 
+> > +#ifdef CONFIG_HAVE_KVM
+> > +void _vfio_device_get_kvm_safe(struct vfio_device *device, struct kvm
+> > *kvm);
+> > +void vfio_device_put_kvm(struct vfio_device *device);
+> > +#else
+> > +static inline void _vfio_device_get_kvm_safe(struct vfio_device *device,
+> > +					     struct kvm *kvm)
+> > +{
+> > +}
+> > +
+> > +static inline void vfio_device_put_kvm(struct vfio_device *device)
+> > +{
+> > +}
+> > +#endif
+> > +
+> >  #endif
+> > diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> > index 5177bb061b17..28c47cd6a6b5 100644
+> > --- a/drivers/vfio/vfio_main.c
+> > +++ b/drivers/vfio/vfio_main.c
+> > @@ -16,6 +16,9 @@
+> >  #include <linux/fs.h>
+> >  #include <linux/idr.h>
+> >  #include <linux/iommu.h>
+> > +#ifdef CONFIG_HAVE_KVM
+> > +#include <linux/kvm_host.h>
+> > +#endif
+> >  #include <linux/list.h>
+> >  #include <linux/miscdevice.h>
+> >  #include <linux/module.h>
+> > @@ -338,6 +341,55 @@ void vfio_unregister_group_dev(struct vfio_device
+> > *device)
+> >  }
+> >  EXPORT_SYMBOL_GPL(vfio_unregister_group_dev);
+> > 
+> > +#ifdef CONFIG_HAVE_KVM
+> > +void _vfio_device_get_kvm_safe(struct vfio_device *device, struct kvm
+> > *kvm)
+> > +{
+> > +	void (*pfn)(struct kvm *kvm);
+> > +	bool (*fn)(struct kvm *kvm);
+> > +	bool ret;
+> > +
+> > +	lockdep_assert_held(&device->dev_set->lock);
+> > +
+> > +	pfn = symbol_get(kvm_put_kvm);
+> > +	if (WARN_ON(!pfn))
+> > +		return;
+> > +
+> > +	fn = symbol_get(kvm_get_kvm_safe);
+> > +	if (WARN_ON(!fn)) {
+> > +		symbol_put(kvm_put_kvm);
+> > +		return;
+> > +	}
+> > +
+> > +	ret = fn(kvm);
+> > +	symbol_put(kvm_get_kvm_safe);
+> > +	if (!ret) {
+> > +		symbol_put(kvm_put_kvm);
+> > +		return;
+> > +	}
+> > +
+> > +	device->put_kvm = pfn;
+> > +	device->kvm = kvm;
+> > +}
+> > +
+> > +void vfio_device_put_kvm(struct vfio_device *device)
+> > +{
+> > +	lockdep_assert_held(&device->dev_set->lock);
+> > +
+> > +	if (!device->kvm)
+> > +		return;
+> > +
+> > +	if (WARN_ON(!device->put_kvm))
+> > +		goto clear;
+> > +
+> > +	device->put_kvm(device->kvm);
+> > +	device->put_kvm = NULL;
+> > +	symbol_put(kvm_put_kvm);
+> > +
+> > +clear:
+> > +	device->kvm = NULL;
+> > +}
+> > +#endif
+> > +
+> >  /* true if the vfio_device has open_device() called but not close_device()
+> > */
+> >  static bool vfio_assert_device_open(struct vfio_device *device)
+> >  {
+> > @@ -361,7 +413,6 @@ static int vfio_device_first_open(struct vfio_device
+> > *device,
+> >  	if (ret)
+> >  		goto err_module_put;
+> > 
+> > -	device->kvm = kvm;
+> >  	if (device->ops->open_device) {
+> >  		ret = device->ops->open_device(device);
+> >  		if (ret)
+> > @@ -370,7 +421,6 @@ static int vfio_device_first_open(struct vfio_device
+> > *device,
+> >  	return 0;
+> > 
+> >  err_unuse_iommu:
+> > -	device->kvm = NULL;
+> >  	if (iommufd)
+> >  		vfio_iommufd_unbind(device);
+> >  	else
+> > @@ -387,7 +437,6 @@ static void vfio_device_last_close(struct vfio_device
+> > *device,
+> > 
+> >  	if (device->ops->close_device)
+> >  		device->ops->close_device(device);
+> > -	device->kvm = NULL;
+> >  	if (iommufd)
+> >  		vfio_iommufd_unbind(device);
+> >  	else
+> > @@ -400,14 +449,14 @@ int vfio_device_open(struct vfio_device *device,
+> >  {
+> >  	int ret = 0;
+> > 
+> > -	mutex_lock(&device->dev_set->lock);
+> > +	lockdep_assert_held(&device->dev_set->lock);
+> > +
+> >  	device->open_count++;
+> >  	if (device->open_count == 1) {
+> >  		ret = vfio_device_first_open(device, iommufd, kvm);
+> >  		if (ret)
+> >  			device->open_count--;
+> >  	}
+> > -	mutex_unlock(&device->dev_set->lock);
+> > 
+> >  	return ret;
+> >  }
+> > @@ -415,12 +464,12 @@ int vfio_device_open(struct vfio_device *device,
+> >  void vfio_device_close(struct vfio_device *device,
+> >  		       struct iommufd_ctx *iommufd)
+> >  {
+> > -	mutex_lock(&device->dev_set->lock);
+> > +	lockdep_assert_held(&device->dev_set->lock);
+> > +
+> >  	vfio_assert_device_open(device);
+> >  	if (device->open_count == 1)
+> >  		vfio_device_last_close(device, iommufd);
+> >  	device->open_count--;
+> > -	mutex_unlock(&device->dev_set->lock);
+> >  }
+> > 
+> >  /*
+> > diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> > index 35be78e9ae57..87ff862ff555 100644
+> > --- a/include/linux/vfio.h
+> > +++ b/include/linux/vfio.h
+> > @@ -46,7 +46,6 @@ struct vfio_device {
+> >  	struct vfio_device_set *dev_set;
+> >  	struct list_head dev_set_list;
+> >  	unsigned int migration_flags;
+> > -	/* Driver must reference the kvm during open_device or never
+> > touch it */
+> >  	struct kvm *kvm;
+> > 
+> >  	/* Members below here are private, not for driver use */
+> > @@ -58,6 +57,7 @@ struct vfio_device {
+> >  	struct list_head group_next;
+> >  	struct list_head iommu_entry;
+> >  	struct iommufd_access *iommufd_access;
+> > +	void (*put_kvm)(struct kvm *kvm);
+> >  #if IS_ENABLED(CONFIG_IOMMUFD)
+> >  	struct iommufd_device *iommufd_device;
+> >  	struct iommufd_ctx *iommufd_ictx;
+> > --
+> > 2.39.1  
+> 
 
