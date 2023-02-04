@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8515068AC26
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Feb 2023 20:52:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C04A168AC48
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Feb 2023 21:34:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 343F410E02A;
-	Sat,  4 Feb 2023 19:52:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6260710E04E;
+	Sat,  4 Feb 2023 20:34:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sat, 04 Feb 2023 19:52:42 UTC
-Received: from mail.beplannd.click (unknown [45.13.189.100])
- by gabe.freedesktop.org (Postfix) with ESMTP id EC2CC10E043
+ Sat, 04 Feb 2023 20:34:45 UTC
+Received: from mail.gearburial.click (unknown [45.13.189.189])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F33B010E04E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Feb 2023 19:52:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=beplannd.click; 
+ Sat,  4 Feb 2023 20:34:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gearburial.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=medicare.plan.offers@beplannd.click; 
- bh=XBw6ggojnvPau0MKxAI9GhfXA6Q=;
- b=jXCzLyM0mI79q5fcnoMI2bAztHsuLZulIrp7d7AYQAvQW9ywc5s9KqFgNVBWdumBSAwJ0EKRgWpY
- /ah80vd3fFCF3EpKoe223EW+b49RAUgDF+clgcknc/SHBYx66gbXM/9Y1Z8+kI1X2kfp+mkwBf9s
- Qo2qwltjEvtslaR+vMM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=beplannd.click;
- b=EqmqRSAMGTD8WoecMaGphzezjPa9O1LRUKQZM4OzK812WpC8yIV6KarxmWIszYw8vVZk4tWe0vW/
- s4KzJ9ej8vOCzS1dWREZ5OgFlIPWVfzllKrX5Dgp7M5zC5/1yzdiljIxSlHORepvZzeJMlfkC/PQ
- sbwYZYERSN3DAjOzW64=;
-Received: by mail.beplannd.click id hrqrom0001gk for
+ i=final-expense@gearburial.click; 
+ bh=slrJiSIWwjPlioApS9VpaxurnG0=;
+ b=gWEzRZ4KryJiS8d94Xvp4dFUuWqv4B3OS8J7TNf7OGc2R4ymYf98hpLGb0OkkUxDrTCaBvwU8KHk
+ N+nyud/NEl9AiKeXAoSpjHl2g7fu7r/4awNKk508OlVlOHUhlrQCD8ufnhS204qcEeXQZL//9S/j
+ ckscBfwZub2x3EcXKWM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gearburial.click;
+ b=gP78hiodYXNWaOGsRjlmMEEX8m73LWfXizlY0pFi14Buq3urCYTp7Br7EakoVmrA84IZyq/ueXg7
+ +zkNBoJNTN2tEM1uOxNIoHphbREk7xm8NoStWdSNvG4oFcIodgTidTvxhduaiLt14kNBXJTSNNqy
+ z6vAujSKxWLzIP+ktRw=;
+Received: by mail.gearburial.click id hrr0mc0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 4 Feb 2023 14:43:50 -0500 (envelope-from
- <medicare.plan.offers-intel+2Dgvt+2Ddev=lists.freedesktop.org@beplannd.click>)
-Date: Sat, 4 Feb 2023 14:43:50 -0500
-From: "Medicare Plan Offers" <medicare.plan.offers@beplannd.click>
+ Sat, 4 Feb 2023 15:24:55 -0500 (envelope-from
+ <final-expense-intel+2Dgvt+2Ddev=lists.freedesktop.org@gearburial.click>)
+Date: Sat, 4 Feb 2023 15:24:55 -0500
+From: "Final Expense" <final-expense@gearburial.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Need a Plan for Medicare Advantage?
+Subject: Need a Final Expense policy? Compare Great Plans with
+ Burialinsurance.com
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_307_108794529.1675539764268"
-Message-ID: <0.0.0.34.1D938D101337FE4.1B45A9@mail.beplannd.click>
+ boundary="----=_Part_238_1216919532.1675542228066"
+Message-ID: <0.0.0.27.1D938D6BE4B7366.282038@mail.gearburial.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,88 +54,215 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_307_108794529.1675539764268
+------=_Part_238_1216919532.1675542228066
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
  <head> 
-  <meta charset="UTF-8" /> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>offer</title> 
+  <title>w3newbie HTML Email</title> 
+  <style type="text/css">body {
+			Margin: 0;
+			padding: 0;
+			background-color: #f6f9fc;
+		}
+		table {
+			border-spacing: 0;
+		}
+		td {
+			padding: 0;
+		}
+		img {
+			border: 0;
+		}
+		.wrapper {
+			width: 100%;
+			table-layout: fixed;
+			background-color: #f6f9fc;
+			padding-bottom: 40px;
+		}
+		.webkit{
+			max-width: 600px;
+			background-color: #ffffff;
+		}
+		.outer {	
+			Margin: 0 auto; 
+			width: 100%;
+			max-width: 600px;
+			border-spacing: 0;
+			font-family: sans-serif;
+			color: #4a4a4a;
+		}
+		.three-columns {
+			text-align: center;		
+			font-size: 0;
+			line-height: 0; 
+			padding-top: 40px;
+			padding-bottom: 30px;
+		}
+		.three-columns .column {
+			width: 100%;
+			max-width: 200px;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.padding {
+			padding: 15px;
+		}
+		.three-columns .content {
+			font-size: 15px;
+			line-height: 20px;
+		}
+		a {
+			text-decoration: none;
+			color: #388CDA;
+			font-size: 16px;
+		}
+
+		@media screen and (max-width: 600px) {
+			img.third-img-last {
+				width: 200px!important;
+				max-width: 200px!important;
+			}
+			.padding {
+				padding-right: 0!important;
+				padding-left: 0!important;
+			}
+		}
+		@media screen and (max-width: 400px) {
+			img.third-img {
+				width: 200px!important;
+				max-width: 200px!important;
+		}
+	</style> 
  </head> 
- <body style="background-color:rgb(255, 255, 234)"> 
-  <div style="max-width: 600px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #fff; border: solid 1px #000;"> 
-   <header>
-    <a href="http://www.beplannd.click/6dd5W2_395XO8h612s4I962I1168q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQGdeo97ewH1Gx06P@WwMD/definiteness-belting"><img alt="" src="http://d2fyz8uo9d2mzz.cloudfront.net/50664/Secure NF.png" width="100%" /></a>
-   </header> 
-   <section class="rutine"> 
-    <p class="from">&nbsp;</p> 
-    <div class="login">
-     &nbsp;
-    </div> 
-    <table> 
+ <body> 
+  <center class="wrapper"> 
+   <div class="webkit"> 
+    <table align="center" class="outer"> 
      <tbody> 
       <tr> 
+       <td> 
+        <table width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="background-color: #ffffff;padding: 10px;text-align:
+								center;"> 
+            <section> 
+             <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: #8d8d8d; font-size: 28px;">Dear intel-gvt-dev@lists.freedesktop.org</p> 
+            </section> 
+            <header style="max-width: 600px; margin: auto;">
+             <a href="http://www.gearburial.click/frustration-ratifying/7746R23S9y5sU86V12z49X63T1169J36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ8deod6v1hxT06DJwJDk"><img alt="" src="http://www.gearburial.click/horrified-sported/7b04w2395XC7aP11j4965X1169T36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ8deod7G1D0klv6rkAwDB" width="100%" /></a>
+            </header> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
        <td>&nbsp;</td> 
-       <td width="100%">&nbsp;</td> 
-       <td>&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td> 
+        <table style="border-spacing: 0;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="three-columns"> 
+            <table class="column"> 
+             <tbody> 
+              <tr> 
+               <td class="padding"> 
+                <table class="content"> 
+                 <tbody> 
+                  <tr> 
+                   <td>&nbsp;</td> 
+                  </tr> 
+                  <tr> 
+                   <td style="padding: 10px;">&nbsp;</td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table class="column"> 
+             <tbody> 
+              <tr> 
+               <td class="padding"> 
+                <table class="content"> 
+                 <tbody> 
+                  <tr> 
+                   <td>&nbsp;</td> 
+                  </tr> 
+                  <tr> 
+                   <td style="padding: 10px;">&nbsp;</td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table class="column"> 
+             <tbody> 
+              <tr> 
+               <td class="padding"> 
+                <table class="content"> 
+                 <tbody> 
+                  <tr> 
+                   <td>&nbsp;</td> 
+                  </tr> 
+                  <tr> 
+                   <td style="padding: 10px;">&nbsp;</td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td> 
+        <table style="border-spacing: 0;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="background-color: #000000;padding: 15px;text-align:
+								center;">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td style="background-color: #efefef;"> 
+        <table style="border-spacing: 0;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="padding: 20px;text-align: center;padding-bottom: 10px; background-color: #1a363f ;"> <h1 align="center" style="color: #ffffff; font-weight: bold; font-size: 12px; font-family: Montserrat; letter-spacing: 0.02em; font-weight: bold">In order to remove yourself from future messaging from this ad, please <a href="http://www.gearburial.click/20f4l2395C8N6V12w4G964L1169F36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ8deod5dA10K5FJwqD/Britannic-preconditions" style="color: #3498db ;" target="_blank">go here to take you out</a> or write to:<br /> 382 NE 191st Street, Ste 57537<br /> Miami, FL 33179</h1> </td> 
+          </tr> 
+          <tr> 
+           <td align="center" style="padding-bottom: 25px;
+									text-align: center;"> <p>&nbsp;</p> </td> 
+          </tr> 
+          <tr> 
+           <td height="20" style="background-color: #000000;">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
       </tr> 
      </tbody> 
     </table> 
-   </section> 
-   <section class="inf."> 
-    <nav>
-     &nbsp;
-    </nav> 
-    <h1 class="rancio">&nbsp;</h1> 
-    <h2 class="cronolog">&nbsp;</h2> 
-    <h3 class="ram">&nbsp;</h3> 
-    <h3 id="contac_from--ses">&nbsp;</h3> 
-    <h3 id="nomadt--oss">&nbsp;</h3> 
-   </section> 
-  </div> 
-  <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
-   <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;"> 
-    <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-image: url('images/image-8.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;"> 
-     <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
-      <div style="height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
-       <div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
-        <table border="0" cellpadding="0" cellspacing="0" id="u_content_heading_3" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:35px 10px 10px;font-family:helvetica,sans-serif;"> <h1 class="v-font-size" style="margin: 0px; color: #fe9a37; line-height: 140%; text-align: center; word-wrap: break-word; font-family: Federo; font-size: 33px; ">&nbsp;</h1> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table border="0" cellpadding="0" cellspacing="0" id="u_content_text_2" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 60px 60px;font-family:helvetica,sans-serif;"> 
-            <div class="v-font-size" style="line-height: 140%; text-align: center; word-wrap: break-word;"> 
-             <p style="font-size: 14px; line-height: 140%;">&nbsp;</p> 
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> 
-      </div> 
-     </div> 
-    </div> 
    </div> 
-  </div> 
-  <footer style="max-width: 600px; text-align: center; margin: auto; padding-top: 150px;">
-   <span style="font-size:11px;"><span style="font-family:arial,helvetica,sans-serif;">This email is an ad</span></span> 
-   <p>&nbsp;</p> 
-   <p style="max-width:600px;"><span style="font-size:11px; "><span style="font-family:arial,helvetica,sans-serif;">Enrollment in any plan depends on contract renewal.</span></span></p> 
-   <p style="max-width:600px;"><span style="font-size:11px; max-width:600px;"><span style="font-family:arial,helvetica,sans-serif;">MedicarePlan.com is a non-government website operated by Assurance IQ, LLC, a licensed agency that sells Medicare products and does business as Assurance. MedicarePlan.com and Assurance are not affiliated or connected with Medicare, or any other government program or agency. Assurance offers Medicare plans from a number of insurance companies.</span></span></p> 
-   <p style="max-width:600px;"><span style="font-size:11px; max-width:600px;"><span style="font-family:arial,helvetica,sans-serif;">Assurance IQ is a licensed representative of Medicare Advantage HMO, PPO and PPFS organizations and prescription drug plans with a Medicare contract. For a complete list of available plans please contact 1-800- MEDICARE (TTY users should call 1- 877-486-2048), 24 hours a day/7 days a week or consult www.medicare.gov.</span></span></p> 
-   <p style="max-width:600px;"><span style="font-size:11px; max-width:600px;"><span style="font-family:arial,helvetica,sans-serif;">This email was sent on behalf of: MedicarePlan.com, a brand of Assurance IQ, LLC. If you do not wish to receive future marketing messages from Assurance and MedicarePlan.com visit <a href="http://www.beplannd.click/definiteness-belting/de64f2395RH8v611o4960P1168P36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQGdeo95SxG105ITwDk">here</a> to leave, or write to 113 Cherry Street 88030 Seattle, WA 98104-2205.</span></span></p> 
-  </footer>   
- <img src="http://www.beplannd.click/1794g2395oPI8513QB4z961x1168M36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQGdeo97LuIm10O5HylwD/industrial-Smithtown" alt=""/></body>
+  </center> 
+  <div style="position:absolute;bottom: 0;width: 100%;text-align: center;line-height: 40px;font-size: 25px;">
+   &nbsp;
+  </div>   
+ <img src="http://www.gearburial.click/availed-afflictive/4e06Vy2C395j85Bu13z496jv6r1169p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ8deod7v10OnoM5NPkwD" alt=""/></body>
 </html>
 
-------=_Part_307_108794529.1675539764268--
+------=_Part_238_1216919532.1675542228066--
 
