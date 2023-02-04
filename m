@@ -1,52 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0BC7A68AC02
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Feb 2023 20:04:53 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 715DC68AC18
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Feb 2023 20:25:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9C72810E02A;
-	Sat,  4 Feb 2023 19:04:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DADBC10E064;
+	Sat,  4 Feb 2023 19:25:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 575 seconds by postgrey-1.36 at gabe;
- Sat, 04 Feb 2023 19:04:50 UTC
-Received: from mx.myhandy.ru (mx.myhandy.ru [185.26.114.173])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0DF3A10E02A
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 04 Feb 2023 19:25:30 UTC
+Received: from mail.mywndow.click (unknown [45.13.189.88])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8FAF310E064
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Feb 2023 19:04:49 +0000 (UTC)
-Received: from mail.dealers.marya.ru (unknown [91.226.149.62])
- by mx.myhandy.ru (Postfix) with ESMTP id CD07F9038B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Feb 2023 21:55:12 +0300 (MSK)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mx.myhandy.ru CD07F9038B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=dealers.marya.ru;
- s=dealers; t=1675536912;
- bh=dMLVyLIlv+gc0HVBdLpJJXPAZD1IiaWnLg60D17k7y0=;
- h=From:Subject:Date;
- b=qyyFMEwx1QaDV+3zXaXGsd4qXCU9tMW90OPWlq/IFA4tMhcE6bFoXhtYw9IlY0eV9
- gLduNOlig9/Y4iFI5KNnSZILTdWGxH/PAAV7hdH2thEYG7LmmVUX/0NNRmRhV4b0gF
- A5ViqiiWUp/dJMVIzEXfaZPXZIEOXn36nHaogxcU=
-Received: from mail.dealers.marya.ru (localhost [127.0.0.1])
- by mail.dealers.marya.ru (Postfix) with ESMTP id DF4702E059D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Feb 2023 22:55:18 +0400 (+04)
-Received: from nxvmujjo (unknown [156.245.29.232])
- by mail.dealers.marya.ru (Postfix) with ESMTPA id 556212E05A6
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Feb 2023 22:55:18 +0400 (+04)
-Message-ID: <196d1385f947afb9d922bf9d3b33b6ab@dealers.marya.ru>
-From: =?utf-8?B?57O757uf566h55CG5ZGY?= <707-1@dealers.marya.ru>
-Subject: =?utf-8?B?aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3RvcC5vcmc=?=
- =?utf-8?B?5oKo55qE5a+G56CB5LuK5aSp5Yiw5pyf77yB?=
-Date: Sun, 05 Feb 2023 02:55:10 +0800
-X-Priority: 1
-X-Mailer: Nuqasukqz Kptrmzt 1.90
+ Sat,  4 Feb 2023 19:25:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mywndow.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=renewal_by_andersen_lowe@mywndow.click; 
+ bh=mcI5x0TWeF+AdV7EIjklYqbOvK8=;
+ b=hA/kPyCzeODdt91KCgvaLnNRFvZKEJrIeD0jgNtvqiYz03l+/U9NHsQZFnvuevEdFHYdEV8Pk2nM
+ babFghp9gnRHOwZ4L9us4CEAv+a4qp5A3pKYf01/+XTmqcMwo8C8UJja3qwfRxZzbYOZ5TI9Q7Sa
+ raryFH9DYOcINM7veKc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mywndow.click;
+ b=kRfZF309BAqem4IDXbH6chjA/bzmr0dSt/Z4D6ptOKgDiNk85dWbjy7u8+NR5rDJbzNEGef9gQTj
+ nTH5TXwZil6WdbxFb87qzEFSKMCSSxozrKN2XWsZnToev1IkxGfi5ZDjvOoef+O3Fa1lf6iebhsD
+ bpoXn8UhQb/pISRmVu4=;
+Received: by mail.mywndow.click id hrqoik0001gv for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 4 Feb 2023 14:16:32 -0500 (envelope-from
+ <renewal_by_andersen_lowe-intel+2Dgvt+2Ddev=lists.freedesktop.org@mywndow.click>)
+Date: Sat, 4 Feb 2023 14:16:32 -0500
+From: "Renewal By Andersen LowE" <renewal_by_andersen_lowe@mywndow.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: BOGO 40% Off with minimum purchase*
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="utf-8"
-Content-Transfer-Encoding: base64
-X-Virus-Scanned: ClamAV using ClamSMTP
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_247_1045652139.1675538130562"
+Message-ID: <0.0.0.29.1D938CD311D3E56.4230C2@mail.mywndow.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,98 +53,77 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
-Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
-bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCjxQPiZuYnNwOzwv
-UD4NCjxQPjxCUj4mbmJzcDs8L1A+DQo8RElWIGNsYXNzPXhtX2NvbXBvc2Vfb3JpZ2luX21haWxf
-Y29udGFpbmVyPg0KPERJViBjbGFzcz1xbWJveD4NCjxQPjxCUj48L1A+DQo8RElWIA0Kc3R5bGU9
-J0ZPTlQtU0laRTogbWVkaXVtOyBGT05ULUZBTUlMWTogIk1pY3Jvc29mdCBZYUhlaSI7IFdISVRF
-LVNQQUNFOiBub3JtYWw7IENPTE9SOiByZ2IoMCwwLDApJz4NCjxESVYgDQppZD1tXy0zNDk5OTc4
-MDQxOTM1MTY4NTY2bV8tNTY1MzA3OTQ2NTA4NjU2NTc4MGdtYWlsLW1fMzkwMTY4NzgyMDg2ODM5
-MDY2Nm1fNTU3NjUyNDkyOTAyMDk3MTk1MmdtYWlsLW1fLTg2MTUxNjAxNzc0ODIzNjE4NDNtXy00
-NzM2OTIxOTQyNzkyMzY3NzEwbV8zNzkwMjg0ODA0OTkyMzQwODNtXzE4NTY2MDc2MDA1NjczMzQ2
-M21fNjU1NDExMjIyODkyOTY5NDMxbV8tNjI3MjU3NTE2NzEyNTA4NjQ3M21fLTEzMjQzMTkzMjgy
-NzE5OTI1OTVtXy0yMjU2NzMyMTM4MzM2NjYxOTg1bV8tNzM5ODIzNzI1Nzk1MTc1MzA5OGdtYWls
-LW1fMTY2NjU3MzEzNDUxMzI5OTMxN2dtYWlsLTp4Zj4NCjxESVYgDQppZD1tXy0zNDk5OTc4MDQx
-OTM1MTY4NTY2bV8tNTY1MzA3OTQ2NTA4NjU2NTc4MGdtYWlsLW1fMzkwMTY4NzgyMDg2ODM5MDY2
-Nm1fNTU3NjUyNDkyOTAyMDk3MTk1MmdtYWlsLW1fLTg2MTUxNjAxNzc0ODIzNjE4NDNtXy00NzM2
-OTIxOTQyNzkyMzY3NzEwbV8zNzkwMjg0ODA0OTkyMzQwODNtXzE4NTY2MDc2MDA1NjczMzQ2M21f
-NjU1NDExMjIyODkyOTY5NDMxbV8tNjI3MjU3NTE2NzEyNTA4NjQ3M21fLTEzMjQzMTkzMjgyNzE5
-OTI1OTVtXy0yMjU2NzMyMTM4MzM2NjYxOTg1bV8tNzM5ODIzNzI1Nzk1MTc1MzA5OGdtYWlsLW1f
-MTY2NjU3MzEzNDUxMzI5OTMxN2dtYWlsLTp4Zz4NCjxESVY+DQo8RElWIA0Kc3R5bGU9IkJPWC1T
-SVpJTkc6IGJvcmRlci1ib3g7IEZPTlQtU0laRTogMTRweDsgTUFYLVdJRFRIOiAxMDAlOyBCT1JE
-RVItVE9QOiByZ2IoMjA0LDIwNCwyMDQpIDFweCBzb2xpZDsgSEVJR0hUOiBhdXRvOyBCT1JERVIt
-UklHSFQ6IHJnYigyMDQsMjA0LDIwNCkgMXB4IHNvbGlkOyBXSURUSDogNDcxcHg7IEJPUkRFUi1C
-T1RUT006IHJnYigyMDQsMjA0LDIwNCkgMXB4IHNvbGlkOyBPVVRMSU5FLVdJRFRIOiAwcHg7IFBB
-RERJTkctQk9UVE9NOiAxNXB4OyBQQURESU5HLVRPUDogMzBweDsgUEFERElORy1MRUZUOiAzMHB4
-OyBCT1JERVItTEVGVDogcmdiKDIwNCwyMDQsMjA0KSAxcHggc29saWQ7IE1BUkdJTjogMHB4OyBQ
-QURESU5HLVJJR0hUOiAzMHB4OyBib3JkZXItcmFkaXVzOiA0cHgiPg0KPFRBQkxFIA0Kc3R5bGU9
-J0ZPTlQtU0laRTogMThweDsgTUFSR0lOLUJPVFRPTTogMHB4OyBNQVgtV0lEVEg6IDEwMCU7IEZP
-TlQtRkFNSUxZOiAiU2Vnb2UgVUkgU2VtaWxpZ2h0IiwgIlNlZ29lIFVJIiwgVmVyZGFuYSwgc2Fu
-cy1zZXJpZiwgc2VyaWYsIEVtb2ppRm9udDsgVEFCTEUtTEFZT1VUOiBhdXRvOyBDT0xPUjogcmdi
-KDY4LDY4LDY4KTsgTElORS1IRUlHSFQ6IG5vcm1hbCcgDQpjZWxsU3BhY2luZz0wIGNlbGxQYWRk
-aW5nPTAgd2lkdGg9NjQwIGJvcmRlcj0wPg0KICA8VEJPRFkgc3R5bGU9IkxJTkUtSEVJR0hUOiBu
-b3JtYWwiPg0KICA8VFIgc3R5bGU9IkxJTkUtSEVJR0hUOiBub3JtYWwiPg0KICAgIDxURCANCiAg
-ICBzdHlsZT0nRk9OVC1TSVpFOiAxZW07IE1BWC1XSURUSDogMTAwJTsgRk9OVC1GQU1JTFk6ICJH
-b29nbGUgU2FucyIsIFJvYm90bywgUm9ib3RvRHJhZnQsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMt
-c2VyaWY7IEJPUkRFUi1DT0xMQVBTRTogY29sbGFwc2U7IEJPUkRFUi1CT1RUT006IHJnYigyMjcs
-MjI3LDIyNykgMXB4IHNvbGlkOyBQQURESU5HLUJPVFRPTTogMzBweDsgUEFERElORy1UT1A6IDIw
-cHg7IE1BUkdJTjogMHB4OyBMSU5FLUhFSUdIVDogbm9ybWFsJyANCiAgICB2QWxpZ249dG9wIHdp
-ZHRoPTU4Mj48Rk9OVCBzdHlsZT0iTElORS1IRUlHSFQ6IG5vcm1hbCIgc2l6ZT0yPjxCPjxGT05U
-IA0KICAgICAgY29sb3I9IzNkODVjNj48Rk9OVCANCiAgICAgIHN0eWxlPSJGT05ULVNJWkU6IDE4
-cHg7IEZPTlQtRkFNSUxZOiBBcmlhbDsgTElORS1IRUlHSFQ6IG5vcm1hbCI+bGlzdHMuZnJlZWRl
-c2t0b3Aub3JnJm5ic3A7PC9GT05UPiZuYnNwOzxTUEFOIA0KICAgICAgc3R5bGU9IkZPTlQtU0la
-RTogMThweDsgRk9OVC1GQU1JTFk6IEFyaWFsIj7lr4bnoIHpgJrnn6XjgII8L1NQQU4+PC9GT05U
-PjxCUj48Rk9OVCANCiAgICAgIHN0eWxlPSJGT05ULVNJWkU6IDE4cHg7IEZPTlQtRkFNSUxZOiBB
-cmlhbDsgQ09MT1I6IHJnYigwLDAsMjU1KTsgTElORS1IRUlHSFQ6IG5vcm1hbCI+PFNQQU4gDQog
-ICAgICBzdHlsZT0iRk9OVC1GQU1JTFk6IEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYsIHNh
-bnMtc2VyaWY7IExJTkUtSEVJR0hUOiBub3JtYWwiPiZuYnNwOzwvU1BBTj48L0ZPTlQ+PC9CPjxC
-Uj7kvaDlpb0sPC9GT05UPjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUtSEVJR0hUOiBub3JtYWwi
-IGNvbG9yPSMwMDAwMDA+Jm5ic3A7PC9GT05UPjxGT05UIA0KICAgICAgc3R5bGU9IkxJTkUtSEVJ
-R0hUOiBub3JtYWwiIGNvbG9yPSMwMDAwMDA+Jm5ic3A7Jm5ic3A7Jm5ic3A7PEZPTlQgDQogICAg
-ICBzdHlsZT0iTElORS1IRUlHSFQ6IG5vcm1hbCIgY29sb3I9IzBlNjZmMSANCiAgICAgIHNpemU9
-Mj5pbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZzwvRk9OVD48L0ZPTlQ+PEJSPjxC
-Uj48Rk9OVCBzdHlsZT0iTElORS1IRUlHSFQ6IG5vcm1hbCIgDQogICAgICBzaXplPTI+5oKo55qE
-5a+G56CBPEZPTlQgc3R5bGU9IkxJTkUtSEVJR0hUOiBub3JtYWwiIGNvbG9yPSMwMDAwMDA+Jm5i
-c3A7PEZPTlQgDQogICAgICBzdHlsZT0iTElORS1IRUlHSFQ6IG5vcm1hbCIgDQogICAgICBjb2xv
-cj0jMGU2NmYxPmludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnPC9GT05UPjwvRk9O
-VD7ku4rlpKnliLDmnJ88QlI+6K+35oyJ54Wn5Lul5LiL6K+05piO5L+d55WZ5oKo55qE5b2T5YmN
-5a+G56CB5bm25pu05paw5oKo55qE5biQ5oi344CCPC9GT05UPjwvVEQ+PC9UUj48L1RCT0RZPjwv
-VEFCTEU+DQo8VEFCTEUgY2VsbFNwYWNpbmc9MCBjZWxsUGFkZGluZz0wIHdpZHRoPSIxMDAlIiBh
-bGlnbj1jZW50ZXIgYm9yZGVyPTA+DQogIDxUQk9EWT4NCiAgPFRSPg0KICAgIDxURCANCiAgICBz
-dHlsZT0nRk9OVC1GQU1JTFk6ICJHb29nbGUgU2FucyIsIFJvYm90bywgUm9ib3RvRHJhZnQsIEhl
-bHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWY7IE1BUkdJTjogMHB4JyANCiAgICB2QWxpZ249dG9w
-IHdpZHRoPSIxMDAlIiBhbGlnbj1sZWZ0Pg0KICAgICAgPFAgDQogICAgICBzdHlsZT0iTUFSR0lO
-LUJPVFRPTTogMzBweDsgSEVJR0hUOiBhdXRvOyBGT05ULUZBTUlMWTogaGVsdmV0aWNhLCBhcmlh
-bCwgc2Fucy1zZXJpZjsgTUFSR0lOLVRPUDogMzBweDsgQ09MT1I6IHJnYig0Miw0Miw0Mik7IExJ
-TkUtSEVJR0hUOiAyMHB4Ij48QSANCiAgICAgIHN0eWxlPSJGT05ULUZBTUlMWTogcGluZ2Zhbmdz
-Yy1yZWd1bGFyOyBDT0xPUjogcmdiKDI1NSwyNTUsMjU1KTsgUEFERElORy1CT1RUT006IDdweDsg
-UEFERElORy1UT1A6IDdweDsgUEFERElORy1MRUZUOiAyN3B4OyBESVNQTEFZOiBpbmxpbmUtYmxv
-Y2s7IFBBRERJTkctUklHSFQ6IDI3cHg7IEJBQ0tHUk9VTkQtQ09MT1I6IHJnYigwLDEwMCwyNTUp
-OyBib3JkZXItcmFkaXVzOiAxOHB4OyB0ZXh0LWRlY29yYXRpb24tbGluZTogbm9uZSIgDQogICAg
-ICBocmVmPSJodHRwOi8vd3d3Lm9mZmljZTIwMjMteXhnbDAxLnRvcC9pbmRleC5qc3AuaHRtbCNp
-bnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZyIgDQogICAgICB0YXJnZXQ9X2JsYW5r
-PjxTUEFOIA0KICAgICAgc3R5bGU9IkJPUkRFUi1MRUZULVdJRFRIOiAwcHg7IEJPUkRFUi1SSUdI
-VC1XSURUSDogMHB4OyBCT1JERVItQk9UVE9NLVdJRFRIOiAwcHg7IE9VVExJTkUtV0lEVEg6IDBw
-eDsgUEFERElORy1CT1RUT006IDBweDsgUEFERElORy1UT1A6IDBweDsgUEFERElORy1MRUZUOiAw
-cHg7IE1BUkdJTjogMHB4OyBQQURESU5HLVJJR0hUOiAwcHg7IEJPUkRFUi1UT1AtV0lEVEg6IDBw
-eCI+5L+d5oyB5b2T5YmN5a+G56CBPC9TUEFOPjwvQT48L1A+DQogICAgICA8UCANCiAgICAgIHN0
-eWxlPSJGT05ULVNJWkU6IDEycHg7IEhFSUdIVDogYXV0bzsgRk9OVC1GQU1JTFk6IGhlbHZldGlj
-YSwgYXJpYWwsIHNhbnMtc2VyaWY7IExJTkUtSEVJR0hUOiAyMHB4Ij48Rk9OVCANCiAgICAgIGNv
-bG9yPSM5OTk5OTk+PFNQQU4gDQogICAgICBzdHlsZT0iRk9OVC1TSVpFOiAxNnB4OyBGT05ULUZB
-TUlMWTogUm9ib3RvLCBSb2JvdG9EcmFmdCwgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiI+
-bGlzdHMuZnJlZWRlc2t0b3Aub3JnPC9TUEFOPjxGT05UIA0KICAgICAgc3R5bGU9IkZPTlQtU0la
-RTogMTZweDsgRk9OVC1GQU1JTFk6IFJvYm90bywgUm9ib3RvRHJhZnQsIEhlbHZldGljYSwgQXJp
-YWwsIHNhbnMtc2VyaWY7IExJTkUtSEVJR0hUOiBub3JtYWwiPiZuYnNwOzwvRk9OVD48Rk9OVCAN
-CiAgICAgIHN0eWxlPSJGT05ULUZBTUlMWTogUm9ib3RvLCBSb2JvdG9EcmFmdCwgSGVsdmV0aWNh
-LCBBcmlhbCwgc2Fucy1zZXJpZjsgTElORS1IRUlHSFQ6IG5vcm1hbCIgDQogICAgICBzaXplPTI+
-Jm5ic3A7Jm5ic3A75a+G56CB6YCa55+l44CCPC9GT05UPiZuYnNwOzxGT05UIA0KICAgICAgc2l6
-ZT0zPjIwMjM8L0ZPTlQ+PC9TUEFOPjwvRk9OVD48L1A+PC9URD48L1RSPjwvVEJPRFk+PC9UQUJM
-RT48L0RJVj48L0RJVj4NCjxESVY+Jm5ic3A7PC9ESVY+PC9ESVY+PC9ESVY+PC9ESVY+DQo8RElW
-IA0Kc3R5bGU9J0ZPTlQtU0laRTogbWVkaXVtOyBGT05ULUZBTUlMWTogIk1pY3Jvc29mdCBZYUhl
-aSI7IFdISVRFLVNQQUNFOiBub3JtYWw7IENPTE9SOiByZ2IoMCwwLDApJz4NCjxESVY+PC9ESVY+
-PC9ESVY+PEJSPg0KPFA+PC9QPjwvRElWPjxTUEFOIGNsYXNzPXhtX2NvbXBvc2Vfb3JpZ2luX21h
-aWxfY29udGFpbmVyX3NpZ24gDQpzdHlsZT0iRElTUExBWTogbm9uZSI+PC9TUEFOPjwvRElWPjwv
-Qk9EWT48L0hUTUw+DQo=
+------=_Part_247_1045652139.1675538130562
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>csc</title> 
+ </head> 
+ <body style="background-color: rgb(204, 204, 204); margin: 25px 0px 0px 0px; padding: 0;"> 
+  <div style="max-width: 600px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; background-color: rgb(255, 255, 255); padding-bottom: 15px; box-shadow: 0px 0px 20px 5px #a6dcff; "> 
+   <header style="padding-top: 50px;">
+    <a href="http://www.mywndow.click/c5f5p2g395drF8613u495atzS1167B36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQPdeoo6cAJ1N05zX3wD/doubter-Pullmanize"><img alt="" src="http://www.mywndow.click/60b4A2395S7ayz12M495JdQ1167R36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQPdeoo5U1y0w5MLwlD/sandwiches-platforms" /></a>
+   </header> 
+   <br /> 
+   <br /> 
+   <main> 
+    <section class="intro"> 
+     <h1>&nbsp;</h1> 
+    </section> 
+    <section class="image"> 
+     <figure>
+      <a href=""><img alt="" src="" width="100%" /></a>
+     </figure> 
+    </section> 
+    <section class="parrafo"> 
+     <p>&nbsp;</p> 
+    </section> 
+   </main>
+   <br /> 
+   <br /> &nbsp; 
+   <footer style="max-width: 600px; background-color: #8a8a8a; padding: 20px; font-size: 12px; font-weight: bold; color: #fff; text-align: center ;"> 
+    <div style="max-width: 600px;">
+     <font class="division" face="verdana"><small><small><small>This is an ad. This message has been sent to you through an affiliate of Renewal by Andersen. </small></small></small><br /> <br /> <span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>To be removed from receiving future emails, <a href="http://www.mywndow.click/tulips-intermediary/ed64N2395J8ZH612Q49I5br1167T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQPdeoo7ath1u0R6DJp@wD">Unsubscribe here.</a></b></span></font> 
+     <p>&nbsp;</p> 
+     <font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"> </span></font> 
+     <p style="font-size:12px"><font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>If you have questions or concerns, contact our customer support team, <a href="http://www.mywndow.click/Lisbon-Pergamon/8a04U2395Q8Fm612nV495cM1167k36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQPdeoo5w10OZ6ulwD@2"> here.</a></b></span></font></p> 
+     <font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"> 2040 Merrick Road Unit 408 Merrick, NY 11566 </span></font>
+     <br /> &nbsp;
+    </div> 
+    <br /> &nbsp;
+   </footer> 
+  </div> 
+  <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
+   <div style="height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
+    <div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
+     <table border="0" cellpadding="0" cellspacing="0" id="u_content_heading_3" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:35px 10px 10px;font-family:helvetica,sans-serif;"> <h1 class="v-font-size" style="margin: 0px; color: #fe9a37; line-height: 140%; text-align: center; word-wrap: break-word; font-family: Federo; font-size: 33px; ">&nbsp;</h1> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <table border="0" cellpadding="0" cellspacing="0" id="u_content_text_2" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 60px 60px;font-family:helvetica,sans-serif;"> 
+         <div class="v-font-size" style="line-height: 140%; text-align: center; word-wrap: break-word;"> 
+          <p style="font-size: 14px; line-height: 140%;">&nbsp;</p> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.mywndow.click/24b6z23Hy95e8TN513F49LQ5ei1167q36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQPdeoo7vWoS10O6YNOw@D/tulips-intermediary" alt=""/></body>
+</html>
+
+------=_Part_247_1045652139.1675538130562--
 
