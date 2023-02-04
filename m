@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 715DC68AC18
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Feb 2023 20:25:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8515068AC26
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Feb 2023 20:52:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DADBC10E064;
-	Sat,  4 Feb 2023 19:25:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 343F410E02A;
+	Sat,  4 Feb 2023 19:52:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sat, 04 Feb 2023 19:25:30 UTC
-Received: from mail.mywndow.click (unknown [45.13.189.88])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8FAF310E064
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Sat, 04 Feb 2023 19:52:42 UTC
+Received: from mail.beplannd.click (unknown [45.13.189.100])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EC2CC10E043
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Feb 2023 19:25:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mywndow.click;
+ Sat,  4 Feb 2023 19:52:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=beplannd.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=renewal_by_andersen_lowe@mywndow.click; 
- bh=mcI5x0TWeF+AdV7EIjklYqbOvK8=;
- b=hA/kPyCzeODdt91KCgvaLnNRFvZKEJrIeD0jgNtvqiYz03l+/U9NHsQZFnvuevEdFHYdEV8Pk2nM
- babFghp9gnRHOwZ4L9us4CEAv+a4qp5A3pKYf01/+XTmqcMwo8C8UJja3qwfRxZzbYOZ5TI9Q7Sa
- raryFH9DYOcINM7veKc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mywndow.click;
- b=kRfZF309BAqem4IDXbH6chjA/bzmr0dSt/Z4D6ptOKgDiNk85dWbjy7u8+NR5rDJbzNEGef9gQTj
- nTH5TXwZil6WdbxFb87qzEFSKMCSSxozrKN2XWsZnToev1IkxGfi5ZDjvOoef+O3Fa1lf6iebhsD
- bpoXn8UhQb/pISRmVu4=;
-Received: by mail.mywndow.click id hrqoik0001gv for
+ i=medicare.plan.offers@beplannd.click; 
+ bh=XBw6ggojnvPau0MKxAI9GhfXA6Q=;
+ b=jXCzLyM0mI79q5fcnoMI2bAztHsuLZulIrp7d7AYQAvQW9ywc5s9KqFgNVBWdumBSAwJ0EKRgWpY
+ /ah80vd3fFCF3EpKoe223EW+b49RAUgDF+clgcknc/SHBYx66gbXM/9Y1Z8+kI1X2kfp+mkwBf9s
+ Qo2qwltjEvtslaR+vMM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=beplannd.click;
+ b=EqmqRSAMGTD8WoecMaGphzezjPa9O1LRUKQZM4OzK812WpC8yIV6KarxmWIszYw8vVZk4tWe0vW/
+ s4KzJ9ej8vOCzS1dWREZ5OgFlIPWVfzllKrX5Dgp7M5zC5/1yzdiljIxSlHORepvZzeJMlfkC/PQ
+ sbwYZYERSN3DAjOzW64=;
+Received: by mail.beplannd.click id hrqrom0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 4 Feb 2023 14:16:32 -0500 (envelope-from
- <renewal_by_andersen_lowe-intel+2Dgvt+2Ddev=lists.freedesktop.org@mywndow.click>)
-Date: Sat, 4 Feb 2023 14:16:32 -0500
-From: "Renewal By Andersen LowE" <renewal_by_andersen_lowe@mywndow.click>
+ Sat, 4 Feb 2023 14:43:50 -0500 (envelope-from
+ <medicare.plan.offers-intel+2Dgvt+2Ddev=lists.freedesktop.org@beplannd.click>)
+Date: Sat, 4 Feb 2023 14:43:50 -0500
+From: "Medicare Plan Offers" <medicare.plan.offers@beplannd.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: BOGO 40% Off with minimum purchase*
+Subject: Need a Plan for Medicare Advantage?
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_247_1045652139.1675538130562"
-Message-ID: <0.0.0.29.1D938CD311D3E56.4230C2@mail.mywndow.click>
+ boundary="----=_Part_307_108794529.1675539764268"
+Message-ID: <0.0.0.34.1D938D101337FE4.1B45A9@mail.beplannd.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_247_1045652139.1675538130562
+------=_Part_307_108794529.1675539764268
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,67 +63,78 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>csc</title> 
+  <title>offer</title> 
  </head> 
- <body style="background-color: rgb(204, 204, 204); margin: 25px 0px 0px 0px; padding: 0;"> 
-  <div style="max-width: 600px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; background-color: rgb(255, 255, 255); padding-bottom: 15px; box-shadow: 0px 0px 20px 5px #a6dcff; "> 
-   <header style="padding-top: 50px;">
-    <a href="http://www.mywndow.click/c5f5p2g395drF8613u495atzS1167B36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQPdeoo6cAJ1N05zX3wD/doubter-Pullmanize"><img alt="" src="http://www.mywndow.click/60b4A2395S7ayz12M495JdQ1167R36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQPdeoo5U1y0w5MLwlD/sandwiches-platforms" /></a>
+ <body style="background-color:rgb(255, 255, 234)"> 
+  <div style="max-width: 600px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #fff; border: solid 1px #000;"> 
+   <header>
+    <a href="http://www.beplannd.click/6dd5W2_395XO8h612s4I962I1168q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQGdeo97ewH1Gx06P@WwMD/definiteness-belting"><img alt="" src="http://d2fyz8uo9d2mzz.cloudfront.net/50664/Secure NF.png" width="100%" /></a>
    </header> 
-   <br /> 
-   <br /> 
-   <main> 
-    <section class="intro"> 
-     <h1>&nbsp;</h1> 
-    </section> 
-    <section class="image"> 
-     <figure>
-      <a href=""><img alt="" src="" width="100%" /></a>
-     </figure> 
-    </section> 
-    <section class="parrafo"> 
-     <p>&nbsp;</p> 
-    </section> 
-   </main>
-   <br /> 
-   <br /> &nbsp; 
-   <footer style="max-width: 600px; background-color: #8a8a8a; padding: 20px; font-size: 12px; font-weight: bold; color: #fff; text-align: center ;"> 
-    <div style="max-width: 600px;">
-     <font class="division" face="verdana"><small><small><small>This is an ad. This message has been sent to you through an affiliate of Renewal by Andersen. </small></small></small><br /> <br /> <span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>To be removed from receiving future emails, <a href="http://www.mywndow.click/tulips-intermediary/ed64N2395J8ZH612Q49I5br1167T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQPdeoo7ath1u0R6DJp@wD">Unsubscribe here.</a></b></span></font> 
-     <p>&nbsp;</p> 
-     <font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"> </span></font> 
-     <p style="font-size:12px"><font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>If you have questions or concerns, contact our customer support team, <a href="http://www.mywndow.click/Lisbon-Pergamon/8a04U2395Q8Fm612nV495cM1167k36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQPdeoo5w10OZ6ulwD@2"> here.</a></b></span></font></p> 
-     <font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"> 2040 Merrick Road Unit 408 Merrick, NY 11566 </span></font>
-     <br /> &nbsp;
+   <section class="rutine"> 
+    <p class="from">&nbsp;</p> 
+    <div class="login">
+     &nbsp;
     </div> 
-    <br /> &nbsp;
-   </footer> 
+    <table> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td width="100%">&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </section> 
+   <section class="inf."> 
+    <nav>
+     &nbsp;
+    </nav> 
+    <h1 class="rancio">&nbsp;</h1> 
+    <h2 class="cronolog">&nbsp;</h2> 
+    <h3 class="ram">&nbsp;</h3> 
+    <h3 id="contac_from--ses">&nbsp;</h3> 
+    <h3 id="nomadt--oss">&nbsp;</h3> 
+   </section> 
   </div> 
-  <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
-   <div style="height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
-    <div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
-     <table border="0" cellpadding="0" cellspacing="0" id="u_content_heading_3" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:35px 10px 10px;font-family:helvetica,sans-serif;"> <h1 class="v-font-size" style="margin: 0px; color: #fe9a37; line-height: 140%; text-align: center; word-wrap: break-word; font-family: Federo; font-size: 33px; ">&nbsp;</h1> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <table border="0" cellpadding="0" cellspacing="0" id="u_content_text_2" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 60px 60px;font-family:helvetica,sans-serif;"> 
-         <div class="v-font-size" style="line-height: 140%; text-align: center; word-wrap: break-word;"> 
-          <p style="font-size: 14px; line-height: 140%;">&nbsp;</p> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
+  <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
+   <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;"> 
+    <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-image: url('images/image-8.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;"> 
+     <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
+      <div style="height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
+       <div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
+        <table border="0" cellpadding="0" cellspacing="0" id="u_content_heading_3" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:35px 10px 10px;font-family:helvetica,sans-serif;"> <h1 class="v-font-size" style="margin: 0px; color: #fe9a37; line-height: 140%; text-align: center; word-wrap: break-word; font-family: Federo; font-size: 33px; ">&nbsp;</h1> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table border="0" cellpadding="0" cellspacing="0" id="u_content_text_2" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 60px 60px;font-family:helvetica,sans-serif;"> 
+            <div class="v-font-size" style="line-height: 140%; text-align: center; word-wrap: break-word;"> 
+             <p style="font-size: 14px; line-height: 140%;">&nbsp;</p> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
+      </div> 
+     </div> 
     </div> 
    </div> 
-  </div>   
- <img src="http://www.mywndow.click/24b6z23Hy95e8TN513F49LQ5ei1167q36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQPdeoo7vWoS10O6YNOw@D/tulips-intermediary" alt=""/></body>
+  </div> 
+  <footer style="max-width: 600px; text-align: center; margin: auto; padding-top: 150px;">
+   <span style="font-size:11px;"><span style="font-family:arial,helvetica,sans-serif;">This email is an ad</span></span> 
+   <p>&nbsp;</p> 
+   <p style="max-width:600px;"><span style="font-size:11px; "><span style="font-family:arial,helvetica,sans-serif;">Enrollment in any plan depends on contract renewal.</span></span></p> 
+   <p style="max-width:600px;"><span style="font-size:11px; max-width:600px;"><span style="font-family:arial,helvetica,sans-serif;">MedicarePlan.com is a non-government website operated by Assurance IQ, LLC, a licensed agency that sells Medicare products and does business as Assurance. MedicarePlan.com and Assurance are not affiliated or connected with Medicare, or any other government program or agency. Assurance offers Medicare plans from a number of insurance companies.</span></span></p> 
+   <p style="max-width:600px;"><span style="font-size:11px; max-width:600px;"><span style="font-family:arial,helvetica,sans-serif;">Assurance IQ is a licensed representative of Medicare Advantage HMO, PPO and PPFS organizations and prescription drug plans with a Medicare contract. For a complete list of available plans please contact 1-800- MEDICARE (TTY users should call 1- 877-486-2048), 24 hours a day/7 days a week or consult www.medicare.gov.</span></span></p> 
+   <p style="max-width:600px;"><span style="font-size:11px; max-width:600px;"><span style="font-family:arial,helvetica,sans-serif;">This email was sent on behalf of: MedicarePlan.com, a brand of Assurance IQ, LLC. If you do not wish to receive future marketing messages from Assurance and MedicarePlan.com visit <a href="http://www.beplannd.click/definiteness-belting/de64f2395RH8v611o4960P1168P36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQGdeo95SxG105ITwDk">here</a> to leave, or write to 113 Cherry Street 88030 Seattle, WA 98104-2205.</span></span></p> 
+  </footer>   
+ <img src="http://www.beplannd.click/1794g2395oPI8513QB4z961x1168M36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQGdeo97LuIm10O5HylwD/industrial-Smithtown" alt=""/></body>
 </html>
 
-------=_Part_247_1045652139.1675538130562--
+------=_Part_307_108794529.1675539764268--
 
