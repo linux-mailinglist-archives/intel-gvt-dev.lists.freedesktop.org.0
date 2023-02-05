@@ -1,39 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE49468ADB7
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Feb 2023 01:59:09 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BA4F68B134
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Feb 2023 19:22:53 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0AB7C10E0E0;
-	Sun,  5 Feb 2023 00:59:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 244A810E071;
+	Sun,  5 Feb 2023 18:22:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 2298 seconds by postgrey-1.36 at gabe;
- Sun, 05 Feb 2023 00:59:04 UTC
-Received: from mail.peterfykh.hu (mail.peterfykh.hu [84.206.67.96])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8BE9B10E0E0
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sun, 05 Feb 2023 18:22:50 UTC
+Received: from mail.betimed.click (unknown [45.13.189.92])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EA08910E071
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  5 Feb 2023 00:59:04 +0000 (UTC)
-Received: from mail.peterfykh.hu (localhost [127.0.0.1])
- by mail.peterfykh.hu (Postfix) with ESMTP id 6ACC5F4B;
- Sun,  5 Feb 2023 01:09:25 +0100 (CET)
+ Sun,  5 Feb 2023 18:22:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=betimed.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=seniortimesharerelief.com@betimed.click; 
+ bh=btCCmReRs0Q+lXGXPR1R0mgdVuk=;
+ b=L9eBgASaufo4F2Frj8TvJNcHagzUGpCqwkfaZftF0s1LMss3rrW+UHqNCzJXHLs4s7YGTcXhQum9
+ Z7v7XJPOERiA73sc4CycTVeC7MmJaaLxnLP49sMSchhu5/kinslAXyIAd3VtkNpF6nmWz5Hx7JjR
+ MZ02N6vnTDmFMOAb2qY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=betimed.click;
+ b=lFNlDwpCdlaTNDWMMRyKJeZlVEw8N8NZqNSzBDGOm4e9wZnUvoVJg2fzl243rXH2hgsDv3SnpaXL
+ nQRiAo7nYaFKF4F7IeYjmMkr8Xj40Aa66K9xVye9npqXCHBcIIok9+bdovrSD2PM0yKgTRtUTjPt
+ /74O9z+GwKPYsCOCTwo=;
+Received: by mail.betimed.click id hrvpvm0001gk for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 5 Feb 2023 13:14:36 -0500 (envelope-from
+ <seniortimesharerelief.com-intel+2Dgvt+2Ddev=lists.freedesktop.org@betimed.click>)
+Date: Sun, 5 Feb 2023 13:14:36 -0500
+From: SeniorTimeshareRelief.com <seniortimesharerelief.com@betimed.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Best way to get rid of your Timeshare
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Sun, 05 Feb 2023 01:09:25 +0100
-From: Charles <elek.istvan@peterfykh.hu>
-To: undisclosed-recipients:;
-Subject: HELLO FRIEND,
-Mail-Reply-To: Charlesjackson@bahnhof.se
-Message-ID: <e6d8e0e77d05fa5658356f8d82e718e4@peterfykh.hu>
-X-Sender: elek.istvan@peterfykh.hu
-User-Agent: Roundcube Webmail/1.2.3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=peterfykh.hu; s=mail;
- t=1675555774; bh=xFQxpecJ64xR9jfcZve/pf+WqMs+BVpyxd2NpxFs7mo=;
- h=MIME-Version:Content-Type:Content-Transfer-Encoding:Date:From:To:Subject:Reply-To:Message-ID;
- b=hxSMLBU+ewyUPHWwAYAqYwFZ4zFRRkzbX0xwj++huWy4pCestYuJhJ+LHMHAzlZGbRDaNq3xiQmUP/VHYOXvFAdI2DjzIC+Zhr5UPOODPg4Kh4aS5lHc9r0n/1UexTclSRK42Pc7QygezY/gYcoy0T4PuQzM9M8zm5pNPAD6Mlg=
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_256_532292379.1675620827996"
+Message-ID: <0.0.0.29.1D9398DB451111A.43500@mail.betimed.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -46,34 +50,57 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Charlesjackson@bahnhof.se
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear Sir/Ma,
+------=_Part_256_532292379.1675620827996
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>time share</title> 
+ </head> 
+ <body style="margin: 0; padding: 0;"> 
+  <div style="padding: 25px; background-color: #f9ffff;"> 
+   <div style="max-width: 600px; margin: auto; background-color: #f9ffff;"> 
+    <header> 
+     <h1 id="hspeck">&nbsp;</h1> 
+     <div>
+      <span class="img_noob"><a href="http://www.betimed.click/b156n23Wv95C8tS611J4974D116cP36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ6deoS6hSP1K06zU0pwD/formalisms-injective" target="_blank"><img alt="" src="http://www.betimed.click/ya75p2m395tX7pa13D497qF6F116cD36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ6deoS6rwI1U05E1wDL/vocational-ideologically" style="outline: double 4px #000;" width="100%" /> </a> </span>
+     </div> 
+    </header> 
+    <section> 
+     <p id="opps_call">&nbsp;</p> 
+     <ul style="list-style-type: none;"> 
+      <li>&nbsp;</li> 
+     </ul> 
+     <p>&nbsp;</p> 
+     <h4 style="padding: 150px; text-align: center; font-size: medium; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">&nbsp;</h4> 
+     <p style="font-size: 12px;">&nbsp;</p> 
+     <p style="font-weight: 400;">&nbsp;</p> 
+     <p style="display: block;">&nbsp;</p> 
+     <nav style="font-size: small;">
+      &nbsp;
+     </nav> 
+    </section> 
+    <section id="contact_from"> 
+     <p input="" name="ogg" type="text" value="">&nbsp;</p> 
+     <p input="" name="dss" type="text" value="">&nbsp;</p> 
+     <p input="" name="alg" type="text" value="">&nbsp;</p> 
+     <p input="" name="ioss" type="text" value="">&nbsp;</p> 
+    </section> 
+   </div> 
+  </div> 
+  <footer style="text-align: center; background-color: #d0ffd9; font-weight: bold; padding-bottom: 45px; outline: solid 3px #000;"> 
+   <address><font color="#000000"><span style="font-family: Arial, Verdana; font-size: 11px">&nbsp;&nbsp;<br /> <a href="http://www.betimed.click/Mussolinis-dueling/9184A2395MD86I12S49X75w116ct36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ6deoS5vK10V5qJ3wD" target="_blank">Click here</a> if you no longer want to receive email promotions from SeniorTimeshareRelief.com<br /> &nbsp;<br /> SeniorTimeshareRelief.com<br /> 1060 Woodcock Rd Ste 128 PMB 62867<br /> Orlando, Florida 32803-3607 US</span></font></address> 
+  </footer>   
+ <img src="http://www.betimed.click/b335j2A395LD85j12P4977BG116cL36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ6deoS5c10uk5L@wJD/barricade-drovers" alt=""/></body>
+</html>
 
-I am Mr. Charles W. Jackson Jr., the mega winner of $344.6 Million in 
-the
-Mega Millions Jackpot, I am donating to 5 random individuals if you get
-this email then your email was selected after a spin ball. I have spread
-most of my wealth over a number of charities and organizations. I have
-voluntarily decided to donate the sum of $3 Million USD to you as one of
-the selected 5. To verify my winnings via the YouTube page below.
+------=_Part_256_532292379.1675620827996--
 
-
-WATCH ME HERE: https://www.youtube.com/watch?v=0MUR8QEIMQI
-
-
-THIS IS YOUR DONATION CODE: DON201992
-
-
-Reply with the DONATION CODE to my private email : 
-charlesjacksonj1@gmail.com
-
-
-Hope to make you and your family happy.
-
-
-Regards,
-Mr. Charles W. Jackson Jr.
