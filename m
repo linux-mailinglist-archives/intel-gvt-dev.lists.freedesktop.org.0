@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF6B168B192
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Feb 2023 21:25:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3866968B1AE
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Feb 2023 21:53:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 50B7C10E021;
-	Sun,  5 Feb 2023 20:25:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E8A6610E0C2;
+	Sun,  5 Feb 2023 20:53:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 05 Feb 2023 20:25:26 UTC
-Received: from mail.perkssen.click (unknown [45.13.189.135])
- by gabe.freedesktop.org (Postfix) with ESMTP id EC53C10E021
+ Sun, 05 Feb 2023 20:53:02 UTC
+Received: from mail.goalcnvas.click (unknown [45.13.189.147])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EA9B810E0C2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  5 Feb 2023 20:25:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=perkssen.click; 
+ Sun,  5 Feb 2023 20:53:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=goalcnvas.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=myseniorperks@perkssen.click; 
- bh=//rKg5W1BDf09X9CXEXfpQvAKo8=;
- b=cZ2jupC8DGUmgKQqGEYqDYVHalZ7aeH6H9B+Xb8rItLF6HivjRmZDYpI9TrYqnJHlV2ft92P+hva
- Ac5TBq98iqDUTfv8jMJz/OjFAEwLUEzNJpmmC+g2AMB09XOm2cQEY6wEmFsQLu1S6Khnv/EvQw29
- f0HmEPAEs6IN2rPLTjQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=perkssen.click;
- b=TkXglYpJC7hhOq73dKV8tcvP39SZGFDiCDvuOlCE8mWgWWm2IGWxsYD+05pTCrTOnx+FCL0wN8IN
- Ama4rT11Cy9f5H7ZxCFlfiu1o4+gskzlQAfVX/EYnSlMeVy4sBsW5VBPuUO+3s3yNKzVmKjzz0lG
- gAM9OANzqIhewqpknHE=;
-Received: by mail.perkssen.click id hs08be0001gh for
+ i=canvas-prints-promotion@goalcnvas.click; 
+ bh=P9ZUowfVP7WU8aB0+7MusfcczRg=;
+ b=clj5RV5Rjtq8D2Ohvg44DTpa3maVFLSRz5qgfn154mKCDPFYkGb11kko2qxzSJs9E+2I/u03+w3M
+ O2juRSgNIt5sR0G44PmIA85aBDkZaBcrcH2MJaY422eSrNUjw7d/A1zNmr/Rz5nvEcJd92GPaMjU
+ YSqwXNfZyR5fA1jwE/8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=goalcnvas.click;
+ b=lNM8qj+BkuwOMtvV6mOcyBHdb82lv2H5B/qLvMw6vh/bv7aKJWFILm04YMAbs1cTnoGaQOrYe1j8
+ 3G5yG6/Ul/jm4TOHDLLY8m4hgVPXTaQlR0qtq7PhOFMTv03Mo+OREcsqmgV4UFlGlakS7FGIT2+4
+ f5IJ/FMlP+RxJNl0Goo=;
+Received: by mail.goalcnvas.click id hs0biu0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 5 Feb 2023 15:17:18 -0500 (envelope-from
- <myseniorperks-intel+2Dgvt+2Ddev=lists.freedesktop.org@perkssen.click>)
-Date: Sun, 5 Feb 2023 15:17:18 -0500
-From: MySeniorPerks <myseniorperks@perkssen.click>
+ Sun, 5 Feb 2023 15:44:38 -0500 (envelope-from
+ <canvas-prints-promotion-intel+2Dgvt+2Ddev=lists.freedesktop.org@goalcnvas.click>)
+Date: Sun, 5 Feb 2023 15:44:38 -0500
+From: "Canvas Prints Promotion" <canvas-prints-promotion@goalcnvas.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: New Limited Time WINTER Offer! Renewal by Andersen scores you $200
- off with minimum purchase!*
+Subject: Decorate your home with this Canvas Sale! 11x14 Custom Canvas for
+ $9.99
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_304_1191832390.1675628179739"
-Message-ID: <0.0.0.32.1D9399ED8B3783E.A263C@mail.perkssen.click>
+ boundary="----=_Part_205_3697346.1675629811936"
+Message-ID: <0.0.0.23.1D939A2AA316D96.2A90BE@mail.goalcnvas.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_304_1191832390.1675628179739
+------=_Part_205_3697346.1675629811936
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,56 +64,65 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Senior</title> 
+  <title>easy</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <div style="background-color: azure; padding: 35px;"> 
-   <div style="max-width: 600px; margin: auto; background-color: rgb(255, 255, 255); box-shadow: #ffc8c8 0px 0px 20px 5px;"> 
-    <header>
-     <a href="http://www.perkssen.click/3d16O2j3k95A8i6R13d4A98g5M116fq36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQHde9m7qCys10C5ULXwD/maple-loath" target="_blank"><img alt="" src="http://www.perkssen.click/c5f5V239R5n7jGa12d4R988q116fH36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQHde9m5zP1X05XMwDN/alive-survived" width="100%" /></a>
-    </header> 
-    <section> 
-     <h1 class="senior">&nbsp;</h1> 
-     <h2 class="pek">&nbsp;</h2> 
-     <p class="inv">&nbsp;</p> 
-     <div id="impu-type">
-      &nbsp;
-     </div> 
-     <div id="lovery">
-      &nbsp;
-     </div> 
+ <body style="margin: 0; padding: 0; background-color: #C2C6C7 ;"> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <header>
+    &nbsp;
+   </header> 
+   <div style="background-color: #C2C6C7; width: 100%;">
+    <br /> 
+    <br /> &nbsp; 
+    <section style="background-color: #C2C6C7;">
+     <a href="http://www.goalcnvas.click/mucker-inexperience/3965O239m5I8t6i13w49Y8alR1170T36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQUde9n7BJM1v0t5gL0wD" target="_blank"><img alt="" src="http://www.goalcnvas.click/15b5bq2395NMy7a11I498dV1170Z36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQUde9n6Sz10_o6g3wDOW/immature-attender" style="border: solid 2px #000" width="100%" /></a>
     </section> 
-    <section>
-     <br /> 
-     <br /> 
-     <br /> &nbsp; 
-     <table border="0.5px" style="border-collapse: collapse;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td style="background-color: brown; display: block; width: 25%; margin: auto;">&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td style="padding: 15px;">&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td style="background-color: brown; display: block; width: 40%; margin: auto;">&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td style="padding: 15px;">&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td style="background-color: brown; display: block; width: 50%; margin: auto;">&nbsp;</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </section> 
-    <footer> 
-     <address> <p align="center" class="dress" id="slogan">If you'd prefer not to receive future messages, <a href="http://www.perkssen.click/rudely-ballgown/1984i2395i8F6m11S4986P116fi36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQHde9m6DKW10t6w@TwBD"><font color="#666666">leave Here</font></a>.</p> <p align="center" class="accept" id="elegant"><a href="http://www.perkssen.click/radar-punctuation/53a5FK2395Sj8W611a4987m116fU36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQHde9m5O1Jy05okUwD"><font color="#666666">My Senior Perks</font></a> | 302 Washington St #150-7835 San Diego, CA 92103</p> <br /> <br /> &nbsp; <p class="sweep" id="piece">&nbsp;</p> </address> 
-    </footer> 
    </div> 
+   <table border="0px" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td> <p class="idma_colpe" style="padding: 25px;">&nbsp;</p> </td> 
+     </tr> 
+     <tr> 
+      <td id="Ipo_nomadpit" style="padding: 30px; margin: auto;">&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <section> 
+    <div class="resb">
+     &nbsp;
+    </div> 
+    <p id="nnsxt">&nbsp;</p> 
+    <ul style="display: inline; list-style-type: none; "> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+    </ul> 
+    <p>&nbsp;</p> 
+    <div class="ipstt" style="height: auto ;">
+     &nbsp;
+    </div> 
+   </section> 
+   <footer style="padding: 5px 0px 25px; background-color: #1A5070; width: 100%; color: #fff;; border: double 2.5px #000;"> 
+    <address style="font-size: 12px;"> <p align="center" class="lemon" id="shortage" style="font-size: 10px; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'">&nbsp;If you do not wish to receive future messages click here to <span class="unstyle-auto-detected-links"><a href="http://www.goalcnvas.click/emanate-bidirectional/8be5E23y95wyl8612H49A8bC1170h36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQUde9n5U1Y0u6azNOwD" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">get me out</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.goalcnvas.click/31d6S2Z3C95cyg8611X498cY1170R36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQUde9n5s1jZ05ELlwD/greases-baptizes" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Easy Canvas Prints</a>&nbsp;|&nbsp; 11525
+ a Stonehollow Dr #100 | Austin, TX 78758</span></p> </address> 
+   </footer> 
   </div>   
- <img src="http://www.perkssen.click/maple-loath/62a4k2395UZI8512A49H89N116fQ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQHde9m6iA1mx05sTwDA" alt=""/></body>
+ <img src="http://www.goalcnvas.click/thwarted-channel/bac6zZR2395Yg8z512zN498eC1170o36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQUde9n6E1ZK0p5pUw1D" alt=""/></body>
 </html>
 
-------=_Part_304_1191832390.1675628179739--
+------=_Part_205_3697346.1675629811936--
 
