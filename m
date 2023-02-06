@@ -1,51 +1,92 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06E6A68B81D
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Feb 2023 10:06:14 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3166B68C014
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Feb 2023 15:30:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C563610E351;
-	Mon,  6 Feb 2023 09:06:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A73A510E3FD;
+	Mon,  6 Feb 2023 14:30:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 97EB110E34E;
- Mon,  6 Feb 2023 09:06:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1675674369; x=1707210369;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=Kfq1KWsqadwVkhGpvsyOo0sMmifI+THGHlmz6hNva9U=;
- b=OoExqJubugfXmVw+LUjuEWAewL8uMzsTaTfO6O5s3C87Hd2nN4SGCVh6
- QPmQFxNoS+E/G9hj/QMUE8vnsJJ/nzT01uPEQjUyWWENdGL4R6q1frXHN
- vZsMg5MMdNcxIgtWtZt8r5lJcoEFcdTJ9peRMxUePuY9zq1lBo+IrmzkL
- JqKvDeca5szknSVPxQtYy0r8Zb8mdjyYOChm3lblGYpVLCEDE+nf22ffG
- Nu8z9F9fo/erD3KqrIV+7RtVXf1f+NT3AesMcEc4VZRKh/2uM+agMdLFY
- NTUQcvl6BP02EyoDsZPHD38Ik5X5nngJB3pncA+g+FGFediQ+JRbxTqNN A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10612"; a="309495947"
-X-IronPort-AV: E=Sophos;i="5.97,276,1669104000"; d="scan'208";a="309495947"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Feb 2023 01:06:09 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10612"; a="911862885"
-X-IronPort-AV: E=Sophos;i="5.97,276,1669104000"; d="scan'208";a="911862885"
-Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga006.fm.intel.com with ESMTP; 06 Feb 2023 01:06:08 -0800
-From: Yi Liu <yi.l.liu@intel.com>
-To: alex.williamson@redhat.com,
-	jgg@nvidia.com,
-	kevin.tian@intel.com
-Subject: [PATCH v2 14/14] vfio: Compile group optionally
-Date: Mon,  6 Feb 2023 01:05:32 -0800
-Message-Id: <20230206090532.95598-15-yi.l.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230206090532.95598-1-yi.l.liu@intel.com>
-References: <20230206090532.95598-1-yi.l.liu@intel.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E993B10E3AA;
+ Mon,  6 Feb 2023 14:30:37 +0000 (UTC)
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 316Dqegl027235; Mon, 6 Feb 2023 14:30:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=Xmlhwlv8rTLONN0h2XOQ+YzPsB8oOSdEijMjpmTq+IU=;
+ b=b/uAGfP226KnCYpZPQJjuRgy8l5SKoWy0DqYVC6UWJuxGIgpC2kBcFk5J3ehD8ewcN9I
+ cAaKSSgFUB0l5hTuwGkDU6kSpwcCsHueMTQY+yA+76seDX0Yfna7wJC0jIl6Ry1af5gf
+ yABh5dO+hyFz7pUR6x0S7Sgqb8Fg11kOW9W4DLhWtEGlm6xLXRAKu5z4jiy1TNY4qeHe
+ M9XdQVSEcdbANQKSfh+QflocP8A/b5ljxUAN0GnEhVSygt4uH1YUIsK3ajtpgNT/s6ze
+ UAw01HptdDPMYdUm9zuggEKQ2nMuU8b/hso4aZ9zD0MowarkEug0vD8GkrdA++XXexpK Qw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3nk2tbhcsp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 06 Feb 2023 14:30:24 +0000
+Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 316EPxC2007225;
+ Mon, 6 Feb 2023 14:30:23 GMT
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
+ [169.55.91.170])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3nk2tbhcrm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 06 Feb 2023 14:30:23 +0000
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+ by ppma02wdc.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 316C5AQJ027767;
+ Mon, 6 Feb 2023 14:30:22 GMT
+Received: from smtprelay01.wdc07v.mail.ibm.com ([9.208.129.119])
+ by ppma02wdc.us.ibm.com (PPS) with ESMTPS id 3nhf07k4hr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 06 Feb 2023 14:30:22 +0000
+Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com
+ [10.39.53.229])
+ by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 316EUK6631654544
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 6 Feb 2023 14:30:20 GMT
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8A7BB58059;
+ Mon,  6 Feb 2023 14:30:20 +0000 (GMT)
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 261CC5805D;
+ Mon,  6 Feb 2023 14:30:18 +0000 (GMT)
+Received: from [9.65.214.209] (unknown [9.65.214.209])
+ by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Mon,  6 Feb 2023 14:30:18 +0000 (GMT)
+Message-ID: <c5e32a7c-707c-d646-db1e-c1f0124c05a3@linux.ibm.com>
+Date: Mon, 6 Feb 2023 09:30:17 -0500
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCH v4 1/2] vfio: fix deadlock between group lock and kvm lock
+Content-Language: en-US
+To: Matthew Rosato <mjrosato@linux.ibm.com>, alex.williamson@redhat.com,
+ pbonzini@redhat.com, yi.l.liu@intel.com, jgg@nvidia.com
+References: <20230203215027.151988-1-mjrosato@linux.ibm.com>
+ <20230203215027.151988-2-mjrosato@linux.ibm.com>
+From: Anthony Krowiak <akrowiak@linux.ibm.com>
+In-Reply-To: <20230203215027.151988-2-mjrosato@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: ovFxLcZ9j84kNjr3bREE05JEc3DIUxfB
+X-Proofpoint-GUID: iFuVjfRUGoERPpPhtA3RZ3j8FOmGGoHu
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.219,Aquarius:18.0.930,Hydra:6.0.562,FMLib:17.11.122.1
+ definitions=2023-02-06_07,2023-02-06_03,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 impostorscore=0
+ mlxlogscore=999 lowpriorityscore=0 adultscore=0 malwarescore=0
+ suspectscore=0 mlxscore=0 priorityscore=1501 clxscore=1015 phishscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2212070000 definitions=main-2302060121
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,209 +99,305 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
- kvm@vger.kernel.org, mjrosato@linux.ibm.com, jasowang@redhat.com,
- cohuck@redhat.com, linux-kernel@vger.kernel.org, peterx@redhat.com,
- eric.auger@redhat.com, nicolinc@nvidia.com,
- shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- chao.p.peng@linux.intel.com, lulu@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
+Cc: jjherne@linux.ibm.com, linux-s390@vger.kernel.org, farman@linux.ibm.com,
+ borntraeger@linux.ibm.com, frankja@linux.ibm.com, pmorel@linux.ibm.com,
+ david@redhat.com, seanjc@google.com, intel-gfx@lists.freedesktop.org,
+ cohuck@redhat.com, kevin.tian@intel.com, zhenyuw@linux.intel.com,
+ linux-kernel@vger.kernel.org, pasic@linux.ibm.com, kvm@vger.kernel.org,
+ imbrenda@linux.ibm.com, intel-gvt-dev@lists.freedesktop.org,
+ zhi.a.wang@intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-group code is not needed for vfio device cdev, so with vfio device cdev
-introduced, the group infrastructures can be compiled out if only cdev
-is needed.
+Tested-by: Tony Krowiak <akrowiak@linux.ibm.com>
 
-Signed-off-by: Yi Liu <yi.l.liu@intel.com>
----
- drivers/vfio/Kconfig  | 18 +++++++++++
- drivers/vfio/Makefile |  2 +-
- drivers/vfio/vfio.h   | 69 +++++++++++++++++++++++++++++++++++++++++++
- include/linux/vfio.h  | 11 +++++++
- 4 files changed, 99 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/vfio/Kconfig b/drivers/vfio/Kconfig
-index 0476abf154f2..de0fedcdf4d6 100644
---- a/drivers/vfio/Kconfig
-+++ b/drivers/vfio/Kconfig
-@@ -15,6 +15,7 @@ if VFIO
- config VFIO_DEVICE_CDEV
- 	bool "Support for the VFIO cdev /dev/vfio/devices/vfioX"
- 	depends on IOMMUFD
-+	default !VFIO_GROUP
- 	help
- 	  The VFIO device cdev is another way for userspace to get device
- 	  access. Userspace gets device fd by opening device cdev under
-@@ -23,9 +24,26 @@ config VFIO_DEVICE_CDEV
- 
- 	  If you don't know what to do here, say N.
- 
-+config VFIO_ENABLE_GROUP
-+	bool
-+	default !VFIO_DEVICE_CDEV
-+
-+config VFIO_GROUP
-+	bool "Support for the VFIO group /dev/vfio/$group_id"
-+	select VFIO_ENABLE_GROUP
-+	default y
-+	help
-+	   VFIO group is legacy interface for userspace. For userspaces
-+	   adapted to iommufd and vfio device cdev, this can be N. For
-+	   now, before iommufd is ready and userspace applications fully
-+	   converted to iommufd and vfio device cdev, this should be Y.
-+
-+	   If you don't know what to do here, say Y.
-+
- config VFIO_CONTAINER
- 	bool "Support for the VFIO container /dev/vfio/vfio"
- 	select VFIO_IOMMU_TYPE1 if MMU && (X86 || S390 || ARM || ARM64)
-+	depends on VFIO_ENABLE_GROUP
- 	default y
- 	help
- 	  The VFIO container is the classic interface to VFIO for establishing
-diff --git a/drivers/vfio/Makefile b/drivers/vfio/Makefile
-index 245394aeb94b..4e81c3bbed30 100644
---- a/drivers/vfio/Makefile
-+++ b/drivers/vfio/Makefile
-@@ -2,9 +2,9 @@
- obj-$(CONFIG_VFIO) += vfio.o
- 
- vfio-y += vfio_main.o \
--	  group.o \
- 	  iova_bitmap.o
- vfio-$(CONFIG_VFIO_DEVICE_CDEV) += device_cdev.o
-+vfio-$(CONFIG_VFIO_ENABLE_GROUP) += group.o
- vfio-$(CONFIG_IOMMUFD) += iommufd.o
- vfio-$(CONFIG_VFIO_CONTAINER) += container.o
- vfio-$(CONFIG_VFIO_VIRQFD) += virqfd.o
-diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-index 8a290c1455e1..9f823cfff7be 100644
---- a/drivers/vfio/vfio.h
-+++ b/drivers/vfio/vfio.h
-@@ -62,6 +62,7 @@ enum vfio_group_type {
- 	VFIO_NO_IOMMU,
- };
- 
-+#if IS_ENABLED(CONFIG_VFIO_ENABLE_GROUP)
- struct vfio_group {
- 	struct device 			dev;
- 	struct cdev			cdev;
-@@ -105,6 +106,74 @@ bool vfio_group_has_dev(struct vfio_group *group, struct vfio_device *device);
- bool vfio_device_has_container(struct vfio_device *device);
- int __init vfio_group_init(void);
- void vfio_group_cleanup(void);
-+#else
-+struct vfio_group;
-+
-+static inline int vfio_device_set_group(struct vfio_device *device,
-+					enum vfio_group_type type)
-+{
-+	return 0;
-+}
-+
-+static inline void vfio_device_remove_group(struct vfio_device *device)
-+{
-+}
-+
-+static inline void vfio_device_group_register(struct vfio_device *device)
-+{
-+}
-+
-+static inline void vfio_device_group_unregister(struct vfio_device *device)
-+{
-+}
-+
-+static inline int vfio_device_group_use_iommu(struct vfio_device *device)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+static inline void vfio_device_group_unuse_iommu(struct vfio_device *device)
-+{
-+}
-+
-+static inline void vfio_device_group_close(struct vfio_device_file *df)
-+{
-+}
-+
-+static inline struct vfio_group *vfio_group_from_file(struct file *file)
-+{
-+	return NULL;
-+}
-+
-+static inline bool vfio_group_enforced_coherent(struct vfio_group *group)
-+{
-+	return true;
-+}
-+
-+static inline void vfio_group_set_kvm(struct vfio_group *group, struct kvm *kvm)
-+{
-+}
-+
-+static inline bool vfio_group_has_dev(struct vfio_group *group,
-+				      struct vfio_device *device)
-+{
-+	return false;
-+}
-+
-+static inline bool vfio_device_has_container(struct vfio_device *device)
-+{
-+	return false;
-+}
-+
-+static inline int __init vfio_group_init(void)
-+{
-+	return 0;
-+}
-+
-+static inline void vfio_group_cleanup(void)
-+{
-+}
-+#endif /* CONFIG_VFIO_ENABLE_GROUP */
- 
- #if IS_ENABLED(CONFIG_VFIO_CONTAINER)
- /* events for the backend driver notify callback */
-diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index fd4bf9c21ffe..4c7666f8c5da 100644
---- a/include/linux/vfio.h
-+++ b/include/linux/vfio.h
-@@ -43,7 +43,9 @@ struct vfio_device {
- 	 */
- 	const struct vfio_migration_ops *mig_ops;
- 	const struct vfio_log_ops *log_ops;
-+#if IS_ENABLED(CONFIG_VFIO_ENABLE_GROUP)
- 	struct vfio_group *group;
-+#endif
- 	struct vfio_device_set *dev_set;
- 	struct list_head dev_set_list;
- 	unsigned int migration_flags;
-@@ -56,8 +58,10 @@ struct vfio_device {
- 	refcount_t refcount;	/* user count on registered device*/
- 	unsigned int open_count;
- 	struct completion comp;
-+#if IS_ENABLED(CONFIG_VFIO_ENABLE_GROUP)
- 	struct list_head group_next;
- 	struct list_head iommu_entry;
-+#endif
- 	struct iommufd_access *iommufd_access;
- 	void (*put_kvm)(struct kvm *kvm);
- #if IS_ENABLED(CONFIG_IOMMUFD)
-@@ -255,7 +259,14 @@ int vfio_mig_get_next_state(struct vfio_device *device,
- /*
-  * External user API
-  */
-+#if IS_ENABLED(CONFIG_VFIO_ENABLE_GROUP)
- struct iommu_group *vfio_file_iommu_group(struct file *file);
-+#else
-+static inline struct iommu_group *vfio_file_iommu_group(struct file *file)
-+{
-+	return NULL;
-+}
-+#endif
- bool vfio_file_is_valid(struct file *file);
- bool vfio_file_enforced_coherent(struct file *file);
- void vfio_file_set_kvm(struct file *file, struct kvm *kvm);
--- 
-2.34.1
-
+On 2/3/23 4:50 PM, Matthew Rosato wrote:
+> After 51cdc8bc120e, we have another deadlock scenario between the
+> kvm->lock and the vfio group_lock with two different codepaths acquiring
+> the locks in different order.  Specifically in vfio_open_device, vfio
+> holds the vfio group_lock when issuing device->ops->open_device but some
+> drivers (like vfio-ap) need to acquire kvm->lock during their open_device
+> routine;  Meanwhile, kvm_vfio_release will acquire the kvm->lock first
+> before calling vfio_file_set_kvm which will acquire the vfio group_lock.
+>
+> To resolve this, let's remove the need for the vfio group_lock from the
+> kvm_vfio_release codepath.  This is done by introducing a new spinlock to
+> protect modifications to the vfio group kvm pointer, and acquiring a kvm
+> ref from within vfio while holding this spinlock, with the reference held
+> until the last close for the device in question.
+>
+> Fixes: 51cdc8bc120e ("kvm/vfio: Fix potential deadlock on vfio group_lock")
+> Reported-by: Anthony Krowiak <akrowiak@linux.ibm.com>
+> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> ---
+>   drivers/vfio/group.c     | 44 +++++++++++++++++++++++-----
+>   drivers/vfio/vfio.h      | 15 ++++++++++
+>   drivers/vfio/vfio_main.c | 63 +++++++++++++++++++++++++++++++++++-----
+>   include/linux/vfio.h     |  2 +-
+>   4 files changed, 109 insertions(+), 15 deletions(-)
+>
+> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+> index bb24b2f0271e..98621ac082f0 100644
+> --- a/drivers/vfio/group.c
+> +++ b/drivers/vfio/group.c
+> @@ -154,6 +154,18 @@ static int vfio_group_ioctl_set_container(struct vfio_group *group,
+>   	return ret;
+>   }
+>   
+> +static void vfio_device_group_get_kvm_safe(struct vfio_device *device)
+> +{
+> +	spin_lock(&device->group->kvm_ref_lock);
+> +	if (!device->group->kvm)
+> +		goto unlock;
+> +
+> +	_vfio_device_get_kvm_safe(device, device->group->kvm);
+> +
+> +unlock:
+> +	spin_unlock(&device->group->kvm_ref_lock);
+> +}
+> +
+>   static int vfio_device_group_open(struct vfio_device *device)
+>   {
+>   	int ret;
+> @@ -164,13 +176,23 @@ static int vfio_device_group_open(struct vfio_device *device)
+>   		goto out_unlock;
+>   	}
+>   
+> +	mutex_lock(&device->dev_set->lock);
+> +
+>   	/*
+> -	 * Here we pass the KVM pointer with the group under the lock.  If the
+> -	 * device driver will use it, it must obtain a reference and release it
+> -	 * during close_device.
+> +	 * Before the first device open, get the KVM pointer currently
+> +	 * associated with the group (if there is one) and obtain a reference
+> +	 * now that will be held until the open_count reaches 0 again.  Save
+> +	 * the pointer in the device for use by drivers.
+>   	 */
+> -	ret = vfio_device_open(device, device->group->iommufd,
+> -			       device->group->kvm);
+> +	if (device->open_count == 0)
+> +		vfio_device_group_get_kvm_safe(device);
+> +
+> +	ret = vfio_device_open(device, device->group->iommufd, device->kvm);
+> +
+> +	if (device->open_count == 0)
+> +		vfio_device_put_kvm(device);
+> +
+> +	mutex_unlock(&device->dev_set->lock);
+>   
+>   out_unlock:
+>   	mutex_unlock(&device->group->group_lock);
+> @@ -180,7 +202,14 @@ static int vfio_device_group_open(struct vfio_device *device)
+>   void vfio_device_group_close(struct vfio_device *device)
+>   {
+>   	mutex_lock(&device->group->group_lock);
+> +	mutex_lock(&device->dev_set->lock);
+> +
+>   	vfio_device_close(device, device->group->iommufd);
+> +
+> +	if (device->open_count == 0)
+> +		vfio_device_put_kvm(device);
+> +
+> +	mutex_unlock(&device->dev_set->lock);
+>   	mutex_unlock(&device->group->group_lock);
+>   }
+>   
+> @@ -450,6 +479,7 @@ static struct vfio_group *vfio_group_alloc(struct iommu_group *iommu_group,
+>   
+>   	refcount_set(&group->drivers, 1);
+>   	mutex_init(&group->group_lock);
+> +	spin_lock_init(&group->kvm_ref_lock);
+>   	INIT_LIST_HEAD(&group->device_list);
+>   	mutex_init(&group->device_lock);
+>   	group->iommu_group = iommu_group;
+> @@ -803,9 +833,9 @@ void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
+>   	if (!vfio_file_is_group(file))
+>   		return;
+>   
+> -	mutex_lock(&group->group_lock);
+> +	spin_lock(&group->kvm_ref_lock);
+>   	group->kvm = kvm;
+> -	mutex_unlock(&group->group_lock);
+> +	spin_unlock(&group->kvm_ref_lock);
+>   }
+>   EXPORT_SYMBOL_GPL(vfio_file_set_kvm);
+>   
+> diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+> index f8219a438bfb..24d6cd285945 100644
+> --- a/drivers/vfio/vfio.h
+> +++ b/drivers/vfio/vfio.h
+> @@ -74,6 +74,7 @@ struct vfio_group {
+>   	struct file			*opened_file;
+>   	struct blocking_notifier_head	notifier;
+>   	struct iommufd_ctx		*iommufd;
+> +	spinlock_t			kvm_ref_lock;
+>   };
+>   
+>   int vfio_device_set_group(struct vfio_device *device,
+> @@ -251,4 +252,18 @@ extern bool vfio_noiommu __read_mostly;
+>   enum { vfio_noiommu = false };
+>   #endif
+>   
+> +#ifdef CONFIG_HAVE_KVM
+> +void _vfio_device_get_kvm_safe(struct vfio_device *device, struct kvm *kvm);
+> +void vfio_device_put_kvm(struct vfio_device *device);
+> +#else
+> +static inline void _vfio_device_get_kvm_safe(struct vfio_device *device,
+> +					     struct kvm *kvm)
+> +{
+> +}
+> +
+> +static inline void vfio_device_put_kvm(struct vfio_device *device)
+> +{
+> +}
+> +#endif
+> +
+>   #endif
+> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> index 5177bb061b17..28c47cd6a6b5 100644
+> --- a/drivers/vfio/vfio_main.c
+> +++ b/drivers/vfio/vfio_main.c
+> @@ -16,6 +16,9 @@
+>   #include <linux/fs.h>
+>   #include <linux/idr.h>
+>   #include <linux/iommu.h>
+> +#ifdef CONFIG_HAVE_KVM
+> +#include <linux/kvm_host.h>
+> +#endif
+>   #include <linux/list.h>
+>   #include <linux/miscdevice.h>
+>   #include <linux/module.h>
+> @@ -338,6 +341,55 @@ void vfio_unregister_group_dev(struct vfio_device *device)
+>   }
+>   EXPORT_SYMBOL_GPL(vfio_unregister_group_dev);
+>   
+> +#ifdef CONFIG_HAVE_KVM
+> +void _vfio_device_get_kvm_safe(struct vfio_device *device, struct kvm *kvm)
+> +{
+> +	void (*pfn)(struct kvm *kvm);
+> +	bool (*fn)(struct kvm *kvm);
+> +	bool ret;
+> +
+> +	lockdep_assert_held(&device->dev_set->lock);
+> +
+> +	pfn = symbol_get(kvm_put_kvm);
+> +	if (WARN_ON(!pfn))
+> +		return;
+> +
+> +	fn = symbol_get(kvm_get_kvm_safe);
+> +	if (WARN_ON(!fn)) {
+> +		symbol_put(kvm_put_kvm);
+> +		return;
+> +	}
+> +
+> +	ret = fn(kvm);
+> +	symbol_put(kvm_get_kvm_safe);
+> +	if (!ret) {
+> +		symbol_put(kvm_put_kvm);
+> +		return;
+> +	}
+> +
+> +	device->put_kvm = pfn;
+> +	device->kvm = kvm;
+> +}
+> +
+> +void vfio_device_put_kvm(struct vfio_device *device)
+> +{
+> +	lockdep_assert_held(&device->dev_set->lock);
+> +
+> +	if (!device->kvm)
+> +		return;
+> +
+> +	if (WARN_ON(!device->put_kvm))
+> +		goto clear;
+> +
+> +	device->put_kvm(device->kvm);
+> +	device->put_kvm = NULL;
+> +	symbol_put(kvm_put_kvm);
+> +
+> +clear:
+> +	device->kvm = NULL;
+> +}
+> +#endif
+> +
+>   /* true if the vfio_device has open_device() called but not close_device() */
+>   static bool vfio_assert_device_open(struct vfio_device *device)
+>   {
+> @@ -361,7 +413,6 @@ static int vfio_device_first_open(struct vfio_device *device,
+>   	if (ret)
+>   		goto err_module_put;
+>   
+> -	device->kvm = kvm;
+>   	if (device->ops->open_device) {
+>   		ret = device->ops->open_device(device);
+>   		if (ret)
+> @@ -370,7 +421,6 @@ static int vfio_device_first_open(struct vfio_device *device,
+>   	return 0;
+>   
+>   err_unuse_iommu:
+> -	device->kvm = NULL;
+>   	if (iommufd)
+>   		vfio_iommufd_unbind(device);
+>   	else
+> @@ -387,7 +437,6 @@ static void vfio_device_last_close(struct vfio_device *device,
+>   
+>   	if (device->ops->close_device)
+>   		device->ops->close_device(device);
+> -	device->kvm = NULL;
+>   	if (iommufd)
+>   		vfio_iommufd_unbind(device);
+>   	else
+> @@ -400,14 +449,14 @@ int vfio_device_open(struct vfio_device *device,
+>   {
+>   	int ret = 0;
+>   
+> -	mutex_lock(&device->dev_set->lock);
+> +	lockdep_assert_held(&device->dev_set->lock);
+> +
+>   	device->open_count++;
+>   	if (device->open_count == 1) {
+>   		ret = vfio_device_first_open(device, iommufd, kvm);
+>   		if (ret)
+>   			device->open_count--;
+>   	}
+> -	mutex_unlock(&device->dev_set->lock);
+>   
+>   	return ret;
+>   }
+> @@ -415,12 +464,12 @@ int vfio_device_open(struct vfio_device *device,
+>   void vfio_device_close(struct vfio_device *device,
+>   		       struct iommufd_ctx *iommufd)
+>   {
+> -	mutex_lock(&device->dev_set->lock);
+> +	lockdep_assert_held(&device->dev_set->lock);
+> +
+>   	vfio_assert_device_open(device);
+>   	if (device->open_count == 1)
+>   		vfio_device_last_close(device, iommufd);
+>   	device->open_count--;
+> -	mutex_unlock(&device->dev_set->lock);
+>   }
+>   
+>   /*
+> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> index 35be78e9ae57..87ff862ff555 100644
+> --- a/include/linux/vfio.h
+> +++ b/include/linux/vfio.h
+> @@ -46,7 +46,6 @@ struct vfio_device {
+>   	struct vfio_device_set *dev_set;
+>   	struct list_head dev_set_list;
+>   	unsigned int migration_flags;
+> -	/* Driver must reference the kvm during open_device or never touch it */
+>   	struct kvm *kvm;
+>   
+>   	/* Members below here are private, not for driver use */
+> @@ -58,6 +57,7 @@ struct vfio_device {
+>   	struct list_head group_next;
+>   	struct list_head iommu_entry;
+>   	struct iommufd_access *iommufd_access;
+> +	void (*put_kvm)(struct kvm *kvm);
+>   #if IS_ENABLED(CONFIG_IOMMUFD)
+>   	struct iommufd_device *iommufd_device;
+>   	struct iommufd_ctx *iommufd_ictx;
