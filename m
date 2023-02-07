@@ -2,42 +2,144 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90FBB68CB5E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Feb 2023 01:44:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D6EC568CD69
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Feb 2023 04:25:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 63DBA10E1B8;
-	Tue,  7 Feb 2023 00:44:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9DA9610E1C0;
+	Tue,  7 Feb 2023 03:25:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 07 Feb 2023 00:44:17 UTC
-Received: from mail.att-nigth.click (unknown [45.13.189.206])
- by gabe.freedesktop.org (Postfix) with ESMTP id 04EE510E1B2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Feb 2023 00:44:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=att-nigth.click; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tmobile-opinion-requested@att-nigth.click; 
- bh=IaVs+Rqu6Z9X6zd45xBlva75mT0=;
- b=UN5l+7ZYliozXLkkYGCm8ok4PvnhRvcsjaVluZeCdwrdddwPeuoDTihV1HI7puK/C+s8Rm0PMIDI
- mmmUeOJpMJJOeApOT4Hk4UBhMRHbgG9YJLe6YfaGiWHXDSb147AmM0wNamcxW2XCET56ngWx48P/
- AbkvJPA1OGtQK3ksXdI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=att-nigth.click;
- b=khrK5W0Vw4MdcU3UEeLo2ok0NssCRA/+3hwgB9hRhMIpBa5xjyyrdQC+hYPxfHs1FLCMRvk9uGaX
- gFWPLyT+KBoo8+GIBdtICQ5wGcZe56bSyWzlz/C/+q0KWKmew8VFDrOamS5+aOiXkRS813SR8Cam
- oGwqjnuL94TqKIIrUyY=;
-Received: by mail.att-nigth.click id hs6fe20001gp for
- <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 6 Feb 2023 19:35:54 -0500 (envelope-from
- <tmobile-opinion-requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@att-nigth.click>)
-Date: Mon, 6 Feb 2023 19:35:54 -0500
-From: "TMOBILE Opinion Requested" <tmobile-opinion-requested@att-nigth.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Pick any gift on us, as token of appreciation for your loyalty
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5202F10E2CF;
+ Tue,  7 Feb 2023 03:25:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675740326; x=1707276326;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=QQC31G1P9CUuWBf72odMx82ygK5uvFx3dQ615K3U3wA=;
+ b=Vl7FoXyN+A+ltpne8NSiJi9ZHTXQlrRjGzW42mr+vzs9kXl5Lh2a2U06
+ oRapBCYwBLEAZliKMqPlTXS97kxU08pi5qR8wSgKVgVZw3N1neTv3Of5Y
+ x9VV97MmfRgfjg7kcHd/utbSRdTAc2b2RgzLiCHPv0Al1/IH0hbsgbMM7
+ R8+nK+s84IZukHpRsMkFh4hld+FgdmcxymsvAxu5L7OelSuCTl9DswWjK
+ cF1Rq6bbysXTlbPf36vbE+MOTGPs65on1DQUWz9TaXeBncmDqZnTuWLmN
+ r13ylF7os97o7bqyGsz3KNUOm/FZyx0Roe+n1eB/8hjl9a5wAMlD2hS13 Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10613"; a="356758009"
+X-IronPort-AV: E=Sophos;i="5.97,278,1669104000"; d="scan'208";a="356758009"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2023 19:25:25 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10613"; a="668636739"
+X-IronPort-AV: E=Sophos;i="5.97,278,1669104000"; d="scan'208";a="668636739"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga007.fm.intel.com with ESMTP; 06 Feb 2023 19:25:25 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 6 Feb 2023 19:25:24 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 6 Feb 2023 19:25:24 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Mon, 6 Feb 2023 19:25:24 -0800
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.46) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Mon, 6 Feb 2023 19:25:24 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SQ9ZSd+KzZBHLqkhJRc8G2YsOOnRkRHkLgQCIsX9zfoPSpJ2z0t9wlchmbhfpfo5s/fzTHp3YhUxaeinl77QzLMcz723+wOAn+Ix/p+Li96MMcueeFgrrRHxinZaLnbBVurbp4iDnWeSBYq7RAHM0dQ0giMPoqkDeKtGarqZoRkvK0N2BhJl8i42LY41IeLYEs5nli6b4NRVmR3KFr8vPBSS8BH59ykz1KkwQtcH6EfEI36zwiOP+4lhF4zKIOCjI0IhJpjZsC/22zR5qoZ2NmeYEt03sSCwDtw14BPcoGXNVzE6zofrKJ13cOOqCl3ssQ0c8qPN+fXynwJZ9RE+/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=QQC31G1P9CUuWBf72odMx82ygK5uvFx3dQ615K3U3wA=;
+ b=AoToIqHFmnwQPqYAUHwp0XEzxHiMDXyACXBVvo+DcmhIs4Z0Mi/sr9G+7R7/iKk+0kGpAUkiOeyCihzL23uYYuwLRYODnvJLwr8+5dganVLTcPKwl8NKqfhDkpkcAdEuiP8fwO5Q24g75YW/VDmV6J4u6de5n0Vv4PW53c0t+d4tVaRWXGnFauUBLTA0jwBPIdxWhEI3Ulhidck9/a25/wVXdFJzVX+jFGw9VVJMYYYQCyWwVJirbhAegBgAN+G+kcf0p83yng3TWeZvsipgpXnHjgUXp3xvMtlLwLldleCh7emT+oRWiQ/RFkQApymPKXrtGPVTMmvu1lgSEq5fFw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by SN7PR11MB8041.namprd11.prod.outlook.com (2603:10b6:806:2ec::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6064.17; Tue, 7 Feb
+ 2023 03:25:17 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::6a8d:b95:e1b5:d79d%8]) with mapi id 15.20.6064.034; Tue, 7 Feb 2023
+ 03:25:17 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>
+Subject: RE: [PATCH v2 03/14] vfio: Accept vfio device file in the driver
+ facing kAPI
+Thread-Topic: [PATCH v2 03/14] vfio: Accept vfio device file in the driver
+ facing kAPI
+Thread-Index: AQHZOgo008xv7p4OlUyVdUrCFkzTu67C02xg
+Date: Tue, 7 Feb 2023 03:25:17 +0000
+Message-ID: <BN9PR11MB52766989CAD2B3DDA3B3021D8CDB9@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230206090532.95598-1-yi.l.liu@intel.com>
+ <20230206090532.95598-4-yi.l.liu@intel.com>
+In-Reply-To: <20230206090532.95598-4-yi.l.liu@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SN7PR11MB8041:EE_
+x-ms-office365-filtering-correlation-id: 60597574-06a9-4296-f85f-08db08baef34
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: vl6jgxtMF8HBjB3VBSXyHgL3HYVn44I3KbExJQ1AFz4KeRvF9OqBcS1qGq0bMtVeOdLcIsSHmsDOhYIE/JubFYFqL87qJUtD6THfPhFly6fKkTGwE+DcHll81XR8KK8p/ZRfF01YqNEC6j9H3o7PHYJu7IarvYGnoQ9xQ46T0yI3n35rUkxqGfIZBEkDjgGDy6M/dAa7DoUah8TcOrzzWOjy7WBt7BM8yTVn7Lrx9eWhNFT/0ivKZ2896PbUnQqGul+wlkL7wxO7oEWwSLthhnKM1HbWwFg87QZupA8yyi7IR9+wVi62xbW1n1FVUOrI4CGJV+xdNJr6sch3/+TMXK7XmPSkPaIbJs7ZzyYablxANb+YtW0JwCdJxUKx70OX0MBZpBrsiWctLJcX99bry2RAWqMLxl/loc/gGEkTcwUiTyWFZNaWbQjT0ncBAzHwfgRQXBJ1zTSKxsvxK22itrTF16cO332yo1FqwBR0wT+Ho5Bqpm2RgDnAqaXsbHILvQXsyAR8pUfG0Kg0zeI5kN+sRdvfds2pDxXJ00pJiuN/Ui77jodPQAb7EO4pOIi9Qr65FPkpUwdQLXQkp8oJIwyRJQU2e0WCMaIkwFtK4JPZxOpnQSILIFfNxj6N1N5LtAZoHga9Swx/8TPjP9+8ZPxn3mxV8K2F9337bdfXkjxdbQmDfjA1VU2wzIqN2eLLuxzmAQFi4N45ju9fIOtENQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(39860400002)(346002)(376002)(136003)(396003)(366004)(451199018)(7696005)(26005)(478600001)(186003)(9686003)(71200400001)(6506007)(66556008)(110136005)(8676002)(54906003)(83380400001)(316002)(66446008)(66476007)(64756008)(4326008)(66946007)(76116006)(122000001)(38100700002)(82960400001)(86362001)(2906002)(55016003)(4744005)(52536014)(33656002)(41300700001)(38070700005)(7416002)(8936002)(5660300002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?iUCP1B/nZoZ4CNDaFtOEFBLtcZspezRreHMt4TsydXu9hIN+smORgr/76+RZ?=
+ =?us-ascii?Q?+dQafQpV8Rs67WwC6Ooqz9gwRY9bnu0gjffE9tCyeu5TvPmLRg5CnYq8rjjM?=
+ =?us-ascii?Q?gLHhbcFjvsVPcal5tTGjrWfPiFmhYDh65nzXhxIJYKL0sSeAuc1GL5LrmLZy?=
+ =?us-ascii?Q?xp5ynsyrZThtZ1Ui6xPXfeFbxO+Ij9i7sJkI+RnFuBE2al0HouXxcaqg0tfJ?=
+ =?us-ascii?Q?6iF1R/7LOqaRIppMT5va9JY2zxrcGzzQJbaV0Dz5UzO30xLaSIzi7AqZSvfW?=
+ =?us-ascii?Q?r0JRwvFM5jxpSt5K/kRMejxDA8I6rSyhBBrhorbHgVY5J1XE0aEAZqE/MYll?=
+ =?us-ascii?Q?0eWksFMaW1intxH3c2Oq9yLlSB3v1RbT0eXf6jmBQq3qnFkSeblhBJHP+g41?=
+ =?us-ascii?Q?7Usv8x52nXoob3bVjBtWvwzDUv//g3st0wqVCZZ7p6fJsuMX22DRBVxXE92a?=
+ =?us-ascii?Q?a3cPILRR/ioKatmvCcgTbwytU/A3Jp2CQY7bwRL8kPcHC03TOKQwyV/qtGMT?=
+ =?us-ascii?Q?YqtV6iOMe1QXCnIzcf720pVgOxd5NnKRvnljBDa+tcY1ESvdPcC/7aBofGCK?=
+ =?us-ascii?Q?SJjvCB1yoACUkkIpHhKDWb2OI4t9qxjjpOzk5USbCm+/31/KGAU+Kgmwe9rg?=
+ =?us-ascii?Q?tKqeWiu/pOvUj/WyuwsRB5v3bLtRM37Mxb7+VTjlwfgSDs0CkMGbibPh/CLS?=
+ =?us-ascii?Q?/i0/+klaUvs61CCPskdDThViP8YqdJ0cyKR24bQ8dAad5EJlUy1BxOgUbcZk?=
+ =?us-ascii?Q?wAiBWsbgDTizfLDHEr7vcjORKFCzjolBhZdQTQrZnQy/jLhEt5IrXjk4VJk9?=
+ =?us-ascii?Q?FuF1rCgDP4amlTk0kxQU6mhmg4+0yA3YX7hZukAfJgSlffy5/l8uJ7pkZASZ?=
+ =?us-ascii?Q?xkzfUO1pkKIw4eaV8UR+a0OQSLXAnTWarzSxMqQFBLqSLlBMqNKreCl6z3Gg?=
+ =?us-ascii?Q?LwVVmtSUxXg1lKKZYfGhy5TNWhmE1ZbXrIeGKiY2xK8i5ULBtXExYyenep3P?=
+ =?us-ascii?Q?IBAGYFSzDt0HID1vdYHGG/AJpgwUMYh58H7g84xTYSWC+kouJUX+B/2ESeyR?=
+ =?us-ascii?Q?tsG0c3URgOfcKlpHt8LDqeWbRT5Wirv0XsXgMe3k0ExTozTSVMo97Th3vVHA?=
+ =?us-ascii?Q?sj9K6Mc+UUhua3iPwUSxltMBm5liU1UbuU3+n0TwdLzoFXopYXxGpn9z8BKY?=
+ =?us-ascii?Q?9uxaNDLvpIq4njp+IRBYIJBl58Vhdxb9tDewwJpfPPhh6C7pzecQ5kxvskF6?=
+ =?us-ascii?Q?LAd59kiirEivVUgBG26g6RRHAjf7unKXqdInai+QTvKy37m5OqpMdKdL2NgF?=
+ =?us-ascii?Q?ZeSyi1zADE2EksVtCizF32AiN6rLaWgluCpNozbSvkwZqusB9cAzJ2DUS0U2?=
+ =?us-ascii?Q?9t2nqfvoQwzMkoE2rdYSgZVV8huWFvuwj/Az9rb3BnxzV2tdUupC+sP835E3?=
+ =?us-ascii?Q?c9RLkIBqGy3oL7iqKvsWKz8FM0icR09hrvmw8Gh+R0EUGB0JEOxGUCx4nNsp?=
+ =?us-ascii?Q?PYsNJ2hotDZY9ZZoTzhd4nanbp8HRwylVHCNeMOt/vlE7j6F8DXc77pvTKih?=
+ =?us-ascii?Q?+CWpqD8QFKGd4T7N5CWQ73UyipCkTMt6aRDt34C5?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_151_60324613.1675730140916"
-Message-ID: <0.0.0.18.1D93A8C234D24BA.9B90F@mail.att-nigth.click>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 60597574-06a9-4296-f85f-08db08baef34
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Feb 2023 03:25:17.3066 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qncIhUh1KbWWil1oUj+NhUk9zVrAIYLHb1LjxlPAWMEWlIa2kOuNzndCFRQl5VS4N1gaF+q7351xEvN51ZokFQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB8041
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,385 +152,36 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_151_60324613.1675730140916
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+> From: Liu, Yi L <yi.l.liu@intel.com>
+> Sent: Monday, February 6, 2023 5:05 PM
+>=20
+> This makes the vfio file kAPIs to accepte vfio device files, also a
+> preparation for vfio device cdev support.
+>=20
+> For the kvm set with vfio device file, kvm pointer is stored in struct
+> vfio_device_file, and use kvm_ref_lock to protect kvm set and kvm
+> pointer usage within VFIO. This kvm pointer will be set to vfio_device
+> after device file is bound to iommufd in the cdev path.
+>=20
+> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
- <head> 
-  <title>2</title> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <meta content="width=device-width, initial-scale=1" name="viewport" /> 
-  <style type="text/css">#outlook a { padding:0; }
-      body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
-      table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
-      img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
-      p { display:block;margin:13px 0; }
-	</style> 
-  <link href="http://www.att-nigth.click/4df4H2395c8LS613zkB49b8j1178h36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQNde9K7GLwN1m06SlB3wD/transplants-stilling" rel="stylesheet" type="text/css" /> 
-  <style type="text/css">@import url(http://www.att-nigth.click/4df4H2395c8LS613zkB49b8j1178h36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQNde9K7GLwN1m06SlB3wD/transplants-stilling);
-	</style> 
-  <style type="text/css">@media only screen and (min-width:480px) {
-    .mj-column-per-100 { width:100% !important; max-width: 100%; }
-  }
-	</style> 
-  <style type="text/css">@media only screen and (max-width:480px) {
-  table.mj-full-width-mobile { width: 100% !important; }
-  td.mj-full-width-mobile { width: auto !important; }
-}
-	</style> 
- </head> 
- <body style="word-spacing:normal;background-color:#eeeeee;"> 
-  <div style="max-width: 600px; margin: auto; padding: 30px;"> 
-   <center style="background-color: #ffffff; padding-top: 45px;"> 
-    <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">T-Mobile</h1> 
-    <article style="background-color: #ffffff;"> 
-     <section> 
-      <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 30px; padding: 20px; background-color: #3b111f; color: #fff;">Get closer to a $100 T-Mobile Gift<br /> Card With Just a Few Clicks!</p> 
-      <p><a href="http://www.att-nigth.click/42b6P2T39p5v_8O613EC49b9YS1178T36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQNde9K5MLG105Sy2wD/envisioning-nightingale"><img alt="" src="http://www.att-nigth.click/2ff6e2Gn395m7yia13nJ4i9bbC1178K36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQNde9K6qOh10l6kq1qwD/oblong-comfortabilities" width="100%" /></a></p> 
-      <div style="padding: 20px; line-height: 30px; font-size: 24px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-       Tell us how we' re doing and get a $100 gift card to T-Mobile and upgrade your mobile service!
-       <br /> 
-       <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us.       </div> 
-      <br /> &nbsp;
-     </section> 
-     <section> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:170px;line-height:100%;"> 
-       <tbody> 
-        <tr> 
-         <td align="center" bgcolor="#3498DB" role="presentation" style="border:none;border-radius:5px;cursor:auto;height:45px;mso-padding-alt:10px 25px;background:#BC2B5C;" valign="middle"> <p style="display:inline-block;width:180px;background:#BC2B5C;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:14px;font-weight: bold ;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:5px;"><a href="http://www.att-nigth.click/42b6P2T39p5v_8O613EC49b9YS1178T36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQNde9K5MLG105Sy2wD/envisioning-nightingale" style="text-decoration: none; color: #fff;">Go And Start Now </a></p> </td> 
-        </tr> 
-        <tr> 
-         <td> 
-          <section> 
-           <aside>
-            <br /> 
-            <br /> 
-            <br /> 
-            <br /> 
-            <br /> 
-            <br /> 
-            <br /> 
-            <br /> &nbsp; 
-            <p><a href="http://www.att-nigth.click/42b6P2T39p5v_8O613EC49b9YS1178T36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQNde9K5MLG105Sy2wD/envisioning-nightingale" style="text-decoration: none; color: #000;"><img alt="" src="http://www.att-nigth.click/lowly-patio/d8c6r23JB95w7laV11j49bcu1178m36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQNde9K5zj10H5hz@wD" width="100%" /></a></p> 
-            <p style="padding-left: 18px;">We Appreciate Your Opinion</p> 
-           </aside> 
-          </section> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-     </section> 
-    </article> 
-   </center> 
-   <div style="background-color:#ffffff;"> 
-    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"> 
-      <tbody> 
-       <tr> 
-        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-               <tbody> 
-                <tr> 
-                 <td style="width:550px;">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"> 
-      <tbody> 
-       <tr> 
-        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:30px;font-weight:bold;line-height:1;text-align:center;color:#555555;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:17px;line-height:1;text-align:center;color:#555555;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> <p style="border-top:solid 0px #cccccc;font-size:1px;margin:0px auto;width:100%;">&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"> 
-      <tbody> 
-       <tr> 
-        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:28px;line-height:1;text-align:left;color:#555555;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1;text-align:left;color:#555555;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> <p style="border-top:solid0px #cccccc;font-size:1px;margin:0px auto;width:100%;">&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"> 
-      <tbody> 
-       <tr> 
-        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:28px;line-height:1;text-align:left;color:#555555;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1;text-align:left;color:#555555;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:190px;line-height:100%;"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> <p style="border-top:solid 0px #cccccc;font-size:1px;margin:0px auto;width:100%;">&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"> 
-      <tbody> 
-       <tr> 
-        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:28px;line-height:1;text-align:left;color:#555555;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1;text-align:left;color:#555555;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;" vertical-align="middle"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:100%;line-height:100%;"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-    <div style="background:#1ABC9C;background-color:#1ABC9C;margin:0px auto;max-width:600px;"> 
-     <div style="font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif';font-size:12px;font-weight:400;line-height:24px;text-align:center;color:#FFFFFF; background-color: #B82C5B; font-weight: bold; padding: 15px"> 
-      <p><span style="text-decoration: none; ">To bring email to an close,</span><a href="http://www.att-nigth.click/bc94j2395rvx8612f4U9baN1178O36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQNde9K5qFr105VqTwD/Paulson-keeps" style="text-decoration-line: none; color: white"> <span>Go-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big></big><font size="heartiness"></font><style title="radios"></style><font></font><font size="dioxide"><style class="diffusion"><font dir="unwound"></style></font></font><big></big></p> 
-     </div> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#1ABC9C;background-color:#1ABC9C;width:100%;"> 
-      <tbody> 
-       <tr> 
-        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:18px;line-height:1;text-align:center;color:#ffffff;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-    <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;background-color:#ffffff;width:100%;"> 
-      <tbody> 
-       <tr> 
-        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;"> 
-         <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#979797;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:4px;vertical-align:middle;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;border-radius:3px;width:48px;"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="font-size:0;height:48px;vertical-align:middle;width:48px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:4px;vertical-align:middle;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;border-radius:3px;width:48px;"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="font-size:0;height:48px;vertical-align:middle;width:48px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:4px;vertical-align:middle;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;border-radius:3px;width:48px;"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="font-size:0;height:48px;vertical-align:middle;width:48px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:4px;vertical-align:middle;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;border-radius:3px;width:48px;"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="font-size:0;height:48px;vertical-align:middle;width:48px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;"> 
-               <tbody> 
-                <tr> 
-                 <td style="padding:4px;vertical-align:middle;"> 
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#ffffff;border-radius:3px;width:48px;"> 
-                   <tbody> 
-                    <tr> 
-                     <td style="font-size:0;height:48px;vertical-align:middle;width:48px;">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-               <tbody> 
-                <tr> 
-                 <td style="width:300px;">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"> 
-              <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;line-height:1;text-align:center;color:#979797;">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.att-nigth.click/lowly-patio/40e4D2395jN85L12P4V9bdQ1178h36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQNde9K6i10YKn5fjwDO" alt=""/></body>
-</html>
-
-------=_Part_151_60324613.1675730140916--
-
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
