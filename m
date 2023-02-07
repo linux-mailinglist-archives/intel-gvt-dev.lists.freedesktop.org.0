@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09D7B68E26E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Feb 2023 21:58:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A00A68E417
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Feb 2023 00:02:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CCDCC10E5F7;
-	Tue,  7 Feb 2023 20:58:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D0B4110E61F;
+	Tue,  7 Feb 2023 23:02:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 07 Feb 2023 20:58:54 UTC
-Received: from mail.clok-ustime.click (unknown [107.158.12.145])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3B36410E5F7
+ Tue, 07 Feb 2023 23:02:15 UTC
+Received: from mail.mark-csitem.click (unknown [107.158.12.152])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3C7D110E61F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Feb 2023 20:58:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=clok-ustime.click;
+ Tue,  7 Feb 2023 23:02:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mark-csitem.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups-online-tracking@clok-ustime.click; 
- bh=vGX1yp7y+6w41JjE2pgmMYSs0Mw=;
- b=ctFAtjEstk9JgiE36v4RVZCfOQbiwtFpJVJ2DUFOjOYEoxhp4TK2z9vea/+LbQnLKww3scpFtmjq
- lEVYwwUWv/U9kplXTOIAZ2ijryI5FNBoi+KrkesjdpSe0OOo0v9/N+0VYG5W8kOWhyPEd8V5ZFbQ
- UGUogR/ooZdJ122hPgM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=clok-ustime.click; 
- b=P8vwlnLArGFsAN5iMx8L33rzxetBViLUphkvwq2kTzsiIp3QQeHWUqaIWczqqV9XdYR4u6twBhxr
- iVFIiAtu6T9yNvPB/MUKg+Ctqlr88HsSHwQKYkZLKs/DhQAjQuXHeM2so+Hx/udx5nxxX4+tKnL5
- fmkidhpzTilUz4g/8hI=;
-Received: by mail.clok-ustime.click id hsatos0001gf for
+ i=cvs_user_reviews@mark-csitem.click; 
+ bh=FJcHaaXHvx8ZxLDDEk6IMiop/gU=;
+ b=5q5ZUnMjMm/1aGELInrpoIWm1SclcO23t7nuZy6ljuhvh89hPGTidQoMaOXlhUwiBh2bGMZJHhs6
+ twBZmgpBp89zLhRrEgFIz/63Yo5Pna3MPOFvX1alqpwlKLM/aTIn8lFobMrwf36zvQq3pvmisE1Q
+ qJ8VsDLsi8XmDgu+DTs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mark-csitem.click; 
+ b=Ihz8g/iEZkdUzWwcBaisQ8Mrq67l7IEi/ZexrlJbvA1tNwWt9m+XhvGiFqT3dLnDu55uwn9ASgdF
+ zq3TsuARE/4NBVmjo9sd3G03JmruGJF7JdWa+fT2ogDpEpi7LpglFWVo6gNeNxP9EQLbqdIKsbFE
+ 5IF48mR5b7XFFHFtjFo=;
+Received: by mail.mark-csitem.click id hsbc7e0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Feb 2023 15:50:29 -0500 (envelope-from
- <ups-online-tracking-intel+2Dgvt+2Ddev=lists.freedesktop.org@clok-ustime.click>)
-Date: Tue, 7 Feb 2023 15:50:29 -0500
-From: "UPS Online Tracking" <ups-online-tracking@clok-ustime.click>
+ Tue, 7 Feb 2023 17:54:21 -0500 (envelope-from
+ <cvs_user_reviews-intel+2Dgvt+2Ddev=lists.freedesktop.org@mark-csitem.click>)
+Date: Tue, 7 Feb 2023 17:54:21 -0500
+From: "CVS User Reviews" <cvs_user_reviews@mark-csitem.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Congrats! You're eligible for a $100 UPS gift card.
+Subject: Choose a gift on us as a token of appreciation for your continued
+ loyalty.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_316_1098012335.1675803016356"
-Message-ID: <0.0.0.33.1D93B35D0521FAE.3D4647@mail.clok-ustime.click>
+ boundary="----=_Part_63_505773546.1675810447907"
+Message-ID: <0.0.0.A.1D93B471E2976C6.D2E5F@mail.mark-csitem.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_316_1098012335.1675803016356
+------=_Part_63_505773546.1675810447907
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,76 +64,56 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>7</title> 
+  <title>8t</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <div style="background-color: hsl(34, 78%, 91%); padding: 50px; border-top: double 20px #3C4121; border-left: double 10px #3C4121; border-right: double 10px #3C4121;"> 
-   <div style="max-width: 600px; margin: auto; font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: center;"> 
-    <header> 
-     <article> 
-      <div> 
-       <p>&nbsp;</p> 
-       <h1 style=" display: inline; font-size: 28px; padding: 5px; border-radius: 20px; color: #3C4121 ;">UPS</h1> 
-       <p>&nbsp;</p> 
-      </div> 
-     </article> 
-     <section> 
-      <div> 
-       <p>&nbsp;</p> 
-       <article> 
-        <table width="100%"> 
-         <tbody> 
-          <tr> 
-           <td><a href="http://www.clok-ustime.click/control-densities/5946m23Ov95H_8I612L49d7kg117fW36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ0dedR7n1jtw0L6SJAwDl" style=" outline: solid 5px #3C4121; background-color: #3C4121;"><img alt="" src="http://www.clok-ustime.click/oscillators-propagandist/7926l2Q39G5iO7aS12z49dk9A117fI36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ0dedR5B1Hw05S@w0D" width="100%" /></a></td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </article> 
-       <p>&nbsp;</p> 
-      </div> 
-     </section> 
-     <div> 
-      <section> 
-       <table width="100%"> 
-        <tbody> 
-         <tr> 
-          <td> 
-           <article> 
-            <p style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 23px; line-height: 35px;">Don't miss out! Just a few clicks away from a chance to win a $100 UPS Card by completing our quick 20-second survey about your recent experience with us.</p> 
-           </article> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </section> 
-      <p style="background-color: #3C4121; padding: 0.5px; width: 100%; margin: auto;">&nbsp;</p> &nbsp; 
-      <p style="background-color: #3C4121; padding: 0.5px; width: 75%; margin: auto;">&nbsp;</p> &nbsp; 
-      <p style="background-color: #3C4121; padding: 0.5px; width: 45%; margin: auto;">&nbsp;</p> 
-      <br /> 
-      <br /> 
-      <br /> &nbsp; 
-      <div style="font-weight: 900; border: double 8px #3C4121; display: inline; padding: 18px 33px; border-radius: 15px;">
-       <a href="http://www.clok-ustime.click/control-densities/5946m23Ov95H_8I612L49d7kg117fW36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ0dedR7n1jtw0L6SJAwDl" style="text-decoration: none; color: #3C4121;">Go And Start Now</a>
-      </div> 
+  <div style="background-color: rgb(172, 172, 172); padding: 50px; padding-bottom: 250px;"> 
+   <div style="max-width: 600px; margin: auto; box-shadow: inset 0px 0px 15px 1px; text-align: center; padding: 50px; background-color: #f4fcff;"> 
+    <header class="go_to_space"> 
+     <div id="Dist_opptp"> 
+      <p>&nbsp;</p> 
+      <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><span id="seo_sprets">CVS </span></h1> 
+      <p>&nbsp;</p> 
      </div> 
     </header> 
-   </div> 
-  </div> 
-  <div style="width: 100%; text-align: center; border-top: solid 8px #3C4121; background-color: hsl(31, 12%, 61%); font-weight: bold; color: #fff;"> 
-   <footer> 
-    <address> <p>&nbsp;</p> 
-     <div> 
-      <table width="100%s"> 
+    <section style="width: 100%;"> 
+     <article> 
+      <table width="100%"> 
        <tbody> 
         <tr> 
-         <td> <p><small><span style="text-decoration: none; ">To suspend your subscription,</span><a href="http://www.clok-ustime.click/oscillators-propagandist/80a5Hl2395hlh8612D4v9d8l117fl36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ0dedR6In1S0S5M@0wD" style="text-decoration-line: none; color: white"> <span>Visit.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big><span id="Hoosierizes"><big></big></big><font face="approximation"><style></font></style><font title="bandwidths"></span></font><big></big><style></style> </small></p> </td> 
+         <td><a href="http://www.mark-csitem.click/d135XZ2395o86ss13K4V9VdbX1180R36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQAdedS6NHgO106aBLXwD/bumptious-Salisbury"><img alt="" src="http://www.mark-csitem.click/counselling-Switzer/e7c4X2395sr7Na12f49ddBg1180D36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQAdedS5zDB105W2w3D" style="outline: solid 1px #000;" width="100%" /></a></td> 
         </tr> 
        </tbody> 
       </table> 
-     </div> <p>&nbsp;</p> </address> 
-   </footer> 
-  </div>   
- <img src="http://www.clok-ustime.click/6ob6V239I_5k8Kx513G49BVdax117fU36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ0dedR7S1D0tCF6RpAWwD/readable-autofluorescence" alt=""/></body>
+     </article> 
+    </section> 
+    <div style="padding: 15px 40px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; line-height: 35px; font-size: 23px ;">
+     Don't miss out! Just a few clicks away from a chance to win a $100 CVS Card by completing our quick 20-second survey about your recent experience with us.     </div> 
+    <br /> 
+    <br /> &nbsp; 
+    <article> 
+     <div> 
+      <p>&nbsp;</p> 
+      <div style="background-color: #DB2026; padding: 15px 20px; display: inline; border: solid 1px #000;font-weight: 900;font-size: 22px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; border-radius: 5px ;">
+       <a href="http://www.mark-csitem.click/d135XZ2395o86ss13K4V9VdbX1180R36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQAdedS6NHgO106aBLXwD/bumptious-Salisbury" style="text-decoration: none; color: #fff;">Go And Start Now</a>
+      </div> 
+      <p>&nbsp;</p> 
+     </div> 
+    </article> 
+   </div> 
+  </div> 
+  <footer style="width: 100%;"> 
+   <address style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; background-color: #DB2026; padding: 15px; border-top: double 8px #000;"> 
+    <div> 
+     <p>&nbsp;</p> 
+     <article> 
+      <p><small><span style="text-decoration: none; ">To shut down notices,</span><a href="http://www.mark-csitem.click/sensationally-inattention/c064X2395rVV8613B49dJcJW1180j36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQAdedS7FZpU1_06ETWBwD" style="text-decoration-line: none; color: white"> <span>Start.Ahead.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font id="Simonson"></font><span face="preoccupation"><style></style><style></span><span></style></span><font size="rickets"></font><span></span> </small></p> 
+     </article> 
+     <p>&nbsp;</p> 
+    </div> </address> 
+  </footer>   
+ <img src="http://www.mark-csitem.click/prose-morning/cf64p2395X85nF11e49deN1180i36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQAdedS7A1BI0Ti5dlOwD" alt=""/></body>
 </html>
 
-------=_Part_316_1098012335.1675803016356--
+------=_Part_63_505773546.1675810447907--
 
