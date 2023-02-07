@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C22AC68DE82
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Feb 2023 18:08:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B4F2968DF79
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Feb 2023 18:55:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 85EC110E1E5;
-	Tue,  7 Feb 2023 17:08:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 80D9C10E1CF;
+	Tue,  7 Feb 2023 17:55:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 07 Feb 2023 17:08:55 UTC
-Received: from mail.ott-acetoll.click (unknown [45.13.189.99])
- by gabe.freedesktop.org (Postfix) with ESMTP id F066F10E1E5
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Feb 2023 17:55:44 UTC
+Received: from mail.flyon-stwst.click (unknown [45.13.189.124])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0989B10E1CF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Feb 2023 17:08:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ott-acetoll.click;
+ Tue,  7 Feb 2023 17:55:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flyon-stwst.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace.hardware.value@ott-acetoll.click; 
- bh=dk9okDxKlPMfjfsMs7UNxtCpdyU=;
- b=VQpuICaj+JHjYb8FOeRbOD11fHzr893NGyDoin5jZMxP5Cu5hQazIghZAFKSqdJe+9qFFWoEACa9
- z9KX6U3FGsSeWOi5Xj/MJoF6B1+O3gSEHuCuMX1LZjvNxiLn5emOS0YXeGO5N5dcqaqY6x374+nF
- yMCJofReVkYP35WdkSA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ott-acetoll.click; 
- b=kpRBoldGD5n0GLorlk2+oloDtyF7f1nOd/n+VA1Wr78G3JXTe6bRY8CpzofHXegGDb6ELFTLnu/P
- kXCfZyJ/nWcw2ywn2UY07/lonKfV304ijOl95XH/7FbW29AOxTvpUWFimaST8f9wvM8IMhn/7z7D
- SytnvA3EMsVT/wnMb9Q=;
-Received: by mail.ott-acetoll.click id hsa2qg0001gu for
+ i=carole-bolins@flyon-stwst.click; 
+ bh=D2QOHyRghTsR4A1pwfvTFufpcY4=;
+ b=xMhP9moaKnzjQpOFYAlCL3e13B8InGYfUYPSM+V500L/c3hb9aLSStdgGBvObas5SreKG6/wNRpp
+ dEnET53tqIne9+ZrXURQc4vNI91PwxszlSE9YOLFoswyO2tzHfB51UvWsnTBQGk5pD6sx916tKLN
+ ufksm96WxObzpzte4Cc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flyon-stwst.click; 
+ b=HsxhsPeKEuE1fHEvrgHhfOJUKonsUfBd9ncEJyN/9uAGpXFgkQ7wFgEZsjjW0P4wzzF7Jwc1b4Tz
+ W+iabcJmteNwXm3TEgpGmwcmT1bRNAnazA5Jmu87m088GyeSVSRxk9JTq6Yto9vCFJ5j+roj69h8
+ sQWT7AX8vl60OoJ79dg=;
+Received: by mail.flyon-stwst.click id hsa8a00001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Feb 2023 12:00:47 -0500 (envelope-from
- <ace.hardware.value-intel+2Dgvt+2Ddev=lists.freedesktop.org@ott-acetoll.click>)
-Date: Tue, 7 Feb 2023 12:00:47 -0500
-From: "ACE Hardware Value" <ace.hardware.value@ott-acetoll.click>
+ Tue, 7 Feb 2023 12:47:07 -0500 (envelope-from
+ <carole-bolins-intel+2Dgvt+2Ddev=lists.freedesktop.org@flyon-stwst.click>)
+Date: Tue, 7 Feb 2023 12:47:07 -0500
+From: Carole Bolins <carole-bolins@flyon-stwst.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The ultimate way to show appreciation for your loyalty.
+Subject: Give your feedback of Southwest for up to $1OO Bonus
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_157_882083718.1675789199337"
-Message-ID: <0.0.0.1B.1D93B15B94F6098.3E1EB9@mail.ott-acetoll.click>
+ boundary="----=_Part_187_33256704.1675792004192"
+Message-ID: <0.0.0.1F.1D93B1C3296857A.1D37AB@mail.flyon-stwst.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_157_882083718.1675789199337
+------=_Part_187_33256704.1675792004192
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,67 +63,70 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>3</title> 
+  <title>4</title> 
  </head> 
- <body bgcolor="#cfcfcf"> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-align: center; border-radius: 8px;"> 
-   <header style="background-color: #ffffff;"> 
-    <div id="nn.socia" style="padding: 1px;"> 
-     <p class="inc_ppp" style="padding-left: 25px; padding-right: 25px; display: block;">&nbsp;</p> 
-     <h2 style="padding: 5px; background-color: rgb(24, 24, 24); border-radius: 7px; color: #fff; line-height: 35px; border: double 15px #fff;"><span class="prog_ol">Get your hands on a $100 <strong style="color: #ff0000;">ACE</strong> Hardware<br /> gift card with just a few simple clicks! </span></h2> 
-     <p>&nbsp;</p> 
+ <body style="background-color: rgb(238, 238, 238); padding: 50px;"> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; border-radius: 8px;"> 
+   <header style=" background-color: #21529E; padding: 20px 20px 15px; box-shadow: inset 0px 0px 30px 5px #fff;"> 
+    <div> 
+     <h3 style="text-align: center;"><a href="http://www.flyon-stwst.click/31d4Y2395C86_L13h49cDQaq117cp36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQided97FYmvn105b00wD/presence-corruptible"><img alt="" src="http://www.flyon-stwst.click/uplinks-Jackman/a9e5K2g395S7PaT11f49ccr117cM36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQided95o10uR6q@Lw0D" style="outline: #1fa6f5 solid 10px; box-shadow: 0px 0px 30px 5px;" width="75%" /></a></h3> 
     </div> 
    </header> 
-   <section> 
-    <aside>
-     <a href="http://www.ott-acetoll.click/Paula-strips/3784Q2395z86wB13YP4J9c6i117bx36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQwdedo5H1zo05rXTwD"><img alt="" src="http://www.ott-acetoll.click/gaieties-domesticating/2a65qZ2395F7RaF12Q49c8vX117bP36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQwdedo5b1sH06H2wDyX" width="100%" /></a>
+   <section style="text-align: center;"> 
+    <aside> 
+     <p><span><a href="http://www.flyon-stwst.click/31d4Y2395C86_L13h49cDQaq117cp36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQided97FYmvn105b00wD/presence-corruptible"><img alt="" src="http://www.flyon-stwst.click/4494c2395G7zam12i4M9cdJ117cs36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQided97wV10zHI6qAwODz/Thurber-provider" style="border: solid 4px #1fa6f5;" width="80%" /></a> </span></p> 
     </aside> 
    </section> 
-   <section style="padding: 20px;"> 
-    <article> 
-     <p style="text-align: center; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 22px; padding: 0px 20px;line-height: 30px; ">Complete Our Customer Survey And Get A Chance To Win A $100 <strong style="color: #ff0000;">ACE</strong> Hardware Gift Card. Your Feedback Helps Us Improve, And We Value Your Opinions.</p> 
-    </article> 
-   </section> 
-   <table style="padding-bottom: 250px;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td style="width: 100%; border-collapse: collapse; padding: 20px;"> 
-       <div style="background-color: #ff0000; font-weight: 900; padding: 20px 30px;">
-        <a href="http://www.ott-acetoll.click/Paula-strips/3784Q2395z86wB13YP4J9c6i117bx36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQwdedo5H1zo05rXTwD" style="text-decoration: none; color: #fff; padding-left: 30%; padding-right: 30%; display: block;">Go And Star Now</a>
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <footer style="text-align: center; font-size: 12px; padding: 20px; background-color: #626262; color: #FFFFFF; border: solid 1px #000000"> 
-    <address> <p><span style="text-decoration: none; ">To end messages,</span><a href="http://www.ott-acetoll.click/2696E239oS5MiA8612a4A9c7W117bt36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQwdedo7WF1NX0h5yzwDL/gaieties-domesticating" style="text-decoration-line: none; color: white"> <span>Continue.Ahead </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <font></font><font id="dope"></font><span face="Heathkit"></span><font face="DECtape"></font><span class="Omaha"></span><span></span><big><font></big></font><font face="flanking"></font></p> </address> 
-   </footer> 
-   <table class="noomber_one"> 
-    <tbody> 
-     <tr> 
-      <td id="335225if">&nbsp;</td> 
-      <td id="884458po">&nbsp;</td> 
-      <td id="112257od">&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td class="imp_on">&nbsp;</td> 
-      <td class="celest">&nbsp;</td> 
-      <td aria-invalid="false" aria-level="&lt;section&gt;
-                        
-                    &lt;/section&gt;" aria-setsize="box-shadow">&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
    <article> 
-    <p>&nbsp;</p> 
-    <h6>&nbsp;</h6> 
-    <p id="on_clock">&nbsp;</p> 
-    <p class="noam">&nbsp;</p> 
-    <p>&nbsp;</p> 
-    <p>&nbsp;</p> 
+    <p style="padding: 10px 30px; font-size: 22px; font-family: Georgia, 'Times New Roman', Times, serif; line-height: 35px; display: block; text-align: center; font-weight: bold;">Don't miss out! Just a few clicks away from a chance to win a $100 <strong style="color: #21529E;">Southwest</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
    </article> 
+   <section> 
+    <h1>&nbsp;</h1> 
+    <h2>&nbsp;</h2> 
+    <h3>&nbsp;</h3> 
+    <ul style="list-style-type: none;"> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+     <li>&nbsp;</li> 
+    </ul> 
+   </section> 
+   <section> 
+    <div> 
+     <p>&nbsp;</p> 
+     <aside style="text-align: center;"> 
+      <div style="background-color: #21529E; font-weight: 900; padding: 20px 30px; border-radius: 10px; box-shadow: inset 0px 0px 10px 1px; border: solid 3px #21529E;">
+       <a href="http://www.flyon-stwst.click/31d4Y2395C86_L13h49cDQaq117cp36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQided97FYmvn105b00wD/presence-corruptible" style="text-decoration: none; color: #fff; padding-left: 30%; padding-right: 30%; display: block;">Go And Star Now</a>
+      </div> 
+     </aside> 
+     <p>&nbsp;</p> 
+    </div> 
+   </section> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <footer> 
+    <address> 
+     <div style="background-color: #21529E; padding: 20px; outline: double 2px #000; color: #fff; text-align: center; font-size: 12px;"> 
+      <p>&nbsp;</p> 
+      <p><span style="text-decoration: none; ">To shut off e-mail,</span><a href="http://www.flyon-stwst.click/carnage-vouches/5d04Q2395C8vB611O49cbF117cm36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQided97OWI1FP06yNwz@D" style="text-decoration-line: none; color: white"> <span>Continue Over Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <font></font><font lang="distributional"></font><small></small><span style="deplored"></span><font></font><big></big><font style="Clapeyron"></font><font face="awkward"><style></style></font><span lang="salves"></span><span class="tightened"></span></p> 
+      <p>&nbsp;</p> 
+     </div> </address> 
+   </footer> 
   </div>   
- <img src="http://www.ott-acetoll.click/dichotomize-Gustavus/6de6c23T_95n8JC513D49ygc9J117bO36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQwdedo6SP10Cw6UT@wD0" alt=""/></body>
+ <img src="http://www.flyon-stwst.click/epitaxial-arbitrators/71a6j239Du5R8O5W13r49RcveD117cI36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQided96yMk10G5OXJwD" alt=""/></body>
 </html>
 
-------=_Part_157_882083718.1675789199337--
+------=_Part_187_33256704.1675792004192--
 
