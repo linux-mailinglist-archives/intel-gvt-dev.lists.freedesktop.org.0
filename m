@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6908B68DC53
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Feb 2023 15:58:51 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6532968DD26
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Feb 2023 16:36:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 404EB10E535;
-	Tue,  7 Feb 2023 14:58:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2E92510E53D;
+	Tue,  7 Feb 2023 15:36:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 07 Feb 2023 14:58:47 UTC
-Received: from mail.tues-atgo.click (unknown [45.13.189.218])
- by gabe.freedesktop.org (Postfix) with ESMTP id E5D4310E537
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Feb 2023 15:36:27 UTC
+Received: from mail.appear-vrz.click (unknown [45.13.189.95])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0610310E539
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Feb 2023 14:58:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tues-atgo.click; 
+ Tue,  7 Feb 2023 15:36:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=appear-vrz.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=att_user_feedback@tues-atgo.click; 
- bh=3fpYhqhwNLO9kpo+sfYpx5gm3MM=;
- b=WVq8lX+2S6m1eL9pynDVERqfpwURginis3hbvpMnr9eyCjIFfV7/UplDTN/E1f+tpkI1K0O2ctnb
- WYZmytC2V7eK7rAZd+DXPwE773Vhr3HKIicAM7QVmHz0eCo/MgS6Qd6qwbB7k+jiFptYxoVaOkNU
- 7iYrtx3rw9C6J2gAFSw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tues-atgo.click;
- b=jOoGnvZuWPnTzQGzEZPH1mGqeEkmYZftc44OmyUy+Nxg2WWuFJj8MhN5DHyJo6+pi0bue+ZmQHmd
- nUXtMoO+hhA4xgOuCpFX41roctpbaus3Q/NrYoQFjxbqdT3FDI3X9vecvKgDlrF0LfKRnA5cFIZ6
- lKB4MvCv05n/j/NH8aU=;
-Received: by mail.tues-atgo.click id hs9jig0001g4 for
+ i=verizon-gift-opportunity@appear-vrz.click; 
+ bh=SwOeWC5M5aI4Q6BGM3o++vZwDOs=;
+ b=MFRFmk0K4uFbpNH1VhYryaKP0XCy1+aOSNhPA39QHkOTTuXsa7Pz8jV9ndOQmQE3FUJwwaes1nxm
+ TgnGJeII5e70Lcb6hpzefWqS35AjOE6y61tcfTi9Jhu4Ypb5+CAS2vrTVegVykq8xp0fV4Mv0Mgg
+ hitzJ6ZArBo+yR/O5lA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=appear-vrz.click;
+ b=xV+fb79dRcu/pWKDdrGIJquCFIlqnB2izZXNgEGldnJUtgHotfBfgkfbPleF55rzTaZ2wGAe/ueU
+ L6eDhwuCOVZnEHZB+OUr5ZqAX+1nWhUDPLE8A7I+0NqfwLvlQviVpat054FH2MSVubC3iI76PIs9
+ /K7EApRBAZ9XN7Ahz5Y=;
+Received: by mail.appear-vrz.click id hs9nvm0001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Feb 2023 09:49:42 -0500 (envelope-from
- <att_user_feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@tues-atgo.click>)
-Date: Tue, 7 Feb 2023 09:49:42 -0500
-From: "ATT User Feedback" <att_user_feedback@tues-atgo.click>
+ Tue, 7 Feb 2023 10:29:32 -0500 (envelope-from
+ <verizon-gift-opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@appear-vrz.click>)
+Date: Tue, 7 Feb 2023 10:29:32 -0500
+From: "VERIZON Gift Opportunity" <verizon-gift-opportunity@appear-vrz.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We have some exciting news for you
+Subject: We are here for your next shopping spree - Gifts on us!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_43_1614851940.1675781364589"
-Message-ID: <0.0.0.7.1D93B03697A28F8.51B82E@mail.tues-atgo.click>
+ boundary="----=_Part_403_2077216439.1675783718905"
+Message-ID: <0.0.0.42.1D93B08FA0177BE.3C4A62@mail.appear-vrz.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_43_1614851940.1675781364589
+------=_Part_403_2077216439.1675783718905
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,69 +63,48 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>1</title> 
+  <title>2</title> 
  </head> 
- <body style="margin: 0; padding: 0"> 
-  <div style="width: 100%; background-color: bisque; padding: 35px 35px 330px;"> 
-   <div style="max-width: 600px; margin: auto; font-family: Arial, Helvetica, sans-serif ; background-color: #fff; box-shadow: 0px 0px 30px 5px #fff;"> 
-    <table align="center" border="0" style="border-collapse: collapse; text-align: center;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <th colspan="3" style="background-color: hsl(187, 100%, 84%);">&nbsp;</th> 
-      </tr> 
-      <tr> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-       <td width="100%"> 
-        <section> 
-         <header> 
-          <h2 style="font-size: 25px;">Get Closer To A $100 AT&amp;T<br /> Gift Card With Just A Few Clicks!</h2> 
-         </header> 
-        </section> </td> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-       <td> 
-        <section> 
-         <div> 
-          <aside>
-           <a href="http://www.tues-atgo.click/inheritress-extravaganza/c606ds2t395Q8N6A11A49beW1179K36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQXdedm5V1m0L6KkwJ2D"><img alt="" src="http://www.tues-atgo.click/Aleck-dire/9545Q2B395C7UTa13i4rg9c0o1179k36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQXdedm7SD1TCB05vPwDl" width="100%" /></a>
-          </aside> 
-         </div> 
-        </section> </td> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-       <td style="background-color: hsl(187, 100%, 84%);">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <section style="width: 100%;"> 
-     <div style="border: double 4px #13A0D9; text-align: center; font-size: 23px; padding: 10px 30px; line-height: 30px; font-weight: 500;"> 
-      <p>Tell us how we're doing and get a $100 gift card to AT&amp;T and upgrade your mobile service!<br /> <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us.</p> 
+ <body style="margin: 0; padding: 0;"> 
+  <div style="width: 100%; background-color:rgb(207, 207, 207); padding: 50px 50px 200px;"> 
+   <div style="max-width: 600px; margin: auto; background-color: #fff; border-radius: 6px; border-top: solid 10px #000; border-bottom: solid 10px #000;"> 
+    <header> 
+     <p>&nbsp;</p> 
+     <div> 
+      <h1 style="padding: 15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;">Get Closer To A $100 <strong style="color: hwb(0 0% 0%);">V</strong>erizon Gift Card With Just A Few Clicks!</h1> 
      </div> 
-    </section> 
-    <section style="padding-top: 45px; padding-bottom: 50px;"> 
-     <div style="width: 100%; text-align: center;">
-      <a href="http://www.tues-atgo.click/inheritress-extravaganza/c606ds2t395Q8N6A11A49beW1179K36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQXdedm5V1m0L6KkwJ2D" style="text-decoration: none; color: #000;"><span style="background-color: hsl(187, 100%, 84%) ; padding: 20px 30px; font-size: 18px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold; border-radius: 5px; border:solid 3px #000;">Go And Start Now</span></a>
+     <p>&nbsp;</p> 
+    </header> 
+    <article> 
+     <div> 
+      <p><span><a href="http://www.appear-vrz.click/Marianne-committeeman/c425zl2395t86nr11D49c2D117aC36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQwdedn7J1UCO0J6fNAwqD"><img alt="" src="http://www.appear-vrz.click/confines-sclerosis/e4Z5tD2395v7rag11g49c4r117ax36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQwdedn6K1ot0R5qOwDk" style="border: solid 0px #000;" width="100%" /></a> </span></p> 
      </div> 
+    </article> 
+    <article style="padding-bottom: 35px;"> 
+     <div> 
+      <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px; font-weight: normal; line-height: 35px; padding: 15px 25px; text-align: center;"><span>Tell us how we're doing and get a $100 gift card to Verizon and upgrade your mobile service!<br /> <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us. </span></h4> 
+     </div> 
+    </article> 
+    <section> 
+     <aside> 
+      <div style="text-align: center;">
+       <a href="http://www.appear-vrz.click/Marianne-committeeman/c425zl2395t86nr11D49c2D117aC36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQwdedn7J1UCO0J6fNAwqD" style="text-decoration: none; color: #fff;"><span style="background-color: #000; padding: 20px 30px; font-size: 18px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold; border-radius: 80px; border:solid 3px #ff0707;">Go And Start Now</span></a>
+      </div> 
+     </aside> 
     </section> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> &nbsp;
    </div> 
   </div> 
-  <div style="background-color: cadetblue; width: 100%; text-align: center;"> 
-   <footer style="outline: solid 8px #000; color: #fff;"> 
-    <address> <p style="padding-top: 20px; text-align: center; display: block;">&nbsp;</p> <p><span style="text-decoration: none; ">To bring notifications to an halt,</span><a href="http://www.tues-atgo.click/dc74J2395JU86H11L49bfQ1179C36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQXdedm5RI1v06RkTjwD/tapping-menus" style="text-decoration-line: none; color: white"> <span>Go Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style></style><style></style><font><span size="honorary"></font></span><font></font><font style="premiers"></font><small></small><font class="muddlehead"></font></p> &nbsp; <p>&nbsp;</p> </address> 
+  <div style="width:100%; background-color: #3b3b3b; padding: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; font-size: 12px; color: #fff ;"> 
+   <footer> 
+    <p><span style="text-decoration: none; ">To shut down email,</span><a href="http://www.appear-vrz.click/portion-simplicities/b524B2395cO86F13ULp49c3i117aI36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQwdedn7X1B0AzU5w0wJD" style="text-decoration-line: none; color: white"> <span>Continue_Ahead </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span lang="inquiring"></span><span dir="Kendall"><span id="sentry"><span></span></span></span><style></style><font dir="troubleshoot"><span id="testable"></font><style dir="corrugate"></style></span></p> 
    </footer> 
   </div>   
- <img src="http://www.tues-atgo.click/combinatoric-liberalizing/7b05n23X95Y8IV512z49lc1D1179L36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQXdedm6zl1xK06S@wDJz" alt=""/></body>
+ <img src="http://www.appear-vrz.click/reinstated-decompose/3O05hv2395fsx8513X49Uc5Dq117aQ36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQwdedn6n1Y0yR6tWwDyl" alt=""/></body>
 </html>
 
-------=_Part_43_1614851940.1675781364589--
+------=_Part_403_2077216439.1675783718905--
 
