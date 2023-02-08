@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26BE368F847
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Feb 2023 20:48:42 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C351D68F8E4
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Feb 2023 21:35:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E06D110E18F;
-	Wed,  8 Feb 2023 19:48:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9D22B10E866;
+	Wed,  8 Feb 2023 20:35:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Wed, 08 Feb 2023 19:48:38 UTC
-Received: from mail.break-lws.click (unknown [107.158.12.182])
- by gabe.freedesktop.org (Postfix) with ESMTP id ECFA110E839
+ Wed, 08 Feb 2023 20:35:30 UTC
+Received: from mail.bring-smcb.click (unknown [107.158.12.142])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 579AB10E865
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  8 Feb 2023 19:48:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=break-lws.click; 
+ Wed,  8 Feb 2023 20:35:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bring-smcb.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes_shopping_perk@break-lws.click; 
- bh=wiwQl1jgycvASXcOtTPoRQ4y2SA=;
- b=ZA+ZPRdYxtgYCeYekYFX+59wa0nKNqp80hAyWmdgltgAORHtJCw2YgST5Esf7WmsOlvxuL/eIN4D
- 6TrqkgnjKDNlW4hshi298GfoMaCoE5QG47VBFzK2ZoutFp8x8xQpxc618RKKTcVTpJlSXP4kgPfw
- Z8v8/AYTrVki/CiWTd0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=break-lws.click;
- b=MepHydS72z3JX5hsMBEo9zP4mwtNZ1dtyLGeA+QAOPjLaZjWkm6OZ3U6ZZBpFtnxkSenETaoPtsn
- zQrMXHO/a/fl3YiYg4Ylgz4T7XEfUahjQGZmrOHd4qk85gGGQ8Xq+t4qFItYcGXSIxGVXLt/LT+2
- Qc55G6XAk5kTNh8+6CI=;
-Received: by mail.break-lws.click id hsfu9c0001g8 for
+ i=now.on.sams.club@bring-smcb.click; 
+ bh=RdUBqhSWjyVko+FiC62+jKo0800=;
+ b=QCyOTSsQOoVwAw/4Tf2MgQ+39XgEdmS0ubm5QWa4czfeJlkvNsJqPwhoSZv3+rBoIUh2iTSpJpcG
+ +2V7/QEkBcK/K8jz4e59ZdeEop1J5dlyZ2Qp3iWZ2C5EKOaw7pCexjiXy1cXjKfHx9jO8p3GM/ae
+ +8ZwAQFeQj/jIr83d0o=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bring-smcb.click;
+ b=HvaIqAWRgNLqLDyWYMAFkR/EobvrQgAnB+LrDHBQN0ahpxB/dcLbjM4dVhyPSpqfgayttR2Tfr4S
+ LnSWOQbQueZlTQsl0tdHKS7z058WUmz2vlUD83C0ke2HrxHSKnGEZZaBkQxg0XNeLEgwm/C8HfXp
+ faHznXz0+P+To2u+OMY=;
+Received: by mail.bring-smcb.click id hsg3p40001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 8 Feb 2023 14:37:27 -0500 (envelope-from
- <lowes_shopping_perk-intel+2Dgvt+2Ddev=lists.freedesktop.org@break-lws.click>)
-Date: Wed, 8 Feb 2023 14:37:27 -0500
-From: "Lowes Shopping Perk" <lowes_shopping_perk@break-lws.click>
+ Wed, 8 Feb 2023 15:22:52 -0500 (envelope-from
+ <now.on.sams.club-intel+2Dgvt+2Ddev=lists.freedesktop.org@bring-smcb.click>)
+Date: Wed, 8 Feb 2023 15:22:52 -0500
+From: "Now On Sams Club" <now.on.sams.club@bring-smcb.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Holiday appreciation is needed during these time,
- here's you gift on us
+Subject: Every visit a new reward that could get you anything on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_319_1703165481.1675885036527"
-Message-ID: <0.0.0.35.1D93BF4C6B57C4C.3A34A6@mail.break-lws.click>
+ boundary="----=_Part_28_822948524.1675887763939"
+Message-ID: <0.0.0.4.1D93BFB1F273E1E.5345F9@mail.bring-smcb.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_319_1703165481.1675885036527
+------=_Part_28_822948524.1675887763939
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,77 +63,65 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>05020823</title> 
+  <title>06020823</title> 
  </head> 
- <body style="background-color: azure;"> 
-  <div style="max-width: 600px; margin: auto; text-align: center; ; padding-right: 0px; padding-left: 0px;"> 
-   <header id="promi_ss31" style="background-color: aliceblue; border-radius: 0px; border: outset #002268; box-shadow: inset 0px 0px 5px 1px; "> 
-    <div class="container_cosc"> 
-     <p class="text_p_1225" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 22px; padding: 16px 28px; font-weight: bold; line-height: 31px;">Dear valued customer You Are Just A Few<br /> Clicks Away To Get The Lowe' s Card.</p> 
+ <body style="margin: 0; padding: 0; background-color: #d0eeff;"> 
+  <div id="nova_star_1" style=" width: 100%; padding: 20px; margin: auto; background-color: #d0eeff;"> 
+   <div class="type_iccgg" style="max-width: 600px; margin: auto; text-align: center; background-color: #fff;"> 
+    <header id="ni_ini_to" style="background-color: #d0eeff;"> 
+     <div class="cont_955_ipc" style="background-color: #d0eeff;"> 
+      <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff">Sam's Club</h1> 
+     </div> 
+    </header> 
+    <article id="par_22day_7" style="background-color: #d0eeff"> 
+     <section class="yellow22_47" style="background-color: #d0eeff"> 
+      <div id="2253" style="background-color: #d0eeff">
+       <a href="http://www.bring-smcb.click/e7b5g239v5Qq86z12S49Uf4k1186p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQUdeQ95EB1H05b30wD/infuriating-pierce"><img alt="" src="http://www.bring-smcb.click/sexually-Hershey/abc5z23_95um7ga13M4p9fq6O1186g36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQUdeQ97euGV10t5wUwDL" style="box-shadow: 0px -2px 5px 1px; background-color: #d0eeff;" width="100%" /></a>
+      </div> 
+     </section> 
+    </article> 
+    <table style=" background-color: #fff; border-radius: 8px;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td width="100%"> 
+        <div class="Tex_ipo_1445" style="padding: 15px 35px; font-size: 21px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 500;;">
+         Don't miss out! Just a few clicks away from a chance to win a $100 Sams Club Card by completing our quick 20-second survey about your recent experience with us.         </div> </td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <div>
+     &nbsp;
+    </div> &nbsp; 
+    <div style="background-color: #ffffff;"> 
+     <article class="oppen_on"> 
+      <p id="Client_service_dow">&nbsp;</p> 
+      <div style="background-color: #041047; padding: 16px 33px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 900; display: inline; border-radius: 80px; font-size: 20px;">
+       <a href="http://www.bring-smcb.click/e7b5g239v5Qq86z12S49Uf4k1186p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQUdeQ95EB1H05b30wD/infuriating-pierce" style="text-decoration: none; color: #fff;">Go And Start Now</a>
+      </div> 
+      <br /> 
+      <br /> 
+      <br /> &nbsp; 
+      <p>&nbsp;</p> 
+     </article> 
     </div> 
-   </header> 
-   <section id="cctier_0999" style="background-color: #fff; border-radius: solid 0px #002268; position: relative absolute static;"> 
-    <div class="cct33-1"> 
-     <p class="img-st_12221"><a href="http://www.break-lws.click/torturer-skidding/a265b23B95S8kA612S49fg0D1185W36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ4deQo6M1S0Nx6mPwWDA"><img alt="" src="http://www.break-lws.click/computerizing-objects/1985P2N395D7aJo11N49f2P1185I36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ4deQo5dC10_5FpwTD" width="100%" /></a></p> 
-    </div> 
-   </section> 
-   <section id="tex_promo-225" style="background-color: #fff;"> 
-    <div class="idpp21" style="padding: 15px 35px; line-height: 30px; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 22px; font-weight: 500; box-shadow: inset 0px 0px 5px 1px;">
-     At Lowe' s, we are committed to providing the best service and selection for all your home improvement needs.      <br /> 
-     <br /> By completing our short survey, you will have the opportunity to share your thoughts on our products, services, and store experience
-    </div> 
-   </section> 
-   <br /> 
-   <br /> &nbsp; 
-   <section id="Offe_bts"> 
-    <h3 class="ctn_bt2">&nbsp;</h3> 
-    <div style="background-color: #002268; padding: 14px 26px; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 18px; display: inline;">
-     <a href="http://www.break-lws.click/torturer-skidding/a265b23B95S8kA612S49fg0D1185W36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ4deQo6M1S0Nx6mPwWDA" style="color: #fff; text-decoration: none;">Go And Start Now</a>
-    </div> 
-   </section> 
-  </div> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <footer id="Retrc_225" style="width: 90%; font-size: 12px; font-weight: bold; text-align: center; background-color: #002268; color: #fff; padding: 22px 37px; margin: auto;"> 
-   <address class="Uni_code-225"> 
-    <div id="pplp"> 
-     <p><small><span style="text-decoration: none; ">No longer want to receive email from us?,</span><a href="http://www.break-lws.click/marshes-abounded/42c4I2395a8RU611L49f1w1185D36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ4deQo5Qm1p05aN0wD" style="text-decoration-line: none; color: white"> <span>Start This Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font dir="synthesizer"></font><span></span><font></font><style size="oysters"><span></span></style><font class="ensurers"><font face="convened"></font><span></span><small></small></font> </small></p> 
-    </div> </address> 
-  </footer> 
-  <article> 
-   <aside> 
-    <div> 
-     <p>&nbsp;</p> 
-     <h1>&nbsp;</h1> 
-     <table style="width: 100%;"> 
-      <tbody> 
-       <tr> 
-        <td>&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td>&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td>&nbsp;</td> 
-       </tr> 
-       <tr> 
-        <td>&nbsp;</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <p>&nbsp;</p> 
-    </div> 
-   </aside> 
-  </article>   
- <img src="http://www.break-lws.click/marshes-abounded/9366Ht239G5ri8D513i49fU3KB1185q36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ4deQo5u1A0o5llw@D" alt=""/></body>
+   </div> 
+   <div id="space_lien" style="background-color: #d0eeff ;"> 
+    <p class="Continue">&nbsp;</p> 
+    <h1 class="retenc_2" style="padding-bottom: 250px;">&nbsp;</h1> 
+    <p>&nbsp;</p> 
+   </div> 
+   <footer style="background-color: rgb(71, 71, 71); font-size: 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 14px 25px; outline: double 5px #000; width: 80%; margin: auto; color: #fff;"> 
+    <address> 
+     <div> 
+      <h6 style="font-size: 12px;">&nbsp;</h6> 
+      <p><small><span style="text-decoration: none; ">No longer want to receive communication from us?,</span><a href="http://www.bring-smcb.click/G6b4o2395Q86nC12G4W9f5B1186i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQUdeQ95GsY105zlBwD/fashionable-transferable" style="text-decoration-line: none; color: white"> <span>Visit-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style></style><big><style><font color="maims"><font title="abstractionism"></font><span></font></span></big></style><style></style><style></style><span></span> </small></p> 
+     </div> </address> 
+   </footer> 
+  </div>   
+ <img src="http://www.bring-smcb.click/rotary-Orwell/22e5Q239B5yO8T513H49fZN7k1186T36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQUdeQ95UW10x6pjwNDp" alt=""/></body>
 </html>
 
-------=_Part_319_1703165481.1675885036527--
+------=_Part_28_822948524.1675887763939--
 
