@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C351D68F8E4
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Feb 2023 21:35:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0139868FA1B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Feb 2023 23:11:27 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9D22B10E866;
-	Wed,  8 Feb 2023 20:35:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C091F10E895;
+	Wed,  8 Feb 2023 22:11:26 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Wed, 08 Feb 2023 20:35:30 UTC
-Received: from mail.bring-smcb.click (unknown [107.158.12.142])
- by gabe.freedesktop.org (Postfix) with ESMTP id 579AB10E865
+ Wed, 08 Feb 2023 22:11:25 UTC
+Received: from mail.inc-filear.click (unknown [107.158.12.165])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B047810E896
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  8 Feb 2023 20:35:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bring-smcb.click;
+ Wed,  8 Feb 2023 22:11:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=inc-filear.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=now.on.sams.club@bring-smcb.click; 
- bh=RdUBqhSWjyVko+FiC62+jKo0800=;
- b=QCyOTSsQOoVwAw/4Tf2MgQ+39XgEdmS0ubm5QWa4czfeJlkvNsJqPwhoSZv3+rBoIUh2iTSpJpcG
- +2V7/QEkBcK/K8jz4e59ZdeEop1J5dlyZ2Qp3iWZ2C5EKOaw7pCexjiXy1cXjKfHx9jO8p3GM/ae
- +8ZwAQFeQj/jIr83d0o=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bring-smcb.click;
- b=HvaIqAWRgNLqLDyWYMAFkR/EobvrQgAnB+LrDHBQN0ahpxB/dcLbjM4dVhyPSpqfgayttR2Tfr4S
- LnSWOQbQueZlTQsl0tdHKS7z058WUmz2vlUD83C0ke2HrxHSKnGEZZaBkQxg0XNeLEgwm/C8HfXp
- faHznXz0+P+To2u+OMY=;
-Received: by mail.bring-smcb.click id hsg3p40001gi for
+ i=leaffilter-winter-offer@inc-filear.click; 
+ bh=4WyoCqNR4fKdX9epPK5lStmQNAA=;
+ b=oh3jSvmKl/6w407bq35gb18R3VB0r/abXslduvSW0RshkjwW9J2AMfBkILeCMAT1NYUZcNykXlrC
+ XmKCa+ROc4NplQ54R7PBV7qkUCiu/ZYcFLyjfxrByri5cc6moKoWaNaHD9uMbTeor9KEeJg6LdIn
+ iZVpSiIfqA3vzLFtNjY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=inc-filear.click;
+ b=kkuERspPffq8lRs4aqMeR40SNWAYRJOZ2blKSWQb+0bbktctvIHHSqH9b12aLJ99aV9e4l1gZM4e
+ JaihWf6LFSynJk1aQzEQEQZxClZ9oi0geKQPh9YyI8LeRicbvxEti+R8siiXbRxTkaQwox2BcJKS
+ 8DGtFPNGvt6fQ8izy5U=;
+Received: by mail.inc-filear.click id hsgf0q0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 8 Feb 2023 15:22:52 -0500 (envelope-from
- <now.on.sams.club-intel+2Dgvt+2Ddev=lists.freedesktop.org@bring-smcb.click>)
-Date: Wed, 8 Feb 2023 15:22:52 -0500
-From: "Now On Sams Club" <now.on.sams.club@bring-smcb.click>
+ Wed, 8 Feb 2023 17:01:02 -0500 (envelope-from
+ <leaffilter-winter-offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@inc-filear.click>)
+Date: Wed, 8 Feb 2023 17:01:02 -0500
+From: "LeafFilter WINTER Offer" <leaffilter-winter-offer@inc-filear.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every visit a new reward that could get you anything on us
+Subject: LeafFilter - The nation's largest gutter protection company
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_28_822948524.1675887763939"
-Message-ID: <0.0.0.4.1D93BFB1F273E1E.5345F9@mail.bring-smcb.click>
+ boundary="----=_Part_409_1641655927.1675893569913"
+Message-ID: <0.0.0.44.1D93C08D55F025E.3326F4@mail.inc-filear.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,75 +53,145 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_28_822948524.1675887763939
+------=_Part_409_1641655927.1675893569913
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
  <head> 
-  <meta charset="UTF-8" /> 
+  <meta charset="UTF-8" content="text/html" http-equiv="Content-Type" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
   <title>06020823</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #d0eeff;"> 
-  <div id="nova_star_1" style=" width: 100%; padding: 20px; margin: auto; background-color: #d0eeff;"> 
-   <div class="type_iccgg" style="max-width: 600px; margin: auto; text-align: center; background-color: #fff;"> 
-    <header id="ni_ini_to" style="background-color: #d0eeff;"> 
-     <div class="cont_955_ipc" style="background-color: #d0eeff;"> 
-      <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff">Sam's Club</h1> 
-     </div> 
-    </header> 
-    <article id="par_22day_7" style="background-color: #d0eeff"> 
-     <section class="yellow22_47" style="background-color: #d0eeff"> 
-      <div id="2253" style="background-color: #d0eeff">
-       <a href="http://www.bring-smcb.click/e7b5g239v5Qq86z12S49Uf4k1186p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQUdeQ95EB1H05b30wD/infuriating-pierce"><img alt="" src="http://www.bring-smcb.click/sexually-Hershey/abc5z23_95um7ga13M4p9fq6O1186g36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQUdeQ97euGV10t5wUwDL" style="box-shadow: 0px -2px 5px 1px; background-color: #d0eeff;" width="100%" /></a>
-      </div> 
-     </section> 
-    </article> 
-    <table style=" background-color: #fff; border-radius: 8px;" width="100%"> 
+ <body style="margin: 0; padding: 0; background-color: rgb(250, 240, 228);"> 
+  <div style="max-width: 600px; margin: auto; background-color: #ffffff;"> 
+   <center class="wrapper"> 
+    <table class="main" width="100%"> 
      <tbody> 
       <tr> 
+       <td> 
+        <table width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="background-color: black; padding:8px 0 5px ; text-align: center;"> 
+            <section>
+             &nbsp;
+            </section> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td> 
+        <table width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="text-align:center; padding: 15px;"> 
+            <section> 
+             <h4><a href="http://www.inc-filear.click/Wrigley-worriers/6a25L239g5QV86j13Cl4Q9fdx1188z36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkdeQQ6O1kJ0z5eXw@D"><img alt="" src="http://www.inc-filear.click/retired-crusaders/26a6D2v39A5o7laX12Ko49ffV1188P36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQkdeQQ6cYzy105BXXwD" width="100%" /></a></h4> 
+            </section> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
        <td>&nbsp;</td> 
-       <td width="100%"> 
-        <div class="Tex_ipo_1445" style="padding: 15px 35px; font-size: 21px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 500;;">
-         Don't miss out! Just a few clicks away from a chance to win a $100 Sams Club Card by completing our quick 20-second survey about your recent experience with us.         </div> </td> 
-       <td>&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td style="padding-bottom:40px ;"> 
+        <table width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="text-align: center; padding: 15px;">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td height="5px" style="background-color: #ffffff;">&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td> 
+        <table width="100%"> 
+         <tbody> 
+          <tr> 
+           <td class="two-column"> 
+            <table class="column"> 
+             <tbody> 
+              <tr> 
+               <td class="padding"> 
+                <table class="content"> 
+                 <tbody> 
+                  <tr> 
+                   <td>&nbsp;</td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table class="column"> 
+             <tbody> 
+              <tr> 
+               <td class="padding"> 
+                <table class="content"> 
+                 <tbody> 
+                  <tr> 
+                   <td> <p style="font-size: 17px; font-weight: bold;">&nbsp;</p> <p style="padding-bottom: 15px;">&nbsp;</p> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td> 
+        <table width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="text-align: center;background-color: #ffffff;padding: 10px;color: white; font-size: 16px;">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td style="background-color:#bdbdbd; color: #ffffff; border-radius: 8px;"> 
+        <table width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="text-align: center; padding: 10px 5px; font-size: 12px;"> 
+            <div align="center" class="frown" id="descent" style="max-width: 550px; margin: auto; background-color: #103646; font-size: 12px; padding: 0px 0px 25px; border-radius: 5px;">
+             <br /> 
+             <br /> 
+             <span class="pyramid" id="dimension" style="display: block; background-color: #103646"><font face="tahoma">This is an ad. This message has been sent to you through an affiliate. this expires 12/31/23 </font></span>
+             <br /> &nbsp; 
+             <div align="center" class="production" id="absorb" style="max-width: 550px; margin: auto; ">
+              <span class="pyramid" id="dimension" style="display: block; background-color: #103646"><font face="tahoma">To be removed from receiving future messages, <a href="http://www.inc-filear.click/Faustian-carnival/a8q5O239S5Y8ui611t49feH1188T36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkdeQQ5Sox106UOwXDP" style="font-style: normal; font-weight: normal; text-decoration: underline;" target="_blank">leave here</a>. </font></span>
+              <br /> &nbsp; 
+              <div class="active" id="disagreement">
+               <span class="pyramid" id="dimension" style="display: block; background-color: #103646"><font face="tahoma">Converge Direct LLC | 2 Depot Plaza, Suite 401 Bedford Hills, NY 10507</font></span>
+              </div> &nbsp;
+             </div> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td height="10px" style="background-color: #ffffff;">&nbsp;</td> 
       </tr> 
      </tbody> 
     </table> 
-    <div>
-     &nbsp;
-    </div> &nbsp; 
-    <div style="background-color: #ffffff;"> 
-     <article class="oppen_on"> 
-      <p id="Client_service_dow">&nbsp;</p> 
-      <div style="background-color: #041047; padding: 16px 33px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 900; display: inline; border-radius: 80px; font-size: 20px;">
-       <a href="http://www.bring-smcb.click/e7b5g239v5Qq86z12S49Uf4k1186p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQUdeQ95EB1H05b30wD/infuriating-pierce" style="text-decoration: none; color: #fff;">Go And Start Now</a>
-      </div> 
-      <br /> 
-      <br /> 
-      <br /> &nbsp; 
-      <p>&nbsp;</p> 
-     </article> 
-    </div> 
-   </div> 
-   <div id="space_lien" style="background-color: #d0eeff ;"> 
-    <p class="Continue">&nbsp;</p> 
-    <h1 class="retenc_2" style="padding-bottom: 250px;">&nbsp;</h1> 
-    <p>&nbsp;</p> 
-   </div> 
-   <footer style="background-color: rgb(71, 71, 71); font-size: 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 14px 25px; outline: double 5px #000; width: 80%; margin: auto; color: #fff;"> 
-    <address> 
-     <div> 
-      <h6 style="font-size: 12px;">&nbsp;</h6> 
-      <p><small><span style="text-decoration: none; ">No longer want to receive communication from us?,</span><a href="http://www.bring-smcb.click/G6b4o2395Q86nC12G4W9f5B1186i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQUdeQ95GsY105zlBwD/fashionable-transferable" style="text-decoration-line: none; color: white"> <span>Visit-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style></style><big><style><font color="maims"><font title="abstractionism"></font><span></font></span></big></style><style></style><style></style><span></span> </small></p> 
-     </div> </address> 
-   </footer> 
+   </center> 
   </div>   
- <img src="http://www.bring-smcb.click/rotary-Orwell/22e5Q239B5yO8T513H49fZN7k1186T36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQUdeQ95UW10x6pjwNDp" alt=""/></body>
+ <img src="http://www.inc-filear.click/ready-Madeline/8be6G2J39W5V85yJ12YP4a00g1188g36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQkdeQQ6M_1P0R5dOzwD" alt=""/></body>
 </html>
 
-------=_Part_28_822948524.1675887763939--
+------=_Part_409_1641655927.1675893569913--
 
