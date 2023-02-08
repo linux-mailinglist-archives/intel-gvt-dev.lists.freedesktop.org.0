@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A00A68E417
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Feb 2023 00:02:19 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7374168F1B2
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Feb 2023 16:13:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D0B4110E61F;
-	Tue,  7 Feb 2023 23:02:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3BB6610E794;
+	Wed,  8 Feb 2023 15:13:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 07 Feb 2023 23:02:15 UTC
-Received: from mail.mark-csitem.click (unknown [107.158.12.152])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3C7D110E61F
+ Wed, 08 Feb 2023 15:13:29 UTC
+Received: from mail.today-ntflix.click (unknown [107.158.12.160])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4A2F310E794
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Feb 2023 23:02:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mark-csitem.click;
+ Wed,  8 Feb 2023 15:13:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=today-ntflix.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=cvs_user_reviews@mark-csitem.click; 
- bh=FJcHaaXHvx8ZxLDDEk6IMiop/gU=;
- b=5q5ZUnMjMm/1aGELInrpoIWm1SclcO23t7nuZy6ljuhvh89hPGTidQoMaOXlhUwiBh2bGMZJHhs6
- twBZmgpBp89zLhRrEgFIz/63Yo5Pna3MPOFvX1alqpwlKLM/aTIn8lFobMrwf36zvQq3pvmisE1Q
- qJ8VsDLsi8XmDgu+DTs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mark-csitem.click; 
- b=Ihz8g/iEZkdUzWwcBaisQ8Mrq67l7IEi/ZexrlJbvA1tNwWt9m+XhvGiFqT3dLnDu55uwn9ASgdF
- zq3TsuARE/4NBVmjo9sd3G03JmruGJF7JdWa+fT2ogDpEpi7LpglFWVo6gNeNxP9EQLbqdIKsbFE
- 5IF48mR5b7XFFHFtjFo=;
-Received: by mail.mark-csitem.click id hsbc7e0001gi for
+ i=anthony.hoffman@today-ntflix.click; 
+ bh=Qc8pOdKhxQZDVGCbjs5dzeqMRrE=;
+ b=m5+esumj4QHFYrMMMMuTUKpYqIS9tI2OBXIjik2SRhdqAqwIzffFWtU3I6P3443GWHN2Zi36Ecd5
+ BA4l7+TjB0om7JGB9MORiCxE71S6XR2o+zELrDTm4/ASw6wbNDvBl+u0JRMZTl5FVyrIi7HFjhXc
+ uDJwyxcKg+XxdplYH7Q=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=today-ntflix.click; 
+ b=P5MmwWjUAKuKbA3GLB5ORtkRb5oTIkr6DoaBBeBbbbuQ1dU6kto0KaD8NY4w3cSwl7XSTkM7+Ua4
+ xsGCi5XqdXz3KR48kEBcRTxzZSJBigv9eK3xu343UMIO3aJhji/q4gX+U7q91aQsiEk/esbb+OOj
+ tpM5HMOZqNbiGzg7XO8=;
+Received: by mail.today-ntflix.click id hseu1i0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Feb 2023 17:54:21 -0500 (envelope-from
- <cvs_user_reviews-intel+2Dgvt+2Ddev=lists.freedesktop.org@mark-csitem.click>)
-Date: Tue, 7 Feb 2023 17:54:21 -0500
-From: "CVS User Reviews" <cvs_user_reviews@mark-csitem.click>
+ Wed, 8 Feb 2023 10:05:48 -0500 (envelope-from
+ <anthony.hoffman-intel+2Dgvt+2Ddev=lists.freedesktop.org@today-ntflix.click>)
+Date: Wed, 8 Feb 2023 10:05:48 -0500
+From: "Anthony Hoffman" <anthony.hoffman@today-ntflix.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Choose a gift on us as a token of appreciation for your continued
- loyalty.
+Subject: BONUS: $100 NetfIix Gift Card Opportunity
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_63_505773546.1675810447907"
-Message-ID: <0.0.0.A.1D93B471E2976C6.D2E5F@mail.mark-csitem.click>
+ boundary="----=_Part_295_1209651258.1675868709604"
+Message-ID: <0.0.0.31.1D93BCED3A0D346.358C01@mail.today-ntflix.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_63_505773546.1675810447907
+------=_Part_295_1209651258.1675868709604
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,56 +64,89 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>8t</title> 
+  <title>01020823</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <div style="background-color: rgb(172, 172, 172); padding: 50px; padding-bottom: 250px;"> 
-   <div style="max-width: 600px; margin: auto; box-shadow: inset 0px 0px 15px 1px; text-align: center; padding: 50px; background-color: #f4fcff;"> 
-    <header class="go_to_space"> 
-     <div id="Dist_opptp"> 
-      <p>&nbsp;</p> 
-      <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><span id="seo_sprets">CVS </span></h1> 
-      <p>&nbsp;</p> 
-     </div> 
+  <div style="width: 100%; padding: 50px 0px; background-color: #bdbdbd;"> 
+   <div style="max-width: 600px; margin: auto; background-color: #bdbdbd; text-align: center; font-family: Arial, Helvetica, sans-serif;"> 
+    <header id="inc_priss" style=" background-color: #000; color: #ff0000; padding: 8px; display: block; font-size: 25px; border-top-left-radius: 8px; border-top-right-radius: 8px; box-shadow: 0px 0px 5px 1px;"> 
+     <h1 class="rduc_on">NETFLIX</h1> 
     </header> 
-    <section style="width: 100%;"> 
+    <section> 
      <article> 
-      <table width="100%"> 
-       <tbody> 
-        <tr> 
-         <td><a href="http://www.mark-csitem.click/d135XZ2395o86ss13K4V9VdbX1180R36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQAdedS6NHgO106aBLXwD/bumptious-Salisbury"><img alt="" src="http://www.mark-csitem.click/counselling-Switzer/e7c4X2395sr7Na12f49ddBg1180D36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQAdedS5zDB105W2w3D" style="outline: solid 1px #000;" width="100%" /></a></td> 
-        </tr> 
-       </tbody> 
-      </table> 
-     </article> 
-    </section> 
-    <div style="padding: 15px 40px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; line-height: 35px; font-size: 23px ;">
-     Don't miss out! Just a few clicks away from a chance to win a $100 CVS Card by completing our quick 20-second survey about your recent experience with us.     </div> 
-    <br /> 
-    <br /> &nbsp; 
-    <article> 
-     <div> 
-      <p>&nbsp;</p> 
-      <div style="background-color: #DB2026; padding: 15px 20px; display: inline; border: solid 1px #000;font-weight: 900;font-size: 22px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; border-radius: 5px ;">
-       <a href="http://www.mark-csitem.click/d135XZ2395o86ss13K4V9VdbX1180R36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQAdedS6NHgO106aBLXwD/bumptious-Salisbury" style="text-decoration: none; color: #fff;">Go And Start Now</a>
+      <p class="itt_sup" style="display: inline;">&nbsp;</p> 
+      <div>
+       <a href="http://www.today-ntflix.click/insecticide-autoindexing/cf65h2V395mM8I611s49dfW1181o36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQWdede6W1z0Mw6Dl0NwD"><img alt="" src="http://www.today-ntflix.click/belonged-intercept/3b45sB2395EX7at13M4K9e1OQ1181P36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQWdede6sG1O0n5Aq3wD" style="box-shadow: 0px 0px 5px 1px #ff0000;" width="100%" /></a>
       </div> 
       <p>&nbsp;</p> 
-     </div> 
+     </article> 
+    </section> 
+    <article> 
+     <section> 
+      <div> 
+       <p style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; line-height: 35px; padding: 15px 30px; font-weight: bold; color: #ff0101; background-color: #202020; border: double 2px #ff0101; box-shadow: 0px 0px 5px 1px;">Don't miss out! Just a few clicks away from a chance to win a $100 NETFLIX Card by completing our quick 20-second survey about your recent experience with us.</p> 
+      </div> 
+     </section> 
     </article> 
+    <table width="100%"> 
+     <tbody> 
+      <tr> 
+       <td> 
+        <section> 
+         <div> 
+          <p>&nbsp;</p> 
+          <div style="display: inline; background-color: #000; padding: 15px 30px; font-weight: bold
+                        ;font-size: 18px; box-shadow: 0px 0px 5px 1px #ff0000;">
+           <a href="http://www.today-ntflix.click/insecticide-autoindexing/cf65h2V395mM8I611s49dfW1181o36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQWdede6W1z0Mw6Dl0NwD" style="text-decoration: none; color: #fff;">Go And Start Now</a>
+          </div> 
+          <p>&nbsp;</p> 
+         </div> 
+        </section> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <div> 
+     <table> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <article> 
+          <p>&nbsp;</p> 
+          <h3>&nbsp;</h3> 
+          <ul style="list-style-type: none;"> 
+           <li>&nbsp;</li> 
+           <li>&nbsp;</li> 
+           <li>&nbsp;</li> 
+           <li>&nbsp;</li> 
+           <li>&nbsp;</li> 
+           <li style="padding-top: 250px;">&nbsp;</li> 
+           <li>&nbsp;</li> 
+           <li>&nbsp;</li> 
+          </ul> 
+          <p>&nbsp;</p> 
+         </article> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <section> 
+      <div> 
+       <p>&nbsp;</p> 
+      </div> 
+      <article>
+       &nbsp;
+      </article> 
+     </section> 
+    </div> 
    </div> 
   </div> 
-  <footer style="width: 100%;"> 
-   <address style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; background-color: #DB2026; padding: 15px; border-top: double 8px #000;"> 
-    <div> 
-     <p>&nbsp;</p> 
-     <article> 
-      <p><small><span style="text-decoration: none; ">To shut down notices,</span><a href="http://www.mark-csitem.click/sensationally-inattention/c064X2395rVV8613B49dJcJW1180j36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQAdedS7FZpU1_06ETWBwD" style="text-decoration-line: none; color: white"> <span>Start.Ahead.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font id="Simonson"></font><span face="preoccupation"><style></style><style></span><span></style></span><font size="rickets"></font><span></span> </small></p> 
-     </article> 
-     <p>&nbsp;</p> 
+  <footer style="background-color: #a1a1a1;"> 
+   <address> 
+    <div style="width: 100%; text-align: center; color: #000; font-weight: bold; padding: 20px;"> 
+     <p><small><span style="text-decoration: none; ">To cut notices,</span><a href="http://www.today-ntflix.click/dynamite-swerving/51c6a2A3A95h8kF612Bw49e0C1181P36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQWdede5L1Wi06B1@lwD" style="text-decoration-line: none; color: white"> <span>Start.This.Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style face="ginghams"><big></style><span title="allocating"><span lang="skepticism"><span lang="discreteness"></span></big></span></span><font></font><small></small><big></big><style><font dir="forgetful"><span face="characterizer"></span></font></style> </small></p> 
     </div> </address> 
   </footer>   
- <img src="http://www.mark-csitem.click/prose-morning/cf64p2395X85nF11e49deN1180i36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQAdedS7A1BI0Ti5dlOwD" alt=""/></body>
+ <img src="http://www.today-ntflix.click/9535m2P395S85WH13Y49e2FvU1181R36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQWdede6aQ1Ot05eTwlD/demander-application" alt=""/></body>
 </html>
 
-------=_Part_63_505773546.1675810447907--
+------=_Part_295_1209651258.1675868709604--
 
