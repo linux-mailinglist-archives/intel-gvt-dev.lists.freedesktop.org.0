@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B56756923BF
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Feb 2023 17:55:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F11C36924B9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Feb 2023 18:41:24 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0E70210E2E5;
-	Fri, 10 Feb 2023 16:55:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BAD8410EDA5;
+	Fri, 10 Feb 2023 17:41:23 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 10 Feb 2023 16:55:40 UTC
-Received: from mail.rwby-ans.click (unknown [107.158.12.133])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6DCE910ED98
+ Fri, 10 Feb 2023 17:41:21 UTC
+Received: from mail.svleaf-fter.click (unknown [107.158.12.183])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8869A10EDAB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Feb 2023 16:55:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=rwby-ans.click; 
+ Fri, 10 Feb 2023 17:41:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=svleaf-fter.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=renewal_by_andersen_efficient_windows@rwby-ans.click; 
- bh=o1au+R4EubRS+0NE0n2IKYV6aOM=;
- b=yfrJM9FVndrXguwKvAoDS6FJFj7kX98BZ7GgtrmQOhlaAwnK+d4I/DNFJBFAwR41SareRX8NGSH6
- Ugv4KzrkAn1xbvpaG6GLCxQsEEGilbcNMFdmf2JfoO5X3oPkkGONwpj04U5YfTdw6QhhiuZTSPad
- cogm9K7vR9BZsGyaLYM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=rwby-ans.click;
- b=otPsX6Wu/bgnh0FI1EMGwjnUmERr4nrn+sQDTczDN8raJkP+7w5QLmE0wKz/MSXVA1O/nictA8ze
- WsLF8yeP+1PFaG5GBax4UBIn9I4HmU1MTBgWwoH6baBtx15hNqXVsM7HWHj4q4CWGzaaMF5wAk/F
- gvw84T0/y3xjeENJIEA=;
-Received: by mail.rwby-ans.click id hsprgo0001gm for
+ i=leafprotectcom.installation@svleaf-fter.click; 
+ bh=nzB6u2og36IsoN3kOywDNCJTOVE=;
+ b=THay5jPr/DiybrRj49BtqUAmtD1xXHGcKEqIU7mEbKsS07NAqnNSn55faCJ1Cd2oyH2/yUNpqt6U
+ i+2qdvPXom4bnCWwFSz/06LZfRoZvOZaGNrOkJgqQBr0BV6hrS4//4yGrsWPqhKSDSXV+cDanAAW
+ XDOc2miQ3mXXE05TKRo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=svleaf-fter.click; 
+ b=JOlEkakXwnxAjVU0HxgH7cHFiZSE1cUdlGbDyjjbJhrMiMiMaAWPhp1SyfTct+Cur1aERx8rVH7X
+ YeR4835U5pNtH3s+2su4wDBYEIOrLOLFcG0RLgl387nnF6Z1S3uJOTXSnQG2OJ47rOpkVCzmwwC3
+ P/Qyywi1t5MWexKXRVs=;
+Received: by mail.svleaf-fter.click id hsq0s20001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Feb 2023 11:44:01 -0500 (envelope-from
- <renewal_by_andersen_efficient_windows-intel+2Dgvt+2Ddev=lists.freedesktop.org@rwby-ans.click>)
-Date: Fri, 10 Feb 2023 11:44:01 -0500
-From: "Renewal By Andersen Efficient Windows"
- <renewal_by_andersen_efficient_windows@rwby-ans.click>
+ Fri, 10 Feb 2023 12:30:19 -0500 (envelope-from
+ <leafprotectcom.installation-intel+2Dgvt+2Ddev=lists.freedesktop.org@svleaf-fter.click>)
+Date: Fri, 10 Feb 2023 12:30:19 -0500
+From: "LeafProtect.com Installation"
+ <leafprotectcom.installation@svleaf-fter.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Score Big Savings Event &ndash; BOGO 40% Off* Plus Extra Savings!
+Subject: Your permanent solution to clogged gutters  - LeafFilter
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_208_1920658627.1676047418405"
-Message-ID: <0.0.0.17.1D93D6EE12417AC.11F142@mail.rwby-ans.click>
+ boundary="----=_Part_271_1496774047.1676050184456"
+Message-ID: <0.0.0.1E.1D93D7558E4ABFC.42C4F9@mail.svleaf-fter.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_208_1920658627.1676047418405
+------=_Part_271_1496774047.1676050184456
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,55 +64,47 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>03021023</title> 
+  <title>04021023</title> 
  </head> 
- <body bgcolor="#D6EFF9"> 
-  <div style="padding-top: 25px; padding-bottom: 25px; width: 100%;"> 
-   <div style="margin: auto; max-width: 600px; text-align: center; background-color: #fff;"> 
-    <header class="sceo_printer"> 
-     <div id="iicool">
-      <a href="http://www.rwby-ans.click/famously-nontransparent/f126N2XJ395X8Z6p13Dv4a24MU1191o36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQBdeRd6anJh106XXjwD2"><img alt="" src="http://www.rwby-ans.click/planking-obscured/abc5F23s95NGi7a12e4a27rR1191M36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQBdeRd6AU1PI06cj0@wD" width="100%" /></a>
-     </div> 
-    </header> 
-    <article> 
-     <h1 class="titular_spre">&nbsp;</h1> 
-     <div id="nomatd.12">
-      &nbsp;
-     </div> 
-     <p style="font-family: 'Courier New', Courier, monospace; font-size: 45px;">&nbsp;</p> 
-     <h4 style="background-color: aqua; text-decoration: none; margin: auto; padding: 0;">&nbsp;</h4> 
-    </article> 
-    <article style="max-width: 600px; margin: auto;"> 
-     <h4 class="ht_112">&nbsp;</h4> 
-     <div id="sans-serif_to">
-      &nbsp;
-     </div> 
-     <p class="sans-serif_ti">&nbsp;</p> 
-     <p style="font-size: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: 500; text-align: center;">&nbsp;</p> 
-     <p style="font-family: 'Times New Roman', Times, serif; font-size: 25px; margin-top: auto;">&nbsp;</p> 
-     <aside>
+ <body> 
+  <div style="background-color: #fdfff7;"> 
+   <div style="margin: auto; max-width: 600px; text-align: center;"> 
+    <header class="icc_on" style="font-size: 15px; text-align: center; margin: auto;"> 
+     <aside id="Importan_1221" style="padding-top: 35px;">
       &nbsp;
      </aside> 
-    </article> 
+     <a href="http://www.svleaf-fter.click/1974Q2395JF86I12z4aC29T1192y36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQNdeRQ5N1CG05ajwkD/rearrangements-accentuate"><img alt="" src="http://www.svleaf-fter.click/eb74S2395HJ7aB11h4a2bO1192N36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQNdeRQ5a1j0M5VlwD1/rearrangements-accentuate" width="100%" /></a>
+    </header> 
    </div> 
   </div> 
-  <div style="background-color: cadetblue;"> 
-   <footer style="width: 100%; background-color: rgb(231, 231, 231); text-align: center;"> 
-    <address style="max-width: 600px; margin: auto; padding: 15px 0px;"> 
-     <div id="conte-_marging-top" style="text-align: center;"> 
-      <div style="max-width: 600px;">
-       <font class="division" face="verdana"><small><small><small>This is an ad. This message has been sent to you through an affiliate of Renewal by Andersen. </small></small></small><br /> <br /> <span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>To be removed from receiving future emails, <a href="http://www.rwby-ans.click/Iliadize-Adolphus/31e5gq2395k8SK612w4a25SZ1191t36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQBdeRd5B10Pj5NOwUD">Unsubscribe here.</a></b></span></font> 
-       <p>&nbsp;</p> 
-       <font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"> </span></font> 
-       <p style="font-size:12px"><font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>If you have questions or concerns, contact our customer support team, <a href="http://www.rwby-ans.click/piping-backaches/71a4F2395V86NR11J4a26l1191g36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQBdeRd5Vs1Z06XXwlzD"> here.</a></b></span></font></p> 
-       <font class="division" face="verdana"><span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"> 2040 Merrick Road Unit 408 Merrick, NY 11566 </span></font>
-       <br /> &nbsp;
+  <p id="new_spacing-foru1" style="padding-top: 5px;">&nbsp;</p> 
+  <p id="new_spacing-foru2" style="padding-top: 5px;">&nbsp;</p> 
+  <p id="new_spacing-foru3" style="padding-top: 5px;">&nbsp;</p> 
+  <p id="new_spacing-foru8" style="padding-top: 5px;">&nbsp;</p> 
+  <p id="new_spacing-foru7" style="padding-top: 5px;">&nbsp;</p> 
+  <p id="new_spacing-foru6" style="padding-top: 5px;">&nbsp;</p> 
+  <p id="new_spacing-foru5" style="padding-top: 5px;">&nbsp;</p> 
+  <p id="new_spacing-foru4" style="padding-top: 5px;">&nbsp;</p> 
+  <div style="text-align: center;"> 
+   <footer> 
+    <address style="color: rgb(255, 255, 255);"> 
+     <div align="center" class="frown" id="descent" style="max-width: 550px; margin: auto; background-color: #4a5531; font-size: 12px; padding: 0px 0px 25px; border-radius: 5px;">
+      <br /> 
+      <br /> 
+      <span class="pyramid" id="dimension" style="display: block; background-color: #424d2a"><font face="tahoma">This is an ad. This message has been sent to you through an affiliate. this expires 12/31/23 </font></span>
+      <br /> &nbsp; 
+      <div align="center" class="production" id="absorb" style="max-width: 550px; margin: auto; ">
+       <span class="pyramid" id="dimension" style="display: block; background-color: #424d2a"><font face="tahoma">To be removed from receiving future messages, <a href="http://www.svleaf-fter.click/a256pIQ2395D86wC11h4a2ay1192j36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQNdeRQ5J1i0l6J2JkwD/therapies-claustrophobia" style="font-style: normal; font-weight: normal; text-decoration: underline;" target="_blank">leave here</a>. </font></span>
+       <br /> &nbsp; 
+       <div class="active" id="disagreement">
+        <span class="pyramid" id="dimension" style="display: block; background-color: #424d2a"><font face="tahoma">Converge Direct LLC | 2 Depot Plaza, Suite 401 Bedford Hills, NY 10507</font></span>
+       </div> &nbsp;
       </div> 
      </div> </address> 
    </footer> 
   </div>   
- <img src="http://www.rwby-ans.click/8094y2395M8Bi511P4a28g1191z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQBdeRd7eg10THK5u@wkD/Iliadize-Adolphus" alt=""/></body>
+ <img src="http://www.svleaf-fter.click/c9b6az23g95gl8n513E4a2gcGs1192U36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQNdeRQ7N_uH1u06fqwy1D/crusaders-Blanche" alt=""/></body>
 </html>
 
-------=_Part_208_1920658627.1676047418405--
+------=_Part_271_1496774047.1676050184456--
 
