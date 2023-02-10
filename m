@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93D786925C5
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Feb 2023 19:50:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 21ABB69266F
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Feb 2023 20:34:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6472310EDD3;
-	Fri, 10 Feb 2023 18:50:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EBCFD10EDE4;
+	Fri, 10 Feb 2023 19:33:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 10 Feb 2023 18:50:15 UTC
-Received: from mail.cause-ntfx.click (unknown [107.158.12.178])
- by gabe.freedesktop.org (Postfix) with ESMTP id D276110EDD2
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 10 Feb 2023 19:33:57 UTC
+Received: from mail.check-wlgrs.click (unknown [107.158.12.171])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8588E10EDD6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Feb 2023 18:50:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cause-ntfx.click;
+ Fri, 10 Feb 2023 19:33:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=check-wlgrs.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=erick-lambert@cause-ntfx.click; 
- bh=mCuz0HkiDaEKC7nxZI9L+jmFHiA=;
- b=cpJmj62NnQdoQ6aaiq9q1jnyXYpva0nej2KllJKeU3Ut/fcL0V//JI+sNoLRqonhXLfNq8CJVeLi
- pi7hjzK9UlDq9xS4Tp8ZfYW6ueMkXvQ/MqusAvxtR/COWB4wQ083LKDZ/F1jcgUkwLmiKyNdmYR0
- 7mJ69dhrZQq7cksrQhE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cause-ntfx.click;
- b=smY3V8WBUbA0MZfIBl7fr8UHArQQr2ji1ETiWE0EHM9JuCGQ11uq/C+Iku9OU0JSnYB0A9LiYNbq
- DfWkOZpDwvFCuEywgYkZkfyFf/zjcI1PUGeiZFfFyv/thXZRb0Aq4N4KCUeifpdxg2ClH0cIzgz6
- XgBmuDi7G1GDQem2eas=;
-Received: by mail.cause-ntfx.click id hsq8ue0001gu for
+ i=walgreens_appreciation@check-wlgrs.click; 
+ bh=nYhQR2/QRYE4wRSUdDLLmav20k0=;
+ b=u9NuAZd7GpK+A6hleleHPdiBu099E+PIosgITkmWRU9RGTFIY/Z4dp7JbLfaKYl1whGerOxH8ukQ
+ GeUIrFWxx3KztEcwdHvocUh4HhS3ian/nviAIyZmDTS6YA6T4brpjjz6bYCjpNHSEn1uwFypEJ/e
+ itlq6GjE1jRRLUeYYmY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=check-wlgrs.click; 
+ b=kohG79uirpdP+76GFuGxzjfYMFi4+58qaYoR12aJByC0fWvXyUlUdlnP244/tAlpwycIaVQH0jt9
+ M2u0xM1foesadEoaKuqjRk3VIJkxRASCx9TS9X+Vyfa3eQjrZELkXjWj1EPHOZjc+fK4hwVjSYWw
+ H+sDLFMnJFNWphmCulw=;
+Received: by mail.check-wlgrs.click id hsqe2a0001g0 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Feb 2023 13:39:53 -0500 (envelope-from
- <erick-lambert-intel+2Dgvt+2Ddev=lists.freedesktop.org@cause-ntfx.click>)
-Date: Fri, 10 Feb 2023 13:39:53 -0500
-From: "Erick Lambert" <erick-lambert@cause-ntfx.click>
+ Fri, 10 Feb 2023 14:21:28 -0500 (envelope-from
+ <walgreens_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@check-wlgrs.click>)
+Date: Fri, 10 Feb 2023 14:21:28 -0500
+From: "Walgreens Appreciation" <walgreens_appreciation@check-wlgrs.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: BONUS: $100 NetfIix Gift Card Opportunity
+Subject: Claim Your iPad Pro from Walgreens
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_496_1723052740.1676054380141"
-Message-ID: <0.0.0.36.1D93D7F107849C8.416919@mail.cause-ntfx.click>
+ boundary="----=_Part_256_221585266.1676056875839"
+Message-ID: <0.0.0.1C.1D93D84DFCA4988.614665@mail.check-wlgrs.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_496_1723052740.1676054380141
+------=_Part_256_221585266.1676056875839
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,69 +63,74 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>01021023</title> 
+  <title>02021023</title> 
  </head> 
- <body style="background-color: rgb(212, 235, 255); max-width: 600px; margin: auto; padding-bottom: 30px;"> 
-  <div style="background-color: #fff;"> 
-   <header id="Igg_proyec" style="max-width: 600px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
-    <table> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <div class="Title_2525" style="width: 100%; text-align: center; padding-top: 25px;"> 
-     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 35px; font-weight: bold; color: #ff0000;">NETFLIX</p> 
-    </div> 
-   </header> 
-   <section id="ssg_part-from" style="text-align: center; max-width: 600; margin: auto;"> 
-    <div class="part_igg"> 
-     <p><a href="http://www.cause-ntfx.click/c5G5R2H395zy8t611r4a2dy1193Q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQCdeRR5k1vM05UXwDU/absconds-redundant"><img alt="" src="http://www.cause-ntfx.click/98f4P2395u7anz12B4a2jf_1193Q36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQCdeRR6VU1nN05N12wD/slashes-smacked" width="100%" /></a></p> 
-    </div> 
-    <p class="estruc-12334" style="font-size: 12px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">&nbsp;</p> 
-    <p class="estruc-12335" style="font-size: medium; font-family: 'Times New Roman', Times, serif; font-weight: bold;">&nbsp;</p> 
-    <p class="estruc-12336" style="font-size: 22px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: normal;">&nbsp;</p> 
-    <p class="estruc-12337" style="font-size: 15px; font-family: Georgia, 'Times New Roman', Times, serif;">&nbsp;</p> 
-    <p class="estruc-12338" style="font-size: 12px;">&nbsp;</p> 
-    <p class="estruc-12339" style="background-color: antiquewhite;">&nbsp;</p> 
-    <p class="estruc-123310" style="font-weight: bold;">&nbsp;</p> 
-    <article style="width: 100%; margin: auto;"> 
-     <p class="text_dscp" style="font-size: 21PX; line-height: 30px; padding: 0px 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 600;">Don't miss out! Just a few clicks away from a chance to win a $100 NETFLIX Card by completing our quick 20-second survey about your recent experience with us.</p> 
-    </article> 
-   </section> &nbsp; 
-   <div style="background-color: rgb(0, 0, 0); padding: 20px; font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: center; font-weight: 900; font-size: 16px;">
-    <a href="http://www.cause-ntfx.click/c5G5R2H395zy8t611r4a2dy1193Q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQCdeRR5k1vM05UXwDU/absconds-redundant" style="text-decoration: none; color: #fff; display: block; padding-left: 30%; padding-right: 30%;">Go And Start Now</a>
+ <body style="padding: 0; margin: 0;"> 
+  <div id="bgcolor_1" style="background-color: #dcf2f5; width: 100%; padding-top: 50px; padding-bottom: 50px;"> 
+   <div class="bg_white-tex-1" style="max-width: 600px; margin: auto; background-color: #fff; border-radius: 8px; padding-top: 10px; padding-bottom: 10px;"> 
+    <header class="p2p_integ-223" style="text-align: center;"> 
+     <section id="special-indica-112"> 
+      <div class="special-indica-112" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 30px;">
+       WALGREENS
+      </div> 
+     </section> 
+     <div class="itts_1233">
+      &nbsp;
+     </div> 
+     <h1 class="nomber_1">&nbsp;</h1> 
+     <h2 class="nomber_1.1">&nbsp;</h2> 
+     <h2 class="nomber_1.2">&nbsp;</h2> 
+    </header> 
+    <section> 
+     <h1 id="titulo_espc_4040">&nbsp;</h1> 
+     <div>
+      <a href="http://www.check-wlgrs.click/Fa74G2395Bp8i611m4a31V1194S36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ6deRS7oj1tG0p5OpJwD/rotator-million"><img alt="" src="http://www.check-wlgrs.click/wa75X239g5Asz7a12Bs4a33v1194i36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ6deRS5B10kx6AkwDqP/marinate-Clytemnestra" width="100%" /></a>
+     </div> 
+     <section class="segundo_tex_imput" style="text-align: center; display: block;"> 
+      <div class="sin_title"> 
+       <p style="font-size: 22px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 0px 30px; line-height: 30px;;">Don't miss out! Just a few clicks away from a chance to win a $100 <strong style="color: #ff0000;">Walgreens</strong> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+      </div> 
+     </section> 
+     <br /> 
+     <br /> &nbsp; 
+     <div style="text-align: center; display: block;"> 
+      <div class="btg_Go" style="text-align: center; font-size: 22px; background-color: #a10000; padding: 15px 20px; font-weight: 900; display: inline; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+       <a href="http://www.check-wlgrs.click/Fa74G2395Bp8i611m4a31V1194S36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ6deRS7oj1tG0p5OpJwD/rotator-million" id="btg_Go" style="text-decoration: none; color: #fff; padding: 5px 15px; border-radius: 30px;">Go And Start Now</a>
+      </div> 
+      <table> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td style="padding-top: 30px;" width="100$">&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </div> 
+    </section> 
    </div> 
-   <div class="spacing_1" style="padding-top: 25px;">
-    &nbsp;
-   </div> 
-   <div class="spacing_2" style="padding-top: 25px;">
-    &nbsp;
-   </div> 
-   <div class="spacing_3" style="padding-top: 25px;">
-    &nbsp;
-   </div> 
-   <div class="spacing_4" style="padding-top: 25px;">
-    &nbsp;
-   </div> 
-   <div class="spacing_5" style="padding-top: 25px;">
-    &nbsp;
-   </div> 
-   <div class="spacing_6" style="padding-top: 25px;">
-    &nbsp;
-   </div> 
+  </div> 
+  <p style="padding-top: 150px; background-color: #dcf2f5; margin: 0 ;">&nbsp;</p> 
+  <div style="background-color: rgb(53, 53, 53); padding: 15px;"> 
    <footer style="max-width: 600px; margin: auto; text-align: center; font-size: 12px; font-weight: bold; background-color: #d3d3d3; padding: 15px;"> 
     <address> 
      <div> 
-      <p class="unsubscribe"><span><span style="text-decoration: none; ">No longer want to receive messages?,</span><a href="http://www.cause-ntfx.click/visage-hurler/2a66f2z3j95F8iT612z4a2seV1193A36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQCdeRR5DB1S06BOw0DW" style="text-decoration-line: none;"> <span>Start-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span size="disturbing"><small><style dir="chemists"></style></span></small><span id="moistly"><font></font><small></small></span><font lang="hastening"></font> </span></p> 
+      <p class="unsubscribe"><span><span style="text-decoration: none; ">To modify your message choices,</span><a href="http://www.check-wlgrs.click/bedding-copperhead/cd84R2395MW8P611Q4a32v1194k36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ6deRS7eT1UVL06QTw2D@" style="text-decoration-line: none;"> <span>Click-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <style><span dir="waiver"><font color="preserves"></span></font></style><style></style><font></font><big></big><span face="novelist"></span><style></style> </span></p> 
      </div> </address> 
    </footer> 
   </div>   
- <img src="http://www.cause-ntfx.click/1f16A239RR5gLS8511i4a30x1193m36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQCdeRR5v1Jm05BBwWD/belonging-neighborly" alt=""/></body>
+ <img src="http://www.check-wlgrs.click/associations-influentially/5766W239OW5z8z5g12f4a3B4U1194L36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ6deRS5OO1y05pOlwD" alt=""/></body>
 </html>
 
-------=_Part_496_1723052740.1676054380141--
+------=_Part_256_221585266.1676056875839--
 
