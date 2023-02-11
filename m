@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6302693426
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Feb 2023 23:14:11 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12B8569349B
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Feb 2023 00:03:52 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9AEC210E3AE;
-	Sat, 11 Feb 2023 22:14:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ABB8210E3AC;
+	Sat, 11 Feb 2023 23:03:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sat, 11 Feb 2023 22:14:07 UTC
-Received: from mail.fastez.top (unknown [107.158.12.174])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5FAF810E3AB
+ Sat, 11 Feb 2023 23:03:48 UTC
+Received: from mail.runonkhls.click (unknown [107.158.12.179])
+ by gabe.freedesktop.org (Postfix) with ESMTP id AB4D910E3AC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 11 Feb 2023 22:14:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fastez.top;
+ Sat, 11 Feb 2023 23:03:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=runonkhls.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal_latest_news@fastez.top; 
- bh=1pDC8pVDSIdGgZdmpUmynPM30HI=;
- b=m7qS0u03C86DUDYND6aUXfB6DzBnA0VB1KqGAzRe0/8stD20MZ9GBd4dzlIu6LypNsORZdsP1uUh
- IZ3EN/0hIMrh6nfeAhip+azgaW9WsR+j5Q6Bk0LalGkNlF5o3alDv1GeTZ2VGJbZqpookdgvmcsS
- EwOWb72deuYzYBj1SQ4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fastez.top;
- b=OSFDCm7dDpMfLKR8OqSXaz6zUMkIygo9vxU5y8fNf/bC3GkLrAUsqExyUCspGkgANXO5WO76k1Gg
- f9S36+3SROMTwMZe1IlDtepQlT9odpkSwNNWQgLwC4Q3i3+S2ZQLnqizYcHz/xg5lrUEwPJP1WEG
- NQvtcpd3mQhffM665EI=;
-Received: by mail.fastez.top id ht09iu0001go for
+ i=kohls-exclusive-offer@runonkhls.click; 
+ bh=zUkKM+cyvESpwg47Ocp97leo9JY=;
+ b=uRo4B8HGmekEZQEpYk4TdE9KUjHM9YkPwFegGyT8YqlBwOXaoow+608N2qM0Y/NatybfFKar0nF3
+ PguVmgqQjTKwSmo+f3//DVIx1KiXZZkVC0AYYVz+nO4il4/y3sXPIPJlGlWg4s9Mfg7eNmsMo91d
+ xT+wUYek0/stlWo8zQw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=runonkhls.click;
+ b=J6cZdKaHU6+pX8Bh/rhG6cKVRmivZVhafFVVzhrI6kFLFtwRxQZN9cYBBfBAA8kuiMQyjN8X/TP2
+ ZS71kWVgq0EVs+CuRu1lBFXbRnxMlsZQ9G/oFILIxlhzt4Uf3y4y0uJubQ+/a+6wPuN0o3Q+QY4F
+ /a252HHfwnf1tmz9NtA=;
+Received: by mail.runonkhls.click id ht0fd80001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 11 Feb 2023 17:03:51 -0500 (envelope-from
- <paypal_latest_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@fastez.top>)
-Date: Sat, 11 Feb 2023 17:03:51 -0500
-From: "Paypal Latest News" <paypal_latest_news@fastez.top>
+ Sat, 11 Feb 2023 17:53:54 -0500 (envelope-from
+ <kohls-exclusive-offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@runonkhls.click>)
+Date: Sat, 11 Feb 2023 17:53:54 -0500
+From: "Kohls Exclusive Offer" <kohls-exclusive-offer@runonkhls.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We appreciate your loyalty, pick any gift on us
+Subject: Hurry, get a Knife Set from Kohl's for free
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_580_1617075435.1676152997305"
-Message-ID: <0.0.0.40.1D93E64B9BF8FB0.24C1E7@mail.fastez.top>
+ boundary="----=_Part_595_540523637.1676156029329"
+Message-ID: <0.0.0.42.1D93E6BB751B9B8.53A6E@mail.runonkhls.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_580_1617075435.1676152997305
+------=_Part_595_540523637.1676156029329
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,74 +63,63 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04021123</title> 
+  <title>08021123</title> 
  </head> 
- <body style="background-color:rgb(221, 221, 221)"> 
-  <div id="separ-inv" style="padding-top: 20px;">
-   &nbsp;
-  </div> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff; padding-top: 1px ; padding-bottom: 20px; border-radius: 8px;"> 
-   <article id="contex_split" style="font-size: 14px; font-family: 'Courier New', Courier, monospace; line-height: 20px; color: #000;"> 
-    <p class="import_dda-2558" style="font-size: 12px; font-family: 'Times New Roman', Times, serif; color: #ff274d; line-height: 1px; text-align: center; border: none;">&nbsp;</p> 
-    <p class="import_dda-2558" style="font-size: 12px; font-family: 'Times New Roman', Times, serif; color: #ff274d; line-height: 1px; text-align: center; border: none;">&nbsp;</p> 
-    <aside>
-     &nbsp;
-    </aside> 
-   </article> 
-   <div> 
-    <h1 class="import_dda-2558">&nbsp;</h1> 
-    <p class="import_dda-2558" style="font-size: 12px; font-family: 'Times New Roman', Times, serif; color: #ff274d; line-height: 1px; text-align: center; border: none;">&nbsp;</p> 
-    <h2>&nbsp;</h2> 
-    <div> 
-     <table> 
-      <tbody> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td>&nbsp;</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
+ <body style="margin: 0; padding: 0; background-color: #f4f7ff;"> 
+  <div style="max-width: 600px; margin: auto; padding: 15px; background-color: #fff;"> 
+   <div style="max-width: 600px; margin: auto;"> 
+    <article id="Impro_rec-go"> 
+     <p class="Tex_info_112" style="font-size: 12px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: normal; color: #f4f7ff;">&nbsp;</p> 
+     <div class="Tex_info_112" style="font-size: 12px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: normal; color: #f4f7ff;">
+      &nbsp;
+     </div> 
+     <aside class="Tex_info_112" style="font-size: 12px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: normal; color: #f4f7ff;">
+      &nbsp;
+     </aside> 
+    </article> 
    </div> 
-   <header style="text-align: center; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 22px; line-height: 30px;;"> 
-    <div>
-     &nbsp;
+   <header id="Pri-ogg_glas" style="max-width: 600px; margin: auto; box-shadow: inset 0px 0px 5px 1px; text-align: center; padding: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> 
+    <div style="font-size: 45px;">
+     <a href="http://www.runonkhls.click/9176LA239s5o8Y6i13M4a6z0Uz119fg36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQVdeSe6Qr1O0C6QLwDLL/doubts-recalculations" style="text-decoration: none; color: #333333;"><strong style="color: #4e0000;">KOHL'S </strong>Rewards </a>
     </div> 
    </header> 
-   <section> 
-    <table> 
-     <tbody> 
-      <tr> 
-       <td><a href="http://www.fastez.top/d314w2395XNN8611I4a5ck119eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQNdeSS7N1tpm0L6jljwWD/revealing-Saracens"><img alt="" src="http://www.fastez.top/buildup-strangle/8645k23Z95dU7aK12V4qa5eT119eA36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQNdeSS5au10J5kUwDO" width="100%" /></a></td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </section> 
-   <div id="conte_iffgo.35" style="text-align: center;"> 
-    <aside style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 21px; padding: 15px 35px; line-height: 30px; font-weight: 600;">
-     Don't miss out! Just a few clicks away from a chance to win a $100 PayPal Card by completing our quick 20-second survey about your recent experience with us.     </aside> 
-   </div> 
-   <div style="text-align: center;"> 
-    <div style="font-size: 18px; padding: 12px; font-weight: bold; background-color: #01529D; color: #FFFFFF; border: #1B0000 groove thin; border-radius: 50px">
-     <a href="http://www.fastez.top/d314w2395XNN8611I4a5ck119eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQNdeSS7N1tpm0L6jljwWD/revealing-Saracens" style="text-decoration: none; color: #fff; padding-right: 180px; padding-left: 180px; display: block">Go And Start Now</a>
+   <section style="padding-top: 25px;"> 
+    <div style="text-align: center;">
+     <a href="http://www.runonkhls.click/9176LA239s5o8Y6i13M4a6z0Uz119fg36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQVdeSe6Qr1O0C6QLwDLL/doubts-recalculations"><img alt="" src="http://www.runonkhls.click/c5f5Y239R5tWI7a11L4a62M119fR36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQVdeSe6Yhs1D05hPwLD/floorings-overlaying" width="95%" /></a>
     </div> 
-   </div> 
-  </div> 
-  <div style="padding-top: 150px;">
-   &nbsp;
-  </div> 
-  <aside> 
-   <section> 
-    <footer> 
-     <address> 
-      <div style="max-width: 570px; margin: auto; text-align: center; font-size: 12px; padding: 15px; color: #FFFFFF; background-color: #2B2B2B"> 
-       <p><span style="text-decoration: none; ">To change your subscription elections,</span><a href="http://www.fastez.top/8454m2395WQ8n612n4ar5dy119er36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQNdeSS7a1Jyks06o@wD0z/nooks-inductor" style="text-decoration-line: none; color: white"> <span>Click Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <font class="Nazism"><font dir="conductivity"></font></font><small></small><span title="conflicts"><font><font dir="unwound"></span><style></font></style><style></style></font><span id="sticker"></span></p> 
-      </div> </address> 
-    </footer> 
    </section> 
-  </aside>   
- <img src="http://www.fastez.top/a616Yrz2395N8_5r13y4a5FfjV119eo36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQNdeSS6pDYH106jUUwD@/Warfield-withhold" alt=""/></body>
+   <div class="att_oprs_go" style="padding-top: 25px;">
+    &nbsp;
+   </div> 
+   <aside style="text-align: center;"> 
+    <p style="font-size: 20px; color: #555555; font-family: arial; margin: 0"><strong>intel-gvt-dev@lists.freedesktop.org</strong></p> 
+   </aside> 
+   <section style="padding-left: 15px;"> 
+    <div style="text-align: left; display: inline;">
+     <a href="http://www.runonkhls.click/9176LA239s5o8Y6i13M4a6z0Uz119fg36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQVdeSe6Qr1O0C6QLwDLL/doubts-recalculations"><img alt="" src="http://www.runonkhls.click/c9b6js239Y5I7lxa12R4Ta63n119fl36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQVdeSe6WY1L0p5YWpwD/doubts-recalculations" width="40%" /></a>
+    </div> 
+    <div style="display: inline; margin: auto;">
+     <a href="" style="text-align: right;"><img alt="" src="http://www.runonkhls.click/backstitch-helicopter/1986g2_j395n7aYn13g4Za64rl119fG36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQVdeSe6nz1Y0y5DTBwD" style="padding-bottom: 39px;" width="58%" /></a>
+    </div> 
+   </section> 
+   <section id="bt_especial">
+    <a href="http://www.runonkhls.click/9176LA239s5o8Y6i13M4a6z0Uz119fg36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQVdeSe6Qr1O0C6QLwDLL/doubts-recalculations"><img alt="" src="http://www.runonkhls.click/shipment-contriver/8dc4j2395b7iaV12O4am65i119fz36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQVdeSe7aH1jC_05YWAwD" width="100%" /></a>
+   </section> 
+   <div style="padding-bottom: 20px;">
+    &nbsp;
+   </div> 
+   <section style="text-align: center;"> 
+    <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none; mso-line-height-rule: exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:30px;color:#666666;font-size:20px"><span><small>*Only Pay A Small S&amp; H Fee </small><br /> &nbsp;</span></p> 
+   </section> 
+  </div> 
+  <footer style="padding-top: 250px; font-size: 12px; text-align: center; "> 
+   <address> 
+    <div style="color: #FFFFFF; font-size: 12px; background-color: #333333; padding: 25px"> 
+     <p><small><span style="text-decoration: none; ">No longer wish to receive email information from us?,</span><a href="http://www.runonkhls.click/2875J2H395Hol8611V4a61L119fr36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQVdeSe7AGIx1Z05PAwDp/backstitch-helicopter" style="text-decoration-line: none; color: white"> <span>Visit.Here.Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style><style></style></style><font title="McDonnell"><font style="unwinding"></font></font><span><style></style></span><big></big><span><font class="wrongly"><font dir="sweet"></font></span></font> </small></p> 
+    </div> </address> 
+  </footer>   
+ <img src="http://www.runonkhls.click/backstitch-helicopter/2105Kw2395u8oA511M4a66P119fl36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQVdeSe6l1mi0X5fUwzD" alt=""/></body>
 </html>
 
-------=_Part_580_1617075435.1676152997305--
+------=_Part_595_540523637.1676156029329--
 
