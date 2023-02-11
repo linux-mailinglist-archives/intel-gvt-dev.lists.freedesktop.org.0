@@ -1,42 +1,61 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09F9D693333
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Feb 2023 20:02:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C8C1693348
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Feb 2023 20:24:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C750B10E367;
-	Sat, 11 Feb 2023 19:02:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0B76010E11A;
+	Sat, 11 Feb 2023 19:24:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sat, 11 Feb 2023 19:02:33 UTC
-Received: from mail.sniorprk.top (unknown [107.158.12.181])
- by gabe.freedesktop.org (Postfix) with ESMTP id EDEA210E366
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 11 Feb 2023 19:02:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sniorprk.top;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=seniorperks@sniorprk.top; bh=eIvKqromySd6C8vTG3aK7Sd5aCE=;
- b=BUauAlNH/hXAyrX5SOlMT1kE2J66IuD2RORLFVTq5HtM8WX+Ifxp6yb2Z4z3O1zkUYRhGu/ggVEU
- OUuBdSzWK0HZCnRExrpmuI7Wi6yk+mRrBX+66QLdm4YT8+yaSISjPBO2pOY9PV3XX8E4R9nApyqh
- UP3ubm5nwEtkct6ipz8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sniorprk.top;
- b=1Z+oWzULkWnTorV4FA1FhbSebKzJu+7t2aUt3N7wXioMLXOtHVkQFE8ukHFxgLhBBgW2PkZHHs6F
- 6Pm1RRBv4ZfLG11nf/tj+yuYlEEaJL+iiWf8UvdBKUjfATT9rJ80CX0r7pxSvRLuleg0r+7qy+VE
- 0d2st+UZIiA0q9efLlI=;
-Received: by mail.sniorprk.top id hsvj4k0001g0 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 11 Feb 2023 13:50:32 -0500 (envelope-from
- <seniorperks-intel+2Dgvt+2Ddev=lists.freedesktop.org@sniorprk.top>)
-Date: Sat, 11 Feb 2023 13:50:32 -0500
-From: SeniorPerks <seniorperks@sniorprk.top>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The Biggest Senior Discounts Of All Time. Check It Out!
+Received: from mail-vk1-xa2a.google.com (mail-vk1-xa2a.google.com
+ [IPv6:2607:f8b0:4864:20::a2a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E844910E11A;
+ Sat, 11 Feb 2023 19:24:34 +0000 (UTC)
+Received: by mail-vk1-xa2a.google.com with SMTP id b81so4366222vkf.1;
+ Sat, 11 Feb 2023 11:24:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112; t=1676143474;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=UxlJ1ylLIbukjk1rqvmj0yN/uchUwg9M7RlTwLyGWuY=;
+ b=GkOee6yuha8KCFlJkb58KhoIf1WvDhoQGtKv5bfk3o8tsTw+l/AsWr+2V/5JogWj5S
+ e+tne2hDNFv1lpCplUyRYJ8XvXJT/A86j9C6i4RrCLDhYDzUH1pdJxgLHNZVq73aui39
+ 5rcNE3u8qrpeAfy17RxKjgbVwdyWKa+QtwOz4hidJv8eZzgjnKhWEyvMMx14AqZH4Nq4
+ TG8+24y9MmfpA6DBbd/7StK3VZjcYSfq4ZkK0A81/+Jg014d+TErR5x9m4vwOP0lQK2R
+ C0H5Kz2iqI0dL1Yq2gcKuiAF8/iGmlIS/Vl6F/BWWqtKm9JR3f9wyanfKxR5l86KD4+I
+ fzXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1676143474;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UxlJ1ylLIbukjk1rqvmj0yN/uchUwg9M7RlTwLyGWuY=;
+ b=Q57PO+OnV7MMnnQaLlOY2UrbrpONIb4At7LlrrJct1F7C7t2euXx4vOIMh0gWBivd3
+ Ah/ZKl4vKUTjRnNgu4VQqivPPUgzDWjsqwzprKApqNakNkkXK0v6pPjp40lwAAsd3+QN
+ YhLTpfJf0i7RwNTofIAFLq3tKQ/a/6ZBNDM7GeQbcsDx5CjXRP9cVtB6Jn93WG1bB2ea
+ 5jvqj3YSIxlhgIk/ogdJxlIrRLOylKAri67sbgmrSvnmvxqbvndXPa0JyQ6Ijkwc9mdV
+ SMLM4K3CYfprUGQ+68/3sCuCWBrGnxNsouGDASRzJ2O/xcAeTsQTca3H4WdRzAqsQCOa
+ uYyw==
+X-Gm-Message-State: AO0yUKV3CC3jN4LmeLx+MERdEKMtZ/TGZXEIRmZ/T8t5TEknXBbtny8k
+ 9g+pij2MU7s+GYNU1X4WsyYIlu91kjclbtt1HjE=
+X-Google-Smtp-Source: AK7set+VxozcaMiBwzTBA/oB2AIISrAuQ7Bedp9xn0ogNT61aLcgqppS9XrHSr2WISoF0Ecv104SL7WHbg5llfrzjs4=
+X-Received: by 2002:a1f:1444:0:b0:400:db9c:7a9f with SMTP id
+ 65-20020a1f1444000000b00400db9c7a9fmr3680755vku.6.1676143473964; Sat, 11 Feb
+ 2023 11:24:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_715_750116904.1676141358492"
-Message-ID: <0.0.0.4F.1D93E49B81EFEB8.3CF05F@mail.sniorprk.top>
+References: <20230125203743.564009-1-jim.cromie@gmail.com>
+ <20230125203743.564009-15-jim.cromie@gmail.com>
+In-Reply-To: <20230125203743.564009-15-jim.cromie@gmail.com>
+From: jim.cromie@gmail.com
+Date: Sat, 11 Feb 2023 12:24:07 -0700
+Message-ID: <CAJfuBxw+g6w9_p2ym-hpCQNbr01crRMK_aYb4oV4j_BhoPwQjw@mail.gmail.com>
+Subject: Re: [PATCH v3 14/19] drm_print: fix stale macro-name in comment
+To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
+ intel-gfx@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,77 +68,64 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch, robdclark@gmail.com,
+ seanpaul@chromium.org, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_715_750116904.1676141358492
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Wed, Jan 25, 2023 at 1:38 PM Jim Cromie <jim.cromie@gmail.com> wrote:
+>
+> Cited commit uses stale macro name, fix this, and explain better.
 
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:0="urn:schemas-microsoft-com:office:office">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width,initial-scale=1" name="viewport" /> 
-  <meta name="x-apple-disable-message-reformatting" /> 
-  <title>06021123</title> 
- </head> 
- <body bgcolor="#D0D0D0"> 
-  <div style="max-width: 600px; margin: auto; background-color: #FFFFFF"> 
-   <table bgcolor="#FFFFFF" border="0" style="text-align: center" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td width="95%">&nbsp;</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td>&nbsp; <p style="font-size: 22px; font-weight: 500; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">&nbsp;</p> </td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td><a href="http://www.sniorprk.top/antiformant-insofar/1f25J239u5JZ8F612f4a4bZP119aD36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQVdeS95mr10I5fPBwD"><img alt="" src="http://www.sniorprk.top/antiformant-insofar/be85R239x5JL7ai12M4Da4eV119aw36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVdeS96rK1pS06DzwDyy" width="100%" /></a></td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td> <p style="font-weight: bold;font-size: 20px; padding: 20px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">&nbsp;</p> </td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td> 
-       <div style="background-color: #a1a1a1; color: #ffffff; font-size: 12px;"> 
-        <p>&nbsp;</p> 
-        <p align="center" class="dress" id="slogan"><span>If you'd prefer not to receive future messages, <a href="http://www.sniorprk.top/eu36p23VS95i86Nq13lo4Sa4cU119aQ36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVdeS96g10JGp5NNlwD/prototype-blackberry"><font color="#666666">leave Here</font></a>.</span></p> 
-        <p align="center" class="accept" id="elegant"><span><a href="http://www.sniorprk.top/validate-dubious/5ee5O23z95f8M6Q13z4aC4ZdZ119aT36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQVdeS95vAy105wyMwD"><font color="#666666">My Senior Perks</font></a> | 302 Washington St #150-7835 San Diego, CA 92103</span></p> 
-        <br /> 
-        <br /> 
-        <span>&nbsp; </span> 
-        <p class="sweep" id="piece"><span>&nbsp;</span></p> 
-        <span> </span> 
-        <p>&nbsp;</p> 
-        <span> </span>
-       </div> </td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td><br /> <br /> <br /> <br /> <br /> &nbsp;</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td>&nbsp;</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.sniorprk.top/5394z2395oS8j511b4a4fs119ay36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQVdeS97M1Y0Ygg6iOlwDL/petroleum-Vaticanize" alt=""/></body>
-</html>
 
-------=_Part_715_750116904.1676141358492--
 
+
+So this patch is somehow drawing an 'F' flag from patchwork,
+but theres no hint of what went wrong.
+(I have seen a merge conflict, probably not that).
+
+https://patchwork.freedesktop.org/series/113361/
+
+https://patchwork.freedesktop.org/patch/520460/?series=113361&rev=1
+
+Without this resolved, I cant see BAT results or the more exhaustive tests.
+
+
+
+
+
+>
+> When DRM_USE_DYNAMIC_DEBUG=y, DYNDBG_CLASSMAP_DEFINE() maps DRM_UT_*
+> onto BITs in drm.debug.  This still uses enum drm_debug_category, but
+> it is somewhat indirect, with the ordered set of DRM_UT_* enum-vals.
+> This requires that the macro args: DRM_UT_* list must be kept in sync
+> and in order.
+>
+> Fixes: f158936b60a7 ("drm: POC drm on dyndbg - use in core, 2 helpers, 3 drivers.")
+> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
+> ---
+> . emphasize ABI non-change despite enum val change - Jani Nikula
+> . reorder to back of patchset to follow API name changes.
+> ---
+>  include/drm/drm_print.h | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+>
+> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
+> index 6a27e8f26770..7695ba31b3a4 100644
+> --- a/include/drm/drm_print.h
+> +++ b/include/drm/drm_print.h
+> @@ -276,7 +276,10 @@ static inline struct drm_printer drm_err_printer(const char *prefix)
+>   *
+>   */
+>  enum drm_debug_category {
+> -       /* These names must match those in DYNAMIC_DEBUG_CLASSBITS */
+> +       /*
+> +        * Keep DYNDBG_CLASSMAP_DEFINE args in sync with changes here,
+> +        * the enum-values define BIT()s in drm.debug, so are ABI.
+> +        */
+>         /**
+>          * @DRM_UT_CORE: Used in the generic drm code: drm_ioctl.c, drm_mm.c,
+>          * drm_memory.c, ...
+> --
+> 2.39.1
+>
