@@ -1,61 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C8C1693348
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Feb 2023 20:24:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32F2A693356
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Feb 2023 20:39:27 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0B76010E11A;
-	Sat, 11 Feb 2023 19:24:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D85D910E37F;
+	Sat, 11 Feb 2023 19:39:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vk1-xa2a.google.com (mail-vk1-xa2a.google.com
- [IPv6:2607:f8b0:4864:20::a2a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E844910E11A;
- Sat, 11 Feb 2023 19:24:34 +0000 (UTC)
-Received: by mail-vk1-xa2a.google.com with SMTP id b81so4366222vkf.1;
- Sat, 11 Feb 2023 11:24:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1676143474;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=UxlJ1ylLIbukjk1rqvmj0yN/uchUwg9M7RlTwLyGWuY=;
- b=GkOee6yuha8KCFlJkb58KhoIf1WvDhoQGtKv5bfk3o8tsTw+l/AsWr+2V/5JogWj5S
- e+tne2hDNFv1lpCplUyRYJ8XvXJT/A86j9C6i4RrCLDhYDzUH1pdJxgLHNZVq73aui39
- 5rcNE3u8qrpeAfy17RxKjgbVwdyWKa+QtwOz4hidJv8eZzgjnKhWEyvMMx14AqZH4Nq4
- TG8+24y9MmfpA6DBbd/7StK3VZjcYSfq4ZkK0A81/+Jg014d+TErR5x9m4vwOP0lQK2R
- C0H5Kz2iqI0dL1Yq2gcKuiAF8/iGmlIS/Vl6F/BWWqtKm9JR3f9wyanfKxR5l86KD4+I
- fzXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1676143474;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=UxlJ1ylLIbukjk1rqvmj0yN/uchUwg9M7RlTwLyGWuY=;
- b=Q57PO+OnV7MMnnQaLlOY2UrbrpONIb4At7LlrrJct1F7C7t2euXx4vOIMh0gWBivd3
- Ah/ZKl4vKUTjRnNgu4VQqivPPUgzDWjsqwzprKApqNakNkkXK0v6pPjp40lwAAsd3+QN
- YhLTpfJf0i7RwNTofIAFLq3tKQ/a/6ZBNDM7GeQbcsDx5CjXRP9cVtB6Jn93WG1bB2ea
- 5jvqj3YSIxlhgIk/ogdJxlIrRLOylKAri67sbgmrSvnmvxqbvndXPa0JyQ6Ijkwc9mdV
- SMLM4K3CYfprUGQ+68/3sCuCWBrGnxNsouGDASRzJ2O/xcAeTsQTca3H4WdRzAqsQCOa
- uYyw==
-X-Gm-Message-State: AO0yUKV3CC3jN4LmeLx+MERdEKMtZ/TGZXEIRmZ/T8t5TEknXBbtny8k
- 9g+pij2MU7s+GYNU1X4WsyYIlu91kjclbtt1HjE=
-X-Google-Smtp-Source: AK7set+VxozcaMiBwzTBA/oB2AIISrAuQ7Bedp9xn0ogNT61aLcgqppS9XrHSr2WISoF0Ecv104SL7WHbg5llfrzjs4=
-X-Received: by 2002:a1f:1444:0:b0:400:db9c:7a9f with SMTP id
- 65-20020a1f1444000000b00400db9c7a9fmr3680755vku.6.1676143473964; Sat, 11 Feb
- 2023 11:24:33 -0800 (PST)
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Sat, 11 Feb 2023 19:39:22 UTC
+Received: from mail.gotplns.click (unknown [107.158.12.141])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C3E8710E37A
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 11 Feb 2023 19:39:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gotplns.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=tmobile-supplies@gotplns.click; 
+ bh=Zm+5o2yv+1/jT717MlOYF+qxcRQ=;
+ b=intUfzqODoq3cKzVph/tIlOi3DY3wiFzl3WvsVcnCrccgi5MA0k6cZq9QC3vCZ87jpxnV6lbfGwa
+ axvy6G/9zlZ2Ccc896ATwdXDVMvAsMPSI4rdm1u7j/q76fxNDLC2HRVzoINUoxJ7JSyiS2WKJNqT
+ s+AkH2bLdk/87HJ3HTM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gotplns.click;
+ b=YbQFiYOlrt8Zy4uYkdn/upjeOXkeEEndaku5ZfGnCQyyXJaXmd+xaALr2gzxaYGZ2VgflFq5CkTG
+ wv1nlHIKcOiJ+8zG+0W6vhBkVBcIxVYLgMmou1js9pVfeoZPczqHo7sXX85lCkxCcJxTHRC4xXpg
+ pvYZoF3GxXUTKsovmHs=;
+Received: by mail.gotplns.click id hsvnek0001ge for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 11 Feb 2023 14:28:12 -0500 (envelope-from
+ <tmobile-supplies-intel+2Dgvt+2Ddev=lists.freedesktop.org@gotplns.click>)
+Date: Sat, 11 Feb 2023 14:28:12 -0500
+From: "TMOBILE Supplies" <tmobile-supplies@gotplns.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Your visits are now rewarded for your loyalty - Awesome
 MIME-Version: 1.0
-References: <20230125203743.564009-1-jim.cromie@gmail.com>
- <20230125203743.564009-15-jim.cromie@gmail.com>
-In-Reply-To: <20230125203743.564009-15-jim.cromie@gmail.com>
-From: jim.cromie@gmail.com
-Date: Sat, 11 Feb 2023 12:24:07 -0700
-Message-ID: <CAJfuBxw+g6w9_p2ym-hpCQNbr01crRMK_aYb4oV4j_BhoPwQjw@mail.gmail.com>
-Subject: Re: [PATCH v3 14/19] drm_print: fix stale macro-name in comment
-To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
- intel-gfx@lists.freedesktop.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_499_1232478109.1676143671997"
+Message-ID: <0.0.0.36.1D93E4EFB25205C.36D188@mail.gotplns.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,64 +50,104 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch, robdclark@gmail.com,
- seanpaul@chromium.org, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jan 25, 2023 at 1:38 PM Jim Cromie <jim.cromie@gmail.com> wrote:
->
-> Cited commit uses stale macro name, fix this, and explain better.
+------=_Part_499_1232478109.1676143671997
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>01021123</title> 
+ </head> 
+ <body style="margin: 0; padding: 0;"> 
+  <div style="background-color: #fff7fa; width: 100%; padding: 15px;"> 
+   <div style="max-width: 600px; margin: auto; background-color: #fff; text-align: center;"> 
+    <h1 id="finance_okal">&nbsp;</h1> 
+    <p class="your_temo">&nbsp;</p> 
+    <article id="monograma_pack"> 
+     <p class="finance_okal">&nbsp;</p> 
+    </article> 
+    <div class="espacio_line_1" style="padding-bottom: 25px;">
+     &nbsp;
+    </div> 
+    <header style="max-width: 600px; margin: auto;"> 
+     <div style="font-size: 22px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 30px; font-weight: bold;">
+      T-MOBILE
+     </div> &nbsp; 
+     <div style="font-size: 22px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">
+      Get closer to a $100 T-Mobile Gift
+      <br /> Card With Just a Few Clicks!
+     </div> 
+    </header> &nbsp; 
+    <section class="img_groud12">
+     <a href="http://www.gotplns.click/approximately-indispensable/1206Y239kA5Y8n6G13S4via50l119bo36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ8deSd6M1NNF06e0wDTl"><img alt="" src="http://www.gotplns.click/function-Alcestis/7565Ri2395S7alJ11l4a52C119bQ36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ8deSd5FD1L06FUMwDj" width="100%" /></a>
+    </section> 
+    <section> 
+     <article id="primera_p"> 
+      <p class="Id_perso">&nbsp;</p> &nbsp; 
+      <p style="font-family: 'Courier New', Courier, monospace; font-size: 10px; font-weight: 500; color: hwb(348 8% 14%);">&nbsp;</p> 
+     </article> 
+    </section> 
+    <section id="segundo_p"> 
+     <div style="font-size: 22px; line-height: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px 25px; font-weight: 500;">
+      Tell us how we' re doing and get a $100 gift card to T-Mobile and upgrade your mobile service!
+      <br /> 
+      <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us.      </div> 
+    </section> 
+    <section id="relleno_pro2"> 
+     <h2 class="segundo_p">&nbsp;</h2> 
+     <div> 
+      <table style="border-collapse: collapse;"> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </div> 
+     <p style="font-family: 'Courier New', Courier, monospace; font-size: 35px; font-variant: normal; color: blueviolet;">&nbsp;</p> 
+     <div id="Bt_on"> 
+      <div style="font-size: 18px; background-color: #1d1d1d; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 16px 24px; font-weight: bold; display: inline; border-radius: 8px;">
+       <a href="http://www.gotplns.click/approximately-indispensable/1206Y239kA5Y8n6G13S4via50l119bo36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ8deSd6M1NNF06e0wDTl" style="text-decoration: none;color: #fff;">Go And Start Now</a>
+      </div> 
+      <p class="separador_princ2" style="padding-top: 25px;">&nbsp;</p> 
+     </div> 
+     <article> 
+      <p>&nbsp;</p> 
+      <p>&nbsp;</p> 
+      <aside>
+       &nbsp;
+      </aside> 
+     </article> 
+    </section> 
+   </div> 
+  </div> 
+  <div style="background-color: #fff7fa;">
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp;
+  </div> 
+  <div> 
+   <footer id="cont_t_final" style="background-color: gainsboro; padding: 1px 0px 30px;"> 
+    <div class="gjj_premium">
+     &nbsp;
+    </div> 
+    <h6>&nbsp;</h6> 
+    <address style="text-align: center; font-size: 12px; background-color: #e0ffff; padding: 15px 0px;"> <p class="unsubscribe"><span style="text-decoration: none; ">To stop messages,</span><a href="http://www.gotplns.click/2695C23I95LQ86L12t4aL51O119bW36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ8deSd6jYW10x5QWywD/elicited-habitat" style="text-decoration-line: none;"> <span>Continue.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <big><style title="liquidity"><span dir="blunted"></big></span><span></style></span><small><font></small><font style="repentance"></font></font><big></big></p> </address> 
+   </footer> 
+  </div>   
+ <img src="http://www.gotplns.click/e216u2y39v5U8F5I13J4az53Qn119bU36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ8deSd5I1B0U6t@lwDB/elicited-habitat" alt=""/></body>
+</html>
 
+------=_Part_499_1232478109.1676143671997--
 
-
-So this patch is somehow drawing an 'F' flag from patchwork,
-but theres no hint of what went wrong.
-(I have seen a merge conflict, probably not that).
-
-https://patchwork.freedesktop.org/series/113361/
-
-https://patchwork.freedesktop.org/patch/520460/?series=113361&rev=1
-
-Without this resolved, I cant see BAT results or the more exhaustive tests.
-
-
-
-
-
->
-> When DRM_USE_DYNAMIC_DEBUG=y, DYNDBG_CLASSMAP_DEFINE() maps DRM_UT_*
-> onto BITs in drm.debug.  This still uses enum drm_debug_category, but
-> it is somewhat indirect, with the ordered set of DRM_UT_* enum-vals.
-> This requires that the macro args: DRM_UT_* list must be kept in sync
-> and in order.
->
-> Fixes: f158936b60a7 ("drm: POC drm on dyndbg - use in core, 2 helpers, 3 drivers.")
-> Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-> ---
-> . emphasize ABI non-change despite enum val change - Jani Nikula
-> . reorder to back of patchset to follow API name changes.
-> ---
->  include/drm/drm_print.h | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/include/drm/drm_print.h b/include/drm/drm_print.h
-> index 6a27e8f26770..7695ba31b3a4 100644
-> --- a/include/drm/drm_print.h
-> +++ b/include/drm/drm_print.h
-> @@ -276,7 +276,10 @@ static inline struct drm_printer drm_err_printer(const char *prefix)
->   *
->   */
->  enum drm_debug_category {
-> -       /* These names must match those in DYNAMIC_DEBUG_CLASSBITS */
-> +       /*
-> +        * Keep DYNDBG_CLASSMAP_DEFINE args in sync with changes here,
-> +        * the enum-values define BIT()s in drm.debug, so are ABI.
-> +        */
->         /**
->          * @DRM_UT_CORE: Used in the generic drm code: drm_ioctl.c, drm_mm.c,
->          * drm_memory.c, ...
-> --
-> 2.39.1
->
