@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62912693969
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Feb 2023 19:42:45 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 977046939C0
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Feb 2023 21:08:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 222AC10E44A;
-	Sun, 12 Feb 2023 18:42:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5FF4E10E459;
+	Sun, 12 Feb 2023 20:08:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sun, 12 Feb 2023 18:42:41 UTC
-Received: from mail.earn-acfa.click (unknown [45.13.189.112])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7C49610E444
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Sun, 12 Feb 2023 20:08:37 UTC
+Received: from mail.face-wgreen.click (unknown [45.13.189.141])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7F50D10E45D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 12 Feb 2023 18:42:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=earn-acfa.click; 
+ Sun, 12 Feb 2023 20:08:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=face-wgreen.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace.tools.excellence@earn-acfa.click; 
- bh=g+7pUbdwQ2oKmNi2sNz+yY3PlvU=;
- b=ieP/1/+Q1bJ3VG4wLKDviVJ9Ahr6WDJOApNknQMV89ga+WRdD21q6Z2DFcAl+nmKzOoylK80ylbR
- 8/+2EPFnD3EHgY0JtZ36e5EyTjqP/ZO0NTZMngto/do3mAGieZvdKnxiA+b0UAxvWl7TzyzDZ3DX
- Ul8tFoyNbTAiSsq0aEM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=earn-acfa.click;
- b=QHdT84lx9YoHz8bIdUtRmisgwKtdfrt5u+Uc1m30QMenBNvu6+H1+lJILBsS7GQJ0fEf3/BQXLfk
- ut7fJlMCfE5kuOn3OUY5tP+PKoIbzShZgy+X6XMC3eNvcI/fNq7XCv0D1Xde/1sLQYByzyv4TDHH
- /NZMgSXjodUHDICzo5U=;
-Received: by mail.earn-acfa.click id ht53mm0001gr for
+ i=walgreens-supplies@face-wgreen.click; 
+ bh=7UejltTGgcYPupCdkI1T5115bwA=;
+ b=ZwsPqWbSDFGV1Kubozl6yKJYu4PnkR7w4kkyi4CXcJmwRmox49B+GmAb9XixOt87OuboEx/xqYDo
+ dTcigWK0NY8ObtjOt3exersB5lQLcW/ZvRb0BXReIa5O58mpMPDoM2R2bz2ifuB2oZYGV6xjlleM
+ sEDZveHxEi9Ha8+UrEQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=face-wgreen.click; 
+ b=zFh5pgoLCx0k6dec/uazeTJAv3OC0l/JtwsXqs2LuWmdDmJ2WS88EHFxca1OG+qqM26SSS5NzNX2
+ lmUSqmIdoQsJSUln7kumJAy8eq7fpQ1nQqgQS6601QeVXGtCR1z5wp5FjxAcJfIhtzKtWzSg+sl8
+ f7zvOAUG7CGpO2xxk3s=;
+Received: by mail.face-wgreen.click id ht53ka0001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 12 Feb 2023 14:59:27 -0500 (envelope-from
- <ace.tools.excellence-intel+2Dgvt+2Ddev=lists.freedesktop.org@earn-acfa.click>)
-Date: Sun, 12 Feb 2023 14:59:27 -0500
-From: "ACE Tools Excellence" <ace.tools.excellence@earn-acfa.click>
+ Sun, 12 Feb 2023 14:59:26 -0500 (envelope-from
+ <walgreens-supplies-intel+2Dgvt+2Ddev=lists.freedesktop.org@face-wgreen.click>)
+Date: Sun, 12 Feb 2023 14:59:26 -0500
+From: "Walgreens Supplies" <walgreens-supplies@face-wgreen.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim your free DeWalt Drill Set from Lowe's, limited time offer
+Subject: Walgreens Customer We welcome your input
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_646_1345298406.1676226744996"
-Message-ID: <0.0.0.47.1D93F1C82CC15CE.5200DB@mail.earn-acfa.click>
+ boundary="----=_Part_667_1279496142.1676231953641"
+Message-ID: <0.0.0.4A.1D93F1C82A577A2.132561@mail.face-wgreen.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_646_1345298406.1676226744996
+------=_Part_667_1279496142.1676231953641
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,94 +63,42 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>03021223</title> 
+  <title>05021223</title> 
  </head> 
- <body style="background-color: #e0e0e0;"> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff; border-radius: 8px;"> 
-   <p class="spaci_new" style="padding-top: 35px;">&nbsp;</p> 
-   <div> 
-    <header id="prin_1">
-     &nbsp;
-    </header> 
-    <article id="article_1"> 
-     <p class="destl" style="font-size: 12px; font-family: 'Courier New', Courier, monospace; font-weight: normal; line-height: 12px; color: #000; text-align: center;">&nbsp;</p> 
-    </article> 
+ <body style="padding: 0; margin: 0; background-color:rgb(248, 255, 252);"> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; padding-bottom: 50px;"> 
+   <h1 id="titular_on" style="font-size: 20px; font-family: 'Courier New', Courier, monospace; font-weight: normal; line-height: normal; text-decoration: none; text-align: center;">&nbsp;</h1> 
+   <div class="img_foot" style="font-size: 12px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: 5px; margin: auto;;">
+    &nbsp;
    </div> 
-   <header id=" type_2" style="text-align: center;"> 
-    <div style="font-size: 24px; text-align: center; font-family: Arial, Helvetica, sans-serif;">
-     <strong>Special gift just&nbsp;for intel-gvt-dev@lists.freedesktop.org</strong>
+   <article> 
+    <p class="detx12" style="font-size: 14px; font-family: 'Times New Roman', Times, serif; line-height: 8px; padding: 0; font-weight: bold;">&nbsp;</p> 
+    <p class="detx12" style="font-size: 14px; font-family: 'Times New Roman', Times, serif; line-height: 8px; padding: 0; font-weight: bold;">&nbsp;</p> 
+    <aside class="detx12" style="font-size: 14px; font-family: 'Times New Roman', Times, serif; line-height: 8px; padding: 0; font-weight: bold;">
+     &nbsp;
+    </aside> 
+   </article> 
+   <div style="padding-top: 50px; background-color:rgb(248, 252, 255);">
+    &nbsp;
+   </div> 
+   <header class="ti_12s" style="text-align: center;"> 
+    <div style="padding: 15px; background-color:rgb(212, 239, 255); font-size: 35px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; box-shadow: inset 0px 0px 5px 1px;">
+     WALGREENS
     </div> 
    </header> 
-   <p class="shaos_1" style="padding-top: 15px;">&nbsp;</p> 
-   <section> 
-    <div>
-     <span style="text-align: center; display: block;"><a href="http://www.earn-acfa.click/e036SDY2395q86gt11f4a76n11a3V36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQNdeeo7zBg1n0p6lPwDWU/benchmarking-Fayetteville"><img alt="" src="http://www.earn-acfa.click/7cd4t2395hl7av12OR4a78F11a3x36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQNdeeo6W1UPG06BzwWMD/Vermont-rampant" style="box-shadow: 0px 0px 2px 1px #ff0000;" width="95%" /></a> </span>
+   <section>
+    <a href="http://www.face-wgreen.click/6474j2395KQ8K613fG4ka84S11a5o36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQDdeed5oV1U06AWwMDz/fictitiously-fallibility"><img alt="" src="http://www.face-wgreen.click/photocopying-navigable/dc85p239Z5QW7aj11X4a86L11a5H36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQDdeed5jM1B05MMwjD" width="100%" /></a>
+   </section> 
+   <section class="text-type_tdd" style="background-color: #fff; text-align: center;"> 
+    <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 23px; line-height: 30px; padding: 15px 35px;">
+     Don't miss out! Just a few clicks away from a chance to win a $100 
+     <strong 20-second="" about="" by="" card="" completing="" div="" experience="" our="" quick="" recent="" section="" strong="" style="color: #0072A7 ;" survey="" walgreens="" with="" your=""><a href="http://www.face-wgreen.click/6474j2395KQ8K613fG4ka84S11a5o36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQDdeed5oV1U06AWwMDz/fictitiously-fallibility" style="text-decoration: none; color: #fff;">Go And Start Now</a></strong>
     </div> 
    </section> 
-   <table style="border-collapse: collapse; width: 100%; text-align: center;"> 
-    <tbody> 
-     <tr> 
-      <td> 
-       <div>
-        <a href="http://www.earn-acfa.click/e036SDY2395q86gt11f4a76n11a3V36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQNdeeo7zBg1n0p6lPwDWU/benchmarking-Fayetteville"><img alt="" src="http://www.earn-acfa.click/benchmarking-Fayetteville/22e5d2u395C7uaA12Ch4a79x11a3j36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQNdeeo5DNj105tp1wD" width="90%" /></a>
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <section id="Promo_click" style="text-align: center;"> 
-    <div>
-     &nbsp;
-    </div> 
-    <p style="padding-top: 10px;">&nbsp;</p> 
-    <h5 style="font-size: 24px;font-family: Arial, Helvetica, sans-serif; background-color: #353535; display: inline; padding: 15px 25px; border-radius: 50px; color: #fff; font-weight: bold;"><a href="" style="text-decoration: none; color: #fff;">Take Me To The SURVEY!</a></h5> 
-   </section> 
-   <div id="2252" style="padding-bottom: 30px;">
-    &nbsp;
-   </div> 
-   <section> 
-    <div class="img_58" style="text-align: center; padding-top: 50px;">
-     <a href="http://www.earn-acfa.click/e036SDY2395q86gt11f4a76n11a3V36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQNdeeo7zBg1n0p6lPwDWU/benchmarking-Fayetteville"><img alt="" src="http://www.earn-acfa.click/c415a23n95A7aSB11V4a7aq11a3B36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQNdeeo6go1g0h5qX@wD/affronted-spiritually" width="75%" /></a>
-    </div> 
-   </section> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
-   <table> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <article id="dxrp_1"> 
-    <div class="img5" style="text-align: center;">
-     <a href="http://www.earn-acfa.click/e036SDY2395q86gt11f4a76n11a3V36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQNdeeo7zBg1n0p6lPwDWU/benchmarking-Fayetteville"><img alt="" src="http://www.earn-acfa.click/Vermont-rampant/1024a2395R7wan11h4a7by11a3W36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQNdeeo6hP1v0A5eNwD@" width="85%" /></a>
-    </div> 
-   </article> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
   </div> 
-  <div> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
-   <footer style="text-align: center; font-size: 12; color: #fff;"> 
-    <address> 
-     <div style="background-color: hsl(0, 0%, 21%); padding: 25px; color: #ffffff; font-family: 'Times New Roman', Times, serif; font-weight: 900;"> 
-      <p><small><span style="text-decoration: none; ">To edit your notification options,</span><a href="http://www.earn-acfa.click/8db4u2395et86S13a4a7NM7R11a3o36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQNdeeo6FP10SY6SlwDyP/affronted-spiritually" style="text-decoration-line: none; color: white"> <span>Begin.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font size="postulating"><font color="telephonic"></font></font><span size="Roosevelt"></span><font color="inflates"></font><font color="carols"></font><font color="towered"></font><span></span> </small></p> 
-     </div> </address> 
-   </footer> 
-  </div>   
- <img src="http://www.earn-acfa.click/detachments-Witherspoon/60c5P2j395Bs8K511K4a7cA11a3_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNdeeo5jI10m6Mqwp3D" alt=""/></body>
+  <p style="padding-bottom: 150px;"><strong div="" strong="" style="color: #0072A7 ;"><small><span style="text-decoration: none; ">To update your communication preferences,</span><a href="http://www.face-wgreen.click/fictitiously-fallibility/6a26U2YC395e8s6M12N4a85s_11a5G36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQDdeed7LSI1Xn06hkwDkM" style="text-decoration-line: none; color: white"> <span>Begin.Right.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font title="announce"><font id="restless"></font></font><style></style><font><style></style></font><span></span> </small></strong></p>   
+ <img src="http://www.face-wgreen.click/a616mM2h395oo8j511m4a87x11a5t36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQDdeed7as1Y0yl6plw@Dz/surreptitious-exploitation" alt=""/></body>
 </html>
 
-------=_Part_646_1345298406.1676226744996--
+------=_Part_667_1279496142.1676231953641--
 
