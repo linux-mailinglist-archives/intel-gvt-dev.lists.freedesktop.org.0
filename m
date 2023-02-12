@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 977046939C0
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Feb 2023 21:08:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C12069399E
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Feb 2023 20:14:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5FF4E10E459;
-	Sun, 12 Feb 2023 20:08:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7883410E225;
+	Sun, 12 Feb 2023 19:14:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sun, 12 Feb 2023 20:08:37 UTC
-Received: from mail.face-wgreen.click (unknown [45.13.189.141])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7F50D10E45D
+ Sun, 12 Feb 2023 19:14:49 UTC
+Received: from mail.enjoy-wlmf.top (unknown [45.13.189.128])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6B5C110E225
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 12 Feb 2023 20:08:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=face-wgreen.click;
+ Sun, 12 Feb 2023 19:14:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=enjoy-wlmf.top; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=walgreens-supplies@face-wgreen.click; 
- bh=7UejltTGgcYPupCdkI1T5115bwA=;
- b=ZwsPqWbSDFGV1Kubozl6yKJYu4PnkR7w4kkyi4CXcJmwRmox49B+GmAb9XixOt87OuboEx/xqYDo
- dTcigWK0NY8ObtjOt3exersB5lQLcW/ZvRb0BXReIa5O58mpMPDoM2R2bz2ifuB2oZYGV6xjlleM
- sEDZveHxEi9Ha8+UrEQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=face-wgreen.click; 
- b=zFh5pgoLCx0k6dec/uazeTJAv3OC0l/JtwsXqs2LuWmdDmJ2WS88EHFxca1OG+qqM26SSS5NzNX2
- lmUSqmIdoQsJSUln7kumJAy8eq7fpQ1nQqgQS6601QeVXGtCR1z5wp5FjxAcJfIhtzKtWzSg+sl8
- f7zvOAUG7CGpO2xxk3s=;
-Received: by mail.face-wgreen.click id ht53ka0001g5 for
+ i=walmart_user_feedback@enjoy-wlmf.top; 
+ bh=WlzHnsuxtzvdmzKElicrV9+EfKs=;
+ b=eRoPUJFbKJRlwe1b4xrgq94OrNp1U9ymnda/KgGTkdQBS6l7Rr5rEEFEXHEEunPVMf/XP0dq//ja
+ HRVU6MTkg1Ad/XWtp6nnxXq1KqFZjNs2pOrDCwDiykZ21vhO1NqDtFCPezgjdzs9EJeQK8HS/gyV
+ YLWo97YaLtrGC0HhD0w=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=enjoy-wlmf.top;
+ b=mqPeg2e2MnQS0Z29aZZRwl+FLaTzl9Vr8eKATqeVKwQ5sYHUJCKwpfBzsdS16JMGczuhArCOTMqA
+ l5alEOXgNahrSKqZx1sqQhWqZjKX/cW6IkB26mp0UCCvx4k3JNeLCcPPzMe8nZwRt2JZtSdM4SpF
+ zyzKKzwFsyZ5QB53a0Q=;
+Received: by mail.enjoy-wlmf.top id ht57f60001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 12 Feb 2023 14:59:26 -0500 (envelope-from
- <walgreens-supplies-intel+2Dgvt+2Ddev=lists.freedesktop.org@face-wgreen.click>)
-Date: Sun, 12 Feb 2023 14:59:26 -0500
-From: "Walgreens Supplies" <walgreens-supplies@face-wgreen.click>
+ Sun, 12 Feb 2023 15:28:43 -0500 (envelope-from
+ <walmart_user_feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@enjoy-wlmf.top>)
+Date: Sun, 12 Feb 2023 15:28:43 -0500
+From: "Walmart User Feedback" <walmart_user_feedback@enjoy-wlmf.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Walgreens Customer We welcome your input
+Subject: Free Irobot vacuum cleaner from Walmart, grab it now!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_667_1279496142.1676231953641"
-Message-ID: <0.0.0.4A.1D93F1C82A577A2.132561@mail.face-wgreen.click>
+ boundary="----=_Part_160_1742173009.1676228516194"
+Message-ID: <0.0.0.11.1D93F2099E49C96.4F4BD0@mail.enjoy-wlmf.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_667_1279496142.1676231953641
+------=_Part_160_1742173009.1676228516194
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,42 +63,70 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>05021223</title> 
+  <title>04021223</title> 
  </head> 
- <body style="padding: 0; margin: 0; background-color:rgb(248, 255, 252);"> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff; padding-bottom: 50px;"> 
-   <h1 id="titular_on" style="font-size: 20px; font-family: 'Courier New', Courier, monospace; font-weight: normal; line-height: normal; text-decoration: none; text-align: center;">&nbsp;</h1> 
-   <div class="img_foot" style="font-size: 12px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: 5px; margin: auto;;">
-    &nbsp;
+ <body style="padding: 0; margin: 0;"> 
+  <div style="width: 100%; background-color: #0171DD; padding: 15PX 0PX ;"> 
+   <div style="max-width: 600px; margin: auto; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 24px; color: #fff;">
+    WALMART
    </div> 
-   <article> 
-    <p class="detx12" style="font-size: 14px; font-family: 'Times New Roman', Times, serif; line-height: 8px; padding: 0; font-weight: bold;">&nbsp;</p> 
-    <p class="detx12" style="font-size: 14px; font-family: 'Times New Roman', Times, serif; line-height: 8px; padding: 0; font-weight: bold;">&nbsp;</p> 
-    <aside class="detx12" style="font-size: 14px; font-family: 'Times New Roman', Times, serif; line-height: 8px; padding: 0; font-weight: bold;">
-     &nbsp;
-    </aside> 
-   </article> 
-   <div style="padding-top: 50px; background-color:rgb(248, 252, 255);">
-    &nbsp;
-   </div> 
-   <header class="ti_12s" style="text-align: center;"> 
-    <div style="padding: 15px; background-color:rgb(212, 239, 255); font-size: 35px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; box-shadow: inset 0px 0px 5px 1px;">
-     WALGREENS
-    </div> 
-   </header> 
-   <section>
-    <a href="http://www.face-wgreen.click/6474j2395KQ8K613fG4ka84S11a5o36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQDdeed5oV1U06AWwMDz/fictitiously-fallibility"><img alt="" src="http://www.face-wgreen.click/photocopying-navigable/dc85p239Z5QW7aj11X4a86L11a5H36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQDdeed5jM1B05MMwjD" width="100%" /></a>
-   </section> 
-   <section class="text-type_tdd" style="background-color: #fff; text-align: center;"> 
-    <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 23px; line-height: 30px; padding: 15px 35px;">
-     Don't miss out! Just a few clicks away from a chance to win a $100 
-     <strong 20-second="" about="" by="" card="" completing="" div="" experience="" our="" quick="" recent="" section="" strong="" style="color: #0072A7 ;" survey="" walgreens="" with="" your=""><a href="http://www.face-wgreen.click/6474j2395KQ8K613fG4ka84S11a5o36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQDdeed5oV1U06AWwMDz/fictitiously-fallibility" style="text-decoration: none; color: #fff;">Go And Start Now</a></strong>
-    </div> 
-   </section> 
   </div> 
-  <p style="padding-bottom: 150px;"><strong div="" strong="" style="color: #0072A7 ;"><small><span style="text-decoration: none; ">To update your communication preferences,</span><a href="http://www.face-wgreen.click/fictitiously-fallibility/6a26U2YC395e8s6M12N4a85s_11a5G36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQDdeed7LSI1Xn06hkwDkM" style="text-decoration-line: none; color: white"> <span>Begin.Right.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font title="announce"><font id="restless"></font></font><style></style><font><style></style></font><span></span> </small></strong></p>   
- <img src="http://www.face-wgreen.click/a616mM2h395oo8j511m4a87x11a5t36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQDdeed7as1Y0yl6plw@Dz/surreptitious-exploitation" alt=""/></body>
+  <div style=" width: 100; padding-bottom: 10px; display: block;">
+   <img alt="" src="http://www.enjoy-wlmf.top/borough-courtiers/f125w23t95v7aGx13d4ajk7ft11a4V36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ0dee97lVU10tp5zlwpD" width="100%" />
+  </div> 
+  <p style="padding-top: 50px; width: 100%;">&nbsp;</p> 
+  <div id="all_for_one" style="max-width: 600px; margin: auto; background-color: #fff;"> 
+   <header style="text-align: left;"> 
+    <table border="0px" style="border-collapse: collapse; width: 100%;"> 
+     <tbody> 
+      <tr> 
+       <td width="30%"> 
+        <div style="display: inline; border: solid 0px #000;">
+         <a href="http://www.enjoy-wlmf.top/f115r239g5R8A6w11D4a7dv11a4V36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ0dee97KK1Ti0j5alwOD/squander-Bonn"><img alt="" src="http://www.enjoy-wlmf.top/meting-blindness/40e5p23A95Vs7ta13R4Nas80k11a4T36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ0dee97cw10TQU5JUwDM" width="100%" /></a>
+        </div> </td> 
+       <td style="margin-right: 10px; padding-bottom: px;" width="70%"> 
+        <div style=" display: inline; font-size: 24px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; color: #161616; margin-top: 0;">
+         We are giving away the iRobot
+         <br /> Roomba i1+ Wi-Fi Connected Self-
+         <br /> Emptying Robot Vacuum, Ideal for
+         <br /> Pet Hair, Carpets and more
+        </div> &nbsp; 
+        <div style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #fff;">
+         We would like to offer you a unique opportunity to receive a brand new DeWalt Drill Set! To claim, simply take this short survey about your experience with Walmart.         </div> </td> 
+      </tr> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td style="text-align: center; padding-top: 20px;"><a href="http://www.enjoy-wlmf.top/f115r239g5R8A6w11D4a7dv11a4V36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ0dee97KK1Ti0j5alwOD/squander-Bonn"><img alt="" src="http://www.enjoy-wlmf.top/drumming-translatability/8aW5Q23U95lw7ay12KL4a81S11a4u36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ0dee97Fs1ALD05B0wD@" width="100%" /></a> <a href="http://www.enjoy-wlmf.top/f115r239g5R8A6w11D4a7dv11a4V36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ0dee97KK1Ti0j5alwOD/squander-Bonn"><img alt="" src="http://www.enjoy-wlmf.top/cX55f239q5Mu7aC12r4va82P11a4n36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ0dee97goi10sx6fp@jwD/borough-courtiers" width="100%" /></a><br /> &nbsp; 
+        <div align="center" style="font-size: 17px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+         Get This Free Gift - Or Choose From 
+         <span style="color: red">5 Other Offers!</span> *Just Paying a small S&amp;H fee.         </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </header> 
+  </div> 
+  <div> 
+   <div id="2252" style="padding-bottom: 50px;">
+    &nbsp;
+   </div> 
+   <div id="2252" style="padding-bottom: 50px;">
+    &nbsp;
+   </div> 
+   <div id="2252" style="padding-bottom: 50px;">
+    &nbsp;
+   </div> 
+   <div id="2252" style="padding-bottom: 50px;">
+    &nbsp;
+   </div> 
+   <footer style="text-align: center; font-size: 12; color: #fff;"> 
+    <address> 
+     <div style="background-color: #0171DD ; padding: 10px; color: #ffffff; font-family: 'Times New Roman', Times, serif; font-weight: 900;"> 
+      <p><small><span style="text-decoration: none; ">To quit notifications,</span><a href="http://www.enjoy-wlmf.top/meting-blindness/a9e4I2395VK86I12s4a7CeP11a4B36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ0dee97PTS1w0u5lOkwD" style="text-decoration-line: none; color: rgb(255, 255, 255)"> <span>Continue-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font><span size="carborundum"></span></font><style><font dir="gravest"></font></style><span></span><font><big></font><span color="entirety"></big></span> </small></p> 
+     </div> </address> 
+   </footer> 
+  </div>   
+ <img src="http://www.enjoy-wlmf.top/cf55U2S395e85WS11j4a83w11a4O36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ0dee96lD10Uh6LUwDlM/borough-courtiers" alt=""/></body>
 </html>
 
-------=_Part_667_1279496142.1676231953641--
+------=_Part_160_1742173009.1676228516194--
 
