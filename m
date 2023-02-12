@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C12069399E
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Feb 2023 20:14:54 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D80706939FF
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Feb 2023 21:50:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7883410E225;
-	Sun, 12 Feb 2023 19:14:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A4B4810E48E;
+	Sun, 12 Feb 2023 20:50:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sun, 12 Feb 2023 19:14:49 UTC
-Received: from mail.enjoy-wlmf.top (unknown [45.13.189.128])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6B5C110E225
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Sun, 12 Feb 2023 20:50:43 UTC
+Received: from mail.feel-psgo.top (unknown [45.13.189.151])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F12C810E00F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 12 Feb 2023 19:14:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=enjoy-wlmf.top; 
+ Sun, 12 Feb 2023 20:50:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=feel-psgo.top;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=walmart_user_feedback@enjoy-wlmf.top; 
- bh=WlzHnsuxtzvdmzKElicrV9+EfKs=;
- b=eRoPUJFbKJRlwe1b4xrgq94OrNp1U9ymnda/KgGTkdQBS6l7Rr5rEEFEXHEEunPVMf/XP0dq//ja
- HRVU6MTkg1Ad/XWtp6nnxXq1KqFZjNs2pOrDCwDiykZ21vhO1NqDtFCPezgjdzs9EJeQK8HS/gyV
- YLWo97YaLtrGC0HhD0w=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=enjoy-wlmf.top;
- b=mqPeg2e2MnQS0Z29aZZRwl+FLaTzl9Vr8eKATqeVKwQ5sYHUJCKwpfBzsdS16JMGczuhArCOTMqA
- l5alEOXgNahrSKqZx1sqQhWqZjKX/cW6IkB26mp0UCCvx4k3JNeLCcPPzMe8nZwRt2JZtSdM4SpF
- zyzKKzwFsyZ5QB53a0Q=;
-Received: by mail.enjoy-wlmf.top id ht57f60001gm for
+ i=ups.shipping.information@feel-psgo.top; 
+ bh=/d4eVFjn6ZAoxU7tAcS9sC1VTTw=;
+ b=LPTs1XOwFKmpBB2Pn+0ECrivJV0kaUN2Mo2psuJcpId/1jY6A4LoGhu89ru2uccSSngCvVEPDDsB
+ xs8hfD/K469SfsJjStLvq0RsfTEP0/lLXEjQL+FJIriry54o8zuDSzejaA8o9AdIVcfdfcA0mDDB
+ fVXGe+Rjdy96Ik8ZOME=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=feel-psgo.top;
+ b=C6poUvuIhNCjeIDQ8ct6szSOb7cWNajasWLjzB06rZk+atCRAJA/ZQzpHGpu3t9uAE+fLc/UtTiy
+ ZZYdwqOUMakFt5/woRhpVkjW1KwBv08WyRu3X8cEvbTEgOhfW4fDK3LI/G/B6lChagKMwtV453Nv
+ vxZ+s511QEdOMuFH/ys=;
+Received: by mail.feel-psgo.top id ht58i80001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 12 Feb 2023 15:28:43 -0500 (envelope-from
- <walmart_user_feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@enjoy-wlmf.top>)
-Date: Sun, 12 Feb 2023 15:28:43 -0500
-From: "Walmart User Feedback" <walmart_user_feedback@enjoy-wlmf.top>
+ Sun, 12 Feb 2023 15:38:48 -0500 (envelope-from
+ <ups.shipping.information-intel+2Dgvt+2Ddev=lists.freedesktop.org@feel-psgo.top>)
+Date: Sun, 12 Feb 2023 15:38:48 -0500
+From: "UPS Shipping Information" <ups.shipping.information@feel-psgo.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Free Irobot vacuum cleaner from Walmart, grab it now!
+Subject: As a shopper, qualify for a $100 UPS gift card.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_160_1742173009.1676228516194"
-Message-ID: <0.0.0.11.1D93F2099E49C96.4F4BD0@mail.enjoy-wlmf.top>
+ boundary="----=_Part_319_2033586062.1676234320829"
+Message-ID: <0.0.0.23.1D93F2202487928.3F10F7@mail.feel-psgo.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_160_1742173009.1676228516194
+------=_Part_319_2033586062.1676234320829
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,70 +63,59 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04021223</title> 
+  <title>06021223</title> 
  </head> 
- <body style="padding: 0; margin: 0;"> 
-  <div style="width: 100%; background-color: #0171DD; padding: 15PX 0PX ;"> 
-   <div style="max-width: 600px; margin: auto; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 24px; color: #fff;">
-    WALMART
+ <body style="background-color: #f3f3dc ;"> 
+  <article id="catpgrapy" style="display: inline; font-size: 33px; line-height: 15px; font-family: 'Times New Roman', Times, serif;"> 
+   <p class="holytop" style="line-height: 15; font-family: Georgia, 'Times New Roman', Times, serif; padding-top: 29px ;">&nbsp;</p> 
+   <div style="max-width: 600px; margin: auto;;"> 
+    <p class="div1" style="font-size: 16px; line-height: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: auto; font-weight: bold;">&nbsp;</p> 
+    <p id="prps12" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 15px; line-height: 13px; margin:0 ; padding: 0;">&nbsp;</p> 
+    <p class="div13" style="font-size: 16px; line-height: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: auto; font-weight: bold;">&nbsp;</p> 
+    <p id="prps12" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 15px; line-height: 13px; margin: 0 ; padding: 0;">&nbsp;</p> 
+    <p class="div111" style="font-size: 16px; line-height: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: auto; font-weight: bold;">&nbsp;</p> 
+    <p id="prps12" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 15px; line-height: 13px; margin: 0 ; padding: 0;">&nbsp;</p> 
+    <p class="div18" style="font-size: 16px; line-height: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: auto; font-weight: bold;">&nbsp;</p> 
+    <p id="prps12" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 15px; line-height: 13px; margin: 0 ; padding: 0;">&nbsp;</p> 
+    <p class="div15" style="font-size: 16px; line-height: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: auto; font-weight: bold;">&nbsp;</p> 
+    <p id="prps12" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 15px; line-height: 13px; margin: 0 ; padding: 0;">&nbsp;</p> 
+    <p>&nbsp;</p> 
+    <p class="div13" style="font-size: 16px; line-height: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: auto; font-weight: bold;">&nbsp;</p> 
+    <p id="prps12" style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 15px; line-height: 13px; margin: 0 ; padding: 0;">&nbsp;</p> 
+    <p class="div12" style="font-size: 16px; line-height: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: auto; font-weight: bold;">&nbsp;</p> 
+    <p>&nbsp;</p> 
+    <p class="div10" style="font-size: 16px; line-height: 30px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: auto; font-weight: bold;">&nbsp;</p> 
+    <p>&nbsp;</p> 
    </div> 
+  </article> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: inset 0px 0px 5px 1px; padding: 15px 10px;"> 
+   <div style="text-align: center; font-size: 35px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">
+    UPS
+   </div> 
+   <section>
+    <a href="http://www.feel-psgo.top/outgrowth-illumination/6664j2395RsC8613mW4a8R8s11a6q36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQhdeeQ7PVKK10O6gAWzwD"><img alt="" src="http://www.feel-psgo.top/adaptations-blocking/5764S2395o7_ma11o4a8aO11a6F36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQhdeeQ5A1U0J6H0BwDA" width="100%" /></a>
+   </section> 
+   <div style="padding-top: 10px;">
+    &nbsp;
+   </div> 
+   <section> 
+    <div style="text-align: center; padding: 0px 35px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px;;">
+     Don't miss out! Just a few clicks away from a chance to win a $100 
+     <strong style="color: #3C4121 ;">UPS</strong> Card by completing our quick 20-second survey about your recent experience with us.     </div> 
+   </section> 
+   <section style="text-align: center;"> 
+    <div style="background-color: #3C4121; padding: 15px 30px; font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchetf MS', sans-serif; display: inline; border-radius: 8px;">
+     <a href="http://www.feel-psgo.top/outgrowth-illumination/6664j2395RsC8613mW4a8R8s11a6q36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQhdeeQ7PVKK10O6gAWzwD" style="text-decoration: none; color: #fff;">Go And Start Now</a>
+    </div> 
+   </section> 
   </div> 
-  <div style=" width: 100; padding-bottom: 10px; display: block;">
-   <img alt="" src="http://www.enjoy-wlmf.top/borough-courtiers/f125w23t95v7aGx13d4ajk7ft11a4V36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ0dee97lVU10tp5zlwpD" width="100%" />
-  </div> 
-  <p style="padding-top: 50px; width: 100%;">&nbsp;</p> 
-  <div id="all_for_one" style="max-width: 600px; margin: auto; background-color: #fff;"> 
-   <header style="text-align: left;"> 
-    <table border="0px" style="border-collapse: collapse; width: 100%;"> 
-     <tbody> 
-      <tr> 
-       <td width="30%"> 
-        <div style="display: inline; border: solid 0px #000;">
-         <a href="http://www.enjoy-wlmf.top/f115r239g5R8A6w11D4a7dv11a4V36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ0dee97KK1Ti0j5alwOD/squander-Bonn"><img alt="" src="http://www.enjoy-wlmf.top/meting-blindness/40e5p23A95Vs7ta13R4Nas80k11a4T36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ0dee97cw10TQU5JUwDM" width="100%" /></a>
-        </div> </td> 
-       <td style="margin-right: 10px; padding-bottom: px;" width="70%"> 
-        <div style=" display: inline; font-size: 24px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; color: #161616; margin-top: 0;">
-         We are giving away the iRobot
-         <br /> Roomba i1+ Wi-Fi Connected Self-
-         <br /> Emptying Robot Vacuum, Ideal for
-         <br /> Pet Hair, Carpets and more
-        </div> &nbsp; 
-        <div style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #fff;">
-         We would like to offer you a unique opportunity to receive a brand new DeWalt Drill Set! To claim, simply take this short survey about your experience with Walmart.         </div> </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td style="text-align: center; padding-top: 20px;"><a href="http://www.enjoy-wlmf.top/f115r239g5R8A6w11D4a7dv11a4V36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ0dee97KK1Ti0j5alwOD/squander-Bonn"><img alt="" src="http://www.enjoy-wlmf.top/drumming-translatability/8aW5Q23U95lw7ay12KL4a81S11a4u36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ0dee97Fs1ALD05B0wD@" width="100%" /></a> <a href="http://www.enjoy-wlmf.top/f115r239g5R8A6w11D4a7dv11a4V36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ0dee97KK1Ti0j5alwOD/squander-Bonn"><img alt="" src="http://www.enjoy-wlmf.top/cX55f239q5Mu7aC12r4va82P11a4n36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ0dee97goi10sx6fp@jwD/borough-courtiers" width="100%" /></a><br /> &nbsp; 
-        <div align="center" style="font-size: 17px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-         Get This Free Gift - Or Choose From 
-         <span style="color: red">5 Other Offers!</span> *Just Paying a small S&amp;H fee.         </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </header> 
-  </div> 
-  <div> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
-   <div id="2252" style="padding-bottom: 50px;">
-    &nbsp;
-   </div> 
-   <footer style="text-align: center; font-size: 12; color: #fff;"> 
-    <address> 
-     <div style="background-color: #0171DD ; padding: 10px; color: #ffffff; font-family: 'Times New Roman', Times, serif; font-weight: 900;"> 
-      <p><small><span style="text-decoration: none; ">To quit notifications,</span><a href="http://www.enjoy-wlmf.top/meting-blindness/a9e4I2395VK86I12s4a7CeP11a4B36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ0dee97PTS1w0u5lOkwD" style="text-decoration-line: none; color: rgb(255, 255, 255)"> <span>Continue-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font><span size="carborundum"></span></font><style><font dir="gravest"></font></style><span></span><font><big></font><span color="entirety"></big></span> </small></p> 
-     </div> </address> 
+  <div style="text-align: center; background-color: hsl(0, 0%, 25%); color: hwb(0 100% 0%); padding: 20px;border: solid 3px rgb(255, 255, 255);"> 
+   <footer> 
+    <address> <p><small><span style="text-decoration: none; ">To shut off communications,</span><a href="http://www.feel-psgo.top/infesting-miscarry/a446P239QZ5Q86lz12R4ai89T11a6j36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQhdeeQ6b1lU0U5Ajw2D" style="text-decoration-line: none; color: hsl(0, 0%, 100%)"> <span>Continue_Ahead </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span lang="resorting"><style face="Gautama"><style class="sincerest"><small><span lang="Irishizes"></small></style><small><span></span><font face="tiring"></font></style></small></span></span><small></small><font></font><span></span> </small></p> </address> 
    </footer> 
   </div>   
- <img src="http://www.enjoy-wlmf.top/cf55U2S395e85WS11j4a83w11a4O36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ0dee96lD10Uh6LUwDlM/borough-courtiers" alt=""/></body>
+ <img src="http://www.feel-psgo.top/goofed-manipulator/f124G2395MPq8511B4a8bW11a6Y36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQhdeeQ5D10hO6cpywDT" alt=""/></body>
 </html>
 
-------=_Part_160_1742173009.1676228516194--
+------=_Part_319_2033586062.1676234320829--
 
