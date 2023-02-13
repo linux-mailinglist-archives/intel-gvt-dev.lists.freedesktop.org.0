@@ -1,44 +1,107 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6688369547C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Feb 2023 00:00:39 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63B686954A9
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Feb 2023 00:22:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1132B10E777;
-	Mon, 13 Feb 2023 23:00:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 277B510E784;
+	Mon, 13 Feb 2023 23:21:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Mon, 13 Feb 2023 23:00:35 UTC
-Received: from mail.sew-splash.click (unknown [45.13.189.159])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6D10310E775
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Feb 2023 23:00:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sew-splash.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=toprated_wines_splash_wines@sew-splash.click; 
- bh=aKv+jL40WdfhQRNhguktVcqLokU=;
- b=UbqHP5NewDBypaNel9GF9nCrPqinv7FAEurPkKE+IO2FsMPY9bUDBW5UVd49hCjgGUbRBwM6i+xL
- 5jJiVg1lgM6vUby4i7g7nn1am78EQlndq7/V5Y5rVsw8hLxsc1ykAeIGpkQHhgpxlndp2/slRMre
- Sqs26Mzust4S1D8nxL4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sew-splash.click;
- b=VLJfNZAgzeJvhS/dSfP+IX5CLqRiUBMmhEbxsmnfi/u0wcmQ9jL2X6FGl7hIwPoBvPZyglMaAk7z
- o1YQ7BncxtEarBZ7QuKgCn1xUdDCGNkRdP09f2VPP0o4pwqcWCHsskm0ZJe5mGH/KDdt9G5K5Vc1
- rl60ZVfdQbwWHuzdrTE=;
-Received: by mail.sew-splash.click id htb0h60001g1 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Feb 2023 17:49:36 -0500 (envelope-from
- <toprated_wines_splash_wines-intel+2Dgvt+2Ddev=lists.freedesktop.org@sew-splash.click>)
-Date: Mon, 13 Feb 2023 17:49:36 -0500
-From: "TopRated Wines Splash Wines"
- <toprated_wines_splash_wines@sew-splash.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: &#127863;Inventory Low: Premium Wines Only $5.99 Each &#127863;
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2051.outbound.protection.outlook.com [40.107.220.51])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5A00010E77E;
+ Mon, 13 Feb 2023 23:21:52 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ULDQnzW5BVTZeXuxGXTDu8s3INeV1MBCG9vuvUmkun4/nRRw+zDp6QzEJhaa2gFcEJNgjYT1N56NF1kUdLvjL1/bRtyvshYTDRr8dcaSv7jj7DwVPnTntbnJfAaT5vGg5aqBD3UafRvk5haj3wXwaiTuwlkQAjbIR75GEJIri+urcR/b5OKG74BG+QjLteaGn8XH4onmmu2gH6iG+5pgK/FyGJculnwCZwwmzXoH5laG54UKwatdNfLu82kYiktldwERVyQK1UO1AXF1JgbXx96uL/fuIgWsAfF9mzuwEmfrX5E3GSh+VyATLO9y/rtdVNZgQkQYFY6u94MPre+V6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0EDIFOUfuTVHZd1B/JeJJO2WXZLvjto/WY8vYEcbTJ4=;
+ b=Dsw5HMXLz04sKmXfJ2Rc1LXX2G7czT9akYIeulktq6w1jP+En9enA/OR0blbJLklAJl3faGotC1uwozelHVjfXkIL5wGH3FbN6gWHk6N2lRfeYE+aud7q3wu3CC/13ktNUNZ/fmrF2HQn7UhDcOQNLxjVWp8Rg7OM9BjX3fCWfJFdyXfVqhtxKAe9Pcxl5ls0Fm334oPnCBhCLMcLhcamuQhbgIoQk2kdEloL36GKqkBBpNTQxWL2QQgaa5s6vl4hlPvpJdj+Yz8hMk91pi3uP6g6ulHJPYDmvxd2um6M1d9sYBQ7/LwhsA80Zqbt2JLmuEAVI8J2yApNu+m+9TRLA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0EDIFOUfuTVHZd1B/JeJJO2WXZLvjto/WY8vYEcbTJ4=;
+ b=haJyllCP3dU/CviO1Izyllpgidd7z14AAP92wHV9Uon+yUVBmXa8LHpnKeJeY5VFh+Imyq5X2rh9xUyxvAR7ol+SBR+JLGZ6WCBQrRQNWafVE36nLBHh7EkMsf6bQTVDgrGMQ05LSjgDmIVIy5tHKFPdyjNDB3BEul4iEjoFFflPP7FjOiajOKDgf0pKxFrkdpQqZOogJ0d/TEu42P6dIAjKBLgS3502onIgHDom/ZO1P+iLRJ6QRRbrqfeUc5aokpoEmcy3ybKfpmzRSIn7TAGWGiRr8q1Tsd0SJ2ZJSeikK49Sc0KhWNYNKRbpjtI+tX9cbZub8eqQ0Mq+gTOVXA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by CO6PR12MB5489.namprd12.prod.outlook.com (2603:10b6:303:139::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.24; Mon, 13 Feb
+ 2023 23:21:50 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::3cb3:2fce:5c8f:82ee]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::3cb3:2fce:5c8f:82ee%6]) with mapi id 15.20.6086.023; Mon, 13 Feb 2023
+ 23:21:50 +0000
+Date: Mon, 13 Feb 2023 19:21:49 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [PATCH v3 00/15] Add vfio_device cdev for iommufd support
+Message-ID: <Y+rGDeEMTB8FxjAH@nvidia.com>
+References: <20230213151348.56451-1-yi.l.liu@intel.com>
+ <20230213124719.126eb828.alex.williamson@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230213124719.126eb828.alex.williamson@redhat.com>
+X-ClientProxiedBy: BL1PR13CA0292.namprd13.prod.outlook.com
+ (2603:10b6:208:2bc::27) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_157_1951890364.1676328553128"
-Message-ID: <0.0.0.11.1D93FFD727F9574.FB27D@mail.sew-splash.click>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|CO6PR12MB5489:EE_
+X-MS-Office365-Filtering-Correlation-Id: 681c4682-9dcf-477a-da8f-08db0e191588
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: oIa+5d4JI2Rq1mScKrNPfswYq7CWbf+akXx7byfdHfuEbqUc9S80RsCvlhyQ2DKlRZf5PBYRgd0rz8t2AZmFtie/3OhLhzuzRtdOiL34f9gHdC/OEcVWt6FrArmvGe/cs1v48u0EjY8UwZMQTu0t5o1e9UStq7ssXH44b2a026kiuGHbECFqshvbTzY015DBw0hxRZDSTZYX3xrxzrHab1GXCIWwnauJjuranbrUJoL6cUlA8jvAuaf8HYOPbSjFWmwhXtBYnKDIBnAE+Z0RwX9BAkxrKoyuBU+Wm2GNs4wvMuUayyibgiZUeTSjOvPLP4sIk+Bf/HEI0YZ5Ga9LI66D+9HT1RaLdh5yeW9YdNnrzyWKLiCyy6hD0lkIjfTc8UXLxKbWe/cbZLVSWVAIeGL+FQHgDsbd4Fye/OspvV90XRw/24kDHqr6NUSjiiqhyS6qG86999Fdw48kOwPUfsXbsV72QwNOGUoxCdQQjRF6fN9aoHp5J8o4s3HiiLahMksRS67KSvLiF6RKvaX4u81dcmbEUpoPikpTShmaXMB84UwJ94lWSPiEvBAzSu0fAGVmRJSZ/A3DfU8JgVApG1UZonPgAxLt9hUUCHreQ3HYwYEtoaumESZhtcDf7BysaeZMTJarWG7hAItlJSLrC3M78SuuozlSsWZ+wW74qk5iO+bM4Kc7G24nZUPj8xAq
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(4636009)(346002)(376002)(366004)(39860400002)(396003)(136003)(451199018)(4326008)(6916009)(8676002)(316002)(36756003)(41300700001)(38100700002)(2616005)(66476007)(66556008)(66946007)(478600001)(2906002)(8936002)(7416002)(5660300002)(4744005)(186003)(6486002)(6506007)(6512007)(86362001)(26005)(67856001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?J1Ys0ekUafDGidl6jyQC2nm5IEBncTrGvd0IB/3HiFdJ+fDfArmGZDj5cY/C?=
+ =?us-ascii?Q?bf7mlD1A//yxXoLh8PQUCGWjAZtrcDknw8k9lYK33gN5Ed4Krh6oVfIKufGM?=
+ =?us-ascii?Q?VJ2Jhk6+UuoU2aZBoaDNJ5hsQOb0pncq1Xr6qlYTN4RQwCCvd/qmcZnTH0TQ?=
+ =?us-ascii?Q?rtMTKIOns2eqwh9c5N7FcdSPhc9zhX1Lr76xd5ia0BTmzbJsKAHp49IRorDE?=
+ =?us-ascii?Q?jo2zk7lhebY9G0mgw/mhlkvgJHTBCT1I+QkFJTqs/I20kXkc3iV0/TZyklGD?=
+ =?us-ascii?Q?Q365J6ZWgx+q7GDx/Rz6QrNHigGqTnxBs5sfm7jARQCe4NpO6xuOQ34sFuxl?=
+ =?us-ascii?Q?6rW/ctaG7TuE9hiFhDrXolyvJU37oXw8eXM9Npim4fAsbxrSHCIuwKr0jtXL?=
+ =?us-ascii?Q?ZaO2CWSG/kvmMpYpol+MhFDVHbFBg1tKXq0PmlWbiVIKYqH34xy2VpXVSIW0?=
+ =?us-ascii?Q?bfWXcJkTeeCXwBuEVPDSsysXsXA0DUPk4ppqNClSVgNNA93ZxMYXTI2bEjhF?=
+ =?us-ascii?Q?qq5PyJHRf3sNNmCSbfo3z05e2F++VnpINgmU0pKQyA/oGCsN3JMmzUbB9HFM?=
+ =?us-ascii?Q?xEoZGHnCpD8MUOlb0d2CGaCpc6fHIKrHrIpp8mGxKv6SHHrX/YceIocwpmlJ?=
+ =?us-ascii?Q?APVfvJDOUfF+CnR/Y/9cS2ozhVFzDfw1zkS3XW0v0Y2gpP/vE9lJct5zhMYZ?=
+ =?us-ascii?Q?8FB64cG/2Mqyz1Xe/A1au8i0rv4jQQrkMynsX6/ZHRDo4zOEWDXbTqZBbdzU?=
+ =?us-ascii?Q?Vp3GE6yneaGyg4CKXTtCbiyGYzS89pOZmutAe0Bpx5YFZW0jdEHT58uPBovZ?=
+ =?us-ascii?Q?gV1EzpA2mA1Mm+uiFU8WxHJp8zN88XEt8DTbOfJ7gO6406F6abIWEUsK+8BQ?=
+ =?us-ascii?Q?o9BGUL9AsfevuymVMKtXSRir5rdxfMt6sPBuxm7vZkPnQ4oZpu0jBAMghMyP?=
+ =?us-ascii?Q?155fubmkuXWzCTy5l2W1FlRpdAFHs38xCniOXwTkfqo7HbFJtv0rNtpZvT1+?=
+ =?us-ascii?Q?9/0475zO1MX7wHFPbHhhfgKnBNmSreW+mjiLeHTAN6zWXqZaQ0b8Mjz3je1O?=
+ =?us-ascii?Q?a5QZusihOOh4uJO73OU7KyglrZ9jHNQox22JUhPIdFG8IzpYXCulszpyP7rP?=
+ =?us-ascii?Q?iaANeJGfKJdNy71kpAHPFObnaf8SANxyjrpycbne3JF/LULxwLzTbzopWou4?=
+ =?us-ascii?Q?kkD53K7fDsZYKvDvkg0Un5TPF4rNAQphS8zST2T9xCY+EsM+ViI+rbYQEkxX?=
+ =?us-ascii?Q?W79RYuyiAZg+RPgDWI2yLoMygxPLXSkm69Q6NgtfqYbvkeh8jyNHxiL30LPq?=
+ =?us-ascii?Q?gAbkQKJw/hCs4D2cW3WT9blZOP21OGgGjrPBJCoOVnP95n4pBLEOwdqTgvGt?=
+ =?us-ascii?Q?Y5bOvE9EG1SBv2a4fO6FO7kqKTXQ2sNni9jT11ypPvbbeqHTdZsOtqtBQp7G?=
+ =?us-ascii?Q?sm5uJvXVgTt/0MqVP1qBb5pUChb59dZCpL/bdUHjzWeKz7UsaKDLWlRtYDUo?=
+ =?us-ascii?Q?nqN/MaQMrg7XyrLbiXSBZwKfq9+LkNUsQGyW9a3iRnZFvx6ldLbKEj9AGE12?=
+ =?us-ascii?Q?5mMl6JqPUJx/GclnZNgJAyovOqn8UpbvkuCGpd1K?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 681c4682-9dcf-477a-da8f-08db0e191588
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Feb 2023 23:21:50.3193 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /r1LZuw1ZzohVizc3Bf25ma7wnjRWJBQr2qb9nCf+hDmB7/Zr/Qh8wfmSEmaLTHU
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR12MB5489
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,72 +114,25 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: linux-s390@vger.kernel.org, kevin.tian@intel.com,
+ Yi Liu <yi.l.liu@intel.com>, yi.y.sun@linux.intel.com, mjrosato@linux.ibm.com,
+ kvm@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org, joro@8bytes.org,
+ cohuck@redhat.com, peterx@redhat.com, eric.auger@redhat.com,
+ nicolinc@nvidia.com, shameerali.kolothum.thodi@huawei.com,
+ suravee.suthikulpanit@amd.com, intel-gfx@lists.freedesktop.org,
+ chao.p.peng@linux.intel.com, lulu@redhat.com, robin.murphy@arm.com,
+ jasowang@redhat.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_157_1951890364.1676328553128
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Mon, Feb 13, 2023 at 12:47:19PM -0700, Alex Williamson wrote:
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>07021323</title> 
- </head> 
- <body style="background-color: rgb(207, 207, 207);"> 
-  <div style="max-width: 600px; margin: auto;;"> 
-   <h4 id="principal_title_on" style=" font-size: 12px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 15px; line-height: normal; ;">&nbsp;</h4> 
-   <div class="sin-_fes"> 
-    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace; font-weight: normal; line-height: normal; margin: auto; padding: 0px;">&nbsp;</p> 
-    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace; font-weight: normal; line-height: normal; margin: auto; padding: 0px;">&nbsp;</p> 
-    <aside class="improtan_ip" style="font-size: 14px; color: black; line-height: normal; text-align: center; text-decoration: none; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-     &nbsp;
-    </aside> 
-    <article> 
-     <p class="improtan_ip" style="font-size: 15px; color: black; line-height: normal; text-align: center; text-decoration: none; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">&nbsp;</p> 
-     <p class="improtan_ip" style="font-size: 30px; color: black; line-height: normal; text-align: center; text-decoration: none; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">&nbsp;</p> 
-    </article> 
-   </div> 
-   <header style="text-align: center;"> 
-    <div>
-     <a href="http://www.sew-splash.click/forklift-subtler/e405m239L5r8w6L12R4ab6NI11adt36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQIdeKo5Qs1H05E@wDk"><img alt="" src="http://www.sew-splash.click/Brien-checking/7924S2395q7arm12S4arb9q11ads36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQIdeKo6h1Alq06zqw3Dk" /></a>
-    </div> 
-   </header> 
-   <section> 
-    <article class="nova-info"> 
-     <p style="font-size: 16px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: vold; line-height: 16px;">&nbsp;</p> 
-     <div> 
-      <table> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-     </div> 
-    </article> 
-   </section> 
-   <p style="padding-bottom: 180px;">&nbsp;</p> 
-   <footer style="padding-bottom: 50px;"> 
-    <address style="background-color: #ec4141; padding: 20px 5px; outline: solid 3px #000000;"> 
-     <div style="text-align: center;"> 
-      <div style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 12px; line-height: 14px; text-align: center; color: #ffffff; font-weight: bold;">
-       &nbsp;If you do not wish to receive future messages click here to 
-       <span class="unstyle-auto-detected-links"><a href="http://www.sew-splash.click/5396Vig2395y86Tv11l4ab7M11adB36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQIdeKo7Mk1KF0q6nkjXwD/forklift-subtler" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">unsubscribe</a></span>
-       <br /> 
-       <br /> 
-       <span class="unstyle-auto-detected-links"><a href="http://www.sew-splash.click/eb74B2395EV86G11M4ab8y11ad_36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQIdeKo6hR1GM06YNNwlD/compatibles-aggrandize" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Splash Wines</a>&nbsp;|&nbsp; 1191 E Iron Eagle Dr., Suite #101 - Eagle, ID 83616</span>
-      </div> 
-     </div> </address> 
-   </footer> 
-  </div>   
- <img src="http://www.sew-splash.click/forklift-subtler/ada4H2395QU8g513I4yaKbaY11adp36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQIdeKo6cT1Hk05VXwAD" alt=""/></body>
-</html>
+> I think it's too late for v6.3 already, but given this needs at least
+> one more spin, let's set expectations of this being v6.4 material.  Thanks,
 
-------=_Part_157_1951890364.1676328553128--
+Please let's continue to try to get this finished during the merge
+window, all the other series depend on it. We can manage it with a
+shared branch again..
 
+Thanks,
+Jason
