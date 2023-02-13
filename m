@@ -2,42 +2,76 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A0486950C3
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Feb 2023 20:36:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5972C6950F3
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Feb 2023 20:47:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5488410E6E7;
-	Mon, 13 Feb 2023 19:36:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2555210E0B1;
+	Mon, 13 Feb 2023 19:47:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Mon, 13 Feb 2023 19:36:46 UTC
-Received: from mail.fill-mobi.click (unknown [45.13.189.134])
- by gabe.freedesktop.org (Postfix) with ESMTP id EF00A10E6DD
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 58F0510E6EF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Feb 2023 19:36:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fill-mobi.click; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tmobile_appreciation@fill-mobi.click; 
- bh=hyZcDT/IuwNedxe2qj/mQoOfRWc=;
- b=TwsIG+f6Q5F1ZSqEHzEwvfyv/S1m9FMnGP5DTbKWElOHuxFbE/rJkaftjuMhcaGOCodtKdJSqCta
- QADMNMK3jXkyhPt1lb08a2T9JFXuc9saECoymdaTix9c9XDqM4ia6FSgvv9mz7rfT1KWO67phKtB
- hEv5WSI/roTga66MrqE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fill-mobi.click;
- b=flkKnk7fdlj9vXSupC2MM1nyFRclHClXeO1zMh6blwewyG8BAhxMSoVtmcKf2mvynqrjAurvFcTD
- iWGV4ZJpOWtnijS5bhjhXj0BoBvscFoyVtkTj9RiNz5CRwYMNO7qkcqmS8wEWddw/+2WwS68GMpp
- V4RgMm1eEsEgE4GYZ1A=;
-Received: by mail.fill-mobi.click id hta8ku0001gl for
- <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Feb 2023 14:26:29 -0500 (envelope-from
- <tmobile_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@fill-mobi.click>)
-Date: Mon, 13 Feb 2023 14:26:29 -0500
-From: "TMOBILE Appreciation" <tmobile_appreciation@fill-mobi.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Impressive Gifts coming your way this season
+ Mon, 13 Feb 2023 19:47:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676317644;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ApEHODYHTQecrYr+nyaT7Nv1aSOq35c+xkLxu/KeFRY=;
+ b=cR14hqFBdfJcOqgbAoc1bB2buiSCLom9mdyEEjcf0qclgaknJHEfeB2pLHzxWCUMqOLcjZ
+ uWYWGRgq+CGeEsJDSiu7RKZGdx5mIxCFRTHwsR0JdgG+eDMJLkwwmGmVfHbQIkSqAxs1z4
+ RFJWTya0hBi/5+Y5GsZKv6DFCv6B+JA=
+Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
+ [209.85.166.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-592-ygjb1P-fO6O6R3bd1wwSuw-1; Mon, 13 Feb 2023 14:47:23 -0500
+X-MC-Unique: ygjb1P-fO6O6R3bd1wwSuw-1
+Received: by mail-il1-f197.google.com with SMTP id
+ c11-20020a056e020bcb00b0030be9d07d63so9984071ilu.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 13 Feb 2023 11:47:23 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=jukjE54rA/NniTDMWLMlEUTdm+2tzCyGjiSO2l2TjQQ=;
+ b=p+qHIH6NO8aVBGkLdgDUB6PD8158m9n6gIjtb+X4Z/DQ89vVvVEuTRwTyVuHBtxYiV
+ epK4oX8xhnLNm9D/kmwpX6hFcb2gZrB2jkjGINBYdkOrtJDtOJkCEvVbuaK4itqhJAwQ
+ EvKmpmTsJvnJhK+D287W+Veq7GsjWhhvtyNMLjVEA4IVn4isOqO+oD/VvCXUR2ThSfA7
+ AyCJG+6LezaCWHoWIv3gJirCMqFVETRKsTLS+x8EG6Qiba+bpu/Gt/iykHwKdVrzgKOV
+ TL22ClI5oBRufXxh/SAt1/JEr5zcJGgg5Ixh9lUrnVIZWcIpcXfyrjGM9Eo+xvJyNSga
+ S2xA==
+X-Gm-Message-State: AO0yUKXfitavqPHqQK21D2cWD1UJ2ismY8i8HtrMHbwIerjVKEaC8Or4
+ xn97Uskcl2DV1E3qlZCqQ1wQ5HrVOa70XPG0HtqL3GEnW4qWUhAPy3XwokXK9lQj3y9L4Kzy5Hc
+ 4CTXcnkyZbxLud7lLPoOnuBiI3dkfBgmMuA==
+X-Received: by 2002:a05:6e02:184d:b0:315:475c:5cfb with SMTP id
+ b13-20020a056e02184d00b00315475c5cfbmr4365712ilv.2.1676317642517; 
+ Mon, 13 Feb 2023 11:47:22 -0800 (PST)
+X-Google-Smtp-Source: AK7set+a3j5BS/mB6OljGhyF1TwNBaNZHDWgm8ontm8ZGuY3WL3AC4gQHk2dSPBwbafrr/9Ovuk7+A==
+X-Received: by 2002:a05:6e02:184d:b0:315:475c:5cfb with SMTP id
+ b13-20020a056e02184d00b00315475c5cfbmr4365682ilv.2.1676317642188; 
+ Mon, 13 Feb 2023 11:47:22 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ g15-20020a92dd8f000000b00313f2279f06sm4010881iln.73.2023.02.13.11.47.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Feb 2023 11:47:21 -0800 (PST)
+Date: Mon, 13 Feb 2023 12:47:19 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yi Liu <yi.l.liu@intel.com>
+Subject: Re: [PATCH v3 00/15] Add vfio_device cdev for iommufd support
+Message-ID: <20230213124719.126eb828.alex.williamson@redhat.com>
+In-Reply-To: <20230213151348.56451-1-yi.l.liu@intel.com>
+References: <20230213151348.56451-1-yi.l.liu@intel.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_562_1559281941.1676316367863"
-Message-ID: <0.0.0.3E.1D93FE112795802.1F2312@mail.fill-mobi.click>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,62 +84,73 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: linux-s390@vger.kernel.org, kevin.tian@intel.com, yi.y.sun@linux.intel.com,
+ mjrosato@linux.ibm.com, kvm@vger.kernel.org,
+ intel-gvt-dev@lists.freedesktop.org, joro@8bytes.org, cohuck@redhat.com,
+ peterx@redhat.com, suravee.suthikulpanit@amd.com, eric.auger@redhat.com,
+ nicolinc@nvidia.com, shameerali.kolothum.thodi@huawei.com, jgg@nvidia.com,
+ intel-gfx@lists.freedesktop.org, chao.p.peng@linux.intel.com, lulu@redhat.com,
+ robin.murphy@arm.com, jasowang@redhat.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_562_1559281941.1676316367863
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Mon, 13 Feb 2023 07:13:33 -0800
+Yi Liu <yi.l.liu@intel.com> wrote:
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04021323</title> 
- </head> 
- <body style="background-color: #fffbfc; padding-top: 20px;"> 
-  <div class="color_bag" style="background-color: #fff; box-shadow: 0px 0px 5px 1px; max-width: 600px; margin: auto;"> 
-   <h2 class="rye" style="font-size: 15px; font-weight: normal; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: 15px; color: aqua;">&nbsp;</h2> 
-   <p class="pipor_2" style="font-size: 10px; line-height: 5px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: auto;">&nbsp;</p> 
-   <p class="pipor_2" style="font-size: 15px; line-height: 5px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: auto;">&nbsp;</p> 
-   <div class="pipor_2" style="font-size: 10px; line-height: 5px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: auto;">
-    &nbsp;
-   </div> 
-   <article> 
-    <p class="pipor_2" style="font-size: 10px; line-height: 5px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: auto;">&nbsp;</p> 
-    <p class="pipor_2" style="font-size: 10px; line-height: 5px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: auto;">&nbsp;</p> 
-   </article> 
-   <header id="titulo_on" style="text-align: center; max-width: 600px; margin: auto;"> 
-    <div style="background-color: rgb(71, 71, 71); color: #fff; box-shadow: inset 0px 0px 5px 1px #BC2C5A; padding-top: 5px;"> 
-     <p style="font-size: 30px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: inline;">T-MOBILE</p> &nbsp; 
-     <h5 class="iooo_to" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 25px; text-align: center; display: inline;">Get closer to a $100 T-Mobile Gift<br /> Card With Just a Few Clicks!</h5> 
-     <h6><a href="http://www.fill-mobi.click/polecat-fishery/17a5i239Y5wL86r13h4CQa9aj11aaS36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQTdeeK5QC1r05Eq2wD"><img alt="" src="http://www.fill-mobi.click/b334w2395U7Faq13uB4oa9cr11aas36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQTdeeK7NTt1p0h6RUBBwD/polecat-fishery" width="100%" /></a></h6> 
-    </div> 
-   </header> 
-   <section id="texandbt" style="max-width: 600px; margin: auto;"> 
-    <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal; line-height: 30px; padding: 0px 35px 15px; font-size: 22px;">Tell us how we' re doing and get a $100 gift card to T-Mobile and upgrade your mobile service!<br /> <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us.</p> 
-    <p class="pipor_55" style="font-size: 10px; line-height: 5px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: auto;">&nbsp;</p> 
-    <p class="pipor_25" style="font-size: 10px; line-height: 5px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: auto;">&nbsp;</p> 
-    <p class="pipor_3" style="font-size: 10px; line-height: 5px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: auto;">&nbsp;</p> 
-   </section> &nbsp; 
-   <div style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-decoration: none; color: #fff; font-weight: bold; font-size: large;"> 
-    <div style="background-color: black; padding: 17px 30px; display: inline; border-radius: 80px; box-shadow: inset 0px 0px 5px 1px;">
-     <a href="http://www.fill-mobi.click/polecat-fishery/17a5i239Y5wL86r13h4CQa9aj11aaS36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQTdeeK5QC1r05Eq2wD" style="text-decoration: none; color: #fff;">Go And Start Now</a>
-    </div> 
-   </div> 
-   <br /> 
-   <br /> &nbsp;
-  </div> 
-  <div style="padding-bottom: 250px;">
-   &nbsp;
-  </div> 
-  <footer class="direccion-_gop" style="width: 100%; background-color: #e9cee3; padding: 18px 0px;"> 
-   <address style="margin: auto; max-width: 600px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; font-weight: 900; font-size: 12px;"> <p><span style="text-decoration: none; ">To end notices,</span><a href="http://www.fill-mobi.click/polecat-fishery/b345AY2395sZF8613Rq4a9b_V11aaF36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQTdeeK7h1V0mnl5UJkwD" style="text-decoration-line: none; color: white"> <span>Continue Over Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small><span></small></span><style></style><style size="swerving"><font></font></style><style><font size="Strasbourg"></font><font><span></style><big></big></span></font><small></small></p> </address> 
-  </footer>   
- <img src="http://www.fill-mobi.click/polecat-fishery/22e5XH2395zZt8513vC4sa9dB11aaH36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQTdeeK7N1iX0nk6lN3wDp" alt=""/></body>
-</html>
+> Existing VFIO provides group-centric user APIs for userspace. Userspace
+> opens the /dev/vfio/$group_id first before getting device fd and hence
+> getting access to device. This is not the desired model for iommufd. Per
+> the conclusion of community discussion[1], iommufd provides device-centri=
+c
+> kAPIs and requires its consumer (like VFIO) to be device-centric user
+> APIs. Such user APIs are used to associate device with iommufd and also
+> the I/O address spaces managed by the iommufd.
+>=20
+> This series first introduces a per device file structure to be prepared
+> for further enhancement and refactors the kvm-vfio code to be prepared
+> for accepting device file from userspace. Then refactors the vfio to be
+> able to handle iommufd binding. This refactor includes the mechanism of
+> blocking device access before iommufd bind, making vfio_device_open() be
+> exclusive between the group path and the cdev path. Eventually, adds the
+> cdev support for vfio device, and makes group infrastructure optional as
+> it is not needed when vfio device cdev is compiled.
+>=20
+> This is also a prerequisite for iommu nesting for vfio device[2].
+>=20
+> The complete code can be found in below branch, simple test done with the
+> legacy group path and the cdev path. Draft QEMU branch can be found at[3]
+>=20
+> https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v3
+> (config CONFIG_IOMMUFD=3Dy CONFIG_VFIO_DEVICE_CDEV=3Dy)
 
-------=_Part_562_1559281941.1676316367863--
+Even using your branch[1], it seems like this has not been tested
+except with cdev support enabled:
+
+/home/alwillia/Work/linux.git/drivers/vfio/vfio_main.c: In function =E2=80=
+=98vfio_device_add=E2=80=99:
+/home/alwillia/Work/linux.git/drivers/vfio/vfio_main.c:253:48: error: =E2=
+=80=98struct vfio_device=E2=80=99 has no member named =E2=80=98cdev=E2=80=
+=99; did you mean =E2=80=98dev=E2=80=99?
+  253 |                 ret =3D cdev_device_add(&device->cdev, &device->dev=
+ice);
+      |                                                ^~~~
+      |                                                dev
+/home/alwillia/Work/linux.git/drivers/vfio/vfio_main.c: In function =E2=80=
+=98vfio_device_del=E2=80=99:
+/home/alwillia/Work/linux.git/drivers/vfio/vfio_main.c:262:42: error: =E2=
+=80=98struct vfio_device=E2=80=99 has no member named =E2=80=98cdev=E2=80=
+=99; did you mean =E2=80=98dev=E2=80=99?
+  262 |                 cdev_device_del(&device->cdev, &device->device);
+      |                                          ^~~~
+      |                                          dev
+
+Additionally the VFIO_ENABLE_GROUP Kconfig option doesn't make much
+sense to me, it seems entirely redundant to VFIO_GROUP.
+
+I think it's too late for v6.3 already, but given this needs at least
+one more spin, let's set expectations of this being v6.4 material.  Thanks,
+
+Alex
+
+[1] 98491da60ae1 cover-letter: Add vfio_device cdev for iommufd support
 
