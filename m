@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8856C695269
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Feb 2023 21:56:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6688369547C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Feb 2023 00:00:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5C8D410E72F;
-	Mon, 13 Feb 2023 20:56:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1132B10E777;
+	Mon, 13 Feb 2023 23:00:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Mon, 13 Feb 2023 20:56:34 UTC
-Received: from mail.hug-tunbb.click (unknown [45.13.189.113])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4D76310E734
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Mon, 13 Feb 2023 23:00:35 UTC
+Received: from mail.sew-splash.click (unknown [45.13.189.159])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6D10310E775
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Feb 2023 20:56:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hug-tunbb.click; 
+ Mon, 13 Feb 2023 23:00:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sew-splash.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=new_brain_blueprint@hug-tunbb.click; 
- bh=5mOd14k7G2G3aFgRLwawEFdqNEw=;
- b=jnLI4jnFCsu/dd60gSnztaA1nErfMtwxI/lTVBVx7ZvzU7B23XtFnmOGnwu+tqjc2AOlF5aQCXch
- I4iI4PVA9kbYbcUMYstwmPBYLXqaqX7xZAXhJsmHkmyi0UyNfwEmMRnQZWEVUOznt3FvYXfzce1v
- IMuvg5qZGdZMFMfLETU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hug-tunbb.click;
- b=dFdBH+DomPzk7XLinTEmvY8DKcBqWleAmLQbvhPSKnTwCeeHdXE5owNT2nRAdkt4g5t2zKiFGWsC
- 31r/ZiKe/BXCZNHCPUMYg2pJICxpcC8wrkK88xr/6h/M36fLDF1270Y8liXrI+FN/1uBwbJlqAR+
- UFFZonkTV3kevzxhelg=;
-Received: by mail.hug-tunbb.click id htas4k0001gr for
+ i=toprated_wines_splash_wines@sew-splash.click; 
+ bh=aKv+jL40WdfhQRNhguktVcqLokU=;
+ b=UbqHP5NewDBypaNel9GF9nCrPqinv7FAEurPkKE+IO2FsMPY9bUDBW5UVd49hCjgGUbRBwM6i+xL
+ 5jJiVg1lgM6vUby4i7g7nn1am78EQlndq7/V5Y5rVsw8hLxsc1ykAeIGpkQHhgpxlndp2/slRMre
+ Sqs26Mzust4S1D8nxL4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sew-splash.click;
+ b=VLJfNZAgzeJvhS/dSfP+IX5CLqRiUBMmhEbxsmnfi/u0wcmQ9jL2X6FGl7hIwPoBvPZyglMaAk7z
+ o1YQ7BncxtEarBZ7QuKgCn1xUdDCGNkRdP09f2VPP0o4pwqcWCHsskm0ZJe5mGH/KDdt9G5K5Vc1
+ rl60ZVfdQbwWHuzdrTE=;
+Received: by mail.sew-splash.click id htb0h60001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Feb 2023 17:12:52 -0500 (envelope-from
- <new_brain_blueprint-intel+2Dgvt+2Ddev=lists.freedesktop.org@hug-tunbb.click>)
-Date: Mon, 13 Feb 2023 17:12:52 -0500
-From: "New Brain Blueprint" <new_brain_blueprint@hug-tunbb.click>
+ Mon, 13 Feb 2023 17:49:36 -0500 (envelope-from
+ <toprated_wines_splash_wines-intel+2Dgvt+2Ddev=lists.freedesktop.org@sew-splash.click>)
+Date: Mon, 13 Feb 2023 17:49:36 -0500
+From: "TopRated Wines Splash Wines"
+ <toprated_wines_splash_wines@sew-splash.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: FOR "OneFood" CREATIVE: EAT your way to a healthy brain?
+Subject: &#127863;Inventory Low: Premium Wines Only $5.99 Each &#127863;
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_322_886059017.1676321145882"
-Message-ID: <0.0.0.23.1D93FF850AF246E.2D0596@mail.hug-tunbb.click>
+ boundary="----=_Part_157_1951890364.1676328553128"
+Message-ID: <0.0.0.11.1D93FFD727F9574.FB27D@mail.sew-splash.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_322_886059017.1676321145882
+------=_Part_157_1951890364.1676328553128
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,55 +64,59 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>06021323</title> 
+  <title>07021323</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(207, 207, 207);"> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <p style="padding-bottom: 45px;">&nbsp;</p> 
-   <div style="width: 100%; background-color: #fff; border-radius: 8px;"> 
-    <header class="new_email" style="text-align: center;"> 
-     <div> 
-      <aside style="font-size: 22px; padding: 10px 15px; font-family: Arial, Helvetica, sans-serif; line-height: normal;">
-       A new study from Harvard Scientists has revealed
-       <br /> that 
-       <a href="" target="_blank">ONE of the following foods</a> is linked to combating
-       <br /> Alzheimer's and dementia. Can you guess which it is?
-      </aside> 
-     </div> 
-    </header> 
-    <section> 
-     <div style="font-size: 25px; padding-left: 35px;"> 
-      <ol style="line-height: 35px;"> 
-       <li><a href="http://www.hug-tunbb.click/4fd6c2JQ395dC8i613Bs4aaH3W11acL36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQvdeKn7MS1XJ_06Qp@1wD/rewards-shrilly" target="_blank">Red wine</a></li> 
-       <li><a href="http://www.hug-tunbb.click/4fd6c2JQ395dC8i613Bs4aaH3W11acL36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQvdeKn7MS1XJ_06Qp@1wD/rewards-shrilly" target="_blank">Fish</a></li> 
-       <li><a href="http://www.hug-tunbb.click/4fd6c2JQ395dC8i613Bs4aaH3W11acL36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQvdeKn7MS1XJ_06Qp@1wD/rewards-shrilly" target="_blank">Avocados</a></li> 
-       <li><a href="http://www.hug-tunbb.click/4fd6c2JQ395dC8i613Bs4aaH3W11acL36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQvdeKn7MS1XJ_06Qp@1wD/rewards-shrilly" target="_blank">Clams</a></li> 
-      </ol> 
-     </div> 
-    </section> 
-    <section> 
-     <div style="text-align: center;">
-      <a href="http://www.hug-tunbb.click/4fd6c2JQ395dC8i613Bs4aaH3W11acL36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQvdeKn7MS1XJ_06Qp@1wD/rewards-shrilly"><img alt="" src="http://www.hug-tunbb.click/13d4w2395S7zia12V4aaI6X11acK36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQvdeKn7Gu1wx0z6ALwjDj/judge-banking" width="80%" /></a>
-     </div> 
-    </section> &nbsp; 
-    <div> 
-     <aside style="font-size: 25px; text-align: center;">
-      <a href="http://www.hug-tunbb.click/4fd6c2JQ395dC8i613Bs4aaH3W11acL36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQvdeKn7MS1XJ_06Qp@1wD/rewards-shrilly">Or click HERE to see the answer &gt;&gt; &gt;&gt;</a>
-     </aside> 
-    </div> 
+ <body style="background-color: rgb(207, 207, 207);"> 
+  <div style="max-width: 600px; margin: auto;;"> 
+   <h4 id="principal_title_on" style=" font-size: 12px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 15px; line-height: normal; ;">&nbsp;</h4> 
+   <div class="sin-_fes"> 
+    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace; font-weight: normal; line-height: normal; margin: auto; padding: 0px;">&nbsp;</p> 
+    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace; font-weight: normal; line-height: normal; margin: auto; padding: 0px;">&nbsp;</p> 
+    <aside class="improtan_ip" style="font-size: 14px; color: black; line-height: normal; text-align: center; text-decoration: none; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+     &nbsp;
+    </aside> 
     <article> 
-     <p style="font-size: 26px; padding: 20px;">To your health,<br /> Dr. Will Mitchell, DOM, MS Nutrition</p> 
+     <p class="improtan_ip" style="font-size: 15px; color: black; line-height: normal; text-align: center; text-decoration: none; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">&nbsp;</p> 
+     <p class="improtan_ip" style="font-size: 30px; color: black; line-height: normal; text-align: center; text-decoration: none; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">&nbsp;</p> 
     </article> 
    </div> 
-  </div> 
-  <footer style="width: 100%; text-align: center; background-color: beige; padding: 25px 0px;"> 
-   <address style="max-width: 600px; margin: auto; background-color: #fff; font-weight: bold; padding: 18px; box-shadow: 0px 0px 6px 1px;"> 
+   <header style="text-align: center;"> 
     <div>
-     <font face="Verdana, Arial, Helvetica, sans-serif" size="1">If you'd prefer not to receive future messages, <a href="http://www.hug-tunbb.click/51b5WC2395XQr8613Nv4aaY4_11acY36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQvdeKn5UmB105v2wDp/articulations-unwieldiness"><font color="#666666">leave us Here</font></a>.<br /> <a href="http://www.hug-tunbb.click/glanced-eddy/8644I2395B8z6A12r4gaa5K11acw36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQvdeKn5G1v0Z6YMXwOD">Brain Blueprint</a> 321 N Central Expressway Suite 351 - McKinney, TX 75070 </font>
-    </div> </address> 
-  </footer>   
- <img src="http://www.hug-tunbb.click/af75Sw2395yW8C512z4Iaa7Y11acB36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQvdeKn7P1R0tMn6pqk@wD/rewards-shrilly" alt=""/></body>
+     <a href="http://www.sew-splash.click/forklift-subtler/e405m239L5r8w6L12R4ab6NI11adt36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQIdeKo5Qs1H05E@wDk"><img alt="" src="http://www.sew-splash.click/Brien-checking/7924S2395q7arm12S4arb9q11ads36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQIdeKo6h1Alq06zqw3Dk" /></a>
+    </div> 
+   </header> 
+   <section> 
+    <article class="nova-info"> 
+     <p style="font-size: 16px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: vold; line-height: 16px;">&nbsp;</p> 
+     <div> 
+      <table> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </div> 
+    </article> 
+   </section> 
+   <p style="padding-bottom: 180px;">&nbsp;</p> 
+   <footer style="padding-bottom: 50px;"> 
+    <address style="background-color: #ec4141; padding: 20px 5px; outline: solid 3px #000000;"> 
+     <div style="text-align: center;"> 
+      <div style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 12px; line-height: 14px; text-align: center; color: #ffffff; font-weight: bold;">
+       &nbsp;If you do not wish to receive future messages click here to 
+       <span class="unstyle-auto-detected-links"><a href="http://www.sew-splash.click/5396Vig2395y86Tv11l4ab7M11adB36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQIdeKo7Mk1KF0q6nkjXwD/forklift-subtler" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">unsubscribe</a></span>
+       <br /> 
+       <br /> 
+       <span class="unstyle-auto-detected-links"><a href="http://www.sew-splash.click/eb74B2395EV86G11M4ab8y11ad_36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQIdeKo6hR1GM06YNNwlD/compatibles-aggrandize" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Splash Wines</a>&nbsp;|&nbsp; 1191 E Iron Eagle Dr., Suite #101 - Eagle, ID 83616</span>
+      </div> 
+     </div> </address> 
+   </footer> 
+  </div>   
+ <img src="http://www.sew-splash.click/forklift-subtler/ada4H2395QU8g513I4yaKbaY11adp36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQIdeKo6cT1Hk05VXwAD" alt=""/></body>
 </html>
 
-------=_Part_322_886059017.1676321145882--
+------=_Part_157_1951890364.1676328553128--
 
