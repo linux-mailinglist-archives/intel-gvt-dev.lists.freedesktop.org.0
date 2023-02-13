@@ -1,50 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0823694AA1
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Feb 2023 16:14:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46AD4694E3B
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Feb 2023 18:39:44 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EEEDC10E608;
-	Mon, 13 Feb 2023 15:14:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0EA6510E657;
+	Mon, 13 Feb 2023 17:39:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 99E2A10E604;
- Mon, 13 Feb 2023 15:14:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676301258; x=1707837258;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=Wth6oQO+37BPRFD6I34rHJNblZKWoophov3YSqt61kI=;
- b=HJ0q62oxh0APkoXrwz5qMFGbPv0PEzjtWBy9nhkH/KUvPwBrM7j4TI2Y
- zUJnYTl5OnEnn+BlmiuHdCN8+gKdTlyUs9l9w/UIBH3mUAwcM8YQgJRzS
- pdpb+DpMu+KdXHijpvEt7E7UtTCviJT6sj8Pvvgk9pKuwQMcPDmpAPZtG
- 8o9wlJmhh3jwa/juAPikizeF/pSlXstl8F/DLZzRBSe93RzdlD+qYvcek
- svQWg3BMf90yNKT6ndYLh1wKvwPSvCbRjKKtIu5mkPEHGdX1DevxMRQmH
- 6Q585DUjCQ66FHW4l8bWr6SXkDS2G3+QUzNKLyRfUGvUz5K6XSJ3vOq59 Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="318931687"
-X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; d="scan'208";a="318931687"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2023 07:14:05 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10620"; a="701289698"
-X-IronPort-AV: E=Sophos;i="5.97,294,1669104000"; d="scan'208";a="701289698"
-Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by orsmga001.jf.intel.com with ESMTP; 13 Feb 2023 07:14:05 -0800
-From: Yi Liu <yi.l.liu@intel.com>
-To: joro@8bytes.org, alex.williamson@redhat.com, jgg@nvidia.com,
- kevin.tian@intel.com, robin.murphy@arm.com
-Subject: [PATCH v3 15/15] vfio: Compile group optionally
-Date: Mon, 13 Feb 2023 07:13:48 -0800
-Message-Id: <20230213151348.56451-16-yi.l.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230213151348.56451-1-yi.l.liu@intel.com>
-References: <20230213151348.56451-1-yi.l.liu@intel.com>
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Mon, 13 Feb 2023 17:39:40 UTC
+Received: from mail.dine-snpk.click (unknown [45.13.189.84])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DB5E010E656
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 13 Feb 2023 17:39:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dine-snpk.click; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=myseniorperks-financial-help@dine-snpk.click; 
+ bh=ZOfSmWHt6M8nOGlHqIzWewIDD1A=;
+ b=wX1qx6ZEnTedjEhsz1hJMKW/bc0FKZCFI6PrxbiKOmdjle4vePwkYruUy464JBpGjF/V6YNCQd3N
+ ixjNLLi6Ps0KCiKbBXiSYtUv+s7eXtEruBGGrnYcl3h5pS3h1blLUt4CtrsdF3e+LdJD4d2DMIte
+ 7qR039tB1Tq+YvbSy1E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dine-snpk.click;
+ b=z2GhrY/ppXlwXNE542jWI9iKj4cbpUC/jHEuasY7TZWsqzST4DC1osYYS7rK9ZeMzfC2F9oRA0dv
+ RHRkYcA1hyWZ+LfM+Iqw2cSF+jQEqX5WTMyHJV8HybjFtRXQ5geeC9QISHZDMiTykk5yiA36eTp1
+ 9eGJ0Z0Mc4kxEgfiuhU=;
+Received: by mail.dine-snpk.click id ht9qtq0001g9 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 13 Feb 2023 12:28:02 -0500 (envelope-from
+ <myseniorperks-financial-help-intel+2Dgvt+2Ddev=lists.freedesktop.org@dine-snpk.click>)
+Date: Mon, 13 Feb 2023 12:28:02 -0500
+From: "MySeniorPerks Financial Help"
+ <myseniorperks-financial-help@dine-snpk.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Updated - 18 of the best senior deals today
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_46_2067957466.1676309260826"
+Message-ID: <0.0.0.5.1D93FD0867775A6.21358@mail.dine-snpk.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,217 +51,107 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
- kvm@vger.kernel.org, mjrosato@linux.ibm.com, jasowang@redhat.com,
- cohuck@redhat.com, peterx@redhat.com, eric.auger@redhat.com,
- nicolinc@nvidia.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, chao.p.peng@linux.intel.com, lulu@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-group code is not needed for vfio device cdev, so with vfio device cdev
-introduced, the group infrastructures can be compiled out if only cdev
-is needed.
+------=_Part_46_2067957466.1676309260826
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Yi Liu <yi.l.liu@intel.com>
----
- drivers/vfio/Kconfig  | 18 ++++++++++
- drivers/vfio/Makefile |  2 +-
- drivers/vfio/vfio.h   | 78 +++++++++++++++++++++++++++++++++++++++++++
- include/linux/vfio.h  | 11 ++++++
- 4 files changed, 108 insertions(+), 1 deletion(-)
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>01021323</title> 
+ </head> 
+ <body> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; padding-bottom: 70px;"> 
+   <h2 id="Speed_today">&nbsp;</h2> 
+   <article class="Speed_ontogo"> 
+    <p style="text-align: center; font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 22px; line-height: normal;">&nbsp;</p> 
+   </article> 
+   <div> 
+    <table style="max-width: 600px; margin: auto; border-collapse: collapse; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <header id="imagen_proika" style=" text-align: center; box-shadow: 0px 0px 5px 1px;"> 
+    <h1><a href="http://www.dine-snpk.click/momentous-shrilled/7386BVp2395q8yr613d4aom8cG11a7U36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQAdeeR6wC10LW5d0lwD"><img alt="" src="http://www.dine-snpk.click/rather-brindled/de65I23K95S7aOS13yK4a8hfW11a7_36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQAdeeR6aL1CA06g32wD3" width="100%" /></a></h1> 
+   </header> 
+   <section class="sudo2" style="text-align: center; font-weight: 500;"> 
+    <div> 
+     <article> 
+      <p>&nbsp;</p> 
+     </article> 
+    </div> 
+    <table style="max-width: 600px; margin: auto; border-collapse: collapse; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table style="max-width: 600px; margin: auto; border-collapse: collapse; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </section> 
+   <section class="sudo2" style="text-align: center; font-weight: 500;"> 
+    <div> 
+     <article> 
+      <p>&nbsp;</p> 
+     </article> 
+    </div> 
+    <table style="max-width: 600px; margin: auto; border-collapse: collapse; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table style="max-width: 600px; margin: auto; border-collapse: collapse; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </section> 
+  </div> 
+  <div style="max-width: 600px; margin: auto; font-size: 12px; background-color: blanchedalmond;"> 
+   <p>&nbsp;</p> 
+   <p align="center" class="dress" id="slogan"><span>If you'd prefer not to receive future messages, <a href="http://www.dine-snpk.click/e3f4L2395q86Tk12G4a8dUB11a7m36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQAdeeR7S10PKgt5WMqwD/subsections-pariah"><font color="#666666">leave Here</font></a>.</span></p> 
+   <p align="center" class="accept" id="elegant"><span><a href="http://www.dine-snpk.click/de54D2395J8CM611G4a8eP11a7G36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQAdeeR5d10oG5MMw1D/graphing-hostility"><font color="#666666">My Senior Perks</font></a> | 302 Washington St #150-7835 San Diego, CA 92103</span></p> 
+   <br /> 
+   <br /> 
+   <span>&nbsp; </span> 
+   <p class="sweep" id="piece"><span>&nbsp;</span></p> 
+   <span> </span> 
+   <p>&nbsp;</p> 
+   <span> </span>
+  </div> 
+  <p style="padding-top: 25px;">&nbsp;</p>   
+ <img src="http://www.dine-snpk.click/rather-brindled/9904I2395t8wZ513H4a90NJM11a7t36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQAdeeR6zM1OW06IBAwMD" alt=""/></body>
+</html>
 
-diff --git a/drivers/vfio/Kconfig b/drivers/vfio/Kconfig
-index 0476abf154f2..9c6626dfd116 100644
---- a/drivers/vfio/Kconfig
-+++ b/drivers/vfio/Kconfig
-@@ -15,6 +15,7 @@ if VFIO
- config VFIO_DEVICE_CDEV
- 	bool "Support for the VFIO cdev /dev/vfio/devices/vfioX"
- 	depends on IOMMUFD
-+	default !VFIO_GROUP
- 	help
- 	  The VFIO device cdev is another way for userspace to get device
- 	  access. Userspace gets device fd by opening device cdev under
-@@ -23,9 +24,26 @@ config VFIO_DEVICE_CDEV
- 
- 	  If you don't know what to do here, say N.
- 
-+config VFIO_ENABLE_GROUP
-+	bool
-+	default !VFIO_DEVICE_CDEV
-+
-+config VFIO_GROUP
-+	bool "Support for the VFIO group /dev/vfio/$group_id"
-+	select VFIO_ENABLE_GROUP
-+	default y
-+	help
-+	   VFIO group is legacy interface for userspace. As the introduction
-+	   of VFIO device cdev interface, this can be N. For now, before
-+	   userspace applications are fully converted to new vfio device cdev
-+	   interface, this should be Y.
-+
-+	   If you don't know what to do here, say Y.
-+
- config VFIO_CONTAINER
- 	bool "Support for the VFIO container /dev/vfio/vfio"
- 	select VFIO_IOMMU_TYPE1 if MMU && (X86 || S390 || ARM || ARM64)
-+	depends on VFIO_ENABLE_GROUP
- 	default y
- 	help
- 	  The VFIO container is the classic interface to VFIO for establishing
-diff --git a/drivers/vfio/Makefile b/drivers/vfio/Makefile
-index 245394aeb94b..4e81c3bbed30 100644
---- a/drivers/vfio/Makefile
-+++ b/drivers/vfio/Makefile
-@@ -2,9 +2,9 @@
- obj-$(CONFIG_VFIO) += vfio.o
- 
- vfio-y += vfio_main.o \
--	  group.o \
- 	  iova_bitmap.o
- vfio-$(CONFIG_VFIO_DEVICE_CDEV) += device_cdev.o
-+vfio-$(CONFIG_VFIO_ENABLE_GROUP) += group.o
- vfio-$(CONFIG_IOMMUFD) += iommufd.o
- vfio-$(CONFIG_VFIO_CONTAINER) += container.o
- vfio-$(CONFIG_VFIO_VIRQFD) += virqfd.o
-diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-index 421492518ab5..0fc9faaa7780 100644
---- a/drivers/vfio/vfio.h
-+++ b/drivers/vfio/vfio.h
-@@ -62,6 +62,7 @@ enum vfio_group_type {
- 	VFIO_NO_IOMMU,
- };
- 
-+#if IS_ENABLED(CONFIG_VFIO_ENABLE_GROUP)
- struct vfio_group {
- 	struct device 			dev;
- 	struct cdev			cdev;
-@@ -108,6 +109,83 @@ bool vfio_group_has_dev(struct vfio_group *group, struct vfio_device *device);
- bool vfio_device_has_container(struct vfio_device *device);
- int __init vfio_group_init(void);
- void vfio_group_cleanup(void);
-+#else
-+struct vfio_group;
-+
-+static inline int vfio_device_claim_group(struct vfio_device *device)
-+{
-+	return 0;
-+}
-+
-+static inline void vfio_device_release_group(struct vfio_device *device)
-+{
-+}
-+
-+static inline int vfio_device_set_group(struct vfio_device *device,
-+					enum vfio_group_type type)
-+{
-+	return 0;
-+}
-+
-+static inline void vfio_device_remove_group(struct vfio_device *device)
-+{
-+}
-+
-+static inline void vfio_device_group_register(struct vfio_device *device)
-+{
-+}
-+
-+static inline void vfio_device_group_unregister(struct vfio_device *device)
-+{
-+}
-+
-+static inline int vfio_device_group_use_iommu(struct vfio_device *device)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+static inline void vfio_device_group_unuse_iommu(struct vfio_device *device)
-+{
-+}
-+
-+static inline void vfio_device_group_close(struct vfio_device_file *df)
-+{
-+}
-+
-+static inline struct vfio_group *vfio_group_from_file(struct file *file)
-+{
-+	return NULL;
-+}
-+
-+static inline bool vfio_group_enforced_coherent(struct vfio_group *group)
-+{
-+	return true;
-+}
-+
-+static inline void vfio_group_set_kvm(struct vfio_group *group, struct kvm *kvm)
-+{
-+}
-+
-+static inline bool vfio_group_has_dev(struct vfio_group *group,
-+				      struct vfio_device *device)
-+{
-+	return false;
-+}
-+
-+static inline bool vfio_device_has_container(struct vfio_device *device)
-+{
-+	return false;
-+}
-+
-+static inline int __init vfio_group_init(void)
-+{
-+	return 0;
-+}
-+
-+static inline void vfio_group_cleanup(void)
-+{
-+}
-+#endif /* CONFIG_VFIO_ENABLE_GROUP */
- 
- #if IS_ENABLED(CONFIG_VFIO_CONTAINER)
- /**
-diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index 6b554ce6245a..1d9ba93feb0d 100644
---- a/include/linux/vfio.h
-+++ b/include/linux/vfio.h
-@@ -43,7 +43,9 @@ struct vfio_device {
- 	 */
- 	const struct vfio_migration_ops *mig_ops;
- 	const struct vfio_log_ops *log_ops;
-+#if IS_ENABLED(CONFIG_VFIO_ENABLE_GROUP)
- 	struct vfio_group *group;
-+#endif
- 	struct vfio_device_set *dev_set;
- 	struct list_head dev_set_list;
- 	unsigned int migration_flags;
-@@ -58,8 +60,10 @@ struct vfio_device {
- 	refcount_t refcount;	/* user count on registered device*/
- 	unsigned int open_count;
- 	struct completion comp;
-+#if IS_ENABLED(CONFIG_VFIO_ENABLE_GROUP)
- 	struct list_head group_next;
- 	struct list_head iommu_entry;
-+#endif
- 	struct iommufd_access *iommufd_access;
- 	void (*put_kvm)(struct kvm *kvm);
- #if IS_ENABLED(CONFIG_IOMMUFD)
-@@ -257,7 +261,14 @@ int vfio_mig_get_next_state(struct vfio_device *device,
- /*
-  * External user API
-  */
-+#if IS_ENABLED(CONFIG_VFIO_ENABLE_GROUP)
- struct iommu_group *vfio_file_iommu_group(struct file *file);
-+#else
-+static inline struct iommu_group *vfio_file_iommu_group(struct file *file)
-+{
-+	return NULL;
-+}
-+#endif
- bool vfio_file_is_valid(struct file *file);
- bool vfio_file_enforced_coherent(struct file *file);
- void vfio_file_set_kvm(struct file *file, struct kvm *kvm);
--- 
-2.34.1
+------=_Part_46_2067957466.1676309260826--
 
