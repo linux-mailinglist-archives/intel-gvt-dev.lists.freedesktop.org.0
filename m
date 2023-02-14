@@ -2,109 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB60A696A40
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Feb 2023 17:49:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ABBB696C8B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Feb 2023 19:13:12 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 45C8610E24A;
-	Tue, 14 Feb 2023 16:49:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C458D10E95D;
+	Tue, 14 Feb 2023 18:13:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2043.outbound.protection.outlook.com [40.107.93.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9DE7D10E226;
- Tue, 14 Feb 2023 16:49:00 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=S+RMEdrPKMC0V88EHBpPvjSoYnJ0xXH5Odq+zZ6GN8IQPZuLiKJ5KhqUbQiW/JrEemE36OVHAzOsumvfFkNpySPcfnNAW1HLUr8A3+4G9A5eGZcVaQAZvtmQwgBj25OzFSeHo+JwoJ7xtwIJJIEyr5xCbZzQN4EXMKf2mxSJQMBZPJQOwDswIt/WJUjoIoj7dc/SITmcb9T4CRw7WcMoq0uUefBBRE4oWktEJNjNYKT1Y/vwkXcjbpH/EW1QE+jPFX8eQdtdbjNkmrxSRyoVTIKHZAfsJB/085uls2HH/HKppzk7D2Na82AdGnoYHchjlCsSWB1YKWO+FBiEE9HfOA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FBMDIBIPNInMFlBf7ljHo9atygaL3iHN6PAJBtVGPKA=;
- b=YgV6d8rlfAjERXtIHpGezsfw6l+4S4epPhQc1W2HKMxCXH5Wpyq4dNPQL0/V+lHdbI2e9N6WAI9iBsgodwgBbf2vBujLBsRKhRo8D3Zn2DicLz3e2Z2LFGZjeJ6Euf/iPwxfvZwv4QHtlex1gYRoClB+CX/0UpfYpU4lucvbE7ZexeP65QB92vHYg9lPMP/XOKI1SqNc1cjjnOj8O7PmncOdqgAbxdbtcqWCULYtV8BsoMZmZr9wiELo4sseagvWCgvtGU1PvvEjCuUNYvKuMN4OPKyyjGd0kgPqXPjdO17w6mAyBGkX3MZuUEFf6Rr/+iNAi9BNcrxYjSE/aVn6Gg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FBMDIBIPNInMFlBf7ljHo9atygaL3iHN6PAJBtVGPKA=;
- b=GxhyggRtNlnm7krASrLQCLZOrWRISPCsuo5TO/8AFBQJwKYaaLEO/AyvHa5Ni1ygcyR+e+uXZRq8W1FnVUYiOMafJ0iT+Jd2jvwCchPwNH/97sUu+Bofi4JiQxU++sutLId4w4Os+6lmtqEP2i0WKz7RNHR6joWzq7D1Of9FAxAXkqilzKb77NLjzxD5smEW9a7Ds8ZoIoqVt8LEosJhF+cg2DIht54eT4gtdD00jeFN8oKeZ0gYbWHtCxjg+w0guMUn7EaHVHDG7AjFJXKAFuIoT0OHj3GWRum6jR4CnRMW2f4zUkxAHced4dum/3MdBXbx+LwS+VFJ0rOup6OL/g==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by DS0PR12MB7876.namprd12.prod.outlook.com (2603:10b6:8:148::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.24; Tue, 14 Feb
- 2023 16:48:58 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::3cb3:2fce:5c8f:82ee]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::3cb3:2fce:5c8f:82ee%4]) with mapi id 15.20.6086.024; Tue, 14 Feb 2023
- 16:48:58 +0000
-Date: Tue, 14 Feb 2023 12:48:56 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH v3 00/15] Add vfio_device cdev for iommufd support
-Message-ID: <Y+u7eJKzMp/NdV86@nvidia.com>
-References: <20230213151348.56451-1-yi.l.liu@intel.com>
- <20230213124719.126eb828.alex.williamson@redhat.com>
- <Y+rGDeEMTB8FxjAH@nvidia.com>
- <DS0PR11MB7529F0B20A73690C5650778BC3A29@DS0PR11MB7529.namprd11.prod.outlook.com>
- <20230214085419.4ac6d2c2.alex.williamson@redhat.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230214085419.4ac6d2c2.alex.williamson@redhat.com>
-X-ClientProxiedBy: BL1P222CA0025.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:208:2c7::30) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Tue, 14 Feb 2023 18:13:09 UTC
+Received: from mail.diedw-vrz.click (unknown [107.158.12.158])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9A98F10E95D
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Feb 2023 18:13:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=diedw-vrz.click; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=verizon.time@diedw-vrz.click; 
+ bh=j1cPWr+hHNky2XMCtJU6fVfUKm0=;
+ b=Re0PWh0F1QrYkTx1IW6H91uutPBJVADJayyvJSmoX4cDQH602/Xiscw3Y4gUoXjXSNW8qXCgk5ef
+ YF1+ZBFexhoMZoTp3kFpK5MGuQEcNZi5Egh2RbiBRAkIsElTWjOrPrjwy1LwThsPtgJt4Dtnp6Nn
+ KkOFwbz1YBo2KoYzl34=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=diedw-vrz.click;
+ b=UosWprW2T7Og1X7vxCJ6Y3tY77vPcylWWX67LcbcBlgyBb4+KXUrxWChTy5y3OGKbqb7Qgpw/yhM
+ 8kKy8JqmSPvpRaJn16PtOGJEI0KDtN/Ip+M9RWXBoh/ihSrTOWW4HoHa4GCnaM8uSkSHqEuDnaC0
+ 211c4fofA33RBEM3Kzo=;
+Received: by mail.diedw-vrz.click id htf7ja0001gc for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Feb 2023 13:01:58 -0500 (envelope-from
+ <verizon.time-intel+2Dgvt+2Ddev=lists.freedesktop.org@diedw-vrz.click>)
+Date: Tue, 14 Feb 2023 13:01:58 -0500
+From: "VERIZON Time" <verizon.time@diedw-vrz.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Your visits are now rewarded for your loyalty - Awesome
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DS0PR12MB7876:EE_
-X-MS-Office365-Filtering-Correlation-Id: 16076de5-0cc9-41b4-254b-08db0eab5e12
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: oEQLaekkTDF+I3jytlUktrnsGkWjMQXJ6s+A17sqE2WE57+bBtiQsyo2VumUOKRYSJBJBereDsHFf4caRCq9elf6+ory43kcdfUkifRL1LoJ8TTGAb1yfLZLBqOBuHpF27qKhSm+b8Dbb3sdJti5Vp73y3C61dDRycptDXEKB9Oz2c6MyytXN1W5lysPj75jPqejK04osejDtkoBchaAdANX5blpbB2hb8K7jIv3E7eHLOgxhsBI90lg59yLkmr2iR4/ipKfygjy/7rlUHM2OWeo5rpxqwVrHISv7KumTJys2uBNPpDKaCvZ6WqkHIsR6sCuQz/IAa2Qidoq0wnGhh32O40twwR7zjc2BaDnYkA7hhf3jn1ikofQyeOZiCs4B08CnCL7795liuINqFTVcggEBTgwYelnzRQocrePlqClE4VTbD8PXyaw87dpEyW2NfgN20TMUIE4R7j+wTHkYM9cOBhMwIo9IPAEgq65MtwwF7sIYDVU2r7YMmZyvt3llumIATVI1ScUAbrtAvhfAFPag5E4gebyOtwY+o9omHMT5FTIBbD6XgXJLp0vTem5FCwup413iXH641r/uzM7ZYpGwriyOVUo7Btttio/636yLhLXIlhSemS+khZ1Ovfd9LDhrlyZq9gMo9HY5mdW0Y8miaFe8/Ge7A0l7gaizOYyHgsCu3/pnCVP+xSx+xvY
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(366004)(346002)(396003)(136003)(376002)(451199018)(54906003)(41300700001)(38100700002)(36756003)(7416002)(186003)(8936002)(6506007)(478600001)(2906002)(6486002)(26005)(5660300002)(966005)(66556008)(86362001)(6512007)(2616005)(66476007)(66946007)(6916009)(8676002)(4326008)(83380400001)(316002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?/LKj7Os3TlNxjQVHeHnCXck+QFs0JuPVyjoYjVmwwnutpZ/rRB+6zQ2NBYQE?=
- =?us-ascii?Q?gG7AEIijYeK2H2tx5oG6IrvYQe9lDhcbekPue3gr72Nf+4KF+w6xWC/a/35H?=
- =?us-ascii?Q?kcJpCfRR9VTep9SiaEXQstRAm+fitHO1740/+gm3fwDLAJId5xCIkS/XeJmc?=
- =?us-ascii?Q?b7+Mzw8FKlUyFWAksQl1VdHHBGhZG6XzCo8jTcavxSniikse5+rnmkfMAPls?=
- =?us-ascii?Q?tnUk8St9uNePKWg9ULBrtH1nms7dH9Gdkm0R/gNDxQYz+XBpILc+mqeyWW8R?=
- =?us-ascii?Q?MvMFqWFHIRzCfKPFyorqIjNbLs71q84NZXTbM+beeviTBmGduy2VFhOyfAEA?=
- =?us-ascii?Q?pKCXH5hDNJ4w8bPHNgjDePLYQW39bY9vESy+YkjOPTYQZKiyfg4XQJBKD6Lx?=
- =?us-ascii?Q?3DWx8Gv9PjUQuReUEZSLgnFzo6aDznr/qpBD8z5wMZk2lVRzLPeHc2oi8eYr?=
- =?us-ascii?Q?SqzPx8Na8pDqSv52tYVvRQ5Jy32dsNEjHe0i+oT0y7aJdEF2KJENexomqPbD?=
- =?us-ascii?Q?YtHTZXOylF7YwZ1PXWlY4B34aOQqSM7KtUZGbp2obF90/MEFr9AgRAZO873t?=
- =?us-ascii?Q?6u/AritrI9wMUBiA4/2kWivnX/cGlffhjfo2LPD3rZh0xeALK04FIZ+WeuGR?=
- =?us-ascii?Q?08ptE02/wwNpX9Uzwb9tOvcgel0vqDlrAMSoQj+yoodrHQOvmr3ADYj+fa4w?=
- =?us-ascii?Q?f/DV1LXm9iqgHdh1tCzxl2zCIHnFp/FesscCPbgfLF+xtsC2aRgfp3qp25dJ?=
- =?us-ascii?Q?LEhvra3tL6NZ8hMcqLE/vI1heRymrTS493AGH8IALgqyKJYDKVnX8J4KRZTK?=
- =?us-ascii?Q?6Cx3C5ouXxlYktS/Q9YJLRtLe1T5yxF3JZAlntWANTB/CoPuYUGQX9ajgUrN?=
- =?us-ascii?Q?qPtPmjDQWnN/IpShswF7kv7uEnX9U/tiSX1xmY5KcAt3kv+fF30stB0BgdTT?=
- =?us-ascii?Q?jRLLiNtt4HrLCSB3Q/QeSHdZ46L2sXZLuUe3Lw64vZuu6VqsD/E55E0O8tY6?=
- =?us-ascii?Q?3IH65GY2vWWDRhhK/6rD9ze2XsN0y7RtHqbE40QsjGL/u9dL3fCMbBfiVFHl?=
- =?us-ascii?Q?LkV7sX2gIEBfbW+G9ccoU93ZFg0wrfA+/mX1rtqhEy6W8kFPaXmYmCSdNdGn?=
- =?us-ascii?Q?rn3ytjFUudWDDmiZS3+cv/ciRFvtzqSSV9W5HT49LhDMeuBHpO16j6esxq4h?=
- =?us-ascii?Q?NMgWlixSR8nx+cRlqUdZG/Yty8/OhaKs2mZS+C/w8F+mADePAHsLSZk3b+ik?=
- =?us-ascii?Q?LEggpcob3T969+4dlx6RXH2h+/matjGApuLmC2IkZzvfcNxFDusIcE507Nnh?=
- =?us-ascii?Q?VIS01ar6FENGB9+KDt8w15cKe3JJn0rJc+JEGivz0ogJbxvXBgZrqi1Yt1AK?=
- =?us-ascii?Q?O7Sc2WzbYp30We7e9TmgalR3v6+5nN9eJCw1Cye5uus73QnYaoC/NETxaTco?=
- =?us-ascii?Q?Q595fcb5dIr9FBtLG2TfxwOHN0MHBaEKhY7wsXcagS7AgYjd6vuVqUfkMA8K?=
- =?us-ascii?Q?NSAoNkXbT1SNvvGMcZ3hPbIfFgH1ty8jF6RqaHIeTvtULMVP0XSTDN0i9or9?=
- =?us-ascii?Q?1cz5GqzNbn2dKd8vvKBxZoXUgbRAomEOelIg8Z+i?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 16076de5-0cc9-41b4-254b-08db0eab5e12
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Feb 2023 16:48:58.4907 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ureIUVgQQ4Ere4UYZSam8gVghzDb308lq/3R95dMAErGT1uiitxXDRbl4hAbbKB9
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7876
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_148_312072263.1676397697604"
+Message-ID: <0.0.0.5F.1D9409E6E6595D2.12D2BD@mail.diedw-vrz.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,63 +50,90 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "lulu@redhat.com" <lulu@redhat.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Feb 14, 2023 at 08:54:19AM -0700, Alex Williamson wrote:
-> On Tue, 14 Feb 2023 15:15:28 +0000
-> "Liu, Yi L" <yi.l.liu@intel.com> wrote:
-> 
-> > > From: Jason Gunthorpe <jgg@nvidia.com>
-> > > Sent: Tuesday, February 14, 2023 7:22 AM
-> > > 
-> > > On Mon, Feb 13, 2023 at 12:47:19PM -0700, Alex Williamson wrote:
-> > >   
-> > > > I think it's too late for v6.3 already, but given this needs at least
-> > > > one more spin, let's set expectations of this being v6.4 material.  Thanks,  
-> > > 
-> > > Please let's continue to try to get this finished during the merge
-> > > window, all the other series depend on it. We can manage it with a
-> > > shared branch again..
-> > >   
-> > 
-> > Sure. I've updated the below branch to address Kevin's latest remarks.
-> > Fixed the compiling failure reported by Alex as well.
-> > 
-> > https://github.com/yiliu1765/iommufd/commits/vfio_device_cdev_v3
-> 
-> 
-> Sorry, I think this is an abuse of the merge window.  We have a new uAPI
-> proposal that's barely a week old and has no reviews or acks other than
-> Yi's, we have build configuration issues which suggests a lack of
-> testing, we're finding subtle implications to other existing uAPIs, and
-> nobody seems to have finished an upstream review, including me.
-> 
-> Code for the merge window should already be in maintainer trees by now,
-> the merge window should be for integration.  There are a lot of things
-> in flight and many more review comments coming in than we should see
-> for this to be a v6.3 candidate.  Thanks,
+------=_Part_148_312072263.1676397697604
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Sorry, I ment that we continue to review and try to get this ready for
-rc1, not abuse the merge window.
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>01021423</title> 
+ </head> 
+ <body style="background-color: rgb(226, 226, 226);"> 
+  <p style="padding: 25px; font-size: 12px; font-family: 'Courier New', Courier, monospace; font-weight: normal; line-height: normal;">&nbsp;</p> 
+  <div class="all-for_one" style="max-width: 600px; margin: auto; background-color: #fff; border-radius: 8px; padding-top: 30px; padding-bottom: 80px;"> 
+   <header class="text_for-inicia" style="width: 100%;"> 
+    <div style="font-size: 24px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; line-height: 30px; text-align: center; width: 100%;">
+     Get Closer To A $100 
+     <strong style="color: rgb(255, 0, 0);">V</strong>erizon
+     <br /> Gift Card With Just A Few Clicks!
+    </div> 
+    <p id="reylyo" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 12px; font-weight: normal; line-height: 15px; color: ba
+            ;">&nbsp;</p> 
+    <p id="reylyo" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 12px; font-weight: normal; line-height: 15px; color: ba
+             ;">&nbsp;</p> 
+    <p id="reylyo" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 12px; font-weight: normal; line-height: 15px; color: ba
+              ;">&nbsp;</p> 
+   </header> 
+   <section class="2type" style="width: 100%;"> 
+    <div>
+     <a href="http://www.diedw-vrz.click/clustered-hyper/e226g23JO95e8jh611t4abbL11b0l36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQvdeKQ7I1xmxB05WUwDU"><img alt="" src="http://www.diedw-vrz.click/3b34g2395L7xaP12u4gabdp11b0l36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQvdeKQ5a1p0B5oWwDB/harass-vulnerability" width="100%" /></a>
+    </div> 
+    <article style="text-align: center; width: 100%;"> 
+     <p style="font-size: 15px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; line-height: 0%; color: black;">&nbsp;</p> 
+     <h2 class="h12" style="font-family: 'Courier New', Courier, monospace; padding: 0; margin: 0;font-weight: bold;">&nbsp;</h2> 
+     <div class="h12" style="font-family: 'Courier New', Courier, monospace; padding: 0; margin: 0;font-weight: bold;">
+      &nbsp;
+     </div> 
+    </article> 
+   </section> 
+   <section style="width: 100%;"> 
+    <div style="text-align: center; font-size: 22px; line-height: 30px; padding: 13px 33px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500;">
+     Tell us how we're doing and get a $100 gift card to 
+     <strong style="color: rgb(255, 0, 0);">V</strong>erizon and upgrade your mobile service!
+     <br /> 
+     <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us.     </div> 
+   </section> 
+   <section style="width: 100%;"> 
+    <div style="text-align: center;"> 
+     <div style="background-color: black; padding: 18px 34px; font-size: 18px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; border-radius: 8px; outline: solid 0.5px hwb(0 0% 0%); font-weight: bold; display: inline;">
+      <a href="http://www.diedw-vrz.click/clustered-hyper/e226g23JO95e8jh611t4abbL11b0l36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQvdeKQ7I1xmxB05WUwDU" style="text-align: center; text-decoration: none; color: #fff;">Go And Start Now</a>
+     </div> 
+    </div> 
+   </section> 
+  </div> 
+  <p id="Import_type_spacing" style="padding-bottom: 180px; ">&nbsp;</p> 
+  <div style="width: 100%; text-align: center; outline: solid 1px #fff; background-color: rgb(51, 51, 51); padding: 15px 0px;"> 
+   <footer style="margin: auto; max-width: 600px;"> 
+    <address style="font-size: 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; font-weight: 900;"> <p><small><span style="text-decoration: none; ">No longer wish to receive information?,</span><a href="http://www.diedw-vrz.click/9536D239sD5QV86s13BSp4abcv11b0X36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQvdeKQ6PHn1j05aMNwD/boulevard-overtone" style="text-decoration-line: none; color: white"> <span>Come This Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big></big><big><big><font id="backtrack"><font dir="wedding"></big></font></font></big><style class="dynasty"></style><span face="microcycles"></span><font><span></font></span> </small></p> </address> 
+   </footer> 
+  </div> 
+  <table style="width: 100%;"> 
+   <tbody> 
+    <tr> 
+     <td style="font-weight: 500; margin: auto; font-size: 12px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: black;">&nbsp;</td> 
+     <td class="ipst22" style="font-size: 14px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: right; color: aqua;"> 
+      <table style="width: 100%;"> 
+       <tbody> 
+        <tr> 
+         <td style="font-weight: 500; margin: auto; font-size: 12px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color: black;">&nbsp;</td> 
+         <td class="ipst22" style="font-size: 14px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: right; color: aqua;">&nbsp;</td> 
+         <td style="color: antiquewhite; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: left; text-decoration: none;">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td style="color: antiquewhite; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: left; text-decoration: none;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.diedw-vrz.click/a7f5D2s395l85Yg12n4abje_11b0G36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQvdeKQ5z1v0z5E1PwD/boulevard-overtone" alt=""/></body>
+</html>
 
-Obviously this cycle is lost.
+------=_Part_148_312072263.1676397697604--
 
-Jason
