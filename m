@@ -2,143 +2,78 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7194B6967BD
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Feb 2023 16:15:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E38E9696865
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Feb 2023 16:47:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0766610E21F;
-	Tue, 14 Feb 2023 15:15:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AE31810E905;
+	Tue, 14 Feb 2023 15:47:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A76EB10E1D2;
- Tue, 14 Feb 2023 15:15:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676387736; x=1707923736;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=gnTuFATXiqPdcRBXBeQsLqb3iuI0IqnAHk51ATsxayA=;
- b=OZ1S5xjoOptqHotjBc34utqKselAJLp9DJ87NiIV7eeWT3oul3UBmzaV
- TnULe8FIpq//S5nPEPrmPV62QmtKFRZSX6Bj+TFk6P1xojusAlKYNP1v4
- +ajmwPou8E5/6Qqi+9YG/JrypsSfwy90yCWqg/6lYzRv1mcjKD+ZrVAdL
- Zw3Gq3YHtnGYh8BOm+Z9PIO9CQIkYqpwE24BJJiIM8Q3ZjkxOMorFbkMS
- n6aYWnpuK34KUDgNLxM/rbSDUYV1e7pJJvOOCwv5Cw46DXepS7dhO2ur3
- YsRK6/aaQXWRnsX1hKDtLtgwOqs2Vgh+rvkWCG57PCtcYorpbBGfGVdK2 g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="393584230"
-X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="393584230"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2023 07:15:35 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10621"; a="619088824"
-X-IronPort-AV: E=Sophos;i="5.97,296,1669104000"; d="scan'208";a="619088824"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga003.jf.intel.com with ESMTP; 14 Feb 2023 07:15:35 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 14 Feb 2023 07:15:35 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Tue, 14 Feb 2023 07:15:34 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Tue, 14 Feb 2023 07:15:34 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.176)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Tue, 14 Feb 2023 07:15:31 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Alf5IobTUycmb7i/sUGyLdiY9orsNie7gYz9w+BpmhDpamRPNHEOsqkxLksB0uX8/oON5D5T218udB/H4lKgb5zns7wnmYOnOp6tXzxvdkb8QlpyzER3/jwQeKbt5UkHeY1m/+G9gG8FyOLoAeuY6s8/fl83H3zTRnI/Rgo/c6l30YVlhH+gPw5nc0DE8ubr+/H66MEjzSNCuRTsGGyjKyggpTjW2jdhyqyfXtKQi6FoX725HFyppwWDX3SNLinXBAL3VICqgFe8ca+hFesIz1QEPtFwW/TO+FdJWe8igfWQCuCjdH9qv394w5TRPz8EgRC0zACgQX/G2N8L4531DA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=09xhrlD5YEPYFCFFyKjiJPErt0abvFXw13x5aqeyFt4=;
- b=Ey/VyZaE22NTgQj3Oq0fIFTJtgLWrGiul6/JXAFIQvQKiKI38KG/bEtR/DPaNsmNbLs5vNhpP3ShTGNQHZSH+LMdavLAgoZC0PSy0gm+fRAK8wUP/GTZJUUCoOVmIEL22/Aj6unWc192Nu2daRuAfRN+Qu8xNetyF1yQ8u5BVxqNEW4t7EnlO1WcLMLDAnBZ/5qmR5kJT99+sDsJBpyfGqZStvRBFRhMLXS0UvOQIGsFZ23/GjrP+hQ722PQLhWz16WVISjXpYPdFcuXTU0sNs6ZeJbvGypW84a/79LXR21Rk7T9DjIZ/WWJC2K5bFG3X2DX/Az/tgBaufWq00MMXg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by SJ1PR11MB6228.namprd11.prod.outlook.com (2603:10b6:a03:459::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.24; Tue, 14 Feb
- 2023 15:15:29 +0000
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::e1fa:abbe:2009:b0a3]) by DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::e1fa:abbe:2009:b0a3%3]) with mapi id 15.20.6086.024; Tue, 14 Feb 2023
- 15:15:29 +0000
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>, Alex Williamson
- <alex.williamson@redhat.com>
-Subject: RE: [PATCH v3 00/15] Add vfio_device cdev for iommufd support
-Thread-Topic: [PATCH v3 00/15] Add vfio_device cdev for iommufd support
-Thread-Index: AQHZP73MTR3br74MlEe91B7qYhP/Qq7NSHqAgAA774CAAQoc0A==
-Date: Tue, 14 Feb 2023 15:15:28 +0000
-Message-ID: <DS0PR11MB7529F0B20A73690C5650778BC3A29@DS0PR11MB7529.namprd11.prod.outlook.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7596D10E905
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Feb 2023 15:47:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1676389645;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4mGjKolpvwZw5KDGp9hmYi6Ze5Knpzeml/f5seyrpNo=;
+ b=InWrogqEUWhZtY1xZO03sCz3Ey0fXrudFca19KB30Gvn4MPRuT0JOSl6dmufG6OH5ZdSnX
+ zvgONshouGd3lQCJ8hAk+2P2FBMHhY7PvberDznGjajiYX10q9mvD3LyH5DpSNemQzNHMb
+ I4iS7nt8IRD/7y0zEu/T0MVSeJw3q7s=
+Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
+ [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_128_GCM_SHA256) id
+ us-mta-593-mRzJ487tM9KqsE3xVH7vQQ-1; Tue, 14 Feb 2023 10:47:24 -0500
+X-MC-Unique: mRzJ487tM9KqsE3xVH7vQQ-1
+Received: by mail-io1-f70.google.com with SMTP id
+ d14-20020a05660225ce00b00734acc87739so10495243iop.9
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Feb 2023 07:47:24 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dF8oAqlz95bIOcOVCAeaX6K0tlmtU+5fJeYgHw8uZHs=;
+ b=GeItDU9zKvcfcptmVjAMkdvuxXdexLklK+weTms2veyhKICtEkMxMoo8udpH6cIDA6
+ gAorafg/9XTxw37gUUlwubR9f3ob4ta5GmOZMSZ3fEWEvMkFH6T4wu5OF1q4KdkMasbC
+ g7nBJDWlQDgt2cZkzrOHa6l/SRn/ZLBx2UfZ7nnJDqbAgEAcvwOUwTXM7CKB1z0ILsr3
+ Qd9eqedBi7YOPt4M8Jw0hDn2sh2OilqkO0175psBk4+F41UkMp1mHONMmUk+vsx2COTM
+ MifZV8GIQ18AgDpA0vcvFJxd7D05VViQVDU4P+ia8bv0NKpCGJEFI/d0X75SIVNVG7hr
+ Hl/w==
+X-Gm-Message-State: AO0yUKUEmNrTdiFZzxBADAHNacgj7GE2uK4+ksu7DQJg9xemnss7VnVo
+ +s9NNtcZjKF46KfObVxcWvgFRq71FA4Risg4Hvks9JFytN6wItwazEdw8qXxIaSIZi2T+DsRBg6
+ HDxbMOS+WTqli8BAvUYFCoB3e4ZsXZbegtw==
+X-Received: by 2002:a05:6e02:b46:b0:315:3fab:195b with SMTP id
+ f6-20020a056e020b4600b003153fab195bmr3127009ilu.20.1676389643537; 
+ Tue, 14 Feb 2023 07:47:23 -0800 (PST)
+X-Google-Smtp-Source: AK7set+QyPBpjyOP4beHC997KFQ4c9DMd5Kti6+9unU5tJWqfEML/h+K7BuEX21SBcHNYcHniWZAyw==
+X-Received: by 2002:a05:6e02:b46:b0:315:3fab:195b with SMTP id
+ f6-20020a056e020b4600b003153fab195bmr3126971ilu.20.1676389643222; 
+ Tue, 14 Feb 2023 07:47:23 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ t5-20020a02cca5000000b003b1f0afe484sm4930903jap.141.2023.02.14.07.47.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 14 Feb 2023 07:47:22 -0800 (PST)
+Date: Tue, 14 Feb 2023 08:47:20 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>
+Subject: Re: [PATCH v3 00/15] Add vfio_device cdev for iommufd support
+Message-ID: <20230214084720.74b3574e.alex.williamson@redhat.com>
+In-Reply-To: <DS0PR11MB75298788BCA03FD9513F991AC3A29@DS0PR11MB7529.namprd11.prod.outlook.com>
 References: <20230213151348.56451-1-yi.l.liu@intel.com>
  <20230213124719.126eb828.alex.williamson@redhat.com>
- <Y+rGDeEMTB8FxjAH@nvidia.com>
-In-Reply-To: <Y+rGDeEMTB8FxjAH@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|SJ1PR11MB6228:EE_
-x-ms-office365-filtering-correlation-id: fb615aaf-fc89-4bf2-7209-08db0e9e4ea7
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ubXEp0mhfnXBLHO/hyKdrFpt4LWu7VddX79XCEfCGn0Wi9leS1NYqQeQcuzK1zCiFPIoyZJCGpeuBHyKEBaKMQhRa28B2momM3+fTDjlugp0NpM5c6a4nk6BtZlFebr3r3MUzpOYw7Y41/W0GuRgajwqJ6ayjgecKkbR+EgP04CVC62U2lCC0Fc2/aC4EZxe0gL95AQOdZxK4X3OLkltP1Xl9ourOjU8wTj8gk3rCdi5rP/2rlCsw1k3SWmgh5KsdeoY97u+FbA2esjlZ6GqN/COoljsAzoSVbelHVmuW/ATjiGy8/BSRpgKnRKABhtSi/3clljI5M0RDQZAVOgSTkw4NFlUKcRUDn0hUNFpwytVp2TeDF0f4zWZNonG479VOta6DyQ+s97D9ritpQES2N1OJAeJ69r/WxYZcA+RFAzprEMgEowZVsQie4oLXesPRdt8g7661YLSAn+xjH1kk7KeMgWB9WhIrV55Eoq87dkqR2+MiHhixnDRO+LF9HxjoMLcLbO7LtJjX+rI2abtrZ/fIB4r5fKIufuN9OyFbpwbyp34qvRrdkBOxOyZhYPXE5B0oW5wMQ7tkb7iyf/+OYXFrVIZu3kIATUAWPuKEUq28qAWIr+8rJzE+BGvV1fbXg+FfuQZN+EniWIYtwOf43c9uXOLqVg9ILeWqOVHNrLMxI4pVJzDSI+Wfp2V1q8ZuxVMxAWXt7AbQWhwqlspww==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(366004)(396003)(136003)(346002)(376002)(39860400002)(451199018)(86362001)(38070700005)(66446008)(82960400001)(54906003)(66476007)(316002)(64756008)(76116006)(4326008)(66556008)(8676002)(966005)(33656002)(66946007)(478600001)(7696005)(110136005)(83380400001)(8936002)(52536014)(41300700001)(7416002)(4744005)(2906002)(5660300002)(71200400001)(122000001)(55016003)(26005)(186003)(9686003)(6506007)(38100700002)(13296009);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?cgryQO85OYsXYptlrU73FqRtf0Z4QH/haLbF/SrNfuQhjwuZXu88mzoR7gDZ?=
- =?us-ascii?Q?+wu2rLorrC4N8mo67OWPLehzILbRsbm0APO5aojjluJeYTZB/oEM0i7wNi78?=
- =?us-ascii?Q?wnHvEiYGP60OwHtJfuFlHbPO/viB62S/w/0KVoQziMidlnIizAnch/G27uRP?=
- =?us-ascii?Q?/50OwNJbwC8KhM108gUqm4HhSfAxVoWnuQtdhbJbowJDBGSuUCERkvGY2r6x?=
- =?us-ascii?Q?nmI6OA70oAzO1t9F1V3AUYfo9Wg386notgn0xfnxboeOHsp4u8ggFKpx0mHl?=
- =?us-ascii?Q?Zqez7E17679fbQk0XLbpVg1ccw/x1Q20qvTbQWdRWH22X3OEzEkyofJHSUaS?=
- =?us-ascii?Q?x3LyMlxsxd6yxY/mSvo6p3R/p/XTjkKI++AOsBSFzuWiymtj7fkqXJgxs2SM?=
- =?us-ascii?Q?wtIORDsLj7XnJsGYuXCnpcNh0JVDa1gRqEeco7vQ91eZfM48iA4V9ohKF+34?=
- =?us-ascii?Q?PGUHDumsy6MkbCal/MNWU4UYOGWI8T3hN4uwTOPR+XqDu8r4xmN7KwxemgZh?=
- =?us-ascii?Q?IiyI/l5U4hkGNZoO+GrAxMzBb3UvfauwM2Ky7tYaORuponFkfVNmEizVQLMv?=
- =?us-ascii?Q?7MTN6k3RY9E+LqoLuwRQuOPiQYpa+o4aBZjr2++9/6IUvZNsr1M+VGyzf1kw?=
- =?us-ascii?Q?WlK3TMXe3igdEx9hVGbIZ0vxjNHfRM8tGB9CS9uSvu0k6IIFux9KeMs9vsSp?=
- =?us-ascii?Q?YDJz8UD9+Z1jh2g1zMIxnudlSEl847W7xZq/SQxxLcZfqZWt36w24e3UaPuM?=
- =?us-ascii?Q?KJ9MdVqsCnZ0KCT2wLwr7uzD7i/5jyEbM7GHUMFh+llvaRAmtcPs+dCRtF+I?=
- =?us-ascii?Q?Wt/kArqp9So26nUlH1XXUhJCcZXSkglQ9z2DbPVNjItZ6WwD+S6dPCEUBGq1?=
- =?us-ascii?Q?naWRKXgpaoYt8lJHAzP0p0O+5xLTjfTjATHXpmqG83eR5WN+3kxJATr536UV?=
- =?us-ascii?Q?GtrDWZpQaS2EO4P/anbgmy9KZC40Diz4BfKHSxnLE6f+LhxYA+ZFFM7KwMUX?=
- =?us-ascii?Q?HEl/hxs14CuoOFrF7D9yvdSi0ensgGZyDiZxz6tDWjrxVs6sZTt1luh0veNK?=
- =?us-ascii?Q?zIrOzkQ7P20U+b2d6YGQIhGGpZqpN0xxKQEWaR8Cs1sKNN1U0y77fpqhFAYO?=
- =?us-ascii?Q?EZULbrl7HJzAmX2/NS0bVNyNw9/q1KfyXRjp3t+0u2wXBgvVyEK/GKh7t94M?=
- =?us-ascii?Q?FLxADVriiOCAk7qm7CCmzAe+3QwXD5GCejQv0/UrWu+3gRdCAjA870cWUloR?=
- =?us-ascii?Q?8Euv0YbsRxrTr7dHqHNhYyTA+da2BIKYNb1oZpPk6J/k+RNbEDDVl0Wq+d1f?=
- =?us-ascii?Q?pO2bBFo4dxOFRvkl2ttIcnRCZzYVtkb8u9i2ueoLl2BuJ+l/AkdkESWMlLO2?=
- =?us-ascii?Q?mV1mcu+avGP7LPeQQo1TdLP4msRkGIzQUgjx0DAHwmRicKUmuJZ4FaIGzdh2?=
- =?us-ascii?Q?e1WX8wT1ho0krXCyW3kFw0q3EYS2TROKYybAvWW2E6vDiREJe0r47I+7saFH?=
- =?us-ascii?Q?je8dTMot27lJh+DE4OJJflcjUzgq+L6VSkT7p6qrMGkbbJIFXYfwi50gCWNy?=
- =?us-ascii?Q?KkfCpg3Iyl0nWtd/mIkeuTk6WU1GJzhbgfMMguZ8?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <DS0PR11MB75298788BCA03FD9513F991AC3A29@DS0PR11MB7529.namprd11.prod.outlook.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fb615aaf-fc89-4bf2-7209-08db0e9e4ea7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Feb 2023 15:15:28.9650 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: GE6kT6Ba7480TuJqoamRml3GG3r9tovjvLv6VZbTxDLQRfk7APY7/oorvxDmStEvfqtzr1dOH7c0lkMASNymoQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR11MB6228
-X-OriginatorOrg: intel.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,10 +94,11 @@ Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Tian,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
  "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
  "peterx@redhat.com" <peterx@redhat.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
  "eric.auger@redhat.com" <eric.auger@redhat.com>,
  "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
  "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
  "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
  "lulu@redhat.com" <lulu@redhat.com>,
@@ -171,24 +107,107 @@ Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Tian,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> Sent: Tuesday, February 14, 2023 7:22 AM
->=20
-> On Mon, Feb 13, 2023 at 12:47:19PM -0700, Alex Williamson wrote:
->=20
-> > I think it's too late for v6.3 already, but given this needs at least
-> > one more spin, let's set expectations of this being v6.4 material.  Tha=
-nks,
->=20
-> Please let's continue to try to get this finished during the merge
-> window, all the other series depend on it. We can manage it with a
-> shared branch again..
->=20
+On Tue, 14 Feb 2023 01:55:17 +0000
+"Liu, Yi L" <yi.l.liu@intel.com> wrote:
 
-Sure. I've updated the below branch to address Kevin's latest remarks.
-Fixed the compiling failure reported by Alex as well.
+> > From: Alex Williamson <alex.williamson@redhat.com>
+> > Sent: Tuesday, February 14, 2023 3:47 AM
+> >=20
+> > On Mon, 13 Feb 2023 07:13:33 -0800
+> > Yi Liu <yi.l.liu@intel.com> wrote:
+> >  =20
+> > > Existing VFIO provides group-centric user APIs for userspace. Userspa=
+ce
+> > > opens the /dev/vfio/$group_id first before getting device fd and henc=
+e
+> > > getting access to device. This is not the desired model for iommufd. =
+Per
+> > > the conclusion of community discussion[1], iommufd provides device- =
+=20
+> > centric =20
+> > > kAPIs and requires its consumer (like VFIO) to be device-centric user
+> > > APIs. Such user APIs are used to associate device with iommufd and al=
+so
+> > > the I/O address spaces managed by the iommufd.
+> > >
+> > > This series first introduces a per device file structure to be prepar=
+ed
+> > > for further enhancement and refactors the kvm-vfio code to be prepare=
+d
+> > > for accepting device file from userspace. Then refactors the vfio to =
+be
+> > > able to handle iommufd binding. This refactor includes the mechanism =
+of
+> > > blocking device access before iommufd bind, making vfio_device_open()=
+ =20
+> > be =20
+> > > exclusive between the group path and the cdev path. Eventually, adds =
+the
+> > > cdev support for vfio device, and makes group infrastructure optional=
+ as
+> > > it is not needed when vfio device cdev is compiled.
+> > >
+> > > This is also a prerequisite for iommu nesting for vfio device[2].
+> > >
+> > > The complete code can be found in below branch, simple test done with=
+ =20
+> > the =20
+> > > legacy group path and the cdev path. Draft QEMU branch can be found =
+=20
+> > at[3] =20
+> > >
+> > > https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v3
+> > > (config CONFIG_IOMMUFD=3Dy CONFIG_VFIO_DEVICE_CDEV=3Dy) =20
+> >=20
+> > Even using your branch[1], it seems like this has not been tested
+> > except with cdev support enabled:
+> >=20
+> > /home/alwillia/Work/linux.git/drivers/vfio/vfio_main.c: In function
+> > =E2=80=98vfio_device_add=E2=80=99:
+> > /home/alwillia/Work/linux.git/drivers/vfio/vfio_main.c:253:48: error: =
+=E2=80=98struct
+> > vfio_device=E2=80=99 has no member named =E2=80=98cdev=E2=80=99; did yo=
+u mean =E2=80=98dev=E2=80=99?
+> >   253 |                 ret =3D cdev_device_add(&device->cdev, &device-=
+>device);
+> >       |                                                ^~~~
+> >       |                                                dev
+> > /home/alwillia/Work/linux.git/drivers/vfio/vfio_main.c: In function
+> > =E2=80=98vfio_device_del=E2=80=99:
+> > /home/alwillia/Work/linux.git/drivers/vfio/vfio_main.c:262:42: error: =
+=E2=80=98struct
+> > vfio_device=E2=80=99 has no member named =E2=80=98cdev=E2=80=99; did yo=
+u mean =E2=80=98dev=E2=80=99?
+> >   262 |                 cdev_device_del(&device->cdev, &device->device)=
+;
+> >       |                                          ^~~~
+> >       |                                          dev =20
+>=20
+> Sorry for it. It is due to the cdev definition is under
+> "#if IS_ENABLED(CONFIG_VFIO_DEVICE_CDEV)". While, in the code it
+> uses "if (IS_ENABLED(CONFIG_VFIO_DEVICE_CDEV))".  I think for
+> readability, it would be better to always define cdev in vfio_device,
+> and keep the using of cdev in code. How about your taste?
 
-https://github.com/yiliu1765/iommufd/commits/vfio_device_cdev_v3
+It seems necessary unless we want to litter the code with #ifdefs.
 
-Regards,
-Yi Liu
+> > Additionally the VFIO_ENABLE_GROUP Kconfig option doesn't make much
+> > sense to me, it seems entirely redundant to VFIO_GROUP. =20
+>=20
+> The intention is to make the group code compiling match existing case.
+> Currently, if VFIO is configured, group code is by default compiled.
+> So VFIO_ENABLE_GROUP a hidden option, and VFIO_GROUP an option
+> for user.  User needs to explicitly config VFIO_GROUP if VFIO_DEVICE_CDEV=
+=3D=3Dy.
+> If VFIO_DEVICE_CDEV=3D=3Dn, then no matter user configed VFIO_GROUP or no=
+t,
+> the group code shall be compiled.
+
+I understand the mechanics, I still find VFIO_ENABLE_GROUP redundant
+and unnecessary.  Also, Kconfig should not allow a configuration
+without either VFIO_GROUP or VFIO_DEVICE_CDEV as this is not
+functional.  Deselecting VFIO_GROUP should select VFIO_DEVICE_CDEV, but
+VFIO_DEVICE_CDEV should be an optional addition to VFIO_GROUP.  Thanks,
+
+Alex
+
