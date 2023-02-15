@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A366698800
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Feb 2023 23:41:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 17C466988CC
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 00:37:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 610B410EC7A;
-	Wed, 15 Feb 2023 22:41:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DAF1C10E17B;
+	Wed, 15 Feb 2023 23:37:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 15 Feb 2023 22:41:07 UTC
-Received: from mail.lay-acfa.click (unknown [104.206.109.238])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6F76A10EC6E
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Wed, 15 Feb 2023 23:36:58 UTC
+Received: from mail.miss-upoffer.click (unknown [104.206.109.251])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4B9F710E124
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Feb 2023 22:41:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lay-acfa.click; 
+ Wed, 15 Feb 2023 23:36:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=miss-upoffer.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace.tools.selection@lay-acfa.click; 
- bh=leNB98qhP6Smhd1oBU+W7BFGq1k=;
- b=rSuNrcfnrObT1tjfX1tdo/vv9ImOFvpIzNtyfSy89MEaPOZxIM+VHaWoQ4JWmL5m9R468oOsn/oW
- XEMapVialhGvV2Eb0kpWItgaMeo0X78MhHxlbdtaVdSyHMKuW6mLW8jY9QiOHl+R5hR0wfzrU13w
- tIUHoc1YkztFOXPZgJM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lay-acfa.click;
- b=GKq/JC6H2DKEBhDKmCYjeq1cgtqiM3HLIt0/GNu1poJ5LhfuMP+3X5EwqlsUeeb5A2FUo5Nbp5V5
- IJnSMIHbZnvdcsLnSdmKyPVrYstj+KawY+FMgquPYFFbcgWaHvLsLxqNyYJ/aiyN43rhOm0TP+SK
- 2Jq2FCoEMiscoc0ZveQ=;
-Received: by mail.lay-acfa.click id htlfo60001gp for
+ i=ups-customer-input@miss-upoffer.click; 
+ bh=YeeZbyv51ATWs1TtarXYnOxkx4Q=;
+ b=ewq8lBGoiM08tcLn0Hef4ofPw35wanvlUXQmLDEdTaqj1WX2kFPOIYppsvXGS5ZKAcGQOLVt1lEp
+ YpsMw/rzh+Op08WbA9jOOPPJeKZennfZOH4yIq1CwdO4bQIGw77hBD0UIU2YLtJ/NJvfSH2JZBzg
+ 2diymQv/PuEp/TO9pmw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=miss-upoffer.click; 
+ b=CxSr9h3SLobIrIipMduC/DI/ummElR/cdlsNO/pa3arg5SKZOaW6rcL7OHCh+ikd89ibtIKrwRZc
+ XbCMy/8uR9Imfm3fnCbYdni3eeGVn3tpeK3HApvzGVBAZLil568+ficU/Q8esLfGtw+SWEU7Hk0p
+ QM2YTDsPgeXKEuqpMKo=;
+Received: by mail.miss-upoffer.click id htlm9k0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Feb 2023 17:29:30 -0500 (envelope-from
- <ace.tools.selection-intel+2Dgvt+2Ddev=lists.freedesktop.org@lay-acfa.click>)
-Date: Wed, 15 Feb 2023 17:29:30 -0500
-From: "ACE Tools Selection" <ace.tools.selection@lay-acfa.click>
+ Wed, 15 Feb 2023 18:25:38 -0500 (envelope-from
+ <ups-customer-input-intel+2Dgvt+2Ddev=lists.freedesktop.org@miss-upoffer.click>)
+Date: Wed, 15 Feb 2023 18:25:38 -0500
+From: "UPS Customer Input" <ups-customer-input@miss-upoffer.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don't miss out on your free DeWalt Drill Set from Lowe's
+Subject: Now on ups
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_82_1319350044.1676500158767"
-Message-ID: <0.0.0.9.1D9418CF87AA57A.B102D@mail.lay-acfa.click>
+ boundary="----=_Part_91_1762043633.1676503515667"
+Message-ID: <0.0.0.A.1D94194CFF806D0.4A0302@mail.miss-upoffer.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_82_1319350044.1676500158767
+------=_Part_91_1762043633.1676503515667
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,111 +64,71 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>08021423</title> 
+  <title>10021523</title> 
  </head> 
- <body> 
+ <body style="padding: 0; margin: 0; background-color: #eeeeee;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <h4 class="info-ong" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: cneter; line-height: 17px; font-weight: 700;">&nbsp;</h4> 
-   <p class="ips_go" style="font-family: Arial, Helvetica, sans-serif; line-height: 12px; font-size: 14px; text-align: center; text-decoration: none;">&nbsp;</p> 
-   <div> 
-    <article id="article_go" style="text-align: left; padding-top: 15px; color: #fff; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> 
-     <aside style="text-align: right; margin: auto; font-family: 'Courier New', Courier, monospace; line-height: normal;">
-      &nbsp;
-     </aside> 
-    </article> 
-   </div> 
-   <div> 
-    <h4>&nbsp;</h4> 
-    <header id=" type_2" style="text-align: center;"> 
-     <div style="font-size: 24px; text-align: center; font-family: Arial, Helvetica, sans-serif;">
-      <strong>Special gift just&nbsp;for intel-gvt-dev@lists.freedesktop.org</strong>
-     </div> 
+   <div style="background-color: #fff;"> 
+    <h1 id="Startick_shio" style="font-size: 13px; line-height: 25px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-decoration: none;">&nbsp;</h1> 
+    <p class="Pparra" style=" font-size: 14px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold; line-height: 15px; text-align: center; margin: auto;">&nbsp;</p> 
+    <p class="Pparra" style=" font-size: 14px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold; line-height: 15px; text-align: center; margin: auto;">&nbsp;</p> 
+    <header id="inf.top" style="width: 100%; "> 
+     <h4 style="font-family: Arial, Helvetica, sans-serif; font-size: 33px; font-weight: bold; text-align: center; float: none; position: relative; top: 25px; z-index: 100;">UPS</h4> 
     </header> 
-   </div> 
-   <table style="text-align: center; width: 100%; border-collapse: collapse;"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td width="100%"><a href="http://www.lay-acfa.click/e5d5z239s5b86rF12o4aIe1u11b7h36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.dKmo7Y1kGAM05QBwBD/beckons-dislodged"><img alt="" src="http://www.lay-acfa.click/51b6MC239B5GI7sa12zZ4ae4I11b7O36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ.dKmo6p1qW0N5bWNwD/extenuate-largely" width="100%" /></a></td> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <section style="text-align: center; width: 100%;">
-    <a href="http://www.lay-acfa.click/e5d5z239s5b86rF12o4aIe1u11b7h36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.dKmo7Y1kGAM05QBwBD/beckons-dislodged"><img alt="" src="http://www.lay-acfa.click/beckons-dislodged/7924m2395L7atG12Kz4ae5j11b7S36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ.dKmo6lo10jq6R1U1wD" width="85%" /></a> 
-    <section style="text-align: center; width: 100%;"> 
-     <section id="Promo_click" style="text-align: center;"> 
-      <div>
-       &nbsp;
-      </div> 
-      <h5 style="font-size: 24px;font-family: Arial, Helvetica, sans-serif; background-color: #8d2a2a; display: inline; padding: 15px 25px; border-radius: 50px; color: #fff; font-weight: bold;"><a href="" style="text-decoration: none; color: #fff;">Take Me To The SURVEY!</a></h5> 
-     </section> 
+    <section class="Img_icarry" style="width: 100%;"> 
+     <h4>&nbsp;</h4> 
+     <p>&nbsp;</p> 
+     <a href="http://www.miss-upoffer.click/Clifford-capital/8466B239VC5l8rG612a4taf0Q11b9r36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQVdKmd6o_Wu106fWwM2D"><img alt="" src="http://www.miss-upoffer.click/1d35C_2395cBX7a13e4afYQ2H11b9S36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQVdKmd5Dt10N5zqwkD/Clifford-capital" width="100%" /></a>
     </section> 
-   </section> 
-   <div class="u-row-container" style="padding: 0px;background-color: transparent"> 
-    <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;"> 
-     <div style="border-collapse: collapse;display: table;width: 100%;height: 100%;background-image: url('images/image-8.png');background-repeat: no-repeat;background-position: center top;background-color: transparent;"> 
-      <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;"> 
-       <div style="height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
-        <div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"> 
-         <table border="0" cellpadding="0" cellspacing="0" id="u_content_heading_3" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:35px 10px 10px;font-family:helvetica,sans-serif;"> <h1 class="v-font-size" style="margin: 0px; color: #fe9a37; line-height: 140%; text-align: center; word-wrap: break-word; font-family: Federo; font-size: 33px; ">&nbsp;</h1> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table border="0" cellpadding="0" cellspacing="0" id="u_content_text_2" role="presentation" style="font-family:helvetica,sans-serif;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="left" class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 60px 60px;font-family:helvetica,sans-serif;"> 
-             <div class="v-font-size" style="line-height: 140%; text-align: center; word-wrap: break-word;"> 
-              <p style="font-size: 14px; line-height: 140%;">&nbsp;</p> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> 
-       </div> 
-      </div> 
+    <aside> 
+     <h5>&nbsp;</h5> 
+     <p style="font-size: 22px; padding: 0px 30px; font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 30px;text-align: center;">Don't miss out! Just a few clicks away from a chance to win a $100 UPS Card by completing our quick 20-second survey about your recent experience with us.</p> 
+    </aside> 
+    <section id="btncrack_inf" style="width: 100%; text-align: center;"> 
+     <div style="background-color: darkslategray; padding: 15px 31px; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; display: inline-block; border-radius: 8px; box-shadow: inset 0px 0px 6px 1px rgb(98, 105, 105);">
+      <a href="http://www.miss-upoffer.click/Clifford-capital/8466B239VC5l8rG612a4taf0Q11b9r36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQVdKmd6o_Wu106fWwM2D" style="text-decoration: none; color: #fff;">Go And Start Now</a>
      </div> 
-    </div> 
-   </div> 
-   <h2>&nbsp;</h2> 
-   <div class="img_58" style="text-align: center; position: relative; margin-top: -90px; ">
-    <a href="http://www.lay-acfa.click/e5d5z239s5b86rF12o4aIe1u11b7h36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.dKmo7Y1kGAM05QBwBD/beckons-dislodged"><img alt="" src="http://www.lay-acfa.click/friendliness-stepson/62a6kQ2S395JR7Qa11B4ae6H11b7Y36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ.dKmo7h1IZw0M5cXw3D" width="75%" /></a>
-   </div> 
-   <div> 
-    <h3>&nbsp;</h3> 
-    <article id="dxrp_1"> 
-     <div class="img5" style="text-align: center;">
-      <span><a href="http://www.lay-acfa.click/3955t239k5rR86F11n4ae2M11b7u36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ.dKmo6l10OTx5eXlwD/extenuate-largely"><img alt="" src="http://www.lay-acfa.click/shipment-fundamentally/2c45eJ2395G7aRw13ut4ae7kD11b7y36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ.dKmo5S10AL6cBAPwD" width="85%" /></a></span>
-     </div> 
-    </article> 
+    </section> 
+    <br /> &nbsp;
    </div> 
   </div> 
-  <footer style="width: 100%; font-size: 12px; text-align: center;"> 
-   <address> 
-    <div> 
-     <div id="2252" style="padding-bottom: 50px;">
-      &nbsp;
-     </div> 
-     <div id="2252" style="padding-bottom: 50px;">
-      &nbsp;
-     </div> 
-     <div id="2252" style="padding-bottom: 50px;">
-      &nbsp;
-     </div> 
-     <footer style="text-align: center; font-size: 12; color: #fff;"> 
-      <address> 
-       <div style="background-color: hsl(0, 36%, 22%); padding: 25px; color: #ffffff; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500;"> 
-        <p><small><span style="text-decoration: none; ">To drop your subscription,</span><a href="http://www.lay-acfa.click/8275NT2395k8q6K13t4lae3qA11b7g36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ.dKmo6D1AAi05hk0wD/friendliness-stepson" style="text-decoration-line: none; color: white"> <span>Visit.This.Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span><style><style size="bored"></style></style><style><style></style></span></style><font><span class="sprinkled"></span></font> </small></p> 
-       </div> </address> 
-     </footer> 
-    </div> </address> 
-  </footer>   
- <img src="http://www.lay-acfa.click/shipment-fundamentally/d6e6Km23l95c8H5q13v4al_e8v11b7S36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ.dKmo6G1I0jH6IUlAwD" alt=""/></body>
+  <h6 id="contruye_ic" style="padding-top: 250px; width: 100%;">&nbsp;</h6> 
+  <h5 style="width: 100%; text-align: center; background-color:#F5AB6C ; padding: 10px 0px;outline: solid 3px #3C4121;">&nbsp;</h5> 
+  <p class="Pparra" style="text-align: center; margin: auto; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; padding-bottom: 0px; line-height: normal; font-weight: 800;">&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <div>
+   &nbsp;
+  </div> 
+  <footer style="font-size: 12px; font-family: Arial, Helvetica, sans-serif;"> 
+   <address> <p><small><span style="text-decoration: none; ">No longer wish to receive notifications?,</span><a href="http://www.miss-upoffer.click/Clifford-capital/8be5Q2v395N8vF612R4afR1H11b9w36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVdKmd7lhVV1X06zWNwDU" style="text-decoration-line: none; color: hsl(0, 0%, 100%)"> <span>Visit Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style></style><style face="uniting"></style><style></style><font face="body"></font><style></style><small></small><small></small><span dir="spitefully"></span><big><big></big></big><big></big> </small></p> </address> 
+  </footer> 
+  <table id="tablet_por1" style="text-align: center; font-family: 'Courier New', Courier, monospace; line-height: 5px;;"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <table class="shopt_i" style="border-collapse: collapse;"> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td>&nbsp;</td> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.miss-upoffer.click/e215s239B5nPG8511n4af3R11b9X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVdKmd5CXQ106WlwTDz/soared-recurrences" alt=""/></body>
 </html>
 
-------=_Part_82_1319350044.1676500158767--
+------=_Part_91_1762043633.1676503515667--
 
