@@ -2,42 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 421A8699875
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 16:10:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4CC2699B0B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 18:16:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B73B610EDC3;
-	Thu, 16 Feb 2023 15:10:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B973110EE28;
+	Thu, 16 Feb 2023 17:16:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 16 Feb 2023 15:10:39 UTC
-Received: from mail.pat-thpd.click (unknown [104.206.109.202])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8A53110EDC3
+ Thu, 16 Feb 2023 17:16:11 UTC
+Received: from mail.rest-splassw.click (unknown [104.206.109.225])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9F51910EE28
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Feb 2023 15:10:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pat-thpd.click; 
+ Thu, 16 Feb 2023 17:16:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=rest-splassw.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=hd.shopper.survey@pat-thpd.click; 
- bh=h5/MYvK2coApWqzdnTFvFs9C0N0=;
- b=LpCcdSbh0SF4Q9BQRuX6Cy1GefLmDOOqRjZ+nOYrcw8m4gDSdmyxc0Ju7DbxH+DnjUliWNMjvWNV
- P3hDYsOn/aMwhaXtNrVci9JC3l9WY+iQCgfUzJJwZH1VbLUulRHN0DMRJK2MYoUcRlt876/OL2Z3
- vSZErQmHFEhL/YtJa98=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pat-thpd.click;
- b=QMyqwkvQf9wkuf+nPhn+mfRGJuT48QVxRbmZCzq6e9re7OQHly+5azxzSazEFZSz3KhbX9XUsdpt
- ng2XL6avhGbQDUq4gBcxX646RmAhsgBoxrwXXpV54ysUlSKCfuzOp8qlKuzDaq0xeqKCbjPrpKkL
- KyV7Ojn+q2ialGpmI1o=;
-Received: by mail.pat-thpd.click id htpdr40001gm for
+ i=toprated_wines_splash_wines@rest-splassw.click; 
+ bh=RnX09HGB5bKTyfyipWxkut3cfBg=;
+ b=q8NjR2hpL8TlqWgCFq+WFv6SRlJx82mi5p+NSJOhZXOi61Doyvv10HkUzUc8u3sCCbGf5MayXvzF
+ vWxOHmDeSTskfa+fXcubVlPrQEyC8R7pNjQIG/YqDGxDgn2RrSK3MMCQJn+lDeemSB4wz+s2BKxR
+ /9jDZx1YetteC+inm6Q=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=rest-splassw.click; 
+ b=NRaba8brqJlay/Mb7loJYBZt0ovhMQtGzDRO8ocaTgeQmX07R3DgY4oxoBraFyU/mj69ECc9Ry3G
+ 4csrfzmfCA/23Zm3YFPOFzp+2RywAWRo5zUi7MKwEXbaq9uhIolPfxky15BbKf0LruPOU92QCMXZ
+ 5PF0JsQ0z6WiyfcslnA=;
+Received: by mail.rest-splassw.click id htpidm0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Feb 2023 11:27:35 -0500 (envelope-from
- <hd.shopper.survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@pat-thpd.click>)
-Date: Thu, 16 Feb 2023 11:27:35 -0500
-From: HD.Shopper.Survey <hd.shopper.survey@pat-thpd.click>
+ Thu, 16 Feb 2023 12:04:48 -0500 (envelope-from
+ <toprated_wines_splash_wines-intel+2Dgvt+2Ddev=lists.freedesktop.org@rest-splassw.click>)
+Date: Thu, 16 Feb 2023 12:04:48 -0500
+From: "TopRated Wines Splash Wines"
+ <toprated_wines_splash_wines@rest-splassw.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Today is for winners and you have been selected.
+Subject: Skip the store, get wine delivered to your door with free shipping!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_520_728872094.1676559648841"
-Message-ID: <0.0.0.3A.1D94223937F0264.E46D2@mail.pat-thpd.click>
+ boundary="----=_Part_262_1814260800.1676567032841"
+Message-ID: <0.0.0.1C.1D94228C6992210.501C1E@mail.rest-splassw.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_520_728872094.1676559648841
+------=_Part_262_1814260800.1676567032841
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,71 +65,153 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>02021623</title> 
+  <title>05021623</title> 
  </head> 
- <body style="background-color:#fff0e6 ; "> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff; "> 
-   <table style="width: 100%; text-align: center; "> 
+ <body style="background-color: #ffefff;"> 
+  <div style="max-width: 600px; margin: auto; "> 
+   <div style="padding-top: 50px;">
+    &nbsp;
+   </div> 
+   <header style="width: 100%;"> 
+    <div>
+     <a href="http://www.rest-splassw.click/controller-belying/53a5W239s5Ry8H612m4bv09J11bel36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQsdKmK7AlHI1Z06KBjywD"><img alt="" src="http://www.rest-splassw.click/d8b6n2g3I95z7oXa11X4b0cG11beH36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQsdKmK5sv10U5RPjwD/blushed-Hoover" width="100%" /></a>
+    </div> 
+   </header> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" class="background" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;" width="100%"> 
     <tbody> 
      <tr> 
-      <td class="fila-nomber_one" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; line-height: 15px; margin: auto; font-weight: 300; "> 
-       <aside style="font-size: 12; font-family: 'Times New Roman', Times, serif; text-align: center; color: aquamarine; font-weight: bold; "> 
-        <article> 
-         <p style="text-align: left; margin: auto; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; ">&nbsp; </p> 
-         <h4 class="indivu">&nbsp; </h4> 
-        </article> 
-       </aside> </td> 
-      <td> <h2>&nbsp; </h2> 
-       <div>
-        &nbsp; 
-       </div> <h4>&nbsp; </h4> </td> 
-      <td>&nbsp; </td> 
+      <td align="center" bgcolor="#FFEFFF" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;" valign="top"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="wrapper" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" width="560"> 
+        <tbody> 
+         <tr> 
+          <td align="center" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 20px;
+			padding-bottom: 20px;" valign="top">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" class="container" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" width="560"> 
+        <tbody> 
+         <tr> 
+          <td align="center" bgcolor="#FFEFFF" class="header" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 24px; font-weight: bold; line-height: 130%;
+			padding-top: 25px;
+			color: #000000;
+			font-family: sans-serif;" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#FFEFFF" class="subheader" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-bottom: 3px; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 18px; font-weight: 300; line-height: 150%;
+			padding-top: 5px;
+			color: #000000;
+			font-family: sans-serif;" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#FFEFFF" class="hero" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+			padding-top: 20px;" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#FFEFFF" class="paragraph" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+			padding-top: 25px; 
+			color: #000000;
+			font-family: sans-serif;" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#FFEFFF" class="button" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;
+			padding-bottom: 5px;" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#FFEFFF" class="line" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="list-item" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%;" valign="top"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: inherit; margin: 0; padding: 0; border-collapse: collapse; border-spacing: 0;"> 
+            <tbody> 
+             <tr> 
+              <td align="left" style="border-collapse: collapse; border-spacing: 0;
+					padding-top: 30px;
+					padding-right: 20px;" valign="top">&nbsp;</td> 
+              <td align="left" class="paragraph" style="font-size: 17px; font-weight: 400; line-height: 160%; border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+					padding-top: 25px;
+					color: #000000;
+					font-family: sans-serif;" valign="top">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td align="left" style="border-collapse: collapse; border-spacing: 0;
+					padding-top: 30px;
+					padding-right: 20px;" valign="top">&nbsp;</td> 
+              <td align="left" class="paragraph" style="font-size: 17px; font-weight: 400; line-height: 160%; border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+					padding-top: 25px;
+					color: #000000;
+					font-family: sans-serif;" valign="top">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="line" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;" valign="top"> 
+           <hr align="center" color="#E0E0E0" noshade="noshade" size="1" style="margin: 0; padding: 0;" width="100%" /></td> 
+         </tr> 
+         <tr> 
+          <td align="center" bgcolor="#FFEFFF" class="paragraph" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+			padding-top: 20px;
+			padding-bottom: 25px;
+			color: #000000;
+			font-family: sans-serif;" valign="top">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="wrapper" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+	max-width: 560px;" width="560"> 
+        <tbody> 
+         <tr> 
+          <td align="center" class="social-icons" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+			padding-top: 25px;" valign="top"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-spacing: 0; padding: 0;" width="256"> 
+            <tbody> 
+             <tr> 
+              <td align="center" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;" valign="middle">&nbsp;</td> 
+              <td align="center" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;" valign="middle">&nbsp;</td> 
+              <td align="center" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;" valign="middle">&nbsp;</td> 
+              <td align="center" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;" valign="middle">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="footer" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 13px; font-weight: 400; line-height: 150%;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			color: #999999;
+			font-family: sans-serif;" valign="top">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
      </tr> 
     </tbody> 
    </table> 
-   <header class="img_thds" style="width: 100%; text-align: center; "> 
-    <div style="width: 75%; margin: auto; ">
-     <a href="http://www.pat-thpd.click/d8b5g23L95J86Zq11O4afaO11bbm36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQOdKmR7QGLv1F05k2wDO/Fortran-Jewett"><img alt="" src="http://www.pat-thpd.click/ad96E23_k95m7BSa12u4afFcG11bbQ36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQOdKmR6O_10Bn6U1M@wD/salable-mercifully" width="100%" /></a>
-    </div> 
-   </header> 
-   <section class="Sub_text_inline" style="width: 100%; "> 
-    <p style="text-align: center; font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; padding: 0px 20px; ">Dear valued customer You Are Just A Few Clicks Away To Get <strong style="color: #F25E02; ">The Home Depot</strong> Card The Home Depot Card.</p> 
-   </section> 
-   <div>
-    <a href="http://www.pat-thpd.click/d8b5g23L95J86Zq11O4afaO11bbm36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQOdKmR7QGLv1F05k2wDO/Fortran-Jewett"><img alt="" src="http://www.pat-thpd.click/a254S2395Xm7ak13a4afdGkB11bbp36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQOdKmR5D1Sl05njUwD/duckling-scatters" width="100%" /></a> 
-    <h2 class="Sub_antitex" style="font-size: 14px; font-weight: 15px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">&nbsp; </h2> 
-    <article>
-     &nbsp; 
-    </article> 
-    <p id="pioper_go" style=" text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 400; line-height: 30px; padding: 0px 30px; font-size: 22px; ">At <b style="color: #F25E02; ">Home Depot</b>, we are committed to providing the best service and selection for all your home improvement needs.<br /> <br /> By completing our short survey, you will have the opportunity to share your thoughts on our products, services, and store experience</p> 
-   </div> 
-   <p class="ipp_grosset" style="text-align: left; margin: auto; padding-top: 25px; font-family: 'Courier New', Courier, monospace; text-decoration: none; line-height: 25px; ">&nbsp; </p> 
-   <p class="inget_info." style="text-align: center; font-size: 16px; line-height: 12; ">&nbsp; </p> 
-   <p class="infto_grapisz" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: medium; ">&nbsp; </p> 
-   <p class="inget_info." style="text-align: center; font-size: 16px; line-height: 12; ">&nbsp; </p> 
-   <p class="infto_grapisz" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: medium; ">&nbsp; </p> 
-   <p class="inget_info." style="text-align: center; font-size: 16px; line-height: 12; ">&nbsp; </p> 
-   <p class="infto_grapisz" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: medium; ">&nbsp; </p> 
-   <div style="width: 100%; text-align: center; "> 
-    <div style="background-color: #F25E02; font-size: 18px; font-weight: 900; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 14px 32px; display: inline; border-radius: 8px; ">
-     <a href="http://www.pat-thpd.click/d8b5g23L95J86Zq11O4afaO11bbm36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQOdKmR7QGLv1F05k2wDO/Fortran-Jewett" style="text-decoration: none; color: #fff; ">Go And Start Now</a>
-    </div> 
-   </div> 
-   <p class="ipp_grosset" style="text-align: left; margin: auto; padding-top: 25px; font-family: 'Courier New', Courier, monospace; text-decoration: none; line-height: 25px; ">&nbsp; </p> 
-   <p class="inget_info." style="text-align: center; font-size: 16px; line-height: 12; ">&nbsp; </p> 
-   <p class="infto_grapisz" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: medium; ">&nbsp; </p> 
-   <p class="inget_info." style="text-align: center; font-size: 16px; line-height: 12; ">&nbsp; </p> 
-   <p class="infto_grapisz" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: medium; ">&nbsp; </p> 
-   <p class="inget_info." style="text-align: center; font-size: 16px; line-height: 12; ">&nbsp; </p> 
-   <p class="infto_grapisz" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: medium; ">&nbsp; </p> 
   </div> 
-  <div style="max-height: 600px; margin: auto; "> 
-   <footer style="width: 100%; text-align: center; font-size: 12px; padding-top: 200px; "> 
-    <address style="background-color: #F25E02; font-weight: bold; color: #fff; padding: 13px 0px; width: 80%; margin: auto; border-radius: 8px; "> <p><span style="text-decoration: none; ">No longer want to receive email information?,</span><a href="http://www.pat-thpd.click/8816n2i3S95w8Dm611B4afbq11bbL36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQOdKmR6yLkC105iW3wD/salable-mercifully" style="text-decoration-line: none; color: white"> <span>Go Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small></small><span style="abrasive"></span><big></big><font face="readier"></font><small></small></p> </address> 
-   </footer> 
+  <div style="width: 100%;"> 
+   <div style="width:100%; float: none; position: relative; top: -200px;"> 
+    <footer style="padding-bottom: 50px; max-width: 600px; margin: auto;"> 
+     <address style="background-color: #ec4141; padding: 20px 5px; outline: solid 3px #000000;"> 
+      <div style="text-align: center;"> 
+       <div style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 12px; line-height: 14px; text-align: center; color: #ffffff; font-weight: bold;">
+        &nbsp;If you do not wish to receive future messages click here to 
+        <span class="unstyle-auto-detected-links"><a href="http://www.rest-splassw.click/relationship-constrict/7ce6Bq239q5DJi8613LM4bA0aQ11beL36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQsdKmK7SsZG1m05UJwUD" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">unsubscribe</a></span>
+        <br /> 
+        <br /> 
+        <span class="unstyle-auto-detected-links"><a href="http://www.rest-splassw.click/bingo-metamathematical/8fa4l2395wn8A611X4b0bs11beh36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQsdKmK5Xp1X05jPw3D" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Splash Wines</a>&nbsp;|&nbsp; 1191 E Iron Eagle Dr., Suite #101 - Eagle, ID 83616</span>
+       </div> 
+      </div> </address> 
+    </footer> 
+   </div> 
   </div>   
- <img src="http://www.pat-thpd.click/7196vG23M95Ny8i512G4rafeY11bbG36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQOdKmR6z_1Bq06Yppw@D/duckling-scatters" alt=""/></body>
+ <img src="http://www.rest-splassw.click/d135u239x5QSv8513w4gbr0dQ11bei36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQsdKmK6SkHm105VJwDN/bingo-metamathematical" alt=""/></body>
 </html>
 
-------=_Part_520_728872094.1676559648841--
+------=_Part_262_1814260800.1676567032841--
 
