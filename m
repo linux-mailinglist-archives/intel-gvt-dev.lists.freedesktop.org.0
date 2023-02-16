@@ -1,138 +1,137 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32B00698F5C
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 10:10:14 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98FA0699058
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 10:47:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EDF9210E159;
-	Thu, 16 Feb 2023 09:10:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6334510ECE0;
+	Thu, 16 Feb 2023 09:47:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2864E10E159;
- Thu, 16 Feb 2023 09:10:11 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D0D5810E733;
+ Thu, 16 Feb 2023 09:46:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676538611; x=1708074611;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=2huVKU/DZOrRNQScGUvmmXUvec/KN1MgYhomuLb1+VM=;
- b=e3QPeVty1XQKv6okMsKyAvr2ufIuSyReaBBCT1TsSCe1jOheA1Teoys9
- vgrTQrz2ldbh8W01SfWRop75Qr2NS1J6xKDb2WXkyGhFHU3ruWpWDxVRS
- hSMXerNfqmCGpD8QZPdQpm86vcYrCjKk1zo9Y2Npgc0RemIJV36W/kwgx
- einKi7IsbQYogD+cSpxyz96HQCSHeZECRdRsugMJdSYsToeZn9o7APd2y
- XXwWZbuCRrFcPH52HabhNzD68jjIydzwAvEqZxohXqVzWbScppTk7dWD2
- g3EN8c8PeH0ezlYqOh7ZMqJNlr1nLZu8znm+umu2k1zKGGBmP4/wqCD/v g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10622"; a="396309824"
-X-IronPort-AV: E=Sophos;i="5.97,302,1669104000"; d="scan'208";a="396309824"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Feb 2023 01:10:10 -0800
+ t=1676540818; x=1708076818;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ in-reply-to:mime-version;
+ bh=ywJOSBRndfe/0JlLQTQNNgS37t90wn/imF0o8SN6Igk=;
+ b=FBQ6S8pq58GYTnPrHLfs0mQlZWAJgBYpxwL1fpo5WO2EVuhi4Gu1va93
+ Pkq6yVzW6j9RP0DYPisqT/YRNbUQO6KEwkfKmLoAzYYh7q2Ky+gm3nwYa
+ 0eZLFleb471e2o7FrDSngYg1365pEpZANnzDvwSDhOixlpN9C0DgkUhbx
+ 2AUM614fCCKKW6Xu7sKHaUw8hM37xl40hoL0AKlc2WglUSN370ECeQ8L2
+ mhRulUrjlv7jsF9X0zGS8p+rJLx81mwBO7EdG55P0drhmH4hG5I5LSIOV
+ yDFxDY6398utqtpWPhJ33ACZjX9JaTwlK76W1ceRQlX4o6nkB6S6RuVAq g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10622"; a="359105360"
+X-IronPort-AV: E=Sophos;i="5.97,302,1669104000"; d="scan'208";a="359105360"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Feb 2023 01:46:57 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10622"; a="663390204"
-X-IronPort-AV: E=Sophos;i="5.97,302,1669104000"; d="scan'208";a="663390204"
+X-IronPort-AV: E=McAfee;i="6500,9779,10622"; a="733813534"
+X-IronPort-AV: E=Sophos;i="5.97,302,1669104000"; d="scan'208";a="733813534"
 Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orsmga007.jf.intel.com with ESMTP; 16 Feb 2023 01:10:09 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 16 Feb 2023 01:46:57 -0800
 Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
  ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16; Thu, 16 Feb 2023 01:10:09 -0800
+ 15.1.2507.16; Thu, 16 Feb 2023 01:46:56 -0800
 Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
  orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.16 via Frontend Transport; Thu, 16 Feb 2023 01:10:09 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.45) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2507.16 via Frontend Transport; Thu, 16 Feb 2023 01:46:56 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.105)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.16; Thu, 16 Feb 2023 01:10:08 -0800
+ 15.1.2507.16; Thu, 16 Feb 2023 01:46:56 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=P9rR5ns0gbQheNo6sp7nSG9DgBupOKFm6w2I1T7iY2nppj9XwfwEIfw2cRS1naqbPQ88wQycJjIgCSM2hnLQbXXqLqoCVK8ZjptkbCwrLu0hgnlOsU7jZtppDr18m9E0wDLNXtK0KtXwSUtGyNnZ9zn77f8i/FHz3MRoe/GFHeN9chXQI5TnZyfmYBzDSJyqpCk/o2QqnvK8d/Dz1wM5vWslb4+PUOl2V6CfD9dSlIW2W9rI+zlQYfFrzG6rBPCw5o9c5lnmu5nUoEB4fKxB2XjkZTdtqjT0j6Vpf4KsgU6C5q0o9twsi0sDxtfYjUZeWrpYiLhaciKO+zpe+QUN8Q==
+ b=QFHOrLDFEdvnSSionffmkDVYTY2bhQNItrmhrW9XxLyJhok2s6KsakovmmW/eZ0NaADvnExENP3J5gJ07/8uZXDa2ZK5r6OcldTX53W1/M3XlX6jvxo5xaizYMkS4b2ue3tovZ/GtG8GLYy4/02Bv3jtNY389h1jY2gc9sxRfeBj8euIC/cJu/jiUnmGQEcWHdKR1tM1vtaWcvAc2v+AZ0ur36MCBJszoTSy4w7nuy7vxkosCN0w0rSNhVYJ1Uy8FAqR4su5lD1HrYeZS/rZaKKTdsLKeo+eVaK2MkMgzsZXf0VAh6m4gEN13Jh7emVRpCEIodW7sfqiQ3gdTw27Gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=caVkzJFqF5LTAMuWsYTUQ0xSi3hbM1jzd1Q4mqqrqNc=;
- b=ZT/OjpbIQRoAZjzcOzb9zSItZj/T39ENGXgaquUbBywoSOtQYvTG+9QYP+p9dGftpdaHrprdgfXCKFNAZtATc6DwD4Ym9vf9XxrQaIowtLXMzApxmeDhv7aCq65OZ7nJHMRvICaQIksDicjRqf9xnREi3XVbzD8zj9xaG1mLRKrkLCK9009Yw7A98btYWQyfk7kRpDuB3+wrNeXzpgy5tfummNaLWoJGPiNr8OjdhYguF5sPz04xW60eH4WMzQBPLk26CvulqkznB1F+rOYnQhUXsJgDyZgvjpUGWeftBxTSDb6au5fJ9eUH9nndk8LlIDTJbI/JGc5yHxmekIJp0w==
+ bh=Frbl0k84L9tzgfK8FGTbmm0uYN9KLO/G87IofdPSaPA=;
+ b=i5bZvZ/tlj9aE927CJOfwyjlRw2BGuAIOL08AmuwdpFFgSq638IkBZI0c6y4S5gIZqjCrBQc+oksOrk/6+mwrNfndNLH0+257tfziUuhB9cawgGfmm8sA7dnSYqwO5b2H+y1OMXUsmgxisdF+mZbP2sUl9E3xU4SFMwoMdiuAZhC3hLoj26/AwW4Aj+62BRMSScu8ZyVhxilY98b+OMPuLSdUqf++XhZ8+9svg3HxooXbXHdLThAq+gZUAuqrWIyvrHThBtyty5kXbvYzpDGTdEI4kytFBl7FW+lSwRupcZkIqT9LdzpZ8O9fH6vuNTnzk5aEUusyeqMfZPurHgDUg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from SN7PR11MB7540.namprd11.prod.outlook.com (2603:10b6:806:340::7)
- by MN2PR11MB4549.namprd11.prod.outlook.com (2603:10b6:208:26d::24)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6111.13; Thu, 16 Feb
- 2023 09:10:07 +0000
-Received: from SN7PR11MB7540.namprd11.prod.outlook.com
- ([fe80::13ce:e90b:7753:6c2c]) by SN7PR11MB7540.namprd11.prod.outlook.com
- ([fe80::13ce:e90b:7753:6c2c%5]) with mapi id 15.20.6086.024; Thu, 16 Feb 2023
- 09:10:06 +0000
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: "Zhao, Yan Y" <yan.y.zhao@intel.com>
-Subject: RE: [PATCH v3 14/15] vfio: Add ioctls for device cdev using iommufd
-Thread-Topic: [PATCH v3 14/15] vfio: Add ioctls for device cdev using iommufd
-Thread-Index: AQHZP73TMP7ZzqInoUK0sXtp8iwKVK7RQKyAgAAL3yA=
-Date: Thu, 16 Feb 2023 09:10:06 +0000
-Message-ID: <SN7PR11MB754074DEC60C9852D42EA4A6C3A09@SN7PR11MB7540.namprd11.prod.outlook.com>
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
+ PH8PR11MB6609.namprd11.prod.outlook.com (2603:10b6:510:1cc::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6086.24; Thu, 16 Feb
+ 2023 09:46:54 +0000
+Received: from DS7PR11MB5966.namprd11.prod.outlook.com
+ ([fe80::82d2:d341:4138:17ef]) by DS7PR11MB5966.namprd11.prod.outlook.com
+ ([fe80::82d2:d341:4138:17ef%7]) with mapi id 15.20.6086.026; Thu, 16 Feb 2023
+ 09:46:54 +0000
+Date: Thu, 16 Feb 2023 17:23:06 +0800
+From: Yan Zhao <yan.y.zhao@intel.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>
+Subject: Re: [PATCH v3 14/15] vfio: Add ioctls for device cdev using iommufd
+Message-ID: <Y+31+puocZcGFnSQ@yzhao56-desk.sh.intel.com>
 References: <20230213151348.56451-1-yi.l.liu@intel.com>
  <20230213151348.56451-15-yi.l.liu@intel.com>
  <Y+3oObuMG/v3+x0N@yzhao56-desk.sh.intel.com>
-In-Reply-To: <Y+3oObuMG/v3+x0N@yzhao56-desk.sh.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SN7PR11MB7540:EE_|MN2PR11MB4549:EE_
-x-ms-office365-filtering-correlation-id: d2b2a329-31e3-44c5-8817-08db0ffd9866
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: cmCZxNs+mdQdMo3iRNMuwsbO9JTMneBoTSG3FzOFlI2cGmjKp415WAHNP1R0mbmMjVh5uC5tIA0UqjYEkG5mjt5CIywEZtGAI5RDFZAPCRmhgurYlOLyyEOjOwll7Wc4K3XdMCdo4TohTmmyQ0Kdiqi2xDiSuCnJzhiT3oRj35TVUUolnXmWU5+5gG9Z9jJCafvYdvCRcdxucREnW58DbuJ2qhPAveFeD58AG/e7kwZGIlZkEgMBHvkn65p90MKCEIJ5QmTt13/BQT11ew2e1GJC6ug8awmrHpgwIXOYdQC5ZD10AY++moQjvqPhxRIFAZfkcXCtm56W4im0GXRa8zA6CxBAoG+IU2OfxkzLSlKY3zwNgE9A5dxs2a3oT9HM7L+zq29/z1KTtwfr9+hxZPY2crBNu0eH8bCkRcNM8QmDBfGaCCdgDhFgjqxU2RZeshg3YM4WjnK9m0WHcXzZe/g11Rdzt2zDtrfECXIJbe0FvVkqDc0s4EGVkpuYtjVG8SsfYWiRz7hq92xhZBd/72jGns46itJHOLAMyFjr2Gaj1QfZHDN3Wyk2MBvwp14ImVE0RVUJZBqppOlM5sVvpzBELQSVowDOCJyTHiSF6A0fPn+0zG9gTdpATBkxLDgUqzktRJiKmCK1Ho5y1AKYfzAur6+ZfXOp5hBTiEVL4kUiGN3rfsDRlQFVsSl+N97iT8ZZTH3UVWFilFzpkG9iqA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN7PR11MB7540.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(136003)(366004)(396003)(39860400002)(376002)(346002)(451199018)(86362001)(6636002)(54906003)(316002)(52536014)(55016003)(8936002)(7416002)(5660300002)(38070700005)(6862004)(478600001)(76116006)(33656002)(41300700001)(66556008)(4326008)(64756008)(8676002)(66946007)(66476007)(66446008)(186003)(26005)(9686003)(6506007)(2906002)(38100700002)(122000001)(82960400001)(83380400001)(71200400001)(7696005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?YU6Vp1n7h01zEWmdrNuSoSWZ7UT2/xrfAjG2Fg7atyLLPJVttnod2QZd46Qp?=
- =?us-ascii?Q?cQ+RFOUbOrLAsNgI2Yo5XPSeDOIdojWKrLjYsUs6cJ3V9BV7zdTg6qtQnaau?=
- =?us-ascii?Q?1IlYHvy0Hbpd2Kq5KT+2/Cy3p4e83BVviOZjvVdmHTFMPwCuu6CJXKOGEWUI?=
- =?us-ascii?Q?DBvtVeDi2o0nE15iKSEdpsCBXS/VwHUhlDd5L7bZ9t5CmB+ZuuGWpebFpI1c?=
- =?us-ascii?Q?IphMqwiS5LQ3eD5dz8hzQbpdpOhHQWqzcB3MJeo9FEEVhnqoKQB8UShMugKB?=
- =?us-ascii?Q?QhqIbFHMA8RKwQlpOwuasXYzXNv6uRGWsHo1t4tdVhNpnIIRsd8n05nNBg7w?=
- =?us-ascii?Q?0C0T2EyQF1t7Pz4uWHb1KH3OXd5SyCif6O5bgvVavQBlvUXz3gSa4ic9eZ28?=
- =?us-ascii?Q?FH12mqQvhT9KdtK1yycVXzZoLmlkrD2mimkjsoGAnZWHlEOUX//8tg8LTT/8?=
- =?us-ascii?Q?wXnPY2cLDwN7xzNs/E49GON+fcA88dpbbCnFErSigIYICLsxiZxqPZORulFw?=
- =?us-ascii?Q?WFBWplnQX5B9H0eE48CdFGhh7uTtPd8CKDW/w59l8IhKYHx0xJoZ/sKkOTbU?=
- =?us-ascii?Q?MLHzg40/tpC7uUzDZtlqktb00Fc90YvhA9eDJfPhnSC/Z0erY9nx7N1yVPL+?=
- =?us-ascii?Q?f3BfScffIh19wqFeoQ8kfATqdTBLWJMN1bJskrgESzTO9mkBOmfL87tBTnVu?=
- =?us-ascii?Q?MEdqQ2wmesIpQlcLo1O5Dk3/Lob/Dl6lq/+nG0tmUGFEKPZVxCz74umsMnPU?=
- =?us-ascii?Q?qlMz5/65R6TVUcchgj3Qqy+lqoR7jsTFmtmcGBTsANi9o56JGyRsRMiiaZRD?=
- =?us-ascii?Q?I1Ku1lrSQnuvq9HAOitascRSDzoqtWMgwMU7khxBFIxPhdVXSdMEAXMFNHBS?=
- =?us-ascii?Q?rdrp6xS2Dyy9TZ1X0PQnQRdhs+LxZ8i8qvQkl3yZKfe+z6B2pO87jgfGI2LV?=
- =?us-ascii?Q?UwOLNdxFeivRNLEtnOY5nYZtlyute126hSEjQxQ0aMS2ocaDkO1+6N6SW+yn?=
- =?us-ascii?Q?nyV7tjnp5sINpUSm5KHOo0+A1zBVG66EY2vL3FiotbH4LRrz2Ap2eivwiFSP?=
- =?us-ascii?Q?RhTZtjxS9V7Q3rHPxOePGvkMrVo5j6OPSLHwqO1jCIwmoLkfBMTKGSM1U4KO?=
- =?us-ascii?Q?NIinD6gz0oU+DH24YFLZnGRwvgHjTk46aAnZ2FDGbyrpbEj9Fa1AYCTVJc0Y?=
- =?us-ascii?Q?s4yOEIFf+NMtnkcdFCrn8tvTCMhvsPqsxB+Srh/Jwqnd9UmjsF1t0oFkWxTq?=
- =?us-ascii?Q?NL5Bn76T8mDjzvEq+L6RM4xKrlapGOnIBBIQR3wGs1P0OncId9KTT7fBuw8N?=
- =?us-ascii?Q?ClD99cV3Jbqwzc9kuBDcvVBNBmJmkLJrlELNbkW2fZOAiGtCh/hlOdW9n7O9?=
- =?us-ascii?Q?6sTf6UyKkgLuZbCHaKi75DYWqLxX3r+uRD0SOATukNAVWkVJrOsb7mI2eVNw?=
- =?us-ascii?Q?ZE3hS3Xhxq0E5QVDmkLA/rtHahMsPL0ICM4oBpP89u0NzWAf+uG4ZrU0iuDX?=
- =?us-ascii?Q?2NBYLDZQx+Ew5IHMD42VOcoExmQn71IYSXzR7clyn+wviIAc47zn3NA9hPcJ?=
- =?us-ascii?Q?GHzl/mYXkNFbIllJDZLIRSLcpIp3CSWQVxzaTvRU?=
+ <SN7PR11MB754074DEC60C9852D42EA4A6C3A09@SN7PR11MB7540.namprd11.prod.outlook.com>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+In-Reply-To: <SN7PR11MB754074DEC60C9852D42EA4A6C3A09@SN7PR11MB7540.namprd11.prod.outlook.com>
+X-ClientProxiedBy: KL1PR01CA0116.apcprd01.prod.exchangelabs.com
+ (2603:1096:820:3::32) To DS7PR11MB5966.namprd11.prod.outlook.com
+ (2603:10b6:8:71::6)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|PH8PR11MB6609:EE_
+X-MS-Office365-Filtering-Correlation-Id: ee958986-f62a-45f7-d86e-08db1002bc17
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: l2ssdTn2LUXR8WMXgyNLQx8P4hyuhV2aTsE4ENcvWZX/mtjDWRQJwLdk+XIJYIAyS9j439PxCtnW9k4KE/kBkgB7s5Ti3+Lf03jDbXDlrlTVzsTHDUqFxk9w5nnaWzyDDdzWe4wqVstPSzDJN7NIBHOD+BWvKqU37PvpIcp9h6McOV4i35bXm8ZfrqkTZFu6M0WIsFHuT8Yyv/3x7HA7wU9YY6eY56a0wQ+gjrdupm+76P0oNSN5ywhHhCdauyybqzmhLwldxNc5psVcOIXANmTkIntdYvHurBx8CixKNDvsRscKXTADkuSeXQ+jmDopOVQ6YcZuQjeGFk8cbhBJoTFp/Few0EYruVRLskWg5K5LQEqH3njiOiveM1WIVjy7TqoXq2/mXZSuHnO5k82kcjSRjP4Kl9I4R5r6ITOYPu9Zs/cfvvQ5rabwiaG7wX6+Z1AlCgRm0RDRBzw1h/fr+Qa4vfkGjWO3r9+aTzE6zENrPyKTZkJtvVEWtu4h2g7lkFA2sTvUSFRBE26N8AilyUpA2J4MV0zF5iXvkx4JNpJgTeJaoy5Xxvy/DhVwyVHChaqz7UhxAooRgEd6hGQGSpbcro6icOFMzj7aXYG3ZQK6xzk4AWz/EFOaVeuIS16/G720H48xZj7AVTCbSFs3DA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(376002)(136003)(39860400002)(366004)(396003)(346002)(451199018)(2906002)(3450700001)(41300700001)(8936002)(7416002)(5660300002)(6862004)(66946007)(4326008)(66556008)(66476007)(8676002)(316002)(478600001)(54906003)(6506007)(6486002)(6666004)(6512007)(26005)(86362001)(186003)(83380400001)(38100700002)(82960400001)(6636002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YlHXptfZxtpOc3xYQbDYZpfA7ym04cINfrj8R9kFuJhkk86FRmzPsebr+oIg?=
+ =?us-ascii?Q?L3iLhgBLVk1lq0ebqXOCYCzKDDYswaS4UUbbEBYsxF0Im1GO9XiuRrbb3KuR?=
+ =?us-ascii?Q?4ryB0bTeovve1hnGDLzXbX9UnZAEo3AtWDqlr8LJHX8AhBRs3u37P+ccWj7w?=
+ =?us-ascii?Q?jtHgmCQBpDOoB32ueSUDI6oV5McCoWRF2To7zJ/1MAkFFU04RhMoB8EMGxf9?=
+ =?us-ascii?Q?i9h1eYrvAzM3VzadkyUtCvHyb9+S0VNxVEBx6XYxc91dyAhwH7ktjNB/VLzC?=
+ =?us-ascii?Q?vsjwMRUWILR0E89t6r4nuMYf6mH3f8LpTNdQO9MAEKP2vuPZXng8pMIhCnc8?=
+ =?us-ascii?Q?tguP15P/Gs7M6O0eLaNHY0TJWP4ccWewipX3mjvOVKKRakL9AODyVYUIFCJS?=
+ =?us-ascii?Q?wCmcCWnZbunskiJp2+ccrH7em1ZKdAuY5DHEafQnzFEhiBBaCoGQckALPyz2?=
+ =?us-ascii?Q?o1MNgBdMSFTzbbp6b8xIDtX8HAhLPhq2d4Srazmu1hAJn1rY/RV+LqpXvUC5?=
+ =?us-ascii?Q?wttE5IgskCQ5EJzmy5US2X+U3OlIFcGytCsCnBzEx29eX3NZ0FU7usfHBP5T?=
+ =?us-ascii?Q?n59VMH248KbskNqmWGFjG8BUPWtiCcS0zR82rrwABLVoQElnXIDU+B6pQE8V?=
+ =?us-ascii?Q?vMRxsU22OiCOPqNk527aHmSoxdWKP55OkI3MDaqDYG9phSSDL3ePFqYIAK88?=
+ =?us-ascii?Q?GrPW0jbftHeo272IVtBq3YJgnfNVnFUGcrGgyLAee3AK1aek+RpnxP20qwmy?=
+ =?us-ascii?Q?r53s7Cfyy2Rg9xo+Dae/vXPfSki4H8obuoy6ErpA1Xm0U3PeO7aF0fBUEEmY?=
+ =?us-ascii?Q?oCh0+rhDXFZqSpFebVyoS+l9sQr9EEMnk/+4KCg3Iag1ZHwSpQSIXCx1eBnL?=
+ =?us-ascii?Q?EcqxfY4VuaSoydf4siRRK1MVqyxSGN+O7Gjdne+Iuf/XnNCSgpvmBjMQZGoK?=
+ =?us-ascii?Q?RIJ0or55k2hRUYboT1QWAiwYGIoTveMdClQ0QEbRe5x/g8jkp3nkW8iyJk3T?=
+ =?us-ascii?Q?zIIiJVk/njsZ9JjP8NyYlAGNNKiYFQiF4gnefhvav4UWH3oB8DOI6INSUnyo?=
+ =?us-ascii?Q?EHsYAg3JWTI7WLZU/PkyIuPJEBfJSqqEydhU8KU7ryxSUgCDu+ctYYcOXARC?=
+ =?us-ascii?Q?abwP9yFQLRiVSPP3u3Bqdo2bj8Dhkj50siz2KjAh6CsznJW0DJ3FBu0e4Eh5?=
+ =?us-ascii?Q?5t+pNI02w5DUfFUpXlDs571XZecQXjo4feju4PeN6MJPEoeSQiXbcj1irZBs?=
+ =?us-ascii?Q?EppBjz0EgfeHECYoKgTkL9eursW82cZEbPNyQpeHLAa6Yedsz7s//n3dzMod?=
+ =?us-ascii?Q?YBH6coQKItkxA2Qc6MYCXuM9Hbx94sHmrJoaSPVzVGQyU/bf2GJb04IObwT3?=
+ =?us-ascii?Q?QUGDqKiXnw9tACyqhc/8dzLvi9gNgCLeHO+WzcoRTqzb9e42y+AJsnhKYq+o?=
+ =?us-ascii?Q?WHv1qrzPHyxbF+YY9YTpk7hco1+7ROQZAg/jr3V1KTFbZKZcA9bl5L0Xl+LV?=
+ =?us-ascii?Q?D0jvsSPfQ1gCrIPMY8b9QHXQEO5u81zaP1KE+4F2Kvtvb7J4EWNq/xdwxTWO?=
+ =?us-ascii?Q?ialOO7WH0+zw4R0+mAYhJdzDJkcHY61oj3WcklmBVbuQyDnnrpSa4kBSOXEK?=
+ =?us-ascii?Q?kQ=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: ee958986-f62a-45f7-d86e-08db1002bc17
+X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7540.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d2b2a329-31e3-44c5-8817-08db0ffd9866
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Feb 2023 09:10:06.0587 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: iroCEE8sK1TniGJjtHBwI+K6ob4VYxY1L+VJfqTIAQFt92FzoXSDl0sdq88ZahmIiMXXhVuq2mW7IZqNtlPkLw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4549
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Feb 2023 09:46:53.6902 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8D9+tEx/C64oV4NF9P44CnLkt9P9KJ2xKBF2Cb+bxbwCqwBck1/M+s3qbHRkr2oAhePa8zqr4BGhJmKyhSZBqg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR11MB6609
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -146,6 +145,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Yan Zhao <yan.y.zhao@intel.com>
 Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Tian,
  Kevin" <kevin.tian@intel.com>,
  "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
@@ -168,149 +168,154 @@ Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Tian,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Zhao, Yan Y <yan.y.zhao@intel.com>
-> Sent: Thursday, February 16, 2023 4:24 PM
->=20
-> On Mon, Feb 13, 2023 at 07:13:47AM -0800, Yi Liu wrote:
-> ...
->=20
-> > +long vfio_device_ioctl_bind_iommufd(struct vfio_device_file *df,
-> > +				    unsigned long arg)
-> > +{
-> > +	struct vfio_device *device =3D df->device;
-> > +	struct vfio_device_bind_iommufd bind;
-> > +	struct iommufd_ctx *iommufd =3D NULL;
-> > +	struct fd f;
-> > +	unsigned long minsz;
-> > +	int ret;
-> > +
-> > +	minsz =3D offsetofend(struct vfio_device_bind_iommufd, out_devid);
-> > +
-> > +	if (copy_from_user(&bind, (void __user *)arg, minsz))
-> > +		return -EFAULT;
-> > +
-> > +	if (bind.argsz < minsz || bind.flags)
-> > +		return -EINVAL;
-> > +
-> > +	if (!device->ops->bind_iommufd)
-> > +		return -ENODEV;
-> > +
-> > +	ret =3D vfio_device_claim_group(device);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	mutex_lock(&device->dev_set->lock);
-> > +	/*
-> > +	 * If already been bound to an iommufd, or already set noiommu
-> > +	 * then fail it.
-> > +	 */
-> > +	if (df->iommufd || df->noiommu) {
-> > +		ret =3D -EINVAL;
-> > +		goto out_unlock;
-> > +	}
-> > +
-> > +	/* iommufd < 0 means noiommu mode */
-> > +	if (bind.iommufd < 0) {
-> > +		if (!capable(CAP_SYS_RAWIO)) {
-> > +			ret =3D -EPERM;
-> > +			goto out_unlock;
-> > +		}
-> > +		df->noiommu =3D true;
-> > +	} else {
-> > +		f =3D fdget(bind.iommufd);
-> Here, the iommufd file count + 1,
->=20
-> > +		if (!f.file) {
-> > +			ret =3D -EBADF;
-> > +			goto out_unlock;
-> > +		}
-> > +		iommufd =3D iommufd_ctx_from_file(f.file);
-> iommufd file count + 1, again
->=20
-> > +		if (IS_ERR(iommufd)) {
-> > +			ret =3D PTR_ERR(iommufd);
-> > +			goto out_put_file;
-> > +		}
-> > +	}
-> > +
-> > +	/*
-> > +	 * Before the device open, get the KVM pointer currently
-> > +	 * associated with the device file (if there is) and obtain a
-> > +	 * reference. This reference is held until device closed. Save
-> > +	 * the pointer in the device for use by drivers.
-> > +	 */
-> > +	vfio_device_get_kvm_safe(df);
-> > +
-> > +	df->iommufd =3D iommufd;
-> > +	ret =3D vfio_device_open(df, &bind.out_devid, NULL);
-> iommufd file count + 1 in iommufd_device_bind for first open.
->=20
-> > +	if (ret)
-> > +		goto out_put_kvm;
-> > +
-> > +	ret =3D copy_to_user((void __user *)arg +
-> > +			   offsetofend(struct vfio_device_bind_iommufd,
-> iommufd),
-> > +			   &bind.out_devid,
-> > +			   sizeof(bind.out_devid)) ? -EFAULT : 0;
-> > +	if (ret)
-> > +		goto out_close_device;
-> > +
-> > +	if (iommufd)
-> > +		fdput(f);
-> But, only one file count is put.
+On Thu, Feb 16, 2023 at 05:10:06PM +0800, Liu, Yi L wrote:
+> > From: Zhao, Yan Y <yan.y.zhao@intel.com>
+> > Sent: Thursday, February 16, 2023 4:24 PM
+> > 
+> > On Mon, Feb 13, 2023 at 07:13:47AM -0800, Yi Liu wrote:
+> > ...
+> > 
+> > > +long vfio_device_ioctl_bind_iommufd(struct vfio_device_file *df,
+> > > +				    unsigned long arg)
+> > > +{
+> > > +	struct vfio_device *device = df->device;
+> > > +	struct vfio_device_bind_iommufd bind;
+> > > +	struct iommufd_ctx *iommufd = NULL;
+> > > +	struct fd f;
+> > > +	unsigned long minsz;
+> > > +	int ret;
+> > > +
+> > > +	minsz = offsetofend(struct vfio_device_bind_iommufd, out_devid);
+> > > +
+> > > +	if (copy_from_user(&bind, (void __user *)arg, minsz))
+> > > +		return -EFAULT;
+> > > +
+> > > +	if (bind.argsz < minsz || bind.flags)
+> > > +		return -EINVAL;
+> > > +
+> > > +	if (!device->ops->bind_iommufd)
+> > > +		return -ENODEV;
+> > > +
+> > > +	ret = vfio_device_claim_group(device);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	mutex_lock(&device->dev_set->lock);
+> > > +	/*
+> > > +	 * If already been bound to an iommufd, or already set noiommu
+> > > +	 * then fail it.
+> > > +	 */
+> > > +	if (df->iommufd || df->noiommu) {
+> > > +		ret = -EINVAL;
+> > > +		goto out_unlock;
+> > > +	}
+> > > +
+> > > +	/* iommufd < 0 means noiommu mode */
+> > > +	if (bind.iommufd < 0) {
+> > > +		if (!capable(CAP_SYS_RAWIO)) {
+> > > +			ret = -EPERM;
+> > > +			goto out_unlock;
+> > > +		}
+> > > +		df->noiommu = true;
+> > > +	} else {
+> > > +		f = fdget(bind.iommufd);
+> > Here, the iommufd file count + 1,
+> > 
+> > > +		if (!f.file) {
+> > > +			ret = -EBADF;
+> > > +			goto out_unlock;
+> > > +		}
+> > > +		iommufd = iommufd_ctx_from_file(f.file);
+> > iommufd file count + 1, again
+> > 
+> > > +		if (IS_ERR(iommufd)) {
+> > > +			ret = PTR_ERR(iommufd);
+> > > +			goto out_put_file;
+> > > +		}
+> > > +	}
+> > > +
+> > > +	/*
+> > > +	 * Before the device open, get the KVM pointer currently
+> > > +	 * associated with the device file (if there is) and obtain a
+> > > +	 * reference. This reference is held until device closed. Save
+> > > +	 * the pointer in the device for use by drivers.
+> > > +	 */
+> > > +	vfio_device_get_kvm_safe(df);
+> > > +
+> > > +	df->iommufd = iommufd;
+> > > +	ret = vfio_device_open(df, &bind.out_devid, NULL);
+> > iommufd file count + 1 in iommufd_device_bind for first open.
+> > 
+> > > +	if (ret)
+> > > +		goto out_put_kvm;
+> > > +
+> > > +	ret = copy_to_user((void __user *)arg +
+> > > +			   offsetofend(struct vfio_device_bind_iommufd,
+> > iommufd),
+> > > +			   &bind.out_devid,
+> > > +			   sizeof(bind.out_devid)) ? -EFAULT : 0;
+> > > +	if (ret)
+> > > +		goto out_close_device;
+> > > +
+> > > +	if (iommufd)
+> > > +		fdput(f);
+> > But, only one file count is put.
+> 
+> Good catch! Yes it is missed. And needs to call iommufd_ctx_put()
+> in vfio_device_cdev_close() as well.
+If I read correctly, iommufd_device_bind() in the first open will
+get the reference through iommufd_ctx_get(ictx) and 
+iommufd_device_destroy() in the last close will do the iommufd_ctx_put().
 
-Good catch! Yes it is missed. And needs to call iommufd_ctx_put()
-in vfio_device_cdev_close() as well.
+As vfio_device_ioctl_bind_iommufd() isn't paring with
+vfio_device_cdev_close(), I think the fix below is simpler :) 
 
-> Need a paring iommufd_ctx_put() after a successful
-> iommufd_ctx_from_file()
-> above to avoid iommufd_fops_release() never being called.
->=20
-> e.g.
->=20
-> @@ -1222,11 +1226,13 @@ static long
-> vfio_device_ioctl_bind_iommufd(struct vfio_device_file *df,
->                         ret =3D -EBADF;
->                         goto out_unlock;
->                 }
->                 iommufd =3D iommufd_ctx_from_file(f.file);
->                 if (IS_ERR(iommufd)) {
->                         ret =3D PTR_ERR(iommufd);
->                         goto out_put_file;
->                 }
-> +               iommufd_ctx_put(iommufd);
-
-Since iommufd is recorded in df, so needs to hold refcount till
-df->iommufd=3DNULL;
-
-Thanks,
-Yi Liu
-
->         }
->=20
->         /* df->kvm is supposed to be set in vfio_device_file_set_kvm() */
->=20
-> > +	else if (df->noiommu)
-> > +		dev_warn(device->dev, "vfio-noiommu device used by user
-> "
-> > +			 "(%s:%d)\n", current->comm,
-> task_pid_nr(current));
-> > +	mutex_unlock(&device->dev_set->lock);
-> > +	return 0;
-> > +
-> > +out_close_device:
-> > +	vfio_device_close(df);
-> > +out_put_kvm:
-> > +	df->iommufd =3D NULL;
-> > +	df->noiommu =3D false;
-> > +	vfio_device_put_kvm(device);
-> > +out_put_file:
-> > +	if (iommufd)
-> > +		fdput(f);
-> > +out_unlock:
-> > +	mutex_unlock(&device->dev_set->lock);
-> > +	vfio_device_release_group(device);
-> > +	return ret;
-> > +}
-> > +
+> > Need a paring iommufd_ctx_put() after a successful
+> > iommufd_ctx_from_file()
+> > above to avoid iommufd_fops_release() never being called.
+> > 
+> > e.g.
+> > 
+> > @@ -1222,11 +1226,13 @@ static long
+> > vfio_device_ioctl_bind_iommufd(struct vfio_device_file *df,
+> >                         ret = -EBADF;
+> >                         goto out_unlock;
+> >                 }
+> >                 iommufd = iommufd_ctx_from_file(f.file);
+> >                 if (IS_ERR(iommufd)) {
+> >                         ret = PTR_ERR(iommufd);
+> >                         goto out_put_file;
+> >                 }
+> > +               iommufd_ctx_put(iommufd);
+> 
+> Since iommufd is recorded in df, so needs to hold refcount till
+> df->iommufd=NULL;
+> 
+> 
+> >         }
+> > 
+> >         /* df->kvm is supposed to be set in vfio_device_file_set_kvm() */
+> > 
+> > > +	else if (df->noiommu)
+> > > +		dev_warn(device->dev, "vfio-noiommu device used by user
+> > "
+> > > +			 "(%s:%d)\n", current->comm,
+> > task_pid_nr(current));
+> > > +	mutex_unlock(&device->dev_set->lock);
+> > > +	return 0;
+> > > +
+> > > +out_close_device:
+> > > +	vfio_device_close(df);
+> > > +out_put_kvm:
+> > > +	df->iommufd = NULL;
+> > > +	df->noiommu = false;
+> > > +	vfio_device_put_kvm(device);
+> > > +out_put_file:
+> > > +	if (iommufd)
+> > > +		fdput(f);
+> > > +out_unlock:
+> > > +	mutex_unlock(&device->dev_set->lock);
+> > > +	vfio_device_release_group(device);
+> > > +	return ret;
+> > > +}
+> > > +
