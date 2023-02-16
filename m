@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7437E699CB8
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 19:58:27 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63C20699BF8
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 19:13:11 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 44D4910E358;
-	Thu, 16 Feb 2023 18:58:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2F80010EE7D;
+	Thu, 16 Feb 2023 18:13:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 16 Feb 2023 18:58:24 UTC
-Received: from mail.ring-micsh.click (unknown [104.206.109.242])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8FB9910EE8C
+ Thu, 16 Feb 2023 18:13:07 UTC
+Received: from mail.ridad-thsaf.click (unknown [104.206.109.233])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 932B310EE66
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Feb 2023 18:58:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ring-micsh.click;
+ Thu, 16 Feb 2023 18:13:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ridad-thsaf.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=miraclesheets_team@ring-micsh.click; 
- bh=bIrTvTkfbLMycoTzY/MC3g7/TWs=;
- b=m/Kn5uPfCzMfV6uG28EHRWpIxHGJ3zor9rm6kvlg8PydYN9Y0bfAV1akouBsV9yZW1cSV3P+Sxne
- x9/evUyVsTiPrU72rtYUeYFNKQaxKwf47isGI5gTnLs9C7Qa1zdTwDcJLto6H7PJUkwiZGyutYdX
- zbXd30xAZYEwaAR1XgA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ring-micsh.click;
- b=PypuxwwUydOwKMwJGM5OpFIsLeDCWuh7UgUg3U11GghNick3h3Vqv1HHvup2qCdOcJbpxgSVIV+N
- cFr7/U5kGhRfINfXp8fwrO5+x1hKB6mHpHXQVbhr+g5GS6AEU9pWERstPVZsmQk0aiO3ZJS5Z8Sw
- YfoRt31jVcnXE41JBCE=;
-Received: by mail.ring-micsh.click id htpud00001gn for
+ i=adt_help_protect_from_home_invasions@ridad-thsaf.click; 
+ bh=wzAfREaKGWrcXhvIwpzpPzbJ57k=;
+ b=sUSA98iz27X043JJbJSTaOAzawlID+LTSjZT3ezwygBNLQclmV3w9YLR3PDKgnbWGWERz3x0b8wK
+ /w7eqx9oYm4L6yZnSbUMr5L8n3BMRJUnf9tbkE0OH2K++ECXrUpYea9wviZuOxh1skdZc5L3lWL9
+ o8oIl8USa+2hWfD7ZnA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ridad-thsaf.click; 
+ b=MZa4nihNcXEuyS9LbvmW6v0KtE0/c8OnhTS8D996zpV+xl8OH9PMCMPhmTZeTeXHLJZOdgol/bpP
+ 7Nu3UZYeAKODcTG+sjEGMjh8uoKnLjjr6uMvtn08V6XxtJ2HRYwF7fY9DsGf6rbMOmG6t06uUAzv
+ UeyGfz0cRQwf13nQYiM=;
+Received: by mail.ridad-thsaf.click id htq37c0001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Feb 2023 13:47:30 -0500 (envelope-from
- <miraclesheets_team-intel+2Dgvt+2Ddev=lists.freedesktop.org@ring-micsh.click>)
-Date: Thu, 16 Feb 2023 13:47:30 -0500
-From: "MiracleSheets Team" <miraclesheets_team@ring-micsh.click>
+ Thu, 16 Feb 2023 14:29:42 -0500 (envelope-from
+ <adt_help_protect_from_home_invasions-intel+2Dgvt+2Ddev=lists.freedesktop.org@ridad-thsaf.click>)
+Date: Thu, 16 Feb 2023 14:29:42 -0500
+From: "ADT Help Protect From Home Invasions"
+ <adt_help_protect_from_home_invasions@ridad-thsaf.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don't let sweat keep you up at night, try our miracle sheets.
+Subject: Your source for home security
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_508_1214247784.1676573194345"
-Message-ID: <0.0.0.38.1D942371F747016.573304@mail.ring-micsh.click>
+ boundary="----=_Part_448_473201871.1676570569527"
+Message-ID: <0.0.0.32.1D9423D04832864.183325@mail.ridad-thsaf.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,445 +54,277 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_508_1214247784.1676573194345
+------=_Part_448_473201871.1676570569527
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>07021623</title> 
- </head> 
- <body style="background-color:#d5e3ff ;"> 
-  <div style="padding-top: 28px;">
-   &nbsp;
-  </div> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
-   <div style="width: 100%; text-align: center;"> 
-    <header>
-     <a href="http://www.ring-micsh.click/Ed-governments/40e4s2395OC8S611u4b16k11c0r36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQzdKnn6v10Vzl5IywDL"><img alt="" src="http://www.ring-micsh.click/6fb6K2A3r95Lnx7a12YT4b19y11c0q36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQzdKnn5K1Hv05NNwJD/resourcefulness-heretofore" width="100%" /></a>
-    </header> 
-   </div> 
-   <footer style="width: 100%; padding-top: 185px;"> 
-    <address style="background-color: #0D358C; padding: 15px 0px; width: 100%; color: white; font-weight: bold ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> <p style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center;  width: 100%;">&nbsp;If you do not wish to receive future messages click here to <span class="unstyle-auto-detected-links"><a href="http://www.ring-micsh.click/chastiser-aerosolize/6484t2395uxq8612s4bz17g11c0W36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQzdKnn5C1F0V6V1zwDl" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">unsubscribe</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.ring-micsh.click/disaster-congestion/4e04w2395OI86u13OCY4b18z11c0A36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQzdKnn6Xv1BC05Sl0wD" style="text-decoration: underline!important; font-family: sa
- ns-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Miracle Sheets</a>&nbsp;|&nbsp; 1501 Haines St. | Jacksonville, FL 32206</span></p> </address> 
-   </footer> 
-   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" style="padding: 0; vertical-align: top;" valign="top"> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" class="pc-container" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; Margin: 0 auto; max-width: 620px;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="left" style="vertical-align: top; padding: 0 10px;" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td style="vertical-align: top; padding: 0; height: 20px; font-size: 20px; line-height: 20px;" valign="top">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td bgcolor="#1B1B1B" style="vertical-align: top; background-color: #fff; border-radius: 8px; " valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="pc-menu-logo-s2" style="vertical-align: top; padding: 30px 40px 31px;" valign="top"> 
-                   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 130px;" width="130"> 
-                    <tbody> 
-                     <tr> 
-                      <td style="vertical-align: top;" valign="top">&nbsp;</td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                 <tr> 
-                  <td style="vertical-align: top; height: 1px; font-size: 1px; line-height: 1px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;" valign="top">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" class="pc-menu-nav-s1 pc-fb-font" style="vertical-align: top; padding: 18px 40px; text-align: center; line-height: 1.4; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500;" valign="top"><span class="pc-menu-nav-divider" style="padding: 0 23px;">&nbsp;&nbsp;</span> <span class="pc-menu-nav-divider" style="padding: 0 23px;">&nbsp;&nbsp;</span> <span class="pc-menu-nav-divider" style="padding: 0 23px;">&nbsp;&nbsp;</span></td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td style="vertical-align: top; padding: 0; height: 8px; -webkit-text-size-adjust: 100%; font-size: 8px; line-height: 8px;" valign="top">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td bgcolor="#ffffff" class="pc-cta-box-s4" style="vertical-align: top; background-color: #ffffff; border-radius: 8px; " valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="pc-cta-box-in" style="vertical-align: top; padding: 42px 40px 35px;" valign="top"> 
-                   <table border="0" cellpadding="0" cellspacing="0" class="pc-cta-s1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500; line-height: 1.43; color: #40BE65; text-align: center;" valign="top">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td style="vertical-align: top; height: 12px; font-size: 12px; line-height: 12px;" valign="top">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td align="center" class="pc-cta-title pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 900; line-height: 1.28; letter-spacing: -0.6px; color: #151515; text-align: center;" valign="top">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td style="vertical-align: top; height: 70px; line-height: 70px; font-size: 70px;" valign="top">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td align="center" style="vertical-align: top; text-align: center;" valign="top">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td style="vertical-align: top; height: 63px; line-height: 63px; font-size: 63px;" valign="top">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td align="center" class="pc-cta-text pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 1.56; color: #9B9B9B; text-align: center;" valign="top">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td style="vertical-align: top; height: 25px; line-height: 25px; font-size: 25px;" valign="top">&nbsp;</td> 
-                     </tr> 
-                     <tr> 
-                      <td align="center" style="vertical-align: top; padding: 5px 0;" valign="top">&nbsp;</td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td bgcolor="#ffffff" class="pc-products-box-s3" style="vertical-align: top; padding: 30px 20px; background-color: #ffffff; border-radius: 8px; " valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="pc-product-s3" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-size: 0;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td style="vertical-align: top;" valign="top"> 
-                   <div class="pc-product-col" style="display: inline-block; width: 100%; max-width: 280px; vertical-align: top;"> 
-                    <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td style="vertical-align: top; padding: 10px 20px;" valign="top">&nbsp;</td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> 
-                   <div class="pc-product-col" style="display: inline-block; width: 100%; max-width: 280px; vertical-align: top;"> 
-                    <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td style="vertical-align: top; padding: 10px 20px 0;" valign="top"> 
-                        <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500; color: #40BE65;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; padding: 9px 0 0 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 1.42; letter-spacing: -0.4px; color: #151515;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; padding: 7px 0 0 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 300; line-height: 1.5; color: #9B9B9B;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td style="vertical-align: top; padding: 11px 0 0 0; font-size: 0;" valign="top"> 
-                            <div style="display: inline-block; vertical-align: middle;"> 
-                             <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                              <tbody> 
-                               <tr> 
-                                <td style="vertical-align: top; padding: 10px 20px 10px 0;" valign="top"> 
-                                 <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                                  <tbody> 
-                                   <tr> 
-                                    <td align="left" style="vertical-align: top;" valign="top"> 
-                                     <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> 
-                                      <tbody> 
-                                       <tr> 
-                                        <td align="center" bgcolor="#1595E7" style="vertical-align: top; border-radius: 8px; text-align: center; background-color: #1595E7;" valign="top">&nbsp;</td> 
-                                       </tr> 
-                                      </tbody> 
-                                     </table> </td> 
-                                   </tr> 
-                                  </tbody> 
-                                 </table> </td> 
-                               </tr> 
-                              </tbody> 
-                             </table> 
-                            </div> 
-                            <div style="display: inline-block; vertical-align: middle;"> 
-                             <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                              <tbody> 
-                               <tr> 
-                                <td class="pc-fb-font" style="vertical-align: top; padding: 10px 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 500; line-height: 1.17; color: #9B9B9B;" valign="top">&nbsp;</td> 
-                               </tr> 
-                              </tbody> 
-                             </table> 
-                            </div> </td> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td style="vertical-align: top; padding: 0; height: 8px; -webkit-text-size-adjust: 100%; font-size: 8px; line-height: 8px;" valign="top">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td bgcolor="#ffffff" class="pc-products-box-s3" style="vertical-align: top; padding: 30px 20px; background-color: #ffffff; border-radius: 8px;" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="pc-product-s3 pc-m-invert" dir="rtl" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; font-size: 0; direction: rtl;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td style="vertical-align: top;" valign="top"> 
-                   <div class="pc-product-col" dir="ltr" style="display: inline-block; width: 100%; max-width: 280px; vertical-align: top;"> 
-                    <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td style="vertical-align: top; padding: 10px 20px;" valign="top">&nbsp;</td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> 
-                   <div class="pc-product-col" dir="ltr" style="display: inline-block; width: 100%; max-width: 280px; vertical-align: top;"> 
-                    <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td style="vertical-align: top; padding: 10px 20px 0;" valign="top"> 
-                        <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500; color: #40BE65;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; padding: 9px 0 0 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 1.42; letter-spacing: -0.4px; color: #151515;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; padding: 7px 0 0 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 300; line-height: 1.5; color: #9B9B9B;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td style="vertical-align: top; padding: 11px 0 0 0; font-size: 0;" valign="top"> 
-                            <div style="display: inline-block; vertical-align: middle;"> 
-                             <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                              <tbody> 
-                               <tr> 
-                                <td style="vertical-align: top; padding: 10px 20px 10px 0;" valign="top"> 
-                                 <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                                  <tbody> 
-                                   <tr> 
-                                    <td align="left" style="vertical-align: top;" valign="top"> 
-                                     <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;"> 
-                                      <tbody> 
-                                       <tr> 
-                                        <td align="center" bgcolor="#1595E7" style="vertical-align: top; border-radius: 8px; text-align: center; background-color: #1595E7;" valign="top">&nbsp;</td> 
-                                       </tr> 
-                                      </tbody> 
-                                     </table> </td> 
-                                   </tr> 
-                                  </tbody> 
-                                 </table> </td> 
-                               </tr> 
-                              </tbody> 
-                             </table> 
-                            </div> 
-                            <div style="display: inline-block; vertical-align: middle;"> 
-                             <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                              <tbody> 
-                               <tr> 
-                                <td class="pc-fb-font" style="vertical-align: top; padding: 10px 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 500; line-height: 1.17; color: #9B9B9B;" valign="top">&nbsp;</td> 
-                               </tr> 
-                              </tbody> 
-                             </table> 
-                            </div> </td> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td style="vertical-align: top; padding: 0; height: 8px; -webkit-text-size-adjust: 100%; font-size: 8px; line-height: 8px;" valign="top">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td bgcolor="#ffffff" class="pc-cta-box-s2" style="vertical-align: top; padding: 40px; background-color: #ffffff; border-radius: 8px; " valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" class="pc-cta-s1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="pc-cta-title pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 36px; font-weight: 900; line-height: 1.28; letter-spacing: -0.6px; color: #151515; text-align: center;" valign="top">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td style="vertical-align: top; height: 10px; font-size: 10px; line-height: 10px;" valign="top">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" class="pc-cta-text pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 300; line-height: 1.4; color: #1B1B1B; letter-spacing: -0.2px; text-align: center;" valign="top">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td style="vertical-align: top; height: 15px; font-size: 15px; line-height: 15px;" valign="top">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" style="vertical-align: top; padding: 5px 0;" valign="top"> 
-                   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" bgcolor="#1595E7" style="vertical-align: top; border-radius: 8px; text-align: center; background-color: #1595E7;" valign="top">&nbsp;</td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                 <tr> 
-                  <td style="vertical-align: top; height: 15px; font-size: 15px; line-height: 15px;" valign="top">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" class="pc-cta-text pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 300; line-height: 1.56; color: #9B9B9B; text-align: center;" valign="top">&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td style="vertical-align: top; padding: 0; height: 8px; -webkit-text-size-adjust: 100%; font-size: 8px; line-height: 8px;" valign="top">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td bgcolor="#1B1B1B" class="pc-footer-box-s1" style="vertical-align: top; padding: 21px 20px 14px; background-color: #fff; border-radius: 8px;" valign="top"> 
-               <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="pc-footer-row-s1" style="vertical-align: top; font-size: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;" valign="top"> 
-                   <div class="pc-footer-row-col" style="display: inline-block; width: 100%; max-width: 280px; vertical-align: top;"> 
-                    <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td style="vertical-align: top; padding: 20px;" valign="top"> 
-                        <table border="0" cellpadding="0" cellspacing="0" class="pc-footer-text-s1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; line-height: 1.33; letter-spacing: -0.2px; color: #ffffff;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; padding: 11px 0 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.43; letter-spacing: -0.2px; color: #D8D8D8;" valign="top">&nbsp;</td> 
-                          </tr> 
-                         </tbody> 
-                        </table> 
-                        <table border="0" cellpadding="0" cellspacing="0" class="pc-spacing pc-m-footer-h-57" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td style="vertical-align: top; height: 57px; line-height: 57px; font-size: 57px;" valign="top">&nbsp;</td> 
-                          </tr> 
-                         </tbody> 
-                        </table> 
-                        <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td style="vertical-align: top; line-height: 1.3; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 19px;" valign="top">&nbsp;</td> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> 
-                   <div class="pc-footer-row-col" style="display: inline-block; width: 100%; max-width: 280px; vertical-align: top;"> 
-                    <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td style="vertical-align: top; padding: 20px;" valign="top"> 
-                        <table border="0" cellpadding="0" cellspacing="0" class="pc-footer-text-s1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; line-height: 1.33; letter-spacing: -0.2px; color: #ffffff;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; padding: 11px 0 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.43; letter-spacing: -0.2px; color: #D8D8D8;" valign="top">&nbsp;</td> 
-                          </tr> 
-                         </tbody> 
-                        </table> 
-                        <table border="0" cellpadding="0" cellspacing="0" class="pc-spacing pc-m-footer-h-46" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td style="vertical-align: top; height: 46px; line-height: 46px; font-size: 46px;" valign="top">&nbsp;</td> 
-                          </tr> 
-                         </tbody> 
-                        </table> 
-                        <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-                         <tbody> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; line-height: 1.33; letter-spacing: -0.2px;" valign="top">&nbsp;</td> 
-                          </tr> 
-                          <tr> 
-                           <td class="pc-fb-font" style="vertical-align: top; padding: 9px 0 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500; line-height: 1.7;" valign="top">&nbsp;</td> 
-                          </tr> 
-                         </tbody> 
-                        </table> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> </td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td style="vertical-align: top; padding: 0; height: 20px; font-size: 20px; line-height: 20px;" valign="top">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.ring-micsh.click/c9b5K23g95R8BI511E4b1aj11c0y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQzdKnn6Q1wlu05r2wDT/squirreling-informing" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>06021623</title>=20
+ </head>=20
+ <body>=20
+  <div style=3D"max-width: 600px; margin: auto;">=20
+   <p style=3D"padding-top: 50px;">&nbsp;</p>=20
+   <div style=3D"width: 100%;">=20
+    <header style=3D"width: 100%; font-family: 'Segoe UI', Tahoma, Geneva, =
+Verdana, sans-serif; background-image: url(https://secure-your-home.com/hom=
+esecurity/email/v23/images/v23_background.png); background-repeat: no-repea=
+t; height: 600px; background-size: cover; display: inline-block;">=20
+     <p style=3D"font-size: 35px; font-weight: bold; line-height: 35px; wid=
+th: 100%; float: right; margin-right: -50px; margin-top: 50px; ">See more. =
+Hear<br /> more. Know more.</p>=20
+     <p style=3D"font-size: 16px; line-height: 19px; font-weight: 500; widt=
+h: 100%; float: right; margin-right: -50px; margin-top: -25px; ">Google Nes=
+t Cam (battery) can tell<br /> the difference between a person,<br /> vehic=
+le and an animal, so you only<br /> get alerts for things that matter to yo=
+u.</p>=20
+     <p style=3D"font-size: 10px; font-weight: 500; width: 100%; float: rig=
+ht; margin-top: -10px; margin-right: -50px; ">*Google Nest Cam (battery) ca=
+n be installed<br /> indoors or outdoors. Includes battery or<br /> wired o=
+ptions.</p>=20
+     <div style=3D"width: 100%; float: right; margin-right: -50px; margin-t=
+op: 20px;">=20
+      <div style=3D"background-color: #E66650; font-weight: bold; padding: =
+13px 27px; display: inline; font-size: 22px; border-radius: 8px;">
+       <a href=3D"http://www.ridad-thsaf.click/purifier-Olivers/53a6eg23x95J8HJ613yo4b0ezx11bfA36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMdKnm7SqS1p0_6QNwDBz" style=3D"text-decoration: none; color: #fff;"=
+>GET MY FREE QUOTE</a>
+      </div>=20
+     </div>=20
+     <div style=3D"width: 15%; float: right; margin-top: -200px; margin-rig=
+ht: 35px; ">
+      <a href=3D"http://www.ridad-thsaf.click/purifier-Olivers/53a6eg23x95J8HJ613yo4b0ezx11bfA36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMdKnm7SqS1p0_6QNwDBz"><img alt=3D"" src=3D"http://www.ridad-thsaf.click/7734k2395N7yaq12b4bG10N11bfV36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQMdKnm6p1_0VG6hTlAwD/listener-contacted" width=3D"100=
+%" /></a>
+     </div>=20
+     <div style=3D"width: 25%; float: right; margin-top: -100px; margin-rig=
+ht: 15px;">
+      <a href=3D"http://www.ridad-thsaf.click/purifier-Olivers/53a6eg23x95J8HJ613yo4b0ezx11bfA36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMdKnm7SqS1p0_6QNwDBz"><img alt=3D"" src=3D"http://www.ridad-thsaf.click/listener-contacted/c7e6Hg2j395h7iaT11O4b11n11bfH36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQMdKnm7f1mGDD05myOwD" width=3D"100=
+%" /></a>
+     </div>=20
+    </header>=20
+    <section style=3D"width: 100%; display: inline-block;">=20
+     <div style=3D"width: 100%; background-color: #1F99E0 ;">=20
+      <table border=3D"0" style=3D"width: 100%; border-collapse: collapse;"=
+>=20
+       <tbody>=20
+        <tr>=20
+         <td style=3D"text-align: center; padding: 15px;" width=3D"9%"><img=
+ alt=3D"" src=3D"http://www.ridad-thsaf.click/9176qJ2z395IV7aF11b4b12i11bfo36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQMdKnm5OC1U06S@ywDN/downplaying-soaked" style=3D"float: left; margin-top: -61px; marg=
+in-left: 15px;" width=3D"100%" /></td>=20
+         <td style=3D"text-align: left; font-family: 'Segoe UI', Tahoma, Ge=
+neva, Verdana, sans-serif; font-size: 20px; font-weight: 500; color: #fff; =
+padding: 15px;" width=3D"50%">Intelligent. It differenciates<br /> between =
+between a person,<br /> an animal, a vehicle ? or with<br /> the Nest Doorb=
+ell (battery),<br /> even a package!</td>=20
+         <td rowspan=3D"5" width=3D"100%">=20
+          <div style=3D"float: right; margin-top: -50px; margin-left: -50px=
+; width: 100%;">
+           <a href=3D"http://www.ridad-thsaf.click/purifier-Olivers/53a6eg23x95J8HJ613yo4b0ezx11bfA36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMdKnm7SqS1p0_6QNwDBz"><img alt=3D"" src=3D"http://www.ridad-thsaf.click/9535R239X5y7Xa_11t4b13k11bfs36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQMdKnm6w1AU0L6y2jwD0/downplaying-soaked" width=
+=3D"100%" /></a>
+          </div>=20
+          <div style=3D"width: 100%;">=20
+           <div style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, =
+sans-serif; font-weight: bold; background-color: #E66650; display: inline-b=
+lock; padding: 15px 24px; border-radius: 8px;">
+            <a href=3D"http://www.ridad-thsaf.click/purifier-Olivers/53a6eg23x95J8HJ613yo4b0ezx11bfA36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMdKnm7SqS1p0_6QNwDBz" style=3D"text-decoration: none; color: #=
+fff;">GET MY FREE QUOTE</a>
+           </div>=20
+          </div> </td>=20
+        </tr>=20
+        <tr>=20
+         <td style=3D"text-align: center; padding: 15px;" width=3D"9%"><img=
+ alt=3D"" src=3D"http://www.ridad-thsaf.click/9176qJ2z395IV7aF11b4b12i11bfo36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQMdKnm5OC1U06S@ywDN/downplaying-soaked" style=3D"float: left; margin-top: -35px; marg=
+in-left: 15px;" width=3D"100%" /></td>=20
+         <td style=3D"text-align: left; font-family: 'Segoe UI', Tahoma, Ge=
+neva, Verdana, sans-serif; font-size: 20px; font-weight: 500; color: #fff; =
+padding: 15px;" width=3D"50%">With your phone you can check-in from virtual=
+ly anywhere 24/7.</td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+        <tr>=20
+         <td style=3D"text-align: center; padding: 15px;" width=3D"9%"><img=
+ alt=3D"" src=3D"http://www.ridad-thsaf.click/9176qJ2z395IV7aF11b4b12i11bfo36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQMdKnm5OC1U06S@ywDN/downplaying-soaked" style=3D"float: left; margin-top: -47px; marg=
+in-left: 15px;" width=3D"100%" /></td>=20
+         <td style=3D"text-align: left; font-family: 'Segoe UI', Tahoma, Ge=
+neva, Verdana, sans-serif; font-size: 20px; font-weight: 500; color: #fff; =
+padding: 15px;" width=3D"50%">If your Wi-Fi goes down, Nest Cam will automa=
+tically record important events for up to one hour.</td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+        <tr>=20
+         <td style=3D"text-align: center; padding: 15px;" width=3D"9%"><img=
+ alt=3D"" src=3D"http://www.ridad-thsaf.click/9176qJ2z395IV7aF11b4b12i11bfo36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQMdKnm5OC1U06S@ywDN/downplaying-soaked" style=3D"float: left; margin-top: -51px; marg=
+in-left: 15px;" width=3D"100%" /></td>=20
+         <td style=3D"text-align: left; font-family: 'Segoe UI', Tahoma, Ge=
+neva, Verdana, sans-serif; font-size: 20px; font-weight: 500; color: #fff; =
+padding: 15px;" width=3D"50%">If you missed an event you can go back and se=
+e what happened with 30 days of event video history.</td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+        <tr>=20
+         <td style=3D"text-align: center; padding: 15px;" width=3D"9%"><img=
+ alt=3D"" src=3D"http://www.ridad-thsaf.click/9176qJ2z395IV7aF11b4b12i11bfo36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQMdKnm5OC1U06S@ywDN/downplaying-soaked" style=3D"float: left; margin-top: -75px; marg=
+in-left: 15px;" width=3D"100%" /></td>=20
+         <td style=3D"text-align: left; font-family: 'Segoe UI', Tahoma, Ge=
+neva, Verdana, sans-serif; font-size: 20px; font-weight: 500; color: #fff; =
+padding: 15px;" width=3D"50%">Set Activity Zones to define specific areas a=
+nd get notified when something happens there. So you only get alerted about=
+ things that are important to you.</td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+       </tbody>=20
+      </table>=20
+     </div>=20
+    </section> &nbsp;=20
+    <section style=3D"width: 100%;">=20
+     <div style=3D"width: 10%; text-align: center; margin: auto;">
+      <a href=3D"http://www.ridad-thsaf.click/purifier-Olivers/53a6eg23x95J8HJ613yo4b0ezx11bfA36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMdKnm7SqS1p0_6QNwDBz"><img alt=3D"" src=3D"http://www.ridad-thsaf.click/a255Y239F5c7apA12I4b14AK11bfP36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQMdKnm6VXz1j06GOwWDL/Bulgarian-relaxation" width=3D"100=
+%" /></a>
+     </div>=20
+     <p style=3D"width: 100%; text-align: center;font-family: 'Segoe UI', T=
+ahoma, Geneva, Verdana, sans-serif; font-size: 12px;">1501 Yamato Rd, Boca =
+Raton, FL 33431 &copy;2022 ADT LLC</p>=20
+    </section>=20
+    <hr style=3D"width: 90%; margin: auto;" />&nbsp;=20
+    <p style=3D"width: 100%;  text-align: justify ; font-size: 10px;">*Fina=
+ncing: Requires retail installment agreement. Financing available for equip=
+ment and installation costs only. Financing available for well-qualified bo=
+rrowers at 0% Annual Percentage Rate for a minimum of $599 up to a max limi=
+t of $5,000 for each approved application. First payment due upon equipment=
+ installation and subsequent payments in equal monthly installments for the=
+ term selected (excluding any applicable fines and service charge increases=
+). 12, 24, 36, &amp; 60-month terms available. Longer terms require additio=
+nal credit qualifications. Full remaining balance for equipment and install=
+ation due immediately upon termination of the related ADT services for ADT-=
+provided financing. Late Charge ? ADT may impose a one-time charge on each =
+payment that is more than ten (10) days past due, up to the maximum amount =
+permitted by law, but in no event will this amount exceed $5.00. Prepayment=
+ ? if prepayments are made, there is no penalty or refund. Financing is not=
+ available in all geographic regions and Puerto Rico. Google, Nest Doorbell=
+ and Google Home are trademarks of Google LLC.</p> &nbsp;=20
+    <p style=3D"width: 100%;  text-align: justify ; font-size: 10px;">Gener=
+al: Additional charges may apply in areas that require guard response servi=
+ce for municipal alarm verification. System remains property of ADT. Local =
+permit fees may be required. Prices and offers subject to change and may va=
+ry by market. Additional taxes and fees may apply. Satisfactory credit requ=
+ired. A security deposit may be required. Simulated screen images and photo=
+s are for illustrative purposes only.</p> &nbsp;=20
+    <p style=3D"width: 100%;  text-align: justify ; font-size: 10px;">Inter=
+active Services: ADT Command Interactive Solutions Services (&laquo;ADT Com=
+mand&raquo;) helps you manage your home environment and family lifestyle. R=
+equires purchase of an ADT alarm system with 36 month monitoring contract r=
+anging from $45.99-$59.99/ mo with QSP (24-month monitoring contract in Cal=
+ifornia, total fees ranging $1,103.76-$1,439.76), enrollment in ADT Easy Pa=
+y, and a compatible device with Internet and email access. These interactiv=
+e services do not cover the operation or maintenance of any household equip=
+ment/systems that are connected to the ADT Command equipment. All ADT Comma=
+nd services are not available with all interactive service levels. All ADT =
+Command services may not be available in all geographic areas. You may be r=
+equired to pay additional charges to purchase equipment required to utilize=
+ the interactive service features you desire.</p> &nbsp;=20
+    <p style=3D"width: 100%;  text-align: justify ; font-size: 10px;">&copy=
+;2022 ADT LLC. All rights reserved. ADT, the ADT logo, 800.ADT.ASAP and the=
+ product/service names listed in this document are marks and/or registered =
+marks. Unauthorized use is strictly prohibited. Third-party marks are the p=
+roperty of their respective owners. License information available at www.AD=
+T.com/legal or by calling 800.ADT.ASAP. CAACO7155, 974443, PPO120288; MA 17=
+2C; NC Licensed by the Alarm Systems Licensing Board of the State of North =
+Carolina; 2736-CSA, 2397-CSA, 2381-CSA; NY 12000305615; PA 090797; MS 15019=
+511.</p> &nbsp;=20
+    <p style=3D"width: 100%;  text-align: justify ; font-size: 10px;">Do yo=
+u want to stop getting these emails? You can <a href=3D"http://www.ridad-thsaf.click/glorify-repetitious/5d06V23Tg95s86Vr13U4b0yfNT11bfU36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQMdKnm7z10jmLL6mTPqwD" style=
+=3D"color:#303538;font-weight: 800;text-decoration: underline;" target=3D"_=
+blank">unsubscribe here</a></p>=20
+   </div>=20
+   <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ class=3D"background" style=3D"border-collapse: collapse; border-spacing: 0=
+; margin: 0; padding: 0; width: 100%;" width=3D"100%">=20
+    <tbody>=20
+     <tr>=20
+      <td align=3D"center" bgcolor=3D"#fff" style=3D"border-collapse: colla=
+pse; border-spacing: 0; margin: 0; padding: 0;" valign=3D"top">=20
+       <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"wrapper" style=3D"border-collapse: collapse; border-spacing=
+: 0; padding: 0; width: inherit;
+=09max-width: 500px;" width=3D"500">=20
+        <tbody>=20
+         <tr>=20
+          <td align=3D"center" style=3D"border-collapse: collapse; border-s=
+pacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%=
+; width: 87.5%;
+=09=09=09padding-top: 20px;
+=09=09=09padding-bottom: 20px;" valign=3D"top">&nbsp;</td>=20
+         </tr>=20
+         <tr>=20
+          <td align=3D"center" class=3D"hero" style=3D"border-collapse: col=
+lapse; border-spacing: 0; margin: 0; padding: 0;
+=09=09=09padding-top: 0px;" valign=3D"top">&nbsp;</td>=20
+         </tr>=20
+         <tr>=20
+          <td align=3D"center" class=3D"supheader" style=3D"border-collapse=
+: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; =
+padding-right: 6.25%; width: 87.5%; font-size: 14px; font-weight: 400; line=
+-height: 150%; letter-spacing: 2px;
+=09=09=09padding-top: 27px;
+=09=09=09padding-bottom: 0;
+=09=09=09color: #FFFFFF;
+=09=09=09font-family: sans-serif;" valign=3D"top">&nbsp;</td>=20
+         </tr>=20
+         <tr>=20
+          <td align=3D"center" class=3D"header" style=3D"border-collapse: c=
+ollapse; border-spacing: 0; margin: 0; padding: 0;  padding-left: 6.25%; pa=
+dding-right: 6.25%; width: 87.5%; font-size: 24px; font-weight: bold; line-=
+height: 130%;
+=09=09=09padding-top: 5px;
+=09=09=09color: #FFFFFF;
+=09=09=09font-family: sans-serif;" valign=3D"top">&nbsp;</td>=20
+         </tr>=20
+         <tr>=20
+          <td align=3D"center" class=3D"paragraph" style=3D"border-collapse=
+: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; =
+padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line=
+-height: 160%;
+=09=09=09padding-top: 15px;=20
+=09=09=09color: #FFFFFF;
+=09=09=09font-family: sans-serif;" valign=3D"top">&nbsp;</td>=20
+         </tr>=20
+         <tr>=20
+          <td align=3D"center" class=3D"button" style=3D"border-collapse: c=
+ollapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; pad=
+ding-right: 6.25%; width: 87.5%;
+=09=09=09padding-top: 25px;
+=09=09=09padding-bottom: 5px;" valign=3D"top">&nbsp;</td>=20
+         </tr>=20
+         <tr>=20
+          <td align=3D"center" class=3D"line" style=3D"border-collapse: col=
+lapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; paddi=
+ng-right: 6.25%; width: 87.5%;
+=09=09=09padding-top: 30px;" valign=3D"top">=20
+           <hr align=3D"center" color=3D"#565F73" noshade=3D"noshade" size=
+=3D"1" style=3D"margin: 0; padding: 0;" width=3D"100%" /></td>=20
+         </tr>=20
+         <tr>=20
+          <td align=3D"center" class=3D"footer" style=3D"border-collapse: c=
+ollapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; pad=
+ding-right: 6.25%; width: 87.5%; font-size: 13px; font-weight: 400; line-he=
+ight: 150%;
+=09=09=09padding-top: 10px;
+=09=09=09padding-bottom: 20px;
+=09=09=09color: #828999;
+=09=09=09font-family: sans-serif;" valign=3D"top">&nbsp;</td>=20
+         </tr>=20
+        </tbody>=20
+       </table> </td>=20
+     </tr>=20
+    </tbody>=20
+   </table>=20
+  </div>  =20
+ <img src=3D"http://www.ridad-thsaf.click/5395f23O95zO8g513L4b15rKF11bfm36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQMdKnm7vzI1os06HAzNwD/glorify-repetitious" alt=3D""/></body>
 </html>
 
-------=_Part_508_1214247784.1676573194345--
+------=_Part_448_473201871.1676570569527--
 
