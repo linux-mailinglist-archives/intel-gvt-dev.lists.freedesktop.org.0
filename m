@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17C466988CC
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 00:37:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 53D3F698893
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Feb 2023 00:06:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DAF1C10E17B;
-	Wed, 15 Feb 2023 23:37:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 135AE10EC93;
+	Wed, 15 Feb 2023 23:06:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Wed, 15 Feb 2023 23:36:58 UTC
-Received: from mail.miss-upoffer.click (unknown [104.206.109.251])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4B9F710E124
+ Wed, 15 Feb 2023 23:06:30 UTC
+Received: from mail.meet-walfa.click (unknown [104.206.109.245])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DE10410EC9A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Feb 2023 23:36:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=miss-upoffer.click; 
+ Wed, 15 Feb 2023 23:06:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=meet-walfa.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups-customer-input@miss-upoffer.click; 
- bh=YeeZbyv51ATWs1TtarXYnOxkx4Q=;
- b=ewq8lBGoiM08tcLn0Hef4ofPw35wanvlUXQmLDEdTaqj1WX2kFPOIYppsvXGS5ZKAcGQOLVt1lEp
- YpsMw/rzh+Op08WbA9jOOPPJeKZennfZOH4yIq1CwdO4bQIGw77hBD0UIU2YLtJ/NJvfSH2JZBzg
- 2diymQv/PuEp/TO9pmw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=miss-upoffer.click; 
- b=CxSr9h3SLobIrIipMduC/DI/ummElR/cdlsNO/pa3arg5SKZOaW6rcL7OHCh+ikd89ibtIKrwRZc
- XbCMy/8uR9Imfm3fnCbYdni3eeGVn3tpeK3HApvzGVBAZLil568+ficU/Q8esLfGtw+SWEU7Hk0p
- QM2YTDsPgeXKEuqpMKo=;
-Received: by mail.miss-upoffer.click id htlm9k0001g3 for
+ i=walmart_gift_card_chance@meet-walfa.click; 
+ bh=V1pdE8h0xFM/7ZZ9YvMsQ0KfkYI=;
+ b=NJN5lKFTfTXibi2fL7/hM1nU7AiCxPBXzIx2AAgivYMz8ntesJqu2Sz9sxT4QzObHe6Q29FXGKQY
+ mz5UoHpd0jhS44FMCGsZ5GB/o5Cu5Oz9iuravAMfoEjnsS/ERYENtn3pBpfVjbyg/7OYZi5bjkiX
+ AR8ImdM/QGrY6GVh3Tc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=meet-walfa.click;
+ b=RWhHlPRqZtTzxy6+eFTk77JmKgG92wiAx0hHzDRSAUuK0C/7eBnup8jFTQrdAkWWhZ25EP9Dq3s+
+ qnKNDBrtnxtFVPXkbSqsqXtQZCDOS/28F6noU7iH82I9TbGPjMWkOzsh/KkqJIxw8gHycOPJVS4m
+ KuQXTAuvViTgOLBX5aY=;
+Received: by mail.meet-walfa.click id htlsrk0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Feb 2023 18:25:38 -0500 (envelope-from
- <ups-customer-input-intel+2Dgvt+2Ddev=lists.freedesktop.org@miss-upoffer.click>)
-Date: Wed, 15 Feb 2023 18:25:38 -0500
-From: "UPS Customer Input" <ups-customer-input@miss-upoffer.click>
+ Wed, 15 Feb 2023 19:23:51 -0500 (envelope-from
+ <walmart_gift_card_chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@meet-walfa.click>)
+Date: Wed, 15 Feb 2023 19:23:51 -0500
+From: "Walmart Gift Card Chance" <walmart_gift_card_chance@meet-walfa.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Now on ups
+Subject: Seize your singular Irobot vacuum cleaner from Walmart at zero cost
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_91_1762043633.1676503515667"
-Message-ID: <0.0.0.A.1D94194CFF806D0.4A0302@mail.miss-upoffer.click>
+ boundary="----=_Part_646_1126733712.1676501829576"
+Message-ID: <0.0.0.48.1D9419CF1CAB4EE.455F52@mail.meet-walfa.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_91_1762043633.1676503515667
+------=_Part_646_1126733712.1676501829576
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,71 +63,64 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>10021523</title> 
+  <title>09021423</title> 
  </head> 
- <body style="padding: 0; margin: 0; background-color: #eeeeee;"> 
+ <body style="padding: 0; margin: 0;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <div style="background-color: #fff;"> 
-    <h1 id="Startick_shio" style="font-size: 13px; line-height: 25px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-decoration: none;">&nbsp;</h1> 
-    <p class="Pparra" style=" font-size: 14px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold; line-height: 15px; text-align: center; margin: auto;">&nbsp;</p> 
-    <p class="Pparra" style=" font-size: 14px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold; line-height: 15px; text-align: center; margin: auto;">&nbsp;</p> 
-    <header id="inf.top" style="width: 100%; "> 
-     <h4 style="font-family: Arial, Helvetica, sans-serif; font-size: 33px; font-weight: bold; text-align: center; float: none; position: relative; top: 25px; z-index: 100;">UPS</h4> 
-    </header> 
-    <section class="Img_icarry" style="width: 100%;"> 
-     <h4>&nbsp;</h4> 
-     <p>&nbsp;</p> 
-     <a href="http://www.miss-upoffer.click/Clifford-capital/8466B239VC5l8rG612a4taf0Q11b9r36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQVdKmd6o_Wu106fWwM2D"><img alt="" src="http://www.miss-upoffer.click/1d35C_2395cBX7a13e4afYQ2H11b9S36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQVdKmd5Dt10N5zqwkD/Clifford-capital" width="100%" /></a>
-    </section> 
-    <aside> 
-     <h5>&nbsp;</h5> 
-     <p style="font-size: 22px; padding: 0px 30px; font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 30px;text-align: center;">Don't miss out! Just a few clicks away from a chance to win a $100 UPS Card by completing our quick 20-second survey about your recent experience with us.</p> 
-    </aside> 
-    <section id="btncrack_inf" style="width: 100%; text-align: center;"> 
-     <div style="background-color: darkslategray; padding: 15px 31px; font-size: 18px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; display: inline-block; border-radius: 8px; box-shadow: inset 0px 0px 6px 1px rgb(98, 105, 105);">
-      <a href="http://www.miss-upoffer.click/Clifford-capital/8466B239VC5l8rG612a4taf0Q11b9r36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQVdKmd6o_Wu106fWwM2D" style="text-decoration: none; color: #fff;">Go And Start Now</a>
-     </div> 
-    </section> 
-    <br /> &nbsp;
+   <aside id="nome_imfo" style="text-align: center; color: #000; line-height: 8px; font-weight: normal;"> 
+    <p class="12s.3" style="font-size: 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center;;">&nbsp;</p> 
+   </aside> 
+   <h5>&nbsp;</h5> 
+   <p class="epic_game1" style="font-size: larger; line-height: 0%; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; color: antiquewhite;">&nbsp;</p> 
+   <p id="epic_showes1" style="font-size: x-large; text-decoration: none; line-height: 15px; margin: 0; padding: 0;">&nbsp;</p> 
+   <p class="epic_game1" style="font-size: larger; line-height: 0%; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; color: antiquewhite;">&nbsp;</p> 
+   <p id="epic_showes1" style="font-size: larger; line-height: 0%; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; color: antiquewhite;">&nbsp;</p> 
+   <p class="epic_game1" style="font-size: larger; line-height: 0%; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: center; color: antiquewhite;">&nbsp;</p> 
+   <p id="epic_showes1" style="font-size: x-large; text-decoration: none; line-height: 15px; margin: 0; padding: 0;">&nbsp;</p> 
+   <p class="epic_game1" style="font-size: x-large; text-decoration: none; line-height: 15px; margin: 0; padding: 0;">&nbsp;</p> 
+   <p id="epic_showes1">&nbsp;</p> 
+   <p class="epic_game1">&nbsp;</p> 
+   <p id="epic_showes1" style="font-size: x-large; text-decoration: none; line-height: 15px; margin: 0; padding: 0;">&nbsp;</p> 
+   <header style="width: 100%; text-align: center;"> 
+    <div style="background-color: #0171DD; color: #FFF; font-weight: 900; text-align: center; width: 90%; padding: 20px 30px; position: relative; font-size: 28px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; border-radius: 8px;">
+     WALMART
+    </div> 
+    <a href="http://www.meet-walfa.click/15b6r2I39O5QY8Z612Qn4ae9L11b8G36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQLdKm97lLBU1B05bBwlD/tranquility-deans"><img alt="" src="http://www.meet-walfa.click/consultations-ferocity/9726v2s39I5Yo7ah11i4aebp11b8S36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQLdKm95oL10T5S3wDO" style="position: relative; margin-top: -10px;" width="100%" /></a>
+   </header> 
+   <div style="padding-top: 90px;">
+    &nbsp;
    </div> 
-  </div> 
-  <h6 id="contruye_ic" style="padding-top: 250px; width: 100%;">&nbsp;</h6> 
-  <h5 style="width: 100%; text-align: center; background-color:#F5AB6C ; padding: 10px 0px;outline: solid 3px #3C4121;">&nbsp;</h5> 
-  <p class="Pparra" style="text-align: center; margin: auto; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; padding-bottom: 0px; line-height: normal; font-weight: 800;">&nbsp;</p> 
-  <p>&nbsp;</p> 
-  <div>
-   &nbsp;
-  </div> 
-  <footer style="font-size: 12px; font-family: Arial, Helvetica, sans-serif;"> 
-   <address> <p><small><span style="text-decoration: none; ">No longer wish to receive notifications?,</span><a href="http://www.miss-upoffer.click/Clifford-capital/8be5Q2v395N8vF612R4afR1H11b9w36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVdKmd7lhVV1X06zWNwDU" style="text-decoration-line: none; color: hsl(0, 0%, 100%)"> <span>Visit Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style></style><style face="uniting"></style><style></style><font face="body"></font><style></style><small></small><small></small><span dir="spitefully"></span><big><big></big></big><big></big> </small></p> </address> 
-  </footer> 
-  <table id="tablet_por1" style="text-align: center; font-family: 'Courier New', Courier, monospace; line-height: 5px;;"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <table class="shopt_i" style="border-collapse: collapse;"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.miss-upoffer.click/e215s239B5nPG8511n4af3R11b9X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVdKmd5CXQ106WlwTDz/soared-recurrences" alt=""/></body>
+   <div style="width: 100%; display: inline-block; "> 
+    <div style=" width: 30%; border: solid 0px; float: left; position: relative; margin-top: 8px;">
+     <a href="http://www.meet-walfa.click/15b6r2I39O5QY8Z612Qn4ae9L11b8G36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQLdKm97lLBU1B05bBwlD/tranquility-deans"><img alt="" src="http://www.meet-walfa.click/e3f6Qx23C95E7Bva11C4aecO11b8h36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQLdKm96F1RAD06gyywyD/sights-nonextensible" width="100%" /></a>
+    </div> 
+    <div style="width: 69%; border: solid 0px; float:left;"> 
+     <p style="font-size: 22px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 23px; font-weight: bold; ">We are giving away the iRobot<br /> Roomba i1+ Wi-Fi Connected Self-<br /> Emptying Robot Vacuum, Ideal for<br /> Pet Hair, Carpets and more.</p> 
+    </div> 
+    <div style="width: 69.5%; border: solid 0px; float: right; position: relative; margin-top: -35px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; font-weight: 500;"> 
+     <p>We would like to offer you a unique opportunity to receive a<br /> brand new DeWalt Drill Set! To claim, simply take this short<br /> survey about your experience with Walmart.</p> 
+    </div> 
+    <div style="float: right; width: 70%; position:relative; right: 10px; top: 15px;">
+     <a href="http://www.meet-walfa.click/15b6r2I39O5QY8Z612Qn4ae9L11b8G36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQLdKm97lLBU1B05bBwlD/tranquility-deans"><img alt="" src="http://www.meet-walfa.click/chiropractor-skullcap/51c4f2395UT7ar13h4aeqsdG11b8m36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQLdKm95fA10D6tOwNDq" width="100%" /></a>
+    </div> 
+    <div style="float: right; width: 70%; position: relative; right: 10px; top: 10px;">
+     <a href="http://www.meet-walfa.click/15b6r2I39O5QY8Z612Qn4ae9L11b8G36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQLdKm97lLBU1B05bBwlD/tranquility-deans"><img alt="" src="http://www.meet-walfa.click/6fb6rgt2395kp7au11C4aeeP11b8m36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQLdKm95q1j0r6GMNBwD/barbecues-banished" width="100%" /></a>
+    </div> 
+    <div style="float: right; width: 70%; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; font-weight: bold; position: relative; right: 10px; top: 20px;"> 
+     <p>Get This Free Gift - Or Choose From <strong style="color: #ff0000;">5 Other Offers!</strong> *Just Paying a small S&amp;H fee.</p> 
+    </div> 
+   </div> 
+   <p style="padding-top: 250px;">&nbsp;</p> 
+   <footer style="text-align: center; font-size: 12; color: #000000; width: 100%;"> 
+    <address style="width: 100%;"> 
+     <div style="background-color: #a6d0f7 ; padding: 1px; color: #000000; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; width: 100%;"> 
+      <p><small><span style="text-decoration: none; ">No longer want to receive email communication from us?,</span><a href="http://www.meet-walfa.click/tranquility-deans/4685K239I5HD8Z613YVi4aeaA11b8r36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQLdKm97S_X1W0I6wJwqDp" style="text-decoration-line: none; color: rgb(255, 255, 255)"> <span>Start Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small><font></small><span lang="bootable"><big></span></big><font face="subset"></font></font> </small></p> 
+     </div> </address> 
+   </footer> 
+   <p style="padding-top: 30px;">&nbsp;</p> 
+  </div>   
+ <img src="http://www.meet-walfa.click/1f16U2J3t95u8BN513mM4aefIL11b8r36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQLdKm97Mr10rUz6uLJ2wD/tranquility-deans" alt=""/></body>
 </html>
 
-------=_Part_91_1762043633.1676503515667--
+------=_Part_646_1126733712.1676501829576--
 
