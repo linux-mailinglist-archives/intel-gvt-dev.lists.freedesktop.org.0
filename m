@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A846869B2DB
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Feb 2023 20:10:04 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B90A69B36A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Feb 2023 20:55:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6AC9E10E3F5;
-	Fri, 17 Feb 2023 19:10:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 33EBE10E456;
+	Fri, 17 Feb 2023 19:55:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 17 Feb 2023 19:10:01 UTC
-Received: from mail.bless-walrt.click (unknown [104.206.109.212])
- by gabe.freedesktop.org (Postfix) with ESMTP id C5D1210E3F5
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 17 Feb 2023 19:55:43 UTC
+Received: from mail.break-sout.click (unknown [104.206.109.207])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DC42D10E452
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Feb 2023 19:10:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bless-walrt.click;
+ Fri, 17 Feb 2023 19:55:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=break-sout.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=walmart.time@bless-walrt.click; 
- bh=JhDP3W7HGKEwiB0oFUICJ49YURU=;
- b=MbbzqpGUXt7EiVo7iv0miacyod61D2MwF9CD+6qJhtz0lrUd5FkQ/YLS5J4AoBF5fZpnPd/PCdyH
- c8CmsWBYGvG9UqXp3X7HtQKHM0F/rFvJa5/5+4TnSdOnoCoSysthiDVDAK/rcBga+c2pjCOFoPUX
- kQkCAUrwddWujfbJ1cY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bless-walrt.click; 
- b=R7LpCIpko96QFEb4Ej8FKTTs39TiDYz+NiF7gJ56OyHhjSDFXUg2bbYdyAPh4DTWb59TNY8DK7BD
- Lvp5W4fGGxwXbvUbenBGsi8hRTaK/oThV+T0P1y7R1SI1fsmC5iyMPTEC15FOWQaVqxwTo9S826m
- yrQSP16wlegpGdoRS7Q=;
-Received: by mail.bless-walrt.click id htv8gi0001g8 for
+ i=jocelyn_holdorf@break-sout.click; 
+ bh=CjpYbo2ufpxEVv3zCL8OM8DLGRo=;
+ b=nNNdaFXgyjOG2yjP+vPG7gS/YOini9Y5isJZp3ihfm2DshLjLga2P2Ig+92xeOEAB7ZMpS6/B3xL
+ CvUjpp0q0FyTIKQNAzcjCVLyw+B9Hgl90PAYgtkDnI5TU3m38mZxi57nzLDFemJYsmzEjskqHYP7
+ v8b96vWHsa6SYCXAt5E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=break-sout.click;
+ b=XSBpP87AD/qaCCiWOf0XX8hr8FaWQsp69eFKkYjefvPu/RoD6GTmm6GeyJJV36F3tIsOC4nhurgN
+ pm3Znqhp6OtCgmhAXqUjG97KIRVaiF+ikgrDFCz0NEb2kEol9MGd71uZrt6KTgyjL8Lz7fJxdULp
+ MQcM7C8BAiJNjakUeUA=;
+Received: by mail.break-sout.click id htvdru0001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Feb 2023 13:59:34 -0500 (envelope-from
- <walmart.time-intel+2Dgvt+2Ddev=lists.freedesktop.org@bless-walrt.click>)
-Date: Fri, 17 Feb 2023 13:59:34 -0500
-From: "Walmart Time" <walmart.time@bless-walrt.click>
+ Fri, 17 Feb 2023 14:45:52 -0500 (envelope-from
+ <jocelyn_holdorf-intel+2Dgvt+2Ddev=lists.freedesktop.org@break-sout.click>)
+Date: Fri, 17 Feb 2023 14:45:52 -0500
+From: Jocelyn Holdorf <jocelyn_holdorf@break-sout.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Walmart reward is just a few clicks away - While supplies last
+Subject: Identification #
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_652_1081995816.1676660365412"
-Message-ID: <0.0.0.48.1D94301F94BFF0A.4718D5@mail.bless-walrt.click>
+ boundary="----=_Part_652_300666100.1676663137619"
+Message-ID: <0.0.0.48.1D94308713EBAEC.218F0D@mail.break-sout.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_652_1081995816.1676660365412
+------=_Part_652_300666100.1676663137619
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,69 +63,83 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>07021723</title> 
+  <title>08021723</title> 
  </head> 
- <body style="background-color: #daf5ff;"> 
-  <div class="container"> 
-   <table border-spacing="0" cellpadding="0" cellspacing="0" id="sig" width="320"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <div style="max-width: 600px; margin: auto; background-color: #fff; border-radius: 8px;"> 
-    <div style="padding-top: 50px; background-color: #daf5ff ;">
-     &nbsp;
-    </div> 
-    <section style="width: 100%; text-align: center ;">
-     &nbsp; 
-     <p style="display: inline; width: 100%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 24px; line-height: 30px;;">You are just a few clicks away<br /> to get The $100 <b style="color: #029BDB;">Walmart</b> Reward Card.</p> 
-    </section> &nbsp; 
-    <div style="width: 95%; margin: auto;">
-     <a href="http://www.bless-walrt.click/a614B2395m8tA611H4b48M11caM36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQcdKon5U10iG6AzPwDM/licks-agglomerate"><img alt="" src="http://www.bless-walrt.click/2c34F2395E7Cua11W4b4aF11caT36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQcdKon6dG1yP05jMkwD/belts-Cadillacs" style="outline: double 3px #029BD9;" width="100%" /></a>
-    </div> 
-    <article style="width: 100%; text-align: center;"> 
-     <p style=" font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 22px; line-height: 30px; padding: 0px 30px 25px">Simply complete our 20-Second Service Survey about how your experience has been with us lately</p> 
-    </article> 
-    <section style="max-height: 600px; margin: auto; text-align: center;">
-     &nbsp; 
-     <div> 
-      <div class="link_on" style="font-size: 20px; font-family: Arial, Helvetica, sans-serif; background-color: #029BDB; border-radius: 30px; padding: 14px 24px; font-weight: 900; display: inline; text-shadow: 0px 0px 3px;">
-       <a href="http://www.bless-walrt.click/a614B2395m8tA611H4b48M11caM36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQcdKon5U10iG6AzPwDM/licks-agglomerate" style="text-decoration: none; color: #FFF;">Get Yours Fast</a>
-      </div> 
-     </div> 
-     <br /> 
-     <br /> &nbsp;
-    </section> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> &nbsp; 
-    <div style=" font-size: 10px; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
-     <address style="background-color: aliceblue; padding: 15px 0px; color: black; font-weight: bold;"> <p class="unsubscribe"><span style="text-decoration: none; ">To cut off messages,</span><a href="http://www.bless-walrt.click/3956krD2395mG86V11s4b49k11caw36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQcdKon6AT1D0T6A@OJwD/livelihood-reappeared" style="text-decoration-line: none;"> <span>Go-On-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span title="whooping"></span><span dir="quote"><font lang="commentary"></span></font><font><span></span></font><small></small><font class="unfettered"></font><span color="lingered"></span></p> </address> 
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.bless-walrt.click/1d36n_239M5u85gT13j4b4brkX11caQ36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQcdKon5m1q0A6N@UwAD/belts-Cadillacs" alt=""/></body>
+ <body style="background-color:hsl(221, 39%, 90%)">
+  &nbsp; 
+  <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
+   <tbody> 
+    <tr> 
+     <td align="center" style="padding:0;"> 
+      <table role="presentation" style="width:602px;border-collapse:collapse;border:0px solid #cccccc;border-spacing:0;text-align:left;"> 
+       <tbody> 
+        <tr> 
+         <td align="center" style="padding:0px 0 0px 0;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td style="padding:0px 0px 0px 00px;"> 
+          <div style="width: 100%;"> 
+           <div style="max-width: 600px; margin: auto; background-color: #F6F8FA; box-shadow: 0px 0px 5px 1px;">
+            &nbsp; 
+            <header style="width: 100%;"> 
+             <div style="width: 82%; margin: auto;">
+              <a href="http://www.break-sout.click/Altos-bane/7745M23P95pK86K11C4b50x11cbV36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQWdKoo5Cy1w06z0UwOD"><img alt="" src="http://www.break-sout.click/purchase-indivisibility/a266W239xg5qjZ7a13J4Db4UdF11cbP36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQWdKoo7aOMAI106FBjw@D" width="100%" /></a>
+             </div> 
+            </header> &nbsp; 
+            <section style="width: 100%;"> 
+             <div style="width: 85%; margin: auto;">
+              <a href="http://www.break-sout.click/Altos-bane/7745M23P95pK86K11C4b50x11cbV36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQWdKoo5Cy1w06z0UwOD"><img alt="" src="http://www.break-sout.click/da95U2M395IKD7a13r4bW4yek11cbr36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQWdKoo7BgR1w0q6zlwzTD/foregoing-convertibility" width="100%" /></a>
+             </div> 
+            </section> 
+            <div style="width: 100%; text-align: center;"> 
+             <p style="text-align: center; font-size: 22px; line-height: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 10px 35px; font-weight: 500; text-align: center;">Don't miss out! Just a few clicks away from a chance to win a $100 <b style="color: #21529E;">Southwest</b> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+            </div> 
+            <div style="width: 100%; text-align: center ;"> 
+             <h2 style="width: 100%; font-size: 18px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; font-weight: bold; display: block;">&nbsp;</h2> 
+             <div style="background-color: #21529E; padding: 15px 30px; display: inline-block ;">
+              <a href="http://www.break-sout.click/Altos-bane/7745M23P95pK86K11C4b50x11cbV36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQWdKoo5Cy1w06z0UwOD" style="text-decoration: none; color: #fff;">Go And Start Now</a>
+             </div> 
+            </div> 
+            <br /> 
+            <br /> 
+            <br /> 
+            <br /> 
+            <br /> &nbsp; 
+            <footer style="width: 94%; background-color: #437dd3; text-align: center; font-size: 12px; padding: 15px; margin: auto; outline: double 3px #000;"> 
+             <address> <p><small><span style="text-decoration: none; ">To bring communications to an end,</span><a href="http://www.break-sout.click/5cf4D2395v86FS13Hv4b4cXH11cbF36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQWdKoo6S1ByR05MBwDJ/assessed-capping" style="text-decoration-line: none; color: white"> <span>Visit.Over.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small></small><font style="valiant"></font><span class="beadles"><span></span><style title="deserts"></span></style><font face="bragger"></font><span><span dir="laborings"><style size="constellation"></style></span></span> </small></p> </address> 
+            </footer> 
+           </div> 
+          </div> 
+          <div style="display: inline-block;">
+           &nbsp;
+          </div> 
+          <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
+           <tbody> 
+            <tr> 
+             <td style="padding:0 0 36px 0;color:#153643;"> <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">&nbsp;</h1> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
+            </tr> 
+            <tr> 
+             <td style="padding:0;"> 
+              <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
+               <tbody> 
+                <tr> 
+                 <td style="width:260px;padding:0;;color:#153643;"> <p style=";font-size:px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
+                 <td style="width:20px;padding:0;font-size:0;line-height:0;">&nbsp;</td> 
+                 <td style="width:260px;padding:0;vertical-align:top;color:#153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.break-sout.click/8db5K23W95CJ8Y511f4b4fn11cbh36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQWdKoo6A1p_x06zPWpwD/purchase-indivisibility" alt=""/></body>
 </html>
 
-------=_Part_652_1081995816.1676660365412--
+------=_Part_652_300666100.1676663137619--
 
