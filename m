@@ -1,43 +1,112 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2512469AFC2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Feb 2023 16:49:13 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2272A69B006
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Feb 2023 16:59:23 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EAD6010F044;
-	Fri, 17 Feb 2023 15:49:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DEFE610E1CB;
+	Fri, 17 Feb 2023 15:59:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 17 Feb 2023 15:49:10 UTC
-Received: from mail.ask-acfa.click (unknown [104.206.109.240])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6124310F044
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Feb 2023 15:49:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ask-acfa.click; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace.tools.satisfaction@ask-acfa.click; 
- bh=tZRP7Y+0RpeOiT3fYWW5cE/7cC8=;
- b=YLtHZWfhWFFkKw/q02Q3FN1YZypxADVDGYlec+wS6K+CoUSbc2pcuu8U46yJWUUdyVZ8H2MCnHq/
- jwDTapDG6s/25oeSkePIbiRrlsvg88q10cXkHFI2yRk7g25ezBf+rJhcafjsqHIl6UYB2X98POam
- v/LE8lnckMj5C3wTO1c=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ask-acfa.click;
- b=dgBvzhoFq2s3+Ug5/Jl2ZHIfMZNEOxurLYqhRbo+/DV4MSZUSqAam5QbwTtIRUlBlY9dg+cr7lKV
- XKghlAj+17Nw2FUREoqExu4b/aQAPrRXyBBJ6CKTKaDK1w/5V6/q38q5KfA7dIKBelCdf/p+vK73
- 2J0wnprItOZO4jNqX2A=;
-Received: by mail.ask-acfa.click id htugvc0001g0 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Feb 2023 10:35:25 -0500 (envelope-from
- <ace.tools.satisfaction-intel+2Dgvt+2Ddev=lists.freedesktop.org@ask-acfa.click>)
-Date: Fri, 17 Feb 2023 10:35:25 -0500
-From: "ACE Tools Satisfaction" <ace.tools.satisfaction@ask-acfa.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Free DeWalt Drill Set from Lowe's, grab it now!
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11on2040.outbound.protection.outlook.com [40.107.236.40])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B99FD10E1CB;
+ Fri, 17 Feb 2023 15:59:19 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MVotyfSIdQ60TiFXev0lk4+WevmvD/UYYFthtUFb/UHMszItg5hmiJSUruQ9FC3vTZWe2YXqqBYNRY5z5vpUrykFFtjNjeqzF4otLGmp1JD34EIWROdFadV0DXyIfTfRI0HmpEXKWbM4ZfwKyTPVQW+1mTZx8C6jmNk0s2oSNKXB5cCZqju1objnL+JfN5yZUjUmdYQ0otzukrbMLhInbIz9Gxyvdky6x849fwou+rXB7ZivgyWT2ww4zpFhgaBen7tz0uXTHxM+hLrUx9A9JiiRZT2dRiltCNVPmxwh6UAUqZwY2tjX4Ea6iO7cYCCUSpEmJYd1qp7tMYJqwiuQYA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Wm40sVRxgeAxtQkYolrQ9vXt0qcpEmLh5p2KbTEghSQ=;
+ b=FXrmVWkJWbUlY86U/MTNKMuNbZpfaDBBOPJLJHLQZIHmxzgCnXXF1MAcao9e+ZHskssknQHLuZxV6fApN4wlKdArZoNw8eJI1ZTQcMILtlitliD34jmxwMr6xc6xHXich6jKKER0wswpYvsc4VAdqWSZ59Usqv43WteKTR7iJvrfeQdC7QdJWMuBe/RdfSOSExfxwrNoxOl2Yi6IDLJxoEsoNKuIMxVWGO/Hp5wZmOewFSBVedFHrgVYfljfO9AHxuXCiTO/eDuBxNMxuWTx7e1rptgCIO2UrdyMZkthn+CM7CHb1CMP7ONTEefLOzhIOshqs5m9gnwZJe8ufDgKHQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Wm40sVRxgeAxtQkYolrQ9vXt0qcpEmLh5p2KbTEghSQ=;
+ b=CPBkBqXzvzalFN3sGdycbculBtc9sELINX+3tQXRMAIJjQKDRvWY0AzyIEneMQ+7kchSfcb/QFoswpmieJV3i0gJ44CxAcUlfqV2mq9UyqBFxp606DQAaTcl+kEcZd6woXsvdM6G6Du1fKRDQavZWT6AbNmgYgOy/1dVmrCEr4Qxp26mmGQplyV/csVkSaCC6aXvp7lWjlN2YnPD7tChLvZNYL6EYra26dXidjcJoQCdJyqW9J1Hj7Z7XPzClytJ+XTshmPUxHu84dwvjL/hw12gNO1tBtBUWD/ldDH1QbMchNfhKuSoAx1L7huu31IgKqOpH5+lWTyE+NREyug/FA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by PH8PR12MB6914.namprd12.prod.outlook.com (2603:10b6:510:1cb::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6111.15; Fri, 17 Feb
+ 2023 15:59:17 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::3cb3:2fce:5c8f:82ee]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::3cb3:2fce:5c8f:82ee%4]) with mapi id 15.20.6111.013; Fri, 17 Feb 2023
+ 15:59:17 +0000
+Date: Fri, 17 Feb 2023 11:59:16 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>
+Subject: Re: [PATCH v3 03/15] vfio: Accept vfio device file in the driver
+ facing kAPI
+Message-ID: <Y++kVGvMDfOrNf5b@nvidia.com>
+References: <20230213151348.56451-1-yi.l.liu@intel.com>
+ <20230213151348.56451-4-yi.l.liu@intel.com>
+ <Y+rLKvCMivND0izd@nvidia.com>
+ <DS0PR11MB7529B43C7D357D8A0C2438C7C3A29@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <DS0PR11MB7529028251B2DFF28A3CCD00C3A29@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <DS0PR11MB75293D6F394CA6F255D05159C3A19@DS0PR11MB7529.namprd11.prod.outlook.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <DS0PR11MB75293D6F394CA6F255D05159C3A19@DS0PR11MB7529.namprd11.prod.outlook.com>
+X-ClientProxiedBy: MN2PR19CA0064.namprd19.prod.outlook.com
+ (2603:10b6:208:19b::41) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_31_1980881901.1676648111230"
-Message-ID: <0.0.0.3.1D942E57491F75E.610AD4@mail.ask-acfa.click>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH8PR12MB6914:EE_
+X-MS-Office365-Filtering-Correlation-Id: fa2ca6d0-afa2-4d07-ad9c-08db10ffec86
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ttS4IF/kjC1A34Mp0GgtXziGeEGfzf8MWXdQDfkzh6lbdzWttJK8uUFKaVDVK8mdHkdjLetk8oy3PIySOgHGkpXs8aNIeoAW1B8FF1lSgGE/P/6CY/uNCuftBT1UOojjzbTzCQfNEhRWZbuSsqUHpbASMxX8gZZFJWgvpb9EJn8NORRDBgGWRwIK0s6L9xshdMPOOeH1Rtjvx5lGi8Kdrqc62dTe9x3PJUyg/9jvKPCZDwgT8TKtmjvjOzNbsqxjJiyJOGTkcjWSDb+DTRuZ+xLwwBOdIplnBDWeIz5jliaFJLGjMX/0Me0QASSJZJNF5wWcWy0/zr+06wno8jb0hqQ/dQ8rhMkWKaBrP8MFUo1eDGuzIyqp8s0OUZUQsFuM1CgxolAnrBwYdW2ob0bGQHS+3pGBpeyUBHWKMYqgl0AfgOdvymPzG63OWnYLuuvVgNzkWy9HYrzVB1Ek2kT0XPrs7ou7nhXxUdZzvHJGGurwaI64x0WY68RRDlyPNERcl/iyWqYKQjIeg+K97qFosiS7ZXbflRubyaM5q+MiBNBClORMPAtYFlWott7mZPFfXLsjPu3RkQKbNVawxw3pTcab4O20Lpt+jN17YFI0zG+W+tbSQbqdE8nOmcDewN6bOgSpaeoPGu6hezedOxtoSQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(4636009)(396003)(39860400002)(366004)(376002)(136003)(346002)(451199018)(38100700002)(36756003)(4744005)(7416002)(5660300002)(66946007)(6916009)(8676002)(2906002)(66556008)(66476007)(8936002)(4326008)(2616005)(186003)(26005)(6512007)(83380400001)(316002)(54906003)(6506007)(6486002)(478600001)(86362001)(41300700001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qsTVf6+nYRGf0hzx7VI2E8C+ZUElYIf5JmIVhGPJ1c/mLgNJLMCkejmFdEOm?=
+ =?us-ascii?Q?qF6W655qaq+U3aHk3pvY0iOH2nUaqP3cK3FiyyirOfvGOsvS55zUD7GUbq5/?=
+ =?us-ascii?Q?tjqeNmAk0Qjuuz3g6IvninoH2Y695GNW454SjxXE0jlHpbddVlvpxFnQuoaJ?=
+ =?us-ascii?Q?SMnvS2Xdpp9P6enkUmyG+IWl5VSAlT9dIYbEX78fYHo7EThN852iTIhGuwCC?=
+ =?us-ascii?Q?4jU0PkjVNfbvgfRrmWTdYVviOyltVrE+DETi4D2wwIwckDIj8iwIKepJxYz+?=
+ =?us-ascii?Q?bMqCFupfbFgHZz7N888fyMvha8WvpdVxIErAG2EEAwvkLAOXxg9NCA/258E3?=
+ =?us-ascii?Q?hlF0ZYxQtstLknOdXEwAS+Dac/+AtxKlRdwmPn4TdBcOLa2x5/UGuoII7CYy?=
+ =?us-ascii?Q?ydc0KZkPuXfuglL3SmGN5ULhNn+TSC6cgrWvOP5m6RaAnz+E1LIK7ZVgJisU?=
+ =?us-ascii?Q?kEND32HNm9Z9oqNwAhuYb/eadk+O/bx++vS35AFYdAqAnEkbU1X9jvbDOU1o?=
+ =?us-ascii?Q?J42zYjvnkodPMQEos7AVLHO0l5Sf3Rsku22kBJiOTNccJz07dFyGGcLYyBL5?=
+ =?us-ascii?Q?20SDyN5Y2AQuzZy40hdxF0/yy/dyOkRWGgl7plBY7l9qb/gar3t9p4+CMfk4?=
+ =?us-ascii?Q?FuvlokEG52qN5+MYaxYPsirKbRlHVGIyrvagvYairh/8nDyqpFdwP9fb6YFp?=
+ =?us-ascii?Q?6c3kwXk/UME9XDwLY8nS7ToviiR/GZ6HQk/0mO811estQlaGen02p7zTWORk?=
+ =?us-ascii?Q?Di+v725yMUukkMpdltUaFVAkTgmPPU0cMut8B/zT12j7rGnbQkXh5vO1iTic?=
+ =?us-ascii?Q?nvPl10lubch+BmuniImUyDOSEGwiENrClFCEEWEFu2RSZVtGAWwlcQvK87W5?=
+ =?us-ascii?Q?YLPHln8XY6Uzlq+5PPw6v2LJNCXJrRTD+ILf1RH5KGAgz8nH4fpItpkjcRUj?=
+ =?us-ascii?Q?ucCeTnwV0LmyLgv24mgyPNS75QXCFP1wJM8xi+BJ6EUxEWNbSZ42ETLkao+r?=
+ =?us-ascii?Q?mqGEWHsdu5DotAQkZBooM/5/jCg137kQTiePgLTymiMMPqtmAbFfQjZWqFT8?=
+ =?us-ascii?Q?p3rEAEuZ07OCL6WptGHcqkMiPATl8NfHOHZWmBEk4Oh2HfGV9z36z6dksXUt?=
+ =?us-ascii?Q?uvEa+1Tn6p7yrOBouO1jBqGfB4lvJACpA74vrAqFrfD2XtiLivip/2aOcsQG?=
+ =?us-ascii?Q?C4tLhqMCBBL8JAy5PrRPXFA3wpJVageR9L6cjEMqBe4yXN5EucPSIl8pBivQ?=
+ =?us-ascii?Q?aL/ingezSBl/e7UISm6QJU3pe9Nq3macyMmyJDHlaG26S0+tTIxqmf+0TMLt?=
+ =?us-ascii?Q?gyJFUIBWIGC4B7FZOS7QlVt0gmY8fbN2T8bw7bKoIHGbK6r2Gx2gvcdgodWf?=
+ =?us-ascii?Q?4bSG1ZhlxKGeYJjzV70O3h7jxaXwjMRYpZXZTJaw6fULJQTEXStPEDabVDFJ?=
+ =?us-ascii?Q?3yhAoKbWEydqCGZyHAXNgEcBISQJ3DAmCY9uggBoECAT7yvhCh9p693bYDfY?=
+ =?us-ascii?Q?TH5OpfxnApYVYWNlSNXRzzACeqzJnpymugD4J8V2jbwHc5yRQxRDqJFikBUW?=
+ =?us-ascii?Q?cNPxtra3A/+6r38PTjQQFtXGlN4WGQ8fLQ2OlUXA?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fa2ca6d0-afa2-4d07-ad9c-08db10ffec86
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Feb 2023 15:59:17.5573 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: dqrMb5ef8A+r/dljKzOoN3+K4yz0vITjdOPc9Z0mDEETpkep4yZT08jkQoQFRcd6
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB6914
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,78 +119,39 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Tian,
+ Kevin" <kevin.tian@intel.com>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_31_1980881901.1676648111230
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Fri, Feb 17, 2023 at 10:55:08AM +0000, Liu, Yi L wrote:
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>02021723</title> 
- </head> 
- <body style="background-color: #e7e7e7;"> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
-   <div style="background:#f9f9f9;background-color:#f9f9f9;Margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#f9f9f9;background-color:#f9f9f9;width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="border-bottom:#333957 solid 5px;direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> &nbsp; 
-   <aside style="width: 100%; text-align: center;"> 
-    <div style="font-size: 18px; text-align: center; font-family: Arial, Helvetica, sans-serif;">
-     <strong>Special gift just&nbsp;for intel-gvt-dev@lists.freedesktop.org</strong>
-    </div> 
-   </aside> &nbsp; 
-   <section style="width: 100%;"> 
-    <div style="width: 100%;">
-     <a href="http://www.ask-acfa.click/equivalently-school/4a45L239v5o8g6t12L4b2FeC11c5I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQOdKnR6Q1Nko06MTwD@3"><img alt="" src="http://www.ask-acfa.click/disconnecting-remedy/aT84S2395FZ7ua11k4b30o11c5B36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQOdKnR5B10YB6tW@wDq" style="outline: double 1px #000;" width="100%" /></a>
-    </div> 
-   </section> 
-   <div> 
-    <p style="width: 85%; margin: auto;"><a href="http://www.ask-acfa.click/equivalently-school/4a45L239v5o8g6t12L4b2FeC11c5I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQOdKnR6Q1Nko06MTwD@3"><img alt="" src="http://www.ask-acfa.click/Haines-enlightening/53a4z2395E7SaJ12z4mb31J11c5L36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQOdKnR6uQj10l5yjlwD" width="100%" /></a></p> 
-   </div> 
-   <section style="text-align: center; width: 100%;"> 
-    <div style="background-color: #1a1a1a; display: inline-block; font-family: Arial, Helvetica, sans-serif; font-weight: bold; padding: 20px 40px; font-size: large; border-radius: 8px;">
-     <a href="" style="text-decoration: none; color: #fff;">Take Me To The SURVEY!</a>
-    </div> 
-   </section> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-    <tbody> 
-     <tr> 
-      <td style="width:64px;">&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <br /> 
-   <br /> &nbsp; 
-   <section style="width: 100%;"> 
-    <div style="width: 85%; margin: auto;">
-     <a href="http://www.ask-acfa.click/equivalently-school/4a45L239v5o8g6t12L4b2FeC11c5I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQOdKnR6Q1Nko06MTwD@3"><img alt="" src="http://www.ask-acfa.click/4df4S2395LM7Ia12um4b32Z11c5u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQOdKnR7eOF1o0Z5FN2wD/subdividing-civilizations" width="100%" /></a>
-    </div> 
-    <section style="width: 100%;"> 
-     <div style="width: 85%; margin: auto; padding-top: 35px;">
-      <a href="http://www.ask-acfa.click/equivalently-school/4a45L239v5o8g6t12L4b2FeC11c5I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQOdKnR6Q1Nko06MTwD@3"><img alt="" src="http://www.ask-acfa.click/noninteracting-engenders/d6e5Q2D395B7Qua12f4Tb33S11c5_36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQOdKnR6RG1q0q5QjwkD" width="100%" /></a>
-     </div> 
-    </section> 
-    <footer style="text-align: center; font-size: 10; color: #fff;"> 
-     <address> 
-      <div style="background-color: hsl(0, 0%, 10%); padding: 5px; color: #ffffff; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 10px;"> 
-       <p><small><span style="text-decoration: none; ">To change your communication choices,</span><a href="http://www.ask-acfa.click/2Lf5jq2395Jr8W612U4b2UfY11c5B36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQOdKnR7iOxQ1_05XLwDU/tomorrow-restarting" style="text-decoration-line: none; color: white"> <span>Begin-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span><span style="revelry"></span></span><style lang="fingerings"></style><span color="pathways"><span lang="belligerence"></span><font color="activism"></font></span><font class="nonorthogonal"><small></small></font><font class="nemesis"></font> </small></p> 
-      </div> </address> 
-    </footer> 
-   </section> 
-  </div>   
- <img src="http://www.ask-acfa.click/4a35hW2395K85KV13tQJ4b34K11c5u36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQOdKnR6H10WtY6DlwDlT/tomorrow-restarting" alt=""/></body>
-</html>
+> One more thinking on this. For a single device, my above reply is true.
+> The device should have been fully-opened when its GET_PCI_HOT_RESET_INFO
+> and HOT_RESET path have been unblocked. However, when there are
+> multiple devices that have been affected by the hotreset. User may only
+> have one device that is fully opened while others are not yet. In such case,
+> existing vfio_file_is_valid() is not enough. Shall we have another API for
+> this purpose? E.g. if it's cdev fd, then the new API return true only when
+> the device is fully opened. Any suggestion here?
 
-------=_Part_31_1980881901.1676648111230--
+I think what I heard is you need two APIs, one for pci and one for KVM
+and the PCI one requires binding to succeed.
 
+Jason
