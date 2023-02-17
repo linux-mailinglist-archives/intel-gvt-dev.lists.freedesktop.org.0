@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86FEF69B195
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Feb 2023 18:08:29 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BA1269B1F4
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Feb 2023 18:42:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5174010E2E8;
-	Fri, 17 Feb 2023 17:08:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2DBF110E2D7;
+	Fri, 17 Feb 2023 17:42:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 17 Feb 2023 17:08:27 UTC
-Received: from mail.long-senipa.click (unknown [104.206.109.228])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1077E10E2E8
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Fri, 17 Feb 2023 17:42:27 UTC
+Received: from mail.bend-rwalby.click (unknown [104.206.109.223])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6D82310E2E0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Feb 2023 17:08:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=long-senipa.click;
+ Fri, 17 Feb 2023 17:42:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bend-rwalby.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=my-senior-perks@long-senipa.click; 
- bh=Xu+gZy0pxW7/UquVEvgJw4ZaGzU=;
- b=J6Kcjhc8HlpVhIeknI5YVYpgPwn3tv2KVknpNJ4j8gADqQWWxGYQFCormXe0JPV4VXZiBxRlB0qp
- I5NsXgANoj+lRveAyD38Zq6hqSsCvsJ9arJFnOyFk5JqJEsqR2XHmRvMh26fr+nQP6nEjTwU+QIt
- QeYAPAPLwt0kDTktNEM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=long-senipa.click; 
- b=M9WjkYqg5QJeEtTGKNzK7pTqyb6/hm5Tjzp7COwQkzHrTw9lj0SRdKL/BELxqA9xnC5FlXRSBV9i
- gUXtDDx9zNrepiVHZT3lhsIZhpToZCwYpHrSs0JOArrjfaQJxEQSGbiYG3dnNbRoaf8zaT8hOTWm
- iYmK1QNDDRQJdQf2tao=;
-Received: by mail.long-senipa.click id htuq8m0001g7 for
+ i=renewal_by_andersen_affiliate@bend-rwalby.click; 
+ bh=kOpOXCh/5XGh7gAsFlhvow/2Kww=;
+ b=JgcwXfBTR2wT7B1AmXTEyQLwUt6LpaHeWTs+IqLfPs4Eq3pCPtCSKF3zKuj+p0GUaWZr2TWJHf0i
+ PVVn6MNy/gJmbmT4eCDuR8+SclZL/pIxL+ul9QnviEiMvcQ38DxtyAb6+RW51e8mkuuFNgrC3gk8
+ xlSQAz2SbT43QF0s8EM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bend-rwalby.click; 
+ b=JO3r6oYdcUBW8+Njxl7xeHQH1qw0E5bQ39qN0m9ec2B6qkxdjB/4YXrqtygVe4foK0/sCsSlfjks
+ wK8sECvl9/tGuRJOrdWRo3S4m3mfQNe+7nPCxiVD1z+h66hBG+EUmC6Js3P6ka7l1uIbP9lMcjPm
+ 450tbbP6IiT02gFN+Co=;
+Received: by mail.bend-rwalby.click id htuu860001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Feb 2023 11:59:30 -0500 (envelope-from
- <my-senior-perks-intel+2Dgvt+2Ddev=lists.freedesktop.org@long-senipa.click>)
-Date: Fri, 17 Feb 2023 11:59:30 -0500
-From: "My Senior Perks" <my-senior-perks@long-senipa.click>
+ Fri, 17 Feb 2023 12:30:59 -0500 (envelope-from
+ <renewal_by_andersen_affiliate-intel+2Dgvt+2Ddev=lists.freedesktop.org@bend-rwalby.click>)
+Date: Fri, 17 Feb 2023 12:30:59 -0500
+From: "Renewal By Andersen Affiliate"
+ <renewal_by_andersen_affiliate@bend-rwalby.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Seniors: Here's The Guide To Enjoy Life At A Discount
+Subject: BOGO 40% Off with minimum purchase*
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_775_647761035.1676653107648"
-Message-ID: <0.0.0.55.1D942F133EDC35C.B6695@mail.long-senipa.click>
+ boundary="----=_Part_328_2020419880.1676655019499"
+Message-ID: <0.0.0.25.1D942F59998F56A.441748@mail.bend-rwalby.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_775_647761035.1676653107648
+------=_Part_328_2020419880.1676655019499
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,43 +64,53 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04021723</title> 
+  <title>05021723</title> 
  </head> 
- <body style="background-color: #daf6ff;"> 
-  <div style="padding-top: 50px;">
-   &nbsp;
-  </div> 
-  <p style="background:#2F67F6;color:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:normal;line-height:120%;Margin:0;text-decoration:none;text-transform:none;">&nbsp;</p> 
-  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:22px;text-align:center;color:#555;">
-   &nbsp;
-  </div> 
-  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:22px;text-align:center;color:#555;">
-   &nbsp;
-  </div> 
-  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:26px;font-weight:bold;line-height:1;text-align:center;color:#555;">
-   &nbsp;
-  </div> 
-  <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:22px;text-align:center;color:#555;">
-   &nbsp;
-  </div> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
-   <section style="width: 100%;"> 
-    <div style="width: 100%;">
-     <a href="http://www.long-senipa.click/4c16G2N39P5tp8Q612N4b3Bav11c7k36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkdKne7M10UJGo6NBMqwD/happily-amour"><img alt="" src="http://www.long-senipa.click/5b16kwK2395V7LKa13OJ4bR3dB11c7i36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQkdKne5YG10P5Aq@wD/happily-amour" width="100%" /></a>
-    </div> 
-   </section> 
-  </div> 
-  <div style="padding-top: 50px;">
-   &nbsp;
-  </div> 
-  <div style="padding-top: 50px;">
-   &nbsp;
-  </div> 
-  <footer style="padding: 5px 0px 25px; background-color: #162a36; width: 100%; color: #fff;; border: double 2.5px #000;"> 
-   <address style="font-size: 12px;"> <p align="center" class="lemon" id="shortage" style="font-size: 10px; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'"><br /> <font face="Verdana, Arial, Helvetica, sans-serif" size="1">If you'd prefer not to receive future emails, <a href="http://www.long-senipa.click/happily-amour/2a65E239C5nK86W12Sm4b3bp11c7O36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQkdKne5dY10q6DBwXkD"><font color="#666666">Unsubscribe Here</font></a>.<br /> <br /> <a href="http://www.long-senipa.click/8096qY23s95Qn8g612L4bl3cR11c7I36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQkdKne7Q1rIJ0q5qOwD1/scheme-dims"><font color="#666666">My Senior Perks</font></a> | 302 Washington St #150-7835 San Diego, CA 92103</font></p> </address> 
-  </footer>   
- <img src="http://www.long-senipa.click/c235V2W395EIs8511S4b3eO11c7x36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQkdKne7K1vMsO05W@WwD/scheme-dims" alt=""/></body>
+ <body style="background-color: #C8D4D7;"> 
+  <p style="padding-bottom: 50px;">&nbsp;</p> 
+  <div style="Margin:0px auto;max-width:600px; background-color: #fff;"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+    <tbody> 
+     <tr> 
+      <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;"> 
+       <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;"> 
+        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="vertical-align:bottom;padding:0;"> 
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center" style="font-size:0px;padding:0;word-break:break-word;"> 
+                <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:300;line-height:1;text-align:center;color:#575757;">
+                 &nbsp;
+                </div> </td> 
+              </tr> 
+              <tr> 
+               <td align="center" style="font-size:0px;padding:10px;word-break:break-word;"> 
+                <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:300;line-height:1;text-align:center;color:#575757;">
+                 &nbsp;
+                </div> 
+                <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
+                 <h4>&nbsp;</h4> 
+                 <p><a href="http://www.bend-rwalby.click/thatch-venison/9cc6A23_9r5BOk8611D4b3fA11c8Z36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ5dKnK7l1OWg0A5kJw0D"><img alt="" src="http://www.bend-rwalby.click/a7f4L2395S7aKz12L4bO42P11c8_36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ5dKnK7u1lUPm05dlWwD/thatch-venison" width="100%" /></a></p> 
+                 <footer> 
+                  <address class="dction_3" style="text-align: center; max-width: 600px; margin: auto; line-height: 18px; background-color: #2e2e2e; padding: 1px 0px; border-radius: 8px; color: #fff;"> <p>This is an advertisement. This message has been sent to you through an affiliate of Renewal by Andersen.<br /> <br /> <span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>To be removed from receiving future emails, <a href="http://www.bend-rwalby.click/3775p23s95o8pU612S4bH40z11c8J36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ5dKnK7Lr1in0J6kBwUlD/groaner-deterioration">Unsubscribe here.</a></b></span></p> <p style="font-size:12px"><b>If you have questions or concerns, contact our customer support team, <a href="http://www.bend-rwalby.click/signer-landfill/c9c6E23F9w5gCo8611g4b41B11c8v36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5dKnK5c10GY5eqJwD"> here.</a></b></p> 2040 Merrick Road Unit 408 Merrick, NY 11566<br /> &nbsp; <p>&nbsp;</p> </address> 
+                 </footer> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.bend-rwalby.click/scorning-dents/5d05K239C5V8uh513wUn4b43A11c8y36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ5dKnK5ML1n06SkwD1U" alt=""/></body>
 </html>
 
-------=_Part_775_647761035.1676653107648--
+------=_Part_328_2020419880.1676655019499--
 
