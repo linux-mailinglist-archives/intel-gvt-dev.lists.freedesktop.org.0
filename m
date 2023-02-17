@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BA1269B1F4
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Feb 2023 18:42:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DE4669B25D
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Feb 2023 19:28:11 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2DBF110E2D7;
-	Fri, 17 Feb 2023 17:42:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E860110E3C3;
+	Fri, 17 Feb 2023 18:28:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 17 Feb 2023 17:42:27 UTC
-Received: from mail.bend-rwalby.click (unknown [104.206.109.223])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6D82310E2E0
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 17 Feb 2023 18:28:07 UTC
+Received: from mail.bite-ntfx.click (unknown [104.206.109.219])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0801410E3C0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Feb 2023 17:42:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bend-rwalby.click;
+ Fri, 17 Feb 2023 18:28:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bite-ntfx.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=renewal_by_andersen_affiliate@bend-rwalby.click; 
- bh=kOpOXCh/5XGh7gAsFlhvow/2Kww=;
- b=JgcwXfBTR2wT7B1AmXTEyQLwUt6LpaHeWTs+IqLfPs4Eq3pCPtCSKF3zKuj+p0GUaWZr2TWJHf0i
- PVVn6MNy/gJmbmT4eCDuR8+SclZL/pIxL+ul9QnviEiMvcQ38DxtyAb6+RW51e8mkuuFNgrC3gk8
- xlSQAz2SbT43QF0s8EM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bend-rwalby.click; 
- b=JO3r6oYdcUBW8+Njxl7xeHQH1qw0E5bQ39qN0m9ec2B6qkxdjB/4YXrqtygVe4foK0/sCsSlfjks
- wK8sECvl9/tGuRJOrdWRo3S4m3mfQNe+7nPCxiVD1z+h66hBG+EUmC6Js3P6ka7l1uIbP9lMcjPm
- 450tbbP6IiT02gFN+Co=;
-Received: by mail.bend-rwalby.click id htuu860001gj for
+ i=denise_craig@bite-ntfx.click; 
+ bh=mBEncFDEX0OBgBgx6IA/XOm8U/o=;
+ b=Pt2Hv0KVM1kWtTGyB6SZg3oC3aGo/3ZEAtCPjT5GaePkTjlQ7nMRuC8bO3L5K8d//e8oYldywF7G
+ BSxTjzFwKIfs9YqPQJX8m1cnRH6N1nX00VeyhDx5TwEZ91UdfYIk6HmwWFVhItts2OEMsmOa/Mek
+ RGd9oW2E7RI59NV5iuw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bite-ntfx.click;
+ b=PWzy/MTr2g66xIJXE217QHhiou3t1ukishUZjd3ghG5LbmlcQ2gXAdAWgBwGPQk2kttT6D6XCZKw
+ 1Gt+Tq0D3aiY0UR1B2fhW1O0gE3KX234JTKbWIvFLMYCHZ+3HXwfyh88j/Ov2So+CXhKNI5rcWkD
+ eDFmeWVbc6k9b7zwd3s=;
+Received: by mail.bite-ntfx.click id htv3je0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Feb 2023 12:30:59 -0500 (envelope-from
- <renewal_by_andersen_affiliate-intel+2Dgvt+2Ddev=lists.freedesktop.org@bend-rwalby.click>)
-Date: Fri, 17 Feb 2023 12:30:59 -0500
-From: "Renewal By Andersen Affiliate"
- <renewal_by_andersen_affiliate@bend-rwalby.click>
+ Fri, 17 Feb 2023 13:19:26 -0500 (envelope-from
+ <denise_craig-intel+2Dgvt+2Ddev=lists.freedesktop.org@bite-ntfx.click>)
+Date: Fri, 17 Feb 2023 13:19:26 -0500
+From: "Denise Craig" <denise_craig@bite-ntfx.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: BOGO 40% Off with minimum purchase*
+Subject: Watching your favorite show is now going to get you rewarded - our
+ token of appreciation
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_328_2020419880.1676655019499"
-Message-ID: <0.0.0.25.1D942F59998F56A.441748@mail.bend-rwalby.click>
+ boundary="----=_Part_766_1948323050.1676657942424"
+Message-ID: <0.0.0.54.1D942FC5E65E726.BDECA@mail.bite-ntfx.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_328_2020419880.1676655019499
+------=_Part_766_1948323050.1676657942424
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,53 +64,52 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>05021723</title> 
+  <title>06021723</title> 
  </head> 
- <body style="background-color: #C8D4D7;"> 
-  <p style="padding-bottom: 50px;">&nbsp;</p> 
-  <div style="Margin:0px auto;max-width:600px; background-color: #fff;"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;"> 
+ <body style="background-color: rgb(255, 239, 239);"> 
+  <div style="display: inline-block;"> 
+   <table border="0" cellpadding="0" cellspacing="0" class="pc-spacing pc-m-footer-h-46" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
     <tbody> 
      <tr> 
-      <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;vertical-align:top;"> 
-       <div class="mj-column-per-100 outlook-group-fix" style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:bottom;width:100%;"> 
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td style="vertical-align:bottom;padding:0;"> 
-            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="center" style="font-size:0px;padding:0;word-break:break-word;"> 
-                <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:300;line-height:1;text-align:center;color:#575757;">
-                 &nbsp;
-                </div> </td> 
-              </tr> 
-              <tr> 
-               <td align="center" style="font-size:0px;padding:10px;word-break:break-word;"> 
-                <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:300;line-height:1;text-align:center;color:#575757;">
-                 &nbsp;
-                </div> 
-                <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
-                 <h4>&nbsp;</h4> 
-                 <p><a href="http://www.bend-rwalby.click/thatch-venison/9cc6A23_9r5BOk8611D4b3fA11c8Z36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ5dKnK7l1OWg0A5kJw0D"><img alt="" src="http://www.bend-rwalby.click/a7f4L2395S7aKz12L4bO42P11c8_36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ5dKnK7u1lUPm05dlWwD/thatch-venison" width="100%" /></a></p> 
-                 <footer> 
-                  <address class="dction_3" style="text-align: center; max-width: 600px; margin: auto; line-height: 18px; background-color: #2e2e2e; padding: 1px 0px; border-radius: 8px; color: #fff;"> <p>This is an advertisement. This message has been sent to you through an affiliate of Renewal by Andersen.<br /> <br /> <span style="font-size: 12px; font-family: arial, helvetica, sans-serif;"><b>To be removed from receiving future emails, <a href="http://www.bend-rwalby.click/3775p23s95o8pU612S4bH40z11c8J36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ5dKnK7Lr1in0J6kBwUlD/groaner-deterioration">Unsubscribe here.</a></b></span></p> <p style="font-size:12px"><b>If you have questions or concerns, contact our customer support team, <a href="http://www.bend-rwalby.click/signer-landfill/c9c6E23F9w5gCo8611g4b41B11c8v36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5dKnK5c10GY5eqJwD"> here.</a></b></p> 2040 Merrick Road Unit 408 Merrick, NY 11566<br /> &nbsp; <p>&nbsp;</p> </address> 
-                 </footer> 
-                </div> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> </td> 
+      <td style="vertical-align: top; height: 46px; line-height: 46px; font-size: 46px;" valign="top">&nbsp;</td> 
      </tr> 
     </tbody> 
    </table> 
-  </div>   
- <img src="http://www.bend-rwalby.click/scorning-dents/5d05K239C5V8uh513wUn4b43A11c8y36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ5dKnK5ML1n06SkwD1U" alt=""/></body>
+   <table border="0" cellpadding="0" cellspacing="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td class="pc-fb-font" style="vertical-align: top; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 500; line-height: 1.33; letter-spacing: -0.2px;" valign="top">&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td class="pc-fb-font" style="vertical-align: top; padding: 9px 0 0; font-family: 'Fira Sans', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500; line-height: 1.7;" valign="top">&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
+   <header style="width: 100%; text-align: center; padding-top: 20px;"> 
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: 40px; font-weight: bold; display: inline;">NETFLIX</p> 
+   </header> 
+   <section style="width: 100%; display: inline-block;"> 
+    <p style="width: 100%;"><a href="http://www.bite-ntfx.click/7374D2395o8g6M13mL4bs44S11c9Z36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQMdKom7Mj1FUQ05oBLwD/beading-shrilly"><img alt="" src="http://www.bite-ntfx.click/mountaineer-legal/abc4R2395g7jRa13e4b4Zz6q11c9B36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQMdKom5R1Z0s6ij0wDl" width="100%" /></a></p> 
+   </section> 
+   <div style="width: 100%; text-align: center;"> 
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: 22px; padding: 0px 30px; line-height: 30px; font-weight: 500; display: inline; width: 100%;">Don't miss out! Just a few clicks away from a chance to win a $100 <b style="color: rgb(255, 0, 0);">NETFLIX</b> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+   </div> 
+   <section style="width: 100%; text-align: center;"> 
+    <h6 style="width: 100%; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; text-align: center;">&nbsp;</h6> 
+    <div style="padding: 15px 30px; background-color: #ff0000; display: inline-block; border-radius: 10px;">
+     <a href="http://www.bite-ntfx.click/7374D2395o8g6M13mL4bs44S11c9Z36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQMdKom7Mj1FUQ05oBLwD/beading-shrilly" style="text-decoration: none; color: #fff;">Go And Start Now</a>
+    </div> 
+   </section> 
+   <br /> 
+   <br /> &nbsp;
+  </div> 
+  <footer style="max-width: 600px; margin: auto; font-size: 10px; color: #FFF; font-weight: 0; text-align: center; padding-bottom: 10px; padding-top: 10px;"> 
+   <address style="background-color: rgb(53, 53, 53); padding: 5px 0px; font-family: Arial, Helvetica, sans-serif;"> <p class="unsubscribe"><span style="text-decoration: none; ">To dispense with notices,</span><a href="http://www.bite-ntfx.click/binaries-invalidating/1f24i2395jV86K11D4b45m11c9x36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQMdKom5KvQ106zkwlTD" style="text-decoration-line: none;"> <span>Visit Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span title="supplements"></span><style color="fiefdom"><font face="driven"></style></font><font id="entirety"></font><span title="eavesdrop"></span><small></small><font><style></font></style><small></small><big></big></p> </address> 
+  </footer>   
+ <img src="http://www.bite-ntfx.click/beading-shrilly/9545S2X395qtq8511n4b47K11c9m36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQMdKom7qj10XQR6MjwD@@" alt=""/></body>
 </html>
 
-------=_Part_328_2020419880.1676655019499--
+------=_Part_766_1948323050.1676657942424--
 
