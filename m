@@ -1,43 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C477769BB74
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Feb 2023 19:48:19 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13B8C69BB48
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Feb 2023 18:39:22 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 917D210E547;
-	Sat, 18 Feb 2023 18:48:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 78E1710E51E;
+	Sat, 18 Feb 2023 17:39:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sat, 18 Feb 2023 18:48:17 UTC
-Received: from mail.dial-smscb.click (unknown [104.206.109.252])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4336610E547
+ Sat, 18 Feb 2023 17:39:19 UTC
+Received: from mail.cost-unbrain.click (unknown [104.206.109.243])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7244910E51E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 18 Feb 2023 18:48:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dial-smscb.click;
+ Sat, 18 Feb 2023 17:39:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=cost-unbrain.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sams_club_appreciation@dial-smscb.click; 
- bh=dGHRi4qlKEpI7eERFwepjpCKdDI=;
- b=DGlIEG4W8568Ln5zKItKlI68RoC78sBU7l7FYHnFD4XlgPj38/XKtLV73ZB3N1VBpN1P0g75R4T+
- w3T5WDMmny5Dj1gwvxaz3ouDxxLNcU3c5TxrWLysK6lrC94ePMl0ZqjBsILQUbE0LX4Is5u8m3Zs
- rYLEOUDznnrmj43msks=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dial-smscb.click;
- b=Z47kMZSJr9OWD34ZvTFMwgFKLR+7LPL+Mxakaz+3l0upkkL/dzbt0SFnCNMh3RlFqDIY32qWS9GK
- /Qi1ORzb2+2Z15UIAywN6m+Qi8fh77hU7X4SlRzVxt+/LbPY27TGcvm4fw/5zf7G0Va76rSP0ICv
- fFD3ji2iAgmYZqWAnyc=;
-Received: by mail.dial-smscb.click id hu4en20001g1 for
+ i=brain.blueprint.news@cost-unbrain.click; 
+ bh=DSiprwQDr18AJVDPQ+udb4czpdc=;
+ b=m42QtW8aASYa33aHMIQub+WXiH/kx0AnebXmCN2grppHX0E3nGdbFVBEcknGcZiNQK0vw1ps9N7v
+ gZY2r5yNJEwL5IYDQK4iwD3em3eSztFstaJiGqDW7U8iTfPDfSkOVQGridNoGuWazkhBVoNEZJS2
+ 9Ahw2qJvHwQgu/efpOY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cost-unbrain.click; 
+ b=eVjIdjcl4l/KZhebKgmmX9DQ7kcZ7+ibayteSQUOtE2KH3+6FH4diqiok53a9xy8jgjg2D3UyUS2
+ 8gjtnK8vaPIjfH2VVQfodBx5+HTU0idvWaXaTntYdQqQlM4kVf/tTv/vRsc0IJZbfrN9UfnK+TOr
+ AJemdBpZwb/29xRnFs8=;
+Received: by mail.cost-unbrain.click id hu4goc0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 18 Feb 2023 13:37:23 -0500 (envelope-from
- <sams_club_appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@dial-smscb.click>)
-Date: Sat, 18 Feb 2023 13:37:23 -0500
-From: "Sams Club Appreciation" <sams_club_appreciation@dial-smscb.click>
+ Sat, 18 Feb 2023 13:55:39 -0500 (envelope-from
+ <brain.blueprint.news-intel+2Dgvt+2Ddev=lists.freedesktop.org@cost-unbrain.click>)
+Date: Sat, 18 Feb 2023 13:55:39 -0500
+From: "Brain Blueprint News" <brain.blueprint.news@cost-unbrain.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Impressive Gifts coming your way this season
+Subject: FOR "3Ways" CREATIVE: Dementia?
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_46_41614265.1676745426166"
-Message-ID: <0.0.0.5.1D943C80A648F20.5D3B58@mail.dial-smscb.click>
+ boundary="----=_Part_376_401350043.1676741293563"
+Message-ID: <0.0.0.29.1D943CA979FA0C6.108847@mail.cost-unbrain.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_46_41614265.1676745426166
+------=_Part_376_401350043.1676741293563
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,64 +64,83 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>08021823</title> 
+  <title>05021823</title> 
  </head> 
- <body style="background-color: #d6edfa;"> 
-  <p>&nbsp;</p> 
-  <dl> 
-   <dt style="font-weight: bold;">
+ <body style="background-color: #cfcfcf;"> 
+  <div style=" padding-top: 50px;">
+   &nbsp;
+  </div> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; border-radius: 8px;"> 
+   <section style="width: 100%; text-align: center; padding: 15px 0px;"> 
+    <p style="width: 80%; font-family: Arial, Helvetica, sans-serif; font-weight: 900; margin: auto;">A new study from Harvard Scientists has revealed that <a href="http://www.cost-unbrain.click/swayed-wielding/5ee6cZ2z395O86DP11g4b67O11d2s36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQydKoK7At1D0Wg5wywDW">ONE of the following foods</a> is linked to combating Alzheimer's and dementia. Can you guess which it is?</p> 
+   </section> 
+   <section> 
+    <div style="width: 100%; line-height: 10px;"> 
+     <aside style="width: 100%; font-size: 30px; float: none; position: relative; left: 50px; z-index: 10;"> 
+      <p>1. <a href="http://www.cost-unbrain.click/swayed-wielding/5ee6cZ2z395O86DP11g4b67O11d2s36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQydKoK7At1D0Wg5wywDW">Red wine</a></p> 
+     </aside> 
+     <aside style="width: 100%; font-size: 30px; float: none; position: relative; left: 50px; z-index: 20;"> 
+      <p>2. <a href="http://www.cost-unbrain.click/swayed-wielding/5ee6cZ2z395O86DP11g4b67O11d2s36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQydKoK7At1D0Wg5wywDW">Fish</a></p> 
+     </aside> 
+     <aside style="width: 100%; font-size: 30px; float: none; position: relative; left: 50px; z-index: 30;"> 
+      <p>3. <a href="http://www.cost-unbrain.click/swayed-wielding/5ee6cZ2z395O86DP11g4b67O11d2s36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQydKoK7At1D0Wg5wywDW">Avocados</a></p> 
+     </aside> 
+     <aside style="width: 100%; font-size: 30px; float: none; position: relative; left: 50px; z-index: 40;"> 
+      <p>4. <a href="http://www.cost-unbrain.click/swayed-wielding/5ee6cZ2z395O86DP11g4b67O11d2s36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQydKoK7At1D0Wg5wywDW">Clams</a></p> 
+     </aside> 
+    </div> 
+    <div style=" padding-top: 15px;">
+     &nbsp;
+    </div> 
+   </section> 
+   <section style="width: 80%; margin: auto;">
+    <a href="http://www.cost-unbrain.click/swayed-wielding/5ee6cZ2z395O86DP11g4b67O11d2s36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQydKoK7At1D0Wg5wywDW"><img alt="" src="http://www.cost-unbrain.click/4854C2395C7Gna12f4b6ray11d2g36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQydKoK6vvkZ105vXwPD/magnification-restriction" width="100%" /></a>
+   </section> 
+   <div style="width: 100%; text-align: center;"> 
+    <p style="font-size: 25px;"><a href="">Or click HERE to see the answer &gt;&gt; &gt;&gt;</a></p> 
+   </div> 
+   <p style="font-family: Arial, Helvetica, sans-serif; padding-left: 70px; line-height: 30px; font-size: 24px;">To your health,<br /> Dr. Will Mitchell, DOM, MS Nutrition</p> 
+   <div style=" padding-top: 8px;">
     &nbsp;
-   </dt> 
-   <dd style="margin-left: 40px;">
-    &nbsp;
-   </dd> 
-   <dt style="font-weight: bold;">
-    &nbsp;
-   </dt> 
-   <dd style="margin-left: 40px;">
-    &nbsp;
-   </dd> 
-  </dl> 
-  <h6 style="color: #222222 !important; font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 20px; margin-top: 30px; font-size: 18px;">&nbsp;</h6> 
+   </div> 
+  </div> 
+  <table cellpadding="0" cellspacing="0" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; border-collapse: separate !important; width: auto;"> 
+   <tbody> 
+    <tr> 
+     <td align="center" bgcolor="transparent" style="-webkit-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; -ms-text-size-adjust: 100%; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; vertical-align: top; background-color: transparent; border-radius: 0px; text-align: center;" valign="top">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table class="divider-wrapper" style="-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box; border-collapse: separate !important; width: 100%;" width="100%"> 
+   <tbody> 
+    <tr> 
+    </tr> 
+   </tbody> 
+  </table> 
   <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
-  <h1 style="color: #222222 !important; font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 30px; margin-top: 40px; font-size: 32px; text-transform: capitalize;">&nbsp;</h1> 
-  <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
-  <h1 class="fancy" style="color: #222222 !important; font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 30px; margin-top: 40px; font-size: 32px; text-transform: capitalize;">&nbsp;</h1> 
-  <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
-  <h1 class="thin" style="color: #222222 !important; font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 30px; margin-top: 40px; font-size: 32px; text-transform: capitalize;">&nbsp;</h1> 
-  <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
-  <h1 class="caps" style="color: #222222 !important; font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 30px; margin-top: 40px; font-size: 32px; text-transform: capitalize;">&nbsp;</h1> 
-  <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
+  <ol style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 15px; color: #111111; padding: 0; padding-left: 25px; list-style-type: none"> 
+   <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
+   <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;"> 
+    <ol style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 15px; color: #111111; padding: 0; padding-left: 25px; margin-top: 15px; list-style-type: none"> 
+     <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
+     <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
+    </ol> </li> 
+   <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
+   <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
+  </ol> 
   <h2 style="color: #222222 !important; font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 30px; margin-top: 40px; font-size: 28px;">&nbsp;</h2> 
   <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
-  <h2 class="fancy" style="color: #222222 !important; font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 30px; margin-top: 40px; font-size: 28px;">&nbsp;</h2> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
-   <header style="width: 100%; text-align: center; background-color: #0167A2;"> 
-    <p style=" font-weight: bold; font-size: 30px; padding-top: 20px; display: inline; color: #fff;">SAMS CLUB</p> 
-   </header> 
-   <section style="width: 100%;">
-    <a href="http://www.dial-smscb.click/7914o2395jF8Z613S4b71xAx11d4Z36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ4dK9n7z1B_0hA6n3wD1j/unfortunately-Gunderson" target="_blank"><img alt="" src="http://www.dial-smscb.click/lectured-dare/6fc6J2z3l95M7aCJ12G4b73rx11d4W36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ4dK9n6ip1U0k5sJUwD" width="100%" /></a>
-   </section> 
-   <div> 
-    <p style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight: 500; line-height: 30px; padding: 0px 35px;">Don't miss out! Just a few clicks away from a chance to win a $100 <b style="color: #0167A2;">Sams Club</b> Card by completing our quick 20-second survey about your recent experience with us.</p> 
-   </div> 
-   <div style="width: 100%; text-align: center;"> 
-    <div style="background-color: #0167A2; padding: 15px 33px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 22px; display: inline-block; border-radius: 50px;">
-     <a href="http://www.dial-smscb.click/7914o2395jF8Z613S4b71xAx11d4Z36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ4dK9n7z1B_0hA6n3wD1j/unfortunately-Gunderson" style="text-decoration: none; color: #fff;">Go And Start Now</a>
-    </div> 
-   </div> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <address style="text-align: center; font-weight: normal; font-family: Arial, Helvetica, sans-serif;"> 
-    <div style="font-size: 12px; background-color: #464646; padding: 15px; color: #fff; border-left: double 5px #0167A2; border-right: double 5px #0167A2;"> 
-     <p class="unsubscribe"><span style="text-decoration: none; ">To get rid of notifications,</span><a href="http://www.dial-smscb.click/b6f5z2r395kNM8612gt4b72T11d4X36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ4dK9n6f10ssz5Np2wD/transforms-subverts" style="text-decoration-line: none;"> <span>Start Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span><style><style></style></style></span><big></big><style></style><span><small></span></small></p> 
+  <div style="padding-top: 0px;">
+   &nbsp;
+  </div> 
+  <footer style="width: 100%; text-align: center; background-color: #CFCFCF; padding: 25px 0px;"> 
+   <address style="max-width: 600px; margin: auto; background-color: #fff; font-weight: bold; padding: 18px; box-shadow: 0px 0px 6px 1px;"> 
+    <div>
+     <font face="Verdana, Arial, Helvetica, sans-serif" size="1">If you'd prefer not to receive future messages, <a href="http://www.cost-unbrain.click/3954t2395a8Mr611g4b68H11d2o36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQydKoK5PJ1L05mAwDL/Piccadilly-sledge"><font color="#666666">leave us Here</font></a>.<br /> <a href="http://www.cost-unbrain.click/neoclassic-Jessy/44a6I2MY395MK8A613H4vb69Ah11d2Q36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQydKoK5W10VV5VWwDM">Brain Blueprint</a> 321 N Central Expressway Suite 351 - McKinney, TX 75070 </font>
     </div> </address> 
-  </div>   
- <img src="http://www.dial-smscb.click/22d6Ag239R5dxz8512t4Mb74r11d4U36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ4dK9n5QK1A06BUwDA@/lectured-dare" alt=""/></body>
+  </footer>   
+ <img src="http://www.cost-unbrain.click/8455u2D395e8p5S12G4Vb6bP11d2u36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQydKoK6QD10TY6KpwlTD/rakes-consult" alt=""/></body>
 </html>
 
-------=_Part_46_41614265.1676745426166--
+------=_Part_376_401350043.1676741293563--
 
