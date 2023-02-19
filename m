@@ -2,44 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76BF169C1BF
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 19 Feb 2023 18:51:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 61F5769C230
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 19 Feb 2023 20:54:59 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DB08E10E104;
-	Sun, 19 Feb 2023 17:51:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 243DD10E279;
+	Sun, 19 Feb 2023 19:54:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 19 Feb 2023 17:51:06 UTC
-Received: from mail.learn-filter.click (unknown [104.206.109.224])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0BC9610E104
+ Sun, 19 Feb 2023 19:54:56 UTC
+Received: from mail.live-atlws.click (unknown [104.206.109.250])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8016110E279
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 19 Feb 2023 17:51:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=learn-filter.click; 
+ Sun, 19 Feb 2023 19:54:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=live-atlws.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=leaffilter-gutter-cleaning@learn-filter.click; 
- bh=VP9aSNavt5w/4du/OEdmKk7kCio=;
- b=rA9l6AqRujFkrELZOJwuBpsLsRzfIcilp8Hkqkz/OXuJADmqYX48EtZpecxNk+CI1C5ORovUKDg/
- 86iwYHXHwhbKGkzDJimigKdOyrZX7YvD7fWTWSl3H+XTp3uKnfDoLSSYLa8UWM/iTqbbHGiohxYf
- 5eb5i1QeqNVXSiZmx7M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=learn-filter.click; 
- b=nC2MhQy5PrHa93cwFcSMQj8SQyvaTbuyYpedexiv8nOqP8xtlbhSiGZFbS44USeQ5hO+z6vhcFVW
- TBSUtisWvGOjmAZ6Cgo98/4dizlnn17aAoEetJp3uxu3Mwkb//DQQBQHbKcrM/tiyUKHNFFoSdHb
- QEsCbNp1fWECmUzJtgA=;
-Received: by mail.learn-filter.click id hu9qse0001gv for
+ i=gail-vega@live-atlws.click; bh=7dPPUaKHqHbB/gF5dovZsulZyxA=;
+ b=o/lbBMgj/2bsUx4XR1aqBPX3U9YNyQum1P+X+Kd+XHJuhDgdwuTWwXVF6mVgz5LBCGbjpuvIDvws
+ gGdItVBeGTNZaLVDSF0CsUmaQKQZ8aLeHUJTInj9uDRRuLv+Lz2Fb1vlB8ATcqWk89knGia87PNB
+ WdAd3nZmnQ/3ONP1TmI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=live-atlws.click;
+ b=fPR9GRWWby9puMjzNijBzFd9Q4T3OIlb68OUQHmM1o1axs02QHwQ/ktcUyapornFXm5h3FjkN852
+ A7s+dmnZVtEv8P4oZwS0h3FPhuv3gUKJ5uxyJ8ZxTxPrGkSkQwLXIBhlHAF3bMpPCcz/fabyveWa
+ rnf6ClnTbu6W3HmAI14=;
+Received: by mail.live-atlws.click id hu9v900001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 19 Feb 2023 14:08:34 -0500 (envelope-from
- <leaffilter-gutter-cleaning-intel+2Dgvt+2Ddev=lists.freedesktop.org@learn-filter.click>)
-Date: Sun, 19 Feb 2023 14:08:34 -0500
-From: "LeafFilter Gutter Cleaning"
- <leaffilter-gutter-cleaning@learn-filter.click>
+ Sun, 19 Feb 2023 14:44:18 -0500 (envelope-from
+ <gail-vega-intel+2Dgvt+2Ddev=lists.freedesktop.org@live-atlws.click>)
+Date: Sun, 19 Feb 2023 14:44:18 -0500
+From: "Gail Vega" <gail-vega@live-atlws.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: LeafFilter - Your permanent solution to clogged gutters
+Subject: Hurry, get a Stanley Tool Set from Lowe's for free
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_628_152494093.1676828434800"
-Message-ID: <0.0.0.44.1D9449590623E10.462E81@mail.learn-filter.click>
+ boundary="----=_Part_526_1169172699.1676835848945"
+Message-ID: <0.0.0.3A.1D9449A8E52A0A6.4FA10C@mail.live-atlws.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_628_152494093.1676828434800
+------=_Part_526_1169172699.1676835848945
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,74 +62,52 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04021923</title> 
+  <title>07021923</title> 
  </head> 
- <body style="background-color: #cffae3;"> 
-  <div style="max-width: 600px; margin: auto; color: #fff;"> 
-   <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
-   <h6 class="caps" style="color: #222222 !important; font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.2; margin: 0; margin-bottom: 20px; margin-top: 30px; font-size: 18px;">&nbsp;</h6> 
-   <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
-   <address>&nbsp;</address> 
-   <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 30px; color: #111111;">&nbsp;</p> 
-   <div>
-    <a href="http://www.learn-filter.click/gastric-crouching/31e4d2395NS86H11B4b8aP11d8o36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQydK9Q7u1ylO0v6i0wPDA" target="_blank"><img alt="" src="http://www.learn-filter.click/9ad6OW239m5OD7Xa12K4b8cVG11d8M36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQydK9Q6Eh1Jv05l@OwD/contains-workably" width="100%" /></a>
+ <body> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
+   <div style="border: solid; 1px;"> 
+    <header class="header_1" style="width: 100%; background-color: #3b3b3b; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; "> 
+     <div style="text-align: center; color: #fff; "> 
+      <div style="padding:2rem; font-size: 26px">
+       <strong>Special Gift for intel-gvt-dev@lists.freedesktop.org</strong>
+      </div> 
+     </div> 
+    </header> &nbsp; 
+    <section style="width: 100%;"> 
+     <h4 style="max-width: 97%; margin: auto;"><a href="http://www.live-atlws.click/5cf5U2V395zCi8612D4b9Q8T11dbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQBdK9e6i1DVU06VywpDl/operable-deplete" target="_blank"><img alt="" src="http://www.live-atlws.click/c7d6WV2j395kH7aG11q4b9aL11dbH36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQBdK9e6F1P0on5ljBwD/consume-Ithaca" width="100%" /></a></h4> 
+     <p><a href="http://www.live-atlws.click/5cf5U2V395zCi8612D4b9Q8T11dbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQBdK9e6i1DVU06VywpDl/operable-deplete" target="_blank"><img alt="" src="http://www.live-atlws.click/bypassing-hearten/be86X23r9z5BXR7a12r4b9bCH11dbW36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQBdK9e6o10NCr5AlAwD" width="100%" /></a></p> 
+    </section> 
+    <div style="max-width: 95%; margin: auto;">
+     <a href="http://www.live-atlws.click/5cf5U2V395zCi8612D4b9Q8T11dbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQBdK9e6i1DVU06VywpDl/operable-deplete" target="_blank"><img alt="" src="http://www.live-atlws.click/6dd4C2395t7va_11H4b9cX11dbC36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQBdK9e5HXx106QjXwDy/presented-convolution" width="100%" /></a> 
+     <aside class="btn_sprees" style="width: 100%; text-align: center; "> 
+      <div style="font-family: Arial, Helvetica, sans-serif; font-size: 22px; padding: 16px 31px; background-color: #012168; font-weight: bold; display: inline; border-radius: 10px; ">
+       <a href="http://www.live-atlws.click/5cf5U2V395zCi8612D4b9Q8T11dbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQBdK9e6i1DVU06VywpDl/operable-deplete" style="text-decoration: none; color: #fff; ">Start Here Now</a>
+      </div> 
+     </aside> 
+     <br /> &nbsp;
+    </div> 
    </div> 
-   <ul style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 15px; color: #111111; padding: 0; padding-left: 25px; list-style-type: none"> 
-    <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-    <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-    <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;"> 
-     <ul style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 15px; color: #111111; padding: 0; padding-left: 25px; margin-top: 15px;"> 
-      <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px; list-style-type: none">&nbsp;</li> 
-      <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px; list-style-type: none"> 
-       <ul style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 15px; color: #111111; padding: 0; padding-left: 25px; margin-top: 15px; list-style-type: none"> 
-        <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-        <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-       </ul> </li> 
-     </ul> </li> 
-   </ul> 
-   <ol style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 15px; color: #111111; padding: 0; padding-left: 25px; list-style-type: none"> 
-    <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-    <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-    <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;"> 
-     <ol style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 15px; color: #111111; padding: 0; padding-left: 25px; margin-top: 15px; list-style-type: none"> 
-      <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-      <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;"> 
-       <ol style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; font-weight: normal; margin: 0; margin-bottom: 15px; color: #111111; padding: 0; padding-left: 25px; margin-top: 15px; list-style-type: none"> 
-        <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-        <li style="list-style-position: outside; margin-left: 5px; margin-bottom: 2px;">&nbsp;</li> 
-       </ol> </li> 
-     </ol> </li> 
-   </ol> 
-   <dl> 
-    <dt style="font-weight: bold;">
-     &nbsp;
-    </dt> 
-    <dd style="margin-left: 40px;">
-     &nbsp;
-    </dd> 
-    <dt style="font-weight: bold;">
-     &nbsp;
-    </dt> 
-    <dd style="margin-left: 40px;">
-     &nbsp;
-    </dd> 
-    <dd style="margin-left: 40px;">
-     &nbsp;
-    </dd> 
-   </dl> 
   </div> 
   <br /> 
   <br /> 
-  <br /> 
   <br /> &nbsp; 
-  <footer style="max-width: 600px; margin: auto;"> 
-   <address style="background-color: rgb(77, 95, 69); padding: 15px 0px; border-radius: 8px; color: #fff; font-weight: bold;"> 
-    <div style="text-align: center; font-size: 80%;;"> 
-     <p>This is an advertisement. This message has been sent to you through an affiliate.<br /> To be removed from receiving future emails, <a href="http://www.learn-filter.click/eb76J23hX95k86wK13l4bG8sbF11d8_36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydK9Q7ls1Zj0V6Szwy2D/rebellion-outdoors" style="font-style: normal; font-weight: normal; text-decoration: underline;" target="_blank">Unsubscribe here</a>.<br /> <br /> 2 Depot Plaza, Suite 401 Bedford Hills, NY 10507<br /> &nbsp;</p> 
-    </div> </address> 
-  </footer>   
- <img src="http://www.learn-filter.click/gastric-crouching/17a6j23R9F5I8S_511m4b8dn11d8F36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQydK9Q7OY10vHi5GNwDA" alt=""/></body>
+  <div style="width: 100%; "> 
+   <table align="center" style="max-width:600px; width: 100% ; border-collapse: collapse; background-color: #1d1d1d; color: #fff; "> 
+    <tbody> 
+     <tr> 
+      <td style="padding:1rem; word-break: break-word; color: #ffffff; font-family: Helvetica; font-size: 12px; line-height: 150%; text-align: center; " valign="top"> <p><span style="text-decoration: none; ">To withdraw from e-mail,</span><a href="http://www.live-atlws.click/flaring-astronomical/6a26Qii2395H8OO612F4b9C9P11dbg36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQBdK9e7n1y0RCG6g@NlwD" style="text-decoration-line: none; color: white"> <span>Continue This Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small><span dir="psychiatrists"></small></span><small></small><style><font style="honorary"></style></font></p> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <p style="margin: 0;">&nbsp;</p> 
+  <h2 style="font-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> 
+  <p style="margin: 0;">&nbsp;</p> 
+  <p style="margin: 0;">&nbsp;</p> 
+  <h2 style="font-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2>   
+ <img src="http://www.live-atlws.click/Y2f4s2395nA85v13h4bI9zdV11dbS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdK9e7oR1K0NC5qJPwD/consume-Ithaca" alt=""/></body>
 </html>
 
-------=_Part_628_152494093.1676828434800--
+------=_Part_526_1169172699.1676835848945--
 
