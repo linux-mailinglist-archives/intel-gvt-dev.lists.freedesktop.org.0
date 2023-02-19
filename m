@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61F5769C230
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 19 Feb 2023 20:54:59 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id AAD6769C213
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 19 Feb 2023 20:06:28 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 243DD10E279;
-	Sun, 19 Feb 2023 19:54:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 76CE110E234;
+	Sun, 19 Feb 2023 19:06:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 19 Feb 2023 19:54:56 UTC
-Received: from mail.live-atlws.click (unknown [104.206.109.250])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8016110E279
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Sun, 19 Feb 2023 19:06:26 UTC
+Received: from mail.like-huus.click (unknown [104.206.109.241])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 44D0D10E234
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 19 Feb 2023 19:54:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=live-atlws.click;
+ Sun, 19 Feb 2023 19:06:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=like-huus.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=gail-vega@live-atlws.click; bh=7dPPUaKHqHbB/gF5dovZsulZyxA=;
- b=o/lbBMgj/2bsUx4XR1aqBPX3U9YNyQum1P+X+Kd+XHJuhDgdwuTWwXVF6mVgz5LBCGbjpuvIDvws
- gGdItVBeGTNZaLVDSF0CsUmaQKQZ8aLeHUJTInj9uDRRuLv+Lz2Fb1vlB8ATcqWk89knGia87PNB
- WdAd3nZmnQ/3ONP1TmI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=live-atlws.click;
- b=fPR9GRWWby9puMjzNijBzFd9Q4T3OIlb68OUQHmM1o1axs02QHwQ/ktcUyapornFXm5h3FjkN852
- A7s+dmnZVtEv8P4oZwS0h3FPhuv3gUKJ5uxyJ8ZxTxPrGkSkQwLXIBhlHAF3bMpPCcz/fabyveWa
- rnf6ClnTbu6W3HmAI14=;
-Received: by mail.live-atlws.click id hu9v900001g1 for
+ i=huusk_knives@like-huus.click; 
+ bh=muvbmm9gt9Blmln5uzqkTp7lUAM=;
+ b=E1V0kf1DOCQ5y+rlsiFi/fD7wMIH7mhowmOfalxiUdPHqq7Xm4WeXqZqGEZgYywiLa7f6UvbUvWh
+ yGMl4sfnqVHJs6jE9vX0FU0o0cuFAlK8qNYVH96wGoB0fTRvAdqZHn6snLQ7+7H3neAt9C2kLE/F
+ 9RvMKXA8hEtMtfwmA6Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=like-huus.click;
+ b=QjVwkMBr0jRBCnk5Kwbf6jRJenbo3X/XjqrILJcCUVJjXgHnhg4B197PWRr79f20usIWNMad4V+d
+ Aul4vh9uqKzC5pYvn7txmsu7tKo716uras625GztVqp83InQ5h2RuyZ7qMIQGQHBjBgYdpnLrw4Y
+ hetyMbZoxrs74lqgoxg=;
+Received: by mail.like-huus.click id hua3mu0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 19 Feb 2023 14:44:18 -0500 (envelope-from
- <gail-vega-intel+2Dgvt+2Ddev=lists.freedesktop.org@live-atlws.click>)
-Date: Sun, 19 Feb 2023 14:44:18 -0500
-From: "Gail Vega" <gail-vega@live-atlws.click>
+ Sun, 19 Feb 2023 15:24:26 -0500 (envelope-from
+ <huusk_knives-intel+2Dgvt+2Ddev=lists.freedesktop.org@like-huus.click>)
+Date: Sun, 19 Feb 2023 15:24:26 -0500
+From: "Huusk Knives" <huusk_knives@like-huus.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Hurry, get a Stanley Tool Set from Lowe's for free
+Subject: Discounted Kitchen Knives
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_526_1169172699.1676835848945"
-Message-ID: <0.0.0.3A.1D9449A8E52A0A6.4FA10C@mail.live-atlws.click>
+ boundary="----=_Part_664_1287429402.1676833010145"
+Message-ID: <0.0.0.49.1D944A029361CF6.40A0C@mail.like-huus.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,62 +53,138 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_526_1169172699.1676835848945
+------=_Part_664_1287429402.1676833010145
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>07021923</title> 
- </head> 
- <body> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
-   <div style="border: solid; 1px;"> 
-    <header class="header_1" style="width: 100%; background-color: #3b3b3b; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; "> 
-     <div style="text-align: center; color: #fff; "> 
-      <div style="padding:2rem; font-size: 26px">
-       <strong>Special Gift for intel-gvt-dev@lists.freedesktop.org</strong>
-      </div> 
-     </div> 
-    </header> &nbsp; 
-    <section style="width: 100%;"> 
-     <h4 style="max-width: 97%; margin: auto;"><a href="http://www.live-atlws.click/5cf5U2V395zCi8612D4b9Q8T11dbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQBdK9e6i1DVU06VywpDl/operable-deplete" target="_blank"><img alt="" src="http://www.live-atlws.click/c7d6WV2j395kH7aG11q4b9aL11dbH36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQBdK9e6F1P0on5ljBwD/consume-Ithaca" width="100%" /></a></h4> 
-     <p><a href="http://www.live-atlws.click/5cf5U2V395zCi8612D4b9Q8T11dbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQBdK9e6i1DVU06VywpDl/operable-deplete" target="_blank"><img alt="" src="http://www.live-atlws.click/bypassing-hearten/be86X23r9z5BXR7a12r4b9bCH11dbW36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQBdK9e6o10NCr5AlAwD" width="100%" /></a></p> 
-    </section> 
-    <div style="max-width: 95%; margin: auto;">
-     <a href="http://www.live-atlws.click/5cf5U2V395zCi8612D4b9Q8T11dbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQBdK9e6i1DVU06VywpDl/operable-deplete" target="_blank"><img alt="" src="http://www.live-atlws.click/6dd4C2395t7va_11H4b9cX11dbC36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQBdK9e5HXx106QjXwDy/presented-convolution" width="100%" /></a> 
-     <aside class="btn_sprees" style="width: 100%; text-align: center; "> 
-      <div style="font-family: Arial, Helvetica, sans-serif; font-size: 22px; padding: 16px 31px; background-color: #012168; font-weight: bold; display: inline; border-radius: 10px; ">
-       <a href="http://www.live-atlws.click/5cf5U2V395zCi8612D4b9Q8T11dbs36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQBdK9e6i1DVU06VywpDl/operable-deplete" style="text-decoration: none; color: #fff; ">Start Here Now</a>
-      </div> 
-     </aside> 
-     <br /> &nbsp;
-    </div> 
-   </div> 
-  </div> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <div style="width: 100%; "> 
-   <table align="center" style="max-width:600px; width: 100% ; border-collapse: collapse; background-color: #1d1d1d; color: #fff; "> 
-    <tbody> 
-     <tr> 
-      <td style="padding:1rem; word-break: break-word; color: #ffffff; font-family: Helvetica; font-size: 12px; line-height: 150%; text-align: center; " valign="top"> <p><span style="text-decoration: none; ">To withdraw from e-mail,</span><a href="http://www.live-atlws.click/flaring-astronomical/6a26Qii2395H8OO612F4b9C9P11dbg36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQBdK9e7n1y0RCG6g@NlwD" style="text-decoration-line: none; color: white"> <span>Continue This Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small><span dir="psychiatrists"></small></span><small></small><style><font style="honorary"></style></font></p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <p style="margin: 0;">&nbsp;</p> 
-  <h2 style="font-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> 
-  <p style="margin: 0;">&nbsp;</p> 
-  <p style="margin: 0;">&nbsp;</p> 
-  <h2 style="font-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2>   
- <img src="http://www.live-atlws.click/Y2f4s2395nA85v13h4bI9zdV11dbS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdK9e7oR1K0NC5qJPwD/consume-Ithaca" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>06021923</title>=20
+ </head>=20
+ <body style=3D"background-color: #c9c9c9;">
+  <br />=20
+  <br />=20
+  <br /> &nbsp;=20
+  <div style=3D"max-width: 600px; margin: auto; background-color: #fff;">=
+=20
+   <div style=3D"box-shadow: 0px 0px 8px 1px;">
+    <a href=3D"http://www.like-huus.click/baptistries-discredited/d504J2395zs86s12z4bz93g11dam36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQudK9S5V1T0r6mBwDXX" target=3D"_blank"><img alt=3D"" src=3D"=
+http://www.like-huus.click/2874S2395E7Tap13C4b9_6nz11da_36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQudK9S7D1wCj0L5z@jwD/expresses-inflatable" width=3D"100%" /></a>
+   </div>=20
+  </div>=20
+  <div>=20
+   <footer style=3D"width: 65%; text-align: center; padding-top: 150px; mar=
+gin: auto; ">=20
+    <address style=3D"background-color: #3f3f3f; color: #fffcfc ;padding: 1=
+8px 0px;outline: double 4px; ">=20
+     <div style=3D"font-size: 20px; font-weight: bold; ">=20
+      <p style=3D"font-size: 16px">&nbsp;If you do not wish to receive futu=
+re messages click here to <span class=3D"unstyle-auto-detected-links"><a hr=
+ef=3D"http://www.like-huus.click/8455W23H95i8LV612m4b94No11daV36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQudK9S5Y1D0L6c1wPDj/sawmill-receptiveness" style=3D"text-decoration: underline!important; font-famil=
+y: sans-serif; font-size: 10px; line-height: 14px; color: #0044ff;">take yo=
+u out</a></span><br /> <br /> <span class=3D"unstyle-auto-detected-links"><=
+a href=3D"http://www.like-huus.click/6835Q2R395WD86y13b4Abh95p11daV36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQudK9S5rV1A05rNwOD/sphere-precipitated" style=3D"text-decoration: underline!important; font-f=
+amily: sans-serif; font-size: 10px; line-height: 14px; text-align: center; =
+color: #0044ff;">Huusk</a>&nbsp;|&nbsp; Donelaicio st. 60, Kaunas, Lithuani=
+a</span></p>=20
+     </div> </address>=20
+   </footer>=20
+  </div>=20
+  <div style=3D"display: none; max-height: 0px; overflow: hidden;">
+   &nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
+bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
+&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
+;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
+sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
+nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
+?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
+p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
+bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
+&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
+;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
+sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
+nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
+?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
+p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
+bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
+&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
+;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
+sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
+nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
+?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
+p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
+bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;
+  </div>=20
+  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentat=
+ion" width=3D"100%">=20
+   <tbody>=20
+    <tr>=20
+     <td align=3D"center" bgcolor=3D"">=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"max-width: 600px;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center" style=3D"padding: 40px 10px 40px 10px;" valig=
+n=3D"top">&nbsp;</td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+    <tr>=20
+     <td align=3D"center" bgcolor=3D"" style=3D"padding: 0px 10px 0px 10px;=
+">=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"max-width: 600px;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"center" bgcolor=3D"" style=3D"padding: 40px 20px 20px=
+ 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato',=
+ Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-sp=
+acing: 4px; line-height: 48px;" valign=3D"top"> <h1 style=3D"font-size: 48p=
+x; font-weight: 400; margin: 0;">&nbsp;</h1> </td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+    <tr>=20
+     <td align=3D"center" bgcolor=3D"" style=3D"">=20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"max-width: 600px;" width=3D"100%">=20
+       <tbody>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"color: #666666; fo=
+nt-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weig=
+ht: 400; line-height: 25px;"> <p style=3D"margin: 0;">&nbsp;</p> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D"padding: 0px 0px 0=
+px 0px;">&nbsp;</td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D" color: #666666; f=
+ont-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-wei=
+ght: 400; line-height: 25px;"> <p style=3D"margin: 0;">&nbsp;</p> </td>=20
+        </tr>=20
+        <tr>=20
+         <td align=3D"left" bgcolor=3D"#ffffff" style=3D" color: #111111; f=
+ont-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-wei=
+ght: 400; line-height: 25px;"> <h2 style=3D"font-size: 24px; font-weight: 4=
+00; margin: 0;">&nbsp;</h2> </td>=20
+        </tr>=20
+        <tr>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+   </tbody>=20
+  </table>  =20
+ <img src=3D"http://www.like-huus.click/da95qN2395dqt8512kV4b97i11daG36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQudK9S7R1BYXn06HllwDz/bucks-gutting" alt=3D""/></body>
 </html>
 
-------=_Part_526_1169172699.1676835848945--
+------=_Part_664_1287429402.1676833010145--
 
