@@ -2,33 +2,54 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C8D769C02B
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 19 Feb 2023 13:27:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C783369C038
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 19 Feb 2023 13:55:04 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 664FC10E0EB;
-	Sun, 19 Feb 2023 12:27:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D51FA10E18B;
+	Sun, 19 Feb 2023 12:55:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 517 seconds by postgrey-1.36 at gabe;
- Sun, 19 Feb 2023 12:27:09 UTC
-Received: from srv.asperenvi.cz (unknown [185.63.24.244])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0F19510E0EB
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 19 Feb 2023 12:27:09 +0000 (UTC)
-Received: from User (gateway [192.168.1.2])
- by srv.asperenvi.cz (Postfix) with SMTP id 1FFB528F2C;
- Sun, 19 Feb 2023 13:15:29 +0100 (CET)
-From: "Lana Lea Ruddick"<lanalea219@gmail.com>
-Subject: Lana Lea Ruddick 
-Date: Sun, 19 Feb 2023 19:15:40 +0700
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C21E210E156;
+ Sun, 19 Feb 2023 12:54:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1676811297; x=1708347297;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=NNDwZfUMtL5OJSQoDDPSDAV3GwPyQ1sNDZyWlm4WfnU=;
+ b=UaKwyfcjsDDopjkhs101O2jrb9j945Hw0qL1mujIRwxIE1FL2if31fkY
+ kKpgabJBIqvi4/+LZa4MPAs7lvgDPv2UsdwF5w9+ISNTNzMImUI4OL/lb
+ yFC3NKWYM17xpFCK+0rvUlHNbs+5zyf6Twtv0I/Cg1rc9l9sHbPlbRR3L
+ 4TBtNRz/vyX6mxElNz4py8r6wi4qUsW4FjuM/CHqD8FSrRRjKdH/8aDvR
+ vXeSGRbD9anf6b/TAbVUJ11CsUI/mZ5oY/DYlm7Iy2+b4YIT8tpDi595I
+ OsU9Sz0GU27KtySC5kPZ+0cEhPp/RUa2uTZiGq4EpRpxulBCthfExmTVO A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10625"; a="329961554"
+X-IronPort-AV: E=Sophos;i="5.97,310,1669104000"; 
+ d="asc'?scan'208";a="329961554"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2023 04:54:57 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10625"; a="794912770"
+X-IronPort-AV: E=Sophos;i="5.97,310,1669104000"; 
+ d="asc'?scan'208";a="794912770"
+Received: from debian-skl.sh.intel.com (HELO debian-skl) ([10.239.159.40])
+ by orsmga004.jf.intel.com with ESMTP; 19 Feb 2023 04:54:54 -0800
+Date: Sun, 19 Feb 2023 20:52:57 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Randy Dunlap <rdunlap@infradead.org>
+Subject: Re: [PATCH] drm/i915: move a Kconfig symbol to unbreak the menu
+ presentation
+Message-ID: <Y/IbqTv0yOcPl3yP@debian-scheme>
+References: <20230215044533.4847-1-rdunlap@infradead.org>
+ <Y+7d7xKjjzRnV9eI@debian-scheme>
+ <bd1597ba-21c9-e1a8-8851-4e7c95b28b65@infradead.org>
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="bCCMBWSwmp2FPuGZ"
+Content-Disposition: inline
+In-Reply-To: <bd1597ba-21c9-e1a8-8851-4e7c95b28b65@infradead.org>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -41,46 +62,82 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: ruddicklana329@gmail.com
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Christoph Hellwig <hch@lst.de>,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20230219122710.664FC10E0EB@gabe.freedesktop.org>
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-Lana Lea Ruddick.</DIV>
-<DIV>
-Greetings With all due respect,</DIV>
-<DIV>
-I want you to read my letter with one mind and help me. I am Lana Lea Ruddick , The only daughter of late Mr. and Mrs Ruddick, My Late father was a very wealthy cocoa dealer in Lome Togo before he was poisoned to death by his business associates on one of their outing to discuss on a business deal.</DIV>
-<DIV>
-my mother died when she was given birth to me,since then my father took me so special because I am motherless. Before the death of my late father (on 2nd) June 2021 in a private hospital here in Lome Togo. He secretly called me on his bedside and told me that he has a sum of USD5, 000,000.00</DIV>
-<DIV>
-five million United States dollars left in a suspense account in a local bank here in Lome Togo, that he used my name as his only daughter for the next of kin in deposit of the fund.</DIV>
-<DIV>
-He also explained to me that it was because of this wealth that he was poisoned by his business associates that I should seek for a foreign partner in a country of my choice where I will transfer this money and use it for investment purpose, such as real estate agent,</DIV>
-<DIV>
-I am 17 year old. Dear I am honorably seeking your assistance in the following ways.</DIV>
-<DIV>
-1) To provide any bank account where this money would be transferred into.</DIV>
-<DIV>
-2) To serve as the guardian of this fund.</DIV>
-<DIV>
-3) To make arrangement for me to come over to your country to further my education and to secure a residential permit for me in your country.</DIV>
-<DIV>
-Moreover, I am willing to (offer you 35) percent of the total sum as compensation for your effort input after the successful transfer of this fund to your nominated account overseas.</DIV>
-<DIV>
-I want you to help me not because of the 35 percent I want to offer you but to take me as your adoptive child and take good care of my life. Please save my life.</DIV>
-<DIV>
-Hope to hear from you immediately for more details for you to receive the money so that I can be coming to your country immediately after you have receive the money so that I can continue my education while this money will be invested by you.</DIV>
-<DIV>
-Thanks and God Bless.</DIV>
-<DIV>
-&nbsp; Best Regards</DIV>
-<DIV>
-Lana Lea Ruddick</DIV>
-</FONT>
-</BODY></HTML>
+
+--bCCMBWSwmp2FPuGZ
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 2023.02.16 22:32:33 -0800, Randy Dunlap wrote:
+> Hi,
+>=20
+> On 2/16/23 17:52, Zhenyu Wang wrote:
+> > On 2023.02.14 20:45:33 -0800, Randy Dunlap wrote:
+> >> Inserting a Kconfig symbol that does not have a dependency (DRM_I915_G=
+VT)
+> >> into a list of other symbols that do have a dependency (on DRM_I915)
+> >> breaks the driver menu presentation in 'make *config'.
+> >>
+> >=20
+> > I'm not sure what's the actual failure in presentation, I'm not quite f=
+amiliar
+> > with Kconfig, could you help to elaborate?
+> >=20
+> > thanks!
+>=20
+> For menuconfig and nconfig, it's a subtle difference. The following menu
+> items are indented more after the patch (i.e., they are not indented enou=
+gh
+> before the patch):
+>=20
+>  =E2=94=82 <M>   Enable KVM host support Intel GVT-g graphics virtualizat=
+ion          =E2=94=82
+>  =E2=94=82 [*]   Enable Intel PXP support                                =
+             =E2=94=82
+>  =E2=94=82       drm/i915 Debugging  --->                                =
+             =E2=94=82
+>  =E2=94=82       drm/i915 Profile Guided Optimisation  --->
+>=20
+> Same menu items for gconfig: they should all be subordinate (so indented)
+> to the main
+> <M> Intel 8xx/9xx/G3x/G4x/HD Graphics
+> menu.
+>=20
+> For xconfig, it's worse. "drm/i915 Debugging" and "drm/i915 Profile Guide=
+d Optimisation"
+> are shown on the left side window, while are of the other i915 options ar=
+e shown in the
+> right side window (before the patch).
+> After the patch, all subordinate options are listed in the right side win=
+dow under the
+> main "Intel 8xx/9xx/G3x/G4x/HD Graphics" menu item.
+>=20
+> See attached photos for comparisons.
+>=20
+
+I wasn't awared of the wrong indentation. Thanks a lot, Randy!
+
+Acked-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+--bCCMBWSwmp2FPuGZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY/IbpQAKCRCxBBozTXgY
+J7KqAJ9ai4/UyyDGoRUOJQD34MJmFdFyvQCfYnyyPgV1EKMhMrDKUnh9nVBfBeY=
+=nrt2
+-----END PGP SIGNATURE-----
+
+--bCCMBWSwmp2FPuGZ--
