@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5317169D124
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Feb 2023 17:12:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F61B69D1B8
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Feb 2023 17:54:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1FE0310E6D2;
-	Mon, 20 Feb 2023 16:12:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C95C310E6E3;
+	Mon, 20 Feb 2023 16:54:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 20 Feb 2023 16:12:24 UTC
-Received: from mail.appeal-mob.click (unknown [104.206.109.248])
- by gabe.freedesktop.org (Postfix) with ESMTP id A8DD710E6D4
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Mon, 20 Feb 2023 16:54:31 UTC
+Received: from mail.arise-khlfa.click (unknown [104.206.109.244])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4485A10E6E7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Feb 2023 16:12:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=appeal-mob.click;
+ Mon, 20 Feb 2023 16:54:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=arise-khlfa.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tmobile.supplies@appeal-mob.click; 
- bh=5eIWaLoJVoUalx1P2GjpHBWBEig=;
- b=Wm8LsGg/Gdi7+4X4mVqS18YawkbmyFBF/aGiEcO9mYDrUCtfHYL8sNVhpIuknK7n+Ip+tsVCIPBU
- XzLnwfWjeyTY4LJ0yxxYxtiegvMwGwvRXKn03s407EWE3JGbrrmO1mHuvhj4zq7dg+b4sxdk+R4Y
- aBeGW6bcPS6b2ZpBPw0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=appeal-mob.click;
- b=Ff0nUKnsOvbh2y5tR0up0uZyO0T8ipYeWAUGtnkwW6ylStVJ9du03bkYZs2q9s+27XMNzsTH1eEc
- Lr9iwKgnkd9fO1RVMWdOQXWlzepc8npG6hDaAZvYAzJVfPhK2ZHmAvgMs+RkHGJpaZDMGy7fgpHa
- oWODvbcev4D8QWSeYzM=;
-Received: by mail.appeal-mob.click id huedug0001gj for
+ i=kohls-exclusive-offer@arise-khlfa.click; 
+ bh=EF7Ya4WV8a0aOwgQ/8lGO2xIK1o=;
+ b=XJbo8T12eL7lo5IdroiAYjpYOXcaeK+5Cpe/nyfnkaMmF/DvVP6ug6miv8ja+6OMpKpYm7jl4elV
+ dGdU1FM5hapyHCszmngpihx6u9yQ5tBu2RKOeXBMG083UhUytU3dvtD/g4TVC5CWDxJDQVufiGhT
+ 1smvWUR9rhgfvhV00Lk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=arise-khlfa.click; 
+ b=Wj8jVw80szNDIc07j8YckTGK+YIIgiCZq1sXI9uzQGmmQNh0s6l438wRAsRuUmTb9Vpl20b90lpp
+ nu22gvUV+AzitNxxBocCWfbXR7htJnnA7KpKfcAaCpwjNhU9D+GEKQDLKBxT5K/ZFp5oJdBjEs9q
+ Zjq6RQw0ABY1ReiVcpM=;
+Received: by mail.arise-khlfa.click id huet040001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Feb 2023 11:01:54 -0500 (envelope-from
- <tmobile.supplies-intel+2Dgvt+2Ddev=lists.freedesktop.org@appeal-mob.click>)
-Date: Mon, 20 Feb 2023 11:01:54 -0500
-From: "TMOBILE Supplies" <tmobile.supplies@appeal-mob.click>
+ Mon, 20 Feb 2023 13:11:11 -0500 (envelope-from
+ <kohls-exclusive-offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@arise-khlfa.click>)
+Date: Mon, 20 Feb 2023 13:11:11 -0500
+From: "Kohls Exclusive Offer" <kohls-exclusive-offer@arise-khlfa.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best reward deal you can get for being a loyal customer
+Subject: Claim your free Knife Set from Kohl's, limited time offer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_406_221585266.1676908902155"
-Message-ID: <0.0.0.2D.1D94544A6ADF56A.2A29BC@mail.appeal-mob.click>
+ boundary="----=_Part_493_1421647029.1676911483691"
+Message-ID: <0.0.0.36.1D94556B6ACAA6C.535381@mail.arise-khlfa.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,168 +53,85 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_406_221585266.1676908902155
+------=_Part_493_1421647029.1676911483691
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>01022023</title>=20
- </head>=20
- <body style=3D"background-color: #fff8fb;">=20
-  <div style=3D"display: none; max-height: 0px; overflow: hidden;">
-   &nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;
-  </div>=20
-  <div style=3D"max-width: 600px ; margin: auto; background-color: #fff;">=
-=20
-   <header id=3D"inorps2" style=3D"width: 100%; background-color: #fff8fb;"=
->=20
-    <div style=3D"width: 100%; padding-top: 35px;background-color: #fff8fb;=
- ">=20
-     <p style=3D"font-size: 25px; font-family: 'Segoe UI', Tahoma, Geneva, =
-Verdana, sans-serif; text-align: center; font-weight: bold;">&nbsp;</p>=20
-    </div>=20
-    <div style=3D"text-align: center;background-color: #6b344d; padding: 15=
-px 0px; box-sizing: border-box; box-shadow: inset 0px 0px 8px 5px #BA2C5C;"=
->=20
-     <p class=3D"parrmint_225" style=3D"text-align: center; font-size: 22px=
-; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight=
-: 900; display: inline; color: #fff;">Get closer to a $100 <b>T-Mobile</b> =
-Gift<br /> Card With Just a Few Clicks!</p>=20
-    </div>=20
-   </header>=20
-   <div class=3D"for_imperies" style=3D"width: 100%;">
-    <span id=3D"suu12sup22"><a href=3D"http://www.appeal-mob.click/d135Xp2395U86hA13KN4b9eWX11dcW36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQHdK9K6S10tzR6qkXTwD/resolver-improviser" target=3D"_blank"><img a=
-lt=3D"" src=3D"http://www.appeal-mob.click/solicitude-hence/9cc4m2395K7aZs11J4ba0S11dcg36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQHdK9K7iM1Ml0W5ONNwD" style=3D"display: block;" width=3D"100%" /></a>=
- </span>
-   </div>=20
-   <section id=3D"indgla" style=3D"width: 100%;">=20
-    <h4 style=3D"width: auto;">&nbsp;</h4>=20
-    <p style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-seri=
-f; padding: 15px 35px; font-size: 22px; text-align: center; line-height: no=
-raml; font-weight: 500;;">Tell us how we' re doing and get a $100 gift card=
- to <strong style=3D"color: #BA2C5C;">T-MOBILE</strong> and upgrade your mo=
-bile service!<br /> <br /> We value your feedback and want to hear your tho=
-ughts on our products, services, and customer support. Just by completing o=
-ur 20-Second Service Survey about your recent experience with us.</p>=20
-   </section>=20
-   <h6 id=3D"bottm25" style=3D"width: 100%; text-align: center;">&nbsp;</h6=
->=20
-   <div style=3D"background-color: #111111; font-family: 'Segoe UI', Tahoma=
-, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 18px; padding:=
- 15px 20px; display: inline-block; border-radius: 8px;">
-    <a href=3D"http://www.appeal-mob.click/d135Xp2395U86hA13KN4b9eWX11dcW36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQHdK9K6S10tzR6qkXTwD/resolver-improviser" style=3D"text-decoration: none; color: #fff;" ta=
-rget=3D"_blank">Go And Start Now</a>
-   </div>=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <br /> &nbsp;=20
-   <footer class=3D"finald_direcction_go" style=3D"width: 100%;">=20
-    <p class=3D"igg_go">&nbsp;</p>=20
-    <p class=3D"igg_go2">&nbsp;</p>=20
-    <address id=3D"final" style=3D"text-align: center; font-size: 12px; bac=
-kground-color: #111111; font-weight: 900; color: #fff; padding: 15px 0px;">=
- <p><span style=3D"text-decoration: none; ">No longer wish to receive communication?,</span><a href=3D"=
-http://www.appeal-mob.click/1b55In2395r8J6q13yS4ib9fz11dcA36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQHdK9K5V10zF5eOwAD/resolver-improviser" style=3D"text-decoration-line: none; color: white"> <span>=
-Begin Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /=
-> <br /> <br /> <small><small><style color="aggressive"></style></small></small><style></style><font lang="heather"></font></p> </address>=20
-   </footer>=20
-  </div>=20
-  <div style=3D"display: none; font-size: 1px; color: #fefefe; line-height:=
- 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; m=
-ax-width: 0px; opacity: 0; overflow: hidden;">
-   &nbsp;
-  </div>=20
-  <div style=3D"display: none; max-height: 0px; overflow: hidden;">
-   &nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?=
-&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp=
-;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nb=
-sp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&=
-nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;=
-?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbs=
-p;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&n=
-bsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;
-  </div>=20
-  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentat=
-ion" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td align=3D"center" bgcolor=3D"">=20
-      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
-ntation" style=3D"max-width: 600px;" width=3D"100%">=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"center" style=3D"padding: 40px 10px 40px 10px;" valig=
-n=3D"top">&nbsp;</td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-    <tr>=20
-     <td align=3D"center" bgcolor=3D"" style=3D"padding: 0px 10px 0px 10px;=
-">=20
-      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
-ntation" style=3D"max-width: 600px;" width=3D"100%">=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"center" bgcolor=3D"" style=3D"padding: 40px 20px 20px=
- 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato',=
- Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-sp=
-acing: 4px; line-height: 48px;" valign=3D"top"> <h1 style=3D"font-size: 48p=
-x; font-weight: 400; margin: 0;">&nbsp;</h1> </td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.appeal-mob.click/maidens-Hernandez/3b46YO23m95v85NH13FL4Lba1Z11dcX36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQHdK9K6Wyp10I6F3jMwD" alt=3D""/></body>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>02022023</title> 
+ </head> 
+ <body style="background-color: #ebebeb; padding-bottom: 50px;"> 
+  <p style="padding: 20px 0px;">&nbsp;</p> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: inset 0px 0px 8px 2px; padding: 50px 10px; border-radius: 8px;"> 
+   <div style="width: 100%; "> 
+    <header style="max-width: 600px; text-align: center; margin: 0; padding: 0; "> 
+     <p class="cartograpu" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 50px;  display: inline;"><a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" style="text-decoration: none;" target="_blank"><b style="color: #530b0b;">KOHL'S</b> <b style="color: #3a3a3a;">Rewards</b></a></p> 
+    </header> 
+   </div> &nbsp; 
+   <section style="width: 100%; text-align: center;"> 
+    <div class="div_classnew" style="max-width: 600px;"> 
+     <p id="new_codeinfo" style="max-width: 550px; margin: auto;"><a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" target="_blank"><img alt="" src="http://www.arise-khlfa.click/d6d6G2Sg395SL7Wa11P4ba4g11ddm36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQTdKdm6mF1k0i5l@AwD/think-Malabar" width="100%" /></a></p> 
+    </div> 
+   </section> 
+   <section class="prueba_maxw" style="text-align: center;"> 
+    <div>
+     &nbsp; 
+     <div style="text-align: center;  "> 
+      <p style="font-size: 20px; color: #555555; font-family: arial; margin: 0;  "><strong>intel-gvt-dev@lists.freedesktop.org</strong></p> 
+     </div> 
+    </div> 
+   </section> &nbsp; 
+   <section style="width: 100%; position: relative; "> 
+    <div style="max-width: 30%; ">
+     <a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" target="_blank"><img alt="" src="http://www.arise-khlfa.click/satellites-switchboards/c9c6MY2F395f7sQa11N4ba5_11ddp36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQTdKdm6Sq1I0S6M1Aw3D" width="100%" /></a>
+    </div> 
+    <div style="max-width: 65%; position: absolute; top: 4%; right: 3%;">
+     <a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" target="_blank"><img alt="" src="http://www.arise-khlfa.click/3ef6S23gn95A7aKS12l4Kba6W11ddH36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQTdKdm5y1h0J5z@XwD/coursing-brimmed" width="100%" /></a>
+    </div> &nbsp; 
+    <div>
+     <a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" target="_blank"><img alt="" src="http://www.arise-khlfa.click/de54L2395ED7ai13V4baA7IF11ddU36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQTdKdm5w10xO5JpwAD/synchrotron-violins" width="100%" /></a>
+    </div> 
+   </section> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <footer class="final_shot" style="width: 90%; max-width: 600px; margin: auto; background-color: #bdbdbd; padding: 18px 0px; "> 
+    <address> 
+     <div style="text-align: center; font-weight: normal; font-size: 12px; color: #000000; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> 
+      <p><small><span style="text-decoration: none; ">To dispense with communications,</span><a href="http://www.arise-khlfa.click/c236mz239H5KL8p612u4baR3h11ddF36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQTdKdm6RB1Vy06AAMwUD/soliciting-indecision" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Begin_Here_Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big></big><style></style><style></style><font></font><span></span> </small></p> 
+     </div> </address> 
+   </footer> 
+  </div> 
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width: 600px;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="left" bgcolor="" style="padding: color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style="margin: 0;">&nbsp;</p> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" bgcolor="#" style="padding: 0px 0px 0px 0px;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left" bgcolor="" style="padding: 40px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style="margin: 0;">&nbsp;</p> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" bgcolor="" style=" font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <h2 style="font-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" bgcolor="" style=" font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style="margin: 0;">&nbsp;</p> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" bgcolor="" style=" font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style="margin: 0;">&nbsp;</p> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.arise-khlfa.click/challenging-museums/30s4d2395BW85Z12n4bak8V11ddU36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQTdKdm5r_p106BlMwzD" alt=""/></body>
 </html>
 
-------=_Part_406_221585266.1676908902155--
+------=_Part_493_1421647029.1676911483691--
 
