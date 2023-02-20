@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F61B69D1B8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Feb 2023 17:54:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D656669D21D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Feb 2023 18:30:28 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C95C310E6E3;
-	Mon, 20 Feb 2023 16:54:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9AC6E10E736;
+	Mon, 20 Feb 2023 17:30:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 20 Feb 2023 16:54:31 UTC
-Received: from mail.arise-khlfa.click (unknown [104.206.109.244])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4485A10E6E7
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Mon, 20 Feb 2023 17:30:24 UTC
+Received: from mail.ask-ace.click (unknown [104.206.109.239])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1B96E10E719
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Feb 2023 16:54:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=arise-khlfa.click;
+ Mon, 20 Feb 2023 17:30:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ask-ace.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls-exclusive-offer@arise-khlfa.click; 
- bh=EF7Ya4WV8a0aOwgQ/8lGO2xIK1o=;
- b=XJbo8T12eL7lo5IdroiAYjpYOXcaeK+5Cpe/nyfnkaMmF/DvVP6ug6miv8ja+6OMpKpYm7jl4elV
- dGdU1FM5hapyHCszmngpihx6u9yQ5tBu2RKOeXBMG083UhUytU3dvtD/g4TVC5CWDxJDQVufiGhT
- 1smvWUR9rhgfvhV00Lk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=arise-khlfa.click; 
- b=Wj8jVw80szNDIc07j8YckTGK+YIIgiCZq1sXI9uzQGmmQNh0s6l438wRAsRuUmTb9Vpl20b90lpp
- nu22gvUV+AzitNxxBocCWfbXR7htJnnA7KpKfcAaCpwjNhU9D+GEKQDLKBxT5K/ZFp5oJdBjEs9q
- Zjq6RQw0ABY1ReiVcpM=;
-Received: by mail.arise-khlfa.click id huet040001g9 for
+ i=ace.hardware.expertise@ask-ace.click; 
+ bh=yy2IA2eOQaWpihhaiMaz59m7G+c=;
+ b=Ezlv7WpB7noCZHtNgAvPEAmoLkaGVMhdp1PY4goJZfg8369PL6kPh/iq9jL5jdEBg8xViCRuxNCl
+ R3QR1tjdb/QZFFU/xf7PCPiHowzrFMI9QmTdcD3Xf1TkR+D+rclLKCw/QUF2nWuuMBzk7aopW0Pu
+ SgjEi1vofJSV1RkXXSY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ask-ace.click;
+ b=hxI9ff/j7SMQg1LAsYm7oYXSEUjBZ+JqotaDhZ1sAGXRZV50VoiNSfA+RKlyZbUEMBm3kXwXdkk+
+ 9wNnq9QhiI/kcEWteuMYRo62GQcomVe0pMgpZL1fkkIKLaKXpk0ZQK36t5N6V3+oBjhiZ8HRv7c4
+ Wye4OIgFBXPuwYidvzk=;
+Received: by mail.ask-ace.click id huen300001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Feb 2023 13:11:11 -0500 (envelope-from
- <kohls-exclusive-offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@arise-khlfa.click>)
-Date: Mon, 20 Feb 2023 13:11:11 -0500
-From: "Kohls Exclusive Offer" <kohls-exclusive-offer@arise-khlfa.click>
+ Mon, 20 Feb 2023 12:19:35 -0500 (envelope-from
+ <ace.hardware.expertise-intel+2Dgvt+2Ddev=lists.freedesktop.org@ask-ace.click>)
+Date: Mon, 20 Feb 2023 12:19:35 -0500
+From: "ACE Hardware Expertise" <ace.hardware.expertise@ask-ace.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim your free Knife Set from Kohl's, limited time offer
+Subject: Claim your free DeWalt Drill Set from Lowe's, limited time offer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_493_1421647029.1676911483691"
-Message-ID: <0.0.0.36.1D94556B6ACAA6C.535381@mail.arise-khlfa.click>
+ boundary="----=_Part_526_818167552.1676913565848"
+Message-ID: <0.0.0.3A.1D9454F80DCD94A.134E9E@mail.ask-ace.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_493_1421647029.1676911483691
+------=_Part_526_818167552.1676913565848
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,75 +63,66 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>02022023</title> 
+  <title>03022023</title> 
  </head> 
- <body style="background-color: #ebebeb; padding-bottom: 50px;"> 
-  <p style="padding: 20px 0px;">&nbsp;</p> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: inset 0px 0px 8px 2px; padding: 50px 10px; border-radius: 8px;"> 
-   <div style="width: 100%; "> 
-    <header style="max-width: 600px; text-align: center; margin: 0; padding: 0; "> 
-     <p class="cartograpu" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 50px;  display: inline;"><a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" style="text-decoration: none;" target="_blank"><b style="color: #530b0b;">KOHL'S</b> <b style="color: #3a3a3a;">Rewards</b></a></p> 
-    </header> 
-   </div> &nbsp; 
-   <section style="width: 100%; text-align: center;"> 
-    <div class="div_classnew" style="max-width: 600px;"> 
-     <p id="new_codeinfo" style="max-width: 550px; margin: auto;"><a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" target="_blank"><img alt="" src="http://www.arise-khlfa.click/d6d6G2Sg395SL7Wa11P4ba4g11ddm36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQTdKdm6mF1k0i5l@AwD/think-Malabar" width="100%" /></a></p> 
+ <body style="padding: 55px 0px; background-color: rgb(245, 239, 238);"> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
+   <header class="infot_specialclok" style="text-align: center; background-color: rgb(31, 31, 31);"> 
+    <aside style="width: 100%; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #fff;">
+     &nbsp; 
+     <div style="font-size: 22px; text-align: center;">
+      <strong>Special gift just&nbsp;for intel-gvt-dev@lists.freedesktop.org</strong>
+     </div> 
+    </aside> &nbsp; 
+    <p id="uificate_press"><a href="http://www.ask-ace.click/Jackman-boatload/8646m239Yp5f86wl11d4ba9S11deM36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQOdKdn5w10Ov5J2pwD" target="_blank"><img alt="" src="http://www.ask-ace.click/brays-deliberated/6de6AY23B95DzQ7a11X4babM11deD36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQOdKdn6c1q0tT5XlpwD" style="display: block;" width="100%" /></a></p> 
+   </header> 
+   <section id="img_info"> 
+    <div style="max-width: 500px; margin: auto;">
+     <a href="http://www.ask-ace.click/Jackman-boatload/8646m239Yp5f86wl11d4ba9S11deM36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQOdKdn5w10Ov5J2pwD" target="_blank"><img alt="" src="http://www.ask-ace.click/60b5c23j95WH7oa12en4bacv11deF36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQOdKdn6QGy1l06G0w2LD/Jackman-boatload" width="100%" /></a>
     </div> 
    </section> 
-   <section class="prueba_maxw" style="text-align: center;"> 
-    <div>
-     &nbsp; 
-     <div style="text-align: center;  "> 
-      <p style="font-size: 20px; color: #555555; font-family: arial; margin: 0;  "><strong>intel-gvt-dev@lists.freedesktop.org</strong></p> 
+   <section id="nomad_clos"> 
+    <div style="width: 100%; text-align: center;"> 
+     <div style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 18px; font-weight: bold;background-color: rgb(255, 0, 0); padding: 15px 30px; display: inline-block; border-radius: 8px;">
+      <a href="http://www.ask-ace.click/Jackman-boatload/8646m239Yp5f86wl11d4ba9S11deM36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQOdKdn5w10Ov5J2pwD" style="text-decoration: none; color: #fff;">Take Me To The SURVEY!</a>
      </div> 
     </div> 
    </section> &nbsp; 
-   <section style="width: 100%; position: relative; "> 
-    <div style="max-width: 30%; ">
-     <a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" target="_blank"><img alt="" src="http://www.arise-khlfa.click/satellites-switchboards/c9c6MY2F395f7sQa11N4ba5_11ddp36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQTdKdm6Sq1I0S6M1Aw3D" width="100%" /></a>
-    </div> 
-    <div style="max-width: 65%; position: absolute; top: 4%; right: 3%;">
-     <a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" target="_blank"><img alt="" src="http://www.arise-khlfa.click/3ef6S23gn95A7aKS12l4Kba6W11ddH36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQTdKdm5y1h0J5z@XwD/coursing-brimmed" width="100%" /></a>
+   <section> 
+    <div class="img_profundy_1" style="max-width: 550px; margin: auto;">
+     <a href="http://www.ask-ace.click/Jackman-boatload/8646m239Yp5f86wl11d4ba9S11deM36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQOdKdn5w10Ov5J2pwD" target="_blank"><img alt="" src="http://www.ask-ace.click/droopy-Cedric/cf66gq2r395S7Uta11S4badu11deD36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQOdKdn5I1Y0x5SBwDW" width="100%" /></a>
     </div> &nbsp; 
-    <div>
-     <a href="http://www.arise-khlfa.click/soliciting-indecision/d145yX2395Ypl8613KQ4bza2J11ddy36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQTdKdm7X10xCkl5AP0wD" target="_blank"><img alt="" src="http://www.arise-khlfa.click/de54L2395ED7ai13V4baA7IF11ddU36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQTdKdm5w10xO5JpwAD/synchrotron-violins" width="100%" /></a>
+    <div class="Img_prfound_s" style="max-width: 550px; margin: auto;">
+     <a href="http://www.ask-ace.click/Jackman-boatload/8646m239Yp5f86wl11d4ba9S11deM36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQOdKdn5w10Ov5J2pwD" target="_blank"><img alt="" src="http://www.ask-ace.click/campaigns-supergroup/V124P2395u7aom12s4baeBu11del36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQOdKdn5p1G0x6FPjqwD" width="100%" /></a>
     </div> 
    </section> 
    <br /> 
    <br /> 
-   <br /> 
    <br /> &nbsp; 
-   <footer class="final_shot" style="width: 90%; max-width: 600px; margin: auto; background-color: #bdbdbd; padding: 18px 0px; "> 
-    <address> 
-     <div style="text-align: center; font-weight: normal; font-size: 12px; color: #000000; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> 
-      <p><small><span style="text-decoration: none; ">To dispense with communications,</span><a href="http://www.arise-khlfa.click/c236mz239H5KL8p612u4baR3h11ddF36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQTdKdm6RB1Vy06AAMwUD/soliciting-indecision" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Begin_Here_Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big></big><style></style><style></style><font></font><span></span> </small></p> 
-     </div> </address> 
+   <footer> 
+    <address style="text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 10px; background-color: rgb(58, 58, 58); padding: 15px 0px; color: #fff;"> <p><small><span style="text-decoration: none; ">To change your subscription choices,</span><a href="http://www.ask-ace.click/9cb5X239v5Vm86s11z4baap11dep36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQOdKdn5Q1JW06t@3JwD/brays-deliberated" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Start-Over-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style><font face="pours"></font><font></font></style><big></big><span face="lavish"></span><style dir="interface"></style><font title="exhausted"></font><font></font><big></big><font dir="companionship"></font><style></style> </small></p> </address> 
    </footer> 
   </div> 
-  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width: 600px;" width="100%"> 
+  <h2 style="font-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> 
+  <p style="margin: 0;">&nbsp;</p> 
+  <h2 style="font-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> 
+  <p style="margin: 0;">&nbsp;</p> 
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="left" bgcolor="" style="padding: color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style="margin: 0;">&nbsp;</p> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" bgcolor="#" style="padding: 0px 0px 0px 0px;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="left" bgcolor="" style="padding: 40px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style="margin: 0;">&nbsp;</p> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" bgcolor="" style=" font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <h2 style="font-size: 24px; font-weight: 400; margin: 0;">&nbsp;</h2> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" bgcolor="" style=" font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style="margin: 0;">&nbsp;</p> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" bgcolor="" style=" font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;"> <p style="margin: 0;">&nbsp;</p> </td> 
+     <td align="center" bgcolor="" style="padding: 20px 30px 60px 30px;"> 
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation"> 
+       <tbody> 
+        <tr> 
+         <td align="center" bgcolor="#539be2" style="border-radius: 3px;">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.arise-khlfa.click/challenging-museums/30s4d2395BW85Z12n4bak8V11ddU36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQTdKdm5r_p106BlMwzD" alt=""/></body>
+ <img src="http://www.ask-ace.click/dc75s23N95S8ov513q4VbaYfv11deV36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQOdKdn7OhP10wl5WXPwD/campaigns-supergroup" alt=""/></body>
 </html>
 
-------=_Part_493_1421647029.1676911483691--
+------=_Part_526_818167552.1676913565848--
 
