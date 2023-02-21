@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F71D69E65E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 18:53:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 75B4269E7A1
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 19:37:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D169B10E8BB;
-	Tue, 21 Feb 2023 17:53:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4619010E0CD;
+	Tue, 21 Feb 2023 18:37:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 21 Feb 2023 17:53:34 UTC
-Received: from mail.taking-sms.click (unknown [104.206.109.226])
- by gabe.freedesktop.org (Postfix) with ESMTP id B4DF810E8C3
+ Tue, 21 Feb 2023 18:37:38 UTC
+Received: from mail.stay-adhome.click (unknown [104.206.109.232])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 752EC10E0CD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 17:53:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=taking-sms.click;
+ Tue, 21 Feb 2023 18:37:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=stay-adhome.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=sams_club_love@taking-sms.click; 
- bh=+Dn+k9a3knoWJN89tUD7T00r5oo=;
- b=SPRuUqbXE3RXfLowW/GOuVbKAz7Klr5oX0Lr98RMNsCfveieN4ZuqyMU2PH0MaSHaWWGnZIB+9gr
- YWRry206JIXrQNAWzO3G4Cljld5jP52fM7t5x8yMqakH4ewCqXnoXmo0H77saNgaIOSgqCxkV49d
- 7j6b0uYXrPveGAeRf2M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=taking-sms.click;
- b=miZteC06a8ifWybSIWI90J2OCuADYLc+go5D+iJAcYVIhBM7JaRq/lydX8r90SGJDwCXC0EQO1lk
- AStNPcYt/eyzAc6Moj4i1S0M3Y16hsXXs8vGX+6XMbd87xP7dh7AwHCEq1KEhroVLEvDTt4CZXtf
- 506hdAhnU1Pt8TUDR7o=;
-Received: by mail.taking-sms.click id huk2hs0001g5 for
+ i=secureyourhome.com@stay-adhome.click; 
+ bh=SekUxna/j5KuxARnvkQpw+jokiA=;
+ b=RSWiacvqfpC4L5FEtak2caLS0wGK7tk3pM7el3xv6PM0YoCYdmkWN6QtTpSGp9zY5QOL3tQZm0LF
+ eW4gRLXFKzKcQ5RAgn/H9mdjSqqvEpT5pwOgkRH+LpC141VhzO8I8sRopc4ucPCnCND6DWGXjpJ6
+ Ln6PCm3wkVGvQHoSkxI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=stay-adhome.click; 
+ b=jv0x1kBPJPsFYrJuE19d5GVgLWMQcHoapLvGVm2ULZz/kxW9zRcmB0Y1Q5AnBqPhrEmvVaoug2kP
+ Sl89H1MsU6Au4D5QqG3EApI9I5rkDkl/1hr2WY5LJrfhcXB/mSPAAVQXw0Q42abwDKn2eyB1vs9A
+ /pcJtcCzBb970eq1PnE=;
+Received: by mail.stay-adhome.click id hukhqo0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 12:44:10 -0500 (envelope-from
- <sams_club_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@taking-sms.click>)
-Date: Tue, 21 Feb 2023 12:44:10 -0500
-From: "Sams Club Love" <sams_club_love@taking-sms.click>
+ Tue, 21 Feb 2023 14:51:48 -0500 (envelope-from
+ <secureyourhome.com-intel+2Dgvt+2Ddev=lists.freedesktop.org@stay-adhome.click>)
+Date: Tue, 21 Feb 2023 14:51:48 -0500
+From: Secureyourhome.com <secureyourhome.com@stay-adhome.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best way to show appreciation for your loyalty
+Subject: What is your plan to help protect your home and family?
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_778_679994369.1677001422980"
-Message-ID: <0.0.0.56.1D9461C1A78D582.4E6635@mail.taking-sms.click>
+ boundary="----=_Part_106_746599731.1677003901597"
+Message-ID: <0.0.0.B.1D9462DEF10BC2C.40691A@mail.stay-adhome.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,97 +53,215 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_778_679994369.1677001422980
+------=_Part_106_746599731.1677003901597
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>05022123</title> 
- </head> 
- <body style="background-color: rgb(248, 255, 253);"> 
-  <div class="block-component" data-group="component-text" data-title="Text"> 
-   <p class="block-edit" data-block="component-text-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">&nbsp;</p> 
-  </div> 
-  <div class="block-component" data-group="compontent-list" data-title="Unordered List">
-   &nbsp;
-  </div> 
-  <table border="0" cellpadding="0" cellspacing="0" class="btn block-component" data-group="compontent-button" data-title="Button" role="presentation" style="display: inline-block; margin: 0 auto; border-collapse: separate; border-radius: 50px; line-height: 100%;"> 
-   <tbody style="display: inline-block;"> 
-    <tr> 
-     <td style="display: inline-block; border: none; border-radius: 50px; cursor: auto; mso-padding-alt: 12px 25px; background: #333333;">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div style="max-width: 600px; margin: auto; box-shadow: 0px 0px 8px 1px; background-color: #fff;"> 
-   <header style="background-color: rgb(44, 44, 44); padding: 15px 0px;"> 
-    <div style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 28px;"> 
-     <p style="display: inline; color: #fff;">SAMS CLUB</p> 
-    </div> 
-   </header> 
-   <section> 
-    <div>
-     <a href="http://www.taking-sms.click/9174W2395m8s6k11I4be3G11eaj36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdKQ96N1jj0T5H@wD3/cerebellum-Kuala" target="_blank"><img alt="" src="http://www.taking-sms.click/outperforming-remark/8dc6MZ2r395I7Fax12N4beM5M11eai36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdKQ97BK1j0BY5qjwD@" width="100%" /></a>
-    </div> 
-    <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px; font-weight: 500; line-height: 30px; text-align: center; padding: 0px 30px;">Don't miss out! Just a few clicks away from a chance to win a $100 Sams Club Card by completing our quick 20-second survey about your recent experience with us.</p> &nbsp; 
-    <div style="width: 100%; text-align: center;"> 
-     <div style="background-color: #000000; padding: 15px 33px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 16px; display: inline-block; border-radius: 50px;">
-      <a href="http://www.taking-sms.click/9174W2395m8s6k11I4be3G11eaj36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdKQ96N1jj0T5H@wD3/cerebellum-Kuala" style="text-decoration: none; color: #fff;" target="_blank">Go And Start Now</a>
-     </div> 
-    </div> 
-    <br /> &nbsp;
-   </section> 
-  </div> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <address style="text-align: center; font-weight: normal; font-family: Arial, Helvetica, sans-serif;"> 
-   <div style="font-size: 10px; background-color: #170679; padding: 15px; color: #fff; max-width: 700px; margin: auto;"> 
-    <p class="unsubscribe"><span style="text-decoration: none; ">No longer wish to receive email notifications from us?,</span><a href="http://www.taking-sms.click/discovering-tracking/71a5g23j95I8M6q12N4be4DL11eaH36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQBdKQ95Nw1t06mNWNwD" style="text-decoration-line: none;"> <span>Start-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span color="memoir"></span><style></style><big></big><style id="rocked"></style><font></font><style lang="Brahmsian"></style><font lang="Laplace"></font></p> 
-   </div> </address> 
-  <div class="column block-section" data-group="content-standard" style="text-align: center;"> 
-   <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">&nbsp;</p> 
-  </div> 
-  <div class="block-section" data-group="content-standard"> 
-   <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td class="column alt block-bgcolor" style="; padding: 14px;"> <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <div class="block-section" data-group="content-standard"> 
-   <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td class="column alt block-bgcolor" style="; padding: 14px; text-align: center;"> <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <div class="block-section" data-group="feature-bg-image" data-title="Featured background image">
-   &nbsp;
-  </div> 
-  <div class="block-section" data-group="image-left" data-title="Two-column with left image"> 
-   <div style="display: table; width: 100%;"> 
-    <div class="column" style="display: table-cell; width: 50%; padding-right: 0;">
-     &nbsp;
-    </div> 
-    <div class="column" style="display: table-cell; width: 50%; padding-left: 14px; vertical-align: middle;"> 
-     <p class="block-edit block-remove" data-block="image-left-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.taking-sms.click/mince-westward/daa5B239M5q85MU13U4Pbe6ly11ean36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQBdKQ95S10LD6JXzwND" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>06022123</title>=20
+ </head>=20
+ <body style=3D"margin: 0; padding: 50px 0px; background-color: #eaf7ff;">=
+=20
+  <div style=3D"max-width: 600px; margin: auto; background-color: #fff; box=
+-shadow: 0px 0px 8px 1px;">=20
+   <header style=3D"position: relative;">=20
+    <div class=3D"background-image_" style=3D"background-image: url(https:/=
+/secure-your-home.com/homesecurity/email/v23/images/v23_background.png); ba=
+ckground-repeat: no-repeat; background-size: cover; background-position: ce=
+nter center;">=20
+     <div style=3D"max-width: 50%; position: relative; left: -18%; margin: =
+auto;;">
+      <span style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Tr=
+ebuchet MS', sans-serif; font-weight: bold; font-size: 200%; line-height: 9=
+0%; display: block; padding-top: 25%;">See more. Hear more. Know more.</spa=
+n>=20
+      <span style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Tr=
+ebuchet MS', sans-serif; font-weight: 500; font-size: 115%; line-height: 13=
+0%; display: block; max-width: 95%; padding-top: 2%; ">Google Nest Cam (bat=
+tery) can tell the difference between a person, vehicle and an animal, so y=
+ou only get alerts for things that matter to you.</span>=20
+      <span style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Tr=
+ebuchet MS', sans-serif; font-weight: 500; font-size: 60%; line-height: 120=
+%; display: block; max-width: 65%; padding-top: 2%;">*Google Nest Cam (batt=
+ery) can be installed indoors or outdoors. Includes battery or wired option=
+s.</span>=20
+      <div>
+       <a href=3D"http://www.stay-adhome.click/6bS4J2395XS8X613H4bNkecC11ebw36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQCdKQd7z1y0FLt5cB3wD/northeastern-bacteria" style=3D"text-decoration: none; color: #fff;"=
+ target=3D"_blank"><span style=3D"background-color: #E66650; font-family: '=
+Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weigh=
+t: bold; padding: 15px 40px; border-radius: 8px; display: inline-block;">GE=
+T MY FREE QUOTE </span></a>
+      </div>=20
+      <br />=20
+      <br />=20
+      <br />=20
+      <br />=20
+      <br />=20
+      <br />=20
+      <br />=20
+      <br />=20
+      <br />=20
+      <br />=20
+      <br /> &nbsp;
+     </div>=20
+     <div style=3D"position: absolute; top: 12%; left: 75%;">
+      <a href=3D"http://www.stay-adhome.click/6bS4J2395XS8X613H4bNkecC11ebw36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQCdKQd7z1y0FLt5cB3wD/northeastern-bacteria" style=3D"padding-left: 22%; " target=3D"_blank=
+"><img alt=3D"" src=3D"http://www.stay-adhome.click/quieted-unpredictably/1026F23O9L5c7KaD11u4beeY11ebq36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQCdKQd5Im1R06pBwJD3" width=3D"60%" /></a>
+      <br />=20
+      <br />=20
+      <a href=3D"http://www.stay-adhome.click/6bS4J2395XS8X613H4bNkecC11ebw36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQCdKQd7z1y0FLt5cB3wD/northeastern-bacteria" target=3D"_blank"><img alt=3D"" src=3D"=
+http://www.stay-adhome.click/6bf6L2NW395d7aVr13z4GbefhX11ebV36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQCdKQd7qo1m_H05ekwzD/Anatolian-accountable" width=3D"100%" /></a>
+     </div>=20
+    </div>=20
+   </header>=20
+   <section style=3D"background-color: #1F99E0;position: relative;">=20
+    <div style=3D"max-width: 50%; ">
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 170%;=
+ color: #fff; margin: auto; position: relative; padding-top: 15%; left: 10%=
+;">Smart, flexible cameras to fit any home </span>=20
+     <img alt=3D"" src=3D"http://www.stay-adhome.click/Brasstown-Octavia/5945d239V5m7aRg11A4bf0r11ebq36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQCdKQd5P1zr06pyk@wD" style=3D"position: relative; margin:=
+ auto; left: 10%; padding-top: 10%; " width=3D"7%" />=20
+     <span style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Tre=
+buchet MS', sans-serif; font-weight: bold; font-size: 120%; position: relat=
+ive; left: 20%; display: inline-block; color: #fff; margin-top: -9%; line-h=
+eight: 130%;"> Intelligent. It differenciates between between a person, an =
+animal, a vehicle ? or with the Nest Doorbell (battery), even a package!</s=
+pan>
+     <br />=20
+     <img alt=3D"" src=3D"http://www.stay-adhome.click/Brasstown-Octavia/5945d239V5m7aRg11A4bf0r11ebq36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQCdKQd5P1zr06pyk@wD" style=3D"position: relative; margin:=
+ auto; left: 10%; padding-top: 10%; " width=3D"7%" />=20
+     <span style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Tre=
+buchet MS', sans-serif; font-weight: bold; font-size: 120%; position: relat=
+ive; left: 20%; display: inline-block; color: #fff; margin-top: -9%;line-he=
+ight: 130%;">With your phone you can check-in from virtually anywhere 24/7.=
+</span>
+     <br />=20
+     <img alt=3D"" src=3D"http://www.stay-adhome.click/Brasstown-Octavia/5945d239V5m7aRg11A4bf0r11ebq36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQCdKQd5P1zr06pyk@wD" style=3D"position: relative; margin:=
+ auto; left: 10%; padding-top: 10%; " width=3D"7%" />=20
+     <span style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Tre=
+buchet MS', sans-serif; font-weight: bold; font-size: 120%; position: relat=
+ive; left: 20%; display: inline-block; color: #fff; margin-top: -9%;line-he=
+ight: 130%;">If your Wi-Fi goes down, Nest Cam will automatically record im=
+portant events for up to one hour.</span>
+     <br />=20
+     <img alt=3D"" src=3D"http://www.stay-adhome.click/Brasstown-Octavia/5945d239V5m7aRg11A4bf0r11ebq36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQCdKQd5P1zr06pyk@wD" style=3D"position: relative; margin:=
+ auto; left: 10%; padding-top: 10%; " width=3D"7%" />=20
+     <span style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Tre=
+buchet MS', sans-serif; font-weight: bold; font-size: 120%; position: relat=
+ive; left: 20%; display: inline-block; color: #fff; margin-top: -9%;line-he=
+ight: 130%;"> If you missed an event you can go back and see what happened =
+with 30 days of event video history.</span>
+     <br />=20
+     <img alt=3D"" src=3D"http://www.stay-adhome.click/Brasstown-Octavia/5945d239V5m7aRg11A4bf0r11ebq36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQCdKQd5P1zr06pyk@wD" style=3D"position: relative; margin:=
+ auto; left: 10%; padding-top: 10%; " width=3D"7%" />=20
+     <span style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Tre=
+buchet MS', sans-serif; font-weight: bold; font-size: 120%; position: relat=
+ive; left: 20%; display: inline-block; color: #fff; margin-top: -9%;line-he=
+ight: 130%;"> Set Activity Zones to define specific areas and get notified =
+when something happens there. So you only get alerted about things that are=
+ important to you.</span>
+     <br />=20
+     <br /> &nbsp;
+    </div>=20
+    <div style=3D"position: absolute; top: 25%; left: 61%; max-width: 40%;"=
+>
+     <a href=3D"http://www.stay-adhome.click/6bS4J2395XS8X613H4bNkecC11ebw36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQCdKQd7z1y0FLt5cB3wD/northeastern-bacteria" target=3D"_blank"><img alt=3D"" src=3D"=
+http://www.stay-adhome.click/Moscone-enraged/6845K23G95n7axG13l4bfu1Vo11ebM36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQCdKQd6Js1Px05ipUwD" width=3D"100%" /></a>=20
+     <div>
+      <a href=3D"http://www.stay-adhome.click/6bS4J2395XS8X613H4bNkecC11ebw36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQCdKQd7z1y0FLt5cB3wD/northeastern-bacteria" style=3D"text-decoration: none; color: #fff;" =
+target=3D"_blank"><span style=3D"background-color: #E66650; font-family: 'G=
+ill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight=
+: bold; padding: 15px 20px; border-radius: 8px; display: inline-block;">GET=
+ MY FREE QUOTE </span></a>
+     </div>=20
+    </div>=20
+   </section>=20
+   <section class=3D"footer_impres" style=3D"background-color: #e6e6e6; pad=
+ding: 20px 0px;">=20
+    <div id=3D"fonal_Footers" style=3D"text-align: center;">
+     <img alt=3D"" src=3D"http://www.stay-adhome.click/Anatolian-accountable/4866t2k39t5Q7iXa13J_4bLf2v11ebR36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQCdKQd7eriK10w5t2MwD" width=3D"8%" />
+     <br />=20
+     <br />=20
+     <span class=3D"infor-_pro" style=3D"display: block; font-family: 'Gill=
+ Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: n=
+ormal; font-size: 75%;">1501 Yamato Rd, Boca Raton, FL 33431 &copy;2022 ADT=
+ LLC</span>=20
+     <hr style=3D"width: 80%; margin: auto;" />
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">*Financing: Requires retail instal=
+lment agreement. Financing available for equipment and installation costs o=
+nly. Financing available for well-qualified borrowers at 0% Annual Percenta=
+ge Rate for a minimum of $599 up to a max limit of $5,000 for each approved=
+ application. First payment due upon equipment installation and subsequent =
+payments in equal monthly installments for the term selected (excluding any=
+ applicable fines and service charge increases). 12, 24, 36, &amp; 60-month=
+ terms available. Longer terms require additional credit qualifications. Fu=
+ll remaining balance for equipment and installation due immediately upon te=
+rmination of the related ADT services for ADT-provided financing. Late Char=
+ge ? ADT may impose a one-time charge on each payment that is more than ten=
+ (10) days past due, up to the maximum amount permitted by law, but in no e=
+vent will this amount exceed $5.00. Prepayment ? if prepayments are made, t=
+here is no penalty or refund. Financing is not available in all geographic =
+regions and Puerto Rico. Google, Nest Doorbell and Google Home are trademar=
+ks of Google LLC.</span>
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">General: Additional charges may ap=
+ply in areas that require guard response service for municipal alarm verifi=
+cation. System remains property of ADT. Local permit fees may be required. =
+Prices and offers subject to change and may vary by market. Additional taxe=
+s and fees may apply. Satisfactory credit required. A security deposit may =
+be required. Simulated screen images and photos are for illustrative purpos=
+es only.</span>
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">Interactive Services: ADT Command =
+Interactive Solutions Services (&laquo;ADT Command&raquo;) helps you manage=
+ your home environment and family lifestyle. Requires purchase of an ADT al=
+arm system with 36 month monitoring contract ranging from $45.99-$59.99/ mo=
+ with QSP (24-month monitoring contract in California, total fees ranging $=
+1,103.76-$1,439.76), enrollment in ADT Easy Pay, and a compatible device wi=
+th Internet and email access. These interactive services do not cover the o=
+peration or maintenance of any household equipment/systems that are connect=
+ed to the ADT Command equipment. All ADT Command services are not available=
+ with all interactive service levels. All ADT Command services may not be a=
+vailable in all geographic areas. You may be required to pay additional cha=
+rges to purchase equipment required to utilize the interactive service feat=
+ures you desire.</span>
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">&copy;2022 ADT LLC. All rights res=
+erved. ADT, the ADT logo, 800.ADT.ASAP and the product/service names listed=
+ in this document are marks and/or registered marks. Unauthorized use is st=
+rictly prohibited. Third-party marks are the property of their respective o=
+wners. License information available at www.ADT.com/legal or by calling 800=
+ADT.ASAP. CAACO7155, 974443, PPO120288; MA 172C; NC Licensed by the Alarm =
+Systems Licensing Board of the State of North Carolina; 2736-CSA, 2397-CSA,=
+ 2381-CSA; NY 12000305615; PA 090797; MS 15019511.</span>
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">Do you want to stop getting these =
+emails? You can <a href=3D"http://www.stay-adhome.click/da95B239H5t86n_12hJ4bedp11ebP36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQCdKQd6ROS1N06cAlOwD/Anatolian-accountable" style=3D" color: #000;" target=3D"_b=
+lank">unsubscribe here</a>.</span>
+     <br /> &nbsp;
+    </div>=20
+   </section>=20
+  </div>  =20
+ <img src=3D"http://www.stay-adhome.click/ad96I239L_5n85VW13FR4bfC3B11ebP36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQCdKQd5h1Yn06DywBDl/Anatolian-accountable" alt=3D""/></body>
 </html>
 
-------=_Part_778_679994369.1677001422980--
+------=_Part_106_746599731.1677003901597--
 
