@@ -2,42 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C8C469E4EB
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 17:38:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CCBE669E417
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 16:59:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DDFE810E884;
-	Tue, 21 Feb 2023 16:38:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 99F0A10E85D;
+	Tue, 21 Feb 2023 15:58:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 21 Feb 2023 16:38:42 UTC
-Received: from mail.throw-unble.click (unknown [104.206.109.211])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6768D10E888
+ Tue, 21 Feb 2023 15:58:57 UTC
+Received: from mail.try-wmfa.click (unknown [104.206.109.203])
+ by gabe.freedesktop.org (Postfix) with ESMTP id ED87310E858
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 16:38:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=throw-unble.click;
+ Tue, 21 Feb 2023 15:58:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=try-wmfa.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=new-brain-blueprint@throw-unble.click; 
- bh=oDIvma4tHXSumssvm2gJE7DeeEc=;
- b=sbSCYDeLDU7ifLpx0lVmIPx1w4YSNe8/l/JA9pf9TRsdah95YdaNid6V2nj31lhQSH0g9VFrTubP
- dY/ZhY9QMkGc11ezHtH1AvTc0sa6UOUGo576BT2Z3FOeYkxcJpsXr9IT5GUVrbS042S/HKhOdktq
- +U8ldVkLkMIJ+c4JDtA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=throw-unble.click; 
- b=myAV4DhLUIhYQrla4VoBvDmbUqpjNOLh8EOPB8EVXJ2VRkfPlMaibpmWXkMPSpjWqAujj3ba9hnr
- dC7O+rJF6hAdEpwm1dlIVfwqz8ar0H0M4tpyVth3mzFkbOz0L6LAG80NbLJLQJWm6h7cRtKKTYuF
- 9sYPtr5AZmg4SBHpUw8=;
-Received: by mail.throw-unble.click id hujpp40001g9 for
+ i=walmart@try-wmfa.click; bh=Ujon4Sei+XD596kcW5PHqf2fTGA=;
+ b=teK6m5ODldG6vcJJiQfoWpDN2fFLaiTkfHLHS0+3xpu1XZhQ8H9+Uv0hlHD2CpTnzCoHvxNCZZeo
+ 19RhBFmgtLBFfLCtAlTfvp6JB3RbrVLlyuqYOdBtmNOtPgzdMd4Cwr9U0MMBsRtkTkpPK17nI9/J
+ /74IiMvN7JdJ/uAjePU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=try-wmfa.click;
+ b=y9NOuOoYE7ORKTMb6JB3r3wgxHdySKpsBlMMj1ZO5tPZemDFWJYvQJkY5s5epUvLwnryWAQXnDFZ
+ XXe0y+DVCwHgBI58P8sO3J0VH0464KJAXkL8gVkt8DOUZXDAZ+qjmJn5pOIbKxEi/JC5pQiTOi3i
+ XhW2lWt1WO2w36w6DJk=;
+Received: by mail.try-wmfa.click id hujv7m0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 11:28:05 -0500 (envelope-from
- <new-brain-blueprint-intel+2Dgvt+2Ddev=lists.freedesktop.org@throw-unble.click>)
-Date: Tue, 21 Feb 2023 11:28:05 -0500
-From: "New Brain Blueprint" <new-brain-blueprint@throw-unble.click>
+ Tue, 21 Feb 2023 12:15:57 -0500 (envelope-from
+ <walmart-intel+2Dgvt+2Ddev=lists.freedesktop.org@try-wmfa.click>)
+Date: Tue, 21 Feb 2023 12:15:57 -0500
+From: Walmart <walmart@try-wmfa.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: 13 prescription drugs that destroy your brain
+Subject: Limited:Take home a free Irobot vacuum cleaner from Walmart today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_220_1239184141.1676996853845"
-Message-ID: <0.0.0.18.1D9461179796F02.26C6C5@mail.throw-unble.click>
+ boundary="----=_Part_592_1754421447.1676994562885"
+Message-ID: <0.0.0.41.1D9461829989A56.230C62@mail.try-wmfa.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_220_1239184141.1676996853845
+------=_Part_592_1754421447.1676994562885
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,59 +62,40 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>03022123</title> 
+  <title>02022123</title> 
  </head> 
- <body style="padding: 25px 0px; background-color: rgb(255, 240, 222);"> 
-  <header> 
-   <h1 id="mago_de-oz" style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 400; line-height: normal; color: aquamarine;">&nbsp;</h1> 
-   <p class="Dionar_fines_sprencgo" style="font-size: 15px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: justify; text-decoration: none; color: brown;">&nbsp;</p> 
-   <p class="de_sudor_if" style="font-size: 30px; line-height: 1px; font-family: 'Times New Roman', Times, serif;">&nbsp;</p> 
-   <p class="Imagran_cool_shoo" style="display: inline; text-align: left; ;">&nbsp;</p> 
-  </header> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: inset 0px 0px 8px 2px; padding: 20px; border-radius: 8px;"> 
-   <section> 
-    <div> 
-     <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 25px; text-align: center;">A new study from Harvard Scientists has revealed that <a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" style="text-decoration: none;" target="_blank">ONE of the following foods</a> is linked to combating Alzheimer's and dementia. Can you guess which it is?</p> 
+ <body style="padding: 50px 0px; background-color: #daedff;"> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: 0px 0px 8px 1px;"> 
+   <header id="pimpress_dimentional-scaru"> 
+    <div class="colexccionterster_rfoincas" style="text-align: center; background-color: #0171DD; padding: 10px 0px 10px"> 
+     <p style="display: inline; font-family: Arial, Helvetica, sans-serif; font-size: 200%; font-weight: bold;"><a href="http://www.try-wmfa.click/rusting-accident/ef46Q23w9_5Q86xn12O4bd3DO11e7p36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQzdKQm7G1RqGr06Q3LXwD" style="text-decoration: none; color: #fff ;" target="_blank">WALMART</a></p> 
     </div> 
-    <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 30px; line-height: 40px;"> 
-     <ol> 
-      <li><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" style="text-decoration: none;" target="_blank">Red wine</a></li> 
-      <li style="text-decoration: none;"><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" target="_blank">Fish</a></li> 
-      <li style="text-decoration: none;"><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" target="_blank">Avocados</a></li> 
-      <li style="text-decoration: none;"><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" target="_blank">Clams</a></li> 
-     </ol> 
+    <a href="http://www.try-wmfa.click/rusting-accident/ef46Q23w9_5Q86xn12O4bd3DO11e7p36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQzdKQm7G1RqGr06Q3LXwD" style="text-decoration: none; color: #fff ;" target="_blank"><img alt="" src="http://www.try-wmfa.click/e3f5v2L395y7txa11E4bd5s11e7O36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQzdKQm5tS10N5zTwD@/rusting-accident" style="display: block;" width="100%" /> </a>
+   </header> 
+   <section style=" margin-top: 5%;"> 
+    <div style="max-width: 33%; display: inline-block; vertical-align: top; margin-top: 1.5%;">
+     <a href="http://www.try-wmfa.click/rusting-accident/ef46Q23w9_5Q86xn12O4bd3DO11e7p36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQzdKQm7G1RqGr06Q3LXwD"><img alt="" src="http://www.try-wmfa.click/manipulated-lowered/6Tc6H23X9Q5s7Jaw13w4KbKd6M11e7Q36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQzdKQm7lg1t0kB6oPwDyy" width="100%" /></a>
     </div> 
-    <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px;">Select your answer to find out...</p> 
-    <div style="max-width: 95%; margin: auto;">
-     <a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" target="_blank"><img alt="" src="http://www.throw-unble.click/unrelated-transfinite/7746W2M39r5Si7ka11z4bdcI11e8D36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ2dKQn7r1Oo0sj5eJqwD" width="100%" /></a>
+    <div style="display: inline-block; position: relative; left: 0%; max-width: 64%;"> 
+     <p style="font-size: 100%; color: #000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 100%; text-align: justify; font-weight: bold; font-size: 130%; line-height: 110%;;">We are giving away the iRobot Roomba i1+ Wi-Fi Connected Self- Emptying Robot Vacuum, Ideal for Pet Hair, Carpets and more.</p> 
+     <p style="color: #000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 90%; max-width: 100%; text-align: justify; line-height: 110%; margin-top: -15px; ">We would like to offer you a unique opportunity to receive a brand new DeWalt Drill Set! To claim, simply take this short survey about your experience with Walmart.</p> 
+     <a href="http://www.try-wmfa.click/rusting-accident/ef46Q23w9_5Q86xn12O4bd3DO11e7p36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQzdKQm7G1RqGr06Q3LXwD" target="_blank"><img alt="" src="http://www.try-wmfa.click/7374h2395F7gQa11M4bd7C11e7C36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQzdKQm7OT1RCi06yzwM@D/butler-infuse" width="100%" /></a> 
+     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; color: #000; text-align: center;">Get This Free Gift - Or Choose From <b style="color: #ff0000;">5 Other Offers!</b> *Just Paying a small S&amp;H fee.</p> 
     </div> 
-    <p><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" style="text-decoration: noen; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px;" target="_blank">Or click HERE to see the answer &gt;&gt; &gt;&gt;</a></p> 
-    <p class="infot_contienenta" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px; line-height: 35px;font-weight: bold;">To your health,<br /> Dr. Will Mitchell, DOM, MS Nutrition</p> 
    </section> 
    <br /> 
+   <br /> 
+   <br /> 
    <br /> &nbsp; 
-   <footer> 
-    <address> 
-     <div align="center">
-      <br /> 
-      <font face="Verdana, Arial, Helvetica, sans-serif" size="1">If you'd prefer not to receive future emails, <a href="http://www.throw-unble.click/digesting-ancients/9ae4D2395X8O6p12It4bdap11e8n36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2dKQn7li1Gs0W5cJwD3"><font color="#666666">Unsubscribe Here</font></a>.<br /> <a href="http://www.throw-unble.click/excised-heights/7ce6h23LK95sS86O12J4bdbIt11e8s36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2dKQn7CF1v0LY5NMpwD">Brain Blueprint</a> 321 N Central Expressway Suite 351 - McKinney, TX 75070 </font>
-     </div> </address> 
+   <footer style="background-color: #0171DD; border-top: solid 4px #000;"> 
+    <address style="padding: 5px 0px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 10px; text-align: center;"> <p><small><span style="text-decoration: none; ">To edit your subscription options,</span><a href="http://www.try-wmfa.click/borderings-verifiable/daa6q2P39X5E86Ik11f4bd4Y11e7F36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQzdKQm5FOD106JJOqwD" style="text-decoration-line: none; color: rgb(255, 255, 255)"> <span>Follow Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font><font dir="Corinthian"><span dir="bespeaks"></font><style lang="refractory"></style><span size="beatitudes"><big><style class="novelists"><style></style></span></style></big></font></span><span size="Manitoba"></span> </small></p> </address> 
+    <div>
+     <img alt="" src="http://www.try-wmfa.click/e3f5v2L395y7txa11E4bd5s11e7O36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQzdKQm5tS10N5zTwD@/rusting-accident" style="display: block;" width="100%" />
+    </div> 
    </footer> 
-   <article class="article_fonter" style=" text-align: end; font-size: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; line-height: 35px; color: chocolate;"> 
-    <h4 id="tituo_h223s" style="font-size: 15px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: 300; text-decoration: none; color: antiquewhite;">&nbsp;</h4> 
-    <table> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </article> 
   </div>   
- <img src="http://www.throw-unble.click/digesting-ancients/1984G2395Q8kw513Bx4bdrdh11e8F36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ2dKQn5Mi10i5nqwBD" alt=""/></body>
+ <img src="http://www.try-wmfa.click/butler-infuse/5b24L2395rxj8512G4bvd8z11e7P36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQzdKQm5h1B0I5mjBwD" alt=""/></body>
 </html>
 
-------=_Part_220_1239184141.1676996853845--
+------=_Part_592_1754421447.1676994562885--
 
