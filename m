@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4956969E5B9
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 18:16:02 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F71D69E65E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 18:53:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 15F8A10E8A8;
-	Tue, 21 Feb 2023 17:16:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D169B10E8BB;
+	Tue, 21 Feb 2023 17:53:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 21 Feb 2023 17:15:59 UTC
-Received: from mail.tell-sph.click (unknown [104.206.109.217])
- by gabe.freedesktop.org (Postfix) with ESMTP id 91E4310E8AD
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Tue, 21 Feb 2023 17:53:34 UTC
+Received: from mail.taking-sms.click (unknown [104.206.109.226])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B4DF810E8C3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 17:15:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tell-sph.click; 
+ Tue, 21 Feb 2023 17:53:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=taking-sms.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=splash_wines@tell-sph.click; 
- bh=SFJ/ADMRvVDbEyVu6p0+brIJKc8=;
- b=rFbCBjjnAsiG99GO8JE7loup5qtPAX5mrVsPjAHEilhu67k8VTloH3D+uFmotJRloycao0MaKwv9
- scZAVUWXJ8lcedGYqqw9BB6r+8BhqfMTsAvMMTI7Ro7RDUzZ/BjPD6ezQre1C8jUfWPXFFLn9fO6
- RBiyoiIQDVf3Tv6Sx0w=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tell-sph.click;
- b=cz8oXNbXCl0lYu6qnBW5j1SggnttVpEpnLcnEPyTPGpIHqyJ7qU4NiVzxYcISCFiqZvWrSDOR9w0
- dfbkYVukm6EcfY43jjcviEwT8P9q0pary92ouEVIvLbS7qVbrPTLw3FrEu39yG0Vwz1pssirrzLn
- 9NjL+N3KmPIuEy/rVbA=;
-Received: by mail.tell-sph.click id huju4u0001g9 for
+ i=sams_club_love@taking-sms.click; 
+ bh=+Dn+k9a3knoWJN89tUD7T00r5oo=;
+ b=SPRuUqbXE3RXfLowW/GOuVbKAz7Klr5oX0Lr98RMNsCfveieN4ZuqyMU2PH0MaSHaWWGnZIB+9gr
+ YWRry206JIXrQNAWzO3G4Cljld5jP52fM7t5x8yMqakH4ewCqXnoXmo0H77saNgaIOSgqCxkV49d
+ 7j6b0uYXrPveGAeRf2M=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=taking-sms.click;
+ b=miZteC06a8ifWybSIWI90J2OCuADYLc+go5D+iJAcYVIhBM7JaRq/lydX8r90SGJDwCXC0EQO1lk
+ AStNPcYt/eyzAc6Moj4i1S0M3Y16hsXXs8vGX+6XMbd87xP7dh7AwHCEq1KEhroVLEvDTt4CZXtf
+ 506hdAhnU1Pt8TUDR7o=;
+Received: by mail.taking-sms.click id huk2hs0001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 12:04:05 -0500 (envelope-from
- <splash_wines-intel+2Dgvt+2Ddev=lists.freedesktop.org@tell-sph.click>)
-Date: Tue, 21 Feb 2023 12:04:05 -0500
-From: "Splash Wines" <splash_wines@tell-sph.click>
+ Tue, 21 Feb 2023 12:44:10 -0500 (envelope-from
+ <sams_club_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@taking-sms.click>)
+Date: Tue, 21 Feb 2023 12:44:10 -0500
+From: "Sams Club Love" <sams_club_love@taking-sms.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Now Is the Time to Stock Up on Wine! 15 Bottles - $5.99 Each + Free
- Shipping&#127863; 
+Subject: Best way to show appreciation for your loyalty
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_154_1636241030.1676999012090"
-Message-ID: <0.0.0.12.1D946168100B406.429E7B@mail.tell-sph.click>
+ boundary="----=_Part_778_679994369.1677001422980"
+Message-ID: <0.0.0.56.1D9461C1A78D582.4E6635@mail.taking-sms.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_154_1636241030.1676999012090
+------=_Part_778_679994369.1677001422980
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,57 +63,87 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04022123</title> 
+  <title>05022123</title> 
  </head> 
- <body style="background-color: #ffecff;"> 
-  <div class="block-preview" style="display: none;">
+ <body style="background-color: rgb(248, 255, 253);"> 
+  <div class="block-component" data-group="component-text" data-title="Text"> 
+   <p class="block-edit" data-block="component-text-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">&nbsp;</p> 
+  </div> 
+  <div class="block-component" data-group="compontent-list" data-title="Unordered List">
    &nbsp;
   </div> 
-  <div class="wrapper" dir="ltr" lang="en" role="article" style="background: #ffffff; font-size: 16px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;"> 
-   <div class="content" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; text-align: left; font-weight: 300;"> 
-    <div class="block-section" data-group="section-spacer" data-title="Spacer" style="width: 100%;"> 
-     <p style="float: left; margin: 0; margin-bottom: 14px; width: 100%; line-height: 0;">&nbsp;</p> 
+  <table border="0" cellpadding="0" cellspacing="0" class="btn block-component" data-group="compontent-button" data-title="Button" role="presentation" style="display: inline-block; margin: 0 auto; border-collapse: separate; border-radius: 50px; line-height: 100%;"> 
+   <tbody style="display: inline-block;"> 
+    <tr> 
+     <td style="display: inline-block; border: none; border-radius: 50px; cursor: auto; mso-padding-alt: 12px 25px; background: #333333;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div style="max-width: 600px; margin: auto; box-shadow: 0px 0px 8px 1px; background-color: #fff;"> 
+   <header style="background-color: rgb(44, 44, 44); padding: 15px 0px;"> 
+    <div style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 28px;"> 
+     <p style="display: inline; color: #fff;">SAMS CLUB</p> 
     </div> 
-    <div class="block-section" data-group="section-spacer" style="width: 100%;"> 
-     <p style="float: left; margin: 0; margin-bottom: 28px; width: 100%; line-height: 0;">&nbsp;</p> 
+   </header> 
+   <section> 
+    <div>
+     <a href="http://www.taking-sms.click/9174W2395m8s6k11I4be3G11eaj36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdKQ96N1jj0T5H@wD3/cerebellum-Kuala" target="_blank"><img alt="" src="http://www.taking-sms.click/outperforming-remark/8dc6MZ2r395I7Fax12N4beM5M11eai36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdKQ97BK1j0BY5qjwD@" width="100%" /></a>
     </div> 
-    <div style="max-width: 600px; margin: auto; "> 
-     <section style="box-shadow: 0px 0px 8px 1px;"> 
-      <div style="display: block;">
-       <a href="http://www.tell-sph.click/f115z2g395I8oI612O4mbdeF11e9s36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQZdKQo7PHFg1U05H1wDl/Ferreira-upkeep" target="_blank"><img alt="" src="http://www.tell-sph.click/magnificence-fiddlesticks/b8e5Y23u95K7aP_13O4be1vv_11e9R36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQZdKQo5S1v0r6E@A3wD" style="display: block;" width="100%" /></a>
-      </div> &nbsp; 
-      <footer> 
-       <address style="background-color: #750f0f; padding: 10px 0px;"> 
-        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12px; text-align: center; font-weight: bold; color: #ffecff;">
-         &nbsp;If you do not wish to receive future messages click here to 
-         <span class="unstyle-auto-detected-links"><a href="http://www.tell-sph.click/criticize-fatigues/cd84Q2395cCr8611v4bdfK11e9N36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQZdKQo7rB1Uj_05llwqD" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">unsubscribe</a></span>
-         <br /> 
-         <span class="unstyle-auto-detected-links"><a href="http://www.tell-sph.click/6475A239V5HS8s613q4bnev0X11e9v36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQZdKQo7boOkU106Jy0WwD/Ferreira-upkeep" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Splash Wines</a>&nbsp;|&nbsp; 1191 E Iron Eagle Dr., Suite #101 - Eagle, ID 83616</span>
-        </div> </address> 
-      </footer> 
-     </section> 
+    <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px; font-weight: 500; line-height: 30px; text-align: center; padding: 0px 30px;">Don't miss out! Just a few clicks away from a chance to win a $100 Sams Club Card by completing our quick 20-second survey about your recent experience with us.</p> &nbsp; 
+    <div style="width: 100%; text-align: center;"> 
+     <div style="background-color: #000000; padding: 15px 33px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 16px; display: inline-block; border-radius: 50px;">
+      <a href="http://www.taking-sms.click/9174W2395m8s6k11I4be3G11eaj36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBdKQ96N1jj0T5H@wD3/cerebellum-Kuala" style="text-decoration: none; color: #fff;" target="_blank">Go And Start Now</a>
+     </div> 
     </div> 
-    <div class="block-section" data-group="featured-image" data-title="Featured image">
+    <br /> &nbsp;
+   </section> 
+  </div> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <address style="text-align: center; font-weight: normal; font-family: Arial, Helvetica, sans-serif;"> 
+   <div style="font-size: 10px; background-color: #170679; padding: 15px; color: #fff; max-width: 700px; margin: auto;"> 
+    <p class="unsubscribe"><span style="text-decoration: none; ">No longer wish to receive email notifications from us?,</span><a href="http://www.taking-sms.click/discovering-tracking/71a5g23j95I8M6q12N4be4DL11eaH36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQBdKQ95Nw1t06mNWNwD" style="text-decoration-line: none;"> <span>Start-Right-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span color="memoir"></span><style></style><big></big><style id="rocked"></style><font></font><style lang="Brahmsian"></style><font lang="Laplace"></font></p> 
+   </div> </address> 
+  <div class="column block-section" data-group="content-standard" style="text-align: center;"> 
+   <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">&nbsp;</p> 
+  </div> 
+  <div class="block-section" data-group="content-standard"> 
+   <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td class="column alt block-bgcolor" style="; padding: 14px;"> <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <div class="block-section" data-group="content-standard"> 
+   <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td class="column alt block-bgcolor" style="; padding: 14px; text-align: center;"> <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <div class="block-section" data-group="feature-bg-image" data-title="Featured background image">
+   &nbsp;
+  </div> 
+  <div class="block-section" data-group="image-left" data-title="Two-column with left image"> 
+   <div style="display: table; width: 100%;"> 
+    <div class="column" style="display: table-cell; width: 50%; padding-right: 0;">
      &nbsp;
     </div> 
-    <div class="column block-section" data-group="content-standard" data-title="Standard content"> 
-     <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">&nbsp;</p> 
-     <div class="block-component" data-group="fluid-image" data-title="Fluid image">
-      &nbsp;
-     </div> 
-     <p class="block-component" data-group="component-spacer" data-title="Spacer" style="display: inline-block; margin: 0; margin-bottom: 14px; width: 100%; line-height: 0;">&nbsp;</p> 
-     <p class="block-component" data-group="component-spacer" style="display: inline-block; margin: 0; margin-bottom: 28px; width: 100%; line-height: 0;">&nbsp;</p> 
-     <div class="block-component" data-group="compontent-title" data-title="Title"> 
-      <h2 class="block-edit" data-block="component-title-title" style="margin: 0; margin-bottom: 10px; font-family: Georgia, Times New Roman, serif; font-size: 28px; line-height: 32px; color: #333333; font-weight: normal;">&nbsp;</h2> 
-     </div> 
-     <div class="block-component" data-group="component-subtitle" data-title="Subtitle"> 
-      <h3 class="block-edit" data-block="compontent-subtitle-subtitle" style="margin: 0; margin-bottom: 10px; font-family: Georgia, Times New Roman, serif; font-size: 22px; line-height: 28px; color: #333333; font-weight: normal;">&nbsp;</h3> 
-     </div> 
+    <div class="column" style="display: table-cell; width: 50%; padding-left: 14px; vertical-align: middle;"> 
+     <p class="block-edit block-remove" data-block="image-left-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
    </div> 
   </div>   
- <img src="http://www.tell-sph.click/surface-madness/7ec6q23RZ95IzV8511b4be2C11e9z36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQZdKQo7cC1T0nI6zkwD@y" alt=""/></body>
+ <img src="http://www.taking-sms.click/mince-westward/daa5B239M5q85MU13U4Pbe6ly11ean36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQBdKQ95S10LD6JXzwND" alt=""/></body>
 </html>
 
-------=_Part_154_1636241030.1676999012090--
+------=_Part_778_679994369.1677001422980--
 
