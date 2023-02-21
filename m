@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48AF569E87F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 20:43:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 969C169E9C3
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 22:54:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0B48210E35D;
-	Tue, 21 Feb 2023 19:43:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3C2F010E368;
+	Tue, 21 Feb 2023 21:54:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 21 Feb 2023 19:43:11 UTC
-Received: from mail.slip-leaf.click (unknown [104.206.109.254])
- by gabe.freedesktop.org (Postfix) with ESMTP id E8F7910E656
+X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
+ Tue, 21 Feb 2023 21:54:55 UTC
+Received: from mail.shoot-soutw.click (unknown [45.13.189.4])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2E82610E194
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 19:43:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=slip-leaf.click; 
+ Tue, 21 Feb 2023 21:54:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shoot-soutw.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=leafprotectcom-insert-season-gutter-gard-offer@slip-leaf.click; 
- bh=Y8Bb+l1QRvuxYAfeERU6IyGCURE=;
- b=mnhc3ES7rU8glHWR8qmECGf9GSh2XCvY7XpG30e7cQAZX6rq9qfsmy+iwcTFUIHkPb5J5wGlYhU1
- hvcK+KkFE1YsdNbqz/oViI0tl/HhaqdewHgCX7CASsfQFKf5xSogXI4pEa8pRbtR0PRdZFtfpW3n
- B/aPf2UA7zgU/a5BzLk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=slip-leaf.click;
- b=DcnS3/daRxp/RJWaihV6DIWbCcPUCYEkInGy7ZyYMi63w96xTpfo2ftT/lX5SACLcOATtJgGZMMw
- X71ovLQlcwgS4zSD/avBGrn8QIDakE4ZrO7QEupuoydraQ2QSmbzbRCAIZdGVmrPB4nWBT6D1MRc
- 4hGxcfrH4lJouCDEHOk=;
-Received: by mail.slip-leaf.click id hukpgi0001gh for
+ i=lynette-meaux@shoot-soutw.click; 
+ bh=Ond3lS2hTXtUByzDrBwznHczLWQ=;
+ b=L7e158rP+xGhhgeHQZuQQSLHPs3FTv1jboDsOpi/35T1T1zfkbo4qCdmuaqbSMWyZmh9emByR3yU
+ kq4MMyed2pSXxmY18XomPBRHI6IJ2+Qt7ZHyLJL6KhvbfuWA/i2NBMVHFp9xXSvLfaHKEOLsoqSg
+ OAv47PtAstYeafTlw8Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shoot-soutw.click; 
+ b=Trbf+LY53E1QlWEr1grNRFSxdFBj2xVWf36ynUe7+5d+y+fmE3il040dwCz4y5zx1SeaCJWMtVGI
+ 45Ik312x2b8OOtWi2bm+o6/DSBw16bGyqgUL4x1C+HgTQ3pvTXJMHJmSOwZoqC/PJ0VacgbQ6Cmy
+ sHJW99HngY+WaNNOKvg=;
+Received: by mail.shoot-soutw.click id hul8ug0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 15:59:42 -0500 (envelope-from
- <leafprotectcom-insert-season-gutter-gard-offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@slip-leaf.click>)
-Date: Tue, 21 Feb 2023 15:59:42 -0500
-From: "LeafProtect.com INSERT SEASON Gutter Gard Offer"
- <leafprotectcom-insert-season-gutter-gard-offer@slip-leaf.click>
+ Tue, 21 Feb 2023 18:12:30 -0500 (envelope-from
+ <lynette-meaux-intel+2Dgvt+2Ddev=lists.freedesktop.org@shoot-soutw.click>)
+Date: Tue, 21 Feb 2023 18:12:30 -0500
+From: Lynette Meaux <lynette-meaux@shoot-soutw.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get your free gutter estimate
+Subject: Let us know your opinion of Southwest Up to $1OO Bonus
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_439_498263123.1677007933173"
-Message-ID: <0.0.0.31.1D946376B99251E.51A7B0@mail.slip-leaf.click>
+ boundary="----=_Part_691_1034409305.1677015960488"
+Message-ID: <0.0.0.4C.1D94649F88A7BAA.68458C@mail.shoot-soutw.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_439_498263123.1677007933173
+------=_Part_691_1034409305.1677015960488
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,133 +63,61 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>08022123</title> 
+  <title>09022123</title> 
  </head> 
- <body style="background-color: #fff5df;">
-  <br /> 
-  <br /> &nbsp; 
-  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: 0px 0px 8px 1px;"> 
+ <body style="background-color: #eaf1ff; margin-top: 13%;"> 
+  <div style="max-width: 600px; margin: auto; box-shadow: inset 0px 0px 8px 1px; padding: 35px 10px; border-radius: 8px; background-color: #F6F8FA;"> 
    <header> 
-    <div>
-     <a href="http://www.slip-leaf.click/romancers-formants/1d46R23V9P5m86Bz12J4lbf4H11edn36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQrdKQR6vh1D0w5hXwDM" target="_blank"><img alt="" src="http://www.slip-leaf.click/e214r2395jC7aF13H4tbf6ml11edA36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQrdKQR6z1uXV05L2WwD/bodyguard-Italians" /></a>
+    <div style="max-width: 85%; margin: auto; ">
+     <a href="http://www.shoot-soutw.click/b6f5E2J395H86lA13tu4bf8uk11eeC36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ.dKQS7JX10VFV6HM3wyD/metacircularity-derivable" target="_blank"><img alt="" src="http://www.shoot-soutw.click/c055m23K95zgN7a11j4bfaC11ees36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ.dKQS5Ym1P05UAwLD/metacircularity-derivable" width="100%" /></a>
+    </div> &nbsp; 
+    <div style="max-width: 85%; margin: auto;">
+     <a href="http://www.shoot-soutw.click/b6f5E2J395H86lA13tu4bf8uk11eeC36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ.dKQS7JX10VFV6HM3wyD/metacircularity-derivable" target="_blank"><img alt="" src="http://www.shoot-soutw.click/c234E2395o7kaA13Sz4bkfb_11eek36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ.dKQS7h1C0SHA6by0wDT/survivals-deterministically" width="100%" /></a>
     </div> 
    </header> 
+   <section> 
+    <div> 
+     <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 135%; padding: 0% 5%;">Don't miss out! Just a few clicks away from a chance to win a $100 <b style="color: #144BB6 ;">Southwest</b> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+    </div> &nbsp; 
+    <div style="text-align: center;">
+     <a href="http://www.shoot-soutw.click/b6f5E2J395H86lA13tu4bf8uk11eeC36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ.dKQS7JX10VFV6HM3wyD/metacircularity-derivable" style="text-decoration: none; color: #fff;" target="_blank"><span style="background-color: #144BB6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; padding: 2.5% 5%; font-size: 125%; border-radius: 8px;">Go And Start Now</span></a>
+    </div> 
+   </section> 
   </div> 
-  <div style="padding-top: 180px;">
-   &nbsp;
-  </div> 
-  <footer style="max-width: 600px; margin: auto;"> 
-   <address style="text-align: cneter; font-size: 10px; background-color: #3f3f3f; padding: 15px 0px; font-weight: bold; color: #fff;"> <p style="text-align: center;">This is an advertisement. This message has been sent to you through an affiliate.<br /> To be removed from receiving future emails, <a href="http://www.slip-leaf.click/romancers-formants/4865C239i5vxs8613R4bfs5wW11edO36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdKQR7V1MDRD05k00wD" style="font-style: normal; font-weight: normal; text-decoration: underline;" target="_blank">Unsubscribe here</a>.<br /> <br /> <span style="font-size: 14px;">2 Depot Plaza, Suite 401 Bedford Hills, NY 10507</span></p> </address> 
+  <footer style="text-align: center; max-width: 700px; margin: auto;"> 
+   <address style="background-color: cornflowerblue; padding: 0.5% 0%; font-size: 75%; font-weight: bold; color: #fff;"> <p><small><span style="text-decoration: none; ">To quit messages,</span><a href="http://www.shoot-soutw.click/enables-reinforcement/51c6S23X9B5q86Nr13o4bfjU9A11eel36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.dKQS5g10Wo6zNN0wD" style="text-decoration-line: none; color: white"> <span>Click-This </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span><span face="cobblers"></span></span><style><big><font></font></style></big><font><big></big><span lang="invests"></span><span></span></font><span class="abolitionist"></span> </small></p> </address> 
   </footer> 
-  <div class="block-component" data-group="component-text" data-title="Text"> 
-   <p class="block-edit" data-block="component-text-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">&nbsp;</p> 
-  </div> 
-  <div class="block-component" data-group="compontent-list" data-title="Unordered List">
+  <div class="block-section" data-group="three-column" data-title="Three-column with images">
    &nbsp;
   </div> 
-  <table border="0" cellpadding="0" cellspacing="0" class="btn block-component" data-group="compontent-button" data-title="Button" role="presentation" style="display: inline-block; margin: 0 auto; border-collapse: separate; border-radius: 50px; line-height: 100%;"> 
-   <tbody style="display: inline-block;"> 
-    <tr> 
-     <td style="display: inline-block; border: none; border-radius: 50px; cursor: auto; mso-padding-alt: 12px 25px; background: #333333;">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div class="column block-section" data-group="content-standard" style="text-align: center;"> 
-   <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">&nbsp;</p> 
-  </div> 
-  <div class="block-section" data-group="content-standard"> 
-   <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td class="column alt block-bgcolor" style="; padding: 14px;"> <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <div class="block-section" data-group="content-standard"> 
-   <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td class="column alt block-bgcolor" style="; padding: 14px; text-align: center;"> <p class="block-edit block-remove" data-block="content-standard-text" style="margin: 0; margin-bottom: 10px; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <div class="block-section" data-group="feature-bg-image" data-title="Featured background image">
-   &nbsp;
-  </div> 
-  <div class="block-section" data-group="image-left" data-title="Two-column with left image"> 
+  <div class="block-section" data-group="three-column"> 
    <div style="display: table; width: 100%;"> 
-    <div class="column" style="display: table-cell; width: 50%; padding-right: 0;">
-     &nbsp;
+    <div class="column" style="display: table-cell; width: 33.3%; padding-right: 7px; text-align: center;"> 
+     <p class="block-edit block-remove" data-block="three-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
-    <div class="column" style="display: table-cell; width: 50%; padding-left: 14px; vertical-align: middle;"> 
-     <p class="block-edit block-remove" data-block="image-left-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
+    <div class="column" style="display: table-cell; width: 33.3%; padding-right: 7px; padding-left: 7px; text-align: center;"> 
+     <p class="block-edit block-remove" data-block="three-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
-   </div> 
-  </div> 
-  <div class="block-section" data-group="image-left"> 
-   <div class="block-bgcolor" data-block="image-left-bgcolor" style="display: table; width: 100%; "> 
-    <div class="column alt" style="display: table-cell; width: 50%; padding: 14px; padding-right: 0;">
-     &nbsp;
-    </div> 
-    <div class="column alt" style="display: table-cell; width: 50%; padding: 14px; vertical-align: middle;"> 
-     <p class="block-edit block-remove" data-block="image-left-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
+    <div class="column" style="display: table-cell; width: 33.3%; padding-left: 7px; text-align: center;"> 
+     <p class="block-edit block-remove" data-block="three-column-text-3" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
    </div> 
   </div> 
-  <div class="block-section" data-group="image-right" style="direction: rtl;"> 
+  <div class="block-section" data-group="three-column"> 
    <div class="block-bgcolor" style="display: table; width: 100%; "> 
-    <div class="column alt" style="display: table-cell; direction: ltr; width: 50%; padding: 14px; padding-left: 0;">
-     &nbsp;
+    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-right: 7px;"> 
+     <p class="block-edit block-remove" data-block="three-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
-    <div class="column alt" style="display: table-cell; direction: ltr; width: 50%; padding: 14px; vertical-align: middle;"> 
-     <p class="block-edit block-remove" data-block="image-right-text" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
+    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-right: 7px; padding-left: 7px;"> 
+     <p class="block-edit block-remove" data-block="three-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
-   </div> 
-  </div> 
-  <div class="block-section" data-group="two-column" data-title="Two-column with images"> 
-   <div style="display: table; width: 100%;"> 
-    <div class="column" style="display: table-cell; width: 50%; padding-right: 7px;"> 
-     <p class="block-edit block-remove" data-block="two-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
-    </div> 
-    <div class="column" style="display: table-cell; width: 50%; padding-left: 7px;"> 
-     <p class="block-edit block-remove" data-block="two-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
-    </div> 
-   </div> 
-  </div> 
-  <div class="block-section" data-group="two-column"> 
-   <div style="display: table; width: 100%;"> 
-    <div class="column" style="display: table-cell; width: 50%; padding-right: 7px; text-align: center;"> 
-     <p class="block-edit block-remove" data-block="two-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
-    </div> 
-    <div class="column" style="display: table-cell; width: 50%; padding-left: 7px; text-align: center;"> 
-     <p class="block-edit block-remove" data-block="two-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
-    </div> 
-   </div> 
-  </div> 
-  <div class="block-section" data-group="two-column"> 
-   <div class="block-bgcolor" style="display: table; width: 100%;"> 
-    <div class="column alt" style="display: table-cell; width: 50%; padding: 14px; padding-right: 7px;"> 
-     <p class="block-edit block-remove" data-block="two-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
-    </div> 
-    <div class="column alt" style="display: table-cell; width: 50%; padding: 14px; padding-left: 7px;"> 
-     <p class="block-edit block-remove" data-block="two-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
-    </div> 
-   </div> 
-  </div> 
-  <div class="block-section" data-group="two-column"> 
-   <div class="block-bgcolor" style="display: table; width: 100%; "> 
-    <div class="column alt" style="display: table-cell; width: 50%; padding: 14px; padding-right: 7px; text-align: center;"> 
-     <p class="block-edit block-remove" data-block="two-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
-    </div> 
-    <div class="column alt" style="display: table-cell; width: 50%; padding: 14px; padding-left: 7px; text-align: center;"> 
-     <p class="block-edit block-remove" data-block="two-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
+    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-left: 7px;"> 
+     <p class="block-edit block-remove" data-block="three-column-text-3" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
    </div> 
   </div>   
- <img src="http://www.slip-leaf.click/bc94v2395Co85N11H4bf7l11edn36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQrdKQR7VyPG10W6zzOwDp/collapse-calm" alt=""/></body>
+ <img src="http://www.shoot-soutw.click/c5f6c2g39M5N85Mr11z4bfcU11eem36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ.dKQS7h1Q_0jj6glwD@T/taste-rests" alt=""/></body>
 </html>
 
-------=_Part_439_498263123.1677007933173--
+------=_Part_691_1034409305.1677015960488--
 
