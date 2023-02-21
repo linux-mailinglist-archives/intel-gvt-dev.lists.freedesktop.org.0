@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2537969E330
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 16:17:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C8C469E4EB
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 17:38:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EDD1F10E835;
-	Tue, 21 Feb 2023 15:17:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DDFE810E884;
+	Tue, 21 Feb 2023 16:38:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 21 Feb 2023 15:17:30 UTC
-Received: from mail.wrap-svsp.click (unknown [104.206.109.194])
- by gabe.freedesktop.org (Postfix) with ESMTP id CBE8210E835
+ Tue, 21 Feb 2023 16:38:42 UTC
+Received: from mail.throw-unble.click (unknown [104.206.109.211])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6768D10E888
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 15:17:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wrap-svsp.click; 
+ Tue, 21 Feb 2023 16:38:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=throw-unble.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=serviceplushome.warranty@wrap-svsp.click; 
- bh=SUO2W+O8C1Cd81cyY5gSB8POl8E=;
- b=AHQ08g+Ud6z3mLbyI9zgyaVMZmwHfy/4J2PeK9wab98UGLwlQCjf5p4uSkMSlYAAAesUVGopNBCL
- stwn/FcXMjBzFq3t+4Vro04qbCrZ5g5diFp/gQ1afMhjZyiIuUQHBLfZxuU5hRlW1D1Mlb/Z0LvE
- 0FJz2CrWY6HSwtkUHec=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wrap-svsp.click;
- b=CYjVlUiwqCTUleA+duslcKi5z57USf2Zy1MIqC9BC+ySmRSw0AW2ArxuCGR5rzLI/NYcKy1vBQM8
- HNJH4Wwwdq6kBFAQdnELwSYN7+Al+HxegkvlQ8dpHfrxZmkFOpVVe0+pGOvKSr1FXR1fSoW3yieB
- O4HgUarnVO4Tr1GPhe0=;
-Received: by mail.wrap-svsp.click id hujg8k0001g1 for
+ i=new-brain-blueprint@throw-unble.click; 
+ bh=oDIvma4tHXSumssvm2gJE7DeeEc=;
+ b=sbSCYDeLDU7ifLpx0lVmIPx1w4YSNe8/l/JA9pf9TRsdah95YdaNid6V2nj31lhQSH0g9VFrTubP
+ dY/ZhY9QMkGc11ezHtH1AvTc0sa6UOUGo576BT2Z3FOeYkxcJpsXr9IT5GUVrbS042S/HKhOdktq
+ +U8ldVkLkMIJ+c4JDtA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=throw-unble.click; 
+ b=myAV4DhLUIhYQrla4VoBvDmbUqpjNOLh8EOPB8EVXJ2VRkfPlMaibpmWXkMPSpjWqAujj3ba9hnr
+ dC7O+rJF6hAdEpwm1dlIVfwqz8ar0H0M4tpyVth3mzFkbOz0L6LAG80NbLJLQJWm6h7cRtKKTYuF
+ 9sYPtr5AZmg4SBHpUw8=;
+Received: by mail.throw-unble.click id hujpp40001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 10:07:22 -0500 (envelope-from
- <serviceplushome.warranty-intel+2Dgvt+2Ddev=lists.freedesktop.org@wrap-svsp.click>)
-Date: Tue, 21 Feb 2023 10:07:22 -0500
-From: "ServicePlusHome Warranty" <serviceplushome.warranty@wrap-svsp.click>
+ Tue, 21 Feb 2023 11:28:05 -0500 (envelope-from
+ <new-brain-blueprint-intel+2Dgvt+2Ddev=lists.freedesktop.org@throw-unble.click>)
+Date: Tue, 21 Feb 2023 11:28:05 -0500
+From: "New Brain Blueprint" <new-brain-blueprint@throw-unble.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Offer Extended, But Time is Running Out!
+Subject: 13 prescription drugs that destroy your brain
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_679_1885186016.1676991969423"
-Message-ID: <0.0.0.4B.1D9460632F83190.28663C@mail.wrap-svsp.click>
+ boundary="----=_Part_220_1239184141.1676996853845"
+Message-ID: <0.0.0.18.1D9461179796F02.26C6C5@mail.throw-unble.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,135 +53,69 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_679_1885186016.1676991969423
+------=_Part_220_1239184141.1676996853845
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>01022123</title>=20
- </head>=20
- <body style=3D"background-color: #f8efe1; padding: 50px 0px;">=20
-  <div style=3D"max-width: 600px; margin: auto; background-color: #fff;">=
-=20
-   <header id=3D"tope_pag_gren_1">=20
-    <div>=20
-     <p style=3D"display: inline;"><a href=3D"http://www.wrap-svsp.click/e7b6Hw2Q395S86pl11C4bcfj11e6C36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ0dKdK6rB1r0J6UppwBD/Greensville-diphthong" target=3D"_blank"=
-><img alt=3D"" src=3D"http://www.wrap-svsp.click/Ireland-regulation/7ce5w239u5mTh7a12G4bd1vV11e6_36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ0dKdK6Wz10Xl5vkMwD" width=3D"100%" /></a></p>=20
-    </div>=20
-    <h4 class=3D"merodeador_inc." style=3D"text-align: center; font-size: 9=
-5%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-heig=
-ht: normal; font-weight: bolder; position: relative;">&nbsp;</h4>=20
-    <aside class=3D"inf_importanqust" style=3D"font-family: 'Courier New', =
-Courier, monospace;font-size: 15px; text-decoration: none; position: absolu=
-te;">=20
-     <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: =
-'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; m=
-argin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-     <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: =
-'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; m=
-argin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-     <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: =
-'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; m=
-argin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-     <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: =
-'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; m=
-argin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-    </aside>=20
-   </header>=20
-   <section id=3D"inter_media_flas" style=3D"text-align: center; padding: 5=
-0px 0px 50px; background-color: #0B1D35; color: #fff; font-size: 75%;">=20
-    <div style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-se=
-rif;">
-     <span class=3D"finto_info">ServicePlus Home Warranty </span>
-     <br />=20
-     <br />=20
-     <span>518 Old Post Road, Suite 7 #315 Edison, NJ 08817-4683 </span>
-     <br />=20
-     <br />=20
-     <span class=3D"final_phistory" style=3D"text-align: justify; display: =
-block; padding: 0px 35px;">*ServicePlus offers service contracts which are =
-not warranties that come with a 30-day, no obligation, money-back guarantee=
-, which commences 30 days from receipt of payment. A ServicePlus service co=
-ntract covers the repair or replacement of many well-maintained system and =
-appliance breakdowns, but not necessarily the entire system or appliance. S=
-ee contract for limitations and specifics on response times. Covered items =
-must be in good working order at time of activation and dollar amount caps =
-may apply. Deductible due at time of service call. Non-covered and incident=
-al charges may apply to certain repairs and replacements. ServicePlus reser=
-ves the right to request maintenance records and offer cash back in lieu of=
- repair or replacement in an amount that is based on the depreciated value =
-of the system or appliance, which may be significantly less than the retail=
- cost to repair or replace the covered system and/or appliance. ServicePlus=
- service contracts are not available in California and Nevada. </span>
-     <br /> &nbsp;=20
-     <div>=20
-      <p><span style=3D"display: block;"><a href=3D"http://www.wrap-svsp.click/Greensville-diphthong/le46yA2y395U8I6A12Q4bWd0m11e6Q36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ0dKdK5DG10S5zjzwD" style=3D"te=
-xt-decoration: none;" target=3D"_blank">Unsubscribe</a> - <a class=3D"Unsub=
-scribe--unsubscribePreferences" href=3D"http://www.wrap-svsp.click/Greensville-diphthong/le46yA2y395U8I6A12Q4bWd0m11e6Q36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ0dKdK5DG10S5zjzwD" style=3D"text-decoratio=
-n: none;" target=3D"_blank">Unsubscribe Preferences</a> </span></p>=20
-     </div>=20
-     <span style=3D"display: block;"> </span>
-    </div>=20
-   </section>=20
-   <h4 class=3D"merodeador_inc." style=3D"text-align: center; font-size: 95=
-%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-heigh=
-t: normal; font-weight: bolder; position: relative;">&nbsp;</h4>=20
-   <aside class=3D"inf_importanqust" style=3D"font-family: 'Courier New', C=
-ourier, monospace;font-size: 15px; text-decoration: none; position: absolut=
-e;">=20
-    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
-Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
-rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
-Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
-rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
-Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
-rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
-Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
-rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-   </aside>=20
-   <h4 class=3D"merodeador_inc." style=3D"text-align: center; font-size: 95=
-%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-heigh=
-t: normal; font-weight: bolder; position: relative;">&nbsp;</h4>=20
-   <aside class=3D"inf_importanqust" style=3D"font-family: 'Courier New', C=
-ourier, monospace;font-size: 15px; text-decoration: none; position: absolut=
-e;">=20
-    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
-Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
-rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
-Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
-rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
-Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
-rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
-Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
-rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
-=20
-   </aside>=20
-  </div>  =20
- <img src=3D"http://www.wrap-svsp.click/concealing-operationally/5584r2395Uk85F11r4bd2D11e6F36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ0dKdK6ix10yt5fXAwD" alt=3D""/></body>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>03022123</title> 
+ </head> 
+ <body style="padding: 25px 0px; background-color: rgb(255, 240, 222);"> 
+  <header> 
+   <h1 id="mago_de-oz" style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 400; line-height: normal; color: aquamarine;">&nbsp;</h1> 
+   <p class="Dionar_fines_sprencgo" style="font-size: 15px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: justify; text-decoration: none; color: brown;">&nbsp;</p> 
+   <p class="de_sudor_if" style="font-size: 30px; line-height: 1px; font-family: 'Times New Roman', Times, serif;">&nbsp;</p> 
+   <p class="Imagran_cool_shoo" style="display: inline; text-align: left; ;">&nbsp;</p> 
+  </header> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: inset 0px 0px 8px 2px; padding: 20px; border-radius: 8px;"> 
+   <section> 
+    <div> 
+     <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 25px; text-align: center;">A new study from Harvard Scientists has revealed that <a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" style="text-decoration: none;" target="_blank">ONE of the following foods</a> is linked to combating Alzheimer's and dementia. Can you guess which it is?</p> 
+    </div> 
+    <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 30px; line-height: 40px;"> 
+     <ol> 
+      <li><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" style="text-decoration: none;" target="_blank">Red wine</a></li> 
+      <li style="text-decoration: none;"><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" target="_blank">Fish</a></li> 
+      <li style="text-decoration: none;"><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" target="_blank">Avocados</a></li> 
+      <li style="text-decoration: none;"><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" target="_blank">Clams</a></li> 
+     </ol> 
+    </div> 
+    <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px;">Select your answer to find out...</p> 
+    <div style="max-width: 95%; margin: auto;">
+     <a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" target="_blank"><img alt="" src="http://www.throw-unble.click/unrelated-transfinite/7746W2M39r5Si7ka11z4bdcI11e8D36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ2dKQn7r1Oo0sj5eJqwD" width="100%" /></a>
+    </div> 
+    <p><a href="http://www.throw-unble.click/dc75i2R395Aw8L611G4bd9H11e8H36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2dKQn6k10xIC5N2NwD/hungrier-proven" style="text-decoration: noen; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px;" target="_blank">Or click HERE to see the answer &gt;&gt; &gt;&gt;</a></p> 
+    <p class="infot_contienenta" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px; line-height: 35px;font-weight: bold;">To your health,<br /> Dr. Will Mitchell, DOM, MS Nutrition</p> 
+   </section> 
+   <br /> 
+   <br /> &nbsp; 
+   <footer> 
+    <address> 
+     <div align="center">
+      <br /> 
+      <font face="Verdana, Arial, Helvetica, sans-serif" size="1">If you'd prefer not to receive future emails, <a href="http://www.throw-unble.click/digesting-ancients/9ae4D2395X8O6p12It4bdap11e8n36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2dKQn7li1Gs0W5cJwD3"><font color="#666666">Unsubscribe Here</font></a>.<br /> <a href="http://www.throw-unble.click/excised-heights/7ce6h23LK95sS86O12J4bdbIt11e8s36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2dKQn7CF1v0LY5NMpwD">Brain Blueprint</a> 321 N Central Expressway Suite 351 - McKinney, TX 75070 </font>
+     </div> </address> 
+   </footer> 
+   <article class="article_fonter" style=" text-align: end; font-size: 15px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; line-height: 35px; color: chocolate;"> 
+    <h4 id="tituo_h223s" style="font-size: 15px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: 300; text-decoration: none; color: antiquewhite;">&nbsp;</h4> 
+    <table> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </article> 
+  </div>   
+ <img src="http://www.throw-unble.click/digesting-ancients/1984G2395Q8kw513Bx4bdrdh11e8F36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ2dKQn5Mi10i5nqwBD" alt=""/></body>
 </html>
 
-------=_Part_679_1885186016.1676991969423--
+------=_Part_220_1239184141.1676996853845--
 
