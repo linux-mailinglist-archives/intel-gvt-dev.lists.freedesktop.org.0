@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 969C169E9C3
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 22:54:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D57E569EA2A
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 23:28:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3C2F010E368;
-	Tue, 21 Feb 2023 21:54:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8C40110E381;
+	Tue, 21 Feb 2023 22:28:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
- Tue, 21 Feb 2023 21:54:55 UTC
-Received: from mail.shoot-soutw.click (unknown [45.13.189.4])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2E82610E194
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Tue, 21 Feb 2023 22:28:41 UTC
+Received: from mail.ring-lwes.click (unknown [45.13.189.16])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9BD1E10E1A0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 21:54:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shoot-soutw.click;
+ Tue, 21 Feb 2023 22:28:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ring-lwes.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lynette-meaux@shoot-soutw.click; 
- bh=Ond3lS2hTXtUByzDrBwznHczLWQ=;
- b=L7e158rP+xGhhgeHQZuQQSLHPs3FTv1jboDsOpi/35T1T1zfkbo4qCdmuaqbSMWyZmh9emByR3yU
- kq4MMyed2pSXxmY18XomPBRHI6IJ2+Qt7ZHyLJL6KhvbfuWA/i2NBMVHFp9xXSvLfaHKEOLsoqSg
- OAv47PtAstYeafTlw8Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shoot-soutw.click; 
- b=Trbf+LY53E1QlWEr1grNRFSxdFBj2xVWf36ynUe7+5d+y+fmE3il040dwCz4y5zx1SeaCJWMtVGI
- 45Ik312x2b8OOtWi2bm+o6/DSBw16bGyqgUL4x1C+HgTQ3pvTXJMHJmSOwZoqC/PJ0VacgbQ6Cmy
- sHJW99HngY+WaNNOKvg=;
-Received: by mail.shoot-soutw.click id hul8ug0001gd for
+ i=lowes-hardware-news@ring-lwes.click; 
+ bh=PGKyZ/RJ8TMluqRpMJmArhdts7o=;
+ b=RwJojw9nJ+uJhZ+KEVVYNfdU4P1j8ncYFTRFvt1aJs/Za3kwEw9oqb9+KScignO67zOA2udF4CN9
+ 6joSlxpFuZi5j31TzgwM+xujMLtthNQv4o2gAIdmRuzozZWDlNZKO7WPRCYXmlXyzgHKUeUHMr8O
+ 4j3e7AJrAiT2Yr+Zsoo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ring-lwes.click;
+ b=qkySH4H8lNYzYgMuUoDT3NASz9TjhxQv15skjo9qhlWH9ob178Xhh3TCb8X9bNDhnpZt0bBfI7Sx
+ AjDA/cUD40yZAAIQlQ+/Y8pRz1O6/eT71yO2MDhuLyn+uuZiVvkSV90Kwofa9wKQC6PtGvh91JwA
+ 1j3WJ6ONlDH16kln2MU=;
+Received: by mail.ring-lwes.click id hulct60001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Feb 2023 18:12:30 -0500 (envelope-from
- <lynette-meaux-intel+2Dgvt+2Ddev=lists.freedesktop.org@shoot-soutw.click>)
-Date: Tue, 21 Feb 2023 18:12:30 -0500
-From: Lynette Meaux <lynette-meaux@shoot-soutw.click>
+ Tue, 21 Feb 2023 18:45:34 -0500 (envelope-from
+ <lowes-hardware-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@ring-lwes.click>)
+Date: Tue, 21 Feb 2023 18:45:34 -0500
+From: "LOWES Hardware News" <lowes-hardware-news@ring-lwes.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Let us know your opinion of Southwest Up to $1OO Bonus
+Subject: Get a free Stanley Tool Set from Lowe's, while supplies last
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_691_1034409305.1677015960488"
-Message-ID: <0.0.0.4C.1D94649F88A7BAA.68458C@mail.shoot-soutw.click>
+ boundary="----=_Part_628_78393251.1677017933965"
+Message-ID: <0.0.0.46.1D9464E9785BA90.607D1A@mail.ring-lwes.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_691_1034409305.1677015960488
+------=_Part_628_78393251.1677017933965
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,61 +63,68 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>09022123</title> 
+  <title>10022123</title> 
  </head> 
- <body style="background-color: #eaf1ff; margin-top: 13%;"> 
-  <div style="max-width: 600px; margin: auto; box-shadow: inset 0px 0px 8px 1px; padding: 35px 10px; border-radius: 8px; background-color: #F6F8FA;"> 
-   <header> 
-    <div style="max-width: 85%; margin: auto; ">
-     <a href="http://www.shoot-soutw.click/b6f5E2J395H86lA13tu4bf8uk11eeC36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ.dKQS7JX10VFV6HM3wyD/metacircularity-derivable" target="_blank"><img alt="" src="http://www.shoot-soutw.click/c055m23K95zgN7a11j4bfaC11ees36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ.dKQS5Ym1P05UAwLD/metacircularity-derivable" width="100%" /></a>
-    </div> &nbsp; 
-    <div style="max-width: 85%; margin: auto;">
-     <a href="http://www.shoot-soutw.click/b6f5E2J395H86lA13tu4bf8uk11eeC36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ.dKQS7JX10VFV6HM3wyD/metacircularity-derivable" target="_blank"><img alt="" src="http://www.shoot-soutw.click/c234E2395o7kaA13Sz4bkfb_11eek36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ.dKQS7h1C0SHA6by0wDT/survivals-deterministically" width="100%" /></a>
+ <body style="padding: 4% 0%;"> 
+  <div style="max-width: 600px; margin: auto; box-shadow: 0px 0px 8px 1px;"> 
+   <div style="background-color: #333333; color: #fff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
+    <div style="padding:2rem; font-size: 26px">
+     <strong>Special Gift for intel-gvt-dev@lists.freedesktop.org</strong>
     </div> 
-   </header> 
-   <section> 
-    <div> 
-     <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 135%; padding: 0% 5%;">Don't miss out! Just a few clicks away from a chance to win a $100 <b style="color: #144BB6 ;">Southwest</b> Card by completing our quick 20-second survey about your recent experience with us.</p> 
+   </div> &nbsp; 
+   <header> 
+    <div>
+     <a href="http://www.ring-lwes.click/d8b4t2395yH86x11O4bfdM11efi36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQPdKQe5A1MA06rj1pwD/pranks-MacIntosh" target="_blank"><img alt="" src="http://www.ring-lwes.click/13d6A23S9_5EB7Qa12J4bfflZ11efW36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQPdKQe6zr1SZ06u3l2wD/optimize-malfunctions" width="100%" /></a>
+    </div> 
+    <div>
+     <a href="" target="_blank"><img alt="http://www.ring-lwes.click/d8b4t2395yH86x11O4bfdM11efi36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQPdKQe5A1MA06rj1pwD/pranks-MacIntosh" src="http://www.ring-lwes.click/Willoughby-expended/e044D2395Gj7Na13SXj4c00w11efy36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQPdKQe7B1om0hq6dL2JwD" width="100%" /></a>
+    </div> 
+    <div style="max-width: 95%; margin: auto;">
+     <a href="http://www.ring-lwes.click/d8b4t2395yH86x11O4bfdM11efi36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQPdKQe5A1MA06rj1pwD/pranks-MacIntosh" target="_blank"><img alt="" src="http://www.ring-lwes.click/ed55h239i5a7aHN13E4ci01kz11efG36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQPdKQe7mr10RQ_5kUzwD/Willoughby-expended" width="100%" /></a>
     </div> &nbsp; 
     <div style="text-align: center;">
-     <a href="http://www.shoot-soutw.click/b6f5E2J395H86lA13tu4bf8uk11eeC36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ.dKQS7JX10VFV6HM3wyD/metacircularity-derivable" style="text-decoration: none; color: #fff;" target="_blank"><span style="background-color: #144BB6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; padding: 2.5% 5%; font-size: 125%; border-radius: 8px;">Go And Start Now</span></a>
+     <a href="http://www.ring-lwes.click/d8b4t2395yH86x11O4bfdM11efi36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQPdKQe5A1MA06rj1pwD/pranks-MacIntosh" style="color: #fff; text-decoration: none;"><span style="background-color: #012168; font-size: 120%; padding: 2.5% 5%; font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; border-radius: 8px;">Start Here Now</span></a>
     </div> 
-   </section> 
+    <br /> &nbsp;
+   </header> 
   </div> 
-  <footer style="text-align: center; max-width: 700px; margin: auto;"> 
-   <address style="background-color: cornflowerblue; padding: 0.5% 0%; font-size: 75%; font-weight: bold; color: #fff;"> <p><small><span style="text-decoration: none; ">To quit messages,</span><a href="http://www.shoot-soutw.click/enables-reinforcement/51c6S23X9B5q86Nr13o4bfjU9A11eel36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.dKQS5g10Wo6zNN0wD" style="text-decoration-line: none; color: white"> <span>Click-This </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span><span face="cobblers"></span></span><style><big><font></font></style></big><font><big></big><span lang="invests"></span><span></span></font><span class="abolitionist"></span> </small></p> </address> 
-  </footer> 
-  <div class="block-section" data-group="three-column" data-title="Three-column with images">
+  <div style="padding-bottom: 180px;">
    &nbsp;
   </div> 
+  <footer style="text-align: center; max-width: 620px ; margin: auto;"> 
+   <address style="background-color: #d1d1d1; padding: 1.5% 0%; font-size: 65%; font-weight: bold; color: black; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> <p><span style="text-decoration: none; ">To do away with email,</span><a href="http://www.ring-lwes.click/amphibology-reabbreviated/daa4o2395US8V613r4bSfkep11efs36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQPdKQe5pH10S6C@w@DJ" style="text-decoration-line: none; color: white"> <span>Get Started Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style><style></style></style><big><font></big><span></font><big></big><style color="heaves"></style></span></p> </address> 
+  </footer> 
   <div class="block-section" data-group="three-column"> 
-   <div style="display: table; width: 100%;"> 
-    <div class="column" style="display: table-cell; width: 33.3%; padding-right: 7px; text-align: center;"> 
+   <div class="block-bgcolor" style="display: table; width: 100%;"> 
+    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-right: 7px; text-align: center;"> 
      <p class="block-edit block-remove" data-block="three-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
-    <div class="column" style="display: table-cell; width: 33.3%; padding-right: 7px; padding-left: 7px; text-align: center;"> 
+    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-right: 7px; padding-left: 7px; text-align: center;"> 
      <p class="block-edit block-remove" data-block="three-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
-    <div class="column" style="display: table-cell; width: 33.3%; padding-left: 7px; text-align: center;"> 
+    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-left: 7px; text-align: center;"> 
      <p class="block-edit block-remove" data-block="three-column-text-3" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
    </div> 
   </div> 
-  <div class="block-section" data-group="three-column"> 
-   <div class="block-bgcolor" style="display: table; width: 100%; "> 
-    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-right: 7px;"> 
-     <p class="block-edit block-remove" data-block="three-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
+  <div class="icons block-section" data-group="icons-column" data-title="Four-column icons"> 
+   <div style="display: table; width: 100%;"> 
+    <div class="column" style="display: table-cell; width: 25%; padding-right: 7px; text-align: center;"> 
+     <p class="block-edit block-remove" data-block="icons-column-text-1" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
-    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-right: 7px; padding-left: 7px;"> 
-     <p class="block-edit block-remove" data-block="three-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
+    <div class="column" style="display: table-cell; width: 25%; padding-right: 7px; padding-left: 7px; text-align: center;"> 
+     <p class="block-edit block-remove" data-block="icons-column-text-2" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
-    <div class="column alt" style="display: table-cell; width: 33.3%; padding: 14px; padding-left: 7px;"> 
-     <p class="block-edit block-remove" data-block="three-column-text-3" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
+    <div class="column" style="display: table-cell; width: 25%; padding-right: 7px; padding-left: 7px; text-align: center;"> 
+     <p class="block-edit block-remove" data-block="icons-column-text-3" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
+    </div> 
+    <div class="column" style="display: table-cell; width: 25%; padding-left: 7px; text-align: center;"> 
+     <p class="block-edit block-remove" data-block="icons-column-text-4" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; line-height: 24px; color: #333333; font-weight: 300;">&nbsp;</p> 
     </div> 
    </div> 
   </div>   
- <img src="http://www.shoot-soutw.click/c5f6c2g39M5N85Mr11z4bfcU11eem36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ.dKQS7h1Q_0jj6glwD@T/taste-rests" alt=""/></body>
+ <img src="http://www.ring-lwes.click/4855J23C95F8xL513H4HNc02F11efl36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQPdKQe7jm1vlM06N@jpwD/spiraling-Gandhian" alt=""/></body>
 </html>
 
-------=_Part_691_1034409305.1677015960488--
+------=_Part_628_78393251.1677017933965--
 
