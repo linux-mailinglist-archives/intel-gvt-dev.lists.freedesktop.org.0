@@ -1,51 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A48B569D9A5
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 04:48:44 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2537969E330
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Feb 2023 16:17:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3218A10E1B5;
-	Tue, 21 Feb 2023 03:48:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EDD1F10E835;
+	Tue, 21 Feb 2023 15:17:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5155D10E147;
- Tue, 21 Feb 2023 03:48:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676951315; x=1708487315;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=+3Nq/K38kHZsQSxS12tarLBGvaa5fz9uJFcv3nNQVBg=;
- b=AHcD9Zeejnruav0+DjGgmbMzeA0moRjGcCJIiUoin+ySsqx4rMvaZ2Ug
- 0+/5Wrk8Ao5Z5TJzdpA+fEXPCuTi5ORARuUVZOgi17Cdnmou9Z1HVhqgf
- Dty9KfUbP/RflVskeaYDg20+6+jR68tN5tANNnn6AZmNWaxqh+F7wMc4j
- D5SThfyDRaoZueH698lyo1kA2WUsfD0pBcPSf8Z9OQZPwf/nBZPXIns1S
- 4l56QULA+ia9UhgVxFl+BMVep26k/MvxVnzs8hZUVFPpw8F6Fk6iqPbxD
- /2DHBVpAcooLEkuopEuEt/3fS5642/IglqnnSGA6xuhcyc/Ace2m/J3Ns A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10627"; a="397218550"
-X-IronPort-AV: E=Sophos;i="5.97,314,1669104000"; d="scan'208";a="397218550"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2023 19:48:29 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10627"; a="664822227"
-X-IronPort-AV: E=Sophos;i="5.97,314,1669104000"; d="scan'208";a="664822227"
-Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by orsmga007.jf.intel.com with ESMTP; 20 Feb 2023 19:48:29 -0800
-From: Yi Liu <yi.l.liu@intel.com>
-To: alex.williamson@redhat.com,
-	jgg@nvidia.com,
-	kevin.tian@intel.com
-Subject: [PATCH v4 19/19] docs: vfio: Add vfio device cdev description
-Date: Mon, 20 Feb 2023 19:48:12 -0800
-Message-Id: <20230221034812.138051-20-yi.l.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230221034812.138051-1-yi.l.liu@intel.com>
-References: <20230221034812.138051-1-yi.l.liu@intel.com>
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Tue, 21 Feb 2023 15:17:30 UTC
+Received: from mail.wrap-svsp.click (unknown [104.206.109.194])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CBE8210E835
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 21 Feb 2023 15:17:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wrap-svsp.click; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=serviceplushome.warranty@wrap-svsp.click; 
+ bh=SUO2W+O8C1Cd81cyY5gSB8POl8E=;
+ b=AHQ08g+Ud6z3mLbyI9zgyaVMZmwHfy/4J2PeK9wab98UGLwlQCjf5p4uSkMSlYAAAesUVGopNBCL
+ stwn/FcXMjBzFq3t+4Vro04qbCrZ5g5diFp/gQ1afMhjZyiIuUQHBLfZxuU5hRlW1D1Mlb/Z0LvE
+ 0FJz2CrWY6HSwtkUHec=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wrap-svsp.click;
+ b=CYjVlUiwqCTUleA+duslcKi5z57USf2Zy1MIqC9BC+ySmRSw0AW2ArxuCGR5rzLI/NYcKy1vBQM8
+ HNJH4Wwwdq6kBFAQdnELwSYN7+Al+HxegkvlQ8dpHfrxZmkFOpVVe0+pGOvKSr1FXR1fSoW3yieB
+ O4HgUarnVO4Tr1GPhe0=;
+Received: by mail.wrap-svsp.click id hujg8k0001g1 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 21 Feb 2023 10:07:22 -0500 (envelope-from
+ <serviceplushome.warranty-intel+2Dgvt+2Ddev=lists.freedesktop.org@wrap-svsp.click>)
+Date: Tue, 21 Feb 2023 10:07:22 -0500
+From: "ServicePlusHome Warranty" <serviceplushome.warranty@wrap-svsp.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Offer Extended, But Time is Running Out!
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_679_1885186016.1676991969423"
+Message-ID: <0.0.0.4B.1D9460632F83190.28663C@mail.wrap-svsp.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,164 +50,138 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
- kvm@vger.kernel.org, mjrosato@linux.ibm.com, joro@8bytes.org,
- cohuck@redhat.com, xudong.hao@intel.com, peterx@redhat.com,
- yan.y.zhao@intel.com, eric.auger@redhat.com, terrence.xu@intel.com,
- nicolinc@nvidia.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, intel-gfx@lists.freedesktop.org,
- chao.p.peng@linux.intel.com, lulu@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, jasowang@redhat.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This gives hints for userspace applications on device cdev usage.
+------=_Part_679_1885186016.1676991969423
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Yi Liu <yi.l.liu@intel.com>
----
- Documentation/driver-api/vfio.rst | 125 ++++++++++++++++++++++++++++++
- 1 file changed, 125 insertions(+)
+<!DOCTYPE html>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>01022123</title>=20
+ </head>=20
+ <body style=3D"background-color: #f8efe1; padding: 50px 0px;">=20
+  <div style=3D"max-width: 600px; margin: auto; background-color: #fff;">=
+=20
+   <header id=3D"tope_pag_gren_1">=20
+    <div>=20
+     <p style=3D"display: inline;"><a href=3D"http://www.wrap-svsp.click/e7b6Hw2Q395S86pl11C4bcfj11e6C36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ0dKdK6rB1r0J6UppwBD/Greensville-diphthong" target=3D"_blank"=
+><img alt=3D"" src=3D"http://www.wrap-svsp.click/Ireland-regulation/7ce5w239u5mTh7a12G4bd1vV11e6_36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ0dKdK6Wz10Xl5vkMwD" width=3D"100%" /></a></p>=20
+    </div>=20
+    <h4 class=3D"merodeador_inc." style=3D"text-align: center; font-size: 9=
+5%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-heig=
+ht: normal; font-weight: bolder; position: relative;">&nbsp;</h4>=20
+    <aside class=3D"inf_importanqust" style=3D"font-family: 'Courier New', =
+Courier, monospace;font-size: 15px; text-decoration: none; position: absolu=
+te;">=20
+     <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: =
+'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; m=
+argin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+     <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: =
+'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; m=
+argin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+     <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: =
+'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; m=
+argin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+     <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: =
+'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; m=
+argin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+    </aside>=20
+   </header>=20
+   <section id=3D"inter_media_flas" style=3D"text-align: center; padding: 5=
+0px 0px 50px; background-color: #0B1D35; color: #fff; font-size: 75%;">=20
+    <div style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-se=
+rif;">
+     <span class=3D"finto_info">ServicePlus Home Warranty </span>
+     <br />=20
+     <br />=20
+     <span>518 Old Post Road, Suite 7 #315 Edison, NJ 08817-4683 </span>
+     <br />=20
+     <br />=20
+     <span class=3D"final_phistory" style=3D"text-align: justify; display: =
+block; padding: 0px 35px;">*ServicePlus offers service contracts which are =
+not warranties that come with a 30-day, no obligation, money-back guarantee=
+, which commences 30 days from receipt of payment. A ServicePlus service co=
+ntract covers the repair or replacement of many well-maintained system and =
+appliance breakdowns, but not necessarily the entire system or appliance. S=
+ee contract for limitations and specifics on response times. Covered items =
+must be in good working order at time of activation and dollar amount caps =
+may apply. Deductible due at time of service call. Non-covered and incident=
+al charges may apply to certain repairs and replacements. ServicePlus reser=
+ves the right to request maintenance records and offer cash back in lieu of=
+ repair or replacement in an amount that is based on the depreciated value =
+of the system or appliance, which may be significantly less than the retail=
+ cost to repair or replace the covered system and/or appliance. ServicePlus=
+ service contracts are not available in California and Nevada. </span>
+     <br /> &nbsp;=20
+     <div>=20
+      <p><span style=3D"display: block;"><a href=3D"http://www.wrap-svsp.click/Greensville-diphthong/le46yA2y395U8I6A12Q4bWd0m11e6Q36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ0dKdK5DG10S5zjzwD" style=3D"te=
+xt-decoration: none;" target=3D"_blank">Unsubscribe</a> - <a class=3D"Unsub=
+scribe--unsubscribePreferences" href=3D"http://www.wrap-svsp.click/Greensville-diphthong/le46yA2y395U8I6A12Q4bWd0m11e6Q36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ0dKdK5DG10S5zjzwD" style=3D"text-decoratio=
+n: none;" target=3D"_blank">Unsubscribe Preferences</a> </span></p>=20
+     </div>=20
+     <span style=3D"display: block;"> </span>
+    </div>=20
+   </section>=20
+   <h4 class=3D"merodeador_inc." style=3D"text-align: center; font-size: 95=
+%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-heigh=
+t: normal; font-weight: bolder; position: relative;">&nbsp;</h4>=20
+   <aside class=3D"inf_importanqust" style=3D"font-family: 'Courier New', C=
+ourier, monospace;font-size: 15px; text-decoration: none; position: absolut=
+e;">=20
+    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
+Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
+rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
+Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
+rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
+Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
+rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
+Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
+rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+   </aside>=20
+   <h4 class=3D"merodeador_inc." style=3D"text-align: center; font-size: 95=
+%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-heigh=
+t: normal; font-weight: bolder; position: relative;">&nbsp;</h4>=20
+   <aside class=3D"inf_importanqust" style=3D"font-family: 'Courier New', C=
+ourier, monospace;font-size: 15px; text-decoration: none; position: absolut=
+e;">=20
+    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
+Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
+rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
+Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
+rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
+Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
+rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+    <p class=3D"Indiviual_clossgo" style=3D"text-align: end; font-family: '=
+Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: aqua; ma=
+rgin: auto; box-shadow: 0px 0px 0px 0px; vertical-align: auto;">&nbsp;</p>=
+=20
+   </aside>=20
+  </div>  =20
+ <img src=3D"http://www.wrap-svsp.click/concealing-operationally/5584r2395Uk85F11r4bd2D11e6F36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ0dKdK6ix10yt5fXAwD" alt=3D""/></body>
+</html>
 
-diff --git a/Documentation/driver-api/vfio.rst b/Documentation/driver-api/vfio.rst
-index 44527420f20d..5d290ceb2bbf 100644
---- a/Documentation/driver-api/vfio.rst
-+++ b/Documentation/driver-api/vfio.rst
-@@ -239,6 +239,123 @@ group and can access them as follows::
- 	/* Gratuitous device reset and go... */
- 	ioctl(device, VFIO_DEVICE_RESET);
- 
-+IOMMUFD and vfio_iommu_type1
-+----------------------------
-+
-+IOMMUFD is the new user API to manage I/O page tables from userspace.
-+It intends to be the portal of delivering advanced userspace DMA
-+features (nested translation [5], PASID [6], etc.) and backward
-+compatible with the vfio_iommu_type1 driver. Eventually vfio_iommu_type1
-+will be deprecated.
-+
-+With the backward compatibility, no change is required for legacy VFIO
-+drivers or applications to connect a VFIO device to IOMMUFD.
-+
-+	When CONFIG_IOMMUFD_VFIO_CONTAINER=n, VFIO container still provides
-+	/dev/vfio/vfio which connects to vfio_iommu_type1. To disable VFIO
-+	container and vfio_iommu_type1, the administrator could symbol link
-+	/dev/vfio/vfio to /dev/iommu to enable VFIO container emulation
-+	in IOMMUFD.
-+
-+	When CONFIG_IOMMUFD_VFIO_CONTAINER=y, IOMMUFD directly provides
-+	/dev/vfio/vfio while the VFIO container and vfio_iommu_type1 are
-+	explicitly disabled.
-+
-+VFIO Device cdev
-+----------------
-+
-+Traditionally user acquires a device fd via VFIO_GROUP_GET_DEVICE_FD
-+in a VFIO group.
-+
-+With CONFIG_VFIO_DEVICE_CDEV=y the user can now acquire a device fd
-+by directly opening a character device /dev/vfio/devices/vfioX where
-+"X" is the number allocated uniquely by VFIO for registered devices.
-+
-+The cdev only works with IOMMUFD. Both VFIO drivers and applications
-+must adapt to the new cdev security model which requires using
-+VFIO_DEVICE_BIND_IOMMUFD to claim DMA ownership before starting to
-+actually use the device. Once bind succeeds then a VFIO device can
-+be fully accessed by the user.
-+
-+VFIO device cdev doesn't rely on VFIO group/container/iommu drivers.
-+Hence those modules can be fully compiled out in an environment
-+where no legacy VFIO application exists.
-+
-+So far SPAPR does not support IOMMUFD yet. So it cannot support device
-+cdev either.
-+
-+Device cdev Example
-+-------------------
-+
-+Assume user wants to access PCI device 0000:6a:01.0::
-+
-+	$ ls /sys/bus/pci/devices/0000:6a:01.0/vfio-dev/
-+	vfio0
-+
-+This device is therefore represented as vfio0. The user can verify
-+its existence::
-+
-+	$ ls -l /dev/vfio/devices/vfio0
-+	crw------- 1 root root 511, 0 Feb 16 01:22 /dev/vfio/devices/vfio0
-+	$ cat /sys/bus/pci/devices/0000:6a:01.0/vfio-dev/vfio0/dev
-+	511:0
-+	$ ls -l /dev/char/511\:0
-+	lrwxrwxrwx 1 root root 21 Feb 16 01:22 /dev/char/511:0 -> ../vfio/devices/vfio0
-+
-+Then provide the user with access to the device if unprivileged
-+operation is desired::
-+
-+	$ chown user:user /dev/vfio/devices/vfio0
-+
-+Finally the user could get cdev fd by::
-+
-+	cdev_fd = open("/dev/vfio/devices/vfio0", O_RDWR);
-+
-+An opened cdev_fd doesn't give the user any permission of accessing
-+the device except binding the cdev_fd to an iommufd. After that point
-+then the device is fully accessible including attaching it to an
-+IOMMUFD IOAS/HWPT to enable userspace DMA::
-+
-+	struct vfio_device_bind_iommufd bind = {
-+		.argsz = sizeof(bind),
-+		.flags = 0,
-+	};
-+	struct iommu_ioas_alloc alloc_data  = {
-+		.size = sizeof(alloc_data),
-+		.flags = 0,
-+	};
-+	struct vfio_device_attach_iommufd_pt attach_data = {
-+		.argsz = sizeof(attach_data),
-+		.flags = 0,
-+	};
-+	struct iommu_ioas_map map = {
-+		.size = sizeof(map),
-+		.flags = IOMMU_IOAS_MAP_READABLE |
-+			 IOMMU_IOAS_MAP_WRITEABLE |
-+			 IOMMU_IOAS_MAP_FIXED_IOVA,
-+		.__reserved = 0,
-+	};
-+
-+	iommufd = open("/dev/iommu", O_RDWR);
-+
-+	bind.iommufd = iommufd;
-+	ioctl(cdev_fd, VFIO_DEVICE_BIND_IOMMUFD, &bind);
-+
-+	ioctl(iommufd, IOMMU_IOAS_ALLOC, &alloc_data);
-+	attach_data.pt_id = alloc_data.out_ioas_id;
-+	ioctl(cdev_fd, VFIO_DEVICE_ATTACH_IOMMUFD_PT, &attach_data);
-+
-+	/* Allocate some space and setup a DMA mapping */
-+	map.user_va = (int64_t)mmap(0, 1024 * 1024, PROT_READ | PROT_WRITE,
-+				    MAP_PRIVATE | MAP_ANONYMOUS, 0, 0);
-+	map.iova = 0; /* 1MB starting at 0x0 from device view */
-+	map.length = 1024 * 1024;
-+	map.ioas_id = alloc_data.out_ioas_id;;
-+
-+	ioctl(iommufd, IOMMU_IOAS_MAP, &map);
-+
-+	/* Other device operations as stated in "VFIO Usage Example" */
-+
- VFIO User API
- -------------------------------------------------------------------------------
- 
-@@ -566,3 +683,11 @@ This implementation has some specifics:
- 				\-0d.1
- 
- 	00:1e.0 PCI bridge: Intel Corporation 82801 PCI Bridge (rev 90)
-+
-+.. [5] Nested translation is an IOMMU feature which supports two stage
-+   address translations. This improves the address translation efficiency
-+   in IOMMU virtualization.
-+
-+.. [6] PASID stands for Process Address Space ID, introduced by PCI
-+   Express. It is a prerequisite for Shared Virtual Addressing (SVA)
-+   and Scalable I/O Virtualization (Scalable IOV).
--- 
-2.34.1
+------=_Part_679_1885186016.1676991969423--
 
