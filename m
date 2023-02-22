@@ -1,42 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42B9669F786
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Feb 2023 16:16:24 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7166A69F859
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Feb 2023 16:53:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 05FFD10EA03;
-	Wed, 22 Feb 2023 15:16:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4A0B310EA2A;
+	Wed, 22 Feb 2023 15:53:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Wed, 22 Feb 2023 15:16:20 UTC
-Received: from mail.combing-at.click (unknown [45.13.189.77])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3F85610E9F6
+X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
+ Wed, 22 Feb 2023 15:53:53 UTC
+Received: from mail.face-khtool.click (unknown [45.13.189.93])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5A27810EA22
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Feb 2023 15:16:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=combing-at.click;
+ Wed, 22 Feb 2023 15:53:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=face-khtool.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=att@combing-at.click; bh=4TD9bwtWRlIZ/txjoaJpRZB/FEY=;
- b=rx0lS7t1QDPoclQWMOhNB0aXKWcmkLkBDIjCWXYQLf+M9e13OpnjQiqCKz3DZ+E2AQdzAEzSvbZT
- BaZ82fuWzU+XzLW//HCuDxrP3GDvAj44IIHmmSAXQg+lWEZrwGSO9uM6B/JNmfVj8ZpS8aD6IUGF
- ywQKBrRgO+ozBGHezWQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=combing-at.click;
- b=Ohc20mMbFw7fdyWjFtzKD+1KlPrl+3XRTCJshGgS4CEbUK7lP+9aSJvzo99HB/CJN7ugwf7YUWJ3
- xePecUHc6tIPZAaMjCeCQ3R7VtZ47UQG/NDT7Z7EAaIO3VrYJL4lG8oSQULe/FAislJKwcUW7Yda
- XyU+DcqLkFMG4Nc7za8=;
-Received: by mail.combing-at.click id huoos80001ga for
+ i=kohls-deals@face-khtool.click; 
+ bh=q0GMurHeNtMb4X/g5RBF1HhwPww=;
+ b=bv82z80x2+gTREjyb9P5TPd4A5/xKqmf/ds0IWhnE+yOMU89fdnRH9cVLk8TOVpmVrHgwZD7CQWe
+ C+EeT8cKJb9iQdazdPo+OdBy/Lk++K5Wd+NzEtKMAmMwltlt+hln3CdKJTZt44KIN8rpOAsf5bW2
+ +YOpp+1ECLkfHnyARz8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=face-khtool.click; 
+ b=H/8izh4pbfSEiHw2pGyXkrC7X4KQaA/5K/A/wxghslrfch/om07M6FiZgybndBlLG8Wn1syWy9YF
+ eoK2+274vilYjWkohYqJDNHubYDir1EmQl6p3iytVjPZEswkSKTO+ROrC5EMjQWhu8Ti5jT7k0Sv
+ YQku/kZyXpoB2AmXTK0=;
+Received: by mail.face-khtool.click id huot920001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Feb 2023 10:04:38 -0500 (envelope-from
- <att-intel+2Dgvt+2Ddev=lists.freedesktop.org@combing-at.click>)
-Date: Wed, 22 Feb 2023 10:04:38 -0500
-From: ATT <att@combing-at.click>
+ Wed, 22 Feb 2023 10:38:36 -0500 (envelope-from
+ <kohls-deals-intel+2Dgvt+2Ddev=lists.freedesktop.org@face-khtool.click>)
+Date: Wed, 22 Feb 2023 10:38:36 -0500
+From: "Kohls Deals" <kohls-deals@face-khtool.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your visits are now rewarded for your loyalty - Awesome
+Subject: Free Knife Set from Kohl's, grab it now!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_391_265369092.1677078212523"
-Message-ID: <0.0.0.2B.1D946CEFBF33F90.4C3F66@mail.combing-at.click>
+ boundary="----=_Part_616_876316436.1677080311172"
+Message-ID: <0.0.0.44.1D946D3BAC9BEC2.D7E2C@mail.face-khtool.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_391_265369092.1677078212523
+------=_Part_616_876316436.1677080311172
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,73 +63,217 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04022223</title> 
+  <title>05022223</title> 
  </head> 
- <body style="padding: 5% 0%; background-color: rgb(226, 226, 226);"> 
-  <div style="max-width: 600px; margin: auto; box-shadow: 0px 0px 8px 1px;"> 
-   <header> 
-    <div style="text-align: center; padding: 5% 0%; background-color: #14A1DB;">
-     <span style="font-size: 150%; font-family:Verdana, Geneva, Tahoma, sans-serif; font-weight: bold;display: block; padding: 0 5%; line-height: 130%; color: #fff; text-shadow: 0 0 3px #000;">Get Closer To A $100 AT&amp;T Gift Card With Just A Few Clicks! </span>
-    </div> 
+ <body style="background-color: #dbdbdb; padding: 8% 0%;"> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: 0 0 8px 2px;"> 
+   <header style="text-align: center;">
+    <span style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 300%; padding: 5% 0%; display: block; font-weight: bold;"><a href="http://www.face-khtool.click/constituent-crushers/3966C23Y9N5F8rw613b4cyi12g11f4z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQkdKR95k1uJ05PJw@D" style="text-decoration: none; color: #000000;"><b style="color: #810000;">KOHL'S</b> <b>Rewards</b></a></span>
    </header> 
-   <section style="background-color: #14A1DB;"> 
-    <div style="text-align: center; ">
-     <a href="http://www.combing-at.click/11f5s2g395w8B6j11q4c0fX11f3X36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQPdKRo5Rj10j5tlwDB/alarming-Siberia" target="_blank"><img alt="" src="http://www.combing-at.click/Bucknell-queerer/bca5B2K395h7GaC12mX4c10t11f3w36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQPdKRo5EN1O05HOOwD" style="display: block;" width="100%" /></a>
+   <section> 
+    <div style="max-width: 550px; margin: auto;">
+     <a href="http://www.face-khtool.click/constituent-crushers/3966C23Y9N5F8rw613b4cyi12g11f4z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQkdKR95k1uJ05PJw@D" target="_blank"><img alt="" src="http://www.face-khtool.click/constituent-crushers/9184X2395A7aAO11k4c14j11f4T36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQkdKR96iI1K0S5pJwD@" width="100%" /></a>
     </div> 
-    <div style="text-align: center; background-color: #14A1DB;">
-     <span style="font-size: 135%; padding: 5% 8%; line-height: 135%; font-family: Verdana, Geneva, Tahoma, sans-serif; display: block; font-weight: 500; color: #fff;">Tell us how we're doing and get a $100 gift card to AT&amp;T and upgrade your mobile service!<br /> <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us.</span>
+    <section class="prueba_maxw" style="text-align: center;"> 
+     <div>
+      &nbsp; 
+      <div style="text-align: center;  "> 
+       <p style="font-size: 20px; color: #555555; font-family: arial; margin: 0;  "><strong>intel-gvt-dev@lists.freedesktop.org</strong></p> 
+      </div> 
+     </div> 
+    </section> &nbsp; 
+    <div style="position: relative;"> 
+     <div style="max-width: 35%; padding-left: 1% ;">
+      <a href="http://www.face-khtool.click/constituent-crushers/3966C23Y9N5F8rw613b4cyi12g11f4z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQkdKR95k1uJ05PJw@D" target="_blank"><img alt="" src="http://www.face-khtool.click/1d36k2g39y5nZ7ya13y4xGc15x11f4D36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQkdKR97FgVx1p06A@UBwD/parameterless-indemnify" width="100%" /></a>
+     </div> 
+     <div style="max-width: 64%; position: absolute; top: 15%; left: 33%;">
+      <a href="http://www.face-khtool.click/constituent-crushers/3966C23Y9N5F8rw613b4cyi12g11f4z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQkdKR95k1uJ05PJw@D" target="_blank"><img alt="" src="http://www.face-khtool.click/characterize-reliably/eb86jSs2395XC7aZ12V4Qc16T11f4q36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQkdKR97tx1Z0mG6sOwDlT" width="100%" /></a>
+     </div> 
     </div> &nbsp; 
-    <div style="text-align: center;">
-     <a href="http://www.combing-at.click/11f5s2g395w8B6j11q4c0fX11f3X36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQPdKRo5Rj10j5tlwDB/alarming-Siberia" style="color: #015272; text-decoration: none;"><span style="background-color: #fff; font-size: 130%; font-weight: bold; font-family: Verdana, Geneva, Tahoma, sans-serif; padding: 2.5% 6%; border-radius: 8px; outline:  double 3px #000; box-shadow: inset 0 0 8px 2px #015272;">Go And Start Now </span></a>
+    <div>
+     <a href="http://www.face-khtool.click/constituent-crushers/3966C23Y9N5F8rw613b4cyi12g11f4z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQkdKR95k1uJ05PJw@D" target="_blank"><img alt="" src="http://www.face-khtool.click/8096m23pm95F7maR12Q4cP17T11f4T36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQkdKR96a1P0yr6rB2NwD/publicly-inhabitance" width="100%" /></a>
     </div> 
-    <br /> 
-    <br /> &nbsp;
    </section> 
   </div> 
-  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="white-space: normal; border-collapse: collapse; width: 100%;"> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <footer class="final_shot" style="width: 90%; max-width: 600px; margin: auto; background-color: #313131; padding: 10px 0px; "> 
+   <address> 
+    <div style="text-align: center; font-weight: normal; font-size: 10px; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;"> 
+     <p><small><span style="text-decoration: none; ">No longer wish to receive notices?,</span><a href="http://www.face-khtool.click/24b5q23v95UI8N611L4c13q11f4A36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQkdKR95G10LJ5UOAwD/debug-morsels" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Visit.This.Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font style="patriarchy"></font><small><span></span><big></small><font lang="Chao"><small></big><span></font></span><style id="Synge"></small></style><style></style><big></big><span dir="sander"></span> </small></p> 
+    </div> </address> 
+  </footer> 
+  <br /> 
+  <br /> &nbsp; 
+  <table align="center" bgcolor="#45AFBA" border="0" cellpadding="0" cellspacing="0" class="w100" style="width: 100%; background-color: #dbdbdb;" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center"> <p style="color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 16px;">&nbsp;</p> <p style="color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 16px;">&nbsp;</p> <p style="color: rgb(255, 255, 255); font-family: Arial, Helvetica, sans-serif; font-size: 16px;">&nbsp;</p> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%; border-collapse: collapse;"> 
-   <tbody> 
-    <tr> 
-     <td height="20" style="font-size: 1px; line-height: 1px;">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="width: 100%;"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="display: inline-table;"> 
+     <td align="center" class="pad-sides-20" style="padding-top: 60px;"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="w100" style="width: 640px; min-width: 640px; margin: 0 auto;" width="600"> 
        <tbody> 
         <tr> 
-         <td style="padding: 5px;" valign="top"> 
-          <table cellpadding="0" cellspacing="0" class="button" role="presentation" style="position: relative; display: inline-table;"> 
+         <td align="center" style="padding-left:7px;padding-right:7px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:5px;padding-right:5px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:4px;padding-right:4px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:3px;padding-right:3px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:2px;padding-right:2px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:1px;padding-right:1px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:1px;padding-right:1px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="" style=""> 
+          <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="w100" style="width: 100%; background-color: #dbdbdb;; margin: 0 auto;" width="100%"> 
            <tbody> 
             <tr> 
-             <td>&nbsp;</td> 
+             <td align="center" style="padding-top: 20px; padding-bottom: 40px;">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" class="pad-sides-30" style="padding-left: 65px; padding-right: 65px;"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="w100" style="width: 100%;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="font-family: Arial, Tahoma, sans-serif; font-size: 24px; line-height: 28px; font-weight: bold; color: #16234e; padding-bottom: 10px;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="line-height: 4px; font-size: 4px; padding-bottom: 30px;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="left" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: normal; color: #16234e; padding-bottom: 24px;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="left" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; font-weight: normal; color: #16234e; padding-bottom: 24px;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="padding-bottom: 50px;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="font-family: Arial, Tahoma, sans-serif; font-size: 24px; line-height: 28px; font-weight: bold; color: #16234e; padding-bottom: 10px;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="line-height: 4px; font-size: 4px; padding-bottom: 30px;">&nbsp;</td> 
+                </tr> 
+                <tr> 
+                 <td align="center" style="padding-bottom: 40px;"> 
+                  <table align="left" border="0" cellpadding="0" cellspacing="0" class="w100" style="width: 240px;" width="240"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" style="padding-bottom: 15px;">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; line-height: 20px; font-weight: bold; color: #16234e; padding-bottom: 10px;">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" class="pad-b-20" style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 22px; font-weight: normal; color: #16234e;">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                  <table align="right" border="0" cellpadding="0" cellspacing="0" class="w100" style="width: 240px;" width="240"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" style="padding-bottom: 15px;">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; line-height: 20px; font-weight: bold; color: #16234e; padding-bottom: 10px;">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 22px; font-weight: normal; color: #16234e;">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
             </tr> 
            </tbody> 
           </table> </td> 
         </tr> 
+        <tr> 
+         <td align="center" style="padding-left:1px;padding-right:1px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:1px;padding-right:1px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:2px;padding-right:2px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:3px;padding-right:3px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:4px;padding-right:4px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:5px;padding-right:5px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+        <tr> 
+         <td align="center" style="padding-left:7px;padding-right:7px;height:1px;line-height:1px;font-size:1px;"> 
+          <div class="w100" style="display:block;height:1px;background-color:#dbdbdb;;line-height:1px;font-size:1px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
-   </tbody> 
-  </table> 
-  <table border="0" cellpadding="0" cellspacing="0" class="sm-col xs-col xs-center" role="presentation" style="display: inline-table; vertical-align: top; width: 100%;"> 
-   <tbody> 
     <tr> 
-     <td align="center">&nbsp;</td> 
+     <td align="center" style="padding-bottom: 60px; padding-top: 40px;">&nbsp;</td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.combing-at.click/cb94g2395AYK8513q4Uco11n11f3T36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQPdKRo7w_10UqH5WJwlD/malevolent-ruthlessness" alt=""/></body>
+ <img src="http://www.face-khtool.click/c7d4M2395g8h5h12E4cQ18J11f4w36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQkdKR96CZ1lm05wUWwD/nostrils-beverage" alt=""/></body>
 </html>
 
-------=_Part_391_265369092.1677078212523--
+------=_Part_616_876316436.1677080311172--
 
