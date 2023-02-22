@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A21D169F8EA
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Feb 2023 17:24:34 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46AE269F9DB
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Feb 2023 18:19:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4DE0410E1F5;
-	Wed, 22 Feb 2023 16:24:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 19DC110E1C7;
+	Wed, 22 Feb 2023 17:19:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Wed, 22 Feb 2023 16:24:30 UTC
-Received: from mail.get-wmfa.click (unknown [45.13.189.115])
- by gabe.freedesktop.org (Postfix) with ESMTP id AACF810E1D7
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Wed, 22 Feb 2023 17:19:27 UTC
+Received: from mail.give-hdept.click (unknown [45.13.189.140])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1994210E1C7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Feb 2023 16:24:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=get-wmfa.click; 
+ Wed, 22 Feb 2023 17:19:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=give-hdept.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=walmart.news@get-wmfa.click; 
- bh=P2t6VwORCHr6HCDuSE1QhfBgtfU=;
- b=eTQlDQU4n8MB0iuq9O++gPBzV2SwKBxruxzr8jbMeoXmZD7Wbnvpxys/NgYGlU+EgHg+RMM10ptd
- xMPZAGVt13ISis8a4G5eCJKUrb20id9DDjXkDgx0ejXiimkUCuS0fi00wDRQ1ISZToThKErDS77h
- aOT4GPOBsP7OGA6q+2g=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=get-wmfa.click;
- b=r0iQXiXabFVEpSRic4uw8F3O2cZJdUMV4Ri7QN1t4KTTzBmrc/PxE2tej8N3wlFP7y1k9PihDRcZ
- NlSFxmyb0RfOa/U39z6KyTbCBGO2fQHwJa7ApVQXJ2eCTAyePe9XA4C/7Uxulxaw3h/WZHN+8mW1
- Y0QkBL2N87CoCPpcm3A=;
-Received: by mail.get-wmfa.click id hup0rs0001g0 for
+ i=hdshoppersurvey@give-hdept.click; 
+ bh=C9TZakBe1WPtbvNvRWyHzEOgujo=;
+ b=qyQ78PETepijVTCCoZotqQDgYp8V7b9UAC8ndSXsx4bj/oD32lUoAzOu4QmRyltAEzhR4UxhPxpP
+ cVHHmmeZK+tOT4lhoNE4VjxMlkAQwYW8OVZ6AFiYNIn1CY8VkhMcWm3MyOnF/RUPeKNeubzyYO66
+ yWGfbqfiWBwQmBdKfbI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=give-hdept.click;
+ b=Z0buc39eIzWaAS3kriNhwfpoo/K3ErM9NV8DYlYSw1uJ9JeoxST1R8xKtqR49D5ahGkosCu+9o8s
+ QpKSDYXkDb9wdEwpt7Q/LXmtcBOtDCFFHIOSpaAIt4w4LwWurIOttjTO1OAUYuDWSOQtVH2qEMN8
+ m0bWlFfoI49fH6vObTU=;
+Received: by mail.give-hdept.click id hup79u0001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Feb 2023 11:14:22 -0500 (envelope-from
- <walmart.news-intel+2Dgvt+2Ddev=lists.freedesktop.org@get-wmfa.click>)
-Date: Wed, 22 Feb 2023 11:14:22 -0500
-From: "Walmart News" <walmart.news@get-wmfa.click>
+ Wed, 22 Feb 2023 12:05:14 -0500 (envelope-from
+ <hdshoppersurvey-intel+2Dgvt+2Ddev=lists.freedesktop.org@give-hdept.click>)
+Date: Wed, 22 Feb 2023 12:05:14 -0500
+From: HDShopperSurvey <hdshoppersurvey@give-hdept.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every visit a new reward that could get you anything on us
+Subject: Appreciation day is here - pick any present on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_559_1484699009.1677082430002"
-Message-ID: <0.0.0.3E.1D946D8B9CAB18E.227B99@mail.get-wmfa.click>
+ boundary="----=_Part_148_883566719.1677085493965"
+Message-ID: <0.0.0.10.1D946DFD48FF770.588DF7@mail.give-hdept.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_559_1484699009.1677082430002
+------=_Part_148_883566719.1677085493965
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,101 +63,117 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>06022223</title> 
+  <title>07022223</title> 
  </head> 
- <body style="background-color: #fff1ff;"> 
-  <div style="max-width: 600px; margin: auto; background-color: #fff1ff; text-align: center; padding: 5% 0%; "> 
-   <header style="box-shadow: 0 0 8px 2px; background-color: #fff;"> 
+ <body style="padding: 5% 0%; background-color: #ffe1db;"> 
+  <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: 0 0 8px 2px; padding: 2.5% 0%; text-align: center;"> 
+   <header> 
+    <div style="max-width: 85%; margin: auto;">
+     <a href="http://www.give-hdept.click/victims-varyings/a086do239W5bA8r613u4uc1dUN11f6U36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQTdKRQ6MY1F0K6rAw3D@" target="_blank"><img alt="" src="http://www.give-hdept.click/victims-varyings/42c6O_23X95EUQ7a11V4c1fv11f6Y36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQTdKRQ7J1rWK0G5KBw@D" width="100%" /></a>
+    </div> 
     <div>
-     <span style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-weight: bold; font-size: 160%; display: block; padding: 3% 5%; background-color: #495d7c; color: #fff;">You are just a few clicks away to get The $100 Walmart Reward Card.</span> 
-     <div>
-      <a href="http://www.get-wmfa.click/colleagues-allow/15c5Y239J5y8_6M12S4c19Fl11f5q36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQtdKRd5tw10M5iUJwD" target="_blank"><img alt="" src="http://www.get-wmfa.click/1g14Y2395J7iat13O4cs1bJq11f5_36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQtdKRd6Fk1K0k6a@0wlD/enveloper-bruises" style="display: block;" width="100%" /></a>
-     </div> 
-     <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 135%; display: block; padding: 2.5% 5%; font-weight: 500;">Simply complete our 20-Second Service Survey about how your experience has been with us lately</span>
-     <br /> &nbsp; 
-     <div>
-      <a href="http://www.get-wmfa.click/colleagues-allow/15c5Y239J5y8_6M12S4c19Fl11f5q36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQtdKRd5tw10M5iUJwD" style="text-decoration: none; color: #fff;" target="_blank"><span style="background-color: #495d7c; padding: 2.5% 6%; font-size: 125%; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold; border-radius: 8px;">Get Yours Fast</span></a>
-     </div> 
-     <br /> 
-     <br /> 
-     <br /> &nbsp; 
-     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 60%; font-weight: bold;">We are glad to hear your opinion!</p> 
-     <br /> 
-     <br /> 
-     <br /> &nbsp;
+     <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 140%; display: block; padding: 2.5% 4%;">Dear valued customer You Are Just A Few Clicks Away To Get The Home Depot Card The Home Depot Card.</span>
     </div> 
    </header> 
+   <section> 
+    <div>
+     <a href="http://www.give-hdept.click/victims-varyings/a086do239W5bA8r613u4uc1dUN11f6U36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQTdKRQ6MY1F0K6rAw3D@" target="_blank"><img alt="" src="http://www.give-hdept.click/eclipsed-origination/8285J23J95a7DDa11C4c20x11f6t36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQTdKRQ5RA10t6zBj1wD" style="display: block;" width="100%" /></a>
+    </div> 
+    <div style="padding: 2.5% 0;">
+     <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 125%; padding: 0% 4%;">At Home Depot, we are committed to providing the best service and selection for all your home improvement needs.<br /> <br /> By completing our short survey, you will have the opportunity to share your thoughts on our products, services, and store experience</span>
+    </div> 
+   </section> &nbsp; 
+   <section> 
+    <div>
+     <a href="http://www.give-hdept.click/victims-varyings/a086do239W5bA8r613u4uc1dUN11f6U36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQTdKRQ6MY1F0K6rAw3D@" style="text-decoration: none; color: #fff;" target="_blank"><span style="background-color: #D64227; padding: 2.5% 5%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; border-radius: 8px; font-size: 125% ;">Go And Start Now</span></a>
+    </div> 
+    <br /> 
+    <br /> &nbsp; 
+    <div> 
+     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 60%;">We are glad to hear your opinion!</p> 
+    </div> 
+   </section> 
   </div> 
-  <div style=" font-size: 10px; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; max-width: 800px; margin: auto;"> 
-   <address style="background-color: aliceblue; padding: 15px 0px; color: black; font-weight: bold;"> <p class="unsubscribe"><span style="text-decoration: none; ">To put an end to notices,</span><a href="http://www.get-wmfa.click/S2f6j23z9J5bwR8611I4c1ah11f5K36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQtdKRd7BTnu1m06z0pAwD/aggrieves-luster" style="text-decoration-line: none;"> <span>Go Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <br /> <br /> <span color="Utrecht"><span></span></span><style><span></span><font style="pronged"></font><style></style><font dir="Verderer"><span title="decadently"></span></font></style><span color="peruse"></span></p> </address> 
-  </div> 
-  <table cellpadding="0" cellspacing="0" height="24px" width="100%"> 
+  <footer style="width: 100%; text-align: center; font-size: 12px; padding-top: 200px; "> 
+   <address style="background-color: #eeb882; font-weight: bold; color: #000000; padding: 13px 0px; width: 80%; margin: auto; border-radius: 8px; "> <p><span style="text-decoration: none; ">No longer want to receive email information?,</span><a href="http://www.give-hdept.click/Hanoverian-Nadine/17a6c23Hk95U8O6H13p4Hc1Qek11f6p36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQTdKRQ6c10PAG5yNNwD" style="text-decoration-line: none; color: white"> <span>Visit.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font color="Thailand"><span title="switchings"></span></font><span><span lang="whereas"></span></span><font size="correlation"></font></p> </address> 
+  </footer> 
+  <table cellpadding="0" cellspacing="0" class="frc sep" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center"> <p>&nbsp;</p> &nbsp; <p style="font-family: Roboto, Helvetica, Arial, Sans-Serif;line-height:24px;font-size: 12px; color:#333333; text-align:center; direction:ltr"><a href="" style="color:#8f96a0;" target="_blank"> </a></p> <a href="" style="color:#8f96a0;" target="_blank"> </a></td> 
+     <td height="2">&nbsp;</td> 
     </tr> 
    </tbody> 
   </table> 
-  <table align="center" cellpadding="0" cellspacing="0" style="margin-bottom:50px; margin-top: 30px" width="25%"> 
-   <tbody> 
-    <tr> 
-     <td align="center">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" dir="ltr" style="text-transform:uppercase;width:100%; margin-bottom:8px"> 
-   <tbody> 
-    <tr> 
-     <td rowspan="1" style="text-align: center; vertical-align: middle; width: 16%; background-color: #fff;font-size:11px;font-family: Roboto, Helvetica, Arial, Sans-Serif;letter-spacing:0.5px;line-height:normal;font-style:normal;">&nbsp;</td> 
-     <td rowspan="1" style="text-align: center; vertical-align: middle; width: 16%; background-color: #fff;font-size:11px;font-family: Roboto, Helvetica, Arial, Sans-Serif;letter-spacing:0.5px;line-height:normal;font-style:normal;">&nbsp;</td> 
-     <td rowspan="1" style="text-align: center; vertical-align: middle; width: 16%; background-color: #fff;font-size:11px;font-family: Roboto, Helvetica, Arial, Sans-Serif;letter-spacing:0.5px;line-height:normal;font-style:normal;">&nbsp;</td> 
-     <td rowspan="1" style="text-align: center; vertical-align: middle; width: 16%; background-color: #fff;font-size:11px;font-family: Roboto, Helvetica, Arial, Sans-Serif;letter-spacing:0.5px;line-height:normal;font-style:normal;">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table cellpadding="0" cellspacing="0" class="stylingblock-content-wrapper" style="min-width: 100%; " width="100%"> 
-   <tbody> 
-    <tr> 
-     <td class="stylingblock-content-wrapper camarker-inner">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table cellpadding="2" cellspacing="0" class="frc rdn" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000; border-bottom:3px solid #FFF; padding-top:8px; padding-bottom:8px" width="100%"> 
+  <table cellpadding="2" cellspacing="0" class="frc rdn" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000; ;" width="100%"> 
    <tbody> 
     <tr> 
     </tr> 
    </tbody> 
   </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" width="600"> 
-   <tbody> 
-    <tr> 
-     <td style="width: 50%" valign="middle">&nbsp;</td> 
-     <td align="center" style="white-space: nowrap; font-family: 'Arial','Helvetica',Sans-serif; font-size:16px; color:#8f96a0;letter-spacing:0.03em;padding-left:10px;padding-right:10px;">&nbsp;</td> 
-     <td style="width: 50%" valign="middle">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table cellpadding="2" cellspacing="0" class="frc rdn" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000; border-bottom:3px solid #FFF; padding-top:8px; padding-bottom:8px" width="100%"> 
-   <tbody> 
-    <tr> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div style="margin-bottom:1px;"> 
-   <table align="center" border="0" cellpadding="2" cellspacing="0" class="frc" style="font-family:Arial, Helvetica, Sans-Serif;border-top: 1px #ffffff solid; ; background-color: #ffffff;" width="100%"> 
+  <div style="margin-bottom:10px;"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" width="600"> 
     <tbody> 
      <tr> 
-      <td align="right" rowspan="2" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#333333;" valign="top">&nbsp;</td> 
-      <td align="left" valign="top">&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td align="left" valign="bottom">&nbsp;</td> 
+      <td style="width: 50%" valign="middle">&nbsp;</td> 
+      <td align="center" style="white-space: nowrap; font-family: 'Arial','Helvetica',Sans-serif; ;letter-spacing:0.03em;padding-left:10px;padding-right:10px;">&nbsp;</td> 
+      <td style="width: 50%" valign="middle">&nbsp;</td> 
      </tr> 
     </tbody> 
    </table> 
-  </div>   
- <img src="http://www.get-wmfa.click/a7f4s2395y8V5g11J4c1co11f5B36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQtdKRd5LuR106iApwqD/tomahawks-civilly" alt=""/></body>
+  </div> 
+  <table cellpadding="2" cellspacing="0" class="frc rdn" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000000; ; " width="100%"> 
+   <tbody> 
+    <tr> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table align="center" border="0" cellpadding="2" cellspacing="0" class="frc" style="font-family:Arial, Helvetica, Sans-Serif;; " width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="left" valign="top">&nbsp;</td> 
+     <td align="right" rowspan="2" style="font-family:Arial, Helvetica, sans-serif; " valign="top">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left" valign="bottom">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table cellpadding="0" cellspacing="0" class="frc sep" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td height="2">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table cellpadding="2" cellspacing="0" class="frc rdn" style="font-family:Arial, Helvetica, sans-serif; font-size:12px; " width="100%"> 
+   <tbody> 
+    <tr> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table cellpadding="0" cellspacing="0" class="frc sep" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td height="2">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table align="center" border="0" cellpadding="2" cellspacing="0" class="frc" style="font-family:Arial, Helvetica, Sans-Serif;" width="600"> 
+   <tbody> 
+    <tr> 
+     <td style="">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table align="center" bgcolor="#FFFFFF" cellspacing="0" class="frc rfm" style=" margin-top:2px; padding-top:12px; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#030303; text-transform:uppercase;" width="600"> 
+   <tbody> 
+    <tr> 
+     <td align="center" height="30" style="" valign="middle" width="500">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.give-hdept.click/2a54p2395nY8V513W4tNc21n11f6L36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQTdKRQ6hpy10z5jNLwD/victims-varyings" alt=""/></body>
 </html>
 
-------=_Part_559_1484699009.1677082430002--
+------=_Part_148_883566719.1677085493965--
 
