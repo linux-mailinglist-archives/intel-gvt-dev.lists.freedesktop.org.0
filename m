@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 643D969F608
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Feb 2023 15:01:19 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19CFA69F6E5
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Feb 2023 15:44:24 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3D17610E9C4;
-	Wed, 22 Feb 2023 14:01:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 68DEF10E9E4;
+	Wed, 22 Feb 2023 14:44:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 350 seconds by postgrey-1.36 at gabe;
- Wed, 22 Feb 2023 14:01:16 UTC
-Received: from mail.do-plp.click (unknown [45.13.189.39])
- by gabe.freedesktop.org (Postfix) with ESMTP id 85B4D10E9C0
+X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
+ Wed, 22 Feb 2023 14:44:19 UTC
+Received: from mail.dine-tbme.click (unknown [45.13.189.57])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C24A710E9DD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Feb 2023 14:01:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=do-plp.click;
+ Wed, 22 Feb 2023 14:44:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dine-tbme.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal.exclusive.event@do-plp.click; 
- bh=czshf9MyOquY5hi0c6Ndi4qh/d4=;
- b=Ela2icBc2XiquFJ5/ohRXRiPjGKXVbES0CA5PWptsxsxdGywBZ7XywgvxmD9ttsIJGrkboyyly7h
- MjSN7BqBB4HKxd+CjtFDO7jjQB30q+++4TQ4qpep9c8tLMsT0AcQAZHY9uGhj0MxtF6paGNajUde
- f/dU8g1t1nnXp7NjSqk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=do-plp.click;
- b=D7ZILV0+TsBkYHOvxb3AUWUviraGuhyaXsuhuu6MWalVHUWO9TkcUdr5AVgosG379CWlFWw6ilDV
- u3YZTR9ps2bm14czLNP/HYPsj7fE6674hwIrQzmIphrfsBrmM1yGuLmlqVxZQwS5Q4Fn+jj+/3Zj
- CIdYYRVldiU3qzbtko8=;
-Received: by mail.do-plp.click id huoq6a0001gg for
+ i=tmobile_news@dine-tbme.click; 
+ bh=PWfeKWRFCvLyWh0DpAg9BW+HHGA=;
+ b=ITg+47Exy6Zw9OwUeOvxFvtWLSglM907ljB2e1JH5DJSkSF9LWGkI+DJggvfxtOfmO/Cyvq1Kb6f
+ OXORA0waLbIYQypAQeP4pNsRpOg4S6LnXJK24EXkLNY4N60ZDjgFx+1m37AzYdNkXrw/hCpHrcMh
+ HOLVP0A0em2fMtI15xE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dine-tbme.click;
+ b=BqYRGbhTcj/qzSdfv0mxk7hRVVZA5wqwr6ys6VYPPb9NpVZd79Up4rh0LxIo9/6m8GuilVSaLkbN
+ DZ8T6g8sVKWQfd9Fvt2rpVnjGVDa+/MYdn2CR5p456djVmi6tdtnGo1dsk1lp2nOAgnah/cQxuay
+ EqQ15DmtgU/z4rVHlQY=;
+Received: by mail.dine-tbme.click id huov7o0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Feb 2023 10:15:00 -0500 (envelope-from
- <paypal.exclusive.event-intel+2Dgvt+2Ddev=lists.freedesktop.org@do-plp.click>)
-Date: Wed, 22 Feb 2023 10:15:00 -0500
-From: "Paypal Exclusive Event" <paypal.exclusive.event@do-plp.click>
+ Wed, 22 Feb 2023 10:58:36 -0500 (envelope-from
+ <tmobile_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@dine-tbme.click>)
+Date: Wed, 22 Feb 2023 10:58:36 -0500
+From: "TMOBILE News" <tmobile_news@dine-tbme.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Paypal reward is just a few clicks away - While supplies last
+Subject: Your visits are now rewarded for your loyalty - Awesome
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_241_100496660.1677073693566"
-Message-ID: <0.0.0.1A.1D946D06E31934E.42FD7A@mail.do-plp.click>
+ boundary="----=_Part_196_605181245.1677076307436"
+Message-ID: <0.0.0.15.1D946D686048A34.3A0BCE@mail.dine-tbme.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_241_100496660.1677073693566
+------=_Part_196_605181245.1677076307436
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,48 +63,117 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>02022223</title> 
+  <title>03022223</title> 
  </head> 
- <body style="padding: 8% 0%; background-color: #cfebf5;"> 
-  <div style="max-width: 600px; margin: auto; box-shadow: 0px 0px 8px 1px;"> 
-   <section> 
-    <div>
-     <a href="http://www.do-plp.click/impairing-recognition/bca5ik2395CQm8613h4cCu07t11f1L36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQAdKRm7Mpo1h0G6k3wljD" target="_blank"><img alt="" src="http://www.do-plp.click/de54M2395rt7_a13f4lDc09B11f1H36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQAdKRm7sILs1C06tpzwWD/cone-steamer" style="display: block;" width="100%" /></a>
+ <body style="padding: 7% 0%; background-color: #ececec;"> 
+  <div style="max-width: 600px; margin: auto; box-shadow: 0 0 8px 1px; border-radius: 8px;"> 
+   <header> 
+    <div style="text-align: center;">
+     &nbsp;
     </div> 
-    <div style="background-color: #01529D; text-align: center;">
-     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; font-size: 145%; padding: 2.5% 5%; display: block; color: #fff;">Don't miss out! Just a few clicks away from a chance to win a $100 <b>Pay</b><b style="color: #75D0EE ;">Pal</b> Card by completing our quick 20-second survey about your recent experience with us.</span> 
-     <div>
-      <a href="http://www.do-plp.click/impairing-recognition/bca5ik2395CQm8613h4cCu07t11f1L36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQAdKRm7Mpo1h0G6k3wljD" style="color: #01529D; text-decoration: none; " target="_blank"><span style="background-color: #fff; font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 135%; padding: 1.5% 4%; border-radius: 8px; ">Go And Start Now</span></a>
-     </div> 
-     <br /> &nbsp;
+   </header> 
+   <section> 
+    <div style="text-align: center; background-color: #BC2D5D; padding: 1.5% 0%; box-shadow: inset 0 0 8px 1px #fff; border-top-right-radius: 8px; border-top-left-radius: 8px;">
+     <span style="font-size: 145%; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #fff; text-shadow: 0 0 5px #000;">Get closer to a $100 T-Mobile<br /> Gift Card With Just a Few Clicks!</span>
+    </div> 
+    <div>
+     <a href="http://www.dine-tbme.click/sleeves-nonterminals/5764u2395LrA8611M4c0bi11f2u36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQrdKRn5l1IW05wAAwD" target="_blank"><img alt="" src="http://www.dine-tbme.click/2a55K2z395JR7aW12nm4c0dw11f2r36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQrdKRn5UgH106i3@lwD/paternoster-unifiers" style="display: block;" width="100%" /></a>
+    </div> 
+    <div style="text-align: center;">
+     <span style="font-size: 140%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 135%; padding: 2% 5%; display: block; font-weight: 500;">Tell us how we' re doing and get a $100 gift card to <strong style="color: #BC2D5D;">T-MOBILE</strong> and upgrade your mobile service!<br /> <br /> We value your feedback and want to hear your thoughts on our products, services, and customer support. Just by completing our 20-Second Service Survey about your recent experience with us. </span>
+    </div> 
+   </section> &nbsp; 
+   <section> 
+    <div style="text-align: center;">
+     <a href="http://www.dine-tbme.click/sleeves-nonterminals/5764u2395LrA8611M4c0bi11f2u36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQrdKRn5l1IW05wAAwD" style="color: #fff; text-decoration: none;" target="_blank"><span style="background-color: #000; padding: 1.5% 5%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 135%; border-radius: 8px;">Go And Start Now</span></a>
     </div> 
    </section> 
-  </div> 
-  <div style="padding: 100px;">
-   &nbsp;
+   <br /> &nbsp;
   </div> 
   <footer style="text-align: center;"> 
-   <address style="background-color: darkgrey; padding: 1.5% 0%; max-width: 700px; margin: auto; font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 75%; color: #fff;"> <p><small><span style="text-decoration: none; ">To edit your subscription choices,</span><a href="http://www.do-plp.click/af75MN2395Bg8I611S4c08M11f1X36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQAdKRm6t1tPU06ylz2wD/readied-deleting" style="text-decoration-line: none; color: white"> <span>Continue_Ahead </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font><span><style color="financier"></style><style class="multilevel"><font face="dequeued"></font></style></font><span face="Ballard"></span></span> </small></p> </address> 
+   <address style="background-color: rgb(43, 43, 43); max-width: 600px; margin: auto; padding: 1% 0%; font-size: 65%; color: #ffffff; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> <p><span style="text-decoration: none; ">To update your communication preferences,</span><a href="http://www.dine-tbme.click/8815l23O95SK86i13C4Vc0gco11f2Y36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQrdKRn7D10BmuJ5kAwND/manufactured-tapered" style="text-decoration-line: none; color: white"> <span>Continue Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style lang="employment"></style><style face="Noreen"><small></style></small><span><span></span><font dir="telegram"></span></font></p> </address> 
   </footer> 
-  <div class="column block-section" data-group="pullquote" data-title="Quote" style="text-align: center;"> 
-   <p class="block-edit" data-block="pullquote-quote" style="margin: 0; margin-bottom: 10px; font-family: Georgia, Times New Roman, serif; font-size: 22px; line-height: 28px; color: #333333; font-weight: normal; font-style: italic;">&nbsp;</p> 
-   <p class="block-edit block-remove" data-block="pullquote-cite" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 20px; color: #333333;">&nbsp;</p> 
-  </div> 
-  <div class="block-section block-bgcolor" data-group="pullquote" style="text-align: center;"> 
-   <table cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td class="column alt block-bgcolor" style="; padding: 14px; text-align: center;"> <p class="block-edit" data-block="pullquote-quote" style="margin: 0; margin-bottom: 10px; font-family: Georgia, Times New Roman, serif; font-size: 22px; line-height: 28px; color: #333333; font-weight: normal; font-style: italic;">&nbsp;</p> <p class="block-edit block-remove" data-block="pullquote-cite" style="margin: 0; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 20px; color: #333333;">&nbsp;</p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <div style="margin: 30px 20px;"> 
-   <p class="block-edit block-remove" data-block="footer-nav" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px; line-height: 20px; color:#333333; text-align: center;">&nbsp;</p> 
-   <p class="block-edit" data-block="footer-reason" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 18px; color: #333333; text-align:center">&nbsp;</p> 
-  </div>   
- <img src="http://www.do-plp.click/impairing-recognition/17a6u23o9j5N8g5T12Q4c0maz11f1B36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQAdKRm5w1g0U6f2wTXD" alt=""/></body>
+  <table border="0" cellpadding="0" cellspacing="0" class="template-body" height="100%" role="presentation" style=" table-layout: fixed;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td style="vertical-align: top;"> 
+      <table border="0" cellpadding="0" cellspacing="0" class="template-container" role="presentation" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="template__inner">&nbsp; 
+          <table cellpadding="0" cellspasing="0" class="components" role="presentation" style="border-collapse: collapse; width: 100%;"> 
+           <tbody class="components__item"> 
+            <tr> 
+             <td> 
+              <table border="0" cellpadding="0" cellspacing="0" class="component menu-3" role="presentation" style="width: 100%; border-collapse: collapse;"> 
+               <tbody> 
+                <tr> 
+                 <td style=" border-radius: 5px;"> 
+                  <table border="0" cellpadding="0" cellspacing="0" class="sm-col xs-col xs-center xs-mb-20" role="presentation" style="display: inline-table; vertical-align: top; float: left; width: 442px;"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="">&nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                  <table border="0" cellpadding="0" cellspacing="0" class="wrapper sm-col xs-col xs-center" role="presentation" style="margin: 0px;"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation"> 
+                       <tbody> 
+                        <tr> 
+                         <td style="padding-top: 3px; padding-right: 20px;">&nbsp;</td> 
+                         <td style="padding-top: 3px; padding-right: 20px;">&nbsp;</td> 
+                         <td style="padding-top: 3px;">&nbsp;</td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+            <tr class="card-spacing" height="10" style="font-size: 0px;"> 
+            </tr> 
+           </tbody> 
+           <tbody class="components__item"> 
+            <tr> 
+             <td> 
+              <table border="0" cellpadding="0" cellspacing="0" class="component cta-1" role="presentation" style="width: 100%; border-collapse: collapse;"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table cellpadding="0" cellspacing="0" role="presentation" style="width: 100%;"> 
+                   <tbody> 
+                    <tr> 
+                     <td style="background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 5px;"> 
+                      <table border="0" cellpadding="0" cellspacing="0" class="wrapper" role="presentation" style="width: 100%;"> 
+                       <tbody> 
+                        <tr> 
+                         <td style="padding: 30px 35px 0px;">&nbsp;</td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.dine-tbme.click/c236r239sC5M8s5A13a4sc0eso11f2F36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQrdKRn5W1KJ06VOwDLl/manufactured-tapered" alt=""/></body>
 </html>
 
-------=_Part_241_100496660.1677073693566--
+------=_Part_196_605181245.1677076307436--
 
