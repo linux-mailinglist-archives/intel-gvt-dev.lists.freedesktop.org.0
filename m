@@ -1,53 +1,68 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC75D6A1152
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Feb 2023 21:40:52 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E3946A1156
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Feb 2023 21:41:35 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 26BBF10E2E2;
-	Thu, 23 Feb 2023 20:40:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F0AF510E28F;
+	Thu, 23 Feb 2023 20:41:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CDB5310E214
+Received: from mail-pf1-x449.google.com (mail-pf1-x449.google.com
+ [IPv6:2607:f8b0:4864:20::449])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0C87110E28F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Feb 2023 20:40:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677184848; x=1708720848;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=rgGtH8lu4Ra/80MP9+7q4TR6P1HzE8IjV1+RE/9Yneo=;
- b=FjPoyQ9HLMihKJxB9cOgc8U+MNqGAMgrJ6NEPNgrDAZMEbgQ7mogH0aN
- JQfGuwiJjgFGqgZT4RLXcTidISrU99zgBS6e3ROTKTUVLo0ppn7Pd+EoX
- TNWSqiArKGn97dCcvKd0qoSNX87ej831ZZKF7iTEvA2848q0W5aFUBXvb
- qfmnl12rrmWJ3n0ph7okpfAuIpIDzdqTmmhvp7lBxFILvvyT8wiKuqomo
- pWSRp+WB/EO5ViZW4DGxr/tsSwbN8aDQcTEwf69v9pKCvOjL6b+W3M4a8
- dOVlMoWXP27va9I3xZdx/83M97uOIZC0NLLhkN/v0x2v4x0lnAOXRzBjV g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10630"; a="360819903"
-X-IronPort-AV: E=Sophos;i="5.97,322,1669104000"; d="scan'208";a="360819903"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2023 12:40:21 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10630"; a="846704317"
-X-IronPort-AV: E=Sophos;i="5.97,322,1669104000"; d="scan'208";a="846704317"
-Received: from lkp-server01.sh.intel.com (HELO 3895f5c55ead) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 23 Feb 2023 12:40:19 -0800
-Received: from kbuild by 3895f5c55ead with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pVIO2-0001jV-12;
- Thu, 23 Feb 2023 20:40:18 +0000
-Date: Fri, 24 Feb 2023 04:40:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: [intel-gvt:gvt-next-fixes] BUILD SUCCESS
- 0b93efca3659f6d55ed31cff6722dca5f6e4d6e2
-Message-ID: <63f7cf30.a1Rq0iGkEQt0VQiT%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+ Thu, 23 Feb 2023 20:41:30 +0000 (UTC)
+Received: by mail-pf1-x449.google.com with SMTP id
+ x30-20020a056a00189e00b005a8e8833e93so5627779pfh.12
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 Feb 2023 12:41:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=D/hhXU94L2G+o7ni2sDclregaJFv4BLuQx95BPp9z9Q=;
+ b=YQfRQnO25BKO39Nxje2Nn6hZ6jXQlJ8bqpj5AoIHX05ecsqHGgjjChBmaD0XLaItjE
+ PXJT2+TsGB98yz3x92aEOECz1JaMKfBPlSkSXysVvcWmJeO09X9G0XV6Ll7mw0xgH4nW
+ fbXSXnNa78ogHg6PBmj0u1NyTAJtxuovyZATBkwrwsQ8s058xJyyHLk2bq9hwAnOUzgL
+ Onys3TIuniC494ZrjeT9Tme0TmWlLs76ORoKYVHm2jKYixBYSV5rd/CS5KKdqUA58jms
+ cDFaz7TxdBxYjlD88mrCw+pj129APBZ+kXA8oQsgHafwBApprWz71QVoE7+NatQo+r+u
+ xcSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=D/hhXU94L2G+o7ni2sDclregaJFv4BLuQx95BPp9z9Q=;
+ b=IeQ0JxRp44JYnU/755/VRk0vsuEXNgrt1QeNnqQVQj4o1nYm88+Jvr3biS++NuUCUQ
+ 2UQYck2gR5vWtWMhxgHl+v/wFLKFi2BfEkEuw2FygUOzvRC+JY7VI0nRlX6zpScTfUU0
+ VC+EQTm2NGajxa2y1DGCNepHaR0dwODWVjqLiY/fX7X+PA/xf6QW0pCPwL7x/HjKJ9Bo
+ 7w36QVJH0JNL2O6OxWYQhyhKwP2ED6CRjrT8YF4pw7M0bZ5F3dzhyBCpS64xu/13mwsq
+ CaHjb5+VfzJpUdLPUkP8CmXkDqCgW+4YiBjmRoWJ9sJNVyP8KihckfsJY7Ra4nktGpzX
+ m6YA==
+X-Gm-Message-State: AO0yUKU65STITXtlJb7P2nWcslt2sp+OypDgz4IcYr4PeLP2VNQMKdjB
+ keNa6SDjEsDNotZkMaqz8qmtkk8kZVM=
+X-Google-Smtp-Source: AK7set/Gpi+RQeieEV9ujOdy38fte0Fs3U+Hmys352Tw5nImTosFAyGyPz7wmFlQqa937PsGveMF+hUxsR0=
+X-Received: from zagreus.c.googlers.com
+ ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
+ (user=seanjc job=sendgmr) by 2002:a63:7a54:0:b0:4fb:3896:a7d4 with SMTP id
+ j20-20020a637a54000000b004fb3896a7d4mr1948195pgn.7.1677184890247; Thu, 23 Feb
+ 2023 12:41:30 -0800 (PST)
+Date: Thu, 23 Feb 2023 12:41:28 -0800
+In-Reply-To: <Y8jUom2voLubfqxE@yzhao56-desk.sh.intel.com>
+Mime-Version: 1.0
+References: <Y6vXTcxDNovrmeVB@yzhao56-desk.sh.intel.com>
+ <Y7SaklDQD0EoIs8l@google.com>
+ <Y7Y+759IN2DH5h3h@yzhao56-desk.sh.intel.com> <Y7cLkLUMCy+XLRwm@google.com>
+ <Y7e3fT8/V2NoXAUP@yzhao56-desk.sh.intel.com> <Y7ioYegkgKIH8uJL@google.com>
+ <Y7vlOCKkJ+QyO3EM@yzhao56-desk.sh.intel.com> <Y773+EB35bAchVTC@google.com>
+ <Y8ix4lqk8QYH4g3h@zhen-hp.sh.intel.com>
+ <Y8jUom2voLubfqxE@yzhao56-desk.sh.intel.com>
+Message-ID: <Y/fPePRoP6sOiD14@google.com>
+Subject: Re: [PATCH 03/27] drm/i915/gvt: Incorporate KVM memslot info into
+ check for 2MiB GTT entry
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,105 +75,35 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
- zhenyu.z.wang@intel.com
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-tree/branch: https://github.com/intel/gvt-linux.git gvt-next-fixes
-branch HEAD: 0b93efca3659f6d55ed31cff6722dca5f6e4d6e2  drm/i915: move a Kconfig symbol to unbreak the menu presentation
+Apologies for the super slow reply, I put this series on the backburner while I
+caught up on other stuff and completely missed your questions.
 
-elapsed time: 726m
+On Thu, Jan 19, 2023, Yan Zhao wrote:
+> On Thu, Jan 19, 2023 at 10:58:42AM +0800, Zhenyu Wang wrote:
+> > Current KVMGT usage is mostly in controlled mode, either user is own host admin,
+> > or host admin would pre-configure specific limited number of VMs for KVMGT use.
+> > I think printk on error should be fine, we don't need rate limit, and adding
+> > extra trace monitor for admin might not be necessary. So I'm towards to keep to
+> > use current error message.
+> > 
+> 
+> Thanks, Sean and Zhenyu.
+> So, could I just post the final fix as below?
 
-configs tested: 79
-configs skipped: 3
+No objection here.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> And, Sean, would you like to include it in this series or should I send it out
+> first?
 
-gcc tested configs:
-alpha                            allyesconfig
-alpha                               defconfig
-arc                              allyesconfig
-arc                          axs103_defconfig
-arc                                 defconfig
-arc                  randconfig-r043-20230222
-arm                              allmodconfig
-arm                              allyesconfig
-arm                                 defconfig
-arm                        oxnas_v6_defconfig
-arm                            qcom_defconfig
-arm                  randconfig-r046-20230222
-arm64                            allyesconfig
-arm64                               defconfig
-csky                                defconfig
-i386                             allyesconfig
-i386                              debian-10.3
-i386                                defconfig
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-i386                          randconfig-a012
-i386                          randconfig-a014
-i386                          randconfig-a016
-ia64                             allmodconfig
-ia64                                defconfig
-loongarch                        allmodconfig
-loongarch                         allnoconfig
-loongarch                           defconfig
-m68k                             allmodconfig
-m68k                         amcore_defconfig
-m68k                                defconfig
-mips                             allmodconfig
-mips                             allyesconfig
-nios2                            alldefconfig
-nios2                               defconfig
-parisc                              defconfig
-parisc64                            defconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-powerpc                    sam440ep_defconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-s390                             allmodconfig
-s390                             allyesconfig
-s390                                defconfig
-sh                               allmodconfig
-sparc                               defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                            allnoconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                                  kexec
-x86_64                        randconfig-a002
-x86_64                        randconfig-a004
-x86_64                        randconfig-a006
-x86_64                        randconfig-a011
-x86_64                        randconfig-a013
-x86_64                        randconfig-a015
-x86_64                               rhel-8.3
+I'd like to include it in this series as it's necessary (for some definitions of
+necessary) to clean up KVM's APIs, and the main benefactor is KVM, i.e. getting
+the patch merged sooner than later doesn't really benefit KVMGT itself.
 
-clang tested configs:
-hexagon              randconfig-r041-20230222
-hexagon              randconfig-r045-20230222
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-i386                          randconfig-a011
-i386                          randconfig-a013
-i386                          randconfig-a015
-riscv                randconfig-r042-20230222
-s390                 randconfig-r044-20230222
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-x86_64                        randconfig-a005
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Thanks much!
