@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46C6F6A0D58
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Feb 2023 16:53:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B8F5B6A0DFF
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Feb 2023 17:28:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0AAE110EBF6;
-	Thu, 23 Feb 2023 15:53:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E660C10E4F5;
+	Thu, 23 Feb 2023 16:28:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Thu, 23 Feb 2023 15:53:45 UTC
-Received: from mail.lepser.top (unknown [45.13.189.209])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4FB4A10EBF1
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Thu, 23 Feb 2023 16:28:15 UTC
+Received: from mail.mespw.top (unknown [45.13.189.226])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0408510E21B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Feb 2023 15:53:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lepser.top;
+ Thu, 23 Feb 2023 16:28:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mespw.top;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=serviceplus_free_quote@lepser.top; 
- bh=xR7IBxLqwVWLHOLFXdqNnqxSaic=;
- b=PtBSTHPpseWQmSt2O8FO/96RkJAGv/TyUUzrIJ3cz9ckNwyHVwteys/MoSLfEvsEzgWCZ/ZU++ag
- dWRJ/C6OJYswg+sd6eZGdsF36QjmqT52McjVkUruIDCGBR0lBSZ8VDKQd48/3lnbMF9aoIwaNm2M
- JbdX/YOWgB+RJIwuE5I=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lepser.top;
- b=um9d8JTzVDO07MgycjtjK05kF6nLkdKPkGseO2acVNOnTDtv75Oem1XyvDQs6Pcp46tHlcMr5Ii8
- hNxNK8CXdFHTFvOJph1dVqbmHABbDy4oSM6pIFPAAW93xzCbVyvWj/95weF1T/nad0MNz8PkRLZr
- KXctdLh0fc6w9cIukfw=;
-Received: by mail.lepser.top id huu60i0001gk for
+ i=toprated-wines-splash-wines@mespw.top; 
+ bh=YzWbWrL0fB1M5Z7fWWjian0qM5U=;
+ b=rLZbWcOXVpaMoDzu/ByVtxho2+IteMGTQxhlWZbOS7GOlem3VZVV8e8N619I5NiZ8+Gpz90KRHcu
+ I8u0NC8BmQZ7Liw2LGTqqiDRAewB3h6had/GLsPkEG1I9AWnU3FxWCTqr5dwI3dDi8FnM9gSrN3O
+ 7G61gm4T57cFMAwh3Ig=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mespw.top;
+ b=iulI9YdGzX2hQhmc7kWBF9Nfdds9W+C0ac8jYcglk/fJCgbxL84PQEN4Kl9xCX0X+vp8U2EqgtXe
+ UHRHv3w4tig15CxZBfhiCBg9jSZ0Um6rV6218JQzjsds4syPbw85aCzp8gwPcWi8prQQfrkU35mj
+ 19XYtS/ahI0kHCC7J8o=;
+Received: by mail.mespw.top id huuk5a0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Feb 2023 10:43:33 -0500 (envelope-from
- <serviceplus_free_quote-intel+2Dgvt+2Ddev=lists.freedesktop.org@lepser.top>)
-Date: Thu, 23 Feb 2023 10:43:33 -0500
-From: "ServicePlus Free Quote" <serviceplus_free_quote@lepser.top>
+ Thu, 23 Feb 2023 12:43:47 -0500 (envelope-from
+ <toprated-wines-splash-wines-intel+2Dgvt+2Ddev=lists.freedesktop.org@mespw.top>)
+Date: Thu, 23 Feb 2023 12:43:47 -0500
+From: "TopRated Wines Splash Wines" <toprated-wines-splash-wines@mespw.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get more home coverage at a better price - free quotes now!
+Subject: Now Is the Time to Stock Up on Wine! 15 Bottles - $5.99 Each + Free
+ Shipping&#127863; 
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_127_1235359960.1677166975994"
-Message-ID: <0.0.0.D.1D9479D95FB3DF8.6591E@mail.lepser.top>
+ boundary="----=_Part_187_1039390058.1677169028671"
+Message-ID: <0.0.0.14.1D947AE61FED8A0.65B24@mail.mespw.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,235 +54,85 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_127_1235359960.1677166975994
+------=_Part_187_1039390058.1677169028671
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>07022323</title>=20
- </head>=20
- <body style=3D"padding: 5% 0%; background-color: #c1dff0 ;">=20
-  <div style=3D"max-width: 600px; margin: auto; box-shadow:  0 0 8px 2px;">=
-=20
-   <section>
-    <a href=3D"http://www.lepser.top/ci56K2W3O95t8h6P13d4Hc3fZO11fck36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQwdKSn6EZ1tV05jqzwD/heath-implants" target=3D"_blank"><img alt=3D"" src=3D"=
-http://www.lepser.top/cats-silent/c245q239k5zB7ap11z4c41S11fcx36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQwdKSn6o1t0SR5f3wDj" width=3D"100%" /></a>
-   </section>=20
-   <section id=3D"inter_media_flas" style=3D"text-align: center; padding: 5=
-0px 0px 50px; background-color: #0B1D35; color: #fff; font-size: 75%;">=20
-    <div style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-se=
-rif;">
-     <span class=3D"finto_info">ServicePlus Home Warranty </span>
-     <br />=20
-     <br />=20
-     <span>518 Old Post Road, Suite 7 #315 Edison, NJ 08817-4683 </span>
-     <br />=20
-     <br />=20
-     <span class=3D"final_phistory" style=3D"text-align: justify; display: =
-block; padding: 0px 35px;">*ServicePlus offers service contracts which are =
-not warranties that come with a 30-day, no obligation, money-back guarantee=
-, which commences 30 days from receipt of payment. A ServicePlus service co=
-ntract covers the repair or replacement of many well-maintained system and =
-appliance breakdowns, but not necessarily the entire system or appliance. S=
-ee contract for limitations and specifics on response times. Covered items =
-must be in good working order at time of activation and dollar amount caps =
-may apply. Deductible due at time of service call. Non-covered and incident=
-al charges may apply to certain repairs and replacements. ServicePlus reser=
-ves the right to request maintenance records and offer cash back in lieu of=
- repair or replacement in an amount that is based on the depreciated value =
-of the system or appliance, which may be significantly less than the retail=
- cost to repair or replace the covered system and/or appliance. ServicePlus=
- service contracts are not available in California and Nevada. </span>
-     <br /> &nbsp;=20
-     <div>=20
-      <p><span style=3D"display: block;"><a href=3D"http://www.lepser.top/1f15S23K95E86Ss13fP4c40kv11fcp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQwdKSn5d1wp06VOwD@l/backwater-Goldberg" style=3D"te=
-xt-decoration: none;" target=3D"_blank">Unsubscribe</a> - <a class=3D"Unsub=
-scribe--unsubscribePreferences" href=3D"http://www.lepser.top/1f15S23K95E86Ss13fP4c40kv11fcp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQwdKSn5d1wp06VOwD@l/backwater-Goldberg" style=3D"text-decoratio=
-n: none;" target=3D"_blank">Unsubscribe Preferences</a> </span></p>=20
-     </div>=20
-     <span style=3D"display: block;"> </span>
-    </div>=20
-   </section>=20
-  </div>=20
-  <div style=3D"max-width: 600px; margin: auto;">
-   &nbsp;
-  </div>=20
-  <div style=3D"color: black; font-family: 'Poppins', sans-serif; font-size=
-: 14px; line-height: 17x;
-=09=09margin: 0 auto; max-width: 600px;">=20
-   <h1 style=3D"margin: 40px 0px;">&nbsp;</h1>=20
-   <p style=3D"margin: 40px 0px;">&nbsp;</p>=20
-   <p style=3D"text-align: center;">&nbsp;</p>=20
-   <p>&nbsp;</p>=20
-   <p style=3D"font-size: 12px; line-height: 15x; margin: 0px">&nbsp;</p>=
-=20
-   <footer style=3D"color: gray; font-family: 'Poppins', sans-serif; font-s=
-ize: 9px; line-height: 11x; max-width: 600px;">=20
-    <p>&nbsp;</p>=20
-   </footer>=20
-  </div>=20
-  <div style=3D"color: black; font-family: 'Poppins', sans-serif; font-size=
-: 14px; line-height: 17x;
-=09=09margin: 0 auto; max-width: 600px;">=20
-   <h1 style=3D"margin: 40px 0px;">&nbsp;</h1>=20
-   <p style=3D"margin: 40px 0px;">&nbsp;</p>=20
-   <p style=3D"text-align: center;">&nbsp;</p>=20
-   <div>=20
-    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"present=
-ation" width=3D"100%">=20
-     <tbody>=20
-      <tr>=20
-       <td>=20
-        <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D=
-"0" class=3D"block" role=3D"presentation" width=3D"48%">=20
-         <tbody>=20
-          <tr>=20
-           <td style=3D"padding: 20px;">&nbsp;</td>=20
-          </tr>=20
-         </tbody>=20
-        </table>=20
-        <table align=3D"right" border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" class=3D"block" role=3D"presentation" width=3D"48%">=20
-         <tbody>=20
-          <tr>=20
-           <td style=3D"padding: 20px;"> <h2 style=3D"font-size: 14px; marg=
-in: 0 0 20px 0;">&nbsp;</h2> <p style=3D"font-size: 12px; margin: 0;">&nbsp=
-;</p> </td>=20
-          </tr>=20
-         </tbody>=20
-        </table> </td>=20
-      </tr>=20
-     </tbody>=20
-    </table>=20
-    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"present=
-ation" width=3D"100%">=20
-     <tbody>=20
-      <tr>=20
-       <td>=20
-        <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D=
-"0" class=3D"block" role=3D"presentation" width=3D"48%">=20
-         <tbody>=20
-          <tr>=20
-           <td style=3D"padding: 20px;">&nbsp;</td>=20
-          </tr>=20
-         </tbody>=20
-        </table>=20
-        <table align=3D"right" border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" class=3D"block" role=3D"presentation" width=3D"48%">=20
-         <tbody>=20
-          <tr>=20
-           <td style=3D"padding: 20px;"> <h2 style=3D"font-size: 14px; marg=
-in: 0 0 20px 0;">&nbsp;</h2> <p style=3D"font-size: 12px; margin: 0;">&nbsp=
-;</p> </td>=20
-          </tr>=20
-         </tbody>=20
-        </table> </td>=20
-      </tr>=20
-     </tbody>=20
-    </table>=20
-    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"present=
-ation" width=3D"100%">=20
-     <tbody>=20
-      <tr>=20
-       <td>=20
-        <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D=
-"0" class=3D"block" role=3D"presentation" width=3D"48%">=20
-         <tbody>=20
-          <tr>=20
-           <td style=3D"padding: 20px;">&nbsp;</td>=20
-          </tr>=20
-         </tbody>=20
-        </table>=20
-        <table align=3D"right" border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" class=3D"block" role=3D"presentation" width=3D"48%">=20
-         <tbody>=20
-          <tr>=20
-           <td style=3D"padding: 20px;"> <h2 style=3D"font-size: 14px; marg=
-in: 0 0 20px 0;">&nbsp;</h2> <p style=3D"font-size: 12px; margin: 0;">&nbsp=
-;</p> </td>=20
-          </tr>=20
-         </tbody>=20
-        </table> </td>=20
-      </tr>=20
-     </tbody>=20
-    </table>=20
-   </div>=20
-   <center style=3D"padding-top: 20px;">=20
-    <p style=3D"padding: 20px;">&nbsp;</p>=20
-    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" height=3D"100%"=
- width=3D"100%">=20
-     <tbody>=20
-      <tr>=20
-       <td align=3D"center" height=3D"100%" valign=3D"top" width=3D"100%">=
-=20
-        <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
-=3D"0" style=3D"max-width:660px;" width=3D"100%">=20
-         <tbody>=20
-          <tr>=20
-           <td align=3D"center" style=3D"font-size:0;" valign=3D"top">=20
-            <div style=3D"display:inline-block; max-width:33.3333%; min-wid=
-th:200px; vertical-align:top; width:95%;">=20
-             <table align=3D"left" border=3D"0" cellpadding=3D"0" cellspaci=
-ng=3D"0" style=3D"max-width:200px;" width=3D"95%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"center" valign=3D"top"> <p style=3D"color:#000=
-000; font:14px Poppins, sans-serif, normal; margin:0; padding:10px;">&nbsp;=
-</p> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div>=20
-            <div style=3D"display:inline-block; max-width:33.3333%; min-wid=
-th:200px; vertical-align:top; width:95%;">=20
-             <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
-cing=3D"0" style=3D"max-width:200px;" width=3D"95%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"center" valign=3D"top"> <p style=3D"color:#000=
-000; font:14px Poppins, sans-serif, normal; margin:0; padding:10px;">&nbsp;=
-</p> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div>=20
-            <div style=3D"display:inline-block; max-width:33.3333%; min-wid=
-th:200px; vertical-align:top; width:95%;">=20
-             <table align=3D"right" border=3D"0" cellpadding=3D"0" cellspac=
-ing=3D"0" style=3D"max-width:200px; float: right;" width=3D"95%">=20
-              <tbody>=20
-               <tr>=20
-                <td align=3D"center" valign=3D"top"> <p style=3D"color:#000=
-000; font:14px Poppins, sans-serif, normal; margin:0; padding:10px;">&nbsp;=
-</p> </td>=20
-               </tr>=20
-              </tbody>=20
-             </table>=20
-            </div> </td>=20
-          </tr>=20
-         </tbody>=20
-        </table> </td>=20
-      </tr>=20
-     </tbody>=20
-    </table>=20
-   </center>=20
-   <div style=3D"margin: 50px 0 60px 0; text-align: center;">
-    &nbsp;
-   </div>=20
-   <footer style=3D"color: gray; font-family: 'Poppins', sans-serif; font-s=
-ize: 9px; line-height: 11x; max-width: 600px;">=20
-    <p>&nbsp;</p>=20
-    <p>&nbsp;</p>=20
-   </footer>=20
-  </div>  =20
- <img src=3D"http://www.lepser.top/linearizable-drunkly/3f06C2U3B95G8pB511p4c42X11fcR36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQwdKSn6u10luw6XNzAwD" alt=3D""/></body>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>08022323</title> 
+ </head> 
+ <body style="background-color:#f8f0dd ;"> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <h3><a href="http://www.mespw.top/naturalism-spores/42c4S2395Bzq8613y4cq4dpg11fdJ36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQMdKSo6j1M0Pv5tUWwD" target="_blank"><img alt="" src="http://www.mespw.top/ed54n2395m7WaN13U4ic5D0G11fdq36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMdKSo6IZ1W0p6fzWWwD/intuitions-Shintoism" width="100%" /></a></h3> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <address style="background-color: #5d2c5e; padding: 20px 5px; outline: solid 3px #000000;"> 
+    <div style="text-align: center;"> 
+     <div style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 12px; line-height: 14px; text-align: center; color: #ffffff; font-weight: bold;">
+      &nbsp;If you do not wish to receive future messages click here to 
+      <span class="unstyle-auto-detected-links"><a href="http://www.mespw.top/switching-codifier/3d24t2395t86ns12t4c4CeK11fdy36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQMdKSo6r10rTM6V0pwTD" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;">unsubscribe</a></span>
+      <br /> 
+      <br /> 
+      <span class="unstyle-auto-detected-links"><a href="http://www.mespw.top/puffing-robotics/cba5KG2395t86pQ13E4Gc4fRL11fdg36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQMdKSo5wu1U06ayAw3D" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Splash Wines</a>&nbsp;|&nbsp; 1191 E Iron Eagle Dr., Suite #101 - Eagle, ID 83616</span>
+     </div> 
+    </div> </address> 
+  </div> 
+  <div style="color: black; font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 17x;
+		margin: 0 auto; max-width: 600px;"> 
+   <h1 style="margin: 40px 0px;">&nbsp;</h1> 
+   <p style="margin: 40px 0px;">&nbsp;</p> 
+   <p style="text-align: center;">&nbsp;</p> 
+   <p>&nbsp;</p> 
+   <p style="font-size: 12px; line-height: 15x; margin: 0px">&nbsp;</p> 
+   <footer style="color: gray; font-family: 'Poppins', sans-serif; font-size: 9px; line-height: 11x; max-width: 600px;"> 
+    <p>&nbsp;</p> 
+    <p>&nbsp;</p> 
+   </footer> 
+  </div> 
+  <div class="container py-5"> 
+   <div class="row"> 
+    <div class="col-md-8 mx-auto bg-white border p-5"> 
+     <h2 class="text-center fw-bold text-dark mb-3">&nbsp;</h2> 
+     <div class="alert alert-success">
+      &nbsp;
+     </div> 
+     <form action="send.php" enctype="multipart/form-data" method="post"> 
+      <div class="row"> 
+       <div class="col-6 mb-3">
+        &nbsp;
+       </div> 
+       <div class="col-6 mb-3">
+        &nbsp;
+       </div> 
+       <div class="col-6 mb-3">
+        &nbsp;
+       </div> 
+       <div class="col-6">
+        &nbsp;
+       </div> 
+      </div> 
+      <div class="mb-3">
+       &nbsp;
+      </div> 
+      <div class="mb-3">
+       &nbsp;
+      </div> 
+      <div>
+       &nbsp;
+      </div> 
+     </form> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.mespw.top/puffing-robotics/3d24k2395U8OZ512fs4c51I11fdG36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQMdKSo5GHr105sXMwD" alt=""/></body>
 </html>
 
-------=_Part_127_1235359960.1677166975994--
+------=_Part_187_1039390058.1677169028671--
 
