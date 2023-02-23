@@ -1,46 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5618F69FBD7
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Feb 2023 20:17:21 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 204BB6A027B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Feb 2023 06:42:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2DBE510E3C3;
-	Wed, 22 Feb 2023 19:17:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0C0E510EAC4;
+	Thu, 23 Feb 2023 05:42:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Wed, 22 Feb 2023 19:17:18 UTC
-Received: from mail.increase-easy.click (unknown [45.13.189.203])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1496E10E2A6
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Feb 2023 19:17:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=increase-easy.click; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=easycanvasprintscom.ad.partner@increase-easy.click; 
- bh=Sk8NzscqzHadIn00kJQYtCBktgU=;
- b=NGNdat+4gbZ0osmP1j1KDOA5yCIqgnxF/S0ng3mnABYL2qnM8tUBns6r5nPXCF2j+ib8GrdFHM1y
- CMdOs7OEw7Zwiw/ayiZClBrPl7cD82bZwo1LyBWscCM9zwjDBix1SWh3TAMHcR3egxL+n7xrrFjv
- rcFixpcDvxeBnSeJIQM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=increase-easy.click;
- b=bAYXhcJZTx7nlhL04KlQns+uE7/5s4ZRG9t8Qx0tYqIaEWVS5Fnw1BKV0VUa8g26l1f3kNoLG0KR
- U11dUwyXgUV7+mhJnYmXe4reagFhTavpB3DOFWIkZkPljLWc7x4tzzgNIGm44Ci6eWXIM8llP/59
- TuNzgCtA5VcjAe1/96E=;
-Received: by mail.increase-easy.click id hupv7c0001gj for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Feb 2023 15:33:26 -0500 (envelope-from
- <easycanvasprintscom.ad.partner-intel+2Dgvt+2Ddev=lists.freedesktop.org@increase-easy.click>)
-Date: Wed, 22 Feb 2023 15:33:26 -0500
-From: "EasyCanvasPrints.com Ad Partner"
- <easycanvasprintscom.ad.partner@increase-easy.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: President's Day Sale! Get Your 11x14 Custom Canvas Print for Only
- $9.99!
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7144910E49D;
+ Thu, 23 Feb 2023 05:42:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1677130970; x=1708666970;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=fNthTe0hqtFD5hys4g4BTack0W8Cr5nveuNKNdiA4Ak=;
+ b=mA9Bn5e83oyHqMWfF/2hNu3eFo4hlro4Y9P1ZlyhGZPBFFnTYdZf8B5S
+ DAjtfhZJ6OEcUi8HJN2ySPdPEOa/mXHAi1vbgeLF9IhkBQz6+hDtb9qRK
+ ta7XylkGQHZpNO3Kg6l6lCVMmGirKqSp3xJcp7cRrbuz2c8nIg8jwDNeu
+ VfqY+TwfjZapEdoffcqh1cd8nwx0/tsNQu3hKlgeGH1ZMVxzNJw5beQXS
+ 9JVXwU7neOnoFwWxsBKomrbX0gNtQOpUxp6FzSg4VzB14X9p97JTRubZ/
+ agcpahLWP2H9XhlpLjy+0EA5qB62YW5lAS+TLy7aTy0FMsmSP1B6xfvfM g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10629"; a="360609745"
+X-IronPort-AV: E=Sophos;i="5.97,320,1669104000"; 
+ d="asc'?scan'208";a="360609745"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2023 21:42:50 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10629"; a="674389293"
+X-IronPort-AV: E=Sophos;i="5.97,320,1669104000"; 
+ d="asc'?scan'208";a="674389293"
+Received: from debian-skl.sh.intel.com (HELO debian-skl) ([10.239.159.40])
+ by fmsmga007.fm.intel.com with ESMTP; 22 Feb 2023 21:42:48 -0800
+Date: Thu, 23 Feb 2023 13:41:00 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Rodrigo Vivi <rodrigo.vivi@intel.com>
+Subject: Re: [Intel-gfx] [PATCH] i915: fix memory leak with using
+ debugfs_lookup()
+Message-ID: <Y/b8bLx+fbGOWgJx@debian-scheme>
+References: <20230202141309.2293834-1-gregkh@linuxfoundation.org>
+ <Y+Fh2w1Iw3kHp5D+@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_151_1201848792.1677092807299"
-Message-ID: <0.0.0.10.1D946FCEAD9AD88.3DBFE2@mail.increase-easy.click>
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="9wh4AwoWCfukJxS4"
+Content-Disposition: inline
+In-Reply-To: <Y+Fh2w1Iw3kHp5D+@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,136 +61,81 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_151_1201848792.1677092807299
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>10022223</title> 
- </head> 
- <body style="background-color: #e2e2ff; padding: 8% 0%;"> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <section> 
-    <div>
-     <a href="http://www.increase-easy.click/dc74L2395S86Rm11z4c2ez11f9k36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQpdKRe6f10rDs5KXwDT/veracity-ossify" target="_blank"><img alt="" src="http://www.increase-easy.click/bands-informality/d8c4p2395bWs7a11H4c31C11f9L36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQpdKRe6Y10WYN5pBwDN" width="100%" /></a>
-    </div> 
-   </section> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <section style="width: 100%;"> 
-    <address style="width: 100%; background-color:#040442; max-width: 600px; padding: 7px 0px ; color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; border-radius: 8px;"> <p style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; ">&nbsp;If you do not wish to receive future messages click here to <span class="unstyle-auto-detected-links"><a href="http://www.increase-easy.click/warlike-entropy/1b66J23vx95WV8u611m4c2fB11f9Q36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQpdKRe6Uu10sm5wjwDM" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; ;">unsubscribe</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.increase-easy.click/choices-existentially/ed65S239O5bKZ8611h4c30X11f9m36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQpdKRe6zl1A0x6IUJBwD" style="text-decoration: underline!importan
- t; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;">Easy Canvas Prints</a>&nbsp;|&nbsp; 11525a Stonehollow Dr #100 | Austin, TX 78758</span><br /> <br /> &nbsp;</p> </address> 
-   </section> 
-  </div> 
-  <div style=""> 
-   <div style=";margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style=";width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:30px;text-align:center;"> 
-        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;padding-bottom:15px;word-break:break-word;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-              <tbody> 
-               <tr> 
-                <td style="width:250px;">&nbsp;</td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style=";margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style=";width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0px;text-align:center;"> 
-        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;padding-top:30px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-              <tbody> 
-               <tr> 
-                <td style="width:150px;">&nbsp;</td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style=";margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style=";width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0px;text-align:center;"> 
-        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="left" style="font-size:0px;padding:10px 25px;padding-top:30px;padding-right:40px;padding-bottom:20px;padding-left:40px;word-break:break-word;"> 
-             <div style="font-family:Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;color:#55575d;">
-              &nbsp;
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style=";margin:0px auto;max-width:600px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style=";width:100%;"> 
-     <tbody> 
-      <tr> 
-       <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0px;text-align:center;"> 
-        <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;"> 
-              <tbody> 
-               <tr> 
-                <td style="width:600px;">&nbsp;</td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </div>   
- <img src="http://www.increase-easy.click/6dd5n239r5JR8t512g4c3F2q11f9I36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQpdKRe6U1sA0k5K2XwD/veracity-ossify" alt=""/></body>
-</html>
+--9wh4AwoWCfukJxS4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-------=_Part_151_1201848792.1677092807299--
+On 2023.02.06 15:23:55 -0500, Rodrigo Vivi wrote:
+> On Thu, Feb 02, 2023 at 03:13:09PM +0100, Greg Kroah-Hartman wrote:
+> > When calling debugfs_lookup() the result must have dput() called on it,
+> > otherwise the memory will leak over time.  To make things simpler, just
+> > call debugfs_lookup_and_remove() instead which handles all of the logic
+> > at once.
+> >=20
+> > Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> > Cc: Zhi Wang <zhi.a.wang@intel.com>
+> > Cc: Jani Nikula <jani.nikula@linux.intel.com>
+> > Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> > Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> > Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+> > Cc: David Airlie <airlied@gmail.com>
+> > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > Cc: intel-gvt-dev@lists.freedesktop.org
+> > Cc: intel-gfx@lists.freedesktop.org
+> > Cc: dri-devel@lists.freedesktop.org
+> > Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+>=20
+>=20
+> Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
+>=20
+> Zhenyu or Zhi, could you please propagate this through your gvt branch?
+>=20
 
+Sorry I missed this one after I migrated my mail stuff onto new machine..
+Looks good to me.
+
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+
+> >  drivers/gpu/drm/i915/gvt/kvmgt.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gv=
+t/kvmgt.c
+> > index 8ae7039b3683..de675d799c7d 100644
+> > --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
+> > @@ -699,7 +699,7 @@ static void intel_vgpu_close_device(struct vfio_dev=
+ice *vfio_dev)
+> > =20
+> >  	clear_bit(INTEL_VGPU_STATUS_ATTACHED, vgpu->status);
+> > =20
+> > -	debugfs_remove(debugfs_lookup(KVMGT_DEBUGFS_FILENAME, vgpu->debugfs));
+> > +	debugfs_lookup_and_remove(KVMGT_DEBUGFS_FILENAME, vgpu->debugfs);
+> > =20
+> >  	kvm_page_track_unregister_notifier(vgpu->vfio_device.kvm,
+> >  					   &vgpu->track_node);
+> > --=20
+> > 2.39.1
+> >=20
+
+--9wh4AwoWCfukJxS4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCY/b8ZgAKCRCxBBozTXgY
+J2QHAJ4mxXdBrJyJ7kZX42GmAhaFvJCFvwCeLi7grFnnr8QIUCde6A1N/D3zKXQ=
+=VkT4
+-----END PGP SIGNATURE-----
+
+--9wh4AwoWCfukJxS4--
