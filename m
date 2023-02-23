@@ -2,41 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F5FC6A1191
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Feb 2023 22:00:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B10416A1225
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Feb 2023 22:37:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 21B1910E2DA;
-	Thu, 23 Feb 2023 21:00:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7185710E2ED;
+	Thu, 23 Feb 2023 21:37:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Thu, 23 Feb 2023 21:00:54 UTC
-Received: from mail.hit-lwsfa.click (unknown [45.13.189.130])
- by gabe.freedesktop.org (Postfix) with ESMTP id AAE6710E058
+X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
+ Thu, 23 Feb 2023 21:37:45 UTC
+Received: from mail.joining-cv.click (unknown [45.13.189.152])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8F2B810E2ED
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Feb 2023 21:00:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hit-lwsfa.click; 
+ Thu, 23 Feb 2023 21:37:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=joining-cv.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowesperks@hit-lwsfa.click; bh=ZYyJU+WXuzDIfjcNpdfPxBPaGqw=;
- b=bzkdSU9JLmhUJj5A/9t5rjW9TJJMccfJByKb35DSlrSqPsBOSTDhveak1ITE1ctbuA1xvMe4x9gi
- S24l/kfibdIRi03ZKyWIPLAmk9IRbD9vD0dBU4GgiAazj4PqkY8KC3zULw1lvmdkPJ7+S2sfdAYS
- KvgFtDHWSinq/3BIvw8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hit-lwsfa.click;
- b=cIo1JcaBrbsB0Fokm3qF3J4vu53WSK1LY0hdH1pAT4JosSIPChHRux9UQwNr39XnzmNehyU1cQ0m
- 6HqkJVJZHUamOeu0hc42yq02/cF0FuI8NXv7I1uG+rfh/HCSQHKgTHju7708wR8CX+lAf3rmqq4L
- 0NqXYOQJiqcd+owKAr0=;
-Received: by mail.hit-lwsfa.click id huva0c0001g7 for
+ i=cvs-support-news@joining-cv.click; 
+ bh=txYz39W99PHNSek8BkPP+0NkHDY=;
+ b=xOFBcajz28mLuplKf49TKYIFf8dmVRJwsKKkr+bpVB8j+LH4ZIo70LL3Pyx872hy/GvUt+znpDrf
+ cOjtEEmJbhgy15iiFsZl3ElUvFksxxFeYU6L6J8qQde1GJMG1TMaOuDdtG51tW3eF7ZmqsW5CPM6
+ UpnbIvPWbz99y3Gv8aA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=joining-cv.click;
+ b=bb2Y7/DVwMsF6ftnihq0celF1S8wl3+bBEcCDIJaFBtMIUlI8AQokpUWJdQmTspseXpH+/32mASr
+ J2ep7VwDU4gh8KrhA7VnCty4ZbCh3Vl/NlYrxw79Cj/d3J7YpKFCCKyyjNaO5SQCh+d2aKRzPXtD
+ zhfRM/q4EDGuyDpl4Rg=;
+Received: by mail.joining-cv.click id huveak0001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Feb 2023 15:46:33 -0500 (envelope-from
- <lowesperks-intel+2Dgvt+2Ddev=lists.freedesktop.org@hit-lwsfa.click>)
-Date: Thu, 23 Feb 2023 15:46:33 -0500
-From: LowesPerks <lowesperks@hit-lwsfa.click>
+ Thu, 23 Feb 2023 16:24:09 -0500 (envelope-from
+ <cvs-support-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@joining-cv.click>)
+Date: Thu, 23 Feb 2023 16:24:09 -0500
+From: "CVS Support News" <cvs-support-news@joining-cv.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Free Stanley Tool Set from Lowe's, grab it now!
+Subject: Get a complimentary gift from us for your loyalty this New year
+ season.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_752_540812911.1677185166508"
-Message-ID: <0.0.0.53.1D947C7EA30A4C4.22B7E@mail.hit-lwsfa.click>
+ boundary="----=_Part_64_870503362.1677187434680"
+Message-ID: <0.0.0.7.1D947CD2AA8C932.1B6017@mail.joining-cv.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_752_540812911.1677185166508
+------=_Part_64_870503362.1677187434680
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,77 +64,230 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>03022323</title> 
+  <title>04022323</title> 
  </head> 
- <body style="padding: 6% 0%; background-color: #d8eaff;"> 
-  <div style="max-width: 600px; margin: auto; box-shadow: 0px 0px 8px 2px; background-color: #fff;"> 
-   <h1>&nbsp;</h1> 
-   <div style="background-color: #012168; color: #fff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center;"> 
-    <div style="padding:2rem; font-size: 26px">
-     <strong>Special Gift for intel-gvt-dev@lists.freedesktop.org</strong>
-    </div> 
+ <body style="margin: 0% 0%; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;" width="100%">
+  &nbsp; 
+  <div style="background-color: #F1F1F1; width: 100%; padding: 5% 0%;"> 
+   <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: 0 0 8px 2px;"> 
+    <header> 
+     <div id="cvs_prinmors" style="text-align: center; background-color: #c70000;">
+      <span style="font-size: 250%; font-family: Arial, Helvetica, sans-serif; font-weight: 900; color: #fff;">CVS</span>
+     </div> 
+    </header> 
+    <section class="stylo_ccshohhy"> 
+     <div>
+      <a href="http://www.joining-cv.click/bab6q23Hl95V86tZ11v4c61v1203T36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQxdKSe5Bx1u05WUwDL/Hoffman-soldiering" target="_blank"><img alt="" src="http://www.joining-cv.click/e214P2395uu7ha11f4c63I1203P36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQxdKSe6zTF10B5AJwDO/carnivorously-typified" style="display: block;" width="100%" /></a>
+     </div> 
+     <div>
+      <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 135%; padding: 3% 5%; display: block; text-align: center; line-height: 130%;">We hope this email finds you well. At CVS Pharmacy, we value your feedback and are committed to providing you with the best shopping experience possible. That's why we want to offer you a special incentive for taking the time to complete our customer survey.<br /> <br /> <span style="background-color: #DBDBDB; padding: 12px; display: block; font-size: 20px">For completing the survey, you will receive a <strong>$100</strong> Gift!</span><br /> To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. </span>
+     </div> &nbsp; 
+     <h4 class="text-info_114" style="text-align: center;"><a href="http://www.joining-cv.click/bab6q23Hl95V86tZ11v4c61v1203T36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQxdKSe5Bx1u05WUwDL/Hoffman-soldiering" style="text-decoration: none; color: #fff;" target="_blank"><span style=" background-color: #DB2026; padding: 2.5% 4%; font-size: 135%; font-weight: bold; font-family: Arial, Helvetica, sans-serif; border-radius: 8px;">Take the Survey</span></a></h4> 
+     <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 135%; padding: 3% 5%; display: block; text-align: center; line-height: 130%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.<br /> <br /> Best regards,<br /> <br /> The CVS Team</span>
+    </section> 
    </div> 
-   <h3 style="margin-bottom: 0"><span style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-weight: normal; padding: 15px; display: block; text-align: center">We hope this email finds you well. At Lowe's, we value your feedback and are committed to providing you with the best shopping experience possible. That's why we want to offer you a special incentive for taking the time to complete our customer survey.</span><br /> <a href="http://www.hit-lwsfa.click/geology-unites/e5e6e_D2395Vj86X11A4c5bg1202Y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydKSS6Rw1um06rBwPzD" target="_blank"><img alt="" src="http://www.hit-lwsfa.click/geology-unites/60c6S2D39V5so7Oa13AY4c5dvB1202S36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQydKSS7sw10uvD6h2wlDj" style="display: block;" width="100%" /></a></h3> 
-   <p style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-weight: normal; padding: 15px; display: block; text-align: center">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers.<br /> <br /> <a href="http://www.hit-lwsfa.click/geology-unites/e5e6e_D2395Vj86X11A4c5bg1202Y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydKSS6Rw1um06rBwPzD">Take the Survey</a></p> 
-   <p style="display: inline-block;"><a href="http://www.hit-lwsfa.click/geology-unites/e5e6e_D2395Vj86X11A4c5bg1202Y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydKSS6Rw1um06rBwPzD" target="_blank"><img alt="" src="http://www.hit-lwsfa.click/e5d6gNF2395iRz7a11l4c5eO1202I36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQydKSS6VMQ10M6z2AUwD/trading-Darwinize" style="display: block;" width="100%" /></a></p> 
-   <span style="display: block; max-width: 95%; margin: auto;"><a href="http://www.hit-lwsfa.click/geology-unites/e5e6e_D2395Vj86X11A4c5bg1202Y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydKSS6Rw1um06rBwPzD" target="_blank"><img alt="" src="http://www.hit-lwsfa.click/geology-unites/35a6Uy2Y395F7SAa13mv4Tc5fH1202y36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQydKSS7EjUP10r5SllwD" width="100%" /></a> </span> 
-   <p style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-weight: normal; padding: 15px; display: block; text-align: center"><span style="display: block; max-width: 95%; margin: auto;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.</span></p> 
-   <span style="display: block; max-width: 95%; margin: auto;"> </span> 
-   <div style="text-align: center;">
-    <a href="http://www.hit-lwsfa.click/geology-unites/e5e6e_D2395Vj86X11A4c5bg1202Y36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQydKSS6Rw1um06rBwPzD" style="color: #fff; text-decoration: none;"><span style="background-color: #2f2f31; font-size: 120%; padding: 2.5% 5%; font-weight: bold; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; border-radius: 8px;">Start Here Now</span></a>
-   </div> &nbsp; 
-   <p style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-weight: normal; padding: 15px; display: block; text-align: center">Best regards,<br /> The Lowe's Survey Team</p> 
-  </div> 
-  <div style="padding-bottom: 150px;">
-   &nbsp;
-  </div> 
-  <footer style="text-align: center; max-width: 620px ; margin: auto;"> 
-   <address style="background-color: #1659a7; padding: 1.5% 0%; font-size: 65%; font-weight: bold; color: rgb(255, 254, 254); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> <p><span style="text-decoration: none; ">To bring notifications to an halt,</span><a href="http://www.hit-lwsfa.click/alms-nutritious/51c6ekr2395asm8612i4c5cTm1202A36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQydKSS5q1C0A6g@1XwD" style="text-decoration-line: none; color: white"> <span>Click-Here-Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font size="vector"></font><style></style><small></small><span id="digression"></span><font size="groin"></font><font title="ramrod"><span color="punches"><style></style></span><span style="aliasing"></span></font><style></style></p> </address> 
-  </footer> 
-  <table class="body-wrap"> 
-   <tbody> 
-    <tr> 
-     <td class="container"> 
-      <table> 
-       <tbody> 
-        <tr> 
-         <td align="center" class="masthead">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td class="content"> <h2>&nbsp;</h2> <p>&nbsp;</p> 
-          <table> 
-           <tbody> 
-            <tr> 
-             <td align="center"> <p>&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> <p>&nbsp;</p> 
-          <table> 
-           <tbody> 
-            <tr> 
-             <td> <p class="url">&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> <p>&nbsp;</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td class="container">
-      <!-- Message start --> 
-      <table> 
-       <tbody> 
-        <tr> 
-         <td align="center" class="content footer"> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.hit-lwsfa.click/geology-unites/4684b2395gID8511M4c60L1202V36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQydKSS7yIJo1p05EBpwD" alt=""/></body>
+   <div style="padding-top: 130px;"> 
+    <footer style="width: 60%; margin: auto;"> 
+     <address style=" background-color: #971818; padding: 15px 0px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; border-radius: 5px; font-size: 10px; color: #fff;"> <p class="unsubscribe"><span style="text-decoration: none; ">To bring communication to an end,</span><a href="http://www.joining-cv.click/Allentown-recall/Nc65Su2395L8H6S13A4cBK62x1203k36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQxdKSe6VYPF106MNzwJD" style="text-decoration-line: none; color:"> <span>Visit Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style></style><style size="inaugural"><font dir="Mathieu"></style></font><span><font></font><span id="totally"></span></span><style></style><style><small></small></style><span color="repetition"></span></p> </address> 
+    </footer> 
+   </div> 
+   <center style="width: 100%; background-color: #f1f1f1;"> 
+    <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+     &nbsp;
+    </div> 
+    <div class="email-container" style="max-width: 600px; margin: 0 auto;"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td class="hero bg_white" valign="middle"> 
+         <div class="overlay">
+          &nbsp;
+         </div> 
+         <table> 
+          <tbody> 
+           <tr> 
+            <td> 
+             <div class="text" style="padding: 0 4em; text-align: center;"> 
+              <h2>&nbsp;</h2> 
+              <p>&nbsp;</p> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> </td> 
+       </tr> 
+       <tr> 
+        <td class="bg_white email-section"> 
+         <div class="heading-section" style="text-align: center; padding: 0 30px;"> 
+          <h2>&nbsp;</h2> 
+         </div> 
+         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td style="padding-bottom: 30px;"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td valign="middle" width="50%">&nbsp;</td> 
+                <td valign="middle" width="50%"> 
+                 <div class="text-blog" style="text-align: left; padding-left:25px;"> 
+                  <p class="meta">&nbsp;</p> 
+                  <h3>&nbsp;</h3> 
+                  <p>&nbsp;</p> 
+                  <p>&nbsp;</p> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+           <tr> 
+            <td style="padding-bottom: 30px;"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td valign="middle" width="50%">&nbsp;</td> 
+                <td valign="middle" width="50%"> 
+                 <div class="text-blog" style="text-align: left; padding-left:25px;"> 
+                  <p class="meta">&nbsp;</p> 
+                  <h3>&nbsp;</h3> 
+                  <p>&nbsp;</p> 
+                  <p>&nbsp;</p> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+           <tr> 
+            <td style="padding-bottom: 30px;"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td valign="middle" width="50%">&nbsp;</td> 
+                <td valign="middle" width="50%"> 
+                 <div class="text-blog" style="text-align: left; padding-left:25px;"> 
+                  <p class="meta">&nbsp;</p> 
+                  <h3>&nbsp;</h3> 
+                  <p>&nbsp;</p> 
+                  <p>&nbsp;</p> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+           <tr> 
+            <td style="padding-bottom: 30px;"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td valign="middle" width="50%">&nbsp;</td> 
+                <td valign="middle" width="50%"> 
+                 <div class="text-blog" style="text-align: left; padding-left:25px;"> 
+                  <p class="meta">&nbsp;</p> 
+                  <h3>&nbsp;</h3> 
+                  <p>&nbsp;</p> 
+                  <p>&nbsp;</p> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> </td> 
+       </tr> 
+       <tr> 
+        <td class="bg_light email-section" style="text-align:center;"> 
+         <table> 
+          <tbody> 
+           <tr> 
+            <td class="img"> 
+             <div>
+              &nbsp;
+             </div> </td> 
+           </tr> 
+           <tr> 
+            <td style="padding-top: 20px;"> <h2>&nbsp;</h2> <p>&nbsp;</p> </td> 
+           </tr> 
+          </tbody> 
+         </table> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td class="bg_black footer email-section" valign="middle"> 
+         <table> 
+          <tbody> 
+           <tr> 
+            <td style="padding-top: 20px;" valign="top" width="33.333%"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td style="text-align: left; padding-right: 10px;"> <h3 class="heading">&nbsp;</h3> <p>&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+            <td style="padding-top: 20px;" valign="top" width="33.333%"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td style="text-align: left; padding-left: 5px; padding-right: 5px;"> <h3 class="heading">&nbsp;</h3> 
+                 <ul style="list-style-type: none;"> 
+                  <li>&nbsp;</li> 
+                  <li>&nbsp;</li> 
+                 </ul> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+            <td style="padding-top: 20px;" valign="top" width="33.333%"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td style="text-align: left; padding-left: 10px;"> <h3 class="heading">&nbsp;</h3> 
+                 <ul style="list-style-type: none;"> 
+                  <li>&nbsp;</li> 
+                  <li>&nbsp;</li> 
+                  <li>&nbsp;</li> 
+                  <li>&nbsp;</li> 
+                 </ul> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> </td> 
+       </tr> 
+       <tr> 
+        <td class="bg_black footer email-section" valign="middle"> 
+         <table> 
+          <tbody> 
+           <tr> 
+            <td valign="top" width="33.333%"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td style="text-align: left; padding-right: 10px;"> <p>&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+            <td valign="top" width="33.333%"> 
+             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td style="text-align: right; padding-left: 5px; padding-right: 5px;"> <p>&nbsp;</p> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </center> 
+  </div>   
+ <img src="http://www.joining-cv.click/classifiable-revisited/17a5o239i5VF8G513mW4c6s4s1203k36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQxdKSe7Y_n10zp6d@wljD" alt=""/></body>
 </html>
 
-------=_Part_752_540812911.1677185166508--
+------=_Part_64_870503362.1677187434680--
 
