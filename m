@@ -1,44 +1,143 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B10416A1225
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Feb 2023 22:37:50 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D16366A14E0
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Feb 2023 03:21:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7185710E2ED;
-	Thu, 23 Feb 2023 21:37:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EC64810E545;
+	Fri, 24 Feb 2023 02:21:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Thu, 23 Feb 2023 21:37:45 UTC
-Received: from mail.joining-cv.click (unknown [45.13.189.152])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8F2B810E2ED
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Feb 2023 21:37:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=joining-cv.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=cvs-support-news@joining-cv.click; 
- bh=txYz39W99PHNSek8BkPP+0NkHDY=;
- b=xOFBcajz28mLuplKf49TKYIFf8dmVRJwsKKkr+bpVB8j+LH4ZIo70LL3Pyx872hy/GvUt+znpDrf
- cOjtEEmJbhgy15iiFsZl3ElUvFksxxFeYU6L6J8qQde1GJMG1TMaOuDdtG51tW3eF7ZmqsW5CPM6
- UpnbIvPWbz99y3Gv8aA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=joining-cv.click;
- b=bb2Y7/DVwMsF6ftnihq0celF1S8wl3+bBEcCDIJaFBtMIUlI8AQokpUWJdQmTspseXpH+/32mASr
- J2ep7VwDU4gh8KrhA7VnCty4ZbCh3Vl/NlYrxw79Cj/d3J7YpKFCCKyyjNaO5SQCh+d2aKRzPXtD
- zhfRM/q4EDGuyDpl4Rg=;
-Received: by mail.joining-cv.click id huveak0001gh for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Feb 2023 16:24:09 -0500 (envelope-from
- <cvs-support-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@joining-cv.click>)
-Date: Thu, 23 Feb 2023 16:24:09 -0500
-From: "CVS Support News" <cvs-support-news@joining-cv.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get a complimentary gift from us for your loyalty this New year
- season.
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2535310E545;
+ Fri, 24 Feb 2023 02:21:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1677205298; x=1708741298;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=4vPvTNV3mHh2SP5Vgx6xqdNOAk/ZMNFsRCe6HX2Mvbg=;
+ b=NChso09cwIN34u9IO2yYFWLkof/bLClUeEYImbvP5JWCehkVWJSEeahj
+ DHJDnbeS4fYyc7djqK95EmY0aoTbXYfsAEccubGGt8HPO6QRqSebHYcbi
+ smwRxx/a9z/+MA1/AsiZG6qmgWn5fog64rsdKdpbTGey5ojVF36VxG7qc
+ yYhNwPEemMBypfyDLMZOHwwjdiO1XbaAxJ/rWduqtI5bvyT94aHLZp4OJ
+ gzag1HuXFQjnboM1br/btvXx/UIkduZy3lnDiCzElXZzw+/WzhuT/XRnX
+ HAsGxJeIDmmVroQwYDWnAeFJ78gvGDZryYXIuF/Qjjehg6KeeWo0SynHj Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10630"; a="317137904"
+X-IronPort-AV: E=Sophos;i="5.97,322,1669104000"; d="scan'208";a="317137904"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Feb 2023 18:21:37 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10630"; a="846790000"
+X-IronPort-AV: E=Sophos;i="5.97,322,1669104000"; d="scan'208";a="846790000"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga005.jf.intel.com with ESMTP; 23 Feb 2023 18:21:36 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Thu, 23 Feb 2023 18:21:36 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Thu, 23 Feb 2023 18:21:36 -0800
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Thu, 23 Feb 2023 18:21:36 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WQ4s7nm6KYQHCkyql7fPJVshcu9W4ZpD3z+k9O0Gbwxw+LTuoEyctD5QjfOg8wtxNOQ6ZPucVEWv+ERLt/GN/aRT83jqkRt0+xFBp+rWVVTMDxY0sS++5Zya7EQjwNV/Xuwe/+bemhVR8WEjXNwS0cLeQfKXmXc3V2J81UdXhs6G2So2FZ33XPWUjNg6GwBbtj46i8Sx6onXOJTLV2dZMWqVEj2yuBZXLmTn0q4zvO9HeZAh24cQ51gqc0X6hllIXupmGmgsPtDxkEiZpI7Ett0LAJrsYzyhi7sJ42TqRKUEe9piffABxhd9Ky+nQLV6OhHVbHyoC2o9o2PVu2o9fg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0CS2lVwDEYRY0+5/bk9q6lH6WXpeFzc6qzc1n2S2v3I=;
+ b=deSq+z3ciyzhKRGvLeooga14CDWofuilklMEj5M0jHR6TgwAypiv1gEHTId9ZDcRkm6YvOwieIw4mGNdB1sd6t5idmuVmd9LmD/2Hb07vVxnzdRY5wz85b7GGaekFQ1kErA6FbPxgyKgivAPbBUyeN+VjdGDXaYcew+Pp4ZvyNxqFDnXOqqFnMVwNJmslpcC/Hm8Fv+t0zc4iApngaDPeG1OurDeSouMXXH6/bGUWFtLwOT3vHcYfU2obJwF3BEA1GT35lw7TdBg2UtjqaS12nsBQ4/kwbRuV/w/CYLSqccEd3m9i+/n71a6BJ0s34M3gw3FtjyuL8pNRVFdU7BjCg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by SA2PR11MB5212.namprd11.prod.outlook.com (2603:10b6:806:114::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6134.24; Fri, 24 Feb
+ 2023 02:21:34 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::1aac:b695:f7c5:bcac]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::1aac:b695:f7c5:bcac%8]) with mapi id 15.20.6134.024; Fri, 24 Feb 2023
+ 02:21:33 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: RE: [PATCH v4 09/19] vfio/pci: Accept device fd for hot reset
+Thread-Topic: [PATCH v4 09/19] vfio/pci: Accept device fd for hot reset
+Thread-Index: AQHZRade4YzkLtsVl0WRYDgmHuz0/q7akQpAgABomgCAAD40AIAA70ywgABhHoCAANlkIA==
+Date: Fri, 24 Feb 2023 02:21:33 +0000
+Message-ID: <BN9PR11MB5276C959AA31F8515002B6B48CA89@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230221034812.138051-1-yi.l.liu@intel.com>
+ <20230221034812.138051-10-yi.l.liu@intel.com>
+ <BL1PR11MB5271D122329B6908BDE1F8328CAA9@BL1PR11MB5271.namprd11.prod.outlook.com>
+ <DS0PR11MB7529B33D098225CFAAA7D63FC3AA9@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <Y/ZOOClu8nXy2toX@nvidia.com>
+ <BN9PR11MB52767915B9A5E509BC90E0888CAB9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <Y/dobS6gdSkxnPH7@nvidia.com>
+In-Reply-To: <Y/dobS6gdSkxnPH7@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SA2PR11MB5212:EE_
+x-ms-office365-filtering-correlation-id: 5de090fe-73be-499f-9f81-08db160dd93d
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 3kscpaTx2BNXk6ydftLC3YnuLgIThZ4q6+4kH3idOM2QGfBahAUrt2CVYuoVYA+wyg01Ht6IBLYDU/tUPqxjNgyJVw3CaooK5NzevMchqrzx1fDi4351W7ZLEraX//OuQykrUeu5jkutIYY0ZokrCi5Wtk8i42TUJBeEAoVZwD8Vap4x/NfNX31xC3JOHWSRKoZSwbVcn7P2p2QM4B8Yac3910+Aa5hm8bMyEP7GKUIkYGiiQupKfpNYS0rKPghY3nAU/0gvj0QTc+lUcea08DgLFnoQRZqbCSHj+nbeCbJeriqIiBujQcbLbE0VklrqeDJ4lWAW8CpbJl8IFDhfArSylSua9Tl54YgH8OqUnIHdHvsnHaK6Qljn+9o2WXAsn2jM/jkuKjjkCMqJ2A/t/KlJ3OCUnxtBqkispfh8lysPQjsQZypKdhL8pcQskkNo8ZOo0gJ0nPV7oJXIaq57kFqTxe2CuOkczK01d135ERbslEyIbu5L82gEPE5Dh19759qV680KKbC/00R7QQYdclK6B4xyAcDA+JvGH27glYGRErxvwk9NxrftsitrezD7p0PjaCX6rrAIO0GbAgeGVlZA9fhWU+tAZjeGFHI/p3kNss+zw9rlaDtjo1s22OWoECIvFSm242c0zYlTnf5TODu3ieFz434eyHBn0XHXAUJrMLNSKo42DEHfL+mrq5H4
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(376002)(39860400002)(396003)(366004)(136003)(346002)(451199018)(83380400001)(38100700002)(8936002)(71200400001)(2906002)(52536014)(5660300002)(122000001)(7416002)(38070700005)(55016003)(86362001)(82960400001)(33656002)(478600001)(26005)(6506007)(7696005)(66446008)(76116006)(66946007)(4326008)(6916009)(8676002)(64756008)(66476007)(66556008)(9686003)(186003)(316002)(54906003)(41300700001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?HP73ITBeRGQYxnFxqAZ7g6EAOLKAStSRQVrdLniJzA8zV1a/cA2/zrVoOZgV?=
+ =?us-ascii?Q?2TP1TIBJRoTETVs8/gmJWviwUUh+eupWlZ1Kt0bL7sSNOH6nNharJtYaq29B?=
+ =?us-ascii?Q?vBCweteXgvGoWBO5K7yuX7fCz1+qEL147WDeNV+LFK0JU0POBfU+ht8LMgLH?=
+ =?us-ascii?Q?utlju0j698/a1dsiMpWU+Te6jP2DukgoW6Uj6y7WbApbfBzghh0htJQuv1e2?=
+ =?us-ascii?Q?8vk2jppp1Lz1IwsZZ6PTBhmuwaJmq4e6Fh/GJSnjo80hXf7hbso6rJR3Nhuj?=
+ =?us-ascii?Q?shWLVd0DGg2RG/DSXGkzsiGkX2Fzshjq9v7KacUjYaF2rr6e4+ujb+rzEXZU?=
+ =?us-ascii?Q?9rFDGmi6loHtSdZLbNrtmynd9SInyaQjTh0ckMxY4wspmkVKsWMIG++O4fHb?=
+ =?us-ascii?Q?nLpdC6c9WVIfWnIVk3Y8/g2VMmTidSgC2TBjrzOVBsWnY1oERz8CwURbHEkP?=
+ =?us-ascii?Q?MwPabOPjYHcxpup46M0nsFi3aXaJr2bMS5C2V+aMF0JestPvv6SveSAlStJW?=
+ =?us-ascii?Q?SMDPdBIVsriIZkr+ZNBy55/veH8KEuAHdPk5wsu2R88rQ3mKNeEcyxgzJEb8?=
+ =?us-ascii?Q?6MtMj9zM4BxCKzTIh5OfsI5ygeXQMc0OrPyEEn4+TrrA71mWZ7CFkA5YVIM8?=
+ =?us-ascii?Q?I1IZlf6xI0t7TTzYWavUUw6wG+Kv6Oj5hX9iGqgnD3+ciJm/u7SQu4rbNlgx?=
+ =?us-ascii?Q?aKJvhnfevj5qt7P6Xc+LTfokilZM5m8hjGtuOiJ/Ayw6TPhuQ+itK0EV0h1x?=
+ =?us-ascii?Q?nsruw3tYUf7xMYoPdBQkHlZh2KOwtma4E8NsNFwX7OOrTSXboAMzH8lvVhV7?=
+ =?us-ascii?Q?P1b56nwtV+91XLCKoI+L5EdjrxgJquQMp54OnlAF7vqQygXpIo8I5Wc0kUAT?=
+ =?us-ascii?Q?ELodhSp7mpBQPZ7HGmGfKCFAF0PKbkuBEVMCBkMztoIh9Bw7k9zqWsNHP9La?=
+ =?us-ascii?Q?uNrtyLtNgF7Ydw2zabyMIjyxqGhthKKU+85i+Mj6VEIKn6lhTeS41npLkEwf?=
+ =?us-ascii?Q?kwP+M14A8FpiShHvzpsVt2rHfrvgTAc4rigY6wr5XpKkSHAe5rWmyhMI9sYy?=
+ =?us-ascii?Q?05AQL87+sXOZtUQf6XZQ+NaGcbNcqECn+ssXmfK8n1xBC4qnGat4gQwhyINi?=
+ =?us-ascii?Q?nsSranoNneIw1XZPaS+ZKXx6k/chjHTvDXQIzbM8m4uVoBYAVmehVIN2/4DM?=
+ =?us-ascii?Q?gI81qVPOWByPH6QfxZr9jKoEiXONCQDTWAVk9IDBYLViZ7idu0DqXZJ2t4rE?=
+ =?us-ascii?Q?Ga+4i80Y+lujAEyH5oLizaP60cte6rq/EhtM6CjNqDiDDIAo259fLQhTQ6cq?=
+ =?us-ascii?Q?HIEarozT7mxTaGMLHy83jxB9mfBK7vwqWI2iHuHAWdRG/zAsvO+l7QohOaMY?=
+ =?us-ascii?Q?8QqJvMD4unYXRFrWmYgY9koRz1ClX7ycANn866EU76OEreGWytmZy1Nuvsxt?=
+ =?us-ascii?Q?260nkzhHOWHUGZ8HDX54wiRmhGjMjjd1UxdWXnZPSKfr5h2BGwrE/wQrAg03?=
+ =?us-ascii?Q?dFFFSd4kLko2f8LSgVkYxVr7WzCljQaaRIudF+w7P06LoSOnn2H++sfPCLGU?=
+ =?us-ascii?Q?JiTMjRvotgbvh8lEJoS4oVeXe+bZFZC5OozLFPgh?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_64_870503362.1677187434680"
-Message-ID: <0.0.0.7.1D947CD2AA8C932.1B6017@mail.joining-cv.click>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5de090fe-73be-499f-9f81-08db160dd93d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Feb 2023 02:21:33.7668 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: jvpPcZBscfP+yZ0/asDiH0IfrqGvsODNwkgXLgs+gOxT0Q2pVS/fZF9DvFbBAknhNX5N6Y2HyGls2JoR0+26tg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB5212
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,243 +150,88 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "jasowang@redhat.com" <jasowang@redhat.com>,
+ "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "Hao, Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>, "Zhao,
+ Yan Y" <yan.y.zhao@intel.com>, "lulu@redhat.com" <lulu@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_64_870503362.1677187434680
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+> From: Jason Gunthorpe <jgg@nvidia.com>
+> Sent: Thursday, February 23, 2023 9:22 PM
+>=20
+> On Thu, Feb 23, 2023 at 07:55:21AM +0000, Tian, Kevin wrote:
+> > > From: Jason Gunthorpe
+> > > Sent: Thursday, February 23, 2023 1:18 AM
+> > >
+> > > > > static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
+> > > > >                                struct vfio_pci_group_info *groups=
+)
+> > > > > {
+> > > > >  	unsigned int i;
+> > > > >
+> > > > > 	for (i =3D 0; i < groups->count; i++)
+> > > > > 		if (vfio_file_has_dev(groups->files[i], &vdev->vdev))
+> > > > > 			return true;
+> > > > > 	return false;
+> > > > > }
+> > > > >
+> > > > > Presumably when cdev fd is provided above should compare iommu
+> > > > > group of the fd and that of the vdev. Otherwise it expects the us=
+er
+> > > > > to have full access to every device in the set which is impractic=
+al.
+> > >
+> > > No, it should check the dev's directly, userspace has to provide ever=
+y
+> > > dev in the dev set to do a reset. We should not allow userspace to
+> > > take a shortcut based on hidden group stuff.
+> > >
+> > > The dev set is already unrelated to the groups, and userspace cannot
+> > > discover the devset, so nothing has changed.
+> >
+> > Agree. But I envision there might be a user-visible impact.
+> >
+> > Say a scenario where group happens to overlap with devset. Let's say
+> > two devices in the group/devset.
+> >
+> > An existing deployment assigns only dev1 to Qemu. In this case dev1
+> > is resettable via group fd given dev2 cannot be opened by another
+> > user.
+>=20
+> Oh, that is just because we took a shortcut in this logic and assumed
+> that if the group is open then all the devices are opened by the same
+> security domain.
+>=20
+> But we can also more clearly state that any closed device is
+> acceptable for reset and doesn't need to be presented.
+>=20
+> So, like this:
+>=20
+> 		if (cur_vma->vdev.open_count &&
+> 		    !vfio_dev_in_groups(cur_vma, groups) &&
+> 		    !iommufd_ctx_has_device(iommufd_ctx, &cur_vma-
+> >pdev->dev)) {
+> 			ret =3D -EINVAL;
+> 			goto err_undo;
+> 		}
+>=20
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04022323</title> 
- </head> 
- <body style="margin: 0% 0%; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;" width="100%">
-  &nbsp; 
-  <div style="background-color: #F1F1F1; width: 100%; padding: 5% 0%;"> 
-   <div style="max-width: 600px; margin: auto; background-color: #fff; box-shadow: 0 0 8px 2px;"> 
-    <header> 
-     <div id="cvs_prinmors" style="text-align: center; background-color: #c70000;">
-      <span style="font-size: 250%; font-family: Arial, Helvetica, sans-serif; font-weight: 900; color: #fff;">CVS</span>
-     </div> 
-    </header> 
-    <section class="stylo_ccshohhy"> 
-     <div>
-      <a href="http://www.joining-cv.click/bab6q23Hl95V86tZ11v4c61v1203T36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQxdKSe5Bx1u05WUwDL/Hoffman-soldiering" target="_blank"><img alt="" src="http://www.joining-cv.click/e214P2395uu7ha11f4c63I1203P36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQxdKSe6zTF10B5AJwDO/carnivorously-typified" style="display: block;" width="100%" /></a>
-     </div> 
-     <div>
-      <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 135%; padding: 3% 5%; display: block; text-align: center; line-height: 130%;">We hope this email finds you well. At CVS Pharmacy, we value your feedback and are committed to providing you with the best shopping experience possible. That's why we want to offer you a special incentive for taking the time to complete our customer survey.<br /> <br /> <span style="background-color: #DBDBDB; padding: 12px; display: block; font-size: 20px">For completing the survey, you will receive a <strong>$100</strong> Gift!</span><br /> To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. </span>
-     </div> &nbsp; 
-     <h4 class="text-info_114" style="text-align: center;"><a href="http://www.joining-cv.click/bab6q23Hl95V86tZ11v4c61v1203T36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQxdKSe5Bx1u05WUwDL/Hoffman-soldiering" style="text-decoration: none; color: #fff;" target="_blank"><span style=" background-color: #DB2026; padding: 2.5% 4%; font-size: 135%; font-weight: bold; font-family: Arial, Helvetica, sans-serif; border-radius: 8px;">Take the Survey</span></a></h4> 
-     <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 135%; padding: 3% 5%; display: block; text-align: center; line-height: 130%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.<br /> <br /> Best regards,<br /> <br /> The CVS Team</span>
-    </section> 
-   </div> 
-   <div style="padding-top: 130px;"> 
-    <footer style="width: 60%; margin: auto;"> 
-     <address style=" background-color: #971818; padding: 15px 0px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; border-radius: 5px; font-size: 10px; color: #fff;"> <p class="unsubscribe"><span style="text-decoration: none; ">To bring communication to an end,</span><a href="http://www.joining-cv.click/Allentown-recall/Nc65Su2395L8H6S13A4cBK62x1203k36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQxdKSe6VYPF106MNzwJD" style="text-decoration-line: none; color:"> <span>Visit Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style></style><style size="inaugural"><font dir="Mathieu"></style></font><span><font></font><span id="totally"></span></span><style></style><style><small></small></style><span color="repetition"></span></p> </address> 
-    </footer> 
-   </div> 
-   <center style="width: 100%; background-color: #f1f1f1;"> 
-    <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-     &nbsp;
-    </div> 
-    <div class="email-container" style="max-width: 600px; margin: 0 auto;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td class="hero bg_white" valign="middle"> 
-         <div class="overlay">
-          &nbsp;
-         </div> 
-         <table> 
-          <tbody> 
-           <tr> 
-            <td> 
-             <div class="text" style="padding: 0 4em; text-align: center;"> 
-              <h2>&nbsp;</h2> 
-              <p>&nbsp;</p> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
-       </tr> 
-       <tr> 
-        <td class="bg_white email-section"> 
-         <div class="heading-section" style="text-align: center; padding: 0 30px;"> 
-          <h2>&nbsp;</h2> 
-         </div> 
-         <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td style="padding-bottom: 30px;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td valign="middle" width="50%">&nbsp;</td> 
-                <td valign="middle" width="50%"> 
-                 <div class="text-blog" style="text-align: left; padding-left:25px;"> 
-                  <p class="meta">&nbsp;</p> 
-                  <h3>&nbsp;</h3> 
-                  <p>&nbsp;</p> 
-                  <p>&nbsp;</p> 
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-           <tr> 
-            <td style="padding-bottom: 30px;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td valign="middle" width="50%">&nbsp;</td> 
-                <td valign="middle" width="50%"> 
-                 <div class="text-blog" style="text-align: left; padding-left:25px;"> 
-                  <p class="meta">&nbsp;</p> 
-                  <h3>&nbsp;</h3> 
-                  <p>&nbsp;</p> 
-                  <p>&nbsp;</p> 
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-           <tr> 
-            <td style="padding-bottom: 30px;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td valign="middle" width="50%">&nbsp;</td> 
-                <td valign="middle" width="50%"> 
-                 <div class="text-blog" style="text-align: left; padding-left:25px;"> 
-                  <p class="meta">&nbsp;</p> 
-                  <h3>&nbsp;</h3> 
-                  <p>&nbsp;</p> 
-                  <p>&nbsp;</p> 
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-           <tr> 
-            <td style="padding-bottom: 30px;"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td valign="middle" width="50%">&nbsp;</td> 
-                <td valign="middle" width="50%"> 
-                 <div class="text-blog" style="text-align: left; padding-left:25px;"> 
-                  <p class="meta">&nbsp;</p> 
-                  <h3>&nbsp;</h3> 
-                  <p>&nbsp;</p> 
-                  <p>&nbsp;</p> 
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
-       </tr> 
-       <tr> 
-        <td class="bg_light email-section" style="text-align:center;"> 
-         <table> 
-          <tbody> 
-           <tr> 
-            <td class="img"> 
-             <div>
-              &nbsp;
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td style="padding-top: 20px;"> <h2>&nbsp;</h2> <p>&nbsp;</p> </td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td class="bg_black footer email-section" valign="middle"> 
-         <table> 
-          <tbody> 
-           <tr> 
-            <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td style="text-align: left; padding-right: 10px;"> <h3 class="heading">&nbsp;</h3> <p>&nbsp;</p> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-            <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td style="text-align: left; padding-left: 5px; padding-right: 5px;"> <h3 class="heading">&nbsp;</h3> 
-                 <ul style="list-style-type: none;"> 
-                  <li>&nbsp;</li> 
-                  <li>&nbsp;</li> 
-                 </ul> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-            <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td style="text-align: left; padding-left: 10px;"> <h3 class="heading">&nbsp;</h3> 
-                 <ul style="list-style-type: none;"> 
-                  <li>&nbsp;</li> 
-                  <li>&nbsp;</li> 
-                  <li>&nbsp;</li> 
-                  <li>&nbsp;</li> 
-                 </ul> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
-       </tr> 
-       <tr> 
-        <td class="bg_black footer email-section" valign="middle"> 
-         <table> 
-          <tbody> 
-           <tr> 
-            <td valign="top" width="33.333%"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td style="text-align: left; padding-right: 10px;"> <p>&nbsp;</p> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-            <td valign="top" width="33.333%"> 
-             <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td style="text-align: right; padding-left: 5px; padding-right: 5px;"> <p>&nbsp;</p> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-   </center> 
-  </div>   
- <img src="http://www.joining-cv.click/classifiable-revisited/17a5o239i5VF8G513mW4c6s4s1203k36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQxdKSe7Y_n10zp6d@wljD" alt=""/></body>
-</html>
+Yes, this makes sense.
 
-------=_Part_64_870503362.1677187434680--
-
+Yi, while you are incorporating this change please also update the
+uapi header. Rename 'group_fds[]' to 'fds[]' and add comment to
+explain that it could be an array of group fds or a single iommufd.
