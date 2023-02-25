@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C92F36A2A82
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Feb 2023 16:36:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 619956A2AAC
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Feb 2023 17:16:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8FD9510E5E6;
-	Sat, 25 Feb 2023 15:36:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3206210E244;
+	Sat, 25 Feb 2023 16:16:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
- Sat, 25 Feb 2023 15:36:08 UTC
-Received: from mail.obtainmax.top (unknown [45.13.189.82])
- by gabe.freedesktop.org (Postfix) with ESMTP id ADDFD10E273
+X-Greylist: delayed 317 seconds by postgrey-1.36 at gabe;
+ Sat, 25 Feb 2023 16:16:14 UTC
+Received: from mail.apenhome.top (unknown [45.13.189.111])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 86F5010E223
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Feb 2023 15:36:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=obtainmax.top;
+ Sat, 25 Feb 2023 16:16:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=apenhome.top;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=portable_heater_max_heater_pro@obtainmax.top; 
- bh=k9yWR1szFExPRlkufQI7jktbWL8=;
- b=q/CtYTwuNfnz/t2b10noHa15G2DKvA3cGD73IBXSpkPSq3sk9HzL/2oWpwsQbKvhYIymhEwgx2Dl
- Y4QIujdbLUwps6LHzcm1vEbVOPV+U7kuyrFHzOfr2IMOmKAdxhJWghq/Vj916WntqJy0+5TZa7N9
- Ve6/MkpldLaZOgDRn2k=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=obtainmax.top;
- b=bhp3HX360/IzdXDb/surOOvaP8M5yCcQBqhOUS41oR0iSTZeLRCxE7bLEAGqqK6Y0nE7hwOtmnUW
- Lot/w8QXgX+M+L6qx7uYZied8D0YG81/yiw1o7AOa4khofPbIdjFzF4pZgKeBsUDGKxWxYlTJP50
- cDJ14qHRHXNLktEninA=;
-Received: by mail.obtainmax.top id hv8vhm0001gf for
+ i=americanhomewarranty50_off@apenhome.top; 
+ bh=PM95qj9hPVlPRmPeoIZ7FbHA6HQ=;
+ b=XlQzJo2x1PXhKqnsRFSRH8hkFUaUERcP36m+FBSXwV8AoF/oRwo5OHtrqLVrXU8mWrz4VnWm3dla
+ gXt90jqJUAK1vPmE7zwVOlEa0naFdPbf2GeL2n4QD5a5gSf5WjGyyfY1GQ0YDMeaRKsP7Ma56QQi
+ iJlaWdOvrI4nxCrvXu4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=apenhome.top;
+ b=SAj4SUpm/Auy/eQ5HQs+aku5hIuSUJxsAtj1ZpNjM9mBEaHZVbn/kKUGuWBphJTk13jOYTU0Yxrv
+ orNdu5E2tWLIBzgt2uqRs3L5hMNRHmIp0lf1eSH7ObDCJ1e/YEDtm0mPRRF+E+UIr2N06ZDcmjoo
+ O2hyAoTSJrHAyDiy9jw=;
+Received: by mail.apenhome.top id hv94820001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Feb 2023 11:50:46 -0500 (envelope-from
- <portable_heater_max_heater_pro-intel+2Dgvt+2Ddev=lists.freedesktop.org@obtainmax.top>)
-Date: Sat, 25 Feb 2023 11:50:46 -0500
-From: "Portable Heater Max Heater Pro"
- <portable_heater_max_heater_pro@obtainmax.top>
+ Sat, 25 Feb 2023 12:30:43 -0500 (envelope-from
+ <americanhomewarranty50_off-intel+2Dgvt+2Ddev=lists.freedesktop.org@apenhome.top>)
+Date: Sat, 25 Feb 2023 12:30:43 -0500
+From: "AmericanHomeWarranty50 Off" <americanhomewarranty50_off@apenhome.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The Best Holidays Gift Will Keep You Warm & Cozy
+Subject: Welcome to American Home Warranty_Activate coverage today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_475_1673653721.1677338625966"
-Message-ID: <0.0.0.34.1D949394E95933A.FFD89@mail.obtainmax.top>
+ boundary="----=_Part_52_2141677873.1677341046381"
+Message-ID: <0.0.0.5.1D9493EE3190AC8.49E529@mail.apenhome.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_475_1673653721.1677338625966
+------=_Part_52_2141677873.1677341046381
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,99 +63,99 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>02022523</title> 
+  <title>03022523</title> 
  </head> 
- <body style="padding: 7% 0%; background-color: rgb(218, 218, 218);"> 
-  <div style="margin: auto; max-width: 600px; box-shadow: 0 0 8px 2px; background-color: #fff;"> 
-   <section style="background-color: beige; padding: 2.5% 0%;"> 
-    <div class="sub_parra_inicial" style=" text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; max-width: 90%; margin: auto; padding-bottom: 0%; ">
-     <span style="font-size: 180%; line-height: 140%;">How To Heat Any Space In My House In Under 5-Minutes, WITHOUT Using Your Home's Costly Heating System</span>
+ <body style="padding: 7% 0%; background-color: rgb(238, 255, 249);"> 
+  <div id="simple-_georgia" style="max-width: 600px; margin: auto; "> 
+   <section class="selector_img_crooss"> 
+    <div class="subt_power_special" style="text-align: center;">
+     <span id="Link_promo" style="font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 110%;">If you cannot see the images below, <a href="http://www.apenhome.top/5934k2395Yt8S611Y4c9ep1210h36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQFdKKm6I1qy0m6QNUwD3/treacherously-taunting" style="text-decoration: none;" target="_blank">click here.</a></span>
     </div> 
+    <br /> 
+    <a href="http://www.apenhome.top/kilometers-Jimmie/15c4d2395cA8_611H4ca2H1210n36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQFdKKm6QI1JG05IywUD" target="_blank"><img alt="" src="http://www.apenhome.top/peril-parley/f304Q2395G7aQp12C4caA0t1210U36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQFdKKm7F1moR0_5wNlwD" width="100%" /></a>
    </section> 
-   <section class="img_center"> 
-    <div id="conng_2252">
-     <a href="http://www.obtainmax.top/manor-ugliness/8644O2395f86XF13wl4c9n5S120fR36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdKeK6iX1IH05gPwDO" target="_blank"><img alt="" src="http://www.obtainmax.top/d316NG23Q95CB7al13SQ4cH9cI120fK36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQcdKeK7R1rH0oO6wBMwDJ/manor-ugliness" style="display: block;" width="100%" /></a>
-    </div> 
-   </section> 
-   <section class="origamy_sup225"> 
-    <div style="text-align: center; background-color: antiquewhite; padding: 2.5% 3%; outline: solid 2px yellow;">
-     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 140%; line-height: 135%;">The national weather services are reporting that it is going to be a SUPER COLD WINTER, maybe one of the coldest for decades. Are you prepared?.</span>
-    </div> 
-    <div style="text-align: center; ">
-     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 115%; line-height: 135%;padding: 3% 4%; font-weight: normal;">For the past few years, the heating industry had just 3 big companies that could set any prices they wanted and kept ripping off customers. A tech startup is turning this $5 billion industry on its head.<br /> <br /> With <b>almost a million units sold worldwide</b>, this ultra-efficient heater is quickly becoming the <b>most successful device of 2022</b>.<br /> <br /> The <a href="http://www.obtainmax.top/b334z2395cL86x11z4c96K120fy36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQcdKeK5z1_h05zJwBD/epigram-crumples" style="text-decoration: none;" target="_blank">Max Heater Pro</a> is a powerful and efficient convection <b>heater. It?s designed to rapidly heat up any room from top to bottom while saving you up to 30% on electricity</b>. </span>
-    </div> 
-   </section> &nbsp; 
-   <section> 
-    <div style="text-align: center;">
-     <a href="http://www.obtainmax.top/manor-ugliness/8644O2395f86XF13wl4c9n5S120fR36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdKeK6iX1IH05gPwDO" style="text-decoration: none; color: #fff;"><span style="background-color: #E45200; padding: 2.5% 3%; font-size: 135%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold;">LEARN MORE</span></a>
-    </div> 
-   </section> 
-   <br /> 
-   <br /> &nbsp; 
-   <footer> 
-    <address style="background-color: aliceblue; padding: 2.5% 2%; text-align: center; border-top: solid 2px #000;"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 75%; font-weight: bold;">If you do not wish to receive future messages click here to <a href="http://www.obtainmax.top/manor-ugliness/af85F23o95qgX8613F4gcL97w120fx36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQcdKeK6cgy10Z6f1@@wD" style="text-decoration: none;" target="_blank">unsubscribe</a><br /> <br /> <a href="http://www.obtainmax.top/b334z2395cL86x11z4c96K120fy36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQcdKeK5z1_h05zJwBD/epigram-crumples" style="text-decoration: none;" target="_blank">Heatmaxr Pro</a> | 3 Germay Dr, | Unit 4 #1611 | Wilmington DE 19804 </span></address> 
+   <div class="separeitror_as" style="padding-bottom: 100px;">
+    &nbsp;
+   </div> 
+   <footer id="footer"> 
+    <address class="new_footage"> 
+     <div class="new_fromt12" style="text-align: center;font-weight: 500; font-family: Arial, Helvetica, sans-serif; background-color: #0560A9; padding: 2.5% 3%; font-size: 85%; display: block; line-height: 145%; color: #fff;">
+      <span>If you would like to discontinue all future updates from AmericanHomeWarranty.net, please <a href="http://www.apenhome.top/8275z239H5ozv8611t4c9fC1210G36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQFdKKm6QR10pW5ILwD2/peril-parley" target="_blank">Click Here</a> or write us: 96 Craig Street, STE 325, Ellijay, GA 30540.<br /> <br /> This an advertisement for AmericanHomeWarranty.net . </span>
+     </div> </address> 
    </footer> 
   </div> 
-  <header class="header header--hero" role="banner"> 
-   <div class="container"> 
-    <div class="logo">
-     <svg class="logo-svg">
-      <use xlink:href="http://www.obtainmax.top/3ef6Dx23F95M86pR12O4vc98Q120fg36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQcdKeK6vU1yn06qMXw1D/suppresses-preferring"></use>
-     </svg>
-    </div> 
-    <h1 class="h1--banner">&nbsp;</h1> 
-    <div class="btn-group">
-     &nbsp;
-    </div> 
-    <div class="hero-image">
-     &nbsp;
-    </div> 
-   </div> 
-  </header> 
-  <section class="full-section" id="features"> 
-   <div class="container"> 
-    <h2>&nbsp;</h2> 
-    <div class="group"> 
-     <div class="span4">
-      <svg class="why-svg">
-       <use xlink:href="http://www.obtainmax.top/89f5B23T95r8j6g13gU4qc99U120fZ36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQcdKeK5e1yr06STJwXD/pullover-neurologists"></use>
-      </svg> 
-      <h3>&nbsp;</h3> 
-      <p><strong>. </strong></p> 
-      <strong> </strong>
-     </div> 
-     <div class="span4">
-      <strong>
-       <svg class="why-svg">
-        <use xlink:href="http://www.obtainmax.top/manor-ugliness/7ec6a2YU395zZ8q612f4Qc9aX120fz36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQcdKeK7QNlz1n05HLw0D"></use>
-       </svg> </strong> 
-      <h3>&nbsp;</h3> 
-      <strong> </strong> 
-      <p><strong>.</strong></p> 
-      <strong> </strong> 
-      <p>&nbsp;</p> 
-     </div> 
-     <div class="span4">
-      <svg class="why-svg">
-       <use xlink:href="http://www.obtainmax.top/apprentice-dissent/1986L2v3Q95J8PP611U4c9bt120fU36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQcdKeK6G1QY0o5cy@wD"></use>
-      </svg> 
-      <h3>&nbsp;</h3> 
-      <p>&nbsp;</p> 
-      <p>&nbsp;</p> 
-      <strong> </strong>
-     </div> 
-    </div> 
-   </div> 
-  </section> 
-  <section class="full-section full-section-callout"> 
-   <div class="container"> 
-    <blockquote> 
-     <p>&nbsp;</p> 
-    </blockquote> 
-   </div> 
-  </section>   
- <img src="http://www.obtainmax.top/epigram-crumples/f124E2395SFO8513gl4Yc9dL120fr36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQcdKeK5ey1u06jlzwDj" alt=""/></body>
+  <div style="font-family:Arial,Helvetica,sans-serif"> 
+   <table align="left" border="0" cellpadding="0" cellspacing="0" height="100%" style="max-width: 600px" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="left" width="100%"> <h3 style="font-family:HelveticaNeue-Light,arial,sans-serif;font-size:16px;color:#404040;font-weight:normal;margin: 5px 0px;">&nbsp;</h3> </td> 
+     </tr> 
+     <tr> 
+      <td> 
+       <table align="left" border="0" cellpadding="0" cellspacing="0"> 
+        <tbody> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td colspan="4" height="10">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td> 
+           <table align="left"> 
+            <tbody> 
+             <tr> 
+              <td align="left"> 
+               <table align="left"> 
+                <tbody> 
+                 <tr> 
+                  <td style="border-radius: 3px;color: #ffffff">&nbsp;</td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td colspan="4" height="15">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td colspan="4"> 
+           <div style="color:#404040;font-size:16px;line-height:24px;padding:0;margin:0">
+            &nbsp;
+           </div> 
+           <div style="font-family: Bradley Hand ITC,Monotype Corsiva,Tempus Sans ITC,Comic Sans MS,French Script MT">
+            &nbsp;
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td colspan="3" height="2" style="padding:0;margin:0;font-size:0;line-height:0">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="left"> 
+           <table align="left" width="36"> 
+            <tbody> 
+             <tr> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+              <td>&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.apenhome.top/a7f4m2395e8L5H13Lx4kca1Y1210F36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQFdKKm5z1l0Z5kl3wD/come-erratic" alt=""/></body>
 </html>
 
-------=_Part_475_1673653721.1677338625966--
+------=_Part_52_2141677873.1677341046381--
 
