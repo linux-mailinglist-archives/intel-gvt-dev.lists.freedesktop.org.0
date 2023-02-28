@@ -2,105 +2,139 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E69C46A4ABD
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Feb 2023 20:21:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E0846A5137
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Feb 2023 03:32:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B270D10E3BA;
-	Mon, 27 Feb 2023 19:21:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3E65710E471;
+	Tue, 28 Feb 2023 02:32:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2067.outbound.protection.outlook.com [40.107.244.67])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A1BEF10E3BA;
- Mon, 27 Feb 2023 19:21:23 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D81D510E1F3;
+ Tue, 28 Feb 2023 02:32:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1677551532; x=1709087532;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=oE4CFSRvIdPlIMh8QrD1NyBjS3S/JhZrIKAVIu4lrTk=;
+ b=W++bS2NewrJ/lDAJ21LJohlFBDZMAWi64+fsh/7gMHBOZSsMgf7uPPbG
+ 1ZYNCGyF7UJY7Ir5ZGbo0xMQmk8vwTRh43xXmCMErlHRTHbBxJ3Hs6GFy
+ luEXR827wHD2Gqsot03kWgf8LAvIYozStpQYpAmbaSu1p3DHNwqoEZfED
+ 0vAt3xy3CVHRU3ZfRB1AWzh5Z7EWWgRKnkDpIyXh63JTe5fJFAtLzDPUP
+ iLN3HDuP8hd62mVGxRUD6ySqZpazdZpUGvukMbo6Bo240uq2lulhLzkZU
+ l2OiNTbriQpOdLxnWUSWCenm2+0CwBuvlm2qQm7IpYTZ26/oio2UfOOk7 A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="313702843"
+X-IronPort-AV: E=Sophos;i="5.98,220,1673942400"; d="scan'208";a="313702843"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2023 18:32:09 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10634"; a="704246952"
+X-IronPort-AV: E=Sophos;i="5.98,220,1673942400"; d="scan'208";a="704246952"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orsmga008.jf.intel.com with ESMTP; 27 Feb 2023 18:32:08 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16; Mon, 27 Feb 2023 18:32:08 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.16 via Frontend Transport; Mon, 27 Feb 2023 18:32:08 -0800
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.42) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.16; Mon, 27 Feb 2023 18:32:07 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nlEYEqfFYQddMJZ9USIzpyRXTgeJr8N2gImWDhpilu9r+v0yj+7EsQAJnwM9M8UDpu35mXXgO2yLizDqx6rkpl+qWScCzWHR94m+cb9fVaACBy0OhAOxH2VxdpXmuxW4mfc2tzhyKErJYyGXZCrjZ8h00F2hzUjK1FOTOwDMPZ0TdBmbxOY1wYC7iYZrWwKJ6+P5MEwg4/IVhZ/yeuAZnIR11bSOjeTvSMsjsKFR52/zD6g/P4uO72Hl73Aqy+sb3JWlCsXPj5Kevyy1QmeFEYPIaqchzVk4dBFV1xfYezQ8Z9+imHMC9UDVZpUsAr3KNp6GLcmTBRVy6c8QQIE2VQ==
+ b=VczeNPaG4YLKbPQvhiamFNiW7US/YNIwvAroNMWjluBtJlwfAhA8+5KYqU2UBKZY8UpWtT9wXcOTY9kec/y2y9UlxovrLn6apWvOvFIWinnko2HEyYHH/XAA9pkD9zET7LJuPA3H9Bje7hjkezFYWBbzNUEOK2GRNWiVJlw6h7+sJxcL/1PbUKHmiFoJ1Z4vDTypkubTECxeyHQ3tTo5Xgz8pTPqd266tkL/ip/fofBXsM4Ja7ohwybwmE1KTvbjyr6o8DbiquIcUdxp9p2c2lkaAO2G0a1WiZw2UPvQMbAUHfK23DtFbsqTQudlfMY7jXbzhO7HMZGx+MyVcnoVGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kRoGoxi/TVXXxw+vyL/Q5RLxb7OW0LiXr+foWddAtMU=;
- b=S9oKxYlefYdP/8KYCwU6vlFBoEZPQ2hoKC1jfFArrXdvPnvL6IJBUfnASk0o6LjELi9anc2aSY1fu40BcRgRBVn1rn1ZPSx0jhzvnbIUBncvmVeitjzYBP5my8Q7dmx+tDDP3mo8s8EOrmXonhWkU3EtQVSspFJIjc065QfS0xS7tYniiWaquxjdLOmjIOCPf4yyi20lryQiHBxcwU/dZNFZZeKeXE+nA3K/3euHCZxSJZIddNwSQMV8b7IWZVTmqoKQJiWgec58W5d8asxpu3ZMV6HpNoX3sfmlGog0MwYsurduoo/MNNSskf0M9yR6VupsWSmaxXFYKbgMjIEF5A==
+ bh=wOCEzpSVZC8vG44iaiQOFxpo1mUiwJ6KwWT88WTTXy8=;
+ b=oTXGLQGh3TxRxOJ5WQb3OcpOzmH8Aw+WynxrcVpEszxGBU/0rwHKFteejO84c/CelIQVL3M4ZIMJSjp0wAG3Uu6cJSXTz8m2lXHcBUxLJ0pwM3elQ4vM8xPXCF7Lb0fjEiWPxa30w/udUlZRaix0Td0h9YWl8eT14BHyO2K0LRHsJaLRqvsBGBx0NhSk2gj3exoRFir/Gzz+9l4mQTa55SRcR2nf8DhMa1G2YDr2cDM9yjPPpprHZI0Wy+aECFGp/vyReOKiFUAVY8l3/NDek7l3iaJIKM66uIV0u7fADtyzaCl0OICCMxjQKhuq9jG0jRXfRyGKjVCGzNwHoRcrtA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kRoGoxi/TVXXxw+vyL/Q5RLxb7OW0LiXr+foWddAtMU=;
- b=B9sNJ0jvF8nGaf3daRGLXh5xPPIf5FiXM+Fs5xDUI+4nleb+uZpbTm6ubtJpICJgHdkfgdrU4xwp4I7V82Ro83iqsxfskqPTD7cgp6BOd/DJQbEB3yh9zPZAZv7LHL6C7RC7edIqVuCC6Hs5Doq41Ov6eOEdi0RUR7wBUwCglcZJtJxlF5LcplTbeVvaWQVnZoZdR4txO5rZq8HvbWb5+0bGfUeVAL1qeaAz5YixGiMT0X7p1L/ZOpakb6mAyYHvrthzKlGgNd6DjENzbeR4VuZls7rB9VX6Gl89o3ZbEQH5Q7PRyB97vYdiaNkYs9uV9NcjI5YhrAuFpH0L7t7y6Q==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by BN9PR12MB5098.namprd12.prod.outlook.com (2603:10b6:408:137::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6134.29; Mon, 27 Feb
- 2023 19:21:20 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::3cb3:2fce:5c8f:82ee]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::3cb3:2fce:5c8f:82ee%4]) with mapi id 15.20.6134.029; Mon, 27 Feb 2023
- 19:21:20 +0000
-Date: Mon, 27 Feb 2023 15:21:19 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
-Message-ID: <Y/0Cr/tcNCzzIAhi@nvidia.com>
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by DS0PR11MB7579.namprd11.prod.outlook.com (2603:10b6:8:14d::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6134.25; Tue, 28 Feb
+ 2023 02:32:01 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::6f7:944a:aaad:301f]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::6f7:944a:aaad:301f%9]) with mapi id 15.20.6134.029; Tue, 28 Feb 2023
+ 02:32:00 +0000
+From: "Liu, Yi L" <yi.l.liu@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: RE: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array in
+ VFIO_DEVICE_PCI_HOT_RESET
+Thread-Topic: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array in
+ VFIO_DEVICE_PCI_HOT_RESET
+Thread-Index: AQHZSpxNz0d7VXviIEytrFhyB5GUvK7jG8CAgACFuoA=
+Date: Tue, 28 Feb 2023 02:31:59 +0000
+Message-ID: <DS0PR11MB75296E071F459CBBFF9641A2C3AC9@DS0PR11MB7529.namprd11.prod.outlook.com>
 References: <20230227111135.61728-1-yi.l.liu@intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230227111135.61728-1-yi.l.liu@intel.com>
-X-ClientProxiedBy: MN2PR22CA0027.namprd22.prod.outlook.com
- (2603:10b6:208:238::32) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+ <20230227111135.61728-10-yi.l.liu@intel.com> <Y/z09fQAW7Rs0uIc@nvidia.com>
+In-Reply-To: <Y/z09fQAW7Rs0uIc@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|DS0PR11MB7579:EE_
+x-ms-office365-filtering-correlation-id: 28a3c84a-976b-4825-ae9a-08db1933f813
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: X4KBmTZi/dolU4ws84XZKmraNHG4j1ffWg2CAN54I+klx6T3VhIKI4gB89/XJvi8rDhHXHTU28g4hY8jkAKgI+ZR9MFbPerNJQ3YpcwPXUt/ztP4iamOjlZ0KYTPd8EQ4tLKKYqcdKY/MTnoe73+9mpI5PE6gnPhaF69c5t6WxWYbvNCqYgyOLJIqYgstH1uD2mJ9DI8wzcl03sMpU04vrztvcCngff5utmHvGIDkvYweQUcj+aI9rieCYpWZr4TnvUq1G2knSH0u5N7w3BncXmi42aAnph18/NsEgsMaY2DTfmsaDAnpZA9qo4w/SSnz9fEJCU7Go7etd0TQub0jPWFPAfp12Yas57Ojr/52ZrDqw+jGggwQ9vnNPl63/usKgCQHzGwfJnz9yVuGg6vB3yiKUbkm7xB1dz4Bb7XZdgA/ChYqS05VecAR8D9In65dMcNulc5MI7oTX6Nind2IBa5cXPYDsoab7iX5+Hk/hPKbQLaUcbsMR8SbUdNfQHp//AQRxDnmLwQMdWAxel2b+Bq6+Ktpccbp7K+YRzLcbcI4p2i6W9R7l0BaAMIdT9EaQKiHMQ1afX0tdj92are9gM61luKlM6Rqb43UD0yEAw//Wmcr6lXcLB41kFwe8x5jAm000pQGcSJrb9mXzi48Ayc00xdYiYVxtyp0t19aZUBgJz9sJRzqXLYXYiPWnwe3g6ylix3zUhG+kbcGJlTGg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(396003)(39860400002)(366004)(136003)(376002)(346002)(451199018)(9686003)(64756008)(38100700002)(38070700005)(52536014)(82960400001)(122000001)(6916009)(2906002)(66946007)(4326008)(76116006)(7416002)(41300700001)(478600001)(5660300002)(66476007)(8676002)(55016003)(7696005)(186003)(26005)(66556008)(71200400001)(6506007)(66446008)(8936002)(83380400001)(33656002)(54906003)(86362001)(316002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?s5Iwwle88MHOdE5FJYNnZzyF9beUuBZlQlkVBAO4Lj+lx66SmziCgmeTLMMu?=
+ =?us-ascii?Q?G4KayhSwv4qlXlNqVKkFbrKWfK4ZjCj1E64uTMNiLPE9tyJuWKbZnXHT1F93?=
+ =?us-ascii?Q?95d9bfevTMIXDnh4mDej2RcBn4d953YzkEdRqOvxOu9QAiBssCfbUf+ha/fg?=
+ =?us-ascii?Q?chp81J7sf5Kok/D0rZyoEVY/zrEVdm+N1XLNsOedTw0WLqLlmtd5ydIxRjjP?=
+ =?us-ascii?Q?fZo7H6tBV35jMjuTfaOvh76d5/4feSjXtdGeK5PtBLDM1x9QocwKUqANCTtH?=
+ =?us-ascii?Q?Eh4dWYoShYgSgHEho2GU7RULnKe7Z6+GqSbwyMRNy1NdbgidvNPF1afVrAv6?=
+ =?us-ascii?Q?AmgC9pfQWm7hus59Isk9XvJCY/G9zPIePOELWXmSdvfGngTWSW8WDZYqWxzX?=
+ =?us-ascii?Q?PmOSvqq0CF1UcOuPfJ5qb9R6BTDODLrPSlbspuKfUCAvRv9+nzqMjdxG6Iev?=
+ =?us-ascii?Q?mOI1Y/mBfSD32y4wOtDQ/ChQvYK7pV2JWgTxn1NE991EWaLaVsvPinYpysq6?=
+ =?us-ascii?Q?o0rSKizHVQqlEJkykL0bdwPL8hr65KSze6xuFuRWYqwMYonesaJ1KaLaHKQL?=
+ =?us-ascii?Q?DNq3vqMAIjrJL75z3LpBDuOSu0o91rkoopg/oIC4NdiInYNIFl+alMU/76kX?=
+ =?us-ascii?Q?AOtus5gASUTF0Qj5bU08JoBUG73wIyfaubDSk06P3Ztnfs0gVFoA+3fF5j9n?=
+ =?us-ascii?Q?0raKB/j4rbvF1i1FrDPMnMYoWBv2itnGTwdmrGcLyHS5GhHVjE0eTGivlcF0?=
+ =?us-ascii?Q?Tyqq2ftTzrehgkFgCfIRMLPcR7/kRXS78kz3e83WrfPqN9sqkcxFxPJ4/xlE?=
+ =?us-ascii?Q?Jxe9kRY/Xf5ncrpUevncYkknG+dB0w4B7G2hcT1N/hWpxRasLFJAp6IOfaxt?=
+ =?us-ascii?Q?ymJimu0K8pktSZp3qcE8P1v5T99ZFkKesBSxDSymVyDxyUMhqbHaMblYSHQ2?=
+ =?us-ascii?Q?75yt7efUrGonZ/7NxB6vBjZkO+1jWGXr/9dkmA88A+Qf2FmpHh1FXeH1V9f2?=
+ =?us-ascii?Q?MI8vBFSS5q9rkM1+hxJULGfcqWdGbSJWd0DUQroxBX6nSL0WOoXyIlks2jsS?=
+ =?us-ascii?Q?nnp61+JHoTlJRFUCDY42XpBtQOiUDZ0e/hiY4nzyo2QcKOODgMvueiRqNq18?=
+ =?us-ascii?Q?qut6S+cXFWUj4jCayRsFpma9/jminmnc4WWdo2Xss+pAxdWb0NwC5MpukDHR?=
+ =?us-ascii?Q?0YIkMBCP0LlSzkT3y9SGwcX/YxlRLZX1panLfBIDcZykiWrUqR7UlAxsbMEh?=
+ =?us-ascii?Q?RiO0sAWTTdMwEYnV5DZBnfVDCnNxqUEFa/DKO+s+STl3TJVL7sgKS97XkYox?=
+ =?us-ascii?Q?C8D0WE9EyoqiCSKPaQnQzi1eRyFFtP/lBwB4mhwU+ddDeC16Wv4HIsJ/YnMo?=
+ =?us-ascii?Q?YD2vx32MVk02/vAu8PAv2KByhK0ETbQRlaNCGwWBacRUpmGmg7swOAiFr8nh?=
+ =?us-ascii?Q?SK8KsLd1y+efwH7YMRLEGNGcYXRi7S1eDQTav3HvX7Gzfhcm/Yb9sGtOP5B1?=
+ =?us-ascii?Q?XGvkaeZL8XCrZ3pzwookGGVR5DIli4tBZsg2AgIJS4NrPcHUGVWiucg81+Yq?=
+ =?us-ascii?Q?g+mc4feVOaHZI8YCftF91T0MEiA6azQFy2UbXMhk?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|BN9PR12MB5098:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0a3adbef-13ab-4661-ed99-08db18f7ce84
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 8PQ2txzYGZcLLiGf2PKSYU9Hrr/ncOXiNCd5mI4tNq4quypfNVtN8WuQArR6JB2cW++dyWn2n4wdnX0ie9mGOKCYFUyYE6mLYw7XsSA5MadPGDTlXEYhHWN7eSeeCOZK2YWnkuUTXZKTqCLe/YVTAmQ4GfEPX7VxyvjJelT73kfwRE7yy07TaEomeapzVhbQno6PplY+yqhyR0wak4FilSk+h2uHdwkugv8D+m8vdSH/AZRnbLNMcdtoBmfQY+Z47ieM8/3kU0REmi7VJtpgZ0vty06xdFnIjJKLgXT4lYxbxtBeGzB5MeSDFHljxbqkBctxBIl0TxORz+riQlOS/6xmCirAB29EyiWYBYQCTPTXsp0B5zUvcJXJJ2IeNNYHv1m5NwQORxMF5/78g584a4H6zgMMB4wdBSms0mteHoC8/Q0X0epiASvZWGNqQYgWdtZ6HGU28m5DiB9sG0qQHj8FEa7WoJ8FQ8Mu+B3rvfxhTMYF6A6RjpeTAWqdpYceBqDwMdXv2iG6GwK9nANNQJ2u0vwUkGzHc6n5fDilR1yHCNXmcF9VsekbHnsSAxepNdtM/LQbgc8oXnWzcosm5LEpokKNQTd6FKhzlm+Kwd5msm8LlQRUNfg1CPnkMBFqSvfk66aobhZYorSt7eqaK2f8d/LAV6gxTQINW7zoNjy5XFAoey7VAK3JvwQyL9IB
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(366004)(136003)(396003)(39860400002)(376002)(346002)(451199018)(186003)(38100700002)(83380400001)(41300700001)(66476007)(66556008)(8676002)(8936002)(2906002)(66946007)(7416002)(5660300002)(4326008)(6506007)(6512007)(478600001)(26005)(6916009)(966005)(2616005)(6486002)(316002)(36756003)(86362001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?WvRCLbi8J4xQuZFVn/ans84c9uL7H3AaO1I7TzIEPo0mneW1vb8Y4ivq+44O?=
- =?us-ascii?Q?vKLvVFzm4UWMeNKFRMgbmDmaI2Re29QQlUH7iYo+ciYSriwZeq/IH6YWmen3?=
- =?us-ascii?Q?s+D0pmggPo9Hlrd+qQI0Tt8jJKMclWWG6HF6iDktcyYgrjfemu2So+lZkPhB?=
- =?us-ascii?Q?DnIE/GMcAhmtctxgUIEPw4WIxVvhkb5QnDKqsSl6EqJCBNKHvz5rRzSPXLPD?=
- =?us-ascii?Q?lcc7TrhzZkMJ9y9pW1BMRV2iZoD5uwZiouevMwa3+/1lXAYuqNnNRzrBIXjI?=
- =?us-ascii?Q?JRlUSWfnX08I1g1CpUDC4EuCTnheCj+R+5hmO7zJcAL9NbAVS7dKEa0AzeUL?=
- =?us-ascii?Q?nPpkw06lZIoPmyPfvQcvt6/HEE6gh5X1Yo6EoLRXnU+rOUrPZexNvQe35EFF?=
- =?us-ascii?Q?QV9AtkpCYzUWvmLHuPPHtZ8yRht8waMSBlKsdlrqqhFclhXsbqcv+XRLOsbg?=
- =?us-ascii?Q?wfSKhad8LiEcrYGLZGscGxVBd57svxLGt+B3nZSZYoZPfdLsJSdBUXi3fLku?=
- =?us-ascii?Q?hsYZWjBn1Lkly7oAcXHDMPSsMka1/M6ceb/XKdy9qkEWGNZN/Bz7Ce2/2/Sn?=
- =?us-ascii?Q?i7UuRBiPvEJ4J387qbCkQRPA+Yo2dHeyOJ140EVtkLnNy+u+hsIpaT6sZHjp?=
- =?us-ascii?Q?psYPHGrAFy/2uj3XMiKkkbTzpLHev0mZEMbWpLmUNii4J1fSa0HPMUghKW09?=
- =?us-ascii?Q?LKtAt2QQdM9eX9zqqpc8wBeLfPRnFld702xR+3zqmRvIN1dZ2Hn145QLjZcI?=
- =?us-ascii?Q?NfuSoKQDhDCLRJ7WRC5TTDoZPgEXwDI8Nn119KV/ZlzmF+atktCTmjN6+73i?=
- =?us-ascii?Q?3mSLEA1JhlUcfpo6Fb3z95s2ZcDkG3dkaTHRWKIwD3eHb0GVraGDblgxEdak?=
- =?us-ascii?Q?PgtdcYYSW07pu5J1/V7s6cDmbyPTuA/7OpsKtmUga5hFS7OqtX1q3JESSzsd?=
- =?us-ascii?Q?vrfcjuJrXMIu5PZs3GzOaHs9J2udsdgXemLSz//OwDuuQzXF9zP1fQV+TgVp?=
- =?us-ascii?Q?6L+U7sTBIBra4VB2PWSSL1nlJohAirNWfzPuYQeNX1kHeV5utTZQpQfev63b?=
- =?us-ascii?Q?rVaBLXOzcxKVbH/tHrMSo/EWVZccSeKlafxcgLE3mDe9Cg4Ijte59LAAW8JU?=
- =?us-ascii?Q?E0bafZ983lpm718C6wqwwOERH5BOqJJ+jc+hiqTM3sE0aPKSv+6+j0u4IXHI?=
- =?us-ascii?Q?0GI6z3tLLFShpOlDSq3x5jYcPhWyeaSGY2mbyvRBV4ph/DYr0GJVYyfwEjxI?=
- =?us-ascii?Q?Mx2mFjL0m5GpEkMvDj4FBXWcdrjjOjU/IpgoCN4mDaaTfndExwN8dnwqFNoG?=
- =?us-ascii?Q?9pQW8qzpzRNJuKuXnkNv1ANtmdpl/Fdk86DQA83SgftnNm7BGxzE+S9DBeoD?=
- =?us-ascii?Q?FUSsIW3PoYPK6P8zSsB/WAXT+jNeXAjkELYMZFtwt9tL8XF9007kHRaH9Ur3?=
- =?us-ascii?Q?Ihl9rybYscUiZT6zhS+dda0aiwiM+LOYYeyK1IKjg6QIErQrvImvcYTtmuOi?=
- =?us-ascii?Q?NNKUl/+fmRPcIcI7VdetoyFGf9YmIvt1l8rb66WeshGLNdQviTBVwpWyZQhB?=
- =?us-ascii?Q?+/jWvmDRf2IzsvFCf54Xk6Y9tTGbsqObX6doSU5o?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0a3adbef-13ab-4661-ed99-08db18f7ce84
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Feb 2023 19:21:20.5595 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /b3BYs3Ou8Z/C4uewXhiC70EW0advlh1FbTClTaXSh6B4Fw6AmqPqgp+f3GoXOlu
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR12MB5098
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 28a3c84a-976b-4825-ae9a-08db1933f813
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Feb 2023 02:31:59.8966 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 916ygKFWx0ym8AV92K6wPi8LP5KnGE8/5mOJnxb/lzfs2AG2RzNuDy324WLq1kS5lhTsv2c5OsPpFy5GouB4Eg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7579
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,46 +147,108 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
- linux-s390@vger.kernel.org, kvm@vger.kernel.org, lulu@redhat.com,
- joro@8bytes.org, nicolinc@nvidia.com, kevin.tian@intel.com,
- yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
- alex.williamson@redhat.com, intel-gvt-dev@lists.freedesktop.org,
- yi.y.sun@linux.intel.com, cohuck@redhat.com,
- shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- robin.murphy@arm.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Feb 27, 2023 at 03:11:16AM -0800, Yi Liu wrote:
-> Existing VFIO provides group-centric user APIs for userspace. Userspace
-> opens the /dev/vfio/$group_id first before getting device fd and hence
-> getting access to device. This is not the desired model for iommufd. Per
-> the conclusion of community discussion[1], iommufd provides device-centric
-> kAPIs and requires its consumer (like VFIO) to be device-centric user
-> APIs. Such user APIs are used to associate device with iommufd and also
-> the I/O address spaces managed by the iommufd.
-> 
-> This series first introduces a per device file structure to be prepared
-> for further enhancement and refactors the kvm-vfio code to be prepared
-> for accepting device file from userspace. Then refactors the vfio to be
-> able to handle iommufd binding. This refactor includes the mechanism of
-> blocking device access before iommufd bind, making the device_open exclusive.
-> between the group path and the cdev path. Eventually, adds the cdev support
-> for vfio device, and makes group infrastructure optional as it is not needed
-> when vfio device cdev is compiled.
-> 
-> This is also a prerequisite for iommu nesting for vfio device[2].
-> 
-> The complete code can be found in below branch, simple test done with the
-> legacy group path and the cdev path. Draft QEMU branch can be found at[3]
-> 
-> https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v5
-> (config CONFIG_IOMMUFD=y CONFIG_VFIO_DEVICE_CDEV=y)
-> 
-> base-commit: 63777bd2daa3625da6eada88bd9081f047664dad
+> From: Jason Gunthorpe <jgg@nvidia.com>
+> Sent: Tuesday, February 28, 2023 2:23 AM
+>=20
+> On Mon, Feb 27, 2023 at 03:11:25AM -0800, Yi Liu wrote:
+> > to indicate kernel to use the device's bound iommufd_ctx for the device
+> > ownership check. Kernel should loop all the opened devices in the
+> dev_set,
+> > and check if they are bound to the same iommufd_ctx. For the devices
+> that
+> > has not been opened yet but affected, they can be reset by the current
+> > users as they cannot be opened by any other user. This applies to the
+> > existing group/container path as well.
+> >
+> > Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+> > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> > ---
+> >  drivers/vfio/pci/vfio_pci_core.c | 111 +++++++++++++++++++++++-------
+> -
+> >  drivers/vfio/vfio.h              |  11 +++
+> >  include/uapi/linux/vfio.h        |  16 +++++
+> >  3 files changed, 109 insertions(+), 29 deletions(-)
+> >
+> > diff --git a/drivers/vfio/pci/vfio_pci_core.c
+> b/drivers/vfio/pci/vfio_pci_core.c
+> > index 1bf54beeaef2..e0ebe55b4df0 100644
+> > --- a/drivers/vfio/pci/vfio_pci_core.c
+> > +++ b/drivers/vfio/pci/vfio_pci_core.c
+> > @@ -27,11 +27,13 @@
+> >  #include <linux/vgaarb.h>
+> >  #include <linux/nospec.h>
+> >  #include <linux/sched/mm.h>
+> > +#include <linux/iommufd.h>
+>=20
+> Is this needed anymore?
 
-This needs to be rebased onto a clean v6.3-rc1 when it comes out
+No more. Will remove it.
 
-Jason
+> >  #if IS_ENABLED(CONFIG_EEH)
+> >  #include <asm/eeh.h>
+> >  #endif
+> >
+> >  #include "vfio_pci_priv.h"
+> > +#include "../vfio.h"
+>=20
+> Don't do this, put vfio_device_iommufd() in the normal public header
+
+Ok. will put it in include/linux/vfio.h
+
+> > diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
+> > index 0552e8dcf0cb..4bf11ee8de53 100644
+> > --- a/include/uapi/linux/vfio.h
+> > +++ b/include/uapi/linux/vfio.h
+> > @@ -673,6 +673,22 @@ struct vfio_pci_hot_reset_info {
+> >   * VFIO_DEVICE_PCI_HOT_RESET - _IOW(VFIO_TYPE, VFIO_BASE + 13,
+> >   *				    struct vfio_pci_hot_reset)
+> >   *
+> > + * Userspace requests hot reset for the devices it uses.  Due to the
+> > + * underlying topology, multiple devices may be affected in the reset.
+> > + * The affected devices may have been opened by the user or by other
+> > + * users or not opened yet.  Only when all the affected devices are
+> > + * either opened by the current user or not opened by any user, should
+> > + * the reset request be allowed.  Otherwise, this request is expected
+> > + * to return error.
+> > + *
+> > + * If the user uses group and container interface, it should pass down
+> > + * a set of group fds for ownership check.  If the user uses iommufd, =
+it
+> > + * should pass down a zero-length group_fds array to indicate the kern=
+el
+> > + * to use the bound iommufd for the ownership check.  User that uses
+> the
+> > + * vfio iommufd compatible mode can also pass down a zero-length
+> group_fds
+> > + * array as this mode uses iommufd in kernel, and there is no reason t=
+o
+> > + * forbide it.
+>=20
+> 'forbid'
+
+Oh, yes. will correct it.
+
+Regards,
+Yi Liu
