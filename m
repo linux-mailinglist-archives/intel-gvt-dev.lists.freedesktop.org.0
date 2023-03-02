@@ -2,42 +2,104 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 745246A8CB2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 00:06:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB8C06A8D55
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 00:51:17 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8F0F710E5A0;
-	Thu,  2 Mar 2023 23:06:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6E10710E5A8;
+	Thu,  2 Mar 2023 23:51:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Thu, 02 Mar 2023 23:06:19 UTC
-Received: from mail.gokable.top (unknown [45.13.189.249])
- by gabe.freedesktop.org (Postfix) with ESMTP id C540510E599
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Mar 2023 23:06:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gokable.top;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=unbreakable.brain@gokable.top; 
- bh=T/ogwbmvUpNIRYLS6gyFcrfF+14=;
- b=iGmw8RaSDCN8QDa3pbny7t0oF9gMmWtlw3DAuKbe8sMU4mz/gEneIW6DEmXPxVc8/Q6u9ytk0fXv
- c0T4vZxvMAXgd/Ir0o05emAhlP5ycIl0mZPf1EsWGepZ0ct2tlrLwmNFh2PGAA2QRljA0wSEogpU
- 0/OtsZ0EzeTOzGUgbKc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gokable.top;
- b=PRY+dlgY+qUncB1/fa2F0ZuDRgVEvX4DMj4ED1jNzO2YOlPwUSbcqrSTq1gojt1w/WDG4TwVY5Ci
- sBDvJAbuuFngi4M7eI+hX5CLPuQZmW5CVLnxngCZ+wWIHRRMmSrBGdo2JVGnDYLsUQSJfnEhna2d
- tA0QlhDn43RXBI8+Nm4=;
-Received: by mail.gokable.top id h04luo0001gn for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Mar 2023 17:54:50 -0500 (envelope-from
- <unbreakable.brain-intel+2Dgvt+2Ddev=lists.freedesktop.org@gokable.top>)
-Date: Thu, 2 Mar 2023 17:54:50 -0500
-From: "Unbreakable Brain" <unbreakable.brain@gokable.top>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Try This 1 food and kill dementia
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam04on20609.outbound.protection.outlook.com
+ [IPv6:2a01:111:f400:7e8c::609])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2FA7210E14C;
+ Thu,  2 Mar 2023 23:51:14 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Dy4Mv9mYOu0CZeNqSBXnwqpNAEA4qPGD8Y8ryERgOFBJzSHs0x9pfK83vInKqEAjEz7UVa4/7jMInVeLtUpvU1pCry7tc71kRZhdjsUkz9lxUNchfBACj8F73OY+M4tvo+OUeDKYgy9OjobJtvYL0aFW9DnRYSHdmQsjpDEq/RxqXaZjB50ep9+UHCAllI3o+Qjk2MpfSzbhLfm4fXxAM0h0uUuz5RYByJGIQLHE5jBFWCUe3wanX37Q2TMx5S7WLPoLAXG6TyLOZMUusgAHiRdMFpIYtd7nWFZqIfLkFmR0bexHhZ5N2Wb4V3wugLnVD7NrlbMgQGNzrkh+BhgMEw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=a7Bj7avGcjL9j8XTnhE5AE6PSjl/ZjWPj3qg8707/6o=;
+ b=Bxaa6LWtjyxeo1AMvSYwAASTQyBV48up/4ImKXEZUk3GTvuifO5+NY9T9iC9YmDZDq+wpPSQpdh6F+JHNlfnDgdwFDkIy9Nx33UmjfjmLcdPObpFnb6R4M+hLksY7y8La4LVHAZ8+yYVjT35cI5Ttl+e0OT2p/6siO0eRR+sPRP2TW4ib0eECJso4fRMuWxMqkHj9EKbDTPiVWh2su9fGEBcdHxw7XSKWc5Cy+fYONXh6220mttnuW3I39P9vYn0iPpEpes2dh2rhQ0yBLVNU4mzccutqawnyhpqMYHQnWDERwP+FcrBiKCV6ny8EP6+aMIQW2NQXtT6405FluI43g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.233) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=a7Bj7avGcjL9j8XTnhE5AE6PSjl/ZjWPj3qg8707/6o=;
+ b=Nl0f3vHIkb+Pd964Xfnyl/+TVdYIIRRk388Jn8CNlYTNGSVjknzqYKD9jXTFkx7mkxJRzrkQuzaOiTpgDCcnzs5hFZkYO6R9WPnLtbsfYy//JZs/wgdHsV81r1lHyZLgzAtItamg2TQGpGu2HPRgB7WHfWIJv24dOquKCof1anrxepaifUn7LuGBm7yLfUBvP3ovUILf8vJ64UHuCwgQo8/aDsRDjI2lnUMUzf7L7Y1VP3g334PZE+en+nH2rAX82R8V1X8F8ljsYBo5ZUzwZpVK+ZApBOS5CHHVb6RkAIxZJ5OLkictFNc2DpPB5zays0DoY9C9dDuKHF0Yc6rjAg==
+Received: from BN0PR04CA0120.namprd04.prod.outlook.com (2603:10b6:408:ec::35)
+ by BY5PR12MB4034.namprd12.prod.outlook.com (2603:10b6:a03:205::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.19; Thu, 2 Mar
+ 2023 23:51:11 +0000
+Received: from BN8NAM11FT018.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:ec:cafe::73) by BN0PR04CA0120.outlook.office365.com
+ (2603:10b6:408:ec::35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.19 via Frontend
+ Transport; Thu, 2 Mar 2023 23:51:11 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.233) by
+ BN8NAM11FT018.mail.protection.outlook.com (10.13.176.89) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6156.19 via Frontend Transport; Thu, 2 Mar 2023 23:51:11 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
+ (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Thu, 2 Mar 2023
+ 15:51:09 -0800
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.37; Thu, 2 Mar 2023 15:51:09 -0800
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
+ (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5 via Frontend
+ Transport; Thu, 2 Mar 2023 15:51:08 -0800
+Date: Thu, 2 Mar 2023 15:51:06 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
+Message-ID: <ZAE2J0I1LiBjWUnm@Asurada-Nvidia>
+References: <20230227111135.61728-1-yi.l.liu@intel.com>
+ <Y/0Cr/tcNCzzIAhi@nvidia.com>
+ <DS0PR11MB7529A422D4361B39CCA3D248C3AC9@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <SA1PR11MB5873479F73CFBAA170717624F0AC9@SA1PR11MB5873.namprd11.prod.outlook.com>
+ <Y/64ejbhMiV77uUA@Asurada-Nvidia>
+ <b7c1f9d5b4b647f0b0686c3b99f3d006@huawei.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_580_1351494945.1677797617259"
-Message-ID: <0.0.0.40.1D94D59FECD90BC.189504@mail.gokable.top>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <b7c1f9d5b4b647f0b0686c3b99f3d006@huawei.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT018:EE_|BY5PR12MB4034:EE_
+X-MS-Office365-Filtering-Correlation-Id: db36bbe9-afad-478c-88eb-08db1b79003e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 6RP6V7Vttuqx+W4qm/3kkA3aIuGFUaPn/crIIV2lu8RKEmg/7hs0C8krSfVFnNRUaJkbN+gVsNJqzK7rjy3h2zAvn99ukJI73JK95aedHJEKTrHuYQJajMqBW9FLCUIySBs9rsRvClUOTW5pPPDqDfO//LpTbbkcD1W+UePCsyqAlHvILVztrfoKvFa2yoCx8Yto1pQ/SeSOQIZ0Gjg/KcEE3qhFf7/tyBGLRwN+kEyvIunBiyJrpgo8N1ciYnFe9Ft9GKUHluVDNM4KRMbShcihJO2/okUBAq+ZhD2cQjWo6KFqnURzYDgqd1lbePwMrBDabYbBKeJyK0ZfwdqJU3JefmfpSqg2nGpUb6WruFuqrGLlQmIx5Jxh121YCGVyLQAZV0pYDv2Ck3HdCaEH4T/lzJKvx2Fq1TrCE2xtgLFzz4Dxkw0i1hyoxPDUUR5QMOq0UsZA8xI82hAPSqlNzm3i0vJR8xno/m8u5TMWQ0xpsGAQ4VfVki9smVjD14uJ8Ywk8H69oevwVq36GsTt88/y5Bn5a0VoibMh1Yg3SkEYBc1/ZMXxjkGXNsVuBZzfeMd70U5KPWGD/m4kEkg1oz0Sx1JEOdt3YeC0/o+DsnsEuK3a42pkgu17M53oy8too7lw2MBamU67xieZRRCoQMcamJ6AT6QY32I0ey6+/gVpU/os1D+f4o75O2yt10EyAUNBtSwbB8mThiKcp7Z3bGTXi7k1YvFLMgD6Ia26lRQNQGuoAhD7XJMX8oNtl5z1
+X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
+ SFS:(13230025)(4636009)(396003)(39860400002)(136003)(346002)(376002)(451199018)(36840700001)(46966006)(186003)(966005)(336012)(9686003)(26005)(316002)(54906003)(41300700001)(6916009)(4326008)(2906002)(8676002)(4744005)(70586007)(478600001)(8936002)(7416002)(5660300002)(7636003)(82740400003)(33716001)(86362001)(40480700001)(55016003)(82310400005)(356005)(36860700001)(34020700004)(83380400001)(70206006)(426003)(47076005);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Mar 2023 23:51:11.0116 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: db36bbe9-afad-478c-88eb-08db1b79003e
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT018.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR12MB4034
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,158 +112,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>, "Zhao,
+ Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_580_1351494945.1677797617259
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Thu, Mar 02, 2023 at 09:43:00AM +0000, Shameerali Kolothum Thodi wrote:
+ 
+> Hi Nicolin,
+> 
+> Thanks for the latest ARM64 branch. Do you have a working Qemu branch corresponding to the
+> above one?
+> 
+> I tried the https://github.com/nicolinc/qemu/tree/wip/iommufd_rfcv3%2Bnesting%2Bsmmuv3
+> but for some reason not able to launch the Guest.
+> 
+> Please let me know.
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>10030223</title> 
- </head> 
- <body style="padding: 7% 0%;"> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <header>
-    <span style="display: block; text-align: center; font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 120%;"><u>New Brain Blueprint</u> </span>
-   </header> 
-   <h3><a href="http://www.gokable.top/Saturdays-dispels/26a4c2395t8G6t11Y4d9fj1244Z36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQXQmdo5Ii1O06WNl1wD" target="_blank"><img alt="" src="http://www.gokable.top/combings-remission/51c6f239RM5k7Zia12X4da2Os1244B36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQXQmdo5z1Mn06Sywk3D" /></a></h3> 
-   <footer style="max-width: 600px; margin: auto;"> 
-    <address style="background-color: #6e0101; color: #fff; padding: 2.5% 0%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 65%; text-align: center; outline: solid 2px; font-weight: bold;"> <p>If you do not wish to receive future messages click here to <a href="http://www.gokable.top/a9d6S239yk5bn86B11O4da0h1244Z36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQXQmdo7y1wiU0j5PMwDW/Copernican-observance" style="text-decoration: none; color: #ffc31f;;" target="_blank">unsubscribe</a><br /> <br /> <a href="http://www.gokable.top/relax-discover/e7c5J239S5SA8r612Q4da1SP1244H36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQXQmdo5S1DT06R3wkWD" style="text-decoration: none; color: #ffc31f;" target="_blank">New Brain Blueprint</a> | 321 N Central Expressway Suite 351 - McKinney, TX 75070</p> </address> 
-   </footer> 
-  </div> 
-  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td class="bg_dark email-section" style="text-align:center;"> 
-      <div class="heading-section heading-section-white"> 
-       <h2>&nbsp;</h2> 
-       <p>&nbsp;</p> 
-      </div> </td> 
-    </tr> 
-    <tr> 
-     <td class="bg_white email-section"> 
-      <div class="heading-section" style="text-align: center; padding: 0 30px;"> 
-       <h2>&nbsp;</h2> 
-       <p>&nbsp;</p> 
-      </div> </td> 
-    </tr> 
-    <tr> 
-     <td class="bg_light email-section" style="text-align:center;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td class="bg_white email-section"> 
-      <div class="heading-section" style="text-align: center; padding: 0 30px;"> 
-       <h2>&nbsp;</h2> 
-       <p>&nbsp;</p> 
-      </div> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="padding-top: 20px;" valign="top" width="50%">&nbsp;</td> 
-         <td style="padding-top: 20px;" valign="top" width="50%">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td class="bg_light email-section" style="padding: 0; width: 100%;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td class="bg_light email-section" style="padding: 0; width: 100%;"> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td valign="middle" width="50%"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-         <td valign="middle" width="50%">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td class="bg_light email-section" style="padding: 0; width: 100%;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td class="bg_light email-section" style="padding: 0; width: 100%;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td class="counter" valign="middle"> 
-      <table> 
-       <tbody> 
-        <tr> 
-         <td valign="middle" width="25%">&nbsp;</td> 
-         <td valign="middle" width="25%">&nbsp;</td> 
-         <td valign="middle" width="25%">&nbsp;</td> 
-         <td valign="middle" width="25%"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td class="counter-text">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td class="bg_white email-section"> 
-      <div class="heading-section" style="text-align: center; padding: 0 30px;"> 
-       <h2>&nbsp;</h2> 
-       <p>&nbsp;</p> 
-      </div> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="padding-top: 20px;" valign="top" width="50%"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td style="padding-right: 10px;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="text-services" style="text-align: left;"> <p class="meta">&nbsp;</p> <h3>&nbsp;</h3> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-         <td style="padding-top: 20px;" valign="top" width="50%"> 
-          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td style="padding-left: 10px;">&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td class="text-services" style="text-align: left;"> <p class="meta">&nbsp;</p> <h3>&nbsp;</h3> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td class="bg_light email-section"> 
-      <div class="heading-section" style="text-align: center; padding: 0 30px;"> 
-       <h2>&nbsp;</h2> 
-       <p>&nbsp;</p> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.gokable.top/Copernican-observance/31e5Qw2395Xt8R511J4da3M1244S36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQXQmdo7N1FODT06nj2BwD" alt=""/></body>
-</html>
+I do use that branch. It might not be that robust though as it
+went through a big rebase. Can you try with the followings?
 
-------=_Part_580_1351494945.1677797617259--
+--trace "iommufd*" --trace "smmu*" --trace "vfio_*" --trace "pci_*" --trace "msi_*" --trace "nvme_*"
 
+Thanks
+Nicolin
