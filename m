@@ -1,43 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECAE56A878B
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Mar 2023 18:09:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3625A6A8818
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Mar 2023 18:49:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4544D10E524;
-	Thu,  2 Mar 2023 17:09:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 009E510E52C;
+	Thu,  2 Mar 2023 17:49:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Thu, 02 Mar 2023 17:09:26 UTC
-Received: from mail.actwal.top (unknown [45.13.189.71])
- by gabe.freedesktop.org (Postfix) with ESMTP id 10CCA10E520
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Thu, 02 Mar 2023 17:49:33 UTC
+Received: from mail.ariseup.top (unknown [45.13.189.103])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C7D1D10E52C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Mar 2023 17:09:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=actwal.top;
+ Thu,  2 Mar 2023 17:49:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ariseup.top;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=walmart-gift-card-chance@actwal.top; 
- bh=0dtbZuA3UznLthybvEHv6yFk5X8=;
- b=L8jEDcsX0NyOtJlX0SHA1efBtYBp4syo+qkC8Y/HTcSvFoGOFJ6FD2EFfSeEB7PdxliLwiLY9Ma5
- e0RpZ5WPixnXwc1bORRgXnCvhsIbeTTSvxg/zBTFrv9vK6Be+9HOiHbsZFFkCIeMofPV2syCMMy/
- E9Z1efw7NIhejfRXy+M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=actwal.top;
- b=jOOkTufSTZYONkXNm0o1MM0rUM8rTSMUgGdpWj8YafqGoLZiRutADLrcq8VLgw208S7HfY68ovS4
- R64tXQ+0nL5dabwuIPLmmVZOv6LS/JRxEeEJGUsiCizbcQkypFRrFooBRBNvdJ90o2nERQwr01y7
- CD9QKz/Y/E2d2RjVJr0=;
-Received: by mail.actwal.top id h03c4c0001g7 for
+ i=ups.packaging@ariseup.top; bh=h1OrwxXM2o/ZKQBLEt5FrKQc3r8=;
+ b=BpU5DpLk0HvKDCQG3rgmx4u3k78+ATgIM0bGor3UxeEdItKIShT9sowtZSQv+OWOuTVJJOrlYiCx
+ qGWCxu+ntVdAq6injQaOZF9mGv87oAyQ7QS7uGPMyRR8aSCyDrvSlXQonZeZCV22UYKgxGFuRcnx
+ Xz5wUa7o37XYU+YDqHM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ariseup.top;
+ b=GB5kWEY6ywdQ28t9KgBVQCrVDlyTVMXHguPQMHlQ1SFbk01FLUE9flBUGbgz30MS8foZEv1Vo6+m
+ xC6sN0IJBz3QaWJNNFDDKz0oOJAkldSC+cQeVd3OdUD1M2y7UNLm5vmaiw0tiIMrNnJvui/OiDUX
+ CFJiHrqoqDhKKLT3/dA=;
+Received: by mail.ariseup.top id h03gqs0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Mar 2023 11:55:45 -0500 (envelope-from
- <walmart-gift-card-chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@actwal.top>)
-Date: Thu, 2 Mar 2023 11:55:45 -0500
-From: "Walmart Gift Card Chance" <walmart-gift-card-chance@actwal.top>
+ Thu, 2 Mar 2023 12:34:47 -0500 (envelope-from
+ <ups.packaging-intel+2Dgvt+2Ddev=lists.freedesktop.org@ariseup.top>)
+Date: Thu, 2 Mar 2023 12:34:47 -0500
+From: "UPS Packaging" <ups.packaging@ariseup.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Free Irobot vacuum cleaner from Walmart, limited availability
+Subject: ups Gift Card Chance
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_409_846907815.1677776137621"
-Message-ID: <0.0.0.2D.1D94D27D4E493E0.1CAEA6@mail.actwal.top>
+ boundary="----=_Part_181_1181681904.1677778469423"
+Message-ID: <0.0.0.14.1D94D2D489E599C.425073@mail.ariseup.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_409_846907815.1677776137621
+------=_Part_181_1181681904.1677778469423
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,80 +62,84 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>01030223</title> 
+  <title>02030223</title> 
  </head> 
- <body style="padding:  7% 0%;"> 
-  <div class="finto_press" style="max-width: 600px; margin: auto;"> 
-   <div id="div_glorios"> 
-    <header class="aok_iooje"> 
-     <div>
-      <span style="font-family: Arial, Helvetica, sans-serif; font-size: 200%; display: block; text-align: center; font-weight: bold; color: #1e42b8;">WALMART</span>
+ <body id="body_cross21201" style="padding: 7% 0%;"> 
+  <div class="grove" style="max-width: 600px; margin: auto;"> 
+   <header class="Extendida_pro"> 
+    <div id="giovani_imporrt_221">
+     <span style="display: block; font-size: 145%; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold;">A Special Offer for Valued Customers</span>
+     <br /> 
+     <span class="ups_criteirors-" style="display: block; font-size: 250%; font-family: Arial, Helvetica, sans-serif; font-weight: 900; text-align: center;">UPS</span>
+    </div> 
+   </header> &nbsp; 
+   <section id="impirica_loosse"> 
+    <div id="contans-froppy"> 
+     <div class="img_close" style="max-width: 20%; margin: auto;">
+      <a href="http://www.ariseup.top/20f4f2395n86YT11S4d80W123cC36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQkQm9d6Lii1i05NWwDL/darkest-blanketing" target="_blank"><img alt="" src="http://www.ariseup.top/2c36qQ23B95R7Ota12L4d82yg123ct36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkQm9d6Xz1l0Q6s2lUwD/stoves-relieved" width="100%" /></a>
      </div> 
-    </header> 
-    <section class="wakl_info" style="margin-top: 4%;"> 
-     <div> 
-      <div style="max-width: 30%; vertical-align: top; display: inline-block;">
-       <a href="http://www.actwal.top/2Ff4s2395qs8l613a4jda4xI123bu36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ6Qm996k10wOP5zjBwD/grotto-Georgia" target="_blank"><img alt="" src="http://www.actwal.top/triangular-crackling/40e5I2n395OT7Oa11k4da6J123bD36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ6Qm996UU1Pm05E@LwD" width="100%" /></a>
+     <span style="display: block; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; text-align: center; font-weight: bold;">Dear intel-gvt-dev@lists.freedesktop.org</span>
+     <br /> &nbsp; 
+     <div style="max-width: 90%; margin: auto;">
+      <span class="context_info112" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 95%; text-align: justify; display: block; line-height: 165%;"><strong>We wanted to take a moment to thank you for choosing UPS for your shipping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you.</strong><br /> <br /> As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
+      <br /> &nbsp; 
+      <div style="text-align: center;">
+       <span class="context_info112" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 95%; text-align: justify; display: block; line-height: 165%;"><span style="display: inline-block; background-color: #f5f5f5; padding: 1.5% 2.5%; font-weight: bold; font-size: 90%;">For completing the survey, you can receive a $100 Gift!</span> </span>
       </div> 
-      <div style="max-width: 65%; display: inline-block;">
-       <span style="display: block; text-align: justify; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold; color: #012168; font-size: 115%;; margin-top: 4%;">We are giving away the iRobot Roomba i1+ Wi-Fi Connected Self- Emptying Robot Vacuum, Ideal for Pet Hair, Carpets and more.</span> 
-       <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 80%; font-weight: 500; text-align: justify; display: block; margin-top: 2%; line-height: 145%;">We would like to offer you a unique opportunity to receive a brand new DeWalt Drill Set! To claim, simply take this short survey about your experience with Walmart.</span> 
-       <div>
-        <a href="http://www.actwal.top/2Ff4s2395qs8l613a4jda4xI123bu36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ6Qm996k10wOP5zjBwD/grotto-Georgia" target="_blank"><img alt="" src="http://www.actwal.top/grotto-Georgia/cf66zP2D395UgO7a12i4daL7U123bk36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ6Qm997QhKxO105UXAwD" width="100%" /></a>
-       </div> 
-       <span style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 80%; font-weight: 900; text-align: center; display: block; max-width: 90%; line-height: 160%; margin: auto;">Get This Free Gift - Or Choose From 5 Other Offers! *Just Paying a small S&amp;H fee.</span>
+      <br /> 
+      <br /> 
+      <span class="context_info112" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 95%; text-align: justify; display: block; line-height: 165%;"><span style="text-align: center; display: block; ; font-size: 95%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</span> </span>
+      <br /> &nbsp; 
+      <div style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 150%; text-align: center;">
+       <span class="context_info112" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 95%; text-align: justify; display: block; line-height: 165%;"><a href="http://www.ariseup.top/20f4f2395n86YT11S4d80W123cC36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQkQm9d6Lii1i05NWwDL/darkest-blanketing" target="_blank">TAKE THE SURVEY</a> </span>
       </div> 
+      <span class="context_info112" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 95%; text-align: justify; display: block; line-height: 165%;"> </span>
+      <br /> &nbsp; 
+      <div>
+       <span class="context_info112" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 95%; text-align: justify; display: block; line-height: 165%;"><span style="display: block; max-width: 90%; margin: auto; font-size: 90%; font-weight: bold; text-align: center;">Thank you again for your support. We look forward to hearing from you soon Warm regards, </span></span>
+       <br /> 
+       <br /> &nbsp; 
+       <hr style="width: 45%;" />
+       <span class="context_info112" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 95%; text-align: justify; display: block; line-height: 165%;"><span style="display: block; max-width: 90%; margin: auto; font-size: 90%; font-weight: bold; text-align: center;"> The UPS Survey Team </span> </span>
+      </div> 
+      <span class="context_info112" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 95%; text-align: justify; display: block; line-height: 165%;"> </span>
      </div> 
-    </section> 
-    <footer style=" padding-top: 80px; "> 
-     <address style="padding: 5px 0px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 14px; text-align: center; color: #000000;"> <p><small><span style="text-decoration: none; ">To change your subscription options,</span><a href="http://www.actwal.top/skulker-Nehru/bca5X239v5L8x6J13k4pxda5T123bL36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ6Qm996SM10vl6K@UMwD" style="text-decoration-line: none; color: rgb(0, 4, 255)"> <span>Get Started Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span dir="lovers"><font style="Munson"><font size="rheumatic"></font><font class="spiciness"><span><font size="recreated"></font><style></style><span id="keeling"></span></span></font></font></span><font class="striving"></font> </small></p> </address> 
-    </footer> 
-   </div> 
+    </div> 
+   </section> 
+   <footer style="padding-top: 100px; text-align: center;"> 
+    <address style="font-size: 65%; font-family: Arial, Helvetica, sans-serif; font-weight: bold;"> <p class="unsubscribe"><span style="text-decoration: none; ">To cancel communications,</span><a href="http://www.ariseup.top/resting-considers/3C06H_t2395k8IH611k4d81x123cY36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQkQm9d5N1z0A6uLw0MD" style="text-decoration-line: none; color:"> <span>Click.Here.Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span><style style="amplification"><span></span><font dir="artichokes"></span></font></style><font style="empirical"></font><font><small></small></font><style title="suppositions"></style><style></style></p> </address> 
+   </footer> 
   </div> 
-  <center style="width: 100%; "> 
-   <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
-    ?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;?&nbsp;
-   </div> 
-   <div class="email-container" style="max-width: 600px; margin: 0 auto;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td class="bg_white logo" style="padding: 1em 2.5em; text-align: center"> <h1>&nbsp;</h1> </td> 
-      </tr> 
-      <tr> 
-       <td class="hero" valign="middle"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td> 
-            <div class="text" style="padding: 0 3em; text-align: center;"> 
-             <h2>&nbsp;</h2> 
-             <p>&nbsp;</p> 
-             <p>&nbsp;</p> 
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <tr> 
-       <td class="bg_white">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="margin: auto;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td class="bg_black footer email-section" valign="middle">&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td class="bg_black footer email-section" valign="middle">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </center>   
- <img src="http://www.actwal.top/5cf6A23K9r5nIW8513i4dFpa8B123bp36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ6Qm996K1AVl05sywDz/Jewishness-Cochise" alt=""/></body>
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td style="padding-top: 20px;" valign="top" width="50%"> 
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="icon">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td class="text-services"> <h3>&nbsp;</h3> <p>&nbsp;</p> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td style="padding-top: 20px;" valign="top" width="50%"> 
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="icon">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td class="text-services"> <h3>&nbsp;</h3> <p>&nbsp;</p> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.ariseup.top/9ad5P239q5S8iS511M4d83A123cl36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQkQm9d5H1oO05CqwDA/darkest-blanketing" alt=""/></body>
 </html>
 
-------=_Part_409_846907815.1677776137621--
+------=_Part_181_1181681904.1677778469423--
 
