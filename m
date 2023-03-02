@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25D8A6A8B35
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Mar 2023 22:37:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 681F36A8B6E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Mar 2023 23:05:22 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DDEAD10E572;
-	Thu,  2 Mar 2023 21:37:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EB89010E581;
+	Thu,  2 Mar 2023 22:05:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 02 Mar 2023 21:37:33 UTC
-Received: from mail.drowarry.top (unknown [45.13.189.228])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5D42410E572
+X-Greylist: delayed 339 seconds by postgrey-1.36 at gabe;
+ Thu, 02 Mar 2023 22:05:16 UTC
+Received: from mail.forgiga.top (unknown [45.13.189.239])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DC02C10E57E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Mar 2023 21:37:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=drowarry.top;
+ Thu,  2 Mar 2023 22:05:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=forgiga.top;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=american.home.warranty.help@drowarry.top; 
- bh=oYjGR/FkpZYKYkMOQgDfBi8xZn8=;
- b=PZ3XD6I7qy8fy+XconJanI7wlNGM4m5qK1Jwuj+saC1B7BC+Q9pdMBVQT3FMf5t7YkqVutv21or2
- cLAKBvop+yl8tpEaHLZ2JpK/fC13VdsmJ0sTFveKJ77E6FZL1pfa3nb+bpc+C4sCooWhXFkMuHyx
- FmHROXzRidzUnZ+p0UA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=drowarry.top;
- b=DqIatwUCFkcS0T1VXUeE7YBLCd6k37llUYFICa737zZWlhkuRwn3nJcLHiSAXKeGAjzivZAajF7H
- 1Xz/ciSeBxQhI/0NpuKrE+2yESFFSRAshyBzdLo+YQVuikPjJQx2J9OnJEiOzdRbTQFnOJxl5CCQ
- kRxfY+r772xwQNx2xu0=;
-Received: by mail.drowarry.top id h04bhq0001g4 for
+ i=gift.guide.the.gadgets.lab@forgiga.top; 
+ bh=gikhe/RZN5aG3rCogzRkO+TUqvI=;
+ b=YjutZcotXL2httIYgc05mCxBK8NpSbg/GivQ1Psh3wcwh57rCWtCcgExrraA61Dx7y5oVeTGqZka
+ XWn2LfRKIac4fkxh9Pnv9vJWLTntHwRe+DfyZ3wf8YU6JHioN7ogJsUwjHtCHo06IUOcOd6jIayd
+ nMPg1WPLJ9pHQ7fI6zw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=forgiga.top;
+ b=aEmDHOUerN9ceORXEYUztiIrYw1tm+n1xmqsn0kVcZZzqosXrkyhmT88leCF7xzmnMh+CFjd5TBk
+ HYK7yUogv02FEd7j0lJNx9e1XIH+Mvr9U37jumI8NoUPTcoVd8ohE1WcMviuGqjtSWu7HMSZu4sw
+ S+UJGx+GW8if9ZkNs4U=;
+Received: by mail.forgiga.top id h04ose0001ge for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Mar 2023 16:24:17 -0500 (envelope-from
- <american.home.warranty.help-intel+2Dgvt+2Ddev=lists.freedesktop.org@drowarry.top>)
-Date: Thu, 2 Mar 2023 16:24:17 -0500
-From: "American Home Warranty Help" <american.home.warranty.help@drowarry.top>
+ Thu, 2 Mar 2023 18:21:12 -0500 (envelope-from
+ <gift.guide.the.gadgets.lab-intel+2Dgvt+2Ddev=lists.freedesktop.org@forgiga.top>)
+Date: Thu, 2 Mar 2023 18:21:12 -0500
+From: "Gift Guide The Gadgets Lab" <gift.guide.the.gadgets.lab@forgiga.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get a free quote for an extended home protection plan here
+Subject: 20+ Products that will make your life better
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_274_616434887.1677792208489"
-Message-ID: <0.0.0.1E.1D94D4D587EC6A6.4C5480@mail.drowarry.top>
+ boundary="----=_Part_331_596953139.1677794065611"
+Message-ID: <0.0.0.24.1D94D5DAD896E02.4ABB80@mail.forgiga.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_274_616434887.1677792208489
+------=_Part_331_596953139.1677794065611
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,42 +63,56 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>08030223</title> 
+  <title>09030223</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
-  <div style="margin: auto; max-width: 600px;"> 
-   <h2><a href="http://www.drowarry.top/2a56O23N9Y5d8l6u11e4d96K1242W36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQIQmdm6w10SvF5S@pwD/retrospect-spills" target="_blank"><img alt="" src="http://www.drowarry.top/profiteer-inspiration/c066Hu2U395n7agM11j4d98F1242P36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQIQmdm7X1W0DzV5uXwD2" width="100%" /></a></h2> 
-   <footer id="footer"> 
-    <address class="new_footage"> 
-     <div class="new_fromt12" style="text-align: center;font-weight: 500; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #3b7094; padding: 2.5% 3%; font-size: 85%; display: block; line-height: 145%; color: #fff;">
-      <span>If you would like to discontinue all future updates from AmericanHomeWarranty.net, please <a href="http://www.drowarry.top/4676cG2g395W8Qs612z4rd97z1242F36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQIQmdm5Em1B05zjqwD/policies-Kowtow" target="_blank">Click Here</a> or write us: 96 Craig Street, STE 325, Ellijay, GA 30540.<br /> <br /> This an advertisement for AmericanHomeWarranty.net . </span>
-     </div> </address> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <h3><a href="http://www.forgiga.top/eucalyptus-Reuters/2a64I2395m8n6T12E4dg9ai1243S36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQBQmdn5bn1J05n@lwD"><img alt="" src="http://www.forgiga.top/thankfulness-optimality/4te4A2395HR7Oa12zz4d9dx1243u36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQBQmdn7zO1qo0k6kPwklD" width="100%" /></a></h3> 
+   <footer id="Primer_fotter_" style="text-align: center;"> 
+    <address class="contain_footer_go" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #4a7420; padding: 2.5% 4%; outline: solid 2px;"><span style="font-weight: bold; color: #fff; font-size: 85%;">If you do not wish to receive future messages click here to <a href="http://www.forgiga.top/loathe-patterned/e5e4s2395UvR8612U4Ld9br1243K36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQBQmdn7RpI1jI05iAMwD" style="text-decoration: none; color: #30d0f8;" target="_blank">unsubscribe</a><br /> <br /> <a href="http://www.forgiga.top/8635z23W95L8ul613dL4d9ocY1243J36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQBQmdn5WQ10H5uPzwD/quaff-electrolysis" style="text-decoration: none; color: #30d0f8;" target="_blank">Gadgets Laboratory</a> | 4300 Black Ave #1437, Pleasanton, CA 94566 </span></address> 
    </footer> 
   </div> 
-  <table border="0" cellpadding="10" cellspacing="0" role="presentation" width="100%"> 
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
    <tbody> 
     <tr> 
-     <td style="padding-top: 20px;" valign="top" width="50%">&nbsp;</td> 
-     <td style="padding-top: 20px;" valign="top" width="50%"> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="counter-text">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+     <td class="text-services" style="text-align: left; padding: 20px 30px;"> 
+      <div class="heading-section"> 
+       <h2 style="font-size: 22px;">&nbsp;</h2> 
+       <p>&nbsp;</p> 
+       <p>&nbsp;</p> 
+      </div> </td> 
     </tr> 
    </tbody> 
   </table> 
   <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
    <tbody> 
     <tr> 
-     <td class="counter-text">&nbsp;</td> 
+     <td valign="middle" width="50%">&nbsp;</td> 
+     <td valign="middle" width="50%"> 
+      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td> 
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="text-services" style="text-align: left; padding: 20px 30px;"> 
+              <div class="heading-section"> 
+               <h2 style="font-size: 22px;">&nbsp;</h2> 
+               <p>&nbsp;</p> 
+               <p>&nbsp;</p> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.drowarry.top/c9b4Q2395t8V5I13K4d9rC9w1242P36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQIQmdm5zK1L05zlTwD/policies-Kowtow" alt=""/></body>
+ <img src="http://www.forgiga.top/e034W2395DGi8513s4d9enzK1243G36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQBQmdn5t10Iw6sOwDqB/eucalyptus-Reuters" alt=""/></body>
 </html>
 
-------=_Part_274_616434887.1677792208489--
+------=_Part_331_596953139.1677794065611--
 
