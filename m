@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92A7E6A8A6D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Mar 2023 21:30:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3EBEC6A8AF7
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Mar 2023 22:08:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 618EB10E561;
-	Thu,  2 Mar 2023 20:30:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E7A3710E55C;
+	Thu,  2 Mar 2023 21:08:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Thu, 02 Mar 2023 20:30:34 UTC
-Received: from mail.ckeasycan.top (unknown [45.13.189.194])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8FB7110E55C
+ Thu, 02 Mar 2023 21:07:59 UTC
+Received: from mail.costleaf.top (unknown [45.13.189.213])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1199C10E566
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Mar 2023 20:30:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ckeasycan.top;
+ Thu,  2 Mar 2023 21:07:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=costleaf.top;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=canvasprints.promo@ckeasycan.top; 
- bh=HYJlPb0lxFcthcl0lEV4bfgYDrQ=;
- b=Bq53IQ8oYu70Ka9oa1JCndHj11vRxlYootyUcA6b8TRv0muMf9Vvi0KyidUqEUrg8QkaaxjSdzRY
- 9J8YELMcBGUynYDcYvDSc3Ot9DyC5Y0e2Uj4+jhNg12XbOLqWqLZS5YVOrwr+s5g+COD+YM0vfU1
- PW+eRJeWC1F/2I9UyhI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ckeasycan.top;
- b=HAybNx76UGmeBGRe+Lfrg98Q42+niHXumTQifLTtEPlrn+UvNQ6azYP0wCy333IC8Wze0qdSRlEQ
- rbya60VfCZne8AnDeRW7IQecc3FxyYzdYBN73TcMgpTkdSD3U6E/+SpG+g2RG0jKTxROjAMNNOca
- CCUj9ANJaNTtJceiqCU=;
-Received: by mail.ckeasycan.top id h04dp80001go for
+ i=leafprotect.com@costleaf.top; 
+ bh=2tdxsWtddaP3/QK5XiIwSUMwkz4=;
+ b=SRrgC3QIw6XPqudUFkQTjpd48J4H8hsBOcHIV5jJDetjmTU67ViZH9sDexZB/VicrWyaWRHvvaG8
+ xR5ynGPGLKcWDXywod6HO0l/+jMGH5kB1ZxFZq0dASdtH4iDrRtymqFjgi/Shdn4DqmIuDILJSOQ
+ PhRiUgfQFKERx6NYQWA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=costleaf.top;
+ b=WMqosYWrhoUxPN5DFMjBLm0rwVSszMW69Lrs/55k6aAfTyU0kM0B6TWVjT2tMJWxnoSUT/vLgozA
+ mu7HhqZlHTsG7h7+hUBNWyWJiu8nLxqkbi9+lbFoxkGJzTQuTnFNeg1L1EC+JV16Dea9utCYkLoH
+ 7kwTiaimG3EeL7RSWqw=;
+Received: by mail.costleaf.top id h0482u0001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Mar 2023 16:44:37 -0500 (envelope-from
- <canvasprints.promo-intel+2Dgvt+2Ddev=lists.freedesktop.org@ckeasycan.top>)
-Date: Thu, 2 Mar 2023 16:44:37 -0500
-From: "CanvasPrints Promo" <canvasprints.promo@ckeasycan.top>
+ Thu, 2 Mar 2023 15:56:40 -0500 (envelope-from
+ <leafprotect.com-intel+2Dgvt+2Ddev=lists.freedesktop.org@costleaf.top>)
+Date: Thu, 2 Mar 2023 15:56:40 -0500
+From: LeafProtect.com <leafprotect.com@costleaf.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: President's Day Special - 11x14 Custom Canvas Prints for Only $9.99!
+Subject: Let LeafFilter put their skills to work
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_619_1135236791.1677788225081"
-Message-ID: <0.0.0.44.1D94D502F50A594.220CA7@mail.ckeasycan.top>
+ boundary="----=_Part_622_612776399.1677790521575"
+Message-ID: <0.0.0.45.1D94D497C97663C.3CEB60@mail.costleaf.top>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_619_1135236791.1677788225081
+------=_Part_622_612776399.1677790521575
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,80 +63,37 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>06030223</title> 
+  <title>07030223</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <h4><a href="http://www.ckeasycan.top/af74S2395m8P6Y13Q4dR8dlP1240W36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQAQm9e7A1vWP0k6rzLLwD/disconnects-chilled"><img alt="" src="http://www.ckeasycan.top/24b6B23j9N5w7IKa12g4d90xr1240J36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQAQm9e5W10uw5yPzwD/primers-separates" width="100%" /></a></h4> &nbsp; 
-   <footer> 
-    <address style="width: 100%; background-color:#585858; max-width: 600px; padding: 5px 0px ; color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; border-radius: 8px; margin: auto;"> <p style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 12px; line-height: 14px; text-align: center; ">&nbsp;If you do not wish to receive future messages click here to <span class="unstyle-auto-detected-links"><a href="http://www.ckeasycan.top/ad96Y2y3I95L8Ug613NG4Gd8em1240J36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQAQm9e7HVCHA106Qz2wDW/primers-separates" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; ;">unsubscribe</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.ckeasycan.top/8635p2z395GW86_11k4d8fq1240C36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQAQm9e6X10oLS5mAkwD/downfallen-pillared" style="text-decoration: underline!imp
- ortant; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #0400d4;">Easy Canvas Prints</a>&nbsp;|&nbsp; 11525a Stonehollow Dr #100 | Austin, TX 78758</span><br /> <br /> &nbsp;</p> </address> 
-   </footer> 
+   <h3><a href="http://www.costleaf.top/odors-unfaithfully/35a5q23C95cM8A612b4Md92k1241J36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ1Qm9K6c1Vk0Q5vTwlD" target="_blank"><img alt="" src="http://www.costleaf.top/mired-essayed/B305w23q95e7NaG11L4d94H1241l36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ1Qm9K5J10qO5ilJwD" width="100%" /></a></h3> 
   </div> 
-  <table> 
+  <footer style="max-width: 600px; margin: auto;"> 
+   <address style="text-align: cneter; font-size: 10px; background-color: #454941; padding: 15px 0px; font-weight: bold; color: #ffffff;"> <p style="text-align: center;">This is an advertisement. This message has been sent to you through an affiliate.<br /> To be removed from receiving future emails, <a href="http://www.costleaf.top/Schapiro-cringing/51c5HK2395e8h6G11d4d93L1241O36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ1Qm9K7hpXS10g5iPpwD" style="font-style: normal; font-weight: normal; text-decoration: underline;" target="_blank">Unsubscribe here</a>.<br /> <br /> <span style="font-size: 14px;">2 Depot Plaza, Suite 401 Bedford Hills, NY 10507</span></p> </address> 
+  </footer> 
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
    <tbody> 
     <tr> 
-     <td valign="top" width="33.333%"> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="text-align: left; padding-right: 10px;"> <p>&nbsp;</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td valign="top" width="33.333%"> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="text-align: right; padding-left: 5px; padding-right: 5px;"> <p>&nbsp;</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td class="text-testimony" style="text-align: center;"> <h3 class="name">&nbsp;</h3> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <table> 
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
    <tbody> 
     <tr> 
-     <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="text-align: left; padding-right: 10px;"> <h3 class="heading">&nbsp;</h3> <p>&nbsp;</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="text-align: left; padding-left: 5px; padding-right: 5px;"> <h3 class="heading">&nbsp;</h3> 
-          <ul style="list-style-type: none;"> 
-           <li>&nbsp;</li> 
-           <li>&nbsp;</li> 
-          </ul> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td style="padding-top: 20px;" valign="top" width="33.333%"> 
-      <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td style="text-align: left; padding-left: 10px;"> <h3 class="heading">&nbsp;</h3> 
-          <ul style="list-style-type: none;"> 
-           <li>&nbsp;</li> 
-           <li>&nbsp;</li> 
-           <li>&nbsp;</li> 
-           <li>&nbsp;</li> 
-          </ul> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td class="text-testimony" style="text-align: center;"> <h3 class="name">&nbsp;</h3> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.ckeasycan.top/mallet-Lilliputian/4865S2D395am8V511F4d91Y1240K36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQAQm9e5S10Fz6SXLAwD" alt=""/></body>
+ <img src="http://www.costleaf.top/Eumenides-pacify/1206es239_5X8ix512U_4d95T1241J36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ1Qm9K5zU10i5hlwND" alt=""/></body>
 </html>
 
-------=_Part_619_1135236791.1677788225081--
+------=_Part_622_612776399.1677790521575--
 
