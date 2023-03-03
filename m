@@ -2,83 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3A346A9C77
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 17:55:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BDFC6A9CE7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 18:12:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C3AF110E708;
-	Fri,  3 Mar 2023 16:55:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2861010E71D;
+	Fri,  3 Mar 2023 17:12:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 174C610E70D
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Fri, 03 Mar 2023 17:12:46 UTC
+Received: from mail.fixace.autos (unknown [45.13.189.189])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5FB0D10E71C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Mar 2023 16:55:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1677862548;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=K2FFa2yfYrCiaVu7okbqhPwZrwGrmF/P4YR4gLz07iw=;
- b=CZCwm1XyP+ZsR5AVwNyDf2MsCd3Gef/EB25JTwIquM/vLYj6LQVdc/B9fyuDR2l5hp3ZtH
- adt9E5pMkjKDwsnc4tfzGjfV/HwuQUUU+KvcBbGnFZ/e0pwjfxWS2UNX67WdVEqrNbcU+h
- arFU6T6Vg/sbMPpY+4BRJtvPnq9LpEE=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-65-cpFg7S0tNAWpXS_tXRVPsw-1; Fri, 03 Mar 2023 11:55:46 -0500
-X-MC-Unique: cpFg7S0tNAWpXS_tXRVPsw-1
-Received: by mail-il1-f199.google.com with SMTP id
- i8-20020a056e02054800b00318a7211804so1607427ils.5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 03 Mar 2023 08:55:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wQaN2w6WPy4qe2LbDS5GqBL5o5ir0ZpFEJOy/c7VAXk=;
- b=hFnrWKJN6vk+s0O6kEzklcgaWx5Ka5xeFSp5FRaLC0Dc1ZbMLdQYwZ1NGDRav3YbQR
- lD87sfsH9cIWRMTbWTDSGki8594n8bBD3ShYKA3MA0acu22Nss85zszCiq16/Vis5cZ4
- yiPj7JpMrkl986PGwyU0fNE8FmDk47L+jqlK1b9CsShFx2PeqJUQUv50SLr3knZEanTo
- ZUySK4JLwbwqhXvG68xCtN4/+AjrhJojs/hJstNikgrSUdjBBjR13faswKAOgx1zNyRd
- m1Q38xHdVJxmVUn3Me3NTVTwf0G4x5BbospL5dzI0pDmuVdEWeG9zX0mPVjA6tM+qr+D
- izxQ==
-X-Gm-Message-State: AO0yUKUrhMlz0QijxjBRYMsSlZkT9Od9R3PrCt3fSpg/mMIXGNbsM5A1
- LI24i4Vq7MW58lktxOii+yFvphmdB76Tt+Rvjnhj8XbaFmNHg4Oxbpxzyy/4IYwdU9+LSIEZUkW
- C9XMsikWRWzHvFwFHmArs5ULEs5KyXXADNg==
-X-Received: by 2002:a05:6e02:1b0b:b0:314:e56:54fc with SMTP id
- i11-20020a056e021b0b00b003140e5654fcmr2317804ilv.1.1677862546225; 
- Fri, 03 Mar 2023 08:55:46 -0800 (PST)
-X-Google-Smtp-Source: AK7set+zTdgOdL+Cvm/GHdzHlk9qNHC8FUzt7q1k0ffumCIR03rPcZWQtCDbvcczq+7wSTu39R/sFQ==
-X-Received: by 2002:a05:6e02:1b0b:b0:314:e56:54fc with SMTP id
- i11-20020a056e021b0b00b003140e5654fcmr2317767ilv.1.1677862545900; 
- Fri, 03 Mar 2023 08:55:45 -0800 (PST)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- p5-20020a02b385000000b003de9d8de0edsm871392jan.88.2023.03.03.08.55.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Mar 2023 08:55:44 -0800 (PST)
-Date: Fri, 3 Mar 2023 09:55:42 -0700
-From: Alex Williamson <alex.williamson@redhat.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array
- in VFIO_DEVICE_PCI_HOT_RESET
-Message-ID: <20230303095542.2bfce5c2.alex.williamson@redhat.com>
-In-Reply-To: <BN9PR11MB5276B825071A4819479079A68CB39@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <20230227111135.61728-1-yi.l.liu@intel.com>
- <20230227111135.61728-10-yi.l.liu@intel.com>
- <DS0PR11MB75295B4B2578765C8B08AC7EC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB527688810514A262471E4BB78CB29@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZACX+Np/IY7ygqL5@nvidia.com>
- <DS0PR11MB7529531834C0A9F1D294A5CCC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB5276B825071A4819479079A68CB39@BN9PR11MB5276.namprd11.prod.outlook.com>
-Organization: Red Hat
+ Fri,  3 Mar 2023 17:12:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fixace.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=ace-hardware-essentials@fixace.autos; 
+ bh=Ya54tvAWIBkxLiFJG+K1fwYHSXU=;
+ b=XGHCbjHIRxU7dbIYUAcVOMRwuvKD/u2yRUG8Kh59bdpiw1WjH5s2Srjm7pCKsDdlRCt+srm9uQ8j
+ VveQ3skZQ0ABGip5M2wOLxUwjKbAJn7XhFwoMSKapG3hDgyZwrtP3lli7ywa44ML/rw/zwU4u/Fy
+ WFd5MJ8P3Wk5jNMsPQI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fixace.autos;
+ b=rvHNvRWfu+9Uv5ordPHjwbOr3pURPrJrwzDRCE7WUpzDCTIqwVoCD2F0wJOvABjV0pZWCQX3tNxa
+ ermbs/UG5HCbbO+X+IAgvTKUzibVirkT3FWkamnypTTVr11LHhBZLQZ8umpqWPesFtVMsMwYBamS
+ fXjklfrmjpvB6OXXAOQ=;
+Received: by mail.fixace.autos id h08vbe0001gi for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 3 Mar 2023 13:25:39 -0500 (envelope-from
+ <ace-hardware-essentials-intel+2Dgvt+2Ddev=lists.freedesktop.org@fixace.autos>)
+Date: Fri, 3 Mar 2023 13:25:39 -0500
+From: "ACE Hardware Essentials" <ace-hardware-essentials@fixace.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Limited:Take home a free DeWalt Drill Set from Lowe's today!
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_286_1423041871.1677862761334"
+Message-ID: <0.0.0.1E.1D94DFD8E9D5922.4604C2@mail.fixace.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,103 +50,69 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
- "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 3 Mar 2023 06:36:35 +0000
-"Tian, Kevin" <kevin.tian@intel.com> wrote:
+------=_Part_286_1423041871.1677862761334
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-> > From: Liu, Yi L <yi.l.liu@intel.com>
-> > Sent: Thursday, March 2, 2023 10:20 PM
-> >  =20
-> > > From: Jason Gunthorpe <jgg@nvidia.com>
-> > > Sent: Thursday, March 2, 2023 8:35 PM
-> > >
-> > > On Thu, Mar 02, 2023 at 09:55:46AM +0000, Tian, Kevin wrote: =20
-> > > > > From: Liu, Yi L <yi.l.liu@intel.com>
-> > > > > Sent: Thursday, March 2, 2023 2:07 PM
-> > > > > =20
-> > > > > > -=09=09if (!vfio_dev_in_groups(cur_vma, groups)) {
-> > > > > > +=09=09if (cur_vma->vdev.open_count &&
-> > > > > > +=09=09    !vfio_dev_in_groups(cur_vma, groups) &&
-> > > > > > +=09=09    !vfio_dev_in_iommufd_ctx(cur_vma, =20
-> > iommufd_ctx)) { =20
-> > > > >
-> > > > > Hi Alex, Jason,
-> > > > >
-> > > > > There is one concern on this approach which is related to the
-> > > > > cdev noiommu mode. As patch 16 of this series, cdev path
-> > > > > supports noiommu mode by passing a negative iommufd to
-> > > > > kernel. In such case, the vfio_device is not bound to a valid
-> > > > > iommufd. Then the check in vfio_dev_in_iommufd_ctx() is
-> > > > > to be broken.
-> > > > >
-> > > > > An idea is to add a cdev_noiommu flag in vfio_device, when
-> > > > > checking the iommufd_ictx, also check this flag. If all the opene=
-d
-> > > > > devices in the dev_set have vfio_device->cdev_noiommu=3D=3Dtrue,
-> > > > > then the reset is considered to be doable. But there is a special
-> > > > > case. If devices in this dev_set are opened by two applications
-> > > > > that operates in cdev noiommu mode, then this logic is not able
-> > > > > to differentiate them. In that case, should we allow the reset?
-> > > > > It seems to ok to allow reset since noiommu mode itself means
-> > > > > no security between the applications that use it. thoughts?
-> > > > > =20
-> > > >
-> > > > Probably we need still pass in a valid iommufd (instead of using
-> > > > a negative value) in noiommu case to mark the ownership so the
-> > > > check in the reset path can correctly catch whether an opened
-> > > > device belongs to this user. =20
-> > >
-> > > There should be no iommufd at all in no-iommu mode
-> > >
-> > > Adding one just to deal with noiommu reset seems pretty sad :\
-> > >
-> > > no-iommu is only really used by dpdk, and it doesn't invoke
-> > > VFIO_DEVICE_PCI_HOT_RESET at all. =20
-> >=20
-> > Does it happen to be or by design, this ioctl is not needed by dpdk? =
-=20
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>04030323</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <header class="ace_fromt_title"> 
+    <div style="background-color: rgb(63, 63, 63);">
+     <span style="display: block; text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 900; font-size: 135%; padding: 2.5% 0%; color: #ffffff;">Special gift just&nbsp;for intel-gvt-dev@lists.freedesktop.org</span>
+    </div> 
+   </header> 
+   <section id="ace_promo__doble"> 
+    <h3 style="display: inline;"><a href="http://www.fixace.autos/de56dn23i95clT8611K4dbeK1248z36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQAQmdR6Sw1Xs06BklpwD/entertainments-inched" target="_blank"><img alt="" src="http://www.fixace.autos/2c36Ez23h95S7OaY11K4dc0T1248n36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQAQmdR6W1p0kG5nMwD0/spokes-undertakers" style="display: block;" width="100%" /></a></h3> 
+    <h4 style="max-width: 75%; margin: auto;"><a href="http://www.fixace.autos/de56dn23i95clT8611K4dbeK1248z36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQAQmdR6Sw1Xs06BklpwD/entertainments-inched" target="_blank"><img alt="" src="http://www.fixace.autos/3b34c2395C7kag12q4dc1YW1248K36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQAQmdR6WDz1K06YOwpDX/subgraphs-confiscating" width="100%" /></a></h4> 
+    <div style="text-align: center; padding: 0% 0% 5%;">
+     <a href="" style="text-decoration: none; color: #fff;"><span style="display: inline-block; padding: 2.5% 3%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; background-color:#3D3C41; font-size: 120%; border-radius: 8px ;">Take Me To The SURVEY!</span></a>
+    </div> 
+    <h6 style="max-width: 85%; margin: auto;"><a href="http://www.fixace.autos/de56dn23i95clT8611K4dbeK1248z36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQAQmdR6Sw1Xs06BklpwD/entertainments-inched" target="_blank"><img alt="" src="http://www.fixace.autos/thickly-backlash/6cA6u2sy395s7vaz12S4dcU2P1248I36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQAQmdR5Rm1Y06tjWOwD" width="100%" /></a></h6> 
+    <h2 style="max-width: 85%; margin: auto; padding: 5% 0% 8%;"><a href="http://www.fixace.autos/de56dn23i95clT8611K4dbeK1248z36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQAQmdR6Sw1Xs06BklpwD/entertainments-inched" target="_blank"><img alt="" src="http://www.fixace.autos/Carpathians-notch/6fc4r2395Q7Oal11C4dc3l1248T36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQAQmdR5z10pg6zXywDA" width="100%" /></a></h2> 
+    <hr /> 
+    <footer style="max-width: 600px; margin: auto;"> 
+     <address style="text-align: center; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 12px; padding: 15px 0px; color: #000000; font-weight: bold;"> <p><small><span style="text-decoration: none; ">To discontinue notices,</span><a href="http://www.fixace.autos/e994p2395yOB8611E4dbfO1248S36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQAQmdR7mx1FqA06YUwlDk/Carpathians-notch" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Go.Over.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big></big><font face="calamitous"></font><style face="busied"><style dir="excited"></style></style><span style="bloodshed"></span><span face="northeastern"></span><span><font></span></font><small></small><style><span color="allurement"></style></span> </small></p> </address> 
+    </footer> 
+   </section> 
+  </div> 
+  <div id="wrapper"> 
+   <header> 
+    <div id="logo"> 
+     <h1>&nbsp;</h1> 
+     <h5>&nbsp;</h5> 
+    </div> 
+    <div id="callout">
+     &nbsp;
+    </div> 
+   </header> 
+   <div class="banner">
+    &nbsp;
+   </div> 
+   <h2>&nbsp;</h2> 
+   <p>&nbsp;</p> 
+   <p>&nbsp;</p> 
+   <p>&nbsp;</p> 
+   <div class="button-holder">
+    &nbsp;
+   </div> 
+   <div class="line">
+    &nbsp;
+   </div> 
+   <p class="contact">&nbsp;</p> 
+  </div>   
+ <img src="http://www.fixace.autos/e5d4D2395QT85A12l4dc4_I1248L36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQAQmdR5qyo106SL0w2D/spokes-undertakers" alt=""/></body>
+</html>
 
-I can't think of a reason DPDK couldn't use hot-reset.  If we want to
-make it a policy, it should be enforced by code, but creating that
-policy based on a difficulty in supporting that mode with iommufd isn't
-great.
-=20
-> use of noiommu should be discouraged.
->=20
-> if only known noiommu user doesn't use it then having certain
-> new restriction for noiommu in the hot reset path might be an
-> acceptable tradeoff.
->=20
-> but again needs Alex's input as he knows all the history about
-> noiommu. =F0=9F=98=8A
-
-No-IOMMU mode was meant to be a minimally invasive code change to
-re-use the vfio device interface, or alternatively avoid extending
-uio-pci-generic to support MSI/X, with better logging/tainting to know
-when userspace is driving devices without IOMMU protection, and as a
-means to promote a transition to standard support of vfio.  AFAIK,
-there are still environments without v/IOMMU that make use of no-iommu
-mode.  Thanks,
-
-Alex
+------=_Part_286_1423041871.1677862761334--
 
