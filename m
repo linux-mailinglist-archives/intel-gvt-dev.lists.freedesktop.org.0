@@ -1,43 +1,84 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFA8D6A9BD1
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 17:32:32 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id F3A346A9C77
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 17:55:51 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 914C310E6FF;
-	Fri,  3 Mar 2023 16:32:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C3AF110E708;
+	Fri,  3 Mar 2023 16:55:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 322 seconds by postgrey-1.36 at gabe;
- Fri, 03 Mar 2023 16:32:30 UTC
-Received: from mail.feelatt.autos (unknown [45.13.189.178])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0D23F10E6FE
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 174C610E70D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Mar 2023 16:32:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=feelatt.autos;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=att-appreciation@feelatt.autos; 
- bh=TMaRyVlCT6WBkalaqIj6ynbSJRY=;
- b=WypzHYFk2/qAQkGisClLSWhB4aMKwcaIaC3jEp4lw1wpN0Y3juPSLU+62Fodd2iaR7JWXcZvvzrL
- 0ibmAqVmO9WBF1B2yIsEJrFs5x999CRy3oSJUloRqrw6nbB5ICe0QoB9DozbNd57Sr76gV8rgKYs
- SVJXxeLWFaDUwSuMcMA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=feelatt.autos;
- b=ucsTgEIiIYEUFu84SP7NjcD05SzOy5P9oWK7uxZcGv21yQDREFwIe6nmjqEAU0bovjH15wKWx+iK
- 8VetOpKasZbkJ+S0p6t94GmF5qEcHuRdaI34SrOX9WgGkbimX2u2bXX+DVTt19HRfiCay4iOqpOV
- x+6f8HaZedkrEeZDqEY=;
-Received: by mail.feelatt.autos id h08ghs0001gl for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 3 Mar 2023 11:18:28 -0500 (envelope-from
- <att-appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@feelatt.autos>)
-Date: Fri, 3 Mar 2023 11:18:28 -0500
-From: "ATT Appreciation" <att-appreciation@feelatt.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your visits are now rewarded for your loyalty - Awesome
+ Fri,  3 Mar 2023 16:55:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1677862548;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=K2FFa2yfYrCiaVu7okbqhPwZrwGrmF/P4YR4gLz07iw=;
+ b=CZCwm1XyP+ZsR5AVwNyDf2MsCd3Gef/EB25JTwIquM/vLYj6LQVdc/B9fyuDR2l5hp3ZtH
+ adt9E5pMkjKDwsnc4tfzGjfV/HwuQUUU+KvcBbGnFZ/e0pwjfxWS2UNX67WdVEqrNbcU+h
+ arFU6T6Vg/sbMPpY+4BRJtvPnq9LpEE=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-65-cpFg7S0tNAWpXS_tXRVPsw-1; Fri, 03 Mar 2023 11:55:46 -0500
+X-MC-Unique: cpFg7S0tNAWpXS_tXRVPsw-1
+Received: by mail-il1-f199.google.com with SMTP id
+ i8-20020a056e02054800b00318a7211804so1607427ils.5
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 03 Mar 2023 08:55:46 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=wQaN2w6WPy4qe2LbDS5GqBL5o5ir0ZpFEJOy/c7VAXk=;
+ b=hFnrWKJN6vk+s0O6kEzklcgaWx5Ka5xeFSp5FRaLC0Dc1ZbMLdQYwZ1NGDRav3YbQR
+ lD87sfsH9cIWRMTbWTDSGki8594n8bBD3ShYKA3MA0acu22Nss85zszCiq16/Vis5cZ4
+ yiPj7JpMrkl986PGwyU0fNE8FmDk47L+jqlK1b9CsShFx2PeqJUQUv50SLr3knZEanTo
+ ZUySK4JLwbwqhXvG68xCtN4/+AjrhJojs/hJstNikgrSUdjBBjR13faswKAOgx1zNyRd
+ m1Q38xHdVJxmVUn3Me3NTVTwf0G4x5BbospL5dzI0pDmuVdEWeG9zX0mPVjA6tM+qr+D
+ izxQ==
+X-Gm-Message-State: AO0yUKUrhMlz0QijxjBRYMsSlZkT9Od9R3PrCt3fSpg/mMIXGNbsM5A1
+ LI24i4Vq7MW58lktxOii+yFvphmdB76Tt+Rvjnhj8XbaFmNHg4Oxbpxzyy/4IYwdU9+LSIEZUkW
+ C9XMsikWRWzHvFwFHmArs5ULEs5KyXXADNg==
+X-Received: by 2002:a05:6e02:1b0b:b0:314:e56:54fc with SMTP id
+ i11-20020a056e021b0b00b003140e5654fcmr2317804ilv.1.1677862546225; 
+ Fri, 03 Mar 2023 08:55:46 -0800 (PST)
+X-Google-Smtp-Source: AK7set+zTdgOdL+Cvm/GHdzHlk9qNHC8FUzt7q1k0ffumCIR03rPcZWQtCDbvcczq+7wSTu39R/sFQ==
+X-Received: by 2002:a05:6e02:1b0b:b0:314:e56:54fc with SMTP id
+ i11-20020a056e021b0b00b003140e5654fcmr2317767ilv.1.1677862545900; 
+ Fri, 03 Mar 2023 08:55:45 -0800 (PST)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ p5-20020a02b385000000b003de9d8de0edsm871392jan.88.2023.03.03.08.55.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Mar 2023 08:55:44 -0800 (PST)
+Date: Fri, 3 Mar 2023 09:55:42 -0700
+From: Alex Williamson <alex.williamson@redhat.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Subject: Re: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array
+ in VFIO_DEVICE_PCI_HOT_RESET
+Message-ID: <20230303095542.2bfce5c2.alex.williamson@redhat.com>
+In-Reply-To: <BN9PR11MB5276B825071A4819479079A68CB39@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230227111135.61728-1-yi.l.liu@intel.com>
+ <20230227111135.61728-10-yi.l.liu@intel.com>
+ <DS0PR11MB75295B4B2578765C8B08AC7EC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <BN9PR11MB527688810514A262471E4BB78CB29@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <ZACX+Np/IY7ygqL5@nvidia.com>
+ <DS0PR11MB7529531834C0A9F1D294A5CCC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <BN9PR11MB5276B825071A4819479079A68CB39@BN9PR11MB5276.namprd11.prod.outlook.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_220_1359676122.1677860293705"
-Message-ID: <0.0.0.18.1D94DEBC9F4756C.65D597@mail.feelatt.autos>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,94 +91,103 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_220_1359676122.1677860293705
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Fri, 3 Mar 2023 06:36:35 +0000
+"Tian, Kevin" <kevin.tian@intel.com> wrote:
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>03030323</title> 
- </head> 
- <body style="padding: 7% 0%;"> 
-  <div style="margin: auto; max-width: 600px;"> 
-   <header class="header_progresivo_122"> 
-    <div id="naciona_pros">
-     <span style="display: block; font-size: 160%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;"><u><b>A SPECIAL OFFER FOR OUR VALUED USERS</b></u></span>
-     <br /> &nbsp; 
-     <div style="display: block; max-width: 30%; margin: auto;">
-      <a href="http://www.feelatt.autos/5ed4i2395U86hY11P4db8Y1247K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQHQmdQ5A1gA06k2MWwD/enlargements-transitivity" target="_blank"><img alt="" src="http://www.feelatt.autos/d8b4k2395t7Dal12s4dbvaq1247u36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQHQmdQ7a1G0PCp6S3wAjD/thunderbolts-Mafia" width="100%" /></a>
-     </div> 
-     <div style="text-align: center;"> 
-      <div style="display: inline-block; max-width: 25%; vertical-align: top;">
-       <a href="http://www.feelatt.autos/5ed4i2395U86hY11P4db8Y1247K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQHQmdQ5A1gA06k2MWwD/enlargements-transitivity" target="_blank"><img alt="" src="http://www.feelatt.autos/tenant-microword/eb84f2395SsB7a11p4dbbN1247V36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHQmdQ6L1BDI06h0wPDp" width="100%" /></a>
-      </div> 
-      <div style="display: inline-block; max-width: 22%; vertical-align: top; margin-top: 2.5%;">
-       <a href="http://www.feelatt.autos/5ed4i2395U86hY11P4db8Y1247K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQHQmdQ5A1gA06k2MWwD/enlargements-transitivity" target="_blank"><img alt="" src="http://www.feelatt.autos/Grecianize-incurring/9ea6i23F9N5f7apu13G4kdbctJ1247z36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQHQmdQ7MYHI10O6zOW@wD" width="100%" /></a>
-      </div> 
-     </div> 
-    </div> 
-   </header> 
-   <section class="secleccion_contenido"> 
-    <div id="divi_grompro">
-     <span style="font-size: 125%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; font-weight: 500; display: block; padding: 4.5% 0%;">We wanted to take a moment to thank you for choosing <strong style="color: #35A2DB;">AT&amp;T</strong> . Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you.</span>
-    </div> 
-    <div style="font-size: x-large; font-weight: 900; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 1.5% 0%;">
-     <a href="http://www.feelatt.autos/5ed4i2395U86hY11P4db8Y1247K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQHQmdQ5A1gA06k2MWwD/enlargements-transitivity" target="_blank">TAKE THE SURVEY</a>
-    </div> 
-    <div id="divi_grompro" style="text-align: center;">
-     <span style="font-size: 125%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; font-weight: 500; display: block; padding: 4.5% 0%;">Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span>
-     <br /> 
-     <br /> 
-     <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 90%; font-weight: 500; display: inline-block; padding: 1.5% 2%; background-color: aliceblue;">Upon Completion of the Survey you might have a choice between different gifts!</span>
-    </div> 
-   </section> 
-   <br /> 
-   <br /> &nbsp; 
-   <hr /> 
-   <footer class="final_shot" style="width: 90%; max-width: 600px; margin: auto;  padding: 5px 0px; "> 
-    <address> 
-     <div style="text-align: center; font-weight: normal; font-size: 10px; color: #000000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500;"> 
-      <p><small><span style="text-decoration: none; ">To shut off notifications,</span><a href="http://www.feelatt.autos/enlargements-transitivity/4fe5v23R95vkr8613Wn_4db9k1247v36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQHQmdQ7u10qvxy6el3@wD" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Click.Here.Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small></small><font dir="splits"><big><font title="earthquake"></font></big></font><style><font face="memorization"></style></font><span></span><font title="roams"></font> </small></p> 
-     </div> </address> 
-   </footer> 
-  </div> 
-  <div style="width: 320px;"> 
-   <table style="width: 100%;"> 
-    <tbody> 
-     <tr> 
-      <td colspan="2" style="font:caption; padding-top: 4%;padding-bottom: 4%; 
-                text-align: center; opacity: 0.4; height: 0; color: black; width: 0; text-decoration-line: underline;
-                font-size: 15px;">&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td colspan="2" style="text-align: center; padding-left: 10%;padding-right: 10%; padding-top: 4%;padding-bottom: 4%;">&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td colspan="2" style="text-align: center">&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td colspan="2" style="padding-left: 5%; padding-right: 5%"> <p style="font-size: 23.2px; color: rgb(87,88,91);font-family: Arial, sans-serif;">&nbsp;</p> 
-       <div> 
-        <div style="padding-bottom: 20px;">
-         &nbsp;
-        </div> 
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td colspan="2" style="text-align: left; font: caption; padding-left: 5%; padding-right: 5%; padding-top: 5%"> <p style="font-size: 10.1px; color: rgb(87,88,91);">&nbsp;</p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.feelatt.autos/31d6P2T39U5uOx8511E4dbds1247t36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQHQmdQ5dnF105MLwD2/reappear-proportionment" alt=""/></body>
-</html>
+> > From: Liu, Yi L <yi.l.liu@intel.com>
+> > Sent: Thursday, March 2, 2023 10:20 PM
+> >  =20
+> > > From: Jason Gunthorpe <jgg@nvidia.com>
+> > > Sent: Thursday, March 2, 2023 8:35 PM
+> > >
+> > > On Thu, Mar 02, 2023 at 09:55:46AM +0000, Tian, Kevin wrote: =20
+> > > > > From: Liu, Yi L <yi.l.liu@intel.com>
+> > > > > Sent: Thursday, March 2, 2023 2:07 PM
+> > > > > =20
+> > > > > > -=09=09if (!vfio_dev_in_groups(cur_vma, groups)) {
+> > > > > > +=09=09if (cur_vma->vdev.open_count &&
+> > > > > > +=09=09    !vfio_dev_in_groups(cur_vma, groups) &&
+> > > > > > +=09=09    !vfio_dev_in_iommufd_ctx(cur_vma, =20
+> > iommufd_ctx)) { =20
+> > > > >
+> > > > > Hi Alex, Jason,
+> > > > >
+> > > > > There is one concern on this approach which is related to the
+> > > > > cdev noiommu mode. As patch 16 of this series, cdev path
+> > > > > supports noiommu mode by passing a negative iommufd to
+> > > > > kernel. In such case, the vfio_device is not bound to a valid
+> > > > > iommufd. Then the check in vfio_dev_in_iommufd_ctx() is
+> > > > > to be broken.
+> > > > >
+> > > > > An idea is to add a cdev_noiommu flag in vfio_device, when
+> > > > > checking the iommufd_ictx, also check this flag. If all the opene=
+d
+> > > > > devices in the dev_set have vfio_device->cdev_noiommu=3D=3Dtrue,
+> > > > > then the reset is considered to be doable. But there is a special
+> > > > > case. If devices in this dev_set are opened by two applications
+> > > > > that operates in cdev noiommu mode, then this logic is not able
+> > > > > to differentiate them. In that case, should we allow the reset?
+> > > > > It seems to ok to allow reset since noiommu mode itself means
+> > > > > no security between the applications that use it. thoughts?
+> > > > > =20
+> > > >
+> > > > Probably we need still pass in a valid iommufd (instead of using
+> > > > a negative value) in noiommu case to mark the ownership so the
+> > > > check in the reset path can correctly catch whether an opened
+> > > > device belongs to this user. =20
+> > >
+> > > There should be no iommufd at all in no-iommu mode
+> > >
+> > > Adding one just to deal with noiommu reset seems pretty sad :\
+> > >
+> > > no-iommu is only really used by dpdk, and it doesn't invoke
+> > > VFIO_DEVICE_PCI_HOT_RESET at all. =20
+> >=20
+> > Does it happen to be or by design, this ioctl is not needed by dpdk? =
+=20
 
-------=_Part_220_1359676122.1677860293705--
+I can't think of a reason DPDK couldn't use hot-reset.  If we want to
+make it a policy, it should be enforced by code, but creating that
+policy based on a difficulty in supporting that mode with iommufd isn't
+great.
+=20
+> use of noiommu should be discouraged.
+>=20
+> if only known noiommu user doesn't use it then having certain
+> new restriction for noiommu in the hot reset path might be an
+> acceptable tradeoff.
+>=20
+> but again needs Alex's input as he knows all the history about
+> noiommu. =F0=9F=98=8A
+
+No-IOMMU mode was meant to be a minimally invasive code change to
+re-use the vfio device interface, or alternatively avoid extending
+uio-pci-generic to support MSI/X, with better logging/tainting to know
+when userspace is driving devices without IOMMU protection, and as a
+means to promote a transition to standard support of vfio.  AFAIK,
+there are still environments without v/IOMMU that make use of no-iommu
+mode.  Thanks,
+
+Alex
 
