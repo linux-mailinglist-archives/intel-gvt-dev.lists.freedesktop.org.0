@@ -2,44 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5324F6AA005
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 20:23:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9115B6AA057
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 20:52:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 18E3F10E73B;
-	Fri,  3 Mar 2023 19:23:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F34BB10E747;
+	Fri,  3 Mar 2023 19:52:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Fri, 03 Mar 2023 19:23:00 UTC
-Received: from mail.holdhome.autos (unknown [45.13.189.206])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1010510E736
+X-Greylist: delayed 318 seconds by postgrey-1.36 at gabe;
+ Fri, 03 Mar 2023 19:52:33 UTC
+Received: from mail.kneelwal.autos (unknown [45.13.189.223])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9736410E744
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Mar 2023 19:23:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=holdhome.autos; 
+ Fri,  3 Mar 2023 19:52:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=kneelwal.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=welcome_to_adt_residential_security_systems@holdhome.autos; 
- bh=8yfMM/iJ6GlrQDiYBJ4GyWUZ7R4=;
- b=nNxAdQ26Ycav1PR82/Cj7M7Dse2jm9/v64FOjc6W7iJ4w3SgDxVoR5iPcsbPK6j1qPqXHPQ89uoq
- aDckkaxHm7BIN2DqGzEemWLJnXLdpiGmRWG8Vjztg1psKr8ZykiTqhhvDyIozVIc7V5cat/QAlA+
- IBRLCkxlZ0PfeqAHU8g=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=holdhome.autos;
- b=aOj0bsonQWY0pjwK2K3EoNm67D86jtHTeZUgwW6BQ/9JUHQjOXxFhiIWpN5l1q7Xaat1Pl7q+Fai
- hH6lrnlOjP/xYHvcuH/GSa95RKn89YGmYvqrlUVRnkNWqY0LNGJta+nE+ugcpytJ0BiWPgSBEm9E
- 5tftmvzpleObaupw1kw=;
-Received: by mail.holdhome.autos id h094h80001gk for
+ i=renewalbyandersen@kneelwal.autos; 
+ bh=GjBY+27z/qSXuuDQSgmwdLX6oFI=;
+ b=PmkVkBvJ9VddZwaRr9536ZQMvZvai7/qda0VmthDaiTqOnmT2o/BDwW5+IoU7qmT2t3M6OmNhOzc
+ W0FuXk1uSHiMmcv4aMq7cqzip+1X8mz0PZmJkNwdbrVZ26Qu/SKUikClWlpxku7wsaFxObg2ZaFR
+ 7wrwqE2dx1mjj1/EWLg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kneelwal.autos;
+ b=EdiAU1gtB661xz3e08EnWxccZZesVo98tT4b/UqQf4kS+5UkEhVz/epj0bH6S4+W1gkMQZBkIgye
+ n1S6Wz/wxYgGAAQ5FZLWIFxXH6qZ0w45KnEVxB6p2/rB/Fe0NDMCWPkG2xW5DP//dSzxDl08ZDxE
+ TC9NwnfHBTJIf2iZsVY=;
+Received: by mail.kneelwal.autos id h098020001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 3 Mar 2023 14:10:40 -0500 (envelope-from
- <welcome_to_adt_residential_security_systems-intel+2Dgvt+2Ddev=lists.freedesktop.org@holdhome.autos>)
-Date: Fri, 3 Mar 2023 14:10:40 -0500
-From: "Welcome To ADT Residential Security Systems"
- <welcome_to_adt_residential_security_systems@holdhome.autos>
+ Fri, 3 Mar 2023 14:42:47 -0500 (envelope-from
+ <renewalbyandersen-intel+2Dgvt+2Ddev=lists.freedesktop.org@kneelwal.autos>)
+Date: Fri, 3 Mar 2023 14:42:47 -0500
+From: RenewalbyAndersen <renewalbyandersen@kneelwal.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Keep Your Home Safe and Secure - Starting at $7*/Week *36 mo. agm't.
- Term and install fees. Landline req'd.
+Subject: WINTER Calling! Get discounted replacement windows today
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_631_454183357.1677870577550"
-Message-ID: <0.0.0.46.1D94E03D84A4D54.15C94D@mail.holdhome.autos>
+ boundary="----=_Part_544_1328513120.1677872491723"
+Message-ID: <0.0.0.3C.1D94E0854CDF16A.132449@mail.kneelwal.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_631_454183357.1677870577550
+------=_Part_544_1328513120.1677872491723
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 
@@ -66,166 +64,380 @@ Content-Transfer-Encoding: quoted-printable
   <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
   <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
 ort" />=20
-  <title>06030323</title>=20
+  <title>07030323</title>=20
  </head>=20
  <body style=3D"padding: 7% 0%;">=20
-  <div style=3D"margin: auto; max-width: 600px;;">=20
-   <header>=20
-    <div style=3D"background-image: url(https://secure-your-home.com/homese=
-curity/email/v25/images/v25_background.png); background-position: center ce=
-nter; background-size: cover; background-repeat: no-repeat;">=20
-     <div class=3D"new_adt_informativo" style=3D"position: relative;">=20
-      <div style=3D" padding: 7% 0% 45% 3%; width: 60%;">
-       <span style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, san=
-s-serif; font-size: 110%; display: block; font-weight: 500; color: #fff;">*=
-$0 Down. 0% Interest. Real Protection.</span>=20
-       <span style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, san=
-s-serif;; font-weight: bold; font-size: 170%; display: block; margin-top: 2=
-5%; color: #fff;">Don?t bet on luck. We can help protect your home this St=
- Patrick?s Day</span>=20
-       <span style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, san=
-s-serif; font-size: 60%; display: block; font-weight: 500; width: 98%; marg=
-in-top: 1.5%; color: #fff;">*Financing requires 0% APR with equal monthly p=
-ayments based on term/equipment selected. Well-qualified credit. Taxes addt=
-'l. Early term fees apply. Google, Nest Cam, and Nest Doorbell are trademar=
-ks of Google LLC. New customers only. For full terms and pricing <a href=3D=
-"" style=3D"text-decoration: none; color: #fff;"><b><u>click here</u> </b><=
-/a> .</span>=20
-       <div style=3D"padding: 3% 0%;">
-        <a href=3D"http://www.holdhome.autos/c055L2U395CI8H613l4ozdc9P124a_36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTQmde5cq1n05OzpwD/shillings-piano" style=3D"color: #fff; text-decoration: none;=
-" target=3D"_blank"><span style=3D"display: inline-block; font-weight: 500;=
- font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1=
-10%; padding: 4.5% 11%; border-radius: 8px; background-color: #E66650;">GET=
- MY FREE QUOTE </span></a>
-       </div>=20
-      </div>=20
-      <div style=3D"max-width: 35%; display: inline-block; position: absolu=
-te; top: 12%; left: 75%;">
-       <a href=3D"http://www.holdhome.autos/c055L2U395CI8H613l4ozdc9P124a_36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTQmde5cq1n05OzpwD/shillings-piano" target=3D"_blank"><img alt=3D"" src=3D"=
-http://www.holdhome.autos/forecasting-bendable/de64B2395B7aDx13A4WrdccK124aM36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQTQmde6JBs10M5qzwDL" width=3D"100%" /></a>
-      </div>=20
-     </div>=20
-    </div>=20
-   </header>=20
-   <section class=3D"contenido_fintomativo_closs">=20
-    <div id=3D"bac_kground">=20
-     <div style=3D"max-width: 75%; margin: auto; text-align: center; paddin=
-g: 5% 0%;">=20
-      <div style=3D"display: inline-block; max-width: 50%; margin: auto;">
-       <a href=3D"http://www.holdhome.autos/c055L2U395CI8H613l4ozdc9P124a_36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTQmde5cq1n05OzpwD/shillings-piano" target=3D"_blank"><img alt=3D"" src=3D"=
-http://www.holdhome.autos/5b15Qw2395Skt7a12i4dcdOg124aM36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQTQmde5o10wM6fAwpyD/lovably-knapsacks" width=3D"120%" /></a>
-      </div>=20
-      <div style=3D"padding: 5.5% 0%">
-       <span style=3D"text-align: center; display: block; line-height: 150%=
-; font-size: 220%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-s=
-erif; font-weight: 500; width: 90%; margin: auto;">Smart, flexible cameras =
-to fit any home</span>
-       <br />=20
-       <span style=3D"display: block; font-family: 'Segoe UI', Tahoma, Gene=
-va, Verdana, sans-serif; font-weight: normal; width: 50%; margin: auto; fon=
-t-size: 120%;">Now ADT sells and installs Google Nest Products. <span style=
-=3D"color: #5272B2; font-weight: normal; font-family: 'Segoe UI', Tahoma, G=
-eneva, Verdana, sans-serif; display: block;">No worries.</span></span>=20
-       <div style=3D" width: 60%; margin: auto; padding: 5%; 0% ">
-        <a href=3D"http://www.holdhome.autos/c055L2U395CI8H613l4ozdc9P124a_36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTQmde5cq1n05OzpwD/shillings-piano" target=3D"_blank"><img alt=3D"" src=3D"=
-http://www.holdhome.autos/6296m23An95BF7ma12g4dcoeV124aG36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQTQmde6e1Xl0r6UywA@D/lovably-knapsacks" width=3D"100%" /></a>
-        <br /> &nbsp;=20
-        <div>
-         <a href=3D"http://www.holdhome.autos/c055L2U395CI8H613l4ozdc9P124a_36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQTQmde5cq1n05OzpwD/shillings-piano" style=3D"color: #fff; text-decoration: none=
-;" target=3D"_blank"><span style=3D"display: inline-block; font-weight: 500=
-; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: =
-100%; padding: 4.5% 11%; border-radius: 8px; background-color: #E66650;">GE=
-T MY FREE QUOTE </span></a>
-        </div>=20
-       </div>=20
-      </div>=20
-     </div>=20
-    </div>=20
-    <div class=3D"segundo_contex">=20
-     <div style=3D"padding: 7% 0%;">
-      <span style=3D"font-family: Arial, Helvetica, sans-serif; font-weight=
-: normal; text-align: center; display: block; font-size: 80%;">1501 Yamato =
-Rd, Boca Raton, FL 33431 &copy;2022 ADT LLC</span>
-      <br /> &nbsp;=20
-      <div>
-       <span style=3D"font-family: Arial, Helvetica, sans-serif; font-weigh=
-t: normal; text-align: justify; display: block; font-size: 67.5%; padding: =
-0% 6%; line-height: 135%;">*Financing: Requires retail installment agreemen=
-t. Financing available for equipment and installation costs only. Financing=
- available for well-qualified borrowers at 0% Annual Percentage Rate for a =
-minimum of $599 up to a max limit of $5,000 for each approved application. =
-First payment due upon equipment installation and subsequent payments in eq=
-ual monthly installments for the term selected (excluding any applicable fi=
-nes and service charge increases). 12, 24, 36, &amp; 60-month terms availab=
-le. Longer terms require additional credit qualifications. Full remaining b=
-alance for equipment and installation due immediately upon termination of t=
-he related ADT services for ADT-provided financing. Late Charge ? ADT may i=
-mpose a one-time charge on each payment that is more than ten (10) days pas=
-t due, up to the maximum amount permitted by law, but in no event will this=
- amount exceed $5.00. Prepayment ? if prepayments are made, there is no pen=
-alty or refund. Financing is not available in all geographic regions and Pu=
-erto Rico. Google, Nest Doorbell and Google Home are trademarks of Google L=
-LC.</span>
-       <br />=20
-       <span style=3D"font-family: Arial, Helvetica, sans-serif; font-weigh=
-t: normal; text-align: justify; display: block; font-size: 67.5%; padding: =
-0% 6%; line-height: 135%;">Interactive Services: ADT Command Interactive So=
-lutions Services (&laquo;ADT Command&raquo;) helps you manage your home env=
-ironment and family lifestyle. Requires purchase of an ADT alarm system wit=
-h 36 month monitoring contract ranging from $45.99-$59.99/ mo with QSP (24-=
-month monitoring contract in California, total fees ranging $1,103.76-$1,43=
-9.76), enrollment in ADT Easy Pay, and a compatible device with Internet an=
-d email access. These interactive services do not cover the operation or ma=
-intenance of any household equipment/systems that are connected to the ADT =
-Command equipment. All ADT Command services are not available with all inte=
-ractive service levels. All ADT Command services may not be available in al=
-l geographic areas. You may be required to pay additional charges to purcha=
-se equipment required to utilize the interactive service features you desir=
-e.</span>
-       <br />=20
-       <span style=3D"font-family: Arial, Helvetica, sans-serif; font-weigh=
-t: normal; text-align: justify; display: block; font-size: 67.5%; padding: =
-0% 6%; line-height: 135%;">General: Additional charges may apply in areas t=
-hat require guard response service for municipal alarm verification. System=
- remains property of ADT. Local permit fees may be required. Prices and off=
-ers subject to change and may vary by market. Additional taxes and fees may=
- apply. Satisfactory credit required. A security deposit may be required. S=
-imulated screen images and photos are for illustrative purposes only.</span=
->
-       <br />=20
-       <span style=3D"font-family: Arial, Helvetica, sans-serif; font-weigh=
-t: normal; text-align: justify; display: block; font-size: 67.5%; padding: =
-0% 6%; line-height: 135%;">Google Nest products and services featured are d=
-esigned to make life easier and to build a helpful home and were not design=
-ed specifically for life-sustaining or safety-critical use cases. These pro=
-ducts and services depend upon working internet, Wi-Fi, and, in some cases,=
- the service availability from ADT and/or Google. To learn more, please vis=
-it <a href=3D"http://www.holdhome.autos/cucumbers-bound/e046BLX2395S86Hz11O4dcaC124aL36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQTQmde5cz1h06A1wj2D" target=3D"_blank">http://www.holdhome.autos/cucumbers-bound/e046BLX2395S86Hz11O4dcaC124aL36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQTQmde5cz1h06A1wj2D</a></span>
-       <br />=20
-       <span style=3D"font-family: Arial, Helvetica, sans-serif; font-weigh=
-t: normal; text-align: justify; display: block; font-size: 67.5%; padding: =
-0% 6%; line-height: 135%;">&copy;2023 ADT LLC. All rights reserved. ADT, th=
-e ADT logo, (800) ADT-ASAP and the product/service names listed in this doc=
-ument are marks and/or registered marks. Unauthorized use is strictly prohi=
-bited. Third-party marks are the property of their respective owners. Licen=
-se information available at www.ADT.com/legal or by calling (800) ADT-ASAP.=
- CA ACO7155, 974443, PPO120288; MA 172C; NC Licensed by the Alarm Systems L=
-icensing Board of the State of North Carolina; 2736-CSA, 2397-CSA, 2381-CSA=
-; NY 12000305615, 12000261120; PA 090797; MS 15019511.</span>
-       <br />=20
-       <br />=20
-       <span style=3D"font-family: Arial, Helvetica, sans-serif; font-weigh=
-t: normal; text-align: justify; display: block; font-size: 50%; padding: 0%=
- 6%; line-height: 135%;">Do you want to stop getting these emails? You can =
-<a href=3D"http://www.holdhome.autos/8db5p239q5E8k6D13Wgs4dcbL124ao36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQTQmde7o1DV0rA6a3AwlD/extraterrestrial-Grecianize" style=3D"text-decoration: none; color: #000;"><b><u>=
-unsubscribe here</u></b> </a></span>
-      </div>=20
-     </div>=20
-    </div>=20
-   </section>=20
+  <div style=3D"margin: auto; max-width: 600px;">=20
+   <h3><a href=3D"http://www.kneelwal.autos/crossers-microprogramming/abc4C2395PM86G12O4Ndd0h124bJ36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ4QmdK7bqSJX106SOwDOB" target=3D"_blank"><img alt=3D"" src=3D"=
+http://www.kneelwal.autos/c9b4m2395j7asH12d4Idd3U124bq36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ4QmdK6zZ1w0z5pWwqD/supporter-Carlsbads" width=3D"100%" /></a></h3>=20
+   <footer style=3D"max-width: 620px; margin: auto; outline: solid 2px; bor=
+der-radius: 8px;">=20
+    <address style=3D"background-color: #464646; padding: 1% 0%; font-famil=
+y: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-=
+size: 70%; text-align: center; border-radius: 8px; color: #fff;"><span>This=
+ is an advertisement. This message has been sent to you through an affiliat=
+e of Renewal by Andersen.</span><br /> <br /> <span>To be removed from rece=
+iving future emails, <a href=3D"http://www.kneelwal.autos/6bf4r2395f8U6y12X4dyd1v124bw36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ4QmdK5pow106tAwADP/Mennonite-disguise" target=3D"_blank">Unsubscribe h=
+ere.</a></span><br /> <br /> <span>If you have questions or concerns, conta=
+ct our customer support team, <a href=3D"http://www.kneelwal.autos/d4f6Q23mH95Lr8J612S4udd2w124bN36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ4QmdK5zT1l05jLlwD/Mennonite-disguise" target=3D"_blank">here=
+</a></span><br /> <br /> <span>2040 Merrick Road Unit 408 Merrick, NY 1156=
+6</span></address>=20
+   </footer>=20
+  </div>=20
+  <p> <style type=3D"text/css">@media only screen and (max-width:600px) {p,=
+ ul li, ol li, a { font-size:16px!important; line-height:150%!important } h=
+1 { font-size:30px!important; text-align:center; line-height:120%!important=
+ } h2 { font-size:26px!important; text-align:center; line-height:120%!impor=
+tant } h3 { font-size:20px!important; text-align:center; line-height:120%!i=
+mportant } h1 a { font-size:30px!important; text-align:center } h2 a { font=
+-size:24px!important; text-align:center } h3 a { font-size:20px!important; =
+text-align:center } .es-menu td a { font-size:16px!important } .es-header-b=
+ody p, .es-header-body ul li, .es-header-body ol li, .es-header-body a { fo=
+nt-size:16px!important } .es-footer-body p, .es-footer-body ul li, .es-foot=
+er-body ol li, .es-footer-body a { font-size:16px!important } .es-infoblock=
+ p, .es-infoblock ul li, .es-infoblock ol li, .es-infoblock a { font-size:1=
+2px!important } *[class=3D"gmail-fix"] { display:none!important } .es-m-tx=
+t-c, .es-m-txt-c h1, .es-m-txt-c h2, .es-m-txt-c h3 { text-align:center!imp=
+ortant } .es-m-txt-r, .es-m-txt-r h1, .es-m-txt-r h2, .es-m-txt-r h3 { text=
+-align:right!important } .es-m-txt-l, .es-m-txt-l h1, .es-m-txt-l h2, .es-m=
+-txt-l h3 { text-align:left!important } .es-m-txt-r img, .es-m-txt-c img, .=
+es-m-txt-l img { display:inline!important } .es-button-border { display:blo=
+ck!important } a.es-button { font-size:20px!important; display:block!import=
+ant; border-left-width:0px!important; border-right-width:0px!important } .e=
+s-btn-fw { border-width:10px 0px!important; text-align:center!important } .=
+es-adaptive table, .es-btn-fw, .es-btn-fw-brdr, .es-left, .es-right { width=
+:100%!important } .es-content table, .es-header table, .es-footer table, .e=
+s-content, .es-footer, .es-header { width:100%!important; max-width:600px!i=
+mportant } .es-adapt-td { display:block!important; width:100%!important } .=
+adapt-img { width:100%!important; height:auto!important } .es-m-p0 { paddin=
+g:0px!important } .es-m-p0r { padding-right:0px!important } .es-m-p0l { pad=
+ding-left:0px!important } .es-m-p0t { padding-top:0px!important } .es-m-p0b=
+ { padding-bottom:0!important } .es-m-p20b { padding-bottom:20px!important =
+} .es-mobile-hidden, .es-hidden { display:none!important } .es-desk-hidden =
+{ display:table-row!important; width:auto!important; overflow:visible!impor=
+tant; float:none!important; max-height:inherit!important; line-height:inher=
+it!important } .es-desk-menu-hidden { display:table-cell!important } table.=
+es-table-not-adapt, .esd-block-html table { width:auto!important } table.es=
+-social { display:inline-block!important } table.es-social td { display:inl=
+ine-block!important } }
+      #outlook a {
+       padding:0;
+      }
+      .ExternalClass {
+       width:100%;
+      }
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {
+       line-height:100%;
+      }
+      .es-button {
+       mso-style-priority:100!important;
+       text-decoration:none!important;
+      }
+      a[x-apple-data-detectors] {
+       color:inherit!important;
+       text-decoration:none!important;
+       font-size:inherit!important;
+       font-family:inherit!important;
+       font-weight:inherit!important;
+       line-height:inherit!important;
+      }
+      .es-desk-hidden {
+       display:none;
+       float:left;
+       overflow:hidden;
+       width:0;
+       max-height:0;
+       line-height:0;
+       mso-hide:all;
+      }
+     =20
+      span.yshortcuts { color:#000; :none; border:none;}
+      span.yshortcuts:hover,
+      span.yshortcuts:active,
+      span.yshortcuts:focus {color:#000; :none; border:none;}
+</style> </p>=20
+  <span class=3D"eoa_ujf" style=3D"display: none !important; font-size: 0px=
+; line-height: 0; color: #FFFFFF; visibility: hidden; opacity: 0; height: 0=
+; width: 0; mso-hide: all;">Richard Moore of Austin Real Estate Experts wis=
+hes you a Merry Christmas &amp; Happy New Year</span>=20
+  <div class=3D"es-wrapper-color" style=3D": #F6F6F6;">=20
+   <table cellpadding=3D"0" cellspacing=3D"0" class=3D"es-wrapper" style=3D=
+"mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; b=
+order-spacing: 0px; padding: 0; margin: 0; width: 100%; height: 100%; backg=
+round-repeat: repeat; background-position: center top;" width=3D"100%">=20
+    <tbody>=20
+     <tr style=3D"border-collapse: collapse;">=20
+      <td style=3D"padding: 0; margin: 0;" valign=3D"top">=20
+       <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" class=3D=
+"es-content eoa_ujf" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+ border-collapse: collapse; border-spacing: 0px; table-layout: fixed !impor=
+tant; width: 100%;">=20
+        <tbody>=20
+         <tr style=3D"border-collapse: collapse;">=20
+          <td align=3D"center" class=3D"es-adaptive" style=3D"padding: 0; m=
+argin: 0;">=20
+           <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" clas=
+s=3D"es-content-body" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+; border-collapse: collapse; border-spacing: 0px; : transparent;" width=3D"=
+600">=20
+            <tbody>=20
+             <tr style=3D"border-collapse: collapse;">=20
+              <td align=3D"left" style=3D"padding: 10px; margin: 0;">=20
+               <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spa=
+cing: 0px;" width=3D"100%">=20
+                <tbody>=20
+                 <tr style=3D"border-collapse: collapse;">=20
+                  <td align=3D"center" style=3D"padding: 0; margin: 0;" val=
+ign=3D"top" width=3D"580">=20
+                   <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border=
+-spacing: 0px;" width=3D"100%">=20
+                    <tbody>=20
+                     <tr style=3D"border-collapse: collapse;">=20
+                      <td align=3D"center" class=3D"es-infoblock" style=3D"=
+padding: 0; margin: 0; line-height: 14px; font-size: 12px; color: #CCCCCC;"=
+> <p style=3D"margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adju=
+st: none; mso-line-height-rule: exactly; font-size: 12px; font-family: helv=
+etica, 'helvetica neue', arial, verdana, sans-serif; line-height: 14px; col=
+or: #CCCCCC;">&nbsp;</p> </td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table>=20
+       <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" class=3D=
+"es-header eoa_ujf" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt; =
+border-collapse: collapse; border-spacing: 0px; table-layout: fixed !import=
+ant; width: 100%; : transparent; background-repeat: repeat; background-posi=
+tion: center top;">=20
+        <tbody>=20
+         <tr style=3D"border-collapse: collapse;">=20
+          <td align=3D"center" style=3D"padding: 0; margin: 0;">=20
+           <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" clas=
+s=3D"es-header-body" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+ border-collapse: collapse; border-spacing: 0px; : #FFFFFF;" width=3D"600">=
+=20
+            <tbody>=20
+             <tr style=3D"border-collapse: collapse;">=20
+              <td align=3D"left" style=3D"margin: 0; padding-top: 10px; pad=
+ding-bottom: 10px; padding-left: 10px; padding-right: 10px;">=20
+               <table align=3D"left" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"es-left" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-collapse: collapse; border-spacing: 0px; float: left;">=20
+                <tbody>=20
+                 <tr style=3D"border-collapse: collapse;">=20
+                  <td align=3D"left" class=3D"es-m-p20b" style=3D"padding: =
+0; margin: 0;" width=3D"280">=20
+                   <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border=
+-spacing: 0px;" width=3D"100%">=20
+                    <tbody>=20
+                     <tr style=3D"border-collapse: collapse;">=20
+                      <td align=3D"left" style=3D"padding: 0; margin: 0;">&=
+nbsp;</td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table>=20
+               <table align=3D"right" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"es-right" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt; bo=
+rder-collapse: collapse; border-spacing: 0px; float: right;">=20
+                <tbody>=20
+                 <tr style=3D"border-collapse: collapse;">=20
+                  <td align=3D"left" style=3D"padding: 0; margin: 0;" width=
+=3D"280">=20
+                   <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border=
+-spacing: 0px;" width=3D"100%">=20
+                    <tbody>=20
+                     <tr style=3D"border-collapse: collapse;">=20
+                      <td align=3D"right" style=3D"padding: 0; margin: 0; p=
+adding-top: 10px;"> <p style=3D"margin: 0; -webkit-text-size-adjust: none; =
+-ms-text-size-adjust: none; mso-line-height-rule: exactly; font-size: 14px;=
+ font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif; line=
+-height: 21px; color: #373A44;">&nbsp;</p> <p style=3D"margin: 0; -webkit-t=
+ext-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: ex=
+actly; font-size: 14px; font-family: helvetica, 'helvetica neue', arial, ve=
+rdana, sans-serif; line-height: 21px; color: #373A44;">&nbsp;</p> </td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table>=20
+               <!--[if mso]></td></tr></table><![endif]--></td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table>=20
+       <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" class=3D=
+"es-content eoa_ujf" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+ border-collapse: collapse; border-spacing: 0px; table-layout: fixed !impor=
+tant; width: 100%;">=20
+        <tbody>=20
+         <tr style=3D"border-collapse: collapse;">=20
+          <td align=3D"center" style=3D"padding: 0; margin: 0;">=20
+           <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" clas=
+s=3D"es-content-body" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+; border-collapse: collapse; border-spacing: 0px; : #CFFFFF;" width=3D"600"=
+>=20
+            <tbody>=20
+             <tr style=3D"border-collapse: collapse;">=20
+              <td align=3D"left" style=3D"padding: 0; margin: 0;">=20
+               <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spa=
+cing: 0px;" width=3D"100%">=20
+                <tbody>=20
+                 <tr style=3D"border-collapse: collapse;">=20
+                  <td align=3D"center" style=3D"padding: 0; margin: 0;" val=
+ign=3D"top" width=3D"600">=20
+                   <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border=
+-spacing: 0px;" width=3D"100%">=20
+                    <tbody>=20
+                     <tr style=3D"border-collapse: collapse;">=20
+                      <td align=3D"center" style=3D"padding: 0; margin: 0; =
+position: relative;">&nbsp;</td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table>=20
+       <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" class=3D=
+"es-footer eoa_ujf" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt; =
+border-collapse: collapse; border-spacing: 0px; table-layout: fixed !import=
+ant; width: 100%; : transparent; background-repeat: repeat; background-posi=
+tion: center top;">=20
+        <tbody>=20
+         <tr style=3D"border-collapse: collapse;">=20
+          <td align=3D"center" style=3D"padding: 0; margin: 0;">=20
+           <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" clas=
+s=3D"es-footer-body" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+ border-collapse: collapse; border-spacing: 0px;" width=3D"600">=20
+            <tbody>=20
+             <tr style=3D"border-collapse: collapse;">=20
+              <td align=3D"left" style=3D"margin: 0; padding-top: 20px; pad=
+ding-bottom: 20px; padding-left: 20px; padding-right: 20px; ">=20
+               <table align=3D"left" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"es-left" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-collapse: collapse; border-spacing: 0px; float: left;">=20
+                <tbody>=20
+                 <tr style=3D"border-collapse: collapse;">=20
+                  <td align=3D"left" class=3D"es-m-p20b" style=3D"padding: =
+0; margin: 0;" width=3D"270">&nbsp;</td>=20
+                 </tr>=20
+                </tbody>=20
+               </table>=20
+               <table align=3D"right" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"es-right" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt; bo=
+rder-collapse: collapse; border-spacing: 0px; float: right;">=20
+                <tbody>=20
+                 <tr style=3D"border-collapse: collapse;">=20
+                  <td align=3D"left" style=3D"padding: 0; margin: 0;" width=
+=3D"270">=20
+                   <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border=
+-spacing: 0px;" width=3D"100%">=20
+                    <tbody>=20
+                     <tr style=3D"border-collapse: collapse;">=20
+                      <td align=3D"left" style=3D"padding: 0; margin: 0; pa=
+dding-top: 25px;"> <p style=3D"margin: 0; -webkit-text-size-adjust: none; -=
+ms-text-size-adjust: none; mso-line-height-rule: exactly; font-size: 14px; =
+font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif; line-=
+height: 21px; color: #FFFFFF;">&nbsp;</p> </td>=20
+                     </tr>=20
+                     <tr style=3D"border-collapse: collapse;">=20
+                      <td align=3D"left" style=3D"padding: 0; margin: 0; pa=
+dding-top: 25px;"> <p style=3D"margin: 0; -webkit-text-size-adjust: none; -=
+ms-text-size-adjust: none; mso-line-height-rule: exactly; font-size: 14px; =
+font-family: helvetica, 'helvetica neue', arial, verdana, sans-serif; line-=
+height: 21px; color: #FFFFFF;">&nbsp;</p> <p style=3D"margin: 0; -webkit-te=
+xt-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exa=
+ctly; font-size: 14px; font-family: helvetica, 'helvetica neue', arial, ver=
+dana, sans-serif; line-height: 21px; color: #FFFFFF;">&nbsp;</p> </td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table>=20
+       <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" class=3D=
+"es-content eoa_ujf" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt;=
+ border-collapse: collapse; border-spacing: 0px; table-layout: fixed !impor=
+tant; width: 100%;">=20
+        <tbody>=20
+         <tr style=3D"border-collapse: collapse;">=20
+          <td align=3D"center" style=3D"padding: 0; margin: 0;">=20
+           <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" clas=
+s=3D"es-content-body" style=3D"mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+; border-collapse: collapse; border-spacing: 0px; : transparent;" width=3D"=
+600">=20
+            <tbody>=20
+             <tr style=3D"border-collapse: collapse;">=20
+              <td align=3D"left" style=3D"margin: 0; padding-left: 20px; pa=
+dding-right: 20px; padding-top: 30px; padding-bottom: 30px;">=20
+               <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spa=
+cing: 0px;" width=3D"100%">=20
+                <tbody>=20
+                 <tr style=3D"border-collapse: collapse;">=20
+                  <td align=3D"center" style=3D"padding: 0; margin: 0;" val=
+ign=3D"top" width=3D"560">=20
+                   <table cellpadding=3D"0" cellspacing=3D"0" style=3D"mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border=
+-spacing: 0px;" width=3D"100%">=20
+                    <tbody>=20
+                     <tr style=3D"border-collapse: collapse;">=20
+                      <td align=3D"center" style=3D"padding: 0; margin: 0; =
+display: none;">&nbsp;</td>=20
+                     </tr>=20
+                    </tbody>=20
+                   </table> </td>=20
+                 </tr>=20
+                </tbody>=20
+               </table> </td>=20
+             </tr>=20
+            </tbody>=20
+           </table> </td>=20
+         </tr>=20
+        </tbody>=20
+       </table> </td>=20
+     </tr>=20
+    </tbody>=20
+   </table>=20
   </div>  =20
- <img src=3D"http://www.holdhome.autos/dc74N2395v8Zt511d4dcfZ124ao36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQTQmde6S1U0Wz6eLwDjq/consideration-throttle" alt=3D""/></body>
+ <img src=3D"http://www.kneelwal.autos/20f5g2x395WJ8t512vs4dd4B124bB36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ4QmdK7MUkj1z05hywDz/liquid-glowers" alt=3D""/></body>
 </html>
 
-------=_Part_631_454183357.1677870577550--
+------=_Part_544_1328513120.1677872491723--
 
