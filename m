@@ -1,52 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F96D6A9A1C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 16:01:11 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D57ED6A9AAA
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 16:30:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D871589CE3;
-	Fri,  3 Mar 2023 15:01:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A19EC10E6C0;
+	Fri,  3 Mar 2023 15:30:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
- [185.176.79.56])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2E0C589CE3;
- Fri,  3 Mar 2023 15:01:07 +0000 (UTC)
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.200])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4PSrdJ6cxfz6H7B7;
- Fri,  3 Mar 2023 22:56:04 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- lhrpeml500005.china.huawei.com (7.191.163.240) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Fri, 3 Mar 2023 15:01:03 +0000
-Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
- lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2507.021; 
- Fri, 3 Mar 2023 15:01:03 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Subject: RE: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
-Thread-Topic: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
-Thread-Index: AQHZSpxHUh/YYv3qukeFp+lKFtoCf67jLB2AgACBDoCAAOlEAIAAn5IAgAIKi/CAAO3wAIAA+kPA
-Date: Fri, 3 Mar 2023 15:01:03 +0000
-Message-ID: <d59a0262d5bf423c9e49ad4ac6015296@huawei.com>
-References: <20230227111135.61728-1-yi.l.liu@intel.com>
- <Y/0Cr/tcNCzzIAhi@nvidia.com>
- <DS0PR11MB7529A422D4361B39CCA3D248C3AC9@DS0PR11MB7529.namprd11.prod.outlook.com>
- <SA1PR11MB5873479F73CFBAA170717624F0AC9@SA1PR11MB5873.namprd11.prod.outlook.com>
- <Y/64ejbhMiV77uUA@Asurada-Nvidia>
- <b7c1f9d5b4b647f0b0686c3b99f3d006@huawei.com>
- <ZAE2J0I1LiBjWUnm@Asurada-Nvidia>
-In-Reply-To: <ZAE2J0I1LiBjWUnm@Asurada-Nvidia>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.178]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Fri, 03 Mar 2023 15:30:27 UTC
+Received: from mail.dialplp.autos (unknown [45.13.189.150])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3974A10E6BE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri,  3 Mar 2023 15:30:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dialplp.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=paypal.insider.knowledge@dialplp.autos; 
+ bh=pHM4FkTOxY9vRfx2Ng+vbiNpqHo=;
+ b=aMBuHisfh6PKI7WBjuWdGT+2+jdSGCMhiVyf6HfBM2IzVccgQEKoRHddWany6LUZnt6zNsP8GYBB
+ KoFa6aJerVP/M6M0eJF7ZfTz3Lz9+dgMLGNiAjH5OvgU2EqkRgL5rhdtS/xAJEX91dOrWDmDaKGO
+ tQP+ir95dVmKME0cMR0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dialplp.autos;
+ b=ao93AoM8RJsggCoDMVtoYchAPE8GiW7mRz7E8DkzgB196YvmuAvMTzNHoxl3Dopu4G6jVnk9044e
+ 6RA0pNX1YjIyGCXEH/VPUVqEZisGoY7W92vnRL92tFUkaVv/jZszJW6pIX5u9rEkzPecD0JMsJOp
+ 8p7ICcGzyN+Apkt+ANQ=;
+Received: by mail.dialplp.autos id h089960001ge for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 3 Mar 2023 10:14:13 -0500 (envelope-from
+ <paypal.insider.knowledge-intel+2Dgvt+2Ddev=lists.freedesktop.org@dialplp.autos>)
+Date: Fri, 3 Mar 2023 10:14:13 -0500
+From: "Paypal Insider Knowledge" <paypal.insider.knowledge@dialplp.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Best reward deal you can get for being a loyal customer
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_94_1963249369.1677856432560"
+Message-ID: <0.0.0.A.1D94DE2D052B0EE.34175@mail.dialplp.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,106 +50,92 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
- Jason Gunthorpe <jgg@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>, "Zhao,
- Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+------=_Part_94_1963249369.1677856432560
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>01030323</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div class="pay_cros12" style="max-width: 600px; margin: auto;"> 
+   <header id="cloufare_dow"> 
+    <div>
+     <span class="on_title" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 180%; display: block; text-align: justify; line-height: 145%; text-align: center;">A Special Offer for Our Valued Users</span>
+     <br /> 
+     <span id="continue" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 300%; display: block; text-align: justify; line-height: 145%; text-align: center; font-weight: bold;">PAY<b style="">PAL</b></span> 
+     <div style="text-align: center;"> 
+      <div style="max-width: 23%; margin: auto; vertical-align: top; display: inline-block;">
+       <a href="http://www.dialplp.autos/differentiators-assembly/d505t2p395m8nI612zp4dae_1245Y36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQFQmd95p10ni6eWwD3B"><img alt="" src="http://www.dialplp.autos/ef36YlW2395JFW7a13iQ4dbF0Y1245g36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQFQmd97SKQhk106R1LwDl/differentiators-assembly" width="100%" /></a>
+      </div> 
+      <div style="max-width: 23%; margin: auto; vertical-align: top; display: inline-block;">
+       <a href="http://www.dialplp.autos/differentiators-assembly/d505t2p395m8nI612zp4dae_1245Y36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQFQmd95p10ni6eWwD3B"><img alt="" src="" width="100%" /></a>
+      </div> 
+     </div> 
+    </div> 
+   </header> 
+   <section class="text_grove_inc."> 
+    <div>
+     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 110%; display: block; text-align: justify; line-height: 145%;">We wanted to take a moment to thank you for choosing PayPal. Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you.<br /> <br /> As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with PayPal.<br /> <br /> Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span> 
+     <div style="text-align: center; padding: 7% 0%;">
+      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 110%; display: block; text-align: justify; line-height: 145%;"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 80%; display: inline-block; padding: 1.5% 2%; background-color: rgb(241, 241, 241); font-weight: 900;">For completing the survey, you can receive a $100 Gift!</span> </span>
+     </div> 
+     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 110%; display: block; text-align: justify; line-height: 145%;"> <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 100%; display: block; text-align: center; line-height: 145%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</span> </span> 
+     <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 140%; display: block; text-align: center; font-weight: bold; padding: 7% 0%;">
+      <a href="http://www.dialplp.autos/differentiators-assembly/d505t2p395m8nI612zp4dae_1245Y36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQFQmd95p10ni6eWwD3B" target="_blank">TAKE THE SURVEY</a>
+     </div> 
+     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 70%; display: block;  font-weight: 900; text-align: center; line-height: 145%;">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The PayPal Survey</span> 
+     <hr />
+    </div> 
+   </section> 
+   <br /> 
+   <br /> &nbsp; 
+   <footer style="text-align: center;"> 
+    <address style=" max-width: 700px; margin: auto; font-weight: 900; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 75%; color: #000000;"> <p><small><span style="text-decoration: none; ">To discontinue email,</span><a href="http://www.dialplp.autos/encrypt-revolution/26a4s2395an8s611p4dafg1245s36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQFQmd97z1krQk05WzqwD" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Continue.Over.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small><font dir="stoning"></font><big></big><small></small><small></small><span style="discouraging"><font style="malted"></font></span><small></small></small> </small></p> </address> 
+   </footer> 
+  </div> 
+  <p style="text-align: center; font-size:7pt;">&nbsp;</p> 
+  <table border="0" cellpadding="5" cellspacing="0" style="margin: auto;" width="700"> 
+   <tbody> 
+    <tr> 
+     <td align="left" style="padding-bottom:15px;">&nbsp;</td> 
+     <td align="right" style="padding-bottom:15px; font-size:11px; color:#777777;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="center" colspan="2" style="">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table border="0" cellpadding="5" cellspacing="0" style="margin: auto;" width="700"> 
+   <tbody> 
+    <tr> 
+     <td style="padding-bottom:25px;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table border="0" cellpadding="5" cellspacing="0" style="margin: auto;" width="700"> 
+   <tbody> 
+    <tr> 
+     <td align="center" colspan="2" style="">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left">&nbsp; 
+      <center> 
+       <p style="font-size: 10px; line-height: 14px; color: #777777;">&nbsp;</p> 
+      </center> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.dialplp.autos/a7f6w23hw95V8nl513QTW4db1n1245I36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQFQmd95Yn10j6gBwjAD/pinning-duchesses" alt=""/></body>
+</html>
 
-> -----Original Message-----
-> From: Nicolin Chen [mailto:nicolinc@nvidia.com]
-> Sent: 02 March 2023 23:51
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: Xu, Terrence <terrence.xu@intel.com>; Liu, Yi L <yi.l.liu@intel.com>;
-> Jason Gunthorpe <jgg@nvidia.com>; alex.williamson@redhat.com; Tian,
-> Kevin <kevin.tian@intel.com>; joro@8bytes.org; robin.murphy@arm.com;
-> cohuck@redhat.com; eric.auger@redhat.com; kvm@vger.kernel.org;
-> mjrosato@linux.ibm.com; chao.p.peng@linux.intel.com;
-> yi.y.sun@linux.intel.com; peterx@redhat.com; jasowang@redhat.com;
-> lulu@redhat.com; suravee.suthikulpanit@amd.com;
-> intel-gvt-dev@lists.freedesktop.org; intel-gfx@lists.freedesktop.org;
-> linux-s390@vger.kernel.org; Hao, Xudong <xudong.hao@intel.com>; Zhao,
-> Yan Y <yan.y.zhao@intel.com>
-> Subject: Re: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
->=20
-> On Thu, Mar 02, 2023 at 09:43:00AM +0000, Shameerali Kolothum Thodi
-> wrote:
->=20
-> > Hi Nicolin,
-> >
-> > Thanks for the latest ARM64 branch. Do you have a working Qemu branch
-> corresponding to the
-> > above one?
-> >
-> > I tried the
-> https://github.com/nicolinc/qemu/tree/wip/iommufd_rfcv3%2Bnesting%2B
-> smmuv3
-> > but for some reason not able to launch the Guest.
-> >
-> > Please let me know.
->=20
-> I do use that branch. It might not be that robust though as it
-> went through a big rebase.
-
-Ok. The issue seems to be quite random in nature and only happens when ther=
-e
-are multiple vCPUs. Also doesn't look like related to VFIO device assignmen=
-t
-as I can reproduce Guest hang without it by only having nested-smmuv3 and
-iommufd object.
-
-./qemu-system-aarch64-iommuf -machine virt,gic-version=3D3,iommu=3Dnested-s=
-mmuv3,iommufd=3Diommufd0 \
--enable-kvm -cpu host -m 1G -smp cpus=3D8,maxcpus=3D8 \
--object iommufd,id=3Diommufd0 \
--bios QEMU_EFI.fd \
--kernel Image-6.2-iommufd \
--initrd rootfs-iperf.cpio \
--net none \
--nographic \
--append "rdinit=3Dinit console=3DttyAMA0 root=3D/dev/vda rw earlycon=3Dpl01=
-1,0x9000000" \
--trace events=3Devents \
--D trace_iommufd=20
-
-When the issue happens, no output on terminal as if Qemu is in a locked sta=
-te.
-
- Can you try with the followings?
->=20
-> --trace "iommufd*" --trace "smmu*" --trace "vfio_*" --trace "pci_*" --tra=
-ce
-> "msi_*" --trace "nvme_*"
-
-The only trace events with above are this,
-
-iommufd_backend_connect fd=3D22 owned=3D1 users=3D1 (0)
-smmu_add_mr smmuv3-iommu-memory-region-0-0
-
-I haven't debugged this further. Please let me know if issue is reproducibl=
-e=20
-with multiple vCPUs at your end. For now will focus on VFIO dev specific te=
-sts.
-
-Thanks,
-Shameer=20
-
-
+------=_Part_94_1963249369.1677856432560--
 
