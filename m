@@ -1,95 +1,106 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C8E46AA12E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Mar 2023 22:30:01 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 449236AA87E
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Mar 2023 08:01:15 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 977D510E766;
-	Fri,  3 Mar 2023 21:29:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2D1BB10E0DA;
+	Sat,  4 Mar 2023 07:01:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B4C4510E765;
- Fri,  3 Mar 2023 21:29:56 +0000 (UTC)
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 323LC2Kk037241; Fri, 3 Mar 2023 21:29:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- subject : to : cc : references : from : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=4tKpQjyCVxm+zcaOQlBgWVbXx35RnrGGSZPi8xunkKg=;
- b=FTD29dE259v+nhX1gsjASQWLdD3tYD8egwA86tMCsG8W1flKrHkpQ+NJvg6JRaym9EGG
- 90rW8+F9C2tnurAR5D6zFNysI8koHNuEVzPwuZsRGd8D11qRYVTG9D/THd7gEeL4hsma
- 4z8XhM1YBsA25VJHREidIKfbbJ8/Ftiwc7Ts9SBbDpXThA7RUEiVOT/is5wRWth+876W
- PBKu/wEcKz141hF0eee738VaydyJ73EnB7z2j0JKy7qLOHkIdPRsnARV8FqskG7MVP85
- 2ux/qwlDgHTp0zNRxHskOR3QoNwSv3fkps4Tg8Q8cvtnq8iaLfexbvw8sJISEzpuRCj2 gA== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p3rke0da9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 Mar 2023 21:29:43 +0000
-Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 323LIibY017284;
- Fri, 3 Mar 2023 21:29:43 GMT
-Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
- [169.53.41.122])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3p3rke0d9q-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 Mar 2023 21:29:42 +0000
-Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
- by ppma04dal.us.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 323JFCPE005621;
- Fri, 3 Mar 2023 21:29:41 GMT
-Received: from smtprelay05.wdc07v.mail.ibm.com ([9.208.129.117])
- by ppma04dal.us.ibm.com (PPS) with ESMTPS id 3nybexxeyt-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 Mar 2023 21:29:41 +0000
-Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com
- [10.39.53.229])
- by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 323LTd3t55050582
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 3 Mar 2023 21:29:40 GMT
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id DB1245805E;
- Fri,  3 Mar 2023 21:29:39 +0000 (GMT)
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 160355805B;
- Fri,  3 Mar 2023 21:29:37 +0000 (GMT)
-Received: from [9.65.215.88] (unknown [9.65.215.88])
- by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Fri,  3 Mar 2023 21:29:36 +0000 (GMT)
-Message-ID: <9f06b141-223d-710b-b8b2-6f57b2afb02e@linux.ibm.com>
-Date: Fri, 3 Mar 2023 16:29:36 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2065.outbound.protection.outlook.com [40.107.237.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3D9A210E0CE;
+ Sat,  4 Mar 2023 07:01:10 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dXQoQBsu9nzi4bVCv7Fq4L+RcdYJHJTvnllzZAGmlfQkCWNEmL5i7YEQahFEFjZwi0izZuqnfM5146n/IdEDUnXd9Nu2LSzYWCl0lOT4Y+TbOT5WhGSJE5vsEeHuXJRhoUQwuDeI4dKFKIfaPfw+vtlNMI7gu2Q7lPnHL7Y9Deon+wb06BZQ47NhWB0cRiSVjozlwthENY5K65lYADIFnwVHDu5wtq0kd5ZxYekmOKZPCJin2KLcNUyVjbZdybJxInKfaB34hRuMaDqh2pRLxhvNcq2lLIfwUX9qYz5/X4Rr46vILRrDjvWx/94Ltx5KOZh/xu6v024NhfwZJxfZqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=h05/N5nUOvvJ1R9LIJPn+dfhuOS/kQ58HacyhdRrT0c=;
+ b=Pq2tJ/OXuZkOl/kGrVzHa6VYgOP77xitIFLEVndzK9JX6YyNRKyqgr1VFM21QbuXqdySwdeb5V8KVqbF19Hv0Nnrh4k8gUw/cGrM9cL5GBTW5ChrOzpkGxNmiqS/i7LpnImBtH/O6Gm6P58l0bsYlg9ZeShSmWkPvKpzgGsx0C+Lbo/xplw2oCTOq+rwEpbkTJ1MV2VjP87ibsRFRii5aGmmzNekCTwLrhN83Tefo+ZMTz8qSccsDpyT3wUgQUMsxdLzaTyWeusx8HL+5lFapNf7nfr36MaKDgnjIX6/WimAHs57C9vHbnXcf4BG+Hh5yn6mvGX1CiiIaJmfFb73PA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.233) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=h05/N5nUOvvJ1R9LIJPn+dfhuOS/kQ58HacyhdRrT0c=;
+ b=TxFqheA/KGO5FuTGGOjxKnhuGEM+wvr/wt1TB8Ny7N7rAa2x1k8beBbv5lVZG3nHlh7Fdid2hjhcagl2DqpMZFnuS9qOfAKm1e4ojdsP7Qke5abgaloOqsLqrIq/3eywCgV2c/P3280PytaaBe7/nnn2DgPeBWEF+IELMZ9IJcvaLQxOAhQFw5Mor/Z+3vIQfRBV+OAp1cbXRZxfzzQGvn5gWYgGxkk12nyPwixKfTSldFRS26gg7jZz8LBKxd2V4vOtkzQSBBpBf82UFjOtDB+T4ds4rnEUBM4jBKUhaLeJfaFa3oYZyDbuhZndePSakfQ1toyzYK9x74w+W4fb0A==
+Received: from MW4P221CA0001.NAMP221.PROD.OUTLOOK.COM (2603:10b6:303:8b::6) by
+ IA1PR12MB6188.namprd12.prod.outlook.com (2603:10b6:208:3e4::6) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6156.19; Sat, 4 Mar 2023 07:01:07 +0000
+Received: from CO1NAM11FT087.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:303:8b:cafe::ba) by MW4P221CA0001.outlook.office365.com
+ (2603:10b6:303:8b::6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.23 via Frontend
+ Transport; Sat, 4 Mar 2023 07:01:06 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.233) by
+ CO1NAM11FT087.mail.protection.outlook.com (10.13.174.68) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6178.11 via Frontend Transport; Sat, 4 Mar 2023 07:01:05 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
+ (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Fri, 3 Mar 2023
+ 23:00:55 -0800
+Received: from drhqmail202.nvidia.com (10.126.190.181) by
+ drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.37; Fri, 3 Mar 2023 23:00:55 -0800
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
+ (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5 via Frontend
+ Transport; Fri, 3 Mar 2023 23:00:54 -0800
+Date: Fri, 3 Mar 2023 23:00:52 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
 Subject: Re: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
-Content-Language: en-US
-To: Nicolin Chen <nicolinc@nvidia.com>, "Xu, Terrence" <terrence.xu@intel.com>
+Message-ID: <ZALspPvvLGFuK96F@Asurada-Nvidia>
 References: <20230227111135.61728-1-yi.l.liu@intel.com>
  <Y/0Cr/tcNCzzIAhi@nvidia.com>
  <DS0PR11MB7529A422D4361B39CCA3D248C3AC9@DS0PR11MB7529.namprd11.prod.outlook.com>
  <SA1PR11MB5873479F73CFBAA170717624F0AC9@SA1PR11MB5873.namprd11.prod.outlook.com>
  <Y/64ejbhMiV77uUA@Asurada-Nvidia>
-From: Matthew Rosato <mjrosato@linux.ibm.com>
-In-Reply-To: <Y/64ejbhMiV77uUA@Asurada-Nvidia>
-Content-Type: text/plain; charset=UTF-8
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: ily9JCOrlmUQ7iG8vpjaLOjC_EaASRyy
-X-Proofpoint-ORIG-GUID: e69JxHb8q15QE4ojBx5smmhbMjMu2hDX
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ <b7c1f9d5b4b647f0b0686c3b99f3d006@huawei.com>
+ <ZAE2J0I1LiBjWUnm@Asurada-Nvidia>
+ <d59a0262d5bf423c9e49ad4ac6015296@huawei.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.219,Aquarius:18.0.942,Hydra:6.0.573,FMLib:17.11.170.22
- definitions=2023-03-03_05,2023-03-03_01,2023-02-09_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 impostorscore=0
- mlxlogscore=999 spamscore=0 malwarescore=0 adultscore=0 mlxscore=0
- bulkscore=0 lowpriorityscore=0 clxscore=1011 suspectscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2212070000 definitions=main-2303030178
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <d59a0262d5bf423c9e49ad4ac6015296@huawei.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1NAM11FT087:EE_|IA1PR12MB6188:EE_
+X-MS-Office365-Filtering-Correlation-Id: 294a8e3c-55b7-4194-cd02-08db1c7e39a2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: gOQwIWj0SFK68mDDNUisaZ2BFGlcNImC+RmvfXFB972b9q8rwRh4sy2OLcJYbQJ7MDAsoAVUKsEZrd3OrJuwOA9ynAfaYjF0lzX/dgK1MHAz4G/B1LT/8tAU/g03N77SR0Gmd1xMPbqPmqcC6+zkz9i8aBARm5YhbgvLNW8b9zh+0yhTxNvCnC2kYy3OjBOzV9J345y4J7BpEWDnsTL82U6/8DTB2DqSseHlsX2Fa1mEpljaHtSgODzjNzeJaHy6Yv/x5mFbo8eCq1SuNcHohArvlnmlgS0zQichbSx4wpxBhu5iJ2+K+35C4SDqBB8//vqXisUlSQ29Ndh/JGvF3LSUsPK/W6lJKQcEp1pHLmkAIf5S3TT54AhSSCciAQyO33b8Mf0CSRj5T8pU6Io/0hBBqHA+a/wRJ+ltqfrYIEzthtSRKvtoNWArw6GS+uEhGbtCN7/M6aGYjjgxETLpt8b5npQk1+HFT7dD2Js0QHq3f4oWwNGJiWE6krufqyezEG5oFcnPLJSz43hEZwm1nOEjXTx1OISrdGqnClxNQhiulUXCiPIZl0q0Ve70eryImRxQczShcupxeEw5NGAeLZPddx7CVnKN2RqEi55GtaktArUrfbmb8smE1T54I8kacTsPI9plmY27OB20gvIr+5lThEtHdZfX1VPDAAW8phb6pO3LXRlEMjXz6wkfBB7NNtcJM1+ppE6sdNjPwE+am+G4kCiZ34HyHUg80Ae5uvM0qh/5Do7HLM3jeif+lap3
+X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
+ SFS:(13230025)(4636009)(39860400002)(376002)(346002)(396003)(136003)(451199018)(40470700004)(36840700001)(46966006)(186003)(2906002)(82740400003)(7636003)(356005)(9686003)(33716001)(26005)(53546011)(7416002)(5660300002)(36860700001)(8936002)(41300700001)(40460700003)(336012)(966005)(316002)(86362001)(70586007)(4326008)(70206006)(8676002)(82310400005)(40480700001)(55016003)(6916009)(426003)(83380400001)(478600001)(54906003)(47076005);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Mar 2023 07:01:05.8516 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 294a8e3c-55b7-4194-cd02-08db1c7e39a2
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT087.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6188
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,45 +113,104 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "lulu@redhat.com" <lulu@redhat.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "Hao, Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>, "Zhao,
- Yan Y" <yan.y.zhao@intel.com>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- Jason Gunthorpe <jgg@nvidia.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
  "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>, "Zhao,
+ Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 2/28/23 9:29 PM, Nicolin Chen wrote:
-> On Tue, Feb 28, 2023 at 04:58:06PM +0000, Xu, Terrence wrote:
+On Fri, Mar 03, 2023 at 03:01:03PM +0000, Shameerali Kolothum Thodi wrote:
+> External email: Use caution opening links or attachments
 > 
->> Verified this series by "Intel GVT-g GPU device mediated passthrough" and "Intel GVT-d GPU device direct passthrough" technologies.
->> Both passed VFIO legacy mode / compat mode / cdev mode, including negative tests.
->>
->> Tested-by: Terrence Xu <terrence.xu@intel.com>
 > 
-> Sanity-tested this series on ARM64 with my wip branch:
-> https://github.com/nicolinc/iommufd/commits/wip/iommufd-v6.2-nesting
-> (Covering new iommufd and vfio-compat)
+> > -----Original Message-----
+> > From: Nicolin Chen [mailto:nicolinc@nvidia.com]
+> > Sent: 02 March 2023 23:51
+> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> > Cc: Xu, Terrence <terrence.xu@intel.com>; Liu, Yi L <yi.l.liu@intel.com>;
+> > Jason Gunthorpe <jgg@nvidia.com>; alex.williamson@redhat.com; Tian,
+> > Kevin <kevin.tian@intel.com>; joro@8bytes.org; robin.murphy@arm.com;
+> > cohuck@redhat.com; eric.auger@redhat.com; kvm@vger.kernel.org;
+> > mjrosato@linux.ibm.com; chao.p.peng@linux.intel.com;
+> > yi.y.sun@linux.intel.com; peterx@redhat.com; jasowang@redhat.com;
+> > lulu@redhat.com; suravee.suthikulpanit@amd.com;
+> > intel-gvt-dev@lists.freedesktop.org; intel-gfx@lists.freedesktop.org;
+> > linux-s390@vger.kernel.org; Hao, Xudong <xudong.hao@intel.com>; Zhao,
+> > Yan Y <yan.y.zhao@intel.com>
+> > Subject: Re: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
+> >
+> > On Thu, Mar 02, 2023 at 09:43:00AM +0000, Shameerali Kolothum Thodi
+> > wrote:
+> >
+> > > Hi Nicolin,
+> > >
+> > > Thanks for the latest ARM64 branch. Do you have a working Qemu branch
+> > corresponding to the
+> > > above one?
+> > >
+> > > I tried the
+> > https://github.com/nicolinc/qemu/tree/wip/iommufd_rfcv3%2Bnesting%2B
+> > smmuv3
+> > > but for some reason not able to launch the Guest.
+> > >
+> > > Please let me know.
+> >
+> > I do use that branch. It might not be that robust though as it
+> > went through a big rebase.
 > 
-> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Ok. The issue seems to be quite random in nature and only happens when there
+> are multiple vCPUs. Also doesn't look like related to VFIO device assignment
+> as I can reproduce Guest hang without it by only having nested-smmuv3 and
+> iommufd object.
+> 
+> ./qemu-system-aarch64-iommuf -machine virt,gic-version=3,iommu=nested-smmuv3,iommufd=iommufd0 \
+> -enable-kvm -cpu host -m 1G -smp cpus=8,maxcpus=8 \
+> -object iommufd,id=iommufd0 \
+> -bios QEMU_EFI.fd \
+> -kernel Image-6.2-iommufd \
+> -initrd rootfs-iperf.cpio \
+> -net none \
+> -nographic \
+> -append "rdinit=init console=ttyAMA0 root=/dev/vda rw earlycon=pl011,0x9000000" \
+> -trace events=events \
+> -D trace_iommufd
+> 
+> When the issue happens, no output on terminal as if Qemu is in a locked state.
+> 
+>  Can you try with the followings?
+> >
+> > --trace "iommufd*" --trace "smmu*" --trace "vfio_*" --trace "pci_*" --trace
+> > "msi_*" --trace "nvme_*"
+> 
+> The only trace events with above are this,
+> 
+> iommufd_backend_connect fd=22 owned=1 users=1 (0)
+> smmu_add_mr smmuv3-iommu-memory-region-0-0
+> 
+> I haven't debugged this further. Please let me know if issue is reproducible
+> with multiple vCPUs at your end. For now will focus on VFIO dev specific tests.
 
-Tested a few different flavors of this series on s390 (I grabbed the most recent v6 copy from github):
+Oh. My test environment has been a single-core vCPU. So that
+doesn't happen to me. Can you try a vanilla QEMU branch that
+our nesting branch is rebased on? I took a branch from Yi as
+the baseline, while he might take from Eric for the rfcv3.
 
-legacy (IOMMUFD=n): vfio-pci, vfio-ccw, vfio-ap
-compat (CONFIG_IOMMUFD_VFIO_CONTAINER=y): vfio-pci, vfio-ccw, vfio-ap
-compat+cdev+group (VFIO_DEVICE_CDEV=y && VFIO_GROUP=y): vfio-pci (over cdev using Yi's qemu branch as well as via group), vfio-ccw and vfio-ap via group
-compat+cdev-only (VFIO_DEVICE_CDEV=y && VFIO_GROUP=n): vfio-pci using Yi's qemu branch
+I am guessing that it might be an issue in the common tree.
 
-Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
+Thanks
+Nicolin
