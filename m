@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A89516AAB87
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Mar 2023 18:16:24 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8ABA76AABBF
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Mar 2023 19:01:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5CFB910E1CD;
-	Sat,  4 Mar 2023 17:16:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 470CA10E1A5;
+	Sat,  4 Mar 2023 18:01:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 328 seconds by postgrey-1.36 at gabe;
- Sat, 04 Mar 2023 17:16:16 UTC
-Received: from mail.knowlws.autos (unknown [45.13.189.94])
- by gabe.freedesktop.org (Postfix) with ESMTP id 446E710E1C4
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Sat, 04 Mar 2023 18:00:58 UTC
+Received: from mail.runspaw.autos (unknown [45.13.189.113])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 71E7410E0A5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Mar 2023 17:16:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=knowlws.autos;
+ Sat,  4 Mar 2023 18:00:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=runspaw.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes.member.benefit@knowlws.autos; 
- bh=22gFbWvuUkUUkzpVNC1sF4ceRl0=;
- b=h6x3+Gk2CtylX61vBXganaEQ3tMMeI/bqnAY6uUz5XkzZqj/On77eN9VqGGB3e930v/vdKI2eMQP
- KwTMDKxepPUYBzvK31rkAFzSqIhy1kekSxoMYmcHETKn0xfgiqa9ebNO2yKGzEncPQdjFbvh/d2m
- oq5khmKFJs5Bo26WSrM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=knowlws.autos;
- b=YjlsDhUP05WdCx9q3RwrGMcSzoEfYry2axuOpbD+PUNg3PU6KsAqeMGYPs2bxekT1y5gAGz43pTA
- kMf9EgvEAUt2RgWqacwwllEXjmNk+UOipwXt85CVZYlVnWTPrkHtQG1X8n3PpoYakYBbms4LAcT2
- IzdpPVROpZEX8qDxgAA=;
-Received: by mail.knowlws.autos id h0e8ge0001go for
+ i=splash_wine_spring_sale@runspaw.autos; 
+ bh=tg4Sbl7NU0z+MCYaqP4aw0ptO/4=;
+ b=bqzG0zDNnBO3+EdHzsCqxKP8qp3Nq5q1M0RQzGhah8Ve9StL8nLzqFIiBZgNODtArrmjtJzPpQnt
+ uDnqPPHoOzwl6dTkU2enVZSUoWjJViavE0ncpT974w3pNiGKcWfXYqTZR+JnYRPz2zmlHcJds8ZX
+ 7tIwuFT6LOJMEgk10cc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=runspaw.autos;
+ b=NqyBqsptT0Zti0qVHSq0zerU1rAjxyQLHOZ2GgJRdQcBrBnaEj7zV7GCq0q28crd5DGqU23sV/4v
+ 4gAPAC/tgLGfpHMV/XHF2EgLMJZrMUI03xe8P6/G56VUqrGvs6Ds2SRsos3fLEktdERcwIZ7PAxM
+ LhK/jkIXT4erh5JG7gM=;
+Received: by mail.runspaw.autos id h0edo20001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 4 Mar 2023 13:32:09 -0500 (envelope-from
- <lowes.member.benefit-intel+2Dgvt+2Ddev=lists.freedesktop.org@knowlws.autos>)
-Date: Sat, 4 Mar 2023 13:32:09 -0500
-From: "Lowes Member Benefit" <lowes.member.benefit@knowlws.autos>
+ Sat, 4 Mar 2023 14:18:46 -0500 (envelope-from
+ <splash_wine_spring_sale-intel+2Dgvt+2Ddev=lists.freedesktop.org@runspaw.autos>)
+Date: Sat, 4 Mar 2023 14:18:46 -0500
+From: "Splash Wine Spring Sale" <splash_wine_spring_sale@runspaw.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get your one-of-a-kind Stanley Tool Set from Lowe's without charge
+Subject: Splash Spring Sale &#127863; 15 Bottles of Wine for Only $89.95
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_538_2078059187.1677949555338"
-Message-ID: <0.0.0.3B.1D94EC7A1203374.684369@mail.knowlws.autos>
+ boundary="----=_Part_736_1670880948.1677952254070"
+Message-ID: <0.0.0.51.1D94ECE2433ED40.26EBCB@mail.runspaw.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_538_2078059187.1677949555338
+------=_Part_736_1670880948.1677952254070
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,105 +63,48 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>03030423</title> 
+  <title>04030423</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header> 
-    <div style="background-color: #e9e9e9; color: #686868; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;"> 
-     <div style="padding: 2%; font-size: 24px;">
-      <strong>Special Gift for intel-gvt-dev@lists.freedesktop.org</strong>
-     </div> 
-    </div> 
-    <div style="padding: 7%;">
-     <span style="display: block; text-align: center; font-family:Georgia, 'Times New Roman', Times, serif; font-size: 95%; font-weight: 500; ; line-height: 150%;">We hope this email finds you well. At Lowe's, we value your feedback and are committed to providing you with the best shopping experience possible. That's why we want to offer you a special incentive for taking the time to complete our customer survey.</span>
-    </div> 
-   </header> 
-   <section class="arranque" style="text-align: center; width: 85%; margin: auto;"> 
-    <div id="inque_pro">
-     <a href="http://www.knowlws.autos/honeysuckle-infect/7384I2395F86pj13SqS4de9S1251F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVQmQQ5J1V0s6GUUXwD" target="_blank"><img alt="" src="http://www.knowlws.autos/questioning-coatings/ada4r2395U_7na13H4UdeKbw1251l36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQVQmQQ6N10KnM5kpwDN" width="100%" /></a>
-    </div> 
-    <div style="padding: 3.5% 0%;">
-     <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 95%; text-align: justify; width: 80%; margin: auto; line-height: 150%;">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers.</span>
-    </div> 
-    <div style="padding: 1.5% 0% 3%; text-align: center;">
-     <a href="http://www.knowlws.autos/honeysuckle-infect/7384I2395F86pj13SqS4de9S1251F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVQmQQ5J1V0s6GUUXwD" style="font-size: 145%; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold; color: #9179fc;" target="_blank">Take the Survey</a>
-    </div> 
-    <div id="inque_pro" style="padding: 4.5% 0%;">
-     <a href="http://www.knowlws.autos/honeysuckle-infect/7384I2395F86pj13SqS4de9S1251F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVQmQQ5J1V0s6GUUXwD" target="_blank"><img alt="" src="http://www.knowlws.autos/Ozark-abutters/31e5e2h395X7aiJ13R4IdecqO1251z36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQVQmQQ7VPO1w0X6cWwD@A" width="100%" /></a>
-    </div> 
-    <div id="inque_pro" style="padding: 0% 0%;">
-     <a href="http://www.knowlws.autos/honeysuckle-infect/7384I2395F86pj13SqS4de9S1251F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVQmQQ5J1V0s6GUUXwD" target="_blank"><img alt="" src="http://www.knowlws.autos/98f6N23Qv95QA7aX13X4d_edYi1251L36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQVQmQQ5aH10X5HpMwD/Ozark-abutters" width="100%" /></a>
-    </div> 
-    <div style="padding: 3.5% 0%;">
-     <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 95%; text-align: justify; width: 80%; margin: auto; line-height: 150%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.</span>
-    </div> 
-    <div style="padding: 2.5% 0%;">
-     <a href="http://www.knowlws.autos/honeysuckle-infect/7384I2395F86pj13SqS4de9S1251F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVQmQQ5J1V0s6GUUXwD" style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold; font-size: 150%; color: darkorange;" target="_blank">Start Here Now</a>
-    </div> 
-    <div>
-     <span style="text-align: center; font-size: 90%; font-weight: bold; font-family: Georgia, 'Times New Roman', Times, serif; padding: 7% 0%; display: block;">Best regards,<br /> <br /> The Lowe's Survey Team</span>
-    </div> 
-    <hr />
-   </section> 
-   <footer style="text-align: center; max-width: 620px ; margin: auto;"> 
-    <address style=" padding: 1.5% 0%; font-size: 65%; font-weight: bold; color: rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> <p><span style="text-decoration: none; ">To change your subscription choices,</span><a href="http://www.knowlws.autos/honeysuckle-infect/d145mv2395e8Fx612s4dleaU1251L36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQVQmQQ5qh1Q06r@MBwD" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Click.This </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style class="bureaucracy"><font></style></font><span></span><span></span></p> </address> 
+   <h6><a href="http://www.runspaw.autos/1d35Y239U5h86gU13Ijg4defF1252w36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQqQmQR6zQ1iD05mNw0D/Lancaster-Hagstrom" target="_blank"><img alt="" src="http://www.runspaw.autos/locally-fielder/6c05i2T395gU7sa11g4df2m1252P36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQqQmQR7QgAXk106EWywyD" width="100%" /></a></h6> 
+   <footer> 
+    <address style="background-color: #552356; padding: 20px 5px; outline: solid 3px #000000;"> 
+     <div style="text-align: center;"> 
+      <div style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 12px; line-height: 14px; text-align: center; color: #ffffff; font-weight: bold;">
+       &nbsp;If you do not wish to receive future messages click here to 
+       <span class="unstyle-auto-detected-links"><a href="http://www.runspaw.autos/a256s23V9o5sq86w12b4dfI0Z1252A36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQqQmQR7kKuCg105XkwD1/blaster-hisses" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #E45D48;">unsubscribe</a></span>
+       <br /> 
+       <br /> 
+       <span class="unstyle-auto-detected-links"><a href="http://www.runspaw.autos/Skopje-shoals/e406z23zw95E8Xl612o4df1ny1252s36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQqQmQR5IC1K06EqwD1N" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #E45D48;">Splash Wines</a>&nbsp;|&nbsp; 1191 E Iron Eagle Dr., Suite #101 - Eagle, ID 83616</span>
+      </div> 
+     </div> </address> 
    </footer> 
   </div> 
-  <table border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; "> 
-   <tbody> 
-    <tr> 
-     <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td> 
-     <td class="container" style="font-family: sans-serif; font-size: 14px; vertical-align: top; display: block; Margin: 0 auto; max-width: 580px; padding: 10px; width: 580px;"> 
-      <div class="content" style="box-sizing: border-box; display: block; Margin: 0 auto; max-width: 580px; padding: 10px;"> 
-       <table> 
-        <tbody> 
-         <tr> 
-          <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;"> 
-           <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;"> 
-            <tbody> 
-             <tr> 
-              <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;"> <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">&nbsp;</p> <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">&nbsp;</p> 
-               <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;"> 
-                <tbody> 
-                 <tr> 
-                  <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;"> <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">&nbsp;</p> <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">&nbsp;</p> 
-                   <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;"> 
-                    <tbody> 
-                     <tr> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">&nbsp;</p> <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">&nbsp;</p> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <table border="0" class="footer" style="padding:0px;;padding:10px;margin-top:20px;font-size:12px;width:560px;line-height:16px"> 
-        <tbody> 
-         <tr style="padding:0px;border:0px"> 
-          <td style="padding:0px;border:0px">&nbsp;</td> 
-          <td class="3D" style="padding:0px;border:0px;color:#808080;">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <table style="padding-top: 8px;"> 
-        <tbody> 
-         <tr> 
-          <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 11px; color: #999999;">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> 
+  <table style="padding:0px;border:0px;width:100%;border-spacing:0"> 
+   <thead> 
+    <tr style="padding:0px;border:0px;font-weight:700;font-size:18px;"> 
+     <td style="border:0px;padding:0px 20px 0px 0px;;width:50px;padding:0px;text-align:center;vertical-align:middle;padding-top:5px;"> 
+      <div class="status-image" style="width:25px;background-size:25px;height:30px;margin-left:15px;margin-top:0px;vertical-align:middle">
+       &nbsp;
+      </div> </td> 
+     <td class="build-message" style="padding:0px;border:0px;padding:0px 20px 0px 0px;vertical-align:middle;"> 
+      <table background="" class="repository" style="padding:0px;border:0px;width:100%;color:#606060;font-size:18px;margin-bottom:15px;margin-top:15px;"> 
+       <tbody> 
+        <tr style="padding:0px;border:0px;"> 
+         <td style="padding:0px;border:0px;vertical-align:middle">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td> 
+      <div class="stop-watch" style="vertical-align:middle;padding:0px;background-size:20px;display:inline-block;width:20px;height:20px">
+       &nbsp;
       </div> </td> 
     </tr> 
-   </tbody> 
+   </thead> 
   </table>   
- <img src="http://www.knowlws.autos/c235vW2395KGU8511g4deeh1251Q36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQVQmQQ6RzQ1K05nWwBD/curiosity-persecutor" alt=""/></body>
+ <img src="http://www.runspaw.autos/9ad5w23w95Jux8513j4dmf3yz1252D36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQqQmQR7sO10kTT5VMwlD/conundrums-elected" alt=""/></body>
 </html>
 
-------=_Part_538_2078059187.1677949555338--
+------=_Part_736_1670880948.1677952254070--
 
