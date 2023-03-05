@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EF766AB1AD
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Mar 2023 19:09:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34C6F6AB1D4
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Mar 2023 20:13:12 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 03AC910E31C;
-	Sun,  5 Mar 2023 18:09:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0C64010E1F8;
+	Sun,  5 Mar 2023 19:13:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Sun, 05 Mar 2023 18:09:43 UTC
-Received: from mail.sithome.autos (unknown [45.13.189.84])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5B85310E31A
+X-Greylist: delayed 316 seconds by postgrey-1.36 at gabe;
+ Sun, 05 Mar 2023 19:13:09 UTC
+Received: from mail.tryunbra.autos (unknown [45.13.189.133])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 681DA10E1F8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  5 Mar 2023 18:09:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sithome.autos;
+ Sun,  5 Mar 2023 19:13:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tryunbra.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ahwsale@sithome.autos; bh=LIjXRR6geJNDqCUW4RbrDhmVesY=;
- b=ZF91Yda8fj17NF3KbP0N9iLpkL9Kfxj0kUVheO030+mnlVDpyxmMjgo7SoF41/EKY0M8PfK5VlSY
- qbQDYV/LGe59hgAbG/wI2zb2f9Q2oizQZmqLOj9hCnBm53QlERFwX1dd7nphuPguwMnuquNFqOMm
- 0ImeO0bYUuuoBPQupwU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sithome.autos;
- b=ZS9qYwhOyT5q3BrUtWO+HI3SnQK6tdpAO/Utb7RSsXynTiC/ERmVn2SPCBnM6G0Orabo32HEQE8z
- AUZB6AqU5LIf58ZwQAZIcoiJtXWSkQTiZgGYC+9tIJtmBve7/JlFSWM9h1IaRSRbK5BsmiRF4TKU
- tkjrPWvJsPBIS1ZzEKc=;
-Received: by mail.sithome.autos id h0jngo0001gc for
+ i=brain_blueprint_news@tryunbra.autos; 
+ bh=7gd5I2Z5D99PHIwClGAjyRflaUw=;
+ b=jJ3vRnu73qTNqrEIx7ZsybIoIMiMEsU0AUaPFKsuuV/mBTfDbSPtykqAYw9/LjiS4IcDJm51yHjC
+ thYbsvPrGm2pkTV49feMXahLK6wfuoL++yQysXLg7j32QMPSkskyjjzYr39n3AlF9o47nwkaPAMe
+ HOkqwu1q+EO0zzacpbA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tryunbra.autos;
+ b=Q8dQ7GZd9l+ZFN5NxgMHgZCW/LYYWmCZKC1xdrxnk8q8daUg5CXA0VqbCLTrD1ABfwmsZG9ExGZa
+ wNj4nATIo7fX5+pguQUniPd1yDg9T39NHVHpDyS7isPSnSSvdEaSC0EjE491RVKSTrYveJiB4YgO
+ mXl4Oj4Du7i3Rr2NiNY=;
+Received: by mail.tryunbra.autos id h0jksa0001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 5 Mar 2023 14:25:01 -0500 (envelope-from
- <ahwsale-intel+2Dgvt+2Ddev=lists.freedesktop.org@sithome.autos>)
-Date: Sun, 5 Mar 2023 14:25:01 -0500
-From: AHWSale <ahwsale@sithome.autos>
+ Sun, 5 Mar 2023 13:59:22 -0500 (envelope-from
+ <brain_blueprint_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@tryunbra.autos>)
+Date: Sun, 5 Mar 2023 13:59:22 -0500
+From: "Brain Blueprint News" <brain_blueprint_news@tryunbra.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Save on Home Warranty - 1st Month FREE
+Subject: The food that saves your brain
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_61_1010865894.1678039120258"
-Message-ID: <0.0.0.6.1D94F982E293B8C.8D90@mail.sithome.autos>
+ boundary="----=_Part_64_1433318702.1678042750449"
+Message-ID: <0.0.0.7.1D94F949949ECEE.1CBA1E@mail.tryunbra.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,73 +53,48 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_61_1010865894.1678039120258
+------=_Part_64_1433318702.1678042750449
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>05030523</title>=20
- </head>=20
- <body style=3D"padding: 7% 0%;">=20
-  <div style=3D"margin: auto; max-width: 600px;">=20
-   <p><a href=3D"http://www.sithome.autos/13d5W2p395H8S6x12g4e1fID125au36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ8QmRd6nAg1s06j@wD1p/pizza-shoreline" target=3D"_blank"><img alt=3D"" src=3D"=
-http://www.sithome.autos/d4f4G2395k7vYa12N4e2t1z125av36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ8QmRd5h10VD6Lq1OwD/litmus-radiates" width=3D"100%" /></a></p>=20
-   <footer id=3D"footer">=20
-    <address class=3D"new_footage">=20
-     <div class=3D"new_fromt12" style=3D"text-align: center;font-weight: 50=
-0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-=
-serif; background-color: #052d47; padding: 2.5% 3%; font-size: 85%; display=
-: block; line-height: 145%; color: #fff;">
-      <span>If you would like to discontinue all future updates from Americ=
-anHomeWarranty.net, please <a href=3D"http://www.sithome.autos/b6f6p2xo395Kk86x12i4e20qI125aG36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ8QmRd5z1M0n6G13wDW/alertness-gravest" target=3D"_blank">Click H=
-ere</a> or write us: 96 Craig Street, STE 325, Ellijay, GA 30540.<br /> <br=
- /> This an advertisement for AmericanHomeWarranty.net . </span>
-     </div> </address>=20
-   </footer>=20
-  </div>=20
-  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"template=
-Columns" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td align=3D"left" class=3D"rightColumnContent3" style=3D"padding: 15p=
-x 35px 15px 35px;font-size: 16px;font-family: 'Crimson Text', Times New Rom=
-an, serif; vertical-align: top;" width=3D"100%"><br /> &nbsp;</td>=20
-    </tr>=20
-   </tbody>=20
-  </table>=20
-  <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" class=3D"head=
-erTable" style=3D" " width=3D"560">=20
-   <tbody>=20
-    <tr>=20
-     <td align=3D"center" class=3D"headerContent2" style=3D"padding:10px 0p=
-x 10px 0px;"><span style=3D"font-family:'Oswald', sans-serif; font-size:19p=
-x; color:#333333;"><span style=3D"font-size:7px;">&nbsp;</span><span style=
-=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</spa=
-n><span style=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;=
-">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><span style=3D"f=
-ont-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><sp=
-an style=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nb=
-sp;</span><span style=3D"font-size:7px;">&nbsp;</span><span style=3D"font-s=
-ize:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><span st=
-yle=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</=
-span><span style=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7=
-px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><span style=
-=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</spa=
-n><span style=3D"font-size:7px;">&nbsp;</span><span style=3D"font-size:7px;=
-">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><span style=3D"f=
-ont-size:7px;">&nbsp;</span><span style=3D"font-size:7px;">&nbsp;</span><sp=
-an style=3D"font-size:7px;">&nbsp;</span></span></td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.sithome.autos/20f6s239mk5QP8s512Y4qe22i125as36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ8QmRd7fMOqC106W1wDW@/litmus-radiates" alt=3D""/></body>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>07030523</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="margin: auto; max-width: 600px;"> 
+   <h4><a href="http://www.tryunbra.autos/controlled-offers/ef45d23p95vL86B12k4e2I8K125cR36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQLQmRR6tw10oi5mjwAD" target="_blank"><img alt="" src="http://www.tryunbra.autos/escapee-boilers/51c4p2395Y7nal11j4e2bo125cN36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQLQmRR5iX1R05UlqwD" width="100%" /></a></h4> 
+   <footer style="max-width: 600px; margin: auto;"> 
+    <address style="background-color: #4b4b4b; color: #fff; padding: 2.5% 0%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 65%; text-align: center; outline: solid 2px; font-weight: bold;"> <p>If you do not wish to receive future messages click here to <a href="http://www.tryunbra.autos/axiomatizing-gingham/9ea6v239kH5p86C_11V4e29D125cl36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQLQmRR5yA10V5FAqwD" style="text-decoration: none; color: #ffc31f;;" target="_blank">unsubscribe</a><br /> <br /> <a href="http://www.tryunbra.autos/b516zL23k95mm8F611c4e2aG125cC36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQLQmRR7yzsVk106DJMywD/bistable-turbulently" style="text-decoration: none; color: #ffc31f;" target="_blank">New Brain Blueprint</a> | 321 N Central Expressway Suite 351 - McKinney, TX 75070</p> </address> 
+   </footer> 
+  </div> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="right" style="font-size: 16px;font-family: 'Crimson Text', Times New Roman, serif; padding:10px 10px 10px 20px;" valign="top" width="33%">&nbsp;</td> 
+     <td align="center" style="font-size: 16px;font-family: 'Crimson Text', Times New Roman, serif; padding:10px 0px 10px 0px;" valign="top" width="33%">&nbsp;</td> 
+     <td align="left" style="font-size: 16px;font-family: 'Crimson Text', Times New Roman, serif; padding:10px 0px 10px 0px;" valign="top" width="33%">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div align="center">
+   &nbsp;
+  </div> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="right" style="font-size: 16px;font-family: 'Crimson Text', Times New Roman, serif; padding:10px 10px 10px 20px;" valign="top" width="33%">&nbsp;</td> 
+     <td align="center" style="font-size: 16px;font-family: 'Crimson Text', Times New Roman, serif; padding:10px 10px 10px 20px;" valign="top" width="33%">&nbsp;</td> 
+     <td align="left" style="font-size: 16px;font-family: 'Crimson Text', Times New Roman, serif; padding:10px 0px 10px 0px;" valign="top" width="33%">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.tryunbra.autos/3776V23LJ95b85Bl11h4e2ci125cJ36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQLQmRR6rTH10l6hjXwUD/Burton-recurrence" alt=""/></body>
 </html>
 
-------=_Part_61_1010865894.1678039120258--
+------=_Part_64_1433318702.1678042750449--
 
