@@ -2,42 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5D5E6AB137
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Mar 2023 16:20:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ABA7F6AB14D
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Mar 2023 16:58:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 18E9210E170;
-	Sun,  5 Mar 2023 15:20:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7304410E2A9;
+	Sun,  5 Mar 2023 15:58:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
- Sun, 05 Mar 2023 15:20:02 UTC
-Received: from mail.offerntx.autos (unknown [45.13.189.24])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8943F10E078
+X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
+ Sun, 05 Mar 2023 15:58:34 UTC
+Received: from mail.passwt.autos (unknown [45.13.189.41])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6362A10E232
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  5 Mar 2023 15:20:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=offerntx.autos; 
+ Sun,  5 Mar 2023 15:58:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=passwt.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=darrel_francis@offerntx.autos; 
- bh=79Mm7q3EAxpuaQGdS85pXE3Wwx0=;
- b=Z8HcHRlSrArimAwrV0eGsQMP+QdQdnukE4BifkvRRXgLh7UfLSUmTR40PSPC7p3oEZOEzAUtftVI
- cLZJvv3fS2f0oElbPoQ82WYJ7S+3hUtHsn0gB891izTkS0bMPkjIhwDedvHLCrLbCZ8Xgb+5jdQu
- 86GiN1IQSYXf7irOTPc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=offerntx.autos;
- b=Ktgf+7DdKRDcq72LaKdSHZzdQ2+pF/4RxbRBo5gydSrs7I59ydtqEaHWIqfojAbQkEfgm7bKXl5U
- iUWAfkQdja/7vuhpgi3TI0CQjvkbXP2QuNNB406nJMr5UCm9LhWZMAmDmZg4+tU5mxbbXi+2Wj/E
- M6mc2+bqXrDFDoI4hJY=;
-Received: by mail.offerntx.autos id h0ipi40001gt for
+ i=walmart_love@passwt.autos; bh=zlWoDa048OuVqyUCOWJcMy9yVCQ=;
+ b=dLMghbbpwI33zQ8E4V7m6N1hBvBFLAKosXLCH8ECbIN+moZ23donAciQGYJReJHs8qO5onFTlvQo
+ 1thjXCP8qRrLcDVMnCyDsVJsplXaNPFyCTjckeOVuF780tCJszfWaI1kbaQIXxdjutWUiQmyty7M
+ /1bgh3dCfJa2vpQ5Aok=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=passwt.autos;
+ b=K3OzNzPB6uI4amTH+x6kpkZFcLL9pyxWTSCom3veZ7OnteiM2x+DDKwrLilp5294IfItiBYF66b0
+ 5o/wS9ezZOYEjQFkZ8/qjhUMHgy7GUCra2sl12OgO62dbdKZTsrCUTUSxHOmXOKTGBZHYZALTuI3
+ tESghfgXCpHFB8pfd+E=;
+Received: by mail.passwt.autos id h0iu2k0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 5 Mar 2023 10:09:42 -0500 (envelope-from
- <darrel_francis-intel+2Dgvt+2Ddev=lists.freedesktop.org@offerntx.autos>)
-Date: Sun, 5 Mar 2023 10:09:42 -0500
-From: "Darrel Francis" <darrel_francis@offerntx.autos>
+ Sun, 5 Mar 2023 10:44:30 -0500 (envelope-from
+ <walmart_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@passwt.autos>)
+Date: Sun, 5 Mar 2023 10:44:30 -0500
+From: "Walmart Love" <walmart_love@passwt.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Rewards coming for watching your favorite show
+Subject: Your visits are now rewarded for your loyalty - Awesome
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_712_1899669258.1678028976949"
-Message-ID: <0.0.0.4F.1D94F7483A8A904.230E48@mail.offerntx.autos>
+ boundary="----=_Part_40_811312110.1678031047456"
+Message-ID: <0.0.0.4.1D94F796052FEC8.ED47A@mail.passwt.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_712_1899669258.1678028976949
+------=_Part_40_811312110.1678031047456
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,31 +62,30 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>08030423</title> 
+  <title>09030423</title> 
  </head> 
- <body style=" padding: 7% 0%;"> 
-  <div style="margin: auto; max-width: 600px;"> 
+ <body style="padding: 7% 0%;"> 
+  <div style="max-width: 600px; margin: auto;"> 
    <header> 
     <div>
-     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 200%; text-align: center;">A Special Offer for Our Valued Users</span>
-    </div> 
-    <div>
-     <span style="display: block; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 250%; color: #ff0000;">NETFLIX</span>
-    </div> 
-    <div style="text-align: center;"> 
-     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
-      <a href="http://www.offerntx.autos/dc76B2I39s5z_86C12z4e0Q7V1256j36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhQmRm5B1R0W5SPwDO/jotted-plaintively" target="_blank"><img alt="" src="http://www.offerntx.autos/apartment-osmotic/5586t239lM5m7paL12r4e09IV1256h36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQhQmRm7kRvn1Y06SWATwD" width="100%" /></a>
+     <span style="display: block; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 200%; text-align: center;">A Special Offer for Our Valued Users</span> 
+     <div>
+      <span style="display: block; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 200%; text-align: center; color: #1e90ff;">WALMART</span> 
+      <div style="text-align: center;"> 
+       <div style="max-width: 35%; display: inline-block;">
+        <a href="http://www.passwt.autos/millions-evaluation/d6e6CBU2395ko86Q11Q4e0cL1257B36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQYQmRn5j1B0y5RLUwD" target=""><img alt="" src="http://www.passwt.autos/millions-evaluation/3b46D2sO395Cpt7a11p4e0eG1257q36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQYQmRn5kr10L5eXwDU" width="100%" /></a>
+       </div> 
+       <div style="max-width: 25%; display: inline-block; vertical-align: top;">
+        <a href="http://www.passwt.autos/millions-evaluation/d6e6CBU2395ko86Q11Q4e0cL1257B36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQYQmRn5j1B0y5RLUwD" target=""><img alt="" src="http://www.passwt.autos/moorings-possessional/2e26R23m9U5tUp7a11K4e0fG1257h36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQYQmRn5ltS105OywD@" width="100%" /></a>
+       </div> 
+      </div> 
      </div> 
-     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
-      <a href="http://www.offerntx.autos/dc76B2I39s5z_86C12z4e0Q7V1256j36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhQmRm5B1R0W5SPwDO/jotted-plaintively" target="_blank"><img alt="" src="http://www.offerntx.autos/d8b6yW23V95YrJ7a12l4e0a_j1256l36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhQmRm6e1zmB06Cl2wDP/Honshu-callous" width="100%" /></a>
-     </div> 
     </div> 
+    <br /> &nbsp;
    </header> 
-   <br /> 
-   <br /> &nbsp; 
    <section> 
     <div style="max-width: 90%; margin: auto; text-align: center; line-height: 150%;">
-     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;">We wanted to take a moment to thank you for choosing Netflix for you watch streaming services. Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you.<br /> <br /> As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with Netflix.<br /> <br /> Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
+     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;">We wanted to take a moment to thank you for choosing walmart for your shopping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you.<br /> <br /> As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your shop and overall experience with walmart. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
      <br /> &nbsp; 
      <div style="text-align: center;">
       <br /> 
@@ -99,126 +97,45 @@ Content-Transfer-Encoding: 7bit
      <br /> 
      <br /> &nbsp; 
      <div style="text-align: center;">
-      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;"><a href="http://www.offerntx.autos/dc76B2I39s5z_86C12z4e0Q7V1256j36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhQmRm5B1R0W5SPwDO/jotted-plaintively" style="color: #6a6bbe;"><span style="font-weight: bold; display: inline-block; font-size: 180%;"><u>TAKE THE SURVEY</u> </span></a> </span>
+      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;"><a href="http://www.passwt.autos/millions-evaluation/d6e6CBU2395ko86Q11Q4e0cL1257B36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQYQmRn5j1B0y5RLUwD" style="color: #5f7936"><span style="font-weight: bold; display: inline-block; font-size: 180%;"><u>TAKE THE SURVEY</u> </span></a> </span>
      </div> 
      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;"> </span>
      <br /> &nbsp; 
      <div style="text-align: center;">
-      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;"><span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 80%; ">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The Netflix Survey</span> </span>
+      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;"><span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 80%; ">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The Walmart Survey</span> </span>
      </div> 
      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;"> </span>
     </div> 
    </section> &nbsp; 
    <hr /> 
-   <footer style="max-width: 600px; margin: auto;"> 
-    <address style="text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; ; padding: 15px 0px;  font-weight: bold;"> <p><small><span style="text-decoration: none; ">To dispense with your subscription,</span><a href="http://www.offerntx.autos/jotted-plaintively/c246b239AC5gs86l11e4e08v1256A36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQhQmRm7Njx1Dx06BqwpJD" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Start Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font id="appendices"></font><span></span><small></small><span size="revulsion"></span><style class="beefsteak"></style> </small></p> </address> 
+   <footer> 
+    <address style="text-align: center; font-weight: normal; font-family: Arial, Helvetica, sans-serif;"> 
+     <div style="font-size: 10px;; padding: 15px; color: #000000; font-weight: bold;"> 
+      <p class="unsubscribe"><span style="text-decoration: none; ">To update your notification preferences,</span><a href="http://www.passwt.autos/d135w23G95E86jM13n4e0WjdC1257l36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQYQmRn7aLrJZ106BjwDAM/moorings-possessional" style="text-decoration-line: none;"> <span>Go Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style></style><font></font><big><style class="funeral"></big><font dir="protectiveness"></style><small><small><font style="stormy"></font><style size="dictations"></style></small></small></font><big></big></p> 
+     </div> </address> 
    </footer> 
   </div> 
-  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: top;" valign="top" width="100%"> 
+  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="left" style="padding: 20px 25px; word-break: break-word;"> 
-      <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:center;color:#212b35; text-transform: capitalize;">
-       &nbsp;
-      </div> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 10px 25px; word-break: break-word;"> 
-      <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">
-       &nbsp;
-      </div> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 5px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 0px; word-break: break-word;"> 
-      <ul style="list-style: none;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:20px;text-align:left;color:#0e0456;"> 
+     <td align="left" style="padding: 22px 40px 20px 40px;font-size: 16px;font-family: 'Crimson Text', Times New Roman, serif; line-height:125%"> 
+      <ul style="list-style-type: none;"> 
        <li>&nbsp;</li> 
        <li>&nbsp;</li> 
        <li>&nbsp;</li> 
-       <li>&nbsp;</li> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
+      </ul> <br /> <br /> <br /> <br /> &nbsp;</td> 
     </tr> 
+   </tbody> 
+  </table> 
+  <table align="center" cellpadding="0" cellspacing="0" class="headerTable" style="" width="560"> 
+   <tbody> 
     <tr> 
-     <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:10px;text-align:left;color:#0e0456;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 0px; word-break: break-word;"> 
-      <ul style="list-style: none;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:20px;text-align:left;color:#0e0456;"> 
-       <li>&nbsp;</li> 
-       <li>&nbsp;</li> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 25px; word-break: break-word;"> 
-      <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:24px;text-align:left;color:#0e0456;">
-       &nbsp;
-      </div> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
-      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
-      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
-      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
-      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
-      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
-      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
-      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
-       <li>&nbsp;</li> 
-      </ul> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 1px 25px; padding-bottom: 05px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 1px 25px; padding-bottom: 05px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding: 1px 25px; padding-bottom: 05px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
+     <td align="center" class="headerContent" style="padding:10px 0px 10px 0px;"><span style="font-family:'Oswald', sans-serif; font-size:19px; color:#333333;"><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span><span style="font-size:7px;">&nbsp;</span></span></td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.offerntx.autos/dipper-distributor/3k04q2395jOR8511k4e0bj1256I36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQhQmRm5c1Lo06slNwDj" alt=""/></body>
+ <img src="http://www.passwt.autos/Vaticanizations-metrical/6cp5C239w5S8L5y12R4De10A1257m36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQYQmRn5J1pC05zJwD@" alt=""/></body>
 </html>
 
-------=_Part_712_1899669258.1678028976949--
+------=_Part_40_811312110.1678031047456--
 
