@@ -2,159 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 072F66AB116
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Mar 2023 15:48:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B5D5E6AB137
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Mar 2023 16:20:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DBC8F10E050;
-	Sun,  5 Mar 2023 14:48:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 18E9210E170;
+	Sun,  5 Mar 2023 15:20:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1817D10E04F;
- Sun,  5 Mar 2023 14:48:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678027732; x=1709563732;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=pSWVOLYqIkOOdoXwaKfqdeTDD0mvZJ3y2etd/bxfiqA=;
- b=kZyZrXFeipE4cPG6JHkECZCKDF5NJ166kuktFygeZuzRhUMuIP+gWRG0
- dMrCx/FA1tv9TPeDvFIYYlVwwZib9S4NAn0h4OpXtLq+iIE66VHRliOWs
- mjrOCpkyRoOxsqVOmHSj/L100l+ycrfmLdL6fa6d9Yx/pEA8OmPppiO7q
- +VYCAV/WmUDzz7a1N0k7Uu83o8bZ/lwouAerKLxMVUrkdsqLm0MnmmjYx
- 9i9X7jAbrKBWVK5VpaQmKP8d3N4C/OnqYu5cuyhDQ8F5Iqd3MZKcIpBjh
- NLg2XGiSUY/NIeCHLSOh/UC5B5u67EfX7DDAI7w13fB7MpYytn6W5Rfht w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10640"; a="323689276"
-X-IronPort-AV: E=Sophos;i="5.98,235,1673942400"; d="scan'208";a="323689276"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2023 06:48:51 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10640"; a="675896577"
-X-IronPort-AV: E=Sophos;i="5.98,235,1673942400"; d="scan'208";a="675896577"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orsmga002.jf.intel.com with ESMTP; 05 Mar 2023 06:48:51 -0800
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Sun, 5 Mar 2023 06:48:50 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Sun, 5 Mar 2023 06:48:50 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Sun, 5 Mar 2023 06:48:50 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.170)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Sun, 5 Mar 2023 06:48:49 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XoWdBOfqHup4nQXnzgHwswBaxyNJ6g3qR2i7TGLe3/G4kW6o8HvcVId0IePmY7dWibNKvM+ZLJnQ/gm2FTCnviHrYWEJEIrhN2J8pWC/PabzYaneG3aqYR0AdUWqO0lOxUw9rksgRWXJ+XnUbzArKj+57vT8i0hjWiIRXsd0aTF3dKETZ4DVzeC2Qu4p7IDVUltEFn/Mge1p72IM05JV2osUrKzYt0rSioiXbYhPgzZIJvFkWyQ9nUgb0vneUdteB1Lz2jmScrWRsLphQFbSQY+L5vXsDkwrXQHqRXNcFDNvmMWSq2ofc0ItWUklHj6nsLtHYpEdiTwDIGzrMa7fdA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pSWVOLYqIkOOdoXwaKfqdeTDD0mvZJ3y2etd/bxfiqA=;
- b=e34WQCo5UJ4vFnR2+zLIvbXLgQWPDypvPwfNlIb7NbmAlOGXizhE5+snZWqcVJKGVt1+uCcSj3GZ/VN7uFOmaq9ExZ7JcOEkX5f5gSNjiGArJxm/WWwXOvK9MArDtchTlVqLydA8wRhkXjAIBZAML3iYQjwSiqe02M07a52cTI9FOvOQYPBCM/Ps3IGAM/DI1GSppmbFEb7eqxxl08yWvtNppayeIeb1r33M097WS3AC6Pxs5eSUajdZmqMUON9LzWkchroH0I/AcyXb1MO63UlbeS+OZWgD3507AFcs30wc8i8JxAeyCQxtC1iv7truXPlVuGjwPaHMJkebsfArlg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by MW3PR11MB4540.namprd11.prod.outlook.com (2603:10b6:303:56::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.27; Sun, 5 Mar
- 2023 14:48:47 +0000
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::6f7:944a:aaad:301f]) by DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::6f7:944a:aaad:301f%8]) with mapi id 15.20.6156.023; Sun, 5 Mar 2023
- 14:48:47 +0000
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>, "Tian, Kevin"
- <kevin.tian@intel.com>
-Subject: RE: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array in
- VFIO_DEVICE_PCI_HOT_RESET
-Thread-Topic: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array in
- VFIO_DEVICE_PCI_HOT_RESET
-Thread-Index: AQHZSpxNz0d7VXviIEytrFhyB5GUvK7m/3jggABFoQCAACyCAIAAGw8ggAETHYCAAKz6AIAC3GEw
-Date: Sun, 5 Mar 2023 14:48:47 +0000
-Message-ID: <DS0PR11MB7529BE88460582BD599DC1F7C3B19@DS0PR11MB7529.namprd11.prod.outlook.com>
-References: <20230227111135.61728-1-yi.l.liu@intel.com>
- <20230227111135.61728-10-yi.l.liu@intel.com>
- <DS0PR11MB75295B4B2578765C8B08AC7EC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB527688810514A262471E4BB78CB29@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZACX+Np/IY7ygqL5@nvidia.com>
- <DS0PR11MB7529531834C0A9F1D294A5CCC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB5276B825071A4819479079A68CB39@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20230303095542.2bfce5c2.alex.williamson@redhat.com>
-In-Reply-To: <20230303095542.2bfce5c2.alex.williamson@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|MW3PR11MB4540:EE_
-x-ms-office365-filtering-correlation-id: a30def52-d509-441b-dae0-08db1d88b9e5
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 5Dzkh+J6DQszklgzVfsZGjxUf5PGA8GQCGItRdzj/Y2ZqRAAShLVVy4y2L/Cm6X/5mYmEKkzzM+xe+dxGUYleaxnaofRbSBUlmmzNnCiq+1zNocwGqYTz5nPJm7FoaGxmxSL63JhpuHva3nUo17cJm3FaaTsFJm97vHCyjMMeaXAgKkrkuT7lxEHEDMI69Ft3y8+XKspKwnbCm9XD8KlYxQnM6JzM2xutxj8hr8WzXbLnTeqk+LXmFTuUqf8hoNBaKfpF9Gx900oMYX/nqdOf8dAhpj4PW7uhbish+Ze5dYjIKuH+MBeTUKckXkHqixwAmq+i3cDotQO2kgMKj8SX5hH/PYisUa7pWkSiakBVI2p78X3Jbx00ccR4/kVxmGJOGbMgMVF08aSob3HLKbgxbYj/TjUOmpNaFFsZJxMDMZQPt/H+XmQ392w7a2MN9zLyVz2TN+socSaNBI4zeW+DThx3uWsWiNlcqIKQYOm/ruiX2GKazf7tVnh43S/IsuQgJ0y46jyyuvt8chvow9NiEDku5stsosdMq1SPu+yvqkf5qDfeRlpADRIjTC3ZI8NBsgc5D2Jm80VyramzzFRoWmhCJB595RQUiYK1LBwzhZTVCSKupXy5NqyxfsdeDHWyX7aq+5wFfB2wDwXBB0cBnTlVsgGYFwYNcreTwIbHxaXkicI8lo7Fqn9nNtv/EdRTJ8dITiCJhJYGXHHkYFVcrXyCs9Z3V8LKwJWawU5pGk=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(136003)(39860400002)(346002)(376002)(366004)(396003)(451199018)(8936002)(7416002)(5660300002)(52536014)(66446008)(76116006)(66946007)(66556008)(66476007)(2906002)(8676002)(64756008)(4326008)(66899018)(6636002)(54906003)(110136005)(316002)(478600001)(7696005)(71200400001)(6506007)(26005)(41300700001)(55016003)(122000001)(33656002)(86362001)(82960400001)(83380400001)(38070700005)(186003)(38100700002)(9686003)(13296009);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WDFqSkNac3UySDNzNC9FK09yMFBGMmZnbXU2cHZMQWJjcGt0bWNOamM3V3ds?=
- =?utf-8?B?Rks3eEJqY2gvcWJMMG04eGE4alVWQ0hMWmJTSHo0QmNGTnVoVE1qK01CSXRp?=
- =?utf-8?B?Wlg4alRxTVlaMEcycnBvOXhHM09telVObWY0L1VsLzdLSGtQQXZqUXRTbFAx?=
- =?utf-8?B?djJJYUxWblZwMHBsbmw4VjdTYVplWDNaVmUvWUtyMGlpcnZ5a3ArYUtpWHlC?=
- =?utf-8?B?Q3REY2pwNGV6OEc3M0toQmVkMkNrNEE0WnhuWW5rWTNxa0V6YUNZd3ErYjVU?=
- =?utf-8?B?Nk9nQW5iSVVWTTNDZ2ZSa3ZndUZYWTB1WjVpSStsenRiWGxYanRRZ1duOTdL?=
- =?utf-8?B?Y1JUV28zbXloek5KcnBtUWY1T0lWbHVMUVpITWg5S2xZd0RvWTFZSW15SjZw?=
- =?utf-8?B?dExNWmhTS1B6V1dMOGhhWlZZUWFJaWlWMy9WU0VxeHc5b1JOVUxpQ2pGdng3?=
- =?utf-8?B?VGFWcWZNRGp1M0dNVXUwbGxqcnRNNklPeE1MYjZOUVU1QlZVQk9qQlRDR0M3?=
- =?utf-8?B?aVhYMDkrcE5rVjNkd3h1YkNNbklaZk0rWWNRRGJmMFZMZ1VYQ3RVRUNJS3hq?=
- =?utf-8?B?QlFIQkZ5RHdUWlpjLzlVOWFVOVZ1TFFNaENBUU14V0orSEJTd3BvTCtFdGk2?=
- =?utf-8?B?V0Jyckt6aFV6d2Y0QU9wRGJjV1htTDN5VXErbGtlVDhKeVZSV1MvaWhwVGEx?=
- =?utf-8?B?eGc4d2Q1VkxodHh5WUZBWFJtNklVYkFjNU9XOE5paTJIY3ZGdXNkaUlzczFH?=
- =?utf-8?B?NlczZGF3c09NaFJPbHlNbGZ0U05zUk00SnZ5bzUzL1duQ0plaVFhenNUTGhM?=
- =?utf-8?B?Z0tqRlZ3UGJRbTM1c0NyQk42b2VpODVLdlBLWlNpb3VzZUdRWkl0QkF2NGND?=
- =?utf-8?B?V0RUWWV4c0NaaXgzazRlOXQ2ODZIeDh2M2ZOVUZpeHlBczlZb1lDZXVPVnY1?=
- =?utf-8?B?ZEFsaGh3bmExWXdQcVRYVDA0a20rMUdBUXVwdTdSUERJRDVzVzAxS3MrT3Zv?=
- =?utf-8?B?VU5aQ0o2a0hySTVJaWJFSk1ReWxIekplWmlOQk9CRWtSMUNRVVh1NklrcWMw?=
- =?utf-8?B?Vm5PSzJtc3d6Um5CYVl0M0VSVkxjdnlmZ3diWkRKcEFST0RQajVVSEpMdlR3?=
- =?utf-8?B?Y2JUa3BQT2IvQnNKd0ZuOEkrYWMza2JwcnNEUHBvSE5vcnFyR0phNWZMQVd1?=
- =?utf-8?B?VmVYQTE4aXJaQ09rNDYxcTg2YXNWV3Y4b3V4QTBNMEd0a1VxdHFyWmtCYzcz?=
- =?utf-8?B?dFJyS1J0Vm12WlhXWWEvSmxjcUY0WnZIUlZoWWJZN2xoVFROVzIzdDRyVjFE?=
- =?utf-8?B?c2o4amNXZlRKOFpBR3liamhvOGlLdjdjMG14VC9ZMTRJOVZLUGQwV3B4cm9W?=
- =?utf-8?B?T0Y1cHZzWTd6SVNQODA5SWVUdllKaXQyN2NrL2JaaXY5ZlhQaDQzR0c5NmZD?=
- =?utf-8?B?R0xBbnFqVUNRdlFMOHhDaGVkVnc2MFRrSyt3TDQzRTA1NDFHVEt4UHhhNUN3?=
- =?utf-8?B?dzlrMEdzWndBSGorb3dxc1RhY1EyMzZ3eWt5SzdLd01pYldFa3NwZnk0QXRF?=
- =?utf-8?B?Z1A2ZFhaTXBDL1FkV09qN1YvV2FiK3RkNFFYd3pUSGp0Umt4cFBPaE9xeGYx?=
- =?utf-8?B?bUd4b1hTd2VvcGRGemZOOFlETzFqNzhBWmVEOTZnRjd0Uk9UajFXNEJId2Zp?=
- =?utf-8?B?VU9DdWViN3FoR084cUZPY1hkaFdGbktQamlLUTE1MlpvTjZZc0ZGek5FTFpC?=
- =?utf-8?B?S0NqRUlVN09iWU9mRXJEUVYwanFPekdVdnlGVUExV2NUQzBiZGovWmF6N1Z1?=
- =?utf-8?B?WlZHZnl1OGlrRFhPaExJM3h6Smt5ZlZiYTltN0VQM1NhUTR3YytCbU5GN0dq?=
- =?utf-8?B?MFFEVk9tMFRoZDRiYThDTThjSFV0K3VKNmg5YXNWT3RRaGlDc3k5V0pOcGxl?=
- =?utf-8?B?RFZmWTFNN2dCQ2JteWY3L3Y5SCs3a014QjJaTzdBdFJnQ1FwNjM2WDZDVFQ4?=
- =?utf-8?B?VlZ5NnZJc2FWTHU2T1hsYWR2Z3Ztak4wV3JlNlZuOXpxdWhraGcwQmVYQlJz?=
- =?utf-8?B?NElkMkxWejVwYnFhQTA2eTNWQ3RzbmlsclkyZk9TNnZsSVAxeWNHSi83U2pP?=
- =?utf-8?Q?nvqzzB3QzQWGAg54o7/R9kUQw?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
+ Sun, 05 Mar 2023 15:20:02 UTC
+Received: from mail.offerntx.autos (unknown [45.13.189.24])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8943F10E078
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun,  5 Mar 2023 15:20:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=offerntx.autos; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=darrel_francis@offerntx.autos; 
+ bh=79Mm7q3EAxpuaQGdS85pXE3Wwx0=;
+ b=Z8HcHRlSrArimAwrV0eGsQMP+QdQdnukE4BifkvRRXgLh7UfLSUmTR40PSPC7p3oEZOEzAUtftVI
+ cLZJvv3fS2f0oElbPoQ82WYJ7S+3hUtHsn0gB891izTkS0bMPkjIhwDedvHLCrLbCZ8Xgb+5jdQu
+ 86GiN1IQSYXf7irOTPc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=offerntx.autos;
+ b=Ktgf+7DdKRDcq72LaKdSHZzdQ2+pF/4RxbRBo5gydSrs7I59ydtqEaHWIqfojAbQkEfgm7bKXl5U
+ iUWAfkQdja/7vuhpgi3TI0CQjvkbXP2QuNNB406nJMr5UCm9LhWZMAmDmZg4+tU5mxbbXi+2Wj/E
+ M6mc2+bqXrDFDoI4hJY=;
+Received: by mail.offerntx.autos id h0ipi40001gt for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 5 Mar 2023 10:09:42 -0500 (envelope-from
+ <darrel_francis-intel+2Dgvt+2Ddev=lists.freedesktop.org@offerntx.autos>)
+Date: Sun, 5 Mar 2023 10:09:42 -0500
+From: "Darrel Francis" <darrel_francis@offerntx.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Rewards coming for watching your favorite show
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a30def52-d509-441b-dae0-08db1d88b9e5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Mar 2023 14:48:47.4037 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: FmFC7UDqSlLOW96RHLbqkQdPewVSQRPGPQPVuEFg8LehhK4pYO4DicA2IhP0qKgoIKNdrJdcld81sl0CdkrqtQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4540
-X-OriginatorOrg: intel.com
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_712_1899669258.1678028976949"
+Message-ID: <0.0.0.4F.1D94F7483A8A904.230E48@mail.offerntx.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,101 +50,175 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "Hao, Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
- "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- Jason Gunthorpe <jgg@nvidia.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "lulu@redhat.com" <lulu@redhat.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-PiBGcm9tOiBBbGV4IFdpbGxpYW1zb24gPGFsZXgud2lsbGlhbXNvbkByZWRoYXQuY29tPg0KPiBT
-ZW50OiBTYXR1cmRheSwgTWFyY2ggNCwgMjAyMyAxMjo1NiBBTQ0KPiANCj4gT24gRnJpLCAzIE1h
-ciAyMDIzIDA2OjM2OjM1ICswMDAwDQo+ICJUaWFuLCBLZXZpbiIgPGtldmluLnRpYW5AaW50ZWwu
-Y29tPiB3cm90ZToNCj4gDQo+ID4gPiBGcm9tOiBMaXUsIFlpIEwgPHlpLmwubGl1QGludGVsLmNv
-bT4NCj4gPiA+IFNlbnQ6IFRodXJzZGF5LCBNYXJjaCAyLCAyMDIzIDEwOjIwIFBNDQo+ID4gPg0K
-PiA+ID4gPiBGcm9tOiBKYXNvbiBHdW50aG9ycGUgPGpnZ0BudmlkaWEuY29tPg0KPiA+ID4gPiBT
-ZW50OiBUaHVyc2RheSwgTWFyY2ggMiwgMjAyMyA4OjM1IFBNDQo+ID4gPiA+DQo+ID4gPiA+IE9u
-IFRodSwgTWFyIDAyLCAyMDIzIGF0IDA5OjU1OjQ2QU0gKzAwMDAsIFRpYW4sIEtldmluIHdyb3Rl
-Og0KPiA+ID4gPiA+ID4gRnJvbTogTGl1LCBZaSBMIDx5aS5sLmxpdUBpbnRlbC5jb20+DQo+ID4g
-PiA+ID4gPiBTZW50OiBUaHVyc2RheSwgTWFyY2ggMiwgMjAyMyAyOjA3IFBNDQo+ID4gPiA+ID4g
-Pg0KPiA+ID4gPiA+ID4gPiAtCQlpZiAoIXZmaW9fZGV2X2luX2dyb3VwcyhjdXJfdm1hLCBncm91
-cHMpKSB7DQo+ID4gPiA+ID4gPiA+ICsJCWlmIChjdXJfdm1hLT52ZGV2Lm9wZW5fY291bnQgJiYN
-Cj4gPiA+ID4gPiA+ID4gKwkJICAgICF2ZmlvX2Rldl9pbl9ncm91cHMoY3VyX3ZtYSwgZ3JvdXBz
-KSAmJg0KPiA+ID4gPiA+ID4gPiArCQkgICAgIXZmaW9fZGV2X2luX2lvbW11ZmRfY3R4KGN1cl92
-bWEsDQo+ID4gPiBpb21tdWZkX2N0eCkpIHsNCj4gPiA+ID4gPiA+DQo+ID4gPiA+ID4gPiBIaSBB
-bGV4LCBKYXNvbiwNCj4gPiA+ID4gPiA+DQo+ID4gPiA+ID4gPiBUaGVyZSBpcyBvbmUgY29uY2Vy
-biBvbiB0aGlzIGFwcHJvYWNoIHdoaWNoIGlzIHJlbGF0ZWQgdG8gdGhlDQo+ID4gPiA+ID4gPiBj
-ZGV2IG5vaW9tbXUgbW9kZS4gQXMgcGF0Y2ggMTYgb2YgdGhpcyBzZXJpZXMsIGNkZXYgcGF0aA0K
-PiA+ID4gPiA+ID4gc3VwcG9ydHMgbm9pb21tdSBtb2RlIGJ5IHBhc3NpbmcgYSBuZWdhdGl2ZSBp
-b21tdWZkIHRvDQo+ID4gPiA+ID4gPiBrZXJuZWwuIEluIHN1Y2ggY2FzZSwgdGhlIHZmaW9fZGV2
-aWNlIGlzIG5vdCBib3VuZCB0byBhIHZhbGlkDQo+ID4gPiA+ID4gPiBpb21tdWZkLiBUaGVuIHRo
-ZSBjaGVjayBpbiB2ZmlvX2Rldl9pbl9pb21tdWZkX2N0eCgpIGlzDQo+ID4gPiA+ID4gPiB0byBi
-ZSBicm9rZW4uDQo+ID4gPiA+ID4gPg0KPiA+ID4gPiA+ID4gQW4gaWRlYSBpcyB0byBhZGQgYSBj
-ZGV2X25vaW9tbXUgZmxhZyBpbiB2ZmlvX2RldmljZSwgd2hlbg0KPiA+ID4gPiA+ID4gY2hlY2tp
-bmcgdGhlIGlvbW11ZmRfaWN0eCwgYWxzbyBjaGVjayB0aGlzIGZsYWcuIElmIGFsbCB0aGUgb3Bl
-bmVkDQo+ID4gPiA+ID4gPiBkZXZpY2VzIGluIHRoZSBkZXZfc2V0IGhhdmUgdmZpb19kZXZpY2Ut
-PmNkZXZfbm9pb21tdT09dHJ1ZSwNCj4gPiA+ID4gPiA+IHRoZW4gdGhlIHJlc2V0IGlzIGNvbnNp
-ZGVyZWQgdG8gYmUgZG9hYmxlLiBCdXQgdGhlcmUgaXMgYSBzcGVjaWFsDQo+ID4gPiA+ID4gPiBj
-YXNlLiBJZiBkZXZpY2VzIGluIHRoaXMgZGV2X3NldCBhcmUgb3BlbmVkIGJ5IHR3byBhcHBsaWNh
-dGlvbnMNCj4gPiA+ID4gPiA+IHRoYXQgb3BlcmF0ZXMgaW4gY2RldiBub2lvbW11IG1vZGUsIHRo
-ZW4gdGhpcyBsb2dpYyBpcyBub3QgYWJsZQ0KPiA+ID4gPiA+ID4gdG8gZGlmZmVyZW50aWF0ZSB0
-aGVtLiBJbiB0aGF0IGNhc2UsIHNob3VsZCB3ZSBhbGxvdyB0aGUgcmVzZXQ/DQo+ID4gPiA+ID4g
-PiBJdCBzZWVtcyB0byBvayB0byBhbGxvdyByZXNldCBzaW5jZSBub2lvbW11IG1vZGUgaXRzZWxm
-IG1lYW5zDQo+ID4gPiA+ID4gPiBubyBzZWN1cml0eSBiZXR3ZWVuIHRoZSBhcHBsaWNhdGlvbnMg
-dGhhdCB1c2UgaXQuIHRob3VnaHRzPw0KPiA+ID4gPiA+ID4NCj4gPiA+ID4gPg0KPiA+ID4gPiA+
-IFByb2JhYmx5IHdlIG5lZWQgc3RpbGwgcGFzcyBpbiBhIHZhbGlkIGlvbW11ZmQgKGluc3RlYWQg
-b2YgdXNpbmcNCj4gPiA+ID4gPiBhIG5lZ2F0aXZlIHZhbHVlKSBpbiBub2lvbW11IGNhc2UgdG8g
-bWFyayB0aGUgb3duZXJzaGlwIHNvIHRoZQ0KPiA+ID4gPiA+IGNoZWNrIGluIHRoZSByZXNldCBw
-YXRoIGNhbiBjb3JyZWN0bHkgY2F0Y2ggd2hldGhlciBhbiBvcGVuZWQNCj4gPiA+ID4gPiBkZXZp
-Y2UgYmVsb25ncyB0byB0aGlzIHVzZXIuDQo+ID4gPiA+DQo+ID4gPiA+IFRoZXJlIHNob3VsZCBi
-ZSBubyBpb21tdWZkIGF0IGFsbCBpbiBuby1pb21tdSBtb2RlDQo+ID4gPiA+DQo+ID4gPiA+IEFk
-ZGluZyBvbmUganVzdCB0byBkZWFsIHdpdGggbm9pb21tdSByZXNldCBzZWVtcyBwcmV0dHkgc2Fk
-IDpcDQo+ID4gPiA+DQo+ID4gPiA+IG5vLWlvbW11IGlzIG9ubHkgcmVhbGx5IHVzZWQgYnkgZHBk
-aywgYW5kIGl0IGRvZXNuJ3QgaW52b2tlDQo+ID4gPiA+IFZGSU9fREVWSUNFX1BDSV9IT1RfUkVT
-RVQgYXQgYWxsLg0KPiA+ID4NCj4gPiA+IERvZXMgaXQgaGFwcGVuIHRvIGJlIG9yIGJ5IGRlc2ln
-biwgdGhpcyBpb2N0bCBpcyBub3QgbmVlZGVkIGJ5IGRwZGs/DQo+IA0KPiBJIGNhbid0IHRoaW5r
-IG9mIGEgcmVhc29uIERQREsgY291bGRuJ3QgdXNlIGhvdC1yZXNldC4gIElmIHdlIHdhbnQgdG8N
-Cj4gbWFrZSBpdCBhIHBvbGljeSwgaXQgc2hvdWxkIGJlIGVuZm9yY2VkIGJ5IGNvZGUsIGJ1dCBj
-cmVhdGluZyB0aGF0DQo+IHBvbGljeSBiYXNlZCBvbiBhIGRpZmZpY3VsdHkgaW4gc3VwcG9ydGlu
-ZyB0aGF0IG1vZGUgd2l0aCBpb21tdWZkIGlzbid0DQo+IGdyZWF0Lg0KDQpNYWtlcyBzZW5zZS4g
-QSB1c2Vyc3BhY2UgZHJpdmVyIHNob3VsZCBoYXZlIHRoZSBjaGFuY2UgdG8gcmVzZXQNCmRldmlj
-ZS4NCg0KPiANCj4gPiB1c2Ugb2Ygbm9pb21tdSBzaG91bGQgYmUgZGlzY291cmFnZWQuDQo+ID4N
-Cj4gPiBpZiBvbmx5IGtub3duIG5vaW9tbXUgdXNlciBkb2Vzbid0IHVzZSBpdCB0aGVuIGhhdmlu
-ZyBjZXJ0YWluDQo+ID4gbmV3IHJlc3RyaWN0aW9uIGZvciBub2lvbW11IGluIHRoZSBob3QgcmVz
-ZXQgcGF0aCBtaWdodCBiZSBhbg0KPiA+IGFjY2VwdGFibGUgdHJhZGVvZmYuDQo+ID4NCj4gPiBi
-dXQgYWdhaW4gbmVlZHMgQWxleCdzIGlucHV0IGFzIGhlIGtub3dzIGFsbCB0aGUgaGlzdG9yeSBh
-Ym91dA0KPiA+IG5vaW9tbXUuIPCfmIoNCj4gDQo+IE5vLUlPTU1VIG1vZGUgd2FzIG1lYW50IHRv
-IGJlIGEgbWluaW1hbGx5IGludmFzaXZlIGNvZGUgY2hhbmdlIHRvDQo+IHJlLXVzZSB0aGUgdmZp
-byBkZXZpY2UgaW50ZXJmYWNlLCBvciBhbHRlcm5hdGl2ZWx5IGF2b2lkIGV4dGVuZGluZw0KPiB1
-aW8tcGNpLWdlbmVyaWMgdG8gc3VwcG9ydCBNU0kvWCwgd2l0aCBiZXR0ZXIgbG9nZ2luZy90YWlu
-dGluZyB0byBrbm93DQo+IHdoZW4gdXNlcnNwYWNlIGlzIGRyaXZpbmcgZGV2aWNlcyB3aXRob3V0
-IElPTU1VIHByb3RlY3Rpb24sIGFuZCBhcyBhDQo+IG1lYW5zIHRvIHByb21vdGUgYSB0cmFuc2l0
-aW9uIHRvIHN0YW5kYXJkIHN1cHBvcnQgb2YgdmZpby4gIEFGQUlLLA0KPiB0aGVyZSBhcmUgc3Rp
-bGwgZW52aXJvbm1lbnRzIHdpdGhvdXQgdi9JT01NVSB0aGF0IG1ha2UgdXNlIG9mIG5vLWlvbW11
-DQo+IG1vZGUuICBUaGFua3MsDQoNClRoaXMgbWFrZXMgSmFzb24ncyByZW1hcmsgKG5vaW9tbXUg
-c2hvdWxkIG5vdCB1c2UgaW9tbXVmZCBhdCBhbGwpIG11Y2gNCm1vcmUgcmVhc29uYWJsZS4gSWYg
-dGhlcmUgaXMgbm8gdi9JT01NVSwgdGhlbiBubyBpb21tdWZkIGF0IGFsbC4NCg0KSWYgbm8gaW9t
-bXVmZCBpcyB1c2VkIGluIHRoZSBuby1pb21tdSBtb2RlLCB0aGlzIGFwcHJvYWNoIGNhbm5vdA0K
-dGVsbCB0d28gYXBwbGljYXRpb25zIHRoYXQgYXJlIG9wZXJhdGluZyBpbiBuby1pb21tdSBtb2Rl
-LiBJZiB3ZSBhbGxvdw0KcmVzZXQsIGl0IG1heSBtYWtlIG5vLWlvbW11IG1vZGUgbW9yZSB3ZWFr
-LiBTbyBwZXJoYXBzIHdlIG5lZWQNCnRvIGhhdmUgYW5vdGhlciBhcHByb2FjaCBmb3IgdGhpcyBv
-d25lcnNoaXAgY2hlY2suDQoNCkhvdyBhYm91dCBmYWxsaW5nIGJhY2sgdG8gcHJpb3Igc29sdXRp
-b24uIEFsbG93IHVzZXJzcGFjZSB0byBwYXNzIGEgc2V0DQpvZiBkZXZpY2UgZmQsIGFuZCB0aGUg
-a2VybmVsIGp1c3QgY2hlY2tzIHRoZSBvcGVuZWQgZGV2aWNlcyBpbiB0aGUgZGV2X3NldCwNCmFs
-bCB0aGUgb3BlbmVkIGRldmljZXMgc2hvdWxkIGJlIGluY2x1ZGVkIGluIHRoZSBkZXZpY2UgZmQg
-c2V0LiBJZiBub3QgYWxsDQpvZiB0aGVtIGFyZSBpbmNsdWRlZCwgZmFpbCBpdC4NCg0KUmVnYXJk
-cywNCllpIExpdQ0KDQoNCg==
+------=_Part_712_1899669258.1678028976949
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>08030423</title> 
+ </head> 
+ <body style=" padding: 7% 0%;"> 
+  <div style="margin: auto; max-width: 600px;"> 
+   <header> 
+    <div>
+     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 200%; text-align: center;">A Special Offer for Our Valued Users</span>
+    </div> 
+    <div>
+     <span style="display: block; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 250%; color: #ff0000;">NETFLIX</span>
+    </div> 
+    <div style="text-align: center;"> 
+     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
+      <a href="http://www.offerntx.autos/dc76B2I39s5z_86C12z4e0Q7V1256j36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhQmRm5B1R0W5SPwDO/jotted-plaintively" target="_blank"><img alt="" src="http://www.offerntx.autos/apartment-osmotic/5586t239lM5m7paL12r4e09IV1256h36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQhQmRm7kRvn1Y06SWATwD" width="100%" /></a>
+     </div> 
+     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
+      <a href="http://www.offerntx.autos/dc76B2I39s5z_86C12z4e0Q7V1256j36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhQmRm5B1R0W5SPwDO/jotted-plaintively" target="_blank"><img alt="" src="http://www.offerntx.autos/d8b6yW23V95YrJ7a12l4e0a_j1256l36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhQmRm6e1zmB06Cl2wDP/Honshu-callous" width="100%" /></a>
+     </div> 
+    </div> 
+   </header> 
+   <br /> 
+   <br /> &nbsp; 
+   <section> 
+    <div style="max-width: 90%; margin: auto; text-align: center; line-height: 150%;">
+     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;">We wanted to take a moment to thank you for choosing Netflix for you watch streaming services. Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you.<br /> <br /> As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with Netflix.<br /> <br /> Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <br /> 
+      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;"><span style="display: inline-block; font-size: 90%; padding: 1.5% 2%; background-color: rgb(223, 223, 223); font-weight: bold;">For completing the survey, you can receive a $100 Gift!</span> </span>
+     </div> 
+     <br /> 
+     <br /> 
+     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span>
+     <br /> 
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;"><a href="http://www.offerntx.autos/dc76B2I39s5z_86C12z4e0Q7V1256j36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhQmRm5B1R0W5SPwDO/jotted-plaintively" style="color: #6a6bbe;"><span style="font-weight: bold; display: inline-block; font-size: 180%;"><u>TAKE THE SURVEY</u> </span></a> </span>
+     </div> 
+     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;"> </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;"><span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 80%; ">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The Netflix Survey</span> </span>
+     </div> 
+     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;"> </span>
+    </div> 
+   </section> &nbsp; 
+   <hr /> 
+   <footer style="max-width: 600px; margin: auto;"> 
+    <address style="text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; ; padding: 15px 0px;  font-weight: bold;"> <p><small><span style="text-decoration: none; ">To dispense with your subscription,</span><a href="http://www.offerntx.autos/jotted-plaintively/c246b239AC5gs86l11e4e08v1256A36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQhQmRm7Njx1Dx06BqwpJD" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Start Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font id="appendices"></font><span></span><small></small><span size="revulsion"></span><style class="beefsteak"></style> </small></p> </address> 
+   </footer> 
+  </div> 
+  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; vertical-align: top;" valign="top" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="left" style="padding: 20px 25px; word-break: break-word;"> 
+      <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:20px;font-weight:bold;line-height:24px;text-align:center;color:#212b35; text-transform: capitalize;">
+       &nbsp;
+      </div> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 10px 25px; word-break: break-word;"> 
+      <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">
+       &nbsp;
+      </div> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 5px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 0px; word-break: break-word;"> 
+      <ul style="list-style: none;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:20px;text-align:left;color:#0e0456;"> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:10px;text-align:left;color:#0e0456;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 0px; word-break: break-word;"> 
+      <ul style="list-style: none;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:20px;text-align:left;color:#0e0456;"> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 10px 25px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 25px; word-break: break-word;"> 
+      <div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:24px;text-align:left;color:#0e0456;">
+       &nbsp;
+      </div> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
+      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
+      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
+      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
+      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
+      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
+      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 0px 05px; word-break: break-word;"> <p>&nbsp;</p> <p>&nbsp;</p> 
+      <ul style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:400;line-height:10px;text-align:left;color:#0e0456; list-style: none; font-size: 12px;"> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 1px 25px; padding-bottom: 05px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 1px 25px; padding-bottom: 05px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding: 1px 25px; padding-bottom: 05px; word-break: break-word;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#0e0456;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.offerntx.autos/dipper-distributor/3k04q2395jOR8511k4e0bj1256I36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQhQmRm5c1Lo06slNwDj" alt=""/></body>
+</html>
+
+------=_Part_712_1899669258.1678028976949--
+
