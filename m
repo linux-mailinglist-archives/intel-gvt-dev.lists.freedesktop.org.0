@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB00D6AC788
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Mar 2023 17:18:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 135DB6AC87B
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Mar 2023 17:45:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 91DE310E2DB;
-	Mon,  6 Mar 2023 16:18:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9CD9610E3ED;
+	Mon,  6 Mar 2023 16:45:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Mon, 06 Mar 2023 16:18:44 UTC
-Received: from mail.hatebile.autos (unknown [45.13.189.6])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6F34510E2C1
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Mon, 06 Mar 2023 16:45:52 UTC
+Received: from mail.layatt.autos (unknown [45.13.189.12])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E305D10E2C5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  6 Mar 2023 16:18:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hatebile.autos; 
+ Mon,  6 Mar 2023 16:45:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=layatt.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tmobile-news@hatebile.autos; 
- bh=FzU/sUQrzO28aKDs7Zeouw3uRqE=;
- b=gMBtUl2MoNZff+1q3M+WdEWJctbHfofdFFvEzMqWKymIQWF9OBbt0GeQ0ZpICUnIzWyj2Kr89sXI
- 7s2FlCJxJqO/cu52j03g4JcucqrEsb1a/S6GV2x8/PwxfhAZfkFPZ04LhmDOw5raCSNfKsjqrBL1
- VvDhp9MO/2s2ywXaIfo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hatebile.autos;
- b=e/IZRfSLS00R54g2dNDUX+R18E7SLhKubKsfGmLMDnbA/26CyeKCG7RgY7+KBxcmqCK3UI+IMlla
- JSV00zSlSXN9yAOFDvdCDKQEvlHVtwpYJCsvT+3m3x0J+tYZR9RNY6TNx81SwuAIyIkM+VEW40df
- QRrPvTklxR8Xf9U7bxE=;
-Received: by mail.hatebile.autos id h0o9680001gv for
+ i=att_opinion_requested@layatt.autos; 
+ bh=ooowLDqmwEUWYD4yWfoQXx27Q6g=;
+ b=kkW9QB1GYEHhM+dZgnhtwTnJ91RaNuk8kugM+GZ57oxnPSbHcwJMTOMpk7qE9LbPlOd2KD/3eu5M
+ MOiGU1Qrz8kTAsYHgZiBsa03o8zI2QpCfFm+HvelX7SFrjLMOqyJjklXsWAXiZYvCeSWg46C3Ofu
+ g+fSICfS7bOBZQFNWa8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=layatt.autos;
+ b=tyiM3r/zbnjBeEvJ05ofsgWjahgE7be4xsuq+j5w/v/VLYk0igljKcT9D2zph9hcnijQ26iWOJRP
+ s9TeTgzt4/t6MxVIQZEbEMShw6gZl0EEiJ5x4JGKtTeG0BM4X2K3JyR84l5CO+jX+lAuMYpBqIm8
+ H23Lv36Wbgd7guCI1fY=;
+Received: by mail.layatt.autos id h0ome80001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 6 Mar 2023 11:07:07 -0500 (envelope-from
- <tmobile-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@hatebile.autos>)
-Date: Mon, 6 Mar 2023 11:07:07 -0500
-From: "TMOBILE News" <tmobile-news@hatebile.autos>
+ Mon, 6 Mar 2023 12:58:23 -0500 (envelope-from
+ <att_opinion_requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@layatt.autos>)
+Date: Mon, 6 Mar 2023 12:58:23 -0500
+From: "ATT Opinion Requested" <att_opinion_requested@layatt.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best reward deal you can get for being a loyal customer
+Subject: Your gift on us for the holidays,
+ a token of appreciation during holidays
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_334_302200879.1678118813130"
-Message-ID: <0.0.0.24.1D95045B3870CCA.335899@mail.hatebile.autos>
+ boundary="----=_Part_52_495473039.1678120321355"
+Message-ID: <0.0.0.5.1D950553E424136.3C0E05@mail.layatt.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_334_302200879.1678118813130
+------=_Part_52_495473039.1678120321355
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,50 +64,50 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>02030623</title> 
+  <title>03030623</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header class="nuevo_tmobileinfo"> 
-    <div id="img_config_oppres">
-     <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: 900; display: block; font-size: 125%; text-align: center ;">A Special Offer for Our Valued Users</span> 
-     <div class="img_Tmble" style="text-align: center;"> 
-      <div id="max_win" style="max-width: 35%; margin: auto; padding: 2.5% 0%;">
-       <a href="http://www.hatebile.autos/abb6R2L3n95yVI8612u4e62JB125eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwQmRe6h10RPp6hM2MwD/rancher-vicious" target="_blank"><img alt="" src="http://www.hatebile.autos/a254D2395o_G7a13h4e6As4m125et36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQwQmRe5O1CA06nq3wDL/intensely-crevice" width="100%" /></a>
+   <header id="new_age_glories"> 
+    <div class="att_infor_cronos"> 
+     <h4><span style="font-family: 'Times New Roman', Times, serif; font-weight: 900; display: block; text-align: center; font-size: 120%;">A SPECIAL OFFER FOR OUR VALUED USERS</span></h4> 
+     <div style="padding: 3.8%; text-align: center;"> 
+      <div style="max-width: 30%; margin: auto;">
+       <a href="http://www.layatt.autos/glitter-niece/40e5zA2395R86to11k4e31q125fZ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQiQmRK7LV1Ups06SlwXDk" target="_blank"><img alt="" src="http://www.layatt.autos/glitter-niece/33c4v2395uC7aT13w4e3N3VM125fv36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQiQmRK7aKj10JW5W3WwD" width="100%" /></a>
       </div> 
-      <div id="max_win" style="max-width: 25%; display: inline-block; vertical-align: top;">
-       <a href="http://www.hatebile.autos/abb6R2L3n95yVI8612u4e62JB125eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwQmRe6h10RPp6hM2MwD/rancher-vicious" target="_blank"><img alt="" src="http://www.hatebile.autos/5754j2395H7SaG11y4e65R125eS36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQwQmRe7bU1H0kh5c@wTD/preoccupied-nationalists" width="100%" /></a>
+      <div style="max-width: 18%; display: inline-block; vertical-align: top;">
+       <a href="http://www.layatt.autos/glitter-niece/40e5zA2395R86to11k4e31q125fZ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQiQmRK7LV1Ups06SlwXDk" target="_blank"><img alt="" src="http://www.layatt.autos/6835l23z95z7aXi12f4e3o4K125fi36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQiQmRK7zSm1l0G6y@3wDX/figures-packaged" width="100%" /></a>
       </div> 
-      <div id="max_win" style="max-width: 25%; display: inline-block;">
-       <a href="http://www.hatebile.autos/abb6R2L3n95yVI8612u4e62JB125eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwQmRe6h10RPp6hM2MwD/rancher-vicious" target="_blank"><img alt="" src="http://www.hatebile.autos/d8b4S2395rW7Aa11p4e66w125el36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQwQmRe7NsT10rv5d13wD/intensely-crevice" width="100%" /></a>
-      </div> 
-      <div>
-       &nbsp;
+      <div style="max-width: 20%; display: inline-block; margin-top: 1.8%;">
+       <a href="http://www.layatt.autos/glitter-niece/40e5zA2395R86to11k4e31q125fZ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQiQmRK7LV1Ups06SlwXDk" target="_blank"><img alt="" src="http://www.layatt.autos/glitter-niece/a444z2395HI7ka13Yg4e35oF125fY36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQiQmRK5l1_0y6pPqMwD" width="100%" /></a>
       </div> 
      </div> 
     </div> 
    </header> 
-   <section class="contex_tmobile"> 
-    <div id="info_new" style="padding: 2.5% 0%;">
-     <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 95%; display: block; text-align: justify; line-height: 155%; text-indent: 5%; width: 90%; margin: auto;">We wanted to take a moment to thank you for choosing T-Mobile. Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you.<br /> <br /> Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span> 
-     <div style="padding: 3.5%; text-align: center;">
-      <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; display: inline-block; padding: 2% 1.5%; background-color: rgb(238, 238, 238); font-size: 75%; border-radius: 8px;">Upon Completion of the Survey you might have a choice between different gifts!</span>
-     </div> 
-     <div class="hiper_vincu" style="padding: 2.5% 0%; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: 900; text-align: center; font-size: 180%;">
-      <a href="http://www.hatebile.autos/abb6R2L3n95yVI8612u4e62JB125eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwQmRe6h10RPp6hM2MwD/rancher-vicious" style="color:rgb(209, 0, 98);" target="_blank">Start Now</a>
-     </div> 
-     <div class="nova_terra_" style="text-align: center;">
-      <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: 900; display: block; font-size: 60%; width: 50%; margin: auto; line-height: 160%; padding: 5% 0% 0%;">Thank you again for your support. We look forward to hearing from you soon! Warm regards,<br /> <br /> The Tmobile Survey</span>
-     </div> 
+   <section class="internal_info"> 
+    <div id="text_font_size">
+     <span style="display: block; font-family: 'Times New Roman', Times, serif; font-weight: 500; text-align: justify; font-size: 110%; width: 90%; margin: auto; text-indent: 5%; line-height: 155%;">We wanted to take a moment to thank you for choosing <b>AT&amp;T</b>. Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you.</span>
+    </div> 
+    <div class="link_offers0305" style="padding: 6% 0%; text-align: center; font-weight: 900; font-family: 'Times New Roman', Times, serif; font-size: 110%;">
+     <a href="http://www.layatt.autos/glitter-niece/40e5zA2395R86to11k4e31q125fZ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQiQmRK7LV1Ups06SlwXDk" style="color: rgb(255, 102, 0);" target="_blank">TAKE THE SURVEY</a>
+    </div> 
+    <div id="text_font_size">
+     <span style="display: block; font-family: 'Times New Roman', Times, serif; font-weight: 500; text-align: justify; font-size: 110%; width: 90%; margin: auto; line-height: 155%;">Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span>
+    </div> 
+    <div class="promo_iioni" style="text-align: center; padding: 8% 0%;">
+     <span style="font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 90%; padding: 1.5% 2%; background-color: rgb(226, 226, 226); display: inline-block;">Upon Completion of the Survey you might have a choice between different gifts!</span>
     </div> 
    </section> 
-   <hr color="#cacaff" size="3" /> 
-   <footer style="max-width: 600px; margin: auto;"> 
-    <address style="text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 10px; ; padding: 15px 0px;  font-weight: bold;"> <p><small><span style="text-decoration: none; ">No longer want to receive email notices from us?,</span><a href="http://www.hatebile.autos/rancher-vicious/a626g23i9o5h86_M13KW4pe63V125eL36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQwQmRe5RQ1x06w@zXwD" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Visit Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small></small><style dir="treacheries"><span face="formant"></span></style><small></small><span dir="tastelessly"><span></span></span> </small></p> </address> 
+   <hr color="grateful" size="1.5px" /> 
+   <footer class="final_shot" style="width: 90%; max-width: 600px; margin: auto;  padding: 5px 0px; "> 
+    <address> 
+     <div style="text-align: center; font-weight: normal; font-size: 12px; color: #000000; font-family:'Times New Roman', Times, serif; font-weight: bold; font-weight: 500;"> 
+      <p><small><span style="text-decoration: none; ">To modify your email preferences,</span><a href="http://www.layatt.autos/8db5B23Y95KhI8611Q4e32w125fz36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQiQmRK7ar1v0IJ6mj@wDX/handlers-onsets" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Begin.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font id="roadsters"><style></style></font><small></small><font></font> </small></p> 
+     </div> </address> 
    </footer> 
   </div>   
- <img src="http://www.hatebile.autos/intensely-crevice/b525El2395yt85I13nQ4eH67Q125eW36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQwQmRe7F1SUPz05qj2wD" alt=""/></body>
+ <img src="http://www.layatt.autos/k6b4b2395P85Uh11D4e36N125fB36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQiQmRK6X1ZQi06RzwODM/Scranton-esteemed" alt=""/></body>
 </html>
 
-------=_Part_334_302200879.1678118813130--
+------=_Part_52_495473039.1678120321355--
 
