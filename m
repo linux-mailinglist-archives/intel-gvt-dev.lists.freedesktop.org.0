@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83BAB6AC5E3
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Mar 2023 16:50:31 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BB00D6AC788
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Mar 2023 17:18:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A3D4110E299;
-	Mon,  6 Mar 2023 15:50:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 91DE310E2DB;
+	Mon,  6 Mar 2023 16:18:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Mon, 06 Mar 2023 15:50:25 UTC
-Received: from mail.giveppl.autos (unknown [45.13.189.3])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2A6F910E269
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Mon, 06 Mar 2023 16:18:44 UTC
+Received: from mail.hatebile.autos (unknown [45.13.189.6])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6F34510E2C1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  6 Mar 2023 15:50:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=giveppl.autos;
+ Mon,  6 Mar 2023 16:18:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hatebile.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal.gift.possibility@giveppl.autos; 
- bh=T1HQhS/HukOW+I4T4A3o5hEOebc=;
- b=prjV9pPgYPPmnTyvmJFMJyxt0Yx1HJhKuu1Z4Glmin0BdKvyOQrmUTNHEtz9ZGWD63xEqJFfnxjd
- NNfOtvEfje9gszhHr2ZFAO8eJZcdtDZAId8xklvJTJwMzyEGO8/l5rOJiHertujbwTCDd/chNX6V
- 17++q5gc20UwAmj7/Ag=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=giveppl.autos;
- b=JY9kIqFBpShbZZnQ0dvVYctnGnh+qpB9ZUBtiaZj/Rnv+Qwlccb9icrvNiWoOYVcvsntKyGCnAuR
- ixgOWmhENgifd71I/a5pc2l64ZFO0wxbYGSlLNZwyTKUQ4wZILgcudz8FFCgTZStdbcOrj+LUUHe
- BJax8D1/U1+HMQL1RHY=;
-Received: by mail.giveppl.autos id h0o5s20001g3 for
+ i=tmobile-news@hatebile.autos; 
+ bh=FzU/sUQrzO28aKDs7Zeouw3uRqE=;
+ b=gMBtUl2MoNZff+1q3M+WdEWJctbHfofdFFvEzMqWKymIQWF9OBbt0GeQ0ZpICUnIzWyj2Kr89sXI
+ 7s2FlCJxJqO/cu52j03g4JcucqrEsb1a/S6GV2x8/PwxfhAZfkFPZ04LhmDOw5raCSNfKsjqrBL1
+ VvDhp9MO/2s2ywXaIfo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hatebile.autos;
+ b=e/IZRfSLS00R54g2dNDUX+R18E7SLhKubKsfGmLMDnbA/26CyeKCG7RgY7+KBxcmqCK3UI+IMlla
+ JSV00zSlSXN9yAOFDvdCDKQEvlHVtwpYJCsvT+3m3x0J+tYZR9RNY6TNx81SwuAIyIkM+VEW40df
+ QRrPvTklxR8Xf9U7bxE=;
+Received: by mail.hatebile.autos id h0o9680001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 6 Mar 2023 10:39:05 -0500 (envelope-from
- <paypal.gift.possibility-intel+2Dgvt+2Ddev=lists.freedesktop.org@giveppl.autos>)
-Date: Mon, 6 Mar 2023 10:39:05 -0500
-From: "Paypal Gift Possibility" <paypal.gift.possibility@giveppl.autos>
+ Mon, 6 Mar 2023 11:07:07 -0500 (envelope-from
+ <tmobile-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@hatebile.autos>)
+Date: Mon, 6 Mar 2023 11:07:07 -0500
+From: "TMOBILE News" <tmobile-news@hatebile.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every visit a new reward that could get you anything on us
+Subject: Best reward deal you can get for being a loyal customer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_589_286081786.1678117111257"
-Message-ID: <0.0.0.41.1D95041C8F898D4.145A24@mail.giveppl.autos>
+ boundary="----=_Part_334_302200879.1678118813130"
+Message-ID: <0.0.0.24.1D95045B3870CCA.335899@mail.hatebile.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_589_286081786.1678117111257
+------=_Part_334_302200879.1678118813130
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,75 +63,50 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>01030623</title> 
+  <title>02030623</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header class="hht_progress"> 
-    <h1><span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 85%; text-align: center; font-weight: 500; display: block;">A Special Offer for Our Valued Users</span></h1> 
-    <div class="form_steam" style="margin: 5% 0%; text-align: center; box-sizing: border-box;"> 
-     <div id="campturadora_groves" style="max-width: 30%; display: inline-block;">
-      <span style="display: block; font-size: 110%; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: 900;">PAYPAL</span>
-     </div> &nbsp; 
-     <div style="max-width: 18%; display: inline-block;">
-      <a href="http://www.giveppl.autos/transistorize-Albuquerque/d506e2BN395z8Vq611s4e2dp125dp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ5QmRS7zGAZ10v6k@NPwD" target="_blank"><img alt="" src="http://www.giveppl.autos/Missy-reputable/b8e5Bs2395cwk7a11F4e2fU125dl36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ5QmRS6s1Tgt05yMwjD" style="display: block;" width="100%" /></a>
+   <header class="nuevo_tmobileinfo"> 
+    <div id="img_config_oppres">
+     <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: 900; display: block; font-size: 125%; text-align: center ;">A Special Offer for Our Valued Users</span> 
+     <div class="img_Tmble" style="text-align: center;"> 
+      <div id="max_win" style="max-width: 35%; margin: auto; padding: 2.5% 0%;">
+       <a href="http://www.hatebile.autos/abb6R2L3n95yVI8612u4e62JB125eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwQmRe6h10RPp6hM2MwD/rancher-vicious" target="_blank"><img alt="" src="http://www.hatebile.autos/a254D2395o_G7a13h4e6As4m125et36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQwQmRe5O1CA06nq3wDL/intensely-crevice" width="100%" /></a>
+      </div> 
+      <div id="max_win" style="max-width: 25%; display: inline-block; vertical-align: top;">
+       <a href="http://www.hatebile.autos/abb6R2L3n95yVI8612u4e62JB125eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwQmRe6h10RPp6hM2MwD/rancher-vicious" target="_blank"><img alt="" src="http://www.hatebile.autos/5754j2395H7SaG11y4e65R125eS36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQwQmRe7bU1H0kh5c@wTD/preoccupied-nationalists" width="100%" /></a>
+      </div> 
+      <div id="max_win" style="max-width: 25%; display: inline-block;">
+       <a href="http://www.hatebile.autos/abb6R2L3n95yVI8612u4e62JB125eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwQmRe6h10RPp6hM2MwD/rancher-vicious" target="_blank"><img alt="" src="http://www.hatebile.autos/d8b4S2395rW7Aa11p4e66w125el36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQwQmRe7NsT10rv5d13wD/intensely-crevice" width="100%" /></a>
+      </div> 
+      <div>
+       &nbsp;
+      </div> 
      </div> 
     </div> 
    </header> 
-   <section class="origin_info."> 
-    <div class="container_inforglas"> 
-     <div style="width: 85%; margin: auto;">
-      <span style="font-size: 95%; font-family: 'Franklin Gothic ', 'Arial Narrow', Arial, sans-serif; font-weight: normal; display: block; text-align: justify ; line-height: 145%; text-indent: 5%;">We wanted to take a moment to thank you for choosing <b>PayPal</b>. Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you.<br /> <br /> As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with <b>PayPal</b>.<br /> <br /> Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
+   <section class="contex_tmobile"> 
+    <div id="info_new" style="padding: 2.5% 0%;">
+     <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 95%; display: block; text-align: justify; line-height: 155%; text-indent: 5%; width: 90%; margin: auto;">We wanted to take a moment to thank you for choosing T-Mobile. Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you.<br /> <br /> Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span> 
+     <div style="padding: 3.5%; text-align: center;">
+      <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; display: inline-block; padding: 2% 1.5%; background-color: rgb(238, 238, 238); font-size: 75%; border-radius: 8px;">Upon Completion of the Survey you might have a choice between different gifts!</span>
      </div> 
-     <div style="text-align: center; padding: 5% 0%;">
-      <span style="display: inline-block; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; padding: 1.5% 1%; background-color: rgb(230, 230, 230); font-size: 85%;">For completing the survey, you can receive a $100 Gift!</span>
-      <br /> 
-      <span style="font-family: 'Franklin Gothic', 'Arial Narrow', Arial, sans-serif; font-size: 90%; display: block; padding: 5% 0%; line-height: 145%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</span> 
-      <div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 180%; text-align: center; padding: 1.5% 0%;">
-       <a href="http://www.giveppl.autos/transistorize-Albuquerque/d506e2BN395z8Vq611s4e2dp125dp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ5QmRS7zGAZ10v6k@NPwD" style="color:lightskyblue;" target="_blank">TAKE THE SURVEY</a>
-      </div> 
-      <span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 80%; display: block; padding: 5% 0%; line-height: 145%; width: 80%; margin: auto;">Thank you again for your support. We look forward to hearing from you soon! Warm regards, The PayPal Survey</span>
+     <div class="hiper_vincu" style="padding: 2.5% 0%; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: 900; text-align: center; font-size: 180%;">
+      <a href="http://www.hatebile.autos/abb6R2L3n95yVI8612u4e62JB125eN36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwQmRe6h10RPp6hM2MwD/rancher-vicious" style="color:rgb(209, 0, 98);" target="_blank">Start Now</a>
+     </div> 
+     <div class="nova_terra_" style="text-align: center;">
+      <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: 900; display: block; font-size: 60%; width: 50%; margin: auto; line-height: 160%; padding: 5% 0% 0%;">Thank you again for your support. We look forward to hearing from you soon! Warm regards,<br /> <br /> The Tmobile Survey</span>
      </div> 
     </div> 
    </section> 
-   <footer style="text-align: center;"> 
-    <address style=" max-width: 700px; margin: auto; font-weight: 900; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 65%; color: #000000;"> <p><small><span style="text-decoration: none; ">To withdraw from communication,</span><a href="http://www.giveppl.autos/scabrous-Lippincott/P126a239zo5j8m6V11S4e2eF125dY36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ5QmRS5dm10R5tqwDN" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Click On Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style><style color="bugging"></style></style><font style="Hellman"></font><big></big><span></span><span face="germicide"></span> </small></p> </address> 
+   <hr color="#cacaff" size="3" /> 
+   <footer style="max-width: 600px; margin: auto;"> 
+    <address style="text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 10px; ; padding: 15px 0px;  font-weight: bold;"> <p><small><span style="text-decoration: none; ">No longer want to receive email notices from us?,</span><a href="http://www.hatebile.autos/rancher-vicious/a626g23i9o5h86_M13KW4pe63V125eL36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQwQmRe5RQ1x06w@zXwD" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Visit Here Now </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small></small><style dir="treacheries"><span face="formant"></span></style><small></small><span dir="tastelessly"><span></span></span> </small></p> </address> 
    </footer> 
-  </div> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="content" style="width: 100%; max-width: 540px; "> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <table class="head-table full-width"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td> 
-      <table class="body-table full-width"> 
-       <tbody> 
-        <tr> 
-         <td> <h1 class="center">&nbsp;</h1> <p>&nbsp;</p> <h2 class="blue center">&nbsp;</h2> <h2>&nbsp;</h2> <p>&nbsp;</p> 
-          <table class="full-width video"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp; <p class="video-title">&nbsp;</p> </td> 
-             <td>&nbsp; <p class="video-title">&nbsp;</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> <p class="center">&nbsp;</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.giveppl.autos/8f94a2395L8I5R12i4ke30S125dG36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ5QmRS7AY1Ku0z5MBwDW/transistorize-Albuquerque" alt=""/></body>
+  </div>   
+ <img src="http://www.hatebile.autos/intensely-crevice/b525El2395yt85I13nQ4eH67Q125eW36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQwQmRe7F1SUPz05qj2wD" alt=""/></body>
 </html>
 
-------=_Part_589_286081786.1678117111257--
+------=_Part_334_302200879.1678118813130--
 
