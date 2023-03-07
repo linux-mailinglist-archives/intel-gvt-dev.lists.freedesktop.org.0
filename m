@@ -2,148 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F5086AE080
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 14:28:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B1B66AE326
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 15:48:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C435B10E498;
-	Tue,  7 Mar 2023 13:28:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 47A3610E4CB;
+	Tue,  7 Mar 2023 14:48:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4479F10E498;
- Tue,  7 Mar 2023 13:28:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678195726; x=1709731726;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=wODZnShEi40AejzzvzjNZ3VwIp3QR9n1Y69SYSffOCA=;
- b=XSyAi8P39h107aQ1a7r2EKSN28WboAYA6KPkCLYSjSTiENUWy1yZ7B8h
- B6NR+4ZwfdvKAJo+1iNGlcse2gCPpqHkGIzGM0jJdT7ihqplIMjoeIhN7
- Jlplvo7cWV9rgCAFBAjaC4H9V9bZhUBYKCoBHzsSNbmWwe/rcmwMSCbzL
- mfGyPjteZKRMrYS49i5Upp6rtKyjailvyW1ZE2djzhRT7iZzHywqQLL11
- Az4b9gZSpsNpOeua1NUgzht5YrrkI+cD/kJYt7HN/GKUF+EV+zyAHdIyd
- Ms1Ss7/pls31klGLvPqcS/3REKqe+pHnBozwPi9DqtUTJobDFhy0f/9vQ w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10641"; a="338173001"
-X-IronPort-AV: E=Sophos;i="5.98,241,1673942400"; d="scan'208";a="338173001"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Mar 2023 05:28:45 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10641"; a="653971287"
-X-IronPort-AV: E=Sophos;i="5.98,241,1673942400"; d="scan'208";a="653971287"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga006.jf.intel.com with ESMTP; 07 Mar 2023 05:28:45 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 7 Mar 2023 05:28:44 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Tue, 7 Mar 2023 05:28:44 -0800
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.108)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Tue, 7 Mar 2023 05:28:44 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=M0GJIIrPMp8nEZty+dlAnv4AvpXLjR+uK9evRleuy+KU8WwIV5hCzBxhxgNKaxKD9hndKNj8qoRg1qKdJC8c5vyDV7qJrYycWuTTsd3KQOaD0v19yXUunc09UuKA/VM/uWe12lsvRyRRXaGzv3ol2aOLGN4tZgswdkUb+Ss4VrbCo4hb76y1XaE7SYJ9WrfdRko3yn/Jar5CZD83PjIprYjBT2E79jLcHWOI0x2uLon3fPDZXsnjOZeja+j62FdZki1YnGEmf+ekMWwn6uhxpu8cMbhn5zA5NZ5ZIpRpJ5WMRwOZQlpxEBhEB7af289Kl7nQwALR8tijDYuKRf4PFg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VSsVjOwoAqWQ5E/o30az+P+wwfkMn++qdGWM2oRg5bQ=;
- b=Y8AFP6OrDPxYagi/m9BG4VtTNy7jMQ20+o2NHR0sYyg8UQWD3Dc3FPb5AHwX7GQwCX3iyDfJNMXXeUMWGcDkLESJcZW54SYr7PuaTrbsv9jMYtaQHCeQW3Z9xmNff/+mEzHerlDwg6+dqEYndhnfFqJpi7dn5NxxElI3t47voJxIf8biCDOtjby7oT2oR5lY1BNwJwPTC1/p5G486ik2UMFyv6vKVMTnmpVD9LkzA+BACN7na0ugfBo2upBGt29LUiDDW1V3dhaJ0yqy8GqPn+JqgPdXzgg32mh+o4Ph8lKEAvuAKgkdCFhsa582mKC686rgFNJgjRj4DfTTljvwRQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by PH7PR11MB5943.namprd11.prod.outlook.com (2603:10b6:510:13f::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.22; Tue, 7 Mar
- 2023 13:28:42 +0000
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::6f7:944a:aaad:301f]) by DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::6f7:944a:aaad:301f%8]) with mapi id 15.20.6156.029; Tue, 7 Mar 2023
- 13:28:42 +0000
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>
-Subject: RE: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array in
- VFIO_DEVICE_PCI_HOT_RESET
-Thread-Topic: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array in
- VFIO_DEVICE_PCI_HOT_RESET
-Thread-Index: AQHZSpxNz0d7VXviIEytrFhyB5GUvK7m/3jggABFoQCAACyCAIAAGw8ggAETHYCAAKz6AIAEeeOAgADd5oCAAKkfAIAACTyQ
-Date: Tue, 7 Mar 2023 13:28:42 +0000
-Message-ID: <DS0PR11MB7529A864CB1C149CF8B19E78C3B79@DS0PR11MB7529.namprd11.prod.outlook.com>
-References: <20230227111135.61728-1-yi.l.liu@intel.com>
- <20230227111135.61728-10-yi.l.liu@intel.com>
- <DS0PR11MB75295B4B2578765C8B08AC7EC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB527688810514A262471E4BB78CB29@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZACX+Np/IY7ygqL5@nvidia.com>
- <DS0PR11MB7529531834C0A9F1D294A5CCC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB5276B825071A4819479079A68CB39@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20230303095542.2bfce5c2.alex.williamson@redhat.com>
- <ZAXny4NDDq42NUxE@nvidia.com>
- <BN9PR11MB52760ABC93BCE7FB53A131038CB79@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZAcvzvhkt9QhCmdi@nvidia.com>
-In-Reply-To: <ZAcvzvhkt9QhCmdi@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|PH7PR11MB5943:EE_
-x-ms-office365-filtering-correlation-id: 4e5a903a-e98c-4a51-3ed9-08db1f0fde8c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 1r5i8fleg/lPTaF8n0IFjeXLrcaVh6lbROzbIO0GQ91OjdNbhBeFtWuVDe5hY1XV85S3NYzB4O4VqRa7rw0S41yCqiBliXKUg1bkcJjJhdyeqlPDfIm9ZrCRUXyWIcV0OTjYGKrs2nkyHChzD23qGccD4VYQz2Ckm3nmDkk7y8iIy7DDNPQezvIBSxkw/c9/skdwoW2FwJmqaImjCLPEy3dnBP3qB0x51lya1VO4Fcg3H0JG6pSkZHmTc1fVXUH1rTW0drUmkufgmTLdBh7s6u5bgDkcD731jzt0T4ja5/SiQ3fp7LepXUX28/N74bM4Y+Fm1UfT9SW0GRwVfQGOiCsCh3C7Jl2jDKdmQPL0gUqcYXyX/1MORJ6qihgj5TAOlCaq5kdQy1qcrI5PJSDEgHvbi4tAqx2/v9K9W+1ssmooRNBDbZkWpc22Aq65/MJxPQIMN6sBCqnS09KVnLcjgfYBy9+mfITjyxsl76yc+n/hbrj+ApxlP95Cx+mMuBZfEOFeyAZ/8/ul67lDtE4JHXPK8I0HJ+xZ7pSHqcnB0UenQZw8bm2IY/GEi7c/qqwU+NcOd6p47oIC6HxUMyMe9KrYVpMttCsqAPwoTY6PfQmdpe3jAB2TnxP9T6Df/nBkdB+WqDbI2WuvCi3QB9VDUj6r/OUPHLu0o8pnvLx1GE/9jazeUUqlqJDndTLXZUxXDmIjf+Ogz3ytmhjNgl+mcQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(136003)(346002)(376002)(396003)(39860400002)(366004)(451199018)(82960400001)(122000001)(86362001)(38100700002)(2906002)(38070700005)(52536014)(33656002)(4326008)(76116006)(64756008)(5660300002)(7416002)(66476007)(66556008)(41300700001)(66946007)(66446008)(71200400001)(8676002)(8936002)(9686003)(186003)(83380400001)(6506007)(110136005)(6636002)(316002)(54906003)(7696005)(55016003)(478600001)(26005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?3PQNduvuJnI3Wvnuz6JJcinCfbh0clQx7L4/MdOCQupZiz8yO6ALdlzhAXVe?=
- =?us-ascii?Q?OQMW10A38di3RBWGdcL45ESntOb++YSzCt9sdO6YNAX4nqA9RijNTXP+3ymk?=
- =?us-ascii?Q?eV9s/aelAFInRyK166508zQSHf9DcsT7v7FnUoZbxF11AROKap1fTRyuIKd8?=
- =?us-ascii?Q?bfTmQKKlPxXyRRuQElqbJorEAHx0uGb6TdsZxcJ8sqN9479xRVqkVmj/bVHt?=
- =?us-ascii?Q?pLJsRLCmiMM2giBpltZjIbSOSpjuADyn6NOqw6UJtxZeG0UjFWOp1M0tfKaC?=
- =?us-ascii?Q?fS3HGTFHILtV4US3leslZacutFpHhYimUk9y/cZp8ulPYGNFLTv/0kOtksr9?=
- =?us-ascii?Q?JJYN/YqOTTcJZyPPHRZ/ToS7LMDJSAJKMHuWPjynV2vvsNPeKMfq9C3XklWw?=
- =?us-ascii?Q?MdDr2cBZo8WJv8jYaKdUBc+Js2zDSZAgCJPebEJC2/OogrvU+ZKcwODXOkKr?=
- =?us-ascii?Q?sGfFH0zSkBPvxANRpQm6uvUfebDOtrO6OCb1u/QFOds0I4d95belDWD6u8Iz?=
- =?us-ascii?Q?Y6GyN//YUziwKRM9myoUUETfq5LLU6484eHkz0UjzmtfqfVuxgny3Ykk7oZn?=
- =?us-ascii?Q?4E0dDwib0GUGaDgbo2rt3hrcKiVhPmSQ5pjf3YiTkUDtVr+WvfO1JGlXqvZm?=
- =?us-ascii?Q?vouXqbKd6z3I/RuC6tBYuDVL9k2zLylBDZisgfeX5/pssJ9QaRfIB+3Wy8j4?=
- =?us-ascii?Q?4+JzB6gp76cHNqVGOQJZRETPhQSDcnNZtahvkpH6wZxN7XNaciLZSJFxYVfj?=
- =?us-ascii?Q?/VoToSCK0rHIJPsm8WkqAii7xABaHXLsnmADiH4WLnHhrsWToaT9AWHU+xlv?=
- =?us-ascii?Q?oEZF1ajH0fsT75DroFYhBqAaMbuu1ysf7DkZs2IWPak3DVkYwDFTsVnissCq?=
- =?us-ascii?Q?WMyj7H7lfC709LW4/km4HSkkrxKtsXkdRvOCSF5K04KS9/LMbz1X+a4PMAbo?=
- =?us-ascii?Q?eFxfYoww7b36JRsxbnPvS9AALmUeRt7Y92bw7Nk94L3s0NOC6ASNBAIJJlNb?=
- =?us-ascii?Q?bxdhWpPQcZ+GcOVvzpEFFEJmrZuZwNySlU1kJ+Rtf0WrJ0X7fPYNl1oNptJj?=
- =?us-ascii?Q?POiBH1zu71+O3Y814YAKOqn4+Edws3Ud+BYaXNsQDlx0hwafgbWtFsRZ76fK?=
- =?us-ascii?Q?a4LxsGv1A2QgM/ViAv6udNpBKUfDJ9yYF+fW71kLvYpY3yvC607DXJuLhhvO?=
- =?us-ascii?Q?cBwwyLgKUFDw8nZCiMrXvBCi4JPmW4tDmGLwvcDTF1T7u2m862bKj3f31KRf?=
- =?us-ascii?Q?VPgplV2RiCfUN2UAt+fUyXsifrlRO6bEI10mq/xeTTRbzN3bzzvJkASLmcuw?=
- =?us-ascii?Q?zUb4m0Ilz32BcUEV83fMpjmmkHaZNkY2HthX8GiNTrsWFUR8t7OZLrRpf/yu?=
- =?us-ascii?Q?QR0y60RVhFsUSDVSCjNQaNj/GuVQM4zj0koC+IPH89RmBN3H3Bv8a2JRHf+x?=
- =?us-ascii?Q?++fWLdFGU+wIZ8xmGsMMSRhKUGq2chPUOeUIhDqJEuMEoBmq3HkdVtN/FZNm?=
- =?us-ascii?Q?3uMhu5pkKYi0O3GugOlJRcH2ORCyCr5bqT40AWQnBAhVKQTMf/aUPQ/I6DsV?=
- =?us-ascii?Q?MLv4SoNqMZY+uVuv6A3RbocEydmih35W/JBLN+8R?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Mar 2023 14:48:10 UTC
+Received: from mail.castps.autos (unknown [45.13.189.136])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 99BDD10E4C7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  7 Mar 2023 14:48:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=castps.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=ups.updates@castps.autos; bh=WdKKUN1srvsQy7tkseTz3IWCeok=;
+ b=U1neLQN7atu95QakEzQrDh5dvxLc0eAAsDFhPk94y0TxgFOWruZOf81HHyt2HUkR2xjGWi+mIa/z
+ +wz+vedLb7q6whSV6rF/Fy7aQNfcUfHxAxfMQOWzHG/FZy9BYSHhsHfj0Dbk9N5CeGMYDSF0BzR5
+ XfY3rgTRsh0p3022UIQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=castps.autos;
+ b=arRc8pl8Jnzf0cXDAMlN+V7rT07m/2RqDwUZ+9fFHKAGWLiN0XU94qMHhXTtCwsMMAMKFthXiCsM
+ axZlTMQEG9OphTBlptvjnv1zuV/iK1OLevxjfNZF+1aUYquF65REk7NeKDbaW5ZEStJqppMOW8kk
+ 3OeKQNBbitLK3mTlIio=;
+Received: by mail.castps.autos id h0t7ak0001g4 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 7 Mar 2023 09:38:35 -0500 (envelope-from
+ <ups.updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@castps.autos>)
+Date: Tue, 7 Mar 2023 09:38:35 -0500
+From: "UPS Updates" <ups.updates@castps.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: ups Time
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4e5a903a-e98c-4a51-3ed9-08db1f0fde8c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Mar 2023 13:28:42.1448 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: lU6L9gBBFkCoHnnVwCIRo7b38uxniEsbPcd5XvzCsMGap6YHx9hFnZg7KYgpkPDOvHcbHdb4YAKqnAGB1geUJA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB5943
-X-OriginatorOrg: intel.com
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_748_1250718311.1678199894758"
+Message-ID: <0.0.0.53.1D951027F69762C.8BBDF@mail.castps.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -156,97 +49,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "Hao, Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
- "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "lulu@redhat.com" <lulu@redhat.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> Sent: Tuesday, March 7, 2023 8:37 PM
->=20
-> On Tue, Mar 07, 2023 at 02:31:11AM +0000, Tian, Kevin wrote:
-> > > From: Jason Gunthorpe <jgg@nvidia.com>
-> > > Sent: Monday, March 6, 2023 9:17 PM
-> > >
-> > > On Fri, Mar 03, 2023 at 09:55:42AM -0700, Alex Williamson wrote:
-> > >
-> > > > I can't think of a reason DPDK couldn't use hot-reset.  If we want =
-to
-> > > > make it a policy, it should be enforced by code, but creating that
-> > > > policy based on a difficulty in supporting that mode with iommufd i=
-sn't
-> > > > great.
-> > >
-> > > On the other hand adding code to allow device FDs in the hot reset
-> > > path that is never used and never tested isn't great either..
-> > >
-> > > hot-reset does work for DPDK, it just doesn't work in the case where
-> > > DPDK would have many VFIO devices open and they have overlapping
-> > > device sets. Which, again, is something it doesn't do.
-> > >
-> > > IMHO we should leave it out of the kernel and wait for a no-iommu use=
-r
-> > > to come forward that wants hot-reset of many devices. Then we can
-> add
-> > > and test the device FD part. Most likely such a thing will never come
-> > > at this point.
-> > >
-> >
-> > I think we don't need to have this tradeoff if following Yi's last prop=
-osal
-> > which requires every opened device in the set to be covered by the
-> > device fd array. with dev_set->lock held in the reset/open path this is
-> > a safe measure and fully contained in vfio-pci w/o need of further
-> > checking noiommu or iommufd.
->=20
-> I really prefer the 'use the iommufd option' still exist, it is so
-> much cleaner and easier for the actual users of this API. We've lost
-> the point by worrying about no iommu.
+------=_Part_748_1250718311.1678199894758
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Hmmm, so you are suggesting to have both the device fd approach
-and the zero-length array approach, let user to select the best way
-based on their wisdom. Is it? how about something like below in the
-uapi header.
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>01030723</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <header class="Ups_text_informativo_grove"> 
+    <div id="contenedor_ups-_envios-_surve">
+     <span class="new_030225" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 135%; display: block; text-align: center;">A Special Offer for Valued Customers </span>
+    </div> 
+   </header> 
+   <section id="falta_mucho"> 
+    <div class="formacion_qt"> 
+     <div>
+      <span style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold;text-align: center; display: block; padding: 8% 0% 0%; font-size: 320%;">UPS</span>
+     </div> 
+     <div style="text-align: center; padding: 4.5% 0% 2.5%;">
+      <a href="http://www.castps.autos/modularly-acquiesces/a445h2k395q8V6G13E4lBe68i1267h36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQyQmSS6lxz1A06AOw@DP" target="_blank"><img alt="" src="http://www.castps.autos/equivocal-necessary/71a5v23s95h7aDp12lu4e6aZ1267A36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQyQmSS6p1HsR06O@AwD0" width="20%" /></a>
+     </div> 
+     <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; text-align: center; font-weight: bold;">Dear intel-gvt-dev@lists.freedesktop.org</span> 
+     <div style="text-align: center; padding: 4.5% 0%;">
+      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 95%; text-align: justify; line-height: 150%; display: block; width: 85%; margin: auto; text-indent: 5%;">We wanted to take a moment to thank you for choosing <strong>UPS</strong> for your shipping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. </span>
+      <br /> 
+      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 95%; text-align: justify; line-height: 150%; display: block; width: 85%; margin: auto; text-indent: 5%;">As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span> 
+      <div style="text-align: center; padding: 5% 0%;">
+       <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 80%; display: inline-block; padding: 1.5% 2%; background-color: rgb(248, 248, 248); font-weight: bold;">For completing the survey, you can receive a $100 Gift! </span>
+      </div> 
+      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 95%; display: block; line-height: 150%; width: 85%; margin: auto; padding: 0% 0% 5%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span> 
+      <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 120%; padding-bottom: 5%;">
+       <a href="http://www.castps.autos/modularly-acquiesces/a445h2k395q8V6G13E4lBe68i1267h36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQyQmSS6lxz1A06AOw@DP" style=" color: darkslategrey;" target="_blank">TAKE THE SURVEY</a>
+      </div> 
+      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 85%; display: block; line-height: 150%; width: 75%; margin: auto; padding: 0% 0% 5%;">Thank you again for your support. We look forward to hearing from you soon Warm regards, </span>
+      <br /> &nbsp; 
+      <hr color="bronw" size="3px" width="55%" />
+      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 85%; display: block; line-height: 150%; width: 75%; margin: auto; padding: 0% 0% 5%;"> The UPS Survey Team </span>
+     </div> 
+    </div> 
+   </section> 
+   <footer style="padding-top: 100px; text-align: center;"> 
+    <address style="font-size: 65%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;"> <p class="unsubscribe"><span style="text-decoration: none; ">No longer want to receive email notices from us?,</span><a href="http://www.castps.autos/8274M2395KV8u611e4e69S1267s36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQyQmSS5R10IF6RXBwDL/northward-Anheuser" style="text-decoration-line: none; color: #000"> <span>Visit Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font dir="electrician"></font><small><span></span><big></small><font lang="renewer"><small></big><span></font></span><style face="advertisers"></small></style><style></style><big></big><span title="invariable"></span></p> </address> 
+   </footer> 
+  </div>   
+ <img src="http://www.castps.autos/c414l2395A8k5C11b4e6bn1267U36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQyQmSS7W1O0GnP6yBwODN/heterogeneity-alphanumeric" alt=""/></body>
+</html>
 
-/**
- * VFIO_DEVICE_PCI_HOT_RESET - _IOW(VFIO_TYPE, VFIO_BASE + 13,
- *                                  struct vfio_pci_hot_reset)
- *
- * Userspace requests hot reset for the devices it uses.  Due to the
- * underlying topology, multiple devices may be affected in the reset.
- * The affected devices may have been opened by the user or by other
- * users or not opened yet.  Only when all the affected devices are
- * either opened by the current user or not opened by any user, should
- * the reset request be allowed.  Otherwise, this request is expected
- * to return error. group_fds array can accept either group fds or
- * device fds.  Users using iommufd (valid fd), could also passing a
- * zero-length group_fds array to indicate using the bound iommufd_ctx
- * for ownership check to the affected devices that are opened.
- *
- * Return: 0 on success, -errno on failure.
- */
-struct vfio_pci_hot_reset {
-        __u32   argsz;
-        __u32   flags;
-        __u32   count;
-        __s32   group_fds[];
-};
+------=_Part_748_1250718311.1678199894758--
 
-Regards,
-Yi Liu
