@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF61E6AEE85
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 19:12:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E3306AF387
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 20:06:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 749D910E529;
-	Tue,  7 Mar 2023 18:12:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8E10810E102;
+	Tue,  7 Mar 2023 19:06:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Tue, 07 Mar 2023 18:12:50 UTC
-Received: from mail.givetco.autos (unknown [45.13.189.208])
- by gabe.freedesktop.org (Postfix) with ESMTP id A2CA310E520
+X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Mar 2023 19:06:02 UTC
+Received: from mail.holdfaw.autos (unknown [45.13.189.215])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3037310E153
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Mar 2023 18:12:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=givetco.autos;
+ Tue,  7 Mar 2023 19:06:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=holdfaw.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=costco_supplies@givetco.autos; 
- bh=9yMo8nMdwRaN6gTG1evNBTbTh/M=;
- b=CBnzqs2c9JObSArMZd/NgTwsh+0TJCImWgCTv7hAZ9hJpsApOD3EnkKIa7rDYEXVKV5s10DFvuSP
- b6GuJKjqV3uojbaQ9yHO9K9SWGe9U1Y/wa0Pee9jyHnDYb6QPiuwpFEW2o76KlaKqVXDptSeAPQH
- 3zTvq7HkdNYyPPZwmtc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=givetco.autos;
- b=Kg1NWoBLFQago2XcxzKZQYKzhYbHun0qH1XzC/6WHyfLmdvFOz76b90FFaQ2tXfJa+bD6v5D44NE
- k2pH8glsofQfY9di/L9F/jLlzDsQlUd2yt3MACwRtd7o/Wvo4SP2VjXDsOnw5PWYd7Ru/EcAbBLL
- Ui+WU32bmzTWaIrxZLU=;
-Received: by mail.givetco.autos id h0u9c80001gj for
+ i=lowes.exclusive.offer@holdfaw.autos; 
+ bh=jz3r5mUvy2+A1J396azFwAcpW3I=;
+ b=Zs5EHMdCpYeAgNY8DOcKSYQYcbHJLXdHxRcbybrJ2wlixoHqxxdt2tSPH4AskRtN0TmHdHSB0fha
+ 8NKS73JkPBAGQfegBZAcovHoJfLqN0elXVrumVwksZ7s1vquBEtZKXB31cQUhEiGVI33wB28+KWU
+ HNAYgMYIs46hL0ULeKk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=holdfaw.autos;
+ b=M3DJnXkoimII/0dhnJYprnrN2VKZuhgr/kPEr8e01JOQzMXkvTLfx9uaAb0QZuRDlqu7wCq0uFqu
+ jXgoQCKxIBYlg9yUOwJRQ4D/Y+yebRVNDqCknxgZ2HvF/cP2Lu2jwvXQxXvRwyCPdIGRRLkSGkx+
+ 5D/JyfR4x4n3NCrMyPs=;
+Received: by mail.holdfaw.autos id h0u5hk0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Mar 2023 14:28:18 -0500 (envelope-from
- <costco_supplies-intel+2Dgvt+2Ddev=lists.freedesktop.org@givetco.autos>)
-Date: Tue, 7 Mar 2023 14:28:18 -0500
-From: "Costco Supplies" <costco_supplies@givetco.autos>
+ Tue, 7 Mar 2023 13:53:27 -0500 (envelope-from
+ <lowes.exclusive.offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@holdfaw.autos>)
+Date: Tue, 7 Mar 2023 13:53:27 -0500
+From: "Lowes Exclusive Offer" <lowes.exclusive.offer@holdfaw.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Be next by leaving feedback.
+Subject: Don't miss out on your free Stanley Tool Set from Lowe's
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_403_468629236.1678212102949"
-Message-ID: <0.0.0.2D.1D9512AF866E41A.2BCB64@mail.givetco.autos>
+ boundary="----=_Part_208_1785961889.1678215184195"
+Message-ID: <0.0.0.17.1D951261A5301A8.1578C8@mail.holdfaw.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_403_468629236.1678212102949
+------=_Part_208_1785961889.1678215184195
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,44 +63,65 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>06030723</title> 
+  <title>07030723</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
    <header> 
-    <div>
-     <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; text-align: center; font-size: 140%; margin: 6% 0%;">A Special Offer for Valued Customers</span> 
-     <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; text-align: center; font-size: 160%; color:cornflowerblue;">COSTCO</span>
-    </div> 
-    <div style="max-width: 20%; margin: auto; padding: 2.5% 0%;">
-     <a href="http://www.givetco.autos/region-steered/2e26OG23m95hYH8613c4peo7fp126cT36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQCQmeo5D1R0s6v1jAwD" target="_blank"><img alt="" src="http://www.givetco.autos/a9d4G2395iGy7a13rw4ke81L126cM36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQCQmeo5l1R0N6BULMwD/confuses-progressed" width="100%" /></a>
-    </div> 
-   </header> 
-   <section> 
-    <div>
-     <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 90%; text-align: justify; line-height: 150%; display: block; width: 90%; margin: auto; text-indent: 5%;">We wanted to take a moment to thank you for choosing Costco to outfit your home and family. Your loyalty and support mean a lot, and we are grateful for the opportunity to serve you.<br /> <br /> As part of our commitment to providing the best experience possible, we'd like to invite you to participate in a short survey about your store and your overall experience with Costco. Your feedback is incredibly important and we'd like to offer you a token of our appreciation for taking the time to share your thoughts.</span>
-    </div> 
-    <div style="text-align: center;">
-     <span style="display: inline-block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 900; padding: 1.5% 2%; background-color: rgb(245, 245, 245); font-size: 85%; margin: 6% 0%;">For completing the survey, you can receive a $100 Gift! </span> 
-     <div>
-      <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 90%; text-align: justify; line-height: 150%; display: block; text-indent: 5%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</span>
+    <div class="email_grobe"> 
+     <div style="background-color: #e9e9e9; color: #686868; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;"> 
+      <div style="padding: 2%; font-size: 24px;">
+       <strong>Special Gift for intel-gvt-dev@lists.freedesktop.org</strong>
+      </div> 
      </div> 
-     <div style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: x-large; margin: 6% 0%;">
-      <a href="http://www.givetco.autos/region-steered/2e26OG23m95hYH8613c4peo7fp126cT36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQCQmeo5D1R0s6v1jAwD" style="color: darkorchid;">TAKE THE SURVEY</a>
+    </div> 
+   </header> &nbsp; 
+   <section class="new_lowes_test"> 
+    <div>
+     <span style="display: block; text-align: justify; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 90%;">We hope this email finds you well. At Lowe's, we value your feedback and are committed to providing you with the best shopping experience possible. That's why we want to offer you a special incentive for taking the time to complete our customer survey. </span> 
+     <div style="max-width: 85%; margin: auto;">
+      <a href="http://www.holdfaw.autos/ostracism-rasher/daa5Vr2395U8V6F12P4Qe83Q126ds36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ6Qme96Ow1O0T6qPlwDA" target="_blank"><img alt="" src="http://www.holdfaw.autos/credits-update/1025j2v395pko7a11k4e85L126dn36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ6Qme96C1ItK06p0lwAD" width="100%" /></a>
      </div> 
+     <span style="display: block; text-align: justify; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 90%;">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers.</span> 
+     <div style="text-align: center; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 120%;">
+      <a href="http://www.holdfaw.autos/ostracism-rasher/daa5Vr2395U8V6F12P4Qe83Q126ds36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ6Qme96Ow1O0T6qPlwDA">Take the Survey</a>
+     </div> &nbsp; 
+     <div style="max-width: 80%; margin: auto;">
+      <a href="http://www.holdfaw.autos/ostracism-rasher/daa5Vr2395U8V6F12P4Qe83Q126ds36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ6Qme96Ow1O0T6qPlwDA" target="_blank"><img alt="" src="http://www.holdfaw.autos/multidimensional-purify/6844z2395U7SNa12V4e86Vl126dm36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ6Qme96WR10wq6IMJWwD" width="100%" /></a>
+     </div> &nbsp; 
+     <div style="max-width: 80%; margin: auto;">
+      <a href="http://www.holdfaw.autos/ostracism-rasher/daa5Vr2395U8V6F12P4Qe83Q126ds36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ6Qme96Ow1O0T6qPlwDA" target="_blank"><img alt="" src="http://www.holdfaw.autos/5936n23q9G5Qlw7a12Gr4e87H126dl36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ6Qme97eW1IgD06eOwlDJ/Bagrodias-pristine" width="100%" /></a>
+     </div> 
+     <br /> 
+     <br /> 
+     <span style="display: block; text-align: justify; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 90%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.</span>
+     <br /> &nbsp; 
+     <div style="text-align: center; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 120%;">
+      <a href="http://www.holdfaw.autos/ostracism-rasher/daa5Vr2395U8V6F12P4Qe83Q126ds36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ6Qme96Ow1O0T6qPlwDA">Start Here Now</a>
+     </div> 
+     <br /> 
+     <br /> 
+     <u><span style="display: block; text-align: center; font-weight: bold;;">Best regards,<br /> <br /> The Lowe's Survey Team</span></u>
     </div> 
    </section> 
-   <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 85%; display: block; text-align: center; line-height: 150%;">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> <b>Warm regards, The Costco Survey</b></span> 
-   <hr /> 
-   <footer> 
-    <address style="text-align: center; font-weight: normal; font-family: Arial, Helvetica, sans-serif;"> 
-     <div style="font-size: 10px;; padding: 15px; color: #000000; font-weight: bold;"> 
-      <p class="unsubscribe"><span style="text-decoration: none; ">To cut your subscription,</span><a href="http://www.givetco.autos/gladness-Calvinizes/abc5nI2395ry86t12p4e8p0_126cy36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCQmeo6yr10JY6SB2wlD" style="text-decoration-line: none;"> <span>Continue-Over-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big></big><big></big><font size="meadow"></font><big><span face="victim"><style></style></big><font></font></span><big></big></p> 
-     </div> </address> 
+   <br /> 
+   <br /> &nbsp; 
+   <footer style="text-align: left; max-width: 620px ; margin: auto;"> 
+    <address style=" padding: 1.5% 0%; font-size: 65%; font-weight: bold; color: rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> <p><span style="text-decoration: none; ">To change your message preferences,</span><a href="http://www.holdfaw.autos/ef35p23C95N8LT611K4e84t126dN36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ6Qme97f10OKUl6KkNwlD/rotating-modulus" style="text-decoration-line: none; color: white"> <span>Get.Going.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span lang="ferries"><font face="liquidate"></span><span face="amelioration"></font></span><span></span><span class="popish"></span><big></big><span dir="stomached"></span><span><small></small></span></p> </address> 
    </footer> 
-  </div>   
- <img src="http://www.givetco.autos/5574F2395V8mA511P4e82G126cY36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQCQmeo7O10ZQDA6DWN3wD/confuses-progressed" alt=""/></body>
+  </div> 
+  <table border="0" cellpadding="0" cellspacing="0" id="footerBlock" width="600"> 
+   <tbody> 
+    <tr> 
+     <td align="center" class="footerContent" valign="top">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="center" class="footerContent" valign="top"><br /> &nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.holdfaw.autos/credits-update/3d25Vu2395sH85g11I4e88i126dv36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ6Qme97Djzg10B6iyBWwD" alt=""/></body>
 </html>
 
-------=_Part_403_468629236.1678212102949--
+------=_Part_208_1785961889.1678215184195--
 
