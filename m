@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B1B66AE326
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 15:48:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B72B6AE5DB
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 17:05:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 47A3610E4CB;
-	Tue,  7 Mar 2023 14:48:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 11B5B10E5E0;
+	Tue,  7 Mar 2023 16:05:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Tue, 07 Mar 2023 14:48:10 UTC
-Received: from mail.castps.autos (unknown [45.13.189.136])
- by gabe.freedesktop.org (Postfix) with ESMTP id 99BDD10E4C7
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Mar 2023 16:05:53 UTC
+Received: from mail.dighpot.autos (unknown [45.13.189.156])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9CE7910E168
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Mar 2023 14:48:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=castps.autos;
+ Tue,  7 Mar 2023 16:05:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dighpot.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups.updates@castps.autos; bh=WdKKUN1srvsQy7tkseTz3IWCeok=;
- b=U1neLQN7atu95QakEzQrDh5dvxLc0eAAsDFhPk94y0TxgFOWruZOf81HHyt2HUkR2xjGWi+mIa/z
- +wz+vedLb7q6whSV6rF/Fy7aQNfcUfHxAxfMQOWzHG/FZy9BYSHhsHfj0Dbk9N5CeGMYDSF0BzR5
- XfY3rgTRsh0p3022UIQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=castps.autos;
- b=arRc8pl8Jnzf0cXDAMlN+V7rT07m/2RqDwUZ+9fFHKAGWLiN0XU94qMHhXTtCwsMMAMKFthXiCsM
- axZlTMQEG9OphTBlptvjnv1zuV/iK1OLevxjfNZF+1aUYquF65REk7NeKDbaW5ZEStJqppMOW8kk
- 3OeKQNBbitLK3mTlIio=;
-Received: by mail.castps.autos id h0t7ak0001g4 for
+ i=home.depot.marketing@dighpot.autos; 
+ bh=eUnS2e353q92Gl8udd40Gfh6BEo=;
+ b=f+ECmfwhHPjPZCe1vNmdF3VGihdwqF93BapTINEVghFYYB4jYma2Ru67WhbHpdTFjlPdcM3nDGHb
+ 9kKTCZPruShbtNOogI2c4BD+KvBU39X2WcnY36knXnyFy9zMV9PY1qUcVugr2ItOx6gcWrAOtEIF
+ Q23T6oPOCA71LVxBOso=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dighpot.autos;
+ b=msOsYAMYaOT506+u3DHIA2nkt9qoJ/dL4S0uKIO4jsY9jTTtrSh1CdVjiOSzVdoIYbGHkPwK3xZS
+ leFZa8SbaH5s2Ml13w7KbvQnomBX5rOmm+fkplvFAJCU8mAmswCabI5qdntp7CWqqZj+hktlEN1n
+ FTRwoVGl2kPhLosBYfo=;
+Received: by mail.dighpot.autos id h0tge20001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Mar 2023 09:38:35 -0500 (envelope-from
- <ups.updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@castps.autos>)
-Date: Tue, 7 Mar 2023 09:38:35 -0500
-From: "UPS Updates" <ups.updates@castps.autos>
+ Tue, 7 Mar 2023 10:54:37 -0500 (envelope-from
+ <home.depot.marketing-intel+2Dgvt+2Ddev=lists.freedesktop.org@dighpot.autos>)
+Date: Tue, 7 Mar 2023 10:54:37 -0500
+From: "Home Depot Marketing" <home.depot.marketing@dighpot.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: ups Time
+Subject: Today's rewards on us for being a loyal customer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_748_1250718311.1678199894758"
-Message-ID: <0.0.0.53.1D951027F69762C.8BBDF@mail.castps.autos>
+ boundary="----=_Part_643_44134238.1678204458278"
+Message-ID: <0.0.0.47.1D9510D1E6EE3EC.196264@mail.dighpot.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_748_1250718311.1678199894758
+------=_Part_643_44134238.1678204458278
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,48 +63,46 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>01030723</title> 
+  <title>03030723</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header class="Ups_text_informativo_grove"> 
-    <div id="contenedor_ups-_envios-_surve">
-     <span class="new_030225" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 135%; display: block; text-align: center;">A Special Offer for Valued Customers </span>
+   <header class="whattimeits"> 
+    <div id="alwey_fromcryczt" style="text-align: center;">
+     <a href="http://www.dighpot.autos/1795W23m95XHL8612i4e7M1N1269N36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQhQmSK6B1UD0V5tjwD3/Ricanism-Burr" target="_blank"><img alt="" src="http://www.dighpot.autos/Welches-silicate/5764W2395NO7ya12p4eJ73w1269w36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQhQmSK6z10BjX6A0kwDk" width="70%" /></a>
+     <br /> 
+     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; display: block; margin: 2.5% 0%; font-weight: 900;"><u>A SPECIAL OFFER FOR VALUED CUSTOMERS</u></span> 
+     <div style="text-align: center; width: 18%; margin: auto; padding: 1.5% 0%;">
+      <a href="http://www.dighpot.autos/1795W23m95XHL8612i4e7M1N1269N36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQhQmSK6B1UD0V5tjwD3/Ricanism-Burr" target="_blank"><img alt="" src="http://www.dighpot.autos/2ff6y2H39K5h7agj11G4e74q1269k36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQhQmSK5J1NJ06gkwD@N/apportioning-gangrene" width="100%" /></a>
+     </div> 
     </div> 
    </header> 
-   <section id="falta_mucho"> 
-    <div class="formacion_qt"> 
-     <div>
-      <span style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold;text-align: center; display: block; padding: 8% 0% 0%; font-size: 320%;">UPS</span>
-     </div> 
-     <div style="text-align: center; padding: 4.5% 0% 2.5%;">
-      <a href="http://www.castps.autos/modularly-acquiesces/a445h2k395q8V6G13E4lBe68i1267h36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQyQmSS6lxz1A06AOw@DP" target="_blank"><img alt="" src="http://www.castps.autos/equivocal-necessary/71a5v23s95h7aDp12lu4e6aZ1267A36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQyQmSS6p1HsR06O@AwD0" width="20%" /></a>
-     </div> 
-     <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; text-align: center; font-weight: bold;">Dear intel-gvt-dev@lists.freedesktop.org</span> 
-     <div style="text-align: center; padding: 4.5% 0%;">
-      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 95%; text-align: justify; line-height: 150%; display: block; width: 85%; margin: auto; text-indent: 5%;">We wanted to take a moment to thank you for choosing <strong>UPS</strong> for your shipping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. </span>
-      <br /> 
-      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 95%; text-align: justify; line-height: 150%; display: block; width: 85%; margin: auto; text-indent: 5%;">As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span> 
-      <div style="text-align: center; padding: 5% 0%;">
-       <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 80%; display: inline-block; padding: 1.5% 2%; background-color: rgb(248, 248, 248); font-weight: bold;">For completing the survey, you can receive a $100 Gift! </span>
-      </div> 
-      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 95%; display: block; line-height: 150%; width: 85%; margin: auto; padding: 0% 0% 5%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span> 
-      <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 120%; padding-bottom: 5%;">
-       <a href="http://www.castps.autos/modularly-acquiesces/a445h2k395q8V6G13E4lBe68i1267h36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQyQmSS6lxz1A06AOw@DP" style=" color: darkslategrey;" target="_blank">TAKE THE SURVEY</a>
-      </div> 
-      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 85%; display: block; line-height: 150%; width: 75%; margin: auto; padding: 0% 0% 5%;">Thank you again for your support. We look forward to hearing from you soon Warm regards, </span>
-      <br /> &nbsp; 
-      <hr color="bronw" size="3px" width="55%" />
-      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 85%; display: block; line-height: 150%; width: 75%; margin: auto; padding: 0% 0% 5%;"> The UPS Survey Team </span>
+   <section class="noteisvois"> 
+    <div id="text_thehomedepot">
+     <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; font-size: 90%; width: 85%; margin: auto; line-height: 150%; display: block; text-align: justify; text-indent: 5%; padding: 2.5% 0%;">The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer.</span> 
+     <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 150%; display: block; text-align: justify; text-indent: 5%; padding: 2.5% 0%;">As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span> 
+     <div style="text-align: center;">
+      <span style="display: inline-block; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; padding: 1.5% 2%; background-color: rgb(255, 253, 244); font-size: 75%;">For completing the survey, you can receive a $100 Gift!</span>
      </div> 
     </div> 
    </section> 
-   <footer style="padding-top: 100px; text-align: center;"> 
-    <address style="font-size: 65%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;"> <p class="unsubscribe"><span style="text-decoration: none; ">No longer want to receive email notices from us?,</span><a href="http://www.castps.autos/8274M2395KV8u611e4e69S1267s36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQyQmSS5R10IF6RXBwDL/northward-Anheuser" style="text-decoration-line: none; color: #000"> <span>Visit Right Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font dir="electrician"></font><small><span></span><big></small><font lang="renewer"><small></big><span></font></span><style face="advertisers"></small></style><style></style><big></big><span title="invariable"></span></p> </address> 
+   <section> 
+    <div> 
+     <div style="text-align: center; font-weight: 900; font-size: 125%; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin: 5.5% 0%;">
+      <a href="http://www.dighpot.autos/1795W23m95XHL8612i4e7M1N1269N36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQhQmSK6B1UD0V5tjwD3/Ricanism-Burr" style="color:darkorange;" target="_blank">TAKE THE SURVEY</a>
+     </div> 
+    </div> 
+    <div style="text-align: center;">
+     <span style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 80%; display: block; width: 70%; margin: auto; line-height: 150%;"><strong>Thank you again for your support. We look forward to hearing from you soon Warm regards</strong><br /> <br /> <u>The Home Depot Survey</u></span>
+    </div> 
+   </section> &nbsp; 
+   <hr /> 
+   <footer style="width: 100%; text-align: center; font-size: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; "> 
+    <address style=" font-weight: bold; color: #000000; padding: 13px 0px; width: 95%; margin: auto; border-radius: 8px; "> <p><span style="text-decoration: none; ">To cut off communication,</span><a href="http://www.dighpot.autos/1014M2395tM8G612d4e7L2v1269q36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQhQmSK5zZ1t06S0WkwD/apportioning-gangrene" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Begin-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span size="virtue"><style title="Francesca"></style><span></span><span></span></span><font></font><style></style></p> </address> 
    </footer> 
   </div>   
- <img src="http://www.castps.autos/c414l2395A8k5C11b4e6bn1267U36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQyQmSS7W1O0GnP6yBwODN/heterogeneity-alphanumeric" alt=""/></body>
+ <img src="http://www.dighpot.autos/Sabbathize-bony/1206A2W3M95S8r5g11N4e75B1269D36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQhQmSK7M10jhug6tNW@wD" alt=""/></body>
 </html>
 
-------=_Part_748_1250718311.1678199894758--
+------=_Part_643_44134238.1678204458278--
 
