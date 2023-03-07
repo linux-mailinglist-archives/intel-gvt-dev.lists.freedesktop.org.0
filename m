@@ -2,62 +2,144 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCC526AD6B0
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 06:11:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54D536AD77E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 07:39:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8D4DE10E408;
-	Tue,  7 Mar 2023 05:11:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7A5B210E35A;
+	Tue,  7 Mar 2023 06:39:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vs1-xe35.google.com (mail-vs1-xe35.google.com
- [IPv6:2607:f8b0:4864:20::e35])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0395210E36F;
- Tue,  7 Mar 2023 05:11:22 +0000 (UTC)
-Received: by mail-vs1-xe35.google.com with SMTP id f13so11323468vsg.6;
- Mon, 06 Mar 2023 21:11:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678165881;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gOhaj5GaMc2x+mrmGWMEhuFpIiJwp+9KbBPK8wKJme0=;
- b=e8hl3EEyt4DxXdBBzVFW2YX2FyQYl9J+LekJuNwUxMSMgfHz1/PC6VHwQaqSjPptvA
- hC6OxQYaAMCK/02ReFmgVpiSqDHZllJAk8tARaYERGqJYpTjgPO7Mxeho+eE7DwSxWJc
- 9c3PmbapBNNOSq1Mk/pa/LBHS8hUK8bgqok9GortNdTzQ4yKAAUR9wjpWk56k0r2PwTt
- aA1OEvu6hcZuiaZLjAXIFP9FLCOVmm7S7gZS68oKQsM5vfqnIGKF+REHleRitJPf15zw
- OX28lAlMkqsvROV4gFvy4NR8j60I1YRcLiwMj5He81BDPV13Q60l9poBJMHothtS0q4O
- HBag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678165881;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=gOhaj5GaMc2x+mrmGWMEhuFpIiJwp+9KbBPK8wKJme0=;
- b=bPAgLPx+W7PoqNa4QC1sXIBXFFRwh+ewNadSkAZQefGKmqb2uzw1UvNmC7cVqFZV3h
- fpAOLHxT2iSknJvP5vo/Qx51BTtukhym/FiSrDX9X+/hbodlYM/sW09T0ns5r6f307zn
- gR1lEeQM8qVsJMF4gzt1oQpDvb5X4R0vFFZrpDFoGp5Rq36HPyea2L9jaUVfao4bWkRE
- sADbJoAQvshk7Ooi8W36ZzfWKBUaYHCgtxShVkUIkzWFCXb9+IOfbDeo27xmp23Uekmv
- Ezww4xzf8BLqbG2jRab1goPq6XJteCoXKfehalJxz7ZFA9af+j0SSYA1xq2hLjQG3S2x
- mJRw==
-X-Gm-Message-State: AO0yUKX9nB98I4GioOOxs1ZuyoZhNwImkRbuRpi1d2vwasPnOts1hwtj
- zkVNUCmfmCRPDL36dXsIT1BiNCF7/hRH7K3Yj0Q=
-X-Google-Smtp-Source: AK7set/W/A+me1jNyqWc9vH8ucYNaNO688tI9JJgzbjVx6tkIj8x0Jl/Ni8mowOOIOX3Uuu3Dn7pyPGaxtgEYlgRtxI=
-X-Received: by 2002:a67:e94c:0:b0:421:c4a7:872b with SMTP id
- p12-20020a67e94c000000b00421c4a7872bmr6603337vso.6.1678165880965; Mon, 06 Mar
- 2023 21:11:20 -0800 (PST)
-MIME-Version: 1.0
-References: <20220904214134.408619-1-jim.cromie@gmail.com>
- <20220904214134.408619-33-jim.cromie@gmail.com>
- <CAOZdJXXHGW1iceWgB47wSUhG_hYA48JWtOPRrVRnL-EvRCxhBA@mail.gmail.com>
-In-Reply-To: <CAOZdJXXHGW1iceWgB47wSUhG_hYA48JWtOPRrVRnL-EvRCxhBA@mail.gmail.com>
-From: jim.cromie@gmail.com
-Date: Mon, 6 Mar 2023 22:10:54 -0700
-Message-ID: <CAJfuBxy=QKPfR=OEW5ZoUz9_9MWotJnu3CKWknuhGDNOCf7Whw@mail.gmail.com>
-Subject: Re: [PATCH v6 32/57] nouveau: adapt NV_DEBUG,
- NV_ATOMIC to use DRM.debug
-To: Timur Tabi <timur@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 39DB710E03E;
+ Tue,  7 Mar 2023 06:39:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1678171152; x=1709707152;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=WCUBKeBHvNn6dUJ2K0VCWFiJm42SfqUZ4OqWlv2sxP0=;
+ b=jy+e31shRIKpYUoRkQCSZJOyt4foWupzGNx72U2u2k3R/1N6RakLfqcM
+ 3R0aUuHmHCeqG/hEQUpCVMYIKBTJBJ8QBRackLKeqQtu+A1nxsPdnGB1y
+ VbGJrNGJxhapTukQ2Vpv+oJNqr6QXLtlkAHYS1owWaRa5i0P4bQYBFR+L
+ EAnkKB076/bHostLmHWL5zXqX+mgdu7dNxfEfS+wNiyq8RkP/iNldjuGu
+ CvhuGmf1P3BhwBi4R/7KA5CyBF6VXs/LjpLeccxGzeoabnnPKnS5QVw51
+ YuYIFAWS99de9D5nwKfwf1MfTO11xNOqN9DBFiqv8mjOx8j8QPHZN2Cz1 Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10641"; a="400595645"
+X-IronPort-AV: E=Sophos;i="5.98,240,1673942400"; d="scan'208";a="400595645"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Mar 2023 22:39:02 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10641"; a="706699570"
+X-IronPort-AV: E=Sophos;i="5.98,240,1673942400"; d="scan'208";a="706699570"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orsmga008.jf.intel.com with ESMTP; 06 Mar 2023 22:39:02 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Mon, 6 Mar 2023 22:39:01 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Mon, 6 Mar 2023 22:39:01 -0800
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Mon, 6 Mar 2023 22:39:01 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.171)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Mon, 6 Mar 2023 22:39:01 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Sgry/twck6hu1BaWmldvhssrv7Ve4UvGOl5J7fz/BqQjB1xQ66ylkm6wrfPr2fc0dx5SvAoZXdapTfNj4TGOmNveGQR+t7PAzhrpvOVgTKyGgbQNS+ZfpO1+ttpCiDSeFT2FkDDEBnKDJf7mA6s7OQix/Vbw/24rr9oIB4Cr5zkNm8pzRw2g7hQqI42tmc0NDYXxb6jpZanBwC3d11oNMcq6ScrjHwyk5+3GNJBfK6bUX4od8lMypCrhnRP6ZGZWBDxBkswaH/o3DT6gDt6hOkqNp3EfgeD8vdY/F4qEsLPKy9plfJz2Dc59U5h6UH/QXD2gf88hSc1hGOXm0o8yHA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=swbA77Wfm5XGWBiqhEt7FhYAIWAEY9UAwFxHFbLWHC0=;
+ b=Z3sEHJtl/maHUH+Xxk+S9zX/amCfyFxzrsau8F3V2ASBtu9oK2hZE18Uh/EMUkC73D4/1orK1VGRsh8O7ulnUUtYz4YpBfndggHd1c0Hf3nBXOhiMoQGkCHIePNMsQKC9zVWIlY4LBUByfH2H0xzpMlDRj0+wOv8MNx283RNQrLNS2U11r+GlTxvUPOw5Ub3dD5mBOMNd9NwMYzdj02I9OCRsrxMz8RcqAMJuz8zT1Zotg1ejBlATOMYo3Y+hGFZNoIbeMYOjbpMc9EcDZC2fgCFSh2d4HtvR9fWItzzZBayulqsyofwQttDQcd6QKpEvvFpt3oVD8skKQcu6O46qw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by SJ0PR11MB5054.namprd11.prod.outlook.com (2603:10b6:a03:2d3::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6156.29; Tue, 7 Mar
+ 2023 06:38:59 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::1aac:b695:f7c5:bcac]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::1aac:b695:f7c5:bcac%9]) with mapi id 15.20.6156.028; Tue, 7 Mar 2023
+ 06:38:59 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>, Jason Gunthorpe <jgg@nvidia.com>
+Subject: RE: [PATCH v5 16/19] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
+Thread-Topic: [PATCH v5 16/19] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
+Thread-Index: AQHZSpxPC+MDBUMQo0WSWqpmOLb9+K7lqIaAgACN44CAAm82AIAGQfhg
+Date: Tue, 7 Mar 2023 06:38:59 +0000
+Message-ID: <BN9PR11MB52760241BBD8D6D670BD17D98CB79@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230227111135.61728-1-yi.l.liu@intel.com>
+ <20230227111135.61728-17-yi.l.liu@intel.com>
+ <DS0PR11MB752959193D5CBA2A677B1F18C3AD9@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <Y/+Pkbtr8KQmUjVp@nvidia.com>
+ <DS0PR11MB7529E16DC2B558E8476D835FC3B39@DS0PR11MB7529.namprd11.prod.outlook.com>
+In-Reply-To: <DS0PR11MB7529E16DC2B558E8476D835FC3B39@DS0PR11MB7529.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SJ0PR11MB5054:EE_
+x-ms-office365-filtering-correlation-id: 458ca5e4-fb62-4989-9ed9-08db1ed6a1f8
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: XKjfB9eeIODvr1c3d8ICCpcLh67MAy5HyHDvJEv7JfvqtxBKpYvnnk/ug7weJGgyCmycbSJJPLrn6FbckpF1kvwCs2oftzmZM1Y0xU1ueknS1c75rfdjT3CsdoNr9igEiSd7Pq/sItaNpA5gmp5sO4fwD6vnOyP/LcclLas+N+a/JVK/uiNNpCtWkR/jYC06x7Y3EBsmPtnMSG4YA5vyQrM53nvRMEw8qwQgCa5t95SBfrkKd3fB4AZj1LIidoXZ3mDBIimTVTgm3xAF4EAhfVUO7g3XEyrh/w9DVeiF3sbkE745ViQGi/MwiYZP9zP9K23GnAuncPiTNXcPwNODFa7ejqxjYMCArpK9XCLagrf7cx+XhEkbJfFdXop1A/j46OqQ+ElUQ0O0y1VuZVokqR6rG1GmIwcPMrSZ1WnddbqvymvX4yu1oiDz/nCUitdvHIpYXL9bc22CNtkvJ79rFlVw/OBn8d2pFg3kNgyQklwZTjKhOfx3EPK0J2mmTYAHxLHSUd101fYSk1d1cxH23t+trijuxpVxzJeXoqVzNcKAo4gMbxR7X3rk6Si8NEp2lrACZL15DJoMvIf6LyDjGW6ASgxiSS0t0wCuF1qNZ8MkQ71SvvjRy0b7W3OuwU4Xqt12EsveBwSmnccHb2uZjmgHQ8XsAYr0u+kGWV9stOT+Se652+RODnBHQkRfnW8vitCekiuvO4XJ+c1WHZmInQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(346002)(366004)(376002)(136003)(39860400002)(396003)(451199018)(5660300002)(186003)(9686003)(26005)(7416002)(4744005)(64756008)(71200400001)(66446008)(66476007)(66556008)(66946007)(8676002)(4326008)(76116006)(7696005)(478600001)(33656002)(54906003)(86362001)(110136005)(316002)(38070700005)(55016003)(6506007)(8936002)(41300700001)(122000001)(52536014)(38100700002)(82960400001)(83380400001)(2906002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?n+WX28+xLWpxbtQhGf4HXJQ1vbRj9cNjFu6iKlccBg4UeJ9JgRfXBvPWTxKn?=
+ =?us-ascii?Q?PhxOgrfXg72hqy7HSet2GczDlrVpnDNhIPHRSN7RyzrHDTiBYeNr7VLXCkPQ?=
+ =?us-ascii?Q?5Llb7Ckz+ecDuF6ZJdJPgQEdtTEgVd499EMZSQD1D4V+qoUqfT1uV4fufPI0?=
+ =?us-ascii?Q?fztZP57FD8n2vzSKIHW428qHFSJ5O5bmR26ZT4SIOKltuGKjzGBk9tcKQeJr?=
+ =?us-ascii?Q?Gdoc1/quUJ28v3PGUP2k310vpKlnarR578tzTfhxSLdcrjIn5bJF875xUHdu?=
+ =?us-ascii?Q?+/GBCzuZgVBFelMRuz/aZ9JrlkmbI12XRVHNw/ToCTqUjayGPXjMBtbaNXuy?=
+ =?us-ascii?Q?8h82uu8qnWZO2wBV7xWUUz6P09CBq7l0LRupLwPFdaA9H7sRcealeR9Obado?=
+ =?us-ascii?Q?+ecNi+DugypUMHg3zS2X9agfveHh5r7ntM1JYjoxiMEd/szJhJZqdBaLCs93?=
+ =?us-ascii?Q?QEIz5McE+ksPtdlRbdnkrt/UFoJ6HADP2guNprAw1BdZF5IMvAsCnSrJfQh9?=
+ =?us-ascii?Q?F08LCrahxWx5ZybOWPG7pWJgMZ4N8TrJBe0M8l92kiCnb0z1mXKylJpbkPk6?=
+ =?us-ascii?Q?AFVSO4IzSATjFNjOc9J7GrC18rVwxSuJDNPX23fC6WPEBaGQna7t6CHAFc/R?=
+ =?us-ascii?Q?9K5IzXfPapQPZYeS5sXGVOlVeLRcmXXHn+rQESDA7/qJWMO9u7S5a9OCvwPm?=
+ =?us-ascii?Q?UKcxraV65j4Q0RuWK7Hukn7xF2mFct5HvZvMLlCFs9SM/MJYkFytofBthBx9?=
+ =?us-ascii?Q?ymGSC8H2sDVma6/mzYKo16WM0s1Cu0UX4HQdplOcEQ+56rZVhLzW76loKZrY?=
+ =?us-ascii?Q?la3lQLZ1OmBIq5DevLBFonoPS62XqVxt5CaDS1puzautxueg/n7kUCFf5JqB?=
+ =?us-ascii?Q?lfPdG1FnwhoMKSMfOjwKuo7ToITKnNPWx/5ItyMG7MjPOu3xyERfVgYWDDR2?=
+ =?us-ascii?Q?jUwL54hEb5VTXx/9jB+wjNFHanh2/VWtsuF/u42d+jfLVWrawfpkSyeh7rix?=
+ =?us-ascii?Q?cxPwGnXiH1KU3S9AOU8WM4+goDvygXN/qBH1igxfCKslezzY2XtR7NVQbFQ5?=
+ =?us-ascii?Q?vh3hcInxdMrZhE0jXi6oIhqSxNRcZ+mr6N/jFEH2IpQSLQMvufTtg3oEm56G?=
+ =?us-ascii?Q?XMEi1b4fAjV11UMUDcmidswpVsqtr0UzjOz7Bim5uY3ENdea3BW+p/qFjgGv?=
+ =?us-ascii?Q?ewJD5B7aCJ4+BXVUQ6ZwQex+Mb2p3EckuB4osGpO8j5CIinGGxHd02i+v0kJ?=
+ =?us-ascii?Q?AUBHdhHKAF2L7ZA1ZfzfjDiImCcBZHuIDhMw4VensbYM3jKiWpU3DoqWW8+g?=
+ =?us-ascii?Q?cumZp+greYIaQf3bMFyYyLyFurm+pkt9iDOIDJy1ga10eT5KUJyJ6W+K+f62?=
+ =?us-ascii?Q?SkKPQF3Iworhk08bwm3FjU1/U8xqcTBrPZCJzNCp8PaAzlQGrWERdWlwHcU5?=
+ =?us-ascii?Q?NokeuqEPp/+qcJllCY0yGXccR5S6cwR5foPAw/AFUdvXgrIOe2MlxySpUS33?=
+ =?us-ascii?Q?ZI160aymiePuBcDiHouL0h4obJp8LKqIAMbOQf+aKHA5rYcjKyFxToD8TtWm?=
+ =?us-ascii?Q?3fu89HzcvEaB7Dgj+hsaBt9sTLQq5iOZW2B2XyGF?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 458ca5e4-fb62-4989-9ed9-08db1ed6a1f8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Mar 2023 06:38:59.2005 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: WPVKj55zz4HHuGYWJYXyXhISIXzo3eg7RrA0pTkfJBOhLesypz3ureUOTGSeEp11DGQPQUJTepEjeazxRUeQrA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5054
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,75 +152,44 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: gregkh@linuxfoundation.org, intel-gfx@lists.freedesktop.org,
- linux@rasmusvillemoes.dk, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, jbaron@akamai.com, seanpaul@chromium.org,
- dri-devel@lists.freedesktop.org, daniel.vetter@ffwll.ch, joe@perches.com,
- intel-gvt-dev@lists.freedesktop.org, Luis Chamberlain <mcgrof@kernel.org>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "Hao, Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Mar 6, 2023 at 11:50=E2=80=AFAM Timur Tabi <timur@kernel.org> wrote=
-:
->
-> On Sun, Sep 4, 2022 at 4:48 PM Jim Cromie <jim.cromie@gmail.com> wrote:
-> >
-> > These 2 macros used drm_debug_enabled() on DRM_UT_{DRIVER,ATOMIC}
-> > respectively, replace those with drm_dbg_##cat invocations.
-> >
-> > this results in new class'd prdbg callsites:
-> >
-> > :#> grep nouveau /proc/dynamic_debug/control | grep class | wc
-> >     116    1130   15584
-> > :#> grep nouveau /proc/dynamic_debug/control | grep class | grep DRIVER=
- | wc
-> >      74     704    9709
-> > :#> grep nouveau /proc/dynamic_debug/control | grep class | grep ATOMIC=
- | wc
-> >      31     307    4237
-> > :#> grep nouveau /proc/dynamic_debug/control | grep class | grep KMS | =
-wc
-> >      11     119    1638
-> >
-> > the KMS entries are due to existing uses of drm_dbg_kms().
-> >
-> > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
->
-> Has this patch set been forgotten?  It was posted six months ago and
-> there's no sign that it was picked up.
+> From: Liu, Yi L <yi.l.liu@intel.com>
+> Sent: Friday, March 3, 2023 2:58 PM
+>=20
+> > What should we return here anyhow if an access was created?
+>=20
+> iommufd_access->obj.id. should be fine. Is it?
+>=20
 
-Not forgotten, but chicken-egg problems with initializing prdbgs/drm-dbgs
-in drm.ko & dependent drivers pushed it down in priority.
-I have a fix for them, which needs Jasons "lets use notifier-chain" patches=
-,
-which is now in Luis' modules-next.
+Thinking more I'm not sure whether it's a good idea to fill the
+dev_id field with an access object id and then later confuse
+the user to get an -ENOENT error when trying to allocate a
+hwpt with an access object id.
 
-After that fix lands, I can revisit this one.
+How can user differentiate it from the real error case where
+invalid iommufd object is used?
 
-> The changes to drm_debug_enabled have impacted NV_DEBUG and NV_ATOMIC
-> and something needs to be fixed.  I posted a simpler patch a few weeks
-> ago, but maybe Jim's is better.
-
-I couldnt find it on lore, can you post a link ?
-
-But I do recall something about chatty logs, caused by
-
-#define drm_debug_enabled_instrumented(category)                        \
-        ({                                                              \
-                pr_debug("todo: is this frequent enough to optimize ?\n"); =
-\
-                drm_debug_enabled_raw(category);                        \
-        })
-
-If thats the case, it does seem to be frequent enough to silence.
-
-Before you do so, could you turn on the "mfl" flags,
-and count occurrences of each callsite ?
-
-echo module nouveau +mfl > /proc/dynamic_debug/control
-
-the numbers and duration of enablement would inform any optimization,
-including those available in the subject patchset.
-
-thanks,
-Jim
+It sounds clearer to return dev_id only when there is a true
+device object being created by the bind_iommufd cmd. Then
+the user can use it to decide whether  to further attempt
+dev_id related cmds.
