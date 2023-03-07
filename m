@@ -1,42 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6D346AE6D5
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 17:38:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E54CC6AE492
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Mar 2023 16:25:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A9E4A10E65C;
-	Tue,  7 Mar 2023 16:38:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A6FB710E539;
+	Tue,  7 Mar 2023 15:25:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 322 seconds by postgrey-1.36 at gabe;
- Tue, 07 Mar 2023 16:38:37 UTC
-Received: from mail.drinkvs.autos (unknown [45.13.189.187])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2B1C610E65C
+X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Mar 2023 15:25:22 UTC
+Received: from mail.dacekfa.autos (unknown [45.13.189.149])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6B03E10E4E0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Mar 2023 16:38:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=drinkvs.autos;
+ Tue,  7 Mar 2023 15:25:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dacekfa.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=cvs.support@drinkvs.autos; bh=Q1a6vtb2udjSWbHLw1gFwTC0YjE=;
- b=JeeXGhUYXwqyOF5YaclG+eOImnE+d2cme0SxklrRt9neZbFtJmMWTgyb/2ByvvI9f+PupG5Oq3kF
- +Bn5h8f8wizdBja0TkmrbwoFaoixMGPHzK1ZGpvHu5UB99G3q/VyTLcuOXDSPcXVag5zVeM05KDW
- gR3zekYlS+U0QxoLr2U=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=drinkvs.autos;
- b=PO99pPlWSvDEZQI8Ic9Qr5cZH+2TT5zH4WwDr2uJF1jBj/FggIkXydgNMbY5A7XzOJgIjha493Kq
- As01GSHw/4YnKCM9MJX72sy3bcEEDAWbdgWydXCsCQCTbqk2By1JzTLsMYTKrXma0fFEqKMg8rt1
- hdyey1LiprFiYLYuQnA=;
-Received: by mail.drinkvs.autos id h0tk8q0001gr for
+ i=kohls-deals@dacekfa.autos; bh=vZyztvnYEq8C3J7MD/16jT2F4vQ=;
+ b=AfcFHWQP+oTSluT13+hpVXvjraXAuxI9yemw3KVTSB+My+ZmDKQtCNaA0nn0kGoBXGcm+1TGzjnQ
+ axAEpccmpvI1zZEqazPR4ALzAsU7/clWD6P74nYd/YwyZPhUCeEuSNo5Uhua6TJh0iztPXIwkzZi
+ aSMKA9hXnExDnaacTzQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dacekfa.autos;
+ b=Gbu2aIWc1Z57QwkXqPIcRYiZSX6jvmEMK0AOxwv5LEyaoEkXqSEhZHOMT3aTKeHY/ug4i1esHOCx
+ CBP0nvItU0YSW5qE7lSxJPU2nCCDv99xBTvTLZcCd65kXWeTRD3UBTJawrBtzFah50cJkD0AS0JW
+ lx9bm1pZpSIw5SuIOX0=;
+Received: by mail.dacekfa.autos id h0tlo80001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Mar 2023 11:27:56 -0500 (envelope-from
- <cvs.support-intel+2Dgvt+2Ddev=lists.freedesktop.org@drinkvs.autos>)
-Date: Tue, 7 Mar 2023 11:27:56 -0500
-From: "CVS Support" <cvs.support@drinkvs.autos>
+ Tue, 7 Mar 2023 11:37:39 -0500 (envelope-from
+ <kohls-deals-intel+2Dgvt+2Ddev=lists.freedesktop.org@dacekfa.autos>)
+Date: Tue, 7 Mar 2023 11:37:39 -0500
+From: "Kohls Deals" <kohls-deals@dacekfa.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Best reward deal you can get for being a loyal customer
+Subject: Seize your singular Knife Set from Kohl's at zero cost
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_532_1299979108.1678206461949"
-Message-ID: <0.0.0.3B.1D95111C60EE83C.20B798@mail.drinkvs.autos>
+ boundary="----=_Part_520_719857633.1678201895189"
+Message-ID: <0.0.0.39.1D9511321DE8324.1C361@mail.dacekfa.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_532_1299979108.1678206461949
+------=_Part_520_719857633.1678201895189
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,47 +62,46 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04030723</title> 
+  <title>02030723</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header> 
-    <div>
-     <span style="font-family: Arial, Helvetica, sans-serif; display: block; font-size: 110%; text-align: center; font-weight: 900; padding-bottom: 4%;">A SPECIAL OFFER FOR VALUED CUSTOMERS</span> 
-     <div>
-      <span style="font-family: Arial, Helvetica, sans-serif; display: block; font-size: 200%; text-align: center; font-weight: 900;">CVS</span> 
-      <div style="max-width: 18%; margin: auto;">
-       <a href="http://www.drinkvs.autos/98f5X2n395tw86O12dj4e76S126aR36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQsQmem6BH1y0l6M@WwyD/cleansed-inert" target="_blank"><img alt="" src="http://www.drinkvs.autos/narrows-militarism/6yc4D2395p7avX12q4e7C8t126aX36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQsQmem6QN1r0u5zLXwD" width="100%" /></a>
-      </div> 
-     </div> 
+   <header class="new_kohls_grypus"> 
+    <div id="especial-kongs">
+     <span style="text-align: center; display: block; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-weight: 900; font-size: 250%;"><b style="color: #830000;">KOHL'S</b> <b style="color: #202020;">Rewards</b></span> 
+     <p style="font-size: 145%; color: #555555; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin: 5% 0%; text-align: center;  "><strong>intel-gvt-dev@lists.freedesktop.org</strong></p> 
     </div> 
    </header> 
-   <section class="goldecane-fingo"> 
-    <div>
-     <span style="font-family: Arial, Helvetica, sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 145%; text-align: justify; display: block; text-indent: 5%; padding: 3.5% 0%;">We hope this email finds you well. At <strong>CVS</strong> Pharmacy, we value your feedback and are committed to providing you with the best shopping experience possible. That' s why we want to offer you a special incentive for taking the time to complete our customer survey.</span> 
-     <div style="text-align: center; padding: 2.5% 0%;">
-      <span style="font-family: Arial, Helvetica, sans-serif; display: inline-block; font-weight: bold; font-size: 80%; padding: 1.5% 2%; background-color: #e4e4e4;">For completing the survey, you can receive a $100 Gift.</span>
+   <section class="renew"> 
+    <div id="topet_cow"> 
+     <div>
+      <span style="font-family: 'Times New Roman', Times, serif; font-weight: 500; text-align: justify; font-size: 95%; line-height: 150%; display: block; width: 90%; margin: auto;">We hope this email finds you well. At <strong>Kohl's Rewards</strong>, we value your feedback and are committed to providing you with the best shopping experience possible. That's why we want to offer you a special token for taking the time to complete our customer survey.</span>
      </div> 
-     <span style="font-family: Arial, Helvetica, sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 145%; text-align: center; display: block; padding: 3.5% 0%;">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers.</span>
+     <div> 
+      <div style="display: inline-block; max-width: 28%; vertical-align: top; margin-top: 3%; margin-left: 4%;">
+       <a href="http://www.dacekfa.autos/champagne-conductivity/d504f2395fIv8611J4e6cj1268G36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcQmSe7nkjg1y05vlwXD" target="_blank"><img alt="" src="http://www.dacekfa.autos/remote-ejecting/3d24C2395M7wNa12KV4e6eq1268r36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQcQmSe6P1Zs0Q6ePwDPL" width="100%" /></a>
+      </div> 
+      <div style="display: inline-block; max-width: 60%; vertical-align: top; margin: 4.5% 1.5% 0% 0%;">
+       <a href="http://www.dacekfa.autos/champagne-conductivity/d504f2395fIv8611J4e6cj1268G36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcQmSe7nkjg1y05vlwXD" target="_blank"><img alt="" src="http://www.dacekfa.autos/31d4G2395mB7aU11G4e6ft1268x36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQcQmSe5QA1x06r0wDLj/Shipley-sloper" width="100%" /></a>
+      </div> 
+      <span style="font-family: 'Times New Roman', Times, serif; font-weight: 500; text-align: center; font-size: 95%; line-height: 150%; display: block; width: 90%; margin: auto; padding: 5% 0%;">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers</span> 
+      <div style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 115%; text-align: center;">
+       <a href="http://www.dacekfa.autos/champagne-conductivity/d504f2395fIv8611J4e6cj1268G36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcQmSe7nkjg1y05vlwXD" style="color:#483d8b;" target="_blank">Take The Survery</a>
+      </div> 
+      <span style="font-family: 'Times New Roman', Times, serif; font-weight: 500; text-align: center; font-size: 85%; line-height: 150%; display: block; width: 90%; margin: auto; padding: 5% 0%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.<br /> <br /> <b>Best regards,<br /> The Kohl's Rewards Survey Team</b></span>
+     </div> 
     </div> 
    </section> 
-   <section> 
-    <div style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; padding: 2.5% 0%; font-size: 120%;">
-     <a href="http://www.drinkvs.autos/98f5X2n395tw86O12dj4e76S126aR36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQsQmem6BH1y0l6M@WwyD/cleansed-inert" style="color: darkseagreen;" target="_blank">Take The Survey</a>
-    </div> 
-    <div>
-     <span style="font-family: Arial, Helvetica, sans-serif; text-align: left; font-size: 80%; padding: 4.5% 0%; display: block; line-height: 150%; text-indent: 5%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.</span>
-     <br /> 
-     <span style="display: block; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 80%;"><strong>Best regards,<br /> <br /> The CVS survey Team </strong> </span>
-    </div> 
-   </section> &nbsp; 
    <hr /> 
-   <footer style="padding-top: 20px; text-align: center; "> 
-    <address style="font-size: 65%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; "> <p class="unsubscribe"><span style="text-decoration: none; ">To get rid of notifications,</span><a href="http://www.drinkvs.autos/persecution-evermore/40e6w2kz395S8z6z11w4e77r126at36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQsQmem5o1kD05s3wDT" style="text-decoration-line: none; color: #000"> <span>Click.This </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span></span><span><font></span></font><span id="infinitives"></span></p> </address> 
+   <footer class="final_shot" style="width: 90%; max-width: 600px; margin: auto; ; padding: 5px 0px; "> 
+    <address> 
+     <div style="text-align: center; font-weight: normal; font-size: 14px; color: #000000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500;"> 
+      <p><small><span style="text-decoration: none; ">To edit your subscription choices,</span><a href="http://www.dacekfa.autos/1d36V2U3Y95w8L6v11C4e6dM1268H36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQcQmSe7m10ILqO6k1lwOD/remote-ejecting" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Click On Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style><style><span dir="Whitfield"></style></span></style><span lang="costumes"><small></small><span dir="compliance"></span></span><font face="scoured"></font><span></span> </small></p> 
+     </div> </address> 
    </footer> 
   </div>   
- <img src="http://www.drinkvs.autos/persecution-evermore/8fa5N239N5b8qx511E4e79Y126au36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQsQmem5o1J0Y5QAPwD" alt=""/></body>
+ <img src="http://www.dacekfa.autos/champagne-conductivity/26a4i2395GLO8511O4e70Z1268n36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQcQmSe6KQw10o6oNNUwD" alt=""/></body>
 </html>
 
-------=_Part_532_1299979108.1678206461949--
+------=_Part_520_719857633.1678201895189--
 
