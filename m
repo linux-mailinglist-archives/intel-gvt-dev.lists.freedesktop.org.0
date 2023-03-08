@@ -2,116 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EAC66B0C31
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 16:08:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 59A8E6B0E2D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 17:08:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1902A10E12A;
-	Wed,  8 Mar 2023 15:08:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 238F610E656;
+	Wed,  8 Mar 2023 16:08:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on20612.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:7eab::612])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0CCF310E12A;
- Wed,  8 Mar 2023 15:08:21 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HuPQzZkqsH+pcWPTcGPYTM07nGe9g2yv8UmB2OXiYX0TS71ZRcLqYX/n74NEJqBrTSz9H9dj0J5Udafeav6i/7nmcNQelqEjsKFlupV0J8m1HzcTDWlrPD7P+cSwyQoTFVkeHmHsomktL+feMOPk7oLm7O2v45JeyxFJY4OVwXHmv3bTquGMIJ1D0d8VcQYHddYVduUULUZ0W96izJ8RUo63Wbr3bnEM85xUleuh7gmd7/2XAphlVv6HX9HL02rfZZqbML4a1YZs8ZYzWXMMxpf8FRngwMP+gmcUEhAnmUSeTPuwE7BGbalG5A3Xuzgyxw7Asb2XPpD+hS8CDX1RVQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DmuUdoMkzkzdkZwOzixlqJtO5WAMXcENvqxEl/g6Z7k=;
- b=FO4dmh2beQL+03ynn2bmEUewArcchITfu6G8CEFqT08vGt1cIEYLC+eQXtRMsyBd1H74VErsaI1V4qOkNzIOnjWIQnh03rJCMeN5WY2wmuQtKulyQBZ1H8yi0k3w5t2YCRF2+BoFYSzb6Ab5Y18uJQb6po6p37he18VsXjCjtwCXgOsGuFXmGX8EvzfVUHDPKjm8t5vsZZ3ixDXotVN1y6UlvHKcsQkZZvuEZVrhRZeSlAhiFIHsi7ME4qBgaV7BFmJAadzddUrXPZMiMQc827n6Uti4iFiVgYW9Xnoh9dQTSB/4agR/fEhI7cjYi1Q9m6BrMuG14ns9EzJkcx0p6A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DmuUdoMkzkzdkZwOzixlqJtO5WAMXcENvqxEl/g6Z7k=;
- b=KPGQJgm+TIwEeUYAXwsvCTuEw6Pbqy87fF743xipEFKkTCyNwq6DsKEK1xNSsFzS7z//Og4bn7rO42/rYJl0uTNF/VfCtf/DEH9lUbGyBpcG9RGIYRnAn+JiO0dtPP/x5Mj+2vfkpnQkWjdY9ZvanexBz7hcrdAUEAsNJcXyxXlMo/0pbE4WS/zGzPWoBXPCMrBHFPLLQE+DyPn+reauMpAG/WGLCt8TkG30h0uWAlTgMOet0vVlTcnIgAFcC2615bfFAjDV9bY9QQVsILm3mJaTodLlDKPvd5SJ8oqJf4VlsYw3LzbcfvaEccsS5C2A7Fjie5YrT4/HeA96eVKlSg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by BN9PR12MB5354.namprd12.prod.outlook.com (2603:10b6:408:103::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.17; Wed, 8 Mar
- 2023 15:08:19 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1%3]) with mapi id 15.20.6178.017; Wed, 8 Mar 2023
- 15:08:19 +0000
-Date: Wed, 8 Mar 2023 11:08:16 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH v5 09/19] vfio/pci: Allow passing zero-length fd array in
- VFIO_DEVICE_PCI_HOT_RESET
-Message-ID: <ZAik4NxbNAuJrvSi@nvidia.com>
-References: <BN9PR11MB527688810514A262471E4BB78CB29@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZACX+Np/IY7ygqL5@nvidia.com>
- <DS0PR11MB7529531834C0A9F1D294A5CCC3B29@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB5276B825071A4819479079A68CB39@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20230303095542.2bfce5c2.alex.williamson@redhat.com>
- <ZAXny4NDDq42NUxE@nvidia.com>
- <BN9PR11MB52760ABC93BCE7FB53A131038CB79@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZAcvzvhkt9QhCmdi@nvidia.com>
- <DS0PR11MB7529A864CB1C149CF8B19E78C3B79@DS0PR11MB7529.namprd11.prod.outlook.com>
- <BN9PR11MB527616204417D92A1BEB5FDA8CB49@BN9PR11MB5276.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <BN9PR11MB527616204417D92A1BEB5FDA8CB49@BN9PR11MB5276.namprd11.prod.outlook.com>
-X-ClientProxiedBy: BY3PR03CA0004.namprd03.prod.outlook.com
- (2603:10b6:a03:39a::9) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
+ Wed, 08 Mar 2023 16:08:00 UTC
+Received: from mail.fixflix.autos (unknown [45.13.189.175])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A492F10E656
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  8 Mar 2023 16:08:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fixflix.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=yvonne.walton@fixflix.autos; 
+ bh=NrSK8YUQoOj1y/aw94CH5Sb/8fo=;
+ b=Z6vUwQunMfL6ZyO9D5t/4ksXVCHzRk+PpyJFnr75k90dKLCGjQjWGdDLfO5ztuboZ29E115pto4y
+ BpNnR0B9k0FuyCOhntr9K+f7Khgiu8MsDx1ICz55sYBxTGjx4sS7BhC91GjcNdphsc0pQ46MCa23
+ mWQ05dxAofDH9zFHgm4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fixflix.autos;
+ b=DVpUinvAWqMRlEEDnpRu4bB6LzsxbWT1WrWkiU4VKwLVdhE4ER2diQUXBBzddRFnWCCdm+XPcgWq
+ Sv5uZqDkVUNDSKDsIte2g70tko91bGHU4zmWBQmcSxTWUsVc1Zm6/qYJ/VjA5tANWY0LDAwkSpnj
+ vIv0X/4UOFXhyFYhI6A=;
+Received: by mail.fixflix.autos id h12pe00001gk for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 8 Mar 2023 10:51:53 -0500 (envelope-from
+ <yvonne.walton-intel+2Dgvt+2Ddev=lists.freedesktop.org@fixflix.autos>)
+Date: Wed, 8 Mar 2023 10:51:53 -0500
+From: "Yvonne Walton" <yvonne.walton@fixflix.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Shopper, You can qualify to get a $100 NetfIix gift card!
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|BN9PR12MB5354:EE_
-X-MS-Office365-Filtering-Correlation-Id: b22529be-3158-45ad-5704-08db1fe6f383
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 1aturlci3FLz2ISKhJtvtJ7VazkcqHw/puOWGCChrTLQIGiJNnDNq73X+guQegrWHXv3wHqJb3ZCtJ64ml/SlC/ixOS3ydE+kmzrFVFh3IgLNqnj6LdkgnomD7Ilt0WQA7V+OChRdeU+u2YbXS5YI8JQTaAC7SK0rPEqHkvTOJ4mG6Xe7QTAPyry6ACs+zeHTlMHDN2NbYwG+K5jIHXwSffXav0Ld4OAqRHV/dtykc2njB1tPID053nr8KlV46bwQRQPb/1BhUuSxLHqcU1zlZ1vKF9k6TcPF+h0oaKj9dFNTABtS7BBbGtgGOwnnS6aOzr3M2JFVCl56sd0g9IknMw+ih+pWU92xtKGJkdrZPqudJf/9F2xB4vVDk2DIZLKVBWxwrFgyG8IYQkfNJjsOTSvNaAd04aOZW3q7OdOLu7do34a4oZJkV2JkF97fiBXCTi5lzFKriCM8mrsUO9SUKNr0uLCi6gWYONOdXj4skjKBu/I8l1L7/2OUXktciDAV4UwDaHH0u7PUegsaZ8x2CqrKIFJugE98PzJFbeR49NIYJF9reZGyWcg2EIjaKvx0i8gCRF9KAXugYsYBDCan+loVaY4scLV95q+khkKqDDI8eEjHJrp5wFiryLPAEK0v4RziBbexN+uuEuEzBChpQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(366004)(346002)(396003)(376002)(136003)(451199018)(316002)(6666004)(4326008)(6916009)(66556008)(8676002)(66946007)(66476007)(6486002)(478600001)(54906003)(83380400001)(36756003)(2906002)(4744005)(186003)(38100700002)(2616005)(26005)(6512007)(6506007)(5660300002)(8936002)(7416002)(86362001)(41300700001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wDRu1thMJHcXzOS0pLEqp5hKi/2n7rtUPPWUpNkdJ5NPKfD2BFaTX2b11J2k?=
- =?us-ascii?Q?PqZsz12uxXF7dtYW7B3jzyXoSwP+NoZtIoWugk0SHDkj02gma7CcrF07Fm4s?=
- =?us-ascii?Q?k6LiSVAB3tpgsPu+zsLG4SoZpStUhjklZIP2M8IvYUgNGluyLRQvwTWOnvKq?=
- =?us-ascii?Q?nzsnS0ZekYj0sLW2IGjveqfO1NeXJRuDOuBp69dXqSfPFACKoKPEpdhwkBMW?=
- =?us-ascii?Q?5nk8l0LrMZ0CcetG+l0GB1Jv9sn1uEzZKrXBQN4ZuntVDeHZ6Jdk5TUpEppz?=
- =?us-ascii?Q?BEcUpd7iI411GWgNvqoWg0s4vifLTYy6aO3i05IiYw8nGSisjzFroutgYnsP?=
- =?us-ascii?Q?05g5R33EruZHQaozJw+5MrGL+NvDqB3SIKoGQ7ivVi0fAAhvff1xbDlVLb1a?=
- =?us-ascii?Q?xcj9S0PIubove16aGfMGsm5Ogdk6MVkw2T+WwTv2z38oFRIrzpjj3XBnpDBI?=
- =?us-ascii?Q?A6rKPwemdJzyVwXpK/KRkteQtFkbdMc/UAaCm6Zi+0WkcFJk/PkdrAn0r7Mg?=
- =?us-ascii?Q?D3S6y4V/HVAqwpjmhzmovZr9YhD1C3DymykO5fbqPhoOfF88EOFI4+h4YOVs?=
- =?us-ascii?Q?uE6G8M9wWsuOoJw+GcoqvadLsqsns08cKxuE7Dt/PGDqs+SvM0kVai9B9JEY?=
- =?us-ascii?Q?jy19RgXcPjOwsO6cNonm66wlMQ6JP3zqNNnkEVMBsTkbL+E2vH8ctvBqzRn8?=
- =?us-ascii?Q?uzMUv1Z3Peb1sQWm9bEb4eMjPc+bVzRn0WXfbhrTUOEIzDdB97N1lE2mEsfz?=
- =?us-ascii?Q?sK/YTp1oLyUIFNA0bkzfCi2+j0I4OofWTHIbfCybpTFbJECc5hxIJED/GVN8?=
- =?us-ascii?Q?PMffzK0M6jQPDZrNl5aqabSaaVdP38pwF3WsGvl8gvyxdQWgny4/7f/Bgk4X?=
- =?us-ascii?Q?otNnPyYlijMlKnV7HEqEvwiyH45QVa7MTnxxveXPdwOHDSipBBd0e7PbA03K?=
- =?us-ascii?Q?R+5L3jFHY6VTdp/H8shiHOR3Qu8jmVIpLl65wr0mKSmQTzCW3SP5k8xcXTxl?=
- =?us-ascii?Q?kTu6KkZuXD4zLPAVcPAMNWExPKjWjrh2yVK+AEuj0NWuxtBFDQgEW2KwppVz?=
- =?us-ascii?Q?/vexHtCaBNBdSCiDLXd4726EaziKhKvVkx8DJBLTNyEumAAcJ4Xp/RGXIJ4L?=
- =?us-ascii?Q?EIxVeFjTQ2uSo2Q6XOCgqfFb0bggSBEnUdwvfpYvAJT4o4DsdXBotTVjZvz3?=
- =?us-ascii?Q?dMHA7bqe1+8q68Zgzfyg2nlQOBVHEpMG97bocvsyPDO5NZcy/sCg0hbO7Fvo?=
- =?us-ascii?Q?nq32zvJSIh3MWgCuRmJMc7D7ix+FmisP4RwCF34y133XMlci7ks7UNJnp79y?=
- =?us-ascii?Q?mmV9VZ+zJhFC5s4FGkAPRN6KhOBZlI/N89tBzYdaE2V+qetlpKrs8sAXmh48?=
- =?us-ascii?Q?+hOZibBEVEo0e3SA0F3jmwP49LWzhdJM1UuQo86O0XdkpAjztzpXgfgQVdAh?=
- =?us-ascii?Q?s25mF1hTfpVHgRepKEM+I5abVsYdTRB1xV6/dmIB7TsdNj6byhOxIhTLJnzq?=
- =?us-ascii?Q?6kxxPppgXsTNJkxYP8fR9ECpKoz1TCVcXlWo88k94FLziV6oVdQOgx8i6XxE?=
- =?us-ascii?Q?eTlBfPKJNgAdTUquxxRIOWWVcLu42101OKyI78gw?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b22529be-3158-45ad-5704-08db1fe6f383
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Mar 2023 15:08:19.3478 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: i49rYkwq5jGeGY92vAoE+x7msCIFF3c8uC/eNPq3ZhPueWpV0HVzfjpDzKNzHo/K
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR12MB5354
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_634_1765749413.1678290672185"
+Message-ID: <0.0.0.46.1D951D5E76FF6A0.4B3BF7@mail.fixflix.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,45 +50,189 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Zhao,
- Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Mar 08, 2023 at 07:26:08AM +0000, Tian, Kevin wrote:
->  * Userspace requests hot reset for the devices it uses.  Due to the
->  * underlying topology, multiple devices can be affected in the reset
->  * while some might be opened by another user. To avoid interference
->  * the calling user must ensure all affected devices, if opened, are
->  * owned by itself.
->  *
->  * The ownership can be proved in three ways:
->  *   - An array of group fds
->  *   - An array of device fds
->  *   - A zero-length array
->  *
->  * In the last case all affected devices which are opened by this user must
->  * have been bound to a same iommufd_ctx.
-> 
-> and with this change let's rename 'group_fds'  to 'fds'
+------=_Part_634_1765749413.1678290672185
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Looks right
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>01030823</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="margin: auto; max-width: 600px;"> 
+   <header> 
+    <div>
+     <span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 200%; text-align: center;">A Special Offer for Our Valued Users</span>
+    </div> 
+    <div>
+     <span style="display: block; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 250%; color: #ff0000;">NETFLIX</span>
+    </div> 
+    <div style="text-align: center;"> 
+     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
+      <a href="http://www.fixflix.autos/3774a2395HK8j613n4e9pAbp1271h36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQPQmeS5l1V0F6FOWwUD/ambushes-Gothicizes" target="_blank"><img alt="" src="http://www.fixflix.autos/Passover-conversationally/7564W2395m7DaO12z4me9du1271u36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQPQmeS7C1Vv0zp6R@wDJB" width="100%" /></a>
+     </div> 
+     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
+      <a href="http://www.fixflix.autos/3774a2395HK8j613n4e9pAbp1271h36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQPQmeS5l1V0F6FOWwUD/ambushes-Gothicizes" target="_blank"><img alt="" src="http://www.fixflix.autos/Paulson-upholstered/24c4k2395c7Uta11G4e9eU1271x36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQPQmeS5y1FT05kMqwD" width="100%" /></a>
+     </div> 
+    </div> 
+   </header> 
+   <br /> 
+   <br /> &nbsp; 
+   <section> 
+    <div style="max-width: 90%; margin: auto; text-align: center; line-height: 150%;">
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;">We wanted to take a moment to thank you for choosing Netflix for you watch streaming services. Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you.<br /> <br /> As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with Netflix.<br /> <br /> Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <br /> 
+      <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><span style="display: inline-block; font-size: 90%; padding: 1.5% 2%; background-color: rgb(223, 223, 223); font-weight: bold;">For completing the survey, you can receive a $100 Gift!</span> </span>
+     </div> 
+     <br /> 
+     <br /> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span>
+     <br /> 
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><a href="http://www.fixflix.autos/3774a2395HK8j613n4e9pAbp1271h36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQPQmeS5l1V0F6FOWwUD/ambushes-Gothicizes" style="color: #6abeac;"><span style="font-weight: bold; display: inline-block; font-size: 180%;"><u>TAKE THE SURVEY</u> </span></a> </span>
+     </div> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;"> </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 80%; ">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The Netflix Survey</span> </span>
+     </div> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;"> </span>
+    </div> 
+   </section> &nbsp; 
+   <hr /> 
+   <footer style="max-width: 600px; margin: auto;"> 
+    <address style="text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; ; padding: 15px 0px;  font-weight: bold;"> <p><small><span style="text-decoration: none; ">To cut out notices,</span><a href="http://www.fixflix.autos/wriggle-prevention/b8e4t2395H8KD612B4ne9cA1271N36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQPQmeS7r10FgTn5zq3wD" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Go-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span style="symmetries"><font id="solver"></span><style color="Caesarizes"><font dir="conjures"><style face="disgracefully"><style></font><font><big></big></style></style></style></font></font> </small></p> </address> 
+   </footer> 
+  </div> 
+  <div class="wrapper"> 
+   <table class="main" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td height="5" style="">&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td style="padding-bottom: 40px;"> 
+       <table> 
+        <tbody> 
+         <tr> 
+          <td style="text-align: center; padding: 15px;"> <p style="font-weight: bold; font-size: 18px;">&nbsp;</p> <p style="margin-bottom: 20px;">&nbsp;</p> <p style="font-weight: 700; font-size: 35px;   margin: 0;">&nbsp;</p> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td style="text-align: center; padding: 20px;"> <p>&nbsp;</p> </td> 
+     </tr> 
+     <tr> 
+      <td> 
+       <table style=""> 
+        <tbody> 
+         <tr> 
+          <td class="two-columns"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td> <p>&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td class="two-columns"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td> <p style=" color: #000;">&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td class="two-columns"> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <table class="column"> 
+            <tbody> 
+             <tr> 
+              <td class="padding"> 
+               <table class="content"> 
+                <tbody> 
+                 <tr> 
+                  <td> <p style=" color: #000;">&nbsp;</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td class="two-columns">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+     <tr> 
+      <td style="text-align: center; padding: 20px;"> <p>&nbsp;</p> </td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td style="text-align: left; padding: 15px;"> <p>&nbsp;</p> </td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td style="text-align: left; padding: 15px;"> <p>&nbsp;</p> <p>&nbsp;</p> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.fixflix.autos/ck56g239vZ5SU85B12s4e9fhl1271S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQPQmeS7S1ssA0D6nXL@wD/reclassified-censured" alt=""/></body>
+</html>
 
-Jason
+------=_Part_634_1765749413.1678290672185--
+
