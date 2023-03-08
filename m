@@ -1,47 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 329316B08CC
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 14:29:29 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 783A46B08CE
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 14:29:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0C49B10E603;
-	Wed,  8 Mar 2023 13:29:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2103210E607;
+	Wed,  8 Mar 2023 13:29:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8873310E602;
- Wed,  8 Mar 2023 13:29:24 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F2F4D10E5E1;
+ Wed,  8 Mar 2023 13:29:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678282164; x=1709818164;
+ t=1678282166; x=1709818166;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=z989pXr8cKO9ICuEG/SHwdMZNnkhbkrQGmWc0s0dx1c=;
- b=FXUCyU9sgZqpUUqSL6sTqIePQLNSVw4q3QZ/08nmCdOVYXtTLVOr7dKb
- WbGzYvnsc5MJSCoU3aUZhXWeD6AHEer998CDYb7MG6vx3K6Cqi9fIBmlV
- MusTNzJS+DkfIye/MzV3qaYcMJC9+BMHP4q/dHMkiFyEuBWhERMyENNZI
- gRBkeVSU1lL9RLWWVnY3inqRGcGgtW7NQPElinp8+PORHjyzKc7EdBnU7
- 9CenZgqaOPcPtaM5E4BXPI0It0sDTnxxgz/9673sDpMMK7Nu/7FNv6NyH
- U9ikBZLWI+JM4chfemM5trB61uMakRgFcX0T4sskFFuaXoUuXQJDss+wR A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="336165208"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="336165208"
+ bh=0L0vMMuWTJTwe95x2UEU2BefzXax/kTZVXcty/RFtNc=;
+ b=TYfbn25KFbts+yju3XD/Svzkp8GK/0WA2MBUPkdZZVHl0mjfZD9C9CuV
+ WFXBUiI1uky1rAYGLYKhlbZPJyhnjNfQ3oOKbuzPNGCQlMb9kk1tVCMyJ
+ efDU+PKw2FaRwI+vZDIRlwmVEf7knlQiZDTM+2wWlbSdvTxQ+IgrlxEMl
+ iwNKvnlPIL3g7L0NURcW18qfijOSMm5QIgAJmIJ98y0k7dc+9sSL+tnyn
+ bCIF8AVfwvi7cZXX2A581sV8s8VnystNDGNsCKvHppLTjnAW510OjDCcy
+ 8Npoa1HFByJbl/2cZqDOYm3HIC/mCQrCLk7dbdTDX+tBM/6pLz7WG7t4n Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="336165217"
+X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="336165217"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2023 05:29:24 -0800
+ 08 Mar 2023 05:29:25 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="922789357"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="922789357"
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="922789376"
+X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="922789376"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga006.fm.intel.com with ESMTP; 08 Mar 2023 05:29:23 -0800
+ by fmsmga006.fm.intel.com with ESMTP; 08 Mar 2023 05:29:24 -0800
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v6 10/24] vfio/pci: Rename the helpers and data in hot reset
- path to accept device fd
-Date: Wed,  8 Mar 2023 05:28:49 -0800
-Message-Id: <20230308132903.465159-11-yi.l.liu@intel.com>
+Subject: [PATCH v6 11/24] vfio/pci: Accept device fd in
+ VFIO_DEVICE_PCI_HOT_RESET ioctl
+Date: Wed,  8 Mar 2023 05:28:50 -0800
+Message-Id: <20230308132903.465159-12-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230308132903.465159-1-yi.l.liu@intel.com>
 References: <20230308132903.465159-1-yi.l.liu@intel.com>
@@ -70,133 +70,206 @@ Cc: linux-s390@vger.kernel.org, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-No function change is intended, just to make the helpers and structures
-to be prepared to accept device fds as proof of device ownership.
+VFIO PCI device hot reset requires user to provide a set of FDs to prove
+ownership on the affected devices in the hot reset. Either group fd or
+device fd can be used. But when user uses vfio device cdev, there is only
+device fd, hence VFIO_DEVICE_PCI_HOT_RESET needs to be extended to accept
+device fds.
 
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/vfio/pci/vfio_pci_core.c | 40 ++++++++++++++++----------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
+ drivers/vfio/group.c             | 15 +-----------
+ drivers/vfio/pci/vfio_pci_core.c | 22 +++++++++++------
+ drivers/vfio/vfio.h              |  1 +
+ drivers/vfio/vfio_main.c         | 42 ++++++++++++++++++++++++++++++++
+ include/linux/vfio.h             |  1 +
+ include/uapi/linux/vfio.h        |  6 +++--
+ 6 files changed, 63 insertions(+), 24 deletions(-)
 
+diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+index 4a220d5bf79b..6280368eb0bd 100644
+--- a/drivers/vfio/group.c
++++ b/drivers/vfio/group.c
+@@ -852,23 +852,10 @@ void vfio_group_set_kvm(struct vfio_group *group, struct kvm *kvm)
+ 	spin_unlock(&group->kvm_ref_lock);
+ }
+ 
+-/**
+- * vfio_file_has_dev - True if the VFIO file is a handle for device
+- * @file: VFIO file to check
+- * @device: Device that must be part of the file
+- *
+- * Returns true if given file has permission to manipulate the given device.
+- */
+-bool vfio_file_has_dev(struct file *file, struct vfio_device *device)
++bool vfio_group_has_dev(struct vfio_group *group, struct vfio_device *device)
+ {
+-	struct vfio_group *group = vfio_group_from_file(file);
+-
+-	if (!group)
+-		return false;
+-
+ 	return group == device->group;
+ }
+-EXPORT_SYMBOL_GPL(vfio_file_has_dev);
+ 
+ static char *vfio_devnode(const struct device *dev, umode_t *mode)
+ {
 diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
-index f13b093557a9..265a0058436c 100644
+index 265a0058436c..123b468ead73 100644
 --- a/drivers/vfio/pci/vfio_pci_core.c
 +++ b/drivers/vfio/pci/vfio_pci_core.c
-@@ -177,10 +177,10 @@ static void vfio_pci_probe_mmaps(struct vfio_pci_core_device *vdev)
- 	}
- }
- 
--struct vfio_pci_group_info;
-+struct vfio_pci_user_file_info;
- static void vfio_pci_dev_set_try_reset(struct vfio_device_set *dev_set);
- static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
--				      struct vfio_pci_group_info *groups);
-+				      struct vfio_pci_user_file_info *user_info);
- 
- /*
-  * INTx masking requires the ability to disable INTx signaling via PCI_COMMAND
-@@ -799,7 +799,7 @@ static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
- 	return 0;
- }
- 
--struct vfio_pci_group_info {
-+struct vfio_pci_user_file_info {
- 	int count;
- 	struct file **files;
- };
-@@ -1260,9 +1260,9 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
- {
- 	unsigned long minsz = offsetofend(struct vfio_pci_hot_reset, count);
- 	struct vfio_pci_hot_reset hdr;
--	int32_t *group_fds;
-+	int32_t *user_fds;
- 	struct file **files;
--	struct vfio_pci_group_info info;
-+	struct vfio_pci_user_file_info info;
- 	bool slot = false;
- 	int file_idx, count = 0, ret = 0;
- 
-@@ -1292,17 +1292,17 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
- 	if (!hdr.count || hdr.count > count)
- 		return -EINVAL;
- 
--	group_fds = kcalloc(hdr.count, sizeof(*group_fds), GFP_KERNEL);
-+	user_fds = kcalloc(hdr.count, sizeof(*user_fds), GFP_KERNEL);
- 	files = kcalloc(hdr.count, sizeof(*files), GFP_KERNEL);
--	if (!group_fds || !files) {
--		kfree(group_fds);
-+	if (!user_fds || !files) {
-+		kfree(user_fds);
- 		kfree(files);
+@@ -1300,7 +1300,7 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
  		return -ENOMEM;
  	}
  
--	if (copy_from_user(group_fds, arg->group_fds,
--			   hdr.count * sizeof(*group_fds))) {
--		kfree(group_fds);
-+	if (copy_from_user(user_fds, arg->group_fds,
-+			   hdr.count * sizeof(*user_fds))) {
-+		kfree(user_fds);
+-	if (copy_from_user(user_fds, arg->group_fds,
++	if (copy_from_user(user_fds, arg->fds,
+ 			   hdr.count * sizeof(*user_fds))) {
+ 		kfree(user_fds);
  		kfree(files);
- 		return -EFAULT;
+@@ -1308,8 +1308,8 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
  	}
-@@ -1312,7 +1312,7 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
- 	 * the reset
+ 
+ 	/*
+-	 * Get the group file for each fd to ensure the group held across
+-	 * the reset
++	 * Get the file for each fd to ensure the group/device file
++	 * is held across the reset
  	 */
  	for (file_idx = 0; file_idx < hdr.count; file_idx++) {
--		struct file *file = fget(group_fds[file_idx]);
-+		struct file *file = fget(user_fds[file_idx]);
+ 		struct file *file = fget(user_fds[file_idx]);
+@@ -1319,8 +1319,14 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
+ 			break;
+ 		}
  
- 		if (!file) {
- 			ret = -EBADF;
-@@ -1329,9 +1329,9 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
- 		files[file_idx] = file;
- 	}
- 
--	kfree(group_fds);
-+	kfree(user_fds);
- 
--	/* release reference to groups on error */
-+	/* release reference to user_fds on error */
- 	if (ret)
- 		goto hot_reset_release;
- 
-@@ -2312,13 +2312,13 @@ const struct pci_error_handlers vfio_pci_core_err_handlers = {
- };
- EXPORT_SYMBOL_GPL(vfio_pci_core_err_handlers);
- 
--static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
--			       struct vfio_pci_group_info *groups)
-+static bool vfio_dev_in_user_fds(struct vfio_pci_core_device *vdev,
-+				 struct vfio_pci_user_file_info *user_info)
- {
- 	unsigned int i;
- 
--	for (i = 0; i < groups->count; i++)
--		if (vfio_file_has_dev(groups->files[i], &vdev->vdev))
-+	for (i = 0; i < user_info->count; i++)
-+		if (vfio_file_has_dev(user_info->files[i], &vdev->vdev))
- 			return true;
- 	return false;
- }
-@@ -2398,7 +2398,7 @@ static int vfio_pci_dev_set_pm_runtime_get(struct vfio_device_set *dev_set)
-  * get each memory_lock.
-  */
- static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
--				      struct vfio_pci_group_info *groups)
-+				      struct vfio_pci_user_file_info *user_info)
- {
- 	struct vfio_pci_core_device *cur_mem;
- 	struct vfio_pci_core_device *cur_vma;
-@@ -2445,7 +2445,7 @@ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
- 		 * set of groups provided by the user.
+-		/* Ensure the FD is a vfio group FD.*/
+-		if (!vfio_file_is_group(file)) {
++		/*
++		 * For vfio group FD, sanitize the file is enough.
++		 * For vfio device FD, needs to ensure it has got the
++		 * access to device, otherwise it cannot be used as
++		 * proof of device ownership.
++		 */
++		if (!vfio_file_is_valid(file) ||
++		    (!vfio_file_is_group(file) && !vfio_file_has_device_access(file))) {
+ 			fput(file);
+ 			ret = -EINVAL;
+ 			break;
+@@ -2440,9 +2446,9 @@ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
+ 		 * by other users.
+ 		 *
+ 		 * For the devices that have been opened, needs to check the
+-		 * ownership.  If the user provides a set of group fds, test
+-		 * whether all the opened affected devices are contained by the
+-		 * set of groups provided by the user.
++		 * ownership.  If the user provides a set of group/device
++		 * fds, test whether all the opened devices are contained
++		 * by the set of groups/devices provided by the user.
  		 */
  		if (cur_vma->vdev.open_count &&
--		    !vfio_dev_in_groups(cur_vma, groups)) {
-+		    !vfio_dev_in_user_fds(cur_vma, user_info)) {
- 			ret = -EINVAL;
- 			goto err_undo;
- 		}
+ 		    !vfio_dev_in_user_fds(cur_vma, user_info)) {
+diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+index e60c409868f8..464263288d16 100644
+--- a/drivers/vfio/vfio.h
++++ b/drivers/vfio/vfio.h
+@@ -96,6 +96,7 @@ void vfio_device_group_close(struct vfio_device_file *df);
+ struct vfio_group *vfio_group_from_file(struct file *file);
+ bool vfio_group_enforced_coherent(struct vfio_group *group);
+ void vfio_group_set_kvm(struct vfio_group *group, struct kvm *kvm);
++bool vfio_group_has_dev(struct vfio_group *group, struct vfio_device *device);
+ bool vfio_device_has_container(struct vfio_device *device);
+ int __init vfio_group_init(void);
+ void vfio_group_cleanup(void);
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index 027410e8d4a8..cf9994a65df3 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -1277,6 +1277,48 @@ void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
+ }
+ EXPORT_SYMBOL_GPL(vfio_file_set_kvm);
+ 
++/**
++ * vfio_file_has_device_access - True if the file has opened device
++ * @file: VFIO device file
++ */
++bool vfio_file_has_device_access(struct file *file)
++{
++	struct vfio_device_file *df;
++
++	if (vfio_group_from_file(file) ||
++	    !vfio_device_from_file(file))
++		return false;
++
++	df = file->private_data;
++
++	return READ_ONCE(df->access_granted);
++}
++EXPORT_SYMBOL_GPL(vfio_file_has_device_access);
++
++/**
++ * vfio_file_has_dev - True if the VFIO file is a handle for device
++ * @file: VFIO file to check
++ * @device: Device that must be part of the file
++ *
++ * Returns true if given file has permission to manipulate the given device.
++ */
++bool vfio_file_has_dev(struct file *file, struct vfio_device *device)
++{
++	struct vfio_group *group;
++	struct vfio_device *vdev;
++
++	group = vfio_group_from_file(file);
++	if (group)
++		return vfio_group_has_dev(group, device);
++
++	vdev = vfio_device_from_file(file);
++	if (device)
++		return vdev == device;
++
++	return false;
++}
++EXPORT_SYMBOL_GPL(vfio_file_has_dev);
++
+ /*
+  * Sub-module support
+  */
+diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+index b14dcdd0b71f..1c69be2d687e 100644
+--- a/include/linux/vfio.h
++++ b/include/linux/vfio.h
+@@ -248,6 +248,7 @@ bool vfio_file_is_group(struct file *file);
+ bool vfio_file_is_valid(struct file *file);
+ bool vfio_file_enforced_coherent(struct file *file);
+ void vfio_file_set_kvm(struct file *file, struct kvm *kvm);
++bool vfio_file_has_device_access(struct file *file);
+ bool vfio_file_has_dev(struct file *file, struct vfio_device *device);
+ 
+ #define VFIO_PIN_PAGES_MAX_ENTRIES	(PAGE_SIZE/sizeof(unsigned long))
+diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
+index f96e5689cffc..d80141969cd1 100644
+--- a/include/uapi/linux/vfio.h
++++ b/include/uapi/linux/vfio.h
+@@ -679,7 +679,9 @@ struct vfio_pci_hot_reset_info {
+  * the calling user must ensure all affected devices, if opened, are
+  * owned by itself.
+  *
+- * The ownership is proved by an array of group fds.
++ * The ownership can be proved by:
++ *   - An array of group fds
++ *   - An array of device fds
+  *
+  * Return: 0 on success, -errno on failure.
+  */
+@@ -687,7 +689,7 @@ struct vfio_pci_hot_reset {
+ 	__u32	argsz;
+ 	__u32	flags;
+ 	__u32	count;
+-	__s32	group_fds[];
++	__s32	fds[];
+ };
+ 
+ #define VFIO_DEVICE_PCI_HOT_RESET	_IO(VFIO_TYPE, VFIO_BASE + 13)
 -- 
 2.34.1
 
