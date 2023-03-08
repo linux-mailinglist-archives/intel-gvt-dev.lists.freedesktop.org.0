@@ -2,46 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6396C6B08CB
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 14:29:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 329316B08CC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 14:29:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F12F010E5DF;
-	Wed,  8 Mar 2023 13:29:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0C49B10E603;
+	Wed,  8 Mar 2023 13:29:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C4E8F10E5FC;
- Wed,  8 Mar 2023 13:29:22 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8873310E602;
+ Wed,  8 Mar 2023 13:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678282162; x=1709818162;
+ t=1678282164; x=1709818164;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=4KV5nYt7nyzNQTkdxfsQ1VW0eB5Eh57ig35tZj0LnWI=;
- b=hqeGGi38gt6LTgRdW9QWioo3TX9p+vvgsry7YvPKe1FTc3m7rX3089DY
- 1xQse+cArh4mpmNx2VPcqdUO0xIWvZ5N/eSlEciGOdCobl1G0qhhG5TCR
- PlqlWSGi0Zi9i96b/g/AnmmTNKkyrKfg1PbhYp5o2K3KGRvip/CKDnbKO
- SqimYZvN8YmaQnR8XyqFDCRaVgLKWLzr7EYtYV0JvJmUCg7Ybc3trZZgf
- yt0BW7TK8yNdzprc14abuk/5H52D5ajcRoi0CNQhw+2Gl7S9/qj+v5kl3
- BlBsJMDdaGT6zuSj3yNmXEI8sufLr4GXuSLetLq2v8PF2Pr5/VX36UjyS g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="336165199"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="336165199"
+ bh=z989pXr8cKO9ICuEG/SHwdMZNnkhbkrQGmWc0s0dx1c=;
+ b=FXUCyU9sgZqpUUqSL6sTqIePQLNSVw4q3QZ/08nmCdOVYXtTLVOr7dKb
+ WbGzYvnsc5MJSCoU3aUZhXWeD6AHEer998CDYb7MG6vx3K6Cqi9fIBmlV
+ MusTNzJS+DkfIye/MzV3qaYcMJC9+BMHP4q/dHMkiFyEuBWhERMyENNZI
+ gRBkeVSU1lL9RLWWVnY3inqRGcGgtW7NQPElinp8+PORHjyzKc7EdBnU7
+ 9CenZgqaOPcPtaM5E4BXPI0It0sDTnxxgz/9673sDpMMK7Nu/7FNv6NyH
+ U9ikBZLWI+JM4chfemM5trB61uMakRgFcX0T4sskFFuaXoUuXQJDss+wR A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="336165208"
+X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="336165208"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2023 05:29:22 -0800
+ 08 Mar 2023 05:29:24 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="922789347"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="922789347"
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="922789357"
+X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="922789357"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga006.fm.intel.com with ESMTP; 08 Mar 2023 05:29:21 -0800
+ by fmsmga006.fm.intel.com with ESMTP; 08 Mar 2023 05:29:23 -0800
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v6 09/24] vfio/pci: Only need to check opened devices in the
- dev_set for hot reset
-Date: Wed,  8 Mar 2023 05:28:48 -0800
-Message-Id: <20230308132903.465159-10-yi.l.liu@intel.com>
+Subject: [PATCH v6 10/24] vfio/pci: Rename the helpers and data in hot reset
+ path to accept device fd
+Date: Wed,  8 Mar 2023 05:28:49 -0800
+Message-Id: <20230308132903.465159-11-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230308132903.465159-1-yi.l.liu@intel.com>
 References: <20230308132903.465159-1-yi.l.liu@intel.com>
@@ -70,65 +70,133 @@ Cc: linux-s390@vger.kernel.org, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-If the affected device is not opened by any user, it is not necessary to
-check its ownership as it will not be opened by any user if a user is hot
-resetting a device within this dev_set.
+No function change is intended, just to make the helpers and structures
+to be prepared to accept device fds as proof of device ownership.
 
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/vfio/pci/vfio_pci_core.c | 17 +++++++++++++++--
- include/uapi/linux/vfio.h        |  8 ++++++++
- 2 files changed, 23 insertions(+), 2 deletions(-)
+ drivers/vfio/pci/vfio_pci_core.c | 40 ++++++++++++++++----------------
+ 1 file changed, 20 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
-index 65bbef562268..f13b093557a9 100644
+index f13b093557a9..265a0058436c 100644
 --- a/drivers/vfio/pci/vfio_pci_core.c
 +++ b/drivers/vfio/pci/vfio_pci_core.c
-@@ -2429,10 +2429,23 @@ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
+@@ -177,10 +177,10 @@ static void vfio_pci_probe_mmaps(struct vfio_pci_core_device *vdev)
+ 	}
+ }
  
- 	list_for_each_entry(cur_vma, &dev_set->device_list, vdev.dev_set_list) {
- 		/*
--		 * Test whether all the affected devices are contained by the
-+		 * Test whether all the affected devices can be reset by the
-+		 * user.  The affected devices may already been opened or not
-+		 * yet.
-+		 *
-+		 * For the devices not opened yet, user can reset them as it
-+		 * reason is that the hot reset is done under the protection
-+		 * of the dev_set->lock, and device open is also under this
-+		 * lock.  During the hot reset, such devices can not be opened
-+		 * by other users.
-+		 *
-+		 * For the devices that have been opened, needs to check the
-+		 * ownership.  If the user provides a set of group fds, test
-+		 * whether all the opened affected devices are contained by the
+-struct vfio_pci_group_info;
++struct vfio_pci_user_file_info;
+ static void vfio_pci_dev_set_try_reset(struct vfio_device_set *dev_set);
+ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
+-				      struct vfio_pci_group_info *groups);
++				      struct vfio_pci_user_file_info *user_info);
+ 
+ /*
+  * INTx masking requires the ability to disable INTx signaling via PCI_COMMAND
+@@ -799,7 +799,7 @@ static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
+ 	return 0;
+ }
+ 
+-struct vfio_pci_group_info {
++struct vfio_pci_user_file_info {
+ 	int count;
+ 	struct file **files;
+ };
+@@ -1260,9 +1260,9 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
+ {
+ 	unsigned long minsz = offsetofend(struct vfio_pci_hot_reset, count);
+ 	struct vfio_pci_hot_reset hdr;
+-	int32_t *group_fds;
++	int32_t *user_fds;
+ 	struct file **files;
+-	struct vfio_pci_group_info info;
++	struct vfio_pci_user_file_info info;
+ 	bool slot = false;
+ 	int file_idx, count = 0, ret = 0;
+ 
+@@ -1292,17 +1292,17 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
+ 	if (!hdr.count || hdr.count > count)
+ 		return -EINVAL;
+ 
+-	group_fds = kcalloc(hdr.count, sizeof(*group_fds), GFP_KERNEL);
++	user_fds = kcalloc(hdr.count, sizeof(*user_fds), GFP_KERNEL);
+ 	files = kcalloc(hdr.count, sizeof(*files), GFP_KERNEL);
+-	if (!group_fds || !files) {
+-		kfree(group_fds);
++	if (!user_fds || !files) {
++		kfree(user_fds);
+ 		kfree(files);
+ 		return -ENOMEM;
+ 	}
+ 
+-	if (copy_from_user(group_fds, arg->group_fds,
+-			   hdr.count * sizeof(*group_fds))) {
+-		kfree(group_fds);
++	if (copy_from_user(user_fds, arg->group_fds,
++			   hdr.count * sizeof(*user_fds))) {
++		kfree(user_fds);
+ 		kfree(files);
+ 		return -EFAULT;
+ 	}
+@@ -1312,7 +1312,7 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
+ 	 * the reset
+ 	 */
+ 	for (file_idx = 0; file_idx < hdr.count; file_idx++) {
+-		struct file *file = fget(group_fds[file_idx]);
++		struct file *file = fget(user_fds[file_idx]);
+ 
+ 		if (!file) {
+ 			ret = -EBADF;
+@@ -1329,9 +1329,9 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
+ 		files[file_idx] = file;
+ 	}
+ 
+-	kfree(group_fds);
++	kfree(user_fds);
+ 
+-	/* release reference to groups on error */
++	/* release reference to user_fds on error */
+ 	if (ret)
+ 		goto hot_reset_release;
+ 
+@@ -2312,13 +2312,13 @@ const struct pci_error_handlers vfio_pci_core_err_handlers = {
+ };
+ EXPORT_SYMBOL_GPL(vfio_pci_core_err_handlers);
+ 
+-static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
+-			       struct vfio_pci_group_info *groups)
++static bool vfio_dev_in_user_fds(struct vfio_pci_core_device *vdev,
++				 struct vfio_pci_user_file_info *user_info)
+ {
+ 	unsigned int i;
+ 
+-	for (i = 0; i < groups->count; i++)
+-		if (vfio_file_has_dev(groups->files[i], &vdev->vdev))
++	for (i = 0; i < user_info->count; i++)
++		if (vfio_file_has_dev(user_info->files[i], &vdev->vdev))
+ 			return true;
+ 	return false;
+ }
+@@ -2398,7 +2398,7 @@ static int vfio_pci_dev_set_pm_runtime_get(struct vfio_device_set *dev_set)
+  * get each memory_lock.
+  */
+ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
+-				      struct vfio_pci_group_info *groups)
++				      struct vfio_pci_user_file_info *user_info)
+ {
+ 	struct vfio_pci_core_device *cur_mem;
+ 	struct vfio_pci_core_device *cur_vma;
+@@ -2445,7 +2445,7 @@ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
  		 * set of groups provided by the user.
  		 */
--		if (!vfio_dev_in_groups(cur_vma, groups)) {
-+		if (cur_vma->vdev.open_count &&
-+		    !vfio_dev_in_groups(cur_vma, groups)) {
+ 		if (cur_vma->vdev.open_count &&
+-		    !vfio_dev_in_groups(cur_vma, groups)) {
++		    !vfio_dev_in_user_fds(cur_vma, user_info)) {
  			ret = -EINVAL;
  			goto err_undo;
  		}
-diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
-index 0552e8dcf0cb..f96e5689cffc 100644
---- a/include/uapi/linux/vfio.h
-+++ b/include/uapi/linux/vfio.h
-@@ -673,6 +673,14 @@ struct vfio_pci_hot_reset_info {
-  * VFIO_DEVICE_PCI_HOT_RESET - _IOW(VFIO_TYPE, VFIO_BASE + 13,
-  *				    struct vfio_pci_hot_reset)
-  *
-+ * Userspace requests hot reset for the devices it uses.  Due to the
-+ * underlying topology, multiple devices can be affected in the reset
-+ * while some might be opened by another user.  To avoid interference
-+ * the calling user must ensure all affected devices, if opened, are
-+ * owned by itself.
-+ *
-+ * The ownership is proved by an array of group fds.
-+ *
-  * Return: 0 on success, -errno on failure.
-  */
- struct vfio_pci_hot_reset {
 -- 
 2.34.1
 
