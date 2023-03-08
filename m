@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43CCF6B100D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 18:16:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D99636B10AB
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 19:11:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1630A10E6BD;
-	Wed,  8 Mar 2023 17:16:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ADD1110E11B;
+	Wed,  8 Mar 2023 18:11:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
- Wed, 08 Mar 2023 17:16:31 UTC
-Received: from mail.grindmart.autos (unknown [45.13.189.201])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6806510E6B3
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Wed, 08 Mar 2023 18:11:15 UTC
+Received: from mail.hopesheet.autos (unknown [45.13.189.204])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1168910E11B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  8 Mar 2023 17:16:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=grindmart.autos; 
+ Wed,  8 Mar 2023 18:11:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hopesheet.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=now_on_walmart@grindmart.autos; 
- bh=GssE6mv6cfb0jN4rXbf5BwxsYE8=;
- b=r0gadrGAV6Jy2+pPDpUll4gUY8YtkBUhf3JfDpifaQb/l0WrhCgcbFGDd23zY4mnM+gVm+nrRuTO
- iD+Ad6ZZrsVUec3iTX8ZC02zaWtKi/orhY499RoSZXo2/wUF6sQ4QXH1vO5uQyhMhTDNEQFHJ4Ji
- nnhg3AJ2AGoqzCj5t7Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=grindmart.autos;
- b=vcmPZCcd6wsfrasusQHEtYFE6ttKO5gphhT3KzfaT2Ihx6j78Wfd7Yxfq+9tPLnZbuMXm1J4MM13
- /V0N8nOYONZZJsBVSZ3YubXO+jhe6KTVIziIMifAyTIpQUD0FOVtaG3wfym2h+qKcOP1nJ61FdRt
- OCj/Zaqk3pIc5xhgNck=;
-Received: by mail.grindmart.autos id h13bgu0001g7 for
+ i=miracle-sheets-affiliate-ad@hopesheet.autos; 
+ bh=MH8bb0Guna0NbO/cH+tPyBDTv9M=;
+ b=UhzAL8B0/ce6mM1S3iCcHQz930x8Ej2nez1qga1z39mQOdl1el2qPCa2na5pc45J9kbqWnA7jkoc
+ nZwiXKsMKn93MkgaGhad7QSufWtIdmalvxuXLip6Y+3ZYUEddS7PDy97f5IfQ2gMmGqAXlrVci7H
+ vm+zvTshyyGASnZCjI0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hopesheet.autos;
+ b=iz26KCYMxKOiZPZBlGVCN8cg5VmxUwmPN9FA9fQHH8nF1NU0jMCmIr+9mVxo0D9MJuK6pdXMQeYm
+ 2kuRdOXKJNhzZRzq5dvxfkmjKnXx4W1eh9ajrJhlk8+TYnFCMQPpMCNzKr8IcKGIozsoWJXi2UKR
+ kQgRGb7sqQ2b2ZkO32c=;
+Received: by mail.hopesheet.autos id h13hu60001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 8 Mar 2023 13:29:21 -0500 (envelope-from
- <now_on_walmart-intel+2Dgvt+2Ddev=lists.freedesktop.org@grindmart.autos>)
-Date: Wed, 8 Mar 2023 13:29:21 -0500
-From: "Now On Walmart" <now_on_walmart@grindmart.autos>
+ Wed, 8 Mar 2023 14:27:52 -0500 (envelope-from
+ <miracle-sheets-affiliate-ad-intel+2Dgvt+2Ddev=lists.freedesktop.org@hopesheet.autos>)
+Date: Wed, 8 Mar 2023 14:27:52 -0500
+From: "Miracle Sheets Affiliate Ad"
+ <miracle-sheets-affiliate-ad@hopesheet.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Walmart is giving away Irobot vacuum cleaners, act fast!
+Subject: Don't be a sweaty sleeper! Get Miracle Sheets Now
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_43_1607323693.1678294988610"
-Message-ID: <0.0.0.4.1D951EBE69FA584.638DA8@mail.grindmart.autos>
+ boundary="----=_Part_367_1260571667.1678298447196"
+Message-ID: <0.0.0.28.1D951F413C189EE.389210@mail.hopesheet.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_43_1607323693.1678294988610
+------=_Part_367_1260571667.1678298447196
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,66 +64,92 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>03030823</title> 
+  <title>04030823</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="margin: auto; max-width: 600px;"> 
-   <div id="div_glorios"> 
-    <header class="aok_iooje"> 
-     <div>
-      <span style="font-family: Arial, Helvetica, sans-serif; font-size: 200%; display: block; text-align: center; font-weight: bold; color: #1e42b8;">WALMART</span>
-     </div> 
-    </header> 
-    <section class="wakl_info" style="margin-top: 4%;"> 
-     <div> 
-      <div style="max-width: 30%; vertical-align: top; display: inline-block;">
-       <a href="http://www.grindmart.autos/7cd6Lgq2395dq8w612a4Sea0z1273t36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQPQmeK7bUrWp105jpwDy/economies-coarseness" target="_blank"><img alt="" src="http://www.grindmart.autos/subdirectory-saucepan/4e04y2395V7BaR11j4ea2Y1273H36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQPQmeK6Uix10K5iNwzD" width="100%" /></a>
-      </div> 
-      <div style="max-width: 65%; display: inline-block;">
-       <span style="display: block; text-align: justify; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold; color: #012168; font-size: 115%;; margin-top: 4%;">We are giving away the iRobot Roomba i1+ Wi-Fi Connected Self- Emptying Robot Vacuum, Ideal for Pet Hair, Carpets and more.</span> 
-       <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 80%; font-weight: 500; text-align: justify; display: block; margin-top: 2%; line-height: 145%;">We would like to offer you a unique opportunity to receive a brand new DeWalt Drill Set! To claim, simply take this short survey about your experience with Walmart.</span> 
-       <div>
-        <a href="http://www.grindmart.autos/7cd6Lgq2395dq8w612a4Sea0z1273t36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQPQmeK7bUrWp105jpwDy/economies-coarseness" target="_blank"><img alt="" src="http://www.grindmart.autos/2ff5I23k95W7kaj13Eqm4ea3O1273y36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQPQmeK7e1YM0vj6fkwDl1/economies-coarseness" width="100%" /></a>
-       </div> 
-       <span style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: 80%; font-weight: 900; text-align: center; display: block; max-width: 90%; line-height: 160%; margin: auto;">Get This Free Gift - Or Choose From 5 Other Offers! *Just Paying a small S&amp;H fee.</span>
-      </div> 
-     </div> 
-    </section> 
-    <footer style=" padding-top: 80px; "> 
-     <address style="padding: 5px 0px; font-family: Georgia, 'Times New Roman', Times, serif bold; font-size: 14px; text-align: center; color: #000000;"> <p><small><span style="text-decoration: none; ">To break off notices,</span><a href="http://www.grindmart.autos/employable-crushed/6485w23U95SiX8613i4eaj1ON1273v36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQPQmeK5F1L0W5e@wDN" style="text-decoration-line: none; color: rgb(0, 4, 255)"> <span>Start Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span><span></span><style></style></span><big></big> </small></p> </address> 
-    </footer> 
-   </div> 
-   <table class="content"> 
-    <tbody> 
-     <tr> 
-      <td> <p style=" color: #000;">&nbsp;</p> 
-       <table class="column"> 
-        <tbody> 
-         <tr> 
-          <td class="padding">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
+   <h3><a href="http://www.hopesheet.autos/observe-petulance/4fe6c239FY5EY8Z612pK4ea5p1274i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQjQmKm5t1KY05MJNwD" target="_blank"><img alt="" src="http://www.hopesheet.autos/e215y2B395L7GAa11z4ea8F1274D36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQjQmKm5o1oI06aLwDpN/dependably-Cyclops" width="100%" /></a></h3> &nbsp; 
+   <footer style="max-width: 720px; margin: auto;"> 
+    <address style="padding-top: 20px;"> 
+     <div style="text-align: center; background-color: #0D358C; padding: 8px 0px; font-family:Verdana, Geneva, Tahoma, sans-serif; color: #fff; font-size: 60% ;">
+      &nbsp;If you do not wish to receive future messages click here to 
+      <span class="unstyle-auto-detected-links"><a href="http://www.hopesheet.autos/2a56z2wr395W86Vi12l4ea6Ar1274M36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQjQmKm6d1ko0u5wlqwD/performance-orchards" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #999;" target="_blank">unsubscribe</a></span>
+      <br /> 
+      <br /> 
+      <span class="unstyle-auto-detected-links"><a href="http://www.hopesheet.autos/1014X2395jg86G12n4Dea7y1274Y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQjQmKm5b10k_6Vlw2OD/assimilating-helpless" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #999;" target="_blank">Miracle Sheets</a>&nbsp;|&nbsp; 1501 Haines St. | Jacksonville, FL 32206</span>
+     </div> </address> 
+    <div class="12rr3s" style="color:darkmagenta; text-align: left; font-size: 100%;">
+     &nbsp;
+    </div> 
+    <h4 id="h4informativo_crome_gold" style="font-size: 12px; font-weight: 400; text-align: justify; margin: auto; padding: 0px 0px 0px 0px;">&nbsp;</h4> 
+    <article> 
+     <aside style="font-size: 25%; line-height: 10%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; text-decoration: none; color: black;">
+      &nbsp;
+     </aside> 
+    </article> 
+   </footer> 
   </div> 
-  <table class="column"> 
-   <tbody> 
-    <tr> 
-     <td class="padding"> 
-      <table class="content"> 
-       <tbody> 
-        <tr> 
-         <td> <p>&nbsp;</p> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.grindmart.autos/8456pj23O95eU8z513t4WWea4r1273X36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQPQmeK7arD1N0l5SAw3D/thong-Aries" alt=""/></body>
+  <div class="container"> 
+   <div class="outer-panel text-center rounded"> 
+    <div class="inner-panel rounded mt-1"> 
+     <div class="row"> 
+      <div class="col-md-12"> 
+       <h6 class="mt-3">&nbsp;</h6> 
+       <p>&nbsp;</p> 
+      </div> 
+      <div class="col-md-12">
+       &nbsp;
+      </div> 
+      <div class="col-md-12"> 
+       <p>&nbsp;</p> 
+      </div> 
+     </div> 
+     <div class="row"> 
+      <div class="col-md-2"> 
+       <div class="p-4">
+        &nbsp;
+       </div> 
+      </div> 
+      <div class="col-md-10 title-text"> 
+       <div class="p-4"> 
+        <h6>&nbsp;</h6> 
+        <p>&nbsp;</p> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="row"> 
+      <div class="col-md-2"> 
+       <div class="p-4">
+        &nbsp;
+       </div> 
+      </div> 
+      <div class="col-md-10"> 
+       <div class="p-4 title-text"> 
+        <h6>&nbsp;</h6> 
+        <p>&nbsp;</p> 
+       </div> 
+      </div> 
+      <div class="col-md-12 p-4"> 
+       <div class="p-4"> 
+        <h6>&nbsp;</h6> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    <div class="row"> 
+     <div class="col-md-12"> 
+      <footer> 
+       <div class="d-flex flex-row px-4">
+        &nbsp;
+       </div> 
+       <p>&nbsp;</p> 
+      </footer> 
+     </div> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.hopesheet.autos/salaried-safety/35a6gm23U95sT85s12VY4ea9L1274I36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQjQmKm5D1hQ05XN1wD" alt=""/></body>
 </html>
 
-------=_Part_43_1607323693.1678294988610--
+------=_Part_367_1260571667.1678298447196--
 
