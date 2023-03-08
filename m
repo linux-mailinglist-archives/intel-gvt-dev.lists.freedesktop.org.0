@@ -2,53 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E93536B0DBA
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 16:54:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 883426B0F2A
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 17:48:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B01E610E62F;
-	Wed,  8 Mar 2023 15:54:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4966D10E6AF;
+	Wed,  8 Mar 2023 16:48:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
- [185.176.79.56])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3668410E62F;
- Wed,  8 Mar 2023 15:54:49 +0000 (UTC)
-Received: from lhrpeml100001.china.huawei.com (unknown [172.18.147.200])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4PWxh60g27z689xQ;
- Wed,  8 Mar 2023 23:54:14 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- lhrpeml100001.china.huawei.com (7.191.160.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Wed, 8 Mar 2023 15:54:45 +0000
-Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
- lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2507.021; 
- Wed, 8 Mar 2023 15:54:45 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Subject: RE: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
-Thread-Topic: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
-Thread-Index: AQHZSpxHUh/YYv3qukeFp+lKFtoCf67jLB2AgACBDoCAAOlEAIAAn5IAgAIKi/CAAO3wAIAA+kPAgAEQJQCABt1mAA==
-Date: Wed, 8 Mar 2023 15:54:45 +0000
-Message-ID: <5152227cbe0e4bdcacf0763f1af16e8f@huawei.com>
-References: <20230227111135.61728-1-yi.l.liu@intel.com>
- <Y/0Cr/tcNCzzIAhi@nvidia.com>
- <DS0PR11MB7529A422D4361B39CCA3D248C3AC9@DS0PR11MB7529.namprd11.prod.outlook.com>
- <SA1PR11MB5873479F73CFBAA170717624F0AC9@SA1PR11MB5873.namprd11.prod.outlook.com>
- <Y/64ejbhMiV77uUA@Asurada-Nvidia>
- <b7c1f9d5b4b647f0b0686c3b99f3d006@huawei.com>
- <ZAE2J0I1LiBjWUnm@Asurada-Nvidia>
- <d59a0262d5bf423c9e49ad4ac6015296@huawei.com>
- <ZALspPvvLGFuK96F@Asurada-Nvidia>
-In-Reply-To: <ZALspPvvLGFuK96F@Asurada-Nvidia>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.178]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Wed, 08 Mar 2023 16:48:39 UTC
+Received: from mail.flegree.autos (unknown [45.13.189.186])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3DA9C10E6A6
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  8 Mar 2023 16:48:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flegree.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=walgreens-gift-card-chance@flegree.autos; 
+ bh=sd22bz6Tutol9EinehPFW25M2Yk=;
+ b=h6a4lzOlPW0KlKaKB4IaPF9rThMPQqXx56+7C9emgVay7QG8qoK/ujg8xnk4cT1IGXNAcJi1alf1
+ JRsOBMUje09IlHFcEHTLYVPIgjiWW2ZtQNrXOsPisYEcu0ja7XaNcRjGqOSwTwb04n72HS4dDhkj
+ tBCf+JcXfQz3P3njEYE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flegree.autos;
+ b=Yv+kn4HCYnPBQt5kyiyGCw6zO2CvVwjF87KRnyuve3O0yLB1w0ebudVl3/ZyrIkgtQ4H4uQL7qph
+ aikR094UkiMjAjoQqtTstuJ0sbbhXpOAbflx9+PjmISu6ASOiawDMEYKDTfEi3/DqAYYy/dSqTee
+ K7yUABGvSzx65uKxOi4=;
+Received: by mail.flegree.autos id h12u6e0001gl for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 8 Mar 2023 11:38:48 -0500 (envelope-from
+ <walgreens-gift-card-chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@flegree.autos>)
+Date: Wed, 8 Mar 2023 11:38:48 -0500
+From: "Walgreens Gift Card Chance" <walgreens-gift-card-chance@flegree.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Walgreens Shopper We appreciate your input
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_508_1471589413.1678293498369"
+Message-ID: <0.0.0.38.1D951DC7576362A.5E80B3@mail.flegree.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,139 +50,105 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
- Jason Gunthorpe <jgg@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>, "Zhao,
- Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+------=_Part_508_1471589413.1678293498369
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>02030823</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="margin: auto; max-width: 600px;"> 
+   <header> 
+    <div>
+     <span style="display: block; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 200%; text-align: center;">A Special Offer for Our Valued Users</span> 
+     <div>
+      <span style="display: block; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 200%; text-align: center; color: #ab58db;">WALGREENS</span> 
+      <div style="text-align: center;"> 
+       <div style="max-width: 35%; display: inline-block;">
+        <a href="http://www.flegree.autos/3774A2395wy86r12I4RebdX1272D36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQBQmee6R1u0qH6elwXDp/consequences-informational" target=""><img alt="" src="http://www.flegree.autos/misconstrued-timings/4c25L2p395k7LaF11J4ebf_1272U36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQBQmee7rq1j_0i6hUwDWq" width="100%" /></a>
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </header> &nbsp; 
+   <section> 
+    <div style="max-width: 90%; margin: auto; text-align: center; line-height: 150%;">
+     <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;">We wanted to take a moment to thank you for choosing Walgreens for your shopping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you.<br /> <br /> As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your shop and overall experience with Walgreens. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <br /> 
+      <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal; font-size: 90%;  text-align:center"><span style="display: inline-block; font-size: 90%; padding: 1.5% 2%; background-color: rgb(223, 223, 223); font-weight: bold;">For completing the survey, you can receive a $100 Gift!</span> </span>
+     </div> 
+     <br /> 
+     <br /> 
+     <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal; font-size: 90%; ">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span>
+     <br /> 
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal; font-size: 90%;"><a href="http://www.flegree.autos/3774A2395wy86r12I4RebdX1272D36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQBQmee6R1u0qH6elwXDp/consequences-informational" style="color: #5895db;"><span style="font-weight: bold; display: inline-block; font-size: 180%;"><u>TAKE THE SURVEY</u> </span></a> </span>
+     </div> 
+     <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;"> </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal; font-size: 90%;  text-align: center"><span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 900; font-size: 80%; ">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The Walgreens Survey</span> </span>
+     </div> 
+     <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal; font-size: 90%;  text-align: justify;"> </span>
+    </div> 
+   </section> &nbsp; 
+   <hr /> 
+   <footer> 
+    <address style="text-align: center; font-weight: normal; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
+     <div style="font-size: 10px;; padding: 15px; color: #000000; font-weight: bold;"> 
+      <p class="unsubscribe"><span style="text-decoration: none; ">No longer wish to receive notifications from us?,</span><a href="http://www.flegree.autos/ef35L239Q5er8X611r4ebeH1272O36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQBQmee5S10_h5g2NwD/blood-reformatory" style="text-decoration-line: none;"> <span>Continue-Ahead </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <span><span id="sarcastic"><small><style style="varnishes"></small></span></span></style><small></small><big><font></font></big><font dir="porcupines"></font></p> 
+     </div> </address> 
+   </footer> 
+  </div> 
+  <table class="column"> 
+   <tbody> 
+    <tr> 
+     <td class="padding"> 
+      <table class="content"> 
+       <tbody> 
+        <tr> 
+         <td> <p style=" color: #000;">&nbsp;</p> 
+          <table class="column"> 
+           <tbody> 
+            <tr> 
+             <td class="padding"> 
+              <table class="content"> 
+               <tbody> 
+                <tr> 
+                 <td> <p>&nbsp;</p> 
+                  <table class="content"> 
+                   <tbody> 
+                    <tr> 
+                     <td> <p>&nbsp;</p> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.flegree.autos/b6f5p239N5o8r5j11X4ec0L1272F36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQBQmee7Qx1iFW06wNWWwD/cloudburst-MITREs" alt=""/></body>
+</html>
 
-> -----Original Message-----
-> From: Nicolin Chen [mailto:nicolinc@nvidia.com]
-> Sent: 04 March 2023 07:01
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: Xu, Terrence <terrence.xu@intel.com>; Liu, Yi L <yi.l.liu@intel.com>;
-> Jason Gunthorpe <jgg@nvidia.com>; alex.williamson@redhat.com; Tian,
-> Kevin <kevin.tian@intel.com>; joro@8bytes.org; robin.murphy@arm.com;
-> cohuck@redhat.com; eric.auger@redhat.com; kvm@vger.kernel.org;
-> mjrosato@linux.ibm.com; chao.p.peng@linux.intel.com;
-> yi.y.sun@linux.intel.com; peterx@redhat.com; jasowang@redhat.com;
-> lulu@redhat.com; suravee.suthikulpanit@amd.com;
-> intel-gvt-dev@lists.freedesktop.org; intel-gfx@lists.freedesktop.org;
-> linux-s390@vger.kernel.org; Hao, Xudong <xudong.hao@intel.com>; Zhao,
-> Yan Y <yan.y.zhao@intel.com>
-> Subject: Re: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
->=20
-> On Fri, Mar 03, 2023 at 03:01:03PM +0000, Shameerali Kolothum Thodi
-> wrote:
-> > External email: Use caution opening links or attachments
-> >
-> >
-> > > -----Original Message-----
-> > > From: Nicolin Chen [mailto:nicolinc@nvidia.com]
-> > > Sent: 02 March 2023 23:51
-> > > To: Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>
-> > > Cc: Xu, Terrence <terrence.xu@intel.com>; Liu, Yi L
-> > > <yi.l.liu@intel.com>; Jason Gunthorpe <jgg@nvidia.com>;
-> > > alex.williamson@redhat.com; Tian, Kevin <kevin.tian@intel.com>;
-> > > joro@8bytes.org; robin.murphy@arm.com; cohuck@redhat.com;
-> > > eric.auger@redhat.com; kvm@vger.kernel.org; mjrosato@linux.ibm.com;
-> > > chao.p.peng@linux.intel.com; yi.y.sun@linux.intel.com;
-> > > peterx@redhat.com; jasowang@redhat.com; lulu@redhat.com;
-> > > suravee.suthikulpanit@amd.com; intel-gvt-dev@lists.freedesktop.org;
-> > > intel-gfx@lists.freedesktop.org; linux-s390@vger.kernel.org; Hao,
-> > > Xudong <xudong.hao@intel.com>; Zhao, Yan Y <yan.y.zhao@intel.com>
-> > > Subject: Re: [PATCH v5 00/19] Add vfio_device cdev for iommufd
-> > > support
-> > >
-> > > On Thu, Mar 02, 2023 at 09:43:00AM +0000, Shameerali Kolothum Thodi
-> > > wrote:
-> > >
-> > > > Hi Nicolin,
-> > > >
-> > > > Thanks for the latest ARM64 branch. Do you have a working Qemu
-> > > > branch
-> > > corresponding to the
-> > > > above one?
-> > > >
-> > > > I tried the
-> > >
-> https://github.com/nicolinc/qemu/tree/wip/iommufd_rfcv3%2Bnesting%2B
-> > > smmuv3
-> > > > but for some reason not able to launch the Guest.
-> > > >
-> > > > Please let me know.
-> > >
-> > > I do use that branch. It might not be that robust though as it went
-> > > through a big rebase.
-> >
-> > Ok. The issue seems to be quite random in nature and only happens when
-> > there are multiple vCPUs. Also doesn't look like related to VFIO
-> > device assignment as I can reproduce Guest hang without it by only
-> > having nested-smmuv3 and iommufd object.
-> >
-> > ./qemu-system-aarch64-iommuf -machine
-> > virt,gic-version=3D3,iommu=3Dnested-smmuv3,iommufd=3Diommufd0 \
-> -enable-kvm
-> > -cpu host -m 1G -smp cpus=3D8,maxcpus=3D8 \ -object iommufd,id=3Diommuf=
-d0
-> \
-> > -bios QEMU_EFI.fd \ -kernel Image-6.2-iommufd \ -initrd
-> > rootfs-iperf.cpio \ -net none \ -nographic \ -append "rdinit=3Dinit
-> > console=3DttyAMA0 root=3D/dev/vda rw earlycon=3Dpl011,0x9000000" \ -tra=
-ce
-> > events=3Devents \ -D trace_iommufd
-> >
-> > When the issue happens, no output on terminal as if Qemu is in a locked
-> state.
-> >
-> >  Can you try with the followings?
-> > >
-> > > --trace "iommufd*" --trace "smmu*" --trace "vfio_*" --trace "pci_*"
-> > > --trace "msi_*" --trace "nvme_*"
-> >
-> > The only trace events with above are this,
-> >
-> > iommufd_backend_connect fd=3D22 owned=3D1 users=3D1 (0) smmu_add_mr
-> > smmuv3-iommu-memory-region-0-0
-> >
-> > I haven't debugged this further. Please let me know if issue is
-> > reproducible with multiple vCPUs at your end. For now will focus on VFI=
-O
-> dev specific tests.
->=20
-> Oh. My test environment has been a single-core vCPU. So that doesn't
-> happen to me. Can you try a vanilla QEMU branch that our nesting branch i=
-s
-> rebased on? I took a branch from Yi as the baseline, while he might take
-> from Eric for the rfcv3.
->=20
-> I am guessing that it might be an issue in the common tree.
+------=_Part_508_1471589413.1678293498369--
 
-Yes, that looks like the case.
-I tried with:
- commit 13356edb8750("Merge tag 'block-pull-request' of https://gitlab.com/=
-stefanha/qemu into staging")
-
-And issue is still there. So hopefully once we rebase everything it will go=
- away.
-
-Thanks,
-Shameer
