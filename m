@@ -1,47 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AACDC6B08E9
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 14:29:43 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA05F6B08D8
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 14:29:36 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6BAA210E62F;
-	Wed,  8 Mar 2023 13:29:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 88A6510E603;
+	Wed,  8 Mar 2023 13:29:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6B82D10E5E2;
- Wed,  8 Mar 2023 13:29:29 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 29C7E10E610;
+ Wed,  8 Mar 2023 13:29:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678282169; x=1709818169;
+ t=1678282171; x=1709818171;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=2NxJ2YuHrmW/4nZRdgi+pj1OdZn9UVNaWl2X9mKXSHs=;
- b=YERnDN+piEZIdsAov5hcJXvjIznXMEXly4AX55EZHDoPc93s49VxrG6G
- P58c6sbVEolr4IkeMf+7FwlTS62E6oRPX41tqUL8BKDLgYNEWSkkhZZpO
- E0J6TXOMjMO9518hmExxQN1Vt4PK1yXSlG302SxX1cjKgs+bA1C+S/3j8
- tdqAb4EUa7v+NXRwSQA7kMSpo/GPGFwQoBZW3n5eZFc30F6YXfg0SzvRw
- ZSfRy0mW0wiP6NowR/+oLtE7/onTW8rkod3uhYLXrV8j014lys1PM61GY
- Jqr2e4ieSDQ2GeNDqjdKpAEkl4mdGnaSUY0MImTM0keNRFpuKPyOosp45 g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="336165237"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="336165237"
+ bh=p0+sdiJRsT1CFvbgXCytRESDpwjpnnBYhpkQpIa3C7k=;
+ b=GEnKuiKHV06HxxHZA4xWnCr14sqisaQEPtSRsCJaNDuyrg8WNmnoU6PL
+ W6hbWS6B+wIVliGqBu6n9poGf3BdvmfPp5k9nrIulRIWUDZCkHSBnQ67e
+ AMYN4ubm+F++H6k3hs8S/S2n57na9tXQhelDmfmlFPpyplNoaeHGl2HKB
+ Cy3qn3VbcFEvP2kfu/HEz+GL7G8ie2IL48Y5AYu6lOjNovcr+f57Pjfkn
+ IQuZjGPhwYCCmwShNfdRyTT6OukXrB5ZBZHBLI6+YE1ciKc22zuMdWhh2
+ TvKvxx3qKoVsvDkQdadivF7Stgbw8psNW+xQTfFTN5s1AMMFr+ND83foj g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="336165247"
+X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="336165247"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2023 05:29:29 -0800
+ 08 Mar 2023 05:29:30 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="922789391"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="922789391"
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="922789400"
+X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; d="scan'208";a="922789400"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga006.fm.intel.com with ESMTP; 08 Mar 2023 05:29:28 -0800
+ by fmsmga006.fm.intel.com with ESMTP; 08 Mar 2023 05:29:29 -0800
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v6 13/24] vfio/iommufd: Split the compat_ioas attach out from
- vfio_iommufd_bind()
-Date: Wed,  8 Mar 2023 05:28:52 -0800
-Message-Id: <20230308132903.465159-14-yi.l.liu@intel.com>
+Subject: [PATCH v6 14/24] vfio: Add cdev_device_open_cnt to vfio_group
+Date: Wed,  8 Mar 2023 05:28:53 -0800
+Message-Id: <20230308132903.465159-15-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230308132903.465159-1-yi.l.liu@intel.com>
 References: <20230308132903.465159-1-yi.l.liu@intel.com>
@@ -70,201 +69,97 @@ Cc: linux-s390@vger.kernel.org, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This makes the group code call .bind_iommufd and .attach_ioas in two steps
-instead of in a single step. This prepares the bind_iommufd and attach_ioas
-support in the coming cdev path.
+for counting the devices that are opened via the cdev path. This count
+is increased and decreased by the cdev path. The group path checks it
+to achieve exclusion with the cdev path. With this, only one path (group
+path or cdev path) will claim DMA ownership. This avoids scenarios in
+which devices within the same group may be opened via different paths.
 
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+Tested-by: Terrence Xu <terrence.xu@intel.com>
+Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
 ---
- drivers/vfio/group.c   | 26 ++++++++++-----
- drivers/vfio/iommufd.c | 75 ++++++++++++++++++++++++++----------------
- drivers/vfio/vfio.h    |  8 +++++
- 3 files changed, 73 insertions(+), 36 deletions(-)
+ drivers/vfio/group.c | 33 +++++++++++++++++++++++++++++++++
+ drivers/vfio/vfio.h  |  3 +++
+ 2 files changed, 36 insertions(+)
 
 diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-index 6280368eb0bd..555d68aefa71 100644
+index 555d68aefa71..63aafd59278d 100644
 --- a/drivers/vfio/group.c
 +++ b/drivers/vfio/group.c
-@@ -177,7 +177,7 @@ static int vfio_device_group_open(struct vfio_device_file *df)
- 	mutex_lock(&device->group->group_lock);
- 	if (!vfio_group_has_iommu(device->group)) {
- 		ret = -EINVAL;
--		goto out_unlock;
-+		goto err_unlock;
+@@ -392,6 +392,33 @@ static long vfio_group_fops_unl_ioctl(struct file *filep,
  	}
- 
- 	mutex_lock(&device->dev_set->lock);
-@@ -194,9 +194,14 @@ static int vfio_device_group_open(struct vfio_device_file *df)
- 	df->iommufd = device->group->iommufd;
- 
- 	ret = vfio_device_open(df);
--	if (ret) {
--		df->iommufd = NULL;
--		goto out_put_kvm;
-+	if (ret)
-+		goto err_put_kvm;
-+
-+	if (device->group->iommufd) {
-+		ret = vfio_iommufd_attach_compat_ioas(device,
-+						      device->group->iommufd);
-+		if (ret)
-+			goto err_close_device;
- 	}
- 
- 	/*
-@@ -205,13 +210,18 @@ static int vfio_device_group_open(struct vfio_device_file *df)
- 	 */
- 	smp_store_release(&df->access_granted, true);
- 
--out_put_kvm:
-+	mutex_unlock(&device->dev_set->lock);
-+	mutex_unlock(&device->group->group_lock);
-+	return 0;
-+
-+err_close_device:
-+	vfio_device_close(df);
-+err_put_kvm:
-+	df->iommufd = NULL;
- 	if (device->open_count == 0)
- 		vfio_device_put_kvm(device);
--
- 	mutex_unlock(&device->dev_set->lock);
--
--out_unlock:
-+err_unlock:
- 	mutex_unlock(&device->group->group_lock);
- 	return ret;
  }
-diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
-index 30c0da2e11f9..8c518f8bd39a 100644
---- a/drivers/vfio/iommufd.c
-+++ b/drivers/vfio/iommufd.c
-@@ -10,52 +10,71 @@
- MODULE_IMPORT_NS(IOMMUFD);
- MODULE_IMPORT_NS(IOMMUFD_VFIO);
  
--int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
-+static int vfio_iommufd_device_probe_comapt_noiommu(struct vfio_device *vdev,
-+						    struct iommufd_ctx *ictx)
- {
- 	u32 ioas_id;
-+
-+	if (!capable(CAP_SYS_RAWIO))
-+		return -EPERM;
-+
-+	/*
-+	 * Require no compat ioas to be assigned to proceed.  The basic
-+	 * statement is that the user cannot have done something that
-+	 * implies they expected translation to exist
-+	 */
-+	if (!iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id))
-+		return -EPERM;
-+	return 0;
-+}
-+
-+int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
++int vfio_device_block_group(struct vfio_device *device)
 +{
- 	u32 device_id;
- 	int ret;
- 
- 	lockdep_assert_held(&vdev->dev_set->lock);
- 
- 	if (vfio_device_is_noiommu(vdev)) {
--		if (!capable(CAP_SYS_RAWIO))
--			return -EPERM;
--
--		/*
--		 * Require no compat ioas to be assigned to proceed. The basic
--		 * statement is that the user cannot have done something that
--		 * implies they expected translation to exist
--		 */
--		if (!iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id))
--			return -EPERM;
--		return 0;
-+		ret = vfio_iommufd_device_probe_comapt_noiommu(vdev, ictx);
-+		if (ret)
-+			return ret;
- 	}
- 
- 	if (WARN_ON(!vdev->ops->bind_iommufd))
- 		return -ENODEV;
- 
--	ret = vdev->ops->bind_iommufd(vdev, ictx, &device_id);
--	if (ret)
--		return ret;
-+	/* The legacy path has no way to return the device id */
-+	return vdev->ops->bind_iommufd(vdev, ictx, &device_id);
-+}
- 
--	ret = iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id);
--	if (ret)
--		goto err_unbind;
--	ret = vdev->ops->attach_ioas(vdev, &ioas_id);
--	if (ret)
--		goto err_unbind;
-+int vfio_iommufd_attach_compat_ioas(struct vfio_device *vdev,
-+				    struct iommufd_ctx *ictx)
-+{
-+	u32 ioas_id;
-+	int ret;
++	struct vfio_group *group = device->group;
++	int ret = 0;
 +
-+	lockdep_assert_held(&vdev->dev_set->lock);
- 
- 	/*
--	 * The legacy path has no way to return the device id or the selected
--	 * pt_id
-+	 * If the driver doesn't provide this op then it means the device does
-+	 * not do DMA at all. So nothing to do.
- 	 */
--	return 0;
-+	if (WARN_ON(!vdev->ops->bind_iommufd))
-+		return -ENODEV;
- 
--err_unbind:
--	if (vdev->ops->unbind_iommufd)
--		vdev->ops->unbind_iommufd(vdev);
--	return ret;
-+	if (vfio_device_is_noiommu(vdev)) {
-+		if (WARN_ON(vfio_iommufd_device_probe_comapt_noiommu(vdev, ictx)))
-+			return -EINVAL;
-+		return 0;
++	mutex_lock(&group->group_lock);
++	if (group->opened_file) {
++		ret = -EBUSY;
++		goto out_unlock;
 +	}
 +
-+	ret = iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id);
-+	if (ret)
-+		return ret;
++	group->cdev_device_open_cnt++;
 +
-+	/* The legacy path has no way to return the selected pt_id */
-+	return vdev->ops->attach_ioas(vdev, &ioas_id);
- }
++out_unlock:
++	mutex_unlock(&group->group_lock);
++	return ret;
++}
++
++void vfio_device_unblock_group(struct vfio_device *device)
++{
++	struct vfio_group *group = device->group;
++
++	mutex_lock(&group->group_lock);
++	group->cdev_device_open_cnt--;
++	mutex_unlock(&group->group_lock);
++}
++
+ static int vfio_group_fops_open(struct inode *inode, struct file *filep)
+ {
+ 	struct vfio_group *group =
+@@ -414,6 +441,11 @@ static int vfio_group_fops_open(struct inode *inode, struct file *filep)
+ 		goto out_unlock;
+ 	}
  
- void vfio_iommufd_unbind(struct vfio_device *vdev)
++	if (group->cdev_device_open_cnt) {
++		ret = -EBUSY;
++		goto out_unlock;
++	}
++
+ 	/*
+ 	 * Do we need multiple instances of the group open?  Seems not.
+ 	 */
+@@ -488,6 +520,7 @@ static void vfio_group_release(struct device *dev)
+ 	mutex_destroy(&group->device_lock);
+ 	mutex_destroy(&group->group_lock);
+ 	WARN_ON(group->iommu_group);
++	WARN_ON(group->cdev_device_open_cnt);
+ 	ida_free(&vfio.group_ida, MINOR(group->dev.devt));
+ 	kfree(group);
+ }
 diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-index 464263288d16..3356321805e9 100644
+index 3356321805e9..e1b8763e443e 100644
 --- a/drivers/vfio/vfio.h
 +++ b/drivers/vfio/vfio.h
-@@ -232,6 +232,8 @@ static inline void vfio_container_cleanup(void)
- #if IS_ENABLED(CONFIG_IOMMUFD)
- int vfio_iommufd_bind(struct vfio_device *device, struct iommufd_ctx *ictx);
- void vfio_iommufd_unbind(struct vfio_device *device);
-+int vfio_iommufd_attach_compat_ioas(struct vfio_device *vdev,
-+				    struct iommufd_ctx *ictx);
- #else
- static inline int vfio_iommufd_bind(struct vfio_device *device,
- 				    struct iommufd_ctx *ictx)
-@@ -242,6 +244,12 @@ static inline int vfio_iommufd_bind(struct vfio_device *device,
- static inline void vfio_iommufd_unbind(struct vfio_device *device)
- {
- }
-+
-+static inline int vfio_iommufd_attach_compat_ioas(struct vfio_device *vdev,
-+						  struct iommufd_ctx *ictx)
-+{
-+	return -EOPNOTSUPP;
-+}
- #endif
+@@ -83,8 +83,11 @@ struct vfio_group {
+ 	struct blocking_notifier_head	notifier;
+ 	struct iommufd_ctx		*iommufd;
+ 	spinlock_t			kvm_ref_lock;
++	unsigned int			cdev_device_open_cnt;
+ };
  
- #if IS_ENABLED(CONFIG_VFIO_VIRQFD)
++int vfio_device_block_group(struct vfio_device *device);
++void vfio_device_unblock_group(struct vfio_device *device);
+ int vfio_device_set_group(struct vfio_device *device,
+ 			  enum vfio_group_type type);
+ void vfio_device_remove_group(struct vfio_device *device);
 -- 
 2.34.1
 
