@@ -1,47 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 216006B0823
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 14:13:56 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B62B16B0825
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Mar 2023 14:13:59 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4A3E410E678;
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5E18510E671;
 	Wed,  8 Mar 2023 13:13:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A01DB10E5D8;
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E1A4B10E5D8;
  Wed,  8 Mar 2023 13:13:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1678281231; x=1709817231;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=g3697lZzm6PCvc2lBDVarRBK9AtBf4R1q/ErsF5CJnc=;
- b=KeXkH/UGUK7Xm1ymG2G70PD/4yKNdWgrw8zIDdXhdn1BlSheFDp0SBKB
- SkqAaHwLCUrgX/cBiGF6ZyvrrM8XXALYLErCS62Gggmq8fiwUB+YfmeeQ
- iAiscZqb6GqUMHz8mtd19ggL8tCPj5NQTHUYJnSkSuwu1BrayDG5gt6v4
- ir//f/jh5evr77OaxWSntactXjcenqqB1o4ZB03jHWlKznnntKbNdmv4t
- dvel0Zrrf42AMpFrWFDiU0fXXWgokv496M+TCgelcdD09jff8tHiW7/ik
- kmn+fZP6mkC9FnOv3nxm58Dk8NAnQRwYF4A6tnUOXk2NUVZNRjWqD/6FQ A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="338474788"
-X-IronPort-AV: E=Sophos;i="5.98,243,1673942400"; d="scan'208";a="338474788"
+ bh=HkexrwvnYWejPaT2AWfbM1T8RE/xmR+thl355jPmjRM=;
+ b=mGb6KOVIEtGhrONo4elf6nsp9YI08noQzwbVCJPS4ZPn6CVYlpdMm5oW
+ qL4hAYBmWDFEEGcGtrkl3inwJ8Mngn2KaGVJ/7c1hsIVMV4indvR2l4dM
+ u3xD2BghvZI/5b1R4e3goufiFX2e3JU71vsWQ6g5OvSrkK3LdS0zBcnpT
+ HuYJWzVYxZqUJQbFDtpEDLsw6tvx3w7IIMzxNlIx0LWAbHL392cOYoTKW
+ Q2g/SVvSI7pnvUVKdc3LyYO7O1NgOAiUKqvx9T+vYMFe3L+xtKIh+0YRp
+ Ul5OQhVc9rxE5qoMCCqSojzGE0YmhQ3PijuKNO+CPEhWVJRCt8CY99WyO Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="338474799"
+X-IronPort-AV: E=Sophos;i="5.98,243,1673942400"; d="scan'208";a="338474799"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  08 Mar 2023 05:13:46 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="670330924"
-X-IronPort-AV: E=Sophos;i="5.98,243,1673942400"; d="scan'208";a="670330924"
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="670330946"
+X-IronPort-AV: E=Sophos;i="5.98,243,1673942400"; d="scan'208";a="670330946"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by orsmga007.jf.intel.com with ESMTP; 08 Mar 2023 05:13:44 -0800
+ by orsmga007.jf.intel.com with ESMTP; 08 Mar 2023 05:13:45 -0800
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v1 3/5] vfio-iommufd: Make vfio_iommufd_emulated_bind() return
- iommufd_access ID
-Date: Wed,  8 Mar 2023 05:13:38 -0800
-Message-Id: <20230308131340.459224-4-yi.l.liu@intel.com>
+Subject: [PATCH v1 4/5] Samples/mdev: Uses the vfio emulated iommufd ops set
+ in the mdev sample drivers
+Date: Wed,  8 Mar 2023 05:13:39 -0800
+Message-Id: <20230308131340.459224-5-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230308131340.459224-1-yi.l.liu@intel.com>
 References: <20230308131340.459224-1-yi.l.liu@intel.com>
@@ -70,93 +70,100 @@ Cc: linux-s390@vger.kernel.org, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-vfio device cdev needs to return iommufd_access ID to userspace if
-bind_iommufd succeeds.
+This harmonizes the no-DMA devices (the vfio-mdev sample drivers) with
+the emulated devices (gvt-g, vfio-ap etc.). It makes it easier to add
+BIND_IOMMUFD user interface which requires to return an iommufd ID to
+represent the device/iommufd bond.
 
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/iommu/iommufd/device.c   | 4 +++-
- drivers/iommu/iommufd/selftest.c | 3 ++-
- drivers/vfio/iommufd.c           | 2 +-
- include/linux/iommufd.h          | 2 +-
- 4 files changed, 7 insertions(+), 4 deletions(-)
+ drivers/vfio/iommufd.c     | 14 ++++++--------
+ samples/vfio-mdev/mbochs.c |  3 +++
+ samples/vfio-mdev/mdpy.c   |  3 +++
+ samples/vfio-mdev/mtty.c   |  3 +++
+ 4 files changed, 15 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/iommu/iommufd/device.c b/drivers/iommu/iommufd/device.c
-index 71c4d38994b3..9087cd8ed3ea 100644
---- a/drivers/iommu/iommufd/device.c
-+++ b/drivers/iommu/iommufd/device.c
-@@ -426,6 +426,7 @@ void iommufd_access_destroy_object(struct iommufd_object *obj)
-  * @ioas_id: ID for a IOMMUFD_OBJ_IOAS
-  * @ops: Driver's ops to associate with the access
-  * @data: Opaque data to pass into ops functions
-+ * @id: Output ID number to return to userspace for this access
-  *
-  * An iommufd_access allows a driver to read/write to the IOAS without using
-  * DMA. The underlying CPU memory can be accessed using the
-@@ -435,7 +436,7 @@ void iommufd_access_destroy_object(struct iommufd_object *obj)
-  */
- struct iommufd_access *
- iommufd_access_create(struct iommufd_ctx *ictx,
--		      const struct iommufd_access_ops *ops, void *data)
-+		      const struct iommufd_access_ops *ops, void *data, u32 *id)
- {
- 	struct iommufd_access *access;
- 
-@@ -461,6 +462,7 @@ iommufd_access_create(struct iommufd_ctx *ictx,
- 	access->ictx = ictx;
- 	iommufd_ctx_get(ictx);
- 	iommufd_object_finalize(ictx, &access->obj);
-+	*id = access->obj.id;
- 	return access;
- }
- EXPORT_SYMBOL_NS_GPL(iommufd_access_create, IOMMUFD);
-diff --git a/drivers/iommu/iommufd/selftest.c b/drivers/iommu/iommufd/selftest.c
-index db4011bdc8a9..b796fd13a417 100644
---- a/drivers/iommu/iommufd/selftest.c
-+++ b/drivers/iommu/iommufd/selftest.c
-@@ -554,6 +554,7 @@ static int iommufd_test_create_access(struct iommufd_ucmd *ucmd,
- 	struct iommu_test_cmd *cmd = ucmd->cmd;
- 	struct selftest_access *staccess;
- 	struct iommufd_access *access;
-+	u32 id;
- 	int fdno;
- 	int rc;
- 
-@@ -575,7 +576,7 @@ static int iommufd_test_create_access(struct iommufd_ucmd *ucmd,
- 		(flags & MOCK_FLAGS_ACCESS_CREATE_NEEDS_PIN_PAGES) ?
- 			&selftest_access_ops_pin :
- 			&selftest_access_ops,
--		staccess);
-+		staccess, &id);
- 	if (IS_ERR(access)) {
- 		rc = PTR_ERR(access);
- 		goto out_put_fdno;
 diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
-index b55f94271cc7..7a4458a10656 100644
+index 7a4458a10656..768d353cb6fa 100644
 --- a/drivers/vfio/iommufd.c
 +++ b/drivers/vfio/iommufd.c
-@@ -142,7 +142,7 @@ int vfio_iommufd_emulated_bind(struct vfio_device *vdev,
+@@ -32,12 +32,8 @@ int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
+ 		return 0;
+ 	}
  
- 	lockdep_assert_held(&vdev->dev_set->lock);
+-	/*
+-	 * If the driver doesn't provide this op then it means the device does
+-	 * not do DMA at all. So nothing to do.
+-	 */
+-	if (!vdev->ops->bind_iommufd)
+-		return 0;
++	if (WARN_ON(!vdev->ops->bind_iommufd))
++		return -ENODEV;
  
--	user = iommufd_access_create(ictx, &vfio_user_ops, vdev);
-+	user = iommufd_access_create(ictx, &vfio_user_ops, vdev, out_device_id);
- 	if (IS_ERR(user))
- 		return PTR_ERR(user);
- 	vdev->iommufd_access = user;
-diff --git a/include/linux/iommufd.h b/include/linux/iommufd.h
-index 247b11609c79..365f11e8e615 100644
---- a/include/linux/iommufd.h
-+++ b/include/linux/iommufd.h
-@@ -41,7 +41,7 @@ enum {
+ 	ret = vdev->ops->bind_iommufd(vdev, ictx, &device_id);
+ 	if (ret)
+@@ -119,7 +115,8 @@ EXPORT_SYMBOL_GPL(vfio_iommufd_physical_attach_ioas);
+ /*
+  * The emulated standard ops mean that vfio_device is going to use the
+  * "mdev path" and will call vfio_pin_pages()/vfio_dma_rw(). Drivers using this
+- * ops set should call vfio_register_emulated_iommu_dev().
++ * ops set should call vfio_register_emulated_iommu_dev(). Drivers that do
++ * not call vfio_pin_pages()/vfio_dma_rw() no need to provide dma_unmap.
+  */
  
- struct iommufd_access *
- iommufd_access_create(struct iommufd_ctx *ictx,
--		      const struct iommufd_access_ops *ops, void *data);
-+		      const struct iommufd_access_ops *ops, void *data, u32 *id);
- void iommufd_access_destroy(struct iommufd_access *access);
- int iommufd_access_set_ioas(struct iommufd_access *access, u32 ioas_id);
+ static void vfio_emulated_unmap(void *data, unsigned long iova,
+@@ -127,7 +124,8 @@ static void vfio_emulated_unmap(void *data, unsigned long iova,
+ {
+ 	struct vfio_device *vdev = data;
  
+-	vdev->ops->dma_unmap(vdev, iova, length);
++	if (vdev->ops->dma_unmap)
++		vdev->ops->dma_unmap(vdev, iova, length);
+ }
+ 
+ static const struct iommufd_access_ops vfio_user_ops = {
+diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
+index e54eb752e1ba..19391dda5fba 100644
+--- a/samples/vfio-mdev/mbochs.c
++++ b/samples/vfio-mdev/mbochs.c
+@@ -1374,6 +1374,9 @@ static const struct vfio_device_ops mbochs_dev_ops = {
+ 	.write = mbochs_write,
+ 	.ioctl = mbochs_ioctl,
+ 	.mmap = mbochs_mmap,
++	.bind_iommufd	= vfio_iommufd_emulated_bind,
++	.unbind_iommufd	= vfio_iommufd_emulated_unbind,
++	.attach_ioas	= vfio_iommufd_emulated_attach_ioas,
+ };
+ 
+ static struct mdev_driver mbochs_driver = {
+diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
+index e8400fdab71d..5f48aef36995 100644
+--- a/samples/vfio-mdev/mdpy.c
++++ b/samples/vfio-mdev/mdpy.c
+@@ -663,6 +663,9 @@ static const struct vfio_device_ops mdpy_dev_ops = {
+ 	.write = mdpy_write,
+ 	.ioctl = mdpy_ioctl,
+ 	.mmap = mdpy_mmap,
++	.bind_iommufd	= vfio_iommufd_emulated_bind,
++	.unbind_iommufd	= vfio_iommufd_emulated_unbind,
++	.attach_ioas	= vfio_iommufd_emulated_attach_ioas,
+ };
+ 
+ static struct mdev_driver mdpy_driver = {
+diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
+index e887de672c52..35460901b9f7 100644
+--- a/samples/vfio-mdev/mtty.c
++++ b/samples/vfio-mdev/mtty.c
+@@ -1269,6 +1269,9 @@ static const struct vfio_device_ops mtty_dev_ops = {
+ 	.read = mtty_read,
+ 	.write = mtty_write,
+ 	.ioctl = mtty_ioctl,
++	.bind_iommufd	= vfio_iommufd_emulated_bind,
++	.unbind_iommufd	= vfio_iommufd_emulated_unbind,
++	.attach_ioas	= vfio_iommufd_emulated_attach_ioas,
+ };
+ 
+ static struct mdev_driver mtty_driver = {
 -- 
 2.34.1
 
