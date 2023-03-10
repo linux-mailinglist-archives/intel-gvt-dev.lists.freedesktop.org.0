@@ -1,54 +1,141 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 570326B33B4
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 02:36:47 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 132676B33FC
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 03:08:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 25DCA10E1EC;
-	Fri, 10 Mar 2023 01:36:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D3DFF10E05E;
+	Fri, 10 Mar 2023 02:08:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.ssheep.com.cn (unknown [116.228.68.178])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 58A4910E1EC
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 01:36:43 +0000 (UTC)
-Received: from mail.ssheep.com.cn (mail [127.0.0.1])
- by mail.ssheep.com.cn (Postfix) with ESMTP id 2ADF7487859
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  9 Mar 2023 18:05:40 +0800 (CST)
-Authentication-Results: mail.ssheep.com.cn (amavisd-new);
- dkim=pass (1024-bit key) reason="pass (just generated, assumed good)"
- header.d=ssheep.com.cn
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ssheep.com.cn; h=
- content-transfer-encoding:content-type:content-type:mime-version
- :x-mailer:date:date:subject:subject:to:from:from:message-id; s=
- dkim; t=1678356339; x=1679220340; bh=DN8MsY6q22RFBm8U+KpDGO8jM9R
- JwwmuuXnUrcnJH2U=; b=hvH1s5hGAfmZVrSzFsqyGHZN5mxePrmNHdxIxDzjk8K
- GvABKJofA33LgkFwZ5+HRlr6lOHqWprRTB+YvkRCPcOj919YPGonIITwMaS+Is+G
- B8ErWnW3J5fKIf07xTatNpmQYQ5rhv4zgIYPddJnRfwsLeL0rV8lAGtiDDRi0eOY
- =
-X-Virus-Scanned: Debian amavisd-new at mail.ssheep.com.cn
-Received: from mail.ssheep.com.cn ([127.0.0.1])
- by mail.ssheep.com.cn (mail.ssheep.com.cn [127.0.0.1]) (amavisd-new,
- port 10026)
- with ESMTP id F7EJbSQSNLWo for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  9 Mar 2023 18:05:39 +0800 (CST)
-Received: from fkehukay (unknown [117.28.218.219])
- by mail.ssheep.com.cn (Postfix) with ESMTPSA id 52A0083856A;
- Wed,  8 Mar 2023 17:03:56 +0800 (CST)
-Message-ID: <f67fe4e3e9d491c5d47ed15e267d94aa@ssheep.com.cn>
-From: =?utf-8?B?57O757uf5qOA5rWL?= <hr_quyl@ssheep.com.cn>
-To: "bingbu.cao" <bingbu.cao@intel.com>
-Subject: =?utf-8?B?57O757uf5qOA5rWL5Yiw6LSm5oi3aW50ZWwuY29t5byC5bi4?=
- =?utf-8?B?55m76ZmG6K+35Y+K5pe25aSE55CG?=
-Date: Wed, 08 Mar 2023 17:03:46 +0800
-X-Priority: 1
-X-Mailer: Vknpdcdjev Qnvdhlqr 39.9
-MIME-Version: 1.0
-Content-Type: text/html;
-	charset="utf-8"
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A775D10E05E;
+ Fri, 10 Mar 2023 02:08:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1678414106; x=1709950106;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=GCwAm5wmg6Vay/DMen71momYFINGfzlboKjujp/4bvM=;
+ b=V+FRzHqbQHg7aZRRAeZ7AC8VmTrvvQ3vUEwoWBPmGh0VyWNDUhWPn7xE
+ PeMb+kIqYoEwLBlwO3idhwq8i4dAJuAD0quAJltJHpqSXlQfKU2wWAhrm
+ MCRYIhZSMPzWy544XotLBIeWyVXl3j7ymDjCjnHQ9F4ZIUAXE0DAtttzB
+ RQ+fagfHOEptGdkS1Z6OH/yckNorNJlPW6i+TxtSuA9neaV5DjXpcNWXm
+ wVQ4j7/MUx3oHzmmcVUTHaYpxxk9Wdn0VHsCI8GF+xRxNwmYkeG4OVzIB
+ Sb2YfcqNJtZj0zqCL3VAwPCeRR2Fj4H/5YbGMs+loZ1bnkNQWlTXLEd1a w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="422892710"
+X-IronPort-AV: E=Sophos;i="5.98,248,1673942400"; d="scan'208";a="422892710"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Mar 2023 18:08:24 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="746538280"
+X-IronPort-AV: E=Sophos;i="5.98,248,1673942400"; d="scan'208";a="746538280"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmsmga004.fm.intel.com with ESMTP; 09 Mar 2023 18:08:23 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Thu, 9 Mar 2023 18:08:23 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Thu, 9 Mar 2023 18:08:23 -0800
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.108)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Thu, 9 Mar 2023 18:08:23 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=e04IaThj7+CYreN72BFXZKCzLtg6d1dx+oDoSJ1GEetdR0t6oqVFYbQGCyqepx+Thgnhtws2L7HxAv/gIFtbRGsde1B2Oi0ib2IkFzzOEP9kR76Jsq/o9v/n2uifjWWaJHsCX2oj3wHoRGfoqdUwqFh9gsu71JXZAx0M1RHVWKUZU6agbCoCRbheku5dmnPunIYDdiNYKfZHloKFZXWxK9jpRkzOLvzBdqe8W1/FgRRAxCKW01esfoopZrDbvFRfefRbz+uXz1Y3PV650SDMlm1VqK+2jxZAiB/GqnHsZ2klwhJttzTGDwyehEwpVioeq0hxz8B1RThC0Rpk6NSvWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0IY4kTV4e7D/VdwYeDHjlHdLGOgCw3vqH2qUbaXeNn4=;
+ b=Q/nk32/DN8UsKxo51iSknxKF5pGn4vhtPPp7BTHMwo7Wsi/5I5lPLXa45z3fYZvY6Bq8t9RVSllawwFyKPtKLszsWnKlTU1VmE7Mzgq+hlcFCaEBcmQkZl3drCpNl31UsE2h1qTZOJZTQnBKAR4SYFKFF+fO+9x6ifDXvNk2PcnU2NpIs+1P2NK9aNz2XijZvk6LB1TzrrtRBfBdyJJ1rTyEYtTo+YV8bWIjo8W6uUu/qy0ASZBlLBADLTceMgJv42hmnDWRzurp0YGuFOfmDaZSRCtw0JHNe3oPJBBPP8w65dntn9ln6PZrFGXxZ0aZnmsidnUs6e/VG0apW7N2RQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by DS0PR11MB8136.namprd11.prod.outlook.com (2603:10b6:8:159::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.19; Fri, 10 Mar
+ 2023 02:08:16 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::1aac:b695:f7c5:bcac]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::1aac:b695:f7c5:bcac%9]) with mapi id 15.20.6178.019; Fri, 10 Mar 2023
+ 02:08:16 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>
+Subject: RE: [PATCH v1 1/5] iommufd: Create access in
+ vfio_iommufd_emulated_bind()
+Thread-Topic: [PATCH v1 1/5] iommufd: Create access in
+ vfio_iommufd_emulated_bind()
+Thread-Index: AQHZUb/VKrDPi02EE0KOkFVtC1WCVq7zRkyA
+Date: Fri, 10 Mar 2023 02:08:15 +0000
+Message-ID: <BN9PR11MB52766F9DA462F5C7BC23654F8CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230308131340.459224-1-yi.l.liu@intel.com>
+ <20230308131340.459224-2-yi.l.liu@intel.com>
+In-Reply-To: <20230308131340.459224-2-yi.l.liu@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|DS0PR11MB8136:EE_
+x-ms-office365-filtering-correlation-id: 59c71b41-4934-4bbc-6265-08db210c4f68
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: +tww7JABCvIfkAgi9JuA6+yuQTLFongIffKp8nTyVvvK/JlyK9gfNx4JnqPPwxQHn0qeiu9bwhMkMFxOm9jXpnIj+PqhvKzHlxh/g7HiPKHOjo7cP+tmltbbCOVxPjx31/zWhhB8a7wE5v545hIPrmINVRRp3seQIPYdqZwC7lLybDBw4YBPl67Gf9UWqRqa2qtn9mIlw4HjHs5KEUzpTf0KANqT/35HVrY4UsJurnto/YFIZy/3zS++fkhofABXvHQI7i3zejO/Peu+9cKxzpU8/688fmpB/A4KFt7+TF2OrjnG7jBRycqN5QhGPNGWzz7ydynMCt9e4o9VW1VipjnY9aO+KrKgnnOjGm3VAJfC5nuIG6vN3aPNr/zn0pLLheiUSscfGUYl+lt11KyOpK1Q1GQ74aWyOg2RzCzM+PpuvKbW+1Qs3Brb44KzofEoqzu/at0XmhiX6k6NMocnb2DjZcEAmtX9gOHyZ1dMnpdNM30kdrxJkLr2vgnt29v9xor0GhFztoCG/wdutKZrmHBKKO2+qPXU3uLoVv1k7sNk0lSTsL/N6lm+ZPjrGfW/ejNYbFCcP9AnFinImhH41D0aB3DD/kzXgiD1ILzqPHvzo6hURTz4ClxgEIayJ4LDdeurxY+ZG7zatPEzS1R6vPu6Z7Lczn+9jFwohEAXSOmg4r04yv8YrjyfxNLRXO6fyRAqdC40CdNVxniobToi3w==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(366004)(376002)(346002)(136003)(39860400002)(396003)(451199018)(82960400001)(83380400001)(33656002)(478600001)(122000001)(55016003)(54906003)(110136005)(38070700005)(316002)(38100700002)(71200400001)(7696005)(6506007)(9686003)(186003)(26005)(5660300002)(52536014)(7416002)(4744005)(64756008)(2906002)(76116006)(66446008)(66476007)(66556008)(41300700001)(8676002)(66946007)(8936002)(4326008)(86362001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?lJyb4wB1WZpSfGvOadc+BJ5a6Xrof7nlOYw9OvTKvuguu2Fm88HShUw7Km/f?=
+ =?us-ascii?Q?ah8iTnBqQu8O0HgNXc8xtyoJIAnylvTAle6McoPy+lNQCbImgWiqPIi2tr+p?=
+ =?us-ascii?Q?LBa2yWESLFjbI1silpDcaUKODMx5PlLd8Qms5r91Hn87FzEkIlJSCT8W2Yi2?=
+ =?us-ascii?Q?tHgnVa4feCIYKXw8q/QgbPETiBBzVNhXD2tQSNRQ5D0lamdG9lW4RiO57B3X?=
+ =?us-ascii?Q?iRLzvmX4SSVm6HqP/03uAH0/Svb4wOXb/NA0W7JNMwm/w8KUKttF3JUv3YdE?=
+ =?us-ascii?Q?Nga9IoVxLM87ElaPVhW9dkDN0U2T8Jk+G46DIPc1k6qYJw4wdIp9W81Dp+o+?=
+ =?us-ascii?Q?452zRqPbXmv8csBvp09jd88GcbW5ZaWiFN1iYqZ5hrdGzmE00UnlHJUwzzWi?=
+ =?us-ascii?Q?n6aDA/7sbUOkBPgFsZxlc3Wk6sCjIpgBuBO/qDgc5zOLeuW1lxxC8M+AL/11?=
+ =?us-ascii?Q?DezPwu3VWLJdGkcnCtFN1f1nkK+nV2Z1IoiXceBLSGKwon3t42DjPURsX4eY?=
+ =?us-ascii?Q?acxMi56A2Xhj3lTXotYFlaoEU2Ekk4HFFDEmmLGhMMDd8OtWnbLPGi61Nfon?=
+ =?us-ascii?Q?tgvjDpYX/deggnWzIQQDvGfJHZlioPUHWwZeu2PNcgKU9ID9iWjNukh9QTrB?=
+ =?us-ascii?Q?WdwLcv/PBMAVTc6NE5As8mZmXAv0p+nDTb9VyYKZ4ifp6vIC72KjK/v+5iPz?=
+ =?us-ascii?Q?aWvqgUwpQbscwt3TloWPvOH3hiOQ1650VAKGN5XRMSALWewk8tDVS+AFA5Nv?=
+ =?us-ascii?Q?WZAufwYp5N1mn8+i07Y3ujEd2IxwPnFNKLSuY2BGhvnAZwg+8rCJzRxDHBKW?=
+ =?us-ascii?Q?T/YMLVYj48JZPL2tuo+TAhaRnMhgFx9U1Tjqw8dJOoBu620G0b6SH3mf0vQw?=
+ =?us-ascii?Q?hmGham7uTPJeYfVic3w5cPcT+3tUmYpQoB4hk2/G4Qoor0z5/PFXkFOb+dpb?=
+ =?us-ascii?Q?QH1XZhWUqtx0jXVqEK+U4zcxftbi2wUeJDLzXHnbhhK6hP5XSDRj5enEScK+?=
+ =?us-ascii?Q?Vy8GV2Ah0vmZMM84pCPSoSyj2sHK57BxeAYgC3axy5RZ6pZkqbVcOb+2sANx?=
+ =?us-ascii?Q?CT5SF60QYrDm//DoFiljsypocEA4IyXR7dVOLtkR0q/IpW23U80TbYL73HSp?=
+ =?us-ascii?Q?qlatxuaIXWGS6Fd00ANyzuE3Zuz7rYFL7TJcNgoDQ05HSghiUqhybnk/cRD+?=
+ =?us-ascii?Q?T6EPszu53XpZ2jDdlzOYBpnKxoFTrQywZtSersboqUZpgeQYXNowUq/zGXpJ?=
+ =?us-ascii?Q?c9WNdk8bDNhWJ8AbFWAfFlkYz2rkvKVHNDJszyhwu2fOI/zFs6eJ9aI5qqdy?=
+ =?us-ascii?Q?nVFfHpHN6neGVesQWfTkJJehmAZSM12VMbLRAaKV/XWfI+u01+nDblSq7H8O?=
+ =?us-ascii?Q?Otev7XPV72CTh31XkccBFht9tGvb8fi0WG9rGdZLbCTp6BqfBN25dTiP7zVR?=
+ =?us-ascii?Q?3gtp0i7rOPtG1QgMOT08eK+77xRnNfJhs5lunzrIVNqsCohPKe3WFkPtRPN9?=
+ =?us-ascii?Q?n1Zlr/i19zUU10pmlmcKKnQQLrLYU2ydgbkg5syaklEh67k4OCPYvr1mluNN?=
+ =?us-ascii?Q?WOqrEHOdlqbWKkBkLIBqApyPhfQexBi+6dSRubl2?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 59c71b41-4934-4bbc-6265-08db210c4f68
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Mar 2023 02:08:15.7997 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: E2zjjzNxla3iayJNyVmXtEPjwDWsvWcEAauNQXaNV2wkjQh2Rbscmp7OUOxt9V+QH1y3RNUyDpwcTqa6OvGe8g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB8136
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,167 +148,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "Hao, Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">=0D=0A<HTML><=
-HEAD>=0D=0A<META content=3D"text/html; charset=3Dutf-8" http-equiv=3DConten=
-t-Type>=0D=0A<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.18315"></H=
-EAD>=0D=0A<BODY>=0D=0A<DIV =0D=0Astyle=3D"BOX-SIZING: border-box; FONT-SIZE=
-: 14px; MAX-WIDTH: 100%; BORDER-TOP: rgb(204,204,204) 1px solid; HEIGHT: 67=
-5px; BORDER-RIGHT: rgb(204,204,204) 1px solid; WIDTH: 669px; BORDER-BOTTOM:=
- rgb(204,204,204) 1px solid; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 15px; PADD=
-ING-TOP: 30px; PADDING-LEFT: 30px; MARGIN: 0px; BORDER-LEFT: rgb(204,204,20=
-4) 1px solid; PADDING-RIGHT: 30px; border-radius: 4px">=0D=0A<TABLE =0D=0As=
-tyle=3D'MARGIN-BOTTOM: 0px; FONT-SIZE: 18px; MAX-WIDTH: 100%; HEIGHT: 525px=
-; FONT-FAMILY: "Segoe UI Semilight", "Segoe UI", Verdana, sans-serif, serif=
-, EmojiFont; WIDTH: 652px; TABLE-LAYOUT: auto; COLOR: rgb(68,68,68); LINE-H=
-EIGHT: normal' =0D=0AcellSpacing=3D0 cellPadding=3D0 width=3D652 border=3D0=
->=0D=0A  <TBODY style=3D"LINE-HEIGHT: normal">=0D=0A  <TR style=3D"LINE-HEI=
-GHT: normal">=0D=0A    <TD =0D=0A    style=3D'FONT-SIZE: 1em; MAX-WIDTH: 10=
-0%; FONT-FAMILY: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans=
--serif; BORDER-COLLAPSE: collapse; BORDER-BOTTOM: rgb(227,227,227) 1px soli=
-d; PADDING-BOTTOM: 30px; PADDING-TOP: 20px; MARGIN: 0px; LINE-HEIGHT: norma=
-l' =0D=0A    vAlign=3Dtop width=3D582>=0D=0A      <P><FONT style=3D"LINE-HE=
-IGHT: normal" size=3D2><FONT =0D=0A      color=3D#3d85c6><STRONG><FONT =0D=
-=0A      style=3D"FONT-SIZE: 18px; FONT-FAMILY: Arial; LINE-HEIGHT: normal"=
->intel.com&nbsp;=E5=B8=90=E6=88=B7</FONT></STRONG></FONT></FONT></P>=0D=0A =
-     <P><FONT style=3D"LINE-HEIGHT: normal" size=3D2><FONT =0D=0A      colo=
-r=3D#3d85c6><STRONG>&nbsp;</STRONG><SPAN =0D=0A      style=3D"FONT-SIZE: 18=
-px; FONT-FAMILY: Arial"><FONT size=3D3><SPAN =0D=0A      style=3D'FONT-SIZE=
-: 41px; FONT-FAMILY: "Segoe UI Light", "Segoe UI", "Helvetica Neue Medium",=
- Arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM:=
- none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(38,114,236); FONT-STYLE: n=
-ormal; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: n=
-ormal; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-l=
-igatures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px=
-; text-decoration-thickness: initial; text-decoration-style: initial; text-=
-decoration-color: initial'>=E7=99=BB=E5=BD=95=E6=B4=BB=E5=8A=A8=E5=BC=82=E5=
-=B8=B8</SPAN></FONT></SPAN></FONT><BR><FONT =0D=0A      style=3D"FONT-SIZE:=
- 18px; FONT-FAMILY: Arial; COLOR: rgb(0,0,255); LINE-HEIGHT: normal"><SPAN =
-=0D=0A      style=3D"FONT-FAMILY: Arial, Helvetica, sans-serif, sans-serif;=
- LINE-HEIGHT: normal"><STRONG>&nbsp;</STRONG></SPAN></FONT><BR><SPAN =0D=0A=
-      style=3D'FONT-SIZE: 14px; FONT-FAMILY: "Segoe UI", Tahoma, Verdana, A=
-rial, sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: n=
-one; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(42,42,42); FONT-STYLE: norma=
-l; ORPHANS: 2; WIDOWS: 2; DISPLAY: inline !important; LETTER-SPACING: norma=
-l; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; font-variant-ligat=
-ures: normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; te=
-xt-decoration-thickness: initial; text-decoration-style: initial; text-deco=
-ration-color: initial'><FONT =0D=0A      color=3D#000000 size=3D2 face=3DHe=
-lvetica>=E5=B7=B2=E6=A3=80=E6=B5=8B=E5=88=B0=E6=9C=80=E8=BF=91=E7=99=BB=E5=
-=BD=95=E5=88=B0 </FONT></SPAN></FONT><FONT =0D=0A      style=3D"LINE-HEIGHT=
-: normal" color=3D#000000>&nbsp;<FONT =0D=0A      style=3D"LINE-HEIGHT: nor=
-mal" color=3D#0e66f1 size=3D2>bingbu.cao@intel.com <FONT =0D=0A      color=
-=3Dblack face=3DArial>=E7=9A=84=E4=B8=80=E4=BA=9B=E5=BC=82=E5=B8=B8=E3=80=
-=82</FONT></FONT></FONT></P>=0D=0A      <TABLE =0D=0A      style=3D"FONT-SI=
-ZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif; WHITE-SPACE: normal; =
-WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(34,34=
-,34); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BA=
-CKGROUND-COLOR: rgb(255,255,255); font-variant-ligatures: normal; font-vari=
-ant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration-thickness=
-: initial; text-decoration-style: initial; text-decoration-color: initial" =
-=0D=0A      dir=3Dltr>=0D=0A        <TBODY>=0D=0A        <TR>=0D=0A        =
-  <TD id=3Dm_-2885313926795995941i4 =0D=0A          style=3D'FONT-SIZE: 14p=
-x; FONT-FAMILY: "Segoe UI Bold", "Segoe UI Semibold", "Segoe UI", "Helvetic=
-a Neue Medium", Arial, sans-serif; FONT-WEIGHT: bold; COLOR: rgb(42,42,42);=
- PADDING-BOTTOM: 0px; PADDING-TOP: 25px; PADDING-LEFT: 0px; MARGIN: 0px; PA=
-DDING-RIGHT: 0px'>=E7=99=BB=E5=BD=95=E8=AF=A6=E7=BB=86=E4=BF=A1=E6=81=AF</T=
-D></TR>=0D=0A        <TR>=0D=0A          <TD id=3Dm_-2885313926795995941i5 =
-=0D=0A          style=3D'FONT-SIZE: 14px; FONT-FAMILY: "Segoe UI", Tahoma, =
-Verdana, Arial, sans-serif; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0px; PADD=
-ING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'>=E5=9B=BD=
-=E5=AE=B6/=E5=9C=B0=E5=8C=BA: =0D=0A            <FONT color=3D#ea4335 face=
-=3DArial>=E6=B3=A2=E5=85=B0</FONT><SPAN =0D=0A            style=3D"FONT-SIZ=
-E: 14px; FONT-FAMILY: arial, sans-serif; WHITE-SPACE: normal; WORD-SPACING:=
- 0px; TEXT-TRANSFORM: none; FLOAT: none; FONT-WEIGHT: 400; COLOR: rgb(77,81=
-,86); FONT-STYLE: normal; TEXT-ALIGN: left; ORPHANS: 2; WIDOWS: 2; DISPLAY:=
- inline !important; LETTER-SPACING: normal; BACKGROUND-COLOR: rgb(255,255,2=
-55); TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: n=
-ormal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; =
-text-decoration-style: initial; text-decoration-color: initial"><FONT =0D=
-=0A            color=3Dred>(=E5=8D=8E=E6=B2=99)</FONT><SPAN>&nbsp;</SPAN></=
-SPAN></TD></TR>=0D=0A        <TR>=0D=0A          <TD id=3Dm_-28853139267959=
-95941i6 =0D=0A          style=3D'FONT-SIZE: 14px; FONT-FAMILY: "Segoe UI", =
-Tahoma, Verdana, Arial, sans-serif; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0=
-px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'>I=
-P =0D=0A            =E5=9C=B0=E5=9D=80: 91.208.250.24</TD></TR></TBODY></TA=
-BLE>=0D=0A      <P><FONT style=3D"LINE-HEIGHT: normal" size=3D2>=0D=0A     =
- <TABLE =0D=0A      style=3D"FONT-SIZE: small; HEIGHT: 115px; FONT-FAMILY: =
-Arial, Helvetica, sans-serif; WIDTH: 579px; WHITE-SPACE: normal; WORD-SPACI=
-NG: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; COLOR: rgb(34,34,34); FONT=
--STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; BACKGROUND-C=
-OLOR: rgb(255,255,255); font-variant-ligatures: normal; font-variant-caps: =
-normal; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial;=
- text-decoration-style: initial; text-decoration-color: initial" =0D=0A    =
-  dir=3Dltr>=0D=0A        <TBODY>=0D=0A        <TR>=0D=0A          <TD id=
-=3Dm_-2885313926795995941i7 =0D=0A          style=3D'FONT-SIZE: 14px; FONT-=
-FAMILY: "Segoe UI", Tahoma, Verdana, Arial, sans-serif; COLOR: rgb(42,42,42=
-); PADDING-BOTTOM: 0px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; P=
-ADDING-RIGHT: 0px'>=E6=97=A5=E6=9C=9F: =0D=0A            2023-03-08/17:03:4=
-6(CET)</TD></TR>=0D=0A        <TR>=0D=0A          <TD id=3Dm_-2885313926795=
-995941i8 =0D=0A          style=3D'FONT-SIZE: 14px; FONT-FAMILY: "Segoe UI",=
- Tahoma, Verdana, Arial, sans-serif; COLOR: rgb(42,42,42); PADDING-BOTTOM: =
-0px; PADDING-TOP: 6px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'>=
-=E5=B9=B3=E5=8F=B0: =0D=0A            Windows</TD></TR>=0D=0A        <TR>=
-=0D=0A          <TD id=3Dm_-2885313926795995941i9 =0D=0A          style=3D'=
-FONT-SIZE: 14px; FONT-FAMILY: "Segoe UI", Tahoma, Verdana, Arial, sans-seri=
-f; COLOR: rgb(42,42,42); PADDING-BOTTOM: 0px; PADDING-TOP: 6px; PADDING-LEF=
-T: 0px; MARGIN: 0px; PADDING-RIGHT: 0px'>=E6=B5=8F=E8=A7=88=E5=99=A8: =0D=
-=0A            Chrome</TD></TR>=0D=0A        <TR>=0D=0A          <TD id=3Dm=
-_-2885313926795995941i10 =0D=0A          style=3D'FONT-SIZE: 14px; FONT-FAM=
-ILY: "Segoe UI", Tahoma, Verdana, Arial, sans-serif; COLOR: rgb(42,42,42); =
-PADDING-BOTTOM: 0px; PADDING-TOP: 25px; PADDING-LEFT: 0px; MARGIN: 0px; PAD=
-DING-RIGHT: 0px'>=E8=AF=B7=E7=82=B9=E5=87=BB=E9=AA=8C=E8=AF=81=E5=BD=93=E5=
-=89=8D=E5=AF=86=E7=A0=81=E6=8C=89=E9=92=AE=E4=BF=9D=E6=8C=81=E7=A1=AE=E4=BF=
-=9D=E8=B4=A6=E6=88=B7=E6=AD=A3=E5=B8=B8=E4=BD=BF=E7=94=A8=EF=BC=8C=E8=AE=A9=
-=E6=88=91=E4=BB=AC=E7=A1=AE=E5=AE=9A=E8=BF=99=E6=98=AF=E4=BD=A0=E6=9C=AC=E4=
-=BA=BA=E3=80=82=E5=A6=82=E6=9E=9C=E4=B8=8D=E6=98=AF=EF=BC=8C=E7=B3=BB=E7=BB=
-=9F=E4=BC=9A=E6=9A=82=E5=81=9C=E6=82=A8=E7=9A=84=E5=B8=90=E6=88=B7</TD></TR=
-></TBODY></TABLE></FONT></P></TD></TR></TBODY></TABLE>=0D=0A<TABLE cellSpac=
-ing=3D0 cellPadding=3D0 width=3D"100%" align=3Dcenter border=3D0>=0D=0A  <T=
-BODY>=0D=0A  <TR>=0D=0A    <TD =0D=0A    style=3D'FONT-FAMILY: "Google Sans=
-", Roboto, RobotoDraft, Helvetica, Arial, sans-serif; MARGIN: 0px' =0D=0A  =
-  vAlign=3Dtop width=3D"100%" align=3Dleft>=0D=0A      <P =0D=0A      style=
-=3D"MARGIN-BOTTOM: 30px; HEIGHT: auto; FONT-FAMILY: helvetica, arial, sans-=
-serif; COLOR: rgb(42,42,42); MARGIN-TOP: 30px; LINE-HEIGHT: 20px"><A =0D=0A=
-      style=3D"FONT-FAMILY: pingfangsc-regular; COLOR: rgb(255,255,255); PA=
-DDING-BOTTOM: 7px; PADDING-TOP: 7px; PADDING-LEFT: 27px; DISPLAY: inline-bl=
-ock; PADDING-RIGHT: 27px; BACKGROUND-COLOR: rgb(0,100,255); border-radius: =
-18px; text-decoration-line: none" =0D=0A      href=3D"https://www.musefs.co=
-m/index.jsp.html#bingbu.cao@intel.com" =0D=0A      target=3D_blank><SPAN =
-=0D=0A      style=3D"BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDE=
-R-BOTTOM-WIDTH: 0px; OUTLINE-WIDTH: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: =
-0px; PADDING-LEFT: 0px; MARGIN: 0px; PADDING-RIGHT: 0px; BORDER-TOP-WIDTH: =
-0px">=E9=AA=8C=E8=AF=81=E5=BD=93=E5=89=8D=E5=AF=86=E7=A0=81</SPAN></A></P>=
-=0D=0A      <P =0D=0A      style=3D"FONT-SIZE: 12px; HEIGHT: auto; FONT-FAM=
-ILY: helvetica, arial, sans-serif; LINE-HEIGHT: 20px"><FONT =0D=0A      col=
-or=3D#999999><SPAN =0D=0A      style=3D"FONT-SIZE: 16px; FONT-FAMILY: Robot=
-o, RobotoDraft, Helvetica, Arial, sans-serif">intel.com</SPAN><FONT =0D=0A =
-     style=3D"FONT-SIZE: 16px; FONT-FAMILY: Roboto, RobotoDraft, Helvetica,=
- Arial, sans-serif; LINE-HEIGHT: normal">&nbsp;</FONT><FONT =0D=0A      sty=
-le=3D"FONT-FAMILY: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; LINE-=
-HEIGHT: normal" =0D=0A      size=3D2>&nbsp;&nbsp;<STRONG>=E5=AE=89=E5=85=A8=
-=E6=A3=80=E6=B5=8B=E7=B3=BB=E7=BB=9F&nbsp;&nbsp;&nbsp; =0D=0A      &nbsp;</=
-STRONG></FONT><FONT =0D=0A      size=3D2><STRONG>2023-03-08/17:03:46(CET)</=
-STRONG></FONT><SPAN =0D=0A      style=3D"FONT-SIZE: small; FONT-FAMILY: Rob=
-oto, RobotoDraft, Helvetica, Arial, sans-serif"><FONT =0D=0A      size=3D3>=
-</FONT></SPAN></FONT></P></TD></TR></TBODY></TABLE></DIV>=0D=0A<DIV class=
-=3Dxm_compose_origin_mail_container>=0D=0A<DIV class=3Dqmbox>=0D=0A<DIV =0D=
-=0Astyle=3D'FONT-SIZE: medium; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE:=
- normal; COLOR: rgb(0,0,0)'>=0D=0A<DIV =0D=0Aid=3Dm_-3499978041935168566m_-=
-5653079465086565780gmail-m_3901687820868390666m_5576524929020971952gmail-m_=
--8615160177482361843m_-4736921942792367710m_379028480499234083m_18566076005=
-6733463m_655411222892969431m_-6272575167125086473m_-1324319328271992595m_-2=
-256732138336661985m_-7398237257951753098gmail-m_1666573134513299317gmail-:x=
-f>=0D=0A<DIV =0D=0Aid=3Dm_-3499978041935168566m_-5653079465086565780gmail-m=
-_3901687820868390666m_5576524929020971952gmail-m_-8615160177482361843m_-473=
-6921942792367710m_379028480499234083m_185660760056733463m_65541122289296943=
-1m_-6272575167125086473m_-1324319328271992595m_-2256732138336661985m_-73982=
-37257951753098gmail-m_1666573134513299317gmail-:xg>=0D=0A<DIV>&nbsp;</DIV>=
-=0D=0A<DIV>&nbsp;</DIV></DIV></DIV></DIV>=0D=0A<DIV =0D=0Astyle=3D'FONT-SIZ=
-E: medium; FONT-FAMILY: "Microsoft YaHei"; WHITE-SPACE: normal; COLOR: rgb(=
-0,0,0)'>=0D=0A<DIV></DIV></DIV><BR>=0D=0A<P></P></DIV><SPAN class=3Dxm_comp=
-ose_origin_mail_container_sign =0D=0Astyle=3D"DISPLAY: none"></SPAN></DIV><=
-/BODY></HTML>=0D=0A
+> From: Liu, Yi L <yi.l.liu@intel.com>
+> Sent: Wednesday, March 8, 2023 9:14 PM
+>
+> @@ -449,33 +450,18 @@ iommufd_access_create(struct iommufd_ctx *ictx,
+> u32 ioas_id,
+>  	access->data =3D data;
+>  	access->ops =3D ops;
+>=20
+> -	obj =3D iommufd_get_object(ictx, ioas_id, IOMMUFD_OBJ_IOAS);
+> -	if (IS_ERR(obj)) {
+> -		rc =3D PTR_ERR(obj);
+> -		goto out_abort;
+> -	}
+> -	access->ioas =3D container_of(obj, struct iommufd_ioas, obj);
+> -	iommufd_ref_to_users(obj);
+> -
+>  	if (ops->needs_pin_pages)
+>  		access->iova_alignment =3D PAGE_SIZE;
+>  	else
+>  		access->iova_alignment =3D 1;
+> -	rc =3D iopt_add_access(&access->ioas->iopt, access);
+> -	if (rc)
+> -		goto out_put_ioas;
+>=20
+>  	/* The calling driver is a user until iommufd_access_destroy() */
+>  	refcount_inc(&access->obj.users);
+> +	mutex_init(&access->ioas_lock);
+>  	access->ictx =3D ictx;
+>  	iommufd_ctx_get(ictx);
 
+this refcnt get should be moved to the start given next patch
+removes the reference in the caller side.
