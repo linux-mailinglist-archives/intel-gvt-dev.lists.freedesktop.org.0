@@ -2,111 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBE6D6B4AAB
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 16:25:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 728A46B4BB3
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 16:53:44 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BD20F10E988;
-	Fri, 10 Mar 2023 15:25:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 44D5A10E98F;
+	Fri, 10 Mar 2023 15:53:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2060b.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:7e88::60b])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2CE8E10E99F;
- Fri, 10 Mar 2023 15:25:41 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=S0CN7mP5+WNCFST7CxfvpUbNL11H6aLrMcU7G3XU61rdCW/g/wgN2XaCmKcRF+PlJL7SjGyX8xBiL5jVuBz0LaBw5exZt+Kgx6uoW0T/pgdq7s+MJ6O9UTCDD1/O9bLDDM0bgqpiHRVIl9S9jQ6I0z1UB/3tyRMSnKd3CdfPiyGCw90L6wHAs5iz6XMrRIeewJwMNjXJOegNK9uHyr+HlZbTG3VPnfhGt6IQg6Tq7a93krmEnyCC+ELLHNe7EouSGHHYSqwZPpKu39MPITylhKPBBBaw3TzXZ3IrXsVehfGuJGQYIX67wehdzjE1OjZLVTUpd6SSEsizLhoRpikJow==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CIGSujiWuMkSLXfEsClCyCOWISD0dhpQFnViay6r14A=;
- b=jSOcsu632cUz0urHbPMYJMLi6p7dZpq1aHSuDYMzwT2xZuEnmo3/BePg0/XMX5qqvuNpH67JiDUilW1Zvdkrvl65/570dYzJ6lYMZFw87LD9KlNEJUgJ5dPEkQ1jbNlUUFdSQuy9i7Npj4RFJqwTULvevQgF94jTEoSfGOqRQGiA3LU1CJM+0ePCQtYGbrYk54J/xq0mdp6OQGY8X4DuXzfDx2YVX6k0AVVriKni3Uf2sFf8uJGytcTZJR/N5Rnj07TIONdOSwnmESqkQKhWlovcjDP8wIp87y02IXCFFHKT5rg/6aMEtSux2PRq/Wmft9CSdUoq+MgCL256Sp6bIw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CIGSujiWuMkSLXfEsClCyCOWISD0dhpQFnViay6r14A=;
- b=rQ2VwEScV+hi7iBoBGzjzK5hc9Si7Y/1KNLC69/7Le6jPdI74chQcreOIgXR4puvuNtn1OHkbIJKTfLCg7TyczDBc4LU4cpJu7Xi5Tifa/RMn4PQbiYI3dMgbJKtpVFNR/Jw/eYSQF9rWHWK/6HsXDoBn4d8IEyFfMY6BV57YB47HeHCyj+LiVO+446HoOAN3/OyBNZpHSvI0Vj2aX/nrWFwq0S1TSKyBFsFtWkGma02+Y4BTSP5AnKxYmGHNKKKjDpcd2zUf46hmchGQaDEUPkizLzYkgcL/1YxD+gBLC5LtU0oPakptNNjRZIUqY/37+td2rX8vzlGJlbH79wxKA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by SJ1PR12MB6052.namprd12.prod.outlook.com (2603:10b6:a03:489::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.19; Fri, 10 Mar
- 2023 15:25:39 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1%3]) with mapi id 15.20.6178.017; Fri, 10 Mar 2023
- 15:25:39 +0000
-Date: Fri, 10 Mar 2023 11:25:35 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v1 5/5] vfio: Check the presence for iommufd callbacks in
- __vfio_register_dev()
-Message-ID: <ZAtL7/Tpa+bD3IUq@nvidia.com>
-References: <20230308131340.459224-1-yi.l.liu@intel.com>
- <20230308131340.459224-6-yi.l.liu@intel.com>
- <BN9PR11MB5276BA4E1FF1345433FB8D338CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZAs419G/RNoEgPxq@nvidia.com>
- <DS0PR11MB75299B3370F1AA71D7993895C3BA9@DS0PR11MB7529.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <DS0PR11MB75299B3370F1AA71D7993895C3BA9@DS0PR11MB7529.namprd11.prod.outlook.com>
-X-ClientProxiedBy: SJ0PR13CA0045.namprd13.prod.outlook.com
- (2603:10b6:a03:2c2::20) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+X-Greylist: delayed 323 seconds by postgrey-1.36 at gabe;
+ Fri, 10 Mar 2023 15:53:40 UTC
+Received: from mail.bitecvs.autos (unknown [45.13.189.42])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 99BAA10E98A
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 10 Mar 2023 15:53:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bitecvs.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=cvs-support-updates@bitecvs.autos; 
+ bh=Iqo2fOBhJnDTPtosTlXBW3y69o0=;
+ b=j5GI8/zKFjs6SKX979P3VDSv3WUqR5kogc0HfRDvYSvwjBm3ksquP45QdUaVfq0ttRfpCuiq/hLZ
+ XGhw5bzpT8N9yKHZ9kjf/Dz3mIDl9hNjt1SQhSfxkJgh2KeAIWl85nI15YUtt384vYex5H4HpHnh
+ SYm82IVJIMKixynZydM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bitecvs.autos;
+ b=iPIFhC35nYseufXSJonbZ4scFnkibKyL+97SY2gpQiw6Te+KXZ2exkeOz1n6QywoGLsbWgwVkmch
+ PcXhmTu5HM0yuUpYYLlAwSBkQ6u2xygUiG3d/tzMB8vtkEwtVvkoYyepkZzcPUmZ9BFueU5uoZRD
+ Aof0PZKSkEuvFK2PB8c=;
+Received: by mail.bitecvs.autos id h1d9880001g5 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 10 Mar 2023 10:42:36 -0500 (envelope-from
+ <cvs-support-updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@bitecvs.autos>)
+Date: Fri, 10 Mar 2023 10:42:36 -0500
+From: "CVS Support Updates" <cvs-support-updates@bitecvs.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: We have some exciting news for you
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SJ1PR12MB6052:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6a6fe510-e4dd-4fe2-a56a-08db217bb3f1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 47uddFoOKfCRrW6F3xRkzpC1Z0JH2fQ46EIe5l1yx7yc/E3baeyi/V61VBWPkMOxqWW7RPDWm8o/f/LYEEOkzdZLFjNKYdTDZdqXPtKnHOPuFOJY2njEutUegh3zbXNBkf22/P8S5Bc+6N3yhfrrqkCz1mkl2PUIyU25WTDmTxWhRH5WVa+4Xp6nJeZ4NHZURHXk08AFocvs+2cIyT2s9XDFVDx8xZyclpAqWYE9E+8l6vWgvs63sg92QnHncUzMMeAasnUWPSZCmKBhU/OfVax5o5Ltm2lNaS/Ou7ZPCwyZGfWAaI14IW1pfyj3oWVAbDx5q8FyCQp0IkYqLoGR2mE22OGYRORsBF1t9SlZfhESBmzAY+E634h5M5N3PwiWM41zFVhOYMEgUfuWTBX+I0b7AYHT6BK+hmTnKkLlur5HFaXchP0h21JqbKM0sTCamwQP2UhyGvRpeIR6PWiUimvrcrJiJIG7K+AhhO2nHHzi9SNSiOhfF1piDzHZ5sg5pzPRYkGLEChfeqyfbViNUxLbHRWHlBAfiQbHPFs/ug+QmQLTzrUGEkpaea8SHBSbNiOiAsZz4yhd6WTOjedguUuuhZe1UxO2lY9/VUYcjzebSWXXg5YUa7JL4MWv8dJsASlui2bmBDqjtcSH05YdRw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(136003)(376002)(366004)(396003)(39860400002)(346002)(451199018)(36756003)(6486002)(186003)(6512007)(2616005)(26005)(6666004)(6916009)(5660300002)(4326008)(66556008)(8936002)(8676002)(66946007)(66476007)(7416002)(2906002)(4744005)(6506007)(38100700002)(86362001)(316002)(54906003)(478600001)(41300700001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?yhzyCa6+oaJ9lwF3QlekhL0yK0tSH0KfPvfXB3noIjLVZjpxaa5DWXptBaKX?=
- =?us-ascii?Q?yN7wV02HVwh4g5dxWuyadqjEjSz7ILtlFUHQm5nMJelFjmFvSyiq9/fyxm0q?=
- =?us-ascii?Q?9meKL8mCf9clpniOCDSUUC2/0SHQ8lcLYHl0wOB3eDMu+M9swOwjFCnwf9p+?=
- =?us-ascii?Q?p1D5L2gECZwKlHM1bfHD2aOSZ1eIXq58unr2ER96+1UvxD+TLE5v3E/tM68i?=
- =?us-ascii?Q?FboTCzqcQyDpa/rOAcjnh8vwdEIH5l5pS2uTXDbVskI8M+SOEFCteA8P/n1X?=
- =?us-ascii?Q?iNh6+lOcKpBa6/H03qVfRZAPfE2ss5j5P+cTUzFIU5ok7QpyDAf16YPWbnGw?=
- =?us-ascii?Q?AAiTD7Neh+vBLMQMijFZ1rPOl+MbcndxD7gzXDJ3bpqAQtjVof3JpsZbqP4A?=
- =?us-ascii?Q?eA6aCJzR30EkyDe6kv8I9XQPIUSc88QjirN40rFgAgnvSIUt+T/e1tAK7ZJR?=
- =?us-ascii?Q?0UgtNvooz4MWbnwWxEPNBpVlVUKW3OJGm5/nYuAztlsIr1WXOa0zfefA5Vcf?=
- =?us-ascii?Q?Xx2X9I6r52vfjaTHFOJC95atsRuL5LT5/Vyc3XI41ijtfcCKgaZlZbpMFrst?=
- =?us-ascii?Q?h/UniK3/9VY77qj+etYwVyCuEkyWs8wzVMl7KKFd/tmcVlGU0YRO6jimZD6H?=
- =?us-ascii?Q?0e6fXgiqNh5Q4MMEYktOVazlSsdfiUhdZC3z4ZpoMXwLeZQbqgn7HVUZY+LF?=
- =?us-ascii?Q?VTaQwrA/8zQKkuziaBF41qkWp4lQuPjlVdzJjAssfmakbjlvTe3H0DXoePl9?=
- =?us-ascii?Q?uAcQiBWJOSmVcWaQZpzdFYk0L4bzHC45bNu6PzuY+yLq8fS5j2wjBK8BBPiH?=
- =?us-ascii?Q?r2VoZH1F+u5X8g6PrH9KfjuiIEud3Y0+Vrc8a/71D2tT3zG8D4FHn/3IQf6R?=
- =?us-ascii?Q?lVDpwP3Q9Hn3bxVr/XqR42bcJ5wO1Dy81+EXyIHrd1CF2NxUHgVYovajcSil?=
- =?us-ascii?Q?HANfL2CbvwAY1+2BKWFgJl5w1sfWtl8S2hq3XVIjiZAwsDbA60cf4ZqWMgsj?=
- =?us-ascii?Q?dJemjnwirXn62cP4w7ufB5p5SI9RC44F0Htq7k95O1Pekuh/QTkR8wBlOISi?=
- =?us-ascii?Q?UJJoXx0siSZc8J9Hr32gjhk6VVY9FdJxl+0+Bca9kYT8qUnvDkdw8xCYGy/n?=
- =?us-ascii?Q?ktnQDxhUNpMyPS2qmZ8gprnVdLONaIEtdkBNPjOFKJR6silBqvbjwXnEIhCW?=
- =?us-ascii?Q?zBuF3EvJvOAibTZQ4uhZezboipDSL53Zq7aEU8a5P8TREp6fKpXrME3IAYG7?=
- =?us-ascii?Q?2ri4sw/Vf90KmjDNTmfS3AzAS7WXpb3ov1y8z2iGUrxpftEPlgffdfYfYwXa?=
- =?us-ascii?Q?iqhjcF2hYygcVU3PYxgf5Hl8pXfNjGKjZi7R2ap0814hG06xag+CQjlqi+nq?=
- =?us-ascii?Q?mJ8mzzBZCD/33lsIfE+Cy0Kt5GWsAL3bKIQe8t5vv71pn0o+0tl0PRkv/D5R?=
- =?us-ascii?Q?ohXmmzDtdEo4MdeqZp2STS2fOnFvvLKVpW/ZUzcL6Q73PU2KRIUofiniiv+i?=
- =?us-ascii?Q?/ROZg5+mR6zTIvH7Ba995rEaCb1K583xPaZw7sAYwdJhjpFuCVWfHO+uWIXd?=
- =?us-ascii?Q?YtKSjp9UvickieBjFCCGQJPeCUe0gO2FONd8I+SD?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6a6fe510-e4dd-4fe2-a56a-08db217bb3f1
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2023 15:25:38.8740 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: atEU5mf2fDoROKcHK/VQ8KXZP3/AuLjEwk88d9bn65foQTkLS1IgVoK1WHLFhBok
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR12MB6052
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_769_1826327368.1678462928127"
+Message-ID: <0.0.0.55.1D95366F011A424.4A361F@mail.bitecvs.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,38 +50,114 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Mar 10, 2023 at 02:12:21PM +0000, Liu, Yi L wrote:
+------=_Part_769_1826327368.1678462928127
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-> > The ops are NULL if !CONFIG_IOMMUFD. The previous code was OK
-> > because
-> > it checked for non-null bind before demanding the others be non-null.
-> 
-> Now we want the no-dma drivers to reuse the emulated iommu op set,
-> so if CONFIG_IOMMUFD==y, bind_iommufd/unbind_iommufd/attach_ioas
-> should be non-null for all the drivers registered to vfio. Is it?
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>02031023</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <header> 
+    <div>
+     <span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; font-size: 110%; text-align: center; font-weight: 900; padding-bottom: 4%;">A SPECIAL OFFER FOR VALUED CUSTOMERS</span> 
+     <div>
+      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; font-size: 200%; text-align: center; font-weight: 900;">CVS</span> 
+      <div style="max-width: 18%; margin: auto;">
+       <a href="http://www.bitecvs.autos/tinge-resurgent/a626GN2R395A86jo13e4fk0blw1286F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQPQnme6g1rTT06eMwDzX" target="_blank"><img alt="" src="http://www.bitecvs.autos/Macedon-comeback/6845a239T5a7haS11u4f0do1286Q36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPQnme7Aq1s0lV5ljwDq" width="100%" /></a>
+      </div> 
+     </div> 
+    </div> 
+   </header> 
+   <section class="goldecane-fingo"> 
+    <div>
+     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 145%; text-align: justify; display: block; text-indent: 5%; padding: 3.5% 0%;">We hope this email finds you well. At <strong>CVS</strong> Pharmacy, we value your feedback and are committed to providing you with the best shopping experience possible. That' s why we want to offer you a special incentive for taking the time to complete our customer survey.</span> 
+     <div style="text-align: center; padding: 2.5% 0%;">
+      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: inline-block; font-weight: bold; font-size: 80%; padding: 1.5% 2%; background-color: #e4e4e4;">For completing the survey, you can receive a $100 Gift.</span>
+     </div> 
+     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 145%; text-align: center; display: block; padding: 3.5% 0%;">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers.</span>
+    </div> 
+   </section> 
+   <section> 
+    <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; text-align: center; padding: 2.5% 0%; font-size: 120%;">
+     <a href="http://www.bitecvs.autos/tinge-resurgent/a626GN2R395A86jo13e4fk0blw1286F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQPQnme6g1rTT06eMwDzX" style="color: rgb(188, 143, 145);" target="_blank">Take The Survey</a>
+    </div> 
+    <div>
+     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: left; font-size: 80%; padding: 4.5% 0%; display: block; line-height: 150%; text-indent: 5%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.</span>
+     <br /> 
+     <span style="display: block; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 80%;"><strong>Best regards,<br /> <br /> The CVS survey Team </strong> </span>
+    </div> 
+   </section> &nbsp; 
+   <hr /> 
+   <footer style="padding-top: 20px; text-align: center; "> 
+    <address style="font-size: 65%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; "> <p class="unsubscribe"><span style="text-decoration: none; ">To dispense with communication,</span><a href="http://www.bitecvs.autos/8275s2C395M8yW613Ei4f0chr1286W36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQPQnme6Mz10tj6ayqw0D/contaminating-Urbana" style="text-decoration-line: none; color: #000"> <span>Go-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font></font><font class="footers"></font><span color="untried"><font face="runoff"></font></span><span style="subsidiary"><font title="multiple"></span></font><font size="bushel"><span class="portage"></font></span></p> </address> 
+   </footer> 
+  </div> 
+  <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;"> 
+   <tbody> 
+    <tr> 
+     <td align="center" style="padding:0;"> 
+      <table role="presentation" style="width:602px;border-collapse:collapse;border-spacing:0;text-align:left;"> 
+       <tbody> 
+        <tr> 
+         <td style="padding:40px 175px 30px 175px;">&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td style="padding:36px 30px 42px 30px;"> 
+          <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
+           <tbody> 
+            <tr> 
+             <td style="padding:0 0 36px 0; color: #153643;"> <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">&nbsp;</h1> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
+            </tr> 
+            <tr> 
+             <td style="padding:0;"> 
+              <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
+               <tbody> 
+                <tr> 
+                 <td style="width:260px;padding:0;vertical-align:top;color: #153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img alt="" src="http://www.bitecvs.autos/8f95g239t5v7raS12z4Nf0er1286n36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQPQnme5G1V0t6WqjOwD/forcing-automation" style="height:auto;display:block;" width="260" /></p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
+                 <td style="width:20px;padding:0;font-size:0;line-height:0;">&nbsp;</td> 
+                 <td style="width:260px;padding:0;vertical-align:top;color: #153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&lt;td style=&quot;&gt; 
+          <table role=" presentation"> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <tr> 
+     <td align="left" style="padding:0;width:50%;"> <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">&amp;</p> </td> 
+     <td align="right" style="padding:0;width:50%;"> 
+      <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;"> 
+       <tbody> 
+        <tr> 
+         <td style="padding:0 0 0 10px;width:38px;">&nbsp;</td> 
+         <td style="padding:0 0 0 10px;width:38px;">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.bitecvs.autos/Gershwin-clustered/8a06QN23N95nz8Z512uZ4f0fs1286A36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQPQnme7O1uSD0Q6nPUwjD" alt=""/></body>
+</html>
 
-Yes
+------=_Part_769_1826327368.1678462928127--
 
-Jason
