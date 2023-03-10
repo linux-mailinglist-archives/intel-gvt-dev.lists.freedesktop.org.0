@@ -1,43 +1,108 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E267E6B4D30
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 17:37:39 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F95A6B4EB0
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 18:36:31 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B7DC810E21C;
-	Fri, 10 Mar 2023 16:37:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5FB4310E02E;
+	Fri, 10 Mar 2023 17:36:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Fri, 10 Mar 2023 16:37:35 UTC
-Received: from mail.blessy.autos (unknown [45.13.189.51])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5FC7310E21C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 16:37:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=blessy.autos;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=canvas.prints.discount@blessy.autos; 
- bh=EmAibQpZRNEhi0Gg/2BAHvvU4sU=;
- b=NqP36X7LsPxL+erH+MlLiWTHbEGYgVxHjIN0+Vg7v7REuwFLvfAwnwkwO1t1VYWeRnVpiErh9S6c
- Ni6hmUB3bOqCIgqiwtNOEwuLu6SoDYcRpNq2VyGlCKF2ye2uQoUkYpo4Y8yfuGeL2iIAP2haJCFY
- tKQ0yMrKbkiNKVst+N0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=blessy.autos;
- b=d6ryu0AEa/LyBQCpIasV3ASEWCoV6SQ5Q0P7n6iCzwVdEuz3COuLx5V24dfMh0Wnc5YwYcxA0KmC
- LqR1OQ2oeR1pL5FJvUarcxKDXbOXrUZWVwb+vJA1ciSY1IwY6TzMwScLIbsIMlJJi1ICz4hebFJt
- xqwvdISDFsOiOrTWZ7M=;
-Received: by mail.blessy.autos id h1decu0001gg for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 11:21:45 -0500 (envelope-from
- <canvas.prints.discount-intel+2Dgvt+2Ddev=lists.freedesktop.org@blessy.autos>)
-Date: Fri, 10 Mar 2023 11:21:45 -0500
-From: "Canvas Prints Discount" <canvas.prints.discount@blessy.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: 11x14 Canvas only $9.99 ? Don't Miss This!
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2042.outbound.protection.outlook.com [40.107.243.42])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9506D10E02E;
+ Fri, 10 Mar 2023 17:36:29 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=iTL1kAFpleNRm1CJyotixKekLNuTXXxVDyoHZV11lDA4Bgewz419LWUEyO9i+US856AkMdJ1TJp0/ZmvyvMSwFFAk2R/M9em6CX1SlLAu3G7mSg+NPMQcbckLGknM9FSorFjCeB9q70by4WvL8CtVBRlpSTfHlSFsyLpZco41OUKqijiXmp0326UUcNhf3/PBJy1ZY0uYyPQ2RvlTmwvpfWzsiNDw2sfQN2Xq/SQgL30jhf7FfvrxkmpS6/5g0CJgjFuTjmOnDajPEIj0KA7dYJFTkaPXI8xhAt6aFFnkb/dxSKdlyaaVb30IOZfimr6stpfTRYMFaUwvHpTbEL4UA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zmQls6YfjG+90MMdGh0L/Y72YVkgxd9wiiKpmPwQBLM=;
+ b=Wm9qGBkOPJLdsG+NjxOUhd/S5Pb58zW0VBAyEill80SAYikAvk1/C/z8O59qTPx+Rf1QhDMKIAhW8FAX9eQFokw87fUMSwYKaOSJ84fZQzrG8O/zSfFV8Ph3YRdctuXv3ifBqNaE7asVS3Wtw6JBea/q7xXnLTOmaCOaZ5KZs+kzb1NgJj688J5PSkoWkxWvcf7LjK4ho6CCY9BxvvXGMQMTr2f4qIpNPvTFf0uFnXFpecNQqG1/qaUNPsR0keuQ4DpnOnX+WDcVjan+XDZ4LpBwmGLgXvbvQStETj7obtJo4n6mexDfqhohmfu7AT4esxxNSybKjS6F7E3XKEKwhA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zmQls6YfjG+90MMdGh0L/Y72YVkgxd9wiiKpmPwQBLM=;
+ b=pcotqcTU0ekEQC+XfX0Thvo4t7Jk7d3vAclBO+/+jp24Njo8SuOxy4IkqPqbZ5YliH0Ax0lJz6OmfjhKdE2wbG5Gbf1cdlKhhfGos897H0/jKxQ4eNgncdQ0zIaJCkuBAajEipGtGd81gnLPFc1ddWMQ66i4O5nfNCVfSe6lc1435g49ntdAud4Xfxc96ZI1Z1vPxOQQLZYsLlcVszIaoyJRn1NEiJJCKxsXtDzSSYzTfPPR2dYip9g+n4EX7QvXkDA5JmIfmaCo68jDnFPTButI1hGqjpdzc09hj9sEml2Gyt5aeOOTJsq0Cjc0XvpTDDR1ieCzR/V1oviU2oX4pA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by SJ0PR12MB6734.namprd12.prod.outlook.com (2603:10b6:a03:478::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.19; Fri, 10 Mar
+ 2023 17:36:25 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::ef6d:fdf6:352f:efd1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::ef6d:fdf6:352f:efd1%3]) with mapi id 15.20.6178.017; Fri, 10 Mar 2023
+ 17:36:25 +0000
+Date: Fri, 10 Mar 2023 13:36:22 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Yi Liu <yi.l.liu@intel.com>
+Subject: Re: [PATCH v1 1/5] iommufd: Create access in
+ vfio_iommufd_emulated_bind()
+Message-ID: <ZAtqlnCk7uccR5E7@nvidia.com>
+References: <20230308131340.459224-1-yi.l.liu@intel.com>
+ <20230308131340.459224-2-yi.l.liu@intel.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230308131340.459224-2-yi.l.liu@intel.com>
+X-ClientProxiedBy: SJ0PR03CA0168.namprd03.prod.outlook.com
+ (2603:10b6:a03:338::23) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_46_45060432.1678465286021"
-Message-ID: <0.0.0.5.1D9536C686109F6.512E14@mail.blessy.autos>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SJ0PR12MB6734:EE_
+X-MS-Office365-Filtering-Correlation-Id: d9a80d86-bb16-4685-c386-08db218df8cb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: stZ7A6x2+AIuZ6vxHjlfFpQqdZDEklb5yThD8f8sDnFwoum+aQPviIOii+QUpVBpBidtOATGu+kiXRxm6YSMlfSsaRsNzztFgPgbiQk00y/b9Pm+CLL+z5SnXchF1ecRr2YBoZZCHYeTcyzMCdEnazRacjUsOkxDAwlxh4GQKC0KaaG0o8ZKg77zMVg4+pf94xQtpq9Ie3MJSyeIM5EY+zBB4/lPRd4MSBumSxuPtLM28zlZ5TlkO6YjFwUiJ7EOOiOqvckYh9pvcOG6W3afau6klNpKqZ97py3CTTpbediP0UBpbPx2CCDxdWy2xJ+jbN7s0eyW/oENvuywraL361kYAPTUERAcyqmaxgPbvIt22hVdYF3O6Ov2ZgCVpRXsqFY+UhXgrobakKpj2+bzRtdFY1Nh/dl6vaJaiPIuy/trA/6y9QcY64qQhqJhanNhpQG3dZQl9au72zyc7mANDnsIy9kDyKOBdtcMK3gjWfoyAmEjCZwga+gR9t/2I36CLBFQYN3ehV+e2fByFJYbGGWqJqD2G075iCpviPXLef6oliyQYa3kkEV5IpyZhTfmSBppPlYNf0LBXtGpotDYK0Av+ASxzlhfbKBCM0lFhu74rOIR6puh5MMKUBkSXQj6yAa7x/tDwJ7CNBYc6GYfyg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(4636009)(366004)(346002)(39860400002)(396003)(376002)(136003)(451199018)(316002)(36756003)(38100700002)(6512007)(86362001)(26005)(6666004)(83380400001)(186003)(2616005)(6506007)(5660300002)(7416002)(6486002)(478600001)(41300700001)(8936002)(2906002)(6916009)(66946007)(66556008)(8676002)(4326008)(66476007);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KHe13wVoA6plMqCCBYimpAIU1EFcwxKn9roCwmCFMS16wZ3R8C4+lpYdGgrk?=
+ =?us-ascii?Q?jB0arIxFQ7Rpny5whJH49qvLLULKE/EbOjel0u5F1XAB9ncvcZP7ar6HihPv?=
+ =?us-ascii?Q?GmlAwremr2rrGGpq5SJ7ZHBDeIC/5Fn2SpyFnbNkxo1WJCrqqgQ7mmD+fZ00?=
+ =?us-ascii?Q?8hVapMe2Z9W1iONSUC5bnheAM1ecba01PVhjcV5XErriVsVDvEMH9w8LKccF?=
+ =?us-ascii?Q?kNrLS/c4GuQy6b2NYSuZefVde4yGw9IzuNlbgNASm5HrMwhv1aeiFU99xzRm?=
+ =?us-ascii?Q?/1YGUp2WAaQKuqbUKiJWO5Mi/GbUi0ta6lXvc3miEPXhLNpbj3Grvg8B0V8j?=
+ =?us-ascii?Q?h8MS1uEduKai3/FQFKBk4rJIUSo/JJYbrQwS5fjJ7xT6GwP8rmoOUy0pkRVC?=
+ =?us-ascii?Q?u1dGMIKsxQUp+jj4Nl+NpjikDBqHKLRbFioOhYsL/hcqgCJndHVNjnvdfyEx?=
+ =?us-ascii?Q?WfAOqI7HuIOJfVnzGoBOFh52EBCV4Ok85GlOvMPt5FoRhxgaw7+h9qD5d67P?=
+ =?us-ascii?Q?51zaM11lfAeK8orzUKgfWx9ofI8ZvAvLKheEZvbhOUV1mbdBeAq/JzhKp/a0?=
+ =?us-ascii?Q?aG7ieAI08Wn4cDcFFZBA25vYOMmbFiNJ/N1YCi2r45OhDusZfHTpTlzDGfQm?=
+ =?us-ascii?Q?o//yVsZp7AUjQsAX2J25b6EMG2YYXDJ6BeaLnJRUXQYg+LIiTMr1p/ilD78B?=
+ =?us-ascii?Q?1lHJwwuduH+Zwq+ZXoSR1/aQZ27qaL5gPwuNzJIy4Z7/3qpjPJvLIldMe+4q?=
+ =?us-ascii?Q?U8tFf+birep7pV7XV9p1wzXOLYP8G82zY+1QegUhpheDU20O0g1LLBD3HXKR?=
+ =?us-ascii?Q?75Eor2n4vSioNjxKunvpQwXwdzyCNF1LBXC7tigOROs+YtSPTTA3F5sNdQ7d?=
+ =?us-ascii?Q?bOT+QmCzXWq4t2Uw8r9rX/hsAk5SDlIStXaOQMG45yWj9t9E9I9WKeH0pLNW?=
+ =?us-ascii?Q?FacKBmehGSBgIMELbjklpkAwdjsecsdwtgp0kVhB5JXHYJB+wJ75gtixxvgu?=
+ =?us-ascii?Q?FGtYBd1oBHV896UNPInejifgOf2REKWge+0YHPZkJBzAs46fVe8d9xUgu8Jm?=
+ =?us-ascii?Q?Sk+MjeE+BPpHIaNg7eQnQXzXBhls27G+1FrWVSA6W1qJY5ESVoudyjzwX3TV?=
+ =?us-ascii?Q?UHuPyIJWlzf52Eb6OpVXT1SIpTNQGOCj6cjPrSW/wPIolZtH7FbPJJ1EmPqT?=
+ =?us-ascii?Q?/uM56FaGVlGdHwc1ZN0rHv/e7AL+ha78PbeqLUeHoFt+IBmKe1A06xSlWTix?=
+ =?us-ascii?Q?XqKwibhG5w3SEaFl0bim7yAhVwa0jy7EQ2/y8kyV3ApnmN/CTeqSdIr7aEMQ?=
+ =?us-ascii?Q?igFUcS1mt+KjsbvfTBB2vq3Un6ddxwa6sEZ+9eUaDjktyTCr3oBHGBlFV+Mc?=
+ =?us-ascii?Q?y6eykW8quVgEANlJJ45TFyZ7UUZgH5jxF3JTULyFm/y6CUEbQvEEc3bRrvxD?=
+ =?us-ascii?Q?bh+09ATHJ0szghTGDvFoZO32UBJfzSrQ28LfjUBKILGgPx+2tuaq/x9R6/iY?=
+ =?us-ascii?Q?CUFBIqLFp4Dt3HIu5f/i1BnDlQVpBYaXwNz4IyypfGQ90aYUh8kt1HCsWYZn?=
+ =?us-ascii?Q?Y5BwM39POBz6CSqmCtB1NrLSAosyVw9Xx9J5P1mh?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d9a80d86-bb16-4685-c386-08db218df8cb
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2023 17:36:25.7358 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0KJEeBl01yxrj0h8zUrTM02Unu0pNlgGD4FkCIkO9ymCIioVqWlvOfEgAkBXg56L
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB6734
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,110 +115,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
+ peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
+ linux-s390@vger.kernel.org, kvm@vger.kernel.org, lulu@redhat.com,
+ joro@8bytes.org, nicolinc@nvidia.com, kevin.tian@intel.com,
+ yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
+ alex.williamson@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ yi.y.sun@linux.intel.com, cohuck@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
+ robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_46_45060432.1678465286021
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Wed, Mar 08, 2023 at 05:13:36AM -0800, Yi Liu wrote:
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>03031023</title> 
- </head> 
- <body style="padding: 7% 0%;"> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <div style="max-width: 600px; margin: auto;"> 
-    <h4><a href="http://www.blessy.autos/2ff6g239TD5F8K6o11f4f10l1287n36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQLQnmK7mV10kIg6A0wJDT/repaying-datum"><img alt="" src="http://www.blessy.autos/Appleton-Tombigbee/d504Y2395rs7aZ11s4f13_1287g36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQLQnmK6AAn10o5ALw@D" width="100%" /></a></h4> &nbsp; 
-    <footer> 
-     <address style="width: 100%; background-color:#00015E; max-width: 600px; padding: 5px 0px ; color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; border-radius: 8px; margin: auto;"> <p style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 12px; line-height: 14px; text-align: center; ">&nbsp;If you do not wish to receive future messages click here to <span class="unstyle-auto-detected-links"><a href="http://www.blessy.autos/instead-admiringly/Ra84V2395W8K6m13Q4sfI11M1287j36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQLQnmK7rOP1sN05fPwlD" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #d80707 ;">unsubscribe</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.blessy.autos/6654n2395o8M6I11i4f12Z1287p36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQLQnmK5WR1r05VNUwD/ruinations-synagogue" style="text-decoration: un
- derline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #d80707;">Easy Canvas Prints</a>&nbsp;|&nbsp; 11525a Stonehollow Dr #100 | Austin, TX 78758</span><br /> <br /> &nbsp;</p> </address> 
-    </footer> 
-   </div> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%!important;max-width: 100%!important;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-collapse: collapse; mso-line-height-rule: exactly;line-height: 100% !important; margin: 0; padding: 0; " width="100%"> 
-    <tbody> 
-     <tr align="center"> 
-      <td align="center"> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" class="full-wrap" role="presentation" style="width: 700px; max-width: 700px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width="700"> 
-        <tbody> 
-         <tr> 
-          <td align="center" class="mobile-padding" style="padding: 20px 20px 20px 20px;">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td align="center" class="mobile-padding" style="padding: 10px 20px 10px 20px;">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td align="center" style="padding: 10px 0px 10px 0px;">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td align="center">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td align="center" class="mobile-padding" style="padding: 10px 40px 10px 40px;"> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%;" width="100%"> 
-            <tbody> 
-             <tr align="center"> 
-              <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
-             </tr> 
-             <tr> 
-              <td align="center" valign="middle">&nbsp;</td> 
-             </tr> 
-             <tr align="center"> 
-              <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: center; font-weight: 700; font-family: 'Helvetica', 'Arial', sans-serif;;" valign="middle">&nbsp;</td> 
-             </tr> 
-             <tr> 
-              <td align="center" valign="middle">&nbsp;</td> 
-             </tr> 
-             <tr align="center"> 
-              <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" class="mobile-padding" style="padding: 10px 20px 10px 20px;"> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%; "> 
-            <tbody> 
-             <tr> 
-              <td align="center" style="padding: 10px 25px 10px 25px;"> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%;" width="100%"> 
-                <tbody> 
-                 <tr align="center"> 
-                  <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: left; font-weight: 700; font-family: 'Helvetica', 'Arial', sans-serif; padding-bottom: 10px; border-bottom: 1px solid #FFFFFF" valign="middle">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" style="padding: 20px 0px 20px 0px;">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" style="padding-top: 10px; border-top: 1px solid #FFFFFF">&nbsp;</td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-         <tr> 
-          <td align="center" class="mobile-padding" style="padding: 10px 40px 10px 40px;">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td align="center">&nbsp;</td> 
-         </tr> 
-         <tr> 
-          <td align="center" class="mobile-padding" style="padding: 40px 20px 20px 20px;">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.blessy.autos/e7b5CT2395n8gT511V4f14z1287v36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQLQnmK6H1X0NZ6qzwD2T/galloper-oiliest" alt=""/></body>
-</html>
+> +int iommufd_access_set_ioas(struct iommufd_access *access, u32 ioas_id)
+> +{
+> +	struct iommufd_ioas *new_ioas = NULL, *cur_ioas;
+> +	struct iommufd_ctx *ictx = access->ictx;
+> +	struct iommufd_object *obj;
+> +	int rc = 0;
+> +
+> +	if (ioas_id) {
+> +		obj = iommufd_get_object(ictx, ioas_id, IOMMUFD_OBJ_IOAS);
+> +		if (IS_ERR(obj))
+> +			return PTR_ERR(obj);
+> +		new_ioas = container_of(obj, struct iommufd_ioas, obj);
+> +	}
+> +
+> +	mutex_lock(&access->ioas_lock);
+> +	cur_ioas = access->ioas;
+> +	if (cur_ioas == new_ioas)
+> +		goto out_unlock;
+> +
+> +	if (new_ioas) {
+> +		rc = iopt_add_access(&new_ioas->iopt, access);
+> +		if (rc)
+> +			goto out_unlock;
+> +		iommufd_ref_to_users(obj);
+> +	}
+> +
+> +	if (cur_ioas) {
+> +		iopt_remove_access(&cur_ioas->iopt, access);
+> +		refcount_dec(&cur_ioas->obj.users);
+> +	}
 
-------=_Part_46_45060432.1678465286021--
+This should match the physical side with an add/remove/replace
+API. Especially since remove is implicit in destroy this series only
+needs the add API
 
+And the locking shouldn't come in another patch that brings the
+replace/remove since with just split add we don't need it.
+
+That will make this patch alot smaller
+
+Jason
