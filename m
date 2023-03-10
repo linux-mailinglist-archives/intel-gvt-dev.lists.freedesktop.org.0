@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75ADE6B4FAF
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 19:00:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9562A6B5008
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 19:25:20 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C45FA10E9E3;
-	Fri, 10 Mar 2023 18:00:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 64CA710E9E6;
+	Fri, 10 Mar 2023 18:25:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Fri, 10 Mar 2023 18:00:10 UTC
-Received: from mail.cliwest.autos (unknown [45.13.189.73])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0A55310E9D1
+X-Greylist: delayed 310 seconds by postgrey-1.36 at gabe;
+ Fri, 10 Mar 2023 18:25:17 UTC
+Received: from mail.cookmax.autos (unknown [45.13.189.85])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6503A10E9E4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 18:00:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cliwest.autos;
+ Fri, 10 Mar 2023 18:25:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cookmax.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=tatar-maxine@cliwest.autos; bh=TDbkqlnXCbwSdyy+5K2dwOscczs=;
- b=hdquGAs93NchQv+gr5de5lgtQ8wUGq/QbbweRoNiBXVFc97PkUx/JYpp4SamugAVVqoLv/2BOikK
- 0WYwYxrWZC08ym4U6APw5ObJnrMSnB4fRBk2VHANuoz1pfvw0It2tD9H6hWFBbqPG22/HRXy4rZJ
- C5VuTDy53CSjiq/HoMg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cliwest.autos;
- b=bL6CfaurEsstxIlTxj7COpDubLHPdhUdDAC8W3DDdDd3fMi5IdobqhLDhupyBZn50r+yGRdR//X7
- /xDpi/LoozM9EbmQdLqBtRC/twGQ50rC/qlpK0ww7lC2qZCfhEPyUVtkOByjJnwZFuZvBDp7ezuX
- UzVKuvqT2kpbMJfV6Dg=;
-Received: by mail.cliwest.autos id h1do2k0001g2 for
+ i=maxheater_pro@cookmax.autos; 
+ bh=Za60uHUAY1WO5H22zXBSsFc5Fi8=;
+ b=URSMfgkP9Cq9UF6rhR3Jt28pkieCRGkwQwFtxzIu0++gY/9iCitFBmSul/vEuyWqsABdxnAoEqvT
+ 5xObKTNoejzSH9A4+dpm/ywRNqnJ2oJzBYFAf/+v9L5v6v3FMv9NjdNNKcQSNq65n5/p/a5Zi3Fq
+ de8VU48fGcRJud5hac8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cookmax.autos;
+ b=mvzIiPGYFDB6l4IqWr0PKD666U2/FEAYYHTkBZ6Pg0QSanwDBe8Gd+EQjI3HA3LvcOsKRKHlewqQ
+ RheitjyYv+9kxCkvENJwAYO7m6gAoLhODneb481QymImJD7u6ipwRUmQ7XKVw11N/FNr8le56qlD
+ r4iaM6oEK6PH4qkAi9I=;
+Received: by mail.cookmax.autos id h1dr0q0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 12:45:47 -0500 (envelope-from
- <tatar-maxine-intel+2Dgvt+2Ddev=lists.freedesktop.org@cliwest.autos>)
-Date: Fri, 10 Mar 2023 12:45:47 -0500
-From: Maxine Tatar <tatar-maxine@cliwest.autos>
+ Fri, 10 Mar 2023 13:14:05 -0500 (envelope-from
+ <maxheater_pro-intel+2Dgvt+2Ddev=lists.freedesktop.org@cookmax.autos>)
+Date: Fri, 10 Mar 2023 13:14:05 -0500
+From: "MaxHeater Pro" <maxheater_pro@cookmax.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Southwest is offering up to $1OO Reward for your opinion
+Subject: Don't be left in the cold, get a Max Heater today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_292_1116838744.1678470308688"
-Message-ID: <0.0.0.20.1D953782548DC78.21F2CA@mail.cliwest.autos>
+ boundary="----=_Part_553_458100494.1678471941725"
+Message-ID: <0.0.0.3D.1D9537C19A23AD2.4EFD4A@mail.cookmax.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_292_1116838744.1678470308688
+------=_Part_553_458100494.1678471941725
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,59 +63,72 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>05031023</title> 
+  <title>06031023</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header class="myheat_fanyou"> 
-    <div id="gana_fanc" style="text-align: center;"> 
-     <h3 style="font-family:Arial, Helvetica, sans-serif;">A Special Offer for Valued Customers</h3> 
-     <div style="max-width: 43%; margin: auto;">
-      <a href="http://www.cliwest.autos/recklessly-commissioning/d324k2395yzh8613uZ4f1HbS1289J36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQgQnnn7spO1Nz05aMNwD" target="_blank"><img alt="" src="http://www.cliwest.autos/c414q2395hUz7a13t4fRX1dj1289k36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQgQnnn5YKy105Bz@wD/howls-OConnell" width="100%" /></a>
-     </div> 
-     <div style="max-width: 20%; margin: auto; padding: 5% 0%;">
-      <a href="http://www.cliwest.autos/recklessly-commissioning/d324k2395yzh8613uZ4f1HbS1289J36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQgQnnn7spO1Nz05aMNwD" target="_blank"><img alt="" src="http://www.cliwest.autos/swiss-revolution/c9c4D2395JpH7a13jo4fW1eg1289D36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgQnnn6sh1T0h5U3wDW" width="100%" /></a>
-     </div> 
+   <header class="new_gatged"> 
+    <div style="padding: 2.5% 0%;">
+     <span style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 500; font-size: 180%; display: block; text-align: center; width: 80%; margin: auto;">How To Heat Any Space In My House In Under 5-Minutes, WITHOUT Using Your Home's Costly Heating System</span>
     </div> 
    </header> 
-   <section class="fly_go"> 
-    <div id="goples">
-     <span style="font-family: Arial, Helvetica, sans-serif; font-size: 90%; text-align: justify; text-indent: 5%; display: block; width: 85%; margin: auto; line-height: 150%;">We wanted to take a moment to thank you for choosing Southwest Airlines for your travel needs. Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you.<br /> <br /> As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with Southwest. Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span> 
-     <div style="text-align: center; padding: 5.5% 0%;">
-      <span style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; display: inline-block; padding: 1.5% 2%; background-color: rgb(230, 230, 230); font-size: 65%;">For completing the survey, you can receive a $100 Gift!</span>
+   <section class="new_product_ito1"> 
+    <div> 
+     <div style="outline: solid 2px #000;">
+      <a href="http://www.cookmax.autos/a256l239hn5X8D6K13HIJ4f20t128aM36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQXQnno7iw1AS0Z6oplwUD/monumental-viscous" target="_blank"><img alt="" src="http://www.cookmax.autos/3956KLx2395P7hLa12w4f2g3Z128aR36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQXQnno7zgI1LX06S@lw0D/spender-pretext" style="display: block;" width="100%" /></a>
      </div> 
-     <span style="font-family: Arial, Helvetica, sans-serif; font-size: 90%; text-align: justify; text-indent: 5%; display: block; width: 85%; margin: auto; line-height: 150%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</span> 
-     <div style="font-family: Arial, Helvetica, sans-serif; font-size: 120%; text-align: center; margin: 8% 0%; font-weight: 900;">
-      <a href="http://www.cliwest.autos/recklessly-commissioning/d324k2395yzh8613uZ4f1HbS1289J36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQgQnnn7spO1Nz05aMNwD" style="color: rgb(233, 122, 183);" target="_blank">TAKE THE SURVEY</a>
+     <div style="outline: solid 2px #F4D35F; margin: 0.5% 0% 0%; background-color: #fcf5de;">
+      <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: 500; text-align: center; display: block; font-size: 140%; padding: 2.5% 4%;">The national weather services are reporting that it is going to be a SUPER COLD WINTER, maybe one of the coldest for decades. Are you prepared?.</span>
      </div> 
-     <span style="display: block; width: 65%; margin: auto; padding: 2.5% 0% 0%; font-family: Arial, Helvetica, sans-serif; text-align: center; line-height: 150%; font-size: 80%;"> Thank you again for your support. We look forward to hearing from you soon Warm regards </span> &nbsp; 
-     <hr style=" width: 60%;" />
-     <span style="display: block; width: 65%; margin: auto; padding: 2.5% 0%; font-family: Arial, Helvetica, sans-serif; text-align: center; line-height: 150%; font-size: 80%;"> <strong>The Southwest Survey</strong> </span>
+     <div style="padding-top: 5%;">
+      <span style="display: block; text-align: justify; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 115%;  ;">For the past few years, the heating industry had just 3 big companies that could set any prices they wanted and kept ripping off customers. A tech startup is turning this $5 billion industry on its head.</span>
+      <br /> 
+      <span style="display: block; text-align: justify; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 115%;">With <b>almost a million units sold worldwide</b> , this ultra-efficient heater is quickly becoming the <b>most successful device of 2022</b>.</span>
+      <br /> 
+      <span style="display: block; text-align: justify; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 115%;">The <a href="http://www.cookmax.autos/a256l239hn5X8D6K13HIJ4f20t128aM36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQXQnno7iw1AS0Z6oplwUD/monumental-viscous" target="_blank">Max Heater Pro</a> is a powerful and efficient convection heater. It?s designed to rapidly <b>heat up any room from top to bottom while saving you up to 30% on electricity</b>.</span>
+      <br /> &nbsp; 
+      <div style="text-align: center;">
+       <a href="http://www.cookmax.autos/a256l239hn5X8D6K13HIJ4f20t128aM36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQXQnno7iw1AS0Z6oplwUD/monumental-viscous" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; background-color: #E45200; padding: 3% 6%; font-weight: bold; font-size: 145%;">Learn more</span></a>
+      </div> 
+     </div> 
     </div> 
    </section> 
-   <footer class="footer_gooimperies" style="padding-top: 50px;"> 
-    <address id="direction-_min" style="text-align: center; padding: 0.5% 0%; max-width: 75%; margin: auto; font-size: 65%; color: #000000; font-weight: 900;"> 
-     <div style="font-family: Arial, Helvetica, sans-serif ;"> 
-      <p><small><span style="text-decoration: none; ">To change your email options,</span><a href="http://www.cliwest.autos/5ed5j2o395N8xw611W4f1cg1289H36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQgQnnn7QJ1w0Sj6ITkwDz/recklessly-commissioning" style="text-decoration-line: none; color: rgb(0, 34, 224)"> <span>Continue.Over.Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style><style><span face="traditions"></span></style></style><big></big> </small></p> 
-     </div> </address> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <footer> 
+    <address style="background-color: rgb(230, 230, 230); padding: 2.5% 2%; text-align: center; border-top: solid 2px #000;"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 75%; font-weight: bold;">If you do not wish to receive future messages click here to <a href="http://www.cookmax.autos/b335b2W395w8U6X12K4fI21l128ao36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQXQnno7mA1oxI06OMLwUD/unconvincing-decimals" style="text-decoration: none;" target="_blank">unsubscribe</a><br /> <br /> <a href="http://www.cookmax.autos/Southey-expounded/6de6l23vD95r8ks611r4f22n128aB36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQXQnno7U_M10Tt5skwD3" style="text-decoration: none;" target="_blank">Heatmaxr Pro</a> | 3 Germay Dr, | Unit 4 #1611 | Wilmington DE 19804 </span></address> 
    </footer> 
   </div> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%;" width="100%"> 
-   <tbody> 
-    <tr align="center"> 
-     <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 15px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: center; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif; padding: 12px 0px 12px 0px;" valign="middle">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;" width="100%"> 
    <tbody> 
     <tr> 
      <td align="center" style="padding: 5px 0px;line-height: 5px;" valign="middle">&nbsp;</td> 
     </tr> 
    </tbody> 
+  </table> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%;" width="100%"> 
+   <tbody> 
+    <tr align="center"> 
+     <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+     <td align="right" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: right; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle" width="100">&nbsp;</td> 
+    </tr> 
+    <tr align="center"> 
+     <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+     <td align="right" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: right; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle" width="100">&nbsp;</td> 
+    </tr> 
+    <tr align="center"> 
+     <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+     <td align="right" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: right; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle" width="100">&nbsp;</td> 
+    </tr> 
+    <tr align="center"> 
+     <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+     <td align="right" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 22px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: right; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle" width="100">&nbsp;</td> 
+    </tr> 
+   </tbody> 
   </table>   
- <img src="http://www.cliwest.autos/multi-sonnets/9ae6JH23W95ztr8512D4fV1fW1289y36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQgQnnn5IR1l05FzwUD" alt=""/></body>
+ <img src="http://www.cookmax.autos/characterizable-Ditzel/9725z239t5RR8q512d4fF24x128an36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQXQnno6Ii1X0T5FPwUD" alt=""/></body>
 </html>
 
-------=_Part_292_1116838744.1678470308688--
+------=_Part_553_458100494.1678471941725--
 
