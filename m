@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C5126B5208
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 21:37:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E1FE56B52C2
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 22:23:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 22F7110E9F4;
-	Fri, 10 Mar 2023 20:37:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AC61E10EA05;
+	Fri, 10 Mar 2023 21:23:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
- Fri, 10 Mar 2023 20:37:46 UTC
-Received: from mail.growdept.autos (unknown [45.13.189.120])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9D93D10E347
+X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
+ Fri, 10 Mar 2023 21:23:44 UTC
+Received: from mail.hugmart.autos (unknown [45.13.189.129])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 01E5210EA04
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 20:37:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=growdept.autos; 
+ Fri, 10 Mar 2023 21:23:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hugmart.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=hdsurveyreward@growdept.autos; 
- bh=QHqYOiCL+Lh5eoK02jgKjvjMXNU=;
- b=GCjoHZ+OBLTXfND84+CZs9IG1Fqnh5ZWOPJ+gw76wAVn6uFURyqVYNAqebHuhGOkYygXdqAqJcch
- zZGV8KmncD8vF8V57m1a7Z5cJl2L3cdHSxHUEeZ60d6gepBaExE0G/VXBT1S77iwbw+pDjJ/iZ/v
- NXSYEKbwOPl/jDvmF6U=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=growdept.autos;
- b=PRI6xwyqHN9woqwn6gfMlPmBUN4+b0uEj7MD0kXlpkWr+UgfPzMZLhhgsMFa1xrHda03SePxNq8g
- WqqHIpI7Vzcc92pWtS1Tlv3cYrAdo1UtxN9NHr+f+ez16EggPF3P3nLYVZKAB1sLYHq/wY1oJ7T0
- L1mulcCtwY31tfaY+4Y=;
-Received: by mail.growdept.autos id h1ekje0001g6 for
+ i=now-on-walmart@hugmart.autos; 
+ bh=cqAF2Z1Hr0K375rSeIX9tNVMLEI=;
+ b=eXczNn7fYBBA6TkE4hv3gQ6dUSpcEUej21/PPn0uXLvG6vEnS/ANe+AabEm441S86hk2ZGCKi6qs
+ L/nHsiXSTjhr0l9cMjzs84+RkhS437Xue9vCglJoJZHSRLd0PES4nSf21RYP1iKVV6JstAy5yvQD
+ YlFnggTs/kMWEIQuhug=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hugmart.autos;
+ b=mj8IRJO/uXV/0kziB/12eR7ySIu7NvRihM5rh/GYnNRzR8DX56FIdtPm/JBwB6xNupWSrvctffAr
+ ZGeOzjvkPEawWhgj2m8eq2NtEvvuYp3GD9p5X4RwMg3hNbl3/7/cUZpEj11ItG9m32yKIYcoXtiC
+ sie34j8NdBVJPW2zFJ8=;
+Received: by mail.hugmart.autos id h1efu20001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 16:50:24 -0500 (envelope-from
- <hdsurveyreward-intel+2Dgvt+2Ddev=lists.freedesktop.org@growdept.autos>)
-Date: Fri, 10 Mar 2023 16:50:24 -0500
-From: HDSurveyReward <hdsurveyreward@growdept.autos>
+ Fri, 10 Mar 2023 16:11:41 -0500 (envelope-from
+ <now-on-walmart-intel+2Dgvt+2Ddev=lists.freedesktop.org@hugmart.autos>)
+Date: Fri, 10 Mar 2023 16:11:41 -0500
+From: "Now On Walmart" <now-on-walmart@hugmart.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Today's rewards on us for being a loyal customer
+Subject: Holiday appreciation is needed during these time,
+ here's you gift on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_124_358947666.1678479861880"
-Message-ID: <0.0.0.D.1D9539A51809DA4.916BE@mail.growdept.autos>
+ boundary="----=_Part_271_202458937.1678482669795"
+Message-ID: <0.0.0.1D.1D95394E911482C.3D6CD@mail.hugmart.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_124_358947666.1678479861880
+------=_Part_271_202458937.1678482669795
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,72 +64,105 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>09031023</title> 
+  <title>10031023</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header class="whattimeits"> 
-    <div id="alwey_fromcryczt" style="text-align: center;">
-     <a href="http://www.growdept.autos/4494w2395sw8o613Cqu4f2en128dp36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQCQnnQ5u1pp05C@wUD/stylized-freezers" target="_blank"><img alt="" src="http://www.growdept.autos/superintend-cadres/bca4W2395m7Qla13r4f3H0rj128dp36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQCQnnQ6Ji10mt6GjjAwD" width="70%" /></a>
-     <br /> 
-     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; display: block; margin: 2.5% 0%; font-weight: 900;"><u>A SPECIAL OFFER FOR VALUED CUSTOMERS</u></span> 
-     <div style="text-align: center; width: 18%; margin: auto; padding: 1.5% 0%;">
-      <a href="http://www.growdept.autos/4494w2395sw8o613Cqu4f2en128dp36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQCQnnQ5u1pp05C@wUD/stylized-freezers" target="_blank"><img alt="" src="http://www.growdept.autos/6834k2395j7ajp11N4f31F128dj36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQCQnnQ6zI1MK05qUMwD/superintend-cadres" width="100%" /></a>
+   <header> 
+    <div>
+     <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 200%; text-align: center;">A Special Offer for Our Valued Users</span> 
+     <div>
+      <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif font-weight: bold; font-size: 200%; text-align: center; color: #1e90ff;">WALMART</span> 
+      <div style="text-align: center;"> 
+       <div style="max-width: 35%; display: inline-block;">
+        <a href="http://www.hugmart.autos/20f5b239y5X86Ox13y4QfT33g128eH36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ3QnnR7Y1MC0Yx5uMw3D/cheerful-normalizes" target=""><img alt="" src="http://www.hugmart.autos/7af5p239p5c7pGa11I4f35g128en36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ3QnnR5d10yy6b@OjwD/Cupertino-Dunedin" width="100%" /></a>
+       </div> 
+       <div style="max-width: 25%; display: inline-block; vertical-align: top;">
+        <a href="http://www.hugmart.autos/20f5b239y5X86Ox13y4QfT33g128eH36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ3QnnR7Y1MC0Yx5uMw3D/cheerful-normalizes" target=""><img alt="" src="http://www.hugmart.autos/5576ig23L95i7Cha12L4Yf36L128eo36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ3QnnR7rU1oh0V5JJqwD/jenny-particulate" width="100%" /></a>
+       </div> 
+      </div> 
      </div> 
     </div> 
+    <br /> &nbsp;
    </header> 
-   <section class="noteisvois"> 
-    <div id="text_thehomedepot">
-     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; font-size: 90%; width: 85%; margin: auto; line-height: 150%; display: block; text-align: justify; text-indent: 5%; padding: 2.5% 0%;">The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer.</span> 
-     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 150%; display: block; text-align: justify; text-indent: 5%; padding: 2.5% 0%;">As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span> 
-     <div style="text-align: center;">
-      <span style="display: inline-block; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; padding: 1.5% 2%; background-color: rgb(255, 253, 244); font-size: 75%;">For completing the survey, you can receive a $100 Gift!</span>
-     </div> 
-    </div> 
-   </section> 
    <section> 
-    <div> 
-     <div style="text-align: center; font-weight: 900; font-size: 125%; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: 5.5% 0%;">
-      <a href="http://www.growdept.autos/4494w2395sw8o613Cqu4f2en128dp36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQCQnnQ5u1pp05C@wUD/stylized-freezers" style="color:darkorange;" target="_blank">TAKE THE SURVEY</a>
+    <div style="max-width: 90%; margin: auto; text-align: center; line-height: 150%;">
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;">We wanted to take a moment to thank you for choosing walmart for your shopping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you.<br /> <br /> As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your shop and overall experience with walmart. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <br /> 
+      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><span style="display: inline-block; font-size: 90%; padding: 1.5% 2%; background-color: rgb(223, 223, 223); font-weight: bold;">For completing the survey, you can receive a $100 Gift!</span> </span>
      </div> 
-    </div> 
-    <div style="text-align: center;">
-     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 80%; display: block; width: 70%; margin: auto; line-height: 150%;"><strong>Thank you again for your support. We look forward to hearing from you soon Warm regards</strong><br /> <br /> <u><b>The Home Depot Survey</b></u></span>
+     <br /> 
+     <br /> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span>
+     <br /> 
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><a href="http://www.hugmart.autos/20f5b239y5X86Ox13y4QfT33g128eH36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ3QnnR7Y1MC0Yx5uMw3D/cheerful-normalizes" style="color: #366f79"><span style="font-weight: bold; display: inline-block; font-size: 180%;"><u>TAKE THE SURVEY</u> </span></a> </span>
+     </div> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;"> </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><span style="display: block; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 80%; ">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The Walmart Survey</span> </span>
+     </div> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;"> </span>
     </div> 
    </section> &nbsp; 
    <hr /> 
-   <footer style="width: 100%; text-align: center; font-size: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; "> 
-    <address style=" font-weight: bold; color: #000000; padding: 13px 0px; width: 95%; margin: auto; border-radius: 8px; "> <p><span style="text-decoration: none; ">To bring communications to an close,</span><a href="http://www.growdept.autos/7735ft2395cI8J612z4f2fK_128dr36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQCQnnQ6Y10SBP6RqWwDk/superintend-cadres" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Go_Over_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small></small><style class="inexhaustible"></style><span></span><big></big><span size="quarries"></span><font color="plower"><style lang="Newsweekly"></style></font><small></small><big></big></p> </address> 
+   <footer> 
+    <address style="text-align: center; font-weight: normal; font-family: Arial, Helvetica, sans-serif;"> 
+     <div style="font-size: 10px;; padding: 15px; color: #000000; font-weight: bold;"> 
+      <p class="unsubscribe"><span style="text-decoration: none; ">No longer wish to receive email communications from us?,</span><a href="http://www.hugmart.autos/jenny-particulate/9ae4G2395nR8I613Em4fS34r128eN36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ3QnnR6fh1iX05XMTwD" style="text-decoration-line: none;"> <span>Start-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small></small><style size="freeness"></style><span title="offices"></span><font class="Bernini"></font><span><font><small><span></span></font></span></small><span><font id="Walworth"></span></font></p> 
+     </div> </address> 
    </footer> 
   </div> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%; background-color: #FFFFFF; "> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%; " width="100%"> 
    <tbody> 
-    <tr> 
-     <td align="center" class="pad" style="padding:0px 0;text-align:center;vertical-align:middle;font-size:0;"> 
-      <div align="center" class="full-wrap-three" style="width:220px;display:inline-block;vertical-align:middle; padding: 10px 0px;"> 
-       <table border="0" cellpadding="0" cellspacing="0" class="full-wrap-three" role="presentation" style="width:90%;margin:0;"> 
-        <tbody> 
-         <tr> 
-          <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 8px; line-height: 10px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> 
-      <div align="center" class="full-wrap-three" style="width:285px;display:inline-block;vertical-align:middle; padding: 10px 0px;">
-       &nbsp;
-      </div> </td> 
+    <tr align="center"> 
+     <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle"><br /> <br /> &nbsp; 
+      <ul style="list-style-type: none;"> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
     </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;" width="100%"> 
-   <tbody> 
     <tr> 
-     <td align="center" style="padding: 5px 0px;line-height: 5px;" valign="middle">&nbsp;</td> 
+     <td align="center" valign="middle"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center" style="padding: 1px 0px;line-height: 1px;" valign="middle">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: separate !important; mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"> 
+       <tbody> 
+        <tr> 
+         <th align="center" style=" width: 140px;mso-padding-alt: 8px 0px 8px;" valign="middle" width="140">&nbsp;</th> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" valign="middle">&nbsp;</td> 
+    </tr> 
+    <tr align="center"> 
+     <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;;" valign="middle">&nbsp; 
+      <ul style="list-style-type: none;"> 
+       <li>.</li> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+       <li>&nbsp;</li> 
+      </ul> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.growdept.autos/superintend-cadres/c7e6o2DP395GDh8513l4Tf3O2p128dF36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQCQnnQ7kU1ykF06FMwADk" alt=""/></body>
+ <img src="http://www.hugmart.autos/booklets-gravel/9545g23H95G85TU12B4f3w7Z128eX36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ3QnnR7n1pw0_y6MzUwDB" alt=""/></body>
 </html>
 
-------=_Part_124_358947666.1678479861880--
+------=_Part_271_202458937.1678482669795--
 
