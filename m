@@ -2,41 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD01B6B514C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 21:01:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C5126B5208
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 21:37:50 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8FF0410E335;
-	Fri, 10 Mar 2023 20:01:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 22F7110E9F4;
+	Fri, 10 Mar 2023 20:37:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Fri, 10 Mar 2023 20:01:15 UTC
-Received: from mail.failups.autos (unknown [45.13.189.106])
- by gabe.freedesktop.org (Postfix) with ESMTP id B36E710E32B
+X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
+ Fri, 10 Mar 2023 20:37:46 UTC
+Received: from mail.growdept.autos (unknown [45.13.189.120])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9D93D10E347
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 20:01:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=failups.autos;
+ Fri, 10 Mar 2023 20:37:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=growdept.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups_status@failups.autos; bh=EmXXr/uxFtzQIZQ9zQGViCqU5lk=;
- b=VSLrCTA6C49Z0BsGJLrgOJ3iddl9B+UBUvZi0XfX6Gfuzq5UzYEn4gQFLshPq4b6NbqaBRLFJtq9
- 44jEuj4/a5Yf1TgURvAGhPmz2IgPo+I4m80rcxRnLPRo3ppZjzBXvk2XyMev/j3cJOcl0FhoK3VD
- H1yJOetUTTDnaRYkaOQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=failups.autos;
- b=Emexa8wRwEfu4a8yyY5gmHkj7YQtDmpuwc5DUJbRj2YurA3UUd3/mcY/WIa2YiACPBd9THfF4K6R
- gR9SH2fxHaUpMh8J0kbK2/H3t8j5FXKhvKvrhDFRHiQXtxuOBJ4O9aMrMkeLdKZnfhU1OJh5Bg2W
- gmwlUeanYWn0Rk2fEKo=;
-Received: by mail.failups.autos id h1e68o0001gp for
+ i=hdsurveyreward@growdept.autos; 
+ bh=QHqYOiCL+Lh5eoK02jgKjvjMXNU=;
+ b=GCjoHZ+OBLTXfND84+CZs9IG1Fqnh5ZWOPJ+gw76wAVn6uFURyqVYNAqebHuhGOkYygXdqAqJcch
+ zZGV8KmncD8vF8V57m1a7Z5cJl2L3cdHSxHUEeZ60d6gepBaExE0G/VXBT1S77iwbw+pDjJ/iZ/v
+ NXSYEKbwOPl/jDvmF6U=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=growdept.autos;
+ b=PRI6xwyqHN9woqwn6gfMlPmBUN4+b0uEj7MD0kXlpkWr+UgfPzMZLhhgsMFa1xrHda03SePxNq8g
+ WqqHIpI7Vzcc92pWtS1Tlv3cYrAdo1UtxN9NHr+f+ez16EggPF3P3nLYVZKAB1sLYHq/wY1oJ7T0
+ L1mulcCtwY31tfaY+4Y=;
+Received: by mail.growdept.autos id h1ekje0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 14:49:56 -0500 (envelope-from
- <ups_status-intel+2Dgvt+2Ddev=lists.freedesktop.org@failups.autos>)
-Date: Fri, 10 Mar 2023 14:49:56 -0500
-From: "UPS Status" <ups_status@failups.autos>
+ Fri, 10 Mar 2023 16:50:24 -0500 (envelope-from
+ <hdsurveyreward-intel+2Dgvt+2Ddev=lists.freedesktop.org@growdept.autos>)
+Date: Fri, 10 Mar 2023 16:50:24 -0500
+From: HDSurveyReward <hdsurveyreward@growdept.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: ups Gift Opportunity
+Subject: Today's rewards on us for being a loyal customer
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_550_1172234104.1678477763857"
-Message-ID: <0.0.0.3C.1D953897D8843C2.EB592@mail.failups.autos>
+ boundary="----=_Part_124_358947666.1678479861880"
+Message-ID: <0.0.0.D.1D9539A51809DA4.916BE@mail.growdept.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_550_1172234104.1678477763857
+------=_Part_124_358947666.1678479861880
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,66 +63,72 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>08031023</title> 
+  <title>09031023</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header class="Ups_text_informativo_grove"> 
-    <div id="contenedor_ups-_envios-_surve">
-     <span class="new_030225" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 135%; display: block; text-align: center;">A Special Offer for Valued Customers </span>
+   <header class="whattimeits"> 
+    <div id="alwey_fromcryczt" style="text-align: center;">
+     <a href="http://www.growdept.autos/4494w2395sw8o613Cqu4f2en128dp36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQCQnnQ5u1pp05C@wUD/stylized-freezers" target="_blank"><img alt="" src="http://www.growdept.autos/superintend-cadres/bca4W2395m7Qla13r4f3H0rj128dp36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQCQnnQ6Ji10mt6GjjAwD" width="70%" /></a>
+     <br /> 
+     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; display: block; margin: 2.5% 0%; font-weight: 900;"><u>A SPECIAL OFFER FOR VALUED CUSTOMERS</u></span> 
+     <div style="text-align: center; width: 18%; margin: auto; padding: 1.5% 0%;">
+      <a href="http://www.growdept.autos/4494w2395sw8o613Cqu4f2en128dp36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQCQnnQ5u1pp05C@wUD/stylized-freezers" target="_blank"><img alt="" src="http://www.growdept.autos/6834k2395j7ajp11N4f31F128dj36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQCQnnQ6zI1MK05qUMwD/superintend-cadres" width="100%" /></a>
+     </div> 
     </div> 
    </header> 
-   <section id="falta_mucho"> 
-    <div class="formacion_qt"> 
-     <div>
-      <span style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;text-align: center; display: block; padding: 3% 0% 0%; font-size: 250%;">UPS</span>
-     </div> 
-     <div style="text-align: center; padding: 1.5% 0% 2.5%;">
-      <a href="http://www.failups.autos/51b4d2395ztq8613WLV4f2at128cO36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQCQnnd5cgX105qLwzD/veined-syrupy" target="_blank"><img alt="" src="http://www.failups.autos/ballast-Duponts/a625t2H395o7nal11w4f2cl128c_36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQCQnnd7zi10GUU5FTjwD" width="15%" /></a>
-     </div> 
-     <span style="display: block; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; text-align: center; font-weight: bold;">Dear intel-gvt-dev@lists.freedesktop.org</span> 
-     <div style="text-align: center; padding: 4.5% 0%;">
-      <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 95%; text-align: justify; line-height: 150%; display: block; width: 85%; margin: auto; text-indent: 5%;">We wanted to take a moment to thank you for choosing <strong>UPS</strong> for your shipping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. </span>
-      <br /> 
-      <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 95%; text-align: justify; line-height: 150%; display: block; width: 85%; margin: auto; text-indent: 5%;">As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span> 
-      <div style="text-align: center; padding: 5% 0%;">
-       <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 80%; display: inline-block; padding: 1.5% 2%; background-color: rgb(248, 248, 248); font-weight: bold;">For completing the survey, you can receive a $100 Gift! </span>
-      </div> 
-      <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 95%; display: block; line-height: 150%; width: 85%; margin: auto; padding: 0% 0% 5%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span> 
-      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 120%; padding-bottom: 5%;">
-       <a href="http://www.failups.autos/51b4d2395ztq8613WLV4f2at128cO36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQCQnnd5cgX105qLwzD/veined-syrupy" style=" color: rgb(79, 47, 54);" target="_blank">TAKE THE SURVEY</a>
-      </div> 
-      <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 85%; display: block; line-height: 150%; width: 75%; margin: auto; padding: 0% 0% 5%;">Thank you again for your support. We look forward to hearing from you soon Warm regards, </span>
-      <br /> &nbsp; 
-      <hr color="bronw" size="3px" width="55%" />
-      <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 85%; display: block; line-height: 150%; width: 75%; margin: auto; padding: 0% 0% 5%;"> <b>The UPS Survey Team</b> </span>
+   <section class="noteisvois"> 
+    <div id="text_thehomedepot">
+     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; font-size: 90%; width: 85%; margin: auto; line-height: 150%; display: block; text-align: justify; text-indent: 5%; padding: 2.5% 0%;">The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer.</span> 
+     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 150%; display: block; text-align: justify; text-indent: 5%; padding: 2.5% 0%;">As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span> 
+     <div style="text-align: center;">
+      <span style="display: inline-block; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-weight: bold; padding: 1.5% 2%; background-color: rgb(255, 253, 244); font-size: 75%;">For completing the survey, you can receive a $100 Gift!</span>
      </div> 
     </div> 
    </section> 
+   <section> 
+    <div> 
+     <div style="text-align: center; font-weight: 900; font-size: 125%; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin: 5.5% 0%;">
+      <a href="http://www.growdept.autos/4494w2395sw8o613Cqu4f2en128dp36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQCQnnQ5u1pp05C@wUD/stylized-freezers" style="color:darkorange;" target="_blank">TAKE THE SURVEY</a>
+     </div> 
+    </div> 
+    <div style="text-align: center;">
+     <span style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: 80%; display: block; width: 70%; margin: auto; line-height: 150%;"><strong>Thank you again for your support. We look forward to hearing from you soon Warm regards</strong><br /> <br /> <u><b>The Home Depot Survey</b></u></span>
+    </div> 
+   </section> &nbsp; 
    <hr /> 
-   <footer style="padding-top: 10px; text-align: center;"> 
-    <address style="font-size: 65%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;"> <p class="unsubscribe"><span style="text-decoration: none; ">No longer want to receive e-mail?,</span><a href="http://www.failups.autos/a435N239N5r86_F11U4f2bI128cS36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQCQnnd5jC1i06SJPw@D/veined-syrupy" style="text-decoration-line: none; color: #000"> <span>Continue Over Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big><font><small><font size="releases"></font></big></font><font size="Bernstein"></small></font><small></small></p> </address> 
+   <footer style="width: 100%; text-align: center; font-size: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; "> 
+    <address style=" font-weight: bold; color: #000000; padding: 13px 0px; width: 95%; margin: auto; border-radius: 8px; "> <p><span style="text-decoration: none; ">To bring communications to an close,</span><a href="http://www.growdept.autos/7735ft2395cI8J612z4f2fK_128dr36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQCQnnQ6Y10SBP6RqWwDk/superintend-cadres" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Go_Over_Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <small></small><style class="inexhaustible"></style><span></span><big></big><span size="quarries"></span><font color="plower"><style lang="Newsweekly"></style></font><small></small><big></big></p> </address> 
    </footer> 
   </div> 
-  <table border="0" cellpadding="0" cellspacing="0" class="full-wrap-three" role="presentation" style="width:90%;margin:0;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%; background-color: #FFFFFF; "> 
    <tbody> 
     <tr> 
-     <td align="right" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 8px; line-height: 10px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+     <td align="center" class="pad" style="padding:0px 0;text-align:center;vertical-align:middle;font-size:0;"> 
+      <div align="center" class="full-wrap-three" style="width:220px;display:inline-block;vertical-align:middle; padding: 10px 0px;"> 
+       <table border="0" cellpadding="0" cellspacing="0" class="full-wrap-three" role="presentation" style="width:90%;margin:0;"> 
+        <tbody> 
+         <tr> 
+          <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 8px; line-height: 10px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+      <div align="center" class="full-wrap-three" style="width:285px;display:inline-block;vertical-align:middle; padding: 10px 0px;">
+       &nbsp;
+      </div> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <div align="center" class="full-wrap-three" style="width:150px;display:inline-block;vertical-align:middle; padding: 10px 0px;">
-   &nbsp;
-  </div> 
-  <table border="0" cellpadding="0" cellspacing="0" class="full-wrap-three" role="presentation" style="width:90%;margin:0;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 8px; line-height: 10px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+     <td align="center" style="padding: 5px 0px;line-height: 5px;" valign="middle">&nbsp;</td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.failups.autos/dieters-tunable/be84s2395Es8z511k4f2dK128cm36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQCQnnd7X10tZxw5tNJwD" alt=""/></body>
+ <img src="http://www.growdept.autos/superintend-cadres/c7e6o2DP395GDh8513l4Tf3O2p128dF36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQCQnnQ7kU1ykF06FMwADk" alt=""/></body>
 </html>
 
-------=_Part_550_1172234104.1678477763857--
+------=_Part_124_358947666.1678479861880--
 
