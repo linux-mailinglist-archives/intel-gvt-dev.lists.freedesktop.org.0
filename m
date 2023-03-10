@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 728A46B4BB3
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 16:53:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E267E6B4D30
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 10 Mar 2023 17:37:39 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 44D5A10E98F;
-	Fri, 10 Mar 2023 15:53:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B7DC810E21C;
+	Fri, 10 Mar 2023 16:37:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 323 seconds by postgrey-1.36 at gabe;
- Fri, 10 Mar 2023 15:53:40 UTC
-Received: from mail.bitecvs.autos (unknown [45.13.189.42])
- by gabe.freedesktop.org (Postfix) with ESMTP id 99BAA10E98A
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Fri, 10 Mar 2023 16:37:35 UTC
+Received: from mail.blessy.autos (unknown [45.13.189.51])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5FC7310E21C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 15:53:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bitecvs.autos;
+ Fri, 10 Mar 2023 16:37:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=blessy.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=cvs-support-updates@bitecvs.autos; 
- bh=Iqo2fOBhJnDTPtosTlXBW3y69o0=;
- b=j5GI8/zKFjs6SKX979P3VDSv3WUqR5kogc0HfRDvYSvwjBm3ksquP45QdUaVfq0ttRfpCuiq/hLZ
- XGhw5bzpT8N9yKHZ9kjf/Dz3mIDl9hNjt1SQhSfxkJgh2KeAIWl85nI15YUtt384vYex5H4HpHnh
- SYm82IVJIMKixynZydM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bitecvs.autos;
- b=iPIFhC35nYseufXSJonbZ4scFnkibKyL+97SY2gpQiw6Te+KXZ2exkeOz1n6QywoGLsbWgwVkmch
- PcXhmTu5HM0yuUpYYLlAwSBkQ6u2xygUiG3d/tzMB8vtkEwtVvkoYyepkZzcPUmZ9BFueU5uoZRD
- Aof0PZKSkEuvFK2PB8c=;
-Received: by mail.bitecvs.autos id h1d9880001g5 for
+ i=canvas.prints.discount@blessy.autos; 
+ bh=EmAibQpZRNEhi0Gg/2BAHvvU4sU=;
+ b=NqP36X7LsPxL+erH+MlLiWTHbEGYgVxHjIN0+Vg7v7REuwFLvfAwnwkwO1t1VYWeRnVpiErh9S6c
+ Ni6hmUB3bOqCIgqiwtNOEwuLu6SoDYcRpNq2VyGlCKF2ye2uQoUkYpo4Y8yfuGeL2iIAP2haJCFY
+ tKQ0yMrKbkiNKVst+N0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=blessy.autos;
+ b=d6ryu0AEa/LyBQCpIasV3ASEWCoV6SQ5Q0P7n6iCzwVdEuz3COuLx5V24dfMh0Wnc5YwYcxA0KmC
+ LqR1OQ2oeR1pL5FJvUarcxKDXbOXrUZWVwb+vJA1ciSY1IwY6TzMwScLIbsIMlJJi1ICz4hebFJt
+ xqwvdISDFsOiOrTWZ7M=;
+Received: by mail.blessy.autos id h1decu0001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 10 Mar 2023 10:42:36 -0500 (envelope-from
- <cvs-support-updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@bitecvs.autos>)
-Date: Fri, 10 Mar 2023 10:42:36 -0500
-From: "CVS Support Updates" <cvs-support-updates@bitecvs.autos>
+ Fri, 10 Mar 2023 11:21:45 -0500 (envelope-from
+ <canvas.prints.discount-intel+2Dgvt+2Ddev=lists.freedesktop.org@blessy.autos>)
+Date: Fri, 10 Mar 2023 11:21:45 -0500
+From: "Canvas Prints Discount" <canvas.prints.discount@blessy.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We have some exciting news for you
+Subject: 11x14 Canvas only $9.99 ? Don't Miss This!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_769_1826327368.1678462928127"
-Message-ID: <0.0.0.55.1D95366F011A424.4A361F@mail.bitecvs.autos>
+ boundary="----=_Part_46_45060432.1678465286021"
+Message-ID: <0.0.0.5.1D9536C686109F6.512E14@mail.blessy.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_769_1826327368.1678462928127
+------=_Part_46_45060432.1678465286021
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,101 +63,97 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>02031023</title> 
+  <title>03031023</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <header> 
-    <div>
-     <span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; font-size: 110%; text-align: center; font-weight: 900; padding-bottom: 4%;">A SPECIAL OFFER FOR VALUED CUSTOMERS</span> 
-     <div>
-      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; font-size: 200%; text-align: center; font-weight: 900;">CVS</span> 
-      <div style="max-width: 18%; margin: auto;">
-       <a href="http://www.bitecvs.autos/tinge-resurgent/a626GN2R395A86jo13e4fk0blw1286F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQPQnme6g1rTT06eMwDzX" target="_blank"><img alt="" src="http://www.bitecvs.autos/Macedon-comeback/6845a239T5a7haS11u4f0do1286Q36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPQnme7Aq1s0lV5ljwDq" width="100%" /></a>
-      </div> 
-     </div> 
-    </div> 
-   </header> 
-   <section class="goldecane-fingo"> 
-    <div>
-     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 145%; text-align: justify; display: block; text-indent: 5%; padding: 3.5% 0%;">We hope this email finds you well. At <strong>CVS</strong> Pharmacy, we value your feedback and are committed to providing you with the best shopping experience possible. That' s why we want to offer you a special incentive for taking the time to complete our customer survey.</span> 
-     <div style="text-align: center; padding: 2.5% 0%;">
-      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: inline-block; font-weight: bold; font-size: 80%; padding: 1.5% 2%; background-color: #e4e4e4;">For completing the survey, you can receive a $100 Gift.</span>
-     </div> 
-     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 145%; text-align: center; display: block; padding: 3.5% 0%;">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers.</span>
-    </div> 
-   </section> 
-   <section> 
-    <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; text-align: center; padding: 2.5% 0%; font-size: 120%;">
-     <a href="http://www.bitecvs.autos/tinge-resurgent/a626GN2R395A86jo13e4fk0blw1286F36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQPQnme6g1rTT06eMwDzX" style="color: rgb(188, 143, 145);" target="_blank">Take The Survey</a>
-    </div> 
-    <div>
-     <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: left; font-size: 80%; padding: 4.5% 0%; display: block; line-height: 150%; text-indent: 5%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.</span>
-     <br /> 
-     <span style="display: block; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 80%;"><strong>Best regards,<br /> <br /> The CVS survey Team </strong> </span>
-    </div> 
-   </section> &nbsp; 
-   <hr /> 
-   <footer style="padding-top: 20px; text-align: center; "> 
-    <address style="font-size: 65%; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; "> <p class="unsubscribe"><span style="text-decoration: none; ">To dispense with communication,</span><a href="http://www.bitecvs.autos/8275s2C395M8yW613Ei4f0chr1286W36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQPQnme6Mz10tj6ayqw0D/contaminating-Urbana" style="text-decoration-line: none; color: #000"> <span>Go-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font></font><font class="footers"></font><span color="untried"><font face="runoff"></font></span><span style="subsidiary"><font title="multiple"></span></font><font size="bushel"><span class="portage"></font></span></p> </address> 
-   </footer> 
-  </div> 
-  <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;"> 
-   <tbody> 
-    <tr> 
-     <td align="center" style="padding:0;"> 
-      <table role="presentation" style="width:602px;border-collapse:collapse;border-spacing:0;text-align:left;"> 
-       <tbody> 
-        <tr> 
-         <td style="padding:40px 175px 30px 175px;">&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td style="padding:36px 30px 42px 30px;"> 
-          <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
-           <tbody> 
-            <tr> 
-             <td style="padding:0 0 36px 0; color: #153643;"> <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">&nbsp;</h1> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
-            </tr> 
-            <tr> 
-             <td style="padding:0;"> 
-              <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;"> 
-               <tbody> 
-                <tr> 
-                 <td style="width:260px;padding:0;vertical-align:top;color: #153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img alt="" src="http://www.bitecvs.autos/8f95g239t5v7raS12z4Nf0er1286n36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQPQnme5G1V0t6WqjOwD/forcing-automation" style="height:auto;display:block;" width="260" /></p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
-                 <td style="width:20px;padding:0;font-size:0;line-height:0;">&nbsp;</td> 
-                 <td style="width:260px;padding:0;vertical-align:top;color: #153643;"> <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">&nbsp;</p> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&lt;td style=&quot;&gt; 
-          <table role=" presentation"> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td align="left" style="padding:0;width:50%;"> <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">&amp;</p> </td> 
-     <td align="right" style="padding:0;width:50%;"> 
-      <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;"> 
-       <tbody> 
-        <tr> 
-         <td style="padding:0 0 0 10px;width:38px;">&nbsp;</td> 
-         <td style="padding:0 0 0 10px;width:38px;">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.bitecvs.autos/Gershwin-clustered/8a06QN23N95nz8Z512uZ4f0fs1286A36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQPQnme7O1uSD0Q6nPUwjD" alt=""/></body>
+   <div style="max-width: 600px; margin: auto;"> 
+    <h4><a href="http://www.blessy.autos/2ff6g239TD5F8K6o11f4f10l1287n36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQLQnmK7mV10kIg6A0wJDT/repaying-datum"><img alt="" src="http://www.blessy.autos/Appleton-Tombigbee/d504Y2395rs7aZ11s4f13_1287g36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQLQnmK6AAn10o5ALw@D" width="100%" /></a></h4> &nbsp; 
+    <footer> 
+     <address style="width: 100%; background-color:#00015E; max-width: 600px; padding: 5px 0px ; color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; border-radius: 8px; margin: auto;"> <p style="padding: 0px; padding-left: 15px; padding-right: 15px; font-family: sans-serif; font-size: 12px; line-height: 14px; text-align: center; ">&nbsp;If you do not wish to receive future messages click here to <span class="unstyle-auto-detected-links"><a href="http://www.blessy.autos/instead-admiringly/Ra84V2395W8K6m13Q4sfI11M1287j36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQLQnmK7rOP1sN05fPwlD" style="text-decoration: underline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; color: #d80707 ;">unsubscribe</a></span><br /> <br /> <span class="unstyle-auto-detected-links"><a href="http://www.blessy.autos/6654n2395o8M6I11i4f12Z1287p36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQLQnmK5WR1r05VNUwD/ruinations-synagogue" style="text-decoration: un
+ derline!important; font-family: sans-serif; font-size: 10px; line-height: 14px; text-align: center; color: #d80707;">Easy Canvas Prints</a>&nbsp;|&nbsp; 11525a Stonehollow Dr #100 | Austin, TX 78758</span><br /> <br /> &nbsp;</p> </address> 
+    </footer> 
+   </div> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width: 100%!important;max-width: 100%!important;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-collapse: collapse; mso-line-height-rule: exactly;line-height: 100% !important; margin: 0; padding: 0; " width="100%"> 
+    <tbody> 
+     <tr align="center"> 
+      <td align="center"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="full-wrap" role="presentation" style="width: 700px; max-width: 700px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width="700"> 
+        <tbody> 
+         <tr> 
+          <td align="center" class="mobile-padding" style="padding: 20px 20px 20px 20px;">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="mobile-padding" style="padding: 10px 20px 10px 20px;">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" style="padding: 10px 0px 10px 0px;">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="mobile-padding" style="padding: 10px 40px 10px 40px;"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%;" width="100%"> 
+            <tbody> 
+             <tr align="center"> 
+              <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td align="center" valign="middle">&nbsp;</td> 
+             </tr> 
+             <tr align="center"> 
+              <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: center; font-weight: 700; font-family: 'Helvetica', 'Arial', sans-serif;;" valign="middle">&nbsp;</td> 
+             </tr> 
+             <tr> 
+              <td align="center" valign="middle">&nbsp;</td> 
+             </tr> 
+             <tr align="center"> 
+              <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #000000; font-style: normal; text-align: left; font-weight: 300; font-family: 'Helvetica', 'Arial', sans-serif;" valign="middle">&nbsp;</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="mobile-padding" style="padding: 10px 20px 10px 20px;"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%; "> 
+            <tbody> 
+             <tr> 
+              <td align="center" style="padding: 10px 25px 10px 25px;"> 
+               <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width:100%;" width="100%"> 
+                <tbody> 
+                 <tr align="center"> 
+                  <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #FFFFFF; font-style: normal; text-align: left; font-weight: 700; font-family: 'Helvetica', 'Arial', sans-serif; padding-bottom: 10px; border-bottom: 1px solid #FFFFFF" valign="middle">&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" style="padding: 20px 0px 20px 0px;">&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" style="padding-top: 10px; border-top: 1px solid #FFFFFF">&nbsp;</td> 
+                 </tr> 
+                </tbody> 
+               </table> </td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="mobile-padding" style="padding: 10px 40px 10px 40px;">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="mobile-padding" style="padding: 40px 20px 20px 20px;">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.blessy.autos/e7b5CT2395n8gT511V4f14z1287v36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQLQnmK6H1X0NZ6qzwD2T/galloper-oiliest" alt=""/></body>
 </html>
 
-------=_Part_769_1826327368.1678462928127--
+------=_Part_46_45060432.1678465286021--
 
