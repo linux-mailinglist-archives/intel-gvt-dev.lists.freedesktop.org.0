@@ -1,43 +1,35 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B766B6B5FD6
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Mar 2023 19:44:59 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 632116B6005
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 11 Mar 2023 20:06:15 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 84F9C10E117;
-	Sat, 11 Mar 2023 18:44:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 29F0510E1C6;
+	Sat, 11 Mar 2023 19:06:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sat, 11 Mar 2023 18:44:56 UTC
-Received: from mail.monfree.autos (unknown [45.13.189.83])
- by gabe.freedesktop.org (Postfix) with ESMTP id 66B1810E117
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 11 Mar 2023 18:44:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=monfree.autos;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ahw_1st_month_special@monfree.autos; 
- bh=lhOzkTE1lo7iwQmwa4d1wZ9MSps=;
- b=S1W/UI5VYqqttnBOCcuJ82ioGjLcLnA1JeyJWlPC8KTGZVBPE0UROp/ToESAqudIym9uo5uEe1eo
- DEEGFu97Z7BTF5Kd/1oI3UwMAFZRUWaunkKjV0uJ4qR+qoWU2tczTbTLrZNpBgVy+iZexSw2uefJ
- +ryuckeAY3iAe/vAne8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=monfree.autos;
- b=hcAF2/QSTgnVnmRGVQgvW6tpULNtsc16mMjcCTvMIO4djgFDFP80Tbv1ZqorQZSlJiX/Kk8vJq4F
- YsdUQho4O0JHCkisZoo+n3kCGUHm0HzdlyA7Hnn0Cv4UyWFNMCy8MgJHIkJIcVVkZOJMZCFN9/jF
- l4Aol+upsia/txyf5xI=;
-Received: by mail.monfree.autos id h1j62g0001g6 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 11 Mar 2023 13:36:18 -0500 (envelope-from
- <ahw_1st_month_special-intel+2Dgvt+2Ddev=lists.freedesktop.org@monfree.autos>)
-Date: Sat, 11 Mar 2023 13:36:18 -0500
-From: "AHW 1st Month Special" <ahw_1st_month_special@monfree.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Will take the trouble of repairing your house - info here!
+Received: from leyou.com (unknown [115.182.12.213])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 18B1710E1C6;
+ Sat, 11 Mar 2023 19:06:11 +0000 (UTC)
+Received: from User (reverse.rain.network [197.184.170.215])
+ (user=security@leyou.com mech=LOGIN bits=0)
+ by fortimail.leyou.com  with ESMTP id 32BJ2xpA012638-32BJ2xpC012638;
+ Sun, 12 Mar 2023 03:03:02 +0800
+Message-Id: <202303111903.32BJ2xpA012638-32BJ2xpC012638@fortimail.leyou.com>
+From: "Mr. Mele Kolo Kyari Chief Executive,
+ NNPC (Member)"<Alhaji.JubrilHassa@collector.org>
+Subject: From: Mr. Mele Kolo Kyari (Group Managing Director · Nigerian National Petroleum Corporation) 09
+Date: Sat, 11 Mar 2023 21:03:22 +0200
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_319_39607150.1678559723112"
-Message-ID: <0.0.0.23.1D954485E8A7AAC.9CF9@mail.monfree.autos>
+Content-Type: text/plain;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-FEAS-AUTH-USER: security@leyou.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,52 +42,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: NNPCcontracts19994@contractor.net
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_319_39607150.1678559723112
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Nnpc towers, central business district,
+Business Offices, Lagos Business Office (LBO)
+13B, Oju Olobun Close, Off Adeola Odeku Street, Victoria Island,
+Lagos.
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>06031123</title> 
- </head> 
- <body style="padding: 7% 0%;"> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <div>
-    <a href="http://www.monfree.autos/Montague-bunions/4eu6A2rq395VZi8612Eq4f55O1294R36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQJQnoo7bJO1A0F5RlPwD" target="_blank"><img alt="" src="http://www.monfree.autos/22d6t2p39G5l7Bat13usr4f57y1294l36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQJQnoo5uq10C6zWwqpD/motioned-mistyped" width="100%" /></a>
-   </div> 
-   <footer id="footer"> 
-    <address class="new_footage"> 
-     <div class="new_fromt12" style="text-align: center;font-weight: 500; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; background-color: #051f47; padding: 2.5% 3%; font-size: 85%; display: block; line-height: 145%; color: #fff;">
-      <span>If you would like to discontinue all future updates from AmericanHomeWarranty.net, please <a href="http://www.monfree.autos/ad94g2395h8mq613t4f5YA6v1294K36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQJQnoo6UV1AV06Q@wD@k/motioned-mistyped" style="color: #e4a553;" target="_blank">Click Here</a> or write us: 96 Craig Street, STE 325, Ellijay, GA 30540.<br /> <br /> This an advertisement for AmericanHomeWarranty.net . </span>
-     </div> </address> 
-   </footer> 
-  </div> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <th style="text-align:center;font-weight:400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-size:16px;color:#333;display:block; border-collapse:collapse;margin-bottom:0px">&nbsp;</th> 
-    </tr> 
-    <tr> 
-     <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; padding: 20px 0px;" valign="middle">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="full-wrap" role="presentation" style="width: 600px; max-width: 600px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width="600"> 
-   <tbody> 
-    <tr> 
-     <td align="center" style="padding: 20px 40px 20px 40px;">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.monfree.autos/2ff5A23R95D8tO511O4f58F1294m36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQJQnoo6qH1G0M6jWlTwD/imperiled-petted" alt=""/></body>
-</html>
+From: Mr. Mele Kolo Kyari Chief Executive, (Member)
+Group Managing Director · Nigerian National Petroleum Corporation
 
-------=_Part_319_39607150.1678559723112--
+Attn: Ceo,
 
+My name is Mr. Mele Kolo Kyari Chief Executive, (Member) with the Nigeria national petroleum corporation (nnpc). Be informed that I and my colleagues Mr. Umar Ajiya, Chief Financial Officer, NNPC Ltd. (Member) awarded contract to a foreign firm (Günther Heigl Daimler AG construction company Germany) with contract NO NNPC/FMF/CBN/22/566/KADREF/98 for the maintenance of the Nigeria petroleum-chemical complex located at Kaduna, Nigeria.
+
+The contract amount was over invoiced to the cost of the contract to US$143,000,000.00. The original contractor (Günther Heigl Daimler AG construction company Germany) has been paid in full amount of his contract fund, what is now left is the top up sum of the U$D143, 000,000.00, (Million United State Dollars) which was over invoiced.
+
+However, we need reliable company / person who will provide us with a foreign account where to transfer and deposit this U$D143, 000,000.00 only investment, that is the reason we are soliciting for your sincere assistance to provide us with an account where to transfer this money as all modalities for the easy transfer of this money is now in place, the period of this transaction is only two weeks from the day we receive your bank account details.
+
+However, when this fund gets to your bank account, we will meet face to face as to sign investment arraignment and sharing. Note that 50% of our share will be invested in your country. We propose to give you 30% of the U$D143, 000,000.00, as my partners and I will get 60% of the money.
+
+The balance of 10% will be allocated to cover all expenses uncured by both partners, and be informed that this proposal is urgent and confidential.
+
+Please send to me your bank account details, full name, address and your private phone and fax number for easy communication, which will also be used in securing the necessary documents for easy transfer of the fund.
+
+Awaiting your urgent response.
+
+Best regards.
+
+Mr. Mele Kolo Kyari Chief Executive, NNPC (Member)
+Group Managing Director · Nigerian National Petroleum Corporation
+
+
+Disclaimer
+
+The information contained in this communication from the sender is confidential. It is intended solely for use by the recipient and others authorized to receive it. If you are not the recipient, you are hereby notified that any disclosure, copying, distribution or taking action in relation of the contents of this information is strictly prohibited and may be unlawful.
+
+This email has been scanned for viruses and malware, and may have been automatically archived by Mimecast, a leader in email security and cyber resilience. Mimecast integrates email defenses with brand protection, security awareness training, web security, compliance and other essential capabilities. Mimecast helps protect large and small organizations from malicious activity, human error and technology failure; and to lead the movement toward building a more resilient world. To find out more, visit our website.
