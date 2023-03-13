@@ -1,43 +1,142 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B936A6B6BCA
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 12 Mar 2023 22:37:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EBFBC6B6D2D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Mar 2023 02:49:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 816AB10E434;
-	Sun, 12 Mar 2023 21:37:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9FF8510E45F;
+	Mon, 13 Mar 2023 01:49:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1310 seconds by postgrey-1.36 at gabe;
- Sun, 12 Mar 2023 21:37:37 UTC
-Received: from mail.hitpay.autos (unknown [45.13.189.177])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5960610E430
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 12 Mar 2023 21:37:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hitpay.autos;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal.exclusive.event@hitpay.autos; 
- bh=4/2V0KHSTGDC4qp7rQRStXFfDsg=;
- b=jPlmIYZCL/+cpo8IefzMv2gCW9znO2jRDgK3eeUdJVFTa4tU+Wv6+nlw6SFBRjTh9Sez0YbAPT5R
- peETfgnfxdimTOJ7anuOBzjjguPm0m78z9OVFEYUXdTM67nuBUxEcaHhTj0rIRUR6i528K1uU70o
- 2lbw+NPp2QOADuDLUA0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hitpay.autos;
- b=PrFG+JTexM1hyoeZVieInBztB1UkgkahrtRipd2hXRUtyK9jelXqHCnpaVmdcIizxYBTbk2QMljf
- QWpm+VRXOFIVTanCO1yhZ783gO62wDNDBBEJ7yFSBPiAT4QbNfWXatrjbk+NATmvUA0B4M5U6PoU
- xXAO9Egha/KXZOp0nH8=;
-Received: by mail.hitpay.autos id h1pd3k0001g2 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 12 Mar 2023 18:32:28 -0400 (envelope-from
- <paypal.exclusive.event-intel+2Dgvt+2Ddev=lists.freedesktop.org@hitpay.autos>)
-Date: Sun, 12 Mar 2023 18:32:28 -0400
-From: "Paypal Exclusive Event" <paypal.exclusive.event@hitpay.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Paypal reward is just a few clicks away - While supplies last
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 981A010E45F;
+ Mon, 13 Mar 2023 01:49:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1678672183; x=1710208183;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=dWN07o7QLiyTEekmu4iqiMVHY/c8oT60w0Ne109L1Y0=;
+ b=a6rTcYx3cpvhyXt2ZOT5c1aDZyDdOy0O6bE/oyzuxGV38H+KSC226SIW
+ /eJ0y4ErjUvQ5CaHWM3b9SR6xfByA+GnqyVxbkFfTlRfjaabAI3ZN/0GY
+ o7g+pCx3mpSU6pypXZYLW/6lB+Sx2ULkym8g6Sr8qhAgoJKiyWgBeAx6A
+ oDvhLBOpiO3xjR3XKFq30+D7inIFBjvpbHGUaRWjKGF2vR0SF0lvebqRz
+ Y5RrvIIulhlsrXHfkQNUtOQlRpTpZWFb/jU95s2vYwwtKzNU0YsAmIQKl
+ D7tT/GCIk+lXMNlvuxGUA8N5MK4lBgUmANKXLrOJwboxMHuD+0Mu2Exq+ g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10647"; a="320892927"
+X-IronPort-AV: E=Sophos;i="5.98,254,1673942400"; d="scan'208";a="320892927"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Mar 2023 18:49:43 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10647"; a="767529789"
+X-IronPort-AV: E=Sophos;i="5.98,254,1673942400"; d="scan'208";a="767529789"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by FMSMGA003.fm.intel.com with ESMTP; 12 Mar 2023 18:49:42 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Sun, 12 Mar 2023 18:49:41 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Sun, 12 Mar 2023 18:49:41 -0700
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.45) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Sun, 12 Mar 2023 18:49:41 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZlDCWA6dYOXI0XPjGEl4dqiHGfKwcilE6KvqlFeZD4NhltVbixulBX5V/WAQb6xChxh6D0xO0FCZpabB3soCfI8PdvTIEPdvBzyh9SX+d8VvHEbi69cK+QlF9Yrf1DBuR9OciiQqMORuca4DvVwYSCHXH8/6Px//rMF+iKZB83pLojzF3MHbPuu0qut5e08skO3C+K4yqie/qeHmhIxFA9yI+tLNqy0HiVwUruWSNmFK44THzQr3A0DBBGzyXK3Ykk7q/vipHHZ87HA+Lyiqh/ducAtnGx/rUW9xCEPZuOt/fY3PS/Vv7EuiulbKKJ0J/898pPEAjXz8GLnGMHBzIQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=geHA11xPfOZK9XoNmWfaFLsNGgqND5x3JppzMeWSgc0=;
+ b=dUDrPT9ixB/DqmQ/pFIdZEmOtS2ylCKRHF/DHn1a8eKt/u1F39+d6z/xYF9l4Oz3CeqE5OQF4fdTRyNUf1VEp5ErorSNxyho1fgSOE88HkSU+fLHNJbTb9Cy3WvR3COVwXc7uleJaIrnJXBisxp20uGvpfGO7Df6ijGYwXTG3HNoOy7kNiU4SuVLJdh5QEbPtIE/16ZitwTTwpWq1oEEvf++Y7Lb3T9lYmr7nDLj9Q99RB4o1SKjYz7KfeWECJJz1DQ/iRrXld0VDUSPKH1/OvwXkqaTowmRgneTySYQNBXa9wInCqBNWJhduz5Xpyx4TN9vQsP9PavppEJZb7G1iA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by IA1PR11MB6124.namprd11.prod.outlook.com (2603:10b6:208:3ec::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.19; Mon, 13 Mar
+ 2023 01:49:39 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::1aac:b695:f7c5:bcac]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::1aac:b695:f7c5:bcac%8]) with mapi id 15.20.6178.024; Mon, 13 Mar 2023
+ 01:49:39 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: RE: [PATCH v1 5/5] vfio: Check the presence for iommufd callbacks in
+ __vfio_register_dev()
+Thread-Topic: [PATCH v1 5/5] vfio: Check the presence for iommufd callbacks in
+ __vfio_register_dev()
+Thread-Index: AQHZUb/ZJ6hrFx1b1EiVQiMXNtKcfq7zR4xAgADHT4CAA+ml0A==
+Date: Mon, 13 Mar 2023 01:49:39 +0000
+Message-ID: <BN9PR11MB5276D91FC606ED84D9686CB78CB99@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230308131340.459224-1-yi.l.liu@intel.com>
+ <20230308131340.459224-6-yi.l.liu@intel.com>
+ <BN9PR11MB5276BA4E1FF1345433FB8D338CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <ZAs419G/RNoEgPxq@nvidia.com>
+In-Reply-To: <ZAs419G/RNoEgPxq@nvidia.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|IA1PR11MB6124:EE_
+x-ms-office365-filtering-correlation-id: 569a8fca-6def-4d07-1687-08db2365351b
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: pZbY7rte7sOMt1llHuBBn2loDIAjKeeCR1J8vNVH+Cmw9knuE/O1bqJK9ZBNT3sM3BHaB7JQLPSpNSvV58cipbxghdvQZOfsO2aBNuvUUplDGVpU0LocuA5DR01Cpi4Pnl8i7BfqP9Q2T1g9rkWH3SF+psahKnrTz71lS/0qcB6yLnQmHrgeGqsyJGvKQFUtYQVnlyjGXstbwT2aU2n8BOUAl2su/h73PmsyaPDpews/k0dySdah5BA4IK/2+vcF06RQDlApzdvJQvOHsU3D9bl9FdNLP4sSExwJOxaeJtOrCx/gn/hccRUD7XJdRS8dBj1F32cjkoa+q52M6AOoydolnElldFLvH0MVZiuw9Ye/1SaIxzZKDMuDhWIH3dWncUxO4WYNjKcKpC+Q4/AFNDwoLIeE5XnxT1rpnhP8BC0SJD9dOLhWoyrWJe/nJ2GM8rvXKmrOr99UszF4Hrgm1J+b+FTC7teGpkxHYeadoKdVnsmoOHJLd3Om6xkMrlaBg3Bb2Hq3HiyTMTh4pg0/6+NzHVLnolJU09Z9IGk9jfAj/HkaxRGv5LZdvOzkp829sn3WzJKqvXEbB9VQ99nqojXp2jbGOqdITEJ0l5fs/z0qIZ4BZKDpPN10H/PsZ40COTs6ii9aSpOS0KfhGNpqJh5uCwTqx0Rp6CQNeZlgi++czWcnQF/x2Paer0ePSqmF5gp6CxgOrrNmvy/QR1VORQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(346002)(39860400002)(366004)(396003)(136003)(376002)(451199018)(7416002)(5660300002)(76116006)(55016003)(33656002)(83380400001)(66946007)(7696005)(186003)(26005)(8676002)(71200400001)(9686003)(478600001)(52536014)(4326008)(6916009)(66476007)(6506007)(66556008)(8936002)(64756008)(66446008)(38070700005)(86362001)(54906003)(41300700001)(38100700002)(82960400001)(2906002)(122000001)(316002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?LJ95r9n9dU8mGcfV2XszSfUxjMzepnJrFjlW6DhA2OutvlCG4bLfVkEXBZcu?=
+ =?us-ascii?Q?JTQ+ivivg9MQs880ghfJBfMHJZC1CD9TZ1maqa/DfdQ62XHoAbiw/IgNnCJO?=
+ =?us-ascii?Q?t+qVjO5FbNTYWuMeh5+l0Br3ByHT/x9hJX+qaHFVQlaSDSlyuhe1ZHPiHpyz?=
+ =?us-ascii?Q?fpbWJHFOsRmWExCPhR3giyYTs0xjpNZzX1mOJLtgRxRX4qObr2rwpBxMVSUb?=
+ =?us-ascii?Q?lagq/A06PFfAe7HgMaD9gXBmrGryp4G6ii1ztjRGhXyVqrg4x3iuK2pZckQw?=
+ =?us-ascii?Q?zQXzh+ZVXmC+TqmJwUHa5kcXbOpnvMJWYpD0wpKESu7StbOX+4eS+rN/fMOb?=
+ =?us-ascii?Q?Vh83CYyK123Y+TO2/Xoj2EnmJjb9NfVIxTnlFuBKuXkzs2cegjrsLFFWS0WZ?=
+ =?us-ascii?Q?rpkBZVJl+Nr9Fr5IMKaPmtMGZ5jYcwA0l2TXuisw1U/N312KHq89fiZtU/zF?=
+ =?us-ascii?Q?GBEn++5HaKC0GECXnT6Dj/5TfFsKWa+uzDtcoMXMSZ4AiSdUO/yPjqFj0bCd?=
+ =?us-ascii?Q?bprkv44hpTxTMd98EdSE7WoiJsbYw1vwX3hGmnXQkTbfZ6ZyM0S3j/RKXFWK?=
+ =?us-ascii?Q?nWf/Y938D3aFyrPBrO9mh8jl0f8wXxAYAjmrNkmJIVHNNdRbis9sqfEX9+uJ?=
+ =?us-ascii?Q?8MPDMejQeSjA+eT1pDcNjSXLhaPUZ0wxYJesJZXbRga7lDnzK6QMDBtW6m/6?=
+ =?us-ascii?Q?vkyS+vDy2gdN4EYCjZnchc08i36jEEK58S8EI9f3I3OKPnlYU96iL0rKUFSm?=
+ =?us-ascii?Q?fiBMURd8ttZZ2+QWH4xjtxIVfxN9DdSaL8kE1+f1FJThnDo3+BcKX5a93ll5?=
+ =?us-ascii?Q?sQ/UjAVVo5yKi949Ukr4d2/06+x0iFHW9lW8J7m4QHkKEDDrZojDTqOk0JaS?=
+ =?us-ascii?Q?TQk1Px5G0GMT9YQB9ua8tvnGcE+unq8zdRl17/YGWAyqa5dPUHq7HPsrclm+?=
+ =?us-ascii?Q?KOlvyFOFlKpre51MU36UUXCwjTWcbbAMHZLxWlRxWMPMxxEbAGKY7lAOln+H?=
+ =?us-ascii?Q?oHyUvY11JjEtMFtuYKhC7T7L7PTsx0Yqt7L6LS1fvOwEzGVDYwcUHbMQyjEy?=
+ =?us-ascii?Q?9kbukNnx0THfP/R+7NE+mOSDsoXX6v++WFPMivT+mTlgPTyVhvlIiUQGB5Uv?=
+ =?us-ascii?Q?bNAtjO3ZRjRi4J0IIi/B9342qhC+Ghiw1lDmgO9jBOmpwoUdfTa2X2xa2lTk?=
+ =?us-ascii?Q?JEDueUptd48+ib4YpNIDjeO8n4qNKoktpnOo01B58JYtBLYSsri2U0ymyvDM?=
+ =?us-ascii?Q?/DD/zQIUfr3TI4HdhTYd3LVJbNIAl3jcf5CDa69AeMyHk1uxTrq7W+dp8/+C?=
+ =?us-ascii?Q?i4LXalnu5l6FXQJnI+BL02H8J0G/bOezUW+hfr9df9zeeyxLzp38gKYem0vR?=
+ =?us-ascii?Q?APx3wTo3GJMHW8X45eWcdgPJ8J6e8TiXaYv8TXuGvMxG21yqF6rqEL2d8VOf?=
+ =?us-ascii?Q?VOQ6r6Vdv+YquKoG+1cq2FcEBujMjHbLW4w/IXsHTOGARrtq5AhRVbscZUMj?=
+ =?us-ascii?Q?qGml+8Fxpq/gopKMSWPosy4GcGm5ep0BjNMwus+Eh6RfOH4P7x8pOxmc7CPR?=
+ =?us-ascii?Q?r3GyXfl9Xx1JFF+AXyyFrHow6e7zEwkGevUECxzl?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_826_1100307405.1678655122211"
-Message-ID: <0.0.0.5B.1D95532873B09C2.3066F0@mail.hitpay.autos>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 569a8fca-6def-4d07-1687-08db2365351b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Mar 2023 01:49:39.2069 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: TUj2EKYWtl3fGB+GGegEfFrOCpGKqNzy5BkVFFOol3chIx9iD3PNKZNWvY9PK7z3+ZVgaPH1M0Ae0iECQkZVgw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6124
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,79 +149,73 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Zhao,
+ Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_826_1100307405.1678655122211
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+> From: Jason Gunthorpe <jgg@nvidia.com>
+> Sent: Friday, March 10, 2023 10:04 PM
+>=20
+> On Fri, Mar 10, 2023 at 02:15:32AM +0000, Tian, Kevin wrote:
+> > > From: Liu, Yi L <yi.l.liu@intel.com>
+> > > Sent: Wednesday, March 8, 2023 9:14 PM
+> > >
+> > > After making the no-DMA drivers (samples/vfio-mdev) providing
+> iommufd
+> > > callbacks, __vfio_register_dev() should check the presence of the
+> iommufd
+> > > callbacks if CONFIG_IOMMUFD is enabled.
+> > >
+> > > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> > > ---
+> > >  drivers/vfio/vfio_main.c | 5 +++--
+> > >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> > > index 43bd6b76e2b6..89497c933490 100644
+> > > --- a/drivers/vfio/vfio_main.c
+> > > +++ b/drivers/vfio/vfio_main.c
+> > > @@ -255,8 +255,9 @@ static int __vfio_register_dev(struct vfio_device
+> > > *device,
+> > >  {
+> > >  	int ret;
+> > >
+> > > -	if (WARN_ON(device->ops->bind_iommufd &&
+> > > -		    (!device->ops->unbind_iommufd ||
+> > > +	if (WARN_ON(IS_ENABLED(CONFIG_IOMMUFD) &&
+> > > +		    (!device->ops->bind_iommufd ||
+> > > +		     !device->ops->unbind_iommufd ||
+> > >  		     !device->ops->attach_ioas)))
+> > >  		return -EINVAL;
+> > >
+> >
+> > I don't think IS_ENABLED() check is necessary. those ops are
+> > defined in the driver side w/o a conditional CONFIG_IOMMUFD.
+> >
+> > We should warn out lacking of those ops to the driver developer
+> > as early as possible, instead of postponing it until someone
+> > starts to build kernel with CONFIG_IOMMUFD.
+>=20
+> The ops are NULL if !CONFIG_IOMMUFD. The previous code was OK because
+> it checked for non-null bind before demanding the others be non-null.
+>=20
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>07031223</title> 
- </head> 
- <body style="padding: 7% 0%;"> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <header> 
-    <div>
-     <span style="display: block; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 900; text-align: center; font-size: 120%;"><u>A Special Offer for Our Valued Users</u></span>
-    </div> 
-    <div>
-     <span style="display: block; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 900; text-align: center; font-size: 220%; margin: 5%;">PayPal</span>
-    </div> 
-    <div style="width: 22%; margin: auto;">
-     <a href="http://www.hitpay.autos/9356or239m5W86GK11S4f7dI129cR36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQcQn9m6X1uBW06bTwDz3/admirals-vaunted" target="_blank"><img alt="" src="http://www.hitpay.autos/Beecham-exempting/9724n2395Fs7Qa13B4f7gfoT129cm36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQcQn9m7W1R0vGq6zLkwDX" /></a>
-    </div> 
-   </header> 
-   <section> 
-    <div style="width: 85%; margin: auto;">
-     <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: justify; text-indent: 5%; font-size: 90%; line-height: 155%; display: block; margin: 2.5% 0%;">We wanted to take a moment to thank you for choosing <b>PayPal</b>. Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you.</span> 
-     <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: justify; font-size: 90%; line-height: 155%; display: block; margin: 2.5% 0%;">As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with <b>PayPal</b>.</span> 
-     <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: justify; font-size: 90%; line-height: 155%; display: block; margin: 2.5% 0%;">Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</span>
-    </div> 
-    <div style="text-align: center; margin: 4.5% 0%;">
-     <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 75%; display: inline-block; font-weight: 900; background-color: rgb(231, 231, 231); padding: 1.5% 2%; ;">For completing the survey, you can receive a $100 Gift!</span>
-    </div> 
-    <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; font-weight: noraml; line-height: 155%; font-size: 85%;  text-align: center; display: block;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</span> 
-    <div style="margin: 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 145%; text-align: center; font-weight: 900;">
-     <a href="http://www.hitpay.autos/9356or239m5W86GK11S4f7dI129cR36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQcQn9m6X1uBW06bTwDz3/admirals-vaunted" style="color: #ff7e14;" target="_blank">TAKE THE SURVEY</a>
-    </div> 
-    <span style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; text-align: center; font-weight: bold; line-height: 155%; font-size: 75%;  text-align: center; display: block; width: 90%; margin: auto;">Thank you again for your support. We look forward to hearing from you soon! Warm regards, The PayPal Survey</span>
-   </section> &nbsp; 
-   <hr /> 
-   <footer style="text-align: center;"> 
-    <address style=" max-width: 700px; margin: auto; font-weight: 900; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 65%; color: #000000;"> <p><small><span style="text-decoration: none; ">To bring your subscription to an close,</span><a href="http://www.hitpay.autos/7af6L23Wv95gJ86B12t4f7eJj129cg36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQcQn9m6J1Y0hr5kT2wD/Isolde-tighter" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Visit.This.Way </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <big><font id="Cushman"></font><span color="Clapeyron"></span><style style="automaton"></style></big><small></small><span></span><style></style><font dir="secondly"><font></font></font><small></small> </small></p> </address> 
-   </footer> 
-  </div> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="full-wrap" role="presentation" style="width: 600px; max-width: 600px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width="600"> 
-   <tbody> 
-    <tr> 
-     <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="middle">&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; padding: 20px 0px;" valign="middle">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"> 
-   <tbody> 
-    <tr> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td style="text-align:center;padding:10px 0;font-size:21px">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.hitpay.autos/markings-brutally/17a5r23t95pr85K12a4fK80F129cY36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQcQn9m7RUx1qs05zUwlD" alt=""/></body>
-</html>
-
-------=_Part_826_1100307405.1678655122211--
-
+ah I didn't note they are NULL defined.
