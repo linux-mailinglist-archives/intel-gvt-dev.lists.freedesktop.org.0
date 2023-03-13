@@ -1,38 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7A8A6B797C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Mar 2023 14:52:26 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA53A6B7A3C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 13 Mar 2023 15:23:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9E9E010E519;
-	Mon, 13 Mar 2023 13:52:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7637910E545;
+	Mon, 13 Mar 2023 14:22:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Mon, 13 Mar 2023 13:52:23 UTC
-Received: from mta-c3pooltaf.cluster3.convio.net
- (mta-c3pooltaf.cluster3.convio.net [216.235.195.152])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 53C9110E527
+X-Greylist: delayed 362 seconds by postgrey-1.36 at gabe;
+ Mon, 13 Mar 2023 14:22:51 UTC
+Received: from mail.clapfilter.autos (unknown [45.13.189.5])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EB2D510E545
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Mar 2023 13:52:23 +0000 (UTC)
-Received: from 10.0.31.225 (10.64.82.34) by mta-c3pooltaf.cluster3.convio.net
- id h1sl9e20dd8k for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Mar 2023 08:46:49 -0500 (envelope-from
- <email_feedback_handler@mta-inbound.cluster3.convio.net>)
-Date: Mon, 13 Mar 2023 08:46:49 -0500 (CDT)
-From: Jennifer Brown <donations@hamiltonhealth.ca>
+ Mon, 13 Mar 2023 14:22:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=clapfilter.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=leaffilter_free_estimate_today@clapfilter.autos; 
+ bh=bkVb+1M1bTWvU2QdtD90sWwa03c=;
+ b=hXefWMCIXwYTAr2NSKRh8JIIbUpoBJDEMkKg72xmSeKHABP6RF40+9ctii3X5C9qkGJw9TE+22CE
+ JSssfbG/9wwKvtPku1NykKaTeD96aFmlzu2gvl5bIS40SyUMNbEdiXjXPmeFsoGtPnOegBDcuPLc
+ yRuIK1bQJOu++QakTvE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=clapfilter.autos;
+ b=kA6L5d2sikPsuJL1mV01fu30FeDg5/GDtZy7nhjKWHiSXznr6t4SksrFG0rY5+XYzXsjcZf8dD55
+ /nuxSIND1tRl4HM9I8UNnXCMTUTVTXjRim811n7aqG1SshnJ9rblVaJN907eREOhodCDVGG7aQVE
+ lKu7IBBx+6R5PqvGiU4=;
+Received: by mail.clapfilter.autos id h1soro0001g6 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 13 Mar 2023 10:07:33 -0400 (envelope-from
+ <leaffilter_free_estimate_today-intel+2Dgvt+2Ddev=lists.freedesktop.org@clapfilter.autos>)
+Date: Mon, 13 Mar 2023 10:07:33 -0400
+From: "LeafFilter Free Estimate Today"
+ <leaffilter_free_estimate_today@clapfilter.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <687970471.111791678715209927.JavaMail.www@app30034.cl3int.convio.net>
-Subject: Greeting my beloved,
+Subject: Keep your gutters clean with LeafFilter - FOREVER!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_11176_2011500127.1678715209927"
-Organization: Hamilton Health Sciences Foundation
-X-TAF-Origin-IP: 102.215.253.76
-X-Gateway: c3poolcons
-XData: 1010,4KE@4MnteQQ@neKt@7wFTj5jdwxTfcxTcF
-X-ConvioDeliveryGroup: poolb
+ boundary="----=_Part_625_1948912324.1678716352193"
+Message-ID: <0.0.0.45.1D955B527F5BA42.3645B@mail.clapfilter.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,193 +51,56 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Jennifer Brown <jennybrown0111@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_11176_2011500127.1678715209927
-Content-Type: text/plain; charset=iso-8859-1
+------=_Part_625_1948912324.1678716352193
+Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-
-My Name is Miss Jennifer Brown. I would like to inquire about your
-services to be my foreign partner/investor and help me transfer and
-manage my funds by investing in profitable ventures such as buying
-company shares or Properties in your country. I have a reasonable
-amount that I inherited from my late father, as I would like you to
-help me invest in your country.
-I am attaching my personal photos, proof of payment of the fund, my
-international passport, my late father's death certificate and a four
-page will from my then dad. I send you all this so that you can trust
-that you are dealing with a real personNote: Below are the main reasons
-I am contacting you.(1) To provide a new empty bank account in which
-these funds would reside. if you do not want us to use your personal
-account.(2) Acting as custodian of this fund because the bank insisted
-that their agreement with my father was that I get a foreign partner
-first to release the fund.(3) To make arrangements for me to come over
-to your country to promote my education and to obtain a residence
-permit in your country.Please reply as soon as you have read this
-message for more information and evidence.Sincerely,Miss Jennifer
-Brown.
-
-
-
-Please visit Hamilton Health Sciences Foundation today!
-
-
-
-
-<p>
-
-<a href="http://events.hamiltonhealth.ca/site/TR?px=1199708&pg=personal&fr_id=2363&et=WgazYYjtOAYLJRslD3yG7kOXCrx6Q_VJnYN82nmlMdFxtjrzXWXUpQ">Click here to visit my personal page.</a><br />
-
-<span class="Smaller">If the text above does not appear as a clickable link, you can visit the web address:<br />
-http://events.hamiltonhealth.ca/site/TR?px=1199708&pg=personal&fr_id=2363&et=WgazYYjtOAYLJRslD3yG7kOXCrx6Q_VJnYN82nmlMdFxtjrzXWXUpQ</span>
-</p>
-
-
-
-<img src="http://events.hamiltonhealth.ca/site/PixelServer?tr=GyWfRrA1PC8uevSYS7EZnu5m5hpBnq0AblAMG2Jm9awQDh2v1lEcVA" height="1" width="1" alt=""/>
-
-
-<p>If you no longer wish to receive email messages sent from your friends on behalf of this organization, please follow the link below:
-http://events.hamiltonhealth.ca/site/TellFriendOpt?action=optout&toe=f6f7346039ee834ebe24b46485a0211794957aaf5601df17950dbea461e0c06a8dba4b875b9bc592</p>
-
-------=_Part_11176_2011500127.1678715209927
-Content-Type: text/html; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
-
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html;charset=3DISO-8859-1=
-">
-<title>Hamilton Health Sciences Foundation</title>
-
-<link href=3D"http://events.hamiltonhealth.ca/css/UserGlobalStyle.css" rel=
-=3D"stylesheet" type=3D"text/css" />
-<link href=3D"http://events.hamiltonhealth.ca/css/CustomStyle.css" rel=3D"s=
-tylesheet" type=3D"text/css" />
-
-</head>
-<body>
-
-
-<style type=3D"text/css">
-
-</style>
-
-<p><img src=3D"http://events.hamiltonhealth.ca/images/content/pagebuilder/K=
-P-Email-Template.jpg" border=3D"0" alt=3D"McMaster Children's Hospital Foun=
-dation Kindness Project" width=3D"800" height=3D"200" /></p>
-<p>&nbsp;</p>
-<table class=3D"AINoBorder" style=3D"border-collapse: collapse;" border=3D"=
-0" cellspacing=3D"0" cellpadding=3D"0" width=3D"600">
-<tbody>
-<tr valign=3D"top">
-<td>
-</td>
-</tr>
-<tr valign=3D"top">
-<td width=3D"100%">
-<p><br></p><p><br></p><div style=3D"font-size: small;"><span style=3D"font-=
-size: 12.8px;">My Name is Miss Jennifer Brown. I would like to inquire abou=
-t your services to be my foreign partner/investor and help me transfer and =
-manage my funds by investing in profitable ventures such as buying company =
-shares or Properties in your country. I have a reasonable amount that I inh=
-erited from my late father, as I would like you to help me invest in your c=
-ountry.</span><br></div><div dir=3D"ltr" style=3D"font-size: small;"><div d=
-ir=3D"ltr"><div style=3D"font-size: 12.8px;"><div style=3D"font-size: 12.8p=
-x;"><div style=3D"font-size: 12.8px;"><div style=3D"font-size: 12.8px;">I a=
-m attaching my personal photos, proof of payment of the fund, my internatio=
-nal passport, my late father's death certificate and a four page will from =
-my then dad. I send you all this so that you can trust that you are dealing=
- with a real person</div><div style=3D"font-size: 12.8px;">Note: Below are =
-the main reasons I am contacting you.</div><div style=3D"font-size: 12.8px;=
-">(1) To provide a new empty bank account in which these funds would reside=
-. if you do not want us to use your personal account.</div><div style=3D"fo=
-nt-size: 12.8px;">(2) Acting as custodian of this fund because the bank ins=
-isted that their agreement with my father was that I get a foreign partner =
-first to release the fund.</div><div style=3D"font-size: 12.8px;">(3) To ma=
-ke arrangements for me to come over to your country to promote my education=
- and to obtain a residence permit in your country.</div><div style=3D"font-=
-size: 12.8px;">Please reply as soon as you have read this message for more =
-information and evidence.</div><div style=3D"font-size: 12.8px;">Sincerely,=
-</div><div style=3D"font-size: 12.8px;">Miss Jennifer Brown.</div></div></d=
-iv></div></div></div><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p=
->
-
-
-
-
-
-
-<p>
-
-<a href=3D"http://events.hamiltonhealth.ca/site/TR?px=3D1199708&amp;pg=3Dpe=
-rsonal&amp;fr_id=3D2363&et=3DseTOSMeILCIbreotrR7An6dIKkRcEEPTIoMcPfUL1qERtM=
-ODCZ9FvQ">Click here to visit my personal page.</a><br />
-
-<span class=3D"Smaller">If the text above does not appear as a clickable li=
-nk, you can visit the web address:<br />
-http://events.hamiltonhealth.ca/site/TR?px=3D1199708&amp;pg=3Dpersonal&amp;=
-fr_id=3D2363&et=3DseTOSMeILCIbreotrR7An6dIKkRcEEPTIoMcPfUL1qERtMODCZ9FvQ</s=
-pan>
-</p>
-
-
-
-<img src=3D"http://events.hamiltonhealth.ca/site/PixelServer?tr=3DCUKKglIAE=
-m8wRvofVSheQDYsn6th2Bdlg2mDVLm17mXRWNpaIIdphQ" height=3D"1" width=3D"1" alt=
-=3D""/>
-
-
-<p><p>
-If you no longer wish to receive email messages sent from your friends on b=
-ehalf of this organization, please
-<a href=3D"http://events.hamiltonhealth.ca/site/TellFriendOpt?action=3Dopto=
-ut&amp;toe=3Df6f7346039ee834ebe24b46485a0211794957aaf5601df17950dbea461e0c0=
-6a8dba4b875b9bc592">click here</a>
-or paste this URL into your browser: http://events.hamiltonhealth.ca/site/T=
-ellFriendOpt?action=3Doptout&amp;toe=3Df6f7346039ee834ebe24b46485a021179495=
-7aaf5601df17950dbea461e0c06a8dba4b875b9bc592
-</p></p>
-
-</td>
-</tr>
-<tr valign=3D"top">
-<td>
-<p>&nbsp;</p>
-</td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;</p>
-<p><img src=3D"http://events.hamiltonhealth.ca/images/content/pagebuilder/T=
-ransformed_bar_address.jpg" border=3D"0" alt=3D"HHSF Footer" width=3D"800" =
-height=3D"69" /></p>
-
-
-<div id=3D"cv-poweredBy">
-<a href=3D"http://www.blackbaud.com/" title=3D"online fundraising, advocacy=
- & donor database" >
-
-
-<img src=3D"https://events.hamiltonhealth.ca/site/../images/powered_by_conv=
-io.gif" alt=3D"powered by Blackbaud" />
-
-
-</a>
-<br />
-<a href=3D"http://www.blackbaud.com" title=3D"Nonprofit Fundraising Softwar=
-e" >nonprofit software
-</a>
-</div>
-
-
-
-</body>
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <title>01031323</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <header class="font:titne"> 
+    <h3><a href="http://www.clapfilter.autos/ferries-bells/e9a6W2u3k95S86OY13L4f8Vy1K129dw36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQcQn9n7F1Gh0Xu5GWwDl" target="_blank"><img alt="" src="http://www.clapfilter.autos/aU75B2x395F7avy12b4f83On129dJ36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQcQn9n6s10iwn6BW@wD2/Toynbee-behaving" width="100%" /></a></h3> 
+   </header> 
+   <footer style="max-width: 620px; margin: auto; "> 
+    <address style="text-align: center; background-color: #102946; font-size: 70%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; color: #ffffff; padding: 2.5% 3% ; outline:  solid 2px #000; "><span>This is an advertisement. This message has been sent to you through an affiliate. Offer expires 12/31/2023<br /> To be removed from receiving future emails, <a href="http://www.clapfilter.autos/9356a2h39A5O8Q6D13zij4f82J129do36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQcQn9n6h10GoW5KPwBD/ferries-bells" style="font-style: normal; font-weight: normal; text-decoration: underline; color: #00ff55; " target="_blank">Unsubscribe here</a>.</span><br /> <br /> <span style="font-weight: normal; ">Converge Direct LLC | 2 Depot Plaza, Suite 401 Bedford Hills, NY 10507</span></address> 
+   </footer> 
+  </div> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%"> 
+   <tbody> 
+    <tr align="center"> 
+     <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 18px; line-height: 26px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 300; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" valign="middle"> </td> 
+    </tr> 
+    <tr align="center"> 
+     <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 18px; line-height: 26px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 300; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" valign="middle"> 
+      <ul style="list-style-type: none;"> 
+       <li></li> 
+       <li></li> 
+       <li></li> 
+       <li></li> 
+       <li></li> 
+       <li></li> 
+      </ul> </td> 
+    </tr> 
+    <tr align="center"> 
+     <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 22px; line-height: 30px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 300; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; text-decoration: underline;" valign="middle"> </td> 
+    </tr> 
+    <tr align="center"> 
+     <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 20px; line-height: 28px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 300; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" valign="middle"> </td> 
+    </tr> 
+   </tbody> 
+  </table>  
+ <img src="http://www.clapfilter.autos/Polaroid-brigs/4e05R239t5kZ8m512g4f8M4A129dq36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQcQn9n6tB1p0n5OqwD0" alt=""/></body>
 </html>
 
-------=_Part_11176_2011500127.1678715209927--
+------=_Part_625_1948912324.1678716352193--
 
