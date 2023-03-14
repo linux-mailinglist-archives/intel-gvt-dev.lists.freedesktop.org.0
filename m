@@ -2,42 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B733D6B869E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 01:08:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EE3DD6B87AC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 02:42:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 87F8410E699;
-	Tue, 14 Mar 2023 00:08:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ADC2010E6B7;
+	Tue, 14 Mar 2023 01:42:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 338 seconds by postgrey-1.36 at gabe;
- Tue, 14 Mar 2023 00:02:48 UTC
-Received: from mail.missmax.autos (unknown [45.13.189.104])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9FF8A10E68D
+X-Greylist: delayed 1237 seconds by postgrey-1.36 at gabe;
+ Tue, 14 Mar 2023 01:41:23 UTC
+Received: from mail.openups.autos (unknown [45.13.189.107])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D3BB010E6B7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 14 Mar 2023 00:02:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=missmax.autos;
+ Tue, 14 Mar 2023 01:41:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=openups.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=max-heater-pro@missmax.autos; 
- bh=nQFTyT+zjVPnUwgZMsEuFDa0r1M=;
- b=K9HA5Hj0oN+TEDcF4fC+gMTeVNFKCdcdvQl8o2OgOlC5+6g2Wt6rqvf8w7O2OzURiuMWdv4069U0
- EdbeyS+s03X6iVb+/ullisydDoMdjUNUufqxu8HugozrXMpgtl2RQkS0usAd9gl35HadXSDMvWoG
- 0kwLMvwz7h857/xfvyg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=missmax.autos;
- b=gE/Va9vck8I/hPuxdEeVzTSBhl7/kbkdn0lTNCL4ECDA5AouiwXE/ecrG64zmmBOlRW5Vig9LWTN
- PGJqzRT4/7eCQVkZbOphBZLHJml1HjjogVxAa7tNNqdM2HizcrTgqAAn80NdFtjz7FWDyZ914ncU
- y6rUjY4UW+V9yBxlUD8=;
-Received: by mail.missmax.autos id h1usr80001gg for
+ i=ups_feedback@openups.autos; bh=hM5u040GqFIjWU4JFmlJ11P/OzU=;
+ b=b9qhA4zMLBL0tUbdnSEYKYEiKt2J/MgDORkbCFBF1/Hl+bZnRsXwotK27q7CPaiiyUwoUeqPzikv
+ wrIz5aOf5yxd+AVf7mYv3/s0EdVgkzT4o6mDhGYX/PiVc0iebeqAuxgsUumc7es/bF8pmkUZsOB5
+ kh/2cyJF0RQtWkSxmVw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=openups.autos;
+ b=eMQXx4jxuKPJobMur80kDfSMrMgApFTceqOSajDZn++tH+xmfWVZQYlStKkU2VH2jpY7C2y0dV1h
+ J4KRyblTypv89e5Ray1QH2RrH0gXjpJiCI7zXsNDOB92kqLI2zSvovKphVS573GRHmY1gIudwLt3
+ eoD1xeluEh+r/inG9h4=;
+Received: by mail.openups.autos id h1v8ce0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 13 Mar 2023 19:47:54 -0400 (envelope-from
- <max-heater-pro-intel+2Dgvt+2Ddev=lists.freedesktop.org@missmax.autos>)
-Date: Mon, 13 Mar 2023 19:47:54 -0400
-From: "Max Heater Pro" <max-heater-pro@missmax.autos>
+ Mon, 13 Mar 2023 21:14:44 -0400 (envelope-from
+ <ups_feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@openups.autos>)
+Date: Mon, 13 Mar 2023 21:14:44 -0400
+From: "UPS Feedback" <ups_feedback@openups.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The Best Holidays Gift Will Keep You Warm & Cozy
+Subject: ups Appreciation
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_535_645267505.1678751207354"
-Message-ID: <0.0.0.3B.1D956063B367F0A.4699CA@mail.missmax.autos>
+ boundary="----=_Part_541_1526533815.1678756423759"
+Message-ID: <0.0.0.3C.1D956125C6E0D80.38486A@mail.openups.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_535_645267505.1678751207354
+------=_Part_541_1526533815.1678756423759
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,67 +62,71 @@ Content-Transfer-Encoding: 7bit
   <meta charset="UTF-8" /> 
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>09031323</title> 
+  <title>10031323</title> 
  </head> 
  <body style="padding: 7% 0%;"> 
   <div style="max-width: 600px; margin: auto;"> 
-   <div> 
-    <header>
-     <img alt="" src="http://www.missmax.autos/42b6C2V39K5i7Jar13m4fOaaQ_12a1z36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhQn9K7qJhZ10W5H@wPD/Newell-radiations" width="100%" /> 
-     <div style="padding: 20px;">
-      &nbsp;
+   <div style="max-width: 600px; margin: auto;"> 
+    <header class="Ups_text_informativo_grove"> 
+     <div id="contenedor_ups-_envios-_surve">
+      <span class="new_030225" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 135%; display: block; text-align: center;">A Special Offer for Valued Customers </span>
      </div> 
-     <span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; font-weight: noraml; text-align: center; width: 85%; margin: auto; font-size: 150%; line-height: 150%;">How To Heat Any Space In My House In Under 5-Minutes, WITHOUT Using Your Home's Costly Heating System</span>
-    </header> &nbsp; 
-    <section> 
-     <div style="text-align: center;">
-      <a href="http://www.missmax.autos/7374O2395nvH8611s4fa7x12a1D36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQhQn9K6gso10X6o2@wDU/postage-audiologists" target="_blank"><img alt="" src="http://www.missmax.autos/40d4G2395nL7Fa13u4FfavbC12a1C36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhQn9K5V1r0X5zTBwD/Newell-radiations" width="90%" /></a>
-     </div> 
-     <span style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; width: 85%; margin: auto; font-size: 150%; display: block; color: #FE814B;">Make any room warm and cozy with the new portable heater</span>
-     <br /> &nbsp; 
-     <div>
-      <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; display: block; font-weight: noraml; text-align: justify; width: 85%; margin: auto; font-size: 110%; line-height: 150%;">The <a href="http://www.missmax.autos/7374O2395nvH8611s4fa7x12a1D36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQhQn9K6gso10X6o2@wDU/postage-audiologists" target="_blank">Max Heater Pro</a> is a powerful and efficient convection heater. It?s designed to rapidly heat up any room from top to bottom while saving you up to 30% on electricity.<br /> <br /> But what if I told you that the <a href="http://www.missmax.autos/7374O2395nvH8611s4fa7x12a1D36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQhQn9K6gso10X6o2@wDU/postage-audiologists" target="_blank">Max Heater Pro</a> is having their <b>50% promotional discount</b>, where you can order yours for just $49! AND, if you <b>buy in bulk you can get an even larger discount of up to 70%!</b> A truly remarkable discount for a limited time (Whi
- le stock lasts). </span>
-      <br /> &nbsp; 
-      <div style="text-align: center;"> 
-       <div style="max-width: 45%; margin: auto; display: inline-block;;">
-        <a href="http://www.missmax.autos/7374O2395nvH8611s4fa7x12a1D36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQhQn9K6gso10X6o2@wDU/postage-audiologists" target="_blank"><img alt="" src="http://www.missmax.autos/2fM5V239W5UX7aX12s4facRC12a1D36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQhQn9K5LIZ106pywDL@/squarer-inflate" width="100%" /></a>
-       </div> &nbsp; 
-       <div>
-        <a href="http://www.missmax.autos/7374O2395nvH8611s4fa7x12a1D36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQhQn9K6gso10X6o2@wDU/postage-audiologists" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 145%; padding: 2.5% 7%; background-color: #FE814B;">Learn more</span></a>
+    </header> 
+    <section id="falta_mucho"> 
+     <div class="formacion_qt"> 
+      <div>
+       <span style="text-align: center; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;text-align: center; display: block; padding: 3% 0% 0%; font-size: 250%;">UPS</span>
+      </div> 
+      <div style="text-align: center; padding: 1.5% 0% 2.5%;">
+       <a href="http://www.openups.autos/casualties-noontime/5945p23M95r8O6D12Q4fafJk12a2w36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQsQndm5at1V05wX0wD" target="_blank"><img alt="" src="http://www.openups.autos/1d35Qo2395Bi7at13U4sJfb1r12a2j36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQsQndm6QG1p0X5MXwD@/outlawed-uninitialized" width="15%" /></a>
+      </div> 
+      <span style="display: block; font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 500; text-align: center; font-weight: bold;">Dear intel-gvt-dev@lists.freedesktop.org</span> 
+      <div style="text-align: center; padding: 4.5% 0%;">
+       <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 95%; text-align: justify; line-height: 150%; display: block; width: 85%; margin: auto; text-indent: 5%;">We wanted to take a moment to thank you for choosing <strong>UPS</strong> for your shipping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. </span>
+       <br /> 
+       <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 95%; text-align: justify; line-height: 150%; display: block; width: 85%; margin: auto; text-indent: 5%;">As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS. Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span> 
+       <div style="text-align: center; padding: 5% 0%;">
+        <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 80%; display: inline-block; padding: 1.5% 2%; background-color: rgb(248, 248, 248); font-weight: bold;">For completing the survey, you can receive a $100 Gift! </span>
        </div> 
-       <br /> &nbsp;
+       <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 95%; display: block; line-height: 150%; width: 85%; margin: auto; padding: 0% 0% 5%;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span> 
+       <div style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold; font-size: 120%; padding-bottom: 5%;">
+        <a href="http://www.openups.autos/casualties-noontime/5945p23M95r8O6D12Q4fafJk12a2w36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQsQndm5at1V05wX0wD" style=" color: rgb(79, 47, 54);" target="_blank">TAKE THE SURVEY</a>
+       </div> 
+       <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 85%; display: block; line-height: 150%; width: 75%; margin: auto; padding: 0% 0% 5%;">Thank you again for your support. We look forward to hearing from you soon Warm regards, </span>
+       <br /> &nbsp; 
+       <hr color="bronw" size="3px" width="55%" />
+       <span style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 85%; display: block; line-height: 150%; width: 75%; margin: auto; padding: 0% 0% 5%;"> <b>The UPS Survey Team</b> </span>
       </div> 
      </div> 
-     <img alt="" src="http://www.missmax.autos/a9d6fQY2395P7Haj11r4fadB12a1n36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhQn9K7C1k0pkA6JJXwMD/whining-civilian" style="background-color: #000000; display: block;" width="100%" />
     </section> 
+    <hr /> 
+    <footer style="padding-top: 10px; text-align: center;"> 
+     <address style="font-size: 65%; font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold;"> <p class="unsubscribe"><span style="text-decoration: none; ">To modify your email choices,</span><a href="http://www.openups.autos/bawling-aviators/c424N2395dLC8613Q4rXfb0k12a2p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQsQndm6n1px0X6jNj@wD" style="text-decoration-line: none; color: #000"> <span>Visit-Ahead-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font style="absences"></font><small><span></small></span><small><style title="causer"></small></style></p> </address> 
+    </footer> 
    </div> 
-   <footer> 
-    <address style="background-color: rgb(100, 100, 100); padding: 2.5% 2%; text-align: center; border-top: solid 2px #000;"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 75%; font-weight: bold; color: #fff;">If you do not wish to receive future messages click here to <a href="http://www.missmax.autos/6656o2G39w5E8C6H13Yi4Ofa8j12a1K36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQhQn9K7HPkD10J6W@l@wD/crusaders-multiplexers" style="text-decoration: none;" target="_blank">unsubscribe</a><br /> <br /> <a href="http://www.missmax.autos/60b5O2D395VR8L612O4xfa9C12a1D36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQhQn9K6r1Vqm05mlwDl/whining-civilian" style="text-decoration: none;" target="_blank">Heatmaxr Pro</a> | 3 Germay Dr, | Unit 4 #1611 | Wilmington DE 19804 </span></address> 
-   </footer> 
-  </div> 
-  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 255px;" width="250"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; padding-bottom: 5px;" valign="top">&nbsp;</td> 
-        </tr> 
-        <tr align="center"> 
-         <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 16px; line-height: 20px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 400; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" valign="middle">&nbsp;</td> 
-        </tr> 
-        <tr align="center"> 
-         <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 12px; line-height:16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 400; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" valign="middle">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.missmax.autos/punts-lossy/3f04A2395zF8z513vxH4faeO12a1l36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQhQn9K5y_1k05FLw0D" alt=""/></body>
+   <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 255px;" width="250"> 
+        <tbody> 
+         <tr> 
+          <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; padding-bottom: 5px;" valign="top">&nbsp;</td> 
+         </tr> 
+         <tr align="center"> 
+          <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 16px; line-height: 20px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 400; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" valign="middle">&nbsp;</td> 
+         </tr> 
+         <tr align="center"> 
+          <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 12px; line-height: 16px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 400; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" valign="middle">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.openups.autos/subverted-lords/e9a5k2H395hx85w11d4fb2X12a2T36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQsQndm6t1TvL06UMwyBD" alt=""/></body>
 </html>
 
-------=_Part_535_645267505.1678751207354--
+------=_Part_541_1526533815.1678756423759--
 
