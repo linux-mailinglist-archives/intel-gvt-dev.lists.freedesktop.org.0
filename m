@@ -2,64 +2,102 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B0CA6B9CB2
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 18:14:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3470E6B9F0D
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 19:51:09 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0963610E182;
-	Tue, 14 Mar 2023 17:14:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9AA8810E878;
+	Tue, 14 Mar 2023 18:51:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yw1-x1149.google.com (mail-yw1-x1149.google.com
- [IPv6:2607:f8b0:4864:20::1149])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A1AAD10E18D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 14 Mar 2023 17:14:00 +0000 (UTC)
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-536cad819c7so171243917b3.6
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 14 Mar 2023 10:14:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1678814040;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=82+4kn0WzOMA+pL+/2ulEiwUoPfQ6iWm426J0EFz0Qk=;
- b=U8QabPjpj3tRB1alKWIulERmrKeo4fPI/DLtEa2FoBKUcXyofw17LgF2Y5SFLCS1GJ
- RhXoBMfkErMQVwBXSxDp2YsbmM+Uis7X/e0lTCv3DqVzG6TEzx35PhKPr27+0oteywq5
- UIJ4JEDcaF2TgxDXuIyx06tB+Hr/FqPC5i6kHRO6208NDHTjNZRSa6RctBiuUa9+3R84
- YrD5bWapXhlHnzQ7ruDUjhDw0qObni4RGId7NFERVEvBCTC1OEoaeNdEvTUtxtovx+2H
- 5seJLaAsBy2LVNOXSPuyD4CS9K2lwhOs+Q2wtYDAlnlrg9Xrq5tFWyGJphA77EfAYRyY
- 51dA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678814040;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=82+4kn0WzOMA+pL+/2ulEiwUoPfQ6iWm426J0EFz0Qk=;
- b=SMINvu43XlAGXSJPpRN11UQPYIKYGEm9yKymopF3e7sZwVLEY2W3Pnfk5esTl/GoRw
- 3tdTsXbX8YYh9+X/ZSBBqw+4b8nlk+bQn4zImZxh+s5sXHfZh8/dDym4+HL8TsbOhntE
- jVZ1xZ8SDZZJThAkKOGVWS+/OJ3zoLZNc5vC9ofV5524IKLjYJ/SwQLoml6BR2kJyM2i
- 653uGh0lCvRge2fhD6MI2ZPCLxBkB9HKk7wiMW1Otv6LWmYS4oTcAhf2D3K73VGaIfVo
- FilppIh2Ko59qKkla7ddLp+mb8rXDUxHO62WAevr6MTzBfci22cl0Emg/vjbEgVOpcvR
- 2q2A==
-X-Gm-Message-State: AO0yUKUA/FE8cBns1bOw0CmXCzPmjIEPwvqWeyD3Bpm/oosvg5+jNB3x
- LyMPSOjf/LnuIZQlyrnhVdPYYw8oUmw=
-X-Google-Smtp-Source: AK7set8MGdiy3EJyAGeWv8DcIrjpzWmMqnisR9EmRMRknRhqatoCmUkjpg17ULR4ykMvQ1ab8uiWTwZSXa4=
-X-Received: from zagreus.c.googlers.com
- ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a81:400c:0:b0:540:62be:42b with SMTP id
- l12-20020a81400c000000b0054062be042bmr8649700ywn.6.1678814039855; Tue, 14 Mar
- 2023 10:13:59 -0700 (PDT)
-Date: Tue, 14 Mar 2023 10:13:58 -0700
-In-Reply-To: <ZA/lYL7dsv7xBA01@yzhao56-desk.sh.intel.com>
-Mime-Version: 1.0
-References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-5-seanjc@google.com>
- <ZA/lYL7dsv7xBA01@yzhao56-desk.sh.intel.com>
-Message-ID: <ZBCrVkDjaFAIP5vc@google.com>
-Subject: Re: [PATCH v2 04/27] drm/i915/gvt: Incorporate KVM memslot info into
- check for 2MiB GTT entry
-From: Sean Christopherson <seanjc@google.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11on20600.outbound.protection.outlook.com
+ [IPv6:2a01:111:f400:7eae::600])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8924110E1CD;
+ Tue, 14 Mar 2023 18:51:05 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WLSEDGW3uSAyMbWn6je0+e3mSb4XgkZkKz7gCwHbxBk/EeAmcHxtYVKYq6YiOvsID0/B6/+K80hpEykDaprxpPrWeVwbTLjM+j5pzyrG1RMRdyL1YPB9wrrRgfcPG5CM+WTH5HxkFv0Ibie3VLrWKnUt6TAe436MGmW4pgErYJrS0zz5LCoxKiByhi1bJ+2ZUSN8vruQiFa9sL8fpFM+b9iHpKScQdZ3LRWNnCdYlnpqn1SLz6pom6XITc9f9I2W1l3Izsvoi57OTofo/2SoK4Nwr9ohDXjAhLNg6vZY6tZDd/KDVvvKAII2bUY/Ws6MK+MtMeaLTMxqverQVdYglw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5WpH4Wlw2HRL74ZMa+jdOPBPnx9kw1C6RXBFoPtyI5s=;
+ b=ednbQPSK6C5D308gQ47WGd4ur76gyJu8FlTRNDZwWpAJC7A22VzN1znsRyFiyZiqswqdwEncH3u3J7T4VXOGGcjR0qIZj03x9p2Ch2mLh7jwT0kjNPlL9RxnmsdlXy3R4ODPPX9NlKOMgBuWPopfEzJVe0kR9fAEPdSFBjEg7xxXtE/FO7vpOdn0ShGdi9CtLNavrulrS06vsTOJ2ErhWw9m6jDrDLhG3ADkXpaekL/qA6SL6wGeqPL/QZoqG/M7DmVBrKTptgaT30Dl7CmtL7HWKZCz96E52uz2BwdtDNBWBka7S9dkq16sGtKvgKmtpM4nBN5AgNFqYqmq46B3ug==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.233) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5WpH4Wlw2HRL74ZMa+jdOPBPnx9kw1C6RXBFoPtyI5s=;
+ b=dML137yVeiqnfho4RK+y3Fr/Gjqr7QTCw9hgmXQEapYRDQNmZxi2GaxXlpDXElkirkMKxvNJhZP/tIiFbS0tA4sWS8jg9zw6H7Y1GX2K+m4/Kzy/fIXzsDEe7jNyUtoSXJZzP39quSJsrxruv8JnAOcYKABTeKQD6hJw1RYUrwL0Gs7T0Mww95b70NQAnGbxv6185yvN2mheClRyVCoFy8kPwBS3GybIRRALxjf/Gpkin/A8TGsMdkI2/ROsn+Zc1TbH/rwkMMkWq4IL3YCiWL6QZBFnUZhIz12nMt7iRCU3pK1VWeCxQOzkdMUZnj8o5em6G6OcBrHnKoPmKYctHQ==
+Received: from BL1PR13CA0169.namprd13.prod.outlook.com (2603:10b6:208:2bd::24)
+ by MW4PR12MB6899.namprd12.prod.outlook.com (2603:10b6:303:208::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26; Tue, 14 Mar
+ 2023 18:51:03 +0000
+Received: from BL02EPF000108EA.namprd05.prod.outlook.com
+ (2603:10b6:208:2bd:cafe::52) by BL1PR13CA0169.outlook.office365.com
+ (2603:10b6:208:2bd::24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.25 via Frontend
+ Transport; Tue, 14 Mar 2023 18:51:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.233) by
+ BL02EPF000108EA.mail.protection.outlook.com (10.167.241.203) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6178.13 via Frontend Transport; Tue, 14 Mar 2023 18:51:03 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
+ (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Tue, 14 Mar 2023
+ 11:50:51 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.37; Tue, 14 Mar 2023 11:50:51 -0700
+Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.126.190.180)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37 via Frontend
+ Transport; Tue, 14 Mar 2023 11:50:50 -0700
+Date: Tue, 14 Mar 2023 11:50:49 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Subject: Re: [PATCH v1 1/5] iommufd: Create access in
+ vfio_iommufd_emulated_bind()
+Message-ID: <ZBDCCYLJn32Yk/eI@Asurada-Nvidia>
+References: <20230308131340.459224-1-yi.l.liu@intel.com>
+ <20230308131340.459224-2-yi.l.liu@intel.com>
+ <BN9PR11MB52766F9DA462F5C7BC23654F8CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <BN9PR11MB52766F9DA462F5C7BC23654F8CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL02EPF000108EA:EE_|MW4PR12MB6899:EE_
+X-MS-Office365-Filtering-Correlation-Id: 51ddc20c-ae7d-4098-72db-08db24bd0f9d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: PzDR1Oo6fDpHKXvVuyVCeY3k0zoDif+UJGHziAPxUHHabpW9t3oLgx6QM4wwOypJ5Gq+XrrAr1ACeQd4xSq8PtFm5Jdt0U7zltgjeQA6l1k/IDRIcoOnC3MxgyNL8kng6PhZ4FZsF217L/yPBuQLDkjhgUTqsyWhdlue1YgTBOwC9ZiCeOm7B8Csas6zaa2JGB5Nv4BMEENFjYeemLk+lUFL0rHSD9RNG6PmP6SmTI6aLvvJykbYGTdF1dHmcRCzFTRBn7H1ay+2npG5iFixha3SS9W1Z6ZVm8B7UUxD6P2uOBcifTU69axW+1qZaZG6NsIWhAYs6hEEDhBBCQw6PPVx8e926E9bQIIwpVOkAMqpocbs/15dAhFfdJNFqFyqxmJ1ynUfEf127tgIsiWtevQ9NzMgJNdKTuN3g6o8EMKTAE9Hj283fv4V15/H6gI+5lfjhgt+mW9MMzWMlInVz4gE89h6JkP02iJ4iEZpFcXm/HhpnAq+j5f278iROpIi/6V6AbAOqxrcFyXOQFSwiI8eWwfd3/FxXO46Hai11KobBvhKSc9S1nKeh/55tUJI82bUIyZuLysD3nrcLdRhUzhOQLJrH0mGKmkoWhoSX8g7FiaLwe3XLVMGWRdvkDOvXsRN2b2940uAp54hEFBlT2SMEKtnO9a1aaoIVautQPJySaM1R7JWzb6U1VsxkM881Ag34PXn7J1tpSrYkEu7DJ0LdYIMXHMVa8w1PPXo8KAUVk+Qke96kViYnDPX63S7
+X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
+ SFS:(13230025)(4636009)(39860400002)(136003)(376002)(396003)(346002)(451199018)(46966006)(36840700001)(40470700004)(86362001)(356005)(36860700001)(82740400003)(7636003)(41300700001)(2906002)(7416002)(8936002)(5660300002)(55016003)(40460700003)(33716001)(82310400005)(4326008)(40480700001)(9686003)(26005)(186003)(83380400001)(47076005)(54906003)(336012)(426003)(316002)(8676002)(70586007)(70206006)(478600001)(6916009);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Mar 2023 18:51:03.0421 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 51ddc20c-ae7d-4098-72db-08db24bd0f9d
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL02EPF000108EA.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB6899
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,30 +110,67 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Mar 14, 2023, Yan Zhao wrote:
-> On Fri, Mar 10, 2023 at 04:22:35PM -0800, Sean Christopherson wrote:
-> > Honor KVM's max allowed page size when determining whether or not a 2MiB
-> > GTT shadow page can be created for the guest.  Querying KVM's max allowed
-> > size is somewhat odd as there's no strict requirement that KVM's memslots
-> > and VFIO's mappings are configured with the same gfn=>hva mapping, but
-> > the check will be accurate if userspace wants to have a functional guest,
-> > and at the very least checking KVM's memslots guarantees that the entire
-> > 2MiB range has been exposed to the guest.
+On Fri, Mar 10, 2023 at 02:08:15AM +0000, Tian, Kevin wrote:
+> External email: Use caution opening links or attachments
+> 
+> 
+> > From: Liu, Yi L <yi.l.liu@intel.com>
+> > Sent: Wednesday, March 8, 2023 9:14 PM
 > >
-> hi Sean,
-> I remember in our last discussion, the conclusion was that
-> we can safely just use VFIO ABI (which is intel_gvt_dma_map_guest_page()
-> introduced in patch 7) to check max mapping size. [1][2]
+> > @@ -449,33 +450,18 @@ iommufd_access_create(struct iommufd_ctx *ictx,
+> > u32 ioas_id,
+> >       access->data = data;
+> >       access->ops = ops;
+> >
+> > -     obj = iommufd_get_object(ictx, ioas_id, IOMMUFD_OBJ_IOAS);
+> > -     if (IS_ERR(obj)) {
+> > -             rc = PTR_ERR(obj);
+> > -             goto out_abort;
+> > -     }
+> > -     access->ioas = container_of(obj, struct iommufd_ioas, obj);
+> > -     iommufd_ref_to_users(obj);
+> > -
+> >       if (ops->needs_pin_pages)
+> >               access->iova_alignment = PAGE_SIZE;
+> >       else
+> >               access->iova_alignment = 1;
+> > -     rc = iopt_add_access(&access->ioas->iopt, access);
+> > -     if (rc)
+> > -             goto out_put_ioas;
+> >
+> >       /* The calling driver is a user until iommufd_access_destroy() */
+> >       refcount_inc(&access->obj.users);
+> > +     mutex_init(&access->ioas_lock);
+> >       access->ictx = ictx;
+> >       iommufd_ctx_get(ictx);
+> 
+> this refcnt get should be moved to the start given next patch
+> removes the reference in the caller side.
 
-Gah, my apologies.  I completely forgot about dropping KVM's mapping size check.
-I was pretty sure I was forgetting something, but couldn't figure out what I was
-forgetting.  I'll drop this in the next version.
+I don't feel quite convincing to justify for moving it in this
+patch. Perhaps we should do that in the following patch, where
+it needs this? Or another individual patch moving this alone?
 
-Thanks!
+Thanks
+Nic
