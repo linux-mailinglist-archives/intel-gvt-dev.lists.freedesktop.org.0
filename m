@@ -2,102 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3470E6B9F0D
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 19:51:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FBAC6BA0B8
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 21:27:53 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9AA8810E878;
-	Tue, 14 Mar 2023 18:51:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 84EDF10E1DD;
+	Tue, 14 Mar 2023 20:27:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam11on20600.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:7eae::600])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8924110E1CD;
- Tue, 14 Mar 2023 18:51:05 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WLSEDGW3uSAyMbWn6je0+e3mSb4XgkZkKz7gCwHbxBk/EeAmcHxtYVKYq6YiOvsID0/B6/+K80hpEykDaprxpPrWeVwbTLjM+j5pzyrG1RMRdyL1YPB9wrrRgfcPG5CM+WTH5HxkFv0Ibie3VLrWKnUt6TAe436MGmW4pgErYJrS0zz5LCoxKiByhi1bJ+2ZUSN8vruQiFa9sL8fpFM+b9iHpKScQdZ3LRWNnCdYlnpqn1SLz6pom6XITc9f9I2W1l3Izsvoi57OTofo/2SoK4Nwr9ohDXjAhLNg6vZY6tZDd/KDVvvKAII2bUY/Ws6MK+MtMeaLTMxqverQVdYglw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5WpH4Wlw2HRL74ZMa+jdOPBPnx9kw1C6RXBFoPtyI5s=;
- b=ednbQPSK6C5D308gQ47WGd4ur76gyJu8FlTRNDZwWpAJC7A22VzN1znsRyFiyZiqswqdwEncH3u3J7T4VXOGGcjR0qIZj03x9p2Ch2mLh7jwT0kjNPlL9RxnmsdlXy3R4ODPPX9NlKOMgBuWPopfEzJVe0kR9fAEPdSFBjEg7xxXtE/FO7vpOdn0ShGdi9CtLNavrulrS06vsTOJ2ErhWw9m6jDrDLhG3ADkXpaekL/qA6SL6wGeqPL/QZoqG/M7DmVBrKTptgaT30Dl7CmtL7HWKZCz96E52uz2BwdtDNBWBka7S9dkq16sGtKvgKmtpM4nBN5AgNFqYqmq46B3ug==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.233) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5WpH4Wlw2HRL74ZMa+jdOPBPnx9kw1C6RXBFoPtyI5s=;
- b=dML137yVeiqnfho4RK+y3Fr/Gjqr7QTCw9hgmXQEapYRDQNmZxi2GaxXlpDXElkirkMKxvNJhZP/tIiFbS0tA4sWS8jg9zw6H7Y1GX2K+m4/Kzy/fIXzsDEe7jNyUtoSXJZzP39quSJsrxruv8JnAOcYKABTeKQD6hJw1RYUrwL0Gs7T0Mww95b70NQAnGbxv6185yvN2mheClRyVCoFy8kPwBS3GybIRRALxjf/Gpkin/A8TGsMdkI2/ROsn+Zc1TbH/rwkMMkWq4IL3YCiWL6QZBFnUZhIz12nMt7iRCU3pK1VWeCxQOzkdMUZnj8o5em6G6OcBrHnKoPmKYctHQ==
-Received: from BL1PR13CA0169.namprd13.prod.outlook.com (2603:10b6:208:2bd::24)
- by MW4PR12MB6899.namprd12.prod.outlook.com (2603:10b6:303:208::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26; Tue, 14 Mar
- 2023 18:51:03 +0000
-Received: from BL02EPF000108EA.namprd05.prod.outlook.com
- (2603:10b6:208:2bd:cafe::52) by BL1PR13CA0169.outlook.office365.com
- (2603:10b6:208:2bd::24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.25 via Frontend
- Transport; Tue, 14 Mar 2023 18:51:03 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.233) by
- BL02EPF000108EA.mail.protection.outlook.com (10.167.241.203) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6178.13 via Frontend Transport; Tue, 14 Mar 2023 18:51:03 +0000
-Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
- (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Tue, 14 Mar 2023
- 11:50:51 -0700
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.37; Tue, 14 Mar 2023 11:50:51 -0700
-Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.126.190.180)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37 via Frontend
- Transport; Tue, 14 Mar 2023 11:50:50 -0700
-Date: Tue, 14 Mar 2023 11:50:49 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-Subject: Re: [PATCH v1 1/5] iommufd: Create access in
- vfio_iommufd_emulated_bind()
-Message-ID: <ZBDCCYLJn32Yk/eI@Asurada-Nvidia>
-References: <20230308131340.459224-1-yi.l.liu@intel.com>
- <20230308131340.459224-2-yi.l.liu@intel.com>
- <BN9PR11MB52766F9DA462F5C7BC23654F8CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-Greylist: delayed 532 seconds by postgrey-1.36 at gabe;
+ Tue, 14 Mar 2023 20:27:43 UTC
+Received: from mail.safehome.autos (unknown [45.13.189.179])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EA5AE10E1CD
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Mar 2023 20:27:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=safehome.autos; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=adt-home-security@safehome.autos; 
+ bh=3GjDWqarTiHwwXSMVZJYC7BHWO0=;
+ b=ajQG4wWez+uAsepyBeW1fIERgzq/Yv7pcC2x3DHzODxev3SVDlLzaA6GXLO0rS+i8kBLJeEeHzQH
+ V+ekVWTyzVvjf0hu42/NN5NbnBHTVN93gfokT9twbH5ya6Q1WVLPB+X9GL/ZhdYpQorTsSnZ4f7d
+ VI26l0GFhMoYwXdIS6A=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=safehome.autos;
+ b=H62rmSCWmtSpK/LVObD/zjkzRYSA2wSrWZTHFuUhchgRgJbUE9hdPIZ+g11DQoNupkh856Ts3uKy
+ pNYTmaJ7F+XEOBFcLqT23xtpvY+x5tJii1lxkpRt7LQRwSK4zfqFRIKdpHP9g1N8IZjoxzqdkn1c
+ EYJ9hW0k+CWsLOKxCsQ=;
+Received: by mail.safehome.autos id h23cc00001g1 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Mar 2023 16:06:43 -0400 (envelope-from
+ <adt-home-security-intel+2Dgvt+2Ddev=lists.freedesktop.org@safehome.autos>)
+Date: Tue, 14 Mar 2023 16:06:43 -0400
+From: "ADT Home Security" <adt-home-security@safehome.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Find the right home security package with ADT
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <BN9PR11MB52766F9DA462F5C7BC23654F8CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF000108EA:EE_|MW4PR12MB6899:EE_
-X-MS-Office365-Filtering-Correlation-Id: 51ddc20c-ae7d-4098-72db-08db24bd0f9d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: PzDR1Oo6fDpHKXvVuyVCeY3k0zoDif+UJGHziAPxUHHabpW9t3oLgx6QM4wwOypJ5Gq+XrrAr1ACeQd4xSq8PtFm5Jdt0U7zltgjeQA6l1k/IDRIcoOnC3MxgyNL8kng6PhZ4FZsF217L/yPBuQLDkjhgUTqsyWhdlue1YgTBOwC9ZiCeOm7B8Csas6zaa2JGB5Nv4BMEENFjYeemLk+lUFL0rHSD9RNG6PmP6SmTI6aLvvJykbYGTdF1dHmcRCzFTRBn7H1ay+2npG5iFixha3SS9W1Z6ZVm8B7UUxD6P2uOBcifTU69axW+1qZaZG6NsIWhAYs6hEEDhBBCQw6PPVx8e926E9bQIIwpVOkAMqpocbs/15dAhFfdJNFqFyqxmJ1ynUfEf127tgIsiWtevQ9NzMgJNdKTuN3g6o8EMKTAE9Hj283fv4V15/H6gI+5lfjhgt+mW9MMzWMlInVz4gE89h6JkP02iJ4iEZpFcXm/HhpnAq+j5f278iROpIi/6V6AbAOqxrcFyXOQFSwiI8eWwfd3/FxXO46Hai11KobBvhKSc9S1nKeh/55tUJI82bUIyZuLysD3nrcLdRhUzhOQLJrH0mGKmkoWhoSX8g7FiaLwe3XLVMGWRdvkDOvXsRN2b2940uAp54hEFBlT2SMEKtnO9a1aaoIVautQPJySaM1R7JWzb6U1VsxkM881Ag34PXn7J1tpSrYkEu7DJ0LdYIMXHMVa8w1PPXo8KAUVk+Qke96kViYnDPX63S7
-X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(136003)(376002)(396003)(346002)(451199018)(46966006)(36840700001)(40470700004)(86362001)(356005)(36860700001)(82740400003)(7636003)(41300700001)(2906002)(7416002)(8936002)(5660300002)(55016003)(40460700003)(33716001)(82310400005)(4326008)(40480700001)(9686003)(26005)(186003)(83380400001)(47076005)(54906003)(336012)(426003)(316002)(8676002)(70586007)(70206006)(478600001)(6916009);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Mar 2023 18:51:03.0421 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 51ddc20c-ae7d-4098-72db-08db24bd0f9d
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL02EPF000108EA.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB6899
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_145_1296934549.1678824391830"
+Message-ID: <0.0.0.10.1D956B07F6ECE66.69FF23@mail.safehome.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,67 +50,197 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Mar 10, 2023 at 02:08:15AM +0000, Tian, Kevin wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> > From: Liu, Yi L <yi.l.liu@intel.com>
-> > Sent: Wednesday, March 8, 2023 9:14 PM
-> >
-> > @@ -449,33 +450,18 @@ iommufd_access_create(struct iommufd_ctx *ictx,
-> > u32 ioas_id,
-> >       access->data = data;
-> >       access->ops = ops;
-> >
-> > -     obj = iommufd_get_object(ictx, ioas_id, IOMMUFD_OBJ_IOAS);
-> > -     if (IS_ERR(obj)) {
-> > -             rc = PTR_ERR(obj);
-> > -             goto out_abort;
-> > -     }
-> > -     access->ioas = container_of(obj, struct iommufd_ioas, obj);
-> > -     iommufd_ref_to_users(obj);
-> > -
-> >       if (ops->needs_pin_pages)
-> >               access->iova_alignment = PAGE_SIZE;
-> >       else
-> >               access->iova_alignment = 1;
-> > -     rc = iopt_add_access(&access->ioas->iopt, access);
-> > -     if (rc)
-> > -             goto out_put_ioas;
-> >
-> >       /* The calling driver is a user until iommufd_access_destroy() */
-> >       refcount_inc(&access->obj.users);
-> > +     mutex_init(&access->ioas_lock);
-> >       access->ictx = ictx;
-> >       iommufd_ctx_get(ictx);
-> 
-> this refcnt get should be moved to the start given next patch
-> removes the reference in the caller side.
+------=_Part_145_1296934549.1678824391830
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 
-I don't feel quite convincing to justify for moving it in this
-patch. Perhaps we should do that in the following patch, where
-it needs this? Or another individual patch moving this alone?
+<!DOCTYPE html>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>01031423</title>=20
+ </head>=20
+ <body style=3D"padding: 7% 0%;">=20
+  <div style=3D"max-width: 600px; margin: auto;">=20
+   <header id=3D"adtprotectwhatmatters">=20
+    <div style=3D"background-image: url(https://home-safe-security.com/home=
+security/email/V12/images/v12_sm3.png); background-position: center center;=
+ background-repeat: no-repeat; background-size: cover;">=20
+     <div style=3D"position: relative;">=20
+      <div style=3D"padding: 6% 0% 0% 4.5%;">=20
+       <div style=3D"width: 70%;">
+        <span style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sa=
+ns-serif; display: block; font-weight: 500; color: #fff; font-size: 120%; m=
+argin: 2.5% 0%;">$0 Down. 0% Interest.* Real Protection.</span>=20
+        <span style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sa=
+ns-serif; display: block; font-weight: 900; font-size: 260%; line-height: 1=
+05%; color: #fff;margin: 2.5% 0%;">Help Protect<br /> what matter<br /> mos=
+t!</span>=20
+        <span style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sa=
+ns-serif; display: block; font-size: 80%; width: 70%; text-align: justify; =
+color: #fff; font-weight: 500;margin: 2.5% 0%;">*Financing requires 0% APR,=
+ 60-mo. installment contract. Well-qualified credit. For full terms and pri=
+cing <a href=3D"http://www.safehome.autos/notifications-aftereffect/53a5v2F395wxN8611r4fb3R12a8K36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQbQndn6Fo10sQ6GNwDkL" style=3D"text-decoration: none; color: #fff;" t=
+arget=3D"_blank"><b><u>click here</u></b>.</a></span>=20
+        <div style=3D"margin: 4.5% 0%">
+         <a href=3D"http://www.safehome.autos/notifications-aftereffect/53a5v2F395wxN8611r4fb3R12a8K36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQbQndn6Fo10sQ6GNwDkL" style=3D"color: #fff; text-decoration: none=
+;" target=3D"_blank"><span style=3D"font-family: 'Segoe UI', Tahoma, Geneva=
+, Verdana, sans-serif; display: inline-block; background-color: #E66650; pa=
+dding: 4.5% 9%; font-weight: 500; font-size: 125%; border-radius: 8px;">GET=
+ MY FREE QUOTE</span></a>
+        </div>=20
+       </div>=20
+      </div>=20
+      <div style=3D"width: 12%; position: absolute; top: 10%; left: 82.5%; =
+margin: auto;">
+       <a href=3D"http://www.safehome.autos/notifications-aftereffect/53a5v2F395wxN8611r4fb3R12a8K36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQbQndn6Fo10sQ6GNwDkL" target=3D"_blank"><img alt=3D"" src=3D"=
+http://www.safehome.autos/favored-recomputing/L8a5V23Q95v7aHW13PV4fb5qD12a8G36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQbQndn6V1pCp05STXwD" style=3D"display: block;" /></a>
+      </div>=20
+     </div>=20
+    </div>=20
+   </header>=20
+   <section>=20
+    <div style=3D"background-color: #1F99E0;">=20
+     <div>=20
+      <div style=3D"padding: 6% 0% 0% 6%; position: relative;">=20
+       <div style=3D"width: 55%;">
+        <span style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sa=
+ns-serif; font-weight: 500; color: #fff; font-size: 220%; display: block; m=
+argin-bottom: 7%; ">Full home security.</span>=20
+        <img alt=3D"" src=3D"http://www.safehome.autos/9e95Sx2395rh7aV12M4Ffb6Z12a8g36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQbQndn7lAojD105NWwjD/notifications-aftereffect" style=3D"vertical-align: top; mar=
+gin-top: 2.5%;" />=20
+        <span style=3D" display: inline-block; width: 90%; font-family: 'Se=
+goe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; color: #fff=
+; font-size: 145%; vertical-align: top; margin-bottom: 7.5%;">Real-time acc=
+ess to what's happening in your home</span>=20
+        <img alt=3D"" src=3D"http://www.safehome.autos/9e95Sx2395rh7aV12M4Ffb6Z12a8g36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQbQndn7lAojD105NWwjD/notifications-aftereffect" style=3D"vertical-align: top; mar=
+gin-top: 2.5%;" />=20
+        <span style=3D" display: inline-block; width: 90%; font-family: 'Se=
+goe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; color: #fff=
+; font-size: 145%; vertical-align: top; margin-bottom: 7.5%;"> Live HD vide=
+o footage of all activity</span>=20
+        <img alt=3D"" src=3D"http://www.safehome.autos/9e95Sx2395rh7aV12M4Ffb6Z12a8g36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQbQndn7lAojD105NWwjD/notifications-aftereffect" style=3D"vertical-align: top; mar=
+gin-top: 2.5%;" />=20
+        <span style=3D" display: inline-block; width: 90%; font-family: 'Se=
+goe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; color: #fff=
+; font-size: 145%; vertical-align: top; margin-bottom: 7.5%;">Infrared LED =
+night-vision technology that gives you a 24-hour clear picture</span>=20
+        <img alt=3D"" src=3D"http://www.safehome.autos/9e95Sx2395rh7aV12M4Ffb6Z12a8g36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQbQndn7lAojD105NWwjD/notifications-aftereffect" style=3D"vertical-align: top; mar=
+gin-top: 2.5%;" />=20
+        <span style=3D" display: inline-block; width: 90%; font-family: 'Se=
+goe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; color: #fff=
+; font-size: 145%; vertical-align: top; margin-bottom: 7.5%;">Secure access=
+ to video clips via your ADT App</span>=20
+        <img alt=3D"" src=3D"http://www.safehome.autos/9e95Sx2395rh7aV12M4Ffb6Z12a8g36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQbQndn7lAojD105NWwjD/notifications-aftereffect" style=3D"vertical-align: top; mar=
+gin-top: 2.5%;" />=20
+        <span style=3D" display: inline-block; width: 90%; font-family: 'Se=
+goe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; color: #fff=
+; font-size: 145%; vertical-align: top; margin-bottom: 7.5%;">24/7 response=
+ from ADT monitoring services</span>
+       </div>=20
+       <div style=3D"text-align: center; position: absolute; top: 23%; left=
+: 59%; width: 38%;">=20
+        <div>
+         <a href=3D"http://www.safehome.autos/notifications-aftereffect/53a5v2F395wxN8611r4fb3R12a8K36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQbQndn6Fo10sQ6GNwDkL" target=3D"_blank"><img alt=3D"" src=3D"=
+http://www.safehome.autos/notifications-aftereffect/e9a4X2395C7aPv12w4xfb7l12a8u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQbQndn6zWQ1y05ST1wD" /></a>
+        </div>=20
+        <div style=3D"margin: 4.5% 0%">
+         <a href=3D"http://www.safehome.autos/notifications-aftereffect/53a5v2F395wxN8611r4fb3R12a8K36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQbQndn6Fo10sQ6GNwDkL" style=3D"color: #fff; text-decoration: none=
+;" target=3D"_blank"><span style=3D"font-family: 'Segoe UI', Tahoma, Geneva=
+, Verdana, sans-serif; display: inline-block; background-color: #E66650; pa=
+dding: 8.5% 13%; font-weight: 500; font-size: 100%; border-radius: 8px;">GE=
+T MY FREE QUOTE</span></a>
+        </div>=20
+       </div>=20
+      </div>=20
+     </div>=20
+    </div>=20
+   </section>=20
+   <section class=3D"footer_impres" style=3D"background-color: #e6e6e6; pad=
+ding: 20px 0px;">=20
+    <div id=3D"fonal_Footers" style=3D"text-align: center;">
+     <img alt=3D"" src=3D"http://www.safehome.autos/2874r2395q7AaN11q4fb8R12a8i36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQbQndn5Hi1O06NLwDT0/storages-equilibriums" width=3D"8%" />
+     <br />=20
+     <br />=20
+     <span class=3D"infor-_pro" style=3D"display: block; font-family: 'Gill=
+ Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: n=
+ormal; font-size: 75%;">1501 Yamato Rd, Boca Raton, FL 33431 &copy;2022 ADT=
+ LLC</span>=20
+     <hr style=3D"width: 80%; margin: auto;" />
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">*Financing: Requires retail instal=
+lment agreement. Financing available for equipment and installation costs o=
+nly. Financing available for well-qualified borrowers at 0% Annual Percenta=
+ge Rate for a minimum of $599 up to a max limit of $5,000 for each approved=
+ application. First payment due upon equipment installation and subsequent =
+payments in equal monthly installments for the term selected (excluding any=
+ applicable fines and service charge increases). 12, 24, 36, &amp; 60-month=
+ terms available. Longer terms require additional credit qualifications. Fu=
+ll remaining balance for equipment and installation due immediately upon te=
+rmination of the related ADT services for ADT-provided financing. Late Char=
+ge ? ADT may impose a one-time charge on each payment that is more than ten=
+ (10) days past due, up to the maximum amount permitted by law, but in no e=
+vent will this amount exceed $5.00. Prepayment ? if prepayments are made, t=
+here is no penalty or refund. Financing is not available in all geographic =
+regions and Puerto Rico. Google, Nest Doorbell and Google Home are trademar=
+ks of Google LLC.</span>
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">General: Additional charges may ap=
+ply in areas that require guard response service for municipal alarm verifi=
+cation. System remains property of ADT. Local permit fees may be required. =
+Prices and offers subject to change and may vary by market. Additional taxe=
+s and fees may apply. Satisfactory credit required. A security deposit may =
+be required. Simulated screen images and photos are for illustrative purpos=
+es only.</span>
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">Interactive Services: ADT Command =
+Interactive Solutions Services (&laquo;ADT Command&raquo;) helps you manage=
+ your home environment and family lifestyle. Requires purchase of an ADT al=
+arm system with 36 month monitoring contract ranging from $45.99-$59.99/ mo=
+ with QSP (24-month monitoring contract in California, total fees ranging $=
+1,103.76-$1,439.76), enrollment in ADT Easy Pay, and a compatible device wi=
+th Internet and email access. These interactive services do not cover the o=
+peration or maintenance of any household equipment/systems that are connect=
+ed to the ADT Command equipment. All ADT Command services are not available=
+ with all interactive service levels. All ADT Command services may not be a=
+vailable in all geographic areas. You may be required to pay additional cha=
+rges to purchase equipment required to utilize the interactive service feat=
+ures you desire.</span>
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">&copy;2022 ADT LLC. All rights res=
+erved. ADT, the ADT logo, 800.ADT.ASAP and the product/service names listed=
+ in this document are marks and/or registered marks. Unauthorized use is st=
+rictly prohibited. Third-party marks are the property of their respective o=
+wners. License information available at www.ADT.com/legal or by calling 800=
+ADT.ASAP. CAACO7155, 974443, PPO120288; MA 172C; NC Licensed by the Alarm =
+Systems Licensing Board of the State of North Carolina; 2736-CSA, 2397-CSA,=
+ 2381-CSA; NY 12000305615; PA 090797; MS 15019511.</span>
+     <br />=20
+     <span style=3D"display: block; font-family: 'Gill Sans', 'Gill Sans MT=
+', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: ju=
+stify; padding: 0px 6%; font-size: 70%;">Do you want to stop getting these =
+emails? You can <a href=3D"http://www.safehome.autos/6bf6CX239x5D86uh13Y4fbO4UN12a8j36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQbQndn7MjRwg105wBwDU/favored-recomputing" style=3D" color: #000;" target=3D"_b=
+lank">unsubscribe here</a>.</span>
+     <br /> &nbsp;
+    </div>=20
+   </section>=20
+  </div>  =20
+ <img src=3D"http://www.safehome.autos/invents-coffers/e046q23FF95Yps8511M4fb9G12a8j36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQbQndn7X10BiuM6t22jwD" alt=3D""/></body>
+</html>
 
-Thanks
-Nic
+------=_Part_145_1296934549.1678824391830--
+
