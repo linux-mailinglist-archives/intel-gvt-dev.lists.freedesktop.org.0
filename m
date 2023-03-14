@@ -1,103 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A89E46B8D0B
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 09:21:07 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D18756B91CD
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 12:38:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7E12B10E731;
-	Tue, 14 Mar 2023 08:21:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5F72110E784;
+	Tue, 14 Mar 2023 11:38:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com
- (mail-bn7nam10on20621.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:7e8a::621])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 920BC10E731;
- Tue, 14 Mar 2023 08:21:05 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KtJXkmENAC8Gbs8oww3erraRCxxXxMP6IPaW2Z58udOhRuUYEypST5Eb/jR75O78/nRCXhllojdW8CjobBalqT4WU3g7/hSE0baD3Q2LyYKEJDxzqHUTmt8pL8bjdbYBWJtfA01OeBiLRn2yuTG3BaviMp1bMZj8+Fo7fu1shUxei2oSCJxHnZQLqpw7DiUfGgGv1i36qQ35uFNFRSQ0QY9H/zbzywjtJZrKyOGy+fE1jnnG0t1tCjqkJtwzcC1bDnEDTNPp6sUazZSw/oXXbDbDt4YFJGhMO/6GXIDXb76vj3ZQHNH+MXmE9rKnkOpAC7TAryMlnomZDT0g663Q0Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yOSQ43L9xKmhli+kTXIlcRqOE70JR46g+bs5USMoAH0=;
- b=gbqYnw4i8MH/z8b2VFlYth7ruB7c+1agPF9IQrOk9w/kCa+g1cXIhRmr20mOvSQy5yR5rBXgXHnxP+wtIPcR3eJ3wOAjX2OfRTXI/FXGathD4SeFPTVQ5JKwF0fclS+iUOg/7T2rxx1+K1h50L7QJfyzKVt3wz5soWBeRKF1RsGTfFf4/ySo0sBRG5mRqk6qj2w0zU1vu8YVMCIeGOqTjYMi6zIqCbs23bTZuOFWac00vPizwcWtWAOQRhZVakC7wA5Y4WTPW+sAnyh/liKugBMoMW5pi+T5vn3tKCtqBWKWXKj8Kca4F4UkIHSVPT4oNydhJfXNLwtI5tA8ucunpg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yOSQ43L9xKmhli+kTXIlcRqOE70JR46g+bs5USMoAH0=;
- b=n2IpOhaHZ4LBpHqOFOxta4pCedrR9WgwYcmd/XxS6d0KsarHFbuXq97QorNNwywk7qIGN3QdAbvzLt0uB0qw4GWeggtOErVdIHD/vbiw/5NBv+v6ATwSK/ZXLLpqGSu3Ny5imhpnMFd+t1euNIzgt39ayxZPwnV0Oj8J50LfreDIRUMFUr2TjkaUc2Fh0Y/GTXSYZQ9qWwEHjbqd84B+EtYWIJR2WuCwQ+86e7FVrtgsbbqpAyO/PKC0oGGyg5D6hf/VVd8V4uCLwkh84q1LRX6dDe7D0nb1lH/cP9ZO50BaKcG6WvB3t88PJL4PciSk5k+QHQaCIIjTvVz87NWB1A==
-Received: from CY5PR17CA0040.namprd17.prod.outlook.com (2603:10b6:930:12::34)
- by CH2PR12MB4972.namprd12.prod.outlook.com (2603:10b6:610:69::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.24; Tue, 14 Mar
- 2023 08:21:03 +0000
-Received: from CY4PEPF0000C981.namprd02.prod.outlook.com
- (2603:10b6:930:12:cafe::a) by CY5PR17CA0040.outlook.office365.com
- (2603:10b6:930:12::34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26 via Frontend
- Transport; Tue, 14 Mar 2023 08:21:02 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- CY4PEPF0000C981.mail.protection.outlook.com (10.167.241.203) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6178.13 via Frontend Transport; Tue, 14 Mar 2023 08:21:02 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Tue, 14 Mar 2023
- 01:20:49 -0700
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37; Tue, 14 Mar
- 2023 01:20:49 -0700
-Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5 via Frontend
- Transport; Tue, 14 Mar 2023 01:20:48 -0700
-Date: Tue, 14 Mar 2023 01:20:46 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Yi Liu <yi.l.liu@intel.com>, Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v1 1/5] iommufd: Create access in
- vfio_iommufd_emulated_bind()
-Message-ID: <ZBAuXo166M+z8b3z@Asurada-Nvidia>
-References: <20230308131340.459224-1-yi.l.liu@intel.com>
- <20230308131340.459224-2-yi.l.liu@intel.com>
- <ZAtqlnCk7uccR5E7@nvidia.com>
-MIME-Version: 1.0
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
+ [185.176.79.56])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7290010E0DA;
+ Tue, 14 Mar 2023 11:38:14 +0000 (UTC)
+Received: from lhrpeml100006.china.huawei.com (unknown [172.18.147.206])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4PbWhw6hm9z6J78V;
+ Tue, 14 Mar 2023 19:37:20 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ lhrpeml100006.china.huawei.com (7.191.160.224) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Tue, 14 Mar 2023 11:38:11 +0000
+Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
+ lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2507.021; 
+ Tue, 14 Mar 2023 11:38:11 +0000
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Subject: RE: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
+Thread-Topic: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
+Thread-Index: AQHZSpxHUh/YYv3qukeFp+lKFtoCf67jLB2AgACBDoCAAOlEAIAAn5IAgAIKi/CAAO3wAIAA+kPAgAEQJQCABt1mAIAJIAFQ
+Date: Tue, 14 Mar 2023 11:38:11 +0000
+Message-ID: <90a277ea100d496b82f8cc84388bbca2@huawei.com>
+References: <20230227111135.61728-1-yi.l.liu@intel.com>
+ <Y/0Cr/tcNCzzIAhi@nvidia.com>
+ <DS0PR11MB7529A422D4361B39CCA3D248C3AC9@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <SA1PR11MB5873479F73CFBAA170717624F0AC9@SA1PR11MB5873.namprd11.prod.outlook.com>
+ <Y/64ejbhMiV77uUA@Asurada-Nvidia>
+ <b7c1f9d5b4b647f0b0686c3b99f3d006@huawei.com>
+ <ZAE2J0I1LiBjWUnm@Asurada-Nvidia>
+ <d59a0262d5bf423c9e49ad4ac6015296@huawei.com>
+ <ZALspPvvLGFuK96F@Asurada-Nvidia> 
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.178]
 Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <ZAtqlnCk7uccR5E7@nvidia.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000C981:EE_|CH2PR12MB4972:EE_
-X-MS-Office365-Filtering-Correlation-Id: 56b29f08-7e0e-40a0-e9f0-08db24650cc5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: /BgX/sDdNk4ydL1kLFNbnU3DkjHt3JacsxGvzDwrwSZwVyQG1qqtCZU9mh9zzUOp9KZ6IRzGxYdp8HTfDoKPgWM+YMHiijTMXfY9eh3vYJd7yMkcHRMv8neGbnORfjKktu6Ha2ndQRzasvML17THMHU7xEOj7x3AcsrnnumxomipzAlDYQamh5PYZ75qzFCCPnFZ4lns7W1Hp+AlGW0XWUO8vINKwYFluFhwuOvgX7N/D20gepMx9po5Qgz+BbrbchavCa1axzhwEfi8D5Ig9cTbpp9QkGdMkpqxuy7ye3dLhzKUKkiB9Te8bBgHsaQrHqBRufd51vi4kcCnj13r/Xu0pzdKK3ZAbRD61qaRKsvYY5l38PLcSejNU5t/dYP0KwNn42OwL4x+QEM75Tukhn16u1WN2vj2YJZJvsuQ+6avCCPnvi8U7KFSuh3/4nRbTsltOOG+OmX2Yk0PzVRPIoxu5nqo+vnR4yjqEXOcNGKNkbB1Jh8e/s3baaIGekhyR7u3Iwp+/wV4YYATVp0TXC78syfTiC1rteMKqNzhrtg3TbXRJYclgdjEIPyZXTkf2dbxJJdhXdsL+gJZV8ITnaECBw39TNZCWDLRiTL22juouf9dcBroPImKoPioGawMAoY+GBuVzlM+ZZNhdOOgbkfUaw4Ap0k8gdJSfR7n2hBpvGQJwLHRDFH795lHFOkar0X8zRDtmXWPsqAhAneWAZlpiZcHXn/HTKMsIy+lwBrwwf+RmpV//M8pWOs2jpTuYuS3OTfeBz4DAbNzuUtnCg==
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(136003)(396003)(376002)(346002)(451199018)(40470700004)(36840700001)(46966006)(356005)(82310400005)(86362001)(33716001)(36860700001)(7636003)(82740400003)(55016003)(40480700001)(40460700003)(110136005)(4326008)(8676002)(70206006)(70586007)(8936002)(41300700001)(54906003)(6636002)(478600001)(316002)(7416002)(5660300002)(2906002)(47076005)(426003)(336012)(83380400001)(9686003)(186003)(26005)(67856001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Mar 2023 08:21:02.6088 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 56b29f08-7e0e-40a0-e9f0-08db24650cc5
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000C981.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4972
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,70 +60,176 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, kevin.tian@intel.com, yi.y.sun@linux.intel.com,
- mjrosato@linux.ibm.com, kvm@vger.kernel.org,
- intel-gvt-dev@lists.freedesktop.org, joro@8bytes.org, cohuck@redhat.com,
- xudong.hao@intel.com, peterx@redhat.com, yan.y.zhao@intel.com,
- eric.auger@redhat.com, alex.williamson@redhat.com, terrence.xu@intel.com,
- shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- intel-gfx@lists.freedesktop.org, chao.p.peng@linux.intel.com, lulu@redhat.com,
- robin.murphy@arm.com, jasowang@redhat.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, Zhangfei Gao <zhangfei.gao@linaro.org>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, 
+ Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Mar 10, 2023 at 01:36:22PM -0400, Jason Gunthorpe wrote:
-> On Wed, Mar 08, 2023 at 05:13:36AM -0800, Yi Liu wrote:
-> 
-> > +int iommufd_access_set_ioas(struct iommufd_access *access, u32 ioas_id)
-> > +{
-> > +	struct iommufd_ioas *new_ioas = NULL, *cur_ioas;
-> > +	struct iommufd_ctx *ictx = access->ictx;
-> > +	struct iommufd_object *obj;
-> > +	int rc = 0;
-> > +
-> > +	if (ioas_id) {
-> > +		obj = iommufd_get_object(ictx, ioas_id, IOMMUFD_OBJ_IOAS);
-> > +		if (IS_ERR(obj))
-> > +			return PTR_ERR(obj);
-> > +		new_ioas = container_of(obj, struct iommufd_ioas, obj);
-> > +	}
-> > +
-> > +	mutex_lock(&access->ioas_lock);
-> > +	cur_ioas = access->ioas;
-> > +	if (cur_ioas == new_ioas)
-> > +		goto out_unlock;
-> > +
-> > +	if (new_ioas) {
-> > +		rc = iopt_add_access(&new_ioas->iopt, access);
-> > +		if (rc)
-> > +			goto out_unlock;
-> > +		iommufd_ref_to_users(obj);
-> > +	}
-> > +
-> > +	if (cur_ioas) {
-> > +		iopt_remove_access(&cur_ioas->iopt, access);
-> > +		refcount_dec(&cur_ioas->obj.users);
-> > +	}
-> 
-> This should match the physical side with an add/remove/replace
-> API. Especially since remove is implicit in destroy this series only
-> needs the add API
 
-I assume that the API would be iommufd_access_attach,
-iommufd_access_detach, and iommufd_access_replace(). And there
-might be an iommufd_access_change_pt(access, pt, bool replace)?
 
-> And the locking shouldn't come in another patch that brings the
-> replace/remove since with just split add we don't need it.
+> -----Original Message-----
+> From: Shameerali Kolothum Thodi
+> Sent: 08 March 2023 15:55
+> To: 'Nicolin Chen' <nicolinc@nvidia.com>
+> Cc: Xu, Terrence <terrence.xu@intel.com>; Liu, Yi L <yi.l.liu@intel.com>;
+> Jason Gunthorpe <jgg@nvidia.com>; alex.williamson@redhat.com; Tian,
+> Kevin <kevin.tian@intel.com>; joro@8bytes.org; robin.murphy@arm.com;
+> cohuck@redhat.com; eric.auger@redhat.com; kvm@vger.kernel.org;
+> mjrosato@linux.ibm.com; chao.p.peng@linux.intel.com;
+> yi.y.sun@linux.intel.com; peterx@redhat.com; jasowang@redhat.com;
+> lulu@redhat.com; suravee.suthikulpanit@amd.com;
+> intel-gvt-dev@lists.freedesktop.org; intel-gfx@lists.freedesktop.org;
+> linux-s390@vger.kernel.org; Hao, Xudong <xudong.hao@intel.com>; Zhao,
+> Yan Y <yan.y.zhao@intel.com>
+> Subject: RE: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
+>=20
 
-Hmm. The iommufd_access_detach would be needed in the following
-cdev series, while the iommufd_access_replace would be need in
-my replace series. So, that would make the API be divided into
-three series.
+[...]
+> > > > On Thu, Mar 02, 2023 at 09:43:00AM +0000, Shameerali Kolothum
+> > > > Thodi
+> > > > wrote:
+> > > >
+> > > > > Hi Nicolin,
+> > > > >
+> > > > > Thanks for the latest ARM64 branch. Do you have a working Qemu
+> > > > > branch
+> > > > corresponding to the
+> > > > > above one?
+> > > > >
+> > > > > I tried the
+> > > >
+> >
+> https://github.com/nicolinc/qemu/tree/wip/iommufd_rfcv3%2Bnesting%2B
+> > > > smmuv3
+> > > > > but for some reason not able to launch the Guest.
+> > > > >
+> > > > > Please let me know.
+> > > >
+> > > > I do use that branch. It might not be that robust though as it
+> > > > went through a big rebase.
+> > >
+> > > Ok. The issue seems to be quite random in nature and only happens
+> > > when there are multiple vCPUs. Also doesn't look like related to
+> > > VFIO device assignment as I can reproduce Guest hang without it by
+> > > only having nested-smmuv3 and iommufd object.
+> > >
+> > > ./qemu-system-aarch64-iommuf -machine
+> > > virt,gic-version=3D3,iommu=3Dnested-smmuv3,iommufd=3Diommufd0 \
+> > -enable-kvm
+> > > -cpu host -m 1G -smp cpus=3D8,maxcpus=3D8 \ -object
+> iommufd,id=3Diommufd0
+> > \
+> > > -bios QEMU_EFI.fd \ -kernel Image-6.2-iommufd \ -initrd
+> > > rootfs-iperf.cpio \ -net none \ -nographic \ -append "rdinit=3Dinit
+> > > console=3DttyAMA0 root=3D/dev/vda rw earlycon=3Dpl011,0x9000000" \ -t=
+race
+> > > events=3Devents \ -D trace_iommufd
+> > >
+> > > When the issue happens, no output on terminal as if Qemu is in a
+> > > locked
+> > state.
+> > >
+> > >  Can you try with the followings?
+> > > >
+> > > > --trace "iommufd*" --trace "smmu*" --trace "vfio_*" --trace "pci_*"
+> > > > --trace "msi_*" --trace "nvme_*"
+> > >
+> > > The only trace events with above are this,
+> > >
+> > > iommufd_backend_connect fd=3D22 owned=3D1 users=3D1 (0) smmu_add_mr
+> > > smmuv3-iommu-memory-region-0-0
+> > >
+> > > I haven't debugged this further. Please let me know if issue is
+> > > reproducible with multiple vCPUs at your end. For now will focus on
+> > > VFIO
+> > dev specific tests.
+> >
+> > Oh. My test environment has been a single-core vCPU. So that doesn't
+> > happen to me. Can you try a vanilla QEMU branch that our nesting
+> > branch is rebased on? I took a branch from Yi as the baseline, while
+> > he might take from Eric for the rfcv3.
+> >
+> > I am guessing that it might be an issue in the common tree.
+>=20
+> Yes, that looks like the case.
+> I tried with:
+>  commit 13356edb8750("Merge tag 'block-pull-request' of
+> https://gitlab.com/stefanha/qemu into staging")
+>=20
+> And issue is still there. So hopefully once we rebase everything it will =
+go
+> away.
 
-Perhaps we can have iommufd_access_attach/detach in this series
-along with a vfio_iommufd_emulated_detach_ioas, and the locking
-will come with another patch in replace series?
+Hi Nicolin,
 
-Thanks
-Nic
+I rebased your latest Qemu branch[1] on top of v7.2.0 and not observed
+the above issue so far. However noticed couple of other issues when
+we try to hot add/remove devices.
+
+(qemu) device_del net1
+qemu-system-aarch64-iommufd: Failed to free id: 4 Inappropriate ioctl for d=
+evice
+qemu-system-aarch64-iommufd: IOMMU_IOAS_UNMAP failed: No such file or direc=
+tory
+qemu-system-aarch64-iommufd: vfio_dma_unmap(0xaaaaf587a3d0, 0x8000101000, 0=
+xf000) =3D -2 (No such file or directory)
+qemu-system-aarch64-iommufd: IOMMU_IOAS_UNMAP failed: No such file or direc=
+tory
+qemu-system-aarch64-iommufd: vfio_dma_unmap(0xaaaaf587a3d0, 0x8000000000, 0=
+x100000) =3D -2 (No such file or directory)
+qemu-system-aarch64-iommufd: Failed to free id:1 Device or resource busy
+
+Ignoring the MMIO UNMAP errors, it looks like the object free is
+not proper on dev removal path. I have few quick fixes here=20
+for this,
+https://github.com/hisilicon/qemu/tree/private-v7.2.0-iommufd-nesting
+
+With the above, it seems the HWPT/IOAS objects are destroyed properly
+on dev detach path. But when the dev is added back, gets a Qemu seg fault
+and so far I have no clue why that happens.
+
+(qemu) device_add vfio-pci,host=3D0000:7d:02.1,iommufd=3Diommufd0,bus=3Drp1=
+,id=3Dnet1
+./qemu_run-iommufd-nested: line 13:  7041 Segmentation fault
+(core dumped) ./qemu-system-aarch64-iommufd
+-machine virt,gic-version=3D3,iommu=3Dnested-smmuv3,iommufd=3Diommufd0
+-enable-kvm -cpu host -m 1G -smp cpus=3D8,maxcpus=3D8 -object
+iommufd,id=3Diommufd0 -bios QEMU_EFI_Dec2018.fd -kernel
+Image-iommufd -initrd rootfs-iperf.cpio -device
+ioh3420,id=3Drp1 -device
+vfio-pci,host=3D0000:7d:02.1,iommufd=3Diommufd0,bus=3Drp1,id=3Dnet1 -append
+"rdinit=3Dinit console=3DttyAMA0 root=3D/dev/vda rw
+earlycon=3Dpl011,0x9000000" -net none -nographic -trace events=3Devents -D
+trace_iommufd
+
+There are no kernel log/crash and not much useful traces while this happens=
+.
+Understand these are early days and it is not robust in anyway, but please
+let me know if you suspect anything. I will continue debugging and will upd=
+ate
+if anything.
+
+Thanks,
+Shameer
+
+[1] https://github.com/nicolinc/qemu/tree/wip/iommufd_rfcv3%2Bnesting%2Bsmm=
+uv3
+
+
