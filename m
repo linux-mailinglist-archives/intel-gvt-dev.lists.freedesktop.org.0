@@ -1,53 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D18756B91CD
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 12:38:18 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BCA7A6B9815
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 14 Mar 2023 15:36:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F72110E784;
-	Tue, 14 Mar 2023 11:38:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 908BF10E843;
+	Tue, 14 Mar 2023 14:36:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
- [185.176.79.56])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7290010E0DA;
- Tue, 14 Mar 2023 11:38:14 +0000 (UTC)
-Received: from lhrpeml100006.china.huawei.com (unknown [172.18.147.206])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4PbWhw6hm9z6J78V;
- Tue, 14 Mar 2023 19:37:20 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
- lhrpeml100006.china.huawei.com (7.191.160.224) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 14 Mar 2023 11:38:11 +0000
-Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
- lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2507.021; 
- Tue, 14 Mar 2023 11:38:11 +0000
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Subject: RE: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
-Thread-Topic: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
-Thread-Index: AQHZSpxHUh/YYv3qukeFp+lKFtoCf67jLB2AgACBDoCAAOlEAIAAn5IAgAIKi/CAAO3wAIAA+kPAgAEQJQCABt1mAIAJIAFQ
-Date: Tue, 14 Mar 2023 11:38:11 +0000
-Message-ID: <90a277ea100d496b82f8cc84388bbca2@huawei.com>
-References: <20230227111135.61728-1-yi.l.liu@intel.com>
- <Y/0Cr/tcNCzzIAhi@nvidia.com>
- <DS0PR11MB7529A422D4361B39CCA3D248C3AC9@DS0PR11MB7529.namprd11.prod.outlook.com>
- <SA1PR11MB5873479F73CFBAA170717624F0AC9@SA1PR11MB5873.namprd11.prod.outlook.com>
- <Y/64ejbhMiV77uUA@Asurada-Nvidia>
- <b7c1f9d5b4b647f0b0686c3b99f3d006@huawei.com>
- <ZAE2J0I1LiBjWUnm@Asurada-Nvidia>
- <d59a0262d5bf423c9e49ad4ac6015296@huawei.com>
- <ZALspPvvLGFuK96F@Asurada-Nvidia> 
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.178]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-Greylist: delayed 633 seconds by postgrey-1.36 at gabe;
+ Tue, 14 Mar 2023 14:35:08 UTC
+Received: from mail.jucvs.autos (unknown [45.13.189.78])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9986510EA66
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Mar 2023 14:35:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jucvs.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=cvs_online_tracking@jucvs.autos; 
+ bh=X3xB5d2cCLe28YTOwTqJh/WlVcg=;
+ b=ZbGPRX/E+ghHluDcTIND9vzTtK1M+X0VquDBHIeL2nIcXbbuF9XH+zntIY5lZ3VLWBiZnogB2iWR
+ VV6hDbzm97Ix3DhDboIJEnx+hRiLgxgsXcqPrUt83y7NNmncte/PNG2Pte4xzu1+ZixXe+SPbx13
+ KgIKQ48ic4covnv3Pfk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jucvs.autos;
+ b=itPPUhBeS+0osDpMuVcgGFtpKokIzjRZDQaNgkr7iNhpsJWZT7m3PNNMrz0kGOOydxJhcM3rnGAs
+ 2kDr24pP29OoDO+ixRl61MsbzVYhFHNrEtG/JH7Pizr+EA2q/3/8NZZ50tNr/d6k1n0YjoJ1mK7p
+ GfEF9gOOVUc1zIS/KbI=;
+Received: by mail.jucvs.autos id h2231o0001gq for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Mar 2023 10:16:28 -0400 (envelope-from
+ <cvs_online_tracking-intel+2Dgvt+2Ddev=lists.freedesktop.org@jucvs.autos>)
+Date: Tue, 14 Mar 2023 10:16:28 -0400
+From: "CVS Online Tracking" <cvs_online_tracking@jucvs.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Best reward deal you can get for being a loyal customer
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_46_347808454.1678803367642"
+Message-ID: <0.0.0.5.1D9567F9140686A.B98F7@mail.jucvs.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,176 +50,107 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
- Jason Gunthorpe <jgg@nvidia.com>, Zhangfei Gao <zhangfei.gao@linaro.org>,
- "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, 
- Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+------=_Part_46_347808454.1678803367642
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>05031323</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <header> 
+    <div>
+     <span style="font-family:Arial, Helvetica, sans-serif; display: block; font-size: 110%; text-align: center; font-weight: 900; padding-bottom: 4%;">A SPECIAL OFFER FOR VALUED CUSTOMERS</span> 
+     <div>
+      <span style="font-family: Arial, Helvetica, sans-serif; display: block; font-size: 200%; text-align: center; font-weight: 900;">CVS</span> 
+      <div style="max-width: 18%; margin: auto;">
+       <a href="http://www.jucvs.autos/teens-gaudiness/31e5eU2395C86BB12q4Zf93O12a5w36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQYQn9Q7Bx1xJo06vJ2AwD" target="_blank"><img alt="" src="http://www.jucvs.autos/9cb4n2395YQ7sa13qN4f9r5O12a5A36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQYQn9Q6YZS1_06k@2ywD/peculiarity-disappearances" width="100%" /></a>
+      </div> 
+     </div> 
+    </div> 
+   </header> 
+   <section class="goldecane-fingo"> 
+    <div>
+     <span style="font-family: Arial, Helvetica, sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 145%; text-align: justify; display: block; text-indent: 5%; padding: 3.5% 0%;">We hope this email finds you well. At <strong>CVS</strong> Pharmacy, we value your feedback and are committed to providing you with the best shopping experience possible. That' s why we want to offer you a special incentive for taking the time to complete our customer survey.</span> 
+     <div style="text-align: center; padding: 2.5% 0%;">
+      <span style="font-family: Arial, Helvetica, sans-serif; display: inline-block; font-weight: bold; font-size: 80%; padding: 1.5% 2%; background-color: #e4e4e4;">For completing the survey, you can receive a $100 Gift.</span>
+     </div> 
+     <span style="font-family: Arial, Helvetica, sans-serif; font-size: 90%; width: 85%; margin: auto; line-height: 145%; text-align: center; display: block; padding: 3.5% 0%;">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is important to us and will help us continue to improve the shopping experience for all our customers.</span>
+    </div> 
+   </section> 
+   <section> 
+    <div style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; padding: 2.5% 0%; font-size: 120%;">
+     <a href="http://www.jucvs.autos/teens-gaudiness/31e5eU2395C86BB12q4Zf93O12a5w36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQYQn9Q7Bx1xJo06vJ2AwD" style="color: rgb(9, 139, 199);" target="_blank">Take The Survey</a>
+    </div> 
+    <div>
+     <span style="font-family: Arial, Helvetica, sans-serif; text-align: left; font-size: 80%; padding: 4.5% 0%; display: block; line-height: 150%; text-indent: 5%;">Thank you for your continued support and for taking the time to fill out our survey. We look forward to hearing from you soon.</span>
+     <br /> 
+     <span style="display: block; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 80%;"><strong>Best regards,<br /> <br /> The CVS survey Team </strong> </span>
+    </div> 
+   </section> &nbsp; 
+   <hr /> 
+   <footer style="padding-top: 20px; text-align: center; "> 
+    <address style="font-size: 65%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; "> <p class="unsubscribe"><span style="text-decoration: none; ">To cease e-mail,</span><a href="http://www.jucvs.autos/d4f6K2yy395UVL8613a4f9M4hF12a5i36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQYQn9Q7JgYLu106qLATwD/superscripted-parentheses" style="text-decoration-line: none; color: #000"> <span>Begin-Ahead-Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <style class="couching"><small></small></style><style></style><font><font><style style="minimizers"><span id="political"></style></span></font><span title="McMullen"></font><span style="telephonic"><span id="specifies"></span></span></span><style></style></p> </address> 
+   </footer> 
+  </div> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" class="full-wrap" role="presentation" style="width: 600px; max-width: 600px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width="600"> 
+   <tbody> 
+    <tr> 
+     <td align="center" style="padding: 0px 30px 0px 30px;">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <th style="text-align:center;font-weight:400;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-size:16px;color:#333;display:; border-collapse:collapse;margin-bottom:0px"> 
+      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td style="padding:25px"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;" width="100%"> 
+           <tbody> 
+            <tr align="center"> 
+             <td align="left" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; font-size: 18px; line-height: 26px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #19293a; font-style: normal; font-weight: 300; font-family: 'Segoe', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" valign="middle">&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td align="center" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; padding: 35px 0px 15px 0px;" valign="center"> 
+              <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="overflow-wrap:break-word;word-break:break-word;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"> 
+                  <div align="center">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+            <tr> 
+             <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" valign="middle">&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table>  </th>
+    </tr> 
+    <tr> 
+     <td align="center" style=" mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; padding: 20px 0px;" valign="middle">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.jucvs.autos/51b6B2W39h5v8AK511H4f96i12a5p36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQYQn9Q6CkR10i6hzwOUD/chartings-lingered" alt=""/></body>
+</html>
 
-> -----Original Message-----
-> From: Shameerali Kolothum Thodi
-> Sent: 08 March 2023 15:55
-> To: 'Nicolin Chen' <nicolinc@nvidia.com>
-> Cc: Xu, Terrence <terrence.xu@intel.com>; Liu, Yi L <yi.l.liu@intel.com>;
-> Jason Gunthorpe <jgg@nvidia.com>; alex.williamson@redhat.com; Tian,
-> Kevin <kevin.tian@intel.com>; joro@8bytes.org; robin.murphy@arm.com;
-> cohuck@redhat.com; eric.auger@redhat.com; kvm@vger.kernel.org;
-> mjrosato@linux.ibm.com; chao.p.peng@linux.intel.com;
-> yi.y.sun@linux.intel.com; peterx@redhat.com; jasowang@redhat.com;
-> lulu@redhat.com; suravee.suthikulpanit@amd.com;
-> intel-gvt-dev@lists.freedesktop.org; intel-gfx@lists.freedesktop.org;
-> linux-s390@vger.kernel.org; Hao, Xudong <xudong.hao@intel.com>; Zhao,
-> Yan Y <yan.y.zhao@intel.com>
-> Subject: RE: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
->=20
-
-[...]
-> > > > On Thu, Mar 02, 2023 at 09:43:00AM +0000, Shameerali Kolothum
-> > > > Thodi
-> > > > wrote:
-> > > >
-> > > > > Hi Nicolin,
-> > > > >
-> > > > > Thanks for the latest ARM64 branch. Do you have a working Qemu
-> > > > > branch
-> > > > corresponding to the
-> > > > > above one?
-> > > > >
-> > > > > I tried the
-> > > >
-> >
-> https://github.com/nicolinc/qemu/tree/wip/iommufd_rfcv3%2Bnesting%2B
-> > > > smmuv3
-> > > > > but for some reason not able to launch the Guest.
-> > > > >
-> > > > > Please let me know.
-> > > >
-> > > > I do use that branch. It might not be that robust though as it
-> > > > went through a big rebase.
-> > >
-> > > Ok. The issue seems to be quite random in nature and only happens
-> > > when there are multiple vCPUs. Also doesn't look like related to
-> > > VFIO device assignment as I can reproduce Guest hang without it by
-> > > only having nested-smmuv3 and iommufd object.
-> > >
-> > > ./qemu-system-aarch64-iommuf -machine
-> > > virt,gic-version=3D3,iommu=3Dnested-smmuv3,iommufd=3Diommufd0 \
-> > -enable-kvm
-> > > -cpu host -m 1G -smp cpus=3D8,maxcpus=3D8 \ -object
-> iommufd,id=3Diommufd0
-> > \
-> > > -bios QEMU_EFI.fd \ -kernel Image-6.2-iommufd \ -initrd
-> > > rootfs-iperf.cpio \ -net none \ -nographic \ -append "rdinit=3Dinit
-> > > console=3DttyAMA0 root=3D/dev/vda rw earlycon=3Dpl011,0x9000000" \ -t=
-race
-> > > events=3Devents \ -D trace_iommufd
-> > >
-> > > When the issue happens, no output on terminal as if Qemu is in a
-> > > locked
-> > state.
-> > >
-> > >  Can you try with the followings?
-> > > >
-> > > > --trace "iommufd*" --trace "smmu*" --trace "vfio_*" --trace "pci_*"
-> > > > --trace "msi_*" --trace "nvme_*"
-> > >
-> > > The only trace events with above are this,
-> > >
-> > > iommufd_backend_connect fd=3D22 owned=3D1 users=3D1 (0) smmu_add_mr
-> > > smmuv3-iommu-memory-region-0-0
-> > >
-> > > I haven't debugged this further. Please let me know if issue is
-> > > reproducible with multiple vCPUs at your end. For now will focus on
-> > > VFIO
-> > dev specific tests.
-> >
-> > Oh. My test environment has been a single-core vCPU. So that doesn't
-> > happen to me. Can you try a vanilla QEMU branch that our nesting
-> > branch is rebased on? I took a branch from Yi as the baseline, while
-> > he might take from Eric for the rfcv3.
-> >
-> > I am guessing that it might be an issue in the common tree.
->=20
-> Yes, that looks like the case.
-> I tried with:
->  commit 13356edb8750("Merge tag 'block-pull-request' of
-> https://gitlab.com/stefanha/qemu into staging")
->=20
-> And issue is still there. So hopefully once we rebase everything it will =
-go
-> away.
-
-Hi Nicolin,
-
-I rebased your latest Qemu branch[1] on top of v7.2.0 and not observed
-the above issue so far. However noticed couple of other issues when
-we try to hot add/remove devices.
-
-(qemu) device_del net1
-qemu-system-aarch64-iommufd: Failed to free id: 4 Inappropriate ioctl for d=
-evice
-qemu-system-aarch64-iommufd: IOMMU_IOAS_UNMAP failed: No such file or direc=
-tory
-qemu-system-aarch64-iommufd: vfio_dma_unmap(0xaaaaf587a3d0, 0x8000101000, 0=
-xf000) =3D -2 (No such file or directory)
-qemu-system-aarch64-iommufd: IOMMU_IOAS_UNMAP failed: No such file or direc=
-tory
-qemu-system-aarch64-iommufd: vfio_dma_unmap(0xaaaaf587a3d0, 0x8000000000, 0=
-x100000) =3D -2 (No such file or directory)
-qemu-system-aarch64-iommufd: Failed to free id:1 Device or resource busy
-
-Ignoring the MMIO UNMAP errors, it looks like the object free is
-not proper on dev removal path. I have few quick fixes here=20
-for this,
-https://github.com/hisilicon/qemu/tree/private-v7.2.0-iommufd-nesting
-
-With the above, it seems the HWPT/IOAS objects are destroyed properly
-on dev detach path. But when the dev is added back, gets a Qemu seg fault
-and so far I have no clue why that happens.
-
-(qemu) device_add vfio-pci,host=3D0000:7d:02.1,iommufd=3Diommufd0,bus=3Drp1=
-,id=3Dnet1
-./qemu_run-iommufd-nested: line 13:  7041 Segmentation fault
-(core dumped) ./qemu-system-aarch64-iommufd
--machine virt,gic-version=3D3,iommu=3Dnested-smmuv3,iommufd=3Diommufd0
--enable-kvm -cpu host -m 1G -smp cpus=3D8,maxcpus=3D8 -object
-iommufd,id=3Diommufd0 -bios QEMU_EFI_Dec2018.fd -kernel
-Image-iommufd -initrd rootfs-iperf.cpio -device
-ioh3420,id=3Drp1 -device
-vfio-pci,host=3D0000:7d:02.1,iommufd=3Diommufd0,bus=3Drp1,id=3Dnet1 -append
-"rdinit=3Dinit console=3DttyAMA0 root=3D/dev/vda rw
-earlycon=3Dpl011,0x9000000" -net none -nographic -trace events=3Devents -D
-trace_iommufd
-
-There are no kernel log/crash and not much useful traces while this happens=
-.
-Understand these are early days and it is not robust in anyway, but please
-let me know if you suspect anything. I will continue debugging and will upd=
-ate
-if anything.
-
-Thanks,
-Shameer
-
-[1] https://github.com/nicolinc/qemu/tree/wip/iommufd_rfcv3%2Bnesting%2Bsmm=
-uv3
-
+------=_Part_46_347808454.1678803367642--
 
