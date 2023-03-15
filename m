@@ -2,141 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B2E56BA4BF
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 02:33:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F11C6BA472
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 02:06:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2D34610E27C;
-	Wed, 15 Mar 2023 01:33:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5FC1710E26D;
+	Wed, 15 Mar 2023 01:06:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6DC8D10E150;
- Wed, 15 Mar 2023 01:33:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678844004; x=1710380004;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- in-reply-to:mime-version;
- bh=fqeg2rYpVGe6NpEvmIFOCeyIZjVN2xcD2mVqxIzb8uk=;
- b=X3R8oCr6C0+aPR+yt5DnWBAD9t7vzeNNf6uFuc0mvUIlGyqZKUDOsKza
- UNA6K5nSxT96IBB8mcVpZC0GFztEnnU/jbrtm3Ia50F17Vk0gVaQX43vZ
- BNPXUqT6KaIXOHOCMlZJ4HoXB4i+qBT4/5dhcykxR0kTY0BCm2IkcLxTM
- HKV4wvRR0N+3zg/YVv0WzcgCl4lrAlmVlbgvoKjDJCHORHDWUAKsiD2ZK
- 2d5s/4bDX+OXYjtSFi7FoWoAp4m/XmJo3nXPr8fSSqHFgZ79ZoYZ+hbqe
- vDQeTavN1J6dQUq2dPrMnzegmnao5FqYMMBCg53jD8G0hEpISE5wphBeW g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="339948565"
-X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; d="scan'208";a="339948565"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2023 18:33:23 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="822586936"
-X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; d="scan'208";a="822586936"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmsmga001.fm.intel.com with ESMTP; 14 Mar 2023 18:33:23 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 14 Mar 2023 18:33:22 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 14 Mar 2023 18:33:22 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Tue, 14 Mar 2023 18:33:22 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.176)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Tue, 14 Mar 2023 18:33:22 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=F0qFH07mLIsiMRhG4fo/EK5hEdMCx+ed45xBYe1N8ScDBP2GG7J5oiAhdtvnsd1h6ERHUbJovPNtR+MHjoqE+KNFcFXHAwXcWbDYE+e61k91IsWIrztpK4oLHE7TDFfYQZPKVtEXlPB81YLUYnx+FRCi+vrfj0mfRrHU+hBuRj0D/E445ucVPg7d4TYmFtEzAernVfJ47iTDQGqUjOolh1xewzhR8uopii+RyatFeRXqyLauoZpo/yUnm8o8DWRX6/UiLwFllCRwscu720eOcyTZ5FfmtYHRJWsKizPBo4e052lVR6owKAtRBFiEp4SpWKlAyqJqlSpi+BwJMQrp4Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DXzzYxGMnhdPhs2IVtt0nLfLtg9iICiFsxdS3Su49Bg=;
- b=OdDHT2GWEOwVk806Go3Ppwyq0RNbq0Dg/P3glV/fDXWnZf4PFhZjnO8741sfULI3FsL3+4UM0elTHUXmEbLGxeBLRNERNBusmi7vhEjN22+SyJx0oeXG0mC8dK/UWEiQigQ7HlUSqte742BUlYi4hYaagNlBuKDM01rMhWPfLXSUfoX98QkBzHsnJ0/1EwHb4AUrJihK8nOBxExSKcrY8C1W6oQtmCjBMib1xtTGyAaCTvaQ2oSJrCavKLHWTNbs3shFadH6M1/935groO9mqZGHYNPSpZVoCEem9TcEQXftZQWtD4HkOCI6Njc6dMVJyjGXj0APzkUCRNmqm/jYUQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
- PH0PR11MB7635.namprd11.prod.outlook.com (2603:10b6:510:28e::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26; Wed, 15 Mar
- 2023 01:33:20 +0000
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::b00e:ac74:158e:1c7e]) by DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::b00e:ac74:158e:1c7e%4]) with mapi id 15.20.6178.026; Wed, 15 Mar 2023
- 01:33:20 +0000
-Date: Wed, 15 Mar 2023 09:08:45 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Sean Christopherson <seanjc@google.com>
-Subject: Re: [PATCH v2 11/27] KVM: x86/mmu: Don't rely on page-track
- mechanism to flush on memslot change
-Message-ID: <ZBEanQaJTCkjcDOn@yzhao56-desk.sh.intel.com>
-References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-12-seanjc@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20230311002258.852397-12-seanjc@google.com>
-X-ClientProxiedBy: SG2P153CA0019.APCP153.PROD.OUTLOOK.COM (2603:1096:4:c7::6)
- To DS7PR11MB5966.namprd11.prod.outlook.com
- (2603:10b6:8:71::6)
+X-Greylist: delayed 497 seconds by postgrey-1.36 at gabe;
+ Wed, 15 Mar 2023 01:06:40 UTC
+Received: from mail.workflix.autos (unknown [45.13.189.200])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BFBFF10E1F9
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 15 Mar 2023 01:06:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=workflix.autos; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=roger.nichols@workflix.autos; 
+ bh=vH7UcQ6uSufPivbMAfP4vlOSbD4=;
+ b=CT/TyER6CTcvx/iTswaHy5f8fysrWSsCkCdxT6Yt2sfDsowaxoLiSqlg0oH7cYteYuEpm7lFh7Ry
+ AfYLHIs7zt1Kdj5qXfHoXQz+p3hw3JIo41TH94jfKa+bhQjVXC5v/gIEOxOvGQXnvbg/FRj1dXcN
+ zjmruvpZvyOzrLO3W/w=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=workflix.autos;
+ b=WN7RQJX70eRokg0O1BrkWA57ijUUOjN8mdOOIfmOEtlNVqph6AfMkMv4PNSZPAm928JZFWtdLiWL
+ gw4CjGIQzuz2BLPMhrxAKM3WcSf9QofvA2hh3RzKxdvj2xxYjyHt0Wejk0lxotDDfgPNc1ikpkDv
+ hno4eQOzZwZ2+G+w5bY=;
+Received: by mail.workflix.autos id h24n3e0001gs for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 14 Mar 2023 22:17:39 -0400 (envelope-from
+ <roger.nichols-intel+2Dgvt+2Ddev=lists.freedesktop.org@workflix.autos>)
+Date: Tue, 14 Mar 2023 22:17:39 -0400
+From: "Roger Nichols" <roger.nichols@workflix.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Watching your favorite show is now going to get you rewarded - our
+ token of appreciation
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|PH0PR11MB7635:EE_
-X-MS-Office365-Filtering-Correlation-Id: f1931852-22df-4d0e-88f7-08db24f541fb
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: wtVf7zM8VjTcxmkxWPBP5GYP+wHhBnl/bNzup96l57Cne6KYt0bHedBBnHcmsRTO/zdPCDr9B9A/+SBdbc94RIGnFDvN6mc5MLsHdHLtK2v4NfnP4ogDPjm1JYlKcgOvIOuKGB+y5FTuF/oIN/KZRYp32tpM+ESw/UC9x7Q2VwkJ5MoLEOFqr2l28Kjyx00QFp5TDXTE7pa5Jdsy/zmC5YvWwv6+rjFYxq48UJaM7B1JF70wubcW37CtWib8k6Tg2s8GoJ0rkrbsRdSyP3lNzlofJ1VZD4b1/etXlvikODOD0Fi+wYQX0NML8Kqkn1SVSVg+PyfVTOzmNjkuPKwta2xzm2TmzQmiTMtqXZ+E6CTmG/9WU7Qv8nMEt0MMSDERDzDEB5qkI5xX8TUOID+T6NbvFkfPmkl2+YawscHfY33EyF8L6yWXw6NHJbB2+Xhb9ucSg0lXyh5bc+Wz9wAwNithelH91/pBKCop8AqMJ0GBXknztT0fKh8HFt0NdUcriprOz/kCuF4FrtLv8kTTHsfpzx77tE/bh8eJGwAPpyJ5KHqhkm0LSftZ2PbkpIght4VCJbu6H0Z9AjS4QqhLmhbjfdjqpqTcyFc76RXi7nYHXKjzJg3sdGqDZ8LpkB6MQcWT0Ji2M2MJnwoNR1NgPw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(346002)(136003)(376002)(396003)(39860400002)(366004)(451199018)(8936002)(5660300002)(3450700001)(2906002)(38100700002)(82960400001)(86362001)(478600001)(66556008)(6916009)(66476007)(66946007)(6486002)(6666004)(41300700001)(8676002)(4326008)(83380400001)(54906003)(316002)(186003)(26005)(6512007)(6506007);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HamfClD6LnauvIgbt1cRfBzHMKGtrF+PqCNo3tQMqfv2koXz5/qeGzOKU8YI?=
- =?us-ascii?Q?zk/1CGNfoK1cBeJfXr9nxQUGTUD5QRXFA7PciR+kA4qrYcKE8EPUi7TQ+QXu?=
- =?us-ascii?Q?NUD37jrRpxffMz/XJhArgRgF0pkBWlV99l1ZwGV3DT4i4Pc39X8/rcRag6Yo?=
- =?us-ascii?Q?OdSgLf4H2clOTnUe63LKhSst6oIpEtkbcYEY856lr4iQrqz9Is0gZoh1qB7e?=
- =?us-ascii?Q?JmTOokRpoiRyfTinPB3l8LMJoZgry7GGm1vkTT8H4M8OHCyj+Rd2ogYkUIXY?=
- =?us-ascii?Q?4il9/BWlj9VIt7Qmv/iPa8bQc63TxiDG+ZyW1Za0i4waN4mGxLgeuEpaoMDV?=
- =?us-ascii?Q?N098uXSemqUL/kjdtFE/X9HrmcX7hrQ49tCAH4i+pB5K5VQSsqywDJIas0mw?=
- =?us-ascii?Q?i0pNVya2Obm3XWCgvdy6nW1JFUjsYYabdv8FJTyVf5VVwgxx1gz3mo2VM/UF?=
- =?us-ascii?Q?/S3xY+Xb3aGhx8yi0ranmGCvLtTN2V7tHxpuZ3+SZBeXdIdt2KDnovF0wDja?=
- =?us-ascii?Q?xl/FZwON8odUxucT54ArOpjdgr3qLVsiryWQg6pn3g3AeqoJolQc+4+2duds?=
- =?us-ascii?Q?spAyZpS4t5aizfAa+aj3V6gN2NigynU0hGac5pxbJDxgC011/NboTOAiYGs8?=
- =?us-ascii?Q?M9kFIAGJ+vq5mFiB6gcUwIwCG9rcSTPiRg7INiWrhqC3SKoMlQT/KJdkJsRq?=
- =?us-ascii?Q?QVd2t24OsN5yCX3pjirtdNwhOBfO475mbbBmLrEdG0M5yabir2UXXsl9d+SD?=
- =?us-ascii?Q?qlH1S9W6yQm6BjhKWaSgNXcmCdCabyTHtKp0yJhuqbnudv5+FUJrxKPAzSVw?=
- =?us-ascii?Q?ayivA1R6VFewiOVPA5I4ff28QnxjF5ij+sl9hDoC4FLb7/MEGT9dK0b3kRIU?=
- =?us-ascii?Q?gLYF98Y/+Bt56Au5abUjd4UuPlfbezTeZBg6y1Ameadf1Fu0lCyBel9aJK5/?=
- =?us-ascii?Q?d8SMdyrQF7/2A2xg/H67MZYGaOyEive7uz8yeRWfMtQz8MzXikyq7b+pYsCF?=
- =?us-ascii?Q?WFe1P0HdGeKQvvNnb1754Nexu2sEEhdGFkgGh7zlpNqtluSzJ2y5mrlPb12g?=
- =?us-ascii?Q?egciG0OTepFytJwitWPyyTANFJx5Oy9neu933M1yLbt7ASunDpECi/gVMZwh?=
- =?us-ascii?Q?z7LE2MUocw2mMibtJtEJ/vAoXEyvo53C/puuOlS0+gl0Qc2p4UVmEU8ws3cC?=
- =?us-ascii?Q?K5hZEqw7RxSU5mg2IaaRbWeSxjxLch00rG9fYI4UvURKlAb7zR9K4EBB45f8?=
- =?us-ascii?Q?TiX+WaN0nUsBuIJlQnE+c4iExH3iiu5sEpD+xDFTG8lzAQa7vKNsrd33jXTc?=
- =?us-ascii?Q?k3d3uOuTpNgDe7P0P4Lywd21K6uYfTE+RbDMxrns5aKVqTz97vPRi9Uu5POG?=
- =?us-ascii?Q?auz+EgaxqwODyyCr/mRVsdrWulrpTJuyXF5WL23ivvdsBq9S4a7XiC4P74Fq?=
- =?us-ascii?Q?eb1FyEbp24JO3MimfwmlpZ0Q2n2vfnJTA9EJ6DbM7nmO5Py3oOyqdtedFZpd?=
- =?us-ascii?Q?3ha3d/SYbcCO39Z6UeSyRhSveV/bMA6URIKU6XuIiEnVFJvjVgSUV2LxwO49?=
- =?us-ascii?Q?Ke/oDn/QpwzDtD++T4Zse2+BFnMeyVfKVOPfCnTqWCepIBMcpKFj8XOna/+G?=
- =?us-ascii?Q?/w=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: f1931852-22df-4d0e-88f7-08db24f541fb
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Mar 2023 01:33:19.8162 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: lPC/hrda3ZeiYjLhQ7N2aJv6ZCMFENVYRNE5cvXGLNM/Z1SjsJ56qG9hvpBejk+NZD0tE/DK/4pEAATEXkjuwg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB7635
-X-OriginatorOrg: intel.com
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_673_896147526.1678841477259"
+Message-ID: <0.0.0.4A.1D956E45114DB76.51AE29@mail.workflix.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -149,63 +51,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Mar 10, 2023 at 04:22:42PM -0800, Sean Christopherson wrote:
-...
-> -static void kvm_mmu_invalidate_zap_pages_in_memslot(struct kvm *kvm,
-> -			struct kvm_memory_slot *slot,
-> -			struct kvm_page_track_notifier_node *node)
-> -{
-> -	kvm_mmu_zap_all_fast(kvm);
-> -}
-> -
->  int kvm_mmu_init_vm(struct kvm *kvm)
->  {
->  	struct kvm_page_track_notifier_node *node = &kvm->arch.mmu_sp_tracker;
-> @@ -6110,7 +6103,6 @@ int kvm_mmu_init_vm(struct kvm *kvm)
->  	}
->  
->  	node->track_write = kvm_mmu_pte_write;
-> -	node->track_flush_slot = kvm_mmu_invalidate_zap_pages_in_memslot;
->  	kvm_page_track_register_notifier(kvm, node);
->  
->  	kvm->arch.split_page_header_cache.kmem_cache = mmu_page_header_cache;
-> diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
-> index f706621c35b8..29dd6c97d145 100644
-> --- a/arch/x86/kvm/x86.c
-> +++ b/arch/x86/kvm/x86.c
-> @@ -12662,6 +12662,8 @@ void kvm_arch_flush_shadow_all(struct kvm *kvm)
->  void kvm_arch_flush_shadow_memslot(struct kvm *kvm,
->  				   struct kvm_memory_slot *slot)
->  {
-> +	kvm_mmu_zap_all_fast(kvm);
-Could we still call kvm_mmu_invalidate_zap_pages_in_memslot() here?
-As I know, for TDX, its version of
-kvm_mmu_invalidate_zap_pages_in_memslot() is like
+------=_Part_673_896147526.1678841477259
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-static void kvm_mmu_invalidate_zap_pages_in_memslot(struct kvm *kvm,
-                        struct kvm_memory_slot *slot,
-                        struct kvm_page_track_notifier_node *node)
-{
-        if (kvm_gfn_shared_mask(kvm))
-                kvm_mmu_zap_memslot(kvm, slot);
-        else
-                kvm_mmu_zap_all_fast(kvm);
-}
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>05031423</title> 
+ </head> 
+ <body style="padding: 7% 0%;"> 
+  <div style="max-width: 600px; margin: auto;"> 
+   <header> 
+    <div>
+     <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 200%; text-align: center;">A Special Offer for Our Valued Users</span>
+    </div> 
+    <div>
+     <span style="display: block; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 900; font-size: 250%; color: #ff0000;">NETFLIX</span>
+    </div> 
+    <div style="text-align: center;"> 
+     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
+      <a href="http://www.workflix.autos/2c36P_239r5m86Cl13z4fWc8uY12acv36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQxQndQ6h1h0tg5EOwDN/recreating-visitations" target="_blank"><img alt="" src="http://www.workflix.autos/5b14a2395zxM7a13J4XfLcaq12acS36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQxQndQ7dgT10zt6gMwDAP/quizzes-mechanizing" width="100%" /></a>
+     </div> 
+     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
+      <a href="http://www.workflix.autos/2c36P_239r5m86Cl13z4fWc8uY12acv36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQxQndQ6h1h0tg5EOwDN/recreating-visitations" target="_blank"><img alt="" src="http://www.workflix.autos/honeysuckle-coolies/a266b239sk5Lk7Da13X4fcObH_12acP36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQxQndQ7e1Ttn0D6PO1wWD" width="100%" /></a>
+     </div> 
+    </div> 
+   </header> 
+   <br /> 
+   <br /> &nbsp; 
+   <section> 
+    <div style="max-width: 90%; margin: auto; text-align: center; line-height: 150%;">
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;">We wanted to take a moment to thank you for choosing Netflix for you watch streaming services. Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you.<br /> <br /> As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with Netflix.<br /> <br /> Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <br /> 
+      <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><span style="display: inline-block; font-size: 90%; padding: 1.5% 2%; background-color: rgb(223, 223, 223); font-weight: bold;">For completing the survey, you can receive a $100 Gift!</span> </span>
+     </div> 
+     <br /> 
+     <br /> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span>
+     <br /> 
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><a href="http://www.workflix.autos/2c36P_239r5m86Cl13z4fWc8uY12acv36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQxQndQ6h1h0tg5EOwDN/recreating-visitations" style="color: #6d143d;"><span style="font-weight: bold; display: inline-block; font-size: 180%;"><u>TAKE THE SURVEY</u> </span></a> </span>
+     </div> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;"> </span>
+     <br /> &nbsp; 
+     <div style="text-align: center;">
+      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 900; font-size: 80%; ">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The Netflix Survey</span> </span>
+     </div> 
+     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;"> </span>
+    </div> 
+   </section> &nbsp; 
+   <hr /> 
+   <footer style="max-width: 600px; margin: auto;"> 
+    <address style="text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; ; padding: 15px 0px;  font-weight: bold;"> <p><small><span style="text-decoration: none; ">To withdraw from notices,</span><a href="http://www.workflix.autos/ruinous-flossing/6666R23p9u5A8NH613g4fcpm9g12acM36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQxQndQ5lQ1X06OjwJDW" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Start Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font></font><font lang="Mahayanist"></font><big><style><small></small><font dir="Sproul"></font></big></style><big><big></big></big><span></span><span title="utilize"></span><big></big> </small></p> </address> 
+   </footer> 
+  </div>   
+ <img src="http://www.workflix.autos/twister-gloriously/ada4r2395n8F5r12w4fjccH12acU36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQxQndQ6L1m0ii6Ekw@PD" alt=""/></body>
+</html>
 
-Maybe this kind of judegment is better to be confined in mmu.c?
+------=_Part_673_896147526.1678841477259--
 
-Thanks
-Yan
-
-> +
->  	kvm_page_track_flush_slot(kvm, slot);
->  }
->  
