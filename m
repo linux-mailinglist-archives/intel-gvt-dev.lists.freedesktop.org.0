@@ -1,44 +1,103 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B6206BA3B0
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 00:44:38 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 719616BA46B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 02:01:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DE9C010E0EB;
-	Tue, 14 Mar 2023 23:44:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 30FB410E150;
+	Wed, 15 Mar 2023 01:01:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 346 seconds by postgrey-1.36 at gabe;
- Tue, 14 Mar 2023 23:44:35 UTC
-Received: from mail.infiperks.autos (unknown [45.13.189.190])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3222D10E0DD
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 14 Mar 2023 23:44:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=infiperks.autos; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=myseniorperks@infiperks.autos; 
- bh=08gqNy9hnhbf06U6DuaWcv9Jeeo=;
- b=gm1sqnvmTRlt7YdqwiijDzZIQUEz6kk9lFrYHQcjel5HC5NpPwdSePfdwzmwZncxEECsF7An5Jjp
- 1C8ZTPidV9QP2r3WBU/9r2jfM2GwvvNG7xQYpoCBpqU5F9DOV97nmdDELLjXTvgneRWfyNpYCRpL
- LjZaHdfQpzrKCGTKA1Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=infiperks.autos;
- b=Zd6kUQpM7SWqSZyXPzfc5SXKgjcyKBHxHz3zN4imIqlEyYRSSZ/iocWuLWOEMYStoBfug4r1hzg2
- fWumHQr4DNJ4LVhIQSqc8+8sIib5yfDsj4fQ/ZnNi+Cc+b9k9ndOfBteR8jVGxgHaZDER24PsUXU
- CD2+mAksRd/aS7HiIE4=;
-Received: by mail.infiperks.autos id h243e60001gd for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 14 Mar 2023 19:32:45 -0400 (envelope-from
- <myseniorperks-intel+2Dgvt+2Ddev=lists.freedesktop.org@infiperks.autos>)
-Date: Tue, 14 Mar 2023 19:32:45 -0400
-From: MySeniorPerks <myseniorperks@infiperks.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: 1000s Of Seniors Have More Cash In Their Pockets After Learning About
- These Simple Discounts
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11on2087.outbound.protection.outlook.com [40.107.223.87])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9C7E310E14A;
+ Wed, 15 Mar 2023 01:01:39 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JY1TRznUzpJVdcFzMdclMfqQbnr1S9zy31bEPx1Hq8nx6rnJewC3syZHLaqxmUa527UuAcqXPQ/QvBP+A3Exq0Ewx5b34bcphHC6L4UmQztsb6kpyZCp18+fzlXISmKfxDFnSGpnDz1/BreKDH8wq1LJ4D8OKmyzFaOVjZGHOweygHrFXW+hT5hSVz/QpDJAVwR0JtdRNoGI2Ay7OLwssMROW37jJwgwwPmVjx5M+FXX/fpom1jlxbSN3OoEuvAOgovhE4J5qAalKtoa+pCecAJXYKuYce/xl4A1A/Ouw0S2PVA4DOlmaph3zY02zF13bYuar4w8ow7bHBxtDZPBfA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=r+3snqGfsPmlCiRJCCt35YcV4ZAIFEvAtJrCTvyN+Yg=;
+ b=i1xAI1tXk/ZiBPMQKDMt7uzpRHgZ3DXQ7DYBg6XC0zxCl+EUPg8xNKETAfVge8Iuq1bL9aIkvb1y3IhlUAocceWn6kxaPzY/TOXljMqMsVr+Zug12PLp4R5LaR8SjTUzxIpLfBf8uaJmxNdcJvYoryBCQoSjIlbaZR9ayORljktUXI0tkMaAx3gYwpDxTosPdg3DNQ/Lr6haGFB1ku5fixZlTjf6AupdnruyDIMq+KcFxkG0c203QtpHaWSdYDTZubVGkqJrTsjB6GMVDCwqzwe4Vodom+kn3TJcUWm1EP4qsUdhHgJ+m5AB+bRzpOzM2FLNeVIOvrWjkndXFE5q5w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=r+3snqGfsPmlCiRJCCt35YcV4ZAIFEvAtJrCTvyN+Yg=;
+ b=fCdpJiX8e7J2BSF8BoedOqQdlsKRN+Gf0kOmdg0ERBsGsIDl2H9gNJU7TogstgNOT1j8sKsi0yd0w7YY7QzViOyc2+do9/lX736v/PvOVMdRDLp2pC/9TeqDIOVq3aDH5dAUBRud33sG0js3lKohiyEdoSV59H4TL4gPY+HP2FpW/0rXO5LV9/K8cY6YHtgyZObe9sYPJEQWmWLfUfz4OgkWOWmShelYsNClH0FTponWG1I8uvClUIZkRHA+Vsfp9WvmAwpzj0vUlPctGtEuHu3e3PSHFh+ddKmAtwiSUo7LdGWuH22HGGa+MztXPpqRvb97WOOOhmOJ4BElvwZ04g==
+Received: from DS7PR03CA0171.namprd03.prod.outlook.com (2603:10b6:5:3b2::26)
+ by SA1PR12MB8094.namprd12.prod.outlook.com (2603:10b6:806:336::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26; Wed, 15 Mar
+ 2023 01:01:36 +0000
+Received: from DM6NAM11FT039.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:3b2:cafe::d6) by DS7PR03CA0171.outlook.office365.com
+ (2603:10b6:5:3b2::26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26 via Frontend
+ Transport; Wed, 15 Mar 2023 01:01:36 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ DM6NAM11FT039.mail.protection.outlook.com (10.13.172.83) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6199.11 via Frontend Transport; Wed, 15 Mar 2023 01:01:36 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Tue, 14 Mar 2023
+ 18:01:26 -0700
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37; Tue, 14 Mar
+ 2023 18:01:25 -0700
+Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5 via Frontend
+ Transport; Tue, 14 Mar 2023 18:01:24 -0700
+Date: Tue, 14 Mar 2023 18:01:23 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Yi Liu <yi.l.liu@intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ <kevin.tian@intel.com>
+Subject: Re: [PATCH v1 1/5] iommufd: Create access in
+ vfio_iommufd_emulated_bind()
+Message-ID: <ZBEY49XtiFUImfe4@Asurada-Nvidia>
+References: <20230308131340.459224-1-yi.l.liu@intel.com>
+ <20230308131340.459224-2-yi.l.liu@intel.com>
+ <ZAtqlnCk7uccR5E7@nvidia.com> <ZBAuXo166M+z8b3z@Asurada-Nvidia>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_463_174513202.1678836668304"
-Message-ID: <0.0.0.33.1D956CD47824B6E.4AF0AA@mail.infiperks.autos>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <ZBAuXo166M+z8b3z@Asurada-Nvidia>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6NAM11FT039:EE_|SA1PR12MB8094:EE_
+X-MS-Office365-Filtering-Correlation-Id: a2d6557a-2dec-4e82-348b-08db24f0d3a0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 4vF6nyOvvD/g6YT7tPZnUwWdid/IcOG9dyuNcdWQoPOfAQTsEQkTcnkoybNellDONfkBYotYfyVYf17hKs7iGxffOAL7qAaSbZwyYZ91lmd0aXAffv19ihC3XldVN7Psp3pXFpaJCIeUTKG3AhHZLkbC8ExHjSJuvDP3IjIPwws6/eDIJwhjhl4IPvSUmH8eppySr6Sy7vrVEK/L2tVphYnrs3HRvcDzN8tNgTbTh0eqv8d6fUGm52mifJ2SLVMECq5cDXbaOxPlcGrp7GIExnwPMiemLASy/hritx/NnigrHSrOrTuM7QncJEcOX5NH/6mNDUq00qb1MsruZCZ9W/Av2RsRRvcLGzm3wPc0fkwlw7ZmbOwI2lCLsbSmMz5wIjUmIRfyCmlncosZlunRz/ZIKGHcazypAurkJRSmV8B6z4njkJDYCpGrX+2hbEbivxlpeU6zbcHeE9hScgVV2oO1uXzsFuzE0UzicDCu3HmGAqqJpQBuiQt8Rn9IaYK07vL0JC0qYpIk9WswX+QzPWFxU+hHoCA2vKTbY3140Kh/hAiShONfkPXXdPWAOGSuV57mChlwUfoN72rNFO5gqF0LHmPOxaPkM1pI4crzgsOZxzzTFeJb0ZdRjO3WCOUXFqjoYZMpkV6uaEDFEFTIheAn5b3Kio62uocR0VcD++Dz3q3j5/Jj5GB70okhvcuH9zlFkyuHViqr3MvsNa2yKS1L2NNqiub87WpiTnoYesTt9rY5D2qVEYjxg22e6VJI
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230025)(4636009)(136003)(376002)(346002)(39860400002)(396003)(451199018)(46966006)(40470700004)(36840700001)(336012)(8936002)(478600001)(4326008)(54906003)(110136005)(70586007)(70206006)(7416002)(8676002)(316002)(41300700001)(2906002)(5660300002)(356005)(40460700003)(86362001)(7636003)(26005)(40480700001)(55016003)(82740400003)(426003)(9686003)(47076005)(186003)(33716001)(82310400005)(36860700001)(83380400001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Mar 2023 01:01:36.2893 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a2d6557a-2dec-4e82-348b-08db24f0d3a0
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT039.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB8094
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,30 +110,176 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: linux-s390@vger.kernel.org, yi.y.sun@linux.intel.com,
+ mjrosato@linux.ibm.com, kvm@vger.kernel.org,
+ intel-gvt-dev@lists.freedesktop.org, joro@8bytes.org, cohuck@redhat.com,
+ xudong.hao@intel.com, peterx@redhat.com, yan.y.zhao@intel.com,
+ eric.auger@redhat.com, alex.williamson@redhat.com, terrence.xu@intel.com,
+ shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
+ intel-gfx@lists.freedesktop.org, chao.p.peng@linux.intel.com, lulu@redhat.com,
+ robin.murphy@arm.com, jasowang@redhat.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_463_174513202.1678836668304
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Hi Jason/Kevin,
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>04031423</title> 
- </head> 
- <body style="padding: 7% 0%;"> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <h4><a href="http://www.infiperks.autos/bitters-bussing/S8a5u2Z395g86ow13h4Ofc3DI12abM36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQVQndd5m1T0H5JXwDN" target="_blank"><img alt="" src="http://www.infiperks.autos/cabdriver-Presbyterianizes/44a4G2395sq7Ia11A4fc6Z12abx36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQVQndd6n1rW0O5X0wlD" width="100%" /></a></h4> 
-   <footer style="padding: 5px 0px 25px; background-color: #70180c; width: 100%; "> 
-    <address style="font-size: 12px; "> <p align="center" class="lemon" id="shortage" style="font-size: 10px; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'"><br /> <font face="Verdana, Arial, Helvetica, sans-serif" size="1" style="color: #fff; font-weight: bold;">If you'd prefer not to receive future emails, <a href="http://www.infiperks.autos/philosophize-sorority/9726p239iA5Dio8612L4fvc4X12abj36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQVQndd6SNL1o05fXLwD" style="text-decoration: none;"><font color="#01AAB6"><b>Unsubscribe Here</b></font></a>.<br /> <br /> <a href="http://www.infiperks.autos/industrialists-juror/80a5m2Z395Kv86B13f4fqAc5t12abw36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQVQndd5s10IN5QkBwD" style="text-decoration: none;"><font color="#01AAB6"><b>My Senior Perks</b></font></a> | 302 Washington St #150-7835 San Diego, CA 92103</font></p> </address> 
-   </footer> 
-  </div>   
- <img src="http://www.infiperks.autos/aid-husbands/5944y2395cW8X512h4fc7Bj12abh36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQVQndd6DQ1i0H5M1wD1" alt=""/></body>
-</html>
+On Tue, Mar 14, 2023 at 01:20:52AM -0700, Nicolin Chen wrote:
+> On Fri, Mar 10, 2023 at 01:36:22PM -0400, Jason Gunthorpe wrote:
+> > On Wed, Mar 08, 2023 at 05:13:36AM -0800, Yi Liu wrote:
+> > 
+> > > +int iommufd_access_set_ioas(struct iommufd_access *access, u32 ioas_id)
+> > > +{
+> > > +	struct iommufd_ioas *new_ioas = NULL, *cur_ioas;
+> > > +	struct iommufd_ctx *ictx = access->ictx;
+> > > +	struct iommufd_object *obj;
+> > > +	int rc = 0;
+> > > +
+> > > +	if (ioas_id) {
+> > > +		obj = iommufd_get_object(ictx, ioas_id, IOMMUFD_OBJ_IOAS);
+> > > +		if (IS_ERR(obj))
+> > > +			return PTR_ERR(obj);
+> > > +		new_ioas = container_of(obj, struct iommufd_ioas, obj);
+> > > +	}
+> > > +
+> > > +	mutex_lock(&access->ioas_lock);
+> > > +	cur_ioas = access->ioas;
+> > > +	if (cur_ioas == new_ioas)
+> > > +		goto out_unlock;
+> > > +
+> > > +	if (new_ioas) {
+> > > +		rc = iopt_add_access(&new_ioas->iopt, access);
+> > > +		if (rc)
+> > > +			goto out_unlock;
+> > > +		iommufd_ref_to_users(obj);
+> > > +	}
+> > > +
+> > > +	if (cur_ioas) {
+> > > +		iopt_remove_access(&cur_ioas->iopt, access);
+> > > +		refcount_dec(&cur_ioas->obj.users);
+> > > +	}
+> > 
+> > This should match the physical side with an add/remove/replace
+> > API. Especially since remove is implicit in destroy this series only
+> > needs the add API
+> 
+> I assume that the API would be iommufd_access_attach,
+> iommufd_access_detach, and iommufd_access_replace(). And there
+> might be an iommufd_access_change_pt(access, pt, bool replace)?
+> 
+> > And the locking shouldn't come in another patch that brings the
+> > replace/remove since with just split add we don't need it.
+> 
+> Hmm. The iommufd_access_detach would be needed in the following
+> cdev series, while the iommufd_access_replace would be need in
+> my replace series. So, that would make the API be divided into
+> three series.
+> 
+> Perhaps we can have iommufd_access_attach/detach in this series
+> along with a vfio_iommufd_emulated_detach_ioas, and the locking
+> will come with another patch in replace series?
 
-------=_Part_463_174513202.1678836668304--
+I recall that we previously concluded that the unbind() is safe
+to go without doing access->ops->unmap, because close_device()
+would be called prior to the unbind().
 
+But, to add the vfio_iommufd_emulated_detach_ioas() in the cdev
+series, we'd need the access->ops->unmap call, and the locking
+and "ioas_unpin" too in the detach and attach APIs, right?
+
+I tried a bit of some update, across this series, cdev series,
+and the replace series. Though we might be able to simplify a
+bit of this patch/series, yet it doesn't seem to simplify the
+changes overall, particularly in the following cdev series for
+having an unmap() call and the locking.
+
+Then the replace API would mostly overlap with the attach API,
+by only having an additional detach(), which means actually we
+only need an iommufd_access_attach API to cover both cases...
+
+Can you please take a look at the final access APIs that I've
+attached at the end of the email for things mentioned above?
+Hopefully we can confirm and put them correctly into the next
+version of the three series.
+
+Thanks
+Nic
+
+-----------------------------------------------------------------------
+static void __iommufd_access_detach(struct iommufd_access *access)
+{
+	struct iommufd_ioas *cur_ioas = access->ioas;
+
+	lockdep_assert_held(&access->ioas_lock);
+	/*
+	 * Set ioas to NULL to block any further iommufd_access_pin_pages().
+	 * iommufd_access_unpin_pages() can continue using access->ioas_unpin.
+	 */
+	access->ioas = NULL;
+
+	if (access->ops->unmap) {
+		mutex_unlock(&access->ioas_lock);
+		access->ops->unmap(access->data, 0, ULONG_MAX);
+		mutex_lock(&access->ioas_lock);
+	}
+	iopt_remove_access(&cur_ioas->iopt, access);
+	refcount_dec(&cur_ioas->obj.users);
+}
+
+static int iommufd_access_change_pt(struct iommufd_access *access, u32 ioas_id)
+{
+	struct iommufd_ioas *new_ioas, *cur_ioas;
+	struct iommufd_object *obj;
+	int rc = 0;
+
+	obj = iommufd_get_object(access->ictx, ioas_id, IOMMUFD_OBJ_IOAS);
+	if (IS_ERR(obj))
+		return PTR_ERR(obj);
+	new_ioas = container_of(obj, struct iommufd_ioas, obj);
+
+	mutex_lock(&access->ioas_lock);
+	cur_ioas = access->ioas;
+	if (cur_ioas == new_ioas)
+		goto out_unlock;
+
+	rc = iopt_add_access(&new_ioas->iopt, access);
+	if (rc)
+		goto out_unlock;
+	iommufd_ref_to_users(obj);
+
+	if (cur_ioas)
+		__iommufd_access_detach(access);
+	access->ioas_unpin = new_ioas;
+	access->ioas = new_ioas;
+	mutex_unlock(&access->ioas_lock);
+	return 0;
+
+out_unlock:
+	mutex_unlock(&access->ioas_lock);
+	iommufd_put_object(obj);
+	return rc;
+}
+
+int iommufd_access_attach(struct iommufd_access *access, u32 ioas_id)
+{
+	return iommufd_access_change_pt(access, ioas_id);
+}
+EXPORT_SYMBOL_NS_GPL(iommufd_access_attach, IOMMUFD);
+
+/* Identical to iommufd_access_attach now... */
+int iommufd_access_replace(struct iommufd_access *access, u32 ioas_id)
+{
+	return iommufd_access_change_pt(access, ioas_id);
+}
+EXPORT_SYMBOL_NS_GPL(iommufd_access_replace, IOMMUFD);
+
+void iommufd_access_detach(struct iommufd_access *access)
+{
+	mutex_lock(&access->ioas_lock);
+	if (WARN_ON(!access->ioas))
+		goto out;
+	__iommufd_access_detach(access);
+out:
+	access->ioas_unpin = NULL;
+	mutex_unlock(&access->ioas_lock);
+}
+EXPORT_SYMBOL_NS_GPL(iommufd_access_detach, IOMMUFD);
