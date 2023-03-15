@@ -2,78 +2,108 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C3A86BC031
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 23:53:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FE086BC0CC
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Mar 2023 00:23:15 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C4B7110E04C;
-	Wed, 15 Mar 2023 22:53:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E209F10E013;
+	Wed, 15 Mar 2023 23:23:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 69FAB10E04C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Mar 2023 22:53:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1678920798;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PmBI1DpvKaVXYXtA6gtpu5ckoov61ccQSRAX+aljBe0=;
- b=BBLe/E5n6/PlDrYGyAYFw7SiLqg917zF06T0/tI5OL5GBgILNE2gFfkc4oATT4zThVY28A
- t0oCfsAXSUCVmA3jcQZkd6f0VRNPVi0fQKmpGa2B2CorZxmoxQU7nErakpvfgZwEGr32Bc
- FLqcRJRy3gNmKwde3WSSy3I11QUCXNo=
-Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
- [209.85.166.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-258-ZeKV3AwKMWGCTkZfdcH5jA-1; Wed, 15 Mar 2023 18:53:17 -0400
-X-MC-Unique: ZeKV3AwKMWGCTkZfdcH5jA-1
-Received: by mail-il1-f197.google.com with SMTP id
- h1-20020a92d841000000b0031b4d3294dfso20086ilq.9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Mar 2023 15:53:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678920794;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=PmBI1DpvKaVXYXtA6gtpu5ckoov61ccQSRAX+aljBe0=;
- b=vW4Dd905GxW7YLFcnqZJm57povmc7ukth4EXr9XuT3VgAB+GiJYlhtQHopjkmyM6ZW
- 0chAtxUxzNXfYrUVAW5Nz6JICl6Z33xV3oGu23s84MDN+4thyHP7YLKeP5ZFtJ9kl2Fs
- iab1QRQLJutmfQyyjzFEG4YBN9OzmPNBZv9zKIYBCXquiBU5fG5gAKoul0gDxmHC5ka1
- Mfzo/mGe/XjYwLKKWZ5uYdBGLoejif/I2G5ZxwwCw9JuISArbxBrHzlA/MYEWW/o5hQh
- V5zKcwFNRwwLEPf1dWteYQqbmlh9os5Ma7+VNeLsw2WHm6gYTjIOPGBogpX16JTGt05X
- 00cQ==
-X-Gm-Message-State: AO0yUKWR+XEL/tcXhjghk/kDagRSU3Rd06tZ1NQC7yL+QdF3fja+EePG
- ELzCNDXap55lDy3wEDNSMGQl4cFx+WijD4KguleF5GFTu7WprNLN0wnuaxuBPNQMCjFloKTbSKj
- kwGtd3LFPWGh8Azt5lrjvZiqce7jwaM49iw==
-X-Received: by 2002:a92:da05:0:b0:323:70c:ba7a with SMTP id
- z5-20020a92da05000000b00323070cba7amr6320944ilm.0.1678920794158; 
- Wed, 15 Mar 2023 15:53:14 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+yni0unT0KaphMd3Dk9lb2xPshPnISgvaAGSRatSEhctfH2YsA/aYF25RNbXHTAq4r4BmLNg==
-X-Received: by 2002:a92:da05:0:b0:323:70c:ba7a with SMTP id
- z5-20020a92da05000000b00323070cba7amr6320918ilm.0.1678920793895; 
- Wed, 15 Mar 2023 15:53:13 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- x1-20020a0566380ca100b003c5157c8b2csm209087jad.47.2023.03.15.15.53.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Mar 2023 15:53:12 -0700 (PDT)
-Date: Wed, 15 Mar 2023 16:53:11 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v6 12/24] vfio/pci: Allow passing zero-length fd array
- in VFIO_DEVICE_PCI_HOT_RESET
-Message-ID: <20230315165311.01f32bfe.alex.williamson@redhat.com>
-In-Reply-To: <20230308132903.465159-13-yi.l.liu@intel.com>
-References: <20230308132903.465159-1-yi.l.liu@intel.com>
- <20230308132903.465159-13-yi.l.liu@intel.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2046.outbound.protection.outlook.com [40.107.237.46])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0E82F10E013;
+ Wed, 15 Mar 2023 23:23:12 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mzHPIr9o1nbZTvPq/5sy/OMKltbmWYRCAbfbukymb7+z7xz0d6eSJHCTKUmOYeDgvS/riaoY21whfYDEPuoZEgMS1N9TMrzHdkPr+kITXSyw3ELaAtla88xcGBhVYSgmjpKPnN3pMu5WOKOQkxuby3f65NGCKSuDknXyuak0/0eJHVg7Qzb4Abtjwk+pS9bT+GASfbtmBr78or6MGqp75goaMzgm4u6IYZVgZfLa6Zx0IjK1M3XmK5UdvZWeqK2e2+NatihvCdL2G0ki7kl/oAxOU2K1/WbUf2+KZP3bNaVnGK/5x0SXHxqx9VNqhVcX00jRsp+FQm45poGNlaK6Eg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qQe6R6Pab9M8sTjgZIAmwP7eaDvQ9tFtWEfis4HxpEg=;
+ b=QPkYNbCOzvvrXFBV+U8UL2aawEqM6Dck/uWmqUZgTfx83g8Hhb3OMkeBk/9tVflxJeHY5E/tWxDu1jUG9GfYEelY1JbYqlF3BaETYUzyZAvSMw78Ev+6DNGy9c5jIzygyqmrS6OI/EYbO7AWzKTBXDyQOVnvHi2Qkg7fqUABqZ2Q1WrW/pMICy/Y4kbhpe8WsZg2+8itNoKV1wjW8a2EcDvWOwQhuJRMrRUD3a2dA7icntP+hB9PB8+ARZiNfcaOSNkNxCk1GY/Zo2K1ZBsF8rFSY3/9K3JbzQBfpBF7HqIVRnd7eh0K/YeIJCsphxJ0SZwJYG8Vjfkh53xfLpkN8w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qQe6R6Pab9M8sTjgZIAmwP7eaDvQ9tFtWEfis4HxpEg=;
+ b=W5T4tnTrXiUnonIwwJmx1fA7gC4m/EEHiGBH5t9MVvtunnLKeGe3I7b50C61g8LuxarFXUbGi0fzyLyN1qcn0pZvrUIC6B2Di/Y2jSPQPlcYhfBvxAa2U5UZSpmGPS64lMP66dEeaWVzRqz4Tvi7AaXJJ4QH6l4/yGXh+zdGFjW3kgMzVXGEUCmR0qnabRkHLeqLyHO89gjZB7QwOs0Cwbj3l8lwiplMHvZxeAl6CamTl5ZwvlThkXmVcJVxQSmwC4jdhGEw8/oYVV1s4G8WcxXKpekKN0Wnv+mEZ7m3xEfg0NaxmOW0yT3izlnCXdOIz1ZriuKWgvtvsSc7StGBPw==
+Received: from BN9PR03CA0466.namprd03.prod.outlook.com (2603:10b6:408:139::21)
+ by CH0PR12MB5266.namprd12.prod.outlook.com (2603:10b6:610:d1::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.24; Wed, 15 Mar
+ 2023 23:23:09 +0000
+Received: from BN8NAM11FT040.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:139:cafe::ca) by BN9PR03CA0466.outlook.office365.com
+ (2603:10b6:408:139::21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.29 via Frontend
+ Transport; Wed, 15 Mar 2023 23:23:09 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ BN8NAM11FT040.mail.protection.outlook.com (10.13.177.166) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6199.16 via Frontend Transport; Wed, 15 Mar 2023 23:23:09 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Wed, 15 Mar 2023
+ 16:23:01 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.37; Wed, 15 Mar 2023 16:23:01 -0700
+Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.126.190.180)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37 via Frontend
+ Transport; Wed, 15 Mar 2023 16:23:00 -0700
+Date: Wed, 15 Mar 2023 16:22:58 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>, Shameerali Kolothum Thodi
+ <shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [PATCH v5 00/19] Add vfio_device cdev for iommufd support
+Message-ID: <ZBJTUiukDLysAeAx@Asurada-Nvidia>
+References: <20230227111135.61728-1-yi.l.liu@intel.com>
+ <Y/0Cr/tcNCzzIAhi@nvidia.com>
+ <DS0PR11MB7529A422D4361B39CCA3D248C3AC9@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <SA1PR11MB5873479F73CFBAA170717624F0AC9@SA1PR11MB5873.namprd11.prod.outlook.com>
+ <Y/64ejbhMiV77uUA@Asurada-Nvidia>
+ <b7c1f9d5b4b647f0b0686c3b99f3d006@huawei.com>
+ <ZAE2J0I1LiBjWUnm@Asurada-Nvidia>
+ <d59a0262d5bf423c9e49ad4ac6015296@huawei.com>
+ <ZALspPvvLGFuK96F@Asurada-Nvidia>
+ <90a277ea100d496b82f8cc84388bbca2@huawei.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <90a277ea100d496b82f8cc84388bbca2@huawei.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT040:EE_|CH0PR12MB5266:EE_
+X-MS-Office365-Filtering-Correlation-Id: 33db72a9-6b76-40e1-8b5e-08db25ac3d21
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: wQBo8fibBUmzD+ncQPUzL59llclptORRiJQbrK8j+Pu7kaVe3/oaGKxGRJnOvOwm5SvsiwsjBLe1BgJTCHyBfuxueEcBG64JK52FDV4cIe7NSi/mXhXBZs2+y5Qmi72ESenVOr7FwBi9UnBXfrhnzuFROwQfPoTdAsuyMKLKankWU4esJy1Uit214tyMLEgwYH7mNRUqqfeDgI6TgkIW3ZWJf5XGtJr5End8gJtQGhYsTqvFrG+e/xAPIACRkfRjojJd2JWe9hvkHiSIyDj018sfBYCBE+oqc+AAzVDFUkprBTF3NI6dIXSjFgRlCRzuscAiVNtOpAZC5ISIk24P2OeMlbTGNvaLPns99FXqVbazSkyTfzzpofd9Rqt2voQTwP12JnOMRmR9XQ71WBsVSYzDDWGcB8bSeDYwHpzZTQbOSWLJ+2PLewIUkn1XHNw1AMKOoiEE+34Xoug6DTy2pkKTF+fU2LSCy/Tw0VJxi+cItWP6joN4eNK+40grDPe5R1ElNdZUk2bFVsLza6rQtPLyGtwlNTAGbx+dx7eTNbMXD7i9Li4xu3D9c5ZVGrZK4BNrk8jB/e6IWkHRfWNaq10Xyay+sfvzGwhd5JHcfXUd4UCSf+Gx2u0CO1XmARAtxlqLc31/srQL6rrCoK377g3PuXOVOP24fg79yuMhdqxZXEzBQYFZqHZMk17QiFpaz81rXY1Aqzj0eL4srreMgDJ0fy+cr2R7gSDPAFL+GHsstuMHYppDvodiYIPlZmyx8B1kwBoYHElITMl11apaL+5ORvXmqygJr/rLZoPp/Ck=
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230025)(4636009)(396003)(346002)(39860400002)(136003)(376002)(451199018)(40470700004)(36840700001)(46966006)(2906002)(7636003)(82740400003)(83380400001)(7416002)(5660300002)(40460700003)(41300700001)(8936002)(4326008)(70586007)(40480700001)(55016003)(8676002)(356005)(36860700001)(316002)(86362001)(54906003)(110136005)(70206006)(478600001)(82310400005)(426003)(47076005)(186003)(336012)(966005)(26005)(9686003)(33716001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Mar 2023 23:23:09.1393 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 33db72a9-6b76-40e1-8b5e-08db25ac3d21
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT040.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR12MB5266
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,57 +116,77 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
- linux-s390@vger.kernel.org, kvm@vger.kernel.org, lulu@redhat.com,
- joro@8bytes.org, nicolinc@nvidia.com, jgg@nvidia.com, kevin.tian@intel.com,
- yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
- cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, robin.murphy@arm.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, Zhangfei Gao <zhangfei.gao@linaro.org>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, 
+ Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed,  8 Mar 2023 05:28:51 -0800
-Yi Liu <yi.l.liu@intel.com> wrote:
+On Tue, Mar 14, 2023 at 11:38:11AM +0000, Shameerali Kolothum Thodi wrote:
 
-> This is another method to issue PCI hot reset for the users that bounds
-> device to a positive iommufd value. In such case, iommufd is a proof of
-> device ownership. By passing a zero-length fd array, user indicates kernel
-> to do ownership check with the bound iommufd. All the opened devices within
-> the affected dev_set should have been bound to the same iommufd. This is
-> simpler and faster as user does not need to pass a set of fds and kernel
-> no need to search the device within the given fds.
+> Hi Nicolin,
+> 
+> I rebased your latest Qemu branch[1] on top of v7.2.0 and not observed
+> the above issue so far. However noticed couple of other issues when
+> we try to hot add/remove devices.
+> 
+> (qemu) device_del net1
+> qemu-system-aarch64-iommufd: Failed to free id: 4 Inappropriate ioctl for device
+> qemu-system-aarch64-iommufd: IOMMU_IOAS_UNMAP failed: No such file or directory
+> qemu-system-aarch64-iommufd: vfio_dma_unmap(0xaaaaf587a3d0, 0x8000101000, 0xf000) = -2 (No such file or directory)
+> qemu-system-aarch64-iommufd: IOMMU_IOAS_UNMAP failed: No such file or directory
+> qemu-system-aarch64-iommufd: vfio_dma_unmap(0xaaaaf587a3d0, 0x8000000000, 0x100000) = -2 (No such file or directory)
+> qemu-system-aarch64-iommufd: Failed to free id:1 Device or resource busy
+> 
+> Ignoring the MMIO UNMAP errors, it looks like the object free is
+> not proper on dev removal path. I have few quick fixes here
+> for this,
+> https://github.com/hisilicon/qemu/tree/private-v7.2.0-iommufd-nesting
 
-Couldn't this same idea apply to containers?
+The smmuv3 change looks good to me. I will let Yi check the
+iommufd change.
 
-I'm afraid this proposal reduces or eliminates the handshake we have
-with userspace between VFIO_DEVICE_GET_PCI_HOT_RESET_INFO and
-VFIO_DEVICE_PCI_HOT_RESET, which could promote userspace to ignore the
-_INFO ioctl altogether, resulting in drivers that don't understand the
-scope of the reset.  Is it worth it?  What do we really gain?
+Yi, I wonder if this is the hot reset case that you asked me
+for, a couple of weeks ago.
 
-> diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
-> index d80141969cd1..382d95455f89 100644
-> --- a/include/uapi/linux/vfio.h
-> +++ b/include/uapi/linux/vfio.h
-> @@ -682,6 +682,11 @@ struct vfio_pci_hot_reset_info {
->   * The ownership can be proved by:
->   *   - An array of group fds
->   *   - An array of device fds
-> + *   - A zero-length array
-> + *
-> + * In the last case all affected devices which are opened by this user
-> + * must have been bound to a same iommufd_ctx.  This approach is only
-> + * available for devices bound to positive iommufd.
->   *
->   * Return: 0 on success, -errno on failure.
->   */
+> With the above, it seems the HWPT/IOAS objects are destroyed properly
+> on dev detach path. But when the dev is added back, gets a Qemu seg fault
+> and so far I have no clue why that happens.
+>
+> (qemu) device_add vfio-pci,host=0000:7d:02.1,iommufd=iommufd0,bus=rp1,id=net1
+> ./qemu_run-iommufd-nested: line 13:  7041 Segmentation fault
+> (core dumped) ./qemu-system-aarch64-iommufd
+> -machine virt,gic-version=3,iommu=nested-smmuv3,iommufd=iommufd0
+> -enable-kvm -cpu host -m 1G -smp cpus=8,maxcpus=8 -object
+> iommufd,id=iommufd0 -bios QEMU_EFI_Dec2018.fd -kernel
+> Image-iommufd -initrd rootfs-iperf.cpio -device
+> ioh3420,id=rp1 -device
+> vfio-pci,host=0000:7d:02.1,iommufd=iommufd0,bus=rp1,id=net1 -append
+> "rdinit=init console=ttyAMA0 root=/dev/vda rw
+> earlycon=pl011,0x9000000" -net none -nographic -trace events=events -D
+> trace_iommufd
+> 
+> There are no kernel log/crash and not much useful traces while this happens.
+> Understand these are early days and it is not robust in anyway, but please
+> let me know if you suspect anything. I will continue debugging and will update
+> if anything.
 
-There's no introspection that this feature is supported, is that why
-containers are not considered?  ie. if the host supports vfio cdevs, it
-necessarily must support vfio-pci hot reset w/ a zero-length array?
-Thanks,
+Thanks! That'd be very helpful.
 
-Alex
-
+Nicolin
