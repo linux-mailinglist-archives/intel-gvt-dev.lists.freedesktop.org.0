@@ -2,61 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 957916BB7E0
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 16:32:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 199436BB845
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 16:44:01 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0324010E8DE;
-	Wed, 15 Mar 2023 15:32:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9EBEA10E8C6;
+	Wed, 15 Mar 2023 15:43:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mail-yb1-xb4a.google.com (mail-yb1-xb4a.google.com
  [IPv6:2607:f8b0:4864:20::b4a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A7F0010EB28
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6206210E03C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Mar 2023 15:32:52 +0000 (UTC)
+ Wed, 15 Mar 2023 15:43:56 +0000 (UTC)
 Received: by mail-yb1-xb4a.google.com with SMTP id
- e11-20020a5b004b000000b00b37118ce5a7so13475850ybp.10
+ e20-20020a25d314000000b00b33355abd3dso15442959ybf.14
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Mar 2023 08:32:52 -0700 (PDT)
+ Wed, 15 Mar 2023 08:43:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1678894371;
+ d=google.com; s=20210112; t=1678895035;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=3TNqbTHQHmb2xkVyzid8TSYw/6ySfy0Rm3ZyMjb8K6Q=;
- b=OndTXsXmttnpBFbJTuj797Wr6Hb4uuRGsMxUUd4ZPEwngST2tq9jgqAbWGLkyoc3UF
- RUhNZhfsUQkTDYDwqU0/dV6JxWw+2ynyRmSEyI9Bwl+jseJfVeeW8gwLYFAhBZkUi1BZ
- Rjj2jXSvFfBsYnidGAkG4GJa5P/xduE4cZra/84msBr8gC3W7KhT495aCnKxRRdA4IIK
- 43oHM+cyZfvAjiOrOoUR5FIcSA7otu9nwtxqBXBgNK3Oo5TKpFRdN2xa7qP1kSKnHJFw
- Z1bOTZoSAkx8hsqeuessy3+j2lwr6e+TM98ortsV9xdt+nOgsmHrWRNygXFqTvbbzcTi
- wdxg==
+ bh=3yOC9GAxlzabl02b1RPWrLKpddDwW/XjKQVoaxOI5Fs=;
+ b=irQd1i8q+ogxqHs1vTXLJdSkvIHIEjzr7qUucu06Sgiu0iqFVDzwkLGWwE/5+BJi3u
+ 6x81/zfQBxCitIQAf3coqjNffjMF2giXqZqeQ3fUEzvbnC8ZZOaaGRa//Lv7hWE/T0lm
+ uXIg/SVhvpzL2sLnGaz9nq/6dVVCLsP/geOkOjiBXmLThQVBDWJZ6kVyOkAy1zxLyrN9
+ 4BdD7rV4Ga3aqZoQmq41NA9S1kX9L2axC6+613IdBeT6Pu9LjrduwTelFtHof8kLxpU8
+ fG/JWVzp6PxwsZA82T79bPMPUjMk8rJPnVs8W+Z3FrrIfL/q8W1VVzIoYtiFjr8k4i8Z
+ 1UGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678894371;
+ d=1e100.net; s=20210112; t=1678895035;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3TNqbTHQHmb2xkVyzid8TSYw/6ySfy0Rm3ZyMjb8K6Q=;
- b=t7gBPHdbzgHz7ko9Hxf9HyZEujtv4rLfVBqeaw6V0aopeoEC8IH8ixhBvu/u+yeZuT
- pyyxufleAa188GKlpQyqj2QmQF8iBF3hKcrAT/lOqsBm1pT/qtW1jszdsomVx8Xmhf63
- C6m3Qq6IzovDHvzgiCPexW742ajWhLJPEWu7rWy3uLnkZVCwogXp/OsQ69/KlBJ4X63Y
- 8MsYJ7eRpcc+1pTBBUaTsOdO9qi/7tvs9+z409WmIx7viy9Ontc1YTSmM1oTzncEY/29
- jXstHIn0lBleldmx/5sI4LIPkKjZ+8LahE2uzW74MYFf+JLKQa8oydeD93LBzDIuqNEn
- +zYQ==
-X-Gm-Message-State: AO0yUKXxfk9rejZD5RedNmdT74CgaGQWyFrZNXalDHOc0oVg/zBI8DDn
- DUMBpOdB86yapHmG90fjoNuvx+gv1eo=
-X-Google-Smtp-Source: AK7set/iYt7e9mDhQyRut6LZI+RQO0U18hEgJBTShOBJit1b59iuVZXxUV2vD+RNR86XdMZiKEiV0PP1XPI=
+ bh=3yOC9GAxlzabl02b1RPWrLKpddDwW/XjKQVoaxOI5Fs=;
+ b=C0cTRILEwLn7vERLJait7MZbN+qDWcdpdJ3AFX9JYgR7N0OkcWgtRE/HcdIaZEMsIQ
+ Wiiu/5y3+7meWbSJpYYtNjyQH1l/UZxSz4FOetGzGy8JmRpFpv5kPRqY1jZxnSV1MXsu
+ vwyBhilRI+FBjJWVtgirdCQfgFgYFBfZkm9oblQMk7yfYrvPfHKXxUZr51I82YaoWFa2
+ 2O5w7mTxShk+yT42BGzZHMbpKaJULy9WI/PBBPc+tJ5pIXo0yD/6emwNbt04r1JOtSwo
+ VbRoRt1gMjUOV9FRob3dywbAbGpRhOBG9FrZsfqrWePIXlszB8caKDaaG0RKIUfO4e35
+ fXKg==
+X-Gm-Message-State: AO0yUKVv250FzTSgS2mSyPkYSo25MY9+yuGWYlbx88VzyhTtz/kennul
+ PwcNI0M9DTx3orV10kyN+acT/A+9t4o=
+X-Google-Smtp-Source: AK7set/m8ThOIuQfxnThk6YIlQaIAC0QfTqKlvtfDwDkFgfpYMWOGBpJSb01Yl38Gvzl13a7oAZAuDELZsQ=
 X-Received: from zagreus.c.googlers.com
  ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a05:6902:1205:b0:b3e:c715:c313 with SMTP id
- s5-20020a056902120500b00b3ec715c313mr2265866ybu.6.1678894371838; Wed, 15 Mar
- 2023 08:32:51 -0700 (PDT)
-Date: Wed, 15 Mar 2023 08:32:50 -0700
-In-Reply-To: <ZBEanQaJTCkjcDOn@yzhao56-desk.sh.intel.com>
+ (user=seanjc job=sendgmr) by 2002:a81:d302:0:b0:541:359c:103a with SMTP id
+ y2-20020a81d302000000b00541359c103amr192124ywi.8.1678895035645; Wed, 15 Mar
+ 2023 08:43:55 -0700 (PDT)
+Date: Wed, 15 Mar 2023 08:43:54 -0700
+In-Reply-To: <ZBF72+flVlEbfg70@yzhao56-desk.sh.intel.com>
 Mime-Version: 1.0
 References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-12-seanjc@google.com>
- <ZBEanQaJTCkjcDOn@yzhao56-desk.sh.intel.com>
-Message-ID: <ZBHlIuhED8y3JIu1@google.com>
-Subject: Re: [PATCH v2 11/27] KVM: x86/mmu: Don't rely on page-track mechanism
- to flush on memslot change
+ <20230311002258.852397-15-seanjc@google.com>
+ <ZBF72+flVlEbfg70@yzhao56-desk.sh.intel.com>
+Message-ID: <ZBHnugUe0SSmQKGI@google.com>
+Subject: Re: [PATCH v2 14/27] KVM: x86: Reject memslot MOVE operations if
+ KVMGT is attached
 From: Sean Christopherson <seanjc@google.com>
 To: Yan Zhao <yan.y.zhao@intel.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -80,53 +80,61 @@ Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 On Wed, Mar 15, 2023, Yan Zhao wrote:
-> On Fri, Mar 10, 2023 at 04:22:42PM -0800, Sean Christopherson wrote:
+> On Fri, Mar 10, 2023 at 04:22:45PM -0800, Sean Christopherson wrote:
+> > Disallow moving memslots if the VM has external page-track users, i.e. if
+> > KVMGT is being used to expose a virtual GPU to the guest, as KVM doesn't
+> > correctly handle moving memory regions.
+> > 
+> > Note, this is potential ABI breakage!  E.g. userspace could move regions
+> > that aren't shadowed by KVMGT without harming the guest.  However, the
+> > only known user of KVMGT is QEMU, and QEMU doesn't move generic memory
+> > regions.  KVM's own support for moving memory regions was also broken for
+> > multiple years (albeit for an edge case, but arguably moving RAM is
+> > itself an edge case), e.g. see commit edd4fa37baa6 ("KVM: x86: Allocate
+> > new rmap and large page tracking when moving memslot").
+> > 
+> > Signed-off-by: Sean Christopherson <seanjc@google.com>
 > ...
-> > -static void kvm_mmu_invalidate_zap_pages_in_memslot(struct kvm *kvm,
-> > -			struct kvm_memory_slot *slot,
-> > -			struct kvm_page_track_notifier_node *node)
-> > -{
-> > -	kvm_mmu_zap_all_fast(kvm);
-> > -}
-> > -
-> >  int kvm_mmu_init_vm(struct kvm *kvm)
-> >  {
-> >  	struct kvm_page_track_notifier_node *node = &kvm->arch.mmu_sp_tracker;
-> > @@ -6110,7 +6103,6 @@ int kvm_mmu_init_vm(struct kvm *kvm)
-> >  	}
-> >  
-> >  	node->track_write = kvm_mmu_pte_write;
-> > -	node->track_flush_slot = kvm_mmu_invalidate_zap_pages_in_memslot;
-> >  	kvm_page_track_register_notifier(kvm, node);
-> >  
-> >  	kvm->arch.split_page_header_cache.kmem_cache = mmu_page_header_cache;
 > > diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
-> > index f706621c35b8..29dd6c97d145 100644
+> > index 29dd6c97d145..47ac9291cd43 100644
 > > --- a/arch/x86/kvm/x86.c
 > > +++ b/arch/x86/kvm/x86.c
-> > @@ -12662,6 +12662,8 @@ void kvm_arch_flush_shadow_all(struct kvm *kvm)
-> >  void kvm_arch_flush_shadow_memslot(struct kvm *kvm,
-> >  				   struct kvm_memory_slot *slot)
+> > @@ -12484,6 +12484,13 @@ int kvm_arch_prepare_memory_region(struct kvm *kvm,
+> >  				   struct kvm_memory_slot *new,
+> >  				   enum kvm_mr_change change)
 > >  {
-> > +	kvm_mmu_zap_all_fast(kvm);
-> Could we still call kvm_mmu_invalidate_zap_pages_in_memslot() here?
-> As I know, for TDX, its version of
-> kvm_mmu_invalidate_zap_pages_in_memslot() is like
+> > +	/*
+> > +	 * KVM doesn't support moving memslots when there are external page
+> > +	 * trackers attached to the VM, i.e. if KVMGT is in use.
+> > +	 */
+> > +	if (change == KVM_MR_MOVE && kvm_page_track_has_external_user(kvm))
+> > +		return -EINVAL;
+> Hmm, will page track work correctly on moving memslots when there's no
+> external users?
 > 
-> static void kvm_mmu_invalidate_zap_pages_in_memslot(struct kvm *kvm,
->                         struct kvm_memory_slot *slot,
->                         struct kvm_page_track_notifier_node *node)
-> {
->         if (kvm_gfn_shared_mask(kvm))
->                 kvm_mmu_zap_memslot(kvm, slot);
->         else
->                 kvm_mmu_zap_all_fast(kvm);
-> }
+> in case of KVM_MR_MOVE,
+> kvm_prepare_memory_region(kvm, old, new, change)
+>   |->kvm_arch_prepare_memory_region(kvm, old, new, change)
+>        |->kvm_alloc_memslot_metadata(kvm, new)
+>             |->memset(&slot->arch, 0, sizeof(slot->arch));
+>             |->kvm_page_track_create_memslot(kvm, slot, npages)
+> The new->arch.arch.gfn_write_track will be fresh empty.
 > 
-> Maybe this kind of judegment is better to be confined in mmu.c?
+> 
+> kvm_arch_commit_memory_region(kvm, old, new, change);
+>   |->kvm_arch_free_memslot(kvm, old);
+>        |->kvm_page_track_free_memslot(slot);
+> The old->arch.gfn_write_track is freed afterwards.
+> 
+> So, in theory, the new GFNs are not write tracked though the old ones are.
+> 
+> Is that acceptable for the internal page-track user?
 
-Hmm, yeah, I agree.  The only reason I exposed kvm_mmu_zap_all_fast() is because
-kvm_mmu_zap_all() is already exposed for kvm_arch_flush_shadow_all() and it felt
-weird/wrong to split those.  But that's the only usage of kvm_mmu_zap_all(), so
-a better approach to maintain consistency would be to move
-kvm_arch_flush_shadow_{all,memslot}() into mmu.c.  I'll do that in the next version.
+It works because KVM zaps all SPTEs when a memslot is moved, i.e. the fact that
+KVM loses the write-tracking counts is benign.  I suspect no VMM actually does
+does KVM_MR_MOVE in conjunction with shadow paging, but the ongoing maintenance
+cost of supporting KVM_MR_MOVE is quite low at this point, so trying to rip it
+out isn't worth the pain of having to deal with potential ABI breakage.
+
+Though in hindsight I wish I had tried disallowed moving memslots instead of
+fixing the various bugs a few years back. :-(
