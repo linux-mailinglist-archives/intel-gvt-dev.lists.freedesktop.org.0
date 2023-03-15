@@ -1,65 +1,62 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1738E6BBA42
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 17:54:35 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DAEF26BBBC3
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 19:13:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ED7B310EB5D;
-	Wed, 15 Mar 2023 16:54:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A756A10E306;
+	Wed, 15 Mar 2023 18:13:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pf1-x44a.google.com (mail-pf1-x44a.google.com
- [IPv6:2607:f8b0:4864:20::44a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E351410E1F3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Mar 2023 16:54:31 +0000 (UTC)
-Received: by mail-pf1-x44a.google.com with SMTP id
- s14-20020a62e70e000000b00624029cf8f8so5435245pfh.6
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Mar 2023 09:54:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20210112; t=1678899271;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=/VfOj1PxwZtE3fiW4+Wbi4dS2kE6Vdmar5BqVI1M2z0=;
- b=BEqSBnWJskRuRBspuN6FxAXPBhQk21kw/QwpQhD+OPlE7HMQ4t4minhZOXyoQwEo3F
- tt1stwO6FYs5bIqkpXIeC3XJ7m3dYjzvRiWySWCR3r6wfBOkC/PEY+WXuc80rxFKt27c
- KOzAcFEhGzqEsuuAhRKgnxCk70qP0LpFveG9jRbnMqvf2vKnfdjPpL0HesVOOclo4OxM
- BOLJ9w1PyWUHlGa3ORpqrIvOBdmK89BmWv3pPnitmBb3dg57lPujpJr63O9FjhdqQL5K
- HCjCfb3bzmtH+GiUm5c46uiyfcwSwwsV223MDV86CcsaaHgcmDJ0bQMYtI4p/yIpPisc
- 6r5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678899271;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/VfOj1PxwZtE3fiW4+Wbi4dS2kE6Vdmar5BqVI1M2z0=;
- b=TOlW0cmAr/r1mtZZoFy4NL7i3O2DFWfv8SZgPghcnbcUqSah+/bqe5+aWnQqUbCLbo
- QtcY4P450XJ9AG5bbEzS9gWBnjggFYQOjN5U6dOtaKuzle+p0lcyW8ajOfnv8MVHtxjH
- u09hZ5qtsrodlVj0SKgb7Xb+cMLDb/KB6hCO0s4ioPigk6hnVxsWsEMi/b8q47LTT7Cp
- LRR9gTNG/I1GwFKiMJIpAL25gp32DDRwCDj5cAud3odQCfcXxvQxjQlMtI2J20sfvyXP
- Xf3CLKN6d0vZ5TLXxIO9fIr6S5PPIFe/y9RMERtZBh8JDAh/juYuwLHMZjLQNpzOOZJW
- QhMw==
-X-Gm-Message-State: AO0yUKXatGouMgYk3oPBQtk7DdBozrEgYqwAn9DRbA+lHTkf2wxFwajt
- p7HnCqjfhVT7R6FsTTesDJBEQo2Flzk=
-X-Google-Smtp-Source: AK7set8uXr2sovLYtbxUeraNaTKwMoaMEQm3jr5Cs9656uq3YKkYAaDETqng8wyzyCVhZ2HsOOop/4RwRyc=
-X-Received: from zagreus.c.googlers.com
- ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a65:5c43:0:b0:4f1:cd3a:3e83 with SMTP id
- v3-20020a655c43000000b004f1cd3a3e83mr122328pgr.3.1678899271499; Wed, 15 Mar
- 2023 09:54:31 -0700 (PDT)
-Date: Wed, 15 Mar 2023 09:54:30 -0700
-In-Reply-To: <ZBGfmLuORj+ZBziv@yzhao56-desk.sh.intel.com>
-Mime-Version: 1.0
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 701BE10E2FF;
+ Wed, 15 Mar 2023 18:13:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1678904011; x=1710440011;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=E//nrmQsW8a4Cr6Hfioyr2jv1DvoWwQ5iS9EmPkgcdM=;
+ b=hhCDguwrUvfQLhx7Hb7ACdHm+s+yUXmG5Ubxi/XMsPtQIyuRw6HBDAfI
+ 51AvmZW6JF0m8y7++HupJS1wAY0Kn2+UPPhla8A00LZOgCrkyL+0Pe7Nc
+ NueY6BM3hkhY2TKMS7s0guoROILM7aWsa44ESSNHsetZWdmPdeXys0Ht/
+ NfReSclHeShxWV3k9G3x0sJg1A4/m8PIrgrxFkJD70jSv0/bdDx9jwXg3
+ 1f+wqmpZitMh+L4RgipY0XRco37c+f3aqtZMnwZAxinx2R5EXFMC2kFub
+ ytSVIAlII7XmnkfAq+8jHSDnhOxefVuBI0WC28hKMufXBFtAxGGmE7Gy2 w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="318183594"
+X-IronPort-AV: E=Sophos;i="5.98,262,1673942400"; d="scan'208";a="318183594"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Mar 2023 11:13:30 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="743824772"
+X-IronPort-AV: E=Sophos;i="5.98,262,1673942400"; d="scan'208";a="743824772"
+Received: from ahajda-mobl.ger.corp.intel.com (HELO [10.213.23.62])
+ ([10.213.23.62])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Mar 2023 11:13:28 -0700
+Message-ID: <871f7c8b-0f54-7e9c-4253-b3878b010bbf@intel.com>
+Date: Wed, 15 Mar 2023 19:13:26 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Firefox/102.0 Thunderbird/102.8.0
+Subject: Re: [Intel-gfx] [PATCH v2 01/27] drm/i915/gvt: Verify pfn is "valid"
+ before dereferencing "struct page"
+Content-Language: en-US
+To: "Wang, Wei W" <wei.w.wang@intel.com>,
+ "Christopherson,, Sean" <seanjc@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ "Wang, Zhi A" <zhi.a.wang@intel.com>
 References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-21-seanjc@google.com>
- <ZBGfmLuORj+ZBziv@yzhao56-desk.sh.intel.com>
-Message-ID: <ZBH4RizqdigXeYte@google.com>
-Subject: Re: [PATCH v2 20/27] KVM: x86/mmu: Use page-track notifiers iff there
- are external users
-From: Sean Christopherson <seanjc@google.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
-Content-Type: text/plain; charset="us-ascii"
+ <20230311002258.852397-2-seanjc@google.com>
+ <DS0PR11MB63733BCF5AEBBF5F38FD2C01DCB99@DS0PR11MB6373.namprd11.prod.outlook.com>
+From: Andrzej Hajda <andrzej.hajda@intel.com>
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173, 80-298
+ Gdansk - KRS 101882 - NIP 957-07-52-316
+In-Reply-To: <DS0PR11MB63733BCF5AEBBF5F38FD2C01DCB99@DS0PR11MB6373.namprd11.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,53 +69,38 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Cc: "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Ben Gardon <bgardon@google.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Mar 15, 2023, Yan Zhao wrote:
-> On Fri, Mar 10, 2023 at 04:22:51PM -0800, Sean Christopherson wrote:
-> > Disable the page-track notifier code at compile time if there are no
-> > external users, i.e. if CONFIG_KVM_EXTERNAL_WRITE_TRACKING=n.  KVM itself
-> > now hooks emulated writes directly instead of relying on the page-track
-> > mechanism.
-> > 
-> > Signed-off-by: Sean Christopherson <seanjc@google.com>
-> > ---
-> >  arch/x86/include/asm/kvm_host.h       |  2 ++
-> >  arch/x86/include/asm/kvm_page_track.h |  2 ++
-> >  arch/x86/kvm/mmu/page_track.c         |  9 ++++-----
-> >  arch/x86/kvm/mmu/page_track.h         | 29 +++++++++++++++++++++++----
-> >  4 files changed, 33 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
-> > index 1a4225237564..a3423711e403 100644
-> > --- a/arch/x86/include/asm/kvm_host.h
-> > +++ b/arch/x86/include/asm/kvm_host.h
-> > @@ -1265,7 +1265,9 @@ struct kvm_arch {
-> >  	 * create an NX huge page (without hanging the guest).
-> >  	 */
-> >  	struct list_head possible_nx_huge_pages;
-> > +#ifdef CONFIG_KVM_EXTERNAL_WRITE_TRACKING
-> >  	struct kvm_page_track_notifier_head track_notifier_head;
-> > +#endif
-> >  	/*
-> >  	 * Protects marking pages unsync during page faults, as TDP MMU page
-> >  	 * faults only take mmu_lock for read.  For simplicity, the unsync
-> > diff --git a/arch/x86/include/asm/kvm_page_track.h b/arch/x86/include/asm/kvm_page_track.h
-> > index deece45936a5..53c2adb25a07 100644
-> > --- a/arch/x86/include/asm/kvm_page_track.h
-> > +++ b/arch/x86/include/asm/kvm_page_track.h
-> The "#ifdef CONFIG_KVM_EXTERNAL_WRITE_TRACKING" can be moved to the
-> front of this file?
-> All the structures are only exposed for external users now.
+On 13.03.2023 16:37, Wang, Wei W wrote:
+> On Saturday, March 11, 2023 8:23 AM, Sean Christopherson wrote:
+>> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+>> index 4ec85308379a..58b9b316ae46 100644
+>> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+>> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+>> @@ -1183,6 +1183,10 @@ static int is_2MB_gtt_possible(struct intel_vgpu
+>> *vgpu,
+>>   	pfn = gfn_to_pfn(vgpu->vfio_device.kvm, ops->get_pfn(entry));
+>>   	if (is_error_noslot_pfn(pfn))
+>>   		return -EINVAL;
+>> +
+>> +	if (!pfn_valid(pfn))
+>> +		return -EINVAL;
+>> +
+> 
+> Merge the two errors in one "if" to have less LOC?
+> i.e.
+> if (is_error_noslot_pfn(pfn) || !pfn_valid(pfn))
+>      return -EINVAL;
 
-Huh.  I've no idea why I didn't do that.  IIRC, the entire reason past me wrapped
-track_notifier_head in an #ifdef was to allow this change in kvm_page_track.h.
+you can just replace "if (is_error_noslot_pfn(pfn))" with "if 
+(!pfn_valid(pfn))", it covers both cases.
 
-I'll do this in the next version unless I discover an edge case I'm overlooking.
-
-Thanks yet again!
+Regards
+Andrzej
