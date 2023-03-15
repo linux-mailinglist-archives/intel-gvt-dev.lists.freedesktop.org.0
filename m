@@ -1,44 +1,145 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F11C6BA472
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 02:06:46 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B93E56BA64C
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Mar 2023 05:40:36 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5FC1710E26D;
-	Wed, 15 Mar 2023 01:06:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EDE3110E90F;
+	Wed, 15 Mar 2023 04:40:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 497 seconds by postgrey-1.36 at gabe;
- Wed, 15 Mar 2023 01:06:40 UTC
-Received: from mail.workflix.autos (unknown [45.13.189.200])
- by gabe.freedesktop.org (Postfix) with ESMTP id BFBFF10E1F9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Mar 2023 01:06:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=workflix.autos; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=roger.nichols@workflix.autos; 
- bh=vH7UcQ6uSufPivbMAfP4vlOSbD4=;
- b=CT/TyER6CTcvx/iTswaHy5f8fysrWSsCkCdxT6Yt2sfDsowaxoLiSqlg0oH7cYteYuEpm7lFh7Ry
- AfYLHIs7zt1Kdj5qXfHoXQz+p3hw3JIo41TH94jfKa+bhQjVXC5v/gIEOxOvGQXnvbg/FRj1dXcN
- zjmruvpZvyOzrLO3W/w=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=workflix.autos;
- b=WN7RQJX70eRokg0O1BrkWA57ijUUOjN8mdOOIfmOEtlNVqph6AfMkMv4PNSZPAm928JZFWtdLiWL
- gw4CjGIQzuz2BLPMhrxAKM3WcSf9QofvA2hh3RzKxdvj2xxYjyHt0Wejk0lxotDDfgPNc1ikpkDv
- hno4eQOzZwZ2+G+w5bY=;
-Received: by mail.workflix.autos id h24n3e0001gs for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 14 Mar 2023 22:17:39 -0400 (envelope-from
- <roger.nichols-intel+2Dgvt+2Ddev=lists.freedesktop.org@workflix.autos>)
-Date: Tue, 14 Mar 2023 22:17:39 -0400
-From: "Roger Nichols" <roger.nichols@workflix.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Watching your favorite show is now going to get you rewarded - our
- token of appreciation
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3CF6810E90C;
+ Wed, 15 Mar 2023 04:40:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1678855232; x=1710391232;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=eg+pnztw/cp4L5buRd8s/x2hV1SRQMKmyjAsPAtfBhg=;
+ b=Qej7tV+S6KOTwiUKbh3KK5of6/N7r+mctBlQezCmQhgRqompSkcutpqe
+ Q0gI0HaUZUsgcaSmSpObIxbSY+p8zKG7wd7e97iTPKoz1oGEsxCod7RiL
+ 9KpRKGEIYmiG3YpSPlq+Ffacwyk2eqHv4LNRfPX/QXLSDL7QIFTj+rS2o
+ rwec8iUPO58cPc2Zg4237wvmAgdIHT1GobZKlfyvTE1p+Ds6NeoA2X4Ut
+ XTGG5E7xSiWbJBjYel6BSuRQ50mB0dSgMZVwhE8zwmQg1XLtZJZKh1Sw/
+ wk1Ke1Q8VwAcPax7Eylhm2f49Sp/gnKfZNFM+qHTcRmsoEKT2Ir6ncqKf Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="400194709"
+X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; d="scan'208";a="400194709"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Mar 2023 21:40:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="672596772"
+X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; d="scan'208";a="672596772"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga007.jf.intel.com with ESMTP; 14 Mar 2023 21:40:23 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Tue, 14 Mar 2023 21:40:23 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Tue, 14 Mar 2023 21:40:23 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Tue, 14 Mar 2023 21:40:23 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Tue, 14 Mar 2023 21:40:22 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ePXnn1AwrOGPhMFRILTiuiuU1OfhkB5NfsISULSvePx0MtMYjv54ikUKVvhfuutkvzQH8lNVqkVdrrtNHoR+ySW7Icd5+5VIX4lFyovwWcAPbqvhZ7G9V15K3uB9Kh2xn0TtyL/N9YnLJBzPDfy3rp7tm0L7/ZlSI6t2TO78WuU/9mAwBQKR1TN5t9yCh9u3KkC/13r6nF8JyA6AHB88pQgDglFw/UJvuK9cJvUd8UwUjmjtA8IEtl91x1x9k4FHjdmJHCKf2b2zvZwYQzRLY3ak5IHJuLMbGtOFyJTfnF2x+K0QA8ZVJTS3/pCBawsB4IfxNtsZWQbpPdtCLLyR9Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4SqngSdp70GO1hB2osTl/PIhcAVHTYNQ5YSGtTUne/Y=;
+ b=Pt1gJW5kdhq/ZO/8IVK/8vNP1Ukv/9PoMUYDy96rLLwM63+U4YsUcySXDQDIC/T5Qw782TZvTHD4s74Zwo0xeBuOL5lnL0wBx3xQAGsME/OZqHutKs+51CFKB043F7nrm0pdqGagHeFA8+uvLsYUUSG3tDr57wtjlpROBEu8I1dPVFF/NONd2JoDGTPxgCW63LRZBFKJWz98R0vaeDQsYNP3dIQGo4WQwc8cHlZw5FHfVJ5XqW0hmD2yYXxuhRfbZroeNpLTHfiiLKFbXW/lkd+nfU1xyWgfdIXn4Xk1Rfx51659EpKCKWeHJBA1vNpVBvZy70+J7CdYDHItAzM0vw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by DM4PR11MB6501.namprd11.prod.outlook.com (2603:10b6:8:88::6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6178.29; Wed, 15 Mar 2023 04:40:20 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::6f7:944a:aaad:301f]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::6f7:944a:aaad:301f%8]) with mapi id 15.20.6178.026; Wed, 15 Mar 2023
+ 04:40:20 +0000
+From: "Liu, Yi L" <yi.l.liu@intel.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>
+Subject: RE: [PATCH v6 21/24] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
+Thread-Topic: [PATCH v6 21/24] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
+Thread-Index: AQHZUcIP+SZa7TzGK02S6HlHFxIIra7zumiAgAAAm6CAABGNAIAHfd5g
+Date: Wed, 15 Mar 2023 04:40:19 +0000
+Message-ID: <DS0PR11MB752922A0C9058583F677369EC3BF9@DS0PR11MB7529.namprd11.prod.outlook.com>
+References: <20230308132903.465159-1-yi.l.liu@intel.com>
+ <20230308132903.465159-22-yi.l.liu@intel.com>
+ <BN9PR11MB527665CA5753E413CB4291AE8CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <DS0PR11MB7529B3BFD999C9720836F049C3BA9@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <BN9PR11MB5276684B2C0CD076FA3CD0938CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
+In-Reply-To: <BN9PR11MB5276684B2C0CD076FA3CD0938CBA9@BN9PR11MB5276.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|DM4PR11MB6501:EE_
+x-ms-office365-filtering-correlation-id: 9f0decdc-f4ed-46fb-8af0-08db250f61ba
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: JJ2IUO0FV8iLyFh9sTvngxIJXUFDRDyQLgImgupQyZ1I38JXrO3GE2cG9xbxfCI5WKeKo8k4+irOmppLWQxfSx5ih+UCUMsyYOk+lLYUfE3PQLRrm0jB67TqBoPOMYpqMsCvUyq7ZFqyySfvpIeexwZIoKz9DwsAIRSp5Ze2qxmlZV0ySz6+Y1BddzCdm0uDkPkX3qkkEROAyqD3WUTgOTl+A1A0cuapEehZp4EvAeYs1lyIv1FsuSCg3RMwn0XlOweDyv4JIZG3rJSUKnq7T53QkvZ0Ay2WnGodQN7FrkLfLv3mRnQwXFuc60/pxtNnd/rkJWNGfex5UB5HKWKqSjElg0+bNDsdVAbp0q0nR8gWW1xcsFm2MmayduW5S+qLYRIWMVzh36FqvKmQLhP4/ToerfqCXjPn7Md3Yp9IvxEYnz5Tuo9Jx6WNFcHt467b4MjDv1A4IunBKdrFKvznhoCdKXr7/J6Cp8PSuaIZ5S0eIBRLtD/82Ynjb2adudT8rcyksa0ntkPA2wKasag4yv7t/l0Us0G6DhrfZY1uyU6mVs+3jAmACZkIVvEmn4v6FKnKzWSV/5bPVnsvBSFinqrMAjO/1u+kE+mm/PSEB0Jr8DsItdy9NsV5lisZH0XnulIQeavTBuX4qykUNvb5poHKrZ8L0/RQdvR6qWbWYH7zoDUeXmiqoGXUHYAuhoRcRRjP5BBJfOnVhTkjmjKWTA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(346002)(136003)(396003)(366004)(376002)(39860400002)(451199018)(41300700001)(7416002)(52536014)(8936002)(5660300002)(2906002)(38100700002)(38070700005)(86362001)(33656002)(122000001)(82960400001)(7696005)(71200400001)(478600001)(76116006)(66946007)(66556008)(66476007)(64756008)(8676002)(66446008)(55016003)(4326008)(110136005)(54906003)(316002)(26005)(6506007)(9686003)(186003)(83380400001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?6310jfqoxLk4vq6PZoAkGWkar4H69NQGT4m0SlFFRLvBcNZsuSOxLk2VEEHK?=
+ =?us-ascii?Q?TOn4dpznbLTnE17SqzzQCi7oCzivFDaZJa3cYqw41fkydBFtcFsfJqZpjTKg?=
+ =?us-ascii?Q?aM5eNsMF5YfgqQizSC8U6b3wWne/cjUM3OYe8YAbTncanoiYGjAjpgXo26Go?=
+ =?us-ascii?Q?1ZdThGES2XKXe+rXqT/6IEKPww0dg8fcCNCqcq5zbMb/O4mj0JhJFSlsGePT?=
+ =?us-ascii?Q?pk6llsAEwJs0MbVr7XyoEdt3flPPSDqqArH2KsMXvjvNa6PeSbKntsJ3qMZV?=
+ =?us-ascii?Q?7rGk3houlQ2MraB/4ntaKkLOkr8dDoYpWZKQWVpTPmpDp4+GbnF6gektg7W+?=
+ =?us-ascii?Q?8cttSvhXRaQ2+vdtNYky0EZp0aWhTdgNYywhe8m/SvM9spRwFM4GLe5a2aFQ?=
+ =?us-ascii?Q?uxtRYupMddTc4sj/Km+teaXU+BlET4JwugYcqY4suKGmFClz/CVqWYXuDdbe?=
+ =?us-ascii?Q?2MLee2ZUC58CdsJJLBcbLqUF33RMTdqMz+HJGSa76f9iH/OKYkyWEQJwa2Vg?=
+ =?us-ascii?Q?ibm/xevMT4niwBaq8izaOp83Gn8KTVht2zn56k3d0W/fuY70IP1t8AOcWJcw?=
+ =?us-ascii?Q?d81Ca7ZzcpAUVtVbPXW/FioSmF8YxMUjmh+E9tIe8EY8JBoAhXDRCIk9GYQ1?=
+ =?us-ascii?Q?OV5zDjYf3iT78T7ZjM4FVc72cNOpj8amqsChdot4QpjeFpAvogxpCUT/D2n1?=
+ =?us-ascii?Q?T759TnZCXMg115T3uSuaEiAb9o+n/l4cYFC/jcLHQDeIOwZQD3tNd/QRtMml?=
+ =?us-ascii?Q?WVJJhJyafqmXhMu3NphWBDHoaII6YYPgN/yiU1TIhhKvZ0hHqGzaunG72See?=
+ =?us-ascii?Q?9uvgaTNwx7EC+bMN8dtm6YtkQ4OiegOHXV7wR8g94BPqwv74ZkZraQwOQkbx?=
+ =?us-ascii?Q?FemYSPe2qtBjKOWJHLS6nvrjq/0AlQTpzX17q86i0VGVkUOBSnUnJHfe4LlY?=
+ =?us-ascii?Q?Uo4O7+A05WOgDjr1f8ZPqxvr3zTP9OnCblWjD2+yPGv/GU97XXTVjREqoTyO?=
+ =?us-ascii?Q?z4zqT7o7Xo0d133/VbTtkhXn1CIU2CD8NWa6+/Z7yxL2RlZU3rTc3sfINQWb?=
+ =?us-ascii?Q?eW5mXgot4/E/EbpQw6yidmocBkh56wn/U/eKUHyoU5UQpAJw5H/KyzoIPf50?=
+ =?us-ascii?Q?6BcJa1liSLHY16ulTnHTnto0v2mxBdxidBDwwA+5J9wBy8cAyT6H44YaxKGM?=
+ =?us-ascii?Q?GFY2Jvr4V8znVJ3ENbRBDJmIo94RIfXBDOODQnzBEtZQ80rEsYg4RjZImVln?=
+ =?us-ascii?Q?B4GbdAJfgU150dp6bWt3i0cbxzcCRK0KCCQF42XFcYxTd97JvlPl2MYK5/FM?=
+ =?us-ascii?Q?P6f4pq3D1Jro+E45hJwqrRZQFXRFYoV98nWe352hvTSrL1cbU913wkCSBKxg?=
+ =?us-ascii?Q?x0WGQQJ2gB0BNeGnjhq9G7fHQXMLMjhdSr8vG7DBxRe91Tvvapc/IEMPhJZc?=
+ =?us-ascii?Q?f4ObK6S1T+VxxbSY3CB/LogR3vtfNEmvUCVV+6W4ms3G07rLhzTXgfSlbkCh?=
+ =?us-ascii?Q?TWuRQM0/RNYtz7N9dtTa5Z/rYvi9aZwPszgiHsmy7S7uszoBDI3oSzvTdfrC?=
+ =?us-ascii?Q?bOM/cLXyWzg5CBGlCXDFDO+r77GBBBgkusVf7K6V?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_673_896147526.1678841477259"
-Message-ID: <0.0.0.4A.1D956E45114DB76.51AE29@mail.workflix.autos>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9f0decdc-f4ed-46fb-8af0-08db250f61ba
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Mar 2023 04:40:19.7097 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: UWUbyrOVCNkN9reyvH1Ya4A0hMJGhz6v2UvxjRfBa1MBSUuTML4Mm2OyJULYRXQqH73TGqbnYZ6i1xq/LdEaZQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6501
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,72 +152,134 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "Hao, Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_673_896147526.1678841477259
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+> From: Tian, Kevin <kevin.tian@intel.com>
+> Sent: Friday, March 10, 2023 6:07 PM
+>=20
+> > From: Liu, Yi L <yi.l.liu@intel.com>
+> > Sent: Friday, March 10, 2023 5:58 PM
+> >
+> > > From: Tian, Kevin <kevin.tian@intel.com>
+> > > Sent: Friday, March 10, 2023 5:02 PM
+> > >
+> > > > From: Liu, Yi L <yi.l.liu@intel.com>
+> > > > Sent: Wednesday, March 8, 2023 9:29 PM
+> > > > +
+> > > > +static int vfio_device_cdev_probe_noiommu(struct vfio_device
+> *device)
+> > > > +{
+> > > > +	struct iommu_group *iommu_group;
+> > > > +	int ret =3D 0;
+> > > > +
+> > > > +	if (!IS_ENABLED(CONFIG_VFIO_NOIOMMU) || !vfio_noiommu)
+> > > > +		return -EINVAL;
+> > > > +
+> > > > +	if (!capable(CAP_SYS_RAWIO))
+> > > > +		return -EPERM;
+> > > > +
+> > > > +	iommu_group =3D iommu_group_get(device->dev);
+> > > > +	if (!iommu_group)
+> > > > +		return 0;
+> > > > +
+> > > > +	/*
+> > > > +	 * We cannot support noiommu mode for devices that are
+> > > protected
+> > > > +	 * by IOMMU.  So check the iommu_group, if it is a no-iommu group
+> > > > +	 * created by VFIO, we support. If not, we refuse.
+> > > > +	 */
+> > > > +	if
+> > > (!vfio_group_find_noiommu_group_from_iommu(iommu_group))
+> > > > +		ret =3D -EINVAL;
+> > > > +	iommu_group_put(iommu_group);
+> > > > +	return ret;
+> > >
+> > > can check whether group->name =3D=3D "vfio-noiommu"?
+> >
+> > But VFIO names it to be "vfio-noiommu" for both
+> VFIO_EMULATED_IOMMU
+> > and VFIO_NO_IOMMU. And we don't support no-iommu mode for
+> emulated
+> > devices since VFIO_MAP/UNMAP, pin_page(), dam_rw() won't work in
+> the
+> > no-iommu mode.
+>=20
+> correct.
+>=20
+> >
+> > So maybe something like below in drivers/vfio/vfio.h. It can be used
+> > to replace the code from iommu_group_get() to
+> > vfio_group_find_noiommu_group_from_iommu() In my patch.
+> >
+> > #if IS_ENABLED(CONFIG_VFIO_GROUP)
+> > static inline bool vfio_device_group_allow_noiommu(struct vfio_device
+> > *device)
+> > {
+> > 	lockdep_assert_held(&device->dev_set->lock);
+> >
+> > 	return device->group->type =3D=3D VFIO_NO_IOMMU;
+> > }
+> > #else
+> > static inline bool vfio_device_group_allow_noiommu(struct vfio_device
+> > *device)
+> > {
+> > 	struct iommu_group *iommu_group;
+> >
+> > 	lockdep_assert_held(&device->dev_set->lock);
+> >
+> > 	iommu_group =3D iommu_group_get(device->dev);
+> > 	if (iommu_group)
+> > 		iommu_group_put(iommu_group);
+> >
+> > 	return !iommu_group;
+> > }
+> > #endif
+>=20
+> this makes sense.
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>05031423</title> 
- </head> 
- <body style="padding: 7% 0%;"> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <header> 
-    <div>
-     <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 200%; text-align: center;">A Special Offer for Our Valued Users</span>
-    </div> 
-    <div>
-     <span style="display: block; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 900; font-size: 250%; color: #ff0000;">NETFLIX</span>
-    </div> 
-    <div style="text-align: center;"> 
-     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
-      <a href="http://www.workflix.autos/2c36P_239r5m86Cl13z4fWc8uY12acv36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQxQndQ6h1h0tg5EOwDN/recreating-visitations" target="_blank"><img alt="" src="http://www.workflix.autos/5b14a2395zxM7a13J4XfLcaq12acS36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQxQndQ7dgT10zt6gMwDAP/quizzes-mechanizing" width="100%" /></a>
-     </div> 
-     <div style="max-width: 25%; display: inline-block; vertical-align: top;">
-      <a href="http://www.workflix.autos/2c36P_239r5m86Cl13z4fWc8uY12acv36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQxQndQ6h1h0tg5EOwDN/recreating-visitations" target="_blank"><img alt="" src="http://www.workflix.autos/honeysuckle-coolies/a266b239sk5Lk7Da13X4fcObH_12acP36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQxQndQ7e1Ttn0D6PO1wWD" width="100%" /></a>
-     </div> 
-    </div> 
-   </header> 
-   <br /> 
-   <br /> &nbsp; 
-   <section> 
-    <div style="max-width: 90%; margin: auto; text-align: center; line-height: 150%;">
-     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;">We wanted to take a moment to thank you for choosing Netflix for you watch streaming services. Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you.<br /> <br /> As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with Netflix.<br /> <br /> Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. </span>
-     <br /> &nbsp; 
-     <div style="text-align: center;">
-      <br /> 
-      <span style="display: block; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><span style="display: inline-block; font-size: 90%; padding: 1.5% 2%; background-color: rgb(223, 223, 223); font-weight: bold;">For completing the survey, you can receive a $100 Gift!</span> </span>
-     </div> 
-     <br /> 
-     <br /> 
-     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential. </span>
-     <br /> 
-     <br /> &nbsp; 
-     <div style="text-align: center;">
-      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><a href="http://www.workflix.autos/2c36P_239r5m86Cl13z4fWc8uY12acv36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQxQndQ6h1h0tg5EOwDN/recreating-visitations" style="color: #6d143d;"><span style="font-weight: bold; display: inline-block; font-size: 180%;"><u>TAKE THE SURVEY</u> </span></a> </span>
-     </div> 
-     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;"> </span>
-     <br /> &nbsp; 
-     <div style="text-align: center;">
-      <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;"><span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 900; font-size: 80%; ">Thank you again for your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> The Netflix Survey</span> </span>
-     </div> 
-     <span style="display: block; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 90%;  text-align: justify;"> </span>
-    </div> 
-   </section> &nbsp; 
-   <hr /> 
-   <footer style="max-width: 600px; margin: auto;"> 
-    <address style="text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; ; padding: 15px 0px;  font-weight: bold;"> <p><small><span style="text-decoration: none; ">To withdraw from notices,</span><a href="http://www.workflix.autos/ruinous-flossing/6666R23p9u5A8NH613g4fcpm9g12acM36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQxQndQ5lQ1X06OjwJDW" style="text-decoration-line: none; color: rgb(0, 0, 0)"> <span>Start Ahead Here </span> </a><br /> 126 E 23rd St New York, NY, US 10010<br /> <br /> <br /> <br /> <font></font><font lang="Mahayanist"></font><big><style><small></small><font dir="Sproul"></font></big></style><big><big></big></big><span></span><span title="utilize"></span><big></big> </small></p> </address> 
-   </footer> 
-  </div>   
- <img src="http://www.workflix.autos/twister-gloriously/ada4r2395n8F5r12w4fjccH12acU36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQxQndQ6L1m0ii6Ekw@PD" alt=""/></body>
-</html>
+Just have one more think. vfio_device_is_noiommu() is already able
+to cover above vfio_device_group_allow_noiommu(), just needs
+to make it work when !VFIO_GROUP. In the group code, group->type
+=3D=3D VFIO_NO_IOMMU means vfio_noiommu=3D=3Dtrue. So no need to
+check it. While in the case !VFIO_GROUP, needs to check it. So the
+code is as below. I can use vfio_device_is_noiommu() in cdev path.
 
-------=_Part_673_896147526.1678841477259--
+# if IS_ENABLED(CONFIG_VFIO_GROUP)
+static inline bool vfio_device_is_noiommu(struct vfio_device *vdev)
+{
+        return IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
+               vdev->group->type =3D=3D VFIO_NO_IOMMU;
+}
+#else
+static inline bool vfio_device_is_noiommu(struct vfio_device *vdev)
+{
+        struct iommu_group *iommu_group;
 
+        if (!IS_ENABLED(CONFIG_VFIO_NOIOMMU) || !vfio_noiommu)
+                return -EINVAL;
+
+        iommu_group =3D iommu_group_get(vdev->dev);
+        if (iommu_group)
+                iommu_group_put(iommu_group);
+
+        return !iommu_group;
+}
+#endif
