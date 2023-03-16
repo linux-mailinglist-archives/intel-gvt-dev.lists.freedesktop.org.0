@@ -2,137 +2,141 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B3A36BCB41
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Mar 2023 10:44:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7FCCB6BCB76
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Mar 2023 10:52:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4339710EA6D;
-	Thu, 16 Mar 2023 09:44:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 454A910EC1E;
+	Thu, 16 Mar 2023 09:52:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 12A5E10EA6D;
- Thu, 16 Mar 2023 09:44:36 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B132E10EC1E;
+ Thu, 16 Mar 2023 09:52:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678959876; x=1710495876;
+ t=1678960347; x=1710496347;
  h=date:from:to:cc:subject:message-id:reply-to:references:
  in-reply-to:mime-version;
- bh=t9UHHlAHUtR4YWmDtVMclgClxA1IgjudEon84fa2U6I=;
- b=YbBz4e7btNthqNNHDZVprCJl8zrOsqdelnJFQxTzSijbFYONkFK/L27A
- QXv8wjfCh+DSxbDce7VUUacQ+kASvpw4nq3ZGPLaBfdS3yrhxOrNFgCai
- K4Eg9+Y2Qmquh5caXmM9N6wtFyCqkSQJjMwscY3GDCoEYKKmkdYZLXZsd
- YKgUT575EIQ1OIJk7Bib0L5MccI+3JCAkspB7hR1UMX+fcwwwC4qtNeZ3
- RqMtGsTrev0p/7yfI30oac9ybQpp7cXohrVx5/+pMvuSg1LsvBPSSPZYI
- iN00AWHIaBpqGYUPtyTStBlSm9oFDL0w2fpS55Yur8qP34/RpeR/ilfQM w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="335423400"
-X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="335423400"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2023 02:44:35 -0700
+ bh=syLpTQDl8H23kWz02lHeTqn1WOZ/IfhWv6nbT44lSco=;
+ b=H0ryg89phy3IuvTQ8DSK7F5PFfIFxXQYKz6D8EHUSdbGHRc4eK9oyg0N
+ 2msUkwgh728r/NOkV6YgLQgVvfZNZC1rhzlAx30fclkjUQ0KxSv20Ep9B
+ z9r2LXoC+4W0TQ583pnN5RQPeuOuORhMDLvp8kGb+FXdeHQ49nMH4umCJ
+ I3x2aLQFNiTsTzcu7lcuv4u0IRmb7fCzfJcBJ++K0PG03i+7LXiaD4S6Z
+ nUo1tRXgwbwO0zca4RW9m/pQABHflNa6an8a2CpXD/LYAsheQIHsFpwzX
+ r/pnKPz+9N1/Kh8ed3TO6Vhlr6KtC3aDXGfOuFeDWpHhsPZiY27Ijtvpr g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="317592043"
+X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="317592043"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2023 02:52:27 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="1009159159"
-X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="1009159159"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga005.fm.intel.com with ESMTP; 16 Mar 2023 02:44:27 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="679843700"
+X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="679843700"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga002.jf.intel.com with ESMTP; 16 Mar 2023 02:52:26 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Thu, 16 Mar 2023 02:44:26 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ 15.1.2507.21; Thu, 16 Mar 2023 02:52:26 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Thu, 16 Mar 2023 02:44:26 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.177)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ 15.1.2507.21; Thu, 16 Mar 2023 02:52:25 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Thu, 16 Mar 2023 02:52:25 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Thu, 16 Mar 2023 02:44:26 -0700
+ 15.1.2507.21; Thu, 16 Mar 2023 02:52:25 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VmHOIW4X6YNtaI7j1D3XAFTqn9Vq2DIWCbxLRK34YeQR2H2eYnZmDyyS2BA3L7U1Timc4NqsyVFI1IEwxlLb4IQsaQCoBeEfUVU23xmBlclor4qKRCVbLKfOtEDOgKZEqXc0OadxMq+VrIVDmHdnFLq1pQqQ0cL4FSRZFNPr9Qn5mtYsZcrSsUaJDWcUFDnZiSVz3iBzBjVVvypsDuwNvp5vu6X+fWf0Z4QmRuStZn2aqJ85Rrme8ULb+OrWmtxnKo2vYsmPz8WhoD0IHuLE/XeSQWucvVTf8Nnpvq30iNBvh5WSFhsGP/V0DEVaL18/Vky3UqzTiQg9iBbzbH38Dg==
+ b=OcxfzV53ulhFdpbUKj2gZT9cpuI8GSGG5F14X73u3CiN37BJhyZBQOP/6jwJAPJoV8SIL/e0uLBIcFsCBC7cTjTcde8v+ZO1KnIzez68TsHQ9fdTODVvsd3Bi2QzDqbTif/8chH3MZ1CrfBOnNHCeVCC59Tos4hpKADxmQE8ITmaDLkoQ7VrujmXaQ1AKSnl6EflfvShvcJX+cZfoZ/tgy/LW/9vDsMZe86ogZhpaGKdQ2YLnMqCHSmfneXARQOxtCRNZx2tiDMwkbJoQhFHALSDQ9zmFna/x5jksxD7ucppmGvGxutCN4/pUc1WqXpgrkq4l8aVw5yJeA+o4DTKKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vXYZl5v7gxEEpmrRoAh0l8AuEs4xTuRa7mRA9Hzdjaw=;
- b=PkB9B6WMNr8NLi9UffDgqU23rAX0hneetsqbCkj7AkD9cjMjq406mS5ZwfXQPxCwXillOpryx+Q10vtgH66Y14/3nFtlx4S8/YltkxVpXy2w0+il1526TGC51VfzH+lOA5h/+nPjbeViUw9Uyuqnd7joH9ecLzjWw+CrAuISz7KH2kxEhow4nvIQvWfbzv1IL2hkKUyEvoAh6d9FWGQHpUpyLRbATs3HydaLr6v4v6rFXU/AwPI8NshY98+xZ5JbEhmholJvYfhzggZQmr1Wx4/u6MGiWCvrq+Ab8YgkaSsGdykaPxv40NXVIeUpc5140cdqccTMZAv6KxpZaGGb9w==
+ bh=MWpg5BA2Hi1rcvyjJFmck8E9zWKVSMtBgyBOP9EHwfQ=;
+ b=fbU3bz67x+XljVwwBT/wbUkGyzbCbNi96X+ZrHRxzoPCa2xR4wb+z09luLZn9z8N0DxYX7lrjhXsW2Q94edtD2LRdnG2veiPfaRbOe742fXqT7TRrwRGxV/SBcCktghp6ATPRdShzLbv5McCLQkZDU3s4tn/FQWYKPt6H801QlGUmYhCse/9Qo0YMXGsdS/VNmLgAV71+KZRavWLhc5LMkZ2JG11JYRAnwCl1FclSuTUvZkkrT0nkwMDJWwffhv++9KtckVg8UK3PWry9qZSU9bT1yKnwws/uT9Q7stlHHgJwiVRPhktZ/OXGMkd1r0qLa4SgbRhh3epk63+DpMi3w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
- DS0PR11MB7409.namprd11.prod.outlook.com (2603:10b6:8:153::18) with
+ PH0PR11MB5674.namprd11.prod.outlook.com (2603:10b6:510:ec::10) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6178.24; Thu, 16 Mar 2023 09:44:24 +0000
+ 15.20.6178.31; Thu, 16 Mar 2023 09:52:23 +0000
 Received: from DS7PR11MB5966.namprd11.prod.outlook.com
  ([fe80::b00e:ac74:158e:1c7e]) by DS7PR11MB5966.namprd11.prod.outlook.com
  ([fe80::b00e:ac74:158e:1c7e%4]) with mapi id 15.20.6178.026; Thu, 16 Mar 2023
- 09:44:24 +0000
-Date: Thu, 16 Mar 2023 17:19:48 +0800
+ 09:52:23 +0000
+Date: Thu, 16 Mar 2023 17:27:47 +0800
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: Sean Christopherson <seanjc@google.com>
-Subject: Re: [PATCH v2 19/27] KVM: x86/mmu: Move KVM-only page-track
- declarations to internal header
-Message-ID: <ZBLfNLb5z2EYdeXy@yzhao56-desk.sh.intel.com>
+Subject: Re: [PATCH v2 14/27] KVM: x86: Reject memslot MOVE operations if
+ KVMGT is attached
+Message-ID: <ZBLhE3jyx/n54XQS@yzhao56-desk.sh.intel.com>
 References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-20-seanjc@google.com>
- <ZBGFXrpSXpF5NUlV@yzhao56-desk.sh.intel.com>
- <ZBHgoS/4R35KByOp@google.com>
+ <20230311002258.852397-15-seanjc@google.com>
+ <ZBF72+flVlEbfg70@yzhao56-desk.sh.intel.com>
+ <ZBHnugUe0SSmQKGI@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <ZBHgoS/4R35KByOp@google.com>
-X-ClientProxiedBy: SG2PR04CA0172.apcprd04.prod.outlook.com (2603:1096:4::34)
+In-Reply-To: <ZBHnugUe0SSmQKGI@google.com>
+X-ClientProxiedBy: SG2PR04CA0169.apcprd04.prod.outlook.com (2603:1096:4::31)
  To DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|DS0PR11MB7409:EE_
-X-MS-Office365-Filtering-Correlation-Id: f34b43b0-07af-4822-76b3-08db260306b1
+X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|PH0PR11MB5674:EE_
+X-MS-Office365-Filtering-Correlation-Id: 78be38e3-28f9-4f12-3f9b-08db260423ee
 X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: AEfPZixqZyX1f38xlbnqlHlA59PM4KnnHr02KABzE3sSXlJJ9u8OhLqYOhUmVKMWMzAPphJ/+f0HaMKDijDmO/N0xsbBmyqLR1YsXr9T7LimXnxuFs3W4RubCfyKXqfVLDZkLC43kZlV98pzV1QtR3zweDsPDTEIWsuK1v5c1xvUOr0poLxiogErmw5mABcRgcp1aENhgMXjkLZeszTWOBtJnMMC1ZaFSvUHTEeqvnqkY3a9pogMQpQHi4zMOceBGEf+UQadwmN2cd4YSzay+Z6MetCuIUOV89YnZ5DketW36vXXYkEqiRW5by37CRBobljtD5LScQTBIkSWOTF+EzX2x2l7VI/81naZFvJOBdPvo7VvhgfE8ExH/oz5hR0UG5DHCHCg8TqU1QDXRSNh93YF15+3EczA5I/gh8P3oDJtkd2SUxF0YJCG1w43mnA/nOv3Y779n8mN2wDdi6JrpuRgcDx3kdbC8l4edi0oEpoTJgByaoyASdNxHhwz0KL1RptXSa5YCg5Susk6h/DUQYIb3eJBXOFr0GkfkDyTx5N1cCDnjOY6v/jaoc6fAd7lxfN5JgFq6+yNHswlpnvaP2zREXc8lUHZWExPjeVmPqcyYCP4YI6qpOVgGx6pFlfm1jf3Gm16071x46pGc+i2SQ==
+X-Microsoft-Antispam-Message-Info: K6YBGSbM7myzxKpsfvcjtPz3/LT/vQykk8yf3RQVmKzEwN3TiNd0TmWtTy2sRyzq8JeITJv4uwch6YFoF+Jpc+7T5bWU5m/5FPd9Gt751fKj/KuzVvXWyk7bqKbDpPnPAbWVnM99pMQn4lZcdOSNifiuT+Fun5JdGPmzDNldZCZBXT5SFzLJt9AXVHH0XRKZm5UaXEhLXbOZxAicD1g/PNI5INnw2TjWHBDh2UJ3NtX5l5dT3WZiCsFDnsNk4+XklZxVDydxTAUhR0n7RLGPsbH1BjTilCDH+J7A2w6Q8IfpPL4lN4WVx3EbPibaiNWfNvq5wfjcdtU2M/YuJ38IfhiIKQSs0I0fh5pkfrDiJw5n7PTG0483DyDUsv1W5VjnAMmOcNHqnDC8OxH+m591+UEOWRAIy9ae7k1hYLrGkOw1N9ZpC2J+lSsAUCbbWzU8UBPpCW2bQ7nQXBYx29NejL9m2B/4aNJq9SJuYdON/vSWB+lpQkX+sgxm4XSUmmTJX3ncudDiQGfD0CMnNNeEpoUwqZx1JqCW3d3TAZuMyw7aC4XDFXd1ypdZk4fR5jFcpnQno7e4jAbgqlCFLAUzdZk5644nX2SykohZSZzSd0zLFVE5EPOX4YexDiLb+Mm1Y5SxUQlC4hjF0cBX+H5wtA==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(346002)(376002)(136003)(366004)(396003)(39860400002)(451199018)(6486002)(8936002)(5660300002)(41300700001)(3450700001)(2906002)(86362001)(82960400001)(38100700002)(66556008)(8676002)(66946007)(6666004)(66476007)(478600001)(54906003)(6916009)(316002)(6506007)(4326008)(6512007)(83380400001)(186003)(26005);
+ SFS:(13230025)(366004)(396003)(376002)(346002)(136003)(39860400002)(451199018)(8936002)(4744005)(5660300002)(41300700001)(4326008)(6916009)(86362001)(2906002)(38100700002)(3450700001)(82960400001)(8676002)(6486002)(6666004)(186003)(478600001)(6512007)(6506007)(26005)(66946007)(66556008)(54906003)(66476007)(66899018)(316002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Bv+dBhLc+CV0C7+8sxgcp8gGDDPlezkXu1HYNpGyNRoWh//6DrKDrFvmYl1t?=
- =?us-ascii?Q?LS22Lx49ntY/TS70T+LH3uMJI5YbPu5E4iuHraKfZ2AtCRSsT1x7xbK7bRqr?=
- =?us-ascii?Q?jrrGuiQ8yIHDjjgNgA5aP4QPCZkAgAfNl1/iP/SQkhbYKa/GzoDUHUH7ub7S?=
- =?us-ascii?Q?Qdd0jLh1pn0d4eJW8jM9niX+PFPDYiiicDTijVtz/OS4GkXwiH/mJBzeQTZP?=
- =?us-ascii?Q?VwiQ9s+0h3fTWfhnXqJrBNb1Zlede+KrOPBqulPqubjcjxtcl05xSCa2Z2Id?=
- =?us-ascii?Q?113I+P1asRXYGsIjcBqHUjNMWW0CMpIhgWxaXeUjW/dj9D2oZh+JkLkiKyNA?=
- =?us-ascii?Q?fDiSSxcEDnP0NfHAl35es8ExjCOrhfeOGytlOnwOr63ojjzzz/t5XV6E3zmg?=
- =?us-ascii?Q?1A/i7zdYAY8x/4QEHIdyFRA9X4X2cjTCCQNNW26cMm7tjAN5kV44qOGHFCOZ?=
- =?us-ascii?Q?XQB62cCF/n0B3hJ5hw2GvaMdsyhNktO0pxFmV1S+OPPCcI2k2f8rkfAH3iAB?=
- =?us-ascii?Q?RWQktCRnAjEkNAwWYVDyo/jDWIoc4wYySiNl3q7Q1zzuBNX5/iYvfJpSuW8t?=
- =?us-ascii?Q?TdRHIPIvRjdBpUTa+gGHkX8oVH6ZAU6y6SLkJ15ZEM0A1xh1ooO8dIrSJdA0?=
- =?us-ascii?Q?HP9I7oE35b+b2q22//NJdMBDwYT+GKgN+zGuNeWUVXY1LNtD9Q68VKm+7JCi?=
- =?us-ascii?Q?Hhk1FO/DXyFHBUJafp10kJ8NBbaEdLXDI1oKa8E/Ho/wOSATR2fyucJ9baAF?=
- =?us-ascii?Q?3Gqy55g7HWQDt9Gm2pUXt5zBGt2FOn41n4i3FTQLg8NQ+/jKj5Pw4wZjLoDD?=
- =?us-ascii?Q?gPHmcjRF7lsmb3A6lJYd3hHBPRu5NENhp/WaqKL9XG3OTCbswO0phdB6KlIc?=
- =?us-ascii?Q?YYZ1IfDClM2KkNFffd3GE6x8RF07Yzm0/wXlC+wD2wkiKQVNRtuL8D8XqPBs?=
- =?us-ascii?Q?hWjI2AgnN/q5eII7jYCOyUvmz+WwKR96cE8eIItUQ9BtxANm71zs8y0Eoc++?=
- =?us-ascii?Q?qd+PH5Vy2ltpqxFG7VBEhRbC93A9AaE1aIlXJYG42IWwY4++0CR1iYq3BzUg?=
- =?us-ascii?Q?31YUFQiLKOD/eJmPuAtMh0vOu6+bmoj6EvNgiYGxlN8OCvzq9bzSoWfj7WHc?=
- =?us-ascii?Q?esax6v28Do5gWLnVZfqQiyzUCnN4szNUm9ZXazPomBuCjnQqChepALeb/2uP?=
- =?us-ascii?Q?h2UPCkyrHU6dcE+093mfQVSvGmPe5uvo1yj5k8L3eVHsAqCE6zA0Hr8yQJ6u?=
- =?us-ascii?Q?mm+YTO18yz3oo4owgnTF0grXQ5ho0EtsMshZNNS6Ab0wJZ/va67aCJgY5pvZ?=
- =?us-ascii?Q?dtll5cvZjZm1MtVeTyE8mc5GlAHt7S3jDJ5G79Y6cP5BJaea/sHcw1dvCdvZ?=
- =?us-ascii?Q?oj8CrKk2d06QBmcu9bX4E7It7TxiIsWdaCj8tzMGCMR64hCuQIIbazMRB2k/?=
- =?us-ascii?Q?IaCUd5meyorFE1IGipFqXvl+pyZ72Zp3jnP4BeyR1/gPGLJPOjv1KRsfw5WB?=
- =?us-ascii?Q?98ZllvVEpgIp951XhJyz1zWFvrrTkTl6GYGpp/oe3PsnYDngtSQ4c0vwsIGw?=
- =?us-ascii?Q?aHOO4otWzyZLmYM1LGoYb/7P1wi9lGH8GHcu5kSnUObxcJQajiRvKDLC9koP?=
- =?us-ascii?Q?Hw=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: f34b43b0-07af-4822-76b3-08db260306b1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cGVlTJ2E+SvN2yIhuMvGOFUXZbuIjNRkVVxZIoNfM+PHMrt9qbArk2eddxjG?=
+ =?us-ascii?Q?0rs82rq2Ne6eZo/IB5Hd05vPxrcRUia7W5K89fEx4YlcSLjk/wWhoTHcMWml?=
+ =?us-ascii?Q?lBYIMPWwAD0c/Eu/EvO3nsdOmbYnfy50tdmVjveBOpT6qv1N9qhPbWAg6fD7?=
+ =?us-ascii?Q?Q8Ubq/eSq23j+m2ErmIMyTA17xBQciYxptk1VxiaYal7cKOXaehphm7Vk11L?=
+ =?us-ascii?Q?hM3m9LbAtajZqEj36vBImow8iq2nLFVc2uaPe6xPFNZw0iPFZu5ZMRNLpVUL?=
+ =?us-ascii?Q?2jURGmW32dtKQ8iiV4w0y0aV4ga0KuF40lKbwD+RrV/vpNoH6G/8zuKOG0+u?=
+ =?us-ascii?Q?GeuwTbZwR2snuRkGAFwCCJm9q5slejMgBTWzAj84lD1Hgilp7juBSSEUaD6k?=
+ =?us-ascii?Q?/7Zw4j1u3xIWO6pnqYrH7JGJz/veSHV4Tw8Datj7QbLnI8VfA7SYMX7nt0eu?=
+ =?us-ascii?Q?9mzeRkNqzjocjq0/HY5jM3+LzPSCGBd0ofxLO1TCZy6V7NuO8W0G4umvXrur?=
+ =?us-ascii?Q?aqXZib8onYj3NGrXDHtrO3g+7aUSR7nHnrlpu+RKhieYBf/PDSoMuVfsKJqC?=
+ =?us-ascii?Q?JrFGlUVJz32RXSZGSvSL6sfoZe25j8BBMFR3kKiDiUqIWCDkOLDidBTYwmkD?=
+ =?us-ascii?Q?YelSPVQ/Bm9vCeZhVua5yvkVMPEvLzy2X2s5UkqDszrM0zrZF3FhKbngaFH7?=
+ =?us-ascii?Q?q+Mzu2kl2dBGQoUhy+gzAtGA0xG3x7FXbIzoqdLKKVfPsPGmzbOvk/M/jgPY?=
+ =?us-ascii?Q?yK84ry3HZtWqqqyncw8+ohvVrxjWNY7Vq/d9r2c1EHEdNzR1mrXvMGBsEJqE?=
+ =?us-ascii?Q?sG2AEX+q4ct3BYcyHesNgkujKfk4i88TNeQdXhRkaEAw8JojTR5m8L3qnNIf?=
+ =?us-ascii?Q?YS8px6isdZHLuVzZSL+/fzKdLHcqz4hWUxoTn1lNbuYDa88PQXZ3GWcU+aJY?=
+ =?us-ascii?Q?54i3EzDeuPc9AXO1fugGcZ5SWifcX8rktLItOQ1WSOPMVu9H/RhBVf2SOfxv?=
+ =?us-ascii?Q?7dBWcKjtWAZRVvR8tNVr2EzSU7xNIDjoM6I5/QRPs8NBb4uUIT3n45sS4LPS?=
+ =?us-ascii?Q?kGeI6E1s9TQEbZcBlXq6wJvmzN+Cl8wu93CCO8EwqXKfiqvS2OSKKEaEZApr?=
+ =?us-ascii?Q?nrEFTjM45Mratpdcf7RCnBwJMTUDkfD5yNZB/byn8G/yWHhnp61vpg5NNCSO?=
+ =?us-ascii?Q?W3yH8l7xIyLRDIj3ZSY52FYqptkNJU+uGOLU7KGKco4a2TNaRs+Oc0TaLrN/?=
+ =?us-ascii?Q?+jz99rE0ybIaWv9imgUu/EVuWLjGDDaB4O4zrGTcOPpbUbIeqicR6pRe5JlN?=
+ =?us-ascii?Q?613YFC1uIIyvsoLNdcYfO2K4M38lUJ5cs+eQiOBnvIDeDKwwwQA+v0T6ewTl?=
+ =?us-ascii?Q?vgK9a04MYRiwYtDbWraVXiFPQC+Yc+0g01fBT5Ic0P6PtfuLv4/1GfXFHOrH?=
+ =?us-ascii?Q?fmSFEOnlmjgy1lr7DILxcvzVAaLg6oKgVE3MzK+B1ja/scZ0VLMRO+lNocWq?=
+ =?us-ascii?Q?QdW9QTWMigsoPMKLsoS568Ya+H/0bkNd3Jh8jBv2D8h7CE8MwoUNg2E3BGeX?=
+ =?us-ascii?Q?fPB+vKsXdPihchbcqBewae4+ClGsUFegh8vjNRn0nhFi3c8S3wEG2cLFQSjc?=
+ =?us-ascii?Q?nA=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 78be38e3-28f9-4f12-3f9b-08db260423ee
 X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Mar 2023 09:44:24.4451 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Mar 2023 09:52:23.0111 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: sbPxdlyIpmydFPjueEJPoWxA20UYRcE7hLbDTosvvIrniH247ABcmT5PhFO/bnNgVzTjnoMH/anyWgIQn+OGdQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7409
+X-MS-Exchange-CrossTenant-UserPrincipalName: 69Wig+UnqQlzZAr4bUOiTOMfrWRJRKe7Vd/1RYM349FdKYV3eucvcEp+t+YZaQB7bpjKlltXTJY64iCmLcgf3Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5674
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -148,37 +152,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Reply-To: Yan Zhao <yan.y.zhao@intel.com>
 Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>, Ben
+ Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
  intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Mar 15, 2023 at 08:13:37AM -0700, Sean Christopherson wrote:
-> > A curious question:
-> > are arch/x86/include/asm/kvm_*.h all expected to be external accessible?
+On Wed, Mar 15, 2023 at 08:43:54AM -0700, Sean Christopherson wrote:
+> > So, in theory, the new GFNs are not write tracked though the old ones are.
+> > 
+> > Is that acceptable for the internal page-track user?
 > 
-> Depends on what you mean by "expected".  Currently, yes, everything in there is
-> globally visible.  But the vast majority of structs, defines, functions, etc. aren't
-> intended for external non-KVM consumption, things ended up being globally visible
-> largely through carelessness and/or a lack of a forcing function.
+> It works because KVM zaps all SPTEs when a memslot is moved, i.e. the fact that
+Oh, yes!
+And KVM will not shadow SPTEs for a invalid memslot, so there's no
+problem.
+Thanks~
+
+> KVM loses the write-tracking counts is benign.  I suspect no VMM actually does
+> does KVM_MR_MOVE in conjunction with shadow paging, but the ongoing maintenance
+> cost of supporting KVM_MR_MOVE is quite low at this point, so trying to rip it
+> out isn't worth the pain of having to deal with potential ABI breakage.
 > 
-> E.g. there is absolutely no reason anything outside of KVM should need
-> arch/x86/include/asm/kvm-x86-ops.h, but it landed in asm/ because, at the time it
-> was added, nothing would be harmed by making kvm-x86-ops.h "public" and we didn't
-> scrutinize the patches well enough.
-> 
-> My primary motivation for this series is to (eventually) get to a state where only
-> select symbols/defines/etc. are exposed by KVM to the outside world, and everything
-> else is internal only.  The end goal of tightly restricting KVM's global API is to
-> allow concurrently loading multiple instances of kvm.ko so that userspace can
-> upgrade/rollback KVM without needed to move VMs off the host, i.e. by performing
-> intrahost migration between differenate instances of KVM on the same host.  To do
-> that safely, anything that is visible outside of KVM needs to be compatible across
-> different instances of KVM, e.g. if kvm_vcpu is "public" then a KVM upgrade/rollback
-> wouldn't be able to touch "struct kvm_vcpu" in any way.  We'll definitely want to be
-> able to modify things like the vCPU structures, thus the push to restrict the API.
-> 
-> But even if we never realize that end goal, IMO drastically reducing KVM's "public"
-> API surface is worthy goal in and of itself.
-Got it. Thanks for explanation!
+> Though in hindsight I wish I had tried disallowed moving memslots instead of
+> fixing the various bugs a few years back. :-(
