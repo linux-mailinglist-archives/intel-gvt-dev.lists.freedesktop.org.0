@@ -1,47 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 726166BD00F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Mar 2023 13:56:01 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B4FD6BD009
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Mar 2023 13:56:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3DEF810ECCC;
-	Thu, 16 Mar 2023 12:56:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F2C1A10E221;
+	Thu, 16 Mar 2023 12:55:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CF8E010E1A0;
- Thu, 16 Mar 2023 12:55:55 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5CC6110E1A0;
+ Thu, 16 Mar 2023 12:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678971355; x=1710507355;
+ t=1678971357; x=1710507357;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=mp2zbwXF2Bqe4b5Dju3YxM0GdTQ6OQSMoBzyt8jvhFA=;
- b=HQkI8ud5U1CXO7/b61waEOip1pUoL/vPP5bKi+mb99ku7Qvbf3MBh7ae
- wymSSbtYu6tNYVhy/3DULZjxmzUahRcqS8FSm07A8zWuHNEucaHEi62ym
- NeptJHksG5iRtvEAp00tm/fGoqB/N8xx3D5A3XyihZj7QjrJEcCClbya9
- HWkOeY4k1S0yuSLvJe4GBl/E9Rvx+4miJraJeN2hOMhG6mpaLnHckBsh8
- tXqQ4zWYm4LK6tjla3tWC+ClMmsb4iuOoemPNq8eqIzlmZMs+COfD7C1X
- OMpOUUwsHjIVdH5ZGmrnujdUr9eOYzU5NvS8wsThf6ILVh6WflU8+UH/S g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10650"; a="336668133"
-X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="336668133"
+ bh=oDDHD3Ae7NG5GC4LKURBgpBaOzuTUSDgeTMIrOuq0hA=;
+ b=BOOxgzGo8fZ3p9r2f+TdXGAmHyOaB8Lr6SXi5Qsecg+Uge+3oiqXqgXb
+ qekXofsKgIugVz7jRRJK97wi17/B5P9/GnP/19nERprv5BEAK8MZgQav+
+ tdArTjsa+l5cwxkRFdaeEbcNbKnqrUYQvKcPPmtMo52WzsA4zAPqX0pJ0
+ uNJJH480rnkdNmZXkOAs9XTHIoJbPI9pmwdXUkEj+acSVEEfxQwAqeO4B
+ liM0KXsYL2UkaVTGoFXaWhpDrzy1bJ5kKYWEwyOFXp/o3gTuv/lMW1UGy
+ MlIQVFiJVIbUHRu/ANAVqmeByEvxsUiAABokEOYOKrp8kbFBBqKcrQwLs A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10650"; a="336668144"
+X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="336668144"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2023 05:55:55 -0700
+ 16 Mar 2023 05:55:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10650"; a="790277837"
-X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="790277837"
+X-IronPort-AV: E=McAfee;i="6600,9927,10650"; a="790277845"
+X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="790277845"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga002.fm.intel.com with ESMTP; 16 Mar 2023 05:55:54 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 16 Mar 2023 05:55:56 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v7 12/22] vfio-iommufd: Move noiommu support out of
- vfio_iommufd_bind()
-Date: Thu, 16 Mar 2023 05:55:24 -0700
-Message-Id: <20230316125534.17216-13-yi.l.liu@intel.com>
+Subject: [PATCH v7 13/22] vfio-iommufd: Split bind/attach into two steps
+Date: Thu, 16 Mar 2023 05:55:25 -0700
+Message-Id: <20230316125534.17216-14-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230316125534.17216-1-yi.l.liu@intel.com>
 References: <20230316125534.17216-1-yi.l.liu@intel.com>
@@ -70,112 +69,128 @@ Cc: linux-s390@vger.kernel.org, yi.l.liu@intel.com, yi.y.sun@linux.intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-into vfio_device_group_open(). This is also more consistent with what
-will be done in vfio device cdev path.
+to align with the coming vfio device cdev support.
 
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/vfio/group.c   |  9 +++++++++
- drivers/vfio/iommufd.c | 35 ++++++++++++++++++-----------------
+ drivers/vfio/group.c   | 18 ++++++++++++++----
+ drivers/vfio/iommufd.c | 33 ++++++++++++++-------------------
  drivers/vfio/vfio.h    |  9 +++++++++
- 3 files changed, 36 insertions(+), 17 deletions(-)
+ 3 files changed, 37 insertions(+), 23 deletions(-)
 
 diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-index 36e105960dd8..1ad8df9b295f 100644
+index 1ad8df9b295f..70bdecff4785 100644
 --- a/drivers/vfio/group.c
 +++ b/drivers/vfio/group.c
-@@ -192,6 +192,15 @@ static int vfio_device_group_open(struct vfio_device_file *df)
- 		vfio_device_group_get_kvm_safe(device);
- 
- 	df->iommufd = device->group->iommufd;
-+	if (device->group->iommufd && vfio_device_is_noiommu(device)) {
-+		if (device->open_count == 0) {
-+			ret = vfio_iommufd_enable_noiommu_compat(device,
-+								 device->group->iommufd);
-+			if (ret)
-+				goto out_put_kvm;
-+		}
-+		df->iommufd = NULL;
-+	}
+@@ -203,9 +203,14 @@ static int vfio_device_group_open(struct vfio_device_file *df)
+ 	}
  
  	ret = vfio_device_open(df);
- 	if (ret) {
+-	if (ret) {
+-		df->iommufd = NULL;
++	if (ret)
+ 		goto out_put_kvm;
++
++	if (df->iommufd) {
++		ret = vfio_iommufd_attach_compat_ioas(device,
++						      df->iommufd);
++		if (ret)
++			goto out_close_device;
+ 	}
+ 
+ 	/*
+@@ -214,12 +219,17 @@ static int vfio_device_group_open(struct vfio_device_file *df)
+ 	 */
+ 	smp_store_release(&df->access_granted, true);
+ 
++	mutex_unlock(&device->dev_set->lock);
++	mutex_unlock(&device->group->group_lock);
++	return 0;
++
++out_close_device:
++	vfio_device_close(df);
+ out_put_kvm:
++	df->iommufd = NULL;
+ 	if (device->open_count == 0)
+ 		vfio_device_put_kvm(device);
+-
+ 	mutex_unlock(&device->dev_set->lock);
+-
+ out_unlock:
+ 	mutex_unlock(&device->group->group_lock);
+ 	return ret;
 diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
-index ca0c16bb747e..7334b67dbb8a 100644
+index 7334b67dbb8a..2daef60fe439 100644
 --- a/drivers/vfio/iommufd.c
 +++ b/drivers/vfio/iommufd.c
-@@ -10,6 +10,24 @@
- MODULE_IMPORT_NS(IOMMUFD);
- MODULE_IMPORT_NS(IOMMUFD_VFIO);
+@@ -30,33 +30,28 @@ int vfio_iommufd_enable_noiommu_compat(struct vfio_device *device,
  
-+int vfio_iommufd_enable_noiommu_compat(struct vfio_device *device,
-+				       struct iommufd_ctx *ictx)
-+{
-+	u32 ioas_id;
-+
-+	if (!capable(CAP_SYS_RAWIO))
-+		return -EPERM;
-+
-+	/*
-+	 * Require no compat ioas to be assigned to proceed.  The basic
-+	 * statement is that the user cannot have done something that
-+	 * implies they expected translation to exist
-+	 */
-+	if (!iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id))
-+		return -EPERM;
-+	return 0;
-+}
-+
  int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
  {
- 	u32 ioas_id;
-@@ -18,20 +36,6 @@ int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
+-	u32 ioas_id;
+ 	u32 device_id;
+-	int ret;
  
  	lockdep_assert_held(&vdev->dev_set->lock);
  
--	if (vfio_device_is_noiommu(vdev)) {
--		if (!capable(CAP_SYS_RAWIO))
--			return -EPERM;
--
--		/*
--		 * Require no compat ioas to be assigned to proceed. The basic
--		 * statement is that the user cannot have done something that
--		 * implies they expected translation to exist
--		 */
--		if (!iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id))
--			return -EPERM;
--		return 0;
--	}
--
- 	ret = vdev->ops->bind_iommufd(vdev, ictx, &device_id);
+-	ret = vdev->ops->bind_iommufd(vdev, ictx, &device_id);
+-	if (ret)
+-		return ret;
++	/* The legacy path has no way to return the device id */
++	return vdev->ops->bind_iommufd(vdev, ictx, &device_id);
++}
++
++int vfio_iommufd_attach_compat_ioas(struct vfio_device *vdev,
++				    struct iommufd_ctx *ictx)
++{
++	u32 ioas_id;
++	int ret;
++
++	lockdep_assert_held(&vdev->dev_set->lock);
+ 
+ 	ret = iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id);
  	if (ret)
- 		return ret;
-@@ -59,9 +63,6 @@ void vfio_iommufd_unbind(struct vfio_device *vdev)
- {
- 	lockdep_assert_held(&vdev->dev_set->lock);
- 
--	if (vfio_device_is_noiommu(vdev))
--		return;
+-		goto err_unbind;
+-	ret = vdev->ops->attach_ioas(vdev, &ioas_id);
+-	if (ret)
+-		goto err_unbind;
 -
- 	if (vdev->ops->unbind_iommufd)
- 		vdev->ops->unbind_iommufd(vdev);
+-	/*
+-	 * The legacy path has no way to return the device id or the selected
+-	 * pt_id
+-	 */
+-	return 0;
++		return ret;
+ 
+-err_unbind:
+-	if (vdev->ops->unbind_iommufd)
+-		vdev->ops->unbind_iommufd(vdev);
+-	return ret;
++	/* The legacy path has no way to return the selected pt_id */
++	return vdev->ops->attach_ioas(vdev, &ioas_id);
  }
+ 
+ void vfio_iommufd_unbind(struct vfio_device *vdev)
 diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-index 7d4108cbc185..136137b8618d 100644
+index 136137b8618d..abfaf85cc266 100644
 --- a/drivers/vfio/vfio.h
 +++ b/drivers/vfio/vfio.h
-@@ -236,9 +236,18 @@ static inline void vfio_container_cleanup(void)
- #endif
- 
+@@ -238,6 +238,8 @@ static inline void vfio_container_cleanup(void)
  #if IS_ENABLED(CONFIG_IOMMUFD)
-+int vfio_iommufd_enable_noiommu_compat(struct vfio_device *device,
-+				       struct iommufd_ctx *ictx);
+ int vfio_iommufd_enable_noiommu_compat(struct vfio_device *device,
+ 				       struct iommufd_ctx *ictx);
++int vfio_iommufd_attach_compat_ioas(struct vfio_device *device,
++				    struct iommufd_ctx *ictx);
  int vfio_iommufd_bind(struct vfio_device *device, struct iommufd_ctx *ictx);
  void vfio_iommufd_unbind(struct vfio_device *device);
  #else
+@@ -248,6 +250,13 @@ vfio_iommufd_enable_noiommu_compat(struct vfio_device *device,
+ 	return -EOPNOTSUPP;
+ }
+ 
 +static inline int
-+vfio_iommufd_enable_noiommu_compat(struct vfio_device *device,
-+				   struct iommufd_ctx *ictx)
++vfio_iommufd_attach_compat_ioas(struct vfio_device *device,
++				struct iommufd_ctx *ictx)
 +{
 +	return -EOPNOTSUPP;
 +}
