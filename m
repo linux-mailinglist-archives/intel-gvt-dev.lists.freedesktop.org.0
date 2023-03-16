@@ -1,147 +1,108 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF7F16BC5B8
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Mar 2023 06:38:47 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 323396BC5CE
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Mar 2023 06:44:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C1E6210E033;
-	Thu, 16 Mar 2023 05:38:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E10F910E033;
+	Thu, 16 Mar 2023 05:44:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 72C1610E033;
- Thu, 16 Mar 2023 05:38:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1678945125; x=1710481125;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=Da/aCn/IyMHJWWMY6WmFqUQxi7cELhbqjF6eoi4loxI=;
- b=jiTl5hQQYV1UKv5vXdgUBj3vpSMiWtbYKLQHUonbfUyZTacFS+h9z3Qk
- eO0oeyRgUvH+h+IVlZqnYVSGrPCZXJJuLsddsxTk+zxgJDBHGgiPU7ufe
- jm6F4xGhJb5M+hMWDM13qyCxVIwtn4eIU8xtVL+BVu16KzTvVdTKryFNR
- 3XikEL+j315+Vn7FkJxHObDVYkibC5bShrxIbvscGrZeTgpk+0Zx0XKms
- XAV4bGa6H+Eh7cm/HD+AuvoHGXyXweotrGao6xPscFhoqPqp72qSlprrP
- qsaH7H7ApUF3iqBISnFBXHcwsLH7FEosMLvg/MEqW7tensACQ8jSSB/1O g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="318294168"
-X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="318294168"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Mar 2023 22:38:44 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="803580897"
-X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; d="scan'208";a="803580897"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga004.jf.intel.com with ESMTP; 15 Mar 2023 22:38:44 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Wed, 15 Mar 2023 22:38:44 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Wed, 15 Mar 2023 22:38:44 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Wed, 15 Mar 2023 22:38:43 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2075.outbound.protection.outlook.com [40.107.237.75])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 688C710E033;
+ Thu, 16 Mar 2023 05:44:03 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lNhK2xNhZOLlZaNqpfjJh3mVKadMEggudVdhd5HiOV92+svdEmRX/kOxwLCkz5xWwX/VrZU0xGlzXkqmuEKlQYtNqoj7Hr+wKTyYk/Ajq1KTCH8sqsqsWOD2Uat7Y185Qb73Zi4+IDKpSSqPh2i0NiAn5KqBcz2me531AhvrLm6EMTKtYEZ1rOcVgXUqssdJmKhQlJYSZwllxRTP+Rva1eLFvgFfEavoWH9B7yYLysJs6ArgupiWjBs4PWupp9VLBOem/9G47DXt8bbHmRQN/n3T/5Tgho/3HXqU6Pe1+CIQhWkgvBCMwEfBh5+jJ+W+gyBSJV6yMQQ5Z7ALwd+Rvg==
+ b=lTeqBmCJLV1/NBfLaD3HZMdJ/zEJrpu1ovxI6ceP8+wKnLC5D4dOcceEYHUiw9GkQjgiWXY+a76MaDQ0QiVibODo+u/RxC62ejxGBofwZguqeGXsUuB2XW2cSTms2mkjAa/vEOnzN2l7nhsU2OELR+mZtL2zUXKs6F0nF6zN4iZ7V9thgYjuR9vVODneC1PMNR5hoSt2RMGxE8z2YMSRle1bPoZIfskTsBiOIkSSfzleJ+ludZQludZ5qVybW8+iFtshEOj3CLOs9aQXMajBx4ZlEOLfVqY65OehYIVWQ/MCZg+hdkJNw1YyHdwvxQPFVpUF1Z1I7HRXshNX492mcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=iiXrWUvkEV+mgwF3eEfm9Q6SM0951uJVJp2YAxvWDZI=;
- b=oGLt6b8PxF4twfOra7rQL4xDSWdwahKWvbqpoSXnTioxSZBWLV9RBHa/YsUlfw8MO2buHEBX03/Ay4LT8hbak9e1m9wufLTiadTD5v6QSqBbjV7beNdArvyLok3exNE8QSiuXyWNUnaTuws07sxBpijQGeUT2ksMaS73ZtR3V73naVoRVPk3JssThlIgrx9BqSJb+bBIOuS73W90f3SZZdtAolw7UQSPpMlHgALSAXbmbFkF9rfSRQykdxeLWHVEECiltP39CRtd5wGeL+Tymq2kYjiZQhZXUlc1KZ/068AuPh+8eKH1CxynFNxJny7A1+ceFoUib39RTEopsZN5Og==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
- by SA1PR11MB6806.namprd11.prod.outlook.com (2603:10b6:806:24d::14)
+ bh=Qv07CyGp1OXr202MI0xGtRF2hb36uVcKLP6EYdJF+hw=;
+ b=S/HWEYKFrgqIUuMx9N0r+xze353aIx4OX4wTWGiaYAHjzQpnZ3Cn6yiZlrKQQOtuTgAK3rB5kJ01qNmHqNf0s84iTOWTMP6lsSrq3hjXSQCxEpFjJjOSA86GFNj1/H2+84mMi46fHNxAyWCb37BqSRVY6jTLEzKUv1czIIBVUwghaiFRJlA4dLEdtQ6IizfssZ0Q8qwFb+rKmhkGRr66QMPFfQSQH98/0N1nvgE71qq2bMJdtQQzj7LpkJwCw/ENIYAnyZpxusQP+ZYhrveM/+MDwXy9g5XcQCbZsbfFzVjEfFo/ALb7LMQlO0oKFt/5sboVotxbkX2VCo8TbQFSBw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.233) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Qv07CyGp1OXr202MI0xGtRF2hb36uVcKLP6EYdJF+hw=;
+ b=qCD9Nakjv+0ifkg5nV4cDYWJHpQpKqsQUAuy31prxUT+GosXw2URC3qj0KYhAFIyFnH3qCwqkXVej+y5NtC1d9RLZkA+pWQNJXjNBS0znzwpYHTyQaKBbeaNTH14DEZ8/9TTv8RhywsJQUn2NPG9mvuvEBl4mSiVZelRyr9InJFK9sFhimFzSUMhjfJ8hWwKKdktLE6MFNBPiQKKcwy0n5gHazwxbXJ0aAOQBMZyhs7MeveA7aJneck8JcSvZOgGF9DvnSEZh5oiByG1vNccw+uvh0xu9pXGmBwM6IZHwxm8/HF80WkNb1tNVbDBOdNzdhNfCyfmd8m/rCbWLJUyRQ==
+Received: from DM6PR11CA0031.namprd11.prod.outlook.com (2603:10b6:5:190::44)
+ by LV2PR12MB5919.namprd12.prod.outlook.com (2603:10b6:408:173::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.26; Thu, 16 Mar
+ 2023 05:44:01 +0000
+Received: from DS1PEPF0000B076.namprd05.prod.outlook.com
+ (2603:10b6:5:190:cafe::24) by DM6PR11CA0031.outlook.office365.com
+ (2603:10b6:5:190::44) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.29 via Frontend
+ Transport; Thu, 16 Mar 2023 05:44:00 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.233)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.233 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.233; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.233) by
+ DS1PEPF0000B076.mail.protection.outlook.com (10.167.17.7) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6178.30 via Frontend Transport; Thu, 16 Mar 2023 05:44:00 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
+ (10.127.129.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Wed, 15 Mar 2023
+ 22:43:52 -0700
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.37; Wed, 15 Mar 2023 22:43:51 -0700
+Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.126.190.182)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.31; Thu, 16 Mar
- 2023 05:38:41 +0000
-Received: from BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::1aac:b695:f7c5:bcac]) by BN9PR11MB5276.namprd11.prod.outlook.com
- ([fe80::1aac:b695:f7c5:bcac%9]) with mapi id 15.20.6178.031; Thu, 16 Mar 2023
- 05:38:41 +0000
-From: "Tian, Kevin" <kevin.tian@intel.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Subject: RE: [PATCH v1 1/5] iommufd: Create access in
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5 via Frontend
+ Transport; Wed, 15 Mar 2023 22:43:50 -0700
+Date: Wed, 15 Mar 2023 22:43:49 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Subject: Re: [PATCH v1 1/5] iommufd: Create access in
  vfio_iommufd_emulated_bind()
-Thread-Topic: [PATCH v1 1/5] iommufd: Create access in
- vfio_iommufd_emulated_bind()
-Thread-Index: AQHZUb/VKrDPi02EE0KOkFVtC1WCVq70SikAgAWuFwCAAReSgIAAVgYwgAAGiICAAAEI4IAAKQWAgAEmOLCAADF8gIAAAJiQ
-Date: Thu, 16 Mar 2023 05:38:41 +0000
-Message-ID: <BN9PR11MB5276EDB7E88E9AE5F059C8948CBC9@BN9PR11MB5276.namprd11.prod.outlook.com>
-References: <20230308131340.459224-1-yi.l.liu@intel.com>
- <20230308131340.459224-2-yi.l.liu@intel.com> <ZAtqlnCk7uccR5E7@nvidia.com>
- <ZBAuXo166M+z8b3z@Asurada-Nvidia> <ZBEY49XtiFUImfe4@Asurada-Nvidia>
+Message-ID: <ZBKsldu+EKT5jd98@Asurada-Nvidia>
+References: <ZAtqlnCk7uccR5E7@nvidia.com> <ZBAuXo166M+z8b3z@Asurada-Nvidia>
+ <ZBEY49XtiFUImfe4@Asurada-Nvidia>
  <BN9PR11MB5276738DC59AC1B4A66AB3C38CBF9@BN9PR11MB5276.namprd11.prod.outlook.com>
  <ZBFmh2iAqGGb8CjK@Asurada-Nvidia>
  <BN9PR11MB52765D7977F987960072482E8CBF9@BN9PR11MB5276.namprd11.prod.outlook.com>
  <ZBGJzefTm4p/ReIu@Asurada-Nvidia>
  <BL1PR11MB52710B5DCB08214EF4542D098CBC9@BL1PR11MB5271.namprd11.prod.outlook.com>
  <ZBKp9BXwX3+txIEC@Asurada-Nvidia>
-In-Reply-To: <ZBKp9BXwX3+txIEC@Asurada-Nvidia>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|SA1PR11MB6806:EE_
-x-ms-office365-filtering-correlation-id: 05c14367-0bfb-4de8-1a0d-08db25e0b332
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: /YOol2/SOlpN6JsVBC5yoIVJveFYhX4QUIGxgJZ5ykw0gE+h7wXyqur+25fRkJc1AvHAPLXwKu6LCVquzwxa1sa72G9lP5csUr18Xmh5x4xLo2HTm491snH7330Ky3O1kvVMrjsYUQ7vTSiy8EOm3HCT0K5AadFAqV9gObPD5pfOuy1WvY7qbVgEl7Dod7Z7zlHkjtN5RSfULBqrduE7cfdMMUAfChBD1RW2+lBL5sJV442WTvlIg3B+XwauILQ+skSgWfpe6cZ+SJnS136Chb9Yiu4xZWMFmsVxKKgdjOIvGegokAGepXev2dTF2Ra55S0kx/KP4n5ru/YGAKr++1ZklH/AdddzauP0o6NW69KXGa4Lx+AnECn3FrsmAlcYUAk/56Hmqx1VePAa02HFB05VIUsoHqV3ZOF2oogAestQwT/Mv8DZpbwvH93Sa773w8CuQj9zVoi8Hx523JeYdH3nxPnoeOA50bPMpOC3qd/O3AhWvM8qETxSbs/EF+vrXTzKW7BvWBvSf/3EXtryJSAT583GlgItVtSILapoSekvT7Kc8orG0FfuL0mYisQpp6UAQuJwHze1OOHLRl5/mvqFhpIZ2yADwOu5Fr+gINGkQYoCnFi7lLWG1mBxb6iawQpC57x9fKj8mttnc5IqB8cXkPryKQsWdyo8OfO36Ff8J82OT540OORXtEpJbFYo
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN9PR11MB5276.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(136003)(346002)(366004)(396003)(376002)(39860400002)(451199018)(38070700005)(86362001)(33656002)(38100700002)(82960400001)(122000001)(2906002)(52536014)(41300700001)(4744005)(5660300002)(7416002)(8936002)(55016003)(6506007)(26005)(9686003)(186003)(83380400001)(316002)(54906003)(4326008)(8676002)(6916009)(66946007)(64756008)(66446008)(66476007)(966005)(76116006)(478600001)(7696005)(71200400001)(66556008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?laIrJi7ke936OfRB39KpU3jce2Je+w2O8Oos2poLS0wTM/De8rDCRRpLnGBY?=
- =?us-ascii?Q?Tl5yRLYUXZmIRZu+YCdE4pVB6yxINMsMMM3+NbcBMQpn7H+zsw2O/OEIY7kt?=
- =?us-ascii?Q?a5GrTIcSG6Us/FGpt0cPnyaNspfdzKdnFniyW8Bl8lGjond/rcFttC7/IBYq?=
- =?us-ascii?Q?XFOZuPM72iU4lQDQguEACEHN5mL4nW7gmnGs2gEj/fyXkxv1yGvwxFVe4I6Q?=
- =?us-ascii?Q?W1sw80X6WucoKbArNueviDFRrI4w3AelWEp8tJOPjgXM/AZQ3n6csJabD/JI?=
- =?us-ascii?Q?Gk+wJDZpfv9LEgNdfZlsdEvRUBd85FrACzKJjk1q1S7BTsIZun7WEIYnACUz?=
- =?us-ascii?Q?ojpDy1jmBlXC9qkIknkyFLQ6dkMWmh9s9+Kisto/HZZKCI1NnYDb86tz1ij8?=
- =?us-ascii?Q?l15LynwT5BLjE/dkk8nDitqRbyf/HMejm14JBzG/UGTe+iyE28Z8luW//5fU?=
- =?us-ascii?Q?O0UVbkth7zhI7cGGGN7oAhVQ6rwFpaMSkzTwlylS0i5AmtVJOED0was5eKhj?=
- =?us-ascii?Q?8+WwyuX+HDnZ5nwK7z+Z3Yj6y33j9n4XeN25eDuHGn/GjQmOJ7B69qZ7o858?=
- =?us-ascii?Q?d/yeDe8UmWeWyiMzKk0Lkv0taCTQ1FffmcLUZYOKo5eSoOI9l2W8Zo0fWBzl?=
- =?us-ascii?Q?YSUmM9IUHNfBMkA4Nd5rMHdlBT1W+YGOpZvSeMswRTpSgF1ccvTwzk7t/3nE?=
- =?us-ascii?Q?gNdZjEi4FueVGtUzRc4s5hFVk5pJ2tvyR22zD9Z3fx9Q4AUiw1dAy34fQgrJ?=
- =?us-ascii?Q?cOHnQ62RD1bBZ7PghZfhfay9YC9VuYkAs0YBTbmamjwgCrkUL/r9APDyHE5T?=
- =?us-ascii?Q?ABL/ZRb5/dishURH6SEBYT64PNW8YBr2ilW859oxagBHWPVpgZTRf4nL+FCR?=
- =?us-ascii?Q?/anYvR8Fo/9gfzFEWp0yTiaU9z6/WuQ8RJ382qrAGclne/Dxtg3VQiZm9tUb?=
- =?us-ascii?Q?SNnhBOUJA4H+akMt7ZfltY4NP6KzgezrnX2S9hv/p49+N7K7EJsWHsIaOtEr?=
- =?us-ascii?Q?O3bg9S7LUy4YgZ2QZiZ39kxmd3ly8WRXEzX3hH1MBUAS1iHoEUnTe+Gq2qNj?=
- =?us-ascii?Q?vG5SJiswb9fO5CALsYGnmI7XPKanhTKptrJ1LYAdoVvwNeyBAwJ9K2yI7W16?=
- =?us-ascii?Q?2JoTiBp9bw1jpOXXBsvpegBLLwyZ2NiX4Whcfbvf99nfr5o53PX7yYCLGN4J?=
- =?us-ascii?Q?BiE9s2Ol2AC9bwydabIfjPr/kV02tYc8r/rjfw2KFhFK3PeeIyb/Ub9Rc2C5?=
- =?us-ascii?Q?GFnk6tW6tBOphfXOjOeNvNO1kk9zbvMIAQbMWa6k6gdN1bO0Vd8KSn5d20Re?=
- =?us-ascii?Q?OGXysLTh29AygSi8ISmbjZbB8RPXEeZwZArOwDGuybariFr2KVxxVPltEQ1F?=
- =?us-ascii?Q?7kRqbtaKE3nqEB0WWRzd4LrJ6JN0zOe4+K8MW/j/adtMTZr90gYswftojHP0?=
- =?us-ascii?Q?v79lzKZYe1eaq5u3QQZrnuhbFEZhxtRl3o10QJEJWHzvvDT9CzgnGSaK0sBD?=
- =?us-ascii?Q?QfesiBYbJ7YcwqrNos6W8b0YISwqVWsMZA4mhZkO9F+1SuC+L0doJkvABkWl?=
- =?us-ascii?Q?HqFsxU+hZxsgsmVKgrgz5MfOXCxTkC3Vreve5Ilr?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <BN9PR11MB5276EDB7E88E9AE5F059C8948CBC9@BN9PR11MB5276.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 05c14367-0bfb-4de8-1a0d-08db25e0b332
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Mar 2023 05:38:41.1896 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: hj+3rQJUO/ORhGWSw64ueJC4NSm6Z66cnb6uKvSzCc+II2bvBSf06LpxlbXs//hoZQOfefv/RxyFCQXKtI6LvQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB6806
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <BN9PR11MB5276EDB7E88E9AE5F059C8948CBC9@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS1PEPF0000B076:EE_|LV2PR12MB5919:EE_
+X-MS-Office365-Filtering-Correlation-Id: 44e4beb2-1ba2-4d63-4b3c-08db25e17178
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: x1MOAPXvvIGM77L6RPZZOi+9SJeDxrNwUya6u4q+OT4zX4ZS+5VjZu3la5ZmRXO4y4hbdC4VVqL8VrtIdtOY9IWeNsnKzESXQc+DbYogcoTjHiqc2YoeXZEYdHjJhktQDPTXHWCr3bpXJcZmPJ3pZ8aiyIoJO+11aDK2kmmUHgA4JA8HMURJ9fKb64MgzMt8l+8Nmos0PPm43RTEL8BEIW7mevK9n7d02Y6ASr1rdqeSjYgFGuLCSpltdzbfZl93rZR+gGYqdc4t8/7PUU7JCeTepGETsHVesLoXdfJ5s+m7JTMJ88NtxDE4KOTXnP1RFz60ys7gpnKN0L2Qczq8vwF5uYD7WAI7WaVG+Dkbbk+jLLA3GVg+6guxqagnFyn/SpbCNmY9kvZfaGRl7n6NYQSvA5kGL1VpUyyBQ4KwherOhhwOLPVeo6/Gkr55lYPn1p0zWh8Bio7+VCy7fP5EQauSEX+q+6g7RPZjJ/MpVxtKPFgXl4yYgv9z4aeQLExsd+PlgJ2Ft5XxDRZg3sldC3XG/61miPHviQsr11qLZ1SKLLgMPn3a55MHGpVq5jY3BZ9mHFJHDbuZsyIfKTQESkL4rDMTn6GvtM8Sx3I/majVee0eg+RDIVBVy+tuVx2pnsQkBKkjfogTNwsGYdY7QKz3PrHCmohZ+punjHFKfePCM4y8eL7bY1WOG4k7B0f+c8QfBZz9vbMEh0cyDbv0upgOi2Bv4YLIj+6/yMZo8wYYWF/Um6TjQcFmT9aGXDU2HjXUGJzg1JJrSwzcnxpjUXDfGoAbny60UuTkv6rSphnySjGqG8HUwyoM+phapbeI
+X-Forefront-Antispam-Report: CIP:216.228.118.233; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge2.nvidia.com; CAT:NONE;
+ SFS:(13230025)(4636009)(136003)(346002)(396003)(376002)(39860400002)(451199018)(40470700004)(36840700001)(46966006)(478600001)(40460700003)(70206006)(41300700001)(70586007)(8676002)(9686003)(6916009)(7416002)(83380400001)(5660300002)(186003)(966005)(8936002)(426003)(54906003)(336012)(55016003)(47076005)(4326008)(356005)(82310400005)(40480700001)(26005)(7636003)(82740400003)(36860700001)(2906002)(86362001)(33716001)(316002)(67856001);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Mar 2023 05:44:00.3228 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 44e4beb2-1ba2-4d63-4b3c-08db25e17178
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.233];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF0000B076.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5919
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,40 +136,52 @@ Cc: "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Thursday, March 16, 2023 1:33 PM
->=20
-> Hi Kevin,
->=20
-> I've fixed the other two commits. Here is the one that I am
-> not sure about:
->=20
-> On Thu, Mar 16, 2023 at 02:53:50AM +0000, Tian, Kevin wrote:
->=20
-> > > [2] This adds iommufd_access_detach() in the cdev series:
-> > >     "iommufd/device: Add iommufd_access_detach() API"
-> > >
-> > >
-> https://github.com/nicolinc/iommufd/commit/4110522146ca1fc0d5321c04a
-> > > 097e2c9d9e26af4
+On Thu, Mar 16, 2023 at 05:38:41AM +0000, Tian, Kevin wrote:
+> External email: Use caution opening links or attachments
+> 
+> 
+> > From: Nicolin Chen <nicolinc@nvidia.com>
+> > Sent: Thursday, March 16, 2023 1:33 PM
 > >
-> > also add a check if old_ioas exists it must equal to the new_ioas in at=
-tach.
->=20
-> This is the commit adding detach(). And there's a check in it:
-> 	if (WARN_ON(!access->ioas))
->=20
-> Do you mean having an "if (access->ioas) return -EBUSY;" line
-> in the commit adding attach()?
+> > Hi Kevin,
+> >
+> > I've fixed the other two commits. Here is the one that I am
+> > not sure about:
+> >
+> > On Thu, Mar 16, 2023 at 02:53:50AM +0000, Tian, Kevin wrote:
+> >
+> > > > [2] This adds iommufd_access_detach() in the cdev series:
+> > > >     "iommufd/device: Add iommufd_access_detach() API"
+> > > >
+> > > >
+> > https://github.com/nicolinc/iommufd/commit/4110522146ca1fc0d5321c04a
+> > > > 097e2c9d9e26af4
+> > >
+> > > also add a check if old_ioas exists it must equal to the new_ioas in attach.
+> >
+> > This is the commit adding detach(). And there's a check in it:
+> >       if (WARN_ON(!access->ioas))
+> >
+> > Do you mean having an "if (access->ioas) return -EBUSY;" line
+> > in the commit adding attach()?
+> 
+> if (access->ioas && access->ioas != new_ioas)
+>         return -EBUSY;
+> 
+> yes this is for attach.
 
-if (access->ioas && access->ioas !=3D new_ioas)
-	return -EBUSY;
+OK. For attach(), the access->ioas shouldn't be !NULL, I think.
+At the point of adding attach(), the uAPI doesn't support the
+replacement use case yet. And later we have a separate API for
+that.
 
-yes this is for attach.=20
+So I think it'd be just:
+	if (access->ioas)
+		return -EBUSY;
 
->=20
-> And, how should we check in the detach() if it equals to the
-> new_ioas in attach? Isn't the WARN_ON(!access->ioas) enough?
->=20
+The reason why I didn't add it is actually because the caller
+vfio_iommufd_emulated_attach_ioas() has a check of "attached"
+already. Yet, it doesn't hurt to have one more in the API.
 
-this is not required.
+Thanks
+Nic
