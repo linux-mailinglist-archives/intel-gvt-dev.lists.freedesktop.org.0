@@ -2,136 +2,141 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 601BF6BE575
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Mar 2023 10:23:39 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAA076BE5F4
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Mar 2023 10:53:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3167110EEB2;
-	Fri, 17 Mar 2023 09:23:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9EBD710EEB9;
+	Fri, 17 Mar 2023 09:53:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 489C910EEB0;
- Fri, 17 Mar 2023 09:23:36 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 788F210E35A;
+ Fri, 17 Mar 2023 09:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679045016; x=1710581016;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- in-reply-to:mime-version;
- bh=91mFiWU+fEwn54Y2AzZ1Dg0FMIN1c10lQRxTIyNAzQo=;
- b=G4mWvjam89rejazEIv6sLo9IiyLgWhRfAb0vRTRwaiT9lfUvLZygZp7b
- WYstPPwOX4QGDVeLjdei/BZGIKAGNKtq4/apFevqkFeH5CygF6juxR++8
- yp1lkiTiv9z1esS4+XQD9uSdAXR3jZlmabFwsUYQxgv7iUUJt7Zkm98Ft
- U34j7NzvsH5CBHFfTjbwcQqLKQ8sY5lrNz7zp/FdbHssHx4CzcyelZFQW
- EKhhZS9uoq61bnoFWBQfR5ysQAGzA/HAkWTNNTTOftk/7fkTEHtAJTWkG
- 3+jP+Q6l12n2nvmUaFrvBQhZ2uFTZi7mpsWGJrJQqRA4o+HAvmnNaeX4c g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="339760797"
-X-IronPort-AV: E=Sophos;i="5.98,268,1673942400"; d="scan'208";a="339760797"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2023 02:23:35 -0700
+ t=1679046802; x=1710582802;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=6ascBtac+n0q8+oIm862fWbzWqnGWlkqMWxkrvXDHqo=;
+ b=ji4HpCUkmI7iQymkozdeTHXqkgWyNn0sIXBcFMkcvA62+oVNndccsVeQ
+ wLINWRUOqEFv8W/fKQk1EPv9yW2NJHWOPfylAZaH6mptplJ7TP5ZHkkSn
+ XIspn8Wq4nq5J6Jrje/idLdogFrZOVYa/Ai/hD7cUS3Vk2rQqE4t3s/Ho
+ h8NdO5fvLx3Im6sNENMdtnM9DsKoWgp3DH5aXqwboQ8YWR/A56Xte44n7
+ wwcjFfFfi5uQXFS/gw0+LOwt9AWXARHwxHYZzy/h3r3kjRCm6pQe2TSES
+ pQBOV4GUQJXbLvlyxe3X70A0HrLHh7vqIh0fGj8DAg3/vmdnrjUWEr/Hh w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="336924477"
+X-IronPort-AV: E=Sophos;i="5.98,268,1673942400"; d="scan'208";a="336924477"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Mar 2023 02:53:21 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="769299704"
-X-IronPort-AV: E=Sophos;i="5.98,268,1673942400"; d="scan'208";a="769299704"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by FMSMGA003.fm.intel.com with ESMTP; 17 Mar 2023 02:23:34 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="749200490"
+X-IronPort-AV: E=Sophos;i="5.98,268,1673942400"; d="scan'208";a="749200490"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmsmga004.fm.intel.com with ESMTP; 17 Mar 2023 02:53:21 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Fri, 17 Mar 2023 02:23:34 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2507.21; Fri, 17 Mar 2023 02:53:21 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Fri, 17 Mar 2023 02:23:34 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.174)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2507.21; Fri, 17 Mar 2023 02:53:21 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Fri, 17 Mar 2023 02:53:21 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Fri, 17 Mar 2023 02:23:33 -0700
+ 15.1.2507.21; Fri, 17 Mar 2023 02:53:20 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iiMO/u8+Hb9KjXnvHl9j1VBnVBMT9dwlgiEuIvMJmPzMkkXskoWQdxP7xU/jajZPrOe5JdslnMt7Xw44ifLjX8dutc6YRRv29xDE3eCUY2Kkoa9PpQnzEFMvZI2mMYbxsbVPJgRQzNZ6paW/IMRLFWoFhtUxzv0VS277QYN9wU19FdJbx0NOunvMaUVQLkwdOM65xOPXeiaiD+G1qzaeDtx9tGWpmmkc6Y84YHrtJ2rrU4JEG4SBBTX3SiePpdJtqZCg6S1N5ApN0c0DJ4sqwBevBLN6EbowCCnZW34ATrNXyJtI+R5xBTT+eno24Cm0zOOmnW/HoRRF+6qn0P8L1g==
+ b=bDoV2eJLBFJPLgetzYCLL8L/bHdUISKibeJs/cYi6ihJMVkCz/2O0xfonXyH5CIdpUGCf/q9Kql1rbYFvhOIYPn+l46+hzccyUNLdEf7/4gYjGVWRu5uuE0Te1/iGbiitZiqasY3JQY9aPZGHj/9nipaBIprSruWD7ynCgZVAmOOF+NmAWYuhyQamp0tr/5Uyw04rVNRM4AKpPE2y4gujRbMxfP3k3NgSwW9UdT02I8IbJ/z1wDtmpfB+AQWsHlMmY3O5bIFNREx2GFGlz5kHBXM49wHY3iGcc7LEn0r6T4LsKQ45RKa4NXbeXsDVOUXn/91AeHWUmB3OFCGUTtFzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ac3dN0SrYQHicW1uwnooyVf76drp0NH7oiyp1U1Ww9w=;
- b=SGY62CCVGCcoIXqgGgt1qfU27T2pmEF9TriXLrVjtNL4T+Q2AB8DUY9I0PHiGviDvDVjfD1YE0ShMDoZmSRDhoWqQ4usf1DdqFHeBYElorQidCu5ad0iyh6rhrnEdKeANEShD3dWEST/kf16/cNYlTDmWLD8Rgm0QuXVezkfQ04HiB7dD0EdAnzN4QUw7xlpaLf2yquaPCD+kaLUw2eDOoGGHLlr84ycWYDosNvAYxN06VGQGRce4SbLMiGsS2sufzPoPj9PyOJzzuTOfrUVMkBUvDRJNaMc8Ol9H5FO+xkiEvI8OXiXyOguTtR87LWdFtcmw3KJ6ugBDdPxAbmAIg==
+ bh=T9G/degk0sQPQvFxSGyDysNWiz8OG/Eb5gsM89g5Cw4=;
+ b=LUPw9tSQnPOwhAjabslT1zAsktPa9iiQrj/rVHDfKB1In1VagSVYzM6iKSe2G8fzF/kYsDgo5xIKiuGq1mKZvczCgHJ6SjOVyQvwnKnFzkOLB5fQy7JhErdVUZmKhY5Bm8wzChpyndmQZp8wWWkDnjGNaH/kj9JoXHOu9LY6gmUam/WlFmDyT60I6dshCiAphIK4N2O4q4WJVYxt5izMVIWPrhejiFclJ5YbVqNcNs29NCQ3VgGAnAqAUxwNOswu06Zb9VjBD/kgfACzxTso14gHYT2E+ynFWS3ceVDh6Qk+qAgQt21C3u9ler8JVpIQYdLtlpbc4TpEqf89wWWNkg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
+Received: from SA1PR11MB5873.namprd11.prod.outlook.com (2603:10b6:806:228::11)
+ by BL1PR11MB5496.namprd11.prod.outlook.com (2603:10b6:208:314::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.35; Fri, 17 Mar
+ 2023 09:53:18 +0000
+Received: from SA1PR11MB5873.namprd11.prod.outlook.com
+ ([fe80::8610:e88d:1718:d8fc]) by SA1PR11MB5873.namprd11.prod.outlook.com
+ ([fe80::8610:e88d:1718:d8fc%8]) with mapi id 15.20.6178.031; Fri, 17 Mar 2023
+ 09:53:18 +0000
+From: "Xu, Terrence" <terrence.xu@intel.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>
+Subject: RE: [PATCH v7 00/22] Add vfio_device cdev for iommufd support
+Thread-Topic: [PATCH v7 00/22] Add vfio_device cdev for iommufd support
+Thread-Index: AQHZWAajlp3zjdPRyUiZt0ZLeI+9cK7+ugzA
+Date: Fri, 17 Mar 2023 09:53:18 +0000
+Message-ID: <SA1PR11MB5873BB60E6AD328C303918ACF0BD9@SA1PR11MB5873.namprd11.prod.outlook.com>
+References: <20230316125534.17216-1-yi.l.liu@intel.com>
+In-Reply-To: <20230316125534.17216-1-yi.l.liu@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
- DM4PR11MB6020.namprd11.prod.outlook.com (2603:10b6:8:61::19) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6178.33; Fri, 17 Mar 2023 09:23:30 +0000
-Received: from DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::b00e:ac74:158e:1c7e]) by DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::b00e:ac74:158e:1c7e%4]) with mapi id 15.20.6178.026; Fri, 17 Mar 2023
- 09:23:30 +0000
-Date: Fri, 17 Mar 2023 16:58:52 +0800
-From: Yan Zhao <yan.y.zhao@intel.com>
-To: Sean Christopherson <seanjc@google.com>
-Subject: Re: [PATCH v2 27/27] drm/i915/gvt: Drop final dependencies on KVM
- internal details
-Message-ID: <ZBQrzFlsjTWylzGf@yzhao56-desk.sh.intel.com>
-References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-28-seanjc@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20230311002258.852397-28-seanjc@google.com>
-X-ClientProxiedBy: SG2PR03CA0106.apcprd03.prod.outlook.com
- (2603:1096:4:7c::34) To DS7PR11MB5966.namprd11.prod.outlook.com
- (2603:10b6:8:71::6)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|DM4PR11MB6020:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8a029227-dfcc-4ee3-7fc5-08db26c94597
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: oGwugKGgH7s0X8EMPx+mex6V5B6HQ494G1y+VupVgypENk6niTYQLxIqj/beO+PQQDHQsuERINfD4clM0YjchHc5JrtCUFXxTXyiB7IlnChEGVtycY0YInhWUrskSaXJBMrWV28Ozw5vuXmdSYz10gB7B2QsKeuz9Q8EMtxkWWXrXFlDbj3tLk6crV2fPe03iEZh+pEvfUpBQ0qMrIrYQTCHN8R0rX9zI/QXPkAMov2zGPzKcxhYe7j9L21szBXmsAVY/v0iCmAzcMiUwRbXLx23RL9v29ugeWWshrhCKDCGCnQmiu2o3x9zSFogbJ+DZnzeAsUHL0c96oauwG9nwnbuN3mKJNauV5A2SWX/xIZdcPCADc9AwKdcg8QRww7g4UXG2cmYao67+EeQTik2o91CEzUgfazOnvjrVVLIoHHj08cBeJIXYEDixn/r9UuqvR2FKGO1sb220qJrcNjtWhb0CdgJarPSApi/msl39wss4UWVqfhvjnDQXtybJ/3TWZsBUuCjOzHhMey9sifhLoZ1cClcd66VYbdj8da+5yG7TmPsRXUAiCXTGjLRMkdHjr2LLcelvSUglfZqHPS1aOSF45JDISjGsgpKimyNK5N3Fwqc7Mn33uXpmhseZfVdseooqkI72tW3bk/28aayhA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(136003)(366004)(376002)(39860400002)(396003)(346002)(451199018)(8936002)(5660300002)(41300700001)(83380400001)(38100700002)(82960400001)(86362001)(3450700001)(2906002)(6506007)(54906003)(316002)(6512007)(478600001)(6666004)(26005)(6486002)(186003)(66556008)(8676002)(66946007)(66476007)(6916009)(4326008);
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA1PR11MB5873:EE_|BL1PR11MB5496:EE_
+x-ms-office365-filtering-correlation-id: c602526e-d862-47f8-45c2-08db26cd6f49
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: RCa2/nq8TP6FXPXGiJnqnQ0iRTW34EFHDrlFt4HQxtvtHEsOb7rY6kKS8J2v2DvWhMDtnvdOZQAKAnmM6ggvtLeXafzZaK4PhDP1K7l1X4B2woMZ35dqKVm/HoCnoDxTIjambjaFoe6RmIxkmHtudL7XC8FttYUU3GYNDC62ywL0Omj9CZEwvJCNQ5/FrBWQiA/cIZxTqPe1XCNnfNXAqS59E5Ol2XkFCmBEcZ/H93vDHRZU9JDcIt8q04+Pql3A/jSwocUqjGEhYUEKBYfHkcBo6UdpEr/wMIHN+HliFMh0nR3Y5jCJODTWbaoYrRhSFVGipmN/t3Eu0NQl0QOvm7zEDqm25n0XPpzs2/RMRZVJcERRd6oFcim2Qs32v3NBmTJ3j66ZpfU5yzUsTHtnfw8GRKHNDHWvoU1B9x5p1gi8ynWTsn4/QNh/mlh+J3X5ASj325nPLOoEcwxtgtljH7MQDBPboBD2mKalQJSKjueodOp3AfATy4EM3ATG0vsGavji1EfMvckKcUDvZkD8PGotdCzsLuTpyTiE5n+bYhxi0FHNtpvk2xWpF+Zgo8LHOiD/czrAlfOwcImws6sEF1zE8V6DJu9nY8UmIh3YrIaHEUqw4h6Ammyxi5h2qP/JF5Z6CduB1ck0tbanW5tpLJ8Hm/p7DBFHcw5bnXKs5lfJT4f+irMgCckjjv4iohY0vKNxdlOEXSb3jTTxfi6NUTolDGXbA5eVTIHEtGAV5zQ=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA1PR11MB5873.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(136003)(39860400002)(396003)(346002)(366004)(376002)(451199018)(33656002)(7696005)(7416002)(5660300002)(52536014)(41300700001)(8936002)(2906002)(38070700005)(38100700002)(86362001)(122000001)(82960400001)(71200400001)(45080400002)(66946007)(8676002)(66446008)(478600001)(66556008)(66476007)(76116006)(64756008)(966005)(4326008)(55016003)(54906003)(83380400001)(6636002)(110136005)(316002)(186003)(26005)(9686003)(6506007);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?E8RVpR+BC0o4hm0PWzhcJqpEzK4Pf/7e5C7dAOUXSMRVsFO3uLWy3hfFNS4Z?=
- =?us-ascii?Q?nv3PZG7OIJh/MCVoJ3kBnuO8EpeBwfWCD8AyzFxb8EA3Ctd7KSv3dkhSe8Iv?=
- =?us-ascii?Q?Wj847D529v5oLXZ3J2qKRYcHX+RtDC81L9wOZBZhoF3nB/3SS1KgZzZuBJC/?=
- =?us-ascii?Q?QXU5FMs59OWJRNNG9EH3TCOoknFEUHcvIwaBiwKip4HeAFXxqov1iY8svJJV?=
- =?us-ascii?Q?PIu8DLp8ewE0CMqJMEGAirKhMC62GWe7JOQqsTLv5kgPfScsw4OPZ5FN2Oq1?=
- =?us-ascii?Q?6gg3Oephlo8pgu5zmjfh3DeG1INd5/eGRNzYUsZcDO40alwR33hG2XFw/UVU?=
- =?us-ascii?Q?ulnL1vZfy2gs9HcBT46Im8lJ5FCvTbIZJrBfnxK4ybOhQZ440ChiNafGMyyy?=
- =?us-ascii?Q?9Bc9wdK1dhhcNYWNqPaagpwZzBdRTRCu7tSGLiVKwBtuRzLEWeUw6OwbSq9E?=
- =?us-ascii?Q?E9Yw/qrzCZMAC7QGTqSTv3sCZMsWzqaRhrkeunAJth6u9xEDNbpE5iXSmvTO?=
- =?us-ascii?Q?pP72UA/nIjI607oxMJOjqNXyq0y2/TA4oxZCGoBdsPAO8K1njpp6qG0QJft8?=
- =?us-ascii?Q?SzWp5YNm2/ozBCb6z4E/sy1Ox5hbQyQoasuOUEOpShJHtpipVmOHrrnN3CP2?=
- =?us-ascii?Q?6SGZ7jKhZmwCYaxeIpA7p4vU6NYxLGjU0LkrU7XvXnbYeATvGRKtOWJDaquk?=
- =?us-ascii?Q?29tWsqQUB5IQk5uljMyimCCtvc6NwxmmMLVDMObXNYsvpfUlMDnlfdWGupD0?=
- =?us-ascii?Q?7VI9IqwYlVP89a1EqBUl37i9+DmeURusm9G6BtsEygt3XzSJURFTyaKsBZza?=
- =?us-ascii?Q?NWt0A4t2/ILyRYJT9f3IziRLX2Y1p9WqD0ybAeDzFP8/f5VkEeG4gBEbnLnQ?=
- =?us-ascii?Q?FzDy3CU6+7v09Pb06ToY/rJ9ShmSpRXV10rkFE8A2Dy7aKD2mx2HMoGfMHeB?=
- =?us-ascii?Q?2cJzBgOsRkLxlX1zH/umNHsCBjmx76p7x+ThZl2nGQCGKDyMa1WDYxM2D+Y2?=
- =?us-ascii?Q?jzQ5SrQ9dhemSDZ2Pv/XfeQQq5ooTYzALLr4eHDuyehNbBOZ8I99yvO7rNQz?=
- =?us-ascii?Q?sTbxqGc4wKypzDdvKC25GrG6XwXGzjE3dZBp33tQBoRcpChwI9lhpzA7vsAc?=
- =?us-ascii?Q?CYlmDBCwHNXh6w4JoSzH4pX53XNMT76mKpm/bKOs3tKrZyqi4bFvpWVPHEOs?=
- =?us-ascii?Q?jRrt9vLxVA9AWt3ENKLRL8XBeFOMjHOZJvOZofvk0OCI4jat0PLdSW1MCHX2?=
- =?us-ascii?Q?k5cBC12TUPcJHiSa6Zx3eQpaUpHAH3VOqHCPs6Ef8GMUDDArcriZQB/0c+Zz?=
- =?us-ascii?Q?B1Mpxagd3xlksCwg+7PgY3O0StfqvtPhNsCMnxP0ZUq8LUiI1xM0c1unYhBW?=
- =?us-ascii?Q?2WA3TfV9q4k53OE6eCYOecXMqBvReBijUMwTY0RmbUtMMk/K1q61wgILvToI?=
- =?us-ascii?Q?obRdXQfHQ386wlT18iZcJKa3ApXcJpgL+5n8WINtxoYH6Z8HzFdXeOCsHE31?=
- =?us-ascii?Q?ZmoTFE3JaqN/Of547SBEe/o4uIOsb7v/JopBkmvfNuuV8sGMVKDI9RqdHonU?=
- =?us-ascii?Q?INS72eGKAcyjDYTyaRSTAdfnoIEU6E8+zen0cdCexjPJ99Ynolva3PN7r+q3?=
- =?us-ascii?Q?tA=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8a029227-dfcc-4ee3-7fc5-08db26c94597
-X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?u3cYjA/zP1UghaNa94PJ08mnK5LHprHaDXxisWRqxnDF7/k3qMZVNvwMvO9M?=
+ =?us-ascii?Q?jwh8x6VDKXoJ5rEOuOB12a0bMhDFKZ+4V4Rq4r4qAVZqgQ8fwF7i3Y6ZxL8k?=
+ =?us-ascii?Q?p69SK1FPUiAGXcOFb7dYY5tNhQR+D/8DX7icPH1hf8P4+pxeHu9pNsat+rET?=
+ =?us-ascii?Q?peXOhB7Fj12aJhZbbXX29QWWawyWesoKYGwuY35eeY7BgOWbpsZNlAkbZxBa?=
+ =?us-ascii?Q?z7IZkCXh5MpIYBf0FnsuzHD7BRCwYsGi+ytE5APdgtMB6GvAiUy8542+1oEj?=
+ =?us-ascii?Q?KQw4OOW2CMm8t0or37uqmUAIIEvN06KQryr6hi6rI7fkwkLD1xmmciizx7Mg?=
+ =?us-ascii?Q?Dr3qeIjqh3ocIniWFO9CXLMKaDn6vV3G7cAnOn+d8cNsMtCkI7G+ERoX8APC?=
+ =?us-ascii?Q?I2jRTScer5TnVdt7gMeM4VrwFW32o0da+LHIlbWxig+M1cCT1qUTsL0UuSZW?=
+ =?us-ascii?Q?RPGnGZlkmqyU0tztFhRRGSUDM7z2xrhyZiJPaqMFsOv4r2iiSDqzC6O0ovzb?=
+ =?us-ascii?Q?xrFr/RwD2ek0ekIojqW9xvJrBKs68M/lFP56nD/n5nKksWPMPDDb019pdn+H?=
+ =?us-ascii?Q?+XjyX7eJMqGKXYo7/CRNgqgQQhqYs01BLUjRXPqXykP7BEIHzgaYj1cHAQBX?=
+ =?us-ascii?Q?XbOMv55h+zz3Dm6xofMomDCoBp8kROCd+Stm+8sgk+MNHYMqsBFi7pBaJSsX?=
+ =?us-ascii?Q?8WG+GUzcR7DwNGXINAF0mflxG5E0cZEjz5tQDN+iQwnyVayd6a3wLtrMLl2K?=
+ =?us-ascii?Q?SWmUEnC/pxkYxUdDiOR3rQ4Qk4p1XuY2+xvnAnVpfD2U2jpFEtCxVmf/oHdu?=
+ =?us-ascii?Q?ArN/6aF7F4SOVL5MeHRvkCYoK1wcLk8QmfW94h9ronucu68dkofm1P+QD4uh?=
+ =?us-ascii?Q?JBE2TXpOWOVAxJoElUyqoWCOTripS4aMTs3dFRJzGsuAhUxM1lQ7gDjHP09h?=
+ =?us-ascii?Q?J5iVA9hGdtLAvABDHG7CSxxCrpsPAJZ+SDQnpMaSAbwdGAY0BTFg7tFWrcEG?=
+ =?us-ascii?Q?8d/RW9Ky+i9uGKMGysCXLEj56rTr3m9pHMlLoUwTFMGGleut9mKluT6HQTji?=
+ =?us-ascii?Q?Exe/b00CJfjAqE4AutqYr79I3XPfLbwq6w/b0epPQQ5Bfrl3ns9iQiMboCCd?=
+ =?us-ascii?Q?5+5G4wxm/TRM1qN1NQKUNNnr6Zy4kLxaZpejMGma2JRYOnnnImFweOb9wrxr?=
+ =?us-ascii?Q?P6IdNetCanINTUlDYPklHf+SJ7kz0WPRjAhbgu46fBc0nWS97DcjXQ6VJ8k7?=
+ =?us-ascii?Q?5vzHJI699GsqtKdSjAHW/dS1LYpzHtokI6u5cujknC+rPmBevljjP3XwC+FZ?=
+ =?us-ascii?Q?1d35quUaQU7N9DYJsndFXAz5NUN/ZUaL7kGLMpv2fj9JEVkGiHxcI8wzxJiJ?=
+ =?us-ascii?Q?YEZYF3T2mFnO3U9M+hk0U+H9MpkILlZ/P0J64DSi3w+NiU/8qaqbE1z1AwY2?=
+ =?us-ascii?Q?x2FtEpLcvM25n8VzcddHmF8PmXWfXsy1mfYCC/eFl4SWZgOZXE8JPGIs3Y3e?=
+ =?us-ascii?Q?o5Ysh8K62fhPUbXtiMJZyqnH6OUaCpPblpcm2yrgcI9Nd0I3lUhiIEZlIU7c?=
+ =?us-ascii?Q?yf2Y03P6pHRi+HcAo6vDaQXHmtiefpnBaFZE6gYL?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Mar 2023 09:23:30.2926 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KB1R4GiY69cPwyeh+j7quyirWoe6hnMslNKWbZkRiGV2FDByAoNO23UNsbVKpmL4YbykQUuREmM/SRe+IO9YBA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6020
+X-MS-Exchange-CrossTenant-AuthSource: SA1PR11MB5873.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c602526e-d862-47f8-45c2-08db26cd6f49
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Mar 2023 09:53:18.0125 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rqgcdleRPQ9cyen6sucOimoQ/hpilUbDxyStXImwJoShu3IWTJ8JaADxBIp0LV6P/aZE/F4mAsOL1Yeu4dulNA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5496
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -145,61 +150,270 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Yan Zhao <yan.y.zhao@intel.com>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "Hao, Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Reviewed-by: Yan Zhao <yan.y.zhao@intel.com>
 
-On Fri, Mar 10, 2023 at 04:22:58PM -0800, Sean Christopherson wrote:
-> Open code gpa_to_gfn() in kvmgt_page_track_write() and drop KVMGT's
-> dependency on kvm_host.h, i.e. include only kvm_page_track.h.  KVMGT
-> assumes "gfn == gpa >> PAGE_SHIFT" all over the place, including a few
-> lines below in the same function with the same gpa, i.e. there's no
-> reason to use KVM's helper for this one case.
-> 
-> No functional change intended.
-> 
-> Signed-off-by: Sean Christopherson <seanjc@google.com>
-> ---
->  drivers/gpu/drm/i915/gvt/gvt.h   | 3 ++-
->  drivers/gpu/drm/i915/gvt/kvmgt.c | 2 +-
->  2 files changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-> index 2d65800d8e93..53a0a42a50db 100644
-> --- a/drivers/gpu/drm/i915/gvt/gvt.h
-> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
-> @@ -34,10 +34,11 @@
->  #define _GVT_H_
->  
->  #include <uapi/linux/pci_regs.h>
-> -#include <linux/kvm_host.h>
->  #include <linux/vfio.h>
->  #include <linux/mdev.h>
->  
-> +#include <asm/kvm_page_track.h>
-> +
->  #include "i915_drv.h"
->  #include "intel_gvt.h"
->  
-> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> index d16aced134b4..798d04481f03 100644
-> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> @@ -1599,7 +1599,7 @@ static void kvmgt_page_track_write(gpa_t gpa, const u8 *val, int len,
->  
->  	mutex_lock(&info->vgpu_lock);
->  
-> -	if (kvmgt_gfn_is_write_protected(info, gpa_to_gfn(gpa)))
-> +	if (kvmgt_gfn_is_write_protected(info, gpa >> PAGE_SHIFT))
->  		intel_vgpu_page_track_handler(info, gpa,
->  						     (void *)val, len);
->  
-> -- 
-> 2.40.0.rc1.284.g88254d51c5-goog
-> 
+> -----Original Message-----
+> From: Liu, Yi L <yi.l.liu@intel.com>
+> Subject: [PATCH v7 00/22] Add vfio_device cdev for iommufd support
+>=20
+> Existing VFIO provides group-centric user APIs for userspace. Userspace
+> opens the /dev/vfio/$group_id first before getting device fd and hence
+> getting access to device. This is not the desired model for iommufd. Per =
+the
+> conclusion of community discussion[1], iommufd provides device-centric
+> kAPIs and requires its consumer (like VFIO) to be device-centric user API=
+s.
+> Such user APIs are used to associate device with iommufd and also the I/O
+> address spaces managed by the iommufd.
+>=20
+> This series first introduces a per device file structure to be prepared f=
+or
+> further enhancement and refactors the kvm-vfio code to be prepared for
+> accepting device file from userspace. Afte this, adds a mechanism for
+> blocking device access before iommufd bind. Then refactors the vfio to be
+> able to handle cdev path (e.g. iommufd binding, no-iommufd, [de]attach
+> ioas).
+> This refactor includes making the device_open exclusive between group and
+> cdev path, only allow single device open in cdev path; vfio-iommufd code =
+is
+> also refactored to support cdev. e.g. split the vfio_iommufd_bind() into =
+two
+> steps. Eventually, adds the cdev support for vfio device and the new ioct=
+ls,
+> then makes group infrastructure optional as it is not needed when vfio
+> device cdev is compiled.
+>=20
+> This series is based on some preparation works done to vfio emulated
+> devices[2] and vfio pci hot reset enhancements[3].
+>=20
+> This series is a prerequisite for iommu nesting for vfio device[4] [5].
+>=20
+> The complete code can be found in below branch, simple tests done to the
+> legacy group path and the cdev path. Draft QEMU branch can be found at[6]
+>=20
+> https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v7
+> (config CONFIG_IOMMUFD=3Dy CONFIG_VFIO_DEVICE_CDEV=3Dy)
+>=20
+> base-commit: d28283a0c30d2f3c82d78fbe27f258671b6dc535
+>=20
+> [1]
+> https://lore.kernel.org/kvm/BN9PR11MB5433B1E4AE5B0480369F97178C189
+> @BN9PR11MB5433.namprd11.prod.outlook.com/
+> [2] https://lore.kernel.org/kvm/20230316121526.5644-1-yi.l.liu@intel.com/
+> [3] https://lore.kernel.org/kvm/20230316124156.12064-1-yi.l.liu@intel.com=
+/
+> [4] https://lore.kernel.org/linux-iommu/20230309080910.607396-1-
+> yi.l.liu@intel.com/
+> [5] https://lore.kernel.org/linux-iommu/20230309082207.612346-1-
+> yi.l.liu@intel.com/
+> [6] https://github.com/yiliu1765/qemu/tree/iommufd_rfcv3 (it is based on
+> Eric's
+>     QEMU iommufd rfcv3
+> (https://lore.kernel.org/kvm/20230131205305.2726330-1-
+> eric.auger@redhat.com/)
+>     plus commits to align with vfio_device_cdev v7)
+>=20
+> Change log:
+>=20
+> v7:
+>  - Split the vfio-pci hot reset changes to be separate patch series (Jaso=
+n,
+> Kevin)
+>  - More polish on no-iommufd support (patch 11 - 13) in cdev path (Kevin)
+>  - iommufd_access_detach() in patch 16 is added by Nic for emulated devic=
+es
+> (Kevin, Jason)
+>=20
+> v6: https://lore.kernel.org/kvm/20230308132903.465159-1-
+> yi.l.liu@intel.com/#t
+>  - Add r-b from Jason on patch 01 - 08 and 13 in v5
+>  - Based on the prerequisite mini-series which makes vfio emulated device=
+s
+>    be prepared to cdev (Jason)
+>  - Add the approach to pass a set of device fds to do hot reset ownership
+>    check, while the zero-length array approach is also kept. (Jason, Kevi=
+n, Alex)
+>  - Drop patch 10 of v5, it is reworked by patch 13 and 17 in v6 (Jason)
+>  - Store vfio_group pointer in vfio_device_file to check if user is using
+>    legacy vfio container (Jason)
+>  - Drop the is_cdev_device flag (introduced in patch 14 of v5) as the gro=
+up
+>    pointer stored in vfio_device_file can cover it.
+>  - Add iommu_group check in the cdev no-iommu path patch 24 (Kevin)
+>  - Add t-b from Terrence, Nicolin and Matthew (thanks for the help, some
+> patches
+>    are new in this version, so I just added t-b to the patches that are a=
+lso
+>    in v5 and no big change, for others would add in this version).
+>=20
+> v5: https://lore.kernel.org/kvm/20230227111135.61728-1-yi.l.liu@intel.com=
+/
+>  - Add r-b from Kevin on patch 08, 13, 14, 15 and 17.
+>  - Rename patch 02 to limit the change for KVM facing kAPIs. The vfio pci
+>    hot reset path only accepts group file until patch 09. (Kevin)
+>  - Update comment around smp_load_acquire(&df->access_granted) (Yan)
+>  - Adopt Jason's suggestion on the vfio pci hot reset path, passing zero-=
+length
+>    fd array to indicate using bound iommufd_ctx as ownership check. (Jaso=
+n,
+> Kevin)
+>  - Direct read df->access_granted value in vfio_device_cdev_close() (Kevi=
+n,
+> Yan, Jason)
+>  - Wrap the iommufd get/put into a helper to refine the error path of
+>    vfio_device_ioctl_bind_iommufd(). (Yan)
+>=20
+> v4: https://lore.kernel.org/kvm/20230221034812.138051-1-yi.l.liu@intel.co=
+m/
+>  - Add r-b from Kevin on patch 09/10
+>  - Add a line in devices/vfio.rst to emphasize user should add group/devi=
+ce to
+>    KVM prior to invoke open_device op which may be called in the
+> VFIO_GROUP_GET_DEVICE_FD
+>    or VFIO_DEVICE_BIND_IOMMUFD ioctl.
+>  - Modify VFIO_GROUP/VFIO_DEVICE_CDEV Kconfig dependency (Alex)
+>  - Select VFIO_GROUP for SPAPR (Jason)
+>  - Check device fully-opened in PCI hotreset path for device fd (Jason)
+>  - Set df->access_granted in the caller of vfio_device_open() since
+>    the caller may fail in other operations, but df->access_granted
+>    does not allow a true to false change. So it should be set only when
+>    the open path is really done successfully. (Yan, Kevin)
+>  - Fix missing iommufd_ctx_put() in the cdev path (Yan)
+>  - Fix an issue found in testing exclusion between group and cdev path.
+>    vfio_device_cdev_close() should check df->access_granted before headin=
+g
+>    to other operations.
+>  - Update vfio.rst for iommufd/cdev
+>=20
+> v3: https://lore.kernel.org/kvm/20230213151348.56451-1-yi.l.liu@intel.com=
+/
+>  - Add r-b from Kevin on patch 03, 06, 07, 08.
+>  - Refine the group and cdev path exclusion. Remove
+> vfio_device:single_open;
+>    add vfio_group::cdev_device_open_cnt to achieve exlucsion between
+> group
+>    path and cdev path (Kevin, Jason)
+>  - Fix a bug in the error handling path (Yan Zhao)
+>  - Address misc remarks from Kevin
+>=20
+> v2: https://lore.kernel.org/kvm/20230206090532.95598-1-yi.l.liu@intel.com=
+/
+>  - Add r-b from Kevin and Eric on patch 01 02 04.
+>  - "Split kvm/vfio: Provide struct kvm_device_ops::release() insted
+> of ::destroy()"
+>    from this series and got applied. (Alex, Kevin, Jason, Mathhew)
+>  - Add kvm_ref_lock to protect vfio_device_file->kvm instead of reusing
+>    dev_set->lock as dead-lock is observed with vfio-ap which would try to
+>    acquire kvm_lock. This is opposite lock order with kvm_device_release(=
+)
+>    which holds kvm_lock first and then hold dev_set->lock. (Kevin)
+>  - Use a separate ioctl for detaching IOAS. (Alex)
+>  - Rename vfio_device_file::single_open to be is_cdev_device (Kevin, Alex=
+)
+>  - Move the vfio device cdev code into device_cdev.c and add a
+> VFIO_DEVICE_CDEV
+>    kconfig for it. (Kevin, Jason)
+>=20
+> v1: https://lore.kernel.org/kvm/20230117134942.101112-1-yi.l.liu@intel.co=
+m/
+>  - Fix the circular refcount between kvm struct and device file reference=
+.
+> (JasonG)
+>  - Address comments from KevinT
+>  - Remained the ioctl for detach, needs to Alex's taste
+>=20
+> (https://lore.kernel.org/kvm/BN9PR11MB5276BE9F4B0613EE859317028CFF9
+> @BN9PR11MB5276.namprd11.prod.outlook.com/)
+>=20
+> rfc: https://lore.kernel.org/kvm/20221219084718.9342-1-yi.l.liu@intel.com=
+/
+>=20
+> Thanks,
+> 	Yi Liu
+>=20
+> Nicolin Chen (1):
+>   iommufd/device: Add iommufd_access_detach() API
+>=20
+> Yi Liu (21):
+>   vfio: Allocate per device file structure
+>   vfio: Refine vfio file kAPIs for KVM
+>   vfio: Remove vfio_file_is_group()
+>   vfio: Accept vfio device file in the KVM facing kAPI
+>   kvm/vfio: Rename kvm_vfio_group to prepare for accepting vfio device
+>     fd
+>   kvm/vfio: Accept vfio device file from userspace
+>   vfio: Pass struct vfio_device_file * to vfio_device_open/close()
+>   vfio: Block device access via device fd until device is opened
+>   vfio: Add cdev_device_open_cnt to vfio_group
+>   vfio: Make vfio_device_open() single open for device cdev path
+>   vfio: Make vfio_device_first_open() to accept NULL iommufd for noiommu
+>   vfio-iommufd: Move noiommu support out of vfio_iommufd_bind()
+>   vfio-iommufd: Split bind/attach into two steps
+>   vfio: Record devid in vfio_device_file
+>   vfio-iommufd: Add detach_ioas support for physical VFIO devices
+>   vfio-iommufd: Add detach_ioas support for emulated VFIO devices
+>   vfio: Add cdev for vfio_device
+>   vfio: Add VFIO_DEVICE_BIND_IOMMUFD
+>   vfio: Add VFIO_DEVICE_AT[DE]TACH_IOMMUFD_PT
+>   vfio: Compile group optionally
+>   docs: vfio: Add vfio device cdev description
+>=20
+>  Documentation/driver-api/vfio.rst             | 133 +++++++-
+>  Documentation/virt/kvm/devices/vfio.rst       |  52 ++-
+>  drivers/gpu/drm/i915/gvt/kvmgt.c              |   1 +
+>  drivers/iommu/iommufd/Kconfig                 |   4 +-
+>  drivers/iommu/iommufd/device.c                |  75 ++++-
+>  drivers/iommu/iommufd/iommufd_private.h       |   2 +
+>  drivers/s390/cio/vfio_ccw_ops.c               |   1 +
+>  drivers/s390/crypto/vfio_ap_ops.c             |   1 +
+>  drivers/vfio/Kconfig                          |  27 +-
+>  drivers/vfio/Makefile                         |   3 +-
+>  drivers/vfio/device_cdev.c                    | 300 ++++++++++++++++++
+>  drivers/vfio/fsl-mc/vfio_fsl_mc.c             |   1 +
+>  drivers/vfio/group.c                          | 154 ++++++---
+>  drivers/vfio/iommufd.c                        | 104 +++---
+>  .../vfio/pci/hisilicon/hisi_acc_vfio_pci.c    |   2 +
+>  drivers/vfio/pci/mlx5/main.c                  |   1 +
+>  drivers/vfio/pci/vfio_pci.c                   |   1 +
+>  drivers/vfio/platform/vfio_amba.c             |   1 +
+>  drivers/vfio/platform/vfio_platform.c         |   1 +
+>  drivers/vfio/vfio.h                           | 237 +++++++++++++-
+>  drivers/vfio/vfio_main.c                      | 227 ++++++++++---
+>  include/linux/iommufd.h                       |   1 +
+>  include/linux/vfio.h                          |  29 +-
+>  include/uapi/linux/kvm.h                      |  16 +-
+>  include/uapi/linux/vfio.h                     |  89 ++++++
+>  samples/vfio-mdev/mbochs.c                    |   1 +
+>  samples/vfio-mdev/mdpy.c                      |   1 +
+>  samples/vfio-mdev/mtty.c                      |   1 +
+>  virt/kvm/vfio.c                               | 141 ++++----
+>  29 files changed, 1361 insertions(+), 246 deletions(-)  create mode 1006=
+44
+> drivers/vfio/device_cdev.c
+>=20
+> --
+> 2.34.1
+
+Tested GVT-g / GVT-d VFIO legacy mode / compat mode / cdev mode, including =
+negative tests. No regression be introduced. =20
+
+Tested-by: Terrence Xu <terrence.xu@intel.com>
