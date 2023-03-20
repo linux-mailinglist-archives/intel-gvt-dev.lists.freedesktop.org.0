@@ -2,106 +2,86 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADF2B6C20DF
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Mar 2023 20:07:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DC8866C24ED
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Mar 2023 23:52:28 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5356410E302;
-	Mon, 20 Mar 2023 19:07:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6AA4610E00F;
+	Mon, 20 Mar 2023 22:52:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2075.outbound.protection.outlook.com [40.107.223.75])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2D9C710E301;
- Mon, 20 Mar 2023 19:07:39 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UFS0hxI4H1pf+i1Zw05LHATZAFSUkzQlnDJrnsAnDmWPL3+Tl8jkytnBbHqogMMTwEUE/U+x+FVkWZMMyo17R6EeI8ow+ybZLZ6wA+I0MTGjy4OT6TqorUCAPPqDN7hBUEITjBPwuhhq8JsjWWkjmFpcbKFhYt0n1CBYs4ghH6ka33vhlT4nlMQabhOz8cDXZuM+nsqs7ISPqMtE7A4HVzNCSKmgdWybHq7zOnOt1ZDPyv2bE97atvAO3+UBv5cvKu5YHCcylKyewr3UG+ySmq6ABK0iPWk/nYz++mZVc4zJopYWHFIjYVdYMZrFEtRHSoNdRTRRoSjqa7RtilBuqg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vtkgITDDVN/UdhLiUfKsgQVzvCsf0t3AvaJh76R8lSk=;
- b=Aum6VLDu03PuP38JSNGstYK5Ni+ZyjWsY9hEPqFLX/pK1g/EINkKI2oAyu6MHKWOmYjnzo1dwCOlroaT0VKqRoV5mOOh7+MW7xQlpWZ9ohr9a+HQoJheHYTU+B8xfi8v7vB+ucf/Sot7JKIGSpjgMJzt/plY9O27XGEFl+ufuB+xNP0xdbmBgyNjOg9JkYwFE3yVHfYlv7N174hwHh9zqof2Q7m9byh71svj+nK9NLsDvPhbzosexStl+I3yoq5cOTDp3CAigv1zVL8W1ky5A2sb69arqEPkUVyosMA8B2L1Xj6lC/4/v10OxzqBs2vHcICPt3tlOAyF0O79CCMzXQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vtkgITDDVN/UdhLiUfKsgQVzvCsf0t3AvaJh76R8lSk=;
- b=Y/Dj3/8/INjMmYO+u/3H3QSx7DwpQ+JlF9bhfmIBErM9urMb2OqsAnlT+sTKKYodxUURq4Q65l4997XG7jm6vxdTf8oIIxiuthq1szjNwDJBru/UBHXlJKMpc4qNzu8cJXSfT0joi4r7x/c9kmNeiZ76npMKAV+5bUGsMvdbeoTqwHsE/TqbQ9oTlorX5c+OhKH+15jXTmMKB+4Moiy+jdI4eIZVBeQR0A52AaGAaLlTbHe1jr3wZEuXsLh/OlPZGSun/VU5zi5me0O9DWa34BRO2cqvhgDR2Qb7bBr5FYY5eYaiZPsOjbXG0arjKIJgZ1nnoicmuRy2lUHmWHyjpg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by MW3PR12MB4489.namprd12.prod.outlook.com (2603:10b6:303:5e::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.37; Mon, 20 Mar
- 2023 19:07:33 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1%3]) with mapi id 15.20.6178.037; Mon, 20 Mar 2023
- 19:07:37 +0000
-Date: Mon, 20 Mar 2023 16:07:35 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH 6/7] vfio: Accpet device file from vfio PCI hot reset path
-Message-ID: <ZBiu9+mVurbW0x5k@nvidia.com>
-References: <20230316124156.12064-1-yi.l.liu@intel.com>
- <20230316124156.12064-7-yi.l.liu@intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230316124156.12064-7-yi.l.liu@intel.com>
-X-ClientProxiedBy: MN2PR15CA0032.namprd15.prod.outlook.com
- (2603:10b6:208:1b4::45) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EDA9110E00F
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 20 Mar 2023 22:52:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1679352744;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7y/3HAZ3wfAvPwVJ/7JyA9v2d7U1+6FVR3qfhwvOp+k=;
+ b=OSMVfl++eEBSRUaWGQunOIz/oYRql71r5HG875UKb2jD/boz8tGfejrVduFtiQg+gSgKuR
+ cPrJB6+AuT4+OxRo8c2SXM9/Q1uQeu+I5IpvBkztAoZ3/ejcWYekO4Viwb0KfSS2dSjviu
+ wAMPz+yR9AMQM1G+LXR+2AjCt8uWBDc=
+Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
+ [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-47-jYduzjNIO5mlsGL6fuMH_A-1; Mon, 20 Mar 2023 18:52:20 -0400
+X-MC-Unique: jYduzjNIO5mlsGL6fuMH_A-1
+Received: by mail-il1-f198.google.com with SMTP id
+ j24-20020a056e02219800b00322f108a4cfso6814165ila.2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 20 Mar 2023 15:52:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1679352740;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7y/3HAZ3wfAvPwVJ/7JyA9v2d7U1+6FVR3qfhwvOp+k=;
+ b=m3htrQbS6uW+9/E00XXpn4MPp2UGqjGl1bXENcVcX47PM3//5cj/zdQU4B5XLUcS3S
+ 75WpxflZcpTe9BqswhnCmddMbU+U/g0v4qdG6JnpYukudBXWXnz6KyCvij6xcZBPhJfP
+ pLS6y4njsIO7niuWC4TK3ObfbBOUJwn4mt7/vOz+XxGx3kcJ3WJt4oZPe29C4x2n6z3p
+ keaSUZZX2PtlP4Es/KOPo/va1WW5YLvMAptXYRLKqDQqiZ4KfbXA0qpDIyyaKHW7SLFK
+ 3RXYNcRn4qq3umcVLnSMKQD+vawa0GEr/Mrpar7W7hMx9QqdUq5oS3fFQly//4K6IABo
+ 7Dug==
+X-Gm-Message-State: AO0yUKXsFitkypFNA/LB8FEzMrqsNOD4iKnEudY+fu2/m7cBCRs9lpo7
+ 3ft93Q9G099Xf+aNnYbnHVa2T9K6nOWJniKQarZRkqUEHSwJVz79uaGb9iVbC7SyCmhljPLzCBS
+ b7WGZx15bbHWdgk1DWJJ+wwywjUNSDuvOIQ==
+X-Received: by 2002:a92:d0c5:0:b0:315:4b70:8376 with SMTP id
+ y5-20020a92d0c5000000b003154b708376mr147250ila.29.1679352740162; 
+ Mon, 20 Mar 2023 15:52:20 -0700 (PDT)
+X-Google-Smtp-Source: AK7set+//D7ynk55WQbxx3kMdwYsMpYqnO34ebRyHnzzvy+2P9QDQRcsbaasFIm+/n0ZluW7NpmwqQ==
+X-Received: by 2002:a92:d0c5:0:b0:315:4b70:8376 with SMTP id
+ y5-20020a92d0c5000000b003154b708376mr147215ila.29.1679352739744; 
+ Mon, 20 Mar 2023 15:52:19 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ h24-20020a056602009800b00743fe29dd56sm3188905iob.4.2023.03.20.15.52.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Mar 2023 15:52:19 -0700 (PDT)
+Date: Mon, 20 Mar 2023 16:52:17 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH v6 12/24] vfio/pci: Allow passing zero-length fd array
+ in VFIO_DEVICE_PCI_HOT_RESET
+Message-ID: <20230320165217.5b1019a4.alex.williamson@redhat.com>
+In-Reply-To: <ZBiUiEC8Xj9sOphr@nvidia.com>
+References: <20230308132903.465159-1-yi.l.liu@intel.com>
+ <20230308132903.465159-13-yi.l.liu@intel.com>
+ <20230315165311.01f32bfe.alex.williamson@redhat.com>
+ <BN9PR11MB5276300FCAAF8BF7B4E03BA48CBF9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20230316124532.30839a94.alex.williamson@redhat.com>
+ <BN9PR11MB5276F7879E428080D2B214D98CBC9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20230316182256.6659bbbd.alex.williamson@redhat.com>
+ <BN9PR11MB5276D5A71E43EA4CDD1C960A8CBD9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20230317091557.196638a6.alex.williamson@redhat.com>
+ <ZBiUiEC8Xj9sOphr@nvidia.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|MW3PR12MB4489:EE_
-X-MS-Office365-Filtering-Correlation-Id: 046aacf1-5586-4b19-b1e2-08db29765e73
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: FvvEIcPqVr0fxXnRylbd8uu6OSQwMAzp5HLca9jzjs54guwS28I55Oe7/pzo8j+Hf5CRNrjFnq3JqUbHSFrShc+u3mgfaB04r5bjxf9JOb8DAUjJNojFbTVKVQeBZplLaaU/0pEXu32MFlM6jD5WRRlZ2lp2ds54PuelfuYT3Hd3JZIGF5HXdymPhvyqvGEUrsgtNzHqmYB6c79tSaIqF3yi+LzdgwbFV3noIi8bG9ioZ9dwOxcH+f1ORb8lRrVw6tvc6p87QCUeoEu7HCscatTMCkgpmdchK6/72oqufh8lYf8wU+1PdMTlJsHo22N5yh06AmnXjEdTtQ3XdE5+cI9m0s1jI1yYAl+0RHNi2lWG6hIJfFE3SgKcVqju9rnN6aKpnAVChdZP4PN2drY/giCBzrp8o/leknoEhh8G3Xp/vXrcIV9zNs5nQwxjZGgpi1RzKKR10mkFJgnKT1y3zqdd2M4U+ug5Ul/Dkez2dNQC77qQU0zQRe9CKi+JtTGrlUU9y/sn+vWrzHV7CdqwMXACoNtRfLqAhzqYsClXBqlt6V9hLNnzB0XyMbtGgoy7YJkc69JOP1RqUdvfj5eNx7ktxJ6D995irwW8dHsb1I4KyHvW5LyfHUhx0xYshxYNUyloALWDLeSR2LSH56D7QwJBCaWdSAmQXCtREQAcjUiNXoDzj+B8WQYpj5ThCR8H
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(396003)(376002)(346002)(136003)(366004)(451199018)(38100700002)(86362001)(4744005)(316002)(8676002)(478600001)(66946007)(66476007)(66556008)(36756003)(6916009)(41300700001)(8936002)(4326008)(7416002)(5660300002)(2906002)(83380400001)(2616005)(6506007)(26005)(6512007)(186003)(6486002)(67856001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?VE6XnuyqOHXHnIVAYCigLYncuQ6VwpNicRffB005ETGhBkaxAhACOSzfKwjX?=
- =?us-ascii?Q?cZi0qf5ToFH3xiKGOTELj5JddCxEnUbQLe4udSZEvYB3BiCP6POtBLmekGug?=
- =?us-ascii?Q?fm37/a4ylS3GpFZOcMwSNa/sPrWjPSMMxwIz2CdMRFW2/8nllttwoEvNyV/I?=
- =?us-ascii?Q?5b8bY5D+2yuWYwToil8fJKUO68HXEX+UeglyE3+EKUnH1Q+z8ZlAOV2wreio?=
- =?us-ascii?Q?1RXav3xgaxZahdFEKf7w3mrkmriqFUqYV58xcCsqqSPDI58KhJwxB0F+qAcG?=
- =?us-ascii?Q?dL697GqKaXI5Lv/dOgx8BqulRCORMqfNtbef3qeXK9GkSyrDXAPwBqJypntj?=
- =?us-ascii?Q?MBV9KXeR+VSZpian88sBWICDH4dqDNMSerjuW5/pUGzCsebIv59oOuMeKbvI?=
- =?us-ascii?Q?3xDgYU/mjuS4QdcJYZjCLOLVJcpLlHf5ZXJmjWhaRWL75gYqY22RFHG6dnWH?=
- =?us-ascii?Q?iSGZUXI1/6N4Ww3FDOBoKiOMM4YN1FuYVmBgUprZ25uuoEDTXjFRXgIl6DAt?=
- =?us-ascii?Q?j/r3OnAT5INajMgcn4nlZSmKR7xYH8Su0pJClFg9rO7/OYaA7hjdwemsMi5X?=
- =?us-ascii?Q?MKOkGNEwfhj33yVdY7KKwmtxmWhARVyVxt8W2FSu3ftcvCPv1vUOtpZGAFgC?=
- =?us-ascii?Q?bDRIIi/RM2oC0fn2WlIjvjiq96RnBPBKJm5yPK6QFqd2cxpAhETrpjHhv9mF?=
- =?us-ascii?Q?e3nysIMtMfA4M4Mn2QsQ5tC476OBcZP+s/7sCVi/EBeZva1zdKbS4Uv6glEi?=
- =?us-ascii?Q?hliCZy43r/dFYLydLtNty2qWpM5CIEAp7HJQ0H5WnrIkmlNUXazRY5IBlkXi?=
- =?us-ascii?Q?aq71vcREJOq4qyWMzcZaMv79w3tOsMBSwZpn41JB8t2RyoLKiGK9sFFWUcYg?=
- =?us-ascii?Q?wBw0yHo6uOor2xd233p4EXwFEt+HmuGVq+eJFn6unCpSmDNon8I3aJxb2GoL?=
- =?us-ascii?Q?HpN2rvjtkT2xNCjc2sDWYHebrhOBl4em/g4MYm4j1+zaCFLNgJkYfeaghVP9?=
- =?us-ascii?Q?fI3im96BbluWiuyYdSh1DB6vLSBarRecm70NLryY4IYHsuCvnlcjILpWXLqX?=
- =?us-ascii?Q?qB9y9elCXFI6YCWItZgnT3SGkfpv9Vfs/kWNZRYNKqg9W92/2iCcHvWpZwYT?=
- =?us-ascii?Q?GXz7x6CLLWY8hPTB92hsu5qxO3RAeJzg9WfJTV7UZS0nmQ6C0tJBEadJGLl7?=
- =?us-ascii?Q?ZYL4Daqsvk6dBrjqK5ZsRByZiLUvo/d5XgzNPmuneFO0AHkT9EtNYrYM0NEb?=
- =?us-ascii?Q?EXEM7NlcY3MQC+YGYETqeUImIK1BuMLCaqC0ReOeuSiT+5E9+tkuMMmE/QcX?=
- =?us-ascii?Q?QKNrU8akEWwahSB7aMG/y6zSYRIAatCkT6hxKYbbRsyxUBl0Dn1KLklwjvhk?=
- =?us-ascii?Q?qNQJ0JJlo91XSJSwyzFLrNkcCu/R4RAFiPbpOV477jP3CwhBdME0YT0kPs9T?=
- =?us-ascii?Q?0lYDbNr4oVKRw2+Ntn30tA93wnESkHdG/cNGdrdtR84xong2E232wsc94848?=
- =?us-ascii?Q?FwC+zkAZ89HCcCdn0OxKXFs4RGt+/jEps41GU/D+inh78SIGtnfTwQFt5s49?=
- =?us-ascii?Q?NSk2jn5XkMQCWPEja511Ql/B6WkP6ZUWhuuzKP5B?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 046aacf1-5586-4b19-b1e2-08db29765e73
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Mar 2023 19:07:37.2920 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: lKkmOdu5TfD6nrR7yLbqvQUKQydF7LtrKSwbF29c3Gku6qcCVAzisVxvjDXx8+/N
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4489
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,46 +94,86 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
- linux-s390@vger.kernel.org, kvm@vger.kernel.org, lulu@redhat.com,
- joro@8bytes.org, nicolinc@nvidia.com, kevin.tian@intel.com,
- yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
- alex.williamson@redhat.com, intel-gvt-dev@lists.freedesktop.org,
- yi.y.sun@linux.intel.com, cohuck@redhat.com,
- shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- robin.murphy@arm.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao, 
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, Mar 16, 2023 at 05:41:55AM -0700, Yi Liu wrote:
-> This extends both vfio_file_is_valid() and vfio_file_has_dev() to accept
-> device file from the vfio PCI hot reset.
+On Mon, 20 Mar 2023 14:14:48 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
+
+> On Fri, Mar 17, 2023 at 09:15:57AM -0600, Alex Williamson wrote:
+> > > If that is the intended usage then I don't see why this proposal will
+> > > promote userspace to ignore the _INFO ioctl. It should be always
+> > > queried no matter how the reset ioctl itself is designed. The motivation
+> > > of calling _INFO is not from the reset ioctl asking for an array of fds.  
+> > 
+> > The VFIO_DEVICE_PCI_HOT_RESET ioctl requires a set of group (or cdev)
+> > fds that encompass the set of affected devices reported by the
+> > VFIO_DEVICE_GET_PCI_HOT_RESET_INFO ioctl, so I don't agree with the
+> > last sentence above.  
 > 
-> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> ---
->  drivers/vfio/vfio_main.c | 23 +++++++++++++++++++----
->  1 file changed, 19 insertions(+), 4 deletions(-)
+> There are two things going on - VFIO_DEVICE_PCI_HOT_RESET requires to
+> prove security that the userspace is not attempting to reset something
+> that it does not have ownership over. Eg a reset group that spans
+> multiple iommu groups.
 > 
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index fe7446805afd..ebbb6b91a498 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -1154,13 +1154,23 @@ const struct file_operations vfio_device_fops = {
->  	.mmap		= vfio_device_fops_mmap,
->  };
->  
-> +static struct vfio_device *vfio_device_from_file(struct file *file)
-> +{
-> +	struct vfio_device *device = file->private_data;
+> The second is for userspace to discover the reset group so it can
+> understand what is happening.
+> 
+> IMHO it is perfectly fine for each API to be only concerned with its
+> own purpose.
+> 
+> VFIO_DEVICE_PCI_HOT_RESET needs to check security, which the
+> iommufd_ctx check does just fine
+> 
+> VFIO_DEVICE_GET_PCI_HOT_RESET_INFO needs to convey the reset group
+> span so userspace can do something with this.
+> 
+> I think confusing security and scope and "acknowledgment" is not a
+> good idea.
+> 
+> The APIs are well defined and userspace can always use them wrong. It
+> doesn't need to call RESET_INFO even today, it can just trivially pass
+> every group FD it owns to meet the security check.
 
-Isn't this a df now?
+That's not actually true, in order to avoid arbitrarily large buffers
+from the user, the ioctl won't accept an array greater than the number
+of devices affected by the reset.
 
-> +	if (file->f_op != &vfio_device_fops)
-> +		return NULL;
-> +	return device;
-> +}
+> It is much simpler if VFIO_DEVICE_PCI_HOT_RESET can pass the security
+> check without code marshalling fds, which is why we went this
+> direction.
 
-The device has to be bound to be a security proof.
+I agree that nullifying the arg makes the ioctl easier to use, but my
+hesitation is whether it makes it more difficult to use correctly,
+which includes resetting devices unexpectedly.
 
-Jason
+We're talking about something that's a relatively rare event, so I
+don't see that time overhead is a factor, nor has the complexity
+overhead in the QEMU implementation ever been raised as an issue
+previously.
+
+We can always blame the developer for using an interface incorrectly,
+but if we make it easier to use incorrectly in order to optimize
+something that doesn't need to be optimized, does that make it a good
+choice for the uAPI?  Thanks,
+
+Alex
+
