@@ -1,74 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 354476C3C5F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Mar 2023 22:01:23 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D7696C3DA5
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Mar 2023 23:20:45 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0B8AA10E845;
-	Tue, 21 Mar 2023 21:01:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 64DDA10E2A2;
+	Tue, 21 Mar 2023 22:20:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D86D110E832
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Mar 2023 21:01:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1679432478;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=I1KA6ZkpV3D+AmID9NMMP4J1e8acMfYHtrAK/R3ZyzU=;
- b=XtvB9CUfRCZR3Rse13JNe1bgq33/EgX7z/Rai8RrHHfDsujIpHtAqU22PfhOCFATG5POGi
- bkfgba72u3MbIc75BqLbQ3Z4jSC1TnT7dYaMo8SnZNmERk6mqtorVj3oiONqBvcpEjapO2
- lYLgAi6Gp2uYtomJ6qeJHJXtQ86X9iA=
-Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
- [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-605-lZ6MvZw8OsKu425THmvtBg-1; Tue, 21 Mar 2023 17:01:15 -0400
-X-MC-Unique: lZ6MvZw8OsKu425THmvtBg-1
-Received: by mail-il1-f198.google.com with SMTP id
- n17-20020a056e02141100b003259a56715bso3041407ilo.15
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Mar 2023 14:01:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679432475;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=I1KA6ZkpV3D+AmID9NMMP4J1e8acMfYHtrAK/R3ZyzU=;
- b=I43Uf0/luj9pJYwjaEMw97D0ywYqO5bsoQnBM8uUNw/l/7+3yGzawT73K33JheKI/Q
- 9lyezzDywGHSKQWdbrD2NP7+kLYnv+LRnSZ5r5BSdRO+Tm83KyTCeG5MVK/oE8MCzp3q
- v5BGSp6UBnZig1hXmzhoWfK4Yraw1UkjvT1coG+e4tpivQxmdiG0HaAo6idG7yLR73rM
- 36vBYrlI5Z2Xfr+ExdLXdaYh42RaxcGKJYuO4ib5Y3s+YfI2ioo4pIHrfoslLbqyZTJ5
- K/f5+1CAflIlg5la6uGfHxAUF9uaAEw3KWdffhDWodQgMJAgcVFsYxYfRvNtiCMYFngA
- 301g==
-X-Gm-Message-State: AO0yUKWiUwMpWY9RlJqeBwGz0fW5FVWwWJObvB1fjtnwS8Yhb98A4kuc
- wxbiS5pP/AiZtWc/xXJspw5a25cV3tk8hgzc7fiG0yjxM0xAW7yzl4KN/zf9cquMWIDg7KlI6tZ
- /RqYBRT33S+moKCakuxRMCFXFy2LW2baaIQ==
-X-Received: by 2002:a92:cf44:0:b0:325:bab7:cb17 with SMTP id
- c4-20020a92cf44000000b00325bab7cb17mr267823ilr.24.1679432474776; 
- Tue, 21 Mar 2023 14:01:14 -0700 (PDT)
-X-Google-Smtp-Source: AK7set/F7exqYQvOzCCmHLPB4uNfmmnepmhiUG7EPAgpEmj8wd8Iv128TRMF1l0+kK1w3FickMDApA==
-X-Received: by 2002:a92:cf44:0:b0:325:bab7:cb17 with SMTP id
- c4-20020a92cf44000000b00325bab7cb17mr267805ilr.24.1679432474496; 
- Tue, 21 Mar 2023 14:01:14 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- q5-20020a056e02096500b003179ae2fb8fsm3892160ilt.2.2023.03.21.14.01.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Mar 2023 14:01:13 -0700 (PDT)
-Date: Tue, 21 Mar 2023 15:01:12 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v6 12/24] vfio/pci: Allow passing zero-length fd array
- in VFIO_DEVICE_PCI_HOT_RESET
-Message-ID: <20230321150112.1c482380.alex.williamson@redhat.com>
-In-Reply-To: <ZBoYgNq60eDpV9Un@nvidia.com>
-References: <BN9PR11MB5276300FCAAF8BF7B4E03BA48CBF9@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20230316124532.30839a94.alex.williamson@redhat.com>
- <BN9PR11MB5276F7879E428080D2B214D98CBC9@BN9PR11MB5276.namprd11.prod.outlook.com>
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2059.outbound.protection.outlook.com [40.107.220.59])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7679B10E2A2;
+ Tue, 21 Mar 2023 22:20:41 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=oMu+be4E2cezzlW3xQG/kuHFg8aONlYtv/LbZYtXKCd4+/90pu0wOnRcsNzJcXxARU42F7u68kf/cJ+l069dWtblSSCwoFSdcmwX7B3anCefP5GWeK5AfrgcKI26D8g3Oe4HTo3l6cfkvHQL8ysdQ2BHiJqkBE4Ywtxnqlttyt+saEgIcpDn9PQyMwW7CIlTbBrphI1RoZ28RFTF6nmC8QLJfUF86SG86RlWzQgrANLxyZUPf0AKnGr6FntJCuIRQz1OCcFyLefaAeRHHq7nmz3nZJWPVc56TVqQ95yGhHv62TtBAMllsJKABhYoddZOnMapkz7j4/BxBbb8BNdkdw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Ky09bLiIGYgg+uU8sChMH79b26Y8kq8au11+px232O0=;
+ b=Hsrzb1+3CC/eSD4Dndv0Gi4/cq1g7KI8cEeAPuQwDv2gWz31i0lbmhgkmFnt4EXJHuLjQRSPtwQKekN8fwIx6aXXSsEcgiLfgSqJhhlCnMhO9KmifkDkkT0gzeiICWIPU0r2Cl6kR/TxdBll347sgOa3Q9eN467tDHVw+3kerSLdBeoqztiJJHaPpRDkC+2nQdOODJj4X0wZ5ygr7Yp3gCMRJ4g+TfombuwPM8NwBzPM28BSI/keRAzyj3wdOKkxgTtukjpxyIfvtJZXr8AWdKABoDtK0CgvewCwKTmPjI1GMkjMi0mGPoUMjD+QUaeDOyPNO2NWhPJnRA9jjcyKKg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ky09bLiIGYgg+uU8sChMH79b26Y8kq8au11+px232O0=;
+ b=B45kNG4jPabcOmssHJq1+HjJ0X5drJk5xqD5J1p57+WTo9oTmUisMqaUqrPQ00RMSlNxt/ADiaGrKT7Jx5wFj0Y5AGaA3KvIfp77h2gb9ZrTKL2/s6ygUg56BzUxSFy6PUEZzN/2WivNjk1/8ejH1KhMpfvAd4/fybwIktjXKo15B5nX9FKrlrzvKzIaDf0KyDCq3oGunPGOEpeR1t1bVhggKDXce41KVdV68PodX/1MBCj2q0DtXt0q77ZLhY+DAByHSeGkuGCKyfva0XkNYSZhREZ+oyg7mX4Rn1cnWecA0q4AqIc0FSKKzH1U9EHWD6hYDzJ1oga+eFRLFpuQRw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by IA1PR12MB6329.namprd12.prod.outlook.com (2603:10b6:208:3e5::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.37; Tue, 21 Mar
+ 2023 22:20:38 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::ef6d:fdf6:352f:efd1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::ef6d:fdf6:352f:efd1%3]) with mapi id 15.20.6178.037; Tue, 21 Mar 2023
+ 22:20:38 +0000
+Date: Tue, 21 Mar 2023 19:20:37 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [PATCH v6 12/24] vfio/pci: Allow passing zero-length fd array in
+ VFIO_DEVICE_PCI_HOT_RESET
+Message-ID: <ZBottXxBlOsXmnmX@nvidia.com>
+References: <BN9PR11MB5276F7879E428080D2B214D98CBC9@BN9PR11MB5276.namprd11.prod.outlook.com>
  <20230316182256.6659bbbd.alex.williamson@redhat.com>
  <BN9PR11MB5276D5A71E43EA4CDD1C960A8CBD9@BN9PR11MB5276.namprd11.prod.outlook.com>
  <20230317091557.196638a6.alex.williamson@redhat.com>
@@ -77,12 +54,63 @@ References: <BN9PR11MB5276300FCAAF8BF7B4E03BA48CBF9@BN9PR11MB5276.namprd11.prod.
  <ZBjum1wQ1L2AIfhB@nvidia.com>
  <20230321143122.632f7e63.alex.williamson@redhat.com>
  <ZBoYgNq60eDpV9Un@nvidia.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+ <20230321150112.1c482380.alex.williamson@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230321150112.1c482380.alex.williamson@redhat.com>
+X-ClientProxiedBy: BL1PR13CA0012.namprd13.prod.outlook.com
+ (2603:10b6:208:256::17) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|IA1PR12MB6329:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2aaa27ef-af1b-4116-bcca-08db2a5a7fe8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: s1pZlzhcj9hlUqUbP6YwA5FJ/lYIyXlDQB7lNaqKokfikYW/vX4w5yD1RsnXCYLfNLNKcrSPF2GdB0bwHcyAPC/H6H/TItWQFYowM8YBHSyLM5easlvawRNq62k7x6v+PzYb/nIM5sXjUoCpklKBdHiiXrpJJyzBWRCG3Y6z0ARZxlvdJ4kSJo1yN3qlxsVleEAFYJF63wneWkua9knFGpJNbsqCrB4xxtSYb4WrsjPdtaskVSlrTfX0tDe9v8jFHfHCb5JOn135uLal6rKrLckqEWvYwxat8gNQzsqeC9IkHIAJQuTbmro1QZ7IsTJijIXmu8i4sRq5fQ7pPPxC/YVOgd/qFrGiw5CBjY/VU3x1URD4m3TdM+kojET8B1z8KmA126sv0UIXnM9/n/7NoATpczvm9Pzn98bPho8eMXwMwrQvgav3bzFb+lHUn5rpAR/YYk42MeDpb3M1yasfBAM/9OPgf95vX/B353W0+s7h7WKddXSJjycxw/p14SoVOo4GsweomNGFlEKklB5oK+T7BsQKQoYaTBh178kw6IDiK3cMO579yj3BEcQjpLeRFK3gTXtI9ykCRzwYFS7Nw676JCI4egVLJHRJCz/wUmK8h3OppBVHKlSgjyWp06C9MXQ61G3X+Koz52HO61LO5A==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230025)(4636009)(366004)(39860400002)(346002)(396003)(376002)(136003)(451199018)(8936002)(4744005)(41300700001)(7416002)(5660300002)(36756003)(86362001)(4326008)(38100700002)(2906002)(54906003)(6506007)(83380400001)(6512007)(478600001)(186003)(26005)(6486002)(8676002)(66476007)(66556008)(6916009)(66946007)(2616005)(316002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?BYZnLJVUNtHKNs76ZMjzuI+Cs5fE8VhJsb6mDoY5avNOtYbx+DiMYarW2OFO?=
+ =?us-ascii?Q?O05J15+z7hTmqJKMQ7uBKViOW7xvh5oVDUI26w3JQvcoRCOnlWBKb3MCToiD?=
+ =?us-ascii?Q?uSuqEx8U9whifOg+Lt0CigJCJDYYSY5vdQNlUmYADTFCKiWy6LnepzLnRNXv?=
+ =?us-ascii?Q?v3EpMq0/syzG3H6DcLL9w0+nRyqrfK4Fy6uMuJEB/3Rd/JsDiElyaT6boYXn?=
+ =?us-ascii?Q?cZELdrlkMgIKDPfxhCER+9i8WmQOT2XTd41wzEotqbqY8VDOKAFyInO5MIM3?=
+ =?us-ascii?Q?B4HT/4xWbvWABZ1sJMZw3jmPY+d47d6yJvz99o1PpQHMphVqbc2aIlRbF65G?=
+ =?us-ascii?Q?TiZlb5R2zRsoHKeCSgWmMq1d9bDTENzlL8d/jjJT6+FqhfWjDYojq5nYPt2C?=
+ =?us-ascii?Q?v1/kLKgm4vN1nLmCkgsI0ifRj4YWPGK8Dhor8A8N0LhDjsuWjXaLRGPPt3Fv?=
+ =?us-ascii?Q?rvokAnRQ7hgQ4hF70qcgS6UklEofvQ1NDgv165up51CUzBxEhDPKAXT5znLI?=
+ =?us-ascii?Q?O6tAAmf2buUdpI51iJLxCB6j4l8yvSPYBLkx4rZWwLAr5nZk6av50rohrlaV?=
+ =?us-ascii?Q?+oNCpcaFIH6lg33G9K89NoTH1g/VSCpLKpiPfsFc9dOfvasy9w5mK0YqQcsL?=
+ =?us-ascii?Q?b6CbZ41rHc7TibkbzQajYPJGOddP05Pp2hVqNSGsKbYHCzgGxyeCbuU7nYOO?=
+ =?us-ascii?Q?LwOKs8UkyExiylK/+gGFI/9El24gUrEIsHLSKcdmQeumX0hEGDc22I0vjqid?=
+ =?us-ascii?Q?qEvZp/CO9MbXKcAm80IO9Ii6LJdCK250ailDTx0qbEL00oQ1Ru4+U5pDozXe?=
+ =?us-ascii?Q?0F+YXxkdwtkx8NmmuTH3Um6SFJl3evoHzNPzEQofeEPUEaxBMyj/jf9h8Utn?=
+ =?us-ascii?Q?KLcqmHlFlzRs/mu7vNvi/pk0/Ggmgmb2DLQ/yyptNchTICa5mbfUjLfTe8G/?=
+ =?us-ascii?Q?7fgbphtkWGswWGQF5Pw7+KYSIAwrXOZRuptY1BTNKtkDuud0EllgXWI3b3Lx?=
+ =?us-ascii?Q?xtNMYenkgFhl2GPzrb+LWF4U31mnRdLRFMjYgfpd5EzdCpRyRvTsqtqFVJkP?=
+ =?us-ascii?Q?VPx99luIo23w1bR96OSml78gz0tObmkuT+Cxshhslo5mIGmFUKwaRyXQxMEy?=
+ =?us-ascii?Q?3xcOPXvLZvUvrYobf5pOSjbiQX47VCEn7wpGbnRQxE8/PICTdeBdipbkh2S2?=
+ =?us-ascii?Q?GiHCa/dv+SXZThgrWrIq0ZoTmVmSXQjX6HJyLQ6UwIcU2jvnqucbcgAoWkqd?=
+ =?us-ascii?Q?2GbMVKs9QiBe7EKg/okthcWkNRXEsW9RU34KBaAphtesw39EuJ8wIpjpL0uZ?=
+ =?us-ascii?Q?u53BYIF3po1QSpM+MeSSTBpfRGbF8kSanrHZJiD8Fluv0woaBvKdUwrS0kff?=
+ =?us-ascii?Q?YgV36hlSlWYb/1HV3aRBeD8Xh/pqRgeNVGvnYP4TjG8ALq0Df3Qa3E5Kayty?=
+ =?us-ascii?Q?88ngsj/s+NMPddeCjGE941/PwpnPNxn6B8/7vgzpkibQe1inh0gll51zpm++?=
+ =?us-ascii?Q?tuuybDmAm9f9BcfGGAsSd4O0Krma9Bs3F12JhjYDABo/EVeT4jTyicBvE7cV?=
+ =?us-ascii?Q?ZtgjIzyRSydZh8DDb+S3q0tVoC9zlBAhimKr9xZa?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2aaa27ef-af1b-4116-bcca-08db2a5a7fe8
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Mar 2023 22:20:38.6314 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: oUmZBIXYkp8x/EcnGNI58L6H2TkHCHxfOOeBo9DVeuqHnzQPM+VRNbsaTarAOtTo
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6329
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,7 +124,7 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao, 
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
  Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
  Terrence" <terrence.xu@intel.com>,
  "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
@@ -116,56 +144,24 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 21 Mar 2023 17:50:08 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
+On Tue, Mar 21, 2023 at 03:01:12PM -0600, Alex Williamson wrote:
 
-> On Tue, Mar 21, 2023 at 02:31:22PM -0600, Alex Williamson wrote:
+> > Though it would be nice if qemu didn't need two implementations so Yi
+> > I'd rather see a new info in this series as well and qemu can just
+> > consistently use dev_id and never bdf in iommufd mode.
 > 
-> > This just seems like nit-picking that the API could have accomplished
-> > this more concisely.  Probably that's true, but I think you've
-> > identified a gap above that amplifies the issue.  If the user cannot
-> > map BDFs to cdevs because the cdevs are passed as open fds to the user
-> > driver, the _INFO results become meaningless and by removing the fds
-> > array, that becomes the obvious choice that a user presented with this
-> > dilemma would take.  We're skipping past easier to misuse, difficult to
-> > use correctly, and circling around no obvious way to use correctly.  
-> 
-> No - this just isn't finished yet is all it means :(
-> 
-> I just noticed it just now, presumably Eric would have discovered this
-> when he tried to implement the FD pass and we would have made a new
-> _INFO at that point (or more ugly, have libvirt pass the BDF along
-> with the FD).
-> 
-> > Unfortunately the _INFO ioctl does presume that userspace knows the BDF
-> > to device mappings today, so if we are attempting to pre-enable a case
-> > with cdev support where that is not the case, then there must be
-> > something done with the _INFO ioctl to provide scope.  
-> 
-> Yes, something is required with _INFO before libvirt can use a FD
-> pass. I'm thinking of a new _INFO query that returns the iommufd
-> dev_ids for the reset group. Then qemu can match the dev_ids back to
-> cdev FDs and thus vPCI devices and do what it needs to do.
-> 
-> But for the current qemu setup it will open cdev directly and it will
-> know the BDF so it can still use the current _INFO.
-> 
-> Though it would be nice if qemu didn't need two implementations so Yi
-> I'd rather see a new info in this series as well and qemu can just
-> consistently use dev_id and never bdf in iommufd mode.
+> We also need to consider how libvirt determines if QEMU has the kernel
+> support it needs to pass file descriptors.  It'd be a lot cleaner if
+> this aligned with the introduction of vfio cdevs.
 
-We also need to consider how libvirt determines if QEMU has the kernel
-support it needs to pass file descriptors.  It'd be a lot cleaner if
-this aligned with the introduction of vfio cdevs.
- 
-> Anyhow, I don't see the two topics as really related, the intention is
-> not to discourage people from calling _INFO, it just to make the
-> security proof simpler and more logical.
+Yes, that would be much better if it was one package.
 
-At a minimum, we need a new _INFO ioctl to get back to the point where
-it's only a discussion of whether we're checking the user on scope.  We
-can't remove the array while doing so opens up an obviously incorrect
-solution to an impossible to use API.  Thanks,
+But this is starting to grow and we have so many threads that need to
+progress blocked on this cdev enablement :(
 
-Alex
+Could we go forward with the cdev main patches and kconfig it to
+experimental or something while the rest of the parts are completed
+and tested through qemu? ie move the vfio-pci reset enablment to after
+the cdev patches?
 
+Jason
