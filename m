@@ -2,115 +2,87 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E5266C3772
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Mar 2023 17:54:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 226CF6C3BD1
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Mar 2023 21:31:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 632DC10E0E9;
-	Tue, 21 Mar 2023 16:54:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC70210E2AD;
+	Tue, 21 Mar 2023 20:31:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on20626.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:fe5a::626])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AF69210E810;
- Tue, 21 Mar 2023 16:54:48 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=efzzH1zH/z3J9aZIYPZHISOihCZy33noTOyYFQVcD16IxL0I2KfS8x7eE6Tdj64aQOrz0ehMxxCfnms+s+Hg2/LrMuAmW+VYlzw0rUmesbChRSjaMN1Fv4DY0zj2nzA81upLSNZNQ+JA+f3jiLNu6BDot/1pLSZPaDs3/HyamvEJ6YGeSWWNBJQqV4cMhskGmgHMtktebniM7bUA5LKYwcuDkkW+10VPt9xzOuCjMEyPtKrNeYmwxkdEr/E56sCkHiVVIf+4xXTiHVdMgI2ba0rshrB2YO3JCD6wr4nOqHmEx/VmG2ed3J97BOxwAI0G4iQ5zz9A9QFGy2n8vLlXCw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=iAhg3amIvrYTxU5QlQ04IEmjo8vKGh5GOM1JBxcJuo0=;
- b=KwX6WHxkkix3rj0RjjJQ9IdhhzE73z5VIFqjMU8sy5yx9m5IcqVjWT9xt+SaTl8pvKC2TFXFNah+IH+0XcH/uoRHvhxKmvEWicpJ3FxNbTVjtMaR394R0n30hzOQT4p3VcMqPbBF8TaT4XlcrjDKJafg8TaCTu+CYy5DjFAz+b1dUvpQ1FSLr0CRo2H0fDsYoTsUklyunIpkIsZUYiAottOjmCqoXM3VUsB5lMQNvNrkxHuTV7m/VxVpjdLWAKmaYuXi9cn99lKaAF0DEWAapxORF/mJ56psXq5q4TZCBGb3tQL3T/O7my8nj+APeE5FHefdT6RhU59K9bsjO1Ftgg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iAhg3amIvrYTxU5QlQ04IEmjo8vKGh5GOM1JBxcJuo0=;
- b=pVT+lqDiEJWyrjetuqASBOZazS5075JotOzDdSqu3HKm9cDUzYICUkdtoY9R8mTVatdbH2a80ysnwl6/n7MIQFngNYcbtEcPAxjYVhiRxHHO/UzUCegzskgpyv1eb+K5KBaXwatWTt76hQ245Wi7V7Lzbhcs5vxawehpLzc9B3Q8Yu90FKIJb2zQDl8fnBOUugcvCcWaKzEDEv9wP+J19pKVjpXAEXrwn8qk99dxCLBVTCi8qC9y8bIUodebWkMMH6cQ+9wapeSJGjB2a5c+tr2T4T2v8FYeTsCUMLBfcucWFt61myf1EpQ7BKZJTUIIdplBflWZBa4ozDqsXv/T2A==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by CY5PR12MB6059.namprd12.prod.outlook.com (2603:10b6:930:2c::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.37; Tue, 21 Mar
- 2023 16:54:46 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1%3]) with mapi id 15.20.6178.037; Tue, 21 Mar 2023
- 16:54:46 +0000
-Date: Tue, 21 Mar 2023 13:54:45 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v6 21/24] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
-Message-ID: <ZBnhVdmts1BlAiH1@nvidia.com>
-References: <ZBhpNyrBr9nm5Ae+@nvidia.com>
- <9875e60c-68a7-b360-9d52-66d4915808a0@intel.com>
- <ZBiU8KoSmiM+JkAw@nvidia.com>
- <BN9PR11MB527605E6609222431DFB8AA58C819@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZBmcbMuE4lyDIpT6@nvidia.com>
- <DS0PR11MB7529569D40415AA283E1EA55C3819@DS0PR11MB7529.namprd11.prod.outlook.com>
- <ZBnB/mOIvzYEPdsj@nvidia.com>
- <DS0PR11MB752959B246705258EEC4109AC3819@DS0PR11MB7529.namprd11.prod.outlook.com>
- <ZBnF+6mestV2tCiQ@nvidia.com>
- <DS0PR11MB75292A7271BFF456B275B4DAC3819@DS0PR11MB7529.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <DS0PR11MB75292A7271BFF456B275B4DAC3819@DS0PR11MB7529.namprd11.prod.outlook.com>
-X-ClientProxiedBy: BL0PR02CA0043.namprd02.prod.outlook.com
- (2603:10b6:207:3d::20) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9D46B10E1E7
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 21 Mar 2023 20:31:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1679430689;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3SoZAa/8xF1VxHMtjBD+X/WJ+O7TFOveLIe/Nw8esJs=;
+ b=cxgvBbOooUkQe44tU9S7WMrwzya2fg0cvO5qVnWDI9BjA0ItZsDBO5rMhWt6FwYwmiNhdM
+ zcRoJifU45xESOQ1h0F1GZ+qS7eK30GfjtCeusmWkpBWljZiFrRftmJFRI2/dnMQtRdP15
+ EDlk349A2CEcfoHasnosatm6VX8R4dA=
+Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
+ [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-606-BrpIiWM-OPa7UJUvcSo7RQ-1; Tue, 21 Mar 2023 16:31:26 -0400
+X-MC-Unique: BrpIiWM-OPa7UJUvcSo7RQ-1
+Received: by mail-io1-f69.google.com with SMTP id
+ j4-20020a6b5504000000b00758646159fbso1211155iob.20
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 21 Mar 2023 13:31:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1679430686;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=3SoZAa/8xF1VxHMtjBD+X/WJ+O7TFOveLIe/Nw8esJs=;
+ b=5zj2/titHzjY9sBezIEeaUHe+AKLYF7+4Nbk5VP46T92e9uGOesmUqmTged9+R9yHl
+ 1+6VIqVyY1gbaKauSbWpat8UcCSey68FtW1d62g8JNyubPK065+mRLhKGIGnCmDaj+y9
+ +41RtdpciSc6Mh6g9zFUdWDaYXIbqDf/serhUZiU/r+4yBVjiu0v7ho+PhpNeLcdRhdo
+ QxQ9teKuEwl7VxkSPve2XxtaKfeRVu8jyWkDmSOarpNuzyVtrZ97Hn7Np2GMYFNZjLH0
+ e9fli1m+FDzGNaLGgdMZF4+cZR2HRGAga5mRwlrbBi8WyKOoJ98lNFI356qSdsGA9cL4
+ aNAg==
+X-Gm-Message-State: AO0yUKVg3aIYEmlT0rMS7vcM6qaitUBTIOX2Zho//gbVDci5lACdule6
+ 5QIB1rq5PZU+493ZXePKCOe8qezsr/XYT14+rHVEiQrUCaNWLlqJmVdtD9UeoqP6dOcS71RS/Ib
+ 38+u+MwO3wGJRgmMof9Q414kiib49XTw0rA==
+X-Received: by 2002:a92:c503:0:b0:323:2c83:3064 with SMTP id
+ r3-20020a92c503000000b003232c833064mr2697661ilg.31.1679430685831; 
+ Tue, 21 Mar 2023 13:31:25 -0700 (PDT)
+X-Google-Smtp-Source: AK7set8RsLy22yUQqFdiRovisP4m8BeCD6yBQhPuFmJnLrNBzHBGAk/zi9QQ6dulBCbOIg4UjodPLA==
+X-Received: by 2002:a92:c503:0:b0:323:2c83:3064 with SMTP id
+ r3-20020a92c503000000b003232c833064mr2697633ilg.31.1679430685539; 
+ Tue, 21 Mar 2023 13:31:25 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ dl9-20020a056638278900b004051a7ef7f3sm4305251jab.71.2023.03.21.13.31.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 21 Mar 2023 13:31:24 -0700 (PDT)
+Date: Tue, 21 Mar 2023 14:31:22 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH v6 12/24] vfio/pci: Allow passing zero-length fd array
+ in VFIO_DEVICE_PCI_HOT_RESET
+Message-ID: <20230321143122.632f7e63.alex.williamson@redhat.com>
+In-Reply-To: <ZBjum1wQ1L2AIfhB@nvidia.com>
+References: <20230308132903.465159-13-yi.l.liu@intel.com>
+ <20230315165311.01f32bfe.alex.williamson@redhat.com>
+ <BN9PR11MB5276300FCAAF8BF7B4E03BA48CBF9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20230316124532.30839a94.alex.williamson@redhat.com>
+ <BN9PR11MB5276F7879E428080D2B214D98CBC9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20230316182256.6659bbbd.alex.williamson@redhat.com>
+ <BN9PR11MB5276D5A71E43EA4CDD1C960A8CBD9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20230317091557.196638a6.alex.williamson@redhat.com>
+ <ZBiUiEC8Xj9sOphr@nvidia.com>
+ <20230320165217.5b1019a4.alex.williamson@redhat.com>
+ <ZBjum1wQ1L2AIfhB@nvidia.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|CY5PR12MB6059:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6162ed36-a471-4478-9f39-08db2a2cfa0f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Rc3Hnnn/ioLVXQwfP4BbXOo83iXDH7P6AgNIyHhWV4yBIQ8mkroJJKGqnrfV7ApSIqJ8AIL7Y4lBhZPztWaPKsLXBJsL9q9E6/1xuBCG43ZGe2K+ronkd/G9Q7vPB2b7jxaI6SmTzh1RUVEu4Hm+tB2bFjqWQLYgFVPQa+VA/8gJVOd2rQTuzo8z/ef39+RfUnhht4ja6LaHCH1/oXB6Ru4LzsZ1xuvHDQ7X7iSqG5uuqzywL/ETHsrZXxybudxb1TEPKolED1cCr1ctSpmAOVGrrI96+f8rgD/wrphbxUMoaImSKkJwU+l8lr5aZMIngmfFNEdZGlIlusP59FY/ie1syqPrKcRCBUq6BbRCqpVaWf5ckeWus6zJ8OeGAruwguSmmMMixcpnlahrEFFAjiuHxXP+JBHSOUKT4PokJWii+FXH27NmgUTqvH5YhSpcuKsBNtyqQzeRty/Y6G9DrxlVxfCLBYIbuaDAkil3QsjLy8SbU8X0uA0EOI4twXsXWAAdL6A1679y4W8p9AtCJux7toE3wknwupWYfiJZ6BX1w47PGfTlGs2B2Jykz/uJ0/cPc7nluz41BDNCCooZQUE9S161m8lBs2Dtqs9jom0GFXbUtbJwzhzx65pQ2lZwM9jaAsHaoL4mptEU8KAOyg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(376002)(346002)(136003)(366004)(396003)(39860400002)(451199018)(2616005)(8936002)(6512007)(6506007)(7416002)(5660300002)(186003)(66946007)(478600001)(66556008)(2906002)(66476007)(86362001)(6916009)(4326008)(8676002)(41300700001)(36756003)(54906003)(38100700002)(26005)(6486002)(316002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?QdWC3h3Wjp+9qpDG0eLGEwlhMAHmbgKgA+dfHJHYzcmgCRlD9QxN6tXrJ3SS?=
- =?us-ascii?Q?h3iwqcVEJHZPlyb3+TY3YQ2d4xL4akpno/KEXsgL0bzhY3uNP/8Oba24BBGx?=
- =?us-ascii?Q?KLKlviQPU0EO1C02Co7RS2+Pgp5dVStftWsJKa8DPKWr1QdI1SWzWxCKaAPI?=
- =?us-ascii?Q?8EHmFRO8RTnQ6Rfb3ret7JGrnBggNNeGl9bPcf96Ohyaw0PlVMZKueNm086n?=
- =?us-ascii?Q?0WJR+HHZIFt8v0IG+vEvQ+0vqFOTlrlR5vL3k3wQ0tC40Nau4NG+MqReGJFl?=
- =?us-ascii?Q?9CQvZW6u4Lxsja4YEvShY4SHtnixwAbHIbsxyprXgqBa64Z+YjGnrvzzXKLD?=
- =?us-ascii?Q?nyAgxQS3/FOpDmuAeDgTQXQ+PsMMPCHAMss8aP0gTkjjkixb70FOgYrJOa5H?=
- =?us-ascii?Q?VToFX661QW/4pOh7w0D6KSQ996gdZFx9YvOnU7GnydMChan89+nShg4sNmwg?=
- =?us-ascii?Q?zl9V6Dk8k1mxeFg3YN2iXUquH70ztgSr816/qD28EYI1YwRstuVjYhaImKJm?=
- =?us-ascii?Q?/Kk8lWoV9cy5kbEToviDxJNWpsOYFQkbf75li4jlzNbagA3iITV/OcH9AeRs?=
- =?us-ascii?Q?FW8PBMoArw4eGDz2kAxn9PCECZaCJWatiYP0BxEA56UJ7PQRhcjUnU62jIs5?=
- =?us-ascii?Q?v6slT7RfiCHkWpfwNscqJ9oDMFxcTkg9AIMOYaGDCHUlSmtk7ymkzyw5hDq/?=
- =?us-ascii?Q?+VMXpUoCVyjaSVlxJ2+rU10vWtsPvlS6OPqNYmyxz+7UR1tBuUpoy7iVsxh3?=
- =?us-ascii?Q?XsOg0xxqoQaBQ+bPcnej+WbEGMGMQqzeWIEaq+HHlVz6Wq2JuxbRkWoHNHS6?=
- =?us-ascii?Q?/uqOjXehOn4rZ2/i7Yv79XZsgKyyziSSaktHI6jhmL0PoUNdOVmt3iBBe+/G?=
- =?us-ascii?Q?5baJM167p0anj8KlWUS9DNpudDSMlthpkYNpq03vNt9nzebqAjUcBRmc9clt?=
- =?us-ascii?Q?w5EcOVxyj+DJG/7odIZazzbxC4fEqfnOPOLImOGtpK0Or1AcpT4SG8xZitxK?=
- =?us-ascii?Q?EKfps4OgMsy9IfEYb6wz5AFGBDTjXLXpKwcxnJEzS4vstmvkD5y7A1Fi3+Ew?=
- =?us-ascii?Q?U9W0LmTbh4DujpsB18UR+jAi+ARugHd6qwmzknm4GiMBaPWFy7Dnhq4AkoiX?=
- =?us-ascii?Q?3XgOt/W78hOu/y+/WWsxpzsfJTtyuuitHWfmbrQGWAV9kibS7reICMSvlLPQ?=
- =?us-ascii?Q?Ej+NRwhJmvxKnk+QcNpTxzhED1y0DX6WSayLT6wmENubz2VX5tfkhIS679wg?=
- =?us-ascii?Q?cXu7PNDlrg3U+ms5ykZj1OmBQIFeaHF05OoopaX/7nQwK7iJLFgRYyuFHSAw?=
- =?us-ascii?Q?IdwSyOflySY9J3HHIF6QW6ZVQ9b3BgDz7CDc7A3bnQDloSK/QoHHUrucjnL5?=
- =?us-ascii?Q?VrqQajybPcWIQerurDAnAOXPlL8OgywIqs2GHe1I1UOXnEaZ3mzWVtrsQQi8?=
- =?us-ascii?Q?hhZQHKbHJHQlrmpTSklVz+yk+5gf0q+fMPOJQfr+BkxiPQaFBDgEfWRpROrF?=
- =?us-ascii?Q?49BuMWPNtMuhKafQocVmhjWoGdkhTD9CmWEAsLMHmnKB1uhoxMS40L2gnQJK?=
- =?us-ascii?Q?7Qhe4KOns91tJVHo1CEb29H30CwJ/gTNdzq7EPy6?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6162ed36-a471-4478-9f39-08db2a2cfa0f
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Mar 2023 16:54:46.7187 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: uqpZ5DTB0zVKq41F1/hKEbZJ0AqG54JgvlEUtQ6NrHDv/s8zrebEQwIXEv/HPPa5
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6059
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,18 +96,17 @@ List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao, 
  Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
  Terrence" <terrence.xu@intel.com>,
  "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
  "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
  Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
  "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
  "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
  "cohuck@redhat.com" <cohuck@redhat.com>,
@@ -145,32 +116,75 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, Mar 21, 2023 at 03:10:50PM +0000, Liu, Yi L wrote:
-> > From: Jason Gunthorpe <jgg@nvidia.com>
-> > Sent: Tuesday, March 21, 2023 10:58 PM
-> > 
-> > On Tue, Mar 21, 2023 at 02:51:20PM +0000, Liu, Yi L wrote:
-> > > > But still, this check should be done at device creation time just like
-> > > > in group mode, not during each attach call.
-> > >
-> > > Seems like requiring a noiommu_capable flag in vfio_device. We
-> > > set this flag only when the vfio_group->type==VFIO_NO_IOMMU
-> > > or no real iommu_group (for the case in which vfio group code is
-> > > compiled out). Perhaps the below check should be added as well.
-> > > Then in the time of bind, just check the noiommu_capable flag
-> > > and capable(CAP_SYS_RAWIO).
-> > >
-> > > if (!IS_ENABLED(CONFIG_VFIO_NOIOMMU) || !vfio_noiommu)
-> > 
-> > Yes, and also only for physical devices
+On Mon, 20 Mar 2023 20:39:07 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
+
+> On Mon, Mar 20, 2023 at 04:52:17PM -0600, Alex Williamson wrote:
 > 
-> Sure. BTW. in the time of creation, there is no vfio group yet. So may
-> just check if the device has a real iommu_group. Another alternative
-> is to set this flag at the time of vfio_device registration. Physical
-> device driver and emulated device driver uses different register APIs.
-> Hence they can be distinguished easily.
+> > > The APIs are well defined and userspace can always use them wrong. It
+> > > doesn't need to call RESET_INFO even today, it can just trivially pass
+> > > every group FD it owns to meet the security check.  
+> > 
+> > That's not actually true, in order to avoid arbitrarily large buffers
+> > from the user, the ioctl won't accept an array greater than the number
+> > of devices affected by the reset.  
+> 
+> Oh yuk!
+> 
+> > > It is much simpler if VFIO_DEVICE_PCI_HOT_RESET can pass the security
+> > > check without code marshalling fds, which is why we went this
+> > > direction.  
+> > 
+> > I agree that nullifying the arg makes the ioctl easier to use, but my
+> > hesitation is whether it makes it more difficult to use correctly,
+> > which includes resetting devices unexpectedly.  
+> 
+> I don't think it makes it harder to use correctly. It maybe makes it
+> easier to misuse, but IMHO not too much.
+> 
+> If the desire was to have an API that explicitly acknowledged the
+> reset scope then it should have taken in a list of device FDs and
+> optimally reset all of them or fail EPERM.
+> 
+> What is going to make this hard to use is the _INFO IOCTL, it returns
+> basically the BDF string, but I think we effectively get rid of this
+> in the new model. libvirt will know the BDF and open the cdev, then fd
+> pass the cdev to qemu. Qemu shouldn't also have to know the sysfs
+> path..
+> 
+> So we really want a new _INFO ioctl to make this easier to use..
 
-Yes, at registration. In group mode it should copy the flag from the
-vfio_group, in non-group mode it should query the iommu_group
+I think this makes it even worse.  If userspace cannot match BDFs from
+the _INFO ioctl to devices files, for proof of ownership or scope, then
+the answer is clearly not "get rid of the device files".
 
-Jason
+> > We can always blame the developer for using an interface incorrectly,
+> > but if we make it easier to use incorrectly in order to optimize
+> > something that doesn't need to be optimized, does that make it a good
+> > choice for the uAPI?  
+> 
+> IMHO the API is designed around a security proof. Present some groups
+> and a subset of devices in those groups will be reset. You can't know
+> the subset unless you do the _INFO thing.
+> 
+> If we wanted it to be clearly linked to scope it should have taken in
+> a list of device FDs, and reset those devices FDs optimally or
+> returned -EPERM. Then the reset scope is very clearly connected to the
+> API.
+
+This just seems like nit-picking that the API could have accomplished
+this more concisely.  Probably that's true, but I think you've
+identified a gap above that amplifies the issue.  If the user cannot
+map BDFs to cdevs because the cdevs are passed as open fds to the user
+driver, the _INFO results become meaningless and by removing the fds
+array, that becomes the obvious choice that a user presented with this
+dilemma would take.  We're skipping past easier to misuse, difficult to
+use correctly, and circling around no obvious way to use correctly.
+
+Unfortunately the _INFO ioctl does presume that userspace knows the BDF
+to device mappings today, so if we are attempting to pre-enable a case
+with cdev support where that is not the case, then there must be
+something done with the _INFO ioctl to provide scope.  Thanks,
+
+Alex
+
