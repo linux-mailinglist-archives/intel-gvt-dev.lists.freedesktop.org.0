@@ -2,115 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4E956C4C17
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Mar 2023 14:43:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 64D9D6C4D89
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Mar 2023 15:24:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 81DEE10E113;
-	Wed, 22 Mar 2023 13:43:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2E1DA10E38A;
+	Wed, 22 Mar 2023 14:24:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam11on2040.outbound.protection.outlook.com [40.107.236.40])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4B1DF10E113;
- Wed, 22 Mar 2023 13:43:23 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KxEHYR3eZ8sS4S5ASWY1LtyYDyFVc4x/xIXklh/J9itfwM9SyV5TYfpbphGf9Gm4cb4bwk0/jEOVeH4kfIt3H9y9e7doFlfDFDEphxRA3gjU3A64wUL+OjEG9BB8UKtjN82CmhDfG1JQlsh4mBz0u+m9tAjgQgWPCL63AruapRd2+woPi3SXYwq1WpPMuKXOHofrdDx+smxK4GWtNSQnZwkY75W9da7+kDsbwZYVpBs0Sr2lrqD5queeDP0PokeOzbAWPl5Rjs5u5h0DdQL53LeC5u1ihqZ4JU6wvkoz/B+dvUNHpWOVHLBBUhs2tKIRxvEPNMJvN+exiD1VUFOGEA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=49MTJytHHUnDkPj5i9b0LHnspdiBi6MCuxBpY3yRoqI=;
- b=W3SiRU2SfsTYNChVXZx9JYTS3vTBcEQuX0pcUieYKdzP71giqGaWcQfPtOUiTEvHoznpXVw45P79rGJM4XQlEwBLCRj9irMzfODHBYA4UQQzqVmRogszj9+JWs9BmBuCSmDvocCngwwuew5LG551d3VwkuC5uOJBwWTOXLe5n3wk01aXy58AfmprB+V8Sr8xHv8ycO0N7LJ4h/T5T89kj641crZ95T3tkzjdcH8WOgiMetR3TipWaVkqscnHxn413+/LvK2ppE2Gmk/Jg3waocU4a41EcMOmUmXL7Z3VSevJBHMPj357pd1VsCOVXvunUtqqo9mR5TbOYjct5VJtwQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=49MTJytHHUnDkPj5i9b0LHnspdiBi6MCuxBpY3yRoqI=;
- b=clHnjioSBMi4c5dc92bNuTKQwZPfHGHrfirovsoYsuX3ZfUd1/9il1MUWKxDLG4uvbOZ2ysyQ/pCwoPlH2TqHKtRl8/I/DFEcureXGYKKLn+IZ1ffCVbKGHE674tmOMThHZ9nAbPzW5j92CfwYXua+ONnMGtwgLUFAm5AokU/LNdv4leYIXhxerxtKdyvvotXj3i0P+1ZT4eY/PQZxtasv9wQMHExcu8H99HgO01onJe3qGc+kU5e1klZ1DAHco9jc2WdocoRuiJrI3KxrCRUSYtoTX7MPKQvf4BbY5c/ous4K+aYJEBQesTF5DTGw2Hf25yJBaroIShaPVN/+Z8xQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by DM4PR12MB5389.namprd12.prod.outlook.com (2603:10b6:5:39e::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.37; Wed, 22 Mar
- 2023 13:43:21 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::ef6d:fdf6:352f:efd1%3]) with mapi id 15.20.6178.037; Wed, 22 Mar 2023
- 13:43:21 +0000
-Date: Wed, 22 Mar 2023 10:43:19 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v6 12/24] vfio/pci: Allow passing zero-length fd array in
- VFIO_DEVICE_PCI_HOT_RESET
-Message-ID: <ZBsF950laMs2ldFc@nvidia.com>
-References: <BN9PR11MB5276D5A71E43EA4CDD1C960A8CBD9@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20230317091557.196638a6.alex.williamson@redhat.com>
- <ZBiUiEC8Xj9sOphr@nvidia.com>
- <20230320165217.5b1019a4.alex.williamson@redhat.com>
- <ZBjum1wQ1L2AIfhB@nvidia.com>
- <20230321143122.632f7e63.alex.williamson@redhat.com>
- <ZBoYgNq60eDpV9Un@nvidia.com>
- <DS0PR11MB7529B8A8712F737274298381C3869@DS0PR11MB7529.namprd11.prod.outlook.com>
- <ZBrx98kqNZs3jeWO@nvidia.com>
- <DS0PR11MB7529E4C6196C8581CD39A7C7C3869@DS0PR11MB7529.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <DS0PR11MB7529E4C6196C8581CD39A7C7C3869@DS0PR11MB7529.namprd11.prod.outlook.com>
-X-ClientProxiedBy: BL1PR13CA0233.namprd13.prod.outlook.com
- (2603:10b6:208:2bf::28) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+X-Greylist: delayed 542 seconds by postgrey-1.36 at gabe;
+ Wed, 22 Mar 2023 14:23:36 UTC
+Received: from mail.buckscoffe.click (unknown [45.13.189.17])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A36B510E38A
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 22 Mar 2023 14:23:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=buckscoffe.click;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=lowes-news@buckscoffe.click; 
+ bh=jD8qe+X6vYVllk5SWGuWSUmgUKc=;
+ b=SQESIs9JvUkVP3+RNWSTKbisMoLoVJ9Xe64SSkvitBHr3P8Pm2Z6AuV9C0Hnm1ueCUS9TNKOUOGa
+ PLwAASQwRBD7RvoemD+1yKj59MQ0tFoXNHu/fXrSw4bzxZ/R9yOcmfjGpycZqQUASbpZO1waVXH6
+ ttu1wkygGW/T/pYhorw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=buckscoffe.click;
+ b=N9T8qnIAiYIg3Q+xOuBHXn/7RWvmZ2MsXFuljMb3cqX96G9OblAixenO0luxfVJrGqTlcBkJvolT
+ hQxupjJoVGB/Ovt2zTAP4SvCPX9xaREZefQbJO2v9SX3DQs0Au9amj2AM4dUcBzyNaBGNWDj8bMe
+ 21EahrB/6CwgjykI064=;
+Received: by mail.buckscoffe.click id h3c7mi0001gc for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 22 Mar 2023 10:02:40 -0400 (envelope-from
+ <lowes-news-intel+2Dgvt+2Ddev=lists.freedesktop.org@buckscoffe.click>)
+Date: Wed, 22 Mar 2023 10:02:40 -0400
+From: "Lowes News" <lowes-news@buckscoffe.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Today is the final day to receive a brand new Stanley Tool set - act
+ quickly.
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DM4PR12MB5389:EE_
-X-MS-Office365-Filtering-Correlation-Id: b9531912-2fe7-4d1d-323b-08db2adb667f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: dtkSEvDEegw/vIed7ftqAOTJIu6y19Tlk5CxPT1H8lsZvrVea79PMJftz47QBV5SbQgHpDUaXaU1dyw5GjiyihAff/7M84RVyELU26KWoxtUWch/JsBog/KGrEgUgdbe5GnRRINxqZP6VrLe06Bntm3LOAuDiTCe7aS40NxMfO5KSvtAnBHhL7eTY343qRVaRRdRQRrvrpR+qV885IOxB0aob5FfmQ/aHNjbtplgr7X+HLqd91lqDjcUADKaO6/th2GCjqepOfuLD8f9PL8XNYfvSSrzfQMQDfbzO6HkjyRcaAAfCctdhoQ5Hy351Kg5p/ousYT+bCQVgsBBYGcAlURrXLMQaxjkV57qoYNzUDBxI/WPsTEAl/s9oK9YnJ8UOQMEfoJDbpxitQkyr3aU21xRwBg/SKaDzoOgwLNNf32KuFkGsxa7YTMtyg3Lbw9teZhvFfGP8x4PjHG+WBjB87p1WhqcRCNfzbe8fzY7aLsdM/ugJuTxiQ9ot8s+8aHJQyl+uGZAoSrXwdD+3X9cyluWwopiMpdh6aUVMUYq9gzeCkJlNEjtNYgNahQaUNhLY7WFFeWTnyZiAvGKKuRCGN+CvAT/LMZQzrG7YskrXLvl2hppmQVTZ/DoH9Huksdq8qOlbwfFWe4K06OJRAABmA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230025)(4636009)(39860400002)(376002)(396003)(136003)(346002)(366004)(451199018)(38100700002)(83380400001)(8676002)(6512007)(54906003)(7416002)(5660300002)(316002)(66946007)(36756003)(41300700001)(4326008)(66556008)(66476007)(8936002)(6916009)(478600001)(2906002)(86362001)(6506007)(2616005)(26005)(186003)(6486002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?nytQ2lsrNtFox0/YuSIC/DqZCYycM6e97MdlAvhcKwtS53u3E6WLWpi3xZBy?=
- =?us-ascii?Q?MTt+rmv4gQCO3qfxKE1g4xunDeaEhAsQAXI2tNjLrEehs4rlFJv6HDrRlLjR?=
- =?us-ascii?Q?jKB7kRkdQtet4ri93ehaHp5CIZMexBroUzt1Sgo+DiHqE6qcFMBgkaVUP3CX?=
- =?us-ascii?Q?hkV0Ee84k1yuNRB2YoBJjHw25U8nkp7wPlRGgD4J3hJmFR0L/7uOuZHi2m0s?=
- =?us-ascii?Q?6itdhw1PC+UgXOyJVGdud74pLZWXfQ6bNBVylF1D/7C5+YuW66/AJZFxJMYb?=
- =?us-ascii?Q?dRC+InfM5Q46xV35IlVHzU3aanxjD++wS3jjdjl0N09Tg1399XxikOmgcdgX?=
- =?us-ascii?Q?ulfTMg6u+O7PHnqkN/MWWqXzArMq3m/RHP0tqtOJ62nA7DIZvrfabalVaPGf?=
- =?us-ascii?Q?tk7gUwRuDnGmEB4mdcUqF505xkSqupufqolkGoxD879lxjb6ZZBPGfqiqgG2?=
- =?us-ascii?Q?lpFupPzjSpFwIS40AEukhBd/l+tNXLSPcHm+c3Fk/oX7tGIfVLg0idHnhUTd?=
- =?us-ascii?Q?KnMqCvBSgopKjUFRmwLMJN8jakrVEVMEd6wmNaRDUVg7wYMv2iID3ho2I7LP?=
- =?us-ascii?Q?28cBVTrMEN7FdaFHmZgk+E+Lu9X4PPG93HRXpejGFPxgvMFosMooLF0GTK+n?=
- =?us-ascii?Q?GI5AKD4EooPn87G85x96NR/J2pIIds/4iOaPESXoG222gR61/oH6oKWdvhrY?=
- =?us-ascii?Q?ZcJbKcTgVso6fwQgK9ATkKdVRES5PamkgUw/AjdNURc/CmnB+CDsJRK/55jP?=
- =?us-ascii?Q?riR2BUXbqYdAV5Klxr6FJtmnErQ0NyFPFlB1o102EEpIjO0gK2xXMO9O7CBz?=
- =?us-ascii?Q?zSCJ3KfrjGc/cFUaYQc754FEpW7t34Us9nGKwrWGdQhEwiZUurKlOOMZomQW?=
- =?us-ascii?Q?UEV36R39f30GUIV0F8+KBhPh+ZJ3OX+Be3YV2lYJbg7htyaQ/yB66w5IWyDL?=
- =?us-ascii?Q?drTCr8mw+3SWTNsKmwCvE1rhFzbHAFLkY8rZ3n/V0CMKSRXN2lY/rGAP5pJJ?=
- =?us-ascii?Q?0Vke45oj0KfDcKRv5R1BPvXYf648+cm071qDoZ7JFzFPgmtQ0mjXmBaM1sYf?=
- =?us-ascii?Q?0oQfiTmyzLM8J2gpDR+qkDbAU9xPqnrkLl6LPWt0/2/dlc4bOTqbpqZb2TjZ?=
- =?us-ascii?Q?/HRwRDjiLe2dpjqMXiRDtYaArNWOPHhnhRYA/UA4FsLuMCugzXkhWg2XDFRv?=
- =?us-ascii?Q?o6pONJfujFmv7tl6U1Wac/mrF6IxtEP9webY6rxV5xqQpYCg/LABeM3Dvpim?=
- =?us-ascii?Q?koiMIqR7gBRPo7iElQyDhHLjN3yE2jEWFBd4EAB/Q9FJeG4nv2paWmZALVY6?=
- =?us-ascii?Q?8oYzZGLgBGvaMpDbjjfweh2TAERezYFr93A8efxGkfYUdutIne+Rvzkhtts7?=
- =?us-ascii?Q?cqG20QtV2z7XOVesZEwkHEAVbDoeQ7oS5SzYJg8oagUkYfM0MMUdkPO5+6Cy?=
- =?us-ascii?Q?zyv+A2gA+HixFEYIGsYFCa+yN0ZdnU8vDUvD1rberGZCpIgIW6KydUBLWznV?=
- =?us-ascii?Q?HryH1EI0jl03erYlzPi8dqVipmZCiITj521tmmIeRDzPt05SZzx98Qvjf8rS?=
- =?us-ascii?Q?+hagqnquWgk6VvJCJ681ugZ4em245fFiyh6ZKU+0?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b9531912-2fe7-4d1d-323b-08db2adb667f
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Mar 2023 13:43:21.0434 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: RQXWz7fGDBeHXJ93C4GTiw7d3t85WDz6AQSVgUhkpVZ7yc1um1MKT2XkwYaJixIB
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5389
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_85_1465942250.1679493730230"
+Message-ID: <0.0.0.9.1D95CC6F719C3AA.42E236@mail.buckscoffe.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,55 +51,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Mar 22, 2023 at 01:33:09PM +0000, Liu, Yi L wrote:
+------=_Part_85_1465942250.1679493730230
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-> Thanks. So this new _INFO only reports a limited scope instead of
-> the full list of affected devices. Also, it is not static scope since device
-> may be opened just after the _INFO returns.
+A Special Offer for Our Valued Users
+------------------------------------------------
 
-Yes, it would be simplest for qemu to do the query after it gains a
-new dev_id and then it can add the new dev_id with the correct reset
-group.
+LOWE'S
 
-> > I'd probably use similar logic as the reset path, if one of reset
-> > group devices is open and on a different iommufd_ctx then fail the
-> > IOCTL with EPERM.
-> 
-> Say there are three devices in the dev_set. When the first device is
-> opened by the current qemu, this new _INFO would return one dev_id
-> to user. When the second device is opened, this new _INFO will return
-> two dev_ids to user.
+We wanted to take a moment to thank you for choosing Loforneewepct's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
 
-Yes
+As a token of our appreciation, we would like to give you a FREE Stanley Tool Set when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
 
-> If the third device is opened by another qemu, then
-> the new _INFO would fail since the former two devices were opened and
-> have different iommufd_ctx with the third device.
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
-Yes
 
-qemu should refuse to use the device at this moment.
+Start Here Now >>>>>
+http://www.buckscoffe.click/projectile-dell/8285j239t5LC86B13M_50labm12der36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQXQnK96FImB106XM1wD3
 
-Jason
+
+
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+
+
+
+Best regards,
+The Loforneeweprot's Survey Team
+
+------------------------------------------------
+
+No longer want to receive email information from us?, click_here >>>>>>>>> http://www.buckscoffe.click/e214B2395Mi86D13ru50aBcJ12deL36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQXQnK97rmKi10s6oNw@Dl/depositing-respects
+126 E 23rd St New York, NY, US 10010
+
+<font style="neuritis"></font><style></style><font><span></font><span color="remembered"><style></style></span><small></span></small><span></span>
+
+------=_Part_85_1465942250.1679493730230--
+
