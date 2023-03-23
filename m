@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6633E6C6E02
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Mar 2023 17:45:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A72606C7134
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Mar 2023 20:42:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3C3A810E497;
-	Thu, 23 Mar 2023 16:45:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 692CB10E058;
+	Thu, 23 Mar 2023 19:42:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 347 seconds by postgrey-1.36 at gabe;
- Thu, 23 Mar 2023 16:45:22 UTC
-Received: from mail.hbfrei.autos (unknown [45.13.189.27])
- by gabe.freedesktop.org (Postfix) with ESMTP id 268B910E494
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Thu, 23 Mar 2023 19:41:55 UTC
+Received: from mail.lwsgoset.autos (unknown [45.13.189.126])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9C24710E058
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Mar 2023 16:45:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hbfrei.autos;
+ Thu, 23 Mar 2023 19:41:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lwsgoset.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=harbor-freightperks@hbfrei.autos; 
- bh=F4hyIh/WIlr0jmy50QrjIYn1D9I=;
- b=ZIOtiMzfz3pWmAWw1LwTnU8ZRx80YpyK/ogxG0pWdNJVwcXY0lSdvI5LhDI/YklHvXGmfeR5FYF8
- OnbLXihKSDVmLVYO8Sd4Dr2KHTX9/RSwY+7OS1vNgc9s17UIR/ZLxbHCWFyfmDLNCYatiw4t+6q2
- AkkGk5iX8jK7LfE/cYk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hbfrei.autos;
- b=o5EfLkyLe89K5j9r7h9naRs0KoNUauso2TXaghLXIRef3rhR96sSMNaeHJbHNwYIIWF/YjgpnPFR
- t2pXx7BG+tveLemFKdKRPOZgV6f0e7rl+9eQb0CiCp9xiK5Nxblj0Sz95rDmtjXGmMJv20OvQzuH
- D3pXQf01wQNsy76Lm7M=;
-Received: by mail.hbfrei.autos id h3i1240001gm for
+ i=lowes_love@lwsgoset.autos; bh=iWBp2BeMD/ddnq6bJJ0n/+msl4A=;
+ b=dirE6I5H1fXQimXpsbUDHiOeQKGELIRsVkH6+mo5OHXvk9/a4Te8qc6qJ82TGGAs3UYG6/JMfOrj
+ GkYhAyMgRatbNyLXU4/ArbaYIYQ1bO4FthgZ/0MqNYb/+EZbaZo/g7XTRMX408ADY3kYvum+yiQ/
+ VXNEOgnwBlNEpQg3YQE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lwsgoset.autos;
+ b=O8R4gCREVLKiTRFn6BgG5Fgw1WJzQoxQc7m+b8gaCHbVFbnxOifBGJwQOBe1WSsnYgduq40cy3A0
+ AyVndRa7i3eYJgTARx3ASAc2EP8g39Az8RMq4054ss5/hnltDRwhbGmqW/pSNccvJ62eyV1f2Fkw
+ Fd88gpUrUNYc1EcpSAo=;
+Received: by mail.lwsgoset.autos id h3iloc0001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Mar 2023 12:33:51 -0400 (envelope-from
- <harbor-freightperks-intel+2Dgvt+2Ddev=lists.freedesktop.org@hbfrei.autos>)
-Date: Thu, 23 Mar 2023 12:33:51 -0400
-From: "Harbor FreightPerks" <harbor-freightperks@hbfrei.autos>
+ Thu, 23 Mar 2023 15:32:20 -0400 (envelope-from
+ <lowes_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@lwsgoset.autos>)
+Date: Thu, 23 Mar 2023 15:32:20 -0400
+From: "Lowes Love" <lowes_love@lwsgoset.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Hurry and take advantage of the offer to receive a Milwaukee Drill
- Set before it expires today.
+Subject: Act fast and receive a brand new Stanley Tool set before the offer
+ expires today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_514_293564503.1679589182742"
-Message-ID: <0.0.0.39.1D95DA54027A92A.441676@mail.hbfrei.autos>
+ boundary="----=_Part_463_1874255686.1679599893073"
+Message-ID: <0.0.0.33.1D95DBE2F89FBCC.E8313@mail.lwsgoset.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,44 +53,50 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_514_293564503.1679589182742
+------=_Part_463_1874255686.1679599893073
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 A Special Offer for Our Valued Users
---------------------------------------------
+---------------------------------------------
 
+LOWE'S
 
-HARBOR FREIGHT
+We wanted to take a moment to thank you for choosing Loforneewepct's.  Your=
+ loyalty and support mean the world to us, and we are grateful for the oppo=
+rtunity to serve you.=20
 
-We wanted to take a moment to thank you for choosing Harbor Freight.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
-
-As a token of our appreciation, we would like to give you a FREE Milwaukee Drill Set! when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
-
-
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-
-Take The survey >>>>>
-http://www.hbfrei.autos/3596G23kJ95tJC8611y50b7t12e4N36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQaQnKK5hP10L6QyBwDl/proves-facsimile
+As a token of our appreciation, we would like to give you a FREE STANLEY=EF=
+=BF=BD 170 piece Mixed Tool Set! when you fill out our survey.  This set in=
+cludes a variety of high-quality tools that will help you tackle any home i=
+mprovement project and is yours to keep, no strings attached.=20
 
 
 
+To take advantage of this offer, simply click on the button below to access=
+ the survey.  Your feedback is incredibly important to us, and we would lik=
+e to offer you a token of our appreciation for taking the time to share you=
+r thoughts.=20
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+
+Start Here Now >>>>>
+http://www.lwsgoset.autos/2ff6a2VA395am86x13z50Dbb_B12e6M36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQtQomn6h1Ni0R6NTw3DX/Gothic-jellyfish
+
+
+
+Thank you for your continued support and for taking the time to fill out ou=
+r survey.  We look forward to hearing from you soon.=20
 
 
 Best regards,
-The Harbor Freight Survey Team
+The Loforneeweprot's Survey Team
 
---------------------------------------------
+---------------------------------------------
 
-To suspend notices, click_here >>>>> http://www.hbfrei.autos/9175gq2395N8V6j13j5U0Sb8C12e4m36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQaQnKK7U1qTt0k6QNApwD/departments-motels
+To update your email elections, click_here >>>>> http://www.lwsgoset.autos/8f96Y23r9p5X86vM11K50bcD12e6A36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQtQomn5X10NP6FXB@wD/musicianly-celebrities
 126 E 23rd St New York, NY, US 10010
 
-<font><span color="Haiti"></span><small></font><font></small></font>
+<small></small><span></span><font></font><span></span><small></small><span></span>
 
-------=_Part_514_293564503.1679589182742--
+------=_Part_463_1874255686.1679599893073--
 
