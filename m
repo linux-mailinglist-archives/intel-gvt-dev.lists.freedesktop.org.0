@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26EFC6C8D5B
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Mar 2023 12:16:49 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED1AB6C8E44
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Mar 2023 13:37:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EC2E610E269;
-	Sat, 25 Mar 2023 11:16:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A5CED10E140;
+	Sat, 25 Mar 2023 12:37:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Sat, 25 Mar 2023 11:16:45 UTC
-Received: from mail.stanllws.autos (unknown [193.160.141.75])
- by gabe.freedesktop.org (Postfix) with ESMTP id 46A1410E25F
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Sat, 25 Mar 2023 12:37:35 UTC
+Received: from mail.swstsgo.click (unknown [193.160.141.68])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 42CD910E079
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Mar 2023 11:16:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=stanllws.autos; 
+ Sat, 25 Mar 2023 12:37:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=swstsgo.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes-rewards-exclusive@stanllws.autos; 
- bh=BCRdmGWM9Ce1wuOiRSfQGmonbvw=;
- b=ftwIKD5z1yvzKG1oP9xudcQebt/JX/BqR3JYzrub0kK0C8LNbJ09qtJLyyKypLdXd1eIVNi6duwD
- bPum5EY3BY+3Aus2NlL5c/9jN+kt4G/bYz49l2iw06olragS9qUxWJveOM1VZ/bHWRZX9Ou2htMO
- I3Tteeia/eD9GzdbSqA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=stanllws.autos;
- b=KPIQFmeTQPBC+fR7czdJJIbKzHzBNDNvTsvm6z1xbk68l1RRkcSgT2Hjfqhh2h1cNm7sDY+/AY70
- y+PN9G/oSlAzOG9Q/wbpSDSHvTEoFyZ1TE7cXCfy8QfVSE5yOBz7wtveSiAEM2zFIOrvOwBDPjqT
- qJwT/TTbuyu5fGwu5XI=;
-Received: by mail.stanllws.autos id h3rc1q0001gf for
+ i=alisha-baldwyn@swstsgo.click; 
+ bh=Ie1CwJ5peHYHuK8bSjvzAf5w0iQ=;
+ b=o5WRlbsprRWJNtoGIxMDkZbLFpaT0x3GS/3B56PnDCWHwRNSUGWRy1tTKFf8ptEQBL7+B0lcvAfJ
+ pcta3rOoxg0aqZUim6lk62lZzStBcZmaC3Aj8bSx9/mt3K0EXCVtoeMoM5vULisXjSCjdLbI4mGe
+ njc13+tQakbzNR321k4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=swstsgo.click;
+ b=PjBRQ71ZwPrItWnAK4XHHdOABQD2K6pVw/K0x1kqbVJJqBfLIXw7AHmj2IHgGTfbZ0XtTNiSn0sN
+ wZ7CeWmCtLKy6z0DnyU5kId6gluw2PMumUGw6CSq0nMAytULHIhGzSIezPisA9ChaohGC4xddrGy
+ 4sWnnmzXc1AQFYJDu+E=;
+Received: by mail.swstsgo.click id h3rlgu0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Mar 2023 07:04:40 -0400 (envelope-from
- <lowes-rewards-exclusive-intel+2Dgvt+2Ddev=lists.freedesktop.org@stanllws.autos>)
-Date: Sat, 25 Mar 2023 07:04:40 -0400
-From: "Lowes Rewards Exclusive" <lowes-rewards-exclusive@stanllws.autos>
+ Sat, 25 Mar 2023 08:25:22 -0400 (envelope-from
+ <alisha-baldwyn-intel+2Dgvt+2Ddev=lists.freedesktop.org@swstsgo.click>)
+Date: Sat, 25 Mar 2023 08:25:22 -0400
+From: Alisha Baldwyn <alisha-baldwyn@swstsgo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim your brand new Stanley Tool set before the offer runs out today.
+Subject: Give your opinion of Southwest for up to $1OO Bonus
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_334_2137285889.1679742254352"
-Message-ID: <0.0.0.25.1D95F0998BA56EA.21312B@mail.stanllws.autos>
+ boundary="----=_Part_28_144168365.1679747112401"
+Message-ID: <0.0.0.3.1D95F14DEE5ADA8.3ADA8C@mail.swstsgo.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,40 +53,43 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_334_2137285889.1679742254352
+------=_Part_28_144168365.1679747112401
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
-------------------------------------------------
+A Special Offer for Valued Customers
+-------------------------------------------
 
-LOWE'S
+SOUTHWEST 
 
-We wanted to take a moment to thank you for choosing Lowe's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+We wanted to take a moment to thank you for choosing Southwest Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
 
-As a token of our appreciation, we would like to give you a FREE Stanley Tool Set when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with Southwest.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
-Start Here Now >>>>>
-http://www.stanllws.autos/crucified-balancing/7385r239t5s8l6C11i50d3S12f2Z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQGQon96wtVx106o3Tw0D
+For completing the survey, you can receive a $100 Gift!
 
 
-
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
 
 
 
-Best regards,
-The Lowe's Survey Team
+TAKE THE SURVEY >>>>>
+http://www.swstsgo.click/refillable-Xeroxed/bca6p2m3v95S86vN12zg50d9s12f5N36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQHQonR6D1Y0Vl5ozzwD
 
-------------------------------------------------
 
-To edit your message preferences, click_here >>>>> http://www.stanllws.autos/5ed5Y239I5S86yv13U50dQL4B12f2r36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQGQon96O1N0YY5CPw0D/tightens-motive
+Thank you again for your support.  We look forward to hearing from you soon Warm regards
+
+
+The Southwest Survey
+
+-------------------------------------------
+
+
+To end email, click_here >>>>> http://www.swstsgo.click/2ff4N2395f8Qm611S50daO12f5J36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQHQonR5N1IB06qOwDXP/baffler-paraboloid
 126 E 23rd St New York, NY, US 10010
 
-<font face="patterns"></font><font style="restfully"></font><font class="betrothal"><style dir="Persians"></style></font><span style="cornucopia"></span>
+<style title="middlemen"></style><font title="intersecting"><span title="seconding"></font></span><span title="unclosed"></span><font title="corroborative"><span></span></font><font face="Lehigh"></font>
 
-------=_Part_334_2137285889.1679742254352--
+------=_Part_28_144168365.1679747112401--
 
