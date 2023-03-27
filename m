@@ -2,50 +2,49 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADCCB6C9B66
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Mar 2023 08:29:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E4BC6C9F99
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Mar 2023 11:33:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 713AC10E0A2;
-	Mon, 27 Mar 2023 06:28:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D18E110E344;
+	Mon, 27 Mar 2023 09:33:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 903 seconds by postgrey-1.36 at gabe;
- Mon, 27 Mar 2023 06:28:56 UTC
-Received: from ems.zemodi.de (mail.zemodi.de [213.168.210.147])
- by gabe.freedesktop.org (Postfix) with ESMTPS id ADA2A10E064
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 Mar 2023 06:28:56 +0000 (UTC)
-Received: from ems.zemodi.de (127.0.0.1) id h44rqg0171sr for
- <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 Mar 2023 08:13:51 +0200 (envelope-from
- <SRS0+3d45f142ee089d1c=7T=zemodi.de=mr-mrpet@zemodi.de>)
-Received: from mail.zemodi.de ([10.22.2.8])
- by ems.zemodi.de ([192.168.122.10]) (SonicWall 10.0.19.7431)
- with ESMTPS (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256)
- id o202303270613500022385-3; Mon, 27 Mar 2023 08:13:50 +0200
-DKIM-Signature: a=rsa-sha256; t=1679897627; x=1680502427; s=mail; d=zemodi.de;
- c=relaxed/relaxed; v=1; bh=QO5GjdhyyakjuAOpkwUfSVosw++8sdpuRGhs7ycDV24=;
- h=From:Reply-To:Subject:Date:Message-ID:To:MIME-Version:Content-Type; 
- b=JRDKL55NFfyNlEpCsBuHkIc8G27veoPgi8Z2YTrsk2uF/vmr4chE2AUADbkZU+BEH93jdRAxObET0nmLlAOv9sKUs9hvW7xdhLtfztDpA24L8Hv+mcK0N32PXEi+wphzhrnn3YwWSY6mxmglwogwlKLaR008loHMbFCyidhIIs2qbIgRJ8sXGPtPn7W+wrfeFzAxKcfosJFUjfMlGuHGmE/tmCHf7uLYts5ZHXQIZDToJoxbS4mZ4pgg26BHmX3srp4zW2lNgZdNpEbZCxSzM3NOa7hpzP0hsqN/5rxQaQkHzwgeRNp4dQAiCbqfazwaEcTxeioF+pHZx1naeJFDqA==
-Received: from WIN-ETGQQT9LA10
- by mail.zemodi.de (13.0.3 build 10 x64) with SMTP (SSL) id 202303270813477001
- for <intel-gvt-dev@lists.freedesktop.org>; Mon, 27 Mar 2023 08:13:47 +0200
-From: "Andrew Petzold" <mr-mrpet@zemodi.de>
-Subject: Re: Proposal intel-gvt-dev@lists.freedesktop.org
-To: <intel-gvt-dev@lists.freedesktop.org>
-Content-Type: multipart/alternative;
- boundary="EknQtVLdojs=_9JTTJIYVecCg8PHJHsFtl"
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2479F10E338;
+ Mon, 27 Mar 2023 09:33:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1679909635; x=1711445635;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=VkV/8FTePBOMnCIePLYijAz1Ei748yULDz/BHYMAuKo=;
+ b=OLp2Vx6yRgfPeRdvAJqidmyObOd4/6ifNOhWXbrLJv+qUtDaZ03kDhwT
+ yCypMjNj5F6wYRkeQgmK7En8lld6TLg17mfoPLF/50DEhH5DMFyG2gM0Z
+ bHvabtrDddwonySRkwYkz7ZSGtwr9xSZwmk/MT5XAfmY2S0S8s1a4Rsth
+ M5GGn1a6U5D+7YlkWy0I8pxqzIFYI9rvQan7AqtauX4EF82sdCNwWLJJs
+ f2IlN4oJqvvG9hxRa2eARdI+xdP5bdHQFvciPX9p3ngLv9400qBjqYyXQ
+ 0uXdJophKv9GXw+aw0n77GmwQPDH6kzmeDtKuPYcMrg0YQFy9quK6hQWK Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="402817900"
+X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; d="scan'208";a="402817900"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Mar 2023 02:33:54 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="685908071"
+X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; d="scan'208";a="685908071"
+Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
+ by fmsmga007.fm.intel.com with ESMTP; 27 Mar 2023 02:33:53 -0700
+From: Yi Liu <yi.l.liu@intel.com>
+To: alex.williamson@redhat.com,
+	jgg@nvidia.com,
+	kevin.tian@intel.com
+Subject: [PATCH v3 0/6] vfio: Make emulated devices prepared for vfio device
+ cdev
+Date: Mon, 27 Mar 2023 02:33:45 -0700
+Message-Id: <20230327093351.44505-1-yi.l.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Date: Sun, 26 Mar 2023 23:13:46 -0700
-Message-Id: <264620230313231F4D70634C$FCF3A9A8F5@WINETGQQTLA>
-X-Mlf-DSE-Version: 7103
-X-Mlf-Rules-Version: s20230112191048; ds20200715013501;
- di20230322163037; ri20160318003319; fs20230322162750
-X-Mlf-Smartnet-Version: 20210917223710
-X-Mlf-Envelope-From: SRS0+3d45f142ee089d1c=7T=zemodi.de=mr-mrpet@zemodi.de
-X-Mlf-Version: 10.0.19.7431
-X-Mlf-License: BSV_C_AP_T_R
-X-Mlf-UniqueId: o202303270613500022385
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,63 +57,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: petzold.brokerwiz@gmail.com
+Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
+ peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
+ linux-s390@vger.kernel.org, yi.l.liu@intel.com, kvm@vger.kernel.org,
+ lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
+ yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
+ cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ suravee.suthikulpanit@amd.com, robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format
+The .bind_iommufd op of vfio emulated devices are either empty or does
+nothing. This is different with the vfio physical devices, to add vfio
+device cdev, need to make them act the same.
 
---EknQtVLdojs=_9JTTJIYVecCg8PHJHsFtl
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+This series first makes the .bind_iommufd op of vfio emulated devices
+to create iommufd_access, this introduces a new iommufd API. Then let
+the driver that does not provide .bind_iommufd op to use the vfio emulated
+iommufd op set. This makes all vfio device drivers have consistent iommufd
+operations, which is good for adding new device uAPIs in the device cdev
+series.
 
+Change log:
 
-Hello,
-Did you receive the proposal I sent to your email intel-gvt-dev@lists.=
-freedesktop.org? I have an important and beneficial proposal that amic=
-ably suits you. Kindly email=20
+v3:
+ - Use iommufd_get_ioas() for ioas get, hence patch 01 is added to modify
+   the input parameter of iommufd_get_ioas(). (Jason)
+ - Add r-b from Jason and Kevin
+ - Add t-b from Terrence Xu
 
-petzold.brokerwiz@gmail.com mailto:petzold.brokerwiz@gmail.com
+v2: https://lore.kernel.org/kvm/20230316121526.5644-1-yi.l.liu@intel.com/
+ - Add r-b from Kevin and Jason
+ - Refine patch 01 per comments from Jason and Kevin
 
-for details.=20
+v1: https://lore.kernel.org/kvm/20230308131340.459224-1-yi.l.liu@intel.com/
 
-Regards
-Andrew Petzold
+Thanks,
+        Yi Liu
+    
+Nicolin Chen (1):
+  iommufd: Create access in vfio_iommufd_emulated_bind()
 
---EknQtVLdojs=_9JTTJIYVecCg8PHJHsFtl
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Yi Liu (5):
+  iommu/iommufd: Pass iommufd_ctx pointer in iommufd_get_ioas()
+  vfio-iommufd: No need to record iommufd_ctx in vfio_device
+  vfio-iommufd: Make vfio_iommufd_emulated_bind() return iommufd_access
+    ID
+  vfio/mdev: Uses the vfio emulated iommufd ops set in the mdev sample
+    drivers
+  vfio: Check the presence for iommufd callbacks in
+    __vfio_register_dev()
 
+ drivers/iommu/iommufd/device.c          | 55 +++++++++++++++----------
+ drivers/iommu/iommufd/ioas.c            | 14 +++----
+ drivers/iommu/iommufd/iommufd_private.h |  4 +-
+ drivers/iommu/iommufd/selftest.c        | 14 ++++---
+ drivers/iommu/iommufd/vfio_compat.c     |  2 +-
+ drivers/vfio/iommufd.c                  | 37 ++++++++---------
+ drivers/vfio/vfio_main.c                |  5 ++-
+ include/linux/iommufd.h                 |  5 ++-
+ include/linux/vfio.h                    |  1 -
+ samples/vfio-mdev/mbochs.c              |  3 ++
+ samples/vfio-mdev/mdpy.c                |  3 ++
+ samples/vfio-mdev/mtty.c                |  3 ++
+ 12 files changed, 85 insertions(+), 61 deletions(-)
 
-<html><head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-=
-8859-1">
-  <META name=3DGenerator content=3D10.90> <META name=3Dviewport conten=
-t=3D"width=3Ddevice-width, initial-scale=3D1"> <META name=3Dformat-det=
-ection content=3Dtelephone=3Dno> <title>Re: Proposal intel-gvt-dev@lis=
-ts.freedesktop.org</title>
- </head>
- <body style=3D"BACKGROUND-COLOR: #ffffff" bgColor=3D#ffffff> <P style=
-=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif; WHITE=
--SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FONT-WEIGHT: =
-400; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; =
-LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: norm=
-al; font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-de=
-coration-style: initial; text-decoration-color: initial">Hello,<BR>&nb=
-sp;<BR>&nbsp;Did you receive the proposal I sent to your email intel-g=
-vt-dev@lists.freedesktop.org? I have an important and beneficial propo=
-sal that amicably suits you. Kindly email&nbsp;<A style=3D"COLOR: rgb(=
-17,85,204)" href=3D"mailto:petzold.brokerwiz@gmail.com" target=3D_blan=
-k>petzold.brokerwiz@gmail.com</A>&nbsp;for details.&nbsp;&nbsp;</p><p =
-style=3D"FONT-SIZE: small; FONT-FAMILY: Arial, Helvetica, sans-serif; =
-WHITE-SPACE: normal; TEXT-TRANSFORM: none; WORD-SPACING: 0px; FONT-WEI=
-GHT: 400; COLOR: rgb(34,34,34); FONT-STYLE: normal; ORPHANS: 2; WIDOWS=
-: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures:=
- normal; font-variant-caps: normal; -webkit-text-stroke-width: 0px; te=
-xt-decoration-style: initial; text-decoration-color: initial"><STRONG>=
-Regards<BR><FONT color=3D#888888>Andrew Petzold</FONT></STRONG></P></b=
-ody>
- </html>
-
---EknQtVLdojs=_9JTTJIYVecCg8PHJHsFtl--
+-- 
+2.34.1
 
