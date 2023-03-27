@@ -2,43 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54DBB6CA426
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Mar 2023 14:32:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C6556CA63F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Mar 2023 15:47:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2381B10E59F;
-	Mon, 27 Mar 2023 12:32:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 091F510E5D6;
+	Mon, 27 Mar 2023 13:47:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Mon, 27 Mar 2023 12:32:09 UTC
-Received: from mail.mdshar.autos (unknown [194.116.236.39])
- by gabe.freedesktop.org (Postfix) with ESMTP id DD86010E590
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Mon, 27 Mar 2023 13:47:02 UTC
+Received: from mail.atttowers.autos (unknown [193.160.141.67])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A0A4610E5B8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 Mar 2023 12:32:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mdshar.autos;
+ Mon, 27 Mar 2023 13:47:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=atttowers.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=harbor_freight@mdshar.autos; 
- bh=mbIdHdQ5PhOA9E8uD1TGRMgjXho=;
- b=qTueLgDdMzLI9YCWXXTMa368kF00D8S5kSvc7mK2iMKwTkpIsiTdTYlTSb/SfDpGp1Fmr3ao4a7Y
- bIROQkYdcVLl29M0Sx0t+NSjz4Vy3F1yUWbSTfIlO4CHJF90hEdAmy5jwkPCkyOarpy39XDYnhfV
- DszqeMKXe31CepNgyqg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mdshar.autos;
- b=Onrqq+SUTu2QHwRqC9yBYq2DzAtOtqL8plSvYNo4dX9H5NH197K5/f3uomuzviEDtMBuhup7pJ3U
- kUU6NVr4grPx119wxp+6ESv70t/TXpHapdAJFudRpYjSJ3MdJ8f8/SLYh7w/0dRahEgzAnwnneAK
- 4/CBwfEZ5jwMbWsr+w4=;
-Received: by mail.mdshar.autos id h46gci0001gc for
+ i=now.on.att@atttowers.autos; bh=vspl00a5boW1Ch0DHrRo/PprNIs=;
+ b=IqDjG05HlLANVfRPADUK7sI3A/6oizGlwoo9cdVvx2amk3kExMwjAfKl5NUq0rEHsyaC8af4Wx5D
+ dQIFzN4vYHW4zVDAM4buWKiR39/Yu9wh/RepFDtBLFsqD1QKgAOKpUwNgUB4REAb7dnq0ffKeMzf
+ yuc/RzpTwWc8cUwewMg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=atttowers.autos;
+ b=mIINY8kum5L4xh3sd1RiC2oanjxeX034G4yFTBAaJCB/KCJbQiu+J91jHUpMpeHTws3xtB6pUOZ2
+ S79xfhxdQ8d4O6gJSBkWS0zshu6dYFiLhbUd83gUu/MO8TMOJA3eYKr/G/3fognGEBW1mPbhcqdU
+ PRN/pz5ZxR31iYQPTbE=;
+Received: by mail.atttowers.autos id h46p5a0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 Mar 2023 09:48:10 -0400 (envelope-from
- <harbor_freight-intel+2Dgvt+2Ddev=lists.freedesktop.org@mdshar.autos>)
-Date: Mon, 27 Mar 2023 09:48:10 -0400
-From: "Harbor Freight" <harbor_freight@mdshar.autos>
+ Mon, 27 Mar 2023 11:00:42 -0400 (envelope-from
+ <now.on.att-intel+2Dgvt+2Ddev=lists.freedesktop.org@atttowers.autos>)
+Date: Mon, 27 Mar 2023 11:00:42 -0400
+From: "Now On ATT" <now.on.att@atttowers.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Act fast and receive a Milwaukee Drill Set before the offer expires
- today.
+Subject: We have some exciting news for you
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_322_624159493.1679919730285"
-Message-ID: <0.0.0.23.1D960B2C4C8BBD2.2ED883@mail.mdshar.autos>
+ boundary="----=_Part_457_1636459635.1679924095618"
+Message-ID: <0.0.0.32.1D960BCE68F9D30.24AE4@mail.atttowers.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,44 +52,41 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_322_624159493.1679919730285
+------=_Part_457_1636459635.1679924095618
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
---------------------------------------------
+A SPECIAL OFFER FOR OUR VALUED USERS
+---------------------------------------------
+
+AT&T
+
+We wanted to take a moment to thank you for choosing AT&T.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+
+TAKE THE SURVEY >>>>>
+http://www.atttowers.autos/d8b5U23Q95PZ8K611l50f1m1301O36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQjQooe7C1ruoO06Hk3wqD/steadfastly-chromium
 
 
-HARBOR FREIGHT
-
-We wanted to take a moment to thank you for choosing Harbor Freight.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
-
-As a token of our appreciation, we would like to give you a FREE Milwaukee Drill Set! when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
+Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
 
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-
-Take The survey >>>>>
-http://www.mdshar.autos/ingeniously-theatrically/22e4F2395C8P_611O50edW12ffn36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQtQooR7ls1u0os6zJ3OwD
+Upon Completion of the Survey you might have a choice between different gifts!
 
 
 
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+Thank you again for your support.  We look forward to hearing from you soon!, Warm regards
 
+The AT&T Survey
 
-Best regards,
-The Harbor Freight Survey Team
-
---------------------------------------------
-
-To bring notifications to an close, click_here >>>>> http://www.mdshar.autos/9174J2395DUk8611H50eeR12ffJ36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQtQooR6J10CwQ5ApwBD/reinterpreted-groped
+---------------------------------------------
+To cut e-mail, click_here >>>>> http://www.atttowers.autos/6656u2tv395RS86I13j5P0fu2o1301P36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQjQooe5Kr10N6tL0BwD/lobby-adequate
 126 E 23rd St New York, NY, US 10010
 
-<style face="unsuccessfully"><style></style><font color="exchanged"></style><style color="distinctive"></style></font><font size="inflater"></font><style><span size="usable"><font><big></span><font size="bunglers"></font></font></style></big>
 
-------=_Part_322_624159493.1679919730285--
+
+<font dir="gaunt"><span class="realizes"><style face="teacher"></font></style></span>
+
+------=_Part_457_1636459635.1679924095618--
 
