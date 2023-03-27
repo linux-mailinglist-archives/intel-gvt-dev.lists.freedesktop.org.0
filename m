@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23A5D6CB096
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Mar 2023 23:22:45 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F17F6CB1E3
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 00:43:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E8C7710E767;
-	Mon, 27 Mar 2023 21:22:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F1F1110E7A4;
+	Mon, 27 Mar 2023 22:42:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Mon, 27 Mar 2023 21:22:42 UTC
-Received: from mail.khlsknife.autos (unknown [193.160.141.81])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0691910E767
+ Mon, 27 Mar 2023 22:42:56 UTC
+Received: from mail.tatbucks.click (unknown [193.160.141.78])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 99B0110E78A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 Mar 2023 21:22:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=khlsknife.autos; 
+ Mon, 27 Mar 2023 22:42:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tatbucks.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohlsperks@khlsknife.autos; bh=ZJNeDcVFzqlPamGqZUyvUK+k0H8=;
- b=ZTEcJPhSU60wSmkQXG4NSnAKeWEYNSxcg3b5DlYzvdT0n9FapgOpRi9rCP5nfUOagTLIyJzEzftK
- BfDBPx6VjxbmkSMIjj2toxepHZF3wF8DM2lrjpcWV6drc8L9VMX/F72NeTLN1kUU5wHpMx7VyE8y
- QGr964mhDgZLpezJoUQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=khlsknife.autos;
- b=PROlMMfQOAx5WRP4JYaFk8sqUxwoJiQE9w5IxA7pkO2BJ96MzIpJYUDb2hXo1d01gLaCPPfZ6dw7
- Gtz+5n1zh3PcmEBYvWz2uhuvyzK7ZiaXnlupDlepQPb9l+beM8lhxs0X2f87zFoc503VqbKvnlj7
- xYPemAfB5heIVcFfoNs=;
-Received: by mail.khlsknife.autos id h484i40001gu for
+ i=starbucks.support.team@tatbucks.click; 
+ bh=pA6gMfqa73IKt3g+f/yUlPE9iiY=;
+ b=soIt2DpFXDQTrCDMhF2xNytLjNEItqkSg/MKDGtZcJQ5XvwQVjxwQjuK1jN6ondMIc+ISGVcmzIj
+ CCe5fYbmHzhQ1Kl3+k+Q0WpInXUGXLfsg1+sSYe5keAUOZFSgNSxfyYKdVX3fGM4SoLaEP95H6jS
+ ijg7P7aefiEzHgFMwOo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tatbucks.click;
+ b=ZgGyckdSyeVg0xaqElyygClRMdRoDzmAwAVi9hHACGcFRPFjhxHEW7Ma029X7b0RksOv7OhMzPWk
+ 0MgcvLPzz8EBrfydrFp9SgIZ1S4gPbtLZl0fuxMC72m4B5DK6P9zGdFF3GE1SvdGCl34VcnBjc+k
+ 5pofe83sdWv2H/4Nke8=;
+Received: by mail.tatbucks.click id h48dv00001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 27 Mar 2023 17:11:24 -0400 (envelope-from
- <kohlsperks-intel+2Dgvt+2Ddev=lists.freedesktop.org@khlsknife.autos>)
-Date: Mon, 27 Mar 2023 17:11:24 -0400
-From: KohlsPerks <kohlsperks@khlsknife.autos>
+ Mon, 27 Mar 2023 18:31:23 -0400 (envelope-from
+ <starbucks.support.team-intel+2Dgvt+2Ddev=lists.freedesktop.org@tatbucks.click>)
+Date: Mon, 27 Mar 2023 18:31:23 -0400
+From: "Starbucks Support Team" <starbucks.support.team@tatbucks.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Time is running out - receive a Ninja Knife Set before the offer ends
- today.
+Subject: We appreciate your loyalty, pick any gift on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_688_500001331.1679951453528"
-Message-ID: <0.0.0.4B.1D960F0B016AEE0.1FC8D6@mail.khlsknife.autos>
+ boundary="----=_Part_733_405781088.1679956240838"
+Message-ID: <0.0.0.51.1D960FBDC58AA34.171637@mail.tatbucks.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,38 +53,44 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_688_500001331.1679951453528
+------=_Part_733_405781088.1679956240838
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
--------------------------------------------------
-
-KOHL'S Rewards
+A SPECIAL OFFER FOR OUR VALUED USERS
+-----------------------------------------
 
 
-We wanted to take a moment to thank you for choosing Kohl's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
-
-As a token of our appreciation, we would like to give you a FREE Ninja Knife Set when you fill out our survey.  This set includes a variety of high-quality knives that will help you with all your kitchen needs and is yours to keep, no strings attached. 
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts
-
-Start Here Now >>>>>
-http://www.khlsknife.autos/c236s2It395j8k6j13s51nJ05s130bK36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ1Qo9e6DV1VP06CONwpD/TENEX-gunshot
+STARBUCKS
 
 
+We want you to know that it is important for us to know your opinion when it comes to having a delicious coffee, for this reason Starbucks wants to thank you for choosing us as your ideal place for those meetings and special occasions. 
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
-Best regards, The Kohl's Survey Team
+As part of our commitment to providing the best possible experience, we would like to invite you to participate in a short survey about your overall experience with Starbucks. 
 
--------------------------------------------------
-No longer wish to receive communication from us?, click_here >>>>> http://www.khlsknife.autos/blizzards-telescoped/80a6E2VJ395zh8R612Q510v6Q130bI36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ1Qo9e7wYs10Hz6Ql@0wD
+
+By taking the survey you might receive a $100 gift card
+
+
+
+TAKE THE SURVEY >>>>>
+http://www.tatbucks.click/5ed6aA23k95H8v6m12QR510bL130eS36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQXQodn7u1UZig06R@N@wD/sideboard-craftiness
+
+
+
+Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
+
+The Starbucks Survey
+
+-----------------------------------------
+
+To refrain from email, click_here >>>>> http://www.tatbucks.click/informally-screen/cba5M23_95Y8K6x11y510ch130eC36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQXQodn7q1izr0Z5SWwlD
 126 E 23rd St New York, NY, US 10010
 
 
 
-<span><font></span><span><style><style></style></span></font></style><small></small><font></font><style></style><font dir="commemorative"></font>
+<span></span><font class="Norris"></font><small></small><font id="lanes"></font><font></font><small></small><span title="waived"><big></big></span><style size="replay"></style><span title="solutions"></span>
 
-------=_Part_688_500001331.1679951453528--
+------=_Part_733_405781088.1679956240838--
 
