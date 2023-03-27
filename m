@@ -2,46 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C7176C9FC0
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Mar 2023 11:35:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B11636C9FC2
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Mar 2023 11:35:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5C89A10E390;
-	Mon, 27 Mar 2023 09:35:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8928610E378;
+	Mon, 27 Mar 2023 09:35:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 32BBF10E363;
- Mon, 27 Mar 2023 09:35:04 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 98BA210E388;
+ Mon, 27 Mar 2023 09:35:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679909704; x=1711445704;
+ t=1679909705; x=1711445705;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=GInm+3DnElLmSvJJLYAMBhnzd2opXH4SR3j570LhFkU=;
- b=lbRZ0NNW1mwTU6I+vRNTxRPBKrBij3sPN0JvKNM1Vsldt+d/vFFNWBMj
- AD8TEv4ABDrxbFDFYyM6HIpdOlGyJp8p3mh97msix8dBJ5tMESCrKj9Hk
- KSb9Xm/s26J9HwOWRs7zoECjXySmwo1EYIiu7rdEZsnf4wKYQsKSuRimt
- o0uAY6NJnnnV/NBpYiN8qaF5npAqYPjHk6TVUG0RIRa/4RqWCZ/BlGfqi
- CkKPGJlZDsUKo7vb8VbpNDMNDcniHXzK7YzKFGPmsyJU10cCL6L0O5dcn
- KSxtrLo1bvZhDpfP/00DKCgOqjTV40QpPF2aJYkOfiYMbR4Wuh44y3kKW Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="319879523"
-X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; d="scan'208";a="319879523"
+ bh=DspUHqM3GniNFDpFuKlLGJpDgU4kjJg6COLxwo46xbI=;
+ b=ak8BV5ncrlYJMQnM78Vvg57MSPcJQIkmX2PdXXgH8gk721etlI12L/Tt
+ kiU8hRnzzI6aF7tUWXnGrxzxupZqcCdT5CG62ItTaMxc5G/gw3IWO7mUI
+ 0SlD7jblO5lD2codSx2HI4lZruovzHQ447PTKuLqad2f5jmT5zUjUG5IA
+ ZaK+kegrXDu1gUmXrtyijdNC0JcYhNofvUUSeJSy0rGi4suQ3su6KzZ+y
+ rNLPHicc1Ah8qCwbObMD70WGWFPrNqCaPYc/4cZOLjPJU3h5vZm72VDQo
+ OfBfMHhcV9Xtb+JnftxAB7RfHN8ENsGy2Oc/1xRPsJvxDzPJXKgwSAcBv w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="319879536"
+X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; d="scan'208";a="319879536"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Mar 2023 02:35:03 -0700
+ 27 Mar 2023 02:35:05 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="633554634"
-X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; d="scan'208";a="633554634"
+X-IronPort-AV: E=McAfee;i="6600,9927,10661"; a="633554643"
+X-IronPort-AV: E=Sophos;i="5.98,294,1673942400"; d="scan'208";a="633554643"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by orsmga003.jf.intel.com with ESMTP; 27 Mar 2023 02:35:03 -0700
+ by orsmga003.jf.intel.com with ESMTP; 27 Mar 2023 02:35:04 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v2 04/10] vfio-iommufd: Add helper to retrieve iommufd_ctx and
- devid for vfio_device
-Date: Mon, 27 Mar 2023 02:34:52 -0700
-Message-Id: <20230327093458.44939-5-yi.l.liu@intel.com>
+Subject: [PATCH v2 05/10] vfio/pci: Allow passing zero-length fd array in
+ VFIO_DEVICE_PCI_HOT_RESET
+Date: Mon, 27 Mar 2023 02:34:53 -0700
+Message-Id: <20230327093458.44939-6-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230327093458.44939-1-yi.l.liu@intel.com>
 References: <20230327093458.44939-1-yi.l.liu@intel.com>
@@ -70,112 +70,155 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is needed by the vfio pci driver to report affected devices in the
-hot reset for a given device.
+as an alternative method for ownership check when iommufd is used. In
+this case all opened devices in the affected dev_set are verified to
+be bound to a same valid iommufd value to allow reset. It's simpler
+and faster as user does not need to pass a set of fds and kernel no
+need to search the device within the given fds.
 
+a device in noiommu mode doesn't have a valid iommufd, so this method
+should not be used in a dev_set which contains multiple devices and one
+of them is in noiommu. The only allowed noiommu scenario is that the
+calling device is noiommu and it's in a singleton dev_set.
+
+Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/iommu/iommufd/device.c | 12 ++++++++++++
- drivers/vfio/iommufd.c         | 16 ++++++++++++++++
- include/linux/iommufd.h        |  3 +++
- include/linux/vfio.h           | 13 +++++++++++++
- 4 files changed, 44 insertions(+)
+ drivers/vfio/pci/vfio_pci_core.c | 42 +++++++++++++++++++++++++++-----
+ include/uapi/linux/vfio.h        |  9 ++++++-
+ 2 files changed, 44 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/iommu/iommufd/device.c b/drivers/iommu/iommufd/device.c
-index 25115d401d8f..04a57aa1ae2c 100644
---- a/drivers/iommu/iommufd/device.c
-+++ b/drivers/iommu/iommufd/device.c
-@@ -131,6 +131,18 @@ void iommufd_device_unbind(struct iommufd_device *idev)
- }
- EXPORT_SYMBOL_NS_GPL(iommufd_device_unbind, IOMMUFD);
+diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
+index 3696b8e58445..b68fcba67a4b 100644
+--- a/drivers/vfio/pci/vfio_pci_core.c
++++ b/drivers/vfio/pci/vfio_pci_core.c
+@@ -180,7 +180,8 @@ static void vfio_pci_probe_mmaps(struct vfio_pci_core_device *vdev)
+ struct vfio_pci_group_info;
+ static void vfio_pci_dev_set_try_reset(struct vfio_device_set *dev_set);
+ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
+-				      struct vfio_pci_group_info *groups);
++				      struct vfio_pci_group_info *groups,
++				      struct iommufd_ctx *iommufd_ctx);
  
-+struct iommufd_ctx *iommufd_device_to_ictx(struct iommufd_device *idev)
-+{
-+	return idev->ictx;
-+}
-+EXPORT_SYMBOL_NS_GPL(iommufd_device_to_ictx, IOMMUFD);
-+
-+u32 iommufd_device_to_id(struct iommufd_device *idev)
-+{
-+	return idev->obj.id;
-+}
-+EXPORT_SYMBOL_NS_GPL(iommufd_device_to_id, IOMMUFD);
-+
- static int iommufd_device_setup_msi(struct iommufd_device *idev,
- 				    struct iommufd_hw_pagetable *hwpt,
- 				    phys_addr_t sw_msi_start)
-diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
-index 88b00c501015..44088049dbb1 100644
---- a/drivers/vfio/iommufd.c
-+++ b/drivers/vfio/iommufd.c
-@@ -66,6 +66,22 @@ void vfio_iommufd_unbind(struct vfio_device *vdev)
- 		vdev->ops->unbind_iommufd(vdev);
- }
- 
-+struct iommufd_ctx *vfio_iommufd_physical_ictx(struct vfio_device *vdev)
-+{
-+	if (!vdev->iommufd_device)
-+		return NULL;
-+	return iommufd_device_to_ictx(vdev->iommufd_device);
-+}
-+EXPORT_SYMBOL_GPL(vfio_iommufd_physical_ictx);
-+
-+int vfio_iommufd_physical_devid(struct vfio_device *vdev, u32 *id)
-+{
-+	if (!vdev->iommufd_device)
-+		return -EINVAL;
-+	*id = iommufd_device_to_id(vdev->iommufd_device);
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(vfio_iommufd_physical_devid);
  /*
-  * The physical standard ops mean that the iommufd_device is bound to the
-  * physical device vdev->dev that was provided to vfio_init_group_dev(). Drivers
-diff --git a/include/linux/iommufd.h b/include/linux/iommufd.h
-index 1129a36a74c4..ac96df406833 100644
---- a/include/linux/iommufd.h
-+++ b/include/linux/iommufd.h
-@@ -24,6 +24,9 @@ void iommufd_device_unbind(struct iommufd_device *idev);
- int iommufd_device_attach(struct iommufd_device *idev, u32 *pt_id);
- void iommufd_device_detach(struct iommufd_device *idev);
+  * INTx masking requires the ability to disable INTx signaling via PCI_COMMAND
+@@ -1277,7 +1278,7 @@ vfio_pci_ioctl_pci_hot_reset_groups(struct vfio_pci_core_device *vdev,
+ 		return ret;
  
-+struct iommufd_ctx *iommufd_device_to_ictx(struct iommufd_device *idev);
-+u32 iommufd_device_to_id(struct iommufd_device *idev);
+ 	/* Somewhere between 1 and count is OK */
+-	if (!hdr->count || hdr->count > count)
++	if (hdr->count > count)
+ 		return -EINVAL;
+ 
+ 	group_fds = kcalloc(hdr->count, sizeof(*group_fds), GFP_KERNEL);
+@@ -1326,7 +1327,7 @@ vfio_pci_ioctl_pci_hot_reset_groups(struct vfio_pci_core_device *vdev,
+ 	info.count = hdr->count;
+ 	info.files = files;
+ 
+-	ret = vfio_pci_dev_set_hot_reset(vdev->vdev.dev_set, &info);
++	ret = vfio_pci_dev_set_hot_reset(vdev->vdev.dev_set, &info, NULL);
+ 
+ hot_reset_release:
+ 	for (file_idx--; file_idx >= 0; file_idx--)
+@@ -1341,6 +1342,7 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
+ {
+ 	unsigned long minsz = offsetofend(struct vfio_pci_hot_reset, count);
+ 	struct vfio_pci_hot_reset hdr;
++	struct iommufd_ctx *iommufd;
+ 	bool slot = false;
+ 
+ 	if (copy_from_user(&hdr, arg, minsz))
+@@ -1355,7 +1357,12 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
+ 	else if (pci_probe_reset_bus(vdev->pdev->bus))
+ 		return -ENODEV;
+ 
+-	return vfio_pci_ioctl_pci_hot_reset_groups(vdev, &hdr, slot, arg);
++	if (hdr.count)
++		return vfio_pci_ioctl_pci_hot_reset_groups(vdev, &hdr, slot, arg);
 +
- struct iommufd_access_ops {
- 	u8 needs_pin_pages : 1;
- 	void (*unmap)(void *data, unsigned long iova, unsigned long length);
-diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index 3188d8a374bd..e54bef5489a0 100644
---- a/include/linux/vfio.h
-+++ b/include/linux/vfio.h
-@@ -113,6 +113,8 @@ struct vfio_device_ops {
- };
++	iommufd = vfio_iommufd_physical_ictx(&vdev->vdev);
++
++	return vfio_pci_dev_set_hot_reset(vdev->vdev.dev_set, NULL, iommufd);
+ }
  
- #if IS_ENABLED(CONFIG_IOMMUFD)
-+struct iommufd_ctx *vfio_iommufd_physical_ictx(struct vfio_device *vdev);
-+int vfio_iommufd_physical_devid(struct vfio_device *vdev, u32 *id);
- int vfio_iommufd_physical_bind(struct vfio_device *vdev,
- 			       struct iommufd_ctx *ictx, u32 *out_device_id);
- void vfio_iommufd_physical_unbind(struct vfio_device *vdev);
-@@ -122,6 +124,17 @@ int vfio_iommufd_emulated_bind(struct vfio_device *vdev,
- void vfio_iommufd_emulated_unbind(struct vfio_device *vdev);
- int vfio_iommufd_emulated_attach_ioas(struct vfio_device *vdev, u32 *pt_id);
- #else
-+static inline struct iommufd_ctx *
-+vfio_iommufd_physical_ictx(struct vfio_device *vdev)
+ static int vfio_pci_ioctl_ioeventfd(struct vfio_pci_core_device *vdev,
+@@ -2327,6 +2334,9 @@ static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
+ {
+ 	unsigned int i;
+ 
++	if (!groups)
++		return false;
++
+ 	for (i = 0; i < groups->count; i++)
+ 		if (vfio_file_has_dev(groups->files[i], &vdev->vdev))
+ 			return true;
+@@ -2402,13 +2412,25 @@ static int vfio_pci_dev_set_pm_runtime_get(struct vfio_device_set *dev_set)
+ 	return ret;
+ }
+ 
++static bool vfio_dev_in_iommufd_ctx(struct vfio_pci_core_device *vdev,
++				    struct iommufd_ctx *iommufd_ctx)
 +{
-+	return NULL;
++	struct iommufd_ctx *iommufd = vfio_iommufd_physical_ictx(&vdev->vdev);
++
++	if (!iommufd)
++		return false;
++
++	return iommufd == iommufd_ctx;
 +}
 +
-+static inline int vfio_iommufd_physical_devid(struct vfio_device *vdev, u32 *id)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
- #define vfio_iommufd_physical_bind                                      \
- 	((int (*)(struct vfio_device *vdev, struct iommufd_ctx *ictx,   \
- 		  u32 *out_device_id)) NULL)
+ /*
+  * We need to get memory_lock for each device, but devices can share mmap_lock,
+  * therefore we need to zap and hold the vma_lock for each device, and only then
+  * get each memory_lock.
+  */
+ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
+-				      struct vfio_pci_group_info *groups)
++				      struct vfio_pci_group_info *groups,
++				      struct iommufd_ctx *iommufd_ctx)
+ {
+ 	struct vfio_pci_core_device *cur_mem;
+ 	struct vfio_pci_core_device *cur_vma;
+@@ -2448,9 +2470,17 @@ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
+ 		 *
+ 		 * Otherwise all opened devices in the dev_set must be
+ 		 * contained by the set of groups provided by the user.
++		 *
++		 * If user provides a zero-length array, then all the
++		 * opened devices must be bound to a same iommufd_ctx.
++		 *
++		 * If all above checks are failed, reset is allowed only if
++		 * the calling device is in a singleton dev_set.
+ 		 */
+ 		if (cur_vma->vdev.open_count &&
+-		    !vfio_dev_in_groups(cur_vma, groups)) {
++		    !vfio_dev_in_groups(cur_vma, groups) &&
++		    !vfio_dev_in_iommufd_ctx(cur_vma, iommufd_ctx) &&
++		    (dev_set->device_count > 1)) {
+ 			ret = -EINVAL;
+ 			goto err_undo;
+ 		}
+diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
+index f96e5689cffc..17aa5d09db41 100644
+--- a/include/uapi/linux/vfio.h
++++ b/include/uapi/linux/vfio.h
+@@ -679,7 +679,14 @@ struct vfio_pci_hot_reset_info {
+  * the calling user must ensure all affected devices, if opened, are
+  * owned by itself.
+  *
+- * The ownership is proved by an array of group fds.
++ * The ownership can be proved by:
++ *   - An array of group fds
++ *   - A zero-length array
++ *
++ * In the last case all affected devices which are opened by this user
++ * must have been bound to a same iommufd. If the calling device is in
++ * noiommu mode (no valid iommufd) then it can be reset only if the reset
++ * doesn't affect other devices.
+  *
+  * Return: 0 on success, -errno on failure.
+  */
 -- 
 2.34.1
 
