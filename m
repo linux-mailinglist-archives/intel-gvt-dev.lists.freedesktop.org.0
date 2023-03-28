@@ -1,42 +1,88 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0829E6CCA76
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 21:11:06 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AE216CCA6E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 21:09:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C4ABE10E9C6;
-	Tue, 28 Mar 2023 19:11:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 09BDD10E4AE;
+	Tue, 28 Mar 2023 19:09:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Tue, 28 Mar 2023 19:11:02 UTC
-Received: from mail.vznova.click (unknown [193.160.141.89])
- by gabe.freedesktop.org (Postfix) with ESMTP id 34C6910E9C6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CE6DF10E9A5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Mar 2023 19:11:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vznova.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=verizon.news@vznova.click; bh=wsMg3iClUMUXC4iNA8h+R9CXuH8=;
- b=ibRGtkQ8yKno7nsXLUfKyAlJfXzKCo7/W2aqm02W/HdGvjcSV4OMXSgZJQA1e3ybTQzavYqQHU2Z
- J3/FnXystPipIi8nSW+KcM4c+b/FqdwBGSt6hWZVc1KznPjO7/sGuVeMcJjTdZ0ibyDoswkCGqyQ
- tUK8ufTAyyIvqItDzz8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vznova.click;
- b=Lz6rPi+LPD6efYTRiSmsoaCtHbuQXZPiJh6LC7A/I3g0ye/2T5x7KOnxgxEC71inYWHnBFv6v/pj
- VebaRwk2LJ9SgU2zJUCp7RhKLWtccFABUW4Hi3XlCYynFVVDoE2N/EAT4JC+1etefwiDuhtDzPa2
- kS3dboiiZ14vhclVb48=;
-Received: by mail.vznova.click id h4ctsc0001g5 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Mar 2023 14:59:21 -0400 (envelope-from
- <verizon.news-intel+2Dgvt+2Ddev=lists.freedesktop.org@vznova.click>)
-Date: Tue, 28 Mar 2023 14:59:21 -0400
-From: "VERIZON News" <verizon.news@vznova.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every Visit, you are rewarded for your loyalty - Yayy
+ Tue, 28 Mar 2023 19:09:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1680030594;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TyWlyMYo12Ph4alZhZ7htkhRhM6u2cJ70JNCkvZ77kk=;
+ b=EcIkbxgV7kl8jWj2AP1hScdO6nw8KKpuUblctRbQeGk3oAmSsJeHcX/mkGxYlWYPjXqobw
+ ZOkpXFSoPdQdx0frLmbn2SjOHgYAfLWt3fARIr3bl4JCaidp6rvn6Jgqsaq5EbdMiIwP7s
+ Nnt4LgLbm1BzNEseVFrTFeT6LTsVs0Y=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-351-0PHg3JWkNiOHicrq1Gu7tQ-1; Tue, 28 Mar 2023 15:09:53 -0400
+X-MC-Unique: 0PHg3JWkNiOHicrq1Gu7tQ-1
+Received: by mail-il1-f199.google.com with SMTP id
+ i17-20020a056e020d9100b00325a80f683cso8926803ilj.22
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 28 Mar 2023 12:09:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1680030593;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=TyWlyMYo12Ph4alZhZ7htkhRhM6u2cJ70JNCkvZ77kk=;
+ b=W8PQIXD8obqndV2Ymtz+Xw9iybqHYOuHAUK6IikhtkyvAYEryOk6gUEI7vWPcS3Ewe
+ Brrn0qTPZrJj+C76a8yxkrDnJAUTLYtQEa/UY2diQEHKroWkU35wFtwiOXBfvsGIpl/x
+ tO/L+h2PwtdR7ZvPCutiJD9ffIOirqsy+nRKynC4W4H+zsEsBqyPExoV1e0xjOAIjoYS
+ OygJeXQyKnfUj+8VBJV74zBoj9iTfipODMar87kKzqlSsjFgPqyHQeUGke3rh4WA/A99
+ 2GL+fQqlDKowgPAq1sp70UiRQSewLqD6apNH2I2jEU+dRjzm3CB0dJqWelSM3ZUnHPmN
+ HlCg==
+X-Gm-Message-State: AAQBX9cdGBKG4E56wOR3Pw3yy3iJxTq/kFJoFhKvf1nFHUJXBgGO3btB
+ RdtW9dtfyYfJ5punLmNBYKovNpxOGaS/IE1+nWXZw+EDJnBp3woh73aToa1ayOcVUv4HSbLvrVH
+ q/u6j2DojZ7RiMYdS+w4K4YQfK81B9lL4UQ==
+X-Received: by 2002:a5e:a807:0:b0:759:95a5:327a with SMTP id
+ c7-20020a5ea807000000b0075995a5327amr9970711ioa.11.1680030592759; 
+ Tue, 28 Mar 2023 12:09:52 -0700 (PDT)
+X-Google-Smtp-Source: AKy350adFeqCticunFGKIu5P/YegCKYF+iyr4sSWve2FbSdhytCLKP/q4euprZAtfzr1TdiDa6uHKw==
+X-Received: by 2002:a5e:a807:0:b0:759:95a5:327a with SMTP id
+ c7-20020a5ea807000000b0075995a5327amr9970693ioa.11.1680030592532; 
+ Tue, 28 Mar 2023 12:09:52 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ g9-20020a025b09000000b00374fa5b600csm9992351jab.0.2023.03.28.12.09.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Mar 2023 12:09:52 -0700 (PDT)
+Date: Tue, 28 Mar 2023 13:09:49 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH v2 10/10] vfio/pci: Add
+ VFIO_DEVICE_GET_PCI_HOT_RESET_GROUP_INFO
+Message-ID: <20230328130949.225bc680.alex.williamson@redhat.com>
+In-Reply-To: <ZCMV4zMhpVJJCIKN@nvidia.com>
+References: <20230327093458.44939-1-yi.l.liu@intel.com>
+ <20230327093458.44939-11-yi.l.liu@intel.com>
+ <20230327132619.5ab15440.alex.williamson@redhat.com>
+ <DS0PR11MB7529E969C27995D535A24EC0C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <BL1PR11MB52717FB9E6D5C10BF4B7DA0A8C889@BL1PR11MB5271.namprd11.prod.outlook.com>
+ <20230328082536.5400da67.alex.williamson@redhat.com>
+ <DS0PR11MB7529B6782565BE8489D922F9C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230328084616.3361a293.alex.williamson@redhat.com>
+ <DS0PR11MB75290B84D334FC726A8BBA95C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230328091801.13de042a.alex.williamson@redhat.com>
+ <ZCMV4zMhpVJJCIKN@nvidia.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_616_135468765.1680029933782"
-Message-ID: <0.0.0.44.1D961A767EB28AA.1AF563@mail.vznova.click>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,44 +95,75 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_616_135468765.1680029933782
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+On Tue, 28 Mar 2023 13:29:23 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
 
-A SPECIAL OFFER FOR OUR VALUED USERS
------------------------------------------
-VERIZON
+> On Tue, Mar 28, 2023 at 09:18:01AM -0600, Alex Williamson wrote:
+> 
+> > It's a niche case, but I think it needs to be allowed.  We'd still
+> > report the bdf for those devices, but make use of the invalid/null
+> > dev-id.  
+> 
+> IDK, it makes the whole implementation much more complicated. Instead
+> of just copying the current dev_set to the output and calling
+> vfio_pci_dev_set_resettable() we need to do something more complex..
+> 
+> Keeping the current ioctl as-is means this IOCTL can be used to do any
+> debugging by getting the actual BDF list.
+> 
+> It means we can make the a new ioctl simple and just return the dev_id
+> array without these edge complications. I don't think merging two
+> different ioctls is helping make things simple..
 
+OTOH, we already have an ioctl that essentially "does the right thing",
+we just want to swap out one return field for another.  So which is
+more complicated, adding another ioctl that does not quite the same
+thing but still needing to maintain the old ioctl for detailed
+information, or making the old ioctl bi-modal to return the appropriate
+information for the type of device used to access it?
 
-As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your experience with Verizon in general. 
+> It seems like it does what qemu wants: call the new IOCTL, if it
+> fails, call the old IOCTL and print out the BDF list to help debug and
+> then exit.
 
-Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+Userspace is already dealing with a variable length array for the
+return value, why would it ever want to repeat that process to get
+debugging info.  Besides, wouldn't QEMU prefer the similarity of making
+the same call for groups and cdev and simply keying on the data type of
+one field?
 
+> On success use the data in the new ioctl to generate the machine
+> configuration to pass the reset grouping into the VM.
+> 
+> When reset actually comes in just trigger it.
 
-Upon Completion of the Survey you might have a choice between different gifts!
+"Just trigger it" is the same in either case.  It seems bold to play
+the complexity argument when we already have a function that does 90%
+the correct thing where we can share much of the implementation and
+userspace code without duplicating, but still relying on a legacy
+interface for debugging.  Thanks,
 
-
-Get Me There Now >>>>>
-http://www.vznova.click/raiser-airer/40e4F2395eh86v11s511bN1316s36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2QodK7A1Vq_0p5N0PwD
-
-
-Thank you again for your support.  We look forward to hearing from you soon
-
-
-Warm regards,
-The Verizon Survey
-
-
------------------------------------------
-To cut out notices, click_here >>>>> http://www.vznova.click/marshes-prolix/daa4G2395hp8J612ck511ch1316j36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ2QodK6XW1sj05YN@wD
-126 E 23rd St New York, NY, US 10010
-
-
-
-<big></big><font></font><span dir="stratospheric"><span face="Smucker"></span></span><style id="stoles"><style></style></style><small></small>
-
-------=_Part_616_135468765.1680029933782--
+Alex
 
