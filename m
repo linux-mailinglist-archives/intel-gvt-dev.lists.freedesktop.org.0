@@ -1,83 +1,71 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 077D46CC437
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 17:01:23 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DCDF6CC5CA
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 17:18:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D40AD10E0E2;
-	Tue, 28 Mar 2023 15:01:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3FA9610E0E0;
+	Tue, 28 Mar 2023 15:18:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3F23010E10F;
- Tue, 28 Mar 2023 15:01:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1680015680; x=1711551680;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=7dKuorAvDSf748yf9JlHRdB5Gr3HzSafGazGs4KPmg8=;
- b=PYZQBkb47T7wdxiLgsaYKozaxGRodDLQft7EmLwd+wJynuPA1HS5fYWi
- 7x/SgV9LxZgoF2PYqWpQhZyaY4FKCoE0sEqg60ucyPoXMPWG+smK2CQxR
- Zb2/B+8xv+W2Lou/3GmjdHbhKlbqr4eDm65jJe9jBKAQW9/ykj6z618/M
- gXRNO3Cb2KMKNiIIcJ5YQc5fjGHKy83gzT8DMCwqqt75RjnEqlGDSxkJK
- krxq29XvnIYIdOhRek87QXRHzWIXCuvyJ9CO9UHRwDLmIN01nGo/Fohv6
- uZY8Lf6Ho8M3MP76l/4Kfgws1CkVRTZNVKnidHiEd8LCZUxKguFDdotBI Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10662"; a="405526255"
-X-IronPort-AV: E=Sophos;i="5.98,297,1673942400"; d="scan'208";a="405526255"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Mar 2023 08:00:46 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10662"; a="716508117"
-X-IronPort-AV: E=Sophos;i="5.98,297,1673942400"; d="scan'208";a="716508117"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orsmga001.jf.intel.com with ESMTP; 28 Mar 2023 08:00:46 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 28 Mar 2023 08:00:46 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 28 Mar 2023 08:00:45 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Tue, 28 Mar 2023 08:00:45 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.177)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Tue, 28 Mar 2023 08:00:45 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EPSAN36wwJ3os5/8NInSmWTzWqtHeFAzb3TTKMhKwD4KTtpoK1JG7WI21T2vLGWE25wRIQilOHpp4P1boLgbZwbCNHezWvd+4wUpAWhgjB8/V/Yf9GO+kdiKDgtL/t5cpj+5xWLI7ecjqrh5AUN/4NiyenyR1Qxfv6ER6I23Rm/Iq+dUiDhr+zvUZFmwzOM3xgb/CLxZDZwGShXercFE/olIClQ7cZf/lhrK9ya8fFrbKCvdPHrcKi+Mov9NiObBVQ2Q1Icu4j1PYOUmab1Cz8k53QV/naUSur6CqWYDFrhcy9AXgyLTXSQX3f2BJIyNvP8bkKEdvTGlG7qJW/N+EQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fFUusXdcHyUjHq5OlY4WY0pdZl8F6OqPNGD0cDTBHqU=;
- b=Rsvq92PDJA5+LdRCsHsHVz9aOIQaYSKEJcgMGbE3qwU7KQpdi2hrcposIpIaKr3U6fFW4Mkm0QkdotFv9dAPXt1oQN6N3obqBk8GYf3GhkKya5t5AC76h5KQYsdaYbiVq+Jn5jeDWPeKJ2uGnqivHLXCQwXlRJbrNdcvkhkShg5EADldIXMh4/+XX2YI3fxdEHajYQyTcD0ldycq7eb+iDIZ746Rh+NySdgxp6o493eZOdb1QSAf6Yh/lLk/WPj2tpsBS8LZb9Jp0SSNoHl8+e1QFv+gj/qiQVJdcLTX5isj75OlzeZSXVPZDFYJMSh0wVmQRAkDylc8gsL8KN7aQA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by DM4PR11MB5295.namprd11.prod.outlook.com (2603:10b6:5:392::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6222.33; Tue, 28 Mar
- 2023 15:00:43 +0000
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::6f7:944a:aaad:301f]) by DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::6f7:944a:aaad:301f%8]) with mapi id 15.20.6178.041; Tue, 28 Mar 2023
- 15:00:43 +0000
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: RE: [PATCH v2 10/10] vfio/pci: Add
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1796A10E930
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 28 Mar 2023 15:18:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1680016686;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8aHNtdN3xOBjSLsYW0pKjqjlT/tHgtXNulTCwMmSCPc=;
+ b=CpFmTib6ANs+iCTSPGNi62Gn2BS1ztyaFiRXA4Ui3Mh/QUQDVuXb470LwhP3CU3IIoVCF1
+ ZPvsAPbk+KtmqNdl7wtQiALCdwPH+HEZqTt257LcVDdSTpnUjkcD9rLnhLgo4MlIkjCvDS
+ MdgqeJNThLTkZdLLy1SOwfnNtTvI5dM=
+Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
+ [209.85.166.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-399-O0YVBhV7PduuJ-zdDdedjQ-1; Tue, 28 Mar 2023 11:18:04 -0400
+X-MC-Unique: O0YVBhV7PduuJ-zdDdedjQ-1
+Received: by mail-io1-f71.google.com with SMTP id
+ h136-20020a6bb78e000000b00758b105cdd3so7911180iof.23
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 28 Mar 2023 08:18:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1680016684;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=8aHNtdN3xOBjSLsYW0pKjqjlT/tHgtXNulTCwMmSCPc=;
+ b=6yXqLga8tpC8AONsWwOjEg/pZUhXAEx5yXlmt7PVpMU/DDdpPa3SEPTQZyIhxFiKbT
+ 8lwbqT32iqAR7Damh5X4afpxLBIOPaBwCmvRZqUkdU+/Hpl0UIWU0kx7kH+gBR0GF3pT
+ HAPN3CaxLkqtabtwkZ5gffH3Gz4W3hIdDrKrBmvt8BdU+cm6ZtUnwwFHMVyVUtKOz4Cq
+ qSq7ILbOTWTPd6LVgPfbxW4F3AqaDEviU7a2kD72fI9IeB6ZVDjV1B+96HFWAtng64TN
+ eLDrcjptaIgudvL72n07tVwifWJFMnm8y3gOhjYBorHs0cx8gP+YKiXYXOdwPLxSg1ye
+ b/mA==
+X-Gm-Message-State: AAQBX9cXcjiYaOuDD9YPhstjY4xp7NrWxZ6VEaDLUz7onpYRfzEPKnoh
+ hlAbOF/Ya6KyaRIScsLtIse0WHHc/h8tivrpkJLSb2YZ9S5BtFqDmsVpvC6WWtrbr9RU4xpkA1N
+ byRhNrlpctu02DY2jUDVIfrLjb8ms7Bbkww==
+X-Received: by 2002:a6b:da05:0:b0:759:a25a:c755 with SMTP id
+ x5-20020a6bda05000000b00759a25ac755mr8952325iob.1.1680016684116; 
+ Tue, 28 Mar 2023 08:18:04 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aN8ZM2wmhpLeVJtFeYE+wqSODaZHpb3sItJCHR/Izm2p4L8ccW4suBjQV4LD54yIjD5L2d6Q==
+X-Received: by 2002:a6b:da05:0:b0:759:a25a:c755 with SMTP id
+ x5-20020a6bda05000000b00759a25ac755mr8952301iob.1.1680016683889; 
+ Tue, 28 Mar 2023 08:18:03 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ a25-20020a027359000000b0039c492ae300sm9669718jae.114.2023.03.28.08.18.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Mar 2023 08:18:03 -0700 (PDT)
+Date: Tue, 28 Mar 2023 09:18:01 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>
+Subject: Re: [PATCH v2 10/10] vfio/pci: Add
  VFIO_DEVICE_GET_PCI_HOT_RESET_GROUP_INFO
-Thread-Topic: [PATCH v2 10/10] vfio/pci: Add
- VFIO_DEVICE_GET_PCI_HOT_RESET_GROUP_INFO
-Thread-Index: AQHZYI92Dc+A7iEOnEaMeK3O2ipWfK8PAuSAgACBxlCAADScAIAAh+4AgAABaZCAAARdAIAAAahg
-Date: Tue, 28 Mar 2023 15:00:42 +0000
-Message-ID: <DS0PR11MB75290B84D334FC726A8BBA95C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
+Message-ID: <20230328091801.13de042a.alex.williamson@redhat.com>
+In-Reply-To: <DS0PR11MB75290B84D334FC726A8BBA95C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
 References: <20230327093458.44939-1-yi.l.liu@intel.com>
  <20230327093458.44939-11-yi.l.liu@intel.com>
  <20230327132619.5ab15440.alex.williamson@redhat.com>
@@ -86,65 +74,13 @@ References: <20230327093458.44939-1-yi.l.liu@intel.com>
  <20230328082536.5400da67.alex.williamson@redhat.com>
  <DS0PR11MB7529B6782565BE8489D922F9C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
  <20230328084616.3361a293.alex.williamson@redhat.com>
-In-Reply-To: <20230328084616.3361a293.alex.williamson@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|DM4PR11MB5295:EE_
-x-ms-office365-filtering-correlation-id: a383a9a8-3640-4b8d-a48d-08db2f9d33e9
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: +wAymlCk8Y0jfMsHcgjG9n1fKDwNajl18SUmdYYiES5R2BgIKK4X8p2I45tM39Rz11isUkB2YePwCaXncpqVwrcPZ+lrEr4RlzqstpkN5hNii1aSZJLMH+MfHbem9YCuCUSKsfQqVC+FhQliy3cVKaB19vKNpUv/83Xssgik+b7bB7rYUWCj7mdd58Fk7K6Z3CWwr4wKlbOIeSrasWIA3eC30aKXQRKwylWg2fZwmww5qijxsyYp6slLMZalDaA+322xtbCj9UL0Bct7RY3frGRnteVeqeyROVejGtDHebTuyn+UnyAkVma4xMGWIWn/QpyKJ6ENUejAnOHcQ0SgfQ809wTTb5qqkuayWeOb9krsQIOGtv+/oWoZIxGLGN2iahCzciyw0UDvBF4DPj/oV30Nve8FFm2B+qp2+gcIOSm6Np14tXCAsYydq1wMvL8XF2zM9Q3X2oS241y+GOwbBhohINgFV0MHMgy0h4fTrPZGNNd7/9XArz5Du02UFDh9g/6wSokt5NlFHWkYupnnN25Ttyavt8NwIgUiYW+xtUmJc0zSyy2qxlrN1ZIYL/+/A0PoyuJ+g5KyBysqXPVzPBpiBzdXeTqqjvRKko3gQwtfQLNobqodA4mVTPPpka4yN6ojPviH5CW7+eCCm0fxoA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(39860400002)(346002)(396003)(366004)(136003)(376002)(451199021)(2906002)(7416002)(8936002)(52536014)(5660300002)(83380400001)(7696005)(55016003)(71200400001)(86362001)(33656002)(38070700005)(38100700002)(82960400001)(122000001)(66556008)(66476007)(66446008)(64756008)(6916009)(4326008)(8676002)(41300700001)(186003)(76116006)(66946007)(316002)(54906003)(26005)(6506007)(9686003)(478600001)(13296009);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?4L4DXY22pIvA4ZiLUEPk1J9wUDXReYeb25L0oYYrfo6dBsETVjB9agOgiU0j?=
- =?us-ascii?Q?cwyY1AysQejuLyYZ5xaSPBIGQHj6J6sO22qCApkLBcSTeWyt1iZeXDRIjWYr?=
- =?us-ascii?Q?AoC+QW2cOkuztTNWwvQXQ5mt6y0+4qtTwtABjq6qpwz1ThkTBhA52r0WB1tJ?=
- =?us-ascii?Q?8nup5I7z4O16qbhL5v4FHnpt4mmAlSMrRMq7ndK4xlP3ooJu746Q3oC7QxdU?=
- =?us-ascii?Q?zaTRw9xerjnICwLMAJbtbWUsq99f0K2dUGUbGD/DT57qJRN3h+E38Iw4T6LL?=
- =?us-ascii?Q?cwyjFxl7Ucv7Vy2wCtVXtbJzqSF4qv3gkdLIE5CwlNS1ReULwyaVQOTu8i66?=
- =?us-ascii?Q?OUJWQxVVvIyet4/HY1u6bYdzlAynWEkQzW/b/RPYiS8wwFLjZzN21mArO5PW?=
- =?us-ascii?Q?WgfmZpgmNnyGsxXhZJjUKDJLrrZf60hlMhVQn5bYWLwOgPFIg7YpLVzfCAPX?=
- =?us-ascii?Q?wUdFD+BXdcFIZBZplE+eyKEt4hePwsNoS0rl3W9b6odfUpYXlmZGMo+utwhd?=
- =?us-ascii?Q?XUu0pbdGFfad2I95LO0hBxkMOYJRgXqzCT4BhIRDg+0GASCfA/pg9W+F/EDT?=
- =?us-ascii?Q?AYYggKHjb7YlYfneD66AGBr8Ucimhh7O63HWXWEe0en9ahSOUHkmjUuWVBPD?=
- =?us-ascii?Q?WZQZxbbD7BXL690XGkK6mFlHp3s9v3xY/gjyYydIiOfOxT3+q9ToI7MnL6aP?=
- =?us-ascii?Q?MnPOaAgtAnkw4+W/b1Bc1HQp4mx9HKYCBJHIvTr3jIk70PqbqVahf99uNggo?=
- =?us-ascii?Q?VPGTYEQ4SRH4lZ9RrIUGouVDE3F1MYwcJDFnmdORuHus3TBi2K1H1zqAdl/w?=
- =?us-ascii?Q?JU6Mcqxf8NbmrCmpEsWwajN/Mz2V0tkf08/sFY2pda1kjz/0KE93iKIrqX/V?=
- =?us-ascii?Q?2PeJZ5RMo4edz27/9XZQUjEfnQUyvgdaL1ZdZeuWRhLzI33pDF9aZLjW856H?=
- =?us-ascii?Q?C4LIfUFR3aZGTOT0rV48rTMzM5D7mps6hT7dvIa51REfXG9Di5kezxsmo6d9?=
- =?us-ascii?Q?iAjT6gs0phzb2otDU7cP3wgsNuHKYRYifHZXsoWezfnpCPGNXsXP7K3whC4H?=
- =?us-ascii?Q?G7Ol5onlnYr+86Wdheg/AzXpsDfQvMGqDTWUnboMCz0fhUMQMzS20cGxjBLS?=
- =?us-ascii?Q?1GzuVqI1iBwh5qWxwPIdIh5IicsdsZY0Pp6ZW+cJvK6mKKrJpbUtPFejzM5b?=
- =?us-ascii?Q?1xs4yQQVsQ+m2KquXVmJ9GqtpQHfK5ZketGJxGWby1LPdBLchgxOkHWr/itS?=
- =?us-ascii?Q?zB/sMjMiacICnKoKEtdkqrvmTGwgvKONktMmF84F4aXcLIo8mpLqUcenumwU?=
- =?us-ascii?Q?rHogh59XyGOttoAOQO8DszyqFZVXvUouaT4b0D7MaheJU9J13IKAgRJPtZd7?=
- =?us-ascii?Q?3qjjE1G+KGAqfDiZGIerrUjMI1KRr9O494l7u04HxxWT570ELFIqQmMvB2E8?=
- =?us-ascii?Q?cw1RxFMJ0agWTKWcDfKU6SR464LEVaW/se4LKUbIb14F0h4U7AtxEiYvTILE?=
- =?us-ascii?Q?pcBIpi5Wb6oc13evG2NVmlp+Dt5e3GnVLaMIXvcTDG/taNn570yJhcFqG7d+?=
- =?us-ascii?Q?hBGmlQQfydeAbZw4SoU=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <DS0PR11MB75290B84D334FC726A8BBA95C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a383a9a8-3640-4b8d-a48d-08db2f9d33e9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Mar 2023 15:00:42.9909 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: hiyR6jrkXtnfZXFGgTx4IwuPV5hDfXvA8WQyUXh3efW8cF+zPck/XaX/Vou8X9R7cI7hGE+owfyTPZ4JiJfKZA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB5295
-X-OriginatorOrg: intel.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,7 +103,8 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
  "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
  Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
  "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
- "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, 
+ Yan Y" <yan.y.zhao@intel.com>,
  "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  "eric.auger@redhat.com" <eric.auger@redhat.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
@@ -179,106 +116,95 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Alex Williamson <alex.williamson@redhat.com>
-> Sent: Tuesday, March 28, 2023 10:46 PM
->=20
-> On Tue, 28 Mar 2023 14:38:12 +0000
-> "Liu, Yi L" <yi.l.liu@intel.com> wrote:
->=20
-> > > From: Alex Williamson <alex.williamson@redhat.com>
-> > > Sent: Tuesday, March 28, 2023 10:26 PM
-> > >
-> > > On Tue, 28 Mar 2023 06:19:06 +0000
-> > > "Tian, Kevin" <kevin.tian@intel.com> wrote:
-> > >
-> > > > > From: Liu, Yi L <yi.l.liu@intel.com>
-> > > > > Sent: Tuesday, March 28, 2023 11:32 AM
-> > > > >
-> > > > > > From: Alex Williamson <alex.williamson@redhat.com>
-> > > > > > Sent: Tuesday, March 28, 2023 3:26 AM
+On Tue, 28 Mar 2023 15:00:42 +0000
+"Liu, Yi L" <yi.l.liu@intel.com> wrote:
+
+> > From: Alex Williamson <alex.williamson@redhat.com>
+> > Sent: Tuesday, March 28, 2023 10:46 PM
+> > 
+> > On Tue, 28 Mar 2023 14:38:12 +0000
+> > "Liu, Yi L" <yi.l.liu@intel.com> wrote:
+> >   
+> > > > From: Alex Williamson <alex.williamson@redhat.com>
+> > > > Sent: Tuesday, March 28, 2023 10:26 PM
+> > > >
+> > > > On Tue, 28 Mar 2023 06:19:06 +0000
+> > > > "Tian, Kevin" <kevin.tian@intel.com> wrote:
+> > > >  
+> > > > > > From: Liu, Yi L <yi.l.liu@intel.com>
+> > > > > > Sent: Tuesday, March 28, 2023 11:32 AM
+> > > > > >  
+> > > > > > > From: Alex Williamson <alex.williamson@redhat.com>
+> > > > > > > Sent: Tuesday, March 28, 2023 3:26 AM
+> > > > > > >
+> > > > > > > Additionally, VFIO_DEVICE_GET_PCI_HOT_RESET_INFO has a flags  
+> > arg  
+> > > > that  
+> > > > > > > isn't used, why do we need a new ioctl vs defining
+> > > > > > > VFIO_PCI_HOT_RESET_FLAG_IOMMUFD_DEV_ID.  
 > > > > > >
-> > > > > > Additionally, VFIO_DEVICE_GET_PCI_HOT_RESET_INFO has a flags
-> arg
-> > > that
-> > > > > > isn't used, why do we need a new ioctl vs defining
-> > > > > > VFIO_PCI_HOT_RESET_FLAG_IOMMUFD_DEV_ID.
+> > > > > > Sure. I can follow this suggestion. BTW. I have a doubt here. This  
+> > new  
+> > > > flag  
+> > > > > > is set by user. What if in the future kernel has new extensions and  
+> > needs  
+> > > > > > to report something new to the user and add new flags to tell user?  
+> > Such  
+> > > > > > flag is set by kernel. Then the flags field may have two kinds of flags  
+> > > > (some  
+> > > > > > set by user while some set by kernel). Will it mess up the flags space?
+> > > > > >  
 > > > > >
-> > > > > Sure. I can follow this suggestion. BTW. I have a doubt here. Thi=
-s
-> new
-> > > flag
-> > > > > is set by user. What if in the future kernel has new extensions a=
-nd
-> needs
-> > > > > to report something new to the user and add new flags to tell use=
-r?
-> Such
-> > > > > flag is set by kernel. Then the flags field may have two kinds of=
- flags
-> > > (some
-> > > > > set by user while some set by kernel). Will it mess up the flags =
-space?
+> > > > > flags in a GET_INFO ioctl is for output.
 > > > > >
+> > > > > if user needs to use flags as input to select different type of info then it  
+> > > > should  
+> > > > > be split into multiple GET_INFO cmds.  
 > > > >
-> > > > flags in a GET_INFO ioctl is for output.
+> > > > I don't know that that's actually a rule, however we don't currently
+> > > > test flags is zero for input, so in this case I think we are stuck with
+> > > > it only being for output.
 > > > >
-> > > > if user needs to use flags as input to select different type of inf=
-o then it
-> > > should
-> > > > be split into multiple GET_INFO cmds.
+> > > > Alternatively, should VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
+> > > > automatically
+> > > > return the dev_id variant of the output and set a flag to indicate this
+> > > > is the case when called on a device fd opened as a cdev?  Thanks,  
 > > >
-> > > I don't know that that's actually a rule, however we don't currently
-> > > test flags is zero for input, so in this case I think we are stuck wi=
-th
-> > > it only being for output.
-> > >
-> > > Alternatively, should VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
-> > > automatically
-> > > return the dev_id variant of the output and set a flag to indicate th=
-is
-> > > is the case when called on a device fd opened as a cdev?  Thanks,
-> >
-> > Personally I prefer that user asks for dev_id info explicitly. The majo=
-r
-> reason
-> > that we return dev_id is that the group/bdf info is not enough for the
-> device
-> > fd passing case. But if qemu opens device by itself, the group/bdf info=
- is
-> still
-> > enough. So a device opened as a cdev doesn't mean it should return
-> dev_id,
-> > it depends on if user has the bdf knowledge.
->=20
-> But if QEMU opens the cdev, vs getting it from the group, does it make
-> any sense to return a set of group-ids + bdf in the host-reset info?
-> I'm inclined to think the answer is no.
->=20
-> Per my previous suggestion, I think we should always return the bdf. We
-> can't know if the user is accessing through an fd they opened
-> themselves or were passed,
+> > > Personally I prefer that user asks for dev_id info explicitly. The major  
+> > reason  
+> > > that we return dev_id is that the group/bdf info is not enough for the  
+> > device  
+> > > fd passing case. But if qemu opens device by itself, the group/bdf info is  
+> > still  
+> > > enough. So a device opened as a cdev doesn't mean it should return  
+> > dev_id,  
+> > > it depends on if user has the bdf knowledge.  
+> > 
+> > But if QEMU opens the cdev, vs getting it from the group, does it make
+> > any sense to return a set of group-ids + bdf in the host-reset info?
+> > I'm inclined to think the answer is no.
+> > 
+> > Per my previous suggestion, I think we should always return the bdf. We
+> > can't know if the user is accessing through an fd they opened
+> > themselves or were passed,  
+> 
+> Oh, yes. I'm convinced by this reason since only cdev mode supports device fd
+> passing. So I'll reuse the existing _INFO and let kernel set a flag to mark the returned
+> info is dev_id+bdf.
+> 
+> A check. If the device that the _INFIO is invoked is opened via cdev, but there
+> are devices in the dev_set that are got via VFIO_GROUP_GET_DEVICE_FD, should
+> I fail it or allow it?
 
-Oh, yes. I'm convinced by this reason since only cdev mode supports device =
-fd
-passing. So I'll reuse the existing _INFO and let kernel set a flag to mark=
- the returned
-info is dev_id+bdf.
+It's a niche case, but I think it needs to be allowed.  We'd still
+report the bdf for those devices, but make use of the invalid/null
+dev-id.  I think this empowers userspace that they could make the same
+call on a group opened fd if necessary.  An alternative would be to
+redefine the returned data structure entirely with a flag per entry
+describing the output, but then I think we need to invent a kernel
+policy of which gets reported, which seems overly complicated if our
+goal is to phase out group usage.  Make sense, or will this bite us?
+Thanks,
 
-A check. If the device that the _INFIO is invoked is opened via cdev, but t=
-here
-are devices in the dev_set that are got via VFIO_GROUP_GET_DEVICE_FD, shoul=
-d
-I fail it or allow it?
-
-> but it allows an actually useful debugging
-> report if userspace can know "I can't perform a hot reset of this
-> device because my iommufd context doesn't know about device <bdf>", vs
-> an opaque -EPERM.  Therefore I think we're only discussing the data
-> conveyed in the u32, a group-id or dev_id.  Thanks,
-
-Sure.
-
-Regards,
-Yi Liu
-
+Alex
 
