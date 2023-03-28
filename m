@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1BFC6CC875
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 18:49:21 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28EAF6CC9E6
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 20:09:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6DDD610E477;
-	Tue, 28 Mar 2023 16:49:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E4E8C10E977;
+	Tue, 28 Mar 2023 18:09:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 28 Mar 2023 16:49:17 UTC
-Received: from mail.vshcvs.autos (unknown [193.160.141.71])
- by gabe.freedesktop.org (Postfix) with ESMTP id E577F10E147
+ Tue, 28 Mar 2023 18:09:51 UTC
+Received: from mail.acdriller.click (unknown [193.160.141.82])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1028F10E973
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Mar 2023 16:49:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vshcvs.autos;
+ Tue, 28 Mar 2023 18:09:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=acdriller.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=cvs-customer-updates@vshcvs.autos; 
- bh=5gbuXe36ms+4Wpmm4QLiM7CBCw4=;
- b=pBcT/XpMkzsv3rHmVV5iDyASmYnP5Bw4af9/0aXqeCPMRQB2Tkw0yJw3Wua7QpQwXnFJia2mr8V6
- LtvmSsyUYaLv6HV2f9ofirMnHX8XQg3wPSKell6WwJXtnsT+0oKYptNJj2Tq3oKKmH+7JcuLsqiG
- IrDV4/n5x1vUuQepr+8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vshcvs.autos;
- b=RKRRW5Ih+hu2nFwPllgVAQEIqAFjrVUCyNrHrW+9ElZnGADFyg99icoTaqqtLCh8tfzI1P0vfsol
- qaaJGwvdm6kLjnZK+BkQ7PqSiCiZHPeSnxyXat11sn+mRAPgju6kJYmb+hKYCwBftDkkAbZuphn/
- qXHJyOPHonQN5eJfBdk=;
-Received: by mail.vshcvs.autos id h4cn8m0001g1 for
+ i=ace-tools-satisfaction@acdriller.click; 
+ bh=HT9e5BmnST3y6GpaxFOLVYgDmHo=;
+ b=Y329sQ5ZLtIYf5BZm4ZFgP93X962CB23hE2lnocJeS0olOXDZH+v78LMIIEs8OfbORJVscaBw5Jq
+ DO48rOvi9y+wxETfBhEOAurVOr8MILXcQpelnEI1FHS49nsbTpE6RaoQz7nQb35mPf4hDtDr6wuh
+ miu5CmaIJLLOlgYINPI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=acdriller.click;
+ b=UEbeVA/INYfcNcdPdjN+EroQD//CPbN7/XDzoT28kPec/nGHofbayJXF4i1e6cbKCedxYR9ajvZz
+ AnMofDPRySjXSc8rZiseSxD6x8zrFqje+xaUY1myqcmX+SKhALrJZhDhTik36eS14SigPeIT4Orx
+ 7CBft2pWDRT4PEcJJXE=;
+Received: by mail.acdriller.click id h4cmmu0001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Mar 2023 14:03:04 -0400 (envelope-from
- <cvs-customer-updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@vshcvs.autos>)
-Date: Tue, 28 Mar 2023 14:03:04 -0400
-From: "CVS Customer Updates" <cvs-customer-updates@vshcvs.autos>
+ Tue, 28 Mar 2023 13:56:31 -0400 (envelope-from
+ <ace-tools-satisfaction-intel+2Dgvt+2Ddev=lists.freedesktop.org@acdriller.click>)
+Date: Tue, 28 Mar 2023 13:56:31 -0400
+From: "ACE Tools Satisfaction" <ace-tools-satisfaction@acdriller.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don't miss out on the chance to receive a brand new Ninja Blender -
- offer ends today.
+Subject: Act fast and receive a brand new DeWalt Drill Set before the offer
+ expires today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_475_1665092331.1680021433007"
-Message-ID: <0.0.0.34.1D9619F8AD1EF14.3FF432@mail.vshcvs.autos>
+ boundary="----=_Part_274_1709396386.1680026158603"
+Message-ID: <0.0.0.1E.1D9619EA0FC23A0.2D12BD@mail.acdriller.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,43 +54,45 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_475_1665092331.1680021433007
+------=_Part_274_1709396386.1680026158603
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
 A Special Offer for Our Valued Users
---------------------------------------
 
-CVS
+---------------------------------------
 
 
-We hope this email finds you well.  At CVS, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
+ACE HARDWARE
 
-As a token of our appreciation, we would like to give you a FREE Ninja Blender when you fill out our survey.  This high-performance blender is perfect for creating smoothies, soups, and more, and is yours to keep, no strings attached. 
+We hope this email finds you well.  At Ace Hardware, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
+
+As a token of our appreciation, we would like to give you a FREE DeWalt drill set when you fill out our survey.  This set includes powerful and durable drills that will make any DIY project a success and is yours to keep, no strings attached. 
 
 
 To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. 
 
-Take The Survey  >>>>>
-http://www.vshcvs.autos/occasionings-entireties/15c5k239W5iLh8613O51p15Yw1313G36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQcQodR7zCxZ10x6fTzzwD
+
+Take the Survey >>>>>
+http://www.acdriller.click/20f6Q2YZ395yL8R611y5117o1314u36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ6QodS6gn10OO5AqlwD/motives-eternally
+
 
 
 
 Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
+
+
 Best regards,
-The CVS Survey Team
+The Ace Hardware Team
 
 
+---------------------------------------
 
---------------------------------------
-
-To dispense with notifications, click_here >>>>> http://www.vshcvs.autos/unwieldy-indenture/be84N2395P_86g13K5116FCH1313X36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQcQodR5Os10i6DpUwDp
+To sever communication, click_here >>>>> http://www.acdriller.click/60b5g23K95k_8Q612zr5118_1314R36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ6QodS7fkI10sH5CXwND/boyishness-insolvable
 126 E 23rd St New York, NY, US 10010
 
+<style title="flexibilities"><span style="electromechanical"><style></style></style></span><big></big><font id="topmost"></font>
 
-
-<font id="discontent"></font><span dir="thundered"></span><span><style size="Symington"></style></span><style><font size="Davison"></style></font><font><font></font></font><small></small>
-
-------=_Part_475_1665092331.1680021433007--
+------=_Part_274_1709396386.1680026158603--
 
