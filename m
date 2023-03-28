@@ -1,44 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28EAF6CC9E6
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 20:09:54 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0829E6CCA76
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 21:11:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E4E8C10E977;
-	Tue, 28 Mar 2023 18:09:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C4ABE10E9C6;
+	Tue, 28 Mar 2023 19:11:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 28 Mar 2023 18:09:51 UTC
-Received: from mail.acdriller.click (unknown [193.160.141.82])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1028F10E973
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Tue, 28 Mar 2023 19:11:02 UTC
+Received: from mail.vznova.click (unknown [193.160.141.89])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 34C6910E9C6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Mar 2023 18:09:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=acdriller.click; 
+ Tue, 28 Mar 2023 19:11:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=vznova.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace-tools-satisfaction@acdriller.click; 
- bh=HT9e5BmnST3y6GpaxFOLVYgDmHo=;
- b=Y329sQ5ZLtIYf5BZm4ZFgP93X962CB23hE2lnocJeS0olOXDZH+v78LMIIEs8OfbORJVscaBw5Jq
- DO48rOvi9y+wxETfBhEOAurVOr8MILXcQpelnEI1FHS49nsbTpE6RaoQz7nQb35mPf4hDtDr6wuh
- miu5CmaIJLLOlgYINPI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=acdriller.click;
- b=UEbeVA/INYfcNcdPdjN+EroQD//CPbN7/XDzoT28kPec/nGHofbayJXF4i1e6cbKCedxYR9ajvZz
- AnMofDPRySjXSc8rZiseSxD6x8zrFqje+xaUY1myqcmX+SKhALrJZhDhTik36eS14SigPeIT4Orx
- 7CBft2pWDRT4PEcJJXE=;
-Received: by mail.acdriller.click id h4cmmu0001gm for
+ i=verizon.news@vznova.click; bh=wsMg3iClUMUXC4iNA8h+R9CXuH8=;
+ b=ibRGtkQ8yKno7nsXLUfKyAlJfXzKCo7/W2aqm02W/HdGvjcSV4OMXSgZJQA1e3ybTQzavYqQHU2Z
+ J3/FnXystPipIi8nSW+KcM4c+b/FqdwBGSt6hWZVc1KznPjO7/sGuVeMcJjTdZ0ibyDoswkCGqyQ
+ tUK8ufTAyyIvqItDzz8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vznova.click;
+ b=Lz6rPi+LPD6efYTRiSmsoaCtHbuQXZPiJh6LC7A/I3g0ye/2T5x7KOnxgxEC71inYWHnBFv6v/pj
+ VebaRwk2LJ9SgU2zJUCp7RhKLWtccFABUW4Hi3XlCYynFVVDoE2N/EAT4JC+1etefwiDuhtDzPa2
+ kS3dboiiZ14vhclVb48=;
+Received: by mail.vznova.click id h4ctsc0001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Mar 2023 13:56:31 -0400 (envelope-from
- <ace-tools-satisfaction-intel+2Dgvt+2Ddev=lists.freedesktop.org@acdriller.click>)
-Date: Tue, 28 Mar 2023 13:56:31 -0400
-From: "ACE Tools Satisfaction" <ace-tools-satisfaction@acdriller.click>
+ Tue, 28 Mar 2023 14:59:21 -0400 (envelope-from
+ <verizon.news-intel+2Dgvt+2Ddev=lists.freedesktop.org@vznova.click>)
+Date: Tue, 28 Mar 2023 14:59:21 -0400
+From: "VERIZON News" <verizon.news@vznova.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Act fast and receive a brand new DeWalt Drill Set before the offer
- expires today.
+Subject: Every Visit, you are rewarded for your loyalty - Yayy
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_274_1709396386.1680026158603"
-Message-ID: <0.0.0.1E.1D9619EA0FC23A0.2D12BD@mail.acdriller.click>
+ boundary="----=_Part_616_135468765.1680029933782"
+Message-ID: <0.0.0.44.1D961A767EB28AA.1AF563@mail.vznova.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,45 +52,41 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_274_1709396386.1680026158603
+------=_Part_616_135468765.1680029933782
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
-
----------------------------------------
-
-
-ACE HARDWARE
-
-We hope this email finds you well.  At Ace Hardware, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
-
-As a token of our appreciation, we would like to give you a FREE DeWalt drill set when you fill out our survey.  This set includes powerful and durable drills that will make any DIY project a success and is yours to keep, no strings attached. 
+A SPECIAL OFFER FOR OUR VALUED USERS
+-----------------------------------------
+VERIZON
 
 
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. 
+As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your experience with Verizon in general. 
+
+Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
-Take the Survey >>>>>
-http://www.acdriller.click/20f6Q2YZ395yL8R611y5117o1314u36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ6QodS6gn10OO5AqlwD/motives-eternally
+Upon Completion of the Survey you might have a choice between different gifts!
 
 
+Get Me There Now >>>>>
+http://www.vznova.click/raiser-airer/40e4F2395eh86v11s511bN1316s36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2QodK7A1Vq_0p5N0PwD
 
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+Thank you again for your support.  We look forward to hearing from you soon
 
 
+Warm regards,
+The Verizon Survey
 
-Best regards,
-The Ace Hardware Team
 
-
----------------------------------------
-
-To sever communication, click_here >>>>> http://www.acdriller.click/60b5g23K95k_8Q612zr5118_1314R36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ6QodS7fkI10sH5CXwND/boyishness-insolvable
+-----------------------------------------
+To cut out notices, click_here >>>>> http://www.vznova.click/marshes-prolix/daa4G2395hp8J612ck511ch1316j36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ2QodK6XW1sj05YN@wD
 126 E 23rd St New York, NY, US 10010
 
-<style title="flexibilities"><span style="electromechanical"><style></style></style></span><big></big><font id="topmost"></font>
 
-------=_Part_274_1709396386.1680026158603--
+
+<big></big><font></font><span dir="stratospheric"><span face="Smucker"></span></span><style id="stoles"><style></style></style><small></small>
+
+------=_Part_616_135468765.1680029933782--
 
