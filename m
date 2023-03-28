@@ -1,42 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F0CC6CC672
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 17:34:11 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 300236CC1EC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Mar 2023 16:19:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 064ED10E90B;
-	Tue, 28 Mar 2023 15:34:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A047C10E8C1;
+	Tue, 28 Mar 2023 14:19:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Tue, 28 Mar 2023 15:34:07 UTC
-Received: from mail.towatt.autos (unknown [194.116.236.52])
- by gabe.freedesktop.org (Postfix) with ESMTP id 497D110E90B
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Tue, 28 Mar 2023 14:19:05 UTC
+Received: from mail.tbtharmil.autos (unknown [194.116.236.38])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C109410E0C6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Mar 2023 15:34:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=towatt.autos;
+ Tue, 28 Mar 2023 14:19:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tbtharmil.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=now.on.att@towatt.autos; bh=UbuIjcG0OVFRNxtgxXMsgFXyDKw=;
- b=lt85uFU1+/jJw6NU81xYSRViy9SidqRHeIwm260/rlIGHuRrh+DBWxoX/WlWFLftVOdKLKLNFd1y
- +VqnWuDC3VBdJ1FGQdYEOqr/iaCyHcJE4f6dVCwD1vTxocpK5AGB7DqngX8TRxPNihY3RCtxE9Q3
- 31GlPwhbmAGv8R0uRjU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=towatt.autos;
- b=UdIoyVIfS9I5JWWVf2YVYP+P3HTN0ioGbGgi8qC/WwZOAA0Keyn3fsDHW5wNAq2SDrj3dG8cepR4
- m1wF/zyUhq23p8ai8sLiVvQnuw1lWhu6LqF+cj6D8sL6MFi8QlDYypIbG7bRZwZGWwRFRaxksNuw
- k4ozRWbRm9HCvHAVrdQ=;
-Received: by mail.towatt.autos id h4c4eu0001gs for
+ i=harbor-freight-user-feedback@tbtharmil.autos; 
+ bh=C88Gr86p9/5ftZ0+88vLRo8Gp2g=;
+ b=E00RoYG8mXo0XrHnHC4FaEQP6X1Vu1Wphlf/h9RT1J7cmQYKUd1QMr2s0SDV3fy1sTCcjug6CxXk
+ DnmvUVsMEEDAAiKplfYSBbbDtkRisu/MV74RdscuDmyWfHhGPqPLsSbBxN7qqrjfIYC880+/jXf7
+ vXR5a7ZaW6WbofSVH3Q=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tbtharmil.autos;
+ b=K59SA/HMYs5MQ0dwsNsX/Fk1UONIDNGHfK/h2hDYAyuBrnE3E4OS798gXNHfMU48THhSDFcIs0pa
+ CgiN3mHtKsINFFdTfZVb5OGbBun2sI3bNnKmCiFxTCzNsXwrYkQvpjLARELuy/3qQMLOCVaYmUEX
+ hDVHnbkg3cYw3PgrrmA=;
+Received: by mail.tbtharmil.autos id h4c5le0001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Mar 2023 11:18:29 -0400 (envelope-from
- <now.on.att-intel+2Dgvt+2Ddev=lists.freedesktop.org@towatt.autos>)
-Date: Tue, 28 Mar 2023 11:18:29 -0400
-From: "Now On ATT" <now.on.att@towatt.autos>
+ Tue, 28 Mar 2023 11:35:20 -0400 (envelope-from
+ <harbor-freight-user-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@tbtharmil.autos>)
+Date: Tue, 28 Mar 2023 11:35:20 -0400
+From: "Harbor Freight User Feedback"
+ <harbor-freight-user-feedback@tbtharmil.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Impressive Gifts coming your way this season
+Subject: The clock is ticking - today is your last chance to receive a
+ Milwaukee Drill Set.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_580_1150126076.1680016667769"
-Message-ID: <0.0.0.40.1D961888D01D874.4544CB@mail.towatt.autos>
+ boundary="----=_Part_1015_2072110945.1680012571711"
+Message-ID: <0.0.0.70.1D9618AE7F16D6A.410738@mail.tbtharmil.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,41 +55,44 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_580_1150126076.1680016667769
+------=_Part_1015_2072110945.1680012571711
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR OUR VALUED USERS
----------------------------------------------
-
-AT&T
-
-We wanted to take a moment to thank you for choosing AT&T.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
-
-TAKE THE SURVEY >>>>>
-http://www.towatt.autos/5936B2tl395Ox86w12m511A1G1311k36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ.Qodd6B10ILA6EOBywD/Gilligan-brownness
+A Special Offer for Our Valued Users
+--------------------------------------------
 
 
-Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+HARBOR FREIGHT
+
+We wanted to take a moment to thank you for choosing Harbor Freight.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+
+As a token of our appreciation, we would like to give you a FREE Milwaukee Drill Set! when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
 
 
 
-Upon Completion of the Survey you might have a choice between different gifts!
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+
+
+
+Take The survey >>>>>
+http://www.tbtharmil.autos/8456Fy23D95Vl8L613i5z10dGm130fL36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ5Qodo6HA1C0x6NNwjND/Midwestern-audiometer
 
 
 
 
-Thank you again for your support.  We look forward to hearing from you soon!, Warm regards
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
-The AT&T Survey
 
----------------------------------------------
-To drop communications, click_here >>>>> http://www.towatt.autos/abb6f239Jl5D8D6j13fl51T12s1311A36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ.Qodd6YJK1X06uAJTwD/priceless-surgeons
+Best regards,
+The Harbor Freight Survey Team
+
+--------------------------------------------
+
+To sever communications, click_here >>>>> http://www.tbtharmil.autos/carpets-shivered/2c44S2395a86Vw13A510SeYh130fx36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ5Qodo7n1T0ILi5G3wPD
 126 E 23rd St New York, NY, US 10010
 
+<font face="commensurate"></font><big><span lang="contemplated"></big></span><small><span face="interruption"></span></small><big></big><font face="archipelagoes"></font><style></style>
 
-
-<style><font title="abstention"><span class="Ostrander"></font></span><font color="actuating"></font></style><span></span>
-
-------=_Part_580_1150126076.1680016667769--
+------=_Part_1015_2072110945.1680012571711--
 
