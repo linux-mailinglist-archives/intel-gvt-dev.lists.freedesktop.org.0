@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 420C36CDB7C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Mar 2023 16:05:24 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BB516CED21
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Mar 2023 17:40:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0186410EAFD;
-	Wed, 29 Mar 2023 14:05:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5D55910EB48;
+	Wed, 29 Mar 2023 15:39:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Wed, 29 Mar 2023 14:05:20 UTC
-Received: from mail.wesberbqq.click (unknown [194.116.236.47])
- by gabe.freedesktop.org (Postfix) with ESMTP id A646D10EAEB
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 29 Mar 2023 15:39:57 UTC
+Received: from mail.topcvn.autos (unknown [193.160.141.66])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D33E410EB46
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Mar 2023 14:05:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wesberbqq.click; 
+ Wed, 29 Mar 2023 15:39:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=topcvn.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes-exclusive-offer@wesberbqq.click; 
- bh=8UQzCKF1MABup1JgMtQb3wfSfeU=;
- b=WqVp7kBdrn3uXrUk4KpjNqjGHTg8fUAq9Y6iBxH40xadZZt4afSeNzTeX9iwpcDKxGCTejgcJ7KG
- 8zGahuf/uZ/UDNvGubXMM9qspuHvS00j4PrAQF3+UcaFg6C2qpeUCD+40s5OluqSpbchcCoA+GMB
- eNEwqWtag2GqCEkEWrs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wesberbqq.click;
- b=ZurNVLCO76t3/AubCRFxNY1fkpKd6sTFVxQ1iClEv0nX0YmSnEtqusvK6yRzr8c5mmYHVAR/p2ei
- nVAf/jig24UOvw65b7eK7U4TFW15QWHM03rQWJ2SnZEb4GVFO05iBMmz0uHbIhG7rwZum0KoSWaL
- lzCWnSf+Ka/goO41FSk=;
-Received: by mail.wesberbqq.click id h4hcpo0001go for
+ i=cvs-discount@topcvn.autos; bh=g5zT7WglS26DhUi5t/RHJa5TLTE=;
+ b=NWG9UrW2mw1DC4zwuPYhFjPza4oX8aP8/NSset6I1396y4R+aYukYkOb/hWULUBkM58mFLHzJ8Zc
+ 6AZ/jamwMDvztBMzXcZMFbJ/attJyCCjoxAjtWS2IoE7/u8GkRoA4Ni2yFsO4hZ4qDP2LeBYi24E
+ nQOBM0BVrLYXuJF7Psk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=topcvn.autos;
+ b=Q+f40Qm7rjPb9ZUcPAEHxLr1eNQ/6rtYOOO+7AAyKwwS7VVRuEc/S65edoFsCo41Z6Hq/ff6TGwB
+ 5unrZnEal5TcmyU/zBqoUPJWH9tEHI/ZGEAVf7fup8af9+hvZLgsiqyHpwmN69+JKm4LkEVFD66J
+ q247MSuFbKavyZ7byf4=;
+Received: by mail.topcvn.autos id h4hdss0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Mar 2023 11:20:16 -0400 (envelope-from
- <lowes-exclusive-offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@wesberbqq.click>)
-Date: Wed, 29 Mar 2023 11:20:16 -0400
-From: "Lowes Exclusive Offer" <lowes-exclusive-offer@wesberbqq.click>
+ Wed, 29 Mar 2023 11:30:13 -0400 (envelope-from
+ <cvs-discount-intel+2Dgvt+2Ddev=lists.freedesktop.org@topcvn.autos>)
+Date: Wed, 29 Mar 2023 11:30:13 -0400
+From: "CVS Discount" <cvs-discount@topcvn.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The offer for a Weber Spirit BBQ is ending today - claim yours now.
+Subject: Today is the final day to receive a brand new Ninja Blender - act
+ quickly.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_736_1676979558.1680098018799"
-Message-ID: <0.0.0.51.1D96251F713F354.1B5197@mail.wesberbqq.click>
+ boundary="----=_Part_1012_1003102178.1680103776833"
+Message-ID: <0.0.0.70.1D962535B085516.3A4A91@mail.topcvn.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,46 +53,43 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_736_1676979558.1680098018799
+------=_Part_1012_1003102178.1680103776833
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
 A Special Offer for Our Valued Users
---------------------------------------------
+--------------------------------------
 
-LOWE'S
-
-We wanted to take a moment to thank you for choosing Lowe's.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
-
-As a token of our appreciation, we would like to give you a FREE Weber Spirit BBQ when you fill out our survey.  This BBQ grill includes a variety of features that will help you create delicious meals and is yours to keep, no strings attached. 
+CVS
 
 
+We hope this email finds you well.  At CVS, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
 
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-
-Start Here Now >>>>>
-http://www.wesberbqq.click/24b5Y2_395z8rN611l5126G131bs36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ4QoQd6Axj10k6QJXwD1/Marlborough-tipping
+As a token of our appreciation, we would like to give you a FREE Ninja Blender when you fill out our survey.  This high-performance blender is perfect for creating smoothies, soups, and more, and is yours to keep, no strings attached. 
 
 
-Thank you for your continued support and for taking the time to fill out our survey.  
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. 
+
+Take The Survey  >>>>>
+http://www.topcvn.autos/2874d2395r86NZ11I512ch131eO36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQXQoQS7KRCI1V05bPJwD/herbs-reinforcements
 
 
-We look forward to hearing from you soon.  
 
-
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
 Best regards,
-The Lowe's Survey Team
+The CVS Survey Team
 
---------------------------------------------
-No longer wish to receive email communication from us?, click_here >>>>> http://www.wesberbqq.click/botching-pilgrimage/8a04k2395qsT8611i5127K131bs36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4QoQd5f1W0J6VO3wD0
+
+
+--------------------------------------
+
+To modify your communication elections, click_here >>>>> http://www.topcvn.autos/Guatemalan-mayoral/be86BML2395AQ8k611f512dm131ew36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQXQoQS6wH1Ni05p23wD
 126 E 23rd St New York, NY, US 10010
 
 
 
-<span class="punished"><span id="inheritor"></span><span title="DECsystem"><span color="schism"></span></span></span><style size="forgivingly"></style><small></small><font dir="postmortem"><span lang="resides"></span><small></small></font><font lang="convenes"></font>
+<span color="reddishness"></span><span><big></big></span><span></span><span style="employments"></span>
 
-------=_Part_736_1676979558.1680098018799--
+------=_Part_1012_1003102178.1680103776833--
 
