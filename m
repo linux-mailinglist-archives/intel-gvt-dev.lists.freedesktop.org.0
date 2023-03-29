@@ -1,52 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 800476DBFA1
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  9 Apr 2023 13:10:28 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E2F36CF045
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Mar 2023 19:07:08 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4B8BC10E023;
-	Sun,  9 Apr 2023 11:10:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 61C7810E0BF;
+	Wed, 29 Mar 2023 17:07:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 140439 seconds by postgrey-1.36 at gabe;
- Sun, 09 Apr 2023 11:10:25 UTC
-Received: from mx.itans.com.br (unknown [186.226.6.203])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CDCD310E023;
- Sun,  9 Apr 2023 11:10:25 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mx.itans.com.br (Postfix) with ESMTP id 1262AA9603EB;
- Mon,  3 Apr 2023 00:57:37 -0300 (-03)
-Received: from mx.itans.com.br ([127.0.0.1])
- by localhost (mx.itans.com.br [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id jlcTn2I5EyIk; Mon,  3 Apr 2023 00:57:36 -0300 (-03)
-Received: from localhost (localhost [127.0.0.1])
- by mx.itans.com.br (Postfix) with ESMTP id 0B3A8C705398;
- Wed, 29 Mar 2023 07:14:46 -0300 (-03)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mx.itans.com.br 0B3A8C705398
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=itans.com.br;
- s=6EA6B50C-0871-11EA-A9E1-ED43B6ABD6E2; t=1680084886;
- bh=ovCMnifKbfrNCFfjmrrECvXy6r3LGS8OgVDO1UaYbqI=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=zTCldNAQgaTsy+LM1Nr0JzgeYQ+kx5kZwypZfaprPCo8ui+KUeFJmvPZk76xMhNTM
- bx1ZEyHw29wXOZfh2cDEK825vPUUz89xluF0OHiS8HANraDP8bUVAhluiSskh9xKby
- 2JjB7Y7/lcXJn4e2lrCON8Hk8icwlM9Z92LumsVE=
-X-Virus-Scanned: amavisd-new at itans.com.br
-Received: from mx.itans.com.br ([127.0.0.1])
- by localhost (mx.itans.com.br [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id tImhSQBfRXkq; Wed, 29 Mar 2023 07:14:45 -0300 (-03)
-Received: from [212.87.204.119] (gateway [186.226.6.193])
- by mx.itans.com.br (Postfix) with ESMTP id 487E9A111659;
- Sat, 25 Mar 2023 12:23:27 -0300 (-03)
-Content-Type: text/plain; charset="iso-8859-1"
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Wed, 29 Mar 2023 17:07:04 UTC
+Received: from mail.cstproio.autos (unknown [193.160.141.79])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2B57710E02F
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 29 Mar 2023 17:07:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cstproio.autos; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=costco.opinion.requested@cstproio.autos; 
+ bh=3TMNorAcxxdCdI2Qay0FGG4/hRo=;
+ b=Fx8nBIBp1XB/eqrpUMOnIugoQJvKOLODGEvNBRc57Tg4MzcGH+3Dn//Kcs9Nf9R6kK+bHt47WbEu
+ KOFA1B5PUSOkIMMGS1fPTJeYkSZY9wcNEaYE8aSahKxam5cr328RqY/NYcbxStCq2j1e14ob1e7E
+ GFfyUkBGJUmpPRE4E1U=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cstproio.autos;
+ b=CKoY+Vyy17fxVanJZQNvh4irSTZU5caNx+QwjYhI5SMyaseyOijkNphjRAcbZ3qw139Jr7L//36X
+ qZRKWxNeZqHPnUEYAI37jh2+5ctASFcKLMNobJNuDXSmGiFwrWVS6msPPLsJBdRRoFrE/RG9XjGR
+ oG3CeeAYH7/8OTTtDvY=;
+Received: by mail.cstproio.autos id h4ho3g0001gu for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 29 Mar 2023 12:57:16 -0400 (envelope-from
+ <costco.opinion.requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@cstproio.autos>)
+Date: Wed, 29 Mar 2023 12:57:16 -0400
+From: "Costco Opinion Requested" <costco.opinion.requested@cstproio.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Don't miss out on the chance to receive a brand new iPhone 14 Pro -
+ offer ends today.
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: Thank  You
-To: Recipients <ruralfm@itans.com.br>
-From: "Mr.  Monyemarapye T. Cillinton"<ruralfm@itans.com.br>
-Date: Sat, 25 Mar 2023 16:44:15 +0100
-Message-Id: <20230325152328.487E9A111659@mx.itans.com.br>
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_856_2115701739.1680108994543"
+Message-ID: <0.0.0.5F.1D9625F845BEE58.129AF4@mail.cstproio.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,30 +51,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: monyemarapyecillinton@consultant.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Compliment of the Season,
+------=_Part_856_2115701739.1680108994543
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-I hope you are doing well today?
+A Special Offer for Our Valued Users
+---------------------------------------------
 
- I am Mr. Monyemarapye T. Cillinton, I represent high profile investors/len=
-ders who want to invest in your country as a means of expanding business in=
-terests overseas, the investors are ready to fund
-your company or any of your current projects on direct loan financing with =
-easy repayment terms at a low interest rate of 2% ROI per annul. The terms =
-are very flexible and interesting.
+COSTCO WHOLESALE
 
-The establishment of this funding shall be applicable to the international =
-laws, If you are interested and have good investments or project plan that =
-needs funding, kindly revert back to me for possible
-business cooperation: Email: monyemarapyecillinton@consultant.com
+We wanted to take a moment to thank you for choosing Costco.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
 
-Regards,
+As a token of our appreciation, we would like to give you a chance to win a brand new iPhone 14 Pro when you fill out our survey.  This powerful device is the latest and greatest from Apple, and is yours to keep, no strings attached. 
 
- =
 
-Mr. Monyemarapye T. Cillinton
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
-Investment Consultant
+
+
+Start Here Now >>>>>
+http://www.cstproio.autos/watchers-percent/7745GH2395uD86B13Y51Nw32z1320L36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.QoQK7K1D0Fnj6tM@3wD
+
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+
+
+Best regards,
+The Costco Survey Team
+
+---------------------------------------------
+
+To bring messages to an halt, click_here >>>>> http://www.cstproio.autos/ad94u2395g8iq612s_5131n1320k36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ.QoQK5zP10h6OlMw@D/appreciations-baneful
+126 E 23rd St New York, NY, US 10010
+
+<style><style><span lang="latitudes"></style><font><font></style></span></font><style style="iodine"></font></style><style></style>
+
+------=_Part_856_2115701739.1680108994543--
+
