@@ -1,74 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40D496D12C7
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 Mar 2023 01:05:40 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 17C7B6D12E8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 Mar 2023 01:18:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EE6A610F092;
-	Thu, 30 Mar 2023 23:05:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AA3EE10F09A;
+	Thu, 30 Mar 2023 23:18:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E911E10F084
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 23:05:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680217536;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TMatgO6BH6GC06VsPyDFmO7jcdjVEhbN0H0T7ElgUC8=;
- b=Cs9Nu+Eck1dwFkDhfVobMVTZF/iWlYBYRqFyrGFEBKbR/15bd5r/vehBPEezUmjUQuX4ZH
- BbayGDMDlE1jzeuHJp6WvNFktL7DGvNs6Fwqwk8H42NdUKbvx9zGlrPqc966l4J8GhbGvX
- V5Bmw1eK9YDWkf3P+9E9FHf+ojKDrsE=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-18-F27zJZ4RPdma9qcsboJMug-1; Thu, 30 Mar 2023 19:05:34 -0400
-X-MC-Unique: F27zJZ4RPdma9qcsboJMug-1
-Received: by mail-io1-f69.google.com with SMTP id
- b26-20020a5d805a000000b0074cfe3a44aeso12451500ior.10
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 16:05:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680217534;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=TMatgO6BH6GC06VsPyDFmO7jcdjVEhbN0H0T7ElgUC8=;
- b=7pkJ3gw1lr5GJOQDpHH57Nw+8TGtFzP/rGgiX18iSegHHzdkk0Qiq0C0shjo74CcRq
- q0Fu+EXsSZEFsONCXYPm82xlNy735BCm30if57X/cLMP+35ESkyTlpk9/roW+xRMR/Nc
- sgzrJzRvkBwoHrGZrOrnGAg8dI0jCWw6i3YFgFYsrNwFmJGvRNzWNpB8rObWXtf/tgMb
- yZrGOM2cREVYg7cxPmyU0wt66Ms9sFxf90lhb8p3gGo044F7xQuzPQUSKjxn+B4sGwM7
- cWhH1f6iFsh8h/46hnf/H2JxP4FHy4BrlmhWCXcRgw3vz0Q01Z2J7Zed4/2uclkToJny
- fjWg==
-X-Gm-Message-State: AO0yUKUVqbGXt00U/6lwQsLRTFtUGWG87FyKJ+2uFwHh6lhqrzM7bxae
- pgB8o069TVYc7msLj2sCrGzAgNlMouy8rh6vGNLgJR8gnsjWreTm9a+/HunVwPXOiL5eROyLmbB
- n/s8oeOXt2ukJPi3wnDu3fHNV8LwL+g43Wg==
-X-Received: by 2002:a5e:d606:0:b0:750:6c44:3454 with SMTP id
- w6-20020a5ed606000000b007506c443454mr18191695iom.12.1680217533762; 
- Thu, 30 Mar 2023 16:05:33 -0700 (PDT)
-X-Google-Smtp-Source: AK7set8/aJ7IpuNBdq7qV6Sm6acZzS/OWNOFTVCSNmhDCnhCPHu0seHdmhZKi6cwPTOuCTVmWl7Umw==
-X-Received: by 2002:a5e:d606:0:b0:750:6c44:3454 with SMTP id
- w6-20020a5ed606000000b007506c443454mr18191668iom.12.1680217533461; 
- Thu, 30 Mar 2023 16:05:33 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- n2-20020a02a182000000b003b778515852sm213023jah.168.2023.03.30.16.05.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Mar 2023 16:05:32 -0700 (PDT)
-Date: Thu, 30 Mar 2023 17:05:31 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12on2080.outbound.protection.outlook.com [40.107.244.80])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D6F0310E2E8;
+ Thu, 30 Mar 2023 23:18:22 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=n0isPgs8DAGQxZ2RSrLqRNoQMmwgERmJEjjXE67Xwuehc7caYjRfnqJRwkXpOJGXkhdBpdCl+spCOSkqrjvolz8UgXNNihAmwNG0qLfeCUBXoprXq1JjmNWll0ipL8lpWMRk3x7p5OE4W4XE4jBjaqUKrYV6ziyAsLuaS7KExIUNbI3YIn5pL1imle9ektviVaCsXUEAFH21OiFsTbUA/7faqdvaJxUdsrzGbGpM8L+rSdDy6RBGBEEzluxXnZNpdjZI4IkR4l/LZ7voQIDfymXYa1UHvHYpepfkS+F1CcdYHoBbPuu+7grx5QWppmsPrVNFp/EDcThkBovfgKaO2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=26UpzFiBQkjtCehSyj97lEqxDrhS+wCgTYK70lFeIcw=;
+ b=gTMTZghjID1qfucDlx7spUNZJMyOR+YmvmCmrC2G2Qxz6IRJeXKQvfg19IhIzMOtixDJRU6asDtsjdpdi48m6YBuDHthBGW7ELsdj6G+PhDUGuQpnDTbfRlKM/V9X/70MnGJ4Jysx6+pYWsneMSyxQAcu+82uGtA2MNh1WdgefDbkXB/bfW5RMQrQgVcnHrcGYKrZDhzbcst0MMJ3BCarnZsRL7I591BjKqV6ASz3bu5mlH40rKmahxYMMMh0hBnr8PYodQemvGIEw1FGBOChRShLfEIQBvkF4F63AbxMK1ctsfVbhogvCU6EeWagOM/2ERqW4mLw21uMemfIEQAZA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=26UpzFiBQkjtCehSyj97lEqxDrhS+wCgTYK70lFeIcw=;
+ b=R8T8H/skWk+G5I4Z4v6wWwtvzSUP/JKldrvSwxC1YQWuO0B9Nl0vbMB4ijzH1rd9dNUoThIw1Jv7nSSWH0kEKvzYrliSB546tLN6j0GVEoxaY6rNr3eALLPXuC26IsgCIYH9sJwYuCFpw5WtJBjTporXCZrusGRylpqOQvYsK0bmT0XBtlpugW5g2kRa6VOi2EGkyUsfF80fFPa9xAtrDZoaxWvbcK2GHW9mICPmHKD3TGQDlOR+yVSZ1lxCKYGTM2yV5raCDG8IgolOmPQM5CejfA1MFmAo9JTT2//G82UUpffeyarwY/IQ8PargIICgS5Lbnc9Gx+FmIE+ccrQlA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by DS0PR12MB8020.namprd12.prod.outlook.com (2603:10b6:8:14f::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6222.33; Thu, 30 Mar
+ 2023 23:18:21 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::ef6d:fdf6:352f:efd1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::ef6d:fdf6:352f:efd1%3]) with mapi id 15.20.6178.037; Thu, 30 Mar 2023
+ 23:18:20 +0000
+Date: Thu, 30 Mar 2023 20:18:19 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
 Subject: Re: [PATCH v2 10/10] vfio/pci: Add
  VFIO_DEVICE_GET_PCI_HOT_RESET_GROUP_INFO
-Message-ID: <20230330170531.3b66c05a.alex.williamson@redhat.com>
-In-Reply-To: <ZCYQ5zhmjg/xQmTZ@nvidia.com>
-References: <DS0PR11MB7529B6782565BE8489D922F9C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
- <20230328084616.3361a293.alex.williamson@redhat.com>
- <DS0PR11MB75290B84D334FC726A8BBA95C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
+Message-ID: <ZCYYu2jPdczuzaFE@nvidia.com>
+References: <DS0PR11MB75290B84D334FC726A8BBA95C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
  <20230328091801.13de042a.alex.williamson@redhat.com>
  <DS0PR11MB752903CE3D5906FE21146364C3889@DS0PR11MB7529.namprd11.prod.outlook.com>
  <20230328100027.3b843b91.alex.williamson@redhat.com>
@@ -77,12 +54,63 @@ References: <DS0PR11MB7529B6782565BE8489D922F9C3889@DS0PR11MB7529.namprd11.prod.
  <20230329094944.50abde4e.alex.williamson@redhat.com>
  <DS0PR11MB75298AF9A9ACAEBDD5D445ECC38E9@DS0PR11MB7529.namprd11.prod.outlook.com>
  <ZCYQ5zhmjg/xQmTZ@nvidia.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+ <20230330170531.3b66c05a.alex.williamson@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230330170531.3b66c05a.alex.williamson@redhat.com>
+X-ClientProxiedBy: BLAPR03CA0060.namprd03.prod.outlook.com
+ (2603:10b6:208:32d::35) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DS0PR12MB8020:EE_
+X-MS-Office365-Filtering-Correlation-Id: 97911a7f-91b4-4d60-ece2-08db31750d41
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: j4yIwK11YVxrkvsFNUikA2sGrBuwXtlvlQCAlyWExAv2QkCgPu3Q6QKBK8PQkzL66PhMX/HzipsSk8ASNhCslYHW4qvnRkWlZquJ9RygoUptQq1KKE2v9RelqSy7syrHcKeYfYq7NnKIWOSyV+Ix2v5KFDagoDwrlXMLvc+pVde2xBbYWy38PDEcapkCgCyDoaDSyBL4NalRvcxibWk6nE/Wtb5QzCZLUqKdRtTZjzm/YhYgigANIB2RTr7dDhYSXDrei/LrANU21Tty8H2ymdewb3k2f/YBsJfGzkc2T7dHJrEHMmBo0JeWgCE3tfnvg4XHlb89FrGtzCYEyyQ92bHvnWTxYxLAPPm1n7wGmxAhyFI/Lof1rmY7aYPkqPV1ZkyROPrUr/QiHZaUBmNGpXGloXomfrykrhNYL84eXrTEDLNp9Jb4gn0UOd9+Lmi5CKmd8Dzsp6Ut2/+FNF2UCJk/zTUCGxn/pVCUViRPxquYCOPQ0+9SdGk6ILZjhIuyEzQeejG/LRJhuFnDpZws7BPEPUBN82/Se6y1plcvtHyF1HEkAKLmBVDwbQ1UWM0r
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(4636009)(39860400002)(366004)(376002)(136003)(346002)(396003)(451199021)(4326008)(8676002)(6916009)(83380400001)(66946007)(66556008)(66476007)(7416002)(5660300002)(38100700002)(2616005)(41300700001)(8936002)(6486002)(316002)(36756003)(186003)(478600001)(54906003)(6512007)(6506007)(26005)(2906002)(86362001)(4744005);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?L1JLzf3XRmP9F2jm/SAzKK21y+41XDUt6RJkBoUU9Y2y09HF5fOd3Z+Gpna5?=
+ =?us-ascii?Q?roHXAj1i3cYO7iHo0JFcvJSzl0hXxzkKhBHZF22FDH8EI8pp6zGramYIe7DF?=
+ =?us-ascii?Q?ByEgV+iMjIDG3IH5bQD71uZIucs1/KrdyRZgtUqQ/SMIcL7RTheglV+umBW+?=
+ =?us-ascii?Q?/c2PZg3tif4PiS7jRKhbhwTumXl+ChZFvC7EgNeDYOzAlpD3KIwtNBRoBPRr?=
+ =?us-ascii?Q?TLfyuAWKhD2LLWy5xPdzZojtuRwEPoxJfYNxU9r60h57H8K2vrGgSRBPUE9P?=
+ =?us-ascii?Q?95D0mwKsV4z+5xG/o12BPKpQ5N0/anTHOnsGGDG2PHzh6SNjx/AMk76LhszA?=
+ =?us-ascii?Q?jYZQgM+/7IO1edQ+dGpSFlkjN+2ul3LqitmtwMYy/9ShGeSKRSylGFvzA1Sx?=
+ =?us-ascii?Q?08TXeQU9uLHiccDQwqNWGsqAckzfFnAsIb0BjdJoodJE/RDGzGQzOFPURU2N?=
+ =?us-ascii?Q?+hoP4zNAoDqzyzqm2N3t9IBWS5rbeIhQqSjxezZmTn+wBrPJeiD78boTx8Hd?=
+ =?us-ascii?Q?4Lwwo348fjpyuxhZIZZffs0VTZOCY2lyzQXhEbGAFSSeQ/c5dRDuMfMAXMxH?=
+ =?us-ascii?Q?5owLf7JnF1X1xdyuk0G9ROhu2HD2kNyRS/49Yu3CSmlUtAyTw6L3jvm+pdtH?=
+ =?us-ascii?Q?Zlpuwnf0zUg4gEIY1qRDMWeQLzk8zoGgSSuCnrH+I/2jXOaGYCzqiLfsE0Lw?=
+ =?us-ascii?Q?PIlj0c9AEvZTfWyHoNJboyFtT+Y+bmmmppgJLzzb3qCUifNJscXuHP+Xlqro?=
+ =?us-ascii?Q?OeaO497aLzOt7bLlBZVfn+HK1DqM+F4gEVykYzMGQ/44aOGmvzEOGZfleZjo?=
+ =?us-ascii?Q?UYfBfTO+akcifUP3EEbDh4P+4luGQm4glhSKtnCMVCzhirHTZf/pT6hscu4Y?=
+ =?us-ascii?Q?UwmZKmNndvgXyxHnnK65IR2nq7Rg3tAOIFGkviFlh4Lq/s/dNt81lX5LjdDO?=
+ =?us-ascii?Q?JGunqJpJsJw6odBzoKYwoIEtKCdHoSdphf00OecDy6BPDcSigC8cDbNNaDDv?=
+ =?us-ascii?Q?FQ2Ar/y1pThLd+N9mShfTHLPdUs46utFuxWVfeRZtZebFykdPIrSeJg/Qp6H?=
+ =?us-ascii?Q?eNv81cuc9thV2lF+r12JVaMyxoJX5PLe4z45dt6q612TT52J104IIhQZHlF5?=
+ =?us-ascii?Q?ZJXhsXvIJ+UaSyj4Jsn47buPtLh2ry/hTJAckwZmiemKQf78m7Ru+h2GkSsT?=
+ =?us-ascii?Q?RCQgAWmjHrsVdopnJoViWQ7/2Vpo8OzAMUWup1N2+KWQQfCwhQ0B00HFxoWw?=
+ =?us-ascii?Q?cVBVbjUm/5iQRxLuuqkVp1N68XBMepKtK6uRkx6a2nmm87QcK60ffwyRETiZ?=
+ =?us-ascii?Q?3ocAhXwo7/4tCF9GynD2cZELf2mgNGBkUTsI74rNU95b9AnNkESbW9r12l/O?=
+ =?us-ascii?Q?8o+w/8hSeHi3MoHla+jxxD6H2ORYtCfx9e7LaS+y6JzIg6lm+k/0Le+MQsb2?=
+ =?us-ascii?Q?R0oAe/NwghkvuxXY/pckAfJ8r+SCYHBGvXDvuXznBPa3SohITgZSwQECwfJT?=
+ =?us-ascii?Q?+oy3ZkvUqOATauENZbirW7dIHKYGFJXpw75AAHjKYwoxrCypuQDYDFtNTt1R?=
+ =?us-ascii?Q?Mq1Po1ARtu+JOQCQmnSlClEMZhZaa3X8/SKeK6lx?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 97911a7f-91b4-4d60-ece2-08db31750d41
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Mar 2023 23:18:20.8446 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: okKlZj9v33W+1BH7FjSpQhzLkZYZ+a7MgA/NcCJ+LTQ4VgVZey06IAzB9hzXtX1L
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB8020
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,41 +145,17 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 30 Mar 2023 19:44:55 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
-
-> On Thu, Mar 30, 2023 at 12:48:03PM +0000, Liu, Yi L wrote:
-> > +	/*
-> > +	 * If dev_id is needed, fill in the dev_id field, otherwise
-> > +	 * fill in group_id.
-> > +	 */
-> > +	if (fill->require_devid) {
-> > +		/*
-> > +		 * Report the devices that are opened as cdev and have
-> > +		 * the same iommufd with the fill->iommufd.  Otherwise,
-> > +		 * just fill in an IOMMUFD_INVALID_ID.
-> > +		 */
-> > +		vdev = vfio_pci_find_device_in_devset(dev_set, pdev);
-> > +		if (vdev && !vfio_device_cdev_opened(vdev) &&
-> > +		    fill->iommufd == vfio_iommufd_physical_ictx(vdev))
-> > +			vfio_iommufd_physical_devid(vdev, &fill->devices[fill->cur].dev_id);
-> > +		fill->devices[fill->cur].dev_id = IOMMUFD_INVALID_ID;  
+On Thu, Mar 30, 2023 at 05:05:31PM -0600, Alex Williamson wrote:
+> > I suggest to check for VFIO_PCI_HOT_RESET_FLAG_IOMMUFD_DEV_ID on input
+> > as well. I know the old kernels don't enforce this but at least we
+> > could start enforcing it going forward so that the group path would
+> > reject it to catch userspace bugs.
+> > 
+> > May as well fix it up to fully validate the flags
 > 
-> This needs an else?
-> 
-> I suggest to check for VFIO_PCI_HOT_RESET_FLAG_IOMMUFD_DEV_ID on input
-> as well. I know the old kernels don't enforce this but at least we
-> could start enforcing it going forward so that the group path would
-> reject it to catch userspace bugs.
-> 
-> May as well fix it up to fully validate the flags
+> Is this under the guise of "if nobody complains it's ok, otherwise
+> revert" plan? 
 
-Is this under the guise of "if nobody complains it's ok, otherwise
-revert" plan?  We report dev-id based on the nature of the device, not
-the provided flags, so I'm not sure I follow how this protects the group
-path, unless we've failed to clear the output flags on that path with
-this change.  Thanks,
+Yah, assuming people don't pass in uninited structs.
 
-Alex
-
-
+Jason
