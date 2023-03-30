@@ -1,43 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E521A6D0B74
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Mar 2023 18:37:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A58AC6D0C37
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Mar 2023 19:07:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B12C810E42D;
-	Thu, 30 Mar 2023 16:37:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7B3D110EF44;
+	Thu, 30 Mar 2023 17:07:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Thu, 30 Mar 2023 16:37:54 UTC
-Received: from mail.snplisc.autos (unknown [194.116.236.220])
- by gabe.freedesktop.org (Postfix) with ESMTP id 06F1310E086
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Thu, 30 Mar 2023 17:06:59 UTC
+Received: from mail.geblecsv.autos (pursuing.terryspowerequipment.com
+ [194.116.236.195])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 86AB610EF36
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 16:37:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=snplisc.autos;
+ Thu, 30 Mar 2023 17:06:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=geblecsv.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=senior_savings@snplisc.autos; 
- bh=pmqYfNnNo+mQsCk1rVDw5g42ui4=;
- b=YrnKBrlHMLKmMocbqvViZYUUfgzCu2ssv2UMWbzC74+hPA7aeKrEi8Csox4SqCxnjfis5SPik3x3
- QWhig9V1OmTWuyWQHquT/3yiL+toxo5OgwXYm0vxmv7o4xRO7b9QAh8SGucbATP69uXurC15B3qx
- cUP1KoAFtC2SOuCHA54=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=snplisc.autos;
- b=du1ZORdNblJT7c23eDyT+rXKiHi5f8Yt/3fhFJbLGBI/PvM/Gvz70QphU6UOIwmaco+W7UaBVXP4
- KzYWjj+2bidlAONfMMZwLuxP4ySbLADVceJc/wrE4wU2iaRyMp5fVjsm3uTeWMPEq9paREXSolZf
- J6GGczx+ieodw8+VKN8=;
-Received: by mail.snplisc.autos id h4mte40001g5 for
+ i=cvs.pharmacy.service@geblecsv.autos; 
+ bh=io4qNbcC3tV2D/I9VZ0xPopeX3E=;
+ b=BPabzHDZPZEBPl9N4NOJiXZTlyPinZCoMxZWz5zhBIC9fGVVFY4S2x6VKifvp6TzPP1D0ek2y4MI
+ 9dX1FCAfbE+EOkKlyPiaBmE9GVp9+wv6VSL8GfTqM0QOFR8NKkNyYwP/0JjPELKAzZ56YGApfo/q
+ S1mxzAnGZXXiUSLGt/c=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=geblecsv.autos;
+ b=vGb7bqR7NIBYz+jOxeYE1HKxcRgsGcElf6bfChah5WnLHSvfTtHKRPdcSbqNJWrMo7iXXA4/DTzd
+ unMSVWu15DRrzaDxOKZJ1TkxlQ2Atv/EOgmsHM04hgXUe56kwGK9jkHyV1H2RQfjSjQQ1b3eYq4o
+ igzbrFSN9rGRzBkx2p4=;
+Received: by mail.geblecsv.autos id h4n0r60001ge for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 12:23:30 -0400 (envelope-from
- <senior_savings-intel+2Dgvt+2Ddev=lists.freedesktop.org@snplisc.autos>)
-Date: Thu, 30 Mar 2023 12:23:30 -0400
-From: "Senior Savings" <senior_savings@snplisc.autos>
+ Thu, 30 Mar 2023 12:54:05 -0400 (envelope-from
+ <cvs.pharmacy.service-intel+2Dgvt+2Ddev=lists.freedesktop.org@geblecsv.autos>)
+Date: Thu, 30 Mar 2023 12:54:05 -0400
+From: "CVS Pharmacy Service" <cvs.pharmacy.service@geblecsv.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: 1000s Of Seniors In (State) Are Saving A Ton Of Money By Doing This
+Subject: Don't miss out on the chance to receive a brand new Ninja Blender -
+ offer ends today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_262_1295622149.1680193354163"
-Message-ID: <0.0.0.1E.1D96323F6D11C8C.150D3F@mail.snplisc.autos>
+ boundary="----=_Part_436_363108579.1680195177049"
+Message-ID: <0.0.0.30.1D963283D20C314.3F378@mail.geblecsv.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,32 +55,43 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_262_1295622149.1680193354163
+------=_Part_436_363108579.1680195177049
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Senior Perks
-----------------------------------------
+A Special Offer for Our Valued Users
+--------------------------------------
 
-This Spring, Explore 19 Financial Secrets That Are Often Overlooked By Senior
-
-Did you know tha most seniors unknowingly overpay for everything?.  From auto insurance to prescription medications to groceries, you're probably spending more than you should. 
-
-But how would you know? They don't tell you.  The fact of the matter is, most companies actually offer secret discounts to seniors, all you have to do is ask.  To stop you from speding more money than you should, we've put together the ultimate list of 19 places that you're entitled a discount to. 
-
-Check out the list here >>>>>
-http://www.snplisc.autos/8636Hu2j395h8Z6F13H5HU145T132aI36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQsQoRK5iGo106pNzqwD/authorizer-current
+CVS
 
 
+We hope this email finds you well.  At CVS, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
 
-----------------------------------------
-If you'd prefer not to receive future emails, [Unsubscribe Here. ]>>>>> 
-http://www.snplisc.autos/authorizer-current/7384j2395upV8613b5j1y46t132aO36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQsQoRK7rw1Wz0S5b1XwD
+As a token of our appreciation, we would like to give you a FREE Ninja Blender when you fill out our survey.  This high-performance blender is perfect for creating smoothies, soups, and more, and is yours to keep, no strings attached. 
 
 
-[My Senior Perks] >>>>>
-http://www.snplisc.autos/minimizers-spheroid/1f24Y2395O8Wi613Gz5147uZ132aD36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQsQoRK5Q1B0k6EzXwlD 
-302 Washington St #150-7835 San Diego, CA 92103
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. 
 
-------=_Part_262_1295622149.1680193354163--
+Take The Survey  >>>>>
+http://www.geblecsv.autos/e036N2I3U95I8SN611r5148i132bA36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQPQoSm6IHG1z06p01w3D/remit-nontechnical
+
+
+
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+
+Best regards,
+The CVS Survey Team
+
+
+
+--------------------------------------
+
+No longer wish to receive communications?, click_here >>>>> http://www.geblecsv.autos/a615l23D95vS86m13j5m149qt132bG36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQPQoSm5G1vt05pUMwD/obviating-preys
+126 E 23rd St New York, NY, US 10010
+
+
+
+<big><style><small></small></big><span style="adjuster"><style></span></style></style><font id="Kelvin"></font><font face="quaff"><span size="outlawing"></font><span style="bombarded"></span><span face="enjoined"></span></span>
+
+------=_Part_436_363108579.1680195177049--
 
