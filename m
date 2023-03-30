@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A58AC6D0C37
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Mar 2023 19:07:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9F906D0CEF
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Mar 2023 19:35:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7B3D110EF44;
-	Thu, 30 Mar 2023 17:07:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8FF0710EF64;
+	Thu, 30 Mar 2023 17:35:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Thu, 30 Mar 2023 17:06:59 UTC
-Received: from mail.geblecsv.autos (pursuing.terryspowerequipment.com
- [194.116.236.195])
- by gabe.freedesktop.org (Postfix) with ESMTP id 86AB610EF36
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Thu, 30 Mar 2023 17:35:47 UTC
+Received: from mail.drillac.click (unknown [194.116.236.217])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3005910EF61
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 17:06:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=geblecsv.autos; 
+ Thu, 30 Mar 2023 17:35:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=drillac.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=cvs.pharmacy.service@geblecsv.autos; 
- bh=io4qNbcC3tV2D/I9VZ0xPopeX3E=;
- b=BPabzHDZPZEBPl9N4NOJiXZTlyPinZCoMxZWz5zhBIC9fGVVFY4S2x6VKifvp6TzPP1D0ek2y4MI
- 9dX1FCAfbE+EOkKlyPiaBmE9GVp9+wv6VSL8GfTqM0QOFR8NKkNyYwP/0JjPELKAzZ56YGApfo/q
- S1mxzAnGZXXiUSLGt/c=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=geblecsv.autos;
- b=vGb7bqR7NIBYz+jOxeYE1HKxcRgsGcElf6bfChah5WnLHSvfTtHKRPdcSbqNJWrMo7iXXA4/DTzd
- unMSVWu15DRrzaDxOKZJ1TkxlQ2Atv/EOgmsHM04hgXUe56kwGK9jkHyV1H2RQfjSjQQ1b3eYq4o
- igzbrFSN9rGRzBkx2p4=;
-Received: by mail.geblecsv.autos id h4n0r60001ge for
+ i=ace_tools_satisfaction@drillac.click; 
+ bh=joNxzuGe6iosvRFt+uWZQB/tg6o=;
+ b=yBbytzI1/sfe7a/i+of626x0/oDZTmvJRAy/h54U8itgatJvoV6HWJc6OlzqL9DpZioO8cbZGJ+G
+ WobZSqRvom9pqu2cSm+nteYubo4eO1eBA0GjVFIi1Y+MJRRPpo0KN9jMUF6rYYSg8xs0hwvS7mZA
+ aBDFULKa85J8T359ej4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=drillac.click;
+ b=YX5upAnOxlu6CkKVe7sipZtGkUTDjBRhsaZciAspmo0F08K0WU63zZIE4QJ3TPEywYIo7vYTUrN3
+ lrdIwYoubFC+CKy2/TkZJUrEJZQZ7cRwO3UvO1W5o5MPddCPwXimrjdrFEISc0OkyL1h/5dSnSHb
+ uY2PLVMys8NXYRSKNNI=;
+Received: by mail.drillac.click id h4n4760001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 12:54:05 -0400 (envelope-from
- <cvs.pharmacy.service-intel+2Dgvt+2Ddev=lists.freedesktop.org@geblecsv.autos>)
-Date: Thu, 30 Mar 2023 12:54:05 -0400
-From: "CVS Pharmacy Service" <cvs.pharmacy.service@geblecsv.autos>
+ Thu, 30 Mar 2023 13:24:00 -0400 (envelope-from
+ <ace_tools_satisfaction-intel+2Dgvt+2Ddev=lists.freedesktop.org@drillac.click>)
+Date: Thu, 30 Mar 2023 13:24:00 -0400
+From: "ACE Tools Satisfaction" <ace_tools_satisfaction@drillac.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don't miss out on the chance to receive a brand new Ninja Blender -
- offer ends today.
+Subject: Act fast and receive a brand new DeWalt Drill Set before the offer
+ expires today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_436_363108579.1680195177049"
-Message-ID: <0.0.0.30.1D963283D20C314.3F378@mail.geblecsv.autos>
+ boundary="----=_Part_847_377715723.1680197008381"
+Message-ID: <0.0.0.5E.1D9632C6AD9A8BC.415409@mail.drillac.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,43 +54,45 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_436_363108579.1680195177049
+------=_Part_847_377715723.1680197008381
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
 A Special Offer for Our Valued Users
---------------------------------------
 
-CVS
+---------------------------------------
 
 
-We hope this email finds you well.  At CVS, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
+ACE HARDWARE
 
-As a token of our appreciation, we would like to give you a FREE Ninja Blender when you fill out our survey.  This high-performance blender is perfect for creating smoothies, soups, and more, and is yours to keep, no strings attached. 
+We hope this email finds you well.  At Ace Hardware, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
+
+As a token of our appreciation, we would like to give you a FREE DeWalt drill set when you fill out our survey.  This set includes powerful and durable drills that will make any DIY project a success and is yours to keep, no strings attached. 
 
 
 To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. 
 
-Take The Survey  >>>>>
-http://www.geblecsv.autos/e036N2I3U95I8SN611r5148i132bA36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQPQoSm6IHG1z06p01w3D/remit-nontechnical
+
+Take the Survey >>>>>
+http://www.drillac.click/13d6Qz23m95wI86N12a514IaW132cV36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQIQoSn7o1Xh0QR6AywzDP/brokerage-Russell
+
 
 
 
 Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
+
+
 Best regards,
-The CVS Survey Team
+The Ace Hardware Team
 
 
+---------------------------------------
 
---------------------------------------
-
-No longer wish to receive communications?, click_here >>>>> http://www.geblecsv.autos/a615l23D95vS86m13j5m149qt132bG36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQPQoSm5G1vt05pUMwD/obviating-preys
+To end your subscription, click_here >>>>> http://www.drillac.click/planed-conjuncts/dc85q23D95S8pQ612b51T4bp132cu36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQIQoSn5H1G0j5dLwkD
 126 E 23rd St New York, NY, US 10010
 
+<span size="retrained"></span><span><style><span size="royalty"></style></span></span><style class="leeward"></style><style><font lang="scrimmage"></font><span title="fisherman"></style><font size="inflammable"></span></font><span id="rejoins"></span><small></small>
 
-
-<big><style><small></small></big><span style="adjuster"><style></span></style></style><font id="Kelvin"></font><font face="quaff"><span size="outlawing"></font><span style="bombarded"></span><span face="enjoined"></span></span>
-
-------=_Part_436_363108579.1680195177049--
+------=_Part_847_377715723.1680197008381--
 
