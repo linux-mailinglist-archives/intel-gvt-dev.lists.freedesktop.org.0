@@ -1,79 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64DA16D0E9D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Mar 2023 21:21:54 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A5296D0E5B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Mar 2023 21:10:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 22A3910E33A;
-	Thu, 30 Mar 2023 19:21:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1698210EFB0;
+	Thu, 30 Mar 2023 19:10:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0F94110E057
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Thu, 30 Mar 2023 19:10:16 UTC
+Received: from mail.nytoups.autos (unknown [194.116.236.212])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7340E10EFB0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 19:21:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680204110;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sqnQEZxaWao68chgcCo4orFozBmRoRDCr3XacwFOlaI=;
- b=XIbS3wOVZ67d6OiZdskTHt6GgJAFaErM9YBFoYy4R2AovHqCGorTznOL8cBTFDm9l9KK5T
- OcLMLudyrFyOKIjUhAu+9Jj4FECfESSPYi26yvGq+DiU9vf1k9+O9jdimsse+zS+YCqbQ3
- dIEkEKSiUd1bARK5NjO/jb4N8nJHKvI=
-Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
- [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-80-a2fbB8bCPSWl2eYSTRSUIw-1; Thu, 30 Mar 2023 15:21:46 -0400
-X-MC-Unique: a2fbB8bCPSWl2eYSTRSUIw-1
-Received: by mail-io1-f70.google.com with SMTP id
- i189-20020a6b3bc6000000b00758a1ed99c2so12085407ioa.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 12:21:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680204106;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sqnQEZxaWao68chgcCo4orFozBmRoRDCr3XacwFOlaI=;
- b=yjmtq61b1oiMQDoxA6SnVNLq2AkV52zIHw2xZPrkCSegI4+mxKBdSch5dXHxvWZB/k
- 8exYbjXwGFyZCAQlqYzjtkpuEhpBya6o4D7aT656JIPIMOz+2VzchIC6BB3zmKdkNomo
- 6GV0w/omdAWDqFKjM01ZDZaqW/9KS8EoXb5o5+IVSBVhtJWUPqSN8Maa0UsJYSMuzO/l
- CZr5Zw41fRWNBpm/cgUR9IrqXejFb6ykslqGYSA0CHQSIn8Z3xUd8/SF46EGXClVOl4s
- kYFjhrqSSuV/84+aDtW+LllHV4zY3UtYkyPpxm+a806ZALcmzAOllceUCK1TYdOZvMqX
- GQiA==
-X-Gm-Message-State: AO0yUKUM+qxszF9JWTpqe7EHFjY+LT8USuuYGvwMZpIQ5HZGHILZprTp
- 44vAkDe2MsITlNVkmC+y0BUucFHdQ8i7DF8Rl4/3bOCLyHmoEjSsT17RQpMYODoE329+vyINdwe
- 4Cqp3Y/RUTLkP15NDAv0g6ZW0vXXDSiC+3A==
-X-Received: by 2002:a05:6602:20da:b0:74c:aa1d:c1a1 with SMTP id
- 26-20020a05660220da00b0074caa1dc1a1mr17687530ioz.3.1680204105939; 
- Thu, 30 Mar 2023 12:21:45 -0700 (PDT)
-X-Google-Smtp-Source: AK7set+mNeudR7e8tOPV/GXrIldwy7od5clU9Br4psJl/Z0Ulm5W6yZvi903JIlNz219vg0XihaniQ==
-X-Received: by 2002:a05:6602:20da:b0:74c:aa1d:c1a1 with SMTP id
- 26-20020a05660220da00b0074caa1dc1a1mr17687509ioz.3.1680204105715; 
- Thu, 30 Mar 2023 12:21:45 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- cp7-20020a056638480700b00403089c2a1dsm104349jab.108.2023.03.30.12.21.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Mar 2023 12:21:45 -0700 (PDT)
-Date: Thu, 30 Mar 2023 13:21:43 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v3 0/6] vfio: Make emulated devices prepared for vfio
- device cdev
-Message-ID: <20230330132143.0c33f4d3.alex.williamson@redhat.com>
-In-Reply-To: <ZCSV2+LbgeWD2bPa@nvidia.com>
-References: <20230327093351.44505-1-yi.l.liu@intel.com>
- <ZCSV2+LbgeWD2bPa@nvidia.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+ Thu, 30 Mar 2023 19:10:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nytoups.autos;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=ups.delivery.status@nytoups.autos; 
+ bh=ON8kflhsQVQGJXGPGKEb4wN8Srs=;
+ b=NjlF+z2hcfarQ99fHmSxvOoaif4gmK68Y2YLMzyWDT9Iz3Ar8qFXgQPLQDtEgwhIQhNV4YVnRoM6
+ 8+bd/NiMRBmUZMEAqys9D8pPyzQOpaIIhrlJV18QQ06H20aFDs5ZSiHzYxlqWoL1DrPfh8t7mtSa
+ qNu1p5tC93QZOR0Z09o=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nytoups.autos;
+ b=eyCgnNZMA1/YLc0eZoriAfzRvivK5+GgRNeR7TYyECURY0VFftPut0QDV6y9ZaT/bX2wv/z7qt5v
+ ADJi5SeSbkUKvUv3AUABEPIMWeYPiqo63BMJOlerlQlCX/gmE/AxB/XFcyZzlN0o48VORc5Kro7T
+ 9L6PPuzORA6z5kdccSk=;
+Received: by mail.nytoups.autos id h4np940001g7 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 30 Mar 2023 16:25:39 -0400 (envelope-from
+ <ups.delivery.status-intel+2Dgvt+2Ddev=lists.freedesktop.org@nytoups.autos>)
+Date: Thu, 30 Mar 2023 16:25:39 -0400
+From: "UPS Delivery Status" <ups.delivery.status@nytoups.autos>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: ups news
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_898_29689220.1680202779636"
+Message-ID: <0.0.0.63.1D96345CB122682.39F138@mail.nytoups.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,55 +50,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
- linux-s390@vger.kernel.org, Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
- lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
- kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, intel-gvt-dev@lists.freedesktop.org,
- yi.y.sun@linux.intel.com, cohuck@redhat.com,
- shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 29 Mar 2023 16:47:39 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
+------=_Part_898_29689220.1680202779636
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-> On Mon, Mar 27, 2023 at 02:33:45AM -0700, Yi Liu wrote:
-> > Nicolin Chen (1):
-> >   iommufd: Create access in vfio_iommufd_emulated_bind()
-> > 
-> > Yi Liu (5):
-> >   iommu/iommufd: Pass iommufd_ctx pointer in iommufd_get_ioas()
-> >   vfio-iommufd: No need to record iommufd_ctx in vfio_device
-> >   vfio-iommufd: Make vfio_iommufd_emulated_bind() return iommufd_access
-> >     ID
-> >   vfio/mdev: Uses the vfio emulated iommufd ops set in the mdev sample
-> >     drivers
-> >   vfio: Check the presence for iommufd callbacks in
-> >     __vfio_register_dev()
-> > 
-> >  drivers/iommu/iommufd/device.c          | 55 +++++++++++++++----------
-> >  drivers/iommu/iommufd/ioas.c            | 14 +++----
-> >  drivers/iommu/iommufd/iommufd_private.h |  4 +-
-> >  drivers/iommu/iommufd/selftest.c        | 14 ++++---
-> >  drivers/iommu/iommufd/vfio_compat.c     |  2 +-
-> >  drivers/vfio/iommufd.c                  | 37 ++++++++---------
-> >  drivers/vfio/vfio_main.c                |  5 ++-
-> >  include/linux/iommufd.h                 |  5 ++-
-> >  include/linux/vfio.h                    |  1 -
-> >  samples/vfio-mdev/mbochs.c              |  3 ++
-> >  samples/vfio-mdev/mdpy.c                |  3 ++
-> >  samples/vfio-mdev/mtty.c                |  3 ++
-> >  12 files changed, 85 insertions(+), 61 deletions(-)  
-> 
-> It looks like most of this is iommufd so I will take it - Ok Alex?
-> 
-> The following cdev patch needs it so I'll stick it on its own branch
-> and we can sort it out after the reset series is done
+A Special Offer for Valued Customers
+---------------------------------------------
 
-Ok
+UPS
 
-Acked-by: Alex Williamson <alex.williamson@redhat.com>
+We wanted to take a moment to thank you for choosing UPS for your shipping needs.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
+
+As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+
+
+For completing the survey, you can receive a $100 Gift!
+
+
+To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
+
+
+
+TAKE THE SURVEY >>>>>
+http://www.nytoups.autos/fashionable-curtate/a626H2W39l5j86Qw12y51l50w132fz36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQjQoSd5B1n0R5k2wkD
+
+
+Thank you again for your support.  We look forward to hearing from you soon Warm regards,
+
+The UPS Survey Team
+
+---------------------------------------------
+To dispense with communication, click_here >>>>> http://www.nytoups.autos/accommodated-submits/daa4K2395s8KB612u51o51F132fO36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQjQoSd5oZ1R06YqBwjD
+126 E 23rd St New York, NY, US 10010
+
+<span lang="cogently"><small></span></small><style class="inherently"></style><font><style lang="enrapture"></style></font><big><big></big></big><span title="recurring"></span><span title="disrupt"></span><font dir="compacts"></font>
+
+------=_Part_898_29689220.1680202779636--
 
