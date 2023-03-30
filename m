@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 935676D0788
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Mar 2023 16:02:12 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E521A6D0B74
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Mar 2023 18:37:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6CA1C10E052;
-	Thu, 30 Mar 2023 14:02:11 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B12C810E42D;
+	Thu, 30 Mar 2023 16:37:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Thu, 30 Mar 2023 14:02:10 UTC
-Received: from mail.setlwspro.click (unknown [193.160.141.73])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1403E10EE4A
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Thu, 30 Mar 2023 16:37:54 UTC
+Received: from mail.snplisc.autos (unknown [194.116.236.220])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 06F1310E086
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 14:02:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=setlwspro.click; 
+ Thu, 30 Mar 2023 16:37:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=snplisc.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes.user.feedback@setlwspro.click; 
- bh=xmrwWKRB5NxSGxPcx6cQKHXRDPc=;
- b=A0hRAS8WnSHjoR4p7uwqM0Rvpg+Ux2iuQc0vJ8haseUem3IpRSxnkRpDeK521iiRE/hgo8MMDcZY
- ZkmChdR+vCxr82gp9oRrzXh4RZs3mTiRZuVW31GUUPSZVGk89IWI4O1HdmiHvAdDGtw4rPfIPB3g
- F+QiU3HN5SPh8PylGnE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=setlwspro.click;
- b=Dk+w4ZNKD6jBHoef0CRVJt0iq0wo/Ns458+c6Y+v1Fff2MMdlzx5mMpQsO20MD4JVulzUo8spcq7
- 539jNtfpIoktHBTTKBMxo1oJF41lwlKdiItgLRmSMeHAv9GwZzM23pl5gfpCI/wb3pO2yIjiUXdT
- dH8ZENhCFsd2XU295oI=;
-Received: by mail.setlwspro.click id h4ml5o0001gq for
+ i=senior_savings@snplisc.autos; 
+ bh=pmqYfNnNo+mQsCk1rVDw5g42ui4=;
+ b=YrnKBrlHMLKmMocbqvViZYUUfgzCu2ssv2UMWbzC74+hPA7aeKrEi8Csox4SqCxnjfis5SPik3x3
+ QWhig9V1OmTWuyWQHquT/3yiL+toxo5OgwXYm0vxmv7o4xRO7b9QAh8SGucbATP69uXurC15B3qx
+ cUP1KoAFtC2SOuCHA54=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=snplisc.autos;
+ b=du1ZORdNblJT7c23eDyT+rXKiHi5f8Yt/3fhFJbLGBI/PvM/Gvz70QphU6UOIwmaco+W7UaBVXP4
+ KzYWjj+2bidlAONfMMZwLuxP4ySbLADVceJc/wrE4wU2iaRyMp5fVjsm3uTeWMPEq9paREXSolZf
+ J6GGczx+ieodw8+VKN8=;
+Received: by mail.snplisc.autos id h4mte40001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Mar 2023 11:15:01 -0400 (envelope-from
- <lowes.user.feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@setlwspro.click>)
-Date: Thu, 30 Mar 2023 11:15:01 -0400
-From: "Lowes User Feedback" <lowes.user.feedback@setlwspro.click>
+ Thu, 30 Mar 2023 12:23:30 -0400 (envelope-from
+ <senior_savings-intel+2Dgvt+2Ddev=lists.freedesktop.org@snplisc.autos>)
+Date: Thu, 30 Mar 2023 12:23:30 -0400
+From: "Senior Savings" <senior_savings@snplisc.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Act fast and receive a brand new Stanley Tool set before the offer
- expires today.
+Subject: 1000s Of Seniors In (State) Are Saving A Ton Of Money By Doing This
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_475_824465155.1680184159825"
-Message-ID: <0.0.0.34.1D9631A65B1DEAC.4637CE@mail.setlwspro.click>
+ boundary="----=_Part_262_1295622149.1680193354163"
+Message-ID: <0.0.0.1E.1D96323F6D11C8C.150D3F@mail.snplisc.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,40 +53,32 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_475_824465155.1680184159825
+------=_Part_262_1295622149.1680193354163
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
-------------------------------------------------
+Senior Perks
+----------------------------------------
 
-LOWE'S
+This Spring, Explore 19 Financial Secrets That Are Often Overlooked By Senior
 
-We wanted to take a moment to thank you for choosing Lowe's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+Did you know tha most seniors unknowingly overpay for everything?.  From auto insurance to prescription medications to groceries, you're probably spending more than you should. 
 
-As a token of our appreciation, we would like to give you a FREE Stanley Tool Set when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
+But how would you know? They don't tell you.  The fact of the matter is, most companies actually offer secret discounts to seniors, all you have to do is ask.  To stop you from speding more money than you should, we've put together the ultimate list of 19 places that you're entitled a discount to. 
 
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-Start Here Now >>>>>
-http://www.setlwspro.click/Molly-retranslated/24c4I2395QI8l611B5141Z1328V36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQcQoRS6r1W0DQ5KU@wD
+Check out the list here >>>>>
+http://www.snplisc.autos/8636Hu2j395h8Z6F13H5HU145T132aI36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQsQoRK5iGo106pNzqwD/authorizer-current
 
 
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+----------------------------------------
+If you'd prefer not to receive future emails, [Unsubscribe Here. ]>>>>> 
+http://www.snplisc.autos/authorizer-current/7384j2395upV8613b5j1y46t132aO36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQsQoRK7rw1Wz0S5b1XwD
 
 
+[My Senior Perks] >>>>>
+http://www.snplisc.autos/minimizers-spheroid/1f24Y2395O8Wi613Gz5147uZ132aD36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQsQoRK5Q1B0k6EzXwlD 
+302 Washington St #150-7835 San Diego, CA 92103
 
-Best regards,
-The Lowe's Survey Team
-
-------------------------------------------------
-
-To halt email, click_here >>>>> http://www.setlwspro.click/Molly-retranslated/35a5s2N395I8P6r11K5142x1328k36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQcQoRS5jS1w06QUwDLU
-126 E 23rd St New York, NY, US 10010
-
-<font><small><span id="Univac"></small></font></span><font><font id="interlinks"></font></font><font size="Greenfeld"></font><span><style face="Bristol"></style></span><font></font><span class="pondering"></span>
-
-------=_Part_475_824465155.1680184159825--
+------=_Part_262_1295622149.1680193354163--
 
