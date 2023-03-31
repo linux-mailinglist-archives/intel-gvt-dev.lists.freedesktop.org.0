@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5422E6D2240
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 Mar 2023 16:19:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC7646D230A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 31 Mar 2023 16:52:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C8BBA10F252;
-	Fri, 31 Mar 2023 14:19:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BAE3110F277;
+	Fri, 31 Mar 2023 14:52:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Fri, 31 Mar 2023 14:19:54 UTC
-Received: from mail.iftlwsbbq.click (desmoid.thetorontobulletin.com
- [194.116.236.198])
- by gabe.freedesktop.org (Postfix) with ESMTP id 59ECC10F252
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 31 Mar 2023 14:52:28 UTC
+Received: from mail.dynattc.autos (unknown [194.116.236.200])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4C4F710F277
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 31 Mar 2023 14:19:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=iftlwsbbq.click; 
+ Fri, 31 Mar 2023 14:52:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dynattc.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes_member_benefit@iftlwsbbq.click; 
- bh=jPNAecrHRDgUkHQThejoIGhTKC4=;
- b=CUGTG+BW/VR2HVaUDLExg0AytttrQC2ik/0bqXXC73MTXRFkvxH062F4U+exkFEhUOmhdx1ZWslP
- 7UWB3awiW2Rl2ubdygfpv9KjfLoxdFjPauL/eVJYE32m+udG5rBPDiniam20u/kvqm7KVu3mfbsM
- MhYEc5Fxpqv6LSj0N0M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=iftlwsbbq.click;
- b=0gayYK5ZZhgds8+AuEZf1YM4EuoAuAr5BK9L3+hW6qr99WeKumm1ksQ++nDc4v1MLoWqryiz+Z+S
- TLC/izILAUXbfTFi5ghHb5e/xvdvXb8hKV5PYOWgS6cSLCtc27P7hmQtVNXDAasPIWAl3/unsUpb
- 7g6TBD+dknLulKPCbkU=;
-Received: by mail.iftlwsbbq.click id h4rm0k0001gt for
+ i=att_gift_opportunity@dynattc.autos; 
+ bh=6GxLOQ9grPFvBwKcTTvx5OkDouc=;
+ b=heClSoOdIX5TNLM70x2QfjAtEJoqtwxtJKcOmFrASTFGKehAJHsHZLAsZuiOBUFZ1hlW8t0l0q/V
+ 8521GQc1BV9RZo6wEwC+5B6Yf/kgpGJQV6BYfg8I5cAfx5RykojgdWoxfOLg242hIYnOfhpI/lMy
+ dOFy+ORgfb7EoMq1T6c=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dynattc.autos;
+ b=QWyWTq+l2/dvbkxmy0eH+0qQJ4pStDxjaw/qDc9fK2vKG8FY8UmzQssUUo2pfFhLklQI+/EjPIfB
+ Iju58CkwDSfj8p58u7VfVoGxGtzUkY3K42Hi1CFo4SE2cIw9CEiWSRkuBMGItirJSDqpvJITsnE6
+ H3VrQ8FxSYhbLFBk61c=;
+Received: by mail.dynattc.autos id h4rpqo0001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 31 Mar 2023 10:06:55 -0400 (envelope-from
- <lowes_member_benefit-intel+2Dgvt+2Ddev=lists.freedesktop.org@iftlwsbbq.click>)
-Date: Fri, 31 Mar 2023 10:06:55 -0400
-From: "Lowes Member Benefit" <lowes_member_benefit@iftlwsbbq.click>
+ Fri, 31 Mar 2023 10:42:56 -0400 (envelope-from
+ <att_gift_opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@dynattc.autos>)
+Date: Fri, 31 Mar 2023 10:42:56 -0400
+From: "ATT Gift Opportunity" <att_gift_opportunity@dynattc.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim your Weber Spirit BBQ before the offer runs out today.
+Subject: Holiday appreciation is needed during these time,
+ here's you gift on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_517_1456518358.1680271598834"
-Message-ID: <0.0.0.39.1D963DA0CEE5DA2.3E2473@mail.iftlwsbbq.click>
+ boundary="----=_Part_1054_649712465.1680273696482"
+Message-ID: <0.0.0.76.1D963DF15316040.379F8E@mail.dynattc.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,46 +54,41 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_517_1456518358.1680271598834
+------=_Part_1054_649712465.1680273696482
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
---------------------------------------------
+A SPECIAL OFFER FOR OUR VALUED USERS
+---------------------------------------------
 
-LOWE'S
+AT&T
 
-We wanted to take a moment to thank you for choosing Lowe's.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
+We wanted to take a moment to thank you for choosing AT&T.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
 
-As a token of our appreciation, we would like to give you a FREE Weber Spirit BBQ when you fill out our survey.  This BBQ grill includes a variety of features that will help you create delicious meals and is yours to keep, no strings attached. 
-
-
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+TAKE THE SURVEY >>>>>
+http://www.dynattc.autos/competency-functional/a9e6y23l9g5S86km12W5158Ll1333L36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQxQoSe7GWWk1j05i1wlD
 
 
-
-Start Here Now >>>>>
-http://www.iftlwsbbq.click/d316YA2_395D8J6n12b51W56A1332x36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQjQoSS5hy10m5p@wDW/Bakersfield-sourer
-
-
-Thank you for your continued support and for taking the time to fill out our survey.  
-
-
-We look forward to hearing from you soon.  
+Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
 
-Best regards,
-The Lowe's Survey Team
+Upon Completion of the Survey you might have a choice between different gifts!
 
---------------------------------------------
-To end your subscription, click_here >>>>> http://www.iftlwsbbq.click/Landwehr-Schumann/5944f2395fn8q613su5157wI1332Z36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQjQoSS5qQ10S6Qp2wPD
+
+
+
+Thank you again for your support.  We look forward to hearing from you soon!, Warm regards
+
+The AT&T Survey
+
+---------------------------------------------
+To discontinue messages, click_here >>>>> http://www.dynattc.autos/3d15X23r95w8l6Y13MJ5R159o1333M36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQxQoSe6s1Th0B5NqwDl/Atwater-analysis
 126 E 23rd St New York, NY, US 10010
 
 
 
-<span dir="invertible"><span></span></span><style><span></span><font dir="distiller"></font><style></style><font class="providers"><span lang="instrumentals"></span></font></style><span face="premier"></span>
+<big></big><span><style><font id="midsummer"></span></font></style><font></font>
 
-------=_Part_517_1456518358.1680271598834--
+------=_Part_1054_649712465.1680273696482--
 
