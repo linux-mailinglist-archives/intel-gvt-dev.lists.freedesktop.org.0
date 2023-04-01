@@ -2,45 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D3E86D31FC
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Apr 2023 17:18:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 959746D322B
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  1 Apr 2023 17:19:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 490D910E113;
-	Sat,  1 Apr 2023 15:18:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 29B6C10E27A;
+	Sat,  1 Apr 2023 15:19:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7B67610E10B;
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BE0C410E10C;
  Sat,  1 Apr 2023 15:18:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1680362318; x=1711898318;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=GLz5NXI+1KYeMmg5ytUfNGqA8vEqwpVcpTZviemQX7A=;
- b=JgoyUmFQKcln+u79l2MRh9GGhDxkRwxu+aVfPYaWNUH0sQGtjyaof87c
- pRthtC+wiE/QpAbhET9DUKflxaUDADov2g8A558MPQwO8jR+Odo9LJxlC
- nQp9ONU1GPTQAluu2tYJVxEpruYStVhllzuP44WX9OESRqaxlGiawbKc2
- uEyYnakim37V+a7eVfbHazOO45ABs5zU3YZQuEq2QDScHnrGnI+R0NleE
- XpwkR8/XldqYcrd189qFscZqdX0kkSR1hKIkiRLZxw1u2kzwjsD2Lovoi
- vBjnsudNpD0D7iv0kfnCD0B7EotpTviN1KDJCwvaS62byIB6Ho4Ot3oMz g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10667"; a="404411196"
-X-IronPort-AV: E=Sophos;i="5.98,310,1673942400"; d="scan'208";a="404411196"
+ bh=hjzCvpHXOHHDiAL4SB0c4+VEVNfU428UuCpNOuzRJ9U=;
+ b=cJfL3jyuR0qu6PHOPIE146kJ94IbTw7PW5A9V6qntRFLfGLphKGQ5xD+
+ pyQE2/L5VNpGpPNZ5KkEUV6MJsOOT+bMEhQqJysE4vgi6hIrX8MX/2jPX
+ t6oLry4/JuOmv4j14kNeroR22SaRnAncEmSfhICIcCVLeKrc0iFVvQ5mn
+ YNwlGReriu40MExVTKM8zWduxKyiVEwrrYArywGyVMsKxKQT7QmNjNqCE
+ NznsjWjZ844HcMVWVD2l8CJ7UcwHNr2jt3Itv2Qyc1+EId+ShVNjCoiJS
+ CJli5MnMPX9qnIbF0FHfcAjfWa21d2Tt8y6iAuu6KB/7uDdbA42+AwrWu Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10667"; a="404411206"
+X-IronPort-AV: E=Sophos;i="5.98,310,1673942400"; d="scan'208";a="404411206"
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Apr 2023 08:18:37 -0700
+ 01 Apr 2023 08:18:38 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10667"; a="678937156"
-X-IronPort-AV: E=Sophos;i="5.98,310,1673942400"; d="scan'208";a="678937156"
+X-IronPort-AV: E=McAfee;i="6600,9927,10667"; a="678937161"
+X-IronPort-AV: E=Sophos;i="5.98,310,1673942400"; d="scan'208";a="678937161"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by orsmga007.jf.intel.com with ESMTP; 01 Apr 2023 08:18:37 -0700
+ by orsmga007.jf.intel.com with ESMTP; 01 Apr 2023 08:18:38 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v9 03/25] vfio: Remove vfio_file_is_group()
-Date: Sat,  1 Apr 2023 08:18:11 -0700
-Message-Id: <20230401151833.124749-4-yi.l.liu@intel.com>
+Subject: [PATCH v9 04/25] vfio: Accept vfio device file in the KVM facing kAPI
+Date: Sat,  1 Apr 2023 08:18:12 -0700
+Message-Id: <20230401151833.124749-5-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230401151833.124749-1-yi.l.liu@intel.com>
 References: <20230401151833.124749-1-yi.l.liu@intel.com>
@@ -69,52 +69,82 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-since no user of vfio_file_is_group() now.
+This makes the vfio file kAPIs to accept vfio device files, also a
+preparation for vfio device cdev support.
+
+For the kvm set with vfio device file, kvm pointer is stored in struct
+vfio_device_file, and use kvm_ref_lock to protect kvm set and kvm
+pointer usage within VFIO. This kvm pointer will be set to vfio_device
+after device file is bound to iommufd in the cdev path.
 
 Reviewed-by: Kevin Tian <kevin.tian@intel.com>
 Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 Tested-by: Terrence Xu <terrence.xu@intel.com>
 Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
 Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/vfio/group.c | 10 ----------
- include/linux/vfio.h |  1 -
- 2 files changed, 11 deletions(-)
+ drivers/vfio/vfio.h      |  2 ++
+ drivers/vfio/vfio_main.c | 18 ++++++++++++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-index ede4723c5f72..4f937ebaf6f7 100644
---- a/drivers/vfio/group.c
-+++ b/drivers/vfio/group.c
-@@ -792,16 +792,6 @@ struct iommu_group *vfio_file_iommu_group(struct file *file)
- }
- EXPORT_SYMBOL_GPL(vfio_file_iommu_group);
+diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+index 56ad127ac618..e4672d91a6f7 100644
+--- a/drivers/vfio/vfio.h
++++ b/drivers/vfio/vfio.h
+@@ -18,6 +18,8 @@ struct vfio_container;
  
--/**
-- * vfio_file_is_group - True if the file is a vfio group file
-- * @file: VFIO group file
-- */
--bool vfio_file_is_group(struct file *file)
--{
--	return vfio_group_from_file(file);
--}
--EXPORT_SYMBOL_GPL(vfio_file_is_group);
--
- bool vfio_group_enforced_coherent(struct vfio_group *group)
- {
+ struct vfio_device_file {
  	struct vfio_device *device;
-diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index d9a0770e5fc1..7519ae89fcd6 100644
---- a/include/linux/vfio.h
-+++ b/include/linux/vfio.h
-@@ -264,7 +264,6 @@ int vfio_mig_get_next_state(struct vfio_device *device,
-  * External user API
-  */
- struct iommu_group *vfio_file_iommu_group(struct file *file);
--bool vfio_file_is_group(struct file *file);
- bool vfio_file_is_valid(struct file *file);
- bool vfio_file_enforced_coherent(struct file *file);
- void vfio_file_set_kvm(struct file *file, struct kvm *kvm);
++	spinlock_t kvm_ref_lock; /* protect kvm field */
++	struct kvm *kvm;
+ };
+ 
+ void vfio_device_put_registration(struct vfio_device *device);
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index 748bde4d74d9..cb543791b28b 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -414,6 +414,7 @@ vfio_allocate_device_file(struct vfio_device *device)
+ 		return ERR_PTR(-ENOMEM);
+ 
+ 	df->device = device;
++	spin_lock_init(&df->kvm_ref_lock);
+ 
+ 	return df;
+ }
+@@ -1246,6 +1247,20 @@ bool vfio_file_enforced_coherent(struct file *file)
+ }
+ EXPORT_SYMBOL_GPL(vfio_file_enforced_coherent);
+ 
++static void vfio_device_file_set_kvm(struct file *file, struct kvm *kvm)
++{
++	struct vfio_device_file *df = file->private_data;
++
++	/*
++	 * The kvm is first recorded in the vfio_device_file, and will
++	 * be propagated to vfio_device::kvm when the file is bound to
++	 * iommufd successfully in the vfio device cdev path.
++	 */
++	spin_lock(&df->kvm_ref_lock);
++	df->kvm = kvm;
++	spin_unlock(&df->kvm_ref_lock);
++}
++
+ /**
+  * vfio_file_set_kvm - Link a kvm with VFIO drivers
+  * @file: VFIO group file or VFIO device file
+@@ -1259,6 +1274,9 @@ void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
+ 	group = vfio_group_from_file(file);
+ 	if (group)
+ 		vfio_group_set_kvm(group, kvm);
++
++	if (vfio_device_from_file(file))
++		vfio_device_file_set_kvm(file, kvm);
+ }
+ EXPORT_SYMBOL_GPL(vfio_file_set_kvm);
+ 
 -- 
 2.34.1
 
