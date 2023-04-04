@@ -2,72 +2,71 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F0AE6D6E15
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Apr 2023 22:31:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B2186D6E85
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Apr 2023 23:00:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C28A010E1CF;
-	Tue,  4 Apr 2023 20:31:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3332410E7B0;
+	Tue,  4 Apr 2023 21:00:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CDD4710E1CF
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 55D1810E7B9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  4 Apr 2023 20:31:35 +0000 (UTC)
+ Tue,  4 Apr 2023 21:00:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680640294;
+ s=mimecast20190719; t=1680642038;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XqS1tmmJr7PAF8X4LNYoZBpPsb/UgoghZYeXc9m09Fg=;
- b=aU1a6Y6R8uTog04blRd+HniQYpuxvR+m9XSnjNDFyL1w2kywsUe1e8WK+ec9TpbHXtl/RK
- WQ1lWBKqBQZbfEJx7VC9NKkJ0R3L7MBBG38BR1rEuf26VZToiIihDqJgT+K0AX9NCueHvj
- fkk0NTnfbiKb1774dAV6wv52XmqxfRY=
+ bh=eUlNSkHN+zXMVEgYFwpXLf7eXmZqDjBFuuY+21ymQM8=;
+ b=QNXRjxDDVb8WnLfJzpLtcHe9kDPw8/ELQwrFT5e3ilaHTMscvOlkSVw16gcyCI8S21TKrI
+ VeWxOX6cqsZOanftzA2xJ2EmhmzbmMm6FAR7SyGNYw4G5ihuzN/W2ez1GUPJTeKTeORA6m
+ pRFfIRWDw4HXINHMPHQALeuWUShDVDY=
 Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
  [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-663-trShTWrLOc-5HmgvH_cg_A-1; Tue, 04 Apr 2023 16:31:31 -0400
-X-MC-Unique: trShTWrLOc-5HmgvH_cg_A-1
+ us-mta-638-prTI_sOGMs6OpjcGYt1z3A-1; Tue, 04 Apr 2023 17:00:37 -0400
+X-MC-Unique: prTI_sOGMs6OpjcGYt1z3A-1
 Received: by mail-io1-f69.google.com with SMTP id
- r25-20020a056602235900b0074d472df653so20369198iot.2
+ l7-20020a0566022dc700b0074cc9aba965so20724211iow.11
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 04 Apr 2023 13:31:31 -0700 (PDT)
+ Tue, 04 Apr 2023 14:00:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680640291;
+ d=1e100.net; s=20210112; t=1680642036;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XqS1tmmJr7PAF8X4LNYoZBpPsb/UgoghZYeXc9m09Fg=;
- b=p69o3shE+kTUO0ixG540kkMbSctawo14L5AqWrfFXBjAsuc13IYCospOYe3uZHXgs9
- GmEQWP1mppNpsfsCQJFTBUIULJZCeh3umcebIb8EY2wlKmTwPIMZ6EHOz2ASkrZyz1Iv
- lrz8WkulCc4JpvpoXS8u00oVpvk3BKVjRYPSIMkIr9DQvS13I9RcmpjXFnxCWuFUF4zl
- 85OVjAhlBvoGsnlFGiERGZm7RlU3UwdjXEADQ4N691QzrRQTxi7pziVEMLNaUicZ5WUd
- s82rUdu3z8wkPaQ3BKucDGTRGaz/v78riPL35CvTpnkHcS1z+E6vqhUdOumApPxYmenf
- eJrA==
-X-Gm-Message-State: AAQBX9dxnUwnljuYET8TdCOmSQi8NObFqmSdWDonrRV+CqrH3KDmGEPM
- j4lg864plGqHMTK/9ueAQ5TtHxhCnPoQgwviHGVZbqM9DwdiO+CXTDXCS9qvUFAkLYqnzQrmzt7
- FK003A8t29qzUQpmpfUJ/XaAzXAbumpjZcQ==
-X-Received: by 2002:a5d:818e:0:b0:75c:8ca2:c9dd with SMTP id
- u14-20020a5d818e000000b0075c8ca2c9ddmr3054678ion.13.1680640290848; 
- Tue, 04 Apr 2023 13:31:30 -0700 (PDT)
-X-Google-Smtp-Source: AKy350ZjUtpAYCx6yaQp4dhQD6EMAb3LqUkY7lWvfjoqBYl2aC4WHyIt9JLMzzeXtpK9Oh7S0irxFA==
-X-Received: by 2002:a5d:818e:0:b0:75c:8ca2:c9dd with SMTP id
- u14-20020a5d818e000000b0075c8ca2c9ddmr3054643ion.13.1680640290625; 
- Tue, 04 Apr 2023 13:31:30 -0700 (PDT)
+ bh=eUlNSkHN+zXMVEgYFwpXLf7eXmZqDjBFuuY+21ymQM8=;
+ b=fSoqG2IVn4taUn8mrl6j0rKtwV7lH9DxJhlPgpiIyTHYidc22VXlGpmjbhi0g8Jp41
+ K6JS8Qn8j1RgsPY7bMaxtQ3b86LxHoICi7DkQSaub5YWmFHhMtU72IGY0jUn/Bu3w0GZ
+ z2owcriGR3WQp/kzUFs8q4q45CVFbRpQITSF7qdJd92BTAMCWZGPmPnGkyheRhGVO1sX
+ 2Y0AsZQdQXSAOgwlYWRS/uz3yzWUENu/dCnQsG7B9ARRWHvm5TU3Zjy+pnF9lxHwrEau
+ hYR8BVJXXkeAGcaVD+fJlM5qX2Un9Ezh7gv+7kSPfCVqBEgLp/RreKOaj2/+vUYQmtcP
+ 6ysw==
+X-Gm-Message-State: AAQBX9fxza7CoNpMvcJuSiuhv/jWXbQqklpd1Idjomh5L7yK0FLK8hw8
+ pdsfjtNx+qY325FUbQLl8vwxKhP745e8i5XzZ+cX4ALpBTrOWGCOSZYsT7dL2La35po5Mvjfcs7
+ 9L+1an0ZXoJvSgm4gGubhbv5l4HGa+ALZmQ==
+X-Received: by 2002:a05:6602:2e05:b0:759:410c:99b6 with SMTP id
+ o5-20020a0566022e0500b00759410c99b6mr565938iow.2.1680642036468; 
+ Tue, 04 Apr 2023 14:00:36 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZBxWm4a3+LGUk3NVVLqCociOCxX0vWRo5d6ZJ4vSC6uL/zuJZ3VkObdr8SZMcgBOlbc8NPLw==
+X-Received: by 2002:a05:6602:2e05:b0:759:410c:99b6 with SMTP id
+ o5-20020a0566022e0500b00759410c99b6mr565895iow.2.1680642036246; 
+ Tue, 04 Apr 2023 14:00:36 -0700 (PDT)
 Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- j195-20020a0263cc000000b003b331f0bbdfsm3476000jac.97.2023.04.04.13.31.29
+ m41-20020a026d29000000b003c4d71489aasm3548333jac.6.2023.04.04.14.00.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Apr 2023 13:31:30 -0700 (PDT)
-Date: Tue, 4 Apr 2023 14:31:28 -0600
+ Tue, 04 Apr 2023 14:00:35 -0700 (PDT)
+Date: Tue, 4 Apr 2023 15:00:34 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
 To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v3 07/12] vfio: Accpet device file from vfio PCI hot
- reset path
-Message-ID: <20230404143128.52d8a256.alex.williamson@redhat.com>
-In-Reply-To: <20230401144429.88673-8-yi.l.liu@intel.com>
+Subject: Re: [PATCH v3 11/12] iommufd: Define IOMMUFD_INVALID_ID in uapi
+Message-ID: <20230404150034.312fbcac.alex.williamson@redhat.com>
+In-Reply-To: <20230401144429.88673-12-yi.l.liu@intel.com>
 References: <20230401144429.88673-1-yi.l.liu@intel.com>
- <20230401144429.88673-8-yi.l.liu@intel.com>
+ <20230401144429.88673-12-yi.l.liu@intel.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -98,73 +97,39 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat,  1 Apr 2023 07:44:24 -0700
+On Sat,  1 Apr 2023 07:44:28 -0700
 Yi Liu <yi.l.liu@intel.com> wrote:
 
-> This extends both vfio_file_is_valid() and vfio_file_has_dev() to accept
-> device file from the vfio PCI hot reset.
+> as there are IOMMUFD users that want to know check if an ID generated
+> by IOMMUFD is valid or not. e.g. vfio-pci optionaly returns invalid
+> dev_id to user in the VFIO_DEVICE_GET_PCI_HOT_RESET_INFO ioctl. User
+> needs to check if the ID is valid or not.
 > 
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+> IOMMUFD_INVALID_ID is defined as 0 since the IDs generated by IOMMUFD
+> starts from 0.
+> 
 > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 > ---
->  drivers/vfio/vfio_main.c | 23 +++++++++++++++++++----
->  1 file changed, 19 insertions(+), 4 deletions(-)
+>  include/uapi/linux/iommufd.h | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index fe7446805afd..ebbb6b91a498 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -1154,13 +1154,23 @@ const struct file_operations vfio_device_fops = {
->  	.mmap		= vfio_device_fops_mmap,
->  };
+> diff --git a/include/uapi/linux/iommufd.h b/include/uapi/linux/iommufd.h
+> index 98ebba80cfa1..aeae73a93833 100644
+> --- a/include/uapi/linux/iommufd.h
+> +++ b/include/uapi/linux/iommufd.h
+> @@ -9,6 +9,9 @@
 >  
-> +static struct vfio_device *vfio_device_from_file(struct file *file)
-> +{
-> +	struct vfio_device *device = file->private_data;
-> +
-> +	if (file->f_op != &vfio_device_fops)
-> +		return NULL;
-> +	return device;
-> +}
+>  #define IOMMUFD_TYPE (';')
+>  
+> +/* IDs allocated by IOMMUFD starts from 0 */
+> +#define IOMMUFD_INVALID_ID 0
 > +
 >  /**
->   * vfio_file_is_valid - True if the file is valid vfio file
->   * @file: VFIO group file or VFIO device file
->   */
->  bool vfio_file_is_valid(struct file *file)
->  {
-> -	return vfio_group_from_file(file);
-> +	return vfio_group_from_file(file) ||
-> +	       vfio_device_from_file(file);
->  }
->  EXPORT_SYMBOL_GPL(vfio_file_is_valid);
->  
-> @@ -1174,12 +1184,17 @@ EXPORT_SYMBOL_GPL(vfio_file_is_valid);
->  bool vfio_file_has_dev(struct file *file, struct vfio_device *device)
->  {
->  	struct vfio_group *group;
-> +	struct vfio_device *vdev;
->  
->  	group = vfio_group_from_file(file);
-> -	if (!group)
-> -		return false;
-> +	if (group)
-> +		return vfio_group_has_dev(group, device);
-> +
-> +	vdev = vfio_device_from_file(file);
-> +	if (vdev)
-> +		return vdev == device;
->  
-> -	return vfio_group_has_dev(group, device);
-> +	return false;
+>   * DOC: General ioctl format
+>   *
 
-Nit, unless we expect to be testing against NULL devices, this could
-just be:
+If allocation "starts from 0" then 0 is a valid id, no?  Does allocation
+start from 1, ie. skip 0?  Thanks,
 
-	return device == vfio_device_from_file(file);
-
-Thanks,
 Alex
 
