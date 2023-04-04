@@ -2,72 +2,73 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C35FB6D6EDF
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Apr 2023 23:24:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACDF16D6F3F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Apr 2023 23:49:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 939E110E7B0;
-	Tue,  4 Apr 2023 21:24:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7B5DB10E2F3;
+	Tue,  4 Apr 2023 21:49:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D317810E7B0
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 11F7210E7C6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  4 Apr 2023 21:23:58 +0000 (UTC)
+ Tue,  4 Apr 2023 21:49:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680643438;
+ s=mimecast20190719; t=1680644941;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wN65mwnOl0cJ7VCIj2dGHYdaX8HViyuK9uZH/ketQAk=;
- b=bV673E3CP0LXBq1sB0U1OdW/KItF2EGcGaHRn2BDDBr923GDGRGBO9IFapgSscMtHUHPlC
- HOOgK+d612nvOl6ekJB6c9Nv7uorAszJF1gnj6+jHuPtOoHLokaAO7UF08Kdgv+8CJCi2P
- FGOKJwA+vP0j4P52iqIwlk1Njb1dBio=
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=BMOmz/hCD9hq0xa7lEyqqxxsKm/tr2tmPnHhHb56dRc=;
+ b=Wl2FQKaclK3bIMwaPqw8tF0bHXkMeft5YD6XVT9SYhMVKcxhqXdgZLaSb/ineNNkG5oi9K
+ 52UtyOBShBrbobrzl3XLqOl4ZLieB38C3Qzq2G9ZMv+ZY+u2kIxLmMJCrkj/aDhfprGDx8
+ FyspkpU3qUnrxiuJIDp44/pJJdcS9WU=
+Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
+ [209.85.166.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-390-n2lWgeDQMUCgc0kvGDVoUA-1; Tue, 04 Apr 2023 17:23:49 -0400
-X-MC-Unique: n2lWgeDQMUCgc0kvGDVoUA-1
-Received: by mail-il1-f200.google.com with SMTP id
- d5-20020a923605000000b003232594207dso22260734ila.8
+ us-mta-94-Ijc51roHPDW-gH4_woIi0A-1; Tue, 04 Apr 2023 17:48:57 -0400
+X-MC-Unique: Ijc51roHPDW-gH4_woIi0A-1
+Received: by mail-il1-f197.google.com with SMTP id
+ i17-20020a056e020d9100b00325a80f683cso22896295ilj.22
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 04 Apr 2023 14:23:49 -0700 (PDT)
+ Tue, 04 Apr 2023 14:48:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680643426;
+ d=1e100.net; s=20210112; t=1680644937;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=wN65mwnOl0cJ7VCIj2dGHYdaX8HViyuK9uZH/ketQAk=;
- b=NK1UucyWav9p6R8iy775Q+maMXkNZd6vzQTKUPrN22O9SrYm4LBkEtSP0VQ/+fM7MA
- BytA6NZeyJ5LX2Q7LK6l56c7oh97EyK4/9hjikZat4ZyEnc/KgaVVD0VPNcUATK0TzaE
- xZNLbQigi2hyWM9z3TWKMKUdoyhKTBzn4arHcC1doBGWx2DTpXG2KDYwPaHoVST4jw4b
- rBFNk6K1ZEyFYqCej340DGGK5rpf3ppCLfrXrQ0aYpW3DX1LrJ/oYPM1Yzm9FWTjAIFB
- OHXgLhtolWmy/GY1rBYVQBwD/hnOdEX6MePEc/jilzEBYEI2gIc7BBq4yyz9a12kfFyb
- 7ZfQ==
-X-Gm-Message-State: AAQBX9dZqnDMKyM5ITq5JGE07nYZC4JnTSwcLqPD+Sxg3rMsVj9BmOJm
- E8Oi7flFm8neBkBQEhwPLmgR/yBY/TCjqu+QgczvN6ZegBdeJFuOBPyegG9RM8OISknQHt4RL+k
- keVyBXt1yKl+DhBvrCLq8c+kG2ePFBLPJMA==
-X-Received: by 2002:a6b:f60a:0:b0:75a:abfc:27e4 with SMTP id
- n10-20020a6bf60a000000b0075aabfc27e4mr3106505ioh.9.1680643426536; 
- Tue, 04 Apr 2023 14:23:46 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aSgkWP5XhDrBsbjSoZ+3Kif0QnEue2HBucu6oUQFbA8Hwc5thex8OPsB0pvMBLSJ/0rcTV8g==
-X-Received: by 2002:a6b:f60a:0:b0:75a:abfc:27e4 with SMTP id
- n10-20020a6bf60a000000b0075aabfc27e4mr3106482ioh.9.1680643426207; 
- Tue, 04 Apr 2023 14:23:46 -0700 (PDT)
+ bh=BMOmz/hCD9hq0xa7lEyqqxxsKm/tr2tmPnHhHb56dRc=;
+ b=bJufqDPQ47Gb//8wCY2iiQrq92TChdLtM8+2xVBgczsyXsAxBJ9FAQuHqWy5rjSaZc
+ 7SbSgOpgac4AV2LTdfQOLroXbhTcb6Ll4hHYACH6535Mvt7fhLSVMKvAMrFYh8XPzXEb
+ M5SU8rPt4kXc50FRWlEm5sqHTJceVKB5OBCWxft48XC7RsQoRjuhWaxMsKKgDrBtZYzW
+ Fqlxn5C6aGOdgx9FwT61GlqMgbLY6xqCRuUhoSBpsxXEQxTttbxYLobsCb0jRiSfOTyP
+ ThBrPIzhwkzxSlMI2Q3LbcF3m6Gf/oe38VcAOeU9sGwM1lPbTvdBiHln25nYwymZJsuk
+ QaWA==
+X-Gm-Message-State: AAQBX9eb0LBOicU0K2wOnKQoS6MkhwmtYghv5O02zAK/0M2pIw3p2XFs
+ 3YANGHipySWJMIW+Vho24coE0Kp49C2aEw+X8ki9G0kMBfAe/POXknrUQC29uXpYS0xMfDl07Z/
+ XpFovZSuQaptsbYBMJL3ZqA4U+mnc1XiGzw==
+X-Received: by 2002:a92:dac3:0:b0:325:fb39:8494 with SMTP id
+ o3-20020a92dac3000000b00325fb398494mr3960318ilq.4.1680644937196; 
+ Tue, 04 Apr 2023 14:48:57 -0700 (PDT)
+X-Google-Smtp-Source: AKy350b8lhguNnSPsqwDGg9DndWThvVQtcWBignwR7e7WGC5/A4W046vPbFQR7NCsx0PzkO+Dv+mIw==
+X-Received: by 2002:a92:dac3:0:b0:325:fb39:8494 with SMTP id
+ o3-20020a92dac3000000b00325fb398494mr3960288ilq.4.1680644936898; 
+ Tue, 04 Apr 2023 14:48:56 -0700 (PDT)
 Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- u20-20020a6be914000000b0074c8a021d4csm3563919iof.44.2023.04.04.14.23.45
+ c13-20020a928e0d000000b00325df6679a7sm3456502ild.26.2023.04.04.14.48.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Apr 2023 14:23:45 -0700 (PDT)
-Date: Tue, 4 Apr 2023 15:23:43 -0600
+ Tue, 04 Apr 2023 14:48:55 -0700 (PDT)
+Date: Tue, 4 Apr 2023 15:48:54 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v3 08/12] vfio/pci: Renaming for accepting device fd in
- hot reset path
-Message-ID: <20230404152343.790d6e78.alex.williamson@redhat.com>
-In-Reply-To: <20230401144429.88673-9-yi.l.liu@intel.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v3 04/12] vfio-iommufd: Add helper to retrieve
+ iommufd_ctx and devid for vfio_device
+Message-ID: <20230404154854.4d9a95f0.alex.williamson@redhat.com>
+In-Reply-To: <702c2883-1d51-b609-1e99-337295e6e307@redhat.com>
 References: <20230401144429.88673-1-yi.l.liu@intel.com>
- <20230401144429.88673-9-yi.l.liu@intel.com>
+ <20230401144429.88673-5-yi.l.liu@intel.com>
+ <702c2883-1d51-b609-1e99-337295e6e307@redhat.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -88,187 +89,142 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
  peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
- linux-s390@vger.kernel.org, kvm@vger.kernel.org, lulu@redhat.com,
- yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com, jgg@nvidia.com,
- kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ linux-s390@vger.kernel.org, Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org,
+ lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
+ jgg@nvidia.com, kevin.tian@intel.com, yan.y.zhao@intel.com,
+ intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
  yi.y.sun@linux.intel.com, cohuck@redhat.com,
  shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
  robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat,  1 Apr 2023 07:44:25 -0700
-Yi Liu <yi.l.liu@intel.com> wrote:
+On Tue, 4 Apr 2023 17:28:40 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-> No functional change is intended.
+> Hi,
 > 
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
-> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> ---
->  drivers/vfio/pci/vfio_pci_core.c | 52 ++++++++++++++++----------------
->  1 file changed, 26 insertions(+), 26 deletions(-)
-> 
-> diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
-> index 2a510b71edcb..da6325008872 100644
-> --- a/drivers/vfio/pci/vfio_pci_core.c
-> +++ b/drivers/vfio/pci/vfio_pci_core.c
-> @@ -177,10 +177,10 @@ static void vfio_pci_probe_mmaps(struct vfio_pci_core_device *vdev)
->  	}
->  }
->  
-> -struct vfio_pci_group_info;
-> +struct vfio_pci_file_info;
->  static void vfio_pci_dev_set_try_reset(struct vfio_device_set *dev_set);
->  static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
-> -				      struct vfio_pci_group_info *groups,
-> +				      struct vfio_pci_file_info *info,
->  				      struct iommufd_ctx *iommufd_ctx);
->  
->  /*
-> @@ -800,7 +800,7 @@ static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
->  	return 0;
->  }
->  
-> -struct vfio_pci_group_info {
-> +struct vfio_pci_file_info {
->  	int count;
->  	struct file **files;
->  };
-> @@ -1257,14 +1257,14 @@ static int vfio_pci_ioctl_get_pci_hot_reset_info(
->  }
->  
->  static int
-> -vfio_pci_ioctl_pci_hot_reset_groups(struct vfio_pci_core_device *vdev,
-> -				    struct vfio_pci_hot_reset *hdr,
-> -				    bool slot,
-> -				    struct vfio_pci_hot_reset __user *arg)
-> +vfio_pci_ioctl_pci_hot_reset_files(struct vfio_pci_core_device *vdev,
-> +				   struct vfio_pci_hot_reset *hdr,
-> +				   bool slot,
-> +				   struct vfio_pci_hot_reset __user *arg)
->  {
-> -	int32_t *group_fds;
-> +	int32_t *fds;
->  	struct file **files;
-> -	struct vfio_pci_group_info info;
-> +	struct vfio_pci_file_info info;
->  	int file_idx, count = 0, ret = 0;
->  
->  	/*
-> @@ -1281,17 +1281,17 @@ vfio_pci_ioctl_pci_hot_reset_groups(struct vfio_pci_core_device *vdev,
->  	if (hdr->count > count)
->  		return -EINVAL;
->  
-> -	group_fds = kcalloc(hdr->count, sizeof(*group_fds), GFP_KERNEL);
-> +	fds = kcalloc(hdr->count, sizeof(*fds), GFP_KERNEL);
->  	files = kcalloc(hdr->count, sizeof(*files), GFP_KERNEL);
-> -	if (!group_fds || !files) {
-> -		kfree(group_fds);
-> +	if (!fds || !files) {
-> +		kfree(fds);
->  		kfree(files);
->  		return -ENOMEM;
->  	}
->  
-> -	if (copy_from_user(group_fds, arg->group_fds,
-> -			   hdr->count * sizeof(*group_fds))) {
-> -		kfree(group_fds);
-> +	if (copy_from_user(fds, arg->group_fds,
-> +			   hdr->count * sizeof(*fds))) {
-> +		kfree(fds);
->  		kfree(files);
->  		return -EFAULT;
->  	}
-> @@ -1301,7 +1301,7 @@ vfio_pci_ioctl_pci_hot_reset_groups(struct vfio_pci_core_device *vdev,
->  	 * the reset
->  	 */
->  	for (file_idx = 0; file_idx < hdr->count; file_idx++) {
-> -		struct file *file = fget(group_fds[file_idx]);
-> +		struct file *file = fget(fds[file_idx]);
->  
->  		if (!file) {
->  			ret = -EBADF;
-> @@ -1318,9 +1318,9 @@ vfio_pci_ioctl_pci_hot_reset_groups(struct vfio_pci_core_device *vdev,
->  		files[file_idx] = file;
->  	}
->  
-> -	kfree(group_fds);
-> +	kfree(fds);
->  
-> -	/* release reference to groups on error */
-> +	/* release reference to fds on error */
->  	if (ret)
->  		goto hot_reset_release;
->  
-> @@ -1358,7 +1358,7 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
->  		return -ENODEV;
->  
->  	if (hdr.count)
-> -		return vfio_pci_ioctl_pci_hot_reset_groups(vdev, &hdr, slot, arg);
-> +		return vfio_pci_ioctl_pci_hot_reset_files(vdev, &hdr, slot, arg);
->  
->  	iommufd = vfio_iommufd_physical_ictx(&vdev->vdev);
->  
-> @@ -2329,16 +2329,16 @@ const struct pci_error_handlers vfio_pci_core_err_handlers = {
->  };
->  EXPORT_SYMBOL_GPL(vfio_pci_core_err_handlers);
->  
-> -static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
-> -			       struct vfio_pci_group_info *groups)
-> +static bool vfio_dev_in_files(struct vfio_pci_core_device *vdev,
-> +			      struct vfio_pci_file_info *info)
->  {
->  	unsigned int i;
->  
-> -	if (!groups)
-> +	if (!info)
->  		return false;
->  
-> -	for (i = 0; i < groups->count; i++)
-> -		if (vfio_file_has_dev(groups->files[i], &vdev->vdev))
-> +	for (i = 0; i < info->count; i++)
-> +		if (vfio_file_has_dev(info->files[i], &vdev->vdev))
->  			return true;
->  	return false;
->  }
-> @@ -2429,7 +2429,7 @@ static bool vfio_dev_in_iommufd_ctx(struct vfio_pci_core_device *vdev,
->   * get each memory_lock.
->   */
->  static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
-> -				      struct vfio_pci_group_info *groups,
-> +				      struct vfio_pci_file_info *info,
->  				      struct iommufd_ctx *iommufd_ctx)
->  {
->  	struct vfio_pci_core_device *cur_mem;
-> @@ -2478,7 +2478,7 @@ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
->  		 * the calling device is in a singleton dev_set.
->  		 */
->  		if (cur_vma->vdev.open_count &&
-> -		    !vfio_dev_in_groups(cur_vma, groups) &&
-> +		    !vfio_dev_in_files(cur_vma, info) &&
->  		    !vfio_dev_in_iommufd_ctx(cur_vma, iommufd_ctx) &&
->  		    (dev_set->device_count > 1)) {
->  			ret = -EINVAL;
+> On 4/1/23 16:44, Yi Liu wrote:
+> > This is needed by the vfio-pci driver to report affected devices in the
+> > hot reset for a given device.
+> >
+> > Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+> > Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+> > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> > ---
+> >  drivers/iommu/iommufd/device.c | 12 ++++++++++++
+> >  drivers/vfio/iommufd.c         | 14 ++++++++++++++
+> >  include/linux/iommufd.h        |  3 +++
+> >  include/linux/vfio.h           | 13 +++++++++++++
+> >  4 files changed, 42 insertions(+)
+> >
+> > diff --git a/drivers/iommu/iommufd/device.c b/drivers/iommu/iommufd/device.c
+> > index 25115d401d8f..04a57aa1ae2c 100644
+> > --- a/drivers/iommu/iommufd/device.c
+> > +++ b/drivers/iommu/iommufd/device.c
+> > @@ -131,6 +131,18 @@ void iommufd_device_unbind(struct iommufd_device *idev)
+> >  }
+> >  EXPORT_SYMBOL_NS_GPL(iommufd_device_unbind, IOMMUFD);
+> >  
+> > +struct iommufd_ctx *iommufd_device_to_ictx(struct iommufd_device *idev)
+> > +{
+> > +	return idev->ictx;
+> > +}
+> > +EXPORT_SYMBOL_NS_GPL(iommufd_device_to_ictx, IOMMUFD);
+> > +
+> > +u32 iommufd_device_to_id(struct iommufd_device *idev)
+> > +{
+> > +	return idev->obj.id;
+> > +}
+> > +EXPORT_SYMBOL_NS_GPL(iommufd_device_to_id, IOMMUFD);
+> > +
+> >  static int iommufd_device_setup_msi(struct iommufd_device *idev,
+> >  				    struct iommufd_hw_pagetable *hwpt,
+> >  				    phys_addr_t sw_msi_start)
+> > diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
+> > index 88b00c501015..809f2dd73b9e 100644
+> > --- a/drivers/vfio/iommufd.c
+> > +++ b/drivers/vfio/iommufd.c
+> > @@ -66,6 +66,20 @@ void vfio_iommufd_unbind(struct vfio_device *vdev)
+> >  		vdev->ops->unbind_iommufd(vdev);
+> >  }
+> >  
+> > +struct iommufd_ctx *vfio_iommufd_physical_ictx(struct vfio_device *vdev)
+> > +{
+> > +	if (!vdev->iommufd_device)
+> > +		return NULL;
+> > +	return iommufd_device_to_ictx(vdev->iommufd_device);
+> > +}
+> > +EXPORT_SYMBOL_GPL(vfio_iommufd_physical_ictx);
+> > +
+> > +void vfio_iommufd_physical_devid(struct vfio_device *vdev, u32 *id)
+> > +{
+> > +	if (vdev->iommufd_device)
+> > +		*id = iommufd_device_to_id(vdev->iommufd_device);  
+> since there is no return value, may be worth to add at least a WARN_ON
+> in case of !vdev->iommufd_device
 
-At this point, vfio_dev_in_files() supports both group and cdev fds and
-these can be used for both regular IOMMU protected and no-IOMMU
-devices AFAICT.  We only add this 1-off dev_set device count test and
-its subtle side-effects in order to support the null-array mode, which
-IMO really has yet to be shown as a requirement.
-
-IIRC, we were wanting to add that mode as part of the cdev interface so
-that the existence of cdevs implies this support, but now we're already
-making use of vfio_pci_hot_reset_info.flags to indicate group-id vs
-dev-id in the output, so does anything prevent us from setting another
-bit there if/when this feature proves itself useful and error free, to
-indicate it's an available mode for the hot-reset ioctl?
-
-With that I think we could drop patches 4 & 5 with a plan for
-introducing them later without trying to strong arm the feature in
-without a proven and available use case now.  Thanks,
+Yeah, this is bizarre and makes the one caller of this interface very
+awkward.  We later go on to define IOMMUFD_INVALID_ID, so this should
+simply return that in the case of no iommufd_device and skip this
+unnecessary pointer passing.  Thanks,
 
 Alex
+
+> > +}
+> > +EXPORT_SYMBOL_GPL(vfio_iommufd_physical_devid);
+> >  /*
+> >   * The physical standard ops mean that the iommufd_device is bound to the
+> >   * physical device vdev->dev that was provided to vfio_init_group_dev(). Drivers
+> > diff --git a/include/linux/iommufd.h b/include/linux/iommufd.h
+> > index 1129a36a74c4..ac96df406833 100644
+> > --- a/include/linux/iommufd.h
+> > +++ b/include/linux/iommufd.h
+> > @@ -24,6 +24,9 @@ void iommufd_device_unbind(struct iommufd_device *idev);
+> >  int iommufd_device_attach(struct iommufd_device *idev, u32 *pt_id);
+> >  void iommufd_device_detach(struct iommufd_device *idev);
+> >  
+> > +struct iommufd_ctx *iommufd_device_to_ictx(struct iommufd_device *idev);
+> > +u32 iommufd_device_to_id(struct iommufd_device *idev);
+> > +
+> >  struct iommufd_access_ops {
+> >  	u8 needs_pin_pages : 1;
+> >  	void (*unmap)(void *data, unsigned long iova, unsigned long length);
+> > diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> > index 3188d8a374bd..97a1174b922f 100644
+> > --- a/include/linux/vfio.h
+> > +++ b/include/linux/vfio.h
+> > @@ -113,6 +113,8 @@ struct vfio_device_ops {
+> >  };
+> >  
+> >  #if IS_ENABLED(CONFIG_IOMMUFD)
+> > +struct iommufd_ctx *vfio_iommufd_physical_ictx(struct vfio_device *vdev);
+> > +void vfio_iommufd_physical_devid(struct vfio_device *vdev, u32 *id);
+> >  int vfio_iommufd_physical_bind(struct vfio_device *vdev,
+> >  			       struct iommufd_ctx *ictx, u32 *out_device_id);
+> >  void vfio_iommufd_physical_unbind(struct vfio_device *vdev);
+> > @@ -122,6 +124,17 @@ int vfio_iommufd_emulated_bind(struct vfio_device *vdev,
+> >  void vfio_iommufd_emulated_unbind(struct vfio_device *vdev);
+> >  int vfio_iommufd_emulated_attach_ioas(struct vfio_device *vdev, u32 *pt_id);
+> >  #else
+> > +static inline struct iommufd_ctx *
+> > +vfio_iommufd_physical_ictx(struct vfio_device *vdev)
+> > +{
+> > +	return NULL;
+> > +}
+> > +
+> > +static inline void
+> > +vfio_iommufd_physical_devid(struct vfio_device *vdev, u32 *id)
+> > +{
+> > +}
+> > +
+> >  #define vfio_iommufd_physical_bind                                      \
+> >  	((int (*)(struct vfio_device *vdev, struct iommufd_ctx *ictx,   \
+> >  		  u32 *out_device_id)) NULL)  
+> besides
+> 
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> 
+> Eric
+> 
 
