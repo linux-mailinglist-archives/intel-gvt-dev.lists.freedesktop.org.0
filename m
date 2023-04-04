@@ -1,152 +1,89 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D4B86D6583
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Apr 2023 16:37:58 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id AEB426D6709
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Apr 2023 17:19:18 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA2D710E6C8;
-	Tue,  4 Apr 2023 14:37:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 85C4810E6D3;
+	Tue,  4 Apr 2023 15:19:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A122D10E6C8;
- Tue,  4 Apr 2023 14:37:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1680619074; x=1712155074;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=toOGM2OfMQZU8Cg6v2g9lyOB/mItN60fmG7ozF6fQQo=;
- b=EWTsoRyf5ydwBFAG3NMYJ/KUvjTt/WM9wgUdHvOKTGYWwrAYdLtZQl8b
- KThllSDqYAToTbLLw159GUnRPCyZPC6gaX5h/rVKEEg5nel6l6K4BiQi6
- AvoPXHHFPidgF0jaQkiGRwMnAzc8YAyhx8FAiWYg1SB5xPrRiKkPtgvP0
- SHFvibdHUCuGgkWAgCEGjNyvjTCcTKQHA4tQtsVyTmK8tFNcG1Ylgg2Dx
- Yc+RJv/wx6wo/K8B7Mr4g+Bo4oFQw1iiHwy7ZvP83sgo0CDUqS0envzhi
- qUSb4eUXbWHs4TQN0KZ3sPRgICi8xc1n+l0EGS3w5PAZVnCXthYP8Yv3C w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10670"; a="407264414"
-X-IronPort-AV: E=Sophos;i="5.98,318,1673942400"; d="scan'208";a="407264414"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Apr 2023 07:37:53 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10670"; a="688919725"
-X-IronPort-AV: E=Sophos;i="5.98,318,1673942400"; d="scan'208";a="688919725"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga007.fm.intel.com with ESMTP; 04 Apr 2023 07:37:52 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21; Tue, 4 Apr 2023 07:37:52 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.21 via Frontend Transport; Tue, 4 Apr 2023 07:37:52 -0700
-Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.49) by
- edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.21; Tue, 4 Apr 2023 07:37:52 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=EoWQL7Glo55zTvzCCKQ41gWFFWIYk7ljdlKJcBazuRHPiV6nWPUT4orcHgpkF63EPaqjj00XxYUwwLaUm7jaZeXLT/OKGoWa+cQ5AaGsBmIUrrCudOxaiZ4ijoScpdRmYPfH1Zl/x0ePpEOvb4LecZcTqgnOfB9rHre5NoeWD5ry84DTib4W3nvtiqiHI2DQ1wP4svl2nPlEqm74UFv+NTp6PctI5aiDS7VoJD1bQch1DgVUfEM209bwQKCTprY3iMB9Bo4MtNdG9NYZfCAySEZNI3LafihtzPFg36KmVxtOSQkCe3w1DJl2CszuJBvBUEDzZJWXO6rOtwbHw36eYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=toOGM2OfMQZU8Cg6v2g9lyOB/mItN60fmG7ozF6fQQo=;
- b=XniV88Ojj7ks8Agoa4R1ZrZSJu1Zex464XYSDqcB/KJbyOJ30Og+wXgFHB2B8p9OLXlaZ7X9jrBYyadWZ0shqaifVOSvQT++4PixVwdlV9WL3Vqws9iCVRpVJVUsZLGtNFt3dFnRCYrmXB5gaf8Pa120OapIftuW/eiBQ7Z1xAmO4hUjvokHZSWFe18ZkTHh8G5Y1lt9s4nbpHZFM0nzljxLjlVEPLKH6ArDvuXow+ff21t1jjMSDAi6XQfpnre5zyzp6gBJ8LudNkfZ/WW2yMcwtdSABDzcwCSldUJLnUGFWRQ0+lqMGMh5+yz4VzIA8AOSapHgsQyco/S37/rBaQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by SJ0PR11MB5662.namprd11.prod.outlook.com (2603:10b6:a03:3af::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6254.35; Tue, 4 Apr
- 2023 14:37:48 +0000
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::ca24:b399:b445:a3de]) by DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::ca24:b399:b445:a3de%5]) with mapi id 15.20.6254.035; Tue, 4 Apr 2023
- 14:37:48 +0000
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>
-Subject: RE: [PATCH v3 01/12] vfio/pci: Update comment around group_fd get in
- vfio_pci_ioctl_pci_hot_reset()
-Thread-Topic: [PATCH v3 01/12] vfio/pci: Update comment around group_fd get in
- vfio_pci_ioctl_pci_hot_reset()
-Thread-Index: AQHZZKh8Cc+kmKDweEasXXAeTFWGGa8bMiMAgAAKgEA=
-Date: Tue, 4 Apr 2023 14:37:48 +0000
-Message-ID: <DS0PR11MB752912E1BE240C535711F47BC3939@DS0PR11MB7529.namprd11.prod.outlook.com>
-References: <20230401144429.88673-1-yi.l.liu@intel.com>
- <20230401144429.88673-2-yi.l.liu@intel.com>
- <1f8ddafd-6fad-aff6-5dc7-9d67f89eea73@redhat.com>
-In-Reply-To: <1f8ddafd-6fad-aff6-5dc7-9d67f89eea73@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|SJ0PR11MB5662:EE_
-x-ms-office365-filtering-correlation-id: 8b0467c2-e505-4837-62b2-08db351a29a1
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iknMnOYBjtNyVX+ean8gEbMJLahXC+UuogVIg/6udmQRYun2zBNGIlJA7/hZD7EpfbH+xtHbEF34JzFaKsukWUw2j/k/i+JnFm2lrPS8knVBI1B1Em05zP7ctDeeQSUk62OGtIxrRVrb9eW0vwGjXBDiwE2TV3YRW2omgjdOBv+uoI8oyIYjoQ9RawtV3s4zB6zn3WMjXLBw8LdYJoIPGhiOEaeAjxrEhNCQRAlRg7YDqcoptUwJUFWmouYxp6/dOI+hqqaa+ukg7iE3BKeacOo6s34998QvTwanbpIur7LXWHkx/mf40VV492yQ2Idl659j4BkTLJvD1VsgFLE23kj0pUPcARvuwnPYeNOR0PDcR/dNToxDVK15Ng7VbzXIO521uq+FFUtPcQyjhnnwYluchvOk20NoM8edpn35kMIudl1QL4G0Vp7vtN4C7CRkYHDL9m+iwnhnUL6fAD/nUSwdTzWh6RXiDOpi+lVpbTIze2zlhvTq5AF1OM2OTdZ4GP7W82qGLKvUl1JXu/wbmxhQ7MBwRtDlYmNIOjo4+fZmS6fmnCVNHtHquGXwtbSYuNSPwAs0FA2d3x0x+/wbDc27pm06caMLWwa04unC0xnh5zq4jyGh/Bzg4CMFV7WuhCsBMXABe3Em4XM9kieDiQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(396003)(366004)(376002)(39860400002)(136003)(346002)(451199021)(55016003)(186003)(26005)(53546011)(83380400001)(6506007)(41300700001)(52536014)(54906003)(6636002)(76116006)(478600001)(66946007)(110136005)(316002)(4326008)(9686003)(7696005)(71200400001)(66476007)(66556008)(66446008)(64756008)(38100700002)(82960400001)(8676002)(122000001)(38070700005)(33656002)(7416002)(86362001)(2906002)(8936002)(5660300002)(13296009);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?czVkOTdnYUM1NkJpTmE2SVFra2IyVFo3cWoyQ3hKTjRLSFlRQWMybk41Y1d1?=
- =?utf-8?B?TmFiQjZtVElyZEN5T2k0UzdjeXlybVQwS1lPVVZOYmZ6U2FNd2xLWE5sQ2lP?=
- =?utf-8?B?N3lkN3ZZTGJHZVdPVDBpS0NhV05ObEdnSXVlZUxtUVhYUGQzL2JVV1hHYUgz?=
- =?utf-8?B?VjZuQkVsWG0xWmpybkxtdFdiOTBza3hmbDdZMkI4bzExUGUxNnJFVkJxNGZD?=
- =?utf-8?B?bllVOEpuVTgvTmVpb2xZTTdnbmNIWDBZU3hFeWYzbDR1TmorZjZHOXIydGhi?=
- =?utf-8?B?SHFoME1ISGVjbXRydVNCZlBmK1JSZW4ydVNkSTFpUGtLdDFpRHFwTzBKakdU?=
- =?utf-8?B?UURYR1N6T3BBL3ZFcG5qT3IxMEpCNHZnbkhpeE9FR0I4U3lXTkZUS1JkSGFR?=
- =?utf-8?B?NnlLNlB1V3JlODJNbUFUMWd2UC9WTW1GK1ZXNHFYd0JSUmRFSHJDRkV3aks2?=
- =?utf-8?B?SXZZWHFUakNBNmtrMEpweXBuYityYUdTSnFEMG45dUNJMG9xNndoUWR6Z0Mx?=
- =?utf-8?B?NmorL2lPY2duNWRMaUU3eWtmRURVUEQrVkl6bVJhTnpIYnRKVW5xYlEvc3Zo?=
- =?utf-8?B?dHdyZkVLSnl3dy9CeWtZUGtBSElRS2hpMzFSSnFYOFcyOTMwa2FDOFZwQzI1?=
- =?utf-8?B?OTAxRlBNWUdDTkxxTzZyNzV6akFLUDVpNjh6M29kYXVJcHZuV2E0Vjl0WmFY?=
- =?utf-8?B?U2NyOXZ4Ukp5RUlJeFdKeFJUVjVZWTJLWFZpSk5iRndPZEtNNUZvTzhTak01?=
- =?utf-8?B?eUpqSTIvTlpVUHFTcmw0WEcyYW40V3A3S2dFUUFsQkwrM0dUZzVVcUNmbVkz?=
- =?utf-8?B?blpPNU52L2hCZDZWRzZzK3VvTXg2N09XVkw4Q0ZWVTFnL0o2NE9NSVprTmZK?=
- =?utf-8?B?UnEzUHhkb1hyWWhkY3RBMTVDb2JScTJVQWh1dU5Ld2NsZ1BKQmZsdUpDdTJp?=
- =?utf-8?B?YmxiYU1pK2hzbUlxckVUUWJZTFlWck1STHdlR1kxV2FoVEtYd1I1Z3RQQWNL?=
- =?utf-8?B?bFR0OFJOSGpVRE4vYkQveE16QWUxTHN5dm4rc0JNMHVQS2EvdHd0dnRINjJH?=
- =?utf-8?B?aTFWNzVYVE1OTU9xYVQyMnlCdkxHWkNNdmpNVHVRcEQxa1dmVEFNRTdmYVFw?=
- =?utf-8?B?Q1VwVVlhOWZacGd2ZCtnbFQ4YWZhNGxLNUdZeW80aWp0Yi9ZN0R4VHcrYTBj?=
- =?utf-8?B?U2dKZWtmbFIxejhCVHU0Wnhlcll4eFlQZy81eHoySXpzQzRBdFZPVlFsOWtm?=
- =?utf-8?B?dUg1eUZBdnJCSzRlOTFYcG5tSHNiS0pFWkJHWUExVDdSUzJtTFcwUmp1cWp2?=
- =?utf-8?B?bnQ5U3ZLQUdJVy85VG95ZHZjc05TR3hmSmFwYzN2VGQ0TmREeW1PRFkxdUt2?=
- =?utf-8?B?VEI3R3VXbUNRRkN4M3FISitNbjJPNHRZUk43eStNRlQxK2dsTlI5OGdXM0ph?=
- =?utf-8?B?djFEQU9icWRUbGhNNHhoSTdlc1k0M05PRlZia0NJN3MrSm9WQmc1UkxQOFA3?=
- =?utf-8?B?WlltVHFFVEZIUGUwVnJUVldkcm42TGV6QjNtV2NCRktTR0RZNHNqdnRUWVZk?=
- =?utf-8?B?UUNISEo4VUc0UmtPRWNldllzTFNaS1pqN2xRdmdXUmxDK1VSWWR5VG5xaFBm?=
- =?utf-8?B?TmlBZ1RxV3ZDSUxxT0IzK0EvOHUzRm9nd0lhTUQyNTE1NkdrVWxWWlBTTW1t?=
- =?utf-8?B?YUVYS05RMXhualpDVXhtbW03aGhwRmkrU01acVU4RTl2Ylp5dUpxbUFQNjBj?=
- =?utf-8?B?azN6R0Nzc3c5d09abHZvUUtoMVpnODdyUmhjNmNJaENadHFrdnJ0YjJoZ0VV?=
- =?utf-8?B?aVA2eWE5cFBvTnRORGlPMzFKMEd2bWVYTE8wMzNzY0JLYWpMVEZVbjg2anhu?=
- =?utf-8?B?SE8yclpETmljUk9yR01pSGtQaVhDaldiOVZrOEhDWG9aVHVqS3FXV3J0bTZK?=
- =?utf-8?B?Nm9WdGV1dVZjcTdZa0RrL2QzT0JURjA3Z2ZOTHVRbTZtSEpwTHVIT2JzeFJk?=
- =?utf-8?B?OEFucmk0YVJTU3BQa0U5Y1pzeWpZZlFZTUVqWHdIRDZqaXVFRVVUUmhGVUtD?=
- =?utf-8?B?R0Q2ejlkZVhjaUhJQ0xVbWJzcFBrNUNGVGVqUU1haTliRHpWVmlsSURlYUtj?=
- =?utf-8?Q?LTpA=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F379A10E6D3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  4 Apr 2023 15:19:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1680621553;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9h0qe2de4wpUWOB28748KnL4bo+TUsPB4FwOqLcCkxY=;
+ b=D1mMil36xwHIY3aWU5Meqb8j+vAsG9pGdxf+67FvYrZ7U/hb2kbWc9theoXkx/stnlE9su
+ bk5Exs81pSo98X8I/4CN4MH4E+jdSQHhhbr8zDPSmOh8oHSHrlmQ1skzFzEiocaENfeZ95
+ kHSTDDoI99wrNL6hE8ISgYwXKKU73gM=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-205-aTBGH18NN8WhWjyCCXtt6g-1; Tue, 04 Apr 2023 11:19:09 -0400
+X-MC-Unique: aTBGH18NN8WhWjyCCXtt6g-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ y19-20020ad445b3000000b005a5123cb627so14728811qvu.20
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 04 Apr 2023 08:19:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112; t=1680621540;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9h0qe2de4wpUWOB28748KnL4bo+TUsPB4FwOqLcCkxY=;
+ b=h66fFGLNLtcxWse/4AF6OCxpLRRv/4sYUqTpRalsr3d+C3hmrm1xGiHUEZnCN/Fco5
+ pZjvnoizD3WooWzLZM7KZ1mgx2rD4DIJrm1mclXMtgYoidLcu5KtuHGpkpe4kmkv44f1
+ 6oxJEQppTi217mrDB7fEJfQ8WuviJz/FbB2fHVM7nNZefjkWqKQ8Jjh0onuXgwalBTnW
+ ahkg+2haPAvQf590KwzCQdZ69mCcm4MtlhCTqFrzaCKp/iNLi1pBFdXabx8IvlVEHMBT
+ ShENUjLrs/hM1N2XP8HQy7IjxG7b4Gt4TbfK1GtiNc/MEg1cPUqJnRgrZ4mIBkkl3foH
+ x4wQ==
+X-Gm-Message-State: AAQBX9ef2rMphKjZPegp90w8vms4jyUNsSdcYiqLfoirprIycgVu6qQN
+ aHoR6KLbM8AxRS3M6TB4ytcpFsLcpSCMKNTwrzhMUocGPVb4h725W/l8irqwnPB4J7FNJaQ2v4n
+ bQfJR3sHFvSsvNHYnM5ivFFaxp6Ggpf7InA==
+X-Received: by 2002:a05:6214:c6b:b0:5d5:11b4:ad6 with SMTP id
+ t11-20020a0562140c6b00b005d511b40ad6mr4092545qvj.5.1680621539863; 
+ Tue, 04 Apr 2023 08:18:59 -0700 (PDT)
+X-Google-Smtp-Source: AKy350b/pUGHnnzAa/Is2PTZjxccUTN1xIqWGh6dFWoPmFhMxxL0nmFn4Q7QHgQ+QfiC+fi7gOde3g==
+X-Received: by 2002:a05:6214:c6b:b0:5d5:11b4:ad6 with SMTP id
+ t11-20020a0562140c6b00b005d511b40ad6mr4092477qvj.5.1680621539415; 
+ Tue, 04 Apr 2023 08:18:59 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ea7-20020ad458a7000000b005dd8b9345a7sm3427407qvb.63.2023.04.04.08.18.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Apr 2023 08:18:57 -0700 (PDT)
+Message-ID: <fc87191d-2e79-83c3-b5ba-7f8b1083988a@redhat.com>
+Date: Tue, 4 Apr 2023 17:18:52 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8b0467c2-e505-4837-62b2-08db351a29a1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Apr 2023 14:37:48.6525 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: sj/PCqwQEG1aDwbM0N5i14HVmozQ/puw85LIAJgsHnRlGnJeRb83WZQlQPu3snB0dxSvpZ3cUANJKMfirtEZ0A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5662
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.0
+Subject: Re: [PATCH v3 02/12] vfio/pci: Only check ownership of opened devices
+ in hot reset
+To: "Liu, Yi L" <yi.l.liu@intel.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "Tian, Kevin" <kevin.tian@intel.com>
+References: <20230401144429.88673-1-yi.l.liu@intel.com>
+ <20230401144429.88673-3-yi.l.liu@intel.com>
+ <844faa5c-2968-2a4f-8a70-900f359be1a0@redhat.com>
+ <DS0PR11MB75290339DD0FD467146D4655C3939@DS0PR11MB7529.namprd11.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <DS0PR11MB75290339DD0FD467146D4655C3939@DS0PR11MB7529.namprd11.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,6 +96,7 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
  "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
  "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
@@ -179,28 +117,98 @@ Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-PiBGcm9tOiBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IFR1ZXNk
-YXksIEFwcmlsIDQsIDIwMjMgMTA6MDAgUE0NCj4gDQo+IEhpIFlpLA0KPiANCj4gT24gNC8xLzIz
-IDE2OjQ0LCBZaSBMaXUgd3JvdGU6DQo+ID4gdGhpcyBzdWl0cyBtb3JlIG9uIHdoYXQgdGhlIGNv
-ZGUgZG9lcy4NCj4gPg0KPiA+IFJldmlld2VkLWJ5OiBLZXZpbiBUaWFuIDxrZXZpbi50aWFuQGlu
-dGVsLmNvbT4NCj4gPiBSZXZpZXdlZC1ieTogSmFzb24gR3VudGhvcnBlIDxqZ2dAbnZpZGlhLmNv
-bT4NCj4gPiBUZXN0ZWQtYnk6IFlhbnRpbmcgSmlhbmcgPHlhbnRpbmcuamlhbmdAaW50ZWwuY29t
-Pg0KPiA+IFNpZ25lZC1vZmYtYnk6IFlpIExpdSA8eWkubC5saXVAaW50ZWwuY29tPg0KPiA+IC0t
-LQ0KPiA+ICBkcml2ZXJzL3ZmaW8vcGNpL3ZmaW9fcGNpX2NvcmUuYyB8IDUgKystLS0NCj4gPiAg
-MSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkNCj4gPg0KPiA+
-IGRpZmYgLS1naXQgYS9kcml2ZXJzL3ZmaW8vcGNpL3ZmaW9fcGNpX2NvcmUuYyBiL2RyaXZlcnMv
-dmZpby9wY2kvdmZpb19wY2lfY29yZS5jDQo+ID4gaW5kZXggYTVhYjQxNmNmNDc2Li42NWJiZWY1
-NjIyNjggMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy92ZmlvL3BjaS92ZmlvX3BjaV9jb3JlLmMN
-Cj4gPiArKysgYi9kcml2ZXJzL3ZmaW8vcGNpL3ZmaW9fcGNpX2NvcmUuYw0KPiA+IEBAIC0xMzA4
-LDkgKzEzMDgsOCBAQCBzdGF0aWMgaW50IHZmaW9fcGNpX2lvY3RsX3BjaV9ob3RfcmVzZXQoc3Ry
-dWN0DQo+IHZmaW9fcGNpX2NvcmVfZGV2aWNlICp2ZGV2LA0KPiA+ICAJfQ0KPiA+DQo+ID4gIAkv
-Kg0KPiA+IC0JICogRm9yIGVhY2ggZ3JvdXBfZmQsIGdldCB0aGUgZ3JvdXAgdGhyb3VnaCB0aGUg
-dmZpbyBleHRlcm5hbCB1c2VyDQo+ID4gLQkgKiBpbnRlcmZhY2UgYW5kIHN0b3JlIHRoZSBncm91
-cCBhbmQgaW9tbXUgSUQuICBUaGlzIGVuc3VyZXMgdGhlIGdyb3VwDQo+ID4gLQkgKiBpcyBoZWxk
-IGFjcm9zcyB0aGUgcmVzZXQuDQo+ID4gKwkgKiBHZXQgdGhlIGdyb3VwIGZpbGUgZm9yIGVhY2gg
-ZmQgdG8gZW5zdXJlIHRoZSBncm91cCBoZWxkIGFjcm9zcw0KPiB0byBlbnN1cmUgdGhlIGdyb3Vw
-IGlzIGhlbGQNCg0KZ290IGl0Lg0KDQo+IEJlc2lkZXMNCj4gDQo+IFJldmlld2VkLWJ5OiBFcmlj
-IEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IA0KPiBFcmljDQo+IA0KPiANCj4gPiAr
-CSAqIHRoZSByZXNldA0KPiA+ICAJICovDQo+ID4gIAlmb3IgKGZpbGVfaWR4ID0gMDsgZmlsZV9p
-ZHggPCBoZHIuY291bnQ7IGZpbGVfaWR4KyspIHsNCj4gPiAgCQlzdHJ1Y3QgZmlsZSAqZmlsZSA9
-IGZnZXQoZ3JvdXBfZmRzW2ZpbGVfaWR4XSk7DQoNClJlZ2FyZHMsDQpZaSBMaXUNCg==
+Hi Yi,
+
+On 4/4/23 16:37, Liu, Yi L wrote:
+> Hi Eric,
+>
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: Tuesday, April 4, 2023 10:00 PM
+>>
+>> Hi YI,
+>>
+>> On 4/1/23 16:44, Yi Liu wrote:
+>>> If the affected device is not opened by any user, it's safe to reset it
+>>> given it's not in use.
+>>>
+>>> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+>>> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+>>> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+>>> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+>>> ---
+>>>  drivers/vfio/pci/vfio_pci_core.c | 14 +++++++++++---
+>>>  include/uapi/linux/vfio.h        |  8 ++++++++
+>>>  2 files changed, 19 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
+>>> index 65bbef562268..5d745c9abf05 100644
+>>> --- a/drivers/vfio/pci/vfio_pci_core.c
+>>> +++ b/drivers/vfio/pci/vfio_pci_core.c
+>>> @@ -2429,10 +2429,18 @@ static int vfio_pci_dev_set_hot_reset(struct
+>> vfio_device_set *dev_set,
+>>>  	list_for_each_entry(cur_vma, &dev_set->device_list, vdev.dev_set_list) {
+>>>  		/*
+>>> -		 * Test whether all the affected devices are contained by the
+>>> -		 * set of groups provided by the user.
+>>> +		 * Test whether all the affected devices can be reset by the
+>>> +		 * user.
+>>> +		 *
+>>> +		 * Resetting an unused device (not opened) is safe, because
+>>> +		 * dev_set->lock is held in hot reset path so this device
+>>> +		 * cannot race being opened by another user simultaneously.
+>>> +		 *
+>>> +		 * Otherwise all opened devices in the dev_set must be
+>>> +		 * contained by the set of groups provided by the user.
+>>>  		 */
+>>> -		if (!vfio_dev_in_groups(cur_vma, groups)) {
+>>> +		if (cur_vma->vdev.open_count &&
+>>> +		    !vfio_dev_in_groups(cur_vma, groups)) {
+>>>  			ret = -EINVAL;
+>>>  			goto err_undo;
+>>>  		}
+>>> diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
+>>> index 0552e8dcf0cb..f96e5689cffc 100644
+>>> --- a/include/uapi/linux/vfio.h
+>>> +++ b/include/uapi/linux/vfio.h
+>>> @@ -673,6 +673,14 @@ struct vfio_pci_hot_reset_info {
+>>>   * VFIO_DEVICE_PCI_HOT_RESET - _IOW(VFIO_TYPE, VFIO_BASE + 13,
+>>>   *				    struct vfio_pci_hot_reset)
+>>>   *
+>>> + * Userspace requests hot reset for the devices it uses.  Due to the
+>>> + * underlying topology, multiple devices can be affected in the reset
+>> by the reset
+>>> + * while some might be opened by another user.  To avoid interference
+>> s/interference/hot reset failure?
+> I don’t think user can really avoid hot reset failure since there may
+> be new devices plugged into the affected slot. Even user has opened
+I don't know the legacy wrt that issue but this sounds a serious issue,
+meaning the reset of an assigned device could impact another device
+belonging to another group not not owned by the user?
+> all the groups/devices reported by VFIO_DEVICE_GET_PCI_HOT_RESET_INFO,
+> the hot reset can fail if new device is plugged in and has not been
+> bound to vfio or opened by another user during the window of
+> _INFO and HOT_RESET.
+with respect to the latter isn't the dev_set lock held during the hot
+reset and sufficient to prevent any new opening to occur?
+>
+> maybe the whole statement should be as below:
+>
+> To avoid interference, the hot reset can only be conducted when all
+> the affected devices are either opened by the calling user or not
+> opened yet at the moment of the hot reset attempt.
+
+OK
+
+Eric
+>
+>>> + * the calling user must ensure all affected devices, if opened, are
+>>> + * owned by itself.
+>>> + *
+>>> + * The ownership is proved by an array of group fds.
+>>> + *
+>>>   * Return: 0 on success, -errno on failure.
+>>>   */
+>>>  struct vfio_pci_hot_reset {
+> Regards,
+> Yi Liu
+
