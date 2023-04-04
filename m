@@ -2,84 +2,77 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A24376D6992
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Apr 2023 18:55:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 03E7E6D6DCC
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  4 Apr 2023 22:18:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5589F10E710;
-	Tue,  4 Apr 2023 16:55:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7492C10E7A5;
+	Tue,  4 Apr 2023 20:18:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id EBCA010E710
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DD6B810E797
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  4 Apr 2023 16:54:58 +0000 (UTC)
+ Tue,  4 Apr 2023 20:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680627298;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1680639523;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xaJr7dpR/2Qc16NAFTxDDK6uZmYwBJFK5YGMkD3WyVs=;
- b=SHiT6GEtMn2pgqUCjdQgR/uzZsn67hlEeto4QJ1WNER4ABK5nPYfEgByzhUIIKbjMNMdB7
- kidiGBCo8xqpBnQrWTkr9kMRPEWXhhqx+prc0ZLd/aI97q9qlJ65kIm2wZFS5S70IEhRaW
- 5+LjoWnBG2QbX+xX6gp8nL8Y5ZpjAyQ=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=UQkB+/g6+kZ8Dd7MXF9242hej0yLBl/S8rsqAXLmve4=;
+ b=G0NG/FE5H3QatLkZ2dUf56gQcjwjwpEBL5TeARArZqEwwknY23g9dxjgQPWL5Co0QpIYCz
+ WkMrLLcrT6FkQoRBDxj+1QC2ruuwEIkUaiKwXdoJGcvAFPsWEjbtvUhO5G/Y688EFe+abh
+ Su1UqvR/bQz054fJ5O66jCruyprJdc4=
+Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
+ [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-512-5hMnjzYhOD-TdCrcogzsuA-1; Tue, 04 Apr 2023 12:54:56 -0400
-X-MC-Unique: 5hMnjzYhOD-TdCrcogzsuA-1
-Received: by mail-qt1-f199.google.com with SMTP id
- h6-20020ac85846000000b003e3c23d562aso22534517qth.1
+ us-mta-244-590sNE1wPEm3_QGFeSaUBw-1; Tue, 04 Apr 2023 16:18:42 -0400
+X-MC-Unique: 590sNE1wPEm3_QGFeSaUBw-1
+Received: by mail-il1-f198.google.com with SMTP id
+ q17-20020a056e020c3100b003245df8be9fso22176037ilg.14
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 04 Apr 2023 09:54:56 -0700 (PDT)
+ Tue, 04 Apr 2023 13:18:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680627296;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xaJr7dpR/2Qc16NAFTxDDK6uZmYwBJFK5YGMkD3WyVs=;
- b=c35n8IcG3JgZa4ecEVAxWo8IgBz9xD5WcgsdtAk14efTU8zye3jkV3dNXnpbXVGnO3
- GW6TBn9nwT4myOFd2KtVJtGIqJw7URZj54sfeRwslTnnI6qItgRTl1U3CPJfnQDkUPzI
- wLKtsyUymiW/HZr4gMeeM9fuBP5622N0wfIwd44ol0Wo3tmkB3+fWUAH218cPFOn2ZLa
- OlayoPvBEWaHurGo1B0Nf1xzBZI+HEnQn3UPgJ4X/NiTexhCrcqKgGUR5GLeGd/MTGer
- wvTd+g1vdTYxSI+70QNrvgCwepK5qxssrkLjITwLPmKEW/fgAXwifbwyiGFETS7Ljknq
- lXYQ==
-X-Gm-Message-State: AAQBX9cgB4stsJEPCGTkX/zGzcrrujAxxJ6bY9Tj2uhK4gm3z/gP9qlV
- GNZCfqWGj1xQu8Ndo9KeaPmsD7KzSddx4zwmdDGxNGMVNHEAlyjZ14HWF8d3+bCCCMIloQi75kF
- 0FiBV7L0Zcm/aXvN4+9L2EP/P43t7VjGVNQ==
-X-Received: by 2002:a05:6214:2427:b0:577:5ffe:e0ce with SMTP id
- gy7-20020a056214242700b005775ffee0cemr5531577qvb.25.1680627296167; 
- Tue, 04 Apr 2023 09:54:56 -0700 (PDT)
-X-Google-Smtp-Source: AKy350axcpSEXLH/xqqNVDEazzfBDNocjyNb7PFsNU08BTja8vIes5X5ewmeGPijuUeHeJQRTVwQAA==
-X-Received: by 2002:a05:6214:2427:b0:577:5ffe:e0ce with SMTP id
- gy7-20020a056214242700b005775ffee0cemr5531545qvb.25.1680627295895; 
- Tue, 04 Apr 2023 09:54:55 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- d127-20020a37b485000000b007465ad44891sm3743433qkf.102.2023.04.04.09.54.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Apr 2023 09:54:54 -0700 (PDT)
-Message-ID: <f3af0d81-e8fe-5d25-bb7f-b362dbd62155@redhat.com>
-Date: Tue, 4 Apr 2023 18:54:49 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.5.0
-Subject: Re: [PATCH v3 05/12] vfio/pci: Allow passing zero-length fd array in
- VFIO_DEVICE_PCI_HOT_RESET
-To: Yi Liu <yi.l.liu@intel.com>, alex.williamson@redhat.com, jgg@nvidia.com,
- kevin.tian@intel.com
+ d=1e100.net; s=20210112; t=1680639521;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=UQkB+/g6+kZ8Dd7MXF9242hej0yLBl/S8rsqAXLmve4=;
+ b=ggEPZu/uSCgppOrrnSKVUIe2Vzq6WtteIYIM1OPQATWd3ZiFOb5lU/9+CXuhDzq0iI
+ leRhxe/qOInN5Ze8zTApqW6cluO5ZSLXptAEJ4plra9Q3/AD6fdAdRBCeXD0KDK3nHEu
+ C8a93+iBUR1yiICqqbS4BZ1tGIj3FhiBsb2zXdikCWVJkPzGfe4tfztuvgpipqGEvRni
+ V4GSgvBtG3A88eIty6qUoLZO8D5zP/l4tI+6uJf2RGJoUQ2pFW/QUdOtIwWq016S5PiS
+ s8V5Wb02Q60j6amoPJ7cEgDLdgfbb8I6C8P8XxjYyfM32Zc8Mfx9+awic4YKzbApfpxR
+ JsJg==
+X-Gm-Message-State: AAQBX9eKK7QaGXaRs9WXDDN7Oys3TveMsG4wxSX3dgzY2irPWqtOv0Tz
+ KsOhSo7h9HaJ1skeQ+huJTGqCJy+r20KcHUbXfUwMEgsFRfIPq1c3hR9OV13XfLcQQM1NfFbe7I
+ 8IFxhU1J7Ua2aq+0f+nZJnAeGNV+eeCj8lw==
+X-Received: by 2002:a5d:8459:0:b0:75c:f4d8:95a4 with SMTP id
+ w25-20020a5d8459000000b0075cf4d895a4mr4416632ior.7.1680639521697; 
+ Tue, 04 Apr 2023 13:18:41 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aweeLcxWW2qhgQDsJtGDwAV0eYpiJclHZtxi4zQqsYv7ev1oJCy+EHkuk7CSmTo+6lhPnpgw==
+X-Received: by 2002:a5d:8459:0:b0:75c:f4d8:95a4 with SMTP id
+ w25-20020a5d8459000000b0075cf4d895a4mr4416609ior.7.1680639521418; 
+ Tue, 04 Apr 2023 13:18:41 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ c20-20020a023f54000000b003c2b67fac92sm3591510jaf.81.2023.04.04.13.18.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Apr 2023 13:18:40 -0700 (PDT)
+Date: Tue, 4 Apr 2023 14:18:38 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yi Liu <yi.l.liu@intel.com>
+Subject: Re: [PATCH v3 05/12] vfio/pci: Allow passing zero-length fd array
+ in VFIO_DEVICE_PCI_HOT_RESET
+Message-ID: <20230404141838.6a4efdd4.alex.williamson@redhat.com>
+In-Reply-To: <20230401144429.88673-6-yi.l.liu@intel.com>
 References: <20230401144429.88673-1-yi.l.liu@intel.com>
  <20230401144429.88673-6-yi.l.liu@intel.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230401144429.88673-6-yi.l.liu@intel.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -93,33 +86,32 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Cc: linux-s390@vger.kernel.org, yi.y.sun@linux.intel.com, kvm@vger.kernel.org,
- mjrosato@linux.ibm.com, intel-gvt-dev@lists.freedesktop.org, joro@8bytes.org,
- cohuck@redhat.com, xudong.hao@intel.com, peterx@redhat.com,
- yan.y.zhao@intel.com, terrence.xu@intel.com, nicolinc@nvidia.com,
+Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
+ peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
+ linux-s390@vger.kernel.org, kvm@vger.kernel.org, lulu@redhat.com,
+ yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com, jgg@nvidia.com,
+ kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
+ eric.auger@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ yi.y.sun@linux.intel.com, cohuck@redhat.com,
  shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- intel-gfx@lists.freedesktop.org, chao.p.peng@linux.intel.com, lulu@redhat.com,
- robin.murphy@arm.com, jasowang@redhat.com, yanting.jiang@intel.com
+ robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Yi,
+On Sat,  1 Apr 2023 07:44:22 -0700
+Yi Liu <yi.l.liu@intel.com> wrote:
 
-On 4/1/23 16:44, Yi Liu wrote:
 > as an alternative method for ownership check when iommufd is used. In
-I don't understand the 1st sentence.
 > this case all opened devices in the affected dev_set are verified to
 > be bound to a same valid iommufd value to allow reset. It's simpler
 > and faster as user does not need to pass a set of fds and kernel no
-kernel does not need to search
 > need to search the device within the given fds.
->
+> 
 > a device in noiommu mode doesn't have a valid iommufd, so this method
 > should not be used in a dev_set which contains multiple devices and one
 > of them is in noiommu. The only allowed noiommu scenario is that the
 > calling device is noiommu and it's in a singleton dev_set.
->
+> 
 > Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
 > Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
 > Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
@@ -129,7 +121,7 @@ kernel does not need to search
 >  drivers/vfio/pci/vfio_pci_core.c | 42 +++++++++++++++++++++++++++-----
 >  include/uapi/linux/vfio.h        |  9 ++++++-
 >  2 files changed, 44 insertions(+), 7 deletions(-)
->
+> 
 > diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
 > index 3696b8e58445..b68fcba67a4b 100644
 > --- a/drivers/vfio/pci/vfio_pci_core.c
@@ -150,8 +142,6 @@ kernel does not need to search
 >  	/* Somewhere between 1 and count is OK */
 > -	if (!hdr->count || hdr->count > count)
 > +	if (hdr->count > count)
-then I would simply remove the above comment since !count check is done
-by the caller.
 >  		return -EINVAL;
 >  
 >  	group_fds = kcalloc(hdr->count, sizeof(*group_fds), GFP_KERNEL);
@@ -239,6 +229,41 @@ by the caller.
 > +		    !vfio_dev_in_groups(cur_vma, groups) &&
 > +		    !vfio_dev_in_iommufd_ctx(cur_vma, iommufd_ctx) &&
 > +		    (dev_set->device_count > 1)) {
+
+This last condition looks buggy to me, we need all conditions to be
+true to generate an error here, which means that for a singleton
+dev_set, it doesn't matter what group fds are passed, if any, or whether
+the iommufd context matches.  I think in fact this means that the empty
+array path is equally available for group use cases with a singleton
+dev_set, but we don't enable it for multiple device dev_sets like we do
+iommufd.
+
+You pointed out a previous issue with hot-reset info and no-iommu where
+if other affected devices are not bound to vfio-pci the info ioctl
+returns error.  That's handled in the hot-reset ioctl by the fact that
+all affected devices must be in the dev_set and therefore bound to
+vfio-pci drivers.  So it seems to me that aside from the spurious error
+because we can't report an iommu group when none exists, and didn't
+spot it to invent an invalid group for debugging, hot-reset otherwise
+works with no-iommu just like it does for iommu backed devices.  We
+don't currently require singleton no-iommu dev_sets afaict.
+
+I'll also note that if the dev_set is singleton, this suggests that
+pci_reset_function() can make use of bus reset, so a hot-reset is
+accessible via VFIO_DEVICE_RESET if the appropriate reset method is
+selected.
+
+Therefore, I think as written, the singleton dev_set hot-reset is
+enabled for iommufd and (unintentionally?) for the group path, while
+also negating a requirement for a group fd or that a provided group fd
+actually matches the device in this latter case.  The null-array
+approach is not however extended to groups for more general use.
+Additionally, limiting no-iommu hot-reset to singleton dev_sets
+provides only a marginal functional difference vs VFIO_DEVICE_RESET.
+Thanks,
+
+Alex
+
 >  			ret = -EINVAL;
 >  			goto err_undo;
 >  		}
@@ -254,23 +279,12 @@ by the caller.
 > + * The ownership can be proved by:
 > + *   - An array of group fds
 > + *   - A zero-length array
-
-I would suggest something alike
-in case a non void group fd array is passed, the devices affected by the
-reset must belong to those opened VFIO groups.
-in case a zero length array is passed, the other devices affected by the
-reset, if any, must be bound to the same iommufd as this VFIO device
-Either of the 2 methods is applied to check the feasibility of the reset
 > + *
 > + * In the last case all affected devices which are opened by this user
 > + * must have been bound to a same iommufd. If the calling device is in
 > + * noiommu mode (no valid iommufd) then it can be reset only if the reset
 > + * doesn't affect other devices.
-and keep that too
 >   *
 >   * Return: 0 on success, -errno on failure.
 >   */
-Thanks
-
-Eric
 
