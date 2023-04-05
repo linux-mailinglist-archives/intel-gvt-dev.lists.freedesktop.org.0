@@ -2,86 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53DED6D874C
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Apr 2023 21:49:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 06E296D88B8
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Apr 2023 22:38:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 21A7110E35B;
-	Wed,  5 Apr 2023 19:49:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CCC6110E29D;
+	Wed,  5 Apr 2023 20:38:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2C99B10E35B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  5 Apr 2023 19:49:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680724190;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5VV/1+tZjcISuBy4Cr1ZNzpFLuXRsQrIQ62y/gstXpI=;
- b=QxuN++igsvhzbGo71Uz3jk20+RURCrF4tZu4Ae6f1LmtXPnRok3I3u+0DUPXZwI31roSBR
- 1RRButgSfjBxvXsXpba3ZkLHQsSd1q0zTh6U2fHTKoYKlQMzEu7uGJp8GbzjHlWjpP03UH
- ZLnX1YrNBXDdKWyA1iaMo4smZzFMgyY=
-Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
- [209.85.166.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-131-owUuEaCPPwucETNFIGtO1g-1; Wed, 05 Apr 2023 15:49:48 -0400
-X-MC-Unique: owUuEaCPPwucETNFIGtO1g-1
-Received: by mail-io1-f71.google.com with SMTP id
- a21-20020a5d9595000000b0074c9dc19e16so22540291ioo.15
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 05 Apr 2023 12:49:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680724188;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=5VV/1+tZjcISuBy4Cr1ZNzpFLuXRsQrIQ62y/gstXpI=;
- b=7CnH6FF6fY/ZvfCwu+JG8vURZj12NODubatIqcH9FtqPFHFT7FHWtxspM1mAtmlC5h
- OxLEoEWidVGGZLd7aRqU1XuCvYknU1P/tDDLRmtxasexfZOnK67hvyMxhvT8tTDJA3ds
- RUsvdQymzXdq6Oeon3Ef0ES//8J8w+uRQin/Kc1bkExwCKIMxjF7or6HJmgdCNjpsDMH
- /EirBezP75qfuQhKSueypINdPDQ7CmPk8VBVyZgKETDLjLrj3n3Rf6ccHg84+SnRMxcq
- Ab5C1iiJwHQjoNYU+hS4CsCm7n+odGcGULVo+Z2oFl0CCq1Dll5Dr914fFYx0/CzOBNP
- xH3Q==
-X-Gm-Message-State: AAQBX9eo66f75NV1s6QQl+bhsCeDyoL3WdqMv3WGh616KQmUdkp6nRqd
- lwJMpXDk/Sa7DuT9RQ0ydd2FnetRUouRKUut9PFyG6+MUVmApd7YECVNKfbryFCVYnOAmzeBSgd
- 2M1NfwD1V+uovhTAI2U39N16fVnBGTgdYQA==
-X-Received: by 2002:a92:d282:0:b0:326:45af:ac3a with SMTP id
- p2-20020a92d282000000b0032645afac3amr4110811ilp.6.1680724187950; 
- Wed, 05 Apr 2023 12:49:47 -0700 (PDT)
-X-Google-Smtp-Source: AKy350aOs7AtJ3q6RxmL38alxILOxSsLWA2V9ndGqPOcLj391pPzzJ6A38c2cfdJ1QeIVh53KAfw7Q==
-X-Received: by 2002:a92:d282:0:b0:326:45af:ac3a with SMTP id
- p2-20020a92d282000000b0032645afac3amr4110780ilp.6.1680724187623; 
- Wed, 05 Apr 2023 12:49:47 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- x11-20020a92300b000000b00325daf836fdsm4046680ile.17.2023.04.05.12.49.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Apr 2023 12:49:47 -0700 (PDT)
-Date: Wed, 5 Apr 2023 13:49:45 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v3 12/12] vfio/pci: Report dev_id in
- VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
-Message-ID: <20230405134945.29e967be.alex.williamson@redhat.com>
-In-Reply-To: <ZC3KJUxJa0O0M+9O@nvidia.com>
-References: <20230401144429.88673-1-yi.l.liu@intel.com>
- <20230401144429.88673-13-yi.l.liu@intel.com>
- <a937e622-ce32-6dda-d77c-7d8d76474ee0@redhat.com>
- <DS0PR11MB7529D4E354C3B85D7698017DC3909@DS0PR11MB7529.namprd11.prod.outlook.com>
- <20230405102545.41a61424.alex.williamson@redhat.com>
- <ZC2jsQuWiMYM6JZb@nvidia.com>
- <20230405105215.428fa9f5.alex.williamson@redhat.com>
- <ZC2un1LaTUR1OrrJ@nvidia.com>
- <20230405125621.4627ca19.alex.williamson@redhat.com>
- <ZC3KJUxJa0O0M+9O@nvidia.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+Received: from leyou.com (unknown [115.182.12.213])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9CB2A10E29D;
+ Wed,  5 Apr 2023 20:38:34 +0000 (UTC)
+Received: from [192.168.8.127] (reverse.rain.network [197.184.166.83])
+ (user=security@leyou.com mech=LOGIN bits=0)
+ by fortimail.leyou.com  with ESMTP id 335KafcO025624-335KafcT025624;
+ Thu, 6 Apr 2023 04:37:12 +0800
+Message-Id: <202304052037.335KafcO025624-335KafcT025624@fortimail.leyou.com>
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: RE: PROFITABLE BUSINESS INVESTMENT U$D400 MILLION
+To: Recipients <nnpcexecutorintrust95@gmail.com>
+From: "Mr. Godwin Okonkwo (Mgr)" <nnpcexecutorintrust95@gmail.com>
+Date: Wed, 05 Apr 2023 22:37:05 +0200
+X-FEAS-AUTH-USER: security@leyou.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,145 +38,87 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
- Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
+Reply-To: NNPCGodwinOkonkwoMgr@hotmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 5 Apr 2023 16:21:09 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
+Corporate Headquarters
+NNPC Towers, Central Business District,
+Herbert Macaulay Way,
+P.M.B. 190, Garki, Abuja.         =
 
-> On Wed, Apr 05, 2023 at 12:56:21PM -0600, Alex Williamson wrote:
-> > Usability needs to be a consideration as well.  An interface where the
-> > result is effectively arbitrary from a user perspective because the
-> > kernel is solely focused on whether the operation is allowed,
-> > evaluating constraints that the user is unaware of and cannot control,
-> > is unusable.  
-> 
-> Considering this API is only invoked by qemu we might be overdoing
-> this usability and 'no shoot in foot' view.
 
-Ok, I'm not sure why we're diminishing the de facto vfio userspace...
+               FINANCE AND ACCOUNTS PROFITABLE BUSINESS INVESTMENT U$D400 M=
+ILLION
+ =
 
-> > > This is a good point that qemu needs to make a policy decision if it
-> > > is happy about the VFIO configuration - but that is a policy decision
-> > > that should not become entangled with the kernel's security checks.
-> > > 
-> > > Today qemu can make this policy choice the same way it does right now
-> > > - call _INFO and check the group_ids. It gets the exact same outcome
-> > > as today. We already discussed that we need to expose the group ID
-> > > through an ioctl someplace.  
-> > 
-> > QEMU can make a policy decision today because the kernel provides a
-> > sufficiently reliable interface, ie. based on the set of owned groups, a
-> > hot-reset is all but guaranteed to work.    
-> 
-> And we don't change that with cdev. If qemu wants to make the policy
-> decision it keeps using the exact same _INFO interface to make that
-> decision same it has always made.
-> 
-> We weaken the actual reset action to only consider the security side.
-> 
-> Applications that want this exclusive reset group policy simply must
-> check it on their own. It is a reasonable API design.
+Attn: president/ceo                                      =
 
-I disagree, as I've argued before, the info ioctl becomes so weak and
-effectively arbitrary from a user perspective at being able to predict
-whether the hot-reset ioctl works that it becomes useless, diminishing
-the entire hot-reset info/execute API.
+ =
 
-> > > If this is too awkward we could add a query to the kernel if the cdev
-> > > is "reset exclusive" - eg the iommufd covers all the groups that span
-> > > the reset set.  
-> > 
-> > That's essentially what we have if there are valid dev-ids for each
-> > affected device in the info ioctl.  
-> 
-> If you have dev-ids for everything, yes. If you don't, then you can't
-> make the same policy choice using a dev-id interface.
+After Due deliberation with my colleagues Abdul Malik Aminu (GM, GGA, F&A A=
+cting GGM, Accounts) Nigeria National Petroleum Corporation (NNPC), I decid=
+ed to forward to you this Profitable Business Investment of U$D400 Million.=
+ We want a reliable person who can assist us to Receive this (U$D400 Millio=
+n only) for Investment in your country. President Muhammad Bihari has appoi=
+nted Godwin Okonkwo Mgr Planning Brass LNG GM, GM, Grp. Gen Acct the Nigeri=
+a National Petroleum Corporation (nnpc) and have also advised him to pay of=
+f all the nnpc contractors owned by Nigeria National Petroleum Corporation =
+(NNPC).
+ =
 
-Exactly, you can't make any policy choice because the success or
-failure of the hot-reset ioctl can't be known.
+This fund resulted from an over-invoiced contract awarded by us under the b=
+udget allocation to my ministry and the bill was approved for payment by th=
+e concerned ministries. The contract was executed, commissioned and the con=
+tractor was paid his actual cost of the contract. We are left with the bala=
+nce of $400,000,000.00 only as the over invoiced amount which we have delib=
+erately over estimated for our own use but under the protocol division, civ=
+il servants are forbidden to operate or own foreign accounts. We have agree=
+d to share the money as follows:
+ =
 
-> > I don't think it helps the user experience to create loopholes where
-> > the hot-reset ioctl can still work in spite of those missing
-> > devices.  
-> 
-> I disagree. The easy straightforward design is that the reset ioctl
-> works if the process has security permissions. Mixing a policy check
-> into the kernel on this path is creating complexity we don't really
-> need.
-> 
-> I don't view it as a loophole, it is flexability to use the API in a
-> way that is different from what qemu wants - eg an app like dpdk may
-> be willing to tolerate a reset group that becomes unavailable after
-> startup. Who knows, why should we force this in the kernel?
+1. 30% For You as the (Account owner)
+2. 60% for me and My Colleagues
+3. 10% for any expenses that we Might Encore during the Cause of this Trans=
+fer. =
 
-Because look at all the problems it's causing to try to introduce these
-loopholes without also introducing subtle bugs.  There's an argument
-that we're overly strict, which is better than the alternative, which
-seems to be what we're dabbling with.  It is a straightforward
-interface for the hot-reset ioctl to mirror the information provided
-via the hot-reset info ioctl.
+ =
 
-> > For example, we have a VFIO_DEVICE_GET_INFO ioctl that supports
-> > capability chains, we could add a capability that reports the group ID
-> > for the device.    
-> 
-> I was going to put that in an iommufd ioctl so it works with VDPA too,
-> but sure, lets assume we can get the group ID from a cdev fd.
-> 
-> > The hot-reset info ioctl remains as it is today, reporting group-ids
-> > and bdfs.  
-> 
-> Sure, but userspace still needs to know how to map the reset sets into
-> dev-ids.
+As you may want to know and to make you less curious, I got your address fr=
+om our reputable chamber of commerce & industry in your country's embassy h=
+ere in Nigeria. My name is Godwin Okonkwo Mgr. Planning Acct of the Nigeria=
+n National Petroleum Corporation (nnpc).this transaction is 100% risk free =
+hence the business was carefully planned before it was executed and we the =
+NNPC. officials involved in this deal as we have put many years in service =
+to our ministry, we have been exercising patience for this opportunity for =
+so long, and to most of us this is a lifetime opportunity we cannot afford =
+to miss.
+ =
 
-No, it doesn't. 
+To get this fund paid into your account, we have to present you as an inter=
+national business outfit and consequent upon indication of your interest to=
+ fully assist us in this transaction; you will be required to finish us wit=
+h the following.
+ =
 
-> Remember the reason we started doing this is because we don't
-> have easy access to the BDF anymore.
+1. Your Bank Name Address Phone and Fax.
+2. Your Bank Account Number/ Swift Code and Routing Number (if any).
+3. Your Private Phone and Fax Number for Easy Communication.
+4. Your Full Name and Address.
+ =
 
-We don't need it, the info ioctl provides the groups, the group
-association can be learned from the DEVICE_GET_INFO ioctl, the
-hot-reset ioctl only requires a single representative fd per affected
-group.  dev-ids not required.
+This information will enable us to seek approval of the fund from the conce=
+rned quarters within 14 banking days and the Nigeria national petroleum cor=
+poration (NNPC) payment information data will be send to you for completion=
+. All this will only take us about 30 working days to transfer this fund in=
+to your account from the day we receive your information. Let confidentiali=
+ty, honesty and trust be our watchword throughout this transaction.
 
-> I like leaving this ioctl alone, lets go back to a dedicated ioctl to
-> return the dev_ids.
+ =
 
-I don't see any justification for this.  We could add another PCI
-specific DEVICE_GET_INFO capability to report the bdf if we really need
-it, but reporting the group seems sufficient for this use case.
+Your prompt reply will be highly appreciated.
+ =
 
-> > The hot-reset ioctl itself is modified to transparently
-> > support either group fds or device fds.  The user can now map cdevs
-> > to group-ids and therefore follow the same rules as groups,
-> > providing at least one representative device fd for each group.  
-> 
-> This looks like a very complex uapi compared to the empty list option,
-> but it seems like it would work.
 
-It's the same API that we have now.  What's complex is trying to figure
-out all the subtle side-effects from the loopholes that are being
-proposed in this series.  Thanks,
-
-Alex
-
+Best Regards.
+Godwin Okonkwo (Mgr Planning Brass LNG GM, GM, Grp. Gen Acct)=20
