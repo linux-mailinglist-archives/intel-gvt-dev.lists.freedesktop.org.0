@@ -2,79 +2,80 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F1C86D994A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Apr 2023 16:13:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E16BF6D9DB4
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Apr 2023 18:45:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B8AE510EBCF;
-	Thu,  6 Apr 2023 14:13:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B749410E2A2;
+	Thu,  6 Apr 2023 16:45:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4C78D10EBCF
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EA7AF10EC62
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  6 Apr 2023 14:13:42 +0000 (UTC)
+ Thu,  6 Apr 2023 16:44:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680790421;
+ s=mimecast20190719; t=1680799498;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4ZqDQDqjyds8VPlocoEi3C0IrbNugg8tUJmM/qJ6sTM=;
- b=blwhxrz7ku3LJl0AqR6XCYeK5eqZAOVCtfxUzHmf0i+vbqAyO7G31MrW5V6hNQED0gKt/G
- qyA2CeoIdEtXXszq1mfrnlmYUrrz3QPLmGmxg8yQ9m44aG05e3J68vuNhFKRIKJHNNKZgV
- mV5/Yz34xq8vVIyMRjqFYRPQ8yaq034=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=cj1qdraUDIqQ4wyinXOunxUjzkj6NEpe76it1VNYXg4=;
+ b=EiNpaJsegCsL1vzX3Qdt1gMrLkdygUFpx0uScmzX8nx0l87df3nTguyf0s3GwNxtqapHwA
+ Sp6s2Kg5tE/PKzL2ByNlrvEmAxP8M20h3Cx1ed5eASFY6/EjzK7CkNN0j9u7yoxthJfGJ6
+ BqS/Wz5V88/8KgjV9fUvTClJBFcQxKA=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-468-7k74bBBiPI-FRflDPuuhxA-1; Thu, 06 Apr 2023 10:13:39 -0400
-X-MC-Unique: 7k74bBBiPI-FRflDPuuhxA-1
-Received: by mail-qt1-f200.google.com with SMTP id
- c14-20020ac87d8e000000b003e38726ec8bso26779730qtd.23
+ us-mta-638-Uh7VBqNVM5aAdI-t3WoPHA-1; Thu, 06 Apr 2023 12:44:55 -0400
+X-MC-Unique: Uh7VBqNVM5aAdI-t3WoPHA-1
+Received: by mail-qk1-f198.google.com with SMTP id
+ r197-20020a37a8ce000000b0074a59c12b10so4024993qke.5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 06 Apr 2023 07:13:39 -0700 (PDT)
+ Thu, 06 Apr 2023 09:44:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680790419;
+ d=1e100.net; s=20210112; t=1680799495;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=4ZqDQDqjyds8VPlocoEi3C0IrbNugg8tUJmM/qJ6sTM=;
- b=70667dIS4GwyTbu8tfzCkSmEa6XRWYopG6eEH6KUN2T+5fAvgDvhLgVW+dWT4M/JYW
- BBbFmoR6I/u7IgPyxWONLlPS7oTKHCD445EtU4kfpOGoMP9WOnrFxusBukZzRUerkpql
- GA0OX4Kdjb28bSFjK6KveXqye/h0Sf2v5tJNm9d2xSAvoadgCPYExsNHpeFbelxEL8Tb
- GvaoL8W10nzIM6UwCCEEEFNJcgbOq/VnOmxrlilwkO6lwHPkZ2R3IqLDB2E1iHHTAw+s
- nPRPNZrb9Bob/MZezZ/F671axKAMHEQaGHPfjbNZzD4qX7wxF1F8zIIDJG//F1iK5ywW
- H5Cg==
-X-Gm-Message-State: AAQBX9cMxl9+F+KkVbJxheLMIhHcRxejGOVipeqXWnyOkvWKKxaibMdu
- iAlTuMHfghgjKXOxQOSedCq6LG2Xr3e8R/2IXkT3y4AZ9fD8EdSX+cNvKauo0UB3nbwhKENueXN
- NA+WRcYf+V5wsCHTyptXbesylR9DLhhKQjw==
-X-Received: by 2002:a05:6214:2aab:b0:5ce:7b40:89bd with SMTP id
- js11-20020a0562142aab00b005ce7b4089bdmr4087297qvb.18.1680790418955; 
- Thu, 06 Apr 2023 07:13:38 -0700 (PDT)
-X-Google-Smtp-Source: AKy350bO91aKaALXlf/32wwODUUkbjJFfCvulNU+0tH+77KwqRdD7uBXiKVvaUVXOK53XyO/yxSRcA==
-X-Received: by 2002:a05:6214:2aab:b0:5ce:7b40:89bd with SMTP id
- js11-20020a0562142aab00b005ce7b4089bdmr4087239qvb.18.1680790418519; 
- Thu, 06 Apr 2023 07:13:38 -0700 (PDT)
+ bh=cj1qdraUDIqQ4wyinXOunxUjzkj6NEpe76it1VNYXg4=;
+ b=xpZ0XSp9GLYq7yIdQuzbEW0RuFkgiebfYU5C50dpnLdQEm1OxlFhw9hPstezPz+FQU
+ VTudcr+SigHcDI3OaWCzmL6qK1627dNcFAqMELZJBQtFV4EBVfzP3e+Z1WbbytIUOzCp
+ jjAFdEtT2g9FJGbARsTMnORGpVmpBwQ2VgZlewCKS/86yvG7mudFO79b8A+ELGIs7IEa
+ BJfRPinBGBaPVo9ihrlnW2qvF1M6hsIZnLIeG7EQLT+nSQe91/9ke24E3zF9Wje+E4TQ
+ suqB4197ZOY0WfWvMKvxwVUslkFBnvI7Y7yX1ndzIYn59g2dg4TO03jfcGubJ7HriQ6E
+ Nyjg==
+X-Gm-Message-State: AAQBX9fATjjikOE66gq1bj7AweK2kYBf+mJzDlm+W4T7HHOxe16rrsOw
+ WxUITEssRzS4Dn93Malt8nWbAEzK0tfd8W0HHiiCbyUAlmGfygC3DhbSlCVCgYkiCOnWi0jsa+J
+ 7ei5Hk1t6k5NKiot18izzwD+uT0pJIBX9vg==
+X-Received: by 2002:ac8:59ca:0:b0:3b8:2cf6:4bd6 with SMTP id
+ f10-20020ac859ca000000b003b82cf64bd6mr12365679qtf.57.1680799494847; 
+ Thu, 06 Apr 2023 09:44:54 -0700 (PDT)
+X-Google-Smtp-Source: AKy350ZSS7EeAJwH0ALWV4bKpdOrqM0X6ZUGe2iW062njbJkUl7t6KGbG/PG3FNAG8z/sy0GF4g7UQ==
+X-Received: by 2002:ac8:59ca:0:b0:3b8:2cf6:4bd6 with SMTP id
+ f10-20020ac859ca000000b003b82cf64bd6mr12365645qtf.57.1680799494556; 
+ Thu, 06 Apr 2023 09:44:54 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- lv6-20020a056214578600b005dd8b9345cbsm534712qvb.99.2023.04.06.07.13.32
+ h7-20020ac846c7000000b003e3921077d9sm532848qto.38.2023.04.06.09.44.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Apr 2023 07:13:37 -0700 (PDT)
-Message-ID: <0c51b289-4393-46d5-fb05-a4fc6de92e7b@redhat.com>
-Date: Thu, 6 Apr 2023 16:13:31 +0200
+ Thu, 06 Apr 2023 09:44:53 -0700 (PDT)
+Message-ID: <dbf2057d-b715-f32d-454a-e4953921d232@redhat.com>
+Date: Thu, 6 Apr 2023 18:44:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.5.0
-Subject: Re: [PATCH v9 09/25] vfio: Add cdev_device_open_cnt to vfio_group
+Subject: Re: [PATCH v9 10/25] vfio: Make vfio_device_open() single open for
+ device cdev path
 To: Yi Liu <yi.l.liu@intel.com>, alex.williamson@redhat.com, jgg@nvidia.com,
  kevin.tian@intel.com
 References: <20230401151833.124749-1-yi.l.liu@intel.com>
- <20230401151833.124749-10-yi.l.liu@intel.com>
+ <20230401151833.124749-11-yi.l.liu@intel.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20230401151833.124749-10-yi.l.liu@intel.com>
+In-Reply-To: <20230401151833.124749-11-yi.l.liu@intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -106,17 +107,27 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 Hi Yi,
 
 On 4/1/23 17:18, Yi Liu wrote:
-> for counting the devices that are opened via the cdev path. This count
-> is increased and decreased by the cdev path. The group path checks it
-> to achieve exclusion with the cdev path. With this, only one path (group
-> path or cdev path) will claim DMA ownership. This avoids scenarios in
-> which devices within the same group may be opened via different paths.
+> VFIO group has historically allowed multi-open of the device FD. This
+> was made secure because the "open" was executed via an ioctl to the
+> group FD which is itself only single open.
+>
+> However, no known use of multiple device FDs today. It is kind of a
+> strange thing to do because new device FDs can naturally be created
+> via dup().
+>
+> When we implement the new device uAPI (only used in cdev path) there is
+> no natural way to allow the device itself from being multi-opened in a
+> secure manner. Without the group FD we cannot prove the security context
+> of the opener.
+>
+> Thus, when moving to the new uAPI we block the ability of opening
+> a device multiple times. Given old group path still allows it we store
+> a vfio_group pointer in struct vfio_device_file to differentiate.
 >
 > Reviewed-by: Kevin Tian <kevin.tian@intel.com>
 > Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 > Tested-by: Terrence Xu <terrence.xu@intel.com>
 > Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
 > Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
@@ -125,82 +136,53 @@ Thanks
 
 Eric
 > ---
->  drivers/vfio/group.c | 33 +++++++++++++++++++++++++++++++++
->  drivers/vfio/vfio.h  |  3 +++
->  2 files changed, 36 insertions(+)
+>  drivers/vfio/group.c     | 2 ++
+>  drivers/vfio/vfio.h      | 2 ++
+>  drivers/vfio/vfio_main.c | 7 +++++++
+>  3 files changed, 11 insertions(+)
 >
 > diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-> index 71f0a9a4016e..d55ce3ca44b7 100644
+> index d55ce3ca44b7..1af4b9e012a7 100644
 > --- a/drivers/vfio/group.c
 > +++ b/drivers/vfio/group.c
-> @@ -383,6 +383,33 @@ static long vfio_group_fops_unl_ioctl(struct file *filep,
->  	}
->  }
->  
-> +int vfio_device_block_group(struct vfio_device *device)
-> +{
-> +	struct vfio_group *group = device->group;
-> +	int ret = 0;
-> +
-> +	mutex_lock(&group->group_lock);
-> +	if (group->opened_file) {
-> +		ret = -EBUSY;
-> +		goto out_unlock;
-> +	}
-> +
-> +	group->cdev_device_open_cnt++;
-> +
-> +out_unlock:
-> +	mutex_unlock(&group->group_lock);
-> +	return ret;
-> +}
-> +
-> +void vfio_device_unblock_group(struct vfio_device *device)
-> +{
-> +	struct vfio_group *group = device->group;
-> +
-> +	mutex_lock(&group->group_lock);
-> +	group->cdev_device_open_cnt--;
-> +	mutex_unlock(&group->group_lock);
-> +}
-> +
->  static int vfio_group_fops_open(struct inode *inode, struct file *filep)
->  {
->  	struct vfio_group *group =
-> @@ -405,6 +432,11 @@ static int vfio_group_fops_open(struct inode *inode, struct file *filep)
->  		goto out_unlock;
+> @@ -245,6 +245,8 @@ static struct file *vfio_device_open_file(struct vfio_device *device)
+>  		goto err_out;
 >  	}
 >  
-> +	if (group->cdev_device_open_cnt) {
-> +		ret = -EBUSY;
-> +		goto out_unlock;
-> +	}
+> +	df->group = device->group;
 > +
->  	/*
->  	 * Do we need multiple instances of the group open?  Seems not.
->  	 */
-> @@ -479,6 +511,7 @@ static void vfio_group_release(struct device *dev)
->  	mutex_destroy(&group->device_lock);
->  	mutex_destroy(&group->group_lock);
->  	WARN_ON(group->iommu_group);
-> +	WARN_ON(group->cdev_device_open_cnt);
->  	ida_free(&vfio.group_ida, MINOR(group->dev.devt));
->  	kfree(group);
->  }
+>  	ret = vfio_device_group_open(df);
+>  	if (ret)
+>  		goto err_free;
 > diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-> index 854f2c97cb9a..b2f20b78a707 100644
+> index b2f20b78a707..f1a448f9d067 100644
 > --- a/drivers/vfio/vfio.h
 > +++ b/drivers/vfio/vfio.h
-> @@ -83,8 +83,11 @@ struct vfio_group {
->  	struct blocking_notifier_head	notifier;
->  	struct iommufd_ctx		*iommufd;
->  	spinlock_t			kvm_ref_lock;
-> +	unsigned int			cdev_device_open_cnt;
->  };
+> @@ -18,6 +18,8 @@ struct vfio_container;
 >  
-> +int vfio_device_block_group(struct vfio_device *device);
-> +void vfio_device_unblock_group(struct vfio_device *device);
->  int vfio_device_set_group(struct vfio_device *device,
->  			  enum vfio_group_type type);
->  void vfio_device_remove_group(struct vfio_device *device);
+>  struct vfio_device_file {
+>  	struct vfio_device *device;
+> +	struct vfio_group *group;
+> +
+>  	bool access_granted;
+>  	spinlock_t kvm_ref_lock; /* protect kvm field */
+>  	struct kvm *kvm;
+> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> index 6d5d3c2180c8..c8721d5d05fa 100644
+> --- a/drivers/vfio/vfio_main.c
+> +++ b/drivers/vfio/vfio_main.c
+> @@ -477,6 +477,13 @@ int vfio_device_open(struct vfio_device_file *df)
+>  
+>  	lockdep_assert_held(&device->dev_set->lock);
+>  
+> +	/*
+> +	 * Only the group path allows the device opened multiple times.
+> +	 * The device cdev path doesn't have a secure way for it.
+> +	 */
+> +	if (device->open_count != 0 && !df->group)
+> +		return -EINVAL;
+> +
+>  	device->open_count++;
+>  	if (device->open_count == 1) {
+>  		ret = vfio_device_first_open(df);
 
