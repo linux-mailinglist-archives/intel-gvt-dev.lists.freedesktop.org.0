@@ -2,82 +2,73 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C94216D9F48
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Apr 2023 19:53:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C59346DA06B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  6 Apr 2023 20:57:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 25C3A10EC7F;
-	Thu,  6 Apr 2023 17:53:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 91A4110EC96;
+	Thu,  6 Apr 2023 18:57:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 031E310EC7E
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AAD5D10EC96
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  6 Apr 2023 17:53:54 +0000 (UTC)
+ Thu,  6 Apr 2023 18:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680803633;
+ s=mimecast20190719; t=1680807454;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7432+6OEWamz5qY/mgHPY11Z1KTJKe8+IEhwreLZ3sM=;
- b=ZbLemHJ8cs5J1PqoLotGILxqKyf4b3jShOSJad7a523y09is50QDHtzL2lTuHFPjqD5qf5
- z/9gaO/FL8H3LKrgEu+YRmHk/B8y2xpJec4UzDRrvaCxpHRoDqmGKWMGLUOBmQABmJhsSV
- XnKa11fQN/z1O1YvUucZiTBWWGHRjG4=
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=wrJKx7A1GuEl4Junf/KhUJYI2+zpRcMaomSzMn8W3Lc=;
+ b=ZOmLX+XSpoMmOYc8clFGqqu3NEuSNrbiHO92960hIAFmQbgso079sFOfwELF90vMEsM/J+
+ +SHVw53C7f1vCY7R++sYVUzENch9qkqKFVnsA9tRfxNCyQTu0ktxke/ZIUxWmO9D+zk00z
+ zwrZI6CSR3WmP8BVpswkNRK5IF2Z2Jk=
+Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
+ [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-483-qUvJY-dbNVqaUA8vVSVmcw-1; Thu, 06 Apr 2023 13:53:50 -0400
-X-MC-Unique: qUvJY-dbNVqaUA8vVSVmcw-1
-Received: by mail-il1-f200.google.com with SMTP id
- g12-20020a056e021e0c00b00327c0e193b1so3580395ila.21
+ us-mta-462-9kWsuxp_Ozq1fat_Vk9JTQ-1; Thu, 06 Apr 2023 14:57:33 -0400
+X-MC-Unique: 9kWsuxp_Ozq1fat_Vk9JTQ-1
+Received: by mail-io1-f69.google.com with SMTP id
+ 3-20020a6b1403000000b007588213c81aso24819649iou.18
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 06 Apr 2023 10:53:50 -0700 (PDT)
+ Thu, 06 Apr 2023 11:57:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680803630; x=1683395630;
+ d=1e100.net; s=20210112; t=1680807453; x=1683399453;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7432+6OEWamz5qY/mgHPY11Z1KTJKe8+IEhwreLZ3sM=;
- b=z/TgrI5CM9lh6CPuH68y2/U5kqpM3uXNt5yxBsrb/71OCpxPnEg1VTHRTostD3jJ+o
- 4xWszQWyo81dHw/eLM7wkMldGO075tFihjesxTO7MLdpI49RVnl4YbfqghOzQleT6i1X
- cN0mMhmu5XFKf3RJs7DL1ScMLSVrgGQaEBcBxur51bnMTncQ8XKN4UlEe8PmL+L/8MII
- E8bIo7eFT3f2p8qvfsTQoVbKsMrXI6+70heNxjykFrZnEEpTUV0FCCKppcQHOT3aPHBA
- 4YEZkVUoG39WrzDqVH35ji4QQI7EMlWGeOtIsrK8bCPitrnyChaT12g/y1cdaWG1k87O
- n4nA==
-X-Gm-Message-State: AAQBX9cEdIJ6kOiBT6VwlwAj/rfwbLXRAf4jhGsTIG8Px4i0Uqswzs9y
- XeWPfvmDc1lmBgYBRJKkrzw/6mXgeWr8D0ZvW33Zk+30veXSLgZ6TSTF6A2pzYXRSL0uZNwRFZh
- Hp00E22wwhpJgfOx4G6CosPmXTB4IgSA8Rw==
-X-Received: by 2002:a05:6e02:1449:b0:325:ede7:b166 with SMTP id
- p9-20020a056e02144900b00325ede7b166mr4688226ilo.3.1680803629732; 
- Thu, 06 Apr 2023 10:53:49 -0700 (PDT)
-X-Google-Smtp-Source: AKy350a4MFsLMs30oCa+LYnnAaACb5bDlBMgSky/nYRVNUtYLOEQcrEn7bi092ewGn4aMFuU6a9oqg==
-X-Received: by 2002:a05:6e02:1449:b0:325:ede7:b166 with SMTP id
- p9-20020a056e02144900b00325ede7b166mr4688190ilo.3.1680803629360; 
- Thu, 06 Apr 2023 10:53:49 -0700 (PDT)
+ bh=wrJKx7A1GuEl4Junf/KhUJYI2+zpRcMaomSzMn8W3Lc=;
+ b=f7B5HujaDa4Pa1CcncuvlsNgdD6AO8BJpz66OhgTegvdM/6Rw/gLZyfVjkekdkd9W2
+ yi19KvqWO9cMOVnB9/uJFrw5d6Cp32S+1ioh4ITS4UalZdla/JwYVEOIipuYG2v5vXCy
+ GsbRvF+48YeW8X11mgsQAHca5WAOs6MHfMb9zuaZ9qg03HbAObhRz3ebhbEZjiEt5ytJ
+ GBKf2jQ3j0WWB6bEhS7/S7r7/AGO30YWHiAlPcDR8WBXeKFpUozccFBZTyTA7U6zYj95
+ dI8sZ00A4jy1QWY4BheEGoagFC3erFq6fifml97thtiUfplJtOk8hLATJJxIYCwNWRTg
+ 22/A==
+X-Gm-Message-State: AAQBX9esTIryi/fNgR+Kk3lJIX16OO2T5dzjOloBx7YTdObhXt42rPX+
+ kYuhoegYF0kEb5XKO/4CGHDaRqqz5bcxkrGGjU8vrz7kEMkHcTVH04NyQRJBBXlHt423dp2JTaH
+ 5VAR4jvTLNk8uiBrzzGmW6RzV7k/+QsxkoQ==
+X-Received: by 2002:a5d:9586:0:b0:746:1c75:233a with SMTP id
+ a6-20020a5d9586000000b007461c75233amr223968ioo.20.1680807452956; 
+ Thu, 06 Apr 2023 11:57:32 -0700 (PDT)
+X-Google-Smtp-Source: AKy350b0j+giohjhzfEVrvrURxOCy3+Hx3IJ49kk8R31lIZ4Xw5zjGf/c9skO+ZYmVaMsS7Rtrgejw==
+X-Received: by 2002:a5d:9586:0:b0:746:1c75:233a with SMTP id
+ a6-20020a5d9586000000b007461c75233amr223942ioo.20.1680807452640; 
+ Thu, 06 Apr 2023 11:57:32 -0700 (PDT)
 Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- cd9-20020a0566381a0900b00408c3aa8f4dsm528131jab.63.2023.04.06.10.53.48
+ 10-20020a020a0a000000b00406147dad72sm576410jaw.104.2023.04.06.11.57.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Apr 2023 10:53:48 -0700 (PDT)
-Date: Thu, 6 Apr 2023 11:53:47 -0600
+ Thu, 06 Apr 2023 11:57:32 -0700 (PDT)
+Date: Thu, 6 Apr 2023 12:57:30 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
 To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v3 12/12] vfio/pci: Report dev_id in
- VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
-Message-ID: <20230406115347.7af28448.alex.williamson@redhat.com>
-In-Reply-To: <DS0PR11MB75292DA91ED15AE94A85EB3DC3919@DS0PR11MB7529.namprd11.prod.outlook.com>
-References: <20230401144429.88673-13-yi.l.liu@intel.com>
- <a937e622-ce32-6dda-d77c-7d8d76474ee0@redhat.com>
- <DS0PR11MB7529D4E354C3B85D7698017DC3909@DS0PR11MB7529.namprd11.prod.outlook.com>
- <20230405102545.41a61424.alex.williamson@redhat.com>
- <ZC2jsQuWiMYM6JZb@nvidia.com>
- <20230405105215.428fa9f5.alex.williamson@redhat.com>
- <ZC2un1LaTUR1OrrJ@nvidia.com>
- <20230405125621.4627ca19.alex.williamson@redhat.com>
- <ZC3KJUxJa0O0M+9O@nvidia.com>
- <20230405134945.29e967be.alex.williamson@redhat.com>
- <ZC4CwH2ouTfZ9DNN@nvidia.com>
- <DS0PR11MB75292DA91ED15AE94A85EB3DC3919@DS0PR11MB7529.namprd11.prod.outlook.com>
+Subject: Re: [PATCH v9 06/25] kvm/vfio: Accept vfio device file from userspace
+Message-ID: <20230406125730.55bfa666.alex.williamson@redhat.com>
+In-Reply-To: <DS0PR11MB7529B8DC835A6EADDB815C04C3919@DS0PR11MB7529.namprd11.prod.outlook.com>
+References: <20230401151833.124749-1-yi.l.liu@intel.com>
+ <20230401151833.124749-7-yi.l.liu@intel.com>
+ <8fb5a0b3-39c6-e924-847d-6545fcc44c08@redhat.com>
+ <DS0PR11MB7529B8DC835A6EADDB815C04C3919@DS0PR11MB7529.namprd11.prod.outlook.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -98,15 +89,14 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
  "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
  Terrence" <terrence.xu@intel.com>,
  "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
  "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
  "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
  Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
  "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, 
  Yan Y" <yan.y.zhao@intel.com>,
  "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
@@ -120,198 +110,260 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 6 Apr 2023 10:02:10 +0000
+On Thu, 6 Apr 2023 10:49:45 +0000
 "Liu, Yi L" <yi.l.liu@intel.com> wrote:
 
-> > From: Jason Gunthorpe <jgg@nvidia.com>
-> > Sent: Thursday, April 6, 2023 7:23 AM
+> Hi Eric,
+> 
+> > From: Eric Auger <eric.auger@redhat.com>
+> > Sent: Thursday, April 6, 2023 5:47 PM
 > > 
-> > On Wed, Apr 05, 2023 at 01:49:45PM -0600, Alex Williamson wrote:
-> >   
-> > > > > QEMU can make a policy decision today because the kernel provides a
-> > > > > sufficiently reliable interface, ie. based on the set of owned groups, a
-> > > > > hot-reset is all but guaranteed to work.  
-> > > >
-> > > > And we don't change that with cdev. If qemu wants to make the policy
-> > > > decision it keeps using the exact same _INFO interface to make that
-> > > > decision same it has always made.
-> > > >
-> > > > We weaken the actual reset action to only consider the security side.
-> > > >
-> > > > Applications that want this exclusive reset group policy simply must
-> > > > check it on their own. It is a reasonable API design.  
+> > Hi Yi,
+> > 
+> > On 4/1/23 17:18, Yi Liu wrote:  
+> > > This defines KVM_DEV_VFIO_FILE* and make alias with KVM_DEV_VFIO_GROUP*.
+> > > Old userspace uses KVM_DEV_VFIO_GROUP* works as well.
 > > >
-> > > I disagree, as I've argued before, the info ioctl becomes so weak and
-> > > effectively arbitrary from a user perspective at being able to predict
-> > > whether the hot-reset ioctl works that it becomes useless, diminishing
-> > > the entire hot-reset info/execute API.  
-> > 
-> > reset should be strictly more permissive than INFO. If INFO predicts
-> > reset is permitted then reset should succeed.
-> > 
-> > We don't change INFO so it cannot "becomes so weak"  ??
-> > 
-> > We don't care about the cases where INFO says it will not succeed but
-> > reset does (temporarily) succeed.
-> > 
-> > I don't get what argument you are trying to make or what you think is
-> > diminished..
-> > 
-> > Again, userspace calls INFO, if info says yes then reset *always
-> > works*, exactly just like today.
-> >
-> > Userspace will call reset with a 0 length FD list and it uses a
-> > security only check that is strictly more permissive than what
-> > get_info will return. So the new check is simple in the kernel and
-> > always works in the cases we need it to work.
-> > 
-> > What is getting things into trouble is insisting that RESET have
-> > additional restrictions beyond the minimum checks required for
-> > security.
-> >   
-> > > > I don't view it as a loophole, it is flexability to use the API in a
-> > > > way that is different from what qemu wants - eg an app like dpdk may
-> > > > be willing to tolerate a reset group that becomes unavailable after
-> > > > startup. Who knows, why should we force this in the kernel?  
+> > > Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+> > > Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> > > Tested-by: Terrence Xu <terrence.xu@intel.com>
+> > > Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> > > Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> > > Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+> > > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> > > ---
+> > >  Documentation/virt/kvm/devices/vfio.rst | 53 +++++++++++++++++--------
+> > >  include/uapi/linux/kvm.h                | 16 ++++++--
+> > >  virt/kvm/vfio.c                         | 16 ++++----
+> > >  3 files changed, 56 insertions(+), 29 deletions(-)
 > > >
-> > > Because look at all the problems it's causing to try to introduce these
-> > > loopholes without also introducing subtle bugs.  
+> > > diff --git a/Documentation/virt/kvm/devices/vfio.rst  
+> > b/Documentation/virt/kvm/devices/vfio.rst  
+> > > index 79b6811bb4f3..277d727ec1a2 100644
+> > > --- a/Documentation/virt/kvm/devices/vfio.rst
+> > > +++ b/Documentation/virt/kvm/devices/vfio.rst
+> > > @@ -9,24 +9,38 @@ Device types supported:
+> > >    - KVM_DEV_TYPE_VFIO
+> > >
+> > >  Only one VFIO instance may be created per VM.  The created device
+> > > -tracks VFIO groups in use by the VM and features of those groups
+> > > -important to the correctness and acceleration of the VM.  As groups
+> > > -are enabled and disabled for use by the VM, KVM should be updated
+> > > -about their presence.  When registered with KVM, a reference to the
+> > > -VFIO-group is held by KVM.
+> > > +tracks VFIO files (group or device) in use by the VM and features
+> > > +of those groups/devices important to the correctness and acceleration
+> > > +of the VM.  As groups/devices are enabled and disabled for use by the
+> > > +VM, KVM should be updated about their presence.  When registered with
+> > > +KVM, a reference to the VFIO file is held by KVM.
+> > >
+> > >  Groups:
+> > > -  KVM_DEV_VFIO_GROUP
+> > > -
+> > > -KVM_DEV_VFIO_GROUP attributes:
+> > > -  KVM_DEV_VFIO_GROUP_ADD: Add a VFIO group to VFIO-KVM device tracking
+> > > -	kvm_device_attr.addr points to an int32_t file descriptor
+> > > -	for the VFIO group.
+> > > -  KVM_DEV_VFIO_GROUP_DEL: Remove a VFIO group from VFIO-KVM device  
+> > tracking  
+> > > -	kvm_device_attr.addr points to an int32_t file descriptor
+> > > -	for the VFIO group.
+> > > -  KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE: attaches a guest visible TCE table
+> > > +  KVM_DEV_VFIO_FILE
+> > > +	alias: KVM_DEV_VFIO_GROUP
+> > > +
+> > > +KVM_DEV_VFIO_FILE attributes:
+> > > +  KVM_DEV_VFIO_FILE_ADD: Add a VFIO file (group/device) to VFIO-KVM device
+> > > +	tracking
+> > > +
+> > > +	alias: KVM_DEV_VFIO_GROUP_ADD
+> > > +
+> > > +	kvm_device_attr.addr points to an int32_t file descriptor for the
+> > > +	VFIO file.
+> > > +
+> > > +  KVM_DEV_VFIO_FILE_DEL: Remove a VFIO file (group/device) from VFIO-KVM
+> > > +	device tracking
+> > > +
+> > > +	alias: KVM_DEV_VFIO_GROUP_DEL
+> > > +
+> > > +	kvm_device_attr.addr points to an int32_t file descriptor for the
+> > > +	VFIO file.
+> > > +
+> > > +  KVM_DEV_VFIO_FILE_SET_SPAPR_TCE: attaches a guest visible TCE table
+> > >  	allocated by sPAPR KVM.
+> > > +
+> > > +	alias: KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE
+> > > +
+> > >  	kvm_device_attr.addr points to a struct::
+> > >
+> > >  		struct kvm_vfio_spapr_tce {
+> > > @@ -40,9 +54,14 @@ KVM_DEV_VFIO_GROUP attributes:
+> > >  	- @tablefd is a file descriptor for a TCE table allocated via
+> > >  	  KVM_CREATE_SPAPR_TCE.
+> > >
+> > > +	only accepts vfio group file as SPAPR has no iommufd support  
+> > So then what is the point of introducing
 > > 
-> > These problems are coming from tring to do this integrated version,
-> > not from my approach!
+> > KVM_DEV_VFIO_FILE_SET_SPAPR_TCE at this stage?  
+> 
+> the major reason is to make the naming aligned since this patch
+> names the groups as KVM_DEV_VFIO_FILE.
+> 
 > > 
-> > AFAICT there was nothing wrong with my original plan of using the
-> > empty fd list for reset. What Yi has here is some mashup of what you
-> > and I both suggested.  
+> > I think would have separated the
+> > 
+> > Groups:
+> >   KVM_DEV_VFIO_FILE
+> > 	alias: KVM_DEV_VFIO_GROUP
+> > 
+> > KVM_DEV_VFIO_FILE attributes:
+> >   KVM_DEV_VFIO_FILE_ADD: Add a VFIO file (group/device) to VFIO-KVM device
+> > 	tracking
+> > 
+> > 	kvm_device_attr.addr points to an int32_t file descriptor for the
+> > 	VFIO file.
+> > 
+> >   KVM_DEV_VFIO_FILE_DEL: Remove a VFIO file (group/device) from VFIO-KVM
+> > 	device tracking
+> > 
+> > 	kvm_device_attr.addr points to an int32_t file descriptor for the
+> > 	VFIO file.
+> > 
+> > KVM_DEV_VFIO_GROUP (legacy kvm device group restricted to the handling of VFIO
+> > group fd)
+> >   KVM_DEV_VFIO_GROUP_ADD: same as KVM_DEV_VFIO_FILE_ADD for group fd only
+> >   KVM_DEV_VFIO_GROUP_DEL: same as KVM_DEV_VFIO_FILE_DEL for group fd only
+> >   KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE: attaches a guest visible TCE table
+> > 	allocated by sPAPR KVM.
+> > 	kvm_device_attr.addr points to a struct::
+> > 
+> > 		struct kvm_vfio_spapr_tce {
+> > 			__s32	groupfd;
+> > 			__s32	tablefd;
+> > 		};
+> > 
+> > 	where:
+> > 
+> > 	- @groupfd is a file descriptor for a VFIO group;
+> > 	- @tablefd is a file descriptor for a TCE table allocated via
+> > 	  KVM_CREATE_SPAPR_TCE.  
 > 
-> Hi Alex, Jason,
+> hmmm, this way is clearer. I'd adopt it if it's acceptable.
 > 
-> could be this reason. So let me try to gather the changes of this series
-> does and the impact as far as I know.
+> > 
+> > You don't say anything about potential restriction, ie. what if the user calls
+> > KVM_DEV_VFIO_FILE with device fds while it has been using legacy container/group
+> > API?  
 > 
-> 1) only check the ownership of opened devices in the dev_set
->      in HOT_RESET ioctl.
->      - Impact: it changes the relationship between _INFO  and HOT_RESET.
->        As " Each group must have IOMMU protection established for the
->        ioctl to succeed." in [1], existing design actually means userspace
->        should own all the affected groups before heading to do HOT_RESET.
->        With the change here, the user does not need to ensure all affected
->        groups are opened and it can do hot-reset successfully as long as the
->        devices in the affected group are just un-opened and can be reset.
->     
->        [1] https://patchwork.kernel.org/project/linux-pci/patch/20130814200845.21923.64284.stgit@bling.home/
-
-Where whether a device is opened is subject to change outside of the
-user's control.  This essentially allows the user to perform hot-resets
-of devices outside of their ownership so long as the device is not
-used elsewhere, versus the current requirement that the user own all the
-affected groups, which implies device ownership.  It's not been
-justified why this feature needs to exist, imo.
- 
-> 2) Allow passing zero-length fd array to do hot reset
->     - Impact: this uses the iommufd as ownership check in the kernel side.
->       It is only supposed to be used by the users that open cdev instead of
->       users that open group. The drawback is that it cannot cover the noiommu
->       devices as noiommu does not use iommufd at all. But it works well for
->       most cases.
-
-The "only supposed to be used" is problematic here, we're extending all
-the interfaces to transparently accept group and device fds, but here
-we need to make a distinction because the ioctl needs to perform one
-way for groups and another way for devices, which it currently doesn't
-do.  As above, I've not seen sufficient justification for this other
-than references to reducing complexity, but the only userspace expected
-to make use of this interface already has equivalent complexity.
- 
-> 3) Allow hot reset be successful when the dev_set is singleton
->      - Impact: this makes sense but it seems to mess up the boundary between
->      the group path and cdev path w.r.t. the usage of zero-length fd approach.
->      The group path can succeed to do hot reset even if it is passing an empty
->      fd array if the dev_set happens to be singleton.
-
-Again, what is the justification for requiring this, it seems to be
-only a hack towards no-iommu support with cdev, which we can achieve by
-other means.  Why have we not needed this in the group model?  It
-introduces subtle loopholes, so while maybe we could, I don't see why we
-should, therefore I cannot agree with "this makes sense".
-
-> 4) Allow passing device fd to do hot reset
->     - Impact: this is a new way for hot reset. should have no impact.
+> legacy container/group path cannot do it as the below enhancement.
+> User needs to call KVM_DEV_VFIO_FILE before open devices, so this
+> should happen before _GET_DEVICE_FD. So the legacy path can never
+> pass device fds in KVM_DEV_VFIO_FILE.
 > 
-> 5) Extend the _INFO to report devid
->     - Impact: this changes the way user to decode the info reported back.
->     devid and groupid are returned per the way the queried device is opened.
->     Since it was suggested to support the scenario in which some devices
->     are opened via cdev while some devices are opened via group. This makes
->     us to return invalid_devid for the device that is opened via group if
->     it is affected by the hot reset of a device that is opened via cdev.
->     
->     This was proposed to support the future device fd passing usage which is
->     only available in cdev path.
+> https://lore.kernel.org/kvm/20230327102059.333d6976.alex.williamson@redhat.com/#t
 
-I think this is fundamentally flawed because of the scope of the
-dev-id.  We can only provide dev-ids for devices which belong to the
-same iommufd of the calling device, thus there are multiple instances
-where no dev-id can be provided.  The group-id and bdf are static
-properties of the devices, regardless of their ownership.  The bdf
-provides the specific device level association while the group-id
-indicates implied, static ownership.
-
-> To me the major confusion is from 1) and 3). 1) changes the meaning of
-> _INFO and HOT_RESET, while 3) messes up the boundary.
-
-As above, I think 2) is also an issue.
-
-> Here is my thought:
-> 
-> For 1), it was proposed due to below reason[2]. We'd like to make a scenario
-> that works in the group path be workable in cdev path as well. But IMHO, we
-> may just accept that cdev path cannot work for such scenario to avoid sublte
-> change to uapi. Otherwise, we need to have another HOT_RESET ioctl or a
-> hint in HOT_RESET ioctl to tell the kernel  whether relaxed ownership check
-> is expected. Maybe this is awkward. But if we want to keep it, we'd do it
-> with the awareness by user.
-> 
-> [2] https://lore.kernel.org/kvm/Y%2FdobS6gdSkxnPH7@nvidia.com/
-
-The group association is that relaxed ownership test.  Yes, there are
-corner cases where we have a dual function card with separate IOMMU
-groups, where a user owning function 0 could do a bus reset because
-function 1 is temporarily unused, but so what, what good is that, have
-we ever had an issue raised because of this?  The user can't rely on
-the unopened state of the other function.  It's an entirely
-opportunistic optimization.
-
-The much more typical scenario is that a multi-function device does not
-provide isolation, all the functions are in the same group and because
-of the association of the group the user has implied ownership of the
-other devices for the purpose of a reset.
-
-> For 3), it was proposed when discussing the hot reset for noiommu[3]. But
-> it does not make hot reset always workable for noiommu in cdev, just in
-> case dev_set is singleton. So it is more of a general optimization that can
-> make the kernel skip the ownership check. But to make use of it, we may
-> need to test it before sanitizing the group fds from user or the iommufd
-> check. Maybe the dev_set singleton test in this series is not well placed.
-> If so, I can further modify it.
-> 
-> [3] https://lore.kernel.org/kvm/ZACX+Np%2FIY7ygqL5@nvidia.com/
-
-As above, this seems to be some optimization related to no-iommu for
-cdev because we don't have an iommufd association for the device in
-no-iommu mode.  Note however that the current group interface doesn't
-care about the IOMMU context of the devices.  We only need proof that
-the user owns the affected groups.  So why are we bringing iommufd
-context anywhere into this interface, here or the null-array interface?
-
-It seems like the minor difference with cdev is that a) we're passing
-device fds rather than group fds, and b) those device fds need to be
-validated as having device access to complete the proof of ownership
-relative to the group.  Otherwise we add capabilities to
-DEVICE_GET_INFO to support the device fd passing model where the user
-doesn't know the device group or bdf and allow the reset ioctl itself
-to accept device fds (extracting the group relationship for those which
-the user has configured for access).  Thanks,
+Wait, are you suggesting that a comment in the documentation suggesting
+a usage policy somehow provides enforcement of that ordering??  That's
+not how this works.  Thanks,
 
 Alex
+ 
+> > > -The GROUP_ADD operation above should be invoked prior to accessing the
+> > > +The FILE/GROUP_ADD operation above should be invoked prior to accessing the
+> > >  device file descriptor via VFIO_GROUP_GET_DEVICE_FD in order to support
+> > >  drivers which require a kvm pointer to be set in their .open_device()
+> > > -callback.
+> > > +callback.  It is the same for device file descriptor via character device
+> > > +open which gets device access via VFIO_DEVICE_BIND_IOMMUFD.  For such file
+> > > +descriptors, FILE_ADD should be invoked before VFIO_DEVICE_BIND_IOMMUFD
+> > > +to support the drivers mentioned in prior sentence as well.  
+> 
+> just as here. This means device fds can only be passed with KVM_DEV_VFIO_FILE
+> in the cdev path.
+> 
+> Regards,
+> Yi Liu
+> 
+> > > diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
+> > > index d77aef872a0a..a8eeca70a498 100644
+> > > --- a/include/uapi/linux/kvm.h
+> > > +++ b/include/uapi/linux/kvm.h
+> > > @@ -1410,10 +1410,18 @@ struct kvm_device_attr {
+> > >  	__u64	addr;		/* userspace address of attr data */
+> > >  };
+> > >
+> > > -#define  KVM_DEV_VFIO_GROUP			1
+> > > -#define   KVM_DEV_VFIO_GROUP_ADD			1
+> > > -#define   KVM_DEV_VFIO_GROUP_DEL			2
+> > > -#define   KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE		3
+> > > +#define  KVM_DEV_VFIO_FILE	1
+> > > +
+> > > +#define   KVM_DEV_VFIO_FILE_ADD			1
+> > > +#define   KVM_DEV_VFIO_FILE_DEL			2
+> > > +#define   KVM_DEV_VFIO_FILE_SET_SPAPR_TCE	3
+> > > +
+> > > +/* KVM_DEV_VFIO_GROUP aliases are for compile time uapi compatibility */
+> > > +#define  KVM_DEV_VFIO_GROUP	KVM_DEV_VFIO_FILE
+> > > +
+> > > +#define   KVM_DEV_VFIO_GROUP_ADD	KVM_DEV_VFIO_FILE_ADD
+> > > +#define   KVM_DEV_VFIO_GROUP_DEL	KVM_DEV_VFIO_FILE_DEL
+> > > +#define   KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE  
+> > 	KVM_DEV_VFIO_FILE_SET_SPAPR_TCE  
+> > >
+> > >  enum kvm_device_type {
+> > >  	KVM_DEV_TYPE_FSL_MPIC_20	= 1,
+> > > diff --git a/virt/kvm/vfio.c b/virt/kvm/vfio.c
+> > > index 857d6ba349e1..d869913baafd 100644
+> > > --- a/virt/kvm/vfio.c
+> > > +++ b/virt/kvm/vfio.c
+> > > @@ -286,18 +286,18 @@ static int kvm_vfio_set_file(struct kvm_device *dev, long  
+> > attr,  
+> > >  	int32_t fd;
+> > >
+> > >  	switch (attr) {
+> > > -	case KVM_DEV_VFIO_GROUP_ADD:
+> > > +	case KVM_DEV_VFIO_FILE_ADD:
+> > >  		if (get_user(fd, argp))
+> > >  			return -EFAULT;
+> > >  		return kvm_vfio_file_add(dev, fd);
+> > >
+> > > -	case KVM_DEV_VFIO_GROUP_DEL:
+> > > +	case KVM_DEV_VFIO_FILE_DEL:
+> > >  		if (get_user(fd, argp))
+> > >  			return -EFAULT;
+> > >  		return kvm_vfio_file_del(dev, fd);
+> > >
+> > >  #ifdef CONFIG_SPAPR_TCE_IOMMU
+> > > -	case KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE:
+> > > +	case KVM_DEV_VFIO_FILE_SET_SPAPR_TCE:
+> > >  		return kvm_vfio_file_set_spapr_tce(dev, arg);
+> > >  #endif
+> > >  	}
+> > > @@ -309,7 +309,7 @@ static int kvm_vfio_set_attr(struct kvm_device *dev,
+> > >  			     struct kvm_device_attr *attr)
+> > >  {
+> > >  	switch (attr->group) {
+> > > -	case KVM_DEV_VFIO_GROUP:
+> > > +	case KVM_DEV_VFIO_FILE:
+> > >  		return kvm_vfio_set_file(dev, attr->attr,
+> > >  					 u64_to_user_ptr(attr->addr));
+> > >  	}
+> > > @@ -321,12 +321,12 @@ static int kvm_vfio_has_attr(struct kvm_device *dev,
+> > >  			     struct kvm_device_attr *attr)
+> > >  {
+> > >  	switch (attr->group) {
+> > > -	case KVM_DEV_VFIO_GROUP:
+> > > +	case KVM_DEV_VFIO_FILE:
+> > >  		switch (attr->attr) {
+> > > -		case KVM_DEV_VFIO_GROUP_ADD:
+> > > -		case KVM_DEV_VFIO_GROUP_DEL:
+> > > +		case KVM_DEV_VFIO_FILE_ADD:
+> > > +		case KVM_DEV_VFIO_FILE_DEL:
+> > >  #ifdef CONFIG_SPAPR_TCE_IOMMU
+> > > -		case KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE:
+> > > +		case KVM_DEV_VFIO_FILE_SET_SPAPR_TCE:
+> > >  #endif
+> > >  			return 0;
+> > >  		}  
+> 
 
