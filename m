@@ -2,43 +2,140 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35D426DA5FD
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Apr 2023 00:51:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AF85A6DA809
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Apr 2023 05:42:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 69C6A10ED5F;
-	Thu,  6 Apr 2023 22:51:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5368B10E37E;
+	Fri,  7 Apr 2023 03:42:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 389 seconds by postgrey-1.36 at gabe;
- Thu, 06 Apr 2023 22:51:37 UTC
-Received: from mail.ccamersr.click (unknown [173.214.186.129])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3AB0B10ED5D
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  6 Apr 2023 22:51:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ccamersr.click; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=your-american-arilines-bonus@ccamersr.click; 
- bh=4k/Dlm0YI4Ac9ebO2c23lg1VjfM=;
- b=DJB0Ls65RgvYahZAQku+d7p4XQfvXwGe+CycihpPnc2A6Ftxcv44YOgSye0B7z5yCnuxC1eFFtN9
- AmCWNjRRWhyWA8OcPVvaq4s/nSRbWOaMYAwsb0jXvOLZKizKeju4FXn1ei8vh3qROUQKqO002k8E
- 3f3rhUxaALlmT+e1iIk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ccamersr.click;
- b=aRuS9U2OLjw1haEYrnSYYLpUEPTEArTwOiaFCF++MiFwWJN4U67QrHLKGLxFfaIah28GbleTrLS3
- DmmhFz+TX1aYQU2rXYGuk1/prn/T+PjCh0koCJMrTzhIjR0QkFRV2jWtiF0Hli+m9cupiEruAbzR
- 9vSEJbRaCSkYtiWCP6g=;
-Received: by mail.ccamersr.click id h5tgec0001ga for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 6 Apr 2023 20:06:18 -0400 (envelope-from
- <your-american-arilines-bonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@ccamersr.click>)
-Date: Thu, 6 Apr 2023 20:06:18 -0400
-From: "Your American Arilines Bonus"
- <your-american-arilines-bonus@ccamersr.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get a free flight Anywhere today before the offer expires.
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6BEA210E362;
+ Fri,  7 Apr 2023 03:42:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1680838970; x=1712374970;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=r/22OF0a20dyOkAE0gULod+Dz8Hsgh/L2rcJdOeZpyI=;
+ b=BIZDMQX3OkLdVXMUYAw1GJJLQ1D/Gk1XvhUSwDJOpo0t17yGdnLzzOcS
+ FKLjLn3GxKBPgRiWH6vTZ1a94dTTnLKS38RFMJ3yGiam5iWtswsXIZGKk
+ 1REki3zhX11mjhohFt65NRH05uF+zJ28NeNloO9vnpxQTjRAyS02hAjV6
+ Ve0Md3nOiw2MFi511Cxp7cnGgxQ4BPPX5s5n+T7zZ9wUq7OoW9RNoaH8j
+ 2Hpf0hKvfLX2PBwDRboRoGx1QwBa83Y8oEte1fU4Wlz0ZmAcTb7HiEhq8
+ eDBwXHYkoO64ltYS4vVKJg+3tj1T3FMv28VZDcBhAR6rC3Pd6yPg4iiMi Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10672"; a="405738002"
+X-IronPort-AV: E=Sophos;i="5.98,324,1673942400"; d="scan'208";a="405738002"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Apr 2023 20:42:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10672"; a="719937693"
+X-IronPort-AV: E=Sophos;i="5.98,324,1673942400"; d="scan'208";a="719937693"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orsmga001.jf.intel.com with ESMTP; 06 Apr 2023 20:42:48 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Thu, 6 Apr 2023 20:42:48 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Thu, 6 Apr 2023 20:42:48 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.100)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Thu, 6 Apr 2023 20:42:47 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XkhaEH2WJiDP5i1JRu84WGWP+DSLzrWkpwFHNIzPkwMeV/QxpaPjS/OuFBj39MQ5tIBz4W3dWXflZx/a4EbueKj2d5mbenZMpCl6e/pwg7G9M9C+ZaaCtnT9chPrpOfEuqbqvEFkGje5bYXajKhRMmoXP3CCRpyw/0jQfxlAZxqsDG5gkrcMaxjZbKBLIkiZwdZZaH5SNBwxiMVOwcfXYwIJ1nWkoi6qe3Y63Klv9Nr+JOaB5KT2MQGJppdPkZklMVbX5MqkRPw1jkKXWuBz0eI6hJQozz0QbJHP4Okb07DJCA4vSxS1mqVsc+Iqh+efYNSA8C6jX1PGXFrJIHoHLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=b8Zj4lnCTrZj9PHHi8nvKxKetv5P7V/bBOT00EZ+4Xc=;
+ b=gta8cX/2sNWBKKSxO557DNqpvkCXRx4FKPSXONOKs1vD2vYcYr7Ys0vQVZ7GXixXwjO7nshIrB88qjZlG8WSI+7B7aOtEvlhmKdVb97/Zq3yoX5TPLepaPPk6hjip2CgoJmWyDyURh5ePPFw3McggMo1E1JXZQAyjuwxVniiR068of7ViQE4vXzYNM+zJcOKBJukwEovSYeg4nY2B4Qvl7xVMC/d0NnN7ZlS2rrSzx1bhgGXuN9eZQp4hlvNcEqoOQavjojxh0JAc02AUcLvru8R5UjoF1SgIw36j2D6LU8SbeVR9HS+txiiSvr73yrF7++xEVhPyf/kDZYxIiFZvQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by MW4PR11MB5775.namprd11.prod.outlook.com (2603:10b6:303:181::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6254.33; Fri, 7 Apr
+ 2023 03:42:41 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::ca24:b399:b445:a3de]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::ca24:b399:b445:a3de%5]) with mapi id 15.20.6254.035; Fri, 7 Apr 2023
+ 03:42:41 +0000
+From: "Liu, Yi L" <yi.l.liu@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: RE: [PATCH v9 06/25] kvm/vfio: Accept vfio device file from userspace
+Thread-Topic: [PATCH v9 06/25] kvm/vfio: Accept vfio device file from userspace
+Thread-Index: AQHZZK1APogyMqqusU2pI1gZ8bbduq8eEBeAgAAP8iCAAIniAIAAjJ1w
+Date: Fri, 7 Apr 2023 03:42:40 +0000
+Message-ID: <DS0PR11MB752903283C1E02708EC13848C3969@DS0PR11MB7529.namprd11.prod.outlook.com>
+References: <20230401151833.124749-1-yi.l.liu@intel.com>
+ <20230401151833.124749-7-yi.l.liu@intel.com>
+ <8fb5a0b3-39c6-e924-847d-6545fcc44c08@redhat.com>
+ <DS0PR11MB7529B8DC835A6EADDB815C04C3919@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230406125730.55bfa666.alex.williamson@redhat.com>
+In-Reply-To: <20230406125730.55bfa666.alex.williamson@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|MW4PR11MB5775:EE_
+x-ms-office365-filtering-correlation-id: e40ddfdf-9374-4592-a394-08db371a2363
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: +ITzEIt5viKeIxvrp/LpqHUu0eZGIviuR0X8ddkwWI5FXb6SEIPu1/GpKMIDUiUCMGQiXXiKlD8KhT782jvWcOZMsTV1dkPMKB9bMhvwzd9/zBl/wUIe62VZKgnS7Uwxj4dIDP69SK0yWGc6Ia7raXTQGc7PbMB3mvuw4AmTk7ZPc8/cIACPqAzNI4VnSrSQTt0LRIz7OqFKdBOGmxmhKS+PaQzvgPL9CFTRGZtWVxu6OI9rcyAxTYMGwShYpyn2JLaSRCY9I7momaCJXhFDgwXThd6ot94Hj/1+aJZzS3xXPh6gNc4/1vZJQn7Xp6aQ1C3yHBR7IOXz6Sno/PQ5p2a7Sdj8PAHmqxzZrV9xD1MDuyJGmIC3qF+xTBjLvdD01K1tn7rkjWz9qsrI908JdAp1plfV4kE55zrO61cA0wz1IyYYXysvDaIueaO/u1DcGTGaVqH0fXR19E7P/J8agKsWmOJLK5Hl46vr5Dx1QrTQPTaCoq1m+6EcDkW4BP4OxRae7p7Z8bTH30yOeQRiDmr0y19nG7ktv6G7XlNsjoiO7M7fiU1JZufVSWJLLlA6+sbkAzwAYxVpCfAVx0NRnZ4Snf2K1lAcc2xKQGZT2Nl+50yuH4xXEIsCXIU7RGJt
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(396003)(366004)(39860400002)(136003)(376002)(346002)(451199021)(5660300002)(41300700001)(6916009)(8676002)(122000001)(7416002)(8936002)(4326008)(55016003)(82960400001)(38100700002)(52536014)(86362001)(33656002)(26005)(2906002)(64756008)(38070700005)(9686003)(7696005)(966005)(71200400001)(66556008)(6506007)(186003)(83380400001)(66946007)(316002)(66446008)(76116006)(66476007)(54906003)(478600001)(13296009);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?RXLSikOL44+x93gJ5gK5yL4y527jYv9pvTNpUft1eCslWA2uZPmaCaDs08KI?=
+ =?us-ascii?Q?OLma3BApbE4XAPG8zLZvPkF37yKwkvMQZTUxG56ghIy9guXvsbQ557aiC/+U?=
+ =?us-ascii?Q?ZcUN54XQFujpVyUn0OQ3Yv5NbUbg47DZt5qTjb22tSbyxPyOYF5r+TePfMXk?=
+ =?us-ascii?Q?ugKfpAOehLzALKOeXRsX0RmdQp3K0+b8UCYTKgwzq6IyaGFMWrZlH2oGaLAu?=
+ =?us-ascii?Q?YahRPEL5QfWqBu+pTu3At1z3ThFTTCsu8ZKCBgUEfWJNrNBc3aW36lsGrIu6?=
+ =?us-ascii?Q?swMFfbWUi6wbqV+dB1FNVnX3ZKySdo84XAsYhYLiAWM7y48CGsDWPDajd6wy?=
+ =?us-ascii?Q?mHx9dMZPCEiRXggqonffEhz1bRtE8q19gGBx2a13NCQBnM5JTDAX9WOBOw7g?=
+ =?us-ascii?Q?Yr0k1yr+3Mzu8VysFRun61gqoChCsY+pCfTMvU90igT01Tu5oEXxgb1yZUxO?=
+ =?us-ascii?Q?3ZjJcd8mTAQfl5HdyGvbErIe8nQHCzXyK3RmqgTDuqmP/I0vAtgszyNcY+zv?=
+ =?us-ascii?Q?I7nWaGs+pFT43IAUVaon9FETLNL9ECxrIZE6cFKoe68mXIyfsKmA/C+fcvI4?=
+ =?us-ascii?Q?pSck52BkYWreMSR2YRiqRnE6znoBT7lQyF5LO3os2YlmgMx/MCg6Is3+Urpe?=
+ =?us-ascii?Q?8aym1UNXp5UtLXPR9kMjIpiq6qBp6kWz9S4+jnu4zKdVdCmnPJRXiZVmNa14?=
+ =?us-ascii?Q?JfuLgKRAH+i9EN1LGYvf31MXNw/mY+FrnDS3LjO+S6NQyN6brlRnMiBp6zSD?=
+ =?us-ascii?Q?hTyN1ItKqipX+rv5f0MG3JHnVT5Kew/Y5UjKrb9exRnRUVE1lqZqvKmupik3?=
+ =?us-ascii?Q?IRAxtW/Bs//WyA+DVzllLSsgc+8fmgE6f1kxME1ZdJ9EGpnqv9ILO6mr76ie?=
+ =?us-ascii?Q?Tf46QO323/gtOOz/FBqdb0zEBDrl5aFkRdhAzBHxeVeRL2qvHXRL8r+QdBG5?=
+ =?us-ascii?Q?5lgHI9Fuls+caWUfzvI3fuED87dUBCpNWoc3W4AkOnDayv0yQmdP/Va5INPI?=
+ =?us-ascii?Q?xtJ7eeAuklhc4DEP8Cx0RvdEPBBXoniQhFiLlT5YB0j9ewYM4VjiSJ9/Yj3X?=
+ =?us-ascii?Q?PHBbHnf6xULNe5pZPHWXLpVh7hdI8hny2YpRlrZnI2O5Pxjqso9pkAfhLNn/?=
+ =?us-ascii?Q?b/LdAnGYNZlv7xscWyxeoXX7KynAHgiMa2Hg0oYHhXGiBvJvA/zqndA1kfca?=
+ =?us-ascii?Q?Mk5XUMwI5OvZh6pQXr4Yn51MA0m7PQL8GuAmWVG4cxq1aEaHZFT321wXDl36?=
+ =?us-ascii?Q?mIx/Mg54ROMKOMZKJCKZRsmm+tUoSQjCFB0Sm1bCEPpdFAQpXvpnDTN3cBvn?=
+ =?us-ascii?Q?036sFjZE5xl5+sFhROcxz8uul0OMoQ7oaeDTUY6BZgLfQx6QORqcSXGRYmgg?=
+ =?us-ascii?Q?0yEURp4tUT1k3Fxzs8BIJ5RfhgVRXNr3gHHKLVGjagmeUI8USmTRcJ76pqxA?=
+ =?us-ascii?Q?P1t170Ng9fLYvcD9q4oatBJpaju375+fmu60FYrzxZDQdk25SykeTeNWi1S4?=
+ =?us-ascii?Q?LQa1sICWpPXxELHGwaHWj5rXSOKjw07GJZPro/A8aOQFToJ24xBa+FRyzYZE?=
+ =?us-ascii?Q?C21GlY6P4X7Ptg3VMHA=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_1087_1511210444.1680820837848"
-Message-ID: <0.0.0.78.1D968E4C6F11E42.4DCA38@mail.ccamersr.click>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e40ddfdf-9374-4592-a394-08db371a2363
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Apr 2023 03:42:40.5349 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: tqn7RIPfLfHjk1X+eF1/898+M81TNQYJMAbsNYxH/tA8MoEtosl3wbqaxBuI2rPkqEjSg48b5wIzLdXZLTro9Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB5775
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,47 +148,88 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_1087_1511210444.1680820837848
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+> From: Alex Williamson <alex.williamson@redhat.com>
+> Sent: Friday, April 7, 2023 2:58 AM
+> > >
+> > > You don't say anything about potential restriction, ie. what if the u=
+ser calls
+> > > KVM_DEV_VFIO_FILE with device fds while it has been using legacy
+> container/group
+> > > API?
+> >
+> > legacy container/group path cannot do it as the below enhancement.
+> > User needs to call KVM_DEV_VFIO_FILE before open devices, so this
+> > should happen before _GET_DEVICE_FD. So the legacy path can never
+> > pass device fds in KVM_DEV_VFIO_FILE.
+> >
+> >
+> https://lore.kernel.org/kvm/20230327102059.333d6976.alex.williamson@redha=
+t.com
+> /#t
+>=20
+> Wait, are you suggesting that a comment in the documentation suggesting
+> a usage policy somehow provides enforcement of that ordering??  That's
+> not how this works.  Thanks,
 
-A Special Offer for Valued Customers
--------------------------------------------
+I don't know if there is a good way to enforce this order in the code. The
+vfio_device->kvm pointer is optional. If it is NULL, vfio just ignores it.
+So vfio doesn't have a good way to tell if the order requirement is met or
+not. Perhaps just trigger NULL pointer dereference when kvm pointer is used
+in the device drivers like kvmgt if this order is not met.
 
-American Arilines 
+So that's why I come up to document it here. The applications uses kvm
+should know this and follow this otherwise it may encounter error.
 
-We wanted to take a moment to thank you for choosing American Arilines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
+Do you have other suggestions for it? This order should be a generic
+requirement. is it? group path also needs to follow it to make the mdev
+driver that refers kvm pointer to be workable.
 
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with American Arilines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+Thanks,
+Yi Liu
 
-
-For completing the survey, you can receive a $100 Gift!
-
-
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.ccamersr.click/8bd4C2395fQ8y611i51abv135cy36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ1Q9oo6my10XM5yUwTD/embroidery-changer
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
-
-
-The American Arilines Survey
-
--------------------------------------------
-
-
-No longer want to receive e-mail from us?, click_here >>>>> http://www.ccamersr.click/unnamed-ambivalence/1206cv23K95L86Lj13W51aQc_w135cn36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ1Q9oo5D1I0Z6S@wpDX
-126 E 23rd St New York, NY, US 10010
-
-<span lang="flowering"><big></big></span><font style="Diocletian"><style color="disappointment"><style></style></style><style lang="transferals"></font><span class="socialized"><font></span></style></font>
-
-------=_Part_1087_1511210444.1680820837848--
+> > > > -The GROUP_ADD operation above should be invoked prior to accessing=
+ the
+> > > > +The FILE/GROUP_ADD operation above should be invoked prior to acce=
+ssing the
+> > > >  device file descriptor via VFIO_GROUP_GET_DEVICE_FD in order to su=
+pport
+> > > >  drivers which require a kvm pointer to be set in their .open_devic=
+e()
+> > > > -callback.
+> > > > +callback.  It is the same for device file descriptor via character=
+ device
+> > > > +open which gets device access via VFIO_DEVICE_BIND_IOMMUFD.  For s=
+uch file
+> > > > +descriptors, FILE_ADD should be invoked before
+> VFIO_DEVICE_BIND_IOMMUFD
+> > > > +to support the drivers mentioned in prior sentence as well.
+> >
+> > just as here. This means device fds can only be passed with KVM_DEV_VFI=
+O_FILE
+> > in the cdev path.
+> >
+> > Regards,
+> > Yi Liu
 
