@@ -1,71 +1,83 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEADC6DAE5D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Apr 2023 15:52:06 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3CD5E6DAE83
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Apr 2023 16:04:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A29CE10E367;
-	Fri,  7 Apr 2023 13:52:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EDDD610EDB5;
+	Fri,  7 Apr 2023 14:04:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C2F2210E367
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  7 Apr 2023 13:52:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1680875522;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5oB5DxaREwrVRr8+bFg0rReMg3cK5Dvz3xm2hNY4dxU=;
- b=QOb5EJQQqLSFlRrHKkJ8okYnNtI3WRrGW1oM2w/B7UuNfHsUAI+no7KWtj4sWSq+5Gd6uG
- yLcuEVb14Y4OsDq1Cy2os+jbQE5QqvpNJI969Tm09xYE2rtAM79dNdVkB3W4ZaR6GU39Qr
- XgiSA+8MJxantvj/umiNP/NUGYATOZU=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-225-w6NllQzYPnGsOLYu4eTrEg-1; Fri, 07 Apr 2023 09:52:00 -0400
-X-MC-Unique: w6NllQzYPnGsOLYu4eTrEg-1
-Received: by mail-il1-f199.google.com with SMTP id
- d11-20020a056e020c0b00b00326156e3a8bso22086262ile.3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 07 Apr 2023 06:52:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680875520; x=1683467520;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=5oB5DxaREwrVRr8+bFg0rReMg3cK5Dvz3xm2hNY4dxU=;
- b=kFeYHtHJ0m3Vtdd1XR0SbVlyq7asuOfH69lTsYrMe+YwUfOgTgn0HmQSTdYiYZKgcg
- ITsMtPjVTe80GnYot1z55K2n4EF3irDCvx7RmltpirJWPyywI0iYS9P1xdif6uyTxbNz
- oA2rvKKir72xnzjsUfCpyAPZ0BW6O8xtMwKWpbY2lyswQ7bZLWdzJuPSiD3U41V6i/NG
- mh0mQ4bf8/9n3cJB76bHfx/qB2BeNV4phF29gYThvkV77SaE4RuxIzN8e9TsxxExm9o8
- XIw2bhhYzYHBBfEqfHMqTQdJti3TwPJiJvuCusvC6RCmjRvxOchPjmOmNv/l0pwY2Iez
- 7knw==
-X-Gm-Message-State: AAQBX9cQpaCVyWNa1svjPuUPUGLFDxgtHLRzIRbW+nnzjpfkMbwvaPnK
- r84PQUnQgHLzH/FJW8ZazznXW1FUS8NLlDS/w8fP9IMUr6aXoYD5ZAPQ889KSZxUEDqIGhzu3Ed
- ubsiNxDKlMnyeOxo0yahBNLt9agk5S0M6DA==
-X-Received: by 2002:a92:d48f:0:b0:328:6172:a743 with SMTP id
- p15-20020a92d48f000000b003286172a743mr443834ilg.17.1680875519893; 
- Fri, 07 Apr 2023 06:51:59 -0700 (PDT)
-X-Google-Smtp-Source: AKy350Zt5SmVHCjY2WY3fhBLjS2FZtxV74Lk/zdXvq7uKSlH13byRx8CMKnoBIxJ5VwJKvWvSSSNGA==
-X-Received: by 2002:a92:d48f:0:b0:328:6172:a743 with SMTP id
- p15-20020a92d48f000000b003286172a743mr443824ilg.17.1680875519642; 
- Fri, 07 Apr 2023 06:51:59 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- s28-20020a02b15c000000b00374fa5b600csm1112214jah.0.2023.04.07.06.51.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Apr 2023 06:51:59 -0700 (PDT)
-Date: Fri, 7 Apr 2023 07:51:55 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v3 12/12] vfio/pci: Report dev_id in
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B2ADC10E040;
+ Fri,  7 Apr 2023 14:04:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1680876251; x=1712412251;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=TMSA+zpKxKjscLa5Hr/FnVHXPzLt0Vr7SUtba4wf1uk=;
+ b=l3A3iEIDO2W0Rn6mDg/lZPTOneSsnGHd5qo9uZ+sDYS47GuhcRKgU5X7
+ /qUlVjSDTuybzSCZS9enzt+tWyw0ix/1euoe6MsD/9YT5ro8CJVEgfWGO
+ Br7UEwSACLbjBMaN5HanVwMhkBFSv1OQNpThFfde8W2SEkNPD2qOOzP6H
+ 6iqRVBZf7qgQwFo6s3tghscxkKvj6sLhjglNorTnmN60EbYQtWyRLV1Lk
+ xetkpgD8+m5EjWgJw/1ZP6rwk7/CingSHN5hUVwRdZ1JaLqzFD1vvY1jM
+ ejeLw9SX/d69gidjzUi3Wc92kvmdn7BWl6h3JpUeWviB7QPXdfSWLElMP Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10672"; a="323360969"
+X-IronPort-AV: E=Sophos;i="5.98,327,1673942400"; d="scan'208";a="323360969"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Apr 2023 07:04:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10672"; a="664894690"
+X-IronPort-AV: E=Sophos;i="5.98,327,1673942400"; d="scan'208";a="664894690"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orsmga006.jf.intel.com with ESMTP; 07 Apr 2023 07:04:08 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Fri, 7 Apr 2023 07:04:07 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21; Fri, 7 Apr 2023 07:04:07 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.21 via Frontend Transport; Fri, 7 Apr 2023 07:04:07 -0700
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.45) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.21; Fri, 7 Apr 2023 07:04:05 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=latcwJECmZn+kXb9iAXE2xvzppUZQIAAJBgIj7dwp1isOAaT24PY+cijEPI2ThaAff0LiLbjH+HQh6oQtohVcYCCSElQIdZI5b1vRSnc5NQBQpFP8OuU0M8ND1+5zJenjbogD0lOf/M2fvfFHPUfe4l4IwplyXd8dxAtpNgiW17GRWMG7a80+PRJFL7pN4iLhiV10DPI0pygM8lLoCabkC2GshGFlWiW8EAWj3G4BqbmUfwJULoZ57XH7Thn6YBjmigw5tKygaY/LX4cxXZ83dwiySzLVzipPrw8tw3G2qCG+itcNdrx8eldv3Cz+mjiSyL+qOAq/fSyS9qQuua2ag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=uvYPgygjoA+ckHdHZLV5EaaiZvh+L3pbRICubRkZy0w=;
+ b=RciSf76fWxF4hcc53qThCyX0ix3fMHFi9JxY6oKyQX2mIqZmNH6W6eOgwxeBJ8DrFOvkC0XgJdLDLXz35hOajmbO47/2phEkiLFGOX0iOOB1HldNQWGftnsG1hQBiul8Z9V+BZjDxZc2y47Xub+o1aAROttU/F5ruB+lfcfWHH2U8OKUjbpA0wAiBKrsrdVd5rtLKd7WPy90vj4O+qGyaww//XbiUTKOXFVYR4GcMNEvUTZNAaznkV6IuviGwCuhGr+BfWckar1/Qf2sT+jE4jMj/7vZnCE+hZgsayLqGN0F2CC+Xgk2bbETDzy6yA3G4MQ1eyjU732pk65tiTogkg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by SJ2PR11MB8324.namprd11.prod.outlook.com (2603:10b6:a03:538::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6277.35; Fri, 7 Apr
+ 2023 14:04:03 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::ca24:b399:b445:a3de]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::ca24:b399:b445:a3de%5]) with mapi id 15.20.6254.035; Fri, 7 Apr 2023
+ 14:04:03 +0000
+From: "Liu, Yi L" <yi.l.liu@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: RE: [PATCH v3 12/12] vfio/pci: Report dev_id in
  VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
-Message-ID: <20230407075155.3ad4c804.alex.williamson@redhat.com>
-In-Reply-To: <DS0PR11MB7529B0A91FF97C078BEA3783C3969@DS0PR11MB7529.namprd11.prod.outlook.com>
+Thread-Topic: [PATCH v3 12/12] vfio/pci: Report dev_id in
+ VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
+Thread-Index: AQHZZKiCMJJkpNrujkKpjX0h05Zqwa8ZTcVQgABjWoCABfZ/IIAAIQaAgAAVGHCAAAktgIAAAk+w
+Date: Fri, 7 Apr 2023 14:04:02 +0000
+Message-ID: <DS0PR11MB7529C1CA38D7D1035869F358C3969@DS0PR11MB7529.namprd11.prod.outlook.com>
 References: <20230401144429.88673-1-yi.l.liu@intel.com>
  <20230401144429.88673-13-yi.l.liu@intel.com>
  <DS0PR11MB752996A6E6B3263BAD01DAC2C3929@DS0PR11MB7529.namprd11.prod.outlook.com>
@@ -73,12 +85,66 @@ References: <20230401144429.88673-1-yi.l.liu@intel.com>
  <DS0PR11MB75291E6ED702ADD03AAE023BC3969@DS0PR11MB7529.namprd11.prod.outlook.com>
  <20230407060335.7babfeb8.alex.williamson@redhat.com>
  <DS0PR11MB7529B0A91FF97C078BEA3783C3969@DS0PR11MB7529.namprd11.prod.outlook.com>
-Organization: Red Hat
+ <20230407075155.3ad4c804.alex.williamson@redhat.com>
+In-Reply-To: <20230407075155.3ad4c804.alex.williamson@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|SJ2PR11MB8324:EE_
+x-ms-office365-filtering-correlation-id: 587bd1da-4093-4a50-72e9-08db3770f12e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 2tmyii705eokvqe/Ikf+iAEl4y0Sp7odQ0yuelLlSkr4joZmZr9V92xLCBK0JCjgC5OSM78Unc2XzjXZZBiaHfahW7IUUhd0ULWSbULIVnfuP7cLdc4VY84Um86jw+Gdh7Tnx396oYI3z+1FCBCLuaH5S1SKYi/eFYhobAK6bIG13S/oO9G1qmtPVWyIcj/aNb56GFX6y2djt4pDBI+T/szr3D4xVPoW7G0+H5PHXeDc0o7NSl3GBzfVmSsipt1bKwHtR2PUHNpTMnduoMvywicRK5U3+b04tA5AvIM1d9AhV9DfSU3v2GfRLEHsd09uEytHG7ykhhiyx003PfG1Giotm+v49wNKeqZXMUOZ5WeGhRx2YBj4G7vGXQV7UtXcccq5WgowDh2vyp/CRkssagrQ0SyKAVmwSJSdybRVbGXw/n8y4AB66JtdTGpuxPtc2t8GAGdTJR3y2p70jvP9ET36DBRHp0bNFl7u24MafPlfIb8w12VVmMVaDlJ/tHiwyrBgobswVe/UTZHhQLueAkVj1nVHhMQamA1YdaBSx7c4PO0b1cyO4NuXW73p7g9L9xhNvbcjGzIlqhoqIUBH8Azv/Q832RB8ZYFHgK2HEyA=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(396003)(346002)(136003)(366004)(376002)(39860400002)(451199021)(71200400001)(9686003)(966005)(6506007)(26005)(186003)(7696005)(2906002)(41300700001)(64756008)(6916009)(4326008)(66946007)(66476007)(66556008)(52536014)(66446008)(8936002)(76116006)(316002)(5660300002)(8676002)(7416002)(54906003)(82960400001)(478600001)(38070700005)(122000001)(38100700002)(86362001)(33656002)(83380400001)(55016003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?fHr/P62kSVB+2ga/Oqm/ERMRCoFder3iAzg9lA9aNBHOpcknuFfeQt7StK55?=
+ =?us-ascii?Q?CS7ftF3J8iK3QMqRiP4n9qlMcLTgyfOOLEw1oqRVbw/ryUVy5sqlp5+qZpY1?=
+ =?us-ascii?Q?KmKPdEtf/X37Ml5CVdoVxxFRqGPhtNe1bqOf08MxgvE8Sif7OhzuZU5In0IY?=
+ =?us-ascii?Q?ExI/4Z236q7dyUmgsPBpayY6+3TusyArceyxR+zwJ2O69gi5xiZGQvplgxyA?=
+ =?us-ascii?Q?xDOubqKmB3+ZvAxTLJTu2SBjgB8TgThA/kj915ss1b4wlsGY6x2bd2oYyza5?=
+ =?us-ascii?Q?TWbnMHcEogLvXaUh1pMG0DOuGMMdUkHWI5a8yRu+iuFFcLT9VTgB9bhljLb/?=
+ =?us-ascii?Q?nwAuC2EObu9yKs+SekMROfEBBnsKbCKeiCkoqDPU0OsIgK/ezOlF+w69krQy?=
+ =?us-ascii?Q?ER8uLwKMGvYTATD1o0E8uvsOHVzfDHoV3+tUOylwTQs8vnVkIkN92bZJn0OK?=
+ =?us-ascii?Q?U/8CdVEVjy0zKbJYp/By8zd3JdAJ/aX/Ry9MFW5tZ5MJbRZETwf/lVp5YK+R?=
+ =?us-ascii?Q?1X9UyONaZ9tiLq6VGBiX/S+MbkOD/JGN0z55LFkpCDUpCDadjQVM/QcbymCm?=
+ =?us-ascii?Q?YVQ6P7XojqTfFZWxUDvgtB8Q/NcUZsJhLifuVzrCr8af1TKF6edAHErw4PQh?=
+ =?us-ascii?Q?PewQPjyxlizeNLM1UlspH6QkSPnyvjIOoilzvgFkGfXzPz/UT0IIOJ/5yVPc?=
+ =?us-ascii?Q?a4/VXTP6lAQxlj05TEhLgRu2jc5XxYz4Tf4+Fg9RZhuvaypf9md+dx9LHgXp?=
+ =?us-ascii?Q?P7DKiMV6sEYByGFcp8SA+deX8xyMXJXsgm3Ik+L97NW3bb0UsD6u4FY0KbSX?=
+ =?us-ascii?Q?RMJZPobRVCNWn3a+qEx2ky26i2N2AmlF+CLCXyXBwHJqay+5/0FhUBL2yvHv?=
+ =?us-ascii?Q?rBvwJN/gzQGv6QEH2RDuwANVymTMpSu1RCBavA+qOPScsSHy7vTZklrd8G7I?=
+ =?us-ascii?Q?yR9DuRDjeYXinS45apsQX4l8TnlRSO4hI1RBiRMuj4j1r1Bo+kib/L7xQ0ow?=
+ =?us-ascii?Q?uaWMl+NXEKLklAMqe72YvEpTpKF23XoMWcQbV3Csc7b2gb0JDgMRAd5KFTHn?=
+ =?us-ascii?Q?chY4zZI9tZUpS5cxbjjpSuyzrBir7f35j8RbBU0nB3Ek8ql0lSlDGL+j5b++?=
+ =?us-ascii?Q?dq6FDEh0UB5J9xcf+htTTZ0lZp0Bnenvf2r6UThzlbcypj/r7r3qeMLn+7j7?=
+ =?us-ascii?Q?vJb6dEov3+JD2+6S7kB4GqSVs9JFKsEOmvwKzYcuOLdPLbBXUhHzbSHJ7cVD?=
+ =?us-ascii?Q?t92WnOOiT5QwWtoXzF63iveSxG5YyAa3rXPgtEZYPQVHOoMRxbth0zS8ddP1?=
+ =?us-ascii?Q?7XLxwJmt0VDfGJj4HZh+0Kaizfyf1VdEAY0T0b1V7GxqoFL8pazxPaEhVnVb?=
+ =?us-ascii?Q?nnfIOiPS4R6Gi1AkI8jmcrNu0P0a4f5VZraSKrb1GyDEay0fKjJ37pwPA9am?=
+ =?us-ascii?Q?d95HSJ1oLn0o251r9e87Jd1BZXbsAHsuQsMCpTzWl+Az5FwMR0cImrSETVs5?=
+ =?us-ascii?Q?ftZFCpf2sorrI4/d8SbIDJyZpxlohWU63UgE/xTB1ecptBc/tth/OxQwU1UZ?=
+ =?us-ascii?Q?om9pAlCfBFwjvk9DLSk=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 587bd1da-4093-4a50-72e9-08db3770f12e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Apr 2023 14:04:02.4705 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Csh19TiWbcXoveecaErb9iDnT0xCxrucT3Sh+vV4uieCoxMU1ln0VE+gDHcT2/Xqsj+Vh2zvgH6BaSd8X+c2hQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR11MB8324
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,8 +167,7 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
  "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
  Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
  "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
- "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, 
- Yan Y" <yan.y.zhao@intel.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
  "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  "eric.auger@redhat.com" <eric.auger@redhat.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
@@ -114,63 +179,103 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, 7 Apr 2023 13:24:25 +0000
-"Liu, Yi L" <yi.l.liu@intel.com> wrote:
-
-> > From: Alex Williamson <alex.williamson@redhat.com>
-> > Sent: Friday, April 7, 2023 8:04 PM
-> >   
-> > > > > > @@ -791,7 +813,21 @@ static int vfio_pci_fill_devs(struct pci_dev *pdev, void  
-> > > > *data)  
-> > > > > >  	if (!iommu_group)
-> > > > > >  		return -EPERM; /* Cannot reset non-isolated devices */  
-> 
-> [1]
-> 
-> > > > >
-> > > > > Hi Alex,
-> > > > >
-> > > > > Is disabling iommu a sane way to test vfio noiommu mode?  
-> > > >
-> > > > Yes
-> > > >  
-> > > > > I added intel_iommu=off to disable intel iommu and bind a device to vfio-pci.
-> > > > > I can see the /dev/vfio/noiommu-0 and /dev/vfio/devices/noiommu-vfio0. Bind
-> > > > > iommufd==-1 can succeed, but failed to get hot reset info due to the above
-> > > > > group check. Reason is that this happens to have some affected devices, and
-> > > > > these devices have no valid iommu_group (because they are not bound to vfio-  
-> > pci  
-> > > > > hence nobody allocates noiommu group for them). So when hot reset info loops
-> > > > > such devices, it failed with -EPERM. Is this expected?  
-> > > >
-> > > > Hmm, I didn't recall that we put in such a limitation, but given the
-> > > > minimally intrusive approach to no-iommu and the fact that we never
-> > > > defined an invalid group ID to return to the user, it makes sense that
-> > > > we just blocked the ioctl for no-iommu use.  I guess we can do the same
-> > > > for no-iommu cdev.  
+> From: Alex Williamson <alex.williamson@redhat.com>
+> Sent: Friday, April 7, 2023 9:52 PM
+>=20
+> On Fri, 7 Apr 2023 13:24:25 +0000
+> "Liu, Yi L" <yi.l.liu@intel.com> wrote:
+>=20
+> > > From: Alex Williamson <alex.williamson@redhat.com>
+> > > Sent: Friday, April 7, 2023 8:04 PM
 > > >
-> > > I just realize a further issue related to this limitation. Remember that we
-> > > may finally compile out the vfio group infrastructure in the future. Say I
-> > > want to test noiommu, I may boot such a kernel with iommu disabled. I think
-> > > the _INFO ioctl would fail as there is no iommu_group. Does it mean we will
-> > > not support hot reset for noiommu in future if vfio group infrastructure is
-> > > compiled out?  
-> > 
-> > We're talking about IOMMU groups, IOMMU groups are always present
-> > regardless of whether we expose a vfio group interface to userspace.
-> > Remember, we create IOMMU groups even in the no-iommu case.  Even with
-> > pure cdev, there are underlying IOMMU groups that maintain the DMA
-> > ownership.  
-> 
-> hmmm. As [1], when iommu is disabled, there will be no iommu_group for a
-> given device unless it is registered to VFIO, which a fake group is created.
-> That's why I hit the limitation [1]. When vfio_group is compiled out, then
-> even fake group goes away.
+> > > > > > > @@ -791,7 +813,21 @@ static int vfio_pci_fill_devs(struct pci=
+_dev *pdev,
+> void
+> > > > > *data)
+> > > > > > >  	if (!iommu_group)
+> > > > > > >  		return -EPERM; /* Cannot reset non-isolated devices */
+> >
+> > [1]
+> >
+> > > > > >
+> > > > > > Hi Alex,
+> > > > > >
+> > > > > > Is disabling iommu a sane way to test vfio noiommu mode?
+> > > > >
+> > > > > Yes
+> > > > >
+> > > > > > I added intel_iommu=3Doff to disable intel iommu and bind a dev=
+ice to vfio-pci.
+> > > > > > I can see the /dev/vfio/noiommu-0 and /dev/vfio/devices/noiommu=
+-vfio0.
+> Bind
+> > > > > > iommufd=3D=3D-1 can succeed, but failed to get hot reset info d=
+ue to the above
+> > > > > > group check. Reason is that this happens to have some affected =
+devices, and
+> > > > > > these devices have no valid iommu_group (because they are not b=
+ound to
+> vfio-
+> > > pci
+> > > > > > hence nobody allocates noiommu group for them). So when hot res=
+et info
+> loops
+> > > > > > such devices, it failed with -EPERM. Is this expected?
+> > > > >
+> > > > > Hmm, I didn't recall that we put in such a limitation, but given =
+the
+> > > > > minimally intrusive approach to no-iommu and the fact that we nev=
+er
+> > > > > defined an invalid group ID to return to the user, it makes sense=
+ that
+> > > > > we just blocked the ioctl for no-iommu use.  I guess we can do th=
+e same
+> > > > > for no-iommu cdev.
+> > > >
+> > > > I just realize a further issue related to this limitation. Remember=
+ that we
+> > > > may finally compile out the vfio group infrastructure in the future=
+. Say I
+> > > > want to test noiommu, I may boot such a kernel with iommu disabled.=
+ I think
+> > > > the _INFO ioctl would fail as there is no iommu_group. Does it mean=
+ we will
+> > > > not support hot reset for noiommu in future if vfio group infrastru=
+cture is
+> > > > compiled out?
+> > >
+> > > We're talking about IOMMU groups, IOMMU groups are always present
+> > > regardless of whether we expose a vfio group interface to userspace.
+> > > Remember, we create IOMMU groups even in the no-iommu case.  Even wit=
+h
+> > > pure cdev, there are underlying IOMMU groups that maintain the DMA
+> > > ownership.
+> >
+> > hmmm. As [1], when iommu is disabled, there will be no iommu_group for =
+a
+> > given device unless it is registered to VFIO, which a fake group is cre=
+ated.
+> > That's why I hit the limitation [1]. When vfio_group is compiled out, t=
+hen
+> > even fake group goes away.
+>=20
+> In the vfio group case, [1] can be hit with no-iommu only when there
+> are affected devices which are not bound to vfio.
 
-In the vfio group case, [1] can be hit with no-iommu only when there
-are affected devices which are not bound to vfio.  Why are we not
-allocating an IOMMU group to no-iommu devices when vfio group is
-disabled?  Thanks,
+yes. because vfio would allocate fake group when device is registered to
+it.
 
-Alex
+> Why are we not
+> allocating an IOMMU group to no-iommu devices when vfio group is
+> disabled?  Thanks,
+
+hmmm. when the vfio group code is configured out. The
+vfio_device_set_group() just returns 0 after below patch is
+applied and CONFIG_VFIO_GROUP=3Dn. So when there is no
+vfio group, the fake group also goes away.
+
+https://lore.kernel.org/kvm/20230401151833.124749-25-yi.l.liu@intel.com/
+
+Regards,
+Yi Liu
 
