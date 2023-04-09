@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7D7D6DC072
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  9 Apr 2023 16:47:52 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7ED06DC10E
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  9 Apr 2023 20:48:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 873F110E1B4;
-	Sun,  9 Apr 2023 14:47:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C661C10E1D0;
+	Sun,  9 Apr 2023 18:47:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Sun, 09 Apr 2023 14:47:49 UTC
-Received: from mail.cjclowest.click (unknown [195.178.146.11])
- by gabe.freedesktop.org (Postfix) with ESMTP id DB49B10E1AF
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Sun, 09 Apr 2023 18:47:56 UTC
+Received: from mail.treeups.autos (unknown [195.178.146.87])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 82C6B10E1AC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  9 Apr 2023 14:47:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=cjclowest.click; 
+ Sun,  9 Apr 2023 18:47:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=treeups.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=mandy-elizando@cjclowest.click; 
- bh=jzCU/iCOAixTstWpk7qGlojmM6U=;
- b=Z7Kswu1Ad9aiC1hwI5KED06YR3PJ3sLW1C/9wXNsoW0qAV9xFTUtjp4ZkZr8rQM4inc4HMHx4Wsk
- HhPV32kGbNYqptxFyTQS+PuEk10+2Sy4RjX1Zic4paij9JijKxvajgf+1f4/HjNVZNU+al/X5dcy
- dpTUzqlubQBmIp0s1yY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cjclowest.click;
- b=jpbLbt6mdPQOZu8SWQ0JaVEfp18PeyRbcPpDhByf64NOGEJD6JGsBSbsLYM53MmgwVOqVM0ifRrP
- 5gsDcRWoWcxPlegKz6pvp/mbo5TLhQYiCxgGo3h/j/ZyJmdiyKLvFupvTdMKaO1jfLgc8FkexDhc
- mMkQ86rlHhzNqZq/iV8=;
-Received: by mail.cjclowest.click id h6b81c0001g8 for
+ i=ups_transit_information@treeups.autos; 
+ bh=khaZ1kJzaqlXySIMl/n58vK6RoA=;
+ b=Ws9B13kaEi5iLKfrKVrTQ2OulJ2HsNhdXVbdllZ7mwqsHMNbb4xSO3E17Y6iNtO+4prnZt0uhH0i
+ HvhDXEDmgLJZaL/xAjkTM/SFxWDVEsrMKcYwh8YzV63I0iLDNzNtNHzJifvQv4iLjWASHGCZ9lTN
+ RMxjKy8HWURKwQu0OqI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=treeups.autos;
+ b=MWdtwN62kQyso/XhWpFwiG98SAy1B05WxtNquGMtNIgit9pHOXckmIIcux5wxIRi/4OliqTpZ1ez
+ XRetAg6bksYQAoiL9+b3fdbi1MkJYEeU5SoYRcftEElMgHEB577UHzg1mxCYGfA2fVjJC+2TX9Iw
+ 0l4yPrvBy4YLguZAK+c=;
+Received: by mail.treeups.autos id h6c45o0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 9 Apr 2023 10:35:25 -0400 (envelope-from
- <mandy-elizando-intel+2Dgvt+2Ddev=lists.freedesktop.org@cjclowest.click>)
-Date: Sun, 9 Apr 2023 10:35:25 -0400
-From: Mandy Elizando <mandy-elizando@cjclowest.click>
+ Sun, 9 Apr 2023 14:36:21 -0400 (envelope-from
+ <ups_transit_information-intel+2Dgvt+2Ddev=lists.freedesktop.org@treeups.autos>)
+Date: Sun, 9 Apr 2023 14:36:21 -0400
+From: "UPS Transit Information" <ups_transit_information@treeups.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Fly comfortably and save with Southwest promotions for business class!
+Subject: ups Gift Opportunity
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_451_530293181.1681050899190"
-Message-ID: <0.0.0.32.1D96AF085B8FF40.3BA64C@mail.cjclowest.click>
+ boundary="----=_Part_743_762643269.1681065328583"
+Message-ID: <0.0.0.52.1D96B122E29DF84.29AAD5@mail.treeups.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,18 +53,18 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_451_530293181.1681050899190
+------=_Part_743_762643269.1681065328583
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
 A Special Offer for Valued Customers
--------------------------------------------
+---------------------------------------------
 
-SOUTHWEST 
+UPS
 
-We wanted to take a moment to thank you for choosing Southwest Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
+We wanted to take a moment to thank you for choosing UPS for your shipping needs.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
 
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with Southwest.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
 For completing the survey, you can receive a $100 Gift!
@@ -75,21 +75,18 @@ To take the survey, simply click on the link below.  It should only take a few m
 
 
 TAKE THE SURVEY >>>>>
-http://www.cjclowest.click/i894K2395S86GW13W51UCe5Q137aT36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQzQ9Qn5QK10J5FzlwD/unmasked-Ithaca
+http://www.treeups.autos/20f5f239_5GQk8611g51efG137fQ36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQFQ9QR5pm1K05SzwDz/imperialists-hater
 
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
+Thank you again for your support.  We look forward to hearing from you soon Warm regards,
 
+The UPS Survey Team
 
-The Southwest Survey
-
--------------------------------------------
-
-
-To shut down your subscription, click_here >>>>> http://www.cjclowest.click/af74y2395DH8l611p51e6L137ao36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQzQ9Qn6BCnG106zOXlwD/singleness-Jennings
+---------------------------------------------
+To change your communication choices, click_here >>>>> http://www.treeups.autos/default-silvered/be86yU239K5p86jk11t51f0L137fm36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQFQ9QR7Ci1wK0L5DylwD
 126 E 23rd St New York, NY, US 10010
 
-<style class="pygmy"><style style="pulsing"><span class="learning"><style></style><font></span><span id="passwords"><font></font></style></style></span><small><style color="eavesdroppers"></style><style></font></small></style>
+<style></style><font face="conscientious"></font><small><style face="timestamp"></style></small><span face="occlusion"><span></span></span><span><span style="unimaginable"></span></span>
 
-------=_Part_451_530293181.1681050899190--
+------=_Part_743_762643269.1681065328583--
 
