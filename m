@@ -2,42 +2,25 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7ED06DC10E
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  9 Apr 2023 20:48:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B94376DC3C6
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Apr 2023 09:14:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C661C10E1D0;
-	Sun,  9 Apr 2023 18:47:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 855AF10E0CF;
+	Mon, 10 Apr 2023 07:14:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sun, 09 Apr 2023 18:47:56 UTC
-Received: from mail.treeups.autos (unknown [195.178.146.87])
- by gabe.freedesktop.org (Postfix) with ESMTP id 82C6B10E1AC
+Received: from post.com (unknown [5.180.107.95])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B09D210E0EC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  9 Apr 2023 18:47:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=treeups.autos;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ups_transit_information@treeups.autos; 
- bh=khaZ1kJzaqlXySIMl/n58vK6RoA=;
- b=Ws9B13kaEi5iLKfrKVrTQ2OulJ2HsNhdXVbdllZ7mwqsHMNbb4xSO3E17Y6iNtO+4prnZt0uhH0i
- HvhDXEDmgLJZaL/xAjkTM/SFxWDVEsrMKcYwh8YzV63I0iLDNzNtNHzJifvQv4iLjWASHGCZ9lTN
- RMxjKy8HWURKwQu0OqI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=treeups.autos;
- b=MWdtwN62kQyso/XhWpFwiG98SAy1B05WxtNquGMtNIgit9pHOXckmIIcux5wxIRi/4OliqTpZ1ez
- XRetAg6bksYQAoiL9+b3fdbi1MkJYEeU5SoYRcftEElMgHEB577UHzg1mxCYGfA2fVjJC+2TX9Iw
- 0l4yPrvBy4YLguZAK+c=;
-Received: by mail.treeups.autos id h6c45o0001gj for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 9 Apr 2023 14:36:21 -0400 (envelope-from
- <ups_transit_information-intel+2Dgvt+2Ddev=lists.freedesktop.org@treeups.autos>)
-Date: Sun, 9 Apr 2023 14:36:21 -0400
-From: "UPS Transit Information" <ups_transit_information@treeups.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: ups Gift Opportunity
+ Mon, 10 Apr 2023 07:14:48 +0000 (UTC)
+From: joangates@post.com
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Re: MY GENEROUS DONATION TO YOU. CONTACT ME NOW
+Date: 10 Apr 2023 10:14:46 +0300
+Message-ID: <20230410101446.8C1268C95960B790@post.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_743_762643269.1681065328583"
-Message-ID: <0.0.0.52.1D96B122E29DF84.29AAD5@mail.treeups.autos>
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,43 +33,48 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: joangates66752@hotmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_743_762643269.1681065328583
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-A Special Offer for Valued Customers
----------------------------------------------
-
-UPS
-
-We wanted to take a moment to thank you for choosing UPS for your shipping needs.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
-
-As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-For completing the survey, you can receive a $100 Gift!
-
-
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.treeups.autos/20f5f239_5GQk8611g51efG137fQ36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQFQ9QR5pm1K05SzwDz/imperialists-hater
-
-
-Thank you again for your support.  We look forward to hearing from you soon Warm regards,
-
-The UPS Survey Team
-
----------------------------------------------
-To change your communication choices, click_here >>>>> http://www.treeups.autos/default-silvered/be86yU239K5p86jk11t51f0L137fm36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQFQ9QR7Ci1wK0L5DylwD
-126 E 23rd St New York, NY, US 10010
-
-<style></style><font face="conscientious"></font><small><style face="timestamp"></style></small><span face="occlusion"><span></span></span><span><span style="unimaginable"></span></span>
-
-------=_Part_743_762643269.1681065328583--
-
+<html><head>
+<meta name=3D"GENERATOR" content=3D"MSHTML 11.00.9600.19431">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+</head>
+<body><p>Reply To;; <a href=3D"mailto:joangates66752@hotmail.com">joangates=
+66752@hotmail.com</a><br>&nbsp;<br>My Dear Friend,<br>&nbsp;<br>Greetings t=
+o you.<br>&nbsp;<br>&nbsp;<br>
+firstly, I got your email address from an Email Directory and decided to ma=
+il you for a permission to go ahead. I am Mrs. Joan Gates from United Kingd=
+om, married to Dr. James R. Gates who worked with&nbsp;Exxon Mobil&nbsp;Oil=
+ Company in London, before he died in a ghastly motor accident on his way t=
+o a board meeting. My Husband and I were married without any children,and I=
+ decided not to re-marry and presently I am 69 Years old. When my late husb=
+and was alive he deposited the sum of $16.5M=20
+(Sixteen Million Five Hundred Thousand U.S. Dollars) with China Citic Bank.=
+ Presently this money is still with the Bank and the management just wrote =
+me as the beneficiary to come forward to receive the money or rather Issue =
+a letter of authority to somebody to receive it on my behalf. I am currentl=
+y in a hospital where I have been undergoing treatment for Cancer of the lu=
+ngs and inability to talk and my doctors have told me that I have only a fe=
+w months to live so I think the best thing to do=20
+is to&nbsp; <br>&nbsp;<br>
+At the moment I cannot take any telephone calls due to the fact that my rel=
+atives (They had squandered the funds I gave them for this purpose before n=
+ow and are around me I have been helping orphans and the orphanage/motherle=
+ss homes. I have also donated some money for humanitarian needs in Sudan, S=
+outh Africa, Brazil, Spain, Austria, Germany and some Asian countries. I ha=
+ve been touched to the good work of humanity through you, rather than allow=
+ my relatives to use my husband's hard earned=20
+funds inappropriately. I know i have never met you but my mind tells me to =
+do this, and I hope you act sincerely.<br>&nbsp;<br>I want you to send me t=
+he following information if you are interested as an emblem that you are th=
+e right beneficiary. As soon as I receive your information, I shall give yo=
+u the contact details of the bank, authorization letter and my picture with=
+ the doctor as an authenticity of my integrity.<br>&nbsp;<br>Your Full Name=
+,<br>&nbsp;<br>Your Contact Address,<br>&nbsp;<br>
+Your Phone Number,<br>&nbsp;<br>Your Age,<br>&nbsp;<br>Your Occupation and<=
+br>&nbsp;<br>Any of your identifications<br>&nbsp;<br>This is to ensure tha=
+t nothing jeopardizes my last wish on Earth. I await your urgent reply. Ema=
+il: <a href=3D"mailto:joangates66752@hotmail.com">joangates66752@hotmail.co=
+m</a><br>&nbsp;<br>Regards,<br>Ms. Joan Gates</p></body></html>
