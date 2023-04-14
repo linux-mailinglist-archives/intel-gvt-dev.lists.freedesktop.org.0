@@ -2,43 +2,89 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1735F6E2825
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Apr 2023 18:14:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 468846E2866
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Apr 2023 18:34:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D83F110EDFC;
-	Fri, 14 Apr 2023 16:14:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0BD8A10EE1D;
+	Fri, 14 Apr 2023 16:34:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 14 Apr 2023 16:14:19 UTC
-Received: from mail.newadaair.autos (unknown [195.178.146.91])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7B44910EDFB
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 487E210EE16
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Apr 2023 16:14:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=newadaair.autos; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=american.arilinesbonus@newadaair.autos; 
- bh=fuxTwbHwb9QJF6uVR6bCwnVNjps=;
- b=hvfVxtriDAFHOCMVv2m8to43J5/UpGVgkZxpPzXIAZVFa0mvZgwKxhh2gJVNBEZjDTU2tNR0nFpS
- feULnpQjvZLDr9oz4MTNnKZ5JRZm4np8mlgbjp94usnBvlsUAdBebm9smqAcFS2A5vInHic18cF5
- JGHkXC7IIEXL+OAX2Fc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=newadaair.autos;
- b=Yii5eOr6LRKpJHla7jAB8yyPd3oiP1WKfuYv+jRUjnHO2Z0G+5zQaPWD0JGqgpUwdZi+LoDlSQsB
- 63D1rmAjxadU/Y8WN7J1daNMt12q4rMO82eFE64sirRIfS3/sdIqFupF2nNNm20MSAHq8aGWnIAX
- 46H/iHm5DiaJSR9oVsY=;
-Received: by mail.newadaair.autos id h75ttm0001gk for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Apr 2023 11:59:26 -0400 (envelope-from
- <american.arilinesbonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@newadaair.autos>)
-Date: Fri, 14 Apr 2023 11:59:26 -0400
-From: "American ArilinesBonus" <american.arilinesbonus@newadaair.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The clock is ticking - today is your last chance to receive a free
- flight Anywhere.
+ Fri, 14 Apr 2023 16:34:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1681490076;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TiyXITH53RukNzpnNNOFUR8woLiThj9fzrzbqNxJCOE=;
+ b=IVaro9Sz7icBGw9Od7m692bidJsEBeOFvr3YHqd0CBjTs+HiZyp+9ZHBmAtzPgGkYc2oLB
+ zEEelq1jcAKytH4olKx/sqkwLQu+Y4WZmAuAQelLGvTbFU6e1gLj15Bzdod0aiwvPfWZl6
+ EzAfiypRAuc935QEUXXJasHXLK288Xk=
+Received: from mail-io1-f72.google.com (mail-io1-f72.google.com
+ [209.85.166.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-320-5f3okzKcMSqPjhO8MVTTMw-1; Fri, 14 Apr 2023 12:34:34 -0400
+X-MC-Unique: 5f3okzKcMSqPjhO8MVTTMw-1
+Received: by mail-io1-f72.google.com with SMTP id
+ m15-20020a0566022e8f00b00760c13b77a8so1052884iow.20
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 14 Apr 2023 09:34:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1681490074; x=1684082074;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=TiyXITH53RukNzpnNNOFUR8woLiThj9fzrzbqNxJCOE=;
+ b=UXaUecIPxAohG4JWAz//a2vb+BBjHzlw7/2pxuf/sJVU0NlsV41HGLDRaxAJuBgN2U
+ M9/DN3EMmall3+1/udddaiPgsIt7z4oEWTErNqNoRFKXSVe7eJkefNLrmy36gGlCpixl
+ 3dxzCPgMO5pI42fcpLRtm5qfMUAzC++lJRQV1y4ShGWLegqEJ26aveUcOpHqMR1yiOO9
+ DJERhkLNOHR1Y6jeCZ3tvbeB9ajgEitJH6cR8nhObL+zugLgaRhKUku0y8Wx0gCSjbpQ
+ zrXUCZ5FdEil+xWnaaPvGqcbypcKLh8zE/ExUt/AU4vy1GFwz+g3imvqCTFCcD+dXV7T
+ NYlA==
+X-Gm-Message-State: AAQBX9fvvcCsLyYK8+ivMIKXa7yS53NtJe2YHUSkSeFtJ4TvsYnIHREz
+ UKU0b5NB+R04+lPqUNyzNreEbbjqH+qwqs9ZFJl9Yu2ucZc+ZmWGzPSKXvBxYvAqfWjWvhot7yh
+ 6FmLatRQsfMRchV4dEVWmNa9O3Yo/GH7poA==
+X-Received: by 2002:a5d:8d0d:0:b0:760:b591:e651 with SMTP id
+ p13-20020a5d8d0d000000b00760b591e651mr3935766ioj.13.1681490074064; 
+ Fri, 14 Apr 2023 09:34:34 -0700 (PDT)
+X-Google-Smtp-Source: AKy350Y4xZd31W2OHtW31atCrSCtoyPH5rds55etIE3WyFmBagEgjbWM4ZMraJRpXtYloWSVQYhCKA==
+X-Received: by 2002:a5d:8d0d:0:b0:760:b591:e651 with SMTP id
+ p13-20020a5d8d0d000000b00760b591e651mr3935754ioj.13.1681490073788; 
+ Fri, 14 Apr 2023 09:34:33 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ w23-20020a056638379700b0040bbee466a4sm1288919jal.72.2023.04.14.09.34.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 14 Apr 2023 09:34:33 -0700 (PDT)
+Date: Fri, 14 Apr 2023 10:34:28 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Subject: Re: [PATCH v3 12/12] vfio/pci: Report dev_id in
+ VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
+Message-ID: <20230414103428.20d390a2.alex.williamson@redhat.com>
+In-Reply-To: <BN9PR11MB5276A160CA699933B897C8C18C999@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <20230406115347.7af28448.alex.williamson@redhat.com>
+ <ZDVfqpOCnImKr//m@nvidia.com>
+ <20230411095417.240bac39.alex.williamson@redhat.com>
+ <20230411111117.0766ad52.alex.williamson@redhat.com>
+ <ZDWph7g0hcbJHU1B@nvidia.com>
+ <20230411155827.3489400a.alex.williamson@redhat.com>
+ <ZDX0wtcvZuS4uxmG@nvidia.com>
+ <20230412105045.79adc83d.alex.williamson@redhat.com>
+ <ZDcPTTPlni/Mi6p3@nvidia.com>
+ <BN9PR11MB5276782DA56670C8209470828C989@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <ZDfslVwqk6JtPpyD@nvidia.com>
+ <20230413120712.3b9bf42d.alex.williamson@redhat.com>
+ <BN9PR11MB5276A160CA699933B897C8C18C999@BN9PR11MB5276.namprd11.prod.outlook.com>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_409_298840026.1681487952419"
-Message-ID: <0.0.0.2D.1D96EEA16C4BB3A.29179B@mail.newadaair.autos>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,47 +97,106 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_409_298840026.1681487952419
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+On Fri, 14 Apr 2023 09:11:30 +0000
+"Tian, Kevin" <kevin.tian@intel.com> wrote:
 
-A Special Offer for Valued Customers
--------------------------------------------
+> > From: Alex Williamson <alex.williamson@redhat.com>
+> > Sent: Friday, April 14, 2023 2:07 AM
+> > 
+> > We had already iterated a proposal where the group-id is replaced with
+> > a dev-id in the existing ioctl and a flag indicates when the return
+> > value is a dev-id vs group-id.  This had a gap that userspace cannot
+> > determine if a reset is available given this information since un-owned
+> > devices report an invalid dev-id and userspace can't know if it has
+> > implicit ownership.
+> > 
+> > It seems cleaner to me though that we would could still re-use INFO in
+> > a similar way, simply defining a new flag bit which is valid only in
+> > the case of returning dev-ids and indicates if the reset is available.
+> > Therefore in one ioctl, userspace knows if hot-reset is available
+> > (based on a kernel determination) and can pull valid dev-ids from the  
+> 
+> So the kernel needs to compare the group id between devices with
+> valid dev-ids and devices with invalid dev-ids to decide the implicit
+> ownership. For noiommu device which has no group_id when
+> VFIO_GROUP is off then it's resettable only if having a valid dev_id.
 
-American Arilines 
+With no-iommu and VFIO_GROUP on, each no-iommu device gets it's own
+group and the user must have ownership of each affected group, so
+there's really no difference here.  Every affected no-iommu device must
+be owned in either case.
+ 
+> The only corner case with this option is when a user mixes group
+> and cdev usages. iirc you mentioned it's a valid usage to be supported.
+> In that case the kernel doesn't have sufficient knowledge to judge
+> 'resettable' as it doesn't know which groups are opened by this user.
 
-We wanted to take a moment to thank you for choosing American Arilines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
+So for example we might have a 2-function device, fn0 is opened via
+cdev and part of an iommufd ctx and fn1 is opened via the group
+interface and potentially bound to a type1 container context.
 
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with American Arilines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+In the INFO/INFO2 proposal, the INFO ioctl would return an array
+reporting the group and BDF for each function.  The INFO ioctl is
+callable from either device (aiui).  The INFO2 ioctl would fail on the
+group opened device because it doesn't have an iommufd_ctx.  When
+called on the cdev opened device, INFO2 would fail because the dev-set
+is not represented within the iommufd_ctx.  Is this right?
 
+In my proposal, the INFO ioctl can also be called on either device.
+When called on the cdev opened device, the return structure provides
+dev-ids with a flag indicating such in the return structure.  The cdev
+device has a valid dev-id, the group device invalid.  The
+reset-available flag is clear because the kernel cannot infer ownership
+of the group opened device.  When called on the group opened device, the
+IOMMU group and BDF are returned for each device.
 
-For completing the survey, you can receive a $500 Gift!
+So both approaches have similar issues here, but I think there's an
+advantage to the approach of extending INFO.  In that case, the user
+still gets the dev-id of the affected cdev device and therefore could
+build a hot-reset ioctl call using a combination of groupfds and
+devicefds, even if the cdev opened device are passed by fd.  Perhaps
+it's obvious that the hot-reset device is itself affected by the reset,
+but I think the example scenario could be extended to one where there
+are multiple cdev opened devices and one or more group opened devices.
+AIUI, the INFO2 proposal essentially only returns success if the
+null-array approach is supported, ie. the kernel can infer the full
+ownership of the dev-set.  However, I think we could still support a
+proof-of-ownership based hot-reset with devicefds and groupfds provide
+by the user.
 
+I think what this means is that the flag we're exposing is not
+"hot-reset available", but really whether the kernel can infer
+ownership and the ownership conditions are satisfied.  Therefore it
+essentially only flags the availability of the null-array interface
+while the proof-of-ownership approach is always available.
 
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
+> Not sure whether we can leave it in a ugly way so INFO may not tell
+> 'resettable' accurately in that weird scenario.
 
+Is it still ugly with the above design?  Thanks,
 
-
-TAKE THE SURVEY >>>>>
-http://www.newadaair.autos/9e94e2395J86NQ12D52Q62H13b9g36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ.Qdn95LPw106bBB@wD/buzzwords-misers
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
-
-
-The American Arilines Survey
-
--------------------------------------------
-
-
-No longer wish to receive email information from us?, click_here >>>>> http://www.newadaair.autos/deducted-communally/9186qq2p395O86Wi11c5263G13b9X36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ.Qdn95K10To5zjjwD
-126 E 23rd St New York, NY, US 10010
-
-<span><style></style><small><font></small></span></font><style></style><span><span face="up"></span></span><span size="recaptured"></span>
-
-------=_Part_409_298840026.1681487952419--
+Alex
 
