@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B18A6E19BA
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Apr 2023 03:32:47 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E03C46E1918
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Apr 2023 02:39:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9DC8310EBFC;
-	Fri, 14 Apr 2023 01:32:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B80FD10E01F;
+	Fri, 14 Apr 2023 00:39:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Fri, 14 Apr 2023 01:32:42 UTC
-Received: from mail.primedeph.autos (unknown [195.178.146.82])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2611A10EB86
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 14 Apr 2023 00:39:04 UTC
+Received: from mail.goodups.click (unknown [195.178.146.99])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3323210E01F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Apr 2023 01:32:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=primedeph.autos; 
+ Fri, 14 Apr 2023 00:39:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=goodups.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=home.depot.bonus@primedeph.autos; 
- bh=CK4lJGNQOjoK4WGwjZ8lmvfR0E0=;
- b=g4TPtxf31VPjM3031TMuRwke2wf5CTcRo71uctOsANBFxQi1Eu52jqIIepg+hbtF2zvON1FvO0e1
- pkuIK58MAFBIoKjhtRphElZVaZA0xQSRyBWnedBLyr8Idn3cFVS+fczPu1JmNfC2rzuL9UR5E1Qh
- udf20slj1Ugrx3ChMv4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=primedeph.autos;
- b=GU9teuZewk2uzKmFNo4HhzRcB7mfSomFjDCwjEY52x7a8XNuHAxRLZKb6Y4UgdDfhONIvJuCxOtC
- axQyVwnpFHOMk/m23WvsOp6yEl5Aox4kE2Zfq6ahdiuAn99WL3qwaNQC7CvEQok26gTZb121I+34
- H1KdzSNuh5xlXtychK0=;
-Received: by mail.primedeph.autos id h72mjk0001gk for
+ i=ups-customer-updates@goodups.click; 
+ bh=zWSawjLhG0s4KNd55uH5H45ljHs=;
+ b=M3dlTwBdcbw3exrf19QIRt4pdEyIESu+Ga7ohI0Dmn0NZVGOc5xIY3v1ScqLuYGM89USrypa94SY
+ 8c2S8XUbGi5CkIF74JNWyNoNJDrxhERtO1P7zMbXyl/yzfOMF3kZVjPR28NMOQXg8WrzpqVa/2zS
+ yCDyJpCKRz2T4AGPJjg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=goodups.click;
+ b=h2BmXZY1/MXuDNMo1NbxqyYV467MRjWIdhmMnQPf66Y0r8/EW1j3XO1glGV44ksEiHRnPcSsd01s
+ /Bfpj8deAUDGT+GG9l7s3LYw7vdt1Vtzyolt4r0yw5aOLar7JyL6/9dwpyiT8ZsIf7P12TcAsuJU
+ l9GfauWqTnaCauMBuko=;
+Received: by mail.goodups.click id h72q8i0001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 13 Apr 2023 21:22:40 -0400 (envelope-from
- <home.depot.bonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@primedeph.autos>)
-Date: Thu, 13 Apr 2023 21:22:40 -0400
-From: Home.Depot.Bonus <home.depot.bonus@primedeph.autos>
+ Thu, 13 Apr 2023 21:51:00 -0400 (envelope-from
+ <ups-customer-updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@goodups.click>)
+Date: Thu, 13 Apr 2023 21:51:00 -0400
+From: "UPS Customer Updates" <ups-customer-updates@goodups.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Today's rewards on us to celebrate the holiday
+Subject: ups User Feedback
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_1228_1177868561.1681435294214"
-Message-ID: <0.0.0.88.1D96E6F9AED5F0A.287833@mail.primedeph.autos>
+ boundary="----=_Part_304_1982849592.1681431949080"
+Message-ID: <0.0.0.21.1D96E739013BF76.132076@mail.goodups.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,45 +53,40 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_1228_1177868561.1681435294214
+------=_Part_304_1982849592.1681431949080
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR VALUED CUSTOMERS
------------------------------------
+A Special Offer for Valued Customers
+---------------------------------------------
 
+UPS
 
-THe Home Depot
+We wanted to take a moment to thank you for choosing UPS for your shipping needs.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
 
-
-The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer. 
-
-
-As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
 For completing the survey, you can receive a $100 Gift!
 
 
+To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
+
+
 
 TAKE THE SURVEY >>>>>
-http://www.primedeph.autos/monoprogramming-alcoholic/7b05E239D5Bq86o13Uv5256tr13b3D36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQuQdmS5EvK106Q1wyTD
+http://www.goodups.click/contagiously-sojourner/7924s2395PD86W13z5LV254Q13b2o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ5QdmR7BNL1V0s5p2@wD
 
 
+Thank you again for your support.  We look forward to hearing from you soon Warm regards,
 
+The UPS Survey Team
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
-
-The Home Depot Survey
-
------------------------------------
-
-To drop notices, click_here >>>>> http://www.primedeph.autos/d314S2395H8iy613LFW5257N13b3p36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQuQdmS7j10ZWyY5s@wD1/infest-makers
+---------------------------------------------
+To abandon communication, click_here >>>>> http://www.goodups.click/slicker-enumerated/8a04b2395h8i6p11c5255r13b2W36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ5QdmR6KQwB105RXzwD
 126 E 23rd St New York, NY, US 10010
 
+<span face="parts"><big><span dir="steadier"><font></big></span></span></font><font><font></font></font>
 
-
-<span face="claimable"></span><big><span lang="inopportune"></big><font face="acquires"></font></span><big></big><span></span><big><big></big></big><style class="harper"></style>
-
-------=_Part_1228_1177868561.1681435294214--
+------=_Part_304_1982849592.1681431949080--
 
