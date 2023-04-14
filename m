@@ -2,44 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED3296E2340
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Apr 2023 14:29:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9CD26E2434
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 14 Apr 2023 15:25:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CE94810ED17;
-	Fri, 14 Apr 2023 12:29:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 84AA210ED0E;
+	Fri, 14 Apr 2023 13:25:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 14 Apr 2023 12:29:04 UTC
-Received: from mail.kaydelta.autos (unknown [195.178.146.181])
- by gabe.freedesktop.org (Postfix) with ESMTP id E9DDD10ED27
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 14 Apr 2023 13:25:06 UTC
+Received: from mail.aggunite.click (unknown [195.178.146.186])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 37B6310ED03
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Apr 2023 12:29:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=kaydelta.autos; 
+ Fri, 14 Apr 2023 13:25:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=aggunite.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=delta_airlines_opinion_poll@kaydelta.autos; 
- bh=5+0CIfbIyoqhk+oytsQDQxlUwx0=;
- b=WmFPINc/Ep7uleh567wQNJ9WgYaQiWYnwfW9ZcwbXwFaVcDX5LiYcVR/B0dXvp7S+4Bn8elokApl
- 0yR5XmVGi/XlGrBd+aV0o4koFEHh7lE4ExzkUpSAq6AzUXWX/u5tggcRhHsxd3tm7N/CI3xrHNsH
- JmsuSsHSWPoNT/R37RI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kaydelta.autos;
- b=FlH16VE/GWhpCn44VGL73JIqRVDbmf05VirNElYdF2TZp20EfTEDqjl/HNbr06ehw6DmCyhcyyAT
- yzSMvPhpJL6qeZh3Wyw+y8aQcv6LjQYGI43FI2LdXKHBzH0NUOPhQv+Y0olfXZFzl12CzdZE7p8b
- EHmZYXSJ41BvESFZdCc=;
-Received: by mail.kaydelta.autos id h753h20001gi for
+ i=yourunited_airlinesrewards@aggunite.click; 
+ bh=SxEw1XFf0jApQsK3EeV3C7jA9Og=;
+ b=FTwpKfKqfoB3RVDcbF6j4t2DQ8exTFjzLeWgjFRKZ0HojBnM7RbcYM/4JZqxsfUtS+SzeVMcC6FM
+ ElyO9SNamgaX9dQV9eqLMhyGQnIvREL8jeE9DefaBwAUjEAMPW91OTPmGVZwN1q/IJiCXqjzfYrA
+ /jiNKtctVoajjr7KoVY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=aggunite.click;
+ b=I6IfOiHybPBfng3WX5rRMKbFEfaIW7iULId45ER0mLVpMtmVGuel1eIIxbMmnND77ygbkNTHK7SA
+ z8dXbz+ShW1SxbuW0yfVywxWNXfRNXvkY13Q93AJzudAadB9Lbv/9rMQrOahYDoIdkL8FHlWrzlw
+ b/XDw55iUyd05J3bTiY=;
+Received: by mail.aggunite.click id h75a340001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 14 Apr 2023 08:15:02 -0400 (envelope-from
- <delta_airlines_opinion_poll-intel+2Dgvt+2Ddev=lists.freedesktop.org@kaydelta.autos>)
-Date: Fri, 14 Apr 2023 08:15:02 -0400
-From: "Delta Airlines Opinion Poll"
- <delta_airlines_opinion_poll@kaydelta.autos>
+ Fri, 14 Apr 2023 09:15:47 -0400 (envelope-from
+ <yourunited_airlinesrewards-intel+2Dgvt+2Ddev=lists.freedesktop.org@aggunite.click>)
+Date: Fri, 14 Apr 2023 09:15:47 -0400
+From: "YourUnited AirlinesRewards" <yourunited_airlinesrewards@aggunite.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The offer for a free flight Anywhere set is ending today - claim
- yours now.
+Subject: Get a free flight Anywhere today before the offer expires.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_283_1319340395.1681474461474"
-Message-ID: <0.0.0.1F.1D96ECABD55243C.569956@mail.kaydelta.autos>
+ boundary="----=_Part_1219_3539328.1681478054344"
+Message-ID: <0.0.0.87.1D96ED339FCB1D2.23EB2F@mail.aggunite.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,18 +53,18 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_283_1319340395.1681474461474
+------=_Part_1219_3539328.1681478054344
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
 A Special Offer for Valued Customers
 -------------------------------------------
 
-Delta Airlines 
+United Airlines 
 
-We wanted to take a moment to thank you for choosing Delta Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
+We wanted to take a moment to thank you for choosing United Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
 
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with Delta Airlines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with United Airlines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
 For completing the survey, you can receive a $100 Gift!
@@ -77,23 +75,22 @@ To take the survey, simply click on the link below.  It should only take a few m
 
 
 TAKE THE SURVEY >>>>>
-http://www.kaydelta.autos/interviewers-graphic/7384e2395O86Mq11k525aZ13b5O36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQwQdmK7EULC10Y6R@2wND
-
+http://www.aggunite.click/7af5G23m95QD86G13Dj52Y5cv13b6n36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQYQdnm5yw10t5SlXwD/Anabaptists-opportunity
 
 
 
 Thank you again for your support.  We look forward to hearing from you soon Warm regards
 
 
-The Delta Airlines Survey
+The United Airlines Survey
 
 -------------------------------------------
 
 
-To change your subscription preferences, click_here >>>>> http://www.kaydelta.autos/c5f4l2395G86ZU11U525bi13b5W36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQwQdmK7PHv10Wk6lAPwyD/Transputer-yelling
+No longer wish to receive notices?, click_here >>>>> http://www.aggunite.click/Rotterdam-dwelled/be85F239F5py86L12I52S5dh13b6s36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQYQdnm6giYz106GqwzDq
 126 E 23rd St New York, NY, US 10010
 
-<style class="undiminished"><big><span color="propagated"><small></span></small></big></style><font></font><small></small>
+<font dir="manipulatory"></font><font face="latter"><span id="reverifies"></span><span style="bier"></span></font><span></span><big></big><font color="Landwehr"><style></font></style>
 
-------=_Part_283_1319340395.1681474461474--
+------=_Part_1219_3539328.1681478054344--
 
