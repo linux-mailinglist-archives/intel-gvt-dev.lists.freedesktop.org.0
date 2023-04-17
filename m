@@ -1,116 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0FC26E4AB9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Apr 2023 16:05:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4A536E493F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Apr 2023 15:04:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7ADEB10E522;
-	Mon, 17 Apr 2023 14:05:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ABBDE10E4D2;
+	Mon, 17 Apr 2023 13:04:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2078.outbound.protection.outlook.com [40.107.244.78])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8D66410E522;
- Mon, 17 Apr 2023 14:05:25 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=E3OSdnYycFvlkjlrGikfIQ407CH/4eROyN85itALEJOVSk2EuSyZfgbhypDoxyGfoEiugSTRsiDaFm5vrKkeprFfCsaOu2BSAtFd0bQNYzU7GW7Bgmew56wqiDjSRTQbK2zToa9AuYEiq8n6/20L++TdJvGlfdKYWRQXwlrDwl1/+D6gkqAzfZQRgCgf4gqtkAAyW1Fxu5H1y0hQkUgMG/OmDdjdMFsrboRxbFYIXFikj6yD4bZjYQQBR997GR4bQ5GY2eWwkWx+ivWC3xjJa83wYH9EE9rGNRTmNVr1fdA4qdgLwnPd4GwL6wVVfjRJcmhexZX5in1c4Th9sT+Oeg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=eaOujoy9GiOjbGc4gNIvB35Mqs0EHO8/SlZkUunU2TY=;
- b=e1jldd3c8wEwt+bSzvRHEA27s792RsWGCvnkHMknzH02hifSJB+/npXmmULONqXc4PJrA3y/hR5kyqMz3iVmXf8I91WqrwfAD0GB+JmokYkdnlkoSD7H0CcSBnouryhj0+7pnp4QddYs/M8g0AD4yfiFyIn3ZkTCkcHHnzny9ooLlIWxgOANQvmRqgAPQT9mNygqlR45eEJdZuIWt4nd7Fsg+LPl6+Z26QrUIJxjyRIInDyayXCF3iJGKX2AuuC0knnBF9q+OXpEh1+fzeHd5XOrsNxFrOJ5fDI3WRSrN1kz3YKCQED/dmn2M1yRNuCeyN73LC64cY3FE+Dt8iEVqg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=eaOujoy9GiOjbGc4gNIvB35Mqs0EHO8/SlZkUunU2TY=;
- b=kCSvqdyTTuuDYQKs+JBAbLJS73Tw9Ruyh7+5Zeg00bhnj/yDFARPAGBAp28nlf5ESrt7dfxOB6xRpCYwp+P7AZrYb72mPqtz2mm72zhbZp30ybdZlbp3wlhV1xxNVcpfDxN28S9kIKIcQWwkQ0EL8KiBiM3nNi8E8VQRL5o8yyqGIAs+dwS52XO2BweScV6aAaMJO5CqTs/e3cyxX0pRthCs0Uq06eYucE/madbd7B3UG50rB6d7p6uF3xO7L/vKP7QPzaG0RuzNLCT3STtNJB1VCgQv73cfHY3iDDMZiSoVkouCu2isrtuotsIoVdR5xCNC9o9Bnaa3mTn/yA2xfA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by MW4PR12MB6708.namprd12.prod.outlook.com (2603:10b6:303:1ed::5)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.45; Mon, 17 Apr
- 2023 14:05:23 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::6045:ad97:10b7:62a2]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::6045:ad97:10b7:62a2%9]) with mapi id 15.20.6298.030; Mon, 17 Apr 2023
- 14:05:23 +0000
-Date: Mon, 17 Apr 2023 11:05:19 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH v3 12/12] vfio/pci: Report dev_id in
- VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
-Message-ID: <ZD1SH8/bpcytlp+E@nvidia.com>
-References: <20230411095417.240bac39.alex.williamson@redhat.com>
- <20230411111117.0766ad52.alex.williamson@redhat.com>
- <ZDWph7g0hcbJHU1B@nvidia.com>
- <20230411155827.3489400a.alex.williamson@redhat.com>
- <ZDX0wtcvZuS4uxmG@nvidia.com>
- <20230412105045.79adc83d.alex.williamson@redhat.com>
- <ZDcPTTPlni/Mi6p3@nvidia.com>
- <BN9PR11MB5276782DA56670C8209470828C989@BN9PR11MB5276.namprd11.prod.outlook.com>
- <ZDfslVwqk6JtPpyD@nvidia.com>
- <20230413120712.3b9bf42d.alex.williamson@redhat.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230413120712.3b9bf42d.alex.williamson@redhat.com>
-X-ClientProxiedBy: BYAPR05CA0107.namprd05.prod.outlook.com
- (2603:10b6:a03:e0::48) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Mon, 17 Apr 2023 13:04:05 UTC
+Received: from mail.hibbiups.click (unknown [195.178.146.106])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BD0A710E4CE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 17 Apr 2023 13:04:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hibbiups.click; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=ups_delivery@hibbiups.click; 
+ bh=3CFV2EDd0ebptZBm0vOv5wZfY0E=;
+ b=FJWpXiPH0CwrCb8VOKg721tfTkSktAMYOYk1BZwEhYnSVu3lJZXlkaJWRgPlv4JWIQwItk0EkNVH
+ wFzT3qqVayU1AMCBFymzvjT4NzrJ2Q8HUn5U2cddqZ96wfVwhHN5N7i0aYiyarob28ubizALNmWx
+ A9NyyHh2hIUqxeSal0E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hibbiups.click;
+ b=DC6aDlmnvHiCSAb0qy0C58BRuc1cWgx8jZTl8YYiF/qVL7dOGMuESnzJXyInRe4gg8fXOzM5tfyV
+ 8tCkDljjHjJ3gHRoldjZoCIVKJaxRTSyq1m7CgBx+UwG0vTy+xvaUn+MGQLuKEuZLfnaWpW2qbID
+ HS+dbMIL4SRhAedP/JU=;
+Received: by mail.hibbiups.click id h7lbq00001g3 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 17 Apr 2023 10:15:54 -0400 (envelope-from
+ <ups_delivery-intel+2Dgvt+2Ddev=lists.freedesktop.org@hibbiups.click>)
+Date: Mon, 17 Apr 2023 10:15:54 -0400
+From: "UPS Delivery" <ups_delivery@hibbiups.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Now on ups
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|MW4PR12MB6708:EE_
-X-MS-Office365-Filtering-Correlation-Id: 414b1ed4-af11-47dd-f8af-08db3f4cc8cd
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: n4ObFVROTlUhXtkcky32cgS9a6BL1ENhzzveLXu/sKxWdzHGtmBsuNdF+7XyGNBjl9tc0ruE4wkrnaFAzZSlOK81MpL00TlDREMarDd37HiTwaJ4dJV2kK0389j3u2WnfgAXedmmf9opjZKT5iWxQw6+O9cYM4KxYtwmqsKofRbc+g8bbvjkSfS5yzs7KSjQI2qatAEI1tPNFhb1Ix3X5VTazH1JtY8tydiox9Z3GCVcyU57LQeatczxF4DczOOQ2mcrXUOa8HlkmXqsWs6oC2RAYCz1zG6faWaVzg4H2F8ivl0ymLh+D2DYjkZmwvy5CEIHlfiCBUL0HXxJIXiLMrEbfes+4WKra+0LHz+bPCsIWkiIhJ7bKoSwj5ZZYIWfzLi9/sA1gthXIRZ9KWw0EuJiMaQL9cHIiA2UqqHDGxQUDAHYVWz4DR0RwcglfyJG4sXcICJ15JeeWt3+PxFmyZ8sf28VfpIEXWbAIfx9Tbv+FmOj5kcTHK13bJc8ZIwNqoQCUaPvzpcqHmHvSlAr45ljdN2qJFJAqJke7AtI0mEnGjHYbBqAMdlMXqge1sVZ
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(396003)(376002)(366004)(39860400002)(136003)(346002)(451199021)(36756003)(6916009)(54906003)(4326008)(316002)(66556008)(66946007)(66476007)(6486002)(478600001)(6666004)(5660300002)(8936002)(8676002)(41300700001)(7416002)(2906002)(86362001)(38100700002)(2616005)(26005)(6512007)(6506007)(186003)(83380400001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8Wiplzo2qJTqs11FXYkVsX4TDIsSH2SGHpmtG40f5bbmLx1tEDt3YWShwQCu?=
- =?us-ascii?Q?bpowlONaRg8XvqDHpgEmgPOhRalmwJhOYCCdf4deQRbgnG0DP+yDbBGAGMDA?=
- =?us-ascii?Q?YEC2Lq89G3IIf48oS/46YUjHTY/rp0f1FUIusP3T4hfJfsPL7fE6Jh11zqAK?=
- =?us-ascii?Q?6q4LYMZU43LfPC7U3jzU6DqFGsHRzMbLtwire7hvG8TxoLOj5LmOIUe/aas1?=
- =?us-ascii?Q?iue2FeZdikDRb2dfjwici9L64uNtOJ8tQP3NmCN8aBnaJmjhTC0w1FMo/BS3?=
- =?us-ascii?Q?ZsgZ2YrzA9RDacbwzoK/dtd1VxJL8SlGmiHPo2uvcFPAOKbHhyL8uE7sClIg?=
- =?us-ascii?Q?6t64L9Vaunhoa7GjSfsjgvXhR3C+YOctzIaoIYySR31m1YNeFqy7GKhSDYJN?=
- =?us-ascii?Q?3USrIL8pHuLDAy7JfVUTdgoBo9V0jWVB32Re/zRiemzBSkIB1vKp1PKIoZeR?=
- =?us-ascii?Q?2IT3qNG+E8uFoIfQU+Tvbbljs5sM/61Z+yNg7MCoPqqj7nkP0RWH1GTCmCl+?=
- =?us-ascii?Q?Iir23IXPW1T7b1J5jL+eqrKUnxYQoTmvLOKSRWMQsa/OLwi0X74hGuGyjb9D?=
- =?us-ascii?Q?5e21GTUb8Fa0o7f6BDpAJMk5sZPmXoL/SmaQ5R0uug/1x7aPsbl2Z2MrPvXJ?=
- =?us-ascii?Q?es5Qvw4NoHMSeC2KuwnEyA71gpeldlsSgs4a3DyHT4ukStym7oNSzcEZWjix?=
- =?us-ascii?Q?X6MKp6cza4T95vZJx3TrjpJ6Himn1LnD/N9j8TM8aC10TijGbuQtWxd8Ut2X?=
- =?us-ascii?Q?Y6+U4EFOfUA5hlMyyWKTG/gza+WziiP/bDd+1G9fcqr+bCEis4UXe6H76ZLA?=
- =?us-ascii?Q?JZYazBJ+I4saoQEXC3Bov/gXZwxHEjZbotrh5QJl3p9WkGMwX6SP7KK0EkEn?=
- =?us-ascii?Q?WZTLVOgTcML8IE9WTXZ47CLdBKkfgp4hBiYv54pCERD/0klje8ECi24qa8up?=
- =?us-ascii?Q?jCk5jcI6HMlETtqvLeVzNJ7xU5l1w2tVGm4kNs+8Wp5IWv3370koKzlUUUVx?=
- =?us-ascii?Q?msBJrDuOv+RZ/GWtcaJV24erccg3bnNZANerc+a2RSmddA0Qspx3I0CqpXF/?=
- =?us-ascii?Q?0lpmznkr8NU1rGzICz35+FTWudF9l/5in1N2pVnYqielY/Vqv6U6ZUZtXKxm?=
- =?us-ascii?Q?rkvSNztBq7hwDfJ2CO3pSdl3viub4NFHHjdodMzbV8bezBAVOi3Nl4iWC4+Q?=
- =?us-ascii?Q?VZ0Z0uu00UHNmWfw0/5w7GYu2Nd+FlGVFi5z/WTL7aBxMMB2YwT08hQHWXaJ?=
- =?us-ascii?Q?1/2/MJsEVl4RdUD25TfM5od4Q3GhAazhQx/K2H+LNl5M2O2MvrUqkkxWRbKy?=
- =?us-ascii?Q?TDlPs3Jn1srCUqnjt20M/Jz6kwbe+rpN3VDnEjA1XAu9QmJtRmOxXqLSNy7F?=
- =?us-ascii?Q?2ztCr8yHV/vLmeLVx9V+t6q9GrOM2TBYZlh93/YWAtaT6caOPonT4EdRIEhm?=
- =?us-ascii?Q?7OT/rOEfsOjDvVMVKUOO5gJyHLMi8lNvNMYwHL7W2FgOoB4fVI7xIboAgHCD?=
- =?us-ascii?Q?yQ6BCEo+JxKTT9b8ell+pk3wW9C0HQsXrG/mW2FNorKsUlCN7wkvUAn6AOnY?=
- =?us-ascii?Q?VgvB0HMr4hhIddas3D8Ep98X09DZAixDFFjled9M?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 414b1ed4-af11-47dd-f8af-08db3f4cc8cd
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2023 14:05:23.3120 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZtLoIT3c2IVS8RVzP0m0yG+T1HMNNFOwHptGV4XH61wN1eytzH/Vk47Y9RGci5vI
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB6708
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_376_506385516.1681735836490"
+Message-ID: <0.0.0.29.1D971371F4601E8.328014@mail.hibbiups.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,79 +50,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
- Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, Apr 13, 2023 at 12:07:12PM -0600, Alex Williamson wrote:
+------=_Part_376_506385516.1681735836490
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-> IIUC, the semantics we're proposing is that an INFO2 ioctl would return
-> success or failure indicating whether the user has sufficient ownership
-> of the affected devices, 
+A Special Offer for Valued Customers
+---------------------------------------------
 
-Or a flag, but yes
+UPS
 
-> and in the success case returns an array of
-> affected dev-ids within the user's iommufd_ctx.  Unopened, affected
-> devices, are not reported via INFO2, and unopened, affected devices
-> outside the user's scope of ownership (ie. outside the owned IOMMU
-> group) will generate a failure condition.
+We wanted to take a moment to thank you for choosing UPS for your shipping needs.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
 
-Yes
+As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
-> As for the INFO ioctl, it's described as unchanged, which does raise
-> the question of what is reported for IOMMU groups and how does the
-> value there coherently relate to anything else in the cdev-exclusive
-> vfio API...
 
-For cdev mode the value of the group_id has no functional
-purpose. INFO has no functional purpose beyond debugging. The cdev
-enabled userspace should print the BDFs from the INFO in a debug
-message and ignore the group_id.
+For completing the survey, you can receive a $100 Gift!
 
-Kernel will still fill the group_id using the iommu_get_group() stuff,
-and set -1 for no-iommu.
 
-> We had already iterated a proposal where the group-id is replaced with
-> a dev-id in the existing ioctl and a flag indicates when the return
-> value is a dev-id vs group-id.  This had a gap that userspace cannot
-> determine if a reset is available given this information since un-owned
-> devices report an invalid dev-id and userspace can't know if it has
-> implicit ownership.
+To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
 
-IIRC, yes.
 
-> It seems cleaner to me though that we would could still re-use INFO in
-> a similar way, simply defining a new flag bit which is valid only in
-> the case of returning dev-ids and indicates if the reset is
-> available.
 
-Yes, it could be done like this as well. INFO2 is more a discussion
-object, how we encode it in the uAPI matters a lot less. The point is
-that INFO2, as an idea, returns information that no other existing API
-returns: the "ownership passed flag" and "dev_id list"
+TAKE THE SURVEY >>>>>
+http://www.hibbiups.click/commonest-cremating/31e5fY2395Q8W6A13RUp52a6V13d9z36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQMQddS7g10FiuD6vJMwD2
 
-Then as I said in the other mail we roll no-iommu into an iommufd_ctx
-object and just follow the design that userspace must have a single
-iommufd_ctx containing all the devices to use the hot reset feature.
 
-Jason
+Thank you again for your support.  We look forward to hearing from you soon Warm regards,
+
+The UPS Survey Team
+
+---------------------------------------------
+To get rid of communications, click_here >>>>> http://www.hibbiups.click/2ff5P239X5mz86G11c52a7C13d9G36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQMQddS6UO1N0j6N3wDJB/Bruce-distance
+126 E 23rd St New York, NY, US 10010
+
+<style></style><span class="referenda"></span><style><span style="Jello"><span></style></span></span><style></style><span style="idempotency"><style title="cruelly"></style></span><small></small>
+
+------=_Part_376_506385516.1681735836490--
+
