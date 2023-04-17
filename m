@@ -2,49 +2,70 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 560776E50FA
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Apr 2023 21:32:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D5BF6E515C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 17 Apr 2023 22:06:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B9BB310E2C5;
-	Mon, 17 Apr 2023 19:32:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0666310E45B;
+	Mon, 17 Apr 2023 20:06:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam04on2063.outbound.protection.outlook.com [40.107.100.63])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6469410E229;
- Mon, 17 Apr 2023 19:32:00 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A6MyCLgXeoY9oPEw7+hMJlIRiinZje02GhH+XHKA66lwZgdtcfDdK9WsLoXbWIpamvi34cXgWyJj9F06dkjUo8szPNTkAsXgzuq+dLpMyeLSqTrY41Fxl0cJiKupC8z/o1IzA/wrqjfp8kXZwRwdxAq3XdOA/ejvW3j5SElrj9hjkCZDSCTcq37Oz32HjG/bUTIUvJRNdWZDlnJdRzzZ5+jyPUQchSvLyrDogZ+1cEt3+QugDK/ph0KJTFZmgTqR03a8RUuG60zoxeal8vQBLL9uJ5YTv/JgKlqUKc9uC4i3jYk0Q/i0M469oDDuhRDAERmb55ON4L5/IJdY5kHgDw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MunhYH5pcGE4RyNguXu8EdBlYtDZp4zNieIc/Jcmy7U=;
- b=llA1yhSjFJ6iH0mmin/42wva8L+HIzuJ0S6+G5r0JGIoCTwp77v9rjFxwnypg4Yy2eFQNUgWPlTlKiHBR8pgU4GLL+afzWL/z2bDHEwSz+Wd3pQH7UYc4Xz8GBCJcAwkmpr6b3uqO/J1KJ9wb21eQ3NPQ+ZBASCnWPGVUB18AvqHmuCNoVPGqExRF4HrEcF9hfC3/0+VQYgtxD+zPKBIk5c6tZ/1d0QVpaQWzjeGpLceFsoAumYF/N4PdvX9uEolT3FaE1D7rLJvbrdY5YMpKT8QGV1oSsRXCTu68nCR6M2DZm1FQTMNAwOhZnbq2teAIU7xtuEYBk5N6xjhZX1J9w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MunhYH5pcGE4RyNguXu8EdBlYtDZp4zNieIc/Jcmy7U=;
- b=eZFsowTrnGJ2cPPuLL+eKm5boIBeYrFg8A40nrmWovEh+yBBZp3WUX4rfVL1ZIDLOy+ESo3qAkNGVkooYSbEAJ7eAPet/Pceo3ZH3AGa6GWtRrVRv0rY6s9ux4U95jyApznlH6j6XjrrPCAvj9YEUA0+5NDaToiRiAyyugMKYIODq9cKpUMaBMLh8crYuYZst+hixPgIwaH0cEgG/3ABga2DAODK+ipLutFGEnAZjlwzvJwAhCF3US3P/SR/HFL/MpZIgZuQ467No//3+qJ3z0WftWLEOyFNnNiZoM7LzdCa59UG2qSDEL2O47WvFP0NY94CLr9dZOLG/J6p2TrqUQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by DS7PR12MB8274.namprd12.prod.outlook.com (2603:10b6:8:da::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6298.45; Mon, 17 Apr
- 2023 19:31:58 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::6045:ad97:10b7:62a2]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::6045:ad97:10b7:62a2%9]) with mapi id 15.20.6298.030; Mon, 17 Apr 2023
- 19:31:58 +0000
-Date: Mon, 17 Apr 2023 16:31:56 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alex Williamson <alex.williamson@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C7FFF10E357
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 17 Apr 2023 20:06:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1681762007;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uJkreuNWxZEE44fygt5zWJA+zq6jhPLH5gKQqPjNWJQ=;
+ b=Xla5ZkPsZPKIc6iceJ5yI579cJ/vPfYTS7feRDTt2FNYgmE4F92GfPV67YucZXjE0ao60z
+ YQWmSaq2o/1TLchHDaHrCtzESaygjqpQus7Q4aCnzWAfVklcdGrq6vHu6AqCkRmncK5/w5
+ muYxHPeYsrCiyXMKxzMFWqJ6EQ0Jbjk=
+Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
+ [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-609-IR3p9Uw8OGC8kB5xAOZpPw-1; Mon, 17 Apr 2023 16:06:46 -0400
+X-MC-Unique: IR3p9Uw8OGC8kB5xAOZpPw-1
+Received: by mail-il1-f199.google.com with SMTP id
+ e9e14a558f8ab-329326caa4aso15111885ab.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 17 Apr 2023 13:06:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1681762005; x=1684354005;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=uJkreuNWxZEE44fygt5zWJA+zq6jhPLH5gKQqPjNWJQ=;
+ b=NtZakg5aqdRWd9QjnnGIE0Q6cHNRjKPsVsn27hRtQkbKswFSUV6glBnAJzhp6JdGcP
+ qFKE6JYqHv4pB8lipVw2xQMkkNu94xENReCT1kb4PDtSYaC1ImNkmvrrTefg/TxSxd3C
+ XHKaoZVGhtcloLQtwc6KV4A+W7dwD7Du0J4bG81Z8lFSY34XFg3PUWgk4T2iZkJM4pID
+ id+wSeWOnjWg+2pNHW92wYc9uoI+UHtQWD4cOJ3dEGBCxU72uQtWwMMoN2zPwqLk4x14
+ TGyqbSNkCPrTj90pxZtzvypwy40UloOL76jDlCtXwcgnEMMrVumI/3OSKiSTG2MRtg8c
+ DM/w==
+X-Gm-Message-State: AAQBX9dpg8Wes7jk7ol9ndz+v/Abe2/4NQcSayxh0X8xtajb5fBTVqa9
+ KkOMZOkEH4kTHePpMaKYJj7Mv03HIQJZMOB8YJPYETElYQS5jQWphoKEGwl0YHbrEkvOVTjX85l
+ tXToLHylYY7V0ZXgLx0qT8ZmMOdB1zBXRbQ==
+X-Received: by 2002:a92:c9c3:0:b0:32a:ea4e:97d1 with SMTP id
+ k3-20020a92c9c3000000b0032aea4e97d1mr5286297ilq.10.1681762005473; 
+ Mon, 17 Apr 2023 13:06:45 -0700 (PDT)
+X-Google-Smtp-Source: AKy350YnqbcCParzLbuNdjYNdpgBYhVf9e7CqwAl3G3qqrikIx+WLx6VM5MZjUBX5I9Y6yBJY1EJeg==
+X-Received: by 2002:a92:c9c3:0:b0:32a:ea4e:97d1 with SMTP id
+ k3-20020a92c9c3000000b0032aea4e97d1mr5286281ilq.10.1681762005206; 
+ Mon, 17 Apr 2023 13:06:45 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ k14-20020a056e02134e00b003291bea8c7fsm3361811ilr.81.2023.04.17.13.06.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Apr 2023 13:06:44 -0700 (PDT)
+Date: Mon, 17 Apr 2023 14:06:42 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
 Subject: Re: [PATCH v3 12/12] vfio/pci: Report dev_id in
  VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
-Message-ID: <ZD2erN3nKbnyqei9@nvidia.com>
+Message-ID: <20230417140642.650fc165.alex.williamson@redhat.com>
+In-Reply-To: <ZD2erN3nKbnyqei9@nvidia.com>
 References: <20230412105045.79adc83d.alex.williamson@redhat.com>
  <ZDcPTTPlni/Mi6p3@nvidia.com>
  <BN9PR11MB5276782DA56670C8209470828C989@BN9PR11MB5276.namprd11.prod.outlook.com>
@@ -55,62 +76,13 @@ References: <20230412105045.79adc83d.alex.williamson@redhat.com>
  <20230414111043.40c15dde.alex.williamson@redhat.com>
  <DS0PR11MB75290A78D6879EC2E31E21AEC39C9@DS0PR11MB7529.namprd11.prod.outlook.com>
  <20230417130140.1b68082e.alex.williamson@redhat.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230417130140.1b68082e.alex.williamson@redhat.com>
-X-ClientProxiedBy: CH0PR03CA0403.namprd03.prod.outlook.com
- (2603:10b6:610:11b::13) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+ <ZD2erN3nKbnyqei9@nvidia.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DS7PR12MB8274:EE_
-X-MS-Office365-Filtering-Correlation-Id: ef86ba37-c9c0-4504-3b7f-08db3f7a68a9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: kFf3pEoDVfe8zIjWN8VEXEJ7ncAruGvO4NGu3sP7x9jY0FZi7gtgFDU32XfqjdbBE3833/QFGn/gUrJBkSGl4ey+M9eFepcdbe2xpSgo0exL8JpiuTqGrhIDEvPiygI7ryR85htGhniw2FTuxLml+ew/aYDbLa5iwG81MhqjUUoKJoV2bDy6tz3IQj/jpSzmPYdnfgD84d2m6R6nGEtfwYtKzo5pXJOD91jULO/0DKVXZeJ3cNqo9+vLVstuS1hFc1i2p1Hu/+wRcGBi+zoC13ZGyNmcMfTEGeGc3qK1Of1O2xeKwUU4rp0w0Ui2nNkuzuZG+DzigLhSucjOxXPjbZSFKUJAUS3dxrTw015b/EDtJ8VoYeG3x55vyO/JzO+L3OtX26afRzhtGyDVKqXS9zhpmpzVug231eLUAUK3BC8WPJ0SUhTt8molZPuIh05g/bYxwIt/TlBpoIi4h1ofUzbjHvOub/9VNa5xTuQ9gZT72l/7oikJKnMJ7K1hrFPtFWUv9Kj5PA8Axu5ODo4yMZTqEm0a3V7ymuuQ9vL/T/JniMhmC1zOmkB2jun/5QgT
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(39860400002)(376002)(136003)(346002)(396003)(366004)(451199021)(478600001)(38100700002)(8936002)(8676002)(316002)(41300700001)(6916009)(4326008)(66476007)(66946007)(66556008)(54906003)(186003)(2906002)(6512007)(26005)(86362001)(6506007)(83380400001)(36756003)(2616005)(5660300002)(6486002)(7416002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Wb8TpKEDP4FvcYKqvhay+Ch9oomA4qFJI3G0SMoirlFfzk/zON+vmgLcwEsC?=
- =?us-ascii?Q?xzYfcsvc0ATv/s2NDOdMjWRrWyRRhRf733v+9zDtYNj84IL+2W3fMUG+Kre9?=
- =?us-ascii?Q?GFEenHrW4/ZUwElRWyE6KROVOWODNVJjThNs73eyP+BzsGjzkG6gONd4xHQh?=
- =?us-ascii?Q?ctk73fVDKE/o4ZuTfnmpzkUCdTAJrnvaOs50h7Cy0FiU3pLTKSI2xl6uSerZ?=
- =?us-ascii?Q?1LOLyWLqbAOujwX4WhW+kUF3hARozgkeaWwn9PEs0H6dNKu8LwtAQhJ4/b90?=
- =?us-ascii?Q?zElsQzLui2Vid8W8ENbfPVP5qwZoy+9gAribkWzkYtxy4yfjKjdqe3tKWKHP?=
- =?us-ascii?Q?ob8ce1vwvTynIta2cWU+pSBP8D4zIbE0d+SeHAo6lrJ9wWu9C6vNYc0xULta?=
- =?us-ascii?Q?y4j7HzwOYSCcyIkeFYrBHYjZw+V9JMDJyIcRqQKjQH4cKfQzGbIO2TOrkqeb?=
- =?us-ascii?Q?R8sC8BYt95UtzO/Cf8ATaNItJFkkGTzkjg1/D7V6nnp/2bRXQfQJWMzQeRQD?=
- =?us-ascii?Q?JWzhSM1XqbqxuoOWOEaoIvlrJdYl2eGN4yuq9QRm6mdMP9iZE0bjwiaYo4n0?=
- =?us-ascii?Q?UaYhElvfN3KGSLq4BIDppFUlSQJkml4hvSa0Jj+xWmRMHJevmK9nF1c1eHtl?=
- =?us-ascii?Q?57hZnAzgw5inlB9Hap6LMnT8KxhkQovSJ5j6csW5SYpjui+aUQ2gaqJAZeLJ?=
- =?us-ascii?Q?QbkFwY1TGyfwjx6xPro5qxcZcgcQY/NgDsS8lQ9Q552gYoQQr/71faVfau8q?=
- =?us-ascii?Q?2w8h+F35etv2BTm+znUEdF5iHQt6wAF94MJfLKXyb7iF+jBPg28Wbc9TYVR5?=
- =?us-ascii?Q?GcOWXuJ5r71VMQ5XaXDPh/SLlVg/9Z/RO97BEz2ArTEQXDjnzyHKtdN32+VL?=
- =?us-ascii?Q?k2KwxCP4a0wo9pfJ5pYffVMVXj8TJd+zi9AyxCKHCFZl4sgddBRMrBEeQwRt?=
- =?us-ascii?Q?u7WZRdQcwVzu6sMgsiZ8kUecsnTDPJlc80Op1ndMvp7CtkFPVLJBa9ThVghQ?=
- =?us-ascii?Q?7qF+/yk5tvpoKKyVGEYCZrfrT0ajhZKCN3pQTexsWUQ28uJwmkXumjwEyddZ?=
- =?us-ascii?Q?yBh7KTAITzlgtTMFVkTL9T8Yl7u24f6fUHYD71niSDfRnWts7ZAQAIKzGZyR?=
- =?us-ascii?Q?8RQGAXnLvmsQWyJUPZryV27GncSqBPBx90+XJ5KE1ABPrnrBcQ7u6NC5bAmv?=
- =?us-ascii?Q?9JXKApSgbALKEb48TRkI9a5LqIW72w15AQnes6CmgpiMqOsZX9P+GqWGZBoW?=
- =?us-ascii?Q?6f694lCOWhrCXP2bCXPIEQ26x7Fct8tHY9kFvvbxScfyI6kZ3dmGFkEUsvso?=
- =?us-ascii?Q?hGJAD86xKlhGMURvkwIO+Jq3UwYqPi9P440C4uJvf3l/3Zj9lKd8RgsDzFeM?=
- =?us-ascii?Q?ej9+otA8H5sUlYN9aZ+NQsASBZ6ZwK9WAugJO1PNfCd2N4MVBt3TlFsWWlXL?=
- =?us-ascii?Q?qYaQZJxtYtRailz2aX5qZ/10rCwDvM/vlQcfafSxJi+mG96X3L1xv7xHbAj4?=
- =?us-ascii?Q?U5P/6hEZK9TTupkXhIbBlGhSsD4q1mZBTYA5VC29vYbnz2srOXruCvIOFJsU?=
- =?us-ascii?Q?00bgzS4vZs56JKMgcZdLKMH9p/hsz/TYzmwLcqVF?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ef86ba37-c9c0-4504-3b7f-08db3f7a68a9
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2023 19:31:57.8915 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: pO0ZVZrkWizt1geRlze3/RJBys82pd9h9W91CatsYD+oDc1s84K99DEfz638gLyE
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB8274
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,67 +118,56 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Apr 17, 2023 at 01:01:40PM -0600, Alex Williamson wrote:
-> Yes, it's not trivial, but Jason is now proposing that we consider
-> mixing groups, cdevs, and multiple iommufd_ctxs as invalid.  I think
-> this means that regardless of which device calls INFO, there's only one
-> answer (assuming same set of devices opened, all cdev, all within same
-> iommufd_ctx).  Based on what I explained about my understanding of INFO2
-> and Jason agreed to, I think the output would be:
+On Mon, 17 Apr 2023 16:31:56 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
+
+> On Mon, Apr 17, 2023 at 01:01:40PM -0600, Alex Williamson wrote:
+> > Yes, it's not trivial, but Jason is now proposing that we consider
+> > mixing groups, cdevs, and multiple iommufd_ctxs as invalid.  I think
+> > this means that regardless of which device calls INFO, there's only one
+> > answer (assuming same set of devices opened, all cdev, all within same
+> > iommufd_ctx).  Based on what I explained about my understanding of INFO2
+> > and Jason agreed to, I think the output would be:
+> > 
+> > flags: NOT_RESETABLE | DEV_ID
+> > {
+> >   { valid devA-id,  devA-BDF },
+> >   { valid devC-id,  devC-BDF },
+> >   { valid devD-id,  devD-BDF },
+> >   { invalid dev-id, devE-BDF },
+> > }
+> > 
+> > Here devB gets dropped because the kernel understands that devB is
+> > unopened, affected, and owned.  It's therefore not a blocker for
+> > hot-reset.  
 > 
-> flags: NOT_RESETABLE | DEV_ID
-> {
->   { valid devA-id,  devA-BDF },
->   { valid devC-id,  devC-BDF },
->   { valid devD-id,  devD-BDF },
->   { invalid dev-id, devE-BDF },
-> }
+> I don't think we want to drop anything because it makes the API
+> ill suited for the debugging purpose.
 > 
-> Here devB gets dropped because the kernel understands that devB is
-> unopened, affected, and owned.  It's therefore not a blocker for
-> hot-reset.
+> devb should be returned with an invalid dev_id if I understand your
+> example. Maybe it should return with -1 as the dev_id instead of 0, to
+> make the debugging a bit better.
+> 
+> Userspace should look at only NOT_RESETTABLE to determine if it
+> proceeds or not, and it should use the valid dev_id list to iterate
+> over the devices it has open to do the config stuff.
 
-I don't think we want to drop anything because it makes the API
-ill suited for the debugging purpose.
+If an affected device is owned, not opened, and not interfering with
+the reset, what is it adding to the API to report it for debugging
+purposes?  I'm afraid this leads into expanding "invalid dev-id" into an
+errno or bitmap of error conditions that the user needs to parse.
 
-devb should be returned with an invalid dev_id if I understand your
-example. Maybe it should return with -1 as the dev_id instead of 0, to
-make the debugging a bit better.
+> > OTOH, devE is unopened, affected, and un-owned, and we
+> > previously agreed against the opportunistic un-opened/un-owned loophole.  
+> 
+> NOT_RESETABLE should be returned in this case, yes.
+> 
+> If we want to enable userspace to use the loophole it should be an
+> additional flag. RESETABLE_FOR_NOW or something
 
-Userspace should look at only NOT_RESETTABLE to determine if it
-proceeds or not, and it should use the valid dev_id list to iterate
-over the devices it has open to do the config stuff.
+Ugh, please no.  It's always a volatile result, but a volatile result
+that relies on device state outside the scope or control of the user is
+not even worthwhile imo.  Thanks,
 
-> OTOH, devE is unopened, affected, and un-owned, and we
-> previously agreed against the opportunistic un-opened/un-owned loophole.
+Alex
 
-NOT_RESETABLE should be returned in this case, yes.
-
-If we want to enable userspace to use the loophole it should be an
-additional flag. RESETABLE_FOR_NOW or something
-
-> I think we're narrowing in on an interface that isn't as arbitrary.  If
-> we assume the restrictions that Jason proposes, then cdev is exclusively
-> a kernel determined reset availability model
-
-Yes, I think this is probably best looking forward.
-
-> where I'd agree that
-> passing device-fds as a proof of ownership is pointless.  The group
-> interface would therefore remain exclusively a proof-of-ownership
-> model since we have no incentive to extend it to kernel-determined
-> given the limited use case of all affected devices managed by the same
-> vfio container.
-
-Yes
-
-> Moot, but there's actually enough information there to infer IOMMU
-> groups for each device, but we probably can't prove that would always
-> be the case.  If we adopt Jason's proposal though, I don't see that we
-> need either a group-id or BDF capability, the BDF is only for debug
-> reporting.  However, there is a new burden on the kernel to identify
-> the affected, un-owned devices for that report.  
-
-Yes and yes
-
-Jason
