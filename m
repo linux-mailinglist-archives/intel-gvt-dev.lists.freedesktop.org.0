@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C22F56E7A5B
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Apr 2023 15:13:38 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A89F6E8137
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Apr 2023 20:27:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8BB4910E14A;
-	Wed, 19 Apr 2023 13:13:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A95BF10E1DC;
+	Wed, 19 Apr 2023 18:27:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Wed, 19 Apr 2023 13:13:34 UTC
-Received: from mail.flamunited.click (unknown [195.178.146.107])
- by gabe.freedesktop.org (Postfix) with ESMTP id E42FD10E14A
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Apr 2023 18:27:06 UTC
+Received: from mail.tptpays.click (unknown [195.178.146.71])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 653B410E1DC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Apr 2023 13:13:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flamunited.click;
+ Wed, 19 Apr 2023 18:27:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tptpays.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=united_airlines_marketing@flamunited.click; 
- bh=cqRp3FIMLxnmfz6BI+Sme+2RHDc=;
- b=wPxHfcN+/k94jRnsv3RnbSajcOgfQFeMULprYaQX1CrxA/rO+9kGnZ0kRJ28mx1zPoUNJ5XMfyCi
- Le1H/d5Xgdht/KFdgECQAVXhJGgL7UDG8fIUtx/Na32PSbqZXjZxji4nqoGkcTX6aiKZCzIKLAgD
- gQdOEOZBdxPbtD7Qnkk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flamunited.click;
- b=Qe/Kk9cHNECkno2J9FLQLk3Op+mXsREvg0Nv/bBhT8WBUIhI93dje4qwbYJxZZnBpfIDKCX8xGkn
- 1nRLw1iAXgj26LbZ7BnhhQTkCx6TaosBIsxxi7EXypuPJixefASHFtQHDnHEcX7la//VdSGkgdbt
- 3bVB066J0lhSpcsY7+s=;
-Received: by mail.flamunited.click id h7vkfu0001gt for
+ i=paypal-customer-privilege@tptpays.click; 
+ bh=0O2QK0+9qk9pw2Gk9f+vhznkAs8=;
+ b=H0Unr2T5vF1fUGL0s88XuNcB+wJucggIzsJbAg3EtAtdBCBlFxYDwFO88SYooDF/0gLz5Mnh0/RE
+ 25s0yxQ2GLOCbSm1yWj845wDWb/Ejv0zaFOW71srMQlz39Lv1jwY1h7Ij8IhK3V1+dxYli8JRAQ2
+ 9IBfE8/xs81ccypVrfo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tptpays.click;
+ b=XTnfNp146/48Y8CThTkH9Gc/2YlcLq5Y0LnHwkdPiUxl8rpkLxoZigZTGqZ5KV2Va0LCGq9ld3cM
+ k2z6Ww13Hy2D0rlV0EvyMdV1VYgefUhYHVjRCIzrjD8F6edSq6nvj7H/o1e2TVn2aFF9CLsprmRC
+ i6hToWRGVvcLCK+bZoo=;
+Received: by mail.tptpays.click id h80p7k0001g2 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Apr 2023 08:58:49 -0400 (envelope-from
- <united_airlines_marketing-intel+2Dgvt+2Ddev=lists.freedesktop.org@flamunited.click>)
-Date: Wed, 19 Apr 2023 08:58:49 -0400
-From: "United Airlines Marketing" <united_airlines_marketing@flamunited.click>
+ Wed, 19 Apr 2023 14:12:59 -0400 (envelope-from
+ <paypal-customer-privilege-intel+2Dgvt+2Ddev=lists.freedesktop.org@tptpays.click>)
+Date: Wed, 19 Apr 2023 14:12:59 -0400
+From: "Paypal Customer Privilege" <paypal-customer-privilege@tptpays.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim your free flight Anywhere set before the offer runs out today.
+Subject: Every Visit, you are rewarded for your loyalty - Yayy
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_19_1955375790.1681909115649"
-Message-ID: <0.0.0.2.1D972BEAF9BDD02.CD8F9@mail.flamunited.click>
+ boundary="----=_Part_262_1365707607.1681927932307"
+Message-ID: <0.0.0.1D.1D972EA930BDC4C.4538CB@mail.tptpays.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,44 +53,47 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_19_1955375790.1681909115649
+------=_Part_262_1365707607.1681927932307
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Valued Customers
--------------------------------------------
-
-United Airlines 
-
-We wanted to take a moment to thank you for choosing United Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
-
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with United Airlines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+A Special Offer for Our Valued Users
+--------------------------------------------------
 
 
-For completing the survey, you can receive a $500 Gift!
+PayPal
+
+
+We wanted to take a moment to thank you for choosing PayPal.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+
+As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with PayPal. 
+
+Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+
+
+For completing the survey, you can receive a $100 Gift!
 
 
 To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
 
 
 
-TAKE THE SURVEY >>>>>
-http://www.flamunited.click/theory-contraction/c9c4r2395DAU8611K52d8y13f2Z36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZQdSo6h1k0sz5M@wTD
+TAKE THE SURVEY>>>>>
+http://www.tptpays.click/pleases-superlatives/b524X2395Ov8I613i52NeP4H13f8I36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQLQdSe5mP10Y6XP@w1D
 
 
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
+Thank you again for your support.  We look forward to hearing from you soon! Warm regards, The PayPal Survey
 
 
-The United Airlines Survey
+--------------------------------------------------
 
--------------------------------------------
-
-
-To suspend communications, click_here >>>>> http://www.flamunited.click/pushing-distiller/a265u239p5HPr8613lH52d9Yg13f2j36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQZQdSo5F1N0P6rzANwD
+To dispense with email, click_here >>>>> http://www.tptpays.click/cowling-Troutman/d146z2W39Q5w8YR612Q52ey5n13f8X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQLQdSe5gF1U06zP3wDz
 126 E 23rd St New York, NY, US 10010
 
-<big></big><span><font></span></font><style class="supermini"><font size="actuators"></style></font><span lang="Irishizes"></span>
 
-------=_Part_19_1955375790.1681909115649--
+
+<span></span><small></small><style id="outweighs"><span id="watchfulness"></style><span></span></span>
+
+------=_Part_262_1365707607.1681927932307--
 
