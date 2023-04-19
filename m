@@ -2,42 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A89F6E8137
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Apr 2023 20:27:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CF5C6E81E5
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Apr 2023 21:28:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A95BF10E1DC;
-	Wed, 19 Apr 2023 18:27:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 307E110EAA9;
+	Wed, 19 Apr 2023 19:28:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 19 Apr 2023 18:27:06 UTC
-Received: from mail.tptpays.click (unknown [195.178.146.71])
- by gabe.freedesktop.org (Postfix) with ESMTP id 653B410E1DC
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Apr 2023 19:28:31 UTC
+Received: from mail.notingair.autos (unknown [195.178.146.64])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 08D1010EA8F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Apr 2023 18:27:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tptpays.click;
+ Wed, 19 Apr 2023 19:28:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=notingair.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=paypal-customer-privilege@tptpays.click; 
- bh=0O2QK0+9qk9pw2Gk9f+vhznkAs8=;
- b=H0Unr2T5vF1fUGL0s88XuNcB+wJucggIzsJbAg3EtAtdBCBlFxYDwFO88SYooDF/0gLz5Mnh0/RE
- 25s0yxQ2GLOCbSm1yWj845wDWb/Ejv0zaFOW71srMQlz39Lv1jwY1h7Ij8IhK3V1+dxYli8JRAQ2
- 9IBfE8/xs81ccypVrfo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tptpays.click;
- b=XTnfNp146/48Y8CThTkH9Gc/2YlcLq5Y0LnHwkdPiUxl8rpkLxoZigZTGqZ5KV2Va0LCGq9ld3cM
- k2z6Ww13Hy2D0rlV0EvyMdV1VYgefUhYHVjRCIzrjD8F6edSq6nvj7H/o1e2TVn2aFF9CLsprmRC
- i6hToWRGVvcLCK+bZoo=;
-Received: by mail.tptpays.click id h80p7k0001g2 for
+ i=american.arilinessurvey@notingair.autos; 
+ bh=G8ebTRbptmufvOnNdcc3VsV3B+o=;
+ b=M4dZq0hurMhWQsvyvZbJz9Nv0CVkwToo2WlqmSdzMMUkdjbEuWDzWKd4ee36FahDp2mQWBLwpw4z
+ jaWxQ3d71nxpXtjkGRVQB/F4Ezm68IrKUCgzX4O/FvbHCDdd1ySVayZkkgiXHCn1U1HL0NtJ81N3
+ RHxfQmF2uPhlt3jqkq8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=notingair.autos;
+ b=Tg9Dd78iOhtFJ2OLv0+SO7+4JDjoQB9zjuUvOI6pkOjFe1kSSHfnOc7CHNsWK3KNNP7slDGKJMe2
+ Ye8X3SjsdB2GeO1LIcfYLsh3fAKbQOPA1WlZGhaiEhaP7ai667Itx/MxpX7d8kFvFK9ly+MukmK/
+ tfrkeNoMxtz7OUUtlPo=;
+Received: by mail.notingair.autos id h810du0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Apr 2023 14:12:59 -0400 (envelope-from
- <paypal-customer-privilege-intel+2Dgvt+2Ddev=lists.freedesktop.org@tptpays.click>)
-Date: Wed, 19 Apr 2023 14:12:59 -0400
-From: "Paypal Customer Privilege" <paypal-customer-privilege@tptpays.click>
+ Wed, 19 Apr 2023 15:15:08 -0400 (envelope-from
+ <american.arilinessurvey-intel+2Dgvt+2Ddev=lists.freedesktop.org@notingair.autos>)
+Date: Wed, 19 Apr 2023 15:15:08 -0400
+From: "American ArilinesSurvey" <american.arilinessurvey@notingair.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every Visit, you are rewarded for your loyalty - Yayy
+Subject: Today is the last day to take advantage of the offer and receive a
+ free flight Anywhere.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_262_1365707607.1681927932307"
-Message-ID: <0.0.0.1D.1D972EA930BDC4C.4538CB@mail.tptpays.click>
+ boundary="----=_Part_154_1488131521.1681931693750"
+Message-ID: <0.0.0.11.1D972F341BE0B9A.188C10@mail.notingair.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,47 +54,44 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_262_1365707607.1681927932307
+------=_Part_154_1488131521.1681931693750
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
---------------------------------------------------
+A Special Offer for Valued Customers
+-------------------------------------------
+
+American Arilines 
+
+We wanted to take a moment to thank you for choosing American Arilines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
+
+As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with American Arilines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
-PayPal
-
-
-We wanted to take a moment to thank you for choosing PayPal.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
-
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about the overall experience with PayPal. 
-
-Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-For completing the survey, you can receive a $100 Gift!
+For completing the survey, you can receive a $500 Gift!
 
 
 To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
 
 
 
-TAKE THE SURVEY>>>>>
-http://www.tptpays.click/pleases-superlatives/b524X2395Ov8I613i52NeP4H13f8I36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQLQdSe5mP10Y6XP@w1D
+TAKE THE SURVEY >>>>>
+http://www.notingair.autos/deludes-arcs/a8Y6hUN2395ki86r12LW52e6A13f9o36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQTQdSK7X10hXms6Qk1wDp
 
 
 
-Thank you again for your support.  We look forward to hearing from you soon! Warm regards, The PayPal Survey
+Thank you again for your support.  We look forward to hearing from you soon Warm regards
 
 
---------------------------------------------------
+The American Arilines Survey
 
-To dispense with email, click_here >>>>> http://www.tptpays.click/cowling-Troutman/d146z2W39Q5w8YR612Q52ey5n13f8X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQLQdSe5gF1U06zP3wDz
+-------------------------------------------
+
+
+To modify your message elections, click_here >>>>> http://www.notingair.autos/homeopath-decouples/6c04y2395F8qU613SZ52e7iL13f9N36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQTQdSK6h1nu0H5Cz3wD
 126 E 23rd St New York, NY, US 10010
 
+<style face="sorely"><small><style></small></style></style><style id="Harding"><font title="untimely"></font><font size="renewal"><span color="resigned"></style></font><span lang="brothels"></span></span>
 
-
-<span></span><small></small><style id="outweighs"><span id="watchfulness"></style><span></span></span>
-
-------=_Part_262_1365707607.1681927932307--
+------=_Part_154_1488131521.1681931693750--
 
