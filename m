@@ -1,43 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05F666E6C81
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Apr 2023 21:00:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9AAB6E78A8
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Apr 2023 13:31:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F91310E849;
-	Tue, 18 Apr 2023 19:00:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 97CB410E93D;
+	Wed, 19 Apr 2023 11:31:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Tue, 18 Apr 2023 19:00:27 UTC
-Received: from mail.frsharen.autos (unknown [195.178.146.70])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0553710E849
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Apr 2023 11:31:41 UTC
+Received: from mail.jacattp.click (unknown [195.178.146.94])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9E58810E950
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Apr 2023 19:00:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=frsharen.autos; 
+ Wed, 19 Apr 2023 11:31:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jacattp.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohls_gift_with_purchase@frsharen.autos; 
- bh=LCbob11ILa1gU2CcyYm03PMZ2NA=;
- b=UhNsiVZ04XHUSyfX2fNgClbruxrn/iSvYVRgaVC3HHr9xdsOJ45FQYb/SbRSJJqdCoqrO7Nvb82D
- 7NH48Lom0NBOb51qyjROTshfA+Erl7BjZyOvZcPx8wuHqH7cfo+bYco4dahOQ+T/JmsNdCmF0dEF
- bE4x6ljvg98QEDUeA8Q=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=frsharen.autos;
- b=EpdbH98bVzpavk+49onAIQqray0WFutBVKd7aWZevv41zyCHZDI5KCDDPlKokTtPfBlXNwcPvMny
- 1ZMKjwY2wvF1ZR2s8B+EyUdD5KJ5I4tDEEcygrjUCp67kUNX3uBnhSrNQR8egbWeHBC/u+poBKH6
- qlWfi9bOEfu9LK/UPAM=;
-Received: by mail.frsharen.autos id h7rkcm0001gi for
+ i=att-user-feedback@jacattp.click; 
+ bh=ah92qPZ4nDjnTMLkgsfeRe7ptpM=;
+ b=NU5SMA0CJKdHlbd4R1DOaxOizTYHY/frZaALRuXbaej/nA4M99Ku1AtWMybuh9QfRuWW/74ClpUX
+ eC5+SCDulJHpXqtuudpXnWF4QBoyYRHUsf26kHfkfzo3jowuc7uJ6hqterv4+gOmfyqsNgdDkDFT
+ 6zUmBUmEOIhERgl90yU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jacattp.click;
+ b=bGlIuvvNeiHCz/AL42PoVuhCG6YV5KBKq89lCQUojy/V7qTrSd32IC0mIJmKYZi9kQpAD8A4qkWw
+ cMPmxflYz0jcPCrlegp/Mphi82JhW/NXGAerofVuLoNdIMLQLk9V82ij+xMrb5eSJJXRlNCvj/Lo
+ HzlR7YiZ2Hu7G5vP7ME=;
+Received: by mail.jacattp.click id h7vifa0001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Apr 2023 14:49:54 -0400 (envelope-from
- <kohls_gift_with_purchase-intel+2Dgvt+2Ddev=lists.freedesktop.org@frsharen.autos>)
-Date: Tue, 18 Apr 2023 14:49:54 -0400
-From: "Kohls Gift With Purchase" <kohls_gift_with_purchase@frsharen.autos>
+ Wed, 19 Apr 2023 08:41:43 -0400 (envelope-from
+ <att-user-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@jacattp.click>)
+Date: Wed, 19 Apr 2023 08:41:43 -0400
+From: "ATT User Feedback" <att-user-feedback@jacattp.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Limited time offer: claim your Ninja Air Fryer now!
+Subject: Every visit a new reward that could get you anything on us
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_820_970107893.1681843741942"
-Message-ID: <0.0.0.5B.1D972269088F758.1AFC73@mail.frsharen.autos>
+ boundary="----=_Part_61_1114543593.1681903005586"
+Message-ID: <0.0.0.6.1D972BC4C0FFC0C.451A1D@mail.jacattp.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,42 +53,41 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_820_970107893.1681843741942
+------=_Part_61_1114543593.1681903005586
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
------------------------------------------------
+A SPECIAL OFFER FOR OUR VALUED USERS
+---------------------------------------------
 
-KOHL'S Rewards
+AT&T
 
-We wanted to take a moment to thank you for choosing Kohl's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+We appreciate your preference as a special brand.  We know there are many options on the market and we are grateful for your continued loyalty and support.  We are committed to continuing to provide high-quality products and services that meet your needs. 
 
-
-As a token of our appreciation, we would like to give you a FREE Ninja Air Fryer when you fill out our survey.  This kitchen appliance is a high-quality air fryer that will allow you to cook healthy and delicious meals with ease and is yours to keep, no strings attached. 
-
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-Start Here Now>>>>>
-http://www.frsharen.autos/merits-congested/9ea6vr2m395j8h6_13z5j2GceF13edX36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ6QdRS7BZ1A0wW6HNpwLD
+So as a token of our appreciation, we'd like to offer you the opportunity to receive a special gift at AT&T.  Just by completing a short survey and you can get an exclusive gift.  Do not miss this opportunity!
 
 
 
+TAKE THE SURVEY >>>>>
+http://www.jacattp.click/a434G2395FH86r11X52d4w13f0J36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQaQdSm6m1D0VG5LX0wD/heirs-mantle
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
-Best regards,
-The Kohl's Survey Team
+We're sure you'll love our special gift from AT&T, and we hope you enjoy your experience with us.  Complete the survey today and you will receive this wonderful award for your valuable time and opinion.  
 
------------------------------------------------
-No longer wish to receive messages?, click_here >>>>> http://www.frsharen.autos/reentering-awash/c426Y23w9i5Wl86y11p52cfq13edR36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ6QdRS6aJ1Gn06O@TMwD
+
+
+
+Thank you again for your preference and we look forward to serving you in the future!, Warm regards
+
+The AT&T Survey
+
+---------------------------------------------
+To drop e-mail, click_here >>>>> http://www.jacattp.click/e994o2395N86lC13H5S2ds5I13f0s36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQaQdSm6V10tVI5o2wLD/hymns-Ciceronianize
 126 E 23rd St New York, NY, US 10010
 
 
 
-<font color="microprocedure"></font><span color="maintainer"><big></span><big></big><span title="dictatorial"></big></span>
+<span></span><span id="inglorious"><style class="engineered"></style><font id="interstage"></font></span><span color="scrapped"></span>
 
-------=_Part_820_970107893.1681843741942--
+------=_Part_61_1114543593.1681903005586--
 
