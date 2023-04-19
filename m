@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D9AAB6E78A8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Apr 2023 13:31:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C22F56E7A5B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 19 Apr 2023 15:13:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 97CB410E93D;
-	Wed, 19 Apr 2023 11:31:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8BB4910E14A;
+	Wed, 19 Apr 2023 13:13:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 19 Apr 2023 11:31:41 UTC
-Received: from mail.jacattp.click (unknown [195.178.146.94])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9E58810E950
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Wed, 19 Apr 2023 13:13:34 UTC
+Received: from mail.flamunited.click (unknown [195.178.146.107])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E42FD10E14A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Apr 2023 11:31:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jacattp.click;
+ Wed, 19 Apr 2023 13:13:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flamunited.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=att-user-feedback@jacattp.click; 
- bh=ah92qPZ4nDjnTMLkgsfeRe7ptpM=;
- b=NU5SMA0CJKdHlbd4R1DOaxOizTYHY/frZaALRuXbaej/nA4M99Ku1AtWMybuh9QfRuWW/74ClpUX
- eC5+SCDulJHpXqtuudpXnWF4QBoyYRHUsf26kHfkfzo3jowuc7uJ6hqterv4+gOmfyqsNgdDkDFT
- 6zUmBUmEOIhERgl90yU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jacattp.click;
- b=bGlIuvvNeiHCz/AL42PoVuhCG6YV5KBKq89lCQUojy/V7qTrSd32IC0mIJmKYZi9kQpAD8A4qkWw
- cMPmxflYz0jcPCrlegp/Mphi82JhW/NXGAerofVuLoNdIMLQLk9V82ij+xMrb5eSJJXRlNCvj/Lo
- HzlR7YiZ2Hu7G5vP7ME=;
-Received: by mail.jacattp.click id h7vifa0001gf for
+ i=united_airlines_marketing@flamunited.click; 
+ bh=cqRp3FIMLxnmfz6BI+Sme+2RHDc=;
+ b=wPxHfcN+/k94jRnsv3RnbSajcOgfQFeMULprYaQX1CrxA/rO+9kGnZ0kRJ28mx1zPoUNJ5XMfyCi
+ Le1H/d5Xgdht/KFdgECQAVXhJGgL7UDG8fIUtx/Na32PSbqZXjZxji4nqoGkcTX6aiKZCzIKLAgD
+ gQdOEOZBdxPbtD7Qnkk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flamunited.click;
+ b=Qe/Kk9cHNECkno2J9FLQLk3Op+mXsREvg0Nv/bBhT8WBUIhI93dje4qwbYJxZZnBpfIDKCX8xGkn
+ 1nRLw1iAXgj26LbZ7BnhhQTkCx6TaosBIsxxi7EXypuPJixefASHFtQHDnHEcX7la//VdSGkgdbt
+ 3bVB066J0lhSpcsY7+s=;
+Received: by mail.flamunited.click id h7vkfu0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 19 Apr 2023 08:41:43 -0400 (envelope-from
- <att-user-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@jacattp.click>)
-Date: Wed, 19 Apr 2023 08:41:43 -0400
-From: "ATT User Feedback" <att-user-feedback@jacattp.click>
+ Wed, 19 Apr 2023 08:58:49 -0400 (envelope-from
+ <united_airlines_marketing-intel+2Dgvt+2Ddev=lists.freedesktop.org@flamunited.click>)
+Date: Wed, 19 Apr 2023 08:58:49 -0400
+From: "United Airlines Marketing" <united_airlines_marketing@flamunited.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Every visit a new reward that could get you anything on us
+Subject: Claim your free flight Anywhere set before the offer runs out today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_61_1114543593.1681903005586"
-Message-ID: <0.0.0.6.1D972BC4C0FFC0C.451A1D@mail.jacattp.click>
+ boundary="----=_Part_19_1955375790.1681909115649"
+Message-ID: <0.0.0.2.1D972BEAF9BDD02.CD8F9@mail.flamunited.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,41 +53,44 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_61_1114543593.1681903005586
+------=_Part_19_1955375790.1681909115649
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR OUR VALUED USERS
----------------------------------------------
+A Special Offer for Valued Customers
+-------------------------------------------
 
-AT&T
+United Airlines 
 
-We appreciate your preference as a special brand.  We know there are many options on the market and we are grateful for your continued loyalty and support.  We are committed to continuing to provide high-quality products and services that meet your needs. 
+We wanted to take a moment to thank you for choosing United Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
 
-So as a token of our appreciation, we'd like to offer you the opportunity to receive a special gift at AT&T.  Just by completing a short survey and you can get an exclusive gift.  Do not miss this opportunity!
+As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with United Airlines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+
+
+For completing the survey, you can receive a $500 Gift!
+
+
+To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
 
 
 
 TAKE THE SURVEY >>>>>
-http://www.jacattp.click/a434G2395FH86r11X52d4w13f0J36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQaQdSm6m1D0VG5LX0wD/heirs-mantle
-
-
-We're sure you'll love our special gift from AT&T, and we hope you enjoy your experience with us.  Complete the survey today and you will receive this wonderful award for your valuable time and opinion.  
+http://www.flamunited.click/theory-contraction/c9c4r2395DAU8611K52d8y13f2Z36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZQdSo6h1k0sz5M@wTD
 
 
 
+Thank you again for your support.  We look forward to hearing from you soon Warm regards
 
-Thank you again for your preference and we look forward to serving you in the future!, Warm regards
 
-The AT&T Survey
+The United Airlines Survey
 
----------------------------------------------
-To drop e-mail, click_here >>>>> http://www.jacattp.click/e994o2395N86lC13H5S2ds5I13f0s36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQaQdSm6V10tVI5o2wLD/hymns-Ciceronianize
+-------------------------------------------
+
+
+To suspend communications, click_here >>>>> http://www.flamunited.click/pushing-distiller/a265u239p5HPr8613lH52d9Yg13f2j36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQZQdSo5F1N0P6rzANwD
 126 E 23rd St New York, NY, US 10010
 
+<big></big><span><font></span></font><style class="supermini"><font size="actuators"></style></font><span lang="Irishizes"></span>
 
-
-<span></span><span id="inglorious"><style class="engineered"></style><font id="interstage"></font></span><span color="scrapped"></span>
-
-------=_Part_61_1114543593.1681903005586--
+------=_Part_19_1955375790.1681909115649--
 
