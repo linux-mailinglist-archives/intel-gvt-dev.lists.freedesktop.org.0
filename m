@@ -2,43 +2,89 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC0836E95F7
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Apr 2023 15:39:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CE876E96A7
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 20 Apr 2023 16:08:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DFB7210E0C3;
-	Thu, 20 Apr 2023 13:39:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3F8FD10E2D6;
+	Thu, 20 Apr 2023 14:08:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 20 Apr 2023 13:39:31 UTC
-Received: from mail.waydeltair.click (unknown [195.178.146.136])
- by gabe.freedesktop.org (Postfix) with ESMTP id F282E10E2C8
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A008810E0A7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 20 Apr 2023 13:39:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=waydeltair.click;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=yourdelta-airlinesrewards@waydeltair.click; 
- bh=ZaJwRf9KeLKtgnE90SD8VjAPaOg=;
- b=YTthd37NKsX+Led+ey2ArhEB482Tu4aM4evdO4spqljlArYgXwwmcW2F52OvJzSKJ7nKEm8eMcpq
- xfAp/Ve9Ylhyc9tObcbdeNKW2QGR0PMHsf4k49W0NNC+UbQ0Fu/MVAIlaRC5JEd1c5vLowlHItB3
- wUapDxcvdGKN2170ZCA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=waydeltair.click;
- b=VWQXrdtSrxYoSEqnYAJL18sNh6ZAvShI8cZpl+2bJd8dfi/hJKiB136kL5fx4CMjrI1+V+Bwez5H
- a+SU4ujzSo4bJvGyKvvkMuRaCb2o1EpWpZd2tlD7Fuvfg/65ID2caZL4mM2HhkTD6pT5i/0jOx/a
- 0vD/JF08VXsj16GFWi0=;
-Received: by mail.waydeltair.click id h850980001gc for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 20 Apr 2023 09:27:58 -0400 (envelope-from
- <yourdelta-airlinesrewards-intel+2Dgvt+2Ddev=lists.freedesktop.org@waydeltair.click>)
-Date: Thu, 20 Apr 2023 09:27:58 -0400
-From: "YourDelta AirlinesRewards" <yourdelta-airlinesrewards@waydeltair.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: The offer for a free flight Anywhere set is ending today - claim
- yours now.
+ Thu, 20 Apr 2023 14:08:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1681999724;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=88fvHxwMeGPUsSGfcCvf7c9NVgAUBwse69MjjzKia0Y=;
+ b=ftiRkQdAcOp3hVw2o+F1x19xipm4kJyE334wzQhLjTi4n6aFPKpAs3uZmKySIcpqHNvXaP
+ KFjDgx1b6ziUMcVuMELL0bkSws51/BkUXGtmeurI7gJbdpQZx3GE/F4vyB/mKAZ/UbNJz+
+ aD1hOJ2Xz8ll2ReMEmVWhom/6v71dWs=
+Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
+ [209.85.166.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-73-ICFWeNI8PsuKoOWNMVyQ3g-1; Thu, 20 Apr 2023 10:08:43 -0400
+X-MC-Unique: ICFWeNI8PsuKoOWNMVyQ3g-1
+Received: by mail-il1-f197.google.com with SMTP id
+ e9e14a558f8ab-32b2485c113so6482025ab.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 20 Apr 2023 07:08:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1681999722; x=1684591722;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=88fvHxwMeGPUsSGfcCvf7c9NVgAUBwse69MjjzKia0Y=;
+ b=fh9AzwBredwP3sY53IJ0NjCFIRWB6xH+BRburjuJnc5gFcsZbaqHHklL/tIUrG4sM1
+ K6BblQ9OAOAzU5E5A85ryJN5cVS+E1+kaZdMT4PSJaVG0juMzHEo+7rsXUXt7CgeWfvj
+ ot3gOsaWrlxRZIwZO7/BX3kiRZU/xJqAffD/ZzivUnT/fjzaI5OWEtTFQjTKowlO+2yd
+ v6VsOhHkBBY/ysno8xdxHkV6dpaHQZFL3Yd7ZM5Ku2oPnBb6+bA/PSb0PRrJpMY0SB7L
+ G8uxJLzjDsdmXgas4BodsA4j1L8aaYx0/Yl1wFawXR+3Jpecc5mqf/9Xv822MJmjb/Dn
+ VxDw==
+X-Gm-Message-State: AAQBX9fdJbB9xa770xgVU0BJ+Z/Noj53bOU6cICFLt+sInxQY2pnQir+
+ Gin6DqJvBeH1j1LOea3ZZDkeBVd+zfdo7gbp4idGDiIuAavak6iNLCfjVbuyCP43EX7RRnFZV1k
+ yixPcisvczOW+AbRWtx3cZ6pPcxa2R2x5RA==
+X-Received: by 2002:a92:c747:0:b0:329:5a6e:3a18 with SMTP id
+ y7-20020a92c747000000b003295a6e3a18mr1404738ilp.4.1681999722377; 
+ Thu, 20 Apr 2023 07:08:42 -0700 (PDT)
+X-Google-Smtp-Source: AKy350aB3ZoBfSt2FgwLwqdDfKyJgN0OkNdN/CcuOgu0oQM1pm2T0RIghw52odblQs9ef7EA3h30Og==
+X-Received: by 2002:a92:c747:0:b0:329:5a6e:3a18 with SMTP id
+ y7-20020a92c747000000b003295a6e3a18mr1404710ilp.4.1681999722053; 
+ Thu, 20 Apr 2023 07:08:42 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ q4-20020a056e02096400b00313b08feec7sm464678ilt.42.2023.04.20.07.08.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Apr 2023 07:08:41 -0700 (PDT)
+Date: Thu, 20 Apr 2023 08:08:39 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>
+Subject: Re: [PATCH v3 12/12] vfio/pci: Report dev_id in
+ VFIO_DEVICE_GET_PCI_HOT_RESET_INFO
+Message-ID: <20230420080839.652732dc.alex.williamson@redhat.com>
+In-Reply-To: <DS0PR11MB7529C11E11F187D7BD88C18AC3639@DS0PR11MB7529.namprd11.prod.outlook.com>
+References: <BN9PR11MB5276782DA56670C8209470828C989@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <ZDfslVwqk6JtPpyD@nvidia.com>
+ <20230413120712.3b9bf42d.alex.williamson@redhat.com>
+ <BN9PR11MB5276A160CA699933B897C8C18C999@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <DS0PR11MB7529B7481AC97261E12AA116C3999@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230414111043.40c15dde.alex.williamson@redhat.com>
+ <DS0PR11MB75290A78D6879EC2E31E21AEC39C9@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230417130140.1b68082e.alex.williamson@redhat.com>
+ <ZD2erN3nKbnyqei9@nvidia.com>
+ <20230417140642.650fc165.alex.williamson@redhat.com>
+ <ZD6TvA+9oI0v4vC2@nvidia.com>
+ <20230418123920.5d92f402.alex.williamson@redhat.com>
+ <DS0PR11MB7529C11E11F187D7BD88C18AC3639@DS0PR11MB7529.namprd11.prod.outlook.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_721_1251476784.1681997243686"
-Message-ID: <0.0.0.50.1D9738BEC23BA60.A4F52@mail.waydeltair.click>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,48 +97,119 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, 
+ Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_721_1251476784.1681997243686
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+On Thu, 20 Apr 2023 12:10:20 +0000
+"Liu, Yi L" <yi.l.liu@intel.com> wrote:
 
-A Special Offer for Valued Customers
--------------------------------------------
+> > From: Alex Williamson <alex.williamson@redhat.com>
+> > Sent: Wednesday, April 19, 2023 2:39 AM
+> > 
+> > On Tue, 18 Apr 2023 09:57:32 -0300
+> > Jason Gunthorpe <jgg@nvidia.com> wrote:
+> >   
+> > > On Mon, Apr 17, 2023 at 02:06:42PM -0600, Alex Williamson wrote:  
+> > > > On Mon, 17 Apr 2023 16:31:56 -0300
+> > > > Jason Gunthorpe <jgg@nvidia.com> wrote:
+> > > >  
+> > > > > On Mon, Apr 17, 2023 at 01:01:40PM -0600, Alex Williamson wrote:  
+> > > > > > Yes, it's not trivial, but Jason is now proposing that we consider
+> > > > > > mixing groups, cdevs, and multiple iommufd_ctxs as invalid.  I think
+> > > > > > this means that regardless of which device calls INFO, there's only one
+> > > > > > answer (assuming same set of devices opened, all cdev, all within same
+> > > > > > iommufd_ctx).  Based on what I explained about my understanding of INFO2
+> > > > > > and Jason agreed to, I think the output would be:
+> > > > > >
+> > > > > > flags: NOT_RESETABLE | DEV_ID
+> > > > > > {
+> > > > > >   { valid devA-id,  devA-BDF },
+> > > > > >   { valid devC-id,  devC-BDF },
+> > > > > >   { valid devD-id,  devD-BDF },
+> > > > > >   { invalid dev-id, devE-BDF },
+> > > > > > }
+> > > > > >
+> > > > > > Here devB gets dropped because the kernel understands that devB is
+> > > > > > unopened, affected, and owned.  It's therefore not a blocker for
+> > > > > > hot-reset.  
+> > > > >
+> > > > > I don't think we want to drop anything because it makes the API
+> > > > > ill suited for the debugging purpose.
+> > > > >
+> > > > > devb should be returned with an invalid dev_id if I understand your
+> > > > > example. Maybe it should return with -1 as the dev_id instead of 0, to
+> > > > > make the debugging a bit better.
+> > > > >
+> > > > > Userspace should look at only NOT_RESETTABLE to determine if it
+> > > > > proceeds or not, and it should use the valid dev_id list to iterate
+> > > > > over the devices it has open to do the config stuff.  
+> > > >
+> > > > If an affected device is owned, not opened, and not interfering with
+> > > > the reset, what is it adding to the API to report it for debugging
+> > > > purposes?  
+> > >
+> > > It lets it print the entire group of devices, this is the only way
+> > > something can learn the actual list of all BDFs affected.  
+> > 
+> > If we do so, userspace must be able to differentiate which devices are
+> > blocking, which necessitates at least a bi-modal invalid dev-id.
+> >   
+> > > dev_id can just return 0, we don't need a complex bitmap. Userspace
+> > > looks at the flag, if !NOT_RESETABLE then it ignores dev_id=0.  
+> > 
+> > I'm having trouble with a succinct definition of dev-id == 0, is it "A
+> > device affected by the hot-reset reset, which does not directly
+> > contribute to the availability of the hot-reset, ex. an unopened device
+> > within the same IOMMU group as an opened device (ie. this is not the
+> > device responsible if hot-reset is unavailable).   
+> 
+> Hide this device in the list looks fine to me. But the calling user should
+> not do any new device open before finishing hot-reset. Otherwise, user may
+> miss a device that needs to do pre/post reset. I think this requirement is
+> acceptable. Is it? 
 
-Delta Airlines 
+I think Kevin and Jason are leaning towards reporting the entire
+dev-set.  The INFO ioctl has always been a point-in-time reading, no
+guarantees are made if the host or user configuration is changed.
+Nothing changes in that respect.
 
-We wanted to take a moment to thank you for choosing Delta Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
+> > Whereas dev-id < 0
+> > (== -1) is an affected device which prevents hot-reset, ex. an un-owned
+> > device, device configured within a different iommufd_ctx, or device
+> > opened outside of the vfio cdev API."  Is that about right?  Thanks,  
+> 
+> Do you mean to have separate err-code for the three possibilities? As
+> the devid is generated by iommufd and it is u32. I'm not sure if we can
+> have such err-code definition without reserving some ids in iommufd. 
 
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with Delta Airlines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+Yes, if we're going to report the full dev-set, I think we need at
+least two unique error codes or else the user has no way to determine
+the subset of invalid dev-ids which block the reset.  I think Jason is
+proposing the set of valid dev-ids are >0, a dev-id of zero indicates
+some form of non-blocking, while <0 (or maybe specifically -1)
+indicates a blocking device.  I was trying to get consensus on a formal
+definition of each of those error codes in my previous reply.  Thanks,
 
-
-For completing the survey, you can receive a $100 Gift!
-
-
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.waydeltair.click/deciphering-unrolled/22e4A2395nK8K612U52fl0W13feu36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQAQdee5uFy106F1w1jD
-
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
-
-
-The Delta Airlines Survey
-
--------------------------------------------
-
-
-To update your communication elections, click_here >>>>> http://www.waydeltair.click/sapling-spurious/b705S2s395hB8_612c52Mf1M13feo36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQAQdee7S10vNlR5ELkwD
-126 E 23rd St New York, NY, US 10010
-
-<style color="delight"><style class="sweat"></style></style><style></style><font><style lang="chopper"></font></style><big></big><span face="refreshingly"></span><style></style>
-
-------=_Part_721_1251476784.1681997243686--
+Alex
 
