@@ -2,42 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F31926EB25C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Apr 2023 21:41:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F3566EB301
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Apr 2023 22:45:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2381410EEE1;
-	Fri, 21 Apr 2023 19:41:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D958E10EF0C;
+	Fri, 21 Apr 2023 20:45:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Fri, 21 Apr 2023 19:41:40 UTC
-Received: from mail.jacpocklw.autos (dominating.201eat.com [185.254.31.202])
- by gabe.freedesktop.org (Postfix) with ESMTP id C7E7110EEDF
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Fri, 21 Apr 2023 20:45:13 UTC
+Received: from mail.jepackmb.click (unknown [185.254.31.204])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2DBB610E34B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Apr 2023 19:41:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jacpocklw.autos; 
+ Fri, 21 Apr 2023 20:45:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jepackmb.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=lowes-monday@jacpocklw.autos; 
- bh=9SCpunMCkku7krz5FmwPOiJxW1A=;
- b=UqzBowG6ToJq1P3R7d69xVXCWgrQX5Y5cmRFfPDB8SUyaRfVW80rsFMns5gFiNtNdMUtbm3PlFNf
- tRHs8708v0eOJBQ412ODYOZRmG/d9Pf0iNgk+vsygzqlmd2FiWsIV/s+SAhUy/SN5cAjh/pHlINP
- RFy+CkCwwFXYalTddks=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jacpocklw.autos;
- b=NrrDcM1EYSYj89D+ABg9htBhlnusCYBAFCr72Z0xfGUrv3Jt5hUjqwDF2MZinzMfUGsUbBBMbaI+
- zXHV11ElI4MX5nRrm56jtDtrMojUQfSh2xiNSI/31U8m6FW2yfrucMg0zXf+32FvE5ZKNvdex3pc
- pDeqbHmXIlTE3PSvZ3Q=;
-Received: by mail.jacpocklw.autos id h8bjfa0001gl for
+ i=tmobile-time@jepackmb.click; 
+ bh=aMZ7O62ePPo0EDAiWcjydEFVlLw=;
+ b=isOx8QpAGEjQkgOsnVczMBi+MRpjbp/MT7/klcA6jQDHtysqouiIu5ATqnbxe7PLNDAb/DB2e3lG
+ x7xe4VAlOmGEr0hMARiOEb4sYzHfNR+MGT6dAFf4rZyYNDNkCRvxy7yTapGm/JP5iPvLzw3DNRgy
+ xa890noQ26QJnFYTQUU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jepackmb.click;
+ b=JWvHDLADaq+PycP8RO/ei+/cWvvdncMPILgr2jW3KSZ/udya8J29Vg8sRXnXPQ1sG8FaH/fYNmqh
+ vyTwycfCe+J7zMRA6F59YE6k2OYjkTUD7lmQUCHbuKD3h5kwb4lr1DVysDyxPQN2Vsnx2TLUhJPD
+ GLrwxLa8GrL4q+ywRmA=;
+Received: by mail.jepackmb.click id h8bqti0001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Apr 2023 15:29:54 -0400 (envelope-from
- <lowes-monday-intel+2Dgvt+2Ddev=lists.freedesktop.org@jacpocklw.autos>)
-Date: Fri, 21 Apr 2023 15:29:54 -0400
-From: "Lowes Monday" <lowes-monday@jacpocklw.autos>
+ Fri, 21 Apr 2023 16:34:12 -0400 (envelope-from
+ <tmobile-time-intel+2Dgvt+2Ddev=lists.freedesktop.org@jepackmb.click>)
+Date: Fri, 21 Apr 2023 16:34:12 -0400
+From: "TMOBILE Time" <tmobile-time@jepackmb.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Get a brand new Stanley Tool set today before the offer expires.
+Subject: Your visits are now rewarded for your loyalty - Awesome
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_625_866874604.1682105337766"
-Message-ID: <0.0.0.45.1D97487A62F8EEC.1E5ED8@mail.jacpocklw.autos>
+ boundary="----=_Part_1030_2007086161.1682109191121"
+Message-ID: <0.0.0.71.1D97490A2085E44.4FD4F4@mail.jepackmb.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,40 +53,39 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_625_866874604.1682105337766
+------=_Part_1030_2007086161.1682109191121
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
 A Special Offer for Our Valued Users
-------------------------------------------------
+----------------------------------------------
 
-LOWE'S
+T-Mobile
 
-We wanted to take a moment to thank you for choosing Lowe's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+We wanted to take a moment to thank you for choosing T-Mobile.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
 
-As a token of our appreciation, we would like to give you a FREE Stanley Tool Set when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
-Start Here Now >>>>>
-http://www.jacpocklw.autos/bulkhead-normalize/ef46Ujy2395Yj_8613I5iN304l1408M36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ8QdKe6G10FAz5cLNwD
+Upon Completion of the Survey you might have a choice between different gifts!
 
-
-
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+Start Now >>>>>>>
+http://www.jepackmb.click/b516l2w3w95i8t6v13LW530V6N1409j36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQXQdKK7MNS1P0v6lqUwjD/hamper-reflective
 
 
 
-Best regards,
-The Lowe's Survey Team
+Thank you again for your support.  We look forward to hearing from you soon! Warm regards,
 
-------------------------------------------------
+The T-Mobile Survey
 
-To do away with notifications, click_here >>>>> http://www.jacpocklw.autos/Everett-rancher/f125L239D5q8F6W13Vu5305JA1408j36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ8QdKe7YKr1u0V5uAwzD
+----------------------------------------------
+
+To end your subscription, Continue_Here_Now >>>>> http://www.jepackmb.click/keenness-Redford/7b04V2395a8DP613Wuh5307D1409M36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQXQdKK6oL10VL5GBw0D
 126 E 23rd St New York, NY, US 10010
 
-<small></small><big></big><span title="reduce"><span class="rhythmically"><font dir="penalized"></span><span></span></font></span><font color="tachometer"></font>
 
-------=_Part_625_866874604.1682105337766--
+
+<style></style><style><style><style></style><style><font class="antiphonal"><font id="syllable"></font></style></style></font><span face="blandly"></span></style><big><style id="expediting"></style></big><style color="Rhodes"></style>
+
+------=_Part_1030_2007086161.1682109191121--
 
