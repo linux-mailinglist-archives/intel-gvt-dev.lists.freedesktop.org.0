@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E14E46EB144
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Apr 2023 19:58:48 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id F31926EB25C
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Apr 2023 21:41:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B108810EEB3;
-	Fri, 21 Apr 2023 17:58:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2381410EEE1;
+	Fri, 21 Apr 2023 19:41:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Fri, 21 Apr 2023 17:58:46 UTC
-Received: from mail.hpdepotool.click (unsympathised.verticalyachtclub.com
- [185.254.31.200])
- by gabe.freedesktop.org (Postfix) with ESMTP id 05A4610EEB0
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Fri, 21 Apr 2023 19:41:40 UTC
+Received: from mail.jacpocklw.autos (dominating.201eat.com [185.254.31.202])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C7E7110EEDF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Apr 2023 17:58:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hpdepotool.click;
+ Fri, 21 Apr 2023 19:41:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jacpocklw.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=homedepotpromotions@hpdepotool.click; 
- bh=dwL6JGfJFrlv53Oj66zyXZ+cgIM=;
- b=pRPyBs4jP/eu86yacZgjRvvHSUuOcBUFhJcIWLPaDutJYpmUoo+x47vCWNT5j6sjjpO+FuRkDnvI
- zgjNaUm/LdsZnM2ogDJtLAOmYHUwHV52RdwGhI59Yler8LQyiuUXlEkS7VAXTfjGkW4uETdijcVV
- LLSQvuOSEmRVoX1eUAA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hpdepotool.click;
- b=YD5muwagE7rk9oGNdqpO3obvPfIoCultRBBUbT/JLqY/VPDdqLtS/n9YzKKmMZZTK94GlXHR6zTU
- rYR8QvZY/Ao8KxTmne6e6QgzBZLa84uy66zOuH1Xta0I71keXGk+nPYOXKz45yrQYvdGB6Vcb/Nh
- gsToHGCgdP/PsAEIRA4=;
-Received: by mail.hpdepotool.click id h8b7dc0001g5 for
+ i=lowes-monday@jacpocklw.autos; 
+ bh=9SCpunMCkku7krz5FmwPOiJxW1A=;
+ b=UqzBowG6ToJq1P3R7d69xVXCWgrQX5Y5cmRFfPDB8SUyaRfVW80rsFMns5gFiNtNdMUtbm3PlFNf
+ tRHs8708v0eOJBQ412ODYOZRmG/d9Pf0iNgk+vsygzqlmd2FiWsIV/s+SAhUy/SN5cAjh/pHlINP
+ RFy+CkCwwFXYalTddks=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jacpocklw.autos;
+ b=NrrDcM1EYSYj89D+ABg9htBhlnusCYBAFCr72Z0xfGUrv3Jt5hUjqwDF2MZinzMfUGsUbBBMbaI+
+ zXHV11ElI4MX5nRrm56jtDtrMojUQfSh2xiNSI/31U8m6FW2yfrucMg0zXf+32FvE5ZKNvdex3pc
+ pDeqbHmXIlTE3PSvZ3Q=;
+Received: by mail.jacpocklw.autos id h8bjfa0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Apr 2023 13:47:03 -0400 (envelope-from
- <homedepotpromotions-intel+2Dgvt+2Ddev=lists.freedesktop.org@hpdepotool.click>)
-Date: Fri, 21 Apr 2023 13:47:03 -0400
-From: HomeDepotPromotions <homedepotpromotions@hpdepotool.click>
+ Fri, 21 Apr 2023 15:29:54 -0400 (envelope-from
+ <lowes-monday-intel+2Dgvt+2Ddev=lists.freedesktop.org@jacpocklw.autos>)
+Date: Fri, 21 Apr 2023 15:29:54 -0400
+From: "Lowes Monday" <lowes-monday@jacpocklw.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Today's rewards on us to celebrate the holiday
+Subject: Get a brand new Stanley Tool set today before the offer expires.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_760_1711506126.1682099150722"
-Message-ID: <0.0.0.55.1D9747948158D60.1CC56@mail.hpdepotool.click>
+ boundary="----=_Part_625_866874604.1682105337766"
+Message-ID: <0.0.0.45.1D97487A62F8EEC.1E5ED8@mail.jacpocklw.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,45 +53,40 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_760_1711506126.1682099150722
+------=_Part_625_866874604.1682105337766
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR VALUED CUSTOMERS
------------------------------------
+A Special Offer for Our Valued Users
+------------------------------------------------
+
+LOWE'S
+
+We wanted to take a moment to thank you for choosing Lowe's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+
+As a token of our appreciation, we would like to give you a FREE Stanley Tool Set when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
+
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
-THe Home Depot
-
-
-The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer. 
-
-
-As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-For completing the survey, you can receive a $100 Gift!
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.hpdepotool.click/7eb4J2395AH86I11e52fer1405B36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQCQdKS5R10MB6CTw23D/stepper-elaborate
+Start Here Now >>>>>
+http://www.jacpocklw.autos/bulkhead-normalize/ef46Ujy2395Yj_8613I5iN304l1408M36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ8QdKe6G10FAz5cLNwD
 
 
 
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
 
-The Home Depot Survey
 
------------------------------------
+Best regards,
+The Lowe's Survey Team
 
-To withdraw from e-mail, click_here >>>>> http://www.hpdepotool.click/crackpot-alarmist/71a6K239tv5o8JD613t52ffOuW1405B36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQCQdKS5LKj105k2wDL
+------------------------------------------------
+
+To do away with notifications, click_here >>>>> http://www.jacpocklw.autos/Everett-rancher/f125L239D5q8F6W13Vu5305JA1408j36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ8QdKe7YKr1u0V5uAwzD
 126 E 23rd St New York, NY, US 10010
 
+<small></small><big></big><span title="reduce"><span class="rhythmically"><font dir="penalized"></span><span></span></font></span><font color="tachometer"></font>
 
-
-<font><font></font><span face="Pomeranian"></font></span><span></span><small></small>
-
-------=_Part_760_1711506126.1682099150722--
+------=_Part_625_866874604.1682105337766--
 
