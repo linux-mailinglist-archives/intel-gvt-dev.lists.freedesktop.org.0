@@ -1,47 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2655C6EF741
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Apr 2023 17:04:05 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A79B6EF73B
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Apr 2023 17:04:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DB28C10EA0E;
-	Wed, 26 Apr 2023 15:04:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A2E6A10EA07;
+	Wed, 26 Apr 2023 15:03:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0E5AD10E9C9;
- Wed, 26 Apr 2023 15:03:54 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7085C10E9C9;
+ Wed, 26 Apr 2023 15:03:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1682521434; x=1714057434;
+ t=1682521435; x=1714057435;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=cXF2mcY3ASYoLB+lAQCixMbfmn9cKx7OJ+kGyQ5pW9M=;
- b=FL1xpDLqA1T1JhtCWBVBcGxQwPFjIRLY9Rav6ZdxmYwIvznIwOcSHIT1
- YmX7iiFrHrhK/oGX8m0H/HO1+LzexqU3I78FI9/1TpGoNUeAGf4IF7jF9
- JjmtNEcAi7k4hs7ig2+/tur9ja+UCCeNWcr+nqNO6zTvcKhD7bFtHzPfK
- W70HgdmU6KzhgfKkjDbi9Zfk7UFlsadTa6/ZBH2Zhgk/fYvNs9H9+Y5Sg
- ZP1FacazqmgN31vaGOyWFpxbe55eARZgEYPDEhhb3MSsud881xEuoWw+3
- HrrAredHwOdH+ETIM3YQO/+iXnAlNcUHnGhccmLvpmnlBRCTqIRLWYjFe A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="349944622"
-X-IronPort-AV: E=Sophos;i="5.99,228,1677571200"; d="scan'208";a="349944622"
+ bh=WFAskGSZ4sRwGClphsOafTN8Hu2qpEcUwsbPFoUsF98=;
+ b=ameA0k5pc9OgGpNN+NgmtdHNHGk+SOiGYe8BZ6UalQ7UxXgIW/wZSk5k
+ 4jbK/QHKbrZ2rMoNrNbRj7iDHKBMMp0qtokhipE7R8A4m8EIl6P06g0fN
+ 76r768oDCIxw0oxyrmOapnBO+rwtj+5CtClwCpCb03qCACbdqU61LRFkx
+ rpk8fCBnDtquA7RPpLH0RAXsB6joJSocGpDt7uJxfQhoMpXni5uLBDlI2
+ r3zHJHOBx9AfK0Hz6cOJ02t6MQiOm3FWEqTWFu7O1/Cw8gd2komrrFZS8
+ 0w1tj37wzehJmOTPe7JX9GRfnZe1BWwkM75aYUvssWDnBFigLg1BVtzdr Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="349944636"
+X-IronPort-AV: E=Sophos;i="5.99,228,1677571200"; d="scan'208";a="349944636"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Apr 2023 08:03:53 -0700
+ 26 Apr 2023 08:03:55 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="805544205"
-X-IronPort-AV: E=Sophos;i="5.99,228,1677571200"; d="scan'208";a="805544205"
+X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="805544241"
+X-IronPort-AV: E=Sophos;i="5.99,228,1677571200"; d="scan'208";a="805544241"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga002.fm.intel.com with ESMTP; 26 Apr 2023 08:03:52 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 26 Apr 2023 08:03:54 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v10 15/22] vfio-iommufd: Add detach_ioas support for emulated
- VFIO devices
-Date: Wed, 26 Apr 2023 08:03:14 -0700
-Message-Id: <20230426150321.454465-16-yi.l.liu@intel.com>
+Subject: [PATCH v10 16/22] vfio: Name noiommu vfio_device with "noiommu-"
+ prefix
+Date: Wed, 26 Apr 2023 08:03:15 -0700
+Message-Id: <20230426150321.454465-17-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230426150321.454465-1-yi.l.liu@intel.com>
 References: <20230426150321.454465-1-yi.l.liu@intel.com>
@@ -71,138 +71,43 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-this prepares for adding DETACH ioctl for emulated VFIO devices.
+For noiommu device, vfio core names the cdev node with prefix "noiommu-".
 
 Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-Tested-by: Terrence Xu <terrence.xu@intel.com>
 Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
 Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/kvmgt.c  |  1 +
- drivers/s390/cio/vfio_ccw_ops.c   |  1 +
- drivers/s390/crypto/vfio_ap_ops.c |  1 +
- drivers/vfio/iommufd.c            | 12 ++++++++++++
- include/linux/vfio.h              |  3 +++
- samples/vfio-mdev/mbochs.c        |  1 +
- samples/vfio-mdev/mdpy.c          |  1 +
- samples/vfio-mdev/mtty.c          |  1 +
- 8 files changed, 21 insertions(+)
+ drivers/vfio/vfio_main.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index de675d799c7d..9cd9e9da60dd 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -1474,6 +1474,7 @@ static const struct vfio_device_ops intel_vgpu_dev_ops = {
- 	.bind_iommufd	= vfio_iommufd_emulated_bind,
- 	.unbind_iommufd = vfio_iommufd_emulated_unbind,
- 	.attach_ioas	= vfio_iommufd_emulated_attach_ioas,
-+	.detach_ioas	= vfio_iommufd_emulated_detach_ioas,
- };
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index 0f1139126622..c0459872d79a 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -269,10 +269,6 @@ static int __vfio_register_dev(struct vfio_device *device,
+ 	if (!device->dev_set)
+ 		vfio_assign_device_set(device, device);
  
- static int intel_vgpu_probe(struct mdev_device *mdev)
-diff --git a/drivers/s390/cio/vfio_ccw_ops.c b/drivers/s390/cio/vfio_ccw_ops.c
-index 5b53b94f13c7..cba4971618ff 100644
---- a/drivers/s390/cio/vfio_ccw_ops.c
-+++ b/drivers/s390/cio/vfio_ccw_ops.c
-@@ -632,6 +632,7 @@ static const struct vfio_device_ops vfio_ccw_dev_ops = {
- 	.bind_iommufd = vfio_iommufd_emulated_bind,
- 	.unbind_iommufd = vfio_iommufd_emulated_unbind,
- 	.attach_ioas = vfio_iommufd_emulated_attach_ioas,
-+	.detach_ioas = vfio_iommufd_emulated_detach_ioas,
- };
+-	ret = dev_set_name(&device->device, "vfio%d", device->index);
+-	if (ret)
+-		return ret;
+-
+ 	ret = vfio_device_set_group(device, type);
+ 	if (ret)
+ 		return ret;
+@@ -281,6 +277,11 @@ static int __vfio_register_dev(struct vfio_device *device,
+ 	if (ret)
+ 		goto err_out;
  
- struct mdev_driver vfio_ccw_mdev_driver = {
-diff --git a/drivers/s390/crypto/vfio_ap_ops.c b/drivers/s390/crypto/vfio_ap_ops.c
-index 72e10abb103a..9902e62e7a17 100644
---- a/drivers/s390/crypto/vfio_ap_ops.c
-+++ b/drivers/s390/crypto/vfio_ap_ops.c
-@@ -1844,6 +1844,7 @@ static const struct vfio_device_ops vfio_ap_matrix_dev_ops = {
- 	.bind_iommufd = vfio_iommufd_emulated_bind,
- 	.unbind_iommufd = vfio_iommufd_emulated_unbind,
- 	.attach_ioas = vfio_iommufd_emulated_attach_ioas,
-+	.detach_ioas = vfio_iommufd_emulated_detach_ioas,
- };
- 
- static struct mdev_driver vfio_ap_matrix_driver = {
-diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
-index fad040998c30..49dc1182dea8 100644
---- a/drivers/vfio/iommufd.c
-+++ b/drivers/vfio/iommufd.c
-@@ -231,3 +231,15 @@ int vfio_iommufd_emulated_attach_ioas(struct vfio_device *vdev, u32 *pt_id)
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(vfio_iommufd_emulated_attach_ioas);
++	ret = dev_set_name(&device->device, "%svfio%d",
++			   device->noiommu ? "noiommu-" : "", device->index);
++	if (ret)
++		goto err_out;
 +
-+void vfio_iommufd_emulated_detach_ioas(struct vfio_device *vdev)
-+{
-+	lockdep_assert_held(&vdev->dev_set->lock);
-+
-+	if (WARN_ON(!vdev->iommufd_access) || !vdev->iommufd_attached)
-+		return;
-+
-+	iommufd_access_detach(vdev->iommufd_access);
-+	vdev->iommufd_attached = false;
-+}
-+EXPORT_SYMBOL_GPL(vfio_iommufd_emulated_detach_ioas);
-diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index 9e16e195d1b7..d18d2d5ef864 100644
---- a/include/linux/vfio.h
-+++ b/include/linux/vfio.h
-@@ -130,6 +130,7 @@ int vfio_iommufd_emulated_bind(struct vfio_device *vdev,
- 			       struct iommufd_ctx *ictx, u32 *out_device_id);
- void vfio_iommufd_emulated_unbind(struct vfio_device *vdev);
- int vfio_iommufd_emulated_attach_ioas(struct vfio_device *vdev, u32 *pt_id);
-+void vfio_iommufd_emulated_detach_ioas(struct vfio_device *vdev);
- #else
- static inline struct iommufd_ctx *
- vfio_iommufd_physical_ictx(struct vfio_device *vdev)
-@@ -159,6 +160,8 @@ vfio_iommufd_physical_devid(struct vfio_device *vdev)
- 	((void (*)(struct vfio_device *vdev)) NULL)
- #define vfio_iommufd_emulated_attach_ioas \
- 	((int (*)(struct vfio_device *vdev, u32 *pt_id)) NULL)
-+#define vfio_iommufd_emulated_detach_ioas \
-+	((void (*)(struct vfio_device *vdev)) NULL)
- #endif
- 
- static inline bool vfio_device_cdev_opened(struct vfio_device *device)
-diff --git a/samples/vfio-mdev/mbochs.c b/samples/vfio-mdev/mbochs.c
-index 19391dda5fba..47a2914b63d9 100644
---- a/samples/vfio-mdev/mbochs.c
-+++ b/samples/vfio-mdev/mbochs.c
-@@ -1377,6 +1377,7 @@ static const struct vfio_device_ops mbochs_dev_ops = {
- 	.bind_iommufd	= vfio_iommufd_emulated_bind,
- 	.unbind_iommufd	= vfio_iommufd_emulated_unbind,
- 	.attach_ioas	= vfio_iommufd_emulated_attach_ioas,
-+	.detach_ioas	= vfio_iommufd_emulated_detach_ioas,
- };
- 
- static struct mdev_driver mbochs_driver = {
-diff --git a/samples/vfio-mdev/mdpy.c b/samples/vfio-mdev/mdpy.c
-index 5f48aef36995..ce0e67f37406 100644
---- a/samples/vfio-mdev/mdpy.c
-+++ b/samples/vfio-mdev/mdpy.c
-@@ -666,6 +666,7 @@ static const struct vfio_device_ops mdpy_dev_ops = {
- 	.bind_iommufd	= vfio_iommufd_emulated_bind,
- 	.unbind_iommufd	= vfio_iommufd_emulated_unbind,
- 	.attach_ioas	= vfio_iommufd_emulated_attach_ioas,
-+	.detach_ioas	= vfio_iommufd_emulated_detach_ioas,
- };
- 
- static struct mdev_driver mdpy_driver = {
-diff --git a/samples/vfio-mdev/mtty.c b/samples/vfio-mdev/mtty.c
-index 35460901b9f7..5069aef3c2a2 100644
---- a/samples/vfio-mdev/mtty.c
-+++ b/samples/vfio-mdev/mtty.c
-@@ -1272,6 +1272,7 @@ static const struct vfio_device_ops mtty_dev_ops = {
- 	.bind_iommufd	= vfio_iommufd_emulated_bind,
- 	.unbind_iommufd	= vfio_iommufd_emulated_unbind,
- 	.attach_ioas	= vfio_iommufd_emulated_attach_ioas,
-+	.detach_ioas	= vfio_iommufd_emulated_detach_ioas,
- };
- 
- static struct mdev_driver mtty_driver = {
+ 	ret = device_add(&device->device);
+ 	if (ret)
+ 		goto err_out;
 -- 
 2.34.1
 
