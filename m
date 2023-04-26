@@ -1,47 +1,49 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 707AD6EF6C7
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FBB36EF6C4
 	for <lists+intel-gvt-dev@lfdr.de>; Wed, 26 Apr 2023 16:54:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 35BC810E530;
-	Wed, 26 Apr 2023 14:54:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CE75210E39F;
+	Wed, 26 Apr 2023 14:54:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7F9A210E293;
- Wed, 26 Apr 2023 14:54:25 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 95C7510E39F;
+ Wed, 26 Apr 2023 14:54:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1682520866; x=1714056866;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=4m9wk/nfUu+Ko6ZOipEux5/ofaGiWcx58iIPXEvzblM=;
- b=UE7OXN2K96K3sYHGp/NYpOqG8GLXhOSnbDvL9ync/yAIB3ufFwx8/xS7
- ST1agcBaLAxPbrOfKMNKErK6Rw7Z3amAJXsqL4Z43x6JiKB/7k9FMwbmi
- QMbXzjcPO/weSgb2s8fNJY51nLWVurBqq0wrIRTtyc0K/ixnWFOW7Jcsl
- BauQ7GHCxM+NgBZurrb9w8P8yFAoaX7h/lJ/XWUZabuNnVx82x/QXWd/u
- Bj43oqBcEGpc7VCf+c39X3UDIPaZdC+5ibPxXmInWU0c15W2OYE2bqhGc
- Gu2DXuP+xRlIc23axUtfnKZXVc4drWxky3yOpnaG8yPOcgNZm8kr5X/tI A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="433410210"
-X-IronPort-AV: E=Sophos;i="5.99,228,1677571200"; d="scan'208";a="433410210"
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=Ei+ldlGBA0woJE13bWLVPf1qW3075XzsC5F91f4P4Ag=;
+ b=FSY4ouGrW6qyIfEZgQaIB/Dyn+ASlIGiVbrQ2YIey+VJYjN0mGLRqjoZ
+ 1qeOE11wVRxTcfWxm8rHsngjP4JXfEOk49sk/YCEOsk+vEDVG2WQx7sDi
+ VJTRiffJAWiSaA9Jxbp1VmdnhX5zQ/gXLSuZ5BmhtvDMk1vURu4oJTems
+ FRZcGWkVSCTCvIwVKTKXUf4tUiqPrP4VJ3nwmjEEEldrn+IyHq7Wz4ibG
+ owjT9F2iePrinEGSrzUZ4keG5mn1ajZ+sG0ZkqAAi51hpPKwn//nBWRLo
+ hb12ze0LJjquBqDUez+AjjuT171R9QKxJ7XEMJu/1xFBEHOFNQA66KT6W w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="433410234"
+X-IronPort-AV: E=Sophos;i="5.99,228,1677571200"; d="scan'208";a="433410234"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Apr 2023 07:54:23 -0700
+ 26 Apr 2023 07:54:24 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="758643974"
-X-IronPort-AV: E=Sophos;i="5.99,228,1677571200"; d="scan'208";a="758643974"
+X-IronPort-AV: E=McAfee;i="6600,9927,10692"; a="758643988"
+X-IronPort-AV: E=Sophos;i="5.99,228,1677571200"; d="scan'208";a="758643988"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga008.fm.intel.com with ESMTP; 26 Apr 2023 07:54:21 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 26 Apr 2023 07:54:24 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v4 0/9] Enhance vfio PCI hot reset for vfio cdev device
-Date: Wed, 26 Apr 2023 07:54:10 -0700
-Message-Id: <20230426145419.450922-1-yi.l.liu@intel.com>
+Subject: [PATCH v4 1/9] vfio: Determine noiommu in vfio_device registration
+Date: Wed, 26 Apr 2023 07:54:11 -0700
+Message-Id: <20230426145419.450922-2-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20230426145419.450922-1-yi.l.liu@intel.com>
+References: <20230426145419.450922-1-yi.l.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -68,76 +70,89 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-VFIO_DEVICE_PCI_HOT_RESET requires user to pass an array of group fds
-to prove that it owns all devices affected by resetting the calling
-device. While for cdev devices, user can use an iommufd-based ownership
-checking model and invoke VFIO_DEVICE_PCI_HOT_RESET with a zero-length
-fd array.
+This adds a noiommu flag in vfio_device, hence caller of the
+vfio_device_is_noiommu() just refers to the flag for noiommu
+check.
 
-This series first creates iommufd_access for noiommu devices to fill the
-gap for adding iommufd-based ownership checking model, then extends
-VFIO_DEVICE_GET_PCI_HOT_RESET_INFO to check ownership and return the
-check result and the devid of affected devices to user. In the end, extends
-the VFIO_DEVICE_PCI_HOT_RESET to accept zero-length fd array for hot-reset
-with cdev devices.
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+---
+ drivers/vfio/iommufd.c   | 4 ++--
+ drivers/vfio/vfio.h      | 7 ++++---
+ drivers/vfio/vfio_main.c | 4 ++++
+ include/linux/vfio.h     | 1 +
+ 4 files changed, 11 insertions(+), 5 deletions(-)
 
-The new hot reset method and updated _INFO ioctl are tested with the
-below qemu:
-
-https://github.com/yiliu1765/qemu/tree/iommufd_rfcv4.mig.reset.v4_var3
-(requires to test with the cdev kernel)
-
-Change log:
-
-v4:
- - Rename the patch series subject
- - Patch 01 is moved from the cdev series
- - Patch 02, 06 are new per review comments in v3
- - Patch 03/04/05/07/08/09 are from v3 with updates
-
-v3: https://lore.kernel.org/kvm/20230401144429.88673-1-yi.l.liu@intel.com/
- - Remove the new _INFO ioctl of v2, extend the existing _INFO ioctl to
-   report devid (Alex)
- - Add r-b from Jason
- - Add t-b from Terrence Xu and Yanting Jiang (mainly regression test)
-
-v2: https://lore.kernel.org/kvm/20230327093458.44939-1-yi.l.liu@intel.com/
- - Split the patch 03 of v1 to be 03, 04 and 05 of v2 (Jaon)
- - Add r-b from Kevin and Jason
- - Add patch 10 to introduce a new _INFO ioctl for the usage of device
-   fd passing usage in cdev path (Jason, Alex)
-
-v1: https://lore.kernel.org/kvm/20230316124156.12064-1-yi.l.liu@intel.com/
-
-Regards,
-	Yi Liu
-
-Yi Liu (9):
-  vfio: Determine noiommu in vfio_device registration
-  vfio-iommufd: Create iommufd_access for noiommu devices
-  vfio/pci: Update comment around group_fd get in
-    vfio_pci_ioctl_pci_hot_reset()
-  vfio/pci: Move the existing hot reset logic to be a helper
-  vfio: Mark cdev usage in vfio_device
-  iommufd: Reserved -1 in the iommufd xarray
-  vfio-iommufd: Add helper to retrieve iommufd_ctx and devid for
-    vfio_device
-  vfio/pci: Extend VFIO_DEVICE_GET_PCI_HOT_RESET_INFO for vfio device
-    cdev
-  vfio/pci: Allow passing zero-length fd array in
-    VFIO_DEVICE_PCI_HOT_RESET
-
- drivers/iommu/iommufd/device.c   |  24 ++++
- drivers/iommu/iommufd/main.c     |   5 +-
- drivers/vfio/iommufd.c           |  48 +++++--
- drivers/vfio/pci/vfio_pci_core.c | 223 +++++++++++++++++++++++++------
- drivers/vfio/vfio.h              |   7 +-
- drivers/vfio/vfio_main.c         |   4 +
- include/linux/iommufd.h          |   6 +
- include/linux/vfio.h             |  22 +++
- include/uapi/linux/vfio.h        |  61 ++++++++-
- 9 files changed, 347 insertions(+), 53 deletions(-)
-
+diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
+index 88b00c501015..895852ad37ed 100644
+--- a/drivers/vfio/iommufd.c
++++ b/drivers/vfio/iommufd.c
+@@ -18,7 +18,7 @@ int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
+ 
+ 	lockdep_assert_held(&vdev->dev_set->lock);
+ 
+-	if (vfio_device_is_noiommu(vdev)) {
++	if (vdev->noiommu) {
+ 		if (!capable(CAP_SYS_RAWIO))
+ 			return -EPERM;
+ 
+@@ -59,7 +59,7 @@ void vfio_iommufd_unbind(struct vfio_device *vdev)
+ {
+ 	lockdep_assert_held(&vdev->dev_set->lock);
+ 
+-	if (vfio_device_is_noiommu(vdev))
++	if (vdev->noiommu)
+ 		return;
+ 
+ 	if (vdev->ops->unbind_iommufd)
+diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+index 7b19c621e0e6..1ddf43863ad6 100644
+--- a/drivers/vfio/vfio.h
++++ b/drivers/vfio/vfio.h
+@@ -88,10 +88,11 @@ bool vfio_device_has_container(struct vfio_device *device);
+ int __init vfio_group_init(void);
+ void vfio_group_cleanup(void);
+ 
+-static inline bool vfio_device_is_noiommu(struct vfio_device *vdev)
++static inline int vfio_device_set_noiommu(struct vfio_device *device)
+ {
+-	return IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
+-	       vdev->group->type == VFIO_NO_IOMMU;
++	device->noiommu = IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
++			  device->group->type == VFIO_NO_IOMMU;
++	return 0;
+ }
+ 
+ #if IS_ENABLED(CONFIG_VFIO_CONTAINER)
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index 89497c933490..09be9df2ceca 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -276,6 +276,10 @@ static int __vfio_register_dev(struct vfio_device *device,
+ 	if (ret)
+ 		return ret;
+ 
++	ret = vfio_device_set_noiommu(device);
++	if (ret)
++		goto err_out;
++
+ 	ret = device_add(&device->device);
+ 	if (ret)
+ 		goto err_out;
+diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+index 2c137ea94a3e..4ee613924435 100644
+--- a/include/linux/vfio.h
++++ b/include/linux/vfio.h
+@@ -62,6 +62,7 @@ struct vfio_device {
+ 	struct iommufd_device *iommufd_device;
+ 	bool iommufd_attached;
+ #endif
++	bool noiommu;
+ };
+ 
+ /**
 -- 
 2.34.1
 
