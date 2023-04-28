@@ -2,51 +2,138 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E633E6F12D2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Apr 2023 09:50:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 887B96F1438
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Apr 2023 11:31:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AB11F10E0CC;
-	Fri, 28 Apr 2023 07:50:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B747510ECA3;
+	Fri, 28 Apr 2023 09:31:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5DBD210E0CC;
- Fri, 28 Apr 2023 07:50:23 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E066110EC9E;
+ Fri, 28 Apr 2023 09:31:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1682668223; x=1714204223;
- h=date:from:to:cc:subject:message-id:reply-to:mime-version;
- bh=KNnnlR7dkv9MICRYZzU5PtUppjnivrDSfIyMh7ZmhoA=;
- b=jVjwe/uPQPELJjKK/aIMZaeZt/ucMODInac/f0JmlkQu02Q6Euu9qYj+
- FJNRLJtzsvvK5uEoxLgwhMZUeBHI0smsIJdN+apuCENZRFMXq1x6UBwDV
- HqAhI6TpQo+Br6dgixQHpwttG2SxMpQWB98Zm2RqceN7NLKafn20NpCNd
- gom/QbiOQaah9g7rEwszZaQsUbLbEV7Q5xbHYYySNTGar2Izv7SAdV6/x
- eEbfl/SYf4enGeExr49ENHKTcODmT+orXX1bek0D6zcddvmGLT+WXm9o4
- Y5QJk0y5mn+taHI7CzU0FyfehkUZHAYqfuWTHIDIrJKYLCmNXpPVQPjSO A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="346445098"
-X-IronPort-AV: E=Sophos;i="5.99,233,1677571200"; 
- d="asc'?scan'208";a="346445098"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Apr 2023 00:50:22 -0700
+ t=1682674308; x=1714210308;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=SJNa2wIlzH5MMiiF8pOD8PbDPFOboVwShKJIrcci2F0=;
+ b=hw0nw6gUOklhZFV6kkqMDZQE/E4ozlVn1Tvlu6e8SfrXZiUOef6QrAtq
+ eo2NTQ+LSbbnJ6Q+vxW0fCY8dksQcoHYmR/76eA/SUd+8kyhmIC2rAYfu
+ r1TXO//7fO37M70e0BldA29mVJgW+u9zJCWPNOylX6nXNr3v63+Yd91p5
+ Huh0xTffNiIicqlybFGQZlJe8qi+nq/uiCHWyemuVet+u+uFveXZ7Nfsa
+ Xq4RVfYfzai1xopuNxo1Jpod4d07BvE0OBwmP2t6TD45ls/H3Od1oX0Gp
+ rd5DFLUE1qKhDBS4kVz1sreV47zKxCve0yRvGPbsWqg/pAiA617G58XCN g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="375692277"
+X-IronPort-AV: E=Sophos;i="5.99,234,1677571200"; d="scan'208";a="375692277"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Apr 2023 02:28:44 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="838762956"
-X-IronPort-AV: E=Sophos;i="5.99,233,1677571200"; 
- d="asc'?scan'208";a="838762956"
-Received: from debian-skl.sh.intel.com (HELO debian-skl) ([10.239.160.45])
- by fmsmga001.fm.intel.com with ESMTP; 28 Apr 2023 00:50:20 -0700
-Date: Fri, 28 Apr 2023 15:47:55 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
- Jani Nikula <jani.nikula@intel.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
-Subject: [PULL] gvt-next-fixes
-Message-ID: <ZEt6K2C0WJTePdk6@debian-scheme>
+X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="759591310"
+X-IronPort-AV: E=Sophos;i="5.99,234,1677571200"; d="scan'208";a="759591310"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by fmsmga008.fm.intel.com with ESMTP; 28 Apr 2023 02:28:44 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Fri, 28 Apr 2023 02:28:44 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Fri, 28 Apr 2023 02:28:44 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.106)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Fri, 28 Apr 2023 02:28:44 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TpwetohPwELvDCsyWJKkAn0GmFLYjKQmtsXGhbFchT5rRphMBCFHPHyBZVEr67J4fcXDboZj002UcQzYWKs4JHZrF+P6yqOXZKVqcUzMG+LA+8uh0basqMbS6k0vWJhZbRKowvg0giukfw3uuvFsPsw+5tiMjYy0XdVCxnEI43V+3dtby4W2qWb9JI0w7+iqIIFt9ReoRzfW0aiy+O2PddYvgiP25LcSLW4+A23A6I8lC+CSyiR9k+r/KJmVpSg0ZN1qFUtN9R89FOJw/gwzkiO9zGgWB/jgVonz285ny1DgksIQCRIdTNuRozgpMPpxT0VMLnw1awmEZ8rG7D4mfg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=SJNa2wIlzH5MMiiF8pOD8PbDPFOboVwShKJIrcci2F0=;
+ b=PVAdewyipoDV8KPyrQaIgFmqEmQRSXMjgxEEA/oeA629TiCEE/f+1k0yVZhPCSSvg+3qKsskJGCOoAcsiHKPSpn/TkXqLFMVfG+YJnaaRYsJnk6XmKYjcToYX6r32azZC70sxhdzp/1U7NrhZnNb25ypJ296Zf/8eGDWd3tsVbq6QSA4mnSlmxQFYyAvgC5h1xo5NEr1qGyd4lMQUc0om2sTKvEaBcDEq5Osv2K4NbfYFAXtq+NHoBJMt/jKZygvAX3yYF/yNpnuVZ3PbKx6nNb8VlIM2U6PykygCRm0ByWHHrGmCmtorFX3eP0DfQXWXr+MkyV4jH9N0DrwF4CopQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MW4PR11MB6763.namprd11.prod.outlook.com (2603:10b6:303:20b::7)
+ by CO1PR11MB4881.namprd11.prod.outlook.com (2603:10b6:303:91::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6340.21; Fri, 28 Apr
+ 2023 09:28:42 +0000
+Received: from MW4PR11MB6763.namprd11.prod.outlook.com
+ ([fe80::ea27:a8a0:3e6:db89]) by MW4PR11MB6763.namprd11.prod.outlook.com
+ ([fe80::ea27:a8a0:3e6:db89%7]) with mapi id 15.20.6340.022; Fri, 28 Apr 2023
+ 09:28:42 +0000
+From: "Jiang, Yanting" <yanting.jiang@intel.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>
+Subject: RE: [PATCH v4 0/9] Enhance vfio PCI hot reset for vfio cdev device
+Thread-Topic: [PATCH v4 0/9] Enhance vfio PCI hot reset for vfio cdev device
+Thread-Index: AQHZeE8AbqZEF84PlUWwgvN23aVeha9AdnOA
+Date: Fri, 28 Apr 2023 09:28:42 +0000
+Message-ID: <MW4PR11MB67632FDF85A5BD729B09318AE86B9@MW4PR11MB6763.namprd11.prod.outlook.com>
+References: <20230426145419.450922-1-yi.l.liu@intel.com>
+In-Reply-To: <20230426145419.450922-1-yi.l.liu@intel.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MW4PR11MB6763:EE_|CO1PR11MB4881:EE_
+x-ms-office365-filtering-correlation-id: 9f5e17cb-d39b-4f55-becb-08db47caf50a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: xvqZA6rauxA7H5XX8Ge9sIintk/p49/jHsz19JVjCovIN6IwfKfGvZxgyqBhqqfbHyS4hxWYzPtl61nAll6qCyJStJ8E7zuCMhtc0QwU/6fSCLPz402Lzas6EXEd4wM76th1nNS50nDhE0qz77nCli8cyUGSbJuD05K2xRQdQnprU1XAI9KXMTUpLY0mZgsLtRZuC9jsh8Dc3uxJp4yVqPZB1ouAiTgfeup9u2eS7YO/kj77HgRfJYAgutXvnXOsRrBhdg3YCSVMbAgWwYRpwS+BeC3l1DqW2parB4rUMHNygLMTY/+pkcCjBOdlyyaFVy9G+UhiiqTmglSIxIS5E5RxPlasdC6BIdqmgUJA6cKh9vAFYllKHwTLV7k2yqxbr0LsL2Jz/U20Fgru96mxMmWsWd6ajpkUNhG17C6bxJI0parfD6u1mF2gyjN+MuYiqDG1BBLahVsjKe5gty/WkuijXQ6wv1ns8xfLTBeXDMyrr8HxgwLIm80B3g2BRq2TTCLQYyP8qPstZb8LlKov+Pzy3+uo1/G6B/v7gjTvWrAzdQRl99ux/2ANg4yuwgeHipp3wT6pYLcMU7jj9kLN3ZKLMvrHCccKcbaw+AB0A1g=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW4PR11MB6763.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(366004)(136003)(346002)(376002)(396003)(39860400002)(451199021)(66446008)(66556008)(316002)(76116006)(66476007)(6636002)(4326008)(110136005)(66946007)(54906003)(7416002)(5660300002)(82960400001)(52536014)(55016003)(41300700001)(8936002)(64756008)(8676002)(38070700005)(2906002)(38100700002)(122000001)(186003)(966005)(26005)(6506007)(9686003)(83380400001)(33656002)(86362001)(478600001)(71200400001)(7696005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?kPjxOKEY165q6O/WXkkASuczdees/GBeZA0pvLGKDhtveP/bD8GBAq6YM8JX?=
+ =?us-ascii?Q?3o23pbn01i8lTf27k3SFoNT7DjqK8upuKs5lUkBTK2+/ZAXsly1cuJFf3I/n?=
+ =?us-ascii?Q?L6u12dfJ/6UpnnOSjrxlPwFuBPIjOLalO1Logqh0LsgQyvCHQTctZUZLP7RQ?=
+ =?us-ascii?Q?4dnlR1dtMYoX24Rb+cHe2MDpWUY9fFGyFNtb6s7ElrwU8j8bBsdVfysq8thF?=
+ =?us-ascii?Q?Agalm/+aTHPvO5UFxAXVRyXf1V430C+l5UEHsdBa7fLGdWcLCH0/JdUD/+Hk?=
+ =?us-ascii?Q?/E3C5DwZaDjkub2kqTavRLVvi29Sfgm6BXmIowcFzqgaWJS3/oUe+KMhQSas?=
+ =?us-ascii?Q?4kDZNA7fybWwLMK0nQxCgf143qe70+afaCn2Dp7UZuwhx0LEVphZfwdu2lcT?=
+ =?us-ascii?Q?OC2IKMbITb6XszgZVYwocdeVpTCDOuTk1kZqgTn48F57teNwJy/rXMtz0snZ?=
+ =?us-ascii?Q?hjmGvFyHMhRrYLoC7svWryrrRuYJ7vxUmpKTPHfhqe2hFVSq75jPd5HD0PAB?=
+ =?us-ascii?Q?kS63wYvwi8MYeKPAEVAaleDaLDNzNi92kXyfPEwbtOgmzV/3VH0Wn1lDVj+R?=
+ =?us-ascii?Q?Qr6DuqNna6rh1yvKWuJ8TzhkVin0IK6e/u43ZDFM9Ne0Oje1Zg0lRnGVPsjz?=
+ =?us-ascii?Q?4s7vWhhz65mvhZlt6St1JiWI2ZCN6SFKctGiqAztJkU3xOBSxFN43laIlcki?=
+ =?us-ascii?Q?bEy/btSr9pxXqIW3/MmcyO8mP9DIAPE9B2mb4yeZwIc5Z/RPnbCoxDz/bAUM?=
+ =?us-ascii?Q?3+4a3ljWAoyI4HN123K7anbWEL7X1x3Gu+mTYSVMG9M0oIuq3nc3URxpQtnG?=
+ =?us-ascii?Q?EQUNYaU09Ee9nnpstr1K6YiuNcp16eqPLbivDaaINGF4uOhxyLxWkSHgAy/r?=
+ =?us-ascii?Q?nVWPUBW6W9j9kzoB0Y6qGdAV077nigt4hImNGyRWkzZFoJCkumpqW/Z61Y2T?=
+ =?us-ascii?Q?mRRH8Xp1wbg3jaJAtzGDCdwHCjSa6RyzzusHZv9F7/Tkcvf+maZVUeZlplWA?=
+ =?us-ascii?Q?y1TbxJk/1oxlB3HhfTrWkdolwPkVTuzW+cRmaXE4bSaBSDw2Jxd7+R3WDsq9?=
+ =?us-ascii?Q?AnX5a9AMbMtMCv2XvfY1sA+ZfJg43kSqJazQY47U/IfEtJU/AyWHkqI3J24I?=
+ =?us-ascii?Q?Rmdy+Sr4NKTaOgySlTAGp9PWYP3MxMWc27U4+3wO8An90L/o18dMQR+OSPAB?=
+ =?us-ascii?Q?dnR1y1olETsupUI2tqcwLWDBFWXnP+6WwGZSpD1kNG1l0QCylwxxA3z4coYe?=
+ =?us-ascii?Q?NoOyr+/6mp7D07FBvlH6e/cIMg6UYe83j8eFXbl5ahKDNkLG9mdO3G0oRUK4?=
+ =?us-ascii?Q?kWa2/hKVZMJ+MAaQ81GG74ZEDcWYa0jWyz8nY368oXZ8Pz2qFjELbUwimCHy?=
+ =?us-ascii?Q?Q2BKFfMM0ZTnEBh8fO7OTuWrtFtTwxGMvnirAVjcrjfZeJTsU2uYxkTTWe7u?=
+ =?us-ascii?Q?TppQwFAq5jJQ51eGPydAtzhi+OYpmugH3f+BBPFmXMhNEwXJVWDcFC+BWpvP?=
+ =?us-ascii?Q?wlLWXVhwtwo8iyBhWE+8+HV+fuFYTd8J6zvRqfmhJeEmnNHWVQZzZslrJqEa?=
+ =?us-ascii?Q?ByPZIFl8tbQGFu4nDkq3LfKqd3Sn5lhNaYtShAf1?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="O1DrvfLjZrkfbLCC"
-Content-Disposition: inline
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB6763.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9f5e17cb-d39b-4f55-becb-08db47caf50a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Apr 2023 09:28:42.2824 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VR/zOaYzwVlCQqQCghB6z+XTs+1admrcxH9w9SmnH+gmxQcnG011Qfj71v1GR4HWHYTgD2EEFhSBxuIV0PT3yw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4881
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,62 +146,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
- intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, "Lv,
- Zhiyuan" <zhiyuan.lv@intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "Hao, Xudong" <xudong.hao@intel.com>, "Duan,
+ Zhenzhong" <zhenzhong.duan@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+> VFIO_DEVICE_PCI_HOT_RESET requires user to pass an array of group fds to
+> prove that it owns all devices affected by resetting the calling device. =
+While for
+> cdev devices, user can use an iommufd-based ownership checking model and
+> invoke VFIO_DEVICE_PCI_HOT_RESET with a zero-length fd array.
+>=20
+> This series first creates iommufd_access for noiommu devices to fill the =
+gap for
+> adding iommufd-based ownership checking model, then extends
+> VFIO_DEVICE_GET_PCI_HOT_RESET_INFO to check ownership and return the
+> check result and the devid of affected devices to user. In the end, exten=
+ds the
+> VFIO_DEVICE_PCI_HOT_RESET to accept zero-length fd array for hot-reset wi=
+th
+> cdev devices.
+>=20
+> The new hot reset method and updated _INFO ioctl are tested with the belo=
+w
+> qemu:
+>=20
+> https://github.com/yiliu1765/qemu/tree/iommufd_rfcv4.mig.reset.v4_var3
+> (requires to test with the cdev kernel)
+>=20
 
---O1DrvfLjZrkfbLCC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Tested NIC passthrough on Intel platform.
+Result looks good hence,
+Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 
+Thanks,
+Yanting
 
-Hi,
-
-Here's one single change for gvt to use idr based dmabuf object
-reference instead of old adhoc code. We've verified no regression
-for internal test.
-
-Thanks.
---
-The following changes since commit d944eafed618a8507270b324ad9d5405bb7f0b3e:
-
-  drm/i915: Check pipe source size when using skl+ scalers (2023-04-24 14:48:42 +0300)
-
-are available in the Git repository at:
-
-  https://github.com/intel/gvt-linux.git tags/gvt-next-fixes-2023-04-28
-
-for you to fetch changes up to 004040fdb55fa55463730c95d1384cb67f9396c3:
-
-  drm/i915/gvt: Make use of idr_find and idr_for_each_entry in dmabuf (2023-04-28 15:21:17 +0800)
-
-----------------------------------------------------------------
-gvt-next-fixes-2023-04-28
-
-- Use idr based dmabuf object reference (Cai Huoqing)
-
-----------------------------------------------------------------
-Cai Huoqing (1):
-      drm/i915/gvt: Make use of idr_find and idr_for_each_entry in dmabuf
-
- drivers/gpu/drm/i915/gvt/dmabuf.c | 58 ++++++++-------------------------------
- drivers/gpu/drm/i915/gvt/dmabuf.h |  1 -
- drivers/gpu/drm/i915/gvt/gvt.h    |  1 -
- drivers/gpu/drm/i915/gvt/vgpu.c   |  1 -
- 4 files changed, 12 insertions(+), 49 deletions(-)
-
---O1DrvfLjZrkfbLCC
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCZEt6JgAKCRCxBBozTXgY
-JxcUAJ9oa9K04SOpmYBTWT5H8VE3Mjw5WgCeIwjDP2hs8vLvrEwnxofpFoTxJ1A=
-=xIkf
------END PGP SIGNATURE-----
-
---O1DrvfLjZrkfbLCC--
