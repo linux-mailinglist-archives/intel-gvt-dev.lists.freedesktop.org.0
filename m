@@ -2,81 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77EBF6F0DD9
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 27 Apr 2023 23:55:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 31BCF6F103D
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Apr 2023 04:16:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 32C7E10E187;
-	Thu, 27 Apr 2023 21:55:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 53F2510E376;
+	Fri, 28 Apr 2023 02:16:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 07DB210E181
+X-Greylist: delayed 654 seconds by postgrey-1.36 at gabe;
+ Fri, 28 Apr 2023 02:16:45 UTC
+Received: from o65.p38.mailjet.com (o65.p38.mailjet.com [185.250.237.65])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8D83210E376
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 27 Apr 2023 21:55:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1682632528;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=I5fzyLq8vaXX2WkxkBurVk4i9r+MSL0BjCV2zrmsNLg=;
- b=dUW+eU1R/pH6gjY41Ood1Cke7Pjs4P4x2A/LhAIaMhBTvgfU6kpj9C6lxqvzaUHGG55rkL
- +2n2OZ3IVMFMVzfK0uMdjQWsUM/vQQ/B+BX3dCkSVJIgZrVkBm8KS+jYb/EUUTremRE0pg
- xdV1u3rzZsVXOJdc03HGfBXMGlNko1I=
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-16-kcI4-jx8N4mFhflLrXR7iA-1; Thu, 27 Apr 2023 17:55:27 -0400
-X-MC-Unique: kcI4-jx8N4mFhflLrXR7iA-1
-Received: by mail-il1-f200.google.com with SMTP id
- e9e14a558f8ab-329572e5abeso137194885ab.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 27 Apr 2023 14:55:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1682632527; x=1685224527;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=I5fzyLq8vaXX2WkxkBurVk4i9r+MSL0BjCV2zrmsNLg=;
- b=NUP4olTgQ7Zhi2toBzh0gAUHink/2Tm/dcZCsKBhpXiBe8KF/BY3/ZXDjN+oHWYWDn
- zTzp23pCFq68B3E01bH0bZI2uHjYgEHN+NFwUw0vWPy17H67IQpUiObWCo7be6e0/ppT
- GFB5vdbca+WnmLma5PfyhJCKaqd4WgmPPo36Nc+bRnUKI2b2KhamXSoWR9o0CQq7BPUr
- qLNBRD3HAzmM4n0or0+4oMoebI8wo0mAWDLXLl9NLx5laHE0HtdiRSJpVe3Ykn1w8tao
- BCx9yewAQxuVQG6H0DO1ecfsChiYmaslTAF74ew0Ur4yMxlmA3iMnTyBoDeLvUA1Mu2p
- RO5g==
-X-Gm-Message-State: AC+VfDyGg82uPiXfivx6mYiOeYHh0F8QY/qknqM5QjOVp4v4TEaJP2fz
- f+3DKFgzPlxNi+iZ3Mef5iLLqYVJPQrKEOQhlAIVwYeEOWo40IXCtdw+CoeCilvb4F91oIaM+R6
- IvyaLZONom000wYPHa6Jjt5S8hGqrSOJQyg==
-X-Received: by 2002:a92:130a:0:b0:32b:c70b:92af with SMTP id
- 10-20020a92130a000000b0032bc70b92afmr2068521ilt.16.1682632526825; 
- Thu, 27 Apr 2023 14:55:26 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4uoLHWlrAANpBduD0DHlq1d1KUlStgxbwMdzX1TBpEVi+MUMWdM8WFF+f3sWR2GcPTn+UIaA==
-X-Received: by 2002:a92:130a:0:b0:32b:c70b:92af with SMTP id
- 10-20020a92130a000000b0032bc70b92afmr2068509ilt.16.1682632526504; 
- Thu, 27 Apr 2023 14:55:26 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- x14-20020a056638248e00b0040fadb4f6d8sm5905986jat.81.2023.04.27.14.55.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Apr 2023 14:55:25 -0700 (PDT)
-Date: Thu, 27 Apr 2023 15:55:24 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v4 9/9] vfio/pci: Allow passing zero-length fd array in
- VFIO_DEVICE_PCI_HOT_RESET
-Message-ID: <20230427155524.732c878d.alex.williamson@redhat.com>
-In-Reply-To: <20230426145419.450922-10-yi.l.liu@intel.com>
-References: <20230426145419.450922-1-yi.l.liu@intel.com>
- <20230426145419.450922-10-yi.l.liu@intel.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+ Fri, 28 Apr 2023 02:16:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+ d=bnc3.mailjet.com; i=sales=3Dcypress-tech.com@a1189921.bnc3.mailjet.com;
+ s=mailjet1; x=1682657548; 
+ h=message-id:mime-version:from:from:to:to:subject:subject:date:date:list-id:list-unsubscribe:
+ list-unsubscribe-post:feedback-id:precedence:x-campaignid:x-csa-complaints:
+ x-mj-mid:x-mj-smtpguid:x-report-abuse-to:content-type;
+ bh=pxnsbLA56eZna90G3zPg/+lQH8MeJolmoy3i3KnRtkU=;
+ b=VeGEF7Yg/gxJw+wt8XKw8En/e6aj5onMdDcLFUgg2NTjtUED2am3hdBh0
+ /1AcBp3VAQzT8ziTIDYAByJCR0S7OJYF+0BtofG8CmrXFszrqecDn0xUAt1w
+ bW34MpUV3GI409hBIlq2UnZXFVS1nSY87IMVBpyQ8tUPAQX1Q8tsXA=
+Message-Id: <b78e482d.AWsAABazlH8AAcju9ioAAM5Ee0IAAYCsxc8AnUiJABIoIQBkSyn7@mailjet.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+From: Jesse Dougherty <sales@cypress-tech.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Hewlett-Packard / ABB hardware - Cypress Technology
+Date: Fri, 28 Apr 2023 02:05:47 +0000 (UTC)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-Id: 42.1189921.1191387:MJ
+Precedence: bulk
+X-CampaignID: 7666071082
+X-CSA-Complaints: csa-complaints@eco.de
+X-MJ-Mid: AWsAABazlH8AAcju9ioAAM5Ee0IAAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds
+X-MJ-SMTPGUID: a800d94e-a12e-4b90-b079-f1553a8b4f47
+X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
+ abuse@mailjet.com with a copy of the message
+Content-Type: multipart/alternative; boundary="=-89/+hryPAa38o7UDSHsA"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: "Intel GVT \(Graphics Virtualization\) development list"
  <intel-gvt-dev.lists.freedesktop.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gvt-dev>, 
@@ -86,252 +52,229 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
- chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, kvm@vger.kernel.org,
- lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
- jgg@nvidia.com, kevin.tian@intel.com, yan.y.zhao@intel.com,
- intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
- cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 26 Apr 2023 07:54:19 -0700
-Yi Liu <yi.l.liu@intel.com> wrote:
+--=-89/+hryPAa38o7UDSHsA
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-> This is the way user to invoke hot-reset for the devices opened by cdev
-> interface. User should check the flag VFIO_PCI_HOT_RESET_FLAG_RESETTABLE
-> in the output of VFIO_DEVICE_GET_PCI_HOT_RESET_INFO ioctl before doing
-> hot-reset for cdev devices.
-> 
-> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
-> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> ---
->  drivers/vfio/pci/vfio_pci_core.c | 66 +++++++++++++++++++++++++++-----
->  include/uapi/linux/vfio.h        | 22 +++++++++++
->  2 files changed, 79 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
-> index 43858d471447..f70e3b948b16 100644
-> --- a/drivers/vfio/pci/vfio_pci_core.c
-> +++ b/drivers/vfio/pci/vfio_pci_core.c
-> @@ -180,7 +180,8 @@ static void vfio_pci_probe_mmaps(struct vfio_pci_core_device *vdev)
->  struct vfio_pci_group_info;
->  static void vfio_pci_dev_set_try_reset(struct vfio_device_set *dev_set);
->  static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
-> -				      struct vfio_pci_group_info *groups);
-> +				      struct vfio_pci_group_info *groups,
-> +				      struct iommufd_ctx *iommufd_ctx);
->  
->  /*
->   * INTx masking requires the ability to disable INTx signaling via PCI_COMMAND
-> @@ -1364,8 +1365,7 @@ vfio_pci_ioctl_pci_hot_reset_groups(struct vfio_pci_core_device *vdev,
->  	if (ret)
->  		return ret;
->  
-> -	/* Somewhere between 1 and count is OK */
-> -	if (!array_count || array_count > count)
-> +	if (array_count > count)
->  		return -EINVAL;
+(Buy, Sell, Repair, & Support)=C2=A0
 
-Doesn't this need a || vfio_device_cdev_opened(vdev) test as well?
-It's invalid to pass fds for a cdev device.  Presumably it would fail
-later collecting group fds as well, but might as well enforce the
-semantics early.
+Cypress Technology is a reseller of HP 9000, e3000, & Itanium series, ABB A=
+ddvant series hardware working with the HP-UX UNIX, MPE/iX, and VMS operati=
+ng systems. We have been in business for 28 years selling HP hardware to en=
+d-users, reseller, maintenance companies, and data centers. We sell complet=
+e plug-n-play systems with OS loaded or spare parts. We provide replacement=
+s for discontinued HP product lines.
 
->  
->  	group_fds = kcalloc(array_count, sizeof(*group_fds), GFP_KERNEL);
-> @@ -1414,7 +1414,7 @@ vfio_pci_ioctl_pci_hot_reset_groups(struct vfio_pci_core_device *vdev,
->  	info.count = array_count;
->  	info.files = files;
->  
-> -	ret = vfio_pci_dev_set_hot_reset(vdev->vdev.dev_set, &info);
-> +	ret = vfio_pci_dev_set_hot_reset(vdev->vdev.dev_set, &info, NULL);
->  
->  hot_reset_release:
->  	for (file_idx--; file_idx >= 0; file_idx--)
-> @@ -1429,6 +1429,7 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
->  {
->  	unsigned long minsz = offsetofend(struct vfio_pci_hot_reset, count);
->  	struct vfio_pci_hot_reset hdr;
-> +	struct iommufd_ctx *iommufd;
->  	bool slot = false;
->  
->  	if (copy_from_user(&hdr, arg, minsz))
-> @@ -1443,7 +1444,12 @@ static int vfio_pci_ioctl_pci_hot_reset(struct vfio_pci_core_device *vdev,
->  	else if (pci_probe_reset_bus(vdev->pdev->bus))
->  		return -ENODEV;
->  
-> -	return vfio_pci_ioctl_pci_hot_reset_groups(vdev, hdr.count, slot, arg);
-> +	if (hdr.count)
-> +		return vfio_pci_ioctl_pci_hot_reset_groups(vdev, hdr.count, slot, arg);
-> +
-> +	iommufd = vfio_iommufd_physical_ictx(&vdev->vdev);
-> +
-> +	return vfio_pci_dev_set_hot_reset(vdev->vdev.dev_set, NULL, iommufd);
+The hardware that we stock and have expertise on is:
 
-Why did we need to store iommufd in a variable?
+ * HP Itanium IA64 servers - rx2800, RX class IA64 blade, etc=C2=A0
+ * HP Itanium IA64 workstations - ZX class
+ * HP 9000 HP-UX PA-RISC RP, A, D, E, F, G, N, K, L, T, etc=C2=A0
+ * HP 9000 HP-UX PA-RISC B, C, J, 700 series workstations
+ * HP 9000 HP-UX PA-RISC VME based industrial controllers
+ * HP 1000 HP-RTE A990, A900 A700, A600, A400.. etc servers
+ * ABB / HP Advant controllers - RTA real-time accelerators
+ * All parts for the above systems, arrays, drives, memory, etc
 
->  }
->  
->  static int vfio_pci_ioctl_ioeventfd(struct vfio_pci_core_device *vdev,
-> @@ -2415,6 +2421,9 @@ static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
->  {
->  	unsigned int i;
->  
-> +	if (!groups)
-> +		return false;
-> +
->  	for (i = 0; i < groups->count; i++)
->  		if (vfio_file_has_dev(groups->files[i], &vdev->vdev))
->  			return true;
-> @@ -2488,13 +2497,38 @@ static int vfio_pci_dev_set_pm_runtime_get(struct vfio_device_set *dev_set)
->  	return ret;
->  }
->  
-> +static bool vfio_dev_in_iommufd_ctx(struct vfio_pci_core_device *vdev,
-> +				    struct iommufd_ctx *iommufd_ctx)
-> +{
-> +	struct iommufd_ctx *iommufd = vfio_iommufd_physical_ictx(&vdev->vdev);
-> +	struct iommu_group *iommu_group;
-> +
-> +	if (!iommufd_ctx)
-> +		return false;
-> +
-> +	if (iommufd == iommufd_ctx)
-> +		return true;
-> +
-> +	iommu_group = iommu_group_get(vdev->vdev.dev);
-> +	if (!iommu_group)
-> +		return false;
-> +
-> +	/*
-> +	 * Try to check if any device within iommu_group is bound with
-> +	 * the input iommufd_ctx.
-> +	 */
-> +	return vfio_devset_iommufd_has_group(vdev->vdev.dev_set,
-> +					     iommufd_ctx, iommu_group);
-> +}
+HP RX2800 running HP-UX 11.31 (v3) or VMS operating systems [http://www.cyp=
+ress-tech.com/hpe-hp-integrity-itanium-rx2800-i4-i6-server.html]
 
-This last test makes this not do what the function name suggests it
-does.  If it were true, the device is not in the iommufd_ctx, it simply
-cannot be within another iommu ctx.
+ * Standard 90-day warranty / eligible for HW maintenance
+ * disaster back-up, clone replicas, spare parts, and add on peripherals
+ * replacement parts for discontinued HP systems=C2=A0
+ * buy - off lease bulk, surplus, & unused HP hardware
+ * =C2=A0ship / export Worldwide to every country
 
-> +
->  /*
->   * We need to get memory_lock for each device, but devices can share mmap_lock,
->   * therefore we need to zap and hold the vma_lock for each device, and only then
->   * get each memory_lock.
->   */
->  static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
-> -				      struct vfio_pci_group_info *groups)
-> +				      struct vfio_pci_group_info *groups,
-> +				      struct iommufd_ctx *iommufd_ctx)
->  {
->  	struct vfio_pci_core_device *cur_mem;
->  	struct vfio_pci_core_device *cur_vma;
-> @@ -2525,10 +2559,24 @@ static int vfio_pci_dev_set_hot_reset(struct vfio_device_set *dev_set,
->  
->  	list_for_each_entry(cur_vma, &dev_set->device_list, vdev.dev_set_list) {
->  		/*
-> -		 * Test whether all the affected devices are contained by the
-> -		 * set of groups provided by the user.
-> +		 * Test whether all the affected devices can be reset by the
-> +		 * user.
-> +		 *
-> +		 * If user provides a set of groups, all the opened devices
-> +		 * in the dev_set should be contained by the set of groups
-> +		 * provided by the user.
-> +		 *
-> +		 * If user provides a zero-length group fd array, then all
-> +		 * the affected devices must be bound to same iommufd_ctx as
-> +		 * the input iommufd_ctx.  If there is device that has not
-> +		 * been bound to iommufd_ctx yet, shall check if there is any
-> +		 * device within its iommu_group that has been bound to the
-> +		 * input iommufd_ctx.
-> +		 *
-> +		 * Otherwise, reset is not allowed.
->  		 */
-> -		if (!vfio_dev_in_groups(cur_vma, groups)) {
-> +		if (!vfio_dev_in_groups(cur_vma, groups) &&
-> +		    !vfio_dev_in_iommufd_ctx(cur_vma, iommufd_ctx)) {
+Contact us if you wish to buy, sell, or RFQ on any HP hardware. Contact wit=
+h any questions, requests, or assistance.=C2=A0
+
+ * =C2=A0 =C2=A0 Thank you
+ * =C2=A0 =C2=A0 Jesse Dougherty
+ * =C2=A0 =C2=A0 Cypress Technology, Inc.
+ * =C2=A0 =C2=A0 Land O Lakes, Florida USA
+ * =C2=A0 =C2=A0 Phone 888-954-3414 / (direct) 412-589-3779
+ * =C2=A0 =C2=A0=C2=A0jesse@cypress-tech.com [jesse@cypress-tech.com]
+ * =C2=A0 =C2=A0=C2=A0www.Cypress-Tech.com [http://www.Cypress-Tech.com]
+
+=C2=A0
 
 
-Rather than mangling vfio_dev_in_groups() and inventing
-vfio_dev_in_iommufd_ctx() that doesn't do what it implies, how about:
 
-bool vfio_device_owned(struct vfio_device *vdev,
-		       struct vfio_pci_group_info *groups,
-		       struct iommufd_ctx *iommufd_ctx)
-{
-	struct iommu_group *group;
+This e-mail has been sent to intel-gvt-dev@lists.freedesktop.org, click her=
+e to unsubscribe http://xz01x.mjt.lu/unsub2?hl=3Den&m=3DAWsAABazlH8AAcju9io=
+AAM5Ee0IAAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds&b=3Db78e482d&e=
+=3Dcf97fdf4&x=3DT9ZTD0d7I8nWexNjwtFGOiDda_TnMPeFq7gyjrD4UrPTf9rVFgDeeiePdwr=
+slDcy.=
 
-	WARN_ON(!!groups == !!iommufd_ctx);
+--=-89/+hryPAa38o7UDSHsA
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-	if (groups)
-		return vfio_dev_in_groups(vdev, groups));
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title>Hewlett-Packard / ABB hardware - Cypress Technology</title=
+><!--[if !mso]><!--><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Ded=
+ge"><!--<![endif]--><meta http-equiv=3D"Content-Type" content=3D"text/html;=
+ charset=3DUTF-8"><meta name=3D"viewport" content=3D"width=3Ddevice-width,i=
+nitial-scale=3D1"><style type=3D"text/css">#outlook a { padding:0; }
+          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-=
+size-adjust:100%; }
+          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-tab=
+le-rspace:0pt; }
+          img { border:0;height:auto;line-height:100%; outline:none;text-de=
+coration:none;-ms-interpolation-mode:bicubic; }
+          p { display:block;margin:13px 0; }</style><!--[if mso]>
+        <noscript>
+        <xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG/>
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml>
+        </noscript>
+        <![endif]--><!--[if lte mso 11]>
+        <style type=3D"text/css">
+          .mj-outlook-group-fix { width:100% !important; }
+        </style>
+        <![endif]--><style type=3D"text/css">@media only screen and (min-wi=
+dth:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+      }</style><style media=3D"screen and (min-width:480px)">.moz-text-html=
+ .mj-column-per-100 { width:100% !important; max-width: 100%; }</style><sty=
+le type=3D"text/css">[owa] .mj-column-per-100 { width:100% !important; max-=
+width: 100%; }</style><style type=3D"text/css"></style></head><body style=
+=3D"word-spacing:normal;background-color:#F4F4F4;"><div style=3D"background=
+-color:#F4F4F4;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" style=3D"background:#ffffff;background=
+-color:#ffffff;width:100%;"><tbody><tr><td><!--[if mso | IE]><table align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" rol=
+e=3D"presentation" style=3D"width:600px;" width=3D"600" bgcolor=3D"#ffffff"=
+ ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exact=
+ly;"><![endif]--><div style=3D"margin:0px auto;max-width:600px;"><table ali=
+gn=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font-=
+size:0px;padding:20px 0px 20px 0px;padding-left:0px;padding-right:0px;text-=
+align:center;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-al=
+ign:top;width:600px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlo=
+ok-group-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:=
+inline-block;vertical-align:top;width:100%;"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"vertical-align:top=
+;" width=3D"100%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;padd=
+ing:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><d=
+iv style=3D"font-family:Arial, sans-serif;font-size:16px;letter-spacing:nor=
+mal;line-height:1;text-align:left;color:#000000;"><p class=3D"text-build-co=
+ntent" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0; margin-top: 10px;=
+"><span style=3D"color:#000000;font-family:Arial, sans-serif;font-size:18px=
+;"><b>(Buy, Sell, Repair, &amp; Support)&nbsp;</b></span></p><p class=3D"te=
+xt-build-content" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"><span=
+ style=3D"color:#000000;font-family:Arial;font-size:16px;">Cypress Technolo=
+gy is a reseller of HP 9000, e3000, &amp; Itanium series, ABB Addvant serie=
+s hardware working with the HP-UX UNIX, MPE/iX, and VMS operating systems. =
+We have been in business for 28 years selling HP hardware to end-users, res=
+eller, maintenance companies, and data centers. We sell complete plug-n-pla=
+y systems with OS loaded or spare parts. We provide replacements for discon=
+tinued HP product lines.</span></p><p class=3D"text-build-content" data-tes=
+tid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"><span style=3D"color:#000000;fo=
+nt-family:Arial;font-size:16px;">The hardware that we stock and have expert=
+ise on is:</span></p><ul><li><span style=3D"color:#000000;font-family:Arial=
+;font-size:16px;">HP Itanium IA64 servers - rx2800, RX class IA64 blade, et=
+c&nbsp;</span></li><li><span style=3D"color:#000000;font-family:Arial;font-=
+size:16px;">HP Itanium IA64 workstations - ZX class</span></li><li><span st=
+yle=3D"color:#000000;font-family:Arial;font-size:16px;">HP 9000 HP-UX PA-RI=
+SC RP, A, D, E, F, G, N, K, L, T, etc&nbsp;</span></li><li><span style=3D"c=
+olor:#000000;font-family:Arial;font-size:16px;">HP 9000 HP-UX PA-RISC B, C,=
+ J, 700 series workstations</span></li><li><span style=3D"color:#000000;fon=
+t-family:Arial;font-size:16px;">HP 9000 HP-UX PA-RISC VME based industrial =
+controllers</span></li><li><span style=3D"color:#000000;font-family:Arial;f=
+ont-size:16px;">HP 1000 HP-RTE A990, A900 A700, A600, A400.. etc servers</s=
+pan></li><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;=
+">ABB / HP Advant controllers - RTA real-time accelerators</span></li><li><=
+span style=3D"color:#000000;font-family:Arial;font-size:16px;">All parts fo=
+r the above systems, arrays, drives, memory, etc</span></li></ul><p class=
+=3D"text-build-content" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"=
+><a class=3D"link-build-content" style=3D"color:inherit;; text-decoration: =
+none;" target=3D"_blank" href=3D"http://xz01x.mjt.lu/lnk/AWsAABazlH8AAcju9i=
+oAAM5Ee0IAAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds/1/NndFq0_Ez-z=
+XaSv7FGbhRw/aHR0cDovL3d3dy5jeXByZXNzLXRlY2guY29tL2hwZS1ocC1pbnRlZ3JpdHktaXR=
+hbml1bS1yeDI4MDAtaTQtaTYtc2VydmVyLmh0bWw"><span style=3D"color:#55575d;font=
+-family:Arial;font-size:16px;"><b><u>HP RX2800 running HP-UX 11.31 (v3) or =
+VMS operating systems</u></b></span></a></p><ul><li>Standard 90-day warrant=
+y / eligible for HW maintenance</li><li><span style=3D"color:#000000;font-f=
+amily:Arial;font-size:16px;">disaster back-up, clone replicas, spare parts,=
+ and add on peripherals</span></li><li><span style=3D"color:#000000;font-fa=
+mily:Arial;font-size:16px;">replacement parts for discontinued HP systems&n=
+bsp;</span></li><li><span style=3D"color:#000000;font-family:Arial;font-siz=
+e:16px;">buy - off lease bulk, surplus, &amp; unused HP hardware</span></li=
+><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nbsp;=
+ship / export Worldwide to every country</span></li></ul><p class=3D"text-b=
+uild-content" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"><span sty=
+le=3D"color:#000000;font-family:Arial;font-size:16px;">Contact us if you wi=
+sh to buy, sell, or RFQ on any HP hardware. Contact with any questions, req=
+uests, or assistance.&nbsp;</span></p><ul><li><span style=3D"color:#000000;=
+font-family:Arial;font-size:16px;">&nbsp; &nbsp; Thank you</span></li><li><=
+span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nbsp; &nbsp=
+; Jesse Dougherty</span></li><li><span style=3D"color:#000000;font-family:A=
+rial;font-size:16px;">&nbsp; &nbsp; Cypress Technology, Inc.</span></li><li=
+><span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nbsp; &nb=
+sp; Land O Lakes, Florida USA</span></li><li><span style=3D"color:#000000;f=
+ont-family:Arial;font-size:16px;">&nbsp; &nbsp; Phone 888-954-3414 / (direc=
+t) 412-589-3779</span></li><li><span style=3D"color:#000000;font-family:Ari=
+al;font-size:16px;">&nbsp; &nbsp;&nbsp;</span><a class=3D"link-build-conten=
+t" style=3D"color:inherit;; text-decoration: none;" href=3D"mailto:jesse@cy=
+press-tech.com"><span style=3D"color:#55575d;font-family:Arial;font-size:16=
+px;"><u>jesse@cypress-tech.com</u></span></a></li><li><span style=3D"color:=
+#000000;font-family:Arial;font-size:16px;">&nbsp; &nbsp;&nbsp;</span><a cla=
+ss=3D"link-build-content" style=3D"color:inherit;; text-decoration: none;" =
+target=3D"_blank" href=3D"http://xz01x.mjt.lu/lnk/AWsAABazlH8AAcju9ioAAM5Ee=
+0IAAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds/2/O1gXwhtSxt9HIbu48d=
+c2-A/aHR0cDovL3d3dy5DeXByZXNzLVRlY2guY29t"><span style=3D"color:#55575d;fon=
+t-family:Arial;font-size:16px;"><u>www.Cypress-Tech.com</u></span></a></li>=
+</ul><p class=3D"text-build-content" data-testid=3D"XOg3BoD5V" style=3D"mar=
+gin: 10px 0; margin-bottom: 10px;">&nbsp;</p></div></td></tr></tbody></tabl=
+e></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody><=
+/table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tb=
+ody></table><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width=
+:600px;" width=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-=
+line-height-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;max-wi=
+dth:600px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=
+=3D"direction:ltr;font-size:0px;padding:20px 0px 20px 0px;text-align:center=
+;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;wid=
+th:600px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fi=
+x" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-bloc=
+k;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D=
+"100%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;padding:0px 20p=
+x 0px 20px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><div =
+style=3D"font-family:Arial, sans-serif;font-size:13px;letter-spacing:normal=
+;line-height:1;text-align:left;color:#000000;"><p class=3D"text-build-conte=
+nt" style=3D"text-align: center; margin: 10px 0; margin-top: 10px; margin-b=
+ottom: 10px;" data-testid=3D"h4QAoZveqV24o"><span style=3D"color:#55575d;fo=
+nt-family:Arial;font-size:13px;line-height:22px;">This e-mail has been sent=
+ to intel-gvt-dev@lists.freedesktop.org, </span><a class=3D"link-build-cont=
+ent" style=3D"color:inherit;; text-decoration: none;" target=3D"_blank" hre=
+f=3D"http://xz01x.mjt.lu/unsub2?hl=3Den&amp;m=3DAWsAABazlH8AAcju9ioAAM5Ee0I=
+AAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds&amp;b=3Db78e482d&amp;e=
+=3Dcf97fdf4&amp;x=3DT9ZTD0d7I8nWexNjwtFGOiDda_TnMPeFq7gyjrD4UrPTf9rVFgDeeie=
+PdwrslDcy"><span style=3D"color:#55575d;font-family:Arial;font-size:13px;li=
+ne-height:22px;">click here to unsubscribe</span></a><span style=3D"color:#=
+55575d;font-family:Arial;font-size:13px;line-height:22px;">.</span></p></di=
+v></td></tr><tr><td align=3D"left" style=3D"font-size:0px;padding:0px 20px =
+0px 20px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><div st=
+yle=3D"font-family:Arial, sans-serif;font-size:13px;letter-spacing:normal;l=
+ine-height:1;text-align:left;color:#000000;"></div></td></tr></tbody></tabl=
+e></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody><=
+/table></div><!--[if mso | IE]></td></tr></table><![endif]--></div>
+<br/><img src=3D"http://xz01x.mjt.lu/oo/AWsAABazlH8AAcju9ioAAM5Ee0IAAYCsxc8=
+AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds/d79d6f40/e.gif" height=3D"1" w=
+idth=3D"1" alt=3D"" border=3D"0" style=3D"height:1px;width:1px;border:0;"/>
+</body></html>=
 
-	if (vfio_iommufd_physical_ictx(vdev) == iommufd_ctx)
-		return true;
-
-	group = iommu_group_get(vdev->dev);
-	if (group)
-		return vfio_devset_iommufd_has_group(vdev->vdev.dev_set,
-						     iommufd_ctx, group);
-	return false;
-}
-
-Seems like such a function would live in vfio_main.c
-
->  			ret = -EINVAL;
->  			goto err_undo;
->  		}
-> diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
-> index 4b4e2c28984b..1241d02d8701 100644
-> --- a/include/uapi/linux/vfio.h
-> +++ b/include/uapi/linux/vfio.h
-> @@ -710,6 +710,28 @@ struct vfio_pci_hot_reset_info {
->   * VFIO_DEVICE_PCI_HOT_RESET - _IOW(VFIO_TYPE, VFIO_BASE + 13,
->   *				    struct vfio_pci_hot_reset)
->   *
-> + * Userspace requests hot reset for the devices it operates.  Due to the
-> + * underlying topology, multiple devices can be affected in the reset
-> + * while some might be opened by another user.  To avoid interference
-> + * the calling user must ensure all affected devices are owned by itself.
-> + * The ownership proof needs to refer the output of
-> + * VFIO_DEVICE_GET_PCI_HOT_RESET_INFO.  Ownership can be proved as:
-> + *
-> + *   1) An array of group fds - This is used for the devices opened via
-> + *				the group/container interface.
-> + *   2) A zero-length array - This is used for the devices opened via
-> + *			      the cdev interface.  User should check the
-> + *			      flag VFIO_PCI_HOT_RESET_FLAG_IOMMUFD_DEV_ID
-> + *			      and flag VFIO_PCI_HOT_RESET_FLAG_RESETTABLE
-> + *			      before using this method.
-> + *
-> + * In case a non void group fd array is passed, the devices affected by
-> + * the reset must belong to those opened VFIO groups.  In case a zero
-> + * length array is passed, the other devices affected by the reset, if
-> + * any, must be either bound to the same iommufd as this VFIO device or
-> + * in the same iommu_group with a device that does.  Either of the two
-> + * methods is applied to check the feasibility of the hot reset.
-
-This should probably just refer to the concept of ownership described
-in the INFO ioctl and clarify that cdev opened device must exclusively
-provide an empty array and group opened devices must exclusively use an
-array of group fds for proof of ownership.  Mixed access to devices
-between cdev and legacy groups are not supported by this interface.
-Thanks,
-
-Alex
-
-> + *
->   * Return: 0 on success, -errno on failure.
->   */
->  struct vfio_pci_hot_reset {
+--=-89/+hryPAa38o7UDSHsA--
 
