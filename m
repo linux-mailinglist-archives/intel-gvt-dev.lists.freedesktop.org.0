@@ -1,48 +1,158 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31BCF6F103D
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Apr 2023 04:16:49 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80DCF6F11B8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Apr 2023 08:20:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 53F2510E376;
-	Fri, 28 Apr 2023 02:16:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3D53F10EC57;
+	Fri, 28 Apr 2023 06:20:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 654 seconds by postgrey-1.36 at gabe;
- Fri, 28 Apr 2023 02:16:45 UTC
-Received: from o65.p38.mailjet.com (o65.p38.mailjet.com [185.250.237.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8D83210E376
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 28 Apr 2023 02:16:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
- d=bnc3.mailjet.com; i=sales=3Dcypress-tech.com@a1189921.bnc3.mailjet.com;
- s=mailjet1; x=1682657548; 
- h=message-id:mime-version:from:from:to:to:subject:subject:date:date:list-id:list-unsubscribe:
- list-unsubscribe-post:feedback-id:precedence:x-campaignid:x-csa-complaints:
- x-mj-mid:x-mj-smtpguid:x-report-abuse-to:content-type;
- bh=pxnsbLA56eZna90G3zPg/+lQH8MeJolmoy3i3KnRtkU=;
- b=VeGEF7Yg/gxJw+wt8XKw8En/e6aj5onMdDcLFUgg2NTjtUED2am3hdBh0
- /1AcBp3VAQzT8ziTIDYAByJCR0S7OJYF+0BtofG8CmrXFszrqecDn0xUAt1w
- bW34MpUV3GI409hBIlq2UnZXFVS1nSY87IMVBpyQ8tUPAQX1Q8tsXA=
-Message-Id: <b78e482d.AWsAABazlH8AAcju9ioAAM5Ee0IAAYCsxc8AnUiJABIoIQBkSyn7@mailjet.com>
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 303DB10E041;
+ Fri, 28 Apr 2023 06:20:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1682662803; x=1714198803;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=5j1PMTrfWA0/rwt7TJgscy1W6Lm+e1gkL9DGMmsVKVY=;
+ b=G9uh6kNpr0zOJqna8DcxrNCBspzAJOulZ+QgADr0ceQIEUFoIoZ/rOVA
+ QF+WRyM3tMUol/Ejk1w/IoeU0MziXEGmEoUDTyRe3abKFO/u8ZR82o1x1
+ QCSNfoRZQnVGuQDkwBzG/qbF+tcB5N9vKTr28XUvmCMRyCULytyjMYRUN
+ +AFu4ldyT1tWA+LQd2xljcweJb/Gi8ucvy2mQ8IhB0Q3ZqgTtqXUAkrDt
+ hNqX4g+qPd4OtiGni72SRvFxNtCEth/t1uJTif4Wk//LisQNk3FxudkdC
+ L3JJMAQDOoJOQ9HScN1liowkzXLv2oXRibTExpqFEg43OMS0ohK0LCtlx g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="433952039"
+X-IronPort-AV: E=Sophos;i="5.99,233,1677571200"; d="scan'208";a="433952039"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2023 23:20:02 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10693"; a="727422313"
+X-IronPort-AV: E=Sophos;i="5.99,233,1677571200"; d="scan'208";a="727422313"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orsmga001.jf.intel.com with ESMTP; 27 Apr 2023 23:20:01 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Thu, 27 Apr 2023 23:20:01 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Thu, 27 Apr 2023 23:20:01 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Thu, 27 Apr 2023 23:20:01 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Thu, 27 Apr 2023 23:20:00 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=i5tWLR+k8HmjvowjHu6x4GgkWLGKiMc5e/MqquajyjDOYx4QGevUgq1nc/YHTy+gArjYMPc0Av3E8jepLN6+i7gQSEx/w6uVClEFwzbEg2T9nuFsxauNkNnM/VGFMxwzAXjN+HYVlGCQ17ydbHLov+5hCtEmtsX+nKuSwi5J2YQG10mljuaWkMN5Z6lTy7+alK4ypNJMaa5uqMDCsju2ZwxXmhI48VvC3wZRPjsbUn+4hILrzYiCupt9XfxoNfJy3E5j5d/GBMTK/A8AvidutLbt6aU+ciirr5BwCU+gQ1wj3F+i96cG8x+rbgpnrXTn0NhGRRWG66SM7ay7sfGQdg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=AnjkZe6TuNvcsuzEfT5b6pIXN90W7j2P/dJH/fSvAi4=;
+ b=gr5Ec9buQqX/CBjeGmi/gz80fy7YItVoQcAe/Up4sbPN/UwtXWXETMRxTMJrOb6SmmtnyA589cLwdzL56h7ZwK8pO4VVLE9ISYeaWeCyE8td6WNvJ8uPk2qR+/YOdz4FqRSYG+Eyh/TYyk7Z8rcNhPYtEZA/JyAmuex2PsyLsr/adPZpxd28Qeo44JwSgKAgLtd7ksntHSRMdt0upg42mpb2phrJKtE0Goua1jxiRnV19W4EVpV5bWqR/SAELgxmP0BNdhHuPfZmEwZXEFN9XFBrt2RLZdhmfe6a+VcSMHJ2kHAS0H6MGw57pEm3+0YbBDhziZP4kOJOEaI4AIfBVw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by DM6PR11MB4754.namprd11.prod.outlook.com (2603:10b6:5:2ad::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6319.34; Fri, 28 Apr
+ 2023 06:19:58 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::5b44:8f52:dbeb:18e5]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::5b44:8f52:dbeb:18e5%3]) with mapi id 15.20.6340.021; Fri, 28 Apr 2023
+ 06:19:58 +0000
+Message-ID: <a6b77884-1678-b17c-f6a4-28d56e6c366b@intel.com>
+Date: Fri, 28 Apr 2023 14:21:26 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Firefox/102.0 Thunderbird/102.9.0
+Subject: Re: [PATCH v4 2/9] vfio-iommufd: Create iommufd_access for noiommu
+ devices
+To: Alex Williamson <alex.williamson@redhat.com>
+References: <20230426145419.450922-1-yi.l.liu@intel.com>
+ <20230426145419.450922-3-yi.l.liu@intel.com>
+ <BN9PR11MB52768AF474FAB2AF36AC00508C6A9@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <DS0PR11MB752972AC1A6030CB442ACF3FC36A9@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230427123203.22307c4f.alex.williamson@redhat.com>
+Content-Language: en-US
+From: Yi Liu <yi.l.liu@intel.com>
+In-Reply-To: <20230427123203.22307c4f.alex.williamson@redhat.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SG2PR04CA0179.apcprd04.prod.outlook.com
+ (2603:1096:4:14::17) To DS0PR11MB7529.namprd11.prod.outlook.com
+ (2603:10b6:8:141::20)
 MIME-Version: 1.0
-From: Jesse Dougherty <sales@cypress-tech.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Hewlett-Packard / ABB hardware - Cypress Technology
-Date: Fri, 28 Apr 2023 02:05:47 +0000 (UTC)
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-Feedback-Id: 42.1189921.1191387:MJ
-Precedence: bulk
-X-CampaignID: 7666071082
-X-CSA-Complaints: csa-complaints@eco.de
-X-MJ-Mid: AWsAABazlH8AAcju9ioAAM5Ee0IAAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds
-X-MJ-SMTPGUID: a800d94e-a12e-4b90-b079-f1553a8b4f47
-X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
- abuse@mailjet.com with a copy of the message
-Content-Type: multipart/alternative; boundary="=-89/+hryPAa38o7UDSHsA"
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB7529:EE_|DM6PR11MB4754:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9f4044fa-74ce-4763-6a82-08db47b096af
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: hG2eIcF7Fg3W38dHbOV2urrFt7ci7wIIli5jck4aUJlFzqhWtLNfkPJ6OWell3KywZ+ZThOz2augyJNcvYkUjbafUvwF2HvojpYXe/MMD0gAb+q3leCwzPnOZlRqMTS3Jh09rU9A6MitMUN5yT08bPkCB3JMmlVIkmQyQOiH74ssuGNZvb2WH+YPv/2gMI3NqiJEFMP7wsVnHV/nYBIJpZ5RAFjMH4FuyoolqSJLvMkGULazjUmzgCRiKwFz7ph/62bmZUeDRnGIdndVYgEywZyytLkZCi6QBK5FRZ5ANtuyby7/luzoKMEXUTEYvUn4R2DWTDQJX5IGHkDlrDj3P8RC5+ftDy7uq6FWm5GeSINkfyrKxAhNIuzrJVtAivIgrEXP9BIb8Ox0ndUgBtcvUMuLKkrjuvHK4BOC0szNTBKqOXG3ZSPl69A8TIXKr/sd+IC0u4tyAMD4VOFMQfZ3YrvVZn7hMPPjyQ4NzLeeF9pkHvgHuP+A8fahi6UI/vjxc+3WLxp1z/rXL7rn0uCr+9solhjm7BGNMnQR4oU3FoXVvBM+dLIDyLIZejlspHaWD3VKaanYIEOlJbcdxmh2Vlhgf94I1i4eajqMXfOzpxfNoHHSxfQ28AHMI1UJQyEwrol3Db3YrEx45jI6bPRLEg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(346002)(376002)(396003)(136003)(39860400002)(366004)(451199021)(8676002)(8936002)(41300700001)(7416002)(82960400001)(316002)(2906002)(66476007)(38100700002)(66556008)(31686004)(5660300002)(6916009)(4326008)(66946007)(83380400001)(2616005)(6486002)(54906003)(186003)(31696002)(86362001)(36756003)(966005)(6666004)(53546011)(6512007)(6506007)(478600001)(26005)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MkVVcXNDZG5mSVAxVTdFdjdVcnhVNkxPb256OUlhQVpTSXA2YzNKSlhlMjg2?=
+ =?utf-8?B?NlpyUVArQmc3aWwyZ2IrbkFOQUpHVGo4RDJoZXlTVGhEeUtYdlV0UGdzbTd2?=
+ =?utf-8?B?clp5Z0ZnSk53dHlWWU9ycDRhV2grZUVicStuRUs0UWF3TTFZTllDZUttL3My?=
+ =?utf-8?B?M2xQWXdiLzhZeks4a2VTeTdGOEhxNzJ0NGlJS2dYSjBYMzNJWjl3eGp2MTho?=
+ =?utf-8?B?eERPL0dzNXhUNnR1RlhJMFNFcm1YTXhzcHRoZW1jK0JUdWhFNVA4aFpNSlFF?=
+ =?utf-8?B?L1pzZFo0WS93SnpMSmt0c09wYmN6T0VYYkhhWnZpMTJYUXUveWFmNWlNbFR1?=
+ =?utf-8?B?aFEwTnUxOG53ZnZwZ2xqY094dzMvV2RvckxqNGFBS1NCR1M2MHFvNVZ5cFNr?=
+ =?utf-8?B?VHNPT1lRcUVJcUY1eEMzQ0xxV2hXNmRDY2toQUFoRjJhTCs0TVkvT0hwUHQ2?=
+ =?utf-8?B?OUdDcVd3UU9ybis0MVYwTHBacUxqNTlhZTZ5UUFSSElYQ3NQbStmMEJLcC9s?=
+ =?utf-8?B?Z0NUL3h2OHNqQjV0R1FiZXdCUU1SaUZycmljcmtQM2o5M0g2YmUxTzNsNWZK?=
+ =?utf-8?B?TDV0M3JHVDdXT2IzS2IwVVVHcStxS0o4RnpqTVZKMHlLMGFoZ1A2WGZ4TjZD?=
+ =?utf-8?B?T1Q2WmFacWRNV2xyR0VxQzhwY2lycUo1NnErQnJITG9NTk9yR3R5aXlqWXNa?=
+ =?utf-8?B?WjlYa3E4Yzc1RTZCcnpOaXdPYmQ4TDROakVIRWwxZzJBcVM5SXhFcEg3OElK?=
+ =?utf-8?B?M0tFSmRjZmd5QVNNNXJQL1ZXMXNvaXYvdlM1N2pUTytiRUcxTVJCV2Y3UmhQ?=
+ =?utf-8?B?UkFCMEVjTHVaam1ITm1CSDY0T2ludDRVRnRTZmxPeGtZZHlNMEZPa2RIY2pM?=
+ =?utf-8?B?ZzRzb0NGa2RCOFRaeDMyYkNNOXJiMit1QjJWbnZpTXJJWUc2eURXTmMwc2NG?=
+ =?utf-8?B?YVNuQXF3b2tWelc5UHZianFEanJ1Lzd1bThhYUpuc00zUFhoQ2pCYnZZVURN?=
+ =?utf-8?B?Q3YyYTRCMnhJNEVYcVJwWSs3YVo1aVpjV0ZWQUMxWGRuTndPaUxLcDFMWk9W?=
+ =?utf-8?B?VWp5SlFVN2x0a1RNZHJRNm03OFlST0kvczdBb2ZhK0x0d2UvbHpDM05jNlhk?=
+ =?utf-8?B?cjAyV3BiTUFFMnhiWUM0TEFQa1dVbzN1UmZLSjlwdzlTYTVCQ3dwU0VFMDJ3?=
+ =?utf-8?B?RUVhc1owcXB2U1NZNW9mb2taczhxNUcxc1F4Wm9CcHVKa21NWnFvL0Vyb3Qw?=
+ =?utf-8?B?cjhxVHJIU1pjUWROSEZDbmtQN2FWVnd2ZnUvbnpNS3lINHdSaTlwTTIrOVRC?=
+ =?utf-8?B?M1pKRDVBYkxOMnZpcHhROE81Ull2WnBMQTIwNVFiQ1RzQlM2dkZVU2szMTIx?=
+ =?utf-8?B?QmErWCs2aVV5RDhuT3U4VUowelYrL1pKQWh0a2MzVEhVTGRTaHVWM1krQlI3?=
+ =?utf-8?B?bThIcDBQcGJ0dlZMeVhNZWNKcDlPaExyaGtRK2lreFU1R1c3aHM2K2VtTXRN?=
+ =?utf-8?B?R1BramtMMWI2d1RNNVpVMUtUUm45OWtPSkFRc3dpUDZLTG85VHM4azVnM2M4?=
+ =?utf-8?B?NlZVRGc1OVB2Nlo4YXFUVDF0SVJzanFiOUR0NzloeFlBSmQ4YkVBQitoTVBD?=
+ =?utf-8?B?Mzk5eUhlSkNQRm9UM056MHdheHpsWFNZRmVtTWdQcU9Ja0NwNHlsT2hSbUVk?=
+ =?utf-8?B?bDU1Q2ZoRzVsbXNWd2U3WDI2S1RZc1BQaERFZ25wKzYrZXNDTUdzL3dPYk1Z?=
+ =?utf-8?B?dFpBTHBpRUJ4U25jWVJLdGdGSXFQVU9uME04U1JPcGw0NG5FeXB0UGhBazdK?=
+ =?utf-8?B?d2VqNkgrMzZnVDlqRUh3dVByZlZYT0gzTHVCTHhuMUtGRjY4V3lEVzAzdDk3?=
+ =?utf-8?B?TjJKZFJqTytKTk1wWlBEcUhHUStITWdlVzhVUEZhaDQzRWMrM1g5RGtVTjhy?=
+ =?utf-8?B?dDNpUDRrVm9sams2bm5vN2QzMGQvOTBvWGRXMFZjRDVjNmRhS0NoT1FxSTI5?=
+ =?utf-8?B?YTJ3SWpWeXZrVjZ1dzV2VUwyZDFhSEd3SE1oZGdUZkl1dWlJZUpPS0pqREpL?=
+ =?utf-8?B?VVM5U1hoK2ZHSnlKZkxWcmFnaVpwdXV5VTN4S2hqc09RS1MrUW53Y3h2SEVP?=
+ =?utf-8?Q?tKbKVx9uIUWmXN+XSfb9bZLv4?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9f4044fa-74ce-4763-6a82-08db47b096af
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Apr 2023 06:19:57.5885 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: W8DE5+AeCgCDTJFGYpyUIymu797/St1J4CmzLZnhZ2giyelB4/Srfs/JWzYgoDLOnT75LdokkzsUIxUR9qUOuA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4754
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: "Intel GVT \(Graphics Virtualization\) development list"
  <intel-gvt-dev.lists.freedesktop.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gvt-dev>, 
@@ -52,229 +162,109 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "Duan, 
+ Zhenzhong" <zhenzhong.duan@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Xu, Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---=-89/+hryPAa38o7UDSHsA
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On 2023/4/28 02:32, Alex Williamson wrote:
+> On Thu, 27 Apr 2023 06:59:17 +0000
+> "Liu, Yi L" <yi.l.liu@intel.com> wrote:
+> 
+>>> From: Tian, Kevin <kevin.tian@intel.com>
+>>> Sent: Thursday, April 27, 2023 2:39 PM
+>>>    
+>>>> From: Liu, Yi L <yi.l.liu@intel.com>
+>>>> Sent: Wednesday, April 26, 2023 10:54 PM
+>>>> @@ -121,7 +128,8 @@ static void vfio_emulated_unmap(void *data,
+>>>> unsigned long iova,
+>>>>   {
+>>>>   	struct vfio_device *vdev = data;
+>>>>
+>>>> -	if (vdev->ops->dma_unmap)
+>>>> +	/* noiommu devices cannot do map/unmap */
+>>>> +	if (vdev->noiommu && vdev->ops->dma_unmap)
+>>>>   		vdev->ops->dma_unmap(vdev, iova, length);
+>>>
+>>> Is it necessary? All mdev devices implementing @dma_unmap won't
+>>> set noiommu flag.
+>>
+>> Hmmm. Yes, and all the devices set noiommu is not implementing @dma_unmap
+>> as far as I see. Maybe this noiommu check can be removed.
+> 
+> Not to mention that the polarity of the noiommu test is backwards here!
+> This also seems to be the only performance path where noiommu is tested
+> and therefore I believe the only actual justification of the previous
+> patch.
 
-(Buy, Sell, Repair, & Support)=C2=A0
+but this patch needs to use vfio_iommufd_emulated_bind() and
+vfio_iommufd_emulated_unbind() for the noiommu devices when binding
+to iommufd. So needs to check noiommu in the vfio_iommufd_bind()
+and vfio_iommu_unbind() as well.
 
-Cypress Technology is a reseller of HP 9000, e3000, & Itanium series, ABB A=
-ddvant series hardware working with the HP-UX UNIX, MPE/iX, and VMS operati=
-ng systems. We have been in business for 28 years selling HP hardware to en=
-d-users, reseller, maintenance companies, and data centers. We sell complet=
-e plug-n-play systems with OS loaded or spare parts. We provide replacement=
-s for discontinued HP product lines.
+>>> Instead in the future if we allow noiommu userspace to pin pages
+>>> we'd need similar logic too.
+>>
+>> I'm not quite sure about it so far. For mdev devices, the device driver
+>> may use vfio_pin_pages/vfio_dma_rw () to pin page. Hence such drivers
+>> need to listen to dma_unmap() event. But for noiommu users, does the
+>> device driver also participate in the page pin? At least for vfio-pci driver,
+>> it does not, or maybe it will in the future when enabling noiommu
+>> userspace to pin pages. It looks to me such userspace should order
+>> the DMA before calling ioctl to unpin page instead of letting device
+>> driver listen to unmap.
+> 
+> Whoa, noiommu is inherently unsafe an only meant to expose the vfio
+> device interface for userspace drivers that are going to do unsafe
+> things regardless.  Enabling noiommu to work with mdev, pin pages, or
+> anything else should not be on our agenda.
 
-The hardware that we stock and have expertise on is:
+One clarification. I think the idea from Jason is to make noiommu
+userspace to be able to pin page. [1]. But this is just a potential
+benefit of creating iommufd_access for noiommu devices. There is no
+intention to make noiommu devices to work with mdev.
 
- * HP Itanium IA64 servers - rx2800, RX class IA64 blade, etc=C2=A0
- * HP Itanium IA64 workstations - ZX class
- * HP 9000 HP-UX PA-RISC RP, A, D, E, F, G, N, K, L, T, etc=C2=A0
- * HP 9000 HP-UX PA-RISC B, C, J, 700 series workstations
- * HP 9000 HP-UX PA-RISC VME based industrial controllers
- * HP 1000 HP-RTE A990, A900 A700, A600, A400.. etc servers
- * ABB / HP Advant controllers - RTA real-time accelerators
- * All parts for the above systems, arrays, drives, memory, etc
+[1] https://lore.kernel.org/kvm/ZD1MCc6fD+oisjki@nvidia.com/#t
 
-HP RX2800 running HP-UX 11.31 (v3) or VMS operating systems [http://www.cyp=
-ress-tech.com/hpe-hp-integrity-itanium-rx2800-i4-i6-server.html]
+> Userspaces relying on niommu
+> get the minimum viable interface and must impose a minuscule
+> incremental maintenance burden.  The only reason we're spending so much
+> effort on it here is to make iommufd noiommu support equivalent to
+> group/container noiommu support.  We should stop at that.  Thanks,
 
- * Standard 90-day warranty / eligible for HW maintenance
- * disaster back-up, clone replicas, spare parts, and add on peripherals
- * replacement parts for discontinued HP systems=C2=A0
- * buy - off lease bulk, surplus, & unused HP hardware
- * =C2=A0ship / export Worldwide to every country
+yes. This is why this patch is to bind noiommu devices to iommufd
+and create iommufd_access. Otherwise, noiommu devices would have
+trouble in the hot-reset path when iommufd-based ownership check
+model is applied, and this is the only model for cdev. So binding
+noiommu devices to iommufd is necessary for support noiommu in the
+cdev interface.
 
-Contact us if you wish to buy, sell, or RFQ on any HP hardware. Contact wit=
-h any questions, requests, or assistance.=C2=A0
+If this above makes sense. Then back to the question of noiommu
+check in vfio_emulated_unmap(). At first, I intend to have such
+a check to avoid calling dma_unmap callback for noiommu devices.
+But per Kevin's comment and your above statement on mdev and noiommu,
+so in reality, noiommu device drivers won't implement dma_unmap
+callback. So it is probably fine to remove the noiommu check in
+vfio_emulated_unmap().
 
- * =C2=A0 =C2=A0 Thank you
- * =C2=A0 =C2=A0 Jesse Dougherty
- * =C2=A0 =C2=A0 Cypress Technology, Inc.
- * =C2=A0 =C2=A0 Land O Lakes, Florida USA
- * =C2=A0 =C2=A0 Phone 888-954-3414 / (direct) 412-589-3779
- * =C2=A0 =C2=A0=C2=A0jesse@cypress-tech.com [jesse@cypress-tech.com]
- * =C2=A0 =C2=A0=C2=A0www.Cypress-Tech.com [http://www.Cypress-Tech.com]
-
-=C2=A0
-
-
-
-This e-mail has been sent to intel-gvt-dev@lists.freedesktop.org, click her=
-e to unsubscribe http://xz01x.mjt.lu/unsub2?hl=3Den&m=3DAWsAABazlH8AAcju9io=
-AAM5Ee0IAAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds&b=3Db78e482d&e=
-=3Dcf97fdf4&x=3DT9ZTD0d7I8nWexNjwtFGOiDda_TnMPeFq7gyjrD4UrPTf9rVFgDeeiePdwr=
-slDcy.=
-
---=-89/+hryPAa38o7UDSHsA
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
-schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
-ce"><head><title>Hewlett-Packard / ABB hardware - Cypress Technology</title=
-><!--[if !mso]><!--><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Ded=
-ge"><!--<![endif]--><meta http-equiv=3D"Content-Type" content=3D"text/html;=
- charset=3DUTF-8"><meta name=3D"viewport" content=3D"width=3Ddevice-width,i=
-nitial-scale=3D1"><style type=3D"text/css">#outlook a { padding:0; }
-          body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-=
-size-adjust:100%; }
-          table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-tab=
-le-rspace:0pt; }
-          img { border:0;height:auto;line-height:100%; outline:none;text-de=
-coration:none;-ms-interpolation-mode:bicubic; }
-          p { display:block;margin:13px 0; }</style><!--[if mso]>
-        <noscript>
-        <xml>
-        <o:OfficeDocumentSettings>
-          <o:AllowPNG/>
-          <o:PixelsPerInch>96</o:PixelsPerInch>
-        </o:OfficeDocumentSettings>
-        </xml>
-        </noscript>
-        <![endif]--><!--[if lte mso 11]>
-        <style type=3D"text/css">
-          .mj-outlook-group-fix { width:100% !important; }
-        </style>
-        <![endif]--><style type=3D"text/css">@media only screen and (min-wi=
-dth:480px) {
-        .mj-column-per-100 { width:100% !important; max-width: 100%; }
-      }</style><style media=3D"screen and (min-width:480px)">.moz-text-html=
- .mj-column-per-100 { width:100% !important; max-width: 100%; }</style><sty=
-le type=3D"text/css">[owa] .mj-column-per-100 { width:100% !important; max-=
-width: 100%; }</style><style type=3D"text/css"></style></head><body style=
-=3D"word-spacing:normal;background-color:#F4F4F4;"><div style=3D"background=
--color:#F4F4F4;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" role=3D"presentation" style=3D"background:#ffffff;background=
--color:#ffffff;width:100%;"><tbody><tr><td><!--[if mso | IE]><table align=
-=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" rol=
-e=3D"presentation" style=3D"width:600px;" width=3D"600" bgcolor=3D"#ffffff"=
- ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:exact=
-ly;"><![endif]--><div style=3D"margin:0px auto;max-width:600px;"><table ali=
-gn=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
-entation" style=3D"width:100%;"><tbody><tr><td style=3D"direction:ltr;font-=
-size:0px;padding:20px 0px 20px 0px;padding-left:0px;padding-right:0px;text-=
-align:center;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" =
-cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-al=
-ign:top;width:600px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlo=
-ok-group-fix" style=3D"font-size:0px;text-align:left;direction:ltr;display:=
-inline-block;vertical-align:top;width:100%;"><table border=3D"0" cellpaddin=
-g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"vertical-align:top=
-;" width=3D"100%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;padd=
-ing:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><d=
-iv style=3D"font-family:Arial, sans-serif;font-size:16px;letter-spacing:nor=
-mal;line-height:1;text-align:left;color:#000000;"><p class=3D"text-build-co=
-ntent" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0; margin-top: 10px;=
-"><span style=3D"color:#000000;font-family:Arial, sans-serif;font-size:18px=
-;"><b>(Buy, Sell, Repair, &amp; Support)&nbsp;</b></span></p><p class=3D"te=
-xt-build-content" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"><span=
- style=3D"color:#000000;font-family:Arial;font-size:16px;">Cypress Technolo=
-gy is a reseller of HP 9000, e3000, &amp; Itanium series, ABB Addvant serie=
-s hardware working with the HP-UX UNIX, MPE/iX, and VMS operating systems. =
-We have been in business for 28 years selling HP hardware to end-users, res=
-eller, maintenance companies, and data centers. We sell complete plug-n-pla=
-y systems with OS loaded or spare parts. We provide replacements for discon=
-tinued HP product lines.</span></p><p class=3D"text-build-content" data-tes=
-tid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"><span style=3D"color:#000000;fo=
-nt-family:Arial;font-size:16px;">The hardware that we stock and have expert=
-ise on is:</span></p><ul><li><span style=3D"color:#000000;font-family:Arial=
-;font-size:16px;">HP Itanium IA64 servers - rx2800, RX class IA64 blade, et=
-c&nbsp;</span></li><li><span style=3D"color:#000000;font-family:Arial;font-=
-size:16px;">HP Itanium IA64 workstations - ZX class</span></li><li><span st=
-yle=3D"color:#000000;font-family:Arial;font-size:16px;">HP 9000 HP-UX PA-RI=
-SC RP, A, D, E, F, G, N, K, L, T, etc&nbsp;</span></li><li><span style=3D"c=
-olor:#000000;font-family:Arial;font-size:16px;">HP 9000 HP-UX PA-RISC B, C,=
- J, 700 series workstations</span></li><li><span style=3D"color:#000000;fon=
-t-family:Arial;font-size:16px;">HP 9000 HP-UX PA-RISC VME based industrial =
-controllers</span></li><li><span style=3D"color:#000000;font-family:Arial;f=
-ont-size:16px;">HP 1000 HP-RTE A990, A900 A700, A600, A400.. etc servers</s=
-pan></li><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;=
-">ABB / HP Advant controllers - RTA real-time accelerators</span></li><li><=
-span style=3D"color:#000000;font-family:Arial;font-size:16px;">All parts fo=
-r the above systems, arrays, drives, memory, etc</span></li></ul><p class=
-=3D"text-build-content" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"=
-><a class=3D"link-build-content" style=3D"color:inherit;; text-decoration: =
-none;" target=3D"_blank" href=3D"http://xz01x.mjt.lu/lnk/AWsAABazlH8AAcju9i=
-oAAM5Ee0IAAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds/1/NndFq0_Ez-z=
-XaSv7FGbhRw/aHR0cDovL3d3dy5jeXByZXNzLXRlY2guY29tL2hwZS1ocC1pbnRlZ3JpdHktaXR=
-hbml1bS1yeDI4MDAtaTQtaTYtc2VydmVyLmh0bWw"><span style=3D"color:#55575d;font=
--family:Arial;font-size:16px;"><b><u>HP RX2800 running HP-UX 11.31 (v3) or =
-VMS operating systems</u></b></span></a></p><ul><li>Standard 90-day warrant=
-y / eligible for HW maintenance</li><li><span style=3D"color:#000000;font-f=
-amily:Arial;font-size:16px;">disaster back-up, clone replicas, spare parts,=
- and add on peripherals</span></li><li><span style=3D"color:#000000;font-fa=
-mily:Arial;font-size:16px;">replacement parts for discontinued HP systems&n=
-bsp;</span></li><li><span style=3D"color:#000000;font-family:Arial;font-siz=
-e:16px;">buy - off lease bulk, surplus, &amp; unused HP hardware</span></li=
-><li><span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nbsp;=
-ship / export Worldwide to every country</span></li></ul><p class=3D"text-b=
-uild-content" data-testid=3D"XOg3BoD5V" style=3D"margin: 10px 0;"><span sty=
-le=3D"color:#000000;font-family:Arial;font-size:16px;">Contact us if you wi=
-sh to buy, sell, or RFQ on any HP hardware. Contact with any questions, req=
-uests, or assistance.&nbsp;</span></p><ul><li><span style=3D"color:#000000;=
-font-family:Arial;font-size:16px;">&nbsp; &nbsp; Thank you</span></li><li><=
-span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nbsp; &nbsp=
-; Jesse Dougherty</span></li><li><span style=3D"color:#000000;font-family:A=
-rial;font-size:16px;">&nbsp; &nbsp; Cypress Technology, Inc.</span></li><li=
-><span style=3D"color:#000000;font-family:Arial;font-size:16px;">&nbsp; &nb=
-sp; Land O Lakes, Florida USA</span></li><li><span style=3D"color:#000000;f=
-ont-family:Arial;font-size:16px;">&nbsp; &nbsp; Phone 888-954-3414 / (direc=
-t) 412-589-3779</span></li><li><span style=3D"color:#000000;font-family:Ari=
-al;font-size:16px;">&nbsp; &nbsp;&nbsp;</span><a class=3D"link-build-conten=
-t" style=3D"color:inherit;; text-decoration: none;" href=3D"mailto:jesse@cy=
-press-tech.com"><span style=3D"color:#55575d;font-family:Arial;font-size:16=
-px;"><u>jesse@cypress-tech.com</u></span></a></li><li><span style=3D"color:=
-#000000;font-family:Arial;font-size:16px;">&nbsp; &nbsp;&nbsp;</span><a cla=
-ss=3D"link-build-content" style=3D"color:inherit;; text-decoration: none;" =
-target=3D"_blank" href=3D"http://xz01x.mjt.lu/lnk/AWsAABazlH8AAcju9ioAAM5Ee=
-0IAAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds/2/O1gXwhtSxt9HIbu48d=
-c2-A/aHR0cDovL3d3dy5DeXByZXNzLVRlY2guY29t"><span style=3D"color:#55575d;fon=
-t-family:Arial;font-size:16px;"><u>www.Cypress-Tech.com</u></span></a></li>=
-</ul><p class=3D"text-build-content" data-testid=3D"XOg3BoD5V" style=3D"mar=
-gin: 10px 0; margin-bottom: 10px;">&nbsp;</p></div></td></tr></tbody></tabl=
-e></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody><=
-/table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tb=
-ody></table><!--[if mso | IE]><table align=3D"center" border=3D"0" cellpadd=
-ing=3D"0" cellspacing=3D"0" class=3D"" role=3D"presentation" style=3D"width=
-:600px;" width=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-=
-line-height-rule:exactly;"><![endif]--><div style=3D"margin:0px auto;max-wi=
-dth:600px;"><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
-ing=3D"0" role=3D"presentation" style=3D"width:100%;"><tbody><tr><td style=
-=3D"direction:ltr;font-size:0px;padding:20px 0px 20px 0px;text-align:center=
-;"><!--[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=
-=3D"0" cellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;wid=
-th:600px;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fi=
-x" style=3D"font-size:0px;text-align:left;direction:ltr;display:inline-bloc=
-k;vertical-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cel=
-lspacing=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D=
-"100%"><tbody><tr><td align=3D"left" style=3D"font-size:0px;padding:0px 20p=
-x 0px 20px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><div =
-style=3D"font-family:Arial, sans-serif;font-size:13px;letter-spacing:normal=
-;line-height:1;text-align:left;color:#000000;"><p class=3D"text-build-conte=
-nt" style=3D"text-align: center; margin: 10px 0; margin-top: 10px; margin-b=
-ottom: 10px;" data-testid=3D"h4QAoZveqV24o"><span style=3D"color:#55575d;fo=
-nt-family:Arial;font-size:13px;line-height:22px;">This e-mail has been sent=
- to intel-gvt-dev@lists.freedesktop.org, </span><a class=3D"link-build-cont=
-ent" style=3D"color:inherit;; text-decoration: none;" target=3D"_blank" hre=
-f=3D"http://xz01x.mjt.lu/unsub2?hl=3Den&amp;m=3DAWsAABazlH8AAcju9ioAAM5Ee0I=
-AAYCsxc8AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds&amp;b=3Db78e482d&amp;e=
-=3Dcf97fdf4&amp;x=3DT9ZTD0d7I8nWexNjwtFGOiDda_TnMPeFq7gyjrD4UrPTf9rVFgDeeie=
-PdwrslDcy"><span style=3D"color:#55575d;font-family:Arial;font-size:13px;li=
-ne-height:22px;">click here to unsubscribe</span></a><span style=3D"color:#=
-55575d;font-family:Arial;font-size:13px;line-height:22px;">.</span></p></di=
-v></td></tr><tr><td align=3D"left" style=3D"font-size:0px;padding:0px 20px =
-0px 20px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><div st=
-yle=3D"font-family:Arial, sans-serif;font-size:13px;letter-spacing:normal;l=
-ine-height:1;text-align:left;color:#000000;"></div></td></tr></tbody></tabl=
-e></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr></tbody><=
-/table></div><!--[if mso | IE]></td></tr></table><![endif]--></div>
-<br/><img src=3D"http://xz01x.mjt.lu/oo/AWsAABazlH8AAcju9ioAAM5Ee0IAAYCsxc8=
-AnUiJABIoIQBkSyn7qADZTqEuS5CwefFVOotPRwASLds/d79d6f40/e.gif" height=3D"1" w=
-idth=3D"1" alt=3D"" border=3D"0" style=3D"height:1px;width:1px;border:0;"/>
-</body></html>=
-
---=-89/+hryPAa38o7UDSHsA--
-
+-- 
+Regards,
+Yi Liu
