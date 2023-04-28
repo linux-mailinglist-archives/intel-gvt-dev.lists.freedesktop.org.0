@@ -1,44 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5FD56F18FD
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Apr 2023 15:11:50 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 15B246F1B8C
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 28 Apr 2023 17:29:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A54F310ED4F;
-	Fri, 28 Apr 2023 13:11:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E13C510E3D8;
+	Fri, 28 Apr 2023 15:29:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Fri, 28 Apr 2023 13:11:47 UTC
-Received: from mail.drillsetfeet.autos (unknown [193.17.7.162])
- by gabe.freedesktop.org (Postfix) with ESMTP id 91B7310ED4E
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 28 Apr 2023 13:11:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=drillsetfeet.autos; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace_hardware_deals@drillsetfeet.autos; 
- bh=5YzEmdKA7w/ZVeAlLwI+2wCYqlQ=;
- b=Of4Abo9uA2nC1mIJTQTQfSmK6VP/Pv37bzrjDYpNkDVhoTIDF+gAA/Cmyxv9pRSBeKD3NsX3BZXw
- O6UIdTHUp2jxFdN3rhgcryi3yoGvXLb0JnhcpVDrTu5tq9MyyZqo0HLATpdldrSD1UI+DDc+dvGi
- H0ElODnTYBDdhxLYmEQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=drillsetfeet.autos; 
- b=BPw1B/w85N1tp5jE7uM6VzK9sM2O20VFmoHuAZ1Ajt8EhzaIIQQI/EWgFnqLhicZUCOdNUFS/+22
- piebprZitlsz6jivi5f/WnT1n8B+hiPuc20B3qoBGYmVdmDOHWZYH4+Wmz/3UyKPOTlwVKHNwd3V
- VP2N24QONxxAvmmaaFU=;
-Received: by mail.drillsetfeet.autos id h9fctm0001g1 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 28 Apr 2023 10:21:49 -0400 (envelope-from
- <ace_hardware_deals-intel+2Dgvt+2Ddev=lists.freedesktop.org@drillsetfeet.autos>)
-Date: Fri, 28 Apr 2023 10:21:49 -0400
-From: "ACE Hardware Deals" <ace_hardware_deals@drillsetfeet.autos>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim your brand new DeWalt Drill Set before the offer runs out today.
+X-Greylist: delayed 1083 seconds by postgrey-1.36 at gabe;
+ Fri, 28 Apr 2023 15:29:24 UTC
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
+ [185.176.79.56])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5544710E36F;
+ Fri, 28 Apr 2023 15:29:24 +0000 (UTC)
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.207])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Q7GFH24VQz6J6v0;
+ Fri, 28 Apr 2023 23:08:03 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ lhrpeml500005.china.huawei.com (7.191.163.240) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Fri, 28 Apr 2023 16:11:17 +0100
+Received: from lhrpeml500005.china.huawei.com ([7.191.163.240]) by
+ lhrpeml500005.china.huawei.com ([7.191.163.240]) with mapi id 15.01.2507.023; 
+ Fri, 28 Apr 2023 16:11:17 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: "Jiang, Yanting" <yanting.jiang@intel.com>, "Liu, Yi L"
+ <yi.l.liu@intel.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>
+Subject: RE: [PATCH v10 00/22] Add vfio_device cdev for iommufd support
+Thread-Topic: [PATCH v10 00/22] Add vfio_device cdev for iommufd support
+Thread-Index: AQHZeFBNpioWjL263kGpOppFOucUXK9AZoUAgABvCNA=
+Date: Fri, 28 Apr 2023 15:11:17 +0000
+Message-ID: <be7a00e1bc5e4ed18382ad78cdebb085@huawei.com>
+References: <20230426150321.454465-1-yi.l.liu@intel.com>
+ <MW4PR11MB67633DB179D9DD03E0C3F680E86B9@MW4PR11MB6763.namprd11.prod.outlook.com>
+In-Reply-To: <MW4PR11MB67633DB179D9DD03E0C3F680E86B9@MW4PR11MB6763.namprd11.prod.outlook.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.126.171.238]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_223_1073354435.1682686627969"
-Message-ID: <0.0.0.18.1D979DCC5200BF6.5001E@mail.drillsetfeet.autos>
+X-CFilter-Loop: Reflected
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,48 +59,125 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "joro@8bytes.org" <joro@8bytes.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "Hao, Xudong" <xudong.hao@intel.com>, "Duan, 
+ Zhenzhong" <zhenzhong.duan@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Zhao, 
+ Yan Y" <yan.y.zhao@intel.com>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "Xu, Terrence" <terrence.xu@intel.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "lulu@redhat.com" <lulu@redhat.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_223_1073354435.1682686627969
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-A Special Offer for Our Valued Users
-
----------------------------------------
 
 
-ACE HARDWARE
+> -----Original Message-----
+> From: Jiang, Yanting [mailto:yanting.jiang@intel.com]
+> Sent: 28 April 2023 10:30
+> To: Liu, Yi L <yi.l.liu@intel.com>; alex.williamson@redhat.com;
+> jgg@nvidia.com; Tian, Kevin <kevin.tian@intel.com>
+> Cc: joro@8bytes.org; robin.murphy@arm.com; cohuck@redhat.com;
+> eric.auger@redhat.com; nicolinc@nvidia.com; kvm@vger.kernel.org;
+> mjrosato@linux.ibm.com; chao.p.peng@linux.intel.com;
+> yi.y.sun@linux.intel.com; peterx@redhat.com; jasowang@redhat.com;
+> Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+> lulu@redhat.com; suravee.suthikulpanit@amd.com;
+> intel-gvt-dev@lists.freedesktop.org; intel-gfx@lists.freedesktop.org;
+> linux-s390@vger.kernel.org; Hao, Xudong <xudong.hao@intel.com>; Zhao,
+> Yan Y <yan.y.zhao@intel.com>; Xu, Terrence <terrence.xu@intel.com>; Duan,
+> Zhenzhong <zhenzhong.duan@intel.com>
+> Subject: RE: [PATCH v10 00/22] Add vfio_device cdev for iommufd support
+>=20
+> > Subject: [PATCH v10 00/22] Add vfio_device cdev for iommufd support
+> >
+> > Existing VFIO provides group-centric user APIs for userspace. Userspace
+> opens
+> > the /dev/vfio/$group_id first before getting device fd and hence gettin=
+g
+> access
+> > to device. This is not the desired model for iommufd. Per the conclusio=
+n of
+> > community discussion[1], iommufd provides device-centric kAPIs and
+> requires its
+> > consumer (like VFIO) to be device-centric user APIs. Such user APIs are
+> used to
+> > associate device with iommufd and also the I/O address spaces managed
+> by the
+> > iommufd.
+> >
+> > This series first introduces a per device file structure to be prepared=
+ for
+> further
+> > enhancement and refactors the kvm-vfio code to be prepared for acceptin=
+g
+> > device file from userspace. After this, adds a mechanism for blocking
+> device
+> > access before iommufd bind. Then refactors the vfio to be able to handl=
+e
+> cdev
+> > path (e.g. iommufd binding, no-iommufd, [de]attach ioas).
+> > This refactor includes making the device_open exclusive between the
+> group and
+> > the cdev path, only allow single device open in cdev path; vfio-iommufd
+> code is
+> > also refactored to support cdev. e.g. split the vfio_iommufd_bind() int=
+o two
+> > steps. Eventually, adds the cdev support for vfio device and the new io=
+ctls,
+> then
+> > makes group infrastructure optional as it is not needed when vfio devic=
+e
+> cdev is
+> > compiled.
+> >
+> > This series is based on some preparation works done to vfio emulated
+> devices[2]
+> > and vfio pci hot reset enhancements[3].
+> >
+> > This series is a prerequisite for iommu nesting for vfio device[4] [5].
+> >
+> > The complete code can be found in below branch, simple tests done to th=
+e
+> > legacy group path and the cdev path. Draft QEMU branch can be found
+> at[6]
+> > However, the noiommu mode test is only done with some hacks in kernel
+> and
+> > qemu to check if qemu can boot with noiommu devices.
+> >
+> > https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v10
+> > (config CONFIG_IOMMUFD=3Dy CONFIG_VFIO_DEVICE_CDEV=3Dy)
+> >
+> > base-commit: c3822365940319ad86487cc1daf6f1a4c271191e
+> > (based on Alex's next branch and merged the vfio_mdev_ops branch from
+> > Jason's repo)
+> >
+>=20
+> Tested NIC passthrough on Intel platform.
+> Result looks good hence,
+> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 
-We hope this email finds you well.  At Ace Hardware, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
+Likewise, tested on HiSilicon D06(ARM64) platform with a NIC pass-through d=
+evice
+and looks fine.
 
-As a token of our appreciation, we would like to give you a FREE DeWalt drill set when you fill out our survey.  This set includes powerful and durable drills that will make any DIY project a success and is yours to keep, no strings attached. 
+FWIW,
 
+Tested-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. 
-
-
-Take the Survey >>>>>
-http://www.drillsetfeet.autos/epitaxial-equilateral/6c04f2395g86vI13qK53r48N142ag36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ2QQ9o6KB10nL6XlwMDJ
-
-
+Thanks,
+Shameer
 
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
-
-
-
-Best regards,
-The Ace Hardware Team
-
-
----------------------------------------
-
-No longer want to receive communication?, click_here >>>>> http://www.drillsetfeet.autos/mucker-Newmanize/d6e5M23L95b8J6j12E5u349L142ao36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ2QQ9o7W1SGT0r6BBXlwD
-126 E 23rd St New York, NY, US 10010
-
-<font color="nurtured"><span><big><span><style title="billiard"></span></span></style></big></font><big></big>
-
-------=_Part_223_1073354435.1682686627969--
+=20
 
