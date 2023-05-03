@@ -1,86 +1,66 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76C1F6F616F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 May 2023 00:49:29 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BDB566F61EF
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 May 2023 01:16:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 03CE910E0F2;
-	Wed,  3 May 2023 22:49:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1438610E36F;
+	Wed,  3 May 2023 23:16:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5B85410E0F2
+Received: from mail-pl1-x64a.google.com (mail-pl1-x64a.google.com
+ [IPv6:2607:f8b0:4864:20::64a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 862DF10E36F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  3 May 2023 22:49:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1683154165;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pZKMay62CKj/rRkV21aMrRSKMlokKOiJJhw6mGzAbD4=;
- b=QfLDZengg6Sf7zpkUMVRWnrlfrPvb+/ZCKc9Znn47qnPJARld8nMDS76tcGPoHXe6HvajW
- QL5SDreF5m+14Wwfz7AMEZ7SPj79sTv2L7zteZh+rqqgi2uj8xPHXH1fjJCQXr3YiPrMei
- jEPphEFLq9KH4cLiWGa0+Pi7VFc4irs=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-365-r2msH22nM3O7a4EqdiXChg-1; Wed, 03 May 2023 18:49:21 -0400
-X-MC-Unique: r2msH22nM3O7a4EqdiXChg-1
-Received: by mail-il1-f199.google.com with SMTP id
- e9e14a558f8ab-3313a22001dso15084225ab.0
+ Wed,  3 May 2023 23:16:13 +0000 (UTC)
+Received: by mail-pl1-x64a.google.com with SMTP id
+ d9443c01a7336-1aaf7a766e1so38849305ad.3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 03 May 2023 15:49:21 -0700 (PDT)
+ Wed, 03 May 2023 16:16:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20221208; t=1683155772; x=1685747772;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=VcB+Y5fDyixakWTeoinQOVeecLhRUTl+pbViwwNrtuQ=;
+ b=sTeZoxVDxdqS3PD2YH+hzY3HPDUPF4CDBpil3ScaC5e3sXkVGT/uJEkeaOrwNg3Zgb
+ 37BoXrNRmGg/+0SCX9mPdqUq6njuBQHxQ6D9QGXpWlyL6WdcOB8AK+eY8A422ogU7Fup
+ Lx9HYoY9kT10KPUZIF0eOJ7o+kZcARHSXpg+uwE+qWc976HUetby61zeLGqtVWlgNCfZ
+ W/66w8bglbdx9ioh6DT4mqwxC0A+u1kW5jlQMMLE8PzDfQ5Dsq7GnyOAJPIjYbgNCQTt
+ HztMBYNsGySpCSBrDm76lEVZgHCRRphG93ufQqUcEFTAg6jKycPQpkvucn1e8E1JDP7d
+ uV8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683154161; x=1685746161;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=pZKMay62CKj/rRkV21aMrRSKMlokKOiJJhw6mGzAbD4=;
- b=MOkfDmFbkSP6lYmieJDkLnjAJ+O1Wc6aSBq3DP/guSQGt/rNWEqyGJu+AIgMAbBquq
- MhUwXzfKGfOzXVwRD6KH2A0NJHgWDCxj/H9V9NoZEC5l7ufyVviqDwNCnjDFlWStIyhe
- kbY7hOZ+0R/1w43GsET+dY42kCxTZN8Uwv9a+bASLMuFlP+cfE2odf4+jKb2Px2Hlk0C
- kvWj+qbgKczQoiQXzuPVdGjD6r4ZOzaI+AbswrhaY9kCKujnhCpnu7YOClvQ3pcM4lLF
- 0jVlVoGf7zKqPnmX9JPZk9/7N1dLRaonTZGDWpa7GgZiy6nmo018Mpg3geu18SOvlcPv
- 11YA==
-X-Gm-Message-State: AC+VfDyN/W7ynyZqBZz4cwbCGUZOzkLSptjh6++rb6irleTn+q+e45Ds
- SbsmPUyFkRzdgMkg0PZrFTJzPq0rUlE4gpqVvWFW3YqAEV++ZjutAhLjkE4fz/M2/HF6WeaZjVy
- qZj8HRki5nbi1OozJCEM3Fh9MEZkQjJUocA==
-X-Received: by 2002:a92:c84d:0:b0:318:ab40:4e9b with SMTP id
- b13-20020a92c84d000000b00318ab404e9bmr15017942ilq.2.1683154161176; 
- Wed, 03 May 2023 15:49:21 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4ntpPSWb/poW4t0J5+ldQYO37YiiaPp9DXn+9xjK5dBx+7eAyDqpM0q/3zcX+WxbzjTaBu6Q==
-X-Received: by 2002:a92:c84d:0:b0:318:ab40:4e9b with SMTP id
- b13-20020a92c84d000000b00318ab404e9bmr15017917ilq.2.1683154160924; 
- Wed, 03 May 2023 15:49:20 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- g8-20020a056e020d0800b0032c9da1d89csm9093182ilj.78.2023.05.03.15.49.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 May 2023 15:49:20 -0700 (PDT)
-Date: Wed, 3 May 2023 16:49:16 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v4 2/9] vfio-iommufd: Create iommufd_access for noiommu
- devices
-Message-ID: <20230503164916.652d7779.alex.williamson@redhat.com>
-In-Reply-To: <ZFK5AJxhMBGKqWaH@nvidia.com>
-References: <20230426145419.450922-1-yi.l.liu@intel.com>
- <20230426145419.450922-3-yi.l.liu@intel.com>
- <BN9PR11MB52768AF474FAB2AF36AC00508C6A9@BN9PR11MB5276.namprd11.prod.outlook.com>
- <DS0PR11MB752972AC1A6030CB442ACF3FC36A9@DS0PR11MB7529.namprd11.prod.outlook.com>
- <20230427123203.22307c4f.alex.williamson@redhat.com>
- <c203f11f-4d9f-cf43-03ab-e41a858bdd92@intel.com>
- <ZFFUyhqID+LtUB/D@nvidia.com>
- <DS0PR11MB7529B4E4513B1A56A90F111DC36C9@DS0PR11MB7529.namprd11.prod.outlook.com>
- <ZFK5AJxhMBGKqWaH@nvidia.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+ d=1e100.net; s=20221208; t=1683155772; x=1685747772;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=VcB+Y5fDyixakWTeoinQOVeecLhRUTl+pbViwwNrtuQ=;
+ b=a7gRpwH8G116+U+mRtcQkHKbFMLuVnF8v5FjjmlU6/LXZ/SlyyyBnsPtYMsT7dNNtt
+ ihupi/PYPR5fk0C7ORmoJQD0LiEQy6W9KXK2qMsmG6k10cYHARpPrVskZptMKehy6PwP
+ neuJIusuPq7WZ5E4k0itWVOOYL9FeGgOePIwdfwlObDWeuO5ezMX+9tQXnLw90akeGo6
+ XiSocmOhat9iDeb3kxJ9ipxJai0lNrYQgwwbxQdx5ej35iQk9jR7/7aa30MCjw4EMauT
+ TBw9Z+y3O+rMsDi/HggM1xu7SNyfZITVerfGTTkSyVRobLKIAyBKLbGeyusio0lUwHRO
+ 8+1g==
+X-Gm-Message-State: AC+VfDyoIv5cHCHWxtN2dXgKOcjnvVZn4iYLOu439wXinXMUaGQRqwoz
+ woBH2W9oHzETeFFxt15WAgbIGbe+wVs=
+X-Google-Smtp-Source: ACHHUZ6g5+RkH9RYY37NzyTJLkYzceQaVVLYFcfwNF/8stvntiOGUw0qCRLeunRzkavyvs4pLnENPx5NNl4=
+X-Received: from zagreus.c.googlers.com
+ ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
+ (user=seanjc job=sendgmr) by 2002:a17:903:234c:b0:1a2:87a2:c932 with SMTP id
+ c12-20020a170903234c00b001a287a2c932mr513261plh.10.1683155772723; Wed, 03 May
+ 2023 16:16:12 -0700 (PDT)
+Date: Wed, 3 May 2023 16:16:10 -0700
+In-Reply-To: <ZBwS0DNOwMf7OVmV@yzhao56-desk.sh.intel.com>
+Mime-Version: 1.0
+References: <20230311002258.852397-1-seanjc@google.com>
+ <20230311002258.852397-26-seanjc@google.com>
+ <ZBQkyB3KJP34D9/h@yzhao56-desk.sh.intel.com>
+ <ZBwS0DNOwMf7OVmV@yzhao56-desk.sh.intel.com>
+Message-ID: <ZFLrOgUL4T/lrVLo@google.com>
+Subject: Re: [PATCH v2 25/27] KVM: x86/mmu: Drop @slot param from
+ exported/external page-track APIs
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,51 +73,68 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
- Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 3 May 2023 16:41:52 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
+Finally getting back to this series...
 
-> > > My general idea to complete the no-iommu feature is to add a new IOCTL
-> > > to VFIO that is 'pin iova and return dma addr' that no-iommu userspace
-> > > would call instead of trying to abuse mlock and /proc/ to do it. That
-> > > ioctl would use the IOAS attached to the access just like a mdev would
-> > > do, so it has a real IOVA, but it is not a mdev.  
-> > 
-> > This new ioctl may be IOMMUFD ioctl since its input is the IOAS and
-> > addr, nothing related to the device. Is it?  
+On Thu, Mar 23, 2023, Yan Zhao wrote:
+> On Fri, Mar 17, 2023 at 04:28:56PM +0800, Yan Zhao wrote:
+> > On Fri, Mar 10, 2023 at 04:22:56PM -0800, Sean Christopherson wrote:
+> > ...
+> > > +int kvm_write_track_add_gfn(struct kvm *kvm, gfn_t gfn)
+> > > +{
+> > > +	struct kvm_memory_slot *slot;
+> > > +	int idx;
+> > > +
+> > > +	idx = srcu_read_lock(&kvm->srcu);
+> > > +
+> > > +	slot = gfn_to_memslot(kvm, gfn);
+> > > +	if (!slot) {
+> > > +		srcu_read_unlock(&kvm->srcu, idx);
+> > > +		return -EINVAL;
+> > > +	}
+> > > +
+> > Also fail if slot->flags & KVM_MEMSLOT_INVALID is true?
+> > There should exist a window for external users to see an invalid slot
+> > when a slot is about to get deleted/moved.
+> > (It happens before MOVE is rejected in kvm_arch_prepare_memory_region()).
 > 
-> No, definately a VFIO special ioctl for VFIO no-iommu mode.
+> Or using
+>         if (!kvm_is_visible_memslot(slot)) {
+> 		srcu_read_unlock(&kvm->srcu, idx);
+> 		return -EINVAL;
+> 	}
 
-This seems like brushing off the dirty work to vfio.  Userspace drivers
-relying on no-iommu are in pretty questionable territory already, do we
-care if they don't have a good means to pin pages and derive the DMA
-address of those pinned pages?  As I noted earlier, I'm really not
-interested in expanding no-iommu, it's less important now than when it
-was added (we have vIOMMUs in VMs now and more platforms with IOMMUs)
-and we shouldn't be encouraging its use by further developing the
-interface.  Thanks,
+Hrm.  If the DELETE/MOVE succeeds, then the funky accounting is ok (by the end
+of the series) as the tracking disappears on DELETE, KVMGT will reject MOVE, and
+KVM proper zaps SPTEs and resets accounting on MOVE (account_shadowed() runs under
+mmu_lock and thus ensures all previous SPTEs are zapped before the "flush" from
+kvm_arch_flush_shadow_memslot() can run).
 
-Alex
+If kvm_prepare_memory_region() fails though...
 
+Ah, KVM itself is safe because of the aforementioned kvm_arch_flush_shadow_memslot().
+Any accounting done on a temporarily invalid memslot will be unwound when the SPTEs
+are zapped.  So for KVM, ignoring invalid memslots is correct _and necessary_.
+We could clean that up by having accounted_shadowed() use the @slot from the fault,
+which would close the window where the fault starts with a valid memslot but then
+sees an invalid memslot when accounting a new shadow page.  But I don't think there
+is a bug there.
+
+Right, and DELETE can't actually fail in the current code base, and we've established
+that MOVE can't possibly work.  So even if this is problematic in theory, there are
+no _unknown_ bugs, and the known bugs are fixed by the end of the series.
+
+And at the end of the series, KVMGT drops its tracking only when the DELETE is
+committed.  So I _think_ allowing external trackers to add and remove gfns for
+write-tracking in an invalid slot is actually desirable/correct.  I'm pretty sure
+removal should be allowed as that can lead to dangling write-protection in a
+rollback scenario.   And I can't think of anything that will break (in the kernel)
+if write-tracking a gfn in an invalid slot is allowed, so I don't see any harm in
+allowing the extremely theoretical case of KVMGT shadowing a gfn in a to-be-deleted
+memslot _and_ the deletion being rolled back.
