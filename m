@@ -1,148 +1,142 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8613E6F8D9E
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 May 2023 03:34:05 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88E8D6F8F95
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 May 2023 09:00:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5904910E2D6;
-	Sat,  6 May 2023 01:34:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6A7F010E1AF;
+	Sat,  6 May 2023 07:00:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5569610E2D6;
- Sat,  6 May 2023 01:34:02 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5CD7310E1A9;
+ Sat,  6 May 2023 07:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683336842; x=1714872842;
+ t=1683356454; x=1714892454;
  h=date:from:to:cc:subject:message-id:reply-to:references:
- content-transfer-encoding:in-reply-to:mime-version;
- bh=R1zVdlCTngGMd3N+ji8WBRSAkScLIbifYlfuhkE+yT8=;
- b=aw/jo4hfxTlEdp0tc/bl9S2ezEwm4Bg21bk3JevVnCsYoDXcFTGaarMn
- fRlMPS0m5fr51sQR6O53DUzOWtfi4kAiUdd2FJdsuJ9Tmw3qtKvYiLtwe
- dsxgYHXD2A2gpd4cqtjWwK7MdA4YSY2sDw0M69zczOVDw10c45uz7Sir9
- VDHdSKpCHSKHV0BCIk0FUOmpcmwnIjnfxsTqlJr2ku8MsmShAgjyxJa9E
- pi8C343CPXtfLBVhF1hfWtm4OrMZ1qb1XorbZCedaFD8ADqjmcb7+agsZ
- b6YlO+uZHfSbLZE5cASclyZBXyrZydhzOc/hPQbiJ8raKrzOSOp8tIsJl Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10701"; a="414876673"
-X-IronPort-AV: E=Sophos;i="5.99,253,1677571200"; d="scan'208";a="414876673"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 May 2023 18:34:01 -0700
+ in-reply-to:mime-version;
+ bh=fHmWhcNUbaN5AV94Y44UBAidNFNXbNgNuOy4B08EMJk=;
+ b=PQYpHLI4NKKQvsvvh2IK7oYNGYMxxBNC4NtMtYALCInaPIm8LlmbLKpx
+ Edt54EZyaFfD99+kZeX0tlbVIsEArIR5kMRFbW+RoeB9/JM++eeOtKfmV
+ DRrXYtzIBahRHUIEtXEjZiZlKtotP9d8IiRLNyjz2M14DjByTfiUKonh5
+ NJVWgL2fmDWIbY/rAxnXj/8fqtUjM5PcOsO/FEOJcm31wzs9AnR9/lY1u
+ fUnNLJLh6WdM5H8MU2u8GF/8Dk8kOx2M9QT1tDLz+pSXDJI5XfdIaXN2n
+ A3UbNrfzbf48OT2zOhPoM1l+Vn9u6NLDLkb5Tg2Z/pTtg37AdNwqDgHTm g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10701"; a="349390704"
+X-IronPort-AV: E=Sophos;i="5.99,254,1677571200"; d="scan'208";a="349390704"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 May 2023 00:00:52 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10701"; a="697800550"
-X-IronPort-AV: E=Sophos;i="5.99,253,1677571200"; d="scan'208";a="697800550"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga002.jf.intel.com with ESMTP; 05 May 2023 18:34:00 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10701"; a="675408253"
+X-IronPort-AV: E=Sophos;i="5.99,254,1677571200"; d="scan'208";a="675408253"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga006.jf.intel.com with ESMTP; 06 May 2023 00:00:51 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Fri, 5 May 2023 18:34:00 -0700
+ 15.1.2507.23; Sat, 6 May 2023 00:00:49 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Sat, 6 May 2023 00:00:49 -0700
 Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
  fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Fri, 5 May 2023 18:34:00 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.104)
+ 15.1.2507.23 via Frontend Transport; Sat, 6 May 2023 00:00:49 -0700
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.175)
  by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Fri, 5 May 2023 18:34:00 -0700
+ 15.1.2507.23; Sat, 6 May 2023 00:00:49 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LGSvF0FARkrxXd2Us+oLN8Ncvs9IcFsA+KamqDhzdWjtTmx8QH1cm2djWe6MJdgLEub2NxuEE6f3a0o7rn7y6DDFA3un4yp6q2JUrW8vA1k3ci9rM76V3zJ/rUtfINn4bq+C4gWyhGymfXmxF6cYKZYFe2uQHIDTLYrd6end+GBDNuxhh23ON8qgAwSjkp9AsdSvaQANHlUFIGZEMV10oCbrOzcqOkNG0X25uLZoq4zYbpC+tyT1O+guwbLADQH3GCIms8p3yW9QbU6wE1dvCNJVMb7dynEDRgWHZeWISKb4sZKwtuK8axvzL80KczKiWX5zQZgXM6b3eH95fdRyDA==
+ b=YRefXiQ99cEFsvra5tpVB2TcfB95soURvY+ANuMBpaMINaaC4GdKCSrRNW659cmQSS10YiKPpdzzRYEhQjbZ47iNrVhjxEdAuKDfkEJDmiI8a1SU5BgCIDACeKaz4wDea6P0kbQpxHhnwsgt02A47yFb5OJ/17VwgtgcKMLeo+vd0zFOnT+aE/b+Ua/mTAuEz+rDLA+Z01kTtV39kKRSL0zi3Rau+Th/DQpkUH2auv00cDhZJF9uA2T+nLQJE7DeE8GrKRjNyxhc2N0KuKaIoe/lnTG1Gs4DClRTjrimXvnxzhpGqohtpDNvpsmrMb7sK4yL6zDwW9TMLWRsTn4MZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rnWPIPdhb3PWVXtFA6L3hR5QQ3yq8eIKLDBS5DvZ+48=;
- b=RKM2PvLYQPmQrb0a6KrnJUdwHuPhGOWj+uvlvQ8dZSR6pZm6kRo23rLBkjTBFdkkDiPlxAJRsPtm+/XRREDs8kdi97lYAGlakSbU2KwDKvHY31j9VxWMdbni6yadNVbEvFyfyjS9f/DePraOIHKreVZuISvL/uKW8ft1C8VoKgWdxI7iqziYr1uTi31Ctb5gFedPQO3C1N1qM1AeN+lB+MBJ/ZziaLFMmpzDkKE7+m5mDdl5jtwspsIty9rjVJMdypc6vC/fsCmG9SfR8DMOBQTTl+PjdYaXQV9El3dEQs+mM1gAimf/iAVXdLqwHhYSZ5eHUmJhk6DEYU4zy9aO1g==
+ bh=teFW50ycez/OU8NYpvBzs33czKZWMyHaQ8IFSVtIpOI=;
+ b=BB2YcEcKLQftFVql1w48XoZycnsRZ+pkdI02wGO54OMN1VDVpgKce8pPBCDBKa9x3hsZGsDIL2dS0VgHoYnm9Ntk3AXIaX4TGwUhJfO57YJ/1VhbKJHSLy3XMyMO8hCfcs/Lr9q+7FC+NQ0rvsx1K3YepYrXC6DhOU09FydRlnD3x8j1E3x8Uz2BWM43t3vhcZIql2w75/rDs6ltB0VEDjYRm/r6i7xJkL++cUjr+bOHAEw7q7Ol6tQWPjNtRWr1gwYXXogolo18HrWXI4kHcSzlFnX4V6DBMSxiab80wZZv93o03T+3oh6Kb5Mb/yG9wluyF859Jt4LtqZRo/PNeA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
- CH0PR11MB8216.namprd11.prod.outlook.com (2603:10b6:610:192::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.27; Sat, 6 May
- 2023 01:33:57 +0000
+ SA0PR11MB4624.namprd11.prod.outlook.com (2603:10b6:806:98::19) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6363.29; Sat, 6 May 2023 07:00:47 +0000
 Received: from DS7PR11MB5966.namprd11.prod.outlook.com
  ([fe80::a670:49f5:d602:e2e4]) by DS7PR11MB5966.namprd11.prod.outlook.com
  ([fe80::a670:49f5:d602:e2e4%6]) with mapi id 15.20.6363.027; Sat, 6 May 2023
- 01:33:57 +0000
-Date: Sat, 6 May 2023 09:08:53 +0800
+ 07:00:47 +0000
+Date: Sat, 6 May 2023 14:35:41 +0800
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: Sean Christopherson <seanjc@google.com>
-Subject: Re: [PATCH v2 20/27] KVM: x86/mmu: Use page-track notifiers iff
- there are external users
-Message-ID: <ZFWopeCUzrQxBrUh@yzhao56-desk.sh.intel.com>
+Subject: Re: [PATCH v2 05/27] drm/i915/gvt: Verify VFIO-pinned page is THP
+ when shadowing 2M gtt entry
+Message-ID: <ZFX1PaKIa44WtSNX@yzhao56-desk.sh.intel.com>
 References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-21-seanjc@google.com>
- <ZBGfmLuORj+ZBziv@yzhao56-desk.sh.intel.com>
- <ZBH4RizqdigXeYte@google.com> <ZFQNgKGcexo0nQ4S@google.com>
-Content-Type: text/plain; charset="utf-8"
+ <20230311002258.852397-6-seanjc@google.com>
+ <ZBP7oZ1lkJhlSNpY@yzhao56-desk.sh.intel.com>
+ <ZFQYbHTYgG4HJ+ac@google.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZFQNgKGcexo0nQ4S@google.com>
-X-ClientProxiedBy: SG2PR01CA0128.apcprd01.prod.exchangelabs.com
- (2603:1096:4:40::32) To DS7PR11MB5966.namprd11.prod.outlook.com
+In-Reply-To: <ZFQYbHTYgG4HJ+ac@google.com>
+X-ClientProxiedBy: SG2PR06CA0194.apcprd06.prod.outlook.com (2603:1096:4:1::26)
+ To DS7PR11MB5966.namprd11.prod.outlook.com
  (2603:10b6:8:71::6)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|CH0PR11MB8216:EE_
-X-MS-Office365-Filtering-Correlation-Id: d6ba2422-a320-401d-c8ba-08db4dd1f5cd
+X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|SA0PR11MB4624:EE_
+X-MS-Office365-Filtering-Correlation-Id: 830b0f73-57c1-4e54-f11a-08db4dff9dd7
 X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: YoGoVW7WA4Zw05I/2EaUjE609Wl41cUwM5qnk1RWr4QpwQqN8wckT8FCq1uJ2EVr2irpx6IyIQiJy9sLRVaQ3INXJy+cYYl2Ij31jwtFmo3oPu/zL0zEOyxZEoZIwjiKsrSKn8nTwNGpNVp9Cac8VobjwuSxijjFWyVLO7YZ+/2eS3O/fArYusYx+/Y8IbjR4PqEeoIj44QW8WYs+PFdpt1B1uJ3dozgV2drH3gnVgx9BJm3j4EROyq/5rgQg3tmvRqAKTcizI8PfACCqYjod2R85RcDmCZxpNfDo/KzIRWNIc3mcypggzMsLC8khEnLpJpoije/u1inPcAzdMiXk93BR9jWeOAsnDpK9nSwvS60Z1cpDWCfc5g6guWd5sWaRW9hrbD9AafunsxPGVRO1Gm7Lg/oKPJoTZVP+1C9ygvyUf3uDfBBnCkKjjQ24qGsDvr8eTfiHM1v+iOhrSSu6FRNRFeus6eR9xHoVkKKCFv+UGNif8r1impWECdVEUalYccuYWoCEK6Gt8XQBgmicpJjSChG8ScH0QgLWLR2gvg3HHetRGTvtMJYDIFd5gUj+Lwdp9388zSmBQMngj766LU2SU5T/lmVsO2m+rttZTlpsp2ifidibI3lcbZRrfnw34XKagOfWtTshydYGplNZQ==
+X-Microsoft-Antispam-Message-Info: z0rZW7R54Z3pdzpckQonM1Yc50EWJe98nkQQlKJ06RRcfiwRo1aiZF+fcUQ93WAMccUOlz8UBwcKSBi60j2sH8xxWcfG9hoWHMYkeQG3heaAjDo+2zGKoBTbphyf1P7iw+69XuQTY8JuD2uN4et2cJmR4Ji12FcIzwoKlpvAo3t4tn0b1NhMOranJjkCFxhZRXJmIzNAHiYE4jeBP5MFm8MjvYtVmqd37ErZq6EXPZZNzRQKl0RcRC8BTu+Y2+jurhr/d9rWTyfaK/YuIE4oxpnz6VPrle7N8DIFW6xBK+wjjedT/zI2MocCoMgfWOn5VCRHucTdxvlTyF5NfUXeQFNiVgoxVW0RRwVjE93vqCbcVqmAtR6zYhT948e5pc0n0quAi4kKaJplLh9KlpMcj0SAj5raj79FqmIdscsZLCbhXQyYSkQ1/IPVJQ7DC4RXhICikTY1tElPgLhsgdL4bJe1Umv2cifSfSPS5EJQrUT13i5wymcI9GK0qeR1lfVTQAy/1mc6HDwLwWjRItxEL91qSWjeiJFl8KKgLMI8bN74M/gDNjO4ZyUmRG/momjq
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(366004)(39860400002)(376002)(396003)(136003)(346002)(451199021)(6916009)(4326008)(66946007)(66476007)(66556008)(8936002)(5660300002)(41300700001)(8676002)(6512007)(26005)(6506007)(3450700001)(54906003)(316002)(478600001)(6666004)(6486002)(2906002)(186003)(83380400001)(82960400001)(86362001)(38100700002)(26730200005)(19860200003);
+ SFS:(13230028)(376002)(346002)(136003)(396003)(39860400002)(366004)(451199021)(86362001)(8676002)(8936002)(6916009)(6486002)(66946007)(66476007)(66556008)(4326008)(82960400001)(5660300002)(38100700002)(478600001)(41300700001)(2906002)(54906003)(3450700001)(26005)(6512007)(6506007)(316002)(6666004)(186003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MC9iM21mQXVMd1A5WUpzTlF4S20rd1FZUUUvYWZ4a1gvWXZoaEhMQ09Oa2xU?=
- =?utf-8?B?U3crWUNGUWpPbkx3Y3h2Tm5BVUQ0UmhmT2YvRmQrdHBycUprYzZObVBLSVdp?=
- =?utf-8?B?MkJPUGdrWUp3VkFhNS9TYml3M0dMaVBpRUpOUTBkb2RFc2UxMzQxazJvWDJp?=
- =?utf-8?B?Qm9PUkN5VElWRVVZQ1FRT3RyallPWlRPTzRBOUQ2Vjd3M0dKaVNycEREK1d5?=
- =?utf-8?B?QlRxMlIwT1BwOWVnRkxOb3I4cm5haDRTbzRhVzdOR0lnaS9jZmxrZURoWk05?=
- =?utf-8?B?SFlGRSt2b3FiczBQeXR3YmYwSXpGcUxFY0pBcmVTQnVzL3B1S2syRnZMWnV3?=
- =?utf-8?B?M3hLRDgraHpaRFNqYm1pZUJ6UDRYcjBEMkxMTkpNdWdvM2Q2OTdDNndXL0Z2?=
- =?utf-8?B?OG8vNHlSbW1QclI3ckZGaHVQbk9URWVsVHV2eVdJOTNoUHNscENiWVg5dWJB?=
- =?utf-8?B?ZStMSEp3b2pjazBiTStrWldXZkNGa2x6NVl0dG90a055TTEvcUxtSmVOdjJq?=
- =?utf-8?B?dEtsYTY5SURFQUNjKy9kckRPVVlkbnIrMGkzbE5CZjU3aGZUaE9ISG1tbmVC?=
- =?utf-8?B?RWs4d0JINi9UWnlzS2NEWHBMenVzRXM0TDB3UVJWTHh2ZGVsS0JmbnE2eGhq?=
- =?utf-8?B?S0Fibk93d0N2ZFNybHUwMDN1dzIzMi9UM0FuS3h0bE9hY0ZxRHdyN1dOVkp0?=
- =?utf-8?B?VWozZlZ4NlJlWnl3N1RLVGYrZVJhTnNaT2hTTTd6WEdCOFlwOC9LNnFQZEk3?=
- =?utf-8?B?MitrUExzS1FFbHVXYmFTQjFPNFJHUEFJWmZYeStJQ0hISzRVN1JiUmFrTHZn?=
- =?utf-8?B?b0ZPQk95WEFlNnpYSTJJZWhPSEIwa2xVTURGSjFjaUZWRVJrQ2p3a29pVkJk?=
- =?utf-8?B?UzBBanRZbVQ5dlMwcHBaQ3YxOWpQR2xVNEI5NUFLQWpDNkRNRWZiRE5YT0lp?=
- =?utf-8?B?ZjJmcG5Pblo0aVQrSUhDblNOb2V4ays4RXRLMHJiay9lTkNHL0E1WkdsbGdD?=
- =?utf-8?B?Zng2ellOVVRpUnZmVDhWQUlLUXJIV0JZNEh4aWlQWkZaQ1Z0TEZPWmZMWTYv?=
- =?utf-8?B?Q2MrMUhGd25PLzBKOHFFRHMvMjlSbWVTT3B2cHl4WGdZeXRhOW1IN2VnUDY0?=
- =?utf-8?B?WUFJN3V2c04wa0tIUXpaVEZrTlhONHkxVVJRVHR6SExuQlZEcmpydmNwT2o0?=
- =?utf-8?B?aVNLaUVYSDlaNldXOVFsc0E2cHhqWVhJNGcrSXR6TDNuU1R1L1Rwdks4OTlY?=
- =?utf-8?B?M0l3ekNzQnRXall0aUF1NDFxaWFLNlB0MmlPWFFoLzlub1lNR1pVcHRnTllK?=
- =?utf-8?B?RG9BVlRrQkthUHZlcmdLWGh1dk5lYm9nOVUwSEhyUGU0V0RMUFJGdFREcDk4?=
- =?utf-8?B?eHBlYXpTRko1L3hYQVZXSHprQVRIMDErNER6L0FZN3Rud0QrU3pIbjMzTEV4?=
- =?utf-8?B?T3N1bEx5Mm54RWRwaUszNGFtdDYyYUV1OTlYejZiRkFXS2tpa2lJNEQ5Z3ox?=
- =?utf-8?B?OFZmR1FQWFN0RXkxS3hvS003NGJOb1JCeWZ0YVpwOVVOMERHSUVnOU9lWGFv?=
- =?utf-8?B?Rk9Uc0hDZllGSjYrOEFPbFM0S3JCTWQrWWcrcXNRQU9nWnVhdjNlTHZjcElP?=
- =?utf-8?B?ZVNSdTlNSzROU0dqcVJSWFdzN29OejNialZmeUpVYU1wN3E1a3VsNlo3eDNE?=
- =?utf-8?B?eWcxeDNyTW9NeHhTNVBNeWhVWG0xZzZ4ckw4V2ZmYWhvUkU1Q3F0Q1dVTWFF?=
- =?utf-8?B?b0xqKzFZaDdPdEhIalhaeVpmTFMwRFU4RU9INGJJcmRxT3I2N3pmTlJaV0R4?=
- =?utf-8?B?cEF1NktZS3dxcDhIUS90cEIwZVVWK1J1c2FiT3lINlRCMGxyQ25XcFdMVEtr?=
- =?utf-8?B?L2pGcHEzcXNDRTdVUDlvcVhEanpGbzRac01lTCtaR0RyWTBVV0J3V0VCWjYy?=
- =?utf-8?B?M20zYjZyUWJNTy81WWlnN1p6L09LdTczT08zeDYzbjAyY2x1QjUwSnYvZnk3?=
- =?utf-8?B?L0F5UDYyUFc5OG8wb01jWVQxZW5xMG5OTmNycHpCcnN3VUxMajJCbDkyTUNl?=
- =?utf-8?B?cGUyYVpZRHlkY0Y3N3lXYlkzRmFJdk81V05IWVJOREdZVENMaEwvWlFuYUF3?=
- =?utf-8?Q?wE44sQ24H9QMB7VeokG+cAgYx?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: d6ba2422-a320-401d-c8ba-08db4dd1f5cd
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?h82xBDuHvF2pn7nnPPWrlu2GHDMTjnCwCWqsgcDqQw/dvV8a2CVPZoxhpXBU?=
+ =?us-ascii?Q?wSyyP7+xk8k3Sh2qMoSPG9PBRNxkjjwS/zlFBcJhX//aE2+4npUYZ1gmFJQh?=
+ =?us-ascii?Q?uupWQOAzW4+eojqcv9Aw7Bc97W0uJxTiyJX5+RiY4FOrMrTx6v3PUnctRbQ/?=
+ =?us-ascii?Q?iKK7RY1mmMWa41SitEoNT5VkVjVPNmsU0lBdZASU2BHNjnARMEVfjnETd1ur?=
+ =?us-ascii?Q?HC+n6F+BqhScb2hC7dkSTDFOVC4L/zD6NPUQmxh8H2l7LGdww3/zanE1ezug?=
+ =?us-ascii?Q?nEZfTeglYGFhJjvmwYNCQZFc1Jedr1ckpEz3PMYFF15giUo0Mo5uDkpyx/AR?=
+ =?us-ascii?Q?OxkkgYDCemHOQAh7wkLnt2mjeWh6ADUUScrfPeZ/ZnCXQCZzVWkScy8pdo/N?=
+ =?us-ascii?Q?HWDONGAzwoXXk7lURi0fJzveBhAAKHPvofLuNOUG8p3BlXZaQsRr8GDMou4H?=
+ =?us-ascii?Q?KYtfbHieZzd1gAItP2p538S38QswLUayieymUf8eBh9rg5EPYusKdGQQJADP?=
+ =?us-ascii?Q?rgjqetOoHyRlp+24lrvLsXtKpTDdFMJXY44p27kWQjlAvEnI9OjYJLvtd0D6?=
+ =?us-ascii?Q?6mTb+oAyqjvS8AealCftNrh0cPpz6ZAjwYvljbJPJXLfKv02XmaaRLyGaYdt?=
+ =?us-ascii?Q?QllhvDFt5GDKHqgcBDC0+plNTZqZtngPgMy1v+R3+j8hQLZndCSSkWuwdUDU?=
+ =?us-ascii?Q?4lw6EVjx0O0TiXcV4UCDSMEi9L5dnOd2ro1Nmv5VI1vE9OB4XxNgqtkH9TN+?=
+ =?us-ascii?Q?uE71qLm97H15s6GR0zWjcVCgFxMqAel6DcP5YzPC29abj1My8/h/24YWkcBW?=
+ =?us-ascii?Q?OwM59Js5CzP4ZIlnac9lwt/xShEhStqhh8j6SWVfJOtD6QRRW81eF0sYa8n0?=
+ =?us-ascii?Q?ouMvc0a0KM54BczQCBbPZrvHgZR0Pdw/ViKB9x4hI23xlSM+pvTPBF2p70d8?=
+ =?us-ascii?Q?X0KTFIA1ja4Gtp4DTcLgAqvNotE6u5Gi2Vx0jDv4PSu/4IXAilUkjSX8h4Qe?=
+ =?us-ascii?Q?z/fWQ0/S+3RDQVyvhN1LnHQPKXSK5lyjME9I+tddRFUKqwQ3BxurvFu5wmJh?=
+ =?us-ascii?Q?6i2eJliIWjuFidYKbcnfWml9NYlD+pgLlXW9KVe96T7C4JsABKMq+Rdztyrs?=
+ =?us-ascii?Q?o/XjC0aH8mKJdFMdquxePm5k2URYtvLFNO8QGG39hgJxMCxDyDuSobGveWZJ?=
+ =?us-ascii?Q?FAxcMMTUr7QWO0XWTZV52KZve93asG6V7f81Gi1TFSIGA21TdktSNbp2ktpo?=
+ =?us-ascii?Q?rgijMl3lzC9dvl/MMlg+5Hmb0DNzEYpJVOwnlWMRpqgnw8Zh/RJBlniAhiXc?=
+ =?us-ascii?Q?6z3fNdsQY3RueW38LLDbytjdPOgNLoeBspcJcu2Ic7AENgqfPWzSO9/+hraK?=
+ =?us-ascii?Q?dWQWKT7Zchha9GkaX67Q9TqZ1iPn0Ny246nP+uVrVWWLkWrR9WPKrkP13We7?=
+ =?us-ascii?Q?IuNEnnst6qheMhMh4wkL53eIEYuV/ENnKjoNLv1x0TVJbKtCVCbIH6Ez3Zwx?=
+ =?us-ascii?Q?bLFn1PDtohIp44bPM4oG3fXDmLvPL5LpGyt7zAT3jRxJm5/Ja2bs4gfW4Bu1?=
+ =?us-ascii?Q?xa/Sw190TtFq2w1TpO+7hEiIMN0HhiHVTNL6IpyM?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 830b0f73-57c1-4e54-f11a-08db4dff9dd7
 X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 May 2023 01:33:57.2365 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 May 2023 07:00:46.5629 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: SA5pQe8bN9RHSpPZuzbfKADUyl8hSim+9AMbYVra5BDZfsDBWOt+OlNyuGdCbzN6dehd30MPWT9qxzJPaM+oUA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB8216
+X-MS-Exchange-CrossTenant-UserPrincipalName: T7ArqLBkdO8fSAZydM8n/5jzk1QVDpQz5kKs4PWJ0E0aLbIGPYrorqECLE4ux7iadxMGCoqhDLJcNDbOCKpOrg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4624
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -164,108 +158,37 @@ Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, May 04, 2023 at 12:54:40PM -0700, Sean Christopherson wrote:
-> On Wed, Mar 15, 2023, Sean Christopherson wrote:
-> > On Wed, Mar 15, 2023, Yan Zhao wrote:
-> > > On Fri, Mar 10, 2023 at 04:22:51PM -0800, Sean Christopherson wrote:
-> > > > Disable the page-track notifier code at compile time if there are no
-> > > > external users, i.e. if CONFIG_KVM_EXTERNAL_WRITE_TRACKING=n.  KVM itself
-> > > > now hooks emulated writes directly instead of relying on the page-track
-> > > > mechanism.
-> > > > 
-> > > > Signed-off-by: Sean Christopherson <seanjc@google.com>
-> > > > ---
-> > > >  arch/x86/include/asm/kvm_host.h       |  2 ++
-> > > >  arch/x86/include/asm/kvm_page_track.h |  2 ++
-> > > >  arch/x86/kvm/mmu/page_track.c         |  9 ++++-----
-> > > >  arch/x86/kvm/mmu/page_track.h         | 29 +++++++++++++++++++++++----
-> > > >  4 files changed, 33 insertions(+), 9 deletions(-)
-> > > > 
-> > > > diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
-> > > > index 1a4225237564..a3423711e403 100644
-> > > > --- a/arch/x86/include/asm/kvm_host.h
-> > > > +++ b/arch/x86/include/asm/kvm_host.h
-> > > > @@ -1265,7 +1265,9 @@ struct kvm_arch {
-> > > >  	 * create an NX huge page (without hanging the guest).
-> > > >  	 */
-> > > >  	struct list_head possible_nx_huge_pages;
-> > > > +#ifdef CONFIG_KVM_EXTERNAL_WRITE_TRACKING
-> > > >  	struct kvm_page_track_notifier_head track_notifier_head;
-> > > > +#endif
-> > > >  	/*
-> > > >  	 * Protects marking pages unsync during page faults, as TDP MMU page
-> > > >  	 * faults only take mmu_lock for read.  For simplicity, the unsync
-> > > > diff --git a/arch/x86/include/asm/kvm_page_track.h b/arch/x86/include/asm/kvm_page_track.h
-> > > > index deece45936a5..53c2adb25a07 100644
-> > > > --- a/arch/x86/include/asm/kvm_page_track.h
-> > > > +++ b/arch/x86/include/asm/kvm_page_track.h
-> > > The "#ifdef CONFIG_KVM_EXTERNAL_WRITE_TRACKING" can be moved to the
-> > > front of this file?
-> > > All the structures are only exposed for external users now.
-> > 
-> > Huh.  I've no idea why I didn't do that.  IIRC, the entire reason past me wrapped
-> > track_notifier_head in an #ifdef was to allow this change in kvm_page_track.h.
-> > 
-> > I'll do this in the next version unless I discover an edge case I'm overlooking.
+> > Maybe the checking of PageTransHuge(cur_page) and bailing out is not necessary.
+> > If a page is not transparent huge, but there are 512 contigous 4K
+> > pages, I think it's still good to map them in IOMMU in 2M.
+> > See vfio_pin_map_dma() who does similar things.
 > 
-> Ah, deja vu.  I tried this first time around, and got yelled at by the kernel test
-> robot.  Unsuprisingly, my second attempt yielded the same result :-)
+> I agree that bailing isn't strictly necessary, and processing "blindly" should
+> Just Work for HugeTLB and other hugepage types.  I was going to argue that it
+> would be safer to add this and then drop it at the end, but I think that's a
+> specious argument.  If not checking the page type is unsafe, then the existing
+> code is buggy, and this changelog literally states that the check for contiguous
+> pages guards against any such problems.
 > 
->   HDRTEST drivers/gpu/drm/i915/gvt/gvt.h
-> In file included from <command-line>:
-> gpu/drivers/gpu/drm/i915/gvt/gvt.h:236:45: error: field ‘track_node’ has incomplete type
->   236 |         struct kvm_page_track_notifier_node track_node;
->       |                                             ^~~~~~~~~~
-> 
-> The problem is direct header inclusion.  Nothing in the kernel includes gvt.h
-> when CONFIG_DRM_I915_GVT=n, but the header include guard tests include headers
-> directly on the command line.  I think I'll define a "stub" specifically to play
-> nice with this sort of testing.  Guarding the guts of gvt.h with CONFIG_DRM_I915_GVT
-> would just propagate the problem, and guarding the node definition in "struct
-> intel_vgpu" would be confusing since the guard would be dead code for all intents
-> and purposes.
-> 
-> The obvious alternative would be to leave kvm_page_track_notifier_node outside of
-> the #ifdef, but I really want to bury kvm_page_track_notifier_head for KVM's sake,
-> and having "head" buried but not "node" would also be weird and confusing.
-> 
-> diff --git a/arch/x86/include/asm/kvm_page_track.h b/arch/x86/include/asm/kvm_page_track.h
-> index 33f087437209..3d040741044b 100644
-> --- a/arch/x86/include/asm/kvm_page_track.h
-> +++ b/arch/x86/include/asm/kvm_page_track.h
-> @@ -51,6 +51,12 @@ void kvm_page_track_unregister_notifier(struct kvm *kvm,
->  
->  int kvm_write_track_add_gfn(struct kvm *kvm, gfn_t gfn);
->  int kvm_write_track_remove_gfn(struct kvm *kvm, gfn_t gfn);
-> +#else
-> +/*
-> + * Allow defining a node in a structure even if page tracking is disabled, e.g.
-> + * to play nice with testing headers via direct inclusion from the command line.
-> + */
-> +struct kvm_page_track_notifier_node {};
->  #endif /* CONFIG_KVM_EXTERNAL_WRITE_TRACKING */
->  
->  #endif
->
-Or check CONFIG_KVM_EXTERNAL_WRITE_TRACKING in gvt.h ?
-e.g.
+> I do think there's a (very, very theoretical) issue though.  For "CONFIG_SPARSEMEM=y
+> && CONFIG_SPARSEMEM_VMEMMAP=n", struct pages aren't virtually contiguous with respect
+> to their pfns, i.e. it's possible (again, very theoretically) that two struct pages
+> could be virtually contiguous but physically discontiguous.  I suspect I'm being
+> ridiculously paranoid, but for the efficient cases where pages are guaranteed to
+> be contiguous, the extra page_to_pfn() checks should be optimized away by the
+> compiler, i.e. there's no meaningful downside to the paranoia.
+To make sure I understand it correctly:
+There are 3 conditions:
+(1) Two struct pages aren't virtually contiguous, but there PFNs are contiguous.
+(2) Two struct pages are virtually contiguous but their PFNs aren't contiguous.
+    (Looks this will not happen?)
+(3) Two struct pages are virtually contiguous, and their PFNs are contiguous, too.
+    But they have different backends, e.g.
+    PFN 1 and PFN 2 are contiguous, while PFN 1 belongs to RAM, and PFN 2
+    belongs to DEVMEM.
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 53a0a42a50db..005cdc4fb66a 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -233,7 +233,9 @@ struct intel_vgpu {
-        unsigned long nr_cache_entries;
-        struct mutex cache_lock;
+I think you mean condition (3) is problematic, am I right?
+> 
+> TL;DR: My plan is to drop this patch and instead harden the continuity check.
 
-+#ifdef CONFIG_KVM_EXTERNAL_WRITE_TRACKING
-        struct kvm_page_track_notifier_node track_node;
-+#endif
- #define NR_BKT (1 << 18)
-        struct hlist_head ptable[NR_BKT];
- #undef NR_BKT
-
-The justification is that gvt.h can be include without kvmgt, e.g. xengt
-previously.
-But given currently there's no such case, I'm fine with both way :)
-
+So you want to check page zone?
