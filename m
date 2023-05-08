@@ -1,33 +1,67 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2FB06F9D92
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 May 2023 04:01:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C71AC6FB236
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 May 2023 16:05:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1F8EB10E09F;
-	Mon,  8 May 2023 02:01:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0CBFF10E2C3;
+	Mon,  8 May 2023 14:05:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from info.qvieialoe.top (unknown [180.76.102.100])
- by gabe.freedesktop.org (Postfix) with ESMTP id 10C3E10E09F
+Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
+ [IPv6:2607:f8b0:4864:20::b49])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 27C2710E2C3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 May 2023 02:01:28 +0000 (UTC)
-Received: from PC-20220315AIXP (116.233.29.77) by info.qvieialoe.top id
- hb1bvg0e97cj for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 8 May 2023 10:01:27 +0800 (envelope-from <info12@yoyuiisy.top>)
-From: "Jerry Shipping" <yang_5247@163.com>
-Subject: Re:Safe high quality service cooperation - from China2023-05-08
- 10:01:18
-To: intel-gvt-dev@lists.freedesktop.org
-Content-Type: text/html; charset=UTF-8
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-Date: Mon, 8 May 2023 10:01:19 +0800
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
-Content-Disposition: inline
+ Mon,  8 May 2023 14:05:40 +0000 (UTC)
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-b9a6f15287eso34186047276.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 08 May 2023 07:05:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20221208; t=1683554739; x=1686146739;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=jcl8cYiE8GBONZ/kHylHxTzdCz6iJZwPGQYSWy24JYA=;
+ b=o8mfj/R750kMfA2bvKpyJZuf/ZhVeSnXBF4/wapKjmLIWy2rqeeSrAOt5X+YjYxuNh
+ OyItG8a6SQBaYR3ol78KhlI6eh/Q0yN90HXJhxbVGAtpEUWsNrYhxsckDEtq7PX0t1EO
+ f0JB4uXPde4Ox7tQXsrWT/ya3dTEG/JI0bIE5xqIVrID3KZMsDfqqnqBT9Za2r4APAZX
+ B2RpVJzivT+iO2b+LbU+0Zontf8zI/Ed9ngpy3ey89L83c7xn7vHODjkZU8knTdQD3t/
+ n78u+Am85L+2PUzMWncpwoOAYV0GlSklrJfhHVJlIR1I82Kkd1Qrpj4q6M6s9sph6PlJ
+ aA7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1683554739; x=1686146739;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=jcl8cYiE8GBONZ/kHylHxTzdCz6iJZwPGQYSWy24JYA=;
+ b=Ae/ZZv9mjqOp+L2gKxkO/TukNJmqH35MjZ7VHa0CFAQtQ8Pz8ipHn7dsizwWjJlTwi
+ zny+G8CyPlstW7o0WNhxf3FSv1g+yQChU8K+7kvt3MMPRhoomREYRkOEx7eMii7+IHKu
+ BdVXEqFOdcmhT7gD7uDqdpBwfnihdIsoEHplzKGXOt4yY+wXNNHv+MSmBtXu65Qf3QP+
+ 8S5l9sLQZYzoQ9fTOZTxy2IefRNhB8Y1LjXEQlKwjGy1F+Nren5y/MWYZ/EVVOUDeTov
+ GhuyXVjl/6KAvmh68qUyrzBUUe7VMSMEdlAwdlYDNwQH3rCjPvXC3XiBkGcJJt7rSLW+
+ Yatw==
+X-Gm-Message-State: AC+VfDw1iE8s58ZFI4ISZCdHnxWWXXEaQDVpdvrA0DVYFINVHb4fwvUE
+ jW/z8rf3zaA3OGot0hvDU1GbciHWreE=
+X-Google-Smtp-Source: ACHHUZ7FCpMclh8b9aJYyQEcgnuYE0OwetS8XqokoS1TJPz66KwW2xxY/XhdC86wb/WWcOzl5JiJiPlwO6k=
+X-Received: from zagreus.c.googlers.com
+ ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
+ (user=seanjc job=sendgmr) by 2002:a05:690c:10c:b0:55c:a5db:869 with SMTP id
+ bd12-20020a05690c010c00b0055ca5db0869mr10528119ywb.4.1683554739792; Mon, 08
+ May 2023 07:05:39 -0700 (PDT)
+Date: Mon, 8 May 2023 07:05:32 -0700
+In-Reply-To: <ZFYyt2fF6alyKlzO@yzhao56-desk.sh.intel.com>
+Mime-Version: 1.0
+References: <20230311002258.852397-1-seanjc@google.com>
+ <20230311002258.852397-6-seanjc@google.com>
+ <ZBP7oZ1lkJhlSNpY@yzhao56-desk.sh.intel.com> <ZFQYbHTYgG4HJ+ac@google.com>
+ <ZFX1PaKIa44WtSNX@yzhao56-desk.sh.intel.com>
+ <ZFYyt2fF6alyKlzO@yzhao56-desk.sh.intel.com>
+Message-ID: <ZFkBrLuBY5fOU6qX@google.com>
+Subject: Re: [PATCH v2 05/27] drm/i915/gvt: Verify VFIO-pinned page is THP
+ when shadowing 2M gtt entry
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,42 +74,49 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: yang_5247@163.com
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20230508020130.1F8EB10E09F@gabe.freedesktop.org>
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgbmFtZT1HRU5FUkFUT1IgY29udGVudD0iTVNIVE1M
-IDExLjAwLjEwNTcwLjEwMDEiPjwvSEVBRD4NCjxCT0RZPg0KPFA+PEZPTlQgZmFjZT0iQE1pY3Jv
-c29mdCBKaGVuZ0hlaSBVSSI+SGkgZGVhciB0ZWFtPC9GT05UPjwvUD48Rk9OVCBmYWNlPSJATWlj
-cm9zb2Z0IEpoZW5nSGVpIFVJIj4NCjxQPjxCUj5Hb29kIGRheSB0byB1LCBob3BlIHUgYXJlIGZp
-bmUsPEJSPk5pY2UgdG8gY29udGFjdCB1IGZvciB0aGUgZmlyc3QgdGltZSw8L1A+DQo8UD5CRUZP
-UkUgUkVBRElORyBNWSBFTUFJTCwgUExTIEJFIFNVUkUgVEhBVCBBTSBSRUFMTFkgSE9QRSBXRSBD
-QU4gQkUgRlJJRU5EUyBFVkVOIFdFIERPIE5PVCBIQVZFIEFOWSBCVVNJTkVTLjwvUD4NCjxQPjxC
-Uj5XZSBhcmUgZnJlaWdodCBmb3J3YXJkZXIgZnJvbSBTSEFOR0hBSSxDSElOQTxCUj5SZWFsaG9u
-ZyBpcyBhIGludGVybmF0aW9uYWwgZnJlaWdodCBmb3J3YXJkZXIgaW4gQ2hpbmEuPC9QPg0KPFA+
-Jm5ic3A7PC9QPg0KPFA+V2UgYXJlIG1haW5seSBmb2N1cyBvbiBOb21pbmF0ZWQgc2hpcG1lbnRz
-LCBtb3N0IG9mIG91ciBjbGllbnRzIGFyZSBvdmVyc2VhcyBhZ2VudHMgYW5kIGRpcmVjdCBidXll
-ciBhbmQgc2VsbGVyLiBXZSBjYW4gaGFuZGxlIHlvdXIgY2FyZ28gZnJvbSBDaGluYSB1bmRlciB0
-aGUgdGVybXMgb2YgRVhXLCBGT0IsJm5ic3A7IENJRiAsRERQIGFuZCBERFUgYW5kIHNvIG9uLCBZ
-b3UgY2FuIHNlbmQgbWUgZW5xdWlyeSB0byBoYXZlIGEgdHJ5IHdpc2ggd2UgbWF5IGdldCBvcHBv
-cnR1bml0eSB0byBzdGFydCB3b3JraW5nIHdpdGggZWFjaCBvdGhlciBpbiBuZWFyIGZ1dHVyZS48
-L1A+DQo8UD4mbmJzcDs8L1A+DQo8UD5XZSBiZWxpZXZlIHRoYXQgeW91IHdpbGwgYmUgaGFwcHkg
-YW5kIHNhdGlzZmllZCB0byBjb29wZXJhdGUgd2l0aCB1cywgYmVjYXVzZSBxdWFsaXR5IGlzIG91
-ciBjdWx0dXJlLCBzbyB3ZSBob3BlIHlvdSBjYW4gZ2l2ZSB1cyBhIGNoYW5jZSB0byBzZXJ2ZSB5
-b3UsIHdlIGJlbGlldmUgeW91IHdpbGwgYmUgdmVyeSBoYXBweSB0byBjb29wZXJhdGUgd2l0aCB1
-cy48QlI+SWYgeW91IG5lZWQgYW55dGhpbmcgaW4gQ2hpbmEsIHBsZWFzZSBjb250YWN0IG1lLjxC
-Uj5QbGVhc2UgcmVtZW1iZXIgSSByZWFsbHkgd2lzaCB3ZSBjb3VsZCBiZXN0IGZyaWVuZHMgZG9u
-J3QgZXZlbiBkbyBidXNpbmVzczwvUD4NCjxQPiZuYnNwOzwvUD4NCjxQPlRoZSBsYXN0IGlzIG15
-IGNvbnRhY3QgaW5mb3JtYXRpb24uIEkgd291bGQgYmUgdmVyeSBncmF0ZWZ1bCBpZiB5b3UgY291
-bGQgZ2l2ZSBtZSB5b3VyIHJlc3BvbnNlPC9QPg0KPFA+Jm5ic3A7PC9QPg0KPFA+VEhBTktTIEFH
-QUlOISE8L1A+DQo8UD4mbmJzcDs8L1A+DQo8UD4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLTwvUD4N
-CjxQPiZuYnNwOzwvUD4NCjxQPkJlc3QgcmVnYXJkczxCUj5KZXJyeSBZYW5nPEJSPlNhbGVzIE1h
-bmFnZXI8QlI+UkhMIEludGwgTG9naXN0aWNzIENvLC5MdGQ8QlI+Rmxvb3IgNSxCdWlsZGluZyAz
-LE5vLjM4MSBYaWFuZ2RlIFJvYWQsSG9uZ2tvdSBEaXN0cmljdCxTaGFuZ2hhaSZuYnNwOyZuYnNw
-OyA8QlI+VGVs77yaMDIxLTU1MDk1OTc3IDxCUj5GYXjvvJowMjEtNTUwOTU5NzUgPEJSPkNlbGzv
-vIhXZWNoYXQvV2hhdHNhcHDvvIkg77yaKzg2LTE1ODIxMDg0NzA3PC9GT05UPjwvUD4NCjxQPjxG
-T05UIGZhY2U9IkBNaWNyb3NvZnQgSmhlbmdIZWkgVUkiPjwvRk9OVD4mbmJzcDs8L1A+PC9CT0RZ
-PjwvSFRNTD4NCg==
+On Sat, May 06, 2023, Yan Zhao wrote:
+> On Sat, May 06, 2023 at 02:35:41PM +0800, Yan Zhao wrote:
+> > > > Maybe the checking of PageTransHuge(cur_page) and bailing out is not necessary.
+> > > > If a page is not transparent huge, but there are 512 contigous 4K
+> > > > pages, I think it's still good to map them in IOMMU in 2M.
+> > > > See vfio_pin_map_dma() who does similar things.
+> > > 
+> > > I agree that bailing isn't strictly necessary, and processing "blindly" should
+> > > Just Work for HugeTLB and other hugepage types.  I was going to argue that it
+> > > would be safer to add this and then drop it at the end, but I think that's a
+> > > specious argument.  If not checking the page type is unsafe, then the existing
+> > > code is buggy, and this changelog literally states that the check for contiguous
+> > > pages guards against any such problems.
+> > > 
+> > > I do think there's a (very, very theoretical) issue though.  For "CONFIG_SPARSEMEM=y
+> > > && CONFIG_SPARSEMEM_VMEMMAP=n", struct pages aren't virtually contiguous with respect
+> > > to their pfns, i.e. it's possible (again, very theoretically) that two struct pages
+> > > could be virtually contiguous but physically discontiguous.  I suspect I'm being
+> > > ridiculously paranoid, but for the efficient cases where pages are guaranteed to
+> > > be contiguous, the extra page_to_pfn() checks should be optimized away by the
+> > > compiler, i.e. there's no meaningful downside to the paranoia.
+> > To make sure I understand it correctly:
+> > There are 3 conditions:
+> > (1) Two struct pages aren't virtually contiguous, but there PFNs are contiguous.
+> > (2) Two struct pages are virtually contiguous but their PFNs aren't contiguous.
+> >     (Looks this will not happen?)
+> > (3) Two struct pages are virtually contiguous, and their PFNs are contiguous, too.
+> >     But they have different backends, e.g.
+> >     PFN 1 and PFN 2 are contiguous, while PFN 1 belongs to RAM, and PFN 2
+> >     belongs to DEVMEM.
+> > 
+> > I think you mean condition (3) is problematic, am I right?
+> Oh, I got it now.
+> You are saying about condition (2), with "CONFIG_SPARSEMEM=y &&
+> CONFIG_SPARSEMEM_VMEMMAP=n".
+> Two struct pages are contiguous if one is at one section's tail and another at
+> another section's head, but the two sections aren't for contiguous PFNs.
+
+Yep, exactly.
