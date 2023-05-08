@@ -1,147 +1,148 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 653EB6F917B
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 May 2023 13:23:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B8EA6F9D73
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 May 2023 03:40:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2367410E223;
-	Sat,  6 May 2023 11:23:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6326110E094;
+	Mon,  8 May 2023 01:40:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BE51610E223;
- Sat,  6 May 2023 11:23:05 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C1DE410E091;
+ Mon,  8 May 2023 01:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683372185; x=1714908185;
+ t=1683510016; x=1715046016;
  h=date:from:to:subject:message-id:reply-to:references:
  in-reply-to:mime-version;
- bh=g+4Xi9YxhQerEdJPK+uYvAl+2aWVO7wRi0IW1C1mzQY=;
- b=gK1e6zNuhtxRvMnYO6kriOGqXl3Li0iuB0qhzz75Se5mOUdownFeHgSZ
- 3+347picd52aN3n/XsdK1PiiMMhNREEIzwX87quJHlIVd3cVALKaeBlqf
- nbq51MZ/51ixXi5GfF++5eS7KER9qbgxt7092wTizo/6EBg2ogcEI4+mr
- CcZJus5bbtr8Q4KWNijuNPxoq0y+KX+yMpZnqobFvLf80e4x3hH5padHM
- xEgoXqAB6nf9x6LZlPA/Np97joDffy/Ab9iP55ogiK68t2Q0EQovjmFIp
- GrMrRq1OcY9Z5ZQxBbBvtBhoObUUEhKFPAAB19cB1Zb15CI+h8OFAutuN g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10701"; a="328995570"
-X-IronPort-AV: E=Sophos;i="5.99,254,1677571200"; d="scan'208";a="328995570"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 May 2023 04:23:04 -0700
+ bh=DrB+UngInhlvM5B/LxtbG+QXayt2bdwi9OCzg56ME90=;
+ b=VvCgAOYP0IcrwnLJeGd2aAEkibPebMgfZmR95Usxe6sWG7zOe5wgZExZ
+ Ey/w0QrcIdy8qDAXDtq0YQ5U/XJINzqrKKLX2p5ilitO7WDTPuF0xjFOm
+ 3er2OjR0AQaJls30EQj1ObIIOWuMIoc9gpyLDpLPoh0A6r9ROUpS0LzEK
+ XWnlze9WjwysT9Eo76p7d6MDuxo97iud1xDbXrmKBARD13gkjpLY+m/7l
+ tDkwrgt2oclmAUeF3BHZVMzom6wKrhy0hGRvVACSNFGydb8VAURY+LI8A
+ KXc1YlG7V7r+utCZvS8lPOmOWwvODsnafm+hPBrOS6+yUW9P6yK/48Epo g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10703"; a="349563143"
+X-IronPort-AV: E=Sophos;i="5.99,258,1677571200"; d="scan'208";a="349563143"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2023 18:40:15 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10701"; a="675453588"
-X-IronPort-AV: E=Sophos;i="5.99,254,1677571200"; d="scan'208";a="675453588"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orsmga006.jf.intel.com with ESMTP; 06 May 2023 04:23:04 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10703"; a="767884184"
+X-IronPort-AV: E=Sophos;i="5.99,258,1677571200"; d="scan'208";a="767884184"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmsmga004.fm.intel.com with ESMTP; 07 May 2023 18:40:15 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Sat, 6 May 2023 04:23:04 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2507.23; Sun, 7 May 2023 18:40:15 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Sat, 6 May 2023 04:23:03 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2507.23; Sun, 7 May 2023 18:40:15 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Sat, 6 May 2023 04:23:03 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.168)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2507.23 via Frontend Transport; Sun, 7 May 2023 18:40:15 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.174)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Sat, 6 May 2023 04:23:03 -0700
+ 15.1.2507.23; Sun, 7 May 2023 18:40:15 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YELc8jUFBm49RS7wM+/BVgusGgShtdS8sOLCGi+vs8n0qMzNh8IEbS2Mp6+8T7q/jB1eTUE3wZFXDrg5v7VShlGkesSc71auDB5xGGC83gYSWFyd+gbO6+XUvUDKBJxPaMIhIwB2A4pY5LyeqJW3wqTWNHcqEVCOa1cDxTyO1oO1VMyiBrqSPwJOyvRS0qcCo8TMYrna5ci25IAppcJ3VoFhcaqD6BiSe5UMKwwM6BMbTtjVYu9nG2QxgWbxakvWLDi+zfx39M5GTBB1cPqM+b5jJsmbStVAKQeLzb8HaQJAa0YLgxgVbMGqtZYuXIuOauzMVNKE2M0c7M95VPAdTQ==
+ b=g5A+iLfiVcu+EI0ghGAhBeb6GKDBiY/hu0DCUqhdCYY//aq0GvJpfsmkmGm5Z9TyU4nPAJri0MfQU/HKfDi80G8Ow5N9fk5/HhlYhsTiWq+LyEiujIKBgzmLP04g+bWVXr2sRSZtcD3951qh2KlHBaoyOzOxgdSI8tqQ3X4/mwbAadSCfrTzbACJbfClNnCTEZFy2EvqLh57hwiSm31WER7ZZR/zAR+c8PGlg8XV7pDT8nnIFGf1vqBf6t+0oHi/A056EknyFKxw8W+MicKp5R2HDb46bGGHyy/9gOhFo/7AM6xxYVCO+6kZIoOZISyzX61UoaK4iypCgilm+GMlNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UOjhDT/682sK1vCIr5JqAz8iLuKduV7DSiuO5xa6xRo=;
- b=PMBZUnYtU03IHSskLeDUvx4HGPfY2wAxGb+HYw3W7OVyWednTlRrcBPzG1/tzLl7UsTIKx9WmJeU8JXd9iy8r/7+3aiFMUcx5i7M5yvqKWAgRyhjVcUL4y9qjmFEwhRBiUmvQX7ptW6IhnSYjIm5/iB6DaRYK/BbEBgXetV3A87e7zO5uQEuiIVGaqO+xyjYwkbbYb++9GuogguaF9UG5iTQEQZkydFdFkhF+jtFNVC1Z9ElKw97kmjTXQUbuUO0omVJrCUBQi3wdI99T9HM00dYQXFDHyHn5ec6okuUP+2uZbT4dtM1MzY7tTxRo94omW5RBJZpBUbxjE7ngzpLsQ==
+ bh=1PIYMKqxt9ZMOQ0lnveYlgBM+ZdcrowqsToghlpwsU8=;
+ b=l0FqCEda6oK+KWkosunVVNzb2ZixW1YP5/q1M0WiL25RVvWbfJKBl5K+AOFrY6VixIJAYKa/xWvxCWObgcoz1buwRZcAOnhRdN/bla4rRci7rolYWE4+BAvTZy5xKYEn6iCLTjWM7Zlug30V90UK0UtqpaZYApfRmJNWNZAlEnN8JG7lkgf+EevWK+NObQ6jtpMAJBH+8YAjECVzR+mzCz3oQpJxE3pEyVRNFumRSdMear+ebb3Z0/nq1t3IDdtwrDsJ0gWcXaNRDdZf21njxPob4BBfj/bGjBmCZNe7/lhNR3c+46Lr/rK1BnKaKcUAiGAoq2/6lcQgyJ4Q1LC1TA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Received: from DS7PR11MB5966.namprd11.prod.outlook.com (2603:10b6:8:71::6) by
- CH3PR11MB7913.namprd11.prod.outlook.com (2603:10b6:610:12e::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6363.29; Sat, 6 May
- 2023 11:23:02 +0000
+ DS0PR11MB7850.namprd11.prod.outlook.com (2603:10b6:8:fe::14) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6363.32; Mon, 8 May 2023 01:40:12 +0000
 Received: from DS7PR11MB5966.namprd11.prod.outlook.com
  ([fe80::a670:49f5:d602:e2e4]) by DS7PR11MB5966.namprd11.prod.outlook.com
- ([fe80::a670:49f5:d602:e2e4%6]) with mapi id 15.20.6363.027; Sat, 6 May 2023
- 11:23:01 +0000
-Date: Sat, 6 May 2023 18:57:59 +0800
+ ([fe80::a670:49f5:d602:e2e4%6]) with mapi id 15.20.6363.032; Mon, 8 May 2023
+ 01:40:12 +0000
+Date: Mon, 8 May 2023 09:15:08 +0800
 From: Yan Zhao <yan.y.zhao@intel.com>
 To: Sean Christopherson <seanjc@google.com>, <kvm@vger.kernel.org>,
  <intel-gfx@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>, "Zhenyu
  Wang" <zhenyuw@linux.intel.com>, Ben Gardon <bgardon@google.com>, "Paolo
  Bonzini" <pbonzini@redhat.com>, <intel-gvt-dev@lists.freedesktop.org>, "Zhi
  Wang" <zhi.a.wang@intel.com>
-Subject: Re: [PATCH v2 05/27] drm/i915/gvt: Verify VFIO-pinned page is THP
- when shadowing 2M gtt entry
-Message-ID: <ZFYyt2fF6alyKlzO@yzhao56-desk.sh.intel.com>
+Subject: Re: [PATCH v2 25/27] KVM: x86/mmu: Drop @slot param from
+ exported/external page-track APIs
+Message-ID: <ZFhNHB4VWp8+5wWp@yzhao56-desk.sh.intel.com>
 References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-6-seanjc@google.com>
- <ZBP7oZ1lkJhlSNpY@yzhao56-desk.sh.intel.com>
- <ZFQYbHTYgG4HJ+ac@google.com>
- <ZFX1PaKIa44WtSNX@yzhao56-desk.sh.intel.com>
+ <20230311002258.852397-26-seanjc@google.com>
+ <ZBQkyB3KJP34D9/h@yzhao56-desk.sh.intel.com>
+ <ZBwS0DNOwMf7OVmV@yzhao56-desk.sh.intel.com>
+ <ZFLrOgUL4T/lrVLo@google.com>
+ <ZFMVsFzpN16hiPUH@yzhao56-desk.sh.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <ZFX1PaKIa44WtSNX@yzhao56-desk.sh.intel.com>
-X-ClientProxiedBy: SG2PR01CA0126.apcprd01.prod.exchangelabs.com
- (2603:1096:4:40::30) To DS7PR11MB5966.namprd11.prod.outlook.com
+In-Reply-To: <ZFMVsFzpN16hiPUH@yzhao56-desk.sh.intel.com>
+X-ClientProxiedBy: SG2PR04CA0206.apcprd04.prod.outlook.com
+ (2603:1096:4:187::21) To DS7PR11MB5966.namprd11.prod.outlook.com
  (2603:10b6:8:71::6)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|CH3PR11MB7913:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8ad565e1-5547-46f7-3d32-08db4e244074
+X-MS-TrafficTypeDiagnostic: DS7PR11MB5966:EE_|DS0PR11MB7850:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0c52a469-391f-442e-f8d5-08db4f652a6d
 X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ovPfP7Tl/CjNZtSN03eaT3jFOWl/h8TI2gAB2Bd9jq3znb8vK6t3NhGSI9xiXyEHlIcdHpfdXfPsiwOhyOmQ5QOrXSFpzk2QYdt2cyZquOFereX9SprACdEpul4rKTUBbHUlzweJF2x+PWJdwLlnUJSJLQw2KGyNN4WOdWvyRezC/IqkuEAQKR8KUFg9TbUp1jOnk6yU3ojKx+v0XUTEwcLdftBQTh+X1QDQ5hAnNoBVzZBJH/dW4sNei6FeKLnoserCzJMb7JxctXqYsP8EHi8iRS6TV69aERDX+g0R9Fw2NFirxyS6ARiQhgP6MNQvwAjgSNjo3KmTpFuhNgprZzpuzkmGEmmSrq1E+i2HO7uOSzSR0TjaJAfKTbiFdLGMQsjotnjq7RwGBx3ADlZR/xoz0AebFlk2Ldh+JmqMMNMLt2z+nPuTsyJ4Z1Udoeew7YoXglrw3ci0/cbSiZkxny8BxgO8KAOCCC+rK6y6DLOrK+oGg/psQyRAfsUGuVyaQ7DvwN8fvrV7b9xIna2B3k2oeyzl7LHGksoCEnUAbfPFyMyhD6IiP98XTNNKTQZW
+X-Microsoft-Antispam-Message-Info: oxBAzKsStwFb5rgPdhXGwgz8U7jMKfHbGWVvVNwhj03tEGRcse96gBsEIWodihufD1+VXrByASTHNW7osyvc7YrmkMg5smUUNnUkFJX0HTc+8S9KObZUr6jSE56xBySHWSuz8RR4kQ7cQq4Nci7yMuB0Wpi87j+7Hf6bJ3K3DYR3Xv1V4sMeyZWcEBhgkmUkigxmvO3b2kOIVi8fOc7yWELuDfbve6QLcxvD1juwINb1eyAbMUASMM01Q3HQPCtlfRJRDShs6d4mLMmxJLWVqUNEXUjZPhL6wxeGZZzoRlrFCp0cFAnLfzWK5V6c9WLxZDaQEFzlQGQirBJc5vC5XTRLqwRu4LClONJu+9cZSl7TvmAiR//6wpwLzaU0SQmmy+Vp+9brW8/ovmMiqr7E94TOiB5tiQAM6mb65YQKWaGHPgNocu8IStAbOJfFtYRN3Rwu//GqKiojdBglsIGaiftFJDwu5F1hfS6dIplCVSgVTxKRTHE9bWhedbZWOpiq5tQnNG9jJHF9DuWnZHkKwC5uF6j7/CRa6P639/VbMrHcbkeHOQIroefAQoFlJA9Q+AMV/LHL01QuKjQQUBsryIkqHyoGL8rKU4WPXOaxRUs=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS7PR11MB5966.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(376002)(346002)(39860400002)(136003)(366004)(396003)(451199021)(6486002)(186003)(38100700002)(86362001)(82960400001)(26005)(6506007)(6512007)(2906002)(6636002)(66946007)(66556008)(3450700001)(66476007)(110136005)(41300700001)(8676002)(5660300002)(8936002)(316002)(478600001);
+ SFS:(13230028)(366004)(39860400002)(396003)(346002)(136003)(376002)(451199021)(26005)(6506007)(6512007)(6486002)(83380400001)(38100700002)(86362001)(82960400001)(186003)(110136005)(478600001)(2906002)(3450700001)(5660300002)(66476007)(66556008)(6636002)(316002)(8936002)(8676002)(41300700001)(66946007)(6666004)(67856001);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?/hGutdhRQ8khcerP+enzKhI7thet5pfU9otFegNa7Dp+fN10OKdSRPDzfRz8?=
- =?us-ascii?Q?QPJMKm16m40wzlyJBWBsJagxKT7pP3J4izlwa2yoz3HLU0PKAJiZSNAszVTl?=
- =?us-ascii?Q?uUrbZaQl2B1WbK31zlmlH1c99mgaojihuojo/sFrxGi5uDIgt04PkOWA937u?=
- =?us-ascii?Q?060yLULtsFaa5wQL9bBCeJTQo7q0axDAQUg//fIsSj1N3AO5nPi5bRGYvcxw?=
- =?us-ascii?Q?Nz27pzwx7o+WOQ1eZufxw+wBuxHKLY8ZF1juM1l2XXOf3YUPW0u0Wboo+VVE?=
- =?us-ascii?Q?kDoXHcOuGwK1hN3sLhIqCx9d8QH/G39d7wKcns2d91dUAq4hYz1kuCzPsUP5?=
- =?us-ascii?Q?H3WJrWVtOorfqhpl7HWzIUBy7plKrvnfnrw8SXZjUBbPDCaXooZHs84eJC6U?=
- =?us-ascii?Q?zRlZtweIac/JgvAe6xnpGFd7ean7WiW/1pl5EBx6PtBzHH0qP8NKkMbL+0n8?=
- =?us-ascii?Q?NYFBSJBqTGRudFZlrDdD9otlnCVnPp5aGwwJM4mtwXsCzsfLKi58UUDW+6RR?=
- =?us-ascii?Q?kqgTJLXtLzUf7lL5bWAk4V/rIZoYgRzSkoeqO9sAWvwSA+lP+UM2uZGGb4b3?=
- =?us-ascii?Q?YLuZheXcUFzJ6VrTI4Gh13RIq9L/kV32MnfrCb5ZdaqzkC/La+c/RkvItfu9?=
- =?us-ascii?Q?BJAtG3BwC0WrcI8GtFv8P6i2zZLLWrRQQaMe+dYlQCgAiJBq0Qtjv5NGbcwr?=
- =?us-ascii?Q?2RRdoXzjz0NGBjqXc8sLVLLwUHErCKZK2GXQq2hUQ9bpYxN9b93mLFCoDOfa?=
- =?us-ascii?Q?o/yunZlc9HqaUgV3/9n6P7k/o+2aOgDd4KsVqjXMZIld6B5WmcDc9/3kjBaV?=
- =?us-ascii?Q?RhhtEBvibPX2uDGmFIJ+7YzakHCjQ6sqnMm7zviyLHnGDaz3O8x/bo2vtWxR?=
- =?us-ascii?Q?kjadvBYxces+YoKMKAIK1kEOUcsOX8/bHT0yuzg2Oq1EytYVAcp/2p6AD8vR?=
- =?us-ascii?Q?weOeG6HxdhXM3FXOJ27YDoRMx05oIRyWjy3gdK6EW9DkGylkGz/0u3eXWoDO?=
- =?us-ascii?Q?98ZwMjnbkN5tb+OY9k2tLSA7C9kGoojrsKPG3bpzJzlvOKkmjHL+u53FLiwa?=
- =?us-ascii?Q?kTcZjeW38Mk5QyCvBkOa+XxxVVwB4xGgNhuI+ezb43/aBnuBuYr9epmu75Mm?=
- =?us-ascii?Q?iEW3tBicpQiYiXqWAyQzsxW1V4njxKHBheeKqZgIQxYO/J7/mfllwdrU9S60?=
- =?us-ascii?Q?Y/LeZWG9ghRkaPNJfx6mLWEF+1MW4EVpnX8GjitjOuog27/laZQJwIErpOiF?=
- =?us-ascii?Q?FYnLcG7Eo5/gON+tdOFVoLNystbq1OGwzLJ+omjM/nDlNBQh3WLBBWuDoYnW?=
- =?us-ascii?Q?b3Ifo8phf8n5pwfMBiYeXCTiFGrPpF/XIWxszFfMBfNqQJmQ200PNhsU0uLZ?=
- =?us-ascii?Q?EgL2A42XE+uNu8fw/Ml5DiTiYqiCzL0p6Vb2rQIDx0s3mpgXOM44pUjUO1tp?=
- =?us-ascii?Q?2GzyA2OgAe+ci94HsUjdgpr1wCaI+z5HL+SlrtaiDYymPbGsJgoFTGZhrOVY?=
- =?us-ascii?Q?NEfu75yQojsgUUDHvnSPNpO3z4AK8Yc+PRo1O2ByhsqiA+aynMSeAgRivitc?=
- =?us-ascii?Q?XC/Kj2EYO2EOA0SaDKRDhrrP0Jj6DcIU3wSpKA6y?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8ad565e1-5547-46f7-3d32-08db4e244074
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ceTYAesFG3sOj4KnoV6zUzKA9xml+GmkI2ykni463JVbgX6He+WWNlOiIOH/?=
+ =?us-ascii?Q?jJB0S99NIm/3B2wg1HYoMvc42ysbqcuso93he18xhT+aOC51t3Yp8sYELdS/?=
+ =?us-ascii?Q?OMtZiM9JDxKUBw/54X/KOMmwfDlxr9ilm0CMHVx7L1mR6R5z9I1v05O8iX3x?=
+ =?us-ascii?Q?mVa0kHjhuEpugnZojCP2kNz3rbdOhpjojiyBpIDKEqm44KR73dylThXodphQ?=
+ =?us-ascii?Q?HaEz9pcTN/gLJWNgIJVbqZYDJw3Tv/vWVr91gu8s2QBirk4lV6d8usZQTlSR?=
+ =?us-ascii?Q?59gmtzvVqNEFet/88aIj9/t8sBa+CDf+f0iH3R8W3CkaRmdiA9HPwX8SPLUY?=
+ =?us-ascii?Q?3KjD3gdCoxPTwPw/3D0HE25e/8hR/pnWiW/VtSr6iPuaMX4xW3BHsJNhFyy1?=
+ =?us-ascii?Q?+woPxiIkHoho272rsgcCeKbzCyo7D0TfKfIFr19PtxKy9j+QBpghIm0HDsHc?=
+ =?us-ascii?Q?jEzm6lqBoyIowExwW2jQdrnatl4OXTHDNWUXHfjt891twVzIwZp6CfxOlXz0?=
+ =?us-ascii?Q?2JZGliKSzxnibY3/28zkR3JT0Ivv2C5wGjj1IHgpM3KqlySYolU0T35bM+8q?=
+ =?us-ascii?Q?1LK39pR2JjPzZY+DUJ7JQQuV7BaDJ/5yy6FRnFH90tp1bgwIYCFJGIsPyuwn?=
+ =?us-ascii?Q?mpXlSAoll8G1/yieJ/MeZFjEysum9LJ5jeLvgt4kPKp0hsgiEgiTcbzvwfnU?=
+ =?us-ascii?Q?iFQStQ/ObZ0DffqUEhXOo17QvJIUA5n98Jq9BZMht6zXZIh9fjRWnMhYZLPb?=
+ =?us-ascii?Q?XIJBkRrEkwkpe6ybu+0Pp0Xtt4OxUp1jH98fGy1NbWcKWQZcHq1fzA3VQuM8?=
+ =?us-ascii?Q?F/OoW0f2y6oVH8VkVQ3QILzKYYlcaTmrIhAdgJ6ROK4nN8ukCY7Fn8t41hSn?=
+ =?us-ascii?Q?0FVikMOsctoVgOTz+T1Vdy97kUl9EiCsGDk/X+sdTen4X5KZsjgalSJmU+fc?=
+ =?us-ascii?Q?JAQD5oW+uB3r9LP/Etnxyeg2jZHWxAcvkI38ypiiFNkO3g8rjAfF/KqOPd9n?=
+ =?us-ascii?Q?7J+iSd197+g7I2Ns3HRrNFaEdVIDoCey1h1VyTXixuRau9LezMSukO3z+jwQ?=
+ =?us-ascii?Q?nrVTZzaK38UaJf1s9CpE46biRqBT88b0CR/8OaCXWULmP17cOHb5YHgxmraf?=
+ =?us-ascii?Q?4msa4XZzum0u4y8cV7rb8cafgNEhGqKw8KdzZl+PprdmCXuEo0So8f+kjSYr?=
+ =?us-ascii?Q?qT9Pb3JPdYt5PAA1yVaozG4i45Z6nN0UbS/fCbGWh+J4oVNl9pAjnOH1FF2B?=
+ =?us-ascii?Q?0QRh6dpkUm1ZWsGIRZ7MnOd9D2xHWebqt0avJyL3w6l+4ol8c66ki9OMvpen?=
+ =?us-ascii?Q?U6Tz2f1iBIiDhvmto2qFpmrpM/CnyU1uGLQpD9G+b0BoHsUnh8pwA+lKA4zT?=
+ =?us-ascii?Q?mCO7JbKwf/9nuYdF0TlLghrYwb9eUnQ8/StofCvOXEXkOkcxZJPyco0e54O6?=
+ =?us-ascii?Q?XkKuuSRWxWLiQkgZFxLhim01ZpKv9FdLDLWCzCSgS6BtdvY3AcUXAMtrcStk?=
+ =?us-ascii?Q?Q3Txuj0F7Bfl1yFeBdZVUGZEkx7lMEW7/demSK7F5efA5MCSjpEKNQ5Iltav?=
+ =?us-ascii?Q?AGIDxeYEhw4S1yjedlo7ronKG5UHbfIsrzXJswZX?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0c52a469-391f-442e-f8d5-08db4f652a6d
 X-MS-Exchange-CrossTenant-AuthSource: DS7PR11MB5966.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 May 2023 11:23:01.2243 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2023 01:40:12.7034 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: h77bHBYumedar2cse2LIp1luQDujlb/d43MZ/+sm74RxVDK1n+8DTXSHDOL4IDLwFe4Hw/9/KHX8SXjg/81UxQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7913
+X-MS-Exchange-CrossTenant-UserPrincipalName: 57N8qFWcxv/76b6U/p4wWz4JJHSZY+Aru+Tybd8QjFEvcftPEpTdNxrmRLFN78Q7Rb6RHfq0hHDsZJ5vex0LOQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7850
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -159,44 +160,84 @@ Reply-To: Yan Zhao <yan.y.zhao@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, May 06, 2023 at 02:35:41PM +0800, Yan Zhao wrote:
-> > > Maybe the checking of PageTransHuge(cur_page) and bailing out is not necessary.
-> > > If a page is not transparent huge, but there are 512 contigous 4K
-> > > pages, I think it's still good to map them in IOMMU in 2M.
-> > > See vfio_pin_map_dma() who does similar things.
+On Thu, May 04, 2023 at 10:17:20AM +0800, Yan Zhao wrote:
+> On Wed, May 03, 2023 at 04:16:10PM -0700, Sean Christopherson wrote:
+> > Finally getting back to this series...
 > > 
-> > I agree that bailing isn't strictly necessary, and processing "blindly" should
-> > Just Work for HugeTLB and other hugepage types.  I was going to argue that it
-> > would be safer to add this and then drop it at the end, but I think that's a
-> > specious argument.  If not checking the page type is unsafe, then the existing
-> > code is buggy, and this changelog literally states that the check for contiguous
-> > pages guards against any such problems.
+> > On Thu, Mar 23, 2023, Yan Zhao wrote:
+> > > On Fri, Mar 17, 2023 at 04:28:56PM +0800, Yan Zhao wrote:
+> > > > On Fri, Mar 10, 2023 at 04:22:56PM -0800, Sean Christopherson wrote:
+> > > > ...
+> > > > > +int kvm_write_track_add_gfn(struct kvm *kvm, gfn_t gfn)
+> > > > > +{
+> > > > > +	struct kvm_memory_slot *slot;
+> > > > > +	int idx;
+> > > > > +
+> > > > > +	idx = srcu_read_lock(&kvm->srcu);
+> > > > > +
+> > > > > +	slot = gfn_to_memslot(kvm, gfn);
+> > > > > +	if (!slot) {
+> > > > > +		srcu_read_unlock(&kvm->srcu, idx);
+> > > > > +		return -EINVAL;
+> > > > > +	}
+> > > > > +
+> > > > Also fail if slot->flags & KVM_MEMSLOT_INVALID is true?
+> > > > There should exist a window for external users to see an invalid slot
+> > > > when a slot is about to get deleted/moved.
+> > > > (It happens before MOVE is rejected in kvm_arch_prepare_memory_region()).
+> > > 
+> > > Or using
+> > >         if (!kvm_is_visible_memslot(slot)) {
+> > > 		srcu_read_unlock(&kvm->srcu, idx);
+> > > 		return -EINVAL;
+> > > 	}
 > > 
-> > I do think there's a (very, very theoretical) issue though.  For "CONFIG_SPARSEMEM=y
-> > && CONFIG_SPARSEMEM_VMEMMAP=n", struct pages aren't virtually contiguous with respect
-> > to their pfns, i.e. it's possible (again, very theoretically) that two struct pages
-> > could be virtually contiguous but physically discontiguous.  I suspect I'm being
-> > ridiculously paranoid, but for the efficient cases where pages are guaranteed to
-> > be contiguous, the extra page_to_pfn() checks should be optimized away by the
-> > compiler, i.e. there's no meaningful downside to the paranoia.
-> To make sure I understand it correctly:
-> There are 3 conditions:
-> (1) Two struct pages aren't virtually contiguous, but there PFNs are contiguous.
-> (2) Two struct pages are virtually contiguous but their PFNs aren't contiguous.
->     (Looks this will not happen?)
-> (3) Two struct pages are virtually contiguous, and their PFNs are contiguous, too.
->     But they have different backends, e.g.
->     PFN 1 and PFN 2 are contiguous, while PFN 1 belongs to RAM, and PFN 2
->     belongs to DEVMEM.
-> 
-> I think you mean condition (3) is problematic, am I right?
-Oh, I got it now.
-You are saying about condition (2), with "CONFIG_SPARSEMEM=y &&
-CONFIG_SPARSEMEM_VMEMMAP=n".
-Two struct pages are contiguous if one is at one section's tail and another at
-another section's head, but the two sections aren't for contiguous PFNs.
+Hi Sean,
+After more thoughts, do you think checking KVM internal memslot is necessary?
 
+slot = gfn_to_memslot(kvm, gfn);
+if (!slot || slot->id >= KVM_USER_MEM_SLOTS) {
+		srcu_read_unlock(&kvm->srcu, idx);
+		return -EINVAL;
+}
+
+Do we allow write tracking to APIC access page when APIC-write VM exit
+is not desired?
+
+Thanks
+Yan
+
+> > Hrm.  If the DELETE/MOVE succeeds, then the funky accounting is ok (by the end
+> > of the series) as the tracking disappears on DELETE, KVMGT will reject MOVE, and
+> > KVM proper zaps SPTEs and resets accounting on MOVE (account_shadowed() runs under
+> > mmu_lock and thus ensures all previous SPTEs are zapped before the "flush" from
+> > kvm_arch_flush_shadow_memslot() can run).
 > > 
-> > TL;DR: My plan is to drop this patch and instead harden the continuity check.
+> > If kvm_prepare_memory_region() fails though...
+> > 
+> > Ah, KVM itself is safe because of the aforementioned kvm_arch_flush_shadow_memslot().
+> > Any accounting done on a temporarily invalid memslot will be unwound when the SPTEs
+> > are zapped.  So for KVM, ignoring invalid memslots is correct _and necessary_.
+> > We could clean that up by having accounted_shadowed() use the @slot from the fault,
+> > which would close the window where the fault starts with a valid memslot but then
+> > sees an invalid memslot when accounting a new shadow page.  But I don't think there
+> > is a bug there.
+> > 
+> > Right, and DELETE can't actually fail in the current code base, and we've established
+> > that MOVE can't possibly work.  So even if this is problematic in theory, there are
+> > no _unknown_ bugs, and the known bugs are fixed by the end of the series.
+> > 
+> > And at the end of the series, KVMGT drops its tracking only when the DELETE is
+> > committed.  So I _think_ allowing external trackers to add and remove gfns for
+> > write-tracking in an invalid slot is actually desirable/correct.  I'm pretty sure
+> > removal should be allowed as that can lead to dangling write-protection in a
+> > rollback scenario.   And I can't think of anything that will break (in the kernel)
+> > if write-tracking a gfn in an invalid slot is allowed, so I don't see any harm in
+> > allowing the extremely theoretical case of KVMGT shadowing a gfn in a to-be-deleted
+> > memslot _and_ the deletion being rolled back.
+> Yes, you are right!
+> I previously thought that
+> invalid_slot->arch.gfn_write_track and old->arch.gfn_write_track are
+> pointing to different places. But I'm wrong.
+> Yes, allowing INVALID slot here is more desired for deletion rolling-back.
 > 
-> So you want to check page zone?
