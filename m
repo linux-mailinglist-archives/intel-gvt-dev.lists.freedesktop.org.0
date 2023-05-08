@@ -1,67 +1,145 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C71AC6FB236
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 May 2023 16:05:45 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B5DB6FB3DB
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 May 2023 17:33:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0CBFF10E2C3;
-	Mon,  8 May 2023 14:05:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 35B1D10E278;
+	Mon,  8 May 2023 15:33:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
- [IPv6:2607:f8b0:4864:20::b49])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 27C2710E2C3
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 May 2023 14:05:40 +0000 (UTC)
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-b9a6f15287eso34186047276.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 08 May 2023 07:05:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1683554739; x=1686146739;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=jcl8cYiE8GBONZ/kHylHxTzdCz6iJZwPGQYSWy24JYA=;
- b=o8mfj/R750kMfA2bvKpyJZuf/ZhVeSnXBF4/wapKjmLIWy2rqeeSrAOt5X+YjYxuNh
- OyItG8a6SQBaYR3ol78KhlI6eh/Q0yN90HXJhxbVGAtpEUWsNrYhxsckDEtq7PX0t1EO
- f0JB4uXPde4Ox7tQXsrWT/ya3dTEG/JI0bIE5xqIVrID3KZMsDfqqnqBT9Za2r4APAZX
- B2RpVJzivT+iO2b+LbU+0Zontf8zI/Ed9ngpy3ey89L83c7xn7vHODjkZU8knTdQD3t/
- n78u+Am85L+2PUzMWncpwoOAYV0GlSklrJfhHVJlIR1I82Kkd1Qrpj4q6M6s9sph6PlJ
- aA7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683554739; x=1686146739;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jcl8cYiE8GBONZ/kHylHxTzdCz6iJZwPGQYSWy24JYA=;
- b=Ae/ZZv9mjqOp+L2gKxkO/TukNJmqH35MjZ7VHa0CFAQtQ8Pz8ipHn7dsizwWjJlTwi
- zny+G8CyPlstW7o0WNhxf3FSv1g+yQChU8K+7kvt3MMPRhoomREYRkOEx7eMii7+IHKu
- BdVXEqFOdcmhT7gD7uDqdpBwfnihdIsoEHplzKGXOt4yY+wXNNHv+MSmBtXu65Qf3QP+
- 8S5l9sLQZYzoQ9fTOZTxy2IefRNhB8Y1LjXEQlKwjGy1F+Nren5y/MWYZ/EVVOUDeTov
- GhuyXVjl/6KAvmh68qUyrzBUUe7VMSMEdlAwdlYDNwQH3rCjPvXC3XiBkGcJJt7rSLW+
- Yatw==
-X-Gm-Message-State: AC+VfDw1iE8s58ZFI4ISZCdHnxWWXXEaQDVpdvrA0DVYFINVHb4fwvUE
- jW/z8rf3zaA3OGot0hvDU1GbciHWreE=
-X-Google-Smtp-Source: ACHHUZ7FCpMclh8b9aJYyQEcgnuYE0OwetS8XqokoS1TJPz66KwW2xxY/XhdC86wb/WWcOzl5JiJiPlwO6k=
-X-Received: from zagreus.c.googlers.com
- ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a05:690c:10c:b0:55c:a5db:869 with SMTP id
- bd12-20020a05690c010c00b0055ca5db0869mr10528119ywb.4.1683554739792; Mon, 08
- May 2023 07:05:39 -0700 (PDT)
-Date: Mon, 8 May 2023 07:05:32 -0700
-In-Reply-To: <ZFYyt2fF6alyKlzO@yzhao56-desk.sh.intel.com>
-Mime-Version: 1.0
-References: <20230311002258.852397-1-seanjc@google.com>
- <20230311002258.852397-6-seanjc@google.com>
- <ZBP7oZ1lkJhlSNpY@yzhao56-desk.sh.intel.com> <ZFQYbHTYgG4HJ+ac@google.com>
- <ZFX1PaKIa44WtSNX@yzhao56-desk.sh.intel.com>
- <ZFYyt2fF6alyKlzO@yzhao56-desk.sh.intel.com>
-Message-ID: <ZFkBrLuBY5fOU6qX@google.com>
-Subject: Re: [PATCH v2 05/27] drm/i915/gvt: Verify VFIO-pinned page is THP
- when shadowing 2M gtt entry
-From: Sean Christopherson <seanjc@google.com>
-To: Yan Zhao <yan.y.zhao@intel.com>
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5624010E278;
+ Mon,  8 May 2023 15:33:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1683559984; x=1715095984;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=puSrAVw2spOFq7LEIUrQx/v0gR0EAdaawRidutftb5Q=;
+ b=OcDLRYJ2NnBBnIRoWJ8wPBytPtItfR7lWV3KSvmqybYV3/tWPKb6ssHF
+ RpHVG70ovKcJGtRfs/khkJobVxtx/gVg+Z5WMI0h4ptYk7LVDCcLI6nAk
+ /QO+7SQIcGZl5knV7apJiMerjgB5MxJSupLDN8ulfameDFJ+jZDXIvC4M
+ f2mBdOLMr6Ya/AbcZWh0C661U03y8lgGuvRn6jEZbYdR7wbUB3qWq8fnz
+ Nya9EcZUvzrRM5dQewYVAhIXF6XFW4Uy/ZCTxR6ODnxMkRVXuHZ/ZToNM
+ IgCfHgXnLnDIfhW7Ce/c7jk8hbPgTShbXtb39exjU7g/vjTnOCLw2LgHZ w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10704"; a="377773828"
+X-IronPort-AV: E=Sophos;i="5.99,259,1677571200"; d="scan'208";a="377773828"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 May 2023 08:32:48 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10704"; a="729121775"
+X-IronPort-AV: E=Sophos;i="5.99,259,1677571200"; d="scan'208";a="729121775"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orsmga008.jf.intel.com with ESMTP; 08 May 2023 08:32:47 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Mon, 8 May 2023 08:32:47 -0700
+Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Mon, 8 May 2023 08:32:47 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Mon, 8 May 2023 08:32:47 -0700
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.168)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Mon, 8 May 2023 08:32:46 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nhCW9poEkyXu0S8a9NwLh65ipQ5CMKl2WaHy8RdGaLOr6qsJYY4pQkm6tmxqk0hGi1HDiW5+XzCK4gSPoGJSvChO5ClMQLGqfr+jqk+PbuUurvHiC7Vw1/iFrHXkXSASJHtgQEKwUZ7DLmypfe5Y1BzUdvDwKwK0UHG9XtMRp4xeaHS0OuzyepXJg8tIaAS4PNCs+Cvc2D8aFDlVesEGbmPUfID3u+ijuokJoKOV1k4Yom89jPHndhxK+ZWwWa35qxsHNzaExPiAqC498S6DNfKdFt8kp8OlmbI/2gMMfhEfB2Y7GPWPv4CBBxKNOd68cHgXAF8LXXOB2rM2ktHe6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5FdhFq9rhzcdv2H28BIlUf5Uz6Kn9rZec/+Cswp8jm4=;
+ b=QAWfOsOYIKGDa32Eaxu+M9lYF9ZgOjRGOeTfAGBjn7g7kYEckN/EG+mspNX7ZJRp82OuxDmZzM7/TPv/U4fYBhF+PC838WiCfHjTyvMG45WqevPEv8iXDfPIJlZ+U3OaeH470Fj494ujtrmjHfZLx309XKpDx0eRH41l2oJXqhbY6T9S60mRKlv7NTKxdjlrvXqZNpMod6MiLr/a+etgCXPmAJByb/2A2cuIEJY5sdxI0ccKhYYGrueViTi4m4YmORHLYSXtRaLX1Ih+YANvOIdEkGbXInN/GV3vPcjraogt3QM7VCqjyOMF7+kn5+0QOSY+SFxxHC2ArtkMiPa0BA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by DS0PR11MB7904.namprd11.prod.outlook.com (2603:10b6:8:f8::8) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6363.31; Mon, 8 May 2023 15:32:45 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::5b44:8f52:dbeb:18e5]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::5b44:8f52:dbeb:18e5%3]) with mapi id 15.20.6363.032; Mon, 8 May 2023
+ 15:32:45 +0000
+From: "Liu, Yi L" <yi.l.liu@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: RE: [PATCH v4 8/9] vfio/pci: Extend
+ VFIO_DEVICE_GET_PCI_HOT_RESET_INFO for vfio device cdev
+Thread-Topic: [PATCH v4 8/9] vfio/pci: Extend
+ VFIO_DEVICE_GET_PCI_HOT_RESET_INFO for vfio device cdev
+Thread-Index: AQHZeE8RQrH/pDzhz0i6DTTjBkclyq8/ljeAgAADNYCAEPoZcA==
+Date: Mon, 8 May 2023 15:32:44 +0000
+Message-ID: <DS0PR11MB75295210DA7C4C2896D1FB6DC3719@DS0PR11MB7529.namprd11.prod.outlook.com>
+References: <20230426145419.450922-1-yi.l.liu@intel.com>
+ <20230426145419.450922-9-yi.l.liu@intel.com>
+ <20230427140405.2afe27d4.alex.williamson@redhat.com>
+ <20230427141533.7d8861ed.alex.williamson@redhat.com>
+In-Reply-To: <20230427141533.7d8861ed.alex.williamson@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|DS0PR11MB7904:EE_
+x-ms-office365-filtering-correlation-id: 9917198c-6da7-4955-a884-08db4fd9786b
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: voT0BCrMgdrvYh4ipsh9as6ugUagfMhz9sdoYiYkKTAZAZ/4DRwue/3NdDjbk8pyjCok3Qox0qZ3Cj5lEZ39Gxl3zX8a3QV41otkyxuZ9OJ7MDiBJ7WXM3yIqA9fn4neBX8Ne6ch8Fjr3nZ9UhocTSbAqYjoLNhQi7IH8vUiELUWRJQ3xywN/oP4CWzSnGsNPPstCGATzSX39ZnEejv6iF64c53XyBy1kKk0FzVgMnpGOO8EDiy2vexy9U3pKIHkVb8kwJqrTiFQX81D6ZRlj0vxrDgy6t3anxA1ARQw19o18oXGMx6awvv0unA9o9cnahsBxi8Q/49q7Eko6rVcj1O5mp488y+7YBLiJ7meFOcnAms2DTGb5w2yDG1ElR6bR884lsSNaUGBDN3iXmYgZh4PlnP2eAcs3RgliIbuesbrVh9oiFQzZ90U+YgDF9ljjJukM2Lng0/jbJOlr/Yws7hlKmyV0UlbTerSnz28anIkA9RRxIAY8alxbDOaDW8hSbLW+sbB14AEnUAj6LWtALqku1Rb5wYhm9Ifum7onIJoPzX1qW5OSL7SShIqq3YwaeiMdq/HoQ9CIoBD7BCaUpum5LoHIUeuMBfZivAUGaSS/jmnrn6DT1QBjqqBBYLt
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(366004)(39860400002)(396003)(346002)(376002)(136003)(451199021)(86362001)(33656002)(316002)(54906003)(6916009)(4326008)(76116006)(64756008)(66476007)(66556008)(66446008)(66946007)(7696005)(478600001)(55016003)(8676002)(52536014)(41300700001)(5660300002)(7416002)(2906002)(4744005)(8936002)(71200400001)(38070700005)(38100700002)(82960400001)(122000001)(186003)(6506007)(9686003)(26005)(83380400001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Lyb2gIpWyQLqADXjS5qnFqHUzpqHkcx9u4TMqV8CDwG81GPP4+6k4w38GUB5?=
+ =?us-ascii?Q?WvfKHkgIUsnpImqJ2aqwEo/aVrr4qtqm3XtOgVcBOGyKB6PnSnNF2xNSH3gq?=
+ =?us-ascii?Q?6KD3BLt+ErJFwykGZP3yvnEOmFhePZVvQNtEqgsrKYAGYm59Xk44I+TNQiNF?=
+ =?us-ascii?Q?4YMKElvkhucIVzjRIOAqSBKeNVt04i9lzxJPlLIPVZE4YU9ZsSjNsTrmveMq?=
+ =?us-ascii?Q?1kru3MZ/wlg5EP0A+T3uIoSivJHYkuRwdoAgnpocFnCLk80AfqvE8nV3NuMc?=
+ =?us-ascii?Q?h6W8m537Ds/37QXAlguOc0j6E2qSOpeziSLuTNbeuBve+f7JfDtbg0opp4PW?=
+ =?us-ascii?Q?aZYvdK9TeDtVQnTiSBi0tE9wEpxJE1MaKOefVgpAGNDycStHY/JtVQbwJh43?=
+ =?us-ascii?Q?o+POZVeYVxRYf4a6U8QjlcyxyUohQv7nncBOthWdro5MoAfE8jwD0xMkXqTH?=
+ =?us-ascii?Q?zjBr/qu8GkjTRiXASJeHPLwDEDrWdiuBe9tLgW3kfBWtMKpIlwG0VL2GbUp4?=
+ =?us-ascii?Q?Dwhlp5GQKGqkDSE7PpkdG3MC5p3raIOKRY0mbvlnAlWnIv5Kl+Y4NXU1PA9d?=
+ =?us-ascii?Q?o/W+QdCOQgsECGZJ0gwu/VntHngCznZVceQvrlKtnKWgWZmIc311u9KPIYhT?=
+ =?us-ascii?Q?Ng5Y5uGrd16LbmwzfRxEfgbVf+sENNyDGP9Tfy5o0e/Bblio0hDHpVh0oYfj?=
+ =?us-ascii?Q?MTRlvUIv9sWivKYMmUt6tj6/79xRmanDPKpFySLMrXfyGgZy4WqqYX7t3oup?=
+ =?us-ascii?Q?lf8jeSycglWzdpwAnbKuabUWwwXD6h667rzrxSUbJFtheNiuS/PSseKMMT65?=
+ =?us-ascii?Q?QE43F7BhKdt/gHni/zTZoXEa3A+9zyEW/yuFcVNemfIl+NY9rp1m3NfA7vGa?=
+ =?us-ascii?Q?hked2qJ4PWhUd8QFug1PWemlT22MKkWZ8JVcuoMIEREsA2SxRG0M6zjzN6AS?=
+ =?us-ascii?Q?KojXqMF8Wq3jRkS3WhJN3zqGc11gmjTi5o6IST5BRTkZDkSkIGHpPlICgi0O?=
+ =?us-ascii?Q?T774JJ+esm4JcS3tIfgNGNF04R9HbkBeOSR+Rt74zHjWEwnluws+IyMMbVmf?=
+ =?us-ascii?Q?tzAbN9SZCtre10hszzffRhYiWisbmYN/DrQVx8aM/dPZv+0Cjrzdw5xgpUcB?=
+ =?us-ascii?Q?CJ3mI6qK1LlTnSRF+4fL/EOy3C1FlxyTt9gE5LlHtcIsi8qXfChtMzUVHcV/?=
+ =?us-ascii?Q?OH+UZVw2AuD3LQ3fzpihidE4nziNrRg6ievBsRGhCVqXJlTSiDvM5w151tmc?=
+ =?us-ascii?Q?VI2jNduhHiTakFKuPIEk/sKvX4kDMUK0w23RyYXUuLE+2krmfPg/eT9Ickd8?=
+ =?us-ascii?Q?ysd4SD5LqMKN1P9NFKWV4/O3NuAol3fpmfZO3e/m+b11F8As9EmHK0U8Chqw?=
+ =?us-ascii?Q?X6xJ2hCIZ3DJoTbUviyX6yFMKNqDZkgBz0+ZyLWsq2rp0u6BmegKnQJ/fCDY?=
+ =?us-ascii?Q?i2CmYTIMjK3BM1aAu0T9dX5OTv1jniSSA/gzmpnVNOXugDtEAF+caf7MgRXJ?=
+ =?us-ascii?Q?FMY0S0+F8PXux3s6XDjV6PFbND5HM/vZRxR65Xqi94NywYVjzGXyMjOLNo6m?=
+ =?us-ascii?Q?hfGsnYmiPVr/7bdqdwnINje4unc80YeluoCcxMb2?=
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9917198c-6da7-4955-a884-08db4fd9786b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 May 2023 15:32:44.9666 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rIm8RCU4H4zzReG590zfQgLgGbMYj4pHRblaxSvsazgMyKndBkG+yQVv2B1ThLeS3W9uaJC5uwbv0IQ6RI2mxw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7904
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,49 +152,55 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
- intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "Duan, 
+ Zhenzhong" <zhenzhong.duan@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Xu, Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, May 06, 2023, Yan Zhao wrote:
-> On Sat, May 06, 2023 at 02:35:41PM +0800, Yan Zhao wrote:
-> > > > Maybe the checking of PageTransHuge(cur_page) and bailing out is not necessary.
-> > > > If a page is not transparent huge, but there are 512 contigous 4K
-> > > > pages, I think it's still good to map them in IOMMU in 2M.
-> > > > See vfio_pin_map_dma() who does similar things.
-> > > 
-> > > I agree that bailing isn't strictly necessary, and processing "blindly" should
-> > > Just Work for HugeTLB and other hugepage types.  I was going to argue that it
-> > > would be safer to add this and then drop it at the end, but I think that's a
-> > > specious argument.  If not checking the page type is unsafe, then the existing
-> > > code is buggy, and this changelog literally states that the check for contiguous
-> > > pages guards against any such problems.
-> > > 
-> > > I do think there's a (very, very theoretical) issue though.  For "CONFIG_SPARSEMEM=y
-> > > && CONFIG_SPARSEMEM_VMEMMAP=n", struct pages aren't virtually contiguous with respect
-> > > to their pfns, i.e. it's possible (again, very theoretically) that two struct pages
-> > > could be virtually contiguous but physically discontiguous.  I suspect I'm being
-> > > ridiculously paranoid, but for the efficient cases where pages are guaranteed to
-> > > be contiguous, the extra page_to_pfn() checks should be optimized away by the
-> > > compiler, i.e. there's no meaningful downside to the paranoia.
-> > To make sure I understand it correctly:
-> > There are 3 conditions:
-> > (1) Two struct pages aren't virtually contiguous, but there PFNs are contiguous.
-> > (2) Two struct pages are virtually contiguous but their PFNs aren't contiguous.
-> >     (Looks this will not happen?)
-> > (3) Two struct pages are virtually contiguous, and their PFNs are contiguous, too.
-> >     But they have different backends, e.g.
-> >     PFN 1 and PFN 2 are contiguous, while PFN 1 belongs to RAM, and PFN 2
-> >     belongs to DEVMEM.
-> > 
-> > I think you mean condition (3) is problematic, am I right?
-> Oh, I got it now.
-> You are saying about condition (2), with "CONFIG_SPARSEMEM=y &&
-> CONFIG_SPARSEMEM_VMEMMAP=n".
-> Two struct pages are contiguous if one is at one section's tail and another at
-> another section's head, but the two sections aren't for contiguous PFNs.
+> From: Alex Williamson <alex.williamson@redhat.com>
+> Sent: Friday, April 28, 2023 4:16 AM
+>
+> > > + *
+> > >   * Return: 0 on success, -errno on failure:
+> > >   *	-enospc =3D insufficient buffer, -enodev =3D unsupported for devi=
+ce.
+> > >   */
+> > >  struct vfio_pci_dependent_device {
+> > > -	__u32	group_id;
+> > > +	union {
+> > > +		__u32   group_id;
+> > > +		__u32	dev_id;
+> > > +#define VFIO_PCI_DEVID_NONBLOCKING	0
+> > > +#define VFIO_PCI_DEVID_BLOCKING	-1
+> >
+> > The above description seems like it's leaning towards OWNED rather than
+> > BLOCKING.
+>=20
+> Also these should be defined relative to something defined in IOMMUFD
+> rather than inventing values here.  We can't have the valid devid
+> number space owned by IOMMUFD conflict with these definitions.  Thanks,
 
-Yep, exactly.
+Jason has proposed to reserve all negative IDs and 0 in iommufd. In that ca=
+se,
+can vfio define the numbers now?
+
+Regards,
+Yi Liu
