@@ -2,82 +2,67 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCEB46FEC66
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 11 May 2023 09:11:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 256AC6FFCC7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 12 May 2023 00:39:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 83DBD10E085;
-	Thu, 11 May 2023 07:11:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E5F6A10E604;
+	Thu, 11 May 2023 22:39:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E3DF510E085
+Received: from mail-pg1-x54a.google.com (mail-pg1-x54a.google.com
+ [IPv6:2607:f8b0:4864:20::54a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7EE5D10E606
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 11 May 2023 07:11:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1683789078;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZNiRCSQizjrLet4+w7YasYKR5X4+4EtQJ4aMJEQXXo0=;
- b=YMCbe5UTXpAmMD/eyUaEztR39befzgPgD+9lYf6HKtBHetZgERBPvWOZ+AuYEhfeATAK1v
- TCfYiWQlGfZP0ghazN63dhWbNgeFSCh9RB1ArAgV73r6j/qB43aHmgiB4jnxdiHk4lPhZ2
- JPPTGQ+azmOQsTRn1uzbTh0bvvyHDpw=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-577--MhAODDKPDGv5AD6rEUteQ-1; Thu, 11 May 2023 03:11:15 -0400
-X-MC-Unique: -MhAODDKPDGv5AD6rEUteQ-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3079c6648e3so2592681f8f.2
+ Thu, 11 May 2023 22:39:46 +0000 (UTC)
+Received: by mail-pg1-x54a.google.com with SMTP id
+ 41be03b00d2f7-52c3f0b1703so8623472a12.1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 11 May 2023 00:11:15 -0700 (PDT)
+ Thu, 11 May 2023 15:39:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20221208; t=1683844785; x=1686436785;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=HS+C3IjXfWystCONYjb3EXxD2SDxWUthJbvvwGWs1+8=;
+ b=r5MQQ+mBJ+84kKxnm/gw1YuGM5HuEzQgj+EEC07xuOUA0uFCYdG/pd32A2RoxkoXn4
+ BeIqAPoxRiiWxltudkcaPV7km11ERjQU23thTbY8+fGjgFfxkkPz2XXc2QsgVFs6NUoo
+ 0opXUXOdMgF6+kGyY1CAWlLmiFUP1Ps1kQixkzRs80PdBlF8ik/mYwHAT7uQSMlOUU1L
+ dG4lR9Q1eObvB/pIXpZHfHHwfz75xhjlaAfclkgFrBCHQ5WzuZU28VOTZU/K4YZYwRRI
+ P8yD7liQYau4VMImM/FN5HiRol8YYr91eMYlOtBxEI6W7VFEiqWeq1tJ56to5a2jbxvg
+ Xcnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683789074; x=1686381074;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZNiRCSQizjrLet4+w7YasYKR5X4+4EtQJ4aMJEQXXo0=;
- b=ZroFNEGEiQUtQAqb+DScFheuBZuP2R82YYgUqiJUIX4me3fj4hp9bHniZCLzGWzgfE
- 8zrnwNgb0c3V6PyHcPGthpRByHnA8f79co2AyEZZenhdlxn+f3i0adr7W3I/mC16ioyl
- K3Ic848T+ivHE5GkIZXHP+ZVbEfMe3uJPckLMQh1Y0A1JFbgSW6LoWBgWAoBlNCahjCd
- dH1wTZfNV9oSlrPjGpPqo65glC3VcHNoxXSYNXey1iZfAxGhRyHqX7y6C8yCGhdrIaE3
- KP/1VtuS9wwu//imCcXys5Plj6+0Cidf377CfHefW8x/Wf0KCYTpIWDE2w7P0N+sYUn8
- qLAQ==
-X-Gm-Message-State: AC+VfDzRqDWbpErxTkDX8oUDGN7+RzeC7K8/5OF7HDJ92z/Lu3Tbm++C
- Et8xHADWQv52IxOb5Rm/CImme2Iyj+e0gPrfASYKHzCceADSmGRPUTLoB504AXyzM9xSGBqpoDP
- PmuAD+ywx6B6Lcx3Sg+U4hNrSXBmdOgYE0w==
-X-Received: by 2002:adf:f302:0:b0:306:3b78:fe33 with SMTP id
- i2-20020adff302000000b003063b78fe33mr14011144wro.32.1683789074241; 
- Thu, 11 May 2023 00:11:14 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6yKhoWUVKatWXlNJACwaNqY57Nig7w2ksG7ecoiA64DliEZhMpd3/Eh87z/qa0jstH/lFHKQ==
-X-Received: by 2002:adf:f302:0:b0:306:3b78:fe33 with SMTP id
- i2-20020adff302000000b003063b78fe33mr14011111wro.32.1683789073839; 
- Thu, 11 May 2023 00:11:13 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- i6-20020adfdec6000000b002c70ce264bfsm19376071wrn.76.2023.05.11.00.11.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 May 2023 00:11:13 -0700 (PDT)
-Message-ID: <0805efa4-9376-7485-e52b-d53216f74482@redhat.com>
-Date: Thu, 11 May 2023 09:11:11 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v10 05/22] kvm/vfio: Accept vfio device file from userspace
-To: Yi Liu <yi.l.liu@intel.com>, alex.williamson@redhat.com, jgg@nvidia.com,
- kevin.tian@intel.com
-References: <20230426150321.454465-1-yi.l.liu@intel.com>
- <20230426150321.454465-6-yi.l.liu@intel.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clegoate@redhat.com>
-In-Reply-To: <20230426150321.454465-6-yi.l.liu@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ d=1e100.net; s=20221208; t=1683844785; x=1686436785;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=HS+C3IjXfWystCONYjb3EXxD2SDxWUthJbvvwGWs1+8=;
+ b=ItrnbnaL2z7O5onw8ZC4w2m2Z89pQHX9U6bNLgB/lrzluTn6ouRBH/5zL7l2vuOZm7
+ 1vLjnW94VA7hUD+W+e68ni8I7d+Wc6kXnbDILSkEY/HzZoTxq5H40jh3wEd6CobvYD7Z
+ vM9SAky3GuSeLs1hW3UAjeVudWplJXYsKz4Tae7SvbSjJU8Y57ZI+TJCX5apMAjabuAU
+ 6JVQLUXBkkwFymadWqY8zbBMCn2nN/g4PC9ISCF4r1Ddk/wOiOgZC5VGSrVFabLQxXVC
+ szIf2UOJS7llbH4L1zJ65a/6wBE49P3NebNAcRXStndac4+gJM1TkiP8oF9dFRMZjkps
+ rD3g==
+X-Gm-Message-State: AC+VfDyRPvr7TLU8EUpGzzSp6tHR136M+iExbdSAJrqBH6FlvTHfiwh1
+ YiwAP9DLBzgRjxL9BUFWTL3xllJkBkI=
+X-Google-Smtp-Source: ACHHUZ4kD8uOuPFFFBJbC927/oOErjQm18umPI4Cv6zwlKft757rQyDRAMtH49/S06GSKQrVUMS3BzfedJg=
+X-Received: from zagreus.c.googlers.com
+ ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
+ (user=seanjc job=sendgmr) by 2002:a63:da53:0:b0:530:6f9f:9b36 with SMTP id
+ l19-20020a63da53000000b005306f9f9b36mr1231330pgj.9.1683844785592; Thu, 11 May
+ 2023 15:39:45 -0700 (PDT)
+Date: Thu, 11 May 2023 15:39:44 -0700
+In-Reply-To: <ZFhNHB4VWp8+5wWp@yzhao56-desk.sh.intel.com>
+Mime-Version: 1.0
+References: <20230311002258.852397-1-seanjc@google.com>
+ <20230311002258.852397-26-seanjc@google.com>
+ <ZBQkyB3KJP34D9/h@yzhao56-desk.sh.intel.com>
+ <ZBwS0DNOwMf7OVmV@yzhao56-desk.sh.intel.com>
+ <ZFLrOgUL4T/lrVLo@google.com> <ZFMVsFzpN16hiPUH@yzhao56-desk.sh.intel.com>
+ <ZFhNHB4VWp8+5wWp@yzhao56-desk.sh.intel.com>
+Message-ID: <ZF1usP8CGPxZWIj3@google.com>
+Subject: Re: [PATCH v2 25/27] KVM: x86/mmu: Drop @slot param from
+ exported/external page-track APIs
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,184 +75,91 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
- linux-s390@vger.kernel.org, kvm@vger.kernel.org, lulu@redhat.com,
- zhenzhong.duan@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
- yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
- cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, yanting.jiang@intel.com, robin.murphy@arm.com
+Cc: kvm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 4/26/23 17:03, Yi Liu wrote:
-> This defines KVM_DEV_VFIO_FILE* and make alias with KVM_DEV_VFIO_GROUP*.
-> Old userspace uses KVM_DEV_VFIO_GROUP* works as well.
+On Mon, May 08, 2023, Yan Zhao wrote:
+> On Thu, May 04, 2023 at 10:17:20AM +0800, Yan Zhao wrote:
+> > On Wed, May 03, 2023 at 04:16:10PM -0700, Sean Christopherson wrote:
+> > > Finally getting back to this series...
+> > > 
+> > > On Thu, Mar 23, 2023, Yan Zhao wrote:
+> > > > On Fri, Mar 17, 2023 at 04:28:56PM +0800, Yan Zhao wrote:
+> > > > > On Fri, Mar 10, 2023 at 04:22:56PM -0800, Sean Christopherson wrote:
+> > > > > ...
+> > > > > > +int kvm_write_track_add_gfn(struct kvm *kvm, gfn_t gfn)
+> > > > > > +{
+> > > > > > +	struct kvm_memory_slot *slot;
+> > > > > > +	int idx;
+> > > > > > +
+> > > > > > +	idx = srcu_read_lock(&kvm->srcu);
+> > > > > > +
+> > > > > > +	slot = gfn_to_memslot(kvm, gfn);
+> > > > > > +	if (!slot) {
+> > > > > > +		srcu_read_unlock(&kvm->srcu, idx);
+> > > > > > +		return -EINVAL;
+> > > > > > +	}
+> > > > > > +
+> > > > > Also fail if slot->flags & KVM_MEMSLOT_INVALID is true?
+> > > > > There should exist a window for external users to see an invalid slot
+> > > > > when a slot is about to get deleted/moved.
+> > > > > (It happens before MOVE is rejected in kvm_arch_prepare_memory_region()).
+> > > > 
+> > > > Or using
+> > > >         if (!kvm_is_visible_memslot(slot)) {
+> > > > 		srcu_read_unlock(&kvm->srcu, idx);
+> > > > 		return -EINVAL;
+> > > > 	}
+> > > 
+> Hi Sean,
+> After more thoughts, do you think checking KVM internal memslot is necessary?
+
+I don't think it's necessary per se, but I also can't think of any reason to allow
+it.
+
+> slot = gfn_to_memslot(kvm, gfn);
+> if (!slot || slot->id >= KVM_USER_MEM_SLOTS) {
+> 		srcu_read_unlock(&kvm->srcu, idx);
+> 		return -EINVAL;
+> }
 > 
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Tested-by: Terrence Xu <terrence.xu@intel.com>
-> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
-> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
-> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> ---
->   Documentation/virt/kvm/devices/vfio.rst | 47 ++++++++++++++++---------
->   include/uapi/linux/kvm.h                | 13 +++++--
->   virt/kvm/vfio.c                         | 16 ++++-----
->   3 files changed, 49 insertions(+), 27 deletions(-)
-> 
-> diff --git a/Documentation/virt/kvm/devices/vfio.rst b/Documentation/virt/kvm/devices/vfio.rst
-> index 08b544212638..c549143bb891 100644
-> --- a/Documentation/virt/kvm/devices/vfio.rst
-> +++ b/Documentation/virt/kvm/devices/vfio.rst
-> @@ -9,22 +9,34 @@ Device types supported:
->     - KVM_DEV_TYPE_VFIO
->   
->   Only one VFIO instance may be created per VM.  The created device
-> -tracks VFIO groups in use by the VM and features of those groups
-> -important to the correctness and acceleration of the VM.  As groups
-> -are enabled and disabled for use by the VM, KVM should be updated
-> -about their presence.  When registered with KVM, a reference to the
-> -VFIO-group is held by KVM.
-> +tracks VFIO files (group or device) in use by the VM and features
-> +of those groups/devices important to the correctness and acceleration
-> +of the VM.  As groups/devices are enabled and disabled for use by the
-> +VM, KVM should be updated about their presence.  When registered with
-> +KVM, a reference to the VFIO file is held by KVM.
->   
->   Groups:
-> -  KVM_DEV_VFIO_GROUP
-> -
-> -KVM_DEV_VFIO_GROUP attributes:
-> -  KVM_DEV_VFIO_GROUP_ADD: Add a VFIO group to VFIO-KVM device tracking
-> -	kvm_device_attr.addr points to an int32_t file descriptor
-> -	for the VFIO group.
-> -  KVM_DEV_VFIO_GROUP_DEL: Remove a VFIO group from VFIO-KVM device tracking
-> -	kvm_device_attr.addr points to an int32_t file descriptor
-> -	for the VFIO group.
-> +  KVM_DEV_VFIO_FILE
-> +	alias: KVM_DEV_VFIO_GROUP
-> +
-> +KVM_DEV_VFIO_FILE attributes:
-> +  KVM_DEV_VFIO_FILE_ADD: Add a VFIO file (group/device) to VFIO-KVM device
-> +	tracking
-> +
-> +	kvm_device_attr.addr points to an int32_t file descriptor for the
-> +	VFIO file.
-> +
-> +  KVM_DEV_VFIO_FILE_DEL: Remove a VFIO file (group/device) from VFIO-KVM
-> +	device tracking
-> +
-> +	kvm_device_attr.addr points to an int32_t file descriptor for the
-> +	VFIO file.
-> +
-> +KVM_DEV_VFIO_GROUP (legacy kvm device group restricted to the handling of VFIO group fd):
-> +  KVM_DEV_VFIO_GROUP_ADD: same as KVM_DEV_VFIO_FILE_ADD for group fd only
-> +
-> +  KVM_DEV_VFIO_GROUP_DEL: same as KVM_DEV_VFIO_FILE_DEL for group fd only
-> +
->     KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE: attaches a guest visible TCE table
->   	allocated by sPAPR KVM.
->   	kvm_device_attr.addr points to a struct::
-> @@ -40,7 +52,10 @@ KVM_DEV_VFIO_GROUP attributes:
->   	- @tablefd is a file descriptor for a TCE table allocated via
->   	  KVM_CREATE_SPAPR_TCE.
->   
-> -The GROUP_ADD operation above should be invoked prior to accessing the
-> +The FILE/GROUP_ADD operation above should be invoked prior to accessing the
->   device file descriptor via VFIO_GROUP_GET_DEVICE_FD in order to support
->   drivers which require a kvm pointer to be set in their .open_device()
-> -callback.
-> +callback.  It is the same for device file descriptor via character device
-> +open which gets device access via VFIO_DEVICE_BIND_IOMMUFD.  For such file
-> +descriptors, FILE_ADD should be invoked before VFIO_DEVICE_BIND_IOMMUFD
-> +to support the drivers mentioned in prior sentence as well.
-> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
-> index d77aef872a0a..7980c7533136 100644
-> --- a/include/uapi/linux/kvm.h
-> +++ b/include/uapi/linux/kvm.h
-> @@ -1410,9 +1410,16 @@ struct kvm_device_attr {
->   	__u64	addr;		/* userspace address of attr data */
->   };
->   
-> -#define  KVM_DEV_VFIO_GROUP			1
-> -#define   KVM_DEV_VFIO_GROUP_ADD			1
-> -#define   KVM_DEV_VFIO_GROUP_DEL			2
-> +#define  KVM_DEV_VFIO_FILE			1
-> +
-> +#define   KVM_DEV_VFIO_FILE_ADD			1
-> +#define   KVM_DEV_VFIO_FILE_DEL			2
-> +
-> +/* KVM_DEV_VFIO_GROUP aliases are for compile time uapi compatibility */
-> +#define  KVM_DEV_VFIO_GROUP	KVM_DEV_VFIO_FILE
-> +
-> +#define   KVM_DEV_VFIO_GROUP_ADD	KVM_DEV_VFIO_FILE_ADD
-> +#define   KVM_DEV_VFIO_GROUP_DEL	KVM_DEV_VFIO_FILE_DEL
->   #define   KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE		3
->   
->   enum kvm_device_type {
-> diff --git a/virt/kvm/vfio.c b/virt/kvm/vfio.c
-> index 8f7fa07e8170..10a3c7ccadf1 100644
-> --- a/virt/kvm/vfio.c
-> +++ b/virt/kvm/vfio.c
-> @@ -286,18 +286,18 @@ static int kvm_vfio_set_file(struct kvm_device *dev, long attr,
->   	int32_t fd;
->   
->   	switch (attr) {
-> -	case KVM_DEV_VFIO_GROUP_ADD:
-> +	case KVM_DEV_VFIO_FILE_ADD:
->   		if (get_user(fd, argp))
->   			return -EFAULT;
->   		return kvm_vfio_file_add(dev, fd);
->   
-> -	case KVM_DEV_VFIO_GROUP_DEL:
-> +	case KVM_DEV_VFIO_FILE_DEL:
->   		if (get_user(fd, argp))
->   			return -EFAULT;
->   		return kvm_vfio_file_del(dev, fd);
->   
->   #ifdef CONFIG_SPAPR_TCE_IOMMU
-> -	case KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE:
-> +	case KVM_DEV_VFIO_FILE_SET_SPAPR_TCE:
+> Do we allow write tracking to APIC access page when APIC-write VM exit
+> is not desired?
 
-This should still be DEV_VFIO_GROUP_SET_SPAPR_TCE. Same below.
+Allow?  Yes.
+ 
+But KVM doesn't use write-tracking for anything APICv related, e.g. to disable
+APICv, KVM instead zaps the SPTEs for the APIC access page and on page fault goes
+straight to MMIO emulation.
 
->   		return kvm_vfio_file_set_spapr_tce(dev, arg);
->   #endif
->   	}
-> @@ -309,7 +309,7 @@ static int kvm_vfio_set_attr(struct kvm_device *dev,
->   			     struct kvm_device_attr *attr)
->   {
->   	switch (attr->group) {
-> -	case KVM_DEV_VFIO_GROUP:
-> +	case KVM_DEV_VFIO_FILE:
->   		return kvm_vfio_set_file(dev, attr->attr,
->   					 u64_to_user_ptr(attr->addr));
->   	}
-> @@ -321,12 +321,12 @@ static int kvm_vfio_has_attr(struct kvm_device *dev,
->   			     struct kvm_device_attr *attr)
->   {
->   	switch (attr->group) {
-> -	case KVM_DEV_VFIO_GROUP:
-> +	case KVM_DEV_VFIO_FILE:
->   		switch (attr->attr) {
-> -		case KVM_DEV_VFIO_GROUP_ADD:
-> -		case KVM_DEV_VFIO_GROUP_DEL:
-> +		case KVM_DEV_VFIO_FILE_ADD:
-> +		case KVM_DEV_VFIO_FILE_DEL:
->   #ifdef CONFIG_SPAPR_TCE_IOMMU
-> -		case KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE:
-> +		case KVM_DEV_VFIO_FILE_SET_SPAPR_TCE:
+Theoretically, the guest could create an intermediate PTE in the APIC access page
+and AFAICT KVM would shadow the access and write-protect the APIC access page.
+But that's benign as the resulting emulation would be handled just like emulated
+APIC MMIO.
 
-Probably an error due to a global rename change.
+FWIW, the other internal memslots, TSS and idenity mapped page tables, are used
+if and only if paging is disabled in the guest, i.e. there are no guest PTEs for
+KVM to shadow (and paging must be enabled to enable VMX, so nested EPT is also
+ruled out).  So this is theoretically possible only for the APIC access page.
+That changes with KVMGT, but that again should not be problematic.  KVM will
+emulate in response to the write-protected page and things go on.  E.g. it's
+arguably much weirder that the guest can read/write the identity mapped page
+tables that are used for EPT without unrestricted guest.
 
-Thanks,
+There's no sane reason to allow creating PTEs in the APIC page, but I'm also not
+all that motivated to "fix" things.   account_shadowed() isn't expected to fail,
+so KVM would need to check further up the stack, e.g. in walk_addr_generic() by
+open coding a form of kvm_vcpu_gfn_to_hva_prot().
 
-C.
+I _think_ that's the only place KVM would need to add a check, as KVM already
+checks that the root, i.e. CR3, is in a "visible" memslot.  I suppose KVM could
+just synthesize triple fault, like it does for the root/CR3 case, but I don't
+like making up behavior.
 
->   #endif
->   			return 0;
->   		}
-
+In other words, I'm not opposed to disallowing write-tracking internal memslots,
+but I can't think of anything that will break, and so for me personally at least,
+the ROI isn't sufficient to justify writing tests and dealing with any fallout.
