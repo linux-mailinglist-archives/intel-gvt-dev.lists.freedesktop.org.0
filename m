@@ -2,80 +2,81 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0AFFF6FB84F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 May 2023 22:30:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BCEB46FEC66
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 11 May 2023 09:11:22 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CC71E10E2F7;
-	Mon,  8 May 2023 20:30:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 83DBD10E085;
+	Thu, 11 May 2023 07:11:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CF26510E2F7
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E3DF510E085
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 May 2023 20:30:01 +0000 (UTC)
+ Thu, 11 May 2023 07:11:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1683577800;
+ s=mimecast20190719; t=1683789078;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DVSAqbGo/SYymxziE0Ynvj5CJeQ8fOYfiV63Ae36Jlg=;
- b=bM5H0eGR46f0jKa43Nz2pTJkQF977G7kuTlbrXX2uuB+iWLfGJkhAFy53lg4ds2Qo8iZST
- eCLRuH6TupFa8UqC0VNrSR5rVnQH9/sTEAHsSdargY6K0z0qFm/0GJEhsRshJDsF8TFkzE
- rYX4WYxxKhzLuPKJLjxVEO721D88to8=
-Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
- [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ZNiRCSQizjrLet4+w7YasYKR5X4+4EtQJ4aMJEQXXo0=;
+ b=YMCbe5UTXpAmMD/eyUaEztR39befzgPgD+9lYf6HKtBHetZgERBPvWOZ+AuYEhfeATAK1v
+ TCfYiWQlGfZP0ghazN63dhWbNgeFSCh9RB1ArAgV73r6j/qB43aHmgiB4jnxdiHk4lPhZ2
+ JPPTGQ+azmOQsTRn1uzbTh0bvvyHDpw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-68-qQGyVlUIMweAJox4Z_kIkw-1; Mon, 08 May 2023 16:29:59 -0400
-X-MC-Unique: qQGyVlUIMweAJox4Z_kIkw-1
-Received: by mail-il1-f200.google.com with SMTP id
- e9e14a558f8ab-333d90b1a43so51949845ab.1
+ us-mta-577--MhAODDKPDGv5AD6rEUteQ-1; Thu, 11 May 2023 03:11:15 -0400
+X-MC-Unique: -MhAODDKPDGv5AD6rEUteQ-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-3079c6648e3so2592681f8f.2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 08 May 2023 13:29:59 -0700 (PDT)
+ Thu, 11 May 2023 00:11:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683577798; x=1686169798;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=DVSAqbGo/SYymxziE0Ynvj5CJeQ8fOYfiV63Ae36Jlg=;
- b=lOboZVbGr+dkgdLl3gyhvPsYgIZ3k6Wo2bQew8y9InC9cfWwh8r5IdFhT4M/ScnBbv
- vXzZB1GkNkvBNs70sZBdhCHyst1qdyyQ3//0Bpid4PEQv2+/vWZYLEGJUYWGtm3magFg
- C7r0Ba3pyiOtaFU+OEpypQuPiygrwNJ2g8fz13Q5GfqLQc/QXS2sOwsY/6tGyYFPqpA/
- 7ksupKhJVki+PRFjdHW85HX5Kzp7cZCVoF1WENNCOmYQRxP1dZEsgXW7Q5Jyr5u2xS2l
- WGKcGpDW2WaQrsmvHFhbrpnz7pMgJIvfQ+V2zB2M4OLI+F3Mr9NKYnCL10qekSqry0z+
- B1jQ==
-X-Gm-Message-State: AC+VfDxylkeFZfYCVIW8EMP2BthOuUsv/vP6KuKHtUpK1aH6lnsCrKaH
- 79WpP0cGFzruOZy7+A9bhmhiNaWrO6+7t2Zzc9Alf3LMiuIOH4C6zJxh6SHB7CQXNdHpDDLnJyA
- gvNkGGon5luq86WBhZEaeKfZfldfwn+Yj0A==
-X-Received: by 2002:a92:d403:0:b0:326:3a39:89d0 with SMTP id
- q3-20020a92d403000000b003263a3989d0mr8107237ilm.1.1683577798628; 
- Mon, 08 May 2023 13:29:58 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ7DrZnriZETaQ/90S6mqc6FkPi+6no4KK3rwJGM0g691+Xcp+XCrkWFWkbvezVgZkHdFJFtOw==
-X-Received: by 2002:a92:d403:0:b0:326:3a39:89d0 with SMTP id
- q3-20020a92d403000000b003263a3989d0mr8107209ilm.1.1683577798310; 
- Mon, 08 May 2023 13:29:58 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- l2-20020a056e0205c200b00334faa50484sm1915883ils.54.2023.05.08.13.29.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 May 2023 13:29:57 -0700 (PDT)
-Date: Mon, 8 May 2023 14:29:55 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v4 8/9] vfio/pci: Extend
- VFIO_DEVICE_GET_PCI_HOT_RESET_INFO for vfio device cdev
-Message-ID: <20230508142955.44566026.alex.williamson@redhat.com>
-In-Reply-To: <DS0PR11MB75295210DA7C4C2896D1FB6DC3719@DS0PR11MB7529.namprd11.prod.outlook.com>
-References: <20230426145419.450922-1-yi.l.liu@intel.com>
- <20230426145419.450922-9-yi.l.liu@intel.com>
- <20230427140405.2afe27d4.alex.williamson@redhat.com>
- <20230427141533.7d8861ed.alex.williamson@redhat.com>
- <DS0PR11MB75295210DA7C4C2896D1FB6DC3719@DS0PR11MB7529.namprd11.prod.outlook.com>
-Organization: Red Hat
+ d=1e100.net; s=20221208; t=1683789074; x=1686381074;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZNiRCSQizjrLet4+w7YasYKR5X4+4EtQJ4aMJEQXXo0=;
+ b=ZroFNEGEiQUtQAqb+DScFheuBZuP2R82YYgUqiJUIX4me3fj4hp9bHniZCLzGWzgfE
+ 8zrnwNgb0c3V6PyHcPGthpRByHnA8f79co2AyEZZenhdlxn+f3i0adr7W3I/mC16ioyl
+ K3Ic848T+ivHE5GkIZXHP+ZVbEfMe3uJPckLMQh1Y0A1JFbgSW6LoWBgWAoBlNCahjCd
+ dH1wTZfNV9oSlrPjGpPqo65glC3VcHNoxXSYNXey1iZfAxGhRyHqX7y6C8yCGhdrIaE3
+ KP/1VtuS9wwu//imCcXys5Plj6+0Cidf377CfHefW8x/Wf0KCYTpIWDE2w7P0N+sYUn8
+ qLAQ==
+X-Gm-Message-State: AC+VfDzRqDWbpErxTkDX8oUDGN7+RzeC7K8/5OF7HDJ92z/Lu3Tbm++C
+ Et8xHADWQv52IxOb5Rm/CImme2Iyj+e0gPrfASYKHzCceADSmGRPUTLoB504AXyzM9xSGBqpoDP
+ PmuAD+ywx6B6Lcx3Sg+U4hNrSXBmdOgYE0w==
+X-Received: by 2002:adf:f302:0:b0:306:3b78:fe33 with SMTP id
+ i2-20020adff302000000b003063b78fe33mr14011144wro.32.1683789074241; 
+ Thu, 11 May 2023 00:11:14 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6yKhoWUVKatWXlNJACwaNqY57Nig7w2ksG7ecoiA64DliEZhMpd3/Eh87z/qa0jstH/lFHKQ==
+X-Received: by 2002:adf:f302:0:b0:306:3b78:fe33 with SMTP id
+ i2-20020adff302000000b003063b78fe33mr14011111wro.32.1683789073839; 
+ Thu, 11 May 2023 00:11:13 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ i6-20020adfdec6000000b002c70ce264bfsm19376071wrn.76.2023.05.11.00.11.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 May 2023 00:11:13 -0700 (PDT)
+Message-ID: <0805efa4-9376-7485-e52b-d53216f74482@redhat.com>
+Date: Thu, 11 May 2023 09:11:11 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH v10 05/22] kvm/vfio: Accept vfio device file from userspace
+To: Yi Liu <yi.l.liu@intel.com>, alex.williamson@redhat.com, jgg@nvidia.com,
+ kevin.tian@intel.com
+References: <20230426150321.454465-1-yi.l.liu@intel.com>
+ <20230426150321.454465-6-yi.l.liu@intel.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clegoate@redhat.com>
+In-Reply-To: <20230426150321.454465-6-yi.l.liu@intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -89,62 +90,184 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "peterx@redhat.com" <peterx@redhat.com>, "Xu,
- Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
- Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
- "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, 
- Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
+Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
+ peterx@redhat.com, terrence.xu@intel.com, chao.p.peng@linux.intel.com,
+ linux-s390@vger.kernel.org, kvm@vger.kernel.org, lulu@redhat.com,
+ zhenzhong.duan@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
+ yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
+ cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ suravee.suthikulpanit@amd.com, yanting.jiang@intel.com, robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, 8 May 2023 15:32:44 +0000
-"Liu, Yi L" <yi.l.liu@intel.com> wrote:
-
-> > From: Alex Williamson <alex.williamson@redhat.com>
-> > Sent: Friday, April 28, 2023 4:16 AM
-> >  
-> > > > + *
-> > > >   * Return: 0 on success, -errno on failure:
-> > > >   *	-enospc = insufficient buffer, -enodev = unsupported for device.
-> > > >   */
-> > > >  struct vfio_pci_dependent_device {
-> > > > -	__u32	group_id;
-> > > > +	union {
-> > > > +		__u32   group_id;
-> > > > +		__u32	dev_id;
-> > > > +#define VFIO_PCI_DEVID_NONBLOCKING	0
-> > > > +#define VFIO_PCI_DEVID_BLOCKING	-1  
-> > >
-> > > The above description seems like it's leaning towards OWNED rather than
-> > > BLOCKING.  
-> > 
-> > Also these should be defined relative to something defined in IOMMUFD
-> > rather than inventing values here.  We can't have the valid devid
-> > number space owned by IOMMUFD conflict with these definitions.  Thanks,  
+On 4/26/23 17:03, Yi Liu wrote:
+> This defines KVM_DEV_VFIO_FILE* and make alias with KVM_DEV_VFIO_GROUP*.
+> Old userspace uses KVM_DEV_VFIO_GROUP* works as well.
 > 
-> Jason has proposed to reserve all negative IDs and 0 in iommufd. In that case,
-> can vfio define the numbers now?
+> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> Tested-by: Terrence Xu <terrence.xu@intel.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
+> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> ---
+>   Documentation/virt/kvm/devices/vfio.rst | 47 ++++++++++++++++---------
+>   include/uapi/linux/kvm.h                | 13 +++++--
+>   virt/kvm/vfio.c                         | 16 ++++-----
+>   3 files changed, 49 insertions(+), 27 deletions(-)
+> 
+> diff --git a/Documentation/virt/kvm/devices/vfio.rst b/Documentation/virt/kvm/devices/vfio.rst
+> index 08b544212638..c549143bb891 100644
+> --- a/Documentation/virt/kvm/devices/vfio.rst
+> +++ b/Documentation/virt/kvm/devices/vfio.rst
+> @@ -9,22 +9,34 @@ Device types supported:
+>     - KVM_DEV_TYPE_VFIO
+>   
+>   Only one VFIO instance may be created per VM.  The created device
+> -tracks VFIO groups in use by the VM and features of those groups
+> -important to the correctness and acceleration of the VM.  As groups
+> -are enabled and disabled for use by the VM, KVM should be updated
+> -about their presence.  When registered with KVM, a reference to the
+> -VFIO-group is held by KVM.
+> +tracks VFIO files (group or device) in use by the VM and features
+> +of those groups/devices important to the correctness and acceleration
+> +of the VM.  As groups/devices are enabled and disabled for use by the
+> +VM, KVM should be updated about their presence.  When registered with
+> +KVM, a reference to the VFIO file is held by KVM.
+>   
+>   Groups:
+> -  KVM_DEV_VFIO_GROUP
+> -
+> -KVM_DEV_VFIO_GROUP attributes:
+> -  KVM_DEV_VFIO_GROUP_ADD: Add a VFIO group to VFIO-KVM device tracking
+> -	kvm_device_attr.addr points to an int32_t file descriptor
+> -	for the VFIO group.
+> -  KVM_DEV_VFIO_GROUP_DEL: Remove a VFIO group from VFIO-KVM device tracking
+> -	kvm_device_attr.addr points to an int32_t file descriptor
+> -	for the VFIO group.
+> +  KVM_DEV_VFIO_FILE
+> +	alias: KVM_DEV_VFIO_GROUP
+> +
+> +KVM_DEV_VFIO_FILE attributes:
+> +  KVM_DEV_VFIO_FILE_ADD: Add a VFIO file (group/device) to VFIO-KVM device
+> +	tracking
+> +
+> +	kvm_device_attr.addr points to an int32_t file descriptor for the
+> +	VFIO file.
+> +
+> +  KVM_DEV_VFIO_FILE_DEL: Remove a VFIO file (group/device) from VFIO-KVM
+> +	device tracking
+> +
+> +	kvm_device_attr.addr points to an int32_t file descriptor for the
+> +	VFIO file.
+> +
+> +KVM_DEV_VFIO_GROUP (legacy kvm device group restricted to the handling of VFIO group fd):
+> +  KVM_DEV_VFIO_GROUP_ADD: same as KVM_DEV_VFIO_FILE_ADD for group fd only
+> +
+> +  KVM_DEV_VFIO_GROUP_DEL: same as KVM_DEV_VFIO_FILE_DEL for group fd only
+> +
+>     KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE: attaches a guest visible TCE table
+>   	allocated by sPAPR KVM.
+>   	kvm_device_attr.addr points to a struct::
+> @@ -40,7 +52,10 @@ KVM_DEV_VFIO_GROUP attributes:
+>   	- @tablefd is a file descriptor for a TCE table allocated via
+>   	  KVM_CREATE_SPAPR_TCE.
+>   
+> -The GROUP_ADD operation above should be invoked prior to accessing the
+> +The FILE/GROUP_ADD operation above should be invoked prior to accessing the
+>   device file descriptor via VFIO_GROUP_GET_DEVICE_FD in order to support
+>   drivers which require a kvm pointer to be set in their .open_device()
+> -callback.
+> +callback.  It is the same for device file descriptor via character device
+> +open which gets device access via VFIO_DEVICE_BIND_IOMMUFD.  For such file
+> +descriptors, FILE_ADD should be invoked before VFIO_DEVICE_BIND_IOMMUFD
+> +to support the drivers mentioned in prior sentence as well.
+> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
+> index d77aef872a0a..7980c7533136 100644
+> --- a/include/uapi/linux/kvm.h
+> +++ b/include/uapi/linux/kvm.h
+> @@ -1410,9 +1410,16 @@ struct kvm_device_attr {
+>   	__u64	addr;		/* userspace address of attr data */
+>   };
+>   
+> -#define  KVM_DEV_VFIO_GROUP			1
+> -#define   KVM_DEV_VFIO_GROUP_ADD			1
+> -#define   KVM_DEV_VFIO_GROUP_DEL			2
+> +#define  KVM_DEV_VFIO_FILE			1
+> +
+> +#define   KVM_DEV_VFIO_FILE_ADD			1
+> +#define   KVM_DEV_VFIO_FILE_DEL			2
+> +
+> +/* KVM_DEV_VFIO_GROUP aliases are for compile time uapi compatibility */
+> +#define  KVM_DEV_VFIO_GROUP	KVM_DEV_VFIO_FILE
+> +
+> +#define   KVM_DEV_VFIO_GROUP_ADD	KVM_DEV_VFIO_FILE_ADD
+> +#define   KVM_DEV_VFIO_GROUP_DEL	KVM_DEV_VFIO_FILE_DEL
+>   #define   KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE		3
+>   
+>   enum kvm_device_type {
+> diff --git a/virt/kvm/vfio.c b/virt/kvm/vfio.c
+> index 8f7fa07e8170..10a3c7ccadf1 100644
+> --- a/virt/kvm/vfio.c
+> +++ b/virt/kvm/vfio.c
+> @@ -286,18 +286,18 @@ static int kvm_vfio_set_file(struct kvm_device *dev, long attr,
+>   	int32_t fd;
+>   
+>   	switch (attr) {
+> -	case KVM_DEV_VFIO_GROUP_ADD:
+> +	case KVM_DEV_VFIO_FILE_ADD:
+>   		if (get_user(fd, argp))
+>   			return -EFAULT;
+>   		return kvm_vfio_file_add(dev, fd);
+>   
+> -	case KVM_DEV_VFIO_GROUP_DEL:
+> +	case KVM_DEV_VFIO_FILE_DEL:
+>   		if (get_user(fd, argp))
+>   			return -EFAULT;
+>   		return kvm_vfio_file_del(dev, fd);
+>   
+>   #ifdef CONFIG_SPAPR_TCE_IOMMU
+> -	case KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE:
+> +	case KVM_DEV_VFIO_FILE_SET_SPAPR_TCE:
 
-Ok, as long as it's guaranteed that we're overlapping invalid dev-ids,
-as specified by IOMMUFD, then the mapping of specific invalid dev-ids
-to error values here is interface specific and can be defined here.
+This should still be DEV_VFIO_GROUP_SET_SPAPR_TCE. Same below.
+
+>   		return kvm_vfio_file_set_spapr_tce(dev, arg);
+>   #endif
+>   	}
+> @@ -309,7 +309,7 @@ static int kvm_vfio_set_attr(struct kvm_device *dev,
+>   			     struct kvm_device_attr *attr)
+>   {
+>   	switch (attr->group) {
+> -	case KVM_DEV_VFIO_GROUP:
+> +	case KVM_DEV_VFIO_FILE:
+>   		return kvm_vfio_set_file(dev, attr->attr,
+>   					 u64_to_user_ptr(attr->addr));
+>   	}
+> @@ -321,12 +321,12 @@ static int kvm_vfio_has_attr(struct kvm_device *dev,
+>   			     struct kvm_device_attr *attr)
+>   {
+>   	switch (attr->group) {
+> -	case KVM_DEV_VFIO_GROUP:
+> +	case KVM_DEV_VFIO_FILE:
+>   		switch (attr->attr) {
+> -		case KVM_DEV_VFIO_GROUP_ADD:
+> -		case KVM_DEV_VFIO_GROUP_DEL:
+> +		case KVM_DEV_VFIO_FILE_ADD:
+> +		case KVM_DEV_VFIO_FILE_DEL:
+>   #ifdef CONFIG_SPAPR_TCE_IOMMU
+> -		case KVM_DEV_VFIO_GROUP_SET_SPAPR_TCE:
+> +		case KVM_DEV_VFIO_FILE_SET_SPAPR_TCE:
+
+Probably an error due to a global rename change.
+
 Thanks,
 
-Alex
+C.
+
+>   #endif
+>   			return 0;
+>   		}
 
