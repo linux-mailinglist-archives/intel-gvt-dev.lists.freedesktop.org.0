@@ -1,67 +1,49 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4AE2770134C
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 02:37:03 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 607E77016E2
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 15:21:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1A1F510E717;
-	Sat, 13 May 2023 00:37:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CB39610E0BC;
+	Sat, 13 May 2023 13:21:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb4a.google.com (mail-yb1-xb4a.google.com
- [IPv6:2607:f8b0:4864:20::b4a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7AF0E10E712
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 13 May 2023 00:36:59 +0000 (UTC)
-Received: by mail-yb1-xb4a.google.com with SMTP id
- 3f1490d57ef6-b9a7553f95dso20731182276.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 12 May 2023 17:36:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1683938218; x=1686530218;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:reply-to:from:to:cc:subject:date:message-id:reply-to;
- bh=kZXl2d46AVzuxVL4wEArY8+PLpXkOpan9Ss3n2LOe+w=;
- b=PJ5ujw7k63/285aFZkaQIW9C8AITUzrBCxCkRLS/LiTK9rN7s/xhYfAhELQh3Xc0Dp
- qwHgb9Q+rR7cr9mg0FC2zMKRANFPFRynMfwOlg6sMHOcrz01TJa1ozCj4rJ22fB5EanQ
- plr70rxThmIu9VPuBvntxszlIAqp7P9+Cb0RXR9VYF1Tfha3i51cp7E02H+pfNU7gjwH
- Qsu0+cJSYB4yfMq46ZR7bCp/XTq4ITg86KKOK42YezbsuXPb5UA04cUNk5Wy9d7M4J4Z
- I6JBX6bi0Ec5M9URC0LcHCdWva32fRIe1s1LV8JbP2g40yLwGpBkoH9gr5riwEj5E2wV
- iXRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683938218; x=1686530218;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:reply-to:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kZXl2d46AVzuxVL4wEArY8+PLpXkOpan9Ss3n2LOe+w=;
- b=e3h2XQBnKth6RN/rlacP7T4cZtlXPtLBaN23HY6O6sMpZB47XOO6EPfnM0GxRMmT41
- +64heWqAVyTs9A5TfSQh+unB/scgntIbuu4gnWkIJp2zlUewSpBaC6cgjvhZWpHI83yH
- f/rfM9MVe6WpuoqItWej82ovrBK43CFaLILod6NxMp4uziG3DUES5GHKKUBQeV7fzGHs
- Q3206a113mg4qGY/GPj51ssSwHP4kWn5XUx+Ck6XKx8OlCd+cH6kqvaxYG8vVWCMqmOo
- 6KRPh6yNFk6sTxXcHzDipG/Ei7Gzi5uXAtzqL72DUfav2E+yJYY7dxa9X1rexRL1Ekbs
- 21hA==
-X-Gm-Message-State: AC+VfDw0vWCuoZCtM6QtNjx+ugFADQPgNg231Sf1eZoRiXif5RWhq/Ml
- a5XWZV5EQD+pMQ0DTwU/Ct/R7DM9kxU=
-X-Google-Smtp-Source: ACHHUZ5UUSJXsA68sfe6L609Rbep1n1mm8SDVeM7Zb2GXmQQSlQpMUrMf5Upl9tIWgk9JCqeiRH4Jn9I8yE=
-X-Received: from zagreus.c.googlers.com
- ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a25:1283:0:b0:b8f:6b3b:8a0a with SMTP id
- 125-20020a251283000000b00b8f6b3b8a0amr16018115ybs.6.1683938218722; Fri, 12
- May 2023 17:36:58 -0700 (PDT)
-Date: Fri, 12 May 2023 17:36:00 -0700
-In-Reply-To: <20230513003600.818142-1-seanjc@google.com>
-Mime-Version: 1.0
-References: <20230513003600.818142-1-seanjc@google.com>
-X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
-Message-ID: <20230513003600.818142-29-seanjc@google.com>
-Subject: [PATCH v3 28/28] drm/i915/gvt: Drop final dependencies on KVM
- internal details
-From: Sean Christopherson <seanjc@google.com>
-To: Sean Christopherson <seanjc@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: text/plain; charset="UTF-8"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 07C8910E0B6;
+ Sat, 13 May 2023 13:21:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1683984100; x=1715520100;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=PqVszXHCfyzxixQbnnKl9PA7bYJV5I+dg9B0dKF8BBc=;
+ b=l+ZaWLCD+Z85CSiBCbADM04/c9vIr3Vq9mr0O0s14vsruy3OkzQDVRfg
+ nTKYqKyMpnQqabisQDiZ3TWj04yjzvBbTuEqCQfQpFM7W6L8UQZRg9Kn7
+ oRfr6cDvNc9nuNkKTXCUGymGObpU5mPO7SMyv1pILajeLkqeQcAevWk72
+ zbmaHG8MHnc+FkddB09kBCdPdsMKqRNbUo7F5onjiZraotSTFraruzpZN
+ b0sVwc/sit0KK5jGaWSW/uZuIFvejOHMKZ1h1DeEUR0w+W7TIgraz/+tO
+ TDTKXsK8SsQfhaXGpn33YVamRElaiyFTV1nqKMoHckZYrZD4nkrXcvVlD Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="416598944"
+X-IronPort-AV: E=Sophos;i="5.99,272,1677571200"; d="scan'208";a="416598944"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 May 2023 06:21:38 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="790126420"
+X-IronPort-AV: E=Sophos;i="5.99,272,1677571200"; d="scan'208";a="790126420"
+Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
+ by FMSMGA003.fm.intel.com with ESMTP; 13 May 2023 06:21:37 -0700
+From: Yi Liu <yi.l.liu@intel.com>
+To: alex.williamson@redhat.com,
+	jgg@nvidia.com,
+	kevin.tian@intel.com
+Subject: [PATCH v5 00/10] Enhance vfio PCI hot reset for vfio cdev device
+Date: Sat, 13 May 2023 06:21:26 -0700
+Message-Id: <20230513132136.15021-1-yi.l.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,58 +56,107 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Sean Christopherson <seanjc@google.com>
-Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Ben Gardon <bgardon@google.com>, intel-gvt-dev@lists.freedesktop.org
+Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
+ zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
+ chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, yi.l.liu@intel.com,
+ kvm@vger.kernel.org, lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org,
+ nicolinc@nvidia.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
+ eric.auger@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ yi.y.sun@linux.intel.com, clegoate@redhat.com, cohuck@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
+ robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Open code gpa_to_gfn() in kvmgt_page_track_write() and drop KVMGT's
-dependency on kvm_host.h, i.e. include only kvm_page_track.h.  KVMGT
-assumes "gfn == gpa >> PAGE_SHIFT" all over the place, including a few
-lines below in the same function with the same gpa, i.e. there's no
-reason to use KVM's helper for this one case.
+VFIO_DEVICE_PCI_HOT_RESET requires user to pass an array of group fds
+to prove that it owns all devices affected by resetting the calling
+device. While for cdev devices, user can use an iommufd-based ownership
+checking model and invoke VFIO_DEVICE_PCI_HOT_RESET with a zero-length
+fd array.
 
-No functional change intended.
+This series first creates iommufd_access for noiommu devices to fill the
+gap for adding iommufd-based ownership checking model, then extends
+VFIO_DEVICE_GET_PCI_HOT_RESET_INFO to check ownership and return the
+check result and the devid of affected devices to user. In the end, extends
+the VFIO_DEVICE_PCI_HOT_RESET to accept zero-length fd array for hot-reset
+with cdev devices.
 
-Reviewed-by: Yan Zhao <yan.y.zhao@intel.com>
-Signed-off-by: Sean Christopherson <seanjc@google.com>
----
- drivers/gpu/drm/i915/gvt/gvt.h   | 3 ++-
- drivers/gpu/drm/i915/gvt/kvmgt.c | 2 +-
- 2 files changed, 3 insertions(+), 2 deletions(-)
+The new hot reset method and updated _INFO ioctl are tested with the
+below qemu:
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 2d65800d8e93..53a0a42a50db 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -34,10 +34,11 @@
- #define _GVT_H_
- 
- #include <uapi/linux/pci_regs.h>
--#include <linux/kvm_host.h>
- #include <linux/vfio.h>
- #include <linux/mdev.h>
- 
-+#include <asm/kvm_page_track.h>
-+
- #include "i915_drv.h"
- #include "intel_gvt.h"
- 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index 597ffc9d12fd..191b4484cc7e 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -1584,7 +1584,7 @@ static void kvmgt_page_track_write(gpa_t gpa, const u8 *val, int len,
- 
- 	mutex_lock(&info->vgpu_lock);
- 
--	if (kvmgt_gfn_is_write_protected(info, gpa_to_gfn(gpa)))
-+	if (kvmgt_gfn_is_write_protected(info, gpa >> PAGE_SHIFT))
- 		intel_vgpu_page_track_handler(info, gpa,
- 						     (void *)val, len);
- 
+https://github.com/yiliu1765/qemu/tree/iommufd_rfcv4.mig.reset.v4_var3
+(requires to test with the cdev kernel)
+
+Change log:
+
+v5:
+ - Drop patch 01 of v4 (Alex)
+ - Create noiommu_access for noiommu devices (Jason)
+ - Reserve all negative iommufd IDs, hence VFIO can encode negative
+   values (Jason)
+ - Make vfio_iommufd_physical_devid() return -EINVAL if it's not called
+   with a physical device or a noiommu device.
+ - Add vfio_find_device_in_devset() in vfio_main.c (Alex)
+ - Add iommufd_ctx_has_group() to replace vfio_devset_iommufd_has_group().
+   Reason: vfio_devset_iommufd_has_group() only loops the devices within
+   the given devset to check the iommufd an iommu_group, but an iommu_group
+   can span into multiple devsets. So if failed to find the group in a
+   devset doesn't mean the group is not owned by the iommufd. So here either
+   needs to search all the devsets or add an iommufd API to check it. It
+   appears an iommufd API makes more sense.
+ - Adopt suggestions from Alex on patch 08 and 09 of v4, refine the hot-reset
+   uapi description and minor tweaks
+ - Use bitfields for bool members (Alex)
+
+v4: https://lore.kernel.org/kvm/20230426145419.450922-1-yi.l.liu@intel.com/
+ - Rename the patch series subject
+ - Patch 01 is moved from the cdev series
+ - Patch 02, 06 are new per review comments in v3
+ - Patch 03/04/05/07/08/09 are from v3 with updates
+
+v3: https://lore.kernel.org/kvm/20230401144429.88673-1-yi.l.liu@intel.com/
+ - Remove the new _INFO ioctl of v2, extend the existing _INFO ioctl to
+   report devid (Alex)
+ - Add r-b from Jason
+ - Add t-b from Terrence Xu and Yanting Jiang (mainly regression test)
+
+v2: https://lore.kernel.org/kvm/20230327093458.44939-1-yi.l.liu@intel.com/
+ - Split the patch 03 of v1 to be 03, 04 and 05 of v2 (Jaon)
+ - Add r-b from Kevin and Jason
+ - Add patch 10 to introduce a new _INFO ioctl for the usage of device
+   fd passing usage in cdev path (Jason, Alex)
+
+v1: https://lore.kernel.org/kvm/20230316124156.12064-1-yi.l.liu@intel.com/
+
+Regards,
+	Yi Liu
+
+Yi Liu (10):
+  vfio-iommufd: Create iommufd_access for noiommu devices
+  vfio/pci: Update comment around group_fd get in
+    vfio_pci_ioctl_pci_hot_reset()
+  vfio/pci: Move the existing hot reset logic to be a helper
+  vfio: Mark cdev usage in vfio_device
+  iommufd: Reserve all negative IDs in the iommufd xarray
+  vfio-iommufd: Add helper to retrieve iommufd_ctx and devid for
+    vfio_device
+  vfio: Add helper to search vfio_device in a dev_set
+  iommufd: Add iommufd_ctx_has_group()
+  vfio/pci: Extend VFIO_DEVICE_GET_PCI_HOT_RESET_INFO for vfio device
+    cdev
+  vfio/pci: Allow passing zero-length fd array in
+    VFIO_DEVICE_PCI_HOT_RESET
+
+ drivers/iommu/iommufd/device.c   |  53 +++++++++
+ drivers/iommu/iommufd/main.c     |   2 +-
+ drivers/vfio/iommufd.c           |  63 ++++++++++-
+ drivers/vfio/pci/vfio_pci_core.c | 184 ++++++++++++++++++++++++-------
+ drivers/vfio/vfio_main.c         |  15 +++
+ include/linux/iommufd.h          |  14 +++
+ include/linux/vfio.h             |  23 ++++
+ include/uapi/linux/vfio.h        |  60 +++++++++-
+ 8 files changed, 368 insertions(+), 46 deletions(-)
+
 -- 
-2.40.1.606.ga4b1b128d6-goog
+2.34.1
 
