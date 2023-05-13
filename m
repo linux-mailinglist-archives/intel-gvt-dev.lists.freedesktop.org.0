@@ -1,62 +1,62 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5485F701320
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 02:36:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id F17B3701325
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 02:36:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1B76710E704;
-	Sat, 13 May 2023 00:36:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5C83110E6FE;
+	Sat, 13 May 2023 00:36:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb4a.google.com (mail-yb1-xb4a.google.com
- [IPv6:2607:f8b0:4864:20::b4a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AFB4310E6FD
+Received: from mail-pf1-x44a.google.com (mail-pf1-x44a.google.com
+ [IPv6:2607:f8b0:4864:20::44a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C70D410E703
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 13 May 2023 00:36:27 +0000 (UTC)
-Received: by mail-yb1-xb4a.google.com with SMTP id
- 3f1490d57ef6-b9a25f6aa0eso19367816276.1
+ Sat, 13 May 2023 00:36:28 +0000 (UTC)
+Received: by mail-pf1-x44a.google.com with SMTP id
+ d2e1a72fcca58-6439bc1e3aaso6263840b3a.2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 12 May 2023 17:36:27 -0700 (PDT)
+ Fri, 12 May 2023 17:36:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1683938187; x=1686530187;
+ d=google.com; s=20221208; t=1683938188; x=1686530188;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:from:to:cc:subject:date:message-id:reply-to;
- bh=FkA1kDYxtUVHRHibS4MjAh7jt6yYy8zgAEbTcCm3Aro=;
- b=QcrHglgjQKdCLUAUPMt9T3ZETFuoebB3X4ZrPMqqN1eLxNZeHHFYM5Li0G7IRgqzrT
- fUVNXQwICEpsoThiTF/27ls8NtDVXRlUSaPuMKvwmyD/7uceYhmBrCPiy7GX0eueEu59
- sh9w4SiwmEFDhqqSLuUpF5qaASCXXyd5jyTm4pEA0+CY3bY1yazJ05Y5xvWzMU1c15df
- VoedXBsbFUxFrWiOjMFEcmY03nk0s1gkww2AJXLxZ81nvGUkTvoFTXrUmacMm6kuMB8i
- fh7hFM+tD29QS8LZlww8KRhvNvJE3Ob9njWh3aSLQLuqJGYvHbr4R0FjA8ENS9UaHnm/
- M1DA==
+ bh=caCqfAxo3tmXcjzSDBInzE0fjHL4Utao36SGXPLAgDo=;
+ b=1SA3m92adALDdF4M2tXh8CcJTLmqMlbEPkHzYlWk50YCEITk5P2uF6rHKRQgOBiv32
+ ZT+h+YLliALljJTtaZAvr2hT8E0y373siHAadOsRN9M6ehdkksWXHqGXRpvMrSH8gOZs
+ em/7SfUtC0MW3DkkSdI9+CDcNXE5iE4G1yV6Xd4UNMDBMbhyEEJYSO3CoojdzTzX8uQG
+ cWH1K+Mgx/lImOT2SQkoHr179+Z5+05bY+K0rCQkliXJaPkVMUF73jVxg/xpPmhM8BEd
+ NJ0LlVvKYO0hF0pT15fN9D39cnRhHsN++gywGdN3SvOv4TnOgFHMifRG5XpMekm1RY/+
+ RGjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683938187; x=1686530187;
+ d=1e100.net; s=20221208; t=1683938188; x=1686530188;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=FkA1kDYxtUVHRHibS4MjAh7jt6yYy8zgAEbTcCm3Aro=;
- b=i1ylvNcivhcFOLFbwUvXdm8raOqZGyoDg2pKpihtVrzk31qi4zp+QCFPwVvKW2T6bP
- 6MULxwSyyNQPwh4qYdspwVIOQ0kS7XtQ+hzyKoJR5RGsTuOjKEqc2JxjnekJh/q8ddXB
- gOMAYo70DmX0aBodiXYjRTUN/dQRx9CUfxIVvKYeQXUEGd0yqq3hk8CbeiJDcNI7V9nP
- stfPXjB+vAvBm6sSEmG9xjJ1q+vFFQD3kae2oLEdPkLOAzRMQdGO+5jkZrt85Aaxl8l7
- bcQSuK9ja8ShUtf9I841uJDEMc/whsAGsp+pt4juQF72OTHB1yCmpW0DCLL+6IciQC6a
- jROg==
-X-Gm-Message-State: AC+VfDxQAhYoeSWADx/LN9BEcxPg4GReBX/MqXYLUBAuMSO00zholXKs
- hs/LQqRaobTDpqtkaNJybH4FZsfSJoQ=
-X-Google-Smtp-Source: ACHHUZ7+gIUnmBGvUuumWyI5g0GRGJ88QYrLdJ3wdv8MgxZd8U0nKSB4DYEio0yahHNKQwNut26HYiPeL6I=
+ bh=caCqfAxo3tmXcjzSDBInzE0fjHL4Utao36SGXPLAgDo=;
+ b=A+6/q7CXehr4E7O8pQNhQEeGy9NEeK8ZIMpfvi0ARLe4doOqrCWsFkR/KDqOhPO9W6
+ ijDFNiUCuntk+xeXuO1iECugpRJE/VEBa/njYmk/NFL/xbH252MHgI/hEpF8aKBgs5yx
+ 4UND+WKb97Ua4m4myulBYdo6cO1y8gH2j47t9icRqGCQdTMq2jiTdTMQS3WZGBla+66l
+ Svy6EgCY1reQ72CWVnNrG20zdp67q97CpK9c07jPMoz8TF66dLbAFWYUSlcEHAR5FTEK
+ LYDCpBhN7S6Et1V2Lh177qSlKE3dR2Q3s3pQfYRwqPLW79gM6PaMROVlz9798yA24ooL
+ 9hCQ==
+X-Gm-Message-State: AC+VfDy8KltKLg/M9PAOvw0tdM4g0tRqnIeOXm49LzZOLinOlCqyJBl0
+ 9+f2PYR9mrmGp57eoxrln1mbo8QLVgY=
+X-Google-Smtp-Source: ACHHUZ5ZIoceJVCJgJPVozwhsPt6F90NmTGVT77kQymdEYSNjXuOySK3njg3DHtwar2gg6RBit/1FTDXB0E=
 X-Received: from zagreus.c.googlers.com
  ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a25:9d84:0:b0:b9d:c27c:3442 with SMTP id
- v4-20020a259d84000000b00b9dc27c3442mr11524411ybp.9.1683938186917; Fri, 12 May
- 2023 17:36:26 -0700 (PDT)
-Date: Fri, 12 May 2023 17:35:43 -0700
+ (user=seanjc job=sendgmr) by 2002:a05:6a00:785:b0:643:a3a6:115f with SMTP id
+ g5-20020a056a00078500b00643a3a6115fmr7156203pfu.3.1683938188573; Fri, 12 May
+ 2023 17:36:28 -0700 (PDT)
+Date: Fri, 12 May 2023 17:35:44 -0700
 In-Reply-To: <20230513003600.818142-1-seanjc@google.com>
 Mime-Version: 1.0
 References: <20230513003600.818142-1-seanjc@google.com>
 X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
-Message-ID: <20230513003600.818142-12-seanjc@google.com>
-Subject: [PATCH v3 11/28] KVM: x86/mmu: Move kvm_arch_flush_shadow_{all,
- memslot}() to mmu.c
+Message-ID: <20230513003600.818142-13-seanjc@google.com>
+Subject: [PATCH v3 12/28] KVM: x86/mmu: Don't rely on page-track mechanism to
+ flush on memslot change
 From: Sean Christopherson <seanjc@google.com>
 To: Sean Christopherson <seanjc@google.com>,
  Paolo Bonzini <pbonzini@redhat.com>, 
@@ -81,89 +81,60 @@ Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Move x86's implementation of kvm_arch_flush_shadow_{all,memslot}() into
-mmu.c, and make kvm_mmu_zap_all() static as it was globally visible only
-for kvm_arch_flush_shadow_all().  This will allow refactoring
-kvm_arch_flush_shadow_memslot() to call kvm_mmu_zap_all() directly without
-having to expose kvm_mmu_zap_all_fast() outside of mmu.c.  Keeping
-everything in mmu.c will also likely simplify supporting TDX, which
-intends to do zap only relevant SPTEs on memslot updates.
+Call kvm_mmu_zap_all_fast() directly when flushing a memslot instead of
+bouncing through the page-track mechanism.  KVM (unfortunately) needs to
+zap and flush all page tables on memslot DELETE/MOVE irrespective of
+whether KVM is shadowing guest page tables.
+
+This will allow changing KVM to register a page-track notifier on the
+first shadow root allocation, and will also allow deleting the misguided
+kvm_page_track_flush_slot() hook itself once KVM-GT also moves to a
+different method for reacting to memslot changes.
 
 No functional change intended.
 
-Suggested-by: Yan Zhao <yan.y.zhao@intel.com>
+Cc: Yan Zhao <yan.y.zhao@intel.com>
+Link: https://lore.kernel.org/r/20221110014821.1548347-2-seanjc@google.com
 Signed-off-by: Sean Christopherson <seanjc@google.com>
 ---
- arch/x86/include/asm/kvm_host.h |  1 -
- arch/x86/kvm/mmu/mmu.c          | 13 ++++++++++++-
- arch/x86/kvm/x86.c              | 11 -----------
- 3 files changed, 12 insertions(+), 13 deletions(-)
+ arch/x86/kvm/mmu/mmu.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
-index fb9d1f2d6136..564a29153cee 100644
---- a/arch/x86/include/asm/kvm_host.h
-+++ b/arch/x86/include/asm/kvm_host.h
-@@ -1832,7 +1832,6 @@ void kvm_mmu_zap_collapsible_sptes(struct kvm *kvm,
- 				   const struct kvm_memory_slot *memslot);
- void kvm_mmu_slot_leaf_clear_dirty(struct kvm *kvm,
- 				   const struct kvm_memory_slot *memslot);
--void kvm_mmu_zap_all(struct kvm *kvm);
- void kvm_mmu_invalidate_mmio_sptes(struct kvm *kvm, u64 gen);
- void kvm_mmu_change_mmu_pages(struct kvm *kvm, unsigned long kvm_nr_mmu_pages);
- 
 diff --git a/arch/x86/kvm/mmu/mmu.c b/arch/x86/kvm/mmu/mmu.c
-index c8961f45e3b1..2e4476d38377 100644
+index 2e4476d38377..23a79723031b 100644
 --- a/arch/x86/kvm/mmu/mmu.c
 +++ b/arch/x86/kvm/mmu/mmu.c
-@@ -6717,7 +6717,7 @@ void kvm_mmu_slot_leaf_clear_dirty(struct kvm *kvm,
- 	 */
+@@ -6184,13 +6184,6 @@ static bool kvm_has_zapped_obsolete_pages(struct kvm *kvm)
+ 	return unlikely(!list_empty_careful(&kvm->arch.zapped_obsolete_pages));
  }
  
--void kvm_mmu_zap_all(struct kvm *kvm)
-+static void kvm_mmu_zap_all(struct kvm *kvm)
- {
- 	struct kvm_mmu_page *sp, *node;
- 	LIST_HEAD(invalid_list);
-@@ -6742,6 +6742,17 @@ void kvm_mmu_zap_all(struct kvm *kvm)
- 	write_unlock(&kvm->mmu_lock);
- }
- 
-+void kvm_arch_flush_shadow_all(struct kvm *kvm)
-+{
-+	kvm_mmu_zap_all(kvm);
-+}
-+
-+void kvm_arch_flush_shadow_memslot(struct kvm *kvm,
-+				   struct kvm_memory_slot *slot)
-+{
-+	kvm_page_track_flush_slot(kvm, slot);
-+}
-+
- void kvm_mmu_invalidate_mmio_sptes(struct kvm *kvm, u64 gen)
- {
- 	WARN_ON(gen & KVM_MEMSLOT_GEN_UPDATE_IN_PROGRESS);
-diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
-index 523c39a03c00..b2d9c5979df7 100644
---- a/arch/x86/kvm/x86.c
-+++ b/arch/x86/kvm/x86.c
-@@ -12758,17 +12758,6 @@ void kvm_arch_commit_memory_region(struct kvm *kvm,
- 		kvm_arch_free_memslot(kvm, old);
- }
- 
--void kvm_arch_flush_shadow_all(struct kvm *kvm)
+-static void kvm_mmu_invalidate_zap_pages_in_memslot(struct kvm *kvm,
+-			struct kvm_memory_slot *slot,
+-			struct kvm_page_track_notifier_node *node)
 -{
--	kvm_mmu_zap_all(kvm);
+-	kvm_mmu_zap_all_fast(kvm);
 -}
 -
--void kvm_arch_flush_shadow_memslot(struct kvm *kvm,
--				   struct kvm_memory_slot *slot)
--{
--	kvm_page_track_flush_slot(kvm, slot);
--}
--
- static inline bool kvm_guest_apic_has_interrupt(struct kvm_vcpu *vcpu)
+ int kvm_mmu_init_vm(struct kvm *kvm)
  {
- 	return (is_guest_mode(vcpu) &&
+ 	struct kvm_page_track_notifier_node *node = &kvm->arch.mmu_sp_tracker;
+@@ -6208,7 +6201,6 @@ int kvm_mmu_init_vm(struct kvm *kvm)
+ 	}
+ 
+ 	node->track_write = kvm_mmu_pte_write;
+-	node->track_flush_slot = kvm_mmu_invalidate_zap_pages_in_memslot;
+ 	kvm_page_track_register_notifier(kvm, node);
+ 
+ 	kvm->arch.split_page_header_cache.kmem_cache = mmu_page_header_cache;
+@@ -6750,6 +6742,8 @@ void kvm_arch_flush_shadow_all(struct kvm *kvm)
+ void kvm_arch_flush_shadow_memslot(struct kvm *kvm,
+ 				   struct kvm_memory_slot *slot)
+ {
++	kvm_mmu_zap_all_fast(kvm);
++
+ 	kvm_page_track_flush_slot(kvm, slot);
+ }
+ 
 -- 
 2.40.1.606.ga4b1b128d6-goog
 
