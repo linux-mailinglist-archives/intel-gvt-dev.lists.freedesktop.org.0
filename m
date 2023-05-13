@@ -2,61 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 530A7701342
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 02:36:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6D19701343
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 02:36:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1F7C110E707;
-	Sat, 13 May 2023 00:36:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 79FCE10E710;
+	Sat, 13 May 2023 00:36:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-yb1-xb4a.google.com (mail-yb1-xb4a.google.com
- [IPv6:2607:f8b0:4864:20::b4a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3594610E6FA
+Received: from mail-pj1-x104a.google.com (mail-pj1-x104a.google.com
+ [IPv6:2607:f8b0:4864:20::104a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4F55E10E70A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 13 May 2023 00:36:52 +0000 (UTC)
-Received: by mail-yb1-xb4a.google.com with SMTP id
- 3f1490d57ef6-ba69d93a6b5so6471769276.1
+ Sat, 13 May 2023 00:36:53 +0000 (UTC)
+Received: by mail-pj1-x104a.google.com with SMTP id
+ 98e67ed59e1d1-24deb9c5f8dso5553557a91.0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 12 May 2023 17:36:52 -0700 (PDT)
+ Fri, 12 May 2023 17:36:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1683938211; x=1686530211;
+ d=google.com; s=20221208; t=1683938213; x=1686530213;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:from:to:cc:subject:date:message-id:reply-to;
- bh=d+sFY9wdlYEr+BsMeb/f8vTRCaTs7vfifkJ4zvl7LGw=;
- b=64N8psPjCU8NCbfgAoPhVHhIo35afPxNCSfUEDPc6JEFhfmjZIqhvtqtCxju3ayooD
- rLtO6OgYd01HPHrZnVMraPg/wvIulWsNrZaYYd3Q2cuVPa4BEcmEV3mEsul3XrhRjsp+
- aJ3JMXVJz3CR+BKQBzSr5PUTPuq5LMv/qpzFT9AXutEQGIhFf59wMsyaAHBpLpysfc/Q
- 5h8AgBMeBJE20odwJFjCXSKGq2qIWtRbb+o7daVN32UhhZQwjWvMckTBuPmrfJMgaGYa
- tWHBeWXd1xseZCzWjFZKA19DhbXGNxq1i3PG7V0P1+RQ2Cbwc2JaOc8fDwY7PDd1c0r8
- ZJKg==
+ bh=txxFy4l/0CjWXE2Lls1C8TlXhZ8gDD/lHA0CcUxieGg=;
+ b=1haVJ2yfzvTDJ7OWiHD70BYBmN550CeOMY4hpPZ+nSFvEJEzGlp9zifp2JC9DTsBnT
+ RJZuYPoZBC56u7q5NVSap0DjOvLwxYApwLH9hRiHGYxDoZJvwxzHUiwRC9eia+w/uZP7
+ EBybQwdiAWLVgS8BlsYrTOIiunclWLH+LI0gc9Tnj4BM3xt3lZRaMifAigMxY42RgfDp
+ cwJG3qN9EWZwmkGrQazhnNhAbchLqLap871kMkvWtbxo/QXAGrSEZskw2tAXxrat7ud/
+ D5ZrbarX8RzkvaRosayYzhljq+hKPOqhGf/8xnjwY+T70UILI2/0G0yJJiJRMoQtMPm0
+ 3+WA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683938211; x=1686530211;
+ d=1e100.net; s=20221208; t=1683938213; x=1686530213;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=d+sFY9wdlYEr+BsMeb/f8vTRCaTs7vfifkJ4zvl7LGw=;
- b=Y8Oz6k4JAPav69KzsF7r/KPEWTCAb4RRkdeueItN8fErzn/Z25WpXguF51ZN7Kp87L
- w3xHsg//LT4MiPpe04zFK6bAecCO2QowXEmFrCknbc726ojEewKWausAkpahAvsSNPN3
- /643OH6Av3FJ/YcvlQNHUoSq89TI9myWJ4xUsCj8WU/8ePlw9rFEJ/2QNA7GgtMnZg8o
- ZgvpCOaGVJnqv8fRRsD4E7uQ/MaaH6d3cmnp2f7zXyVSgHldyMoDelZtcsSDeNBZOYss
- WHadNGZi4Y9qCh60APheq1awAO6xSgMdRsijWD0BM2/UOqFhkL1vSIFpR3rJZ8qt+4/z
- s7+Q==
-X-Gm-Message-State: AC+VfDw9Y64TxZ7xfjxTHAF7mKPliPxvFmTKCApEpw2brO39lR0G9pqG
- pQWhwf2hGHIfIlhNtpsyCZYK4L/8z+8=
-X-Google-Smtp-Source: ACHHUZ5zdcnj/hq68r0lrjsegbj6c4YZMheMUdNtJ3k1/upYeQmR6HdFpgZIKNg6Oz6JUMAbVtXPBMF+WH4=
+ bh=txxFy4l/0CjWXE2Lls1C8TlXhZ8gDD/lHA0CcUxieGg=;
+ b=S8aUIcd/2OiQtAxPNYUDKjiKhE4TW4FWatwEeJNezTMgoBQgMMi8OUyS2J6G8Y9icf
+ bybrEiAEv3dK1zR8vP8wR5/fk9r5eAuqLodCzrwCOF43LaBUuwaN4yNourn4yJkmJ9P0
+ +4KxCfDIDnAdOL5eW7no3c3ljKadyDYOufCCZTy3LbRkiEGXxLQAC9N1DmVlxTAh3F5U
+ TxI9aAANNweup1aFgsLHJnr/2JuPoqQrY8gYfy05VoC/bAZI1F4EXGGvJKTtV8AqVI6m
+ U8cXvD+gtBpsdw3b7UWdeRDPC6GYapdofUkW3IMe2zGwKHS8CP1OwiIWL7lz8JZCNjQC
+ uwVA==
+X-Gm-Message-State: AC+VfDycCuq1tRjFz1SezPvjeer8S9antC8zWvdbWax4P1k9ATy445GB
+ YtvrGetgCzRHSaGYjz+Y5wkPqfa6fuM=
+X-Google-Smtp-Source: ACHHUZ43CFxrthXwP0PrBV5od9hQAGg5BAA+rVUflMCCD1sy9tgjBk8pzYcx5eiJpCd5q4pFPenl/fUx+Qk=
 X-Received: from zagreus.c.googlers.com
  ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a25:1241:0:b0:ba6:3890:3e55 with SMTP id
- 62-20020a251241000000b00ba638903e55mr6939739ybs.2.1683938211420; Fri, 12 May
- 2023 17:36:51 -0700 (PDT)
-Date: Fri, 12 May 2023 17:35:56 -0700
+ (user=seanjc job=sendgmr) by 2002:a17:90b:148:b0:246:f99b:fd65 with SMTP id
+ em8-20020a17090b014800b00246f99bfd65mr8121515pjb.5.1683938212995; Fri, 12 May
+ 2023 17:36:52 -0700 (PDT)
+Date: Fri, 12 May 2023 17:35:57 -0700
 In-Reply-To: <20230513003600.818142-1-seanjc@google.com>
 Mime-Version: 1.0
 References: <20230513003600.818142-1-seanjc@google.com>
 X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
-Message-ID: <20230513003600.818142-25-seanjc@google.com>
-Subject: [PATCH v3 24/28] KVM: x86/mmu: Assert that correct locks are held for
- page write-tracking
+Message-ID: <20230513003600.818142-26-seanjc@google.com>
+Subject: [PATCH v3 25/28] KVM: x86/mmu: Bug the VM if write-tracking is used
+ but not enabled
 From: Sean Christopherson <seanjc@google.com>
 To: Sean Christopherson <seanjc@google.com>,
  Paolo Bonzini <pbonzini@redhat.com>, 
@@ -81,73 +81,38 @@ Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-When adding/removing gfns to/from write-tracking, assert that mmu_lock
-is held for write, and that either slots_lock or kvm->srcu is held.
-mmu_lock must be held for write to protect gfn_write_track's refcount,
-and SRCU or slots_lock must be held to protect the memslot itself.
+Bug the VM if something attempts to write-track a gfn, but write-tracking
+isn't enabled.  The VM is doomed (and KVM has an egregious bug) if KVM or
+KVMGT wants to shadow guest page tables but can't because write-tracking
+isn't enabled.
 
-Tested-by: Yan Zhao <yan.y.zhao@intel.com>
 Signed-off-by: Sean Christopherson <seanjc@google.com>
 ---
- arch/x86/kvm/mmu/page_track.c | 17 +++++++++++------
- 1 file changed, 11 insertions(+), 6 deletions(-)
+ arch/x86/kvm/mmu/page_track.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/x86/kvm/mmu/page_track.c b/arch/x86/kvm/mmu/page_track.c
-index b835ba7f325c..29ae61f1e303 100644
+index 29ae61f1e303..eedb5889d73e 100644
 --- a/arch/x86/kvm/mmu/page_track.c
 +++ b/arch/x86/kvm/mmu/page_track.c
-@@ -12,6 +12,7 @@
-  */
- #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+@@ -90,7 +90,7 @@ void kvm_write_track_add_gfn(struct kvm *kvm, struct kvm_memory_slot *slot,
+ 	lockdep_assert_once(lockdep_is_held(&kvm->slots_lock) ||
+ 			    srcu_read_lock_held(&kvm->srcu));
  
-+#include <linux/lockdep.h>
- #include <linux/kvm_host.h>
- #include <linux/rculist.h>
- 
-@@ -77,9 +78,6 @@ static void update_gfn_write_track(struct kvm_memory_slot *slot, gfn_t gfn,
-  * add guest page to the tracking pool so that corresponding access on that
-  * page will be intercepted.
-  *
-- * It should be called under the protection both of mmu-lock and kvm->srcu
-- * or kvm->slots_lock.
-- *
-  * @kvm: the guest instance we are interested in.
-  * @slot: the @gfn belongs to.
-  * @gfn: the guest page.
-@@ -87,6 +85,11 @@ static void update_gfn_write_track(struct kvm_memory_slot *slot, gfn_t gfn,
- void kvm_write_track_add_gfn(struct kvm *kvm, struct kvm_memory_slot *slot,
- 			     gfn_t gfn)
- {
-+	lockdep_assert_held_write(&kvm->mmu_lock);
-+
-+	lockdep_assert_once(lockdep_is_held(&kvm->slots_lock) ||
-+			    srcu_read_lock_held(&kvm->srcu));
-+
- 	if (WARN_ON(!kvm_page_track_write_tracking_enabled(kvm)))
+-	if (WARN_ON(!kvm_page_track_write_tracking_enabled(kvm)))
++	if (KVM_BUG_ON(!kvm_page_track_write_tracking_enabled(kvm), kvm))
  		return;
  
-@@ -107,9 +110,6 @@ EXPORT_SYMBOL_GPL(kvm_write_track_add_gfn);
-  * remove the guest page from the tracking pool which stops the interception
-  * of corresponding access on that page.
-  *
-- * It should be called under the protection both of mmu-lock and kvm->srcu
-- * or kvm->slots_lock.
-- *
-  * @kvm: the guest instance we are interested in.
-  * @slot: the @gfn belongs to.
-  * @gfn: the guest page.
-@@ -117,6 +117,11 @@ EXPORT_SYMBOL_GPL(kvm_write_track_add_gfn);
- void kvm_write_track_remove_gfn(struct kvm *kvm,
- 				struct kvm_memory_slot *slot, gfn_t gfn)
- {
-+	lockdep_assert_held_write(&kvm->mmu_lock);
-+
-+	lockdep_assert_once(lockdep_is_held(&kvm->slots_lock) ||
-+			    srcu_read_lock_held(&kvm->srcu));
-+
- 	if (WARN_ON(!kvm_page_track_write_tracking_enabled(kvm)))
+ 	update_gfn_write_track(slot, gfn, 1);
+@@ -122,7 +122,7 @@ void kvm_write_track_remove_gfn(struct kvm *kvm,
+ 	lockdep_assert_once(lockdep_is_held(&kvm->slots_lock) ||
+ 			    srcu_read_lock_held(&kvm->srcu));
+ 
+-	if (WARN_ON(!kvm_page_track_write_tracking_enabled(kvm)))
++	if (KVM_BUG_ON(!kvm_page_track_write_tracking_enabled(kvm), kvm))
  		return;
  
+ 	update_gfn_write_track(slot, gfn, -1);
 -- 
 2.40.1.606.ga4b1b128d6-goog
 
