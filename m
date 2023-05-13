@@ -1,47 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEA0A70173A
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 15:28:56 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12D6070173E
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 15:28:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7E73C10E0E6;
-	Sat, 13 May 2023 13:28:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DE7B410E0F0;
+	Sat, 13 May 2023 13:28:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4E63C10E0E6;
- Sat, 13 May 2023 13:28:53 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8C69910E0E6;
+ Sat, 13 May 2023 13:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1683984533; x=1715520533;
+ t=1683984534; x=1715520534;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=BBJRq3qZNBqtx20tG6OP6phR2tRqYeQ+5aeFBb+MBro=;
- b=K6iF2EZKcZKWQbAP6wHCJEW7mNPCa9HMw//I1oQUptwTCQOGZF2PO0vA
- 9i/V+qiQ+ikmcrJAwTBR23o5LvIwMSNPkSuG4aCxrlNaztE0NNW1Eym+J
- NTydZzVUXjBuZPPH9jiatmcNmaGLs2hJlLyAlOp9b2nou6uKvARvhCz0+
- 9MqDIQwfx2INQO0Wj7F5ZjDKOQ0AKV83/29Ficpq1LNEeAbiwHLQ/X8or
- ZW0EVgMX61K+qLatP/4m/pFdJp5c1128+jHTCajs7Ii/ofuomE3gYUTJx
- Lu4bIVIyrZNkQq+hFKYFbtrTt7jOVq3al6cnr/V0jo+Q+S7rWVqMi3bez g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="354100800"
-X-IronPort-AV: E=Sophos;i="5.99,272,1677571200"; d="scan'208";a="354100800"
+ bh=TWV894DTZrYaN7h4aj49YReKCmOsfie/espg2ZPGgRk=;
+ b=SLSmh3tt+hbOtn+aRG+4Y1dSmC+tj7M/314uTYgZtc7XJei0pBmsY4qm
+ 4RR8/9JgcBJnuPrp+HmR05uh5mWTNCictbpwMfWpU3XGm2/8ZNweqAmvS
+ ZMBzPFRPOkoiSnxcw6nApOQ7PkStP263EMP2xA6slnVXvWkH5SW5A4LXQ
+ KQ5Oya1MOIFqOxxPPUAKJ1YgSD92r/6fb//YnWiIyEZE+ba0lmCz7g0PO
+ kWvh13o7x7JMLSaS6QRqafqa32WOdl0KxZnNxknDNekcfqqQKW9wpBCSM
+ bUI3PDEQwo14ZclsDAFjLBADKVK2UFs7vc3s9bQ3s2LZJUQO3JwF5yquO Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="354100811"
+X-IronPort-AV: E=Sophos;i="5.99,272,1677571200"; d="scan'208";a="354100811"
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 May 2023 06:28:53 -0700
+ 13 May 2023 06:28:54 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="703459511"
-X-IronPort-AV: E=Sophos;i="5.99,272,1677571200"; d="scan'208";a="703459511"
+X-IronPort-AV: E=McAfee;i="6600,9927,10708"; a="703459516"
+X-IronPort-AV: E=Sophos;i="5.99,272,1677571200"; d="scan'208";a="703459516"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga007.fm.intel.com with ESMTP; 13 May 2023 06:28:52 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 13 May 2023 06:28:53 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v11 16/23] vfio: Name noiommu vfio_device with "noiommu-"
- prefix
-Date: Sat, 13 May 2023 06:28:20 -0700
-Message-Id: <20230513132827.39066-17-yi.l.liu@intel.com>
+Subject: [PATCH v11 17/23] vfio: Move vfio_device_group_unregister() to be the
+ first operation in unregister
+Date: Sat, 13 May 2023 06:28:21 -0700
+Message-Id: <20230513132827.39066-18-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230513132827.39066-1-yi.l.liu@intel.com>
 References: <20230513132827.39066-1-yi.l.liu@intel.com>
@@ -71,39 +71,42 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-For noiommu device, vfio core names the cdev node with prefix "noiommu-".
+This can avoid endless vfio_device refcount increasement by userspace,
+which would keep blocking the vfio_unregister_group_dev().
 
-Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
 Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 Tested-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/vfio/vfio_main.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/vfio/vfio_main.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-index 599d551fc4b5..89720b73fa30 100644
+index 89720b73fa30..541bfd9ce004 100644
 --- a/drivers/vfio/vfio_main.c
 +++ b/drivers/vfio/vfio_main.c
-@@ -284,13 +284,14 @@ static int __vfio_register_dev(struct vfio_device *device,
- 	if (!device->dev_set)
- 		vfio_assign_device_set(device, device);
+@@ -333,6 +333,12 @@ void vfio_unregister_group_dev(struct vfio_device *device)
+ 	bool interrupted = false;
+ 	long rc;
  
--	ret = dev_set_name(&device->device, "vfio%d", device->index);
-+	ret = vfio_device_set_group(device, type);
- 	if (ret)
- 		return ret;
++	/*
++	 * Prevent new device opened by userspace via the
++	 * VFIO_GROUP_GET_DEVICE_FD in the group path.
++	 */
++	vfio_device_group_unregister(device);
++
+ 	vfio_device_put_registration(device);
+ 	rc = try_wait_for_completion(&device->comp);
+ 	while (rc <= 0) {
+@@ -356,8 +362,6 @@ void vfio_unregister_group_dev(struct vfio_device *device)
+ 		}
+ 	}
  
--	ret = vfio_device_set_group(device, type);
-+	ret = dev_set_name(&device->device, "%svfio%d",
-+			   vfio_device_is_noiommu(device) ? "noiommu-" : "", device->index);
- 	if (ret)
--		return ret;
-+		goto err_out;
+-	vfio_device_group_unregister(device);
+-
+ 	/* Balances device_add in register path */
+ 	device_del(&device->device);
  
- 	ret = device_add(&device->device);
- 	if (ret)
 -- 
 2.34.1
 
