@@ -2,61 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F17B3701325
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 02:36:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB37070132D
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 13 May 2023 02:36:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5C83110E6FE;
-	Sat, 13 May 2023 00:36:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 86E8310E70B;
+	Sat, 13 May 2023 00:36:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pf1-x44a.google.com (mail-pf1-x44a.google.com
- [IPv6:2607:f8b0:4864:20::44a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C70D410E703
+Received: from mail-pg1-x54a.google.com (mail-pg1-x54a.google.com
+ [IPv6:2607:f8b0:4864:20::54a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1CD1310E6FA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 13 May 2023 00:36:28 +0000 (UTC)
-Received: by mail-pf1-x44a.google.com with SMTP id
- d2e1a72fcca58-6439bc1e3aaso6263840b3a.2
+ Sat, 13 May 2023 00:36:31 +0000 (UTC)
+Received: by mail-pg1-x54a.google.com with SMTP id
+ 41be03b00d2f7-5308f5d8ac9so1121347a12.0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 12 May 2023 17:36:28 -0700 (PDT)
+ Fri, 12 May 2023 17:36:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1683938188; x=1686530188;
+ d=google.com; s=20221208; t=1683938190; x=1686530190;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:from:to:cc:subject:date:message-id:reply-to;
- bh=caCqfAxo3tmXcjzSDBInzE0fjHL4Utao36SGXPLAgDo=;
- b=1SA3m92adALDdF4M2tXh8CcJTLmqMlbEPkHzYlWk50YCEITk5P2uF6rHKRQgOBiv32
- ZT+h+YLliALljJTtaZAvr2hT8E0y373siHAadOsRN9M6ehdkksWXHqGXRpvMrSH8gOZs
- em/7SfUtC0MW3DkkSdI9+CDcNXE5iE4G1yV6Xd4UNMDBMbhyEEJYSO3CoojdzTzX8uQG
- cWH1K+Mgx/lImOT2SQkoHr179+Z5+05bY+K0rCQkliXJaPkVMUF73jVxg/xpPmhM8BEd
- NJ0LlVvKYO0hF0pT15fN9D39cnRhHsN++gywGdN3SvOv4TnOgFHMifRG5XpMekm1RY/+
- RGjw==
+ bh=gF9fJRYQ5xVKQXn2bwgoZvOjz4z2Ll5cyCfNNtyVwMg=;
+ b=vwUyFRiI2jhPK04ANhxuC5BN5ihFmUiF7vejqhwPruKPQM+8IZy3LDf2mwOs7zwQOf
+ zrb9faivtFvgSMANRj7q5ShS5h+PM5EHMiRquHcit7RXEsEDNpn9lC0D2z92i1KtSUmi
+ eEhWoI1W8jAjR3h2BCTdzSAqJY2ljHNhqfldh4EzDb9sffawMfM+AKFzOpgdORzOe4+G
+ 3pj7pDo0aRxAqM04gTLuiHECI0y8m9uV1XFG0yqbkVJpXNwUQrS/YapX+76bMSNVWRrB
+ Ymjt8MLl2Xad0ny3TLSsIa1UPQiPjr8acoBSpM3C68NS1C/KA4Kihx8RC2tMQEMX2CVx
+ 8Q8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1683938188; x=1686530188;
+ d=1e100.net; s=20221208; t=1683938190; x=1686530190;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=caCqfAxo3tmXcjzSDBInzE0fjHL4Utao36SGXPLAgDo=;
- b=A+6/q7CXehr4E7O8pQNhQEeGy9NEeK8ZIMpfvi0ARLe4doOqrCWsFkR/KDqOhPO9W6
- ijDFNiUCuntk+xeXuO1iECugpRJE/VEBa/njYmk/NFL/xbH252MHgI/hEpF8aKBgs5yx
- 4UND+WKb97Ua4m4myulBYdo6cO1y8gH2j47t9icRqGCQdTMq2jiTdTMQS3WZGBla+66l
- Svy6EgCY1reQ72CWVnNrG20zdp67q97CpK9c07jPMoz8TF66dLbAFWYUSlcEHAR5FTEK
- LYDCpBhN7S6Et1V2Lh177qSlKE3dR2Q3s3pQfYRwqPLW79gM6PaMROVlz9798yA24ooL
- 9hCQ==
-X-Gm-Message-State: AC+VfDy8KltKLg/M9PAOvw0tdM4g0tRqnIeOXm49LzZOLinOlCqyJBl0
- 9+f2PYR9mrmGp57eoxrln1mbo8QLVgY=
-X-Google-Smtp-Source: ACHHUZ5ZIoceJVCJgJPVozwhsPt6F90NmTGVT77kQymdEYSNjXuOySK3njg3DHtwar2gg6RBit/1FTDXB0E=
+ bh=gF9fJRYQ5xVKQXn2bwgoZvOjz4z2Ll5cyCfNNtyVwMg=;
+ b=Z4CZBy75Z+6nL8U8bQtOxBpLYmVxNZM62atoMKezvUiM+l6Dx/IiBy7QtwldCCy1Am
+ 83owAU+as9qaZ4NfmvkevT5eyKk5KSaXe52ZqAFImllnAvr75JSn6tHXd74B3aU//om7
+ cgbNQcPC99G/ggwuNOywxtenTVOAlHbzFiFMl3BEu1M5EzGQ1wsUfeohEoRa6HTZWZOL
+ 1bBJgr59in0Muw7IK/YxWW7W3jCaZ3P2lTauy2zI4HrZhVVX4AzSTNVbZhTJfjcFt7cK
+ DQFAcPcw/GopIBDr9XVw7jEODV3MFM1ut2Eik6okP751qA1e29GiYBuPVdrc9P2UhMEC
+ LTZQ==
+X-Gm-Message-State: AC+VfDywLM5rdI6uW6vfM/D960cxygN+TuA3EmAGDt9O4wmReoF/SaSI
+ NqqiysGFEUibi3xLNSiSCHtn+QWg/eA=
+X-Google-Smtp-Source: ACHHUZ5ZSBD4Okz419AUDZXohxIrXzgiVtOHan5K73FnIRk7oNduvyzRhEJyto4BrmCqxh7gT5oPUYSO/wA=
 X-Received: from zagreus.c.googlers.com
  ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a05:6a00:785:b0:643:a3a6:115f with SMTP id
- g5-20020a056a00078500b00643a3a6115fmr7156203pfu.3.1683938188573; Fri, 12 May
- 2023 17:36:28 -0700 (PDT)
-Date: Fri, 12 May 2023 17:35:44 -0700
+ (user=seanjc job=sendgmr) by 2002:a63:283:0:b0:503:7bcd:89e9 with SMTP id
+ 125-20020a630283000000b005037bcd89e9mr7255973pgc.1.1683938190507; Fri, 12 May
+ 2023 17:36:30 -0700 (PDT)
+Date: Fri, 12 May 2023 17:35:45 -0700
 In-Reply-To: <20230513003600.818142-1-seanjc@google.com>
 Mime-Version: 1.0
 References: <20230513003600.818142-1-seanjc@google.com>
 X-Mailer: git-send-email 2.40.1.606.ga4b1b128d6-goog
-Message-ID: <20230513003600.818142-13-seanjc@google.com>
-Subject: [PATCH v3 12/28] KVM: x86/mmu: Don't rely on page-track mechanism to
- flush on memslot change
+Message-ID: <20230513003600.818142-14-seanjc@google.com>
+Subject: [PATCH v3 13/28] KVM: x86/mmu: Don't bounce through page-track
+ mechanism for guest PTEs
 From: Sean Christopherson <seanjc@google.com>
 To: Sean Christopherson <seanjc@google.com>,
  Paolo Bonzini <pbonzini@redhat.com>, 
@@ -81,60 +81,109 @@ Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Call kvm_mmu_zap_all_fast() directly when flushing a memslot instead of
-bouncing through the page-track mechanism.  KVM (unfortunately) needs to
-zap and flush all page tables on memslot DELETE/MOVE irrespective of
-whether KVM is shadowing guest page tables.
+Don't use the generic page-track mechanism to handle writes to guest PTEs
+in KVM's MMU.  KVM's MMU needs access to information that should not be
+exposed to external page-track users, e.g. KVM needs (for some definitions
+of "need") the vCPU to query the current paging mode, whereas external
+users, i.e. KVMGT, have no ties to the current vCPU and so should never
+need the vCPU.
 
-This will allow changing KVM to register a page-track notifier on the
-first shadow root allocation, and will also allow deleting the misguided
-kvm_page_track_flush_slot() hook itself once KVM-GT also moves to a
-different method for reacting to memslot changes.
+Moving away from the page-track mechanism will allow dropping use of the
+page-track mechanism for KVM's own MMU, and will also allow simplifying
+and cleaning up the page-track APIs.
 
-No functional change intended.
-
-Cc: Yan Zhao <yan.y.zhao@intel.com>
-Link: https://lore.kernel.org/r/20221110014821.1548347-2-seanjc@google.com
+Reviewed-by: Yan Zhao <yan.y.zhao@intel.com>
 Signed-off-by: Sean Christopherson <seanjc@google.com>
 ---
- arch/x86/kvm/mmu/mmu.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ arch/x86/include/asm/kvm_host.h |  1 -
+ arch/x86/kvm/mmu.h              |  2 ++
+ arch/x86/kvm/mmu/mmu.c          | 13 ++-----------
+ arch/x86/kvm/mmu/page_track.c   |  2 ++
+ 4 files changed, 6 insertions(+), 12 deletions(-)
 
+diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
+index 564a29153cee..113598d3e886 100644
+--- a/arch/x86/include/asm/kvm_host.h
++++ b/arch/x86/include/asm/kvm_host.h
+@@ -1247,7 +1247,6 @@ struct kvm_arch {
+ 	 * create an NX huge page (without hanging the guest).
+ 	 */
+ 	struct list_head possible_nx_huge_pages;
+-	struct kvm_page_track_notifier_node mmu_sp_tracker;
+ 	struct kvm_page_track_notifier_head track_notifier_head;
+ 	/*
+ 	 * Protects marking pages unsync during page faults, as TDP MMU page
+diff --git a/arch/x86/kvm/mmu.h b/arch/x86/kvm/mmu.h
+index 92d5a1924fc1..253fb2093d5d 100644
+--- a/arch/x86/kvm/mmu.h
++++ b/arch/x86/kvm/mmu.h
+@@ -121,6 +121,8 @@ void kvm_mmu_unload(struct kvm_vcpu *vcpu);
+ void kvm_mmu_free_obsolete_roots(struct kvm_vcpu *vcpu);
+ void kvm_mmu_sync_roots(struct kvm_vcpu *vcpu);
+ void kvm_mmu_sync_prev_roots(struct kvm_vcpu *vcpu);
++void kvm_mmu_track_write(struct kvm_vcpu *vcpu, gpa_t gpa, const u8 *new,
++			 int bytes);
+ 
+ static inline int kvm_mmu_reload(struct kvm_vcpu *vcpu)
+ {
 diff --git a/arch/x86/kvm/mmu/mmu.c b/arch/x86/kvm/mmu/mmu.c
-index 2e4476d38377..23a79723031b 100644
+index 23a79723031b..af3e562d3106 100644
 --- a/arch/x86/kvm/mmu/mmu.c
 +++ b/arch/x86/kvm/mmu/mmu.c
-@@ -6184,13 +6184,6 @@ static bool kvm_has_zapped_obsolete_pages(struct kvm *kvm)
- 	return unlikely(!list_empty_careful(&kvm->arch.zapped_obsolete_pages));
+@@ -5677,9 +5677,8 @@ static u64 *get_written_sptes(struct kvm_mmu_page *sp, gpa_t gpa, int *nspte)
+ 	return spte;
  }
  
--static void kvm_mmu_invalidate_zap_pages_in_memslot(struct kvm *kvm,
--			struct kvm_memory_slot *slot,
--			struct kvm_page_track_notifier_node *node)
--{
--	kvm_mmu_zap_all_fast(kvm);
--}
--
+-static void kvm_mmu_pte_write(struct kvm_vcpu *vcpu, gpa_t gpa,
+-			      const u8 *new, int bytes,
+-			      struct kvm_page_track_notifier_node *node)
++void kvm_mmu_track_write(struct kvm_vcpu *vcpu, gpa_t gpa, const u8 *new,
++			 int bytes)
+ {
+ 	gfn_t gfn = gpa >> PAGE_SHIFT;
+ 	struct kvm_mmu_page *sp;
+@@ -6186,7 +6185,6 @@ static bool kvm_has_zapped_obsolete_pages(struct kvm *kvm)
+ 
  int kvm_mmu_init_vm(struct kvm *kvm)
  {
- 	struct kvm_page_track_notifier_node *node = &kvm->arch.mmu_sp_tracker;
-@@ -6208,7 +6201,6 @@ int kvm_mmu_init_vm(struct kvm *kvm)
+-	struct kvm_page_track_notifier_node *node = &kvm->arch.mmu_sp_tracker;
+ 	int r;
+ 
+ 	INIT_LIST_HEAD(&kvm->arch.active_mmu_pages);
+@@ -6200,9 +6198,6 @@ int kvm_mmu_init_vm(struct kvm *kvm)
+ 			return r;
  	}
  
- 	node->track_write = kvm_mmu_pte_write;
--	node->track_flush_slot = kvm_mmu_invalidate_zap_pages_in_memslot;
- 	kvm_page_track_register_notifier(kvm, node);
- 
+-	node->track_write = kvm_mmu_pte_write;
+-	kvm_page_track_register_notifier(kvm, node);
+-
  	kvm->arch.split_page_header_cache.kmem_cache = mmu_page_header_cache;
-@@ -6750,6 +6742,8 @@ void kvm_arch_flush_shadow_all(struct kvm *kvm)
- void kvm_arch_flush_shadow_memslot(struct kvm *kvm,
- 				   struct kvm_memory_slot *slot)
+ 	kvm->arch.split_page_header_cache.gfp_zero = __GFP_ZERO;
+ 
+@@ -6223,10 +6218,6 @@ static void mmu_free_vm_memory_caches(struct kvm *kvm)
+ 
+ void kvm_mmu_uninit_vm(struct kvm *kvm)
  {
-+	kvm_mmu_zap_all_fast(kvm);
+-	struct kvm_page_track_notifier_node *node = &kvm->arch.mmu_sp_tracker;
+-
+-	kvm_page_track_unregister_notifier(kvm, node);
+-
+ 	if (tdp_mmu_enabled)
+ 		kvm_mmu_uninit_tdp_mmu(kvm);
+ 
+diff --git a/arch/x86/kvm/mmu/page_track.c b/arch/x86/kvm/mmu/page_track.c
+index 0a2ac438d647..23088c90d2fd 100644
+--- a/arch/x86/kvm/mmu/page_track.c
++++ b/arch/x86/kvm/mmu/page_track.c
+@@ -274,6 +274,8 @@ void kvm_page_track_write(struct kvm_vcpu *vcpu, gpa_t gpa, const u8 *new,
+ 		if (n->track_write)
+ 			n->track_write(vcpu, gpa, new, bytes, n);
+ 	srcu_read_unlock(&head->track_srcu, idx);
 +
- 	kvm_page_track_flush_slot(kvm, slot);
++	kvm_mmu_track_write(vcpu, gpa, new, bytes);
  }
  
+ /*
 -- 
 2.40.1.606.ga4b1b128d6-goog
 
