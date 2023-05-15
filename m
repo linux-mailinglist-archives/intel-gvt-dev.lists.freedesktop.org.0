@@ -1,154 +1,65 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8512B702B79
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 May 2023 13:28:13 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF1B0703AE3
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 15 May 2023 19:57:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 531B510E056;
-	Mon, 15 May 2023 11:28:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C2AAA10E11E;
+	Mon, 15 May 2023 17:57:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0EC9910E056;
- Mon, 15 May 2023 11:28:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1684150091; x=1715686091;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=b90M98zy1/AVcR6VAW/1ROF39ExD4NX3etziLHIB4F4=;
- b=HvcUtlYfOhUpfuw58RsoljoKnW0OSMDp3ld6Ig++mH80lzd/0Bq1t90B
- EJwHBxeG97CCBJhIg7gCyzXAjaPjQs93AO3GSGtVChtv6l264+Y7Y+uCx
- tVoj96RcNXSJRHaakICdeVgJ+aFncFufINAIPAesFo7zL1q90216YRWnO
- H18KLLmCMxguso1qJD8Nep2aXckm3N5mh7XnVUku19gFo0GfXzXfZHzs7
- bCaZHbCjGPW1cP4hFJwjK4YARt2dGd1GGM9s9+6JJaTDIWLWnfyrLnTTj
- ph5qi2g3zIopDjqZdXC0LaBNTDAVOtrznEVbRWG4R88yYxXkq7sivzg3v w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10710"; a="348669840"
-X-IronPort-AV: E=Sophos;i="5.99,276,1677571200"; d="scan'208";a="348669840"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2023 04:28:09 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10710"; a="947374142"
-X-IronPort-AV: E=Sophos;i="5.99,276,1677571200"; d="scan'208";a="947374142"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmsmga006.fm.intel.com with ESMTP; 15 May 2023 04:28:09 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Mon, 15 May 2023 04:28:09 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Mon, 15 May 2023 04:28:09 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.102)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Mon, 15 May 2023 04:28:09 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Lf5UCxVm2OQjmbhIbQkkwoNXhY0kei83HNHIboCUO9gh1RNBVAWCKdB2RzAoh4BgtP9oFVE1vx2ORhFWFU1E8eN0mAVCOpmSl4kS1llr3DvNM+yDmZCjgpXikRjBhNcdVDSjnW206pfxUZ0vapNwj61snzDZQoX0XY54vRmIBRK/xbLY2I3fV9pvv1zflucQAWegS2MzxB3lJFQCwyBKjtf8bFZuMcYeAeB35vaKJ02mOaqy//SuJcRP+qJbjdcf3JlnOIRs8Dqp7AYZG9fb2hHx5ecnMsSHOUNTweST/bb2T1mwWY3Nqxdw5T3I1wppBRZBuJj873dcRfsweJpBUg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=b90M98zy1/AVcR6VAW/1ROF39ExD4NX3etziLHIB4F4=;
- b=kilpIc1+zvVBJOOL3jo8VtLbxEMcmUJtNUdVaoiUlKQmjxspZBZ/Hpf70c72TMem6GII+apOEgu6lEErxy5NFIG/axblK1S5zxdKF9wQlnl/ak1pRH1/ArqCl4dolwAoCJGY3SiP+YdMOGs6eYw7eDgBKCgE701zu83FVXeBtF0+9G0MxEBJrF9gbLf4eW8C5+NsMkXJjb+txcAMkXJJbtijXwKFaNbnh9kJuqBZ3AhvnVNinDHa4QDmkpqBvWfLWVj6B1QXV9VNarntMXj8NoErW/Mb7biFBTd+38m4NGOeWPXnX6lt/AeHx8Mqudrxw8EbnmqUPFOwwTG4XGZHOA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM4PR11MB5549.namprd11.prod.outlook.com (2603:10b6:5:388::7) by
- PH7PR11MB8454.namprd11.prod.outlook.com (2603:10b6:510:30c::5) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6387.30; Mon, 15 May 2023 11:28:07 +0000
-Received: from DM4PR11MB5549.namprd11.prod.outlook.com
- ([fe80::f381:7ce8:7d26:503d]) by DM4PR11MB5549.namprd11.prod.outlook.com
- ([fe80::f381:7ce8:7d26:503d%4]) with mapi id 15.20.6387.030; Mon, 15 May 2023
- 11:28:07 +0000
-From: "Wang, Zhi A" <zhi.a.wang@intel.com>
-To: "Christopherson,, Sean" <seanjc@google.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PATCH v3 06/28] drm/i915/gvt: Error out on an attempt to
- shadowing an unknown GTT entry type
-Thread-Topic: [PATCH v3 06/28] drm/i915/gvt: Error out on an attempt to
- shadowing an unknown GTT entry type
-Thread-Index: AQHZhTL1fcbPoSM+NEGi6+Tk5NN29K9bNj0A
-Date: Mon, 15 May 2023 11:28:06 +0000
-Message-ID: <8d976f25-4cbc-6114-c9b4-3e3efb5e2cac@intel.com>
+Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
+ [IPv6:2607:f8b0:4864:20::b49])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5E0C610E0FD
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 15 May 2023 17:57:10 +0000 (UTC)
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-b99ef860a40so23904454276.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 15 May 2023 10:57:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20221208; t=1684173429; x=1686765429;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=99srR1wR+oKvE5/WokGr4LZs8iI5brQIGfN7GCM4UrE=;
+ b=qgBmAUsdMhWoFgdfIMBysrOMi/gESv0r34Xoj0igegtNAqMmPuZYSN8teIqqNTO4qr
+ +o9xeOyk9osBGJxQbQuznSPE37lto98WL25ntsbJrltXSslcw1N9UwCjtAleA783eS5O
+ 9YwANM1uEr3ANtlR1gIiXFGuiQX6HZHez7Az1JmZfWcgZ8XXRvwsKlQVSp1qYogeiohP
+ HZiUVEoNqJwtMnWDAcgFy21hoDfY46Zz54Xrc7sGdVcVXFt7SRAKBWqGimi1IwSKlxe6
+ LTURlyPrfkfy2KvuKglvcB3GJiMGve4uIMdIImYsP6Uo1qtixcy8iwFrsPFnos8ejlvp
+ S2tA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684173429; x=1686765429;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=99srR1wR+oKvE5/WokGr4LZs8iI5brQIGfN7GCM4UrE=;
+ b=GU/+/WFy8E85z6xXK+ZVISRkvPX/9lKP9MhGjaJePtJ8UziOIHg15EUIMa1a1p7y3D
+ LXeLs3VqPU7eXpPVr9N0kLN+jocilTpoqaR+O8992LDKEK4eB34GGpdBwwWRX7Ns5/QC
+ PbdVWUkXen9v51JUoKKTBZGpM12zytd9RLarmVK85bvdVvLd1fQ/yqwz9nt/6V1utTQa
+ s4NhPcoDfswHbynZZXdEDRtsrv20F5e97cKCcf1/FY4Z6fgPMOMSvaiabAZDllNMmtH/
+ SDcRKm9PNiswWGAJOdeZ6eWj2zfYeFUJct3PCdJmWkWZSSD2b2pIlY54S6G/MXBE/DVs
+ /E1g==
+X-Gm-Message-State: AC+VfDyJZMANAGDwwMjWb0XFv43ZbPM7I1XWnAJ6DXuolj0/HEBx0S3W
+ J/Q4njfoEf+DJ1EnlUBM+f7C0ooX67g=
+X-Google-Smtp-Source: ACHHUZ4He0csQ4Oev4VXrHXbI7rX8wyUIkfOSTVuja6DxDI6qDgf1L+qcXE8dfIu5YKaWZQqJrs9xqp4fJ0=
+X-Received: from zagreus.c.googlers.com
+ ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
+ (user=seanjc job=sendgmr) by 2002:a25:5454:0:b0:ba2:1a28:c852 with SMTP id
+ i81-20020a255454000000b00ba21a28c852mr14179279ybb.7.1684173429090; Mon, 15
+ May 2023 10:57:09 -0700 (PDT)
+Date: Mon, 15 May 2023 10:57:07 -0700
+In-Reply-To: <66685365-86f9-9ddf-d63b-f87621b05b88@intel.com>
+Mime-Version: 1.0
 References: <20230513003600.818142-1-seanjc@google.com>
- <20230513003600.818142-7-seanjc@google.com>
-In-Reply-To: <20230513003600.818142-7-seanjc@google.com>
-Accept-Language: en-FI, en-US
-Content-Language: aa
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DM4PR11MB5549:EE_|PH7PR11MB8454:EE_
-x-ms-office365-filtering-correlation-id: 0da3a255-50d9-4398-bfdd-08db5537747f
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 6VJEUwlDCENjuPVivGzhLFsG0fUnuWhVmyIkQgNDpytcOBR16NAZuXJr/+0sXlB6txCw/EqExBO5c1ihfq009w+o/c2HeCXKyQ0rwN7V8MkFmJjHYBtadDXNAJbotBHAQ7O2IKXtp7PUzp1oPI7gSCgo26r++qdZJMN/gnuyECBlis/FdtkFKVrE7lfJmucXTK+aaZXvN6iarTVcE9wKps5rF8MlMCHRuBVh+7sMkzENFH2hsQhU6KFkQTodqOLdNOILX5nn9jkYPnZ1Q6eeM0m/YnfPC7bppArCHlGB50673D2UXgLhYODwuUvnOaj/N7ztzyo0gF6lkkgm3QDigj3BgSnHmQHRmU/vw9sz6UeQ9JUGxPRoJtmmY3lRAgk4cjYkzSM4Z1FLyWIUNwux3S5sCyhGnuufX4ega8jJ0odDLf65SxW6mq5q7mpj4zr2V+2uMb0D+idMqY/T7eTELSLfH/2IFjn21Ow8614GS0hgvPPWl96s2xT0GDSfMJpKkxEQJXwtWYh4HmJAcHBTL53D8Ap1cveQpG2MD8ygMebCwiNYcbGroy3Jcc9zbBtcOa7+2oBp1gKcgO60T3iRcXChI0vkg3XF0Zu2DICxXCjRXAdePwJf2P3ehnkuWvvIn1HzmBoKEKdxZKBgzIvlrsDpXSTI+c9kUPjYUyoDaV5e1eBe0drTzDdAABTwl/J2
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR11MB5549.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(136003)(39860400002)(396003)(366004)(376002)(451199021)(36756003)(91956017)(86362001)(54906003)(110136005)(316002)(66556008)(66446008)(64756008)(66946007)(66476007)(4326008)(478600001)(6486002)(76116006)(4744005)(5660300002)(8676002)(8936002)(2906002)(38070700005)(38100700002)(31696002)(82960400001)(122000001)(41300700001)(6512007)(2616005)(186003)(53546011)(26005)(6506007)(83380400001)(71200400001)(31686004)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NDYrTS9jT2dMSkk1S1Y2WlhzRTlVZ3h5SWdzY1BiNEx5aGRsejhWQ0t5NDQx?=
- =?utf-8?B?S2FKVHEvZG16NFJIbWo4QjhhNWxzRkdneDloYUFxcHdSTkZxdjJpUEFyNW05?=
- =?utf-8?B?ZU5KbFc3K0szMHVwUEI0UmhXcFp0dUZPdXFxWkJKd1MvZFo1b2VDY2lNa0lZ?=
- =?utf-8?B?amU0NGR6STVmT0NnVVNYN1psTXI4SXQ5WWlmVGt5Y3h1cEU1a0EzN2RXd3oz?=
- =?utf-8?B?NXBhRFV3NTFDQ1hsWUtHMldxem0yMDFMSWU4cDJJV2Y5OXFoZVhOZXp4MWh6?=
- =?utf-8?B?eFhYYlAzd3dILyttcDVLN0lPdGQ3REtFNmxhOVJsazh2UDk3d0ZaRnkrTzRr?=
- =?utf-8?B?aEdUTldrQ2xTNlJ1UjdidHVSU041RnFFSFM3MnQxMi9iRHlMMlFHbVpqa1dU?=
- =?utf-8?B?YXQvSUNTR2h0YmRYazNHdFlORk9SRTFrNjVML28zeCtMMFYza2lXdk9JQnVr?=
- =?utf-8?B?emdCdi8xaVVXSkg0MHZCMU83eElFdkNoa21XWXc3WmVlTXdMd1hUR2dVL0Rq?=
- =?utf-8?B?V2Z1TEFrb1czK3BWejNSL3Y4TFlWR3R6eUdvVzZ6MS91bThLNThCSWdORmRn?=
- =?utf-8?B?eWE3eE1LNGJzRENUSmxFN3k5WFNCVWdLaUFPOVVxSkFLU0Zkc3Nxcmpyb0xs?=
- =?utf-8?B?ZHhOWWJZUnlBUVRTak04UXp6QldJQlc2UDFjcUlzZjAzd2dMU2dvWUZVUENv?=
- =?utf-8?B?YXlXNUlWcVNLOEtYejBLSGQ1WVpGNWpsdi9SRlJTbS9Xc0U4UTI4SUdWRDV0?=
- =?utf-8?B?ZGFHdlpyUlhqSUttSkMzR0VLb0FESjkwMGpUZTlLaDBROXBLMnkrRjhVY1FZ?=
- =?utf-8?B?VWVUZmViS2F2QllPKzBRL2JpQXFmdzUyUU5lZk8rbklRWUUwd2VoNE4vcit6?=
- =?utf-8?B?WFRvR2dEV3poVExhU2c5WXFIMm1yY3I3c1NLcWN6RHkwbXFHTUhBc3ZiSWJ4?=
- =?utf-8?B?VkdZMjlTcFRtaFFkclE2NUkya05zemkrLzZPM3NuTzVTVi8rOWxUZk8xME1O?=
- =?utf-8?B?VWk0eGVJOHZvUFQvdnptcDFGSEhnamtxajdKYnVDTEwybmc4THVEcjZlTXVj?=
- =?utf-8?B?NWovVEdzL3NDUlR3WFMyWHJGdjZqbzgrNHBYaWN2RWxZRCtEcnViWGlTQUdC?=
- =?utf-8?B?K1pvVzBVL0NxQXpidy9sRHFTSS9YQytRdXJmWWg3bXNuT3p1d0FGWmlDSjlr?=
- =?utf-8?B?Rm1uV0FoVlFKYmJES09wamQzeEtDTVFIYy9nRkh5bnVaVEErU0xaOFBvSGZI?=
- =?utf-8?B?KzQ0V0lKdk91Y2hmYXhZVXRJZFU1dUlWSC9DaVJJV09iTFNiWnVhMCsyTjFx?=
- =?utf-8?B?UTRxdmNVR0M5ckkvdWYyWXNWTmR0RERxbnljQm5FMy93YlY2a25QdlJsWFdh?=
- =?utf-8?B?Tml2Nm5iMEVxajhHbW44YzBIWTVHQWhnRE9PK0FqT0FFYVFJeVR0SXRwNDJ0?=
- =?utf-8?B?Tlgvb29qY01FQnd0bmdjWTh5KzcwMUVWaThpZTV1NGpQWTVvTHptbVN0anRT?=
- =?utf-8?B?T1JpSzR6RjhqS0UyRVFQMDZaVkxnajdjeGIxZzhPejA4WitqRVhvNlliZzkv?=
- =?utf-8?B?Z3BJamZkM3l6K0IyUkd1ZE9Pc0E0ZDZKQ0huUGxmRFdBQW04eWJhdEsvTENn?=
- =?utf-8?B?RkZ1ZnpBdEVMdmJlQ0M2WTV4QjgwS2czWkRUNXpoSERkbzJ2SWVUdnVOeDd4?=
- =?utf-8?B?MDdxak5rd1RzSlNBNkZiL3M0KzZ4Qk5rOWNTcEo1Wm91dExTa3RVcnNoZExH?=
- =?utf-8?B?L0xteU5ZSDl6dU96S1U2Z0VrMVRmTE40VzRSeEkrVjcvY01vcnhNWmhzRlhM?=
- =?utf-8?B?QzlYKzlIaUljRnNqekhFazN3eUZtZXE4blRBUWxXMEdjYWFSRElUdnczcUJo?=
- =?utf-8?B?ZXVIQ2N2Y0xsNjFBQnZTQUFNMlNUZThOU0NSZmhYOXpHTjlzK3NQWjNTemtH?=
- =?utf-8?B?U1oweS8vbFZ0WGtmcmp3UmYwOVRTYzRlNUlGVkloQ2FPejUyMTM1ek9WdmdM?=
- =?utf-8?B?OFptaktPRHYyZzl0czlQTWljWVNGNGk0UHA2dk43YXBLZGVzanE0V1RKd295?=
- =?utf-8?B?b08yc2hJSDlVNHpiUk93aGxzdGs3Sm5HQ3lWdFVBbzFFSWV1SnkzeGd6VnJu?=
- =?utf-8?Q?z37iP20ZELqoGoXCsIi3xFL4k?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <FCFF46F3CDD1384185FF3100D992DCC4@namprd11.prod.outlook.com>
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5549.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0da3a255-50d9-4398-bfdd-08db5537747f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 May 2023 11:28:06.8707 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: puidPGAyQsDat5TpMm53vC59lHa/g/vX+PT934OAWY4ZGAEnNHNQ9BOYAufGb8stBho3EUx69DHrLpRCED/MYw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB8454
-X-OriginatorOrg: intel.com
+ <20230513003600.818142-6-seanjc@google.com>
+ <66685365-86f9-9ddf-d63b-f87621b05b88@intel.com>
+Message-ID: <ZGJyc7k1Z4gXQH2U@google.com>
+Subject: Re: [PATCH v3 05/28] drm/i915/gvt: Explicitly check that vGPU is
+ attached before shadowing
+From: Sean Christopherson <seanjc@google.com>
+To: Zhi A Wang <zhi.a.wang@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,32 +72,78 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+Cc: Yan Y Zhao <yan.y.zhao@intel.com>,
  "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Ben Gardon <bgardon@google.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Ben Gardon <bgardon@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-T24gNS8xMy8yMDIzIDg6MzUgQU0sIFNlYW4gQ2hyaXN0b3BoZXJzb24gd3JvdGU6DQoNClJldmll
-d2VkLWJ5OiBaaGkgV2FuZyA8emhpLmEud2FuZ0BpbnRlbC5jb20+DQoNCj4gQmFpbCBmcm9tIHBw
-Z3R0X3BvcHVsYXRlX3NoYWRvd19lbnRyeSgpIGlmIGFuIHVuZXhwZWN0ZWQgR1RUIGVudHJ5IHR5
-cGUNCj4gaXMgZW5jb3VudGVyZWQgaW5zdGVhZCBvZiBzdWJ0bHkgZmFsbGluZyB0aHJvdWdoIHRv
-IHRoZSBjb21tb24gImRpcmVjdA0KPiBzaGFkb3ciIHBhdGguICBFbGltaW5hdGluZyB0aGUgZGVm
-YXVsdC9lcnJvciBwYXRoJ3MgcmVsaWFuY2Ugb24gdGhlIGNvbW1vbg0KPiBoYW5kbGluZyB3aWxs
-IGFsbG93IGhvaXN0aW5nIGludGVsX2d2dF9kbWFfbWFwX2d1ZXN0X3BhZ2UoKSBpbnRvIHRoZSBj
-YXNlDQo+IHN0YXRlbWVudHMgc28gdGhhdCB0aGUgMk1pQiBjYXNlIGNhbiB0cnkgaW50ZWxfZ3Z0
-X2RtYV9tYXBfZ3Vlc3RfcGFnZSgpDQo+IGFuZCBmYWxsYmFjayB0byBzcGxpdHRpbmcgdGhlIGVu
-dHJ5IG9uIGZhaWx1cmUuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBTZWFuIENocmlzdG9waGVyc29u
-IDxzZWFuamNAZ29vZ2xlLmNvbT4NCj4gLS0tDQo+ICAgZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0
-L2d0dC5jIHwgMSArDQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspDQo+IA0KPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0dC5jIGIvZHJpdmVycy9ncHUv
-ZHJtL2k5MTUvZ3Z0L2d0dC5jDQo+IGluZGV4IDJhZWQzMWI0OTdjOS4uNjFlMzhhY2VlMmQ1IDEw
-MDY0NA0KPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9ndnQvZ3R0LmMNCj4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL2k5MTUvZ3Z0L2d0dC5jDQo+IEBAIC0xMzA2LDYgKzEzMDYsNyBAQCBzdGF0
-aWMgaW50IHBwZ3R0X3BvcHVsYXRlX3NoYWRvd19lbnRyeShzdHJ1Y3QgaW50ZWxfdmdwdSAqdmdw
-dSwNCj4gICAJCXJldHVybiAtRUlOVkFMOw0KPiAgIAlkZWZhdWx0Og0KPiAgIAkJR0VNX0JVR19P
-TigxKTsNCj4gKwkJcmV0dXJuIC1FSU5WQUw7DQo+ICAgCX0NCj4gICANCj4gICAJLyogZGlyZWN0
-IHNoYWRvdyAqLw0KDQo=
+On Mon, May 15, 2023, Zhi A Wang wrote:
+> On 5/13/2023 8:35 AM, Sean Christopherson wrote:
+> > Move the check that a vGPU is attacked from is_2MB_gtt_possible() to its
+> > sole caller, ppgtt_populate_shadow_entry().  All of the paths in
+> > ppgtt_populate_shadow_entry() eventually check for attachment by way of
+> > intel_gvt_dma_map_guest_page(), but explicitly checking can avoid
+> > unnecessary work and will make it more obvious that a future cleanup of
+> > is_2MB_gtt_possible() isn't introducing a bug.
+> > 
+> 
+> It might be better move this check to shadow_ppgtt_mm() which is used
+> in both shadow page table creation and pinning path so that the path
+> can bail out even earlier when creating a shadow page table but a vGPU
+> has not been attached to KVM yet.
+
+Ah, yes, that'll work.  I traced through all of the paths that lead to
+ppgtt_populate_shadow_entry(), and shadow_ppgtt_mm() is the only caller that isn't
+already gated by INTEL_VGPU_STATUS_ATTACHED or INTEL_VGPU_STATUS_ACTIVE (ACTIVE
+is set iff ATTACHED is set).
+
+I'll move the check up to shadow_ppgtt_mm() in the next version.
+
+Thanks!
+
+
+workload_thread() <= pick_next_workload() => INTEL_VGPU_STATUS_ACTIVE
+|
+-> dispatch_workload()
+   |
+   |-> prepare_workload()
+       |
+       -> intel_vgpu_sync_oos_pages()
+       |  |
+       |  |-> ppgtt_set_guest_page_sync()
+       |      |
+       |      |-> sync_oos_page()
+       |          |
+       |          |-> ppgtt_populate_shadow_entry()
+       |
+       |-> intel_vgpu_flush_post_shadow()
+           |
+1:         |-> ppgtt_handle_guest_write_page_table()
+               |
+               |-> ppgtt_handle_guest_entry_add()
+                   |
+2:                 | -> ppgtt_populate_spt_by_guest_entry()
+                   |    |
+                   |    |-> ppgtt_populate_spt()
+                   |        |
+                   |        |-> ppgtt_populate_shadow_entry()
+                   |            |
+                   |            |-> ppgtt_populate_spt_by_guest_entry() [see 2]
+                   |
+                   |-> ppgtt_populate_shadow_entry()
+
+
+kvmgt_page_track_write()  <= KVM callback => INTEL_VGPU_STATUS_ATTACHED
+|
+|-> intel_vgpu_page_track_handler()
+    |
+    |-> ppgtt_write_protection_handler()
+        |
+        |-> ppgtt_handle_guest_write_page_table_bytes()
+            |
+            |-> ppgtt_handle_guest_write_page_table() [see 1]
