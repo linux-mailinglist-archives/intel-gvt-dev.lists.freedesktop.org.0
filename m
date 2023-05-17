@@ -1,111 +1,79 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07909707103
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 May 2023 20:44:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 321E77071A7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 May 2023 21:12:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 959DD10E256;
-	Wed, 17 May 2023 18:44:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C5EA410E26B;
+	Wed, 17 May 2023 19:12:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com
- (mail-sn1nam02on2089.outbound.protection.outlook.com [40.107.96.89])
- by gabe.freedesktop.org (Postfix) with ESMTPS id F09D810E245;
- Wed, 17 May 2023 18:44:02 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Nrn9xdDCU+dKtUlQKsnjMQbCnAqDZjoWZDQI26mSjvFgoxzJcdI6KlCGOHrSOHi6DVkqBJcDO7s17oBVd3uHE8yi3Sj7w9wsGjoAiHHMopXpTHTUD7dGX8hD7R0xAxX/AbZvw7qBbH1vXONsp3pkYR83M0BCn1i3Z+g+72lpx6m7Xi3nK5CPVcB7YFtcv0/7dDYlzbNDlL+xHbjXk+TUFQGfmUt0LL8IH7EUgjEutc9fsfrpAtrS372zcYxNOxdBcgCPlB4iM1E1b1OdhM2PQsgNQoFzXwpLYyPtTbRURvIlFJJ9oeVn462vFoJRAQOIG4vMGOQ4ryWNyq0PbsJnrQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1p4EpK8MLmNgw52YLKwlAcDtcrydMXVoFrQTL5Kz45k=;
- b=gYsVhglR5tjZzXgWizF3UNK+Rfkl+aJGRpoVySRj9NM2DklFqYXBtCds1CF8yLu/bTz+gXpVCbPf407SF0G1LRcuidkItcR/GPjfUaOTVcnhr1Y1KetAaVCViM+ICBjbN7xMC4/pVXajeCfa2fkyxYuFJxUo8PofHsj5iLLZIcc6SoEyGbe5moo0BflHIfIy02oEiaBUERPTNx4Nm9IMmpqZ76vt/9PVR8IZjew/M8yVnpP7Kf3L0FUrQ5Jgv13IQdkmW7+RuB+hpXwtGfeQMFum5G2SJyTsJi0zGHRtnEEPaZJiazRNzfWrFLDGjWQZr8heHDVvUAb9IMms7uhcjg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1p4EpK8MLmNgw52YLKwlAcDtcrydMXVoFrQTL5Kz45k=;
- b=CJ5V4IyQU1po2B8jqMHf51AO681TDsEgXNuu+c/0IT4dmCKJW7mNksJ0NbWK1cFbGTHlyK4c0PXAL+X5bGoamQ9nngaIPePUUuS9TUWcauUdZQNQNZ43Yjhx5+oxg77+j6ocjXKRcdkbLub8wRzLTOBtbaK9fZgCL6AUlEiWvG/5xihb9lzFMmQkcAvH90U5zJVYBVc7+U1VP38WzzAVIdEL4we8u54XXT7MwvIgUzcqA4kQazYj5fReJZiK9cDILGQsn/E4PWOxVGIDQ/m3mTwN+mWsuRdeNrIVPrYTNXl3mtNhh54GVoNtVykik3V6Yav6gDxYz8cNDZmBgcOzIg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by DM4PR12MB5344.namprd12.prod.outlook.com (2603:10b6:5:39a::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.17; Wed, 17 May
- 2023 18:44:00 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6411.017; Wed, 17 May 2023
- 18:44:00 +0000
-Date: Wed, 17 May 2023 15:43:59 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH v5 06/10] vfio-iommufd: Add helper to retrieve
- iommufd_ctx and devid for vfio_device
-Message-ID: <ZGUgb/nn/3jn51C9@nvidia.com>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CD09110E26B
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 17 May 2023 19:12:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1684350770;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=kUYw29Zoa6zK25906srnQFhBp6MIgdBaKePMJ7buoyk=;
+ b=UlXYGZZAuKKiHtQlL22UV74OkpyV2oBOGR5pd5+fJfVX5Sa5ZoBlT0XDv54NBD8oX+K+ua
+ HCKIiuGmsVJSAHW+ycFZb40wJ2shGqhNUwX6/SLVhmqvmiCOrrb6LsCvDoRFu7V9nzmk81
+ zfVWCy6Vs9+b+KioHKbtxn7SDsoVaVk=
+Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
+ [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-453-pRkcZa6bO3e36B3QnDuM8w-1; Wed, 17 May 2023 15:12:46 -0400
+X-MC-Unique: pRkcZa6bO3e36B3QnDuM8w-1
+Received: by mail-io1-f70.google.com with SMTP id
+ ca18e2360f4ac-763997ab8cdso175990739f.2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 17 May 2023 12:12:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684350766; x=1686942766;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=kUYw29Zoa6zK25906srnQFhBp6MIgdBaKePMJ7buoyk=;
+ b=PDOeQ5hfHV7mLcj8Y5oo96Z+DNKkqX4+7dbl3qyhGm7IvKi2HOHOx0JfsC6hYrIEQw
+ 55inlloOjmLnAOTK9396c50vjy/Bw1bRTKXt9TKhd1I0XuKGMAEuWOh8fzkpBwqWNINb
+ YDWuw+k1t/UwZEIPFKXMP1WS3EMSAjWYFJ1hDWaEd2YHj+5MBAacWFOOLfHapVLTJVRY
+ onKUiWYgyhqHSyXk8dbo0AJ/1XLEK9oxSAQmFTDI2CJgPX/gPoFNze9q8FwPafCoPRJn
+ vi054V8HvMkqAAbWsmSPcjrF73031n2SJrUPwnogF6H3go42xCHMy2UjnMagBGktDGU+
+ VAkw==
+X-Gm-Message-State: AC+VfDyoYt7DeSN8A1iZcKk2hFx0lDnzdbAR1sgBgHSrzWKtc9L+rI4i
+ RN+1AofCLQrunJEm7ywfleqyMs2meHe0Q+ukOTl529S5qLW9szJkKhWbWjAYTwrulWjtVL9tRVo
+ xQx+/dV1enW+K/wBikuXb+MWId8uJXLhofw==
+X-Received: by 2002:a5d:8349:0:b0:769:c95b:29d2 with SMTP id
+ q9-20020a5d8349000000b00769c95b29d2mr5175337ior.15.1684350765818; 
+ Wed, 17 May 2023 12:12:45 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6uBqxqAG67zrv6YM/LC+1w6MWWX/cwdvMLlHlj+jf/jYQ8FiDSZBcs0tVU+pbwwdfg9LZu7A==
+X-Received: by 2002:a5d:8349:0:b0:769:c95b:29d2 with SMTP id
+ q9-20020a5d8349000000b00769c95b29d2mr5175304ior.15.1684350765494; 
+ Wed, 17 May 2023 12:12:45 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ r14-20020a02b10e000000b0040fc3543ff2sm8744956jah.84.2023.05.17.12.12.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 May 2023 12:12:44 -0700 (PDT)
+Date: Wed, 17 May 2023 13:12:43 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yi Liu <yi.l.liu@intel.com>
+Subject: Re: [PATCH v5 07/10] vfio: Add helper to search vfio_device in a
+ dev_set
+Message-ID: <20230517131243.7028bf9c.alex.williamson@redhat.com>
+In-Reply-To: <20230513132136.15021-8-yi.l.liu@intel.com>
 References: <20230513132136.15021-1-yi.l.liu@intel.com>
- <20230513132136.15021-7-yi.l.liu@intel.com>
- <20230517121517.4b7ceb52.alex.williamson@redhat.com>
- <ZGUbY6yVfbd3hRxY@nvidia.com>
- <20230517124032.4bac8e0e.alex.williamson@redhat.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230517124032.4bac8e0e.alex.williamson@redhat.com>
-X-ClientProxiedBy: MN2PR16CA0057.namprd16.prod.outlook.com
- (2603:10b6:208:234::26) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+ <20230513132136.15021-8-yi.l.liu@intel.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DM4PR12MB5344:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4e7c984a-e49b-4c20-ee28-08db5706add1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: MaRfdQN9xfsdi8oqSEFOWSDhPdx/s5sJ+ZpxLMcMcM4fJ1Gq3ooeMNJ8c3xC/SeLyiY8kQMT3QyITJ2VtxxzrnIEadlEw2gEbPmW+oKP7jLAISg+ZaynS40jnIc/Y3dTzqLEel1xt5l5uZhWfv4eILazgoRqRFe0BYSO9V4PJkmq0ZZa91QvFicBSksVnbBEEO7y9GxeeyZsdUapQy3XpFWWbGVbs3xH7+fUy5umvbVyuQ8SEFG/cgvW37KJHaGH6ONTImMKCKkHc9RNeENLAM+na/gf1K8i9uBFZ6w2xzMMKWqOgThw7khuO600M4irYmJMzXxGkV+RBtjW9nCLMiOpIssCzHqt9Dv+5QB/CAPcMSPCD3sFNVZ9GgRtRLTFSNx0RlAh4ZEtB2AJ1zvOWsch068+09lxDUXuxLS+fJcJ6ci9xfP4XGAnyeQPv+oJqmZ2jlK6Z2P/Tw/H6ajwBPK/KYF/mQfncHUcfibYMlI/8KBDMoXFC5fK/AIhUN5PZn8zLkO8y3uPA3cwBMN8+YtFg0qQdkjTRMs+FlKbt1nGXF4KCDWjsVjpZqF/J2Go
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(39860400002)(366004)(396003)(346002)(136003)(376002)(451199021)(66899021)(83380400001)(6916009)(41300700001)(7416002)(5660300002)(8936002)(36756003)(8676002)(86362001)(316002)(66476007)(66556008)(4326008)(38100700002)(66946007)(2906002)(6506007)(26005)(186003)(6512007)(6486002)(2616005)(478600001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?D3cHmVdWmgaqdMIVBLaFbLhDAbKlqz1qPbZRRQzkgB9rl7W+oKxJkUGmSI/G?=
- =?us-ascii?Q?L+w52drakNEpP3VNSUGnBYcapa47xVU8V3hTEtlM3QmvJLrLJCbDCokP/lIv?=
- =?us-ascii?Q?P7UgrqlnnaWGYwuhrtUAZcgsBLykKqx8zEgDg5MC5lMvqjq8c0A7E4fsp+O3?=
- =?us-ascii?Q?LxzoHe6pIf1tConZSweGid5fwjETYBNZ63ZlcgjLRCiV+yS6W7pNwPti1ChP?=
- =?us-ascii?Q?Ghhtz0Up63uNhTzBNtqXd4A/KBHMfvg2jLV1SBpajcIsagitTYCcMFp2VXzx?=
- =?us-ascii?Q?egoYSTbRPB7GMSwFQVHwsor+DTKolYahbygavxULr9OOeKGJwI5/8xo3d1gu?=
- =?us-ascii?Q?tP9K5l7amxWlIAQUfgrH8LFQb3JODLvvNczO1ks4OoJp1zr/E/ZSAH2OEW1E?=
- =?us-ascii?Q?P8o40D7G+8XFMdMyn1T+bGn6Z6vbMPEDRzAjZBCnJWJ2w20MJL4gQYODPTBP?=
- =?us-ascii?Q?LgwUaPyJuIgvRxKWlAKgBgm0xHEO69G2ZqAt2sevaFzUBma9w3BtiUBcnFh5?=
- =?us-ascii?Q?SeyGmqnjYDY9QgHfv9nqH+eRJ75OnkuW7g1oEGLiKuI2tOY9EsN4dBNUlUwn?=
- =?us-ascii?Q?QguVtfiOBSzixrGkLGL/QsnMzRJwKW83yxUE8n6EOAGzj3NqMHNTphDIgU7m?=
- =?us-ascii?Q?45tWkZ53GDTapUZDkzdqU9IIav8nxiObj6ekkk27UYqcjwfmrj3k5trg28BL?=
- =?us-ascii?Q?XG1Qq5X+Z34Vb6nM+4a12SiRgfH2R+gBOZDD7z/Ofp6lqfIcerDwD5zY5wuj?=
- =?us-ascii?Q?3KvMwwRmvv25oTdyG27XZJOb3FjLCs1d1HtWuR5vNs4NDMf/R10/xxCQC4f6?=
- =?us-ascii?Q?7x1M6sAnbcTi5XUZu3Mdw7n1TDITNes/ZAPqXzcE2gKrrxdUZuiemlDWci8R?=
- =?us-ascii?Q?tS6uwQ1x6o01kNi4hzch8XDNZG/Tor6H1+6R93n9pi9a1CdnY21H0N7f5vB/?=
- =?us-ascii?Q?y+FKKiCHLFck9tA9aCuLW239zbUaF1zDg7gJuTJeYj1Hi4HAelbkrmtAUU1j?=
- =?us-ascii?Q?5WRfVPbGHUi9HJYorHkQ1yIuENJb9ntja+fVp03oT6UNcmegT5hqWygu5Ie/?=
- =?us-ascii?Q?/jA99xOSAIayIqs9qZQB0NF+aHb0OK0CcwekNqTjnULvK/JictmN9Lcq8D6v?=
- =?us-ascii?Q?bBpLSAnCv1//CFLEVwHqGgyV8CXM9mt2RCy/cC3ci4htbswyv7zv2eWiMhhP?=
- =?us-ascii?Q?HWdX1+B/xzt/HO7RWxv+ld+Tjc7qPJjWifnElwSlyr2qDQF4N1yJaywtwFHO?=
- =?us-ascii?Q?pWUvZ8ZHYV7zLAmewAsBMlAXg2JmagoHzfYw0O2WwPf9MXFzOcIUSDsKHr+7?=
- =?us-ascii?Q?6VNANafsS5Yfk1afmxJJoitH/UtD9QAvhgO9V5hJZkxdTqn4VDPzlGM8vxn+?=
- =?us-ascii?Q?WTrecB4YVsovFj5RJvUpADnQcjoBKdZpao7n6e3ZXL4Iq4WsqcrFyoMqZnFG?=
- =?us-ascii?Q?ZNkuCf2/eHaQ6EdZjhRe2m3S2BgJNeKGT3AHMUHYSxQ9jMD8KXOsHTdAVnYw?=
- =?us-ascii?Q?vX/ra71ggLsM1V9FMVj+JvyVGdhMjLKOGLkBEBbNbRT6TX6xSbZIjEHeMwHN?=
- =?us-ascii?Q?c4GNuruEVEnjavc65fRZFQxpTktMYvCftstcdb79?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4e7c984a-e49b-4c20-ee28-08db5706add1
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 May 2023 18:44:00.2820 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XIKKNQUcBtGJBDWg+wmVCBzVvlu4zlOczetS5KFx8q5mbxdERizFzvTrGcgKQyLt
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5344
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,52 +88,97 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
  zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
- chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org,
- Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org, lulu@redhat.com,
- yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
- kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, intel-gvt-dev@lists.freedesktop.org,
- yi.y.sun@linux.intel.com, clegoate@redhat.com, cohuck@redhat.com,
- shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- robin.murphy@arm.com
+ chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, kvm@vger.kernel.org,
+ lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
+ jgg@nvidia.com, kevin.tian@intel.com, yan.y.zhao@intel.com,
+ intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
+ clegoate@redhat.com, cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ suravee.suthikulpanit@amd.com, robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, May 17, 2023 at 12:40:32PM -0600, Alex Williamson wrote:
-> On Wed, 17 May 2023 15:22:27 -0300
-> Jason Gunthorpe <jgg@nvidia.com> wrote:
+On Sat, 13 May 2023 06:21:33 -0700
+Yi Liu <yi.l.liu@intel.com> wrote:
+
+> There are drivers that need to search vfio_device within a given dev_set.
+> e.g. vfio-pci. So add a helper.
 > 
-> > On Wed, May 17, 2023 at 12:15:17PM -0600, Alex Williamson wrote:
-> > 
-> > > > +int vfio_iommufd_physical_devid(struct vfio_device *vdev)
-> > > > +{
-> > > > +	if (vdev->iommufd_device)
-> > > > +		return iommufd_device_to_id(vdev->iommufd_device);
-> > > > +	if (vdev->noiommu_access)
-> > > > +		return iommufd_access_to_id(vdev->noiommu_access);
-> > > > +	return -EINVAL;
-> > > > +}
-> > > > +EXPORT_SYMBOL_GPL(vfio_iommufd_physical_devid);  
-> > > 
-> > > I think these exemplify that it would be better if both emulated and
-> > > noiommu use the same iommufd_access pointer.  Thanks,  
-> > 
-> > Oh, I mis understood your other remark.. Yeah good question I have to
-> > study this also
+> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> ---
+>  drivers/vfio/pci/vfio_pci_core.c |  8 +++-----
+>  drivers/vfio/vfio_main.c         | 15 +++++++++++++++
+>  include/linux/vfio.h             |  3 +++
+>  3 files changed, 21 insertions(+), 5 deletions(-)
 > 
-> I guess I also missed that this wasn't iommufd_access vs
-> noiommu_access, it's device vs access, but shouldn't any iommufd_access
-> pointer provide the devid?  I need to go look why we need two different
-> methods to get a devid...
+> diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
+> index 39e7823088e7..4df2def35bdd 100644
+> --- a/drivers/vfio/pci/vfio_pci_core.c
+> +++ b/drivers/vfio/pci/vfio_pci_core.c
+> @@ -2335,12 +2335,10 @@ static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
+>  static int vfio_pci_is_device_in_set(struct pci_dev *pdev, void *data)
+>  {
+>  	struct vfio_device_set *dev_set = data;
+> -	struct vfio_device *cur;
+>  
+> -	list_for_each_entry(cur, &dev_set->device_list, dev_set_list)
+> -		if (cur->dev == &pdev->dev)
+> -			return 0;
+> -	return -EBUSY;
+> +	lockdep_assert_held(&dev_set->lock);
+> +
+> +	return vfio_find_device_in_devset(dev_set, &pdev->dev) ? 0 : -EBUSY;
 
-At least this hunk above makes sense, access and device are two
-different objects with different types, so having different ID
-accessors is reasonably logical.
+Maybe an opportunity to revisit why this returns -EBUSY rather than
+something reasonable like -ENODEV.  It looks like we picked up the
+-EBUSY in a882c16a2b7e where I think it was trying to preserve the
+return of vfio_pci_try_zap_and_vma_lock_cb() but the return value here
+is not even propagated so this looks like an chance to have it make
+sense again.  Thanks,
 
-But it is a good point that this should return the dev id of the
-normal access for a normal mdev too
+Alex
 
-Ideally I'd like to see that we always return a dev id to userspace
-for all vfio device types. Then we can rely on it
+>  }
+>  
+>  /*
+> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> index f0ca33b2e1df..ab4f3a794f78 100644
+> --- a/drivers/vfio/vfio_main.c
+> +++ b/drivers/vfio/vfio_main.c
+> @@ -141,6 +141,21 @@ unsigned int vfio_device_set_open_count(struct vfio_device_set *dev_set)
+>  }
+>  EXPORT_SYMBOL_GPL(vfio_device_set_open_count);
+>  
+> +struct vfio_device *
+> +vfio_find_device_in_devset(struct vfio_device_set *dev_set,
+> +			   struct device *dev)
+> +{
+> +	struct vfio_device *cur;
+> +
+> +	lockdep_assert_held(&dev_set->lock);
+> +
+> +	list_for_each_entry(cur, &dev_set->device_list, dev_set_list)
+> +		if (cur->dev == dev)
+> +			return cur;
+> +	return NULL;
+> +}
+> +EXPORT_SYMBOL_GPL(vfio_find_device_in_devset);
+> +
+>  /*
+>   * Device objects - create, release, get, put, search
+>   */
+> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> index fcbe084b18c8..4c17395ed4d2 100644
+> --- a/include/linux/vfio.h
+> +++ b/include/linux/vfio.h
+> @@ -259,6 +259,9 @@ void vfio_unregister_group_dev(struct vfio_device *device);
+>  
+>  int vfio_assign_device_set(struct vfio_device *device, void *set_id);
+>  unsigned int vfio_device_set_open_count(struct vfio_device_set *dev_set);
+> +struct vfio_device *
+> +vfio_find_device_in_devset(struct vfio_device_set *dev_set,
+> +			   struct device *dev);
+>  
+>  int vfio_mig_get_next_state(struct vfio_device *device,
+>  			    enum vfio_device_mig_state cur_fsm,
 
-Jason
