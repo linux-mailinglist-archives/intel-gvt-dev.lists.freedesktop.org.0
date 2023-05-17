@@ -2,72 +2,71 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 321E77071A7
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 May 2023 21:12:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EEC25707260
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 17 May 2023 21:40:37 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C5EA410E26B;
-	Wed, 17 May 2023 19:12:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BE51B10E471;
+	Wed, 17 May 2023 19:40:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CD09110E26B
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EAA1B10E470
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 17 May 2023 19:12:50 +0000 (UTC)
+ Wed, 17 May 2023 19:40:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1684350770;
+ s=mimecast20190719; t=1684352433;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kUYw29Zoa6zK25906srnQFhBp6MIgdBaKePMJ7buoyk=;
- b=UlXYGZZAuKKiHtQlL22UV74OkpyV2oBOGR5pd5+fJfVX5Sa5ZoBlT0XDv54NBD8oX+K+ua
- HCKIiuGmsVJSAHW+ycFZb40wJ2shGqhNUwX6/SLVhmqvmiCOrrb6LsCvDoRFu7V9nzmk81
- zfVWCy6Vs9+b+KioHKbtxn7SDsoVaVk=
-Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
- [209.85.166.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=qaMnAGXuqZ++k7whsMY2S/rOWuBgmGh59N8DJRQDhTs=;
+ b=Mb5O1ZnRUGW11LG8nKZLIGf85TEjKNx/GnWpn2tKQlMEupJZvp45LNtrsXybbnZUr/koD6
+ RJusjYu0STDH7j08yronRYuyRJJ8B9EwW+/FBJMS/SLEF2FNyXKGsefSFc4iN7KcmzFst2
+ wPynH74CMyjN8yRYxv0dWwSsXguZQUs=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-453-pRkcZa6bO3e36B3QnDuM8w-1; Wed, 17 May 2023 15:12:46 -0400
-X-MC-Unique: pRkcZa6bO3e36B3QnDuM8w-1
-Received: by mail-io1-f70.google.com with SMTP id
- ca18e2360f4ac-763997ab8cdso175990739f.2
+ us-mta-363-etAbL5LQN3CA2Vw5RUkMVA-1; Wed, 17 May 2023 15:40:32 -0400
+X-MC-Unique: etAbL5LQN3CA2Vw5RUkMVA-1
+Received: by mail-il1-f200.google.com with SMTP id
+ e9e14a558f8ab-3318938ea0bso3655655ab.0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 17 May 2023 12:12:46 -0700 (PDT)
+ Wed, 17 May 2023 12:40:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684350766; x=1686942766;
+ d=1e100.net; s=20221208; t=1684352432; x=1686944432;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kUYw29Zoa6zK25906srnQFhBp6MIgdBaKePMJ7buoyk=;
- b=PDOeQ5hfHV7mLcj8Y5oo96Z+DNKkqX4+7dbl3qyhGm7IvKi2HOHOx0JfsC6hYrIEQw
- 55inlloOjmLnAOTK9396c50vjy/Bw1bRTKXt9TKhd1I0XuKGMAEuWOh8fzkpBwqWNINb
- YDWuw+k1t/UwZEIPFKXMP1WS3EMSAjWYFJ1hDWaEd2YHj+5MBAacWFOOLfHapVLTJVRY
- onKUiWYgyhqHSyXk8dbo0AJ/1XLEK9oxSAQmFTDI2CJgPX/gPoFNze9q8FwPafCoPRJn
- vi054V8HvMkqAAbWsmSPcjrF73031n2SJrUPwnogF6H3go42xCHMy2UjnMagBGktDGU+
- VAkw==
-X-Gm-Message-State: AC+VfDyoYt7DeSN8A1iZcKk2hFx0lDnzdbAR1sgBgHSrzWKtc9L+rI4i
- RN+1AofCLQrunJEm7ywfleqyMs2meHe0Q+ukOTl529S5qLW9szJkKhWbWjAYTwrulWjtVL9tRVo
- xQx+/dV1enW+K/wBikuXb+MWId8uJXLhofw==
-X-Received: by 2002:a5d:8349:0:b0:769:c95b:29d2 with SMTP id
- q9-20020a5d8349000000b00769c95b29d2mr5175337ior.15.1684350765818; 
- Wed, 17 May 2023 12:12:45 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6uBqxqAG67zrv6YM/LC+1w6MWWX/cwdvMLlHlj+jf/jYQ8FiDSZBcs0tVU+pbwwdfg9LZu7A==
-X-Received: by 2002:a5d:8349:0:b0:769:c95b:29d2 with SMTP id
- q9-20020a5d8349000000b00769c95b29d2mr5175304ior.15.1684350765494; 
- Wed, 17 May 2023 12:12:45 -0700 (PDT)
+ bh=qaMnAGXuqZ++k7whsMY2S/rOWuBgmGh59N8DJRQDhTs=;
+ b=KAMtYIW80+8xB3DMtKMjcsJS1f/4p6ppbVegUZONpAMxLqu0wG/Lfcjl2jaBcVdSYy
+ pDPN5SRzHMqIGeWKsb4dVjoVimyMvUy2q0ejH0PX8RjkWnUjsIhKncO60RYH2/hC8P+7
+ ejjqOlAYnHLRU80EqAhA8COJYjQU00k3NHvI/7J7CyZE6JWHLr73+pZAGoCtscP/+Cav
+ SuSZjRfvil8UQreM3S1LeblUcDLdzZJDLdiizoZZoZz+0e48LWBt+0EhYKDz8TKdZSHQ
+ poKcO7ijRJ9ISgu659ZsmZe6SOTSa6Yey413pNV5+W4S3UHFMH2GRb0wYevkQSh3oWiW
+ eKbg==
+X-Gm-Message-State: AC+VfDwieJGzgytDmwhIFq11E5dzuZiAf2Yhoq2+v0K+7MiXHRkYykIL
+ xNyKaD++kcZ4V4mHSiJiUDTQJlgFAwKvWlspLGxgEDm/588tPrW9LrLANegPFpLMjAmqhVSWdtg
+ TbZVRobEopYdvuo9U0nitPbBksXyMl9CfLw==
+X-Received: by 2002:a92:d98d:0:b0:335:4c33:dd2b with SMTP id
+ r13-20020a92d98d000000b003354c33dd2bmr2248052iln.9.1684352431885; 
+ Wed, 17 May 2023 12:40:31 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ5zPWqyJ1aUUbKlOSg6odEXbgecsB1Z4PYEWsEoMYwkf7RUxzAQTmSNvl+uiWj/tj7xsU7DXg==
+X-Received: by 2002:a92:d98d:0:b0:335:4c33:dd2b with SMTP id
+ r13-20020a92d98d000000b003354c33dd2bmr2248043iln.9.1684352431641; 
+ Wed, 17 May 2023 12:40:31 -0700 (PDT)
 Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- r14-20020a02b10e000000b0040fc3543ff2sm8744956jah.84.2023.05.17.12.12.44
+ h15-20020a92d84f000000b00328ab01a23fsm3413863ilq.14.2023.05.17.12.40.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 May 2023 12:12:44 -0700 (PDT)
-Date: Wed, 17 May 2023 13:12:43 -0600
+ Wed, 17 May 2023 12:40:31 -0700 (PDT)
+Date: Wed, 17 May 2023 13:40:29 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
 To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v5 07/10] vfio: Add helper to search vfio_device in a
- dev_set
-Message-ID: <20230517131243.7028bf9c.alex.williamson@redhat.com>
-In-Reply-To: <20230513132136.15021-8-yi.l.liu@intel.com>
+Subject: Re: [PATCH v5 08/10] iommufd: Add iommufd_ctx_has_group()
+Message-ID: <20230517134029.7e3da6c6.alex.williamson@redhat.com>
+In-Reply-To: <20230513132136.15021-9-yi.l.liu@intel.com>
 References: <20230513132136.15021-1-yi.l.liu@intel.com>
- <20230513132136.15021-8-yi.l.liu@intel.com>
+ <20230513132136.15021-9-yi.l.liu@intel.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -98,87 +97,115 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, 13 May 2023 06:21:33 -0700
+On Sat, 13 May 2023 06:21:34 -0700
 Yi Liu <yi.l.liu@intel.com> wrote:
 
-> There are drivers that need to search vfio_device within a given dev_set.
-> e.g. vfio-pci. So add a helper.
+> to check if any device within the given iommu_group has been bound with
+
+Nit, I find these commit logs where the subject line is intended to
+flow into the commit log to form a complete sentence difficult to read.
+I expect complete thoughts within the commit log itself and the subject
+should be a separate summary of the log.  Repeating the subject within
+the commit log is ok.
+
+> the iommufd_ctx. This helpful for the checking on device ownership for
+
+s/This/This is/
+
+> the devices which have been bound but cannot be bound to any other iommufd
+
+s/have been/have not been/?
+
+> as the iommu_group has been bound.
 > 
 > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 > ---
->  drivers/vfio/pci/vfio_pci_core.c |  8 +++-----
->  drivers/vfio/vfio_main.c         | 15 +++++++++++++++
->  include/linux/vfio.h             |  3 +++
->  3 files changed, 21 insertions(+), 5 deletions(-)
+>  drivers/iommu/iommufd/device.c | 29 +++++++++++++++++++++++++++++
+>  include/linux/iommufd.h        |  8 ++++++++
+>  2 files changed, 37 insertions(+)
 > 
-> diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
-> index 39e7823088e7..4df2def35bdd 100644
-> --- a/drivers/vfio/pci/vfio_pci_core.c
-> +++ b/drivers/vfio/pci/vfio_pci_core.c
-> @@ -2335,12 +2335,10 @@ static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
->  static int vfio_pci_is_device_in_set(struct pci_dev *pdev, void *data)
->  {
->  	struct vfio_device_set *dev_set = data;
-> -	struct vfio_device *cur;
+> diff --git a/drivers/iommu/iommufd/device.c b/drivers/iommu/iommufd/device.c
+> index 81466b97023f..5e5f7912807b 100644
+> --- a/drivers/iommu/iommufd/device.c
+> +++ b/drivers/iommu/iommufd/device.c
+> @@ -98,6 +98,35 @@ struct iommufd_device *iommufd_device_bind(struct iommufd_ctx *ictx,
+>  }
+>  EXPORT_SYMBOL_NS_GPL(iommufd_device_bind, IOMMUFD);
 >  
-> -	list_for_each_entry(cur, &dev_set->device_list, dev_set_list)
-> -		if (cur->dev == &pdev->dev)
-> -			return 0;
-> -	return -EBUSY;
-> +	lockdep_assert_held(&dev_set->lock);
-> +
-> +	return vfio_find_device_in_devset(dev_set, &pdev->dev) ? 0 : -EBUSY;
+> +/**
+> + * iommufd_ctx_has_group - True if the struct device is bound to this ictx
 
-Maybe an opportunity to revisit why this returns -EBUSY rather than
-something reasonable like -ENODEV.  It looks like we picked up the
--EBUSY in a882c16a2b7e where I think it was trying to preserve the
-return of vfio_pci_try_zap_and_vma_lock_cb() but the return value here
-is not even propagated so this looks like an chance to have it make
-sense again.  Thanks,
+What struct device?  Isn't this "True if any device within the group is
+bound to the ictx"?
+
+> + * @ictx: iommufd file descriptor
+> + * @group: Pointer to a physical iommu_group struct
+> + *
+> + * True if a iommufd_device_bind() is present for any device within the
+> + * group.
+
+How can a function be present for a device?  Maybe "True if any device
+within the group has been bound to this ictx, ex. via
+iommufd_device_bind(), therefore implying ictx ownership of the group."  Thanks,
 
 Alex
 
->  }
->  
->  /*
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index f0ca33b2e1df..ab4f3a794f78 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -141,6 +141,21 @@ unsigned int vfio_device_set_open_count(struct vfio_device_set *dev_set)
->  }
->  EXPORT_SYMBOL_GPL(vfio_device_set_open_count);
->  
-> +struct vfio_device *
-> +vfio_find_device_in_devset(struct vfio_device_set *dev_set,
-> +			   struct device *dev)
+> + */
+> +bool iommufd_ctx_has_group(struct iommufd_ctx *ictx, struct iommu_group *group)
 > +{
-> +	struct vfio_device *cur;
+> +	struct iommufd_object *obj;
+> +	unsigned long index;
 > +
-> +	lockdep_assert_held(&dev_set->lock);
+> +	if (!ictx || !group)
+> +		return false;
 > +
-> +	list_for_each_entry(cur, &dev_set->device_list, dev_set_list)
-> +		if (cur->dev == dev)
-> +			return cur;
-> +	return NULL;
+> +	xa_lock(&ictx->objects);
+> +	xa_for_each(&ictx->objects, index, obj) {
+> +		if (obj->type == IOMMUFD_OBJ_DEVICE &&
+> +		    container_of(obj, struct iommufd_device, obj)->group == group) {
+> +			xa_unlock(&ictx->objects);
+> +			return true;
+> +		}
+> +	}
+> +	xa_unlock(&ictx->objects);
+> +	return false;
 > +}
-> +EXPORT_SYMBOL_GPL(vfio_find_device_in_devset);
+> +EXPORT_SYMBOL_NS_GPL(iommufd_ctx_has_group, IOMMUFD);
 > +
->  /*
->   * Device objects - create, release, get, put, search
->   */
-> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-> index fcbe084b18c8..4c17395ed4d2 100644
-> --- a/include/linux/vfio.h
-> +++ b/include/linux/vfio.h
-> @@ -259,6 +259,9 @@ void vfio_unregister_group_dev(struct vfio_device *device);
+>  /**
+>   * iommufd_device_unbind - Undo iommufd_device_bind()
+>   * @idev: Device returned by iommufd_device_bind()
+> diff --git a/include/linux/iommufd.h b/include/linux/iommufd.h
+> index 68cd65274e28..e49c16cd6831 100644
+> --- a/include/linux/iommufd.h
+> +++ b/include/linux/iommufd.h
+> @@ -16,6 +16,7 @@ struct page;
+>  struct iommufd_ctx;
+>  struct iommufd_access;
+>  struct file;
+> +struct iommu_group;
 >  
->  int vfio_assign_device_set(struct vfio_device *device, void *set_id);
->  unsigned int vfio_device_set_open_count(struct vfio_device_set *dev_set);
-> +struct vfio_device *
-> +vfio_find_device_in_devset(struct vfio_device_set *dev_set,
-> +			   struct device *dev);
+>  struct iommufd_device *iommufd_device_bind(struct iommufd_ctx *ictx,
+>  					   struct device *dev, u32 *id);
+> @@ -56,6 +57,7 @@ void iommufd_ctx_get(struct iommufd_ctx *ictx);
+>  #if IS_ENABLED(CONFIG_IOMMUFD)
+>  struct iommufd_ctx *iommufd_ctx_from_file(struct file *file);
+>  void iommufd_ctx_put(struct iommufd_ctx *ictx);
+> +bool iommufd_ctx_has_group(struct iommufd_ctx *ictx, struct iommu_group *group);
 >  
->  int vfio_mig_get_next_state(struct vfio_device *device,
->  			    enum vfio_device_mig_state cur_fsm,
+>  int iommufd_access_pin_pages(struct iommufd_access *access, unsigned long iova,
+>  			     unsigned long length, struct page **out_pages,
+> @@ -77,6 +79,12 @@ static inline void iommufd_ctx_put(struct iommufd_ctx *ictx)
+>  {
+>  }
+>  
+> +static inline bool iommufd_ctx_has_group(struct iommufd_ctx *ictx,
+> +					 struct iommu_group *group)
+> +{
+> +	return false;
+> +}
+> +
+>  static inline int iommufd_access_pin_pages(struct iommufd_access *access,
+>  					   unsigned long iova,
+>  					   unsigned long length,
 
