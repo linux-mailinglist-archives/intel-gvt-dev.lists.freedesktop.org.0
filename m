@@ -1,61 +1,79 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D8CCD70CDD4
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 May 2023 00:25:44 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D32570CE68
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 May 2023 01:04:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA80010E3AB;
-	Mon, 22 May 2023 22:25:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5A58510E01F;
+	Mon, 22 May 2023 23:04:38 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 602 seconds by postgrey-1.36 at gabe;
- Mon, 22 May 2023 22:25:40 UTC
-Received: from smtp187t19f137.saaspmta0002.correio.biz
- (smtp187t19f137.saaspmta0002.correio.biz [177.153.19.137])
- by gabe.freedesktop.org (Postfix) with ESMTPS id D89BF10E3AB
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BA69410E01F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 May 2023 22:25:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=smtplw; d=smtplw-11.com;
- h=From:Subject:To:Content-Type:MIME-Version:Reply-To:Date:Message-Id;
- bh=+cgsRtv1nOj9g74DdZ/10Jb8/XEGfv/oiwM7VYDneL8=;
- b=MYsp7H9xViPEFBAJdqdjZNMe90c4w7IckHR2C/wtNn1pQTvrIjRQKheWvZXntKzyWh5+yF3ddlfV
- d7PUIR3FWT2gi/T2gWQ2Yc4ZVFdSWzWHBIS7cvj/RzMzrzVNNv1VskD2dxNJwqr1/kAu5qGn9lm7
- x9HQVMmofOhkPCmCN1s=
-Received: from saasmilter0018.correio.biz (10.32.64.18) by
- smtp187t19f137.saaspmta0002.correio.biz id hdfl8a2oqm4m for
- <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 May 2023 19:09:45 -0300 (envelope-from
- <bounce-46f9ae9578de8501d06fefb0613323cd@smtplw-11.com>)
-Received: from saasqueue0005.correio.biz (unknown [10.32.64.39])
- by saasmilter0018.correio.biz (Postfix) with ESMTP id 3662FDFB47
+ Mon, 22 May 2023 23:04:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1684796674;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=w0+n/QgjpwGDdtheHaeJfYxk19jJm9VkMNETIgTtOVc=;
+ b=cfzR2fdUIxt3JqCmhap49c1ofgHQSzDH6ym8CdZZKK36j6U3aJruuvT0Nlx/lBBpI/AY3x
+ ZoRE9NkxEl2Nbo/cPGyNG/6z7t8x/TyxvbB/AOnjDbrdv0shulmvHdblGXW1+F2W4IRxCq
+ Mbd+cmW1Bzx4EQShGOPwXoJMbYbr1D4=
+Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
+ [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-643-7yj86HxgMvu8rQ_eqLD6jA-1; Mon, 22 May 2023 19:04:33 -0400
+X-MC-Unique: 7yj86HxgMvu8rQ_eqLD6jA-1
+Received: by mail-io1-f69.google.com with SMTP id
+ ca18e2360f4ac-76c7d59e5deso534717339f.1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 May 2023 19:15:35 -0300 (-03)
-Received: from DESKTOP-ULJIPFD (45-191-206-66.lanfibra.com.br [45.191.206.66])
- (Authenticated sender: formalive4for)
- by saasauth0007.correio.pw (Postfix) with ESMTPA id 17BB117FCD9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 May 2023 19:15:35 -0300 (-03)
-Received: from DESKTOP-ULJIPFD (45-191-206-66.lanfibra.com.br [45.191.206.66])
- (Authenticated sender: formalive4for)
- by saasauth0007.correio.pw (Postfix) with ESMTPA id 17BB117FCD9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 May 2023 19:15:35 -0300 (-03)
-From: "Equipe FedEx" <fedexteaminformation@gmail.com>
-Subject: FedEx, fill out the form attached below
-To: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/alternative;
- boundary="----=_NextPart_757_4686_A796E746.76778650"
+ Mon, 22 May 2023 16:04:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684796673; x=1687388673;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=w0+n/QgjpwGDdtheHaeJfYxk19jJm9VkMNETIgTtOVc=;
+ b=AJqeE+qvFqAb33ucj9s5VICk8S8VmHwptBUeFCQ7oJ2qgJGmjEQXR4WjcrfkzKuId5
+ Dy77ms1+g2L2Oziyf7mkmpr8JLmgK9XxV+1svG00+YgjB6kt7BwGDQprnQLHGyj2QOlw
+ 8WMWIyalXCVuPcYJka5oJ1WNugysAX+a/jKWl55/mJWX0RBB5WGkVwfnvK813YgLmu5i
+ i3jRKkjHgWDEGjVRjCThvLKGLDg3xwQXknFi19Xk1YrN/Wcayjz6e1G3aLXLGpwipKTu
+ DHHxf3rnY8y7FxTElf+C2GOIfesz63mvbeO5Plhx6FNCispspSEsbhSEbIpNvGpHsEML
+ yzHQ==
+X-Gm-Message-State: AC+VfDzN4kJX6OCdHnjt26QPtzdgQ+R/BhUHVZ39xNYB7BMlv05k88j6
+ D4sMQaH7bK5abcG7zxnQeOtwnvtFR+ZJ3mJzdfppyZDnCtd8RCy47UKuv/o6orHpmsZO476ET8v
+ ucgKiGuqZ8x0hPBoMBy0gKYp/hbpytp/5aw==
+X-Received: by 2002:a5e:890f:0:b0:76e:fbc6:347d with SMTP id
+ k15-20020a5e890f000000b0076efbc6347dmr7364575ioj.20.1684796672721; 
+ Mon, 22 May 2023 16:04:32 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ6Z8CUQuCHamNsEWTaswCX9W3UzFyBF5Ko9xA67aR5uOOig0LLcu/AMeAJp5EHdL25fonvk4A==
+X-Received: by 2002:a5e:890f:0:b0:76e:fbc6:347d with SMTP id
+ k15-20020a5e890f000000b0076efbc6347dmr7364559ioj.20.1684796672395; 
+ Mon, 22 May 2023 16:04:32 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ x26-20020a0566380cba00b00411b2414eb5sm1999079jad.94.2023.05.22.16.04.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 May 2023 16:04:31 -0700 (PDT)
+Date: Mon, 22 May 2023 17:04:29 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Yi Liu <yi.l.liu@intel.com>
+Subject: Re: [PATCH v11 21/23] vfio: Determine noiommu device in
+ __vfio_register_dev()
+Message-ID: <20230522170429.2d5ca274.alex.williamson@redhat.com>
+In-Reply-To: <20230513132827.39066-22-yi.l.liu@intel.com>
+References: <20230513132827.39066-1-yi.l.liu@intel.com>
+ <20230513132827.39066-22-yi.l.liu@intel.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Date: Mon, 22 May 2023 19:15:35 -0300
-Message-Id: <202305221915356D0F9CBCE2$5A05026238@DESKTOPULJIPFD>
-Status: N
-x-locaweb-id: GNgcm9AF1yoMh14tufvsr_m4bV-uk4aL_TkB1OUzdwTJ3PBsvA7sBIBYr_VsdxkisJJYgSQBtSnR1jNF_3w0tOJg-bQcfx6tPP9ZxHyhhfzBdgn32Af4qPVa1YSHZuyAyzrzY0bTIuPhz9YDe1S97z4bwJwNf-txBGYgLpToN22FJ1SCi4yjw-jZ-WQuq8qkJg3v2yuxYPcJDzBiAOj3vsmcMrfumVSJ-yu7xAXU_5Vi5EdwqNaxKIeeAz-_q0CQ33c-JseWDKDhOuRBj0GJ4WRCnHvGYR1MNlwCatoL0Z6MP5_BPpZYkR_8dLwLChQTTtLw-0Zi3Mz9SGs8PLLE_lK6PpV0XvUe2V6NOcvwGg3lb8LsDxUjD_2W7-u6xjEReKtTRvecpeJlmfh8AvjmuobBYQduXyld6cBCzUWFFug=
-x-locaweb-id2: NjY2ZjcyNmQ2MTZjNjk3NjY1MzQ2NjZmNzI=
-x-message-uid: 46f9ae9578de8501d06fefb0613323cd-1684793735.26
-x-account-uid: 46f9ae9578de8501d06fefb0613323cd
-x-return-path: bounce-46f9ae9578de8501d06fefb0613323cd@smtplw-11.com
-x-envid: 46f9ae9578de8501d06fefb0613323cd-1684793735.26
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,381 +86,249 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: fedexteaminformation@gmail.com
+Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
+ zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
+ chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, kvm@vger.kernel.org,
+ lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
+ jgg@nvidia.com, kevin.tian@intel.com, yan.y.zhao@intel.com,
+ intel-gfx@lists.freedesktop.org, eric.auger@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
+ clegoate@redhat.com, cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ suravee.suthikulpanit@amd.com, robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format
+On Sat, 13 May 2023 06:28:25 -0700
+Yi Liu <yi.l.liu@intel.com> wrote:
 
-------=_NextPart_757_4686_A796E746.76778650
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+> This is to make the cdev path and group path consistent for the noiommu
+> devices registration. If vfio_noiommu is disabled, such registration
+> should fail. However, this check is vfio_device_set_group() which is part
+> of the vfio_group code. If the vfio_group code is compiled out, noiommu
+> devices would be registered even vfio_noiommu is disabled.
+> 
+> This adds vfio_device_set_noiommu() which can fail and calls it in the
+> device registration. For now, it never fails as long as
+> vfio_device_set_group() is successful. But when the vfio_group code is
+> compiled out, vfio_device_set_noiommu() would fail the noiommu devices
+> when vfio_noiommu is disabled.
 
-ATTENTION FEDEX NOTIFICATION
+I'm lost.  After the next patch we end up with the following when
+CONFIG_VFIO_GROUP is set:
 
-Dear User, 
+static inline int vfio_device_set_noiommu(struct vfio_device *device)
+{
+        device->noiommu = IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
+                          device->group->type == VFIO_NO_IOMMU;
+        return 0;
+}
 
-We are sending this notification to the email linked in our registration=
- system.
+I think this is relying on the fact that vfio_device_set_group() which
+is called immediately prior to this function would have performed the
+testing for noiommu and failed prior to this function being called and
+therefore there is no error return here.
 
-Protocol: 77634927.
+Note also here that I think CONFIG_VFIO_NOIOMMU was only being tested
+here previously so that a smart enough compiler would optimize out the
+entire function, we can never set a VFIO_NO_IOMMU type when
+!CONFIG_VFIO_NOIOMMU.  That's no longer the case if the function is
+refactored like this.
 
-The deadline for responding to the notification is up to 5 (five) busine=
-ss days. If there is no response, it will result in a return to the send=
-er of the shipment.
+When !CONFIG_VFIO_GROUP:
 
-If you wish to withdraw from the aforementioned FedEx, take the form att=
-ached below, filled in with your data and carrying your identity documen=
-t in hand.
+static inline int vfio_device_set_noiommu(struct vfio_device *device)
+{
+        struct iommu_group *iommu_group;
 
-VIEW INFORMATION http://157.15.184.35.bc.googleusercontent.com/3455001-2=
-4.2023.5.18.8794bt
+        iommu_group = iommu_group_get(device->dev);
+        if (!iommu_group) {
+                if (!IS_ENABLED(CONFIG_VFIO_NOIOMMU) || !vfio_noiommu)
+                        return -EINVAL;
+                device->noiommu = true;
+        } else {
+                iommu_group_put(iommu_group);
+                device->noiommu = false;
+        }
 
-FedEx team
+        return 0;
+}
 
-=A9 2023 FedEx LLC 1600 Amphitheatre Parkway, Mountain View, CA 94043
+Here again, the NOIOMMU config option is irrelevant, vfio_noiommu can
+only be true if the config option is enabled.  Therefore if there's no
+IOMMU group and the module option to enable noiommu is not set, return
+an error.
 
-------=_NextPart_757_4686_A796E746.76778650
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+It's really quite ugly that in one mode we rely on this function to
+generate the error and in the other mode it happens prior to getting
+here.
 
-<!DOCTYPE=20HTML=20PUBLIC=20"-//W3C//DTD=20HTML=204.0=20Transitional//EN">=
-=20<html><head>
-<meta=20http-equiv=3D"Content-Type"=20content=3D"text/html;=20charset=3Diso=
--8859-1">
-=20=20<META=20name=3DGenerator=20content=3D5.66>=20<title>FedEx,=20fill=20o=
-ut=20the=20form=20attached=20below</title>
-=20</head>
-=20<body><table=20role=3DPresentation=20style=3D"FONT-SIZE:=20small;=20MAX-=
-WIDTH:=20600px;=20BORDER-TOP:=200px;=20FONT-FAMILY:=20Arial,sans-serif;=20B=
-ORDER-RIGHT:=200px;=20WIDTH:=20600px;=20WHITE-SPACE:=20normal;=20WORD-SPACI=
-NG:=200px;=20BORDER-COLLAPSE:=20collapse;=20MIN-WIDTH:=20600px;=20BORDER-BO=
-TTOM:=200px;=20TEXT-TRANSFORM:=20none;=20FONT-WEIGHT:=20400;=20COLOR:=20rgb=
-(68,68,68);=20PADDING-BOTTOM:=200px;=20FONT-STYLE:=20normal;=20PADDING-TOP:=
-=200px;=20PADDING-LEFT:=200px;=20BORDER-LEFT:=200px;=20ORPHANS:=202;=20WIDO=
-WS:=202;=20MARGIN:=200px;=20LETTER-SPACING:=20normal;=20PADDING-RIGHT:=200p=
-x;=20BACKGROUND-COLOR:=20rgb(255,255,255);=20-x-border-x-spacing:=200px;=20=
--x-border-y-spacing:=200px"=20cellSpacing=3D0=20cellPadding=3D0=20width=3D6=
-00=20align=3Dcenter=20bgColor=3D#ffffff=20border=3D0>=20=20<TR>=20=20<TD=20=
-=20style=3D"BORDER-TOP:=20rgb(241,243,244)=202px=20solid;=20BORDER-RIGHT:=
-=20rgb(241,243,244)=202px=20solid;=20BORDER-COLLAPSE:=20collapse;=20BORDER-=
-BOTTOM:=20rgb(241,243,244)=202px=20solid;=20PADDING-BOTTOM:=200px;=20PADDIN=
-G-TOP:=200px;=20PADDING-LEFT:=200px;=20BORDER-LEFT:=20rgb(241,243,244)=202p=
-x=20solid;=20MARGIN:=200px;=20PADDING-RIGHT:=200px">=20<table=20role=3DPres=
-entation=20id=3Dm_-5788849241536412823email-container=20=20=20=20style=3D"B=
-ORDER-LEFT-WIDTH:=200px;=20FONT-SIZE:=2016px;=20FONT-FAMILY:=20Roboto,Arial=
-,Helvetica,sans-serif;=20BORDER-RIGHT-WIDTH:=200px;=20WIDTH:=20597px;=20BOR=
-DER-BOTTOM-WIDTH:=200px;=20BORDER-COLLAPSE:=20collapse;=20COLOR:=20rgb(68,6=
-8,68);=20DIRECTION:=20ltr;=20BORDER-TOP-WIDTH:=200px;=20-x-border-x-spacing=
-:=200px;=20-x-border-y-spacing:=200px"=20=20dir=3Dltr=20cellSpacing=3D0=20c=
-ellPadding=3D0=20width=3D"100%"=20align=3Dcenter=20=20bgColor=3D#ffffff>=20=
-=20=20=20=20<TR>=20=20=20<TD=20=20=20style=3D"PADDING-BOTTOM:=200px;=20PADD=
-ING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=20=
-0px"=20=20=20bgColor=3D#ffffff>=20=20<table=20role=3DPresentation=20=20=20=
-=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=20597px;=20C=
-OLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-border-y-spacing:=
-=200px"=20=20=20=20cellSpacing=3D0=20cellPadding=3D0=20width=3D"100%">=20=
-=20=20=20=20=20=20=20<TR>=20=20=20=20=20<TD=20=20=20=20=20style=3D"PADDING-=
-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px=
-;=20PADDING-RIGHT:=200px">=20=20=20=20<table=20role=3DPresentation=20=20=20=
-=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=205=
-97px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-border-y=
--spacing:=200px"=20=20=20=20=20cellSpacing=3D0=20cellPadding=3D0=20width=3D=
-"100%">=20=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20=20<TD=20=20=20=
-=20=20=20style=3D"MAX-WIDTH:=2040px;=20WIDTH:=2040px;=20PADDING-BOTTOM:=200=
-px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING=
--RIGHT:=200px"=20=20=20=20=20=20width=3D40>&nbsp;</TD>=20=20=20=20=20=20<TD=
-=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20P=
-ADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200px">=20=20=20=20=
-=20<table=20role=3DPresentation=20=20=20=20=20=20=20=20=20=20=20=20=20style=
-=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=20517px;=20COLOR:=20rgb(68,68=
-,68);=20-x-border-x-spacing:=200px;=20-x-border-y-spacing:=200px"=20=20=20=
-=20=20=20=20cellSpacing=3D0=20cellPadding=3D0=20width=3D"100%">=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20=20=20=20<TD=20=20=20=20=
-=20=20=20=20style=3D"FONT-SIZE:=200px;=20HEIGHT:=2028px;=20PADDING-BOTTOM:=
-=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20LIN=
-E-HEIGHT:=2028px;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20=20=20height=3D2=
-8>&nbsp;</TD></TR>=20=20=20=20=20=20=20<TR>=20=20=20=20=20=20=20=20<TD=20=
-=20=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=
-=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200px">=20=20=20=
-=20=20=20=20<table=20role=3DPresentation=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=20517px;=
-=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-border-y-spac=
-ing:=200px"=20=20=20=20=20=20=20=20cellSpacing=3D0=20cellPadding=3D0=20widt=
-h=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=
-=20=20=20=20=20=20<TD=20=20=20=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=20=
-0px;=20TEXT-ALIGN:=20left;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20M=
-ARGIN:=200px;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20=20=20=20align=3Dlef=
-t><IMG=20class=3DCToWUd=20=20=20=20=20=20=20=20=20style=3D"TEXT-DECORATION:=
-=20none;=20MAX-WIDTH:=2091px;=20BORDER-TOP:=200px=20solid;=20HEIGHT:=2067px=
-;=20BORDER-RIGHT:=200px=20solid;=20WIDTH:=2091px;=20BORDER-BOTTOM:=200px=20=
-solid;=20BORDER-LEFT:=200px=20solid;=20DISPLAY:=20block=20!important"=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20src=3D"https://lh3.googleuserc=
-ontent.com/YtXTsa-6SaaMl02-OUo8iRztlX5Thu4aCLavunIV1M5hm9y4ySTPpMjpY44fL4ay=
-z7Se"=20=20=20=20=20=20=20=20=20data-bit=3D"iit"></TD>=20=20=20=20=20=20=20=
-=20=20<TD=20=20=20=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=200px;=20TEXT-=
-ALIGN:=20right;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200p=
-x;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20=20=20=20align=3Dright><BR></TD=
-></TR></TABLE></TD></TR>=20=20=20=20=20=20=20<TR>=20=20=20=20=20=20=20=20<T=
-D=20=20=20=20=20=20=20=20style=3D"FONT-SIZE:=200px;=20HEIGHT:=2028px;=20PAD=
-DING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=
-=200px;=20LINE-HEIGHT:=2028px;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20=20=
-=20height=3D28>&nbsp;</TD></TR></TABLE></TD>=20=20=20=20=20=20<TD=20=20=20=
-=20=20=20style=3D"MAX-WIDTH:=2040px;=20WIDTH:=2040px;=20PADDING-BOTTOM:=200=
-px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING=
--RIGHT:=200px"=20=20=20=20=20=20width=3D40>&nbsp;</TD></TR></TABLE></TD></T=
-R>=20=20=20=20<TR>=20=20=20=20=20<TD=20=20=20=20=20style=3D"BACKGROUND-REPE=
-AT:=20no-repeat;=20PADDING-BOTTOM:=2010px;=20PADDING-TOP:=2010px;=20PADDING=
--LEFT:=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200px"=20=20=20=20=20vAlign=
-=3Dtop=20=20=20=20=20background=3D"https://ci3.googleusercontent.com/proxy/=
-4fKjU7XPYDsoOFS4A2pMGPdu-pOOruitiB24YND-MDimyk-2mDAWELbXu0QtEIJKuV4PYCoRM-F=
-NnwgC1MvaZERrbsya5FVWIQ0x6xtTIv8JhJFfGiIWADQ1nRh6ILM3aJiuoWb9=3Ds0-d-e1-ft#=
-https://services.google.com/fh/files/emails/ga_october_moment_eyebrow_yello=
-w_v1.png"=20=20=20=20=20width=3D"100%">=20=20=20=20=20<DIV>=20=20=20=20<tab=
-le=20role=3DPresentation=20=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=
-=20Arial,sans-serif;=20WIDTH:=20597px;=20COLOR:=20rgb(68,68,68);=20-x-borde=
-r-x-spacing:=200px;=20-x-border-y-spacing:=200px"=20=20=20=20=20cellSpacing=
-=3D0=20cellPadding=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20<T=
-R>=20=20=20=20=20=20<TD=20=20=20=20=20=20style=3D"MAX-WIDTH:=2040px;=20WIDT=
-H:=2040px;=20PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=
-=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20width=3D3=
-0>&nbsp;</TD>=20=20=20=20=20=20<TD=20=20=20=20=20=20style=3D"PADDING-BOTTOM=
-:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PA=
-DDING-RIGHT:=200px">=20=20=20=20=20<table=20role=3DPresentation=20=20=20=20=
-=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDT=
-H:=20517px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-bo=
-rder-y-spacing:=200px"=20=20=20=20=20=20=20cellSpacing=3D0=20cellPadding=3D=
-0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=
-=20=20=20=20=20<TD=20=20=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=200px;=
-=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING-RI=
-GHT:=200px">=20=20=20=20=20=20=20<table=20role=3DPresentation=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-seri=
-f;=20WIDTH:=20517px;=20COLOR:=20rgb(68,68,68);=20DIRECTION:=20ltr;=20-x-bor=
-der-x-spacing:=200px;=20-x-border-y-spacing:=200px"=20=20=20=20=20=20=20=20=
-cellSpacing=3D0=20cellPadding=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20=20=20=20=20<TD=20=20=20=20=
-=20=20=20=20=20style=3D'FONT-SIZE:=2020px;=20FONT-FAMILY:=20"Google=20sans"=
-,Roboto,Arial,Helvetica,sans-serif;=20FONT-WEIGHT:=20normal;=20COLOR:=20rgb=
-(49,9,117);=20PADDING-BOTTOM:=200px;=20TEXT-ALIGN:=20center;=20PADDING-TOP:=
-=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20LINE-HEIGHT:=2040px;=20PA=
-DDING-RIGHT:=200px'><SPAN></SPAN><SPAN=20=20=20=20=20=20=20=20=20style=3D"W=
-HITE-SPACE:=20nowrap=20!important">ATTENTION=20=20=20=20=20=20=20=20=20FEDE=
-X=20=20=20=20=20=20=20=20NOTIFICATION</SPAN></TD></TR></TABLE></TD></TR></T=
-ABLE></TD>=20=20=20=20=20=20<TD=20=20=20=20=20=20style=3D"MAX-WIDTH:=2040px=
-;=20WIDTH:=2040px;=20PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING=
--LEFT:=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20wid=
-th=3D30>&nbsp;</TD></TR></TABLE></DIV></TD></TR></TABLE>=20=20<table=20role=
-=3DPresentation=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-seri=
-f;=20WIDTH:=20597px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px=
-;=20-x-border-y-spacing:=200px"=20=20=20=20cellSpacing=3D0=20cellPadding=3D=
-0=20width=3D"100%">=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20<TD=20=20=20=
-=20=20style=3D"PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=
-=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200px">=20=20=20=20<table=20role=
-=3DPresentation=20=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,=
-sans-serif;=20WIDTH:=20597px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spaci=
-ng:=200px;=20-x-border-y-spacing:=200px"=20=20=20=20=20cellSpacing=3D0=20ce=
-llPadding=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20<TR>=20=20=
-=20=20=20=20<TD=20=20=20=20=20=20style=3D"MAX-WIDTH:=2040px;=20WIDTH:=2040p=
-x;=20PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20=
-MARGIN:=200px;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20width=3D40>&nbsp;</=
-TD>=20=20=20=20=20=20<TD=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=200px;=
-=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING-RI=
-GHT:=200px"><BR>=20=20=20=20=20<table=20role=3DPresentation=20=20=20=20=20=
-=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=
-=20517px;=20COLOR:=20rgb(68,68,68);=20DIRECTION:=20ltr;=20-x-border-x-spaci=
-ng:=200px;=20-x-border-y-spacing:=200px"=20=20=20=20=20=20=20cellSpacing=3D=
-0=20cellPadding=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20<TR>=20=20=20=20=20=20=20=20<TD=20=20=20=20=20=20=20=20style=3D"VERTI=
-CAL-ALIGN:=20top;=20MIN-WIDTH:=20142px;=20PADDING-BOTTOM:=200px;=20TEXT-ALI=
-GN:=20right;=20PADDING-TOP:=205px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=
-=20PADDING-RIGHT:=205px"=20=20=20=20=20=20=20=20vAlign=3Dtop>=20=20=20=20=
-=20=20=20<table=20role=3DPresentation=20=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20MIN-WIDTH:=20142px;=
-=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-border-y-spac=
-ing:=200px"=20=20=20=20=20=20=20=20cellSpacing=3D0=20cellPadding=3D0=20alig=
-n=3Dright>=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=
-=20=20=20=20=20=20<TD=20style=3D"MARGIN:=200px"><IMG=20class=3DCToWUd=20=20=
-=20=20=20=20=20=20=20style=3D"MAX-WIDTH:=20100%;=20BORDER-TOP:=200px;=20BOR=
-DER-RIGHT:=200px;=20WIDTH:=20142px;=20BORDER-BOTTOM:=200px;=20BORDER-LEFT:=
-=200px"=20=20=20=20=20=20=20=20=20src=3D"https://ci4.googleusercontent.com/=
-proxy/6hxcjOssktw9ozIcN2_aObKBewTSXd4nBGvSP9ML48lZHIgxv0aHvE1RMAD6X7WEnaOrJ=
-SaMnTU06FbPLLsd3Q=3Ds0-d-e1-ft#https://gen.sendtric.com/countdown/wubafbky0=
-6"=20=20=20=20=20=20=20=20=20width=3D142=20=20=20=20=20=20=20=20data-bit=3D=
-"iit"></TD></TR></TABLE></TD></TR></TABLE>=20=20=20=20=20<table=20role=3DPr=
-esentation=20=20=20=20=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Ar=
-ial,sans-serif;=20WIDTH:=20517px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-s=
-pacing:=200px;=20-x-border-y-spacing:=200px"=20=20=20=20=20=20=20cellSpacin=
-g=3D0=20cellPadding=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=
-=20=20=20<TR>=20=20=20=20=20=20=20=20<TD=20=20=20=20=20=20=20=20style=3D"FO=
-NT-SIZE:=200px;=20HEIGHT:=2017px;=20PADDING-BOTTOM:=200px;=20PADDING-TOP:=
-=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20LINE-HEIGHT:=2017px;=20PA=
-DDING-RIGHT:=200px"=20=20=20=20=20=20=20=20height=3D17>&nbsp;</TD></TR></TA=
-BLE>=20=20=20=20=20<table=20role=3DPresentation=20=20=20=20=20=20=20=20=20=
-=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=20517px;=20C=
-OLOR:=20rgb(68,68,68);=20DIRECTION:=20ltr;=20-x-border-x-spacing:=200px;=20=
--x-border-y-spacing:=200px"=20=20=20=20=20=20=20cellSpacing=3D0=20cellPaddi=
-ng=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=20=20=20<TR>=20=
-=20=20=20=20=20=20=20<TD=20=20=20=20=20=20=20=20style=3D"FONT-SIZE:=2016px;=
-=20FONT-FAMILY:=20Roboto,Arial,Helvetica,sans-serif;=20FONT-WEIGHT:=20400;=
-=20COLOR:=20rgb(95,99,104);=20PADDING-BOTTOM:=200px;=20TEXT-ALIGN:=20left;=
-=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20LINE-HEIGH=
-T:=2026px;=20PADDING-RIGHT:=200px">=20=20=20=20=20=20=20=20<H4=20=20=20=20=
-=20=20=20=20style=3D"FONT-SIZE:=2011px;=20FONT-FAMILY:=20Verdana,Arial,Helv=
-etica,sans-serif;=20WHITE-SPACE:=20normal;=20WORD-SPACING:=200px;=20TEXT-TR=
-ANSFORM:=20none;=20COLOR:=20rgb(102,102,102);=20FONT-STYLE:=20normal;=20ORP=
-HANS:=202;=20WIDOWS:=202;=20LETTER-SPACING:=20normal;=20BACKGROUND-COLOR:=
-=20rgb(255,255,255);=20TEXT-INDENT:=200px"><BR></H4>=20=20=20=20=20=20=20=
-=20<P=20=20=20=20=20=20=20=20style=3D"FONT-SIZE:=2011px;=20FONT-FAMILY:=20V=
-erdana,Arial,Helvetica,sans-serif;=20WHITE-SPACE:=20normal;=20WORD-SPACING:=
-=200px;=20TEXT-TRANSFORM:=20none;=20FONT-WEIGHT:=20400;=20COLOR:=20rgb(102,=
-102,102);=20FONT-STYLE:=20normal;=20ORPHANS:=202;=20WIDOWS:=202;=20LETTER-S=
-PACING:=20normal;=20BACKGROUND-COLOR:=20rgb(255,255,255);=20TEXT-INDENT:=20=
-0px"><SPAN=20=20=20=20=20=20=20=20style=3D"FONT-WEIGHT:=20bold">Dear=20User=
-</SPAN><SPAN=20=20=20=20=20=20=20=20style=3D"FONT-WEIGHT:=20bold">,&nbsp;<S=
-PAN=20=20=20=20=20=20=20=20style=3D"COLOR:=20rgb(0,0,153)"></SPAN></SPAN></=
-P>=20=20=20=20=20=20=20=20<P=20=20=20=20=20=20=20=20style=3D"FONT-SIZE:=201=
-1px;=20FONT-FAMILY:=20Verdana,Arial,Helvetica,sans-serif;=20WHITE-SPACE:=20=
-normal;=20WORD-SPACING:=200px;=20TEXT-TRANSFORM:=20none;=20FONT-WEIGHT:=204=
-00;=20COLOR:=20rgb(102,102,102);=20FONT-STYLE:=20normal;=20ORPHANS:=202;=20=
-WIDOWS:=202;=20LETTER-SPACING:=20normal;=20BACKGROUND-COLOR:=20rgb(255,255,=
-255);=20TEXT-INDENT:=200px">We=20=20=20=20=20=20=20=20are=20sending=20this=
-=20notification=20to=20the=20email=20linked=20=20=20=20=20=20=20=20in=20our=
-=20registration=20system.</P>=20=20=20=20=20=20=20=20<P=20=20=20=20=20=20=
-=20=20style=3D"FONT-SIZE:=2011px;=20FONT-FAMILY:=20Verdana,Arial,Helvetica,=
-sans-serif;=20WHITE-SPACE:=20normal;=20WORD-SPACING:=200px;=20TEXT-TRANSFOR=
-M:=20none;=20FONT-WEIGHT:=20400;=20COLOR:=20rgb(102,102,102);=20FONT-STYLE:=
-=20normal;=20ORPHANS:=202;=20WIDOWS:=202;=20LETTER-SPACING:=20normal;=20BAC=
-KGROUND-COLOR:=20rgb(255,255,255);=20TEXT-INDENT:=200px">Protocol:<SPAN>&nb=
-sp;</SPAN><B>77634927.</B></P><BR>=20=20=20=20=20=20=20=20<P=20=20=20=20=20=
-=20=20=20style=3D"FONT-SIZE:=2011px;=20FONT-FAMILY:=20Verdana,Arial,Helveti=
-ca,sans-serif;=20WHITE-SPACE:=20normal;=20WORD-SPACING:=200px;=20TEXT-TRANS=
-FORM:=20none;=20FONT-WEIGHT:=20400;=20COLOR:=20rgb(102,102,102);=20FONT-STY=
-LE:=20normal;=20ORPHANS:=202;=20WIDOWS:=202;=20LETTER-SPACING:=20normal;=20=
-BACKGROUND-COLOR:=20rgb(255,255,255);=20TEXT-INDENT:=200px"><BR><BR><B>The=
-=20=20=20=20=20=20=20=20deadline=20for=20responding=20to=20the=20notificati=
-on=20is=20up=20=20=20=20=20=20=20=20to=205=20(five)=20business=20days.=20If=
-=20there=20is=20no=20=20=20=20=20=20=20=20response,=20it=20will=20result=20=
-in=20a=20return=20to=20the=20sender=20=20=20=20=20=20=20=20of=20the=20shipm=
-ent.</B></P>=20=20=20=20=20=20=20=20<P=20class=3Dstyle3=20=20=20=20=20=20=
-=20=20style=3D"FONT-SIZE:=2011px;=20FONT-FAMILY:=20Verdana,Arial,Helvetica,=
-sans-serif;=20WHITE-SPACE:=20normal;=20WORD-SPACING:=200px;=20TEXT-TRANSFOR=
-M:=20none;=20FONT-WEIGHT:=20400;=20COLOR:=20rgb(102,102,102);=20FONT-STYLE:=
-=20normal;=20TEXT-ALIGN:=20left;=20ORPHANS:=202;=20WIDOWS:=202;=20LETTER-SP=
-ACING:=20normal;=20BACKGROUND-COLOR:=20rgb(255,255,255);=20TEXT-INDENT:=200=
-px">If=20=20=20=20=20=20=20=20you=20wish=20to=20withdraw=20from=20the=20afo=
-rementioned=20=20=20=20=20=20=20=20FedEx,=20take=20the=20form=20attached=20=
-below,=20filled=20in=20=20=20=20=20=20=20=20with=20your=20data=20and=20carr=
-ying=20your=20identity=20document=20=20=20=20=20=20=20=20in=20hand.</P></TD=
-></TR></TABLE>=20=20=20=20=20<table=20role=3DPresentation=20=20=20=20=20=20=
-=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=205=
-17px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-border-y=
--spacing:=200px"=20=20=20=20=20=20=20cellSpacing=3D0=20cellPadding=3D0=20wi=
-dth=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20=
-=20=20=20<TD=20=20=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=200px;=20PADDI=
-NG-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200=
-px">=20=20=20=20=20=20=20<table=20role=3DPresentation=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDT=
-H:=20517px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-bo=
-rder-y-spacing:=200px"=20=20=20=20=20=20=20=20cellSpacing=3D0=20cellPadding=
-=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<T=
-R>=20=20=20=20=20=20=20=20=20<TD=20=20=20=20=20=20=20=20=20style=3D"FONT-SI=
-ZE:=200px;=20HEIGHT:=2020px;=20PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=
-=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20LINE-HEIGHT:=2020px;=20PADDING-R=
-IGHT:=200px"=20=20=20=20=20=20=20=20=20height=3D20>&nbsp;</TD></TR></TABLE>=
-=20=20=20=20=20=20=20<table=20role=3DPresentation=20=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=
-=20517px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-bord=
-er-y-spacing:=200px"=20=20=20=20=20=20=20=20cellSpacing=3D0=20cellPadding=
-=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20<T=
-R>=20=20=20=20=20=20=20=20=20<TD=20=20=20=20=20=20=20=20=20style=3D"PADDING=
--BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200p=
-x;=20PADDING-RIGHT:=200px">=20=20=20=20=20=20=20<table=20role=3DPresentatio=
-n=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=
-=20Arial,sans-serif;=20WIDTH:=20517px;=20COLOR:=20rgb(68,68,68);=20-x-borde=
-r-x-spacing:=200px;=20-x-border-y-spacing:=200px"=20=20=20=20=20=20=20=20=
-=20cellSpacing=3D0=20cellPadding=3D0=20width=3D"100%">=20=20=20=20=20=20=20=
-=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20=20=20=20=20<TD=20=20=20=
-=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=200px;=20TEXT-ALIGN:=20center;=
-=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING-RI=
-GHT:=200px"=20=20=20=20=20=20=20=20=20align=3Dcenter>=20=20=20=20=20=20=20=
-=20=20<DIV=20style=3D"TEXT-ALIGN:=20center"><A=20=20=20=20=20=20=20=20=20st=
-yle=3D"FONT-SIZE:=2016px;=20TEXT-DECORATION:=20none=20!important;=20FONT-FA=
-MILY:=20Roboto,Arial,Helvetica,sans-serif;=20WIDTH:=20auto;=20TEXT-TRANSFOR=
-M:=20uppercase;=20FONT-WEIGHT:=20600;=20COLOR:=20rgb(255,255,255);=20PADDIN=
-G-BOTTOM:=208px;=20DIRECTION:=20ltr;=20TEXT-ALIGN:=20center;=20PADDING-TOP:=
-=208px;=20PADDING-LEFT:=2030px;=20MARGIN:=200px;=20LINE-HEIGHT:=2032px;=20P=
-ADDING-RIGHT:=2030px;=20BACKGROUND-COLOR:=20rgb(25,103,210)"=20=20=20=20=20=
-=20=20=20=20href=3D"http://157.15.184.35.bc.googleusercontent.com/3455001-2=
-4.2023.5.18.8794bt"=20=20=20=20=20=20=20=20=20target=3D_blank=20=20=20=20=
-=20=20=20=20=20data-saferedirecturl=3D"https://www.google.com/url?q=3Dhttps=
-://notifications.google.com/g/p/ACUgQrEejvKRLP21wGHPZyZJNX4Lf_DbSiUN8lcnqJF=
-TsNcqqTEBIlXu9WIrYW7JMYj9wPC2pkxe7MguST1K8TysCUMzg5FSrp1x_eV6YDzCyq2IHlk1Ld=
-RkLUMB71OV5eKQ7uSFYnpheCOOinsYpE5_lD3lsw9tA9cA6dQqk6x-JH37MFWgixngOdBHrOShm=
-AE66BvsC9qRozwkNCQTdOC0_ZLqhWeWLRvC1KT3g7CHygT740DiI3qE-XqQc6vtm1ELINjaXsxg=
-lsJwnGccJvzrNM9N3614Ij-fL5f63RhC7gB2xQUPiTCZJD6VMKD5PaBu09pUgv2YAqtkFwO_d6e=
-Cn4LAjKqzQdtYXcdYohRacgwIDj_aavL-1C64ZGuW3DpLmEec1oy28XkdW7ckT0_aWjBxHqj9m5=
-yUlC3lzxs&amp;source=3Dgmail&amp;ust=3D1683848491126000&amp;usg=3DAOvVaw0Ra=
--GUPi8kOCCenytHIKSb">VIEW=20=20=20=20=20=20=20=20=20INFORMATION</A></DIV></=
-TD></TR></TABLE></TD></TR></TABLE><BR></TD></TR></TABLE><BR>=20=20=20=20=20=
-<table=20role=3DPresentation=20=20=20=20=20=20=20=20=20=20=20=20=20style=3D=
-"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=20517px;=20COLOR:=20rgb(68,68,68=
-);=20DIRECTION:=20ltr;=20-x-border-x-spacing:=200px;=20-x-border-y-spacing:=
-=200px"=20=20=20=20=20=20=20cellSpacing=3D0=20cellPadding=3D0=20width=3D"10=
-0%">=20=20=20=20=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20=20=20=20<=
-TD=20=20=20=20=20=20=20=20style=3D"FONT-SIZE:=2016px;=20FONT-FAMILY:=20Robo=
-to,Arial,Helvetica,sans-serif;=20FONT-WEIGHT:=20700;=20COLOR:=20rgb(95,99,1=
-04);=20PADDING-BOTTOM:=200px;=20TEXT-ALIGN:=20left;=20PADDING-TOP:=200px;=
-=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20LINE-HEIGHT:=2026px;=20PADDING-R=
-IGHT:=200px"><SPAN=20=20=20=20=20=20=20=20style=3D"WHITE-SPACE:=20nowrap=20=
-!important">FedEx=20=20=20=20=20=20=20=20team</SPAN></TD></TR></TABLE><BR><=
-/TD>=20=20=20=20=20=20<TD=20=20=20=20=20=20style=3D"MAX-WIDTH:=2040px;=20WI=
-DTH:=2040px;=20PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=
-=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20width=3D4=
-0>&nbsp;</TD></TR></TABLE></TD></TR></TABLE>=20=20<table=20role=3DPresentat=
-ion=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=
-=20597px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=20-x-bord=
-er-y-spacing:=200px"=20=20=20=20cellSpacing=3D0=20cellPadding=3D0=20width=
-=3D"100%">=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20<TD=20=20=20=20=20styl=
-e=3D"PADDING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20=
-MARGIN:=200px;=20PADDING-RIGHT:=200px">=20=20=20=20<table=20role=3DPresenta=
-tion=20=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=
-=20WIDTH:=20597px;=20COLOR:=20rgb(68,68,68);=20-x-border-x-spacing:=200px;=
-=20-x-border-y-spacing:=200px"=20=20=20=20=20cellSpacing=3D0=20cellPadding=
-=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20<TR>=20=20=20=20=20=
-=20<TD=20=20=20=20=20=20style=3D"MAX-WIDTH:=2040px;=20WIDTH:=2040px;=20PADD=
-ING-BOTTOM:=200px;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=
-=200px;=20PADDING-RIGHT:=200px"=20=20=20=20=20=20width=3D40>&nbsp;</TD>=20=
-=20=20=20=20=20<TD=20=20=20=20=20=20style=3D"PADDING-BOTTOM:=200px;=20PADDI=
-NG-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20PADDING-RIGHT:=200=
-px"><BR>=20=20=20=20=20<table=20role=3DPresentation=20=20=20=20=20=20=20=20=
-=20=20=20=20=20style=3D"FONT-FAMILY:=20Arial,sans-serif;=20WIDTH:=20517px;=
-=20COLOR:=20rgb(68,68,68);=20DIRECTION:=20ltr;=20-x-border-x-spacing:=200px=
-;=20-x-border-y-spacing:=200px"=20=20=20=20=20=20=20cellSpacing=3D0=20cellP=
-adding=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=20=20=20=20=20<TR>=
-=20=20=20=20=20=20=20=20<TD=20=20=20=20=20=20=20=20style=3D"FONT-SIZE:=2010=
-px;=20FONT-FAMILY:=20Roboto,Arial,Helvetica,sans-serif;=20FONT-WEIGHT:=2040=
-0;=20COLOR:=20rgb(68,68,68);=20PADDING-BOTTOM:=200px;=20TEXT-ALIGN:=20cente=
-r;=20PADDING-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20LINE-HEI=
-GHT:=2015px;=20PADDING-RIGHT:=200px"><SPAN=20=20=20=20=20=20=20=20style=3D"=
-FONT-FAMILY:=20inherit;=20COLOR:=20">&copy;=202023=20FedEx=20=20=20=20=20=
-=20=20=20LLC=201600=20Amphitheatre=20Parkway,=20Mountain=20View,=20CA=20=20=
-=20=20=20=20=20=2094043</SPAN></TD></TR></TABLE>=20=20=20=20=20<table=20rol=
-e=3DPresentation=20=20=20=20=20=20=20=20=20=20=20=20=20style=3D"FONT-FAMILY=
-:=20Arial,sans-serif;=20WIDTH:=20517px;=20COLOR:=20rgb(68,68,68);=20-x-bord=
-er-x-spacing:=200px;=20-x-border-y-spacing:=200px"=20=20=20=20=20=20=20cell=
-Spacing=3D0=20cellPadding=3D0=20width=3D"100%">=20=20=20=20=20=20=20=20=20=
-=20=20=20=20=20<TR>=20=20=20=20=20=20=20=20<TD=20=20=20=20=20=20=20=20style=
-=3D"FONT-SIZE:=200px;=20HEIGHT:=2012px;=20PADDING-BOTTOM:=200px;=20PADDING-=
-TOP:=200px;=20PADDING-LEFT:=200px;=20MARGIN:=200px;=20LINE-HEIGHT:=2012px;=
-=20PADDING-RIGHT:=200px"=20=20=20=20=20=20=20=20height=3D12>&nbsp;</TD></TR=
-></TABLE><BR></TD></TR></TABLE></TD></TR></TABLE></TD></TR></TABLE></TD></T=
-R></TABLE><img=20src=3D"https://open-click.smtplw.com.br/openings/m/46f9ae9=
-578de8501d06fefb0613323cd-1684793735.26/a/46f9ae9578de8501d06fefb0613323cd/=
-r/Njk2ZTc0NjU2YzJkNjc3Njc0MmQ2NDY1NzY0MDZjNjk3Mzc0NzMyZTY2NzI2NTY1NjQ2NTczN=
-mI3NDZmNzAyZTZmNzI2Nw=3D=3D/v/f7253a56150c818320d4bada333aa3e59c390b2e"=20a=
-lt=3D""=20width=3D"0"=20height=3D"0"=20style=3D"border:0;=20width:0;=20heig=
-ht:0;=20overflow:hidden;=20visibility:hidden;"=20/></body>
-=20</html>
-=20
+The above could be simplified to something like:
 
-------=_NextPart_757_4686_A796E746.76778650--
+	iommu_group = iommu_group_get(device->dev);
+	if (!iommu_group && !vfio_iommu)
+		return -EINVAL;
+
+	device->noiommu = !iommu_group;
+	iommu_group_put(iommu_group); /* Accepts NULL */
+	return 0;
+
+Which would actually work regardless of CONFIG_VFIO_GROUP, where maybe
+this could then be moved before vfio_device_set_group() and become the
+de facto exit point for invalid noiommu configurations and maybe we
+could remove the test from the group code (with a comment to note that
+it's been tested prior)?  Thanks,
+
+Alex
+
+> As noiommu devices is checked and there are multiple places which needs
+> to test noiommu devices, this also adds a flag to mark noiommu devices.
+> Hence the callers of vfio_device_is_noiommu() can be converted to test
+> vfio_device->noiommu.
+> 
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> ---
+>  drivers/vfio/device_cdev.c |  4 ++--
+>  drivers/vfio/group.c       |  2 +-
+>  drivers/vfio/iommufd.c     | 10 +++++-----
+>  drivers/vfio/vfio.h        |  7 ++++---
+>  drivers/vfio/vfio_main.c   |  6 +++++-
+>  include/linux/vfio.h       |  1 +
+>  6 files changed, 18 insertions(+), 12 deletions(-)
+> 
+> diff --git a/drivers/vfio/device_cdev.c b/drivers/vfio/device_cdev.c
+> index 3f14edb80a93..6d7f50ee535d 100644
+> --- a/drivers/vfio/device_cdev.c
+> +++ b/drivers/vfio/device_cdev.c
+> @@ -111,7 +111,7 @@ long vfio_device_ioctl_bind_iommufd(struct vfio_device_file *df,
+>  	if (df->group)
+>  		return -EINVAL;
+>  
+> -	if (vfio_device_is_noiommu(device) && !capable(CAP_SYS_RAWIO))
+> +	if (device->noiommu && !capable(CAP_SYS_RAWIO))
+>  		return -EPERM;
+>  
+>  	ret = vfio_device_block_group(device);
+> @@ -157,7 +157,7 @@ long vfio_device_ioctl_bind_iommufd(struct vfio_device_file *df,
+>  	device->cdev_opened = true;
+>  	mutex_unlock(&device->dev_set->lock);
+>  
+> -	if (vfio_device_is_noiommu(device))
+> +	if (device->noiommu)
+>  		dev_warn(device->dev, "noiommu device is bound to iommufd by user "
+>  			 "(%s:%d)\n", current->comm, task_pid_nr(current));
+>  	return 0;
+> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+> index 7aacbd9d08c9..bf4335bce892 100644
+> --- a/drivers/vfio/group.c
+> +++ b/drivers/vfio/group.c
+> @@ -192,7 +192,7 @@ static int vfio_device_group_open(struct vfio_device_file *df)
+>  		vfio_device_group_get_kvm_safe(device);
+>  
+>  	df->iommufd = device->group->iommufd;
+> -	if (df->iommufd && vfio_device_is_noiommu(device) && device->open_count == 0) {
+> +	if (df->iommufd && device->noiommu && device->open_count == 0) {
+>  		ret = vfio_iommufd_compat_probe_noiommu(device,
+>  							df->iommufd);
+>  		if (ret)
+> diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
+> index 799ea322a7d4..dfe706f1e952 100644
+> --- a/drivers/vfio/iommufd.c
+> +++ b/drivers/vfio/iommufd.c
+> @@ -71,7 +71,7 @@ int vfio_iommufd_bind(struct vfio_device_file *df)
+>  
+>  	lockdep_assert_held(&vdev->dev_set->lock);
+>  
+> -	if (vfio_device_is_noiommu(vdev))
+> +	if (vdev->noiommu)
+>  		return vfio_iommufd_noiommu_bind(vdev, ictx, &df->devid);
+>  
+>  	return vdev->ops->bind_iommufd(vdev, ictx, &df->devid);
+> @@ -86,7 +86,7 @@ int vfio_iommufd_compat_attach_ioas(struct vfio_device *vdev,
+>  	lockdep_assert_held(&vdev->dev_set->lock);
+>  
+>  	/* compat noiommu does not need to do ioas attach */
+> -	if (vfio_device_is_noiommu(vdev))
+> +	if (vdev->noiommu)
+>  		return 0;
+>  
+>  	ret = iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id);
+> @@ -103,7 +103,7 @@ void vfio_iommufd_unbind(struct vfio_device_file *df)
+>  
+>  	lockdep_assert_held(&vdev->dev_set->lock);
+>  
+> -	if (vfio_device_is_noiommu(vdev)) {
+> +	if (vdev->noiommu) {
+>  		vfio_iommufd_noiommu_unbind(vdev);
+>  		return;
+>  	}
+> @@ -116,7 +116,7 @@ int vfio_iommufd_attach(struct vfio_device *vdev, u32 *pt_id)
+>  {
+>  	lockdep_assert_held(&vdev->dev_set->lock);
+>  
+> -	if (vfio_device_is_noiommu(vdev))
+> +	if (vdev->noiommu)
+>  		return 0;
+>  
+>  	return vdev->ops->attach_ioas(vdev, pt_id);
+> @@ -126,7 +126,7 @@ void vfio_iommufd_detach(struct vfio_device *vdev)
+>  {
+>  	lockdep_assert_held(&vdev->dev_set->lock);
+>  
+> -	if (!vfio_device_is_noiommu(vdev))
+> +	if (!vdev->noiommu)
+>  		vdev->ops->detach_ioas(vdev);
+>  }
+>  
+> diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+> index 50553f67600f..c8579d63b2b9 100644
+> --- a/drivers/vfio/vfio.h
+> +++ b/drivers/vfio/vfio.h
+> @@ -106,10 +106,11 @@ bool vfio_device_has_container(struct vfio_device *device);
+>  int __init vfio_group_init(void);
+>  void vfio_group_cleanup(void);
+>  
+> -static inline bool vfio_device_is_noiommu(struct vfio_device *vdev)
+> +static inline int vfio_device_set_noiommu(struct vfio_device *device)
+>  {
+> -	return IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
+> -	       vdev->group->type == VFIO_NO_IOMMU;
+> +	device->noiommu = IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
+> +			  device->group->type == VFIO_NO_IOMMU;
+> +	return 0;
+>  }
+>  
+>  #if IS_ENABLED(CONFIG_VFIO_CONTAINER)
+> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> index 8c3f26b4929b..8979f320d620 100644
+> --- a/drivers/vfio/vfio_main.c
+> +++ b/drivers/vfio/vfio_main.c
+> @@ -289,8 +289,12 @@ static int __vfio_register_dev(struct vfio_device *device,
+>  	if (ret)
+>  		return ret;
+>  
+> +	ret = vfio_device_set_noiommu(device);
+> +	if (ret)
+> +		goto err_out;
+> +
+>  	ret = dev_set_name(&device->device, "%svfio%d",
+> -			   vfio_device_is_noiommu(device) ? "noiommu-" : "", device->index);
+> +			   device->noiommu ? "noiommu-" : "", device->index);
+>  	if (ret)
+>  		goto err_out;
+>  
+> diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> index cf9d082a623c..fa13889e763f 100644
+> --- a/include/linux/vfio.h
+> +++ b/include/linux/vfio.h
+> @@ -68,6 +68,7 @@ struct vfio_device {
+>  	bool iommufd_attached;
+>  #endif
+>  	bool cdev_opened:1;
+> +	bool noiommu:1;
+>  };
+>  
+>  /**
+
