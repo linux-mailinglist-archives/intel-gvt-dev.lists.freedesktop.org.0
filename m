@@ -2,72 +2,72 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92E2570C8CD
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 May 2023 21:42:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AC70D70CAD9
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 22 May 2023 22:24:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5C3B210E09D;
-	Mon, 22 May 2023 19:42:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7DE2710E37D;
+	Mon, 22 May 2023 20:24:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 05A6010E260
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6617310E37D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 May 2023 19:42:26 +0000 (UTC)
+ Mon, 22 May 2023 20:24:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1684784546;
+ s=mimecast20190719; t=1684787084;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=0QiUgfZ27vhUH7T2elAP8wbYahUEm4EAd/4gdNYB9FQ=;
- b=LfLRDd4BstorqEoqh7UbudpgFl/SnFd+TZFIQbY8fPDApuG01oMMWErb+zgu6hQ9geVn+H
- 41zShjlGxJ5II2nb+RGyDVuTbxjLE+0TgpoJjerJkkM84SAiUjxGCqN/jqtlAXpoFcx4us
- 5SMmo8a4pt6sGlmR6p9NRVc1xxZTgSM=
-Received: from mail-il1-f199.google.com (mail-il1-f199.google.com
- [209.85.166.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=NENApr2cZp+USCY75WyJ/FbkT9bE21OL+57iVe/1FUo=;
+ b=R51XeQVujOhcJHciJ2jR5Z7Yfj8F8UiqUkOliEB2DEzh2K7y4hVuJMlcUPPi66MCIIBovR
+ PHuvt1+E8AMJxqUJ6MtpA+gZfxL5uY3/nx/KNs5OEHwohUHoxRYDye4gZAJuvYezymm/Ij
+ 439Aj5UhgbolcYd4NXoHf0izDLA1gbw=
+Received: from mail-il1-f200.google.com (mail-il1-f200.google.com
+ [209.85.166.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-372-yWqtrGYrNnCh8Ipx6jGDvg-1; Mon, 22 May 2023 15:42:22 -0400
-X-MC-Unique: yWqtrGYrNnCh8Ipx6jGDvg-1
-Received: by mail-il1-f199.google.com with SMTP id
- e9e14a558f8ab-33456e0a12bso22705ab.2
+ us-mta-568-kcH7nlT0MHSi6j6_7S_oaw-1; Mon, 22 May 2023 16:24:40 -0400
+X-MC-Unique: kcH7nlT0MHSi6j6_7S_oaw-1
+Received: by mail-il1-f200.google.com with SMTP id
+ e9e14a558f8ab-3382b8b357aso250285ab.3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 22 May 2023 12:42:22 -0700 (PDT)
+ Mon, 22 May 2023 13:24:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684784541; x=1687376541;
+ d=1e100.net; s=20221208; t=1684787080; x=1687379080;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=0QiUgfZ27vhUH7T2elAP8wbYahUEm4EAd/4gdNYB9FQ=;
- b=QgYs730m8GEpncUzy/osb22OvlO9q1cA7+JG3n8uLAAmQSlHbOiUQ08PCI7ZdGO0sF
- SjWSG3J2xh3uqtwb2hIGdh39nQimlNPC2GuzgsoKGrcrwJ7PsUhCgUobmDb/KZyi5ICY
- OX1vZ97u48FLFMGBqThtGIaYIxnjyKC5gJwcYyY+47C34rBdFux0H+IrWoMuTl8ehUnO
- SV+wPe4dK5lOeDMulAazjtXqNrHCD/yiclYM6EuCem6S3kbUVzzgJABPu2gRuZ9L+Mko
- y6e7o3Wh9OdU2UGyLopRzmWPPf/EnhMK0oxztXpDHSYH8m5nF8C6agcbPVCvxObtO8Re
- hOPw==
-X-Gm-Message-State: AC+VfDyHYaiGJ75HXIid0QaVYFx5xomNvwZVsfnGHkvDkTyCCpodR6Uy
- 3QXQWepIT+jhBf/IPnq3PWZvDzM9Auo69A3SJUMlvW/Ymp2VCJRjcs81jGooKSXKk7LP1MvgiOa
- Vlsl3+XPwxomfrotZAWixdKcxwR0Bs7A6cg==
-X-Received: by 2002:a92:dc08:0:b0:331:8bd6:a9c7 with SMTP id
- t8-20020a92dc08000000b003318bd6a9c7mr6931273iln.27.1684784541456; 
- Mon, 22 May 2023 12:42:21 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ74I8TmnoMbnFuK4lYPwPfhgU2U8XhGn4fHHsmYoBIUUfG0w6LSBTxJ3UBS4ue64IU7QDvPPg==
-X-Received: by 2002:a92:dc08:0:b0:331:8bd6:a9c7 with SMTP id
- t8-20020a92dc08000000b003318bd6a9c7mr6931241iln.27.1684784541168; 
- Mon, 22 May 2023 12:42:21 -0700 (PDT)
+ bh=NENApr2cZp+USCY75WyJ/FbkT9bE21OL+57iVe/1FUo=;
+ b=XAmvj6Md3s3jK1/65y5rNNEr4RAuTS7qxh/GMG1ypEZBlNeyZrL+x0hPfyaEDrxmQk
+ yH31MlSLBjZdlxiC3JiNOuObHK2wCWnpBK6XpTDyEYqrWeGDc3neA8xnDYmFfQPLFiql
+ 6A12wWgKjhaRccTPbpH9sqbjStGdGmFTES3Y75LcbvQJmsBakTOwQ/5KFOq1hfLtP3Sl
+ zSWOiA1Z0LulVtdVjdzX0roYHwRTWdFZfFXlxTjuwUz0WO4qbrZov8TnwrI1rb9ts8zu
+ HCWv995ZOQ9hMMYwAC/DBtHl/eun1DVEoVYElx3oETHcuu+wSpszHj4k62vZIhyCtNxC
+ IDXg==
+X-Gm-Message-State: AC+VfDxSXdgvJTaJvBzh5FUKH2fB+T5yU3iku/QcPwqtsuFO91THsL6n
+ xLsHc08i1OmJ/MYHXq9X7rogDKpOZQuS8Pm2A7b7aQbEqGqudfQkYCFXPzbAGCzjD3CJABDuj1h
+ VHFq38JmOOQAOarOuNafLZRNuHAOiNJ/i0w==
+X-Received: by 2002:a92:c64d:0:b0:338:e5a9:e43f with SMTP id
+ 13-20020a92c64d000000b00338e5a9e43fmr4889677ill.17.1684787079727; 
+ Mon, 22 May 2023 13:24:39 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ512CeDeZO8hU3xF8vOUYaaUxxB6hwvCnGroyhxR9InVCYt68F99GX0+3UcrYhQidOeA0YXTA==
+X-Received: by 2002:a92:c64d:0:b0:338:e5a9:e43f with SMTP id
+ 13-20020a92c64d000000b00338e5a9e43fmr4889656ill.17.1684787079467; 
+ Mon, 22 May 2023 13:24:39 -0700 (PDT)
 Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- t1-20020a92cc41000000b0032b3a49d5fdsm1900813ilq.75.2023.05.22.12.42.19
+ m16-20020a92d710000000b0032e1f94be7bsm1919596iln.33.2023.05.22.13.24.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 May 2023 12:42:20 -0700 (PDT)
-Date: Mon, 22 May 2023 13:42:19 -0600
+ Mon, 22 May 2023 13:24:38 -0700 (PDT)
+Date: Mon, 22 May 2023 14:24:35 -0600
 From: Alex Williamson <alex.williamson@redhat.com>
 To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v11 03/23] vfio: Accept vfio device file in the KVM
- facing kAPI
-Message-ID: <20230522134219.4a462b09.alex.williamson@redhat.com>
-In-Reply-To: <20230513132827.39066-4-yi.l.liu@intel.com>
+Subject: Re: [PATCH v11 10/23] vfio-iommufd: Move noiommu compat probe out
+ of vfio_iommufd_bind()
+Message-ID: <20230522142435.298ea794.alex.williamson@redhat.com>
+In-Reply-To: <20230513132827.39066-11-yi.l.liu@intel.com>
 References: <20230513132827.39066-1-yi.l.liu@intel.com>
- <20230513132827.39066-4-yi.l.liu@intel.com>
+ <20230513132827.39066-11-yi.l.liu@intel.com>
 X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -98,153 +98,134 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, 13 May 2023 06:28:07 -0700
+On Sat, 13 May 2023 06:28:14 -0700
 Yi Liu <yi.l.liu@intel.com> wrote:
 
-> This makes the vfio file kAPIs to accept vfio device files, also a
-> preparation for vfio device cdev support.
-> 
-> For the kvm set with vfio device file, kvm pointer is stored in struct
-> vfio_device_file, and use kvm_ref_lock to protect kvm set and kvm
-> pointer usage within VFIO. This kvm pointer will be set to vfio_device
-> after device file is bound to iommufd in the cdev path.
+> into vfio_device_group_open(). This is more consistent with what will
+> be done in vfio device cdev path.
+
+Same comment regarding flowing commit subject into body on this series.
+
 > 
 > Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 > Tested-by: Terrence Xu <terrence.xu@intel.com>
 > Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Tested-by: Matthew Rosato <mjrosato@linux.ibm.com>
 > Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 > Tested-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 > ---
->  drivers/vfio/vfio.h      |  2 ++
->  drivers/vfio/vfio_main.c | 36 +++++++++++++++++++++++++++++++++++-
->  2 files changed, 37 insertions(+), 1 deletion(-)
+>  drivers/vfio/group.c   |  6 ++++++
+>  drivers/vfio/iommufd.c | 32 +++++++++++++++++++-------------
+>  drivers/vfio/vfio.h    |  9 +++++++++
+>  3 files changed, 34 insertions(+), 13 deletions(-)
 > 
-> diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-> index b1e327a85a32..69e1a0692b06 100644
-> --- a/drivers/vfio/vfio.h
-> +++ b/drivers/vfio/vfio.h
-> @@ -18,6 +18,8 @@ struct vfio_container;
+> diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+> index a17584e8be15..cfd0b9254bbc 100644
+> --- a/drivers/vfio/group.c
+> +++ b/drivers/vfio/group.c
+> @@ -192,6 +192,12 @@ static int vfio_device_group_open(struct vfio_device_file *df)
+>  		vfio_device_group_get_kvm_safe(device);
 >  
->  struct vfio_device_file {
->  	struct vfio_device *device;
-> +	spinlock_t kvm_ref_lock; /* protect kvm field */
-> +	struct kvm *kvm;
->  };
+>  	df->iommufd = device->group->iommufd;
+> +	if (df->iommufd && vfio_device_is_noiommu(device) && device->open_count == 0) {
+> +		ret = vfio_iommufd_compat_probe_noiommu(device,
+> +							df->iommufd);
+> +		if (ret)
+> +			goto out_put_kvm;
+> +	}
 >  
->  void vfio_device_put_registration(struct vfio_device *device);
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index 4665791aa2eb..8ef9210ad2aa 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -429,6 +429,7 @@ vfio_allocate_device_file(struct vfio_device *device)
->  		return ERR_PTR(-ENOMEM);
->  
->  	df->device = device;
-> +	spin_lock_init(&df->kvm_ref_lock);
->  
->  	return df;
+>  	ret = vfio_device_open(df);
+>  	if (ret) {
+> diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
+> index a18e920be164..7a654a1437f0 100644
+> --- a/drivers/vfio/iommufd.c
+> +++ b/drivers/vfio/iommufd.c
+> @@ -46,6 +46,24 @@ static void vfio_iommufd_noiommu_unbind(struct vfio_device *vdev)
+>  	}
 >  }
-> @@ -1190,13 +1191,23 @@ const struct file_operations vfio_device_fops = {
->  	.mmap		= vfio_device_fops_mmap,
->  };
 >  
-> +static struct vfio_device *vfio_device_from_file(struct file *file)
+> +int vfio_iommufd_compat_probe_noiommu(struct vfio_device *device,
+> +				      struct iommufd_ctx *ictx)
 > +{
-> +	struct vfio_device_file *df = file->private_data;
+> +	u32 ioas_id;
 > +
-> +	if (file->f_op != &vfio_device_fops)
-> +		return NULL;
-> +	return df->device;
-> +}
-> +
->  /**
->   * vfio_file_is_valid - True if the file is valid vfio file
->   * @file: VFIO group file or VFIO device file
->   */
->  bool vfio_file_is_valid(struct file *file)
->  {
-> -	return vfio_group_from_file(file);
-> +	return vfio_group_from_file(file) ||
-> +	       vfio_device_from_file(file);
->  }
->  EXPORT_SYMBOL_GPL(vfio_file_is_valid);
->  
-> @@ -1211,16 +1222,36 @@ EXPORT_SYMBOL_GPL(vfio_file_is_valid);
->   */
->  bool vfio_file_enforced_coherent(struct file *file)
->  {
-> +	struct vfio_device *device;
->  	struct vfio_group *group;
->  
->  	group = vfio_group_from_file(file);
->  	if (group)
->  		return vfio_group_enforced_coherent(group);
->  
-> +	device = vfio_device_from_file(file);
-> +	if (device)
-> +		return device_iommu_capable(device->dev,
-> +					    IOMMU_CAP_ENFORCE_CACHE_COHERENCY);
-> +
->  	return true;
->  }
->  EXPORT_SYMBOL_GPL(vfio_file_enforced_coherent);
->  
-> +static void vfio_device_file_set_kvm(struct file *file, struct kvm *kvm)
-
-A general nit, we've been trying to maintain function naming based on
-the object it operates on in vfio, for example vfio_group_set_kvm()
-clearly operates on the struct vfio_group object.  Here we have
-vfio_device_file_set_kvm(), which would suggest it works on a
-struct vfio_device_file, but we're passing a struct file.
-vfio_file_set_kvm() is already taken below, so should this be:
-
-static void vfio_df_set_kvm(struct vfio_device_file *df,
-			    struct kvm *kvm)
-
-After this series We end up with a number of functions where the object
-doesn't really match, ex:
-
-	vfio_device_open -> vfio_df_open
-	vfio_device_close -> vfio_df_close
-	vfio_device_group_close -> vfio_df_group_close
-	vfio_iommufd_bind -> vfio_df_iommufd_bind
-	vfio_iommufd_unbind -> vfio_df_iommufd_unbind
-	vfio_device_cdev_close -> vfio_df_cdev_close
-	vfio_device_ioctl_bind_iommufd -> vfio_df_ioctl_bind_iommufd
-	vfio_ioctl_device_attach -> vfio_df_ioctl_attach_pt
-	vfio_ioctl_device_detach -> vfio_df_ioctl_detach_pt
-
-"df" is just a suggestion, maybe someone has a better one.  Thanks,
-
-Alex
-
-> +{
-> +	struct vfio_device_file *df = file->private_data;
+> +	if (!capable(CAP_SYS_RAWIO))
+> +		return -EPERM;
 > +
 > +	/*
-> +	 * The kvm is first recorded in the vfio_device_file, and will
-> +	 * be propagated to vfio_device::kvm when the file is bound to
-> +	 * iommufd successfully in the vfio device cdev path.
+> +	 * Require no compat ioas to be assigned to proceed.  The basic
+> +	 * statement is that the user cannot have done something that
+> +	 * implies they expected translation to exist
 > +	 */
-> +	spin_lock(&df->kvm_ref_lock);
-> +	df->kvm = kvm;
-> +	spin_unlock(&df->kvm_ref_lock);
+> +	if (!iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id))
+> +		return -EPERM;
+> +	return 0;
+> +}
+
+I think the purpose of this function is to keep the iommufd namespace
+out of the group, but we're muddying it as a general grab bag of
+noiommu validation.  What if the caller retained the RAWIO test and
+comment, and this function simply became a wrapper around the iommufd
+function, ex:
+
+bool vfio_iommufd_device_has_compat_ioas(struct vfio_device *device,
+					 struct iommufd_ctx *ictx)
+{
+	u32 ioas_id;
+
+	return !iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id));
+}
+
+Thanks,
+Alex
+
+> +
+>  int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
+>  {
+>  	u32 ioas_id;
+> @@ -54,20 +72,8 @@ int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
+>  
+>  	lockdep_assert_held(&vdev->dev_set->lock);
+>  
+> -	if (vfio_device_is_noiommu(vdev)) {
+> -		if (!capable(CAP_SYS_RAWIO))
+> -			return -EPERM;
+> -
+> -		/*
+> -		 * Require no compat ioas to be assigned to proceed. The basic
+> -		 * statement is that the user cannot have done something that
+> -		 * implies they expected translation to exist
+> -		 */
+> -		if (!iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id))
+> -			return -EPERM;
+> -
+> +	if (vfio_device_is_noiommu(vdev))
+>  		return vfio_iommufd_noiommu_bind(vdev, ictx, &device_id);
+> -	}
+>  
+>  	ret = vdev->ops->bind_iommufd(vdev, ictx, &device_id);
+>  	if (ret)
+> diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+> index 785afc40ece8..8884b557fb26 100644
+> --- a/drivers/vfio/vfio.h
+> +++ b/drivers/vfio/vfio.h
+> @@ -234,9 +234,18 @@ static inline void vfio_container_cleanup(void)
+>  #endif
+>  
+>  #if IS_ENABLED(CONFIG_IOMMUFD)
+> +int vfio_iommufd_compat_probe_noiommu(struct vfio_device *device,
+> +				      struct iommufd_ctx *ictx);
+>  int vfio_iommufd_bind(struct vfio_device *device, struct iommufd_ctx *ictx);
+>  void vfio_iommufd_unbind(struct vfio_device *device);
+>  #else
+> +static inline int
+> +vfio_iommufd_compat_probe_noiommu(struct vfio_device *device,
+> +				  struct iommufd_ctx *ictx)
+> +{
+> +	return -EOPNOTSUPP;
 > +}
 > +
->  /**
->   * vfio_file_set_kvm - Link a kvm with VFIO drivers
->   * @file: VFIO group file or VFIO device file
-> @@ -1236,6 +1267,9 @@ void vfio_file_set_kvm(struct file *file, struct kvm *kvm)
->  	group = vfio_group_from_file(file);
->  	if (group)
->  		vfio_group_set_kvm(group, kvm);
-> +
-> +	if (vfio_device_from_file(file))
-> +		vfio_device_file_set_kvm(file, kvm);
->  }
->  EXPORT_SYMBOL_GPL(vfio_file_set_kvm);
->  
+>  static inline int vfio_iommufd_bind(struct vfio_device *device,
+>  				    struct iommufd_ctx *ictx)
+>  {
 
