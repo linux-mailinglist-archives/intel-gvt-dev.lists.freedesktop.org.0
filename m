@@ -1,85 +1,87 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16AFE70D09C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 May 2023 03:41:49 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B0A7D70D0DE
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 23 May 2023 04:13:13 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8D51910E306;
-	Tue, 23 May 2023 01:41:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1C4E810E3B5;
+	Tue, 23 May 2023 02:13:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0BBBD10E306;
- Tue, 23 May 2023 01:41:45 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CF4A310E3B5;
+ Tue, 23 May 2023 02:13:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1684806106; x=1716342106;
+ t=1684807990; x=1716343990;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=KMDccTNjmzVy8AMX+3k9ZjVsnRxvHfXaftPjtNrXQVw=;
- b=Fr642t0wjOHa1EaWibLamPFG59SRUupYu59qd3nOjwWoCXFhMcjbj+f0
- AHecXMALe2xuxzbZOkSdkfBwNYLskYC+++MVE19EsCjnS7x8z2hUaCMBK
- SxXb3aImzHp0Nfp3+UXf2jeusUqj0uvhr44m/EbfroaeKSxcpj3eIiZL4
- +1QoPdJVm2N7G7sK5AwXNcJ2X25VItltJt1iidJ9jwwujKCeqBApFQOnT
- YtEDE8fS/Ws075Kqg7CgDE8KIt/uDzETIxtOVST4QWK/qCWq2jNfNPdxa
- Ulft4Zz3sD+CWaVQqQXhIxktautNhhJ3EIRNht5PpR1NcAUy8Oep6O9d6 w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10718"; a="342551834"
-X-IronPort-AV: E=Sophos;i="6.00,184,1681196400"; d="scan'208";a="342551834"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2023 18:41:45 -0700
+ bh=Y0MahA8UpYD2fJFI1cqqlFMQR1W/MMj6yNVzgEiRCe8=;
+ b=HrM5hN72yb2q2optOXEO8L+Zb2DdeMseXAEBpcWUdFlwgAkhmrP4sAmp
+ OC+AhIgPlnC5nxyCtaxhSe9Nt0lpmO1I8LTHsAKnFYno42J2F2qECFng1
+ cQb1w67HbuIVZ5ZMPtVeNkKK4lWbEEsxAkQjrXRux7AyCH5ArtAt0f4uN
+ XCjGaAsq64RaOghQwET8yxsw8x3eONJspRCUGRN+GwZIVgR8LU4S4x2eK
+ ciou+DScsA06BxVzeJL8KdvGXC6RvsevWPwkkHVOK3MmBilCLLEjiFk9/
+ U0Ch4kN4ww0QIfUaFRb9wuu5et1K+FlcZUwzpS1WxY1IIjO3TnSeDfC+4 A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10718"; a="439455432"
+X-IronPort-AV: E=Sophos;i="6.00,185,1681196400"; d="scan'208";a="439455432"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 May 2023 19:13:09 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10718"; a="703757930"
-X-IronPort-AV: E=Sophos;i="6.00,184,1681196400"; d="scan'208";a="703757930"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orsmga002.jf.intel.com with ESMTP; 22 May 2023 18:41:43 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10718"; a="706780110"
+X-IronPort-AV: E=Sophos;i="6.00,185,1681196400"; d="scan'208";a="706780110"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga007.fm.intel.com with ESMTP; 22 May 2023 19:13:08 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Mon, 22 May 2023 18:41:44 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ 15.1.2507.23; Mon, 22 May 2023 19:13:08 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Mon, 22 May 2023 19:13:08 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
  fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23; Mon, 22 May 2023 18:41:43 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.23 via Frontend Transport; Mon, 22 May 2023 18:41:43 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.176)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2507.23 via Frontend Transport; Mon, 22 May 2023 19:13:08 -0700
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.42) by
+ edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Mon, 22 May 2023 18:41:43 -0700
+ 15.1.2507.23; Mon, 22 May 2023 19:13:08 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DAgNPZ+OrPc5uUXQz4Jk/E69frxsYtr1tYoHKp418gUtZl2BB35nbxXUec+oXjC/9GOZKe4m/UB7vWpqiRaKHTmTO5AYwXIHmGkplgk/zWISlY4tyYCRb3nKNTg9NehooCN35wRH6ZN5p60qXVtxo9/H5lrNGaKsktnmWzA8njiyxhpPDs9v2whlrQzgf62/lCcfzRO8iQAezGA7mYCcRqvH9PA/g0glPcb3SjV3t+leHvWvy36G9u0SiBzH9f5cvrqRcgUus3yfCvBmV/nU1FKK/nbJJ0NnEvzt4udNdEV975Dg2g1M7CdqkUjrqzJwMB1KEQJom4kDTG5ihbevAA==
+ b=TS9YBaEo3NBFzksoQM/YsLOe6Ux9bZcvtm84RsuFHzoP7K+jKfn0M6NUuuLeGoInPPXqC6NlzZ0UEBZ87bqxO/ta99UAvi4FrnT+WdmK6luugC0M0PkdPsTK/ARSTBbmBnn3ujm+DXB7/Xp2XUJ/CyZMSwoHimizdRZ7v3wMnBhp/QPiGVINc5j/JVGZ9K6PSurus7AnmqZg92eDAQYniZWlJkZarO0hQpbYgSNSR1rifq7TEBI01jhaGARvWqVJ14jkhct7kfUvC6TNr8zImlVe9AtswPOLQYk+E0Ued8pKSibY0h6CnBi6Y2lToNeHiQ2YFqHwL650W9O1AW0rZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OiBcjYZg89Hqao2K7KJ4FMW/26D65xPVk87JwXnJ5GE=;
- b=DV0acjBaIYsqefBRml/du2G2pJyXpFIZaPvo5u/yHbmBPawWb5hmmONSeaa4K26Cf0x1FSKEQRBvM5pXdvwMpcJ0jjxwQEJLs3eAO1s/FnZnO83Tap4mhXZJbuXiFvphbTGcMcCVerZIfgXo9HIDeCZi5o1ovwTlYFVsR6N0I9Om6xjbelDSnPu3qvhb6OYapdHtFNWzKpXSWhlW7QatTtfrsL8gUcRnotmKzbsPA9virVSUpivJnWNXS2jXSsbOL7icws/73TjYrqHj9uR43y33WQ2HSP7PP9vKQrIjUNbRyDAgYVSebJ81nfhR5DqAFLe5qhNDc7czrmDdcQuGwQ==
+ bh=R/Mxhpran92ASSoz1FEt5OKoHRVjATf2424R5SmkZQU=;
+ b=HVBqsKZpIUN3YdKLoqB+JTSmn0Y340lcREtcENYp9PSp60xiLtvJO5+adbOwKHrzNKmxrxCGlqTtUExK9kwtx5FBI3dih04sXrTYGgvNAIBfdeMOCHlO/6qB7BllGLfmrc/LVFmUzrt496uBjH/LjRDiiAoADWRNbKzAz0850HhomQh9K9UQoseVERhYTsjZZxhK3Ye9ejbgzPPQYx9BB94qTKmloI3JV0pww83ukNsHupkBhX05Vu4iPz3MwhLcAwy1M457LA2Pc/IaMfd0Ruz5+9qZgtkXyvKVof7KWqZ6bHCztaar3FMsNomFOq9lroBArXTLcXFXfADRfUj/zQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by SA3PR11MB7978.namprd11.prod.outlook.com (2603:10b6:806:2fa::6) with
+ by IA1PR11MB7871.namprd11.prod.outlook.com (2603:10b6:208:3f5::13) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.21; Tue, 23 May
- 2023 01:41:36 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6411.28; Tue, 23 May
+ 2023 02:13:04 +0000
 Received: from DS0PR11MB7529.namprd11.prod.outlook.com
  ([fe80::5b44:8f52:dbeb:18e5]) by DS0PR11MB7529.namprd11.prod.outlook.com
  ([fe80::5b44:8f52:dbeb:18e5%3]) with mapi id 15.20.6411.028; Tue, 23 May 2023
- 01:41:36 +0000
+ 02:13:04 +0000
 From: "Liu, Yi L" <yi.l.liu@intel.com>
 To: Alex Williamson <alex.williamson@redhat.com>
-Subject: RE: [PATCH v11 19/23] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
-Thread-Topic: [PATCH v11 19/23] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
-Thread-Index: AQHZhZ7k65TFikm5KUKI3FkaFFDbUK9m5qgAgAA8RCA=
-Date: Tue, 23 May 2023 01:41:36 +0000
-Message-ID: <DS0PR11MB752935BF70AC95B564685DC0C3409@DS0PR11MB7529.namprd11.prod.outlook.com>
+Subject: RE: [PATCH v11 21/23] vfio: Determine noiommu device in
+ __vfio_register_dev()
+Thread-Topic: [PATCH v11 21/23] vfio: Determine noiommu device in
+ __vfio_register_dev()
+Thread-Index: AQHZhZ7jRzQlMHxxuUqS1TLfTxm1l69m+EiAgAAswHA=
+Date: Tue, 23 May 2023 02:13:03 +0000
+Message-ID: <DS0PR11MB752991A93B0B4603E7F501B5C3409@DS0PR11MB7529.namprd11.prod.outlook.com>
 References: <20230513132827.39066-1-yi.l.liu@intel.com>
- <20230513132827.39066-20-yi.l.liu@intel.com>
- <20230522160124.768430b4.alex.williamson@redhat.com>
-In-Reply-To: <20230522160124.768430b4.alex.williamson@redhat.com>
+ <20230513132827.39066-22-yi.l.liu@intel.com>
+ <20230522170429.2d5ca274.alex.williamson@redhat.com>
+In-Reply-To: <20230522170429.2d5ca274.alex.williamson@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -87,56 +89,56 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|SA3PR11MB7978:EE_
-x-ms-office365-filtering-correlation-id: 9348374a-0897-44a3-bb53-08db5b2ed87e
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|IA1PR11MB7871:EE_
+x-ms-office365-filtering-correlation-id: aeea0477-c3c0-4d65-3687-08db5b333d73
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: OV+eHGj5vqKnUGMXmn0z0+9crTxQ1i0Bg+hoftoDNThR0KXU95xr+b8O7RiIsNHHs7mfTnCWp35zIOi3IfR/w8tNzWg2jse4QkmIxNEpgmdDhj5nxxrV4Vk50n6stwIJc41EwCMHUABng7B1n6/DEmrP04qpYb6sNmE/GhPsKGJG4lpZwFCmO+BptxzSM9MEgYmp+UjrSkoOPEg4g/s7NX8+V14UOB836LkKWbt/W+O3BOBh9cdt0gja9Xosj64UOmwPXlKKX5RxIkLNfFUFe8YA0k0eWdzYJzbFIl9bOFkYq6OjnQPVg+3FDEhuTKKjZjd+tM0j2I5+vYpJdY14EOKgQM2LyAbvcnsUyyLh8/dSAKmW3YP9VZg4lQ563oRo8S5Hfaa7B5u3ARU30jDcC/ZKzCUeM5366j2mNK/FKiMCYtYDmFyg5QeeG58cfA+lLtnsAJqYqiPDaCxl4Y/Fgb3xj38ypunJ5WZpOg1CdGrtkN4rDTpH3zZRYepcyrNbws99DI8xG1j7V53JZj6fnSYZN6YKHKPRa00BRcT4wrRXW5wWmqiGjjVTAQjIawGqI4ds+6q5vU+hmUf+OhDkRBGCOotxjPIWvZBHEO4WzSFzfQi/K7oD+zQ603OJKYdP5X66Z7bvewW8QhCgKawgIQ==
+x-microsoft-antispam-message-info: TLKFYUykOlNIKuel4qbEGXbfqj9HzLwEWfNM/Q/64zQFH5xneYyWSYczP5q0aEdQmshNNrrkwMt24K/sMJGTVBe/823WwfBA5X/7gcYe/KShVYGVIgGP1p3Shpq/GOOOAc8Gwn4Hb9qb6Ul+ZjE+zyuxMSWwKAMyYG3mgNr7K4auy5YDJMWr4SjOOHDqVDu7HGGe4o+UgG3JeGvMLP5qH+kai/jxUn0XIv7gBa8ZvTVMCUx5TjJJMPecEEKYwVI+9zSINxcxo/7ehIX17jWlYfly8Lj1VsCLB1ZqLrAaPTt+JbB5AD/1eZyu6mYX7I+DjUnwUVsK+GobPaMvu4nagyP0/hY//02RN3+9YJLIyhUmJGC+/2n+ZVrDDl1GldxtnrmfBi0ASTL34S54xgW24v2/iZV7L4B3zL5MagH16Ry2LId2/d3KCZDl3zqv4WpR78x7o/Xy8f/eN77jNXxImOBMOGkcaeZuLFJVEhlp8+bNU2mlBJ6mib8QyDdvP93hag5sggSbuoNJMXMgEUdojgKfWYD3MX1hV4wytjrqgnXuhvl6XQxHLHB/MI5wzd8AYr/OYlVPuflX22RJUIOLKdFk8JqDVaGFrAXL0yBandIs+zxUP2kGClKc1lLlDxWLnHYT63tunbpdCk+akkjvIQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(136003)(396003)(39860400002)(376002)(346002)(366004)(451199021)(66446008)(64756008)(6916009)(66556008)(4326008)(66946007)(66476007)(76116006)(478600001)(316002)(54906003)(38070700005)(33656002)(86362001)(83380400001)(26005)(9686003)(186003)(6506007)(52536014)(5660300002)(7416002)(71200400001)(8676002)(8936002)(2906002)(7696005)(55016003)(38100700002)(41300700001)(122000001)(82960400001)(13296009);
+ SFS:(13230028)(396003)(39860400002)(346002)(136003)(366004)(376002)(451199021)(9686003)(6506007)(26005)(186003)(83380400001)(7696005)(2906002)(71200400001)(5660300002)(316002)(55016003)(54906003)(478600001)(33656002)(66946007)(66446008)(66476007)(64756008)(52536014)(86362001)(6916009)(38100700002)(4326008)(66556008)(8936002)(41300700001)(38070700005)(8676002)(76116006)(82960400001)(122000001)(7416002)(13296009);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?6H9Cl3MaCQqzHDNo144gUAvieaV6GZd5r3WUz8YVV0/Ps79oQfHbKX7fsTkM?=
- =?us-ascii?Q?wwyC8Vefb/sSMLveMfbMEWRkBcR0s/1wGG6rg7GDNI7jCXOEk2H/DhjQGCCf?=
- =?us-ascii?Q?tONEADZS9amUMyplngtF1nbrjKwKfMxlZF7v/hz1jNHN8GGx3vazs/6l2Oih?=
- =?us-ascii?Q?QINJfLZmBkV1anzuUvvR+4H5yQndy/fzBbnGLbLiKsyQ9BECksBGJ/a4yhMI?=
- =?us-ascii?Q?F6VRxxdM0AH9FdmsMmkctfx3/jzWRqW6ggN64jO5+Uz53QXN38T8wgXVxDwE?=
- =?us-ascii?Q?digOs7cQ8V7mZrzObJkdRnkd3MaZQ2XPNTH6A3Tih3QOHIQmkxtAGaoEnB5l?=
- =?us-ascii?Q?lk8Lbfw6FY5g9nX2SO70XBMnDk7CnONJg+ubd/yF21Tfkw1D1Qy4SlDQ1sbB?=
- =?us-ascii?Q?MRYVgUrXuT17kTFxd1ZA1uXdOiX++7RyigxQskQaeLchO6oS0tDFzKq1Dciz?=
- =?us-ascii?Q?242QISYCbxJlmeVDfHbqAptCFqv++QeuiOBhM5Q6giJn63/bcAiFOwzxe2Fz?=
- =?us-ascii?Q?ZNGXmtQ+vfYoEEbKJHPFCXkHZhR8oH5J1oeVlfcXP1ZNjOSHaw/uun0YMzIJ?=
- =?us-ascii?Q?PnrBOAlAOf25w1J66F7p5yDo07ZugyEIeAhyl9fkevu6Qx3UJydvQm9mFIFL?=
- =?us-ascii?Q?eiTplSju5Plz7mbmvZfQiaKbg6THZymQBg9HZbnWe3z4vdb4ky5YbL2WdlvQ?=
- =?us-ascii?Q?bp5G5Vae5UE8oA4LZOJDMpXYpExl49tSKkirxNLD0wOlg57XEUs+02nA/kR9?=
- =?us-ascii?Q?MHZz3FbYOWhFr7v2xKZ5Jp2i/oE6A6Axjf64P0O8fq1sl48NoKdh+Ar6EJzK?=
- =?us-ascii?Q?bCvbh744aPfZ9vGAFk3VQjyYJ7m3ijTrln7TirIBh2r40jaDqBXI/zyW30pW?=
- =?us-ascii?Q?pBegUl8Likss7SlY5nziy33A4dD7WhoZAAdxWCpxc9L3IPvLf3LQlUaCX9dW?=
- =?us-ascii?Q?2EEKRkqdNT0kyXgYDIhyXjz01rglTxt8IVmHSQ44r//s1Mfu8t1wHlKthO/w?=
- =?us-ascii?Q?P21EMSFbb9W4S+u/6juhckaXtvap2S8QdgzgwfoftEl/Qz+nwmeOFVzSd/uu?=
- =?us-ascii?Q?/hB+LVGpTmPmw4Vj3WdjI0hdZVL9Dm5UNWhYj8/jAyk8Vo7fAD3NkBHPT9ec?=
- =?us-ascii?Q?w+LhyUcDcS7izVITyv3fG9VrI633OZNw8mLvw9SPcX0ESVUahZtg4Q0wbF1+?=
- =?us-ascii?Q?xHMpiUQYu3jZfgZKlV8NOQ/h1m3Y3If4NDv6gWMqN9xn3cr4oQdNIbIaEWNC?=
- =?us-ascii?Q?0K1AAmpuVhYwcbAzx0Nfd/YDcm1UixKdtWlIofSLO3Thj0Gzls62YaWZIqJu?=
- =?us-ascii?Q?H1WPQS/wZDKPNUPf14oSUrr644Kh323JHMO5NyO4xoDeSMa5k/WVWBMqwr37?=
- =?us-ascii?Q?dOpCCSUHTxD2rSbSVY4ngpRpDi4y7MKbIYHzOYPGSYN2nNcU0skZ/qFEzGm0?=
- =?us-ascii?Q?ggQbrX5Cjrix+D1WJ/DePCAprMuUEzn9trHdD3MQPohfjGt0F7X2iIC/rBT7?=
- =?us-ascii?Q?rAiy9T5L3/qrI6gn7EG+iGHro41qUWqWFg8d3qOWGiBPzmmqBFQx96WQc4Dx?=
- =?us-ascii?Q?OPe80wDciVXb56MfczF3dtMj/CUlDsBlQNYFxidJ?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?IhQ2p/cm5DWtP8h2/Kf4KP/xeuFRTqj0oOWgo1khopoFuEilg1cLpRk3ExFs?=
+ =?us-ascii?Q?Ciw9hFOmMlP9ezR+ksMsWoDh3NZF96wviHEApPj7bGyuONk5h+R69uNP09Yj?=
+ =?us-ascii?Q?OXndIEkmgfb7ApFjEB+xZZ+bJBxRw2l14UX75NHiIr9E4pIc13LqLmdG7ObE?=
+ =?us-ascii?Q?GQEaYMGcYnIoW5N7gW81tso6r45LF+BabogqGZfwSjHqyEGn6YQ8FkA3ntT9?=
+ =?us-ascii?Q?j+b2Wasi7Gh2TtRU/RqwQ7K/DB23W0fqD5hUKDOwT1KGWrHfoE3Cv5VD+xy8?=
+ =?us-ascii?Q?jVo+ZSfl9vR3QFzdnxjjlZly5mycypp/wHIfgcjgFfSuJIct/EhWMyFyc4/I?=
+ =?us-ascii?Q?eI+WY3TmLVYB3PntVEUPHdLcDNzLkvK/SyKYRkQVgHrwBQDZfgYajfWlbqhQ?=
+ =?us-ascii?Q?vEM+FilcYzBaCh7L+BT2GKOcfmFVfkuw58lJvFKN+kMOxcnei8AwfXwooIUC?=
+ =?us-ascii?Q?sWrEbCyusZqqsJna+Dmo7EXtyKE9IPEKDFVXS29n6/TvlrDaj4lGDZfvYHDf?=
+ =?us-ascii?Q?e+ZWK/wBSsgH9mLmTJ2Bd2gnIIhGQbeu30KjPxMv4ud6CLno6zKAcYHDsuEB?=
+ =?us-ascii?Q?IRnO69hkYwSHTuaSiT6Cl8NxPjRC5KNPjCY8rimuU8cQmaq+k4NC5ILDNeKQ?=
+ =?us-ascii?Q?SbmJIyZy3R9bzBG4gRCBuYNzHan71A34kWtVLbq9fCLl0BfYFMyXjCYKfxKC?=
+ =?us-ascii?Q?6dSZsKtTgJqKc6x0+r0+x+/zmX2VylEtjS5TCgaR2ZaCktUN21tka2DYYTk2?=
+ =?us-ascii?Q?moFq9NHYGVZ7y3fk8m9gPEQ8e7YfCvzZzh0PLIG2lsjPld9oxxN+53hwyJ0w?=
+ =?us-ascii?Q?HqPFtEybmW9CUERQvVAx7M2MMDR5nBLTZPAuLvSx1vROT2BiWAREEWgJ90la?=
+ =?us-ascii?Q?5d47G4SYYxL7nZnHRYm2X2x5AI5i4PWt028W128vDOcjSqX8d4vt8scCu38c?=
+ =?us-ascii?Q?RRXbbRqQiALxEidjFGGkNQIBehGNUexOL5pa0t+WabEycIa7KyhE7vvLZ//j?=
+ =?us-ascii?Q?vrrHown6DS6sNYA5hOqMxBRWwfvjoW+CiXMR9zM5KVnew3kL8k/gDjGlucPv?=
+ =?us-ascii?Q?C3F94xwZyKV5X4Qt9jrSZCT8V4wmW1cd0uGjRT+Q5tUcSq2pacWTBzi17XNg?=
+ =?us-ascii?Q?NIZeS6Gy1/ga6/edMZA7DpBDMIDqCBS2M6c7TVpdsYs5Vg8kn+paBkxDOfo9?=
+ =?us-ascii?Q?sNIXJLgTkrd5RKn5i7KMjM9pF6JjZ70HZf5X9cqHZAMTZO5mes+hzzr941Fz?=
+ =?us-ascii?Q?Tm7YunfSbxVxZqp6hn67hcC+E9vSZoiJry8RY/xVS4K4mXih+y++HMM2uRGN?=
+ =?us-ascii?Q?g4bS6jES17eRelo/Pt3YxMVRK1ECCero0uNKvKfZR7VGSA0QrLIW7XTyTP3T?=
+ =?us-ascii?Q?RpEr5jFEnUOU5VfwxuSt5NUgmXR9O2/H/GPoEHDWn8aD4aI/GCZssISsuDar?=
+ =?us-ascii?Q?qUiVYhNO91oyQYLuMPQzGfDrL4xPI8a0rHUkSi17zZtfQOlZHtYd65OXoqWb?=
+ =?us-ascii?Q?0aeOlcJ51ttJHpc+UBaKtE1p1qgYm5XaVPG5PRP5gTkjNYAbWH+U5FoHqszN?=
+ =?us-ascii?Q?PjVVzXJ9TRo0q3AZTHoM9OYDgDJOPWNKevBSikN1?=
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9348374a-0897-44a3-bb53-08db5b2ed87e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 May 2023 01:41:36.1540 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: aeea0477-c3c0-4d65-3687-08db5b333d73
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 May 2023 02:13:03.5102 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: KZDg6cWP3RSiFuu7m8aSy80nXTHv0TxwziKPbXByMxrZVfMGIwMcCumI8vWdyBJcsgZM8RMnhNNZBrV2uAT2Iw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR11MB7978
+X-MS-Exchange-CrossTenant-userprincipalname: ACm7PBCst9RyuyuU8C0CevcsCiP0Z35vtQb/BueeDv/XKu8Cn1nwJnwDxjaLs6g8QtcLvdBie1pF82nJ0HmqxQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7871
 X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -175,326 +177,275 @@ Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 > From: Alex Williamson <alex.williamson@redhat.com>
-> Sent: Tuesday, May 23, 2023 6:01 AM
+> Sent: Tuesday, May 23, 2023 7:04 AM
 >=20
-> On Sat, 13 May 2023 06:28:23 -0700
+> On Sat, 13 May 2023 06:28:25 -0700
 > Yi Liu <yi.l.liu@intel.com> wrote:
 >=20
-> > This adds ioctl for userspace to bind device cdev fd to iommufd.
+> > This is to make the cdev path and group path consistent for the noiommu
+> > devices registration. If vfio_noiommu is disabled, such registration
+> > should fail. However, this check is vfio_device_set_group() which is pa=
+rt
+> > of the vfio_group code. If the vfio_group code is compiled out, noiommu
+> > devices would be registered even vfio_noiommu is disabled.
 > >
-> >     VFIO_DEVICE_BIND_IOMMUFD: bind device to an iommufd, hence gain DMA
-> > 			      control provided by the iommufd. open_device
-> > 			      op is called after bind_iommufd op.
-> >
-> > Tested-by: Yanting Jiang <yanting.jiang@intel.com>
-> > Tested-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> > ---
-> >  drivers/vfio/device_cdev.c | 130 +++++++++++++++++++++++++++++++++++++
-> >  drivers/vfio/vfio.h        |  13 ++++
-> >  drivers/vfio/vfio_main.c   |   5 ++
-> >  include/linux/vfio.h       |   3 +-
-> >  include/uapi/linux/vfio.h  |  28 ++++++++
-> >  5 files changed, 178 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/vfio/device_cdev.c b/drivers/vfio/device_cdev.c
-> > index 1c640016a824..291cc678a18b 100644
-> > --- a/drivers/vfio/device_cdev.c
-> > +++ b/drivers/vfio/device_cdev.c
-> > @@ -3,6 +3,7 @@
-> >   * Copyright (c) 2023 Intel Corporation.
-> >   */
-> >  #include <linux/vfio.h>
-> > +#include <linux/iommufd.h>
-> >
-> >  #include "vfio.h"
-> >
-> > @@ -44,6 +45,135 @@ int vfio_device_fops_cdev_open(struct inode *inode,=
- struct
-> file *filep)
-> >  	return ret;
-> >  }
-> >
-> > +static void vfio_device_get_kvm_safe(struct vfio_device_file *df)
-> > +{
-> > +	spin_lock(&df->kvm_ref_lock);
-> > +	if (df->kvm)
-> > +		_vfio_device_get_kvm_safe(df->device, df->kvm);
-> > +	spin_unlock(&df->kvm_ref_lock);
-> > +}
-> > +
-> > +void vfio_device_cdev_close(struct vfio_device_file *df)
-> > +{
-> > +	struct vfio_device *device =3D df->device;
-> > +
-> > +	/*
-> > +	 * In the time of close, there is no contention with another one
-> > +	 * changing this flag.  So read df->access_granted without lock
-> > +	 * and no smp_load_acquire() is ok.
-> > +	 */
-> > +	if (!df->access_granted)
-> > +		return;
-> > +
-> > +	mutex_lock(&device->dev_set->lock);
-> > +	vfio_device_close(df);
-> > +	vfio_device_put_kvm(device);
-> > +	iommufd_ctx_put(df->iommufd);
-> > +	device->cdev_opened =3D false;
-> > +	mutex_unlock(&device->dev_set->lock);
-> > +	vfio_device_unblock_group(device);
-> > +}
-> > +
-> > +static struct iommufd_ctx *vfio_get_iommufd_from_fd(int fd)
-> > +{
-> > +	struct iommufd_ctx *iommufd;
-> > +	struct fd f;
-> > +
-> > +	f =3D fdget(fd);
-> > +	if (!f.file)
-> > +		return ERR_PTR(-EBADF);
-> > +
-> > +	iommufd =3D iommufd_ctx_from_file(f.file);
-> > +
-> > +	fdput(f);
-> > +	return iommufd;
-> > +}
-> > +
-> > +long vfio_device_ioctl_bind_iommufd(struct vfio_device_file *df,
-> > +				    struct vfio_device_bind_iommufd __user *arg)
-> > +{
-> > +	struct vfio_device *device =3D df->device;
-> > +	struct vfio_device_bind_iommufd bind;
-> > +	unsigned long minsz;
-> > +	int ret;
-> > +
-> > +	static_assert(__same_type(arg->out_devid, df->devid));
-> > +
-> > +	minsz =3D offsetofend(struct vfio_device_bind_iommufd, out_devid);
-> > +
-> > +	if (copy_from_user(&bind, arg, minsz))
-> > +		return -EFAULT;
-> > +
-> > +	if (bind.argsz < minsz || bind.flags || bind.iommufd < 0)
-> > +		return -EINVAL;
-> > +
-> > +	/* BIND_IOMMUFD only allowed for cdev fds */
-> > +	if (df->group)
-> > +		return -EINVAL;
-> > +
-> > +	if (vfio_device_is_noiommu(device) && !capable(CAP_SYS_RAWIO))
-> > +		return -EPERM;
-> > +
-> > +	ret =3D vfio_device_block_group(device);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	mutex_lock(&device->dev_set->lock);
-> > +	/* one device cannot be bound twice */
-> > +	if (df->access_granted) {
-> > +		ret =3D -EINVAL;
-> > +		goto out_unlock;
-> > +	}
-> > +
-> > +	df->iommufd =3D vfio_get_iommufd_from_fd(bind.iommufd);
-> > +	if (IS_ERR(df->iommufd)) {
-> > +		ret =3D PTR_ERR(df->iommufd);
-> > +		df->iommufd =3D NULL;
-> > +		goto out_unlock;
-> > +	}
-> > +
-> > +	/*
-> > +	 * Before the device open, get the KVM pointer currently
-> > +	 * associated with the device file (if there is) and obtain
-> > +	 * a reference.  This reference is held until device closed.
-> > +	 * Save the pointer in the device for use by drivers.
-> > +	 */
-> > +	vfio_device_get_kvm_safe(df);
-> > +
-> > +	ret =3D vfio_device_open(df);
-> > +	if (ret)
-> > +		goto out_put_kvm;
-> > +
-> > +	ret =3D copy_to_user(&arg->out_devid, &df->devid,
-> > +			   sizeof(df->devid)) ? -EFAULT : 0;
-> > +	if (ret)
-> > +		goto out_close_device;
-> > +
-> > +	/*
-> > +	 * Paired with smp_load_acquire() in vfio_device_fops::ioctl/
-> > +	 * read/write/mmap
-> > +	 */
-> > +	smp_store_release(&df->access_granted, true);
-> > +	device->cdev_opened =3D true;
-> > +	mutex_unlock(&device->dev_set->lock);
-> > +
-> > +	if (vfio_device_is_noiommu(device))
-> > +		dev_warn(device->dev, "noiommu device is bound to iommufd by user
-> "
-> > +			 "(%s:%d)\n", current->comm, task_pid_nr(current));
+> > This adds vfio_device_set_noiommu() which can fail and calls it in the
+> > device registration. For now, it never fails as long as
+> > vfio_device_set_group() is successful. But when the vfio_group code is
+> > compiled out, vfio_device_set_noiommu() would fail the noiommu devices
+> > when vfio_noiommu is disabled.
 >=20
-> The noiommu kernel taint only happens in vfio_group_find_or_alloc(), so
-> how does noiommu taint the kernel when !CONFIG_VFIO_GROUP?
-
-Yeah, in the cdev path, no taint. I add this just in order to par with the =
-below
-message in the group path.
-
-vfio_device_open_file()
-{
-	dev_warn(device->dev, "vfio-noiommu device opened by user "
-		   "(%s:%d)\n", current->comm, task_pid_nr(current));
-}
-
-> > +	return 0;
-> > +
-> > +out_close_device:
-> > +	vfio_device_close(df);
-> > +out_put_kvm:
-> > +	vfio_device_put_kvm(device);
-> > +	iommufd_ctx_put(df->iommufd);
-> > +	df->iommufd =3D NULL;
-> > +out_unlock:
-> > +	mutex_unlock(&device->dev_set->lock);
-> > +	vfio_device_unblock_group(device);
-> > +	return ret;
-> > +}
-> > +
-> >  static char *vfio_device_devnode(const struct device *dev, umode_t *mo=
-de)
-> >  {
-> >  	return kasprintf(GFP_KERNEL, "vfio/devices/%s", dev_name(dev));
-> > diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-> > index 6861f8ebb64d..8b359a7794be 100644
-> > --- a/drivers/vfio/vfio.h
-> > +++ b/drivers/vfio/vfio.h
-> > @@ -279,6 +279,9 @@ static inline void vfio_device_del(struct vfio_devi=
-ce *device)
-> >
-> >  void vfio_init_device_cdev(struct vfio_device *device);
-> >  int vfio_device_fops_cdev_open(struct inode *inode, struct file *filep=
-);
-> > +void vfio_device_cdev_close(struct vfio_device_file *df);
-> > +long vfio_device_ioctl_bind_iommufd(struct vfio_device_file *df,
-> > +				    struct vfio_device_bind_iommufd __user *arg);
-> >  int vfio_cdev_init(struct class *device_class);
-> >  void vfio_cdev_cleanup(void);
-> >  #else
-> > @@ -302,6 +305,16 @@ static inline int vfio_device_fops_cdev_open(struc=
-t inode
-> *inode,
-> >  	return 0;
-> >  }
-> >
-> > +static inline void vfio_device_cdev_close(struct vfio_device_file *df)
-> > +{
-> > +}
-> > +
-> > +static inline long vfio_device_ioctl_bind_iommufd(struct vfio_device_f=
-ile *df,
-> > +						  struct vfio_device_bind_iommufd
-> __user *arg)
-> > +{
-> > +	return -EOPNOTSUPP;
-> > +}
-> > +
-> >  static inline int vfio_cdev_init(struct class *device_class)
-> >  {
-> >  	return 0;
-> > diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> > index c87cc7afe92c..c9fa39ac4b02 100644
-> > --- a/drivers/vfio/vfio_main.c
-> > +++ b/drivers/vfio/vfio_main.c
-> > @@ -574,6 +574,8 @@ static int vfio_device_fops_release(struct inode *i=
-node, struct
-> file *filep)
-> >
-> >  	if (df->group)
-> >  		vfio_device_group_close(df);
-> > +	else
-> > +		vfio_device_cdev_close(df);
-> >
-> >  	vfio_device_put_registration(device);
-> >
-> > @@ -1147,6 +1149,9 @@ static long vfio_device_fops_unl_ioctl(struct fil=
-e *filep,
-> >  	struct vfio_device *device =3D df->device;
-> >  	int ret;
-> >
-> > +	if (cmd =3D=3D VFIO_DEVICE_BIND_IOMMUFD)
-> > +		return vfio_device_ioctl_bind_iommufd(df, (void __user *)arg);
-> > +
-> >  	/* Paired with smp_store_release() following vfio_device_open() */
-> >  	if (!smp_load_acquire(&df->access_granted))
-> >  		return -EINVAL;
-> > diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-> > index 873275419f13..cf9d082a623c 100644
-> > --- a/include/linux/vfio.h
-> > +++ b/include/linux/vfio.h
-> > @@ -67,6 +67,7 @@ struct vfio_device {
-> >  	struct iommufd_device *iommufd_device;
-> >  	bool iommufd_attached;
-> >  #endif
-> > +	bool cdev_opened:1;
-> >  };
-> >
-> >  /**
-> > @@ -169,7 +170,7 @@ vfio_iommufd_physical_devid(struct vfio_device *vde=
-v)
-> >
-> >  static inline bool vfio_device_cdev_opened(struct vfio_device *device)
-> >  {
-> > -	return false;
-> > +	return device->cdev_opened;
-> >  }
-> >
-> >  /**
-> > diff --git a/include/uapi/linux/vfio.h b/include/uapi/linux/vfio.h
-> > index 24858b650562..07c917de31e9 100644
-> > --- a/include/uapi/linux/vfio.h
-> > +++ b/include/uapi/linux/vfio.h
-> > @@ -194,6 +194,34 @@ struct vfio_group_status {
-> >
-> >  /* --------------- IOCTLs for DEVICE file descriptors --------------- =
-*/
-> >
-> > +/*
-> > + * VFIO_DEVICE_BIND_IOMMUFD - _IOR(VFIO_TYPE, VFIO_BASE + 19,
-> > + *				   struct vfio_device_bind_iommufd)
-> > + *
-> > + * Bind a vfio_device to the specified iommufd.
-> > + *
-> > + * User is restricted from accessing the device before the binding ope=
-ration
-> > + * is completed.
-> > + *
-> > + * Unbind is automatically conducted when device fd is closed.
-> > + *
-> > + * @argsz:	 User filled size of this data.
-> > + * @flags:	 Must be 0.
-> > + * @iommufd:	 iommufd to bind.
-> > + * @out_devid:	 The device id generated by this bind. devid is a handl=
-e for
-> > + *		 this device/iommufd bond and can be used in IOMMUFD commands.
-> > + *
-> > + * Return: 0 on success, -errno on failure.
-> > + */
-> > +struct vfio_device_bind_iommufd {
-> > +	__u32		argsz;
-> > +	__u32		flags;
-> > +	__s32		iommufd;
-> > +	__u32		out_devid;
-> > +};
-> > +
-> > +#define VFIO_DEVICE_BIND_IOMMUFD	_IO(VFIO_TYPE, VFIO_BASE + 19)
-> > +
+> I'm lost.  After the next patch we end up with the following when
+> CONFIG_VFIO_GROUP is set:
 >=20
-> Why is this preempting the first device ioctl below rather than being
-> added in sequential order?  I'm also not sure what's at device ioctl 18
-> that we started at 19.  VFIO_DEVICE_FEATURE is at 17.  Yes, they're
-> hard to keep track of.  Thanks,
+> static inline int vfio_device_set_noiommu(struct vfio_device *device)
+> {
+>         device->noiommu =3D IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
+>                           device->group->type =3D=3D VFIO_NO_IOMMU;
+>         return 0;
+> }
+>=20
+> I think this is relying on the fact that vfio_device_set_group() which
+> is called immediately prior to this function would have performed the
+> testing for noiommu and failed prior to this function being called and
+> therefore there is no error return here.
 
-yes, 17 is the last occupied ioctl offset on device fd. Will correct
-it.
+Yes.
+
+>=20
+> Note also here that I think CONFIG_VFIO_NOIOMMU was only being tested
+> here previously so that a smart enough compiler would optimize out the
+> entire function, we can never set a VFIO_NO_IOMMU type when
+> !CONFIG_VFIO_NOIOMMU.
+
+You are right. VFIO_NO_IOMMU type is only set when vfio_noiommu=3D=3Dtrue.
+
+> That's no longer the case if the function is
+> refactored like this.
+>=20
+> When !CONFIG_VFIO_GROUP:
+>=20
+> static inline int vfio_device_set_noiommu(struct vfio_device *device)
+> {
+>         struct iommu_group *iommu_group;
+>=20
+>         iommu_group =3D iommu_group_get(device->dev);
+>         if (!iommu_group) {
+>                 if (!IS_ENABLED(CONFIG_VFIO_NOIOMMU) || !vfio_noiommu)
+>                         return -EINVAL;
+>                 device->noiommu =3D true;
+>         } else {
+>                 iommu_group_put(iommu_group);
+>                 device->noiommu =3D false;
+>         }
+>=20
+>         return 0;
+> }
+>=20
+> Here again, the NOIOMMU config option is irrelevant, vfio_noiommu can
+> only be true if the config option is enabled.  Therefore if there's no
+> IOMMU group and the module option to enable noiommu is not set, return
+> an error.
+
+Yes. I think I missed the part that the vfio_noiommu option can only be
+true when CONFIG_VFIO_NOIOMMU is enabled. That's why the check
+is "IS_ENABLED(CONFIG_VFIO_NOIOMMU) && device->group->type =3D=3D VFIO_NO_I=
+OMMU;".
+This appears that the two conditions are orthogonal.
+
+>=20
+> It's really quite ugly that in one mode we rely on this function to
+> generate the error and in the other mode it happens prior to getting
+> here.
+>=20
+> The above could be simplified to something like:
+>=20
+> 	iommu_group =3D iommu_group_get(device->dev);
+> 	if (!iommu_group && !vfio_iommu)
+> 		return -EINVAL;
+>=20
+> 	device->noiommu =3D !iommu_group;
+> 	iommu_group_put(iommu_group); /* Accepts NULL */
+> 	return 0;
+>=20
+> Which would actually work regardless of CONFIG_VFIO_GROUP, where maybe
+> this could then be moved before vfio_device_set_group() and become the
+> de facto exit point for invalid noiommu configurations and maybe we
+> could remove the test from the group code (with a comment to note that
+> it's been tested prior)?  Thanks,
+
+Yes, this looks much clearer. I think this new logic must be called before
+vfio_device_set_group(). Otherwise,  iommu_group_get () may return
+the faked groups. Then it would need to work differently per CONFIG_VFIO_GR=
+OUP
+configuration.
 
 Regards,
 Yi Liu
+>=20
+> > As noiommu devices is checked and there are multiple places which needs
+> > to test noiommu devices, this also adds a flag to mark noiommu devices.
+> > Hence the callers of vfio_device_is_noiommu() can be converted to test
+> > vfio_device->noiommu.
+> >
+> > Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> > Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> > Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+> > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> > ---
+> >  drivers/vfio/device_cdev.c |  4 ++--
+> >  drivers/vfio/group.c       |  2 +-
+> >  drivers/vfio/iommufd.c     | 10 +++++-----
+> >  drivers/vfio/vfio.h        |  7 ++++---
+> >  drivers/vfio/vfio_main.c   |  6 +++++-
+> >  include/linux/vfio.h       |  1 +
+> >  6 files changed, 18 insertions(+), 12 deletions(-)
+> >
+> > diff --git a/drivers/vfio/device_cdev.c b/drivers/vfio/device_cdev.c
+> > index 3f14edb80a93..6d7f50ee535d 100644
+> > --- a/drivers/vfio/device_cdev.c
+> > +++ b/drivers/vfio/device_cdev.c
+> > @@ -111,7 +111,7 @@ long vfio_device_ioctl_bind_iommufd(struct vfio_dev=
+ice_file
+> *df,
+> >  	if (df->group)
+> >  		return -EINVAL;
+> >
+> > -	if (vfio_device_is_noiommu(device) && !capable(CAP_SYS_RAWIO))
+> > +	if (device->noiommu && !capable(CAP_SYS_RAWIO))
+> >  		return -EPERM;
+> >
+> >  	ret =3D vfio_device_block_group(device);
+> > @@ -157,7 +157,7 @@ long vfio_device_ioctl_bind_iommufd(struct vfio_dev=
+ice_file
+> *df,
+> >  	device->cdev_opened =3D true;
+> >  	mutex_unlock(&device->dev_set->lock);
+> >
+> > -	if (vfio_device_is_noiommu(device))
+> > +	if (device->noiommu)
+> >  		dev_warn(device->dev, "noiommu device is bound to iommufd by user
+> "
+> >  			 "(%s:%d)\n", current->comm, task_pid_nr(current));
+> >  	return 0;
+> > diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
+> > index 7aacbd9d08c9..bf4335bce892 100644
+> > --- a/drivers/vfio/group.c
+> > +++ b/drivers/vfio/group.c
+> > @@ -192,7 +192,7 @@ static int vfio_device_group_open(struct vfio_devic=
+e_file *df)
+> >  		vfio_device_group_get_kvm_safe(device);
+> >
+> >  	df->iommufd =3D device->group->iommufd;
+> > -	if (df->iommufd && vfio_device_is_noiommu(device) && device->open_cou=
+nt
+> =3D=3D 0) {
+> > +	if (df->iommufd && device->noiommu && device->open_count =3D=3D 0) {
+> >  		ret =3D vfio_iommufd_compat_probe_noiommu(device,
+> >  							df->iommufd);
+> >  		if (ret)
+> > diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
+> > index 799ea322a7d4..dfe706f1e952 100644
+> > --- a/drivers/vfio/iommufd.c
+> > +++ b/drivers/vfio/iommufd.c
+> > @@ -71,7 +71,7 @@ int vfio_iommufd_bind(struct vfio_device_file *df)
+> >
+> >  	lockdep_assert_held(&vdev->dev_set->lock);
+> >
+> > -	if (vfio_device_is_noiommu(vdev))
+> > +	if (vdev->noiommu)
+> >  		return vfio_iommufd_noiommu_bind(vdev, ictx, &df->devid);
+> >
+> >  	return vdev->ops->bind_iommufd(vdev, ictx, &df->devid);
+> > @@ -86,7 +86,7 @@ int vfio_iommufd_compat_attach_ioas(struct vfio_devic=
+e *vdev,
+> >  	lockdep_assert_held(&vdev->dev_set->lock);
+> >
+> >  	/* compat noiommu does not need to do ioas attach */
+> > -	if (vfio_device_is_noiommu(vdev))
+> > +	if (vdev->noiommu)
+> >  		return 0;
+> >
+> >  	ret =3D iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id);
+> > @@ -103,7 +103,7 @@ void vfio_iommufd_unbind(struct vfio_device_file *d=
+f)
+> >
+> >  	lockdep_assert_held(&vdev->dev_set->lock);
+> >
+> > -	if (vfio_device_is_noiommu(vdev)) {
+> > +	if (vdev->noiommu) {
+> >  		vfio_iommufd_noiommu_unbind(vdev);
+> >  		return;
+> >  	}
+> > @@ -116,7 +116,7 @@ int vfio_iommufd_attach(struct vfio_device *vdev, u=
+32 *pt_id)
+> >  {
+> >  	lockdep_assert_held(&vdev->dev_set->lock);
+> >
+> > -	if (vfio_device_is_noiommu(vdev))
+> > +	if (vdev->noiommu)
+> >  		return 0;
+> >
+> >  	return vdev->ops->attach_ioas(vdev, pt_id);
+> > @@ -126,7 +126,7 @@ void vfio_iommufd_detach(struct vfio_device *vdev)
+> >  {
+> >  	lockdep_assert_held(&vdev->dev_set->lock);
+> >
+> > -	if (!vfio_device_is_noiommu(vdev))
+> > +	if (!vdev->noiommu)
+> >  		vdev->ops->detach_ioas(vdev);
+> >  }
+> >
+> > diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
+> > index 50553f67600f..c8579d63b2b9 100644
+> > --- a/drivers/vfio/vfio.h
+> > +++ b/drivers/vfio/vfio.h
+> > @@ -106,10 +106,11 @@ bool vfio_device_has_container(struct vfio_device=
+ *device);
+> >  int __init vfio_group_init(void);
+> >  void vfio_group_cleanup(void);
+> >
+> > -static inline bool vfio_device_is_noiommu(struct vfio_device *vdev)
+> > +static inline int vfio_device_set_noiommu(struct vfio_device *device)
+> >  {
+> > -	return IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
+> > -	       vdev->group->type =3D=3D VFIO_NO_IOMMU;
+> > +	device->noiommu =3D IS_ENABLED(CONFIG_VFIO_NOIOMMU) &&
+> > +			  device->group->type =3D=3D VFIO_NO_IOMMU;
+> > +	return 0;
+> >  }
+> >
+> >  #if IS_ENABLED(CONFIG_VFIO_CONTAINER)
+> > diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+> > index 8c3f26b4929b..8979f320d620 100644
+> > --- a/drivers/vfio/vfio_main.c
+> > +++ b/drivers/vfio/vfio_main.c
+> > @@ -289,8 +289,12 @@ static int __vfio_register_dev(struct vfio_device =
+*device,
+> >  	if (ret)
+> >  		return ret;
+> >
+> > +	ret =3D vfio_device_set_noiommu(device);
+> > +	if (ret)
+> > +		goto err_out;
+> > +
+> >  	ret =3D dev_set_name(&device->device, "%svfio%d",
+> > -			   vfio_device_is_noiommu(device) ? "noiommu-" : "", device-
+> >index);
+> > +			   device->noiommu ? "noiommu-" : "", device->index);
+> >  	if (ret)
+> >  		goto err_out;
+> >
+> > diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+> > index cf9d082a623c..fa13889e763f 100644
+> > --- a/include/linux/vfio.h
+> > +++ b/include/linux/vfio.h
+> > @@ -68,6 +68,7 @@ struct vfio_device {
+> >  	bool iommufd_attached;
+> >  #endif
+> >  	bool cdev_opened:1;
+> > +	bool noiommu:1;
+> >  };
+> >
+> >  /**
+
