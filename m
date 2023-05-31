@@ -1,65 +1,53 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3249717378
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 May 2023 04:04:24 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86B6C71764E
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 May 2023 07:41:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1B66F10E00F;
-	Wed, 31 May 2023 02:04:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9DC6010E1AE;
+	Wed, 31 May 2023 05:41:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-x236.google.com (mail-lj1-x236.google.com
- [IPv6:2a00:1450:4864:20::236])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8099D10E00F;
- Wed, 31 May 2023 02:04:21 +0000 (UTC)
-Received: by mail-lj1-x236.google.com with SMTP id
- 38308e7fff4ca-2af305114d4so7905371fa.0; 
- Tue, 30 May 2023 19:04:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1685498659; x=1688090659;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=37k0ej9+1DJsU/F422hEk4kk1ec5Zr1jgX4Na+twFKc=;
- b=O+LSQx3OP/UXQH47bh/OAXESZUQJCOworU+gPZxqyWCsjmiJdT64KtGGWAJVob6X1N
- w2PPkGWXZ5jvEJ5IqOuLQDXAb9DU2eDQGeoTNI3Gtzy8uJsyuzPJHqNmyqcl3ICFmb8M
- Hr/xn6fKkZGt3tim1OFaBwVCGN38xi4F8sSCJgD7kPB6d84WGqNESnsGmMHL0OT6rN/x
- udCN849hj8nrd9px3FN9hWQYpz1FEcusY8xx5vtA4dzxv+8FwexgpwBW4vJ0qenTKtsv
- SPsButdl9NU7MT9/MudCxjkE734Qw1P6KrMZJSHsFmAk/6kZ3vS0Af60/16vCu0BYUPM
- QkVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685498659; x=1688090659;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=37k0ej9+1DJsU/F422hEk4kk1ec5Zr1jgX4Na+twFKc=;
- b=lcmXpx10u6LEwKRFGWmWJBNwHGYNqs+yRVA1ARQArnPAJjPE9rFphtwvCL0VVg0TBd
- JJ645xAvYfDUYrHhDYXk7+kqDgL0KkhkOl0QEVUGWLmUPdRiJGICxmj48Rra63o+NZV+
- SOXqF50QgNMz/3IL0DBD9kdvSMfvXbmvtSOLcD7yYbvdTRyDxP5LImz0QySzPHyBwY6s
- BBKfzPfXn0Q0McoUAmkqns4g4sG4FeB9jIetoFNwNQDtGTp6eUAh434tvyu4hA7+tVzL
- Cmy4w5c1j9nyNTb+WzhoO1PqLkAEFgYYpEDYYtijXRAB5C3XH2B1t5hB6HYOa5eAHy/p
- sGng==
-X-Gm-Message-State: AC+VfDypAXuorgzTmDTeTuZusd0qtgYoMh/pkrOENvQmdKeK41cxvZeZ
- 4Mb03KHJxUMCmeuBQjx9XK22i/Lf4wtOYnO4
-X-Google-Smtp-Source: ACHHUZ4V3lBLxlywVQQuto4e0VVw/dFZiEoiF9eaiI3gT+8ACEiGVnyAOXz8i6nVDL7WGvdemiS2+g==
-X-Received: by 2002:a05:651c:b9b:b0:2ad:cad5:4b57 with SMTP id
- bg27-20020a05651c0b9b00b002adcad54b57mr1342743ljb.1.1685498658882; 
- Tue, 30 May 2023 19:04:18 -0700 (PDT)
-Received: from localhost.localdomain (88-115-161-74.elisa-laajakaista.fi.
- [88.115.161.74]) by smtp.gmail.com with ESMTPSA id
- c10-20020a2e9d8a000000b002af03f75edasm3057470ljj.80.2023.05.30.19.04.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 May 2023 19:04:18 -0700 (PDT)
-From: Zhi Wang <zhi.wang.linux@gmail.com>
-X-Google-Original-From: Zhi Wang <zhi.a.wang@intel.com>
-To: intel-gfx@lists.freedesktop.org
-Subject: [PATCH RESEND] drm/i915/gvt: remove unused variable gma_bottom in
- command parser
-Date: Wed, 31 May 2023 02:04:11 +0000
-Message-Id: <20230531020411.18987-1-zhi.a.wang@intel.com>
-X-Mailer: git-send-email 2.25.1
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CADB110E1AE;
+ Wed, 31 May 2023 05:41:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1685511685; x=1717047685;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=RpVMw+4SRn5u8uvcelTCsZwi/eR3rnsSUVJjGzP4e3o=;
+ b=em2p527Fk64OkzN6Sqq7KVHE2869B6Q5GFFC82g14uKoEWK1IaAHjbHd
+ 7tJP3cCIEho5huWMNRA+grNAmtW1YYdWRoofBQc3qfVdWtVi2YnMrhKz1
+ JA8unuCeGbuipn7E1vB8OUlD8Kdin/QYGKbIsY/F4cX9JI3ue7QZdTXmp
+ eIHHJkiH2lmZmj2ewal37x6Ajtv4r8bn5X4oAVFhbc2oLbStASxb7stKr
+ Ke/SifCLgs6/ujInKyhOSYxyUTrWwfMipUq7r9dQeV9OPz5ATElWEgsv0
+ PtyGHe4Hk3Hd6h36TQrnrwEicMtRv5+rdWSspMoDmFTHpGlsv9VVgcGW3 g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="335489704"
+X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; 
+ d="asc'?scan'208";a="335489704"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 May 2023 22:41:24 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="739802309"
+X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; 
+ d="asc'?scan'208";a="739802309"
+Received: from debian-skl.sh.intel.com (HELO debian-skl) ([10.239.160.45])
+ by orsmga001.jf.intel.com with ESMTP; 30 May 2023 22:41:22 -0700
+Date: Wed, 31 May 2023 13:39:59 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Zhi Wang <zhi.wang.linux@gmail.com>
+Subject: Re: [PATCH RESEND] drm/i915/gvt: remove unused variable gma_bottom
+ in command parser
+Message-ID: <ZHbdr8YdISKvFrWD@debian-scheme>
+References: <20230531020411.18987-1-zhi.a.wang@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="gmwJSrN/Xz+govn6"
+Content-Disposition: inline
+In-Reply-To: <20230531020411.18987-1-zhi.a.wang@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,69 +60,99 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jani Nikula <jani.nikula@intel.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: Jani Nikula <jani.nikula@intel.com>, intel-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Remove unused variable gma_bottom in scan_workload() and scan_wa_ctx().
-commit be1da7070aea ("drm/i915/gvt: vGPU command scanner") introduces
-gma_bottom in several functions to calculate the size of the command
-buffer. However, some of them are set but actually unused.
 
-When compiling the code with ccflags -Wunused-but-set-variable, gcc
-throws warnings.
+--gmwJSrN/Xz+govn6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Remove unused variables to avoid the gcc warnings. Tested via compiling
-the code with ccflags -Wunused-but-set-variable.
+On 2023.05.31 02:04:11 +0000, Zhi Wang wrote:
+> Remove unused variable gma_bottom in scan_workload() and scan_wa_ctx().
+> commit be1da7070aea ("drm/i915/gvt: vGPU command scanner") introduces
+> gma_bottom in several functions to calculate the size of the command
+> buffer. However, some of them are set but actually unused.
+>=20
+> When compiling the code with ccflags -Wunused-but-set-variable, gcc
+> throws warnings.
+>=20
+> Remove unused variables to avoid the gcc warnings. Tested via compiling
+> the code with ccflags -Wunused-but-set-variable.
+>=20
+> Fixes: be1da7070aea ("drm/i915/gvt: vGPU command scanner")
+> Suggested-by: Jani Nikula <jani.nikula@intel.com>
+> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> Cc: intel-gvt-dev@lists.freedesktop.org
+> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+> ---
 
-Fixes: be1da7070aea ("drm/i915/gvt: vGPU command scanner")
-Suggested-by: Jani Nikula <jani.nikula@intel.com>
-Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
-Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
----
- drivers/gpu/drm/i915/gvt/cmd_parser.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Good with me. I think I also caught this before but never send the change..
+Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
-diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-index 3c4ae1da0d41..05f9348b7a9d 100644
---- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
-+++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
-@@ -2833,7 +2833,7 @@ static int command_scan(struct parser_exec_state *s,
- 
- static int scan_workload(struct intel_vgpu_workload *workload)
- {
--	unsigned long gma_head, gma_tail, gma_bottom;
-+	unsigned long gma_head, gma_tail;
- 	struct parser_exec_state s;
- 	int ret = 0;
- 
-@@ -2843,7 +2843,6 @@ static int scan_workload(struct intel_vgpu_workload *workload)
- 
- 	gma_head = workload->rb_start + workload->rb_head;
- 	gma_tail = workload->rb_start + workload->rb_tail;
--	gma_bottom = workload->rb_start +  _RING_CTL_BUF_SIZE(workload->rb_ctl);
- 
- 	s.buf_type = RING_BUFFER_INSTRUCTION;
- 	s.buf_addr_type = GTT_BUFFER;
-@@ -2874,7 +2873,7 @@ static int scan_workload(struct intel_vgpu_workload *workload)
- static int scan_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
- {
- 
--	unsigned long gma_head, gma_tail, gma_bottom, ring_size, ring_tail;
-+	unsigned long gma_head, gma_tail, ring_size, ring_tail;
- 	struct parser_exec_state s;
- 	int ret = 0;
- 	struct intel_vgpu_workload *workload = container_of(wa_ctx,
-@@ -2891,7 +2890,6 @@ static int scan_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
- 			PAGE_SIZE);
- 	gma_head = wa_ctx->indirect_ctx.guest_gma;
- 	gma_tail = wa_ctx->indirect_ctx.guest_gma + ring_tail;
--	gma_bottom = wa_ctx->indirect_ctx.guest_gma + ring_size;
- 
- 	s.buf_type = RING_BUFFER_INSTRUCTION;
- 	s.buf_addr_type = GTT_BUFFER;
--- 
-2.25.1
+>  drivers/gpu/drm/i915/gvt/cmd_parser.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915=
+/gvt/cmd_parser.c
+> index 3c4ae1da0d41..05f9348b7a9d 100644
+> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+> @@ -2833,7 +2833,7 @@ static int command_scan(struct parser_exec_state *s,
+> =20
+>  static int scan_workload(struct intel_vgpu_workload *workload)
+>  {
+> -	unsigned long gma_head, gma_tail, gma_bottom;
+> +	unsigned long gma_head, gma_tail;
+>  	struct parser_exec_state s;
+>  	int ret =3D 0;
+> =20
+> @@ -2843,7 +2843,6 @@ static int scan_workload(struct intel_vgpu_workload=
+ *workload)
+> =20
+>  	gma_head =3D workload->rb_start + workload->rb_head;
+>  	gma_tail =3D workload->rb_start + workload->rb_tail;
+> -	gma_bottom =3D workload->rb_start +  _RING_CTL_BUF_SIZE(workload->rb_ct=
+l);
+> =20
+>  	s.buf_type =3D RING_BUFFER_INSTRUCTION;
+>  	s.buf_addr_type =3D GTT_BUFFER;
+> @@ -2874,7 +2873,7 @@ static int scan_workload(struct intel_vgpu_workload=
+ *workload)
+>  static int scan_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
+>  {
+> =20
+> -	unsigned long gma_head, gma_tail, gma_bottom, ring_size, ring_tail;
+> +	unsigned long gma_head, gma_tail, ring_size, ring_tail;
+>  	struct parser_exec_state s;
+>  	int ret =3D 0;
+>  	struct intel_vgpu_workload *workload =3D container_of(wa_ctx,
+> @@ -2891,7 +2890,6 @@ static int scan_wa_ctx(struct intel_shadow_wa_ctx *=
+wa_ctx)
+>  			PAGE_SIZE);
+>  	gma_head =3D wa_ctx->indirect_ctx.guest_gma;
+>  	gma_tail =3D wa_ctx->indirect_ctx.guest_gma + ring_tail;
+> -	gma_bottom =3D wa_ctx->indirect_ctx.guest_gma + ring_size;
+> =20
+>  	s.buf_type =3D RING_BUFFER_INSTRUCTION;
+>  	s.buf_addr_type =3D GTT_BUFFER;
+> --=20
+> 2.25.1
+>=20
 
+--gmwJSrN/Xz+govn6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCZHbdqQAKCRCxBBozTXgY
+JyyDAJ9Fa1Z5rEddXYPHbkhPOn6q8zGnbQCghWt4z1LfytzK2I8UMAg2rooLSSM=
+=Dxxr
+-----END PGP SIGNATURE-----
+
+--gmwJSrN/Xz+govn6--
