@@ -2,51 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40D82717BA5
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 May 2023 11:20:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 85683717BDA
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 May 2023 11:27:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 16BD810E1C7;
-	Wed, 31 May 2023 09:20:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EF02A10E4A2;
+	Wed, 31 May 2023 09:27:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1059C10E1C7;
- Wed, 31 May 2023 09:20:27 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id F15E010E1C7;
+ Wed, 31 May 2023 09:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685524828; x=1717060828;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=c8Dj9q9sRVhj8VCJKbVr1A6H0/7mJzLhVKywppNVYsM=;
- b=PAvPQ78fuQhjt3m7FbAgaJmFOXRsQefs96hF45psDxhKQWgbd4nkii3W
- ZhSnbZ0AKeKoqVlgHBbrwCkgye0Cs++RnUHNiKOWgkwEmCvLK41/qe8su
- F24O5EibhXE7stHU5IaOvZJRjqqmXp035I5PTCk1HSP2yIr/ho95t+gsd
- ZaG4POQ8/+cMt03EvmlfH4OBISys9bF0cIrc6DVpgMqcvg2r7A5yIeI5K
- 1N0xC3aLuBWmi47T0OvpBQ01hMf9YzhYgyjSFQJnzL7XbDj/DsScDs/AT
- 36pGNupYWDFXXXZXaU9vQE8mI2XyDJjA9oHDwDlDlRzr/Ly9QKnKZ3Rvv Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="355193194"
-X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="355193194"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 May 2023 02:20:27 -0700
+ t=1685525237; x=1717061237;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=0BkFncGuKbBjsyHlKU6yc44s8b/xzuGQ8DcI/EMXRlw=;
+ b=auEsBUOuGDiIgkcNr+M5YKn0NYmDIMSKKmuElDSWTlMtGq31wxIW51hm
+ JXvmUokqOnYp2QlDPk05zlt61nMKU0v2k7qmlfHxV26856z3aqeYc2LoO
+ 5H7OmcoWOyj13x/V/Jk33N5ed0+PT9sQWtsj9ZrZlOL/HINc5r1zYwPCA
+ 1J7wWrxPR7oGs0aUeptWHgSzNrnNlIkSagrWTpJtLc9mY2cu69ewol1Ay
+ QXobgYcyuoJC7Y7rLyVeZpKdMUUDXwjnRPd04UodxdBBEJYHbYc4HYOZK
+ QcGy2uC5hEGVdDhMBzeOgltB3IIs3tmGo+jRIWRj9uR5jhZEQfl9Jwxje A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="383447146"
+X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="383447146"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 May 2023 02:27:15 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="706804135"
-X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="706804135"
-Received: from itaraban-mobl.ger.corp.intel.com (HELO intel.com)
- ([10.252.47.19])
- by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 May 2023 02:20:24 -0700
-Date: Wed, 31 May 2023 11:20:20 +0200
-From: Andi Shyti <andi.shyti@linux.intel.com>
-To: Zhi Wang <zhi.wang.linux@gmail.com>
-Subject: Re: [Intel-gfx] [PATCH RESEND] drm/i915/gvt: remove unused variable
- gma_bottom in command parser
-Message-ID: <ZHcRVDptfTDwgtPf@ashyti-mobl2.lan>
+X-IronPort-AV: E=McAfee;i="6600,9927,10726"; a="831154029"
+X-IronPort-AV: E=Sophos;i="6.00,205,1681196400"; d="scan'208";a="831154029"
+Received: from eladcoh1-mobl2.ger.corp.intel.com (HELO localhost)
+ ([10.252.46.230])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 May 2023 02:27:13 -0700
+From: Jani Nikula <jani.nikula@intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>
+Subject: Re: [PATCH RESEND] drm/i915/gvt: remove unused variable gma_bottom
+ in command parser
+In-Reply-To: <ZHbdr8YdISKvFrWD@debian-scheme>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 References: <20230531020411.18987-1-zhi.a.wang@intel.com>
+ <ZHbdr8YdISKvFrWD@debian-scheme>
+Date: Wed, 31 May 2023 12:27:11 +0300
+Message-ID: <878rd4hmvk.fsf@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230531020411.18987-1-zhi.a.wang@intel.com>
+Content-Type: text/plain
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,33 +60,84 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jani Nikula <jani.nikula@intel.com>, intel-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org
+Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Zhi,
+On Wed, 31 May 2023, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
+> On 2023.05.31 02:04:11 +0000, Zhi Wang wrote:
+>> Remove unused variable gma_bottom in scan_workload() and scan_wa_ctx().
+>> commit be1da7070aea ("drm/i915/gvt: vGPU command scanner") introduces
+>> gma_bottom in several functions to calculate the size of the command
+>> buffer. However, some of them are set but actually unused.
+>> 
+>> When compiling the code with ccflags -Wunused-but-set-variable, gcc
+>> throws warnings.
+>> 
+>> Remove unused variables to avoid the gcc warnings. Tested via compiling
+>> the code with ccflags -Wunused-but-set-variable.
+>> 
+>> Fixes: be1da7070aea ("drm/i915/gvt: vGPU command scanner")
+>> Suggested-by: Jani Nikula <jani.nikula@intel.com>
+>> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+>> Cc: intel-gvt-dev@lists.freedesktop.org
+>> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+>> ---
+>
+> Good with me. I think I also caught this before but never send the change..
+> Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
-On Wed, May 31, 2023 at 02:04:11AM +0000, Zhi Wang wrote:
-> Remove unused variable gma_bottom in scan_workload() and scan_wa_ctx().
-> commit be1da7070aea ("drm/i915/gvt: vGPU command scanner") introduces
-> gma_bottom in several functions to calculate the size of the command
-> buffer. However, some of them are set but actually unused.
-> 
-> When compiling the code with ccflags -Wunused-but-set-variable, gcc
-> throws warnings.
-> 
-> Remove unused variables to avoid the gcc warnings. Tested via compiling
-> the code with ccflags -Wunused-but-set-variable.
-> 
-> Fixes: be1da7070aea ("drm/i915/gvt: vGPU command scanner")
-> Suggested-by: Jani Nikula <jani.nikula@intel.com>
-> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Cc: intel-gvt-dev@lists.freedesktop.org
-> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+I'd like to pick this up via drm-intel-next if that's all right.
 
-looks good:
+BR,
+Jani.
 
-Reviewed-by: Andi Shyti <andi.shyti@linux.intel.com> 
+>
+>>  drivers/gpu/drm/i915/gvt/cmd_parser.c | 6 ++----
+>>  1 file changed, 2 insertions(+), 4 deletions(-)
+>> 
+>> diff --git a/drivers/gpu/drm/i915/gvt/cmd_parser.c b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+>> index 3c4ae1da0d41..05f9348b7a9d 100644
+>> --- a/drivers/gpu/drm/i915/gvt/cmd_parser.c
+>> +++ b/drivers/gpu/drm/i915/gvt/cmd_parser.c
+>> @@ -2833,7 +2833,7 @@ static int command_scan(struct parser_exec_state *s,
+>>  
+>>  static int scan_workload(struct intel_vgpu_workload *workload)
+>>  {
+>> -	unsigned long gma_head, gma_tail, gma_bottom;
+>> +	unsigned long gma_head, gma_tail;
+>>  	struct parser_exec_state s;
+>>  	int ret = 0;
+>>  
+>> @@ -2843,7 +2843,6 @@ static int scan_workload(struct intel_vgpu_workload *workload)
+>>  
+>>  	gma_head = workload->rb_start + workload->rb_head;
+>>  	gma_tail = workload->rb_start + workload->rb_tail;
+>> -	gma_bottom = workload->rb_start +  _RING_CTL_BUF_SIZE(workload->rb_ctl);
+>>  
+>>  	s.buf_type = RING_BUFFER_INSTRUCTION;
+>>  	s.buf_addr_type = GTT_BUFFER;
+>> @@ -2874,7 +2873,7 @@ static int scan_workload(struct intel_vgpu_workload *workload)
+>>  static int scan_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
+>>  {
+>>  
+>> -	unsigned long gma_head, gma_tail, gma_bottom, ring_size, ring_tail;
+>> +	unsigned long gma_head, gma_tail, ring_size, ring_tail;
+>>  	struct parser_exec_state s;
+>>  	int ret = 0;
+>>  	struct intel_vgpu_workload *workload = container_of(wa_ctx,
+>> @@ -2891,7 +2890,6 @@ static int scan_wa_ctx(struct intel_shadow_wa_ctx *wa_ctx)
+>>  			PAGE_SIZE);
+>>  	gma_head = wa_ctx->indirect_ctx.guest_gma;
+>>  	gma_tail = wa_ctx->indirect_ctx.guest_gma + ring_tail;
+>> -	gma_bottom = wa_ctx->indirect_ctx.guest_gma + ring_size;
+>>  
+>>  	s.buf_type = RING_BUFFER_INSTRUCTION;
+>>  	s.buf_addr_type = GTT_BUFFER;
+>> -- 
+>> 2.25.1
+>> 
 
-Andi
+-- 
+Jani Nikula, Intel Open Source Graphics Center
