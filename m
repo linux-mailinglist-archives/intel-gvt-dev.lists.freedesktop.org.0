@@ -1,47 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25BA872018B
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0D6F72018D
 	for <lists+intel-gvt-dev@lfdr.de>; Fri,  2 Jun 2023 14:17:12 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D413110E697;
-	Fri,  2 Jun 2023 12:17:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5B12210E69A;
+	Fri,  2 Jun 2023 12:17:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DFB7310E696;
- Fri,  2 Jun 2023 12:17:06 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 63C6C10E691;
+ Fri,  2 Jun 2023 12:17:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685708226; x=1717244226;
+ t=1685708228; x=1717244228;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=2jmIgcG94FlJZ1RGv1VO9N+8kYYenREfZdPLHhTy/ZI=;
- b=C63ZM5sPHR8J2czaY9SKcjcrwGtj5JkFZI1CexFsGaFIU4SyYeiDWWdO
- JhuG/e9uXkFigPAiotD01gDe7x3FKv46AyNG8UcrXuPCd3iSA5soRU7FV
- dfoq/bIZVU2cB+mYJDaBTJaqFSaQsMz7ubZb3vnbu4mq7/km9ylQGE2lG
- sOTZYG+rVEPBMVvH6eBNsrI6t4D3d3CnspxhZYi/ZmV9LmK75y9SW34qL
- dVhGhv0qDqBz6SubzPR4uHik9eTk8PfZ3zrz1vQtPL0oFq7mf5nzGO9OG
- VG5xhWtkL1lmcu2Co22W7gULhr8zcNFQUjiFPH2UmRHi2yjVwD5Wm/JTg Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10728"; a="384136580"
-X-IronPort-AV: E=Sophos;i="6.00,212,1681196400"; d="scan'208";a="384136580"
+ bh=bk8KB40aXNxkLMBLjR3bUDooNgsfPwAc0pvhL0SzSqM=;
+ b=PjeMHxw8WAFbRtjuYOc8ko0H/gGOeFIVVYlf3zZk8IW/CpTJgS/V1xcx
+ QjAFhc2VC//ASAVNTT+AoAgaBx1exAROl0OeS4DEnAreJehvO80pSTiNi
+ tPhNUN+0whKwNx2rvIm/+tQvOaTZvtHnSXdsGGRod5ALgKGkG8oNJu0fa
+ ZwR8YMzihNS8an3hq6Y+0pVE4YDzbiZPmEK3Tir2RNBGdRlOGCu8R0VMr
+ ZLaBt85lOWQcDGRNnRvDiZTh01Wcetz/gJmcsRoGAABg/tzlGeD5PMBI4
+ PTSu+HRvdCnzbwOan5WdxXi1COZ+znJ+DcNwv6g9y06eObs4eTRXPO/YJ g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10728"; a="384136593"
+X-IronPort-AV: E=Sophos;i="6.00,212,1681196400"; d="scan'208";a="384136593"
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jun 2023 05:17:06 -0700
+ 02 Jun 2023 05:17:08 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10728"; a="1037947316"
-X-IronPort-AV: E=Sophos;i="6.00,212,1681196400"; d="scan'208";a="1037947316"
+X-IronPort-AV: E=McAfee;i="6600,9927,10728"; a="1037947327"
+X-IronPort-AV: E=Sophos;i="6.00,212,1681196400"; d="scan'208";a="1037947327"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga005.fm.intel.com with ESMTP; 02 Jun 2023 05:17:05 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 02 Jun 2023 05:17:07 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v12 09/24] vfio: Make vfio_df_open() single open for device
- cdev path
-Date: Fri,  2 Jun 2023 05:16:38 -0700
-Message-Id: <20230602121653.80017-10-yi.l.liu@intel.com>
+Subject: [PATCH v12 10/24] vfio-iommufd: Move noiommu compat validation out of
+ vfio_iommufd_bind()
+Date: Fri,  2 Jun 2023 05:16:39 -0700
+Message-Id: <20230602121653.80017-11-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230602121653.80017-1-yi.l.liu@intel.com>
 References: <20230602121653.80017-1-yi.l.liu@intel.com>
@@ -71,81 +71,108 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-VFIO group has historically allowed multi-open of the device FD. This
-was made secure because the "open" was executed via an ioctl to the
-group FD which is itself only single open.
-
-However, no known use of multiple device FDs today. It is kind of a
-strange thing to do because new device FDs can naturally be created
-via dup().
-
-When we implement the new device uAPI (only used in cdev path) there is
-no natural way to allow the device itself from being multi-opened in a
-secure manner. Without the group FD we cannot prove the security context
-of the opener.
-
-Thus, when moving to the new uAPI we block the ability of opening
-a device multiple times. Given old group path still allows it we store
-a vfio_group pointer in struct vfio_device_file to differentiate.
+This moves the noiommu compat validation logic into vfio_df_group_open().
+This is more consistent with what will be done in vfio device cdev path.
 
 Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Tested-by: Terrence Xu <terrence.xu@intel.com>
 Tested-by: Nicolin Chen <nicolinc@nvidia.com>
 Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 Tested-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/vfio/group.c     | 2 ++
- drivers/vfio/vfio.h      | 2 ++
- drivers/vfio/vfio_main.c | 7 +++++++
- 3 files changed, 11 insertions(+)
+ drivers/vfio/group.c   | 13 +++++++++++++
+ drivers/vfio/iommufd.c | 22 ++++++++--------------
+ drivers/vfio/vfio.h    |  9 +++++++++
+ 3 files changed, 30 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/vfio/group.c b/drivers/vfio/group.c
-index 2751d61689c4..4e6277191eb4 100644
+index 4e6277191eb4..b8b77daf7aa6 100644
 --- a/drivers/vfio/group.c
 +++ b/drivers/vfio/group.c
-@@ -245,6 +245,8 @@ static struct file *vfio_device_open_file(struct vfio_device *device)
- 		goto err_out;
- 	}
+@@ -192,6 +192,19 @@ static int vfio_df_group_open(struct vfio_device_file *df)
+ 		vfio_device_group_get_kvm_safe(device);
  
-+	df->group = device->group;
+ 	df->iommufd = device->group->iommufd;
++	if (df->iommufd && vfio_device_is_noiommu(device) && device->open_count == 0) {
++		/*
++		 * Require no compat ioas to be assigned to proceed.  The basic
++		 * statement is that the user cannot have done something that
++		 * implies they expected translation to exist
++		 */
++		if (!capable(CAP_SYS_RAWIO) ||
++		    vfio_iommufd_device_has_compat_ioas(device, df->iommufd))
++			ret = -EPERM;
++		else
++			ret = 0;
++		goto out_put_kvm;
++	}
+ 
+ 	ret = vfio_df_open(df);
+ 	if (ret) {
+diff --git a/drivers/vfio/iommufd.c b/drivers/vfio/iommufd.c
+index a04f3a493437..21237f5d0ffc 100644
+--- a/drivers/vfio/iommufd.c
++++ b/drivers/vfio/iommufd.c
+@@ -10,6 +10,14 @@
+ MODULE_IMPORT_NS(IOMMUFD);
+ MODULE_IMPORT_NS(IOMMUFD_VFIO);
+ 
++bool vfio_iommufd_device_has_compat_ioas(struct vfio_device *vdev,
++					 struct iommufd_ctx *ictx)
++{
++	u32 ioas_id;
 +
- 	ret = vfio_df_group_open(df);
++	return !iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id);
++}
++
+ int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
+ {
+ 	u32 ioas_id;
+@@ -18,20 +26,6 @@ int vfio_iommufd_bind(struct vfio_device *vdev, struct iommufd_ctx *ictx)
+ 
+ 	lockdep_assert_held(&vdev->dev_set->lock);
+ 
+-	if (vfio_device_is_noiommu(vdev)) {
+-		if (!capable(CAP_SYS_RAWIO))
+-			return -EPERM;
+-
+-		/*
+-		 * Require no compat ioas to be assigned to proceed. The basic
+-		 * statement is that the user cannot have done something that
+-		 * implies they expected translation to exist
+-		 */
+-		if (!iommufd_vfio_compat_ioas_get_id(ictx, &ioas_id))
+-			return -EPERM;
+-		return 0;
+-	}
+-
+ 	ret = vdev->ops->bind_iommufd(vdev, ictx, &device_id);
  	if (ret)
- 		goto err_free;
+ 		return ret;
 diff --git a/drivers/vfio/vfio.h b/drivers/vfio/vfio.h
-index de17bdd16df5..86e45ba18768 100644
+index 86e45ba18768..76181d208bc1 100644
 --- a/drivers/vfio/vfio.h
 +++ b/drivers/vfio/vfio.h
-@@ -18,6 +18,8 @@ struct vfio_container;
+@@ -234,9 +234,18 @@ static inline void vfio_container_cleanup(void)
+ #endif
  
- struct vfio_device_file {
- 	struct vfio_device *device;
-+	struct vfio_group *group;
+ #if IS_ENABLED(CONFIG_IOMMUFD)
++bool vfio_iommufd_device_has_compat_ioas(struct vfio_device *vdev,
++					 struct iommufd_ctx *ictx);
+ int vfio_iommufd_bind(struct vfio_device *device, struct iommufd_ctx *ictx);
+ void vfio_iommufd_unbind(struct vfio_device *device);
+ #else
++static inline bool
++vfio_iommufd_device_has_compat_ioas(struct vfio_device *vdev,
++				    struct iommufd_ctx *ictx)
++{
++	return false;
++}
 +
- 	bool access_granted;
- 	spinlock_t kvm_ref_lock; /* protect kvm field */
- 	struct kvm *kvm;
-diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-index 4c8b7713dc3d..01db017a0c3b 100644
---- a/drivers/vfio/vfio_main.c
-+++ b/drivers/vfio/vfio_main.c
-@@ -492,6 +492,13 @@ int vfio_df_open(struct vfio_device_file *df)
- 
- 	lockdep_assert_held(&device->dev_set->lock);
- 
-+	/*
-+	 * Only the group path allows the device to be opened multiple
-+	 * times.  The device cdev path doesn't have a secure way for it.
-+	 */
-+	if (device->open_count != 0 && !df->group)
-+		return -EINVAL;
-+
- 	device->open_count++;
- 	if (device->open_count == 1) {
- 		ret = vfio_device_first_open(df);
+ static inline int vfio_iommufd_bind(struct vfio_device *device,
+ 				    struct iommufd_ctx *ictx)
+ {
 -- 
 2.34.1
 
