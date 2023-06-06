@@ -1,61 +1,112 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C494724122
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  6 Jun 2023 13:38:26 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id D53D172467F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  6 Jun 2023 16:41:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DAFE310E330;
-	Tue,  6 Jun 2023 11:38:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9C61110E362;
+	Tue,  6 Jun 2023 14:40:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com
- [IPv6:2607:f8b0:4864:20::643])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 9275410E330
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  6 Jun 2023 11:38:21 +0000 (UTC)
-Received: by mail-pl1-x643.google.com with SMTP id
- d9443c01a7336-1b025d26f4fso52584835ad.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 06 Jun 2023 04:38:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1686051500; x=1688643500;
- h=to:subject:message-id:date:from:sender:reply-to:mime-version:from
- :to:cc:subject:date:message-id:reply-to;
- bh=egwO5+jRcHqhSVFUfUGWVJVk/4clvS0mJ+iA2ckPsK0=;
- b=OVskoZPVUIN8AfMQu+BPCnn/ul+FsE8pR+kRH4EJCpPqYliMyvpQ3WDbMO0wLr5va1
- jPMiRL/m8AZHqskYCs5NR9aR2uMicxhapPCIYCHYoF/ArxfzWAFm0tyWxiiyQkTEUjhL
- G1OZzEnjX7MD62Wl5YnBsIpxqhWw3xm46i3Og2YMJOCqzlM/IsHQ8FryHz6QZxM+O07n
- 2oetjgffhiG9H61dHlC5ColIsyXeB3XS9UbHZ5u6UTPNu63xt0G0a3t0vtjelgf5SDYj
- 3wsbYCkp12qjrwDF7MYSqHVRp6p1n9jrTUuVRUsuYg+jg07MdlDWjcBjnIVzbT2y1owO
- sUwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686051500; x=1688643500;
- h=to:subject:message-id:date:from:sender:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=egwO5+jRcHqhSVFUfUGWVJVk/4clvS0mJ+iA2ckPsK0=;
- b=cPy7oWtoNDiGBkEAXoS0TOJgNXyL9lDjRxalKInZ17gaHVHtZEX4Ex6En9s2ZHh4tu
- C6aF38kudrizTkcAaznHh1XUrCxcq6p47yU8we3YdaWl1R/1cJ3URTs2u1AZ0xX/bhOs
- jlIu0siOs+5hKLNEEYvX3bozaS23HFhfhsFMWJfcaDiZuzpx77c4MzeIE8EndajNmswu
- ubYhzWjBqgYQX6Ni3ES/g4EBpvew6OnL1MJUgtHUU+qYsM2e28NpQ5qUgh5ZPzScnC/N
- vmQAMm+GTcGad/NN+D/Dxn47Be4lpM1Wv5JFGMRJx9FcdRmVmcDOmLwNHwSsU9oo3Bbd
- H8oQ==
-X-Gm-Message-State: AC+VfDzzGn3NqKLE2HT3Y7JxcLyYR7g3FWKoc5DKwtBdlYwL90p3YQer
- +C5md8QcGFCaTtCC1Ij08FP3v6z6ylizIkiU1WA=
-X-Google-Smtp-Source: ACHHUZ4eco4FhYkEKsjIVnJItXFkC6ZRusHWMU1MGJh1kohdz3zB3h7juzR//FU1oI03Cd2PIfIvbkG/LfUlKnNAgtk=
-X-Received: by 2002:a05:6a20:12c2:b0:111:366:eea2 with SMTP id
- v2-20020a056a2012c200b001110366eea2mr2576289pzg.27.1686051499820; Tue, 06 Jun
- 2023 04:38:19 -0700 (PDT)
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2062.outbound.protection.outlook.com [40.107.92.62])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0EA3710E362;
+ Tue,  6 Jun 2023 14:40:57 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TPHmqoD2exwHDHC/HgGlTp+hlBaNAXNFwI413t6f1udXcCTYVg/TLjCu1kUmlAsEBhWJJrMwN6GmBKhRT5gZ9XeeG4DEW4fZ3GMgngRltCRA4se61fPVx80xLLE5kc7j4u4iV3my7btu+E4xU75mByR4wu8bBDx2p/9H7FoCP+/Fpr1FHV+1yvcJlVzRXqDmSKNftVe6m+9FAQPKc93aWP3YHBdiwjTWoziTH682+iyz8PmxciY56tarrtFqOI3+TUUgW8ti1e4b39hsyE5f4On6n7e4CjuJAqDx10a5EgZeEASMhfmIxmU+UuTPK5hCf7g+q4ZhkM7rXlfqaPVoRA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UjPI7xpe6WCT5wwN7nyo/FuBotYT7JWBh5IOeS+2ShU=;
+ b=TfiMX+PDNNg5Noz/EcYLD8moi2/UwaM/mBhNbkJDoJrB/aR9Ht7QMqTK2AOJDR0NV5fOPAnA0yHwqIMfvy42x2mnY6r353k0YalB5jhUL3Yeds08lj5uqqFPBdwXsjL7csYhbJwSboPT0BdoSLvdUQZVuFawwLRZcGB8x6XSzaB5m6nyqfhAsYLKJYLyOMPS7/yL+h4X2usVOJ80kz3azCZeuQpqzKD841yfxoIBXfMnOZeLsN+6xmYUlX+z0PBC+G57hklqwJ3ihJOO2zkNCzNiaxELJTcz27QLY+rSpC26EYjrjgSCqgvs2IqIT9Wop/ok1f7vo4ptcCwyqIFNoA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UjPI7xpe6WCT5wwN7nyo/FuBotYT7JWBh5IOeS+2ShU=;
+ b=M4y2HByHtfU2KU03Ox31Wiest8eRkpWLLyYCrq4Z6GBnSXAH7sl5SUPpVpkpNkyZZszMS5QBBh5AAFJtKT57MYECreEB1Mywif+7UAFWbppesvgmmFe895sMCt4MGZLkZA3SMvuh4+g0qo5D6gJCnoKrBtQmemnoGid1AjMWIMnrC++Qp77U//8+AGhWz4vYXzzsJuvmzMrdAkMsiq09HpFb9QZAJqjV+OuKaIKj0+9BQVopN2XgD5zxWkfFyhkbSSn310/pqhRWYfUQs1zfoafdvbm7tKK//9djfLtXQJ63dpUXSIv4DsmEq17scV8zV0mzKHdzJxJcJI86oBVpXQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by SN7PR12MB7810.namprd12.prod.outlook.com (2603:10b6:806:34c::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.31; Tue, 6 Jun
+ 2023 14:40:54 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6455.028; Tue, 6 Jun 2023
+ 14:40:54 +0000
+Date: Tue, 6 Jun 2023 11:40:53 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [PATCH v11 20/23] vfio: Add VFIO_DEVICE_[AT|DE]TACH_IOMMUFD_PT
+Message-ID: <ZH9Fddz1ZUAsZvWL@nvidia.com>
+References: <20230513132827.39066-1-yi.l.liu@intel.com>
+ <20230513132827.39066-21-yi.l.liu@intel.com>
+ <20230522161534.32f3bf8e.alex.williamson@redhat.com>
+ <DS0PR11MB7529096D1BE1D337BA50884BC3409@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230523095025.1898297c.alex.williamson@redhat.com>
+ <DS0PR11MB75292161F081F27C0650EFB3C3419@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230524093142.3cac798e.alex.williamson@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230524093142.3cac798e.alex.williamson@redhat.com>
+X-ClientProxiedBy: CH0PR03CA0101.namprd03.prod.outlook.com
+ (2603:10b6:610:cd::16) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-Received: by 2002:a05:7300:6c07:b0:ce:89d6:e8d4 with HTTP; Tue, 6 Jun 2023
- 04:38:18 -0700 (PDT)
-From: Abebe Aemro Selassie <abebeaemro99@gmail.com>
-Date: Tue, 6 Jun 2023 04:38:18 -0700
-X-Google-Sender-Auth: 1xWuspLo2Gm7uhOwK-SDT-kKsDk
-Message-ID: <CAB=VgLbUwgV=cRAptzcYyHmQRsGhjWNwsYGTUOAGDvxAnUtBzQ@mail.gmail.com>
-Subject: Greetings From Mr. Abebe Aemro Selassie
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SN7PR12MB7810:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6f0929a6-b5a2-4b15-fe79-08db669c0870
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: cmpO5rPcAyjfM2/58/lNCQ6bocXx65d2PkMIMjki1NC2Fn5vldTyzabqeSUmarZDMsS/92rsRLPFJLZ7bWQy8NhmZSebDVewuYKKKHB1OIIRGLPxoz9WakZuhT8UApArtFR6kA/67J0fTmrf94pcxGRjpTns6qLNhVtV3AJYDDy4Lcg4o6TFh5PuF1AjDFUqzd0g6FEvYr1xGfxhduyVjQ2W91MQWnKzjL35KYqieJa1LDqVMRv86kVx/BKX5R70NxY+eyM0glw7YQ5qvF7UOR4XiMPWO1Oh1PbsIZZcaze2GIgNkkoIOXkKzSaUfZmiGIuIoK3qr38Dlz+2vV898PSbfYwdOS1QDK9sKrMnBTQe1lAE79FcBAz8X3qH6ZIRKa/eUfAVL0Sklt9HFb3CWcMt+GnEmppLeBSXxpUOMWCcb9C5gNHyseXPbSIF8W1Xdl0iHE1AsZ9+RMqXalSbgGQAQm9bkMkeFjmjdF9ZH5LD8yQAT0tDLqPgkdSlHi6EsOIK28JY7KSJ40WTwYUmM2qZu2Co/RBiB9G9I+0KPpvqfKtJXTLlHoyNI/TDaJn8Zb/nXJWJvZuEIo3eSkKfE+otIZC50/JaMIh8AglYZiE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(4636009)(39860400002)(396003)(366004)(346002)(376002)(136003)(451199021)(7416002)(86362001)(6916009)(2906002)(5660300002)(41300700001)(4326008)(66556008)(66476007)(66946007)(38100700002)(8936002)(66899021)(8676002)(54906003)(316002)(478600001)(6486002)(186003)(6512007)(6506007)(83380400001)(36756003)(2616005)(26005)(83133001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KZqeIJC2F1zUnNmwM4+1l4EHRfMZfnXEJeSOR8N7BJK7BnPiQZtMjnhnAl7d?=
+ =?us-ascii?Q?57Ry0K+WBTtlULUaJbX25dKYboIhcbhrNBR24ukZ2GM3npljxRmgB6N6bwkB?=
+ =?us-ascii?Q?tPmzFozDS8exP9pP2VzzZsoapLVwHt/5T6nxIbSdmuxMo2PZEIzzUNJuhZFq?=
+ =?us-ascii?Q?sUvOWlymVwErzyjCgmsFhHlsohbLuu3Bn6d7IupGOlIZCy6lNYlVwdBIFzn0?=
+ =?us-ascii?Q?Dcv/6u1aIvJLRxAFJk+3DaFAKc5YrF76LplvbKFMADmL4Vklwn859eWUXEkX?=
+ =?us-ascii?Q?403uk+jFX1nmhGwy/IwhNQ7V8N36x0+DF2HGx9v7rm038SNAbctfKrrUP2IP?=
+ =?us-ascii?Q?Ssy6d1tOp32vT6ovfp7p7brHD10Ep2yTtnfagF+l7NnrkUpHVz3TPa8I16PK?=
+ =?us-ascii?Q?cnS8bm9Ii6Eg+C3VWqO/NfPfvQxr9b2Js4aFD585j4rAk3KpqKYp5L45nXfq?=
+ =?us-ascii?Q?56g4wnVDIzP52rip5dVOP4EdbP4kE2gjnN5lztfH8yHY8evMGpLJTMSF+2V8?=
+ =?us-ascii?Q?SASzLCgiUeI+BuiNLjWIcUaoaKFhEbwJxih2Gb5fsdHAW0EugVBBCZ6Jiumm?=
+ =?us-ascii?Q?zX4FF7GpJybc/SuDWxt+cjF2LJn9GxOQkeD83YPIV1GFR5Qyh3ZQKXQebTmC?=
+ =?us-ascii?Q?PUb5wzIEkB2troFE6wRnfwMbgSpWpCOrrluVambTox2fupUSq7p84lX72l39?=
+ =?us-ascii?Q?YFE6YckdJg92IJp43YUNxwF2EHzD6zW1zF/TbdO5E4INsNvL3ncDgOhy92hx?=
+ =?us-ascii?Q?dqaFzbyC+HLOb15EfiH0IHLeGzChrpRkJIfWe4GSAF9NxhFuEm0Y+lstN0rS?=
+ =?us-ascii?Q?mZnxUVtIMFM55pVJiyQ4jYp0qCGhzntEL7m40rM+jiR7PDIzsRBX+DO08aE+?=
+ =?us-ascii?Q?Tt49PZehVvwYIlphcfFLW02c9lOhIGAiQ/tc2TdfW6B9ezbMqvgDfw/dNFqL?=
+ =?us-ascii?Q?x2dqdyjsePxiyDNVap8Tl9aHgMQeHJwA4ofySBPsL/3lPVyFkjE/K8N7xGPU?=
+ =?us-ascii?Q?VRl7nU6DOX65ooDgYexnnd15ua7HV2Fbp1NoYr1sp+WKp1tfIds924q/iXXl?=
+ =?us-ascii?Q?7GP9zYq4GWpBVj7ywQk7pxaiw4dGSzySc3pHcOT+QOIRw5dT6nuXUU0ErKXu?=
+ =?us-ascii?Q?+DVIm8V8CGYaU+ZCjuOHf/C/dRn6WT0+MlSYI/W40ShVcc7umlZwqGSXoP5c?=
+ =?us-ascii?Q?NwOV+VQdrxuoDI/9+gywzu/h7RGAxAqnQQotHQJstqmRBpJOFWPZaDUSpPbD?=
+ =?us-ascii?Q?DHr8aphqAiH0G9ZYWwRMHDEOK/lKfn/QPHpfbfIUa0XltztDk2QIE/H2mrKC?=
+ =?us-ascii?Q?R1M60YLVxzPqauiH6ed1A8eI4zDjm10am6EGIDw1AStsB93m6sHJ3Q0zqk4v?=
+ =?us-ascii?Q?L6IJiHP4ZoaN791aQQTrPEJBTyeOBXOfpMz5wKKLKRthl0ysEXSHG9E8EQZs?=
+ =?us-ascii?Q?JIeUQ9RR/UwJNWgZRqNQxQaRvgzo33ZVZDzgKKPHWH0vudh+zSxWDz+eW5iE?=
+ =?us-ascii?Q?AQWPsYVKX51pf34WV/8x2lV5ePCv4vfSQzy5PExRBwCWCyN/F1Wjde4PpzZG?=
+ =?us-ascii?Q?QITSF0JFi6cRYSKmI5+qa3WdBOzYIa8LyB4fyyOq?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6f0929a6-b5a2-4b15-fe79-08db669c0870
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2023 14:40:54.7240 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: XS3l24dsjdDbWmije6MwXFo9Tafgb/uDgBnQyM1Hodmpz/q7ZRVm/Grv8l1WUEGB
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7810
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,50 +119,96 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: abebeaemro99@gmail.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "clegoate@redhat.com" <clegoate@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Greetings From Mr. Abebe Aemro Selassie
+On Wed, May 24, 2023 at 09:31:42AM -0600, Alex Williamson wrote:
 
-I have a Mutual/Beneficial Business Project that would be beneficial
-to you. I only have two questions to ask of you, if you are
-interested.
+> If a user creates an ioas within an iommufd, attaches a device to that
+> ioas and populates it with mappings, wouldn't the user expect the
+> device to have access to and honor those mappings?  I think that's the
+> path we're headed down if we report a successful attach of a noiommu
+> device to an ioas.
 
-The reason why I contacted you is because am the account officer of
-Mr.Jin Wei-Liang,here in our bank,who died in covid19 pandemic with
-his family,since that time until now,no one has come for the money,the
-meeting we hosted last week with the central bank president,bank
-management agreed to take the money as government property,that is the
-reason why I contacted you so that you can apply to our bank as a
-cousin to Mr.Jin Wei-Liang,because I have all the documents concerning
-the disease customer in my office,I will be here as asider and be
-giving you informations,anything bank asked from you,I will give it to
-you because in this life opportunity comes but once,I have been
-working for this bank for good 13 years now and am based on monthly
-salary and never achieved a tangible thing and if I don't do the
-business with you,bank will still take the money so this is the reason
-why I contacted you so that we can do the business together,the
-disease money is (18.6 million dollars),50 percent for you,50 percent
-for me,if you are interested respond my email but if you are not
-interested do well to inform me so that I will look for another
-partner and please don't expose me,delete my message because if bank
-finds out,I will be in big trouble..These are the two questions I
-would like you to answer:
+I understand we are going to drop no-iommu from this series, so this
+below is not relavent.
 
-1. Can you handle this project?
-2. Can I give you this trust?
+But to clarify my general design idea here again
 
-Please note that the deal requires high level of maturity, honesty and
-secrecy. This will involve moving some money from my office, on trust
-to your hands or bank account. Also note that i will do everything to
-make sure that the money is moved as a purely legitimate fund, so you
-will not be exposed to any risk.
+The IOAS contains the mappings that userspace would like to use with
+no-iommu. Userspace would use a new IOCTL to pin and return the DMA
+addr's of those exact mappings.
 
-I request for your full co-operation. I will give you details and
-procedure when I receive your reply, to commence this transaction, I
-require you to immediately indicate your interest by a return reply. I
-will be waiting for your response in a timely manner.
+So attaching a noiommu to an IOAS is a necessary operation that should
+succeed. It doesn't make full API sense until we also get an ioctl to
+return the dma_addr_t lists.
 
-Best Regard,
-Mr. Abebe Aemro Selassie
+What is special about no-iommu is that the mapppings have to go
+through the special ioctl API to pin and translate, the IOVA cannot be
+used natively as a dma_addr. The IOAS is still used and still related
+to the device, it just for pinning and dma_addr generation not HW
+isolation.
+ 
+> We need to keep in mind that noiommu was meant to be a minimally
+> intrusive mechanism to provide a dummy vfio IOMMU backend and satisfy
+> the group requirements, solely for the purpose of making use of the
+> vfio device interface and without providing any DMA mapping services or
+> expectations.  
+
+Well, no-iommu turned into a total hack job as soon as it wrongly
+relied on mlock() and /proc/ files to function. Even within its
+defined limitations this is an incorrect way to use the mm and DMA
+APIs. Memory under DMA must be locked using pin_user_pages(), mlock is
+not a substitution.
+
+I expect this is functionally broken these days, under some workloads,
+on certain kernel configurations.
+
+Even if we don't fully implement it, I prefer to imagine a design
+where no-iommu is implemented correctly and orient things toward that.
+
+> beyond the minimal code trickery of the legacy implementation.  I hate
+> to ask, but could we reiterate our requirements for noiommu as a part of
+> the native iommufd interface for vfio?  The nested userspace requirement
+> is gone now that hypervisors have vIOMMU support, so my assumption is
+> that this is only for bare metal systems without an IOMMU, which
+> ideally are less and less prevalent.  
+
+I understood there was some desire for DPDK users to do this for
+higher performance on some systems.
+
+> that are actually going to adopt the noiommu cdev interface?  What
+> terrible things happen if noiommu only exists in the vfio group compat
+> interface to iommufd and at some distant point in the future dies when
+> that gets disabled?
+
+I think it is fine, it is only for DPDK and if DPDK people really
+really care about this then they can implement it properly someday.
+
+I'm quite happy if we say we will not put no-iommu into the device
+cdev until it is put in fully correctly without relying on mlock/etc.
+
+Then the API construction would make alot more sense.
+
+Jason
