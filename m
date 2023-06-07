@@ -1,100 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3A7572579D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Jun 2023 10:28:08 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DE7A725A9C
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  7 Jun 2023 11:35:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7DAB410E466;
-	Wed,  7 Jun 2023 08:28:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0906210E202;
+	Wed,  7 Jun 2023 09:35:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam04on20619.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:7e8b::619])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 8BDE510E465;
- Wed,  7 Jun 2023 08:28:05 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YZ0fLDNjPGKQkwbSxdOfXR3JAmgr3NQsB0SVHhLS6gkcvk8mSi8DIVqJMDdn0zoHzZ6m1buH8Xopv7Bp59nQW4Eavw95GdTUwWe/kQTNcwTL5H6Dn2PRk609856MSn8uhqrfpQ7nt0UtvJKIHsrkj6D4iLPUtSMr+yn+y7//8ONOwyP8mKcf8zBuUPwiBtR/ZaGY27s9NyqbBxy0HQ+VVIYQaB7Gs72RKYBKE4BdrAKK5kncU4NGxmJpu1WBRnvACL4clGhIkXFETnsiXEYlo1dzlkQv0C96Eiovi/9MMr15SBYq3GMLVKxfPntSkSGB3s4jqp0x978MpDsyNDF2Xw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CaYIxssfxfHh2QEB13/cmS5a8wYMWFbsQoAgjU1O6Xw=;
- b=dYvSamxhE3Lo/A9X4k+P5HW8ZmlERBZuRAhwHtZPC5Gcui9FroAYupxth4UAEAlPt1NUHfEZMEiFkrtbE0VxwCFrVwYY+CYTVNOerbG7T6ryx6EWIttYQdjqQupyAMtUoxRywfbLguYdA7A2C40+hRZz2VIRF6rs9d7YAOLjWY1+tCiMeDBTwc0uCu9t+Q39oZ4yGRVF++ueYxrcXl3QtrhvZcHEhh5LbYYtyikYkh6Bh+LF1i1qIKuZv9w9XQX9tUMMsy5nF4nqLLA3McbCzxdxuflLFbAeqSPM3KawrXQehu2wSS9TJDji/QwmhJEVYzOnM5FpIgCY/cdYJMtmVQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CaYIxssfxfHh2QEB13/cmS5a8wYMWFbsQoAgjU1O6Xw=;
- b=ed3hzXy0O0dExY5ia3y2rBZTeV50yp0eCjs4/+gvI5K/Z8aaQ5YEpf/TJJ/wFjsu8+Zuo886atIGQ92fM8SStKxYAQDYdR7WQE3l1yolW97LNab0HPb6QkA28G0nJxfI/VFw296PRAALjQ9kzTEQPF4w8Kd8Yf0RpQGhfCck4kS2IKEQ6keXXIuDEg2d/UMssdoqEDUvoKGjWP9DgvHEECkwc/AS5AJUZriXt7NxmSH27nYRmKb15xd0iGaUihTXZB6BM0Alc+TvdOJL7UolZP3aWcn1m7dT5XMg/iDHIInwalvzzurvZNfp/+4HRrMpg4dtHLRzWKLlD2cKZvqgZQ==
-Received: from BN9PR03CA0367.namprd03.prod.outlook.com (2603:10b6:408:f7::12)
- by SN7PR12MB7418.namprd12.prod.outlook.com (2603:10b6:806:2a5::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.33; Wed, 7 Jun
- 2023 08:28:02 +0000
-Received: from BN8NAM11FT029.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:f7:cafe::5b) by BN9PR03CA0367.outlook.office365.com
- (2603:10b6:408:f7::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.33 via Frontend
- Transport; Wed, 7 Jun 2023 08:28:02 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BN8NAM11FT029.mail.protection.outlook.com (10.13.177.68) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6477.22 via Frontend Transport; Wed, 7 Jun 2023 08:28:01 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.5; Wed, 7 Jun 2023
- 01:27:48 -0700
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37; Wed, 7 Jun 2023
- 01:27:47 -0700
-Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.37 via Frontend
- Transport; Wed, 7 Jun 2023 01:27:46 -0700
-Date: Wed, 7 Jun 2023 01:27:45 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v12 00/24] Add vfio_device cdev for iommufd support
-Message-ID: <ZIA/gV2w4btZCJir@Asurada-Nvidia>
-References: <20230602121653.80017-1-yi.l.liu@intel.com>
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8E55A10E202;
+ Wed,  7 Jun 2023 09:35:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1686130553; x=1717666553;
+ h=date:from:to:cc:subject:message-id:reply-to:references:
+ mime-version:in-reply-to;
+ bh=trhv7h9IG7DmXJDoQa/DWBGh35gl0791+hj+oGpzWns=;
+ b=gvwq9FPpL0cVMU3Zj0RNQLHsTQRzi68wG6JAKU8RK4eVBUHhb+fhJELt
+ RDq294S+ko8/0sYewpeIETS4THfQ4Ehonv0wIBXNAS2y2+t+GXVv8I4h6
+ rX78IWEeIxD5Of4dKeEYzUM2Sl9mQP7pjxZrUTP3XMBCEA4f2Lv5rxcW5
+ O8NUt8v0pmqERFtxhn64Z+atp+/w2OVxO4Mky8PmUu2bMrExWooHMhL3z
+ 1opuC3dwnLY3YCvQtClhvbE7kkeIEN1irauuncR9fWJGaqeVMcMjItW5W
+ EOPp3iJ7FABpX6oZYWOx1Syt1eNhepwo/Wml1EwDx2nxa9ZECOI/75GVl A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="355792979"
+X-IronPort-AV: E=Sophos;i="6.00,223,1681196400"; 
+ d="asc'?scan'208";a="355792979"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jun 2023 02:35:52 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10733"; a="956142992"
+X-IronPort-AV: E=Sophos;i="6.00,223,1681196400"; 
+ d="asc'?scan'208";a="956142992"
+Received: from debian-skl.sh.intel.com (HELO debian-skl) ([10.239.160.45])
+ by fmsmga006.fm.intel.com with ESMTP; 07 Jun 2023 02:35:50 -0700
+Date: Wed, 7 Jun 2023 17:34:40 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Jani Nikula <jani.nikula@intel.com>
+Subject: Re: [PATCH RESEND] drm/i915/gvt: remove unused variable gma_bottom
+ in command parser
+Message-ID: <ZIBPMHS9xHL9PgH0@debian-scheme>
+References: <20230531020411.18987-1-zhi.a.wang@intel.com>
+ <ZHbdr8YdISKvFrWD@debian-scheme> <878rd4hmvk.fsf@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="W7Tn6xEA4wo95xg6"
 Content-Disposition: inline
-In-Reply-To: <20230602121653.80017-1-yi.l.liu@intel.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT029:EE_|SN7PR12MB7418:EE_
-X-MS-Office365-Filtering-Correlation-Id: dd3f35dc-6b6f-4b11-8a78-08db67311bc9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 6pmS8SbD21czLk8r9tb/CQ0V92oKG3HMAR2bthdijXvicetKMJoZM4Q5gDNvSdQmwIJiQw0WahK/lQ1fXXKJgSXeTO/VU/6w3BmJQo2gbflyF8/xBrdufyu8CqT7Yc0jLH5HhSKRIXaIJdOo0KzfVh29+/wfB0uf4fyLZkWfUsjYOyD04OYM9Y43h9tSA9exD0ipNMjC9XJZz9P+Nlx4DNRM+i+J3I+t8cbw7GzVJH/ZNVa0ofJbx+kYdjRT5ccB9hFKmpO9HbjR+aa9s5cUnMhWgRWR8pForsVmoaHegm5KC5vn7+debwHwQA5OWXl3LuWqEdGh+CyVTBFvFA/aDgHiofzSybLffQUyaoX0uZK4kSFAsg6IsVdGgLcLsE3gshwo9lgzofF5CJVuXIAyR3vGSJz00APTAx/qne4cdIuqrrjI6DCuklPrd66CEAgdRxUEDxVzLVLT+JytdqoJlxThtiEkWnwJ43IEMpFBvTrDuPaUX6wFxQ9jKcDpzUyRvJbKgmCfV/m1eC1k/a3tR7zZSu2YUR9wiTqq0HJg4U/j5SQFNffjejtixyTOGv2CqzjTJk5B9uBd7EYysmbfdz07BWMw1iJJitr0S2H1BbqxGn/R+YlRZQhTyYXsV8F2TbeUXHAskxK8d9ZUpxxYhs4qiprnizi1o1DmPv6eodR9r78ZuMk29Ukb4iAwtMnpXAaIJGzdHiPmBDmuYnm/jloNM0BFrSCYcUpplV0LoyyiCI1R+gWefM+4SjagcqT5BX8Q/mxP706MyoDrUg2AUt1Pdtdkv6UhvS0gA9fH3Bc2MVfdRNJz+03qs3QO8T9z
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230028)(4636009)(136003)(39860400002)(376002)(396003)(346002)(451199021)(36840700001)(40470700004)(46966006)(83380400001)(2906002)(40460700003)(47076005)(336012)(426003)(82310400005)(86362001)(33716001)(7636003)(356005)(82740400003)(36860700001)(40480700001)(55016003)(966005)(316002)(5660300002)(41300700001)(8676002)(8936002)(4326008)(54906003)(478600001)(70206006)(70586007)(6916009)(9686003)(26005)(186003)(7416002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jun 2023 08:28:01.8277 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: dd3f35dc-6b6f-4b11-8a78-08db67311bc9
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT029.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7418
+In-Reply-To: <878rd4hmvk.fsf@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,59 +61,60 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
- chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, kvm@vger.kernel.org,
- lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, jgg@nvidia.com,
- kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, alex.williamson@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
- clegoate@redhat.com, cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, robin.murphy@arm.com
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.wang.linux@gmail.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jun 02, 2023 at 05:16:29AM -0700, Yi Liu wrote:
 
-> Existing VFIO provides group-centric user APIs for userspace. Userspace
-> opens the /dev/vfio/$group_id first before getting device fd and hence
-> getting access to device. This is not the desired model for iommufd. Per
-> the conclusion of community discussion[1], iommufd provides device-centric
-> kAPIs and requires its consumer (like VFIO) to be device-centric user
-> APIs. Such user APIs are used to associate device with iommufd and also
-> the I/O address spaces managed by the iommufd.
-> 
-> This series first introduces a per device file structure to be prepared
-> for further enhancement and refactors the kvm-vfio code to be prepared
-> for accepting device file from userspace. After this, adds a mechanism for
-> blocking device access before iommufd bind. Then refactors the vfio to be
-> able to handle cdev path (e.g. iommufd binding, no-iommufd, [de]attach ioas).
-> This refactor includes making the device_open exclusive between the group
-> and the cdev path, only allow single device open in cdev path; vfio-iommufd
-> code is also refactored to support cdev. e.g. split the vfio_iommufd_bind()
-> into two steps. Eventually, adds the cdev support for vfio device and the
-> new ioctls, then makes group infrastructure optional as it is not needed
-> when vfio device cdev is compiled.
-> 
-> This series is based on some preparation works done to vfio emulated devices[2]
-> and vfio pci hot reset enhancements[3].
-> 
-> This series is a prerequisite for iommu nesting for vfio device[4] [5].
-> 
-> The complete code can be found in below branch, simple tests done to the
-> legacy group path and the cdev path. Draft QEMU branch can be found at[6]
-> However, the noiommu mode test is only done with some hacks in kernel and
-> qemu to check if qemu can boot with noiommu devices.
-> 
-> https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v12
-> (config CONFIG_IOMMUFD=y CONFIG_VFIO_DEVICE_CDEV=y)
- 
-Rebased our nesting branch, and tested with an updated QEMU
-branch on ARM64 (SMMUv3):
-https://github.com/nicolinc/iommufd/commits/wip/iommufd_nesting-06052023-cdev-v12-nic
-https://github.com/nicolinc/qemu/commits/wip/iommufd_nesting-06062023
+--W7Tn6xEA4wo95xg6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+On 2023.05.31 12:27:11 +0300, Jani Nikula wrote:
+> On Wed, 31 May 2023, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
+> > On 2023.05.31 02:04:11 +0000, Zhi Wang wrote:
+> >> Remove unused variable gma_bottom in scan_workload() and scan_wa_ctx().
+> >> commit be1da7070aea ("drm/i915/gvt: vGPU command scanner") introduces
+> >> gma_bottom in several functions to calculate the size of the command
+> >> buffer. However, some of them are set but actually unused.
+> >>=20
+> >> When compiling the code with ccflags -Wunused-but-set-variable, gcc
+> >> throws warnings.
+> >>=20
+> >> Remove unused variables to avoid the gcc warnings. Tested via compiling
+> >> the code with ccflags -Wunused-but-set-variable.
+> >>=20
+> >> Fixes: be1da7070aea ("drm/i915/gvt: vGPU command scanner")
+> >> Suggested-by: Jani Nikula <jani.nikula@intel.com>
+> >> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
+> >> Cc: intel-gvt-dev@lists.freedesktop.org
+> >> Signed-off-by: Zhi Wang <zhi.a.wang@intel.com>
+> >> ---
+> >
+> > Good with me. I think I also caught this before but never send the chan=
+ge..
+> > Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
+>=20
+> I'd like to pick this up via drm-intel-next if that's all right.
+>=20
 
-Thanks
-Nicolin
+Sorry for missed this. Pls feel free to do so. I'll sync to check anything =
+left in gvt tree.
+
+Thanks.
+
+--W7Tn6xEA4wo95xg6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCZIBPKwAKCRCxBBozTXgY
+J8CkAKCT5sJ4uDv4+3Duv7ml75ZtTqHxgACfQ5IELgYD28kQmhDStqHC7voinPs=
+=tiTc
+-----END PGP SIGNATURE-----
+
+--W7Tn6xEA4wo95xg6--
