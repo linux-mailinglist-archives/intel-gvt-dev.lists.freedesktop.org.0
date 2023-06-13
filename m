@@ -1,107 +1,139 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D92D72E1F8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Jun 2023 13:47:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id EB2DA72E265
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Jun 2023 14:02:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4853210E389;
-	Tue, 13 Jun 2023 11:47:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AB0DA10E06A;
+	Tue, 13 Jun 2023 12:02:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2050.outbound.protection.outlook.com [40.107.244.50])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A81C510E389;
- Tue, 13 Jun 2023 11:47:54 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6F37910E06A;
+ Tue, 13 Jun 2023 12:02:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1686657761; x=1718193761;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=4v6ksNHk83WJe4d+umbjjAW37k9KpQvnIdpPrenwoss=;
+ b=DY+V+sFn9pZ8Q6XoY70HLztklC8127KajmHJJ42OFehvoknapdVODket
+ L22z03I7mnsJ1/zzXUbz+aWGAuGJ+iWO9KIsG4O4y/1Ms1NloaAQ4NnKP
+ SFC/3i2y1YxlS0nZG+MiVAxCRUf7/qy8IldcPlwITW6JxslmAjzl5oq7Y
+ iwIKmrd57Bs7OhInAIqCVdF8V1e/vSVU/3qu5Pmwg9XKsyYkvEOjsYw48
+ Y6axnsSGw4HjWXn2ykl/1LqbwReP+dSEhIurpWIXo9q/g7Sy2S4x2qaUt
+ DWmGzGRhoXomYcpS7scmfvhxknSHs7dH5GbMT78qsNRzKBXHPQQkwVKRm g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10739"; a="386704989"
+X-IronPort-AV: E=Sophos;i="6.00,239,1681196400"; d="scan'208";a="386704989"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2023 05:01:55 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10739"; a="711616764"
+X-IronPort-AV: E=Sophos;i="6.00,239,1681196400"; d="scan'208";a="711616764"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orsmga002.jf.intel.com with ESMTP; 13 Jun 2023 05:01:55 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23; Tue, 13 Jun 2023 05:01:55 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.23 via Frontend Transport; Tue, 13 Jun 2023 05:01:55 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.100)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.23; Tue, 13 Jun 2023 05:01:54 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TZqR1HHXk8UXCV3ceVh4gDVahqpUffvlq5myhS8lgwSsiuswzm0eVwthAGXiRY/RGcewWkhiRPNGfMtfZluCT5pB/L+f7CU9WSMEMTIYx/DwOqHaucZEan5nXJYgS0ixIHIOTMenAty5peH5NFRz2tHKnW2MgQz3ZPuEuNdjtGc5z9ZDG+6GaTKmwKlM2Fg8NCMwREjL7rwWTVwAFfuBEtLw4l6Nsgd/iSP+NGynHxdGO4117vawvyr1fFcGr5LyGhazqqpPyn5gvvxP0WI/3nJ9BiWOYwaVwNgs+MOTI6VAtBnQwwrU+s10NlUx+LKGdWzch+OpTNdtM77GIgPlfw==
+ b=DMrfNXmbHkp5Av4ELq5cmma2n9MQRfoE5lru61NqgNQFA6GvkpBAUH/cTyj0GboDPwzB0xvnpm/S9yQVuSYn9ZAH40Rg6u19V822mxnHat4Sf+TFBnUvWB2ex5RZCc44f5KW4b6zeqRwBm1EREsXr3SNi+pUZqZjvjxJdUxJ7YLNK5xTcydCu6p5TPmk5LmAP3Uq3vdVrjMmszgoc2nHK99/HW83pQ11uICXQL47p5KC+k5pOnxpw0dE907Um9lrtMfL/3NC4EeH5V7rRn8q8OKp3Em5OjQvzFGMOjM5liC4piJzr8Opy4+eqzjGMlBfKDRXaLP8tvYdQ3AQnIYulg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7KbN3pVnROVq6KrEXLSPXfKOiQyvDrr5vOsym3TSVN4=;
- b=G72crbj7mOK1wSYeyy3MQ1fa9rwiVIVK3X/6BlOXenYfMPOVaKEdQLh+FRKe61MkIq1wMJRP3ug20/5Fu7KlWGD4WFBJAx+FDLFOFOSzCz+oj2yvUJQ2rIqJs3bfXwGiVyAhhAsLGXWMi0ZH7MPHsv9nbnUZxkN9Paq96ZoM5BaXikUSku7C+fnftsaNynikOCbC/cTcECNjLnPlFcay/QD8ctHUanDX3eD4ZBJpXy9RhUZS3C0+EPdtezuwGYuzTk4RbSbBXsKIvviQ2FAPBTqXNU+BEHuo0drlLY2PBsCo6AT2M0KDJhTTk3JJHe+I8851llUfyws6y+vxbw0jrw==
+ bh=q7dGs0g8h2zihrGL2I+Zow3QVQtnmzq8yc023sVJPfo=;
+ b=bk5nAY6WiZIssvYuaPqlG8aSYlVom2VmrpFXFp2nR2Y7KqZsnqLj7gN/kp5kpbPL5KXH171TTWGfJhnUXsnM1/4fmkQmfW1PTAtovggk/ot9YY7SqAr0HbyJE7DqRsgjAA1Nd8Ri9WUyPMlJ4jx9c1MtrcUlm1Cf0XQxveHXFp48Pnvqxx9/A9S0osYG5CnFFpeADH0VaEbWxTV0DobNUZs+N4Pit75K1TaDYrErmv3+IXZOFSGB3JC7++gpuU1u02YzYVrXGfWmkrKoIxOfs/s2JOTl+89hVu2a5B5XnBSURlldSBZWF7Uh/7/yrPAGHPi/W63RPtqfXBrT/Mw1Bg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7KbN3pVnROVq6KrEXLSPXfKOiQyvDrr5vOsym3TSVN4=;
- b=ptIfPS74lpJl0MIGg8YX+2OMecmf2ZCooOHdKz0axbaTqzapn3oer3Acn/CRp0HKWg0ayE8vVbe0hMVxhncKXqz6op/jzyP73arPG+1F+biyee6SJucaq4rGpzQqbZcWLIse47RUJuate7NZxyyX5Z9SyzIGwKQFtTG0wmeW3WT5iYIS/jXzVC5O3JRp7fE3HRnc0edjgcLfRbOL9OXxEOMypMeExEUiGxUFnhiYqb8TYIzAZQDQDOzCKJZDstJlknPT1u01se/C3liFiqFopKfM0yC/EbFdYxxL3vRfACfAUO4NeTeLNP8abM1ghFG+i6G9AilZGj6gUfsUqBqofA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by IA1PR12MB6628.namprd12.prod.outlook.com (2603:10b6:208:3a0::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.44; Tue, 13 Jun
- 2023 11:47:53 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6455.030; Tue, 13 Jun 2023
- 11:47:52 +0000
-Date: Tue, 13 Jun 2023 08:47:51 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v7 7/9] vfio: Add helper to search vfio_device in a dev_set
-Message-ID: <ZIhXZ3eQJfDkis+h@nvidia.com>
-References: <20230602121515.79374-1-yi.l.liu@intel.com>
- <20230602121515.79374-8-yi.l.liu@intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230602121515.79374-8-yi.l.liu@intel.com>
-X-ClientProxiedBy: BL1PR13CA0348.namprd13.prod.outlook.com
- (2603:10b6:208:2c6::23) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
+ by PH7PR11MB7593.namprd11.prod.outlook.com (2603:10b6:510:27f::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.29; Tue, 13 Jun
+ 2023 12:01:52 +0000
+Received: from DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::5b44:8f52:dbeb:18e5]) by DS0PR11MB7529.namprd11.prod.outlook.com
+ ([fe80::5b44:8f52:dbeb:18e5%3]) with mapi id 15.20.6455.045; Tue, 13 Jun 2023
+ 12:01:51 +0000
+From: "Liu, Yi L" <yi.l.liu@intel.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: RE: [PATCH v12 24/24] docs: vfio: Add vfio device cdev description
+Thread-Topic: [PATCH v12 24/24] docs: vfio: Add vfio device cdev description
+Thread-Index: AQHZlUw9Uf04nacAO0q7EN/OKT++06+H2nAAgADVnWA=
+Date: Tue, 13 Jun 2023 12:01:51 +0000
+Message-ID: <DS0PR11MB7529B0A71849EA06DA953BBCC355A@DS0PR11MB7529.namprd11.prod.outlook.com>
+References: <20230602121653.80017-1-yi.l.liu@intel.com>
+ <20230602121653.80017-25-yi.l.liu@intel.com>
+ <20230612170628.661ab2a6.alex.williamson@redhat.com>
+In-Reply-To: <20230612170628.661ab2a6.alex.williamson@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|PH7PR11MB7593:EE_
+x-ms-office365-filtering-correlation-id: b2631125-9917-4803-e989-08db6c05f971
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: hsU8yyRaWBUJxGd2kUtn5Z1pUXKR+rLkl2C1Fh2vY+RPJYq+iqZUxgfw1sMYVRFLVmDh9cwfaL+4sKDRMAIS8IFsgeb8N/uJgPOzDwGEkMJsVPBfEURNgKsamKPgl5lYGAtTAEWI2GoIHcO10y1bIT0o1zvWNB3pxu7280DGlgbTZh2IS0c5BqYpY448QYmiDH0nvb8kPl1W6InMbS1CMcH1gmBtTHi7Fnr4wG8t+323pYdwlE85YVNL/hccucPYf34cFzp600I99Rt5U3b1pqMKkz9iY4ncqHgwAUuwmo8PJA2FFS2H/aep4+NHEefPnMBXyUibeyJHJEX0Znx76K9CXFjF04AcuoAeZ5yvHr/z3EE0qnGMetBKy41w7PfhalmRZGRPpqeXYql3PXVTHub8OkK9TJxHJBhXjFGWIx07m+gzA7U4+NV7vVyJyNNf22RihrpgkGHnZEVg0CSGKksDSam0t1af/IIFmGE8DZegKFKzf14dnFvNWPFbPRH83dqxajlM34GRWoFALCQVq7+sYGUuM6QYvmbjRIn9T+cIk4l6Kn2ve8D3BDn48ido+0gSKgZQ1AeQCql85+c97Yonq4p7LP3i1A9Yy+N51vbScNeQrSblWpaewO5n+V9R
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(136003)(39860400002)(346002)(396003)(376002)(366004)(451199021)(71200400001)(478600001)(7696005)(122000001)(33656002)(26005)(6506007)(186003)(83380400001)(82960400001)(38070700005)(38100700002)(86362001)(9686003)(55016003)(4326008)(76116006)(66476007)(64756008)(66946007)(6916009)(66556008)(316002)(66446008)(8936002)(8676002)(7416002)(5660300002)(52536014)(41300700001)(2906002)(54906003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?tnWl9YoZ40BhrbyK637uu2qIvevC8NbbxJ195PtXhPKrT47Yay49tiyOug8m?=
+ =?us-ascii?Q?k8itTMIWsaa+JaCRROQUXoDYwnF8oOvffoc2bCX7PqIPvziS6+PJjm7XT1rW?=
+ =?us-ascii?Q?6iaOuy1OgkhLvY65m83cLzNF7UyKLJKolGP9MhdhMhvR4j2/H02hQYmNLTJY?=
+ =?us-ascii?Q?q4U1AYUoMzankCPdJ+ew0ecPUv3Rh6swYz0oDPNw/Rkd+4rZw3DM8dwDoso5?=
+ =?us-ascii?Q?AXIHt63fLN5QP55IpROOqQrIF2XquAiLjQy3N7ld3mz2Mccm7+/GXo+ze+xP?=
+ =?us-ascii?Q?zy6AnM9a61XkibdrwuKMscKO7DOoEYcS6dxXJ1CmQkzK9XRtu78J19xE4eey?=
+ =?us-ascii?Q?sl/xIU2BG2KFZ8fzlGv7UvMXov0WvPH2VIwB5w9yb1R57cETBVGkYLqTKGT4?=
+ =?us-ascii?Q?+z19sT4C7/WiUXQbP3rdNc7u+hEXRpibgbtD96fm/HJ9wKnxSZiy2AD29wJO?=
+ =?us-ascii?Q?D38W1/ATLse/pTzRIi339cl1tXd+nCinSpcod0hSMaV30q9VecgsK9QfHJj0?=
+ =?us-ascii?Q?jhcFuqujTqp5iRhSDzgDFV+csWj/ty5sjLgTYNGWiFRBwXAYbyWbwNC0FA6u?=
+ =?us-ascii?Q?nQ/UftBm0kj9ZUwz5HMvZwCFyss+PZStFXO0eHFRMQ2l5m+RVDgoUHCCtsJk?=
+ =?us-ascii?Q?lICvdRhtDpVD8VTjvEwnsusw5LlC6s3/g/cE3mCJ0hmH6pf5jkEVdR0wZgUp?=
+ =?us-ascii?Q?5zRcE8csMNcREVxOi3vWjnqIzBCVCCirkH1YA5vUUJ/16jQ1hVB5luxe/5BG?=
+ =?us-ascii?Q?7VYiRsJ3/Hv5SV8aATgQMuDsIIdLKDKcg6ItCPv9Waef8UklwDO7tCKMLFk8?=
+ =?us-ascii?Q?SeBY4wX6q7RMdFY+UwyJxCpqpvZx4ratwcraaLtGVAEOsc28Qx2JZzoDH7fU?=
+ =?us-ascii?Q?Kbgag9MaUGWLAbxhtU0lYbTtKfXIeNT9XWGVotW1UCIp7Wl79G1wX6glIUUx?=
+ =?us-ascii?Q?/vDcG9v14vV1G8W1WKaMQ6ouCuxnQIu6NQxkVSXG7lbA2pSxDU3uJbiJAuoV?=
+ =?us-ascii?Q?PQVYDUjm9FYnOiE/2KViOoNM9lOY+qWU/HJVoEJiee8F9Ds5k0iFdRmEc5t+?=
+ =?us-ascii?Q?i+e7OcOSpqooZjZLMLlis+A7o/axdV7tVZ6IciqMxP++t948hJyiM191ClDB?=
+ =?us-ascii?Q?79Mp5VclQvQ2m+maJC/pyYt7gYocgxLObJDTRb1PWEDP8SjI6YKgFnIOEHHo?=
+ =?us-ascii?Q?pk5BoJirthyfaSQMynwGgeC85WwCAdwyX91Fstcn4b4I43kVzhL51e+u38jX?=
+ =?us-ascii?Q?xUnqIECSnSUXNyGlkMIDgSEvBIHENOAPi6ssHg5oUmEcWEiG2YERGUtHscTN?=
+ =?us-ascii?Q?p5DURcMYtD5Z6z2TQTx4ELFELzip9xFZ1OLx+a4vHlKe9ETApwfBtk1TvTVQ?=
+ =?us-ascii?Q?B97ipFNPMDIMzzZiLJ/HDARFTcQqw92R+xK28fcdhC0HNMiIpk6fa8VbH2rE?=
+ =?us-ascii?Q?/XClFNAsv/NejqSkq5MWfAEtRyLn1YScFHSvbYrEV3d7zWju2GAec1v1oLEa?=
+ =?us-ascii?Q?3gDBMLv1d4Bmt4f7ZYT4cHa93dz+grQjmbkxzpjkD9aPVs/cvCnjBjBoBSWW?=
+ =?us-ascii?Q?Wvf1uwZte/hh1QLrzM4Wv7I73ZirShJm/q3scaR4?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|IA1PR12MB6628:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6655c79a-81d5-41e6-fef3-08db6c040553
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: K8YHZlB/lJ5/oUOV+4AOBHlr28PlTZ1Va/UnWGUfZKhqjXSFfVOs6hPhJ1GrspSsQBXLA8S1lwFgq4MMjU6XNQCwnUmivk973O7QXrqPmmXkKTFTFr0M0prB3CnSBZ3Iv102u8CP6JWBwD3JkwjBI6zVF9xMJOj30mzyyN6whySm5vTMBh39pRJnLcth+S6VLBMSfeM+pI54HsSRDr2y5y/4kl57JHSyfr2RLIidVupB6qUs6GLJcFyHc6Lq4zhN5yhD/MtDANG9Pc5uT/VdSw9z+NXseoRGuyPr70i4iQYN0AWHb6VRAGR0V55in5n1s8cdWy7hk+0F3RRb+9arX0US236ygJz3dBU5MPguHhkjyQVTVX7APnMqbZFG1NI6q93OQJz5ErQeKB1J8xNPSfw2opVhAOBdQ83cmtgGLglaGWu88UBVHLNzvQjm5GgB7WObbzo0+79oTOU/ApVh0Xyay3cL4EwtBACnaX0rtNnMeraQY/4Xlvo3Zji1GwbNOm4xEMy8Nf8AQKBdf5y/6U7pf2QoK6Uh/lD8B6J59/u4rh/tqVgzcUXBr7D+sNb3D6WgU2s3FJUym1WIJ1pZ1V3Zjs0vwJYWp4OWW+RSt+M=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(346002)(376002)(136003)(39860400002)(396003)(366004)(451199021)(86362001)(4744005)(2906002)(36756003)(7416002)(2616005)(38100700002)(6486002)(83380400001)(186003)(6506007)(26005)(6512007)(478600001)(66476007)(6916009)(66946007)(66556008)(4326008)(8936002)(8676002)(316002)(5660300002)(41300700001)(67856001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?tpqg78MudL2iQlbgMPUYHO+569+pDeG3bWrSdeoa+icK9lR/4h9/Elb57EEi?=
- =?us-ascii?Q?oWyUoAF4wkPkXV2WIpE2uUAy4vdwwCHz5gx/yrEwH5v+gKTUDICm+ydqQUUe?=
- =?us-ascii?Q?Yi5GviFCioQBFYWGuLlMOO1fjtHNSHaDEMvYzZ1iPYSaCMVURVcP/umyYIKT?=
- =?us-ascii?Q?6NSxFAdNp+bknZdKSfuDn3cAj3spxEM2EF9E+tgpPtwJwzlzPefmYfMjrVgL?=
- =?us-ascii?Q?GGx5bZDlOe9Wy0B5VUF7upwK1PSMGFmN44bcjjm1fwk4SqP37/kva2nY4pxV?=
- =?us-ascii?Q?O9IdoAppQC06kEU/U5cgh5OVVvL0BPqUKpvFinAzU+kwdjEtbUUWEXGOJC1c?=
- =?us-ascii?Q?yRKsSq18uSTQKq981pLuH71hxqZMIcvdQojSi8+stsRRhv2hGsYWDMIyDLen?=
- =?us-ascii?Q?Vh2arIjDgPmlBGLsskJkNdNBhTI9Fq0JofzRpQHl3GoKNISe1cTcLfRLeCiH?=
- =?us-ascii?Q?skjo9SrB5ujhuYv6bncEJgEuMpDaEpXiZ4POScqsKEfx39h0Qnf3giTyTlDa?=
- =?us-ascii?Q?i8qVXrMsazEvufrdQ7aa6ikO+rUVw9/pFhjqllwCUXPBTb2CWHsU4diZacCv?=
- =?us-ascii?Q?7ovCtoV1gtHyfdWO7mIlzKp4fbdzeVeaZteC9Frt11iykjCiBuOHMBxDMgal?=
- =?us-ascii?Q?C9rZyucQ7pdmYPcUqn3878ElIouBRcyn2N8heHaXQfom7j6UbgZC0QBSDDZG?=
- =?us-ascii?Q?g83lXQxv1tW1FyMqatXQEw3JuQ0LWX0L4DwA3he4j2HdJ/vxRYBu/0geQYvP?=
- =?us-ascii?Q?dorQ2wonpsrVCX7U+M5QJPC92+T7ikmOaMjmYNiqnW58HGLAbcFVWMMG29Fb?=
- =?us-ascii?Q?r6iSKJQgk0EUshHtxBu6eELvxQ2dUlIS4qHR6/+r7YyMw0n4r9w3ZhcB5q+l?=
- =?us-ascii?Q?Pnhg7v6BsEzSuD2A5OvqtOYBKIUS3pBHk9PNdn3PbnzlTG9Tsp2Ji/jFyzI6?=
- =?us-ascii?Q?Z1x97kdf7YGIxGuF4241cYbnDvXRwPLyRqwA4ewy5HXFzl1NI8AVzijkF5ck?=
- =?us-ascii?Q?fQFTPMNPe96H4uqbAger+ObVrC9lT9tQH3S9koLQuYsdmN8gZ5ETinjyP8E/?=
- =?us-ascii?Q?J1b6Ve1rvyT2Sh12MbDhimjDK8Ki4kbQuRS3awdGWwwDHOpw9qk2/CFJZg/h?=
- =?us-ascii?Q?c/Hkqqu/oZ8Bx5INsw3Z8laWV6Rr7fEgLF2jE4uLORkJrkry1FUhFVt9YoNP?=
- =?us-ascii?Q?GMFqqnc3FL9JvHHQbMFxt3XD9J9Xo9QKviQKHqdT/0Y7d3V+nfcLsbIVq1Tk?=
- =?us-ascii?Q?w0EIh0tEu1cWtM1O+lHedicj8xCxRofkFV2pjFG5XuLKQtIVs/lezYWcf8nf?=
- =?us-ascii?Q?bRRFAQxnlK6zLKGVmj3kOc7vzqTbXEFReUyXsyIPaKAXgh26xsjyBiup/nHY?=
- =?us-ascii?Q?+tL6CdVYn5VaRw5c0bMGUVhKwuwQsmljanHNF4NC9saCekJigvkwtFANJI2u?=
- =?us-ascii?Q?JXbc0sn6SK3lAyCfPdc/mHZsO5vdhP2SpFny1sg8qUenUzc7p70slNLpbrKF?=
- =?us-ascii?Q?FaOEkDs2Lx+Z8Gtuql+kzviH9eIulf0oSQ8D7QD/Ugzc9ao3KRZYj4umexRk?=
- =?us-ascii?Q?mNcIJEhyr9o2pfbSqvDfW3qC2kyZGuDmIxQopVD1?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6655c79a-81d5-41e6-fef3-08db6c040553
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2023 11:47:52.9240 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: xyKSMEZX2EppCJaZUCiQ00ZwqVuhxNuUMCW8fGupoef5DZ8Hys0NXElpLuNJbTL5
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6628
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b2631125-9917-4803-e989-08db6c05f971
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jun 2023 12:01:51.8084 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 4/XjjBtvRwpBXQLvcJI3HFhJpGFZTUd9G0JFW4un9S6d9tLS03cyY15uA0Xrfacmvdemfc7igR8zAiAcJjdZkg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7593
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,36 +146,231 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
- chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, kvm@vger.kernel.org,
- lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
- kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, alex.williamson@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
- clegoate@redhat.com, cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, robin.murphy@arm.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "Duan, 
+ Zhenzhong" <zhenzhong.duan@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
+ "Xu, Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "clegoate@redhat.com" <clegoate@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jun 02, 2023 at 05:15:13AM -0700, Yi Liu wrote:
-> There are drivers that need to search vfio_device within a given dev_set.
-> e.g. vfio-pci. So add a helper.
-> 
-> vfio_pci_is_device_in_set() now returns -EBUSY in commit a882c16a2b7e
-> ("vfio/pci: Change vfio_pci_try_bus_reset() to use the dev_set") where
-> it was trying to preserve the return of vfio_pci_try_zap_and_vma_lock_cb().
-> However, it makes more sense to return -ENODEV.
-> 
-> Suggested-by: Alex Williamson <alex.williamson@redhat.com>
-> Tested-by: Terrence Xu <terrence.xu@intel.com>
-> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> ---
->  drivers/vfio/pci/vfio_pci_core.c |  6 +-----
->  drivers/vfio/vfio_main.c         | 15 +++++++++++++++
->  include/linux/vfio.h             |  3 +++
->  3 files changed, 19 insertions(+), 5 deletions(-)
+> From: Alex Williamson <alex.williamson@redhat.com>
+> Sent: Tuesday, June 13, 2023 7:06 AM
+>=20
+> On Fri,  2 Jun 2023 05:16:53 -0700
+> Yi Liu <yi.l.liu@intel.com> wrote:
+>=20
+> > This gives notes for userspace applications on device cdev usage.
+> >
+> > Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+> > Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> > ---
+> >  Documentation/driver-api/vfio.rst | 132 ++++++++++++++++++++++++++++++
+> >  1 file changed, 132 insertions(+)
+> >
+> > diff --git a/Documentation/driver-api/vfio.rst b/Documentation/driver-a=
+pi/vfio.rst
+> > index 363e12c90b87..f00c9b86bda0 100644
+> > --- a/Documentation/driver-api/vfio.rst
+> > +++ b/Documentation/driver-api/vfio.rst
+> > @@ -239,6 +239,130 @@ group and can access them as follows::
+> >  	/* Gratuitous device reset and go... */
+> >  	ioctl(device, VFIO_DEVICE_RESET);
+> >
+> > +IOMMUFD and vfio_iommu_type1
+> > +----------------------------
+> > +
+> > +IOMMUFD is the new user API to manage I/O page tables from userspace.
+> > +It intends to be the portal of delivering advanced userspace DMA
+> > +features (nested translation [5]_, PASID [6]_, etc.) while also provid=
+ing
+> > +a backwards compatibility interface for existing VFIO_TYPE1v2_IOMMU us=
+e
+> > +cases.  Eventually the vfio_iommu_type1 driver, as well as the legacy
+> > +vfio container and group model is intended to be deprecated.
+> > +
+> > +The IOMMUFD backwards compatibility interface can be enabled two ways.
+> > +In the first method, the kernel can be configured with
+> > +CONFIG_IOMMUFD_VFIO_CONTAINER, in which case the IOMMUFD subsystem
+> > +transparently provides the entire infrastructure for the VFIO
+> > +container and IOMMU backend interfaces.  The compatibility mode can
+> > +also be accessed if the VFIO container interface, ie. /dev/vfio/vfio i=
+s
+> > +simply symlink'd to /dev/iommu.  Note that at the time of writing, the
+> > +compatibility mode is not entirely feature complete relative to
+> > +VFIO_TYPE1v2_IOMMU (ex. DMA mapping MMIO) and does not attempt to
+> > +provide compatibility to the VFIO_SPAPR_TCE_IOMMU interface.  Therefor=
+e
+> > +it is not generally advisable at this time to switch from native VFIO
+> > +implementations to the IOMMUFD compatibility interfaces.
+> > +
+> > +Long term, VFIO users should migrate to device access through the cdev
+> > +interface described below, and native access through the IOMMUFD
+> > +provided interfaces.
+> > +
+> > +VFIO Device cdev
+> > +----------------
+> > +
+> > +Traditionally user acquires a device fd via VFIO_GROUP_GET_DEVICE_FD
+> > +in a VFIO group.
+> > +
+> > +With CONFIG_VFIO_DEVICE_CDEV=3Dy the user can now acquire a device fd
+> > +by directly opening a character device /dev/vfio/devices/vfioX where
+> > +"X" is the number allocated uniquely by VFIO for registered devices.
+> > +cdev interface does not support noiommu, so user should use the legacy
+> > +group interface if noiommu is needed.
+> > +
+> > +The cdev only works with IOMMUFD.  Both VFIO drivers and applications
+> > +must adapt to the new cdev security model which requires using
+> > +VFIO_DEVICE_BIND_IOMMUFD to claim DMA ownership before starting to
+> > +actually use the device.  Once BIND succeeds then a VFIO device can
+> > +be fully accessed by the user.
+> > +
+> > +VFIO device cdev doesn't rely on VFIO group/container/iommu drivers.
+> > +Hence those modules can be fully compiled out in an environment
+> > +where no legacy VFIO application exists.
+> > +
+> > +So far SPAPR does not support IOMMUFD yet.  So it cannot support devic=
+e
+> > +cdev neither.
+>=20
+> s/neither/either/
 
-Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
+Got it.
 
-Jason
+>=20
+> Unless I missed it, we've not described that vfio device cdev access is
+> still bound by IOMMU group semantics, ie. there can be one DMA owner
+> for the group.  That's a pretty common failure point for multi-function
+> consumer device use cases, so the why, where, and how it fails should
+> be well covered.
+
+Yes. this needs to be documented. How about below words:
+
+vfio device cdev access is still bound by IOMMU group semantics, ie. there
+can be only one DMA owner for the group.  Devices belonging to the same
+group can not be bound to multiple iommufd_ctx.  The users that try to bind
+such device to different iommufd shall be failed in VFIO_DEVICE_BIND_IOMMUF=
+D
+which is the start point to get full access for the device.
+
+>=20
+> In general there's been a lot of cross collaboration to get the series
+> this far.  I see an abundance of Tested-by, but unfortunately not a lot
+> of Reviewed-by beyond about the first 1/3rd of the series.  Thanks,
+
+Yeah. The rest 2/3rd part has back and forth changes since v8.
+
+Regards,
+Yi Liu
+
+> Alex
+>=20
+> > +
+> > +Device cdev Example
+> > +-------------------
+> > +
+> > +Assume user wants to access PCI device 0000:6a:01.0::
+> > +
+> > +	$ ls /sys/bus/pci/devices/0000:6a:01.0/vfio-dev/
+> > +	vfio0
+> > +
+> > +This device is therefore represented as vfio0.  The user can verify
+> > +its existence::
+> > +
+> > +	$ ls -l /dev/vfio/devices/vfio0
+> > +	crw------- 1 root root 511, 0 Feb 16 01:22 /dev/vfio/devices/vfio0
+> > +	$ cat /sys/bus/pci/devices/0000:6a:01.0/vfio-dev/vfio0/dev
+> > +	511:0
+> > +	$ ls -l /dev/char/511\:0
+> > +	lrwxrwxrwx 1 root root 21 Feb 16 01:22 /dev/char/511:0 -> ../vfio/dev=
+ices/vfio0
+> > +
+> > +Then provide the user with access to the device if unprivileged
+> > +operation is desired::
+> > +
+> > +	$ chown user:user /dev/vfio/devices/vfio0
+> > +
+> > +Finally the user could get cdev fd by::
+> > +
+> > +	cdev_fd =3D open("/dev/vfio/devices/vfio0", O_RDWR);
+> > +
+> > +An opened cdev_fd doesn't give the user any permission of accessing
+> > +the device except binding the cdev_fd to an iommufd.  After that point
+> > +then the device is fully accessible including attaching it to an
+> > +IOMMUFD IOAS/HWPT to enable userspace DMA::
+> > +
+> > +	struct vfio_device_bind_iommufd bind =3D {
+> > +		.argsz =3D sizeof(bind),
+> > +		.flags =3D 0,
+> > +	};
+> > +	struct iommu_ioas_alloc alloc_data  =3D {
+> > +		.size =3D sizeof(alloc_data),
+> > +		.flags =3D 0,
+> > +	};
+> > +	struct vfio_device_attach_iommufd_pt attach_data =3D {
+> > +		.argsz =3D sizeof(attach_data),
+> > +		.flags =3D 0,
+> > +	};
+> > +	struct iommu_ioas_map map =3D {
+> > +		.size =3D sizeof(map),
+> > +		.flags =3D IOMMU_IOAS_MAP_READABLE |
+> > +			 IOMMU_IOAS_MAP_WRITEABLE |
+> > +			 IOMMU_IOAS_MAP_FIXED_IOVA,
+> > +		.__reserved =3D 0,
+> > +	};
+> > +
+> > +	iommufd =3D open("/dev/iommu", O_RDWR);
+> > +
+> > +	bind.iommufd =3D iommufd;
+> > +	ioctl(cdev_fd, VFIO_DEVICE_BIND_IOMMUFD, &bind);
+> > +
+> > +	ioctl(iommufd, IOMMU_IOAS_ALLOC, &alloc_data);
+> > +	attach_data.pt_id =3D alloc_data.out_ioas_id;
+> > +	ioctl(cdev_fd, VFIO_DEVICE_ATTACH_IOMMUFD_PT, &attach_data);
+> > +
+> > +	/* Allocate some space and setup a DMA mapping */
+> > +	map.user_va =3D (int64_t)mmap(0, 1024 * 1024, PROT_READ | PROT_WRITE,
+> > +				    MAP_PRIVATE | MAP_ANONYMOUS, 0, 0);
+> > +	map.iova =3D 0; /* 1MB starting at 0x0 from device view */
+> > +	map.length =3D 1024 * 1024;
+> > +	map.ioas_id =3D alloc_data.out_ioas_id;;
+> > +
+> > +	ioctl(iommufd, IOMMU_IOAS_MAP, &map);
+> > +
+> > +	/* Other device operations as stated in "VFIO Usage Example" */
+> > +
+> >  VFIO User API
+> >  ----------------------------------------------------------------------=
+---------
+> >
+> > @@ -566,3 +690,11 @@ This implementation has some specifics:
+> >  				\-0d.1
+> >
+> >  	00:1e.0 PCI bridge: Intel Corporation 82801 PCI Bridge (rev 90)
+> > +
+> > +.. [5] Nested translation is an IOMMU feature which supports two stage
+> > +   address translations.  This improves the address translation effici=
+ency
+> > +   in IOMMU virtualization.
+> > +
+> > +.. [6] PASID stands for Process Address Space ID, introduced by PCI
+> > +   Express.  It is a prerequisite for Shared Virtual Addressing (SVA)
+> > +   and Scalable I/O Virtualization (Scalable IOV).
+
