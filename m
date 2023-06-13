@@ -1,86 +1,111 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D155E72E921
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Jun 2023 19:15:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B08C72E93B
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Jun 2023 19:19:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A54AF10E05E;
-	Tue, 13 Jun 2023 17:15:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C804B10E0F5;
+	Tue, 13 Jun 2023 17:19:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 83AC510E05E
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 13 Jun 2023 17:15:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1686676516;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Y47mFwi46fNR1k1wU+EJoRpRAnGyxBYqLYF/5mVYk4s=;
- b=QCo0lexcJqxlOOsm+Nwlpw6MCGHd4PFGcs58x9aYJfKgSzu4P1sKTj6EORDdMSqHMypX+9
- 16dqkKDg82umswNGzy9dJR7GDADX/eKZfkuB80vXb/MAnvLOljNazwK+iHvLjPIy0c8zL3
- CYTh+k/Erh84/jgvbNokdYqfzcJxuw4=
-Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
- [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-54-9pq3zw8INgeyhzq8DyisPw-1; Tue, 13 Jun 2023 13:15:14 -0400
-X-MC-Unique: 9pq3zw8INgeyhzq8DyisPw-1
-Received: by mail-il1-f198.google.com with SMTP id
- e9e14a558f8ab-33d93feefb5so50603195ab.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 13 Jun 2023 10:15:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686676513; x=1689268513;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Y47mFwi46fNR1k1wU+EJoRpRAnGyxBYqLYF/5mVYk4s=;
- b=Bqs8IBf1yeAd6gBXcKZkbGE30uDWfkIFLblTyhIwDr8UGJtwfAhx+cBddVlt7VbVnl
- NPYSbOjFflfbCRMh3qGR1aZDRp/OCPJEn4JxJy/j76d3LHaKUbz5z3YzsxG3uKje/9vr
- XcaoW5rWtG9G2BeXJe3OhBqjtUMeJ9/eFDCeA6eXPpS/dfG5P/HeabCQ/1IoqMr14PNV
- bGjAohI/3Jr+s4Ogc4F1WbS/2qoDfrIOKX2bPQwDOZUa77KKUPdUML6pCgzEhFVAtWAF
- KOMfdkmEkqB3wzVC6r8AMFQc3fKQBhVah6JVLMYBJILL4h4Lm3pXnAqT4RChqJ6sFepO
- GMLQ==
-X-Gm-Message-State: AC+VfDyES5T2RAH9LAJ8PtyqOr7gXYYOWJafQMMFm3RZt6erVzmf2BGP
- SUzsIAjpjybjuRAYMWUxhpxZi26nd4Elf0Oe4SDXMmNZqsImKynidch6hhEkl/1pVt9NgPq3x16
- CQbynWRKnhOsXfRg7spXBq4WJKcehnkB5Gg==
-X-Received: by 2002:a92:c691:0:b0:340:56e8:6d16 with SMTP id
- o17-20020a92c691000000b0034056e86d16mr3600702ilg.7.1686676513564; 
- Tue, 13 Jun 2023 10:15:13 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5bEeL9Pfn6uuRfKBly7+jYgvfEJjCvB+F2U1+DUXQRw9biJ91NqlzaudCp25Q0SB+DZixcFA==
-X-Received: by 2002:a92:c691:0:b0:340:56e8:6d16 with SMTP id
- o17-20020a92c691000000b0034056e86d16mr3600687ilg.7.1686676513231; 
- Tue, 13 Jun 2023 10:15:13 -0700 (PDT)
-Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
- l5-20020a02cd85000000b0041a84d0c828sm3455996jap.87.2023.06.13.10.15.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Jun 2023 10:15:12 -0700 (PDT)
-Date: Tue, 13 Jun 2023 11:15:11 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v12 21/24] vfio: Determine noiommu device in
- __vfio_register_dev()
-Message-ID: <20230613111511.425bdeae.alex.williamson@redhat.com>
-In-Reply-To: <20230613091301.56986440.alex.williamson@redhat.com>
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2086.outbound.protection.outlook.com [40.107.93.86])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 23A1A10E05E;
+ Tue, 13 Jun 2023 17:19:21 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=S5Ze9vq5fdzUEMtEMQUmHsmWLyaWoWR6hx++4ntrrpdlYAwvF1spFYtsRNhZd+1zsWnez6Av3Zo30iVq7slgoUEM11+1xik/ZDPWTM0VpJgxHksEvgwreDgzVaiJTZRFG9NHtPB++spfdN0TZ45TX3BWwRPd965LLR27yFBSU6WLH4FkTYUjUf9VIFBmhzjv79B188Afm04eMCnjg812Bf9SX98TJoPSCOQK4UpIhAQv4ipNoeTlWdEIRYxcvVlpTpqSBkxnpnriwAKRKnXFGr7JAnU9j1JfVMFzB7JjwIBfvwFy0XJDZYDc8581XSun8fnF4gNwnckEhLmhcfrrgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MiHpt4wGrwxfPLRKG9n1lxQlm1FUR5bXALPlMSwo0oE=;
+ b=YGPnmaZ3NphcA1gxRk4zCfayCSJJhs1n2AbYNDpBmpba8Wg7OZ0Vgxv99PABE3nPvXlqqEZLTiZcM0aUvHq2u3N9lNKSfdSFZI2blkUKquMzhBfUqJbfKM8KauLUrOEbGKFyZwIZyXlt+qKYqHJf1wIvHei3Bkg9+soDA3vlFjumbtZoZr0KxJGCBVodlzf6OB7qfE5CbXTVYZjeJUSU+bh5wmN4nUwrEzqUsn+pimcu90TrKGcN1GXyKc9w48gzC75v/dw3wYF4wPgMaisOb0jjODijae9FQV4EEaSNrsnXeduiPOqXzZXMWUjFw/IUCQAzpv5O3WSfdUD4PPSq/w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MiHpt4wGrwxfPLRKG9n1lxQlm1FUR5bXALPlMSwo0oE=;
+ b=eDXpRaoSjDCofJpHhkgMQVycfZYArDdSC3Yboi06R8Hipf4xqhHC77MJiV7Pko+d5K7oQYbXeB/+onUsOpTl0Sm24qLdT9DGPRZhQ26lQljybe40+Rw5VR9Gi0I7axiIWH+3kjJXujFBZNF6qpwz/LW6xMAx0VT+zT5Lokp2qnJOxbRPXGglM/UjlfM7Du1ccvpMnr90reSnT/sVNJwnXUV25U7CSJkCJ1+JgcxuM1fHhAi23G6QRJfi3PxDpZ2/rvzKjHgt8KDfgliINB+8vF1jB/lYVEzLs5hrVx6AnHDjcu4zYmxN4UIUq5Ei7SRyXVgucBiWRx7XlYCgJO7jnw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by CH2PR12MB4860.namprd12.prod.outlook.com (2603:10b6:610:6c::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6477.29; Tue, 13 Jun
+ 2023 17:19:19 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6455.030; Tue, 13 Jun 2023
+ 17:19:19 +0000
+Date: Tue, 13 Jun 2023 14:19:17 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Alex Williamson <alex.williamson@redhat.com>
+Subject: Re: [PATCH v12 07/24] vfio: Block device access via device fd until
+ device is opened
+Message-ID: <ZIilFVb3sKnBgH2F@nvidia.com>
 References: <20230602121653.80017-1-yi.l.liu@intel.com>
- <20230602121653.80017-22-yi.l.liu@intel.com>
- <20230612164228.65b500e0.alex.williamson@redhat.com>
- <DS0PR11MB7529AE3701E154BF4C092E57C355A@DS0PR11MB7529.namprd11.prod.outlook.com>
- <20230613081913.279dea9e.alex.williamson@redhat.com>
- <DS0PR11MB7529EB2903151B3399F636F5C355A@DS0PR11MB7529.namprd11.prod.outlook.com>
- <20230613084828.7af51055.alex.williamson@redhat.com>
- <DS0PR11MB7529E84BCB100DE620FD2468C355A@DS0PR11MB7529.namprd11.prod.outlook.com>
- <20230613091301.56986440.alex.williamson@redhat.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
+ <20230602121653.80017-8-yi.l.liu@intel.com>
+ <20230612155210.5fd3579f.alex.williamson@redhat.com>
+ <DS0PR11MB75293327BDE6D268996FFFCCC355A@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230613081647.740f5217.alex.williamson@redhat.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230613081647.740f5217.alex.williamson@redhat.com>
+X-ClientProxiedBy: CH0P223CA0023.NAMP223.PROD.OUTLOOK.COM
+ (2603:10b6:610:116::22) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|CH2PR12MB4860:EE_
+X-MS-Office365-Filtering-Correlation-Id: b28267c3-500d-41cc-5c53-08db6c325297
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: sVjSneo+Qj83b8YdVa0wRRB5ab+ea6ee/Kxq0qVKorYK2wVE4+s5j49PSf9OQ1aJUjck+TrxT9r0QvhTQD5NpCY+7iaHbNs2bpbTMNuuWW8Hy8PO+arYQDBnHeGy0dX1gpw26eRb975KyRUmwbjJEB9fF85jnTLBRdczWWuxmUG31zEXV6Y7UQJFiF0HDUI917hSQt0HNSFisZGrvzVqaHvHCfOCUr9dexAkI/pJivpMrxlz0GAp70IDZxWv6qnTEzltxzNAlxTwPZ6qtCCyi7t6LfvapordvHI8PLYjEQdhtImZQUKFIBp7aUbP6Xxj41uX3b3K1OP73uoiC9Umfq+dQuIPzFCXl8IxKT2LGQj1ED0X1wV0eCQ1kw7A7/+bGvJw+jWkg2XEPX02JiPmOixdNsxqfGxuSACUygMhIwbGKGOyu+uo1OQYzPrhYSM9ljZhnvpjHqWwIeQfgHhFZYJNRKFg1XseZ/GKOktZGL6TKwQpL1fBMvPjz0v5ZrryPifADVUJfEuVyv5gesPoQZRecLM3jKFA9urDqmZ0lxGVQPhj1o5ROUcF6dQBuj4y
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(4636009)(396003)(376002)(346002)(39860400002)(136003)(366004)(451199021)(7416002)(5660300002)(8676002)(4744005)(2906002)(8936002)(66556008)(66476007)(66946007)(54906003)(6486002)(4326008)(26005)(6506007)(6512007)(41300700001)(186003)(316002)(6916009)(83380400001)(2616005)(478600001)(36756003)(38100700002)(86362001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?yy8ZFNp5CMPkyri3cVVYik9Jdq/gq/bfVUzgZoOT3z+9wGC+Fh+Unr2HOXI2?=
+ =?us-ascii?Q?v8KcwK/VAvZgTyVelMdVooLtlu0eUyZKQ9J7B8lShLM1DWgurSwjyF00CeCB?=
+ =?us-ascii?Q?IAn6sJ1UvmCRzvnf6m1+S5RX0eQpdmGXK8scOebG6ZlFVywA/icUtleLXD5z?=
+ =?us-ascii?Q?rWPbZPRY0IFeyi/RiP2v9VuuJdm5pMIRo48lxUe+D0i76Yf1vFnl2BdyrWrr?=
+ =?us-ascii?Q?Yu7WM2OW2N4TnBrN07H5BAcDSg0oJql2TOKXt5iHTYXKJgK5buow2MUqkTK/?=
+ =?us-ascii?Q?bc6+2Kl+SEh6Hy94tl8qjhCVJSbNKCQRuOI28GBYl6R+OKpCe2tGnhuAbe3+?=
+ =?us-ascii?Q?3m6nkT0fjd2ABEiU8jlKcneFIzmXQvtV2fm/d9u4RDXMBHta4pJKVi1urVz+?=
+ =?us-ascii?Q?D5Mo7xoXP0H4f83KdfB+m6mROLM3zGvSTovdCZiRp/W8mooV2uosJZjfZ7Xu?=
+ =?us-ascii?Q?pTP9rikJYu6dHm+dk6yUsIL+rnX9ywxoZYXR2FOCrZavtKNE5SQtjUxcs/cr?=
+ =?us-ascii?Q?r6DFqAJRCiPqWAqw49ejDCKiEo+R/MHgtAtjSY5bNj6G1rsSDoU84cL9vh1x?=
+ =?us-ascii?Q?bla/8kQ1lC/DbMGHCqFEkUfLG1elx8BhSd+aKfO55V+SKFLjtZqmAE5KhWVN?=
+ =?us-ascii?Q?AuYcKfMggXHdvThFKrwZ4NPDeF7sBwSTBGcKVm8GUlRiC38X3vv4gpoyDd9L?=
+ =?us-ascii?Q?/45VuOdLH8Umygn52HsiaDSo7m2AzX3AjRP93y1nAnCEAOwQvx1MzK03iM5y?=
+ =?us-ascii?Q?L138j5UYBHs/cxV/nDSWevepzn0AUU0Sd4snLwC0ytGuJiAbxnUypvj55c1H?=
+ =?us-ascii?Q?B9j9Vgr5OUKTXaE4e++CjRi/HHGGj2XJLBcOnsGNWCmtRch+e55qfrDnhjQe?=
+ =?us-ascii?Q?zwiY3ghiqNKG/RvNHnQFwrear7iVdkL+kFyBVhJY+/R5NMQ+KxYktcAqAQL8?=
+ =?us-ascii?Q?hlCaCbY3YDgBj/fWGENkxbNfxWlRJvH5CEDWJwQklCldeI7Q2O16bz16T+Z4?=
+ =?us-ascii?Q?E7P0b0dKq+uzwLKiNQejNVpW1fx4qoPaSieX8A/Z2zmRTL6bkCaitYkDRaTf?=
+ =?us-ascii?Q?AbXeixdwxU12jx1mlTXqGcTCNJ+lw0RC2nfycXuJYY0ApjQh7ZWjkTpx4agL?=
+ =?us-ascii?Q?G76grBIb01wY5O1SlKTJ1mVdniIEWEnKBnc4xVDh7bQ8E7fdgHE+po7HvG6V?=
+ =?us-ascii?Q?Ot1+Y53LpUp3MnneAOX2fFQVqvai+BLVyD+VPMn80NY5zbZXEZFPxWbvpKVX?=
+ =?us-ascii?Q?YhY1WLk7zMZXh2LlLBGgAvFQEGIdSOSjWBbt14cCJhGNKHwSWGhDz08iytpK?=
+ =?us-ascii?Q?fNAt+jLZI2xiuNQUaj5DV7vYb7Q+nl0vCaNFdaSOt6wIcI6gfM+spqG6kEGl?=
+ =?us-ascii?Q?q92TKVoyvSeqMEQQSPU+C+3qnqixE9Hakf+Wh8zSPMBryHSI0Ub0s/lnO6Qn?=
+ =?us-ascii?Q?8lZS1sDZ70c84hz4GHoXK73/Pm1kbshaASRElH3zs2v920REhcD6Pp4NpHHa?=
+ =?us-ascii?Q?D2ZUq67XkqLZFzsN+dGCVDAj2oPxlfo4QjjjVKaHcsMIidONb0yrV1orGkao?=
+ =?us-ascii?Q?vd9cocJlSkhDmS858S53RXqCjZFZo0uvb4llhEgd?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b28267c3-500d-41cc-5c53-08db6c325297
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2023 17:19:19.6731 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: fMlUgCqIaqNVRwlF8a+N5fIe5o+EEN9I/y8rCnm5K0UxQamQr58Sazmj9XoKeNAG
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4860
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,179 +118,41 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Yanting@freedesktop.org,
-	"mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
-	"jasowang@redhat.com" <jasowang@redhat.com>,
-	"peterx@redhat.com" <peterx@redhat.com>,
-	"  <lulu@redhat.com>, "@freedesktop.org,
-	suravee.suthikulpanit@amd.com,
-	"chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
-	"kvm@vger.kernel.org" <kvm@vger.kernel.org>,
-	"joro@8bytes.org" <joro@8bytes.org>, Zhenzhong@freedesktop.org,
-	" <zhenzhong.duan@intel.com>,   "@freedesktop.org,
-	clegoate@redhat.com, Yan@freedesktop.org,
-	"nicolinc@nvidia.com" <nicolinc@nvidia.com>,
-	"jgg@nvidia.com" <jgg@nvidia.com>,
-	"     <intel-gvt-dev@lists.freedesktop.org>,  "@freedesktop.org,
-	intel-gfx@lists.freedesktop.org, <linux-s390@vger.kernel.org>, ,
-	"Tian,  Kevin" <kevin.tian@intel.com>, Xudong@freedesktop.org,
-	"  <suravee.suthikulpanit@amd.com>, "@freedesktop.org,
-	intel-gvt-dev@lists.freedesktop.org,,
-	" <intel-gfx@lists.freedesktop.org>,   "@freedesktop.org,
-	linux-s390@vger.kernel.org, Terrence@freedesktop.org,
-	"yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"cohuck@redhat.com" <cohuck@redhat.com>, <clegoate@redhat.com>,
-	"robin.murphy@arm.com" <robin.murphy@arm.com>,
-	"shameerali.kolothum.thodi@huawei.com\"          <shameerali.kolothum.thodi@huawei.com>, "@freedesktop.org,
-	lulu@redhat.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "clegoate@redhat.com" <clegoate@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-[Sorry for breaking threading, replying to my own message id with reply
- content from Yi since the Cc list got broken]
+On Tue, Jun 13, 2023 at 08:16:47AM -0600, Alex Williamson wrote:
 
-On Tue, 13 Jun 2023 15:28:06 +0000
-"Liu, Yi L" <yi.l.liu@intel.com> wrote:
-
-> > From: Alex Williamson <alex.williamson@redhat.com>
-> > Sent: Tuesday, June 13, 2023 11:13 PM
-> > 
-> > On Tue, 13 Jun 2023 15:01:35 +0000
-> > "Liu, Yi L" <yi.l.liu@intel.com> wrote:
-> >   
-> > > > From: Alex Williamson <alex.williamson@redhat.com>
-> > > > Sent: Tuesday, June 13, 2023 10:48 PM
-> > > >
-> > > > On Tue, 13 Jun 2023 14:33:01 +0000
-> > > > "Liu, Yi L" <yi.l.liu@intel.com> wrote:
-> > > >  
-> > > > > > From: Alex Williamson <alex.williamson@redhat.com>
-> > > > > > Sent: Tuesday, June 13, 2023 10:19 PM
-> > > > > >
-> > > > > > On Tue, 13 Jun 2023 05:53:42 +0000
-> > > > > > "Liu, Yi L" <yi.l.liu@intel.com> wrote:
-> > > > > >  
-> > > > > > > > From: Alex Williamson <alex.williamson@redhat.com>
-> > > > > > > > Sent: Tuesday, June 13, 2023 6:42 AM
-> > > > > > > >
-> > > > > > > > On Fri,  2 Jun 2023 05:16:50 -0700
-> > > > > > > > Yi Liu <yi.l.liu@intel.com> wrote:
-> > > > > > > >  
-> > > > > > > > > This moves the noiommu device determination and noiommu taint out of
-> > > > > > > > > vfio_group_find_or_alloc(). noiommu device is determined in
-> > > > > > > > > __vfio_register_dev() and result is stored in flag vfio_device->noiommu,
-> > > > > > > > > the noiommu taint is added in the end of __vfio_register_dev().
-> > > > > > > > >
-> > > > > > > > > This is also a preparation for compiling out vfio_group infrastructure
-> > > > > > > > > as it makes the noiommu detection and taint common between the cdev  
-> > path  
-> > > > > > > > > and group path though cdev path does not support noiommu.  
-> > > > > > > >
-> > > > > > > > Does this really still make sense?  The motivation for the change is
-> > > > > > > > really not clear without cdev support for noiommu.  Thanks,  
-> > > > > > >
-> > > > > > > I think it still makes sense. When CONFIG_VFIO_GROUP==n, the kernel
-> > > > > > > only supports cdev interface. If there is noiommu device, vfio should
-> > > > > > > fail the registration. So, the noiommu determination is still needed. But
-> > > > > > > I'd admit the taint might still be in the group code.  
-> > > > > >
-> > > > > > How is there going to be a noiommu device when VFIO_GROUP is unset?  
-> > > > >
-> > > > > How about booting a kernel with iommu disabled, then all the devices
-> > > > > are not protected by iommu. I suppose they are noiommu devices. If
-> > > > > user wants to bound them to vfio, the kernel should have VFIO_GROUP.
-> > > > > Otherwise, needs to fail.  
-> > > >
-> > > > "noiommu" is a vfio designation of a device, it must be created by
-> > > > vfio.  
-> > >
-> > > Sure.
-> > >  
-> > > > There can certainly be devices which are not IOMMU backed, but
-> > > > without vfio designating them as noiommu devices, which is only done
-> > > > via the legacy and compat paths, there's no such thing as a noiommu
-> > > > device.  
-> > >
-> > > Yes.
-> > >  
-> > > > Devices without an IOMMU are simply out of scope for cdev,
-> > > > there should never be a vfio cdev entry created for them.  Thanks,  
-> > >
-> > > Actually, this is what I want to solve. I need to check if a device is
-> > > IOMMU backed or not, and based on this info to prevent creating
-> > > cdev entry for them in the coming cdev support or may need to
-> > > fail registration if VFIO_GROUP is unset.
-> > >
-> > > If this patch is not good. I can use the vfio_device_is_noiommu()
-> > > written like below when VFIO_GROUP is unset. What about your
-> > > opinion?
-> > >
-> > > static inline bool vfio_device_is_noiommu(struct vfio_device *vdev)
-> > > {
-> > > 	struct iommu_group *iommu_group;
-> > >
-> > > 	iommu_group = iommu_group_get(vdev->dev);
-> > > 	iommu_group_put(iommu_group); /* Accepts NULL */
-> > > 	return !iommu_group;
-> > > }  
-> > 
-> > 
-> > No, please do not confuse the issue.  As we agreed above "noiommu"
-> > means a specific thing, it's a device without IOMMU backing that vfio
-> > has artificially included in the environment.  If we don't have
-> > VFIO_NOIOMMU then there's no such thing as a "noiommu" device.
-> > 
-> > You can certainly use an iommu_group test to decide if a device should
-> > be represented, but there absolutely should never be a vfio_device
-> > created without IOMMU backing and without VFIO_NOIOMMU.  Thanks,  
+> > Not quite get why bit field is going to be incompatible with smp
+> > lockless operations. Could you elaborate a bit? And should I define
+> > the access_granted as u8 or "u8:1"?
 > 
-> Hmmm. So your suggestion is to fail the vfio_alloc_device() if the input
-> device is not IOMMU backed. right? But at this point, we don't know if
-> the caller is trying to allocate vfio_device for a physical device or an
-> emulated device. For emulated devices, cdev entry can always be created.
-> Is it? I think the iommu_group test should be done for only physical devices
-> in the register time.
-> 
-> Can I have an iommu_backed flag to store the iommu_group test result
-> and check it when trying to create/remove cdev entry?
+> Perhaps FUD on my part, but load-acquire type operations have specific
+> semantics and it's not clear to me that they interest with compiler
+> generated bit operations.  Thanks,
 
-Ok, let me rephrase, the probe function needs to fail for a physical
-(VFIO_IOMMU) device when VFIO_NO_IOIMMU is not configured and
-vfio_noiommu is not enabled, there should never be a vfio group or cdev
-device file created and the vfio_device should never be fully registered.
-I overreacted a bit that we should never have a vfio_device at all, we
-clearly need one leading up to determining if we can proceed.
+They won't compile if you target bit ops, you can't take the address
+of a bitfield.
 
-If we renamed your function above to vfio_device_has_iommu_group(),
-couldn't we just wrap device_add like below instead to not have cdev
-setup for a noiommu device, generate an error for a physical device w/o
-IOMMU backing, and otherwise setup the cdev device?
-
-static inline int vfio_device_add(struct vfio_device *device, enum vfio_group_type type)
-{
-#if IS_ENABLED(CONFIG_VFIO_GROUP)
-	if (device->group->type == VFIO_NO_IOMMU)
-		return device_add(&device->device);
-#else
-	if (type == VFIO_IOMMU && !vfio_device_has_iommu_group(device))
-		return -EINVAL;
-#endif
-	vfio_init_device_cdev(device);
-	return cdev_device_add(&device->cdev, &device->device);
-}
-
-static inline void vfio_device_del(struct vfio_device *device)
-{
-#if IS_ENABLED(CONFIG_VFIO_GROUP)
-	if (device->group->type == VFIO_NO_IOMMU)
-		return device_del(&device->device);
-#endif
-	cdev_device_del(&device->cdev, &device->device);
-}
-
-I think this is the only extent to which noiommu needs to be a factor
-here, skip cdev setup for a noiommu device.  Thanks,
-
-Alex
-
+Jason
