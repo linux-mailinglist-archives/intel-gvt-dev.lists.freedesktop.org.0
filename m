@@ -2,107 +2,87 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D67A72EACA
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Jun 2023 20:23:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5520C72EC91
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 13 Jun 2023 22:11:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 02B1810E3DA;
-	Tue, 13 Jun 2023 18:23:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2848D10E3E0;
+	Tue, 13 Jun 2023 20:11:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2089.outbound.protection.outlook.com [40.107.243.89])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4380110E3DA;
- Tue, 13 Jun 2023 18:23:08 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=igLfBGYzRjLAKGDMOYSE2BSK19TG3W4bkzKeI2Q0O3bms54G/sH2we7pY9OGWFI2gNYMPf2/fwMUI3sZILaYWqh4nQaQ0dnadZXQX+vHblybX6x1uIw0Xl169Hetq78sCJgtsV228WU9JdUnhWIDMl61Xl6jaI/JPZwnq8elFSa9zo2omh9HV4GnH/JA3grsp+/Ern1aGp9ByBqGu0yXUU559mPXUQ8HRhW7sGhLd9+E5YwfvOZWbdvz1/faRiX+lvl3TsrwVRAECoq9WIMumFvS3uc5d+eatOBKNXEN0szhPF95jaQatmDcCDljzoeVCvI6vTguS5FZdLOJohkLUw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sk9QL3/SejptdUGxkdnPuUgJb+WlUs5J1SEq5vZVcQY=;
- b=Zmu53sid6MXRMhNhlWWRQskbXcRP+F94/MbfxCIKev4/s2LUBwVmaEJeV7wTaV+iN3K5YFI9y98F1XMaNrgVrrf1g0SEBGWKPuQ5nZHr+Uo91BvDO6RUkUkMbS6bd7dRueTTxoSkylfTBa7plYEKV4WsQgtcbRDkLginS9tKYvyKlRmXXqBU5CeVNwgvwmB5XnDmjt6L1kkEeIdM5Xv4meA3ckF3kVLaihiXNCQLee2Jglezdjd2MGUS3WAnIydbcBjEkBlpfK1Hd+k8iLLCPGcchbhhaXEE6q82gQ/uOvQkyfMxrXCsEr0HQwvPdc1Hh/obgxywZW8Gb1D5nypZZQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sk9QL3/SejptdUGxkdnPuUgJb+WlUs5J1SEq5vZVcQY=;
- b=N1kLQBPavc88eOFxLsOMxoh4bY7sUDds7GpjEtfwVhpSkqsg+9sDQGOsmDGHPmsxrqvFFx9Azo/E8kS+TOpMzAji2UE+qLWxEmNIB5fhi24VAQqz2YbQg+0U0bB6oJWZ7ivZ29azWdKX73AdA2HRP9XpB6STXr7w7vt7cPSarzdfyAFxQTAG4vTAPoq27H+gtMLc3Fa6a8HnyrBhbQHj4jS50K3AkfB3XHSPjZGCMJoAkHBs6OmfG8TRgFrJSi0T1XMn6YxIRHR2fM9SwpTGpa70fyzLxNjYgaMFrk6nZLrqB4myrn/J5Akb0i7wkZ0RELS7A3StLyjwKdadiC4G+A==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by PH7PR12MB8055.namprd12.prod.outlook.com (2603:10b6:510:268::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.39; Tue, 13 Jun
- 2023 18:23:05 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab%6]) with mapi id 15.20.6455.030; Tue, 13 Jun 2023
- 18:23:05 +0000
-Date: Tue, 13 Jun 2023 15:23:02 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v7 8/9] vfio/pci: Extend
- VFIO_DEVICE_GET_PCI_HOT_RESET_INFO for vfio device cdev
-Message-ID: <ZIi0Bizk9qr1SgJ/@nvidia.com>
-References: <20230602121515.79374-1-yi.l.liu@intel.com>
- <20230602121515.79374-9-yi.l.liu@intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230602121515.79374-9-yi.l.liu@intel.com>
-X-ClientProxiedBy: CH0PR03CA0300.namprd03.prod.outlook.com
- (2603:10b6:610:e6::35) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4452410E148
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 13 Jun 2023 20:10:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1686687056;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sIOI1MZa8Qvt3GA5tgX3/QbGmFAGID2zKyAE50cAXvQ=;
+ b=DE1DhmNbKZlE0eDtQ0H/ZUP+aWmgkGqzfCP9/fQa8bTd12g/ZeU/2i7+6ng9vbkuaj+Ldl
+ 9oJzqkQAiGHX0lTmFQQ7zC8gMSqh2f1wpz7llhtmeDDZY/xpq7l5LzmLsic5ocCAcoZ9zk
+ jp4VHQ0R8AAI8Ssqw2h9aVuChSraT58=
+Received: from mail-io1-f72.google.com (mail-io1-f72.google.com
+ [209.85.166.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-483-VODM1qEtMxmZPQTqQbI9sg-1; Tue, 13 Jun 2023 16:10:54 -0400
+X-MC-Unique: VODM1qEtMxmZPQTqQbI9sg-1
+Received: by mail-io1-f72.google.com with SMTP id
+ ca18e2360f4ac-77ad94642d4so709730339f.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 13 Jun 2023 13:10:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686687052; x=1689279052;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sIOI1MZa8Qvt3GA5tgX3/QbGmFAGID2zKyAE50cAXvQ=;
+ b=D71DISo8iJPVwHDqeMvGOqMswV8C1+6ikYpqcFaUU4jDLjpPPgZBnVbmvVeZoqaP2U
+ RrEZI7f+SJqn3mcUxdZtoR+5LeQew/C+vGQOVTrjZpXWC+2VF3k7ATmBxmpawwF6To4O
+ WuxxmVryEgUkkvTDpamoN5FK98SjOoTr61FWcKKKDf4+sEURVllmtqOeBMXmyIvCYyxz
+ YSoAkNCfp37AGlb4VYooVgWOp37FoRAhbXgMhc6JG2AM5M4VJ4kQ+maJJkBTIQvOMmZc
+ e1Kge7fZc4IEyXJ88JByZfeOqdVHsOUeiqNaR0ZhpjxXmSBKUPJLH3NsJ8A7++GOqWU6
+ V8Vg==
+X-Gm-Message-State: AC+VfDwu5vAHJ6LSJX/oLxjmgNTlp6miv61ao0TMl+/nfqpcpTwArv6f
+ AfMY+360HxPTj8skQRZqbugZMo9wkgRdrrzuX894OSCXHijxy7dWbOM4HSbmix1H9DmLdaCpGTK
+ iBBhgMTDtANfFLmQM/PGXLdU76x6yHbkkHA==
+X-Received: by 2002:a5d:9d4e:0:b0:753:ca30:6bb0 with SMTP id
+ k14-20020a5d9d4e000000b00753ca306bb0mr12540458iok.4.1686687052514; 
+ Tue, 13 Jun 2023 13:10:52 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ4DNZHxVZbAxwbazA89i6boaoAMcqTbpYJSYBiB4fBVRBnBcDqPvcZYm0qsZ2hQJsBCtxR5uA==
+X-Received: by 2002:a5d:9d4e:0:b0:753:ca30:6bb0 with SMTP id
+ k14-20020a5d9d4e000000b00753ca306bb0mr12540429iok.4.1686687052264; 
+ Tue, 13 Jun 2023 13:10:52 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ f13-20020a6bdd0d000000b0076c569c7a48sm3955848ioc.39.2023.06.13.13.10.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Jun 2023 13:10:51 -0700 (PDT)
+Date: Tue, 13 Jun 2023 14:10:50 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH v12 21/24] vfio: Determine noiommu device in
+ __vfio_register_dev()
+Message-ID: <20230613141050.29e7a22b.alex.williamson@redhat.com>
+In-Reply-To: <ZIiozfqet185iLIs@nvidia.com>
+References: <20230602121653.80017-1-yi.l.liu@intel.com>
+ <20230602121653.80017-22-yi.l.liu@intel.com>
+ <20230612164228.65b500e0.alex.williamson@redhat.com>
+ <DS0PR11MB7529AE3701E154BF4C092E57C355A@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230613081913.279dea9e.alex.williamson@redhat.com>
+ <DS0PR11MB7529EB2903151B3399F636F5C355A@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230613084828.7af51055.alex.williamson@redhat.com>
+ <DS0PR11MB7529E84BCB100DE620FD2468C355A@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230613091301.56986440.alex.williamson@redhat.com>
+ <20230613111511.425bdeae.alex.williamson@redhat.com>
+ <ZIiozfqet185iLIs@nvidia.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH7PR12MB8055:EE_
-X-MS-Office365-Filtering-Correlation-Id: 16883321-94a4-43b3-05c8-08db6c3b3a9c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: QAkrqkWBtXw6mq2v9tgIXeV17D/UILW6uanmIV0AYLn0jdw1ZPoXZTIO3girg+Ru18z1arNhw9S/m46zul4RwCrQWoeO+WfAwJDO8QTi8UCM0mKUIcbAWsrx3r3htekV31XGKquhc0txFJV26uoapC38z/KZoFoLKzIaLbI3l9l0FerQRxIE9KVAGHcAJCUJVEHf7Zc6v1PQ1ceB/IlOeCYd9zHT+fYIAuGPGqkDUgIXn3iUD/Q/mKMOh9QYZU53A13mNbOXf+nkmAeS64oi+kZs1/XxGxhDYQl8aS3M900nIOmvXD04ulNvu3mI8G/hznIoXvGTEz64lHwwtxARWpRIK/plmw+tJH55NBa0oIMrdWeyGidMSk47sTwFdUSdvhwDrwu1lBNPvEeR9gJIHZgJvstoUiFg1QQjfWNHI6OJzkWANy93jT7g5p9hO6hnq7VlvXHKShQd+soR5ltHZP4ZJluq4s2b+G173j04mg9DTmZEjaGqW6ARTMfPlPKJfNhNaBcHA2xYqV+uM01Vui2i3VizdeZvPgVxXdxW6Qkt/Qy4RyTwioh6dqkvahKE
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(136003)(366004)(396003)(39860400002)(376002)(346002)(451199021)(36756003)(2616005)(2906002)(86362001)(7416002)(6666004)(83380400001)(5660300002)(186003)(26005)(6512007)(6506007)(6486002)(478600001)(8676002)(66946007)(66556008)(316002)(41300700001)(66476007)(4326008)(6916009)(8936002)(38100700002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TbU49f1zFMSu1tu8MEXL69HQIjEHXCsIxOSVGtHbrqDBvkxkIJnLR7lpnZRf?=
- =?us-ascii?Q?4G1ekSs3REcLPRYp2bYbqI8XQzts9a/GsL5DANLD24xcpi8ELn1cIRai/qTv?=
- =?us-ascii?Q?49+fcXQYWo8RLr5jF//N1kiBnOPiXFM1QAyBRgOVKY3+iIqIsRwnB65lfo/v?=
- =?us-ascii?Q?Q00kKnzVHuR0FGk74zS3id+eV8aBp85aAsSWC3aXfPYLyQkfqZKs5aVKwUTM?=
- =?us-ascii?Q?dSiF7aZR4qTy98TgZ08evp8Aa/Es8YrREyHEPrWFvpUDzRs3iwxM2h0aYFVE?=
- =?us-ascii?Q?Te1NBw9kgrIyNUTgzD1XwUxtBD2J7Z/SCD4g4dh/e+yz6jXRkpDHVEvbgcQ8?=
- =?us-ascii?Q?qzq8teXenfFfZ0+0xQCl1fpuATcKztX62PWOSTTh6XLKD21fVTOFaA3JMMWo?=
- =?us-ascii?Q?6+jdah+Cag1THe63t5dFVUTFfJJAQjCOrYaQDNV2Sk+tS834bySjrKHBfRKy?=
- =?us-ascii?Q?Lb3SnGubpsMDoCv5iozoctFDf/HOvxYAxBA0PBJOiW1di8ayiqlfoFt7pqgp?=
- =?us-ascii?Q?H3wJaO3ZHg1FFM7WYPq9eZE4sd0ZT0U/Zb+odHOEub1NIwKV4cgRTc4yom7t?=
- =?us-ascii?Q?j5cZ9oaACox4YJ6K8jV9xpB0MDsmj8pI3zZpF/r32NBPU59Q0RcvLArLniz3?=
- =?us-ascii?Q?f76WrIxoTWohkSV4Kd1DQ0Mux576CRaj1jNORFf/nE9YmHEpZtOVrvXX/qQx?=
- =?us-ascii?Q?wqr9nsgqKNqV9IwKEVLcvcp/EoL/0y1TwexEqRR6ZzSG66NINjeuOQZnEFhZ?=
- =?us-ascii?Q?k8mnqZDNT5oBkYQMSun5pdD7LWIqWbWAMvLU3IHLLemswFOAvTmGuht/JmIs?=
- =?us-ascii?Q?AQzE9FuCW0YIYvgzqkYVaKqPc7Hof9AG6NUcUbBI03dTR7XYuqhniTbWLbq4?=
- =?us-ascii?Q?FQsnqBnmsyKa52CkF85xGr/z3Xs21vCTubD+9ggmhrINsxHkjsYvB7tfq9wb?=
- =?us-ascii?Q?UB7CtBqFXokTbfbxZzPwEL/UuY71ZFWPtUVceToBBObT1wUEmNC5kkTbMPWW?=
- =?us-ascii?Q?5jM2wRemI8B7GNE/s4p3YmXoWmuaJ76QGdDtUumtoxFmsKfQk4ybA04gAhn/?=
- =?us-ascii?Q?tr3zZVqWeJ7Yr9QEZi8tHGTmVZd617erVQ3Fg22UqEPT8UF/Lah3UvIGfkqp?=
- =?us-ascii?Q?VOQjNxchzxk7wnQGIQw4Bg4Yi53TfvofQZEVMIUgOnUFuHt8NoiHzEB5C6zM?=
- =?us-ascii?Q?X306cr56YQUzSs2juH/JMFkP6/UD7glBA99lc+KzupqMUkDychabtVDrnQ/s?=
- =?us-ascii?Q?gIpFIv9UhC5H8kdtKJDWSenm0KrtWrzJ0QBjRariipuVsFUBsHEKtwOmHtuK?=
- =?us-ascii?Q?VPptcERwL9wleQo6jQb2gFV3UPNvfADf1n7JkWjd+ZDezgjw2OYaIZO9pp8n?=
- =?us-ascii?Q?nKvQvCboQFuV9juBdTo9GqchV2B5MWM/GsVZ9ymi4mcqZN9EhIyvxVhec1Iy?=
- =?us-ascii?Q?cFmBNwFUImBECh9geup6iegeDqSnA8W+RVAhCrddADPKEHr+igGde9XTJF0N?=
- =?us-ascii?Q?Ws4w62J7X0yuHb0OkNTvdF4sNDB/rX6Qe5ZQX6DXkm6glvIoNlcEDjCGrpmr?=
- =?us-ascii?Q?2Wg00/lCgKk/heg2ph5CPFWTAC+kf5fAKqy+YSuk?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 16883321-94a4-43b3-05c8-08db6c3b3a9c
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2023 18:23:05.2120 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: RtsqVKGetko5z/Xl9E6LwKFdnirdnaXXwxVfbA4s4V+f0HWpICcR+H8VtZjWt3k2
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB8055
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,191 +95,74 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
- chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, kvm@vger.kernel.org,
- lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
- kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, alex.williamson@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
- clegoate@redhat.com, cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, robin.murphy@arm.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
+ Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "clegoate@redhat.com" <clegoate@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jun 02, 2023 at 05:15:14AM -0700, Yi Liu wrote:
-> This allows VFIO_DEVICE_GET_PCI_HOT_RESET_INFO ioctl use the iommufd_ctx
-> of the cdev device to check the ownership of the other affected devices.
+On Tue, 13 Jun 2023 14:35:09 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
+
+> On Tue, Jun 13, 2023 at 11:15:11AM -0600, Alex Williamson wrote:
+> > [Sorry for breaking threading, replying to my own message id with reply
+> >  content from Yi since the Cc list got broken]  
 > 
-> When VFIO_DEVICE_GET_PCI_HOT_RESET_INFO is called on an IOMMUFD managed
-> device, the new flag VFIO_PCI_HOT_RESET_FLAG_DEV_ID is reported to indicate
-> the values returned are IOMMUFD devids rather than group IDs as used when
-> accessing vfio devices through the conventional vfio group interface.
-> Additionally the flag VFIO_PCI_HOT_RESET_FLAG_DEV_ID_OWNED will be reported
-> in this mode if all of the devices affected by the hot-reset are owned by
-> either virtue of being directly bound to the same iommufd context as the
-> calling device, or implicitly owned via a shared IOMMU group.
+> Yikes it is really busted, I think I fixed it?
 > 
-> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
-> Suggested-by: Alex Williamson <alex.williamson@redhat.com>
-> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
-> ---
->  drivers/vfio/iommufd.c           | 49 +++++++++++++++++++++++++++++++
->  drivers/vfio/pci/vfio_pci_core.c | 47 +++++++++++++++++++++++++-----
->  include/linux/vfio.h             | 16 ++++++++++
->  include/uapi/linux/vfio.h        | 50 +++++++++++++++++++++++++++++++-
->  4 files changed, 154 insertions(+), 8 deletions(-)
+> > If we renamed your function above to vfio_device_has_iommu_group(),
+> > couldn't we just wrap device_add like below instead to not have cdev
+> > setup for a noiommu device, generate an error for a physical device w/o
+> > IOMMU backing, and otherwise setup the cdev device?
+> > 
+> > static inline int vfio_device_add(struct vfio_device *device, enum vfio_group_type type)
+> > {
+> > #if IS_ENABLED(CONFIG_VFIO_GROUP)
+> > 	if (device->group->type == VFIO_NO_IOMMU)
+> > 		return device_add(&device->device);  
+> 
+> vfio_device_is_noiommu() embeds the IS_ENABLED
 
-This could use some more fiddling, like we could copy each
-vfio_pci_dependent_device to user memory inside the loop instead of
-allocating an array.
+But patch 23/ makes the definition of struct vfio_group conditional on
+CONFIG_VFIO_GROUP, so while CONFIG_VFIO_NOIOMMU depends on
+CONFIG_VFIO_GROUP and the result could be determined, I think the
+compiler is still unhappy about the undefined reference.  We'd need a
+!CONFIG_VFIO_GROUP stub for the function.
 
-Add another patch with something like this in it:
+> > #else
+> > 	if (type == VFIO_IOMMU && !vfio_device_has_iommu_group(device))
+> > 		return -EINVAL;
+> > #endif  
+> 
+> The require test is this from the group code:
+> 
+>  	if (!device_iommu_capable(dev, IOMMU_CAP_CACHE_COHERENCY)) {
+> 
+> We could lift it out of the group code and call it from vfio_main.c like:
+> 
+> if (type == VFIO_IOMMU && !vfio_device_is_noiommu(vdev) && !device_iommu_capable(dev,
+>      IOMMU_CAP_CACHE_COHERENCY))
+>    FAIL
 
-diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
-index b0eadafcbcf502..516e0fda74bec9 100644
---- a/drivers/vfio/pci/vfio_pci_core.c
-+++ b/drivers/vfio/pci/vfio_pci_core.c
-@@ -775,19 +775,23 @@ static int vfio_pci_count_devs(struct pci_dev *pdev, void *data)
- }
- 
- struct vfio_pci_fill_info {
--	int max;
--	int cur;
--	struct vfio_pci_dependent_device *devices;
-+	struct vfio_pci_dependent_device __user *devices;
-+	struct vfio_pci_dependent_device __user *devices_end;
- 	struct vfio_device *vdev;
- 	u32 flags;
- };
- 
- static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
- {
-+	struct vfio_pci_dependent_device info = {
-+		.segment = pci_domain_nr(pdev->bus),
-+		.bus = pdev->bus->number,
-+		.devfn = pdev->devfn,
-+	};
- 	struct vfio_pci_fill_info *fill = data;
- 
--	if (fill->cur == fill->max)
--		return -EAGAIN; /* Something changed, try again */
-+	if (fill->devices_end >= fill->devices)
-+		return -ENOSPC;
- 
- 	if (fill->flags & VFIO_PCI_HOT_RESET_FLAG_DEV_ID) {
- 		struct iommufd_ctx *iommufd = vfio_iommufd_device_ictx(fill->vdev);
-@@ -800,12 +804,12 @@ static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
- 		 */
- 		vdev = vfio_find_device_in_devset(dev_set, &pdev->dev);
- 		if (!vdev)
--			fill->devices[fill->cur].devid = VFIO_PCI_DEVID_NOT_OWNED;
-+			info.devid = VFIO_PCI_DEVID_NOT_OWNED;
- 		else
--			fill->devices[fill->cur].devid =
--				vfio_iommufd_device_hot_reset_devid(vdev, iommufd);
-+			info.devid = vfio_iommufd_device_hot_reset_devid(
-+				vdev, iommufd);
- 		/* If devid is VFIO_PCI_DEVID_NOT_OWNED, clear owned flag. */
--		if (fill->devices[fill->cur].devid == VFIO_PCI_DEVID_NOT_OWNED)
-+		if (info.devid == VFIO_PCI_DEVID_NOT_OWNED)
- 			fill->flags &= ~VFIO_PCI_HOT_RESET_FLAG_DEV_ID_OWNED;
- 	} else {
- 		struct iommu_group *iommu_group;
-@@ -814,13 +818,13 @@ static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
- 		if (!iommu_group)
- 			return -EPERM; /* Cannot reset non-isolated devices */
- 
--		fill->devices[fill->cur].group_id = iommu_group_id(iommu_group);
-+		info.group_id = iommu_group_id(iommu_group);
- 		iommu_group_put(iommu_group);
- 	}
--	fill->devices[fill->cur].segment = pci_domain_nr(pdev->bus);
--	fill->devices[fill->cur].bus = pdev->bus->number;
--	fill->devices[fill->cur].devfn = pdev->devfn;
--	fill->cur++;
-+
-+	if (copy_to_user(fill->devices, &info, sizeof(info)))
-+		return -EFAULT;
-+	fill->devices++;
- 	return 0;
- }
- 
-@@ -1212,8 +1216,7 @@ static int vfio_pci_ioctl_get_pci_hot_reset_info(
- 	unsigned long minsz =
- 		offsetofend(struct vfio_pci_hot_reset_info, count);
- 	struct vfio_pci_hot_reset_info hdr;
--	struct vfio_pci_fill_info fill = { 0 };
--	struct vfio_pci_dependent_device *devices = NULL;
-+	struct vfio_pci_fill_info fill = {};
- 	bool slot = false;
- 	int ret = 0;
- 
-@@ -1231,29 +1234,9 @@ static int vfio_pci_ioctl_get_pci_hot_reset_info(
- 	else if (pci_probe_reset_bus(vdev->pdev->bus))
- 		return -ENODEV;
- 
--	/* How many devices are affected? */
--	ret = vfio_pci_for_each_slot_or_bus(vdev->pdev, vfio_pci_count_devs,
--					    &fill.max, slot);
--	if (ret)
--		return ret;
--
--	WARN_ON(!fill.max); /* Should always be at least one */
--
--	/*
--	 * If there's enough space, fill it now, otherwise return -ENOSPC and
--	 * the number of devices affected.
--	 */
--	if (hdr.argsz < sizeof(hdr) + (fill.max * sizeof(*devices))) {
--		ret = -ENOSPC;
--		hdr.count = fill.max;
--		goto reset_info_exit;
--	}
--
--	devices = kcalloc(fill.max, sizeof(*devices), GFP_KERNEL);
--	if (!devices)
--		return -ENOMEM;
--
--	fill.devices = devices;
-+	fill.devices = arg->devices;
-+	fill.devices_end = arg->devices +
-+			   (hdr.argsz - sizeof(hdr)) / sizeof(arg->devices[0]);
- 	fill.vdev = &vdev->vdev;
- 
- 	if (vfio_device_cdev_opened(&vdev->vdev))
-@@ -1264,29 +1247,14 @@ static int vfio_pci_ioctl_get_pci_hot_reset_info(
- 	ret = vfio_pci_for_each_slot_or_bus(vdev->pdev, vfio_pci_fill_devs,
- 					    &fill, slot);
- 	mutex_unlock(&vdev->vdev.dev_set->lock);
-+	if (ret)
-+		return ret;
- 
--	/*
--	 * If a device was removed between counting and filling, we may come up
--	 * short of fill.max.  If a device was added, we'll have a return of
--	 * -EAGAIN above.
--	 */
--	if (!ret) {
--		hdr.count = fill.cur;
--		hdr.flags = fill.flags;
--	}
--
--reset_info_exit:
-+	hdr.count = fill.devices - arg->devices;
-+	hdr.flags = fill.flags;
- 	if (copy_to_user(arg, &hdr, minsz))
- 		ret = -EFAULT;
--
--	if (!ret) {
--		if (copy_to_user(&arg->devices, devices,
--				 hdr.count * sizeof(*devices)))
--			ret = -EFAULT;
--	}
--
--	kfree(devices);
--	return ret;
-+	return 0;
- }
- 
- static int
+Ack.  Thanks,
+
+Alex
+
