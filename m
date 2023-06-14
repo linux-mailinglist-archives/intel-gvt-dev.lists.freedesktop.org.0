@@ -1,110 +1,116 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id F350172FE3A
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Jun 2023 14:17:42 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A1F872FE64
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 14 Jun 2023 14:23:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DDEF610E44A;
-	Wed, 14 Jun 2023 12:17:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EF36710E12D;
+	Wed, 14 Jun 2023 12:23:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2074.outbound.protection.outlook.com [40.107.94.74])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E026710E44A;
- Wed, 14 Jun 2023 12:17:34 +0000 (UTC)
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam04on2058.outbound.protection.outlook.com [40.107.102.58])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A90D410E457;
+ Wed, 14 Jun 2023 12:23:17 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GjeYzsjVLC0gLwf1GMvsJMBLzvHbFBNmgyCM7dzN1WpHCXpqFaP+6oZZEpudHsdbXqJw4nlGmxZfYU+3lETT5ZVSWFOgpNPVCB4e7vZKNuViU1MBd5WjsKaU9BkbbBjf7Ee3qy3io5t61vkJZEoo7C4s/3LeK2rK6Nl0Dr3KD+uNWOIhFpFjRDoNGPkrIMWzwEpg0LaTkX4CdwJYNvdjy8soJhi0TiTaSL96v7PrEbZXKs3VUaxUG16hN+5cDQaGfDYrPQJ+9v9cyDnbQ85DggnSCrlRojDpC84MCnuTu8ZJFwl+rIsNmJLNd/Q0l9pWsYJcb4TLbrzBj4qlFkgrcg==
+ b=INK95+pMbKb9DMgznYwhWAxRZGemLsrFwnNg6nez1UySHO15IuHC+ZI/jG0yy+PtlFs+oujeCOhAdvOFxgC2wrQzNNdZXdjqWH2EHzhEmTquxT847yYpydNVCrvC3w0fPXxrps4T1scrUQBSIQcxeuh5qkehTZ2QAixQ4irIddK0mF/cLYA28PnSwpNxPCbL2cX3RelGV1k6x2/+HHp+3HaJ8Q1DeF4aWkm+16sqkdi9ZtDRRYdyQ/vWNRiA5hz/Q44lA1gfZYXm+aVybQvXpGU8V7Bmtbs9XOvVzfECMnwM8sKXKs6GlrVq9fbIFLGoJJg5DIGKu5GPxVOeRj8pvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=KHPEwP3TM05fww+zEesR06SmiFABnqpX/E7s/XAPuvk=;
- b=QRVbZ0nttsKXhND/RH4n1TOtG/+NBathC407ucp9A8TcijTj1fhyBvFGddVxoUEJbaMkMRA999vGB3MKWuHdWYM1xRLCD2LKH5q+Eip++3TfjIbAMZXPmkEcht++GJyivMCkWCCYGe6dlEekd1iS+ZmVpgCWY3epIww4o1zAZ2uJrKo5ijg+HKebL/s2iHRqQXlqfK0QoskJeB/mYNyZtf7xRaxHYZ9CKenxVdbxMp09HU6aSOQN7hu4H9oSgXBKufNf3pmJhdXl9TSkGBD6Ki3zu5OkeCnS4CllZu0mxj/Jrb+pzfhgqyvAYiKHK7aHk6QzyDNcU+eXG+DbKecSwQ==
+ bh=v20CECxC2aEMExwSgQZLxD9oRP6uiSUDvOTRMX5bgRI=;
+ b=jZ/W2WwxDb9t91E5Pf3jF/Xq0FH5sBr8dSC845kaqbfhH4RfqdmeBpdFIiwcnljeSjkA1FMFDkmERlTFH5eM2+nSQcYgwRdaYcrOnqZjGX0+ZLqD96YtHhHhXv35Afy5nmirTluPW1mKGek4pOTrAKChVWVKFfupGzkvYzMHCxaOkpL/JwXQDzqAh8FJLZUqJDUTBgghK0KvJevmS9e/KLAc/9K45HYs5Tzk9oaFRzb/Fgy6nD99RpoEJMsTb9R2hieaFDZF8fzFRkRrMVfLs9oZmy4TBJEYS8gZJYWuue8jlGMvURz2oRJrecwPpiJC2RHRAS/wBcFfMXeydmpNxw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KHPEwP3TM05fww+zEesR06SmiFABnqpX/E7s/XAPuvk=;
- b=POKqix+01s6toB0eX4MIFoQ3rPBamO4Df8yzWnu3IpSuZuV8pFTKt/dnhUs+k2lzGL5bEmfiv3WvM69uETrk5CKPhizwpxjn7yvePoythaMKxbRghTPbSZV7MuRM4sLdb3gW1YR7D06mALLRdfgP5L9Jrnpd9wxOHbfoB1mAjfA7ufk7mampWUKGPL5sJlA8JyC7pky8AY54wDzaLVA9ezFZRLhhlLl1B9qHzx5cxMeBl+oqIwwu6dLnEpM4CkIpRONUPIEFR5nw3VgM9CXJxjmODK4Sttz2hNfJJMcMYQNscZ3ipVO5Bd68P6IjajLwXXgHpIOe4b67J5sS6BzENQ==
+ bh=v20CECxC2aEMExwSgQZLxD9oRP6uiSUDvOTRMX5bgRI=;
+ b=Q2GcYvQRsQ3U8vVEB0bBegY7x063TFasO4ja933sug9gycRjGYy/+j483J2NIaFkqoL6faEWAlr+P7eHZV6AbwqXXbk0Bet2V5zQcvjn/uBX6Ft2PzKCs6bheZfCELnn1iWlIP+y2jeCSOxHQQ56fCu8Yf2ehkzxAgcbzSVuNo/4MZzvOA3ZaNWhfJyN8RrJc+V5Dpo9g3PPvUqeRdNvU9QyScC3b74Y6IswMbla+wDuHpYOsJSepS32asKAXJdJYj9mk7w524thSmvYW5rOewC9UzeumV19Du6g2HbUBvKIOYjePsppeYylDjyIMZV9fwesLaPSfLEyjVl8l+7Z7A==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by PH7PR12MB7306.namprd12.prod.outlook.com (2603:10b6:510:20a::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.42; Wed, 14 Jun
- 2023 12:17:32 +0000
+ by DM4PR12MB7766.namprd12.prod.outlook.com (2603:10b6:8:101::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6455.44; Wed, 14 Jun
+ 2023 12:23:15 +0000
 Received: from LV2PR12MB5869.namprd12.prod.outlook.com
  ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
  ([fe80::f7a7:a561:87e9:5fab%7]) with mapi id 15.20.6477.037; Wed, 14 Jun 2023
- 12:17:32 +0000
-Date: Wed, 14 Jun 2023 09:17:29 -0300
+ 12:23:15 +0000
+Date: Wed, 14 Jun 2023 09:23:12 -0300
 From: Jason Gunthorpe <jgg@nvidia.com>
-To: "Liu, Yi L" <yi.l.liu@intel.com>
-Subject: Re: [PATCH v7 8/9] vfio/pci: Extend
- VFIO_DEVICE_GET_PCI_HOT_RESET_INFO for vfio device cdev
-Message-ID: <ZImv2bl1COqA/8c1@nvidia.com>
-References: <20230602121515.79374-1-yi.l.liu@intel.com>
- <20230602121515.79374-9-yi.l.liu@intel.com>
- <ZIi0Bizk9qr1SgJ/@nvidia.com>
- <DS0PR11MB752932BD50E4F73FD7982DB0C35AA@DS0PR11MB7529.namprd11.prod.outlook.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+Subject: Re: [PATCH v12 21/24] vfio: Determine noiommu device in
+ __vfio_register_dev()
+Message-ID: <ZImxMHrOHHwbpNmd@nvidia.com>
+References: <20230613084828.7af51055.alex.williamson@redhat.com>
+ <DS0PR11MB7529E84BCB100DE620FD2468C355A@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <20230613091301.56986440.alex.williamson@redhat.com>
+ <20230613111511.425bdeae.alex.williamson@redhat.com>
+ <ZIiozfqet185iLIs@nvidia.com>
+ <20230613141050.29e7a22b.alex.williamson@redhat.com>
+ <DS0PR11MB7529F2D5EF95E9E1D63C9264C35AA@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <BN9PR11MB52761B4E9C401A46FA5B4F2E8C5AA@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <DS0PR11MB7529E50A3F122449AAE5733FC35AA@DS0PR11MB7529.namprd11.prod.outlook.com>
+ <BN9PR11MB5276FF400A7860DD23CF222B8C5AA@BN9PR11MB5276.namprd11.prod.outlook.com>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <DS0PR11MB752932BD50E4F73FD7982DB0C35AA@DS0PR11MB7529.namprd11.prod.outlook.com>
-X-ClientProxiedBy: BYAPR11CA0048.namprd11.prod.outlook.com
- (2603:10b6:a03:80::25) To LV2PR12MB5869.namprd12.prod.outlook.com
+In-Reply-To: <BN9PR11MB5276FF400A7860DD23CF222B8C5AA@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-ClientProxiedBy: BYAPR06CA0023.namprd06.prod.outlook.com
+ (2603:10b6:a03:d4::36) To LV2PR12MB5869.namprd12.prod.outlook.com
  (2603:10b6:408:176::16)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|PH7PR12MB7306:EE_
-X-MS-Office365-Filtering-Correlation-Id: b127cee2-a9ba-4edc-3617-08db6cd15468
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DM4PR12MB7766:EE_
+X-MS-Office365-Filtering-Correlation-Id: afa4865b-e1bf-4968-2fb1-08db6cd220ef
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Bkde4lyyjMSPiHGE+u9/LHQd8dkGgcXw7sFhGwTIMTWh7dKOl3WmhH4fe8klB7fhZm9TRAaMB6I8mMNfSYd1pcbe07C0JWBEaRsOKLG2+dV1lC5n6HfpG3dBGiGJ51lltGrhBAi11v0LeTb+PjeFDznDc0XuhQNrj1EOd8WL70YeFNaxFSEqNOlxS1VnTZpV/2Ub5OPWrDJ6W7kuWfq5qngno03xxrBXuRfeUfAHxfeuyP9/+ODFd7Z5Ld2SAiuXS6Y1VSzeFJYWJlf2WhPAKTy2y8P2EMMw1IWvPyPUZp+xjd+BDXYGgNJAXT31nSEn3Pj3WgbN/yj5MPdVb6cvHIUDkcIqLqSSQY4rjeFUQJ1QkncN2/4FrA2OUhpAXnWeId8ugLTpvgkzFJZ5S7ABCDogAvFS+Ml1eZHtCyS8Q0ON99c5Dz34jI3rN2MArW/XA9RXKpHnQMr/wyDmzirDzOQR7XqOhIS/K/Fv/MSk6eVhSbKwB4W/fh6r9RfHL8gqq29m+jTzURupP8EyOza9azqd5pOuToSIYe3mfGIzGEw4G3apnZlP6vYa0Avj+Pel
+X-Microsoft-Antispam-Message-Info: TyGGkhr0pxhvY3nZeDYboK2BVii1mF54yv2MZAU0Cgrcht0JumrqbA+aRhPKxOWvD8YmjmqCinkdoTd1G6PZLDpCerR8XiRE5G493EGSS6yCLX46iiEUZtXLjLJh73pBLwfURQsHYkhQJQurWn8UYYm65sLL0iB5gNoIh1C7+1iW/rrSRRT9YukH07P41gSwWAbWPdPH0nyNsH3Gytm2KZcRXvN11sFQxVN8A0JufyCJ2U/oVg4tFYN8JqU3GmhRISK22hfI6aShG8+aQYQq/fTgiiGC9nnxSFDiumRyxGrZKC79o+8lpAsYL6ikKm7pvpckdw1+yiMyInkIWGIj0EsXXOp49gceGhXpozUJCYQ1BDPB+908+lPjSxxj/0CsB+yxp1SBoRz9e3tIMuk0FbNQLN3jPbVzd5CNL9kc6bnRnWbNDVI1pLNTYs+twFCaOWwddsZXQhNPoH0r3A6HTdDv9c7PiFx2QDcHKbdLYWZ0EpQ0qcJQGuvMWQm9RrC1K73Vs87rxCburxe1Hq2he9gG3HI7OxMMWh/zRIrcMEaVVRatQC+ago5FbbBTMjIK
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(39860400002)(136003)(346002)(366004)(396003)(376002)(451199021)(26005)(6512007)(6506007)(186003)(2616005)(83380400001)(7416002)(6666004)(36756003)(6486002)(2906002)(8936002)(8676002)(478600001)(54906003)(41300700001)(5660300002)(86362001)(6916009)(38100700002)(4326008)(316002)(66946007)(66476007)(66556008);
+ SFS:(13230028)(4636009)(376002)(396003)(346002)(136003)(39860400002)(366004)(451199021)(316002)(6486002)(41300700001)(86362001)(6506007)(2616005)(83380400001)(186003)(2906002)(26005)(7416002)(6512007)(38100700002)(36756003)(5660300002)(8936002)(8676002)(66556008)(66476007)(66946007)(478600001)(54906003)(6666004)(66899021)(6916009)(4326008);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?rDrTN/8lbGI0y+Q+CMWAKY9BsXz6sXGM5uNjy7IGos2Mn13UoWOiMIAqdEHZ?=
- =?us-ascii?Q?/C4HqgZOFqot7AgV3bkXtINscXFaKL95aHOoYpPzyRaUvFQ6kcFj+UuoUOPN?=
- =?us-ascii?Q?7kGB/3FAIJ4KCJ/FeGzJIQlpiTjnGdKH1/SA6hHQXvMlMaV33Udvfwzlv7y2?=
- =?us-ascii?Q?7231PFW7uZGa3/UJrXvyj8b5gBweCO2tIAGKhWLInwotMzIyS6AfztU1fTf1?=
- =?us-ascii?Q?ukaZNpX2lW82EDzE9Gx48DA0ZIkfVgtFTBNJB7GbB9Cit1GCUW73ffQS8wcC?=
- =?us-ascii?Q?tbv+1T2lvOFP744KAROr19xD6m3ZM4Hl7NI3JV0v78Op+pBDF3E9yb6c7R9J?=
- =?us-ascii?Q?PcQU0xp2NPS32hMbvt+5Fpa9eU2QVzvYDLyxABhozxFrppFxz3gJ5a/ojfxn?=
- =?us-ascii?Q?qAZqR9pbDPHW7+WW3qSzzmy3PqoAcT70YNkfzriTca3a3bKRCCz17N7XpyNP?=
- =?us-ascii?Q?tom4AfouBJgpd7q82D6HIQyKZ1tshNZL0h3u9y1KMYkTG4ZpEJGs+Ee39krt?=
- =?us-ascii?Q?kwEFJEirol9OmaAuGUMFCTR/WR/bvW8l9wSrGPYyPnPHcfWASaqLauaYWB+p?=
- =?us-ascii?Q?vPJQ5XuTJk0qWz498pxajtFalFHbcd0ADHkSmBN5yBQenRH70htqDbDAVsqg?=
- =?us-ascii?Q?/+bLnSFohAlPKjXlsVIVtYmA6YH2F6/ou0vubDT9h4bynFmENGH84rgy87w4?=
- =?us-ascii?Q?t/bkBwyJjPrVSz/vvHtI81s10P1HXFe/CQCQcXKZxSSB7FckEWzfdBp7RMVO?=
- =?us-ascii?Q?9Y5jjIMlUE7QrLGdN4bSH6Dah75WIBZRRv9ao7Ca5wmLgOqOeEE/gZYtKBFo?=
- =?us-ascii?Q?7OF8iHD7Nt17iWJIeNKa/ZUgQEiHNs7oU6QinCzPboSoHhmaIUIFoidUjWC+?=
- =?us-ascii?Q?GOf39ls41VGJEyNJklp77vbKYu+a+9iqx4XCdlqDL5TSY0efW2YbYbj0J7ry?=
- =?us-ascii?Q?gdTw3v6LSP/ufX6DeagReRI6KCZ+9Y6wBSlKhjiWXw+ZCtkJmwkiTgcdq1jD?=
- =?us-ascii?Q?qp7UKaBXDBIJEkxY1kHmC0EIOppi/Vx0cDYpGjaI0cWhA91/kbquulHVAWXu?=
- =?us-ascii?Q?1P3X1ma5Dst0K4/P1IdAl15qC/dF0cDNXkkY9wbzVKGU3B6PMFnEc34VF2ST?=
- =?us-ascii?Q?ovYeRKNH+Y2r3h7HxnPfM5mLOHwm8E6iy+7HXZE5zOuw6D4ODMPUc+2DYmbk?=
- =?us-ascii?Q?Z2jL+dvIs+wn/b9yUeDH2Fpqh7PZpDKIdf1PkFVo+McJ8BNpo7J/MgTV5Uqq?=
- =?us-ascii?Q?uqh9+WrpH2B//cYMJcI2Aih08QwDvoUrbz0YDomdR+N0vu4ma6fTi2dr8g16?=
- =?us-ascii?Q?kQxB9SClSMqYpsWGivqviX4d8etf3gnQb+13LJNAz+/MSXRsVG3HPhfCilO8?=
- =?us-ascii?Q?lN9u3hR5VWFt4SuK12lvae1JI1sI9IdFjHC7kn1/Si8j4mMAr7aAM+kbgZZ2?=
- =?us-ascii?Q?ZmP9zdKySirzmy/0SzveFlJ6+qZXdaClysp7chVaGzOJUc8fzaLqjiy/ya9N?=
- =?us-ascii?Q?4uTBHFidfuKJurFM7TEWCGVe5nQxQlxVROt2ueFp5YuM9ZGdY8agvWz8g/pU?=
- =?us-ascii?Q?fTObXMH9a8ExMF48g7/RJbP+3nglmBWSi+yGvdpd?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?I5LhLC2nU6aDNHa3dDUDwpkcAmWmB3YO/VornabTKudE1Mpg1xJ8h9YYR254?=
+ =?us-ascii?Q?5t4AV/OzjUpPSmpuq6NutrXslYIhxrWo221waypKpIj2QK3xr7FiZqq5jG62?=
+ =?us-ascii?Q?7wBgaGoZYISbWvbMaUoWJT3+gbDHyve/SOcVBfxt4X/5z17aTqbZ0+icvmAm?=
+ =?us-ascii?Q?b2A491wDaj7BKlDKK+DfSu9a340mSubp/ktmMsmT26/m25fKgzJ+cx0ZSNyp?=
+ =?us-ascii?Q?t84pY9SSNTSJKFf1dWG4vWqf9/ZGlxX1b/cBObd01VeXMq7mHfQWjKJXBKuO?=
+ =?us-ascii?Q?nPHxs+Eb4P7+C6eSeg0WEGFBXwltuDu78b5uRCvya3bTICxD1ntVyt4VPLrB?=
+ =?us-ascii?Q?IrREKhb97ZcH4tSIGbkJUa69ZiZskqLMYCTnHPognmXzorFlOjmJu9WSz8x/?=
+ =?us-ascii?Q?TvEmiOKwJdvGCYC4qvfyj4FQtbndZKSyOIZGHNwUQtCO0cZd6wFXM96t2bcl?=
+ =?us-ascii?Q?lGOjd7x7P4tVCoTecK1DeZmxowp3t4Ry9QkH/8fpgP6ypNMws8aknysKUYUy?=
+ =?us-ascii?Q?23iTCyWWUPb7ErGv2NVDp/y4SvlcCZHXz/dBUl+FuiQC6jz1fO6mjsMv9nnm?=
+ =?us-ascii?Q?0t8v6TP5rGSDQK9o8weivCplKHvYa1Ywk5RKJhGIXA1BCYqmpivbsLJ+DHj5?=
+ =?us-ascii?Q?y9YQwnC5/KXEquL3hu5x/BnnYMyuDtCY5Wz1ZMN8uiql09wX+k6eCWVgGpDE?=
+ =?us-ascii?Q?Pmw5CUdhne0H+2SCtXQh7vTjH8b5LEiQUHdRmBbt15ExsP/nnMnBlFikQbjP?=
+ =?us-ascii?Q?SnkwlY3iv7x5dozYcACmmM4tcUDhYcrXW8wvQDWC9QH7V5fuSlwhdFF+GJau?=
+ =?us-ascii?Q?nhmph64hCvBNygVOorqEkDjfjQ13L7dUwUt8rJmEThshtNloMkOFw8A6VBk8?=
+ =?us-ascii?Q?ulzzSAGRzhYlQ2tV1ZcWCLz+dAsWQ9jYO2YClfyg/gbqX7/enKFgo3oTuuuf?=
+ =?us-ascii?Q?46FlzhFIE9Jceeg9yMSqV1hBJpdtHXALBGJ7dDM0FQg3TXwC2BOU9BhC7eiZ?=
+ =?us-ascii?Q?ezF2VTLsTSbmm2M2LnZmtKz6ppJtHA/Qa/PjriXmHrX/pJVOnU0Kxm16Xnra?=
+ =?us-ascii?Q?+Ih2yFXsHNpRe6m9jV7M/QQh41J1jFZ6NbcJVWZ+9Yb3d75RODL35IOrsKNj?=
+ =?us-ascii?Q?7aaiLzfRrfnLgjzVNBvNWGvwvhoO5if8tMyKwUYZciCVKcplEvNA++YuIww3?=
+ =?us-ascii?Q?++D65emLwlA5oLR49J9wRzuC0nYqid3Q1xEp7sHNsk40wDIpwznGuwcmmm2M?=
+ =?us-ascii?Q?x8jASLLkq4PctQzBo3uK5z9OkBk50U2n7PVIBBHpJnRnB1Akghdeft/Nj4z/?=
+ =?us-ascii?Q?1oZ6BoFUe8r8jDXPirus88/P7XcCWKn8emZA20bc4Xrzcppe80T8GGMJ4fro?=
+ =?us-ascii?Q?GounC8rE+wxMXT8mzaW+7QcAKktmmhHAG1DP5tgx8IdJVHinTxrkmfA9ew+5?=
+ =?us-ascii?Q?DTwZGaGdJvWX52ZGcfQMcBiAxBGlX5dnttCj6mmVk0GKioXXUx5sb3Gtni3d?=
+ =?us-ascii?Q?VsrDWSTK/v4f1ayPUoy8D0B3QvCGUv22pHMXLO3rN6eKcYyfiUEOPKhdcUwF?=
+ =?us-ascii?Q?z5RTfqiejmj+ki2Vqs6nQckPAdQtJdK99y4eeVU3?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b127cee2-a9ba-4edc-3617-08db6cd15468
+X-MS-Exchange-CrossTenant-Network-Message-Id: afa4865b-e1bf-4968-2fb1-08db6cd220ef
 X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jun 2023 12:17:32.4385 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jun 2023 12:23:15.5960 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: RqZCbSTFn1GCjyMgEWQknLaP1yO/5v4kKQhIJZFsA6vkOdYU1M4ImxeQpodPcjLA
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB7306
+X-MS-Exchange-CrossTenant-UserPrincipalName: HZ1/GoV+wS6c+hWO6AdaVpANqWnSo1EYRh/kRbbSpAMeQxEser4miurDLxdZ0RK3
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB7766
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,15 +129,15 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
  "peterx@redhat.com" <peterx@redhat.com>, "Xu,
  Terrence" <terrence.xu@intel.com>,
  "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, "Liu,
+ Yi L" <yi.l.liu@intel.com>, "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
  "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
  Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Zhao,
+ Yan Y" <yan.y.zhao@intel.com>,
  "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
  "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
  "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
  "clegoate@redhat.com" <clegoate@redhat.com>,
@@ -142,190 +148,36 @@ Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Jun 14, 2023 at 10:35:10AM +0000, Liu, Yi L wrote:
-
-> > -	if (fill->cur == fill->max)
-> > -		return -EAGAIN; /* Something changed, try again */
-> > +	if (fill->devices_end >= fill->devices)
-> > +		return -ENOSPC;
+On Wed, Jun 14, 2023 at 06:20:10AM +0000, Tian, Kevin wrote:
+> > From: Liu, Yi L <yi.l.liu@intel.com>
+> > Sent: Wednesday, June 14, 2023 2:14 PM
+> > 
+> > 
+> > > With that I think Jason's suggestion is to lift that test into main.c:
+> > >
+> > > int vfio_register_group_dev(struct vfio_device *device)
+> > > {
+> > > 	/*
+> > > 	 * VFIO always sets IOMMU_CACHE because we offer no way for
+> > userspace to
+> > > 	 * restore cache coherency. It has to be checked here because it is
+> > only
+> > > 	 * valid for cases where we are using iommu groups.
+> > > 	 */
+> > > 	if (type == VFIO_IOMMU && !vfio_device_is_noiommu(device) &&
+> > > 	    !device_iommu_capable(dev, IOMMU_CAP_CACHE_COHERENCY))
+> > > 		return ERR_PTR(-EINVAL);
+> > 
+> > vfio_device_is_noiommu() needs to be called after vfio_device_set_group().
+> > Otherwise, it's always false. So still needs to call it in the
+> > __vfio_register_dev().
 > 
-> This should be fill->devices_end <= fill->devices. 
+> yes
 
-Yep
+Right, but it needs to be in vfio_main.c, not in the group.c - so
+another patch should be added to move it.
 
-> Even it's corrected. The
-> new code does not return -EAGAIN. 
+I prefer the idea that vfio_device_is_noiommu() works in all the
+kconfig scenarios rather than adding #ifdefs.
 
-Right, there is no EAGAIN. If the caller didn't provide enough space
-the previous version returned ENOSPC:
-
-> > -	if (hdr.argsz < sizeof(hdr) + (fill.max * sizeof(*devices))) {
-> > -		ret = -ENOSPC;
-> > -		hdr.count = fill.max;
-> > -		goto reset_info_exit;
-> > -	}
-
--EAGAIN basically means the kernel internally malfunctioned - eg it
-allocated too little space for the actual size of devices. That is no
-longer possible in this version so it should never return -EAGAIN.
-
-> And if return -ENOSPC, the expected
-> size should be returned. But I didn't see it. As the hunk below[1] is removed,
-> seems no way to know how many memory it requires.
-
-Yes, I missed that, it should keep counting
-
-Like this then
-
-diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
-index b0eadafcbcf502..05c064896a7a94 100644
---- a/drivers/vfio/pci/vfio_pci_core.c
-+++ b/drivers/vfio/pci/vfio_pci_core.c
-@@ -775,19 +775,25 @@ static int vfio_pci_count_devs(struct pci_dev *pdev, void *data)
- }
- 
- struct vfio_pci_fill_info {
--	int max;
--	int cur;
--	struct vfio_pci_dependent_device *devices;
-+	struct vfio_pci_dependent_device __user *devices;
-+	struct vfio_pci_dependent_device __user *devices_end;
- 	struct vfio_device *vdev;
-+	u32 count;
- 	u32 flags;
- };
- 
- static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
- {
-+	struct vfio_pci_dependent_device info = {
-+		.segment = pci_domain_nr(pdev->bus),
-+		.bus = pdev->bus->number,
-+		.devfn = pdev->devfn,
-+	};
- 	struct vfio_pci_fill_info *fill = data;
- 
--	if (fill->cur == fill->max)
--		return -EAGAIN; /* Something changed, try again */
-+	fill.count++;
-+	if (fill->devices >= fill->devices_end)
-+		return 0;
- 
- 	if (fill->flags & VFIO_PCI_HOT_RESET_FLAG_DEV_ID) {
- 		struct iommufd_ctx *iommufd = vfio_iommufd_device_ictx(fill->vdev);
-@@ -800,12 +806,12 @@ static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
- 		 */
- 		vdev = vfio_find_device_in_devset(dev_set, &pdev->dev);
- 		if (!vdev)
--			fill->devices[fill->cur].devid = VFIO_PCI_DEVID_NOT_OWNED;
-+			info.devid = VFIO_PCI_DEVID_NOT_OWNED;
- 		else
--			fill->devices[fill->cur].devid =
--				vfio_iommufd_device_hot_reset_devid(vdev, iommufd);
-+			info.devid = vfio_iommufd_device_hot_reset_devid(
-+				vdev, iommufd);
- 		/* If devid is VFIO_PCI_DEVID_NOT_OWNED, clear owned flag. */
--		if (fill->devices[fill->cur].devid == VFIO_PCI_DEVID_NOT_OWNED)
-+		if (info.devid == VFIO_PCI_DEVID_NOT_OWNED)
- 			fill->flags &= ~VFIO_PCI_HOT_RESET_FLAG_DEV_ID_OWNED;
- 	} else {
- 		struct iommu_group *iommu_group;
-@@ -814,13 +820,13 @@ static int vfio_pci_fill_devs(struct pci_dev *pdev, void *data)
- 		if (!iommu_group)
- 			return -EPERM; /* Cannot reset non-isolated devices */
- 
--		fill->devices[fill->cur].group_id = iommu_group_id(iommu_group);
-+		info.group_id = iommu_group_id(iommu_group);
- 		iommu_group_put(iommu_group);
- 	}
--	fill->devices[fill->cur].segment = pci_domain_nr(pdev->bus);
--	fill->devices[fill->cur].bus = pdev->bus->number;
--	fill->devices[fill->cur].devfn = pdev->devfn;
--	fill->cur++;
-+
-+	if (copy_to_user(fill->devices, &info, sizeof(info)))
-+		return -EFAULT;
-+	fill->devices++;
- 	return 0;
- }
- 
-@@ -1212,8 +1218,7 @@ static int vfio_pci_ioctl_get_pci_hot_reset_info(
- 	unsigned long minsz =
- 		offsetofend(struct vfio_pci_hot_reset_info, count);
- 	struct vfio_pci_hot_reset_info hdr;
--	struct vfio_pci_fill_info fill = { 0 };
--	struct vfio_pci_dependent_device *devices = NULL;
-+	struct vfio_pci_fill_info fill = {};
- 	bool slot = false;
- 	int ret = 0;
- 
-@@ -1231,29 +1236,9 @@ static int vfio_pci_ioctl_get_pci_hot_reset_info(
- 	else if (pci_probe_reset_bus(vdev->pdev->bus))
- 		return -ENODEV;
- 
--	/* How many devices are affected? */
--	ret = vfio_pci_for_each_slot_or_bus(vdev->pdev, vfio_pci_count_devs,
--					    &fill.max, slot);
--	if (ret)
--		return ret;
--
--	WARN_ON(!fill.max); /* Should always be at least one */
--
--	/*
--	 * If there's enough space, fill it now, otherwise return -ENOSPC and
--	 * the number of devices affected.
--	 */
--	if (hdr.argsz < sizeof(hdr) + (fill.max * sizeof(*devices))) {
--		ret = -ENOSPC;
--		hdr.count = fill.max;
--		goto reset_info_exit;
--	}
--
--	devices = kcalloc(fill.max, sizeof(*devices), GFP_KERNEL);
--	if (!devices)
--		return -ENOMEM;
--
--	fill.devices = devices;
-+	fill.devices = arg->devices;
-+	fill.devices_end = arg->devices +
-+			   (hdr.argsz - sizeof(hdr)) / sizeof(arg->devices[0]);
- 	fill.vdev = &vdev->vdev;
- 
- 	if (vfio_device_cdev_opened(&vdev->vdev))
-@@ -1264,29 +1249,17 @@ static int vfio_pci_ioctl_get_pci_hot_reset_info(
- 	ret = vfio_pci_for_each_slot_or_bus(vdev->pdev, vfio_pci_fill_devs,
- 					    &fill, slot);
- 	mutex_unlock(&vdev->vdev.dev_set->lock);
-+	if (ret)
-+		return ret;
- 
--	/*
--	 * If a device was removed between counting and filling, we may come up
--	 * short of fill.max.  If a device was added, we'll have a return of
--	 * -EAGAIN above.
--	 */
--	if (!ret) {
--		hdr.count = fill.cur;
--		hdr.flags = fill.flags;
--	}
--
--reset_info_exit:
-+	hdr.count = fill.count;
-+	hdr.flags = fill.flags;
- 	if (copy_to_user(arg, &hdr, minsz))
--		ret = -EFAULT;
-+		return -EFAULT;
- 
--	if (!ret) {
--		if (copy_to_user(&arg->devices, devices,
--				 hdr.count * sizeof(*devices)))
--			ret = -EFAULT;
--	}
--
--	kfree(devices);
--	return ret;
-+	if (fill.count != fill.devices - arg->devices)
-+		return -ENOSPC;
-+	return 0;
- }
- 
- static int
+Jason
