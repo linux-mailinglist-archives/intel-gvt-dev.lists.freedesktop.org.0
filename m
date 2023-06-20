@@ -2,50 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F591732C22
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 16 Jun 2023 11:40:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 801157361E2
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 20 Jun 2023 05:02:59 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6A85A10E5D6;
-	Fri, 16 Jun 2023 09:40:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3B7D110E07F;
+	Tue, 20 Jun 2023 03:02:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6666C10E5D6;
- Fri, 16 Jun 2023 09:40:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1686908436; x=1718444436;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=6B2ssMaZqxYuqId22oB4ezjv68M759mAB05IH5aiNnY=;
- b=YLXyx3/JdQtHQj/w+9R5uwbHipCHWk2zMbl1K4RIoAY0ESP+Msze1O/F
- 33GKJhcZyFbBaEfC1SLZMIE5QpwOZFDiX93aRJa5v6G1aPW5j1jiwrsfW
- IQywXn2JPG2ZJCM2RQcjUy/XaKJMrgrhCTuPMlIRjMr3DHvoUnbCNDZwV
- 32cyEZxyljD66nmAZEU3pwQ+SKfgrAK+bM8E6PTQi1/pZ/S07mvurOC42
- yPCmqIAYlRLlnAGxW8NyMEIhQByZyrDv2tHKEJpEHshCiJcad6l8wIeax
- yTyYCDJgfATKJlNf+OVYRG0oU9To57cXwBZsgnz4Z/mECjoE3l+F34VDQ A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="361700499"
-X-IronPort-AV: E=Sophos;i="6.00,247,1681196400"; d="scan'208";a="361700499"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jun 2023 02:40:36 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10742"; a="715951299"
-X-IronPort-AV: E=Sophos;i="6.00,247,1681196400"; d="scan'208";a="715951299"
-Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by fmsmga007.fm.intel.com with ESMTP; 16 Jun 2023 02:40:34 -0700
-From: Yi Liu <yi.l.liu@intel.com>
-To: alex.williamson@redhat.com,
-	jgg@nvidia.com,
-	kevin.tian@intel.com
-Subject: [PATCH v13 22/22] docs: vfio: Add vfio device cdev description
-Date: Fri, 16 Jun 2023 02:39:46 -0700
-Message-Id: <20230616093946.68711-23-yi.l.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230616093946.68711-1-yi.l.liu@intel.com>
-References: <20230616093946.68711-1-yi.l.liu@intel.com>
+Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
+ [IPv6:2a00:1450:4864:20::62d])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0FAE110E07F
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 20 Jun 2023 03:02:55 +0000 (UTC)
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-978863fb00fso662922366b.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 19 Jun 2023 20:02:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1687230174; x=1689822174;
+ h=content-transfer-encoding:to:subject:message-id:date:from
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=BrbG7JxveYysVe86t5gOLnlc9dkaosvcFTwxzJdTEvM=;
+ b=ZM/J1S8MzyQIqKl1zGdpkuNsq76Dsv2fKEuqPRoVl2JDpuoocUk3UEhGhfriBFc3Yh
+ pKIchNinQ4LLeneaY0a3s8ZuGRqc/zUyG+i+zP0zDfMC7wNS/o+k0QBw0tW8W9EHqw5z
+ kol/xX4Jh0FiXqU19zEavnR/sOX/5U7ck+Mpd7uvDcYSvgq5JgTpsnn0uidQGIsA9qdk
+ 3R2ZKVls3Kk28bu5I9tPsd3aB7enz66/ggl2dbY8CbekLcnIuad0tmp3Ca04ddEE92q0
+ AYVxa3qV/cC7c+4tCg26O6x9oxVMGEWxEercYvxK6WfsdyHLL7MyUSfq4z1j6HQsfvjY
+ ddtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687230174; x=1689822174;
+ h=content-transfer-encoding:to:subject:message-id:date:from
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=BrbG7JxveYysVe86t5gOLnlc9dkaosvcFTwxzJdTEvM=;
+ b=h+wKoBwECPS6BVUJLDdn0kucMVs0WYEK/MwXzePgA/FDOARE5U+eG3UHdM5W2IwLJO
+ 1QKEznziOpbwHa3G7o1DRm/Ipk5BruOC5XzZFSCYwJHYkD+FLYCSCe+bmwgaPBkWZysC
+ 7zZnj4gICd149yzcYQGhfc6VlVC8IS5VkSNUhAqCaihT3+wsQP/sF+QWhpuKG1JLPNw3
+ cLwFpZdDWHtajfjk/c9Ano0w6z0At/6auxuiOENO+Q14QhKxpxzyVT8Y1eWHQGHJ7+YP
+ fQBizMOyXKMWkxK7OyVJE7PAMs9sTQlro4NudchL1xLsDYF0ih/XhRoOYW5U/nYcey5d
+ Bw0Q==
+X-Gm-Message-State: AC+VfDxpJqCeZxj+UpU7GjhHYDu/QI5Q9Lt0dCxKjd3ZcMUQZzt0GojE
+ AI2khD7oF26f0GWi9cRaDKDFY715eI3wRDh9Ov0=
+X-Google-Smtp-Source: ACHHUZ6EwqIEQ6fqqs4KhCW+Q5ljx2hoLoxcbAiLPtNIVJvlvc9IgrzjTXWjeZFbZITyhCXVODmJzH+k6qS8j4wNM7U=
+X-Received: by 2002:a17:907:a40d:b0:989:2a82:fb0f with SMTP id
+ sg13-20020a170907a40d00b009892a82fb0fmr429261ejc.64.1687230174150; Mon, 19
+ Jun 2023 20:02:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Received: by 2002:a17:906:4a90:b0:986:545c:2dc5 with HTTP; Mon, 19 Jun 2023
+ 20:02:53 -0700 (PDT)
+From: United Nations <cindylove276@gmail.com>
+Date: Mon, 19 Jun 2023 23:02:53 -0400
+Message-ID: <CANHmF4BpV7BUtUAPQTi4vR-kfktmWegQoNiQdoRFoYjGm6ENNA@mail.gmail.com>
+Subject: Congratulations
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,180 +69,139 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
- chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, yi.l.liu@intel.com,
- kvm@vger.kernel.org, lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org,
- nicolinc@nvidia.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, intel-gvt-dev@lists.freedesktop.org,
- yi.y.sun@linux.intel.com, clegoate@redhat.com, cohuck@redhat.com,
- shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This gives notes for userspace applications on device cdev usage.
+V=C3=A1=C5=BEen=C3=BD vlastn=C3=ADk e-mailu/p=C5=99=C3=ADjemce fondu,
 
-Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-Signed-off-by: Yi Liu <yi.l.liu@intel.com>
----
- Documentation/driver-api/vfio.rst | 139 ++++++++++++++++++++++++++++++
- 1 file changed, 139 insertions(+)
+Neodvolateln=C3=BD platebn=C3=AD p=C5=99=C3=ADkaz p=C5=99es western union
 
-diff --git a/Documentation/driver-api/vfio.rst b/Documentation/driver-api/vfio.rst
-index 363e12c90b87..633d11c7fa71 100644
---- a/Documentation/driver-api/vfio.rst
-+++ b/Documentation/driver-api/vfio.rst
-@@ -239,6 +239,137 @@ group and can access them as follows::
- 	/* Gratuitous device reset and go... */
- 	ioctl(device, VFIO_DEVICE_RESET);
- 
-+IOMMUFD and vfio_iommu_type1
-+----------------------------
-+
-+IOMMUFD is the new user API to manage I/O page tables from userspace.
-+It intends to be the portal of delivering advanced userspace DMA
-+features (nested translation [5]_, PASID [6]_, etc.) while also providing
-+a backwards compatibility interface for existing VFIO_TYPE1v2_IOMMU use
-+cases.  Eventually the vfio_iommu_type1 driver, as well as the legacy
-+vfio container and group model is intended to be deprecated.
-+
-+The IOMMUFD backwards compatibility interface can be enabled two ways.
-+In the first method, the kernel can be configured with
-+CONFIG_IOMMUFD_VFIO_CONTAINER, in which case the IOMMUFD subsystem
-+transparently provides the entire infrastructure for the VFIO
-+container and IOMMU backend interfaces.  The compatibility mode can
-+also be accessed if the VFIO container interface, ie. /dev/vfio/vfio is
-+simply symlink'd to /dev/iommu.  Note that at the time of writing, the
-+compatibility mode is not entirely feature complete relative to
-+VFIO_TYPE1v2_IOMMU (ex. DMA mapping MMIO) and does not attempt to
-+provide compatibility to the VFIO_SPAPR_TCE_IOMMU interface.  Therefore
-+it is not generally advisable at this time to switch from native VFIO
-+implementations to the IOMMUFD compatibility interfaces.
-+
-+Long term, VFIO users should migrate to device access through the cdev
-+interface described below, and native access through the IOMMUFD
-+provided interfaces.
-+
-+VFIO Device cdev
-+----------------
-+
-+Traditionally user acquires a device fd via VFIO_GROUP_GET_DEVICE_FD
-+in a VFIO group.
-+
-+With CONFIG_VFIO_DEVICE_CDEV=y the user can now acquire a device fd
-+by directly opening a character device /dev/vfio/devices/vfioX where
-+"X" is the number allocated uniquely by VFIO for registered devices.
-+cdev interface does not support noiommu devices, so user should use
-+the legacy group interface if noiommu is wanted.
-+
-+The cdev only works with IOMMUFD.  Both VFIO drivers and applications
-+must adapt to the new cdev security model which requires using
-+VFIO_DEVICE_BIND_IOMMUFD to claim DMA ownership before starting to
-+actually use the device.  Once BIND succeeds then a VFIO device can
-+be fully accessed by the user.
-+
-+VFIO device cdev doesn't rely on VFIO group/container/iommu drivers.
-+Hence those modules can be fully compiled out in an environment
-+where no legacy VFIO application exists.
-+
-+So far SPAPR does not support IOMMUFD yet.  So it cannot support device
-+cdev either.
-+
-+vfio device cdev access is still bound by IOMMU group semantics, ie. there
-+can be only one DMA owner for the group.  Devices belonging to the same
-+group can not be bound to multiple iommufd_ctx or shared between native
-+kernel and vfio bus driver or other driver supporting the driver_managed_dma
-+flag.  A violation of this ownership requirement will fail at the
-+VFIO_DEVICE_BIND_IOMMUFD ioctl, which gates full device access.
-+
-+Device cdev Example
-+-------------------
-+
-+Assume user wants to access PCI device 0000:6a:01.0::
-+
-+	$ ls /sys/bus/pci/devices/0000:6a:01.0/vfio-dev/
-+	vfio0
-+
-+This device is therefore represented as vfio0.  The user can verify
-+its existence::
-+
-+	$ ls -l /dev/vfio/devices/vfio0
-+	crw------- 1 root root 511, 0 Feb 16 01:22 /dev/vfio/devices/vfio0
-+	$ cat /sys/bus/pci/devices/0000:6a:01.0/vfio-dev/vfio0/dev
-+	511:0
-+	$ ls -l /dev/char/511\:0
-+	lrwxrwxrwx 1 root root 21 Feb 16 01:22 /dev/char/511:0 -> ../vfio/devices/vfio0
-+
-+Then provide the user with access to the device if unprivileged
-+operation is desired::
-+
-+	$ chown user:user /dev/vfio/devices/vfio0
-+
-+Finally the user could get cdev fd by::
-+
-+	cdev_fd = open("/dev/vfio/devices/vfio0", O_RDWR);
-+
-+An opened cdev_fd doesn't give the user any permission of accessing
-+the device except binding the cdev_fd to an iommufd.  After that point
-+then the device is fully accessible including attaching it to an
-+IOMMUFD IOAS/HWPT to enable userspace DMA::
-+
-+	struct vfio_device_bind_iommufd bind = {
-+		.argsz = sizeof(bind),
-+		.flags = 0,
-+	};
-+	struct iommu_ioas_alloc alloc_data  = {
-+		.size = sizeof(alloc_data),
-+		.flags = 0,
-+	};
-+	struct vfio_device_attach_iommufd_pt attach_data = {
-+		.argsz = sizeof(attach_data),
-+		.flags = 0,
-+	};
-+	struct iommu_ioas_map map = {
-+		.size = sizeof(map),
-+		.flags = IOMMU_IOAS_MAP_READABLE |
-+			 IOMMU_IOAS_MAP_WRITEABLE |
-+			 IOMMU_IOAS_MAP_FIXED_IOVA,
-+		.__reserved = 0,
-+	};
-+
-+	iommufd = open("/dev/iommu", O_RDWR);
-+
-+	bind.iommufd = iommufd;
-+	ioctl(cdev_fd, VFIO_DEVICE_BIND_IOMMUFD, &bind);
-+
-+	ioctl(iommufd, IOMMU_IOAS_ALLOC, &alloc_data);
-+	attach_data.pt_id = alloc_data.out_ioas_id;
-+	ioctl(cdev_fd, VFIO_DEVICE_ATTACH_IOMMUFD_PT, &attach_data);
-+
-+	/* Allocate some space and setup a DMA mapping */
-+	map.user_va = (int64_t)mmap(0, 1024 * 1024, PROT_READ | PROT_WRITE,
-+				    MAP_PRIVATE | MAP_ANONYMOUS, 0, 0);
-+	map.iova = 0; /* 1MB starting at 0x0 from device view */
-+	map.length = 1024 * 1024;
-+	map.ioas_id = alloc_data.out_ioas_id;;
-+
-+	ioctl(iommufd, IOMMU_IOAS_MAP, &map);
-+
-+	/* Other device operations as stated in "VFIO Usage Example" */
-+
- VFIO User API
- -------------------------------------------------------------------------------
- 
-@@ -566,3 +697,11 @@ This implementation has some specifics:
- 				\-0d.1
- 
- 	00:1e.0 PCI bridge: Intel Corporation 82801 PCI Bridge (rev 90)
-+
-+.. [5] Nested translation is an IOMMU feature which supports two stage
-+   address translations.  This improves the address translation efficiency
-+   in IOMMU virtualization.
-+
-+.. [6] PASID stands for Process Address Space ID, introduced by PCI
-+   Express.  It is a prerequisite for Shared Virtual Addressing (SVA)
-+   and Scalable I/O Virtualization (Scalable IOV).
--- 
-2.34.1
+Byli jsme pov=C4=9B=C5=99eni gener=C3=A1ln=C3=ADm tajemn=C3=ADkem Organizac=
+e spojen=C3=BDch n=C3=A1rod=C5=AF a
+=C5=99=C3=ADd=C3=ADc=C3=ADm org=C3=A1nem m=C4=9Bnov=C3=A9 jednotky OSN, aby=
+chom pro=C5=A1et=C5=99ili zbyte=C4=8Dn=C3=A9
+zpo=C5=BEd=C4=9Bn=C3=AD platby doporu=C4=8Den=C3=A9 a schv=C3=A1len=C3=A9 v=
+e v=C3=A1=C5=A1 prosp=C4=9Bch. B=C4=9Bhem na=C5=A1eho
+vy=C5=A1et=C5=99ov=C3=A1n=C3=AD jsme se zd=C4=9B=C5=A1en=C3=ADm zjistili, =
+=C5=BEe va=C5=A1e platba byla zbyte=C4=8Dn=C4=9B
+zdr=C5=BEov=C3=A1na zkorumpovan=C3=BDmi =C3=BA=C5=99edn=C3=ADky banky, kte=
+=C5=99=C3=AD se sna=C5=BEili p=C5=99esm=C4=9Brovat
+va=C5=A1e prost=C5=99edky na jejich soukrom=C3=A9 =C3=BA=C4=8Dty.
 
+Aby se tomu p=C5=99ede=C5=A1lo, bylo zabezpe=C4=8Den=C3=AD va=C5=A1ich fina=
+n=C4=8Dn=C3=ADch prost=C5=99edk=C5=AF
+zorganizov=C3=A1no ve form=C4=9B kontroln=C3=ADch =C4=8D=C3=ADsel p=C5=99ev=
+odu pen=C4=9Bz (MTCN) v
+Western Union, co=C5=BE v=C3=A1m umo=C5=BEn=C3=AD m=C3=ADt p=C5=99=C3=ADmou=
+ kontrolu nad va=C5=A1imi
+finan=C4=8Dn=C3=ADmi prost=C5=99edky prost=C5=99ednictv=C3=ADm Western Unio=
+n. Tuto platbu
+budeme sami sledovat, abychom se vyhnuli bezv=C3=BDchodn=C3=A9 situaci, kte=
+rou
+vytvo=C5=99ili =C3=BA=C5=99edn=C3=ADci banky.
+
+Skupina Sv=C4=9Btov=C3=A9 banky a Mezin=C3=A1rodn=C3=AD m=C4=9Bnov=C3=BD fo=
+nd (MMF) na va=C5=A1i platbu
+vystavily neodvolatelnou platebn=C3=AD z=C3=A1ruku. Jsme v=C5=A1ak r=C3=A1d=
+i, =C5=BEe v=C3=A1m
+m=C5=AF=C5=BEeme ozn=C3=A1mit, =C5=BEe na z=C3=A1klad=C4=9B na=C5=A1eho dop=
+oru=C4=8Den=C3=AD/pokyn=C5=AF; va=C5=A1e kompletn=C3=AD
+finan=C4=8Dn=C3=AD prost=C5=99edky byly p=C5=99ips=C3=A1ny ve v=C3=A1=C5=A1=
+ prosp=C4=9Bch prost=C5=99ednictv=C3=ADm
+pen=C4=9B=C5=BEenky western union a western union v=C3=A1m bude pos=C3=ADla=
+t =C4=8D=C3=A1stku p=C4=9Bt
+tis=C3=ADc dolar=C5=AF denn=C4=9B, dokud nebude celkov=C3=A1 =C4=8D=C3=A1st=
+ka kompenzace dokon=C4=8Dena.
+
+Proto V=C3=A1m doporu=C4=8Dujeme kontaktovat:
+
+pan=C3=AD Olga Martinezov=C3=A1
+=C5=98editel platebn=C3=ADho odd=C4=9Blen=C3=AD
+Glob=C3=A1ln=C3=AD obnova spot=C5=99ebitele
+Podpora operac=C3=AD Fcc
+E-mailov=C3=A1 adresa: (olgapatygmartinez@fastservice.com)
+
+Kontaktujte ji nyn=C3=AD a =C5=99ekn=C4=9Bte j=C3=AD, aby v=C3=A1m poradila=
+, jak obdr=C5=BEet prvn=C3=AD
+platbu. Jakmile s n=C3=AD nav=C3=A1=C5=BEete kontakt, nasm=C4=9Bruje v=C3=
+=A1s, co m=C3=A1te d=C4=9Blat, a
+p=C5=99es Western Union budete dost=C3=A1vat =C4=8D=C3=A1stku p=C4=9Bt tis=
+=C3=ADc dolar=C5=AF (5000
+dolar=C5=AF) denn=C4=9B, dokud nebude celkov=C3=A1 =C4=8D=C3=A1stka dokon=
+=C4=8Dena.
+
+Kdy=C5=BE ji budete kontaktovat, m=C4=9Bli byste ji kontaktovat se sv=C3=BD=
+mi =C3=BAdaji,
+jak je uvedeno n=C3=AD=C5=BEe:
+
+1. Va=C5=A1e cel=C3=A9 jm=C3=A9no:
+2. Va=C5=A1e adresa:
+3. V=C3=A1=C5=A1 v=C4=9Bk:
+4. Povol=C3=A1n=C3=AD:
+5. Telefonn=C3=AD =C4=8D=C3=ADsla:
+6. Zem=C4=9B:
+
+Pozn=C3=A1mka: Doporu=C4=8Dujeme v=C3=A1m, abyste pan=C3=AD Olze Martinezov=
+=C3=A9 poskytli
+spr=C3=A1vn=C3=A9 a platn=C3=A9 =C3=BAdaje. Bu=C4=8Fte tak=C3=A9 informov=
+=C3=A1ni, =C5=BEe va=C5=A1e celkov=C3=A1 =C4=8D=C3=A1stka
+m=C3=A1 hodnotu 1 000 000 00 $. Gratulujeme.
+
+Zpr=C3=A1va od prof=C3=ADka
+Spojen=C3=A9 n=C3=A1rody
+...................................................
+Dear email owner/fund beneficiary,
+
+Irrevocable payment order via western union
+
+We have been authorized by the United Nations' secretary general, and
+the governing body of the United Nations' monetary unit, to
+investigate the unnecessary delay on the payment recommended and
+approved in your favor. During our investigation, we discovered with
+dismay that your payment has been unnecessarily delayed by corrupt
+officials of the bank who were trying to divert your funds into their
+private accounts.
+
+To forestall this, security for your funds was organized in the form
+of money transfer control numbers (MTCN) in western union, and this
+will enable only you to have direct control over your funds via
+western union. We will monitor this payment ourselves to avoid the
+hopeless situation created by the officials of the bank.
+
+An irrevocable payment guarantee has been issued by the World Bank
+group and the international monetary fund (IMF) on your payment.
+However, we are happy to inform you that based on our
+recommendation/instructions; your complete funds have been credited in
+your favor through western union wallet, and western union will be
+sending to you the sum of five thousand dollars per day until the
+total compensation amount is completed.
+
+You are therefore advised to contact:
+
+Mrs. Olga Martinez
+Director payment department
+Global consumer reinstatement
+Fcc operations support
+Email address:  (olgapatygmartinez@naver.com)
+
+Contact her now and tell her to advise you on how to receive your
+first payment. As soon as you establish a contact with her, she will
+direct you on what to do, and you will be receiving the sum of five
+thousand dollars ($5000) via western union per day until the total sum
+is completed.
+
+When contacting her, you should contact her with your data as stated below:
+
+1. Your full name:
+2. Your address:
+3. Your age:
+4. Occupation:
+5. Telephone numbers:
+6. Country:
+
+Note: you are advised to furnish Mrs. Olga Martinez with your correct
+and valid details. Also be informed that your total sum is valued $1,
+000, 000, 00. Congratulations.
+
+Message from the pro
+United Nations
