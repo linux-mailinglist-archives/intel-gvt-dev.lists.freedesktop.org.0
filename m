@@ -2,40 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB9B473C2A8
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jun 2023 23:22:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C89B73C2AA
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jun 2023 23:22:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AB4C810E6BD;
-	Fri, 23 Jun 2023 21:22:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C970810E6BF;
+	Fri, 23 Jun 2023 21:22:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 429 seconds by postgrey-1.36 at gabe;
- Fri, 23 Jun 2023 21:22:22 UTC
 Received: from mail3-relais-sop.national.inria.fr
  (mail3-relais-sop.national.inria.fr [192.134.164.104])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4AD0610E6BA;
- Fri, 23 Jun 2023 21:22:22 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 551B310E6BB;
+ Fri, 23 Jun 2023 21:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inria.fr; s=dc;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=yokMEiNdELJzyHFQdE73QSq1qzFaQMznhY0/hFJPXdI=;
- b=PQ1b0Em2N9AUVeD/LpbU+ZN+rhktTH+Y6Q7VDw8Cf3pNA0l+BtcyhZxn
- ojeRsFjGxDD8u0+Y/YOKGSuPFSO6phFB8O6SWqeWn+vMMRvPryqL5bt/o
- lImhNqRZeaTWVm1/g7h+gT/Zhi5gA6YeaCo8RJpx27aob7O1b3mfST+O1 0=;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=NBw5vlMSYDphuKB5VO9qUzXDvK0V7Xr95Q+k+nN/f84=;
+ b=N3bMVT0Y+Wz5gL7ugjMaEKH0XK9iI00oy1rtPtin0vJJydKmTLv4sWIx
+ f9+bOpvwsiKisFRe7CqTYof5bkdOr2VD7KZRPHvQT9tp4F5J5wmAQjGXP
+ YzxOr1bylniwAlzHURkE8ebQwCSCW0fHOuPTsil5W0sJvnvzY6uhkWbNo 8=;
 Authentication-Results: mail3-relais-sop.national.inria.fr;
  dkim=none (message not signed) header.i=none;
  spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr;
  dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.01,153,1684792800"; d="scan'208";a="59686157"
+X-IronPort-AV: E=Sophos;i="6.01,153,1684792800"; d="scan'208";a="59686174"
 Received: from i80.paris.inria.fr (HELO i80.paris.inria.fr.) ([128.93.90.48])
  by mail3-relais-sop.national.inria.fr with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2023 23:15:09 +0200
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2023 23:15:12 +0200
 From: Julia Lawall <Julia.Lawall@inria.fr>
-To: linux-staging@lists.linux.dev
-Subject: [PATCH 00/26] use array_size
-Date: Fri, 23 Jun 2023 23:14:31 +0200
-Message-Id: <20230623211457.102544-1-Julia.Lawall@inria.fr>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Subject: [PATCH 16/26] drm/i915/gvt: use array_size
+Date: Fri, 23 Jun 2023 23:14:47 +0200
+Message-Id: <20230623211457.102544-17-Julia.Lawall@inria.fr>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20230623211457.102544-1-Julia.Lawall@inria.fr>
+References: <20230623211457.102544-1-Julia.Lawall@inria.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -50,120 +50,21 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
- kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, John Stultz <jstultz@google.com>,
- "H. Peter Anvin" <hpa@zytor.com>, Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
- kasan-dev@googlegroups.com, iommu@lists.linux.dev,
- VMware Graphics Reviewers <linux-graphics-maintainer@vmware.com>,
- Bingbu Cao <bingbu.cao@intel.com>, linux-sgx@vger.kernel.org,
- Tianshu Qiu <tian.shu.qiu@intel.com>, linux-media@vger.kernel.org,
- keescook@chromium.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- Krishna Reddy <vdumpa@nvidia.com>, Shailend Chand <shailend@google.com>,
- linux-tegra@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
- Dmitry Vyukov <dvyukov@google.com>, Andrey Konovalov <andreyknvl@gmail.com>,
- Laura Abbott <labbott@redhat.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Liam Mark <lmark@codeaurora.org>,
- mhi@lists.linux.dev, Robin Murphy <robin.murphy@arm.com>,
- Brian Starkey <Brian.Starkey@arm.com>, linux-btrfs@vger.kernel.org
+Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, keescook@chromium.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ David Airlie <airlied@gmail.com>, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
 Use array_size to protect against multiplication overflows.
 
-This follows up on the following patches by Kees Cook from 2018.
+The changes were done using the following Coccinelle semantic patch:
 
-42bc47b35320 ("treewide: Use array_size() in vmalloc()")
-fad953ce0b22 ("treewide: Use array_size() in vzalloc()")
-
-The changes were done using the following Coccinelle semantic patch,
-adapted from the one posted by Kees.
-
-// Drop single-byte sizes and redundant parens.
-@@
-    expression COUNT;
-    typedef u8;
-    typedef __u8;
-    type t = {u8,__u8,char,unsigned char};
-    identifier alloc = {vmalloc,vzalloc};
-@@
-      alloc(
--           (sizeof(t)) * (COUNT)
-+           COUNT
-      , ...)
-
-// 3-factor product with 2 sizeof(variable), with redundant parens removed.
-@@
-    expression COUNT;
-    size_t e1, e2, e3;
-    identifier alloc = {vmalloc,vzalloc};
-@@
-
-(    
-      alloc(
--           (e1) * (e2) * (e3)
-+           array3_size(e1, e2, e3)
-      ,...)
-|
-      alloc(
--           (e1) * (e2) * (COUNT)
-+           array3_size(COUNT, e1, e2)
-      ,...)
-)
-
-// 3-factor product with 1 sizeof(type) or sizeof(expression), with
-// redundant parens removed.
-@@
-    expression STRIDE, COUNT;
-    size_t e;
-    identifier alloc = {vmalloc,vzalloc};
-@@
-
-      alloc(
--           (e) * (COUNT) * (STRIDE)
-+           array3_size(COUNT, STRIDE, e)
-      ,...)
-
-// Any remaining multi-factor products, first at least 3-factor products
-// when they're not all constants...
-@@
-    expression E1, E2, E3;
-    constant C1, C2, C3;
-    identifier alloc = {vmalloc,vzalloc};
-@@
-    
-(
-      alloc(C1 * C2 * C3,...)
-|
-      alloc(
--           (E1) * (E2) * (E3)
-+           array3_size(E1, E2, E3)
-      ,...)
-)
-
-// 2-factor product with sizeof(type/expression) and identifier or constant.
-@@
-    size_t e1,e2;
-    expression COUNT;
-    identifier alloc = {vmalloc,vzalloc};
-@@
-
-(
-      alloc(
--           (e1) * (e2)
-+           array_size(e1, e2)
-      ,...)
-|
-      alloc(
--           (e1) * (COUNT)
-+           array_size(COUNT, e1)
-      ,...)
-)
-    
-// And then all remaining 2 factors products when they're not all constants.
+// <smpl>
 @@
     expression E1, E2;
     constant C1, C2;
@@ -178,36 +79,35 @@ adapted from the one posted by Kees.
 +           array_size(E1, E2)
       ,...)
 )
+// </smpl>
 
+Signed-off-by: Julia Lawall <Julia.Lawall@inria.fr>
 
 ---
+ drivers/gpu/drm/i915/gvt/gtt.c |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
- arch/x86/kernel/cpu/sgx/main.c                    |    3 ++-
- drivers/accel/habanalabs/common/device.c          |    3 ++-
- drivers/accel/habanalabs/common/state_dump.c      |    6 +++---
- drivers/bus/mhi/host/init.c                       |    4 ++--
- drivers/comedi/comedi_buf.c                       |    4 ++--
- drivers/dma-buf/heaps/system_heap.c               |    2 +-
- drivers/gpu/drm/gud/gud_pipe.c                    |    2 +-
- drivers/gpu/drm/i915/gvt/gtt.c                    |    6 ++++--
- drivers/gpu/drm/vmwgfx/vmwgfx_devcaps.c           |    2 +-
- drivers/infiniband/hw/bnxt_re/qplib_res.c         |    4 ++--
- drivers/infiniband/hw/erdma/erdma_verbs.c         |    4 ++--
- drivers/infiniband/sw/siw/siw_qp.c                |    4 ++--
- drivers/infiniband/sw/siw/siw_verbs.c             |    6 +++---
- drivers/iommu/tegra-gart.c                        |    4 ++--
- drivers/net/ethernet/amd/pds_core/core.c          |    4 ++--
- drivers/net/ethernet/freescale/enetc/enetc.c      |    4 ++--
- drivers/net/ethernet/google/gve/gve_tx.c          |    2 +-
- drivers/net/ethernet/marvell/octeon_ep/octep_rx.c |    2 +-
- drivers/net/ethernet/microsoft/mana/hw_channel.c  |    2 +-
- drivers/net/ethernet/pensando/ionic/ionic_lif.c   |    4 ++--
- drivers/scsi/fnic/fnic_trace.c                    |    2 +-
- drivers/scsi/qla2xxx/qla_init.c                   |    4 ++--
- drivers/staging/media/ipu3/ipu3-mmu.c             |    2 +-
- drivers/vdpa/vdpa_user/iova_domain.c              |    3 +--
- drivers/virtio/virtio_mem.c                       |    6 +++---
- fs/btrfs/zoned.c                                  |    5 +++--
- kernel/kcov.c                                     |    2 +-
- lib/test_vmalloc.c                                |   12 ++++++------
- 28 files changed, 56 insertions(+), 52 deletions(-)
+diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+index 4ec85308379a..df52385ad436 100644
+--- a/drivers/gpu/drm/i915/gvt/gtt.c
++++ b/drivers/gpu/drm/i915/gvt/gtt.c
+@@ -1969,14 +1969,16 @@ static struct intel_vgpu_mm *intel_vgpu_create_ggtt_mm(struct intel_vgpu *vgpu)
+ 		return ERR_PTR(-ENOMEM);
+ 	}
+ 
+-	mm->ggtt_mm.host_ggtt_aperture = vzalloc((vgpu_aperture_sz(vgpu) >> PAGE_SHIFT) * sizeof(u64));
++	mm->ggtt_mm.host_ggtt_aperture =
++		vzalloc(array_size(vgpu_aperture_sz(vgpu) >> PAGE_SHIFT, sizeof(u64)));
+ 	if (!mm->ggtt_mm.host_ggtt_aperture) {
+ 		vfree(mm->ggtt_mm.virtual_ggtt);
+ 		vgpu_free_mm(mm);
+ 		return ERR_PTR(-ENOMEM);
+ 	}
+ 
+-	mm->ggtt_mm.host_ggtt_hidden = vzalloc((vgpu_hidden_sz(vgpu) >> PAGE_SHIFT) * sizeof(u64));
++	mm->ggtt_mm.host_ggtt_hidden =
++		vzalloc(array_size(vgpu_hidden_sz(vgpu) >> PAGE_SHIFT, sizeof(u64)));
+ 	if (!mm->ggtt_mm.host_ggtt_hidden) {
+ 		vfree(mm->ggtt_mm.host_ggtt_aperture);
+ 		vfree(mm->ggtt_mm.virtual_ggtt);
+
