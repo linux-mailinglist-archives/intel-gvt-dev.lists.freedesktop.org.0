@@ -1,106 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFDB873BD0E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jun 2023 18:48:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EB9B473C2A8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 23 Jun 2023 23:22:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7B47310E67C;
-	Fri, 23 Jun 2023 16:48:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AB4C810E6BD;
+	Fri, 23 Jun 2023 21:22:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com
- (mail-bn8nam12on2072.outbound.protection.outlook.com [40.107.237.72])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 404DA10E67A;
- Fri, 23 Jun 2023 16:48:24 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CDBVXEwWzamIJSNpIhiH0ewjWV83hXHleUNir/NsZyMvmXrDXYsir17Dd3N0fbAleBrhjPhqWXSzOv1cmdcpvG6CopfoH/fobDCHPbtdka6BDyRgMGSmWCRfxP7cKdH/H2jFQ3tQ5SK7314PfdcwM/klvj2iOcE2rKaBIMuys75M2Orm76MIF9/syEmo4QyDEEO3r11WGDDi2/sFiLlXHDODboPGI/kXI3ujbNR9JTAtcEy2O0Py10SjNJkChRnIrRcfWObtQM+ax37nSY8ezpF9zeO7b1sCgLpisrlkvEbpK5JgKJV1HVNjzCBH3+/NHyt9W4vp3Up2GdG01DA9Yg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZL+1+IPZmaDY/lEPG6N0cjcps6vBgQzi0wBbw8L4KFA=;
- b=W4aw1r/rwGT6kOeyqAzBeOrboHYoviHShdwlSUkGq8UWX9ahMvdGjQD4Tl3FbLYdOcfDDK/CTiBLtgBXW1zRgl5P/0Bth6B4k3dM2kN2k5mEGLZk12S33DK9VpH/eIY+Xp7XLQ01kP+FjU+DY22IPmkwBiIIjV4SL9GIr4rlbGe4ddhPHVdBJG3pElDq2NxLYN0yhfzYIg/bAshAgNCRrT0bwwl9quhihH2TcqdSzEb2I7Hh5oZeIxiC0HNSniKM97ElJvUh/VSJ6DPech9aeYrOVOcv86Et7Jw5raz6/m0UttBGhbD2MgSaf/7Gx3rK5EOMil35ccinvzbAGAgc6g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZL+1+IPZmaDY/lEPG6N0cjcps6vBgQzi0wBbw8L4KFA=;
- b=ZGQT+JDinBpQ9aJqiseEwDGGx497DBElYIgzin5FwR8KQq846zOUc/8ysNbstHf0lBvrVyyd++8GzKjLJhV7rsJISaqGIO6bK96TnldIkhg2xepqKR+xBnA9gTE3f9GjK3JJISgK9Cd66YpeMIf1l7ZsMMyNfCa5UnFM/RYfCl9we4XXpeEwJEhDd9GhbzPR9hcP5g8Lvla9MBtPIydA3FiTCI+X3WpINj1PN4YqrftrTeq/8ix2qqgGS3orkK1m+qS5pF73DC+MRmH/ASCvlVv9uFc7+0tfB8njnkjmxn/ZI28D+zK0Ce5cyHVFF+j/HPRyl0GTM9gLDrIVMYd5yg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
- by DS0PR12MB7584.namprd12.prod.outlook.com (2603:10b6:8:13b::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6521.24; Fri, 23 Jun
- 2023 16:48:22 +0000
-Received: from LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab]) by LV2PR12MB5869.namprd12.prod.outlook.com
- ([fe80::f7a7:a561:87e9:5fab%7]) with mapi id 15.20.6521.024; Fri, 23 Jun 2023
- 16:48:22 +0000
-Date: Fri, 23 Jun 2023 13:48:20 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Yi Liu <yi.l.liu@intel.com>
-Subject: Re: [PATCH v13 00/22] Add vfio_device cdev for iommufd support
-Message-ID: <ZJXM1Co96do1a+1p@nvidia.com>
-References: <20230616093946.68711-1-yi.l.liu@intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230616093946.68711-1-yi.l.liu@intel.com>
-X-ClientProxiedBy: CH0P221CA0040.NAMP221.PROD.OUTLOOK.COM
- (2603:10b6:610:11d::20) To LV2PR12MB5869.namprd12.prod.outlook.com
- (2603:10b6:408:176::16)
+X-Greylist: delayed 429 seconds by postgrey-1.36 at gabe;
+ Fri, 23 Jun 2023 21:22:22 UTC
+Received: from mail3-relais-sop.national.inria.fr
+ (mail3-relais-sop.national.inria.fr [192.134.164.104])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4AD0610E6BA;
+ Fri, 23 Jun 2023 21:22:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=inria.fr; s=dc;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=yokMEiNdELJzyHFQdE73QSq1qzFaQMznhY0/hFJPXdI=;
+ b=PQ1b0Em2N9AUVeD/LpbU+ZN+rhktTH+Y6Q7VDw8Cf3pNA0l+BtcyhZxn
+ ojeRsFjGxDD8u0+Y/YOKGSuPFSO6phFB8O6SWqeWn+vMMRvPryqL5bt/o
+ lImhNqRZeaTWVm1/g7h+gT/Zhi5gA6YeaCo8RJpx27aob7O1b3mfST+O1 0=;
+Authentication-Results: mail3-relais-sop.national.inria.fr;
+ dkim=none (message not signed) header.i=none;
+ spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr;
+ dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.01,153,1684792800"; d="scan'208";a="59686157"
+Received: from i80.paris.inria.fr (HELO i80.paris.inria.fr.) ([128.93.90.48])
+ by mail3-relais-sop.national.inria.fr with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jun 2023 23:15:09 +0200
+From: Julia Lawall <Julia.Lawall@inria.fr>
+To: linux-staging@lists.linux.dev
+Subject: [PATCH 00/26] use array_size
+Date: Fri, 23 Jun 2023 23:14:31 +0200
+Message-Id: <20230623211457.102544-1-Julia.Lawall@inria.fr>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|DS0PR12MB7584:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0cec17ef-0d2c-4b67-b70b-08db7409a790
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: LZS09JrpuppY0PecEjOM/j3/ItQDFsa2rPm5hPj1A8YUEwkINe1z4dh/7hOCAd1WWCT+9COKx0tLQKlnZuSFuGSUy5sTM4/ICYZARHWZukrSIUzPtBjRQ19rpl31jGX2dTw3+8nt1e8AOFOfB+4+4NeJsH65fmBm+HMvGrxikwPn9ty3py02GYoxSMbUhBSCNZuHMDu4yRIWqa9bI4N8f+br8dEtaUdS0ZCL2D/qP7u2mMrOr2DbV1gJx1sT/hBME2v73l2FhXXTIrr5hC1NNrHEXH/TBaCuQTL6EkAoyerzrk5DXaEzTprJW+Zb/XFyqj0Pjvgf22zJ5yNQoyKI7IyHsRYwGqYRfgj0Kc2qN1Sl8s524+I1PASGuY/cY6lNFkQFLKiMhREteswzlEwYnFK8/y0U0pP5tHdlK4Zf6WGhOu8kU4I+SHpeSh1/8eiA7VngZlL7zMtrR186xqYqtI5ZuVb3ZNk1iDxMd6IGJDuAQmpodsJURTFbvSGitndJ4Nfev/8TY6EE/CqR7fo+EDLQRnGqWDU1//ehAnUdNBVwMPU9I6yohyBYYvyICQ+1nAWF9s8UK9+jhTYq/q15ef8rqImUoVPwH9bi/3RHmeE/Nb8LKl4IzA2cH13R6yd3QpIB+Wm8VnS2zlab/i7d2p19LovfVkJPy/wqCl+DU383IGOcD0NxwNez651g14aD
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(4636009)(396003)(346002)(39860400002)(136003)(376002)(366004)(451199021)(5660300002)(2906002)(7416002)(38100700002)(86362001)(36756003)(45080400002)(478600001)(966005)(6486002)(316002)(8676002)(41300700001)(8936002)(66946007)(66556008)(66476007)(6916009)(4326008)(6512007)(186003)(26005)(6506007)(2616005)(83380400001)(67856001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?zq49osK4DCDw5Do2ZiVE4QCh9E1ZXn4qyw3wCVtJ4+y5MUdMshl7y0fEr7zW?=
- =?us-ascii?Q?Mv5yqfXWcvyg56eN4bCyY8bdlSAtIhc7TJA6STW+KHKcMaD4f74Ap/crzLRA?=
- =?us-ascii?Q?ngyntlSiQvovA0A3ZInN4chk4gOuSWynC6hWIWyrKofWEFGeOJygoGDZcEhU?=
- =?us-ascii?Q?WMrwL86ZnggrstBanUtb520UMoEPdngT67rDkjRDaAVssq1uHyE2f/qBpTc8?=
- =?us-ascii?Q?vaK3ICuCSjkGDgxrPpB1FFfUotG5XI+Wcz+1WrN2x3b4djbvx5BGQOp3waJ8?=
- =?us-ascii?Q?j6rQISXN0jxUmXrGrSseEyAeuoBizEXtFbP1jNSdoQyXbA+TAZzDHVXgsd62?=
- =?us-ascii?Q?zjODScqRjfEqSL0wZ6KAahpl48+DFAB0oo0xrze6uKL9pC/YVSgaQ4JFSe9J?=
- =?us-ascii?Q?qOolmOd7Z8eQXyjaKQNTiYiBdix2BnOoxEtBqMeBDiK8mG1D+1lQG3IbQ0gJ?=
- =?us-ascii?Q?tenaomdTuSPUmzfpKKh83V25uKxAMoH4lqlr00OQ87V2BC0MdymaHxL9y8jr?=
- =?us-ascii?Q?8U8XwmHk03O0zCrVZ4RZwQ97rUz71a0dkAAe6H0yoh8H7YmQLd3hQOAlXLZ/?=
- =?us-ascii?Q?+H7yN0T3J746AiwQzhp3ZMW8bmOhVGr6tY+ImQ5xo+EVh7PteXWhPfSiZRQK?=
- =?us-ascii?Q?SLz6VTN/gM+N3zF9BHihU9w6gC6hFY1Ju3uAJNpT+okHaacsqdFROhigacK1?=
- =?us-ascii?Q?TnpgY0XSKOPpSsIrbv+BHlKOL8bHvr0IWXdWM5FFT46Hnou4LlETqRxcsakJ?=
- =?us-ascii?Q?gMa8ppR+77343nhVV7soqFjtaCqanVTz6PxGQ01xbBldVfRX5/pDhdVj5Tko?=
- =?us-ascii?Q?UyTUiytmGMpaY9juGW1+4x/w6bTQsOvzvV44fo9QXSoodIqyMnmax056cGNS?=
- =?us-ascii?Q?3PQD+tygGE577/EfTcVHR3ChWAwnVTiIIMwcjlD1e+vKrobsplzp13/sEF8u?=
- =?us-ascii?Q?be9r5w17edSkhE7KZXL1EZPpFNaIFRMan32nPgstHbMptY73y0qBdq/km2My?=
- =?us-ascii?Q?/vqNEwkIxs11DSCwNOitBYj/g0JevyAJYeHIkGBVURHQck1pm2e8QDWZMl7G?=
- =?us-ascii?Q?ZS/0X06deWAR7BPHj5QrhQJT1JsJIqhHmeoPk8Et/AifOqrySYTBqrs7JB0+?=
- =?us-ascii?Q?LkjZ4n9wDjRXACr7BfR6aMr0Mk4SigNQR2f+/MeM519eIEkDm8L9nYl8vAPy?=
- =?us-ascii?Q?OXcjT+AvqzITeFQGOXsRDpk8Mn6VPKYim/Pt07GvGzMjIiSztiXV7qo2FhJM?=
- =?us-ascii?Q?MlRkY1kRoOfg0ZVgB1nTVPlLw4Pq+X9qWSD8C0h78EBbEswfdFNcjHVKdJYe?=
- =?us-ascii?Q?zoshwqUFQoaGezoG3I07LP2AfrLJ6ROwuJbgTGa4f2V/T59vyPPdVHjbhlUe?=
- =?us-ascii?Q?bknt7Owv6/44aP1RvbFkUhdDh34qm9hJWjzKDyGsi4AfHu1FfNs0OROdW0pD?=
- =?us-ascii?Q?QwuPRmNbi8zhwSoWK+iipQXaliLQTYFds7/HRkZb+Od2O05JXx4pmWSxyUVY?=
- =?us-ascii?Q?4XvqMrsQtrvBPvmPnph3EiqeAJVzfWos4eeDuJJ0YlpIPRN3bGn5i6Z9IRIM?=
- =?us-ascii?Q?CWISRCTwOebb1ytnrDFhoJRvnK9yE6nPkYViSuYK?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0cec17ef-0d2c-4b67-b70b-08db7409a790
-X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2023 16:48:21.9815 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CNYE7CBEk1EBtydBSYmRDzXIHxbcLUSPJJhlcB0Wq2aKEGzRSnVbA90QzN7qPjFT
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7584
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,86 +50,164 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
- chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, kvm@vger.kernel.org,
- lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
- kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, alex.williamson@redhat.com,
- intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
- clegoate@redhat.com, cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
- suravee.suthikulpanit@amd.com, robin.murphy@arm.com
+Cc: linux-hyperv@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
+ kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, John Stultz <jstultz@google.com>,
+ "H. Peter Anvin" <hpa@zytor.com>, Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ linux-scsi@vger.kernel.org, linux-rdma@vger.kernel.org,
+ kasan-dev@googlegroups.com, iommu@lists.linux.dev,
+ VMware Graphics Reviewers <linux-graphics-maintainer@vmware.com>,
+ Bingbu Cao <bingbu.cao@intel.com>, linux-sgx@vger.kernel.org,
+ Tianshu Qiu <tian.shu.qiu@intel.com>, linux-media@vger.kernel.org,
+ keescook@chromium.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ Krishna Reddy <vdumpa@nvidia.com>, Shailend Chand <shailend@google.com>,
+ linux-tegra@vger.kernel.org, intel-gvt-dev@lists.freedesktop.org,
+ Dmitry Vyukov <dvyukov@google.com>, Andrey Konovalov <andreyknvl@gmail.com>,
+ Laura Abbott <labbott@redhat.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Liam Mark <lmark@codeaurora.org>,
+ mhi@lists.linux.dev, Robin Murphy <robin.murphy@arm.com>,
+ Brian Starkey <Brian.Starkey@arm.com>, linux-btrfs@vger.kernel.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Jun 16, 2023 at 02:39:24AM -0700, Yi Liu wrote:
-> Existing VFIO provides group-centric user APIs for userspace. Userspace
-> opens the /dev/vfio/$group_id first before getting device fd and hence
-> getting access to device. This is not the desired model for iommufd. Per
-> the conclusion of community discussion[1], iommufd provides device-centric
-> kAPIs and requires its consumer (like VFIO) to be device-centric user
-> APIs. Such user APIs are used to associate device with iommufd and also
-> the I/O address spaces managed by the iommufd.
-> 
-> This series first introduces a per device file structure to be prepared
-> for further enhancement and refactors the kvm-vfio code to be prepared
-> for accepting device file from userspace. After this, adds a mechanism for
-> blocking device access before iommufd bind. Then refactors the vfio to be
-> able to handle cdev path (e.g. iommufd binding, no-iommufd, [de]attach ioas).
-> This refactor includes making the device_open exclusive between the group
-> and the cdev path, only allow single device open in cdev path; vfio-iommufd
-> code is also refactored to support cdev. e.g. split the vfio_iommufd_bind()
-> into two steps. Eventually, adds the cdev support for vfio device and the
-> new ioctls, then makes group infrastructure optional as it is not needed
-> when vfio device cdev is compiled.
-> 
-> This series is based on some preparation works done to vfio emulated devices[2]
-> and vfio pci hot reset enhancements[3].
-> 
-> This series is a prerequisite for iommu nesting for vfio device[4] [5].
-> 
-> The complete code can be found in below branch, simple tests done to the
-> legacy group path and the cdev path. Draft QEMU branch can be found at[6]
-> However, the noiommu mode test is only done with some hacks in kernel and
-> qemu to check if qemu can boot with noiommu devices.
-> 
-> https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v13
-> (config CONFIG_IOMMUFD=y CONFIG_VFIO_DEVICE_CDEV=y)
-> 
-> base-commit: dcc9d48709e6bc6ec3da97626b8768582e138326
-> 
-> [1] https://lore.kernel.org/kvm/BN9PR11MB5433B1E4AE5B0480369F97178C189@BN9PR11MB5433.namprd11.prod.outlook.com/
-> [2] https://lore.kernel.org/kvm/20230327093351.44505-1-yi.l.liu@intel.com/ - merged
-> [3] https://lore.kernel.org/kvm/20230616093042.65094-1-yi.l.liu@intel.com/
-> [4] https://lore.kernel.org/linux-iommu/20230511143844.22693-1-yi.l.liu@intel.com/
-> [5] https://lore.kernel.org/linux-iommu/20230511145110.27707-1-yi.l.liu@intel.com/#t
-> [6] https://github.com/yiliu1765/qemu/tree/iommufd_rfcv4.mig.reset.v4_var3
-> 
-> Change log:
-> 
-> v13:
->  - vfio_device_first_open() and vfio_device_last_close() to be vfio_df_device_first_open()
->    vfio_df_device_last_close() (Alex)
->  - Define struct vfio_device_file::access_granted as u8 and also place the u32 devid to
->    be behind this flag as this structure access is hot, so needs to avoid too much hole
->    in the structure (Alex)
->  - Use u8 instead bool in the struct vfio_device for the flags (Alex)
->  - Define BIND, ATTACH, DETACH ioctl behind VFIO_DEVICE_FEATURE whose offset is 17 (Alex)
->  - Drop patch 20, 21, 22 of v12 (Alex)
->  - Per the patch drop, still needs to detect the physical devices that do not have
->    IOMMU in the cdev registration as cdev does not support such devices. Per the
->    suggestion from Jason, lift the IOMMU_CAP_CACHE_COHERENCY check to be in vfio_main.c
->    so that it can fail the registration of such devices if only cdev is compiled. (Jason, Alex)
->  - Refine the vfio.rst doc, highlight that the cdev device access is stil bound with
->    iommu group. (Alex)
->  - Reaffirm t-b from below folks:
->    Nicolin Chen - Test nesting branch which is based on cdev v12, the test is done on ARM64 (SMMUv3)
->    Matthew Rosato - vfio-pci, vfio-ap, vfio-ccw under container, compat and cdev mode, and nesting
->                     test on SMMUv3 and Intel.
->    Yanting Jiang - regression tests with NIC passthrough on Intel platform
+Use array_size to protect against multiplication overflows.
 
-I accendiently put my remarks on v12, but they all apply here, and I
-don't have any new remarks for this version.
+This follows up on the following patches by Kees Cook from 2018.
 
-Thanks,
-Jason
+42bc47b35320 ("treewide: Use array_size() in vmalloc()")
+fad953ce0b22 ("treewide: Use array_size() in vzalloc()")
+
+The changes were done using the following Coccinelle semantic patch,
+adapted from the one posted by Kees.
+
+// Drop single-byte sizes and redundant parens.
+@@
+    expression COUNT;
+    typedef u8;
+    typedef __u8;
+    type t = {u8,__u8,char,unsigned char};
+    identifier alloc = {vmalloc,vzalloc};
+@@
+      alloc(
+-           (sizeof(t)) * (COUNT)
++           COUNT
+      , ...)
+
+// 3-factor product with 2 sizeof(variable), with redundant parens removed.
+@@
+    expression COUNT;
+    size_t e1, e2, e3;
+    identifier alloc = {vmalloc,vzalloc};
+@@
+
+(    
+      alloc(
+-           (e1) * (e2) * (e3)
++           array3_size(e1, e2, e3)
+      ,...)
+|
+      alloc(
+-           (e1) * (e2) * (COUNT)
++           array3_size(COUNT, e1, e2)
+      ,...)
+)
+
+// 3-factor product with 1 sizeof(type) or sizeof(expression), with
+// redundant parens removed.
+@@
+    expression STRIDE, COUNT;
+    size_t e;
+    identifier alloc = {vmalloc,vzalloc};
+@@
+
+      alloc(
+-           (e) * (COUNT) * (STRIDE)
++           array3_size(COUNT, STRIDE, e)
+      ,...)
+
+// Any remaining multi-factor products, first at least 3-factor products
+// when they're not all constants...
+@@
+    expression E1, E2, E3;
+    constant C1, C2, C3;
+    identifier alloc = {vmalloc,vzalloc};
+@@
+    
+(
+      alloc(C1 * C2 * C3,...)
+|
+      alloc(
+-           (E1) * (E2) * (E3)
++           array3_size(E1, E2, E3)
+      ,...)
+)
+
+// 2-factor product with sizeof(type/expression) and identifier or constant.
+@@
+    size_t e1,e2;
+    expression COUNT;
+    identifier alloc = {vmalloc,vzalloc};
+@@
+
+(
+      alloc(
+-           (e1) * (e2)
++           array_size(e1, e2)
+      ,...)
+|
+      alloc(
+-           (e1) * (COUNT)
++           array_size(COUNT, e1)
+      ,...)
+)
+    
+// And then all remaining 2 factors products when they're not all constants.
+@@
+    expression E1, E2;
+    constant C1, C2;
+    identifier alloc = {vmalloc,vzalloc};
+@@
+    
+(
+      alloc(C1 * C2,...)
+|
+      alloc(
+-           (E1) * (E2)
++           array_size(E1, E2)
+      ,...)
+)
+
+
+---
+
+ arch/x86/kernel/cpu/sgx/main.c                    |    3 ++-
+ drivers/accel/habanalabs/common/device.c          |    3 ++-
+ drivers/accel/habanalabs/common/state_dump.c      |    6 +++---
+ drivers/bus/mhi/host/init.c                       |    4 ++--
+ drivers/comedi/comedi_buf.c                       |    4 ++--
+ drivers/dma-buf/heaps/system_heap.c               |    2 +-
+ drivers/gpu/drm/gud/gud_pipe.c                    |    2 +-
+ drivers/gpu/drm/i915/gvt/gtt.c                    |    6 ++++--
+ drivers/gpu/drm/vmwgfx/vmwgfx_devcaps.c           |    2 +-
+ drivers/infiniband/hw/bnxt_re/qplib_res.c         |    4 ++--
+ drivers/infiniband/hw/erdma/erdma_verbs.c         |    4 ++--
+ drivers/infiniband/sw/siw/siw_qp.c                |    4 ++--
+ drivers/infiniband/sw/siw/siw_verbs.c             |    6 +++---
+ drivers/iommu/tegra-gart.c                        |    4 ++--
+ drivers/net/ethernet/amd/pds_core/core.c          |    4 ++--
+ drivers/net/ethernet/freescale/enetc/enetc.c      |    4 ++--
+ drivers/net/ethernet/google/gve/gve_tx.c          |    2 +-
+ drivers/net/ethernet/marvell/octeon_ep/octep_rx.c |    2 +-
+ drivers/net/ethernet/microsoft/mana/hw_channel.c  |    2 +-
+ drivers/net/ethernet/pensando/ionic/ionic_lif.c   |    4 ++--
+ drivers/scsi/fnic/fnic_trace.c                    |    2 +-
+ drivers/scsi/qla2xxx/qla_init.c                   |    4 ++--
+ drivers/staging/media/ipu3/ipu3-mmu.c             |    2 +-
+ drivers/vdpa/vdpa_user/iova_domain.c              |    3 +--
+ drivers/virtio/virtio_mem.c                       |    6 +++---
+ fs/btrfs/zoned.c                                  |    5 +++--
+ kernel/kcov.c                                     |    2 +-
+ lib/test_vmalloc.c                                |   12 ++++++------
+ 28 files changed, 56 insertions(+), 52 deletions(-)
