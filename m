@@ -1,138 +1,52 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBF7E73D9DB
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Jun 2023 10:34:38 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id EDC2D73DB55
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 26 Jun 2023 11:27:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B2E9010E0A2;
-	Mon, 26 Jun 2023 08:34:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A390710E1C7;
+	Mon, 26 Jun 2023 09:27:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E047210E0A2;
- Mon, 26 Jun 2023 08:34:35 +0000 (UTC)
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id B3B6810E090;
+ Mon, 26 Jun 2023 09:27:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1687768475; x=1719304475;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=3O389o7/J5Sgkoh+UxJFUyw4Y3s6OJTD9CGqcOrWbGQ=;
- b=U/Meeabxb/UnT36ULQ6ZWntws35V9HzWwq8wtKSbVNgHWu7HAxgI/vce
- QtNyvWeo3vJHbwwudgcF5sjGi1G0f2kfKrJwimakNK1EkJXPcsW3TzJ0c
- JHF9ivO9erNk8npQLmHPiHl1NqulmQqgRD0c1cJqc12U+ojcvz2ajcoiX
- pjFipQGf1ZebefzADRt3shFS5LW1+i9/OBI0jVRw1vwqHzAfJ1QKwWmpk
- 64JOttWLNRM152qM2y03ARxwnlLEv8/ByrZlYmSKmeV1MsmObkFbjVlb6
- LmXG26HqYm+XstSGKlCT5RDUBOtnbiWaCXjKXMn4qFd2qe0JBxQZeMkJz A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10752"; a="361253695"
-X-IronPort-AV: E=Sophos;i="6.01,159,1684825200"; d="scan'208";a="361253695"
+ t=1687771624; x=1719307624;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=3mrrnJPN3WRzZuBY5/ppMAonnkB4EuW+qZ/uzbwNfrI=;
+ b=fv37mNFvpp7shfOgfpjPPvv7Wo+AFgI0SHoxGP7AlxmieaYdht0+K5h1
+ 31ULoi76jKVnEkW4NYMcBtKU+iOGvZo5Fu6loahuRxwJM+LqTbTxFkaqK
+ WtpBkbW2j+583rmu7weP0ocwb1z9uONRhS27+aqxqvMCJonfB9a9CF707
+ yt3HcsMSyVbnBsEJWs1I4lWHD7GQQt5MMW8dkMTR1gq9Lj4ofAPfcOrZ9
+ I0CoGTv5304hJo43KK7UwJdJdi6qBraSu6sGpfg38DfA3Dyd8LCghiyOF
+ WyTpVp/gUTPvk20TqdoHfOP9q7bRnFCDRE3fXCEriTSNPUuO+6GmyZJ+d Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10752"; a="424892819"
+X-IronPort-AV: E=Sophos;i="6.01,159,1684825200"; d="scan'208";a="424892819"
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jun 2023 01:34:33 -0700
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jun 2023 02:27:03 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10752"; a="962695507"
-X-IronPort-AV: E=Sophos;i="6.01,159,1684825200"; d="scan'208";a="962695507"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmsmga006.fm.intel.com with ESMTP; 26 Jun 2023 01:34:29 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Mon, 26 Jun 2023 01:34:29 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Mon, 26 Jun 2023 01:34:29 -0700
-Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.44) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.23; Mon, 26 Jun 2023 01:34:28 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=j5uBvkBPBY6FqMDUmQLJaDtYBfAy0eXk+RVbr5R2IHCQ9OHoid2q6197gY4ksGudIQIt9yLaDiLWAEa1Bu3MVhbWuoeT2Cc0vIWauuZoup41JFGKDtDKMhMOgpnPA8CquQV3QkToq5YEvnQmeEoXU96iPQQ/m5xe6U1ydGZR/uXGe0gFc+7AYPSgUQAA9oyK8sebzFiQyH/dSCraAGGBAtlwKFmS3J7KEakTOEQ1RMBwt17obqjaiQvKRYxUrU602tLTxCeU+TkRCiJYrPIUjL4dcPKPEm3Pk0MKIOMu0eZ5INPF1WtdDX1OC5S5vV3IhlSi88L9Hv2yQA4GrgD6tQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lZp7JSMdq4gQNv82frn3rHwhYgEhCTs5aSx76mZmgzc=;
- b=A8aBosHvBtwEvjP7hhj8ubw8Ij6Q1JmDxYP0J2cMmjmC+uXmNG9GPtBqO5z7unpfkTl/SWsOd80w46P9fmtKY45CkT+3T44/Uo0qH5XME5DTbAIbC2tN9Zf+gXnLstAaAkVeat9x1TIQMdhc+J51W+i/6iDNcTe8RfThzrBRZBbg33YKLo/fqProahQLdfuEvhiEjIxUmogTZGTkfLbdqLQYba8dn91ddNO+yx/3nlTXA2hV/Yg/nJ07w1hINHp9e6OL1cZm04VFC8Ei52tv/TLkK8D57WIeZec9xmpSsfubzuXpVEXxe97tEjkqd0BJg5wG/L9EqVth37qW4jkX4w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com (2603:10b6:8:141::20)
- by SJ0PR11MB8294.namprd11.prod.outlook.com (2603:10b6:a03:478::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6521.24; Mon, 26 Jun
- 2023 08:34:26 +0000
-Received: from DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::e7db:878:dfab:826d]) by DS0PR11MB7529.namprd11.prod.outlook.com
- ([fe80::e7db:878:dfab:826d%3]) with mapi id 15.20.6521.023; Mon, 26 Jun 2023
- 08:34:26 +0000
-From: "Liu, Yi L" <yi.l.liu@intel.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: RE: [PATCH v12 18/24] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
-Thread-Topic: [PATCH v12 18/24] vfio: Add VFIO_DEVICE_BIND_IOMMUFD
-Thread-Index: AQHZlUw0PINbjPidUkeXtdGCTAzTl6+YsS6AgAQ157A=
-Date: Mon, 26 Jun 2023 08:34:26 +0000
-Message-ID: <DS0PR11MB752904E31251E05619A442B9C326A@DS0PR11MB7529.namprd11.prod.outlook.com>
-References: <20230602121653.80017-1-yi.l.liu@intel.com>
- <20230602121653.80017-19-yi.l.liu@intel.com> <ZJXFEbmY7BOW6QIe@nvidia.com>
-In-Reply-To: <ZJXFEbmY7BOW6QIe@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR11MB7529:EE_|SJ0PR11MB8294:EE_
-x-ms-office365-filtering-correlation-id: 103afde9-624a-43d7-0cb5-08db762026a1
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ySN7bf4CpTF9nD65DyXLEYZj9hoVO14yi9S8QRLsRlwjE55Gnpa/dCzR0Qq6Ify+K+Ll/BCQNT9elTlHrQmPyQMS2u0+rPNEW/s33PNzcF+wol4iaBpK/sDBeiX5S0wBcVKt+NOzYWoHV/mWKJ8R2ZLd68V8XO+KLueV+s52L6r1AV64dZij0/EwIcELCuPeXE912HOKk8zupRbJ20QYu7gS/gxbOrKKslLZWiyLDHA5aC7Zrd1mqgoJgx9mz49lS6kRdXnaeRUS5JeucIa0sOFrwBsOtOuriLJzaoza2xBdGaygW+aI5vcwdXUdnZ/+cc62S9CWVtc+Q6QI4SN92TdA6W6X4g0c/HnEnOjU8fWuJ9a+MgOI1VD6ifBgCS00a+uqLoXZC6J2hvtDz8m4GgrBWNGa6S59HD5OV+m6a/bmiQW4mwf54ez5StdaCCPu94oTNorActlnUuzmb0++LFA2uT6lkJtNagkkP/qX9wBQhazsvbkbbYRfjaHF1QXuVwaqs843LnimqAd0mDG5xS1en4x3otFZNaWYw2KMFntDEGH4ELtO6cX4poBIYu2qbPYe1K7FnKInyEIWSBXjWOFA5PUR0mE8+UE1+hY3sag=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB7529.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(346002)(376002)(39860400002)(396003)(136003)(366004)(451199021)(478600001)(54906003)(7696005)(71200400001)(83380400001)(26005)(186003)(9686003)(6506007)(4744005)(66446008)(2906002)(5660300002)(7416002)(52536014)(33656002)(38100700002)(122000001)(76116006)(4326008)(66946007)(55016003)(82960400001)(316002)(86362001)(8936002)(8676002)(41300700001)(6916009)(38070700005)(66476007)(66556008)(64756008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?2WV+BXyVP8q7rIISTfsvvv9VB/Dk3RfzRflDe2enATG4OmEkpcoFFqAZ9EnR?=
- =?us-ascii?Q?6qJQnSlMqGe6dHeNCWaD3sXqBU9czV6zGWPZiXUNpMhsNuZcENAJHpwOl4gB?=
- =?us-ascii?Q?9ohclPiE8TM7FQgjU8dx54N/Tvtyxn2QS80nBhYcTXb/nK85T7yrfQwirWBp?=
- =?us-ascii?Q?DqVBy+8ByfsUHTtWj19tSbrJMDjmzdaLXFgqt6xpDilSU8mk6vaCeCFxYs5R?=
- =?us-ascii?Q?bX0JYbD285Xw7yflWwsX16StQFOsSFuf0fvDHpr2CNpCqXSJXOBjTK2FebUX?=
- =?us-ascii?Q?DcO4fVU+B4D8Bu7yx1nlhxKQS4ZgKId9mkq7YZ8+/4y6O4tbEeDRNFfjlDaX?=
- =?us-ascii?Q?QSdgSC6uCYmhJmmTtywQsRnEpMmTU7JOqSTTHqJnKMRFjlaIsEBnqVD0Rm5Y?=
- =?us-ascii?Q?HciYZQ42clHs+iy3iQr+61y76JWorHmhPHhIdHh5wAFaLvlOY+ZGiVzqCHGp?=
- =?us-ascii?Q?sQEF2ij8ffQ1BGN8IoWUQDcjw84M5TzBK2uK7Li9eo/Y/CU2EH4EJ77FZZ9y?=
- =?us-ascii?Q?qUEySQCnuBw/I6Z4ipiWULvGYuw00DirLVFGnnUCylr13pXRyagh0Kq7vK1h?=
- =?us-ascii?Q?WKEfIu66cB6JAQxJtdFtYWAdfbAzeUzmbRC7sInisOgDhimE6Uco5cxnl4ji?=
- =?us-ascii?Q?MKrebk8Pf1/p+mHgtJh2QutGdDEztisVBApg1/VUujHm5CiegnHDZym8651s?=
- =?us-ascii?Q?H7xc5rZ3vFe+80Cfu3VOB2Nr08oPhR+diOg75akp3n+T8+hmwOP/spTggHIo?=
- =?us-ascii?Q?gE+xQNLWRA/6/OIGmGMJZagzX9eeIEbcOSRjtzR0RiLhBtM43fAX4BTVmPFY?=
- =?us-ascii?Q?mc2pmUucza20JWAdpySHSJZ1kgWif5vInh64IO8XDgMAefgDY88ozYqiv5QO?=
- =?us-ascii?Q?81HvpVoMjSYK8YuQSTP/tF3aJxZCAjY45+NhTDCMK8GqyU9T8p/iIBS37It6?=
- =?us-ascii?Q?24bsu10DaOf3fPr4SjrF1PN3zR/CbqIxseU9n05rR+HpkYPeUxU6xJ9MiyH1?=
- =?us-ascii?Q?+6WchWCJx9o/q7ZwPjFF+hrrkKnCgTayuqF6tJZ8XFknFl9zeZXti2EZEA+W?=
- =?us-ascii?Q?O3xFLGXFZ0CjGHTL3i2NQ7aL5REsgLPawseie6wXU6pKyRmpJQ5HGoqaZ1Ge?=
- =?us-ascii?Q?48T1at5gIxrkKzStj6br8UE6a1Q2r4l9LmmG8KHc63U+oS8Q7tiDyuGFDFKl?=
- =?us-ascii?Q?KHZCYb0lPeQ+NfnhWAU5zKeKY9cIGIIEzOLVHMgxY9r1uEYRSDmiGk7KJlFZ?=
- =?us-ascii?Q?mP8j+/Hwpqd/aKLedIHys3Jbl+zb/jEPcRbr9l8F8X5qqWg7Yf2KZ4BiSbKa?=
- =?us-ascii?Q?LsSYMF7QrnVPGt/VUWGz8YlNOiFzt8pEg/N9Wo8bpTNkb7Nfl5XhQZ0lQPiD?=
- =?us-ascii?Q?5w1nlc5j3q4xIbWMtPB12YKxk7sh858+yVQCfCjn4V9ms7Y0N3VSD2t/U0I5?=
- =?us-ascii?Q?kGottRrFmqpze3+s1ccEDK7uqiJnTVCS/BtZxCToa/Agn+T+oqkuCBsbz9Fs?=
- =?us-ascii?Q?qLR57qTIY7vSv7gYB43botCFXUwknJMEST0ckTiNo17BdtZHBxfDmCjaLKLA?=
- =?us-ascii?Q?8EOVg0KIcJsu3VfGVblYZU8MGHLrDIKcaB6i2t53?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=McAfee;i="6600,9927,10752"; a="962712374"
+X-IronPort-AV: E=Sophos;i="6.01,159,1684825200"; d="scan'208";a="962712374"
+Received: from csteeb-mobl2.ger.corp.intel.com (HELO intel.com)
+ ([10.251.217.4])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jun 2023 02:26:59 -0700
+Date: Mon, 26 Jun 2023 11:26:55 +0200
+From: Andi Shyti <andi.shyti@linux.intel.com>
+To: Julia Lawall <Julia.Lawall@inria.fr>
+Subject: Re: [Intel-gfx] [PATCH 16/26] drm/i915/gvt: use array_size
+Message-ID: <ZJlZ3421Whev/LkX@ashyti-mobl2.lan>
+References: <20230623211457.102544-1-Julia.Lawall@inria.fr>
+ <20230623211457.102544-17-Julia.Lawall@inria.fr>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7529.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 103afde9-624a-43d7-0cb5-08db762026a1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jun 2023 08:34:26.1727 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 8/CqBNoBRCTv8azEv1WbHR6SpN4SjighH0ANEXhGZ/eWbwlWNXu99BZjHihQXbGr4JDopCAq/35Su0DMZ0iyMA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB8294
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230623211457.102544-17-Julia.Lawall@inria.fr>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -145,54 +59,79 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
- Xudong" <xudong.hao@intel.com>, "Duan, 
- Zhenzhong" <zhenzhong.duan@intel.com>, "peterx@redhat.com" <peterx@redhat.com>,
- "Xu, Terrence" <terrence.xu@intel.com>,
- "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
- "lulu@redhat.com" <lulu@redhat.com>, "Jiang,
- Yanting" <yanting.jiang@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
- "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Tian,
- Kevin" <kevin.tian@intel.com>, "Zhao, Yan Y" <yan.y.zhao@intel.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
- "clegoate@redhat.com" <clegoate@redhat.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
- "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>
+Cc: keescook@chromium.org, David Airlie <airlied@gmail.com>,
+ intel-gfx@lists.freedesktop.org, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> From: Jason Gunthorpe <jgg@nvidia.com>
-> Sent: Saturday, June 24, 2023 12:15 AM
+Hi Julia,
 
-> >  }
-> >
-> > +static void vfio_device_get_kvm_safe(struct vfio_device_file *df)
-> > +{
-> > +	spin_lock(&df->kvm_ref_lock);
-> > +	if (df->kvm)
-> > +		_vfio_device_get_kvm_safe(df->device, df->kvm);
-> > +	spin_unlock(&df->kvm_ref_lock);
-> > +}
->=20
-> I'm surprised symbol_get() can be called from a spinlock, but it sure
-> looks like it can..
->=20
-> Also moving the if kvm is null test into _vfio_device_get_kvm_safe()
-> will save a few lines.
->=20
-> Also shouldn't be called _vfio_device...
+On Fri, Jun 23, 2023 at 11:14:47PM +0200, Julia Lawall wrote:
+> Use array_size to protect against multiplication overflows.
+> 
+> The changes were done using the following Coccinelle semantic patch:
+> 
+> // <smpl>
+> @@
+>     expression E1, E2;
+>     constant C1, C2;
+>     identifier alloc = {vmalloc,vzalloc};
+> @@
+>     
+> (
+>       alloc(C1 * C2,...)
+> |
+>       alloc(
+> -           (E1) * (E2)
+> +           array_size(E1, E2)
+>       ,...)
+> )
+> // </smpl>
+> 
+> Signed-off-by: Julia Lawall <Julia.Lawall@inria.fr>
+> 
+> ---
+>  drivers/gpu/drm/i915/gvt/gtt.c |    6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
+> index 4ec85308379a..df52385ad436 100644
+> --- a/drivers/gpu/drm/i915/gvt/gtt.c
+> +++ b/drivers/gpu/drm/i915/gvt/gtt.c
+> @@ -1969,14 +1969,16 @@ static struct intel_vgpu_mm *intel_vgpu_create_ggtt_mm(struct intel_vgpu *vgpu)
+>  		return ERR_PTR(-ENOMEM);
+>  	}
+>  
+> -	mm->ggtt_mm.host_ggtt_aperture = vzalloc((vgpu_aperture_sz(vgpu) >> PAGE_SHIFT) * sizeof(u64));
+> +	mm->ggtt_mm.host_ggtt_aperture =
+> +		vzalloc(array_size(vgpu_aperture_sz(vgpu) >> PAGE_SHIFT, sizeof(u64)));
+>  	if (!mm->ggtt_mm.host_ggtt_aperture) {
+>  		vfree(mm->ggtt_mm.virtual_ggtt);
+>  		vgpu_free_mm(mm);
+>  		return ERR_PTR(-ENOMEM);
+>  	}
+>  
+> -	mm->ggtt_mm.host_ggtt_hidden = vzalloc((vgpu_hidden_sz(vgpu) >> PAGE_SHIFT) * sizeof(u64));
+> +	mm->ggtt_mm.host_ggtt_hidden =
+> +		vzalloc(array_size(vgpu_hidden_sz(vgpu) >> PAGE_SHIFT, sizeof(u64)));
 
-Ah, any suggestion on the naming? How about vfio_device_get_kvm_safe_locked=
-()?
+thanks for this patch, but I see an issue here. array_size()
+truncates the allocation to SIZE_MAX, and I'm OK with it.
 
-Regards,
-Yi Liu
+The problem is that no error is notified and the user doesn't
+know that a truncation has happened. So that if we save from an
+overflow here, we might encur to an unwanted access later when we
+would start using the array for the size we think is allocated.
+
+kmalloc_array(), for example, returns NULL of there is a
+multiplication overflow and I think that's a better behaviour,
+although more drastic.
+
+Andi
+
+>  	if (!mm->ggtt_mm.host_ggtt_hidden) {
+>  		vfree(mm->ggtt_mm.host_ggtt_aperture);
+>  		vfree(mm->ggtt_mm.virtual_ggtt);
