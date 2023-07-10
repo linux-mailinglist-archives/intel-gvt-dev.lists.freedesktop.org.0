@@ -2,33 +2,60 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 360B074B979
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  8 Jul 2023 00:24:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E293A74D7DD
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 10 Jul 2023 15:36:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA68010E5EC;
-	Fri,  7 Jul 2023 22:24:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B926B10E093;
+	Mon, 10 Jul 2023 13:36:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mainserver.one-connect-indonesia.com (unknown [103.186.30.100])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 22A3910E5EC;
- Fri,  7 Jul 2023 22:24:19 +0000 (UTC)
-Received: from Mine-Mine.local (unknown [212.102.35.138])
- by mainserver.one-connect-indonesia.com (Postfix) with ESMTPSA id 6900490BB27E;
- Thu,  6 Jul 2023 11:23:32 +0700 (WIB)
+Received: from mail-pg1-x52f.google.com (mail-pg1-x52f.google.com
+ [IPv6:2607:f8b0:4864:20::52f])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id AF2F510E093
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 10 Jul 2023 13:36:42 +0000 (UTC)
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-55bac17b442so3474037a12.3
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 10 Jul 2023 06:36:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=one-connect-indonesia.com; s=default; t=1688617420;
- h=from:from:reply-to:reply-to:subject:subject:date:date:to:to:cc:
- mime-version:mime-version:content-type:content-type;
- bh=xayqjX5g5ip2VJlMZSVywCHkZYsJcgQ7/CUKVgL7onY=;
- b=2WPEa3G774F90QKQlhSk/OxuGQ4C6CpNsicZw05MI6NCx5Dzfsb+9TRWRJNQ3xzwUBzK8h
- qBmtq9bp0B+vzB5X3UQvYFFiPWhc8NCeqD+ddogmDDQkf909qCdd6XRpTJ9OE5K85iA1kZ
- 6bqdGF9h/iUNsTaMZ4DM4XP8LuWH2PY=
-Content-Type: multipart/alternative; boundary="===============0961738860=="
+ d=gmail.com; s=20221208; t=1688996202; x=1691588202;
+ h=to:subject:message-id:date:from:sender:reply-to:mime-version:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=/2RlxWlOhJbOFxHHiWp08TsyEu+zJrfP5HNHS/WQHJU=;
+ b=Tsku914r5LP6Mw3PeJZnlI0v0yP0/M4VkZ/fLuECRp/cfEDUwOw2jBr0yneV5D7wM6
+ XEOvI5R6Cm8fw8/kBLlRn2hEfzht4PCkjvfoKlsqopl7+NbQL+H1odtr1JymLpO6bogB
+ KoH+oisXRnYz8mvJvec109sbqbW8qz6obMjnSXeuc0NXVGPO2i19Hlv646DVsCinqG0Y
+ 7Yi8EiLb6Vq2uUfGoyY3erJioAm6hTvccTDJYakvhJPfBBmnwvSB6gxQIg5bmJgxxW7p
+ ysVeMVWSp3EJf8y6FB+RtNsrDS1zXHosbkFv7waJsbN4gPGp8EhoMz36DL1/N6Nooytv
+ zMXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688996202; x=1691588202;
+ h=to:subject:message-id:date:from:sender:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/2RlxWlOhJbOFxHHiWp08TsyEu+zJrfP5HNHS/WQHJU=;
+ b=LHxie4BK5CXXF78LSoydI+9dj3ElK7OIeponfrkNj9Jgmz1gC0Ohz88W3N5QbHj5p+
+ X6CIY5VJYDvnMORZnbcIPmniyWab6/16KNoCa/nzB/KYrYKQmHzHzisZ+Td8zh82z7Nd
+ jLrbjn5G+4iW0flCcRYgGRZkXtSKT1rSrpLh2R0Thi147QxGQooDWRaZJoSYmx+mHQkF
+ J4QBz0pFLMI9N+n2P36pab80TGcGDZlbrKk2Zt+bB3+hHBTu4lWx/DVc0AL2VDb/h2x2
+ REhCR8lpKlc5wQwQYGK1UYGz5Xb08sEow43hwliV2GHU1PE12Dcsdm07JYf7w0FVw0eN
+ oE4g==
+X-Gm-Message-State: ABy/qLbNobuTjRMEU4yYFrBUhvfchLYUW9O5NMKdOl9edqq378qyZqAw
+ A2rQTiIGMNamaNuVUIGsNG+siYRnhdZ1HJUkdYE=
+X-Google-Smtp-Source: APBJJlHSY3FUdO59MsnVvsvyNtH23CcHANS8Wrxxg8sFB3UmcbdlmZVB2Yswq2CX4BehNV3oHen4/DP3Ksicqz2RrhQ=
+X-Received: by 2002:a17:90b:3a83:b0:262:d6cb:3567 with SMTP id
+ om3-20020a17090b3a8300b00262d6cb3567mr13711650pjb.26.1688996201910; Mon, 10
+ Jul 2023 06:36:41 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re...
-To: Recipients <finance@one-connect-indonesia.com>
-From: Lee Shau-kee <finance@one-connect-indonesia.com>
-Date: Thu, 06 Jul 2023 07:23:25 +0300
+Received: by 2002:a05:7022:4292:b0:68:47b5:acef with HTTP; Mon, 10 Jul 2023
+ 06:36:41 -0700 (PDT)
+From: "Mr. Sal Kavar" <salkavar78@gmail.com>
+Date: Mon, 10 Jul 2023 06:36:41 -0700
+X-Google-Sender-Auth: rw4LEBn3DaYybU7zC7Xx8Kj5Wk0
+Message-ID: <CADtbHf1wW1_qjvYY+6gvzdmFw7u3dj3VcoRu79vkjSQiAsp=uw@mail.gmail.com>
+Subject: Yours Faithful,
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -41,49 +68,15 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: leeshaukee4@gmail.com
+Reply-To: salkavar78@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20230707222421.AA68010E5EC@gabe.freedesktop.org>
 
-You will not see this in a MIME-aware mail reader.
---===============0961738860==
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
+I assume you and your family are in good health.
 
-Hello,
-I'm Lee Shau-kee, a Hong Kong business magnate, investor, and philanthropis=
-t. I'm the chairman and majority owner of Henderson Land Development, a pro=
-perty conglomerate with interests in property, hotels, restaurants and inte=
-rnet services. I gave away 25 percent of my personal wealth to charity and =
-I also pledged to give away the rest of 25% this year. I have decided to do=
-nate =20AC2,000,000.00 Euros to you. If you are interested in my donation, =
-do contact me for more info. I will also want you to be part of my Charity =
-Foundation once you receive this money so we can join hands together to hel=
-p the needy.
-Contact him via Email for more details: =
+Overdue and unclaimed sum of $15.5m, (Fifteen Million Five Hundred
+Thousand Dollars Only) when the account holder suddenly passed on, he
+left no beneficiary who would be entitled to the receipt of this fund.
 
-
-Warm Regard
-Lee Shau-kee.
-
---===============0961738860==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-
-<HTML><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
-=3Dutf-8"/></head><BODY><P>Hello,<BR>I'm Lee Shau-kee, a Hong Kong business=
- magnate, investor, and philanthropist. I'm the chairman and majority owner=
- of Henderson Land Development, a property conglomerate with interests in p=
-roperty, hotels, restaurants and internet services. I gave away 25 percent =
-of my personal wealth to charity and I also pledged to give away the rest o=
-f 25% this year. I have decided to donate =E2=82=AC2,000,000.00 Euros to yo=
-u. If you are interested in my donation, do contact me for more info. I wil=
-l also want you to be part of my Charity Foundation once you receive this m=
-oney so we can join hands together to help the needy.<BR>Contact him via Em=
-ail for more details: <BR><BR>Warm Regard<BR>Lee Shau-kee.</P></BODY></HTML>
---===============0961738860==--
+Yours Faithful,
+Mr.Sal Kavar.
