@@ -1,46 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E5AC74E42E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Jul 2023 04:32:04 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53B7174E433
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Jul 2023 04:32:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D12CB10E29A;
-	Tue, 11 Jul 2023 02:31:51 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6CCEF10E2F5;
+	Tue, 11 Jul 2023 02:31:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4BFAC10E2BA;
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 72EB010E2CE;
  Tue, 11 Jul 2023 02:31:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1689042709; x=1720578709;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=GVjyZOqJ0QuqIxexj/mjWg5AFyiRs1eaWwzPA1OZI8A=;
- b=n4EwuUhLSbuOCQFHrSR7pXxP/4781BVpQT3eptQXehGfqpy3JrekKuhv
- l13rOFwtgV9ptc2fn99Igc5YmmQNr1Tp9xl8YNMSae89G860kN0yD2Zmm
- hH8CrWfJEOaZq9FEyRYHBNJUGv1Nw2qFhNf8NhZuzgQR6mXIrJ2lTBNFV
- wYD/I1ZM7kScemC/P8GHzt+2Q6A0R50celeMOc66j3sg3VFF29SB+QIev
- rPMpI0yPVG0YEii9e9qEtXym9dCoF3Di5aR5dn9AUSuR+lTa76kzun1r7
- rn9UcgjE91FS0DiuiPRcbOl9MDAtIZWA2myOpeC6kr+zFSvPFQ2dmxkIR w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="368004692"
-X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="368004692"
+ bh=IzrAn20ByJL63NIYU7HEQmy4xx7HzzCXurkAzXmi5jA=;
+ b=nrYep2o+AIuvTuJ6WtO6XpIeJwAhuPOd9B/N64CW9buKSPb60uzQMWq3
+ cdD6sbO044ZPRNIYYXG21eU1A4hFqIxNEQ++YuD9AKPgohJubaM3Ro3af
+ xD70YOBuM5rFJuW0QMjZAol+m+1xh1pC7ZRWb4/Zo6uTTy7Yutn0EIJIx
+ ghZTtR9GBrNofjgMJZoD5+jJFcPaGcxk90++hCcnAORi0/6/GVwoi3jGh
+ ubfG8/Tqb8HyVZsB3JAEwV/5KOXSqpvw3SXZtiNB4UufpQo/rChOnXB4e
+ clwvB49G2pwQj0ONHk0L0FgC6tJZuqSg0a7GDE8JwZN205SwYrAh69xX+ Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="368004704"
+X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="368004704"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  10 Jul 2023 19:31:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="720907578"
-X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="720907578"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="720907585"
+X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="720907585"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 19:31:30 -0700
+ by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 19:31:31 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v9 05/10] iommufd: Add helper to retrieve iommufd_ctx and devid
-Date: Mon, 10 Jul 2023 19:31:21 -0700
-Message-Id: <20230711023126.5531-6-yi.l.liu@intel.com>
+Subject: [PATCH v9 06/10] vfio: Mark cdev usage in vfio_device
+Date: Mon, 10 Jul 2023 19:31:22 -0700
+Message-Id: <20230711023126.5531-7-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230711023126.5531-1-yi.l.liu@intel.com>
 References: <20230711023126.5531-1-yi.l.liu@intel.com>
@@ -70,54 +70,33 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is needed by the vfio-pci driver to report affected devices in the
-hot-reset for a given device.
+This can be used to differentiate whether to report group_id or devid in
+the revised VFIO_DEVICE_GET_PCI_HOT_RESET_INFO ioctl. At this moment, no
+cdev path yet, so the vfio_device_cdev_opened() helper always returns false.
 
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
 Tested-by: Terrence Xu <terrence.xu@intel.com>
-Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/iommu/iommufd/device.c | 12 ++++++++++++
- include/linux/iommufd.h        |  3 +++
- 2 files changed, 15 insertions(+)
+ include/linux/vfio.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/iommu/iommufd/device.c b/drivers/iommu/iommufd/device.c
-index 693c2155a5da..cd5d8ab907f9 100644
---- a/drivers/iommu/iommufd/device.c
-+++ b/drivers/iommu/iommufd/device.c
-@@ -146,6 +146,18 @@ void iommufd_device_unbind(struct iommufd_device *idev)
- }
- EXPORT_SYMBOL_NS_GPL(iommufd_device_unbind, IOMMUFD);
+diff --git a/include/linux/vfio.h b/include/linux/vfio.h
+index 2c137ea94a3e..2a45853773a6 100644
+--- a/include/linux/vfio.h
++++ b/include/linux/vfio.h
+@@ -139,6 +139,11 @@ int vfio_iommufd_emulated_attach_ioas(struct vfio_device *vdev, u32 *pt_id);
+ 	((int (*)(struct vfio_device *vdev, u32 *pt_id)) NULL)
+ #endif
  
-+struct iommufd_ctx *iommufd_device_to_ictx(struct iommufd_device *idev)
++static inline bool vfio_device_cdev_opened(struct vfio_device *device)
 +{
-+	return idev->ictx;
++	return false;
 +}
-+EXPORT_SYMBOL_NS_GPL(iommufd_device_to_ictx, IOMMUFD);
 +
-+u32 iommufd_device_to_id(struct iommufd_device *idev)
-+{
-+	return idev->obj.id;
-+}
-+EXPORT_SYMBOL_NS_GPL(iommufd_device_to_id, IOMMUFD);
-+
- static int iommufd_device_setup_msi(struct iommufd_device *idev,
- 				    struct iommufd_hw_pagetable *hwpt,
- 				    phys_addr_t sw_msi_start)
-diff --git a/include/linux/iommufd.h b/include/linux/iommufd.h
-index f241bafa03da..68defed9ea48 100644
---- a/include/linux/iommufd.h
-+++ b/include/linux/iommufd.h
-@@ -25,6 +25,9 @@ void iommufd_device_unbind(struct iommufd_device *idev);
- int iommufd_device_attach(struct iommufd_device *idev, u32 *pt_id);
- void iommufd_device_detach(struct iommufd_device *idev);
- 
-+struct iommufd_ctx *iommufd_device_to_ictx(struct iommufd_device *idev);
-+u32 iommufd_device_to_id(struct iommufd_device *idev);
-+
- struct iommufd_access_ops {
- 	u8 needs_pin_pages : 1;
- 	void (*unmap)(void *data, unsigned long iova, unsigned long length);
+ /**
+  * struct vfio_migration_ops - VFIO bus device driver migration callbacks
+  *
 -- 
 2.34.1
 
