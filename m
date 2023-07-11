@@ -1,46 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1595C74E42C
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E5AC74E42E
 	for <lists+intel-gvt-dev@lfdr.de>; Tue, 11 Jul 2023 04:32:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ACE9910E2ED;
+	by gabe.freedesktop.org (Postfix) with ESMTP id D12CB10E29A;
 	Tue, 11 Jul 2023 02:31:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 42AE910E29A;
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4BFAC10E2BA;
  Tue, 11 Jul 2023 02:31:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1689042709; x=1720578709;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=+OumhvwrYbIKe/8xTuyP24ud3DRRb6zaVFkWwr8+NWg=;
- b=ZYjGXYYcb3v6aZgfG6KVjvs3uG2tOoxVg9OJCczBspvlezZRTr3lcHh6
- EGBfTk0B6j1VHb4brskNHc2EFCulIDH2IK1PhoiXKgSUD6gb8iifjiBp3
- XMmCYDvy2Q2IT2DNBL5fu6CDx41GySlCot56xuEKLRt8Ko7Jbb8QyjvRA
- rr+vB5evaS4MA+50npyNzH8oFJS7+QMspxjFDNZ2HCZubag9Y0alMFU7w
- ZTu6utJUDJuSC+bKVGwjQyqJc6ad4SNK3Bov0C5p2R1mzEDQW17SFRo0D
- 5NUw9S3jFbDhj05lFn2Ikg2XRWDdusGJIkqOOdgBnR96iBBQzftDIXBUB Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="368004679"
-X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="368004679"
+ bh=GVjyZOqJ0QuqIxexj/mjWg5AFyiRs1eaWwzPA1OZI8A=;
+ b=n4EwuUhLSbuOCQFHrSR7pXxP/4781BVpQT3eptQXehGfqpy3JrekKuhv
+ l13rOFwtgV9ptc2fn99Igc5YmmQNr1Tp9xl8YNMSae89G860kN0yD2Zmm
+ hH8CrWfJEOaZq9FEyRYHBNJUGv1Nw2qFhNf8NhZuzgQR6mXIrJ2lTBNFV
+ wYD/I1ZM7kScemC/P8GHzt+2Q6A0R50celeMOc66j3sg3VFF29SB+QIev
+ rPMpI0yPVG0YEii9e9qEtXym9dCoF3Di5aR5dn9AUSuR+lTa76kzun1r7
+ rn9UcgjE91FS0DiuiPRcbOl9MDAtIZWA2myOpeC6kr+zFSvPFQ2dmxkIR w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="368004692"
+X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="368004692"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2023 19:31:30 -0700
+ 10 Jul 2023 19:31:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="720907571"
-X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="720907571"
+X-IronPort-AV: E=McAfee;i="6600,9927,10767"; a="720907578"
+X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="720907578"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
- by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 19:31:29 -0700
+ by orsmga002.jf.intel.com with ESMTP; 10 Jul 2023 19:31:30 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v9 04/10] iommufd: Add iommufd_ctx_has_group()
-Date: Mon, 10 Jul 2023 19:31:20 -0700
-Message-Id: <20230711023126.5531-5-yi.l.liu@intel.com>
+Subject: [PATCH v9 05/10] iommufd: Add helper to retrieve iommufd_ctx and devid
+Date: Mon, 10 Jul 2023 19:31:21 -0700
+Message-Id: <20230711023126.5531-6-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230711023126.5531-1-yi.l.liu@intel.com>
 References: <20230711023126.5531-1-yi.l.liu@intel.com>
@@ -70,80 +70,54 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This adds the helper to check if any device within the given iommu_group
-has been bound with the iommufd_ctx. This is helpful for the checking on
-device ownership for the devices which have not been bound but cannot be
-bound to any other iommufd_ctx as the iommu_group has been bound.
+This is needed by the vfio-pci driver to report affected devices in the
+hot-reset for a given device.
 
 Tested-by: Terrence Xu <terrence.xu@intel.com>
 Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- drivers/iommu/iommufd/device.c | 30 ++++++++++++++++++++++++++++++
- include/linux/iommufd.h        |  2 ++
- 2 files changed, 32 insertions(+)
+ drivers/iommu/iommufd/device.c | 12 ++++++++++++
+ include/linux/iommufd.h        |  3 +++
+ 2 files changed, 15 insertions(+)
 
 diff --git a/drivers/iommu/iommufd/device.c b/drivers/iommu/iommufd/device.c
-index 29d05663d4d1..693c2155a5da 100644
+index 693c2155a5da..cd5d8ab907f9 100644
 --- a/drivers/iommu/iommufd/device.c
 +++ b/drivers/iommu/iommufd/device.c
-@@ -98,6 +98,36 @@ struct iommufd_device *iommufd_device_bind(struct iommufd_ctx *ictx,
+@@ -146,6 +146,18 @@ void iommufd_device_unbind(struct iommufd_device *idev)
  }
- EXPORT_SYMBOL_NS_GPL(iommufd_device_bind, IOMMUFD);
+ EXPORT_SYMBOL_NS_GPL(iommufd_device_unbind, IOMMUFD);
  
-+/**
-+ * iommufd_ctx_has_group - True if any device within the group is bound
-+ *                         to the ictx
-+ * @ictx: iommufd file descriptor
-+ * @group: Pointer to a physical iommu_group struct
-+ *
-+ * True if any device within the group has been bound to this ictx, ex. via
-+ * iommufd_device_bind(), therefore implying ictx ownership of the group.
-+ */
-+bool iommufd_ctx_has_group(struct iommufd_ctx *ictx, struct iommu_group *group)
++struct iommufd_ctx *iommufd_device_to_ictx(struct iommufd_device *idev)
 +{
-+	struct iommufd_object *obj;
-+	unsigned long index;
-+
-+	if (!ictx || !group)
-+		return false;
-+
-+	xa_lock(&ictx->objects);
-+	xa_for_each(&ictx->objects, index, obj) {
-+		if (obj->type == IOMMUFD_OBJ_DEVICE &&
-+		    container_of(obj, struct iommufd_device, obj)->group == group) {
-+			xa_unlock(&ictx->objects);
-+			return true;
-+		}
-+	}
-+	xa_unlock(&ictx->objects);
-+	return false;
++	return idev->ictx;
 +}
-+EXPORT_SYMBOL_NS_GPL(iommufd_ctx_has_group, IOMMUFD);
++EXPORT_SYMBOL_NS_GPL(iommufd_device_to_ictx, IOMMUFD);
 +
- /**
-  * iommufd_device_unbind - Undo iommufd_device_bind()
-  * @idev: Device returned by iommufd_device_bind()
++u32 iommufd_device_to_id(struct iommufd_device *idev)
++{
++	return idev->obj.id;
++}
++EXPORT_SYMBOL_NS_GPL(iommufd_device_to_id, IOMMUFD);
++
+ static int iommufd_device_setup_msi(struct iommufd_device *idev,
+ 				    struct iommufd_hw_pagetable *hwpt,
+ 				    phys_addr_t sw_msi_start)
 diff --git a/include/linux/iommufd.h b/include/linux/iommufd.h
-index 1129a36a74c4..f241bafa03da 100644
+index f241bafa03da..68defed9ea48 100644
 --- a/include/linux/iommufd.h
 +++ b/include/linux/iommufd.h
-@@ -16,6 +16,7 @@ struct page;
- struct iommufd_ctx;
- struct iommufd_access;
- struct file;
-+struct iommu_group;
+@@ -25,6 +25,9 @@ void iommufd_device_unbind(struct iommufd_device *idev);
+ int iommufd_device_attach(struct iommufd_device *idev, u32 *pt_id);
+ void iommufd_device_detach(struct iommufd_device *idev);
  
- struct iommufd_device *iommufd_device_bind(struct iommufd_ctx *ictx,
- 					   struct device *dev, u32 *id);
-@@ -50,6 +51,7 @@ void iommufd_ctx_get(struct iommufd_ctx *ictx);
- #if IS_ENABLED(CONFIG_IOMMUFD)
- struct iommufd_ctx *iommufd_ctx_from_file(struct file *file);
- void iommufd_ctx_put(struct iommufd_ctx *ictx);
-+bool iommufd_ctx_has_group(struct iommufd_ctx *ictx, struct iommu_group *group);
- 
- int iommufd_access_pin_pages(struct iommufd_access *access, unsigned long iova,
- 			     unsigned long length, struct page **out_pages,
++struct iommufd_ctx *iommufd_device_to_ictx(struct iommufd_device *idev);
++u32 iommufd_device_to_id(struct iommufd_device *idev);
++
+ struct iommufd_access_ops {
+ 	u8 needs_pin_pages : 1;
+ 	void (*unmap)(void *data, unsigned long iova, unsigned long length);
 -- 
 2.34.1
 
