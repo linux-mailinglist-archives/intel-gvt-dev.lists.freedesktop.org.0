@@ -2,67 +2,76 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 781AF7528AD
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Jul 2023 18:37:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2999775298F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Jul 2023 19:11:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C11E010E764;
-	Thu, 13 Jul 2023 16:37:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0C48B10E71A;
+	Thu, 13 Jul 2023 17:11:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x135.google.com (mail-il1-x135.google.com
- [IPv6:2607:f8b0:4864:20::135])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DEDAB10E723;
- Thu, 13 Jul 2023 16:37:07 +0000 (UTC)
-Received: by mail-il1-x135.google.com with SMTP id
- e9e14a558f8ab-346541baf2aso5038355ab.1; 
- Thu, 13 Jul 2023 09:37:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1689266227; x=1691858227;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8Hpk91v6S/H4Fewdz/m/7w0Z69KCGXKFXbB7sQFxvns=;
- b=PRuNxpUOgQyHdG8xAb7oyEAQApKzt/OLHL3fYGNizID2VWduiR5u3S3+Wnvy4l+AtN
- frn84bflDdi6dnSNf+aOa81Xl1ZzrzKKLQZIV1IE/2ZGqdkPME6E8eTKz6Dk+6pwdrLe
- 01S+bWkFSUjvwEBe7X9t2+oAHaa6XsLAamZi6ucAHAxiUrMkqhxpKEY2085K92Hw2VTI
- sJPPegg/RHBzbDtSCol+ucOtla+ncNYyX53N/jENknto+mTA61ROrAMVZj7yCSs5NP33
- MjbsoMaEmNVeuxk8RALTwFhCbAW4Wv5pOaetIVNa34thAybaO16J7MI7jqNFRBYAPCFs
- yxKA==
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C0CDD10E71A
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 13 Jul 2023 17:10:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1689268258;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+UPgPFBGvQHuZjwqO9ik4oPicS3MZwipCdBIqa3Pous=;
+ b=LHBIbLliDKDDmYw7l40xAIkKcxNlDijO19/zJ465217OF1HzS0u0R/g1RtVur8+t5gyq2l
+ UjujD9fa1P2aRBj54zQPh8Xu/rl0I8KHLhmN42Kk6hpMycqm5h7Neh0caqiMrXj/n2fDNO
+ 1VZ53nwpwqoqWvSzrovy/KLZVCl4YbE=
+Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
+ [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-607-KFa-hdPLPjGcyGXq1W3NHA-1; Thu, 13 Jul 2023 13:10:57 -0400
+X-MC-Unique: KFa-hdPLPjGcyGXq1W3NHA-1
+Received: by mail-il1-f198.google.com with SMTP id
+ e9e14a558f8ab-345fe8d0a30so4601455ab.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 13 Jul 2023 10:10:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689266227; x=1691858227;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8Hpk91v6S/H4Fewdz/m/7w0Z69KCGXKFXbB7sQFxvns=;
- b=fQ6aHjB470vmYdqa/gEJ+fVjV6PmVcp6P4dc0ZgbDMscBP/qFrplO51G3icAeuXMxK
- PNjJWn+uYuYZb5g6ZXglDp5rg2tV7Bv+7Az3yLJqLeQ95U8GNyZThrhHRzBHa5cVisKm
- 7RS9Ut7YCIyJ8Mx0dm4E+fwNOyQs8ZA5DxqkQ45s+pQE6H5Mo7HPUAb3kB9nhwr+J3cs
- 9Cv6ZTf0Hnb1CxxUII7ECETviL7P4xynO8v9pe/FUq7UmNpTlemEQlxKP/eLIQF+dTaD
- IPLgDUThfHeVxb/YxYtkts3dA1T4ws2xQPbuHWoP6VsqBkk3hZZgaiLwiAFr/k77KCTG
- 8qDg==
-X-Gm-Message-State: ABy/qLbgxZx4olR8dFl9HBN6sR7sOW/G9ryBfqdq1zI2/h2Jtc2qcvYw
- Hqds9Ab///WEFrp0nEC7Tm0=
-X-Google-Smtp-Source: APBJJlE5tiBFK09iMBObOy+YziX4QDegRnmRX3iwsn/S6s5XwYylCDlCasCpS2rPgLy5p+1Cj9b4Gw==
-X-Received: by 2002:a92:cccd:0:b0:346:3fc5:93e0 with SMTP id
- u13-20020a92cccd000000b003463fc593e0mr142862ilq.2.1689266227135; 
- Thu, 13 Jul 2023 09:37:07 -0700 (PDT)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- s7-20020a92d907000000b00345950d7e94sm2147571iln.20.2023.07.13.09.37.06
+ d=1e100.net; s=20221208; t=1689268257; x=1691860257;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=+UPgPFBGvQHuZjwqO9ik4oPicS3MZwipCdBIqa3Pous=;
+ b=H/Z6GAn7u6AU+Z1PiSdZZXOYeuHTBEQKbCg8f7jg2j2wA5rK+Fmy1T33/5zA15lbJA
+ Z8940oMn450YCXCoKxY111CrL7qAZXP5iFgV2UcBL0HtF2sNmyX7xoXYMY7KcgSAaDis
+ Lt1by0IAeMH4PBRXb0B0HKVpd8S7PkXb3IawCpUIGJDBrsfoBV/NXoxYZory0IMK5LDK
+ 7iAXUderwxIVTEERFD2E42qTAiWAn4IL+rFFBpBRtkF7l8OMH7nS9L3kzRGCT6vl/nVZ
+ 75nBfhO08uG80fkdiY1EDNuXTK1/PlFTO+fm8d5PEuIQVCDhCoMrtTBFsb6obCth2zhp
+ L9CQ==
+X-Gm-Message-State: ABy/qLY0uX8TAcvmv+vUO3CsgWMp03A1P9wJ97MPdjpuahhG652BHQQn
+ hZkL6uYp4YnmXoQD3jPiznrlxCrJtx5A6caBj9KdOvWKyBmaXWxki1Q3fU1I9d1E60RpQ/om+rw
+ Pjz9ynkTsGa6kdAF4sQ6I6uqR/a2q1oRjCA==
+X-Received: by 2002:a92:c105:0:b0:345:6ffa:63c5 with SMTP id
+ p5-20020a92c105000000b003456ffa63c5mr1980588ile.32.1689268257119; 
+ Thu, 13 Jul 2023 10:10:57 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlEYzBd2cy5+vbqrqBW5hcL0Nlt03XvoKU7EVc2Oqt6qt/39DAJLG7+eJes4a+aimrEVLy/slQ==
+X-Received: by 2002:a92:c105:0:b0:345:6ffa:63c5 with SMTP id
+ p5-20020a92c105000000b003456ffa63c5mr1980544ile.32.1689268256865; 
+ Thu, 13 Jul 2023 10:10:56 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ el20-20020a0566384d9400b0042b61a5087csm1948085jab.132.2023.07.13.10.10.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Jul 2023 09:37:06 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
-Subject: [PATCH v4 21/21] dyndbg-doc: add classmap info to howto
-Date: Thu, 13 Jul 2023 10:36:26 -0600
-Message-ID: <20230713163626.31338-22-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20230713163626.31338-1-jim.cromie@gmail.com>
-References: <20230713163626.31338-1-jim.cromie@gmail.com>
+ Thu, 13 Jul 2023 10:10:56 -0700 (PDT)
+Date: Thu, 13 Jul 2023 11:10:54 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Christian Brauner <brauner@kernel.org>
+Subject: Re: [PATCH 0/2] eventfd: simplify signal helpers
+Message-ID: <20230713111054.75cdf2b8.alex.williamson@redhat.com>
+In-Reply-To: <20230713-vfs-eventfd-signal-v1-0-7fda6c5d212b@kernel.org>
+References: <20230713-vfs-eventfd-signal-v1-0-7fda6c5d212b@kernel.org>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,98 +84,59 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jani.nikula@intel.com, gregkh@linuxfoundation.org,
- Jim Cromie <jim.cromie@gmail.com>, robdclark@gmail.com, seanpaul@chromium.org,
- ville.syrjala@linux.intel.com
+Cc: linux-aio@kvack.org, Muchun Song <muchun.song@linux.dev>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Paul Durrant <paul@xen.org>, Tom Rix <trix@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, Roman Gushchin <roman.gushchin@linux.dev>,
+ dri-devel@lists.freedesktop.org, Michal Hocko <mhocko@kernel.org>,
+ Heiko Carstens <hca@linux.ibm.com>, linux-mm@kvack.org,
+ Kirti Wankhede <kwankhede@nvidia.com>, Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Diana Craciun <diana.craciun@oss.nxp.com>, Borislav Petkov <bp@alien8.de>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, Fei Li <fei1.li@intel.com>,
+ Xuan Zhuo <xuanzhuo@linux.alibaba.com>, Arnd Bergmann <arnd@arndb.de>,
+ Leon Romanovsky <leon@kernel.org>, jaz@semihalf.com,
+ linux-rdma@vger.kernel.org, x86@kernel.org, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Gunthorpe <jgg@ziepe.ca>, Ingo Molnar <mingo@redhat.com>,
+ Moritz Fischer <mdf@kernel.org>, Frederic Barrat <fbarrat@linux.ibm.com>,
+ Xu Yilun <yilun.xu@intel.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, linux-fpga@vger.kernel.org,
+ Zhi Wang <zhi.a.wang@intel.com>, Wu Hao <hao.wu@intel.com>,
+ Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Dave Hansen <dave.hansen@linux.intel.com>,
+ Andrew Donnellan <ajd@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ linux-s390@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ intel-gfx@lists.freedesktop.org, Sean Christopherson <seanjc@google.com>,
+ Eric Auger <eric.auger@redhat.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Harald Freudenberger <freude@linux.ibm.com>, kvm@vger.kernel.org,
+ Paolo Bonzini <pbonzini@redhat.com>, cgroups@vger.kernel.org,
+ Thomas Gleixner <tglx@linutronix.de>,
+ virtualization@lists.linux-foundation.org, intel-gvt-dev@lists.freedesktop.org,
+ io-uring@vger.kernel.org, Jens Axboe <axboe@kernel.dk>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, netdev@vger.kernel.org,
+ Oded Gabbay <ogabbay@kernel.org>, linux-usb@vger.kernel.org,
+ Peter Oberparleiter <oberpar@linux.ibm.com>, linux-kernel@vger.kernel.org,
+ Benjamin LaHaise <bcrl@kvack.org>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Sven Schnelle <svens@linux.ibm.com>,
+ Johannes Weiner <hannes@cmpxchg.org>, linux-fsdevel@vger.kernel.org,
+ Shakeel Butt <shakeelb@google.com>, Vitaly Kuznetsov <vkuznets@redhat.com>,
+ David Woodhouse <dwmw2@infradead.org>, linuxppc-dev@lists.ozlabs.org,
+ Pavel Begunkov <asml.silence@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Add some basic info on classmap usage and api
+On Thu, 13 Jul 2023 12:05:36 +0200
+Christian Brauner <brauner@kernel.org> wrote:
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- .../admin-guide/dynamic-debug-howto.rst       | 64 ++++++++++++++++++-
- 1 file changed, 63 insertions(+), 1 deletion(-)
+> Hey everyone,
+> 
+> This simplifies the eventfd_signal() and eventfd_signal_mask() helpers
+> by removing the count argument which is effectively unused.
 
-diff --git a/Documentation/admin-guide/dynamic-debug-howto.rst b/Documentation/admin-guide/dynamic-debug-howto.rst
-index 8dc668cc1216..878750ce8c1d 100644
---- a/Documentation/admin-guide/dynamic-debug-howto.rst
-+++ b/Documentation/admin-guide/dynamic-debug-howto.rst
-@@ -224,7 +224,6 @@ the ``p`` flag has meaning, other flags are ignored.
- Note the regexp ``^[-+=][flmpt_]+$`` matches a flags specification.
- To clear all flags at once, use ``=_`` or ``-flmpt``.
- 
--
- Debug messages during Boot Process
- ==================================
- 
-@@ -374,3 +373,66 @@ just a shortcut for ``print_hex_dump(KERN_DEBUG)``.
- For ``print_hex_dump_debug()``/``print_hex_dump_bytes()``, format string is
- its ``prefix_str`` argument, if it is constant string; or ``hexdump``
- in case ``prefix_str`` is built dynamically.
-+
-+Dynamic Debug classmaps
-+=======================
-+
-+Dyndbg generally selects *prdbg* callsites using structural info:
-+module, file, function, line.  Using classmaps, user modules can
-+organize/select pr_debug()s as they like.
-+
-+- classes coordinates/spans multiple modules
-+- complements the mod,file,func attrs
-+- keeps pr_debug's 0-off-cost JUMP_LABEL goodness
-+- isolates from other class'd and un-class'd pr_debugs() 
-+  (one doesnt mix 2 clients bank accounts)
-+
-+  # IOW this doesn't change DRM.debug settings
-+  #> echo -p > /proc/dynamic_debug/control
-+
-+  # change the classes by naming them explicitly (no wildcard here)
-+  #> echo class DRM_UT_CORE +p > /proc/dynamic_debug/control
-+
-+To support DRM.debug (/sys/module/drm/parameters/debug), dyndbg
-+provides DYNDBG_CLASSMAP_PARAM*.  It maps the categories/classes:
-+DRM_UT_CORE.. to bits 0..N, allowing to set all classes at once.
-+
-+Dynamic Debug Classmap API
-+==========================
-+
-+DYNDBG_CLASSMAP_DEFINE - modules create CLASSMAPs, naming the classes
-+and type, and mapping the class-names to consecutive _class_ids.  By
-+doing so, they tell dyndbg that they are using those class_ids, and
-+authorize dyndbg to manipulate the callsites by their class-names.
-+
-+Its expected that client modules will follow the DRM.debug model:
-+1. define their debug-classes using an enum type, where the enum
-+symbol and its integer value define both the classnames and class-ids.
-+2. use or macro-wrap __pr_debug_cls(ENUM_VAL, "hello world\n")
-+   
-+There are 2 types of classmaps:
-+
-+ DD_CLASS_TYPE_DISJOINT_BITS: classes are independent, ala DRM.debug
-+ DD_CLASS_TYPE_LEVEL_NUM: classes are relative (Verbose3 > Verbose2)
-+
-+Both these classmap-types use the class-names/ENUM_VALs to validate
-+commands into >control.
-+
-+DYNDBG_CLASSMAP_PARAM - refs a DEFINEd classmap, exposing the set of
-+defined classes to manipulation as a group.  This interface enforces
-+the relatedness of classes of DD_CLASS_TYPE_LEVEL_NUM typed classmaps;
-+all classes are independent in the >control parser itself.
-+
-+DYNDBG_CLASSMAP_USE - drm drivers use the CLASSMAP that drm DEFINEs.
-+This shares the classmap defn, and authorizes coordinated changes
-+amongst the CLASSMAP DEFINEr and multiple USErs.
-+
-+Modules or module-groups (drm & drivers) can define multiple
-+classmaps, as long as they share the limited 0..62 per-module-group
-+_class_id range, without overlap.
-+
-+``#define DEBUG`` will enable all pr_debugs in scope, including any
-+class'd ones (__pr_debug_cls(id,fmt..)).  This won't be reflected in
-+the PARAM readback value, but the pr_debug callsites can be toggled
-+into agreement with the param.
-+
--- 
-2.41.0
+We have a patch under review which does in fact make use of the
+signaling value:
+
+https://lore.kernel.org/all/20230630155936.3015595-1-jaz@semihalf.com/
+
+Thanks,
+Alex
 
