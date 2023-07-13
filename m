@@ -1,63 +1,64 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B14CD752899
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Jul 2023 18:37:21 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0AE87528A6
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Jul 2023 18:37:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 19C2010E75C;
-	Thu, 13 Jul 2023 16:37:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 79BD710E73F;
+	Thu, 13 Jul 2023 16:37:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x12e.google.com (mail-il1-x12e.google.com
- [IPv6:2607:f8b0:4864:20::12e])
- by gabe.freedesktop.org (Postfix) with ESMTPS id AF92F10E75C;
- Thu, 13 Jul 2023 16:37:03 +0000 (UTC)
-Received: by mail-il1-x12e.google.com with SMTP id
- e9e14a558f8ab-34642952736so3818355ab.3; 
- Thu, 13 Jul 2023 09:37:03 -0700 (PDT)
+Received: from mail-il1-x12b.google.com (mail-il1-x12b.google.com
+ [IPv6:2607:f8b0:4864:20::12b])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id BE0EE10E763;
+ Thu, 13 Jul 2023 16:37:04 +0000 (UTC)
+Received: by mail-il1-x12b.google.com with SMTP id
+ e9e14a558f8ab-3461053677eso1987805ab.0; 
+ Thu, 13 Jul 2023 09:37:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1689266222; x=1691858222;
+ d=gmail.com; s=20221208; t=1689266223; x=1691858223;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BmUO1J5EliCxWpcWuYGhTm19HhOvYVoh1+BXohGfWSM=;
- b=KuIuySGbHxWr2luhx6hKg1vvgvRLdtiQtr3IcR8WoH7X0Wwa0/h6fJfEd8l032wPuM
- 1PcWBuhFRtaPc2tsH/G2q74blfh5Of1pKjzs5UrZ7/BwJ4Vr829mXVwbVoWSvhTatmpM
- w5f39t4SCQfDcGjfKNhqVOorY0OrfhVGFb4zfUN4Toi2La7Ut33OzElFAv9ns4yn9Tg7
- Y2TfC+zBLZKXw9iwLUmq5fG3eG4pfWnsTRK1sARQfAy/F9zhQaXv+aMK6d7xCncimosU
- 5pNXpFMIf8zY0r5CQJK8Hozhtn15Xl05S6Bx/kvwmoy+e50OWopriS+vdrsejTq37imB
- 0HKg==
+ bh=xtXcwS8d/IDIwtZ853/2GI+9Fn3yNRgVoZNcTx+O3Ew=;
+ b=HlYsuUhPgjpXCZ9henX1PDwU0cw3h2N3V5/vsfI3JqIAfhpOmkW+trSjYWT65U3nyC
+ jLebmc9PX5LkHYZtGISPEwFqP511fRUaV3p126UUUQ12cEoisYsRB0Ai0IFMoK/o+Zno
+ rGguAhVV1T0Xtt56BsYcD8yFiSs4AzNYqyvja+HjPwA8MdQrfo408bDsxt9OJHXJyZ3y
+ NcJt4Mr3dq/irqiTKq+AH7wN/d04UujVFnf3InP9dyq90JzGLKhF4XgF3DEE6WUMuJvX
+ hlybq+IReegFZ0TKYVW5nMEdCMyQ4uQvKHiCH6vc07xhaWaOnWfaVWviGizRleqeG3TT
+ UVIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689266222; x=1691858222;
+ d=1e100.net; s=20221208; t=1689266223; x=1691858223;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=BmUO1J5EliCxWpcWuYGhTm19HhOvYVoh1+BXohGfWSM=;
- b=iGMb6L5gCB94kTngSEyo4IF7rpyXY5VxwIoDSOPvVyk8zlXFguVyJPBQAIsEtSfkWf
- fXZE4rBfQmFPgUDX5F9i+jkHpZsB7xru6H1+TlhIKgq/7HzuEYSBnad+eFCnsMlqeVdL
- cx3W05HxtMlxLH31XGeLUmjUBi/tTLML7lqNFF5jZghxkr6pMl4ABPv+QWEipQMbj2rF
- r3/pbFNfQdihsZf1dyKBpFbyB3nnkfzZLJOMOh+l8F4/+Rtt3A84fq2yD4PCL6/hnARx
- rDzII3xguicmW/NU1qkbD32z6FhIGgxrzxnl9LwUd/wQ0ZyH9koi0Se7SKbLATSoVRjC
- Y0ow==
-X-Gm-Message-State: ABy/qLailvEjon5+e5xMwE/uH9EzgyM3fCL/YWr61hYMQScfMBldee2j
- x/WzQSvMQbOCoTzf+tujaxY=
-X-Google-Smtp-Source: APBJJlHKO7WCLEDxmaYSP3LhNmBmlPVndP0gCenFwmd4HZm4pnLqdWvaF5AZKoEED4EJ2uJ9Uqhlbw==
-X-Received: by 2002:a92:d490:0:b0:347:7399:b170 with SMTP id
- p16-20020a92d490000000b003477399b170mr1306676ilg.32.1689266222716; 
- Thu, 13 Jul 2023 09:37:02 -0700 (PDT)
+ bh=xtXcwS8d/IDIwtZ853/2GI+9Fn3yNRgVoZNcTx+O3Ew=;
+ b=FyJsAeMwCWA15s+i8GmABq62rfXCCrUi+5cMSiHu6WbDzcQA0QFs13cinll2lOcddZ
+ VsCAUYp90vR1jkthb6wItesV62QypkegzYkMInKV6ZQSSLO+uEgVI/QifWe7hg79TxUJ
+ 1LApAv6qpDvGXYmS5g0kNeBamoCcxZSjncMmBkgEaAz4bdLmBKPuD+gFLeeY51/xGRyD
+ 4CwIHZto9FjqL9AfODfWjbGatZ9QRtb9xM4rQ1eYyKkKyo4QdbeiCEgnxAnqlXIWPyIq
+ ghMktL690JXPhjGvphLEhX27ZO4erJmDKfuCDvFUMbUf9S65FI4TjIBFhd4NnJHLWyvJ
+ 6MuQ==
+X-Gm-Message-State: ABy/qLbAi8e1Emk1Yz/pK33KQTsSeBECVZ6Fiplwame19ae/t0K5+qRJ
+ ujzyAZ7tSh6rjxmvwZ7q1x8BV5rgqWj5sA==
+X-Google-Smtp-Source: APBJJlGKK8QkvWwdEzHjGRc5A1ATdY9Dfw8qrHFYEawb7ulcwGWCKqqAd0Mg8QH2SMEdwJLdP2dZ3w==
+X-Received: by 2002:a92:6c0f:0:b0:346:7fc:4fb8 with SMTP id
+ h15-20020a926c0f000000b0034607fc4fb8mr122786ilc.1.1689266223658; 
+ Thu, 13 Jul 2023 09:37:03 -0700 (PDT)
 Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
  by smtp.googlemail.com with ESMTPSA id
- s7-20020a92d907000000b00345950d7e94sm2147571iln.20.2023.07.13.09.37.01
+ s7-20020a92d907000000b00345950d7e94sm2147571iln.20.2023.07.13.09.37.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Jul 2023 09:37:02 -0700 (PDT)
+ Thu, 13 Jul 2023 09:37:03 -0700 (PDT)
 From: Jim Cromie <jim.cromie@gmail.com>
 To: jbaron@akamai.com, daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org,
  dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
-Subject: [PATCH v4 17/21] drm: restore CONFIG_DRM_USE_DYNAMIC_DEBUG un-BROKEN
-Date: Thu, 13 Jul 2023 10:36:22 -0600
-Message-ID: <20230713163626.31338-18-jim.cromie@gmail.com>
+Subject: [PATCH v4 18/21] compiler.h: RFC - s/__LINE__/__COUNTER__/ in
+ __UNIQUE_ID fallback
+Date: Thu, 13 Jul 2023 10:36:23 -0600
+Message-ID: <20230713163626.31338-19-jim.cromie@gmail.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20230713163626.31338-1-jim.cromie@gmail.com>
 References: <20230713163626.31338-1-jim.cromie@gmail.com>
@@ -75,41 +76,72 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: jani.nikula@intel.com, gregkh@linuxfoundation.org,
- Jim Cromie <jim.cromie@gmail.com>, robdclark@gmail.com, seanpaul@chromium.org,
+Cc: jani.nikula@intel.com, gregkh@linuxfoundation.org, llvm@lists.linux.dev,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-sparse@vger.kernel.org,
+ Nathan Chancellor <nathan@kernel.org>, Jim Cromie <jim.cromie@gmail.com>,
+ robdclark@gmail.com, seanpaul@chromium.org,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>, Tom Rix <trix@redhat.com>,
  ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Lots of burn-in testing needed before signing, upstreaming.
-I set default Y to maximize testing by default.
+We currently have 3 defns for __UNIQUE_ID(); gcc and clang are using
+__COUNTER__ for real uniqueness, 3rd just uses __LINE__, which should
+fail on this (and harder to avoid situations):
 
-NOTE: without __UNIQUE_ID fix in HEAD~1, this population of
-DRM_CLASSMAP_USE()rs experienced name collisions in several different
-@lkp-robot allyes and randconfigs, probably because the macro is
-always a file-scope declarator, and is always near the top of fhe
-file.  Moving declarations around tended to fix one collision, only to
-create another collision elsewhere.
+  DECLARE_FOO(); DECLARE_FOO();
 
+Its 2023, can we haz a no-fallback __UNIQUE_ID ?
+
+NOTE:
+
+This also changes __UNIQUE_ID_ to _kaUID_.  Ive been getting
+lkp-reports of collisions on names which should be unique; this
+shouldnt happen on gcc & clang, but does on some older ones, on some
+platforms, on some allyes & rand-configs.  Like this:
+
+mips64-linux-ld:
+drivers/gpu/drm/display/drm_dp_helper.o:(__dyndbg_class_users+0x0):
+multiple definition of `__UNIQUE_ID_ddebug_class_user405';
+drivers/gpu/drm/drm_gem_shmem_helper.o:(__dyndbg_class_users+0x0):
+first defined here
+
+Like above, the collision reports appear to always be 3-digit
+counters, which look like line-numbers.  Changing to _kaUID_ in this
+defn should make it more obvious (in *.i file) when a fallback has
+happened.  To be clear, I havent seen it yet.  Nor have I seen the
+multiple-defn problem above since adding this patch.
+
+Lets see what lkp-robot says about this.
+
+CC: Luc Van Oostenryck <luc.vanoostenryck@gmail.com> (maintainer:SPARSE CHECKER)
+CC: Nathan Chancellor <nathan@kernel.org> (supporter:CLANG/LLVM BUILD SUPPORT)
+CC: Nick Desaulniers <ndesaulniers@google.com> (supporter:CLANG/LLVM BUILD SUPPORT)
+CC: Tom Rix <trix@redhat.com> (reviewer:CLANG/LLVM BUILD SUPPORT)
+CC: linux-sparse@vger.kernel.org (open list:SPARSE CHECKER)
+CC: linux-kernel@vger.kernel.org (open list)
+CC: llvm@lists.linux.dev (open list:CLANG/LLVM BUILD SUPPORT)
 Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 ---
- drivers/gpu/drm/Kconfig | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ include/linux/compiler.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
-index ba3fb04bb691..ff478fcba67e 100644
---- a/drivers/gpu/drm/Kconfig
-+++ b/drivers/gpu/drm/Kconfig
-@@ -52,8 +52,7 @@ config DRM_DEBUG_MM
+diff --git a/include/linux/compiler.h b/include/linux/compiler.h
+index d7779a18b24f..677d6c47cd9e 100644
+--- a/include/linux/compiler.h
++++ b/include/linux/compiler.h
+@@ -177,9 +177,9 @@ void ftrace_likely_update(struct ftrace_likely_data *f, int val,
+ 	__asm__ ("" : "=r" (var) : "0" (var))
+ #endif
  
- config DRM_USE_DYNAMIC_DEBUG
- 	bool "use dynamic debug to implement drm.debug"
--	default n
--	depends on BROKEN
-+	default y
- 	depends on DRM
- 	depends on DYNAMIC_DEBUG || DYNAMIC_DEBUG_CORE
- 	depends on JUMP_LABEL
+-/* Not-quite-unique ID. */
++/* JFTI: to fix Not-quite-unique ID */
+ #ifndef __UNIQUE_ID
+-# define __UNIQUE_ID(prefix) __PASTE(__PASTE(__UNIQUE_ID_, prefix), __LINE__)
++# define __UNIQUE_ID(prefix) __PASTE(__PASTE(_kaUID_, prefix), __COUNTER__)
+ #endif
+ 
+ /**
 -- 
 2.41.0
 
