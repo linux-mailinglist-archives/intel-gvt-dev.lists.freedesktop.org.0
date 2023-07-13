@@ -2,45 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F683752AB3
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Jul 2023 21:05:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B1899752ACB
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 13 Jul 2023 21:13:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EF26410E771;
-	Thu, 13 Jul 2023 19:05:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 90DDF10E778;
+	Thu, 13 Jul 2023 19:13:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from bombadil.infradead.org (bombadil.infradead.org
  [IPv6:2607:7c80:54:3::133])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6C6A310E770;
- Thu, 13 Jul 2023 19:05:01 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 774D210E777;
+ Thu, 13 Jul 2023 19:13:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
  Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=Tunyxm7225nRlfSTHxgTZRKdYPHBEXYuY6MWqVIZLtA=; b=v9XsH4mAkY82rUYyHnv9cyZivu
- eTM5svjbjBnJMSPXncAe6D+e21qhbDQy3561717YRHOWE6LJXq6t2Das0jW3nywXeYg2Nc0Lj4elh
- Rqz35n6SJy4/VfFnXrB+ysqGYzkGrlIKsPQMPS+jhSe7vqhbglAkHaFZ8eEdkWnGBndF9W8It/QDl
- +Z3eJvkJ71nZghLJtjS3IEtTRKpGVAwW3auJiCct/mpJbaq8O+iP2FFy1LScGhNAyUvMNv6Y9uWWD
- qT4qor6+G4MkeIAe1TasFzBO7DPHFLCflul6ixFPPxOu6YQgkDWXcBc4BvhmFMbdwNDYFVfAvtoNV
- 002c3+rw==;
+ bh=SlWSwhHe+t/+5CD+8qzJLYQdlCsQhw+Uh2KGkPXB6kM=; b=vg3XLPJFrNw3vBwRCjiW5YxOq2
+ J7z60gNJOjveg32CLIuJ85nynYH5q14lwRsCJUluPBYOWCNDwUUPmAzN1bbzgN4io1hrdAbNn+bet
+ LvHAEgJAI3o+TolSH/sGJ6361Hl5rgpW0e7WaGYCAX2Jmm6BKgnZf+Xvchn5LU/nzwqptkUtfZPrg
+ RIUS2TMNeUwzQXngfHeIGUDygAngNJiGYqLfhn/ym9A0WNBTTT/Qqyl22ZXC/vOOrpOxsQ0i3H5Ne
+ RShtljbjCUdcWFxd8DVqFRYbU1479QbYMDVCzwsl/nd+vfJEiyINMToaackbPhBPrWaqhPUhfEKOJ
+ iAesR+Yw==;
 Received: from [2601:1c2:980:9ec0::2764]
  by bombadil.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
- id 1qK1cW-004Chy-22; Thu, 13 Jul 2023 19:04:56 +0000
-Message-ID: <07f0c6ac-f195-e598-4649-e88ad5e76005@infradead.org>
-Date: Thu, 13 Jul 2023 12:04:54 -0700
+ id 1qK1l4-004DOL-2N; Thu, 13 Jul 2023 19:13:46 +0000
+Message-ID: <76995421-a529-ac25-c306-2e4ac2844602@infradead.org>
+Date: Thu, 13 Jul 2023 12:13:45 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH v4 20/21] config TEST_DYNAMIC_DEBUG default m
+Subject: Re: [PATCH v4 21/21] dyndbg-doc: add classmap info to howto
 Content-Language: en-US
 To: Jim Cromie <jim.cromie@gmail.com>, jbaron@akamai.com,
  daniel.vetter@ffwll.ch, linux-kernel@vger.kernel.org,
  dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
  intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
 References: <20230713163626.31338-1-jim.cromie@gmail.com>
- <20230713163626.31338-21-jim.cromie@gmail.com>
+ <20230713163626.31338-22-jim.cromie@gmail.com>
 From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20230713163626.31338-21-jim.cromie@gmail.com>
+In-Reply-To: <20230713163626.31338-22-jim.cromie@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -60,38 +60,103 @@ Cc: jani.nikula@intel.com, gregkh@linuxfoundation.org, robdclark@gmail.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Jim,
+
 
 On 7/13/23 09:36, Jim Cromie wrote:
+> Add some basic info on classmap usage and api
+> 
 > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
 > ---
->  lib/Kconfig.debug | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  .../admin-guide/dynamic-debug-howto.rst       | 64 ++++++++++++++++++-
+>  1 file changed, 63 insertions(+), 1 deletion(-)
 > 
-> diff --git a/lib/Kconfig.debug b/lib/Kconfig.debug
-> index d4fbbcc395d2..82d11ac63758 100644
-> --- a/lib/Kconfig.debug
-> +++ b/lib/Kconfig.debug
-> @@ -2696,13 +2696,14 @@ config TEST_STATIC_KEYS
->  
->  config TEST_DYNAMIC_DEBUG
->  	tristate "Build test-dynamic-debug module"
-> +	default m
+> diff --git a/Documentation/admin-guide/dynamic-debug-howto.rst b/Documentation/admin-guide/dynamic-debug-howto.rst
+> index 8dc668cc1216..878750ce8c1d 100644
+> --- a/Documentation/admin-guide/dynamic-debug-howto.rst
+> +++ b/Documentation/admin-guide/dynamic-debug-howto.rst
 
-You need to justify such a change, and since it's not required
-for running the system, I don't think it should be 'm'.
+> @@ -374,3 +373,66 @@ just a shortcut for ``print_hex_dump(KERN_DEBUG)``.
+>  For ``print_hex_dump_debug()``/``print_hex_dump_bytes()``, format string is
+>  its ``prefix_str`` argument, if it is constant string; or ``hexdump``
+>  in case ``prefix_str`` is built dynamically.
+> +
+> +Dynamic Debug classmaps
+> +=======================
+> +
+> +Dyndbg generally selects *prdbg* callsites using structural info:
+> +module, file, function, line.  Using classmaps, user modules can
+> +organize/select pr_debug()s as they like.
+> +
+> +- classes coordinates/spans multiple modules
+> +- complements the mod,file,func attrs
+> +- keeps pr_debug's 0-off-cost JUMP_LABEL goodness
+> +- isolates from other class'd and un-class'd pr_debugs() 
+> +  (one doesnt mix 2 clients bank accounts)
 
->  	depends on DYNAMIC_DEBUG || DYNAMIC_DEBUG_CORE
->  	help
->  	  This module works/demo's the dyndbg's classmap API, by
->  	  creating 2 classes: a DISJOINT classmap (like DRM.debug)
->  	  and a LEVELS/VERBOSE classmap (where 2>1).
->  
-> -	  If unsure, say N.
-> +	  If unsure, say N.  If bored/curious, say M
->  
->  config TEST_KMOD
->  	tristate "kmod stress tester"
+          doesn't
 
+> +
+> +  # IOW this doesn't change DRM.debug settings
+> +  #> echo -p > /proc/dynamic_debug/control
+> +
+> +  # change the classes by naming them explicitly (no wildcard here)
+> +  #> echo class DRM_UT_CORE +p > /proc/dynamic_debug/control
+> +
+> +To support DRM.debug (/sys/module/drm/parameters/debug), dyndbg
+> +provides DYNDBG_CLASSMAP_PARAM*.  It maps the categories/classes:
+> +DRM_UT_CORE.. to bits 0..N, allowing to set all classes at once.
+> +
+> +Dynamic Debug Classmap API
+> +==========================
+> +
+> +DYNDBG_CLASSMAP_DEFINE - modules create CLASSMAPs, naming the classes
+> +and type, and mapping the class-names to consecutive _class_ids.  By
+> +doing so, they tell dyndbg that they are using those class_ids, and
+> +authorize dyndbg to manipulate the callsites by their class-names.
+> +
+> +Its expected that client modules will follow the DRM.debug model:
+> +1. define their debug-classes using an enum type, where the enum
+> +symbol and its integer value define both the classnames and class-ids.
+> +2. use or macro-wrap __pr_debug_cls(ENUM_VAL, "hello world\n")
+> +   
+> +There are 2 types of classmaps:
+> +
+> + DD_CLASS_TYPE_DISJOINT_BITS: classes are independent, ala DRM.debug
+
+                                                          a la
+or just                                                   like
+
+> + DD_CLASS_TYPE_LEVEL_NUM: classes are relative (Verbose3 > Verbose2)
+> +
+> +Both these classmap-types use the class-names/ENUM_VALs to validate
+> +commands into >control.
+> +
+> +DYNDBG_CLASSMAP_PARAM - refs a DEFINEd classmap, exposing the set of
+
+Is this:                   refers to a
+?
+
+> +defined classes to manipulation as a group.  This interface enforces
+> +the relatedness of classes of DD_CLASS_TYPE_LEVEL_NUM typed classmaps;
+> +all classes are independent in the >control parser itself.
+> +
+> +DYNDBG_CLASSMAP_USE - drm drivers use the CLASSMAP that drm DEFINEs.
+> +This shares the classmap defn, and authorizes coordinated changes
+
+                            definition,
+
+> +amongst the CLASSMAP DEFINEr and multiple USErs.
+> +
+> +Modules or module-groups (drm & drivers) can define multiple
+> +classmaps, as long as they share the limited 0..62 per-module-group
+> +_class_id range, without overlap.
+> +
+> +``#define DEBUG`` will enable all pr_debugs in scope, including any
+> +class'd ones (__pr_debug_cls(id,fmt..)).  This won't be reflected in
+> +the PARAM readback value, but the pr_debug callsites can be toggled
+> +into agreement with the param.
+> +
+
+thanks.
 -- 
 ~Randy
