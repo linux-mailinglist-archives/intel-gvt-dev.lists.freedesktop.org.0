@@ -2,73 +2,80 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED4E9756F9E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Jul 2023 00:12:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3FA49757006
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Jul 2023 00:52:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C791B10E2B6;
-	Mon, 17 Jul 2023 22:12:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 99C2C10E2BC;
+	Mon, 17 Jul 2023 22:52:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pf1-x436.google.com (mail-pf1-x436.google.com
- [IPv6:2607:f8b0:4864:20::436])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6178710E2B6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2C94010E2BC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Jul 2023 22:12:20 +0000 (UTC)
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-68336d06620so5110013b3a.1
+ Mon, 17 Jul 2023 22:52:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1689634328;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8wy84DSSq8n2YYiK0mWellsvoswCFp/2kMAmdZ+UHHc=;
+ b=XQUo3bvqjUpsOUN8GsxyIHaDVPFy4YocF1KfVpXfseLNxnoHQQwMv7AlCeG4Zoo/+Ykf3U
+ D9Q+8g6vNPpsonv/zzORLqloc3niRORGz95s4pjnDwTDD/xUtUNZlEbpvZnorV19sdyt+c
+ kDgNidq2eXxF6QoXTFIJDi3me8/vWE0=
+Received: from mail-io1-f71.google.com (mail-io1-f71.google.com
+ [209.85.166.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-272-TfYxTn-cORa4FYs7dYdxYw-1; Mon, 17 Jul 2023 18:52:07 -0400
+X-MC-Unique: TfYxTn-cORa4FYs7dYdxYw-1
+Received: by mail-io1-f71.google.com with SMTP id
+ ca18e2360f4ac-785d64d9bcdso319251739f.0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 17 Jul 2023 15:12:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ziepe.ca; s=google; t=1689631939; x=1692223939;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=nfZGdLayIsQ4EXLbarw1/OO0pNLBzQdwR1vEqsrzGII=;
- b=Jk8Ffu+zgnI1CsgL7PShvnMc/G0hm1hbh3TPz5Fbc34BI/VC6K+YvpO0Dtz1Q06LcE
- vf29m9vckcSQeAqUEVUy2hQg3wChzTMiZjPdUNSWsPB40TqlA/Z3Z90RDeI/5eGEIh5a
- oHIWxzri1XJMuhuB2UIvkNGwKQM8BtpRM8RbCOHyQCc7eetsY5S+VbcO2iAUIljyLIvn
- 7DgUtRFxxg3tnphZnCaerMskJ/OIgXT3e8pOBne6YWSI+yYb8YG43ww6ejPC+GReMaLK
- AQZU6DLVDF3nw8hq4CMA6FGa2JzmC2rObjfL+xz46TVHFpF838cUJw0/Qyn0hTY2P629
- 8fnA==
+ Mon, 17 Jul 2023 15:52:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689631939; x=1692223939;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nfZGdLayIsQ4EXLbarw1/OO0pNLBzQdwR1vEqsrzGII=;
- b=OKY7B9xBMjqYcoMaxijqUNr8B58R8TDY2Qw4LOIGPUclTATKqCncLiukJxXDCHuqYu
- 239dbYdhn6cwlt8LxN9QEWSBXszIiglKn/vackQ7EBJ7pwZUe0VQpgqtHoHkd8mOrdEq
- A00pt+MRCQOHmpSIVHk98+T+OE9VqWDfzJGSIn5c2V/GBVGTqIr5P2IkGrPjeEM13FbW
- UbIHSpKbVfYh9oS84HMkb890nHgTVYiMasgRvUWzeLyKTtW6ee0OrV45BfxwXOvkvo6P
- 0qNcJ562TCH2WY6TZCWHQOWWMyQb6amGLEPUCysCy/6i9B8lzf9lNJ7WoTNSOGVKWXQn
- 4Ahg==
-X-Gm-Message-State: ABy/qLZxBcqBH5UT2s4H5gaBphKDggqUuO3XOB6mQmFektTyOEuzuRVg
- VscA5uWU8icos+J1BZehZuudhg==
-X-Google-Smtp-Source: APBJJlGZQPlE97VCyl6VDpxaBgXkuk8Xeb/cb5kTAa5gNdx+KBrLI5Ve+dnBz8NdMBvhTebPf2Gh3g==
-X-Received: by 2002:a05:6a00:2307:b0:668:81c5:2f8a with SMTP id
- h7-20020a056a00230700b0066881c52f8amr19367164pfh.17.1689631939323; 
- Mon, 17 Jul 2023 15:12:19 -0700 (PDT)
-Received: from ziepe.ca
- (hlfxns017vw-142-68-25-194.dhcp-dynamic.fibreop.ns.bellaliant.net.
- [142.68.25.194]) by smtp.gmail.com with ESMTPSA id
- q185-20020a632ac2000000b0055fedbf1938sm278952pgq.31.2023.07.17.15.12.17
+ d=1e100.net; s=20221208; t=1689634327; x=1692226327;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=8wy84DSSq8n2YYiK0mWellsvoswCFp/2kMAmdZ+UHHc=;
+ b=ISQlS6Dz4Z0J/YQj5gBpQM6W3pd4A3gmITZyPRFxjkB6XhDxMXuTX22CNXXfCofRi8
+ E5lp2th9zmSGxFGhamv8gvqcMBHmvCtug4iu7f9+ZpD049/PVfFk6Z2OG2PTjGXSzUQ2
+ gvKWNeZnCm/RA/PB1fDof/nqS0ghW1LVYPiI4dDpatkJUVgOVOA9rB/1u5bKq4/FAyZy
+ gPmOTknu2lmqJXsGf4vfokkZnZws1qsc4eOEPz/fnMFNV5sHF5E2P4ptZi2k098A6Xh8
+ fpFYErHr4pTFPlS9c+Sah+C2CCcmZiYSMulq+6XomOQ6m+BBm+iVXN5owp+l41ZMX9eW
+ K/1Q==
+X-Gm-Message-State: ABy/qLYlXEFCV7A8l/1UIYjHkhQXxmSlAK7CtDMfyRjZtNjhMtWS4PJ7
+ FW+WQfk7a1knLSuWh94yeu12jEuaAvxPRldpWNeWflwRPp/4HDCVsDaFafgIkKVSgQsLFa6AZZC
+ KzG4hMwZ7Kq6Uyhml3QGIUc7x4cYW1cT6CA==
+X-Received: by 2002:a92:c651:0:b0:347:693a:7300 with SMTP id
+ 17-20020a92c651000000b00347693a7300mr1012086ill.26.1689634327105; 
+ Mon, 17 Jul 2023 15:52:07 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGlBYmCdY1EaUds5QDcX7E6PqePOm9wJTOwk2wgOBkeJp+9wxIVvWJlHjSTuTXhWw/m+atXtQ==
+X-Received: by 2002:a92:c651:0:b0:347:693a:7300 with SMTP id
+ 17-20020a92c651000000b00347693a7300mr1012015ill.26.1689634326829; 
+ Mon, 17 Jul 2023 15:52:06 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ d10-20020a92ddca000000b00341c0710169sm242627ilr.46.2023.07.17.15.52.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Jul 2023 15:12:18 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
- (envelope-from <jgg@ziepe.ca>) id 1qLWS0-002PFZ-GX;
- Mon, 17 Jul 2023 19:12:16 -0300
-Date: Mon, 17 Jul 2023 19:12:16 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Alex Williamson <alex.williamson@redhat.com>
+ Mon, 17 Jul 2023 15:52:06 -0700 (PDT)
+Date: Mon, 17 Jul 2023 16:52:03 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@ziepe.ca>
 Subject: Re: [PATCH 0/2] eventfd: simplify signal helpers
-Message-ID: <ZLW8wEzkhBxd0O0L@ziepe.ca>
+Message-ID: <20230717165203.4ee6b1e6.alex.williamson@redhat.com>
+In-Reply-To: <ZLW8wEzkhBxd0O0L@ziepe.ca>
 References: <20230630155936.3015595-1-jaz@semihalf.com>
  <20230714-gauner-unsolidarisch-fc51f96c61e8@brauner>
  <CAH76GKPF4BjJLrzLBW8k12ATaAGADeMYc2NQ9+j0KgRa0pomUw@mail.gmail.com>
  <20230717130831.0f18381a.alex.williamson@redhat.com>
+ <ZLW8wEzkhBxd0O0L@ziepe.ca>
+Organization: Red Hat
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230717130831.0f18381a.alex.williamson@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,8 +122,8 @@ Cc: linux-aio@kvack.org, Muchun Song <muchun.song@linux.dev>,
  Christian Brauner <brauner@kernel.org>, Grzegorz Jaszczyk <jaz@semihalf.com>,
  Oded Gabbay <ogabbay@kernel.org>, linux-usb@vger.kernel.org,
  Peter Oberparleiter <oberpar@linux.ibm.com>, linux-kernel@vger.kernel.org,
- linux-rdma@vger.kernel.org, Benjamin LaHaise <bcrl@kvack.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Sven Schnelle <svens@linux.ibm.com>,
+ linux-rdma@vger.kernel.org, Benjamin LaHaise <bcrl@kvack.org>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Sven Schnelle <svens@linux.ibm.com>,
  Johannes Weiner <hannes@cmpxchg.org>, linux-fsdevel@vger.kernel.org,
  Paolo Bonzini <pbonzini@redhat.com>, Vitaly Kuznetsov <vkuznets@redhat.com>,
  David Woodhouse <dwmw2@infradead.org>, linuxppc-dev@lists.ozlabs.org,
@@ -124,18 +131,29 @@ Cc: linux-aio@kvack.org, Muchun Song <muchun.song@linux.dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Jul 17, 2023 at 01:08:31PM -0600, Alex Williamson wrote:
+On Mon, 17 Jul 2023 19:12:16 -0300
+Jason Gunthorpe <jgg@ziepe.ca> wrote:
 
-> What would that mechanism be?  We've been iterating on getting the
-> serialization and buffering correct, but I don't know of another means
-> that combines the notification with a value, so we'd likely end up with
-> an eventfd only for notification and a separate ring buffer for
-> notification values.
+> On Mon, Jul 17, 2023 at 01:08:31PM -0600, Alex Williamson wrote:
+> 
+> > What would that mechanism be?  We've been iterating on getting the
+> > serialization and buffering correct, but I don't know of another means
+> > that combines the notification with a value, so we'd likely end up with
+> > an eventfd only for notification and a separate ring buffer for
+> > notification values.  
+> 
+> All FDs do this. You just have to make a FD with custom
+> file_operations that does what this wants. The uAPI shouldn't be able
+> to tell if the FD is backing it with an eventfd or otherwise. Have the
+> kernel return the FD instead of accepting it. Follow the basic design
+> of eg mlx5vf_save_fops
 
-All FDs do this. You just have to make a FD with custom
-file_operations that does what this wants. The uAPI shouldn't be able
-to tell if the FD is backing it with an eventfd or otherwise. Have the
-kernel return the FD instead of accepting it. Follow the basic design
-of eg mlx5vf_save_fops
+Sure, userspace could poll on any fd and read a value from it, but at
+that point we're essentially duplicating a lot of what eventfd provides
+for a minor(?) semantic difference over how the counter value is
+interpreted.  Using an actual eventfd allows the ACPI notification to
+work as just another interrupt index within the existing vfio IRQ uAPI.
+Thanks,
 
-Jason
+Alex
+
