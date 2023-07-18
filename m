@@ -2,45 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32D797579D6
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Jul 2023 12:56:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E80B7579BF
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Jul 2023 12:55:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 93E4F10E318;
-	Tue, 18 Jul 2023 10:56:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EDB3910E31D;
+	Tue, 18 Jul 2023 10:55:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B1D8510E313;
- Tue, 18 Jul 2023 10:55:47 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 50B9610E313;
+ Tue, 18 Jul 2023 10:55:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1689677747; x=1721213747;
+ t=1689677748; x=1721213748;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=2kx4I+YnPJxcdyT5PnLXXnGZK3e6jUr7CMAjY67u6z4=;
- b=ktJGzrdOGk9Uzq4H98CdfEPqU4IvjWoGo7a+bWN0tIKoq6xdbZ52EGz5
- CrXZe6x56fbLIT0S/aqFXg+3m/Wpc4izcXOh6W5nFK+8WgUzN/lL7oE4D
- LbyKQUOcZ3wdFQ45sVmVJMpifYhva96VTwDqgWlEGcok+wjY3VWVGnwvT
- CBIA853Gz5hbAuqhuS4yFfwKGB53Z7fL2WV4exK1gou4s7wp8MQ/1CjxI
- 6ZqoQXROGVXGZNaog3vystm0XpKZs+ov/AUrm8tTtmYDPhDZZW2KIZe1v
- mcq2F96WesJST29tAcRE5f5HDuqcZUIB0d0TPdR3PKZ/D0N24vD0iEbnl w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="452553577"
-X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; d="scan'208";a="452553577"
+ bh=EWiBEHRsg5mOdeIGrk7v2bxlQYc8MQMuKZq0KXdeifc=;
+ b=nr1FJ8b2NNKykkJT+tqgerjNRcxg6cp3U5BqGEmM6Y0l2SSiByMkXMgY
+ h0wcnYmPN6yHSEXmnf++4niNx6frpWd9OWxuuwfiepm2B5Y5KAKDbh4/h
+ gmk7sod+BNDY+ZAqRL4kOP3dPx0goEgnAKBe2IG6uhiKOOOpsFVHljrTm
+ AJBOVTbh2NYiXUqm1uu6bWU5/CYgjEivhGxh0icZswiXqUfarH2vYHn6g
+ pOxYriEXQj09cueTEXX6gt4lTvkznu6y6h8FCQPzdQRc+uW4QjZAUFxdO
+ l45aBhtkrVDDrcZLurcV0qyy0RGUl9piXHHc0wrdOu3M7ytOhrq1MZn20 g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="452553588"
+X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; d="scan'208";a="452553588"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Jul 2023 03:55:47 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="673863811"
-X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; d="scan'208";a="673863811"
+X-IronPort-AV: E=McAfee;i="6600,9927,10774"; a="673863814"
+X-IronPort-AV: E=Sophos;i="6.01,214,1684825200"; d="scan'208";a="673863814"
 Received: from 984fee00a4c6.jf.intel.com ([10.165.58.231])
  by orsmga003.jf.intel.com with ESMTP; 18 Jul 2023 03:55:47 -0700
 From: Yi Liu <yi.l.liu@intel.com>
 To: alex.williamson@redhat.com,
 	jgg@nvidia.com,
 	kevin.tian@intel.com
-Subject: [PATCH v10 06/10] vfio: Mark cdev usage in vfio_device
-Date: Tue, 18 Jul 2023 03:55:38 -0700
-Message-Id: <20230718105542.4138-7-yi.l.liu@intel.com>
+Subject: [PATCH v10 07/10] vfio: Add helper to search vfio_device in a dev_set
+Date: Tue, 18 Jul 2023 03:55:39 -0700
+Message-Id: <20230718105542.4138-8-yi.l.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20230718105542.4138-1-yi.l.liu@intel.com>
 References: <20230718105542.4138-1-yi.l.liu@intel.com>
@@ -70,36 +70,84 @@ Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This can be used to differentiate whether to report group_id or devid in
-the revised VFIO_DEVICE_GET_PCI_HOT_RESET_INFO ioctl. At this moment, no
-cdev path yet, so the vfio_device_cdev_opened() helper always returns false.
+There are drivers that need to search vfio_device within a given dev_set.
+e.g. vfio-pci. So add a helper.
 
-Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+vfio_pci_is_device_in_set() now returns -EBUSY in commit a882c16a2b7e
+("vfio/pci: Change vfio_pci_try_bus_reset() to use the dev_set") where
+it was trying to preserve the return of vfio_pci_try_zap_and_vma_lock_cb().
+However, it makes more sense to return -ENODEV.
+
+Suggested-by: Alex Williamson <alex.williamson@redhat.com>
 Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 Tested-by: Yanting Jiang <yanting.jiang@intel.com>
 Tested-by: Terrence Xu <terrence.xu@intel.com>
 Tested-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
 Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 ---
- include/linux/vfio.h | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/vfio/pci/vfio_pci_core.c |  6 +-----
+ drivers/vfio/vfio_main.c         | 15 +++++++++++++++
+ include/linux/vfio.h             |  3 +++
+ 3 files changed, 19 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/vfio/pci/vfio_pci_core.c b/drivers/vfio/pci/vfio_pci_core.c
+index 3d595ad2ed0a..5b5316a5484a 100644
+--- a/drivers/vfio/pci/vfio_pci_core.c
++++ b/drivers/vfio/pci/vfio_pci_core.c
+@@ -2377,12 +2377,8 @@ static bool vfio_dev_in_groups(struct vfio_pci_core_device *vdev,
+ static int vfio_pci_is_device_in_set(struct pci_dev *pdev, void *data)
+ {
+ 	struct vfio_device_set *dev_set = data;
+-	struct vfio_device *cur;
+ 
+-	list_for_each_entry(cur, &dev_set->device_list, dev_set_list)
+-		if (cur->dev == &pdev->dev)
+-			return 0;
+-	return -EBUSY;
++	return vfio_find_device_in_devset(dev_set, &pdev->dev) ? 0 : -ENODEV;
+ }
+ 
+ /*
+diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
+index f0ca33b2e1df..ab4f3a794f78 100644
+--- a/drivers/vfio/vfio_main.c
++++ b/drivers/vfio/vfio_main.c
+@@ -141,6 +141,21 @@ unsigned int vfio_device_set_open_count(struct vfio_device_set *dev_set)
+ }
+ EXPORT_SYMBOL_GPL(vfio_device_set_open_count);
+ 
++struct vfio_device *
++vfio_find_device_in_devset(struct vfio_device_set *dev_set,
++			   struct device *dev)
++{
++	struct vfio_device *cur;
++
++	lockdep_assert_held(&dev_set->lock);
++
++	list_for_each_entry(cur, &dev_set->device_list, dev_set_list)
++		if (cur->dev == dev)
++			return cur;
++	return NULL;
++}
++EXPORT_SYMBOL_GPL(vfio_find_device_in_devset);
++
+ /*
+  * Device objects - create, release, get, put, search
+  */
 diff --git a/include/linux/vfio.h b/include/linux/vfio.h
-index 2c137ea94a3e..2a45853773a6 100644
+index 2a45853773a6..ee120d2d530b 100644
 --- a/include/linux/vfio.h
 +++ b/include/linux/vfio.h
-@@ -139,6 +139,11 @@ int vfio_iommufd_emulated_attach_ioas(struct vfio_device *vdev, u32 *pt_id);
- 	((int (*)(struct vfio_device *vdev, u32 *pt_id)) NULL)
- #endif
+@@ -244,6 +244,9 @@ void vfio_unregister_group_dev(struct vfio_device *device);
  
-+static inline bool vfio_device_cdev_opened(struct vfio_device *device)
-+{
-+	return false;
-+}
-+
- /**
-  * struct vfio_migration_ops - VFIO bus device driver migration callbacks
-  *
+ int vfio_assign_device_set(struct vfio_device *device, void *set_id);
+ unsigned int vfio_device_set_open_count(struct vfio_device_set *dev_set);
++struct vfio_device *
++vfio_find_device_in_devset(struct vfio_device_set *dev_set,
++			   struct device *dev);
+ 
+ int vfio_mig_get_next_state(struct vfio_device *device,
+ 			    enum vfio_device_mig_state cur_fsm,
 -- 
 2.34.1
 
