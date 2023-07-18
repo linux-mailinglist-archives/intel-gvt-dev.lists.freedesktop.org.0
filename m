@@ -1,74 +1,108 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 048E5758175
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Jul 2023 17:56:45 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6705B75828D
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Jul 2023 18:54:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D65E710E1B7;
-	Tue, 18 Jul 2023 15:56:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 19D4510E381;
+	Tue, 18 Jul 2023 16:54:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-qt1-x833.google.com (mail-qt1-x833.google.com
- [IPv6:2607:f8b0:4864:20::833])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5B0E410E1B7
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Jul 2023 15:56:41 +0000 (UTC)
-Received: by mail-qt1-x833.google.com with SMTP id
- d75a77b69052e-403ea0a50f7so18789111cf.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Jul 2023 08:56:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ziepe.ca; s=google; t=1689695800; x=1692287800;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=Tjh+qVHNBsaCt+fpZytXbv4JtN2Kf+QfiKBiC+OQp3c=;
- b=bYsTsBY1ioUL9k8drjTPCTw/fEJ0EAlGX5g4owJLPMPxN2CHLKUwbHRdsGU8yNpkgq
- tSJhCUQojCe7iZMsDT/aY34J1oz2QHRzCjLM+KqEBEo9M8BD2KOp45IRPvgTMkckJ6dq
- H9fFQEgiHBZaevHiGZSqEfXqcoEtLjezHUCteBqtpUndGthYRfcrzEkhL4CGHaIFAcmx
- 6wdKboUdDaPeOVdQT0aOEr8C1+gySsRWrc1UqrjcLLXuhZDet2FHUgbuPzKGfDMScL/V
- K78x7SFpD7MaWzPqAIp0HWYQyARw7uG7tneLlNjtBlR/Fv5UIeG6Vm/K9G6rR6HJEl7q
- 8oNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689695800; x=1692287800;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Tjh+qVHNBsaCt+fpZytXbv4JtN2Kf+QfiKBiC+OQp3c=;
- b=Rttn/WrA7el2bVKnQR1U12BsyFM29cvggc9lZc5ijG6TWDkXoY4AnYPdbxIdxnEuw7
- aufZH5LFjam/QI2KQMLVLe+GQCTAXxryG3HcXMIz3TtLhfpY4kUR+nvGXNAfBCJLFTa7
- 8tujW2oZ5w7wrcxB3mewLxU73c0+VZgunWXyyS6zviJkETZr/lfPowpg0g/XjpwLG7Dj
- GU+TWdsTyvBlSkbP3Y5796u+VYpltd3HEgjIsX1loql6kboPYdgUsWX6TjLnQsCvXJo0
- T6CnClO8w6TQGRYNOqatoSe09/OZg3A9+6ffbXX6EWE3G/zx2TIxOg/uJwFrd/PwlY2x
- q+Fg==
-X-Gm-Message-State: ABy/qLY1gBTMJIk+Tqzk0LuwUaumnbRLWmzZ+MJsVf3xlVc+6O/LnPfa
- 0nGn5miYPwcTJCVfalI2cCZfTQ==
-X-Google-Smtp-Source: APBJJlFA9677r6PhZxjwKlQ1fKWxhiNMVqP6N1YqyjTADbRS7wwnXs7xld1btAoYMOwt7mM3Vw+c9w==
-X-Received: by 2002:ac8:7dd0:0:b0:403:a814:ef4d with SMTP id
- c16-20020ac87dd0000000b00403a814ef4dmr21293071qte.49.1689695800050; 
- Tue, 18 Jul 2023 08:56:40 -0700 (PDT)
-Received: from ziepe.ca ([206.223.160.26]) by smtp.gmail.com with ESMTPSA id
- s21-20020ac87595000000b003e635f80e72sm727847qtq.48.2023.07.18.08.56.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Jul 2023 08:56:39 -0700 (PDT)
-Received: from jgg by wakko with local (Exim 4.95)
- (envelope-from <jgg@ziepe.ca>) id 1qLn42-002YJT-5I;
- Tue, 18 Jul 2023 12:56:38 -0300
-Date: Tue, 18 Jul 2023 12:56:38 -0300
-From: Jason Gunthorpe <jgg@ziepe.ca>
-To: Alex Williamson <alex.williamson@redhat.com>
-Subject: Re: [PATCH 0/2] eventfd: simplify signal helpers
-Message-ID: <ZLa2NmwexoxPkS9a@ziepe.ca>
-References: <20230630155936.3015595-1-jaz@semihalf.com>
- <20230714-gauner-unsolidarisch-fc51f96c61e8@brauner>
- <CAH76GKPF4BjJLrzLBW8k12ATaAGADeMYc2NQ9+j0KgRa0pomUw@mail.gmail.com>
- <20230717130831.0f18381a.alex.williamson@redhat.com>
- <ZLW8wEzkhBxd0O0L@ziepe.ca>
- <20230717165203.4ee6b1e6.alex.williamson@redhat.com>
-MIME-Version: 1.0
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam04on2063.outbound.protection.outlook.com [40.107.102.63])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D66FF10E381;
+ Tue, 18 Jul 2023 16:54:37 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=L2Ebr1BOMQOixHlBXFN3rTU1GnwSNUPJDClQymAtjl4cl84Eczee/MKOSRI63nmywYXfnyFgWRlfAFig5w5qIUan25Iq68RdTtT37gz1Z2MwSDl8tp57IyiYjcMjX15ld6k4e11dlo4b65NYjTe1DVMdsGja9BL3TQ23xTg+RdijFqDK5ghJKnGjVb59ed8ruPtUKoBuPRLvionbkYGmyMXy7NH8EZuIJiE7ihgajH3pa1Fr1pkSOk1tk7ahnDs11li8Sz2NtFMWicyK3Le7vAZuCBaT0fRZTHzjLn6SLJXQNWRtc2bBeU+agwLfcfiK5Vmxk/HZYqHLxcacHGD/KA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bzhmUI3ZnY89ioDsovVs/i3fA+ZiVVUpRhXr7ctVnoA=;
+ b=a4dsSWatJyboXzMK4DUuJ2SsSdU5dskCYsyJ6MXzE7tY57IDG0ETACvdJdsB1TOJnym+tC6ruRSKcvTdxkb3u5KjcBXXb1TJmttxhuX9w9Ic/lLbtnOw+Q4q/REle88t5Igk6RcjuPLlnW+A1iwjx+cZlYOe0tOsRO14dt83ZU2Vqv6s+Frh0IbA8YqkNerTnP2AT2krwYmWOAkqK17Sa2q4tN9jHTaTsR3IRRfVJMjHXsFAz6oOqLSgoJ7iOT9LKsEs3Z4oE8KW6Y3K3G+WJaK7Tt+WsQFo0OZpzbpbAf4+k9oOZmGrluZS5fobAkuwYm0KCr9qxQGLdMBYa9n/9A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bzhmUI3ZnY89ioDsovVs/i3fA+ZiVVUpRhXr7ctVnoA=;
+ b=WtJrxNa7WHCnpV2WicvKZ5ziD/mGHRNaxIK/j4cZFFGgbm/zRZqIzQpI3XzL5lZbjR6sM5DFrgPG34GQtKrdznKVEKoLqQQXqRk7ypoLhSxJCxE8l90PkrFU7yfcWomnJ2nOal+jpeOVk6XTEBNFdPnC0rAYv0YEII6TDH08/1w/Gs0R/5IwZeMmgSqkdmYWCdONa49jNKySETWlrudji38PM42lpQC7HvTdMw/q+mEW4ksykiOBi+x/4thYESWT5Lot0cRPG37JtXexMLZmm4YnKMNilTOrYs52pP6nZCofTzNySnBImfj89qfD+2T1d6ALb08tbSjgj9yEbGpYkg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com (2603:10b6:408:176::16)
+ by SJ2PR12MB9139.namprd12.prod.outlook.com (2603:10b6:a03:564::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6588.31; Tue, 18 Jul
+ 2023 16:54:34 +0000
+Received: from LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1]) by LV2PR12MB5869.namprd12.prod.outlook.com
+ ([fe80::5111:16e8:5afe:1da1%6]) with mapi id 15.20.6588.031; Tue, 18 Jul 2023
+ 16:54:33 +0000
+Date: Tue, 18 Jul 2023 13:54:30 -0300
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Yi Liu <yi.l.liu@intel.com>
+Subject: Re: [PATCH v10 09/10] vfio/pci: Copy hot-reset device info to
+ userspace in the devices loop
+Message-ID: <ZLbDxktjv9fjrT5p@nvidia.com>
+References: <20230718105542.4138-1-yi.l.liu@intel.com>
+ <20230718105542.4138-10-yi.l.liu@intel.com>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230717165203.4ee6b1e6.alex.williamson@redhat.com>
+In-Reply-To: <20230718105542.4138-10-yi.l.liu@intel.com>
+X-ClientProxiedBy: SJ0PR03CA0347.namprd03.prod.outlook.com
+ (2603:10b6:a03:39c::22) To LV2PR12MB5869.namprd12.prod.outlook.com
+ (2603:10b6:408:176::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV2PR12MB5869:EE_|SJ2PR12MB9139:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6351383b-e436-4cf4-84fd-08db87afa956
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: C3RQwIHJKH6d5vddFcIKPJ1XSEKpkSATobQyIbky6rzD95RCJpWu3PYJXiRnzHu4BLcsjfj2E2lQ/3IRfxa2LW6IzVD82YJz6YfQEkTdZCp2fyCirtP9V/UxgMUYahbWUTVJQmj3LS+FQJzHmrp1e4+MlzLY2x6snY0Dhh/0NQrIF/duN/LPffda1BqM3qo8RXigVlKnDw8voJcn6jf1LeMjalJpxvrWgF2dG6D0D7NzntcpV7Tz9i/FW6eqCeLITfcowelaEQbFdkiJpnz+2qAhYORUE/e8/fjmcKCYArlSh5FPNVJDI8L5xlpcch1EyVA0GEc/QOSX+MkHz3+Vnvw8m/zktRjSsSo8jfXaf3Y8KMcIoNmvM9k7yE3Gi2UfAK8YyMKoTzESlwDA3UjnXCFB/hxg43a9RMW6Zp+utKjvFWYOKd2+Qi0TTasOfiW10xltpGaVJzdi9amU8mUs3baHry5XZfiFVZfV+hV6EUZ6TZvMMzlHcEmFBVj5IjWH4GRfwipB3A0S0FOiRnczg/TP52Kz96Ptcp1DLATJVQv8ZY2JftCMO8HwQr1HmCDj
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:LV2PR12MB5869.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(4636009)(39860400002)(366004)(346002)(376002)(396003)(136003)(451199021)(7416002)(86362001)(36756003)(4744005)(2906002)(2616005)(186003)(6512007)(83380400001)(6506007)(26005)(38100700002)(6486002)(478600001)(316002)(66556008)(66946007)(66476007)(5660300002)(4326008)(6916009)(41300700001)(8936002)(8676002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?m7NyoI9B6PDsHQYrgakaEt3AFlOuYpNLtd97+gHx3Pa58FZc6CcZiH+ITSxk?=
+ =?us-ascii?Q?Tzd9dFdm3B4aj8CRRDzGYUkKpmA+Pl1frqP5v5qm3ifXZLxc7WFZ+o9zd06O?=
+ =?us-ascii?Q?/Cf0wADuXe/mYH462o1KloarsxMhz4CZJscpF3FQWaGoIh8W9mMDP33xXN5A?=
+ =?us-ascii?Q?xsmAv+i6nzfui2Z+M96ORrAeH7woTzSVJU4xQ1N7cI/1Fkys7MlYpE+RjEzb?=
+ =?us-ascii?Q?6bemGnEXpwWZ+jlaGxbCIHnZSlmp6DKOQmtZWUH/v73hcT6K1vrpiqIZN4Eo?=
+ =?us-ascii?Q?2GYNOLqfOoV6KG+Ijtlk/YJy0rFWpqZ3eFjReT4iK/BeOfokSe7C0VKrftSp?=
+ =?us-ascii?Q?7N4U3LsgR4joFGVa8nRrZ5Gjln74BWgXClFVkgt4DM9ElD5Ywa00W4SurKGm?=
+ =?us-ascii?Q?WYhinQx7AfkjxxF50cbOn6YXYi5yPk0z07ksvE4EB36dZkN1oPdhHkpx1UvL?=
+ =?us-ascii?Q?DgG0orlHXSA8KaCB1O2bk0JDaI+3DBfzT5xW8ho4Al9YQ7vPQQB8NS6xQUyJ?=
+ =?us-ascii?Q?zLzQxjV+muNGdCpBb4Srt+2btS9vcK/Yfh4w/cvcxqhdwFApwBI+cU5swnXm?=
+ =?us-ascii?Q?zGsCi9bby1ul0Es+Gsz9UeSX0An4YW6pYh8BBfZ6YCqaZEja1b4yKdndW2kK?=
+ =?us-ascii?Q?Gc8nz0yxME3ySn4KXTiQ8fsktwgWEMfaKFCu78eJTsLiCtQKQzq86Yb8AB6k?=
+ =?us-ascii?Q?vXfFbZ0VQ2VMh088wGE47gtPXmV5AL49bVhcaH8G7MkT6BwFCYERDSmo4Bpt?=
+ =?us-ascii?Q?5Ou92lf15xDzEz5biTTPPjq46y1bcgH6OThS3JuD+s8K6xoNuNnDOAsAnqjK?=
+ =?us-ascii?Q?HFDZh/IXyKOsf8FXkCVCMJadrPIDttUccuwzalygK7SfWQlwPSqnUN2hZgUd?=
+ =?us-ascii?Q?KbWwvyVMh23aicfKesgZtRUZjB6XZjMcXcVvhxPLfVStM0MmLSEFbqE6xgHE?=
+ =?us-ascii?Q?lLbjRzbW+c7+o2qKDBQy19izwQ28CkJ/B1ScLbXw2BOY0vcq3lsXdh5HVhTW?=
+ =?us-ascii?Q?jic6vHm1xGcoXZwzLdiYeZUHaZ6FXxmgqK59OIr+YyNfXd8IJtF+7i9Tauwy?=
+ =?us-ascii?Q?AQJhVluYir33uhxyb9lIRLTjXYbHi49bcNxqbMA66d5/aBj+i731pmGKZm97?=
+ =?us-ascii?Q?Loz/DM/YucMlNuRbHDeRXzWpHwjL+pBpVTaDhaZyahPS3jaMeDbhBNzsK95e?=
+ =?us-ascii?Q?pgHc1g9jDP1LK8Nk3jEqiO55pk+yO4iTP5Mrzn4OL3AZelBAkzi2wBaavhfn?=
+ =?us-ascii?Q?9PnQ55eC0WfYy6YntYWxjB7zgdVLJsokiJpJToYeITJaQsheL+xb7Q+wonfW?=
+ =?us-ascii?Q?D/w3pkbqX3bf/TItEktb6jc33z3MAuK5nq4lEyKlBmurA0ldkhK7jpCnYZrW?=
+ =?us-ascii?Q?JYCDOHrWPefy3dx9hY98oAq8bxDI9TqgybDgYIClMaaLTstuPoDhAZriJ4mU?=
+ =?us-ascii?Q?+xEjJmkK3jjyJ0ZYfRFqfT+kLCFnRgpWO6B56L2IjNhL6P6AC4wmhTkQIPk0?=
+ =?us-ascii?Q?g6wZ8A6aVQTEaoN3c3JjQ2HFPVG7EYwPI+6nMbcigOkQygVVFHAZ7pHmEf6p?=
+ =?us-ascii?Q?KX6P8eAw1sM2agdvD/ps/yfn99cL23wnVVDST0M0?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6351383b-e436-4cf4-84fd-08db87afa956
+X-MS-Exchange-CrossTenant-AuthSource: LV2PR12MB5869.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jul 2023 16:54:33.4740 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: LfvMrJGTvo4sUNt0uJTDMvjRnlSkeaj0Jhp/eM4s0sd3rtXyQpYxnjSYSBG1XpUD
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB9139
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,81 +115,34 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-aio@kvack.org, Muchun Song <muchun.song@linux.dev>,
- Tony Krowiak <akrowiak@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Paul Durrant <paul@xen.org>, Tom Rix <trix@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Roman Gushchin <roman.gushchin@linux.dev>,
- dri-devel@lists.freedesktop.org, Michal Hocko <mhocko@kernel.org>,
- Heiko Carstens <hca@linux.ibm.com>, linux-mm@kvack.org,
- Kirti Wankhede <kwankhede@nvidia.com>, netdev@vger.kernel.org,
- Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>, Borislav Petkov <bp@alien8.de>,
- Alexander Gordeev <agordeev@linux.ibm.com>, Fei Li <fei1.li@intel.com>,
- Xuan Zhuo <xuanzhuo@linux.alibaba.com>, Marcin Wojtas <mw@semihalf.com>,
- Arnd Bergmann <arnd@arndb.de>, Leon Romanovsky <leon@kernel.org>,
- Harald Freudenberger <freude@linux.ibm.com>, x86@kernel.org,
- Halil Pasic <pasic@linux.ibm.com>, Ingo Molnar <mingo@redhat.com>,
- Moritz Fischer <mdf@kernel.org>, Frederic Barrat <fbarrat@linux.ibm.com>,
- Xu Yilun <yilun.xu@intel.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, linux-fpga@vger.kernel.org,
- Zhi Wang <zhi.a.wang@intel.com>, Wu Hao <hao.wu@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Dave Hansen <dave.hansen@linux.intel.com>,
- Andrew Donnellan <ajd@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- linux-s390@vger.kernel.org, Dominik Behr <dbehr@chromium.org>,
- intel-gfx@lists.freedesktop.org, Sean Christopherson <seanjc@google.com>,
- Eric Auger <eric.auger@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Shakeel Butt <shakeelb@google.com>, kvm@vger.kernel.org,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, cgroups@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>,
- virtualization@lists.linux-foundation.org, intel-gvt-dev@lists.freedesktop.org,
- io-uring@vger.kernel.org, Jens Axboe <axboe@kernel.dk>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Christian Brauner <brauner@kernel.org>, Grzegorz Jaszczyk <jaz@semihalf.com>,
- Oded Gabbay <ogabbay@kernel.org>, linux-usb@vger.kernel.org,
- Peter Oberparleiter <oberpar@linux.ibm.com>, linux-kernel@vger.kernel.org,
- linux-rdma@vger.kernel.org, Benjamin LaHaise <bcrl@kvack.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Sven Schnelle <svens@linux.ibm.com>,
- Johannes Weiner <hannes@cmpxchg.org>, linux-fsdevel@vger.kernel.org,
- Paolo Bonzini <pbonzini@redhat.com>, Vitaly Kuznetsov <vkuznets@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>, linuxppc-dev@lists.ozlabs.org,
- Pavel Begunkov <asml.silence@gmail.com>
+Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
+ zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
+ chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org, kvm@vger.kernel.org,
+ lulu@redhat.com, yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
+ kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
+ eric.auger@redhat.com, alex.williamson@redhat.com,
+ intel-gvt-dev@lists.freedesktop.org, yi.y.sun@linux.intel.com,
+ clegoate@redhat.com, cohuck@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ suravee.suthikulpanit@amd.com, robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Mon, Jul 17, 2023 at 04:52:03PM -0600, Alex Williamson wrote:
-> On Mon, 17 Jul 2023 19:12:16 -0300
-> Jason Gunthorpe <jgg@ziepe.ca> wrote:
+On Tue, Jul 18, 2023 at 03:55:41AM -0700, Yi Liu wrote:
+> This copies the vfio_pci_dependent_device to userspace during looping each
+> affected device for reporting vfio_pci_hot_reset_info. This avoids counting
+> the affected devices and allocating a potential large buffer to store the
+> vfio_pci_dependent_device of all the affected devices before copying them
+> to userspace.
 > 
-> > On Mon, Jul 17, 2023 at 01:08:31PM -0600, Alex Williamson wrote:
-> > 
-> > > What would that mechanism be?  We've been iterating on getting the
-> > > serialization and buffering correct, but I don't know of another means
-> > > that combines the notification with a value, so we'd likely end up with
-> > > an eventfd only for notification and a separate ring buffer for
-> > > notification values.  
-> > 
-> > All FDs do this. You just have to make a FD with custom
-> > file_operations that does what this wants. The uAPI shouldn't be able
-> > to tell if the FD is backing it with an eventfd or otherwise. Have the
-> > kernel return the FD instead of accepting it. Follow the basic design
-> > of eg mlx5vf_save_fops
-> 
-> Sure, userspace could poll on any fd and read a value from it, but at
-> that point we're essentially duplicating a lot of what eventfd provides
-> for a minor(?) semantic difference over how the counter value is
-> interpreted.  Using an actual eventfd allows the ACPI notification to
-> work as just another interrupt index within the existing vfio IRQ
-> uAPI.
+> Suggested-by: Jason Gunthorpe <jgg@nvidia.com>
+> Tested-by: Yanting Jiang <yanting.jiang@intel.com>
+> Tested-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> ---
+>  drivers/vfio/pci/vfio_pci_core.c | 93 ++++++++++++--------------------
+>  1 file changed, 33 insertions(+), 60 deletions(-)
 
-Yes, duplicated, sort of, whatever the "ack" is to allow pushing a new
-value can be revised to run as part of the read.
-
-But I don't really view it as a minor difference. eventfd is a
-counter. It should not be abused otherwise, even if it can be made to
-work.
-
-It really isn't an IRQ if it is pushing an async message w/data.
+Reviewed-by: Jason Gunthorpe <jgg@nvidia.com>
 
 Jason
