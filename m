@@ -1,58 +1,58 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73E90758723
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 18 Jul 2023 23:27:44 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4633F75C076
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Jul 2023 09:54:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0485710E3BE;
-	Tue, 18 Jul 2023 21:27:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CACAB10E622;
+	Fri, 21 Jul 2023 07:54:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x102c.google.com (mail-pj1-x102c.google.com
- [IPv6:2607:f8b0:4864:20::102c])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 58CC510E3BE
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
+ [IPv6:2a00:1450:4864:20::632])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 6042610E623
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Jul 2023 21:27:41 +0000 (UTC)
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-262d9e75438so4288616a91.2
+ Fri, 21 Jul 2023 07:53:59 +0000 (UTC)
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-9926623e367so267854366b.0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 18 Jul 2023 14:27:41 -0700 (PDT)
+ Fri, 21 Jul 2023 00:53:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1689715660; x=1692307660;
+ d=gmail.com; s=20221208; t=1689926038; x=1690530838;
  h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
  :date:message-id:reply-to;
- bh=yYhIogeIZPjP50kZgCkG4C7a9W+jnWpa2bq+htH+e6E=;
- b=h0aY4y9PsU0g1DEFnJYM0/ru4Oz9G0He7R+gql+2YKDDrQ0+6n1ztlKoKhqBob0+B/
- G6rD6QCAXWOuvsTFwzEdZeWTHqd29QPlpb8iUSB/FV8pqzd/+c6lK10wRMjRoT8eDpNe
- 5mqG5UpB2K5Ey1bf8l3bLGwoLMRsygTsh0QP6xN8UFZLZ9YwAfNkm9CpxHQ43v/NfLCM
- 3xKkxivAMdzF+seRtehK8Tr+ywW3Zwji0EKTxW1R0PsZHDFRX5kGpts2LoNsAK1f5yDq
- 1mDfvNWgr2jRBHX5PTGpes8HXK7mYDMRc5HlSTNFu0QtaHVbEeYZyNdzqoVMDR71DZLn
- vaSA==
+ bh=F13Xyxo0nhFsw5p3aBEVNgn334Hhkzypz5MU1EOkPj4=;
+ b=oI+1KXwSc+pyfYnwnTzqm5ZIPchCnG21SStkCsAuxe5+lh/e1sk9dt15YocHQgNeoS
+ H9i91YtLcWq0EgAO5uVcl1NiZAj0m+Ut7ZU+5/Dm32HF5mbwSA4J/2Pzvi9/xn4PFlIB
+ 6Tv7Y+NpD9GmjW3/WrgrrZmC8C+Ntws4itEpbWZAGB2ZHxkUoKSCesfdLPnV/DlT5XzY
+ +m1l9/Cw1BRzQMA5XGx/BCodbosg0Bl2gcWuVw4bZzuRDQgLc2ZmwLzbCHWxVATvAQwt
+ ZNoGVydqLdaQNUsi6nCIdtaJ8svpVKYu3vdkDlitVQL9Qrg6ciDI+CynbJvp5rpUSwws
+ QobQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689715660; x=1692307660;
+ d=1e100.net; s=20221208; t=1689926038; x=1690530838;
  h=to:subject:message-id:date:from:mime-version:x-gm-message-state
  :from:to:cc:subject:date:message-id:reply-to;
- bh=yYhIogeIZPjP50kZgCkG4C7a9W+jnWpa2bq+htH+e6E=;
- b=gOb9T4i+9BKB6FDmD/s10GH7zzZEL5N0WVPFPYb6Jqm+EazLMnWlomTxL/OkgPsS1C
- FSZuhdZN9Xqeqf3UEVB3oYKVSTdmNlPZTMT4Vum9mR+DYkeueLLW1Xv+7IF8baW+je5p
- 6Q3ZogJvbI8cU0uXAxvYAnqkSmrMJg7mcRRWuoqcl0+diTLSJYxM7f2YJ0imszSNfPVD
- bTF7B5uTExIe5d5wX5DuztvfLF9O9VzZX+SSApSd9blTnBJR9LwEj2GzwX2jLApcl35f
- dA0yfqppiLO6uN8zB3GtBgrbfbajokmiuJ5ivc4iwEC0nIxMvhd2LgZP+8xW2I/yvKd3
- 8XWg==
-X-Gm-Message-State: ABy/qLZKPRXbdR+2zbQx1HfAvLP36ASMM44EpyFDT2VUH6AlHsfQeTkJ
- wN1aDtGTJfxLnlzBpjKhU/b3wsNTSumHIJScpjyElMURc2M=
-X-Google-Smtp-Source: APBJJlFKu7VU0nHk2tyOePRHnlx9WKZspIeFK/ryzMQmKQvGHOmzckdujERNFc7Ce5yuEKdc6rPiqlQXJs/CBZNREFw=
-X-Received: by 2002:a17:90a:71c8:b0:262:f093:e26d with SMTP id
- m8-20020a17090a71c800b00262f093e26dmr313583pjs.46.1689715660075; Tue, 18 Jul
- 2023 14:27:40 -0700 (PDT)
+ bh=F13Xyxo0nhFsw5p3aBEVNgn334Hhkzypz5MU1EOkPj4=;
+ b=kg2UslnWp9nAdOsfQ4wWXz+r6EDXNjpGpmpnlv/uQdKSm+WEo4r7LxOdhvreYEM9hP
+ LXLwaz6+w3QylM886X1Q0vDUkBLKFeNEYpG9JJarfO6JvIbPeOCEVIEoh8G2hXfeOkQB
+ lNpEgBRiA/lR7HzkCSD+c05NcVarmFb7GXEqxBM0oIQrdbDyBz16hJIMOXgsY8IkzU/l
+ sOAlBjN1570nG65jF3mYspB3j8qlh0lsDn2pErnoKxX8onT5KvAAO0N8DnPzhxEcGD9/
+ c0KHTIAHect/aFhc5jVIrvYZWYxm2N8D7Xv9u4K2fTZUU9QoKWNtxYsH3DvqFbf0sgGl
+ gK2w==
+X-Gm-Message-State: ABy/qLZMf3EYnNPzH1M/JnfSidzVgYHNvjU9dqh3XCWbykxcRwOW9M5R
+ JUGLWrsSN2DBz4poSbvKVHEHOA9ea9+Am0Neb9s=
+X-Google-Smtp-Source: APBJJlFQij2Wm2As9n/xSorVMqD8BRu8+SBjn+1CvKU8b0kGxHf7/juu2LQANC4d2gnzoNb3futYdWWXyxcIKqvxBvM=
+X-Received: by 2002:a17:906:cc5b:b0:98d:5ae2:f1c with SMTP id
+ mm27-20020a170906cc5b00b0098d5ae20f1cmr1017515ejb.34.1689926037515; Fri, 21
+ Jul 2023 00:53:57 -0700 (PDT)
 MIME-Version: 1.0
-From: Storm Silva <stormmsilva@gmail.com>
-Date: Tue, 18 Jul 2023 14:27:28 -0700
-Message-ID: <CAA+VxyetHKaseu8eTGjy9bO4uk4Qej-fr6pvqbBA_reJFbDpRg@mail.gmail.com>
-Subject: [PATCH] golden_hw_state failed with error -2
-To: intel-gvt-dev@lists.freedesktop.org
-Content-Type: multipart/alternative; boundary="000000000000b0b90b0600c995e7"
+From: Kris Jaana <krisjaa4@gmail.com>
+Date: Fri, 21 Jul 2023 07:53:46 +0000
+Message-ID: <CABxdz3crsOv3n7an1yVMhyXrp6pCMNK9J7EgpJSfgh9rrWumPw@mail.gmail.com>
+Subject: Antwort
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="00000000000029b4470600fa914a"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,39 +68,64 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---000000000000b0b90b0600c995e7
+--00000000000029b4470600fa914a
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hello, my name is Storm Silva. I submitted an issue in the intel-gvt GitHub
-repo at https://github.com/intel/gvt-linux/issues/212 and have also
-submitted a pull request which would fix issues #212 and #77 at
-https://github.com/intel/gvt-linux/pull/215 but was told that requests
-should be sent to this email to get merged. Can someone please take a look
-at this? It is a simple one-line fix replacing
-ret = request_firmware(&fw, path, gvt->gt->i915->drm.dev); with
-ret = firmware_request_nowarn(&fw, path, gvt->gt->i915->drm.dev); Thank you!
+ Guten Tag. Ich bin Rechtsanwalt Kris Jaana, Rechtsanwalt und
+Staatsangeh=C3=B6riger Togos. Einer meiner Kunden ist gestorben und hat ein=
+en
+riesigen Geldbetrag hier auf einer Bank hinterlassen, und ich m=C3=B6chte, =
+dass
+Sie die Gelder (12,8 Millionen US-Dollar) erhalten, die mein verstorbener
+Kunde aufgrund seines tragischen Todes infolge eines Autounfalls hier in
+einer Bank zur=C3=BCckgelassen hat der 7. Juni 2011. Ich m=C3=B6chte, dass =
+Sie als
+n=C3=A4chster Angeh=C3=B6riger meines verstorbenen Kunden das Geld erhalten=
+. Ich
+werde Sie unterst=C3=BCtzen, damit die Bank hier das Geld an Sie =C3=BCberw=
+eist. Ich
+m=C3=B6chte, dass Sie das Geld erhalten, weil Sie eines mit meinem verstorb=
+enen
+Kunden gemeinsam haben. Und was Sie mit meinem verstorbenen Kunden
+gemeinsam haben, wird die Bank hier zu der Annahme veranlassen, dass Sie
+mit meinem verstorbenen Kunden verwandt sind, und die Gelder, die er Ihnen
+als seinen n=C3=A4chsten Verwandten hinterlassen hat, freigeben. Gr=C3=BC=
+=C3=9Fe,
+Rechtsanwalt Kris Jaana.
 
---000000000000b0b90b0600c995e7
+--00000000000029b4470600fa914a
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Hello, my name is Storm Silva. I submitted an issue in the=
- intel-gvt GitHub repo at=C2=A0<a href=3D"https://github.com/intel/gvt-linu=
-x/issues/212">https://github.com/intel/gvt-linux/issues/212</a>=C2=A0and ha=
-ve also submitted=C2=A0a pull request which would fix issues #212 and #77 a=
-t=C2=A0<a href=3D"https://github.com/intel/gvt-linux/pull/215">https://gith=
-ub.com/intel/gvt-linux/pull/215</a> but was told that requests should be se=
-nt to this email to get merged. Can someone please take a look at this? It =
-is a simple one-line fix replacing=C2=A0<br><span style=3D"color:rgb(31,35,=
-40);font-family:ui-monospace,SFMono-Regular,&quot;SF Mono&quot;,Menlo,Conso=
-las,&quot;Liberation Mono&quot;,monospace;font-size:11.9px;background-color=
-:rgba(175,184,193,0.2)">ret =3D request_firmware(&amp;fw, path, gvt-&gt;gt-=
-&gt;i915-&gt;<a href=3D"http://drm.dev">drm.dev</a>);
-</span>with<br><span style=3D"color:rgb(31,35,40);font-family:ui-monospace,=
-SFMono-Regular,&quot;SF Mono&quot;,Menlo,Consolas,&quot;Liberation Mono&quo=
-t;,monospace;font-size:11.9px;background-color:rgba(175,184,193,0.2)">ret =
-=3D firmware_request_nowarn(&amp;fw, path, gvt-&gt;gt-&gt;i915-&gt;<a href=
-=3D"http://drm.dev">drm.dev</a>);
-</span>Thank you!</div>
+<div dir=3D"ltr">
+<span class=3D"gmail-HwtZe" lang=3D"de"><span class=3D"gmail-jCAhz gmail-Ch=
+Mk0b gmail-Jj6Lae"><span class=3D"gmail-ryNqvb">Guten Tag.</span></span> <s=
+pan class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span class=3D"gmail-ry=
+Nqvb">Ich bin Rechtsanwalt Kris Jaana, Rechtsanwalt und Staatsangeh=C3=B6ri=
+ger Togos.</span></span> <span class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6L=
+ae"><span class=3D"gmail-ryNqvb">Einer meiner Kunden ist gestorben und hat =
+einen riesigen Geldbetrag hier auf einer Bank hinterlassen, und ich m=C3=B6=
+chte, dass Sie die Gelder (12,8 Millionen US-Dollar) erhalten, die mein ver=
+storbener Kunde aufgrund seines tragischen Todes infolge eines Autounfalls =
+hier in einer Bank zur=C3=BCckgelassen hat</span></span> <span class=3D"gma=
+il-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span class=3D"gmail-ryNqvb">der 7. Jun=
+i 2011.</span></span> <span class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"=
+><span class=3D"gmail-ryNqvb">Ich m=C3=B6chte, dass Sie als n=C3=A4chster A=
+ngeh=C3=B6riger meines verstorbenen Kunden das Geld erhalten.</span></span>=
+ <span class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span class=3D"gmail=
+-ryNqvb">Ich werde Sie unterst=C3=BCtzen, damit die Bank hier das Geld an S=
+ie =C3=BCberweist.</span></span> <span class=3D"gmail-jCAhz gmail-ChMk0b gm=
+ail-Jj6Lae"><span class=3D"gmail-ryNqvb">Ich m=C3=B6chte, dass Sie das Geld=
+ erhalten, weil Sie eines mit meinem verstorbenen Kunden gemeinsam haben.</=
+span></span> <span class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span cl=
+ass=3D"gmail-ryNqvb">Und was Sie mit meinem verstorbenen Kunden gemeinsam h=
+aben, wird die Bank hier zu der Annahme veranlassen, dass Sie mit meinem ve=
+rstorbenen Kunden verwandt sind, und die Gelder, die er Ihnen als seinen n=
+=C3=A4chsten Verwandten hinterlassen hat, freigeben.</span></span> <span cl=
+ass=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span class=3D"gmail-ryNqvb">=
+Gr=C3=BC=C3=9Fe, Rechtsanwalt Kris Jaana.</span></span></span>
 
---000000000000b0b90b0600c995e7--
+</div>
+
+--00000000000029b4470600fa914a--
