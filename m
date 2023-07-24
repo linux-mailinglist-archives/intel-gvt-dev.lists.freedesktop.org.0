@@ -1,58 +1,78 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4633F75C076
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 21 Jul 2023 09:54:02 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C86AF75FF8C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Jul 2023 21:09:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CACAB10E622;
-	Fri, 21 Jul 2023 07:54:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E7AA710E115;
+	Mon, 24 Jul 2023 19:09:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
- [IPv6:2a00:1450:4864:20::632])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6042610E623
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 83C5810E115
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Jul 2023 07:53:59 +0000 (UTC)
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-9926623e367so267854366b.0
+ Mon, 24 Jul 2023 19:09:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1690225769;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WawsHdGpz2PcjK+rzMy9rXk7uFt8JlrwIupXE53S044=;
+ b=OhNcLwK5ozcz3RCrdyaGaeY79Go/i9cqA8kGQSfEvTyNXjeYsGT7+2+p84vLO6aYnQBwjO
+ jp5b8ARH3JBssjH84KPodnDwDlEFcPlz6b2kC5Ss+FHmXs3Y+Adn1O8GUwFY1BGrG+vRZi
+ orMSkmDcsrmV8pnhW+yra6hCOLcfxMk=
+Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
+ [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-623-RVOjpeieOmGpng-gghIrLA-1; Mon, 24 Jul 2023 15:09:26 -0400
+X-MC-Unique: RVOjpeieOmGpng-gghIrLA-1
+Received: by mail-io1-f69.google.com with SMTP id
+ ca18e2360f4ac-77e3eaa1343so239969539f.2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 21 Jul 2023 00:53:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1689926038; x=1690530838;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=F13Xyxo0nhFsw5p3aBEVNgn334Hhkzypz5MU1EOkPj4=;
- b=oI+1KXwSc+pyfYnwnTzqm5ZIPchCnG21SStkCsAuxe5+lh/e1sk9dt15YocHQgNeoS
- H9i91YtLcWq0EgAO5uVcl1NiZAj0m+Ut7ZU+5/Dm32HF5mbwSA4J/2Pzvi9/xn4PFlIB
- 6Tv7Y+NpD9GmjW3/WrgrrZmC8C+Ntws4itEpbWZAGB2ZHxkUoKSCesfdLPnV/DlT5XzY
- +m1l9/Cw1BRzQMA5XGx/BCodbosg0Bl2gcWuVw4bZzuRDQgLc2ZmwLzbCHWxVATvAQwt
- ZNoGVydqLdaQNUsi6nCIdtaJ8svpVKYu3vdkDlitVQL9Qrg6ciDI+CynbJvp5rpUSwws
- QobQ==
+ Mon, 24 Jul 2023 12:09:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689926038; x=1690530838;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ d=1e100.net; s=20221208; t=1690225765; x=1690830565;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
  :from:to:cc:subject:date:message-id:reply-to;
- bh=F13Xyxo0nhFsw5p3aBEVNgn334Hhkzypz5MU1EOkPj4=;
- b=kg2UslnWp9nAdOsfQ4wWXz+r6EDXNjpGpmpnlv/uQdKSm+WEo4r7LxOdhvreYEM9hP
- LXLwaz6+w3QylM886X1Q0vDUkBLKFeNEYpG9JJarfO6JvIbPeOCEVIEoh8G2hXfeOkQB
- lNpEgBRiA/lR7HzkCSD+c05NcVarmFb7GXEqxBM0oIQrdbDyBz16hJIMOXgsY8IkzU/l
- sOAlBjN1570nG65jF3mYspB3j8qlh0lsDn2pErnoKxX8onT5KvAAO0N8DnPzhxEcGD9/
- c0KHTIAHect/aFhc5jVIrvYZWYxm2N8D7Xv9u4K2fTZUU9QoKWNtxYsH3DvqFbf0sgGl
- gK2w==
-X-Gm-Message-State: ABy/qLZMf3EYnNPzH1M/JnfSidzVgYHNvjU9dqh3XCWbykxcRwOW9M5R
- JUGLWrsSN2DBz4poSbvKVHEHOA9ea9+Am0Neb9s=
-X-Google-Smtp-Source: APBJJlFQij2Wm2As9n/xSorVMqD8BRu8+SBjn+1CvKU8b0kGxHf7/juu2LQANC4d2gnzoNb3futYdWWXyxcIKqvxBvM=
-X-Received: by 2002:a17:906:cc5b:b0:98d:5ae2:f1c with SMTP id
- mm27-20020a170906cc5b00b0098d5ae20f1cmr1017515ejb.34.1689926037515; Fri, 21
- Jul 2023 00:53:57 -0700 (PDT)
+ bh=WawsHdGpz2PcjK+rzMy9rXk7uFt8JlrwIupXE53S044=;
+ b=TZVar1noEvADMTpXEcZ8gnV4nFG4Cxsfz79Pn+ncpXRYBCwlYGrZDz0OHHuBBVuFZ1
+ 7zqOSu/PoLUoJfyY0Lv3EEVkWemdpn+cAt5lkxYcm55FX74I8ioN9u/1aZsqs+ebjh/j
+ UYHnprcIlfdKESRDvcks7Eh3qotROE6D74bIN+iB6GaXEKRtrXtXu5OveNsflzt3mdnO
+ PrQfQtpRuOcGFHu7AeikluJMfi1xGDJCJdK/7GsI+s/XysaQV4dkjMsxt2FJEwoEpD1k
+ UvJjD7cTUuzWOvC99y4RhYXNIF+Ip9NQVnuvOMDS1mxaC7PsNp1JlvCFO4b9mCvJxazE
+ lbNw==
+X-Gm-Message-State: ABy/qLa93JB8fQdto+Z6NBcbXZe4ZE9vsH61VaaccujKAxb7tIytRakb
+ ctxf83lmUt/D7zZA1sibTkJHzo/A8XI7ifuYMd7Z7cQ3b3tIPwyw5uVdFz5wdQkKasa5AJSNwhP
+ QbNIWp+K6RkY8yuY+UcOwuRKZshj0Xd5NGw==
+X-Received: by 2002:a5d:8856:0:b0:787:9f4:a286 with SMTP id
+ t22-20020a5d8856000000b0078709f4a286mr830173ios.3.1690225765542; 
+ Mon, 24 Jul 2023 12:09:25 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlGQj4iG8mT+sSEqSQYkZfuQ4Hg9spnEgepBk2H1o6jlqFqHr7tDoImTU/XT+4VwrQSYWZsnbg==
+X-Received: by 2002:a5d:8856:0:b0:787:9f4:a286 with SMTP id
+ t22-20020a5d8856000000b0078709f4a286mr830154ios.3.1690225765283; 
+ Mon, 24 Jul 2023 12:09:25 -0700 (PDT)
+Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
+ e23-20020a056638021700b0042b4f9ddecasm3133372jaq.85.2023.07.24.12.09.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Jul 2023 12:09:24 -0700 (PDT)
+Date: Mon, 24 Jul 2023 13:09:22 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Subject: Re: [PATCH v15 00/26] Add vfio_device cdev for iommufd support
+Message-ID: <20230724130922.5bf567ef.alex.williamson@redhat.com>
+In-Reply-To: <ZLbEigQvwSZFiCqv@nvidia.com>
+References: <20230718135551.6592-1-yi.l.liu@intel.com>
+ <ZLbEigQvwSZFiCqv@nvidia.com>
+Organization: Red Hat
 MIME-Version: 1.0
-From: Kris Jaana <krisjaa4@gmail.com>
-Date: Fri, 21 Jul 2023 07:53:46 +0000
-Message-ID: <CABxdz3crsOv3n7an1yVMhyXrp6pCMNK9J7EgpJSfgh9rrWumPw@mail.gmail.com>
-Subject: Antwort
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="00000000000029b4470600fa914a"
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,67 +85,64 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
+ zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
+ chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org,
+ Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org, lulu@redhat.com,
+ yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
+ kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
+ eric.auger@redhat.com, intel-gvt-dev@lists.freedesktop.org,
+ yi.y.sun@linux.intel.com, clegoate@redhat.com, cohuck@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
+ robin.murphy@arm.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---00000000000029b4470600fa914a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Tue, 18 Jul 2023 13:57:46 -0300
+Jason Gunthorpe <jgg@nvidia.com> wrote:
 
- Guten Tag. Ich bin Rechtsanwalt Kris Jaana, Rechtsanwalt und
-Staatsangeh=C3=B6riger Togos. Einer meiner Kunden ist gestorben und hat ein=
-en
-riesigen Geldbetrag hier auf einer Bank hinterlassen, und ich m=C3=B6chte, =
-dass
-Sie die Gelder (12,8 Millionen US-Dollar) erhalten, die mein verstorbener
-Kunde aufgrund seines tragischen Todes infolge eines Autounfalls hier in
-einer Bank zur=C3=BCckgelassen hat der 7. Juni 2011. Ich m=C3=B6chte, dass =
-Sie als
-n=C3=A4chster Angeh=C3=B6riger meines verstorbenen Kunden das Geld erhalten=
-. Ich
-werde Sie unterst=C3=BCtzen, damit die Bank hier das Geld an Sie =C3=BCberw=
-eist. Ich
-m=C3=B6chte, dass Sie das Geld erhalten, weil Sie eines mit meinem verstorb=
-enen
-Kunden gemeinsam haben. Und was Sie mit meinem verstorbenen Kunden
-gemeinsam haben, wird die Bank hier zu der Annahme veranlassen, dass Sie
-mit meinem verstorbenen Kunden verwandt sind, und die Gelder, die er Ihnen
-als seinen n=C3=A4chsten Verwandten hinterlassen hat, freigeben. Gr=C3=BC=
-=C3=9Fe,
-Rechtsanwalt Kris Jaana.
+> On Tue, Jul 18, 2023 at 06:55:25AM -0700, Yi Liu wrote:
+> > Existing VFIO provides group-centric user APIs for userspace. Userspace
+> > opens the /dev/vfio/$group_id first before getting device fd and hence
+> > getting access to device. This is not the desired model for iommufd. Per
+> > the conclusion of community discussion[1], iommufd provides device-centric
+> > kAPIs and requires its consumer (like VFIO) to be device-centric user
+> > APIs. Such user APIs are used to associate device with iommufd and also
+> > the I/O address spaces managed by the iommufd.
+> > 
+> > This series first introduces a per device file structure to be prepared
+> > for further enhancement and refactors the kvm-vfio code to be prepared
+> > for accepting device file from userspace. After this, adds a mechanism for
+> > blocking device access before iommufd bind. Then refactors the vfio to be
+> > able to handle cdev paths (e.g. iommufd binding, no-iommufd, [de]attach ioas).
+> > This refactor includes making the device_open exclusive between the group
+> > and the cdev path, only allow single device open in cdev path; vfio-iommufd
+> > code is also refactored to support cdev. e.g. split the vfio_iommufd_bind()
+> > into two steps. Eventually, adds the cdev support for vfio device and the
+> > new ioctls, then makes group infrastructure optional as it is not needed
+> > when vfio device cdev is compiled.
+> > 
+> > This series is based on some preparation works done to vfio emulated devices[2]
+> > and vfio pci hot reset enhancements[3]. Per discussion[4], this series does not
+> > support cdev for physical devices that do not have IOMMU. Such devices only
+> > have group-centric user APIs.
+> > 
+> > This series is a prerequisite for iommu nesting for vfio device[5] [6].
+> > 
+> > The complete code can be found in below branch, simple tests done to the
+> > legacy group path and the cdev path. QEMU changes are in upstreaming[7]
+> > and the complete code can be found at[8]
+> > 
+> > https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v15
+> > (config CONFIG_IOMMUFD=y CONFIG_VFIO_DEVICE_CDEV=y)  
+> 
+> Alex, if you are still good with this lets make this into a shared
+> branch, do you want to do it or would you like a PR from me?
 
---00000000000029b4470600fa914a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Sorry, was out much of last week.  Yes, my intent would be to put this
+both in a shared branch and my next branch for v6.6.  Given this is
+mostly vfio, it seems like it'd make sense for me to provide that
+branch but I may not get to it until tomorrow.  Thanks,
 
-<div dir=3D"ltr">
-<span class=3D"gmail-HwtZe" lang=3D"de"><span class=3D"gmail-jCAhz gmail-Ch=
-Mk0b gmail-Jj6Lae"><span class=3D"gmail-ryNqvb">Guten Tag.</span></span> <s=
-pan class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span class=3D"gmail-ry=
-Nqvb">Ich bin Rechtsanwalt Kris Jaana, Rechtsanwalt und Staatsangeh=C3=B6ri=
-ger Togos.</span></span> <span class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6L=
-ae"><span class=3D"gmail-ryNqvb">Einer meiner Kunden ist gestorben und hat =
-einen riesigen Geldbetrag hier auf einer Bank hinterlassen, und ich m=C3=B6=
-chte, dass Sie die Gelder (12,8 Millionen US-Dollar) erhalten, die mein ver=
-storbener Kunde aufgrund seines tragischen Todes infolge eines Autounfalls =
-hier in einer Bank zur=C3=BCckgelassen hat</span></span> <span class=3D"gma=
-il-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span class=3D"gmail-ryNqvb">der 7. Jun=
-i 2011.</span></span> <span class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"=
-><span class=3D"gmail-ryNqvb">Ich m=C3=B6chte, dass Sie als n=C3=A4chster A=
-ngeh=C3=B6riger meines verstorbenen Kunden das Geld erhalten.</span></span>=
- <span class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span class=3D"gmail=
--ryNqvb">Ich werde Sie unterst=C3=BCtzen, damit die Bank hier das Geld an S=
-ie =C3=BCberweist.</span></span> <span class=3D"gmail-jCAhz gmail-ChMk0b gm=
-ail-Jj6Lae"><span class=3D"gmail-ryNqvb">Ich m=C3=B6chte, dass Sie das Geld=
- erhalten, weil Sie eines mit meinem verstorbenen Kunden gemeinsam haben.</=
-span></span> <span class=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span cl=
-ass=3D"gmail-ryNqvb">Und was Sie mit meinem verstorbenen Kunden gemeinsam h=
-aben, wird die Bank hier zu der Annahme veranlassen, dass Sie mit meinem ve=
-rstorbenen Kunden verwandt sind, und die Gelder, die er Ihnen als seinen n=
-=C3=A4chsten Verwandten hinterlassen hat, freigeben.</span></span> <span cl=
-ass=3D"gmail-jCAhz gmail-ChMk0b gmail-Jj6Lae"><span class=3D"gmail-ryNqvb">=
-Gr=C3=BC=C3=9Fe, Rechtsanwalt Kris Jaana.</span></span></span>
+Alex
 
-</div>
-
---00000000000029b4470600fa914a--
