@@ -1,78 +1,148 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C86AF75FF8C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 24 Jul 2023 21:09:33 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4056D76095C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 25 Jul 2023 07:37:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E7AA710E115;
-	Mon, 24 Jul 2023 19:09:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C1B7210E2E2;
+	Tue, 25 Jul 2023 05:37:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 83C5810E115
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 24 Jul 2023 19:09:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1690225769;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WawsHdGpz2PcjK+rzMy9rXk7uFt8JlrwIupXE53S044=;
- b=OhNcLwK5ozcz3RCrdyaGaeY79Go/i9cqA8kGQSfEvTyNXjeYsGT7+2+p84vLO6aYnQBwjO
- jp5b8ARH3JBssjH84KPodnDwDlEFcPlz6b2kC5Ss+FHmXs3Y+Adn1O8GUwFY1BGrG+vRZi
- orMSkmDcsrmV8pnhW+yra6hCOLcfxMk=
-Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
- [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-623-RVOjpeieOmGpng-gghIrLA-1; Mon, 24 Jul 2023 15:09:26 -0400
-X-MC-Unique: RVOjpeieOmGpng-gghIrLA-1
-Received: by mail-io1-f69.google.com with SMTP id
- ca18e2360f4ac-77e3eaa1343so239969539f.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 24 Jul 2023 12:09:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690225765; x=1690830565;
- h=content-transfer-encoding:mime-version:organization:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=WawsHdGpz2PcjK+rzMy9rXk7uFt8JlrwIupXE53S044=;
- b=TZVar1noEvADMTpXEcZ8gnV4nFG4Cxsfz79Pn+ncpXRYBCwlYGrZDz0OHHuBBVuFZ1
- 7zqOSu/PoLUoJfyY0Lv3EEVkWemdpn+cAt5lkxYcm55FX74I8ioN9u/1aZsqs+ebjh/j
- UYHnprcIlfdKESRDvcks7Eh3qotROE6D74bIN+iB6GaXEKRtrXtXu5OveNsflzt3mdnO
- PrQfQtpRuOcGFHu7AeikluJMfi1xGDJCJdK/7GsI+s/XysaQV4dkjMsxt2FJEwoEpD1k
- UvJjD7cTUuzWOvC99y4RhYXNIF+Ip9NQVnuvOMDS1mxaC7PsNp1JlvCFO4b9mCvJxazE
- lbNw==
-X-Gm-Message-State: ABy/qLa93JB8fQdto+Z6NBcbXZe4ZE9vsH61VaaccujKAxb7tIytRakb
- ctxf83lmUt/D7zZA1sibTkJHzo/A8XI7ifuYMd7Z7cQ3b3tIPwyw5uVdFz5wdQkKasa5AJSNwhP
- QbNIWp+K6RkY8yuY+UcOwuRKZshj0Xd5NGw==
-X-Received: by 2002:a5d:8856:0:b0:787:9f4:a286 with SMTP id
- t22-20020a5d8856000000b0078709f4a286mr830173ios.3.1690225765542; 
- Mon, 24 Jul 2023 12:09:25 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlGQj4iG8mT+sSEqSQYkZfuQ4Hg9spnEgepBk2H1o6jlqFqHr7tDoImTU/XT+4VwrQSYWZsnbg==
-X-Received: by 2002:a5d:8856:0:b0:787:9f4:a286 with SMTP id
- t22-20020a5d8856000000b0078709f4a286mr830154ios.3.1690225765283; 
- Mon, 24 Jul 2023 12:09:25 -0700 (PDT)
-Received: from redhat.com ([38.15.60.12]) by smtp.gmail.com with ESMTPSA id
- e23-20020a056638021700b0042b4f9ddecasm3133372jaq.85.2023.07.24.12.09.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Jul 2023 12:09:24 -0700 (PDT)
-Date: Mon, 24 Jul 2023 13:09:22 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Subject: Re: [PATCH v15 00/26] Add vfio_device cdev for iommufd support
-Message-ID: <20230724130922.5bf567ef.alex.williamson@redhat.com>
-In-Reply-To: <ZLbEigQvwSZFiCqv@nvidia.com>
-References: <20230718135551.6592-1-yi.l.liu@intel.com>
- <ZLbEigQvwSZFiCqv@nvidia.com>
-Organization: Red Hat
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C9D1D10E2D2;
+ Tue, 25 Jul 2023 05:37:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1690263437; x=1721799437;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=pm/0IYkyiift7BhqvoaMSVvoEeuaaVV5xEl9dBUSrmw=;
+ b=jJgRSMlM3FOriCv9qiDoK48Olx7dbcThZ8q6n98s5XBq+5PUqnnD13pv
+ U7rLyPayUI59hqVujD8DKDdgbLjUSej6ncHPeVO3Kx/wBiQqyqkb0wESo
+ tBnKL5Opdi0JWqXuRpJrkYD88AGt6avndpAYnKnJkTXWXE/JCw903J3QB
+ SszqlIKZgtaZR8MzZqTg4jWWi2AYbLOyOnQvKIl2DqipLF6p+2LhZYUG5
+ J4dA0OQaKGvQhgcSlc6EmMN3NMpQHHAqtAuNemlGXLY+h5k3pyUrn4k4K
+ OOYE+qvsrO46dMKa/NaH9CbLkd2hvsvb/0qthvtaUSGaG5HYdQhV4b6wS g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10781"; a="347895676"
+X-IronPort-AV: E=Sophos;i="6.01,229,1684825200"; d="scan'208";a="347895676"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jul 2023 22:37:16 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10781"; a="729204409"
+X-IronPort-AV: E=Sophos;i="6.01,229,1684825200"; d="scan'208";a="729204409"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga007.fm.intel.com with ESMTP; 24 Jul 2023 22:37:16 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Mon, 24 Jul 2023 22:37:16 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Mon, 24 Jul 2023 22:37:16 -0700
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.47) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Mon, 24 Jul 2023 22:37:16 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eMsA7msRdeVwJ9Jdo0qVIRyS4uNbJkvVTq4jqZcbnvJGLL3VY8V0b5ByOv2/PfrkUoDEpsLEDGHt7mhCGEkmNU82tb698DDvilrDkFsZ9lr+OuTQPbQ7D4GE9FQE3hd3kCcFLLRhutVzLcDrdiBWwDavPh7I3jUwTrDZT9G8axuCAUakVIz/QKnV6tTwFlF/apde9NiGB2IgDomMrzVICOUFUdCt+Ya5bdvuw78zew+KNh/g6TthBkWZePucvhIMThqoI3yhkPjR/Y1XIyzzz0FQQSSgU8cZpr2w5O1hjSQkHrcNg6xNBDTBz4LrqAmf8jGvlp/Qtu0JL1kZKfhIhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=pm/0IYkyiift7BhqvoaMSVvoEeuaaVV5xEl9dBUSrmw=;
+ b=KeWdp+XcgfjvKvyPoFrjkiwYOPU27vlvCQtx3qKI4pFYL0ei2U9uJqKcS0YFb4m4kElVj9u8Qj7Nw6RHogLKclqGVFKA4gG+xt3GXX60NdRmCuqFbNPRroWL0yNvRTDvybeU4L6rA/pVNHFVKt84TKZVRnNR9LdxI0lG77SzqqgGS8bAvvW+YsYBXPXcGWcx2T54nGKh0KnQWGPw0YB4FPTnU7cjfKia+hpyUP6iH8uFEBOJjEiTV4lEmAhdxRcj4nTJ0nnuLWE9mkkzKemKRv6V+QroqSLJhbNho0EAmtkRoQyI2sKi/3FgN5u+YoxVYMpKEDL3UGgVBcwpckjsEg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MW4SPRMB0075.namprd11.prod.outlook.com (2603:10b6:303:20d::13)
+ by MN2PR11MB4646.namprd11.prod.outlook.com (2603:10b6:208:264::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6609.33; Tue, 25 Jul
+ 2023 05:37:14 +0000
+Received: from MW4SPRMB0075.namprd11.prod.outlook.com
+ ([fe80::98e5:837d:71bb:d61f]) by MW4SPRMB0075.namprd11.prod.outlook.com
+ ([fe80::98e5:837d:71bb:d61f%4]) with mapi id 15.20.6609.032; Tue, 25 Jul 2023
+ 05:37:13 +0000
+From: "Jiang, Yanting" <yanting.jiang@intel.com>
+To: "Liu, Yi L" <yi.l.liu@intel.com>, "alex.williamson@redhat.com"
+ <alex.williamson@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>, "Tian,
+ Kevin" <kevin.tian@intel.com>
+Subject: RE: [PATCH v14 00/26] Add vfio_device cdev for iommufd support
+Thread-Topic: [PATCH v14 00/26] Add vfio_device cdev for iommufd support
+Thread-Index: AQHZs6O3QpbNRSG4YE6K+c8ZY6cMlq/KDK9w
+Date: Tue, 25 Jul 2023 05:37:13 +0000
+Message-ID: <MW4SPRMB0075558C522428EA5A40F43EE803A@MW4SPRMB0075.namprd11.prod.outlook.com>
+References: <20230711025928.6438-1-yi.l.liu@intel.com>
+In-Reply-To: <20230711025928.6438-1-yi.l.liu@intel.com>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MW4SPRMB0075:EE_|MN2PR11MB4646:EE_
+x-ms-office365-filtering-correlation-id: 997774a4-f076-4e6d-f59e-08db8cd1331c
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 8JCHTbZoD/NqLQx/NnadoW95LY9Bpdw9DqH7rKCDNj5+cV+hxOdU35XOO3G0MQIq+55YMOXMhbQ3LK9oJQfL7olhso5tkZt1wdP3nPQFziyW26c9aVO/NUPlAtGzgTEY+gp6nmjffuD1CDNa8gsyrPu4CkKLkHZeuYIFmB1TK1o87jRrstF/6EFKxWXlOQ5hzNJ9dEoZkB2QBoqPKTVmCoxDX/ktd/P7/aJilrpYQlJ+J7T02yTOiXZQUJ8z31G0bvAZzLihLO3mHZt/+WKkqm5YjuO6GWZUb8Av9m8vJQWelnwTO9Q9OXt+0dyDYvpak1sadSCnDpn9JPwpUpGZ1ViBBx6hMbkTAse9L4I/EnU0crx8G02z2iwNJhI0nTk/yOlJzqqc7zqxbv6iYg+lsoCoDK6v1h1yOH+HtW7g8zWirpmDpMx2rc2eD4Dfi9fIdOPZYFVDJcN69OCOTaccwWY9ogZux0vg6q9YwqHD/pxfQyjPI1bG7Zdytxu/HGvEY5SXIRlUElLUtmjWGsbZ7CgbNmClANfFpdnK9HAHWtVks99JKwkhRwK0r+snYMB/euwdJz/q1IhrL2N6TRV8hUz8Wyb8KuM9GZfGOCJtXXY=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW4SPRMB0075.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230028)(396003)(366004)(346002)(39860400002)(136003)(376002)(451199021)(55016003)(186003)(26005)(71200400001)(6506007)(64756008)(83380400001)(66946007)(66556008)(316002)(6636002)(76116006)(66476007)(4326008)(66446008)(7416002)(52536014)(41300700001)(7696005)(8676002)(8936002)(966005)(5660300002)(9686003)(2906002)(110136005)(54906003)(478600001)(38100700002)(82960400001)(122000001)(33656002)(86362001)(38070700005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?OUpxTVpPb2tYSW9WSlRUekhzSG95UUsxYkE0Z2NGaWVNUnlRV3drZlBuYzZL?=
+ =?utf-8?B?N2hwYis0NmVSRDdWa0F6bGRLdE1TTTBFMEpvVnJPZFJUSXN4SDUzS2s3UnNL?=
+ =?utf-8?B?NFI3UXpQdVk4WVJLZkdrQUkwdFpFTnpUZUxQb2NSREpHMUFTSGFUeDBOemh3?=
+ =?utf-8?B?MUVmeTVWQmRUOXQzdDJmYUoycVc3WXdvS0VTU0RoaHdLRHMrQTFFZWptOEx4?=
+ =?utf-8?B?RVRaVDZ6djNtaU9lUDUzcWZHaGlVbFJTTGt6MDlkZlJCWmVxVDZYQ0dsREdr?=
+ =?utf-8?B?N1E5RytJOW5TeEVzUXg1V0lPNWxWS2xaSlBZL0Y2ZXkzZWpyNHI3ZG9la21O?=
+ =?utf-8?B?UmRoWlFIdStLemxoWEZwUXZ6Q28zd245Wit4eEg0TG5ieXFhWitrYkprMVhk?=
+ =?utf-8?B?aWlvbUhwaUJrL2ZhR2NEYWYxVHROZWo3U0Z5dmxFLzVhblJSVTFkb3dqenN2?=
+ =?utf-8?B?QUZUR3VidVVtenB3cVZZWDZmbXRWNkkrNmlaekwzdDBQY1luREtJODE0bmRJ?=
+ =?utf-8?B?SmFUNWNlMG5uN3dhL0tEZk1LY0tTTUMzdGo1SVpDT0pDTHFBY1RYQnpXMXB0?=
+ =?utf-8?B?ZjhkaktnNWF3NTdkenZuU3RNNEVNaGVnQjQ1aVU2TlZsK0t6d3JYMlpHUnNy?=
+ =?utf-8?B?VHZCQ2pJQ2RNM3gvWVdOclhnQTgvZGpjdGR2L2xWdm1DR0IvUnZPN2hMWjdD?=
+ =?utf-8?B?d3djcUw3YWVXN1ZrUUJBZVViMHhUaEc4dW9zbFUxOTZkdEtJZjc3RTFCWTFJ?=
+ =?utf-8?B?eFd4YkpISTJadHZxY0dRejArbkN2Znd4RGVTK2JSbG9FWnNIcWlkZFpMNVNM?=
+ =?utf-8?B?SFRxL0FBVUtFU0NTbnZRTURIUGFvRHllVjZWcE5NUWt4eHJZa1QvRks3UnhZ?=
+ =?utf-8?B?R2FsYzhhTzRNRFgzU05nUW5CN1lzUkZ3aWM5T3p0ZkM1ZlBqL05pSjJnN3Ru?=
+ =?utf-8?B?YUJCYVNaSDl4NTdNajlMaEZqWkZLRjZjTnhJTXBENUJtdnRVWi9QRnpDdWRJ?=
+ =?utf-8?B?QlNlY3NxTzd3SDM1NTM2bDJ1YW5DaE4zTVAvSjdHaFQrVlQxOTV2WmJUTkpj?=
+ =?utf-8?B?bDVRMVFEdEdUOSt2akMxVmFwMHREOGlGenNkQ2VMeWpwN09PQWQ2TThpTlpo?=
+ =?utf-8?B?TjN0MDdEbUFIajArNkdpTm1uQ1hjQkI3bzR2NHNNeXhzWVF2Y2lac3RLVzla?=
+ =?utf-8?B?VVJ3ME9obER4NFlsN0FWZmRtSnZuV0M3MmFFSUxRY2sveDQzOHpDMnVycnhH?=
+ =?utf-8?B?N2dBd1R0TmJacGJYWFUyc2VTWVl5UERFaGI4UUY2SncyYzQwMVBZc1ZlR1FG?=
+ =?utf-8?B?czF2V3JNM2N0L3RuZFJMdjd4QStQZzhsNWZpMkpOUE4rb1FyTE5FTm1NOVV4?=
+ =?utf-8?B?WDY4REdmcFZNR25TNU5ISjBzbldqWkU1STdEbnp6Wng0OCtxeG9UWENmSll4?=
+ =?utf-8?B?R25sRGFwZkRFZ0ZKcGZjRkdleDl0MXBsbTZoUXdSUStldDY4K0plbW9EeEdS?=
+ =?utf-8?B?OWxpME5raWZxMTM5QTFxTHgraUtqM3BtTThPZW9oUnJUZkNUdnhqS3U5MTIx?=
+ =?utf-8?B?eEhQYTBTSGRVa2NMY01SbEk4S1dSRGxoeVBQWHdCS1NrR3N3L2NQWVNRenpa?=
+ =?utf-8?B?UFBnSFR1eGtGSk1wWHFJRXFUKzE3NzdJT3pxb0pYZ3laOU1hVEdibEU1TFIx?=
+ =?utf-8?B?MFNjL2RveUdEc282UjRlRm9UNUM4ckhJNjJnL3BZWXMvZTE2ckhUUFlrVEJq?=
+ =?utf-8?B?ZnNIelVSb3QrVU8zTkdxMHd5dFVmZGRzWmMrWHZoUjBLOGJ0aHhzSEtUdldV?=
+ =?utf-8?B?N0pWdGVnVnBDUnRXdXZoRWlSYVJZOWNqelV0MmFHZUN4WDFSZERFOHJ5cUtL?=
+ =?utf-8?B?Mk9lcnZWa2NwOERZKzBxTVk3Y1pLdVVNb3p6bnAwSFJuY0JBU2FYOC9jdDdq?=
+ =?utf-8?B?ZkZHdmFMN2VpRUZucjRsQVBleUxaakNkSXJpVEwrRlEwanFBOGxLK1FtTGVJ?=
+ =?utf-8?B?YU1IUjFLd1hFWENzNk9vNWlReHQvQnVjanNFTTZiY0VIRlBRQ3k2aXNoWHJq?=
+ =?utf-8?B?ejZ6UVIrM2s3dXJ6Y0dwQSs1c0ZUU0FjSkVteXFTcHNoQWxUMVVvb2t4Ymk4?=
+ =?utf-8?Q?mXjWy2zFpI3jxIMs/5ULXSLa7?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MW4SPRMB0075.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 997774a4-f076-4e6d-f59e-08db8cd1331c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2023 05:37:13.6050 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: rlVYmm57Sk9P8Gx+UbKVpHCWc/o1CmOezxbCBhUmPGJk8dzdLz4dr0ELddoOwF6gvAlKmcY136v3FzT0JGXaNg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4646
+X-OriginatorOrg: intel.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,64 +155,63 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: mjrosato@linux.ibm.com, jasowang@redhat.com, xudong.hao@intel.com,
- zhenzhong.duan@intel.com, peterx@redhat.com, terrence.xu@intel.com,
- chao.p.peng@linux.intel.com, linux-s390@vger.kernel.org,
- Yi Liu <yi.l.liu@intel.com>, kvm@vger.kernel.org, lulu@redhat.com,
- yanting.jiang@intel.com, joro@8bytes.org, nicolinc@nvidia.com,
- kevin.tian@intel.com, yan.y.zhao@intel.com, intel-gfx@lists.freedesktop.org,
- eric.auger@redhat.com, intel-gvt-dev@lists.freedesktop.org,
- yi.y.sun@linux.intel.com, clegoate@redhat.com, cohuck@redhat.com,
- shameerali.kolothum.thodi@huawei.com, suravee.suthikulpanit@amd.com,
- robin.murphy@arm.com
+Cc: "mjrosato@linux.ibm.com" <mjrosato@linux.ibm.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>, "Hao,
+ Xudong" <xudong.hao@intel.com>, "peterx@redhat.com" <peterx@redhat.com>, "Xu,
+ Terrence" <terrence.xu@intel.com>,
+ "chao.p.peng@linux.intel.com" <chao.p.peng@linux.intel.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "kvm@vger.kernel.org" <kvm@vger.kernel.org>,
+ "lulu@redhat.com" <lulu@redhat.com>, "Duan,
+ Zhenzhong" <zhenzhong.duan@intel.com>, "joro@8bytes.org" <joro@8bytes.org>,
+ "nicolinc@nvidia.com" <nicolinc@nvidia.com>, "Zhao,
+ Yan Y" <yan.y.zhao@intel.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "yi.y.sun@linux.intel.com" <yi.y.sun@linux.intel.com>,
+ "clegoate@redhat.com" <clegoate@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "shameerali.kolothum.thodi@huawei.com" <shameerali.kolothum.thodi@huawei.com>,
+ "suravee.suthikulpanit@amd.com" <suravee.suthikulpanit@amd.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 18 Jul 2023 13:57:46 -0300
-Jason Gunthorpe <jgg@nvidia.com> wrote:
-
-> On Tue, Jul 18, 2023 at 06:55:25AM -0700, Yi Liu wrote:
-> > Existing VFIO provides group-centric user APIs for userspace. Userspace
-> > opens the /dev/vfio/$group_id first before getting device fd and hence
-> > getting access to device. This is not the desired model for iommufd. Per
-> > the conclusion of community discussion[1], iommufd provides device-centric
-> > kAPIs and requires its consumer (like VFIO) to be device-centric user
-> > APIs. Such user APIs are used to associate device with iommufd and also
-> > the I/O address spaces managed by the iommufd.
-> > 
-> > This series first introduces a per device file structure to be prepared
-> > for further enhancement and refactors the kvm-vfio code to be prepared
-> > for accepting device file from userspace. After this, adds a mechanism for
-> > blocking device access before iommufd bind. Then refactors the vfio to be
-> > able to handle cdev paths (e.g. iommufd binding, no-iommufd, [de]attach ioas).
-> > This refactor includes making the device_open exclusive between the group
-> > and the cdev path, only allow single device open in cdev path; vfio-iommufd
-> > code is also refactored to support cdev. e.g. split the vfio_iommufd_bind()
-> > into two steps. Eventually, adds the cdev support for vfio device and the
-> > new ioctls, then makes group infrastructure optional as it is not needed
-> > when vfio device cdev is compiled.
-> > 
-> > This series is based on some preparation works done to vfio emulated devices[2]
-> > and vfio pci hot reset enhancements[3]. Per discussion[4], this series does not
-> > support cdev for physical devices that do not have IOMMU. Such devices only
-> > have group-centric user APIs.
-> > 
-> > This series is a prerequisite for iommu nesting for vfio device[5] [6].
-> > 
-> > The complete code can be found in below branch, simple tests done to the
-> > legacy group path and the cdev path. QEMU changes are in upstreaming[7]
-> > and the complete code can be found at[8]
-> > 
-> > https://github.com/yiliu1765/iommufd/tree/vfio_device_cdev_v15
-> > (config CONFIG_IOMMUFD=y CONFIG_VFIO_DEVICE_CDEV=y)  
-> 
-> Alex, if you are still good with this lets make this into a shared
-> branch, do you want to do it or would you like a PR from me?
-
-Sorry, was out much of last week.  Yes, my intent would be to put this
-both in a shared branch and my next branch for v6.6.  Given this is
-mostly vfio, it seems like it'd make sense for me to provide that
-branch but I may not get to it until tomorrow.  Thanks,
-
-Alex
-
+PiBTdWJqZWN0OiBbUEFUQ0ggdjE0IDAwLzI2XSBBZGQgdmZpb19kZXZpY2UgY2RldiBmb3IgaW9t
+bXVmZCBzdXBwb3J0DQo+IA0KPiBFeGlzdGluZyBWRklPIHByb3ZpZGVzIGdyb3VwLWNlbnRyaWMg
+dXNlciBBUElzIGZvciB1c2Vyc3BhY2UuIFVzZXJzcGFjZSBvcGVucw0KPiB0aGUgL2Rldi92Zmlv
+LyRncm91cF9pZCBmaXJzdCBiZWZvcmUgZ2V0dGluZyBkZXZpY2UgZmQgYW5kIGhlbmNlIGdldHRp
+bmcgYWNjZXNzDQo+IHRvIGRldmljZS4gVGhpcyBpcyBub3QgdGhlIGRlc2lyZWQgbW9kZWwgZm9y
+IGlvbW11ZmQuIFBlciB0aGUgY29uY2x1c2lvbiBvZg0KPiBjb21tdW5pdHkgZGlzY3Vzc2lvblsx
+XSwgaW9tbXVmZCBwcm92aWRlcyBkZXZpY2UtY2VudHJpYyBrQVBJcyBhbmQgcmVxdWlyZXMgaXRz
+DQo+IGNvbnN1bWVyIChsaWtlIFZGSU8pIHRvIGJlIGRldmljZS1jZW50cmljIHVzZXIgQVBJcy4g
+U3VjaCB1c2VyIEFQSXMgYXJlIHVzZWQgdG8NCj4gYXNzb2NpYXRlIGRldmljZSB3aXRoIGlvbW11
+ZmQgYW5kIGFsc28gdGhlIEkvTyBhZGRyZXNzIHNwYWNlcyBtYW5hZ2VkIGJ5IHRoZQ0KPiBpb21t
+dWZkLg0KPiANCj4gVGhpcyBzZXJpZXMgZmlyc3QgaW50cm9kdWNlcyBhIHBlciBkZXZpY2UgZmls
+ZSBzdHJ1Y3R1cmUgdG8gYmUgcHJlcGFyZWQgZm9yIGZ1cnRoZXINCj4gZW5oYW5jZW1lbnQgYW5k
+IHJlZmFjdG9ycyB0aGUga3ZtLXZmaW8gY29kZSB0byBiZSBwcmVwYXJlZCBmb3IgYWNjZXB0aW5n
+DQo+IGRldmljZSBmaWxlIGZyb20gdXNlcnNwYWNlLiBBZnRlciB0aGlzLCBhZGRzIGEgbWVjaGFu
+aXNtIGZvciBibG9ja2luZyBkZXZpY2UNCj4gYWNjZXNzIGJlZm9yZSBpb21tdWZkIGJpbmQuIFRo
+ZW4gcmVmYWN0b3JzIHRoZSB2ZmlvIHRvIGJlIGFibGUgdG8gaGFuZGxlIGNkZXYNCj4gcGF0aCAo
+ZS5nLiBpb21tdWZkIGJpbmRpbmcsIG5vLWlvbW11ZmQsIFtkZV1hdHRhY2ggaW9hcykuDQo+IFRo
+aXMgcmVmYWN0b3IgaW5jbHVkZXMgbWFraW5nIHRoZSBkZXZpY2Vfb3BlbiBleGNsdXNpdmUgYmV0
+d2VlbiB0aGUgZ3JvdXAgYW5kDQo+IHRoZSBjZGV2IHBhdGgsIG9ubHkgYWxsb3cgc2luZ2xlIGRl
+dmljZSBvcGVuIGluIGNkZXYgcGF0aDsgdmZpby1pb21tdWZkIGNvZGUgaXMNCj4gYWxzbyByZWZh
+Y3RvcmVkIHRvIHN1cHBvcnQgY2Rldi4gZS5nLiBzcGxpdCB0aGUgdmZpb19pb21tdWZkX2JpbmQo
+KSBpbnRvIHR3bw0KPiBzdGVwcy4gRXZlbnR1YWxseSwgYWRkcyB0aGUgY2RldiBzdXBwb3J0IGZv
+ciB2ZmlvIGRldmljZSBhbmQgdGhlIG5ldyBpb2N0bHMsIHRoZW4NCj4gbWFrZXMgZ3JvdXAgaW5m
+cmFzdHJ1Y3R1cmUgb3B0aW9uYWwgYXMgaXQgaXMgbm90IG5lZWRlZCB3aGVuIHZmaW8gZGV2aWNl
+IGNkZXYgaXMNCj4gY29tcGlsZWQuDQo+IA0KPiBUaGlzIHNlcmllcyBpcyBiYXNlZCBvbiBzb21l
+IHByZXBhcmF0aW9uIHdvcmtzIGRvbmUgdG8gdmZpbyBlbXVsYXRlZCBkZXZpY2VzWzJdDQo+IGFu
+ZCB2ZmlvIHBjaSBob3QgcmVzZXQgZW5oYW5jZW1lbnRzWzNdLg0KPiANCj4gVGhpcyBzZXJpZXMg
+aXMgYSBwcmVyZXF1aXNpdGUgZm9yIGlvbW11IG5lc3RpbmcgZm9yIHZmaW8gZGV2aWNlWzRdIFs1
+XS4NCj4gDQo+IFRoZSBjb21wbGV0ZSBjb2RlIGNhbiBiZSBmb3VuZCBpbiBiZWxvdyBicmFuY2gs
+IHNpbXBsZSB0ZXN0cyBkb25lIHRvIHRoZQ0KPiBsZWdhY3kgZ3JvdXAgcGF0aCBhbmQgdGhlIGNk
+ZXYgcGF0aC4gRHJhZnQgUUVNVSBicmFuY2ggY2FuIGJlIGZvdW5kIGF0WzZdDQo+IA0KPiBodHRw
+czovL2dpdGh1Yi5jb20veWlsaXUxNzY1L2lvbW11ZmQvdHJlZS92ZmlvX2RldmljZV9jZGV2X3Yx
+NA0KPiAoY29uZmlnIENPTkZJR19JT01NVUZEPXkgQ09ORklHX1ZGSU9fREVWSUNFX0NERVY9eSkN
+Cj4gDQo+IGJhc2UtY29tbWl0OiAwNmMyYWZiODYyZjlkYThkYzVlZmE0YjYwNzZhMGU0OGMzZmJh
+YWE1DQo+IA0KDQpUZXN0ZWQgTklDIHBhc3N0aHJvdWdoIG9uIEludGVsIHBsYXRmb3JtLg0KUmVz
+dWx0IGxvb2tzIGdvb2QgaGVuY2UsDQpUZXN0ZWQtYnk6IFlhbnRpbmcgSmlhbmcgPHlhbnRpbmcu
+amlhbmdAaW50ZWwuY29tPg0K
