@@ -1,67 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A99BC767B18
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Jul 2023 03:36:42 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id CCFC2767F37
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Jul 2023 14:45:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9125D10E7D5;
-	Sat, 29 Jul 2023 01:36:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9330A10E1A5;
+	Sat, 29 Jul 2023 12:45:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pg1-x54a.google.com (mail-pg1-x54a.google.com
- [IPv6:2607:f8b0:4864:20::54a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7D0B610E7D9
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 29 Jul 2023 01:36:40 +0000 (UTC)
-Received: by mail-pg1-x54a.google.com with SMTP id
- 41be03b00d2f7-5637a108d02so1778327a12.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 28 Jul 2023 18:36:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1690594600; x=1691199400;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:reply-to:from:to:cc:subject:date:message-id:reply-to;
- bh=DwvbUo0YFwD2y5U7V+bjb1xFYzZ0nLkltBIeETbMd6E=;
- b=Ge68nujbq9a2/5qupOk7vKqq3XlDn5p8ntiVpmK47hZYN+/QS4qy0wLj6mzi//Ln3N
- bjIWafKzZtkd8LQqhjRdZON3HDXB5fCK9FhlneYcw4v+xtAWX9E4CPS0ddxUxM1BU+ou
- uqsJv3tEk+OkpS9BfP1CupF2QdoKOH02fs1K3Ib89GUvvYmRfPRX9GXq8Qk6hWUr/tNP
- U7vyKG8jPeUgErUAu/w48/FjAGWgL+fFw7j74vkaZbaqjcBqf1vC9GEbvdtcM9pxV6mC
- P1Ioi1DZwQV+4ATKOYarBouEJgAG/V3mHWk+Hvgxt1vW2YDRiU63dl0VSgEIpd2po20a
- NDdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690594600; x=1691199400;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:reply-to:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DwvbUo0YFwD2y5U7V+bjb1xFYzZ0nLkltBIeETbMd6E=;
- b=TIYu0vjve4XBDa6yNdp9tPKU2CGcH2gX/+biMhG+39iycKz7pce2zy50IaepNQ81fM
- xKcXvH+2e668nT7LqkgcgDbl+QnXMnNx/o76sakOI0678d4+J53ropjV2ItnjK83iJkU
- 5Tk6r3+gf9M+2vMuhF5fU3SxLUnVjxVjdY2ZC6odTx9BSmOF/unHjbqVrdlYXlFg40a1
- bMd3nObLTt6pu1idUnIVJOQFLVxPMTF5coxOfXDG4tFpI1F9kmJ5tVJ0zbXJKSr5cI+7
- BsfdLpHPJ0YhZ9sknPjEGWFQYXSDmA7o+yx2W3uq42Hbq1ygb9ZnhQ1ewrTj+82gg5CA
- 01Bg==
-X-Gm-Message-State: ABy/qLZDg3YqMpwniHFDca1Sn5m8GxU3IbjVVSvMQbOnKjpy3fvIEZP8
- eGd3XNQlUDBMkrMmhH7dq9BCMVwAeEo=
-X-Google-Smtp-Source: APBJJlEZ24/UIUc9lE3mpH4b4NTm9trjEBiNa0Xf1jgeOJ+PFmgDRd7JQ2suy7GGPER95kXMryrtDNI0qhM=
-X-Received: from zagreus.c.googlers.com
- ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a17:902:da83:b0:1b3:c62d:71b5 with SMTP id
- j3-20020a170902da8300b001b3c62d71b5mr12428plx.0.1690594599204; Fri, 28 Jul
- 2023 18:36:39 -0700 (PDT)
-Date: Fri, 28 Jul 2023 18:35:35 -0700
-In-Reply-To: <20230729013535.1070024-1-seanjc@google.com>
-Mime-Version: 1.0
-References: <20230729013535.1070024-1-seanjc@google.com>
-X-Mailer: git-send-email 2.41.0.487.g6d72f3e995-goog
-Message-ID: <20230729013535.1070024-30-seanjc@google.com>
-Subject: [PATCH v4 29/29] drm/i915/gvt: Drop final dependencies on KVM
- internal details
-From: Sean Christopherson <seanjc@google.com>
-To: Sean Christopherson <seanjc@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.a.wang@intel.com>
-Content-Type: text/plain; charset="UTF-8"
+Received: from mx.inetcontrol.net (unknown [123.125.194.146])
+ by gabe.freedesktop.org (Postfix) with SMTP id A638210E1A5;
+ Sat, 29 Jul 2023 12:45:24 +0000 (UTC)
+Received: from User (unknown [197.185.106.38])
+ by mx.inetcontrol.net (Postfix) with ESMTPA id 2139EF98269;
+ Fri, 28 Jul 2023 14:24:53 +0800 (CST)
+From: "Mr. Mele Kolo Kyari Chief Executive,
+ NNPC (Member)"<test@inetcontrol.net>
+Subject: RE: PROFITABLE BUSINESS INVESTMENT:
+Date: Fri, 28 Jul 2023 08:25:23 +0200
+MIME-Version: 1.0
+Content-Type: text/plain;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,60 +39,42 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Sean Christopherson <seanjc@google.com>
-Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Yongwei Ma <yongwei.ma@intel.com>, Ben Gardon <bgardon@google.com>,
- intel-gvt-dev@lists.freedesktop.org
+Reply-To: NNPCGodwinOkonkwoMgr@hotmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20230729124537.9330A10E1A5@gabe.freedesktop.org>
 
-Open code gpa_to_gfn() in kvmgt_page_track_write() and drop KVMGT's
-dependency on kvm_host.h, i.e. include only kvm_page_track.h.  KVMGT
-assumes "gfn == gpa >> PAGE_SHIFT" all over the place, including a few
-lines below in the same function with the same gpa, i.e. there's no
-reason to use KVM's helper for this one case.
+Corporate Headquarters
+NNPC Towers, Central Business District,
+Herbert Macaulay Way,
+P.M.B. 190, Garki, Abuja.        
 
-No functional change intended.
+               FINANCE AND ACCOUNTS PROFITABLE BUSINESS INVESTMENT U$D400 MILLION
+ 
+Attn: president/ceo                                     
+ 
+After Due deliberation with my colleagues Abdul Malik Aminu (GM, GGA, F&A Acting GGM, Accounts) Nigeria National Petroleum Corporation (NNPC), I decided to forward to you this Profitable Business Investment of U$D400 Million. We want a reliable person who can assist us to Receive this (U$D400 Million only) for Investment in your country. President Muhammad Bihari has appointed Godwin Okonkwo Mgr Planning Brass LNG GM, GM, Grp. Gen Acct the Nigeria National Petroleum Corporation (nnpc) and have also advised him to pay off all the nnpc contractors owned by Nigeria National Petroleum Corporation (NNPC).
+ 
+This fund resulted from an over-invoiced contract awarded by us under the budget allocation to my ministry and the bill was approved for payment by the concerned ministries. The contract was executed, commissioned and the contractor was paid his actual cost of the contract. We are left with the balance of $400,000,000.00 only as the over invoiced amount which we have deliberately over estimated for our own use but under the protocol division, civil servants are forbidden to operate or own foreign accounts. We have agreed to share the money as follows:
+ 
+1. 30% For You as the (Account owner)
+2. 60% for me and My Colleagues
+3. 10% for any expenses that we Might Encore during the Cause of this Transfer.
+ 
+As you may want to know and to make you less curious, I got your address from our reputable chamber of commerce & industry in your country's embassy here in Nigeria. My name is Godwin Okonkwo Mgr. Planning Acct of the Nigerian National Petroleum Corporation (nnpc).this transaction is 100% risk free hence the business was carefully planned before it was executed and we the NNPC. officials involved in this deal as we have put many years in service to our ministry, we have been exercising patience for this opportunity for so long, and to most of us this is a lifetime opportunity we cannot afford to miss.
+ 
+To get this fund paid into your account, we have to present you as an international business outfit and consequent upon indication of your interest to fully assist us in this transaction; you will be required to finish us with the following.
+ 
+1. Your Bank Name Address Phone and Fax.
+2. Your Bank Account Number/ Swift Code and Routing Number (if any).
+3. Your Private Phone and Fax Number for Easy Communication.
+4. Your Full Name and Address.
+ 
+This information will enable us to seek approval of the fund from the concerned quarters within 14 banking days and the Nigeria national petroleum corporation (NNPC) payment information data will be send to you for completion. All this will only take us about 30 working days to transfer this fund into your account from the day we receive your information. Let confidentiality, honesty and trust be our watchword throughout this transaction.
 
-Reviewed-by: Yan Zhao <yan.y.zhao@intel.com>
-Tested-by: Yongwei Ma <yongwei.ma@intel.com>
-Signed-off-by: Sean Christopherson <seanjc@google.com>
----
- drivers/gpu/drm/i915/gvt/gvt.h   | 3 ++-
- drivers/gpu/drm/i915/gvt/kvmgt.c | 2 +-
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ 
+Your prompt reply will be highly appreciated.
+ 
 
-diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-index 2d65800d8e93..53a0a42a50db 100644
---- a/drivers/gpu/drm/i915/gvt/gvt.h
-+++ b/drivers/gpu/drm/i915/gvt/gvt.h
-@@ -34,10 +34,11 @@
- #define _GVT_H_
- 
- #include <uapi/linux/pci_regs.h>
--#include <linux/kvm_host.h>
- #include <linux/vfio.h>
- #include <linux/mdev.h>
- 
-+#include <asm/kvm_page_track.h>
-+
- #include "i915_drv.h"
- #include "intel_gvt.h"
- 
-diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-index eb50997dd369..aaed3969f204 100644
---- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-+++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-@@ -1585,7 +1585,7 @@ static void kvmgt_page_track_write(gpa_t gpa, const u8 *val, int len,
- 
- 	mutex_lock(&info->vgpu_lock);
- 
--	if (kvmgt_gfn_is_write_protected(info, gpa_to_gfn(gpa)))
-+	if (kvmgt_gfn_is_write_protected(info, gpa >> PAGE_SHIFT))
- 		intel_vgpu_page_track_handler(info, gpa,
- 						     (void *)val, len);
- 
--- 
-2.41.0.487.g6d72f3e995-goog
-
+Best Regards.
+Godwin Okonkwo (Mgr Planning Brass LNG GM, GM, Grp. Gen Acct)
