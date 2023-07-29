@@ -2,61 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35F06767ADC
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Jul 2023 03:35:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB70C767AE3
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 29 Jul 2023 03:36:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0D70F10E221;
-	Sat, 29 Jul 2023 01:35:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BF8B510E220;
+	Sat, 29 Jul 2023 01:36:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pl1-x64a.google.com (mail-pl1-x64a.google.com
- [IPv6:2607:f8b0:4864:20::64a])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 89DCD10E7C6
+Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
+ [IPv6:2607:f8b0:4864:20::b49])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id E09D610E222
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 29 Jul 2023 01:35:56 +0000 (UTC)
-Received: by mail-pl1-x64a.google.com with SMTP id
- d9443c01a7336-1bba7a32a40so20538115ad.0
+ Sat, 29 Jul 2023 01:35:58 +0000 (UTC)
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-d1ef70d6a02so2524613276.0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 28 Jul 2023 18:35:56 -0700 (PDT)
+ Fri, 28 Jul 2023 18:35:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20221208; t=1690594556; x=1691199356;
+ d=google.com; s=20221208; t=1690594558; x=1691199358;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:from:to:cc:subject:date:message-id:reply-to;
- bh=xRti94I88xI36VdJ1C9pM+DO3reoJ85WhIcKAlj3P2A=;
- b=JzVeSbakvBsITk4WCc6SvXMXZXpKg1sKgNCLCg329z4+CwqicRWa18ItETELkleHut
- Yv4X8wRd3Le9uqQGPUWs5BUQkj7TQJDt9Eb5fhMjb23YSABFTjI2bzN/glzKpBumIzEs
- fTGh7mmm0I6apNNmDAUz1eyleS73AlS2QlY8+8eRKCJtqc/P/YOG5SqsNHXCud5EkzFP
- jE1ZE8Vnryd4Dn0nEp5qJTOVH3Wyqn42CpQxKf2W0v6q+EQhwJBTSDxzWFjjb+QZElus
- ssNGr64x9a3IHDfdFolrvWOyeULaX7kmUyN6RPwtI37uS4WYyBbIw//m00wT14Fxuhox
- HQgA==
+ bh=+XjAGHd/pRUURJC5c+iD/2xPUGDJjhirgzMYmue5Z/k=;
+ b=CKHIraU33muydXY8T11nRNSenZqtYLuDp2ZQytPMAEgN8FpFJtvv8c6QRBQGgm/m28
+ 5/Ef0IINErZFczYeoHyi2UfkWYU12OwKkPvWHaSFJrjUPZqGfUYERJutLB1aMadZV1Zn
+ SbQEj3XAgke61HqppvVm0rMriHUMBVoTNCE2nLD2YyhY5gcfR1Rhx1wnLXfG2afabSK2
+ pRkPRHhkAdYbj9t7TkumNFQMi0Xc34gB7AEzsmQRuKqF6zeV/+K8B4Kwdh97aMLi9utI
+ 7XQaYcFW2xHNzFDjGpWhfz4/Z7F4dsBgodxWkzRezSqVS7FOSN25NA1qNujI/xI62XWI
+ jSmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690594556; x=1691199356;
+ d=1e100.net; s=20221208; t=1690594558; x=1691199358;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:reply-to:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=xRti94I88xI36VdJ1C9pM+DO3reoJ85WhIcKAlj3P2A=;
- b=P49nYCOGkWUqCuHk/HMEoZFYwfOAWMZJ/ByKtzqF5kYhuACTlAYFI2kct3J/Zo2uWJ
- SlQjktgq1MiswIRUtodH1ZyZxtoZJNFE6v0nsYlfRIIvquFflKKjs2XuwGjUj83XsEhf
- 7kwG05lw0kz3MFYQf9mCLCGjIgLHpaRm/BQskAVIroYHcxkp7/bi53wKIzn2CwbEpJIN
- Ny/c0QLue9KXP+XsmvYl9gfs9ai85pDK0srmNnyHYAj85XuKuwmS6H1MndjK7H0T/eL3
- mX3LvCR60WeFVkIBdbrjg2D9jRzwPcpWpLY5V8nRVtmSLysVF+yyk1P5RWsVtZodEf2Z
- Cppg==
-X-Gm-Message-State: ABy/qLYXXmsdz5bWM6wrBG4+TKX6G4vpXNPRHgNAxJi2ey/6Aiifa/MZ
- sVr36VJigFu/G2Zl6NiuxzLVqracHG8=
-X-Google-Smtp-Source: APBJJlGLaYng3bx/UmtgPECyQBQ2iUlUJH1kZl0/YE/Hn7IX+/6SrxIFl/3qUim+xESr+hSwSKOan6hQzyM=
+ bh=+XjAGHd/pRUURJC5c+iD/2xPUGDJjhirgzMYmue5Z/k=;
+ b=YGwDL2cXkytNoXvdE7yzg3bPq5Xnyjnjh4BcsEF26LvzBOVza/dlaGaVse66zxRZQO
+ 2jVxJAJTaq33U6IZtBOzvEOwBYqz9MYyd0Lr4j0C3hcmto+OllwAKedV7fRJ4Hpzf690
+ 1s2U00Fm9U8KH4eU7MXNMv3G1qyipc0acSrSQdGNtc27ICqScXHVIqO6pdM0CcHk0H9Q
+ mwTXOdfm4tkba4bq+X0KfvCrB3lRmSXiW9E4qPoxPkmdAB1U/YC/s06qd//md/Sz5FUF
+ XLbMpH9bKc+JgigqorbA/yWf8AAdA899C15usaTf6BqMepf1rScuZJ5FMR9h1Wh41gbB
+ oITQ==
+X-Gm-Message-State: ABy/qLYKKfU4+MgfVFLpMZlYj6Qxi1crRrxjKF/01lUuaQfMRYCjyONx
+ cgUkpnmqCh/b4Fm910NX8jMggoUee0w=
+X-Google-Smtp-Source: APBJJlFT9Nke5NL62NRh+Q2yKpoZkg5zH69bxdcqRsIUxtenGQRHYqPeN341DwjUJ6XKSWDHD2CKgLcKfrk=
 X-Received: from zagreus.c.googlers.com
  ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
- (user=seanjc job=sendgmr) by 2002:a17:903:230b:b0:1b9:e338:a8b7 with SMTP id
- d11-20020a170903230b00b001b9e338a8b7mr13091plh.5.1690594556187; Fri, 28 Jul
- 2023 18:35:56 -0700 (PDT)
-Date: Fri, 28 Jul 2023 18:35:12 -0700
+ (user=seanjc job=sendgmr) by 2002:a25:e7c8:0:b0:c67:975c:74ab with SMTP id
+ e191-20020a25e7c8000000b00c67975c74abmr19106ybh.4.1690594558122; Fri, 28 Jul
+ 2023 18:35:58 -0700 (PDT)
+Date: Fri, 28 Jul 2023 18:35:13 -0700
 In-Reply-To: <20230729013535.1070024-1-seanjc@google.com>
 Mime-Version: 1.0
 References: <20230729013535.1070024-1-seanjc@google.com>
 X-Mailer: git-send-email 2.41.0.487.g6d72f3e995-goog
-Message-ID: <20230729013535.1070024-7-seanjc@google.com>
-Subject: [PATCH v4 06/29] drm/i915/gvt: Explicitly check that vGPU is attached
- before shadowing
+Message-ID: <20230729013535.1070024-8-seanjc@google.com>
+Subject: [PATCH v4 07/29] drm/i915/gvt: Error out on an attempt to shadowing
+ an unknown GTT entry type
 From: Sean Christopherson <seanjc@google.com>
 To: Sean Christopherson <seanjc@google.com>,
  Paolo Bonzini <pbonzini@redhat.com>, 
@@ -82,87 +82,32 @@ Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Move the check that a vGPU is attacked from is_2MB_gtt_possible() all the
-way up to shadow_ppgtt_mm() to avoid unnecessary work, and to make it more
-obvious that a future cleanup of is_2MB_gtt_possible() isn't introducing a
-bug.
+Bail from ppgtt_populate_shadow_entry() if an unexpected GTT entry type
+is encountered instead of subtly falling through to the common "direct
+shadow" path.  Eliminating the default/error path's reliance on the common
+handling will allow hoisting intel_gvt_dma_map_guest_page() into the case
+statements so that the 2MiB case can try intel_gvt_dma_map_guest_page()
+and fallback to splitting the entry on failure.
 
-is_2MB_gtt_possible() has only one caller, ppgtt_populate_shadow_entry(),
-and all paths in ppgtt_populate_shadow_entry() eventually check for
-attachment by way of intel_gvt_dma_map_guest_page().
-
-And of the paths that lead to ppgtt_populate_shadow_entry(),
-shadow_ppgtt_mm() is the only one that doesn't already check for
-INTEL_VGPU_STATUS_ACTIVE or INTEL_VGPU_STATUS_ATTACHED.
-
-  workload_thread() <= pick_next_workload() => INTEL_VGPU_STATUS_ACTIVE
-  |
-  -> dispatch_workload()
-     |
-     |-> prepare_workload()
-         |
-         -> intel_vgpu_sync_oos_pages()
-         |  |
-         |  |-> ppgtt_set_guest_page_sync()
-         |      |
-         |      |-> sync_oos_page()
-         |          |
-         |          |-> ppgtt_populate_shadow_entry()
-         |
-         |-> intel_vgpu_flush_post_shadow()
-             |
-  1:         |-> ppgtt_handle_guest_write_page_table()
-                 |
-                 |-> ppgtt_handle_guest_entry_add()
-                     |
-  2:                 | -> ppgtt_populate_spt_by_guest_entry()
-                     |    |
-                     |    |-> ppgtt_populate_spt()
-                     |        |
-                     |        |-> ppgtt_populate_shadow_entry()
-                     |            |
-                     |            |-> ppgtt_populate_spt_by_guest_entry() [see 2]
-                     |
-                     |-> ppgtt_populate_shadow_entry()
-
-  kvmgt_page_track_write()  <= KVM callback => INTEL_VGPU_STATUS_ATTACHED
-  |
-  |-> intel_vgpu_page_track_handler()
-      |
-      |-> ppgtt_write_protection_handler()
-          |
-          |-> ppgtt_handle_guest_write_page_table_bytes()
-              |
-              |-> ppgtt_handle_guest_write_page_table() [see 1]
-
+Reviewed-by: Zhi Wang <zhi.a.wang@intel.com>
+Tested-by: Yongwei Ma <yongwei.ma@intel.com>
 Signed-off-by: Sean Christopherson <seanjc@google.com>
 ---
- drivers/gpu/drm/i915/gvt/gtt.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/gvt/gtt.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/gpu/drm/i915/gvt/gtt.c b/drivers/gpu/drm/i915/gvt/gtt.c
-index 5426a27c1b71..2aed31b497c9 100644
+index 2aed31b497c9..61e38acee2d5 100644
 --- a/drivers/gpu/drm/i915/gvt/gtt.c
 +++ b/drivers/gpu/drm/i915/gvt/gtt.c
-@@ -1163,8 +1163,6 @@ static int is_2MB_gtt_possible(struct intel_vgpu *vgpu,
- 	if (!HAS_PAGE_SIZES(vgpu->gvt->gt->i915, I915_GTT_PAGE_SIZE_2M))
- 		return 0;
- 
--	if (!test_bit(INTEL_VGPU_STATUS_ATTACHED, vgpu->status))
--		return -EINVAL;
- 	pfn = gfn_to_pfn(vgpu->vfio_device.kvm, ops->get_pfn(entry));
- 	if (is_error_noslot_pfn(pfn))
+@@ -1306,6 +1306,7 @@ static int ppgtt_populate_shadow_entry(struct intel_vgpu *vgpu,
  		return -EINVAL;
-@@ -1277,6 +1275,9 @@ static int ppgtt_populate_shadow_entry(struct intel_vgpu *vgpu,
- 	if (!pte_ops->test_present(ge))
- 		return 0;
- 
-+	if (!test_bit(INTEL_VGPU_STATUS_ATTACHED, vgpu->status))
+ 	default:
+ 		GEM_BUG_ON(1);
 +		return -EINVAL;
-+
- 	gfn = pte_ops->get_pfn(ge);
+ 	}
  
- 	switch (ge->type) {
+ 	/* direct shadow */
 -- 
 2.41.0.487.g6d72f3e995-goog
 
