@@ -2,153 +2,65 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D79776B38C
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Aug 2023 13:42:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E29076BA34
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  1 Aug 2023 19:03:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B3F4010E3DA;
-	Tue,  1 Aug 2023 11:42:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B346010E1AD;
+	Tue,  1 Aug 2023 17:03:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (unknown [192.55.52.151])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B275010E3DF;
- Tue,  1 Aug 2023 11:42:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1690890174; x=1722426174;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=FUGCEj/siVfIn4e28iYsWx67klPHrf/XBtaUu4SJ20M=;
- b=dMO+YAr13bHK/NlJ/fxOhFcaHJStvJy0y3nWnK2FmpwFZk9/KAO9rrwv
- d7TT9GHbfKjPs5gYVqOOGGKJHuzlSe6D0P/lN3TF3SQxgjh9RM6ngfROl
- PjMXLByzkpRGZ0+7X47Af6HBR77UVMppGoKw6ROzrA6WyLslzzhIBehop
- YWTnch7VS1fjn6iJbjsPSx5itIrK638hSm4m4Wb0gkJmwXhcaKCLBr4LA
- aBKW4fhstga+FuqwU/v4OZ5Tya1yleyWAPKdCUCYhXLkTzlSMuGX/dkwT
- /H3BUNQ6wgXYWnH5Y/JnU44zntmPKJcsDGBxgkKt6wuYxNhIxFS5fg5vv A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="349569737"
-X-IronPort-AV: E=Sophos;i="6.01,246,1684825200"; d="scan'208";a="349569737"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2023 04:42:54 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10788"; a="722456605"
-X-IronPort-AV: E=Sophos;i="6.01,246,1684825200"; d="scan'208";a="722456605"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orsmga007.jf.intel.com with ESMTP; 01 Aug 2023 04:42:53 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 1 Aug 2023 04:42:52 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 1 Aug 2023 04:42:52 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Tue, 1 Aug 2023 04:42:52 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.103)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Tue, 1 Aug 2023 04:42:52 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TUZXepkkdRsFOF445ajXYcspgcd2ChBZdaF7vZ1xqQKmXTroDrC5JXGz0OdzVSmsa8YBLLOPo0OquMp6og84RU8cV1uWQJrbaPvSNn8rSPWuPRDRiq+rOYHITz0Umv+iF4yNJEjLTjncmyPUY5rXESVpvjjG8JseRHBaKDTZatddbBsEIScMvWb/7c++3Lt+RO58wh7Qd2yS3cl/Jag6QnPg6O22L5ThwIuklBzDj/P1RujOAx1dUYZirfyPAx28IXjZ9SYJBz+RxHasXdO7YDHeLPX0VI6bwV4wmAAmSjUXfUQsda/jZwOhLtAIRuvgmJIT7n+HHFjzfK8oqVR+Xg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=aPXZ5uZiMG0NDjUJopx1b3g4rDv/6moLUD9pNyWDftU=;
- b=QUTeoRsJeVDOK7AI7UtMyH92DDcfsbNqLyAB4yKP1SUGxicCG4uA15yiNtMqjaQI9MtIsJweTd0EgAGYdpfXOGailPVRIqSPKZSll1Vyb3cNtkcebNFKVQ21bGHHVG5DTd7QSXdIPCqtozMNRrtWNV5fMgYhSkBTZl2ysQradL3QWUcR82uhgvqD/ryuqdcxFKjQm5FCJfTRXvgjLHg2jYSyEiEtI2uui1uRyE6Zsk+8kUHK96rRV1VYrFcCZqIrWQTazBirAAEoDPcpFfXJCBXFGWvGdCVD5EkqsXeaa3MWmHObVtrTR5epSfyihq8YGsmiR+FYvWG4sn5HqluxnA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DM4PR11MB5549.namprd11.prod.outlook.com (2603:10b6:5:388::7) by
- IA0PR11MB7379.namprd11.prod.outlook.com (2603:10b6:208:431::9) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6631.44; Tue, 1 Aug 2023 11:42:50 +0000
-Received: from DM4PR11MB5549.namprd11.prod.outlook.com
- ([fe80::fa3f:a88:b8dd:5c8e]) by DM4PR11MB5549.namprd11.prod.outlook.com
- ([fe80::fa3f:a88:b8dd:5c8e%2]) with mapi id 15.20.6631.043; Tue, 1 Aug 2023
- 11:42:49 +0000
-Message-ID: <34e5cea4-b837-cb1e-15c1-fcbf2dba4f71@intel.com>
-Date: Tue, 1 Aug 2023 14:42:43 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH v4 29/29] drm/i915/gvt: Drop final dependencies on KVM
- internal details
-Content-Language: en-US
-To: Sean Christopherson <seanjc@google.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
-References: <20230729013535.1070024-1-seanjc@google.com>
- <20230729013535.1070024-30-seanjc@google.com>
-From: "Wang, Zhi A" <zhi.a.wang@intel.com>
-In-Reply-To: <20230729013535.1070024-30-seanjc@google.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: FR2P281CA0153.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:98::20) To DM4PR11MB5549.namprd11.prod.outlook.com
- (2603:10b6:5:388::7)
+Received: from mail-io1-xd34.google.com (mail-io1-xd34.google.com
+ [IPv6:2607:f8b0:4864:20::d34])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8E3A110E19B;
+ Tue,  1 Aug 2023 17:03:03 +0000 (UTC)
+Received: by mail-io1-xd34.google.com with SMTP id
+ ca18e2360f4ac-79095499a16so122209739f.2; 
+ Tue, 01 Aug 2023 10:03:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1690909383; x=1691514183;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=HpLKlPkPuDeZTaydF9hSSkY9Ellw/0x0sPYE01QQjK8=;
+ b=dwZwdTx3LbTEUjrG7cqObNua7f/Y6UApTOfS71NoiM+4B3YWrCLr2w6QEvPLWhDQ82
+ ok+QSNsMDSsGiu47UdPyWXPoOyDyTuozvp5e3kulaStWriPzuNLhXDZHiZFxvO2/uNzf
+ KecRX12r2tzxow1wQSwHlyXAwcXrd6DN3vaOB288qxzuGWTJIPqGKCnh+kXjRo7+d7cl
+ YJy/HTYGtvfXMJJMvEwmrwK6qExfYDLuiSpgauCDrQI+LNAysON/q5beCISdZTol7XVt
+ x0NxJHLAetlZGoKrBTjXmCCJRX4bPGCjmOjSxGm744nOgpviFoHbdKlhLAbdxUCTC3fh
+ 6BCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1690909383; x=1691514183;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=HpLKlPkPuDeZTaydF9hSSkY9Ellw/0x0sPYE01QQjK8=;
+ b=DWEJH+9eU4jvbPZrwWvrdKJKycq8prN1yihQeBcJHjZ10hYLTjaS5ru9mZhiS+Yt17
+ fifgWM0hRSvW5kE389mRf7upx+sIqvx3Id6b00UjlhnvkoXOicN7CgrD3FLx8keCJsJa
+ 0hM04DMPmJNAytEyH9M4Sg3BK95lQf9EkDDUEFHwsnjNNXqK34Nh5wFav35M9nrpoBAh
+ pfatkZ4v7bF0d2j2Z1JHfy7Da0Rgs3Laqr+WMoFlAonXfJDg4IGuwU4rfmXbklJ0OQTq
+ W1V9WYu7o8w/o82pBCuyDqX9MzeaeFVZWBdPSTJrnwHPhq5U2JPZK1+3eg36YpSiolhR
+ /28w==
+X-Gm-Message-State: ABy/qLbm3r2eX18YgssqPIRugyffGaXlNgdImNpCyagg7KeJizwp+OOu
+ pDNwXeXEJYIR1B1hMFn7SRw=
+X-Google-Smtp-Source: APBJJlFnXDkFGfkVLtL6cxCofA5CYCbk4OYOGIz5bGjX04E7JRgdcDA1DzDAmsNmGGPAU1VpuideFQ==
+X-Received: by 2002:a05:6e02:1aa3:b0:345:66f5:3404 with SMTP id
+ l3-20020a056e021aa300b0034566f53404mr14132076ilv.0.1690909382631; 
+ Tue, 01 Aug 2023 10:03:02 -0700 (PDT)
+Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
+ by smtp.googlemail.com with ESMTPSA id
+ o20-20020a02c6b4000000b0042b144abf71sm3768577jan.179.2023.08.01.10.03.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 01 Aug 2023 10:03:02 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: daniel.vetter@ffwll.ch, daniel@ffwll.ch, jbaron@akamai.com,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org
+Subject: [PATCH v5 00/22] fix DRM_USE_DYNAMIC_DEBUG regression
+Date: Tue,  1 Aug 2023 11:02:32 -0600
+Message-ID: <20230801170255.163237-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR11MB5549:EE_|IA0PR11MB7379:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0cb8b262-0e5c-4844-110c-08db92846ea4
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: uY8MT47pLWlExPtyyMas4u06J994MBPGRURbvqc+FiPbpM45xnsHAMx4fkybsQCfMxvnRQ65IVEIQzTDYxRHQ2KS6ICB8l9C7cDCJtdYeUXkzYWd8m31kncP9RhQlm3tMiIXNv9pt8B/m+t8M96Nr4h6IPE3LlseThCLoIBkitFfCbkjAKIQPXR2Disx2x8iRsvwM/05O+4UJK2YHT+CAhSjfPfX1ZDf11Ja4KQv0MLIBrs7v4gqh7qcVHBoZ1FiNa1cwRQTUzfpIXbYn7xZ2C1YxmOrahnB4WBErloJrNYTRztIe38/8eHm4dHRNZgkXNrzhCJWv8YT772yZR3nZ2r/4JkTX3DStOe4gXI4lfdHn8RdGMgsUo4W96Uoh6gwk8TW0JV3nb6jgwOVaGdKB/pPgjqh3mtBBtERz29SYgVXmN8M+d8XT92prIqNheDQLT/jC5UVKQgHqoQCwKoIOREIdkmnImP5lgAyLLJLQbY8VpRlASttNDbemU2GxcPEONb3SwUZ1SItVVVC2Fr0i2V6aE/ozt+t57CF8TkqKiHAiwZpKqS5YpGDar1TWtuL8QA8KTOclutcaf6z0ESd7YqhxNN4yvocahk9sYzXP6yNk5tG+upx9/mzIEIFnLCsZ/a24xSwG/G/aELO5pNyqw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR11MB5549.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230028)(376002)(136003)(396003)(366004)(346002)(39860400002)(451199021)(2906002)(4326008)(2616005)(83380400001)(186003)(316002)(38100700002)(31696002)(31686004)(41300700001)(478600001)(86362001)(6512007)(110136005)(54906003)(82960400001)(5660300002)(66946007)(66476007)(66556008)(53546011)(6506007)(26005)(6666004)(8936002)(8676002)(36756003)(6486002)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dit5S2IwZHNlY25IRnp6cVJtS3VhcGZtSmZ0OXlGZzArb1p6SW8rdFNNSkNE?=
- =?utf-8?B?SEgxeURGcnZRY0NIbXNweno4M2lseWd5em9taTc4bEFmenFzSElROGxITnVG?=
- =?utf-8?B?TzlvVGVESXdsYUxGVVhGNWpvWk0vVzhCRVdkRDJWcW41VEJEbzF3ZmNEcWMw?=
- =?utf-8?B?TTFTN2tTZVVUQlFDYUk2L3kxVklMVG5MV3lRdkdrT0Flc041d1R1YUZZSXkz?=
- =?utf-8?B?eTlwRDB3MTlkUVlncDhXUHRKUWRMb0hCMHA5YmlseVpwQithanlPa3VDVERQ?=
- =?utf-8?B?eTVyUGNoaHVhVHNOZGE4cjAvYmZSdGxyMGJTNE4yUXRKYWZaMDYzTnYrK05o?=
- =?utf-8?B?bm4yZUROZHA0N3o5Vlcyc3h4UmZhMkRyVmt6cnpyNmh5S1N0TzIvVnBpUTBP?=
- =?utf-8?B?SzZ1dTNVUld0a29uSDROcTRHN1J4L25CVENBOWduUENOT3dsMjZkbCtqSm5X?=
- =?utf-8?B?cnBQdFpaVmFoMkQ5d0ZXSG9nNkJ3VVpZZ2tNR1ZpT0Q1dVg3OERmYVNvN3FX?=
- =?utf-8?B?VEUzT3NNZG1ZRml0LzVxQ05Fa21GWE8rdG9QRk5ad05tOHh6aGg3RlJyc2d1?=
- =?utf-8?B?cTlKVEduZnA0eDdZZ2tSemp0cVZRUW81MnZCaE9mM0QySk50QXAzOWhXcWFt?=
- =?utf-8?B?dEg0UUgvODh3NFFqcmppeTlENE8vNUdDZXpkT0Z1aXRpUjZZcE5NaXVCWERt?=
- =?utf-8?B?MDNYOGpVMzBVenlKTHB2U0JrdDZQRmptSHM3bng4UUxjeHJZNWdXQXBiZ2hI?=
- =?utf-8?B?VXE0ZjhlMERHbkk3ZjNpN1dsWkVpQUswRzJ1WUxKeVA0NWVzL2k5eFQ5UmdB?=
- =?utf-8?B?bjB4ZEgwcjBYSS82Y0NSUWFIeit6N0lmTVlpcHNWbW10OFJSUE5xc0lIZGo1?=
- =?utf-8?B?Y2VDWWxHbUx2NzZiY1kydGdQbFFOclRKemx5RFE1U05jcEREVmlScDRhM2dS?=
- =?utf-8?B?WVFZTDlBakMrblJsalVlVzlaRFlsR1h3OEtYVE04QUllMGczVEJwYnlYVmND?=
- =?utf-8?B?VUNlbmFlZXZwbU5WRTVDK3pFQWFoeG9DeWtKaS9IN1p6THlmb0JJWmpBclQ0?=
- =?utf-8?B?TGh3NXVEUWhyN3pFbzh1WUtocEw2NHhPdFdVUXdVUE5CVnVMbXVVeUVuaEZE?=
- =?utf-8?B?aU1iYnU3UVI3NG5ZaEhPbkxEYTUxaU9rTDFXckdHZU9wVTgxZlByZE9nUGlk?=
- =?utf-8?B?NEF1TFp4RkR4MDg5RHdEbUk5c2ljdkFueW1zeW9laFZZazEzT3lHU2dHcGow?=
- =?utf-8?B?bzZHTVc3Wi9iNXBOWDBFNW9GY3ppaXQ1UnlxRnhIZmpJTldkZVowS1BTRXd4?=
- =?utf-8?B?b01zUjEvVGNEMGxMU2JoanRWSDg3dGNnazlyNHI5cFZsMldpRVA1c3lSeHJX?=
- =?utf-8?B?SlVTKzhwMVhnVTNIRzkwaU1wR1plK000akREUnB6dmFWTldreXJrd2RNdWtB?=
- =?utf-8?B?TlBJMHBtdzdtUmRaaEQ0a2RzYnZyU3ZzdzdQZDNGL3JmWWp1L05QUHVFQ3RU?=
- =?utf-8?B?Wmc2NzNtQlJEazJLY0Vob2N4RzJYS3gwVk5jYlJuZXpMVjZUOVlkcWVtS0U5?=
- =?utf-8?B?dG52QVA3Q0FyTlJzQjNoZ1BQQmdMMldRWkZ4Rmxwc3pSNGN1anpvQTdERnYv?=
- =?utf-8?B?VmhCUmV2YVJWUnB2RVpLTTQwT05TT0syaXR0MEIrcU1OOUxWa2txc1Mrb2Y5?=
- =?utf-8?B?SmdaTkwrbHgzZGF1bTVJOCtDcnpSK2gvV2Q3YmJ2QnNuci9Qc0UwV0xHSEJY?=
- =?utf-8?B?TGlEc3RjZ0p4a2ZtNkI4clpMVGgza0JmWU0xSXlKYVlyeTdvM1FRMThoK0o1?=
- =?utf-8?B?VWR2TFJPRDNVUjkweXZONnpmdi9QZmNWVVM2dzFOWDdhOXRXeTRxREY3OEF5?=
- =?utf-8?B?KzZlNXA2STUxQmh4Sk5SNXhXNmJWVzNHbXJmMlJtVXdsSzFvUlBoUnBzb05t?=
- =?utf-8?B?aWN2Y0NNTm8wcy8rSkVPVnd6dkswdmZVdjBtSmNKSkx2WXdHYVI0MGRTblZ6?=
- =?utf-8?B?aHdHRHVqZDdYVzlQKzhaQmRrbG0yNmFqenkvUXlkZDd4eGVkUlNYcllrUmJ0?=
- =?utf-8?B?TFRZdSs3Y2NKakM1Mk9rRDNsdkNtY25UYUdtVFhtOW01dytodFhNQ0lsbFpV?=
- =?utf-8?Q?C4/jG354zVhQ0NMuuZA97mF04?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0cb8b262-0e5c-4844-110c-08db92846ea4
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5549.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Aug 2023 11:42:49.5004 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: v6qgYDaRjaVp0n8ZX9YmS1r7UbupdwlLaAHfrFbOXQsS96v+kjjHPy6IkuLsa9dn/VfZ4M6iVuMWwAv1t3QXhQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB7379
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,58 +73,109 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Yongwei Ma <yongwei.ma@intel.com>, Ben Gardon <bgardon@google.com>,
- intel-gvt-dev@lists.freedesktop.org
+Cc: jani.nikula@intel.com, linux@rasmusvillemoes.dk,
+ Jim Cromie <jim.cromie@gmail.com>, robdclark@gmail.com, seanpaul@chromium.org,
+ joe@perches.com, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 7/29/2023 4:35 AM, Sean Christopherson wrote:
-> Open code gpa_to_gfn() in kvmgt_page_track_write() and drop KVMGT's
-> dependency on kvm_host.h, i.e. include only kvm_page_track.h.  KVMGT
-> assumes "gfn == gpa >> PAGE_SHIFT" all over the place, including a few
-> lines below in the same function with the same gpa, i.e. there's no
-> reason to use KVM's helper for this one case.
-> 
-> No functional change intended.
-> 
-> Reviewed-by: Yan Zhao <yan.y.zhao@intel.com>
-> Tested-by: Yongwei Ma <yongwei.ma@intel.com>
-> Signed-off-by: Sean Christopherson <seanjc@google.com>
-> ---
->   drivers/gpu/drm/i915/gvt/gvt.h   | 3 ++-
->   drivers/gpu/drm/i915/gvt/kvmgt.c | 2 +-
->   2 files changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/i915/gvt/gvt.h b/drivers/gpu/drm/i915/gvt/gvt.h
-> index 2d65800d8e93..53a0a42a50db 100644
-> --- a/drivers/gpu/drm/i915/gvt/gvt.h
-> +++ b/drivers/gpu/drm/i915/gvt/gvt.h
-> @@ -34,10 +34,11 @@
->   #define _GVT_H_
->   
->   #include <uapi/linux/pci_regs.h>
-> -#include <linux/kvm_host.h>
->   #include <linux/vfio.h>
->   #include <linux/mdev.h>
->   
-> +#include <asm/kvm_page_track.h>
-> +
->   #include "i915_drv.h"
->   #include "intel_gvt.h"
->   
-> diff --git a/drivers/gpu/drm/i915/gvt/kvmgt.c b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> index eb50997dd369..aaed3969f204 100644
-> --- a/drivers/gpu/drm/i915/gvt/kvmgt.c
-> +++ b/drivers/gpu/drm/i915/gvt/kvmgt.c
-> @@ -1585,7 +1585,7 @@ static void kvmgt_page_track_write(gpa_t gpa, const u8 *val, int len,
->   
->   	mutex_lock(&info->vgpu_lock);
->   
-> -	if (kvmgt_gfn_is_write_protected(info, gpa_to_gfn(gpa)))
-> +	if (kvmgt_gfn_is_write_protected(info, gpa >> PAGE_SHIFT))
->   		intel_vgpu_page_track_handler(info, gpa,
->   						     (void *)val, len);
->   
-Reviewed-by: Zhi Wang <zhi.a.wang@intel.com>
+Hi Jason, Daniel, etal
+
+This is V5, Im hoping to land this one.
+ patchwork will probably call this set v3
+ 113361	fix DRM_USE_DYNAMIC_DEBUG regression - revs 1,2
+ 111652	DRM_USE_DYNAMIC_DEBUG regression - older, also 2 revs
+
+It (patch 14 mainly):
+ Fixes: aad0214f3026 ("dyndbg: add DECLARE_DYNDBG_CLASSMAP macro")
+ Fixes: f158936b60a7 ("drm: POC drm on dyndbg - use in core, 2 helpers, 3 drivers.")
+ Ref: commit bb2ff6c27bc9 ("drm: Disable dynamic debug as broken")
+
+It replaces DECLARE_DYNDBG_CLASSMAP macro with 2 new ones;
+DYNDBG_CLASSMAP_DEFINE/_USE, and invokes them from drm.ko and drivers
+respectively.  A new __dyndbg_class_users section contains each
+driver's _USE; dyndbg scans it at driver-module load, finds drm.debug,
+and applies it to the driver's class'd prdbgs.
+
+The code it fixes went in here:
+https://lore.kernel.org/lkml/Yy7%2F6oTBW2lqVSK1@kroah.com/
+
+then Ref: effectively marked DRM_USE_DYNAMIC_DEBUG=y as broken
+
+and https://lore.kernel.org/lkml/Y3XUrOGAV4I7bB3M@kroah.com/
+GregKH opined:
+This should go through the drm tree now.  The rest probably should also
+go that way and not through my tree as well.
+
+While most of this patchset's churn is still in lib/, DRM is the real
+user for all this classmap stuff, and the real acceptance test is in
+DRM CI.  Hopefully it won't fall over in BAT.
+
+However, theres also a dyndbg patch to add -s flag, I havent seen it
+lately, but it might have a nominal conflict.
+
+I'll happily take reviews/Acks/tested-bys, grumpily breakage reports.
+And some landing instructions, wind-speed, runway assignment, etc from the Tower.
+
+theres also a few drive-by checkpatch tweaks.
+13 fixes a warning that 14 gets about vmlinux.lds.h declared linker-symbols.
+
+
+Jim Cromie (22):
+  drm: use correct ccflags-y syntax
+  test-dyndbg: fixup CLASSMAP usage error
+  dyndbg: make ddebug_class_param union members same size
+  dyndbg: replace classmap list with a vector
+  dyndbg: ddebug_apply_class_bitmap - add module arg, select on it
+  dyndbg: split param_set_dyndbg_classes to module/wrapper fns
+  dyndbg: drop NUM_TYPE_ARRAY
+  dyndbg: reduce verbose/debug clutter
+  dyndbg: silence debugs with no-change updates
+  dyndbg: tighten ddebug_class_name() 1st arg type
+  dyndbg: tighten fn-sig of ddebug_apply_class_bitmap
+  dyndbg-API: remove DD_CLASS_TYPE_(DISJOINT|LEVEL)_NAMES and code
+  checkpatch: file-scoped extern special case for linker-symbol
+  dyndbg-API: fix CONFIG_DRM_USE_DYNAMIC_DEBUG regression
+  dyndbg: add for_each_boxed_vector
+  dyndbg: refactor ddebug_classparam_clamp_input
+  dyndbg-API: promote DYNDBG_CLASSMAP_PARAM to API
+  dyndbg-test: build it with just CONFIG_DYNAMIC_DEBUG_CORE
+  drm: restore CONFIG_DRM_USE_DYNAMIC_DEBUG un-BROKEN
+  drm-drivers: DRM_CLASSMAP_USE in 2nd batch of drivers, helpers
+  dyndbg-doc: add classmap info to howto
+  checkpatch: reword long-line warn about commit-msg
+
+ .../admin-guide/dynamic-debug-howto.rst       |  64 ++-
+ MAINTAINERS                                   |   2 +-
+ drivers/gpu/drm/Kconfig                       |   3 +-
+ drivers/gpu/drm/Makefile                      |   3 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  12 +-
+ drivers/gpu/drm/display/drm_dp_helper.c       |  12 +-
+ drivers/gpu/drm/drm_crtc_helper.c             |  12 +-
+ drivers/gpu/drm/drm_gem_shmem_helper.c        |   2 +
+ drivers/gpu/drm/drm_print.c                   |  35 +-
+ drivers/gpu/drm/gud/gud_drv.c                 |   2 +
+ drivers/gpu/drm/i915/i915_params.c            |  12 +-
+ drivers/gpu/drm/mgag200/mgag200_drv.c         |   2 +
+ drivers/gpu/drm/nouveau/nouveau_drm.c         |  12 +-
+ drivers/gpu/drm/qxl/qxl_drv.c                 |   2 +
+ drivers/gpu/drm/radeon/radeon_drv.c           |   2 +
+ drivers/gpu/drm/udl/udl_main.c                |   2 +
+ drivers/gpu/drm/vkms/vkms_drv.c               |   2 +
+ drivers/gpu/drm/vmwgfx/vmwgfx_drv.c           |   2 +
+ include/asm-generic/vmlinux.lds.h             |   1 +
+ include/drm/drm_print.h                       |  12 +-
+ include/linux/dynamic_debug.h                 | 113 +++--
+ kernel/module/main.c                          |   3 +
+ lib/Kconfig.debug                             |  10 +-
+ lib/Makefile                                  |   4 +-
+ lib/dynamic_debug.c                           | 406 +++++++++++-------
+ lib/test_dynamic_debug.c                      | 127 +++---
+ lib/test_dynamic_debug_submod.c               |  10 +
+ scripts/checkpatch.pl                         |  22 +-
+ 28 files changed, 550 insertions(+), 341 deletions(-)
+ create mode 100644 lib/test_dynamic_debug_submod.c
+
+-- 
+2.41.0
+
