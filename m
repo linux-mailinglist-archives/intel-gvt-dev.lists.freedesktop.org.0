@@ -1,63 +1,66 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 117C676F3FC
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  3 Aug 2023 22:21:43 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B60D076F646
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  4 Aug 2023 01:50:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D1A8010E1F5;
-	Thu,  3 Aug 2023 20:21:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8FCDE10E22C;
+	Thu,  3 Aug 2023 23:50:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vk1-xa35.google.com (mail-vk1-xa35.google.com
- [IPv6:2607:f8b0:4864:20::a35])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2C68610E1F5;
- Thu,  3 Aug 2023 20:21:40 +0000 (UTC)
-Received: by mail-vk1-xa35.google.com with SMTP id
- 71dfb90a1353d-4865d994991so557239e0c.0; 
- Thu, 03 Aug 2023 13:21:40 -0700 (PDT)
+Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com
+ [IPv6:2607:f8b0:4864:20::42f])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 55C7910E22C;
+ Thu,  3 Aug 2023 23:50:20 +0000 (UTC)
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-686c06b806cso1092643b3a.2; 
+ Thu, 03 Aug 2023 16:50:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1691094099; x=1691698899;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=SSaRAjLMTa67lFk5QZwB/CpwmOcN1LDlBkoWiiPNHX0=;
- b=S2LXdDKSgccv1prhAF8Z0oKo1xmicxyewP0ylBhuICK2rO/fsSjef3jFU/28NJ3Vh1
- WyXNOi2jAPT0ODKE80piyhpf+XC+KO14qoq4Zoq9pxkFvuS+D2a8yfb562h8HIX6AEVF
- ch5p1S7/7QdkjxqxTnXku3kQTsVPaQDaUh5EfbRUaCprqY2YJTNY+lFJ8hQOdhtnnyJ8
- QqTaODyCa/GBNPH6fxj5g2iNTLieOqvxoez8ocqemnPGBtsl+ns4zbS4tkGe113R9mG/
- EmWP7hTP8mPWwhpZzOshyk7rlRKtsUMGcRFGAd1dhHj6GV5xqfNRF4asRtTybLNxarB7
- Y1MQ==
+ d=gmail.com; s=20221208; t=1691106620; x=1691711420;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=OP8pAkGmqcoifyAHKkznCuAfpusO15WSf6dYYfXbnWE=;
+ b=PgXXxzGzaAwUtIpzTTXbsZnBtS76iQFwC1R3DmeSTZdbZJKnoq6FG+qIJfa0ga1hl5
+ TWCOeqIovBS4gZMFFwmjAb5gYwdZSBDwkKzMqBDZI6rZpTSnZjZhbM2sws+XtC3BQu16
+ F3bEEb6TMl7dhdkyDVhVaBfbLf6FSsiDjbQd/gg4iQFuNf736eah9lWpOuFQ+Ftd1c6u
+ rSRZI7+FyciRYDmW3pLArfl9uM9HecVmp5Qk84Vf0FnlTBDAL7G5t5EmeVy87oRkcDiW
+ +4XQwEh9SShZN/bTn2OqthQfTWpjgWmkfz8CkoxAZG0yOqla4DJ66IppVflWDBg9kyyN
+ UUEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691094099; x=1691698899;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=SSaRAjLMTa67lFk5QZwB/CpwmOcN1LDlBkoWiiPNHX0=;
- b=Jwk+z+IS5JxL9H/cXTD3Jf3xFMlF9xGwDE7i7oO5cfmSm7gmVMf8Hf18axZR5/VmZ+
- QK9HYMCDcbMhJ/H0I32sNM6i8qnPoX49MAbcxi0EpZBogyMP8S7wxVa3XVPB9Ht2wILQ
- Eb7+DLMZSHH44KO1VjUxnUH856tTY19nW7nnILZSl+JDxE1cUEvw0KHNV4T2vjwxYdhI
- nC7MoQD7wJ3Hd/wr98vdnAqGCzctIN7yPemtxS+ryPfxetrSF9izlfV3oK8fqDt6zX1B
- Z8FIZxNGZ7RwSoNYj4QLYZ2BZH/pyP3//mVk9io6tLBFUgThnCrxVGIiaGquV/ZXwkRe
- DTww==
-X-Gm-Message-State: ABy/qLZtECSPLyOGMuGf4aCtWx7p2MnBjb/RD3pYDfQxA7GvRd6H88uz
- Jz8p1ErucE4Z/iS2l1WBPB90guuc2bKXjGPypx8=
-X-Google-Smtp-Source: APBJJlG1CySCstG+XEKldbhygdyS13vjgjak8avQeTacOxbhbG8cLi/Juych8hTizx9FjNhgErCFMh1d0Escb3V3rHQ=
-X-Received: by 2002:a67:bb04:0:b0:443:895d:1b53 with SMTP id
- m4-20020a67bb04000000b00443895d1b53mr8351230vsn.10.1691094099065; Thu, 03 Aug
- 2023 13:21:39 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1691106620; x=1691711420;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OP8pAkGmqcoifyAHKkznCuAfpusO15WSf6dYYfXbnWE=;
+ b=EGyRSdEjXVgcOPr0yTubneXF5MD65q3g4LpWupD/dtbMcrkHq6uWjZy7ht0S/26a8b
+ bQmLJFo+GuW5kte6NVuLRhJ8rMRk5J1E73KMWUFjpgHgvb2WK3umuw3iEHspikVxvgVK
+ B4ZiF2QMk9Wl71F8UAjSfQ9ONPga98WU8gpl82jQfgr2cTCSywLl1r5TF9+kyps+PORw
+ kksQtr9EgZJpaCtbUrHFAgXZtOpdRgfFel3iUpBp6uvTNxMw7FsLYGFEaDIJchKiIVHV
+ uKwDGmsNVJ8DHrt+Wygranov93WO3n1yHWTXkMRNCuUjbysD8eAqgw3LPvpjI5I9v1iE
+ tYew==
+X-Gm-Message-State: AOJu0YziOPoy/muCcH2dICMLpHiROjoqOfAPpM4bA15V85X556usW/bF
+ cq6JSTyzAvKLU4Qfk1ugL0k=
+X-Google-Smtp-Source: AGHT+IEkK9m5UC0fjBbStPVpvGbMqyYkE8OIDUNZCnvuaRzMxzZJ52sAUlgCOO0Uch9UiRf+Mik+qw==
+X-Received: by 2002:a05:6a00:14d5:b0:680:252d:da3e with SMTP id
+ w21-20020a056a0014d500b00680252dda3emr208073pfu.5.1691106619663; 
+ Thu, 03 Aug 2023 16:50:19 -0700 (PDT)
+Received: from localhost ([192.55.55.51]) by smtp.gmail.com with ESMTPSA id
+ c23-20020a62e817000000b0068783a2dfdasm367609pfi.104.2023.08.03.16.50.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Aug 2023 16:50:19 -0700 (PDT)
+Date: Thu, 3 Aug 2023 16:50:17 -0700
+From: Isaku Yamahata <isaku.yamahata@gmail.com>
+To: Sean Christopherson <seanjc@google.com>
+Subject: Re: [PATCH v4 12/29] KVM: x86/mmu: Move
+ kvm_arch_flush_shadow_{all,memslot}() to mmu.c
+Message-ID: <20230803235017.GA2257301@ls.amr.corp.intel.com>
+References: <20230729013535.1070024-1-seanjc@google.com>
+ <20230729013535.1070024-13-seanjc@google.com>
 MIME-Version: 1.0
-References: <20230801170255.163237-21-jim.cromie@gmail.com>
- <202308031432.fcb4197-oliver.sang@intel.com>
-In-Reply-To: <202308031432.fcb4197-oliver.sang@intel.com>
-From: jim.cromie@gmail.com
-Date: Thu, 3 Aug 2023 14:21:13 -0600
-Message-ID: <CAJfuBxzq_5skGRkcdK9kJBE_qL8X_waq88XsUO-FHyVQkQUb4w@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH v5 19/22] drm: restore
- CONFIG_DRM_USE_DYNAMIC_DEBUG un-BROKEN
-To: kernel test robot <oliver.sang@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20230729013535.1070024-13-seanjc@google.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,36 +73,111 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: lkp@intel.com, jani.nikula@intel.com, daniel.vetter@ffwll.ch,
- intel-gfx@lists.freedesktop.org, linux@rasmusvillemoes.dk,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, joe@perches.com,
- jbaron@akamai.com, seanpaul@chromium.org, amd-gfx@lists.freedesktop.org,
- daniel@ffwll.ch, gregkh@linuxfoundation.org, oe-lkp@lists.linux.dev,
- intel-gvt-dev@lists.freedesktop.org
+Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Yongwei Ma <yongwei.ma@intel.com>,
+ isaku.yamahata@gmail.com, Ben Gardon <bgardon@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, Aug 3, 2023 at 1:14=E2=80=AFAM kernel test robot <oliver.sang@intel=
-.com> wrote:
->
->
-> hi, Jim Cromie,
->
-> we send this report to you to consult that if there is any limitation to =
-use
-> this CONFIG_DRM_USE_DYNAMIC_DEBUG?
-> attached config is a randconfig which has CONFIG_DRM_USE_DYNAMIC_DEBUG, t=
-he
-> kernel built with it failed to boot in our tests, but we also tested with=
- some
-> other config then the issue cannot reproduce.
->
+On Fri, Jul 28, 2023 at 06:35:18PM -0700,
+Sean Christopherson <seanjc@google.com> wrote:
 
-Theres no limitation I know of - particularly not CONFIG related
+> Move x86's implementation of kvm_arch_flush_shadow_{all,memslot}() into
+> mmu.c, and make kvm_mmu_zap_all() static as it was globally visible only
+> for kvm_arch_flush_shadow_all().  This will allow refactoring
+> kvm_arch_flush_shadow_memslot() to call kvm_mmu_zap_all() directly without
+> having to expose kvm_mmu_zap_all_fast() outside of mmu.c.  Keeping
+> everything in mmu.c will also likely simplify supporting TDX, which
+> intends to do zap only relevant SPTEs on memslot updates.
 
-on an earlier version, I saw some odd transient / red-herring
-linker-errors (collisions on __UNIQUE_ID constructs)
-on s390, mips, older gcc (iirc - I could go find it in lkp-reports if
-its meaningful)
-that had me hacking at the fallback which uses __LINE__
-But this seems different.
+Yes, it helps TDX code cleaner to move mmu related function under mmu.c.
+Reviewed-by: Isaku Yamahata <isaku.yamahata@intel.com>
+
+Thanks,
+
+> 
+> No functional change intended.
+> 
+> Suggested-by: Yan Zhao <yan.y.zhao@intel.com>
+> Tested-by: Yongwei Ma <yongwei.ma@intel.com>
+> Signed-off-by: Sean Christopherson <seanjc@google.com>
+> ---
+>  arch/x86/include/asm/kvm_host.h |  1 -
+>  arch/x86/kvm/mmu/mmu.c          | 13 ++++++++++++-
+>  arch/x86/kvm/x86.c              | 11 -----------
+>  3 files changed, 12 insertions(+), 13 deletions(-)
+> 
+> diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
+> index 28bd38303d70..856ec22aceb6 100644
+> --- a/arch/x86/include/asm/kvm_host.h
+> +++ b/arch/x86/include/asm/kvm_host.h
+> @@ -1832,7 +1832,6 @@ void kvm_mmu_zap_collapsible_sptes(struct kvm *kvm,
+>  				   const struct kvm_memory_slot *memslot);
+>  void kvm_mmu_slot_leaf_clear_dirty(struct kvm *kvm,
+>  				   const struct kvm_memory_slot *memslot);
+> -void kvm_mmu_zap_all(struct kvm *kvm);
+>  void kvm_mmu_invalidate_mmio_sptes(struct kvm *kvm, u64 gen);
+>  void kvm_mmu_change_mmu_pages(struct kvm *kvm, unsigned long kvm_nr_mmu_pages);
+>  
+> diff --git a/arch/x86/kvm/mmu/mmu.c b/arch/x86/kvm/mmu/mmu.c
+> index ec169f5c7dce..c6dee659d592 100644
+> --- a/arch/x86/kvm/mmu/mmu.c
+> +++ b/arch/x86/kvm/mmu/mmu.c
+> @@ -6732,7 +6732,7 @@ void kvm_mmu_slot_leaf_clear_dirty(struct kvm *kvm,
+>  	 */
+>  }
+>  
+> -void kvm_mmu_zap_all(struct kvm *kvm)
+> +static void kvm_mmu_zap_all(struct kvm *kvm)
+>  {
+>  	struct kvm_mmu_page *sp, *node;
+>  	LIST_HEAD(invalid_list);
+> @@ -6757,6 +6757,17 @@ void kvm_mmu_zap_all(struct kvm *kvm)
+>  	write_unlock(&kvm->mmu_lock);
+>  }
+>  
+> +void kvm_arch_flush_shadow_all(struct kvm *kvm)
+> +{
+> +	kvm_mmu_zap_all(kvm);
+> +}
+> +
+> +void kvm_arch_flush_shadow_memslot(struct kvm *kvm,
+> +				   struct kvm_memory_slot *slot)
+> +{
+> +	kvm_page_track_flush_slot(kvm, slot);
+> +}
+> +
+>  void kvm_mmu_invalidate_mmio_sptes(struct kvm *kvm, u64 gen)
+>  {
+>  	WARN_ON(gen & KVM_MEMSLOT_GEN_UPDATE_IN_PROGRESS);
+> diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
+> index a6b9bea62fb8..059571d5abed 100644
+> --- a/arch/x86/kvm/x86.c
+> +++ b/arch/x86/kvm/x86.c
+> @@ -12776,17 +12776,6 @@ void kvm_arch_commit_memory_region(struct kvm *kvm,
+>  		kvm_arch_free_memslot(kvm, old);
+>  }
+>  
+> -void kvm_arch_flush_shadow_all(struct kvm *kvm)
+> -{
+> -	kvm_mmu_zap_all(kvm);
+> -}
+> -
+> -void kvm_arch_flush_shadow_memslot(struct kvm *kvm,
+> -				   struct kvm_memory_slot *slot)
+> -{
+> -	kvm_page_track_flush_slot(kvm, slot);
+> -}
+> -
+>  static inline bool kvm_guest_apic_has_interrupt(struct kvm_vcpu *vcpu)
+>  {
+>  	return (is_guest_mode(vcpu) &&
+> -- 
+> 2.41.0.487.g6d72f3e995-goog
+> 
+
+-- 
+Isaku Yamahata <isaku.yamahata@gmail.com>
