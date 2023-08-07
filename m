@@ -1,71 +1,51 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DE4877235A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Aug 2023 14:02:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01561772526
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Aug 2023 15:12:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C99BB10E28E;
-	Mon,  7 Aug 2023 12:02:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A16D910E0AA;
+	Mon,  7 Aug 2023 13:12:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pl1-x636.google.com (mail-pl1-x636.google.com
- [IPv6:2607:f8b0:4864:20::636])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CCC2C10E28E;
- Mon,  7 Aug 2023 12:02:05 +0000 (UTC)
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-1bb893e6365so27632815ad.2; 
- Mon, 07 Aug 2023 05:02:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1691409725; x=1692014525;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=GUzrPfmRrMPt+i4UE/lAe9+fC5lOiUGAw2K7J8tfV2c=;
- b=d2GE3aQo5mQfZvlEF7f4oSva4EKJvypvIGy6IuBTAsIUE3RDscNyHs6Em+I3dvnLEN
- Obr3UC2AiaTlHrSkEsJ/2/LFeYfvI1DiNMw5FenkPOHuDossPPZc8ZfeJGsIy+R9emgH
- S+zPKCf80hsaVWKsNUpdmTN80mS2TgCrpRIY5tVhvkJPAPvo5KeS0X2Jwyldn9yI+g6Q
- Z55xF5Wu+GHCqh6GAMq9ECVbnwQqBc3oeadTkaDvDDfs5YsfG/1knWcS8z7eeL+BWZrT
- egWAAOtE1/vlGanMsyRR3IJqlk1YK1GLJmry94YPMykoZPpGbxmbd5/l8MnQYh04wIDr
- yzPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691409725; x=1692014525;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GUzrPfmRrMPt+i4UE/lAe9+fC5lOiUGAw2K7J8tfV2c=;
- b=FBKm6RUK2CVB+SdUFwdgrDxV7jMDLZt0FgCj5PYNSIhuxNspBFyY6IJZV7eDhjHBQe
- zjPCoFb/VfBEJzHFzJBQD31zBtTzv3JkX1J6N+yYNRbEsKZsEmqtqQeLk8l2uY+LPuMq
- rUd4x0cDqtJFQgliHGAhL/+1J4OtVUDFL/hSTZrk/sr+s/B1gRWTMSSm4xIwIWi70pl/
- QCw9D0mewSu0JuMVWEKeOUwvipI41I1/h/ioyTP7swHKhHQI2F6Kned1rG9/Jdm81Qxu
- wnAdpiWxJ49PYjyLswnD5yUl7a8ay4nyaH7t8W5XDv2wppDmn5moLPbGDz6nQKbsPY4M
- q5DQ==
-X-Gm-Message-State: AOJu0YxNrwkv2vI41LnEFe04xVEIhGUh/DtbYIzEyLbhiQ4KQYwGSCXc
- g9zCEJUYCCt1uNezJA8+9nqnvDBo0GuGgY3y
-X-Google-Smtp-Source: AGHT+IHWYNulalQMDqlB0MHADRqG5ScHqlrzXhiB9uHTqVA4K3003dWe9L2ntXhX6qq+PcVohtu+WA==
-X-Received: by 2002:a17:902:c101:b0:1b5:edd:e3c7 with SMTP id
- 1-20020a170902c10100b001b50edde3c7mr7864273pli.16.1691409724767; 
- Mon, 07 Aug 2023 05:02:04 -0700 (PDT)
-Received: from [192.168.255.10] ([103.7.29.32])
- by smtp.gmail.com with ESMTPSA id
- jc15-20020a17090325cf00b001b7ffca7dbcsm6752298plb.148.2023.08.07.05.02.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Aug 2023 05:02:04 -0700 (PDT)
-Message-ID: <5581418b-2e1c-6011-f0a4-580df7e00b44@gmail.com>
-Date: Mon, 7 Aug 2023 20:01:55 +0800
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DDAF189B57;
+ Mon,  7 Aug 2023 13:12:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1691413931; x=1722949931;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=T+6DKTwSiotcxA4tZewvrKqD/TNgOnCf2vZfL8ifZgA=;
+ b=GJS1rFYMmLWapvNED5LsekJYYp6/diXDYYeY7T45eyPdeOkbIgP1HhOf
+ qQDZU/y4F+BXgcj6Tw8vBtzC2/yGYcQ2EprmbN34TAsfORxQzTWjCUkde
+ pRyCQi3MJda4CVc5cLVYsjVUruXoiHolba4YJOolaSZFKl7cP/zFHKC1t
+ GMBgtSw/DwXInpPrLmCJQmurzPVE98RPut9PWCMBVDfI63TFH8/RNsZ8I
+ 0dAPaISYcIP7jZ07Sir49qk+IL+mB/gWjgUHTNURiYXICEsIdZp+7FysL
+ HjOCLdB964JkkJt7h/SuQyufVAk3Q4wg4WM5Zd/0TcxSEeXuPnCcBDDZh A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="373291769"
+X-IronPort-AV: E=Sophos;i="6.01,262,1684825200"; d="scan'208";a="373291769"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2023 06:12:11 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10795"; a="845030384"
+X-IronPort-AV: E=Sophos;i="6.01,262,1684825200"; d="scan'208";a="845030384"
+Received: from acangian-mobl1.ger.corp.intel.com (HELO localhost)
+ ([10.252.63.232])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2023 06:12:09 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Zhenyu Wang <zhenyuw@linux.intel.com>, intel-gfx@lists.freedesktop.org
+Subject: Re: [Intel-gfx] [PATCH] drm/i915: Replace dead 01.org link
+In-Reply-To: <20230804040544.1972958-1-zhenyuw@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20230804040544.1972958-1-zhenyuw@linux.intel.com>
+Date: Mon, 07 Aug 2023 16:12:07 +0300
+Message-ID: <87tttbt2s8.fsf@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.14.0
-Subject: Re: [PATCH 19/27] KVM: x86/mmu: Use page-track notifiers iff there
- are external users
-To: Sean Christopherson <seanjc@google.com>
-References: <20221223005739.1295925-1-seanjc@google.com>
- <20221223005739.1295925-20-seanjc@google.com>
-Content-Language: en-US
-From: Like Xu <like.xu.linux@gmail.com>
-In-Reply-To: <20221223005739.1295925-20-seanjc@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,24 +58,62 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Ben Gardon <bgardon@google.com>,
- Paolo Bonzini <pbonzini@redhat.com>, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
+Cc: intel-gvt-dev@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 23/12/2022 8:57 am, Sean Christopherson wrote:
-> +static inline void kvm_page_track_write(struct kvm_vcpu *vcpu, gpa_t gpa,
-> +					const u8 *new, int bytes)
-> +{
-> +	__kvm_page_track_write(vcpu, gpa, new, bytes);
-> +
-> +	kvm_mmu_track_write(vcpu, gpa, new, bytes);
-> +}
+On Fri, 04 Aug 2023, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
+> 01.org is dead so replace old gvt link with current wiki page.
+>
+> Signed-off-by: Zhenyu Wang <zhenyuw@linux.intel.com>
 
-The kvm_mmu_track_write() is only used for x86, where the incoming parameter
-"u8 *new" has not been required since 0e0fee5c539b ("kvm: mmu: Fix race in
-emulated page table writes"), please help confirm if it's still needed ? Thanks.
-A minor clean up is proposed.
+Acked-by: Jani Nikula <jani.nikula@intel.com>
+
+> ---
+>  MAINTAINERS                      | 2 +-
+>  drivers/gpu/drm/i915/Kconfig     | 2 +-
+>  drivers/gpu/drm/i915/intel_gvt.c | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d516295978a4..805d33a107aa 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -10436,7 +10436,7 @@ M:	Zhi Wang <zhi.a.wang@intel.com>
+>  L:	intel-gvt-dev@lists.freedesktop.org
+>  L:	intel-gfx@lists.freedesktop.org
+>  S:	Supported
+> -W:	https://01.org/igvt-g
+> +W:	https://github.com/intel/gvt-linux/wiki
+>  T:	git https://github.com/intel/gvt-linux.git
+>  F:	drivers/gpu/drm/i915/gvt/
+>  
+> diff --git a/drivers/gpu/drm/i915/Kconfig b/drivers/gpu/drm/i915/Kconfig
+> index 01b5a8272a27..854255966d3d 100644
+> --- a/drivers/gpu/drm/i915/Kconfig
+> +++ b/drivers/gpu/drm/i915/Kconfig
+> @@ -140,7 +140,7 @@ config DRM_I915_GVT_KVMGT
+>  
+>  	  Note that this driver only supports newer device from Broadwell on.
+>  	  For further information and setup guide, you can visit:
+> -	  http://01.org/igvt-g.
+> +	  https://github.com/intel/gvt-linux/wiki.
+>  
+>  	  If in doubt, say "N".
+>  
+> diff --git a/drivers/gpu/drm/i915/intel_gvt.c b/drivers/gpu/drm/i915/intel_gvt.c
+> index e98b6d69a91a..9b6d87c8b583 100644
+> --- a/drivers/gpu/drm/i915/intel_gvt.c
+> +++ b/drivers/gpu/drm/i915/intel_gvt.c
+> @@ -41,7 +41,7 @@
+>   * To virtualize GPU resources GVT-g driver depends on hypervisor technology
+>   * e.g KVM/VFIO/mdev, Xen, etc. to provide resource access trapping capability
+>   * and be virtualized within GVT-g device module. More architectural design
+> - * doc is available on https://01.org/group/2230/documentation-list.
+> + * doc is available on https://github.com/intel/gvt-linux/wiki.
+>   */
+>  
+>  static LIST_HEAD(intel_gvt_devices);
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
