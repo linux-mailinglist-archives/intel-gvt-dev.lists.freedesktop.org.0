@@ -2,32 +2,70 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 529857716BC
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  6 Aug 2023 22:14:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DE4877235A
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  7 Aug 2023 14:02:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 72BDC10E100;
-	Sun,  6 Aug 2023 20:14:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C99BB10E28E;
+	Mon,  7 Aug 2023 12:02:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from hkmail.eastmoney.com (unknown [118.143.140.68])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2669010E10E
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  6 Aug 2023 20:14:44 +0000 (UTC)
-Received: from bsbssb (unknown [103.119.2.204])
- by hkmail.eastmoney.com (Postfix) with ESMTPA id 62C3C10991CA7
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  7 Aug 2023 04:14:39 +0800 (HKT)
-Message-ID: <9AE6817A24EB4E3A37E051F64840E93C@bsbssb>
-From: =?utf-8?B?572R57uc566h55CG5ZGY?= <xxdlksd@zk.cn>
-To: intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?utf-8?B?6YKu566x5a6J5YWo5Y2H57qn6YeN6KaB5YWs5ZGK77yB5YWz57O75Yiw55So5oi355qE5q2j5bi45L2/?=
- =?utf-8?B?55So77yB77yI6K+35Yqh5b+F5LuU57uG6ZiF6K+777yJ?=
-Date: Mon, 7 Aug 2023 04:14:31 +0800
+Received: from mail-pl1-x636.google.com (mail-pl1-x636.google.com
+ [IPv6:2607:f8b0:4864:20::636])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id CCC2C10E28E;
+ Mon,  7 Aug 2023 12:02:05 +0000 (UTC)
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-1bb893e6365so27632815ad.2; 
+ Mon, 07 Aug 2023 05:02:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1691409725; x=1692014525;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=GUzrPfmRrMPt+i4UE/lAe9+fC5lOiUGAw2K7J8tfV2c=;
+ b=d2GE3aQo5mQfZvlEF7f4oSva4EKJvypvIGy6IuBTAsIUE3RDscNyHs6Em+I3dvnLEN
+ Obr3UC2AiaTlHrSkEsJ/2/LFeYfvI1DiNMw5FenkPOHuDossPPZc8ZfeJGsIy+R9emgH
+ S+zPKCf80hsaVWKsNUpdmTN80mS2TgCrpRIY5tVhvkJPAPvo5KeS0X2Jwyldn9yI+g6Q
+ Z55xF5Wu+GHCqh6GAMq9ECVbnwQqBc3oeadTkaDvDDfs5YsfG/1knWcS8z7eeL+BWZrT
+ egWAAOtE1/vlGanMsyRR3IJqlk1YK1GLJmry94YPMykoZPpGbxmbd5/l8MnQYh04wIDr
+ yzPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1691409725; x=1692014525;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GUzrPfmRrMPt+i4UE/lAe9+fC5lOiUGAw2K7J8tfV2c=;
+ b=FBKm6RUK2CVB+SdUFwdgrDxV7jMDLZt0FgCj5PYNSIhuxNspBFyY6IJZV7eDhjHBQe
+ zjPCoFb/VfBEJzHFzJBQD31zBtTzv3JkX1J6N+yYNRbEsKZsEmqtqQeLk8l2uY+LPuMq
+ rUd4x0cDqtJFQgliHGAhL/+1J4OtVUDFL/hSTZrk/sr+s/B1gRWTMSSm4xIwIWi70pl/
+ QCw9D0mewSu0JuMVWEKeOUwvipI41I1/h/ioyTP7swHKhHQI2F6Kned1rG9/Jdm81Qxu
+ wnAdpiWxJ49PYjyLswnD5yUl7a8ay4nyaH7t8W5XDv2wppDmn5moLPbGDz6nQKbsPY4M
+ q5DQ==
+X-Gm-Message-State: AOJu0YxNrwkv2vI41LnEFe04xVEIhGUh/DtbYIzEyLbhiQ4KQYwGSCXc
+ g9zCEJUYCCt1uNezJA8+9nqnvDBo0GuGgY3y
+X-Google-Smtp-Source: AGHT+IHWYNulalQMDqlB0MHADRqG5ScHqlrzXhiB9uHTqVA4K3003dWe9L2ntXhX6qq+PcVohtu+WA==
+X-Received: by 2002:a17:902:c101:b0:1b5:edd:e3c7 with SMTP id
+ 1-20020a170902c10100b001b50edde3c7mr7864273pli.16.1691409724767; 
+ Mon, 07 Aug 2023 05:02:04 -0700 (PDT)
+Received: from [192.168.255.10] ([103.7.29.32])
+ by smtp.gmail.com with ESMTPSA id
+ jc15-20020a17090325cf00b001b7ffca7dbcsm6752298plb.148.2023.08.07.05.02.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 07 Aug 2023 05:02:04 -0700 (PDT)
+Message-ID: <5581418b-2e1c-6011-f0a4-580df7e00b44@gmail.com>
+Date: Mon, 7 Aug 2023 20:01:55 +0800
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="----=_001_27de56c0d6a8e856_=----"
-X-Priority: 3
-X-Mailer: Supmailer 38.2.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.14.0
+Subject: Re: [PATCH 19/27] KVM: x86/mmu: Use page-track notifiers iff there
+ are external users
+To: Sean Christopherson <seanjc@google.com>
+References: <20221223005739.1295925-1-seanjc@google.com>
+ <20221223005739.1295925-20-seanjc@google.com>
+Content-Language: en-US
+From: Like Xu <like.xu.linux@gmail.com>
+In-Reply-To: <20221223005739.1295925-20-seanjc@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -40,87 +78,24 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Ben Gardon <bgardon@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format.
+On 23/12/2022 8:57 am, Sean Christopherson wrote:
+> +static inline void kvm_page_track_write(struct kvm_vcpu *vcpu, gpa_t gpa,
+> +					const u8 *new, int bytes)
+> +{
+> +	__kvm_page_track_write(vcpu, gpa, new, bytes);
+> +
+> +	kvm_mmu_track_write(vcpu, gpa, new, bytes);
+> +}
 
-------=_001_27de56c0d6a8e856_=----
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: base64
-
-DQrns7vnu5/pgJrnn6UNCg0KDQrlsIrmlaznmoTnlKjmiLfmgqjlpb3vvIENCg0KDQrkuLrliqDl
-vLrnvZHnu5zlronlhajnrqHnkIbvvIzmj5Dpq5jns7vnu5/nmoTlronlhajmgKflkoznqLPlrprm
-gKfvvIzkv53pmpzmlLblj5HnlYXpgJrvvIzkuLrnlKjmiLfmj5DkvpvkvJjotKjnmoTmnI3liqHv
-vIznjrDljbPlsIblkK/nlKjmlrDniYjns7vnu5/vvIzmnInlhbPkuovpobnpgJrnn6XlpoLkuIvv
-vJogDQoNCjEu55So5oi36ZyA55m76ZmG5paw6YKu5Lu257O75bCG5Y6f5pyJ5pWw5o2u6L+B56e7
-6Iez5paw54mI57O757uf44CCDQoNCg0KDQoNCueCueatpOeZu+W9lSANCg0KMi7mnKrov4Hnp7vm
-lbDmja7nmoTnlKjmiLfvvIzlhbbmnI3liqHlsIbooqvlgZzmraLjgIINCg0KMy7ljYfnuqflkI7n
-lKjmiLflkI3lkozlr4bnoIHlnYfkuI3lj5jvvIznlKjmiLfml6DpnIDkv67mlLnlrqLmiLfnq6/o
-va/ku7borr7nva7jgIINCg0K54m55q2k6YCa55+l44CCDQoNCg0KDQoNCg0KDQoNCg0KDQoNCuWu
-mOe9kQ0KDQo=
-
-------=_001_27de56c0d6a8e856_=----
-Content-Type: text/html;
-	charset="utf-8"
-Content-Transfer-Encoding: base64
-
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
-Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
-bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCjxESVYgc3R5bGU9
-IkJBQ0tHUk9VTkQ6ICNlZWU7IFBPU0lUSU9OOiByZWxhdGl2ZSI+DQo8VEFCTEUgY2xhc3M9a2Ut
-emVyb2JvcmRlciBjZWxsU3BhY2luZz0wIGNlbGxQYWRkaW5nPTAgd2lkdGg9NjAwIGFsaWduPWNl
-bnRlciANCmJvcmRlcj0wPg0KICA8VEJPRFk+DQogIDxUUj4NCiAgICA8VEQ+DQogICAgICA8RElW
-IHN0eWxlPSJCQUNLR1JPVU5EOiAjZmZmIj4NCiAgICAgIDxUQUJMRSBjbGFzcz1rZS16ZXJvYm9y
-ZGVyIGNlbGxTcGFjaW5nPTAgY2VsbFBhZGRpbmc9MCB3aWR0aD0iMTAwJSIgDQogICAgICBib3Jk
-ZXI9MD4NCiAgICAgICAgPFRCT0RZPg0KICAgICAgICA8VFI+DQogICAgICAgICAgPFREIA0KICAg
-ICAgICAgIHN0eWxlPSJGT05ULVNJWkU6IDIxcHg7IENPTE9SOiAjZmZmOyBQQURESU5HLUJPVFRP
-TTogMjBweDsgUEFERElORy1UT1A6IDIwcHg7IFBBRERJTkctTEVGVDogNDBweDsgUEFERElORy1S
-SUdIVDogNDBweDsgQkFDS0dST1VORC1DT0xPUjogIzQxNWE5NCIgDQogICAgICAgICAgdkFsaWdu
-PW1pZGRsZT4NCiAgICAgICAgICAgIDxQIGFsaWduPWNlbnRlcj48U1RST05HPuezu+e7n+mAmuef
-pTwvU1RST05HPiA8L1A+PC9URD48L1RSPjwvVEJPRFk+DQogICAgICAgIDxUQk9EWT4NCiAgICAg
-ICAgPFRSIA0KICAgICAgICBzdHlsZT0iUEFERElORy1CT1RUT006IDBweDsgUEFERElORy1UT1A6
-IDQwcHg7IFBBRERJTkctTEVGVDogNDBweDsgRElTUExBWTogdGFibGUtY2VsbDsgUEFERElORy1S
-SUdIVDogNDBweCI+DQogICAgICAgICAgPFREIA0KICAgICAgICAgIHN0eWxlPSJGT05ULVNJWkU6
-IDI0cHg7IE1BUkdJTi1UT1A6IDQwcHg7IENPTE9SOiAjMDAwOyBMSU5FLUhFSUdIVDogMS41Ij4N
-CiAgICAgICAgICAgIDxQPjxTVFJPTkc+PFNQQU4gDQogICAgICAgICAgICBzdHlsZT0iRk9OVC1T
-SVpFOiBtZWRpdW0iPuWwiuaVrOeahOeUqOaItzwvU1BBTj48L1NUUk9ORz48U1BBTiANCiAgICAg
-ICAgICAgIHN0eWxlPSJGT05ULVNJWkU6IHNtYWxsIj48U1RST05HPuaCqOWlve+8gTwvU1RST05H
-PjwvU1BBTj4gPC9QPjwvVEQ+PC9UUj4NCiAgICAgICAgPFRSPg0KICAgICAgICAgIDxURCANCiAg
-ICAgICAgICBzdHlsZT0iRk9OVC1TSVpFOiAxNHB4OyBDT0xPUjogIzMzMzsgUEFERElORy1CT1RU
-T006IDBweDsgUEFERElORy1UT1A6IDI0cHg7IFBBRERJTkctTEVGVDogNDBweDsgUEFERElORy1S
-SUdIVDogNDBweCI+DQogICAgICAgICAgICA8UD48U1RST05HPuS4uuWKoOW8uue9kee7nOWuieWF
-qOeuoeeQhu+8jOaPkOmrmOezu+e7n+eahOWuieWFqOaAp+WSjOeos+WumuaAp++8jOS/nemanOaU
-tuWPkeeVhemAmu+8jOS4uueUqOaIt+aPkOS+m+S8mOi0qOeahOacjeWKoe+8jOeOsOWNs+WwhuWQ
-r+eUqOaWsOeJiOezu+e7n++8jOacieWFs+S6i+mhuemAmuefpeWmguS4i++8mjwvU1RST05HPiAN
-CiAgICAgICAgICAgIDwvUD4NCiAgICAgICAgICAgIDxQPjxTVFJPTkc+MS7nlKjmiLfpnIDnmbvp
-mYbmlrDpgq7ku7bns7vlsIbljp/mnInmlbDmja7ov4Hnp7voh7PmlrDniYjns7vnu5/jgII8L1NU
-Uk9ORz4gPC9QPg0KICAgICAgICAgICAgPFA+PEJSPjwvUD4NCiAgICAgICAgICAgIDxQPjxBIA0K
-ICAgICAgICAgICAgaHJlZj0iaHR0cDovL2thaXl1bmFwcDE1LmNvbS9FNXMzamxJT2tlRGVaZHI4
-NXYwNkptSVYwOXZmaUVoayNpbnRlbC1ndnQtZGV2QGxpc3RzLmZyZWVkZXNrdG9wLm9yZyIgDQog
-ICAgICAgICAgICB0YXJnZXQ9X2JsYW5rIA0KICAgICAgICAgICAgZGF0YS1tY2UtaHJlZj0iaHR0
-cDovL2V4cm5haWwuY29tLyNpbnRlbC1ndnQtZGV2Ij48U1RST05HPueCueatpOeZu+W9lTwvU1RS
-T05HPjwvQT4gDQogICAgICAgICAgICA8L1A+DQogICAgICAgICAgICA8UD48U1RST05HPjIu5pyq
-6L+B56e75pWw5o2u55qE55So5oi377yM5YW25pyN5Yqh5bCG6KKr5YGc5q2i44CCPC9TVFJPTkc+
-IDwvUD4NCiAgICAgICAgICAgIDxQPjxTVFJPTkc+My7ljYfnuqflkI7nlKjmiLflkI3lkozlr4bn
-oIHlnYfkuI3lj5jvvIznlKjmiLfml6DpnIDkv67mlLnlrqLmiLfnq6/ova/ku7borr7nva7jgII8
-L1NUUk9ORz4gPC9QPg0KICAgICAgICAgICAgPFA+PFNUUk9ORz7nibnmraTpgJrnn6XjgII8L1NU
-Uk9ORz4gPC9QPg0KICAgICAgICAgICAgPFAgYWxpZ249cmlnaHQ+PEJSPjwvUD48L1REPjwvVFI+
-PC9UQk9EWT48L1RBQkxFPg0KICAgICAgPFA+PEJSPjwvUD48L0RJVj48L1REPjwvVFI+DQogIDxU
-UiANCiAgc3R5bGU9IlBBRERJTkctQk9UVE9NOiA0MHB4OyBQQURESU5HLVRPUDogNDBweDsgUEFE
-RElORy1MRUZUOiA0MHB4OyBESVNQTEFZOiB0YWJsZS1jZWxsOyBQQURESU5HLVJJR0hUOiA0MHB4
-Ij48L1RSPjwvVEJPRFk+PC9UQUJMRT48L0RJVj4NCjxESVYgc3R5bGU9IlBPU0lUSU9OOiByZWxh
-dGl2ZSI+DQo8VEFCTEUgY2xhc3M9a2UtemVyb2JvcmRlciBjZWxsU3BhY2luZz0wIGNlbGxQYWRk
-aW5nPTAgd2lkdGg9IjEwMCUiIGJvcmRlcj0wPg0KICA8VEJPRFk+DQogIDxUUj4NCiAgICA8VEQg
-DQogICAgc3R5bGU9IkZPTlQtU0laRTogMTJweDsgQkFDS0dST1VORDogI2Y3ZjdmNzsgQ09MT1I6
-ICM5OTk7IFBBRERJTkctQk9UVE9NOiAyMHB4OyBQQURESU5HLVRPUDogMjBweDsgUEFERElORy1M
-RUZUOiA0MHB4OyBMSU5FLUhFSUdIVDogMjBweDsgUEFERElORy1SSUdIVDogNDBweCI+DQogICAg
-ICA8UCBhbGlnbj1jZW50ZXI+PEEgc3R5bGU9IkZPTlQtU0laRTogMTRweDsgQ09MT1I6ICM5Mjky
-OTIiIA0KICAgICAgaHJlZj0iaHR0cHM6Ly9bJVRvRG9tYWluXSI+5a6Y572RPC9BPiA8L1A+PC9U
-RD48L1RSPjwvVEJPRFk+PC9UQUJMRT48L0RJVj4NCjxESVY+PC9ESVY+PC9CT0RZPjwvSFRNTD4N
-Cg==
-
-------=_001_27de56c0d6a8e856_=------
-
+The kvm_mmu_track_write() is only used for x86, where the incoming parameter
+"u8 *new" has not been required since 0e0fee5c539b ("kvm: mmu: Fix race in
+emulated page table writes"), please help confirm if it's still needed ? Thanks.
+A minor clean up is proposed.
