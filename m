@@ -2,62 +2,65 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12CA97752CE
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Aug 2023 08:21:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 346CE776291
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  9 Aug 2023 16:33:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E141910E23D;
-	Wed,  9 Aug 2023 06:21:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C995A10E087;
+	Wed,  9 Aug 2023 14:33:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x131.google.com (mail-lf1-x131.google.com
- [IPv6:2a00:1450:4864:20::131])
- by gabe.freedesktop.org (Postfix) with ESMTPS id CC73910E23D
+Received: from mail-pl1-x64a.google.com (mail-pl1-x64a.google.com
+ [IPv6:2607:f8b0:4864:20::64a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 20F4F10E087
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  9 Aug 2023 06:21:08 +0000 (UTC)
-Received: by mail-lf1-x131.google.com with SMTP id
- 2adb3069b0e04-4fe3678010eso10608299e87.3
+ Wed,  9 Aug 2023 14:33:47 +0000 (UTC)
+Received: by mail-pl1-x64a.google.com with SMTP id
+ d9443c01a7336-1bbb34b0abaso88665515ad.1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 08 Aug 2023 23:21:08 -0700 (PDT)
+ Wed, 09 Aug 2023 07:33:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1691562066; x=1692166866;
- h=content-transfer-encoding:to:subject:message-id:date:from:sender
- :reply-to:mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=XoX1dzJryLSi7euxTr8dCw3jJ5MzmqeQIqhR6zltLb8=;
- b=KJj7IofOVYlevhmtPoB+BhUoIIoBcRUH/wcDFNmO9HsJfLtjpwm0+/g/LRKrfJg19O
- Sb41kdNUT14IztdvMpRxplW/P4hN/+4P5MvuCCHFso/XbLVTLTfeKozH2MqgDES3ae0Q
- oSvfclk87aSMYb2ShLk9rCfA7bgbS0194cFW24uUJU2yIY5Ln/94Lk22/QXrBE3kfq4i
- fghIgeqUjHeEgTgSi22eWYEdBM5NGJ6Di2YYjeAU69ZPJ756HbOEgX6iS6HEjRFAw1nb
- a+vhu1msHmbPRNtpSXReaQLwr9FqsRrckkfWnyDZ+HPBm7wTbp+EAX7TLPCqY7rdmphy
- HpDg==
+ d=google.com; s=20221208; t=1691591627; x=1692196427;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=jZmbaKKKm3CHbI/QJJpHHXp/km2ij6zusR5ThdOY8EE=;
+ b=KXK2sAuFcLtW8fAnmxb/J7j/HK/lBODuKdiU+8kyv3xVJBcXee3QPo3AGtH/T3urpw
+ wfZ+hKAa2E9y9OQ+Jv+tVd1Bm8OmRCZDYFKpFC2Oil5zp3qULIwGmEs/tBB7pSkDx3Oj
+ 4QeJ21KQ+7DHqLbStPBbdcybpcxo9ZwItTVh2KVVwRUFnajFniIRyZLdCHrI35D/fdnu
+ ifKgClBTaAqZPKkVpvFY5NVYItCjpwoW8d95B7NRj7bg45Y+UchdVEDy9ShtWLvjCXVW
+ ROZI/0l2wPoB8f6pTc4DCHxC+lpLGXHJryh+9qGm2CaGAemeNUi7wCoiMDvogb/bVoyL
+ tb/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1691562067; x=1692166867;
- h=content-transfer-encoding:to:subject:message-id:date:from:sender
- :reply-to:mime-version:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XoX1dzJryLSi7euxTr8dCw3jJ5MzmqeQIqhR6zltLb8=;
- b=ZXHH/sowYigw3mId85ugPQZVxm8tRgRDSMTFKCaNIua+eMSFGmrO9dtqWxiV62tPAP
- ZuGMKIPEO8Ki8ASlJVWkzU04DcfsPO9Tm/Mt4MPBLAr8Z+tGen/ViA2XpIS3y613AV29
- 9nD1zvSLq49k8YB6JZ6b2Jolc9EfKr9cYfMTy4sRLqFvMwIoA7z24BNNOIbJhbL8uDez
- B5w56tld0LHJ/neQkgIDEQb85L3F9Knf28y9zAM1Ns3s93k5RBruGsfJDR8tph46oOi5
- mxO1a0MGLoplD6ktO5XQ08rKREEp/ELM867b4ZloXD+7M11QzGMBSqQ8W4iPMC/9S9tV
- iY7w==
-X-Gm-Message-State: AOJu0YyJ6UB/D6sywzSBx+qCNvBPWrw8cX1zrA7b8wsnvh9h+RGUgbJv
- rcdS8046YkmXCfk1+o8U4vpN9EWGF+7Poymz+1s=
-X-Google-Smtp-Source: AGHT+IE3BwUFNaTNCQDL40lBRT4yPKsZulEhjW1hZPa+dhXIgh3VvbumY7/n0YFykPLtQvtrDQYySjeclHpEuM2yrN0=
-X-Received: by 2002:a2e:80cc:0:b0:2b9:e0ba:752a with SMTP id
- r12-20020a2e80cc000000b002b9e0ba752amr993736ljg.53.1691562066069; Tue, 08 Aug
- 2023 23:21:06 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a05:6022:33a1:b0:40:da25:c52c with HTTP; Tue, 8 Aug 2023
- 23:21:05 -0700 (PDT)
-From: UNITED NATIONS HEADQUARTER OFFIC <unitednatiusa389@gmail.com>
-Date: Tue, 8 Aug 2023 23:21:05 -0700
-X-Google-Sender-Auth: 6GwWujPznqoovTSmKy5IliQE_zQ
-Message-ID: <CAPqrW2854p9Ob-ZCh+Dn0RC9NwgM3SoypxHeUDd9dkeS=5Ohjg@mail.gmail.com>
-Subject: UNITED NATIONS HEADQUARTER OFFICE FROM NEW-YORK AMERICA
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ d=1e100.net; s=20221208; t=1691591627; x=1692196427;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=jZmbaKKKm3CHbI/QJJpHHXp/km2ij6zusR5ThdOY8EE=;
+ b=PhyGPxqV3C73tfC+i/hwXM3ZWZ4R7J0d4UnZaQZQgKgi2/Y6PIvnXPepKMcCle0X4J
+ GYqlZwwQvIwQDSsI8gEQJMU1rPGHE8eOa9lG3oVS4II/Nzi20q9kSqy7Alnp8HBhsLdm
+ 2jpt2WgDHQgneA0xVCKicKtV+2wkvhbSvXYdyojMqH3H1MlWmA5Er7kbgYiND3XGVhYn
+ agaaDqnz1DM6JUguROjq/JD2Ybm7HF1CfmZW4iOVi48yRuWGu/AF/bD/lcpV3SfVDfZi
+ hZ8r30sZj6QRiJDaYZj2G4tLihfquE9QZjBWopGKp8cdrgj3M8XW6ganxqdY5s4bNFMT
+ 11qA==
+X-Gm-Message-State: AOJu0YyEfB84HjFA9ywbNtGF1R0GcAUs5IBjrXu1brbQA2SjcAZyZJ/h
+ g8a1L/aDIHIc/FecSeZK5Kiwb5gopus=
+X-Google-Smtp-Source: AGHT+IFTcanp2PgeUlsBe6acnCorL6mrsLeGVUyMlUhGhob9bR6LKZlVBrq9Y6Q4E1OFc7EkekhTTOPkt/g=
+X-Received: from zagreus.c.googlers.com
+ ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
+ (user=seanjc job=sendgmr) by 2002:a17:902:e542:b0:1b8:5541:9d3e with SMTP id
+ n2-20020a170902e54200b001b855419d3emr300692plf.6.1691591626649; Wed, 09 Aug
+ 2023 07:33:46 -0700 (PDT)
+Date: Wed, 9 Aug 2023 07:33:45 -0700
+In-Reply-To: <ZNLlseYag5DniUg3@yzhao56-desk.sh.intel.com>
+Mime-Version: 1.0
+References: <20221223005739.1295925-1-seanjc@google.com>
+ <20221223005739.1295925-20-seanjc@google.com>
+ <5581418b-2e1c-6011-f0a4-580df7e00b44@gmail.com> <ZNEni2XZuwiPgqaC@google.com>
+ <ZNLlseYag5DniUg3@yzhao56-desk.sh.intel.com>
+Message-ID: <ZNOjyf2OHQZYfMEJ@google.com>
+Subject: Re: [PATCH 19/27] KVM: x86/mmu: Use page-track notifiers iff there
+ are external users
+From: Sean Christopherson <seanjc@google.com>
+To: Yan Zhao <yan.y.zhao@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,48 +73,66 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: unitednatiusa389@gmail.com
+Cc: Like Xu <like.xu.linux@gmail.com>, kvm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Ben Gardon <bgardon@google.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, intel-gvt-dev@lists.freedesktop.org,
+ Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Official Name:United States of America
-Capitol:Washington
-Population:318,814,000
-Languages:English, Spanish, numerous others
-Geographic Region:Americas Northern America
-Geographic Size (km sq):9,526,468
-Year of UN Membership:1945
-Year of Present State Formation:1787
-Current UN Representative:Mr.Dennis Francis
-Email: united.nation.america@usa.com
+On Wed, Aug 09, 2023, Yan Zhao wrote:
+> On Mon, Aug 07, 2023 at 10:19:07AM -0700, Sean Christopherson wrote:
+> > On Mon, Aug 07, 2023, Like Xu wrote:
+> > > On 23/12/2022 8:57 am, Sean Christopherson wrote:
+> > > > +static inline void kvm_page_track_write(struct kvm_vcpu *vcpu, gpa_t gpa,
+> > > > +					const u8 *new, int bytes)
+> > > > +{
+> > > > +	__kvm_page_track_write(vcpu, gpa, new, bytes);
+> > > > +
+> > > > +	kvm_mmu_track_write(vcpu, gpa, new, bytes);
+> > > > +}
+> > > 
+> > > The kvm_mmu_track_write() is only used for x86, where the incoming parameter
+> > > "u8 *new" has not been required since 0e0fee5c539b ("kvm: mmu: Fix race in
+> > > emulated page table writes"), please help confirm if it's still needed ? Thanks.
+> > > A minor clean up is proposed.
+> > 
+> > Hmm, unless I'm misreading things, KVMGT ultimately doesn't consume @new either.
+> > So I think we can remove @new from kvm_page_track_write() entirely.
+> Sorry for the late reply.
+> Yes, KVMGT does not consume @new and it reads the guest PTE again in the
+> page track write handler.
+> 
+> But I have a couple of questions related to the memtioned commit as
+> below:
+> 
+> (1) If "re-reading the current value of the guest PTE after the MMU lock has
+> been acquired", then should KVMGT also acquire the MMU lock too?
 
+No.  If applicable, KVMGT should read the new/current value after acquiring
+whatever lock protects the generation (or update) of the shadow entries.  I
+suspect KVMGT already does this, but I don't have time to confirm that at this
+exact memory.
 
-ATTENTION:
+The race that was fixed in KVM was:
 
-This message is converting to you from united nation Headquarter from
-New-York America to know what is exactly the reason of being
-ungrateful to the received compensation fund, meanwhile you have to
-explain to us how the fund was divided to each and every needful one
-in your country because united nation compersated you with (=E2=82=AC
-2,500,000.00 Million EUR ) to use part of the money and help orphan
-and widowers including the people covid19 affected in your country for
-our proper  documentary.
+  vCPU0         vCPU1   
+  write X
+                 write Y
+                 sync SPTE w/ Y
+  sync SPTE w/ X
 
-It had been officially known that out of the (150) lucky winners that
-has received their compensation fund out there worldwide sum of (=E2=82=AC
-2,500,000.00 Million EUR ) per each of the lucky winner as it was
-listed in our list files and individuals, that was offered by United
-Nations compensation in last year 2022,(149) has all returned back
-with appreciation letter to united nation office remainder
-you.Woodforest National Bank reported to united nation that they has
-paid all the lucky winners,after we checked our file we saw that
-(149)has come and thanked united nation and explained how they used
-there money remaining you to complete the total number(150).we need
-your urgent response for our proper documentry.
+Reading the value after acquiring mmu_lock ensures that both vCPUs will see whatever
+value "loses" the race, i.e. whatever written value is processed second ('Y' in the
+above sequence).
 
-You are adviced to explain in details how the fund was divided to the
-needful as the purpose on your reply mail.
+> If so, could we move the MMU lock and unlock into kvm_page_track_write()
+> as it's common.
+> 
+> (2) Even if KVMGT consumes @new,
+> will kvm_page_track_write() be called for once or twice if there are two
+> concurent emulated write?
 
-Thank you in advance
-Mr.Dennis Francis
-PRESIDENT OF THE UNITED NATIONS GENERAL ASSEMBLY
+Twice, kvm_page_track_write() is wired up directly to the emulation of the write,
+i.e. there is no batching.
