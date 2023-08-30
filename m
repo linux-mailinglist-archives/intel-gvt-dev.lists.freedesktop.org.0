@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A570478CDDE
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 29 Aug 2023 22:55:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E05ED78D670
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 30 Aug 2023 16:16:43 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6E88210E497;
-	Tue, 29 Aug 2023 20:55:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ABDDF895B9;
+	Wed, 30 Aug 2023 14:16:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 29 Aug 2023 20:55:38 UTC
-Received: from mail.untdreview.bond (unknown [193.17.5.145])
- by gabe.freedesktop.org (Postfix) with ESMTP id F27C610E08A
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 30 Aug 2023 14:16:40 UTC
+Received: from mail.swairbest.live (unknown [193.17.5.143])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 13926895B9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 29 Aug 2023 20:55:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=untdreview.bond; 
+ Wed, 30 Aug 2023 14:16:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=swairbest.live; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=bonnie.robbinson@untdreview.bond; 
- bh=a+tRXrvXt6s+67azRVdmHnObux0=;
- b=tf5ZQihU9a8DRrz5ixj6aF9OQj+hAmhqocORuxd2jHXZo2yq7gUqldmXEr8IVcKaEI55yXGEktd+
- Sr8m3f8tpb0IReGAnwTiDpSzddTtSFWP7Al/w1SDr3mIzS+nmHBtadAxDRABLcD9tnyULgmIOHEs
- 6r8FO/sMT/iPlugmlWk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=untdreview.bond;
- b=n6Elo3h1XvV5F8Aw0Ni/B6aKkMCFUrVFOfaSf75jq02X36QQ8TRsdRZwrpLxC0ALDOoajzvV6Ufd
- kOaH/8RX5/XlPK3tHHei8ezvYQdNxYhvIhYtv2PTj5e3ZjXUmj9DXKIYHQdrV4IVzDAlUczaW13J
- Pax/Ybq8iqeB71BVRNA=;
-Received: by mail.untdreview.bond id htpn5g0001g6 for
+ i=southwest_feedback_squad@swairbest.live; 
+ bh=EEavKzDwVSLl6EiQj883Fw2aUV4=;
+ b=zKA+f7LKaOP4BX2SYgnj9g5oR7q1gUNv6eAJWEz/C+8JDMSea558wMLW0X6xFRCKJVRv8+Pjl7x7
+ o9jUqef6FUD1m+ovrNuqrMeZrXs2TeHYlTj60f831eQMX+1B7JpAdDA7PdFOGBBAfooFewjCjvDj
+ 4NzWIfM+oOfWYWrWC/k=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=swairbest.live;
+ b=V+aVwHV8ZSaSU7v+AdX/B14zfAR5vbz6hK0+RCMd4aLunSPeUpzy3etTdydxGZfFPpkzlXhHvgJ4
+ MRLLnYc5LZ9Zkti4i2w8jup8A3yqA2yr5CnC0IkZOLRsFfJd3o4iF7xacVotdzKxHsWc2trFjYCM
+ HQnqkrMK97G19XZ7mqc=;
+Received: by mail.swairbest.live id htt7kg0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 29 Aug 2023 18:09:35 -0400 (envelope-from
- <bonnie.robbinson-intel+2Dgvt+2Ddev=lists.freedesktop.org@untdreview.bond>)
-Date: Tue, 29 Aug 2023 18:09:35 -0400
-From: Bonnie Robbinson <bonnie.robbinson@untdreview.bond>
+ Wed, 30 Aug 2023 10:07:04 -0400 (envelope-from
+ <southwest_feedback_squad-intel+2Dgvt+2Ddev=lists.freedesktop.org@swairbest.live>)
+Date: Wed, 30 Aug 2023 10:07:04 -0400
+From: "Southwest Feedback Squad" <southwest_feedback_squad@swairbest.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: A gift is reserved just for you - provide your insights on our
- performance to claim it.
+Subject: We're thrilled to offer you a gift - your feedback on our performance
+ would be greatly appreciated.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_187_480669012.1693342082366"
-Message-ID: <0.0.0.F6.1D9DAC57EF87D94.149D06@mail.untdreview.bond>
+ boundary="----=_Part_211_1122303126.1693404412105"
+Message-ID: <0.0.0.124.1D9DB4B41460936.4FBC1D@mail.swairbest.live>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,112 +54,66 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_187_480669012.1693342082366
+------=_Part_211_1122303126.1693404412105
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>no pit</title> 
-  <style type="text/css">.cherry {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f6f6f6;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .orange {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .apple {
-    max-width: 356px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .banana {
-    border: 2px dashed #999;
-    border-radius: 7px;
-    max-width: 555px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  .grape {
-    font-size: 18px;
-    line-height: 1.4;
-  }
-  
-  .kiwi {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 6px;
-    background-color: #21529E;
-    color: #fff;
-    margin-top: 20px;
-  }
-  
-  .blueberry {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    margin-top: 40px;
-    color: #333;
-  }
-	</style> 
- </head> 
- <body> 
-  <div align="center" class="cherry">
-   <br /> 
-   <br /> 
-   <a class="apple" href="http://www.untdreview.bond/e216j2h3t95Xo86Y11s5c8aF16d4r36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQcRo9d6e10vWN5WlwDL/beset-regrettably"><img alt="Random Logo" src="http://www.untdreview.bond/1796u2M39N5PD7aB11M5c8cg16d4x36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQcRo9d7DN1V0By5z3wXD/beset-regrettably" width="400" /> </a> 
-   <div class="orange"> 
-    <div class="banana"> 
-     <div class="grape">
-      We would like to express our gratitude for choosing our service for your needs. Your loyalty and support hold great significance to us, and we sincerely appreciate the opportunity to serve you.       <br /> &nbsp;
-     </div> 
-     <a href="http://www.untdreview.bond/e216j2h3t95Xo86Y11s5c8aF16d4r36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQcRo9d6e10vWN5WlwDL/beset-regrettably" target="_blank"><img alt="Newsletterreal Hero Banner" height="auto" src="http://www.untdreview.bond/Morocco-geodetic/af84o2395j7Qaz13qN5c8pdx16d4t36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQcRo9d7QsHI10X5QMkwD" width="100%" /></a>
-     <br /> &nbsp; 
-     <div class="grape">
-      In our ongoing commitment to deliver exceptional experiences, we cordially invite you to participate in a brief survey regarding your recent flight and overall experience with us.       <br /> &nbsp;
-     </div> 
-     <div class="grape">
-      Your feedback holds immense value, and as a token of our appreciation for your time and input, we would like to offer you a special gesture.       <br /> &nbsp;
-     </div> 
-     <div class="grape">
-      <strong>To access the survey, kindly click on the link provided below. The survey will only take a few minutes to complete, and rest assured, your responses will remain completely confidential.</strong>
-     </div> 
-     <a class="kiwi" href="http://www.untdreview.bond/e216j2h3t95Xo86Y11s5c8aF16d4r36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQcRo9d6e10vWN5WlwDL/beset-regrettably">Start The Survey Here &gt;&gt;</a>
-    </div> 
-    <p class="blueberry">Thank you for your continued support and for taking the time to share your thoughts.<br /> <br /> We look forward to hearing from you soon.<br /> Best regards,</p> 
-   </div> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <div align="center" style="font-size: 12px">
-    <span style="text-decoration: none;">To discontinue email,</span> 
-    <a href="http://www.untdreview.bond/purses-concluded/bca5Qh2395OgB8612Hy5c8bN16d4B36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcRo9d6pi1z0Q6q@BwyD" style="text-decoration-line: none; color: #0058db;"> <span>Begin.Here</span> </a>
-    <br /> 126 E 23rd St New York, NY, US 10010
-    <br /> &nbsp;
-   </div> 
-  </div>   
- <img src="http://www.untdreview.bond/3ef6z2U3q95e85CS12Y5c8SeY16d4A36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQcRo9d5I10xN6uz00wD/purses-concluded" alt=""/></body>
+<html>
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <title>spent the weekend</title>=20
+ </head>=20
+ <body>=20
+  <center>=20
+   <section>=20
+    <figure>=20
+     <p><a href=3D"http://www.swairbest.live/4Vd6SLZ2395kUW8612Q5c8fLo16d5s36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQURo9Q7P10YoUI6jUywqD/reptile-shortfall"><img alt=3D"1654" src=3D"http://www.swairbest.live/a9d4z2395b7aTq12S5c9r0s16d5K36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQURo9Q6Q10mpK5e@NwD/unconvincing-leafless" style=
+=3D"max-width: 356px" /></a></p>=20
+    </figure>=20
+   </section>=20
+   <section>=20
+    <article style=3D"border: double 6px #ddd; max-width: 555px; border-rad=
+ius: 7px; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Ve=
+rdana, 'sans-serif'; padding: 12px">=20
+     <p><span style=3D"padding: 12px; font-size: 21px">We would like to exp=
+ress our gratitude for choosing Southwest for your travel requirements. You=
+r loyalty and support hold great significance to us, and we sincerely appre=
+ciate the opportunity to serve you.</span><br /> <br /> <a href=3D"=
+http://www.swairbest.live/4Vd6SLZ2395kUW8612Q5c8fLo16d5s36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQURo9Q7P10YoUI6jUywqD/reptile-shortfall" target=3D"_blank"><img alt=3D"Newsletter hero banner" height=3D"auto" s=
+rc=3D"http://www.swairbest.live/6a16Vgq2395N7GUa13V5cO9J1I16d5C36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQURo9Q7pQwBF106N@yw@D/Woodward-deletes" style=3D"border:0;display:block;outline:none;text-decora=
+tion:none;height:auto;width:100%;font-size:13px;" width=3D"600" /> </a><br =
+/> <span style=3D"padding: 12px; font-size: 21px">In our ongoing commitment=
+ to deliver exceptional experiences, we cordially invite you to participate=
+ in a brief survey regarding your recent flight and overall experience with=
+ Southwest.</span><br /> <br /> <span style=3D"padding: 12px; font-size: 21=
+px">Your feedback holds immense value, and as a token of our appreciation f=
+or your time and input, we would like to offer you a special gesture.</span=
+><br /> <br /> <span style=3D"padding: 12px; font-size: 21px"><strong>To ac=
+cess the survey, kindly click on the link provided below. The survey will o=
+nly take a few minutes to complete, and rest assured, your responses will r=
+emain completely confidential</strong><br /> <br /> <br /> <span><span><a h=
+ref=3D"http://www.swairbest.live/4Vd6SLZ2395kUW8612Q5c8fLo16d5s36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQURo9Q7P10YoUI6jUywqD/reptile-shortfall" style=3D"color: #fff; text-decoration: none"><span style=
+=3D"border-radius: 6px; padding: 15px; background-color: #21529E">Start The=
+ Survey Here &gt;&gt;</span></a> </span></span></span><br /> &nbsp;</p>=20
+    </article>=20
+   </section>=20
+   <section>=20
+    <aside>=20
+     <p>&nbsp;</p>=20
+    </aside>=20
+   </section>=20
+   <section>=20
+    <footer>=20
+     <p style=3D"font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, '=
+sans-serif'">Thank you for your continued support and for taking the time t=
+o fill out our survey.<br /> <br /> We look forward to hearing from you soo=
+n.<br /> <br /> Best regards,</p>=20
+    </footer>=20
+   </section>=20
+  </center>  =20
+ <img src=3D"http://www.swairbest.live/Woodward-deletes/ada5L23C95mw85r13E5cUZ92m16d5o36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQURo9Q6F1nrP05sJwDL" alt=3D""/></body>
 </html>
 
-------=_Part_187_480669012.1693342082366--
+------=_Part_211_1122303126.1693404412105--
 
