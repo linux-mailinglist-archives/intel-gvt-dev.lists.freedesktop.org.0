@@ -1,44 +1,66 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 420BA78DEB8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 30 Aug 2023 21:54:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E565C78E0F7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 30 Aug 2023 22:50:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0A43010E5B9;
-	Wed, 30 Aug 2023 19:54:30 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8322010E5D2;
+	Wed, 30 Aug 2023 20:50:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 30 Aug 2023 19:54:28 UTC
-Received: from mail.stplesshp.com (unknown [193.17.5.146])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4ABF910E5AB
+Received: from mail-pl1-x64a.google.com (mail-pl1-x64a.google.com
+ [IPv6:2607:f8b0:4864:20::64a])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0F39610E5D2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 30 Aug 2023 19:54:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=stplesshp.com;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=staples_office_warehouse@stplesshp.com; 
- bh=sVWNPMFE+3b6q6U7ed/sFg/SKcI=;
- b=JwkHM2RuvshLsE04ZAb7zVMjLgBC4iayyRFkmLgWrdlstJl33vVMIQZMRFAPTu+1RV/U2wLHMKcn
- 43fKUjhWBKDnx/rd3BPEgiTHIEijhWtxkKy31Sx1aKISgDcW3HkYpiRuTcN/Jh58MF//x5zhoGr4
- AelNqT+hjz6Rwft6IAI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=stplesshp.com;
- b=rosmXxN310ICM9H+Bfz9dditq68tZPEMzb86eHW6m3LBWtJ5JuVq+DOiHz6mcMy3aBZOTWV2uKvP
- UrB844U3CANXDfC4oizR3iRh8HFSxG9f/0plF3zbWFg/katb/t9W3y7t518bK6MvpgsKsgMkpPKk
- Y23jVYxSgFb+YV+RV8I=;
-Received: by mail.stplesshp.com id htuf780001g3 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 30 Aug 2023 15:42:04 -0400 (envelope-from
- <staples_office_warehouse-intel+2Dgvt+2Ddev=lists.freedesktop.org@stplesshp.com>)
-Date: Wed, 30 Aug 2023 15:42:04 -0400
-From: "Staples Office Warehouse" <staples_office_warehouse@stplesshp.com>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Elevate Your Printing Voyage: Don't Miss the Chance to Obtain a Fresh
- Epson Printer
-MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_274_50049566.1693424514853"
-Message-ID: <0.0.0.1A2.1D9DB7A0D914FCC.4F437A@mail.stplesshp.com>
+ Wed, 30 Aug 2023 20:50:45 +0000 (UTC)
+Received: by mail-pl1-x64a.google.com with SMTP id
+ d9443c01a7336-1c1fe87fc29so1017405ad.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 30 Aug 2023 13:50:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20221208; t=1693428644; x=1694033444;
+ darn=lists.freedesktop.org; 
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZbCG0tdyar/6+EAaNY79S340Vu6kvaT6TpEIPobVhxc=;
+ b=BIfGaWWKTAOYqgBzMf5ryoD2cArORvN4zUQI23Ts43WfjyOKmK+mvHkKWwWqCm+dOR
+ TZ3oQZyrnUtfFo25qy7vILEGGDsZZe6a4zs7bkVYfIFAXaZlmUAFt+7kkAyTR7h8uSkM
+ +iGgNwdda4nZTDY0UTuoFVbiHAbTeZSKiT1+LB4E5z7EjWGkHwe+kLziDjz6riRvhfu3
+ ErY3eGbozVfc9tlBGUJqnpQTkhWwPWf815UjkDNN29LiUZKsUgFP38SCMyHx7gRw+Ut9
+ 0YzI8iXEax2TWs+UsrfzMdYqafyFlEgiqemFwJofOV/jj9HW4zDRD2Ookds2oYo06yQU
+ JThg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1693428644; x=1694033444;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZbCG0tdyar/6+EAaNY79S340Vu6kvaT6TpEIPobVhxc=;
+ b=Hx6IvOVThvm2kXQfvQrwx6XBymz1nReNPnyt7bwwYdqjK1wqZ7YJnRg31TDTvI6NlL
+ DNM2/8E7yFAhypaPzBruX/8re2fSJJY/LwU4gECXOG1kVEoFXRqEdcaWT8JmZjO6J7z7
+ nLmlUWS9uf9O5AZXetsLe0LTicBwSPro5HybjfoUlD8JPbggGKbhghM3JWr8ZQlB8xYN
+ eW4kxWFkDDkmn8YHcieucSmEU0dFbSawcfuvbA6PqrIAiGA9YctdQlcSlt8Ku0DycGZG
+ yntzLt+AZzG5qQLmbtEsl7Te6TWMUvGtgSwVmpquLiLf+9AvmOCb4ZCL3PcLdY7nn9af
+ ZHdw==
+X-Gm-Message-State: AOJu0YyEgqbh7TZWn1ropmvJ+uuaB3+CZKVEYvGwzxE4EmSQ1wRZkm9d
+ IhFkfvsFf3XFWb6of+0GmY1Db1Y/90Y=
+X-Google-Smtp-Source: AGHT+IF5b6gqdFR2LDLZ3RJxfd4VjOhdzQk4NFKot509LSj0408O/0vZ9+YO40BiHXDBFLY89BYeBDPkQrA=
+X-Received: from zagreus.c.googlers.com
+ ([fda3:e722:ac3:cc00:7f:e700:c0a8:5c37])
+ (user=seanjc job=sendgmr) by 2002:a17:903:234a:b0:1bc:5182:1de2 with SMTP id
+ c10-20020a170903234a00b001bc51821de2mr856300plh.1.1693428644421; Wed, 30 Aug
+ 2023 13:50:44 -0700 (PDT)
+Date: Wed, 30 Aug 2023 13:50:42 -0700
+In-Reply-To: <6c691bc5-dbfc-46f9-8c09-9c74c51d8708@gmail.com>
+Mime-Version: 1.0
+References: <20230729013535.1070024-1-seanjc@google.com>
+ <20230729013535.1070024-17-seanjc@google.com>
+ <6c691bc5-dbfc-46f9-8c09-9c74c51d8708@gmail.com>
+Message-ID: <ZO+roobNH2QbZZWn@google.com>
+Subject: Re: [PATCH v4 16/29] KVM: x86: Reject memslot MOVE operations if
+ KVMGT is attached
+From: Sean Christopherson <seanjc@google.com>
+To: Like Xu <like.xu.linux@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,169 +73,96 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: Yan Zhao <yan.y.zhao@intel.com>, kvm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Yongwei Ma <yongwei.ma@intel.com>,
+ Ben Gardon <bgardon@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ intel-gvt-dev@lists.freedesktop.org, Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_274_50049566.1693424514853
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+On Wed, Aug 30, 2023, Like Xu wrote:
+> On 2023/7/29 09:35, Sean Christopherson wrote:
+> > Disallow moving memslots if the VM has external page-track users, i.e. if
+> > KVMGT is being used to expose a virtual GPU to the guest, as KVMGT doesn't
+> > correctly handle moving memory regions.
+> > 
+> > Note, this is potential ABI breakage!  E.g. userspace could move regions
+> > that aren't shadowed by KVMGT without harming the guest.  However, the
+> > only known user of KVMGT is QEMU, and QEMU doesn't move generic memory
+> 
+> This change breaks two kvm selftests:
+> 
+> - set_memory_region_test;
+> - memslot_perf_test;
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <meta charset="utf-8" /> 
-  <meta content="width=device-width" name="viewport" /> 
-  <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
-  <meta name="x-apple-disable-message-reformatting" /> 
-  <title>greater things</title> 
-  <link href="http://www.stplesshp.com/synchrotron-chivalrousness/4a44j2395S8A6A11m5c9fZ16d8H36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQFRo9e7zWD_10q6EpUywD" rel="stylesheet" /> 
-  <style type="text/css">body {
-            margin: 0 !important;
-            padding: 0 !important;
-            height: 100% !important;
-            width: 100% !important;
-            font-family: 'Raleway', sans-serif;
-            background-color: #F1F1F1;
-        }
+It shoudn't.  As of this patch, KVM doesn't register itself as a page-track user,
+i.e. KVMGT is the only remaining caller to kvm_page_track_register_notifier().
+Unless I messed up, the only way kvm_page_track_has_external_user() can return
+true is if KVMGT is attached to the VM.  The selftests most definitely don't do
+anything with KVMGT, so I don't see how they can fail.
 
-        .container {
-            max-width: 680px;
-            margin: auto;
-            background-color: #fff;
-        }
+Are you seeing actually failures?
 
-        .header {
-            padding: 20px;
-            text-align: center;
-            background-color: #f8f8f8;
-        }
+> Please help confirm if the tests/doc needs to be updated,
+> or if the assumption needs to be further clarified.
 
-        .header h1 {
-            font-size: 28px;
-            font-weight: bold;
-            color: #666;
-            margin-bottom: 0;
-        }
+What assumption?
 
-        .header img {
-            width: 100%;
-        }
-
-        .content {
-            padding: 20px;
-            font-size: 19px;
-            line-height: 24px;
-            color: #555555;
-        }
-
-        .cta-button {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
-
-        .cta-button a {
-            display: inline-block;
-            padding: 15px 60px;
-            background-color: #EC1C13;
-            color: #fff;
-            font-size: 24px;
-            text-decoration: none;
-        }
-
-        .footer {
-            padding: 20px;
-            text-align: center;
-            background-color: #fff;
-        }
-
-        .footer p {
-            font-size: 14px;
-            color: #666666;
-        }
-
-        .footer hr {
-            border-style: dashed;
-            border-width: 1px;
-            margin: auto;
-            width: 50%;
-        }
-	</style> 
- </head> 
- <body> 
-  <div class="container"> 
-   <div class="header"> 
-    <h1 align="center"><a href="http://www.stplesshp.com/1d36F2z39M5o86zF11C5ca0C16d8I36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRo9e5hDl105vOXwD/skirmishing-stoppage"><img alt="" src="http://www.stplesshp.com/skirmishing-stoppage/8646PPi2395NW7ap12V5ca2gu16d8L36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQFRo9e6WA1O0n5P@wBD" style="max-width: 299px" /></a></h1> 
-   </div> 
-   <div align="center" class="content"> 
-    <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td> 
-        <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td> 
-            <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="center"> 
-                <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center"><img alt="" src="http://www.stplesshp.com/Galileo-Vancement/33c6l23Nm95Ixk7a13Fj5ca3Pg16d8_36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFRo9e6Q1SM0y5iBw0D" style="width: 400px" /></td> 
-                  </tr> 
-                 </tbody> 
-                </table> We wanted to take a moment to thank you for choosing St<span style="font-size: 1px; color: #fff; letter-spacing: -5px">vu</span>ap<span style="font-size: 1px; color: #fff; letter-spacing: -5px">re</span>les. Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you.<br /> <br /> As a token of our appreciation, we would like to offer you a FREE Epson <strong>EcoTank ET-15000</strong> when you complete our survey. This printer comes equipped with high-quality features that will enhance your printing experience and is yours to keep, no strings attached.</td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <a href="http://www.stplesshp.com/1d36F2z39M5o86zF11C5ca0C16d8I36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRo9e5hDl105vOXwD/skirmishing-stoppage"><img alt="" src="http://www.stplesshp.com/e5d5m239q5NlT7a11m5ca4y16d8p36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQFRo9e5mP1z06cqwlDz/tingled-actuality" style="max-width: 299px" /></a> 
-    <p style="margin-top: 0">To take advantage of this offer, simply click on the button below to access the survey. Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts.</p> 
-   </div> 
-   <div class="cta-button">
-    <a href="http://www.stplesshp.com/1d36F2z39M5o86zF11C5ca0C16d8I36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRo9e5hDl105vOXwD/skirmishing-stoppage">Start Here Now</a>
-   </div> 
-   <div class="footer"> 
-    <hr />&nbsp; 
-    <p>Thank you for your continued support and for taking the time to fill out our survey.<br /> <br /> We look forward to hearing from you soon. Best regards, The Staples Survey Team</p> 
-    <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td> 
-        <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-          <tr> 
-           <td style="font-size: 13px"><br /> <br /> <br /> <br /> Anyway you can leave <a href="http://www.stplesshp.com/c054D2395Ig8Y611U5ca1_16d8n36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQFRo9e5k10nK6zPBwDz/synchrotron-chivalrousness">here</a></td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </div>   
- <img src="http://www.stplesshp.com/tingled-actuality/d324v2395PC8u511G5ca5i16d8C36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQFRo9e7UIAJ10v5d2zwD" alt=""/></body>
-</html>
-
-------=_Part_274_50049566.1693424514853--
-
+> > regions.  KVM's own support for moving memory regions was also broken for
+> > multiple years (albeit for an edge case, but arguably moving RAM is
+> > itself an edge case), e.g. see commit edd4fa37baa6 ("KVM: x86: Allocate
+> > new rmap and large page tracking when moving memslot").
+> > 
+> > Reviewed-by: Yan Zhao <yan.y.zhao@intel.com>
+> > Tested-by: Yongwei Ma <yongwei.ma@intel.com>
+> > Signed-off-by: Sean Christopherson <seanjc@google.com>
+> > ---
+> >   arch/x86/include/asm/kvm_page_track.h | 3 +++
+> >   arch/x86/kvm/mmu/page_track.c         | 5 +++++
+> >   arch/x86/kvm/x86.c                    | 7 +++++++
+> >   3 files changed, 15 insertions(+)
+> > 
+> > diff --git a/arch/x86/include/asm/kvm_page_track.h b/arch/x86/include/asm/kvm_page_track.h
+> > index 8c4d216e3b2b..f744682648e7 100644
+> > --- a/arch/x86/include/asm/kvm_page_track.h
+> > +++ b/arch/x86/include/asm/kvm_page_track.h
+> > @@ -75,4 +75,7 @@ kvm_page_track_unregister_notifier(struct kvm *kvm,
+> >   void kvm_page_track_write(struct kvm_vcpu *vcpu, gpa_t gpa, const u8 *new,
+> >   			  int bytes);
+> >   void kvm_page_track_flush_slot(struct kvm *kvm, struct kvm_memory_slot *slot);
+> > +
+> > +bool kvm_page_track_has_external_user(struct kvm *kvm);
+> > +
+> >   #endif
+> > diff --git a/arch/x86/kvm/mmu/page_track.c b/arch/x86/kvm/mmu/page_track.c
+> > index 891e5cc52b45..e6de9638e560 100644
+> > --- a/arch/x86/kvm/mmu/page_track.c
+> > +++ b/arch/x86/kvm/mmu/page_track.c
+> > @@ -303,3 +303,8 @@ void kvm_page_track_flush_slot(struct kvm *kvm, struct kvm_memory_slot *slot)
+> >   			n->track_flush_slot(kvm, slot, n);
+> >   	srcu_read_unlock(&head->track_srcu, idx);
+> >   }
+> > +
+> > +bool kvm_page_track_has_external_user(struct kvm *kvm)
+> > +{
+> > +	return hlist_empty(&kvm->arch.track_notifier_head.track_notifier_list);
+> > +}
+> > diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
+> > index 059571d5abed..4394bb49051f 100644
+> > --- a/arch/x86/kvm/x86.c
+> > +++ b/arch/x86/kvm/x86.c
+> > @@ -12606,6 +12606,13 @@ int kvm_arch_prepare_memory_region(struct kvm *kvm,
+> >   				   struct kvm_memory_slot *new,
+> >   				   enum kvm_mr_change change)
+> >   {
+> > +	/*
+> > +	 * KVM doesn't support moving memslots when there are external page
+> > +	 * trackers attached to the VM, i.e. if KVMGT is in use.
+> > +	 */
+> > +	if (change == KVM_MR_MOVE && kvm_page_track_has_external_user(kvm))
+> > +		return -EINVAL;
+> > +
+> >   	if (change == KVM_MR_CREATE || change == KVM_MR_MOVE) {
+> >   		if ((new->base_gfn + new->npages - 1) > kvm_mmu_max_gfn())
+> >   			return -EINVAL;
