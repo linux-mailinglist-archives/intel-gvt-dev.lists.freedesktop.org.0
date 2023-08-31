@@ -2,45 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8903878F230
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Aug 2023 19:52:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E8C078F457
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Aug 2023 23:01:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6054810E642;
-	Thu, 31 Aug 2023 17:52:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D0B8610E104;
+	Thu, 31 Aug 2023 21:01:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 31 Aug 2023 17:52:00 UTC
-Received: from mail.homedpotcheck.bond (unknown [193.17.5.163])
- by gabe.freedesktop.org (Postfix) with ESMTP id AB6DC10E642
+X-Greylist: delayed 4752 seconds by postgrey-1.36 at gabe;
+ Thu, 31 Aug 2023 21:01:40 UTC
+Received: from mail.reviewlows.bond (unknown [193.17.5.137])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BCFAB10E104
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 31 Aug 2023 17:52:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=homedpotcheck.bond; 
+ Thu, 31 Aug 2023 21:01:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=reviewlows.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=assessment.hub.at.the.home.depot@homedpotcheck.bond; 
- bh=c/PVgiJNo+Vpl+JCMfWQYgSF2uw=;
- b=iyAWHH0v86hOL8mzAZMFzCXmNfJ1NpBTMD6flCBIme10riG4mAUPfJkvztdV/p63mV2RxyVjYEVu
- pnPjWsQt3DYmt3aCk4xePMh4OkwIow4KY4PXG8EisXHBUwDy3aG/a6TxQ8RKJgqmvUcigPK+5on4
- hxF9Wdmr7k5oP5Uh9QU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=homedpotcheck.bond; 
- b=FC4gMbeeGu/79uWRwhv5u4TLECnPPMyjizeIWJohg7GgOZbuf22pjZfO4AXMHZ06lCDluNOIbPM5
- GHhVKlBrmRPdy1kVqjPdVLuiLK6rfCeOEi0Y5CG8lyPSYmit+137B01z+drmsxSfdiBRXN0sfIRi
- ZFAzDs8YdA9U/4zv7PM=;
-Received: by mail.homedpotcheck.bond id hu3j4m0001gs for
+ i=iowes.evaluation.spot@reviewlows.bond; 
+ bh=Bq0EG9nRWPeYU4rPWb0Mh/G87VI=;
+ b=P43CmR+yf1dCvAMzCxPtfMWhE2LeQst4heaUvNBCgiD+6EtZzRHHE+0DgwmLAUJBvYjQ2FU2UBty
+ gvTSJ0nX6OFmpD7vKqtbFG1wtFsOMVhqZFxAtyNbqE7FBiocBB6alLkAYhxjV38wbuou2zssBqYq
+ M5VqsdxVdQhN571ZMkM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=reviewlows.bond;
+ b=PRxJoaBWCE4PF+c0nTmH7YH7D1M1Dd1ASiC7jzZWCyqycgwzuWxywM/HgOFb9jfKeEDkP7NTbLsK
+ EX2gQk7yGTPuMJcOVRtQxXrTS+9wet+3N2YPwg1DeSExziMavc1CG4Ec98nkqxjMmKa3Y6DoJ474
+ an6MGhMRoIuiybiqlRQ=;
+Received: by mail.reviewlows.bond id hu3vr80001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 31 Aug 2023 15:05:10 -0400 (envelope-from
- <assessment.hub.at.the.home.depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@homedpotcheck.bond>)
-Date: Thu, 31 Aug 2023 15:05:10 -0400
-From: "Assessment Hub At The Home Depot"
- <assessment.hub.at.the.home.depot@homedpotcheck.bond>
+ Thu, 31 Aug 2023 15:38:08 -0400 (envelope-from
+ <iowes.evaluation.spot-intel+2Dgvt+2Ddev=lists.freedesktop.org@reviewlows.bond>)
+Date: Thu, 31 Aug 2023 15:38:08 -0400
+From: "Iowes Evaluation Spot" <iowes.evaluation.spot@reviewlows.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Snatch up a new Makita Drill Set today - remember,
- this offer finishes today.
+Subject: An exclusive Kobalt Tool set awaits you - provide your feedback to
+ claim it.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_88_173175434.1693503822814"
-Message-ID: <0.0.0.227.1D9DC3E1068DD40.53F204@mail.homedpotcheck.bond>
+ boundary="----=_Part_76_1565387153.1693510679798"
+Message-ID: <0.0.0.251.1D9DC42AB12FB92.18C171@mail.reviewlows.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,145 +54,214 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_88_173175434.1693503822814
+------=_Part_76_1565387153.1693510679798
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
  <head>=20
-  <title>feel the thunder</title>=20
+  <meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type" =
+/>=20
+  <meta content=3D"IE=3Dedge" http-equiv=3D"X-UA-Compatible" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>just fresh</title>=20
   <style type=3D"text/css">body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-}
+=09=09margin: 0;
+=09=09background-color: rgb(246,246,244);
+=09=09display: flex;
+=09=09justify-content: center;
+=09=09align-items: center;
+=09=09padding-bottom: 20px;
+=09=09padding-top: 20px;
+=09}
 
-container {
-  width: 600px;
-  margin: 0 auto;
-}
+=09.emailContainer {
+=09=09width: 80%;
+=09=09background-color: white;
+=20
+=09}
 
-header {
-  background-color: #000;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
+=09.hero {
+=09=09width: 300;
+=09=09
+=09=09margin-top: 40px;
+=09}
 
-header h1 {
-  font-size: 24px;
-}
+=09.intro {
+=09=09width: 80%;
+=09=09margin-left: 10%;
+        margin-top: 30px;
+=09=09margin-bottom: 30px;
+=09}
 
-content {
-  padding: 20px;
-}
+=09hr {
+=09=09width: 80%;
+=09=09margin-left: 10%;
+=09=09border-color: rgba(234,234,234, .3);
+=09}
 
-content p {
-  margin-bottom: 10px;
-}
+=09.article {
+=09=09width: 80%;
+=09=09margin-left: 10%;
+=09=09margin-top: 20px;
+=09=09margin-bottom: 30px;
 
-button {
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
+=09}
+=09
+=09.article-image {
+=09=09width: 100%;
+=09=09margin-top: 5px;
+=09}
 
-footer {
-  background-color: #f9f9f9;
-  padding: 20px;
-  text-align: center;
-}
+=09h4, a {
+=09=09color: rgb(0,124,137);
+=09}
+
+=09.social {
+=09=09display: flex;
+=09=09justify-content: center;
+=09=09
+=09}
+
+=09.fa-brands {
+=09=09margin: 20px;
+=09=09padding-top: 20px;
+=09=09padding-bottom: 20px;
+=09}
+
+=09.footer {
+=09=09background-color: rgb(250,250,250);
+=09=09font-size: 12px;
+=09}
+
+=09.copyright {
+=09=09display: flex;
+=09=09justify-content: center;
+=09=09margin-top: 40px;
+=09}
+
+=09.emailreason {
+=09=09display: flex;
+=09=09justify-content: center;
+=09=09margin-bottom: 20px;
+=09}
+
+=09.mailingaddress {
+=09=09display: flex;
+=09=09justify-content: center;
+=09=09text-align: center;
+=09=09padding-bottom: 40px;
+=09}
 =09</style>=20
  </head>=20
- <body>=20
-  <div class=3D"container" style=3D"width: 600px;
-  margin: 0 auto;">=20
-   <div class=3D"header" style=3D"background-color: #000;
-  color: #fff;
-  padding: 20px;
-  text-align: center;">=20
-    <h1 align=3D"center" style=3D"">Home Depot Final Reminder</h1>=20
+ <body style=3D"font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 's=
+ans-serif'">=20
+  <div class=3D"emailContainer">=20
+   <div align=3D"center">
+    <a href=3D"http://www.reviewlows.bond/a434o2395zM86w13b5tcIc6g16ddV36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ1RodQ6uAG10F5S@UwD/simulators-disclaim" rel=3D"noopener noreferrer" target=3D"_blank"><i=
+mg alt=3D"logo" class=3D"hero" src=3D"http://www.reviewlows.bond/8db4O2395L7taG11R5cc8g16ddR36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ1RodQ7LG1S0MT6z0wDN@/seasonal-fettered" style=3D"width: 250px" w=
+idth=3D"250" /> </a>
    </div>=20
-   <div align=3D"center" class=3D"content" style=3D"padding: 20px;">
-    <a href=3D"http://www.homedpotcheck.bond/springers-lossier/7b04u2395yT8u611o5cc1O16dcW36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFRodd5D1yS06r1wjDO"><img alt=3D"" src=3D"http://www.homedpotcheck.bond/bab6c2x3q95vry7a12S5ccn3J16dcn36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQFRodd6LC1go05w@wDj/designer-Islamizations" style=3D"max-w=
-idth: 450px" width=3D"100%" /></a>=20
-    <p style=3D"font-size: 22px">We' re thrilled to announce that The Home =
-Depot is giving away a <strong>Makita Drill Set</strong> to spend at any of=
- our locations. Don' t miss out! You have until August 31st to collect your=
- exciting items.</p> &nbsp;=20
-    <p align=3D"center"><a href=3D"http://www.homedpotcheck.bond/springers-lossier/7b04u2395yT8u611o5cc1O16dcW36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFRodd5D1yS06r1wjDO" style=3D"font-size: 22px; di=
-splay: block; background-color: #F15C00; padding: 15px; color: #fff; text-d=
-ecoration: none; font-size: 26px">Start Here Now &gt; &gt; </a></p> &nbsp;=
-=20
-    <table border=3D"0" cellpadding=3D"2" cellspacing=3D"1" width=3D"100%">=
-=20
-     <tbody>=20
-      <tr>=20
-       <td align=3D"center"><a href=3D"http://www.homedpotcheck.bond/springers-lossier/7b04u2395yT8u611o5cc1O16dcW36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFRodd5D1yS06r1wjDO"><img alt=3D"" src=3D"=
-http://www.homedpotcheck.bond/springers-lossier/6845t23z95nHo7a11v5cc4j16dcp36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQFRodd5S1Q0Z5p@wD@" width=3D"300" /></a></td>=20
-      </tr>=20
-     </tbody>=20
-    </table>=20
+   <div class=3D"intro">=20
+    <h2 align=3D"center">Lowe's Final Reminder</h2>=20
    </div>=20
-   <div class=3D"footer" style=3D"background-color: #f9f9f9;
-  padding: 20px;
-  text-align: center;">=20
-    <p><strong>Thank you in advance, The Harbor Freight Team.</strong></p>=
-=20
+   <hr />=20
+   <div class=3D"article">=20
+    <p align=3D"center" style=3D"font-size: 21px">We' re thrilled to announ=
+ce that Lowe's is giving away a <strong>Kobalt Tool Set!</strong> to spend =
+at any of our locations. Don' t miss out! You have until August 31st to col=
+lect your exciting items.</p>=20
    </div>=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <br />=20
-   <br /> &nbsp;=20
-   <center>
-    <small>Lets get you out of here <a href=3D"http://www.homedpotcheck.bond/enrolling-impersonates/40e6wF2X395ij8H613ymZ5cc2N16dcJ36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQFRodd5cA10A6S@@lwD">here</a><br /> U=
-S 10010 126 E 23rd St New York, NY,</small>
-    <br />=20
-    <br />=20
-    <br />=20
+   <hr />=20
+   <div align=3D"center" class=3D"article">
+    <a href=3D"http://www.reviewlows.bond/a434o2395zM86w13b5tcIc6g16ddV36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ1RodQ6uAG10F5S@UwD/simulators-disclaim" style=3D"font-size: 22px;font-size: 25px;=20
+            font-weight: bold;=20
+            text-decoration: none;=20
+            color: #ffffff;=20
+            background-color: #2743A6;=20
+            border: 1px solid #2743A6;=20
+            border-radius: 4px;=20
+            padding: 9px 20px;=20
+            display: inline-block; ">Start Here Now &gt; &gt; </a>
+   </div>=20
+   <hr />=20
+   <div align=3D"center" class=3D"article">
+    <a href=3D"http://www.reviewlows.bond/a434o2395zM86w13b5tcIc6g16ddV36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ1RodQ6uAG10F5S@UwD/simulators-disclaim"><img alt=3D"stay" src=3D"http://www.reviewlows.bond/boatload-invective/60c4E2395L7rya12qF5cc9T16ddJ36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ1RodQ7L10ZVKh5V@wDl" width=3D"3=
+50" /></a>
+   </div>=20
+   <hr />=20
+   <div class=3D"article">=20
+    <p align=3D"center" style=3D"font-family: Gotham, 'Helvetica Neue', Hel=
+vetica, Arial, 'sans-serif'"><strong>Thank you in advance, The Lowes Team.<=
+/strong></p>=20
+   </div>=20
+   <hr />&nbsp;=20
+   <div class=3D"footer">
     <br />=20
     <br /> &nbsp;=20
-    <table border=3D"0" cellpadding=3D"2" cellspacing=3D"1" width=3D"100%">=
-=20
+    <div align=3D"center" style=3D"display: flex;
+=09=09justify-content: center;
+=09=09margin-top: 40px;">
+     <br />=20
+     <br />=20
+     <br />=20
+     <br />=20
+     <br />=20
+     <br />=20
+     <br />=20
+     <i>as alway you can end this <a href=3D"http://www.reviewlows.bond/philosophizes-disjointness/o8a6N239rq5SV8r612I5cuc7U16ddV36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ1RodQ6Jo1Dn06YLlLwD">here</a><br /> US =
+10010 126 E 23rd St New York, NY,</i>
+    </div>=20
+    <table border=3D"0" cellpadding=3D"2" cellspacing=3D"1" style=3D"margin=
+-top: 250px; padding: 5%" width=3D"100%">=20
      <tbody>=20
       <tr>=20
-       <td align=3D"center" style=3D"">The hammer action is provided by two=
- cam plates that make the chuck pulse rapidly forward and backward as the d=
-rill spins on its axis. This pulsing (hammering) action is measured in Blow=
-s Per Minute (BPM) with 10,000 or more BPM being common. Because of the rel=
-ative masses of the chuck+bit and the remainder of the drill the energy tra=
-nsfer is relatively inefficient and can sometimes make it difficult for lar=
-ger bits to penetrate harder materials such as poured concrete. Vibration i=
-s quite noticeable by the operator, and the cams are generally made from ha=
-rdened steel to avoid them wearing out quickly. Most electric hammer drills=
- are rated at between 6.3 and 9 amps, and are restricted to standard masonr=
-y bits 1/2 inch in size maximum. A typical application for a hammer drill w=
-ould be to install electrical boxes, conduit straps or shelves in concrete.=
-<br /> <br /> Compare this to a rotary/pneumatic hammer drill where just th=
-e bit is accelerated to the work. This is accomplished through a piston des=
-ign, rather than a spinning cam. Rotary hammers have relatively little vibr=
-ation and penetrate most building materials. They can also be used as &quot=
-;drill only&quot; or &quot;hammer only,&quot; which extends their usefulnes=
-s for tasks such as chipping brick or concrete. Hole drilling progress is g=
-reatly superior to cam-type hammer drills, and these drills are generally u=
-sed for holes of 3/4 inch or greater in size. A typical application for a r=
-otary hammer drill would be to bore large holes for lag bolts in foundation=
-s, or to install large lead anchors in concrete for handrails or benches.</=
-td>=20
+       <td style=3D"padding: 5%" valign=3D"top" width=3D"50%">A cordless dr=
+ill is a type of electric drill which uses rechargeable batteries. These dr=
+ills are available with similar features to an AC mains-powered drill. They=
+ are available in the hammer drill configuration and most also have a clutc=
+h setting which allows them to be used for driving screws. Also available n=
+ow are Right Angle Drills, which allow a worker to drive screws in a tight =
+space. These are currently less useful than the corded version however, as =
+one of the main functions is drilling holes through joist and studs to run =
+electrical and plumbing. While recent battery innovation allows significant=
+ly more drilling, the large diameter holes required (typically 1/2&quot;-1&=
+quot; or larger) drain current cordless drills quickly. For continuous use,=
+ a worker will have one or more spare battery packs charging while drilling=
+, so that he or she can quickly swap them, instead of having to wait an hou=
+r or more for recharging. Although there are now Rapid Charge Batteries tha=
+t can charge in 10-15 minutes.</td>=20
+       <td style=3D"padding: 5%">Early cordless drills started with interch=
+angeable 7.2 V battery packs, and over the years available battery voltages=
+ have increased, with 18 V drills being most common, and 24V drills are ava=
+ilable. This allows these tools to produce as much torque as some mains-pow=
+ered drills. The drawback of most current models is the use of nickel-cadmi=
+um (NiCd) batteries, which have limited life, self-discharging and eventual=
+ly internally short circuiting due to dendrite growth. This severely limits=
+ battery life, and poses a hazardous materials disposal problem. A lot of d=
+rill manufacturers, including DeWalt, Ryobi, and RIDGID, are now using lith=
+ium ion batteries. The main advantages are very short charging time, longer=
+ life, and lighter battery weights. Instead of charging a tool for an hour =
+to get 20 minutes of use, 20 minutes of charge can run the tool for an hour=
+ Lithium-ion batteries also have a constant discharge rate. The power outp=
+ut remains constant until the battery is depleted, something that nickel-ca=
+dmium batteries also lack, and which makes the tool much more versatile. Li=
+thium-ion batteries also hold a charge for a significantly longer time than=
+ nickel-cadmium batteries, about two years if not used, vs. 1 to 4 months f=
+or a nickel-cadmium battery. The handles of cordless drills are usually mad=
+e from polymorph which is easy and quick to mold to a comfortable shape for=
+ holding. The main body of the drill is usually made from polythene as it i=
+s able to withstand the high temperatures which the drill reaches.</td>=20
       </tr>=20
      </tbody>=20
     </table>=20
-   </center>=20
+   </div>=20
   </div>  =20
- <img src=3D"http://www.homedpotcheck.bond/8635F239i5kQ85Q12w5ccY5C16dcS36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQFRodd5GX10C5M31wD/reposing-morning" alt=3D""/></body>
+ <img src=3D"http://www.reviewlows.bond/sciences-humiliation/80a4O2395vK8N512Ej5ccaW16ddz36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ1RodQ5GJ10p6ANBw3D" alt=3D""/></body>
 </html>
 
-------=_Part_88_173175434.1693503822814--
+------=_Part_76_1565387153.1693510679798--
 
