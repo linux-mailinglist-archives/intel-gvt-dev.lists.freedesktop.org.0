@@ -1,45 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 976B578F16D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Aug 2023 18:42:21 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8903878F230
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 31 Aug 2023 19:52:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6777E10E0BD;
-	Thu, 31 Aug 2023 16:42:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6054810E642;
+	Thu, 31 Aug 2023 17:52:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 31 Aug 2023 16:42:17 UTC
-Received: from mail.dltaflightinfo.bond (unknown [193.17.5.131])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5748610E0BD
+ Thu, 31 Aug 2023 17:52:00 UTC
+Received: from mail.homedpotcheck.bond (unknown [193.17.5.163])
+ by gabe.freedesktop.org (Postfix) with ESMTP id AB6DC10E642
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 31 Aug 2023 16:42:17 +0000 (UTC)
+ Thu, 31 Aug 2023 17:52:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=dltaflightinfo.bond; 
+ d=homedpotcheck.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=delta.feedback.squad@dltaflightinfo.bond; 
- bh=bLaNl6MIzPM34e8v9qa24eX7XO4=;
- b=Bb+gK0l4TEU25LlQwSjTJRwdxNqMG8sJGPjVWqSvCOxdeyDEbO+UY5ye2nLLjSwdLWpRIlss2n/1
- 9nKzSI/B8ezIgbtvmVbcth8+IcQobbkEJvVYM8TyojaSDIb9GVUJKGAXg7NNZ63KNHRNlGjsHXWe
- /8JtcYXLTtnhsMSj7uE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dltaflightinfo.bond;
- b=Pfe4/eTrdpN/t22IVmeQ6X/JFw7iAysLcIv0NWbr1Lx3njihxicnJOokKvhPSjsDc7T/D+3l76sb
- ITAz2wyXq9pVDkQ8U9ofBytZZQdBHYCxxSHLO0H/csCdznRP1gA8YBIOLXyrCZu39MFyx22cJQzg
- gbUDQIwv7PBSgC1k9Ow=;
-Received: by mail.dltaflightinfo.bond id hu31ei0001g0 for
+ i=assessment.hub.at.the.home.depot@homedpotcheck.bond; 
+ bh=c/PVgiJNo+Vpl+JCMfWQYgSF2uw=;
+ b=iyAWHH0v86hOL8mzAZMFzCXmNfJ1NpBTMD6flCBIme10riG4mAUPfJkvztdV/p63mV2RxyVjYEVu
+ pnPjWsQt3DYmt3aCk4xePMh4OkwIow4KY4PXG8EisXHBUwDy3aG/a6TxQ8RKJgqmvUcigPK+5on4
+ hxF9Wdmr7k5oP5Uh9QU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=homedpotcheck.bond; 
+ b=FC4gMbeeGu/79uWRwhv5u4TLECnPPMyjizeIWJohg7GgOZbuf22pjZfO4AXMHZ06lCDluNOIbPM5
+ GHhVKlBrmRPdy1kVqjPdVLuiLK6rfCeOEi0Y5CG8lyPSYmit+137B01z+drmsxSfdiBRXN0sfIRi
+ ZFAzDs8YdA9U/4zv7PM=;
+Received: by mail.homedpotcheck.bond id hu3j4m0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 31 Aug 2023 12:32:39 -0400 (envelope-from
- <delta.feedback.squad-intel+2Dgvt+2Ddev=lists.freedesktop.org@dltaflightinfo.bond>)
-Date: Thu, 31 Aug 2023 12:32:39 -0400
-From: "Delta Feedback Squad" <delta.feedback.squad@dltaflightinfo.bond>
+ Thu, 31 Aug 2023 15:05:10 -0400 (envelope-from
+ <assessment.hub.at.the.home.depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@homedpotcheck.bond>)
+Date: Thu, 31 Aug 2023 15:05:10 -0400
+From: "Assessment Hub At The Home Depot"
+ <assessment.hub.at.the.home.depot@homedpotcheck.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Take part in our survey and enjoy a free gift - our way of thanking
- you!
+Subject: Snatch up a new Makita Drill Set today - remember,
+ this offer finishes today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_46_399646848.1693499552546"
-Message-ID: <0.0.0.1F9.1D9DC28C1AE2210.28FCA7@mail.dltaflightinfo.bond>
+ boundary="----=_Part_88_173175434.1693503822814"
+Message-ID: <0.0.0.227.1D9DC3E1068DD40.53F204@mail.homedpotcheck.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,38 +56,27 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_46_399646848.1693499552546
+------=_Part_88_173175434.1693503822814
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
 <html>
- <head> 
-  <title>whiskey neat</title> 
-  <style type="text/css">@media only screen and (max-width: 500px) {
-  /* Make the email narrower on small screens */
-  .container {
-    width: 100%;
-	  max-width: 488px
-  }
-}
-
-/* Style the email */
-
-body {
+ <head>=20
+  <title>feel the thunder</title>=20
+  <style type=3D"text/css">body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
 }
 
 container {
-  width: 100%px;
+  width: 600px;
   margin: 0 auto;
-	max-width: 500px
 }
 
 header {
-  background-color: #0B336A;
+  background-color: #000;
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -117,79 +107,94 @@ footer {
   padding: 20px;
   text-align: center;
 }
-
-/* Add some random tags */
-
-random-tag {
-  color: #ccc;
-}
-
-/* Add a table */
-
-table {
-  width: 100%;
-  
-}
-
-table td, .table th {
- 
-  padding: 5px;
-}
-
-table th {
-  text-align: left;
-}
-	</style> 
- </head> 
- <body> 
-  <div class="container" style="width: 100%;
-	  max-width: 500px"> 
-   <div class="header">
-    &nbsp;
-   </div> 
-   <div class="content" style="border: solid 2px #0A336A"> 
-    <p align="center"><a href="http://www.dltaflightinfo.bond/11f5a239q5S8wn611H5cbcj16dbt36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ6Rod95u10lI6zq@wWD/concurrent-regrouping"><img alt="1654" src="http://www.dltaflightinfo.bond/6bW6KM23P95A7Qva13O5cbxeGp16dby36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ6Rod96N1J0_t6zLAJwD/grandmothers-femininity" style="max-width: 256px; " /> </a></p> 
-    <p align="center" style="font-size: 20px; line-height: 25px">We would like to express our gratitude for choosing Southwest for your travel requirements. Your loyalty and support hold great significance to us, and we sincerely appreciate the opportunity to serve you.</p> 
-    <br /> 
-    <a href="http://www.dltaflightinfo.bond/11f5a239q5S8wn611H5cbcj16dbt36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ6Rod95u10lI6zq@wWD/concurrent-regrouping" target="_blank"><img alt="Newsletter" src="http://www.dltaflightinfo.bond/thirteens-yanking/c064z2395h7Vau12h5cbmfq16dbM36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ6Rod95yl1_05PywD@" style="border:0; display:block; outline:none; text-decoration:none; height:auto; width:100%; font-size:13px; " width="100%" /> </a> 
-    <p align="center" style="font-size: 20px; line-height: 25px">In our ongoing commitment to deliver exceptional experiences, we cordially invite you to participate in a brief survey regarding your recent flight and overall experience with Delta.<br /> <br /> Your feedback holds immense value, and as a token of our appreciation for your time and input, we would like to offer you a special gesture.<br /> <br /> <strong>To access the survey, kindly click on the link provided below. The survey will only take a few minutes to complete, and rest assured, your responses will remain completely confidential.</strong></p> &nbsp; 
-    <p align="center" style=" color: #fff; 
-    text-decoration: none; 
-    border-radius: 6px; 
-    padding: 15px; 
-    background-color: #115997; "><a class="survey-link" href="http://www.dltaflightinfo.bond/11f5a239q5S8wn611H5cbcj16dbt36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ6Rod95u10lI6zq@wWD/concurrent-regrouping" style="color: #fff; text-decoration: none; font-size: 22px">Start The Survey Here &gt; &gt; </a></p> 
-    <br /> &nbsp;
-   </div> 
-   <div class="footer"> 
-    <p>Thank you for your continued support and for taking the time to fill out our survey.<br /> <br /> We look forward to hearing from you soon.<br /> Best regards,</p> 
-   </div> 
-   <table class="table"> 
-    <tbody> 
-     <tr> 
-      <th>&nbsp;</th> 
-      <th>&nbsp;</th> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <ul style="list-style-type: none"> 
-    <li style="text-align: center; font-size: 12px">Anyway you can leave <a href="http://www.dltaflightinfo.bond/1f15BS2395C8v6P12p5cPbdj16dbT36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ6Rod95oj1B05g3WwD/unattractive-abatement">here</a><br /> US 10010 126 E 23rd St New York, NY,</li> 
-    <li style="margin-top: 50px; font-size: 12px; text-align: justify">Flight: LH203 Departure Airport: JFK (John F. Kennedy International Airport) Departure Time: 10:30 AM Destination: LHR (London Heathrow Airport) Arrival: Arrival Time: 10:00 PM (Local Time) Duration: 7 hours, 30 minutes Class: Economy Seat: 22B Layover: Layover Airport: CDG (Charles de Gaulle Airport) Layover Duration: 2 hours Layover Activities: dining Return: Flight: UA456 Departure Airport: LHR (London Heathrow Airport) Departure Time: 1:45 PM Destination: JFK (John F. Kennedy International Airport) Arrival: Arrival Time: 5:30 PM (Local Time) Duration: 8 hours, 45 minutes Class: Economy Seat: 15A</li> 
-   </ul> 
-  </div>   
- <img src="http://www.dltaflightinfo.bond/9e95Qs2395sU85o13h5jcHc0Y16dbV36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ6Rod95v1ww05tlJwD/brunt-currant" alt=""/></body>
+=09</style>=20
+ </head>=20
+ <body>=20
+  <div class=3D"container" style=3D"width: 600px;
+  margin: 0 auto;">=20
+   <div class=3D"header" style=3D"background-color: #000;
+  color: #fff;
+  padding: 20px;
+  text-align: center;">=20
+    <h1 align=3D"center" style=3D"">Home Depot Final Reminder</h1>=20
+   </div>=20
+   <div align=3D"center" class=3D"content" style=3D"padding: 20px;">
+    <a href=3D"http://www.homedpotcheck.bond/springers-lossier/7b04u2395yT8u611o5cc1O16dcW36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFRodd5D1yS06r1wjDO"><img alt=3D"" src=3D"http://www.homedpotcheck.bond/bab6c2x3q95vry7a12S5ccn3J16dcn36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQFRodd6LC1go05w@wDj/designer-Islamizations" style=3D"max-w=
+idth: 450px" width=3D"100%" /></a>=20
+    <p style=3D"font-size: 22px">We' re thrilled to announce that The Home =
+Depot is giving away a <strong>Makita Drill Set</strong> to spend at any of=
+ our locations. Don' t miss out! You have until August 31st to collect your=
+ exciting items.</p> &nbsp;=20
+    <p align=3D"center"><a href=3D"http://www.homedpotcheck.bond/springers-lossier/7b04u2395yT8u611o5cc1O16dcW36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFRodd5D1yS06r1wjDO" style=3D"font-size: 22px; di=
+splay: block; background-color: #F15C00; padding: 15px; color: #fff; text-d=
+ecoration: none; font-size: 26px">Start Here Now &gt; &gt; </a></p> &nbsp;=
+=20
+    <table border=3D"0" cellpadding=3D"2" cellspacing=3D"1" width=3D"100%">=
+=20
+     <tbody>=20
+      <tr>=20
+       <td align=3D"center"><a href=3D"http://www.homedpotcheck.bond/springers-lossier/7b04u2395yT8u611o5cc1O16dcW36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQFRodd5D1yS06r1wjDO"><img alt=3D"" src=3D"=
+http://www.homedpotcheck.bond/springers-lossier/6845t23z95nHo7a11v5cc4j16dcp36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQFRodd5S1Q0Z5p@wD@" width=3D"300" /></a></td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </div>=20
+   <div class=3D"footer" style=3D"background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;">=20
+    <p><strong>Thank you in advance, The Harbor Freight Team.</strong></p>=
+=20
+   </div>=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <br /> &nbsp;=20
+   <center>
+    <small>Lets get you out of here <a href=3D"http://www.homedpotcheck.bond/enrolling-impersonates/40e6wF2X395ij8H613ymZ5cc2N16dcJ36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQFRodd5cA10A6S@@lwD">here</a><br /> U=
+S 10010 126 E 23rd St New York, NY,</small>
+    <br />=20
+    <br />=20
+    <br />=20
+    <br />=20
+    <br /> &nbsp;=20
+    <table border=3D"0" cellpadding=3D"2" cellspacing=3D"1" width=3D"100%">=
+=20
+     <tbody>=20
+      <tr>=20
+       <td align=3D"center" style=3D"">The hammer action is provided by two=
+ cam plates that make the chuck pulse rapidly forward and backward as the d=
+rill spins on its axis. This pulsing (hammering) action is measured in Blow=
+s Per Minute (BPM) with 10,000 or more BPM being common. Because of the rel=
+ative masses of the chuck+bit and the remainder of the drill the energy tra=
+nsfer is relatively inefficient and can sometimes make it difficult for lar=
+ger bits to penetrate harder materials such as poured concrete. Vibration i=
+s quite noticeable by the operator, and the cams are generally made from ha=
+rdened steel to avoid them wearing out quickly. Most electric hammer drills=
+ are rated at between 6.3 and 9 amps, and are restricted to standard masonr=
+y bits 1/2 inch in size maximum. A typical application for a hammer drill w=
+ould be to install electrical boxes, conduit straps or shelves in concrete.=
+<br /> <br /> Compare this to a rotary/pneumatic hammer drill where just th=
+e bit is accelerated to the work. This is accomplished through a piston des=
+ign, rather than a spinning cam. Rotary hammers have relatively little vibr=
+ation and penetrate most building materials. They can also be used as &quot=
+;drill only&quot; or &quot;hammer only,&quot; which extends their usefulnes=
+s for tasks such as chipping brick or concrete. Hole drilling progress is g=
+reatly superior to cam-type hammer drills, and these drills are generally u=
+sed for holes of 3/4 inch or greater in size. A typical application for a r=
+otary hammer drill would be to bore large holes for lag bolts in foundation=
+s, or to install large lead anchors in concrete for handrails or benches.</=
+td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </center>=20
+  </div>  =20
+ <img src=3D"http://www.homedpotcheck.bond/8635F239i5kQ85Q12w5ccY5C16dcS36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQFRodd5GX10C5M31wD/reposing-morning" alt=3D""/></body>
 </html>
 
-------=_Part_46_399646848.1693499552546--
+------=_Part_88_173175434.1693503822814--
 
