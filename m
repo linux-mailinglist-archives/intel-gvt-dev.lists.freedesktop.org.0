@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 808467901FD
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Sep 2023 20:23:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15DF87902F7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Sep 2023 22:49:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5A18810E076;
-	Fri,  1 Sep 2023 18:23:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C4F5910E061;
+	Fri,  1 Sep 2023 20:49:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 01 Sep 2023 18:23:01 UTC
-Received: from mail.flightsdaily.bond (unknown [193.17.5.140])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3AF6610E076
+ Fri, 01 Sep 2023 20:49:16 UTC
+Received: from mail.usuallytools.bond (unknown [193.17.5.158])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3356B10E061
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  1 Sep 2023 18:23:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flightsdaily.bond;
+ Fri,  1 Sep 2023 20:49:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=usuallytools.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=assessment_hub_southwest@flightsdaily.bond; 
- bh=yapw696/hHHtPf7Aoyj7ekfDig8=;
- b=wjKiaz1xG+gDAIu8ahD6ZDdn4QNjArL6pPhlOSAxGPtMfCiHc6dBwGUdLgMreIybSFF19Z8DfVhr
- e/axLrwYQi3MWYmN1wvQuI6iD1/+rT0sSwL72HKf7mB9PYvFetKHZ8eg/1XFyIvHKSW7+5rSxnZm
- Q5W8meWnM6bjsigF2wM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flightsdaily.bond; 
- b=nXflfvOFgd87mF6U7y9FS+PituMV++oGkLEz6j1uT98cY0FFkZPFEyoiGtQ0vRPcQqC4s0xX1Bmr
- AAvmFEL+EBlNtkj399xf4OJj9jODX20jKtXSwANiKhVDUyS5C4I4eRPEveg+BPaNGm+KW+Dt5tDK
- wxd4pSX7Jv/+MDnaAX8=;
-Received: by mail.flightsdaily.bond id hu8vgs0001g5 for
+ i=feedback.junction.lowes@usuallytools.bond; 
+ bh=4s6+wpzQd6/DsdWedJnGmJX4IWY=;
+ b=j4gay0rugqlsorXnbnMnqa+dvg6zcfRZqIc2reWdCH3hVSwOyCI74AcZhgrJSl8y3qPXH27PrLzQ
+ kTVcaSFdiSUgsi6+atBSeZz8fq+P3pF5sP/boIeC9Ravyv1//qVCiuiH7+gH0Mc8pgo8L5wv0cva
+ Ix0PksfjvGrYiM7E5xA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=usuallytools.bond; 
+ b=K9qGrkeek6bIL3lX6jpnxwcGpD3/TAbXjzI0w1QObr5O8RYgRNJ3XM4tm0W5DsTfaR+USlwrOcIJ
+ YS44LSEQtrj/bz8eyk3c7qvg78SDzcfYWLQUCsYJtcXoVm+wsdHrTIpC6jlomp2iU0ZBmEas/c9m
+ niCFJoZlS2eZ61RbHVA=;
+Received: by mail.usuallytools.bond id hu974o0001gc for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 1 Sep 2023 15:36:11 -0400 (envelope-from
- <assessment_hub_southwest-intel+2Dgvt+2Ddev=lists.freedesktop.org@flightsdaily.bond>)
-Date: Fri, 1 Sep 2023 15:36:11 -0400
-From: "Assessment Hub Southwest" <assessment_hub_southwest@flightsdaily.bond>
+ Fri, 1 Sep 2023 16:41:47 -0400 (envelope-from
+ <feedback.junction.lowes-intel+2Dgvt+2Ddev=lists.freedesktop.org@usuallytools.bond>)
+Date: Fri, 1 Sep 2023 16:41:47 -0400
+From: "Feedback Junction Lowes" <feedback.junction.lowes@usuallytools.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You've been selected for a gift from us - your evaluation of our
- service matters.
+Subject: Your Views Count: Snag a new Stanley Tool set - act now,
+ this offer ends today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_34_984010916.1693592093435"
-Message-ID: <0.0.0.29.1D9DD0B90512EEA.45654A@mail.flightsdaily.bond>
+ boundary="----=_Part_229_1153792315.1693600901335"
+Message-ID: <0.0.0.64.1D9DD14BA15A84C.5E76B@mail.usuallytools.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_34_984010916.1693592093435
+------=_Part_229_1153792315.1693600901335
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,63 +62,93 @@ Content-Transfer-Encoding: 7bit
 <html>
  <head> 
   <meta charset="UTF-8" /> 
-  <title>at my sight</title> 
+  <title>my wise</title> 
  </head> 
- <body bgcolor="#eee" style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'">
-  &nbsp; 
-  <ul style="padding: 0; margin: auto; max-width: 580px; display: block; background-color: #fff; border-radius: 7px"> 
-   <li style="list-style-type: none; padding: 15px; margin: auto; text-align: center" type="none"><a href="http://www.flightsdaily.bond/bab5P2I395qsx8613dCY5cdcQ16e1Q36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQxRodK5z1Tm05QNWwD/doubler-vanished"><img alt="1654" src="http://www.flightsdaily.bond/5ed6JO23s95NGi7a12X5cdeXt16e1y36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQxRodK6pH10VM6sMw@@D/piggyback-restrict" style="max-width: 356px" /></a> 
-    <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td style="font-size: 19px"> 
-        <hr style="border-style: dashed; border-color: #999" />We want to express our gratitude for choosing Southwest for your travel needs. Your loyalty and support mean a lot to us, and we genuinely appreciate the opportunity to serve you.</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td><a href="http://www.flightsdaily.bond/bab5P2I395qsx8613dCY5cdcQ16e1Q36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQxRodK5z1Tm05QNWwD/doubler-vanished" target="_blank"><img alt="banner news" height="auto" src="http://www.flightsdaily.bond/a075j23J95gy7Xa12G5cdfvZ16e1G36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQxRodK7u10XTBG6fNNwDJ/unfettered-dirtiness" style="border:0; display:block; outline:none; text-decoration:none; height:auto; width:100%; font-size:13px; " width="600" /> </a></td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td style="font-size: 19px"><br /> As part of our ongoing commitment to providing exceptional experiences, we warmly invite you to participate in a brief survey about your recent flight and overall experience with Southwest.</td> 
-      </tr> 
-     </tbody> 
-    </table> &nbsp; 
-    <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td bgcolor="#eee" style="font-size: 19px; padding: 12px"><strong>Your feedback is incredibly valuable, and as a token of our appreciation for your time and insights, we'd like to offer you a special token of gratitude.</strong></td> 
-      </tr> 
-     </tbody> 
-    </table> &nbsp; 
-    <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td style="font-size: 19px">To access the survey, please click on the link below. The survey will only take a few minutes to complete, and rest assured, your responses will remain completely confidential.</td> 
-      </tr> 
-     </tbody> 
-    </table> &nbsp; <p align="center"><a href="http://www.flightsdaily.bond/bab5P2I395qsx8613dCY5cdcQ16e1Q36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQxRodK5z1Tm05QNWwD/doubler-vanished" style="color: #fff; text-decoration: none"><span style="border-radius: 6px; padding: 15px; background-color:#DB4437; font-size: 29px">Start The Survey Here &gt; &gt; </span></a></p> </li> 
-  </ul> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
+ <body style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"> 
   <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
    <tbody> 
     <tr> 
-     <td>&nbsp;</td> 
-     <td align="center" style="max-width: 50%">Thank you for your continued support and for taking the time to fill out our survey.<br /> <br /> We look forward to hearing from you soon.<br /> <br /> Best regards, <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> if you need to go visit <a href="http://www.flightsdaily.bond/a615kH2395H8ph611s5cddS16e1W36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQxRodK7Kjx1PN05h2w0D/odder-shallowly">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
-     <td>&nbsp;</td> 
+     <td> 
+      <table border="0" cellpadding="3" cellspacing="3" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td align="center" style="padding-top: 25px"> 
+          <div style="max-width: 500px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #ffffff;
+			border-radius: 8px;
+			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);"> 
+           <p style="max-width: 100%;
+			margin-top: 5px;
+			margin-bottom: 5px;"><a href="http://www.usuallytools.bond/e214y2395zYY8613g5cqe6qu16e2h36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ3RoQn5A1pq06glkwlD/analysis-warships"><img alt="3123" src="http://www.usuallytools.bond/b336Q23yj95WXx7a12D5ce8nm16e2V36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ3RoQn5iP1j06zXw3XD/resonances-bourgeois" style="width: 241px; height: 78px;" /> </a></p> 
+           <div align="center" style="border: dashed 2px #eee;
+			border-radius: 7px;
+			padding: 20px;
+			margin-top: 20px;
+			text-align: left;
+			background-color: #fff; font-size: 21px"> 
+            <div align="center" style="font-size: 21px;">
+             <strong>Lowe's Final Reminder</strong>
+            </div> &nbsp; 
+            <div align="center" style="font-size: 21px;">
+             Exciting news! Lowe's is offering a 
+             <strong>Stanley Tool Set</strong> for you to use at any of our branches. Don't let this opportunity pass you by! You have until September 1st to claim your fantastic items.             </div> &nbsp; 
+            <center>
+             <a href="http://www.usuallytools.bond/e214y2395zYY8613g5cqe6qu16e2h36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ3RoQn5A1pq06glkwlD/analysis-warships"><img alt="res" src="http://www.usuallytools.bond/b8d4u2395RO7ar11R5ce9h16e2M36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ3RoQn6qy10qp5GLwyD/letting-maced" style="max-width: 250px; width: 321px; height: 206px;" /></a>
+            </center> 
+            <a href="http://www.usuallytools.bond/e214y2395zYY8613g5cqe6qu16e2h36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ3RoQn5A1pq06glkwlD/analysis-warships" style="display: block;
+			margin: 15px auto;
+			padding: 15px 55px;
+			border-radius: 5px;
+			background-color: #1F41C2;
+			color: #fff;
+			text-decoration: none;
+			font-size: 20px; text-align: center" target="_blank">Begin Here Now &raquo;</a> 
+            <div align="center" class="illgo" style="font-size: 21px;">
+             <strong>Thank you in advance, The Lowe's Team.</strong>
+            </div> 
+           </div> 
+           <br /> &nbsp;
+          </div> </td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> <br /> <br /> &nbsp; 
+      <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td> 
+          <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td> 
+              <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td> <p align="center" lang="af" style="margin-top: 150px">its your time to leave? do it <a href="http://www.usuallytools.bond/15b6C2x3D95YyT8612L5ce7Rs16e2D36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ3RoQn5spQ106SNwqDU/letting-maced">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.flightsdaily.bond/odder-shallowly/1985Oo2395JT8u513mR5Cce0l16e1t36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQxRodK5ykC106GOwDlM" alt=""/></body>
+ <img src="http://www.usuallytools.bond/5935Y23m95QV_8512k5cueai16e2w36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ3RoQn5Q1Rz05CMwLD/analysis-warships" alt=""/></body>
 </html>
 
-------=_Part_34_984010916.1693592093435--
+------=_Part_229_1153792315.1693600901335--
 
