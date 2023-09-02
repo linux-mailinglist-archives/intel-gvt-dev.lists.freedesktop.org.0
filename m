@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72E117908BD
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Sep 2023 18:48:29 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6B7679091A
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Sep 2023 20:18:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AA1F610E084;
-	Sat,  2 Sep 2023 16:48:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8012610E00E;
+	Sat,  2 Sep 2023 18:18:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Sat, 02 Sep 2023 16:48:25 UTC
-Received: from mail.deltarviews.bond (unknown [193.17.5.136])
- by gabe.freedesktop.org (Postfix) with ESMTP id AC7FD10E084
+ Sat, 02 Sep 2023 18:18:38 UTC
+Received: from mail.accesstools.bond (unknown [193.17.5.165])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DFC4310E00E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  2 Sep 2023 16:48:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=deltarviews.bond;
+ Sat,  2 Sep 2023 18:18:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=accesstools.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=reviewing.spot.delta.air@deltarviews.bond; 
- bh=VAKkxSLfTOF5FyYOkk3kVnpfZdA=;
- b=wlLalc2v0LArirTjYVQxbTHSmx+4EWABc7I3P7GuFkGpG/n9c7bA4aaiyR+2Z9wQdjxGug3r/cLd
- ff1H7bjp/n0pL5PGDqlrFXjjKwraHsRNq/PYc/mwrY62HMYK5lIgsXrPIU/REY36mce3AmVUZlpx
- qTm3Te2udUQ4IuPysOU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=deltarviews.bond;
- b=4rg9P2y27wIiSaKWvsOod9lRMXfqj2oDV0kG2Uy6PVCDx/yf3DIBZ82hlNMkeoQBUIZb3uYk+3iP
- YccXFGIN7tOXRvUEp7/mzz8snFoFNU0jnXkX6zLWbktoF2a3Q6LXnUVlWgcs6R75VEeYUozrWMyu
- 6XYoYui+kV1CJiESooU=;
-Received: by mail.deltarviews.bond id hudt620001ga for
+ i=ups.appraisal.crew@accesstools.bond; 
+ bh=kr+l18hVn2bc+tcEW3/OXJU1y5Q=;
+ b=SjK6gU9DGYtWnx1+IFRRm4cISS5T2zf/+f7Jo77MduqdN6Vl2mkdxKeLKmT5DtVZrUOlQQi3OVRL
+ FYRC1yB0T1EU3g2SAuoV0Fsel83B5t3ojiz32DumkTT89pSBEcjiEkaYVSVMMZBilnnY6fGZbu1v
+ J/n0ZY35RAtbcAKqP6w=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=accesstools.bond;
+ b=LHdG3KoyzSyNHU3mTZogwuWVQdIdRlDVUXj986TPznBuVJmQhY0DzZ9KB36mM6kCGpXRu7X7pglt
+ xL0iWDFNtd86g8UCmku+0NiF4Ku/BtJ1w+G1ls+6H7CZSSKiyu4QoYdwIpIQ8pjZ6r6sVkZiQcPk
+ rK8nlZKr42PRxbuwIvk=;
+Received: by mail.accesstools.bond id hudu7u0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 2 Sep 2023 14:00:02 -0400 (envelope-from
- <reviewing.spot.delta.air-intel+2Dgvt+2Ddev=lists.freedesktop.org@deltarviews.bond>)
-Date: Sat, 2 Sep 2023 14:00:02 -0400
-From: "Reviewing Spot Delta Air" <reviewing.spot.delta.air@deltarviews.bond>
+ Sat, 2 Sep 2023 14:10:25 -0400 (envelope-from
+ <ups.appraisal.crew-intel+2Dgvt+2Ddev=lists.freedesktop.org@accesstools.bond>)
+Date: Sat, 2 Sep 2023 14:10:25 -0400
+From: "UPS Appraisal Crew" <ups.appraisal.crew@accesstools.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Participate in our survey and receive a free gift - our way of
- extending gratitude!
+Subject: Finish our survey to be eligible for a complimentary gift - a sincere
+ thank you from us.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_16_567695945.1693672727042"
-Message-ID: <0.0.0.A6.1D9DDC74C0B28A0.1625BA@mail.deltarviews.bond>
+ boundary="----=_Part_310_5517685.1693678216598"
+Message-ID: <0.0.0.F4.1D9DDC8BF63D71A.61CA9F@mail.accesstools.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_16_567695945.1693672727042
+------=_Part_310_5517685.1693678216598
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,68 +62,91 @@ Content-Transfer-Encoding: 7bit
 <html>
  <head> 
   <meta charset="UTF-8" /> 
-  <title>besto mild</title> 
+  <title>wake up we need to make</title> 
  </head> 
  <body> 
-  <div align="center" style="background-color: #EEEEEE; height: 100%; padding: 15px">
-   &nbsp; 
-   <div align="center" style="max-width: 559px; background-color: #fff; border-top: solid 2px  #0C3367; padding: 15px">
-    <br /> 
-    <a href="http://www.deltarviews.bond/noble-dissidents/b345V23V95OT86Y11g5cf0r16e4m36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQIRoQ97MHJ_10w6zPwDql"><img alt="1654" src="http://www.deltarviews.bond/noble-dissidents/1j25E239Y5h7kay11a5cf2B16e4k36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQIRoQ97w10nVJG6lzLkwD" style="max-width: 256px; " /></a>
-    <br /> &nbsp; 
-    <div align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 20px">
-     We want to express our gratitude for choosing Southwest for your travel needs. Your loyalty and support mean a lot to us, and we genuinely appreciate the opportunity to serve you.     </div> 
-    <br /> 
-    <br /> 
-    <a href="http://www.deltarviews.bond/noble-dissidents/b345V23V95OT86Y11g5cf0r16e4m36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQIRoQ97MHJ_10w6zPwDql" target="_blank"><img alt="Newsletter" src="http://www.deltarviews.bond/eb76kI239l5w7sYa13v5cYTf3m16e4N36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQIRoQ97fY1Yhh05c3NwD/nesting-soaked" style="border:0; display:block; outline:none; text-decoration:none; height:auto; width:100%; font-size:13px; " width="100%" /> </a> 
-    <div align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 20px"> 
-     <p>In our ongoing commitment to deliver exceptional experiences, we cordially invite you to participate in a brief survey regarding your recent flight and overall experience with Delta.<br /> <br /> Your feedback holds immense value, and as a token of our appreciation for your time and input, we would like to offer you a special gesture.<br /> <br /> <strong>To access the survey, kindly click on the link provided below. The survey will only take a few minutes to complete, and rest assured, your responses will remain completely confidential.</strong></p> 
-     <br /> 
-     <strong><a class="survey-link" href="http://www.deltarviews.bond/noble-dissidents/b345V23V95OT86Y11g5cf0r16e4m36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQIRoQ97MHJ_10w6zPwDql" style="color: #fff; text-decoration: none; font-size: 22px; background-color: #0C3367; padding: 12px; text-align: center">Start The Survey Here &gt; &gt; </a> </strong>
-     <br /> 
-     <br /> &nbsp;
-    </div> 
-    <strong> </strong>
-   </div> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <p align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><strong><span style="font-size: 15px; font-weight: normal">Thank you for your continued support and for taking the time to fill out our survey.<br /> <br /> We look forward to hearing from you soon.<br /> Best regards, </span></strong></p> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <div>
-    <strong>&nbsp; </strong>
-   </div> 
-   <div>
-    <strong>&nbsp; </strong>
-   </div> 
-   <p align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-weight: normal; font-size: 12px"><strong>Anyway you can leave <a href="http://www.deltarviews.bond/plentifully-sandwiches/7ec6IY23l95Gq86J11o5cf1h16e4S36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQIRoQ96eA1g0i6MMTwAD">here</a><br /> US 10010 126 E 23rd St New York, NY,</strong></p> 
-   <div>
-    <strong>&nbsp; </strong>
-   </div> 
-   <div>
-    <strong>&nbsp; </strong>
-   </div> 
-   <div>
-    <strong>&nbsp; </strong>
-   </div> 
-   <div>
-    <strong>&nbsp; </strong>
-   </div> 
-   <div>
-    <strong>&nbsp; </strong>
-   </div> 
-   <div>
-    <strong>&nbsp; </strong>
-   </div> 
-  </div>   
- <img src="http://www.deltarviews.bond/neighboring-hormones/9545AL2395yOK8512z5cfY4j16e4w36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQIRoQ97GL1II0q6u2w@2D" alt=""/></body>
+  <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table border="0" cellpadding="2" cellspacing="1" style=" max-width: 578px" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center"><img alt="reoil" src="http://www.accesstools.bond/blazing-preferable/dc86E2v3I95M7aIs12Q5cf7wL16e5N36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQJRoQd6q1MD0p5rTWwD" width="400" /></td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <span style="display: block; padding: 0px; font-size: 10px">&nbsp;</span> 
+  <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table border="0" cellpadding="2" cellspacing="1" style=" max-width: 578px" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <div al="" align="center" style="font-size: 45pt; color: #351C15; font-weight: bolder; padding-top: 0px; margin-top: 0; margin: 0; font-family: arial; color: #3C431E; border-bottom: double #3F401D 6px">
+           UPS
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <span style="display: block; padding: 0px; font-size: 10px">&nbsp;</span> 
+  <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table border="0" cellpadding="2" cellspacing="1" style=" max-width: 578px" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center" style="padding: 12px"> 
+          <div al="" align="center" style="font-size: 15pt; color: #351C15; font-weight: normal; padding-top: 0px; margin-top: 0; margin: 0; font-family: arial; color: #3C431E">
+           We wanted to take a moment to thank you for choosing UPS for your shipping needs. Your loyalty and support mean the world, and we are grateful for the opportunity to serve you.            <br /> 
+           <br /> 
+           <br /> 
+           <a href="http://www.accesstools.bond/reorders-psychosocial/eb85pg2395ttj8613z5crfB5P16e5v36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQJRoQd6CB10VS6IkLwDA"><img alt="doremy" src="http://www.accesstools.bond/7555n23P95fI7na13B5Tvcf8s16e5Q36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQJRoQd7I1sK0vL5zOLwD/unreliable-epitaxial" width="70%" /></a>
+           <br /> &nbsp; 
+           <div style="background-color: #eee; padding: 12px">
+            As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with 
+            <strong>UPS</strong>.             <br /> &nbsp; 
+            <div style="vertical-align: top; text-align: center">
+             <img alt="turnback" src="http://www.accesstools.bond/episcopal-supersedes/5b25L23k95Lxy7a11C5cf9t16e5i36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQJRoQd6wL1i0l5B@zwD" style="display: inline-block; margin-right: 15px" width="80" /> 
+             <a href="http://www.accesstools.bond/reorders-psychosocial/eb85pg2395ttj8613z5crfB5P16e5v36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQJRoQd6CB10VS6IkLwDA" style="text-decoration: none; color: #351C15; display: inline-block; vertical-align: top; margin-top: 12px"><strong>For completing the survey,<br /> you could receive a $100 Gift!</strong></a>
+            </div> &nbsp; 
+            <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</td> 
+              </tr> 
+             </tbody> 
+            </table> &nbsp; 
+            <div style="font-size: 22px; 
+			letter-spacing: 1px; 
+			color: #fff; 
+			text-decoration: none; 
+			border-radius: 3px; 
+			padding: 12px 28px; 
+			display: block; 
+			background-color: #3C431E; text-decoration: none ">
+             <a href="http://www.accesstools.bond/reorders-psychosocial/eb85pg2395ttj8613z5crfB5P16e5v36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQJRoQd6CB10VS6IkLwDA" style="text-decoration: none">Start The Survey Here &gt; &gt;</a>
+            </div> 
+           </div> &nbsp; 
+           <p><small>Thank you again for your support.<br /> We look forward to hearing from you soon.<br /> Warm regards,</small></p> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> <br /> <br /> <br /> <br /> <br /> &nbsp; <p style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Lets just get you out of <a href="http://www.accesstools.bond/thats-sputtered/e044A2395Gi8G611I5cf6P16e5q36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQJRoQd5iMX106zJlwDB">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.accesstools.bond/episcopal-supersedes/53a6F23Ym95D85hP13r5_cfaNh16e5x36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQJRoQd7gI1r0UH6F0wDU1" alt=""/></body>
 </html>
 
-------=_Part_16_567695945.1693672727042--
+------=_Part_310_5517685.1693678216598--
 
