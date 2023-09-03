@@ -1,45 +1,65 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5D03790D93
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 Sep 2023 20:48:06 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id DA14F790D6D
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 Sep 2023 20:46:23 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 137A010E06B;
-	Sun,  3 Sep 2023 18:48:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AF05210E15B;
+	Sun,  3 Sep 2023 18:46:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 03 Sep 2023 18:48:01 UTC
-Received: from mail.flightinfodlta.bond (unknown [193.17.5.144])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4797210E06B
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  3 Sep 2023 18:48:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=flightinfodlta.bond; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=delta-flight-information@flightinfodlta.bond; 
- bh=7Rid1BmrTsKMA98EoFQbzSMw8ls=;
- b=QvsyZduUJb8tbG4cVZJun69z9qMoceAbd169LIYZRXr2g41haUXq/LWoNTA6TFP4BmKfJ2xZ5PtI
- oblqMcuJ89VpKeE6YiEIvNXTsthQhkMYLuOZORW8/LrJ2D7tlzTmv7H/BW1AKySb80zZcIxcpvcU
- x9Ls4c0hQU1zyYIwgms=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flightinfodlta.bond;
- b=jWjNUELFxnc2c1eiicLyXpMxvnAolO1vzR3nToZWW1mZBU0wrEJEe/sRAX3Z5tV4fNJypK0hH2mH
- VNYsaEQi5nHWfD78jTCH0cTG24WLd1IXlIbVAyMsKmGSZqYKk13XttZE4oS2FnivQAcPWfSbzTQg
- gLEMzL6LkoDwBHU6rZE=;
-Received: by mail.flightinfodlta.bond id hujae20001gb for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 3 Sep 2023 14:39:36 -0400 (envelope-from
- <delta-flight-information-intel+2Dgvt+2Ddev=lists.freedesktop.org@flightinfodlta.bond>)
-Date: Sun, 3 Sep 2023 14:39:36 -0400
-From: "Delta Flight Information" <delta-flight-information@flightinfodlta.bond>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Embrace the season with a free flight to the destination that calls
- to you!
+Received: from mail-io1-xd33.google.com (mail-io1-xd33.google.com
+ [IPv6:2607:f8b0:4864:20::d33])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C45FD10E008;
+ Sun,  3 Sep 2023 18:46:12 +0000 (UTC)
+Received: by mail-io1-xd33.google.com with SMTP id
+ ca18e2360f4ac-79277cfc73bso35341839f.1; 
+ Sun, 03 Sep 2023 11:46:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1693766772; x=1694371572; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=pEXJ5N1twmgreqGXVpqoU0bzKcH7UckG6V7g/a9C+IE=;
+ b=UbCUg/UKrx/zZoN1HVuVz0h5ab40dBXHiFdnFvKO5LXKQyY0Vfn+RpYfYa9jxrIew2
+ dKSvegOzeHmYGQePaQxAWhQ0omH22a9+gjRxu2HKHrBbAkeJa4UnByRmkdSIjEw0QTpb
+ 8JQgc/s7ssm+xBODRV3j5EEgHbnpq6/279tSIPkCK8A/QlXqiX35lozPAOscTsKsQlj6
+ 0CsxrExN+09JyrlP6+IwEfPAlGZD+pJtkyG4cPb+s6qCrLTuGskmb5FU/t+mQS8lPI9C
+ DOpRviB2PQxOWMxx28YiNg8E5ovHlG4l4MPYYyFwcuQdVxtX4vZYMOfBxBIFTtjGg1v4
+ tpYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1693766772; x=1694371572;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pEXJ5N1twmgreqGXVpqoU0bzKcH7UckG6V7g/a9C+IE=;
+ b=fpqtDIbVhzf4GqhuF7UfumJi9OuZycIXWu6MerD6prmZdhzAPX5XI0leGDCVOQg+RV
+ agYr1Fzaj5TAqSXZ6BQkIrQouIn35Od+aAnGJAhB3tGpVY2IknEtE1zlCWcUKjttBDS2
+ aSnEsP+WqeBrnm1fOs/Nvjg9nf7WzgNucUyYYXxaUqRPHiPn/But7WrNUk61+Ttjy02h
+ qonwsDOgaiqWHpk8BNjfv2KnJC34fd8uDRqsUOB7WB5oJUB24zIDutf5cYeMe7+txJBm
+ d3elNfG03wk1cEvIcgpbQ5vmZsaKnYP4ShzQm6QWttdT6xj2tKT1AtPOi/l6G8w2KF3A
+ K2Mw==
+X-Gm-Message-State: AOJu0YzxVkrKl4V21xSlE7iX/8T05qyX4sDEvMWTbijbcxpIaBQWkf9+
+ d5EWtrB3cjCk2ejT11+p4Zg=
+X-Google-Smtp-Source: AGHT+IFiChi/4PzbAqpMAN3czSGm3lxzSyeCkbTKkttXeYEpPz3KZqOEBt/2qm3z8FebuiPCmvuINg==
+X-Received: by 2002:a05:6602:2252:b0:791:1e87:b47e with SMTP id
+ o18-20020a056602225200b007911e87b47emr8505184ioo.15.1693766771898; 
+ Sun, 03 Sep 2023 11:46:11 -0700 (PDT)
+Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
+ by smtp.googlemail.com with ESMTPSA id
+ u9-20020a02cb89000000b0042b37dda71asm2519968jap.136.2023.09.03.11.46.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 03 Sep 2023 11:46:11 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Subject: [PATCH v2 0/6] drm_dbg: add trailing newlines where missing
+Date: Sun,  3 Sep 2023 12:45:57 -0600
+Message-ID: <20230903184607.272198-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_49_377510996.1693766366244"
-Message-ID: <0.0.0.32.1D9DE95FD15DEA0.164C48@mail.flightinfodlta.bond>
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,95 +72,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch,
+ Jim Cromie <jim.cromie@gmail.com>, robdclark@gmail.com, seanpaul@chromium.org,
+ daniel@ffwll.ch, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_49_377510996.1693766366244
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+By at least strong convention, a print-buffer's trailing newline says
+"message complete, send it".  The exception (no TNL, followed by a call
+to pr_cont) proves the general rule.
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
- <head> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>feel coming</title> 
- </head> 
- <body> 
-  <blockquote style="margin: auto; border: none; background-color: #fff; padding: 15px; max-width: 588px"> 
-   <p align="center"><span style="display: block"><a href="http://www.flightinfodlta.bond/Zionism-solemn/ep46u2R3s95M8QQ612K5Td20y16ebC36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQuRoRo6O1XRV06RlWJwD"><img alt="1654" src="http://www.flightinfodlta.bond/congested-mobility/b166CBh2395b7kha13jH5d22zJ16ebZ36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQuRoRo7n1C_v0o5dkAwD" style="max-width: 256px; " /> </a></span></p> 
-   <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td align="center" style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 20px">We want to thank you for choosing Delta for your travel needs. Your loyalty and support mean a lot to us, and we genuinely appreciate the chance to assist you.</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> &nbsp; 
-   <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td><a href="http://www.flightinfodlta.bond/Zionism-solemn/ep46u2R3s95M8QQ612K5Td20y16ebC36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQuRoRo6O1XRV06RlWJwD" target="_blank"><img alt="Newsletter" src="http://www.flightinfodlta.bond/remark-scrutinize/6665zC2395hX7Wa12J5d2V3W16ebv36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQuRoRo7zVU1n0B6pl1MwD" style="border:0; display:block; outline:none; text-decoration:none; height:auto; width:100%; font-size:13px; " width="100%" /> </a></td> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td style="border-radius: 6px; border-style: dashed; border-width: 1px; padding: 12px; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; text-align: center; font-size: 20px; border-color: #ddd">As part of our ongoing commitment to providing excellent experiences, we invite you to take a short survey about your recent flight and overall experience with Delta.<br /> <br /> <strong>Your feedback is very important to us, and to show our appreciation for your time and input, we have a special offer for you.</strong><br /> <br /> <strong style="display: block; background-color: #81AAE0; padding: 15px; color: #fff">For completing the survey,<br /> you could receive a $100 Gift!</strong> 
-       <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td>&nbsp;</td> 
-          <td>To access the survey, please click on the link below. The survey will only take a few minutes to complete, and your responses will be kept confidential.</td> 
-          <td>&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> &nbsp; 
-       <div style="
-	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
-	background-color:#007dc1;
-	border-radius:8px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	padding:13px 32px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #154682;">
-        <a href="http://www.flightinfodlta.bond/Zionism-solemn/ep46u2R3s95M8QQ612K5Td20y16ebC36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQuRoRo6O1XRV06RlWJwD" style="color: #fff; text-decoration: none">Start The Survey Here &gt; &gt;</a>
-       </div> <br /> &nbsp;</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td> <p style="text-align: center; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; margin-top: 125px">you can leave us with regret <a href="http://www.flightinfodlta.bond/7cd6kD23q95fh8l612A5nd21r16ebj36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQuRoRo7Hk10MIW5rWJwD/fractures-rushes">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </blockquote>   
- <img src="http://www.flightinfodlta.bond/fractures-rushes/5ee5P2p395Q85PS11n5d24t16ebK36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQuRoRo5Yh1H05QyPwD" alt=""/></body>
-</html>
+Most DRM.debug calls already comport with this rule/convention:
+207 DRM_DEV_DEBUG, 1288 drm_dbg.  Clean up the remainders, in
+maintainer sized chunks.
 
-------=_Part_49_377510996.1693766366244--
+V1 got Fi.CI.IGT failure, on 2 Possible regressions:
+
+ igt@api_intel_bb@render@render-y-1024:
+  shard-snb: NOTRUN -> ABORT +1 similar issue
+
+ igt@sysfs_timeslice_duration@timeout@ccs0:
+  shard-dg2: PASS -> TIMEOUT
+
+Neither have any logs bearing anything connected with drm.debug output.
+
+V2 tries again.
+
+  and fixes checkpatch warnings, by reusing 1st commit-msg.
+
+  also fix a ccflags-y spelling error in drm Makefile.
+
+  commits upon
+  e2884fe84a83 (drm-misc/for-linux-next-fixes, drm-misc/drm-misc-fixes) drm/amd: \
+  	       Make fence wait in suballocator uninterruptible
+
+Jim Cromie (6):
+  drm_dbg: add trailing newlines to msgs
+  drm_dbg: add trailing newlines to msgs
+  drm_dbg: add trailing newlines to msgs
+  drm_dbg: add trailing newlines to msgs
+  drm_dbg: add trailing newlines to msgs
+  drm: use correct ccflags-y syntax
+
+ drivers/gpu/drm/Makefile                       |  3 ++-
+ drivers/gpu/drm/drm_connector.c                |  4 +++-
+ drivers/gpu/drm/i915/display/intel_ddi.c       |  2 +-
+ drivers/gpu/drm/i915/gem/i915_gem_execbuffer.c |  4 ++--
+ drivers/gpu/drm/kmb/kmb_crtc.c                 | 10 +++++-----
+ drivers/gpu/drm/kmb/kmb_plane.c                |  6 +++---
+ drivers/gpu/drm/msm/msm_fb.c                   |  6 +++---
+ drivers/gpu/drm/vc4/vc4_crtc.c                 |  4 ++--
+ 8 files changed, 21 insertions(+), 18 deletions(-)
+
+-- 
+2.41.0
 
