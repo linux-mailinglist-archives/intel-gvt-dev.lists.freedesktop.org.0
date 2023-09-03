@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CD5B790CF2
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 Sep 2023 18:51:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E14E790D3F
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 Sep 2023 19:28:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 32CA510E059;
-	Sun,  3 Sep 2023 16:50:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5495810E178;
+	Sun,  3 Sep 2023 17:28:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Sun, 03 Sep 2023 16:50:55 UTC
-Received: from mail.oreillyautos.bond (unknown [193.17.5.190])
- by gabe.freedesktop.org (Postfix) with ESMTP id 51B8910E0E6
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sun, 03 Sep 2023 17:28:33 UTC
+Received: from mail.ontoolslows.bond (unknown [193.17.5.178])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4572D10E17B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  3 Sep 2023 16:50:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=oreillyautos.bond;
+ Sun,  3 Sep 2023 17:28:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ontoolslows.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=reviewers_spot_oreillys@oreillyautos.bond; 
- bh=82LdY/8/zB5jcDd9ZyD6qjSaxXo=;
- b=u1bnwIw/fZygXZbVUiPMoUMOVCf8ltDWOfSnuP2IMRvE4NgInDn9bQ+ZAS22/Kf7Xzgh77UXdtgy
- Exkal/AkbCJyUwn9uIYiOLo02+PXheDhIaCHWwKMo2uZp4pEUCZ50i2Z8EqGMEO5OYa/1XCeiF5X
- S0jL1aTeNnek6SQWXV4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=oreillyautos.bond; 
- b=uz5LGSQNOPAVCCuqVI3HhwrYAR9qEEKWUvsHBxP8QvkcHRlL8yyB+1NTTYXJiRi/sz7kY3HCpUWo
- KBYLnrcXcjRuamSgvln7PotSAK9RfohTMnrw9OQ/6PDJqQbW0V05WU+wE9Ri0JD2+hH3RpOkcM9E
- 2lEWit80CMReFeNnk10=;
-Received: by mail.oreillyautos.bond id huismu0001go for
+ i=all.about.your.lowes.store.experience@ontoolslows.bond; 
+ bh=iODbKnApy9ykmihcVfhha4vq4mo=;
+ b=X6s4HGUj2qtQH1pPYhaQnjAVtWV79VymR/Y/7UluJsE/CPFRHI3ys90pDpikGsmWIUbso8czTbNM
+ Z31c1QYsUX3sbrwiRSfA6mGRAsxgmNr/yWhpAWOFsDdMn51NsWUGLc7v2uRQLI7/LgKakq+UU2wd
+ oCJTuF91EoY9skYP0AY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ontoolslows.bond;
+ b=PYw64/7hfcri3xUH2Z/s9gZ/NIluIwz1mp/PQhja12so5hvYRl+IYtoL+xS8KvKjbTHMZ20SSLHL
+ 9FXWJiCTOsIBkDqnHE0T02yNM3rQletfVeiR162Jv4x4TjWksJSkkpez8loGN3cucHCeLJqR1l5u
+ A00sFiDUaNqtXPciJXc=;
+Received: by mail.ontoolslows.bond id hujake0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 3 Sep 2023 12:43:46 -0400 (envelope-from
- <reviewers_spot_oreillys-intel+2Dgvt+2Ddev=lists.freedesktop.org@oreillyautos.bond>)
-Date: Sun, 3 Sep 2023 12:43:46 -0400
-From: "Reviewers Spot OReillys" <reviewers_spot_oreillys@oreillyautos.bond>
+ Sun, 3 Sep 2023 14:42:19 -0400 (envelope-from
+ <all.about.your.lowes.store.experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@ontoolslows.bond>)
+Date: Sun, 3 Sep 2023 14:42:19 -0400
+From: "All About Your Lowes Store Experience"
+ <all.about.your.lowes.store.experience@ontoolslows.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Secure a brand-new Stanley Tool set,
- your input is all we need - this offer wraps up today.
+Subject: Your Contribution Is Appreciated: Acquire a brand new Tool set - this
+ offer concludes today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_337_247786714.1693759419865"
-Message-ID: <0.0.0.26.1D9DE85CEB27E3E.2A3FC5@mail.oreillyautos.bond>
+ boundary="----=_Part_277_1845480742.1693761653844"
+Message-ID: <0.0.0.1E.1D9DE965E8C2306.6767C@mail.ontoolslows.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,42 +55,92 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_337_247786714.1693759419865
+------=_Part_277_1845480742.1693761653844
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
  <head> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>LONG TIME</title> 
+  <meta charset="UTF-8" /> 
+  <title>number1</title> 
  </head> 
  <body> 
-  <center>
-   <a href="http://www.oreillyautos.bond/refrain-dormitories/5764a2395l86tZ13j5DdX11Q16e9r36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQYRoQK7YCOA10W5SAWwD"><img alt="" src="http://www.oreillyautos.bond/unselfishly-unbroken/bca4i2395hrJ7a13U5dJO13H16e9k36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQYRoQK5Rs10w5QqzwD" width="250" /></a>
-  </center> 
-  <p style="margin-left: auto; margin-right: auto; text-align: center; max-width: 570px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 22px; padding: 12px; background-color: #eee"><strong>O'reilly Final Reminder</strong></p> 
-  <p align="center" style="max-width: 570px; margin:auto; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 20px; margin-bottom: 0">Get ready for some great news! O' reilly is presenting you with a <strong>Stanley Tool Set</strong> to use at any of our outlets. Don't hesitate! You have until September 3rd to collect your thrilling items.<br /> <br /> <a href="http://www.oreillyautos.bond/refrain-dormitories/5764a2395l86tZ13j5DdX11Q16e9r36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQYRoQK7YCOA10W5SAWwD" style="color: #fff; text-decoration: none; display: block; background-color: #2DA24C; max-width: 444px; margin: auto; margin-top: 0; padding: 15px"><span align="center" style="padding: 5px; border-radius: 5px; font-size: 22px; color: #fff; text-decoration: none; font-family:  'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'; margin: 0; display: block">Begin Here Now &raquo;</s
- pan></a> <a href="http://www.oreillyautos.bond/refrain-dormitories/5764a2395l86tZ13j5DdX11Q16e9r36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQYRoQK7YCOA10W5SAWwD"><img alt="" src="http://www.oreillyautos.bond/refrain-dormitories/9364k2395Mmj7a11O5d14z16e9A36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQYRoQK6QL10og6dlUpwD" width="245" /></a></p> &nbsp; 
-  <hr color="#2DA24C" width="150" />&nbsp; 
-  <p align="center" style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; background-color: #EEEEEE; padding: 12px; max-width: 570px; margin: auto">Thank you in advance, The O'reilly Auto Parts Survey Team.</p> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <blockquote style="text-align: center; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'">
-   you can leave with sadness 
-   <a href="http://www.oreillyautos.bond/a256L23ky95g86vU12l5dT12j16e9U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQYRoQK7FAn1vK06tXUOwD/unselfishly-unbroken">here</a>
-   <br /> US 10010 126 E 23rd St New York, NY,
-  </blockquote>   
- <img src="http://www.oreillyautos.bond/monopolized-lined/a445X2m395Qh8I511W5d15n16e9v36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQYRoQK6pD10Dn6D3z3wD" alt=""/></body>
+  <table align="center" bgcolor="#eee" border="0" cellpadding="2" cellspacing="4" style="border-radius: 8px" width="555"> 
+   <tbody> 
+    <tr> 
+     <td bgcolor="#fff" style="border-radius: 3px"> 
+      <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td> <p align="center"><a href="http://www.ontoolslows.bond/e215r239O5z8u6k12n5dm16u16eaC36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQBRoRm7AZ1BO0r6nA3wDy/autocratically-ignored"><img alt="3123" src="http://www.ontoolslows.bond/d6d4E2395u7vaN13H5JJd18x16eaw36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQBRoRm6s1U0GI6hjqwDO/Greentree-plurality" style="width: 241px; height: 78px; " /> </a></p> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" style="font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'; font-size: 24px">Lowe's Final Reminder</td> 
+    </tr> 
+    <tr> 
+     <td style="background-color: #fff; border-radius: 3px; padding: 15px; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'; font-size: 22px">Exciting news! Lowe's is offering a <strong>Stanley Tool Set</strong> for you to use at any of our branches. Don' t let this opportunity pass you by! You have until September 1st to claim your fantastic items.<br /> <br /> <a href="http://www.ontoolslows.bond/e215r239O5z8u6k12n5dm16u16eaC36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQBRoRm7AZ1BO0r6nA3wDy/autocratically-ignored"><img alt="res" src="http://www.ontoolslows.bond/amusingly-stoles/cd84L2395EAP7a12w5Cd19V16eaw36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQBRoRm7j1g0KAH6hXTwD1" style="max-width: 250px; width: 321px; height: 206px; " /></a></td> 
+    </tr> 
+    <tr> 
+     <td bgcolor="#2743A5" style="border-radius: 5px"> <p align="center" style="padding: 5px; border-radius: 5px; font-size: 22px; color: #fff; text-decoration: none; font-family:  'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'"><a href="http://www.ontoolslows.bond/e215r239O5z8u6k12n5dm16u16eaC36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQBRoRm7AZ1BO0r6nA3wDy/autocratically-ignored" style="color: #fff; text-decoration: none; display: block">Begin Here Now &raquo;</a></p> </td> 
+    </tr> 
+    <tr> 
+     <td> <h3 align="center" style="font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'">Thank you in advance, The Lowe' s Team.</h3> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <p>&nbsp;</p> 
+  <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td> 
+          <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td> 
+              <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td> 
+                      <table border="0" cellpadding="2" cellspacing="1" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center" style="font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro', 'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif'">its your time to leave? do it <a href="http://www.ontoolslows.bond/tenant-dissatisfaction/8285J239O5B8P6I11h5d17Q16eat36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQBRoRm5C1x0L5bPBwD">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.ontoolslows.bond/c9b5t23Z95C8S5Y12n5d1aHS16eaC36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQBRoRm7BMpY1Q06WLwTPD/underline-hotter" alt=""/></body>
 </html>
 
-------=_Part_337_247786714.1693759419865--
+------=_Part_277_1845480742.1693761653844--
 
