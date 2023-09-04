@@ -2,32 +2,32 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 560A0791BA6
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Sep 2023 18:32:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE252791BB1
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Sep 2023 18:38:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 16F8A10E3A7;
-	Mon,  4 Sep 2023 16:32:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9D6C010E152;
+	Mon,  4 Sep 2023 16:38:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 589 seconds by postgrey-1.36 at gabe;
- Mon, 04 Sep 2023 16:32:19 UTC
+X-Greylist: delayed 392 seconds by postgrey-1.36 at gabe;
+ Mon, 04 Sep 2023 16:38:51 UTC
 Received: from panel.govhost.st (unknown [5.150.254.174])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6629A10E3A5;
- Mon,  4 Sep 2023 16:32:19 +0000 (UTC)
+ by gabe.freedesktop.org (Postfix) with ESMTPS id DB1BD10E152;
+ Mon,  4 Sep 2023 16:38:51 +0000 (UTC)
 Received: from [127.0.0.1] (helo=minsaude.gov.st)
  by panel.govhost.st with esmtp (Exim 4.92.3)
  (envelope-from <lemba@minsaude.gov.st>)
- id 1qdCLg-000KAe-F6; Mon, 04 Sep 2023 19:22:48 +0300
+ id 1qdCSW-000KnT-Tk; Mon, 04 Sep 2023 19:29:52 +0300
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8;
  format=flowed
 Content-Transfer-Encoding: 7bit
-Date: Mon, 04 Sep 2023 09:22:47 -0700
+Date: Mon, 04 Sep 2023 09:29:52 -0700
 From: "From the desk of Mr.Udoo K.Banney  UBA Bank " <lemba@minsaude.gov.st>
 To: undisclosed-recipients:;
 Subject: Attention:Email Owner
 Mail-Reply-To: ozudo00@gmail.com
-Message-ID: <c72a2db2d9f8662c175656ed706e24e3@minsaude.gov.st>
+Message-ID: <0b25a4cd23a051b8c0af67519fd64ae4@minsaude.gov.st>
 X-Sender: lemba@minsaude.gov.st
 User-Agent: Roundcube Webmail/0.9.5
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
