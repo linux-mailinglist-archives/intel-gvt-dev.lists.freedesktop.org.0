@@ -2,44 +2,57 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66453793042
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Sep 2023 22:47:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D3FE879320F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Sep 2023 00:42:11 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 346BA10E51E;
-	Tue,  5 Sep 2023 20:47:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9940410E321;
+	Tue,  5 Sep 2023 22:42:10 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 05 Sep 2023 20:47:33 UTC
-Received: from mail.liketoollwes.live (unknown [193.17.5.184])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3A62010E514
+Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com
+ [IPv6:2607:f8b0:4864:20::1035])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 42C2110E529
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  5 Sep 2023 20:47:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=liketoollwes.live;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=essential_lowes_store_details@liketoollwes.live; 
- bh=esJauP7O6pfZZSaEnhAo2zEbku0=;
- b=Uk4pix2wYJrC9p3IL47ij2AoqJa6dw7OLiMCXcIeKHb6V2wKly6VEywc7e8uf4jhkWBKjFvHG0V5
- fm+puLg8QtaAHZdPbk9ytzZa5A1KoioKE/Lo42FKuvOsbI9FHAhAxbE5ilCtkzcQMmQyRt/e5Guo
- fIzsmM1MuME0SLfyztQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=liketoollwes.live; 
- b=hwcOG/FMGf9Z9cEu+9bmAJdIHxJs+JErC4/KHgMmzpLlUCMD9P9HbsC7M4KBWyHgf2KrFvbf+WxJ
- Gh0pfrOKWUBNwFQ74RRD9H6m8UTeUh9bnenaBBLXxAi3AWAiKQbY7mFA4ihWtRIHmlqPTf8D5Vb9
- T1AymP68/QYfBZIAAJQ=;
-Received: by mail.liketoollwes.live id huu9ua0001gt for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 5 Sep 2023 16:39:45 -0400 (envelope-from
- <essential_lowes_store_details-intel+2Dgvt+2Ddev=lists.freedesktop.org@liketoollwes.live>)
-Date: Tue, 5 Sep 2023 16:39:45 -0400
-From: "Essential Lowes Store Details"
- <essential_lowes_store_details@liketoollwes.live>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: There's a special Kobalt Tool set available for you - share your
- insights to receive it.
+ Tue,  5 Sep 2023 22:42:08 +0000 (UTC)
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-26f6b2c8e80so2176346a91.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 05 Sep 2023 15:42:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1693953728; x=1694558528; darn=lists.freedesktop.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=D8F/kqBZ5nYikJJKkCpjCG8ch9sWe29Nh+xZaxYIfkw=;
+ b=Y41k6x2byG0DY1z+sTAbiR9KUZODLDsdZgucFfTMhfAZa9KFBJJrrefgG0WqR0JUtz
+ e5YRq9fIMWcbUuNrqcs+VkpdYHdFrDl37rluneAoqTYG0qnzxTxrHmhfr0M0mrD3nRfe
+ pzsPPoKVmdZBKMw6Ul00uOgsOicDr+8XKS1rBLp6ffVuIq4XZjQQuGf314LEw5ojeqme
+ oLFINHhuRYeoADtNqqIz2MO4/OVRLK4Bmnwj86I2YD8fElwyKQAoI2NB6OnDF3Qkoopc
+ 4+SaxcqZNSg9C9Wm+wtfiD3rgQVGibTvgTfuoJiUm3JiDzNvZ1BcqJhQwBgV8Dck4Yd0
+ BKWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1693953728; x=1694558528;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=D8F/kqBZ5nYikJJKkCpjCG8ch9sWe29Nh+xZaxYIfkw=;
+ b=UzrmoywMjR7MlZ9kphRSvOnqAiiNe5Qokxlo5UhOCuWbLl/ERfikwFHClHMFZyYDOy
+ uv838LqCtPU2uc1PH4pYfenzYtGrBt2yxDWRg3TonbSWR4/DFfnKPkF32jHm7UCzMxXW
+ MEtIemjhslLe0YnecF3w8cMSMncEPzmyS2yTlDFl60QqMhpS9tpxi/AqU3CSBC2UEiq2
+ R6VkxANPjInxJ3/anaTimW4oYH13CCQ1cLeG5RXSluE9EcOjbnffF2/zMbt+qomey0EM
+ ubaTk9wuGjTtInFAodi9r8GEeDyM6Q0ocwvNBR/P/WsjzvuXnY/ByXThTsAsmfsRsq+k
+ 4/zA==
+X-Gm-Message-State: AOJu0YzlcqNmyhsay2u69pGFlNsDJPNLqW/EupoRSOsSfX8DgJUgcDdZ
+ 7n1UxFRz4Y/nd8BFCFD4FDZWBmBeTIr6C2K5krc=
+X-Google-Smtp-Source: AGHT+IGZntTBkHPsViLnxt0e78bm/py5aLUVOjZ6rR8GrOtIbA2EFjfebs7+wSaWsca8lLDPYpJ6KhAdnBNYneqfzJg=
+X-Received: by 2002:a17:90a:17ca:b0:271:c207:b285 with SMTP id
+ q68-20020a17090a17ca00b00271c207b285mr14281340pja.9.1693953727746; Tue, 05
+ Sep 2023 15:42:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_103_1586497941.1693946366746"
-Message-ID: <0.0.0.B.1D9E0391B087BA8.6B5E8C@mail.liketoollwes.live>
+From: CAPTAIN Anne <edward561962@gmail.com>
+Date: Tue, 5 Sep 2023 16:41:56 -0600
+Message-ID: <CAJyP9Kq7ZJROLoRBP9Yhxzh7GBgCP07fa4Goeq3m=4BgGoJc_w@mail.gmail.com>
+Subject: Hello
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000003557a70604a45629"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,171 +68,32 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_103_1586497941.1693946366746
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+--0000000000003557a70604a45629
+Content-Type: text/plain; charset="UTF-8"
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
-  <title>itoite</title> 
-  <style type="text/css">@media only screen and ( max-width: 620px ) {
-    table.body h1 {
-      font-size: 28px !important;
-      margin-bottom: 10px !important;
-    }
-    table.body p,
-    table.body ul,
-    table.body ol,
-    table.body td,
-    table.body span,
-    table.body a {
-      font-size: 16px !important;
-    }
-    table.body .wrapper,
-    table.body .article {
-      padding: 10px !important;
-    }
-    table.body .content {
-      padding: 0 !important;
-    }
-    table.body .container {
-      padding: 0 !important;
-      width: 100% !important;
-    }
-    table.body .main {
-      border-left-width: 0 !important;
-      border-radius: 0 !important;
-      border-right-width: 0 !important;
-    }
-    table.body .img-responsive {
-      width: auto !important;
-      height: auto !important;
-      max-width: 100% !important;
-    }
-  }
-  @media all {
-    .ExternalClass {
-      width: 100%;
-    }
-    .ExternalClass,
-    .ExternalClass p,
-    .ExternalClass span,
-    .ExternalClass font,
-    .ExternalClass td,
-    .ExternalClass div {
-      line-height: 100%;
-    }
-    .apple-link a {
-      color: inherit !important;
-      font-family: inherit !important;
-      font-size: inherit !important;
-      font-weight: inherit !important;
-      line-height: inherit !important;
-      text-decoration: none !important;
-    }
-    #MessageViewBody a {
-      color: inherit;
-      text-decoration: none;
-      font-size: inherit;
-      font-family: inherit;
-      font-weight: inherit;
-      line-height: inherit;
-    }
-  }
-	</style> 
- </head> 
- <body style="background-color: #ffffff; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"> 
-  <table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="body" role="presentation" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ffffff; width: 100%;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td style="font-family: sans-serif; font-size: 0px; vertical-align: top;" valign="top">&nbsp;</td> 
-     <td class="container" style="font-family: sans-serif; font-size: 14px; vertical-align: top; display: block; max-width: 580px; padding: 10px; width: 580px; margin: 0 auto;" valign="top" width="580"> 
-      <div class="content" style="box-sizing: border-box; display: block; margin: 0 auto; max-width: 580px; padding: 10px;">
-       <!-- LOGO --> 
-       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center" style="padding-bottom: 10px; vertical-align: top; text-align: center;" valign="top"><a href="http://www.liketoollwes.live/89f6a2CI395nL8T611k5d4cp16f3o36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQWRoSn5mP1g06glj@wD/ethical-heath" rel="noopener noreferrer" target="_blank"><img alt="logo" class="hero" src="http://www.liketoollwes.live/extrapolated-improvise/c245YO2395s7xGa13f5dV4eTC16f3s36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQWRoSn7cA1QXA05LTwDl" style="width: 250px" width="250" /> </a></td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <table bgcolor="#f2f2f2" class="main" role="presentation" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #f2f2f2; border-radius: 3px; width: 100%;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;" valign="top"> 
-           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center" style="font-family: sans-serif; font-size: 14px; vertical-align: top; font-size: 29px" valign="top"><strong>Your Lowe's Reward Final Reminder</strong> 
-               <table border="0" cellpadding="10" cellspacing="5" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" style="font-size: 19px">We' re thrilled to announce that Lowe' s is giving away a <strong>Kobalt Tool Set!</strong> to spend at any of our locations. Don' t miss out! You have until September 6th to collect your exciting items.</td> 
-                 </tr> 
-                 <tr> 
-                  <td style="padding: 0">&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center"><a href="http://www.liketoollwes.live/89f6a2CI395nL8T611k5d4cp16f3o36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQWRoSn5mP1g06glj@wD/ethical-heath" style="font-size: 22px; font-size: 25px; 
-            font-weight: bold; 
-            text-decoration: none; 
-            color: #ffffff; 
-            background-color: #2743A6; 
-            border: 1px solid #2743A6; 
-            border-radius: 4px; 
-            padding: 9px 20px; 
-            display: inline-block; ">Start Here Now &gt; &gt; </a></td> 
-                 </tr> 
-                </tbody> 
-               </table> </td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <!-- BOTTOM_IMAGE --> 
-       <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center" style="vertical-align: top; font-size: 0px; padding-top: 25px" valign="top"><br /> <br /> <a href="http://www.liketoollwes.live/89f6a2CI395nL8T611k5d4cp16f3o36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQWRoSn5mP1g06glj@wD/ethical-heath"><img alt="stay" src="http://www.liketoollwes.live/a075R23v95Uv7aZ11a5d4fO16f3N36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQWRoSn6eq1z0r5Y@kwD/swordfish-balkanizing" width="350" /></a></td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <!-- FOOTER --> 
-       <div class="footer" style="clear: both; margin-top: 10px; text-align: center; width: 100%;"> 
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="center" class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #333333; font-size: 19px; text-align: center;" valign="top"><em>Thank you in advance, The Lowes Team.</em><br /> <br /> <br /> <br /> <br /> &nbsp; 
-            <table border="0" cellpadding="10" cellspacing="5" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td><br /> <br /> <br /> <br /> <br /> &nbsp; 
-                <table border="0" cellpadding="10" cellspacing="5" style="font-size: 12px" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td><br /> <br /> <br /> as alway you can end this <a href="http://www.liketoollwes.live/Ae36wM23I95mNH8611c5d4dA16f3u36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQWRoSn7Hu1GQ0V6w@wD2L/tablets-brakeman">here</a><br /> US 10010 126 E 23rd St New York, NY,<br /> <br /> <br /> &nbsp;</td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> 
-      </div> </td> 
-     <td style="font-family: sans-serif; font-size: 0px; vertical-align: top;" valign="top">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.liketoollwes.live/bab6C2LL395w8xi511f5d50r16f3k36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQWRoSn7h1FUmm06H@23wD/lightface-locates" alt=""/></body>
-</html>
+.Hello!
 
-------=_Part_103_1586497941.1693946366746--
+I have a confidential proposal deal for you and it will benefit both of us.
+I am CAPTAIN Anne US MARINE.Reply to my private email address or send me
+your email address so that I can forward to you the full detail of the
+proposal. Here is my private email address:{captainanne08@gmail.com}
 
+I await your quick response.
+
+Regards
+CAPTAIN Anne
+US MARINE.
+
+--0000000000003557a70604a45629
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">.Hello!<br><br>I have a confidential proposal deal for you=
+ and it will benefit both of us. I am CAPTAIN Anne US MARINE.Reply to my pr=
+ivate email address or send me your email address so that I can forward to =
+you the full detail of the proposal. Here is my private email <a href=3D"ma=
+ilto:address%3A%7Bcaptainanne08@gmail.com">address:{captainanne08@gmail.com=
+</a>}<br><br>I await your quick response.<br><br>Regards<br>CAPTAIN Anne<br=
+>US MARINE.<br></div>
+
+--0000000000003557a70604a45629--
