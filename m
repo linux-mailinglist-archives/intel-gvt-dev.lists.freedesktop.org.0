@@ -2,57 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3FE879320F
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Sep 2023 00:42:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D78B7940D9
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Sep 2023 17:56:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9940410E321;
-	Tue,  5 Sep 2023 22:42:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 19E0210E6AE;
+	Wed,  6 Sep 2023 15:56:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x1035.google.com (mail-pj1-x1035.google.com
- [IPv6:2607:f8b0:4864:20::1035])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 42C2110E529
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 06 Sep 2023 15:56:28 UTC
+Received: from mail.infoflightdlta.bond (unknown [193.17.5.162])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 48E7510E6A7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  5 Sep 2023 22:42:08 +0000 (UTC)
-Received: by mail-pj1-x1035.google.com with SMTP id
- 98e67ed59e1d1-26f6b2c8e80so2176346a91.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 05 Sep 2023 15:42:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1693953728; x=1694558528; darn=lists.freedesktop.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=D8F/kqBZ5nYikJJKkCpjCG8ch9sWe29Nh+xZaxYIfkw=;
- b=Y41k6x2byG0DY1z+sTAbiR9KUZODLDsdZgucFfTMhfAZa9KFBJJrrefgG0WqR0JUtz
- e5YRq9fIMWcbUuNrqcs+VkpdYHdFrDl37rluneAoqTYG0qnzxTxrHmhfr0M0mrD3nRfe
- pzsPPoKVmdZBKMw6Ul00uOgsOicDr+8XKS1rBLp6ffVuIq4XZjQQuGf314LEw5ojeqme
- oLFINHhuRYeoADtNqqIz2MO4/OVRLK4Bmnwj86I2YD8fElwyKQAoI2NB6OnDF3Qkoopc
- 4+SaxcqZNSg9C9Wm+wtfiD3rgQVGibTvgTfuoJiUm3JiDzNvZ1BcqJhQwBgV8Dck4Yd0
- BKWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693953728; x=1694558528;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=D8F/kqBZ5nYikJJKkCpjCG8ch9sWe29Nh+xZaxYIfkw=;
- b=UzrmoywMjR7MlZ9kphRSvOnqAiiNe5Qokxlo5UhOCuWbLl/ERfikwFHClHMFZyYDOy
- uv838LqCtPU2uc1PH4pYfenzYtGrBt2yxDWRg3TonbSWR4/DFfnKPkF32jHm7UCzMxXW
- MEtIemjhslLe0YnecF3w8cMSMncEPzmyS2yTlDFl60QqMhpS9tpxi/AqU3CSBC2UEiq2
- R6VkxANPjInxJ3/anaTimW4oYH13CCQ1cLeG5RXSluE9EcOjbnffF2/zMbt+qomey0EM
- ubaTk9wuGjTtInFAodi9r8GEeDyM6Q0ocwvNBR/P/WsjzvuXnY/ByXThTsAsmfsRsq+k
- 4/zA==
-X-Gm-Message-State: AOJu0YzlcqNmyhsay2u69pGFlNsDJPNLqW/EupoRSOsSfX8DgJUgcDdZ
- 7n1UxFRz4Y/nd8BFCFD4FDZWBmBeTIr6C2K5krc=
-X-Google-Smtp-Source: AGHT+IGZntTBkHPsViLnxt0e78bm/py5aLUVOjZ6rR8GrOtIbA2EFjfebs7+wSaWsca8lLDPYpJ6KhAdnBNYneqfzJg=
-X-Received: by 2002:a17:90a:17ca:b0:271:c207:b285 with SMTP id
- q68-20020a17090a17ca00b00271c207b285mr14281340pja.9.1693953727746; Tue, 05
- Sep 2023 15:42:07 -0700 (PDT)
+ Wed,  6 Sep 2023 15:56:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=infoflightdlta.bond; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=stay.informed.about.your.delta.flight@infoflightdlta.bond; 
+ bh=oIaMBtptecXvcJOeETcyxRGKxQQ=;
+ b=UPA/2AegQvpbyhtqt+lKeuJq5a7mDcIy2VM4mQ6zFRJAVr/0J2Ogpnk03PyJX1X1ITXaQPWElolf
+ gJzFxgQVhtKDP4U2Yn8NfWSN2oRRCR3vBFr0Ca0P6mOrJHmJuOgX2ijIBi+A+VvkIMeRSNrg/oeo
+ jbXET2eoVk8tPmAko5E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=infoflightdlta.bond;
+ b=gq5OuGS7OU6HNWusH2MyK7WBOmm0fHtslBZ+/ieBZcn5izLfnze2ItKlRN8insW1MR+6r8/lIez5
+ 8Ay545ZiBKQDAWQkTlmFsaY2uxdCCPrZ4Yv3FF4s6bnLRc0S/hRa7+rHeM7fkk4zMOFQbGMvYNub
+ sUk+f4HaAlifxCrWM3k=;
+Received: by mail.infoflightdlta.bond id hv2gio0001g7 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 6 Sep 2023 11:48:23 -0400 (envelope-from
+ <stay.informed.about.your.delta.flight-intel+2Dgvt+2Ddev=lists.freedesktop.org@infoflightdlta.bond>)
+Date: Wed, 6 Sep 2023 11:48:23 -0400
+From: "Stay Informed About Your Delta Flight"
+ <stay.informed.about.your.delta.flight@infoflightdlta.bond>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: The time has come to take flight! Enjoy a complimentary trip to any
+ destination this season, compliments of us!
 MIME-Version: 1.0
-From: CAPTAIN Anne <edward561962@gmail.com>
-Date: Tue, 5 Sep 2023 16:41:56 -0600
-Message-ID: <CAJyP9Kq7ZJROLoRBP9Yhxzh7GBgCP07fa4Goeq3m=4BgGoJc_w@mail.gmail.com>
-Subject: Hello
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000003557a70604a45629"
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_112_565885294.1694015299453"
+Message-ID: <0.0.0.32.1D9E0D9914C170C.966DD@mail.infoflightdlta.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,32 +56,80 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0000000000003557a70604a45629
-Content-Type: text/plain; charset="UTF-8"
+------=_Part_112_565885294.1694015299453
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-.Hello!
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <title>get more for less</title> 
+ </head> 
+ <body> 
+  <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td> 
+          <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td> 
+              <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td> 
+                  <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td> 
+                      <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td> 
+                          <div style="text-align: center; max-width: 588px; margin: auto; padding: 15px; background-color: #fff;">
+                           <a href="http://www.infoflightdlta.bond/7eb5uT2395QyR8613v5d5O1nq16f4j36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQYRoSo7F1LM0ng6S3wDX1/warranted-MacPaint" target="_blank"><img alt="Survey" src="http://www.infoflightdlta.bond/e3f5H239i5QP7Xa12c5d5A3q16f4M36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQYRoSo6nh10uv5SXPwD/polarities-viscounts" style="max-width: 256px;" /> </a> 
+                           <p style="font-family: Arial, sans-serif; font-size: 20px;"><strong>We appreciate your choice to fly with us. Your loyalty is invaluable, and we're here to serve you better.</strong></p> 
+                           <a href="http://www.infoflightdlta.bond/7eb5uT2395QyR8613v5d5O1nq16f4j36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQYRoSo7F1LM0ng6S3wDX1/warranted-MacPaint" target="_blank"> <img alt="Take the Survey" src="http://www.infoflightdlta.bond/1974R2395B7Uao11E5d54r16f4P36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQYRoSo6DHD10s5dWzwD/haplessly-reasoner" style="border: 0; display: block; outline: none; text-decoration: none; width: 100%; font-size: 13px;" /> </a> 
+                           <div style="border-radius: 6px; border: 1px dashed #ddd; padding: 12px; font-family: Arial, sans-serif; text-align: center; font-size: 20px; background-color: #81AAE0; color: #fff;"> 
+                            <p>As part of our commitment to enhancing your experience, we invite you to take a brief survey about your recent flight with us.</p> 
+                            <p>Your feedback is vital to us, and as a token of our appreciation, you have a chance to receive a $100 gift!</p> 
+                            <p>To access the survey, click the link below. Your responses will be confidential.</p> 
+                            <a href="http://www.infoflightdlta.bond/7eb5uT2395QyR8613v5d5O1nq16f4j36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQYRoSo7F1LM0ng6S3wDX1/warranted-MacPaint" style="background-color: #fff; border-radius: 8px; color: #fff; cursor: pointer; display: inline-block; font-size: 20px; font-weight: bold; padding: 13px 32px; text-decoration: none; color:#0C3367 ;">Start The Survey Here &gt;&gt;</a>
+                            <br /> &nbsp;
+                           </div> 
+                           <br /> 
+                           <br /> 
+                           <br /> 
+                           <br /> 
+                           <br /> 
+                           <br /> &nbsp; 
+                           <p style="text-align: center; font-family: Arial, sans-serif; margin-top: 125px;">If you wish to unsubscribe, you can do so <a href="http://www.infoflightdlta.bond/b515g23J95SK8_611z5d52l16f4X36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQYRoSo6e10vYU5wylwD/polarities-viscounts" style="color: #007dc1;">here</a><br /> US 10010, 126 E 23rd St, New York, NY</p> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.infoflightdlta.bond/turquoise-excreting/5d06b239VZ5hnk8511e5d55g16f4m36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQYRoSo7V1h0jRK6PPPpwD" alt=""/></body>
+</html>
 
-I have a confidential proposal deal for you and it will benefit both of us.
-I am CAPTAIN Anne US MARINE.Reply to my private email address or send me
-your email address so that I can forward to you the full detail of the
-proposal. Here is my private email address:{captainanne08@gmail.com}
+------=_Part_112_565885294.1694015299453--
 
-I await your quick response.
-
-Regards
-CAPTAIN Anne
-US MARINE.
-
---0000000000003557a70604a45629
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">.Hello!<br><br>I have a confidential proposal deal for you=
- and it will benefit both of us. I am CAPTAIN Anne US MARINE.Reply to my pr=
-ivate email address or send me your email address so that I can forward to =
-you the full detail of the proposal. Here is my private email <a href=3D"ma=
-ilto:address%3A%7Bcaptainanne08@gmail.com">address:{captainanne08@gmail.com=
-</a>}<br><br>I await your quick response.<br><br>Regards<br>CAPTAIN Anne<br=
->US MARINE.<br></div>
-
---0000000000003557a70604a45629--
