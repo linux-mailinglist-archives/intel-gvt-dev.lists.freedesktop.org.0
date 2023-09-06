@@ -1,45 +1,65 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1D3A79430D
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Sep 2023 20:33:34 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id AAAC5794362
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Sep 2023 21:02:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 915E810E6F4;
-	Wed,  6 Sep 2023 18:33:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1BAB110E708;
+	Wed,  6 Sep 2023 19:02:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 06 Sep 2023 18:33:30 UTC
-Received: from mail.shippinginfo.bond (unknown [193.17.5.181])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3BE9810E6F4
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  6 Sep 2023 18:33:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shippinginfo.bond;
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=enjoy_ups_evaluation_station@shippinginfo.bond; 
- bh=9KAnvJ657xcP7agooOd/neIRuxM=;
- b=DtIhvFyTpZsRtCtM9uPCed1wMK+NGFaUWbdmpizOvp545pJ3a12l9D29LiTdWnyOi/sAu2Sga3Ku
- rj5643YPkheBsG/XXNKlIKPGUPs0rTrGXdq9CC0DbouSUFm/OerF2YgRs3BZ2DHa2FDZJi3Vcl7b
- RRi1qxgy2mjVT6TGOtM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shippinginfo.bond; 
- b=UtxS/7P5U6rSXHzIzbCTSZrnV7x7wQcv1De4WbFrHQkorIE+DffkAh3X0OL19vum37yfNJjRZTCU
- PWuPo3RkQZxeAbbMPI9Lt0ymPx9N+a2lQru2fZP/BlXjSaZslZl8CrCRHOeD0YUD8ddLEGyYf9Or
- hQGP9n8wsFmf+bAR+lA=;
-Received: by mail.shippinginfo.bond id hv32vk0001gl for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 6 Sep 2023 14:24:54 -0400 (envelope-from
- <enjoy_ups_evaluation_station-intel+2Dgvt+2Ddev=lists.freedesktop.org@shippinginfo.bond>)
-Date: Wed, 6 Sep 2023 14:24:54 -0400
-From: "Enjoy UPS Evaluation Station"
- <enjoy_ups_evaluation_station@shippinginfo.bond>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Making your shipping experience better is our focus. Share your
- insights, and as a thank-you, we have a special token of appreciation.
+Received: from mail-io1-xd33.google.com (mail-io1-xd33.google.com
+ [IPv6:2607:f8b0:4864:20::d33])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A743810E064;
+ Wed,  6 Sep 2023 19:02:30 +0000 (UTC)
+Received: by mail-io1-xd33.google.com with SMTP id
+ ca18e2360f4ac-79564282cb1so4667139f.2; 
+ Wed, 06 Sep 2023 12:02:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1694026950; x=1694631750; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=oaQGDXjeyl1wK3pu1t3QMemL2yV1V0c+fGGW9EXmwB8=;
+ b=EhR0C68eqOdR/dgwvk1LL+WHZo9eSj/TVShhalpbXtkOU2OsXYSERTOcexHn50qJnt
+ 9PwBzJ1qqn4r+b3sBdWiwpyxS3JG4zNc3LL4to3Dod/m6oKOXtgCKaqU1qa0ZZ5KbIRo
+ KwE3vagTolvCzy4OEBc8tuDnlGN5AIYl+j6IdFTNj7yxoUdemT1uzzZ0H8MQuAFi8+Vm
+ mYg6ZdMtfpmVu0xNWg8LTrlMc0BbJxEffqA8Y+pUU2TwksXKuVTcDBixm2tVpCBJnSmi
+ zwT14+g1rVW7k3EYl6lV+xjiGT0tusL+2SFUF1FAd/q9VC7XPDBMLacuIQCU7dBVRDr2
+ UQKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1694026950; x=1694631750;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oaQGDXjeyl1wK3pu1t3QMemL2yV1V0c+fGGW9EXmwB8=;
+ b=epkuBjkZFqE/fxcQBMuynG0qJhU11W5GpWwg1ACoZD0U3Htp+6OMizntrOgGt+eLxS
+ O+0lzodhCz0pzTTNnxwQ3TCr/2jbAOG7GQtRbx7WiCK0UeANFkdhQZsVPSw+HNiaLiCf
+ TUGaiXNaBKcqyVlwlgcIlqFe9cBNFxVTYdXbVdq/8RRE4vElzolDhyNnxeFDfclNCGgF
+ x8p6rzp73HeBUVMd03yCvhbFOvUver+Y3bASxpMXVPnCez6mg/DHa9rh2RomesCT1UyE
+ YH2f0ksFCa0hm3psyA0VIeOZ63ypSu6KE3EG+d8fOwuCB2KB5yQVuy1FRIa5ZOiIk+Tr
+ OXEA==
+X-Gm-Message-State: AOJu0Yy7ewLZ8gRnMEsuA8f9wtntufZIODnP8rw8KlF1rzM7SewsS/RB
+ NX6YQ9f4Ruc+wrJbIBnNU84=
+X-Google-Smtp-Source: AGHT+IGWUYcmi6S5h+fh/k9YyYz3mKPy+hp3qyzTn50rIoOvT2ULFXG+3gdAvN5pM0oGcV6yYoVbXQ==
+X-Received: by 2002:a5d:9952:0:b0:792:4994:d1bf with SMTP id
+ v18-20020a5d9952000000b007924994d1bfmr18995189ios.9.1694026949849; 
+ Wed, 06 Sep 2023 12:02:29 -0700 (PDT)
+Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
+ by smtp.googlemail.com with ESMTPSA id
+ w11-20020a5d844b000000b0076ffebfc9fasm5152306ior.47.2023.09.06.12.02.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Sep 2023 12:02:29 -0700 (PDT)
+From: Jim Cromie <jim.cromie@gmail.com>
+To: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Subject: [PATCH v3 0/5] drm/drm_dbg: add trailing newlines where missing
+Date: Wed,  6 Sep 2023 13:02:18 -0600
+Message-ID: <20230906190224.583577-1-jim.cromie@gmail.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_157_1149611868.1694024678752"
-Message-ID: <0.0.0.5E.1D9E0EF6EBC3CEC.183B35@mail.shippinginfo.bond>
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,60 +72,38 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Cc: jani.nikula@intel.com, daniel.vetter@ffwll.ch,
+ Jim Cromie <jim.cromie@gmail.com>, robdclark@gmail.com, seanpaul@chromium.org,
+ daniel@ffwll.ch, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_157_1149611868.1694024678752
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+By at least strong convention, a print-buffer's trailing newline says
+"message complete, send it".  The exception (no TNL, followed by a call
+to pr_cont) proves the general rule.
 
-<!DOCTYPE html>
-<html>
- <head> 
-  <meta charset="UTF-8" /> 
-  <title>full in</title> 
- </head> 
- <body bgcolor="#3F401F" style="margin: 0"> 
-  <div align="center" style="width: 90%; background-color: #fff; padding: 15px; margin: auto"> 
-   <div style="max-width: 544px;"> 
-    <table border="0" cellpadding="10" cellspacing="0" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center" bgcolor="#F9C403"><a href="http://www.shippinginfo.bond/b334h2395Y8MZ611S5d56m16f5o36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQtRoS97npFU10K6O0wD@P/enlisted-Dali" style="text-decoration: none; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 55px; color: #330000"><strong>UPS</strong></a></td> 
-      </tr> 
-      <tr> 
-       <td style="border: dashed 1px; border-top-width: 0; text-align: center; font-size: 1.2pc"><font face="arial">As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with <strong>UPS</strong></font> 
-        <table border="0" cellpadding="10" cellspacing="5" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td>&nbsp;</td> 
-           <td><img alt="" src="http://www.shippinginfo.bond/Z2f6E2P39G5q_Y7a12I5od58s16f5t36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQtRoS95A1B0N6g@UWwD/Donnelly-recursing" width="444" /></td> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> <font face="arial"> As a part of our dedication to ensuring the utmost satisfaction, we extend an invitation to you. We kindly request your participation in a concise survey regarding your recent shipping experience and your overall interaction with <strong>UPS</strong></font> <font face="arial"> </font> <h2><font face="arial">For completing the survey,<br /> you could receive a $100 Gift!</font></h2> <img alt="illgo" src="http://www.shippinginfo.bond/3955N2y395sO7Ra13z5dJ59QJ16f5q36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQtRoS95l1Y0T6j@lwWD/obsolete-impress" width="80" /> 
-        <table border="0" cellpadding="10" cellspacing="5" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td style="font-family: arial">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.<br /> <br /> <br /> <a href="http://www.shippinginfo.bond/b334h2395Y8MZ611S5d56m16f5o36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQtRoS97npFU10K6O0wD@P/enlisted-Dali" style="text-decoration: none; color: #fff; background-color: #3F401F; padding: 15px; font-size: 29px">Start The Survey Here &gt; &gt; </a><br /> &nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <p><font face="arial">Thank you again for your support. We look forward to<br /> hearing from you soon.<br /> <br /> Warm regards,</font></p> 
-   </div> 
-   <br /> &nbsp;
-  </div> 
-  <div style="max-width: 400pt; margin: auto; text-align: center; font-family: arial; font-size: 16px; color: #fff">
-   <span style="max-width: 499px;  display: block; padding: 15px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 15pt; margin: auto; font-size: 12px; padding-top: 199px">you can leave with sadness <a href="http://www.shippinginfo.bond/e5d4O2395Q86jA13IL5d57rl16f5w36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQtRoS97yprC1V06aJUAwD/reactions-disillusionment" style="color:#F9C403 ">here</a><br /> US 10010 126 E 23rd St New York, NY,</span>
-  </div>   
- <img src="http://www.shippinginfo.bond/3955R2A395tCz8511L5d5aC16f5s36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQtRoS97p1m0UJM6WNlUwD/minimizations-fixated" alt=""/></body>
-</html>
+Most DRM.debug calls already comport with this rule/convention:
+207 DRM_DEV_DEBUG, 1288 drm_dbg.  Clean up the remainders, in
+maintainer sized chunks.
 
-------=_Part_157_1149611868.1694024678752--
+V3: adds proper "drm/<component>:" to subject, as suggested by Rodrigo.
+    drops drm/i915: already applied by Rodrigo.
+
+Jim Cromie (5):
+  drm/connector: add trailing newlines to drm_dbg msgs
+  drm/kmb: add trailing newlines to drm_dbg msgs
+  drm/msm: add trailing newlines to drm_dbg msgs
+  drm/vc4: add trailing newlines to drm_dbg msgs
+  drm/Makefile: use correct ccflags-y syntax
+
+ drivers/gpu/drm/Makefile        |  3 ++-
+ drivers/gpu/drm/drm_connector.c |  4 +++-
+ drivers/gpu/drm/kmb/kmb_crtc.c  | 10 +++++-----
+ drivers/gpu/drm/kmb/kmb_plane.c |  6 +++---
+ drivers/gpu/drm/msm/msm_fb.c    | 10 +++++-----
+ drivers/gpu/drm/vc4/vc4_crtc.c  |  4 ++--
+ 6 files changed, 20 insertions(+), 17 deletions(-)
+
+-- 
+2.41.0
 
