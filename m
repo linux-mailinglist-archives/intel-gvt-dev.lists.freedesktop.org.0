@@ -2,62 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35E307942BB
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Sep 2023 20:06:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D1D3A79430D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Sep 2023 20:33:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C570210E6DF;
-	Wed,  6 Sep 2023 18:06:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 915E810E6F4;
+	Wed,  6 Sep 2023 18:33:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-oa1-x29.google.com (mail-oa1-x29.google.com
- [IPv6:2001:4860:4864:20::29])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 29D6710E6D4;
- Wed,  6 Sep 2023 18:06:46 +0000 (UTC)
-Received: by mail-oa1-x29.google.com with SMTP id
- 586e51a60fabf-1c0fcbf7ae4so122087fac.0; 
- Wed, 06 Sep 2023 11:06:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1694023605; x=1694628405; darn=lists.freedesktop.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xnjUXTs6pn0ju4mRyE2WoYS0dp5/lgNA0GigOa0IJOE=;
- b=SoozSE5TCcEPSt9lbW30CGxWutZAjs2U1s99VYqUfWta9lHvdhnKojaTP1gRdxqmCm
- hO4vjU2P/H4W7M7KJU3VIJnuZVomDdpgGy+QN7yFf75iJ9ng8BhZNs3HJ744fdk2gOOw
- M48fk6qu5GgYX6ABm3T1C5Zyp5FYda8Q5csbk6iqcyWYPQ/TQ4WeSRTHgdTgUlQyry6O
- CFKVXg2GmXn8bEkNuaaA1utP6nxa9drr+WFKyH8TwV+ZHnZj9WsVDgmMFp8Uqvqz0XZa
- IcV/bXtTionLS+jn3P4yzlYRcNVi0RzjguU9mrzUk4SGpziUnl/XZfRJudru9G5lWZS3
- C0yA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1694023605; x=1694628405;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=xnjUXTs6pn0ju4mRyE2WoYS0dp5/lgNA0GigOa0IJOE=;
- b=goVYgA8tfxYqfkEc5qxHaxefblAyDCPQtfEelkMljCcCSo9OOPDD5WcFzIsWTJJ/wo
- QBHufU2j6pfeCc3laKnwKZgPlIZYgQLdo8LQntidNUkjln3ZmgRnKpBB2Iv+rTeBN3se
- oXtAgGhlJcEBCHKDUKnUlSF1qYXEdguW00LldFUgagjOdpzjw4nmpuWSGxW4kYDz2xpi
- ah+1jWkylGmchn2EiDfBUNZM9kftVqNKI7fSCkXUHQ3w4n/5CSXgcaaGnQU4iPbKIHew
- HkwNciMUQ6hif5AVyUp304x2zsBV44RD0tnJoKgS6RcbySPpuiKNKSN03VUNcy5Aeg+z
- uP3w==
-X-Gm-Message-State: AOJu0Yw5NBkKgVXolLNLphTUJnqsWWQoZLF84s0l/FU5btUjr5Lt0McM
- OT//vu12LeVJC8ucq0iyN+kdC8It1NGm22xMEas=
-X-Google-Smtp-Source: AGHT+IHnL4YXufn9orOCAMqeVB24UhQCchcrVK0uam4MUJbJywzc+ivZOogndzFAOBRpb/+5dkxeUeS0OnRV6OQuMLI=
-X-Received: by 2002:a05:6808:3089:b0:39c:93ba:cb92 with SMTP id
- bl9-20020a056808308900b0039c93bacb92mr21643536oib.8.1694023605202; Wed, 06
- Sep 2023 11:06:45 -0700 (PDT)
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Wed, 06 Sep 2023 18:33:30 UTC
+Received: from mail.shippinginfo.bond (unknown [193.17.5.181])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3BE9810E6F4
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  6 Sep 2023 18:33:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shippinginfo.bond;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=enjoy_ups_evaluation_station@shippinginfo.bond; 
+ bh=9KAnvJ657xcP7agooOd/neIRuxM=;
+ b=DtIhvFyTpZsRtCtM9uPCed1wMK+NGFaUWbdmpizOvp545pJ3a12l9D29LiTdWnyOi/sAu2Sga3Ku
+ rj5643YPkheBsG/XXNKlIKPGUPs0rTrGXdq9CC0DbouSUFm/OerF2YgRs3BZ2DHa2FDZJi3Vcl7b
+ RRi1qxgy2mjVT6TGOtM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shippinginfo.bond; 
+ b=UtxS/7P5U6rSXHzIzbCTSZrnV7x7wQcv1De4WbFrHQkorIE+DffkAh3X0OL19vum37yfNJjRZTCU
+ PWuPo3RkQZxeAbbMPI9Lt0ymPx9N+a2lQru2fZP/BlXjSaZslZl8CrCRHOeD0YUD8ddLEGyYf9Or
+ hQGP9n8wsFmf+bAR+lA=;
+Received: by mail.shippinginfo.bond id hv32vk0001gl for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 6 Sep 2023 14:24:54 -0400 (envelope-from
+ <enjoy_ups_evaluation_station-intel+2Dgvt+2Ddev=lists.freedesktop.org@shippinginfo.bond>)
+Date: Wed, 6 Sep 2023 14:24:54 -0400
+From: "Enjoy UPS Evaluation Station"
+ <enjoy_ups_evaluation_station@shippinginfo.bond>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Making your shipping experience better is our focus. Share your
+ insights, and as a thank-you, we have a special token of appreciation.
 MIME-Version: 1.0
-References: <20230903184607.272198-1-jim.cromie@gmail.com>
- <20230903184607.272198-4-jim.cromie@gmail.com>
- <ZPV6CMBlDWriMyva@ashyti-mobl2.lan> <ZPir+7VYXcKv117q@intel.com>
-In-Reply-To: <ZPir+7VYXcKv117q@intel.com>
-From: jim.cromie@gmail.com
-Date: Wed, 6 Sep 2023 12:06:18 -0600
-Message-ID: <CAJfuBxyRn_FQtGmSiJjtOuJDs+40TPWcjW+JA5u8K-FSrDTHUA@mail.gmail.com>
-Subject: Re: [PATCH v2 3/6] drm_dbg: add trailing newlines to msgs
-To: Rodrigo Vivi <rodrigo.vivi@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_157_1149611868.1694024678752"
+Message-ID: <0.0.0.5E.1D9E0EF6EBC3CEC.183B35@mail.shippinginfo.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,66 +52,60 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "Jason A. Donenfeld" <Jason@zx2c4.com>, Fei Yang <fei.yang@intel.com>,
- daniel.vetter@ffwll.ch, Imre Deak <imre.deak@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Chris Wilson <chris@chris-wilson.co.uk>,
- Andrzej Hajda <andrzej.hajda@intel.com>, David Airlie <airlied@gmail.com>,
- ville.syrjala@linux.intel.com, Rob Clark <robdclark@chromium.org>,
- amd-gfx@lists.freedesktop.org, Matthew Auld <matthew.auld@intel.com>,
- Mika Kahola <mika.kahola@intel.com>,
- Ankit Nautiyal <ankit.k.nautiyal@intel.com>,
- Andi Shyti <andi.shyti@linux.intel.com>, jani.nikula@intel.com,
- intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
- seanpaul@chromium.org,
- =?UTF-8?Q?Jos=C3=A9_Roberto_de_Souza?= <jose.souza@intel.com>,
- intel-gvt-dev@lists.freedesktop.org,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Radhakrishna Sripada <radhakrishna.sripada@intel.com>,
- linux-kernel@vger.kernel.org, robdclark@gmail.com, daniel@ffwll.ch
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, Sep 6, 2023 at 10:42=E2=80=AFAM Rodrigo Vivi <rodrigo.vivi@intel.co=
-m> wrote:
->
-> On Mon, Sep 04, 2023 at 08:32:40AM +0200, Andi Shyti wrote:
-> > Hi Jim,
-> >
-> > On Sun, Sep 03, 2023 at 12:46:00PM -0600, Jim Cromie wrote:
-> > > By at least strong convention, a print-buffer's trailing newline says
-> > > "message complete, send it".  The exception (no TNL, followed by a ca=
-ll
-> > > to pr_cont) proves the general rule.
-> > >
-> > > Most DRM.debug calls already comport with this: 207 DRM_DEV_DEBUG,
-> > > 1288 drm_dbg.  Clean up the remainders, in maintainer sized chunks.
-> > >
-> > > No functional changes.
-> > >
-> > > Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
-> >
-> > Reviewed-by: Andi Shyti <andi.shyti@linux.intel.com>
->
-> I pushed this i915 one to our drm-intel-next.
-> While doing it I have changed the subject to make it clear
-> this is 'drm/i915:'.
->
-> I believe you should do similar change to all the other patches
-> to make it clear in the subject about which domain that commit
-> is touching... instead of only 'drm_dbg'.
->
+------=_Part_157_1149611868.1694024678752
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-I will do that, and drop the one you've already pushed.
-Thank you both.
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <title>full in</title> 
+ </head> 
+ <body bgcolor="#3F401F" style="margin: 0"> 
+  <div align="center" style="width: 90%; background-color: #fff; padding: 15px; margin: auto"> 
+   <div style="max-width: 544px;"> 
+    <table border="0" cellpadding="10" cellspacing="0" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" bgcolor="#F9C403"><a href="http://www.shippinginfo.bond/b334h2395Y8MZ611S5d56m16f5o36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQtRoS97npFU10K6O0wD@P/enlisted-Dali" style="text-decoration: none; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 55px; color: #330000"><strong>UPS</strong></a></td> 
+      </tr> 
+      <tr> 
+       <td style="border: dashed 1px; border-top-width: 0; text-align: center; font-size: 1.2pc"><font face="arial">As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with <strong>UPS</strong></font> 
+        <table border="0" cellpadding="10" cellspacing="5" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td>&nbsp;</td> 
+           <td><img alt="" src="http://www.shippinginfo.bond/Z2f6E2P39G5q_Y7a12I5od58s16f5t36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQtRoS95A1B0N6g@UWwD/Donnelly-recursing" width="444" /></td> 
+           <td>&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> <font face="arial"> As a part of our dedication to ensuring the utmost satisfaction, we extend an invitation to you. We kindly request your participation in a concise survey regarding your recent shipping experience and your overall interaction with <strong>UPS</strong></font> <font face="arial"> </font> <h2><font face="arial">For completing the survey,<br /> you could receive a $100 Gift!</font></h2> <img alt="illgo" src="http://www.shippinginfo.bond/3955N2y395sO7Ra13z5dJ59QJ16f5q36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQtRoS95l1Y0T6j@lwWD/obsolete-impress" width="80" /> 
+        <table border="0" cellpadding="10" cellspacing="5" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td style="font-family: arial">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.<br /> <br /> <br /> <a href="http://www.shippinginfo.bond/b334h2395Y8MZ611S5d56m16f5o36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQtRoS97npFU10K6O0wD@P/enlisted-Dali" style="text-decoration: none; color: #fff; background-color: #3F401F; padding: 15px; font-size: 29px">Start The Survey Here &gt; &gt; </a><br /> &nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+      <tr> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <p><font face="arial">Thank you again for your support. We look forward to<br /> hearing from you soon.<br /> <br /> Warm regards,</font></p> 
+   </div> 
+   <br /> &nbsp;
+  </div> 
+  <div style="max-width: 400pt; margin: auto; text-align: center; font-family: arial; font-size: 16px; color: #fff">
+   <span style="max-width: 499px;  display: block; padding: 15px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 15pt; margin: auto; font-size: 12px; padding-top: 199px">you can leave with sadness <a href="http://www.shippinginfo.bond/e5d4O2395Q86jA13IL5d57rl16f5w36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQtRoS97yprC1V06aJUAwD/reactions-disillusionment" style="color:#F9C403 ">here</a><br /> US 10010 126 E 23rd St New York, NY,</span>
+  </div>   
+ <img src="http://www.shippinginfo.bond/3955R2A395tCz8511L5d5aC16f5s36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQtRoS97p1m0UJM6WNlUwD/minimizations-fixated" alt=""/></body>
+</html>
 
+------=_Part_157_1149611868.1694024678752--
 
-> i.e.: 183670347b06 ("drm/i915: add trailing newlines to msgs")
-> https://cgit.freedesktop.org/drm-intel/commit/?h=3Ddrm-intel-next&id=3D18=
-3670347b060521920a81f84ff7f10e227ebe05
->
-> Thanks for the patch,
-> Rodrigo.
->
-> >
-> > Andi
