@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DD66797E22
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Sep 2023 23:55:41 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id EBFC3797EB0
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Sep 2023 00:27:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2157D10E817;
-	Thu,  7 Sep 2023 21:55:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B4B1210E26D;
+	Thu,  7 Sep 2023 22:27:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 07 Sep 2023 21:55:38 UTC
-Received: from mail.signaltmobile.bond (unknown [193.17.5.189])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5244610E817
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Thu, 07 Sep 2023 22:27:45 UTC
+Received: from mail.kobaltsetlws.live (unknown [193.17.5.188])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4554810E0DF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  7 Sep 2023 21:55:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=signaltmobile.bond; 
+ Thu,  7 Sep 2023 22:27:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=kobaltsetlws.live;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=experience_the_tmobile_evaluation_hub@signaltmobile.bond; 
- bh=vn2i7zQKTs+rpnC62ONMvJ0lL/k=;
- b=QCvvuQlrVRURCF/a52KEMzga/+wG1+wdTL3V4TIOaM4YQUsSZD+W0vXl3ihUImJ6FE7UNK7liMiA
- RbrPDRQrnvibgc6ZBKGQ2X8IV8LcLhwhpaQLfZSvU48rQVLcVXATnC+tBERpRqMOze4V7D/dR9bf
- qk/ZuOjB/Qho3jv1+5o=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=signaltmobile.bond; 
- b=JMpqghaRLLKNIA/vV5TcQOxfob+0awJyo+LaoyNF3f+/MuinBwNvrKba0ORaLGR2RRg0QQw0Hv8U
- m3uK7RdPbO8E4FICB6Os5I7BckLPnLzBkudQjcWiBkRSUbXkZYRDXwRmuieevR5/LkCUIEzSl2Bb
- M8Nqz9PKVjrvRluQ1XA=;
-Received: by mail.signaltmobile.bond id hv93dk0001gc for
+ i=lowes_home_improvement_store_info@kobaltsetlws.live; 
+ bh=gxoYtV7UAC4QwnK571x9Dsd1cHY=;
+ b=LzrNDvQ0cM2CTkHjUiXzHsmWp4eurIC3ywexzHlnQErPny16ObNfW8qYof/llPVBbyNj8Zqefwx3
+ XnZapm1EYk2wIAtDPEcK5LoYFmjKFlERL1v4F1ANkM7TbQNHjYp4SvUsR+S/OtvOA9OVFnz0HXRg
+ 8jR20w4MwXW7CGK5QZU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kobaltsetlws.live; 
+ b=RWdxjo7tHmMoAD7TO+7fV61jj8dnZVSizN6HrIzyrtguyUOK2IDjdMyEfpnVW3VvR5ntPVmfLwRg
+ sK46hujmL+VaaT951vgg9TnRdHROxSn7ABBijQc4x5hFQWOvyymLXLZDhVKblE9fMrSaHzMetcxF
+ nIG6NU4Q8mW0G8H3nwE=;
+Received: by mail.kobaltsetlws.live id hv97620001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 7 Sep 2023 16:54:35 -0400 (envelope-from
- <experience_the_tmobile_evaluation_hub-intel+2Dgvt+2Ddev=lists.freedesktop.org@signaltmobile.bond>)
-Date: Thu, 7 Sep 2023 16:54:35 -0400
-From: "Experience The TMobile Evaluation Hub"
- <experience_the_tmobile_evaluation_hub@signaltmobile.bond>
+ Thu, 7 Sep 2023 18:09:00 -0400 (envelope-from
+ <lowes_home_improvement_store_info-intel+2Dgvt+2Ddev=lists.freedesktop.org@kobaltsetlws.live>)
+Date: Thu, 7 Sep 2023 18:09:00 -0400
+From: "Lowes Home Improvement Store Info"
+ <lowes_home_improvement_store_info@kobaltsetlws.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Enjoy Exclusive Benefits and Our Thank You Gift.
+Subject: Be rewarded with an exceptional Kobalt Tool set when you share your
+ opinions.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_235_1010589026.1694120057706"
-Message-ID: <0.0.0.154.1D9E1CD824BD5B8.4C52E6@mail.signaltmobile.bond>
+ boundary="----=_Part_202_786249459.1694124520868"
+Message-ID: <0.0.0.180.1D9E1D7E7C40F0A.188F41@mail.kobaltsetlws.live>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_235_1010589026.1694120057706
+------=_Part_202_786249459.1694124520868
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,87 +63,49 @@ Content-Transfer-Encoding: 7bit
 <html>
  <head> 
   <meta charset="UTF-8" /> 
-  <title>looking in your eyes</title> 
+  <title>call me top</title> 
  </head> 
  <body> 
-  <div style="max-width: 400px; border-radius: 12px; border-top-style: solid; border-top-color: #ddd; margin-left: auto; margin-right: auto; border-left-style: solid; border-left-color: #ddd; border-right-style: solid; border-right-color: #ddd; border-bottom: solid; border-bottom-color: #ddd"> 
-   <table bgcolor="#000" border="0" cellpadding="1" cellspacing="1" style="border-top-left-radius: 8px; border-top-right-radius: 8px" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding: 15px; "><strong style="color: #fff">A Special Offer for Our Valued Users</strong></td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"><a href="http://www.signaltmobile.bond/8db4m2395hhz8612M5ud7aW16fcy36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ3Roen5Eps106HPWwDy/sphinx-meteorite"><img alt="" src="http://www.signaltmobile.bond/Balkanize-scheme/c246cg239i5W7Yai11u5d7cO16fcm36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ3Roen5N10ML6OpWBwD" width="250" /></a></td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding: 15px; font-size: 20px">Taking a moment to thank you for selecting <strong>T-Mobile</strong>. Your continued loyalty and support are greatly appreciated by our team.</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"><a href="http://www.signaltmobile.bond/8db4m2395hhz8612M5ud7aW16fcy36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ3Roen5Eps106HPWwDy/sphinx-meteorite" style="text-decoration: none"><img alt="tres" src="http://www.signaltmobile.bond/5ed4l2395Oj7Ia12bH5d7dh16fcw36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ3Roen6hl1u0l5QOUwD/unreachable-incessantly" /> <img alt="mal" src="http://www.signaltmobile.bond/sphinx-meteorite/d144S2395QKX7a11y5d7e_16fcP36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ3Roen7YCjB10h6VPWpwD" width="150" /></a></td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding: 15px; font-size: 20px">We greatly value your feedback, and as a token of our appreciation for sharing your thoughts, we'd like to offer you a small gesture.</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <table bgcolor="#DA0471" border="0" cellpadding="1" cellspacing="1" style="border-bottom-left-radius: 8px; border-bottom-right-radius: 8px" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 20px; padding: 15px"><b style="color: #fff">Upon Completion of the Survey you can get a valued $100 gifts!</b><br /> <br /> <a href="http://www.signaltmobile.bond/8db4m2395hhz8612M5ud7aW16fcy36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ3Roen5Eps106HPWwDy/sphinx-meteorite" style="display:inline-block;background:#fff;color:#DA0470;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 75px;mso-padding-alt:0px;border-radius:3px; font-size: 26px" target="_blank"><strong>Start Here Now</strong></a></td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <table align="center" border="0" cellpadding="1" cellspacing="1" width="400"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" border="0" cellpadding="1" cellspacing="1" width="400"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" border="0" cellpadding="1" cellspacing="1" width="400"> 
-   <tbody> 
-    <tr> 
-     <td align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Thanks For your support. We look forward to hearing from you soon!<br /> <br /> Warm regards,<br /> <br /> <strong>The Tmobile Survey</strong></td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div style="height: 200px">
+  <div>
    &nbsp;
   </div> 
-  <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center" style="font-size: 14px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"> 
-      <hr width="250" /><br /> <br /> if you need to go visit <a href="http://www.signaltmobile.bond/meekest-Sebastian/9cc4t2395RH8z612cw5d7bn16fcR36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ3Roen7n1h0KsO6B0qwDT">here</a><br /> 10010 126 E 23rd St New York, NY, US</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.signaltmobile.bond/meekest-Sebastian/9545W2q395vt8D511U5d7fU16fcu36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ3Roen5B10xu5MBwPD" alt=""/></body>
+  <div align="center" style="border-bottom-color rgb(0, 0, 0) border-bottom-style none border-bottom-width 0px border-image-outset 0 border-image-repeat stretch border-image-slice 100% border-image-source none border-image-width 1 border-left-color rgb(0, 0, 0) border-left-style none border-left-width 0px border-right-color rgb(0, 0, 0) border-right-style none border-right-width 0px border-top-color rgb(0, 0, 0) border-top-style none border-top-width 0px box-sizing border-box display block flex-basis 50% flex-grow 0 flex-shrink 1 font-family Helvetica, Arial, sans-serif font-weight 400 height 496px line-height 18.4px margin-bottom 0px margin-left 0px margin-right 0px margin-top 0px padding-bottom 0px padding-left 0px padding-right 0px padding-top 0px text-size-adjust 100% vertical-align baseline width 424px -webkit-box-flex 0"> 
+   <div style="box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.11); max-width: 519px; padding: 15px; border: solid 1px #eee; border-radius: 6px">
+    <br /> 
+    <br /> 
+    <a href="http://www.kobaltsetlws.live/invalid-salient/60c6H239RD5zT8g613u5d8gI0n16fdD36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQARoeo6mG10rC5hBqwD" rel="noopener noreferrer" target="_blank"><img alt="logo" class="hero" src="http://www.kobaltsetlws.live/sectors-thaws/8a06Ps239q5Lsi7a13V5d82XJS16fdh36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQARoeo5PTn106F1wlD2" style="width: 250px" width="250" /> </a> 
+    <div>
+     <span style="display: block; background-color: #2743A6; padding: 15px; color: #fff; font-size: 29px; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-weight: 900">Your Lowe' s Reward<br /> Final Reminder</span> 
+     <div>
+      <br /> 
+      <a href="http://www.kobaltsetlws.live/invalid-salient/60c6H239RD5zT8g613u5d8gI0n16fdD36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQARoeo6mG10rC5hBqwD"><img alt="stay" src="http://www.kobaltsetlws.live/invalid-salient/8a05VF2395s7zBa11w5d83G16fdB36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQARoeo7H_rC10R6QPwDP1" width="290" /></a>
+     </div> 
+     <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td align="center" style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 1.4pc">We're excited to announce that Lowe's is offering a <strong>Kobalt Tool Set</strong> for you to use at any of our stores. Don't miss this opportunity! You have until September 8th to claim these exciting items</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+    <br /> 
+    <a href="http://www.kobaltsetlws.live/invalid-salient/60c6H239RD5zT8g613u5d8gI0n16fdD36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQARoeo6mG10rC5hBqwD" style="font-size: 22px; font-size: 25px; font-weight: bold; text-decoration: none; color: #ffffff; background-color: #2743A6; border: 1px solid #2743A6; border-radius: 4px; padding: 9px 20px; display: inline-block; font-family: arial">Start Here Now &gt; &gt;</a>
+    <br /> 
+    <br /> &nbsp;
+   </div> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <p align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Thank you in advance, <strong>The Lowes Team.</strong></p> 
+   <br /> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <p style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">As alway you can end this <a href="http://www.kobaltsetlws.live/unmistakably-islets/e406bF23D95F86Oq11X5d81M16fdS36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQARoeo6wS10Wp6dNqLwD">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+  </div>   
+ <img src="http://www.kobaltsetlws.live/squeaky-nobility/daa4l2395I8z5w13K5jd84IS16fdh36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQARoeo5sK10Y6Sl3w2D" alt=""/></body>
 </html>
 
-------=_Part_235_1010589026.1694120057706--
+------=_Part_202_786249459.1694124520868--
 
