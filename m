@@ -2,46 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 047F5797274
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Sep 2023 14:58:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C01ED79750C
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Sep 2023 17:45:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C3BF810E7D5;
-	Thu,  7 Sep 2023 12:58:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2B70410E079;
+	Thu,  7 Sep 2023 15:45:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 07 Sep 2023 12:58:48 UTC
-Received: from mail.stansetlwestools.live (unknown [193.17.5.155])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3F54510E7D5
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Thu, 07 Sep 2023 15:45:47 UTC
+Received: from mail.testingsouw.bond (unknown [193.17.5.157])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3EF7C10E079
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  7 Sep 2023 12:58:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=stansetlwestools.live; 
+ Thu,  7 Sep 2023 15:45:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=testingsouw.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=stay_informed_with_lowes_store_highlights@stansetlwestools.live; 
- bh=msN5l6JELippJpl5WOOCLbSnSCk=;
- b=RJSNYnTPrhFo5PUoxtO/3b/e0+Lq6qF4RQUxy/a9jkWaXe9ljm9JtvbVlln6yqPGaKPgpAIV7EGh
- VQPNCWbu3VMV8XXq4J3AIhyRGliPws92JregFIa0UGOBW9TD+MmJ705IEUvkXME0Rhr8I6JKym5A
- yUx5+FGPbhnbe3ZGwn8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=stansetlwestools.live; 
- b=W3zpxvB4pBg1FLTBxc4Cq3KwwWsDJsDd3r6IcsKUONAfJHSoT7GtAJZyFQfB8ythv5ycZUqCxFgB
- D0w8n8BW++52Cj+wOx4dWprRRqztsUjo9caif3JATFKhkPs+TJwQYjLM5Mwi2kVvHS1RiBBimI5R
- 7JVufBD3/oHF19uY09E=;
-Received: by mail.stansetlwestools.live id hv74gg0001gs for
+ i=air-travel-with-southwest@testingsouw.bond; 
+ bh=Hh6xIAhaKla6xCl4P71Tv/2XKdQ=;
+ b=X/HUObB/JqU6sNpErQ8BgQmcCWKouV59M/D8ZSzrWBS61IsJQIFI8XD0povhGT7grUXnldp01XGE
+ Ltzp1B1OifyXlhFu+eyX+HZArm3NflaM+OSFV0XhS3+C6yHm2HlAiiHHQER+VnVWPsKOW8Osno8h
+ 6V0mfRhiIFxI8FgOCKw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=testingsouw.bond;
+ b=OSzSXwz/5skJJ207h2s9O2tft0iqP5u1z9GtFi43t9+Ob4XcqAQg9v4hTnfw0n4QYqWctokabOLT
+ fPtsPMYf8yEOBmHHkZVOl9qFLnYc77wXO1COvg6j4LttSSYAjSmwRAqaD13i/zUB4K7k8na9idLM
+ T3QerWGS5OhajvrIZfM=;
+Received: by mail.testingsouw.bond id hv7o2m0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 7 Sep 2023 08:50:20 -0400 (envelope-from
- <stay_informed_with_lowes_store_highlights-intel+2Dgvt+2Ddev=lists.freedesktop.org@stansetlwestools.live>)
-Date: Thu, 7 Sep 2023 08:50:20 -0400
-From: "Stay Informed With Lowes Store Highlights"
- <stay_informed_with_lowes_store_highlights@stansetlwestools.live>
+ Thu, 7 Sep 2023 11:37:26 -0400 (envelope-from
+ <air-travel-with-southwest-intel+2Dgvt+2Ddev=lists.freedesktop.org@testingsouw.bond>)
+Date: Thu, 7 Sep 2023 11:37:26 -0400
+From: "Air Travel With Southwest" <air-travel-with-southwest@testingsouw.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your Perspective Matters: Snag a brand new Tool set - the offer
- expires today.
+Subject: Your seasonal reward: a complimentary flight to any destination -
+ make it memorable!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_172_926583171.1694091002689"
-Message-ID: <0.0.0.DB.1D9E189DC00E47A.61BAB3@mail.stansetlwestools.live>
+ boundary="----=_Part_22_1621448399.1694101042385"
+Message-ID: <0.0.0.F4.1D9E1A1344D7E24.2542AB@mail.testingsouw.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,98 +54,68 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_172_926583171.1694091002689
+------=_Part_22_1621448399.1694101042385
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
- <head>=20
-  <meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Type" =
-/>=20
-  <title>nezuko</title>=20
- </head>=20
- <body>=20
-  <p align=3D"center" style=3D"margin-top: 0; margin-bottom: 0; margin-righ=
-t: auto; margin-left: auto; padding-top: 12px; padding-bottom: 12px; paddin=
-g-left: 12px; padding-right: 12px; max-width: 450pt; background-color: #15A=
-3E0"><a href=3D"http://www.stansetlwestools.live/indoor-identically/71a6G239Ak5HD8Z611b5d6av16f9p36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQhRoSe6QgO1A06YkLwDl"><img alt=3D"3123" src=3D"http://www.stansetlwestools.live/d8b4v2395m7apn12I5d6cNY16f9I36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQhRoSe6FKzC105y@PwD/propagandist-underplays" style=3D"=
-width: 241px; height: 78px; " /> </a></p>=20
-  <p align=3D"center" style=3D"margin-top: 0; margin-bottom: 0; margin-righ=
-t: auto; margin-left: auto; padding-top: 12px; padding-bottom: 12px; paddin=
-g-left: 12px; padding-right: 12px; max-width: 450pt; background-color: #042=
-169"><span style=3D"color: #fff; font-size: 25pt; font-family: Segoe, 'Sego=
-e UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'">Lowe' s Final =
-Reminder</span> <span style=3D"display: block; background-color: #fff; padd=
-ing: 15px; margin-top: 12px; font-family: Segoe, 'Segoe UI', 'DejaVu Sans',=
- 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 16pt"> <a href=3D"=
-http://www.stansetlwestools.live/indoor-identically/71a6G239Ak5HD8Z611b5d6av16f9p36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQhRoSe6QgO1A06YkLwDl"><img alt=3D"res" src=3D"http://www.stansetlwestools.live/1f16U23SJ95oW7ai12Q5d6OdI16f9T36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQhRoSe5rW1x06Jyw3LD/pacing-potential" style=3D"max-width: 250px; width=
-: 321px; height: 206px; " /></a><br /> <br /> We have thrilling news! Lowe'=
-s is extending an offer for a <strong>Stanley Tool Set</strong> that you ca=
-n utilize at any of our store locations. Don't miss out on this chance! You=
- have until September 1st to acquire these exceptional tools.<br /> <br /> =
-<br /> <a href=3D"http://www.stansetlwestools.live/indoor-identically/71a6G239Ak5HD8Z611b5d6av16f9p36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQhRoSe6QgO1A06YkLwDl" style=3D"text-decoration: none; color: #fff; =
-background-color: #DA281C; padding: 15px; font-size: 29px; box-shadow: 10px=
- 10px 28px -5px rgba(238,238,238,1); border-radius: 4px">Start The Survey H=
-ere &gt; &gt; </a></span><br /> &nbsp;</p>=20
-  <table border=3D"0" cellpadding=3D"10" cellspacing=3D"5" width=3D"100%">=
-=20
-   <tbody>=20
-    <tr>=20
-     <td>=20
-      <table border=3D"0" cellpadding=3D"10" cellspacing=3D"5" width=3D"100=
-%">=20
-       <tbody>=20
-        <tr>=20
-         <td>=20
-          <table border=3D"0" cellpadding=3D"10" cellspacing=3D"5" width=3D=
-"100%">=20
-           <tbody>=20
-            <tr>=20
-             <td>=20
-              <table border=3D"0" cellpadding=3D"10" cellspacing=3D"5" widt=
-h=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td align=3D"center">=20
-                  <hr width=3D"55" /> <h3 style=3D"font-family: Gotham, 'He=
-lvetica Neue', Helvetica, Arial, 'sans-serif'">Thank you in advance, The Lo=
-we' s Team.</h3>=20
-                  <table border=3D"0" cellpadding=3D"4" cellspacing=3D"4" w=
-idth=3D"100%">=20
-                   <tbody>=20
-                    <tr>=20
-                     <td>&nbsp;</td>=20
-                    </tr>=20
-                    <tr>=20
-                     <td>&nbsp;</td>=20
-                    </tr>=20
-                    <tr>=20
-                     <td>&nbsp;</td>=20
-                    </tr>=20
-                    <tr>=20
-                     <td align=3D"center" style=3D"font-family: Segoe, 'Seg=
-oe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'">its your time=
- to leave? do it <a href=3D"http://www.stansetlwestools.live/essence-alder/e7c5J2N395C8sg612Ru5d6bh16f9F36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQhRoSe5H1jY06dWTPwD">here</a><br /> US 10010 126 E 23rd =
-St New York, NY,</td>=20
-                    </tr>=20
-                   </tbody>=20
-                  </table> </td>=20
-                </tr>=20
-               </tbody>=20
-              </table> </td>=20
-            </tr>=20
-           </tbody>=20
-          </table> </td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.stansetlwestools.live/2694Q2395Ql85N12S5d6eoF16f9S36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQhRoSe6Gj1SU06zLwADp/weddings-inhibited" alt=3D""/></body>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>wantingyou</title> 
+ </head> 
+ <body style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'"> 
+  <center> 
+   <div style="max-width: 521px; border: solid 1px #eee; padding: 15px"> 
+    <div align="center">
+     <span><a href="http://www.testingsouw.bond/paleness-assaults/c9c6Nq239S5z8o6m11F5d6fh16faV36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5RoSK7FSBYn105upwDJ"><img alt="1654" src="http://www.testingsouw.bond/sidewalks-Jeffrey/5586V23O9l5F7ayG11S5d71N16far36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ5RoSK7emr1C0T5wywDq" style="max-width: 356px" /></a></span>
+    </div> 
+   </div> 
+  </center> 
+  <center> 
+   <div style="max-width: 521px;padding: 15px; margin-top: 5px; background-color: #304CB2">
+    <span><span align="center" style="color: #fff; font-size: 15pt">We extend our heartfelt gratitude for selecting Southwest for your travel. Your loyalty and support hold great significance for us, and we genuinely value the opportunity to assist you with your travel requirements. </span></span>
+   </div> 
+   <div style="max-width: 521px;padding: 15px; margin-top: 5px;">
+    <span><span align="center" style="color: #fff; font-size: 15pt; color: #333">To enhance your experiences with us, we kindly request your participation in a brief survey regarding your recent flight and overall experience with Southwest. </span></span>
+   </div> 
+   <div align="center">
+    <a href="http://www.testingsouw.bond/paleness-assaults/c9c6Nq239S5z8o6m11F5d6fh16faV36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5RoSK7FSBYn105upwDJ" style="display: block; background-color: #FEBF26; max-width: 521px; margin: auto" target="_blank"><img alt="banner news" height="auto" src="http://www.testingsouw.bond/virtuoso-internalized/6de4q2395kx7aw12C5Kd72h16faL36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ5RoSK7z1xoB0I5S@LwD" style="border:0; display:block; outline:none; text-decoration:none; height:auto; width:521px; font-size:13px;display: block" width="521" /> <span style="padding: 12px; display: block; font-weight: bold; font-size: 22px">You can get $100 as a token of our<br /> appreciation for your insights.</span></a>
+   </div> 
+   <div style="max-width: 521px;padding: 15px; margin-top: 5px;">
+    <span><span align="center" style="color: #fff; font-size: 15pt; color: #333">To access the survey, simply click the link below. It will only take a few minutes to finish, and please be assured that your responses will be kept completely confidential.<br /> <br /> <a href="http://www.testingsouw.bond/paleness-assaults/c9c6Nq239S5z8o6m11F5d6fh16faV36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5RoSK7FSBYn105upwDJ" style="color: #fff; text-decoration: none; display: block; padding: 15px; display: block; background-color: #D85C48; font-size: 29px">Start The Survey Here &gt; &gt; </a> </span></span>
+    <br /> &nbsp; 
+    <table border="0" cellpadding="5" cellspacing="5" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td><span><span align="center" style="color: #fff; font-size: 15pt; color: #333">&nbsp;</span></span></td> 
+       <td style="font-size: 19px"> 
+        <div>
+         <span><span align="center" style="color: #fff; font-size: 15pt; color: #333">&nbsp;</span></span>
+        </div> 
+        <div>
+         <span><span align="center" style="color: #fff; font-size: 15pt; color: #333">&nbsp;</span></span>
+        </div> <span><span align="center" style="color: #fff; font-size: 15pt; color: #333">Thank you for your continued support and for taking the time to fill out our survey.<br /> <br /> We look forward to hearing from you soon.<br /> <br /> Best regards, </span></span></td> 
+       <td><span><span align="center" style="color: #fff; font-size: 15pt; color: #333">&nbsp;</span></span></td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <span><span align="center" style="color: #fff; font-size: 15pt; color: #333"> </span></span>
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> &nbsp; 
+    <table border="0" cellpadding="5" cellspacing="5" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td> <p style="text-align: center; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; margin-top: 125px">Kindly you can leave us <a href="http://www.testingsouw.bond/possessor-perpetrators/3f04s2395cr8j612d5d70iD16faC36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ5RoSK6X1QD0r5JT@wD">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </center>   
+ <img src="http://www.testingsouw.bond/7914q2395EU85Z11f5d73q16faY36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5RoSK7ND1pk_05V1wDA/contemporary-Packwood" alt=""/></body>
 </html>
 
-------=_Part_172_926583171.1694091002689--
+------=_Part_22_1621448399.1694101042385--
 
