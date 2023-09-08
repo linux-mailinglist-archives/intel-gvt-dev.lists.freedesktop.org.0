@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0495F798A93
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Sep 2023 18:17:48 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id AD1B8798B42
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Sep 2023 19:09:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D0A1110E917;
-	Fri,  8 Sep 2023 16:17:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1006310E91B;
+	Fri,  8 Sep 2023 17:09:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 08 Sep 2023 16:17:45 UTC
-Received: from mail.savflight.bond (unknown [193.17.5.182])
- by gabe.freedesktop.org (Postfix) with ESMTP id 43D6E10E917
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 08 Sep 2023 17:09:44 UTC
+Received: from mail.pckgeline.bond (unknown [193.17.5.187])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3B8F110E91B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  8 Sep 2023 16:17:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=savflight.bond; 
+ Fri,  8 Sep 2023 17:09:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pckgeline.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=the.latest.updates.on.your.delta.flight@savflight.bond; 
- bh=zrKLRfjf4SArrKexA5U6k903daA=;
- b=VvxS7E+FhrifF+sRRZIOHBXOUlu4FzUI1WT2W3nC+QCpAoncqN2HMFbzDG/UdUKn7Kc/qPESSg8K
- un/JL2hWD2J9Csz1GiJ4rQCGRw7XQQrcjMRe1ATEm8wNmCkvOL94ligZ7XXdH+F8VMkIJCPFRaYh
- kXO9yPRzauCnEz4x57s=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=savflight.bond;
- b=Rk+rMJXwo3FJmgDWSjs3SplEhWWoDbiGOAgPBiOMVewWb4NSpEXwXUhk87LzzQnAsQP8RrW66xCs
- yUtos0Yhuz4WaOeWRhIOEYdvtIHyuO+2azfyfNwfHn/kregyzjPcKG/b1Lg4AHE0bFkK2l0pcrKw
- u8Wc1yx8N5NVIPrZobs=;
-Received: by mail.savflight.bond id hvd4ii0001gm for
+ i=delve_into_the_ups_feedback_hub@pckgeline.bond; 
+ bh=nP76MgLvZJL7b9uTdNtx8WJxaQM=;
+ b=iHZBdq/dXtU2DITPIWz1sBvN8+7vM0rjdS/T8PpuA/TnkWIDtMlKeaPBqVG/3RJscGHnYnubHtzl
+ 6hqy8EvFcOzw9knXEDGCE3xg39TXjUViZGEfJJrhCagPA02A8+Jx/2zMb9joekvtlQ5bjiNaA2DD
+ puAxfYF/17HExQBku9Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pckgeline.bond;
+ b=YKVZMlxUSU2D2W+tOPH1EasmbJAivygVsXCR4mQkFSg3FxvDh9B2pxtSIPA+TYdebhUDhjONhwpO
+ NRqIV+qbE3RsztFEQCRcBIr8B+001Vi02qntXp+cFjHBNQWVpQq6AthsLCD5H0u6o6Y1uqbaNR9n
+ yYXq0PcdH2xWtlBexPo=;
+Received: by mail.pckgeline.bond id hvdalg0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 8 Sep 2023 12:10:49 -0400 (envelope-from
- <the.latest.updates.on.your.delta.flight-intel+2Dgvt+2Ddev=lists.freedesktop.org@savflight.bond>)
-Date: Fri, 8 Sep 2023 12:10:49 -0400
-From: "The Latest Updates On Your Delta Flight"
- <the.latest.updates.on.your.delta.flight@savflight.bond>
+ Fri, 8 Sep 2023 13:02:04 -0400 (envelope-from
+ <delve_into_the_ups_feedback_hub-intel+2Dgvt+2Ddev=lists.freedesktop.org@pckgeline.bond>)
+Date: Fri, 8 Sep 2023 13:02:04 -0400
+From: "Delve Into The UPS Feedback Hub"
+ <delve_into_the_ups_feedback_hub@pckgeline.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We're excited to present you with a gift - your feedback on our
- performance is highly valued.
+Subject: Our dedication is to deliver better shipping service. Share your
+ feedback, and we'll show our appreciation with a small token.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_337_824256643.1694189438038"
-Message-ID: <0.0.0.1A9.1D9E26F0859FE9A.53E140@mail.savflight.bond>
+ boundary="----=_Part_130_782893284.1694192510117"
+Message-ID: <0.0.0.1BC.1D9E276313E37B6.65A62E@mail.pckgeline.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_337_824256643.1694189438038
+------=_Part_130_782893284.1694192510117
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,86 +63,21 @@ Content-Transfer-Encoding: 7bit
 <html>
  <head> 
   <meta charset="UTF-8" /> 
-  <title>readyo</title> 
+  <title>this aint a love song</title> 
  </head> 
- <body style="font-size: 20px; margin: 0; background-color: #F6f6f6; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'"> 
-  <center>
-   <i style="display: block; padding: 15px; background-color:#11182A"><img alt="ull be" src="http://www.savflight.bond/compactor-Bowes/c9c6Fq2z395N7ZFa11t5d87q16feS36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQWRoe95rJr105MJywD" style="width: 333px" /></i>
-  </center> 
-  <div align="center"> 
-   <blockquote style="font-size: 18pt; margin: 0; padding: 15px; background-color: #fff; max-width: 555px; border-bottom-left-radius: 7px; border-bottom-right-radius: 7px"> 
-    <table border="0" cellpadding="5" cellspacing="5" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="center"><b>Special Savings Exclusively for Our Users</b></td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <hr color="#E01833" size="6" /> 
-        <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td> 
-            <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td align="center" style="font-size: 1.2pc">We'd like to express our gratitude for choosing Delta for your travel needs. Your loyalty and support are greatly appreciated, and we genuinely value the opportunity to assist you with your travels.</td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <p><a href="http://www.savflight.bond/Astor-prolongs/7385wJ2395Fj86j12d5d85Wx16feZ36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQWRoe95j1A0p6VBBJwD"><img alt="should known" src="http://www.savflight.bond/89f6S23T9U5e7uaR13V5d88qIL16feo36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQWRoe97vPI10on6plAwD1/obtained-phototypesetters" width="100%" /></a></p> 
-    <table align="center" border="0" cellpadding="2" cellspacing="2" style="font-size: 1.2pc; text-align: center" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td>As a part of our ongoing commitment to delivering exceptional experiences, we warmly welcome you to participate in a short survey regarding your recent flight and overall experience with Delta.<br /> <br /> Your feedback is highly valuable to us, and as an expression of our appreciation for your time and input, we'd like to offer you a special token of gratitude.</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <p style="font-size: 1.2pc">To access the survey, kindly click on the link provided below. The survey will only require a few minutes of your time to complete, and you can rest assured that your responses will be treated with utmost confidentiality.</p> 
-    <table align="center" border="0" cellpadding="2" cellspacing="2" style="font-size: 1.2pc; text-align: center" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td><strong>As a gesture of our appreciation for your valuable feedback, you'll have the chance to potentially qualify for a $100 gift!.</strong></td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <p align="center"><a href="http://www.savflight.bond/Astor-prolongs/7385wJ2395Fj86j12d5d85Wx16feZ36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQWRoe95j1A0p6VBBJwD" style="color:#fff; text-decoration:none;" target="_blank"><span style="color:#fff; text-decoration:none; display: block; background-color: #E01733; padding: 15px">Get Start Here &gt;&gt;</span></a></p> 
-   </blockquote> 
-   <br /> 
-   <br /> &nbsp; 
-   <table border="0" cellpadding="2" cellspacing="2" width="400"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td align="center" style="font-size: 19px">Thank you once again for your support. We eagerly anticipate hearing from you soon!<br /> <br /> Warm regards, The DeIta Survey Team<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> &nbsp; 
-       <hr width="400" /> <p style="font-size: 14px">if you need to go visit <a href="http://www.savflight.bond/reviews-liars/9366t23B9g5i86pI11h5d86V16feI36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQWRoe95EI1T05BkwDp">here</a><br /> 10010 126 E 23rd St New York, NY, US</p> </td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.savflight.bond/thrive-deactivate/4865GO2395pjT8512Q5zd89t16feB36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQWRoe97A1sHp0G5SOwDq" alt=""/></body>
+ <body style="border-left: solid #3F401F 35px; border-right: solid #3F401F 35px; margin: 0"> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><br /> <span style="display: block; max-width: 499px; background-color: #F9C403; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 40pt"><strong>UPS</strong></span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt">We want to convey our appreciation for choosing UPS for your shipping needs. Your loyalty and support mean a lot to us, and we genuinely value the opportunity to assist you.</span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><a href="http://www.pckgeline.bond/lapsed-amortizes/e046IC239N5S8sP613l5dx8aZl16ffV36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQiRoed7NGL1H0u5IkkwD"><img alt="gonethru" src="http://www.pckgeline.bond/rowing-arithmetized/b345s239t5JI7La12z5dn8cX16ffi36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQiRoed5du10w5zOwUD" width="444" /></a></span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt">As part of our commitment to delivering top-notch service, we would like to invite you to participate in a brief survey concerning your recent shipping experience and overall interaction with UPS.</span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><strong>By completing the survey, there's a chance you may qualify for a $100 Gift!</strong></span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><strong><img alt="figure" src="http://www.pckgeline.bond/4494Y2395MC7aw12EW5d8dj16ffz36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQiRoed7sB1TCQ05vJJwD/quickens-schizophrenia" width="80" /></strong></span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><br /> <span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><a href="http://www.pckgeline.bond/lapsed-amortizes/e046IC239N5S8sP613l5dx8aZl16ffV36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQiRoed7NGL1H0u5IkkwD" style="text-decoration: none; color: #fff; background-color: #3F401F; padding: 15px; font-size: 29px">Start The Survey Here &gt; &gt; </a></span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><br /> <span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt">Thank you again for your support. We look forward to<br /> hearing from you soon.<br /> <br /> Warm regards,</span></p> 
+  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><span style="max-width: 499px;  display: block; padding: 15px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 15pt; margin: auto; font-size: 12px; padding-top: 199px">you can leave with sadness <a href="http://www.pckgeline.bond/51b6I2X39M5Y8x6w12z5d8ybu16ffT36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQiRoed7mC1B0nu5IJpwD/quickens-schizophrenia" style="color:#F9C403 ">here</a><br /> US 10010 126 E 23rd St New York, NY,</span></span></p>   
+ <img src="http://www.pckgeline.bond/Promethean-fragrantly/8a05S23J95Hj8C511v5d8er16ffG36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQiRoed5fSy105B@UwD" alt=""/></body>
 </html>
 
-------=_Part_337_824256643.1694189438038--
+------=_Part_130_782893284.1694192510117--
 
