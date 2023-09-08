@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD1B8798B42
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Sep 2023 19:09:47 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6618E798C3A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Sep 2023 20:06:09 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1006310E91B;
-	Fri,  8 Sep 2023 17:09:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0A30A10E0D8;
+	Fri,  8 Sep 2023 18:06:07 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 08 Sep 2023 17:09:44 UTC
-Received: from mail.pckgeline.bond (unknown [193.17.5.187])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3B8F110E91B
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 08 Sep 2023 18:06:04 UTC
+Received: from mail.attmoble.bond (unknown [193.17.5.186])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3DD0210E0D8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  8 Sep 2023 17:09:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pckgeline.bond; 
+ Fri,  8 Sep 2023 18:06:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=attmoble.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=delve_into_the_ups_feedback_hub@pckgeline.bond; 
- bh=nP76MgLvZJL7b9uTdNtx8WJxaQM=;
- b=iHZBdq/dXtU2DITPIWz1sBvN8+7vM0rjdS/T8PpuA/TnkWIDtMlKeaPBqVG/3RJscGHnYnubHtzl
- 6hqy8EvFcOzw9knXEDGCE3xg39TXjUViZGEfJJrhCagPA02A8+Jx/2zMb9joekvtlQ5bjiNaA2DD
- puAxfYF/17HExQBku9Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pckgeline.bond;
- b=YKVZMlxUSU2D2W+tOPH1EasmbJAivygVsXCR4mQkFSg3FxvDh9B2pxtSIPA+TYdebhUDhjONhwpO
- NRqIV+qbE3RsztFEQCRcBIr8B+001Vi02qntXp+cFjHBNQWVpQq6AthsLCD5H0u6o6Y1uqbaNR9n
- yYXq0PcdH2xWtlBexPo=;
-Received: by mail.pckgeline.bond id hvdalg0001gt for
+ i=discover-the-att-evaluation-center@attmoble.bond; 
+ bh=S+hoyrp8FasKzmo5I5o8Z/UP75U=;
+ b=TmycNqgGBXpVtVxA+ThrwE0zEHqSLFFk0RV9vBKzbjzzlIw+v5L2DyRV+d7wS6LIh/bAHI4OJmeT
+ UIIjl5E7va7y8eb0upY8BNISM+FI0fNFnnySTo6NG+4NUCk2ZDQPpbOh9qN1Pz69XYM+v7HGwwLv
+ 87bdVW4Cu4tMHSOboTk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=attmoble.bond;
+ b=a+dB4FL90jLiwPOwZdMXkJEOHOyak3l0jMUs+/vMRjkOzOpzGhkhl8ty2ref2TI7cwToeGL4v2dp
+ 6p6I8VmoBbtePcLs5W0W9c3r9BIvvYCnTCDPw4fVaVmUbCo2GbqkMqvVNPdyTdeBd1HWuxPvx4jl
+ 0gAEl26LSRQB+jw/eS0=;
+Received: by mail.attmoble.bond id hvdh8o0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 8 Sep 2023 13:02:04 -0400 (envelope-from
- <delve_into_the_ups_feedback_hub-intel+2Dgvt+2Ddev=lists.freedesktop.org@pckgeline.bond>)
-Date: Fri, 8 Sep 2023 13:02:04 -0400
-From: "Delve Into The UPS Feedback Hub"
- <delve_into_the_ups_feedback_hub@pckgeline.bond>
+ Fri, 8 Sep 2023 13:56:49 -0400 (envelope-from
+ <discover-the-att-evaluation-center-intel+2Dgvt+2Ddev=lists.freedesktop.org@attmoble.bond>)
+Date: Fri, 8 Sep 2023 13:56:49 -0400
+From: "Discover The ATT Evaluation Center"
+ <discover-the-att-evaluation-center@attmoble.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Our dedication is to deliver better shipping service. Share your
- feedback, and we'll show our appreciation with a small token.
+Subject: Enjoy Exclusive Benefits and Our Gratitude Gift.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_130_782893284.1694192510117"
-Message-ID: <0.0.0.1BC.1D9E276313E37B6.65A62E@mail.pckgeline.bond>
+ boundary="----=_Part_64_94286230.1694195802355"
+Message-ID: <0.0.0.1CC.1D9E27DD76CF094.EAE1D@mail.attmoble.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,29 +54,82 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_130_782893284.1694192510117
+------=_Part_64_94286230.1694195802355
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <title>this aint a love song</title> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>infogoogle</title> 
  </head> 
- <body style="border-left: solid #3F401F 35px; border-right: solid #3F401F 35px; margin: 0"> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><br /> <span style="display: block; max-width: 499px; background-color: #F9C403; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 40pt"><strong>UPS</strong></span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt">We want to convey our appreciation for choosing UPS for your shipping needs. Your loyalty and support mean a lot to us, and we genuinely value the opportunity to assist you.</span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><a href="http://www.pckgeline.bond/lapsed-amortizes/e046IC239N5S8sP613l5dx8aZl16ffV36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQiRoed7NGL1H0u5IkkwD"><img alt="gonethru" src="http://www.pckgeline.bond/rowing-arithmetized/b345s239t5JI7La12z5dn8cX16ffi36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQiRoed5du10w5zOwUD" width="444" /></a></span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt">As part of our commitment to delivering top-notch service, we would like to invite you to participate in a brief survey concerning your recent shipping experience and overall interaction with UPS.</span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><strong>By completing the survey, there's a chance you may qualify for a $100 Gift!</strong></span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><strong><img alt="figure" src="http://www.pckgeline.bond/4494Y2395MC7aw12EW5d8dj16ffz36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQiRoed7sB1TCQ05vJJwD/quickens-schizophrenia" width="80" /></strong></span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt">To take the survey, simply click on the link below. It should only take a few minutes, and your responses will be completely confidential.</span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><br /> <span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><a href="http://www.pckgeline.bond/lapsed-amortizes/e046IC239N5S8sP613l5dx8aZl16ffV36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQiRoed7NGL1H0u5IkkwD" style="text-decoration: none; color: #fff; background-color: #3F401F; padding: 15px; font-size: 29px">Start The Survey Here &gt; &gt; </a></span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><br /> <span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt">Thank you again for your support. We look forward to<br /> hearing from you soon.<br /> <br /> Warm regards,</span></p> 
-  <p style="padding: 0px 10px; background-color: #f3f3f3; margin-top: 0; margin-bottom: 0"><span style="display: block; max-width: 499px; background-color: #fff; padding: 15px; margin: auto; text-align: center; font-size: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 16pt"><span style="max-width: 499px;  display: block; padding: 15px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 15pt; margin: auto; font-size: 12px; padding-top: 199px">you can leave with sadness <a href="http://www.pckgeline.bond/51b6I2X39M5Y8x6w12z5d8ybu16ffT36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQiRoed7mC1B0nu5IJpwD/quickens-schizophrenia" style="color:#F9C403 ">here</a><br /> US 10010 126 E 23rd St New York, NY,</span></span></p>   
- <img src="http://www.pckgeline.bond/Promethean-fragrantly/8a05S23J95Hj8C511v5d8er16ffG36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQiRoed5fSy105B@UwD" alt=""/></body>
+ <body style="padding: 0; margin: 0;"> 
+  <table style="width: 100%;"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <table style="width: 60%; border-bottom-left-radius: 30%; border-bottom-right-radius: 30%; background-color: #2157B8; margin: auto; padding-top: 20px; padding-bottom: 20px;"> 
+       <tbody> 
+        <tr> 
+         <td align="center" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bolder; color: white; font-size: xxx-large; padding-top: 0px;">AT&amp;T</td> 
+        </tr> 
+       </tbody> 
+      </table> <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <table style="margin: auto;"> 
+       <tbody> 
+        <tr> 
+         <td align="center" colspan="0"> 
+          <div> 
+           <h1 style="font-size: 25px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 0; margin: 0;">A Special Offer for Our Valued Users</h1> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <div> 
+       <table cellpadding="18px" style="margin: auto;"> 
+        <tbody> 
+         <tr> 
+          <td> 
+           <div style="max-width: 100px; display: inline-block; margin-right: 10px; vertical-align: top;">
+            <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD" style="text-decoration: none"><img alt="" src="http://www.attmoble.bond/a9d4p2395vw7xa12zT5d91s1700u36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2RoeQ7o10hBYh5sMwqD/stereos-indoors" width="100%" /> </a>
+           </div> 
+           <div style="max-width: 120px; display: inline-block;">
+            <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD"><img alt="" src="http://www.attmoble.bond/5ed5f239u5NP7ia13f5nd9Y2R1700P36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ2RoeQ5V1RQ06W3wA@D/underling-wistful" width="100%" /> </a>
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> <h3 style="max-width: 500px; margin: auto; line-height: 25px; text-align: center; font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; ">We want to convey our appreciation for choosing AT&amp;T. Your ongoing loyalty and support mean a lot to us, and we truly value the opportunity to serve you.<br /> <br /> We highly value your feedback, and to show our appreciation for your insights, we'd like to offer you a token of gratitude.</h3> &nbsp; 
+      <table align="center" cellpadding="38px" style="font-weight: bold; "> 
+       <tbody> 
+        <tr> 
+         <td>Once you've finished the survey, you'll have the chance to receive $100 in gifts!</td> 
+        </tr> 
+       </tbody> 
+      </table> <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD" style="text-decoration: none; color: white;"> </a> 
+      <div style="width: 250px; margin: auto; text-align: center; background-color: #2157B8; color: white; font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 20px; padding-bottom: 20px; border-radius: 65px; font-weight: 600;">
+       <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD" style="text-decoration: none; color: white;">Get Started Now &gt;&nbsp;&gt; </a>
+      </div> <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD" style="text-decoration: none; color: white;"> </a></td> 
+    </tr> 
+   </tbody> 
+  </table> &nbsp; 
+  <div style="max-width: 600px; margin: auto; line-height: 26px; text-align: center;"> 
+   <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center; display: block;">&nbsp; We appreciate your continued support. We eagerly await your response!<br /> &nbsp; Warm regards,<br /> &nbsp; <strong>The AT&amp;T Survey</strong></p> 
+  </div> 
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <div style="width: 100%; background-color: #f1f1f1; padding-top: 25px; padding-bottom: 20px;"> 
+   <table align="center"> 
+    <tbody> 
+     <tr> 
+      <td> <p style="text-align: center; margin: auto; font-family: Arial, Helvetica, sans-serif; line-height: 23px;">its just sad to see you <a href="http://www.attmoble.bond/1D15E239F5Gjj8611M5d90n1700T36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ2RoeQ7r1v0xCA6lXwDBq/stereos-indoors"><b>leave</b></a><br /> 10010 126 E 23rd St New York, NY, US</p> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.attmoble.bond/homewards-propagating/daa6QWL2395X8Pm511l5d93j1700N36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ2RoeQ7lF1hjG06G1BwTD" alt=""/></body>
 </html>
 
-------=_Part_130_782893284.1694192510117--
+------=_Part_64_94286230.1694195802355--
 
