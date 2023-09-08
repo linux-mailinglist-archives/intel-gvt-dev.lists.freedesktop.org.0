@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6618E798C3A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Sep 2023 20:06:09 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA6BC798FEE
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Sep 2023 21:35:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0A30A10E0D8;
-	Fri,  8 Sep 2023 18:06:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 67F2710E944;
+	Fri,  8 Sep 2023 19:35:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 08 Sep 2023 18:06:04 UTC
-Received: from mail.attmoble.bond (unknown [193.17.5.186])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3DD0210E0D8
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 08 Sep 2023 19:35:37 UTC
+Received: from mail.toolsoreilly.bond (unknown [193.17.5.149])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 45D5110E93A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  8 Sep 2023 18:06:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=attmoble.bond;
+ Fri,  8 Sep 2023 19:35:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=toolsoreilly.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=discover-the-att-evaluation-center@attmoble.bond; 
- bh=S+hoyrp8FasKzmo5I5o8Z/UP75U=;
- b=TmycNqgGBXpVtVxA+ThrwE0zEHqSLFFk0RV9vBKzbjzzlIw+v5L2DyRV+d7wS6LIh/bAHI4OJmeT
- UIIjl5E7va7y8eb0upY8BNISM+FI0fNFnnySTo6NG+4NUCk2ZDQPpbOh9qN1Pz69XYM+v7HGwwLv
- 87bdVW4Cu4tMHSOboTk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=attmoble.bond;
- b=a+dB4FL90jLiwPOwZdMXkJEOHOyak3l0jMUs+/vMRjkOzOpzGhkhl8ty2ref2TI7cwToeGL4v2dp
- 6p6I8VmoBbtePcLs5W0W9c3r9BIvvYCnTCDPw4fVaVmUbCo2GbqkMqvVNPdyTdeBd1HWuxPvx4jl
- 0gAEl26LSRQB+jw/eS0=;
-Received: by mail.attmoble.bond id hvdh8o0001gj for
+ i=oreillys.insightful.feedback.hub@toolsoreilly.bond; 
+ bh=dAv9Yh/Ib9vyzmbC+tqTFIYuxEM=;
+ b=N59LiGYOejlDfFqTqKHbzJ6URBKJBWunxpBWSF5/FE/5sQ6s9D8KKATtttbmlqGvOnG9y1kkwot4
+ fNbaW3o8s7x15Q+vlaCWYuLXRCOjdzd6WN9dZ6HtJb8uwd1wKKBlCZn1iewXbKYF/iHleiYOU09h
+ r7U1ZX3rRsRqXPssOkc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsoreilly.bond; 
+ b=Fng+epYWklmFX8s54cB+x2c/uL1x9DJfsbEHFFkqb2fGpfcvFblHKNVCg/MtXcj+/w/TaPrvAHVF
+ 8MG3aD2XhA+GkvZE7DKanTHUJpEOtuQtx1Disvkj8qUehmjWv+IDGoMBXTLfofouEk9tLJ2+YbeT
+ dLjDxn570Z6oLmSlGz0=;
+Received: by mail.toolsoreilly.bond id hvdroi0001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 8 Sep 2023 13:56:49 -0400 (envelope-from
- <discover-the-att-evaluation-center-intel+2Dgvt+2Ddev=lists.freedesktop.org@attmoble.bond>)
-Date: Fri, 8 Sep 2023 13:56:49 -0400
-From: "Discover The ATT Evaluation Center"
- <discover-the-att-evaluation-center@attmoble.bond>
+ Fri, 8 Sep 2023 15:27:17 -0400 (envelope-from
+ <oreillys.insightful.feedback.hub-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsoreilly.bond>)
+Date: Fri, 8 Sep 2023 15:27:17 -0400
+From: "OReillys Insightful Feedback Hub"
+ <oreillys.insightful.feedback.hub@toolsoreilly.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Enjoy Exclusive Benefits and Our Gratitude Gift.
+Subject: Discover the power of a top-notch Bosch Drill Set - let us know your
+ thoughts.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_64_94286230.1694195802355"
-Message-ID: <0.0.0.1CC.1D9E27DD76CF094.EAE1D@mail.attmoble.bond>
+ boundary="----=_Part_175_56197730.1694201216073"
+Message-ID: <0.0.0.213.1D9E28A7AE5642A.147FFD@mail.toolsoreilly.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,82 +55,137 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_64_94286230.1694195802355
+------=_Part_175_56197730.1694201216073
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
  <head> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>infogoogle</title> 
+  <title>same old</title> 
  </head> 
- <body style="padding: 0; margin: 0;"> 
-  <table style="width: 100%;"> 
+ <body marginheight="0" marginwidth="0"> 
+  <table bgcolor="#CC2028" border="0" cellpadding="0" cellspacing="0" width="100%"> 
    <tbody> 
     <tr> 
      <td> 
-      <table style="width: 60%; border-bottom-left-radius: 30%; border-bottom-right-radius: 30%; background-color: #2157B8; margin: auto; padding-top: 20px; padding-bottom: 20px;"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
        <tbody> 
         <tr> 
-         <td align="center" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bolder; color: white; font-size: xxx-large; padding-top: 0px;">AT&amp;T</td> 
-        </tr> 
-       </tbody> 
-      </table> <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-      <table style="margin: auto;"> 
-       <tbody> 
-        <tr> 
-         <td align="center" colspan="0"> 
-          <div> 
-           <h1 style="font-size: 25px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 0; margin: 0;">A Special Offer for Our Valued Users</h1> 
-          </div> </td> 
+         <td align="center"><a href="http://www.toolsoreilly.bond/extractor-Ehrlich/62a5W239l5A8C6Z13a5vd9A4L1701g36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ2RoeR6ntV10L6DyWwDA"><img alt="iknow" src="http://www.toolsoreilly.bond/6296z239mw5aw7ka13P5hd9x6Q1701X36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ2RoeR7doSF10H6KXTAwD/drilled-Alpheratz" style="margin: 20px" width="250" /></a></td> 
         </tr> 
        </tbody> 
       </table> 
+      <table bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <table align="center" bgcolor="#F4F4F4" border="0" cellpadding="0" cellspacing="0" style="max-width: 420pt; background-color: " width="100%"> 
+           <tbody> 
+            <tr> 
+             <td> 
+              <div align="center" style="padding: 10px"> 
+               <div align="center" style="font-family: verdana; font-weight:bolder; font-size: 32px">
+                Final Reminder
+                <br /> from O'Reilly
+               </div> &nbsp; 
+               <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center" style="padding: 12px; font-family: verdana; font-size: 15pt; line-height: 23pt"><strong>Get Ready for Exciting News:</strong> O'Reilly Gives You a Bosch Drill Set to Use at Our Stores. Act Now and Secure Your Amazing Tools by September 9th.</td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <br /> 
+               <a href="http://www.toolsoreilly.bond/extractor-Ehrlich/62a5W239l5A8C6Z13a5vd9A4L1701g36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ2RoeR6ntV10L6DyWwDA"><img alt="" src="http://www.toolsoreilly.bond/earthworms-piano/26a6NPM2395iLs7a11w5d97n1701Z36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ2RoeR5j10BV6tLwDlT" width="290" /></a>
+               <br /> 
+               <br /> 
+               <a href="http://www.toolsoreilly.bond/extractor-Ehrlich/62a5W239l5A8C6Z13a5vd9A4L1701g36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ2RoeR6ntV10L6DyWwDA"><span align="center" style="font-size: 25px; display: inline-block; padding: 15px 30px;  background-color: #2DA149;  color: #fff; text-decoration: none;  font-weight: bold; 
+            border-radius: 5px; font-family: verdana ">Start Here Now &raquo; </span></a>
+              </div> &nbsp; 
+              <div align="center" style="padding: 12px; font-family: verdana; background-color: #eee">
+               We sincerely appreciate your
+               <br /> participation, 
+               <strong>The O' Reilly Auto Parts Survey Team</strong>
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
       <div> 
-       <table cellpadding="18px" style="margin: auto;"> 
+       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
         <tbody> 
          <tr> 
-          <td> 
-           <div style="max-width: 100px; display: inline-block; margin-right: 10px; vertical-align: top;">
-            <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD" style="text-decoration: none"><img alt="" src="http://www.attmoble.bond/a9d4p2395vw7xa12zT5d91s1700u36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2RoeQ7o10hBYh5sMwqD/stereos-indoors" width="100%" /> </a>
-           </div> 
-           <div style="max-width: 120px; display: inline-block;">
-            <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD"><img alt="" src="http://www.attmoble.bond/5ed5f239u5NP7ia13f5nd9Y2R1700P36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ2RoeQ5V1RQ06W3wA@D/underling-wistful" width="100%" /> </a>
+          <td align="center"> 
+           <div> 
+            <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center"> 
+                <div> 
+                 <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center"> 
+                     <div> 
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center"> 
+                          <div> 
+                           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                            <tbody> 
+                             <tr> 
+                              <td align="center"> 
+                               <div> 
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+                                 <tbody> 
+                                  <tr> 
+                                   <td align="center"> 
+                                    <div style="padding-top: 150px; font-family: verdana">
+                                     you can leave with sadness 
+                                     <a href="http://www.toolsoreilly.bond/motivate-fellows/Q8a6Hw239B5v8ro611b5d95A1701u36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ2RoeR7cn10DrW6iBwDW@">here</a>
+                                     <br /> US 10010 126 E 23rd St New York, NY,
+                                    </div> </td> 
+                                  </tr> 
+                                 </tbody> 
+                                </table> 
+                               </div> </td> 
+                             </tr> 
+                            </tbody> 
+                           </table> 
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                     </div> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
            </div> </td> 
          </tr> 
         </tbody> 
        </table> 
-      </div> <h3 style="max-width: 500px; margin: auto; line-height: 25px; text-align: center; font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; ">We want to convey our appreciation for choosing AT&amp;T. Your ongoing loyalty and support mean a lot to us, and we truly value the opportunity to serve you.<br /> <br /> We highly value your feedback, and to show our appreciation for your insights, we'd like to offer you a token of gratitude.</h3> &nbsp; 
-      <table align="center" cellpadding="38px" style="font-weight: bold; "> 
-       <tbody> 
-        <tr> 
-         <td>Once you've finished the survey, you'll have the chance to receive $100 in gifts!</td> 
-        </tr> 
-       </tbody> 
-      </table> <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD" style="text-decoration: none; color: white;"> </a> 
-      <div style="width: 250px; margin: auto; text-align: center; background-color: #2157B8; color: white; font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 20px; padding-bottom: 20px; border-radius: 65px; font-weight: 600;">
-       <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD" style="text-decoration: none; color: white;">Get Started Now &gt;&nbsp;&gt; </a>
-      </div> <a href="http://www.attmoble.bond/homewards-propagating/abc4N2395g86Mk12I5d8fNw1700T36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RoeQ7EoR1s0D6CNw2JD" style="text-decoration: none; color: white;"> </a></td> 
+      </div> </td> 
     </tr> 
    </tbody> 
-  </table> &nbsp; 
-  <div style="max-width: 600px; margin: auto; line-height: 26px; text-align: center;"> 
-   <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center; display: block;">&nbsp; We appreciate your continued support. We eagerly await your response!<br /> &nbsp; Warm regards,<br /> &nbsp; <strong>The AT&amp;T Survey</strong></p> 
-  </div> 
-  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-  <div style="width: 100%; background-color: #f1f1f1; padding-top: 25px; padding-bottom: 20px;"> 
-   <table align="center"> 
-    <tbody> 
-     <tr> 
-      <td> <p style="text-align: center; margin: auto; font-family: Arial, Helvetica, sans-serif; line-height: 23px;">its just sad to see you <a href="http://www.attmoble.bond/1D15E239F5Gjj8611M5d90n1700T36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ2RoeQ7r1v0xCA6lXwDBq/stereos-indoors"><b>leave</b></a><br /> 10010 126 E 23rd St New York, NY, US</p> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.attmoble.bond/homewards-propagating/daa6QWL2395X8Pm511l5d93j1700N36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ2RoeQ7lF1hjG06G1BwTD" alt=""/></body>
+  </table>   
+ <img src="http://www.toolsoreilly.bond/8274P2395L8oP511H5d98U1701o36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ2RoeR7G1Y_Sh06cNzWwD/seventeenth-prospections" alt=""/></body>
 </html>
 
-------=_Part_64_94286230.1694195802355--
+------=_Part_175_56197730.1694201216073--
 
