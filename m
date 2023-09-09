@@ -2,37 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6141B79976F
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Sep 2023 12:34:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 491B9799B67
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Sep 2023 23:26:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2D17410E10F;
-	Sat,  9 Sep 2023 10:34:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0D68810E154;
+	Sat,  9 Sep 2023 21:26:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 603 seconds by postgrey-1.36 at gabe;
- Sat, 09 Sep 2023 10:34:22 UTC
-Received: from taihaowh.cn (unknown [95.215.108.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id BC98410E10F
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sat, 09 Sep 2023 21:26:52 UTC
+Received: from mail.homedltainfo.bond (unknown [213.21.253.109])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D557510E154
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  9 Sep 2023 10:34:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=key1; d=taihaowh.cn;
- h=Content-Type:MIME-Version:Content-Transfer-Encoding:From:Subject:Date:To;
- i=lifecard.co.jp1@taihaowh.cn;
- bh=UWbrLjfFQ+bXknoqAYYQC1/aJga0ZeYX7t1NN+Hy52o=;
- b=M2dwCcbVcCKxGjAQX0ESymIdF8PCWUjFtHSsU+aRLGcjgfpSs9eFoodJgzP/akgEjlQw+QX/ZOyk
- lix/PcfPMGS46CSwP7IKNdI63YydFHjsAKkZzHGmSUcZ5Oht9AE86+el5FHxFm8S81B2eI9Y5Pk9
- 8tkzQbvUXCbKaCyO3ORAKPgW0rw6T2vyqV2rBX1BKDm+ObfmODFkAjz9cD2vC0QuOHNMouNlA99J
- YI/td8nPJBQ8StncrwOsG7JKVZ5cVR8V9M/QJlmONK0HuYv7tAFHvDq8x0My6CokiqcTGiPL0vwF
- g5ZRoUsG5fI4NLUyly4fnoYidZnxJghUylPWCA==
-Content-Type: text/html; charset="utf-8"
+ Sat,  9 Sep 2023 21:26:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=homedltainfo.bond;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=uncovering_delta_flight_experiences@homedltainfo.bond; 
+ bh=myghkRoH344r5zsOz1He4m4Z7yg=;
+ b=KOj/Ey1rkvZJgxgun3dGB4qhAEi7nuwkeK6zGTCWVoqC/gk592X+8gXB6QIbeOQtXdK7K/cTMM0D
+ XljXZuBocrXJI3nCTl8uAMQMbShXz+xe1sHmmcWTZ6jIHWi6x/s7HjtGlZyJS/Nwo27/jUFa3CUL
+ Ec8J/ul3JhTY7Os0zSA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=homedltainfo.bond; 
+ b=P7RnF2e7+5qVFitI3kUWv92YMwxisrlkPDaVhuvqz5ZJpDmNMUpiEgBw6AypaJY6rUBVw7UjpToC
+ rjrxlEMcmVVR4ZBWzTzz54NliBjgLX5qvcFJ2h5r0LBcz+Pw8AOy7zHbXjDyFXnQxAY1RDIHAGS0
+ Qn+C81E1HYdN1UU3QSo=;
+Received: by mail.homedltainfo.bond id hvjhhq0001gm for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sat, 9 Sep 2023 17:19:52 -0400 (envelope-from
+ <uncovering_delta_flight_experiences-intel+2Dgvt+2Ddev=lists.freedesktop.org@homedltainfo.bond>)
+Date: Sat, 9 Sep 2023 17:19:52 -0400
+From: "Uncovering Delta Flight Experiences"
+ <uncovering_delta_flight_experiences@homedltainfo.bond>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: We're extending a gift to you - share your experience to claim it.
 MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-From: =?utf-8?b?44Op44Kk44OV44Kr44O844OJ44GL44KJ44Gu44GK55+l44KJ44Gb?=
- <lifecard.co.jp1@taihaowh.cn>
-Subject: =?utf-8?b?44CQ6YeN6KaB77ya44Op44Kk44OV44Kr44O844OJ44CR44GU5Yip55So5Luj?=
- =?utf-8?b?6YeR44GU6KuL5rGC6YeR6aGN44Gu44GU5qGI5YaF?=
-Date: Sat, 09 Sep 2023 13:24:14 +0300
-To: intel-gvt-dev@lists.freedesktop.org
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_403_1101217531.1694294368591"
+Message-ID: <0.0.0.2B.1D9E3635F41D53A.3CCCF0@mail.homedltainfo.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,97 +53,87 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20230909103424.2D17410E10F@gabe.freedesktop.org>
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
-Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
-bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCjxQPuOBhOOBpOOC
-guODqeOCpOODleOCq+ODvOODieOCkuOBlOWIqeeUqOOBhOOBn+OBoOOBjeiqoOOBq+OBguOCiuOB
-jOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgjwvUD4NCjxQPjIwMjPlubQ45pyI5YiG44Gu44GU6KuL
-5rGC6YeR6aGN44KS44GU5qGI5YaF44GE44Gf44GX44G+44GZ44CCPC9QPg0K4pSB4pSB4pSB4pSB
-4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSBPEJSPg0K4pag
-5b2T5pyI44Gu44GU6KuL5rGC6YeR6aGNPEJSPg0K44Op44Kk44OV44Kr44O844OJ44K044O844Or
-44OJ77yl77yz77yw77yl77yj77yp77yh77ysPEJSPg0KPFA+5b2T5pyI44GK5pSv5omV5pelPEJS
-Pg0K44CAOeaciDI35pelPC9QPg0KPFA+PEJSPuKWvOOBlOiri+axguaYjue0sOOBruOBlOeiuuiq
-jeOBr+OBk+OBoeOCiTwvUD4NCjxQPjxBIGhyZWY9Imh0dHBzOi8vbGlmZWNhcmQudmlwbmguY24/
-YmFzaWMvc2VjdXJpdHkvY2F1dGlvbi5odG1sI3RhYi0wNSI+aHR0cHM6Ly93d3czLmxpZmVjYXJk
-LmNvLmpwL1dlYkRlc2svPC9BPjwvUD4NCjxQPuKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKU
-geKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj48L1A+DQo8UD7ilrzjgJDph43opoHj
-gJHjgrfjg6fjg4Pjg5Tjg7PjgrDjg6rjg5zjg6vjg5Pjg7PjgrDmiZXjgYTjgYrjgojjgbPjgYLj
-gajjgYvjgonlm57mlbDmjIflrprliIblibLmiZXjgYTmiYvmlbDmlpnnjofmlLnlrprilrw8QlI+
-DQrmlLnlrprlhoXlrrnjgavjgaTjgYTjgabjga/jgZPjgaHjgonjgpLjgZTopqfjgY/jgaDjgZXj
-gYTjgII8L1A+DQo8UD48QSBocmVmPSJodHRwczovL3d3dy5saWZlY2FyZC5jby5qcC9yeW91cml0
-c3UvIj5odHRwczovL3d3dy5saWZlY2FyZC5jby5qcC9yeW91cml0c3UvPC9BPjwvUD4NCjxQPjxC
-Uj7ilrzjgJDph43opoHjgJHjgIxMSUZF44K144Oz44Kv44K544OX44Os44K844Oz44OI44CN44Od
-44Kk44Oz44OI44OX44Ot44Kw44Op44Og5pS55a6a44Gu44GU5qGI5YaF4pa8PC9QPg0KPFA+IOaU
-ueWumuWGheWuueOBq+OBpOOBhOOBpuOBr+OBk+OBoeOCieOCkuOBlOimp+OBj+OBoOOBleOBhOOA
-gjxCUj4NCjxQPjxBIGhyZWY9Imh0dHBzOi8vd3d3LmxpZmVjYXJkLmNvLmpwL2JvbnVzLyI+aHR0
-cHM6Ly93d3cubGlmZWNhcmQuY28uanAvYm9udXMvPC9BPjwvUD4NCuKUgeKUgeKUgeKUgeKUgeKU
-geKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj4NCuKWoOS7iuac
-iOOBr+S6iOaDs+OCiOOCiuOBiuaUr+aJleOBhOOBjOWkmuOBhOOBqOaAneOBo+OBn+OBqOOBjeOB
-r+KApjxCUj4NCuW9k+aciOOBiuaUr+aJleaYjue0sOOCkuOAjOOBguOBqOODquODnOOAjeOBp+e/
-jOaciOmWi+Wni+OBruODquODnOaJleOBhOOBq+OBlOWkieabtOOBp+OBjeOBvuOBmeOAgjxCUj4N
-Cu+8nOOAjOOBguOBqOODquODnOOAjeOBruWkieabtOacn+aXpe+8njxCUj4NCuOAgDnmnIgxOOaX
-pTxCUj4NCjxCUj4NCuKWvOOAjOOBguOBqOODquODnOOAjeOBruOBlOWIqeeUqOOBr+OBk+OBoeOC
-iTxCUj4NCjxQPjxBIGhyZWY9Imh0dHBzOi8vd3d3My5saWZlY2FyZC5jby5qcC9XZWJEZXNrL3d3
-dy9yZXZvY2hnZGV0ZWlsL3JpYm9TZWwuaHRtbCI+aHR0cHM6Ly93d3czLmxpZmVjYXJkLmNvLmpw
-L1dlYkRlc2svd3d3L3Jldm9jaGdkZXRlaWwvcmlib1NlbC5odG1sPC9BPjwvUD4NCjxCUj4NCuKW
-vOavjuaciOOBruOBiuaUr+aJleaWueazleOBruWkieabtOaJi+e2muOBjeOBjOS4jeimgeOBquOA
-jEFVVE/jg6rjg5zjgI3jgoLjgYrjgZnjgZnjgoHjgafjgZnvvIE8QlI+DQo8UD48QSBocmVmPSJo
-dHRwczovL3d3dy5saWZlY2FyZC5jby5qcC9ob3d0by9wYXltZW50L3Jldm8vYXV0by5odG1sIj5o
-dHRwczovL3d3dy5saWZlY2FyZC5jby5qcC9ob3d0by9wYXltZW50L3Jldm8vYXV0by5odG1sPC9B
-PjwvUD4NCjxCUj4NCuKWoOODqeOCpOODleOCq+ODvOODieOBr+OBiuODiOOCr+OBquOCreODo+OD
-s+ODmuODvOODs+OBjOebm+OCiuOBoOOBj+OBleOCk++8geKWoDxCUj4NCuKWveOCreODo+ODs+OD
-muODvOODs+aDheWgseOBr+OBk+OBoeOCieOBi+OCieKWvTxCUj4NCjxQPjxBIGhyZWY9Imh0dHBz
-Oi8vd3d3My5saWZlY2FyZC5jby5qcC9XZWJEZXNrL2FjdGlvbi93YTEwOC9XQTEwODA1L3JXQTEw
-ODA1MDEiPmh0dHBzOi8vd3d3My5saWZlY2FyZC5jby5qcC9XZWJEZXNrL2FjdGlvbi93YTEwOC9X
-QTEwODA1L3JXQTEwODA1MDE8L0E+PC9QPg0KPEJSPg0K4oC744GU5aWR57SE5YaF5a6544CB44Kr
-44O844OJ44Gu44GU5Yip55So54q25rOB44CB44GU5Yip55So5Luj6YeR44Gu44GK5pSv5omV54q2
-5rOB44Gr44KI44Gj44Gm44Gv44CB44CM44GC44Go44Oq44Oc44CN44CMQVVUT+ODquODnOOAjeOC
-kuOBlOWIqeeUqOOBhOOBn+OBoOOBkeOBquOBhOWgtOWQiOOBjOOBlOOBluOBhOOBvuOBmeOAgg0K
-44G+44Gf44CB44OT44K444ON44K544Kr44O844OJ77yI5rOV5Lq644Kr44O844OJ77yJ44Gn44Gv
-44GU5Yip55So44GE44Gf44Gg44GR44G+44Gb44KT44CCPEJSPg0K4pSB4pSB4pSB4pSB4pSB4pSB
-4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSBPEJSPg0KPEJSPg0K4pag
-44CMTElGRS1XZWIgRGVza+OCouODl+ODquOAjeOBp+OBiuaUr+aJlemHkemhje+8huODneOCpOOD
-s+ODiOeiuuiqjeOBjOOBmeOBkOOBp+OBjeOBpuOCq+ODs+OCv+ODs++8huS+v+WIqe+8gTxCUj4N
-CjxCUj4NCuKWvOODgOOCpuODs+ODreODvOODieOBr+OBk+OBoeOCiTxCUj4NCjxQPjxBIGhyZWY9
-Imh0dHBzOi8vd3d3LmxpZmVjYXJkLmNvLmpwL2hvd3RvL2FwcC8iPmh0dHBzOi8vd3d3LmxpZmVj
-YXJkLmNvLmpwL2hvd3RvL2FwcC88L0E+PC9QPg0KPEJSPg0K4pSB4pSB4pSB4pSB4pSB4pSB4pSB
-4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSBPEJSPg0K772eSUTjg7vjg5Hj
-grnjg6/jg7zjg4nnrqHnkIbjga/ljrPph43jgavvvZ48QlI+DQpMSUZFLVdlYiBEZXNr44GuSUTj
-g7vjg5Hjgrnjg6/jg7zjg4njgpLnrKzkuInogIXjgavnn6XjgonjgozjgarjgYTjgojjgYbjgavl
-hYXliIbjgZTms6jmhI/jgY/jgaDjgZXjgYTjgII8QlI+DQrjgb7jgZ/jgIHjgZTnmbvpjLLjgYTj
-gZ/jgaDjgYTjgabjgYTjgotJROODu+ODkeOCueODr+ODvOODieOBjOS7peS4i+OBruOCseODvOOC
-ueOBq+ipsuW9k+OBmeOCi+WgtOWQiOOAgeesrOS4ieiAheOBq+aOqOa4rOOBleOCjOOCi+OBiuOB
-neOCjOOBjOOBguOCiuOBvuOBmeOBruOBp+OAgeODkeOCueODr+ODvOODieOBruOBlOWkieabtOOC
-kuW8t+OBj+OBiuOBmeOBmeOCgeOBhOOBn+OBl+OBvuOBmeOAgjxCUj4NCuODu+S7luOBruOCteOC
-pOODiOOBqOWQjOS4gOOBruOCguOBruOCkuS9v+eUqOOBl+OBpuOBhOOCi+WgtOWQiDxCUj4NCuOD
-u+WQjeWJjeOAgeWxheS9j+WcsOWQjeOAgeeUn+W5tOaciOaXpeOAgembu+ipseeVquWPt+OBquOB
-qeOCkuS9v+eUqOOBl+OBpuOBhOOCi+WgtOWQiDxCUj4NCuODu+OCreODvOODnOODvOODieOBq+S4
-puOCk+OBoOaWh+Wtl+WIl++8iGFzZGbjgarjganvvInjga7loLTlkIg8QlI+DQrigLvjg5Hjgrnj
-g6/jg7zjg4njga/lrprmnJ/nmoTjgavjgZTlpInmm7TjgY/jgaDjgZXjgYTjgII8QlI+DQo8QlI+
-DQrilrxJROODu+ODkeOCueODr+ODvOODieOBruWkieabtOOBr+OBk+OBoeOCiTxCUj4NCjxQPjxB
-IGhyZWY9Imh0dHBzOi8vd3d3My5saWZlY2FyZC5jby5qcC9XZWJEZXNrLyI+aHR0cHM6Ly93d3cz
-LmxpZmVjYXJkLmNvLmpwL1dlYkRlc2svPC9BPjwvUD4NCjxCUj4NCuKUgeKUgeKUgeKUgeKUgeKU
-geKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj4NCu+9nuS9j+aJ
-gOWkieabtOaJi+e2muOBjeOBruOBiumhmOOBhO+9njxCUj4NCuOBiuW8lei2iuOBl+etieOBp+OB
-lOS9j+aJgOOBjOWkieOCj+OCieOCjOOBn+mam+OBq+OBr+OAgeW8iuekvuWum+OBq+OBiuaXqeOC
-geOBq+S9j+aJgOWkieabtOOBruWxiuWHuuOCkuOBiumhmOOBhOOBl+OBvuOBmeOAgjxCUj4NCuOB
-iuWxiuOBkeOBhOOBn+OBoOOBkeOBquOBhOWgtOWQiOOAgeW8iuekvuOBi+OCieOBrumHjeimgeOB
-quOBiuefpeOCieOBm+OBjOWxiuOBi+OBquOBhOWgtOWQiOOCguOBguOCiuOBvuOBmeOBruOBp+OB
-lOazqOaEj+OBj+OBoOOBleOBhOOAgjxCUj4NCjxCUj48QlI+DQotLTxCUj4NCuOBiuWVj+OBhOWQ
-iOOCj+OBm++8mjxBIGhyZWY9Imh0dHBzOi8vd3d3LmxpZmVjYXJkLmNvLmpwL3N1cHBvcnQvY29u
-dGFjdC8iPmh0dHBzOi8vd3d3LmxpZmVjYXJkLmNvLmpwL3N1cHBvcnQvY29udGFjdC88L0E+PEJS
-Pg0K55m65L+h5YWD44CA77yaIOODqeOCpOODleOCq+ODvOODieagquW8j+S8muekvuOAgOadseS6
-rOmDvea4r+WMuuiKneODi+S4geebrjMx55WqMTnlj7fjgIDjg5Djg7PjgrbjgqTjg5Pjg6s8QlI+
-DQrigLvmnKzjg6Hjg7zjg6vjga/oh6rli5XphY3kv6HjgZXjgozjgabjgYTjgb7jgZnjgILjgZTo
-v5Tkv6HjgYTjgZ/jgaDjgYTjgabjgoLjgYrnrZTjgYjjgafjgY3jgb7jgZvjgpPjga7jgafjgZTk
-uobmib/jgY/jgaDjgZXjgYTjgII8QlI+DQrigLsx5pyI44CBNeaciOOBruOBlOWIqeeUqOS7o+mH
-kUUtbWFpbOmAgeS7mOOCteODvOODk+OCueOBr+OAgemFjeS/oeaXpeOBjOmAmuW4uOaciOOCiOOC
-iumBheOBj+OBquOCi+WgtOWQiOOBjOOBlOOBluOBhOOBvuOBmeOBruOBp+OAgeOBguOCieOBi+OB
-mOOCgeOBlOS6huaJv+OBj+OBoOOBleOBhOOAgjxCUj4NCuKAu+iomOi8ieOBrlVSTOOBr1BD44O7
-44K544Oe44O844OI44OV44Kp44Oz44GL44KJ44Ki44Kv44K744K544GX44Gm44GP44Gg44GV44GE
-44CCPEJSPg0K4oC744GU5Yip55So44Gu56uv5pyr44GK44KI44Gz6Kit5a6a44Gr44KI44Gj44Gm
-44Gv55S76Z2i6YG356e744GX44Gq44GE5aC05ZCI44GM44GU44GW44GE44G+44GZ44CCPEJSPg0K
-DQogPC9CT0RZPjwvSFRNTD4NCg==
+------=_Part_403_1101217531.1694294368591
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <title>atreals</title> 
+ </head> 
+ <body> 
+  <table border="0" cellpadding="2" cellspacing="2" style="float: left" width="50"> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <table border="0" cellpadding="2" cellspacing="2" style="float: right" width="50"> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div align="center" style="max-width: 491px; margin: auto; background-color: #11182A; padding: 0px">
+   <a href="http://www.homedltainfo.bond/microinstruction-Montpelier/bca4d2395J8LV612S25973D7934X36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ8YR19oSnQ6oD10iZ6sAUcLY"><img alt="realmes" src="http://www.homedltainfo.bond/5b14g2395c7ahg17fRq259Z75BBM7934A36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ8iR19oSnQ7ICvh10p6AAcYyX/audiometric-taxes" style="margin: 5px" width="255" /></a> 
+   <table bgcolor="#fff" border="0" cellpadding="2" cellspacing="2" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td style="padding: 12px; text-align: center; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 19px">We want to convey our appreciation for choosing Delta for your travel needs. Your loyalty and support are highly valued by us, and we genuinely appreciate the chance to assist you<br /> &nbsp; 
+       <div>
+        <a href="http://www.homedltainfo.bond/microinstruction-Montpelier/bca4d2395J8LV612S25973D7934X36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ8YR19oSnQ6oD10iZ6sAUcLY" target="_blank"><img alt="roundletter" src="http://www.homedltainfo.bond/2876g2A39X5c7yaO17BNXV_B25976y7934h36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ8BR19oSnQ5S10_D6nlcpTY/organizes-coincidental" style="border:0; display:block; outline:none; text-decoration:none; height:auto; width:100%; font-size:13px; " width="100%" /> </a> 
+        <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td>In our ongoing commitment to providing exceptional experiences, we cordially invite you to participate in a brief survey about your recent flight and overall interaction with Delta.<br /> &nbsp; 
+            <div style="background-color: #E5E5E5; padding-top: 12px">
+             Your feedback is highly valuable to us, and as an expression of our appreciation for your time and input, we have a special offer waiting for you. 
+             <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td style="padding: 15px"><strong>Upon finishing the survey, you have the chance to qualify for a $100 gift!</strong></td> 
+               </tr> 
+               <tr> 
+                <td>To access the survey, please click on the link below. The survey will only take a few minutes to complete, and your responses will be kept entirely confidential. 
+                 <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center"><br /> <a href="http://www.homedltainfo.bond/microinstruction-Montpelier/bca4d2395J8LV612S25973D7934X36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ8YR19oSnQ6oD10iZ6sAUcLY" style="color: #fff; text-decoration: none; display: block; background-color: #E01833; padding: 15px; max-width: 350px; font-size: 25px">Start The Survey Here &gt; &gt; </a></td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <div style="background-color: #fff; padding: 12px; font-size: 10pt">
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> you can leave us with regret 
+         <a href="http://www.homedltainfo.bond/e216j239HO5CQ8A617B2q5jyX97y4D7934T36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ8RR19oSnQ5WN1M06HWOycY/profitably-spiraling">here</a>
+         <br /> US 10010 126 E 23rd St New York, NY,
+        </div> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.homedltainfo.bond/7eb6J2D3O95r85Bq17s2yp5g97A7Tq7934L36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ8cR19oSnQ7J1TA0tL6KPTcYl/organizes-coincidental" alt=""/></body>
+</html>
+
+------=_Part_403_1101217531.1694294368591--
+
