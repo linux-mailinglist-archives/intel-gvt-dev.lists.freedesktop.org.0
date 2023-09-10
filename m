@@ -2,45 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA15F799FF4
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Sep 2023 22:51:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4015079A026
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Sep 2023 23:43:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B2FE810E09A;
-	Sun, 10 Sep 2023 20:51:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E9FCC10E0A2;
+	Sun, 10 Sep 2023 21:43:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 631 seconds by postgrey-1.36 at gabe;
- Sun, 10 Sep 2023 20:51:00 UTC
-Received: from mail.settoolkobalt.bond (unknown [193.160.141.234])
- by gabe.freedesktop.org (Postfix) with ESMTP id 358E510E09A
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sun, 10 Sep 2023 21:43:03 UTC
+Received: from mail.toolacetop.bond (unknown [193.160.141.232])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 481B810E0A2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 10 Sep 2023 20:51:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=settoolkobalt.bond; 
+ Sun, 10 Sep 2023 21:43:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=toolacetop.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=latest-lowes-store-information@settoolkobalt.bond; 
- bh=wWvtyDl3eOPw9OuHW48Vn1Thq9s=;
- b=ImiAr08NacJPJuCd+97ZAN0L3H6G0ncnmErhel9Ok7i5c1azRKJTeY/RgDMpSyOw9t8PDgCWqmNo
- LUCtF1DPHQ/Po86pPv61PZsDcdttl6ovyNzirQXJwwq8ZZLs8+hyLpB79iLAGs/SfYxvjAXKctMl
- PWdNIKxiL8MyK2T2H48=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=settoolkobalt.bond; 
- b=fhBdeXxRzEnhYlh6i947OobX8wEVqDXzZfatFTRSUCO27RpctbI6IqFL7n9F/3d0teqJ8qSo+QdP
- JUQEvVC5IFC+P6v58C3whT+kmUmof1fQ7swybE/0bHfHT3c2azwFjK9CqC/1MOLUewnxd7q3wO3/
- Xk74ClCGviWmuAWn774=;
-Received: by mail.settoolkobalt.bond id hvom380001gq for
+ i=ace.hardware.affordability@toolacetop.bond; 
+ bh=hyiBCCO6zXeRAdxN6lOvxfsYuuA=;
+ b=gXQkJipKYs2H6vF1sIYwBVQz75xpqqyv5IR2qh3S/aQiQoMxWfNALsdYwjWy4n1I2MCxPY7tHFVe
+ Fa7/WSkq3ogiY/Ns85dPj90xLr59fWKI+qKUUhtZzGU0fwleSHQal2fA0SeAjEe8EJxcdxzmqK8h
+ 7ijN0TXG+e4zzV9Yzpk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolacetop.bond;
+ b=AruBwUgKDPG4xPCAOQbARf9hckSaWC6JDgROOIjq8m8DNKl5lRvwoC2oYLHb1sYZWD360ueYwZ7o
+ xa3L5KmIfH44n0GBgCCSCSEGdtd9EJ/YuY1YidtJkUyIh3DTs3uDTUmxjbteJFILzpMSpAy7iAS3
+ FKRuB/V/QiK01tQ02EM=;
+Received: by mail.toolacetop.bond id hvos6e0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 10 Sep 2023 16:37:18 -0400 (envelope-from
- <latest-lowes-store-information-intel+2Dgvt+2Ddev=lists.freedesktop.org@settoolkobalt.bond>)
-Date: Sun, 10 Sep 2023 16:37:18 -0400
-From: "Latest Lowes Store Information"
- <latest-lowes-store-information@settoolkobalt.bond>
+ Sun, 10 Sep 2023 17:35:15 -0400 (envelope-from
+ <ace.hardware.affordability-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolacetop.bond>)
+Date: Sun, 10 Sep 2023 17:35:15 -0400
+From: "ACE Hardware Affordability" <ace.hardware.affordability@toolacetop.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Enjoy a specially arranged Kobalt Tool set when you share your
- opinions - you qualify.
+Subject: Get your hands on a Stanley tool set by completing our survey!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_172_526384621.1694378216063"
-Message-ID: <0.0.0.14.1D9E42697561BFC.112AA@mail.settoolkobalt.bond>
+ boundary="----=_Part_361_1774584416.1694381708789"
+Message-ID: <0.0.0.4B.1D9E42EAFA484B6.68AB7C@mail.toolacetop.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,83 +53,82 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_172_526384621.1694378216063
+------=_Part_361_1774584416.1694381708789
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
  <head> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>pops infos topers</title> 
-  <link href="http://www.settoolkobalt.bond/40d5A2P395Sy86p13no5sdacV1705q36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQXRoKm6bqSM105JzpwD/alerting-stickers" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.settoolkobalt.bond/abb4L2395Y8nx613S5ydadTo1705j36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQXRoKm6VI1_0l6c0@pwD/purifying-caresses" rel="preconnect" /> 
-  <link href="http://www.settoolkobalt.bond/40d5A2P395Sy86p13no5sdacV1705q36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQXRoKm6bqSM105JzpwD/alerting-stickers/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet" /> 
+  <title>the cure</title> 
  </head> 
- <body style="background-color: #eeeeee;"> 
-  <center>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </center> 
-  <table id="dopers att" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> 
-   <tbody> 
-    <tr> 
-     <td class="titleproyec" style="font-size: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <table align="center" cellpadding="20px" style="max-width: 520px; margin: auto; text-align: center; border-collapse: collapse; box-shadow: 2px 5px 5px 1px #d6dcf3; box-shadow: 2px 5px 5px 1px #d6dcf3; box-shadow: 2px 5px 5px 1px #d6dcf3;border-radius: 30px; background-color: #fff;"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <div> 
-       <div style="max-width: 200px;">
-        <a href="http://www.settoolkobalt.bond/unleashes-technicality/cf64Q2395NF86j12g5xdaeN1705L36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQXRoKm5bB1I05Q2ywD"><img alt="" src="http://www.settoolkobalt.bond/cb95V2M395FC7at11p5db0u1705L36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQXRoKm6GQU10r6LJqywD/mentalities-furthering" width="100%" /> </a>
-       </div> 
-      </div> </td> 
-    </tr> 
-    <tr> 
-     <td bgcolor="#2743A8" style="font-size: 30px;font-family: 'Josefin Sans', sans-serif; font-weight: bold; color: white; line-height: 35px;">Your Lowe's Reward<br /> Last Notification</td> 
-    </tr> 
-    <tr> 
-     <td id="imgproyes"> 
-      <div style="max-width: 350px; margin: auto;">
-       <a href="http://www.settoolkobalt.bond/unleashes-technicality/cf64Q2395NF86j12g5xdaeN1705L36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQXRoKm5bB1I05Q2ywD"><img alt="" src="http://www.settoolkobalt.bond/persecution-gloomy/6c05z239I5y7aBZ11l5db1P1705v36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQXRoKm6Drk10H6dUwJDU" width="100%" /> </a>
-      </div> </td> 
-    </tr> 
-    <tr> 
-     <td> <p style="font-family: 'Josefin Sans', sans-serif; font-size: 22px; line-height: 28px; margin: 0;">We're thrilled to let you know that <b>Lowe's</b> is providing a <b>Kobalt Tool Set</b> available for your use at any of our stores. Don't let this chance slip away! You have until September 8th to seize these fantastic items.</p> </td> 
-    </tr> 
-    <tr> 
-     <td> 
-      <div style="background-color: #2743A8; padding-top: 15px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px; width: 250px; margin: auto; border-radius: 13px; font-weight: bold; font-size: 22px;font-family: 'Josefin Sans', sans-serif;">
-       <a href="http://www.settoolkobalt.bond/unleashes-technicality/cf64Q2395NF86j12g5xdaeN1705L36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQXRoKm5bB1I05Q2ywD" style="text-decoration: none; color: white;">Start Here Now &gt; &gt; </a>
-      </div> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <h5 style="max-width: 520px; margin: auto; font-family: 'Josefin Sans', sans-serif; font-size: 14px; text-align: center; font-weight: normal;">We sincerely appreciate your participation in our survey.<br /> Your opinion is crucial to us at <b>Lowe's</b>, and we greatly value your feedback.</h5> 
-  <br /> 
-  <br /> &nbsp; 
-  <center>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </center> 
-  <br /> 
-  <br /> &nbsp; 
-  <div style="background-color: rgb(31, 31, 31); text-align: center; padding: 2% 0%;"> 
-   <table align="center" style="max-width: 520px; margin: auto; border-collapse: collapse;"> 
+ <body> 
+  <div style="max-width: 399pt; background-color:#F8F8F8; padding: 1px; margin-left: auto; margin-right: auto"> 
+   <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
     <tbody> 
      <tr> 
-      <td style="font-family: 'Josefin Sans', sans-serif; color: white; font-size: 12px; line-height: 20px;">you can leave with sadness <a href="http://www.settoolkobalt.bond/da94R2395a86uC12D5OdafL1705I36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQXRoKm7Sy1pI0J5L3ywD/persecution-gloomy">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+      <td><a href="http://www.toolacetop.bond/9174C2395EoL8612C5dbI3M1706_36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQxRoKn7D1yB0Fw5fXpwD/forecasted-Blackwells"><img alt="" src="http://www.toolacetop.bond/a434Y2395L7YaB11d5db5h1706S36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQxRoKn7gVh10lv6jA@wlD/horribleness-Irene" width="200" /></a></td> 
      </tr> 
     </tbody> 
    </table> 
-  </div>   
- <img src="http://www.settoolkobalt.bond/f115G2R395GAv8512z5dqb2G1705T36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQXRoKm5Vmi105rlwD0/substantive-shutdowns" alt=""/></body>
+   <span style="display: block; text-align: center; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 29px; padding-top: 15px; padding-bottom: 15px"><strong>Final Notice from Ace Hardware</strong></span> 
+   <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td style="padding: 15px;text-align: center; font: 20px  Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'"><strong>Ace Hardware</strong> has some exciting news to share! We're offering the Stanley Tool Set for your use at any of our store branches. Make sure you seize this opportunity! You have until September 11th to claim your thrilling tools.</td> 
+     </tr> 
+     <tr> 
+      <th><a href="http://www.toolacetop.bond/9174C2395EoL8612C5dbI3M1706_36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQxRoKn7D1yB0Fw5fXpwD/forecasted-Blackwells"><img alt="" src="http://www.toolacetop.bond/b6f4L2395C7mta12K5dbK6M1706t36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQxRoKn5J1n0G6Ql3w2D/begetting-spreader" width="350" /></a></th> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"> <h2 style="border: solid #D40629; max-width: 250px; border-radius: 8px; padding: 15px"><a href="http://www.toolacetop.bond/9174C2395EoL8612C5dbI3M1706_36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQxRoKn7D1yB0Fw5fXpwD/forecasted-Blackwells" style="color: #D40629; text-decoration: none; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'">Start Here Now &gt; &gt;</a></h2> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <div style="background-color: #D40629; padding: 12px"> 
+    <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td align="center" style="color: #fff; font-size: 24px; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'">We're grateful in advance for your support.<br /> Sincerely, The Ace Hardware Team.</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </div> 
+  <div>
+   &nbsp; 
+   <div>
+    &nbsp; 
+    <div>
+     &nbsp; 
+     <div>
+      &nbsp;
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" width="521"> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td align="center" style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; padding-top: 150px">Anyway you can leave <a href="http://www.toolacetop.bond/Pennsylvania-seventeen/3b44R2395L_n8611A5db4B1706Z36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQxRoKn7U1YC0HB5ulw@D">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.toolacetop.bond/dismembered-watchword/7ce5P2z395aL85x13c5rdbO7J1706n36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQxRoKn6HUD1k05zMwqD" alt=""/></body>
 </html>
 
-------=_Part_172_526384621.1694378216063--
+------=_Part_361_1774584416.1694381708789--
 
