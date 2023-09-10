@@ -1,46 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDDC7799F61
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Sep 2023 21:05:00 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 142CA799F8D
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Sep 2023 21:47:33 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 46E1689336;
-	Sun, 10 Sep 2023 19:04:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CB0A910E08C;
+	Sun, 10 Sep 2023 19:47:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 10 Sep 2023 19:04:57 UTC
-Received: from mail.infoflighttop.bond (unknown [193.160.141.230])
- by gabe.freedesktop.org (Postfix) with ESMTP id 343AE89336
+X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
+ Sun, 10 Sep 2023 19:47:29 UTC
+Received: from mail.evergehshop.live (unknown [193.160.141.231])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 8BFD110E08C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 10 Sep 2023 19:04:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=infoflighttop.bond; 
+ Sun, 10 Sep 2023 19:47:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=evergehshop.live;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=stay-wellinformed-with-delta-flight-highlights@infoflighttop.bond; 
- bh=NlkKD5BRg8Ax6MqSPcc0Sw6epME=;
- b=Du5i66rW820EgKZ7CZ72ipdXigLju2wijTtnob3AIwE8pUjkuh5ZHchFKi80nnsCFLI8WzeOZi8j
- jqezQ3DQ1sdHqd30U1h92fnlxJxCvkAd92R5uuRp3XzH4ysQEI8+fNWSwbwrYqfuCKk63x6mNcrF
- V+ykBtW6yGbSXbQiwL4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=infoflighttop.bond; 
- b=XC6U3IPlaUOqsORBuqpqDG6dFawFKlLtbCUq7JZCCs4Vkmox5MbcZyPdUfINYzKKoQwmFRgaqcaC
- 19VvA2s3tsXMcqSm9hgjxH9cdpLc45fBQ2I53HNdtVuCh7quNq/1/U2SXANETaPleQCaqgaTaFwN
- fCpAt7O6rCRnCLxsWsQ=;
-Received: by mail.infoflighttop.bond id hvo9li0001g9 for
+ i=starbucks.espresso.lounge@evergehshop.live; 
+ bh=Vkwa0qqcKxApdi5HB3lsIbpGmtI=;
+ b=iKGT18yuLikrS5ENyOLAiym6M1Ml8X9hHloCSnMsxtRrPZYsWOy9rn/NaCjlYlj7QLKxAlNVYaBK
+ dfhJSKLR/Icj7kJwx3gKJxvHDIkoR+84Nn9LWs1CdEX4rSuJxACc7fi5kqvwsiA2GYYb6lT3SFXq
+ oa4U1n9Xl4igu7luEQ4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=evergehshop.live;
+ b=h74eB+LTL5Zkm1odVyGCINFxyo+woib4v2KgvFgag3i/p7/QUnxBJ435txMybK2crqi4BsfhhmHk
+ 8Ye5FEieMHoeE84vK2KwyVte+9i7qQIGzP6g/X6fXQ69eEMTFeFNB+cQUm/NDdW3Vwn5su0VbNUz
+ /Eg7yUVqCAwpcuxZ2zE=;
+Received: by mail.evergehshop.live id hvoel20001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 10 Sep 2023 14:57:07 -0400 (envelope-from
- <stay-wellinformed-with-delta-flight-highlights-intel+2Dgvt+2Ddev=lists.freedesktop.org@infoflighttop.bond>)
-Date: Sun, 10 Sep 2023 14:57:07 -0400
-From: "Stay WellInformed With Delta Flight Highlights"
- <stay-wellinformed-with-delta-flight-highlights@infoflighttop.bond>
+ Sun, 10 Sep 2023 15:39:07 -0400 (envelope-from
+ <starbucks.espresso.lounge-intel+2Dgvt+2Ddev=lists.freedesktop.org@evergehshop.live>)
+Date: Sun, 10 Sep 2023 15:39:07 -0400
+From: "Starbucks Espresso Lounge" <starbucks.espresso.lounge@evergehshop.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We are delighted to offer you a gift - your input on our performance
- is greatly appreciated.
+Subject: You are the recipient of a special gift from us - we're eager to hear
+ about your Starbucks experience.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_307_357737393.1694372220434"
-Message-ID: <0.0.0.21.1D9E418986AD2E8.146F4A@mail.infoflighttop.bond>
+ boundary="----=_Part_148_47462628.1694374735933"
+Message-ID: <0.0.0.12.1D9E41E76A1B7A2.825CD9@mail.evergehshop.live>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_307_357737393.1694372220434
+------=_Part_148_47462628.1694374735933
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,64 +63,70 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>hecarimops</title> 
-  <link href="http://www.infoflighttop.bond/24b4p2395a86l_13n5dF9KeV1703K36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhRoee6G10nVK5uXMwD/Gruyere-aggrieving" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.infoflighttop.bond/helpful-Rushmore/60c4Q2395yr86A11f5d9fA1703V36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQhRoee5ynT106Y3wDJJ" rel="preconnect" /> 
-  <link href="http://www.infoflighttop.bond/24b4p2395a86l_13n5dF9KeV1703K36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhRoee6G10nVK5uXMwD/Gruyere-aggrieving/css2?family=Roboto+Condensed:wght@300;400;700&amp;display=swap" rel="stylesheet" /> 
+  <link href="http://www.evergehshop.live/51b5zk2395vP86X13y5jda5_D1704l36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ.RoeK6VUIu105k2qwD/clogging-intrastate" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.evergehshop.live/regrouping-disposals/31e4q2395rI86p11H5da6A1704F36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ.RoeK7PMuDt105QO2wD" rel="preconnect" /> 
+  <link href="http://www.evergehshop.live/51b5zk2395vP86X13y5jda5_D1704l36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ.RoeK6VUIu105k2qwD/clogging-intrastate/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
+  <title>tac tick info</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #dddddd;"> 
-  <center style="width: 100%; display: block; background-color: #11182A;"> 
-   <div style="max-width: 300px; margin: auto;"> 
-    <h1 style="padding-top: .7em; padding-bottom: .7em; margin: 0;">&nbsp;</h1> 
-    <div>
-     <a href="http://www.infoflighttop.bond/gunner-bafflers/9185W2w395Q8VB613O5dJBa0O1703X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQhRoee7B10oAXQ6RpwDMN"><img alt="" src="http://www.infoflighttop.bond/6a16W2k3F95Q7TaT13t5da_2Sx1703R36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQhRoee5Luh106oNkwDj/helpful-Rushmore" width="100%" /> </a>
-    </div> 
-   </div> 
-  </center> 
-  <div style="background-color: #fff; max-width: 600px; margin: auto;">
-   &nbsp; 
-   <div style="width: 100%;"> 
-    <p class="titleomgs" style="max-width: 515px; margin: auto; text-align: center; font-size: x-large; font-weight: bold; font-family: 'Roboto Condensed', sans-serif;">Exclusive Discounts for Our Valued Customers</p> 
-    <hr color="#EA4335" size="3.5ox" style="margin: auto; border-radius: 30px;" width="515px" /> 
-    <p>&nbsp;</p> 
-   </div> 
-   <div style="width: 100%;"> 
-    <div style="max-width: 515px; margin: auto;"> 
-     <p style="font-weight: normal; font-family: 'Roboto Condensed', sans-serif; font-size: large; text-align: center; line-height: 23px;">We want to extend our thanks for selecting Delta for your travel requirements. Your loyalty and support are truly valued, and we sincerely appreciate the chance to assist you with your travel plans.<br /> <span style="font-size: 0px; color: #ffffff00;">fugiat minus autem exercitationem harum laudantium hic deserunt ad distinctio voluptatibus cumque.</span> <span style="font-size: 0px; color: #ffffff00;">Lorem ipsum dolor sit amet consectetur </span> <span style="font-size: 0px; color: #ffffff00;">adipisicing elit. Quidem, eligendi magni sequi unde natus magnam illo dolores mollitia</span></p> 
-     <div style="width: 470px; margin: auto;">
-      <a href="http://www.infoflighttop.bond/gunner-bafflers/9185W2w395Q8VB613O5dJBa0O1703X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQhRoee7B10oAXQ6RpwDMN"><img alt="" src="http://www.infoflighttop.bond/2ff5B2Z395QS7ai11I5da3S1703J36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhRoee7B1jg0By5W1wlD/worrying-cuckoos" style="display: block; outline: solid 1.5px #000;" width="100%" /> </a>
-     </div> 
-     <p>&nbsp;</p> &nbsp; 
-     <h3 style="font-weight: normal; font-family: 'Roboto Condensed', sans-serif; font-size: large; text-align: center; line-height: 23px;">As part of our ongoing dedication to providing outstanding experiences, we invite you to join us in a brief survey regarding your recent flight and overall interactions with Delta.<br /> <br /> We highly value your feedback, and as a token of our appreciation for your time and input, we'd like to extend a special gesture of gratitude to you.<br /> <br /> To participate in the survey, please click on the link provided below. Completing the survey will only take a few minutes of your valuable time, and we want to assure you that your responses will be handled with the utmost confidentiality.</h3> 
-    </div> 
-    <center> 
-     <p style="font-weight: normal; font-family: 'Roboto Condensed', sans-serif; font-size: large; text-align: center; line-height: 23px; max-width: 515px; margin: auto; font-weight: bold;">As a token of our gratitude for your valuable feedback, you'll have the opportunity to potentially qualify for a $100 gift!</p> 
-    </center> 
-    <br /> 
-    <br /> 
-    <a href="http://www.infoflighttop.bond/gunner-bafflers/9185W2w395Q8VB613O5dJBa0O1703X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQhRoee7B10oAXQ6RpwDMN" style="color: #fff; text-decoration: none; font-size: x-large;"><span style="display: block; padding-top: 20px; padding-bottom: 20px;font-family: 'Roboto Condensed', sans-serif; font-weight: bold; margin: auto; text-align: center; background-color: #E01733;">Get Started Here &gt;&gt; </span> </a>
-   </div> 
+ <body style="background-color: #BBF3D2; margin: 0"> 
+  <div align="center" style="background-color: #1A6E48">
+   <span style="display: block"><a href="http://www.evergehshop.live/regrouping-disposals/6fc5oT2395SMo8612w5dUa7I1704Z36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.RoeK7l1g0zGu6CPwjDp"><img alt="tellme" src="http://www.evergehshop.live/clogging-intrastate/4e04h2395SSj7a12M5gda9Y1704I36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ.RoeK7eA1OsH06SBAJwD" style="border-collapse: collapse; max-width: 400px" /></a></span>
   </div> 
-  <p style="padding-top: 47px;">&nbsp;</p> 
-  <div style="max-width: 600px; margin: auto;"> 
-   <table align="center" class="dopethanks"> 
-    <tbody> 
-     <tr> 
-      <td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; text-align: center; line-height: 1.7em;">Thank you once more for your support. We look forward to receiving your feedback soon!<br /> Best regards,<br /> <br /> <b>The Delta Survey Team</b></td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <p style="padding-top: 47px;">&nbsp;</p> &nbsp; 
-  <div style="background-color: #fff; padding: 2% 0%;"> 
-   <footer style="max-width: 600px; margin: auto; text-align: center;font-family: 'Roboto Condensed', sans-serif;font-size: 12px; line-height: 20px; font-weight: bold;">
-    you can leave with sadness 
-    <a href="http://www.infoflighttop.bond/worrying-cuckoos/9ae6J23J9t5B8xy611k5da1I1703u36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQhRoee5O1QP05Ql2wD">here</a>
-    <br /> US 10010 126 E 23rd St New York, NY,
-   </footer> 
-  </div>   
- <img src="http://www.infoflighttop.bond/b8d4C2395iG85n13r5dIwa4F1703W36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQhRoee6hG1l0L5OMAwD/staggers-stanzas" alt=""/></body>
+  <table align="center"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <table align="center" style="max-width: 500px; margin: auto; border-collapse: collapse;"> 
+       <tbody> 
+        <tr> 
+         <td style="width: 0;">&nbsp;</td> 
+         <td align="center" style="width: 100%;"> 
+          <div>
+           &nbsp;
+          </div> </td> 
+         <td style="width: 0;">&nbsp;</td> 
+        </tr> 
+        <tr bgcolor="#BBF3D2"> 
+         <td style="width: 0;">&nbsp;</td> 
+         <td style="max-width: 500px; text-align: center; font-family: 'Prompt', sans-serif; font-size: 24px; color: #1A6E48; padding: 12px 60px; font-weight: bold; ">Your Starbucks Final Reminder</td> 
+         <td style="width: 0;">&nbsp;</td> 
+        </tr> 
+        <tr bgcolor="ffffff"> 
+         <td>&nbsp;</td> 
+         <td> 
+          <div style="font-family: 'Prompt', sans-serif; font-size: 1.1em; line-height: 1.7; text-align: center; font-weight: 400; padding: 2.5% 1.5%;">
+           We're excited to share that Starbucks is offering a special promotion for a 100$ Gift that you can enjoy at any of our store locations. Don't let this chance pass you by! You have until 
+           <strong style="text-decoration: underline">September 11th</strong> to claim these Delicious beverages.           </div> &nbsp; 
+          <div style="max-width: 300px; margin: auto;">
+           <a href="http://www.evergehshop.live/regrouping-disposals/6fc5oT2395SMo8612w5dUa7I1704Z36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.RoeK7l1g0zGu6CPwjDp"><img alt="mama" src="http://www.evergehshop.live/meadows-detectably/1b64Y2395Ss7va13UY5dZaaO1704k36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.RoeK7mWS1XQ06jpwqkD" width="100%" /> </a>
+          </div> </td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr bgcolor="#FFFFFF"> 
+         <td>&nbsp;</td> 
+         <td align="center">&nbsp; 
+          <div style="background-color: #000000; padding-top: 20px; padding-bottom: 20px; padding-left: 30px; padding-right: 30px; font-family: 'Prompt', sans-serif; font-weight: bold; text-align: center; font-size: 20px;  display: inline-block;  border-radius: 112px">
+           <a href="http://www.evergehshop.live/regrouping-disposals/6fc5oT2395SMo8612w5dUa7I1704Z36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.RoeK7l1g0zGu6CPwjDp" style="text-decoration: none; color: white;">Start Here Now &gt; &gt; </a>
+          </div> <br /> &nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td> <p style="text-align: center; font-family: 'Prompt', sans-serif; font-weight: 500;">We appreciate your participation.<br /> Best regards, The Starbucks Team.</p> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> &nbsp; 
+          <div style="text-align: center; font-family: 'Prompt', sans-serif; font-weight: 500; background-color: #186241; color: white; padding: 1.8% 0%; font-size: 12px;">
+           you can leave with sadness 
+           <a href="http://www.evergehshop.live/pronounceable-originator/7564w2395LF86z11v5da8h1704x36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.RoeK7wI1FLJ05o01wD">here</a>
+           <br /> US 10010 126 E 23rd St New York, NY,
+          </div> </td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.evergehshop.live/e5d5U239J5O8h5N12r5dwabW1704W36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ.RoeK6Rm1N0X6RAwjDL/dissolutions-petitioned" alt=""/></body>
 </html>
 
-------=_Part_307_357737393.1694372220434--
+------=_Part_148_47462628.1694374735933--
 
