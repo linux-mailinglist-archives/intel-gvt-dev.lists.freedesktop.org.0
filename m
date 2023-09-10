@@ -2,43 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 142CA799F8D
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Sep 2023 21:47:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DA15F799FF4
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Sep 2023 22:51:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CB0A910E08C;
-	Sun, 10 Sep 2023 19:47:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B2FE810E09A;
+	Sun, 10 Sep 2023 20:51:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
- Sun, 10 Sep 2023 19:47:29 UTC
-Received: from mail.evergehshop.live (unknown [193.160.141.231])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8BFD110E08C
+X-Greylist: delayed 631 seconds by postgrey-1.36 at gabe;
+ Sun, 10 Sep 2023 20:51:00 UTC
+Received: from mail.settoolkobalt.bond (unknown [193.160.141.234])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 358E510E09A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 10 Sep 2023 19:47:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=evergehshop.live;
+ Sun, 10 Sep 2023 20:51:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=settoolkobalt.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=starbucks.espresso.lounge@evergehshop.live; 
- bh=Vkwa0qqcKxApdi5HB3lsIbpGmtI=;
- b=iKGT18yuLikrS5ENyOLAiym6M1Ml8X9hHloCSnMsxtRrPZYsWOy9rn/NaCjlYlj7QLKxAlNVYaBK
- dfhJSKLR/Icj7kJwx3gKJxvHDIkoR+84Nn9LWs1CdEX4rSuJxACc7fi5kqvwsiA2GYYb6lT3SFXq
- oa4U1n9Xl4igu7luEQ4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=evergehshop.live;
- b=h74eB+LTL5Zkm1odVyGCINFxyo+woib4v2KgvFgag3i/p7/QUnxBJ435txMybK2crqi4BsfhhmHk
- 8Ye5FEieMHoeE84vK2KwyVte+9i7qQIGzP6g/X6fXQ69eEMTFeFNB+cQUm/NDdW3Vwn5su0VbNUz
- /Eg7yUVqCAwpcuxZ2zE=;
-Received: by mail.evergehshop.live id hvoel20001gu for
+ i=latest-lowes-store-information@settoolkobalt.bond; 
+ bh=wWvtyDl3eOPw9OuHW48Vn1Thq9s=;
+ b=ImiAr08NacJPJuCd+97ZAN0L3H6G0ncnmErhel9Ok7i5c1azRKJTeY/RgDMpSyOw9t8PDgCWqmNo
+ LUCtF1DPHQ/Po86pPv61PZsDcdttl6ovyNzirQXJwwq8ZZLs8+hyLpB79iLAGs/SfYxvjAXKctMl
+ PWdNIKxiL8MyK2T2H48=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=settoolkobalt.bond; 
+ b=fhBdeXxRzEnhYlh6i947OobX8wEVqDXzZfatFTRSUCO27RpctbI6IqFL7n9F/3d0teqJ8qSo+QdP
+ JUQEvVC5IFC+P6v58C3whT+kmUmof1fQ7swybE/0bHfHT3c2azwFjK9CqC/1MOLUewnxd7q3wO3/
+ Xk74ClCGviWmuAWn774=;
+Received: by mail.settoolkobalt.bond id hvom380001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 10 Sep 2023 15:39:07 -0400 (envelope-from
- <starbucks.espresso.lounge-intel+2Dgvt+2Ddev=lists.freedesktop.org@evergehshop.live>)
-Date: Sun, 10 Sep 2023 15:39:07 -0400
-From: "Starbucks Espresso Lounge" <starbucks.espresso.lounge@evergehshop.live>
+ Sun, 10 Sep 2023 16:37:18 -0400 (envelope-from
+ <latest-lowes-store-information-intel+2Dgvt+2Ddev=lists.freedesktop.org@settoolkobalt.bond>)
+Date: Sun, 10 Sep 2023 16:37:18 -0400
+From: "Latest Lowes Store Information"
+ <latest-lowes-store-information@settoolkobalt.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You are the recipient of a special gift from us - we're eager to hear
- about your Starbucks experience.
+Subject: Enjoy a specially arranged Kobalt Tool set when you share your
+ opinions - you qualify.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_148_47462628.1694374735933"
-Message-ID: <0.0.0.12.1D9E41E76A1B7A2.825CD9@mail.evergehshop.live>
+ boundary="----=_Part_172_526384621.1694378216063"
+Message-ID: <0.0.0.14.1D9E42697561BFC.112AA@mail.settoolkobalt.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_148_47462628.1694374735933
+------=_Part_172_526384621.1694378216063
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,70 +65,74 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.evergehshop.live/51b5zk2395vP86X13y5jda5_D1704l36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ.RoeK6VUIu105k2qwD/clogging-intrastate" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.evergehshop.live/regrouping-disposals/31e4q2395rI86p11H5da6A1704F36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ.RoeK7PMuDt105QO2wD" rel="preconnect" /> 
-  <link href="http://www.evergehshop.live/51b5zk2395vP86X13y5jda5_D1704l36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ.RoeK6VUIu105k2qwD/clogging-intrastate/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
-  <title>tac tick info</title> 
+  <title>pops infos topers</title> 
+  <link href="http://www.settoolkobalt.bond/40d5A2P395Sy86p13no5sdacV1705q36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQXRoKm6bqSM105JzpwD/alerting-stickers" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.settoolkobalt.bond/abb4L2395Y8nx613S5ydadTo1705j36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQXRoKm6VI1_0l6c0@pwD/purifying-caresses" rel="preconnect" /> 
+  <link href="http://www.settoolkobalt.bond/40d5A2P395Sy86p13no5sdacV1705q36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQXRoKm6bqSM105JzpwD/alerting-stickers/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet" /> 
  </head> 
- <body style="background-color: #BBF3D2; margin: 0"> 
-  <div align="center" style="background-color: #1A6E48">
-   <span style="display: block"><a href="http://www.evergehshop.live/regrouping-disposals/6fc5oT2395SMo8612w5dUa7I1704Z36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.RoeK7l1g0zGu6CPwjDp"><img alt="tellme" src="http://www.evergehshop.live/clogging-intrastate/4e04h2395SSj7a12M5gda9Y1704I36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ.RoeK7eA1OsH06SBAJwD" style="border-collapse: collapse; max-width: 400px" /></a></span>
-  </div> 
-  <table align="center"> 
+ <body style="background-color: #eeeeee;"> 
+  <center>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </center> 
+  <table id="dopers att" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> 
    <tbody> 
     <tr> 
-     <td> 
-      <table align="center" style="max-width: 500px; margin: auto; border-collapse: collapse;"> 
-       <tbody> 
-        <tr> 
-         <td style="width: 0;">&nbsp;</td> 
-         <td align="center" style="width: 100%;"> 
-          <div>
-           &nbsp;
-          </div> </td> 
-         <td style="width: 0;">&nbsp;</td> 
-        </tr> 
-        <tr bgcolor="#BBF3D2"> 
-         <td style="width: 0;">&nbsp;</td> 
-         <td style="max-width: 500px; text-align: center; font-family: 'Prompt', sans-serif; font-size: 24px; color: #1A6E48; padding: 12px 60px; font-weight: bold; ">Your Starbucks Final Reminder</td> 
-         <td style="width: 0;">&nbsp;</td> 
-        </tr> 
-        <tr bgcolor="ffffff"> 
-         <td>&nbsp;</td> 
-         <td> 
-          <div style="font-family: 'Prompt', sans-serif; font-size: 1.1em; line-height: 1.7; text-align: center; font-weight: 400; padding: 2.5% 1.5%;">
-           We're excited to share that Starbucks is offering a special promotion for a 100$ Gift that you can enjoy at any of our store locations. Don't let this chance pass you by! You have until 
-           <strong style="text-decoration: underline">September 11th</strong> to claim these Delicious beverages.           </div> &nbsp; 
-          <div style="max-width: 300px; margin: auto;">
-           <a href="http://www.evergehshop.live/regrouping-disposals/6fc5oT2395SMo8612w5dUa7I1704Z36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.RoeK7l1g0zGu6CPwjDp"><img alt="mama" src="http://www.evergehshop.live/meadows-detectably/1b64Y2395Ss7va13UY5dZaaO1704k36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.RoeK7mWS1XQ06jpwqkD" width="100%" /> </a>
-          </div> </td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr bgcolor="#FFFFFF"> 
-         <td>&nbsp;</td> 
-         <td align="center">&nbsp; 
-          <div style="background-color: #000000; padding-top: 20px; padding-bottom: 20px; padding-left: 30px; padding-right: 30px; font-family: 'Prompt', sans-serif; font-weight: bold; text-align: center; font-size: 20px;  display: inline-block;  border-radius: 112px">
-           <a href="http://www.evergehshop.live/regrouping-disposals/6fc5oT2395SMo8612w5dUa7I1704Z36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.RoeK7l1g0zGu6CPwjDp" style="text-decoration: none; color: white;">Start Here Now &gt; &gt; </a>
-          </div> <br /> &nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td> <p style="text-align: center; font-family: 'Prompt', sans-serif; font-weight: 500;">We appreciate your participation.<br /> Best regards, The Starbucks Team.</p> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> &nbsp; 
-          <div style="text-align: center; font-family: 'Prompt', sans-serif; font-weight: 500; background-color: #186241; color: white; padding: 1.8% 0%; font-size: 12px;">
-           you can leave with sadness 
-           <a href="http://www.evergehshop.live/pronounceable-originator/7564w2395LF86z11v5da8h1704x36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.RoeK7wI1FLJ05o01wD">here</a>
-           <br /> US 10010 126 E 23rd St New York, NY,
-          </div> </td> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+     <td class="titleproyec" style="font-size: 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">&nbsp;</td> 
     </tr> 
    </tbody> 
-  </table>   
- <img src="http://www.evergehshop.live/e5d5U239J5O8h5N12r5dwabW1704W36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ.RoeK6Rm1N0X6RAwjDL/dissolutions-petitioned" alt=""/></body>
+  </table> 
+  <table align="center" cellpadding="20px" style="max-width: 520px; margin: auto; text-align: center; border-collapse: collapse; box-shadow: 2px 5px 5px 1px #d6dcf3; box-shadow: 2px 5px 5px 1px #d6dcf3; box-shadow: 2px 5px 5px 1px #d6dcf3;border-radius: 30px; background-color: #fff;"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <div> 
+       <div style="max-width: 200px;">
+        <a href="http://www.settoolkobalt.bond/unleashes-technicality/cf64Q2395NF86j12g5xdaeN1705L36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQXRoKm5bB1I05Q2ywD"><img alt="" src="http://www.settoolkobalt.bond/cb95V2M395FC7at11p5db0u1705L36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQXRoKm6GQU10r6LJqywD/mentalities-furthering" width="100%" /> </a>
+       </div> 
+      </div> </td> 
+    </tr> 
+    <tr> 
+     <td bgcolor="#2743A8" style="font-size: 30px;font-family: 'Josefin Sans', sans-serif; font-weight: bold; color: white; line-height: 35px;">Your Lowe's Reward<br /> Last Notification</td> 
+    </tr> 
+    <tr> 
+     <td id="imgproyes"> 
+      <div style="max-width: 350px; margin: auto;">
+       <a href="http://www.settoolkobalt.bond/unleashes-technicality/cf64Q2395NF86j12g5xdaeN1705L36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQXRoKm5bB1I05Q2ywD"><img alt="" src="http://www.settoolkobalt.bond/persecution-gloomy/6c05z239I5y7aBZ11l5db1P1705v36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQXRoKm6Drk10H6dUwJDU" width="100%" /> </a>
+      </div> </td> 
+    </tr> 
+    <tr> 
+     <td> <p style="font-family: 'Josefin Sans', sans-serif; font-size: 22px; line-height: 28px; margin: 0;">We're thrilled to let you know that <b>Lowe's</b> is providing a <b>Kobalt Tool Set</b> available for your use at any of our stores. Don't let this chance slip away! You have until September 8th to seize these fantastic items.</p> </td> 
+    </tr> 
+    <tr> 
+     <td> 
+      <div style="background-color: #2743A8; padding-top: 15px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px; width: 250px; margin: auto; border-radius: 13px; font-weight: bold; font-size: 22px;font-family: 'Josefin Sans', sans-serif;">
+       <a href="http://www.settoolkobalt.bond/unleashes-technicality/cf64Q2395NF86j12g5xdaeN1705L36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQXRoKm5bB1I05Q2ywD" style="text-decoration: none; color: white;">Start Here Now &gt; &gt; </a>
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <h5 style="max-width: 520px; margin: auto; font-family: 'Josefin Sans', sans-serif; font-size: 14px; text-align: center; font-weight: normal;">We sincerely appreciate your participation in our survey.<br /> Your opinion is crucial to us at <b>Lowe's</b>, and we greatly value your feedback.</h5> 
+  <br /> 
+  <br /> &nbsp; 
+  <center>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </center> 
+  <br /> 
+  <br /> &nbsp; 
+  <div style="background-color: rgb(31, 31, 31); text-align: center; padding: 2% 0%;"> 
+   <table align="center" style="max-width: 520px; margin: auto; border-collapse: collapse;"> 
+    <tbody> 
+     <tr> 
+      <td style="font-family: 'Josefin Sans', sans-serif; color: white; font-size: 12px; line-height: 20px;">you can leave with sadness <a href="http://www.settoolkobalt.bond/da94R2395a86uC12D5OdafL1705I36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQXRoKm7Sy1pI0J5L3ywD/persecution-gloomy">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.settoolkobalt.bond/f115G2R395GAv8512z5dqb2G1705T36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQXRoKm5Vmi105rlwD0/substantive-shutdowns" alt=""/></body>
 </html>
 
-------=_Part_148_47462628.1694374735933--
+------=_Part_172_526384621.1694378216063--
 
