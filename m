@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFD2D79A803
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 Sep 2023 14:48:30 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5AA0B79A852
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 11 Sep 2023 15:39:52 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9C2BD10E2E4;
-	Mon, 11 Sep 2023 12:48:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 30CA410E2FD;
+	Mon, 11 Sep 2023 13:39:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 11 Sep 2023 12:48:27 UTC
-Received: from mail.shoppkroger.live (unknown [193.160.141.238])
- by gabe.freedesktop.org (Postfix) with ESMTP id 44D1910E2E4
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Mon, 11 Sep 2023 13:39:48 UTC
+Received: from mail.allhomedept.bond (unknown [193.160.141.233])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3E2E110E2FE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 11 Sep 2023 12:48:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shoppkroger.live;
+ Mon, 11 Sep 2023 13:39:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=allhomedept.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kroger-shopper-experience@shoppkroger.live; 
- bh=GiQil94QWGi5maphOm2pIwb/Myw=;
- b=B3XU4kUNnMT70Wh+lA9D0Z5DDjOkmxvujEkA3zFhRWGX+spqjvLTFW87NcivKcotebp1i2OHZL++
- UnoyrdSDU1Er49esv2vhmOuweUKf2CStDaunyZdycDOUrkLcCdgm1jJLro04Dw1xJ+HihAHnYVL/
- Tvf9hdQRocCsIOZHJGU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shoppkroger.live;
- b=r70Bn0jTjHHYgqFdmWExgi7mNyoAmVk8gd6zwkyG8qXGYcV8p0fTAByfCE2spLta4D4WTojjpvWr
- I4ZMD4uZao+58493+i2fg+S5E3IoO6f58J4nlTBqfyDPRVeiANQ4/7tlAsuJPEoqrEF1msTekdjf
- yos/Yr3hFFoUj/I9uBk=;
-Received: by mail.shoppkroger.live id hvs69m0001gq for
+ i=home.depot.customer.care@allhomedept.bond; 
+ bh=IT2bUu2T5UmX8+IYw2QkBrpkF94=;
+ b=MOfSDWmvhvs8alX9O1zNBvxDmr7S13hwUuxTO6bpZNfAwWmavN82yKHCivltPOTKnNkgm33zJEqF
+ wA+kykhEftw6TQWZTj4hgSW+IJzsYQuH8BknscuahKuUUK2u2DtE19LAq6dIWTM+XBs9NA+WuDwC
+ kn2ZtDvfS2gy3F4BKvo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=allhomedept.bond;
+ b=Nz3HA5UnlilFub4NxpzknmlWroP3oC8E3K84k/XW2GsrlBuNJQudEYUqPq1Ecic+YfoCBIvlmEv1
+ dZcWYSPG1yuHSpokUQqW9AaKqs0+/idWhUQNYOGO2rAzSYlvd4sNXIOTG7CTzEXNeC/T7FArm9nb
+ IaXuZqeULEQ+rS4ErXQ=;
+Received: by mail.allhomedept.bond id hvsca80001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 11 Sep 2023 08:39:31 -0400 (envelope-from
- <kroger-shopper-experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@shoppkroger.live>)
-Date: Mon, 11 Sep 2023 08:39:31 -0400
-From: "Kroger Shopper Experience" <kroger-shopper-experience@shoppkroger.live>
+ Mon, 11 Sep 2023 09:31:46 -0400 (envelope-from
+ <home.depot.customer.care-intel+2Dgvt+2Ddev=lists.freedesktop.org@allhomedept.bond>)
+Date: Mon, 11 Sep 2023 09:31:46 -0400
+From: "Home Depot Customer Care" <home.depot.customer.care@allhomedept.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Participate in the festivities with a heartfelt gift from us as a
- token of our gratitude.
+Subject: Participate and Win $100 at The Home Depot!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_28_854050031.1694435968592"
-Message-ID: <0.0.0.A8.1D9E4AD030AC362.7DFC1E@mail.shoppkroger.live>
+ boundary="----=_Part_361_234845937.1694439094552"
+Message-ID: <0.0.0.F2.1D9E4B44FC68CB6.23E0DC@mail.allhomedept.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,80 +53,51 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_28_854050031.1694435968592
+------=_Part_361_234845937.1694439094552
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
  <head> 
-  <meta charset="UTF-8" /> 
-  <title>no choice</title> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>real big</title> 
+  <style type="text/css">body{margin: 0}
+	</style> 
  </head> 
- <body>
-  <a href="http://www.shoppkroger.live/rationalizing-contagious/6a24R2395D86DK11I5dc2j1709p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQqRoKd7zw1NCP05S0OwD"><img alt="" src="http://www.shoppkroger.live/grossness-besiege/1f26sY239Z5eR7ya13cS5dc4SN1709h36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqRoKd7g1k0WmZ5olwDz" style="display: block; margin: auto" width="290" /></a> 
-  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+ <body> 
+  <ul style="display: block; background-color:#F66303; padding: 22px; margin: 0"> 
+  </ul> &nbsp; 
+  <center>
+   <a href="http://www.allhomedept.bond/33b4p2395b86HL11R5dc8I170aU36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQhRoKQ6R10VtA5rkwD0/stoichiometry-romancing" target="_blank"><img alt="onezolar" src="http://www.allhomedept.bond/interference-plate/5b25e239u5F7pna13C5rdcaKt170aX36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQhRoKQ6R10Jn_6rUJw@D" style="max-width: 388px" width="100%" /></a>
+  </center> &nbsp; 
+  <table align="center" bgcolor="#F66303" border="0" cellpadding="0" cellspacing="0" width="521"> 
    <tbody> 
     <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td> 
-      <div align="center" style="padding: 9px; margin: auto; max-width: 505px; background-color: #2A4F92; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; color: #fff; font-size: 19px">
-       <span style="display: block; max-width: 505px; border: solid 5px #2A4F92; margin: auto; border-radius: 7px">We want to extend our appreciation to you for choosing Kroger. Your loyalty and support mean a lot to us, and we genuinely value the chance to assist you with your shopping needs </span>
-      </div> &nbsp; 
-      <center>
-       <a href="http://www.shoppkroger.live/rationalizing-contagious/6a24R2395D86DK11I5dc2j1709p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQqRoKd7zw1NCP05S0OwD" style="text-decoration: none"><img alt="rial" src="http://www.shoppkroger.live/31d4V2395CX7aK13o5KXdc5y1709g36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQqRoKd5Po10_6VBywMD/planoconvex-Marcel" width="150" /> <img alt="real" src="http://www.shoppkroger.live/deviations-lettered/1b66RY239h5Kk7aT11y5dc6U1709H36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQqRoKd5W1i0T6wpJwUD" /></a>
-      </center> &nbsp; 
-      <div align="center" style="padding: 9px; margin: auto; max-width: 505px; background-color: #eee; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; color: #666; font-size: 19px">
-       <span style="display: block; max-width: 505px; border: solid 5px #eee; margin: auto; border-radius: 7px">Your choice of Kroger is greatly appreciated! Your loyalty and support are of utmost importance to us, and we genuinely value the chance to serve you. </span>
-       <br /> &nbsp; 
-       <table bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center" style="padding: 12px"><span style="display: block; max-width: 505px; border: solid 5px #eee; margin: auto; border-radius: 7px">We truly value your feedback, and as an expression of our appreciation for your time and input, we want to offer you a special gesture. </span> <p><span style="display: block; max-width: 505px; border: solid 5px #eee; margin: auto; border-radius: 7px"><strong>For your insights, you will be<br /> eligible to receive a $100 gift!</strong></span></p> <span style="display: block; max-width: 505px; border: solid 5px #eee; margin: auto; border-radius: 7px"> </span> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center"><span style="display: block; max-width: 505px; border: solid 5px #eee; margin: auto; border-radius: 7px">To access the survey, please click on the link below. The survey will only take a few minutes to complete, and you can trust that your responses will be kept entirely confidential.</span></td> 
-             </tr> 
-            </tbody> 
-           </table> <span style="display: block; max-width: 505px; border: solid 5px #eee; margin: auto; border-radius: 7px"> </span></td> 
-         </tr> 
-        </tbody> 
-       </table> &nbsp; 
-       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> 
-           <div style="background-color: #2974C1; padding: 12px; display: block; max-width: 290px; border-radius: 300px">
-            <span style="display: block; max-width: 505px; border: solid 5px #eee; margin: auto; border-radius: 7px"><a href="http://www.shoppkroger.live/rationalizing-contagious/6a24R2395D86DK11I5dc2j1709p36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQqRoKd7zw1NCP05S0OwD" style="color: #fff; text-decoration: none">Start Here Now &gt; &gt; </a></span>
-           </div> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <span style="display: block; max-width: 505px; border: solid 5px #eee; margin: auto; border-radius: 7px"> </span>
-      </div> </td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
+     <td align="center" style="padding: 12px; font-family: arial"><br /> <b style="color: #fff; font-size: 20px; display: block; padding: 7px">Taking a moment to express our gratitude for choosing our services is important to us. Your loyalty and support are incredibly valuable and will always be acknowledged and appreciated.</b> 
+      <div style="background-color: #fff; padding: 15px; font-size: 20px">
+       <strong>Thus, we present this gesture of gratitude for your enjoyment of a MAKITA DRILL Set!</strong>
+       <br /> 
+       <br /> 
+       <a href="http://www.allhomedept.bond/33b4p2395b86HL11R5dc8I170aU36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQhRoKQ6R10VtA5rkwD0/stoichiometry-romancing" target="_blank"><img alt="nashville" src="http://www.allhomedept.bond/8276s2W3t95bj7aD11Q5dcbk170aH36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhRoKQ6M1RA0O6k@wDlq/stoichiometry-romancing" style="max-width: 230px" width="100%" /></a> 
+       <h4>We place great importance on your input.</h4> 
+       <p>Using this reward is a piece of cake, it will only take you 30 seconds to share your feedback with us, and we'll send it directly to you.</p> 
+      </div> 
+      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center"><br /> <a href="http://www.allhomedept.bond/33b4p2395b86HL11R5dc8I170aU36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQhRoKQ6R10VtA5rkwD0/stoichiometry-romancing" style="color: #F66303; text-decoration: none; display: inline-block; padding: 15px; background-color: #fff; border-radius: 6px; font-weight: bolder; font-size: 29px">Start Here Now &gt;&gt;</a></td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
   </table> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <br /> &nbsp; 
-  <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td style="text-align: center; padding-top: 50px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'">Thank you once again for your support.<br /> We eagerly anticipate hearing from you soon!<br /> <br /> Warm regards, <strong>The Kroger Survey Team</strong><br /> <br /> <br /> <br /> <br /> &nbsp; 
-      <hr width="400" /> <p>if you need to go visit <a href="http://www.shoppkroger.live/picket-apprehensive/6846P2On395Srk8612L5dNc3I1709Z36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQqRoKd7S10MIrj5LllwD">here</a><br /> 10010 126 E 23rd St New York, NY, US</p> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.shoppkroger.live/4c15q239T5R8Y5p13Q5Fpdc7q1709C36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQqRoKd7u1K0Lhj6qqwM@D/deviations-lettered" alt=""/></body>
+  <ul style="padding-top: 150px; margin: 0; text-align: center; font-family: arial; margin-top: 29px"> 
+   <li><span>you can leave with sadness <a href="http://www.allhomedept.bond/moonshine-though/8pa5FA2395rkJ8612r5dc_9r170aT36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhRoKQ7XpjwT106hz@BwD" style="color:#F9C403 ">here</a><br /> US 10010 126 E 23rd St New York, NY,</span></li> 
+  </ul>   
+ <img src="http://www.allhomedept.bond/cd76O2Q3K95eG8I511C5dcc_170au36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQhRoKQ6bqj10y6bBMw2D/spooling-squash" alt=""/></body>
 </html>
 
-------=_Part_28_854050031.1694435968592--
+------=_Part_361_234845937.1694439094552--
 
