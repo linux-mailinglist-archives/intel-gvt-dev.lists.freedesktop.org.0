@@ -2,41 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F04479C9B3
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Sep 2023 10:21:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A698079D1E3
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Sep 2023 15:16:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DA4C610E3B6;
-	Tue, 12 Sep 2023 08:21:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 737D210E24E;
+	Tue, 12 Sep 2023 13:16:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 484 seconds by postgrey-1.36 at gabe;
- Tue, 12 Sep 2023 08:21:29 UTC
-Received: from mail.reismin.com (mail.reismin.com [217.61.105.20])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A837C10E3B7
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 12 Sep 2023 13:16:26 UTC
+Received: from mail.suprmetools.bond (unknown [193.17.5.67])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E46D810E24E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Sep 2023 08:21:29 +0000 (UTC)
-Received: by mail.reismin.com (Postfix, from userid 1002)
- id 214E18475F; Tue, 12 Sep 2023 10:11:38 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=reismin.com; s=mail;
- t=1694506332; bh=xAcLlILL50NG5iUG5HnziOXhpPS/RymW7kJy8FCy25o=;
- h=Date:From:To:Subject:From;
- b=Wewp47+mu6zppKrSDjf2lD/d7y94cdr8S8SboIY7epUVvIB/SXS66Jtie9rSYOlRg
- vF5zKKyY268dzIipM1MgDOyVqnTdDSv+SPPsecCe3X7LAcTwHVrkdCxTTgTOjsURXy
- hpFdgw37XwvIhXyi9TpOUchcT2lm8TW/xGDAfVkFUI85xShLBqEB1lw636503dDOOf
- BPAUXDticiq/fMCVqEmeA0BVNjVPOzb2NVYIMbG4CJC3s0iRhvenm+0VXb1I5vwel+
- Kom810NOEjauQn50bXaa/Y6OCqOPuuP2d11fbqTqTOMxnJ3oDzaxirVyIB3Le2ILXJ
- YWaAvqljSxykw==
-Received: by mail.reismin.com for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Sep 2023 08:11:06 GMT
-Message-ID: <20230912084500-0.1.2z.ax2h.0.ok11ek08nl@reismin.com>
-Date: Tue, 12 Sep 2023 08:11:06 GMT
-From: =?UTF-8?Q?"Andrzej_Pola=C5=84ski"?= <andrzej.polanski@reismin.com>
+ Tue, 12 Sep 2023 13:16:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=suprmetools.bond;
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=scrutinizing-harbor-freight@suprmetools.bond; 
+ bh=lfIhZvRWLaIfzfAWO5mjgvz2voA=;
+ b=5fDwsqXK1NwAlUJdVXLNSAejpykXn4Smy38Tox7gtfr99ORUSSEgtcixh3ENqhG0+6srAHwqZMnO
+ os+Bzap4qLA0V16B0rJWUIuN8GekjnwSguHulmPDuYS8OFrlpT2vrHAaqAtA8G1EMUmAxXS46s6e
+ RmG1RT4KzOZuNGqiKP4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=suprmetools.bond;
+ b=YL+PI4eE6u/20YZl5OsBeMSlvKgws2SvE3wB0IJk0AjAyNsfQwUCZRODwq/YnSk0UHCh2Apd5lV2
+ U6lM1rlp1sW53qvv/Zx76WzNE0EntBw1k2L8z/K2iNdShDRC8qBgPA85Hi49B4Gio8NNSfEttsqr
+ DmtJisLytSw+5N9MTHA=;
+Received: by mail.suprmetools.bond id h01iam0001gf for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 12 Sep 2023 09:01:59 -0400 (envelope-from
+ <scrutinizing-harbor-freight-intel+2Dgvt+2Ddev=lists.freedesktop.org@suprmetools.bond>)
+Date: Tue, 12 Sep 2023 09:01:59 -0400
+From: "Scrutinizing Harbor Freight"
+ <scrutinizing-harbor-freight@suprmetools.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.reismin.com
+Subject: A specialized Tool set is ready for you - share your feedback to
+ receive it.
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_166_2110532720.1694523695664"
+Message-ID: <0.0.0.203.1D9E57950C3C92E.7AB4C@mail.suprmetools.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,16 +55,69 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+------=_Part_166_2110532720.1694523695664
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Pozwoli=C5=82em sobie na kontakt, poniewa=C5=BC jestem zainteresowany wer=
-yfikacj=C4=85 mo=C5=BCliwo=C5=9Bci nawi=C4=85zania wsp=C3=B3=C5=82pracy.
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>castoor</title> 
+ </head> 
+ <body> 
+  <div align="center" style="background-color: #eee; padding: 12px"> 
+   <div style="width: 90%"> 
+    <div style="width: 90%"> 
+     <div align="center" style="width: 90%"> 
+      <div style="max-width: 488px; background-color: #fff; padding: 15px"> 
+       <div align="center">
+        <a href="http://www.suprmetools.bond/filenames-detectably/5764J2395M86Vl11z5deel1711V36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQaR9mo7AIn10Hm6tLOlwD"><img alt="okkotsu" src="http://www.suprmetools.bond/f2f4H2395yS7ha11z5df0Z1711l36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQaR9mo7zWI1V0n5mTw1D/Leslie-Staffordshire" style="width: 210px" /></a> 
+        <div align="center" style="background-color: #0C59A8; padding: 15px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; color: #fff; font-size: 16pt; display: inline-block">
+         Important Reminder from Harbor Freight
+        </div> 
+        <div align="center"> 
+         <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td>&nbsp;</td> 
+            <td align="center" style="padding: 12px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 19px">We're thrilled to inform you that Harbor Freight is providing a fantastic Pittsburgh 225 Piece Tool Set for your use at any of our store locations.</td> 
+            <td>&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+        <div align="center" style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 19px">
+         <strong>This is your chance?don't miss it! You have until September 12th to grab these exciting tools.</strong>
+        </div> 
+       </div> 
+       <div align="center">
+        <br /> 
+        <a href="http://www.suprmetools.bond/filenames-detectably/5764J2395M86Vl11z5deel1711V36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQaR9mo7AIn10Hm6tLOlwD" style="text-decoration: none; font-size: 22px; color: #fff; display: inline-block; padding: 15px 55px; background-color: #DA0016; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; border-radius: 116px">Start Here Now &gt; &gt; </a>
+        <br /> 
+        <br /> 
+        <a href="http://www.suprmetools.bond/filenames-detectably/5764J2395M86Vl11z5deel1711V36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQaR9mo7AIn10Hm6tLOlwD"><img alt="Settool" src="http://www.suprmetools.bond/2a56HS239J5gP7aw13z5Bdf1nY1711s36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQaR9mo5i10Ao5JLLwD/Leslie-Staffordshire" width="300" /></a>
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td align="center" style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 19px"><strong>Anticipating with gratitude. Sincerely,<br /> The Harbor Freight Team</strong></td> 
+     </tr> 
+     <tr> 
+      <td align="center" style="padding-top: 160px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'">Anyway you can leave <a href="http://www.suprmetools.bond/Sibley-asymptotically/9546dY23U95WSh8612o5deOfn1711h36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQaR9mo7oQCl10H6zA0wD3">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.suprmetools.bond/31d4F2395i8t5F12Cu5df2P1711u36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQaR9mo6A1Mql05EOUwD/Sibley-asymptotically" alt=""/></body>
+</html>
 
-Wspieramy firmy w pozyskiwaniu nowych klient=C3=B3w biznesowych.
+------=_Part_166_2110532720.1694523695664--
 
-Czy mo=C5=BCemy porozmawia=C4=87 w celu przedstawienia szczeg=C3=B3=C5=82=
-owych informacji?
-
-
-Pozdrawiam
-Andrzej Pola=C5=84ski
