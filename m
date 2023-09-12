@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29A4879D374
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Sep 2023 16:21:31 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C6D279D836
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Sep 2023 19:59:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B7D2510E41C;
-	Tue, 12 Sep 2023 14:21:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 517F710E02D;
+	Tue, 12 Sep 2023 17:59:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 12 Sep 2023 14:21:27 UTC
-Received: from mail.jumolowstool.bond (unknown [193.17.5.69])
- by gabe.freedesktop.org (Postfix) with ESMTP id B4C2610E41B
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 12 Sep 2023 17:59:47 UTC
+Received: from mail.walgrnsloves.bond (unknown [193.17.5.73])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 9D8A710E02D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Sep 2023 14:21:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=jumolowstool.bond;
+ Tue, 12 Sep 2023 17:59:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=walgrnsloves.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=dive.into.your.lowes.shopping.experience@jumolowstool.bond; 
- bh=DRRJHCc+oceHop2sbpKHEJgjoYY=;
- b=FwHihL4lja4N7pcgytzJ3F2XvNipynWwOR+Ma6TPb76kzQzRqBv9rL/UBFv1VH99L0kyBzGnFjAj
- hRLpuDAHmEIr1d5fNIJBOM4sq0lMol9vYky31wtRb6zjRQTGFj0JZKLFlUedheAdzs7URr6Am+Ep
- 79S7yhJl1Hzew5Da4Rc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jumolowstool.bond; 
- b=bS5mLvhyISYT5ht5guBTzaXMZmp/ExwultZOwAGTT5Ktuuqa7zPCRROa0lK/ZMeCuDwEbtqCdItz
- tlHLriVPBXsMWOM175/Z19E1Ji7YzuQwMHbWe+fqBcBHD0bXGgBDUSuscgPPAfQ0/dywlxuHCWTS
- EPqdwKf3KD2z3Fi6KP0=;
-Received: by mail.jumolowstool.bond id h01pue0001g8 for
+ i=dont_miss_out_on_walgreens_daily_special@walgrnsloves.bond; 
+ bh=UCG1WJNz1iUbPo8jSSys1Cq0Fi8=;
+ b=ORGOxdDJeLXMGTvYGK8162fvyT590kFEpw9brWWT5YgSziTGy02+MHAMmtxaYaCgGuDZ2nK0clOn
+ InYfEZWjJ/AxlNGdfbwbnFEVSBbdivnpAZltcy61hvHlSrAuIT+vnY12wNYExF24Fc6qRYW04jhC
+ 1YgT0YUCjol52gIxgC0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=walgrnsloves.bond; 
+ b=tMB2HHrGtgBjHckOM7kNeQKfl92u/oHb0VOAY1gAUhHMmLGk4nWdqwYIqFD43RAnbFjm+mRWrQR3
+ 31bnMR51A/Yt3vBTzwvmag8C2/ZlsaMrSdbcqJ0QOjUgjMK2XSGCCtDwzk+VA/Lx7RXr+PTVyiRJ
+ lVtTEyOUdzTbQ1AH0Sg=;
+Received: by mail.walgrnsloves.bond id h02jh60001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Sep 2023 10:13:35 -0400 (envelope-from
- <dive.into.your.lowes.shopping.experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@jumolowstool.bond>)
-Date: Tue, 12 Sep 2023 10:13:35 -0400
-From: "Dive Into Your Lowes Shopping Experience"
- <dive.into.your.lowes.shopping.experience@jumolowstool.bond>
+ Tue, 12 Sep 2023 13:51:50 -0400 (envelope-from
+ <dont_miss_out_on_walgreens_daily_special-intel+2Dgvt+2Ddev=lists.freedesktop.org@walgrnsloves.bond>)
+Date: Tue, 12 Sep 2023 13:51:50 -0400
+From: "Dont Miss Out On Walgreens Daily Special"
+ <dont_miss_out_on_walgreens_daily_special@walgrnsloves.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Providing your insights gets you a special Kobalt Tool set - it's
- yours.
+Subject: Exclusive Walgreens Savings &ndash; Join, Win Gift Cards!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_121_177123752.1694528001469"
-Message-ID: <0.0.0.22B.1D9E583518205CE.65A0B3@mail.jumolowstool.bond>
+ boundary="----=_Part_226_1083859927.1694541105421"
+Message-ID: <0.0.0.285.1D9E5A1CED98088.2445C9@mail.walgrnsloves.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_121_177123752.1694528001469
+------=_Part_226_1083859927.1694541105421
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,107 +62,64 @@ Content-Transfer-Encoding: 7bit
 <html>
  <head> 
   <meta charset="UTF-8" /> 
-  <title>traditional media</title> 
+  <title>great beyond</title> 
  </head> 
- <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'" width="400px"> 
-   <tbody> 
-    <tr> 
-     <td style="border: solid 1px #999; border-radius: 4px;box-shadow: 5px 5px #999"> 
-      <div align="center" style="background-color: #051B6B; padding-top: 10px; padding-bottom: 10px">
-       <a href="http://www.jumolowstool.bond/azure-inhibition/3b46WB2D395Q8yy613S5VdJf3C1712Z36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQvR9m95k_J105CTlwD"><img alt="santorum" src="http://www.jumolowstool.bond/azure-inhibition/dc86Wv2L395Ms7Ia11q5df5P1712S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQvR9m96I1oXI05Q2wlD" width="40%" /></a>
-      </div> 
-      <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" style="font-size: 26px; padding: 15px">Final Notification for Your Lowe's Reward</td> 
-        </tr> 
-        <tr> 
-         <td align="center" bgcolor="#eee" style="font-size: 19px; padding: 15px">Lowe's has fantastic news for you! We're providing a <strong>Kobalt Tool Set</strong> for your use at any of our stores. Act now, and don't miss this opportunity! You have until September 12th to grab these fantastic items.</td> 
-        </tr> 
-        <tr> 
-         <td align="center" style="padding-top: 15px; padding-bottom: 15px"> 
-          <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center"> 
-              <div style="background-color: #2743A8; padding-top: 15px; padding-bottom: 15px; padding-left: 10px; padding-right: 10px; width: 250px; margin: auto; border-radius: 5px; font-weight: bold; font-size: 22px; font-family: 'Josefin Sans', sans-serif; ">
-               <a href="http://www.jumolowstool.bond/azure-inhibition/3b46WB2D395Q8yy613S5VdJf3C1712Z36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQvR9m95k_J105CTlwD" style="text-decoration: none; color: white; ">Start Here Now &gt; &gt; </a>
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> <a href="http://www.jumolowstool.bond/azure-inhibition/3b46WB2D395Q8yy613S5VdJf3C1712Z36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQvR9m95k_J105CTlwD"><img alt="fastings" src="http://www.jumolowstool.bond/d8b4i2395yzU7a12q5d_f6L1712j36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQvR9m97E1LtO_05YMwDj/apostles-debauch" width="90%" /> </a></td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <div style="padding: 1px;"> 
-       <div style="margin: 1px"> 
-        <div style="padding: 1px;"> 
-         <div style="margin: 1px"> 
-          <div style="padding: 1px;"> 
-           <div style="margin: 1px"> 
-            <div style="padding: 1px;"> 
-             <div align="center" style="margin: 1px; font-size: 19px">
-              Thank you for participating in our survey. Your input is of utmost importance to us at Lowe's, and we genuinely value your feedback.              </div> 
-            </div> 
-           </div> 
-          </div> 
-         </div> 
-        </div> 
-       </div> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div style="float: left; max-width: 50px">
-   &nbsp;
-  </div> 
-  <div style="float: right; max-width: 50px">
-   &nbsp;
-  </div> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="padding-top: 10px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'" width="90%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 10px" width="90%"> 
-       <tbody> 
-        <tr> 
-         <td align="center"> 
-          <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 20px" width="90%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 30px" width="90%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center"> 
-                  <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 40px" width="90%"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" style="padding-top: 50px">you can leave with sadness <a href="http://www.jumolowstool.bond/d136Sp239u5qD86h11f5df4r1712j36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQvR9m96hun1l05UJwTD/azure-inhibition">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.jumolowstool.bond/quickest-Afrikaans/bca5S239w5Y85Dw13Qxp5df7v1712L36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQvR9m96S1pzg05a3w0D" alt=""/></body>
+ <body>
+  &nbsp; 
+  <div align="center" style="border-radius: 6px; background-color:rgb(50,50,100); padding: 9px 0px 9px 0px; max-width: 559px; margin: auto; font-family: tahoma; font-size: 22px">
+   <a href="http://www.walgrnsloves.bond/Lodowick-voucher/e7c5S239W5v8Z6J12Ut5e03P1714_36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQhR9mR5zw10O5uTlwD"><img alt="crossing" src="http://www.walgrnsloves.bond/5936Mu23L95V7G_a13E5e0CX5q1714n36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQhR9mR7i1s0Mmx6zqOwDX/mortal-nastiness" style="max-width: 250px" width="250" /></a>
+   <br /> 
+   <b style="color: #fff">A Limited-Time Deal for Our Treasured Users</b> 
+   <table align="center" bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" style="margin-top: 20px; margin-bottom: 10px; border-left: solid rgb(249,249,246); border-right: solid rgb(249,249,246)" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center">&nbsp; 
+       <div style="padding: 0px 15px">
+        Your decision to choose Wa
+        <span style="font-size: 1px; color: #fff; letter-spacing: -5px">eps</span>lgr
+        <span style="font-size: 1px; color: #fff; letter-spacing: -5px">cio</span>eens. is significant to us, and we want to express our gratitude. Your loyalty and support mean a lot, and we appreciate the chance to serve you.        </div> <a href="http://www.walgrnsloves.bond/Lodowick-voucher/e7c5S239W5v8Z6J12Ut5e03P1714_36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQhR9mR5zw10O5uTlwD" style="text-decoration: none"><img alt="" src="http://www.walgrnsloves.bond/wizards-watering/24c6g2l3i95Mq7za12w5e0p6K1714y36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQhR9mR7Ru1xX0v5QAPwD" tyle="max-width: 150px" /> <img alt="" src="http://www.walgrnsloves.bond/af75S239S5ww7a_13Y5Bhe07_1714D36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQhR9mR5tA10v5LPPwD/Liberia-complementary" style="max-width: 150px" width="150" /></a><br /> &nbsp; 
+       <div style="padding: 0px 15px">
+        We genuinely appreciate your feedback, and as a token of our appreciation for sharing your thoughts, we'd like to offer you a small gesture of gratitude.        </div> &nbsp; 
+       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+        <tbody> 
+         <tr> 
+          <th style="padding: 12px">Upon Completion of the Survey you might have a choice between different gifts!</th> 
+         </tr> 
+        </tbody> 
+       </table> <p style="background-color: #E63113; display: inline-block; padding: 15px; border-radius: 7px"><a href="http://www.walgrnsloves.bond/Lodowick-voucher/e7c5S239W5v8Z6J12Ut5e03P1714_36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQhR9mR5zw10O5uTlwD" style="font-size: 29px; color:#fff; text-decoration: none"><strong>Start Now Here</strong></a></p> &nbsp; <p align="center"><small>Thank you again for your support. We look forward<br /> to hearing from you soon!<br /> <br /> Warm regards,<br /> <br /> The Walgreens Survey</small></p> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp; 
+   <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <div align="center" style="font-size: small; color: #fff">
+    you can exit anytime 
+    <a href="http://www.walgrnsloves.bond/d4f5L2W395Bmk8613W5se0l4m1714V36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQhR9mR5F1X0F6BL3wDp/mortal-nastiness" style="color: #E63113">here</a>
+    <br /> US 10010 126 E 23rd St New York, NY,
+   </div> 
+  </div>   
+ <img src="http://www.walgrnsloves.bond/e994d2395dq85v12J5we08W1714s36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhR9mR5c1yK06r30ywD/Lodowick-voucher" alt=""/></body>
 </html>
 
-------=_Part_121_177123752.1694528001469--
+------=_Part_226_1083859927.1694541105421--
 
