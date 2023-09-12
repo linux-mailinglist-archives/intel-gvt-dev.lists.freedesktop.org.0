@@ -2,45 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8132D79DA02
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Sep 2023 22:23:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A5F6E79DBF2
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Sep 2023 00:39:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4FF8A10E0AA;
-	Tue, 12 Sep 2023 20:23:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 90E2510E00E;
+	Tue, 12 Sep 2023 22:39:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 12 Sep 2023 20:23:49 UTC
-Received: from mail.drinkstarbuck.bond (unknown [193.17.5.70])
- by gabe.freedesktop.org (Postfix) with ESMTP id 889FA10E0AA
+X-Greylist: delayed 961 seconds by postgrey-1.36 at gabe;
+ Tue, 12 Sep 2023 22:39:13 UTC
+Received: from mail.familymcdnal.bond (unknown [193.17.5.68])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 71F8710E00E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Sep 2023 20:23:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=drinkstarbuck.bond; 
+ Tue, 12 Sep 2023 22:39:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=familymcdnal.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=brew.share.your.starbucks.opinion@drinkstarbuck.bond; 
- bh=KyewDrVDd4gN+NKYkczHygrS84E=;
- b=M022YpriP9syC/MoQouaTZoWaJjxH8o3eECxoUVeOIKQiEKOu4PGrLmoROwcwMx9ahHjQbjsMc3R
- naDEOQ7AWJd6GlOORq8NCMkghTWmhUPMIa+hS274TYbgfkbKFWBA40D51HRAjykxD8fO8Wt3tDFP
- o01NUCkkLpA98k2tHtw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=drinkstarbuck.bond; 
- b=gzMWbMDSbERi8iWVAhvd/n1/J5QPXnuGjpQYi975re+tkdxnIj3MaV+f3XilvJ1JsmckHQMpLINy
- N6gZ+K8j5huKl69OI2q+1SM4zt5AB8m52n5ASqlC2bnuq7NfZLGX3fmlvnpbgjghq1gxm0DplVMH
- a18JZrgZYuDcKaVUDy8=;
-Received: by mail.drinkstarbuck.bond id h03dss0001ge for
+ i=patron-experience-at-mcdonalds@familymcdnal.bond; 
+ bh=kfy/UyYL7ZMyYVPntB+BnDUP9ls=;
+ b=BLU0AIYE44GHhv4M/9mupS3NGtxFe3wqPECELcRRQOrH83YpPFRwuLxZGwFMmk/3/u2lzZmPuUX9
+ tuV1u+uJ6hj2Ug60UiraiYczT7JdVPM8Lw0tNpIPZcQuuMS6R6riA8Gm477zhF/YiBV/6dy3NHRW
+ y0RO6tAluIN4T0YjIuU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=familymcdnal.bond; 
+ b=jq8fKR+mjrd0SmtMiSfUTev++xuRdhuiS+exn8NOLZILxZ8tps0QIUZeeW79s6UcUnngrhv8Vj1b
+ 9+70H3bBSFy75UkMSD5pN9QA5Ea1rLJHlRLWS/rtBNLNLbfY1rTOKycVazXb1+7A2d1fvDmMfA3G
+ 2BN/FWkKnis1Ivz5S7w=;
+Received: by mail.familymcdnal.bond id h03k920001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Sep 2023 17:37:58 -0400 (envelope-from
- <brew.share.your.starbucks.opinion-intel+2Dgvt+2Ddev=lists.freedesktop.org@drinkstarbuck.bond>)
-Date: Tue, 12 Sep 2023 17:37:58 -0400
-From: "Brew Share Your Starbucks Opinion"
- <brew.share.your.starbucks.opinion@drinkstarbuck.bond>
+ Tue, 12 Sep 2023 18:20:21 -0400 (envelope-from
+ <patron-experience-at-mcdonalds-intel+2Dgvt+2Ddev=lists.freedesktop.org@familymcdnal.bond>)
+Date: Tue, 12 Sep 2023 18:20:21 -0400
+From: "Patron Experience At McDonalds"
+ <patron-experience-at-mcdonalds@familymcdnal.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: It's your moment to soar through the skies! Delight in a
- complimentary journey to any destination this season, courtesy of us!
+Subject: Today's the Day for a Complimentary Meal!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_349_2014425263.1694549806474"
-Message-ID: <0.0.0.2EC.1D9E5C165D4D202.47622C@mail.drinkstarbuck.bond>
+ boundary="----=_Part_211_1528848756.1694557218239"
+Message-ID: <0.0.0.311.1D9E5C751818524.43C309@mail.familymcdnal.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,62 +54,83 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_349_2014425263.1694549806474
+------=_Part_211_1528848756.1694557218239
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <title>regarding this</title> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>sebastiam yadra</title> 
  </head> 
- <body bgcolor="#eee"> 
-  <div align="center"> 
-   <table align="center" bgcolor="#1A6E48" border="0" cellpadding="0" cellspacing="0" style="max-width: 399pt" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"><a href="http://www.drinkstarbuck.bond/4a36h2IF395fS86q12A5eB0ey1716q36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQYR9me7U1kIk0t6ylqkwD/formatters-unarmed"><img alt="tellme" src="http://www.drinkstarbuck.bond/battleships-cartoons/c7e4k2395q7aiQ13PO5eI10v1716X36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQYR9me6t1t0Gh6Ql1@wD" style="border-collapse: collapse; max-width: 400px" /></a> 
-       <table bgcolor="#fff" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-        <tbody> 
-         <tr> 
-          <th style="padding: 15px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; text-decoration: underline; font-size: 29px">Your Starbucks Final Reminder</th> 
-         </tr> 
-         <tr> 
-          <td style="padding: 19px; text-align: center; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 19px; line-height: 25px">Great news awaits! <strong>Starbucks</strong> is presenting a special promotion for a <strong>$100 Gift</strong>, valid at any of our store locations. Don't hesitate! You have until September 12th to claim these delightful beverages 
-           <div>
-            &nbsp; 
-            <div style="margin-top: 15px; margin-bottom: 15px">
-             <a href="http://www.drinkstarbuck.bond/4a36h2IF395fS86q12A5eB0ey1716q36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQYR9me7U1kIk0t6ylqkwD/formatters-unarmed" style="text-decoration: none; display: inline-block; padding: 12px 82px; border-radius: 415px; border: solid 3px #000; color: #000; font-weight: 900; font-weight: bold; font-size: 29px">Start Here Now &gt; &gt; </a>
-            </div> 
-            <a href="http://www.drinkstarbuck.bond/4a36h2IF395fS86q12A5eB0ey1716q36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQYR9me7U1kIk0t6ylqkwD/formatters-unarmed"><img alt="thenstart" src="http://www.drinkstarbuck.bond/doorman-religiously/8466A2oX395R7XWa12HY5e11P1716X36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQYR9me7a1tZs0n6LXlw@D" style="max-width: 250px" width="100%" /> </a>
-           </div> 
-           <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td>&nbsp;</td> 
-             </tr> 
-             <tr> 
-              <td bgcolor="#eee" style="padding: 12px"><strong>We appreciate your participation.<br /> Best regards, The Starbucks Team.</strong></td> 
-             </tr> 
-            </tbody> 
-           </table> </td> 
-         </tr> 
-        </tbody> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div> 
-  <div align="center" style="padding-top: 159px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'">
-   you can leave with sadness 
-   <a href="http://www.drinkstarbuck.bond/1976S23L9Z5z86yg12yy5e0fY1716p36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQYR9me6N1Wxy06d2wllD/unfavorable-removed">here</a>
-   <br /> US 10010 126 E 23rd St New York, NY,
-  </div> 
-  <ul style="margin: 0; padding: 0; width: 399pt; margin: auto"> 
-  </ul>   
- <img src="http://www.drinkstarbuck.bond/ammonium-derision/z4e5I2G395HS8m513zD5e12mP1716h36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQYR9me5Bv1t06LMJNwD" alt=""/></body>
+ <body style="margin: 0; padding: 0; background-color: rgb(255, 243, 243);"> 
+  <table align="center" cellpadding="0" class="yadra"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <table align="center" cellpadding="0" class="yadra"> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp; 
+          <table> 
+           <tbody> 
+            <tr> 
+             <td bgcolor="ffffff"> 
+              <div style="max-width: 480px; margin: auto; background-color: #fff; box-shadow: inset 0 0 5px 1px; padding: 4.5% 2.5%; border-radius: 5px;"> 
+               <blockquote> 
+                <center style="max-width: 20em; margin: auto;">
+                 <a href="http://www.familymcdnal.bond/hampers-murky/8fa4v2395erM8613Xx5e1Z3U1717u36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4R9mK6UYw10r5PlwBD"><img alt="mcspecial" src="http://www.familymcdnal.bond/Santayana-sharpens/a086v23v9p5zO7aK12u5eC15T1717n36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ4R9mK6O10nyG6e2wLLD" width="100%" /> </a>
+                </center> 
+               </blockquote> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+               <table style="max-width: 480px; margin: auto;"> 
+                <tbody> 
+                 <tr> 
+                  <td style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; font-size: 1.2em; font-weight: normal; text-align: center; line-height: 1.5em;">We want to convey our appreciation for selecting <b>McDonald's</b> as your preferred dining destination. Your loyalty is of great significance to us, and we genuinely value the opportunity to cater to your needs.</td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+               <p id="towsws" style="text-align: center;">&nbsp;</p> 
+               <article> 
+                <table align="center" style="width: 85%; margin: auto;"> 
+                 <tbody> 
+                  <tr> 
+                   <td><a href="http://www.familymcdnal.bond/hampers-murky/8fa4v2395erM8613Xx5e1Z3U1717u36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4R9mK6UYw10r5PlwBD"><img alt="" src="http://www.familymcdnal.bond/6a16w2FS395yN7qa12F5e16XR1717V36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ4R9mK5t10TH5lXzwD/matters-honoring" width="100%" /> </a></td> 
+                  </tr> 
+                 </tbody> 
+                </table> 
+               </article> 
+               <br /> 
+               <span style="display: block; text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: normal; line-height: 1.5em; font-size: 1.2em;">To participate in the survey, simply click on the link below. It will take just a few minutes of your time, and rest assured that your responses will be kept completely confidential.</span> 
+               <p>&nbsp;</p> 
+               <span style="font-size: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+               <center style="margin-top: -7%;"> 
+                <blockquote style="width: 230px;">
+                 <a href="http://www.familymcdnal.bond/hampers-murky/8fa4v2395erM8613Xx5e1Z3U1717u36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4R9mK6UYw10r5PlwBD"><img alt="ppls1" src="http://www.familymcdnal.bond/3596N2i39K5hvL7a13u5e1X7o_1717A36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ4R9mK6D1ZIr06q2P@wD/promoter-talkers" width="100%" /> </a>
+                </blockquote> 
+               </center> 
+               <p style="display: block; text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; line-height: 1.5em; font-size: .9em;">Once again, thank you for your continued support. We anticipate your feedback in the near future.<br /> <br /> Warm regards,</p> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <div style="padding-top: 200px;">
+           &nbsp;
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div style="background-color: #860005; padding-top: 15px; padding-bottom: 30px; border-bottom: solid 15px #330103;"> 
+   <div style="max-width: 500px; margin: auto;"> 
+    <p align="center" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; color: #fff;">you can leave with sadness <a href="http://www.familymcdnal.bond/e7b4L2395g8Kl611g5e14k1717J36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4R9mK7FW1J0ZZ5HBwDU/marbling-toweling">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+   </div> 
+  </div>   
+ <img src="http://www.familymcdnal.bond/51b4H2395d_8T513C5eUS18l1717u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ4R9mK7Q_1sq0Y6MBW@wD/recalculate-endings" alt=""/></body>
 </html>
 
-------=_Part_349_2014425263.1694549806474--
+------=_Part_211_1528848756.1694557218239--
 
