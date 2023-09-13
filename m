@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5F6E79DBF2
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Sep 2023 00:39:19 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FB5E79E7BA
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Sep 2023 14:15:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 90E2510E00E;
-	Tue, 12 Sep 2023 22:39:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D480810E00F;
+	Wed, 13 Sep 2023 12:15:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 961 seconds by postgrey-1.36 at gabe;
- Tue, 12 Sep 2023 22:39:13 UTC
-Received: from mail.familymcdnal.bond (unknown [193.17.5.68])
- by gabe.freedesktop.org (Postfix) with ESMTP id 71F8710E00E
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 13 Sep 2023 12:15:24 UTC
+Received: from mail.gosouthwest.bond (unknown [193.17.5.76])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E0E0010E00F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Sep 2023 22:39:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=familymcdnal.bond;
+ Wed, 13 Sep 2023 12:15:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gosouthwest.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=patron-experience-at-mcdonalds@familymcdnal.bond; 
- bh=kfy/UyYL7ZMyYVPntB+BnDUP9ls=;
- b=BLU0AIYE44GHhv4M/9mupS3NGtxFe3wqPECELcRRQOrH83YpPFRwuLxZGwFMmk/3/u2lzZmPuUX9
- tuV1u+uJ6hj2Ug60UiraiYczT7JdVPM8Lw0tNpIPZcQuuMS6R6riA8Gm477zhF/YiBV/6dy3NHRW
- y0RO6tAluIN4T0YjIuU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=familymcdnal.bond; 
- b=jq8fKR+mjrd0SmtMiSfUTev++xuRdhuiS+exn8NOLZILxZ8tps0QIUZeeW79s6UcUnngrhv8Vj1b
- 9+70H3bBSFy75UkMSD5pN9QA5Ea1rLJHlRLWS/rtBNLNLbfY1rTOKycVazXb1+7A2d1fvDmMfA3G
- 2BN/FWkKnis1Ivz5S7w=;
-Received: by mail.familymcdnal.bond id h03k920001gs for
+ i=southwest_travel_insights@gosouthwest.bond; 
+ bh=B2rxDX/5Y8mHzNufF8G21UheTWQ=;
+ b=S5vmuoiDtLh1rMYCVQPQWKOKHSbUjeMBBZyDxs/MczUEFm0o7zDSfSLU6QeJHmbgJ8ruMxdXJ9s0
+ y8fw5JqdQSscm7GzSlThV2HcPCY1stCPmdR2Ze5mH/tkECCB2dmhLM5GNygVWRwUwqHQlVRmgj/U
+ bbfVTLESVzoUkKnaRbY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gosouthwest.bond;
+ b=NsR2q+/n9wFBW8TM23n61Df3N6vnxfVkTlIzN4iITsSmmUjIdJanGNyVVbK/WjOWk5jmYK44+xnV
+ 0Uxnc5onfYe04QmFbq4Cn/t0cxucnWORAsCBZdYe+9l1zeYa96T6ae7dmdvTGNsGrgIB+4Qjh61i
+ UmXylzm6ajnDLZ2aNjY=;
+Received: by mail.gosouthwest.bond id h06jtq0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Sep 2023 18:20:21 -0400 (envelope-from
- <patron-experience-at-mcdonalds-intel+2Dgvt+2Ddev=lists.freedesktop.org@familymcdnal.bond>)
-Date: Tue, 12 Sep 2023 18:20:21 -0400
-From: "Patron Experience At McDonalds"
- <patron-experience-at-mcdonalds@familymcdnal.bond>
+ Wed, 13 Sep 2023 08:02:03 -0400 (envelope-from
+ <southwest_travel_insights-intel+2Dgvt+2Ddev=lists.freedesktop.org@gosouthwest.bond>)
+Date: Wed, 13 Sep 2023 08:02:03 -0400
+From: "Southwest Travel Insights" <southwest_travel_insights@gosouthwest.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Today's the Day for a Complimentary Meal!
+Subject: Your seasonal reward: a complimentary flight to any destination -
+ make it unforgettable!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_211_1528848756.1694557218239"
-Message-ID: <0.0.0.311.1D9E5C751818524.43C309@mail.familymcdnal.bond>
+ boundary="----=_Part_112_346465163.1694606511499"
+Message-ID: <0.0.0.32C.1D9E63A1BDF7200.34B8A7@mail.gosouthwest.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,83 +54,91 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_211_1528848756.1694557218239
+------=_Part_112_346465163.1694606511499
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
  <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>sebastiam yadra</title> 
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> 
+  <title>grinding</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(255, 243, 243);"> 
-  <table align="center" cellpadding="0" class="yadra"> 
+ <body style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; background-color: #304DB2; margin-left: 0; margin-right: 0; padding-top: 35px"> 
+  <div style="background-color: #fff; padding-top: 25px"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 488pt" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"><a href="http://www.gosouthwest.bond/a074j2395p8DZ613n5e19xyg1718N36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ1R9nm7u1ZQC0k6XzwDTW/posited-totter"><img alt="1654" src="http://www.gosouthwest.bond/a256d23qi95SN7ay11B5e1bD1718p36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ1R9nm6K1Rvj06qBw0JD/grappled-seaports" style="max-width: 356px" /></a></td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <p style="font-size: 5px">&nbsp;</p> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 488pt" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"> 
+       <blockquote style="font-size: 20px; text-align: center; padding: 12px; margin: 0; max-width: 500px">
+        Your decision to choose Southwest for your travel is significant to us, and we want to extend our warmest thanks for your loyalty and support. We genuinely appreciate the opportunity to assist you with your travel needs.        </blockquote> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <p style="font-size: 5px; margin: 0">&nbsp;</p> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 488pt" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"> 
+       <blockquote style="font-size: 20px; text-align: center; padding: 12px; margin: 0; max-width: 500px; background-color: #FEBF26; color: #21529E">
+        Your input is essential to us. Please consider taking part in a brief survey about your recent flight and your overall experience with Southwest to help us improve your interactions with our airline.        </blockquote> 
+       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td style="padding-top: 25px"><a href="http://www.gosouthwest.bond/a074j2395p8DZ613n5e19xyg1718N36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ1R9nm7u1ZQC0k6XzwDTW/posited-totter" style="display: block; background-color: #FEBF26; max-width: 521px; margin: auto" target="_blank"><img alt="insightnew" height="auto" src="http://www.gosouthwest.bond/operates-constructive/3d26q23P9h5j7Qal13CL5Re1cD1718R36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ1R9nm7G1g0Qpn5U2wpD" style="border:0; display:block; outline:none; text-decoration:none; height:auto; width:521px; font-size:13px; display: block" width="521" /></a></td> 
+         </tr> 
+         <tr> 
+          <td align="center"> 
+           <div align="center" style="max-width: 500px">
+            <span style="padding: 12px; display: block; font-weight: bold; font-size: 22px">Your insights are crucial to us, and as a token of our appreciation, we're delighted to offer you $100.</span> 
+            <p style="font-size: 20px">Clicking on the link below will take you to the survey. It's a straightforward task that will take only a few minutes of your time, and we want to emphasize that your responses will be held in strict confidence.</p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> &nbsp; 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" width="577"> 
    <tbody> 
     <tr> 
      <td> 
-      <table align="center" cellpadding="0" class="yadra"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp; 
-          <table> 
-           <tbody> 
-            <tr> 
-             <td bgcolor="ffffff"> 
-              <div style="max-width: 480px; margin: auto; background-color: #fff; box-shadow: inset 0 0 5px 1px; padding: 4.5% 2.5%; border-radius: 5px;"> 
-               <blockquote> 
-                <center style="max-width: 20em; margin: auto;">
-                 <a href="http://www.familymcdnal.bond/hampers-murky/8fa4v2395erM8613Xx5e1Z3U1717u36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4R9mK6UYw10r5PlwBD"><img alt="mcspecial" src="http://www.familymcdnal.bond/Santayana-sharpens/a086v23v9p5zO7aK12u5eC15T1717n36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ4R9mK6O10nyG6e2wLLD" width="100%" /> </a>
-                </center> 
-               </blockquote> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-               <table style="max-width: 480px; margin: auto;"> 
-                <tbody> 
-                 <tr> 
-                  <td style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; font-size: 1.2em; font-weight: normal; text-align: center; line-height: 1.5em;">We want to convey our appreciation for selecting <b>McDonald's</b> as your preferred dining destination. Your loyalty is of great significance to us, and we genuinely value the opportunity to cater to your needs.</td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <p id="towsws" style="text-align: center;">&nbsp;</p> 
-               <article> 
-                <table align="center" style="width: 85%; margin: auto;"> 
-                 <tbody> 
-                  <tr> 
-                   <td><a href="http://www.familymcdnal.bond/hampers-murky/8fa4v2395erM8613Xx5e1Z3U1717u36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4R9mK6UYw10r5PlwBD"><img alt="" src="http://www.familymcdnal.bond/6a16w2FS395yN7qa12F5e16XR1717V36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ4R9mK5t10TH5lXzwD/matters-honoring" width="100%" /> </a></td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-               </article> 
-               <br /> 
-               <span style="display: block; text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: normal; line-height: 1.5em; font-size: 1.2em;">To participate in the survey, simply click on the link below. It will take just a few minutes of your time, and rest assured that your responses will be kept completely confidential.</span> 
-               <p>&nbsp;</p> 
-               <span style="font-size: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
-               <center style="margin-top: -7%;"> 
-                <blockquote style="width: 230px;">
-                 <a href="http://www.familymcdnal.bond/hampers-murky/8fa4v2395erM8613Xx5e1Z3U1717u36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4R9mK6UYw10r5PlwBD"><img alt="ppls1" src="http://www.familymcdnal.bond/3596N2i39K5hvL7a13u5e1X7o_1717A36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ4R9mK6D1ZIr06q2P@wD/promoter-talkers" width="100%" /> </a>
-                </blockquote> 
-               </center> 
-               <p style="display: block; text-align: center; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold; line-height: 1.5em; font-size: .9em;">Once again, thank you for your continued support. We anticipate your feedback in the near future.<br /> <br /> Warm regards,</p> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-          <div style="padding-top: 200px;">
-           &nbsp;
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+      <div align="center">
+       <a href="http://www.gosouthwest.bond/a074j2395p8DZ613n5e19xyg1718N36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ1R9nm7u1ZQC0k6XzwDTW/posited-totter" style="text-decoration: none; color: #fff; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'; font-size: 29px; border: solid 4px; padding: 18px; border-radius: 7px; display: inline-block">Start The Survey Here &gt; &gt; </a>
+       <br /> 
+       <br /> 
+       <br /> 
+       <br /> &nbsp; 
+       <hr color="#fff" /> 
+       <p align="center" style="color: #fff; font-size: 20px; max-width: 500px">Thank you for your ongoing support, and we eagerly await your feedback.<br /> <br /> Best regards,</p> 
+       <br /> 
+       <br /> 
+       <br /> &nbsp; 
+       <table border="0" cellpadding="0" cellspacing="0" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td align="center" style="color: #fff"><br /> <br /> <br /> <br /> <br /> <br /> You have the option to leave with sadness <a href="http://www.gosouthwest.bond/prerequisites-pumped/cf66gY2v395nQ8G612D5e1aLt1718q36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ1R9nm5WM10X6aO2w2D" style="color: #FEBF26">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> </td> 
     </tr> 
    </tbody> 
-  </table> 
-  <div style="background-color: #860005; padding-top: 15px; padding-bottom: 30px; border-bottom: solid 15px #330103;"> 
-   <div style="max-width: 500px; margin: auto;"> 
-    <p align="center" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; color: #fff;">you can leave with sadness <a href="http://www.familymcdnal.bond/e7b4L2395g8Kl611g5e14k1717J36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4R9mK7FW1J0ZZ5HBwDU/marbling-toweling">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-   </div> 
-  </div>   
- <img src="http://www.familymcdnal.bond/51b4H2395d_8T513C5eUS18l1717u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ4R9mK7Q_1sq0Y6MBW@wD/recalculate-endings" alt=""/></body>
+  </table>   
+ <img src="http://www.gosouthwest.bond/shrivel-repair/ada6yqt2395Oo8X512WH5e1dl1718p36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ1R9nm6a1W0Fq6iU@wyD" alt=""/></body>
 </html>
 
-------=_Part_211_1528848756.1694557218239--
+------=_Part_112_346465163.1694606511499--
 
