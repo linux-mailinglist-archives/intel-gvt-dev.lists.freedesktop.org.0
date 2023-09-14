@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68EFA7A0BA8
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Sep 2023 19:25:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EC3C27A10EB
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 15 Sep 2023 00:26:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E19FC10E29E;
-	Thu, 14 Sep 2023 17:25:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BCEC010E12D;
+	Thu, 14 Sep 2023 22:26:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 14 Sep 2023 17:25:38 UTC
-Received: from mail.fillachicken.live (unknown [194.146.36.206])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2BD5B10E29D
+X-Greylist: delayed 3601 seconds by postgrey-1.36 at gabe;
+ Thu, 14 Sep 2023 22:26:27 UTC
+Received: from mail.plusflights.bond (unknown [194.116.229.226])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 97BA110E12D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 14 Sep 2023 17:25:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=fillachicken.live;
+ Thu, 14 Sep 2023 22:26:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=plusflights.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=listening.to.chickfila.customers@fillachicken.live; 
- bh=jOVA87mBmOmAeWXhuHDkv4IPxxQ=;
- b=UadaLMFnbrq7u7nEdstiaYq5TCHn2K05rUJXS1F/ZV4V/JcmLR6ONYjMVBgQ/BafvIav1EAcu1nj
- zlnASDZ4phsV9x269kLLOq24HdqR18xgwOlASsKl5ZdGzBuztWiFpiRz1lnBUAJNtJYnw9ImqjcI
- V6cFlPycm6ZfLR/+c88=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fillachicken.live; 
- b=Nc8+waL4dGnT2mmAaMlcEhfsoxLS7oRomKc++HcXGcYMs3IinPTosynoVXU7+HdXTZyxY63yKSY/
- kxFxNUYeHC0Fg1iqY/R78DdH5vgZ4Wc4xXZsxBleaaYAlXh2sW5PFmkO6JUpngts4Z0xmafFNq7l
- I1s6N8uneWDEPl80gik=;
-Received: by mail.fillachicken.live id h0dagg0001g7 for
+ i=delta_travel_knowledge@plusflights.bond; 
+ bh=86XgNWPpkz4UddSXKFFmp0D9Sno=;
+ b=oh2uPYPvV5Ua6TQ8hcGz61aVnfr+KguCZg3obiTR1JjRjI6NPP2HPtOSmQtA9CL96t69ghe/h3Ph
+ Gcqj9DhDSH0M6/Se8xZ81J+n9ojMlGHvhRYHQ2zeb6+k0UkFkec8JPWdqzAT8lvSHq3cmYRKyjoA
+ X+1bedDI3ckMBhVXZRs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=plusflights.bond;
+ b=L0dFoUmMew+i9nC/kskRbLadKon2nyoHmwXANtX6tE/7ogQ7GEeLtwABoP8iUN4LleS+Nf5Q2brD
+ nKk8qoFVwq+1WS+3SiGFoGRWu48UX2Lw8ioqDZd1RweH6PRnDZRHDbyaN4n3K3rBGJuP3s5heh/2
+ x3nfBIUzzfBbyRErTtI=;
+Received: by mail.plusflights.bond id h0edoi0001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 14 Sep 2023 14:38:31 -0400 (envelope-from
- <listening.to.chickfila.customers-intel+2Dgvt+2Ddev=lists.freedesktop.org@fillachicken.live>)
-Date: Thu, 14 Sep 2023 14:38:31 -0400
-From: "Listening To ChickfilA Customers"
- <listening.to.chickfila.customers@fillachicken.live>
+ Thu, 14 Sep 2023 18:44:58 -0400 (envelope-from
+ <delta_travel_knowledge-intel+2Dgvt+2Ddev=lists.freedesktop.org@plusflights.bond>)
+Date: Thu, 14 Sep 2023 18:44:58 -0400
+From: "Delta Travel Knowledge" <delta_travel_knowledge@plusflights.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: It's On Us! Claim Your Free Chick-fil-A Meal Today!
+Subject: Commemorate the season's festivities with a free flight to your dream
+ destination!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_124_755000520.1694711846828"
-Message-ID: <0.0.0.46B.1D9E73AA9111EB6.1882D1@mail.fillachicken.live>
+ boundary="----=_Part_268_1791559714.1694726627357"
+Message-ID: <0.0.0.4D3.1D9E75D16BB5950.41E64D@mail.plusflights.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,31 +54,133 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_124_755000520.1694711846828
+------=_Part_268_1791559714.1694726627357
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html>
- <head> 
-  <meta charset="UTF-8" /> 
-  <title>cmon man</title> 
- </head> 
- <body style="margin: 0"> 
-  <p align="center" style="background-color: #D0061B; margin: auto; padding: 15px"><a href="http://www.fillachicken.live/drilling-consonants/5ee4o2395A8O6y11w5e4dN1721G36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQrR9om6L1F0wY6DJWlwD"><img alt="hed" src="http://www.fillachicken.live/7555s23T95byY7a12B5ke4fP1721A36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQrR9om5s1Z0r5BNWwD/instants-overlooked" style="display: block; border-color: #D0061B" width="110" /></a></p> 
-  <p align="center" style="margin: auto; max-width: 418pt; padding-left: 50px; padding-right: 50px; padding-top: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 21.54516px">We'd like to express our gratitude for choosing <strong>Chick-fil-A</strong>. Your loyalty and support are highly valued by us, and we genuinely appreciate the opportunity to serve you with our delicious food and exceptional service.</p> 
-  <p align="center"><a href="http://www.fillachicken.live/drilling-consonants/5ee4o2395A8O6y11w5e4dN1721G36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQrR9om6L1F0wY6DJWlwD" style="text-decoration: none; vertical-align: top"><img alt="frask" src="http://www.fillachicken.live/e7b4m2395Bq7aV12YD5e50r1721Q36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQrR9om6EP1sq06pN2wDU/preparing-opprobrium" style="width: 140px" width="150" /> <img alt="attop" src="http://www.fillachicken.live/cf55o23p95eZ7ma11D5e51O1721_36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQrR9om5V10uR6OLUw1D/feelingly-repetitions" style="width: 160px" /></a></p> 
-  <p align="center" style="margin: auto; max-width: 418pt; padding-left: 50px; padding-right: 50px; padding-top: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 21.54516px">We greatly value your selection of Chick-fil-A! Your loyalty and support hold immense significance for us, and we genuinely cherish the opportunity to serve you.</p> 
-  <p align="center" style="margin: auto; max-width: 418pt; padding-left: 50px; padding-right: 50px; padding-top: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 21.54516px; font-weight: bold">In appreciation of your feedback, you'll have the chance to qualify for a $100 gift</p> 
-  <p align="center" style="margin: auto; max-width: 418pt; padding-left: 50px; padding-right: 50px; padding-top: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 21.54516px; font-weight: normal">To participate in the survey, kindly click the link provided below. The survey should only require a few minutes of your time, and rest assured that your responses will remain completely confidential</p> 
-  <p align="center" style="margin: auto; max-width: 418pt; padding-left: 50px; padding-right: 50px; padding-top: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 21.54516px; font-weight: normal"><a href="http://www.fillachicken.live/drilling-consonants/5ee4o2395A8O6y11w5e4dN1721G36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQrR9om6L1F0wY6DJWlwD" style="color: #fff; text-decoration: none; font-size: 29px; display: block; background-color: #F5315F; padding: 15px; border-radius: 115px">Start Here Now &gt; &gt; </a></p> 
-  <p align="center" style="margin: auto; max-width: 418pt; padding-left: 50px; padding-right: 50px; padding-top: 29px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; font-size: 21.54516px; font-weight: normal; font-size: 19px">Thank you once again for your support. We eagerly anticipate hearing from you soon!<br /> <br /> Warm regards, Chick-fil-A</p> 
-  <br /> 
-  <br /> &nbsp; 
-  <p align="center" style="font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif'; background-color: #eee"><br /> <br /> <br /> Anyway you can leave <a href="http://www.fillachicken.live/nickels-climaxes/af85c239i5X8l6G13rL5eL4ej1721F36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQrR9om5Cy10C5mJwpD">here</a><br /> US 10010 126 E 23rd St New York, NY,<br /> <br /> &nbsp;</p> 
-  <br /> &nbsp;  
- <img src="http://www.fillachicken.live/c055K23t95M8s5p12jV5e52q1721t36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQrR9om6wMC10W5RlywD/conscious-Anabaptists" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>cali daandesl</title>=20
+ </head>=20
+ <body style=3D"padding: 0; margin: 0;">=20
+  <table align=3D"center" style=3D"width: 100%; background-color: rgb(255, =
+251, 245);">=20
+   <tbody>=20
+    <tr>=20
+     <td bgcolor=3D"ffffff">=20
+      <div>=20
+       <div>=20
+        <p style=3D"width: 100%; background-color: rgb(7, 8, 27); text-alig=
+n: center; padding-top: 15px; padding-bottom: 15px; margin: 0;"><span><a hr=
+ef=3D"http://www.plusflights.bond/pastors-lilies/1f25k239U5h86pL13RG5e5T9s1723x36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsR9oo7kLSBF105F1wkD" target=3D"_blank"><img alt=3D"" src=3D"http://www.plusflights.bond/2e15f239D5oFy7a12lr5e5bN1723V36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQsR9oo6bK1pC06BWwDJ2/politics-assesses" style=
+=3D"max-width: 280px; margin: auto; width: 100%;" /></a> </span></p>=20
+       </div>=20
+      </div>=20
+      <table align=3D"center">=20
+       <tbody>=20
+        <tr>=20
+         <td>&nbsp;</td>=20
+         <td>=20
+          <div style=3D"max-width: 520px; margin: auto;">=20
+           <h2 style=3D"font-family: Arial, Helvetica, sans-serif; font-wei=
+ght: 900; text-align: center; font-size: 1.3rem; line-height: 1.7rem; backg=
+round-color: red; padding: 2.5% 3%; width: 100%; color: white;">Exclusive O=
+ffers Reserved for<br /> Our Valued Customers</h2>=20
+          </div>=20
+          <table align=3D"center">=20
+           <tbody>=20
+            <tr>=20
+             <td>&nbsp;</td>=20
+             <td colspan=3D"1"> <p style=3D"max-width: 520px; margin: auto;=
+ width: 100%; padding-left: 5%; padding-right: 5%; font-family: Arial, Helv=
+etica, sans-serif; font-size: 1.3rem; line-height: 1.7rem; text-align: cent=
+er;">Choosing <strong>Delta</strong> as your travel partner is a significan=
+t choice, and we wish to convey our appreciation. Your loyalty and support =
+hold great importance, and we genuinely appreciate the privilege of assisti=
+ng you with your travel needs.</p> </td>=20
+             <td>&nbsp;</td>=20
+            </tr>=20
+            <tr>=20
+             <td colspan=3D"3">=20
+              <table align=3D"center">=20
+               <tbody>=20
+                <tr>=20
+                 <td>=20
+                  <div>
+                   <a href=3D"http://www.plusflights.bond/pastors-lilies/1f25k239U5h86pL13RG5e5T9s1723x36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsR9oo7kLSBF105F1wkD" target=3D"_blank"><img alt=3D"" s=
+rc=3D"http://www.plusflights.bond/Michelson-Latvia/4e05t23r95j7agu13RK5e5cYy1723m36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQsR9oo7Yol1mt05qywDP" style=3D"max-width: 480px; margin: auto; width: 100%; ma=
+rgin-left: 4%;" /> </a>
+                  </div> </td>=20
+                </tr>=20
+               </tbody>=20
+              </table> <p style=3D"max-width: 520px; margin: auto; width: 1=
+00%; padding-left: 5%; padding-right: 5%; font-family: Arial, Helvetica, sa=
+ns-serif; font-size: 1.3rem; line-height: 1.7rem; text-align: center;">As w=
+e continue to maintain our unwavering dedication to providing exceptional s=
+ervice, we kindly request your participation in a brief survey regarding yo=
+ur recent flight and overall interactions with <strong>Delta</strong>.<br /=
+> <br /> We truly value your feedback, and as a token of our appreciation f=
+or your time and input, we would like to offer you a special gesture of gra=
+titude.<br /> <br /> To begin the survey, simply click the link provided be=
+low. It's a quick task that will take only a few minutes of your valuable t=
+ime, and we want to assure you that your responses will be kept entirely co=
+nfidential.<br /> <br /> <strong>We highly appreciate your feedback, and as=
+ a token of our gratitude, there's a chance for you to potentially receive =
+a $100 gift! </strong><br /> &nbsp;</p> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+         <td>&nbsp;</td>=20
+        </tr>=20
+       </tbody>=20
+      </table> </td>=20
+    </tr>=20
+   </tbody>=20
+  </table>=20
+  <div style=3D"background-color: rgba(240,240,240,1.00); padding-top: 20px=
+; padding-bottom: 20px;">=20
+   <div style=3D"max-width: 520px; margin: auto;">=20
+    <div>=20
+     <p style=3D"margin: 0; padding: 4.5% 5%; border: solid 3px red; border=
+-radius: 7px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;=
+ width: 230px; margin: auto; margin-right: 21%; font-size: 22px; text-align=
+: center; color:red"><a href=3D"http://www.plusflights.bond/pastors-lilies/1f25k239U5h86pL13RG5e5T9s1723x36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsR9oo7kLSBF105F1wkD" style=3D"text-decoration: none;=
+ color: red;" target=3D"_blank">Get Started Here &gt; &gt;</a></p>=20
+    </div>=20
+    <br />=20
+    <br /> &nbsp;=20
+    <p style=3D"max-width: 520px; margin: auto; width: 100%; padding-left: =
+5%; padding-right: 5%; font-family: Arial, Helvetica, sans-serif; font-size=
+: .9rem; line-height: 1.7rem; text-align: center; color: white; margin-left=
+: -3%; color:black">Thank you once again for your continued support. We eag=
+erly await your feedback soon!<br /> <br /> Best regards, The Delta Survey =
+Team</p>=20
+   </div>=20
+  </div>=20
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <br /> &nbsp;&nbsp;&nbsp;&nbsp;
+  <br /> &nbsp;&nbsp;&nbsp;=20
+  <hr />
+  <br />=20
+  <br />=20
+  <br /> &nbsp;=20
+  <div>
+   &nbsp;&nbsp;&nbsp;=20
+   <div style=3D"max-width: 520px; margin: auto;">=20
+    <p style=3D"font-family: Arial, Helvetica, sans-serif; font-weight: bol=
+d; text-align: center; font-size: 14px; line-height: 22px;">jump out from a=
+ll these <a href=3D"http://www.plusflights.bond/4df5bs2395NT86P13Vk_5e5aA1723G36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsR9oo5E1Mn05KklwD/politics-assesses" target=3D"_blank">here</a><br /> New York, =
+NY, US 10010 126 E 23rd St</p>=20
+   </div>=20
+  </div>=20
+  <p style=3D"padding-bottom: 145px;">&nbsp;</p>  =20
+ <img src=3D"http://www.plusflights.bond/7af5a2r395G8P5x11b5e5dL1723K36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQsR9oo5z1kq05X0TwD/pastors-lilies" alt=3D""/></body>
 </html>
 
-------=_Part_124_755000520.1694711846828--
+------=_Part_268_1791559714.1694726627357--
 
