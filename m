@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8D107A31BA
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Sep 2023 19:57:05 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7FE67A31F4
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Sep 2023 20:39:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C44C78921E;
-	Sat, 16 Sep 2023 17:57:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 75F2D10E182;
+	Sat, 16 Sep 2023 18:39:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sat, 16 Sep 2023 17:57:03 UTC
-Received: from mail.lowsattools.live (unknown [77.90.135.118])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4FDD28921E
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 16 Sep 2023 18:39:14 UTC
+Received: from mail.gocvstop.live (unknown [77.90.135.127])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2B93F10E182
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 16 Sep 2023 17:57:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lowsattools.live;
+ Sat, 16 Sep 2023 18:39:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gocvstop.live;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=access.lowes.home.improvement.store.details@lowsattools.live; 
- bh=oHd06QbfvyrxtM3r8EjoXBPHSxU=;
- b=Cat1Ov4ConfjXMY90wsyEiPT0pZGNgFYjh/nijQ11UoCWJnWjbsumdgZ1045tUQRlVApF6TiO5Ek
- S3LxYrqAxeDO3NzmjAGjFDB0/8mHkFB/pu6SfmMI6Se28+eA4JtT4gbeLLK4XOoB8FcNfrFIOnOw
- NHmLpfUK9NvFaOMzrfs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lowsattools.live;
- b=CsnYd3/Ww0poM6mLgg/pLTTQPgytrmyn4IPeAFBLfD9IqJf07nwPWCw016qj2uWLOLDZMpPzkotG
- DTU7P+pvhhIZY7pfNz/B0ZB62ZPA9jCxJWsaGT3xqwcLRIdAYcrsB8mMY91TVLoNkZmKzn68Dcdl
- zaA22PaQBXX0Duq9OrY=;
-Received: by mail.lowsattools.live id h0nm6u0001gp for
+ i=get_your_cvs_exclusive_invites@gocvstop.live; 
+ bh=mCfbaktgvCVU06GiMnXxunQUVtk=;
+ b=GxfjG+zFE8KL+wLFfD76O4YVA3mktBPEMpqsP+ihuwwEaumxZ89E0z22XqyM1BIJCy9BVL5QKe7T
+ XKwuPdnEe65h/SwFSpXF7bPCAl8XhbUFt5hq2W3kglsvbY+K5Ulv8nFhPHMWKprVJKQTM+TDblD6
+ vx0B8g4jtMOjFzqJJl0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gocvstop.live;
+ b=sz0HrAtDg3E0vxm+E6xKmi/3sBlSuCxiWQMrVbjdUT5Kx2Y6INtrqRG+XJ2MQSexCO5H69mV+32c
+ NcZzhTfXVY/jr5+xG+iIX4NUBEI8vlIRHEw2ObiAyUYFLowlW6pAs/DC1HmmTbO5zCYfSWvbsFCt
+ bxOmSUvj4jA3Ar+SpFs=;
+Received: by mail.gocvstop.live id h0o4ka0001g2 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 16 Sep 2023 13:48:55 -0400 (envelope-from
- <access.lowes.home.improvement.store.details-intel+2Dgvt+2Ddev=lists.freedesktop.org@lowsattools.live>)
-Date: Sat, 16 Sep 2023 13:48:55 -0400
-From: "Access Lowes Home Improvement Store Details"
- <access.lowes.home.improvement.store.details@lowsattools.live>
+ Sat, 16 Sep 2023 15:51:57 -0400 (envelope-from
+ <get_your_cvs_exclusive_invites-intel+2Dgvt+2Ddev=lists.freedesktop.org@gocvstop.live>)
+Date: Sat, 16 Sep 2023 15:51:57 -0400
+From: "Get Your CVS Exclusive Invites"
+ <get_your_cvs_exclusive_invites@gocvstop.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim a unique Kobalt Tool set by sharing your thoughts - it's at
- your disposal.
+Subject: Quick Survey, Big Rewards: Win $100 for CVS Shopping!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_220_1214964999.1694886522209"
-Message-ID: <0.0.0.651.1D9E8C60FE66808.674F10@mail.lowsattools.live>
+ boundary="----=_Part_106_1028671323.1694889042455"
+Message-ID: <0.0.0.62F.1D9E8D740429B1E.467B23@mail.gocvstop.live>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_220_1214964999.1694886522209
+------=_Part_106_1028671323.1694889042455
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,67 +63,79 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Joseanny</title> 
+  <title>missyounow</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <div style="background-color: rgb(226, 226, 226); width: 100%;"> 
-   <div>
-    &nbsp; 
-    <table align="center" cellpadding="0" style="border-collapse: collapse; max-width: 520px; background-color: #fff;"> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td> 
-        <table align="center" bgcolor="#001B6B" style="width: 100%;"> 
-         <tbody> 
-          <tr> 
-           <td align="center"> 
-            <blockquote style="margin: 0;;">
-             <a href="http://www.lowsattools.live/c056b239QS5wW8U613t5Ce8s5K172bz36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgR99n7L1VF0RW6kz11wD/subscribed-predisposition" target="_blank"><img alt="lbows" src="http://www.lowsattools.live/ed54z2395gVy7a11r5e87P172bo36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQgR99n7l_ID10m6lAwD0J/bombs-finalized" style="max-width: 200px; margin: auto; width: 100%;" /> </a>
-            </blockquote> </td> 
-          </tr> 
-         </tbody> 
-        </table> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td align="center" style="max-width: 520px; padding-top: 5px;"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 22px;">Final Notification<br /> Regarding Your Lowe's Reward</span></td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td><span style="font-size: 22px; display: block; line-height: 25px; padding-top: 20px; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 5%; padding-right: 5%;">Exciting news from <strong>Lowe's!</strong> There's a <strong>Kobalt Tool Set</strong> ready for you at our stores. Don't wait; seize this opportunity today! You have until September 16th to acquire these fantastic items.</span> <span style="font-size: 0px; font-weight: 100; font-family: 'Courier New', Courier, monospace;"> &nbsp; </span></td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td align="center" colspan="3"> 
-        <center style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; padding: 3.5% 5%; background-color: #002eb8; font-size: 23px; max-width: 400px; border-radius:6px">
-         <a href="http://www.lowsattools.live/c056b239QS5wW8U613t5Ce8s5K172bz36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgR99n7L1VF0RW6kz11wD/subscribed-predisposition" style="color: white; text-decoration: none;" target="_blank">Start Here Now &gt;&gt; </a>
-        </center> </td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td align="center"> 
-        <blockquote style="margin: 0;">
-         <a href="http://www.lowsattools.live/c056b239QS5wW8U613t5Ce8s5K172bz36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgR99n7L1VF0RW6kz11wD/subscribed-predisposition" target="_blank"><img alt="biblis" src="http://www.lowsattools.live/8f95f23T95f7CMa12z5eN88v172bW36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQgR99n7nO1A0xv5SN1wD/Hindu-permuted" style="max-width: 300px; margin: auto; width: 100%; padding-top: 20px;" /></a>
-        </blockquote> </td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td colspan="3"><br /> <span style="font-size: 22px; display: block; line-height: 25px; padding-top: 20px; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ; padding: 0% 5%;">We appreciate your participation in our survey. Your input holds immense value for us here at Lowe's, and we hold your feedback in high esteem.</span> <p style="padding-bottom: 15px; margin: 0;">&nbsp;</p> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <br /> 
-    <br /> &nbsp; 
-    <div style="padding-top: 100px; padding-bottom: 100px; background-color: #353535;"> 
-     <p style="font-size: 14px; max-width: 520px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: center; color: white; line-height: 23px;">you can leave with sadness <a href="http://www.lowsattools.live/transgressed-ownerships/6c04j2395qxi8612F5eF86F172bq36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQgR99n7a1iCI0Z6JBP3wD" style="color: #E2E2E2" target="_blank">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.lowsattools.live/8274z2395iY8N511R5e89K172bZ36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQgR99n6bMJ10s6R@wDUN/Christensen-pyramids" alt=""/></body>
+  <table align="center" bgcolor="#D93025" style="width: 100%; border-collapse: collapse; padding-top: 20px; padding-bottom: 20px;"> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td> 
+      <table align="center" bgcolor="FFFFFF"> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td><span style="font-size: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 100; line-height: 0;">&nbsp; </span> 
+          <table align="center" style="max-width: 530px; margin: auto; background-color: white;"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <div>
+               <a href="http://www.gocvstop.live/3ef5f2l395J8PG612s5_e8aQ172cn36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQXR99o7J1SNi0O5SykwD/liquid-amphibians" target="_blank"><span style="display: block;"><img alt="annys" src="https://imagizer.imageshack.com/img923/4752/tNS0rt.png
+        " style="max-width: 130px; margin: auto; width: 100%;" /></span> </a>
+              </div> <p style="margin: 0; padding: 0; padding-top: 25px; padding-bottom: 25px;"><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 1.7em;">Exclusive Savings Reserved for Our Valued Customers </span></p> 
+              <div> 
+               <hr color="#D93025" size="3.5px" style="margin: auto; border-radius: 50px; margin-bottom: 15px;" width="300px" /> 
+               <hr color="#D93025" size="3.5px" style="margin: auto; border-radius: 50px; margin-bottom: 15px;" width="265px" /> 
+               <hr color="#D93025" size="3.5px" style="margin: auto; border-radius: 50px; margin-bottom: 15px;" width="230px" />
+              </div> <p style="font-family: Arial, Helvetica, sans-serif; font-size: 1.3em; line-height: 1.7em; padding-left: 1.1em; padding-right: 1.1em;">We greatly appreciate your choice of C<span style="font-size: 0; line-height: 0;">bia</span>V<span style="line-height: 0; font-size: 0;">pir</span>S. Your loyalty and support mean a lot to us, and we're grateful for the opportunity to serve you.</p> 
+              <div style="display: flex; justify-content: center; flex-flow: wrap row;"> 
+               <div style="margin: 2.5%;"> 
+                <blockquote style="margin: 0;">
+                 <a href="http://www.gocvstop.live/3ef5f2l395J8PG612s5_e8aQ172cn36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQXR99o7J1SNi0O5SykwD/liquid-amphibians" target="_blank"><img alt="annnys" src="http://www.gocvstop.live/inaugurate-lawgiver/c9c5n239g5d_7Pa12q5eZ8cS172cN36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQXR99o7vzyq1N06lLzwDk" style="max-width: 110px; margin: auto; width: 100%;" /> </a>
+                </blockquote> 
+               </div> 
+               <div style="margin: 2.5%;"> 
+                <blockquote style="margin: 0;">
+                 <a href="http://www.gocvstop.live/3ef5f2l395J8PG612s5_e8aQ172cn36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQXR99o7J1SNi0O5SykwD/liquid-amphibians" target="_blank"><img alt="annnys" src="http://www.gocvstop.live/a436S23n9q5RL7aG11M5e8dP172cs36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQXR99o7RWC1YL06ATUzwD/pretender-deplores" style="max-width: 110px; margin: auto; width: 100%;" /> </a>
+                </blockquote> 
+               </div> 
+              </div> <p style="font-family: Arial, Helvetica, sans-serif; font-size: 1.3em; line-height: 1.7em; padding-left: 1.1em; padding-right: 1.1em;">Your feedback is of great value to us, and as a gesture of our appreciation, we'd like to extend a special thank-you to you for taking the time to share your thoughts.<br /> <br /> <strong>Upon completing the survey, you may have the option to choose from various gifts!</strong></p> 
+              <div style="padding-top: 30px; padding-bottom: 30px;"> 
+               <table> 
+                <tbody> 
+                 <tr> 
+                  <td align="center"> 
+                   <table style="width: 300px; border-collapse: collapse; background-color: #D93025;"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center" style="padding: 15px 20px 15px 20px; font-size: 28px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"><a href="http://www.gocvstop.live/3ef5f2l395J8PG612s5_e8aQ172cn36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQXR99o7J1SNi0O5SykwD/liquid-amphibians" style="text-decoration: none; color:  #fff;" target="_blank">Start Now &gt; &gt; </a></td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                </tbody> 
+               </table> &nbsp; 
+               <p style="font-family: Arial, Helvetica, sans-serif; font-size: 1em; line-height: 1.7em; padding-left: 1.1em; padding-right: 1.1em;">Once more, we appreciate your support. We anticipate hearing from you soon!<br /> <br /> Best regards,</p> 
+               <hr />
+              </div> <br /> <br /> &nbsp; <p style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold;">time to show you the exit <a href="http://www.gocvstop.live/Moroccan-Westinghouse/a9e6b23B9A5Cj86w13o5Se8BbH172ct36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQXR99o5z1D0J5ujpwD" target="_blank">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.gocvstop.live/5ed5S23s95KG8v513A5VRe8eg172cJ36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXR99o5B1Kq06Wl3wlD/inaugurate-lawgiver" alt=""/></body>
 </html>
 
-------=_Part_220_1214964999.1694886522209--
+------=_Part_106_1028671323.1694889042455--
 
