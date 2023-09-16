@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77AF67A317E
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Sep 2023 18:50:56 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8D107A31BA
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 16 Sep 2023 19:57:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 44FE010E15E;
-	Sat, 16 Sep 2023 16:50:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C44C78921E;
+	Sat, 16 Sep 2023 17:57:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sat, 16 Sep 2023 16:50:53 UTC
-Received: from mail.homeatdepot.bond (unknown [77.90.135.111])
- by gabe.freedesktop.org (Postfix) with ESMTP id 456E510E15E
+ Sat, 16 Sep 2023 17:57:03 UTC
+Received: from mail.lowsattools.live (unknown [77.90.135.118])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4FDD28921E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 16 Sep 2023 16:50:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=homeatdepot.bond;
+ Sat, 16 Sep 2023 17:57:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lowsattools.live;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=the-home-depots-appraisal-center@homeatdepot.bond; 
- bh=UuMq0XkS9AFh7ft9XwrX/lMIUUA=;
- b=ov6lnsjzyQOqXtm/kiFtmYOIaayNYUR28Dd8ulLyy9h+wrrX6ZxNSWLvcumLNmwougzAGudicw68
- sBlzTz41B0RKDnf6VHe6Vetuu5Pm3jD/LCpPmRLc8HjZGZrulRsqvowQItIn/Z/H8uBWjx2jeEov
- kMhfJp2RXgybDxLZQkY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=homeatdepot.bond;
- b=jel0by5ZZq8KCUqPnFYkGRyUnsQrvHnIVLW80cYTclELa37w2HPlUAloS959gaYg9k1Xj7u+kaOk
- UUectpu/t/CMw/3A62/Dx+EQmne2nj6AZn1KCJtKzX+zVb/q9XHg07GTpJ9h/QXuEHQpvjUpTETZ
- C+hZLL6AbtpuJHxeq14=;
-Received: by mail.homeatdepot.bond id h0neeq0001gd for
+ i=access.lowes.home.improvement.store.details@lowsattools.live; 
+ bh=oHd06QbfvyrxtM3r8EjoXBPHSxU=;
+ b=Cat1Ov4ConfjXMY90wsyEiPT0pZGNgFYjh/nijQ11UoCWJnWjbsumdgZ1045tUQRlVApF6TiO5Ek
+ S3LxYrqAxeDO3NzmjAGjFDB0/8mHkFB/pu6SfmMI6Se28+eA4JtT4gbeLLK4XOoB8FcNfrFIOnOw
+ NHmLpfUK9NvFaOMzrfs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lowsattools.live;
+ b=CsnYd3/Ww0poM6mLgg/pLTTQPgytrmyn4IPeAFBLfD9IqJf07nwPWCw016qj2uWLOLDZMpPzkotG
+ DTU7P+pvhhIZY7pfNz/B0ZB62ZPA9jCxJWsaGT3xqwcLRIdAYcrsB8mMY91TVLoNkZmKzn68Dcdl
+ zaA22PaQBXX0Duq9OrY=;
+Received: by mail.lowsattools.live id h0nm6u0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 16 Sep 2023 12:42:45 -0400 (envelope-from
- <the-home-depots-appraisal-center-intel+2Dgvt+2Ddev=lists.freedesktop.org@homeatdepot.bond>)
-Date: Sat, 16 Sep 2023 12:42:45 -0400
-From: "The Home Depots Appraisal Center"
- <the-home-depots-appraisal-center@homeatdepot.bond>
+ Sat, 16 Sep 2023 13:48:55 -0400 (envelope-from
+ <access.lowes.home.improvement.store.details-intel+2Dgvt+2Ddev=lists.freedesktop.org@lowsattools.live>)
+Date: Sat, 16 Sep 2023 13:48:55 -0400
+From: "Access Lowes Home Improvement Store Details"
+ <access.lowes.home.improvement.store.details@lowsattools.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You've been exclusively designated for a gift - participate in
- improving Home Depot by sharing your experience.
+Subject: Claim a unique Kobalt Tool set by sharing your thoughts - it's at
+ your disposal.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_157_1594422820.1694882554598"
-Message-ID: <0.0.0.61D.1D9E8BCD2099914.12C2DC@mail.homeatdepot.bond>
+ boundary="----=_Part_220_1214964999.1694886522209"
+Message-ID: <0.0.0.651.1D9E8C60FE66808.674F10@mail.lowsattools.live>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,153 +55,76 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_157_1594422820.1694882554598
+------=_Part_220_1214964999.1694886522209
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html>
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <title>we are</title>=20
- </head>=20
- <body style=3D"font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet M=
-S', Verdana, 'sans-serif'; background-color:#F5F5F5">=20
-  <article>=20
-   <div align=3D"center" style=3D"background-color: #F66303">
-    <a href=3D"http://www.homeatdepot.bond/6bf6A239vm5Qr86A13j5eA7fPF172aI36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQbR99m6e10jlB6oUwDUX/retrievable-chooser"><img alt=3D"rollin" src=3D"http://www.homeatdepot.bond/ballistics-disperses/9906v2RX395k7zBa12G5e81mC172ax36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQbR99m5Aj1N06L1lwD0" style=3D=
-"width: 468px; margin-top: 29px;margin-bottom: 29px" /></a>
-   </div>=20
-  </article>=20
-  <div style=3D"margin-left: auto; margin-right: auto; border-left: solid 3=
-px #D0D0D0; font-size: 20px; border-right:solid 3px #D0D0D0; border-bottom:=
- solid 8px rgb(246,99,3); max-width: 491px">=20
-   <table border=3D"0" cellpadding=3D"1" cellspacing=3D"0" width=3D"100%">=
-=20
-    <tbody>=20
-     <tr>=20
-      <td bgcolor=3D"#ddd">&nbsp;</td>=20
-      <th bgcolor=3D"#ddd" style=3D"padding: 12px">Savings That Are Exclusi=
-ve to Our Highly Regarded Users</th>=20
-      <td bgcolor=3D"#ddd">&nbsp;</td>=20
-     </tr>=20
-    </tbody>=20
-   </table>=20
-   <table border=3D"0" cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=
-=20
-    <tbody>=20
-     <tr>=20
-      <td>&nbsp;</td>=20
-      <td align=3D"center" style=3D"padding: 15px">We extend our thanks for=
- selecting <strong>The Home Depot</strong>. Your loyalty and support are gr=
-eatly appreciated.</td>=20
-      <td>&nbsp;</td>=20
-     </tr>=20
-    </tbody>=20
-   </table>=20
-   <table border=3D"0" cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=
-=20
-    <tbody>=20
-     <tr>=20
-      <td>&nbsp;</td>=20
-      <td align=3D"center"><a href=3D"http://www.homeatdepot.bond/6bf6A239vm5Qr86A13j5eA7fPF172aI36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQbR99m6e10jlB6oUwDUX/retrievable-chooser"><img alt=3D"natti" src=3D=
-"http://www.homeatdepot.bond/8bd6q2B39v5q7qak11K5e82R172aH36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQbR99m6fi1F0n6GBlwBD/saliva-pristine" style=3D"margin-right: 25px" width=3D"150" /><img alt=3D"bamm=
-i" src=3D"http://www.homeatdepot.bond/humpback-Irvine/a446a2XW395BP7aj13z5e8W3Qg172a_36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQbR99m6Dzs10r6zPWw3D" width=3D"100" /></a></td>=20
-      <td>&nbsp;</td>=20
-     </tr>=20
-    </tbody>=20
-   </table>=20
-   <table border=3D"0" cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=
-=20
-    <tbody>=20
-     <tr>=20
-      <td>&nbsp;</td>=20
-      <td align=3D"center">We genuinely value your feedback, and as a token=
- of our appreciation, we'd like to offer you a special thank-you for taking=
- the time to share your thoughts.</td>=20
-      <td>&nbsp;</td>=20
-     </tr>=20
-    </tbody>=20
-   </table>=20
-   <table border=3D"0" cellpadding=3D"1" cellspacing=3D"1" style=3D"margin-=
-top: 25px" width=3D"100%">=20
-    <tbody>=20
-     <tr>=20
-      <td>&nbsp;</td>=20
-      <th align=3D"center">Upon Completion of the Survey you might have a c=
-hoice between different gifts!</th>=20
-      <td>&nbsp;</td>=20
-     </tr>=20
-    </tbody>=20
-   </table>=20
-   <table border=3D"0" cellpadding=3D"1" cellspacing=3D"1" style=3D"margin-=
-top: 25px" width=3D"100%">=20
-    <tbody>=20
-     <tr>=20
-      <td>&nbsp;</td>=20
-      <th align=3D"center"><a href=3D"http://www.homeatdepot.bond/6bf6A239vm5Qr86A13j5eA7fPF172aI36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQbR99m6e10jlB6oUwDUX/retrievable-chooser" style=3D" font-family: sa=
-ns-serif; font-size: 35px;  text-decoration: none; text-align: center; padd=
-ing:  10px; color: #fff; display: block; border-radius: 4px; font-weight: b=
-older; display: block; background-color: #DD6E06; max-width: 292px">Start N=
-ow &gt; &gt;</a></th>=20
-      <td>&nbsp;</td>=20
-     </tr>=20
-    </tbody>=20
-   </table>=20
-   <br /> &nbsp;
-  </div>=20
-  <table border=3D"0" cellpadding=3D"1" cellspacing=3D"1" style=3D"margin-t=
-op: 250px; border-top: solid 6px #DD6D05" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td>&nbsp;</td>=20
-     <td>&nbsp;</td>=20
-     <td align=3D"center" style=3D"padding-top: 26px">time to show you the =
-exit <a href=3D"http://www.homeatdepot.bond/9e94z2395Ar8w611U5e80F172aJ36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQbR99m7bLV1si05YywBD/Johnsen-equivalences">here</a><br /> US 10010 126 E 23rd St New York,=
- NY, <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> =
-<p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p>&nbsp;</p> <p align=3D"center"=
- style=3D"padding-left: 20%; padding-right: 20%">The reason Home Depot is t=
-he first thing that comes to mind is because of its longstanding logo and r=
-eputation. Four decades since the company was founded, the Home Depot is sy=
-nchronous with home improvement. The association between the two things is =
-exactly what Home Depot has always wanted and has helped drive its success.=
-<br /> <br /> Just like with any business, creating a logo is an intentiona=
-l choice and the intentional choice that Home Depot made back in 1978 hasnt=
- wavered since. With the logo being the staple of the brand for the past 40=
-+ years, there are many lessons we can learn from this company.<br /> <br /=
-> Read on below to learn more about this iconic brand and how it transforme=
-d a simple orange box into one of the most recognizable logos in the world.=
- Meet The Home Depot While you may know Home Depot as your local home impro=
-vement store, you likely dont know that the idea of Home Depot was formulat=
-ed in a coffee shop in 1978. It was in that Los Angeles coffee shop that Be=
-rnie Marcus and Arthur Blank came together with a new store concept. The tw=
-o were former high-profiled executives who took their experience being fire=
-d from the Handy Dan Home Improvement Center and used this as inspiration f=
-or their new concept, Home Depot.<br /> <br /> What the duo came up with wa=
-s a one-stop megastore that provided all the products someone would need fo=
-r a home project. They wanted the store to offer a wide array of products a=
-ll at an affordable price point, and they wanted every store to be filled w=
-ith employees that were knowledgeable about the home improvement space. To =
-take Home Depot from an idea to a physical retail space, Bernie and Arthur =
-brought in Ron Brill, a retail executive, Pat Farrah, a merchandise expert,=
- and Ken Langone, an investment banker.<br /> <br /> Before Home Depot beca=
-me Home Depot, the team threw around several other names to call their busi=
-ness. After settling on Bad Bernies, an early investor, Marjorie Buckley, g=
-ot them to change the name after she disliked it strongly. She suggested th=
-e name The Home Depot instead and that name has stuck to this day.<br /> <b=
-r /> Today, Home Depot has grown to include 70 distribution centers across =
-the United States, and beyond having stores solely in the United States, yo=
-u can also find Home Depot in other countries like Canada and Mexico. When =
-you walk into a Home Depot, you are walking into Americas largest home impr=
-ovement retail store where you can purchase tools, construction items, lumb=
-er, services, and more.</p> </td>=20
-     <td>&nbsp;</td>=20
-     <td>&nbsp;</td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.homeatdepot.bond/4a34d2395lx8O512G5e8K4z172ar36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQbR99m7qD1x0TC6z@wTDj/plaque-Ammerman" alt=3D""/></body>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>Joseanny</title> 
+ </head> 
+ <body style="margin: 0; padding: 0;"> 
+  <div style="background-color: rgb(226, 226, 226); width: 100%;"> 
+   <div>
+    &nbsp; 
+    <table align="center" cellpadding="0" style="border-collapse: collapse; max-width: 520px; background-color: #fff;"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td> 
+        <table align="center" bgcolor="#001B6B" style="width: 100%;"> 
+         <tbody> 
+          <tr> 
+           <td align="center"> 
+            <blockquote style="margin: 0;;">
+             <a href="http://www.lowsattools.live/c056b239QS5wW8U613t5Ce8s5K172bz36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgR99n7L1VF0RW6kz11wD/subscribed-predisposition" target="_blank"><img alt="lbows" src="http://www.lowsattools.live/ed54z2395gVy7a11r5e87P172bo36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQgR99n7l_ID10m6lAwD0J/bombs-finalized" style="max-width: 200px; margin: auto; width: 100%;" /> </a>
+            </blockquote> </td> 
+          </tr> 
+         </tbody> 
+        </table> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td align="center" style="max-width: 520px; padding-top: 5px;"><span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; font-size: 22px;">Final Notification<br /> Regarding Your Lowe's Reward</span></td> 
+       <td>&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td><span style="font-size: 22px; display: block; line-height: 25px; padding-top: 20px; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding-left: 5%; padding-right: 5%;">Exciting news from <strong>Lowe's!</strong> There's a <strong>Kobalt Tool Set</strong> ready for you at our stores. Don't wait; seize this opportunity today! You have until September 16th to acquire these fantastic items.</span> <span style="font-size: 0px; font-weight: 100; font-family: 'Courier New', Courier, monospace;"> &nbsp; </span></td> 
+       <td>&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td align="center" colspan="3"> 
+        <center style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold; padding: 3.5% 5%; background-color: #002eb8; font-size: 23px; max-width: 400px; border-radius:6px">
+         <a href="http://www.lowsattools.live/c056b239QS5wW8U613t5Ce8s5K172bz36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgR99n7L1VF0RW6kz11wD/subscribed-predisposition" style="color: white; text-decoration: none;" target="_blank">Start Here Now &gt;&gt; </a>
+        </center> </td> 
+      </tr> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td align="center"> 
+        <blockquote style="margin: 0;">
+         <a href="http://www.lowsattools.live/c056b239QS5wW8U613t5Ce8s5K172bz36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgR99n7L1VF0RW6kz11wD/subscribed-predisposition" target="_blank"><img alt="biblis" src="http://www.lowsattools.live/8f95f23T95f7CMa12z5eN88v172bW36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQgR99n7nO1A0xv5SN1wD/Hindu-permuted" style="max-width: 300px; margin: auto; width: 100%; padding-top: 20px;" /></a>
+        </blockquote> </td> 
+       <td>&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td colspan="3"><br /> <span style="font-size: 22px; display: block; line-height: 25px; padding-top: 20px; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ; padding: 0% 5%;">We appreciate your participation in our survey. Your input holds immense value for us here at Lowe's, and we hold your feedback in high esteem.</span> <p style="padding-bottom: 15px; margin: 0;">&nbsp;</p> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <br /> 
+    <br /> &nbsp; 
+    <div style="padding-top: 100px; padding-bottom: 100px; background-color: #353535;"> 
+     <p style="font-size: 14px; max-width: 520px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: normal; text-align: center; color: white; line-height: 23px;">you can leave with sadness <a href="http://www.lowsattools.live/transgressed-ownerships/6c04j2395qxi8612F5eF86F172bq36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQgR99n7a1iCI0Z6JBP3wD" style="color: #E2E2E2" target="_blank">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.lowsattools.live/8274z2395iY8N511R5e89K172bZ36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQgR99n6bMJ10s6R@wDUN/Christensen-pyramids" alt=""/></body>
 </html>
 
-------=_Part_157_1594422820.1694882554598--
+------=_Part_220_1214964999.1694886522209--
 
