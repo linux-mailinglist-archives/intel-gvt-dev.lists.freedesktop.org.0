@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7E847A3702
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 17 Sep 2023 20:13:11 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B94117A37BE
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 17 Sep 2023 21:24:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 341B910E08D;
-	Sun, 17 Sep 2023 18:13:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E1B8C10E08E;
+	Sun, 17 Sep 2023 19:24:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 17 Sep 2023 18:13:08 UTC
-Received: from mail.goflightsunited.bond (unknown [77.90.135.114])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4983B10E08D
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sun, 17 Sep 2023 19:24:49 UTC
+Received: from mail.southflights.live (unknown [77.90.135.135])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 42EFD10E08E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 17 Sep 2023 18:13:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=goflightsunited.bond; 
+ Sun, 17 Sep 2023 19:24:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=southflights.live;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=exclusive-offers-at-united-air@goflightsunited.bond; 
- bh=r8e4kcBf7/GoaH4+vInYUo+bLlU=;
- b=NEpk4iFXpeBTtyB4+xjpl30SQxJToPQkF4uwyjf45rU2eLTfv1bK68+LdKkBmacuoX2NwLYVHGsK
- COVfoXpohwEPDMiOHrqkBlSu5IwQJWBpOdjKer/df/6EzgNjPzjyhwd6ZI2xqO985Te2H5iTI4MQ
- OLsTRnnXPNb+uU7K5oo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=goflightsunited.bond;
- b=cY8HpzCS5LmLwqWSlcOq+I/HT8sp9fa/B19ceBCO49qfWhYgpzZwVu9KhqB+SCSzmFuFUKMrwTQ5
- H3Cgr8hbZ3uazH4eAs+hZ+6drIBoJQt3qLkNeP1M3CTZ2tfXqEaqZqnxt/N9G8RHO6RuhRFPs5cS
- Q7U3dWD7Bvtu2RLjJl8=;
-Received: by mail.goflightsunited.bond id h0t0r80001ge for
+ i=stay.informed.southwest.flight.details@southflights.live; 
+ bh=l+G7zhCwcVLdKKfh2Md/sowqCl0=;
+ b=EhFzm3fN2KFy6I7XC/TF7ndvUtlYRONjCKuK/67t5xokZOCUiUShjAg7FiQW/pMxWpAcwtIq8MSi
+ FoSv18jZwpGWOG3aZqo3Vu30PWzfCHTqDjWeR+SOQWg561wNr0aTnMKmKkNqct4VFYeB6QVxQad1
+ vowDFc2a56MiDKv+ANA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=southflights.live; 
+ b=F2bIB3Mh0n1Eka2/RaAyHouXRcujU0PB2w8y8QZXZy+aEIQIq3sOwgrVvNmhkU4kkRv8qY36mk2M
+ vbEl+VYegw9zniGNCAhWDMZHQYKlSmKgOROUgPwlzHh+L3yiq5KdR9Sy9rm7w59KU69V7uMOPtwM
+ LEC7rDtM/K9zQQWiONM=;
+Received: by mail.southflights.live id h0t9820001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 17 Sep 2023 14:04:47 -0400 (envelope-from
- <exclusive-offers-at-united-air-intel+2Dgvt+2Ddev=lists.freedesktop.org@goflightsunited.bond>)
-Date: Sun, 17 Sep 2023 14:04:47 -0400
-From: "Exclusive Offers At United Air."
- <exclusive-offers-at-united-air@goflightsunited.bond>
+ Sun, 17 Sep 2023 15:17:02 -0400 (envelope-from
+ <stay.informed.southwest.flight.details-intel+2Dgvt+2Ddev=lists.freedesktop.org@southflights.live>)
+Date: Sun, 17 Sep 2023 15:17:02 -0400
+From: "Stay Informed Southwest Flight Details"
+ <stay.informed.southwest.flight.details@southflights.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Limited-Time Offer: Win Travel Gift Cards by Sharing Your Feedback!
+Subject: Kick off the season by receiving a complimentary flight to your
+ desired destination!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_67_1231587819.1694973875594"
-Message-ID: <0.0.0.60.1D9E9917211B5A2.5A3357@mail.goflightsunited.bond>
+ boundary="----=_Part_400_503764771.1694978214586"
+Message-ID: <0.0.0.AF.1D9E99B8A1360A6.334018@mail.southflights.live>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,91 +55,125 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_67_1231587819.1694973875594
+------=_Part_400_503764771.1694978214586
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>dvicio</title> 
- </head> 
- <body style="margin: 0; padding: 0;"> 
-  <div style="width: 100%; background-color: #F7F7F7;">
-   &nbsp; 
-   <div style="margin: 0; max-width: 510px; margin: auto; padding: 3.5% 5.5%; background-color: #fff; border-radius: 10px; border: solid #6244BB 4px "> 
-    <p>&nbsp;</p> 
-    <blockquote style="margin: 0;">
-     <a href="http://www.goflightsunited.bond/capricious-perceptible/4866Vn239_5i86LC12k5e97OI1730Z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQFR99Q6h1O0Tz6WU@wDW"><img alt="toppoers" src="http://www.goflightsunited.bond/cargoes-tablecloths/e406U2nu395mXU7a13w5eG99nq1730h36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQFR99Q7lTN1w0K6k3pwLD" style="display: block; max-width: 250px; margin: auto; width: 100%;" /></a>
-    </blockquote> 
-    <br /> 
-    <span style="display: block; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.2em; line-height: 1.4em; text-align: center; font-weight: 500;">This is an opportunity for us to express our gratitude for choosing United for your travel needs. We highly value your loyalty and support, and we genuinely appreciate the privilege of assisting you with your travel arrangements. </span> 
-    <p>&nbsp;</p> 
-    <table align="center" style="border-collapse: collapse;"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <table align="center" style="border-collapse: collapse;"> 
-         <tbody> 
-          <tr> 
-           <td align="center"> 
-            <table align="center" style="border-collapse: collapse;"> 
-             <tbody> 
-              <tr> 
-               <td align="center"> 
-                <table align="center" style="border-collapse: collapse;"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center"> 
-                    <center>
-                     <a href="http://www.goflightsunited.bond/capricious-perceptible/4866Vn239_5i86LC12k5e97OI1730Z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQFR99Q6h1O0Tz6WU@wDW"><img alt="lows" src="http://www.goflightsunited.bond/ie36e2U39m5f7uaj11z5e9aG1730J36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQFR99Q7m1x0ZGw5Azw@D/Lagrange-bloodbath" style="max-width: 99%; margin: auto; width: 100%; " /> </a>
-                    </center> 
-                    <table align="center"> 
-                     <tbody> 
-                      <tr> 
-                       <td align="center" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; line-height: 1.4em; font-size: 1.1em;">As part of our commitment to providing outstanding experiences, we warmly invite you to participate in a short survey regarding your recent flight and your overall experience with United.<br /> <br /> To participate in the survey, please click the link below. The survey will only take a few minutes of your valuable time, and we guarantee the confidentiality of your responses.<br /> <br /> <strong>We genuinely appreciate your feedback, and as an expression of our thanks, there's a possibility for you to qualify for a $100 gift! </strong><br /> <br /> To participate in the survey, please click on the link below. It will only take a few minutes of your valuable time, and we guarantee the full confidentiality of your responses.</td> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-    </table> &nbsp; 
-    <div style="max-width: 400px; margin: auto; border-radius: 5px; padding-top: 3.5%; padding-right: 5%; padding-bottom: 3.5%; padding-right: 5%; border: solid 0px #6244BB; text-align: center; background-color: #6244BB"> 
-     <center style="font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 2em; text-align: center; margin: 0; margin-left: 9%;">
-      <a href="http://www.goflightsunited.bond/capricious-perceptible/4866Vn239_5i86LC12k5e97OI1730Z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQFR99Q6h1O0Tz6WU@wDW" style="text-decoration: none; color: #fff;">Get Started Now &gt;&gt; </a>
-     </center> 
-    </div> 
-   </div> 
-   <table align="center" border="0" cellpadding="1" cellspacing="1" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td>&nbsp;</td> 
-      <td align="center" style="padding-top: 50px; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'">Thank you for your ongoing support, and we eagerly await your feedback.<br /> Best regards,</td> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <p style="padding-top: 189px;">&nbsp;</p> 
-   <div style="background-color: #072244; width: 100%; border-bottom: 30px solid #000;"> 
-    <div style="max-width: 510px; margin: auto; padding-top: 180px; padding-bottom: 20px;"> 
-     <address style="font-weight: bold; color: white; text-align: center;">anytime is good to leave, and you can do it in <a href="http://www.goflightsunited.bond/a9d5z2N395YG86s11U5e98B1730l36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQFR99Q5v10qT5zBwpD/notify-templates" style="color: red">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
-    </div> 
-   </div> 
-   <br /> &nbsp;
-  </div>   
- <img src="http://www.goflightsunited.bond/e5d4E2395qQ85O12g5e9Jbp1730y36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQFR99Q7gx1piP05nkwDl/Mobil-Schumacher" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>popples info</title>=20
+ </head>=20
+ <body style=3D"margin: 0; padding: 0;">=20
+  <div style=3D"background-color: antiquewhite; width: 100%;">
+   &nbsp;=20
+   <div class=3D"container" style=3D"max-width: 530px; margin: auto; text-a=
+lign: center; background-color: #fff; padding-left: 1.5em; padding-right: 1=
+5em;">
+    &nbsp;=20
+    <article class=3D"header">=20
+     <p>&nbsp;</p>=20
+     <center class=3D"image-container" style=3D"max-width: 300px; margin: a=
+uto;">
+      <a href=3D"http://www.southflights.live/sailors-inanimate/2106Cnh2395ru86r13Cp5Oe9cZ1731R36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJR99R5s10uT5YBwJD"><img alt=3D"" class=3D"header-image" src=3D"=
+http://www.southflights.live/2875HM2395O7vaS13m5e9eplO1731x36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQJR99R5K1Fh05mTwTD/calfskin-regarded" width=3D"100%" /> </a>
+     </center>=20
+     <p>&nbsp;</p>=20
+    </article>=20
+    <article class=3D"content">=20
+     <p style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuc=
+het MS', sans-serif; font-weight: 500; font-size: 1.4em;"><span class=3D"ma=
+in-text">We greatly appreciate your choice to travel with Southwest Airline=
+s. Your ongoing loyalty and support are highly valued, and we are dedicated=
+ to meeting your travel requirements. </span></p>=20
+    </article>=20
+    <article class=3D"content">=20
+     <p style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuc=
+het MS', sans-serif; font-weight: 500; font-size: 1.4em; background-color: =
+#FEBF26; padding: .5em 1.5em ;"><span class=3D"main-text">We value your fee=
+dback. Please take a moment to participate in a short survey regarding your=
+ recent flight and your overall interaction with Southwest. Your input will=
+ help us improve your experiences with our airline.</span></p>=20
+    </article>=20
+    <div class=3D"image-link">=20
+     <div class=3D"image-container" style=3D"max-width: 400px; margin: auto=
+;">
+      <a href=3D"http://www.southflights.live/sailors-inanimate/2106Cnh2395ru86r13Cp5Oe9cZ1731R36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJR99R5s10uT5YBwJD"><img alt=3D"" class=3D"image-link" src=3D"=
+http://www.southflights.live/invoked-Paleolithic/cba5zn2395X7anr11S5e9fm1731Y36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQJR99R7NZ1Vz0G5rpWwD" width=3D"100%" /> </a>
+     </div>=20
+    </div>=20
+    <article class=3D"content">=20
+     <p style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuc=
+het MS', sans-serif; font-weight: 500; font-size: 1.4em; background-color: =
+#DB4437; padding: 1em 1em; color: white;"><span class=3D"main-text"><b>As a=
+ token of our gratitude, we're pleased to present you with $100.</b> </span=
+></p>=20
+    </article>=20
+    <article class=3D"content">=20
+     <p style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuc=
+het MS', sans-serif; font-weight: 500; font-size: 1.4em;">You can access th=
+e survey through the link below. It's a simple task that will take only a f=
+ew minutes, and rest assured that your responses will be kept confidential.=
+</p>=20
+    </article> &nbsp;=20
+    <div class=3D"survey-link" style=3D"font-family: Arial, Helvetica, sans=
+-serif; font-weight: bold; background-color: blue; padding: .9em 1em .9em 1=
+em; width: 20em; border-radius: 10px; margin: auto;">
+     <a href=3D"http://www.southflights.live/sailors-inanimate/2106Cnh2395ru86r13Cp5Oe9cZ1731R36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJR99R5s10uT5YBwJD" style=3D"text-decoration: none; color: #fff;">K=
+ick off the survey Here&gt;&gt; </a>
+    </div> &nbsp;=20
+    <article class=3D"footer">=20
+     <p style=3D"font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuc=
+het MS', sans-serif; font-weight: 500; font-size: 1em;"><span class=3D"main=
+-text">Thank you for your continuous support, and we look forward to receiv=
+ing your feedback.<br /> <br /> <strong>Warm regards,</strong> </span><br /=
+> &nbsp;</p>=20
+    </article>=20
+   </div>=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <br />=20
+   <br /> &nbsp;=20
+   <div>=20
+    <div style=3D"background-color: rgb(36, 36, 36);">=20
+     <address style=3D"max-width: 520px; margin: auto; font-family: Arial, =
+Helvetica, sans-serif; font-weight: bold; text-align: center; padding-top: =
+15px; padding-bottom: 15px; color: white;">Use the exit option <a href=3D"=
+http://www.southflights.live/sailors-inanimate/3b45OB2395kQ86Z13D5e9dUWw1731h36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQJR99R5H10SX6GkwDll">here</a><br /> US 10010 126 E 23rd St New York, NY,</address>=20
+    </div>=20
+   </div>=20
+  </div>=20
+  <br />=20
+  <br /> &nbsp;=20
+  <div>=20
+   <p style=3D"font-size: 12px; text-align: justify; font-family: 'Segoe UI=
+', Tahoma, Geneva, Verdana, sans-serif; max-width: 480px; margin: auto;">Fo=
+r many people, good health equates to freedom, independence and the ability=
+ to stay active. Common ailments such as osteoporosis, arthritis and incont=
+inence can negatively affect one?s quality of life. Having consistent, high=
+-quality care to minimize the negative impacts of these and other health co=
+nditions associated with aging is important.<br /> <br /> Strong connection=
+s to family and friends keep seniors from becoming isolated and lonely. Com=
+panionship is vital at any age, but especially as we age. Senior facilities=
+ and services that encourage social interactions enhance quality of life.<b=
+r /> <br /> A regular schedule provides stability and consistency for older=
+ adults who may otherwise feel lost as they give up some control of their d=
+ay-to-day lives. With a routine of meals and activities, seniors know what =
+to expect and avoid the confusion that can come with uncertainty.<br /> <br=
+ /> Food is an important part of self-care and also part of community in te=
+rms of sharing meals and celebrations. Food that looks and tastes appealing=
+, is nutritionally sound and doesn?t cause any disagreeable side effects is=
+ a necessary part of everyone?s overall health and wellbeing.</p>=20
+  </div>=20
+  <br />=20
+  <br /> &nbsp; =20
+ <img src=3D"http://www.southflights.live/7eb6o2m3h95HL8p512s5ea0sO1731y36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJR99R5p10Ml5t@0wD/calfskin-regarded" alt=3D""/></body>
 </html>
 
-------=_Part_67_1231587819.1694973875594--
+------=_Part_400_503764771.1694978214586--
 
