@@ -2,48 +2,47 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BB3A7A64A0
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Sep 2023 15:17:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A50257A6778
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Sep 2023 16:59:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 136E710E3C0;
-	Tue, 19 Sep 2023 13:17:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0DF3D10E124;
+	Tue, 19 Sep 2023 14:59:26 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 19 Sep 2023 13:17:49 UTC
-Received: from mail.getflightson.click (unknown [77.90.135.169])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4B82710E3C0
+X-Greylist: delayed 699 seconds by postgrey-1.36 at gabe;
+ Tue, 19 Sep 2023 14:59:24 UTC
+Received: from o47.p25.mailjet.com (o47.p25.mailjet.com [185.189.236.47])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 7831D10E124
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 Sep 2023 13:17:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=getflightson.click; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=your_comprehensive_southwest_flight_information@getflightson.click; 
- bh=ysloUYvkLUABAXbwlVznkWhfyVg=;
- b=KtEdMaOqtdUUPGbm5arK4Kp8MiHoop1dnAicdqG4rIq6KALXml19qh1294Hgqwac1WSDXOPA4clg
- nD2JzZzRrrSFv2m9blpwzoDwl93yMbkA7rMuwq8wySsk2uNAUwDZ4bHCiFY2/r7vKAflPrhGHBIH
- Mam1ppIxdzacBCVtxGk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=getflightson.click; 
- b=L6dSRXtViLo8YIZ8ZnNVC34Qt5FCr+/epgRhZUJnmVCLogacDE2cY1/4Pztm2mWn/tc3KT4el94G
- c8JjfIou+LI1BCMCkv0ELZ8BpfvDbBigvqSFC3Es+emNMm9VGaZJrHTchW0eGGiQrhUpiYC5dXzi
- UxBZIpBGVqL+GBnyodI=;
-Received: by mail.getflightson.click id h16p6o0001g0 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 Sep 2023 10:30:34 -0400 (envelope-from
- <your_comprehensive_southwest_flight_information-intel+2Dgvt+2Ddev=lists.freedesktop.org@getflightson.click>)
-Date: Tue, 19 Sep 2023 10:30:34 -0400
-From: "Your Comprehensive Southwest Flight Information"
- <your_comprehensive_southwest_flight_information@getflightson.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Celebrate the onset of the season by indulging in a complimentary
- flight to your chosen destination!
+ Tue, 19 Sep 2023 14:59:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; q=dns/txt;
+ d=bnc3.mailjet.com; i=sales=3Dcypress-tech.com@a1189921.bnc3.mailjet.com;
+ s=mailjet2; x=1695142061; 
+ h=message-id:mime-version:from:from:to:to:subject:subject:date:date:list-id:list-unsubscribe:
+ list-unsubscribe-post:feedback-id:precedence:x-campaignid:x-csa-complaints:
+ x-mj-mid:x-mj-smtpguid:x-report-abuse-to:content-type;
+ bh=FiK6zbSQBRLM2wftZoFzZDazKJ/0XdX2XTyoIMesuew=;
+ b=osM7uFUsdp4WUD2DNDb1Pw31sJFcJb+qaoSJfZCEfQFhttpiWmVhusWw3
+ 2DiHDeB0WBEsl7esekeIdqWVLmcDj0wrJ99bX7hQSVq1faHcFms0x0dDyixm
+ b8jSNOqxaKguqOoLSSoAlVlOGcX5j00B9xod6giHjFjRxvTaUbnmFw=
+Message-Id: <20dbfc02.AWYAACgLksgAAckX6tYAAM5Ee0IAAYCsxc8AndYRABIoIQBlCbSN@mailjet.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_133_899813705.1695128980313"
-Message-ID: <0.0.0.38.1D9EB05D9958544.632323@mail.getflightson.click>
+From: Jesse Dougherty <sales@cypress-tech.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: HPE Itanium & 9000 Servers for HP-UX Unix & OpenVMS OS
+Date: Tue, 19 Sep 2023 14:47:33 +0000 (UTC)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-Id: 42.1189921.1191387:MJ
+Precedence: bulk
+X-CampaignID: 7668755158
+X-CSA-Complaints: csa-complaints@eco.de
+X-MJ-Mid: AWYAACgLksgAAckX6tYAAM5Ee0IAAYCsxc8AndYRABIoIQBlCbSN1my1U2FiQqmN-sZ-L41qaQASLds
+X-MJ-SMTPGUID: d66cb553-6162-42a9-8dfa-c67e2f8d6a69
+X-REPORT-ABUSE-TO: Message sent by Mailjet please report to
+ abuse@mailjet.com with a copy of the message
+Content-Type: multipart/alternative; boundary="=-UO28ZyLuvfyS8RVdIic4"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: "Intel GVT \(Graphics Virtualization\) development list"
  <intel-gvt-dev.lists.freedesktop.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gvt-dev>, 
@@ -56,123 +55,225 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_133_899813705.1695128980313
-Content-Type: text/html; charset=us-ascii
+--=-UO28ZyLuvfyS8RVdIic4
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>san francis</title>=20
- </head>=20
- <body style=3D"margin: 0; padding: 0; background-color: rgb(226, 226, 226)=
-;">=20
-  <div>=20
-   <p style=3D"padding-top: 25px;">&nbsp;</p>=20
-   <div style=3D"max-width: 520px; margin: auto; box-shadow: #999 1px 1px 1=
-5px; border-radius: 5px;">=20
-    <table align=3D"center" bgcolor=3D"ffffff" style=3D"width: 100%;">=20
-     <tbody>=20
-      <tr>=20
-       <td align=3D"center">=20
-        <div style=3D"padding-top: 20px; padding-bottom: 20px;">=20
-         <center style=3D"max-width: 320px; margin: auto;">
-          <a href=3D"http://www.getflightson.click/f2f6e239YX5f8YZ613P5recS4t1739p36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ1R9dd5Qz1_05LM1wD/cellular-hinted"><img alt=3D"" src=3D"http://www.getflightson.click/3956v2JG395u7IBa13P5oeLc5V1739M36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ1R9dd7epmm1Z06PNwNTD/checking-suppositions" width=3D=
-"100%" /></a>
-         </center>=20
-        </div> </td>=20
-      </tr>=20
-     </tbody>=20
-    </table>=20
-    <h3 style=3D"font-family: Verdana, Geneva, Tahoma, sans-serif; font-siz=
-e: 16px; text-align: center; background-color: white; margin: 0; padding: 1=
-5px 15px; font-weight: normal; line-height: 24px;">We sincerely thank you f=
-or choosing <strong>Southwest Airlines</strong> for your travels. Your cont=
-inued loyalty and support mean the world to us, and we are fully committed =
-to fulfilling all your travel needs.</h3>=20
-    <h2 style=3D"font-family: Verdana, Geneva, Tahoma, sans-serif; font-siz=
-e: 16px; text-align: center; background-color: #FEBF26; margin: 0; padding:=
- 15px 15px; font-weight: normal; line-height: 24px;">Your feedback holds si=
-gnificant importance to us. We kindly request a moment of your time to part=
-icipate in a brief survey concerning your recent flight and your overall in=
-teraction <strong>with Southwest</strong>. Your input will play a vital rol=
-e in enhancing your experiences with our airline.</h2>=20
-    <h4 style=3D"font-family: Verdana, Geneva, Tahoma, sans-serif; font-siz=
-e: 16px; text-align: center; background-color: #fff; margin: 0; padding: 15=
-px 0px; font-weight: normal; line-height: 24px;">&nbsp;</h4>=20
-    <div>
-     <a href=3D"http://www.getflightson.click/f2f6e239YX5f8YZ613P5recS4t1739p36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ1R9dd5Qz1_05LM1wD/cellular-hinted"><img alt=3D"" src=3D"http://www.getflightson.click/thunderstorm-crusher/62a6NB2Q395u7aKo12s5Cec6l1739I36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ1R9dd7h1Co0Jk6CLw@@D" style=3D"marg=
-in: auto; " width=3D"95%" /></a>
-    </div>=20
-    <h6 style=3D"font-family: Verdana, Geneva, Tahoma, sans-serif; font-siz=
-e: 16px; text-align: center; background-color: #fff; margin: 0; padding: 15=
-px 15px; font-weight: normal; line-height: 24px;">You can access the survey=
- through the link below. It's a simple task that will take only a few minut=
-es, and rest assured that your responses will be kept confidential.</h6>=20
-    <div style=3D"background-color: #fff; padding-top: 1em; padding-bottom:=
- 1em; text-align: center;">
-     <a href=3D"http://www.getflightson.click/f2f6e239YX5f8YZ613P5recS4t1739p36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ1R9dd5Qz1_05LM1wD/cellular-hinted" style=3D"text-decoration: none; color: white;">=
-<span style=3D"display: inline-block; background-color: #21529E; padding-to=
-p: 3.5%; padding-bottom: 3.5%; padding-left: 5%; padding-right: 5%; font-fa=
-mily: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; =
-margin: auto; border-radius: 5px; text-shadow: 0 0 2px;">Kick off the surve=
-y here &gt;&gt; </span> </a>
-    </div>=20
-    <div style=3D"background-color: #fff; text-align: center; font-family: =
-Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold;">
-     <br />=20
-     <br /> &nbsp;=20
-     <hr style=3D"margin: auto;" width=3D"60px" />
-     <br /> We appreciate your ongoing support and eagerly await your feedb=
-ack.      <br />=20
-     <br /> Best regards,
-     <br /> &nbsp;
-    </div>=20
-   </div>=20
-  </div>=20
-  <p style=3D"padding-top: 200px;">&nbsp;</p>=20
-  <address style=3D"text-align: center;"> <p style=3D"background-color: #21=
-529E; padding-top: 15px; padding-bottom: 15px;"><font style=3D"font-family:=
- Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: w=
-hite ;">Use the exit option <a href=3D"" style=3D"color: rgb(115, 207, 250)=
-;">here</a><br /> US 10010 126 E 23rd St New York, NY, </font></p> </addres=
-s>=20
-  <p style=3D"padding-top: 60px;">&nbsp;</p>=20
-  <div style=3D"background-color: #fff;">=20
-   <footer style=3D"max-width: 420px; margin: auto;">=20
-    <p style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-seri=
-f; font-weight: 500; text-align: justify; font-size: 12px; background-color=
-: white; padding: 5% 7%;">Southwest Airlines began with the March 15, 1967,=
- incorporation of Air Southwest Co. by Lamar Muse, Rollin King and Herb Kel=
-leher to fly within the state of Texas.<br /> <br /> Kelleher asserted that=
- by staying within Texas, price controls and market regulations imposed by =
-the federal Civil Aeronautics Board would not apply, and the airline could =
-undercut competitors' prices. Three airlines (Braniff, Trans-Texas Airways =
-and Continental Airlines) started legal action that took three years to res=
-olve. Air Southwest prevailed in 1970 when the Texas Supreme Court upheld A=
-ir Southwest's right to fly within Texas. The Texas decision became final o=
-n December 7, 1970, when the U.S. Supreme Court declined to review the case=
- without comment, vindicating Kelleher's opinion on the limits of federal m=
-arket regulation.<br /> <br /> On March 29, 1971, Air Southwest Co. changed=
- its name to Southwest Airlines Co. with headquarters in Dallas. Southwest =
-began scheduled passenger service on June 18, 1971, on two routes: between =
-Dallas Love Field and Houston Intercontinental Airport and between Dallas L=
-ove Field and San Antonio with three Boeing 737-200s. Service between Houst=
-on Hobby Airport and Dallas Love Field and between Houston Hobby and San An=
-tonio began on November 14, 1971. The Official Airline Guide for October 15=
-, 1972, lists 61 flights a week each way between Dallas Love and Houston Ho=
-bby, 23 flights a week each way between Dallas Love and San Antonio and 16 =
-flights a week each way between San Antonio and Houston Hobby; no flights o=
-perated on Saturdays.</p>=20
-   </footer>=20
-  </div>=20
-  <br />=20
-  <br /> &nbsp; =20
- <img src=3D"http://www.getflightson.click/lockstep-apparent/Y126B23s9p5rl8x513g5Iecn7v1739x36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ1R9dd6DGs1l06U@wM0D" alt=3D""/></body>
-</html>
+Cypress Technology, Inc. is an HP hardware vendor specializing in selling a=
+nd supporting classic Hewlett-Packard hardware infrastructure. We offer HP =
+hardware from the early 1990's to the current date. We sell and support ser=
+vers for the following OS: HP-UX Unix, OpenVMS, MPE/iX, HP-RT, RTE-A, and A=
+BB Advant.
 
-------=_Part_133_899813705.1695128980313--
+ * HP Itanium Servers - RX2800, RX86xx, RX76xx, RX46xx, RX26xx.. class
+ * HP Itanium Blade Servers - BL860c, BL870c, BL890c i2 i4 i6 Servers
+ * HP Itanium Workstations - ZX6000 class
+ * HP 9000 HP-UX Servers - RP servers, A, D, E, F, G, N, K, T.. class
+ * HP 9000 HP-UX Workstations - B, C, J, 700 series workstations
+ * HP 9000 HP-UX VME based industrial controllers
+ * HP e3000 MPE/iX Servers
+ * HP 1000 HP-RTE A990, A700, A600, A400.. servers
+ * ABB / HP Unix Advant 500 series controllers- =C2=A0RTA real-time acceler=
+ator
+ * All parts and peripherals for the above systems lines.
+
+Current specials
+
+HP RX2800 i4/i6 AT101A Integrity Servers for HP-UX Unix 11.31 v3 or OpenVMS=
+ =C2=A0 =C2=A0Click for Pricing [http://www.cypress-tech.com/at101a-rx2800-=
+order.html]
+
+ * We offer disaster back-up systems, clone replicas, & production systems.
+ * We provide replacement / spare parts / peripherals for HP product lines =
+above.
+ * We purchase used and surplus HP hardware
+ * We ship Worldwide.
+ * Contact for pricing on system, parts, or questions
+
+=C2=A0
+
+ * Thank you
+ * Jesse Dougherty
+ * Cypress Technology, Inc.
+ * Land O Lakes, Florida USA
+ * Phone 888-954-3414 / (direct) 412-589-3779
+ * Jesse@Cypress-Tech.com [Jesse@Cypress-Tech.com]
+ * www.Cypress-Tech.com [http://www.Cypress-Tech.com]
+
+=C2=A0
+
+
+
+This e-mail has been sent to intel-gvt-dev@lists.freedesktop.org, click her=
+e to unsubscribe http://xz01x.mjt.lu/unsub2?hl=3Den&m=3DAWYAACgLksgAAckX6tY=
+AAM5Ee0IAAYCsxc8AndYRABIoIQBlCbSN1my1U2FiQqmN-sZ-L41qaQASLds&b=3D20dbfc02&e=
+=3Db38e3c61&x=3DT9ZTD0d7I8nWexNjwtFGOiDda_TnMPeFq7gyjrD4UrPTf9rVFgDeeiePdwr=
+slDcy.=
+
+--=-UO28ZyLuvfyS8RVdIic4
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title>HPE Itanium & 9000 Servers for HP-UX Unix & OpenVMS OS</ti=
+tle><!--[if !mso]><!--><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=
+=3Dedge"><!--<![endif]--><meta http-equiv=3D"Content-Type" content=3D"text/=
+html; charset=3DUTF-8"><meta name=3D"viewport" content=3D"width=3Ddevice-wi=
+dth,initial-scale=3D1"><style type=3D"text/css">#outlook a { padding:0; }
+      body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size=
+-adjust:100%; }
+      table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-r=
+space:0pt; }
+      img { border:0;height:auto;line-height:100%; outline:none;text-decora=
+tion:none;-ms-interpolation-mode:bicubic; }
+      p { display:block;margin:13px 0; }</style><!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]--><!--[if lte mso 11]>
+    <style type=3D"text/css">
+      .mj-outlook-group-fix { width:100% !important; }
+    </style>
+    <![endif]--><!--[if !mso]><!--><link href=3D"https://fonts.googleapis.c=
+om/css?family=3DUbuntu:300,400,500,700" rel=3D"stylesheet" type=3D"text/css=
+"><style type=3D"text/css">@import url(https://fonts.googleapis.com/css?fam=
+ily=3DUbuntu:300,400,500,700);</style><!--<![endif]--><style type=3D"text/c=
+ss">@media only screen and (min-width:480px) {
+        .mj-column-per-100 { width:100% !important; max-width: 100%; }
+      }</style><style media=3D"screen and (min-width:480px)">.moz-text-html=
+ .mj-column-per-100 { width:100% !important; max-width: 100%; }</style><sty=
+le type=3D"text/css">[owa] .mj-column-per-100 { width:100% !important; max-=
+width: 100%; }</style><style type=3D"text/css"></style><style type=3D"text/=
+css"></style></head><body style=3D"word-spacing:normal;background-color:#F4=
+F4F4;"><div style=3D"background-color:#F4F4F4;"><!--[if mso | IE]><table al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" =
+role=3D"presentation" style=3D"width:600px;" width=3D"600" bgcolor=3D"#ffff=
+ff" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-height-rule:ex=
+actly;"><![endif]--><div style=3D"background:#ffffff;background-color:#ffff=
+ff;margin:0px auto;max-width:600px;"><table align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"backgroun=
+d:#ffffff;background-color:#ffffff;width:100%;"><tbody><tr><td style=3D"dir=
+ection:ltr;font-size:0px;padding:20px 0px 20px 0px;text-align:center;"><!--=
+[if mso | IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0"><tr><td class=3D"" style=3D"vertical-align:top;width:600px=
+;" ><![endif]--><div class=3D"mj-column-per-100 mj-outlook-group-fix" style=
+=3D"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertic=
+al-align:top;width:100%;"><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"vertical-align:top;" width=3D"100%"><=
+tbody><tr><td align=3D"left" style=3D"font-size:0px;padding:0px 25px 0px 25=
+px;padding-top:0px;padding-bottom:0px;word-break:break-word;"><div style=3D=
+"font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:15px;line-heigh=
+t:1;text-align:left;color:#000000;"><p class=3D"text-build-content" data-te=
+stid=3D"CxR6Xstd1KmrWXfUQrQCb" style=3D"margin: 10px 0; margin-top: 10px;">=
+<span style=3D"color:#55575d;font-family:Arial;font-size:14px;line-height:2=
+2px;">Cypress Technology, Inc. is an HP hardware vendor specializing in sel=
+ling and supporting classic Hewlett-Packard hardware infrastructure. We off=
+er HP hardware from the early 1990's to the current date. We sell and suppo=
+rt servers for the following OS: HP-UX Unix, OpenVMS, MPE/iX, HP-RT, RTE-A,=
+ and ABB Advant.</span></p><ul><li><span style=3D"color:#55575d;font-family=
+:Arial;font-size:14px;line-height:22px;">HP Itanium Servers - RX2800, RX86x=
+x, RX76xx, RX46xx, RX26xx.. class</span></li><li><span style=3D"color:#5557=
+5d;font-family:Arial;font-size:14px;line-height:22px;">HP Itanium Blade Ser=
+vers - BL860c, BL870c, BL890c i2 i4 i6 Servers</span></li><li><span style=
+=3D"color:#55575d;font-family:Arial;font-size:14px;line-height:22px;">HP It=
+anium Workstations - ZX6000 class</span></li><li><span style=3D"color:#5557=
+5d;font-family:Arial;font-size:14px;line-height:22px;">HP 9000 HP-UX Server=
+s - RP servers, A, D, E, F, G, N, K, T.. class</span></li><li><span style=
+=3D"color:#55575d;font-family:Arial;font-size:14px;line-height:22px;">HP 90=
+00 HP-UX Workstations - B, C, J, 700 series workstations</span></li><li><sp=
+an style=3D"color:#55575d;font-family:Arial;font-size:14px;line-height:22px=
+;">HP 9000 HP-UX VME based industrial controllers</span></li><li><span styl=
+e=3D"color:#55575d;font-family:Arial;font-size:14px;line-height:22px;">HP e=
+3000 MPE/iX Servers</span></li><li><span style=3D"color:#55575d;font-family=
+:Arial;font-size:14px;line-height:22px;">HP 1000 HP-RTE A990, A700, A600, A=
+400.. servers</span></li><li><span style=3D"color:#55575d;font-family:Arial=
+;font-size:14px;line-height:22px;">ABB / HP Unix Advant 500 series controll=
+ers- &nbsp;RTA real-time accelerator</span></li><li><span style=3D"color:#5=
+5575d;font-family:Arial;font-size:14px;line-height:22px;">All parts and per=
+ipherals for the above systems lines.</span></li></ul><p class=3D"text-buil=
+d-content" data-testid=3D"CxR6Xstd1KmrWXfUQrQCb" style=3D"margin: 10px 0;">=
+<span style=3D"color:#c90808;font-family:Arial;font-size:14px;line-height:2=
+2px;"><b>Current specials</b></span></p><p class=3D"text-build-content" dat=
+a-testid=3D"CxR6Xstd1KmrWXfUQrQCb" style=3D"margin: 10px 0;"><span style=3D=
+"color:#55575d;font-family:Arial;font-size:14px;line-height:22px;">HP RX280=
+0 i4/i6 AT101A Integrity Servers for HP-UX Unix 11.31 v3 or OpenVMS &nbsp; =
+&nbsp;</span><a class=3D"link-build-content" style=3D"color:inherit;text-de=
+coration:none;; text-decoration: none;" target=3D"_blank" href=3D"http://xz=
+01x.mjt.lu/lnk/AWYAACgLksgAAckX6tYAAM5Ee0IAAYCsxc8AndYRABIoIQBlCbSN1my1U2Fi=
+QqmN-sZ-L41qaQASLds/1/MaezJj7D0Mo1Rzdjvo3BDg/aHR0cDovL3d3dy5jeXByZXNzLXRlY2=
+guY29tL2F0MTAxYS1yeDI4MDAtb3JkZXIuaHRtbA"><span style=3D"color:#e32e0f;font=
+-family:Arial;font-size:15px;line-height:22px;"><b><u>Click for Pricing</u>=
+</b></span></a></p><ul><li><span style=3D"color:#55575d;font-family:Arial;f=
+ont-size:14px;line-height:22px;">We offer disaster back-up systems, clone r=
+eplicas, &amp; production systems.</span></li><li><span style=3D"color:#555=
+75d;font-family:Arial;font-size:14px;line-height:22px;">We provide replacem=
+ent / spare parts / peripherals for HP product lines above.</span></li><li>=
+<span style=3D"color:#55575d;font-family:Arial;font-size:14px;line-height:2=
+2px;">We purchase used and surplus HP hardware</span></li><li><span style=
+=3D"color:#55575d;font-family:Arial;font-size:14px;line-height:22px;">We sh=
+ip Worldwide.</span></li><li><span style=3D"color:#55575d;font-family:Arial=
+;font-size:14px;line-height:22px;">Contact for pricing on system, parts, or=
+ questions</span></li></ul><p class=3D"text-build-content" data-testid=3D"C=
+xR6Xstd1KmrWXfUQrQCb" style=3D"margin: 10px 0;">&nbsp;</p><ul><li><span sty=
+le=3D"color:#55575d;font-family:Arial;font-size:14px;line-height:22px;">Tha=
+nk you</span></li><li style=3D"line-height:22px;"><span style=3D"color:#555=
+75d;font-family:Arial;font-size:14px;">Jesse Dougherty</span></li><li style=
+=3D"line-height:22px;"><span style=3D"color:#55575d;font-family:Arial;font-=
+size:14px;">Cypress Technology, Inc.</span></li><li style=3D"line-height:22=
+px;"><span style=3D"color:#55575d;font-family:Arial;font-size:14px;">Land O=
+ Lakes, Florida USA</span></li><li style=3D"line-height:22px;"><span style=
+=3D"color:#55575d;font-family:Arial;font-size:14px;">Phone 888-954-3414 / (=
+direct) 412-589-3779</span></li><li style=3D"line-height:22px;"><a class=3D=
+"link-build-content" style=3D"color:inherit;text-decoration:none;; text-dec=
+oration: none;" href=3D"mailto:Jesse@Cypress-Tech.com"><span style=3D"color=
+:#55575d;font-family:Arial;font-size:13px;"><u>Jesse@Cypress-Tech.com</u></=
+span></a></li><li style=3D"line-height:22px;"><a class=3D"link-build-conten=
+t" style=3D"color:inherit;text-decoration:none;; text-decoration: none;" ta=
+rget=3D"_blank" href=3D"http://xz01x.mjt.lu/lnk/AWYAACgLksgAAckX6tYAAM5Ee0I=
+AAYCsxc8AndYRABIoIQBlCbSN1my1U2FiQqmN-sZ-L41qaQASLds/2/EgVIAuRwXv16ZKenO57W=
+YA/aHR0cDovL3d3dy5DeXByZXNzLVRlY2guY29t"><span style=3D"color:#55575d;font-=
+family:Arial;font-size:13px;"><u>www.Cypress-Tech.com</u></span></a></li></=
+ul><p class=3D"text-build-content" data-testid=3D"CxR6Xstd1KmrWXfUQrQCb" st=
+yle=3D"margin: 10px 0; margin-bottom: 10px;">&nbsp;</p></div></td></tr></tb=
+ody></table></div><!--[if mso | IE]></td></tr></table><![endif]--></td></tr=
+></tbody></table></div><!--[if mso | IE]></td></tr></table><table align=3D"=
+center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"" role=3D=
+"presentation" style=3D"width:600px;" width=3D"600" ><tr><td style=3D"line-=
+height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]--><div st=
+yle=3D"margin:0px auto;max-width:600px;"><table align=3D"center" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"width=
+:100%;"><tbody><tr><td style=3D"direction:ltr;font-size:0px;padding:20px 0p=
+x 20px 0px;text-align:center;"><!--[if mso | IE]><table role=3D"presentatio=
+n" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td class=3D"" styl=
+e=3D"vertical-align:top;width:600px;" ><![endif]--><div class=3D"mj-column-=
+per-100 mj-outlook-group-fix" style=3D"font-size:0px;text-align:left;direct=
+ion:ltr;display:inline-block;vertical-align:top;width:100%;"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"v=
+ertical-align:top;" width=3D"100%"><tbody><tr><td align=3D"left" style=3D"f=
+ont-size:0px;padding:0px 20px 0px 20px;padding-top:0px;padding-bottom:0px;w=
+ord-break:break-word;"><div style=3D"font-family:Ubuntu, Helvetica, Arial, =
+sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;"><p =
+style=3D"text-align: center; margin: 10px 0; margin-top: 10px; margin-botto=
+m: 10px;"><span style=3D"font-size:13px;text-align:center;color:#55575d;fon=
+t-family:Arial;line-height:22px;">This e-mail has been sent to intel-gvt-de=
+v@lists.freedesktop.org, <a href=3D"http://xz01x.mjt.lu/unsub2?hl=3Den&amp;=
+m=3DAWYAACgLksgAAckX6tYAAM5Ee0IAAYCsxc8AndYRABIoIQBlCbSN1my1U2FiQqmN-sZ-L41=
+qaQASLds&amp;b=3D20dbfc02&amp;e=3Db38e3c61&amp;x=3DT9ZTD0d7I8nWexNjwtFGOiDd=
+a_TnMPeFq7gyjrD4UrPTf9rVFgDeeiePdwrslDcy" style=3D"color:inherit;text-decor=
+ation:none;" target=3D"_blank">click here to unsubscribe</a>.</span></p></d=
+iv></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![e=
+ndif]--></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table=
+><![endif]--></div>
+<br/><img src=3D"http://xz01x.mjt.lu/oo/AWYAACgLksgAAckX6tYAAM5Ee0IAAYCsxc8=
+AndYRABIoIQBlCbSN1my1U2FiQqmN-sZ-L41qaQASLds/87503be0/e.gif" height=3D"1" w=
+idth=3D"1" alt=3D"" border=3D"0" style=3D"height:1px;width:1px;border:0;"/>
+</body></html>=
+
+--=-UO28ZyLuvfyS8RVdIic4--
 
