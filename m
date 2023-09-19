@@ -2,42 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE2C47A6834
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Sep 2023 17:37:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 145DC7A68FF
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Sep 2023 18:31:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9011010E2AD;
-	Tue, 19 Sep 2023 15:37:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DDD3110E133;
+	Tue, 19 Sep 2023 16:31:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 19 Sep 2023 15:37:29 UTC
-Received: from mail.brewtops.autos (unknown [77.90.135.175])
- by gabe.freedesktop.org (Postfix) with ESMTP id 62CCF10E2AD
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 19 Sep 2023 16:31:51 UTC
+Received: from mail.healthwalgreens.bond (unknown [77.90.135.184])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6EA3510E13B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 Sep 2023 15:37:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=brewtops.autos; 
+ Tue, 19 Sep 2023 16:31:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=healthwalgreens.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=starbucks-coffee-corner@brewtops.autos; 
- bh=wVd6bI7B3v9RTexGIXGV0eeNRc8=;
- b=h56sNVhukAKorBtmuriie7AhaRqYm+tz+Ut4hXbZzNJOpNnAG2LODxmzwWoPtT4i6UvVJ/On/Nng
- dYiSvvkuRsZLxf3RHsZY2NCaTOschPEoKvdHRUOqNGyvnMENzXv8wAKprlNg/CBcaLxec7Juh1i7
- pYMK/K2VtSe3IAKxqIw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=brewtops.autos;
- b=oFcY5CQ9j4rRc+bQkCTrNr1xxstWJxTWezA2Djx9mNhBH62NBDzhwPk0OXwBRjXJqUbyDINk9dHJ
- xCrgNZR8bZBeTLWpl0yM3eTJMoSOgtV6z2UU2nGJDJjvxzyjTQ0Q8uBtmeoDaNBvBQYQroHHMsv5
- nchi5lpF1vQ8YMKHWT8=;
-Received: by mail.brewtops.autos id h179ig0001gd for
+ i=the_latest_from_walgreens@healthwalgreens.bond; 
+ bh=qajKHTJBob6JIZ232M8gy9gahZs=;
+ b=jj0m2cSA9ApncIgu/nmuzGKNl8qSXkG82im2eV/f7Gu+SfMhad7AqNjqLTF7POiAW4yUBYqYC8p5
+ XBBj2uKR6tLQKGzSIGvueb/NnjZjf2l67263KzVyYaxTVgnhLdI6OTmMad0tEihg1iB9Z6zcDtCq
+ oIPihsmC+9KrnPxrSxQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=healthwalgreens.bond;
+ b=tUz+wNCCNYvLr9YWqV8/qUdalkr3vHOr9bZEoBxZrx1ItnxPPDzSxpRfBIhejI2TEYDN34RBxIgN
+ glButSyTGEbBMepDzmRrsq6+TIBGXRac2kteZExzr7lE24zw7Tt85TgJKEHpIY4rH+KvEvJos0uB
+ 7K90VYU5QJ7nqExgjeU=;
+Received: by mail.healthwalgreens.bond id h176fe0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 Sep 2023 12:49:55 -0400 (envelope-from
- <starbucks-coffee-corner-intel+2Dgvt+2Ddev=lists.freedesktop.org@brewtops.autos>)
-Date: Tue, 19 Sep 2023 12:49:55 -0400
-From: "Starbucks Coffee Corner" <starbucks-coffee-corner@brewtops.autos>
+ Tue, 19 Sep 2023 12:24:01 -0400 (envelope-from
+ <the_latest_from_walgreens-intel+2Dgvt+2Ddev=lists.freedesktop.org@healthwalgreens.bond>)
+Date: Tue, 19 Sep 2023 12:24:01 -0400
+From: "The Latest From Walgreens"
+ <the_latest_from_walgreens@healthwalgreens.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Want a Starbucks gift card?
+Subject: Don't Miss Your Chance: Win an Oral-B Series 8 with Your Feedback!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_160_93241312.1695137333312"
-Message-ID: <0.0.0.64.1D9EB195130E3EC.4B43A2@mail.brewtops.autos>
+ boundary="----=_Part_271_1791559714.1695140623008"
+Message-ID: <0.0.0.9F.1D9EB15B2DF1DBA.3528FB@mail.healthwalgreens.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_160_93241312.1695137333312
+------=_Part_271_1791559714.1695140623008
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,95 +64,89 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>coconuupsvers</title> 
+  <title>relocate</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <div> 
-   <div style="background-color: #1A6E48; width: 100%;"> 
-    <table align="center"> 
-     <tbody> 
-      <tr> 
-       <th>&nbsp;</th> 
-      </tr> 
-     </tbody> 
-     <thead> 
-     </thead> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td align="center"> 
-        <div style="max-width: 350px; margin: auto;"> 
-         <p><font><a href="http://www.brewtops.autos/abb5N2u395NR86K11z5ecdy173aO36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcR9dR5J1Fk05LTwpD/Schultz-Giovanni" target="_blank"><img alt="agsdia" src="http://www.brewtops.autos/8db6WN23t95d7vva12F5ecWfU173av36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQcR9dR5Ex10H5KjPwD/prohibitions-pinnacle" width="100%" /></a></font></p> 
-        </div> </td> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div style="background-color: #ecfff7;"> 
-    <div> 
-     <p style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 900; margin: 0; padding-top: 15px; padding-top: 15px; color: #1C6E2E;"><font>Your Last Reminder from Starbucks </font></p> 
-    </div> 
-    <div style="background-color: #fff; max-width: 520px; margin: auto;"> 
-     <div style="padding-top: 0em; padding-right: 1.3em; padding-bottom: 1.2em; padding-left: 1.3em;"> 
-      <table align="center"> 
-       <tbody> 
-        <tr> 
-         <th>&nbsp;</th> 
-        </tr> 
-       </tbody> 
-       <thead> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td style="width: 100%;">&nbsp; 
-          <table align="center"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td align="center"> 
-              <div> 
-               <p style="margin: 0;">&nbsp;</p> 
-               <article>
-                <font style="margin: 0; font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; display: block;">We're thrilled to announce that <strong>Starbucks</strong> is currently running a special promotion, giving you the opportunity to enjoy a <strong>$100 Gift</strong> at any of our store locations. Don't miss out on this fantastic offer! You have until <strong>September 19th</strong> to redeem these delightful beverages. </font>
-               </article> 
-               <p>&nbsp;</p> 
-              </div> </td> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td align="center"> 
-              <div> 
-               <center style="max-width: 220px; margin: auto;">
-                <a href="http://www.brewtops.autos/abb5N2u395NR86K11z5ecdy173aO36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcR9dR5J1Fk05LTwpD/Schultz-Giovanni" target="_blank"><img alt="klasdj" src="http://www.brewtops.autos/2696F239OU5hCA7a11N5ed0q173aU36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQcR9dR6W1lRN05e0wDJ/Schultz-Giovanni" width="100%" /> </a>
-               </center> 
-              </div> <br /> <br /> <a href="http://www.brewtops.autos/abb5N2u395NR86K11z5ecdy173aO36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQcR9dR5J1Fk05LTwpD/Schultz-Giovanni" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; padding: 17px 33px; border-radius: 15px; background-color: #000; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 18px;">Start Here Now &gt;&gt;</span></a></td> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
+  <div style="background-color: rgb(226, 226, 226);"> 
+   <table align="cebter" style="max-width: 500px; margin: auto;"> 
+    <tbody> 
+     <tr> 
+      <td style=""> <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 18px;"><strong>Crucial Update from Walgreens</strong></h1> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <div style="padding: 2px"> 
+   <div style="padding: 2px"> 
+    <div style="padding: 2px"> 
+     <div style="padding: 2px"> 
+      <div style="padding: 2px"> 
+       <div style="padding: 2px">
+        &nbsp; 
+        <table align="cebter" style="max-width: 500px; margin: auto;"> 
+         <tbody> 
+          <tr> 
+           <td style=""> 
+            <div style="max-width: 300px; margin: auto;">
+             <a href="http://www.healthwalgreens.bond/hairless-janitor/2c46N2Mo395a8yh611f5ed2O173bh36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCR9dS6dFDv106UN0PwD" target="_blank"><img alt="" src="http://www.healthwalgreens.bond/7555Q23z95by7aW12q5ed4S_173bh36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQCR9dS6M1VRo05i0wDB/ideologically-Herbert" width="100%" /></a>
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table align="cebter" style="max-width: 500px; margin: auto;"> 
+         <tbody> 
+          <tr> 
+           <td style=""> 
+            <div style="max-width: 500px; margin: auto;"> 
+             <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; text-align: center; font-size: 19.65484px;line-height: 27px;"><span>Exciting News! Walgreens is offering you an <strong> Oral-B Series 8 Toothbrush</strong> to use at any of our stores. Act now, as this offer is valid until <strong>September 19th.</strong> </span></p> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table align="cebter" style="max-width: 500px; margin: auto;"> 
+         <tbody> 
+          <tr> 
+           <td style=""> 
+            <div style="max-width: 500px; margin: auto;">
+             <a href="http://www.healthwalgreens.bond/hairless-janitor/2c46N2Mo395a8yh611f5ed2O173bh36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCR9dS6dFDv106UN0PwD" style="text-decoration: none; color: white;" target="_blank"><span style="display: inline-block; background-color: #E53211; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; text-align: center; font-size: 18px; width: 250px; padding: 15pt; border-radius: 5pt">Start Here Now</span></a>
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> &nbsp; 
+        <table align="cebter" style="max-width: 500px; margin: auto;"> 
+         <tbody> 
+          <tr> 
+           <td style=""> 
+            <div style="max-width: 300px; margin: auto;">
+             <a href="http://www.healthwalgreens.bond/hairless-janitor/2c46N2Mo395a8yh611f5ed2O173bh36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCR9dS6dFDv106UN0PwD" target="_blank"><img alt="" src="http://www.healthwalgreens.bond/precariousness-completely/b8e5y23R95P7TaY13at5Ped5p173bh36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQCR9dS7Ss1WyD05zpwOD" width="100%" /></a>
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table align="cebter" style="max-width: 600px; margin: auto;"> 
+         <tbody> 
+          <tr> 
+           <td style=" width: 100%;"> 
+            <div style="max-width: 500px; margin: auto;"> 
+             <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; text-align: center; font-size: 18px;line-height: 27px;   color: black; width: 100%; margin: auto; text-align: center;"><span style="display: block; font-weight: 900">Thank you in advance, The Walgreens Team </span></p> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <div style="padding-top: 180px;"> 
+         <div style="max-width: 500px; margin: auto;"> 
+          <hr /> 
+          <p style="text-align: center; font-family: arial">you are bored of these, visit us <a href="http://www.healthwalgreens.bond/5936N239KD5X8ll612J5edW3_173bq36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCR9dS6e10kFR6PNLwWD/hinting-campfire">here</a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</p> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
      </div> 
-    </div> &nbsp; 
-    <div style="max-width: 520px; margin: auto;"> 
-     <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; text-align: center; font-size: 16px; color: #1A6E48;">Your participation is valued.<br /> Warm regards, The Starbucks Team.</p> 
     </div> 
-    <p style="padding-top: 155px;">&nbsp;</p> 
-   </div> 
-   <div style="background-color: #ecfff7;"> 
-    <div style="border: solid 3.5px #1A6E48; border-radius: 10px; max-width: 600px; margin: auto; background-color: #b9ffe2;"> 
-     <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold; font-size: 14px; text-align: center;">you can leave with sadness <a href="http://www.brewtops.autos/burrowed-Fridays/e9a5dv2395z8B6O13z5pzeceS173a_36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQcR9dR6Q10PIW6vXw@LD">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-    </div> 
-    <br /> &nbsp;
    </div> 
   </div>   
- <img src="http://www.brewtops.autos/7194N2395JU8n511z5ed1j173aB36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQcR9dR6fz1Z0t6zqwXWD/prohibitions-pinnacle" alt=""/></body>
+ <img src="http://www.healthwalgreens.bond/ideologically-Herbert/7385m23I95eil8513U5ed6ZzJ173bO36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQCR9dS7Y1Tqk0o5qPywD" alt=""/></body>
 </html>
 
-------=_Part_160_93241312.1695137333312--
+------=_Part_271_1791559714.1695140623008--
 
