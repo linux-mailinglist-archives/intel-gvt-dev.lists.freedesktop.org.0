@@ -1,45 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 145DC7A68FF
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Sep 2023 18:31:55 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1CEE7A69E0
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Sep 2023 19:49:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DDD3110E133;
-	Tue, 19 Sep 2023 16:31:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B3CEF10E157;
+	Tue, 19 Sep 2023 17:49:00 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 19 Sep 2023 16:31:51 UTC
-Received: from mail.healthwalgreens.bond (unknown [77.90.135.184])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6EA3510E13B
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Tue, 19 Sep 2023 17:48:57 UTC
+Received: from mail.sightpckg.autos (unknown [77.90.135.193])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A9FFA10E157
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 Sep 2023 16:31:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=healthwalgreens.bond; 
+ Tue, 19 Sep 2023 17:48:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sightpckg.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=the_latest_from_walgreens@healthwalgreens.bond; 
- bh=qajKHTJBob6JIZ232M8gy9gahZs=;
- b=jj0m2cSA9ApncIgu/nmuzGKNl8qSXkG82im2eV/f7Gu+SfMhad7AqNjqLTF7POiAW4yUBYqYC8p5
- XBBj2uKR6tLQKGzSIGvueb/NnjZjf2l67263KzVyYaxTVgnhLdI6OTmMad0tEihg1iB9Z6zcDtCq
- oIPihsmC+9KrnPxrSxQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=healthwalgreens.bond;
- b=tUz+wNCCNYvLr9YWqV8/qUdalkr3vHOr9bZEoBxZrx1ItnxPPDzSxpRfBIhejI2TEYDN34RBxIgN
- glButSyTGEbBMepDzmRrsq6+TIBGXRac2kteZExzr7lE24zw7Tt85TgJKEHpIY4rH+KvEvJos0uB
- 7K90VYU5QJ7nqExgjeU=;
-Received: by mail.healthwalgreens.bond id h176fe0001g1 for
+ i=your-destination-the-ups-assessment-center@sightpckg.autos; 
+ bh=2sqN3rZnvUC4aJh9j5MFs6i2qsw=;
+ b=oAQ/2mW0FXAFJLiU1Ys77w/CCOVuoaZYG3RhntYpX41SDdQHtSUpJH1C+PlHFTDSZGO/lEamB80y
+ 45/ct5kUbnKSfFz9+mC6NPzTRzXAmpjFGCI6vEosLMv7IKlh8BUEofHieAblDb6754YUFbasgwNZ
+ MDvpLX4QrdU6aCQ6Yqg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sightpckg.autos;
+ b=g/ikfPmD+il4yXgQwsVeaEmsgcUcj7w0M/l4idFNUCFnv4c1y9cJP3p0mD91l+Vk+/L/cV5yS1hJ
+ tJKN3/turaokPDh5GFCpHQAmvCDBsBGTqazk1+xg3apzCYenrKHwt3uXBj5ymlHWi2vnUDRUhJ2t
+ NIymFI6vvAWEty9Wpiw=;
+Received: by mail.sightpckg.autos id h17ovg0001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 19 Sep 2023 12:24:01 -0400 (envelope-from
- <the_latest_from_walgreens-intel+2Dgvt+2Ddev=lists.freedesktop.org@healthwalgreens.bond>)
-Date: Tue, 19 Sep 2023 12:24:01 -0400
-From: "The Latest From Walgreens"
- <the_latest_from_walgreens@healthwalgreens.bond>
+ Tue, 19 Sep 2023 15:02:16 -0400 (envelope-from
+ <your-destination-the-ups-assessment-center-intel+2Dgvt+2Ddev=lists.freedesktop.org@sightpckg.autos>)
+Date: Tue, 19 Sep 2023 15:02:16 -0400
+From: "Your Destination The UPS Assessment Center"
+ <your-destination-the-ups-assessment-center@sightpckg.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don't Miss Your Chance: Win an Oral-B Series 8 with Your Feedback!
+Subject: Our objective is to raise the bar for your shipping experience,
+ and your insights count. Share your thoughts on how we're doing,
+ and we'll convey our thanks with a token of appreciation.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_271_1791559714.1695140623008"
-Message-ID: <0.0.0.9F.1D9EB15B2DF1DBA.3528FB@mail.healthwalgreens.bond>
+ boundary="----=_Part_295_719598710.1695145272420"
+Message-ID: <0.0.0.C8.1D9EB2BCE416854.6252AA@mail.sightpckg.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,98 +56,106 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_271_1791559714.1695140623008
+------=_Part_295_719598710.1695145272420
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
  <head> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>relocate</title> 
+  <title>in the run</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <div style="background-color: rgb(226, 226, 226);"> 
-   <table align="cebter" style="max-width: 500px; margin: auto;"> 
+ <body style="max-width: 466px; margin: auto; max-width: 444pt; background-color: #F2F2F2; font-family: Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif'"> 
+  <fieldset style="margin-top: 21px; border-style: solid; background-color: #fff; padding: 0">
+   <legend style="margin: auto; padding: 15px"></legend> 
+   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
     <tbody> 
      <tr> 
-      <td style=""> <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 18px;"><strong>Crucial Update from Walgreens</strong></h1> </td> 
+      <td align="center" style="padding: 15px; font-size: 43pt; font-weight: 900">UPS</td> 
      </tr> 
     </tbody> 
    </table> 
-  </div> 
-  <div style="padding: 2px"> 
-   <div style="padding: 2px"> 
-    <div style="padding: 2px"> 
-     <div style="padding: 2px"> 
-      <div style="padding: 2px"> 
-       <div style="padding: 2px">
-        &nbsp; 
-        <table align="cebter" style="max-width: 500px; margin: auto;"> 
-         <tbody> 
-          <tr> 
-           <td style=""> 
-            <div style="max-width: 300px; margin: auto;">
-             <a href="http://www.healthwalgreens.bond/hairless-janitor/2c46N2Mo395a8yh611f5ed2O173bh36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCR9dS6dFDv106UN0PwD" target="_blank"><img alt="" src="http://www.healthwalgreens.bond/7555Q23z95by7aW12q5ed4S_173bh36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQCR9dS6M1VRo05i0wDB/ideologically-Herbert" width="100%" /></a>
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table align="cebter" style="max-width: 500px; margin: auto;"> 
-         <tbody> 
-          <tr> 
-           <td style=""> 
-            <div style="max-width: 500px; margin: auto;"> 
-             <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; text-align: center; font-size: 19.65484px;line-height: 27px;"><span>Exciting News! Walgreens is offering you an <strong> Oral-B Series 8 Toothbrush</strong> to use at any of our stores. Act now, as this offer is valid until <strong>September 19th.</strong> </span></p> 
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table align="cebter" style="max-width: 500px; margin: auto;"> 
-         <tbody> 
-          <tr> 
-           <td style=""> 
-            <div style="max-width: 500px; margin: auto;">
-             <a href="http://www.healthwalgreens.bond/hairless-janitor/2c46N2Mo395a8yh611f5ed2O173bh36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCR9dS6dFDv106UN0PwD" style="text-decoration: none; color: white;" target="_blank"><span style="display: inline-block; background-color: #E53211; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; text-align: center; font-size: 18px; width: 250px; padding: 15pt; border-radius: 5pt">Start Here Now</span></a>
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> &nbsp; 
-        <table align="cebter" style="max-width: 500px; margin: auto;"> 
-         <tbody> 
-          <tr> 
-           <td style=""> 
-            <div style="max-width: 300px; margin: auto;">
-             <a href="http://www.healthwalgreens.bond/hairless-janitor/2c46N2Mo395a8yh611f5ed2O173bh36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCR9dS6dFDv106UN0PwD" target="_blank"><img alt="" src="http://www.healthwalgreens.bond/precariousness-completely/b8e5y23R95P7TaY13at5Ped5p173bh36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQCR9dS7Ss1WyD05zpwOD" width="100%" /></a>
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table align="cebter" style="max-width: 600px; margin: auto;"> 
-         <tbody> 
-          <tr> 
-           <td style=" width: 100%;"> 
-            <div style="max-width: 500px; margin: auto;"> 
-             <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; text-align: center; font-size: 18px;line-height: 27px;   color: black; width: 100%; margin: auto; text-align: center;"><span style="display: block; font-weight: 900">Thank you in advance, The Walgreens Team </span></p> 
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <div style="padding-top: 180px;"> 
-         <div style="max-width: 500px; margin: auto;"> 
-          <hr /> 
-          <p style="text-align: center; font-family: arial">you are bored of these, visit us <a href="http://www.healthwalgreens.bond/5936N239KD5X8ll612J5edW3_173bq36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCR9dS6e10kFR6PNLwWD/hinting-campfire">here</a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</p> 
-         </div> 
-        </div> 
-       </div> 
-      </div> 
-     </div> 
-    </div> 
+   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" style="font-size: 20px">Expressing our appreciation for your choice of UPS for your shipping needs is important to us. Your loyalty and support mean a lot, and we genuinely value the opportunity to help you.</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <div>
+    &nbsp;
    </div> 
-  </div>   
- <img src="http://www.healthwalgreens.bond/ideologically-Herbert/7385m23I95eil8513U5ed6ZzJ173bO36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQCR9dS7Y1Tqk0o5qPywD" alt=""/></body>
+   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"><a href="http://www.sightpckg.autos/stills-postulate/42c5H23k95g8SQ613yH5ed7zN173cL36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQYR9de6w1tH0r6Q@wlOD"><img alt="toyourcell" src="http://www.sightpckg.autos/quorum-plumped/b8e4j2395lR7al12P5Ved9M173cK36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQYR9de7tAs1B0y6WllzwD" width="444" /></a></td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <div>
+    &nbsp;
+   </div> 
+   <table border="0" cellpadding="1" cellspacing="0" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td align="center" style="font-size: 20px">In our dedication to providing exceptional service, we invite you to take part in a short survey about your recent shipping experience and overall interaction with UPS.<br /> &nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td align="center" bgcolor="#F9C403" colspan="3" style="font-size: 20px; padding: 15px"><strong>Once the survey is done, you<br /> could potentially qualify for a $100 Gift!</strong></td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td align="center" style="font-size: 20px; padding-top: 12px"><br /> <a href="http://www.sightpckg.autos/stills-postulate/42c5H23k95g8SQ613yH5ed7zN173cL36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQYR9de6w1tH0r6Q@wlOD"><img alt="raton" src="http://www.sightpckg.autos/quorum-plumped/35a4U2395nWs7a11J5edap173cx36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQYR9de6V1rU0V6YWw3Dl" width="80" /></a><br /> &nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <div>
+    &nbsp;
+   </div> 
+   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" style="font-size: 20px; padding: 0px 20px">Simply click the link below to begin the survey. It will only take a few minutes, and your responses will be held in strict confidence.<br /> <br /> <br /> <a href="http://www.sightpckg.autos/stills-postulate/42c5H23k95g8SQ613yH5ed7zN173cL36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQYR9de6w1tH0r6Q@wlOD" style="text-decoration: none; color: #fff; background-color: #3F401F; padding: 15px; font-size: 29px">Begin The Survey Here &gt; </a></td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <p align="center">&nbsp;</p> 
+   <div align="center" style="padding-top: 25px; font-size: 19px">
+    We' re thankful for your support and are excited to hear from you soon. Warm regards
+   </div> 
+   <p>&nbsp;</p> 
+   <br /> 
+   <br /> 
+   <br /> &nbsp;
+  </fieldset> 
+  <section style="display: block; margin-top: 50px; padding-top: 50px; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; text-align: center"> 
+   <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+     <tr> 
+      <td>&nbsp;</td> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <footer>
+    another day to leave 
+    <a href="http://www.sightpckg.autos/bab6Y2lK395pCo8611G5ed8x173cq36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQYR9de7RUC1B0Y6B@wjD2/stills-postulate" style="color:#F9C403 ">here</a>
+    <br /> US 10010 126 E 23rd St New York, NY,
+   </footer> 
+  </section>   
+ <img src="http://www.sightpckg.autos/d134K2395Yhs8512AM5edbN173cx36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQYR9de5SF10P5FNwDl/maiming-postulating" alt=""/></body>
 </html>
 
-------=_Part_271_1791559714.1695140623008--
+------=_Part_295_719598710.1695145272420--
 
