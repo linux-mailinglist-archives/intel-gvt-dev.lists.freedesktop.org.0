@@ -1,45 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32D117A55F5
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Sep 2023 00:54:43 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BB3A7A64A0
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 19 Sep 2023 15:17:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F0D3B10E35D;
-	Mon, 18 Sep 2023 22:54:41 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 136E710E3C0;
+	Tue, 19 Sep 2023 13:17:50 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 18 Sep 2023 22:54:40 UTC
-Received: from mail.boxflights.autos (unknown [77.90.135.139])
- by gabe.freedesktop.org (Postfix) with ESMTP id BE9F310E35D
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 19 Sep 2023 13:17:49 UTC
+Received: from mail.getflightson.click (unknown [77.90.135.169])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4B82710E3C0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Sep 2023 22:54:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=boxflights.autos;
+ Tue, 19 Sep 2023 13:17:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=getflightson.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=immerse.yourself.in.the.delta.flight.experience@boxflights.autos; 
- bh=m1vs0EF1e2yWeA5SwxCKm5DpTD8=;
- b=jUrJhqPPxl0B4Jzf4Q7O/Xf1DQ3cnvx4xn20+91VRCLjPnOMbhOS4EwZq+3ZupPDkkc3jo9Re1jE
- +rCSbvwT0ZOlCac+eBiITGd1BqwGJHjMtH8ZnCawWJ121BudU50Kdo5Cm73ruHKTVnwEQE3Zzjdv
- 3HH+fMVVkFBxP/eUONI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=boxflights.autos;
- b=HPks+Hq9CBKjxKFs52l/fl+67FZIZoEcl8Z/hOBuRu/2OWu3hdMlVHF5e2iPaCWPcw0SIWjWqy/1
- PZfeoICG43bgAChPv2QkPyQMOMDSOMtLUeHeP3BzLZ7eu2L8VD7rZGIfWtZWdHWYH8ZTCTu3AftI
- zCFMCNLdG9VKAydDuGA=;
-Received: by mail.boxflights.autos id h13k200001gk for
+ i=your_comprehensive_southwest_flight_information@getflightson.click; 
+ bh=ysloUYvkLUABAXbwlVznkWhfyVg=;
+ b=KtEdMaOqtdUUPGbm5arK4Kp8MiHoop1dnAicdqG4rIq6KALXml19qh1294Hgqwac1WSDXOPA4clg
+ nD2JzZzRrrSFv2m9blpwzoDwl93yMbkA7rMuwq8wySsk2uNAUwDZ4bHCiFY2/r7vKAflPrhGHBIH
+ Mam1ppIxdzacBCVtxGk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=getflightson.click; 
+ b=L6dSRXtViLo8YIZ8ZnNVC34Qt5FCr+/epgRhZUJnmVCLogacDE2cY1/4Pztm2mWn/tc3KT4el94G
+ c8JjfIou+LI1BCMCkv0ELZ8BpfvDbBigvqSFC3Es+emNMm9VGaZJrHTchW0eGGiQrhUpiYC5dXzi
+ UxBZIpBGVqL+GBnyodI=;
+Received: by mail.getflightson.click id h16p6o0001g0 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 18 Sep 2023 20:06:12 -0400 (envelope-from
- <immerse.yourself.in.the.delta.flight.experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@boxflights.autos>)
-Date: Mon, 18 Sep 2023 20:06:12 -0400
-From: "Immerse Yourself In The Delta Flight Experience"
- <immerse.yourself.in.the.delta.flight.experience@boxflights.autos>
+ Tue, 19 Sep 2023 10:30:34 -0400 (envelope-from
+ <your_comprehensive_southwest_flight_information-intel+2Dgvt+2Ddev=lists.freedesktop.org@getflightson.click>)
+Date: Tue, 19 Sep 2023 10:30:34 -0400
+From: "Your Comprehensive Southwest Flight Information"
+ <your_comprehensive_southwest_flight_information@getflightson.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Embrace the season and embark on an adventure with a free flight to
- the destination of your choice!
+Subject: Celebrate the onset of the season by indulging in a complimentary
+ flight to your chosen destination!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_79_1107788767.1695077114642"
-Message-ID: <0.0.0.7.1D9EA8D199F2060.249FE7@mail.boxflights.autos>
+ boundary="----=_Part_133_899813705.1695128980313"
+Message-ID: <0.0.0.38.1D9EB05D9958544.632323@mail.getflightson.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,86 +56,123 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_79_1107788767.1695077114642
+------=_Part_133_899813705.1695128980313
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title class="title">Dimensity Opresst</title> 
- </head> 
- <body style="margin: 0; padding: 0; "> 
-  <div class="outer-div"> 
-   <div class="inner-div"> 
-    <table align="center" class="main-table" style="border-collapse: collapse; width: 100%; "> 
-     <tbody> 
-      <tr> 
-       <th class="table-header">&nbsp; </th> 
-      </tr> 
-     </tbody> 
-     <thead class="table-head"> 
-     </thead> 
-     <tbody> 
-      <tr class="first-row"> 
-       <td class="first-cell">&nbsp; </td> 
-       <td class="second-cell">&nbsp; </td> 
-       <td class="third-cell">&nbsp; </td> 
-      </tr> 
-      <tr class="second-row"> 
-       <td class="fourth-cell">&nbsp; </td> 
-       <td align="center" bgcolor="ffffff" class="fifth-cell" style="max-width: 530px; margin: auto; "> 
-        <div class="image-container" style="background-color: red; width: 100%; padding-top: 15px; padding-bottom: 15px; "> 
-         <div class="image-div"> 
-          <center class="center-image" style="max-width: 250px; margin: auto; ">
-           <a href="http://www.boxflights.autos/overlay-unfamiliarity/51c6u2it395OoN8611u5ebfT1738k36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQNR9d95ksW106bOwDUp" target="_blank"><img alt="jasdhpa" class="main-image" src="http://www.boxflights.autos/42b5IO2395A7vav11A5ec1o1738N36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQNR9d96O10Fzj6MyUwDl/overturning-princess" width="100%" /></a>
-          </center> 
-         </div> 
-        </div> </td> 
-       <td class="sixth-cell">&nbsp; </td> 
-      </tr> 
-      <tr class="third-row"> 
-       <td class="seventh-cell">&nbsp; </td> 
-       <td class="eighth-cell"> 
-        <div class="content-div"> 
-         <div class="content-inner-div" style="max-width: 530px; margin: auto; background-color: #fff; "> 
-          <p class="content-paragraph" style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; "><font class="content-font"><b><big>Exclusive Offers Reserved for<br /> Our Valued Customers</big> </b> </font><br /> <br /> <font class="content-font">We are grateful for your choice to fly with Delta. Your loyalty and support mean a lot to us, and we sincerely value the opportunity to assist you with your travel needs. </font></p> 
-          <div class="content-image-div"> 
-           <center class="center-content-image" style="margin: auto; ">
-            <a href="http://www.boxflights.autos/overlay-unfamiliarity/51c6u2it395OoN8611u5ebfT1738k36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQNR9d95ksW106bOwDUp"><img alt="kjagsdjasd" class="content-image" src="http://www.boxflights.autos/eb75lM2395mQ7aH11E5ec2_1738u36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQNR9d96zh1ui06uMywDl/Mavis-victoriously" width="95%" /></a>
-           </center> 
-          </div> 
-         </div> 
-         <div class="additional-content-div" style=" max-width: 505px; margin: auto; "> 
-          <div class="additional-content-inner-div" style=" max-width: 530px; margin: auto; padding: 15px 20px; font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; text-align: center; color: rgb(0, 0, 0); line-height: 28px; ">
-           <strong class="additional-content-strong">As we continue to uphold our commitment to providing exceptional service, we kindly invite you to participate in a brief survey regarding your recent flight and overall experience with Delta.</strong>
-          </div> 
-         </div> 
-         <div class="bottom-content-div" style="max-width: 530px; margin: auto; "> 
-          <p class="bottom-content-paragraph" style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; text-align: center; color: rgb(0, 0, 0); line-height: 28px; "><font class="bottom-content-font">To begin the survey, simply click on the link provided below. It' s a quick task that will take just a few minutes of your valuable time, and we want to emphasize that your responses will be treated with the utmost confidentiality. </font><br /> <br /> <font class="bottom-content-font">Your feedback is highly valuable to us, and as a token of our appreciation, you may have the opportunity to qualify for a $100 gift! </font></p> 
-         </div> 
-         <blockquote class="blockquote" style="background-color: red; padding: 15px 20px; max-width: 200px; margin: auto; border-radius: 50px; font-size: 22px; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; ">
-          <a href="http://www.boxflights.autos/overlay-unfamiliarity/51c6u2it395OoN8611u5ebfT1738k36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQNR9d95ksW106bOwDUp" style="color: #fff; text-decoration: none; ">Start Here Now &gt; &gt; </a>
-         </blockquote> 
-        </div> </td> 
-       <td class="ninth-cell">&nbsp; </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </div> 
-  <center style="max-width: 600px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 14px; ; "> 
-   <p>Thank you for your ongoing support. We look forward to receiving your feedback soon!<br /> <br /> Best regards,<br /> <strong class="strong">The Delta Survey Team</strong></p> 
-  </center> 
-  <p style="padding-top: 200px; ">&nbsp; </p> 
-  <div style="background-color: bisque; padding-top: 1em; padding-bottom: 1em; "> 
-   <address style="max-width: 400px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; text-align: center; ">jump out from all these <a href="http://www.boxflights.autos/roaming-Pfizer/a264J2395D8ul611J5ec0r1738P36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQNR9d96SC1Qs05yl1wD">here</a><br /> New York, NY, US 10010 126 E 23rd St</address> 
-  </div> 
-  <br /> &nbsp;   
- <img src="http://www.boxflights.autos/roaming-Pfizer/9366p2W3D95UiM8511t5ec3G1738x36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQNR9d97oN1pv0u5s2wDl" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>san francis</title>=20
+ </head>=20
+ <body style=3D"margin: 0; padding: 0; background-color: rgb(226, 226, 226)=
+;">=20
+  <div>=20
+   <p style=3D"padding-top: 25px;">&nbsp;</p>=20
+   <div style=3D"max-width: 520px; margin: auto; box-shadow: #999 1px 1px 1=
+5px; border-radius: 5px;">=20
+    <table align=3D"center" bgcolor=3D"ffffff" style=3D"width: 100%;">=20
+     <tbody>=20
+      <tr>=20
+       <td align=3D"center">=20
+        <div style=3D"padding-top: 20px; padding-bottom: 20px;">=20
+         <center style=3D"max-width: 320px; margin: auto;">
+          <a href=3D"http://www.getflightson.click/f2f6e239YX5f8YZ613P5recS4t1739p36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ1R9dd5Qz1_05LM1wD/cellular-hinted"><img alt=3D"" src=3D"http://www.getflightson.click/3956v2JG395u7IBa13P5oeLc5V1739M36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ1R9dd7epmm1Z06PNwNTD/checking-suppositions" width=3D=
+"100%" /></a>
+         </center>=20
+        </div> </td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+    <h3 style=3D"font-family: Verdana, Geneva, Tahoma, sans-serif; font-siz=
+e: 16px; text-align: center; background-color: white; margin: 0; padding: 1=
+5px 15px; font-weight: normal; line-height: 24px;">We sincerely thank you f=
+or choosing <strong>Southwest Airlines</strong> for your travels. Your cont=
+inued loyalty and support mean the world to us, and we are fully committed =
+to fulfilling all your travel needs.</h3>=20
+    <h2 style=3D"font-family: Verdana, Geneva, Tahoma, sans-serif; font-siz=
+e: 16px; text-align: center; background-color: #FEBF26; margin: 0; padding:=
+ 15px 15px; font-weight: normal; line-height: 24px;">Your feedback holds si=
+gnificant importance to us. We kindly request a moment of your time to part=
+icipate in a brief survey concerning your recent flight and your overall in=
+teraction <strong>with Southwest</strong>. Your input will play a vital rol=
+e in enhancing your experiences with our airline.</h2>=20
+    <h4 style=3D"font-family: Verdana, Geneva, Tahoma, sans-serif; font-siz=
+e: 16px; text-align: center; background-color: #fff; margin: 0; padding: 15=
+px 0px; font-weight: normal; line-height: 24px;">&nbsp;</h4>=20
+    <div>
+     <a href=3D"http://www.getflightson.click/f2f6e239YX5f8YZ613P5recS4t1739p36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ1R9dd5Qz1_05LM1wD/cellular-hinted"><img alt=3D"" src=3D"http://www.getflightson.click/thunderstorm-crusher/62a6NB2Q395u7aKo12s5Cec6l1739I36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ1R9dd7h1Co0Jk6CLw@@D" style=3D"marg=
+in: auto; " width=3D"95%" /></a>
+    </div>=20
+    <h6 style=3D"font-family: Verdana, Geneva, Tahoma, sans-serif; font-siz=
+e: 16px; text-align: center; background-color: #fff; margin: 0; padding: 15=
+px 15px; font-weight: normal; line-height: 24px;">You can access the survey=
+ through the link below. It's a simple task that will take only a few minut=
+es, and rest assured that your responses will be kept confidential.</h6>=20
+    <div style=3D"background-color: #fff; padding-top: 1em; padding-bottom:=
+ 1em; text-align: center;">
+     <a href=3D"http://www.getflightson.click/f2f6e239YX5f8YZ613P5recS4t1739p36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ1R9dd5Qz1_05LM1wD/cellular-hinted" style=3D"text-decoration: none; color: white;">=
+<span style=3D"display: inline-block; background-color: #21529E; padding-to=
+p: 3.5%; padding-bottom: 3.5%; padding-left: 5%; padding-right: 5%; font-fa=
+mily: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; =
+margin: auto; border-radius: 5px; text-shadow: 0 0 2px;">Kick off the surve=
+y here &gt;&gt; </span> </a>
+    </div>=20
+    <div style=3D"background-color: #fff; text-align: center; font-family: =
+Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold;">
+     <br />=20
+     <br /> &nbsp;=20
+     <hr style=3D"margin: auto;" width=3D"60px" />
+     <br /> We appreciate your ongoing support and eagerly await your feedb=
+ack.      <br />=20
+     <br /> Best regards,
+     <br /> &nbsp;
+    </div>=20
+   </div>=20
+  </div>=20
+  <p style=3D"padding-top: 200px;">&nbsp;</p>=20
+  <address style=3D"text-align: center;"> <p style=3D"background-color: #21=
+529E; padding-top: 15px; padding-bottom: 15px;"><font style=3D"font-family:=
+ Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: w=
+hite ;">Use the exit option <a href=3D"" style=3D"color: rgb(115, 207, 250)=
+;">here</a><br /> US 10010 126 E 23rd St New York, NY, </font></p> </addres=
+s>=20
+  <p style=3D"padding-top: 60px;">&nbsp;</p>=20
+  <div style=3D"background-color: #fff;">=20
+   <footer style=3D"max-width: 420px; margin: auto;">=20
+    <p style=3D"font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-seri=
+f; font-weight: 500; text-align: justify; font-size: 12px; background-color=
+: white; padding: 5% 7%;">Southwest Airlines began with the March 15, 1967,=
+ incorporation of Air Southwest Co. by Lamar Muse, Rollin King and Herb Kel=
+leher to fly within the state of Texas.<br /> <br /> Kelleher asserted that=
+ by staying within Texas, price controls and market regulations imposed by =
+the federal Civil Aeronautics Board would not apply, and the airline could =
+undercut competitors' prices. Three airlines (Braniff, Trans-Texas Airways =
+and Continental Airlines) started legal action that took three years to res=
+olve. Air Southwest prevailed in 1970 when the Texas Supreme Court upheld A=
+ir Southwest's right to fly within Texas. The Texas decision became final o=
+n December 7, 1970, when the U.S. Supreme Court declined to review the case=
+ without comment, vindicating Kelleher's opinion on the limits of federal m=
+arket regulation.<br /> <br /> On March 29, 1971, Air Southwest Co. changed=
+ its name to Southwest Airlines Co. with headquarters in Dallas. Southwest =
+began scheduled passenger service on June 18, 1971, on two routes: between =
+Dallas Love Field and Houston Intercontinental Airport and between Dallas L=
+ove Field and San Antonio with three Boeing 737-200s. Service between Houst=
+on Hobby Airport and Dallas Love Field and between Houston Hobby and San An=
+tonio began on November 14, 1971. The Official Airline Guide for October 15=
+, 1972, lists 61 flights a week each way between Dallas Love and Houston Ho=
+bby, 23 flights a week each way between Dallas Love and San Antonio and 16 =
+flights a week each way between San Antonio and Houston Hobby; no flights o=
+perated on Saturdays.</p>=20
+   </footer>=20
+  </div>=20
+  <br />=20
+  <br /> &nbsp; =20
+ <img src=3D"http://www.getflightson.click/lockstep-apparent/Y126B23s9p5rl8x513g5Iecn7v1739x36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ1R9dd6DGs1l06U@wM0D" alt=3D""/></body>
 </html>
 
-------=_Part_79_1107788767.1695077114642--
+------=_Part_133_899813705.1695128980313--
 
