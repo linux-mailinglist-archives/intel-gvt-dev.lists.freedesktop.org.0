@@ -1,45 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF5187A88F8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 20 Sep 2023 17:51:08 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 555AC7A8AE7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 20 Sep 2023 19:54:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 172F610E514;
-	Wed, 20 Sep 2023 15:51:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1F56010E525;
+	Wed, 20 Sep 2023 17:54:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 20 Sep 2023 15:51:05 UTC
-Received: from mail.toolcartharbor.bond (unknown [77.90.135.171])
- by gabe.freedesktop.org (Postfix) with ESMTP id 2245E10E514
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Wed, 20 Sep 2023 17:54:23 UTC
+Received: from mail.finessetoolpart.net (unknown [77.90.135.206])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5A7EE10E525
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 20 Sep 2023 15:51:05 +0000 (UTC)
+ Wed, 20 Sep 2023 17:54:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=toolcartharbor.bond; 
+ d=finessetoolpart.net; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=harbor.freightperks@toolcartharbor.bond; 
- bh=TTo7KvVV0OzDeFAABnWd5cxgxOY=;
- b=pxN/AOSWAJ9tUbKqMxo+YOUgQUB7BH4FQNO1frBP/DEXpcuYpddthphn8ku86yjUF9+mHSNnvi+q
- SvJtt6LnVnadMz8FKnjbiKZE76fXayg2rLRXfp1gjlwxw5JDU0Hq/qoSF2fZqY+FVE36TL+CqXOM
- TEJvus6otAWZ/kpZ4Bk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolcartharbor.bond;
- b=AF6cwxiTMyz38s2BYfX9BduBluM/J3aNeyOGmOsC9p+wuyhxcXd4tAskUBWOtLEa2foR2oCBpBoo
- C5W274rBRlE2XFvLlCIU108aJtR4w0JYFHAOQr7T97jhgntOdWhHtMS1Hn6SRGmifBpDYnU9aK8I
- byxN8NAmSyZ3QeOkv/A=;
-Received: by mail.toolcartharbor.bond id h1caei0001gr for
+ i=gift-opportunities-with-oreilly@finessetoolpart.net; 
+ bh=YnAgiYtmJ6XBj959tqCDLpQdYYA=;
+ b=S5+1J/raF38/7FyVcwSZ1/D6c5DMG9GnLKYu5Nx2fegEVbfU8ppSEiG33K+dXRyog5LOHQ69h4y8
+ uQctZm11gprMvxYptfIoaY58b778GA26fPiLbflxSEV6wm8FARMI8JZRlLkKxdLo1q/Qd5YKyPGE
+ z2YVHquQSkLrnUSigFU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=finessetoolpart.net;
+ b=QHKujqySh4vSOUXZiJLGaJF4Fkf4cze+fm2QHiAyjZEOrVqSrIdsztZ8fwY5ZUZWmOlVglz/UmgE
+ vF9lS461WZD+89m5ZeUiFN/FdNMZnbh0IcVUCJVeG5Klir2ccW/8e6lNiBO+x6CDYZmOIpaTfl5q
+ 0akgskYiuWnEG4704Yw=;
+Received: by mail.finessetoolpart.net id h1cosu0001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 20 Sep 2023 11:42:27 -0400 (envelope-from
- <harbor.freightperks-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolcartharbor.bond>)
-Date: Wed, 20 Sep 2023 11:42:27 -0400
-From: "Harbor FreightPerks" <harbor.freightperks@toolcartharbor.bond>
+ Wed, 20 Sep 2023 13:45:43 -0400 (envelope-from
+ <gift-opportunities-with-oreilly-intel+2Dgvt+2Ddev=lists.freedesktop.org@finessetoolpart.net>)
+Date: Wed, 20 Sep 2023 13:45:43 -0400
+From: "Gift Opportunities With OReilly"
+ <gift-opportunities-with-oreilly@finessetoolpart.net>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: A one-of-a-kind Pittsburgh 225 Piece Tool Set is earmarked for your
- use &ndash; share your thoughts, and you can claim it.
+Subject: Share your feedback now,
+ and you might become the proud owner of an amazing Bosch Drill Set.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_199_363006417.1695224529331"
-Message-ID: <0.0.0.18E.1D9EBD90EC1515C.ADB90@mail.toolcartharbor.bond>
+ boundary="----=_Part_127_1353266412.1695231927755"
+Message-ID: <0.0.0.1B4.1D9EBEA4773A61A.148BE1@mail.finessetoolpart.net>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_199_363006417.1695224529331
+------=_Part_127_1353266412.1695231927755
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,68 +65,79 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>mage of darks</title> 
+  <title>optimus-megafive</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <div style="border-left: solid 40px #ffedef;; border-right: solid 40px #ffedef;"> 
-   <div> 
-    <div> 
-     <center style="max-width: 200px; margin: auto;">
-      <a href="http://www.toolcartharbor.bond/solidifying-intercepts/4Me6u239HU5rSR8612j5eRf2w1741H36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQyR9Q97WV1F0hx5qjBwD"><img alt="drooms" src="http://www.toolcartharbor.bond/rasher-boatloads/7386gSY2395Iq7aw12pj5ef4k1741v36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQyR9Q96d1i_z05Xlw1D" width="100%" /> </a>
-     </center> 
-    </div> 
-    <table align="center" style="max-width: 500px; margin: auto;"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <div style="background-color: #0C59A8; width: 470px; margin: auto;"> 
-         <p style="margin: 0; padding: 1.5em 1.5em; font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: white;">Critical Update from Harbor Freight</p> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <article style="max-width: 500px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; line-height: 22pt; font-size: 14pt;"> 
-     <p><font>We are thrilled to inform you about the exciting offer from <b>Harbor Freight</b>. You can now acquire a <b>Pittsburgh 225 Piece Tool Set</b>, redeemable at any of our store locations. </font></p> 
-    </article> 
-    <article style="max-width: 500px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; line-height: 22pt; font-size: 14pt;"> 
-     <p><b>Act now and don't miss out! You have until September 20th to secure these thrilling tools.</b></p> 
-    </article> &nbsp; 
-    <div style="padding: 2.5%; border: solid 3.5px #fff; width: 200px; margin: auto; border-radius: 5px; background-color: #DB0814; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 17px; border-radius: 15px;">
-     <a href="http://www.toolcartharbor.bond/solidifying-intercepts/4Me6u239HU5rSR8612j5eRf2w1741H36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQyR9Q97WV1F0hx5qjBwD" style="text-decoration: none; color: white;">Start Here Now &gt;&gt; </a>
-    </div> &nbsp; 
-    <table align="center" style="max-width: 520px; margin: auto;"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <div> 
-         <center style="max-width: 300px; margin: auto;">
-          <a href="http://www.toolcartharbor.bond/solidifying-intercepts/4Me6u239HU5rSR8612j5eRf2w1741H36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQyR9Q97WV1F0hx5qjBwD"><img alt="floppys" src="http://www.toolcartharbor.bond/fobbing-scheming/12T5K23L95f7laH13K5eDf5D_1741h36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQyR9Q95O1Yr05dNwD1" width="100%" /></a>
-         </center> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <br /> 
-   <br /> &nbsp; 
-   <hr color="red" size="1px" style="margin: auto; border-radius: 100px;" width="300px" /> 
-   <div style="padding-bottom: 200px;">
-    &nbsp;
-   </div> 
-  </div> 
-  <div> 
-   <div style="background-color: #575757; padding: 3.5% 0%;"> 
-    <table align="center" style="max-width: 500px; margin: auto;"> 
-     <tbody> 
-      <tr> 
-       <td align="center" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 14px; color: white;">more than welcome to leave in <a href="http://www.toolcartharbor.bond/unblocked-overprinted/62a4Q2395SX8Z613o5egf3ip1741k36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQyR9Q96V1w0yR5Fl0wD" style="color: #8cdeff;">here</a> we'll miss you<br /> US 10010 126 E 23rd St New York, NY,</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </div>   
- <img src="http://www.toolcartharbor.bond/afflictions-impute/e5e5t2S395Y8PF513D5epPf6J1741R36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQyR9Q96mIT1x06gAwNpD" alt=""/></body>
+  <table align="center" cellpadding="0" style="width: 100%;"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table align="center" cellpadding="0" style="width: 100%;"> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <table align="center" cellpadding="10px" style="width: 100%;"> 
+           <tbody> 
+            <tr> 
+             <td align="center" bgcolor="#CC2028"> 
+              <div style="max-width: 250px; margin: auto;">
+               <a href="http://www.finessetoolpart.net/silted-pluggable/62a4S2395rM86p11s5ef7A1742R36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQyR9Qd5t10yh6A2wDJW"><img alt="thanos" src="http://www.finessetoolpart.net/51b5g2V395aO7Pa12k5ef9zT1742A36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQyR9Qd5qs1u06lUwMlD/outposts-Frances" width="100%" /> </a>
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="center" cellpadding="0" style="max-width: 530px; margin: auto;"> 
+           <tbody> 
+            <tr> 
+             <td align="center">&nbsp; 
+              <div style="padding-top: 5px; padding-left: 20px; padding-bottom: 5px; padding-right: 20px; border-radius: 5px;"> 
+               <p style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 28px; color: #333; margin: 0">Urgent Reminder<br /> from O'Reilly</p> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="center" style="max-width: 530px; margin: auto;"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <article style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height: 1.5em;"> 
+               <p><font>Get Ready for Exciting News: <b>O'Reilly</b> Offers a <b>Bosch Drill Set</b> for In-Store Use. Act Quickly to Secure Your Exceptional Tools by <b>September 20th.</b> </font></p> 
+              </article> &nbsp; 
+              <div> 
+               <div> 
+                <blockquote style="max-width: 250px; margin: auto;">
+                 <a href="http://www.finessetoolpart.net/silted-pluggable/62a4S2395rM86p11s5ef7A1742R36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQyR9Qd5t10yh6A2wDJW" target="_blank"><img alt="lovescream" src="http://www.finessetoolpart.net/d316jo23O95i7aDr13E5eRtfaV1742U36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQyR9Qd6n1l_0q6rkL0wD/silted-pluggable" style="margin-left: 5%;" width="100%" /></a>
+                </blockquote> 
+               </div> 
+               <center style="max-width: 300px; margin: auto; background-color: #2AA34A; padding: 2.5% 3%; border-radius: 10px; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 18pt;">
+                <a href="http://www.finessetoolpart.net/silted-pluggable/62a4S2395rM86p11s5ef7A1742R36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQyR9Qd5t10yh6A2wDJW" style="text-decoration: none; color: #fff;">Start Here Now &gt;&gt;</a>
+               </center> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> <br /> <br /> <br /> &nbsp; 
+          <div style="max-width: 530px; margin: auto;"> 
+           <article style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height: 1.4em; ;"> 
+            <p style="margin: 0;"><font>We genuinely appreciate your input,<br /> <b>The O'Reilly Auto Parts</b> Survey Team </font></p> 
+           </article> 
+          </div> <p style="padding-bottom: 300px;">&nbsp;</p> 
+          <div> 
+           <table align="center" cellpadding="20px" style="width: 100%;"> 
+            <tbody> 
+             <tr> 
+              <td align="center" bgcolor="132138"> <address style="max-width: 520px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #fff; font-weight: 900;">you can leave with sadness <a href="http://www.finessetoolpart.net/burp-wholehearted/a8q5z2J395SF8i611m5ef8y1742l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQyR9Qd7cH1s0VU6qlwD@z" style="color: rgb(182, 182, 243);">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.finessetoolpart.net/assigning-semipermanently/_e46yM2x395vT85v11W5efbg1742u36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQyR9Qd7STt1o0P5qzWwD" alt=""/></body>
 </html>
 
-------=_Part_199_363006417.1695224529331--
+------=_Part_127_1353266412.1695231927755--
 
