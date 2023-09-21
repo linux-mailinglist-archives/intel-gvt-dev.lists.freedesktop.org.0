@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7BE9A7A950E
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Sep 2023 16:09:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 286A77A959D
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Sep 2023 17:47:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 05D0A10E035;
-	Thu, 21 Sep 2023 14:09:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EE3E710E128;
+	Thu, 21 Sep 2023 15:47:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 21 Sep 2023 14:09:02 UTC
-Received: from mail.flightlive.bond (unknown [77.90.135.211])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6932610E035
+ Thu, 21 Sep 2023 15:47:04 UTC
+Received: from mail.gobluetools.live (unknown [77.90.135.216])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4E0A910E128
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 Sep 2023 14:09:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flightlive.bond; 
+ Thu, 21 Sep 2023 15:47:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gobluetools.live;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=catch.the.latest.on.southwest.flights@flightlive.bond; 
- bh=TRWb+G2TMxUgnJY+/HStc2Hx9Js=;
- b=z96Un56hIOqfuAIZFyvY/OZBCOc3cvk430Pr7APiYXjvD8o0XV0b3vhn5ixTs3S6myQ1Ma928/3T
- fVa6ESa3tPcvUZqA7RHIS3TBwaBUzAC14Uk+WNrr04sSVoJX7ecDoHh6UJUhqhO17Z0nmE1ATYxG
- s2DMYsV0sKGZq8cOPCw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flightlive.bond;
- b=gAeTlK2hh6MI2I4CxW0N7d3xJ2euICSFBjX2p8mIb/bEQcd/EuvPX9bEuED3kH33XH9b/KuBhazT
- u9cEJOVlmgq7NQtR1bJjkK3NybDLdf1ow1CEjdnFIclhXw4Lfjme9JjCpM9prELJACRoSm5PuYkT
- k9NSZhCOAvsmK8zGLu4=;
-Received: by mail.flightlive.bond id h1h77s0001gc for
+ i=all.about.lowes.store@gobluetools.live; 
+ bh=wNi8wT2iodgZEPW2IMbaV/4t5Gs=;
+ b=Ddo7DKVj8CwckaaG9cCDeghcbYjmv0JPhYt5xOtp8bfJV+TNgH6GAdnj7FNrNpfTVSvjCwBlSDIC
+ hF/ZwpzqvXyz8tL+1XntQshUGbgk/W7gZ9LCU2xjoA04IBo+4S5/yFU75kypbpL9gUjiCP8rXvuR
+ d7NTFWPZFkHb0PcQMCY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gobluetools.live;
+ b=Wb4r0PSq4MjUdnWBpKC0gLCYNmXM7yQL0Vg9gE5K+qscJ7L8xwln2zV2/oo9t0DmavQ6rFc9eu53
+ AfvmdEAe7mVkS9rmKFeaVAIlzNgV0jLnJDZsCumq9QLdw5NdSqsFE3CySwRDK00R7DIQXYQuAtNW
+ B/AD10YJX3F+o4H7CJM=;
+Received: by mail.gobluetools.live id h1hs680001g2 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 Sep 2023 10:01:46 -0400 (envelope-from
- <catch.the.latest.on.southwest.flights-intel+2Dgvt+2Ddev=lists.freedesktop.org@flightlive.bond>)
-Date: Thu, 21 Sep 2023 10:01:46 -0400
-From: "Catch The Latest On Southwest Flights"
- <catch.the.latest.on.southwest.flights@flightlive.bond>
+ Thu, 21 Sep 2023 13:00:09 -0400 (envelope-from
+ <all.about.lowes.store-intel+2Dgvt+2Ddev=lists.freedesktop.org@gobluetools.live>)
+Date: Thu, 21 Sep 2023 13:00:09 -0400
+From: "All About Lowes Store" <all.about.lowes.store@gobluetools.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Kick off the season by receiving a complimentary flight to your
- desired destination!
+Subject: Your Contribution Is Highly Valued: Acquire a brand new Tool set -
+ this offer concludes today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_310_1084971884.1695304895637"
-Message-ID: <0.0.0.227.1D9EC9428D23CA8.13B437@mail.flightlive.bond>
+ boundary="----=_Part_250_836959718.1695310758694"
+Message-ID: <0.0.0.247.1D9ECAD142EB9DE.508B14@mail.gobluetools.live>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_310_1084971884.1695304895637
+------=_Part_250_836959718.1695310758694
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,171 +63,76 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>mokusballofs</title> 
+  <title>docct logins</title> 
  </head> 
- <body style="background-color: rgb(216, 216, 216);"> 
-  <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td align="center" style="width: 550px; margin: auto;"> 
-      <table align="center" cellpadding="0" cellspacing="0" style="background-color: #fff;" width="100%"> 
-       <thead> 
-        <tr> 
-         <th align="center" colspan="3" width="100%">&nbsp; 
-          <div> 
-           <center> 
-            <div>
-             <a href="http://www.flightlive.bond/muscular-duplicate/b345w239t5b8h6o11X5f02Y1744o36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQVR9QR6Eh10Tl6j0AAwD"><img alt="tabulates" src="http://www.flightlive.bond/2c36J2U3W95csV7a13hrX5f04N1744D36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQVR9QR5L1YY05DT@wD/Henderson-markedly" style="max-width: 340px; margin: auto;" width="100%" /></a>
-            </div> 
-           </center> 
-          </div> </th> 
-        </tr> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td align="center"> 
-          <div style="margin-top: -50px;"> 
-           <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
-            <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp;</td> 
-               <td width="100%">&nbsp;</td> 
-               <td>&nbsp;</td> 
-              </tr> 
-              <tr> 
-               <td>&nbsp;</td> 
-               <td> 
-                <div style="max-width: 520px; margin: auto;"> 
-                 <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; font-size: 16px; padding-top: 20px;">
-                  We genuinely&nbsp;appreciate&nbsp;your choice to travel with 
-                  <b>Southwest Airlines</b>. Your unwavering loyalty and&nbsp;support hold significant value for us, and we are dedicated to meeting&nbsp;all your travel&nbsp;requirements.                  </center> 
-                </div> </td> 
-               <td>&nbsp;</td> 
-              </tr> 
-              <tr> 
-               <td>&nbsp;</td> 
-               <td align="center" style="background-color: rgb(254, 191, 38);"> 
-                <div style="max-width: 520px; margin: auto;"> 
-                 <center style="max-width: 520px; margin: auto;"> 
-                  <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; font-size: 16px; padding-top: 20px;">
-                   We highly value your feedback. We kindly invite you to take a few moments to participate in a brief survey regarding your recent flight experience and your overall interaction with 
-                   <b>Southwest</b>. Your input will be instrumental in improving your future experiences with our airline.                   </center> 
-                 </center> 
-                </div> </td> 
-               <td>&nbsp;</td> 
-              </tr> 
-              <tr> 
-               <td>&nbsp;</td> 
-               <td align="center">&nbsp; 
-                <div style="max-width: 520px; margin: auto;"> 
-                 <div>
-                  <a href="http://www.flightlive.bond/muscular-duplicate/b345w239t5b8h6o11X5f02Y1744o36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQVR9QR6Eh10Tl6j0AAwD"><img alt="flys" src="http://www.flightlive.bond/a434B2395WK7az12r5f05Qs1744s36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQVR9QR7LAm1L0A6eL2OwD/muscular-duplicate" width="100%" /></a>
-                 </div> 
-                </div> 
-                <div style="max-width: 520px; margin: auto;"> 
-                 <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; font-size: 16px; padding-top: 20px; margin: 0; text-align: center;">Accessing the survey is straightforward; just follow the link below. It's a quick task that will require only a few minutes, and please be assured that your responses will be treated with the utmost confidentiality.</p> &nbsp; 
-                 <div> 
-                  <center style="padding: 15px 20px; background-color: rgb(33, 82, 158); font-family: Arial, Helvetica, sans-serif; font-size: 20px; border-radius: 10px; width: 300px; margin: auto; font-weight: bold;">
-                   <a href="http://www.flightlive.bond/muscular-duplicate/b345w239t5b8h6o11X5f02Y1744o36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQVR9QR6Eh10Tl6j0AAwD" style="text-decoration: none; color: #fff">Kick off the survey here &gt;&gt; </a>
-                  </center> 
-                 </div> 
-                 <br /> 
-                 <br /> 
-                 <br /> &nbsp; 
-                 <div style="border-top: solid 1.3px #000; width: 15%; margin: auto;">
-                  &nbsp;
-                 </div> 
-                 <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; font-size: 15px; padding-top: 20px; margin: 0; text-align: center;">
-                  <b>We appreciate your ongoing support and eagerly await your feedback.<br /> Best regards, </b>
-                 </center> 
-                 <br /> &nbsp;
-                </div> </td> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> 
-          </div> </td> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td>&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td> 
-      <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td>&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td> 
-      <center style="padding-top: 300px; max-width: 400px; margin: auto; font-weight: 900;"> 
-       <p><font style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; text-align: center;">Use the exit option <a href="http://www.flightlive.bond/Mendelize-anesthetic/d324q2395H86BB12pD5f03W1744j36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQVR9QR5i1wk06M0AOwD">here</a><br /> US 10010 126 E 23rd St New York, NY, </font></p> 
-      </center> 
-      <div style="padding-bottom: 100px;">
-       &nbsp;
-      </div> </td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div style="width: 100%; background-color: #fff;"> 
-   <center style="max-width: 490px; margin: auto; "> 
-    <article style="background-color: #fff; font-size: 12px; font-family: Arial, Helvetica, sans-serif; text-align: justify; padding: 15px 25px;"> 
-     <p>&nbsp;</p> 
-    </article> 
-   </center> 
+ <body> 
+  <div style="background-color: #E6F3FA;"> 
+   <div style="background-color: rgb(1, 26, 107); max-width: 600px; margin: auto;"> 
+    <center style="max-width: 250px; margin: auto;">
+     <a href="http://www.gobluetools.live/2876H23U9O5G8O6L13d5pfq07g1745Y36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQPR9QS7hNJy10T5blWwD/exclusivity-semantically" target="_blank"><img alt="canyijo" src="http://www.gobluetools.live/7554i2395Sn7aA11l5f09N1745M36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQPR9QS7P1G0ynA6NApXwD/exclusivity-semantically" width="100%" /></a>
+    </center> 
+   </div> 
+   <div style="max-width: 525px; margin: auto; background-color: #fff;"> 
+    <table align="center"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td align="center" style="width: 100%; background-color: #fff;"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 900 ; color: hsl(226, 98%, 21%);">Lowe's&nbsp;Last&nbsp;Reminder </span></td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+       <td>&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td align="center" colspan="13"> 
+        <blockquote style="max-width: 300px; margin: auto;">
+         <a href="http://www.gobluetools.live/2876H23U9O5G8O6L13d5pfq07g1745Y36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQPR9QS7hNJy10T5blWwD/exclusivity-semantically"><img alt="deoooms" src="http://www.gobluetools.live/Goodwin-Sicily/a446b239so5c7uia12m5f0aIz1745Q36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQPR9QS5SY1p06kNwAAD" width="100%" /></a>
+        </blockquote> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <div> 
+     <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 25px; padding: 0 30px; text-align: center;">We have&nbsp;exciting news!&nbsp;<b>Lowe's</b> is extending&nbsp;an offer&nbsp;for a <b>Stanley Tool Set</b> that you can&nbsp;utilize at any of our store locations. Don't miss out on this&nbsp;chance!&nbsp;You have until&nbsp;<b>September 21th</b> to acquire&nbsp;these exceptional tools.</p> 
+    </div> 
+    <div style="text-align: center;"> 
+     <center style="text-align: center;">
+      <a href="http://www.gobluetools.live/2876H23U9O5G8O6L13d5pfq07g1745Y36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQPR9QS7hNJy10T5blWwD/exclusivity-semantically" style="color: rgb(255, 255, 255);"><span style="display: inline-block; background-color: rgb(63, 63, 63); padding-top: 15px; padding-right: 20px; padding-bottom: 15px; padding-left: 20px; ; width: 300px; margin: auto; font-family: Arial, Helvetica, sans-serif;"><b>Start The Survey Here &gt;&gt;</b></span></a>
+     </center> 
+    </div> &nbsp; 
+    <div style="border-bottom: solid 1.5px #000; max-width: 300px; margin: auto;">
+     &nbsp;
+    </div> 
+    <p style="text-align: center; font-family: Arial, Helvetica, sans-serif; text-align: center; font-weight: 900; font-size: 14px;">Thank you in advance,<br /> The Lowe's Team</p> 
+   </div> 
+   <div style="padding-top: 100px;">
+    &nbsp;
+   </div> 
+   <div style="padding-top: 100px;">
+    &nbsp;
+   </div> 
+   <div style="padding-top: 100px;">
+    &nbsp;
+   </div> 
+   <div style="padding-top: 100px;">
+    &nbsp;
+   </div> &nbsp; 
+   <section style="background-color: cadetblue; width: 100%; padding-top: 15px; padding-bottom: 15px;"> 
+    <center style="max-width: 300px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 14px;">
+     its your time to leave? do it 
+     <a href="http://www.gobluetools.live/exclusivity-semantically/5944P2395FxM8612b5f08XU1745w36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQPR9QS7bzn1r0u5tPWwD">here</a>
+     <br /> US 10010 126 E 23rd St New York, NY,
+    </center> 
+   </section> 
   </div>   
- <img src="http://www.flightlive.bond/reminiscent-earlier/bac5DJ2395uP8M512X5f06Bx1744x36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQVR9QR6O__1F05sUwBD" alt=""/></body>
+ <img src="http://www.gobluetools.live/c9b4v2395YM8_511C5f0bC1745w36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQPR9QS6w1v_X06ppwDUA/intently-denounce" alt=""/></body>
 </html>
 
-------=_Part_310_1084971884.1695304895637--
+------=_Part_250_836959718.1695310758694--
 
