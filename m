@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFF617A9D8E
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Sep 2023 21:40:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AAE0C7AA1EE
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 21 Sep 2023 23:10:54 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C86E710E606;
-	Thu, 21 Sep 2023 19:40:22 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6DE8310E618;
+	Thu, 21 Sep 2023 21:10:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 21 Sep 2023 19:40:20 UTC
-Received: from mail.boldtools.bond (unknown [77.90.135.34])
- by gabe.freedesktop.org (Postfix) with ESMTP id 908F610E606
+ Thu, 21 Sep 2023 21:10:51 UTC
+Received: from mail.advancetools.live (unknown [77.90.135.148])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 73B5D10E619
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 Sep 2023 19:40:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=boldtools.bond; 
+ Thu, 21 Sep 2023 21:10:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=advancetools.live;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=explore.your.lowes.store.experience@boldtools.bond; 
- bh=FE4kdYGFG04N1w+1J/deQ6Vc59Y=;
- b=qeB/vDq6DqSFU9Gis9pw7XL+8NxyxMShRmjjQokpLVPO70svy153FVjxvXoXE6plUx0I3DWnzk7T
- 0Xl9JHWskHeJqPq9y0k3b2M9vipAIRskcfLt3oXCxLM1InzxIVZMjSgt+M+2jk+ZxyR8GkE7xkub
- asIrj14/6cuwAGByGDo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=boldtools.bond;
- b=raJrUYk3nPXKuSx9gYLNwnhaeVZRLtWh4IIqEpa9tYvsKSeAmyTP7H1FYZoiG8u7COl1wv48N6Zx
- 0msHXt0x9CZDthGrG0L4d7CCE8avOwnhcCfGqSzGoGGZUi+R8wZfQvPTMl6yJfYmbU2KxOpCEFxM
- Hq50grg0610HZpyuw9E=;
-Received: by mail.boldtools.bond id h1inh00001gl for
+ i=insider_at_advance_auto_parts@advancetools.live; 
+ bh=f9NQAvMtf7N0u0/Eg+uxjsf6sS8=;
+ b=JRHFwmRRqXp3SeCPNE2fBPQFfWc7s4I0XX4w+vecuPWi88Bs4DHaxrTyXq0zIBheS9dOvS9mq3fh
+ d7sZwO0wzXsu5lqJRupyrzZdxO7WeND6YlrnEGLJ125FXRnAYH+2sRyAGDkb9DDrRlgm4es9AmB1
+ +zH6Nv90UpyjOhvsM2w=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=advancetools.live; 
+ b=oB5TXPHgpOk71FoxxCrlpLT8psS0adaKT8pTWWtp+QSE55UkJcryu7NW2EfCeXJBkMowhHikTHqY
+ nMn2V2ZVAqDpuVJKk8IaLGkTCzSgEVqcqZ9I+9kj66/2by9oUbut3m1rWWlD1d2avksL1YZsiR51
+ Lx9IUvoDtu99unNE7as=;
+Received: by mail.advancetools.live id h1iolm0001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 21 Sep 2023 16:53:19 -0400 (envelope-from
- <explore.your.lowes.store.experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@boldtools.bond>)
-Date: Thu, 21 Sep 2023 16:53:19 -0400
-From: "Explore Your Lowes Store Experience"
- <explore.your.lowes.store.experience@boldtools.bond>
+ Thu, 21 Sep 2023 17:02:47 -0400 (envelope-from
+ <insider_at_advance_auto_parts-intel+2Dgvt+2Ddev=lists.freedesktop.org@advancetools.live>)
+Date: Thu, 21 Sep 2023 17:02:47 -0400
+From: "Insider At Advance Auto Parts"
+ <insider_at_advance_auto_parts@advancetools.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Providing your insights gets you a special Kobalt Tool set - it's
- yours.
+Subject: Claim your fresh Makita Drill Set today - act before the offer
+ expires!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_151_22770507.1695324736724"
-Message-ID: <0.0.0.10.1D9ECCDA6B39EBC.32A88C@mail.boldtools.bond>
+ boundary="----=_Part_163_1906259613.1695330149767"
+Message-ID: <0.0.0.39.1D9ECCEF9A5FD1C.38DB7C@mail.advancetools.live>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,188 +55,55 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_151_22770507.1695324736724
+------=_Part_163_1906259613.1695330149767
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
  <head> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Campaigns Pineapple</title> 
+  <title>most advanced</title> 
  </head> 
- <body style="background-color: #f5f8ff;"> 
-  <div id="main-container"> 
-   <div class="header"> 
-    <h3>&nbsp;</h3> 
-    <center>
-     <a href="http://www.boldtools.bond/polish-obfuscate/7566r2IK395AA8k611V5f16i1748r36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.R9Rm7n_vyz106w1XBwD"><img alt="" id="header-image" src="http://www.boldtools.bond/honeymoons-ridiculing/b8e5U239r5z7gCa12b5Vf18j1748Z36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ.R9Rm7NNgF10Z6vJkwDp" style="max-width: 220px; margin: auto;" /></a>
-    </center> 
-   </div> 
-   <div class="content"> 
-    <table align="center" cellpadding="0" id="content-table"> 
+ <body style="background-color: #F2F1F2; margin: auto"> 
+  <section> 
+   <div align="center" style="width: 100%; background-color: #1E1E1E; height: 100px;">
+    <br /> 
+    <br /> &nbsp; 
+    <div align="center" style="max-width: 570px; margin: auto; border-radius: 9px; background-color: #FACC00; padding: 19px">
+     <a href="http://www.advancetools.live/restate-discussions/4e06p2M39D5op86N13hG5fZ1bv1749n36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQWR9Rn5zq1y06ak2wDp"><img alt="so low" src="http://www.advancetools.live/8bd4z2395Bi7Ra11v5f1dn1749j36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQWR9Rn6Oq1W0v5Lq3wD/terrestrials-insults" width="266" /></a>
+    </div> 
+    <p align="center" style="margin: auto; max-width: 444pt"><span style="padding-top: 25px; display: block; font-family: tahoma; font-weight: bold; font-size: 29px; line-height: 45px"><span style="background-color: #EB1C2A; padding: 8px; color: #fff">Final Notification</span><br /> Regarding Your Advance<br /> Auto Parts Reward</span></p> 
+    <p align="center" style="margin: auto; max-width: 344pt; font-family: tahoma; padding-left: 30px; padding-right: 30px; font-size: 24px; padding-top: 11px; padding-bottom: 11px; background-color: #eee">Prepare for Thrilling Discoveries at Advance Auto Parts: A<strong> MAK<span style="font-size: 1px; color: #fff; letter-spacing: -11px">rio</span>ITA DR<span style="font-size: 1px; color: #fff; letter-spacing: -11px">kal</span>ILL Set</strong> Awaits You in Our Stores. Act Now ? Don't Let This Opportunity Slip Away!</p> 
+    <p align="center" style="margin: auto; max-width: 344pt; font-family: tahoma; padding-left: 30px; padding-right: 30px; font-size: 24px; padding-top: 11px; padding-bottom: 11px; background-color: #1E1E1E; color: #fff">You have until <strong style="color: #FACC02">September 21th</strong> to secure these fantastic items.</p> 
+    <br /> 
+    <br /> 
+    <a href="http://www.advancetools.live/restate-discussions/4e06p2M39D5op86N13hG5fZ1bv1749n36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQWR9Rn5zq1y06ak2wDp" style="color: #fff; text-decoration: none; background-color: #CC0534; border-radius: 1px; padding: 15px; font-size: 29px; font-family: tahoma; border-radius: 6px">Start Here Now &gt;&gt;</a>
+    <br /> 
+    <br /> 
+    <img alt="goingin" src="http://www.advancetools.live/motherhood-reclaimed/b526H2z39s5v7AXa12l5Bf1eI1749m36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQWR9Rn6I1XKQ05DTwDT" style="max-width: 222pt" width="100%" />
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> &nbsp; 
+    <hr size="5" style="background-color:#DADADA; border-style: none" width="500px" /> 
+    <table border="0" cellpadding="5" cellspacing="5" width="100%"> 
      <tbody> 
       <tr> 
        <td>&nbsp;</td> 
        <td>&nbsp;</td> 
-       <td rowspan="5"> 
-        <table align="center" cellpadding="0" id="inner-table"> 
-         <tbody> 
-          <tr> 
-           <td>&nbsp;</td> 
-           <td> 
-            <table align="center" cellpadding="0" id="inner-inner-table"> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp;</td> 
-               <td> 
-                <div id="email-content" style="max-width: 520px; margin: auto; background-color: #fff; border-radius: 5px;  border-width: 5px; border-style: solid; border-width: 7px; border-color: #2845A6"> 
-                 <div id="email-content-inner" style="padding: 1.2em 1.4em;"> 
-                  <h3 id="email-title" style="margin: 0; font-size: 1.8em; text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;"><span style="background-color: #eeeeee">Last Reminder Regarding<br /> Your Lowe's Reward</span></h3> &nbsp; 
-                  <h4 id="email-message" style="margin: 0; font-size: 1.2em; text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: normal; line-height: 1.5em;">Thrilling announcement from <strong>Lowe's! A Kobalt Tool Set</strong> is awaiting you in our stores. Act now and don't miss out on this opportunity! You have until September 21th to secure these fantastic items.</h4> &nbsp; 
-                  <table align="center"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" style="background-color: #2745A6; padding: 15px 20px; border-radius: 5px; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 1.em; font-size: 23pt"><a href="http://www.boldtools.bond/polish-obfuscate/7566r2IK395AA8k611V5f16i1748r36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.R9Rm7n_vyz106w1XBwD" id="email-link" style="text-decoration: none; color: white;">Start Here Now &gt;&gt; </a></td> 
-                    </tr> 
-                   </tbody> 
-                  </table> &nbsp; 
-                  <div id="email-image" style="max-width: 300px; margin: auto;">
-                   <a href="http://www.boldtools.bond/polish-obfuscate/7566r2IK395AA8k611V5f16i1748r36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.R9Rm7n_vyz106w1XBwD"><img alt="topps" src="http://www.boldtools.bond/a9d5O23t95Es7ga11d5f19T1748X36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ.R9Rm7dDj1OA06LlwkDP/outlays-photograph" width="100%" /></a>
-                  </div> &nbsp; 
-                  <hr id="email-hr" style="margin: auto;" width="55%" />&nbsp; 
-                  <p id="email-feedback" style="text-align: center; font-size: 1em; font-family: Verdana, Geneva, Tahoma, sans-serif; line-height: 1.5em;">We appreciate your participation in our survey. Your input is highly valued here at <b>Lowe's</b>, and we hold your feedback in high esteem.</p> 
-                 </div> 
-                </div> </td> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td> 
-        <div class="proyes" id="proyes-1" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-         &nbsp;
-        </div> 
-        <div class="proyes" id="proyes-1" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-         &nbsp;
-        </div> 
-        <div class="proyes" id="proyes-1" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-         &nbsp;
-        </div> 
-        <div class="proyes" id="proyes-1" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-         &nbsp;
-        </div> 
-        <div class="proyes" id="proyes-1" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-         &nbsp;
-        </div> 
-        <div class="proyes" id="proyes-1" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-         &nbsp;
-        </div> 
-        <div class="proyes" id="proyes-1" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-         &nbsp;
-        </div> 
-        <div class="proyes" id="proyes-1" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-         &nbsp;
-        </div> </td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td> <p class="novas" id="novas-1">&nbsp;</p> <p class="novas" id="novas-1">&nbsp;</p> <p class="novas" id="novas-1">&nbsp;</p> <p class="novas" id="novas-1">&nbsp;</p> <p class="novas" id="novas-1">&nbsp;</p> <p class="novas" id="novas-1">&nbsp;</p> <p class="novas" id="novas-1">&nbsp;</p> <p class="novas" id="novas-1">&nbsp;</p> <p class="novas" id="novas-1">&nbsp;</p> </td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> 
-        <div class="flopps-3" id="flopps-1">
-         &nbsp;
-        </div> </td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
+       <td align="center"> <p style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: white; font-size: 12px; color: #333">go free from all these <a href="http://www.advancetools.live/8U94I2395n8C6U11z5f1cv1749_36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQWR9Rn5V10vX5MNLwD/plums-cavemen">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
        <td>&nbsp;</td> 
        <td>&nbsp;</td> 
       </tr> 
      </tbody> 
     </table> 
    </div> 
-   <h1 id="bottom-header" style="padding-bottom: 350px;">&nbsp;</h1> 
-   <h4 id="unsubscribe" style="text-align: center;"><span style="display: block; max-width: 400px; margin: auto; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 14px;">You can leave with sadness <a href="http://www.boldtools.bond/6dd6Y23yt95J8kK613No5fR17Q1748n36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.R9Rm7QJ1MW0W6OAwykD/bars-plays" id="unsubscribe-link">here</a><br /> US 10010 126 E 23rd St New York, NY, </span></h4> 
-   <br /> 
-   <br /> &nbsp;
-  </div>   
- <img src="http://www.boldtools.bond/honeymoons-ridiculing/6fc4v2395J8u5L13U5fsG1a_1748G36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ.R9Rm7t1A0gny6WXWlwD" alt=""/></body>
+  </section>   
+ <img src="http://www.advancetools.live/doubtable-hostage/2e24X2395Pxr8512Gl5f1fI1749z36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQWR9Rn5I1ZN05SBwDW" alt=""/></body>
 </html>
 
-------=_Part_151_22770507.1695324736724--
+------=_Part_163_1906259613.1695330149767--
 
