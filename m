@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 191207AB32E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Sep 2023 15:58:27 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A12D7AB5A6
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Sep 2023 18:14:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C675710E66D;
-	Fri, 22 Sep 2023 13:58:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E3FEC10E69E;
+	Fri, 22 Sep 2023 16:14:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 22 Sep 2023 13:58:21 UTC
-Received: from mail.coffemaster.bond (unknown [77.90.135.247])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5AD1A10E66D
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Fri, 22 Sep 2023 16:14:12 UTC
+Received: from mail.livetooltier.bond (unknown [77.90.135.68])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6336710E076
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 13:58:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=coffemaster.bond;
+ Fri, 22 Sep 2023 16:14:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=livetooltier.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=starbucks.espresso.lounge@coffemaster.bond; 
- bh=Vxm/Hqmo8MeKQp3EgK4Z6O3RpR8=;
- b=BKveWWAJpGeZa6l3+RqAABHdq25O1Rz+ThUf4PdQ+43WmFHbsb2O8PJSLDgdxnlJgd6NB2INbHDQ
- b6owLn6Mdr8l4TDLigEY99c2JWZPq4/MjcJTt4J/rQxE1PrAvpuS37fBKqzX2VE4jnqo0Yqo2O74
- rR5erHlUvqjydGJ1OD0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=coffemaster.bond;
- b=YpCc4OVkDyf8Mr/krc4I5XVpBr0N3HUFad4B/0aT4vyj1Mi8ZgdP5YjWYSbiDhuCgdJTRmvKmgJF
- bKL7Ol0I1gCLsTaMrio8MwtQFh640l9vDY5vv9LByHcbaqLr2PZ2C3SIDcY5C1okzZRk5Nu/WMd5
- 1TZQ4NxnQjIbgVGDpGE=;
-Received: by mail.coffemaster.bond id h1menq0001gk for
+ i=harbor_freight_gift_card_chance@livetooltier.bond; 
+ bh=N1wkMH0UL7ahj/qkFltekXGm4zk=;
+ b=FWmWaSdhMpjIfN9VVxFC8Mjri2ZNwYA/8/+Qec8Yfz5E0b9Z4bz/eJ2iNitfL+AXNR2RnH8f+Ym3
+ JyRqB33Gwx2iyHI1RAkCjcldd441iOCyma5PyrGhB/KqieojCSja0IcCu6nF9vGr9/3CjeAmPCH7
+ sKRjy78dfw7oVPf1D+M=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=livetooltier.bond; 
+ b=D30R1UCSKNbXnjuosZmFupqL+BFRxiZQpATXML1TtK83a0YgS1mdPmQ1l3XYF0K59p2PqWtXR2qs
+ /wb8XcFZ6kV1PGs74rK851oMWdppRZEm4AVjy+usCI2Gq3GSU7RMD3ZRrVnusL9QmkNsj4VorXtn
+ B7xy7HVacRafFU50Ro8=;
+Received: by mail.livetooltier.bond id h1mul80001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 09:50:17 -0400 (envelope-from
- <starbucks.espresso.lounge-intel+2Dgvt+2Ddev=lists.freedesktop.org@coffemaster.bond>)
-Date: Fri, 22 Sep 2023 09:50:17 -0400
-From: "Starbucks Espresso Lounge" <starbucks.espresso.lounge@coffemaster.bond>
+ Fri, 22 Sep 2023 12:07:28 -0400 (envelope-from
+ <harbor_freight_gift_card_chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@livetooltier.bond>)
+Date: Fri, 22 Sep 2023 12:07:28 -0400
+From: "Harbor Freight Gift Card Chance"
+ <harbor_freight_gift_card_chance@livetooltier.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You've been chosen to receive a gift from us - your evaluation of
- your Starbucks experience matters.
+Subject: You're eligible for a tailor-made Pittsburgh 225 Piece Tool Set
+ &ndash; express your thoughts and redeem it.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_166_1642006830.1695390610979"
-Message-ID: <0.0.0.3F.1D9ED5BB87017D2.407784@mail.coffemaster.bond>
+ boundary="----=_Part_343_463269160.1695398828689"
+Message-ID: <0.0.0.AB.1D9ED6EE22013EE.19E241@mail.livetooltier.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_166_1642006830.1695390610979
+------=_Part_343_463269160.1695398828689
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,57 +64,81 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>promotion for day</title> 
+  <title>exciting offer from</title> 
  </head> 
- <body> 
-  <div style="background-color: #ebfff6;"> 
-   <div> 
-    <div style="background-color: rgb(26, 110, 72); padding-top: 1em ; padding-bottom: 1em; width: 100%;"> 
-     <div style="max-width: 400px; margin: auto;">
-      <a href=""><img alt="" src="http://www.coffemaster.bond/fragmenting-scours/e045B23W95J_7ka13Q5zf3F2z174dk36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ1R9RQ6HRM1m05A3MwD" width="100%" /></a>
-     </div> 
-    </div> 
-    <div style="max-width: 500px; margin: auto;"> 
-     <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 900; font-size: 20pt;"><span><u>Your&nbsp;Starbucks&nbsp;Last&nbsp;Reminder</u> </span></p> 
-    </div> 
-    <div style="max-width: 550px; margin: auto; background-color: #fff;">
-     &nbsp; 
-     <div> 
-      <h6 style="max-width: 500px; margin: auto;">&nbsp;</h6> 
-      <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 15pt;">Exciting&nbsp;news&nbsp;from&nbsp;Starbucks!&nbsp;We're&nbsp;offering&nbsp;a&nbsp;special promotion&nbsp;for&nbsp;a&nbsp;<b>$100 Gift</b>&nbsp;that&nbsp;you&nbsp;can&nbsp;enjoy&nbsp;at&nbsp;any&nbsp;of our store locations. Don't wait; seize this opportunity today! You have until <b>September 22th </b>to claim these delightful beverages.</p> 
-     </div> 
-     <div style="max-width: 500px; margin: auto; text-align: center;"> 
-      <div style="border: solid 3.5px #525252; width: 300px; padding: 2.5mm 2.5mm; margin: auto; border-radius: 8px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 5mm; font-weight: 900; background-color: #fff;">
-       <a href="http://www.coffemaster.bond/starts-catheter/7746D23g9L5AZB8613L5QTf30M174dq36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ1R9RQ5lm10O6d@wjWD" style="text-decoration: none; color: #525252;" target="_blank">Start Here Now &gt; &gt; </a>
+ <body style="margin: 0; padding: 0;"> 
+  <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <caption>
+    &nbsp;
+   </caption> 
+   <thead> 
+    <tr> 
+     <th align="center" colspan="3" style="background-color: #dfefff; "> 
+      <div> 
+       <div style="max-width: 215px; margin: auto;"> 
+        <blockquote style="margin: 0;">
+         <a href="http://www.livetooltier.bond/Romanizations-lacking/cba6Ij239Y5v8Z6S13ED5f3aRr174fC36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6R9RS6v10AmD6bBwTDq"><img alt="filters" src="http://www.livetooltier.bond/concerto-dislocate/daa4j2395ON7va12b5fm3cp174fT36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ6R9RS6Stq10A6rjjjwD" width="100%" /></a>
+        </blockquote> 
+       </div> 
+      </div> </th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td> 
+      <div style="background-color: hsl(0, 100%, 31%);"> 
+       <div style=" max-width: 430px; margin: auto; text-align: center;"> 
+        <div style=" padding-top: 15px; padding-bottom: 15px; width: 350px; margin: auto; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 17px;">
+         <b>Important Announcement<br /> from Harbor Freight</b>
+        </div> 
+       </div> 
       </div> 
-      <br /> &nbsp;
-     </div> 
-     <div style="max-width: 500px; margin: auto; text-align: center;"> 
-      <div style="max-width: 260px; margin: auto;">
-       <a href="http://www.coffemaster.bond/starts-catheter/7746D23g9L5AZB8613L5QTf30M174dq36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ1R9RQ5lm10O6d@wjWD" style="text-decoration: none; color: #525252;" target="_blank"><img alt=" coffees" src="http://www.coffemaster.bond/fragmenting-scours/4684G2395lYO7a13k5fI3F3N174dD36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ1R9RQ6sJGR105jTwjD" width="100%" /></a>
+      <div style="max-width: 430px; margin: auto; text-align: center;"> 
+       <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 22px; font-weight: 500;">We are excited to share some great news with you from <b>Harbor Freight</b>. You can now get your hands on a <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.<br /> <br /> <b>Take immediate action and don't let this opportunity slip away! You have until September 22th to obtain these exciting tools.</b></h4> 
       </div> 
-      <br /> &nbsp;
-     </div> 
-     <div> 
-      <h2 style="max-width: 500px; margin: auto;">&nbsp;</h2> 
-      <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 16pt;"><b>Thank&nbsp;you&nbsp;for&nbsp;taking&nbsp;part.<br /> Warm&nbsp;regards,&nbsp;The&nbsp;Starbucks&nbsp;Team.</b></p> 
-     </div> 
-    </div> 
-    <br /> &nbsp;
-   </div> 
-   <div> 
-    <article> 
-     <p style="padding-top: 400px;">&nbsp;</p> 
-    </article> 
-    <div style="max-width: 300px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 4mm; text-align: center;">
-     you can leave with sadness 
-     <a href="http://www.coffemaster.bond/Costello-Weissman/5584C2395D86pJ12c5f3p1Z174dz36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ1R9RQ6Xxm10m5mUBwD">here</a>
-     <br /> US 10010 126 E 23rd St New York, NY,
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.coffemaster.bond/badgered-messed/f126H2A39Q5Who8512Y5f3o4V174dU36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ1R9RQ6oB1Tk06FAwpBD" alt=""/></body>
+      <div> 
+       <center style="padding-top: 15px; padding-left: 20px; padding-bottom: 15px; padding-right: 20px; background-color: rgb(160, 16, 16); max-width: 350px; margin:
+
+
+
+
+
+
+
+
+
+
+
+auto ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 22px;">
+        <a href="http://www.livetooltier.bond/Romanizations-lacking/cba6Ij239Y5v8Z6S13ED5f3aRr174fC36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6R9RS6v10AmD6bBwTDq" style="text-decoration: none; color: rgb(255, 255, 255);" target="_blank">Start Here Now &gt;&gt;</a>
+       </center> 
+      </div> &nbsp; 
+      <div> 
+       <div style="max-width: 300px; margin: auto; text-align: center;"> 
+        <blockquote style="margin: 0;">
+         <a href="http://www.livetooltier.bond/Romanizations-lacking/cba6Ij239Y5v8Z6S13ED5f3aRr174fC36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6R9RS6v10AmD6bBwTDq"><img alt="filters" src="http://www.livetooltier.bond/b6f6b2N39n5GgA7a11K5f3dR174fJ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ6R9RS7R1X0RZs6yLkwLD/concerto-dislocate" width="100%" /></a>
+        </blockquote> 
+       </div> 
+      </div> &nbsp; 
+      <hr size="3px" style="margin: auto; border-radius: 100px;" width="230px" /></td> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tbody> 
+   <tfoot> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tfoot> 
+  </table> 
+  <h6 style="padding-top: 450px;">&nbsp;</h6> 
+  <center style="max-width: 350px; margin: auto;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 14px; ;">
+   more than welcome to leave in 
+   <a href="http://www.livetooltier.bond/drenching-shading/3965s239H5z8q6v11Q5f3bG174fY36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ6R9RS7NN1UpM05NywDX">here</a> we'll miss you
+   <br /> US 10010 126 E 23rd St New York, NY,
+  </center>   
+ <img src="http://www.livetooltier.bond/monopolize-promoter/d8c4r2395G85qo12k5f3epL174fH36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ6R9RS5q10AF6hB2wUD" alt=""/></body>
 </html>
 
-------=_Part_166_1642006830.1695390610979--
+------=_Part_343_463269160.1695398828689--
 
