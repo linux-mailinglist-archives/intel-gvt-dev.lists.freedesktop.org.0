@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A12D7AB5A6
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Sep 2023 18:14:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A34067AB8B6
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Sep 2023 19:57:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E3FEC10E69E;
-	Fri, 22 Sep 2023 16:14:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6960C10E6F6;
+	Fri, 22 Sep 2023 17:57:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 22 Sep 2023 16:14:12 UTC
-Received: from mail.livetooltier.bond (unknown [77.90.135.68])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6336710E076
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 22 Sep 2023 17:56:59 UTC
+Received: from mail.ontimeflights.bond (unknown [77.90.135.108])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B854610E6F6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 16:14:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=livetooltier.bond;
+ Fri, 22 Sep 2023 17:56:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=ontimeflights.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=harbor_freight_gift_card_chance@livetooltier.bond; 
- bh=N1wkMH0UL7ahj/qkFltekXGm4zk=;
- b=FWmWaSdhMpjIfN9VVxFC8Mjri2ZNwYA/8/+Qec8Yfz5E0b9Z4bz/eJ2iNitfL+AXNR2RnH8f+Ym3
- JyRqB33Gwx2iyHI1RAkCjcldd441iOCyma5PyrGhB/KqieojCSja0IcCu6nF9vGr9/3CjeAmPCH7
- sKRjy78dfw7oVPf1D+M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=livetooltier.bond; 
- b=D30R1UCSKNbXnjuosZmFupqL+BFRxiZQpATXML1TtK83a0YgS1mdPmQ1l3XYF0K59p2PqWtXR2qs
- /wb8XcFZ6kV1PGs74rK851oMWdppRZEm4AVjy+usCI2Gq3GSU7RMD3ZRrVnusL9QmkNsj4VorXtn
- B7xy7HVacRafFU50Ro8=;
-Received: by mail.livetooltier.bond id h1mul80001gk for
+ i=united-airlines-fast-feedback@ontimeflights.bond; 
+ bh=cKqaJ/Bl8yUklS3ESaLL5mWg5mA=;
+ b=8O1cW9W7SZbDu5G9kVSRH6BMnpiuRkyFlMmQcJBnx/ANhys9pkA31AaE+8Aby8vek7koW9d8twSE
+ WHb1agTpP7mV+qQaVZ+oIBSppEoNFFQ+IQWJabTCekT/pjcEd/ufYn7OBbNVq2HoQM/nvIPwn1Yz
+ lz619EbWl6LIooGEkjk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ontimeflights.bond; 
+ b=RvHI1O3HPyinW2VI7jy3cmtqrIkR/SH/Pw0w5RLwUcTd9JGysNgVf33X2jmxffm6trJp7N1GSnmd
+ SstEKQo3g7gHNRFV2f0hK9fwVx90AOuIDbkXXq3uqwxePSp7vkNJoxAdjbIYgUnz4QF8nAfdrQlP
+ chBpAgDVw62nMtrG5Wo=;
+Received: by mail.ontimeflights.bond id h1namm0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 12:07:28 -0400 (envelope-from
- <harbor_freight_gift_card_chance-intel+2Dgvt+2Ddev=lists.freedesktop.org@livetooltier.bond>)
-Date: Fri, 22 Sep 2023 12:07:28 -0400
-From: "Harbor Freight Gift Card Chance"
- <harbor_freight_gift_card_chance@livetooltier.bond>
+ Fri, 22 Sep 2023 13:48:47 -0400 (envelope-from
+ <united-airlines-fast-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@ontimeflights.bond>)
+Date: Fri, 22 Sep 2023 13:48:47 -0400
+From: "United Airlines Fast Feedback"
+ <united-airlines-fast-feedback@ontimeflights.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You're eligible for a tailor-made Pittsburgh 225 Piece Tool Set
- &ndash; express your thoughts and redeem it.
+Subject: Limited-Time Offer: Win Travel Gift Cards by Sharing Your Feedback!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_343_463269160.1695398828689"
-Message-ID: <0.0.0.AB.1D9ED6EE22013EE.19E241@mail.livetooltier.bond>
+ boundary="----=_Part_184_460167545.1695404909803"
+Message-ID: <0.0.0.E5.1D9ED7D09AD0D28.32228F@mail.ontimeflights.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,90 +55,73 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_343_463269160.1695398828689
+------=_Part_184_460167545.1695404909803
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
  <head> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>exciting offer from</title> 
+  <title>available until</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-   <caption>
-    &nbsp;
-   </caption> 
-   <thead> 
-    <tr> 
-     <th align="center" colspan="3" style="background-color: #dfefff; "> 
-      <div> 
-       <div style="max-width: 215px; margin: auto;"> 
-        <blockquote style="margin: 0;">
-         <a href="http://www.livetooltier.bond/Romanizations-lacking/cba6Ij239Y5v8Z6S13ED5f3aRr174fC36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6R9RS6v10AmD6bBwTDq"><img alt="filters" src="http://www.livetooltier.bond/concerto-dislocate/daa4j2395ON7va12b5fm3cp174fT36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ6R9RS6Stq10A6rjjjwD" width="100%" /></a>
-        </blockquote> 
-       </div> 
-      </div> </th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td> 
-      <div style="background-color: hsl(0, 100%, 31%);"> 
-       <div style=" max-width: 430px; margin: auto; text-align: center;"> 
-        <div style=" padding-top: 15px; padding-bottom: 15px; width: 350px; margin: auto; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 17px;">
-         <b>Important Announcement<br /> from Harbor Freight</b>
-        </div> 
-       </div> 
-      </div> 
-      <div style="max-width: 430px; margin: auto; text-align: center;"> 
-       <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px; line-height: 22px; font-weight: 500;">We are excited to share some great news with you from <b>Harbor Freight</b>. You can now get your hands on a <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.<br /> <br /> <b>Take immediate action and don't let this opportunity slip away! You have until September 22th to obtain these exciting tools.</b></h4> 
-      </div> 
-      <div> 
-       <center style="padding-top: 15px; padding-left: 20px; padding-bottom: 15px; padding-right: 20px; background-color: rgb(160, 16, 16); max-width: 350px; margin:
-
-
-
-
-
-
-
-
-
-
-
-auto ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 22px;">
-        <a href="http://www.livetooltier.bond/Romanizations-lacking/cba6Ij239Y5v8Z6S13ED5f3aRr174fC36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6R9RS6v10AmD6bBwTDq" style="text-decoration: none; color: rgb(255, 255, 255);" target="_blank">Start Here Now &gt;&gt;</a>
-       </center> 
-      </div> &nbsp; 
-      <div> 
-       <div style="max-width: 300px; margin: auto; text-align: center;"> 
-        <blockquote style="margin: 0;">
-         <a href="http://www.livetooltier.bond/Romanizations-lacking/cba6Ij239Y5v8Z6S13ED5f3aRr174fC36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6R9RS6v10AmD6bBwTDq"><img alt="filters" src="http://www.livetooltier.bond/b6f6b2N39n5GgA7a11K5f3dR174fJ36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ6R9RS7R1X0RZs6yLkwLD/concerto-dislocate" width="100%" /></a>
-        </blockquote> 
-       </div> 
-      </div> &nbsp; 
-      <hr size="3px" style="margin: auto; border-radius: 100px;" width="230px" /></td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tfoot> 
-  </table> 
-  <h6 style="padding-top: 450px;">&nbsp;</h6> 
-  <center style="max-width: 350px; margin: auto;  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 14px; ;">
-   more than welcome to leave in 
-   <a href="http://www.livetooltier.bond/drenching-shading/3965s239H5z8q6v11Q5f3bG174fY36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ6R9RS7NN1UpM05NywDX">here</a> we'll miss you
-   <br /> US 10010 126 E 23rd St New York, NY,
-  </center>   
- <img src="http://www.livetooltier.bond/monopolize-promoter/d8c4r2395G85qo12k5f3epL174fH36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ6R9RS5q10AF6hB2wUD" alt=""/></body>
+ <body style="margin: 10px 0px; background-color: #e7e7e7;">
+  &nbsp; 
+  <div style="max-width: 580px; margin: auto; box-shadow: 0 0 4px 1px; border-radius: 5px; background-color: #fff;"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 466px" width="90%"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <div align="center" style=" border-radius: 7px 7px 0px 0px; border: solid 0px #CCCCCC; border-bottom: none">
+            <br /> 
+            <a href="http://www.ontimeflights.bond/forefathers-becalmed/c424e2395W8W6W12t5fS44Y1751r36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ0R9RK5Lon105bqwDL"><img alt="toptop" src="http://www.ontimeflights.bond/Hobart-decreeing/5d04c2395AB7ao12J5fP46p1751P36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ0R9RK6rwB10j6DAwlpD" style="width:248px" /></a>
+           </div> 
+           <div style=" border-radius: 0; border: solid 0px #CCCCCC; border-top: none; border-bottom: none; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding: 12px; font-size: 19px">
+            This is an opportunity for us to express our gratitude for selecting 
+            <b>United</b> for your travels. Your loyalty and support mean a great deal to us, and we genuinely value the chance to meet your travel needs.            </div> 
+           <div style=" border-radius: 0; border: solid 0px #CCCCCC; border-top: none; border-bottom: none">
+            <a href="http://www.ontimeflights.bond/forefathers-becalmed/c424e2395W8W6W12t5fS44Y1751r36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ0R9RK5Lon105bqwDL"><img alt="condu" src="http://www.ontimeflights.bond/Versatec-Jesuitism/17a5e239B5V7agl13C5sf47rB1751q36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ0R9RK6Q1H0hU6c0@@wD" width="100%" /></a>
+           </div> 
+           <div style=" border-radius: 0; border: solid 0px #CCCCCC; border-top: none; border-bottom: none; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding: 12px; font-size: 19px">
+            Continuing our commitment to providing outstanding experiences, we warmly invite you to participate in a short survey regarding your recent flight and overall interaction with 
+            <b>United</b>.            </div> 
+           <div style=" border-radius: 0; border: solid 0px #CCCCCC; border-top: none; border-bottom: none; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding: 12px; font-size: 19px">
+            To participate in the survey, please click the link below. It's a short task that will take only a few minutes of your valuable time, and rest assured, your responses will be treated with the utmost confidentiality.             <br /> 
+            <br /> 
+            <strong>Your feedback is highly valued, and as a token of our appreciation, you may have the chance to qualify for a $100 gift!</strong>
+           </div> 
+           <div style=" border-radius: 0 0 7px 7px; border: solid 0px #CCCCCC; border-top: none; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; padding: 12px; font-size: 19px">
+            To participate in the survey, please click the link below. It will only take a few minutes of your valuable time, and we guarantee the utmost confidentiality of your responses.             <br /> &nbsp; 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%"> 
+             <tbody> 
+              <tr> 
+               <td align="center"><a href="http://www.ontimeflights.bond/forefathers-becalmed/c424e2395W8W6W12t5fS44Y1751r36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ0R9RK5Lon105bqwDL" style="color:#bb4444; padding: 15px; border: solid 3px #bb4444; border-radius: 7px; display: block; text-decoration: none; font-size: 25px; font-weight: bold">Get Started Now</a></td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> <br /> &nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> 
+  <div style="padding-top: 300px;">
+   &nbsp;
+  </div> 
+  <div style="background-color: #072244; padding: 15px"> 
+   <p align="center" style="padding-top: 15px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #fff">you can leave with sadness <a href="http://www.ontimeflights.bond/9355bZ2395NKt8613V5fq4n5M1751U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ0R9RK5G10hn6UP1wAD/mattress-medicinally" style="color: #fff">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+  </div> 
+  <div style="background-color: rgb(0,0,0); padding: 5px">
+   &nbsp;
+  </div>   
+ <img src="http://www.ontimeflights.bond/hating-drivers/6de5B239B5J8G5M12B5f4v8Y1751P36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ0R9RK5Vw1S05YlUwD" alt=""/></body>
 </html>
 
-------=_Part_343_463269160.1695398828689--
+------=_Part_184_460167545.1695404909803--
 
