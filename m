@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0051D7AB26C
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Sep 2023 14:49:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 191207AB32E
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 22 Sep 2023 15:58:27 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5B23810E65C;
-	Fri, 22 Sep 2023 12:49:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C675710E66D;
+	Fri, 22 Sep 2023 13:58:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 22 Sep 2023 12:48:57 UTC
-Received: from mail.marketblue.bond (unknown [77.90.135.241])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6AA5610E65C
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 22 Sep 2023 13:58:21 UTC
+Received: from mail.coffemaster.bond (unknown [77.90.135.247])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5AD1A10E66D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 12:48:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=marketblue.bond; 
+ Fri, 22 Sep 2023 13:58:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=coffemaster.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kroger_shopper_experience@marketblue.bond; 
- bh=z/QO+EHbRiym4S3goVPH8McfCSw=;
- b=GjY0yvDNFNmiwpUqn0/zJtCbNyg2zzaix7206QcqoTjszAsLsKaTTxyDllAw02mgXrqDXMK0GDa0
- pjFrIQ6UiEHpyzZv1Z5L/fbarKnMK+9NK9ksYj9/OoJon+QrrpsqQ4wkgaQHf5NJmsCmhtIXTu6G
- CyPrWxyGpKrPkKnd2jk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=marketblue.bond;
- b=d6+0oti413p/ks0K9nwBM6sperhJQn0KSvybHN6ZegVpP8usnKWOYhT+fSMiKwvZ0ay1Sb8ZX+8Y
- aNRNSf5y1gRXt2WXE7pgDzm5rQtNCbYCnP4C+BaWvXAkPriH/Kp3Vog4Y20auImJblYpK9qKLwwO
- dqQilNCwSa+WO/3jUJA=;
-Received: by mail.marketblue.bond id h1m6ji0001gg for
+ i=starbucks.espresso.lounge@coffemaster.bond; 
+ bh=Vxm/Hqmo8MeKQp3EgK4Z6O3RpR8=;
+ b=BKveWWAJpGeZa6l3+RqAABHdq25O1Rz+ThUf4PdQ+43WmFHbsb2O8PJSLDgdxnlJgd6NB2INbHDQ
+ b6owLn6Mdr8l4TDLigEY99c2JWZPq4/MjcJTt4J/rQxE1PrAvpuS37fBKqzX2VE4jnqo0Yqo2O74
+ rR5erHlUvqjydGJ1OD0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=coffemaster.bond;
+ b=YpCc4OVkDyf8Mr/krc4I5XVpBr0N3HUFad4B/0aT4vyj1Mi8ZgdP5YjWYSbiDhuCgdJTRmvKmgJF
+ bKL7Ol0I1gCLsTaMrio8MwtQFh640l9vDY5vv9LByHcbaqLr2PZ2C3SIDcY5C1okzZRk5Nu/WMd5
+ 1TZQ4NxnQjIbgVGDpGE=;
+Received: by mail.coffemaster.bond id h1menq0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 08:39:37 -0400 (envelope-from
- <kroger_shopper_experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@marketblue.bond>)
-Date: Fri, 22 Sep 2023 08:39:37 -0400
-From: "Kroger Shopper Experience" <kroger_shopper_experience@marketblue.bond>
+ Fri, 22 Sep 2023 09:50:17 -0400 (envelope-from
+ <starbucks.espresso.lounge-intel+2Dgvt+2Ddev=lists.freedesktop.org@coffemaster.bond>)
+Date: Fri, 22 Sep 2023 09:50:17 -0400
+From: "Starbucks Espresso Lounge" <starbucks.espresso.lounge@coffemaster.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Join us in our jubilations today and be the recipient of a gift from
- us, emblematic of our appreciation.
+Subject: You've been chosen to receive a gift from us - your evaluation of
+ your Starbucks experience matters.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_64_1698073262.1695386370748"
-Message-ID: <0.0.0.7.1D9ED51D9541264.3738F1@mail.marketblue.bond>
+ boundary="----=_Part_166_1642006830.1695390610979"
+Message-ID: <0.0.0.3F.1D9ED5BB87017D2.407784@mail.coffemaster.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_64_1698073262.1695386370748
+------=_Part_166_1642006830.1695390610979
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,179 +63,57 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>tamarindo xpress</title> 
+  <title>promotion for day</title> 
  </head> 
  <body> 
-  <center> 
-   <div style="background-color: #fff;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-     <caption>
-      &nbsp;
-     </caption> 
-     <thead> 
-      <tr> 
-       <th>&nbsp;</th> 
-      </tr> 
-     </thead> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"> 
-         <caption>
-          &nbsp;
-         </caption> 
-         <thead> 
-          <tr> 
-           <th>&nbsp;</th> 
-          </tr> 
-         </thead> 
-         <tbody> 
-          <tr> 
-           <td>&nbsp;</td> 
-           <td align="center" bgcolor="#1A4898" style="padding: 20px 0px;" width="100%"> 
-            <center style="max-width: 520px; margin: auto;"> 
-             <div> 
-              <blockquote style="max-width: 250px; margin: auto;">
-               <a href="http://www.marketblue.bond/Galatians-poisonousness/9184l2395iUj8611K5f2ap174co36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ0R9Rd5US10X6uT0OwD"><img alt="demo" src="http://www.marketblue.bond/originator-elicits/3d26Sgv2395rN7Ja13b5mf2Ycs174cQ36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ0R9Rd7WGHKL106ElwDLX" width="100%" /></a>
-              </blockquote> 
-             </div> 
-            </center> </td> 
-           <td align="center">&nbsp;</td> 
-           <td>&nbsp;</td> 
-          </tr> 
-          <tr> 
-           <td align="center" colspan="4"> 
-            <center style="max-width: 520px; margin: auto;"> 
-             <div> 
-              <table align="center" border="0" style="border-collapse: collapse;" width="100%"> 
-               <caption>
-                &nbsp;
-               </caption> 
-               <thead> 
-                <tr> 
-                 <th>&nbsp;</th> 
-                </tr> 
-               </thead> 
-               <tbody> 
-                <tr> 
-                 <td align="center"><br /> <span style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height: 1.4em;">We want to convey our appreciation for selecting <b>Kroger</b>. Your loyalty and support mean a lot to us, and we genuinely value the chance to meet your shopping requirements. </span></td> 
-                </tr> 
-               </tbody> 
-               <tfoot> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tfoot> 
-              </table> 
-             </div> 
-            </center> &nbsp; 
-            <div style="max-width: 520px; margin: auto; display: flex; align-items: center; justify-content: center; flex-flow: row wrap;"> 
-             <div style="margin: 1.5%;"> 
-              <div style="max-width: 110px; margin: auto;">
-               <a href="http://www.marketblue.bond/Galatians-poisonousness/9184l2395iUj8611K5f2ap174co36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ0R9Rd5US10X6uT0OwD" target="_blank"><img alt="gifs" src="http://www.marketblue.bond/conferring-Englishizes/d145s2X395m7x_a13Ql5zf2dP174cG36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ0R9Rd5PW10n5bApwD" width="100%" /></a>
-              </div> 
-             </div> 
-             <div style="margin: 1.5%;"> 
-              <div style="max-width: 130px; margin: auto;">
-               <a href="http://www.marketblue.bond/Galatians-poisonousness/9184l2395iUj8611K5f2ap174co36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ0R9Rd5US10X6uT0OwD" target="_blank"><img alt="gifs" src="http://www.marketblue.bond/4df4B2395PWM7a12l5f2esh174cH36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ0R9Rd7uo_10YT6DXwMqD/conferring-Englishizes" width="100%" /></a>
-              </div> 
-             </div> 
-            </div> </td> 
-          </tr> 
-          <tr> 
-           <td colspan="4">&nbsp; 
-            <div style="max-width: 520px; margin: auto;"> 
-             <div style="background-color: rgb(26, 72, 152); padding: 3.5% 5%; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; line-height: 1.4em ; font-size: 1.2em; color: #fff;">
-              <b>Your ongoing support holds great importance for us, and we eagerly look forward to your feedback.</b>
-             </div> 
-            </div> </td> 
-          </tr> 
-         </tbody> 
-         <tfoot> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tfoot> 
-        </table> &nbsp; 
-        <div style="max-width: 520px; margin: auto; text-align: center;">
-         <span style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height: 1.4em;;">Accessing the survey is simple?just click on the provided link below. It's a short task that will only require a few minutes of your time, and rest assured, your responses will be handled with the highest level of confidentiality. </span>
-        </div> </td> 
-       <td>&nbsp;</td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td align="center" colspan="4"> 
-        <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
-         <caption>
-          &nbsp;
-         </caption> 
-         <thead> 
-          <tr> 
-           <th>&nbsp;</th> 
-          </tr> 
-         </thead> 
-         <tbody> 
-          <tr> 
-           <td> 
-            <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
-             <caption>
-              &nbsp;
-             </caption> 
-             <thead> 
-              <tr> 
-               <th colspan="4">&nbsp;</th> 
-              </tr> 
-             </thead> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp;</td> 
-               <td>&nbsp; 
-                <div style="max-width: 520px; margin: auto; text-align: center;">
-                 <a href="http://www.marketblue.bond/Galatians-poisonousness/9184l2395iUj8611K5f2ap174co36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ0R9Rd5US10X6uT0OwD" style="text-decoration: none; color: white;" target="_blank"><span style="display: inline-block; background-color: #1A4898; padding: 17px 33px; font-size: 1.4em; font-family: Arial, Helvetica, sans-serif; border-radius: 5px;"><b>Start Here Now &gt; &gt;</b></span></a>
-                </div> &nbsp; 
-                <div style="max-width: 520px; margin: auto;"> 
-                 <p style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; padding-left: 20px; padding-right: 20px; text-align: center; line-height: 1.4em;">Once again, thank you for your continuous support. We look forward to receiving your feedback soon. Your continued support means a lot to us, and we are eagerly anticipating your input!<br /> <br /> <span>Warm regards,<br /> <b>The Kroger Survey Team</b> </span></p> 
-                </div> </td> 
-               <td>&nbsp;</td> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tbody> 
-             <tfoot> 
-              <tr> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tfoot> 
-            </table> </td> 
-           <td>&nbsp;</td> 
-           <td>&nbsp;</td> 
-           <td>&nbsp;</td> 
-          </tr> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tbody> 
-         <tfoot> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tfoot> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-     <tfoot> 
-      <tr> 
-       <td colspan="4"> 
-        <div style="max-width: 520px; margin: auto; text-align: center; padding-top: 420px;"> 
-         <address style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 900;">if you need to go visit <a href="http://www.marketblue.bond/Whipple-contaminated/6de6G23VM95z8Au613H5f2IbuC174cT36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ0R9Rd7n_1ON0m6hjkPwD">here</a><br /> 10010 126 E 23rd St New York, NY, US</address> 
-        </div> <br /> &nbsp;</td> 
-      </tr> 
-     </tfoot> 
-    </table> 
+  <div style="background-color: #ebfff6;"> 
+   <div> 
+    <div style="background-color: rgb(26, 110, 72); padding-top: 1em ; padding-bottom: 1em; width: 100%;"> 
+     <div style="max-width: 400px; margin: auto;">
+      <a href=""><img alt="" src="http://www.coffemaster.bond/fragmenting-scours/e045B23W95J_7ka13Q5zf3F2z174dk36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ1R9RQ6HRM1m05A3MwD" width="100%" /></a>
+     </div> 
+    </div> 
+    <div style="max-width: 500px; margin: auto;"> 
+     <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 900; font-size: 20pt;"><span><u>Your&nbsp;Starbucks&nbsp;Last&nbsp;Reminder</u> </span></p> 
+    </div> 
+    <div style="max-width: 550px; margin: auto; background-color: #fff;">
+     &nbsp; 
+     <div> 
+      <h6 style="max-width: 500px; margin: auto;">&nbsp;</h6> 
+      <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 15pt;">Exciting&nbsp;news&nbsp;from&nbsp;Starbucks!&nbsp;We're&nbsp;offering&nbsp;a&nbsp;special promotion&nbsp;for&nbsp;a&nbsp;<b>$100 Gift</b>&nbsp;that&nbsp;you&nbsp;can&nbsp;enjoy&nbsp;at&nbsp;any&nbsp;of our store locations. Don't wait; seize this opportunity today! You have until <b>September 22th </b>to claim these delightful beverages.</p> 
+     </div> 
+     <div style="max-width: 500px; margin: auto; text-align: center;"> 
+      <div style="border: solid 3.5px #525252; width: 300px; padding: 2.5mm 2.5mm; margin: auto; border-radius: 8px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 5mm; font-weight: 900; background-color: #fff;">
+       <a href="http://www.coffemaster.bond/starts-catheter/7746D23g9L5AZB8613L5QTf30M174dq36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ1R9RQ5lm10O6d@wjWD" style="text-decoration: none; color: #525252;" target="_blank">Start Here Now &gt; &gt; </a>
+      </div> 
+      <br /> &nbsp;
+     </div> 
+     <div style="max-width: 500px; margin: auto; text-align: center;"> 
+      <div style="max-width: 260px; margin: auto;">
+       <a href="http://www.coffemaster.bond/starts-catheter/7746D23g9L5AZB8613L5QTf30M174dq36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ1R9RQ5lm10O6d@wjWD" style="text-decoration: none; color: #525252;" target="_blank"><img alt=" coffees" src="http://www.coffemaster.bond/fragmenting-scours/4684G2395lYO7a13k5fI3F3N174dD36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ1R9RQ6sJGR105jTwjD" width="100%" /></a>
+      </div> 
+      <br /> &nbsp;
+     </div> 
+     <div> 
+      <h2 style="max-width: 500px; margin: auto;">&nbsp;</h2> 
+      <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 16pt;"><b>Thank&nbsp;you&nbsp;for&nbsp;taking&nbsp;part.<br /> Warm&nbsp;regards,&nbsp;The&nbsp;Starbucks&nbsp;Team.</b></p> 
+     </div> 
+    </div> 
+    <br /> &nbsp;
    </div> 
-  </center>   
- <img src="http://www.marketblue.bond/7eb4y2395pC8S512NO5f2f_174cS36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQ0R9Rd6K1_pL05jjOwD/conferring-Englishizes" alt=""/></body>
+   <div> 
+    <article> 
+     <p style="padding-top: 400px;">&nbsp;</p> 
+    </article> 
+    <div style="max-width: 300px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 4mm; text-align: center;">
+     you can leave with sadness 
+     <a href="http://www.coffemaster.bond/Costello-Weissman/5584C2395D86pJ12c5f3p1Z174dz36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ1R9RQ6Xxm10m5mUBwD">here</a>
+     <br /> US 10010 126 E 23rd St New York, NY,
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.coffemaster.bond/badgered-messed/f126H2A39Q5Who8512Y5f3o4V174dU36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ1R9RQ6oB1Tk06FAwpBD" alt=""/></body>
 </html>
 
-------=_Part_64_1698073262.1695386370748--
+------=_Part_166_1642006830.1695390610979--
 
