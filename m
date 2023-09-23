@@ -1,44 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0AC457ABC82
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 23 Sep 2023 02:07:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 198997AC240
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 23 Sep 2023 15:27:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 99DE810E094;
-	Sat, 23 Sep 2023 00:07:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BBDB410E004;
+	Sat, 23 Sep 2023 13:27:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 320 seconds by postgrey-1.36 at gabe;
- Sat, 23 Sep 2023 00:07:14 UTC
-Received: from mail.beonecvs.bond (unknown [77.90.135.158])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6CBF310E094
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sat, 23 Sep 2023 13:27:11 UTC
+Received: from mail.flightyourway.autos (unknown [77.90.135.166])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 20D8810E004
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 23 Sep 2023 00:07:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=beonecvs.bond;
+ Sat, 23 Sep 2023 13:27:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=flightyourway.autos; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=connect-with-the-cvs-promo-team@beonecvs.bond; 
- bh=CLFtk2GnCW0tRGMYSy1MWqhcrM8=;
- b=0AKFeM7adY1HPWuE/vCj3w2L183Uuzgl6JsUSVj7a57siSz295D7K4txvyhKlbktfx3t648JHzgf
- 14iav50mrIkzZZhbN7GGq51V9v+SivdOy6QwgNYFV6C2fqz43YQDrKzJEjR+scsOn8FYfzmBqgbH
- oYgVOE5M2MG6qGf/rXI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=beonecvs.bond;
- b=aIbItED/3zNSknEW9z6HStCJuru3qDSahH3K+rYqZVk9zVPMeg0L63HJ9ITeBZlbfxBJpf9UcjTG
- ojlMKl3yKgK23s4xrhrn0wAzK9DWfTlJwwX8Qu5JeUdojIXyproHC9ZC2s8pvVzub9cB1XtSKzlV
- wqG8Q/MOzuqHZaiEe2E=;
-Received: by mail.beonecvs.bond id h1ovho0001gf for
+ i=everything_you_need_to_know_about_southwest_flights@flightyourway.autos; 
+ bh=c3mpYiZr9HQX7QwKFnl1WzTVos0=;
+ b=WlNQx3dv/IgQ6XxKWRU4wKNNOGNrlSDTG1QuqG7VmDHF4goCtZQWWFKbAe8DQSSSW4ArKoHKTw7j
+ CoEB7JZyK57LbXOqKdUncC4RGTnIua7rEeKyoz0nI0Jlbg0aT2FrIG/npXD+4W+Kg+TcDP+Cs4Nl
+ 76xp3GKxlfkZZVYAAqE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flightyourway.autos;
+ b=E/+qZtWuQbt3j7qpf3BF4DKgwNNyDGAVJ73ASSBPOd6587kLXhb49iDfMyM8knW6MaNespEjgmpl
+ 38r7nuE8TMXzRCzdWC0o8HRAipZ3/w7+4URwDK3o4GPTrZhps/8HPoYlBYRQLfLzslzqst98P9qI
+ /HswXnrjhFWm5foi3sw=;
+Received: by mail.flightyourway.autos id h1rt9g0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 21:19:12 -0400 (envelope-from
- <connect-with-the-cvs-promo-team-intel+2Dgvt+2Ddev=lists.freedesktop.org@beonecvs.bond>)
-Date: Fri, 22 Sep 2023 21:19:12 -0400
-From: "Connect With The CVS Promo Team"
- <connect-with-the-cvs-promo-team@beonecvs.bond>
+ Sat, 23 Sep 2023 10:39:06 -0400 (envelope-from
+ <everything_you_need_to_know_about_southwest_flights-intel+2Dgvt+2Ddev=lists.freedesktop.org@flightyourway.autos>)
+Date: Sat, 23 Sep 2023 10:39:06 -0400
+From: "Everything You Need To Know About Southwest Flights"
+ <everything_you_need_to_know_about_southwest_flights@flightyourway.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don't Miss Out: $100 CVS Gift Card Could Be Yours!
+Subject: Welcome the season with enthusiasm as you embark on a free flight to
+ your preferred getaway!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_16_631002119.1695427104794"
-Message-ID: <0.0.0.1AC.1D9EDBBF5C99E90.FA5CA@mail.beonecvs.bond>
+ boundary="----=_Part_115_1514175829.1695475092793"
+Message-ID: <0.0.0.1DE.1D9EE2BB4DFE57C.4A2579@mail.flightyourway.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_16_631002119.1695427104794
+------=_Part_115_1514175829.1695475092793
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,105 +65,146 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>grateful for the</title> 
+  <title>your recent shipping</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <table align="center" cellpadding="0" style="max-width: 520px; margin: auto;"> 
+ <body style="margin: 0; padding: 0; background-color: rgb(231, 231, 231);"> 
+  <p style="padding-top: 50px; margin: 0;">&nbsp;</p> 
+  <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+   <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
+    <caption>
+     &nbsp;
+    </caption> 
+    <thead> 
+     <tr> 
+      <th>&nbsp;</th> 
+     </tr> 
+    </thead> 
+    <tbody> 
+     <tr> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs"> 
+       <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
+        <caption>
+         &nbsp;
+        </caption> 
+        <thead style="max-width: 520px; margin: auto; background-color: #fff;"> 
+         <tr> 
+          <th colspan="5"> 
+           <div> 
+            <center style="max-width: 350px; margin: auto;">
+             <a href="http://www.flightyourway.autos/carter-spinoff/c7e4E2395zH8V612N5fZ64V1757x36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQqR9SQ6y1oF0y6gJ3lwD" target="_blank"><img alt="plops" src="http://www.flightyourway.autos/cb95V23j95Y7aqG12V5f6t6h1757l36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQqR9SQ7Mm1kAl06sJk3wD/grading-Seagate" width="100%" /></a>
+            </center> 
+           </div> </th> 
+         </tr> 
+        </thead> 
+        <tbody> 
+         <tr> 
+          <td class="salsters"> 
+           <div style="background-color: #fff; max-width: 520px; margin: auto;"> 
+            <div style="padding: 3.5% 5%;"> 
+             <center style="font-size: .5cm; line-height: .7cm; font-family: Arial, Helvetica, sans-serif;">
+              We truly value your decision to fly with Southwest Airlines. Your steadfast loyalty and support mean a lot to us, and we are committed to fulfilling all your travel needs.              </center> 
+            </div> 
+           </div> </td> 
+          <td class="salsters">&nbsp;</td> 
+          <td class="salsters">&nbsp;</td> 
+          <td class="salsters">&nbsp;</td> 
+          <td class="salsters">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td colspan="5"> 
+           <div style="background-color: #FEBF26; max-width: 520px; margin: auto;"> 
+            <div style="padding: 3.5% 5%;"> 
+             <center style="font-size: .5cm; line-height: .7cm; font-family: Arial, Helvetica, sans-serif; ">
+              We greatly appreciate your feedback and cordially invite you to spare a few moments to participate in a short survey about your recent flight experience and your overall interaction with Southwest. Your input will play a crucial role in enhancing your future experiences with our airline.              </center> 
+            </div> 
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="proises" colspan="5"> 
+           <div style="max-width: 520px; margin: auto; background-color: #fff; text-align: center;"> 
+            <h1 style="margin: 0; padding: 0; text-align: center;">&nbsp;</h1> 
+            <center style="max-width: 450px; margin: auto; padding-bottom: 15px;">
+             <a href="http://www.flightyourway.autos/carter-spinoff/c7e4E2395zH8V612N5fZ64V1757x36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQqR9SQ6y1oF0y6gJ3lwD" target="_blank"><img alt="kanjis" src="http://www.flightyourway.autos/Crockett-regrets/9184H2395E7aJR13XG5f6P7_1757O36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQqR9SQ6r1URL06y2qwlD" style="display: block; padding-top: 15px;" width="100%" /> </a>
+            </center> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+        <tfoot> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+        </tfoot> 
+       </table> 
+       <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+        <div style="padding: 3.5% 5%;"> 
+         <article> 
+          <p style="font-size: .5cm; line-height: .7cm; font-family: Arial, Helvetica, sans-serif; text-align: center; margin: 0;"><font>Accessing the survey is simple ? just click on the link provided below. It's a brief task that will take only a few minutes, and rest assured, your responses will remain completely confidential. </font></p> 
+         </article> 
+        </div> 
+       </div> 
+       <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+        <div style="padding: 3.5% 5%;"> 
+         <div style="background-color: #164BB6; padding: 17px 33px; max-width: 320px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 22px; text-align: center; border-radius: 6px;">
+          <a href="http://www.flightyourway.autos/carter-spinoff/c7e4E2395zH8V612N5fZ64V1757x36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQqR9SQ6y1oF0y6gJ3lwD" style="color: white; text-decoration: none;" target="_blank">Kick off the survey here &gt;&gt;</a>
+         </div> &nbsp; 
+         <div style="border-bottom: solid 1.9px #000; max-width: 190px; margin: auto;">
+          &nbsp;
+         </div> 
+         <p style="font-size: .4cm; line-height: .7cm; font-family: Arial, Helvetica, sans-serif; text-align: center; margin: 0;">Thank you for your continued support, and we look forward to<br /> receiving your feedback soon!<br /> Best regards,</p> 
+        </div> 
+       </div> </td> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs">&nbsp;</td> 
+     </tr> 
+    </tbody> 
+    <tfoot> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tfoot> 
+   </table> 
+  </div> 
+  <div style="padding-top: 452px;">
+   &nbsp;
+  </div> 
+  <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <caption>
+    &nbsp;
+   </caption> 
+   <thead> 
+    <tr> 
+     <th>&nbsp;</th> 
+    </tr> 
+   </thead> 
    <tbody> 
     <tr> 
-     <td> 
-      <table> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td colspan="1"> 
-          <table align="center"> 
-           <tbody> 
-            <tr> 
-             <td><a href="http://www.beonecvs.bond/a256L2_3L95k86GO11p5f5es1756_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYR9Sd6o1uOX06dywBlD/storminess-jealous"><img alt="cvssst" src="http://www.beonecvs.bond/besieged-beatification/e044v2395R7aVp12n5f60iq1756i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQYR9Sd5L10pG6spw@3D" style="max-width: 150px; margin: auto; width: 100%;" /> </a></td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td bgcolor="#DB0814" style=" padding: 3.5% 5%; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: white; font-size: 22px; line-height: 26px; ">Exclusive Savings for Our Esteemed Customers</td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 27px; font-weight: normal;">We appreciate your choice of <strong style="color: #DB0814;">CVS</strong>. Your loyalty and support mean a lot to us, and we're grateful for the opportunity to assist you.</td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td> 
-          <div style="text-align: center; display: flex; align-items: center; justify-content: center;"> 
-           <div style="display: inline-block; margin: 3%;"> 
-            <center>
-             <a href="http://www.beonecvs.bond/a256L2_3L95k86GO11p5f5es1756_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYR9Sd6o1uOX06dywBlD/storminess-jealous"><img alt="" src="http://www.beonecvs.bond/clandestine-nervousness/62a6VS2q395uz7Ia13S5xLf61q1756A36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQYR9Sd6tAn_106CT0@wD" style="max-width: 90px; margin: auto; width: 100%;" /> </a>
-            </center> 
-           </div> 
-           <div style="display: inline-block; margin: 3%;"> 
-            <center>
-             <a href="http://www.beonecvs.bond/a256L2_3L95k86GO11p5f5es1756_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYR9Sd6o1uOX06dywBlD/storminess-jealous"><img alt="" src="http://www.beonecvs.bond/wonderingly-magistrates/b345VN2395um7aT13L5fo6i2Z1756n36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQYR9Sd5yi10X6zP1wD@" style="max-width: 90px; margin: auto; width: 100%;" /> </a>
-            </center> 
-           </div> 
-          </div> </td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 27px; font-weight: normal;">Your feedback is of great importance to us, and as a gesture of our gratitude, we'd like to extend a special thank-you for taking the time to provide your insights.<br /> <br /> <strong>Upon Completion of the Survey you might have a choice between different gifts!</strong></td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td align="center"> <p style="background-color: #DB0814; padding-top: 15px; padding-left: 30px; padding-bottom: 15px; padding-right: 30px; display: inline-block; font-size: 30px; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 900; border-radius: 5px;"><a href="http://www.beonecvs.bond/a256L2_3L95k86GO11p5f5es1756_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYR9Sd6o1uOX06dywBlD/storminess-jealous" style="text-decoration: none; color: white;">Start Now &gt;&gt; </a></p> </td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-         <td style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 27px; font-weight: normal;">Once again, we appreciate your support. We eagerly anticipate your prompt response!<br /> <br /> <b>Warm regards,</b></td> 
-         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
+     <td class="finalsx">&nbsp;</td> 
+     <td class="finalsx">&nbsp;</td> 
+     <td class="finalsx"> 
+      <div style="background-color: #164BB6; padding-top: 15px; padding-bottom: 15px;"> 
+       <div style="max-width: 420px; margin: auto; text-align: center; font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: #fff;">
+        Use the exit option 
+        <a href="http://www.flightyourway.autos/jumble-appendages/5584X2395F86ZL13Wm5f6C5N1757r36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQqR9SQ5u1G0y5ONwD3" style="color: aqua;">here</a>
+        <br /> US 10010 126 E 23rd St New York, NY,
+       </div> 
+      </div> </td> 
+     <td class="finalsx">&nbsp;</td> 
+     <td class="finalsx">&nbsp;</td> 
     </tr> 
    </tbody> 
+   <tfoot> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tfoot> 
   </table> 
-  <hr style="margin: auto;" width="75%" /> 
-  <div style="padding-top: 182px;">
-   &nbsp;
-  </div> 
-  <div style="background-color: #DB0814; padding-top: 15px; padding-bottom: 15px;"> 
-   <footer style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 27px; font-weight: bold; color: white;">
-    time to show you the exit 
-    <a href="http://www.beonecvs.bond/sleeping-prescription/c7e6Qw239p5Ww86r11a5f5fj1756x36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQYR9Sd5Hh10p5yTw1D">here</a>
-    <br /> US 10010 126 E 23rd St New York, NY,
-   </footer> 
-  </div> 
-  <div style="padding-bottom: 180px;">
-   &nbsp;
-  </div>   
- <img src="http://www.beonecvs.bond/wonderingly-magistrates/7564I2395evp8513y5ftJ63j1756s36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQYR9Sd6Qyu10q5nWNwD" alt=""/></body>
+  <p style="padding-bottom: 50px; margin: 0;">&nbsp;</p>   
+ <img src="http://www.flightyourway.autos/af75e239R5g_85Y12W5fS68u1757A36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQqR9SQ7Q1XHU0T6u2@wND/shorting-others" alt=""/></body>
 </html>
 
-------=_Part_16_631002119.1695427104794--
+------=_Part_115_1514175829.1695475092793--
 
