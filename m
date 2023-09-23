@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F40C97ABC10
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 23 Sep 2023 01:00:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AC457ABC82
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 23 Sep 2023 02:07:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A661110E57D;
-	Fri, 22 Sep 2023 23:00:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 99DE810E094;
+	Sat, 23 Sep 2023 00:07:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 22 Sep 2023 23:00:50 UTC
-Received: from mail.handydepots.bond (unknown [77.90.135.150])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9EBF110E70D
+X-Greylist: delayed 320 seconds by postgrey-1.36 at gabe;
+ Sat, 23 Sep 2023 00:07:14 UTC
+Received: from mail.beonecvs.bond (unknown [77.90.135.158])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6CBF310E094
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 23:00:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=handydepots.bond;
+ Sat, 23 Sep 2023 00:07:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=beonecvs.bond;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=survey-rewards-at-home-depot@handydepots.bond; 
- bh=crrz1xveZIOCSEcvQ969Im1fgKo=;
- b=aeSuCoXKkb/vRV2KH+2S97J3kxM7xakkJjYrNkT+cDT1Lj9j8jxif65aIGqvOMJZ8SmHs4cQ3zml
- jRNLFJ/Tmpb5jffXyrxh1q3T8d9L9o1pFmu3nkBi/ThSlsaIb7ER4MBa592Ox/dojG+LPdjaqoJD
- DgBRCEyazPf6IhR6qao=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=handydepots.bond;
- b=eErT6xapCLDWZRynOuMAsN2odB08V+yPiG+QZ1jC9Gscz3y/Y2/mXewnulUKknERpdqmHycT2VYH
- UyP/n4NtzZoB7EJD9KaR4DgR+HyPNcXroDsPKSzw+MaiccT4wnB0VG7SoDwv+K8Cm5Qxx7uA3nKF
- zpfs6ermhdyKjHF/jSg=;
-Received: by mail.handydepots.bond id h1oea40001gp for
+ i=connect-with-the-cvs-promo-team@beonecvs.bond; 
+ bh=CLFtk2GnCW0tRGMYSy1MWqhcrM8=;
+ b=0AKFeM7adY1HPWuE/vCj3w2L183Uuzgl6JsUSVj7a57siSz295D7K4txvyhKlbktfx3t648JHzgf
+ 14iav50mrIkzZZhbN7GGq51V9v+SivdOy6QwgNYFV6C2fqz43YQDrKzJEjR+scsOn8FYfzmBqgbH
+ oYgVOE5M2MG6qGf/rXI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=beonecvs.bond;
+ b=aIbItED/3zNSknEW9z6HStCJuru3qDSahH3K+rYqZVk9zVPMeg0L63HJ9ITeBZlbfxBJpf9UcjTG
+ ojlMKl3yKgK23s4xrhrn0wAzK9DWfTlJwwX8Qu5JeUdojIXyproHC9ZC2s8pvVzub9cB1XtSKzlV
+ wqG8Q/MOzuqHZaiEe2E=;
+Received: by mail.beonecvs.bond id h1ovho0001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 22 Sep 2023 18:53:09 -0400 (envelope-from
- <survey-rewards-at-home-depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@handydepots.bond>)
-Date: Fri, 22 Sep 2023 18:53:09 -0400
-From: "Survey Rewards At Home Depot"
- <survey-rewards-at-home-depot@handydepots.bond>
+ Fri, 22 Sep 2023 21:19:12 -0400 (envelope-from
+ <connect-with-the-cvs-promo-team-intel+2Dgvt+2Ddev=lists.freedesktop.org@beonecvs.bond>)
+Date: Fri, 22 Sep 2023 21:19:12 -0400
+From: "Connect With The CVS Promo Team"
+ <connect-with-the-cvs-promo-team@beonecvs.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Final reminder to acquire a Makita Drill Set - offer ends today!
+Subject: Don't Miss Out: $100 CVS Gift Card Could Be Yours!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_253_1200227736.1695423178040"
-Message-ID: <0.0.0.195.1D9EDA78E873D0A.469627@mail.handydepots.bond>
+ boundary="----=_Part_16_631002119.1695427104794"
+Message-ID: <0.0.0.1AC.1D9EDBBF5C99E90.FA5CA@mail.beonecvs.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_253_1200227736.1695423178040
+------=_Part_16_631002119.1695427104794
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,68 +63,105 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title></title> 
+  <title>grateful for the</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <table align="center" cellpadding="0" cellspacing="0" style="background-color: #fff0e6;;" width="100%"> 
-   <caption>
-    &nbsp;
-   </caption> 
-   <thead> 
-    <tr> 
-     <th style="background-color: #fff0e6;"> 
-      <center style="background-color: white; max-width: 520px; margin: auto;">
-       &nbsp; 
-       <div style="max-width: 400px; margin: auto;">
-        <a href="http://www.handydepots.bond/5ed4U2395P8SA612Y5f5K9D1755R36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQVR9S97VyNg1V05aJwDL/mitigated-quavering" target="_blank"><img alt="oolse" src="http://www.handydepots.bond/3594K2395w7aOK12zt5f5bO1755W36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVR9S96o1_Dm06sLw@pD/ministries-drawer" width="100%" /></a>
-       </div> 
-      </center> </th> 
-    </tr> 
-   </thead> 
+  <table align="center" cellpadding="0" style="max-width: 520px; margin: auto;"> 
    <tbody> 
     <tr> 
      <td> 
-      <div style="background-color: #F66303; max-width: 480px; margin: auto; padding: 15px 20px;"> 
-       <table style="max-width: 520px; margin: auto; border-collapse: collapse;"> 
-        <tbody> 
-         <tr> 
-          <td style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-align: center; font-weight: bold; line-height: 27px; color: white;">We'd like to take a moment to extend our heartfelt thanks for choosing our services. Your ongoing loyalty and support mean a great deal to us and will forever be recognized and valued.</td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> 
-      <div style="background-color: #fff; max-width: 480px; margin: auto; padding: 15px 20px;"> 
-       <div style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-align: center; font-weight: bold; line-height: 27px; color: #000;">
-        Therefore, we offer this token of appreciation for your use of a MAKITA DRILL Set!
-       </div> &nbsp; 
-       <div style="text-align: center;"> 
-        <div style="max-width: 275px; margin: auto;">
-         <a href="http://www.handydepots.bond/5ed4U2395P8SA612Y5f5K9D1755R36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQVR9S97VyNg1V05aJwDL/mitigated-quavering" target="_blank"><img alt="kkss" src="http://www.handydepots.bond/ungrateful-capably/13e5C2A395O7azA11Q5f5cj1755w36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQVR9S96w10oiN5Q2UwD" width="100%" /></a>
-        </div> 
-       </div> &nbsp; 
-       <article> 
-        <p style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; margin: 0;">Your input is of great significance to us.</p> &nbsp; 
-        <p style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-align: center; font-weight: 500; line-height: 27px; color: #000; margin: 0;">Claiming this reward is simple; it will only take you 30 seconds to provide us with your feedback, and we'll send it to you promptly.</p> 
-       </article> &nbsp; 
-       <table align="center"> 
-        <tbody> 
-         <tr> 
-          <td align="center" style="background-color: #F66303; padding: 15px 20px; border-radius: 5px; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 1.em;"><a href="http://www.handydepots.bond/5ed4U2395P8SA612Y5f5K9D1755R36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQVR9S97VyNg1V05aJwDL/mitigated-quavering" id="email-link" style="text-decoration: none; color: white;">Start Here Now &gt;&gt; </a></td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> 
-      <div style="padding-top: 450px;">
-       &nbsp;
-      </div> 
-      <article style="max-width: 450px; margin: auto; text-align: center;"> 
-       <p><span style="font-family: Arial, Helvetica, sans-serif;">you can leave with sadness <a href="http://www.handydepots.bond/ungrateful-capably/8284r2395K86ml11L5f5aC1755D36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQVR9S95p10ZQ6PjlwDj">here</a><br /> US 10010 126 E 23rd St New York, NY, </span></p> 
-      </article> </td> 
+      <table> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td colspan="1"> 
+          <table align="center"> 
+           <tbody> 
+            <tr> 
+             <td><a href="http://www.beonecvs.bond/a256L2_3L95k86GO11p5f5es1756_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYR9Sd6o1uOX06dywBlD/storminess-jealous"><img alt="cvssst" src="http://www.beonecvs.bond/besieged-beatification/e044v2395R7aVp12n5f60iq1756i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQYR9Sd5L10pG6spw@3D" style="max-width: 150px; margin: auto; width: 100%;" /> </a></td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td bgcolor="#DB0814" style=" padding: 3.5% 5%; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: white; font-size: 22px; line-height: 26px; ">Exclusive Savings for Our Esteemed Customers</td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 27px; font-weight: normal;">We appreciate your choice of <strong style="color: #DB0814;">CVS</strong>. Your loyalty and support mean a lot to us, and we're grateful for the opportunity to assist you.</td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td> 
+          <div style="text-align: center; display: flex; align-items: center; justify-content: center;"> 
+           <div style="display: inline-block; margin: 3%;"> 
+            <center>
+             <a href="http://www.beonecvs.bond/a256L2_3L95k86GO11p5f5es1756_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYR9Sd6o1uOX06dywBlD/storminess-jealous"><img alt="" src="http://www.beonecvs.bond/clandestine-nervousness/62a6VS2q395uz7Ia13S5xLf61q1756A36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQYR9Sd6tAn_106CT0@wD" style="max-width: 90px; margin: auto; width: 100%;" /> </a>
+            </center> 
+           </div> 
+           <div style="display: inline-block; margin: 3%;"> 
+            <center>
+             <a href="http://www.beonecvs.bond/a256L2_3L95k86GO11p5f5es1756_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYR9Sd6o1uOX06dywBlD/storminess-jealous"><img alt="" src="http://www.beonecvs.bond/wonderingly-magistrates/b345VN2395um7aT13L5fo6i2Z1756n36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQYR9Sd5yi10X6zP1wD@" style="max-width: 90px; margin: auto; width: 100%;" /> </a>
+            </center> 
+           </div> 
+          </div> </td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 27px; font-weight: normal;">Your feedback is of great importance to us, and as a gesture of our gratitude, we'd like to extend a special thank-you for taking the time to provide your insights.<br /> <br /> <strong>Upon Completion of the Survey you might have a choice between different gifts!</strong></td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td align="center"> <p style="background-color: #DB0814; padding-top: 15px; padding-left: 30px; padding-bottom: 15px; padding-right: 30px; display: inline-block; font-size: 30px; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 900; border-radius: 5px;"><a href="http://www.beonecvs.bond/a256L2_3L95k86GO11p5f5es1756_36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYR9Sd6o1uOX06dywBlD/storminess-jealous" style="text-decoration: none; color: white;">Start Now &gt;&gt; </a></p> </td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+         <td style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 27px; font-weight: normal;">Once again, we appreciate your support. We eagerly anticipate your prompt response!<br /> <br /> <b>Warm regards,</b></td> 
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
-  </table>   
- <img src="http://www.handydepots.bond/audacious-doublet/8826e2I39p5V8kB511z5f5di1755U36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVR9S97Nlj1mt06MLAwD1" alt=""/></body>
+  </table> 
+  <hr style="margin: auto;" width="75%" /> 
+  <div style="padding-top: 182px;">
+   &nbsp;
+  </div> 
+  <div style="background-color: #DB0814; padding-top: 15px; padding-bottom: 15px;"> 
+   <footer style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 27px; font-weight: bold; color: white;">
+    time to show you the exit 
+    <a href="http://www.beonecvs.bond/sleeping-prescription/c7e6Qw239p5Ww86r11a5f5fj1756x36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQYR9Sd5Hh10p5yTw1D">here</a>
+    <br /> US 10010 126 E 23rd St New York, NY,
+   </footer> 
+  </div> 
+  <div style="padding-bottom: 180px;">
+   &nbsp;
+  </div>   
+ <img src="http://www.beonecvs.bond/wonderingly-magistrates/7564I2395evp8513y5ftJ63j1756s36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQYR9Sd6Qyu10q5nWNwD" alt=""/></body>
 </html>
 
-------=_Part_253_1200227736.1695423178040--
+------=_Part_16_631002119.1695427104794--
 
