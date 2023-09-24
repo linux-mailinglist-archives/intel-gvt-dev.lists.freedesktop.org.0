@@ -1,43 +1,42 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 006D87ACBA9
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 Sep 2023 21:33:48 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C27E7ACBE3
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 Sep 2023 22:50:30 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 81A0110E14F;
-	Sun, 24 Sep 2023 19:33:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1A77D10E144;
+	Sun, 24 Sep 2023 20:50:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.tophrbortool.click (unknown [77.90.135.65])
- by gabe.freedesktop.org (Postfix) with ESMTP id F36B010E14F
+Received: from mail.bluemarket.autos (unknown [77.90.135.77])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0F19510E144
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 24 Sep 2023 19:33:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=tophrbortool.click; 
+ Sun, 24 Sep 2023 20:50:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bluemarket.autos;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=harbor_freight_bonuses@tophrbortool.click; 
- bh=91ySNKUedLts8mJY/fqM1OZOLfw=;
- b=min2mUt+/GMxuJUz2foUb7C1t4m7HTxvZ2QX9QmdV8QICheAfTG1FOAv7AsAds5OBUw2v0KFBb+Y
- uHC6iwKKoF/wSfhzWMhvaTVZuaqDHD0aLo+HuP8IM6Hj2LHWBx/n05XyoL3jiUJBQ2zejaT54qy7
- 1Gm7UnzyPg+8AUbew5o=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tophrbortool.click; 
- b=Rab+7Ks7dEU5m5j2TDHgJYRN9J/XzAHZ/DUQcWjhAnFaIAI57a6pJHjJ58qA23N9oe5TjmV92rKp
- a+22rkzHZrgSykM/1vagBthnT3TV7XvHWQTjuciVJkROC2HQ4Qqi3etHtDmFPKv0aUGAK280tZSy
- eeVEQ3B3O7gBUSmNlaU=;
-Received: by mail.tophrbortool.click id h22h000001gh for
+ i=kroger_customer_support@bluemarket.autos; 
+ bh=nr8cyE6sX2etIBK6N/NajKTwAtQ=;
+ b=F0ajpSmDuhs6zOcOfJgo/5OZ4YQwFYZDT9CVZviMAbwCSxK9snjM74lVqapn1xsr3iwYETyC+0Ub
+ p68mJ7YvMKPZ/Upcp+9vCnG5ertuQyI4anj/t90adw+Kw+UKpBfpVj/cS5qpAW6TTC/VQzjtiA3B
+ t23M8KLh/7SEYm/pB2M=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bluemarket.autos;
+ b=aIKG0HiB+pBd5JPHHRoX48pVJqXqbfKr/ctZgTUwFXmZpdFH67tsnnqTrJvHxTp6Nl4fEhJ0ziG7
+ YEBs6kCgnQMUAL3YHWmMxStDHX5089YcI1Pb2p5wBWxvdgmy7SXLgzdk/aeWRXXFB3EOvWK2l76C
+ CRx+b/9i7xo6uC4a1NI=;
+Received: by mail.bluemarket.autos id h22pvm0001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 24 Sep 2023 16:40:59 -0400 (envelope-from
- <harbor_freight_bonuses-intel+2Dgvt+2Ddev=lists.freedesktop.org@tophrbortool.click>)
-Date: Sun, 24 Sep 2023 16:40:59 -0400
-From: "Harbor Freight Bonuses" <harbor_freight_bonuses@tophrbortool.click>
+ Sun, 24 Sep 2023 17:58:56 -0400 (envelope-from
+ <kroger_customer_support-intel+2Dgvt+2Ddev=lists.freedesktop.org@bluemarket.autos>)
+Date: Sun, 24 Sep 2023 17:58:56 -0400
+From: "Kroger Customer Support" <kroger_customer_support@bluemarket.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: An exclusive Pittsburgh 225 Piece Tool Set is available, and it's
- waiting for your feedback &ndash; simply share your thoughts to claim it.
+Subject: We're acknowledging this day with a gift,
+ a modest gesture reflecting our gratitude.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_349_1858418172.1695583212481"
-Message-ID: <0.0.0.CF.1D9EF276D11DA78.2CE11F@mail.tophrbortool.click>
+ boundary="----=_Part_385_1857980499.1695587883027"
+Message-ID: <0.0.0.100.1D9EF3250C4D2E8.2DC61A@mail.bluemarket.autos>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,7 +52,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_349_1858418172.1695583212481
+------=_Part_385_1857980499.1695587883027
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,113 +61,97 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>these thrilling tools</title> 
+  <title>sincerely appreciate</title> 
  </head> 
- <body style="padding: 0; margin: 0;"> 
-  <div style="background-color: rgb(255, 235, 235);"> 
-   <div> 
-    <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <caption>
-      &nbsp;
-     </caption> 
-     <thead> 
-      <tr> 
-       <th> <p style="padding: 10px; margin: 0;">&nbsp;</p> 
-        <div style="background-color: #fff; max-width: 500px; margin: auto;"> 
-         <div>
-          <a href="http://www.tophrbortool.click/6dd4t2395GWn8612z5fraeZ1765D36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQrR9eK5K1_v05fTywD/embolden-Okamoto"><img alt="KJASHE" src="http://www.tophrbortool.click/5b16vRV2395IX7Da13R5ofb0XA1765h36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQrR9eK5O10ZY6KBwDOL/dislocated-glees" style="display: block; max-width: 200px; margin: auto;" width="100%" /></a>
-         </div> 
-        </div> </th> 
-      </tr> 
-     </thead> 
-     <tbody> 
-      <tr> 
-       <td class="plipopos orns"> 
-        <div style="background-color: #610000; max-width: 500px; margin: auto;"> 
-         <div style="padding: 20px 0px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px; text-align: center; color: #fff;">
-          <strong>Important Announcement<br /> from Harbor Freight</strong>
-         </div> 
-        </div> </td> 
-       <td class="plipopos orns">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-     <tfoot style="margin: 0; padding: 0;"> 
-      <tr> 
-       <td colspan="2"> 
-        <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-         <caption>
-          &nbsp;
-         </caption> 
-         <thead> 
-          <tr> 
-           <th>&nbsp;</th> 
-          </tr> 
-         </thead> 
+ <body style="margin: 0; padding: 0;"> 
+  <div> 
+   <article> 
+    <ul style="list-style-type: none; padding: 0; margin: 0;"> 
+     <li class="lossproyecs info">&nbsp;</li> 
+     <li class="lossproyecs info">&nbsp;</li> 
+     <li class="lossproyecs info"> 
+      <div style="background-color: #dddddd;"> 
+       <div style="padding: 1em 0em;"> 
+        <table align="center" style="border-collapse: collapse;"> 
          <tbody> 
           <tr> 
-           <td class="plipopos orns"> 
-            <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
-             <p style="margin: 0; padding: 20px 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px; text-align: center; line-height: 28px ;">We're excited to share some thrilling news from <strong>Harbor Freight</strong>. You can now obtain a <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.<br /> <br /> <span style="font-size: 20px;">Take immediate action and don't miss out on this opportunity! You have until <strong>September 24th</strong> to obtain these exciting tools. </span></p> 
-            </div> </td> 
-           <td class="plipopos orns">&nbsp;</td> 
+           <td align="center"><a href="http://www.bluemarket.autos/c7d5ji2395e8Xm612H5fb3ZL1766l36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIR9Km6s10BlN5ykMwD/Angelina-lawless" target="_blank"><img alt="asesee" src="http://www.bluemarket.autos/d135l239z5H7gaD13o5fLb5rq1766q36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQIR9Km6byq10H5U@ywD/Angelina-lawless" style="display: block; max-width: 200px; margin: auto;" width="100%" /></a></td> 
           </tr> 
          </tbody> 
-         <tfoot> 
+        </table> 
+       </div> 
+       <table align="center" style="border-collapse: collapse; max-width: 520px; margin: auto; background-color: #fff;"> 
+        <tbody style="background-color: #2A4F92;"> 
+         <tr> 
+          <td align="center"> 
+           <div style="padding: 1.2em 1.4em; font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height:  1.3em; color: #fff;">
+            Thank you for participating in our survey. Your input is highly valuable to us at 
+            <strong>Lowe's</strong>, and we greatly appreciate your feedback.            </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+        <table align="center" cellpadding="10" cellspacing="0" style="border-collapse: collapse;"> 
+         <tbody> 
           <tr> 
-           <td colspan="2"> 
-            <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
-             <center style="padding-top: 10px; padding-right: 33px; padding-bottom: 10px; padding-left: 33px; border-radius: 4px; background-color: #c70404; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; font-weight: bold; max-width: 200px; margin: auto;">
-              <a href="http://www.tophrbortool.click/6dd4t2395GWn8612z5fraeZ1765D36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQrR9eK5K1_v05fTywD/embolden-Okamoto" style="text-decoration: none; color: white;">Start Here Now &gt; &gt; </a>
-             </center> 
+           <td> 
+            <center style="max-width: 90px; margin: auto;">
+             <a href="http://www.bluemarket.autos/c7d5ji2395e8Xm612H5fb3ZL1766l36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIR9Km6s10BlN5ykMwD/Angelina-lawless"><img alt="asesee" src="http://www.bluemarket.autos/instrumenting-prospect/af85tt2395PA7aG13t5fm_b6P1766v36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQIR9Km6uO10Tp5zAPwD" width="100%" /></a>
+            </center> </td> 
+           <td> 
+            <center style="max-width: 120px; margin: auto;">
+             <a href="http://www.bluemarket.autos/c7d5ji2395e8Xm612H5fb3ZL1766l36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIR9Km6s10BlN5ykMwD/Angelina-lawless"><img alt="eesesq" src="http://www.bluemarket.autos/betters-forcefully/8a05K2i395j7amp11a5fb7K1766Z36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQIR9Km5Y1r0p6CPLwDJ" width="100%" /></a>
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <p style="padding: 1.2em 1.4em; font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height:  1.3em; color: #000; text-align: center; margin: 0;">Thanks once more for your ongoing support. We can't wait to receive your feedback soon! Your ongoing support is highly valued, and we eagerly await your feedback!</p> 
+        <table align="center" style="border-collapse: collapse; max-width: 520px; margin: auto; background-color: #fff;"> 
+         <tbody style="background-color: #2A4F92;"> 
+          <tr> 
+           <td align="center"> 
+            <div style="padding: 1.2em 1.4em; font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height:  1.3em; color: #fff;">
+             Your continued support is of great importance to us, and we look forward to receiving your feedback eagerly.             </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <p style="padding: 1.2em 1.4em ; font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height:  1.3em; color: #000; text-align: center; margin: 0;">Accessing the survey is a breeze?simply click the provided link below. It's a quick task that will require only a few minutes of your valuable time, and rest assured, your responses will be handled with the utmost confidentiality.</p> 
+        <table align="center"> 
+         <tbody> 
+          <tr> 
+           <td> 
+            <div style="width: 220px; margin: auto; padding: 3.5% 5%; background-color: #2A4F92; font-family: Arial, Helvetica, sans-serif; font-size: 1em; text-align: center; font-weight: 900; border-radius: 20px;">
+             <a href="http://www.bluemarket.autos/c7d5ji2395e8Xm612H5fb3ZL1766l36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIR9Km6s10BlN5ykMwD/Angelina-lawless" style="text-decoration: none; color: rgb(255, 255, 255);" target="_blank">Start Here Now &gt; &gt;</a>
             </div> </td> 
           </tr> 
-         </tfoot> 
+         </tbody> 
         </table> 
-        <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
-         <div style="padding: 30px 0px 10px 0px; text-align: center;">
-          <a href="http://www.tophrbortool.click/6dd4t2395GWn8612z5fraeZ1765D36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQrR9eK5K1_v05fTywD/embolden-Okamoto"><img alt="FLIPSE" src="http://www.tophrbortool.click/streetcars-pigments/9cc5g23z95GGQ7a11K5fb1W1765M36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQrR9eK6b10Fzl5JNMwD" style="display: block; max-width: 225px; margin: auto;" width="100%" /></a>
-         </div> 
-        </div> 
-        <div style="background-color: #fff; max-width: 500px; margin: auto;;"> 
-         <hr color="black" size="1.5px" style="margin: auto; margin-bottom: 10px; border-radius: 50px;" width="250px" /> 
-         <hr color="black" size="1.5px" style="margin: auto; margin-bottom: 10px; border-radius: 50px;" width="215px" /> 
-         <hr color="black" size="1.5px" style="margin: auto; margin-bottom: 10px; border-radius: 50px;" width="180px" />
-        </div> </td> 
-      </tr> 
-     </tfoot> 
-    </table> 
-    <p style="padding-bottom: 400px;">&nbsp;</p> 
-    <article> 
-     <p style="max-width: 500px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; text-align: center; font-weight: 900; color: #c70404;"><font>more than welcome to leave in <a href="http://www.tophrbortool.click/streetcars-pigments/cd85z2K395N8kO611O5fafk1765p36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQrR9eK7E1T0Ilx6iLjywD">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY, </font></p> 
-    </article> 
-    <p style="padding-bottom: 30px;">&nbsp;</p> 
-    <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <caption>
-      &nbsp;
-     </caption> 
-     <thead> 
-      <tr> 
-       <th>&nbsp;</th> 
-      </tr> 
-     </thead> 
-     <tbody> 
-      <tr> 
-       <td class="plipopos orns">&nbsp;</td> 
-       <td class="plipopos orns">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-     <tfoot> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tfoot> 
-    </table> 
-   </div> 
-   <ul style="list-style-type: none; padding: 0; margin: 0;"> 
-   </ul> 
+        <p style="padding: 1.2em 1.4em 0em 1.4em; font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height:  1.3em; color: #000; text-align: center; margin: 0;">Thank you once again for your continued support. We're eagerly looking forward to receiving your feedback soon! Your ongoing support is greatly appreciated, and we're excited to hear from you!</p> &nbsp; 
+        <hr color="black" size="1.5px" style="margin: auto; border-radius: 50px;" width="65%" />&nbsp; 
+        <p style="padding: 1.2em 1.4em 0em 1.4em; font-family: Arial, Helvetica, sans-serif; font-size: .9em; line-height:  1.3em; color: #000; text-align: center; margin: 0;">Warm regards,<br /> <strong>The Kroger Survey Team</strong></p> 
+        <p style="padding: 20px; margin: 0;">&nbsp;</p> 
+       </div> 
+      </div> 
+      <div style="padding-top: 400px; background-color: #dddddd;">
+       &nbsp;
+      </div> 
+      <table align="center"> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <article> 
+           <p style="font-size: 13px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center;">if you need to go visit <a href="http://www.bluemarket.autos/51b6By23Q95CwJ8611X5fb4U1766R36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQIR9Km6h1ztW06Rllw@D/renounces-requirement">here</a><br /> 10010 126 E 23rd St New York, NY, US</p> 
+          </article> </td> 
+        </tr> 
+       </tbody> 
+      </table> </li> 
+     <li class="lossproyecs info">&nbsp;</li> 
+     <li class="lossproyecs info">&nbsp;</li> 
+    </ul> 
+   </article> 
   </div>   
- <img src="http://www.tophrbortool.click/89f5BF2395XwN8513X5lufb2K1765i36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQrR9eK6SP10rV5KAkwD/freshened-headphone" alt=""/></body>
+ <img src="http://www.bluemarket.autos/6fb4e2395o8pz512iB5fb8r1766t36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQIR9Km7iZj10qW5g1wkD/densely-northward" alt=""/></body>
 </html>
 
-------=_Part_349_1858418172.1695583212481--
+------=_Part_385_1857980499.1695587883027--
 
