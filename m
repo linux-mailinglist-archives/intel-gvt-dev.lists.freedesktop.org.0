@@ -1,46 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 619667ACAFE
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 Sep 2023 19:22:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 006D87ACBA9
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 Sep 2023 21:33:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F376410E1B6;
-	Sun, 24 Sep 2023 17:22:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 81A0110E14F;
+	Sun, 24 Sep 2023 19:33:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 24 Sep 2023 17:22:04 UTC
-Received: from mail.ploplowsinfo.click (unknown [77.90.135.6])
- by gabe.freedesktop.org (Postfix) with ESMTP id 73DEB10E1B6
+Received: from mail.tophrbortool.click (unknown [77.90.135.65])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F36B010E14F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 24 Sep 2023 17:21:58 +0000 (UTC)
+ Sun, 24 Sep 2023 19:33:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=ploplowsinfo.click; 
+ d=tophrbortool.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=vital_information_about_your_lowes_store@ploplowsinfo.click; 
- bh=vwZI5UYi1T5vWsW/H2lsLunqfWE=;
- b=e6mSV5d8kjhu+f49PVvxnw/B7uZRpguCPdlDkiKvCtGIxhR1dRwsxYK4QIts8wkKLho8JNGBUPCW
- BhwToZeurFEmjS18yagdFozsyUdGKEeLeEvJI3AJXPLk55jya+uYTs2YULNECCtlQCjbF+4QU8Hd
- wEnlng0lN+KFJ1g3D7I=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ploplowsinfo.click; 
- b=UsoxxJYCuPfzZNCNwdK9poHmj4EOtQvva5hCwho7/9J/An+E/AZB/t2w2OS3n+GfWSjNidhVRtRw
- 8018y4hqczLqOunimR+QWFA2prDAutD5lSP6fLvXobfJXc33x7f1wUZWANHQb3VdDyqD3UsWC0QJ
- /FD4CrgLxslsOjbQ3j0=;
-Received: by mail.ploplowsinfo.click id h221i60001gl for
+ i=harbor_freight_bonuses@tophrbortool.click; 
+ bh=91ySNKUedLts8mJY/fqM1OZOLfw=;
+ b=min2mUt+/GMxuJUz2foUb7C1t4m7HTxvZ2QX9QmdV8QICheAfTG1FOAv7AsAds5OBUw2v0KFBb+Y
+ uHC6iwKKoF/wSfhzWMhvaTVZuaqDHD0aLo+HuP8IM6Hj2LHWBx/n05XyoL3jiUJBQ2zejaT54qy7
+ 1Gm7UnzyPg+8AUbew5o=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tophrbortool.click; 
+ b=Rab+7Ks7dEU5m5j2TDHgJYRN9J/XzAHZ/DUQcWjhAnFaIAI57a6pJHjJ58qA23N9oe5TjmV92rKp
+ a+22rkzHZrgSykM/1vagBthnT3TV7XvHWQTjuciVJkROC2HQ4Qqi3etHtDmFPKv0aUGAK280tZSy
+ eeVEQ3B3O7gBUSmNlaU=;
+Received: by mail.tophrbortool.click id h22h000001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 24 Sep 2023 14:34:52 -0400 (envelope-from
- <vital_information_about_your_lowes_store-intel+2Dgvt+2Ddev=lists.freedesktop.org@ploplowsinfo.click>)
-Date: Sun, 24 Sep 2023 14:34:52 -0400
-From: "Vital Information About Your Lowes Store"
- <vital_information_about_your_lowes_store@ploplowsinfo.click>
+ Sun, 24 Sep 2023 16:40:59 -0400 (envelope-from
+ <harbor_freight_bonuses-intel+2Dgvt+2Ddev=lists.freedesktop.org@tophrbortool.click>)
+Date: Sun, 24 Sep 2023 16:40:59 -0400
+From: "Harbor Freight Bonuses" <harbor_freight_bonuses@tophrbortool.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Share your opinions and reap the rewards of an outstanding Kobalt
- Tool set.
+Subject: An exclusive Pittsburgh 225 Piece Tool Set is available, and it's
+ waiting for your feedback &ndash; simply share your thoughts to claim it.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_115_493265563.1695575638993"
-Message-ID: <0.0.0.8D.1D9EF15CEA7AF2C.51E61F@mail.ploplowsinfo.click>
+ boundary="----=_Part_349_1858418172.1695583212481"
+Message-ID: <0.0.0.CF.1D9EF276D11DA78.2CE11F@mail.tophrbortool.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_115_493265563.1695575638993
+------=_Part_349_1858418172.1695583212481
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,44 +62,113 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>fantastic items</title> 
+  <title>these thrilling tools</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #f8faff;"> 
-  <div> 
-   <div style="max-width: 500px; margin: auto; text-align: center;">
-    <br /> 
-    <br /> 
-    <a href="http://www.ploplowsinfo.click/6836NV239s5ly8m613ay5fa9nQ1764Y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQwR9ee7VRRDN106hlwDA2/drawback-lawsuits"><img alt="lkasees" src="http://www.ploplowsinfo.click/Gustav-robust/8fa5C239t5A_C7a11P5fabC1764j36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQwR9ee5O1F0r6rNzjwD" style="display: block; max-width: 201px; margin: auto;" width="100%" /></a> 
-    <div style="background-color: #2745A6; padding: 1.5% .5%; border-radius: 5px;"> 
-     <div style="background-color: #fff;"> 
-      <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.4em; font-weight: 700; margin: 0; background-color: #2745A6; color: white; padding: 0px 0px 10px 0px;">Last Reminder<br /> About Your Lowe's Reward</p> 
-      <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.2rem; margin: 0; padding: 15px 30px; font-weight: 500;">Exciting News from <strong style="color: #2745A6;">Lowe's</strong>! A <strong style="color: #2745A6;">Kobalt Tool Set</strong> is ready for you in our stores. Act quickly and seize this opportunity! You have until <strong style="color: #2745A6;">September 24th</strong> to claim these fantastic items.</p> &nbsp; 
-      <div> 
-       <center style="background-color: #2745A6; padding: 1.2em 1.4em; width: 11em; margin: auto; border-radius: 1em; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; font-weight: bold;">
-        <a href="http://www.ploplowsinfo.click/6836NV239s5ly8m613ay5fa9nQ1764Y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQwR9ee7VRRDN106hlwDA2/drawback-lawsuits" style="text-decoration: none; color: rgb(255, 255, 255);" target="_blank">Start Here Now &gt;&gt;</a>
-       </center> 
-      </div> &nbsp; 
-      <div> 
-       <center style="max-width: 285px; margin: auto; display: block;">
-        <a href="http://www.ploplowsinfo.click/6836NV239s5ly8m613ay5fa9nQ1764Y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQwR9ee7VRRDN106hlwDA2/drawback-lawsuits" style="text-decoration: none; color: rgb(255, 255, 255);" target="_blank"><img alt="aseases" src="http://www.ploplowsinfo.click/9e94L2395mAC7a13o5fapKcn1764w36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQwR9ee5C1Y0D6LWwDJJ/emergency-Norwegian" width="100%" /></a>
-       </center> 
-      </div> 
-      <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.2rem; margin: 0; padding: 15px 30px; font-weight: 500;">Thank you for participating in our survey. Your input is highly valuable to us at <strong style="color: #2745A6;">Lowe's</strong>, and we greatly appreciate your feedback.</p> 
-     </div> 
-    </div> 
+ <body style="padding: 0; margin: 0;"> 
+  <div style="background-color: rgb(255, 235, 235);"> 
+   <div> 
+    <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <caption>
+      &nbsp;
+     </caption> 
+     <thead> 
+      <tr> 
+       <th> <p style="padding: 10px; margin: 0;">&nbsp;</p> 
+        <div style="background-color: #fff; max-width: 500px; margin: auto;"> 
+         <div>
+          <a href="http://www.tophrbortool.click/6dd4t2395GWn8612z5fraeZ1765D36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQrR9eK5K1_v05fTywD/embolden-Okamoto"><img alt="KJASHE" src="http://www.tophrbortool.click/5b16vRV2395IX7Da13R5ofb0XA1765h36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQrR9eK5O10ZY6KBwDOL/dislocated-glees" style="display: block; max-width: 200px; margin: auto;" width="100%" /></a>
+         </div> 
+        </div> </th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td class="plipopos orns"> 
+        <div style="background-color: #610000; max-width: 500px; margin: auto;"> 
+         <div style="padding: 20px 0px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px; text-align: center; color: #fff;">
+          <strong>Important Announcement<br /> from Harbor Freight</strong>
+         </div> 
+        </div> </td> 
+       <td class="plipopos orns">&nbsp;</td> 
+      </tr> 
+     </tbody> 
+     <tfoot style="margin: 0; padding: 0;"> 
+      <tr> 
+       <td colspan="2"> 
+        <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+         <caption>
+          &nbsp;
+         </caption> 
+         <thead> 
+          <tr> 
+           <th>&nbsp;</th> 
+          </tr> 
+         </thead> 
+         <tbody> 
+          <tr> 
+           <td class="plipopos orns"> 
+            <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+             <p style="margin: 0; padding: 20px 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px; text-align: center; line-height: 28px ;">We're excited to share some thrilling news from <strong>Harbor Freight</strong>. You can now obtain a <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.<br /> <br /> <span style="font-size: 20px;">Take immediate action and don't miss out on this opportunity! You have until <strong>September 24th</strong> to obtain these exciting tools. </span></p> 
+            </div> </td> 
+           <td class="plipopos orns">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+         <tfoot> 
+          <tr> 
+           <td colspan="2"> 
+            <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+             <center style="padding-top: 10px; padding-right: 33px; padding-bottom: 10px; padding-left: 33px; border-radius: 4px; background-color: #c70404; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; font-weight: bold; max-width: 200px; margin: auto;">
+              <a href="http://www.tophrbortool.click/6dd4t2395GWn8612z5fraeZ1765D36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQrR9eK5K1_v05fTywD/embolden-Okamoto" style="text-decoration: none; color: white;">Start Here Now &gt; &gt; </a>
+             </center> 
+            </div> </td> 
+          </tr> 
+         </tfoot> 
+        </table> 
+        <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+         <div style="padding: 30px 0px 10px 0px; text-align: center;">
+          <a href="http://www.tophrbortool.click/6dd4t2395GWn8612z5fraeZ1765D36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQrR9eK5K1_v05fTywD/embolden-Okamoto"><img alt="FLIPSE" src="http://www.tophrbortool.click/streetcars-pigments/9cc5g23z95GGQ7a11K5fb1W1765M36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQrR9eK6b10Fzl5JNMwD" style="display: block; max-width: 225px; margin: auto;" width="100%" /></a>
+         </div> 
+        </div> 
+        <div style="background-color: #fff; max-width: 500px; margin: auto;;"> 
+         <hr color="black" size="1.5px" style="margin: auto; margin-bottom: 10px; border-radius: 50px;" width="250px" /> 
+         <hr color="black" size="1.5px" style="margin: auto; margin-bottom: 10px; border-radius: 50px;" width="215px" /> 
+         <hr color="black" size="1.5px" style="margin: auto; margin-bottom: 10px; border-radius: 50px;" width="180px" />
+        </div> </td> 
+      </tr> 
+     </tfoot> 
+    </table> 
+    <p style="padding-bottom: 400px;">&nbsp;</p> 
+    <article> 
+     <p style="max-width: 500px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; text-align: center; font-weight: 900; color: #c70404;"><font>more than welcome to leave in <a href="http://www.tophrbortool.click/streetcars-pigments/cd85z2K395N8kO611O5fafk1765p36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQrR9eK7E1T0Ilx6iLjywD">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY, </font></p> 
+    </article> 
+    <p style="padding-bottom: 30px;">&nbsp;</p> 
+    <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <caption>
+      &nbsp;
+     </caption> 
+     <thead> 
+      <tr> 
+       <th>&nbsp;</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td class="plipopos orns">&nbsp;</td> 
+       <td class="plipopos orns">&nbsp;</td> 
+      </tr> 
+     </tbody> 
+     <tfoot> 
+      <tr> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tfoot> 
+    </table> 
    </div> 
-  </div> 
-  <div style="padding-top: 450px;">
-   &nbsp;
-  </div> 
-  <footer style="width: 100%; background-color: #2745A6; padding-top: 15px; padding-bottom: 15px;"> 
-   <address style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-weight: 20px; font-size: 13px; text-align: center; color: white;">you can leave with sadness <a href="http://www.ploplowsinfo.click/60b5Cw2395ulZ8612y5faiaT1764J36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQwR9ee5jz1G05jypwD/compose-communications" style="color: #00ffff;">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
-  </footer> 
-  <div style="padding-top: 30px;">
-   &nbsp;
+   <ul style="list-style-type: none; padding: 0; margin: 0;"> 
+   </ul> 
   </div>   
- <img src="http://www.ploplowsinfo.click/5b14L2395tVF8511L5fadU1764S36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQwR9ee6zP10_m5HB@wD/emergency-Norwegian" alt=""/></body>
+ <img src="http://www.tophrbortool.click/89f5BF2395XwN8513X5lufb2K1765i36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQrR9eK6SP10rV5KAkwD/freshened-headphone" alt=""/></body>
 </html>
 
-------=_Part_115_493265563.1695575638993--
+------=_Part_349_1858418172.1695583212481--
 
