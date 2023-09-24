@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D77477ACA0E
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 Sep 2023 16:39:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B8587ACA96
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 Sep 2023 17:39:16 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4500410E0A4;
-	Sun, 24 Sep 2023 14:39:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B596210E12C;
+	Sun, 24 Sep 2023 15:39:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 24 Sep 2023 14:39:25 UTC
-Received: from mail.getonblue.bond (unknown [77.90.135.44])
- by gabe.freedesktop.org (Postfix) with ESMTP id 72C4B10E0A4
+ Sun, 24 Sep 2023 15:39:10 UTC
+Received: from mail.ezlowstool.bond (unknown [77.90.135.49])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5192310E12C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 24 Sep 2023 14:39:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=getonblue.bond; 
+ Sun, 24 Sep 2023 15:39:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ezlowstool.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=jetblue_your_travel_partner@getonblue.bond; 
- bh=Pa503ya/QDfDgcl67w2BjwPreAQ=;
- b=EE4aXQblMkmhWUyhK2dZ42S88mtHJDoSzC0PSBlC9NN8hj9RSr1zovJZVOeyJvKI/ypsK4xnQjCH
- yaFvEQQnXWQwwYFaJHy4Qw7MOJOgvWm9DSTdlI0uzm4R+pXfzLXsf4bSPyrzqebEhX5aZkABGnmE
- vfrHz1hcvh3V2vRWJ2g=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=getonblue.bond;
- b=uNDaDK7xAJfFwxSoEcyKALnT/MwgPnuQyAzqqt9aOVZnAdRvU67hD3/tmoE4DfUA575OJ/FatVrt
- adpKSGzDtbhWnQz7BVyIS60EgG5phM66RaU//g7awrW+kVD3D82Of8bIXMknbLrwUiiSdKYl0YDx
- SnTzkXwOjLAUFV2bcrY=;
-Received: by mail.getonblue.bond id h2151q0001gt for
+ i=insights-into-lowes-shopping@ezlowstool.bond; 
+ bh=dCNGTAjgFlMPl0AVrvx2CtNHkJ4=;
+ b=Xf3+Vvji+h8TwTK0tohzZA2XpDT5qrnJvJAbA9LO4ei8Q4WSFVy0Qs+3KnyFg9+TZPfPZ9S1lUTu
+ EluIVw+6O6125KkCMuqj5u6dfKz1SGbxEZMlwTmxEYipC7pZnflpw2yp/ODJ6RAF2tcSRidONL13
+ dNCVvAyZsHsPGpEAAng=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ezlowstool.bond;
+ b=jNaCE9a9RqzzhJ4LQceiG26HStDQZDus3/wQDY4VEDoQ8TeTandAr/toaA1trTU+cIWHlEHe2noJ
+ l5NpJ95nTSy2nCwwZcZQspk0RhX1cV3cVDXhjPMOsLmvw0SK+nYhEOcSPhzTzMknIJJuASoRctM2
+ l+xHeZKhyUIoBKrexD4=;
+Received: by mail.ezlowstool.bond id h21c1s0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 24 Sep 2023 10:30:38 -0400 (envelope-from
- <jetblue_your_travel_partner-intel+2Dgvt+2Ddev=lists.freedesktop.org@getonblue.bond>)
-Date: Sun, 24 Sep 2023 10:30:38 -0400
-From: "JetBlue Your Travel Partner."
- <jetblue_your_travel_partner@getonblue.bond>
+ Sun, 24 Sep 2023 11:30:41 -0400 (envelope-from
+ <insights-into-lowes-shopping-intel+2Dgvt+2Ddev=lists.freedesktop.org@ezlowstool.bond>)
+Date: Sun, 24 Sep 2023 11:30:41 -0400
+From: "Insights Into Lowes Shopping"
+ <insights-into-lowes-shopping@ezlowstool.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Take our survey and enter to win flights for your ideal summer
- getaway!
+Subject: Your Opinions Make a Difference: Claim a brand new Tool set - this
+ offer wraps up today.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_91_881066892.1695565812920"
-Message-ID: <0.0.0.A.1D9EEF3B018E0A2.10DB4E@mail.getonblue.bond>
+ boundary="----=_Part_154_908162687.1695569421262"
+Message-ID: <0.0.0.40.1D9EEFC138F5A32.55E49D@mail.ezlowstool.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_91_881066892.1695565812920
+------=_Part_154_908162687.1695569421262
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,135 +63,141 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <link href="http://www.getonblue.bond/warbling-circuit/3d25l239k5O86ho11k5f99Z1761i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQAR9eQ5A1wg05L1JwD" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.getonblue.bond/89f5R239r5SA86N13l5f9oaFo1761L36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQAR9eQ5H1v0O5bX0wD/steadfast-invocation" rel="preconnect" /> 
-  <link href="http://www.getonblue.bond/warbling-circuit/3d25l239k5O86ho11k5f99Z1761i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQAR9eQ5A1wg05L1JwD/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>opinion and want</title> 
-  <link href="http://www.getonblue.bond/warbling-circuit/3d25l239k5O86ho11k5f99Z1761i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQAR9eQ5A1wg05L1JwD" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.getonblue.bond/89f5R239r5SA86N13l5f9oaFo1761L36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQAR9eQ5H1v0O5bX0wD/steadfast-invocation" rel="preconnect" /> 
-  <link href="http://www.getonblue.bond/warbling-circuit/3d25l239k5O86ho11k5f99Z1761i36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQAR9eQ5A1wg05L1JwD/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&amp;display=swap" rel="stylesheet" /> 
+  <title>can be used at</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
   <div> 
-   <div> 
+   <div style="border-left: solid 40px hsl(227, 100%, 95%); border-right: solid 40px hsl(227, 100%, 95%);"> 
     <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
      <caption>
       &nbsp;
      </caption> 
      <thead> 
       <tr> 
-       <th>&nbsp;</th> 
+       <th colspan="5"> 
+        <div style="background-color: #011A6B;">
+         <a href="http://www.ezlowstool.bond/spurns-Lanka/ef44Q2395f8YQ611I5fa0l1762T36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ0R9eR6e10ROW5X@WwD" target="_blank"><span style="display: block; max-width: 250px;margin: auto;"><img alt="FlotS" src="http://www.ezlowstool.bond/6fb5A2L395pg7Ta12Q5fa1OH1762y36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ0R9eR5vkx106u1wDMU/brigantine-granulating" width="100%" /></span></a>
+        </div> </th> 
       </tr> 
      </thead> 
      <tbody> 
       <tr> 
-       <td class="flyblues tropical">&nbsp;</td> 
-       <td class="flyblues tropical">&nbsp;</td> 
-       <td class="flyblues tropical">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-     <tfoot> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tfoot> 
-    </table> 
-    <ul style="list-style-type: none; padding: 0; margin: 0;"> 
-     <li class="openers deliverys">&nbsp;</li> 
-     <li class="openers deliverys">&nbsp;</li> 
-     <li class="openers deliverys"> 
-      <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-       <caption>
-        &nbsp;
-       </caption> 
-       <thead> 
-        <tr> 
-         <th>&nbsp;</th> 
-        </tr> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td class="tacktes gross">&nbsp;</td> 
-         <td class="tacktes gross">&nbsp;</td> 
-         <td class="tacktes gross"> 
-          <div style="background-color: rgb(230, 230, 230);"> 
-           <div style="max-width: 520px; margin: auto;"> 
-            <p style="padding-bottom: 30px;">&nbsp;</p> 
-            <div style="background-color: #fff;"> 
-             <center style="font-family: 'Poppins', sans-serif; font-weight: bold; background-color: #002064; color: white; font-size: 30PX; padding: 15px 0px;">
-              JETBLUE
-              <br /> 
-              <span style="font-size: 20px;">Dear intel-gvt-dev@lists.freedesktop.org</span>
+       <td class="shops cryss">&nbsp;</td> 
+       <td class="shops cryss">&nbsp;</td> 
+       <td class="shops cryss"> 
+        <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+         <caption>
+          &nbsp;
+         </caption> 
+         <thead> 
+          <tr> 
+           <th colspan="5">&nbsp; 
+            <div style="max-width: 500px; margin: auto;"> 
+             <p style="font-family: Arial, Helvetica, sans-serif; font-size: .8cm; color: #011A6B; margin: 0;">Final Notice from Lowe's</p> 
+            </div> </th> 
+          </tr> 
+         </thead> 
+         <tbody> 
+          <tr> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp; 
+            <div> 
+             <p style="margin: 0;">&nbsp;</p> 
+             <center style="max-width: 320px; margin: auto;">
+              <a href="http://www.ezlowstool.bond/spurns-Lanka/ef44Q2395f8YQ611I5fa0l1762T36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ0R9eR6e10ROW5X@WwD" target="_blank"><img alt="YOPSLL" src="http://www.ezlowstool.bond/1794p2395CIy7a13U5fWaX2k1762X36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ0R9eR7j1mi0Al5q20wD/founded-irritating" width="100%" /> </a>
              </center> 
-             <div> 
-              <section style="padding: 0 7%;"> 
-               <p style="font-family: 'Nunito', sans-serif; text-align: justify; font-size: 18px; font-weight: 500;">The <b style="color: #002064;">JetBlue Airlines</b> Survey is excited to present you with an exclusive chance to earn up to <b style="color: #002064;">$100 in JetBlue Travel Credit</b> or an equivalent valuable gift! Your feedback is important to us, and we're eager to hear your ideas on how we can improve your travel experience.<br /> <br /> <a href="http://www.getonblue.bond/allotment-vegetate/6cx6M2Jp395WH8M613J5mf9gbB1761R36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQAR9eQ7C1j0tzO6PyULwD"><img alt="KLPSR" src="http://www.getonblue.bond/4854w2395O_7aJ13e5f9wMdv1761p36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQAR9eQ6lm1PS05YMwDW/steadfast-invocation" style="display: block; max-width: 220px; float: right; margin-left: 3.5%; margin-top: 2%; outline: solid 1.5px #000;" width="100%" /></a> Don't overlook this fantastic opportunity to earn up to <strong style="color: #002064;">$10
- 0 in Travel Credit</strong> or a gift of equal value. Take action now to claim your reward and share your thoughts with us!</p> 
-               <div> 
-                <div style="background-color: #002064; padding: 4mm 3mm; font-size: 18px;font-family: 'Nunito', sans-serif; text-align: center; font-weight: bold; border-radius: 7px; text-shadow: 0 0 3px;">
-                 <a href="http://www.getonblue.bond/allotment-vegetate/6cx6M2Jp395WH8M613J5mf9gbB1761R36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQAR9eQ7C1j0tzO6PyULwD" style="text-decoration: none; color: white;">Participate in the survey and collect your reward. </a>
-                </div> 
+             <p>&nbsp;</p> 
+            </div> </td> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+         <tfoot> 
+          <tr> 
+           <td colspan="5"> 
+            <div style="max-width: 500px; margin: auto; text-align: center;"> 
+             <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: .5cm; line-height: .7cm;">Exciting News! <b>Lowe's offers a special opportunity</b> to acquire a <b>Stanley Tool Set</b>, valid at any of our store locations. Don't miss this chance! You have until <b>September 24rd</b> to get these excellent tools.</p> 
+            </div> </td> 
+          </tr> 
+         </tfoot> 
+        </table> 
+        <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+         <caption>
+          &nbsp;
+         </caption> 
+         <thead> 
+          <tr> 
+           <th>&nbsp;</th> 
+          </tr> 
+         </thead> 
+         <tbody> 
+          <tr> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss"> 
+            <ul style="list-style-type: none; padding: 0; max-width: 500px; margin: auto; padding: 30px 0;"> 
+             <li class="butooms obllys">&nbsp;</li> 
+             <li class="butooms obllys"> 
+              <div> 
+               <div style="padding: 16px 33px; background-color: #011A6B; max-width: 300px; margin: auto; border-radius: 7px; font-family: Arial, Helvetica, sans-serif; font-size: 22px; text-align: center;">
+                <a href="http://www.ezlowstool.bond/spurns-Lanka/ef44Q2395f8YQ611I5fa0l1762T36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ0R9eR6e10ROW5X@WwD" style="text-decoration: none; color: white;" target="_blank">Start The Survey Here &gt;&gt;</a>
                </div> 
-               <div> 
-                <div style="padding: 30px 0px;">
-                 <a href="http://www.getonblue.bond/allotment-vegetate/6cx6M2Jp395WH8M613J5mf9gbB1761R36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQAR9eQ7C1j0tzO6PyULwD"><img alt="KJASHE" src="http://www.getonblue.bond/provocation-theaters/2885p239B5lT7Va13F5f9VYeo1761C36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQAR9eQ6EN10oj5tTpwD" style="display: block; margin: auto; outline: solid 1.5px #000;" width="85%" /></a>
-                </div> 
-               </div> 
-              </section> 
-              <div style="padding: 30px 5px; background-color: #002064; color: white; font-family: 'Nunito', sans-serif; text-align: center;">
-               Act quickly! This exclusive offer has a limited availability. We kindly request that you finish the survey by 
-               <b>09/24/2023</b> to secure your eligibility for the rewards. Please be aware that rewards will be distributed on a first-co
-               <br /> &nbsp; 
-               <div> 
-                <div style="background-color: white; padding: 2mm 4mm; font-size: 18px;font-family: 'Nunito', sans-serif; text-align: center; font-weight: bold; border-radius: 7px; display: inline-block;">
-                 <a href="http://www.getonblue.bond/allotment-vegetate/6cx6M2Jp395WH8M613J5mf9gbB1761R36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQAR9eQ7C1j0tzO6PyULwD" style="text-decoration: none; color: #002064;">Go Now </a>
-                </div> 
-               </div> 
-              </div> 
-              <section style="padding: 0 7%;"> 
-               <div style="font-family: 'Nunito', sans-serif; text-align: center; font-size: 16px; font-weight: 500; margin: 5% 0%;">
-                We want to express our gratitude for your valued membership in the 
-                <strong>JetBlue Airlines Community</strong>. Your time and contributions are highly valued by us.                 <br /> &nbsp; 
-                <hr /> 
-                <article> 
-                 <p style="max-width: 500px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; text-align: center; font-weight: 900; color: #002064;"><font>more than welcome to leave in <a href="http://www.getonblue.bond/abb6R23D9A5QD86Q13S5pf9cjV1761R36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQAR9eQ5bo10k5oBwND/steadfast-invocation">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY, </font></p> 
-                </article> 
-               </div> 
-              </section> 
-             </div> 
-            </div> 
-           </div> 
-           <p style="padding-bottom: 400px;">&nbsp;</p> 
-          </div> </td> 
-         <td class="tacktes gross">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-       <tfoot> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tfoot> 
-      </table> </li> 
-     <li class="openers deliverys">&nbsp;</li> 
-     <li class="openers deliverys">&nbsp;</li> 
-    </ul> 
-    <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <caption>
-      &nbsp;
-     </caption> 
-     <thead> 
-      <tr> 
-       <th>&nbsp;</th> 
+              </div> </li> 
+             <li class="butooms obllys"> 
+              <div style="border-bottom: solid 3px #000; padding-top: 60px; text-align: center; max-width: 70px; margin: auto;">
+               &nbsp;
+              </div> </li> 
+             <li> 
+              <div style="max-width: 500px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 14px; text-align: center; padding-top: 30px;">
+               Thank you in advance,
+               <br /> 
+               <strong>The Lowe's Team </strong>
+              </div> </li> 
+            </ul> </td> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+         <tfoot> 
+          <tr> 
+           <td colspan="5"> 
+            <div style="max-width: 500px; margin: auto; padding-top: 420px;;"> 
+             <p style="font-size: 14px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center;">its your time to leave? do it <a href="">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+            </div> </td> 
+          </tr> 
+         </tfoot> 
+        </table> </td> 
+       <td class="shops cryss">&nbsp;</td> 
+       <td class="shops cryss">&nbsp;</td> 
       </tr> 
-     </thead> 
-     <tbody> 
       <tr> 
-       <td class="plops nwesas">&nbsp;</td> 
-       <td class="plops nwesas">&nbsp;</td> 
-       <td class="plops nwesas">&nbsp;</td> 
-       <td class="plops nwesas">&nbsp;</td> 
-       <td class="plops nwesas">&nbsp;</td> 
+       <td colspan="5" id="container"> 
+        <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+         <caption>
+          &nbsp;
+         </caption> 
+         <thead> 
+          <tr> 
+           <th>&nbsp;</th> 
+          </tr> 
+         </thead> 
+         <tbody> 
+          <tr> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp;</td> 
+           <td class="shops cryss">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+         <tfoot> 
+          <tr> 
+           <td>&nbsp;</td> 
+          </tr> 
+         </tfoot> 
+        </table> </td> 
       </tr> 
      </tbody> 
      <tfoot> 
@@ -202,8 +208,8 @@ Content-Transfer-Encoding: 7bit
     </table> 
    </div> 
   </div>   
- <img src="http://www.getonblue.bond/ferociously-irreversible/5ee6X23uM95Y8x5i12z5f9QfU1761j36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQAR9eQ7vPW1Ki05WlqwD" alt=""/></body>
+ <img src="http://www.ezlowstool.bond/cleavers-participle/c604H2395R85mm13MX5fUa3w1762G36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ0R9eR6g10txV5EBw3D" alt=""/></body>
 </html>
 
-------=_Part_91_881066892.1695565812920--
+------=_Part_154_908162687.1695569421262--
 
