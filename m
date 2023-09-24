@@ -2,44 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B8587ACA96
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 Sep 2023 17:39:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D46B77ACAC1
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 24 Sep 2023 18:17:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B596210E12C;
-	Sun, 24 Sep 2023 15:39:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 243C910E124;
+	Sun, 24 Sep 2023 16:17:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 24 Sep 2023 15:39:10 UTC
-Received: from mail.ezlowstool.bond (unknown [77.90.135.49])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5192310E12C
+ Sun, 24 Sep 2023 16:17:44 UTC
+Received: from mail.bettertools.click (unknown [77.90.135.55])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6044810E124
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 24 Sep 2023 15:39:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ezlowstool.bond; 
+ Sun, 24 Sep 2023 16:17:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bettertools.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=insights-into-lowes-shopping@ezlowstool.bond; 
- bh=dCNGTAjgFlMPl0AVrvx2CtNHkJ4=;
- b=Xf3+Vvji+h8TwTK0tohzZA2XpDT5qrnJvJAbA9LO4ei8Q4WSFVy0Qs+3KnyFg9+TZPfPZ9S1lUTu
- EluIVw+6O6125KkCMuqj5u6dfKz1SGbxEZMlwTmxEYipC7pZnflpw2yp/ODJ6RAF2tcSRidONL13
- dNCVvAyZsHsPGpEAAng=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ezlowstool.bond;
- b=jNaCE9a9RqzzhJ4LQceiG26HStDQZDus3/wQDY4VEDoQ8TeTandAr/toaA1trTU+cIWHlEHe2noJ
- l5NpJ95nTSy2nCwwZcZQspk0RhX1cV3cVDXhjPMOsLmvw0SK+nYhEOcSPhzTzMknIJJuASoRctM2
- l+xHeZKhyUIoBKrexD4=;
-Received: by mail.ezlowstool.bond id h21c1s0001gi for
+ i=oreilly-savings-squad@bettertools.click; 
+ bh=Jx88PZnANKNi1KJx9Ux0j/rHHNk=;
+ b=kUlklbv6WOJGefFpXBuWte10joyp2iAcEi2UPPz/H4qmWqnJqNS1K+wNkynhfwX+4VH2LtqFWM3h
+ UTmnAnXdnHs1vDoJHOqIYEdo+WVvYacvcHUgFVT3OCjYmQTczzXJuUW59ZzbdmNeFNy8tLVPB1EA
+ PMgs0jJnMCiU6RpHxMM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bettertools.click; 
+ b=SkaJ5z36eDNxZUqH2MJeVX8IHVHtbrsNu6WA5AzAYC2czv789d5Q6ptExMFOUK/QM4f2p180VQ25
+ JpeIlZ9YrDDgxQtaOe22uL2HL/0qaRIuqwMz/d3a2i7jNtZcay8WMZu15dxkswfF/6tc3NszbBba
+ I1gkMvAWECqhPC8ZFI8=;
+Received: by mail.bettertools.click id h21gig0001gh for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 24 Sep 2023 11:30:41 -0400 (envelope-from
- <insights-into-lowes-shopping-intel+2Dgvt+2Ddev=lists.freedesktop.org@ezlowstool.bond>)
-Date: Sun, 24 Sep 2023 11:30:41 -0400
-From: "Insights Into Lowes Shopping"
- <insights-into-lowes-shopping@ezlowstool.bond>
+ Sun, 24 Sep 2023 12:09:37 -0400 (envelope-from
+ <oreilly-savings-squad-intel+2Dgvt+2Ddev=lists.freedesktop.org@bettertools.click>)
+Date: Sun, 24 Sep 2023 12:09:37 -0400
+From: "OReilly Savings Squad" <oreilly-savings-squad@bettertools.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your Opinions Make a Difference: Claim a brand new Tool set - this
- offer wraps up today.
+Subject: Claim a superb Bosch Drill Set by sharing your opinions.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_154_908162687.1695569421262"
-Message-ID: <0.0.0.40.1D9EEFC138F5A32.55E49D@mail.ezlowstool.bond>
+ boundary="----=_Part_76_2094942626.1695571768203"
+Message-ID: <0.0.0.62.1D9EF018443270E.303592@mail.bettertools.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_154_908162687.1695569421262
+------=_Part_76_2094942626.1695571768203
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,152 +62,42 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>can be used at</title> 
+  <title>Act Quickly to Secure</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <div> 
-   <div style="border-left: solid 40px hsl(227, 100%, 95%); border-right: solid 40px hsl(227, 100%, 95%);"> 
-    <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <caption>
-      &nbsp;
-     </caption> 
-     <thead> 
-      <tr> 
-       <th colspan="5"> 
-        <div style="background-color: #011A6B;">
-         <a href="http://www.ezlowstool.bond/spurns-Lanka/ef44Q2395f8YQ611I5fa0l1762T36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ0R9eR6e10ROW5X@WwD" target="_blank"><span style="display: block; max-width: 250px;margin: auto;"><img alt="FlotS" src="http://www.ezlowstool.bond/6fb5A2L395pg7Ta12Q5fa1OH1762y36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ0R9eR5vkx106u1wDMU/brigantine-granulating" width="100%" /></span></a>
-        </div> </th> 
-      </tr> 
-     </thead> 
-     <tbody> 
-      <tr> 
-       <td class="shops cryss">&nbsp;</td> 
-       <td class="shops cryss">&nbsp;</td> 
-       <td class="shops cryss"> 
-        <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-         <caption>
-          &nbsp;
-         </caption> 
-         <thead> 
-          <tr> 
-           <th colspan="5">&nbsp; 
-            <div style="max-width: 500px; margin: auto;"> 
-             <p style="font-family: Arial, Helvetica, sans-serif; font-size: .8cm; color: #011A6B; margin: 0;">Final Notice from Lowe's</p> 
-            </div> </th> 
-          </tr> 
-         </thead> 
-         <tbody> 
-          <tr> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp; 
-            <div> 
-             <p style="margin: 0;">&nbsp;</p> 
-             <center style="max-width: 320px; margin: auto;">
-              <a href="http://www.ezlowstool.bond/spurns-Lanka/ef44Q2395f8YQ611I5fa0l1762T36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ0R9eR6e10ROW5X@WwD" target="_blank"><img alt="YOPSLL" src="http://www.ezlowstool.bond/1794p2395CIy7a13U5fWaX2k1762X36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ0R9eR7j1mi0Al5q20wD/founded-irritating" width="100%" /> </a>
-             </center> 
-             <p>&nbsp;</p> 
-            </div> </td> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-         <tfoot> 
-          <tr> 
-           <td colspan="5"> 
-            <div style="max-width: 500px; margin: auto; text-align: center;"> 
-             <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: .5cm; line-height: .7cm;">Exciting News! <b>Lowe's offers a special opportunity</b> to acquire a <b>Stanley Tool Set</b>, valid at any of our store locations. Don't miss this chance! You have until <b>September 24rd</b> to get these excellent tools.</p> 
-            </div> </td> 
-          </tr> 
-         </tfoot> 
-        </table> 
-        <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-         <caption>
-          &nbsp;
-         </caption> 
-         <thead> 
-          <tr> 
-           <th>&nbsp;</th> 
-          </tr> 
-         </thead> 
-         <tbody> 
-          <tr> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss"> 
-            <ul style="list-style-type: none; padding: 0; max-width: 500px; margin: auto; padding: 30px 0;"> 
-             <li class="butooms obllys">&nbsp;</li> 
-             <li class="butooms obllys"> 
-              <div> 
-               <div style="padding: 16px 33px; background-color: #011A6B; max-width: 300px; margin: auto; border-radius: 7px; font-family: Arial, Helvetica, sans-serif; font-size: 22px; text-align: center;">
-                <a href="http://www.ezlowstool.bond/spurns-Lanka/ef44Q2395f8YQ611I5fa0l1762T36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ0R9eR6e10ROW5X@WwD" style="text-decoration: none; color: white;" target="_blank">Start The Survey Here &gt;&gt;</a>
-               </div> 
-              </div> </li> 
-             <li class="butooms obllys"> 
-              <div style="border-bottom: solid 3px #000; padding-top: 60px; text-align: center; max-width: 70px; margin: auto;">
-               &nbsp;
-              </div> </li> 
-             <li> 
-              <div style="max-width: 500px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 14px; text-align: center; padding-top: 30px;">
-               Thank you in advance,
-               <br /> 
-               <strong>The Lowe's Team </strong>
-              </div> </li> 
-            </ul> </td> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-         <tfoot> 
-          <tr> 
-           <td colspan="5"> 
-            <div style="max-width: 500px; margin: auto; padding-top: 420px;;"> 
-             <p style="font-size: 14px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center;">its your time to leave? do it <a href="">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-            </div> </td> 
-          </tr> 
-         </tfoot> 
-        </table> </td> 
-       <td class="shops cryss">&nbsp;</td> 
-       <td class="shops cryss">&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td colspan="5" id="container"> 
-        <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-         <caption>
-          &nbsp;
-         </caption> 
-         <thead> 
-          <tr> 
-           <th>&nbsp;</th> 
-          </tr> 
-         </thead> 
-         <tbody> 
-          <tr> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp;</td> 
-           <td class="shops cryss">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-         <tfoot> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tfoot> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-     <tfoot> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tfoot> 
-    </table> 
-   </div> 
-  </div>   
- <img src="http://www.ezlowstool.bond/cleavers-participle/c604H2395R85mm13MX5fUa3w1762G36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ0R9eR6g10txV5EBw3D" alt=""/></body>
+ <body style="background-color: #eeeeee;"> 
+  <div style="margin: 0; padding: 0; padding-top: 20px; padding-bottom: 20px; background-color: rgb(255, 0, 0);"> 
+   <table align="center"> 
+    <tbody> 
+     <tr> 
+      <td align="center"> 
+       <div style="text-align: center; max-width: 200px; margin: auto;">
+        <a href="http://www.bettertools.click/33b6m2u3_95ri8r611z5fa4V1763S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjR9eS6G1Qw0A5d1wDN/welcome-sleighs" target="_blank"><img alt="plsasts" src="http://www.bettertools.click/lifelike-Listerize/1f24a2395B7nRa13e5fmaI6X1763n36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQjR9eS5q10Fg6yyqqwD" width="100%" /> </a>
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div> &nbsp; 
+  <div style="max-width: 450px; margin: auto; border: groove 1.5px #000; padding: 0 80px; background-color: #fff;"> 
+   <h2>&nbsp;</h2> 
+   <table align="center"> 
+    <tbody> 
+     <tr> 
+      <td align="center" s="" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em;">Important<br /> Notification from O'Reilly</td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h4 style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: 28px; font-size: 18px; font-weight: 400;">Prepare for Thrilling Updates: <strong>O'Reilly</strong> Presents a <strong>Bosch Drill Set</strong> for In-Store Use. Take Swift Action to Acquire Your Outstanding Tools by <b>September 24th</b>.</h4> 
+   <div style="max-width: 321px; margin: auto;">
+    <a href="http://www.bettertools.click/33b6m2u3_95ri8r611z5fa4V1763S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjR9eS6G1Qw0A5d1wDN/welcome-sleighs"><img alt="borsstk" src="http://www.bettertools.click/utilize-borderland/8aB4y2395hBY7a13q5jfa7RW1763B36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQjR9eS5D1u0W5cywWD" style="margin-left: 5%;" width="100%" /> </a>
+   </div> &nbsp; 
+   <h6 style="margin: 0; margin-top: -5%; text-align: center;"><a href="http://www.bettertools.click/33b6m2u3_95ri8r611z5fa4V1763S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjR9eS6G1Qw0A5d1wDN/welcome-sleighs" style="text-decoration: none; color: white;" target="_blank"><span style="display: inline-block; padding-top: 15px; padding-bottom: 15px; padding-right: 35px; padding-left: 35px; background-color: green; font-size: 20px; font-family: Arial, Helvetica, sans-serif; border-radius: 20px;">Start Here Now &gt;&gt;</span></a></h6> 
+   <h5>&nbsp;</h5> 
+   <p style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: 28px; font-size: 18px; font-weight: 400;">We truly value your feedback,<br /> <strong>The O'Reilly Auto Parts Survey Team</strong></p> 
+  </div> 
+  <h2 style="padding-bottom: 300px;">&nbsp;</h2> 
+  <h3 style="text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; line-height: 28px; font-size: 14px; font-weight: 400;">you can leave with sadness <a href="http://www.bettertools.click/causally-geometrician/51c4j2395L86xv13Sx5fQa5G1763v36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQjR9eS6MN1yg05rWTwD">here</a><br /> US 10010 126 E 23rd St New York, NY,</h3>   
+ <img src="http://www.bettertools.click/22d5vK2395nJ85w12K5fai8t1763A36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQjR9eS5b10wz6By0zwD/lifelike-Listerize" alt=""/></body>
 </html>
 
-------=_Part_154_908162687.1695569421262--
+------=_Part_76_2094942626.1695571768203--
 
