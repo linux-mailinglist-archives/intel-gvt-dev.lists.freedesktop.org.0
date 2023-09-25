@@ -1,46 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 386927AD985
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 25 Sep 2023 15:50:45 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 186717AD9AF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 25 Sep 2023 16:04:15 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 084B510E249;
-	Mon, 25 Sep 2023 13:50:44 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C797410E249;
+	Mon, 25 Sep 2023 14:04:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 25 Sep 2023 13:50:42 UTC
-Received: from mail.superheeroes.click (unknown [77.90.135.94])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5086010E180
+ Mon, 25 Sep 2023 14:04:11 UTC
+Received: from mail.coffesoul.bond (unknown [77.90.135.10])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 780EE10E24F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 25 Sep 2023 13:50:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=superheeroes.click; 
+ Mon, 25 Sep 2023 14:04:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=coffesoul.bond; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=harbor.freight.appreciation@superheeroes.click; 
- bh=s7M9M/FDsPMtl6i1EAKSd1YRtns=;
- b=k9qTfRINO3+WYrJ3/IvhCflH7TtcEszbW4WtaF9zkgXxHapTidT+gQ5OJSQjh5BLGr+Mtj4Gz/W9
- nm2+c6J+TV77Zfo1oqXxajA2ub/eOBTu/7CpluC6eHFDo9Bme2csc0yJ1R2m5qeydhjGF84QHg/J
- /y6/xVYtQ61mZ+hch40=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=superheeroes.click; 
- b=lPA8iBg4L0Q2Rt5kn0geyVF8BoYLM2uMbsxv6ffLPeeR7rlzhHDsAyl3sxjyGrgdjQgx7MGs92G1
- OB1JJDZEdAbkQtqR4RRapn0MomOjL6BFmybPN65d9UV9hM6GisNn/WDLZXNV6iSoGwL+9y+8m/4C
- 4KdHC75IwWuTr7PxLpw=;
-Received: by mail.superheeroes.click id h268340001gb for
+ i=starbucks_java_oasis@coffesoul.bond; 
+ bh=9wRd5k1lPE4ZxwGGB6ZAApq+xBo=;
+ b=GLB/VkAn7RXo9q/8td5DN7oXxd0C1p3qX44p0je8VvgwPbJ8oPrJ2HAAkERQk1SvyLRQ3qB/5WjK
+ qxQs7o9/FAyU2Ytw6vSEGopjEs1OOmzOPWqxp2OL/h/hA7Jq/LrHZpnXCvWhU4xs2ROOnKflAuMm
+ MV1Owqr4kD4PkwXUcAc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=coffesoul.bond;
+ b=geEUHnTj/WI1nLLQWrfrtnu6nY/PrxmErUJbCSf3ct88IjkQxc+bRUpVkBEoDNEjjRfJC/jNypmQ
+ WBjeiDMBEs1e50FeUWwxbgosn9IyNckzymtGl3nYIDWs9/BAEAF97BwZFKQOiNM4OTr5NMjOeH4Q
+ V8HT13+5wD5zT5Z8wf4=;
+Received: by mail.coffesoul.bond id h269lm0001ge for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 25 Sep 2023 09:27:03 -0400 (envelope-from
- <harbor.freight.appreciation-intel+2Dgvt+2Ddev=lists.freedesktop.org@superheeroes.click>)
-Date: Mon, 25 Sep 2023 09:27:03 -0400
-From: "Harbor Freight Appreciation"
- <harbor.freight.appreciation@superheeroes.click>
+ Mon, 25 Sep 2023 09:56:56 -0400 (envelope-from
+ <starbucks_java_oasis-intel+2Dgvt+2Ddev=lists.freedesktop.org@coffesoul.bond>)
+Date: Mon, 25 Sep 2023 09:56:56 -0400
+From: "Starbucks Java Oasis" <starbucks_java_oasis@coffesoul.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: A personalized Pittsburgh 225 Piece Tool Set has been set aside with
- your name on it &ndash; share your opinions, and you'll receive it.
+Subject: Make the most of Starbucks' daily promotion!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_397_1209225958.1695648401814"
-Message-ID: <0.0.0.185.1D9EFB3F8EFDD42.60B87B@mail.superheeroes.click>
+ boundary="----=_Part_262_1904086644.1695650197582"
+Message-ID: <0.0.0.1A4.1D9EFB8259DF2D0.119BD6@mail.coffesoul.bond>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_397_1209225958.1695648401814
+------=_Part_262_1904086644.1695650197582
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,123 +62,102 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>store locations.</title> 
+  <title>to claim these delicious</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
   <div> 
    <div> 
-    <ul style="list-style-type: none; padding: 0; margin: 0;"> 
-     <li class="container" id="esee"> 
-      <div style="background-color: beige; width: 100%;"> 
-       <table align="center" cellpadding="0" cellspacing="0"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> 
-           <div style="max-width: 215px; margin: auto;">
-            <a href="http://www.superheeroes.click/6bC4q2395Q8rh613J5nfc3Gq1769x36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQCR9K95D1P0y6u2qTwD/vanquishing-tenders" target="_blank"><img alt="plopseio" src="http://www.superheeroes.click/7555c23I95CRL7a11r5fc5l1769X36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQCR9K97F1HD0BC6IMwW3D/soundproof-Benedict" width="100%" /></a>
-           </div> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> </li> 
-     <li class="totalinfo clas" id="coll" style="background-color: brown; padding-top: 15px; padding-bottom: 15px;"> 
-      <div class="gladius" style="max-width: 520px; margin: auto;"> 
-       <table align="center" cellpadding="0" style="border-collapse: collapse;"> 
-        <caption>
-         &nbsp;
-        </caption> 
-        <thead> 
-         <tr> 
-          <th>&nbsp;</th> 
-         </tr> 
-        </thead> 
-        <tbody> 
-         <tr> 
-          <td id="totalfingosoft"> <p style="margin: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; line-height: 1.4em; text-align: center; color: #fff;"><b>Crucial Update<br /> from Harbor Freight</b></p> </td> 
-          <td id="totalfingosoft">&nbsp;</td> 
-          <td id="totalfingosoft">&nbsp;</td> 
-          <td id="totalfingosoft">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-        <tfoot> 
-         <tr> 
-          <td colspan="4">&nbsp;</td> 
-         </tr> 
-        </tfoot> 
-       </table> 
-      </div> </li> 
-     <li class="totalinfo clas" id="coll"> 
-      <div class="gladius"> 
-       <div> 
-        <table align="center" cellpadding="0" style="border-collapse: collapse; max-width: 520px; margin: auto; background-color: #fff;"> 
-         <tbody> 
-          <tr> 
-           <td align="center" id="jheeesa"> <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.3em; line-height: 1.5em;">We're thrilled to bring you some exciting news from <b>Harbor Freight</b>. You can now get your hands on a <b>Pittsburgh 225 Piece Tool Set</b>, redeemable at any of our store locations.<br /> <br /> <span>Take swift action and seize this opportunity! You have until <b>September 25th</b> to secure these thrilling tools. </span></p> </td> 
-          </tr> 
-         </tbody> 
-        </table> &nbsp; 
-        <table align="center" cellpadding="0" style="border-collapse: collapse; max-width: 520px; margin: auto; background-color: #fff;"> 
-         <tbody> 
-          <tr> 
-           <td align="center" id="jheeesa"> 
-            <center style="padding: .8em 1.3em; background-color: rgb(134, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; font-weight: bold; border-radius: 6px;">
-             <a href="http://www.superheeroes.click/6bC4q2395Q8rh613J5nfc3Gq1769x36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQCR9K95D1P0y6u2qTwD/vanquishing-tenders" style="text-decoration: none; color: #ffffff;" target="_blank">Start Here Now &gt; &gt; </a>
-            </center> </td> 
-          </tr> 
-         </tbody> 
-        </table> &nbsp; 
-        <table align="center" cellpadding="0" style="border-collapse: collapse; max-width: 520px; margin: auto; background-color: #fff;"> 
-         <tbody> 
-          <tr> 
-           <td align="center" id="jheeesa"> 
-            <center style="max-width: 300px; margin: auto;">
-             <a href="http://www.superheeroes.click/6bC4q2395Q8rh613J5nfc3Gq1769x36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQCR9K95D1P0y6u2qTwD/vanquishing-tenders" target="_blank"><img alt="DROOPS" src="http://www.superheeroes.click/7194V2395IQk7a12g5fcH6K1769Y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQCR9K95L1V0F5C1wqD/vanquishing-tenders" width="100%" /></a>
-            </center> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> 
-      </div> </li> 
-     <li class="totalinfo clas" id="coll"> 
-      <div class="gladius">
-       &nbsp;
-      </div> </li> 
-     <li class="totalinfo clas" id="coll"> 
-      <div class="gladius">
-       &nbsp;
-      </div> </li> 
-     <li class="totalinfo clas" id="coll"> 
-      <div class="gladius">
-       &nbsp;
-      </div> </li> 
-     <li class="totalinfo clas" id="coll"> 
-      <div class="gladius"> 
-       <div style="padding-top: 120px;">
-        &nbsp;
-       </div> 
-       <hr /> 
-       <hr /> 
-       <table align="center" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> 
-           <section style="background-color: rgb(39, 39, 39); padding: 15px 0;"> 
-            <div style="max-width: 400px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 14px; text-align: center; color: white; ;">
-             more than welcome to leave in 
-             <a href="http://www.superheeroes.click/2875p239v5bx86x11c5fc4X1769p36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQCR9K96a10oVX6pq2wDO/amalgams-institution" style="color: aqua;">here</a> we' ll miss you
-             <br /> US 10010 126 E 23rd St New York, NY,
-            </div> 
-           </section> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <br /> &nbsp;
-      </div> </li> 
-    </ul> 
+    <div style="background-color: #f2fff4;">
+     &nbsp; 
+     <table align="center" cellpadding="0" style="max-width: 520px; margin: auto; background-color: #fff; border-collapse: collapse;"> 
+      <tbody> 
+       <tr> 
+        <td align="center" class="onecontainers"> 
+         <div>
+          <a href="http://www.coffesoul.bond/fruitlessly-nongovernmental/3006a23T9l5q8x6v13Vuy5fc8g176ar36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ.R9Kd5M10DM6A3UOwD"><img alt="KLOPSE" src="http://www.coffesoul.bond/5574I2395vkO7a13b5fKucaU176aj36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ.R9Kd7iY1Yn0Q6dkLwTD/fruitlessly-nongovernmental" style="display: block; max-width: 330px; margin: auto;" width="100%" /></a>
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+    <div style="background-color: #1B7031; padding: 10px 0px;"> 
+     <table align="center" cellpadding="0" style="max-width: 520px; margin: auto; border-collapse: collapse;"> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <div> 
+          <article> 
+           <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 6.5mm; text-align: center; font-weight: 900; color: #fff;"><font>Your Last<br /> Reminder from Starbucks </font></p> 
+          </article> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> &nbsp; 
+    <table align="center" cellpadding="0" style="max-width: 520px; margin: auto; border-collapse: collapse; background-color: #fff;"> 
+     <tbody> 
+      <tr> 
+       <td> 
+        <div> 
+         <article> 
+          <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 5mm; text-align: center; font-weight: 500; color: #000; line-height: 7mm;"><font>We're thrilled to announce that <strong style="color: #1B7031;">Starbucks</strong> has a special promotion for a <strong style="color: #1B7031;">$100 Gift</strong>, redeemable at any of our store locations. Don't miss out on this opportunity! You have until <strong style="color: #1B7031;">September 25th</strong> to enjoy these delightful beverages. </font></p> 
+         </article> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" cellpadding="0" style="max-width: 520px; margin: auto; border-collapse: collapse; background-color: #fff;"> 
+     <caption>
+      &nbsp;
+     </caption> 
+     <thead> 
+      <tr> 
+       <th>&nbsp;</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td align="center"><a href="http://www.coffesoul.bond/fruitlessly-nongovernmental/3006a23T9l5q8x6v13Vuy5fc8g176ar36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ.R9Kd5M10DM6A3UOwD" target="_blank"><img alt="TABLERST" src="http://www.coffesoul.bond/representably-scraper/7564W2395cwq7a13h5fkcbku176aC36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ.R9Kd7AhVr10l5IlwND" style="display: block; max-width: 250px; margin: auto;" width="100%" /></a></td> 
+      </tr> 
+     </tbody> 
+     <tfoot> 
+      <tr> 
+       <td> 
+        <div> 
+         <center style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; padding: 1.1rem 1.45rem; background-color: #4e4e4e; border-radius: 1em; font-weight: 900;">
+          <a href="http://www.coffesoul.bond/fruitlessly-nongovernmental/3006a23T9l5q8x6v13Vuy5fc8g176ar36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ.R9Kd5M10DM6A3UOwD" style="text-decoration: none; color: white;">Start Here Now &gt;&gt;</a>
+         </center> 
+        </div> </td> 
+      </tr> 
+     </tfoot> 
+    </table> &nbsp; 
+    <table align="center" style="max-width: 520px; margin: auto;"> 
+     <tbody> 
+      <tr> 
+       <td align="center" style="font-size: 14px; font-family: Arial, Helvetica, sans-serif; font-weight: 500;">Your participation is valued.<br /> Warm regards,<br /> <b>The Starbucks Team.</b></td> 
+      </tr> 
+     </tbody> 
+    </table> 
    </div> 
+  </div> 
+  <div style="padding-top: 280px;">
+   &nbsp;
+  </div> 
+  <table cellpadding="0" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <footer style="max-width: 400px; border-style: groove; margin: auto; padding: 1.3rem;"> 
+       <address style="text-align: center;">you can leave with sadness <a href="http://www.coffesoul.bond/9534v2395p8r6H13k5fLc9DF176aV36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ.R9Kd6Uu1K0k6jpPwDl/churchyards-sharer">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
+      </footer> </td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div style="padding-top: 80px;">
+   &nbsp;
   </div>   
- <img src="http://www.superheeroes.click/contenting-calorie/5ee5u239Z5Sik8513Dp5fck7i1769L36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQCR9K97SI1Gvr05oyBwD" alt=""/></body>
+ <img src="http://www.coffesoul.bond/7af4k2395dH85y12u5fccGo176aN36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ.R9Kd7zMSHF106kzJXwD/denotable-trapping" alt=""/></body>
 </html>
 
-------=_Part_397_1209225958.1695648401814--
+------=_Part_262_1904086644.1695650197582--
 
