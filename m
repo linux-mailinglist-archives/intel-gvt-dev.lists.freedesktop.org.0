@@ -1,53 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23D8A7AEC5E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 26 Sep 2023 14:19:25 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id F00B37B0C1F
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 27 Sep 2023 20:46:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F32E610E3C4;
-	Tue, 26 Sep 2023 12:19:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 841FA10E592;
+	Wed, 27 Sep 2023 18:46:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 42C4F10E3C3;
- Tue, 26 Sep 2023 12:19:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1695730761; x=1727266761;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=csnqNR1nuw1dHxkrI8FYLIcYFFEpj72l8KuOcQ61jvI=;
- b=k+dBSxEKbX0FoK/cA7ukdYtfTAPzHlSZQuZDhm7GbWjx9MHoVyGqGYVz
- BvSYgsLn5mbirdNoDYYs8xFiMUKr9JZZvvB8tmux/o+GdcrDmn/jm7gQf
- nbxg7k6k8gCXhVFXG+3NK+dMx3foulTn4y9rMctlxXmjFh4yeTpZgJbod
- 3G3o/xN8PKoZy0A8Rqh5LqUK2YHLR8MkYj1H8FzxoqHqXPLBvv72bTgod
- zDV3uVDoZoEOmIVtK14olsq4wKU+DwouSyulczUFhNr1ERiZ+flMAiqrF
- h40yjiws8g8OEsIzv0EI9xVHT2rATVHiKtjWk2xZSMfJEigbmwPQpwG0G w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10843"; a="412467666"
-X-IronPort-AV: E=Sophos;i="6.03,177,1694761200"; d="scan'208";a="412467666"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Sep 2023 05:19:20 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10843"; a="1079681341"
-X-IronPort-AV: E=Sophos;i="6.03,177,1694761200"; d="scan'208";a="1079681341"
-Received: from wagnert-mobl2.ger.corp.intel.com (HELO localhost)
- ([10.252.52.202])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Sep 2023 05:19:19 -0700
-From: Jani Nikula <jani.nikula@intel.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH 4/4] drm/i915/gvt: move structs intel_gvt_irq_info and
- intel_gvt_irq_map to interrupt.c
-Date: Tue, 26 Sep 2023 15:19:04 +0300
-Message-Id: <20230926121904.499888-4-jani.nikula@intel.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20230926121904.499888-1-jani.nikula@intel.com>
-References: <20230926121904.499888-1-jani.nikula@intel.com>
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Wed, 27 Sep 2023 18:46:11 UTC
+Received: from mail.advancgadgts.click (unknown [213.21.253.38])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4B77A10E592
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 27 Sep 2023 18:46:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=advancgadgts.click; 
+ h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
+ i=cozycabinheater.sale@advancgadgts.click; 
+ bh=owQaYn06oPcZ0nGzj/wGhjwhoAo=;
+ b=U8uSp/X8K2u/rz+N2TKPBjAQg/XZF42wXFK+I2zwBqba+5MQqTm5WFTB9KRUFHq5JVYq9mtuPYmM
+ bT+4OoHPRf4Sg/M8xB4W2hktWLq60f1jxFwa6ZH9+M/tuoYWNvtUYASles0X1ZJxk10JLWgReuOu
+ YP5SOToGerQ3H8vcr2A=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=advancgadgts.click; 
+ b=ReFAo60nQl+m5dQOsBTQA/GJvBAJYUfkStGi552bjIN/ZFqNGXtty3sl8kh9G8XIhhfCgvmDoT8L
+ j3lQgeJIbXOcQviieBthk2Ji4rr46Jxj3VoNDq+qNMAa70GYja11ZBHPGJA6s3gsZqWvvE4adUQX
+ +sH+DxvWRYKRxZN2S78=;
+Received: by mail.advancgadgts.click id h2hs760001ge for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 27 Sep 2023 14:38:07 -0400 (envelope-from
+ <cozycabinheater.sale-intel+2Dgvt+2Ddev=lists.freedesktop.org@advancgadgts.click>)
+Date: Wed, 27 Sep 2023 14:38:07 -0400
+From: "Cozycabinheater Sale" <cozycabinheater.sale@advancgadgts.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: UPDATE - CozyCabin is currently selling out fast! Click here to check
+ availability&hellip; 
 MIME-Version: 1.0
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_211_830856919.1695839877059"
+Message-ID: <0.0.0.B7.1D9F171C256436A.2D77BC@mail.advancgadgts.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,111 +52,117 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Jani Nikula <jani.nikula@intel.com>, intel-gfx@lists.freedesktop.org
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Structs intel_gvt_irq_info and intel_gvt_irq_map are not used outside of
-interrupt.c. Hide them, and reduce includes.
+------=_Part_211_830856919.1695839877059
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Signed-off-by: Jani Nikula <jani.nikula@intel.com>
----
- drivers/gpu/drm/i915/gvt/interrupt.c | 17 +++++++++++++++
- drivers/gpu/drm/i915/gvt/interrupt.h | 31 ++++++----------------------
- 2 files changed, 23 insertions(+), 25 deletions(-)
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>Whereas disregard</title> 
+ </head> 
+ <body style="margin: 0; padding: 0; background-color: #e9e9e9;"> 
+  <div> 
+   <div> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <thead> 
+      <tr> 
+       <th>&nbsp;</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td> 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+         <thead> 
+          <tr> 
+           <th>&nbsp;</th> 
+          </tr> 
+         </thead> 
+         <tbody> 
+          <tr> 
+           <td> 
+            <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td align="center"> 
+                 <center style="max-width: 500px; margin: auto; display: block;">
+                  <a href="http://www.advancgadgts.click/c056oO2O395bq8k612fo602fp177cL36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCRdnd5y1ns06D0kNwD/convalescent-paraphrased" target="_blank"><img alt="" src="https://imagizer.imageshack.com/img922/3355/e6IaQH.png
+        " width="100%" /></a>
+                 </center> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <article> 
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; text-align: center; font-weight: 700; margin: 0;"><font>Put An End To The &quot;Thermostat<br /> Wars&quot; With The Cozy Heater </font></p> 
+             </article> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+         <tfoot> 
+          <tr> 
+           <td> 
+            <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td align="center"><a href="http://www.advancgadgts.click/c056oO2O395bq8k612fo602fp177cL36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCRdnd5y1ns06D0kNwD/convalescent-paraphrased"><img alt="HAGEA" src="http://www.advancgadgts.click/kidnaps-oleander/c7e5k239S5AP7Ka12K603J1F177c_36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQCRdnd7J1H0MiY5H@wJD" width="100%" /></a></td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <p style="font-family: Arial, Helvetica, sans-serif; font-size: 28px; font-family: 500; color: rgb(148, 0, 0); text-align: center;"><em style="margin: 0; padding: 0;">Make any room warm and<br /> cozy in 2 minutes or less </em></p> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td align="center"> 
+                 <div style="max-width: 450px;margin: auto;"> 
+                  <center style="padding: 16pt 33pt; border-radius: 10px; background-color: red; font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 20pt;">
+                   <a href="http://www.advancgadgts.click/c056oO2O395bq8k612fo602fp177cL36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCRdnd5y1ns06D0kNwD/convalescent-paraphrased" style="color: white; text-decoration: none;">Yes, I Want 60% OFF Now! </a>
+                  </center> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> &nbsp; 
+             <ul style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; line-height: 22px;"> 
+              <li class="proyescs">Slash your electric bills with ultra-energy efficient technology.</li> 
+              <br /> 
+              <li class="proyescs">Overheat protection for worry-free, continuous heating.</li> 
+              <br /> 
+              <li class="proyescs">heat any room in less than 2 minutes.</li> 
+              <br /> 
+              <li class="proyescs">Sleek, modern, and attractive design.</li> 
+             </ul> 
+             <br /> &nbsp;
+            </div> <h6 style="padding-top: 400px;">&nbsp;</h6> 
+            <center style="padding: 20px 0px;"> 
+             <div style="max-width: 500px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; padding: 2.5%; background-color: #fff; font-weight: 700; line-height: 25px;">
+              If you do not wish to receive future messages click here to 
+              <a href="http://www.advancgadgts.click/7196S2g3T95Sh86M13R_G6030O177cw36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQCRdnd7LtuGO106uNkwBD/despairs-ripping">unsubscribe</a>
+              <br /> 
+              <a href="http://www.advancgadgts.click/c056oO2O395bq8k612fo602fp177cL36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCRdnd5y1ns06D0kNwD/convalescent-paraphrased">CozyCabin</a> | 4122 Keaton Crossing Blvd., Suite 104, Ofallon, MO 63368
+             </div> 
+            </center> </td> 
+          </tr> 
+         </tfoot> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+     <tfoot> 
+      <tr> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tfoot> 
+    </table> 
+   </div> 
+  </div>   
+ <img src="http://www.advancgadgts.click/chilliness-wiretapping/7385uT2395q8D5Q13C603t2wI177cz36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQCRdnd6O1ih0g6mXykwD" alt=""/></body>
+</html>
 
-diff --git a/drivers/gpu/drm/i915/gvt/interrupt.c b/drivers/gpu/drm/i915/gvt/interrupt.c
-index 68eca023bbc6..de3f5903d1a7 100644
---- a/drivers/gpu/drm/i915/gvt/interrupt.c
-+++ b/drivers/gpu/drm/i915/gvt/interrupt.c
-@@ -36,6 +36,23 @@
- #include "gvt.h"
- #include "trace.h"
- 
-+struct intel_gvt_irq_info {
-+	char *name;
-+	i915_reg_t reg_base;
-+	enum intel_gvt_event_type bit_to_event[INTEL_GVT_IRQ_BITWIDTH];
-+	unsigned long warned;
-+	int group;
-+	DECLARE_BITMAP(downstream_irq_bitmap, INTEL_GVT_IRQ_BITWIDTH);
-+	bool has_upstream_irq;
-+};
-+
-+struct intel_gvt_irq_map {
-+	int up_irq_group;
-+	int up_irq_bit;
-+	int down_irq_group;
-+	u32 down_irq_bitmask;
-+};
-+
- /* common offset among interrupt control registers */
- #define regbase_to_isr(base)	(base)
- #define regbase_to_imr(base)	(base + 0x4)
-diff --git a/drivers/gpu/drm/i915/gvt/interrupt.h b/drivers/gpu/drm/i915/gvt/interrupt.h
-index b62f04ab47cb..e60ad476fe60 100644
---- a/drivers/gpu/drm/i915/gvt/interrupt.h
-+++ b/drivers/gpu/drm/i915/gvt/interrupt.h
-@@ -32,10 +32,13 @@
- #ifndef _GVT_INTERRUPT_H_
- #define _GVT_INTERRUPT_H_
- 
--#include <linux/hrtimer.h>
--#include <linux/kernel.h>
-+#include <linux/bitops.h>
- 
--#include "i915_reg_defs.h"
-+struct intel_gvt;
-+struct intel_gvt_irq;
-+struct intel_gvt_irq_info;
-+struct intel_gvt_irq_map;
-+struct intel_vgpu;
- 
- enum intel_gvt_event_type {
- 	RCS_MI_USER_INTERRUPT = 0,
-@@ -138,10 +141,6 @@ enum intel_gvt_event_type {
- 	INTEL_GVT_EVENT_MAX,
- };
- 
--struct intel_gvt_irq;
--struct intel_gvt;
--struct intel_vgpu;
--
- typedef void (*gvt_event_virt_handler_t)(struct intel_gvt_irq *irq,
- 	enum intel_gvt_event_type event, struct intel_vgpu *vgpu);
- 
-@@ -175,17 +174,6 @@ enum intel_gvt_irq_type {
- 
- #define INTEL_GVT_IRQ_BITWIDTH	32
- 
--/* device specific interrupt bit definitions */
--struct intel_gvt_irq_info {
--	char *name;
--	i915_reg_t reg_base;
--	enum intel_gvt_event_type bit_to_event[INTEL_GVT_IRQ_BITWIDTH];
--	unsigned long warned;
--	int group;
--	DECLARE_BITMAP(downstream_irq_bitmap, INTEL_GVT_IRQ_BITWIDTH);
--	bool has_upstream_irq;
--};
--
- /* per-event information */
- struct intel_gvt_event_info {
- 	int bit;				/* map to register bit */
-@@ -194,13 +182,6 @@ struct intel_gvt_event_info {
- 	gvt_event_virt_handler_t v_handler;	/* for v_event */
- };
- 
--struct intel_gvt_irq_map {
--	int up_irq_group;
--	int up_irq_bit;
--	int down_irq_group;
--	u32 down_irq_bitmask;
--};
--
- /* structure containing device specific IRQ state */
- struct intel_gvt_irq {
- 	const struct intel_gvt_irq_ops *ops;
--- 
-2.39.2
+------=_Part_211_830856919.1695839877059--
 
