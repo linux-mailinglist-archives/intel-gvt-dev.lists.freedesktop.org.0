@@ -1,45 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 063787B3917
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Sep 2023 19:45:29 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C70C77B3A3A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Sep 2023 20:48:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D16E510E190;
-	Fri, 29 Sep 2023 17:45:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9212810E1AC;
+	Fri, 29 Sep 2023 18:48:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 29 Sep 2023 17:45:24 UTC
-Received: from mail.handycobalt.click (unknown [213.21.253.76])
- by gabe.freedesktop.org (Postfix) with ESMTP id 39F9010E1AD
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Fri, 29 Sep 2023 18:48:25 UTC
+Received: from mail.pharmaclubs.click (unknown [213.21.253.114])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 37F1A10E1AE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 29 Sep 2023 17:45:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=handycobalt.click;
+ Fri, 29 Sep 2023 18:48:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pharmaclubs.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=unearth.key.facts.about.your.lowes.store@handycobalt.click; 
- bh=tLFPUPEkQqQpAJNKDV7idGhGHCQ=;
- b=h8OEKEntKBje8Y7MILwwHTl3NkS1u0DlG9vIi7tRsm9P9dIl12TB3v37Y7O3OotmtsvSVOT5KDUe
- VINMutgXpSO+3u1cH9m8d2i3f7b8tr+64zpjAaR5XZhxiRNqN+Pd6WuYUz9YHvMKxFguxlhRChd/
- XNbIZ7Z+eFBhwxvL2uI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=handycobalt.click; 
- b=DgwbDdlhx5hABdo6Ly0fzB+eXVnBrqNAfz7Ot2EbzkEkBF2ogncmtxQqo5IrkX8aMx7WxYNmcRS9
- geP4ap+EF5bJAraH7Vbqmv0Z2ELUC5TfA1uAX0Nr7f9/ByI+T98jmHu5PZGwEM9eYTrDHCePWXy8
- xfzYAbK1222oSg52gv0=;
-Received: by mail.handycobalt.click id h2s6j80001g3 for
+ i=enjoy_your_savings_at_cvs@pharmaclubs.click; 
+ bh=jM0zj9w7Q8EIhZc5mRqgtZAy3d0=;
+ b=V81fMBDOR8vy8OASuXWrDceptRlSGlm1Uk9sXZfjhMUCmQkX9dP6kE6+FwnYkjmRzezIdIFPD4oE
+ z1heYhV2CLOz+Mx+r3SO/paFB0669W8t4PdwX8dUqzpJUCh6hGrw5C6S8xZIrLicteFxasGvIOwK
+ w7G353TwcYOCGTi1nrc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharmaclubs.click; 
+ b=1z+yJxxMVjtXVG033Tny0YWO+8B66qDmZlDzHixU76wHrmo1/GpRdUFalkuhZKcPa0ns9BfB/+Dm
+ CUM/8y7LJnMh+ZxPfIgsNBSfL0K88MilnduQpgTqXlp7bg5GrHMe/bZ48gxs+FMyL4gCgrG5+c26
+ e/7CG2gloxXbmFgQnGk=;
+Received: by mail.pharmaclubs.click id h2sdvi0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 29 Sep 2023 13:36:01 -0400 (envelope-from
- <unearth.key.facts.about.your.lowes.store-intel+2Dgvt+2Ddev=lists.freedesktop.org@handycobalt.click>)
-Date: Fri, 29 Sep 2023 13:36:01 -0400
-From: "Unearth Key Facts About Your Lowes Store"
- <unearth.key.facts.about.your.lowes.store@handycobalt.click>
+ Fri, 29 Sep 2023 14:39:10 -0400 (envelope-from
+ <enjoy_your_savings_at_cvs-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharmaclubs.click>)
+Date: Fri, 29 Sep 2023 14:39:10 -0400
+From: "Enjoy Your Savings At CVS" <enjoy_your_savings_at_cvs@pharmaclubs.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your feedback serves as the key to obtaining a personalized Kobalt
- Tool set - you've been chosen.
+Subject: Limited Time Offer: CVS Gift Cards Worth $100!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_181_1155259690.1696008943375"
-Message-ID: <0.0.0.14.1D9F2FB6A3FC38C.525A80@mail.handycobalt.click>
+ boundary="----=_Part_373_510544292.1696012735146"
+Message-ID: <0.0.0.55.1D9F3043C5AD980.8300@mail.pharmaclubs.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_181_1155259690.1696008943375
+------=_Part_373_510544292.1696012735146
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,81 +62,451 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Exciting News from</title> 
+  <title>highly appreciated</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #e6e6e6; "> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="nidaveleir" style="border-collapse: collapse; " width="100%"> 
-   <tbody> 
+ <body style="margin: 0; padding: 0; background-color: rgb(233, 233, 233);"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <thead id="macshsakantos"> 
     <tr> 
-     <td align="center"> 
-      <center class="targerians"> 
-       <blockquote id="propers"> 
-        <div id="caption"> 
-         <ol style="max-width: 545px; margin: auto; text-align: center; background-color: #fff; padding: 0; list-style-type: none; padding-left: 30px; padding-right: 30px; "> 
-          <li class="dominicstall"> 
-           <div id="shoppersclock"> 
-            <table style="max-width: 235px; margin: auto; "> 
-             <tbody> 
-              <tr> 
-               <td><span><a href="http://www.handycobalt.click/intrastate-crackles/a625a23k95pL86y11Q6091M178eB36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQHRd997q10gWXz6OpkWwD" target="_blank"><img alt="HEAS" src="http://www.handycobalt.click/2695p23v95X7VaB13R6u093sA178eP36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQHRd997y1H0DjL6wJl@wD/precipitated-autopilots" width="100%" /></a> </span></td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> </li> 
-          <li class="dominicstall"> 
-           <div id="shoppersclock"> 
-            <table> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp; </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> </li> 
-          <li class="dominicstall"> 
-           <div id="shoppersclock"> 
-            <table> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp; </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> </li> 
-          <li class="seconstext"> 
-           <div style="border: double 4px #2745A6; border-radius: 10px; "> 
-            <div style="padding: .5em 1.5em; "> 
-             <h4 style="margin: 0; text-align: center; color: #2745A6; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.6em; "><u>Final Reminder<br /> Regarding Your Lowe' s Reward</u></h4> 
-            </div> &nbsp; 
-            <div style="padding: .5em 1.5em; "> 
-             <h2 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; font-weight: 500; ">Exciting Announcement from Lowe' s! A Kobalt Tool Set awaits you in our stores. Act promptly, and don' t miss this opportunity! You have until September 29th to secure these fantastic items.</h2> &nbsp; 
-             <center style="max-width: 300px; margin: auto; "> 
-              <div style="padding-top: 16px; padding-bottom: 16px; ; padding-left: 34px; padding-right: 34px; border-radius: 4px; background-color: #2745A6; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 18px; ">
-               <a href="http://www.handycobalt.click/intrastate-crackles/a625a23k95pL86y11Q6091M178eB36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQHRd997q10gWXz6OpkWwD" style="text-decoration: none; color: white; ">Start Here Now &gt; &gt; </a>
+     <th class="amanrrazxs">&nbsp;</th> 
+    </tr> 
+   </thead> 
+   <tbody id="blacksstowms"> 
+    <tr> 
+     <td id="looolstas"> 
+      <center class="fluroses"> 
+       <div id="propileniso"> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
+      </center> </td> 
+     <td id="looolstas"> 
+      <center class="fluroses"> 
+       <div id="propileniso"> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
+      </center> </td> 
+     <td id="looolstas"> 
+      <center class="fluroses"> 
+       <div id="propileniso"> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center> 
+             <div style="
+max-width: 800px;
+margin: auto; background-color: #fff;
+"> 
+              <center style="
+max-width: 120px;
+margin: auto;">
+               <span><a href="http://www.pharmaclubs.click/1f14q2395p86C_12R6B096R178fk36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQLRd9d6u10iNt6BpWwDj/squint-featherers"><img alt="JHEAE" src="http://www.pharmaclubs.click/aY74e2395dB7ha12X6Q098V178fg36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQLRd9d7sB10SIw6BTWwpD/caterpillars-liberator" width="100%" /></a> </span>
+              </center> &nbsp; 
+              <center style="max-width: 600px;
+margin: auto; background-color: red;"> 
+               <div style="max-width: 535px;
+margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 25px;
+font-weight: 800;
+text-align: center;
+color: white;
+padding: 15px 0px;">
+                <span>Exclusive Offers for Our Valued Customers </span>
+               </div> 
+              </center> 
+              <div style="
+max-width: 535px;
+margin: auto;"> 
+               <div> 
+                <p style="
+font-family: Arial, Helvetica, sans-serif;
+font-size: 1.2rem;
+line-height: 1.5rem;
+text-align: center;
+padding-left: 1.3rem;
+padding-right: 1.3rem;"><span>We appreciate your choice of CVS. Your loyalty and support mean a lot to us, and we're grateful for the opportunity to assist you. </span></p> 
+                <div> 
+                 <div style="
+display: inline-block;
+max-width: 90px; margin: auto;">
+                  <span><a href="http://www.pharmaclubs.click/1f14q2395p86C_12R6B096R178fk36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQLRd9d6u10iNt6BpWwDj/squint-featherers"><img alt="IIEASE" src="http://www.pharmaclubs.click/crowded-Geary/v304o2395l7DCa12ar6099I178fs36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQLRd9d7QH1qB0I5JzTwD" style="" width="100%" /></a></span>
+                 </div> 
+                 <div style="
+display: inline-block;
+max-width: 100px; margin: auto;
+
+
+">
+                  <span><a href="http://www.pharmaclubs.click/1f14q2395p86C_12R6B096R178fk36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQLRd9d6u10iNt6BpWwDj/squint-featherers"><img alt="YAESSA" src="http://www.pharmaclubs.click/possessiveness-manslaughter/dc85O239m5n7zBa12F6y09aI178fi36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQLRd9d5JBi105zLwBD" style="" width="100%" /></a></span>
+                 </div> 
+                </div> 
+                <p style="
+font-family: Arial, Helvetica, sans-serif;
+font-size: 1.2rem;
+line-height: 1.5rem;
+text-align: center;
+padding-left: 1.3rem;
+padding-right: 1.3rem;"><span>Your feedback is highly valuable to us, and as a token of our appreciation, we'd like to offer a special thank-you for taking the time to share your insights.<br /> <br /> <b>Upon completing the survey, you may have the opportunity to select from a range of gifts! </b> </span></p> 
+                <div> 
+                 <table width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td> 
+                     <table style="
+padding: 1.5% 7%;
+background-color: red;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 1.1rem;
+max-width: 300px;
+margin: auto;
+font-weight: 800;
+border-radius: 7px;
+;"> 
+                      <tbody> 
+                       <tr> 
+                        <td><span><a href="http://www.pharmaclubs.click/1f14q2395p86C_12R6B096R178fk36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQLRd9d6u10iNt6BpWwDj/squint-featherers" style="
+text-decoration: none;
+color: #fff;
+
+">Start Now &gt;&gt; </a></span></td> 
+                       </tr> 
+                      </tbody> 
+                     </table> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                 <br /> 
+                 <br /> 
+                 <br /> &nbsp; 
+                 <hr /> 
+                 <p style="
+font-family: Arial, Helvetica, sans-serif;
+font-size: 0.9rem;
+line-height: 1.5rem;
+text-align: center;
+padding-left: 1.3rem;
+padding-right: 1.3rem;"><span>Thank you once again for your support. We eagerly await your prompt response! Warm regards, </span></p> 
+                </div> 
+               </div> 
               </div> 
-             </center> &nbsp; 
-             <center style="max-width: 323px; margin: auto; ">
-              <a href="http://www.handycobalt.click/intrastate-crackles/a625a23k95pL86y11Q6091M178eB36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQHRd997q10gWXz6OpkWwD" target="_blank"><img alt="OOEPAS" src="http://www.handycobalt.click/treasurer-movie/ef45m23x95Wz7am13n6G09D4l178eY36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQHRd996m1wr0L5dNlwD" width="100%" /></a>
-             </center> &nbsp; 
-             <h6 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; font-weight: 500; ">We appreciate your participation in our survey. Your input is highly valuable to us at Lowe' s, and we sincerely thank you for taking the time to share your feedback.</h6> 
-            </div> 
-           </div> </li> 
-         </ol> &nbsp; 
-         <div style="background-color: #2745A6; padding: 3mm 0mm; "> 
-          <footer style="max-width: 420px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 12px; text-align: center; font-weight: 700; color: white; ">
-           you can leave with sadness 
-           <a href="http://www.handycobalt.click/f2f6u2n39m5a8gO612O6092nO178eG36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQHRd997S1zY0mO5lBlwD/Gladstone-rivalries" style="color: #00ffff; ">here</a>
-           <br /> US 10010 126 E 23rd St New York, NY,
-          </footer> 
-         </div> 
-        </div> 
-       </blockquote> 
+             </div> 
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
+      </center> </td> 
+     <td id="looolstas"> 
+      <center class="fluroses"> 
+       <div id="propileniso"> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
+      </center> </td> 
+     <td id="looolstas"> 
+      <center class="fluroses"> 
+       <div id="propileniso"> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <table class="joseis"> 
+         <tbody> 
+          <tr> 
+           <td class="shamirs"> 
+            <center>
+             &nbsp;
+            </center> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
       </center> </td> 
     </tr> 
    </tbody> 
-  </table>   
- <img src="http://www.handycobalt.click/exhibitors-Helen/17a6o23xM95nM85D13b609z5kV178eF36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQHRd997OI_1P0U5WXw3D" alt=""/></body>
+  </table> 
+  <center style="padding-top: 250px;"> 
+   <div style="background-color: beige; padding-top: 15px; padding-bottom: 15px;"> 
+    <footer style="max-width: 450px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 12px;">
+     time to show you the exit 
+     <a href="http://www.pharmaclubs.click/9174t2395PVw8613P60Yl97n178fr36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQLRd9d6hFA1L05hNWwD/Alamo-tablespoon">here</a>
+     <br /> US 10010 126 E 23rd St New York, NY,
+    </footer> 
+   </div> 
+  </center>   
+ <img src="http://www.pharmaclubs.click/a434D2395z8m5F13d609vb_C178fJ36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQLRd9d5Q1Z0N5Pz@wD/sander-bloated" alt=""/></body>
 </html>
 
-------=_Part_181_1155259690.1696008943375--
+------=_Part_373_510544292.1696012735146--
 
