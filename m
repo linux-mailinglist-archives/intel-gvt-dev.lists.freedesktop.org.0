@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 323157B37CE
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Sep 2023 18:21:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 063787B3917
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Sep 2023 19:45:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1F95E10E13E;
-	Fri, 29 Sep 2023 16:21:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D16E510E190;
+	Fri, 29 Sep 2023 17:45:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 29 Sep 2023 16:21:18 UTC
-Received: from mail.orangetools.click (unknown [77.90.135.163])
- by gabe.freedesktop.org (Postfix) with ESMTP id 49C6110E13E
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 29 Sep 2023 17:45:24 UTC
+Received: from mail.handycobalt.click (unknown [213.21.253.76])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 39F9010E1AD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 29 Sep 2023 16:21:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=orangetools.click;
+ Fri, 29 Sep 2023 17:45:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=handycobalt.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=home_depot_offers@orangetools.click; 
- bh=gpbsnRaY5xRTqqCRRDSLNw4WE6o=;
- b=A+0m1jlZ8MijjGR8U1Ut8toIPSG5Xh5EiKVq15BcbqAP+8PgsYpVrZA8/A/Iy7PW26rJ3j60ZyX3
- S5ql8jox3Fcq/otz9gejAusVhV5WvHxN6MWsnVfmGNyRE8TR9fWv2/It2UJNiupuO5f0koAwhCyY
- +5cp9HuKGE0VTGyyeRA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=orangetools.click; 
- b=k2CcdY7eIEjwEC/5BCgXLYaPMTGszQPJJidlvAo0158KDOO6gytNQlHOaUO0KLVrNoeeMmLRaM5S
- qkOCxR6R9191bGbvBDfxWppmF1L2vnYKRBq0E2Xb1sHdZl7ErzYI4zoi1V81P7/GtyDdM2eCbQVr
- 05dloTPg6K5e+532r7I=;
-Received: by mail.orangetools.click id h2rsns0001ge for
+ i=unearth.key.facts.about.your.lowes.store@handycobalt.click; 
+ bh=tLFPUPEkQqQpAJNKDV7idGhGHCQ=;
+ b=h8OEKEntKBje8Y7MILwwHTl3NkS1u0DlG9vIi7tRsm9P9dIl12TB3v37Y7O3OotmtsvSVOT5KDUe
+ VINMutgXpSO+3u1cH9m8d2i3f7b8tr+64zpjAaR5XZhxiRNqN+Pd6WuYUz9YHvMKxFguxlhRChd/
+ XNbIZ7Z+eFBhwxvL2uI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=handycobalt.click; 
+ b=DgwbDdlhx5hABdo6Ly0fzB+eXVnBrqNAfz7Ot2EbzkEkBF2ogncmtxQqo5IrkX8aMx7WxYNmcRS9
+ geP4ap+EF5bJAraH7Vbqmv0Z2ELUC5TfA1uAX0Nr7f9/ByI+T98jmHu5PZGwEM9eYTrDHCePWXy8
+ xfzYAbK1222oSg52gv0=;
+Received: by mail.handycobalt.click id h2s6j80001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 29 Sep 2023 12:13:47 -0400 (envelope-from
- <home_depot_offers-intel+2Dgvt+2Ddev=lists.freedesktop.org@orangetools.click>)
-Date: Fri, 29 Sep 2023 12:13:47 -0400
-From: "Home Depot Offers" <home_depot_offers@orangetools.click>
+ Fri, 29 Sep 2023 13:36:01 -0400 (envelope-from
+ <unearth.key.facts.about.your.lowes.store-intel+2Dgvt+2Ddev=lists.freedesktop.org@handycobalt.click>)
+Date: Fri, 29 Sep 2023 13:36:01 -0400
+From: "Unearth Key Facts About Your Lowes Store"
+ <unearth.key.facts.about.your.lowes.store@handycobalt.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You're the recipient of a unique gift from us - we're keen to know
- about your Home Depot experience.
+Subject: Your feedback serves as the key to obtaining a personalized Kobalt
+ Tool set - you've been chosen.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_247_1478081031.1696004011687"
-Message-ID: <0.0.0.DE.1D9F2EFED0B0A58.77DFB7@mail.orangetools.click>
+ boundary="----=_Part_181_1155259690.1696008943375"
+Message-ID: <0.0.0.14.1D9F2FB6A3FC38C.525A80@mail.handycobalt.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_247_1478081031.1696004011687
+------=_Part_181_1155259690.1696008943375
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,449 +64,81 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>feedback is of utmost</title> 
+  <title>Exciting News from</title> 
  </head> 
- <body style="margin: 0; padding: 0; "> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="captionssolids" style="border-collapse: collapse;" width="100%"> 
-   <caption class="printers">
-    &nbsp;
-   </caption> 
-   <thead id="maalsphite"> 
-    <tr> 
-     <th align="center" id="crosswball">&nbsp;</th> 
-    </tr> 
-   </thead> 
+ <body style="margin: 0; padding: 0; background-color: #e6e6e6; "> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" class="nidaveleir" style="border-collapse: collapse; " width="100%"> 
    <tbody> 
     <tr> 
-     <td class="jaxkassinfo"> 
-      <div class="poolstyle"> 
-       <center class="proyecs"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="finalstorns"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" id="captionssolids" style="border-collapse: collapse;" width="100%"> 
-             <caption class="printers">
-              &nbsp;
-             </caption> 
-             <thead id="maalsphite"> 
-              <tr> 
-               <th align="center" id="crosswball">&nbsp;</th> 
-              </tr> 
-             </thead> 
+     <td align="center"> 
+      <center class="targerians"> 
+       <blockquote id="propers"> 
+        <div id="caption"> 
+         <ol style="max-width: 545px; margin: auto; text-align: center; background-color: #fff; padding: 0; list-style-type: none; padding-left: 30px; padding-right: 30px; "> 
+          <li class="dominicstall"> 
+           <div id="shoppersclock"> 
+            <table style="max-width: 235px; margin: auto; "> 
              <tbody> 
               <tr> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
+               <td><span><a href="http://www.handycobalt.click/intrastate-crackles/a625a23k95pL86y11Q6091M178eB36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQHRd997q10gWXz6OpkWwD" target="_blank"><img alt="HEAS" src="http://www.handycobalt.click/2695p23v95X7VaB13R6u093sA178eP36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQHRd997y1H0DjL6wJl@wD/precipitated-autopilots" width="100%" /></a> </span></td> 
               </tr> 
              </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="jaxkassinfo"> 
-      <div class="poolstyle"> 
-       <center class="proyecs"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="finalstorns">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="jaxkassinfo"> 
-      <div class="poolstyle"> 
-       <center class="proyecs"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="finalstorns">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="jaxkassinfo"> 
-      <div class="poolstyle"> 
-       <center class="proyecs"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="finalstorns"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" id="captionssolids" style="border-collapse: collapse;" width="100%"> 
-             <caption class="printers">
-              &nbsp;
-             </caption> 
-             <thead id="maalsphite"> 
-              <tr> 
-               <th align="center" id="crosswball">&nbsp;</th> 
-              </tr> 
-             </thead> 
+            </table> 
+           </div> </li> 
+          <li class="dominicstall"> 
+           <div id="shoppersclock"> 
+            <table> 
              <tbody> 
               <tr> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
+               <td>&nbsp; </td> 
               </tr> 
              </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div style="border-left: double 10px #ffebe1; border-right: double 10px #ffebe1;"> 
-   <div style="max-width: 600px; margin: auto; background-color: #fff;"> 
-    <div> 
-     <table style="max-width: 400px; margin: auto; background-color: #fff;"> 
-      <tbody> 
-       <tr> 
-        <td><a href="http://www.orangetools.click/51b6p239ln5bnT8611H608bg178dt36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2Rd9o5MW10h6FOMwD0/stilts-circuitously"><img alt="" src="http://www.orangetools.click/d6d6n2yR395P7Par11P608dH178dK36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ2Rd9o6Soh1S05HlwD3/visiting-apple" width="100%" /> </a></td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <div> 
-      <div> 
-       <article class="novps"> 
-        <p id="tkkkesa" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 25px; font-weight: 700; text-align: center;"><font><u>An Exclusive Offer Reserved for Our Valued Customers</u> </font></p> 
-       </article> 
-      </div> 
-     </div> 
-     <div style="background-color: #fff;"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; box-shadow: inset 0 0 5px 1px #F55F01; border-radius: 7px;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center"> 
-          <div style="padding: 4.5% 7%;"> 
-           <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 14pt; line-height: 22pt; text-align: justify;">We'd like to convey our appreciation for choosing <b>The Home Depot</b>. Your loyalty and support mean a great deal to us, and we genuinely appreciate the opportunity to serve you.<br /> <br /> <a href="http://www.orangetools.click/51b6p239ln5bnT8611H608bg178dt36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2Rd9o5MW10h6FOMwD0/stilts-circuitously"><img alt="JHEA" src="http://www.orangetools.click/stilts-circuitously/9ea4V2395f7aAL13j6s0N8eN178dy36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ2Rd9o7gJ10XSu5i@wD3" style="display: block; float: right; margin-left: 5.5%; margin-top: 1%;" width="35%" /></a> Your feedback holds great importance for us, and as a token of our appreciation for sharing your insights, we'd like to offer a small gesture of gratitude.<br /> <br /> <span style="display: block; text-align: center;"><b>Upon finishing the survey, you might qua
- lify to receive a valuable $100 gift! </b> </span></p> 
-           <div style="text-align: center; max-width: 90px; margin: auto;">
-            <a href="http://www.orangetools.click/51b6p239ln5bnT8611H608bg178dt36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2Rd9o5MW10h6FOMwD0/stilts-circuitously"><img alt="IEAE" src="http://www.orangetools.click/milder-listless/8826s23Vm95sGT7a12M608f_J178dm36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ2Rd9o5P1Ng05QPwWD" width="100%" /></a>
-           </div> &nbsp; 
-           <div style="max-width: 255px; margin: auto;"> 
-            <div style="border-radius: 8px; padding: 14pt 30pt; font-family: Arial, Helvetica, sans-serif; font-weight: 800; font-size: 14pt; background-color: #F55F01;">
-             <a href="http://www.orangetools.click/51b6p239ln5bnT8611H608bg178dt36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2Rd9o5MW10h6FOMwD0/stilts-circuitously" style="text-decoration: none; color: #fff;">Start Here Now</a>
+            </table> 
+           </div> </li> 
+          <li class="dominicstall"> 
+           <div id="shoppersclock"> 
+            <table> 
+             <tbody> 
+              <tr> 
+               <td>&nbsp; </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> </li> 
+          <li class="seconstext"> 
+           <div style="border: double 4px #2745A6; border-radius: 10px; "> 
+            <div style="padding: .5em 1.5em; "> 
+             <h4 style="margin: 0; text-align: center; color: #2745A6; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.6em; "><u>Final Reminder<br /> Regarding Your Lowe' s Reward</u></h4> 
+            </div> &nbsp; 
+            <div style="padding: .5em 1.5em; "> 
+             <h2 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; font-weight: 500; ">Exciting Announcement from Lowe' s! A Kobalt Tool Set awaits you in our stores. Act promptly, and don' t miss this opportunity! You have until September 29th to secure these fantastic items.</h2> &nbsp; 
+             <center style="max-width: 300px; margin: auto; "> 
+              <div style="padding-top: 16px; padding-bottom: 16px; ; padding-left: 34px; padding-right: 34px; border-radius: 4px; background-color: #2745A6; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 18px; ">
+               <a href="http://www.handycobalt.click/intrastate-crackles/a625a23k95pL86y11Q6091M178eB36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQHRd997q10gWXz6OpkWwD" style="text-decoration: none; color: white; ">Start Here Now &gt; &gt; </a>
+              </div> 
+             </center> &nbsp; 
+             <center style="max-width: 323px; margin: auto; ">
+              <a href="http://www.handycobalt.click/intrastate-crackles/a625a23k95pL86y11Q6091M178eB36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQHRd997q10gWXz6OpkWwD" target="_blank"><img alt="OOEPAS" src="http://www.handycobalt.click/treasurer-movie/ef45m23x95Wz7am13n6G09D4l178eY36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQHRd996m1wr0L5dNlwD" width="100%" /></a>
+             </center> &nbsp; 
+             <h6 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; font-weight: 500; ">We appreciate your participation in our survey. Your input is highly valuable to us at Lowe' s, and we sincerely thank you for taking the time to share your feedback.</h6> 
             </div> 
-           </div> 
-           <h5 style="padding-top: 20px;">&nbsp;</h5> 
-           <hr /> 
-           <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12pt; font-weight: 500;">Thank you for your support. We look forward to your response!<br /> Warm regards,<br /> <br /> <b>The Home Depot Survey Team</b></p> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> 
-      <br /> &nbsp; 
-      <h4 class="newclocks" style="background-color: #fff2ea; padding: 15px 0;">&nbsp;</h4> 
-      <div style="max-width: 450px; margin: auto; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 10pt; font-weight: 700;">
-       if you need to go visit 
-       <a href="http://www.orangetools.click/easier-emphases/9724d2395z8Iz612A608cAT178dw36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ2Rd9o6FQF10q6bM2ywD">here</a>
-       <br /> 10010 126 E 23rd St New York, NY, US
-      </div> 
-      <br /> 
-      <br /> &nbsp;
-     </div> 
-    </div> 
-   </div> 
-  </div> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="captionssolids" style="border-collapse: collapse;" width="100%"> 
-   <caption class="printers">
-    &nbsp;
-   </caption> 
-   <thead id="maalsphite"> 
-    <tr> 
-     <th align="center" id="crosswball">&nbsp;</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td class="jaxkassinfo"> 
-      <div class="poolstyle"> 
-       <center class="proyecs"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="finalstorns"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" id="captionssolids" style="border-collapse: collapse;" width="100%"> 
-             <caption class="printers">
-              &nbsp;
-             </caption> 
-             <thead id="maalsphite"> 
-              <tr> 
-               <th align="center" id="crosswball">&nbsp;</th> 
-              </tr> 
-             </thead> 
-             <tbody> 
-              <tr> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="jaxkassinfo"> 
-      <div class="poolstyle"> 
-       <center class="proyecs"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="finalstorns">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="jaxkassinfo"> 
-      <div class="poolstyle"> 
-       <center class="proyecs"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="finalstorns">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="jaxkassinfo"> 
-      <div class="poolstyle"> 
-       <center class="proyecs"> 
-        <table> 
-         <tbody> 
-          <tr> 
-           <td class="finalstorns"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" id="captionssolids" style="border-collapse: collapse;" width="100%"> 
-             <caption class="printers">
-              &nbsp;
-             </caption> 
-             <thead id="maalsphite"> 
-              <tr> 
-               <th align="center" id="crosswball">&nbsp;</th> 
-              </tr> 
-             </thead> 
-             <tbody> 
-              <tr> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-               <td class="jaxkassinfo"> 
-                <div class="poolstyle"> 
-                 <center class="proyecs"> 
-                  <table> 
-                   <tbody> 
-                    <tr> 
-                     <td class="finalstorns">&nbsp;</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center> 
-                </div> </td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
+           </div> </li> 
+         </ol> &nbsp; 
+         <div style="background-color: #2745A6; padding: 3mm 0mm; "> 
+          <footer style="max-width: 420px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 12px; text-align: center; font-weight: 700; color: white; ">
+           you can leave with sadness 
+           <a href="http://www.handycobalt.click/f2f6u2n39m5a8gO612O6092nO178eG36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQHRd997S1zY0mO5lBlwD/Gladstone-rivalries" style="color: #00ffff; ">here</a>
+           <br /> US 10010 126 E 23rd St New York, NY,
+          </footer> 
+         </div> 
+        </div> 
+       </blockquote> 
+      </center> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.orangetools.click/6295vU2395XN85Q13CRM6090j178dj36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2Rd9o5WOZ106bLwPlD/teems-bests" alt=""/></body>
+ <img src="http://www.handycobalt.click/exhibitors-Helen/17a6o23xM95nM85D13b609z5kV178eF36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQHRd997OI_1P0U5WXw3D" alt=""/></body>
 </html>
 
-------=_Part_247_1478081031.1696004011687--
+------=_Part_181_1155259690.1696008943375--
 
