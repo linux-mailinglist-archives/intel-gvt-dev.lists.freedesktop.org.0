@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF67E7B432D
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 30 Sep 2023 21:05:32 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 17F177B436C
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 30 Sep 2023 21:57:53 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4D5CA10E17C;
-	Sat, 30 Sep 2023 19:05:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id D5BD010E19D;
+	Sat, 30 Sep 2023 19:57:51 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Sat, 30 Sep 2023 19:05:29 UTC
-Received: from mail.newofferstan.click (unknown [213.21.253.18])
- by gabe.freedesktop.org (Postfix) with ESMTP id DC7A510E17C
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Sat, 30 Sep 2023 19:57:50 UTC
+Received: from mail.coffeescronsh.click (unknown [77.90.135.134])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4431010E19D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 30 Sep 2023 19:05:29 +0000 (UTC)
+ Sat, 30 Sep 2023 19:57:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=newofferstan.click; 
+ d=coffeescronsh.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=ace_hardware_trust@newofferstan.click; 
- bh=nmf+C7JJ4PAM0O4y7jAYbtCT+54=;
- b=CQnep/aBBPCRlSJyPjKf4eD0X9K2YSMfWIcS2aHL7gnnJOowrPwObRbo07O757h9iAXQFWM+jsiF
- cqcyV2NgqzGZJ9KKtfUupDvT8J3VQRXEhtqT5ZOVOvSNXs/CtXT5x4fxtfkaQu08WrO9CoScMs2H
- EHz1RBeDmOxA1z8lXYo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=newofferstan.click; 
- b=Qyh22t4n3OPmIRZWtW1VFxkEyVt4AwS744pfrINJ3P5oUik7ByWnpRwQWBH1hdT6SKRyh2XGzJHe
- ODblE7kg//jUR6dRcKTfsWddh5nqfzcKFLzoT2h7xt9u2aN5RUXjOILrBTf8mJ6sTSR8UvRjGoR2
- eNWvSbyttG6BqCdgbLs=;
-Received: by mail.newofferstan.click id h31onk0001gp for
+ i=your_starbucks_experience_matters@coffeescronsh.click; 
+ bh=dhlvy2kHqvC61vYq6SJ51NNpZMk=;
+ b=oE5gaFA9q90YyqJmjKFaEcj0Pl12rOr/Vws8nu/+Vhvo17Q3CbFXsM4RR8PO9x/iFs3w92eRCL60
+ BAxUVDS9ttQoaWggRL34gMre416SjdPhMRzmtXw+S1Z0QuTluS5HTzcD3dM1o9CtzXxmWEhNgqaE
+ j5Wee/MZEGVcLOVJ4Dk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=coffeescronsh.click;
+ b=mOHJmuuhpqxwuA8GBuLK3i+bbeYoDYf0XYy8NCQNnrydXgCiFRAuzY1e/6pnfFcSsbuvZOsg8zpF
+ TM5GYnfbaCIxHlS689OaVZZIY9jgC3c1voBF8j0sWKHAVFWuAyrdFBaK3jtqsNbDMytTMQkuK/iK
+ OcVPVnJLQU51zeg3dds=;
+Received: by mail.coffeescronsh.click id h31urs0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 30 Sep 2023 14:57:39 -0400 (envelope-from
- <ace_hardware_trust-intel+2Dgvt+2Ddev=lists.freedesktop.org@newofferstan.click>)
-Date: Sat, 30 Sep 2023 14:57:39 -0400
-From: "ACE Hardware Trust" <ace_hardware_trust@newofferstan.click>
+ Sat, 30 Sep 2023 15:50:18 -0400 (envelope-from
+ <your_starbucks_experience_matters-intel+2Dgvt+2Ddev=lists.freedesktop.org@coffeescronsh.click>)
+Date: Sat, 30 Sep 2023 15:50:18 -0400
+From: "Your Starbucks Experience Matters"
+ <your_starbucks_experience_matters@coffeescronsh.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Don't pass up the opportunity to win a Stanley Tool Set by sharing
- your feedback with us!
+Subject: Special Starbucks deal of the day!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_352_1393581690.1696100243926"
-Message-ID: <0.0.0.53.1D9F3CFFBE46E94.C6287@mail.newofferstan.click>
+ boundary="----=_Part_253_430016376.1696103405955"
+Message-ID: <0.0.0.72.1D9F3D757257BFC.1A9AE0@mail.coffeescronsh.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_352_1393581690.1696100243926
+------=_Part_253_430016376.1696103405955
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,226 +64,122 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>redeemable at any</title> 
+  <title>valid at any of</title> 
  </head> 
- <body style="margin: 0;padding: 0; background-color: #ececec;"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="plapes" style="border-collapse: collapse;" width="100%"> 
-   <thead> 
-    <tr> 
-     <th>&nbsp;</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tfoot> 
-  </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="plapes" style="border-collapse: collapse;" width="100%"> 
-   <thead> 
-    <tr> 
-     <th align="center" style="background-color: #F9F9F9;"> 
-      <div style="max-width: 200px; margin: auto;">
-       <a href="http://www.newofferstan.click/Greenblatt-sausages/7566R23zQ95po86Q13H6j0WccA1798t36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQPRddd5b1g0r6BO2jwD"><img alt="IUHEA" src="http://www.newofferstan.click/4df4S2395HSt7a12eU60ceI1798h36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQPRddd6JXk1C06EkwOND/rolled-stroll" width="100%" /></a>
-      </div> </th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td id="lolipolps"> 
-      <div class="stocada"> 
-       <div class="container"> 
-        <section id="logotye"> 
-         <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
-          <p style="font-size: 24px; font-family: Arial, Helvetica, sans-serif; text-align: center; margin: 0; padding: 15px 0px;"><i><b>Final Notice from<br /> Ace Hardware </b></i></p> 
-         </div> 
-        </section> 
-       </div> 
-      </div> </td> 
-    </tr> 
-    <tr> 
-    </tr> 
-    <tr> 
-     <td id="lolipolps"> 
-      <div class="stocada"> 
-       <div class="container"> 
-        <section id="logotye"> 
-         <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
-          <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; ; padding-left: 30px; padding-right: 30px; line-height: 25px;"><b>Ace Hardware</b> is excited to announce some fantastic news! You now have the chance to obtain <b>the Stanley Tool Set</b>, which can be redeemed at any of our store locations. Act quickly and seize this opportunity! You have until <b>September 30th</b> to secure these outstanding tools.</p> 
-         </div> 
-        </section> 
-       </div> 
-      </div> </td> 
-    </tr> 
-    <tr> 
-    </tr> 
-    <tr> 
-     <td id="lolipolps"> 
-      <div class="stocada"> 
-       <div class="container"> 
-        <section id="logotye"> 
-         <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
-          <table style="max-width: 350px; margin: auto;"> 
-           <tbody> 
-            <tr> 
-             <td><a href="http://www.newofferstan.click/Greenblatt-sausages/7566R23zQ95po86Q13H6j0WccA1798t36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQPRddd5b1g0r6BO2jwD"><img alt="IIAEPA" src="http://www.newofferstan.click/c9b5R23j95JI7Qa11k60cfY1798R36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQPRddd5QN10S6o1zw@D/Pepsico-irreconcilable" width="100%" /></a></td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> 
-        </section> 
-       </div> 
-      </div> </td> 
-    </tr> 
-    <tr> 
-    </tr> 
-    <tr> 
-     <td id="lolipolps"> 
-      <div class="stocada"> 
-       <div class="container"> 
-        <section id="logotye"> 
-         <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
-          <table align="center"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <center style="border: solid 1.5px #ff0000; border-radius: 50px; padding: 1.2em 1.8em; font-weight: 900; font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; width: 12em; margin: auto;">
-               <a href="http://www.newofferstan.click/Greenblatt-sausages/7566R23zQ95po86Q13H6j0WccA1798t36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQPRddd5b1g0r6BO2jwD" style="text-decoration: none; color: #ff0000;">Start Here Now &gt; &gt; </a>
-              </center> </td> 
-            </tr> 
-           </tbody> 
-          </table> &nbsp; 
-          <div style="background-color: #ff0000;"> 
-           <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; ; padding-left: 30px; padding-right: 30px; line-height: 25px; font-weight: 700; padding: 1.5em 2em; color: #fff;">We're grateful in advance for your support. Sincerely, The Ace Hardware Team.</p> 
-          </div> 
-         </div> 
-        </section> 
-       </div> 
-      </div> </td> 
-     <td id="lolipolps"> 
-      <div class="stocada"> 
-       <div class="container"> 
-        <section id="logotye">
-         &nbsp;
-        </section> 
-       </div> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td> 
-      <div style="padding-top: 400px;">
-       &nbsp;
-      </div> 
-      <footer style="background-color: beige; padding: 1.8em 0em;"> 
-       <h4 style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;">Anyway you can leave <a href="http://www.newofferstan.click/eclipsed-emptiest/c244Q2395aZ86B13y6u0cWdj1798i36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQPRddd7P10Rgkl6JpAwXD">here</a><br /> US 10010 126 E 23rd St New York, NY,</h4> 
-      </footer> </td> 
-    </tr> 
-   </tfoot> 
-  </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="plapes" style="border-collapse: collapse;" width="100%"> 
-   <thead> 
-    <tr> 
-     <th>&nbsp;</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-     <td class="plopsinfos"> 
-      <section id="nedaveleiars"> 
-       <div class="kanjirys"> 
-        <footer class="yamio">
-         &nbsp;
-        </footer> 
-       </div> 
-      </section> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tfoot> 
-  </table>   
- <img src="http://www.newofferstan.click/eclipsed-emptiest/b8e4W2395CYS8511c60d0r1798A36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQPRddd6hJx10j6AL0UwD" alt=""/></body>
+ <body> 
+  <div> 
+   <div class="title"> 
+    <section id="color" style="background-color: #1A6E48;"> 
+     <table style="max-width: 300px; margin: auto;"> 
+      <tbody> 
+       <tr> 
+        <td><a href="http://www.coffeescronsh.click/undamaged-brownest/1d44H2395Ei86l13r6QG0d1U1799r36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ3RddQ5EA1v05nB@wD" target="_blank"><img alt="EAES" src="http://www.coffeescronsh.click/6fb4F2395lW7aU12i60d3Pl1799M36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ3RddQ5Y1o0g6DP3wD1/gangland-Augusta" width="100%" /></a></td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </section> 
+    <div style="border: solid 1.5px  #1A6E48; max-width: 700px; margin: auto; background-color: #fff;"> 
+     <section> 
+      <p style="margin: 0; font-weight: 800; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px; text-align: center; color: #1A6E48;">Your Last<br /> Reminder from Starbucks</p> 
+     </section> 
+    </div> &nbsp; 
+    <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+     <center style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 26px; text-align: center; font-weight: 500;">
+      Exciting Announcement! 
+      <b>Starbucks</b> is presenting a special offer for a 
+      <b>$100 Gift</b>, redeemable at any of our store locations. Don't miss out on this opportunity! You have until 
+      <b>September 30th</b> to enjoy these delightful beverages.      </center> &nbsp; 
+     <center style="max-width: 255px; margin: auto; background-color: #eafff6; padding: 15px 100px; border-radius: 100px;">
+      <a href="http://www.coffeescronsh.click/undamaged-brownest/1d44H2395Ei86l13r6QG0d1U1799r36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ3RddQ5EA1v05nB@wD" target="_blank"><img alt="UUEASE" src="http://www.coffeescronsh.click/gangland-Augusta/d145K239B5WP7ra11c60d4v1799q36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ3RddQ5D10Mu5bANwD" width="100%" /></a>
+     </center> &nbsp; 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+      <tbody align="center" border="0" cellpadding="0" cellspacing="0" class="doopst" style="border-collapse: collapse;" width="100%"> 
+       <tr> 
+        <td align="center"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="loginstrps"> 
+             <div class="tacklis"> 
+              <center id="lagsers">
+               &nbsp;
+              </center> 
+             </div> </td> 
+            <td class="loginstrps"> 
+             <div class="tacklis"> 
+              <center id="lagsers">
+               &nbsp;
+              </center> 
+             </div> </td> 
+            <td class="loginstrps"> 
+             <div class="tacklis"> 
+              <center id="lagsers">
+               &nbsp;
+              </center> 
+             </div> </td> 
+            <td class="loginstrps"> 
+             <div class="tacklis"> 
+              <center id="lagsers">
+               &nbsp;
+              </center> 
+             </div> </td> 
+            <td align="center" class="loginstrps" colspan="7"> 
+             <div class="tacklis"> 
+              <center id="lagsers" style="max-width: 400px; margin: auto;"> 
+               <div style="background-color: #1A6E48; padding: 15px 35px; border-radius: 20px; font-weight: 800; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.2em; width: 180px; margin: auto;">
+                <a href="http://www.coffeescronsh.click/undamaged-brownest/1d44H2395Ei86l13r6QG0d1U1799r36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ3RddQ5EA1v05nB@wD" style="text-decoration: none; color: #fff;">Start Here Now</a>
+               </div> 
+              </center> 
+             </div> </td> 
+            <td class="loginstrps"> 
+             <div class="tacklis"> 
+              <center id="lagsers">
+               &nbsp;
+              </center> 
+             </div> </td> 
+            <td class="loginstrps"> 
+             <div class="tacklis"> 
+              <center id="lagsers">
+               &nbsp;
+              </center> 
+             </div> </td> 
+            <td class="loginstrps"> 
+             <div class="tacklis"> 
+              <center id="lagsers">
+               &nbsp;
+              </center> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+          <tfoot> 
+           <tr> 
+            <td align="center" colspan="8"> 
+             <div style="padding-top: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; font-weight: 500;">
+              Your participation is valued.               <br /> Warm regards,
+              <br /> 
+              <strong>The Starbucks Team.</strong> 
+              <center style="padding-top: 422px;;">
+               &nbsp;
+              </center> 
+              <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; background-color: antiquewhite; padding: 10px 0;">&nbsp;</h1> 
+              <div style="max-width: 350px; margin: auto;">
+               you can leave with sadness 
+               <a href="http://www.coffeescronsh.click/8815ts2395w86Wl13N60Bd2po1799P36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ3RddQ5yM1k06wywDMl/undamaged-brownest">here</a>
+               <br /> US 10010 126 E 23rd St New York, NY,
+              </div> 
+              <br /> &nbsp;
+             </div> </td> 
+           </tr> 
+          </tfoot> 
+         </table> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.coffeescronsh.click/e3f5I2q395i85oN12l6g0d5u1799s36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ3RddQ7z1IU0xq6o3qwDp/resetting-nobler" alt=""/></body>
 </html>
 
-------=_Part_352_1393581690.1696100243926--
+------=_Part_253_430016376.1696103405955--
 
