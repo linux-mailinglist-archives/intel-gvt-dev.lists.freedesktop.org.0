@@ -1,46 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8479F7B40B9
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 30 Sep 2023 16:09:32 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id BBFF47B4146
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 30 Sep 2023 16:55:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 177C710E045;
-	Sat, 30 Sep 2023 14:09:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8E0D610E170;
+	Sat, 30 Sep 2023 14:55:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sat, 30 Sep 2023 14:09:28 UTC
-Received: from mail.westfamilysinc.click (unknown [77.90.135.129])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6A74710E045
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Sat, 30 Sep 2023 14:55:17 UTC
+Received: from mail.topskrsgrday.click (unknown [213.21.253.101])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 17B6210E170
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 30 Sep 2023 14:09:28 +0000 (UTC)
+ Sat, 30 Sep 2023 14:55:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=westfamilysinc.click; 
+ d=topskrsgrday.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=your-comprehensive-southwest-flight-information@westfamilysinc.click; 
- bh=40mbEz5cmBgxBRo4LEHDSrPEdSs=;
- b=NPrNywg6LGEbJUGvLlZxqGsmS8ZnzoKRVQ1EFkygOIjQOq3hx9gZAjhQqACK148/wruEf5XS6FVm
- Duiqe/ubBJ7ARCJbZWbqZ6Q5E+FivE2VIvwWUzpzzegGy5wqImRzP7+hBKEMH/Wv40PQHbdvtS64
- lqmQKJegOPyvJ7h/wOg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=westfamilysinc.click;
- b=XvUANlPKe+C9PfQeFRNrMGf3bcAIKxhN5o9EwYs4AEGGUCJHtR2kV8B8wlkJTEo7m1ms5b7GaiZx
- JbzQYCkjbDrnl9ddlwnd3av76k+RjRfZbnxOV1mFmM2LVt3wftrWi2OdBVYoSdI/I0zOsRMqOm9J
- jtHq1jTgLa8ndr4EfN0=;
-Received: by mail.westfamilysinc.click id h30vfe0001gt for
+ i=kroger.customer.happiness@topskrsgrday.click; 
+ bh=AcmhgYOWw7UHhBYi1BkLu65fMsk=;
+ b=L/pGQ05unv7OHRCwEGQIIppv6fMibhjq9Gt1cEEd40cqxlIuECVUlS2oiEloMkE9hSkwdNyKMFej
+ XYDitNk7IHA2d0J8T6PscJ2O6tNyzWyEHNOTbLqrGGBU4CPFU3kQoI3TPDGOdw50I2w9T9E0p6Rz
+ ZzmnnuOMF1PjrJVtvhY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=topskrsgrday.click; 
+ b=AIRNDTPXWElUJs1YwiQrDt0xLQhTJWT244KhagP6mtF5jeE67EA7kXgRFOOoyxK33vWb4Q134nLa
+ M0Jvmr0drClfZ3CcCpUpy0ecPgbcYmoQtQxtTtzBN/Newev3mdTm4EWCKLAn0HKBzKf310xiCDgy
+ V/dq/0OLRBXsvvYi8lM=;
+Received: by mail.topskrsgrday.click id h314r80001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 30 Sep 2023 11:22:07 -0400 (envelope-from
- <your-comprehensive-southwest-flight-information-intel+2Dgvt+2Ddev=lists.freedesktop.org@westfamilysinc.click>)
-Date: Sat, 30 Sep 2023 11:22:07 -0400
-From: "Your Comprehensive Southwest Flight Information"
- <your-comprehensive-southwest-flight-information@westfamilysinc.click>
+ Sat, 30 Sep 2023 12:07:37 -0400 (envelope-from
+ <kroger.customer.happiness-intel+2Dgvt+2Ddev=lists.freedesktop.org@topskrsgrday.click>)
+Date: Sat, 30 Sep 2023 12:07:37 -0400
+From: "Kroger Customer Happiness"
+ <kroger.customer.happiness@topskrsgrday.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Celebrate the onset of the season by indulging in a complimentary
- flight to your chosen destination!
+Subject: Join us in our jubilations today and be the recipient of a gift from
+ us, emblematic of our appreciation.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_97_1800503195.1696082480761"
-Message-ID: <0.0.0.112.1D9F3B1DFE2FBFC.3000F3@mail.westfamilysinc.click>
+ boundary="----=_Part_151_723171448.1696085212722"
+Message-ID: <0.0.0.13F.1D9F3B83B0E3E0A.65EEDE@mail.topskrsgrday.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_97_1800503195.1696082480761
+------=_Part_151_723171448.1696085212722
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,117 +65,119 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>kept confidential</title> 
+  <title>eagerly anticipating</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #e2e2e2;"> 
-  <header> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" class="shivana" style="border-collapse: collapse;" width="100%"> 
-    <caption class="seraphine">
-     &nbsp;
-    </caption> 
-    <thead> 
-     <tr> 
-      <th id="udyr">&nbsp;</th> 
-     </tr> 
-    </thead> 
-    <tbody id="nexo"> 
-     <tr> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
+ <body style="margin: 0; padding: 0;"> 
+  <div> 
+   <section> 
+    <div> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+      <thead> 
+       <tr> 
+        <th class="Kfcploops">&nbsp;</th> 
+       </tr> 
+      </thead> 
+      <tbody> 
+       <tr> 
+        <td class="ytustlow"> 
+         <table align="center" border="0" style="border-collapse: collapse;" width="100%"> 
           <tbody> 
            <tr> 
-            <td class="gambglis">&nbsp;</td> 
+            <td align="center" bgcolor="#e9f1ff"><a href="http://www.topskrsgrday.click/13d6F2i3K95Ir8l612S60bh7Q1795k36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQZRddm5v10Aw5P1MwD/somnolent-manipulated"><img alt="UUEYAE" src="http://www.topskrsgrday.click/6474n2395N7PaP13v60bSL9W1795r36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQZRddm7iPGJ10A6dJBwqD/somnolent-manipulated" style="display: block; max-width: 245px; margin: auto;" width="100%" /></a></td> 
            </tr> 
           </tbody> 
          </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor">
-         &nbsp; 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="amge" style="border-collapse: collapse;" width="100%"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+          <thead> 
+           <tr> 
+            <th class="Kfcploops">&nbsp;</th> 
+           </tr> 
+          </thead> 
           <tbody> 
            <tr> 
-            <td align="center" class="gambglis"> 
+            <td class="ytustlow"> 
              <section> 
-              <div> 
-               <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
-                <center style="max-width: 300px; margin: auto; padding: 15px 0px;">
-                 <span style="display: block;"><a href="http://www.westfamilysinc.click/9176D2G39w5Ms8l611L60b2x1794J36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQGRd9K5z10tJ6OUkwD3/shouldered-roofing" target="_blank"><img alt="IIEASE" src="http://www.westfamilysinc.click/a615M239m5a7paY13rp60Sb4H1794w36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQGRd9K7M1sSMm05V3wDl/evidenced-Edenizes" width="100%" /></a> </span>
-                </center> 
-                <span style="display: block;"><span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em;">We value your feedback. Please take a moment to participate in a short survey regarding your recent flight and your overall interaction with Southwest. Your input will help us improve your experiences with our airline. </span><br /> <span style="display: block; padding: 2.5% 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em; background-color: #FEBF26;">Your feedback is important to us. Kindly spare a moment to partake in a brief survey about your recent flight and overall interaction with Southwest. Your responses will aid us in enhancing your experiences with our airline.</span> </span> 
-                <center>
-                 <span style="display: block;"><a href="http://www.westfamilysinc.click/9176D2G39w5Ms8l611L60b2x1794J36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQGRd9K5z10tJ6OUkwD3/shouldered-roofing"><img alt="UEASE" src="http://www.westfamilysinc.click/alder-clerical/9546qD239F5V7AQa12t60b5kq1794v36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQGRd9K5F1F0l5SlPwD" style="display: block;" width="100%" /></a> </span>
-                </center> 
-                <br /> 
-                <span style="display: block;"><span style="display: block; padding: 2.5% 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em; background-color: #DB4437; color: white;"><b>To express our appreciation, we are delighted to offer you $100 as a gesture of thanks.</b></span><br /> <span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em;">You can utilize the link provided to access the survey. It's a straightforward task that will require just a few minutes of your time, and please be assured that your responses will remain private. </span> </span>
-                <br /> &nbsp; 
-                <center style="max-width: 75%; margin: auto;"> 
-                 <div style="background-color: #000fda; padding: 3.5% 7%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; font-size: 20px; border-radius: 18px;">
-                  <span style="display: block;"><a href="http://www.westfamilysinc.click/9176D2G39w5Ms8l611L60b2x1794J36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQGRd9K5z10tJ6OUkwD3/shouldered-roofing" style="color: white; text-decoration: none;">Kick off the survey Here&gt;&gt;</a></span>
-                 </div> 
-                </center> 
-                <span style="display: block;"> </span>
-                <br /> 
-                <br /> &nbsp; 
-                <hr />
-                <span style="display: block;"> <span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: .9em; line-height: 1.2em;"> Thank you for your continuous support, and we look forward to receiving your feedback. Warm regards, </span> </span>
-               </div> 
-              </div> 
-              <table style="padding-top: 350px;"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <div style="background-color: #252525; padding-top: 1em; padding-bottom: 1em;"> 
-               <p style="margin: 0; max-width: 500px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #fff;"><span style="display: block;">Use the exit option <a href="http://www.westfamilysinc.click/2694z2395F8Vq612nj60b3K1794q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQGRd9K6n1Skr06Q3XwDT/circlet-localizing" style="color: #00ffff;">here</a><br /> US 10010 126 E 23rd St New York, NY, </span></p> 
-              </div> 
+              <center>
+               &nbsp;
+              </center> 
              </section> </td> 
            </tr> 
           </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
-          <tbody> 
-           <tr> 
-            <td class="gambglis">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
-          <tbody> 
-           <tr> 
-            <td class="gambglis">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
+         </table> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> 
+   </section> 
+  </div>   
+  <legend> </legend> 
+  <div style="background-color: rgb(235, 235, 235);"> 
+   <div style="max-width: 500px; margin: auto; background-color: #fff; padding: 5% 7%;"> 
+    <p style="text-align: center; margin: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.3em; line-height: 1.5em;">Thank you for participating in our survey. Your input is greatly valued at Kriyncogelocr, and we genuinely appreciate your feedback.</p> &nbsp; 
+    <div style="display: flex; justify-content: center; align-items: center; flex-flow: wrap row;">
+     <a href=""><img alt="IUAEA" src="http://www.topskrsgrday.click/eb74r2395I7aJw12K60biak1795X36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQZRddm6WIsx105I32wD/subphases-musculature" style="max-width: 90px;margin: auto; display: inline-block; vertical-align: top;" width="100%" /></a> 
+     <a href="http://www.topskrsgrday.click/13d6F2i3K95Ir8l612S60bh7Q1795k36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQZRddm5v10Aw5P1MwD/somnolent-manipulated"><img alt="HNAGBE" src="http://www.topskrsgrday.click/vineyard-ergodic/8826Uz239C5c7anG13l60YBbbF1795j36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQZRddm5v1n0o6VA2wJD" style="max-width: 120px; margin: auto; display: inline-block;" width="100%" /></a>
+    </div> &nbsp; 
+    <div style="background-color: #2A4F92; padding: 3.5%; color: #fff;"> 
+     <p style="text-align: center; margin: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.3em; line-height: 1.5em;">Your continued support means a lot to us, and we are eagerly looking forward to your feedback.</p> 
+    </div> &nbsp; 
+    <p style="text-align: center; margin: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.3em; line-height: 1.5em;">Accessing the survey is easy?simply click the link below. It's a brief task that will take only a few minutes of your valuable time, and rest assured, your responses will remain completely confidential.</p> &nbsp; 
+    <table align="center" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center"><a href="http://www.topskrsgrday.click/13d6F2i3K95Ir8l612S60bh7Q1795k36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQZRddm5v10Aw5P1MwD/somnolent-manipulated" style="text-decoration: none; color: white;"><span style="display: inline-block; padding: 3.8% 5.8%; background-color: #2A4F92; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 20px; border-radius: 5px;">Start Here Now &gt; &gt;</span></a></td> 
+      </tr> 
+     </tbody> 
+    </table> &nbsp; 
+    <p style="text-align: center; margin: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.3em; line-height: 1.5em;">Thank you once again for your steadfast support. We are eagerly anticipating your feedback soon! Your continued support is highly valued, and we are enthusiastic about hearing from you!</p> &nbsp; 
+    <div style="border-bottom: solid 1.2px #000;  margin: auto;">
+     &nbsp;
+    </div> &nbsp; 
+    <p style="text-align: center; margin: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: .9em; line-height: 1em;">Warm regards,<br /> <b>The Krroliogterer Survey Team</b></p> 
+   </div> 
+   <div style="padding-bottom: 400px;">
+    &nbsp;
+   </div> 
+  </div> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <thead> 
+    <tr> 
+     <th class="Kfcploops">&nbsp;</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr> 
+     <td class="ytustlow">&nbsp;</td> 
+     <td class="ytustlow">&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td class="ytustlow">&nbsp;</td> 
+     <td class="ytustlow">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+   <tfoot> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tfoot> 
+  </table> &nbsp; 
+  <div style="width: 100%; background-color: #fff; padding: 15px 0px;"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"> 
+       <center style="max-width: 700px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
+        <p><span>if you need to go visit <a href="http://www.topskrsgrday.click/b334U2395hV86j12R6h0b8q1795U36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQZRddm7KZM1X0B5O@qwD/somnolent-manipulated">here</a> 10010 126 E 23rd St New York, NY, US </span></p> 
+       </center> </td> 
      </tr> 
     </tbody> 
-    <tfoot> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tfoot> 
    </table> 
-  </header>   
- <img src="http://www.westfamilysinc.click/notable-phasers/7926pu2U395W8Lu513R6w0Sb6j1794U36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQGRd9K5su10U5oApwD" alt=""/></body>
+  </div> 
+ <img src="http://www.topskrsgrday.click/oyster-enduringly/7566m23RA95h85AF11I60bcB1795x36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQZRddm5Nl10g5GqlwD" alt=""/></body>
 </html>
 
-------=_Part_97_1800503195.1696082480761--
+------=_Part_151_723171448.1696085212722--
 
