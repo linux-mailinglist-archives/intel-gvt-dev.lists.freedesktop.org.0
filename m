@@ -2,45 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CABE7B496D
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  1 Oct 2023 21:23:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9B087B4981
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  1 Oct 2023 21:58:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A81B810E035;
-	Sun,  1 Oct 2023 19:23:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6591610E035;
+	Sun,  1 Oct 2023 19:58:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 01 Oct 2023 19:23:24 UTC
-Received: from mail.kgrerparking.click (unknown [77.90.135.173])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5261B10E035
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sun, 01 Oct 2023 19:58:43 UTC
+Received: from mail.westflymooning.click (unknown [213.21.253.90])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4810210E035
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  1 Oct 2023 19:23:24 +0000 (UTC)
+ Sun,  1 Oct 2023 19:58:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=kgrerparking.click; 
+ d=westflymooning.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=satisfaction_of_kroger_guests@kgrerparking.click; 
- bh=yggAcv3MtnuD9ujhBzw0PTwwh3A=;
- b=LGOeoRp82BTqc90J1c380oiaYUoYILDVTr+jUen2smQLEH9B96fr5aCPpj2dIu3xKz+Ntfxc/1hy
- 3mhmNz8ZIP2W+Pyx1fVjHpbJXqOCYA30zZ/ObEvZ4GPPhlPaZrAg5gb3PlP2pZT2x/FbKS1EvPb4
- uGGUt3kc/TCXv2D03Xg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kgrerparking.click; 
- b=pZDPcAIKXMdL863pNjNlMmXa3sNUdXhdAJ0z47p5asHvbv341X7/4r3XuKmpN47Hm/dtx1gHxb1g
- WZZJ9RBtlUMinksJk6WepuM2AVtYB9c46u3TimogM3IYkqruffk8T6KX0yuzq5CrchlO2mcHsA/K
- /d1Ki5JnaXbtubvtnFA=;
-Received: by mail.kgrerparking.click id h373io0001gd for
+ i=receive-the-latest-southwest-flight-updates@westflymooning.click; 
+ bh=yqyKQ1Dg3ZOvYBLzcDC7pRenryw=;
+ b=cmDhWKW1acy2e59yLY8YwpGJfSkSs+P5lYV+H4sOgZrJB9gfqox+wIshoTsNaMFwOMA6NZhE/amL
+ X0y/cjcaUWFw6EbcW43t0MuYgGrDOuaH36kMIjilo6VcxX0pcVRCzz8uXud+OfdTVv+QXA3CZo/2
+ 8G7nl9LAwI5dmonjL44=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=westflymooning.click;
+ b=pXU4UlAlu60Sm6AxRlKScay+NKZXFSp8A+Dp4Gkp4G6iz9lSB7YE8ok4O9Z3nFn/O+LzWYTz3fLY
+ bQgZxEMud+pShgBIaZndsRhR1oeQnJw62M78VAOtlg6gFXBtb1GuU8snydG0xOiI1eGSfsv8DuWd
+ glvuY9OBeR3X+6qw720=;
+Received: by mail.westflymooning.click id h377n60001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 1 Oct 2023 15:16:06 -0400 (envelope-from
- <satisfaction_of_kroger_guests-intel+2Dgvt+2Ddev=lists.freedesktop.org@kgrerparking.click>)
-Date: Sun, 1 Oct 2023 15:16:06 -0400
-From: "Satisfaction Of Kroger Guests"
- <satisfaction_of_kroger_guests@kgrerparking.click>
+ Sun, 1 Oct 2023 15:48:45 -0400 (envelope-from
+ <receive-the-latest-southwest-flight-updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@westflymooning.click>)
+Date: Sun, 1 Oct 2023 15:48:45 -0400
+From: "Receive The Latest Southwest Flight Updates"
+ <receive-the-latest-southwest-flight-updates@westflymooning.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Participate in the festivities with a heartfelt gift from us as a
- token of our gratitude.
+Subject: Immerse yourself in the seasonal spirit and take advantage of a free
+ flight to your dream locale!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_235_1320066686.1696187749152"
-Message-ID: <0.0.0.72.1D9F49BBA5D10D0.442457@mail.kgrerparking.click>
+ boundary="----=_Part_166_423454023.1696189717980"
+Message-ID: <0.0.0.99.1D9F4A049DE4D2E.5FC11D@mail.westflymooning.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_235_1320066686.1696187749152
+------=_Part_166_423454023.1696189717980
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,104 +64,117 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>ongoing support is</title> 
+  <title>kept confidential</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(241, 241, 241);"> 
-  <div> 
-   <center style="background-color: #1A4898; width: 100%;"> 
-    <blockquote style="max-width: 300px; margin: auto;"> 
-     <table border="0" cellpadding="2" cellspacing="3" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td>&nbsp;</td> 
-        <td align="center"><a href="http://www.kgrerparking.click/Uc56H2Uz395i86zP11k6106h17a3I36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ.RdQQ6dZ1_0J5gAw1D/lucks-kilogram"><img alt="galaxy" src="http://www.kgrerparking.click/frontage-ambition/bca4d2395L7NaQ11W6108g17a3M36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ.RdQQ7ivy1B_06ATPwDW" width="100%" /> </a></td> 
-        <td>&nbsp;</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </blockquote> 
-   </center> 
-   <center style="background-color: #fff; max-width: 520px; margin: auto;"> 
-    <table border="0" cellpadding="2" cellspacing="3" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-       <td> 
-        <div style="padding-top: 20px; padding-right: 25px; padding-bottom: 20px; padding-left: 25px;"> 
-         <p align="center" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 1.2em;">We'd like to express our gratitude for choosing Kroger. Your loyalty and support hold great significance for us, and we sincerely appreciate the opportunity to fulfill your shopping needs.</p> 
-        </div> </td> 
-       <td>&nbsp;</td> 
-      </tr> 
-      <tr> 
-       <td colspan="3"> 
-        <table border="0" cellpadding="2" cellspacing="3" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="right"> 
-            <div align="right" style="background-color: #fff;"> 
-             <div style="max-width: 100px;float: right">
-              <a href="http://www.kgrerparking.click/Uc56H2Uz395i86zP11k6106h17a3I36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ.RdQQ6dZ1_0J5gAw1D/lucks-kilogram" target="_blank"><img alt="hellos" src="http://www.kgrerparking.click/9176wr2k395bW7ap12a6A109n17a3y36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ.RdQQ6kAl10x6WMBw0D/blunder-natively" style="float: right; width: 150px" width="100%" /> </a>
-             </div> 
-            </div> </td> 
-           <td align="left"> 
-            <div style="max-width: 100px; margin: auto; float: left">
-             <a href="http://www.kgrerparking.click/Uc56H2Uz395i86zP11k6106h17a3I36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ.RdQQ6dZ1_0J5gAw1D/lucks-kilogram" target="_blank"><img alt="proyess" src="http://www.kgrerparking.click/cb94D2395pK7Fa11L610aJ17a3n36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ.RdQQ5y1xN06rAwllD/Quezon-realms" style="width: 120px" width="100%" /> </a>
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </center> 
-   <center style="max-width: 520px; margin: auto; background-color: #fff;"> 
-    <div style="padding-top: 20px; padding-right: 25px; padding-bottom: 20px; padding-left: 25px;"> 
-     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 1.2em; margin: 0;"><font>Thanks once more for your ongoing support. We can't wait to receive your feedback soon! Your ongoing support is highly valued, and we eagerly await your feedback! </font></p> 
-    </div> 
-   </center> 
-   <center style="max-width: 520px; margin: auto;"> 
-    <div style="background-color: #1A4898;"> 
-     <table align="center"> 
-      <tbody> 
-       <tr> 
-        <td align="center" style="padding: 20px 25px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.2em; font-weight: 900; color: white;">Your sustained support is highly important to us, and we eagerly anticipate your feedback.</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-   </center> 
-   <center style="background-color: #fff; max-width: 520px; margin: auto;"> 
-    <div style="padding-top: 20px; padding-right: 25px; padding-bottom: 20px; padding-left: 25px;"> 
-     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 1.2em;">Accessing the survey is easy?just click the link provided below. It's a brief task that will take only a few minutes of your time, and your responses will be treated with the utmost confidentiality.</p> 
-    </div> 
-   </center> 
-   <center style="max-width: 520px; margin: auto; background-color: #fff;"> 
-    <p style="text-align: center; margin: 0;"><a href="http://www.kgrerparking.click/Uc56H2Uz395i86zP11k6106h17a3I36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ.RdQQ6dZ1_0J5gAw1D/lucks-kilogram" style="text-decoration: none; color: #fff;" target="_blank"><span style="background-color: #1A4898; display: inline-block; padding: 12px 27px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 20px; border-radius: 5px;">Start Here Now &gt; &gt; </span> </a></p> 
-   </center> 
-   <center style="background-color: #fff; max-width: 520px; margin: auto;"> 
-    <div style="padding-top: 20px; padding-right: 25px; padding-bottom: 20px; padding-left: 25px;"> 
-     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 1.2em;">Thanks once more for your ongoing support. We can't wait to receive your feedback soon! Your ongoing support is highly valued, and we eagerly await your feedback!<br /> <br /> Warm regards,<br /> <b><small>The Kroger Survey Team </small> </b></p> 
-    </div> 
-   </center> 
-   <div style="background-color: #fff; max-width: 520px; margin: auto;">
-    &nbsp;
-   </div> 
-  </div> &nbsp; 
-  <p style="padding-bottom: 200px;">&nbsp;</p> 
-  <div> 
-   <table align="center" cellpadding="30px" style="width: 100%;"> 
-    <tbody> 
+ <body style="margin: 0; padding: 0; background-color: #e2e2e2;"> 
+  <header> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" class="shivana" style="border-collapse: collapse;" width="100%"> 
+    <caption class="seraphine">
+     &nbsp;
+    </caption> 
+    <thead> 
      <tr> 
-      <td align="center" bgcolor="DDDDDD"> 
-       <footer> 
-        <address style="font-weight: bold; font-size: 14px;"><small>if you need to go visit <a href="http://www.kgrerparking.click/a9d4r2395Y8jz611O6107A17a3m36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.RdQQ6N10GBy5X@wPD/Quezon-realms"> here </a><br /> 10010 126 E 23rd St New York, NY, US </small></address> 
-       </footer> </td> 
+      <th id="udyr">&nbsp;</th> 
+     </tr> 
+    </thead> 
+    <tbody id="nexo"> 
+     <tr> 
+      <td class="castlevania"> 
+       <div id="jordals"> 
+        <section class="kuribor"> 
+         <table class="amge"> 
+          <tbody> 
+           <tr> 
+            <td class="gambglis">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </section> 
+       </div> </td> 
+      <td class="castlevania"> 
+       <div id="jordals"> 
+        <section class="kuribor">
+         &nbsp; 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="amge" style="border-collapse: collapse;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" class="gambglis"> 
+             <section> 
+              <div> 
+               <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+                <center style="max-width: 300px; margin: auto; padding: 15px 0px;">
+                 <span style="display: block;"><a href="http://www.westflymooning.click/Michaels-staples/1f25tq2395vz8O612G61m0cz17a4O36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR5E1U0W6FywBDB" target="_blank"><img alt="IIEASE" src="http://www.westflymooning.click/exemplifying-plush/4864Q2395vR7Ta12j61g0eC17a4A36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR7c1rWn0r5Q1TwD" width="100%" /> </a> </span>
+                </center> 
+                <span style="display: block;"><span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em;">Your input is important to us. Kindly spare a moment to engage in a brief survey about your recent flight and your overall interaction with Southwest. Your feedback will assist us in enhancing your experiences with our airline. </span><br /> <span style="display: block; padding: 2.5% 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em; background-color: #FEBF26;">We highly value your feedback. Please take a moment to participate in a concise survey regarding your recent flight and your overall interaction with Southwest. Your responses will contribute to our efforts to improve your experiences with our airline. </span> </span> 
+                <center>
+                 <span style="display: block;"><a href="http://www.westflymooning.click/Michaels-staples/1f25tq2395vz8O612G61m0cz17a4O36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR5E1U0W6FywBDB"><img alt="UEASE" src="http://www.westflymooning.click/bab4K2395a7Roa12Gi610fK17a4s36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4RdQR6n1nq0C5cUNwD/integrals-Grimm" style="display: block;" width="100%" /> </a> </span>
+                </center> 
+                <br /> 
+                <span style="display: block;"><span style="display: block; padding: 2.5% 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em; background-color: #DB4437; color: white;"><b>As a token of our gratitude, we are pleased to extend a $100 gift as a sign of our appreciation. </b> </span><br /> <span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em;">You can make use of the provided link to access the survey. It's a simple task that will only take a few minutes of your time, and rest assured that your responses will be kept confidential. </span> </span>
+                <br /> &nbsp; 
+                <center style="max-width: 75%; margin: auto;"> 
+                 <div style="background-color: #000fda; padding: 3.5% 7%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; font-size: 20px; border-radius: 18px;">
+                  <span style="display: block;"><a href="http://www.westflymooning.click/Michaels-staples/1f25tq2395vz8O612G61m0cz17a4O36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR5E1U0W6FywBDB" style="color: white; text-decoration: none;">Kick off the survey Here&gt;&gt; </a> </span>
+                 </div> 
+                </center> 
+                <span style="display: block;"> </span>
+                <br /> 
+                <br /> &nbsp; 
+                <hr /> 
+                <span style="display: block;"> <span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: .9em; line-height: 1.2em;"> Thank you for your continuous support, and we look forward to receiving your feedback. Warm regards, </span> </span>
+               </div> 
+              </div> 
+              <table style="padding-top: 350px;"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <div style="background-color: #252525; padding-top: 1em; padding-bottom: 1em;"> 
+               <p style="margin: 0; max-width: 500px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #fff;"><span style="display: block;">Use the exit option <a href="http://www.westflymooning.click/d316B23M9N5ug86W11X610dr17a4y36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR7V1sF0ZW5SJNwD/exemplifying-plush" style="color: #00ffff;"> here </a><br /> US 10010 126 E 23rd St New York, NY, </span></p> 
+              </div> 
+             </section> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </section> 
+       </div> </td> 
+      <td class="castlevania"> 
+       <div id="jordals"> 
+        <section class="kuribor"> 
+         <table class="amge"> 
+          <tbody> 
+           <tr> 
+            <td class="gambglis">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </section> 
+       </div> </td> 
+      <td class="castlevania"> 
+       <div id="jordals"> 
+        <section class="kuribor"> 
+         <table class="amge"> 
+          <tbody> 
+           <tr> 
+            <td class="gambglis">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </section> 
+       </div> </td> 
      </tr> 
     </tbody> 
+    <tfoot> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tfoot> 
    </table> 
-  </div>   
- <img src="http://www.kgrerparking.click/c5j6lX239R5RpR8513Vr610bDl17a3l36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ.RdQQ7HK1HkR05SXBwD/commencing-junkers" alt=""/></body>
+  </header>   
+ <img src="http://www.westflymooning.click/Michaels-staples/b704l2395KTH8511S6110w17a4G36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ4RdQR6sZ1Zq05i@lwD" alt=""/></body>
 </html>
 
-------=_Part_235_1320066686.1696187749152--
+------=_Part_166_423454023.1696189717980--
 
