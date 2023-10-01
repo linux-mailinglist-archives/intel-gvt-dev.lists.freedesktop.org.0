@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2E357B4868
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  1 Oct 2023 17:31:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id DD6927B4893
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  1 Oct 2023 18:16:14 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 02FCB10E028;
-	Sun,  1 Oct 2023 15:31:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A27A010E031;
+	Sun,  1 Oct 2023 16:16:12 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 01 Oct 2023 15:31:53 UTC
-Received: from mail.masterkohlinfo.click (unknown [77.90.135.178])
- by gabe.freedesktop.org (Postfix) with ESMTP id 244D710E028
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Sun, 01 Oct 2023 16:16:10 UTC
+Received: from mail.topslwfree.click (unknown [213.21.253.87])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 558FF10E031
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  1 Oct 2023 15:31:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=masterkohlinfo.click; 
+ Sun,  1 Oct 2023 16:16:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=topslwfree.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kohlsperks@masterkohlinfo.click; 
- bh=7w0yX4AJrbWhgt+MvPVYPvcGYx8=;
- b=WwsZVw/INZXr8Me4ANbVaXHmjcymZBKvJud9Mh2A3EiaNuAJFmo92/z75LtbQKEZ/cBoNR15hH/j
- j1YRn6I0f23PoxCwgonKD4CkbaCk5BCMUf0xE+suR9rL8yRFVgV0cy0RhMkdq0m47e+NdMmxrxfX
- EEUjM32bdzYkvi9lbuI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=masterkohlinfo.click;
- b=H9FUHDWpzAv/MTG4kJBrptkY/e0tGyWzpioXT0AGKLYcNV7SQ9QpWwkW85VT43fux+799QgUMdTa
- 6X5fEcdgi2obm+68dtyJH+Cssy4609otZZBY8evhUcrhx31VgdWBjDlQZxA+DfCLES4UrM1b59dT
- 0Ivk9Nvaz/cOqqLGRnw=;
-Received: by mail.masterkohlinfo.click id h36hsc0001g4 for
+ i=immerse-yourself-in-your-lowes-shopping-experience@topslwfree.click; 
+ bh=PmcBnmuD9cO0VZO7oTchfiugnWM=;
+ b=hmGpBm9F4oiHCagVYj2jT2hreqH0A1LKj7nX4MWWR3kj5SaBUCSkj4BTa6WhbZgwKJObz5sZr9jO
+ G7HChWgSTKdFJuJmd3+hZv5QYllkecCsdNH8BTvOmzKV5wcNmSz9hTSIQOIsGNRm40ee2gFtITYf
+ LBFfe9n3efMc4HfJLmw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=topslwfree.click;
+ b=RnpoOFgAsn4OxM0TEaTmKmwogn8qrLeH3VKG4MqG5wyBMQsIcQJ3NR8j1k0FUpXAGB3TghV+47Wf
+ a7pSeq8bQE3bpcLE8WnPeFLJwlzwi8h3Hi+gehjnFvZxPRL5z3QYp/UBS0CRsbnWM7ayy5TNEbK0
+ WSAxpyUL7PUPdBiZCRI=;
+Received: by mail.topslwfree.click id h36dkk0001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 1 Oct 2023 12:44:12 -0400 (envelope-from
- <kohlsperks-intel+2Dgvt+2Ddev=lists.freedesktop.org@masterkohlinfo.click>)
-Date: Sun, 1 Oct 2023 12:44:12 -0400
-From: KohlsPerks <kohlsperks@masterkohlinfo.click>
+ Sun, 1 Oct 2023 12:07:41 -0400 (envelope-from
+ <immerse-yourself-in-your-lowes-shopping-experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@topslwfree.click>)
+Date: Sun, 1 Oct 2023 12:07:41 -0400
+From: "Immerse Yourself In Your Lowes Shopping Experience"
+ <immerse-yourself-in-your-lowes-shopping-experience@topslwfree.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Last chance to get a Ninja Air Fryer - offer ends today!
+Subject: Unlock an exceptional Kobalt Tool set through your feedback - it's
+ reserved for your benefit.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_43_1998854828.1696173814591"
-Message-ID: <0.0.0.2F.1D9F48681F97ACC.602014@mail.masterkohlinfo.click>
+ boundary="----=_Part_40_1943992128.1696176442931"
+Message-ID: <0.0.0.5E.1D9F481682A0E90.2304FD@mail.topslwfree.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_43_1998854828.1696173814591
+------=_Part_40_1943992128.1696176442931
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,93 +64,53 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Get Ready for</title> 
+  <title>Announcement from</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #dddddd;"> 
-  <ul id="msoters" style="padding: 0; margin: 0;"> 
-   <li class="wendysproyecs"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" id="pharmos" style="border-collapse: collapse;" width="100%"> 
-     <thead> 
-      <tr> 
-       <th align="center" class="ploserts">&nbsp;</th> 
-      </tr> 
-     </thead> 
-     <tbody class="jhgops"> 
-      <tr> 
-       <td id="chikols"> 
-        <div class="prinss"> 
-         <center id="token">
-          &nbsp;
-         </center> 
-        </div> </td> 
-       <td id="chikols"> 
-        <div class="prinss"> 
-         <center id="token"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <div style="border: solid 3px #7e0000; border-radius: 10px; max-width: 550px; margin: auto; background-color: #fff;"> 
-               <center id="tops"> 
-                <blockquote class="joolys" style="width: 15em;">
-                 <span class="freyjors"><a href="http://www.masterkohlinfo.click/applejack-readily/60c5H2w395B8j6D12E6R0e4V179dW36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQJRddK7G1TCQ0h5O@wkD"><img alt="OOPEYS" src="http://www.masterkohlinfo.click/9ad4Y2395X7arS13e6Q0me5s179dC36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQJRddK7GV1i0v_5al@wD/curricular-boundary" width="100%" /></a></span>
-                </blockquote> 
-               </center> 
-               <article style="padding-top: .8cm;"> 
-                <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: .5cm; padding: 0cm .6cm; line-height: .8cm;"><span class="freyjors"><font>Prepare for an Exclusive Offer! <b>Kohl's</b> Offers You the Opportunity to Purchase a <b>Ninja Air Fryer</b> at Our Locations!<br /> <br /> Take advantage of this opportunity now! You have until <b>October 1st</b> to obtain these thrilling tools. </font> </span></p> 
-               </article> &nbsp; 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> 
-                   <div style="background-color: #f51010; font-family: Arial, Helvetica, sans-serif; font-weight: 600; width: 18em; padding: 3mm 0; font-size: 6mm;">
-                    <span class="freyjors"><a href="http://www.masterkohlinfo.click/applejack-readily/60c5H2w395B8j6D12E6R0e4V179dW36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQJRddK7G1TCQ0h5O@wkD" style="color: #fff; text-decoration: none;">Start The Survey Here &gt; &gt;</a></span>
-                   </div> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <center style="max-width: 355px; margin: auto;">
-                <span class="freyjors"><a href="http://www.masterkohlinfo.click/applejack-readily/60c5H2w395B8j6D12E6R0e4V179dW36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQJRddK7G1TCQ0h5O@wkD"><img alt="OOPES" src="http://www.masterkohlinfo.click/8274F2395z7qUa13X60eXV6r179do36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQJRddK5ct10Q5D@wzD/cleaner-vanity" width="100%" /></a> </span>
-               </center> 
-               <hr /> 
-               <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: .5cm; padding: 0cm .6cm; line-height: .8cm;"><span class="freyjors">Thank you in advance,<br /> <b>The Kohl's Team</b> </span></p> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </center> 
-        </div> </td> 
-      </tr> 
-      <tr> 
-      </tr> 
-      <tr> 
-       <td id="chikols"> 
-        <div class="prinss"> 
-         <center id="token">
-          &nbsp;
-         </center> 
-        </div> </td> 
-       <td id="chikols"> 
-        <div class="prinss"> 
-         <center id="token">
-          &nbsp;
-         </center> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-     <tfoot> 
-     </tfoot> 
-    </table> 
-    <table> 
-     <tbody> 
-      <tr> 
-       <td align="center" id="fallows">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> </li> 
-  </ul>   
- <img src="http://www.masterkohlinfo.click/Payson-networks/dc84h2395oBq8511L60e7i179dT36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQJRddK7vnYO1V05CqLwD" alt=""/></body>
+ <body style="margin: 0; padding: 0; background-color: rgb(226, 226, 226);"> 
+  <div>
+   &nbsp; 
+   <center style="max-width: 200px; margin: auto;">
+    <a href="http://www.topslwfree.click/4df6Y23B9w5H8SR611X60e8h179eA36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwRdQm6IFr1I06k01kwD/headlands-kited"><img alt="IIES" src="http://www.topslwfree.click/7196Uu239D5N7zaN13SG60Dear179eV36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQwRdQm6zIH10S6aJpwDA/resignations-torture" width="100%" /></a>
+   </center> 
+   <div style="max-width: 700px; margin: auto ; box-shadow: inset 0 0 5px 1px #2A4F92; background-color: #fff; border-radius: 10px;"> 
+    <div style=" max-width: 520px; margin: auto;">
+     &nbsp; 
+     <center style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 27px;">
+      Last Reminder
+      <br /> Regarding Your Lowe's Reward
+     </center> &nbsp; 
+     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 27px; text-align: center; font-weight: 500;">Thrilling News from <strong>Lowe's!</strong> A <strong>Kobalt Tool Set is</strong> waiting for you at our stores. Take quick action and seize this chance! You have until <strong>October 1ts</strong> to acquire these fantastic items.</p> 
+     <table align="center"> 
+      <tbody> 
+       <tr> 
+        <td align="center"> 
+         <center style="background-color: #2A4F92; padding: 1.3em 1.8em; border-radius: 10px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">
+          <a href="http://www.topslwfree.click/4df6Y23B9w5H8SR611X60e8h179eA36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwRdQm6IFr1I06k01kwD/headlands-kited" style="text-decoration: none; color: white;">Start Here Now&gt;&gt;</a>
+         </center> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <div style="padding: 15pt 0 0;"> 
+      <center style="max-width: 375px; margin: auto;">
+       <a href="http://www.topslwfree.click/4df6Y23B9w5H8SR611X60e8h179eA36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwRdQm6IFr1I06k01kwD/headlands-kited"><img alt="UHES" src="http://www.topslwfree.click/Waukesha-attenuate/daa6bK239s5IG7ha13n60MebGJ179eh36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQwRdQm7s10qp_N6bB@w1D" width="100%" /></a>
+      </center> 
+     </div> 
+     <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; line-height: 27px; text-align: center; font-weight: 500;">Your engagement in our survey is greatly valued. Your input holds significant importance to us here at Lowe's, and we genuinely extend our gratitude for dedicating your time to provide us with your feedback.</p> 
+     <br /> &nbsp;
+    </div> 
+   </div> 
+  </div> 
+  <center style="padding-top: 460px; padding-bottom: 30px;"> 
+   <center style="background-color: #2A4F92; padding: 15pt 0;"> 
+    <center style="max-width: 520px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: 800; color: white;">
+     you can leave with sadness 
+     <a href="http://www.topslwfree.click/4Nd6fPH2395fj86n13l6X0eG9h179eq36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQwRdQm7C1Lk0Sx6j3wX2D/sparkle-perceptual" style="color: aquamarine;">here</a>
+     <br /> US 10010 126 E 23rd St New York, NY,
+    </center> 
+   </center> 
+  </center>   
+ <img src="http://www.topslwfree.click/e3f4U2395em85n11h60ecp179ej36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQwRdQm5zkz105yyBwD/cantor-reduces" alt=""/></body>
 </html>
 
-------=_Part_43_1998854828.1696173814591--
+------=_Part_40_1943992128.1696176442931--
 
