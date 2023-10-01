@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0EBD7B43A0
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 30 Sep 2023 22:39:01 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAA117B4824
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  1 Oct 2023 16:45:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C446310E033;
-	Sat, 30 Sep 2023 20:39:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4652410E057;
+	Sun,  1 Oct 2023 14:45:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 599 seconds by postgrey-1.36 at gabe;
- Sat, 30 Sep 2023 20:38:59 UTC
-Received: from mail.flyunitedspss.click (unknown [77.90.135.146])
- by gabe.freedesktop.org (Postfix) with ESMTP id C823C10E033
+X-Greylist: delayed 325 seconds by postgrey-1.36 at gabe;
+ Sun, 01 Oct 2023 14:45:39 UTC
+Received: from mail.physhbpitts.click (unknown [77.90.135.161])
+ by gabe.freedesktop.org (Postfix) with ESMTP id ACAC010E057
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 30 Sep 2023 20:38:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=flyunitedspss.click; 
+ Sun,  1 Oct 2023 14:45:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=physhbpitts.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=gift-card-opportunity-at-united-air@flyunitedspss.click; 
- bh=MNKXtJ4kbyWlZSLRcoGYYSiVZ7c=;
- b=O+IGhaDRan6q13NtbVnsZ1PCe+FbMlm/AvL36IFTSvh3Jvew5BmPuYNwIvtBsbEUc9TWRJeKlhpc
- QcINOQeFYuMz6X3WBqB3lfbppnFBKANnCPG91xH3E/UO9LxKRGYSRj2sp6dmuFJBXf2FlQOYGqSo
- FIXiT63VVChPR+AXRQ8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flyunitedspss.click;
- b=Jj9svcvLeIXYsYtae43mVI+SDkcvEHeJAfQzHofRpAiHoOSnhZzBDCi5DcN9LKpJsyi4z+uim/08
- FmE8JcPdgUyAiHVm7HSd7zVI4y3h3R5EPdvFNdWo40gFih5aus9kCKAWS2zHF2aWkBlydn6e3ErC
- 5tEN2lovwLHfYWQbrDA=;
-Received: by mail.flyunitedspss.click id h32d440001gc for
+ i=harbor_freight_gift_opportunity@physhbpitts.click; 
+ bh=wP13xciYJTl8oCOKp9mQhGpkGmQ=;
+ b=wlD5u/ef1lybKb6Rf+V8atL61tNWOeDxM1/nEz+fNK3uqUmSBOzk0kSBkrsK6Gfhgo3XZpgyfnwN
+ D3AXu7RTnkTD/0Z3aBkfrQ9HPldXbWb5g5w4twSbw5ETTxfWtPeF8yY9pRc/RRiqJkvKtoQQwajE
+ eX2n5NJC+rJo/6e5Aa0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=physhbpitts.click; 
+ b=hDA2fR0Ugor3QI6hErCLTjls51pX6dMVjKDHqBq3WQcWtaQkL41QBfto8tsOWvYSS9h5Oyt6n3jB
+ Z+nEVq9tKAm5MomIEAMrHpaA+inR9jIiMpgxHdGu2MbipbUc47et/UN1sqRJ5NkNPO7p8hzrYVDx
+ SlPiS1YZOniRyxXN3Hg=;
+Received: by mail.physhbpitts.click id h363160001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 30 Sep 2023 17:46:07 -0400 (envelope-from
- <gift-card-opportunity-at-united-air-intel+2Dgvt+2Ddev=lists.freedesktop.org@flyunitedspss.click>)
-Date: Sat, 30 Sep 2023 17:46:07 -0400
-From: "Gift Card Opportunity At United Air."
- <gift-card-opportunity-at-united-air@flyunitedspss.click>
+ Sun, 1 Oct 2023 10:37:09 -0400 (envelope-from
+ <harbor_freight_gift_opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@physhbpitts.click>)
+Date: Sun, 1 Oct 2023 10:37:09 -0400
+From: "Harbor Freight Gift Opportunity"
+ <harbor_freight_gift_opportunity@physhbpitts.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Share Your Thoughts, Win Travel Vouchers &ndash; Seize the Moment!
+Subject: Prepare to receive a special Pittsburgh 225 Piece Tool Set &ndash;
+ just share your opinions, and you'll enjoy its benefits.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_16_1508440322.1696105529473"
-Message-ID: <0.0.0.85.1D9F3E785105BDA.60103B@mail.flyunitedspss.click>
+ boundary="----=_Part_103_1314533533.1696171017447"
+Message-ID: <0.0.0.B.1D9F474C209AB30.48037B@mail.physhbpitts.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,175 +55,119 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_16_1508440322.1696105529473
+------=_Part_103_1314533533.1696171017447
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>express our gratitude</title>=20
- </head>=20
- <body style=3D"margin: 0; padding: 0; background-color: rgb(230, 230, 230)=
-;">=20
-  <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
-style=3D"border-collapse: collapse;" width=3D"100%">=20
-   <tbody>=20
-    <tr>=20
-     <td align=3D"center" class=3D"gasppls">=20
-      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
-"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
-       <tbody>=20
-        <tr>=20
-         <td align=3D"center" id=3D"kkksease">=20
-          <center>=20
-           <div style=3D"max-width: 520px; margin: auto; background-color: =
-#fff;">
-            &nbsp;=20
-            <table style=3D"max-width: 200px; margin: auto;">=20
-             <tbody>=20
-              <tr>=20
-               <td><a href=3D"http://www.flyunitedspss.click/abb5N239B5w_F8613f6rr0d6M179aM36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQARddR7fV1r_n06yTw@D@/giggled-overruled"><img alt=3D"JHEAE" src=3D"=
-http://www.flyunitedspss.click/8db6VQT2395C7aCI13Fo60d7KB179al36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQARddR6t1g0LX5byXwD/madden-roundness" width=3D"100%" /></a></td>=20
-              </tr>=20
-             </tbody>=20
-            </table>=20
-           </div>=20
-          </center>=20
-          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
-g=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
-           <tbody>=20
-            <tr>=20
-             <td align=3D"center" class=3D"marteks">=20
-              <table align=3D"center" border=3D"0" cellpadding=3D"0" cellsp=
-acing=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
-               <tbody>=20
-                <tr>=20
-                 <td align=3D"center" class=3D"jackpps">=20
-                  <center>=20
-                   <div style=3D"max-width: 520px; margin: auto; background=
--color: #fff;">=20
-                    <div>
-                     &nbsp;=20
-                     <p style=3D"font-family: 'Gill Sans', 'Gill Sans MT', =
-Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 1.2em; li=
-ne-height: 1.5em; padding-left: 1.3em; padding-right: 1.3em; margin: 0 ;">T=
-his is an opportunity for us to convey our appreciation for choosing United=
- for your travel needs. Your loyalty and support are highly valued by us, a=
-nd we genuinely treasure the chance to serve you.</p>=20
-                    </div>=20
-                    <table style=3D"max-width: 500px; margin: auto;">=20
-                     <tbody>=20
-                      <tr>=20
-                       <td><a href=3D"http://www.flyunitedspss.click/abb5N239B5w_F8613f6rr0d6M179aM36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQARddR7fV1r_n06yTw@D@/giggled-overruled" target=3D"_blank"><img al=
-t=3D"KKLESAE" src=3D"http://www.flyunitedspss.click/5ed5N2L395Vk7Xa12b60Cd8x179aH36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQARddR5n_10Y5Q@3wD/madden-roundness" width=3D"100%" /></a></td>=20
-                      </tr>=20
-                     </tbody>=20
-                    </table>=20
-                   </div>=20
-                  </center>=20
-                  <table align=3D"center" border=3D"0" cellpadding=3D"0" ce=
-llspacing=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
-                   <tbody>=20
-                    <tr>=20
-                     <td align=3D"center" class=3D"unitestos">=20
-                      <center>=20
-                       <div style=3D"max-width: 520px; margin: auto; backgr=
-ound-color: #fff;">=20
-                        <p style=3D"font-family: 'Gill Sans', 'Gill Sans MT=
-', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 1.2em;=
- line-height: 1.5em; padding-left: 1.3em; padding-right: 1.3em; margin: 0 ;=
-">As we continue our dedication to delivering exceptional experiences, we c=
-ordially invite you to engage in a brief survey concerning your recent flig=
-ht and your overall interaction with United.<br /> <br /> To take part in t=
-he survey, kindly click on the link provided below. It's a brief task that =
-will require just a few minutes of your valuable time, and please be assure=
-d that your responses will be handled with the utmost confidentiality.<br /=
-> <br /> <span style=3D"display: block; background-color: #163797; padding:=
- 3.2% 4%; color: white;"><b>We highly value your feedback, and as a gesture=
- of our appreciation, you may have the opportunity to qualify for a $100 gi=
-ft!</b> </span><br /> To take part in the survey, simply click on the link =
-provided below. It's a brief task that will require only a few minutes of y=
-our valuable time, and please rest assured, your responses will be handled =
-with the utmost confidentiality.</p>=20
-                       </div>=20
-                      </center>=20
-                      <table align=3D"center" border=3D"0" cellpadding=3D"0=
-" cellspacing=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
-                       <tbody>=20
-                        <tr>=20
-                         <td align=3D"center" class=3D"YYEAIS">=20
-                          <center>=20
-                           <div style=3D"max-width: 520px; margin: auto; ba=
-ckground-color: #fff;">
-                            &nbsp;=20
-                            <table>=20
-                             <tbody>=20
-                              <tr>=20
-                               <td>=20
-                                <center style=3D"border: solid 1.5px #16379=
-7; border-radius: 30px; padding: 3mm 7mm; font-family: Arial, Helvetica, sa=
-ns-serif; font-weight: 800; font-size: 1.1em;">
-                                 <a href=3D"http://www.flyunitedspss.click/abb5N239B5w_F8613f6rr0d6M179aM36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQARddR7fV1r_n06yTw@D@/giggled-overruled" style=3D"text-decor=
-ation: none; color: #163797;">Get Started Now</a>
-                                </center> </td>=20
-                              </tr>=20
-                             </tbody>=20
-                            </table>=20
-                           </div>=20
-                          </center>=20
-                          <table align=3D"center" border=3D"0" cellpadding=
-=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;" width=3D"100%=
-">=20
-                           <tbody>=20
-                            <tr>=20
-                             <td>=20
-                              <div style=3D"padding-top: 30em;">
-                               &nbsp;
-                              </div>=20
-                              <table align=3D"center" border=3D"0" cellpadd=
-ing=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;" width=3D"1=
-00%">=20
-                               <tbody>=20
-                                <tr>=20
-                                 <td align=3D"center">=20
-                                  <div style=3D"padding: 1.2em 0; backgroun=
-d-color: #163797; border-bottom: solid 30px #1f1f1f;">=20
-                                   <address style=3D"max-width: 400px; marg=
-in: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS'=
-, sans-serif; font-weight: 600; text-align: center; color: #fff; font-size:=
- 13px; ">you can leave with sadness <a href=3D"" style=3D"color: rgb(0, 255=
-, 255);">here</a><br /> US 10010 126 E 23rd St New York, NY,</address>=20
-                                  </div> </td>=20
-                                </tr>=20
-                               </tbody>=20
-                              </table> </td>=20
-                            </tr>=20
-                           </tbody>=20
-                          </table> </td>=20
-                        </tr>=20
-                       </tbody>=20
-                      </table> </td>=20
-                    </tr>=20
-                   </tbody>=20
-                  </table> </td>=20
-                </tr>=20
-               </tbody>=20
-              </table> </td>=20
-            </tr>=20
-           </tbody>=20
-          </table> </td>=20
-        </tr>=20
-       </tbody>=20
-      </table> </td>=20
-    </tr>=20
-   </tbody>=20
-  </table>  =20
- <img src=3D"http://www.flyunitedspss.click/Stuart-microprocessor/7745m2N395BVC8513PB60dH9t179aN36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQARddR6BW10hJ5R1TwD" alt=3D""/></body>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+	</style> 
+  <title>miss out on this</title> 
+ </head> 
+ <body style="margin: 0; padding: 0; background-color: rgb(235, 235, 235);"> 
+  <center class="ghfdess"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" class="oployecfs" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td id="clamiscs"> 
+       <aside class="downspecial" style="margin: 0; padding: 0;"> 
+        <div class="encanshops"> 
+         <center class="outlast"> 
+          <div id="urgors" style="background-color: #fff; max-width: 700px; margin: auto;"> 
+           <div class="taksepps" style="max-width: 14em; margin: auto;">
+            <span class="reallys"><a href="http://www.physhbpitts.click/displayable-figuratively/62a4f2395zHy8611S60dfU179cs36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQXRdde6GJTL106R1jwDJ"><img alt="MMNHES" src="http://www.physhbpitts.click/d315z2Y395iS7na11X60e1A179cz36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQXRdde6C1I0wN5nkjwD/Rawlings-soundest" width="100%" /></a> </span>
+           </div> 
+          </div> 
+         </center> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="yectrosks" style="border-collapse: collapse;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" id="logoples"> 
+             <div class="gtpsyecs" style="max-width: 510px; margin: auto; background-color: #fff;"> 
+              <p style="background-color: rgb(155, 0, 0); font-size: 22pt; font-family: 'Roboto', sans-serif; font-weight: 700; margin: 0; padding: 13pt 0; color: #fff;"><span class="reallys">Significant Announcement<br /> from Harbor Freight </span></p> 
+              <div id="charpmis" style="padding-left: .5cm; padding-right: .5cm;"> 
+               <center style="font-family: 'Roboto', sans-serif; font-size: 4.5mm; line-height: 7mm; text-align: center; font-weight: 500; padding-top: 13pt; padding-bottom: 13pt;">
+                <span class="reallys">We're thrilled to bring you some exciting news from <strong>Harbor Freight</strong>. You can now get your hands on a <strong>Pittsburgh 225 Piece Tool Set</strong>, which can be redeemed at any of our store locations.<br /> <br /> Take quick action and seize this opportunity! You have until <strong>October 1st</strong> to secure these thrilling tools. </span>
+               </center> 
+              </div> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+       </aside> </td> 
+     </tr> 
+     <tr> 
+     </tr> 
+     <tr> 
+      <td id="clamiscs"> 
+       <aside class="downspecial" style="margin: 0; padding: 0;"> 
+        <div class="encanshops"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="flows" style="border-collapse: collapse;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center" class="marverlstop"> 
+             <div class="chaprmis" style="max-width: 510px; margin: auto; background-color: #fff;"> 
+              <center style="width: 22em;">
+               <span class="reallys"><a href="http://www.physhbpitts.click/displayable-figuratively/62a4f2395zHy8611S60dfU179cs36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQXRdde6GJTL106R1jwDJ"><img alt="OOPESA" src="http://www.physhbpitts.click/bailiffs-erotica/f126Yr239U5h7aqg13f60ken2K179cL36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRdde5s_Y106slL@wD" width="100%" /></a> </span>
+              </center> 
+              <div class="toperwoer" style="padding-left: .5cm; padding-right: .5cm;"> 
+               <center style="
+            padding-top: 1.2em;
+            padding-bottom: 1.2em;"> 
+                <blockquote style="
+                margin: 0;
+                padding: 0;
+                background-color: #a50000;
+                padding-top: 13pt;
+                padding-right: 30pt;
+                padding-bottom: 13pt;
+                padding-left: 30pt;
+                border-radius: 12px;
+                font-family: 'Roboto', sans-serif;
+                width: 12em;
+                margin: auto;
+                font-weight: 600;
+                font-size: 1.1em;">
+                 <span class="reallys"><a href="http://www.physhbpitts.click/displayable-figuratively/62a4f2395zHy8611S60dfU179cs36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQXRdde6GJTL106R1jwDJ" style="
+            text-decoration: none;
+            color: #fff;">Start Here Now &gt; &gt;</a></span>
+                </blockquote> 
+               </center> 
+              </div> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> 
+       </aside> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h6 style="padding-top: 40em;">&nbsp;</h6> 
+   <center style="
+        background-color: cadetblue;
+        padding-top: 3mm;
+        padding-bottom: 3mm;"> 
+    <div style="
+            max-width: 22em;
+            margin: auto;
+            text-align: ceter;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            font-size: 3.5mm;">
+     more than welcome to leave in 
+     <a href="http://www.physhbpitts.click/sequentializing-gradings/af85mR2395Bx86s13JQ6z0e0n179cD36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQXRdde5oJm105zP@wD">here</a> we' ll miss you US 10010 126 E 23rd St New York, NY,
+    </div> 
+   </center> 
+   <h6 style="padding-top: 2em;">&nbsp;</h6> 
+  </center>   
+ <img src="http://www.physhbpitts.click/displayable-figuratively/d506Di239_5H8Zq513J60mew3j179cA36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQXRdde6gw_1u05Bj0wD" alt=""/></body>
 </html>
 
-------=_Part_16_1508440322.1696105529473--
+------=_Part_103_1314533533.1696171017447--
 
