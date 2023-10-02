@@ -2,45 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9B087B4981
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  1 Oct 2023 21:58:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6ACFD7B5423
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Oct 2023 15:39:17 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6591610E035;
-	Sun,  1 Oct 2023 19:58:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2800910E2B3;
+	Mon,  2 Oct 2023 13:39:16 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Sun, 01 Oct 2023 19:58:43 UTC
-Received: from mail.westflymooning.click (unknown [213.21.253.90])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4810210E035
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Mon, 02 Oct 2023 13:39:13 UTC
+Received: from mail.mastertools.click (unknown [77.90.135.20])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6226510E2B4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  1 Oct 2023 19:58:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=westflymooning.click; 
+ Mon,  2 Oct 2023 13:39:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mastertools.click;
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=receive-the-latest-southwest-flight-updates@westflymooning.click; 
- bh=yqyKQ1Dg3ZOvYBLzcDC7pRenryw=;
- b=cmDhWKW1acy2e59yLY8YwpGJfSkSs+P5lYV+H4sOgZrJB9gfqox+wIshoTsNaMFwOMA6NZhE/amL
- X0y/cjcaUWFw6EbcW43t0MuYgGrDOuaH36kMIjilo6VcxX0pcVRCzz8uXud+OfdTVv+QXA3CZo/2
- 8G7nl9LAwI5dmonjL44=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=westflymooning.click;
- b=pXU4UlAlu60Sm6AxRlKScay+NKZXFSp8A+Dp4Gkp4G6iz9lSB7YE8ok4O9Z3nFn/O+LzWYTz3fLY
- bQgZxEMud+pShgBIaZndsRhR1oeQnJw62M78VAOtlg6gFXBtb1GuU8snydG0xOiI1eGSfsv8DuWd
- glvuY9OBeR3X+6qw720=;
-Received: by mail.westflymooning.click id h377n60001gi for
+ i=harbor-freight-time@mastertools.click; 
+ bh=+JLG0HdXy7T8CLi4sAFnDqabYKY=;
+ b=vSPCQAuyp0XVOLxLdJKlr9FsEzEaE4rFzvpjR12QS/eXUzUyRyPDw+vHLDQOJcll2F/FPQFwyPIh
+ NdgLU5rbZzXEAGuzINWAVBGMk9o4wMCeEhWFf1SKwg3Ee6QonJ4MvncC5ebOJYqXd31rUqUuTx6s
+ 2ED40Su0D57aTVq2aRo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mastertools.click; 
+ b=Q3nDe9fYFi33JqkXxN7Ube6aYhwnRdLFiG067PmWiWphoAjxQYpT7EIlnZZym8t9LYLNiNrNAWCw
+ 6KTI7mAncG6jeU7//yuy7PrTesnH3gOKpR3f6LQUj67/eP0qUiiVWKaa6hoZkdzsNDp0KFjBEKdN
+ 2XFM0gTnCcNLx91GNvc=;
+Received: by mail.mastertools.click id h3b4020001ge for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 1 Oct 2023 15:48:45 -0400 (envelope-from
- <receive-the-latest-southwest-flight-updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@westflymooning.click>)
-Date: Sun, 1 Oct 2023 15:48:45 -0400
-From: "Receive The Latest Southwest Flight Updates"
- <receive-the-latest-southwest-flight-updates@westflymooning.click>
+ Mon, 2 Oct 2023 09:31:00 -0400 (envelope-from
+ <harbor-freight-time-intel+2Dgvt+2Ddev=lists.freedesktop.org@mastertools.click>)
+Date: Mon, 2 Oct 2023 09:31:00 -0400
+From: "Harbor Freight Time" <harbor-freight-time@mastertools.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Immerse yourself in the seasonal spirit and take advantage of a free
- flight to your dream locale!
+Subject: You're in for a unique Pittsburgh 225 Piece Tool Set &ndash;
+ express your insights, and you'll be rewarded.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_166_423454023.1696189717980"
-Message-ID: <0.0.0.99.1D9F4A049DE4D2E.5FC11D@mail.westflymooning.click>
+ boundary="----=_Part_67_1416615897.1696253453223"
+Message-ID: <0.0.0.E8.1D9F534AEAEEE22.5877F9@mail.mastertools.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,125 +54,276 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_166_423454023.1696189717980
+------=_Part_67_1416615897.1696253453223
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>kept confidential</title> 
+  <title>redeemed at any</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+	</style> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #e2e2e2;"> 
-  <header> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" class="shivana" style="border-collapse: collapse;" width="100%"> 
-    <caption class="seraphine">
-     &nbsp;
-    </caption> 
-    <thead> 
-     <tr> 
-      <th id="udyr">&nbsp;</th> 
-     </tr> 
-    </thead> 
-    <tbody id="nexo"> 
-     <tr> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
-          <tbody> 
+ <body style="margin: 0; padding: 0; background-color: rgb(243, 243, 243);"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="htppsl" style="border-collapse: collapse;" width="100%"> 
+   <caption>
+    &nbsp;
+   </caption> 
+   <thead class="glaplos"> 
+    <tr> 
+     <th align="center" id="gollps">&nbsp;</th> 
+    </tr> 
+   </thead> 
+   <tbody id="ghopls"> 
+    <tr> 
+     <td class="jacks"> 
+      <center id="logostyle"> 
+       <div class="parkings"> 
+        <aside class="noblestab"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" id="htppsl" style="border-collapse: collapse;" width="100%"> 
+          <caption>
+           &nbsp;
+          </caption> 
+          <thead class="glaplos"> 
            <tr> 
-            <td class="gambglis">&nbsp;</td> 
+            <th align="center" id="gollps">&nbsp;</th> 
+           </tr> 
+          </thead> 
+          <tbody id="ghopls"> 
+           <tr> 
+            <td class="jacks"> 
+             <center id="logostyle"> 
+              <div class="parkings"> 
+               <aside class="noblestab">
+                &nbsp;
+               </aside> 
+              </div> 
+             </center> </td> 
+            <td class="jacks"> 
+             <center id="logostyle"> 
+              <div class="parkings"> 
+               <aside class="noblestab">
+                &nbsp;
+               </aside> 
+              </div> 
+             </center> </td> 
+           </tr> 
+           <tr> 
+           </tr> 
+           <tr> 
+            <td class="jacks"> 
+             <center id="logostyle"> 
+              <div class="parkings"> 
+               <aside class="noblestab">
+                &nbsp;
+               </aside> 
+              </div> 
+             </center> </td> 
+            <td class="jacks"> 
+             <center id="logostyle"> 
+              <div class="parkings"> 
+               <aside class="noblestab">
+                &nbsp;
+               </aside> 
+              </div> 
+             </center> </td> 
            </tr> 
           </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor">
-         &nbsp; 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="amge" style="border-collapse: collapse;" width="100%"> 
-          <tbody> 
+          <tfoot> 
            <tr> 
-            <td align="center" class="gambglis"> 
-             <section> 
-              <div> 
-               <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
-                <center style="max-width: 300px; margin: auto; padding: 15px 0px;">
-                 <span style="display: block;"><a href="http://www.westflymooning.click/Michaels-staples/1f25tq2395vz8O612G61m0cz17a4O36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR5E1U0W6FywBDB" target="_blank"><img alt="IIEASE" src="http://www.westflymooning.click/exemplifying-plush/4864Q2395vR7Ta12j61g0eC17a4A36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR7c1rWn0r5Q1TwD" width="100%" /> </a> </span>
-                </center> 
-                <span style="display: block;"><span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em;">Your input is important to us. Kindly spare a moment to engage in a brief survey about your recent flight and your overall interaction with Southwest. Your feedback will assist us in enhancing your experiences with our airline. </span><br /> <span style="display: block; padding: 2.5% 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em; background-color: #FEBF26;">We highly value your feedback. Please take a moment to participate in a concise survey regarding your recent flight and your overall interaction with Southwest. Your responses will contribute to our efforts to improve your experiences with our airline. </span> </span> 
-                <center>
-                 <span style="display: block;"><a href="http://www.westflymooning.click/Michaels-staples/1f25tq2395vz8O612G61m0cz17a4O36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR5E1U0W6FywBDB"><img alt="UEASE" src="http://www.westflymooning.click/bab4K2395a7Roa12Gi610fK17a4s36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ4RdQR6n1nq0C5cUNwD/integrals-Grimm" style="display: block;" width="100%" /> </a> </span>
-                </center> 
-                <br /> 
-                <span style="display: block;"><span style="display: block; padding: 2.5% 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em; background-color: #DB4437; color: white;"><b>As a token of our gratitude, we are pleased to extend a $100 gift as a sign of our appreciation. </b> </span><br /> <span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em;">You can make use of the provided link to access the survey. It's a simple task that will only take a few minutes of your time, and rest assured that your responses will be kept confidential. </span> </span>
-                <br /> &nbsp; 
-                <center style="max-width: 75%; margin: auto;"> 
-                 <div style="background-color: #000fda; padding: 3.5% 7%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; font-size: 20px; border-radius: 18px;">
-                  <span style="display: block;"><a href="http://www.westflymooning.click/Michaels-staples/1f25tq2395vz8O612G61m0cz17a4O36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR5E1U0W6FywBDB" style="color: white; text-decoration: none;">Kick off the survey Here&gt;&gt; </a> </span>
-                 </div> 
-                </center> 
-                <span style="display: block;"> </span>
-                <br /> 
-                <br /> &nbsp; 
-                <hr /> 
-                <span style="display: block;"> <span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: .9em; line-height: 1.2em;"> Thank you for your continuous support, and we look forward to receiving your feedback. Warm regards, </span> </span>
+            <td align="center"> 
+             <div style="max-width: 700px; margin: auto;"> 
+              <center> 
+               <aside id="container" style="
+        background-color: #fff;
+        padding: 0;
+        margin: 0;"> 
+                <div class="woprs" style="
+            max-width: 14rem;
+            margin: auto;
+            ;">
+                 <span class="jyllys"><a href="http://www.mastertools.click/c056eP239x5w8HH613tl61Z16G17a6_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQPRdQe7zF1rQ0g5QOjwD/fathered-altogether"><img alt="PPLEASE" src="http://www.mastertools.click/L2f5fi2395v7apD13LO611m8F17a6Z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQPRdQe6JqU10O5qNTwD/attractors-blasphemes" width="100%" /></a> </span>
+                </div> 
+               </aside> 
+               <table align="center" border="0" cellpadding="0" cellspacing="0" id="gloplos" style="border-collapse: collapse;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center"> 
+                   <section id="container2" style="
+    max-width: 540px; 
+    margin: auto;
+    background-color: #fff;"> 
+                    <div style="
+    background-color: #ce0000;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Rubik', sans-serif;
+    font-size: xx-large;
+    font-weight: 600;
+    color: #fff
+    ;">
+                     <span class="jyllys">Important News<br /> from Harbor Freight </span>
+                    </div> 
+                    <div style="
+    outline: solid 1.5px #ce0000;"> 
+                     <section id="togers"> 
+                      <p class="text" style="
+    font-family: 'Rubik', sans-serif;
+    font-size: large;
+    text-align: center;
+    margin: 0;
+    padding: 3.5% 5%;
+    line-height: 27px;
+    font-weight: 400;"><span class="jyllys">We are excited to share some thrilling updates from <strong>Harbor Freight</strong>. You now have the opportunity to acquire a <strong>Pittsburgh 225 Piece Tool Set</strong>, redeemable at any of our store locations.<br /> <br /> Act swiftly and grasp this chance! You have until <b>October 2nd</b> to secure these exciting tools </span></p> 
+                      <table align="center" style="max-width: 325px; margin: auto;"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center"><span class="jyllys"><a href="http://www.mastertools.click/c056eP239x5w8HH613tl61Z16G17a6_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQPRdQe7zF1rQ0g5QOjwD/fathered-altogether"><img alt="TTEYA" src="http://www.mastertools.click/nonexistent-organizers/8ga6fP239U5aZ7Ca13m61F1K9j17a6g36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQPRdQe7r1u0UkR6jpXwDP" width="100%" /></a> </span></td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                      <div class="toperwoer" style="
+padding-left: .5cm; 
+padding-right: .5cm;"> 
+                       <center style="
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;"> 
+                        <blockquote style="
+            margin: 0;padding: 0;
+            background-color: #a50000;
+            padding-top: 13pt;
+            padding-right: 30pt;
+            padding-bottom: 13pt;
+            padding-left: 30pt;
+            border-radius: 12px;
+            font-family: 'Roboto', sans-serif;width: 12em;margin: auto;
+            font-weight: 600;font-size: 1.1em;">
+                         <span class="jyllys"><span class="reallys"><a href="http://www.mastertools.click/c056eP239x5w8HH613tl61Z16G17a6_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQPRdQe7zF1rQ0g5QOjwD/fathered-altogether" style="text-decoration: none;color: #fff;">Start Here Now &gt; &gt; </a> </span> </span>
+                        </blockquote> 
+                       </center> 
+                      </div> 
+                     </section> 
+                    </div> 
+                   </section> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </center> 
+              <h4 class="marins" style="padding-bottom: 30em;">&nbsp;</h4> 
+              <aside id="capti" style="padding: 0; margin: 0; background-color: dimgrey; padding-top: 1.5rem; padding-bottom: 1.5rem;"> 
+               <div class="centradr" style="
+            max-width: 40rem; margin: auto;"> 
+                <p style="
+            margin: 0;
+            font-size: 13px;
+            text-align: center;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 600;
+            color: #fff;"><span class="jyllys">more than welcome to leave in <a href="http://www.mastertools.click/transistorize-deliberations/9726aS_2395v8rv611S6117u17a6v36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQPRdQe5gN10H6MABwqD">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY, </span></p> 
                </div> 
-              </div> 
-              <table style="padding-top: 350px;"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <div style="background-color: #252525; padding-top: 1em; padding-bottom: 1em;"> 
-               <p style="margin: 0; max-width: 500px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #fff;"><span style="display: block;">Use the exit option <a href="http://www.westflymooning.click/d316B23M9N5ug86W11X610dr17a4y36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RdQR7V1sF0ZW5SJNwD/exemplifying-plush" style="color: #00ffff;"> here </a><br /> US 10010 126 E 23rd St New York, NY, </span></p> 
-              </div> 
-             </section> </td> 
+              </aside> 
+             </div> </td> 
            </tr> 
-          </tbody> 
+          </tfoot> 
          </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
-          <tbody> 
+        </aside> 
+       </div> 
+      </center> </td> 
+     <td class="jacks"> 
+      <center id="logostyle"> 
+       <div class="parkings"> 
+        <aside class="noblestab">
+         &nbsp;
+        </aside> 
+       </div> 
+      </center> </td> 
+    </tr> 
+    <tr> 
+    </tr> 
+    <tr> 
+     <td class="jacks"> 
+      <center id="logostyle"> 
+       <div class="parkings"> 
+        <aside class="noblestab"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" id="htppsl" style="border-collapse: collapse;" width="100%"> 
+          <caption>
+           &nbsp;
+          </caption> 
+          <thead class="glaplos"> 
            <tr> 
-            <td class="gambglis">&nbsp;</td> 
+            <th align="center" id="gollps">&nbsp;</th> 
            </tr> 
-          </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
-          <tbody> 
+          </thead> 
+          <tbody id="ghopls"> 
            <tr> 
-            <td class="gambglis">&nbsp;</td> 
+            <td class="jacks"> 
+             <center id="logostyle"> 
+              <div class="parkings"> 
+               <aside class="noblestab">
+                &nbsp;
+               </aside> 
+              </div> 
+             </center> </td> 
+            <td class="jacks"> 
+             <center id="logostyle"> 
+              <div class="parkings"> 
+               <aside class="noblestab">
+                &nbsp;
+               </aside> 
+              </div> 
+             </center> </td> 
+           </tr> 
+           <tr> 
+           </tr> 
+           <tr> 
+            <td class="jacks"> 
+             <center id="logostyle"> 
+              <div class="parkings"> 
+               <aside class="noblestab">
+                &nbsp;
+               </aside> 
+              </div> 
+             </center> </td> 
+            <td class="jacks"> 
+             <center id="logostyle"> 
+              <div class="parkings"> 
+               <aside class="noblestab">
+                &nbsp;
+               </aside> 
+              </div> 
+             </center> </td> 
            </tr> 
           </tbody> 
+          <tfoot> 
+           <tr> 
+            <td align="center">&nbsp;</td> 
+           </tr> 
+          </tfoot> 
          </table> 
-        </section> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-    <tfoot> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tfoot> 
-   </table> 
-  </header>   
- <img src="http://www.westflymooning.click/Michaels-staples/b704l2395KTH8511S6110w17a4G36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQ4RdQR6sZ1Zq05i@lwD" alt=""/></body>
+        </aside> 
+       </div> 
+      </center> </td> 
+     <td class="jacks"> 
+      <center id="logostyle"> 
+       <div class="parkings"> 
+        <aside class="noblestab">
+         &nbsp;
+        </aside> 
+       </div> 
+      </center> </td> 
+    </tr> 
+   </tbody> 
+   <tfoot> 
+    <tr> 
+     <td align="center">&nbsp;</td> 
+    </tr> 
+   </tfoot> 
+  </table>   
+ <img src="http://www.mastertools.click/7376k239Fr5Q8V5p13M6S11waP17a6l36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQPRdQe5W1YO05zOBwD/transistorize-deliberations" alt=""/></body>
 </html>
 
-------=_Part_166_423454023.1696189717980--
+------=_Part_67_1416615897.1696253453223--
 
