@@ -2,45 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 846B77B5A4B
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Oct 2023 20:41:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A5D97B5BDF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Oct 2023 22:15:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5475C10E193;
-	Mon,  2 Oct 2023 18:41:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 06DDB10E236;
+	Mon,  2 Oct 2023 20:15:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 02 Oct 2023 18:40:58 UTC
-Received: from mail.offerskrogrtop.click (unknown [77.90.135.222])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9801610E193
+X-Greylist: delayed 599 seconds by postgrey-1.36 at gabe;
+ Mon, 02 Oct 2023 20:15:01 UTC
+Received: from mail.payotspressc.click (unknown [77.90.135.168])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D6CFE10E237
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Oct 2023 18:40:58 +0000 (UTC)
+ Mon,  2 Oct 2023 20:15:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=offerskrogrtop.click; 
+ d=payotspressc.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=kroger.customer.loyalty@offerskrogrtop.click; 
- bh=XaMxgf724b4JQ5JNfSHGDPjFNDE=;
- b=AtN1XOkmzFcVayoBNmSTQCC//clyvBCprqF0WRmk1zSH68vwaMELoflVpbb3C4FvIWBMI4LCm3EY
- wpYifGG1Knnaryt6064GM3KWXexUXE65f8RnEdhydCVCvUzLA/uYWMY6BK276vLDvJyv6e/8QAkT
- kVu57lcSDen9cUESFmA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=offerskrogrtop.click;
- b=wioJP1iEuUrH5tEs1CQCd/tpUgMw436fpm3I2/6YaZYMrB8JcsUe6070HyyLBtrwE6DKiS67Ecmj
- BOyQK7dX0rinv/+LId+kzeufLVmApVSy2BQHQ5aWGhNzB0aU5aBlzMx9vwnSH96ASy1GDmZreJQ1
- BlIkGB0LQASfYE1A0D0=;
-Received: by mail.offerskrogrtop.click id h3cgpc0001ga for
+ i=paypal-time-to-act@payotspressc.click; 
+ bh=4WDLeDykD2MkS7xwbWb6KKKpUX0=;
+ b=T47i/c/utzw+Zdiq0+6SPnfDZD3C8MWzRo9SQsfsPHHKJAOAjmt4hjskOTN1el1b82DUexVkPg8S
+ VISHahArzAfLFJK8fpZ1ppa6d3nQgtNQyemk0WOMZOH5przHxOdUomlsSjiE5QFqu4BGJy+b7ffO
+ 9v0mKasC2ekGaZgHea0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=payotspressc.click; 
+ b=HMYSctkzQDWrRMczH58+deEfXMg6qHZIuuKWlynTPtp7sB/gGqerUWWHvUCwTiAqkuquzPAqCHwc
+ AMqz2wsHjYR/EY6GOx35b+7KDAOO6GPXk8uJ1xRHkiD6DXe+M9ngC+Q6mF2J8fYjAy5CNbj3Vly8
+ EKaqjpJN/7MtVjDgT08=;
+Received: by mail.payotspressc.click id h3crq20001gc for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 2 Oct 2023 15:53:00 -0400 (envelope-from
- <kroger.customer.loyalty-intel+2Dgvt+2Ddev=lists.freedesktop.org@offerskrogrtop.click>)
-Date: Mon, 2 Oct 2023 15:53:00 -0400
-From: "Kroger Customer Loyalty" <kroger.customer.loyalty@offerskrogrtop.click>
+ Mon, 2 Oct 2023 17:22:40 -0400 (envelope-from
+ <paypal-time-to-act-intel+2Dgvt+2Ddev=lists.freedesktop.org@payotspressc.click>)
+Date: Mon, 2 Oct 2023 17:22:40 -0400
+From: "Paypal Time To Act" <paypal-time-to-act@payotspressc.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: We're in a celebratory mood,
- and we extend an invitation to you to delight in a gift from us as an
- expression of our appreciation.
+Subject: Paypal reward is just a few clicks away - While supplies last
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_142_644344959.1696271542364"
-Message-ID: <0.0.0.ED.1D9F56A0C7EBACA.A5311@mail.offerskrogrtop.click>
+ boundary="----=_Part_196_247537602.1696276907747"
+Message-ID: <0.0.0.149.1D9F576931F29A0.1E0C20@mail.payotspressc.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,174 +54,177 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_142_644344959.1696271542364
+------=_Part_196_247537602.1696276907747
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>shopping needs</title> 
- </head> 
- <body style="background-color: rgb(243, 243, 243); margin: 0; padding: 0;"> 
-  <ol style="list-style-type: none; padding: 0; margin: 0;"> 
-   <li class="loliplopskillers"> 
-    <div class="calcoclicks"> 
-     <center class="omegapros"> 
-      <div> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" class="nowatacks" style="border-collapse: collapse; background-color: #edf4ff" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> 
-           <div style=" max-width: 200px; margin: auto;">
-            <span id="totalwindws"><a href="http://www.offerskrogrtop.click/soothes-waiting/3f04u2395V86Az11Y6137h17adx36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ0RdRd5ICH106zMwDBz"><img alt="ESE" src="http://www.offerskrogrtop.click/godly-pinscher/22e5z2u395a7tma12X6139li17adH36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ0RdRd5li10V6vjzwD1" width="100%" /></a> </span>
-           </div> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> 
-     </center> 
-    </div> </li> 
-   <li class="loliplopskillers"> 
-    <div class="calcoclicks"> 
-     <center class="omegapros"> 
-      <p style="padding-top: 10px;">&nbsp;</p> 
-      <div style="
-max-width: 520px;
-margin: auto;
-background-color: #fff;"> 
-       <article> 
-        <p style="
-margin: 0;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-padding-top: 1.5rem;
-padding-bottom: 1.5rem;
-padding-left: 1.8rem;
-padding-right: 1.8rem;
-font-size: 4.5mm;
-line-height: 7mm;"><span id="totalwindws"><font>We want to convey our thanks for selecting Kroger. Your loyalty and support are deeply meaningful to us, and we genuinely value the chance to meet your shopping requirements. </font> </span></p> 
-       </article> 
-      </div> 
-     </center> 
-    </div> </li> 
-   <li class="loliplopskillers"> 
-    <div class="calcoclicks"> 
-     <center class="omegapros"> 
-      <article style="
-max-width: 520px;
-margin: auto;
-background-color: #fff;"> 
-       <p style="margin: 0;">&nbsp;</p> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" id="hollweyyns" style="border-collapse: collapse;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> 
-           <div style="display: flex; justify-content: center; align-items: center; flex-flow: wrap row;"> 
-            <center id="imgtopers" style="max-width: 90px; margin: auto; margin: 3%;">
-             <span id="totalwindws"><a href="http://www.offerskrogrtop.click/soothes-waiting/3f04u2395V86Az11Y6137h17adx36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ0RdRd5ICH106zMwDBz"><img alt="JJUES" src="http://www.offerskrogrtop.click/7734C2395zS7aC12h613RaS17adp36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ0RdRd7G1kHZN06FOlNwD/prosper-portrayed" width="100%" /></a></span>
-            </center> 
-            <center id="imgtopers" style="max-width: 120px; margin: auto; margin: 3%;">
-             <span id="totalwindws"><a href="http://www.offerskrogrtop.click/soothes-waiting/3f04u2395V86Az11Y6137h17adx36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ0RdRd5ICH106zMwDBz"><img alt="JJUES" src="http://www.offerskrogrtop.click/Penrose-recurring/33c5L239Y5O7PaZ13b613_bGT17adR36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ0RdRd5P1Jm05ckqwD" width="100%" /></a></span>
-            </center> 
-           </div> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </article> 
-     </center> 
-    </div> </li> 
-   <li class="loliplopskillers"> 
-    <div class="calcoclicks"> 
-     <center class="omegapros"> 
-      <div style="
-max-width: 520px;
-margin: auto;
-background-color: #fff;"> 
-       <article> 
-        <p style="
-margin: 0;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-padding-top: 1.5rem;
-padding-bottom: 1.5rem;
-padding-left: 1.8rem;
-padding-right: 1.8rem;
-font-size: 4.5mm;
-line-height: 7mm;"><span id="totalwindws"><font>Thank you again for your continued support. We're excited to receive your feedback soon! Your ongoing support is greatly appreciated, and we eagerly look forward to hearing from you! </font> </span></p> 
-       </article> 
-      </div> 
-     </center> 
-    </div> </li> 
-   <li class="loliplopskillers"> 
-    <div class="calcoclicks"> 
-     <center class="omegapros"> 
-      <div class="calcoclicks"> 
-       <center class="omegapros"> 
-        <div style="
-max-width: 520px;
-margin: auto;
-background-color: #2A4F92;"> 
-         <article> 
-          <p style="
-margin: 0;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-padding-top: 1.5rem;
-padding-bottom: 1.5rem;
-padding-left: 1.8rem;
-padding-right: 1.8rem;
-font-size: 4.5mm;
-line-height: 7mm;
-color: #fff;"><span id="totalwindws"><span id="totalwindws"><font>Thank you again for your continued support. We're excited to receive your feedback soon! Your ongoing support is greatly appreciated, and we eagerly look forward to hearing from you! </font> </span></span></p> 
-         </article> 
-        </div> 
-        <div style="
-max-width: 520px;
-margin: auto;
-background-color: #fff;"> 
-         <article> 
-          <p style="
-margin: 0;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-padding-top: 1.5rem;
-padding-bottom: 1.5rem;
-padding-left: 1.8rem;
-padding-right: 1.8rem;
-font-size: 4.5mm;
-line-height: 7mm;"><span id="totalwindws"><span id="totalwindws"><font>Accessing the survey is a simple process?just click on the provided link below. It's a quick task that will require only a few minutes of your time, and please rest assured that your responses will be kept completely confidential. </font> </span></span></p> 
-          <center style="max-width: 520px; margin: auto; background-color: #fff;"> 
-           <p style="text-align: center; margin: 0;"><span id="totalwindws"><span id="totalwindws"><a href="http://www.offerskrogrtop.click/soothes-waiting/3f04u2395V86Az11Y6137h17adx36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ0RdRd5ICH106zMwDBz" style="text-decoration: none; color: #fff;" target="_blank"><span style="background-color: #1A4898; display: inline-block; padding: 12px 27px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 20px; border-radius: 5px;">Start Here Now &gt; &gt; </span> </a> </span></span></p> 
-          </center> 
-          <p style="
-margin: 0;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-padding-top: 1.5rem;
-padding-bottom: 1.5rem;
-padding-left: 1.8rem;
-padding-right: 1.8rem;
-font-size: 4.5mm;
-line-height: 7mm;"><span id="totalwindws"><span id="totalwindws"><font>Thank you once again for your continued support. We're eagerly anticipating your feedback! Your ongoing support is greatly appreciated, and we're looking forward to hearing from you soon!<br /> <br /> <span style="display: block; font-size: 3.8mm;"><b>Warm regards,<br /> The Kroger Survey Team</b> </span> </font> </span></span></p> 
-         </article> 
-        </div> 
-       </center> 
-      </div> 
-     </center> 
-    </div> </li> 
-   <li class="loliplopskillers"> 
-    <div class="calcoclicks"> 
-     <center class="omegapros"> 
-      <h4 style="padding-bottom: 20rem;">&nbsp;</h4> 
-      <center style="padding: 4mm 0; background-color: lightslategrey;"> 
-       <aside style="max-width: 520px; margin: auto; text-align: center; font-size: 4mm; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 600; color: white;">
-        <span id="totalwindws">if you need to go visit <a href="http://www.offerskrogrtop.click/meaty-stitches/5766w23Gl95P86vw13QX613n8C17ads36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ0RdRd5O10yP5E@UwD">here</a><br /> 10010 126 E 23rd St New York, NY, US </span>
-       </aside> 
-      </center> 
-      <br /> &nbsp;
-     </center> 
-    </div> </li> 
-  </ol>   
- <img src="http://www.offerskrogrtop.click/Penrose-recurring/8646m2t3K95N8ZB511A613cD17adp36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ0RdRd6I10lng6flB0wD" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>participate in a brief</title>=20
+  <style type=3D"text/css">@import url('https://fonts.googleapis.com/css2?f=
+amily=3DLibre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=3Ds=
+wap');
+=09</style>=20
+ </head>=20
+ <body>=20
+  <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+class=3D"payislest" style=3D"border-collapse: collapse; background-color: r=
+gb(238, 238, 238);" width=3D"100%">=20
+   <tbody>=20
+    <tr>=20
+     <td align=3D"center">=20
+      <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" id=3D"grobe" style=3D"border-collapse: collapse;" width=3D"100%">=20
+       <thead>=20
+        <tr>=20
+         <th align=3D"center" class=3D"topers" colspan=3D"4">=20
+          <div>=20
+           <section style=3D"
+                        font-family: 'Libre Franklin', sans-serif;
+                        font-size: 22px; text-align: center;
+                        max-width: 520px;
+                        margin: auto;
+                        background-color: #7E8BC1;
+                        padding: .5cm 0cm;
+                        color: white;
+
+                        ;">
+            An Exclusive Deal for Our Esteemed Customers
+           </section>=20
+          </div> </th>=20
+        </tr>=20
+       </thead>=20
+       <tbody>=20
+        <tr>=20
+         <td id=3D"ericksttos">=20
+          <div class=3D"lockingsinfo">=20
+           <center class=3D"creatorspaces">=20
+            <section class=3D"infoo">
+             &nbsp;
+            </section>=20
+           </center>=20
+          </div> </td>=20
+         <td id=3D"ericksttos">=20
+          <div class=3D"lockingsinfo">=20
+           <center class=3D"creatorspaces">=20
+            <section class=3D"infoo">=20
+             <div>=20
+              <div style=3D"
+        max-width: 520px;
+        margin: auto;
+        background-color: #fff;">=20
+               <section>
+                &nbsp;=20
+                <header style=3D"
+                font-family: Arial, Helvetica, sans-serif; font-size: 26px;=
+=20
+                text-align: center;=20
+                font-weight: bold;
+                font-size: 45px;">
+                 <span class=3D"nomberone" style=3D"color: #002B88;">Pay</s=
+pan>
+                 <span class=3D"nombertwo" style=3D"color: #0196DA;">Pal</s=
+pan>
+                </header> &nbsp;=20
+                <p style=3D"
+            font-family: 'Libre Franklin', sans-serif;;
+            font-size: 18px;
+            text-align: justify;
+            font-weight: 500;=20
+            line-height: 28px;
+            padding: 0 30px;
+            margin: 0;">We'd like to pause and express our gratitude for se=
+lecting <b><span class=3D"nomberone" style=3D"color: #002B88;">Pay</span><s=
+pan class=3D"nombertwo" style=3D"color: #0196DA;">Pal</span></b>. Your loya=
+lty and support hold immense value for us, and we appreciate the chance to =
+assist you.<br /> <br /> <a href=3D"http://www.payotspressc.click/e7b4j2395q8GJ611N6142q17afw36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRdRR7CP1n0yU5n1wDy/theorized-nicotine" target=3D"_blank"><img alt=
+=3D"UUEKASE" src=3D"http://www.payotspressc.click/5cf5w23t95OYK7a11J6144Q17afC36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkRdRR7LAGM1R06cUNwND/Hellespont-irrationals" style=3D"max-width: 35%; float: left; marg=
+in-right: 3.5%;" width=3D"100%" /></a> In line with our dedication to deliv=
+ering the finest possible experience, we would like to extend an invitation=
+ to you to take part in a concise survey regarding your overall experience =
+with <b><span class=3D"nomberone" style=3D"color: #002B88;">Pay</span><span=
+ class=3D"nombertwo" style=3D"color: #0196DA;">Pal</span></b>.<br /> <br />=
+ Your feedback holds tremendous significance to them, and as a gesture of o=
+ur gratitude for dedicating your time to share your thoughts, we would like=
+ to offer you a small token of appreciation.<br /> <br /> <span style=3D"di=
+splay: block; text-align: center; font-weight: bold;">By participating in t=
+he survey, you have the opportunity to receive a $100 Gift! </span></p>=20
+                <div>=20
+                 <div style=3D"background-color: #003087; padding: 3.5mm 5m=
+m; width: 140px; margin: auto; border-radius: 5px;">=20
+                  <p style=3D"margin: 0;"><a href=3D"http://www.payotspressc.click/e7b4j2395q8GJ611N6142q17afw36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRdRR7CP1n0yU5n1wDy/theorized-nicotine" style=3D"t=
+ext-decoration: none; color: #fff;" target=3D"_blank"><span style=3D"font-s=
+ize: 14px; font-family: 'Libre Franklin', sans-serif; font-weight: bold;">T=
+AKE THE SURVEY </span> </a></p>=20
+                 </div> &nbsp;=20
+                 <p style=3D"
+                font-family: 'Libre Franklin', sans-serif;;
+                font-size: 14px;
+                text-align: center;
+                font-weight: 500;=20
+                line-height: 28px;
+                padding: 0 30px;
+                margin: 0;">Thank you again for your support. We look forwa=
+rd to hearing from you soon! Warm regards,<br /> <b>The PayPal Survey</b></=
+p>=20
+                </div>=20
+               </section>=20
+              </div>=20
+              <div style=3D"padding-top: 400px;">
+               &nbsp;
+              </div>=20
+             </div>=20
+            </section>=20
+           </center>=20
+          </div> </td>=20
+         <td id=3D"ericksttos">=20
+          <div class=3D"lockingsinfo">=20
+           <center class=3D"creatorspaces">=20
+            <section class=3D"infoo">
+             &nbsp;
+            </section>=20
+           </center>=20
+          </div> </td>=20
+         <td id=3D"ericksttos">=20
+          <div class=3D"lockingsinfo">=20
+           <center class=3D"creatorspaces">=20
+            <section class=3D"infoo">
+             &nbsp;
+            </section>=20
+           </center>=20
+          </div> </td>=20
+        </tr>=20
+       </tbody>=20
+       <tfoot>=20
+        <tr>=20
+         <td colspan=3D"4">=20
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
+           <tbody>=20
+            <tr>=20
+             <td align=3D"center">=20
+              <div style=3D"background-color: darkslategrey; padding: 15px =
+0px;">=20
+               <p style=3D"max-width: 520px; margin: auto; font-size: 13px;=
+ text-align: center;font-family: 'Libre Franklin', sans-serif;font-weight: =
+600; color: #fff ;">time to show you the exit <a href=3D"http://www.payotspressc.click/5936M23iD95Xi8G612B6v143H17afM36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQkRdRR5JXL105d3wBD/complements-reinitializing">here</=
+a><br /> US 10010 126 E 23rd St New York, NY,</p>=20
+              </div> </td>=20
+            </tr>=20
+           </tbody>=20
+          </table> </td>=20
+        </tr>=20
+       </tfoot>=20
+      </table> </td>=20
+    </tr>=20
+   </tbody>=20
+  </table>  =20
+ <img src=3D"http://www.payotspressc.click/lifelike-consumable/6484i2395Oh85_11t6145X17af_36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkRdRR6PvGo105GlqwD" alt=3D""/></body>
 </html>
 
-------=_Part_142_644344959.1696271542364--
+------=_Part_196_247537602.1696276907747--
 
