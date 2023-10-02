@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6ACFD7B5423
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Oct 2023 15:39:17 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id AD6007B558F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Oct 2023 16:59:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2800910E2B3;
-	Mon,  2 Oct 2023 13:39:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6CDD910E2CE;
+	Mon,  2 Oct 2023 14:59:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 02 Oct 2023 13:39:13 UTC
-Received: from mail.mastertools.click (unknown [77.90.135.20])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6226510E2B4
+ Mon, 02 Oct 2023 14:59:44 UTC
+Received: from mail.managertools.click (unknown [77.90.135.218])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DFF3D10E2CF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Oct 2023 13:39:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mastertools.click;
+ Mon,  2 Oct 2023 14:59:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=managertools.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=harbor-freight-time@mastertools.click; 
- bh=+JLG0HdXy7T8CLi4sAFnDqabYKY=;
- b=vSPCQAuyp0XVOLxLdJKlr9FsEzEaE4rFzvpjR12QS/eXUzUyRyPDw+vHLDQOJcll2F/FPQFwyPIh
- NdgLU5rbZzXEAGuzINWAVBGMk9o4wMCeEhWFf1SKwg3Ee6QonJ4MvncC5ebOJYqXd31rUqUuTx6s
- 2ED40Su0D57aTVq2aRo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mastertools.click; 
- b=Q3nDe9fYFi33JqkXxN7Ube6aYhwnRdLFiG067PmWiWphoAjxQYpT7EIlnZZym8t9LYLNiNrNAWCw
- 6KTI7mAncG6jeU7//yuy7PrTesnH3gOKpR3f6LQUj67/eP0qUiiVWKaa6hoZkdzsNDp0KFjBEKdN
- 2XFM0gTnCcNLx91GNvc=;
-Received: by mail.mastertools.click id h3b4020001ge for
+ i=ace_hardware_expertise@managertools.click; 
+ bh=vsPQByF+8/kif0XWmRsMJZ1kZRM=;
+ b=DTZ2ghgr7Fke7n7OieOxlcsnrGsEvgCB3kcKKNqh5yRWG9ZXxJYMqn1Y2I3T0EVHbXr2oyeSXFZ2
+ LaXmrcCMWBYZGaNddWFPfrHfGIh/nCrEiaAwiEz5DVMyB42eqYnQFecbWudmmo3RkUd0+Peom2+Y
+ RJzYLRKT0+97ADZh0Ss=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=managertools.click; 
+ b=Ra++Dbk7TPO/ijyScOoIjptL9EAnXw/ZTfHATQQJLWslNOOGZKmVGhOqR6j3xTUs0ug/SpLRSo4H
+ In8oKE07y3lRV4aJrgnWBJKdj0WNpAK6VkQE2IS1a4aSY7lcW3V6TT3eJ55PsiFAAyYrseN/d258
+ UF7E/a3WQJqupV1Wi6A=;
+Received: by mail.managertools.click id h3bde00001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 2 Oct 2023 09:31:00 -0400 (envelope-from
- <harbor-freight-time-intel+2Dgvt+2Ddev=lists.freedesktop.org@mastertools.click>)
-Date: Mon, 2 Oct 2023 09:31:00 -0400
-From: "Harbor Freight Time" <harbor-freight-time@mastertools.click>
+ Mon, 2 Oct 2023 10:51:50 -0400 (envelope-from
+ <ace_hardware_expertise-intel+2Dgvt+2Ddev=lists.freedesktop.org@managertools.click>)
+Date: Mon, 2 Oct 2023 10:51:50 -0400
+From: "ACE Hardware Expertise" <ace_hardware_expertise@managertools.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: You're in for a unique Pittsburgh 225 Piece Tool Set &ndash;
- express your insights, and you'll be rewarded.
+Subject: Your valuable opinions could lead you to win big: complete the survey
+ and enter for a chance to score a Stanley tool set.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_67_1416615897.1696253453223"
-Message-ID: <0.0.0.E8.1D9F534AEAEEE22.5877F9@mail.mastertools.click>
+ boundary="----=_Part_193_952397244.1696258300606"
+Message-ID: <0.0.0.16.1D9F53FF9F21F16.7294DC@mail.managertools.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_67_1416615897.1696253453223
+------=_Part_193_952397244.1696258300606
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,267 +64,161 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>redeemed at any</title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
-	</style> 
+  <title>which can be redeemed</title> 
+  <link href="http://www.managertools.click/delivered-hooves/13e6t2Y39p5L8WD611S611bA17a8I36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ4RdQK7AsY10o_6a@wNLD" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.managertools.click/5396mo23g95yL8y613mHw611cS17a8Q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ4RdQK7as10_Yq5IjwjD/delivered-hooves" rel="preconnect" /> 
+  <link href="http://www.managertools.click/delivered-hooves/13e6t2Y39p5L8WD611S611bA17a8I36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQ4RdQK7AsY10o_6a@wNLD/css2?family=Kanit:wght@100; 200; 300; 400; 500; 600; 700; 800; 900&amp;display=swap" rel="stylesheet" /> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(243, 243, 243);"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="htppsl" style="border-collapse: collapse;" width="100%"> 
-   <caption>
-    &nbsp;
-   </caption> 
-   <thead class="glaplos"> 
-    <tr> 
-     <th align="center" id="gollps">&nbsp;</th> 
-    </tr> 
-   </thead> 
-   <tbody id="ghopls"> 
-    <tr> 
-     <td class="jacks"> 
-      <center id="logostyle"> 
-       <div class="parkings"> 
-        <aside class="noblestab"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" id="htppsl" style="border-collapse: collapse;" width="100%"> 
-          <caption>
-           &nbsp;
-          </caption> 
-          <thead class="glaplos"> 
-           <tr> 
-            <th align="center" id="gollps">&nbsp;</th> 
-           </tr> 
-          </thead> 
-          <tbody id="ghopls"> 
-           <tr> 
-            <td class="jacks"> 
-             <center id="logostyle"> 
-              <div class="parkings"> 
-               <aside class="noblestab">
-                &nbsp;
-               </aside> 
-              </div> 
-             </center> </td> 
-            <td class="jacks"> 
-             <center id="logostyle"> 
-              <div class="parkings"> 
-               <aside class="noblestab">
-                &nbsp;
-               </aside> 
-              </div> 
-             </center> </td> 
-           </tr> 
-           <tr> 
-           </tr> 
-           <tr> 
-            <td class="jacks"> 
-             <center id="logostyle"> 
-              <div class="parkings"> 
-               <aside class="noblestab">
-                &nbsp;
-               </aside> 
-              </div> 
-             </center> </td> 
-            <td class="jacks"> 
-             <center id="logostyle"> 
-              <div class="parkings"> 
-               <aside class="noblestab">
-                &nbsp;
-               </aside> 
-              </div> 
-             </center> </td> 
-           </tr> 
-          </tbody> 
-          <tfoot> 
-           <tr> 
-            <td align="center"> 
-             <div style="max-width: 700px; margin: auto;"> 
-              <center> 
-               <aside id="container" style="
-        background-color: #fff;
-        padding: 0;
-        margin: 0;"> 
-                <div class="woprs" style="
-            max-width: 14rem;
-            margin: auto;
-            ;">
-                 <span class="jyllys"><a href="http://www.mastertools.click/c056eP239x5w8HH613tl61Z16G17a6_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQPRdQe7zF1rQ0g5QOjwD/fathered-altogether"><img alt="PPLEASE" src="http://www.mastertools.click/L2f5fi2395v7apD13LO611m8F17a6Z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQPRdQe6JqU10O5qNTwD/attractors-blasphemes" width="100%" /></a> </span>
-                </div> 
-               </aside> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" id="gloplos" style="border-collapse: collapse;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> 
-                   <section id="container2" style="
-    max-width: 540px; 
-    margin: auto;
-    background-color: #fff;"> 
-                    <div style="
-    background-color: #ce0000;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-family: 'Rubik', sans-serif;
-    font-size: xx-large;
-    font-weight: 600;
-    color: #fff
-    ;">
-                     <span class="jyllys">Important News<br /> from Harbor Freight </span>
-                    </div> 
-                    <div style="
-    outline: solid 1.5px #ce0000;"> 
-                     <section id="togers"> 
-                      <p class="text" style="
-    font-family: 'Rubik', sans-serif;
-    font-size: large;
-    text-align: center;
-    margin: 0;
-    padding: 3.5% 5%;
-    line-height: 27px;
-    font-weight: 400;"><span class="jyllys">We are excited to share some thrilling updates from <strong>Harbor Freight</strong>. You now have the opportunity to acquire a <strong>Pittsburgh 225 Piece Tool Set</strong>, redeemable at any of our store locations.<br /> <br /> Act swiftly and grasp this chance! You have until <b>October 2nd</b> to secure these exciting tools </span></p> 
-                      <table align="center" style="max-width: 325px; margin: auto;"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center"><span class="jyllys"><a href="http://www.mastertools.click/c056eP239x5w8HH613tl61Z16G17a6_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQPRdQe7zF1rQ0g5QOjwD/fathered-altogether"><img alt="TTEYA" src="http://www.mastertools.click/nonexistent-organizers/8ga6fP239U5aZ7Ca13m61F1K9j17a6g36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQPRdQe7r1u0UkR6jpXwDP" width="100%" /></a> </span></td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                      <div class="toperwoer" style="
-padding-left: .5cm; 
-padding-right: .5cm;"> 
-                       <center style="
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;"> 
-                        <blockquote style="
-            margin: 0;padding: 0;
-            background-color: #a50000;
-            padding-top: 13pt;
-            padding-right: 30pt;
-            padding-bottom: 13pt;
-            padding-left: 30pt;
-            border-radius: 12px;
-            font-family: 'Roboto', sans-serif;width: 12em;margin: auto;
-            font-weight: 600;font-size: 1.1em;">
-                         <span class="jyllys"><span class="reallys"><a href="http://www.mastertools.click/c056eP239x5w8HH613tl61Z16G17a6_36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQPRdQe7zF1rQ0g5QOjwD/fathered-altogether" style="text-decoration: none;color: #fff;">Start Here Now &gt; &gt; </a> </span> </span>
-                        </blockquote> 
-                       </center> 
-                      </div> 
-                     </section> 
-                    </div> 
-                   </section> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </center> 
-              <h4 class="marins" style="padding-bottom: 30em;">&nbsp;</h4> 
-              <aside id="capti" style="padding: 0; margin: 0; background-color: dimgrey; padding-top: 1.5rem; padding-bottom: 1.5rem;"> 
-               <div class="centradr" style="
-            max-width: 40rem; margin: auto;"> 
-                <p style="
-            margin: 0;
-            font-size: 13px;
-            text-align: center;
-            font-family: 'Rubik', sans-serif;
-            font-weight: 600;
-            color: #fff;"><span class="jyllys">more than welcome to leave in <a href="http://www.mastertools.click/transistorize-deliberations/9726aS_2395v8rv611S6117u17a6v36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQPRdQe5gN10H6MABwqD">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY, </span></p> 
-               </div> 
-              </aside> 
-             </div> </td> 
-           </tr> 
-          </tfoot> 
-         </table> 
-        </aside> 
-       </div> 
-      </center> </td> 
-     <td class="jacks"> 
-      <center id="logostyle"> 
-       <div class="parkings"> 
-        <aside class="noblestab">
-         &nbsp;
-        </aside> 
-       </div> 
-      </center> </td> 
-    </tr> 
-    <tr> 
-    </tr> 
-    <tr> 
-     <td class="jacks"> 
-      <center id="logostyle"> 
-       <div class="parkings"> 
-        <aside class="noblestab"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" id="htppsl" style="border-collapse: collapse;" width="100%"> 
-          <caption>
-           &nbsp;
-          </caption> 
-          <thead class="glaplos"> 
-           <tr> 
-            <th align="center" id="gollps">&nbsp;</th> 
-           </tr> 
-          </thead> 
-          <tbody id="ghopls"> 
-           <tr> 
-            <td class="jacks"> 
-             <center id="logostyle"> 
-              <div class="parkings"> 
-               <aside class="noblestab">
-                &nbsp;
-               </aside> 
-              </div> 
-             </center> </td> 
-            <td class="jacks"> 
-             <center id="logostyle"> 
-              <div class="parkings"> 
-               <aside class="noblestab">
-                &nbsp;
-               </aside> 
-              </div> 
-             </center> </td> 
-           </tr> 
-           <tr> 
-           </tr> 
-           <tr> 
-            <td class="jacks"> 
-             <center id="logostyle"> 
-              <div class="parkings"> 
-               <aside class="noblestab">
-                &nbsp;
-               </aside> 
-              </div> 
-             </center> </td> 
-            <td class="jacks"> 
-             <center id="logostyle"> 
-              <div class="parkings"> 
-               <aside class="noblestab">
-                &nbsp;
-               </aside> 
-              </div> 
-             </center> </td> 
-           </tr> 
-          </tbody> 
-          <tfoot> 
-           <tr> 
-            <td align="center">&nbsp;</td> 
-           </tr> 
-          </tfoot> 
-         </table> 
-        </aside> 
-       </div> 
-      </center> </td> 
-     <td class="jacks"> 
-      <center id="logostyle"> 
-       <div class="parkings"> 
-        <aside class="noblestab">
-         &nbsp;
-        </aside> 
-       </div> 
-      </center> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td align="center">&nbsp;</td> 
-    </tr> 
-   </tfoot> 
-  </table>   
- <img src="http://www.mastertools.click/7376k239Fr5Q8V5p13M6S11waP17a6l36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQPRdQe5W1YO05zOBwD/transistorize-deliberations" alt=""/></body>
+ <body style="background-color: rgb(240, 240, 240); margin: 0; padding: 0; "> 
+  <ul style="
+        padding: 0; margin: o; list-style-type: none; "> 
+   <li class="vladimirs"> 
+    <div class="notificationone"> 
+     <header style="max-width: 700px; margin: auto; background-color: #F9F9F9; "> 
+      <table align="center" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <center style="
+                                        max-width: 10rem; 
+                                        margin: auto; ">
+           <a href="http://www.managertools.click/c236aK2m395V86wk13v61p1idi17a8A36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ4RdQK5z10NR5kkwD@/stiller-Ottomanizes"><img alt="NNBGAS" src="http://www.managertools.click/delivered-hooves/b8e4P2395hPZ7a13SA611Pfp17a8w36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ4RdQK5E10vz6eBwkJD" width="100%" /></a>
+          </center> <span style="
+                                    font-family: 'Kanit', sans-serif; 
+                                    font-size: 1.5rem; "><i>Last Reminder from<br /> Ace Hardware </i> </span></td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </header> 
+    </div> </li> 
+   <li class="vladimirs"> 
+    <div> 
+     <header class="Fromsters" style="
+                    max-width: 32.5rem; 
+                    margin: auto; 
+                    background-color: #fff; 
+                    border-top: solid 1.5px #000; 
+                    border-left: solid 1.5px #000; 
+                    border-right: solid 1.5px #000; 
+                    margin-top: 3.5rem; "> 
+      <p style="
+font-family: 'Kanit', sans-serif; 
+font-size: 1.2rem; 
+padding: 1.2rem 1.6rem; 
+margin: 0; 
+text-align: center; 
+
+; "><b><b style="color: #ff0000; ">Ace</b> Hardware</b> is thrilled to share some amazing news with you! You now have the opportunity to acquire the <b>Stanley Tool Set</b>, redeemable at any of our store locations. Take prompt action and seize this chance! You have until <b>October 2nd</b> to secure these exceptional tools.</p> 
+     </header> 
+    </div> </li> 
+   <li class="vladimirs"> 
+    <div> 
+     <section class="imgtacticks" style="
+                    max-width: 32.5rem; 
+                    margin: auto; 
+                    background-color: #fff; 
+                    border-left: solid 1.5px #000; 
+                    border-right: solid 1.5px #000; 
+                    ; "> 
+      <table align="center" style="
+max-width: 20rem; 
+margin: auto; 
+; "> 
+       <tbody> 
+        <tr> 
+         <td align="center" class="HHYEA"><a href="http://www.managertools.click/c236aK2m395V86wk13v61p1idi17a8A36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ4RdQK5z10NR5kkwD@/stiller-Ottomanizes"><img alt="IIEUAS" src="http://www.managertools.click/6295H239w5o7awn11N6120I17a8T36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ4RdQK6Q1lhG06SJqwDA/stiller-Ottomanizes" width="100%" /></a></td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </section> 
+    </div> </li> 
+   <li class="vladimirs"> 
+    <div style="
+                max-width: 32.5rem; 
+                    margin: auto; 
+                    background-color: #fff; 
+                    border-left: solid 1.5px #000; 
+                    border-right: solid 1.5px #000; 
+                    ; "> 
+     <table align="center" style="
+                    border-collapse: collapse; 
+                    ; 
+                    "> 
+      <tbody> 
+       <tr> 
+        <td align="center" id="bross"> 
+         <center style="
+                                font-weight: 600; 
+                                font-family: 'Kanit', sans-serif; 
+                                font-size: 1.5em; 
+                                border: solid 1.3px #ff0000; 
+                                border-radius: 50px; 
+                                padding-top: 1.3rem; 
+                                padding-bottom: 1.3rem; 
+                                padding-left: 1.5rem; 
+                                padding-right: 1.5rem; 
+
+                                ; ">
+          <a href="http://www.managertools.click/c236aK2m395V86wk13v61p1idi17a8A36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ4RdQK5z10NR5kkwD@/stiller-Ottomanizes" style="
+                            text-decoration: none; 
+                            color: #ff0000; ">Start Here Now &gt; &gt; </a>
+         </center> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </div> </li> 
+   <li class="vladimirs"> 
+    <div> 
+     <section id="topwraoss" style="
+                    max-width: 32.5rem; 
+                    margin: auto; 
+                    background-color: #fff; 
+                    border-left: solid 1.5px #000; 
+                    border-right: solid 1.5px #000; 
+                    padding-top: 3.5rem; "> 
+      <div style="
+background-color: #ff0000; 
+font-family: 'Kanit', sans-serif; 
+font-size: 1.2rem; 
+padding: 1.2rem 1.6rem; 
+text-align: center; 
+color: #fff
+; ">
+       We' re grateful in advance for your support. Sincerely, The Ace Hardware Team.       </div> 
+     </section> 
+    </div> </li> 
+   <li class="vladimirs"> 
+    <div style="padding-top: 22rem; ">
+     &nbsp; 
+    </div> </li> 
+   <li class="vladimirs"> 
+    <div> 
+     <div style="
+                    background-color: dimgray; padding: 5mm 0; "> 
+      <div style="
+                    max-width: 520px; 
+                    margin: auto; 
+                    font-family: 'Kanit', sans-serif; 
+                    ; font-family: 600; 
+                    font-size: 3.5mm; 
+                    text-align: center; color: white; ">
+       Anyway you can leave 
+       <a href="http://www.managertools.click/cops-merrily/e5e5V23B95u86wu12z61z1eJ17a8i36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ4RdQK6OpRq106d3PwzD">here</a>
+       <br /> US 10010 126 E 23rd St New York, NY,
+      </div> 
+     </div> 
+    </div> </li> 
+   <li class="vladimirs"> 
+    <div>
+     &nbsp; 
+    </div> </li> 
+   <li class="vladimirs"> 
+    <div>
+     &nbsp; 
+    </div> </li> 
+  </ul>   
+ <img src="http://www.managertools.click/8bd6AW23m95aF85w11O6121F17a8_36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQ4RdQK7VwOFU105NMwDW/investing-rhinestone" alt=""/></body>
 </html>
 
-------=_Part_67_1416615897.1696253453223--
+------=_Part_193_952397244.1696258300606--
 
