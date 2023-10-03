@@ -2,42 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B94877B7342
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Oct 2023 23:22:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 237787B7398
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Oct 2023 23:59:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ECB8D10E31F;
-	Tue,  3 Oct 2023 21:21:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E046110E31E;
+	Tue,  3 Oct 2023 21:58:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 03 Oct 2023 21:21:57 UTC
-Received: from mail.pharmainfsts.bond (unknown [77.90.135.72])
- by gabe.freedesktop.org (Postfix) with ESMTP id 45F9610E320
+ Tue, 03 Oct 2023 21:58:58 UTC
+Received: from mail.epsoncanfrees.click (unknown [77.90.135.82])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4C3DA10E31E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Oct 2023 21:21:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pharmainfsts.bond;
+ Tue,  3 Oct 2023 21:58:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=epsoncanfrees.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=explore_cvs_promotions@pharmainfsts.bond; 
- bh=2Yw6ip6KMZdGjWrQx3UqrP5PD5c=;
- b=ijT3ccdjkxAT/MWJHN4snNvy87kONdB36vkrtF8WnpSWFV6LEm5n5lrZm6b7Psz0ToLxIUGEmaAz
- bZZk2++JMA/NAgxs0kA5Cs30Ho95jA0YGf9PODVvSw7MiXSgHmO10EAjsOZ+suMeQ1hIFqEoHPKe
- Rebhs0I8PCF2VByhRFI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharmainfsts.bond; 
- b=X/lgGykLu8bYpUBQ02c+rDNPYjcFCa+i1HRfmz4N0gAU5sJnH1nH5RX8N872rNS4upXIHPdCLOYg
- cU4Hw7uTRlJf7RYXg28+5P8gi48cBgrhmyW0AxAx7I9pU0vKkDba+0EOvCq2TuCyHQU8YUYqOv+O
- 7znZ3Q0cPCJCnw8/vR4=;
-Received: by mail.pharmainfsts.bond id h3i2va0001g6 for
+ i=elevate.your.workspace.with.staples@epsoncanfrees.click; 
+ bh=lCm3H4/PSDC8li5g6rcQAZanHRU=;
+ b=mBTz+kXTX29FPENI9ABrhptSderqj85ZubNmFO545mvXudzPEIqcBb+994v04G2odg69r6+SNdXI
+ GWwQZAlFu6BBbspH3AhEjfisZgWdcyFdNJ0dKf9iFqlk22ZYsg0kVherZTZ1hbeU3lN+IC/Mszik
+ +pmsK/jDkVD5XxEDENE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=epsoncanfrees.click;
+ b=Kii3qhbbCnMYz+yX2kUEel+my58vqZhWJHqCxGWRdmPNHV38G9mMaEfCX72rlYBfwwpaxHNSwfpH
+ /O14qdNJrAlYEvHFAmyMtUHNkX2KfnU+0I5deBDcCexScT0ADlzSquPqLjV21hOD78VRemj+9CSd
+ KTe6z9W/ZZfO9GJI2pE=;
+Received: by mail.epsoncanfrees.click id h3i7a40001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 3 Oct 2023 17:14:14 -0400 (envelope-from
- <explore_cvs_promotions-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharmainfsts.bond>)
-Date: Tue, 3 Oct 2023 17:14:14 -0400
-From: "Explore CVS Promotions" <explore_cvs_promotions@pharmainfsts.bond>
+ Tue, 3 Oct 2023 17:51:40 -0400 (envelope-from
+ <elevate.your.workspace.with.staples-intel+2Dgvt+2Ddev=lists.freedesktop.org@epsoncanfrees.click>)
+Date: Tue, 3 Oct 2023 17:51:40 -0400
+From: "Elevate Your Workspace With Staples."
+ <elevate.your.workspace.with.staples@epsoncanfrees.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Your Opinion Counts: Win CVS Gift Cards Worth $100!
+Subject: 
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_238_617179674.1696367646394"
-Message-ID: <0.0.0.2BC.1D9F63E900DEFE4.7489A7@mail.pharmainfsts.bond>
+ boundary="----=_Part_262_1028143403.1696369880229"
+Message-ID: <0.0.0.2DE.1D9F643CA6FD76A.4E1301@mail.epsoncanfrees.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,84 +55,75 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_238_617179674.1696367646394
+------=_Part_262_1028143403.1696369880229
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>missyounow</title> 
+  <title>Prepare for some</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <table align="center" bgcolor="#D93025" style="width: 100%; border-collapse: collapse; padding-top: 20px; padding-bottom: 20px;"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td> 
-      <table align="center" bgcolor="FFFFFF"> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td> 
-          <table align="center" style="max-width: 530px; margin: auto; background-color: white;"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <div>
-               <a href="http://www.pharmainfsts.bond/flatten-campfire/ef46e2y3Q95IB86h12J6p179y17b7n36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQXRdSR7QX10sIL5l@XwD" target="_blank"><span style="display: block;"><img alt="annys" src="http://www.pharmainfsts.bond/contradicted-query/f304a2395P7BaJ12d61V7bx17b7l36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQXRdSR7Es1NnJ05o2wDj" style="max-width: 130px; margin: auto; width: 100%;" /> </span> </a>
-              </div> <p style="margin: 0; padding: 0; padding-top: 25px; padding-bottom: 25px;"><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 1.7em;">Special Discounts Exclusively for Our Esteemed Customers </span></p> 
-              <div> 
-               <hr color="#D93025" size="3.5px" style="margin: auto; border-radius: 50px; margin-bottom: 15px;" width="300px" />
-              </div> <p style="font-family: Arial, Helvetica, sans-serif; font-size: 1.3em; line-height: 1.7em; padding-left: 1.1em; padding-right: 1.1em;">We highly value your selection of CVS. Your loyalty and support hold significant importance for us, and we genuinely appreciate the chance to assist you.</p> 
-              <div style="display: flex; justify-content: center; flex-flow: wrap row;"> 
-               <div style="margin: 2.5%;"> 
-                <blockquote style="margin: 0;">
-                 <a href="http://www.pharmainfsts.bond/flatten-campfire/ef46e2y3Q95IB86h12J6p179y17b7n36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQXRdSR7QX10sIL5l@XwD" target="_blank"><img alt="annnys" src="http://www.pharmainfsts.bond/contradicted-query/d326A239ql5EF7Ma12c6P17cH17b7x36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQXRdSR6QZw10q6PjwljD" style="max-width: 110px; margin: auto; width: 100%;" /> </a>
-                </blockquote> 
-               </div> 
-               <div style="margin: 2.5%;"> 
-                <blockquote style="margin: 0;">
-                 <a href="http://www.pharmainfsts.bond/flatten-campfire/ef46e2y3Q95IB86h12J6p179y17b7n36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQXRdSR7QX10sIL5l@XwD" target="_blank"><img alt="annnys" src="http://www.pharmainfsts.bond/1014u2395QB7Va12E617gdO17b7q36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRdSR5f10ux6zXwlPD/turban-Arequipa" style="max-width: 110px; margin: auto; width: 100%;" /> </a>
-                </blockquote> 
-               </div> 
-              </div> <p style="font-family: Arial, Helvetica, sans-serif; font-size: 1.3em; line-height: 1.7em; padding-left: 1.1em; padding-right: 1.1em;">Your feedback holds immense value to us, and as a token of our appreciation, we would like to offer a special thank you to you for dedicating your time to share your thoughts.<br /> <br /> <strong>After finishing the survey, you may have the opportunity to select from a variety of gifts! </strong></p> 
-              <div style="padding-top: 30px; padding-bottom: 30px;"> 
-               <table> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> 
-                   <table style="width: 300px; border-collapse: collapse; background-color: #D93025;"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" style="padding: 15px 20px 15px 20px; font-size: 28px; font-weight: bold; font-family: Arial, Helvetica, sans-serif;"><a href="http://www.pharmainfsts.bond/flatten-campfire/ef46e2y3Q95IB86h12J6p179y17b7n36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQXRdSR7QX10sIL5l@XwD" style="text-decoration: none; color:#fff;" target="_blank">Start Now &gt; &gt; </a></td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> &nbsp; 
-               <p style="font-family: Arial, Helvetica, sans-serif; font-size: 1em; line-height: 1.7em; padding-left: 1.1em; padding-right: 1.1em;">Once more, we appreciate your support. We anticipate hearing from you soon!<br /> <br /> Best regards,</p> 
-               <hr />
-              </div> <br /> <br /> &nbsp; <p style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; font-weight: bold;">time to show you the exit <a href="http://www.pharmainfsts.bond/de54P2395r8n6h11S617ay17b7C36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQXRdSR6yUF10L6aUwDL@/intermittent-Meier" target="_blank"> here </a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.pharmainfsts.bond/60b6S2Z39D5wm85N12b6I17ev17b7U36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQXRdSR5nt1T05f01wD/barbarity-history" alt=""/></body>
+ <body style="background-color: rgb(233, 233, 233); margin: auto; padding: 0;"> 
+  <div class="barstrems" style="background-color: cornsilk; width: 100%; padding: 1em;">
+   &nbsp;
+  </div> 
+  <div class="flawins" style="background-color:ghostwhite; width: 100%; padding: 1em;">
+   &nbsp;
+  </div> &nbsp; 
+  <div> 
+   <div style="max-width: 200px; margin: auto;">
+    <a href="http://www.epsoncanfrees.click/eb74g2395QAy8612W617fDi17b8u36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQURdSS7G1ZF0jn6Q0BwXD/mileage-Reinhardt"><img alt="UUSEA" src="http://www.epsoncanfrees.click/89f5z23n95R7vVa11J6181m17b8L36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQURdSS5pKo106IjwDWy/wastefully-incur" width="100%" /></a>
+   </div> 
+   <section style="box-shadow: inset 0 0 5px 1px #F11C14; padding: 5mm 8mm; max-width: 33rem; margin: auto; border-radius: 1rem; background-color: #fff;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="fropps" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" id="clris" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1cm; font-weight: 600;"><i><u>Last Staples<br /> Notification</u></i></td> 
+      </tr> 
+      <tr> 
+       <td class="filpstwo">&nbsp; 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" id="claplisers" style="border-collapse: collapse; " width="100%"> 
+         <tbody> 
+          <tr> 
+           <td align="center" id="ifnsa" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: .5cm; font-weight: 500; line-height: .8cm;">Get ready for some exciting news! <b>Staples</b> is providing you with a <strong style="color: #F11C14;">FREE Epson EcoTank ET-15000</strong>, which you can redeem at any of our retail locations. Take action now?this offer is valid until <b>October 3rd</b>.<br /> &nbsp; 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center"> 
+                <div style="max-width: 300px; margin: auto;"> 
+                 <center style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: .5cm; padding: .4cm; background-color: #F11C14; font-weight: 600; ; border-radius: 50px;">
+                  <a href="http://www.epsoncanfrees.click/eb74g2395QAy8612W617fDi17b8u36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQURdSS7G1ZF0jn6Q0BwXD/mileage-Reinhardt" style="color: white; text-decoration: none;" target="_blank">Get Started in Here Now &raquo;</a>
+                 </center> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <div style="max-width: 280px; margin: auto;">
+             <a href="http://www.epsoncanfrees.click/eb74g2395QAy8612W617fDi17b8u36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQURdSS7G1ZF0jn6Q0BwXD/mileage-Reinhardt"><img alt="IIUEAE" src="http://www.epsoncanfrees.click/Talmudism-glamorous/9365nr2395n7ahm12z6q182j17b8u36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQURdSS5qL10Q6fyJwJD" width="100%" /></a>
+            </div> 
+            <hr /> Thank you in advance, The Staples Team.<br /> <br /> <span style="font-size: 4mm;">We value your continued support and for taking<br /> the time to complete our survey.<br /> <b>The Staples Survey Team</b> </span></td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </section> 
+   <div style="padding-top: 450px;">
+    &nbsp;
+   </div> 
+   <address style="background-color: #F11C14; padding: 4.5mm 0;"> 
+    <footer style="font-size: 13px; max-width: 500px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; color: white; text-align: center;">
+     as we promised you can leave 
+     <a href="http://www.epsoncanfrees.click/2c35A2X395D8kF613e6Q1U80M17b8H36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQURdSS6u1wvW05Q0TwD/rebellions-immediately">here</a>
+     <br /> US 10010 126 E 23rd St New York, NY,
+    </footer> </address> 
+  </div>   
+ <img src="http://www.epsoncanfrees.click/perpetrators-forecastle/30R6WT23o95t85ug12Vr6183z17b8U36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQURdSS5RF10Y6Hywq3D" alt=""/></body>
 </html>
 
-------=_Part_238_617179674.1696367646394--
+------=_Part_262_1028143403.1696369880229--
 
