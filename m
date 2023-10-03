@@ -1,47 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 548E27B5C98
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  2 Oct 2023 23:45:07 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AAA97B6F4F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Oct 2023 19:11:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9AC1A10E09D;
-	Mon,  2 Oct 2023 21:45:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 19F0D10E060;
+	Tue,  3 Oct 2023 17:11:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 02 Oct 2023 21:45:03 UTC
-Received: from mail.westhairfreecop.click (unknown [157.52.235.149])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8B84710E107
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Tue, 03 Oct 2023 17:11:17 UTC
+Received: from mail.hbclowertools.click (unknown [77.90.135.140])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F1A0210E060
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  2 Oct 2023 21:45:03 +0000 (UTC)
+ Tue,  3 Oct 2023 17:11:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=westhairfreecop.click; 
+ d=hbclowertools.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=everything-you-need-to-know-about-southwest-flights@westhairfreecop.click; 
- bh=uzLb+RN/b9UqmhJeaWo1qAxZo70=;
- b=p1/6D+0KawaEkl80iVvNng960F3JdVJMd42Z9JjtygJ1TZUlO5kVnJ0aVxs5hkym4RJEQ+vozN37
- /orxwh1E0O3Ly1DqDKAnwbO2Q5DZiFSxoiTCK5c05sZ6+6mIR/Y612eR6gx4E0TvLgQugviG6FDQ
- 1OP43nM3W+8suocyytw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=westhairfreecop.click; 
- b=QfsYvdjXmMll2Svl+W0m/YEUO31AefD+4Jf1s0h+jarE2IX76aVKBJ7uIQXWci1/8qOj9QG/yUtc
- 8afwbRhqY6/V2Jz+SOx8eWIN1df1j6WAhm2TujPzOCC6FqGYlV+uBUi9l/vy4XVe/p9oatWUpAQ6
- uV/AyBo04hGGZHGaPO8=;
-Received: by mail.westhairfreecop.click id h3cstu0001gg for
+ i=harbor.wave.rider@hbclowertools.click; 
+ bh=vbYaT3RKIn4EFFCetp5f0R3G47U=;
+ b=L4aV456BBu/iu+aVGAUiFpq4nIQxeabJmRWBpZJQWVjPm6KTcvfgl7fEu9ZzFiMFC7cRb2+GRyW8
+ G8Nks5PnQFXsDadQPf29g/M4Mah24+dOwrKUlnAYY3PdSnXhKSghhxJN2H2XJVdkGdypwyG3fGuV
+ wXQxFqjn7w+N2Xf7yUQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hbclowertools.click;
+ b=Zd5zh+cetNiw/lSDyM0S+ohaa/4t2DJnC0XypO6DI3a1rLCzN8gznWlwJy9Zqomu7cqN9q4REUv9
+ C/ENmY/TxiknIr6tXjVAeOKfm6qqcIy4rm9VkAys/KYGyDVRICG3mZO5Uu9+f2Rc9Q+YRU3Yok6q
+ q6LY+ee+p1szpQr0Dkc=;
+Received: by mail.hbclowertools.click id h3hf100001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 2 Oct 2023 17:36:19 -0400 (envelope-from
- <everything-you-need-to-know-about-southwest-flights-intel+2Dgvt+2Ddev=lists.freedesktop.org@westhairfreecop.click>)
-Date: Mon, 2 Oct 2023 17:36:19 -0400
-From: "Everything You Need To Know About Southwest Flights"
- <everything-you-need-to-know-about-southwest-flights@westhairfreecop.click>
+ Tue, 3 Oct 2023 14:23:00 -0400 (envelope-from
+ <harbor.wave.rider-intel+2Dgvt+2Ddev=lists.freedesktop.org@hbclowertools.click>)
+Date: Tue, 3 Oct 2023 14:23:00 -0400
+From: "Harbor Wave Rider" <harbor.wave.rider@hbclowertools.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Welcome the season with open arms and relish a free flight to your
- preferred destination!
+Subject: Because You Matter: Exclusive Savings for Our Treasured Customers!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_379_240894119.1696282554989"
-Message-ID: <0.0.0.18B.1D9F5787B08149C.83E67@mail.westhairfreecop.click>
+ boundary="----=_Part_169_386205251.1696352539325"
+Message-ID: <0.0.0.19E.1D9F626A4269804.39097E@mail.hbclowertools.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,125 +54,85 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_379_240894119.1696282554989
+------=_Part_169_386205251.1696352539325
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<html lang="en">
+<!DOCTYPE html>
+<html>
  <head> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>kept confidential</title> 
+  <title>calssy stuffs</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #e2e2e2;"> 
-  <header> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" class="shivana" style="border-collapse: collapse;" width="100%"> 
-    <caption class="seraphine">
-     &nbsp;
-    </caption> 
-    <thead> 
-     <tr> 
-      <th id="udyr">&nbsp;</th> 
-     </tr> 
-    </thead> 
-    <tbody id="nexo"> 
-     <tr> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
-          <tbody> 
-           <tr> 
-            <td class="gambglis">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor">
-         &nbsp; 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="amge" style="border-collapse: collapse;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" class="gambglis"> 
-             <section> 
-              <div> 
-               <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
-                <center style="max-width: 300px; margin: auto; padding: 15px 0px;">
-                 <span style="display: block;"><a href="http://www.westhairfreecop.click/Donnelly-preconceptions/9184S2395iR8n613C61Ut46l17b0B36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ.RdRS6Nstj105OWpwD" target="_blank"><img alt="MMSTEA" src="http://www.westhairfreecop.click/counteracted-carnal/b525zk2395bu7ma11f614bu17b0D36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ.RdRS5ERX105aJwD@" width="100%" /> </a> </span>
-                </center> 
-                <span style="display: block;"><span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em;">We highly value your input. Please take a moment to participate in a short survey regarding your recent flight and your overall interaction with Southwest. Your feedback will help us improve your experiences with our airline. </span><br /> <span style="display: block; padding: 2.5% 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em; background-color: #FEBF26;">Your feedback is greatly appreciated. Kindly take a moment to partake in a brief survey about your recent flight and your overall interaction with Southwest. Your responses will play a crucial role in our efforts to enhance your experiences with our airline. </span> </span> 
-                <center>
-                 <span style="display: block;"><a href="http://www.westhairfreecop.click/Donnelly-preconceptions/9184S2395iR8n613C61Ut46l17b0B36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ.RdRS6Nstj105OWpwD"><img alt="MMLEKA" src="http://www.westhairfreecop.click/d314f2395w7VaV12U61v4cW17b0O36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ.RdRS5FW10O5AJwjD/allegiance-percents" style="display: block;" width="100%" /> </a> </span>
-                </center> 
-                <br /> 
-                <span style="display: block;"><span style="display: block; padding: 2.5% 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em; background-color: #DB4437; color: white;"><b>To express our appreciation, we are delighted to offer you a $100 gift as a gesture of thanks. </b> </span><br /> <span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: 1.2em; line-height: 1.5em;">You can utilize the provided link to access the survey. It's an uncomplicated task that will require just a few minutes of your time, and please be assured that your responses will remain confidential. </span> </span>
-                <br /> &nbsp; 
-                <center style="max-width: 75%; margin: auto;"> 
-                 <div style="background-color: #000fda; padding: 3.5% 7%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; font-size: 20px; border-radius: 18px;">
-                  <span style="display: block;"><a href="http://www.westhairfreecop.click/Donnelly-preconceptions/9184S2395iR8n613C61Ut46l17b0B36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ.RdRS6Nstj105OWpwD" style="color: white; text-decoration: none;">Kick off the survey Here&gt;&gt; </a> </span>
-                 </div> 
-                </center> 
-                <span style="display: block;"> </span>
-                <br /> 
-                <br /> &nbsp; 
-                <hr /> 
-                <span style="display: block;"> <span style="display: block; padding: 0 5%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; font-size: .9em; line-height: 1.2em;"> We appreciate your ongoing support, and we anticipate receiving your feedback. Best regards, </span> </span>
-               </div> 
-              </div> 
-              <table style="padding-top: 350px;"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <div style="background-color: #252525; padding-top: 1em; padding-bottom: 1em;"> 
-               <p style="margin: 0; max-width: 500px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #fff;"><span style="display: block;">Use the exit option <a href="http://www.westhairfreecop.click/d134a2395Pv8n611E6147Y17b0y36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ.RdRS6zo10qW6zlwD0J/praisers-brusque" style="color: #00ffff;"> here </a><br /> US 10010 126 E 23rd St New York, NY, </span></p> 
-              </div> 
-             </section> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
-          <tbody> 
-           <tr> 
-            <td class="gambglis">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
-      <td class="castlevania"> 
-       <div id="jordals"> 
-        <section class="kuribor"> 
-         <table class="amge"> 
-          <tbody> 
-           <tr> 
-            <td class="gambglis">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </section> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-    <tfoot> 
+ <body style="background-color:#F2F2F2"> 
+  <div style="display: block; font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; background-color: #F2F2F2; padding: 15px; font-size: 18pt"> 
+   <table border="0" cellpadding="3" cellspacing="3" width="100%"> 
+    <tbody> 
      <tr> 
       <td>&nbsp;</td> 
+      <td> 
+       <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td> 
+           <div align="center" style="max-width: 521px; width: 100%; background-color: #fff; padding: 15px; margin: auto">
+            <a href="http://www.hbclowertools.click/standoff-fugitives/7745O239Q5sx8x613A6159UhR17b1z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQFRdSm5b1o0Q5b1wBD"><img alt="PPLEASE" src="http://www.hbclowertools.click/specially-elliptically/7b05G2X395f7wta11y615cy17b1L36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRdSm5k1qh06M@UkwD" style="max-width: 255px" width="100%" /></a> 
+            <div> 
+             <h3 style="margin: 0">Great News from Harbor<br /> Freight to our friends.</h3> 
+            </div> 
+            <div> 
+             <p style="font-size: 16pt">Dive into the latest from Harbor Freight! Get your hands on the all-new <strong>Pittsburgh 225 Piece Tool Set</strong>, waiting just for you at our stores. Unwrap this deal today and elevate your toolkit!<br /> <br /> <strong style="color: #DE0214">#YourNextFavoriteToolSet</strong></p> 
+            </div> 
+            <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center"><a href="http://www.hbclowertools.click/cb95PO2395j8K6l13v61m5aAR17b1y36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQFRdSm5yFg106SBLwD1/jolly-concatenations"><img alt="goldus" src="http://www.hbclowertools.click/brown-fillings/abc5D23m95SDj7a13D615ZdAS17b1X36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQFRdSm6C1V0Jk5SPPwD" style="max-width: 400px" width="100%" /></a></td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <a href="http://www.hbclowertools.click/cb95PO2395j8K6l13v61m5aAR17b1y36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQFRdSm5yFg106SBLwD1/jolly-concatenations" style="color: #E10014"> </a> 
+            <h3 align="center" style="font-size: 17pt; color: #DE0214"><a href="http://www.hbclowertools.click/cb95PO2395j8K6l13v61m5aAR17b1y36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQFRdSm5yFg106SBLwD1/jolly-concatenations" style="color: #E10014">--&gt; Time-Sensitive Opportunity Awaits! &lt;-- </a></h3> 
+            <div> 
+             <p style="font-size: 16pt">Mark your calendars! Until October 3rd, a world of exceptional tools beckons. Dive in and discover your next indispensable gadget today! <strong style="color: #DE0214;font-style: italic">#ToolTimeTreats</strong></p> 
+            </div> 
+            <table border="0" cellpadding="2" cellspacing="2" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td> 
+                <div style="background-color: #E10014; padding: 12px; text-align: center; color: #fff; text-decoration: none">
+                 <a href="http://www.hbclowertools.click/cb95PO2395j8K6l13v61m5aAR17b1y36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQFRdSm5yFg106SBLwD1/jolly-concatenations" style="color: #fff; text-decoration: none">You are just secs away from your gadget --&gt;</a>
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+        </tbody> 
+       </table> </td> 
+      <td>&nbsp;</td> 
      </tr> 
-    </tfoot> 
+    </tbody> 
    </table> 
-  </header>   
- <img src="http://www.westhairfreecop.click/counteracted-carnal/8dc6P2x39_5B85qC13b61Gn4aY17b0W36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ.RdRS6M_V10t6bkw1PD" alt=""/></body>
+  </div> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <section> 
+   <footer> 
+    <center>
+     <font face="arial" size="2">more than welcome to leave in <a href="http://www.hbclowertools.click/89f4M2395hlo8612W6B15bw17b1t36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQFRdSm5rY1V06hpPwpD/numbering-artifice">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY,</font>
+    </center> 
+   </footer> 
+  </section>   
+ <img src="http://www.hbclowertools.click/2ff4E2395mF85N12R615ein17b1z36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQFRdSm6Kg10AI5NBwDP/standoff-fugitives" alt=""/></body>
 </html>
 
-------=_Part_379_240894119.1696282554989--
+------=_Part_169_386205251.1696352539325--
 
