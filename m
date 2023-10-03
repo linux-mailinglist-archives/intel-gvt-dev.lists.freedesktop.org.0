@@ -1,45 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EBEB7B71B0
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Oct 2023 21:23:30 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E65577B7221
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  3 Oct 2023 21:58:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3A51C10E30F;
-	Tue,  3 Oct 2023 19:23:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B077910E071;
+	Tue,  3 Oct 2023 19:58:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 03 Oct 2023 19:23:27 UTC
-Received: from mail.autoparstfree.bond (unknown [77.90.135.198])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4263F10E30F
+ Tue, 03 Oct 2023 19:58:46 UTC
+Received: from mail.krongeskight.click (unknown [77.90.135.54])
+ by gabe.freedesktop.org (Postfix) with ESMTP id CBE4C10E314
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  3 Oct 2023 19:23:27 +0000 (UTC)
+ Tue,  3 Oct 2023 19:58:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=autoparstfree.bond; 
+ d=krongeskight.click; 
  h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=oreilly-gift-hub@autoparstfree.bond; 
- bh=QQVkr1aAwINYSIXW4Vo4z4c/dfs=;
- b=AJc5UWypLajEDLXAQk9xHyRI6y5g5QfqKxUIczZ4X9xuYn22V8DsZ+gZtZGHMvMGhO7IahRY9en2
- VhKaXnJEdEgvfTHkI+rQntCHDXeeYhQ7gLFDrEqadnMmqAIeFbtVfqb297PVEIn6HMGoERx5O6JM
- fND1Oo8HY6ot2O350m0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=autoparstfree.bond; 
- b=FtWfltzD+mR9/eVbJU0Qu2qpXAxTcuSrYSN8CMYuZkeTlV+T1tyz806Yy9uzPoqN6BiaaMDyyNl1
- UN/W5r9mzPa1pN9Ut4fjJcozhOVYEhcWZJes6AHsFnxbUCH0tcPquLl4iyb5BihOn3rAFTMUppva
- oynkJKgpHzvibLJbknI=;
-Received: by mail.autoparstfree.bond id h3hl2u0001gr for
+ i=kroger_client_contentment@krongeskight.click; 
+ bh=oftSDWNE/MSwTTFkmjsXr2Zt48k=;
+ b=dIsDALTdmOcgrsL5ISuH6eYf6bhe9XhnyIXN4qlYZhVP9WRHIdIvU8zmDIyKkkwhbvb4nAbpbnON
+ Ju1X2+L5V4b+ontszeZpM9HtcKh0Yd+ZuAB+3PFXjnUAJEgF+N5PNfTEWF7qCHkHx5yfrbcwyH2o
+ rMtuUTgABJmQ3I8FNFs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=krongeskight.click; 
+ b=VJqG9JG/E7SStImSd4ABleaYTb9325u+GHKEvIzJON48vibv4f5lftYhFTqloOEmJq9u0cjygVXw
+ XBmLxcfcpis/ER02dUWvOFmL3cZCn/KLT18U0CL/6vc/Vyw0tm03lIvsmAmqdtwd5Ct8VdaTwS2W
+ 4p8PCtjyxmFzH4BwXx0=;
+Received: by mail.krongeskight.click id h3hp7c0001g0 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 3 Oct 2023 15:14:56 -0400 (envelope-from
- <oreilly-gift-hub-intel+2Dgvt+2Ddev=lists.freedesktop.org@autoparstfree.bond>)
-Date: Tue, 3 Oct 2023 15:14:56 -0400
-From: "OReilly Gift Hub" <oreilly-gift-hub@autoparstfree.bond>
+ Tue, 3 Oct 2023 15:51:46 -0400 (envelope-from
+ <kroger_client_contentment-intel+2Dgvt+2Ddev=lists.freedesktop.org@krongeskight.click>)
+Date: Tue, 3 Oct 2023 15:51:46 -0400
+From: "Kroger Client Contentment"
+ <kroger_client_contentment@krongeskight.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Claim a superb Bosch Drill Set as your reward by sharing your
- valuable opinions.
+Subject: Join us in commemorating this day with a gift from us! It's our way
+ of expressing our gratitude.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_172_1346358504.1696360474989"
-Message-ID: <0.0.0.226.1D9F62DE54D445C.458B58@mail.autoparstfree.bond>
+ boundary="----=_Part_355_1376507310.1696362690883"
+Message-ID: <0.0.0.270.1D9F6330AD47308.8DECA@mail.krongeskight.click>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,62 +56,117 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_172_1346358504.1696360474989
+------=_Part_355_1376507310.1696362690883
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Act Swiftly to</title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
-	</style> 
+  <title>shopping needs</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(235, 235, 235);"> 
-  <div> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td class="totalcromes"> 
-       <aside style="background-color: rgb(255, 0, 0); padding: 5mm 0;"> 
-        <center style="max-width: 200px; margin: auto;">
-         <a href="http://www.autoparstfree.bond/5ed6A2k39i5B86SG11e6169J17b4w36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRdS95XU10S5olwDz/Mauritius-gratification" target="_blank"><img alt="IIOESA" src="http://www.autoparstfree.bond/8f95Ci2395r7Qa_12O61H6bq17b4M36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQNRdS96nz1z0V6J0P@wD/Mauritius-gratification" width="100%" /></a>
-        </center> 
-       </aside> 
-       <article style="margin: 0; padding: 0; border-left: solid 1.5px rgb(255, 0, 0); border-right: solid 1.5px rgb(255, 0, 0); border-bottom: solid 1.5px rgb(255, 0, 0); max-width: 600px; margin: auto;"> 
-        <p style="font-family: 'Roboto Slab', serif;
-    margin: 0; font-weight: 600; font-size: 1.8rem; text-align: center; background-color: #fff; padding-bottom: 15px;"><font>Important<br /> Notice from O'Reilly </font></p> 
+ <body style="background-color: rgb(243, 243, 243); margin: 0; padding: 0;"> 
+  <ol style="list-style-type: none; padding: 0; margin: 0;"> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <div> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="nowatacks" style="border-collapse: collapse; background-color: #edf4ff" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <div style=" max-width: 200px; margin: auto;">
+            <span id="totalwindws"><a href="http://www.krongeskight.click/differentiates-shrank/a806L2M39w5B86KD11G616eu17b5l36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQbRdSd7L10pDyZ6Pjwp3D"><img alt="IOOEASAE" src="http://www.krongeskight.click/pulse-inspires/53a6S239iP5u7nza13c617J0kC17b5O36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQbRdSd6ns10UP5yPPwD" width="100%" /> </a> </span>
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <p style="padding-top: 10px;">&nbsp;</p> 
+      <div style="max-width: 520px;margin: auto;background-color: #fff;"> 
+       <article> 
+        <p style="margin: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;"><span id="totalwindws"><font>We'd like to express our gratitude for choosing Kroger. Your loyalty and support are of great significance to us, and we genuinely appreciate the opportunity to fulfill your shopping needs. </font> </span></p> 
        </article> 
-       <div style="border-left: solid 1.5px rgb(255, 0, 0); border-right: solid 1.5px rgb(255, 0, 0); border-bottom: solid 1.5px rgb(255, 0, 0); max-width: 520px; margin: auto; background-color: #fff;">
-        &nbsp; 
-        <p style="font-family: 'Roboto Slab', serif; font-size: 1.1rem; line-height: 1.6rem; margin: 0; text-align: center; font-weight: 400; padding: 0 2rem;">Prepare for Exciting News: <strong>O'Reilly</strong> is Offering a <strong>Bosch Drill Set</strong> for In-Store Use. Take Quick Action to Obtain These Outstanding Tools by <strong>October 3rd</strong>.</p> &nbsp; 
-        <div style="max-width: 300px; margin: auto;"> 
-         <div> 
-          <center style="background-color: #0dad63; padding: .5cm .8cm; font-weight: 800; font-family: 'Roboto Slab', serif; font-size: 18px; border-radius: 10px;">
-           <a href="http://www.autoparstfree.bond/5ed6A2k39i5B86SG11e6169J17b4w36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRdS95XU10S5olwDz/Mauritius-gratification" style="text-decoration: none; color: #fff;">Start Here Now &gt;&gt;</a>
+      </div> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <article style="max-width: 520px;margin: auto;background-color: #fff;"> 
+       <p style="margin: 0;">&nbsp;</p> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" id="hollweyyns" style="border-collapse: collapse;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <div style="display: flex; justify-content: center; align-items: center; flex-flow: wrap row;"> 
+            <center id="imgtopers" style="max-width: 90px; margin: auto; margin: 3%;">
+             <span id="totalwindws"><a href="http://www.krongeskight.click/differentiates-shrank/a806L2M39w5B86KD11G616eu17b5l36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQbRdSd7L10pDyZ6Pjwp3D"><img alt="IOEOSA" src="http://www.krongeskight.click/8455L239B5IG7ag11d6171Y17b5q36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQbRdSd7gtHp10F5EjMwD/tested-broader" width="100%" /> </a> </span>
+            </center> 
+            <center id="imgtopers" style="max-width: 120px; margin: auto; margin: 3%;">
+             <span id="totalwindws"><a href="http://www.krongeskight.click/differentiates-shrank/a806L2M39w5B86KD11G616eu17b5l36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQbRdSd7L10pDyZ6Pjwp3D"><img alt="IIOEAX" src="http://www.krongeskight.click/cd76a23W9X5F7wax11f6172G17b5M36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQbRdSd5l1g0g6z@UwDl/visibly-bussing" width="100%" /> </a> </span>
+            </center> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </article> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <div style="max-width: 520px;margin: auto;background-color: #fff;"> 
+       <article> 
+        <p style="margin: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;"><span id="totalwindws"><font>Once more, thank you for your continued support. We're eagerly anticipating your feedback! Your ongoing support is highly valued, and we're eagerly looking forward to hearing from you soon! </font> </span></p> 
+       </article> 
+      </div> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <div class="calcoclicks"> 
+       <center class="omegapros"> 
+        <div style="max-width: 520px;margin: auto;background-color: #2A4F92;"> 
+         <article> 
+          <p style="margin: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;color: #fff;"><span id="totalwindws"><span id="totalwindws"><font>Thank you once more for your ongoing support. We're eagerly anticipating your feedback! Your continued support is deeply appreciated, and we're eagerly looking forward to hearing from you! </font> </span> </span></p> 
+         </article> 
+        </div> 
+        <div style="max-width: 520px;margin: auto;background-color: #fff;"> 
+         <article> 
+          <p style="margin: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;"><span id="totalwindws"><span id="totalwindws"><font>Accessing the survey is straightforward?simply click the provided link below. It's a brief task that will take only a few minutes of your time, and please be assured that your responses will be held in strict confidence. </font> </span> </span></p> 
+          <center style="max-width: 520px; margin: auto; background-color: #fff;"> 
+           <p style="text-align: center; margin: 0;"><span id="totalwindws"><span id="totalwindws"><a href="http://www.krongeskight.click/differentiates-shrank/a806L2M39w5B86KD11G616eu17b5l36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQbRdSd7L10pDyZ6Pjwp3D" style="text-decoration: none; color: #fff;" target="_blank"><span style="background-color: #1A4898; display: inline-block; padding: 12px 27px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 20px; border-radius: 5px;">Start Here Now &gt; &gt; </span> </a> </span> </span></p> 
           </center> 
-         </div> 
-        </div> &nbsp; 
-        <table style="max-width: 275px; margin: auto;"> 
-         <tbody> 
-          <tr> 
-           <td><a href="http://www.autoparstfree.bond/5ed6A2k39i5B86SG11e6169J17b4w36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRdS95XU10S5olwDz/Mauritius-gratification"><img alt="OOPESAW" src="http://www.autoparstfree.bond/Billings-provisionally/ef46b2HP395uw7Ia13V6l1_6cQ17b4C36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQNRdS95P1C0N6SWwpD1" width="100%" /></a></td> 
-          </tr> 
-          <tr> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <p style="font-family: 'Roboto Slab', serif; font-size: 1.1rem; line-height: 1.6rem; margin: 0; text-align: center; font-weight: 400; padding: 0 2rem;">We genuinely value your involvement, The O'Reilly Auto Parts Survey Team.</p> 
-        <br /> &nbsp;
-       </div> <h1 style=" padding-top: 5cm;">&nbsp;</h1> <address style="background-color: darkolivegreen; padding: 10mm;"> <p style=" margin: 0 ;max-width: 450px; margin: auto; font-size: 13px; text-align: center; font-weight: 600;font-family: 'Roboto Slab', serif; color: white;">you can leave with sadness <a href="http://www.autoparstfree.bond/20f6Q2l3M95hWN8611H616ar17b4I36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQNRdS96qr10hR5aBBwD/bedazzle-workshop">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </address> <br /> &nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.autoparstfree.bond/a7T5J239r5b85OV12D616dUL17b4j36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQNRdS96i1LLW05MX2wD/Billings-provisionally" alt=""/></body>
+          <p style="margin: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;"><span id="totalwindws"><span id="totalwindws"><font>Thank you once more for your steadfast support. We're eagerly awaiting your feedback! Your ongoing support is sincerely valued, and we're eager to hear from you soon!<br /> <br /> <span style="display: block; font-size: 3.8mm;"><b>Warm regards,<br /> The Kroger Survey Team </b> </span> </font> </span> </span></p> 
+         </article> 
+        </div> 
+       </center> 
+      </div> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <h4 style="padding-bottom: 20rem;">&nbsp;</h4> 
+      <center style="padding: 4mm 0; background-color: lightslategrey;"> 
+       <aside style="max-width: 520px; margin: auto; text-align: center; font-size: 4mm; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 600; color: white;">
+        <span id="totalwindws">if you need to go visit <a href="http://www.krongeskight.click/differentiates-shrank/40e4r2395bg8r613L616FfSV17b5A36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQbRdSd5Sv1n06Y@XwDJ"> here </a><br /> 10010 126 E 23rd St New York, NY, US </span>
+       </aside> 
+      </center> 
+      <br /> &nbsp;
+     </center> 
+    </div> </li> 
+  </ol>   
+ <img src="http://www.krongeskight.click/dismiss-inspects/7924U2395cLp8513HJ6z173x17b5u36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQbRdSd5Uy10k6PAlw1D" alt=""/></body>
 </html>
 
-------=_Part_172_1346358504.1696360474989--
+------=_Part_355_1376507310.1696362690883--
 
