@@ -1,46 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 578A57B84AF
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Oct 2023 18:12:08 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E72CB7B8C53
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  4 Oct 2023 21:16:31 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 24D5410E131;
-	Wed,  4 Oct 2023 16:12:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A9FDE10E18C;
+	Wed,  4 Oct 2023 19:16:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Wed, 04 Oct 2023 16:12:05 UTC
-Received: from mail.coffeestopbucks.click (unknown [77.90.135.57])
- by gabe.freedesktop.org (Postfix) with ESMTP id 655AA10E131
+ Wed, 04 Oct 2023 19:16:28 UTC
+Received: from mail.masterflyswest.click (unknown [77.90.135.3])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7A6EC10E1A1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  4 Oct 2023 16:12:05 +0000 (UTC)
+ Wed,  4 Oct 2023 19:16:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=coffeestopbucks.click; 
- h=Date:From:To:Subject:MIME-Version:Content-Type:List-Unsubscribe:Message-ID;
- i=your.starbucks.experience.matters@coffeestopbucks.click; 
- bh=Q5c9j8iuuWXVYZHhJJtv1j7AS98=;
- b=F8QJxIS96tvTh1Yu6C4snZAu4FEyHtJXRuy0yrSsqssA+COkIaNnPDzHZoIIMmlALcti0+pdnsxb
- Ke0ifahEttvrVdxOXTqoBhqLGB1Xi72iM9EWtxvPmDwJOVGsJibtszrdTRcbUkiw1Nz6QCxuAmNv
- eOBtTZC1NnzJtBZe6v0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=coffeestopbucks.click; 
- b=Ht5b7PmSBOzf4eOiGq2SR/mZc16yoJxbCzpknN+o64YNvTSYTdIy6XL/05jlAD+pMT6q6LCD3LvZ
- 8qnjRHoe1FZK32p0/WEwgwxvEJ9cvMB9xX6JA+1mPp2kozgDn0CoQkl7T9+IiuUSjA+3ZktVHf51
- bT2jgYbDlDDBMZKo8/4=;
-Received: by mail.coffeestopbucks.click id h3mgqs0001g3 for
+ d=masterflyswest.click; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=receive_the_latest_southwest_flight_updates@masterflyswest.click; 
+ bh=5W6sXhz85fOI+O75X95crntEsBk=;
+ b=DkaA4ipwqG+6dtjC/n8gfnlSlKHMeXKbxgltK5wIyyCUmKpq7kH2x4cm++/5ggITWhSdkFBj8K4S
+ HwwH91Wb4GR3NbzIo+3Pzw4sCypO+l3c22XHxQTTOZYnllYZquNdA6VWbXN19s5ejc9rcULdYwnP
+ Rm1GnaOS7k8LpSthLqM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=masterflyswest.click;
+ b=Gh01Bc0+Mzhdw0idWP3bKL/Jhy9eJOPzEnAgRdZG8TP4C35xXXUfGdMzZxHBJySCWX659By1DljL
+ 6x1GzTFWh6Clz1BbtKDPITlMH11aS4p+BGZE2xAemIZtPrhcFQZiGDJlIwDhGfjHFga7SXFH9Xth
+ Qm9LRpicmORMdB3V3BI=;
+Received: by mail.masterflyswest.click id h3mt0o0001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 4 Oct 2023 13:21:51 -0400 (envelope-from
- <your.starbucks.experience.matters-intel+2Dgvt+2Ddev=lists.freedesktop.org@coffeestopbucks.click>)
-Date: Wed, 4 Oct 2023 13:21:51 -0400
-From: "Your Starbucks Experience Matters"
- <your.starbucks.experience.matters@coffeestopbucks.click>
+ Wed, 4 Oct 2023 15:05:42 -0400 (envelope-from
+ <receive_the_latest_southwest_flight_updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@masterflyswest.click>)
+Date: Wed, 4 Oct 2023 15:05:42 -0400
+From: "Receive The Latest Southwest Flight Updates"
+ <receive_the_latest_southwest_flight_updates@masterflyswest.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Want a Starbucks gift card?
+Message-ID: <19776466980.16964463248578@masterflyswest.click>
+Subject: Commence the season on a high note with a complimentary flight to
+ your desired locale!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary="----=_Part_259_1491844959.1696435269582"
-Message-ID: <0.0.0.3AA.1D9F6E7435B7EB0.58B486@mail.coffeestopbucks.click>
+ boundary=d22b465f11d822db45707a6bb4d7642a9297
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,86 +56,154 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-------=_Part_259_1491844959.1696435269582
+--d22b465f11d822db45707a6bb4d7642a9297
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
-	</style> 
-  <title>delightful beverages</title> 
+  <title>responses will be kept</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(241, 241, 241);"> 
-  <center class="marketins"> 
-   <section id="contaners" style="background-color: #1A6E48; padding-top: 1mm; padding-bottom: .5mm; width: 100%;"> 
-    <article id="sprinters">
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-     <center style="max-width: 30rem;">
-      <a href="http://www.coffeestopbucks.click/d314J2395q86oI12a619_8v17bdi36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQqRdeo5Q10li5tjwDP/likeliness-stopover"><img alt="JJHSES" src="http://www.coffeestopbucks.click/coasting-communicants/e225r23M95zZ7aX11W619aG17bdt36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQqRdeo6hm1LF05iAwD1" width="100%" /></a>
-     </center> 
-    </article> 
-   </section> 
-  </center> 
-  <center align="center" style="width: 100%; background-color: #ebfff6;"> 
-   <div style="max-width: 520px; margin: auto;"> 
-    <h3 style=" margin: 0; padding-top: 5mm; padding-bottom: 5mm; font-family: 'Gabarito', cursive; font-weight: 600; font-size: 8mm; color: #1A6E48;">Your Last<br /> Notification from Starbucks</h3> 
-   </div> 
-  </center> 
-  <center id="croswmmbe" style="width: 100%; background-color: #fff; padding: 5mm 0mm;"> 
-   <div style="max-width: 520px; margin: auto;"> 
-    <h3 class="sexgoncstext" style="margin: 0; padding: 0 1.8rem; font-family: 'Gabarito', cursive;; line-height: 1.7rem; font-weight: 500;">Exciting Announcement! <b style="color: #1A6E48;">Starbucks</b> has a special offer for a <b>$100 Gift Card</b> that you can use at any of our store locations. Don't miss out on this opportunity! You have until <b>October 4th</b> to enjoy our delicious beverages.</h3> 
-   </div> 
-  </center> 
-  <center class="maxipros"> 
-   <div style="background-color: #f3fffa; width: 100%;"> 
-    <h4 class="logospros" style="margin: 0; ;">&nbsp;</h4> 
-    <table align="center" style="max-width: 18rem; margin: auto;"> 
-     <tbody> 
-      <tr> 
-       <td align="center" class="textinfo"> 
-        <center style="max-width: 250px; margin: auto;">
-         <a href="http://www.coffeestopbucks.click/d314J2395q86oI12a619_8v17bdi36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQqRdeo5Q10li5tjwDP/likeliness-stopover" target="_blank"><img alt="UYETS" src="http://www.coffeestopbucks.click/9535m239G5Hx7pa11F619bM17bdY36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqRdeo5w10XG6rWwDpl/likeliness-stopover" width="100%" /></a>
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </center> 
-  <center id="phillisn"> 
-   <section style="background-color: #fff; padding-top: 30px; padding-bottom: 30px;"> 
-    <table align="center" cellpadding="0" cellspacing="0" widtb="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <table cellpadding="0px" style=" font-size: 25px; font-family: 'Gabarito', cursive; ;"> 
-         <tbody> 
-          <tr> 
-           <td style="border-radius: 50px; padding: 15pt 30pt; border: solid 3px #1A6E48; border-radius: 50px;"><a href="http://www.coffeestopbucks.click/d314J2395q86oI12a619_8v17bdi36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQqRdeo5Q10li5tjwDP/likeliness-stopover" style="color: #1A6E48; text-decoration: none;" target="_blank">Start Here Now</a></td> 
-          </tr> 
-         </tbody> 
-        </table> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </section> 
-  </center> 
-  <center id="croswmmbe" style="width: 100%; background-color: #fff; padding: 5mm 0mm;"> 
-   <div style="max-width: 520px; margin: auto;"> 
-    <h3 class="sexgoncstext" style="margin: 0; padding: 0 1.8rem; font-family: 'Gabarito', cursive;; line-height: 1.7rem; font-weight: 500;">We highly appreciate your involvement.<br /> Best wishes,<br /> The Starbucks Team.</h3> 
-   </div> 
-  </center> 
-  <center class="coffees" style="padding-top: 200px; ;"> 
-   <aside class="direction" style="max-width: 520px; margin: auto;font-family: 'Gabarito', cursive; font-size: .39cm;">
-    <span id="neversstocls">you can leave with sadness <a href="http://www.coffeestopbucks.click/1f16Y2Cg395a8PI612j6I199F17bdN36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQqRdeo6Kr1sA06d0wDO@/likeliness-stopover">here</a><br /> US 10010 126 E 23rd St New York, NY, </span>
-   </aside> 
-  </center> 
-  <br /> &nbsp;  
- <img src="http://www.coffeestopbucks.click/Tutankhamon-hawked/1f26V23Nv95wjD8511i619c_17bdn36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqRdeo7SW1Ti0S5rzwDz" alt=""/></body>
+ <body style="margin: 0; padding: 0; background-color: rgb(231, 231, 231);"> 
+  <p style="padding-top: 50px; margin: 0;">&nbsp;</p> 
+  <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+   <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
+    <caption>
+     &nbsp;
+    </caption> 
+    <thead> 
+     <tr> 
+      <th>&nbsp;</th> 
+     </tr> 
+    </thead> 
+    <tbody> 
+     <tr> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs"> 
+       <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
+        <caption>
+         &nbsp;
+        </caption> 
+        <thead style="max-width: 520px; margin: auto; background-color: #fff;"> 
+         <tr> 
+          <th colspan="5"> 
+           <div> 
+            <center style="max-width: 350px; margin: auto;">
+             <a href="http://www.masterflyswest.click/2696tBI2395fZ86Z13nP61Va7M17c1D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQLRdeQ5g10Ss6STwqD0/woodwork-overcrowds" target="_blank"><img alt="UYEASE" src="http://www.masterflyswest.click/clinical-netting/g125k23X95R7uBa11G61a9s17c1k36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQLRdeQ6tv10Ty5h@wDL" width="100%" /> </a>
+            </center> 
+           </div> </th> 
+         </tr> 
+        </thead> 
+        <tbody> 
+         <tr> 
+          <td class="salsters"> 
+           <div style="background-color: #fff; max-width: 520px; margin: auto;"> 
+            <div style="padding: 3.5% 5%;"> 
+             <center style="font-size: .5cm; line-height: .7cm; font-family: Arial, Helvetica, sans-serif;">
+              We genuinely appreciate your choice to travel with Southwest Airlines. Your unwavering loyalty and support are of great importance to us, and we are dedicated to meeting all your travel requirements.              </center> 
+            </div> 
+           </div> </td> 
+          <td class="salsters">&nbsp;</td> 
+          <td class="salsters">&nbsp;</td> 
+          <td class="salsters">&nbsp;</td> 
+          <td class="salsters">&nbsp;</td> 
+         </tr> 
+         <tr> 
+          <td colspan="5"> 
+           <div style="background-color: #FEBF26; max-width: 520px; margin: auto;"> 
+            <div style="padding: 3.5% 5%;"> 
+             <center style="font-size: .5cm; line-height: .7cm; font-family: Arial, Helvetica, sans-serif; ">
+              Your feedback is highly valued, and we extend a warm invitation for you to take a few moments to join a brief survey regarding your recent flight experience and overall interactions with Southwest. Your input will play a vital role in enhancing your future encounters with our airline.              </center> 
+            </div> 
+           </div> </td> 
+         </tr> 
+         <tr> 
+          <td align="center" class="proises" colspan="5"> 
+           <div style="max-width: 520px; margin: auto; background-color: #fff; text-align: center;"> 
+            <h1 style="margin: 0; padding: 0; text-align: center;">&nbsp;</h1> 
+            <center style="max-width: 450px; margin: auto; padding-bottom: 15px;">
+             <a href="http://www.masterflyswest.click/2696tBI2395fZ86Z13nP61Va7M17c1D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQLRdeQ5g10Ss6STwqD0/woodwork-overcrowds" target="_blank"><img alt="NNHSEA" src="http://www.masterflyswest.click/af75fi2395Aj7aD12j61aaNq17c1h36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQLRdeQ6fguB106oT2JwD/rattled-exorcist" style="display: block; padding-top: 15px;" width="100%" /> </a>
+            </center> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+        <tfoot> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+        </tfoot> 
+       </table> 
+       <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+        <div style="padding: 3.5% 5%;"> 
+         <article> 
+          <p style="font-size: .5cm; line-height: .7cm; font-family: Arial, Helvetica, sans-serif; text-align: center; margin: 0;"><font>Accessing the survey is easy ? simply click the link provided below. It's a quick task that will require only a few minutes of your time, and please be assured that your responses will be kept entirely confidential. </font></p> 
+         </article> 
+        </div> 
+       </div> 
+       <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+        <div style="padding: 3.5% 5%;"> 
+         <div style="background-color: #164BB6; padding: 17px 33px; max-width: 320px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 22px; text-align: center; border-radius: 6px;">
+          <a href="http://www.masterflyswest.click/2696tBI2395fZ86Z13nP61Va7M17c1D36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQLRdeQ5g10Ss6STwqD0/woodwork-overcrowds" style="color: white; text-decoration: none;" target="_blank">Kick off the survey here &gt;&gt; </a>
+         </div> &nbsp; 
+         <div style="border-bottom: solid 1.9px #000; max-width: 190px; margin: auto;">
+          &nbsp;
+         </div> 
+         <p style="font-size: .4cm; line-height: .7cm; font-family: Arial, Helvetica, sans-serif; text-align: center; margin: 0;">Thank you for your continued support, and we look forward to<br /> receiving your feedback soon!<br /> Best regards,</p> 
+        </div> 
+       </div> </td> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs">&nbsp;</td> 
+      <td class="soutwestacs">&nbsp;</td> 
+     </tr> 
+    </tbody> 
+    <tfoot> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tfoot> 
+   </table> 
+  </div> 
+  <div style="padding-top: 452px;">
+   &nbsp;
+  </div> 
+  <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <caption>
+    &nbsp;
+   </caption> 
+   <thead> 
+    <tr> 
+     <th>&nbsp;</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr> 
+     <td class="finalsx">&nbsp;</td> 
+     <td class="finalsx">&nbsp;</td> 
+     <td class="finalsx"> 
+      <div style="background-color: #164BB6; padding-top: 15px; padding-bottom: 15px;"> 
+       <div style="max-width: 420px; margin: auto; text-align: center; font-size: 12px; font-family: Arial, Helvetica, sans-serif; color: #fff;">
+        Use the exit option 
+        <a href="http://www.masterflyswest.click/7eb4Y2395d86Sh13i61XaO8m17c1D36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQLRdeQ7OG1ItY05MLwAD/wettest-decoupling" style="color: aqua;"> here </a>
+        <br /> US 10010 126 E 23rd St New York, NY,
+       </div> 
+      </div> </td> 
+     <td class="finalsx">&nbsp;</td> 
+     <td class="finalsx">&nbsp;</td> 
+    </tr> 
+   </tbody> 
+   <tfoot> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tfoot> 
+  </table> 
+  <p style="padding-bottom: 50px; margin: 0;">&nbsp;</p>   
+ <img src="http://www.masterflyswest.click/l6b4C2395g8V5g12w61rabx17c1j36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQLRdeQ6CD10sM6mzywDA/rattled-exorcist" alt=""/></body>
 </html>
 
-------=_Part_259_1491844959.1696435269582--
+--d22b465f11d822db45707a6bb4d7642a9297--
 
