@@ -2,45 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7DD37BA25C
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Oct 2023 17:31:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E7EA87BA4A3
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  5 Oct 2023 18:09:55 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 93D5C10E437;
-	Thu,  5 Oct 2023 15:31:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BC1AD10E427;
+	Thu,  5 Oct 2023 16:09:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 05 Oct 2023 15:31:47 UTC
-Received: from mail.hometoolsinfo.bond (unknown [77.90.135.137])
- by gabe.freedesktop.org (Postfix) with ESMTP id F07EB10E43B
+ Thu, 05 Oct 2023 16:09:52 UTC
+Received: from mail.clowpharmatop.bond (unknown [77.90.135.142])
+ by gabe.freedesktop.org (Postfix) with ESMTP id ECAA910E427
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  5 Oct 2023 15:31:47 +0000 (UTC)
+ Thu,  5 Oct 2023 16:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=hometoolsinfo.bond; 
+ d=clowpharmatop.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=savings-team-at-home-depot@hometoolsinfo.bond; 
- bh=h0nZbP+Xa51EkVENzR+4XRUm1jY=;
- b=Z2jYnSil8iLDSgitMxdHHeo6MAyxZEnX+295MoSaYwT/DguVTvA0pdRGYTg7LyZyZoopUSx2J3le
- WpE++lVcsoe7ksEOjtW+S8WBWZSlszIOdnYNCZ8BExlNuWq68QaDiPSkrvZ45DEH7GUlkVufZ0Pg
- RHiWPgyTW2RX9riLrCk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hometoolsinfo.bond; 
- b=VxdlMI6f54dLhqML17YayXW1hyaRskKrOeQzBnjcfiM75xolW+cvOdqHk3+HcBa5dYR9zXiFJsw8
- nsjSfG33l18WjqJXD4reqK90ZAZaAZjLeMe3C0XfvT0j3vs2fN32UoltqWJK7v+gLrNGhU7Be2PP
- 30IxzoEeZMgAkO1VLsc=;
-Received: by mail.hometoolsinfo.bond id h3rkrm0001g1 for
+ i=discover_cvs_daily_deals@clowpharmatop.bond; 
+ bh=xsVw1ih2/62C10AY8UTPe/wn0+M=;
+ b=m2Uekz2xcDyoLjYG1ArU3sKpId+3VsbytbVW+2d4V3KYAk1aTAenYitt3kjnckre2kRrC9gWxViu
+ seNwh9zgajCVW3Rty8g2xou/1S02BMKs3yTGiE4XCWE6VsdYQVxLn1kOHbepvFNYYFVnpkGlGKDz
+ QQJsSEfDiQVwctg9G5s=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=clowpharmatop.bond; 
+ b=jH1vzcYfyyPmfRL2WqkZ0/iVgk2t6X37bA/C23vzU5pmIhFfxaiAqrKRqUZmyZvHfVfvoB3bNp2S
+ +NV3+IQGTkm3biTTpJR6VXjPhVxrmvRF5PisVOLqVjHhXwdiybadN5ToS8Z6IdIhuhyI2my1T/O0
+ lYgTUubFzbsCL8o+aAs=;
+Received: by mail.clowpharmatop.bond id h3rft20001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 5 Oct 2023 12:44:04 -0400 (envelope-from
- <savings-team-at-home-depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@hometoolsinfo.bond>)
-Date: Thu, 5 Oct 2023 12:44:04 -0400
-From: "Savings Team At Home Depot"
- <savings-team-at-home-depot@hometoolsinfo.bond>
+ Thu, 5 Oct 2023 12:02:33 -0400 (envelope-from
+ <discover_cvs_daily_deals-intel+2Dgvt+2Ddev=lists.freedesktop.org@clowpharmatop.bond>)
+Date: Thu, 5 Oct 2023 12:02:33 -0400
+From: "Discover CVS Daily Deals" <discover_cvs_daily_deals@clowpharmatop.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <2429916094263.16965194006524021@hometoolsinfo.bond>
-Subject: Your opportunity for a Makita Drill Set closes today - take action
- now!
+Message-ID: <195697154385.1696521741262355@clowpharmatop.bond>
+Subject: Win Up to $100 in CVS Gift Cards Today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=387e3fbe1c0461c187dad15d6afc4c207866875100101102
+ boundary=46842ac0a9b505a1d20e8acb06a5fa999953498731020100978
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,101 +54,149 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---387e3fbe1c0461c187dad15d6afc4c207866875100101102
+--46842ac0a9b505a1d20e8acb06a5fa999953498731020100978
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html lang="en">
  <head> 
-  <link href="http://www.hometoolsinfo.bond/initialized-representative/7745O2C395M8y_612vx61cei17c7p36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQARdKn5k1wP05wOkwD" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.hometoolsinfo.bond/makeup-Monticello/be86V23iI95i86Wp12S61cf_I17c7s36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQARdKn6bx1TO06rlAJwD" rel="preconnect" /> 
-  <link href="http://www.hometoolsinfo.bond/initialized-representative/7745O2C395M8y_612vx61cei17c7p36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQARdKn5k1wP05wOkwD/css2?family=Asap:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>appreciation for your</title> 
+  <title>Discounts Exclusively</title> 
+  <style type="text/css">@import url('http://www.clowpharmatop.bond/Rotterdam-Corinthians/9184o2395CY86M11Q61d5Q17c8q36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQuRdKo5N10Wk6Q0UwAD/css2?family=Rowdies:wght@300;400;700&display=swap');
+	</style> 
+  <link href="http://www.clowpharmatop.bond/Rotterdam-Corinthians/9184o2395CY86M11Q61d5Q17c8q36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQuRdKo5N10Wk6Q0UwAD" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.clowpharmatop.bond/da94w2395mGF8611X61d6K17c8z36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQuRdKo7DX1CvU06R0JwDy/forfeited-reduce" rel="preconnect" /> 
+  <link href="http://www.clowpharmatop.bond/Rotterdam-Corinthians/9184o2395CY86M11Q61d5Q17c8q36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQuRdKo5N10Wk6Q0UwAD/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
  </head> 
- <body style="background-color: #f0f0f0;margin: 0;padding: 0;"> 
-  <center> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td> 
-       <footer style="padding-top: 5mm;padding-bottom: 5mm;background-color: #fff;"> 
-        <table align="center" style="max-width: 400px; margin: auto; border-collapse: collapse;"> 
-         <tbody> 
-          <tr> 
-           <td align="center"><a href="http://www.hometoolsinfo.bond/grooming-refinery/_a85E239o5r8yH611B61d0J17c7u36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQARdKn6NJA1n05uMwLD"><img alt="MMJEKAS" src="http://www.hometoolsinfo.bond/33b5J239_5qh7ap13j6JW1d2U17c7i36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQARdKn7hJyS1F06o@1AwD/makeup-Monticello" width="100%" /> </a></td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </footer> 
-       <div style="padding-top: .5rem;">
-        &nbsp;
-       </div> 
-       <table style="max-width: 510px; margin: auto; border-collapse: collapse;"> 
-        <tbody> 
-         <tr> 
-          <td> 
-           <div style="background-color: #F25F01;"> 
-            <p id="lloease" style="margin: 0;padding: 3.5% 5%;font-family: 'Asap', sans-serif;;font-weight: 600;text-align: center;font-size: 1.3rem; color: #fff;">We wish to convey our appreciation for choosing our services. Your loyalty and support hold significant value for us and will forever be recognized and cherished.</p> 
-           </div> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <center> 
+ <body style="background-color: rgb(243, 243, 243); margin: 0; padding: 0;"> 
+  <ul style="list-style-type: none; padding: 0; margin: 0;"> 
+   <li class="gaasblos"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: #fff1f1;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="clakcs"> 
+        <div style="max-width: 700px; margin: auto; background-color: #fff;">
+         <a href="http://www.clowpharmatop.bond/Muzak-depleted/3965d2J395lt86z11V61d7t17c8m36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQuRdKo6m1_RL06XjPwyD"><img alt="UUYEA" src="http://www.clowpharmatop.bond/money-delimiting/e226p2zA395EN7aj12S61d9vP17c8v36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQuRdKo6M10HQF5u2UwD" style="max-width: 150px; margin: auto; display: block;" width="100%" /></a>
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" class="hhglos"> 
         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+         <thead> 
+          <tr> 
+           <th align="center" colspan="2"> <p style="padding: 1.5% 5%; font-family: 'Rowdies', cursive;; font-size: 18pt; background-color: #ff0000; margin: 0; color: #fff;">Exclusive Discounts<br /> Just for Our Valued Customers</p> </th> 
+          </tr> 
+         </thead> 
          <tbody> 
           <tr> 
-           <td align="center"> 
-            <div> 
-             <section style="max-width: 508px;margin: auto"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center"> <p class="hyyseas" style="margin: 0;padding: 3.5% 5%;font-family: 'Asap', sans-serif;;font-weight: 600;text-align: center;font-size: 1.2rem; background-color: #fff;line-height: 1.7rem;">As a gesture of our gratitude for your support, we're providing you with the opportunity to receive a <b>MAKITA DRILL Set</b>!</p> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </section> 
-             <table align="center" style="border-collapse: collapse; background-color: #fff; max-width: 508px; margin: auto;"> 
-              <tbody> 
-               <tr> 
-                <td align="center" width="508px"> 
-                 <div style="max-width: 508px;margin: auto; background-color: #fff;"> 
-                  <div style="max-width: 508px; margin: auto; background-color: #fff;"> 
-                   <center style="max-width: 320px; margin: auto;">
-                    <a href="http://www.hometoolsinfo.bond/grooming-refinery/_a85E239o5r8yH611B61d0J17c7u36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQARdKn6NJA1n05uMwLD"><img alt="QQTESA" src="http://www.hometoolsinfo.bond/sublimation-sportswear/8464I2395BTS7a11v61d3A17c7p36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQARdKn6YyT1s06cTNwDp" width="100%" /> </a>
-                   </center> 
-                   <p style="font-family: 'Asap', sans-serif;;font-weight: 500;text-align: center;font-size: 1.2rem; line-height: 1.7rem;; padding: 3.5% 5%;"><b>Your input holds significant value to us. </b><br /> <br /> Claiming this reward is simple; it will only take 30 seconds of your time to share your feedback with us, and we'll send it to you promptly.</p> 
-                   <div style="max-width: 508px; margin: auto; background-color: #F25F01; padding: 7mm 0;"> 
-                    <div style="max-width: 300px; margin: auto;"> 
-                     <center style="background-color: #fff; text-align: center; font-weight: 600; font-family: 'Asap', sans-serif;; padding: 2.5mm 5mm; border-radius: 30px; font-size: 1.5rem;">
-                      <a href="http://www.hometoolsinfo.bond/grooming-refinery/_a85E239o5r8yH611B61d0J17c7u36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQARdKn6NJA1n05uMwLD" style="text-decoration: none; color: #F25F01;">Start Here Now &gt;&gt; </a>
-                     </center> 
-                    </div> 
-                   </div> 
-                  </div> 
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> 
-             <h6 style="padding-top: 30rem;">&nbsp;</h6> 
-             <article style="background-color: lightcyan; padding-top: 1.5rem; padding-bottom: 1.5rem; margin: 0;;"> 
-              <p style="font-weight: 900; font-size: 12px; text-align: center; max-width: 520px; margin: auto; font-family: 'Asap', sans-serif;;"><font>you can leave with sadness <a href="http://www.hometoolsinfo.bond/40d5Y2S395zth8611p61d1S17c7s36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQARdKn5QoJ106XkWpwD/averaging-apart"> here </a><br /> US 10010 126 E 23rd St New York, NY, </font></p> 
-             </article> 
-             <br /> 
-             <br /> &nbsp;
-            </div> </td> 
+           <td class="loplopsset"> 
+            <section id="chivos"> 
+             <center class="clarifors"> 
+              <div style="max-width: 33em; margin: auto; background-color: #fff;"> 
+               <p style="
+    margin: 0;
+    padding: 3.5% 7% 0%;
+    font-family: 'Source Sans 3', sans-serif;;
+    font-size: 5mm;
+    line-height: 7mm;
+    font-weight: 500;
+    ;"><span class="infopharma">We greatly appreciate your choice of <b style="color: rgb(255, 0, 0);">CVS</b>. Your loyalty and support are of significant importance to us, and we sincerely value the opportunity to serve you. </span></p> 
+              </div> 
+             </center> 
+            </section> </td> 
+           <td class="loplopsset"> 
+            <section id="chivos"> 
+             <center class="clarifors">
+              &nbsp;
+             </center> 
+            </section> </td> 
+          </tr> 
+          <tr> 
+          </tr> 
+          <tr> 
+           <td class="loplopsset"> 
+            <section id="chivos"> 
+             <center class="clarifors"> 
+              <div style="max-width: 33em; margin: auto; background-color: #fff; ;">
+               &nbsp; 
+               <center style="max-width: 200px;"> 
+                <table style="max-width: 200px;"> 
+                 <tbody> 
+                  <tr> 
+                   <td> 
+                    <center style="max-width: 90px; margin: auto;">
+                     <span class="infopharma"><a href="http://www.clowpharmatop.bond/Muzak-depleted/3965d2J395lt86z11V61d7t17c8m36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQuRdKo6m1_RL06XjPwyD" target="_blank"><img alt="IIUEAE" src="http://www.clowpharmatop.bond/inadvertently-alarm/40e4d2395U7tSa12Q61daoW17c8h36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQuRdKo6AY1Cg05ipwDJ" width="100%" /> </a></span>
+                    </center> </td> 
+                   <td> 
+                    <center style="max-width: 110px; margin: auto;">
+                     <span class="infopharma"><a href="http://www.clowpharmatop.bond/Muzak-depleted/3965d2J395lt86z11V61d7t17c8m36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQuRdKo6m1_RL06XjPwyD" target="_blank"><img alt="IIUEAE" src="http://www.clowpharmatop.bond/a074m2395E7azW12Mw61dbj17c8H36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQuRdKo5Xku105iXw3D/Muzak-depleted" width="100%" /> </a></span>
+                    </center> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> 
+               </center> 
+               <p style="
+    margin: 0;
+    padding: 3.5% 7% 0%;
+    font-family: 'Source Sans 3', sans-serif;;
+    font-size: 5mm;
+    line-height: 7mm;
+    font-weight: 500;
+    ;"><span class="infopharma">Your feedback is highly valuable to us, and as a gesture of our gratitude, we'd like to extend a special thank you to you for taking the time to share your thoughts.<br /> <br /> <b>Upon completing the survey, you might have the chance to choose from a range of gifts!</b> </span></p> &nbsp; 
+               <center>
+                <span class="infopharma"><a href="http://www.clowpharmatop.bond/Muzak-depleted/3965d2J395lt86z11V61d7t17c8m36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQuRdKo6m1_RL06XjPwyD" style="text-decoration: none; color: white;" target="_blank"><span style="display: inline-block; background-color: rgb(255, 0, 0); padding: 1.5% 5%; ;font-family: 'Source Sans 3', sans-serif; font-size: 5mm; font-weight: 600 ;">Start Now &gt; &gt;</span></a> </span>
+               </center> &nbsp; 
+               <hr /> 
+               <p style="
+    margin: 0;
+    padding: 3.5% 7% 0%;
+    font-family: 'Source Sans 3', sans-serif;;
+    font-size: 4.5mm;
+    line-height: 7mm;
+    font-weight: 500;
+    ;"><span class="infopharma">Once again, we value your support and look forward to hearing from you soon!<br /> Warm regards, </span></p> 
+              </div> 
+             </center> 
+            </section> </td> 
+           <td class="loplopsset"> 
+            <section id="chivos"> 
+             <center class="clarifors">
+              &nbsp;
+             </center> 
+            </section> </td> 
           </tr> 
          </tbody> 
-        </table> 
-       </center> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </center>   
- <img src="http://www.hometoolsinfo.bond/5755J239C5L8Tg511p61d4W17c7s36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQARdKn5utM105Y@PwD/struggles-Belgrade" alt=""/></body>
+         <tfoot> 
+          <tr> 
+           <td align="center" class="logofinals" colspan="2"> 
+            <div style="padding-top: 22rem;">
+             &nbsp;
+            </div> 
+            <footer style="background-color: dimgray; padding: 10pt 0;"> 
+             <address> <p style="margin: 0;
+        font-weight: 600;
+        font-family: 'Source Sans 3', sans-serif;;
+        font-size: 3.5mm;
+        line-height: 4mm;
+        font-weight: 500;
+        color: #fff
+        ;">time to show you the exit <a href="http://www.clowpharmatop.bond/frigates-captivated/35a5w239K5t8g_613qAU61d8n17c8l36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQuRdKo5n1Fi06M2lJwD">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </address> 
+            </footer> <br /> &nbsp;</td> 
+          </tr> 
+         </tfoot> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+  </ul>   
+ <img src="http://www.clowpharmatop.bond/forfeited-reduce/e045b239p5sx85B12rp61dcG17c8B36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQuRdKo6b1TU0Y5SpqwD" alt=""/></body>
 </html>
 
---387e3fbe1c0461c187dad15d6afc4c207866875100101102--
+--46842ac0a9b505a1d20e8acb06a5fa999953498731020100978--
 
