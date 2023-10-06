@@ -1,44 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0053F7BB9E5
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Oct 2023 15:59:32 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF7387BBBAC
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Oct 2023 17:22:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AF46910E4EB;
-	Fri,  6 Oct 2023 13:59:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C67FC10E525;
+	Fri,  6 Oct 2023 15:22:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 610 seconds by postgrey-1.36 at gabe;
- Fri, 06 Oct 2023 13:59:29 UTC
-Received: from mail.maxproyecoffee.bond (unknown [157.52.235.169])
- by gabe.freedesktop.org (Postfix) with ESMTP id B942410E4EB
+X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
+ Fri, 06 Oct 2023 15:22:46 UTC
+Received: from mail.omgdeltcinfo.click (unknown [157.52.235.136])
+ by gabe.freedesktop.org (Postfix) with ESMTP id AEF6F10E520
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Oct 2023 13:59:29 +0000 (UTC)
+ Fri,  6 Oct 2023 15:22:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=maxproyecoffee.bond; 
+ d=omgdeltcinfo.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=caf.chat.with.starbucks@maxproyecoffee.bond; 
- bh=xFwqiUyYG/669BMejf5Egw8zgGA=;
- b=RbtFPLugfWsTFe8rRcUl0y6xQMSq69000GMkr2jg3C0+niatOa8qHjVCSudBbGPxM3a8K/+55R83
- +UfDTJO4HXPfaJifmistX1lhK7Si1VCAjbnepeQn6k4065KEJwhUQYMCFbFNMjuWzvsnOWBdO1X2
- 4tlJNcvdxVQ6gd/H2bE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maxproyecoffee.bond;
- b=AIZZeYB/GqEMkf/fINmiuq941o72uF0J+WGYoJ9ZAl56SD7Z2v3II3q33v6IU+7OHidxFdzQc2A3
- SgPooF8K0bTtMLlAi4FkcE/kpEFo/niQ9mvaiTPQUlRI/FK9c78w6auuoBMdlYMp7cnNBIDnIgTR
- nUcWlspp8x8ip5XDTIU=;
-Received: by mail.maxproyecoffee.bond id h40ipe0001g1 for
+ i=stay_uptodate_with_the_latest_delta_flight_updates@omgdeltcinfo.click; 
+ bh=zt0ldyFoLR7T88DyBUi75dPBtH0=;
+ b=GgrJXA2KoUAFfLvUkOGPScLpLoFwCZ646+zey8l7H/1c+Rh/ex+dVjHB05459f3EHQTTFWSq0Low
+ l/nUJdqrvLkXQS2eWGhCPLzUqQtDYKIad3EmsIBTOAEJP2Dw3dd331gctoiPhrWzKe1kF3JIr30/
+ FNBqJWn+2WcbsKBM9nA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=omgdeltcinfo.click; 
+ b=eRbr5cNa4c2dYdosF316nPJLgKrzB9j0hLds2GrbgKOyfjDxyEp01gyvP0l2+/1JnIUJBalistq9
+ C+toPX2HsuZRB5nCa+N9juG1RMFkyASthuhivJDVs86N4a4qAplyve2qt9ki2iGXKM+XYbbFRiVF
+ X0+eWj3fmmGTIv+Sl54=;
+Received: by mail.omgdeltcinfo.click id h40j4c0001gv for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 6 Oct 2023 11:06:05 -0400 (envelope-from
- <caf.chat.with.starbucks-intel+2Dgvt+2Ddev=lists.freedesktop.org@maxproyecoffee.bond>)
-Date: Fri, 6 Oct 2023 11:06:05 -0400
-From: "Caf Chat With Starbucks" <caf.chat.with.starbucks@maxproyecoffee.bond>
+ Fri, 6 Oct 2023 11:13:07 -0400 (envelope-from
+ <stay_uptodate_with_the_latest_delta_flight_updates-intel+2Dgvt+2Ddev=lists.freedesktop.org@omgdeltcinfo.click>)
+Date: Fri, 6 Oct 2023 11:13:07 -0400
+From: "Stay UptoDate With The Latest Delta Flight Updates"
+ <stay_uptodate_with_the_latest_delta_flight_updates@omgdeltcinfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <21056305170.16965999281579@maxproyecoffee.bond>
-Subject: Starbucks gift cards: gift the flavor!
+Message-ID: <30635110418.169660516229944@omgdeltcinfo.click>
+Subject: In the spirit of giving this season, we're delighted to offer you a
+ complimentary flight to any destination &ndash; savor the experience!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=e857a15deb80f6e5243bf3ab4a1e699f9741021014997
+ boundary=c705af950fd4a11c827812f06d1e772c23969797100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---e857a15deb80f6e5243bf3ab4a1e699f9741021014997
+--c705af950fd4a11c827812f06d1e772c23969797100
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,122 +65,9 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('http://www.maxproyecoffee.bond/ad96EL23P95IW8j611b620cR17d1U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXRQmn7sTRL10w6cWqwD3/psychiatric-camouflaging/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
-	</style> 
-  <link href="http://www.maxproyecoffee.bond/ad96EL23P95IW8j611b620cR17d1U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXRQmn7sTRL10w6cWqwD3/psychiatric-camouflaging" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.maxproyecoffee.bond/7915SD2395Wi86D11g620do17d1g36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRQmn7gkg1Cq06w2zwlD/haler-chronicled" rel="preconnect" /> 
-  <link href="http://www.maxproyecoffee.bond/ad96EL23P95IW8j611b620cR17d1U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXRQmn7sTRL10w6cWqwD3/psychiatric-camouflaging/css2?family=Lato:wght@100;300;400;700;900&amp;display=swap" rel="stylesheet" /> 
-  <title>savor our delightful</title> 
+  <title>enhancing each segment</title> 
  </head> 
- <body style="background-color: rgb(230, 230, 230);"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="jokerstrayecs" style="border-collapse: collapse;" width="100%"> 
-   <thead> 
-    <tr> 
-     <th align="center" class="headers">&nbsp;</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td id="twomachaps"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="jakastroll"> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td id="twomachaps"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="jakastroll"> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td id="twomachaps"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="jakastroll"> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td id="twomachaps"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="jakastroll"> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td align="center" id="faltante">&nbsp;</td> 
-    </tr> 
-   </tfoot> 
-  </table> 
+ <body style="background-color: rgb(241, 241, 241);"> 
   <table align="center" border="0" cellpadding="0" cellspacing="0" id="jokerstrayecs" style="border-collapse: collapse;" width="100%"> 
    <thead> 
     <tr> 
@@ -222,199 +111,61 @@ Content-Transfer-Encoding: 7bit
           </div> 
           <div class="chapa"> 
            <center class="otress"> 
-            <div style="
-    max-width: 16cm; 
-    margin: auto; 
-    padding-top: 30px;"> 
-             <center id="boooooooooordeeeeeee" style="
-        border: double 2.5px #206F2E;
-        background-color: #206F2E;
-        max-width: 30em;
-        margin: auto;
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-        border-bottom-left-radius: 100px;
-        border-bottom-right-radius: 100px;"> 
-              <div class="topcreatvo" style="
-        padding-top: 30px;
-        padding-bottom: 30px;">
-               <span id="token"><a href="http://www.maxproyecoffee.bond/lustily-pregnant/de64S2395mt8v611E620eg17d1i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRQmn5e10BI5BXwDN" style="
-color: #fff;
-text-decoration: none;" target="_blank"><span style="
-    font-family: 'Gabarito', cursive;
-    font-weight: bold;
-    font-size: 43px;
-    ;">STARBUCKS</span></a> </span>
-              </div> 
-              <header class="cotenidoblanco" style="
-        background-color: #fff; 
-        padding-top: 10px; 
-        padding-bottom: 0px;
-        border-bottom-left-radius: 100px;
-        border-bottom-right-radius: 100px;"> 
-               <div id="texto principal"> 
-                <p style="
-        font-family: 'Lato', sans-serif;
-        margin: 0;
-        font-size: 1.5rem; 
-        font-weight: 800;
-        color: rgb(32, 111, 46);"><span id="token"><i><u>Your Last<br /> Message from Starbucks</u></i> </span></p> 
-                <p style="
-    margin: 0;
-    font-family: 'Lato', sans-serif;
-    font-size: 4.5mm;
-    line-height: 7mm;
-    padding: 3.5% 5%;
-    font-weight: 600
-    ;"><span id="token">Exciting Announcement! <strong style="color: rgb(32, 111, 46);">Starbucks</strong> is offering a unique opportunity to acquire a <strong style="color: rgb(32, 111, 46);">$100 Gift Card</strong>, which can be used at any of our store locations. Don't miss out on this opportunity! You have until <b>October 6th</b> to enjoy our delicious beverages. </span></p> 
-                <div style="background-color: rgb(247, 255, 249); padding: 1.5% 3%;"> 
-                 <table style="max-width: 15em; margin: auto;"> 
-                  <tbody> 
-                   <tr> 
-                    <td align="center" id="img"><span id="token"><a href="http://www.maxproyecoffee.bond/lustily-pregnant/de64S2395mt8v611E620eg17d1i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRQmn5e10BI5BXwDN" target="_blank"><img alt="YYAEA" src="http://www.maxproyecoffee.bond/e3f6H2A39N5OHs7a11S6210R17d1M36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQXRQmn5p10pB5aOwjD/reproof-Franklinizations" style="display: block;" width="100%" /></a> </span></td> 
-                   </tr> 
-                  </tbody> 
-                 </table> 
-                </div> 
-                <center style="max-width: 15em; margin: auto;"> 
-                 <center style="
-                background-color: rgb(32, 111, 46);
-                padding: 4mm 5mm;
-                border-radius: 5px;
-                font-family: 'Lato', sans-serif;
-                font-size: 22px;
-                font-weight: 900
-                ;">
-                  <span id="token"><a href="http://www.maxproyecoffee.bond/lustily-pregnant/de64S2395mt8v611E620eg17d1i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRQmn5e10BI5BXwDN" style="
-            text-decoration: none; color: #fff;" target="_blank">Start Here Now </a></span>
-                 </center> 
-                </center> &nbsp; 
-                <p style="
-        margin: 0;
-        font-family: 'Lato', sans-serif;
-        font-size: 4.5mm;
-        line-height: 7mm;
-        padding: 3.5% 5%;
-        font-weight: 600
-        ;"><span id="token">Your participation is highly appreciated.<br /> Warm regards,<br /> <u><strong style="color: rgb(32, 111, 46);">The Starbucks Team.</strong></u> </span></p> 
-               </div> 
-              </header> 
+            <div style="max-width: 450px; margin: auto; background-color: #fff; padding: 2.5% 4%;"> 
+             <h2 class="namechaepsa">&nbsp;</h2> 
+             <center style="max-width: 280px; margin: auto;">
+              <span id="token"><a href="http://www.omgdeltcinfo.click/combinatorics-Poisson/3f04r2395yPG8612g621w7Y17d3_36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQxRQm95Q1AU06CTwAWD" target="_blank"><img alt="UESAE" src="http://www.omgdeltcinfo.click/3775QC2395yhJ7a11J6219P17d3_36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQxRQm97sJqsi106z1wqPD/typewriters-person" width="100%" /></a> </span>
              </center> 
+             <h6>&nbsp;</h6> 
+             <center style="max-width: 450px; margin: auto;">
+              <span id="token"><a href="http://www.omgdeltcinfo.click/combinatorics-Poisson/3f04r2395yPG8612g621w7Y17d3_36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQxRQm95Q1AU06CTwAWD" target="_blank"><img alt="IUEA" src="http://www.omgdeltcinfo.click/5395O239r5G7Paq11L621ao17d3w36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQxRQm96N_A1v05Gy2wD/dangled-blue" style="outline: solid 1.5px #000;" width="100%" /></a> </span>
+             </center> 
+             <h4 style="
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+        line-height: 1.7rem;
+        font-weight: 500;
+        ;"><span id="token">We are grateful that you've chosen to fly with Delta! Each journey you take with us adds to our story, and we are eager to improve every aspect for your enjoyment. </span></h4> 
+             <h3 style="
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+        line-height: 1.7rem;
+        font-weight: 500;
+        ;"><span id="token">Let's elevate your flying experience even more! Share your thoughts on your recent Delta journey by participating in a brief survey. Click the link below to embark on this quick exploration. </span></h3> 
+             <h5 style="
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 1rem;
+        line-height: 1.7rem;
+        font-weight: 500;
+        ;"><span id="token">Your input doesn't just shape our future; it might also unlock an opportunity for a surprise $100 gift! Every viewpoint is valuable, so make sure yours counts today!<br /> <span style="color: #ff0000;"><b>#EnhanceYourDeltaExperience.</b></span> </span></h5> 
+             <table style="width: 95%; margin: auto;"> 
+              <tbody> 
+               <tr> 
+                <td> 
+                 <center style=" padding: 14pt 30pt; background-color: #222222; border-radius: 10px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;">
+                  <span id="token"><a href="http://www.omgdeltcinfo.click/combinatorics-Poisson/3f04r2395yPG8612g621w7Y17d3_36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQxRQm95Q1AU06CTwAWD" style="color: #fff; text-decoration: none;">Fly Better With Delta Now &raquo;</a></span>
+                 </center> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
             </div> 
-            <div style="padding-top: 400px;">
-             &nbsp;
-            </div> 
-            <div style="background-color: gray; padding: 15px 0;"> 
-             <p style="font-family: 'Lato', sans-serif;; font-weight: 600; color: #fff;"><span id="token"><i>you can leave with sadness <a href="http://www.maxproyecoffee.bond/d135U2m395e8zj613St620fBC17d1k36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQXRQmn7SA10JXm5C2wOD/reproof-Franklinizations">here</a><br /> US 10010 126 E 23rd St New York, NY, </i> </span></p> 
-            </div> 
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td id="twomachaps"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="jakastroll"> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td id="twomachaps"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="jakastroll"> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td align="center" id="faltante">&nbsp;</td> 
-    </tr> 
-   </tfoot> 
-  </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="jokerstrayecs" style="border-collapse: collapse;" width="100%"> 
-   <thead> 
-    <tr> 
-     <th align="center" class="headers">&nbsp;</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td id="twomachaps"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="jakastroll"> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> </td> 
-     <td id="twomachaps"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td class="jakastroll"> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
-           </center> 
-          </div> 
-          <div class="chapa"> 
-           <center class="otress">
-            &nbsp;
+            <table cellpadding="180px"> 
+             <tbody> 
+              <tr> 
+               <td>&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <article style="background-color: lightblue; padding-top: 15px; padding-bottom: 10px;"> 
+             <p style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; text-align: center; max-width: 450px; margin: auto;"><span id="token"><font>Join us at the exit <a href="http://www.omgdeltcinfo.click/invitations-Dutchmen/d144z2395o8u6U13E6F218_N17d3n36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQxRQm95R1ps05M3AwD">here</a><br /> US 10010 126 E 23rd St New York, NY, </font> </span></p> 
+            </article> 
+            <table cellpadding="20px"> 
+             <tbody> 
+              <tr> 
+               <td>&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
            </center> 
           </div> 
           <div class="chapa"> 
@@ -479,8 +230,8 @@ text-decoration: none;" target="_blank"><span style="
     </tr> 
    </tfoot> 
   </table>   
- <img src="http://www.maxproyecoffee.bond/backbends-thinks/daa6pSP2395ED85L13wn621G1h17d1v36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXRQmn6MZm10X5AzPwD" alt=""/></body>
+ <img src="http://www.omgdeltcinfo.click/combinatorics-Poisson/c7e4h2395k85AH11w621bk17d3g36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQxRQm95n10Yv6tXljwD" alt=""/></body>
 </html>
 
---e857a15deb80f6e5243bf3ab4a1e699f9741021014997--
+--c705af950fd4a11c827812f06d1e772c23969797100--
 
