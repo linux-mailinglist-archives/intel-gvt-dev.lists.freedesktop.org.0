@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCD667BB7CF
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Oct 2023 14:37:53 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0053F7BB9E5
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  6 Oct 2023 15:59:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8B7B610E202;
-	Fri,  6 Oct 2023 12:37:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AF46910E4EB;
+	Fri,  6 Oct 2023 13:59:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 06 Oct 2023 12:37:49 UTC
-Received: from mail.toolsmaxstyle.click (unknown [157.52.235.172])
- by gabe.freedesktop.org (Postfix) with ESMTP id C05A710E202
+X-Greylist: delayed 610 seconds by postgrey-1.36 at gabe;
+ Fri, 06 Oct 2023 13:59:29 UTC
+Received: from mail.maxproyecoffee.bond (unknown [157.52.235.169])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B942410E4EB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  6 Oct 2023 12:37:49 +0000 (UTC)
+ Fri,  6 Oct 2023 13:59:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=toolsmaxstyle.click; 
+ d=maxproyecoffee.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor_freight_opinion_requested@toolsmaxstyle.click; 
- bh=zrfLhSnph+kJQzSWTHgKna4ZrIc=;
- b=tsWAIDHLDXQIEEESBaQcoPZw2IelN8QjthWhBx/MyhXEd/n61Vb/es0o6tFLW1TClQBFEnxBYVDP
- Ck9ubtsI+piN+EOZGlXmKYXDF20n7MAMlHGpQnl4W99GJtG5qO3OlpaFu7cIopTKsUkPHQiXj02K
- cLQs2RPSl5k50VHzyXo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsmaxstyle.click;
- b=A0T9ubbMKlGgWVxngnu1g10w67qCFBhuA5a2Xxhu8W9aIe4uT5DFq4dLra0LOy/ZIP/7lCDqX8KL
- NZK8p/w/HRGkXP/oQBSqybsiuKFl3984yJyqXFXh7tn5Za+HLhBa5GSlVDG7Q5KLgnzxSO3gKurN
- 2qB3bNCAgtbAV6pijYw=;
-Received: by mail.toolsmaxstyle.click id h3vvpq0001g0 for
+ i=caf.chat.with.starbucks@maxproyecoffee.bond; 
+ bh=xFwqiUyYG/669BMejf5Egw8zgGA=;
+ b=RbtFPLugfWsTFe8rRcUl0y6xQMSq69000GMkr2jg3C0+niatOa8qHjVCSudBbGPxM3a8K/+55R83
+ +UfDTJO4HXPfaJifmistX1lhK7Si1VCAjbnepeQn6k4065KEJwhUQYMCFbFNMjuWzvsnOWBdO1X2
+ 4tlJNcvdxVQ6gd/H2bE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maxproyecoffee.bond;
+ b=AIZZeYB/GqEMkf/fINmiuq941o72uF0J+WGYoJ9ZAl56SD7Z2v3II3q33v6IU+7OHidxFdzQc2A3
+ SgPooF8K0bTtMLlAi4FkcE/kpEFo/niQ9mvaiTPQUlRI/FK9c78w6auuoBMdlYMp7cnNBIDnIgTR
+ nUcWlspp8x8ip5XDTIU=;
+Received: by mail.maxproyecoffee.bond id h40ipe0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 6 Oct 2023 08:26:09 -0400 (envelope-from
- <harbor_freight_opinion_requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsmaxstyle.click>)
-Date: Fri, 6 Oct 2023 08:26:09 -0400
-From: "Harbor Freight Opinion Requested"
- <harbor_freight_opinion_requested@toolsmaxstyle.click>
+ Fri, 6 Oct 2023 11:06:05 -0400 (envelope-from
+ <caf.chat.with.starbucks-intel+2Dgvt+2Ddev=lists.freedesktop.org@maxproyecoffee.bond>)
+Date: Fri, 6 Oct 2023 11:06:05 -0400
+From: "Caf Chat With Starbucks" <caf.chat.with.starbucks@maxproyecoffee.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <11906871281.169659515032831@toolsmaxstyle.click>
-Subject: Because You Matter: Exclusive Savings for Our Treasured Customers!
+Message-ID: <21056305170.16965999281579@maxproyecoffee.bond>
+Subject: Starbucks gift cards: gift the flavor!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=96eca61bd35ecb4be75bbd07f1c30d1081610380
+ boundary=e857a15deb80f6e5243bf3ab4a1e699f9741021014997
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---96eca61bd35ecb4be75bbd07f1c30d1081610380
+--e857a15deb80f6e5243bf3ab4a1e699f9741021014997
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,385 +63,424 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+  <style type="text/css">@import url('http://www.maxproyecoffee.bond/ad96EL23P95IW8j611b620cR17d1U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXRQmn7sTRL10w6cWqwD3/psychiatric-camouflaging/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
 	</style> 
-  <title>redeemable</title> 
+  <link href="http://www.maxproyecoffee.bond/ad96EL23P95IW8j611b620cR17d1U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXRQmn7sTRL10w6cWqwD3/psychiatric-camouflaging" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.maxproyecoffee.bond/7915SD2395Wi86D11g620do17d1g36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRQmn7gkg1Cq06w2zwlD/haler-chronicled" rel="preconnect" /> 
+  <link href="http://www.maxproyecoffee.bond/ad96EL23P95IW8j611b620cR17d1U36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXRQmn7sTRL10w6cWqwD3/psychiatric-camouflaging/css2?family=Lato:wght@100;300;400;700;900&amp;display=swap" rel="stylesheet" /> 
+  <title>savor our delightful</title> 
  </head> 
- <body style="background-color: rgb(236, 236, 236);; margin: 0; padding: 0;"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="topetrs" style="border-collapse: collapse;" width="100%"> 
+ <body style="background-color: rgb(230, 230, 230);"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="jokerstrayecs" style="border-collapse: collapse;" width="100%"> 
    <thead> 
     <tr> 
-     <th align="center" class="tokenstrayings" colspan="5"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" id="topetrs" style="border-collapse: collapse;" width="100%"> 
-       <thead> 
-        <tr> 
-         <th align="center" class="tokenstrayings">&nbsp;</th> 
-        </tr> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> 
-          </div> </td> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> 
-          </div> </td> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> 
-          </div> </td> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> 
-          </div> </td> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo"> 
-                <div id="topschars" style="background-color: #fff;"> 
-                 <aside class="logostaes" style="padding: 0; margin: 0; max-width: 15rem; margin: auto; text-align: center;">
-                  <span class="tactics"><a href="http://www.toolsmaxstyle.click/stairways-solidifying/c6C4p2395qih8613h620q7ko17d0n36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQwRQmm5y1zP05aBUwD"><img alt="UUYEAS" src="http://www.toolsmaxstyle.click/cb94l2395eJ7ak12w6G209v17d0P36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQwRQmm7EM1Mj0l5OzwkD/Mateo-tagged" width="100%" /></a> </span>
-                 </aside> 
-                </div> &nbsp; 
-                <div id="porflisos" style="max-width: 36rem; margin: auto; background-color: #fff; padding: 1% 1%;"> 
-                 <center style="border: double 4px #ff0000; max-width: 33rem; margin: auto; border-radius: 5px;"> 
-                  <section style=" background-color: #ff0000;"> 
-                   <p class="chapulins" style="
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            font-size: 9mm;
-            font-weight: 700;
-            padding-top: 5mm;
-            padding-bottom: 5mm;
-            color: #fff;"><span class="tactics"><i><u>Critical Updates<br /> from Harbor Freight </u></i> </span></p> 
-                   <div style="
-            background-color: #fff;"> 
-                    <p id="text" style="
-font-family: 'Roboto', sans-serif;
-font-size: 4.5mm;
-line-height: 7mm;
-margin: 0;
-padding: 3.5% 6%;
-font-weight: 500;"><span class="tactics">We are delighted to announce some exciting news from <b style="color: rgb(255, 0, 0);">Harbor Freight</b>. You now have the chance to obtain a <b style="color: rgb(255, 0, 0);">Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.<br /> <br /> <b>Take quick action and seize this opportunity! You have until October 6th to acquire these fantastic tools. </b> </span></p> 
-                    <div class="background-color" style="
-text-align: center; 
-background-color: rgb(233, 233, 233); 
-padding: 3% 1.5%;"> 
-                     <table id="finaltblsets" style="
-    max-width: 30rem; 
-    margin: auto;"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="center"><span class="tactics"><a href="http://www.toolsmaxstyle.click/stairways-solidifying/c6C4p2395qih8613h620q7ko17d0n36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQwRQmm5y1zP05aBUwD" target="_blank"><img alt="UUYEA" src="http://www.toolsmaxstyle.click/brutalize-revolts/a444W2395Dr7aw11c620aI17d0p36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQwRQmm7c1MzFO06UTywDO" width="100%" /></a> </span></td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                    </div> &nbsp; 
-                    <table align="center"> 
-                     <tbody> 
-                      <tr> 
-                       <td align="center"><span class="tactics"><a href="http://www.toolsmaxstyle.click/stairways-solidifying/c6C4p2395qih8613h620q7ko17d0n36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQwRQmm5y1zP05aBUwD" style="
-                text-decoration: none; color: rgb(255, 255, 255);" target="_blank"><span class="botns" style="
-                    display: inline-block;
-                    background-color: #9e0000;
-                    padding-top: 3mm;
-                    padding-bottom: 3mm;
-                    padding-left: 6mm;
-                    padding-right: 6mm;
-                    font-weight: 700;
-                    font-family: 'Roboto', sans-serif;
-                    font-size: x-large;">Start Here Now &gt; &gt;</span></a> </span></td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> 
-                  </section> 
-                 </center> 
-                </div> <h6 style="padding-top: 100px;">&nbsp;</h6> <h6 style="padding-top: 100px;">&nbsp;</h6> <h6 style="padding-top: 100px;">&nbsp;</h6> <h6 style="padding-top: 100px;">&nbsp;</h6> 
-                <footer style="background-color: gainsboro; padding-top: 2em; padding-bottom: 2em;"> 
-                 <address style="max-width: 28em; margin: auto;"> <p style="
-            font-family: 'Roboto', sans-serif;
-            font-size: 3.5mm;
-            font-weight: 700;
-            text-align: center;;
-            "><span class="tactics">more than welcome to leave in <a href="http://www.toolsmaxstyle.click/4496o2G3s95c86JZ13u6U208VN17d0N36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQwRQmm6qs1PW06nkwDzl/Mateo-tagged">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY, </span></p> </address> 
-                </footer> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-       <tfoot> 
-        <tr> 
-         <td align="center">&nbsp;</td> 
-        </tr> 
-       </tfoot> 
-      </table>  </th>
+     <th align="center" class="headers">&nbsp;</th> 
     </tr> 
    </thead> 
    <tbody> 
     <tr> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td align="center" colspan="5"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" id="topetrs" style="border-collapse: collapse;" width="100%"> 
-       <thead> 
-        <tr> 
-         <th align="center" class="tokenstrayings">&nbsp;</th> 
-        </tr> 
-       </thead> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
        <tbody> 
         <tr> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
            </center> 
-          </div> </td> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
            </center> 
-          </div> </td> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> 
-          </div> </td> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </center> 
-          </div> </td> 
-         <td class="windowsproyecs"> 
-          <div class="mamexlus"> 
-           <center id="chipscellopres"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td class="calculateinfo">&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
            </center> 
           </div> </td> 
         </tr> 
        </tbody> 
-       <tfoot> 
-        <tr> 
-         <td align="center">&nbsp;</td> 
-        </tr> 
-       </tfoot> 
       </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+   <tfoot> 
+    <tr> 
+     <td align="center" id="faltante">&nbsp;</td> 
     </tr> 
    </tfoot> 
   </table> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="topetrs" style="border-collapse: collapse;" width="100%"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="jokerstrayecs" style="border-collapse: collapse;" width="100%"> 
    <thead> 
     <tr> 
-     <th align="center" class="tokenstrayings">&nbsp;</th> 
+     <th align="center" class="headers">&nbsp;</th> 
     </tr> 
    </thead> 
    <tbody> 
     <tr> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
-     <td class="windowsproyecs"> 
-      <div class="mamexlus"> 
-       <center id="chipscellopres"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" class="loool" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td class="calculateinfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> 
-      </div> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress"> 
+            <div style="
+    max-width: 16cm; 
+    margin: auto; 
+    padding-top: 30px;"> 
+             <center id="boooooooooordeeeeeee" style="
+        border: double 2.5px #206F2E;
+        background-color: #206F2E;
+        max-width: 30em;
+        margin: auto;
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+        border-bottom-left-radius: 100px;
+        border-bottom-right-radius: 100px;"> 
+              <div class="topcreatvo" style="
+        padding-top: 30px;
+        padding-bottom: 30px;">
+               <span id="token"><a href="http://www.maxproyecoffee.bond/lustily-pregnant/de64S2395mt8v611E620eg17d1i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRQmn5e10BI5BXwDN" style="
+color: #fff;
+text-decoration: none;" target="_blank"><span style="
+    font-family: 'Gabarito', cursive;
+    font-weight: bold;
+    font-size: 43px;
+    ;">STARBUCKS</span></a> </span>
+              </div> 
+              <header class="cotenidoblanco" style="
+        background-color: #fff; 
+        padding-top: 10px; 
+        padding-bottom: 0px;
+        border-bottom-left-radius: 100px;
+        border-bottom-right-radius: 100px;"> 
+               <div id="texto principal"> 
+                <p style="
+        font-family: 'Lato', sans-serif;
+        margin: 0;
+        font-size: 1.5rem; 
+        font-weight: 800;
+        color: rgb(32, 111, 46);"><span id="token"><i><u>Your Last<br /> Message from Starbucks</u></i> </span></p> 
+                <p style="
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 4.5mm;
+    line-height: 7mm;
+    padding: 3.5% 5%;
+    font-weight: 600
+    ;"><span id="token">Exciting Announcement! <strong style="color: rgb(32, 111, 46);">Starbucks</strong> is offering a unique opportunity to acquire a <strong style="color: rgb(32, 111, 46);">$100 Gift Card</strong>, which can be used at any of our store locations. Don't miss out on this opportunity! You have until <b>October 6th</b> to enjoy our delicious beverages. </span></p> 
+                <div style="background-color: rgb(247, 255, 249); padding: 1.5% 3%;"> 
+                 <table style="max-width: 15em; margin: auto;"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" id="img"><span id="token"><a href="http://www.maxproyecoffee.bond/lustily-pregnant/de64S2395mt8v611E620eg17d1i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRQmn5e10BI5BXwDN" target="_blank"><img alt="YYAEA" src="http://www.maxproyecoffee.bond/e3f6H2A39N5OHs7a11S6210R17d1M36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQXRQmn5p10pB5aOwjD/reproof-Franklinizations" style="display: block;" width="100%" /></a> </span></td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> 
+                <center style="max-width: 15em; margin: auto;"> 
+                 <center style="
+                background-color: rgb(32, 111, 46);
+                padding: 4mm 5mm;
+                border-radius: 5px;
+                font-family: 'Lato', sans-serif;
+                font-size: 22px;
+                font-weight: 900
+                ;">
+                  <span id="token"><a href="http://www.maxproyecoffee.bond/lustily-pregnant/de64S2395mt8v611E620eg17d1i36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRQmn5e10BI5BXwDN" style="
+            text-decoration: none; color: #fff;" target="_blank">Start Here Now </a></span>
+                 </center> 
+                </center> &nbsp; 
+                <p style="
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+        font-size: 4.5mm;
+        line-height: 7mm;
+        padding: 3.5% 5%;
+        font-weight: 600
+        ;"><span id="token">Your participation is highly appreciated.<br /> Warm regards,<br /> <u><strong style="color: rgb(32, 111, 46);">The Starbucks Team.</strong></u> </span></p> 
+               </div> 
+              </header> 
+             </center> 
+            </div> 
+            <div style="padding-top: 400px;">
+             &nbsp;
+            </div> 
+            <div style="background-color: gray; padding: 15px 0;"> 
+             <p style="font-family: 'Lato', sans-serif;; font-weight: 600; color: #fff;"><span id="token"><i>you can leave with sadness <a href="http://www.maxproyecoffee.bond/d135U2m395e8zj613St620fBC17d1k36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQXRQmn7SA10JXm5C2wOD/reproof-Franklinizations">here</a><br /> US 10010 126 E 23rd St New York, NY, </i> </span></p> 
+            </div> 
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
    <tfoot> 
     <tr> 
-     <td align="center">&nbsp;</td> 
+     <td align="center" id="faltante">&nbsp;</td> 
+    </tr> 
+   </tfoot> 
+  </table> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="jokerstrayecs" style="border-collapse: collapse;" width="100%"> 
+   <thead> 
+    <tr> 
+     <th align="center" class="headers">&nbsp;</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td id="twomachaps"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="cambitary" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="jakastroll"> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> 
+          <div class="chapa"> 
+           <center class="otress">
+            &nbsp;
+           </center> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+   <tfoot> 
+    <tr> 
+     <td id="magistraps">&nbsp;</td> 
     </tr> 
    </tfoot> 
   </table>   
- <img src="http://www.toolsmaxstyle.click/5cf5W239o5G8v5K12U620LbW17d0S36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQwRQmm6rl1BS06SXzLwD/metalanguage-adventurous" alt=""/></body>
+ <img src="http://www.maxproyecoffee.bond/backbends-thinks/daa6pSP2395ED85L13wn621G1h17d1v36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXRQmn6MZm10X5AzPwD" alt=""/></body>
 </html>
 
---96eca61bd35ecb4be75bbd07f1c30d1081610380--
+--e857a15deb80f6e5243bf3ab4a1e699f9741021014997--
 
