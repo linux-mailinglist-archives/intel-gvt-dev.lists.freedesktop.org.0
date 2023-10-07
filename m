@@ -2,43 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18AA27BC7E1
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 14:57:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 032617BC84E
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 16:17:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1DB1D10E122;
-	Sat,  7 Oct 2023 12:57:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 54BCF10E134;
+	Sat,  7 Oct 2023 14:17:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Sat, 07 Oct 2023 12:57:44 UTC
-Received: from mail.moretoolsinfo.bond (unknown [157.52.235.139])
- by gabe.freedesktop.org (Postfix) with ESMTP id D68F010E122
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 07 Oct 2023 14:17:04 UTC
+Received: from mail.westropicinfo.autos (unknown [157.52.235.164])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4EF9E10E134
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  7 Oct 2023 12:57:44 +0000 (UTC)
+ Sat,  7 Oct 2023 14:17:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=moretoolsinfo.bond; 
+ d=westropicinfo.autos; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor-freight-bonuses@moretoolsinfo.bond; 
- bh=3DzVq7E6Dyxz3Jbimt9EF9dSXkc=;
- b=WZzUmlUPJkjKPyf7lGE6FBJl5yWWpbFFHYZKOz9drFRVNGbb64diZoJqfbRlCym9Xn5be+f7Ye3r
- slGf51qEwWm0nDoCXAZpoG3KFexUwxMQOrc3i9hBWRukehTRXCkwtui1KkQpwXKwHb76fEqopEMw
- WceRN8BSCxxiP754C1c=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=moretoolsinfo.bond; 
- b=e5SdOuLhPFqolVdowvsJFCS5S91eSUPfQ1hQ2MGY2FPjXEYeXKRmktgThRiJB0cfCm277i2YHmg2
- UG5cOQ8FqjzJbJmb83PzMaSo1kPrr8tkXiEGZ55gM0wWSIDFifzd7IawvhXY7anI6i+esP4khez9
- Cl7oeL6Z351Av/3G+lE=;
-Received: by mail.moretoolsinfo.bond id h45asg0001g7 for
+ i=everything-you-need-to-know-about-southwest-flights@westropicinfo.autos; 
+ bh=cNTgQqnPBU3X68zrD5wx9V6zBbk=;
+ b=criCcn7sSZqFTA54blyqFKhpliXutS3ujNaAq+XZzkTh8uVNoGEMkSMSfTimbYgEmO9le/xl5ZrR
+ 6XZv8w6KyeCh1LbcMjIzKkozt6tx6ucpHeQ91GyNlVInQfytzayztBnVmlo6g2HtgJonEJc4eJdi
+ PpPjMubmN+xVSPYjNk0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=westropicinfo.autos;
+ b=JMBHfj7SD1R5T8bhzPWXxJorGLOzHiGyYlgg+o9z/fKAJNq35qgjmmiK4tWmvsfWTgjp2CajucdE
+ Ky8p/DQ3OsiQ2ZtORoMjI5ismmbWIkhtIHvneoNssLKcMSFY8KGkZ6bQMvpqTfPUdY87CDzqg3KU
+ zxEK71yKE94Fg7HbAr0=;
+Received: by mail.westropicinfo.autos id h45k600001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 7 Oct 2023 08:48:42 -0400 (envelope-from
- <harbor-freight-bonuses-intel+2Dgvt+2Ddev=lists.freedesktop.org@moretoolsinfo.bond>)
-Date: Sat, 7 Oct 2023 08:48:42 -0400
-From: "Harbor Freight Bonuses" <harbor-freight-bonuses@moretoolsinfo.bond>
+ Sat, 7 Oct 2023 10:02:49 -0400 (envelope-from
+ <everything-you-need-to-know-about-southwest-flights-intel+2Dgvt+2Ddev=lists.freedesktop.org@westropicinfo.autos>)
+Date: Sat, 7 Oct 2023 10:02:49 -0400
+From: "Everything You Need To Know About Southwest Flights"
+ <everything-you-need-to-know-about-southwest-flights@westropicinfo.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <18461126862381.16966829023155013@moretoolsinfo.bond>
-Subject: Pop Open Exclusive Offers Reserved Just for You!
+Message-ID: <119532593670.16966873500434@westropicinfo.autos>
+Subject: Commence the season on a high note with a complimentary flight to
+ your desired locale!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=e87d95aaffcd47ce06322751a2867586981551014701009855
+ boundary=9950f0ad5a2e8d4a6892892143d0f9ac91021001982314
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,92 +56,151 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---e87d95aaffcd47ce06322751a2867586981551014701009855
+--9950f0ad5a2e8d4a6892892143d0f9ac91021001982314
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+  <title>recent flight experience</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
 	</style> 
-  <title>which can be redeemed</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(235, 235, 235);"> 
-  <center class="ghfdess"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" class="oployecfs" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td id="clamiscs"> 
-       <aside class="downspecial" style="margin: 0; padding: 0;"> 
-        <div class="encanshops"> 
-         <center class="outlast"> 
-          <div id="urgors" style="background-color: #fff; max-width: 700px; margin: auto;"> 
-           <div class="taksepps" style="max-width: 14em; margin: auto;">
-            <span class="reallys"><a href="http://www.moretoolsinfo.bond/c054W2395a8XO613J623wb_H17daF36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQzRQnm5NG_105YWJwD/grill-Langmuir"><img alt="JESAER" src="http://www.moretoolsinfo.bond/a074R2395p7ACa13Q623UJdK17dat36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQzRQnm5E1G0x5J2wDN/classed-Unitarians" width="100%" /> </a> </span>
-           </div> 
-          </div> 
-         </center> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="yectrosks" style="border-collapse: collapse;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" id="logoples"> 
-             <div class="gtpsyecs" style="max-width: 510px; margin: auto; background-color: #fff;"> 
-              <p style="background-color: rgb(155, 0, 0); font-size: 22pt; font-family: 'Roboto', sans-serif; font-weight: 700; margin: 0; padding: 13pt 0; color: #fff;"><span class="reallys">Important News<br /> from Harbor Freight </span></p> 
-              <div id="charpmis" style="padding-left: .5cm; padding-right: .5cm;"> 
-               <center style="font-family: 'Roboto', sans-serif; font-size: 4.5mm; line-height: 7mm; text-align: center; font-weight: 500; padding-top: 13pt; padding-bottom: 13pt;">
-                <span class="reallys">We're excited to share some thrilling news from <strong>Harbor Freight</strong>. You can now acquire a <b>Pittsburgh 225 Piece Tool Set</b>, redeemable at any of our store locations.<br /> <br /> Act promptly and grab this chance! You have until <b>October 8th</b> to secure these exciting tools. </span>
-               </center> 
-              </div> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> 
-       </aside> </td> 
-     </tr> 
-     <tr> 
-     </tr> 
-     <tr> 
-      <td id="clamiscs"> 
-       <aside class="downspecial" style="margin: 0; padding: 0;"> 
-        <div class="encanshops"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="flows" style="border-collapse: collapse;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" class="marverlstop"> 
-             <div class="chaprmis" style="max-width: 510px; margin: auto; background-color: #fff;"> 
-              <center style="width: 22em;">
-               <span class="reallys"><a href="http://www.moretoolsinfo.bond/c054W2395a8XO613J623wb_H17daF36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQzRQnm5NG_105YWJwD/grill-Langmuir"><img alt="UUEAS" src="http://www.moretoolsinfo.bond/9ad5er2395M7hUa13i623esHF17daS36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQzRQnm6d1JX0i6aNwJlD/totals-Suzanne" width="100%" /> </a> </span>
-              </center> 
-              <div class="toperwoer" style="padding-left: .5cm; padding-right: .5cm;"> 
-               <center style="padding-top: 1.2em;padding-bottom: 1.2em;"> 
-                <blockquote style="margin: 0;padding: 0;background-color: #a50000;padding-top: 13pt;padding-right: 30pt;padding-bottom: 13pt;padding-left: 30pt;border-radius: 12px;font-family: 'Roboto', sans-serif;width: 12em;margin: auto;font-weight: 600;font-size: 1.1em;">
-                 <span class="reallys"><a href="http://www.moretoolsinfo.bond/c054W2395a8XO613J623wb_H17daF36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQzRQnm5NG_105YWJwD/grill-Langmuir" style="text-decoration: none;color: #fff;">Start Here Now &gt; &gt; </a> </span>
-                </blockquote> 
-               </center> 
-              </div> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> 
-       </aside> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <h6 style="padding-top: 40em;">&nbsp;</h6> 
-   <center style="background-color: cadetblue;padding-top: 3mm;padding-bottom: 3mm;"> 
-    <div style="max-width: 22em;margin: auto;text-align: ceter;font-family: 'Roboto', sans-serif;font-weight: 600;font-size: 3.5mm;">
-     more than welcome to leave in 
-     <a href="http://www.moretoolsinfo.bond/totals-Suzanne/6a25dN2395mSh8613g62GP3cu17dam36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQzRQnm6y10Qpr5e1MwD"> here </a> we' ll miss you US 10010 126 E 23rd St New York, NY,
-    </div> 
-   </center> 
-   <h6 style="padding-top: 2em;">&nbsp;</h6> 
-  </center>   
- <img src="http://www.moretoolsinfo.bond/grill-Langmuir/bca6j239sy5H85yv13rI6Y23fm17daY36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQzRQnm6eg1sv05s0@wD" alt=""/></body>
+ <body> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" class="flyings" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center" id="jokspers"> 
+      <center align=" center" class="otgs"> 
+       <div class="facls" style="
+        width: 100%;
+        background-color: rgb(238, 238, 238);
+        ;">
+        &nbsp; 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" id="cotenids" style="border-collapse: collapse;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td align="center" class="chaps"> 
+            <div style="
+                max-width: 33rem;
+                margin: auto;
+                background-color: #fff;"> 
+             <center align="center" id="otls"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="topers" style="border-collapse: collapse;" width="100%"> 
+               <thead> 
+                <tr> 
+                 <th align="center" colspan="3"> 
+                  <div class="tops"> 
+                   <center style="
+    max-width: 280px; 
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px; ">
+                    <a href="http://www.westropicinfo.autos/rejection-allotting/7ec5Y2u395V8Hm612g624P0q17dbu36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ4RQnn6Q1WBN06N0Pw2D"><img alt="UUYEASE" src="http://www.westropicinfo.autos/vanquishing-conjecture/2c45f23W95n7apL12O62V42U17dbx36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ4RQnn5StB105OMwXD" width="100%" /></a>
+                   </center> 
+                  </div> </th> 
+                </tr> 
+               </thead> 
+               <tbody> 
+                <tr> 
+                 <td align="center" class="lopsiians" width="100%"> 
+                  <section id="marquita"> 
+                   <div id="cannon"> 
+                    <p id="textone" style="
+                                    font-family: 'Gabarito', cursive;
+                                    font-size: 16px;
+                                    line-height: 25px;
+                                    font-weight: 500;
+                                    padding: 0 35px;"><span class="travisdel">We genuinely appreciate your choice to travel with Southwest Airlines. Your unwavering loyalty and support are greatly meaningful to us, and we are dedicated to meeting all your travel requirements. </span></p> 
+                   </div> 
+                   <div id="cannon" style="background-color: #E05559;"> 
+                    <p style="
+                                font-family: 'Gabarito', cursive;
+                                font-size: 16px;
+                                line-height: 25px;
+                                font-weight: 500;
+                                padding: 15px 35px;
+                                color: #fff;"><span class="travisdel">We highly value your feedback, and we extend a warm invitation for you to take a few moments to engage in a brief survey about your recent flight experience and overall interactions with Southwest. Your input will play a vital role in enhancing your future encounters with our airline. </span></p> 
+                   </div> 
+                   <div id="cannon">
+                    <span class="travisdel"><a href="http://www.westropicinfo.autos/rejection-allotting/7ec5Y2u395V8Hm612g624P0q17dbu36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ4RQnn6Q1WBN06N0Pw2D" target="_blank"><img alt="POLSE" src="http://www.westropicinfo.autos/7af5wn2395tSQ7a13i62go43D17dby36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ4RQnn7cS1ywy06wUwlDy/fifteen-Parrs" style="
+                                    display: block;" width="100%" /></a> </span>
+                   </div> 
+                   <p id="cotexts" style="
+                            font-family: 'Gabarito', cursive;
+                            font-size: 16px;
+                            line-height: 25px;
+                            font-weight: 500;
+                            padding: 0 35px;"><span class="travisdel">Accessing the survey is simple ? just click on the link provided below. It's a quick task that will require only a few minutes of your time, and please be assured that your responses will be kept entirely confidential. </span></p> 
+                   <section style="width: 315px; margin: auto;"> 
+                    <table align="center" cellpadding="15px" style="background-color: rgb(20, 76, 179); border-radius: 5px;"> 
+                     <tbody> 
+                      <tr> 
+                       <td align="center" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: 800;font-size: 20px;;"><span class="travisdel"><a href="http://www.westropicinfo.autos/rejection-allotting/7ec5Y2u395V8Hm612g624P0q17dbu36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ4RQnn6Q1WBN06N0Pw2D" style="color: white; text-decoration: none;" target="_blank">Kick off the survey here &gt; &gt; </a> </span></td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </section> &nbsp; 
+                   <hr style="margin: auto;" width="50%" /> 
+                   <p style="
+font-family: 'Gabarito', cursive;
+font-size: 16px;
+line-height: 25px;
+font-weight: 500;
+padding: 0 35px;"><span class="travisdel">We appreciate your ongoing support and eagerly await your feedback! Warm regards, </span></p> 
+                  </section> </td> 
+                 <td class="lopsiians"> 
+                  <section id="marquita"> 
+                   <div id="cannon">
+                    &nbsp;
+                   </div> 
+                   <div id="cannon">
+                    &nbsp;
+                   </div> 
+                   <div id="cannon">
+                    &nbsp;
+                   </div> 
+                  </section> </td> 
+                 <td class="lopsiians"> 
+                  <section id="marquita"> 
+                   <div id="cannon">
+                    &nbsp;
+                   </div> 
+                   <div id="cannon">
+                    &nbsp;
+                   </div> 
+                   <div id="cannon">
+                    &nbsp;
+                   </div> 
+                  </section> </td> 
+                </tr> 
+               </tbody> 
+               <tfoot> 
+                <tr> 
+                 <td class="tanblis" colspan="3">&nbsp;</td> 
+                </tr> 
+               </tfoot> 
+              </table> 
+             </center> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <h4 style="padding-bottom: 10rem;">&nbsp;</h4> 
+        <footer style="background-color: ghostwhite; padding: 3mm 0;"> 
+         <address style="max-width: 500px; margin: auto; font-family: Arial, Helvetica, sans-serif; text-align: center;font-size: 12px; font-weight: 700;"> <p>Use the exit option <a href="http://www.westropicinfo.autos/rejection-allotting/bca4Q2395NF86v12M62X41V17dbV36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ4RQnn6s10ixP5NB0wD">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </address> 
+        </footer> 
+        <h4 style="padding-bottom: 2.5rem;">&nbsp;</h4> 
+       </div> 
+      </center> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.westropicinfo.autos/Xa74n2395Gx85X13V6244nzv17dbr36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ4RQnn5El1W05oMqwD/Erne-shooter" alt=""/></body>
 </html>
 
---e87d95aaffcd47ce06322751a2867586981551014701009855--
+--9950f0ad5a2e8d4a6892892143d0f9ac91021001982314--
 
