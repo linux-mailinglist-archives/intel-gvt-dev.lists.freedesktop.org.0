@@ -1,45 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E65357BC98C
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 20:19:02 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 465087BC9C4
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 22:31:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B66FA10E05A;
-	Sat,  7 Oct 2023 18:19:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9FE3910E06A;
+	Sat,  7 Oct 2023 20:31:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sat, 07 Oct 2023 18:18:59 UTC
-Received: from mail.toolsjecklass.click (unknown [77.90.135.130])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7669910E06A
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 07 Oct 2023 20:31:38 UTC
+Received: from mail.pharmacivir.autos (unknown [77.90.135.15])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6B22510E06A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  7 Oct 2023 18:18:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=toolsjecklass.click; 
+ Sat,  7 Oct 2023 20:31:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pharmacivir.autos;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=ace_hardware_essentials@toolsjecklass.click; 
- bh=ASMcS25tJMczwbTErVZB1loHsJg=;
- b=usP9nk7B/YIKsWfeeyxbgD3k9ota7atgem+AoxTp3LZInZPZeL433++6qpyIrGglmQ1nbYeVqyF4
- 3pUd0DnybhpTb7mMczZvLm16s+HAVMpPjGhC8LYhZjNkh4pU8LxVfy/OVaOTES8q9+w5iDth5fqN
- QeXDyibXssTcB2Tpqxc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsjecklass.click;
- b=OLhr8Jwqc55l1ePu8IxDkMazgc0EDv7SUfERgoNsazo3hWEtuME/VXe04dz/jjSVR3sEt9i3BWB7
- cfxwRJ8D/LqjwtSdJNYIkQyb5+JM1g7wySh/UT2Hxt1DcTijcVPLaZVpJeBGbDe/to3DJhjvRtW1
- xpCUB232i8rqjWz8qLk=;
-Received: by mail.toolsjecklass.click id h46gh60001g5 for
+ i=unlock-your-cvs-discounts@pharmacivir.autos; 
+ bh=VH9CtWJB4Gu9xCLC3sEWX7fjnPQ=;
+ b=a76NW3ol6q5/C57rJ/A7wt4QMQnEPW1d5ioUsATHTUEwOPR1UvoDKSmHME6uXNk+owD/6iLdU6mV
+ yo4PVo5BRGq9CcKhC3unr61q6R2mB4b6ezct7ucBEaI7135aNw0sGa8Qd3A10FL9O49FcLqEdi/e
+ vOKCd8R/yzylf7N9RuM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharmacivir.autos; 
+ b=wr6YGbGntsxdCt2BVOa3WVLHWxFg6fdHRg0rpBWawEFkuJ+KgjFcurFNLs3RvOxJ3ACU1Jn1eVlA
+ VRfojhNeH0GuCKTkzDTW8BnGQAbCUxcSkNi2QDXxvEFz8V0cGWUjMrNwPQo8Xe6G/NsXGkXv5iQ3
+ zWDF8mGvYVGF0WQmr8w=;
+Received: by mail.pharmacivir.autos id h4702k0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 7 Oct 2023 14:10:49 -0400 (envelope-from
- <ace_hardware_essentials-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsjecklass.click>)
-Date: Sat, 7 Oct 2023 14:10:49 -0400
-From: "ACE Hardware Essentials" <ace_hardware_essentials@toolsjecklass.click>
+ Sat, 7 Oct 2023 16:23:42 -0400 (envelope-from
+ <unlock-your-cvs-discounts-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharmacivir.autos>)
+Date: Sat, 7 Oct 2023 16:23:42 -0400
+From: "Unlock Your CVS Discounts" <unlock-your-cvs-discounts@pharmacivir.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <19731831639176.16967022043710@toolsjecklass.click>
-Subject: Survey + Prize: Participate in the survey for your shot at winning a
- Stanley tool set.
+Message-ID: <506520283445.1696710199753116@pharmacivir.autos>
+Subject: Win Up to $100 in CVS Gift Cards Today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=19f9a7ae436f9150987c03a7aed92f2495101510229611
+ boundary=1258ceb0cd1d5fa1f104975edcc42652410010056949797
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---19f9a7ae436f9150987c03a7aed92f2495101510229611
+--1258ceb0cd1d5fa1f104975edcc42652410010056949797
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,153 +61,62 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>thrilled to share</title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-	</style> 
+  <title>appreciate your choice</title> 
  </head> 
- <body style="background-color: rgb(236, 236, 236);"> 
-  <div> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-        <thead class="UUYEASES"> 
-         <tr> 
-          <th>&nbsp;</th> 
-         </tr> 
-        </thead> 
-        <tbody> 
-         <tr> 
-          <td id="jarvistoops"> 
-           <div class="nidavelerar"> 
-            <center class="oproyects"> 
-             <aside id="loginstop">
-              &nbsp;
-             </aside> 
-            </center> 
-           </div> </td> 
-          <td id="jarvistoops"> 
-           <div class="nidavelerar"> 
-            <center class="oproyects"> 
-             <aside id="loginstop">
-              &nbsp;
-             </aside> 
-            </center> 
-           </div> </td> 
-          <td id="jarvistoops"> 
-           <div class="nidavelerar"> 
-            <center class="oproyects"> 
-             <aside id="loginstop"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <thead class="UUYEASES"> 
-                <tr> 
-                 <th>&nbsp;</th> 
-                </tr> 
-               </thead> 
-               <tbody> 
-                <tr> 
-                 <td id="jarvistoops"> 
-                  <div class="nidavelerar"> 
-                   <center class="oproyects"> 
-                    <aside id="loginstop">
-                     &nbsp;
-                    </aside> 
-                   </center> 
-                  </div> </td> 
-                 <td id="jarvistoops"> 
-                  <div class="nidavelerar"> 
-                   <center class="oproyects"> 
-                    <aside id="loginstop">
-                     &nbsp;
-                    </aside> 
-                   </center> 
-                  </div> </td> 
-                 <td id="jarvistoops"> 
-                  <div class="nidavelerar"> 
-                   <center class="oproyects"> 
-                    <aside id="loginstop"> 
-                     <div> 
-                      <div> 
-                       <div style="background-color: #F9F9F9;"> 
-                        <center style="max-width: 250px; margin: auto;">
-                         <a href="http://www.toolsjecklass.click/seedling-Eskimoizeds/7b05U2I395g8YC612bx6255P17dfQ36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQLRQnQ6p1Kk0l6vL1@wD" target="_blank"><img alt="UUYESA" src="http://www.toolsjecklass.click/3594U2395Lz7aX13P6BQ257q17dfB36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQLRQnQ6YvwQ106q12wD3/polluted-crib" width="100%" /> </a>
-                        </center> 
-                       </div> &nbsp; 
-                       <div style="border: solid 1.5px #000; max-width: 520px; margin: auto; padding: 15px 0px 0px; font-family: 'Roboto', sans-serif;; font-weight: 500; background-color: #fff; line-height: 25px;"> 
-                        <div>
-                         <b>Ace Hardware</b> is thrilled to share some exciting news! You now have the opportunity to acquire the 
-                         <b>Stanley Tool Set</b>, redeemable at any of our store locations. Act quickly and seize this chance! You have until 
-                         <b>October 7th</b> to secure these exceptional tools.                         </div> 
-                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 450px;"> 
-                         <tbody> 
-                          <tr> 
-                           <td><a href="http://www.toolsjecklass.click/seedling-Eskimoizeds/7b05U2I395g8YC612bx6255P17dfQ36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQLRQnQ6p1Kk0l6vL1@wD"><img alt="MMNJS" src="http://www.toolsjecklass.click/music-brush/de66Vk2Y395u7UaH12Q6m258F17dfk36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQLRQnQ6lrR10C6NL1pwD" width="100%" /> </a></td> 
-                          </tr> 
-                         </tbody> 
-                        </table> 
-                        <div>
-                         <a href="http://www.toolsjecklass.click/seedling-Eskimoizeds/7b05U2I395g8YC612bx6255P17dfQ36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQLRQnQ6p1Kk0l6vL1@wD" style="color: #fff; text-decoration: none;"><span style="display: inline-block; background-color: #5f0000; padding: 3.5% 5%; border-radius: 10px;">Start Here Now &gt; &gt; </span> </a>
-                        </div> &nbsp; 
-                        <div class="YYEASES" style="background-color: #660000;"> 
-                         <p style="margin: 0; padding: 30px 0px; color: #fff;">We appreciate your support in advance. Yours sincerely, The Ace Hardware Team.</p> 
-                        </div> 
-                       </div> 
-                      </div> 
-                     </div> 
-                    </aside> 
-                   </center> 
-                  </div> </td> 
-                 <td id="jarvistoops"> 
-                  <div class="nidavelerar"> 
-                   <center class="oproyects"> 
-                    <aside id="loginstop">
-                     &nbsp;
-                    </aside> 
-                   </center> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-               <tfoot> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tfoot> 
-              </table> 
-             </aside> 
-            </center> 
-           </div> </td> 
-          <td id="jarvistoops"> 
-           <div class="nidavelerar"> 
-            <center class="oproyects"> 
-             <aside id="loginstop">
-              &nbsp;
-             </aside> 
-            </center> 
-           </div> </td> 
-         </tr> 
-        </tbody> 
-        <tfoot> 
-         <tr> 
-          <td>&nbsp;</td> 
-         </tr> 
-        </tfoot> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <h4 style="padding-top: 300px;">&nbsp;</h4> 
-   <div style="background-color: rgb(79, 47, 71); padding: 5mm 0;"> 
-    <footer style="max-width: 400px; margin: auto; font-family: 'Roboto', sans-serif; text-align: center; font-size: 12px; font-weight: 900; color: #fff;">
-     Anyway you can leave 
-     <a href="http://www.toolsjecklass.click/8815p2Y395V8g6m13LT6256uS17dfg36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQLRQnQ7f10JGwO5WLwDk/seedling-Eskimoizeds"> here </a>
-     <br /> US 10010 126 E 23rd St New York, NY,
-    </footer> 
+ <body style="background-color: #fafafa; margin: 0; padding: 0;"> 
+  <div id="Honlllsap"> 
+   <div class="rretaeeas" style="border-right: solid 25px #ffd4d4; border-left: solid 25px #ffd4d4;"> 
+    <div class="00921saw" style="max-width: 700px; margin: auto; background-color: #fff; padding: 15px 0;"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" id="championsships" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td align="center" class="Jallystops"> 
+         <center style="max-width: 150px; margin: auto;">
+          <a href="http://www.pharmacivir.autos/kneeling-Hearst/6484K2395j8ro612Q6260hK17e1l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQnS5j10D_5rTkwD"><img alt="JJUEAS" src="http://www.pharmacivir.autos/kneeling-Hearst/dc86M2z3o95vT7Oa11r6262P17e1t36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQsRQnS6H10_rI6EkNUwD" width="100%" /> </a>
+         </center> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <section style="max-width: 550px; margin: auto; background-color: #dd0000; padding: .8em 0; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px; text-align: center; font-weight: bold;">
+      Exclusive Offers for Our Valued Customers
+     </section> 
+     <aside style="max-width: 500px; margin: auto; padding: 0;"> 
+      <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 18px;line-height: 27px;font-weight: 500; text-align: center;padding: 15px 0px 0px;;">We value your selection of <strong>CVS</strong>. Your loyalty and support mean a great deal to us, and we genuinely appreciate the opportunity to assist you.</p> 
+      <div style="text-align: center;"> 
+       <div style="display: inline-block; max-width: 90px; margin: auto; margin: 1%;">
+        <a href="http://www.pharmacivir.autos/kneeling-Hearst/6484K2395j8ro612Q6260hK17e1l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQnS5j10D_5rTkwD" target="_blank"><img alt="IIUES" src="http://www.pharmacivir.autos/gradation-flowery/7b04s2395b7rag11D6263J17e1D36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQsRQnS6Yoj1i05mTOwD" width="100%" /> </a>
+       </div> 
+       <div style="display: inline-block; max-width: 100px; margin: auto; margin: 3%;">
+        <a href="http://www.pharmacivir.autos/kneeling-Hearst/6484K2395j8ro612Q6260hK17e1l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQnS5j10D_5rTkwD" target="_blank"><img alt="IIUES" src="http://www.pharmacivir.autos/gradation-flowery/9544b2395g7Una13O62m64XY17e1l36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQsRQnS5Dk10I5oBzwD" width="100%" /> </a>
+       </div> 
+      </div> 
+      <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 18px;line-height: 27px;font-weight: 500; text-align: center;padding: 15px 0px 0px;;">Your feedback holds significant importance to us, and as a gesture of our appreciation, we'd like to extend a special thank you for dedicating your time to share your insights.<br /> <br /> <b>Upon completing the survey, there's a chance that you could choose from a variety of gifts! </b></p> &nbsp; 
+      <table style="padding: 1.5% 7%;background-color: red;font-family: Arial, Helvetica, sans-serif;font-size: 1.1rem;max-width: 300px;margin: auto;font-weight: 800;border-radius: 7px;;"> 
+       <tbody> 
+        <tr> 
+         <td><span><a href="http://www.pharmacivir.autos/kneeling-Hearst/6484K2395j8ro612Q6260hK17e1l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQnS5j10D_5rTkwD" style="text-decoration: none;color: #fff;">Start Now &gt;&gt; </a> </span></td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </aside> 
+     <br /> 
+     <br /> &nbsp; 
+     <hr /> 
+     <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+      <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 18px;line-height: 27px;font-weight: 500; text-align: center;padding: 15px 0px 0px;;">Thank you once more for your support. We are eagerly looking forward to your prompt response! Warm regards,</p> 
+     </div> 
+    </div> &nbsp; 
+    <h1 style="padding-bottom: 20rem;">&nbsp;</h1> 
+    <div style="background-color: silver; padding: 15pt 0;"> 
+     <h4 style="max-width: 520px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; text-align: center;">time to show you the exit <a href="http://www.pharmacivir.autos/kneeling-Hearst/a806V2F3U95S8_6R11e6261X17e1J36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQsRQnS6zO1W0N5FJwAD"> here </a><br /> US 10010 126 E 23rd St New York, NY,</h4> 
+    </div> 
+    <div style="background-color: #424242;">
+     <br /> &nbsp;
+    </div> 
    </div> 
-   <br /> &nbsp;
   </div>   
- <img src="http://www.toolsjecklass.click/4a36h2m39I5GD8H513Q62SH59s17dfu36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQLRQnQ7e1wS0kH6Kk0WwD/reconciler-nightcap" alt=""/></body>
+ <img src="http://www.pharmacivir.autos/jabbing-chancery/1025i23w95E8ri512S62X65M17e1A36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQsRQnS6MoC1H05BlWwD" alt=""/></body>
 </html>
 
---19f9a7ae436f9150987c03a7aed92f2495101510229611--
+--1258ceb0cd1d5fa1f104975edcc42652410010056949797--
 
