@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 396F57BC8FC
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 18:01:16 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id CEDF37BC92C
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 19:02:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9574E10E145;
-	Sat,  7 Oct 2023 16:01:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 904F010E040;
+	Sat,  7 Oct 2023 17:02:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 387 seconds by postgrey-1.36 at gabe;
- Sat, 07 Oct 2023 16:01:13 UTC
-Received: from mail.dromsflying.bond (unknown [157.52.235.175])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1033C10E145
+X-Greylist: delayed 331 seconds by postgrey-1.36 at gabe;
+ Sat, 07 Oct 2023 17:01:58 UTC
+Received: from mail.tackpharmalb.autos (unknown [194.116.229.143])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EA12F10E040
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  7 Oct 2023 16:01:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dromsflying.bond;
+ Sat,  7 Oct 2023 17:01:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=tackpharmalb.autos; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=essential.delta.flight.information@dromsflying.bond; 
- bh=/vn4vPJU9x4U5Rbbrmq6l7BrIYA=;
- b=Qp+gpeOiXpNoCwZm6Qq1eeG09K08sDf7nUU+1Y707UE/plRBiXmnR2zlhukrROLwvBkDxrH97BW4
- hcy3WOChasyA5prBxdOrDBWWqqAlYx5lnaOT7UvCK8o66F/ZGh8QSrQJgKA7Mfcg3mGySbiqpfYT
- lg8mwlABhWJda9Ur9Go=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dromsflying.bond;
- b=X/nIyHg+4IJsWpuGXWwKWdd9sDrwpJl1VzD4d0/1ydgmNDK4XRc1GgBasXz/3+U7kUPCQjjJ5x6r
- g5YrATsHYxoU7wGHZRJIH8ha9QhteIlfnwurP9BQHAMp/xzglWwZUV/Xlb9q1m+FmdzmYb7b6aQA
- 994ZYQn8Y/8rWPPKus8=;
-Received: by mail.dromsflying.bond id h469pq0001g8 for
+ i=breaking.walgreens.news@tackpharmalb.autos; 
+ bh=Qc4zprL88qSUMWfdXiFN2J7PA98=;
+ b=i4blpE/MQwOZT7XrZf1Oh6lZJpoWLoluHHluoLJoWpqcmDrcxBkK1YKSOoq7qaar03VlBSY2iZtk
+ +QhWKJYdSgLXU7VaDU6JYtWE0Btxir6VNkaKOVhydgIk0EZ9fI/8IbRnQEuWN5f7dD+9bOIsX7dF
+ AP52YJKciBQmhcOUdcQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tackpharmalb.autos; 
+ b=LlUJ1jsuh9pqB7xQl64qTmvDzB7ULenuq036z8ZL3H/yTiOD0rd2cQXUqULCtdQ5SnZdfvKTIhaM
+ G8BZzRo0ITASP14Y/uptiGj8vvKyHRydVoB0OOFM9SqHLpkqH3990xnozhmUm6y0tYlMg2givqD9
+ llpDSM5lTVXa3ovReOM=;
+Received: by mail.tackpharmalb.autos id h46gtm0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 7 Oct 2023 13:10:54 -0400 (envelope-from
- <essential.delta.flight.information-intel+2Dgvt+2Ddev=lists.freedesktop.org@dromsflying.bond>)
-Date: Sat, 7 Oct 2023 13:10:54 -0400
-From: "Essential Delta Flight Information"
- <essential.delta.flight.information@dromsflying.bond>
+ Sat, 7 Oct 2023 14:12:48 -0400 (envelope-from
+ <breaking.walgreens.news-intel+2Dgvt+2Ddev=lists.freedesktop.org@tackpharmalb.autos>)
+Date: Sat, 7 Oct 2023 14:12:48 -0400
+From: "Breaking Walgreens News" <breaking.walgreens.news@tackpharmalb.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <99339902572.1696693822889253@dromsflying.bond>
-Subject: Celebrate the season by enjoying a cost-free flight to your preferred
- destination!
+Message-ID: <158662400457.16966975266428328@tackpharmalb.autos>
+Subject: Quick Survey, Generous Prize: An Oral-B Series 8 Could Be Yours!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=ba11f9392541c1c51884a519b1736089971001110099
+ boundary=db32a95a5dbf1a8cc23fdc572759fd32101999751015
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---ba11f9392541c1c51884a519b1736089971001110099
+--db32a95a5dbf1a8cc23fdc572759fd32101999751015
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,142 +63,193 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Lets elevate</title> 
+  <style type="text/css">@import url('http://www.tackpharmalb.autos/5b16CU239g5pB8y611O624eU17det36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQXRQnd7z1_PmO05NUwDM/expectant-piping/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+	</style> 
+  <title>this offer expires</title> 
+  <link href="http://www.tackpharmalb.autos/5b16CU239g5pB8y611O624eU17det36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQXRQnd7z1_PmO05NUwDM/expectant-piping" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.tackpharmalb.autos/expectant-piping/1b65S2w395Qi8P613I62A4IfX17dek36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRQnd6N1lp0V6kMlw3D" rel="preconnect" /> 
+  <link href="http://www.tackpharmalb.autos/4Wd6zs23V95I8H6K12E6250Kj17deU36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQXRQnd7LWFQT106W0zAwD/protect-restrict" rel="stylesheet" /> 
  </head> 
  <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(235, 235, 235);" width="100%"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center" class="chipslogns"> 
-      <div class="klaeps">
-       &nbsp; 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" id="tpsl" style="border-collapse: collapse;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td class="hjlyes" style="background-color: rgb(32, 32, 32); padding: 10px 0;"> 
-           <center style="max-width: 15em; margin: auto;">
-            <span class="milllos"><a href="http://www.dromsflying.bond/oleomargarine-cawing/daa5v2U395fg8m613y6K24paA17ddo36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQDRQn96s1Fl0L6aUwkD0"><img alt="VBCSA" src="http://www.dromsflying.bond/4Td5t23W95bV7Fa11z624bz17ddW36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQDRQn97plGlh105OqwD@/chocolates-worryingly" width="100%" /></a></span>
-           </center> </td> 
-         </tr> 
-         <tr> 
-         </tr> 
-         <tr> 
-          <td class="hjlyes"> 
-           <div style="
-                        padding: 1.5% 2%;
-                        background-color: rgb(204, 204, 204);"> 
-            <center style="max-width: 30rem; margin: auto;">
-             <span class="milllos"><a href="http://www.dromsflying.bond/oleomargarine-cawing/daa5v2U395fg8m613y6K24paA17ddo36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQDRQn96s1Fl0L6aUwkD0" target="_blank"><img alt="" src="http://www.dromsflying.bond/disposal-inductor/8dc5r2y395X7Qia13XlF624ct17ddm36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQDRQn95w10sK6nL1wDN" style="display: block; outline: solid 1.5px #000;" width="100%" /></a></span>
-            </center> 
-           </div> </td> 
-         </tr> 
-         <tr> 
-         </tr> 
-         <tr> 
-          <td class="hjlyes"> 
-           <div style="
-                    max-width: 34rem; 
-                    margin: auto;
-                    background-color: #fff;
-                    ;"> 
-            <h4 class="warcry" style="
-                        margin: 0;
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        font-weight: 500;
-                        line-height: 1.7rem;
-                        font-size: 1.2rem; text-align: center;
-                        padding-left: 3.5mm;
-                        padding-right: 3.5mm;
-                        padding-top: 3mm;"><span class="milllos">We appreciate your decision to fly with Delta! Each adventure you embark on with us contributes to our narrative, and we're enthusiastic about enhancing every aspect for your pleasure. </span></h4> 
-           </div> </td> 
-         </tr> 
-         <tr> 
-         </tr> 
-         <tr> 
-          <td class="hjlyes"> 
-           <div style="
-                    max-width: 34rem; 
-                    margin: auto;
-                    background-color: #fff;
-                    ;"> 
-            <h2 class="warcry" style="
-                        margin: 0;
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        font-weight: 500;
-                        line-height: 1.7rem;
-                        font-size: 1.2rem; text-align: center;
-                        padding-left: 3.5mm;
-                        padding-right: 3.5mm;
-                        padding-top: 3mm;"><span class="milllos">Let's further enhance your flying experience! Provide feedback on your recent Delta journey through a short survey. Click the link below to embark on this swift exploration. </span></h2> 
-           </div> </td> 
-         </tr> 
-         <tr> 
-         </tr> 
-         <tr> 
-          <td class="hjlyes"> 
-           <div style="
-                    max-width: 34rem; 
-                    margin: auto;
-                    background-color: #fff;
-                    ;"> 
-            <h1 class="warcry" style="
-                        margin: 0;
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                        font-weight: 500;
-                        line-height: 1.7rem;
-                        font-size: 1.2rem; text-align: center;
-                        padding-left: 3.5mm;
-                        padding-right: 3.5mm;
-                        padding-top: 3mm;"><span class="milllos">Your input not only influences our future but could also open the door to a chance at receiving a surprise $100 gift! Every perspective is valuable, so be sure to make yours count today!<br /> <span style="color: #af0000;">#EnhanceYourDeltaExperience.</span> </span></h1> 
-           </div> </td> 
-         </tr> 
-         <tr> 
-         </tr> 
-         <tr> 
-          <td class="hjlyes"> 
-           <div style="
-                        max-width: 34rem;
-                        margin: auto;
-                        background-color: #fff;">
-            &nbsp; 
-            <table style="width: 95%; margin: auto;"> 
-             <tbody> 
-              <tr> 
-               <td> 
-                <center style=" padding: 14pt 30pt; background-color: #222222; border-radius: 10px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px;">
-                 <span class="milllos"><span id="token"><a href="http://www.dromsflying.bond/oleomargarine-cawing/daa5v2U395fg8m613y6K24paA17ddo36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQDRQn96s1Fl0L6aUwkD0" style="color: #fff; text-decoration: none;">Fly Better With Delta Now &raquo; </a> </span> </span>
-                </center> </td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> <br /> <br /> <br /> &nbsp; 
-           <hr color="#000" size="1.5px" style="border-radius: 100px; margin: auto;" width="92%" /><br /> <br /> <br /> <br /> <br /> &nbsp; 
-           <div style="background-color: lightgoldenrodyellow; padding-top: .5cm; padding-bottom: .5cm;"> 
-            <article style="
-        max-width: 30rem;
-        margin: auto; text-align: center;"> 
-             <p style="
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 700;
-        text-align: center;
-        font-size: 3.5mm;
-        line-height: 5mm;"><span class="milllos"><font>Join us at the exit <a href="">here</a><br /> US 10010 126 E 23rd St New York, NY, </font> </span></p> 
-            </article> 
-           </div> <br /> <br /> <br /> <br /> <br /> &nbsp;</td> 
-         </tr> 
-         <tr> 
-         </tr> 
-         <tr> 
-          <td class="hjlyes">&nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> 
+     <td align="center"> 
+      <div class="maigcstras"> 
+       <section id="palplso"> 
+        <center class="yanclis"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="gombis">
+             <divcharps> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="jacsjacks">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </divcharps> 
+             <divcharps> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="jacsjacks">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </divcharps> 
+             <divcharps> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="jacsjacks">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </divcharps> 
+             <divcharps> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="jacsjacks"> 
+                  <div style="background-color: rgb(243, 243, 243); width: 100%;"> 
+                   <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse; background-color: #242A4B;" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center" class="grus" style="
+                font-family: 'Dancing Script', cursive;
+                font-weight: bold;
+                text-align: center;
+                font-size: 60px;
+                color: #f84316;"><a href="http://www.tackpharmalb.autos/morbidness-Diebold/c604s2395W8NG613Y625Iv1n17del36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRQnd7FA1oNr05aPywD" style="color: #f84316; text-decoration: none;">Walgreens</a></td> 
+                     </tr> 
+                    </tbody> 
+                   </table> &nbsp; 
+                   <div id="sombra" style="
+box-shadow: inset 0 0 5px 1px #242A4B;
+border-radius: 10px;
+max-width: 30rem;
+margin: auto;
+background-color: #fff;
+border-top: solid 5px #242A4B;
+border-bottom: solid 5px #242A4B;"> 
+                    <section class="separador" style="
+padding: 3.5% 4%;"> 
+                     <p style="
+font-family: 'Varela Round', sans-serif;
+font-size: 4.5mm;
+line-height: 7mm; text-align: center;">Thrilling Announcement! Walgreens is introducing an <b>Oral-B Series 8 Toothbrush</b> for in-store use. Take swift action, as this offer concludes on <b>October 7th</b>.</p> 
+                     <table align="center" style="max-width: 310px; margin: auto;"> 
+                      <tbody> 
+                       <tr> 
+                        <td align="center"><a href="http://www.tackpharmalb.autos/morbidness-Diebold/c604s2395W8NG613Y625Iv1n17del36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRQnd7FA1oNr05aPywD" target="_blank"><img alt="ZXCSE" src="http://www.tackpharmalb.autos/7eb5t2O395J7Lal13Q62Ln53i17deg36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQXRQnd7rL1xTq06PWMwOD/unspecified-lashing" style="display: block;" width="100%" /></a></td> 
+                       </tr> 
+                      </tbody> 
+                     </table> &nbsp; 
+                     <table align="center"> 
+                      <tbody> 
+                       <tr> 
+                        <td align="center"> 
+                         <table align="center" style="border: double 5px #242849; border-radius: 100px; padding: 10px 25px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 25px;"> 
+                          <tbody> 
+                           <tr> 
+                            <td align="center"><a href="http://www.tackpharmalb.autos/morbidness-Diebold/c604s2395W8NG613Y625Iv1n17del36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRQnd7FA1oNr05aPywD" style="text-decoration: none; color: #242849;" target="_blank">Start Here Now </a></td> 
+                           </tr> 
+                          </tbody> 
+                         </table> </td> 
+                       </tr> 
+                      </tbody> 
+                     </table> &nbsp; 
+                     <hr /> 
+                     <p style="
+font-family: 'Varela Round', sans-serif;
+font-size: 3.5mm;
+line-height: 7mm; text-align: center;">We value your support in advance.<br /> Warm regards,<br /> <b>The Walgreens Team.</b></p> 
+                    </section> 
+                   </div> 
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp; 
+                   <center style="background-color: #242849; padding: 15px 0;"> 
+                    <article style="max-width: 520px; margin: auto;"> 
+                     <p style="
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 12px; font-weight: 600; color: #fff;">you are bored of these, visit us <a href="http://www.tackpharmalb.autos/cd74R2395Ho86X11N6252H17deS36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQXRQnd7F1IODC05RywD0/Prentice-inhomogeneous" style="color: aqua;">here</a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</p> 
+                    </article> 
+                   </center> 
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                   <br /> 
+                   <br /> &nbsp;
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </divcharps> 
+             <divcharps> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="jacsjacks">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </divcharps> 
+             <divcharps> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="jacsjacks">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </divcharps> 
+             <divcharps> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="jacsjacks">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </divcharps></td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </center> 
+       </section> 
       </div> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.dromsflying.bond/cops-revenuers/9ae5Y2U395z8P5v13V62l4ydG17dd_36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQDRQn95MJ1o06BAlw3D" alt=""/></body>
+ <img src="http://www.tackpharmalb.autos/2c34R2395FRY8512q62k54_17deS36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQXRQnd5NM10U6hjywDM/protect-restrict" alt=""/></body>
 </html>
 
---ba11f9392541c1c51884a519b1736089971001110099--
+--db32a95a5dbf1a8cc23fdc572759fd32101999751015--
 
