@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEDF37BC92C
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 19:02:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E65357BC98C
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 20:19:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 904F010E040;
-	Sat,  7 Oct 2023 17:02:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B66FA10E05A;
+	Sat,  7 Oct 2023 18:19:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 331 seconds by postgrey-1.36 at gabe;
- Sat, 07 Oct 2023 17:01:58 UTC
-Received: from mail.tackpharmalb.autos (unknown [194.116.229.143])
- by gabe.freedesktop.org (Postfix) with ESMTP id EA12F10E040
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Sat, 07 Oct 2023 18:18:59 UTC
+Received: from mail.toolsjecklass.click (unknown [77.90.135.130])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7669910E06A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  7 Oct 2023 17:01:58 +0000 (UTC)
+ Sat,  7 Oct 2023 18:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=tackpharmalb.autos; 
+ d=toolsjecklass.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=breaking.walgreens.news@tackpharmalb.autos; 
- bh=Qc4zprL88qSUMWfdXiFN2J7PA98=;
- b=i4blpE/MQwOZT7XrZf1Oh6lZJpoWLoluHHluoLJoWpqcmDrcxBkK1YKSOoq7qaar03VlBSY2iZtk
- +QhWKJYdSgLXU7VaDU6JYtWE0Btxir6VNkaKOVhydgIk0EZ9fI/8IbRnQEuWN5f7dD+9bOIsX7dF
- AP52YJKciBQmhcOUdcQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tackpharmalb.autos; 
- b=LlUJ1jsuh9pqB7xQl64qTmvDzB7ULenuq036z8ZL3H/yTiOD0rd2cQXUqULCtdQ5SnZdfvKTIhaM
- G8BZzRo0ITASP14Y/uptiGj8vvKyHRydVoB0OOFM9SqHLpkqH3990xnozhmUm6y0tYlMg2givqD9
- llpDSM5lTVXa3ovReOM=;
-Received: by mail.tackpharmalb.autos id h46gtm0001gp for
+ i=ace_hardware_essentials@toolsjecklass.click; 
+ bh=ASMcS25tJMczwbTErVZB1loHsJg=;
+ b=usP9nk7B/YIKsWfeeyxbgD3k9ota7atgem+AoxTp3LZInZPZeL433++6qpyIrGglmQ1nbYeVqyF4
+ 3pUd0DnybhpTb7mMczZvLm16s+HAVMpPjGhC8LYhZjNkh4pU8LxVfy/OVaOTES8q9+w5iDth5fqN
+ QeXDyibXssTcB2Tpqxc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsjecklass.click;
+ b=OLhr8Jwqc55l1ePu8IxDkMazgc0EDv7SUfERgoNsazo3hWEtuME/VXe04dz/jjSVR3sEt9i3BWB7
+ cfxwRJ8D/LqjwtSdJNYIkQyb5+JM1g7wySh/UT2Hxt1DcTijcVPLaZVpJeBGbDe/to3DJhjvRtW1
+ xpCUB232i8rqjWz8qLk=;
+Received: by mail.toolsjecklass.click id h46gh60001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 7 Oct 2023 14:12:48 -0400 (envelope-from
- <breaking.walgreens.news-intel+2Dgvt+2Ddev=lists.freedesktop.org@tackpharmalb.autos>)
-Date: Sat, 7 Oct 2023 14:12:48 -0400
-From: "Breaking Walgreens News" <breaking.walgreens.news@tackpharmalb.autos>
+ Sat, 7 Oct 2023 14:10:49 -0400 (envelope-from
+ <ace_hardware_essentials-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsjecklass.click>)
+Date: Sat, 7 Oct 2023 14:10:49 -0400
+From: "ACE Hardware Essentials" <ace_hardware_essentials@toolsjecklass.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <158662400457.16966975266428328@tackpharmalb.autos>
-Subject: Quick Survey, Generous Prize: An Oral-B Series 8 Could Be Yours!
+Message-ID: <19731831639176.16967022043710@toolsjecklass.click>
+Subject: Survey + Prize: Participate in the survey for your shot at winning a
+ Stanley tool set.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=db32a95a5dbf1a8cc23fdc572759fd32101999751015
+ boundary=19f9a7ae436f9150987c03a7aed92f2495101510229611
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,202 +55,161 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---db32a95a5dbf1a8cc23fdc572759fd32101999751015
+--19f9a7ae436f9150987c03a7aed92f2495101510229611
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('http://www.tackpharmalb.autos/5b16CU239g5pB8y611O624eU17det36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQXRQnd7z1_PmO05NUwDM/expectant-piping/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+  <title>thrilled to share</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 	</style> 
-  <title>this offer expires</title> 
-  <link href="http://www.tackpharmalb.autos/5b16CU239g5pB8y611O624eU17det36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQXRQnd7z1_PmO05NUwDM/expectant-piping" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.tackpharmalb.autos/expectant-piping/1b65S2w395Qi8P613I62A4IfX17dek36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRQnd6N1lp0V6kMlw3D" rel="preconnect" /> 
-  <link href="http://www.tackpharmalb.autos/4Wd6zs23V95I8H6K12E6250Kj17deU36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQXRQnd7LWFQT106W0zAwD/protect-restrict" rel="stylesheet" /> 
  </head> 
- <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <div class="maigcstras"> 
-       <section id="palplso"> 
-        <center class="yanclis"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td class="gombis">
-             <divcharps> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
+ <body style="background-color: rgb(236, 236, 236);"> 
+  <div> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+        <thead class="UUYEASES"> 
+         <tr> 
+          <th>&nbsp;</th> 
+         </tr> 
+        </thead> 
+        <tbody> 
+         <tr> 
+          <td id="jarvistoops"> 
+           <div class="nidavelerar"> 
+            <center class="oproyects"> 
+             <aside id="loginstop">
+              &nbsp;
+             </aside> 
+            </center> 
+           </div> </td> 
+          <td id="jarvistoops"> 
+           <div class="nidavelerar"> 
+            <center class="oproyects"> 
+             <aside id="loginstop">
+              &nbsp;
+             </aside> 
+            </center> 
+           </div> </td> 
+          <td id="jarvistoops"> 
+           <div class="nidavelerar"> 
+            <center class="oproyects"> 
+             <aside id="loginstop"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <thead class="UUYEASES"> 
                 <tr> 
-                 <td class="jacsjacks">&nbsp;</td> 
+                 <th>&nbsp;</th> 
                 </tr> 
-               </tbody> 
-              </table> 
-             </divcharps> 
-             <divcharps> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
+               </thead> 
                <tbody> 
                 <tr> 
-                 <td class="jacsjacks">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </divcharps> 
-             <divcharps> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="jacsjacks">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </divcharps> 
-             <divcharps> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="jacsjacks"> 
-                  <div style="background-color: rgb(243, 243, 243); width: 100%;"> 
-                   <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse; background-color: #242A4B;" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" class="grus" style="
-                font-family: 'Dancing Script', cursive;
-                font-weight: bold;
-                text-align: center;
-                font-size: 60px;
-                color: #f84316;"><a href="http://www.tackpharmalb.autos/morbidness-Diebold/c604s2395W8NG613Y625Iv1n17del36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRQnd7FA1oNr05aPywD" style="color: #f84316; text-decoration: none;">Walgreens</a></td> 
-                     </tr> 
-                    </tbody> 
-                   </table> &nbsp; 
-                   <div id="sombra" style="
-box-shadow: inset 0 0 5px 1px #242A4B;
-border-radius: 10px;
-max-width: 30rem;
-margin: auto;
-background-color: #fff;
-border-top: solid 5px #242A4B;
-border-bottom: solid 5px #242A4B;"> 
-                    <section class="separador" style="
-padding: 3.5% 4%;"> 
-                     <p style="
-font-family: 'Varela Round', sans-serif;
-font-size: 4.5mm;
-line-height: 7mm; text-align: center;">Thrilling Announcement! Walgreens is introducing an <b>Oral-B Series 8 Toothbrush</b> for in-store use. Take swift action, as this offer concludes on <b>October 7th</b>.</p> 
-                     <table align="center" style="max-width: 310px; margin: auto;"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="center"><a href="http://www.tackpharmalb.autos/morbidness-Diebold/c604s2395W8NG613Y625Iv1n17del36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRQnd7FA1oNr05aPywD" target="_blank"><img alt="ZXCSE" src="http://www.tackpharmalb.autos/7eb5t2O395J7Lal13Q62Ln53i17deg36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQXRQnd7rL1xTq06PWMwOD/unspecified-lashing" style="display: block;" width="100%" /></a></td> 
-                       </tr> 
-                      </tbody> 
-                     </table> &nbsp; 
-                     <table align="center"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="center"> 
-                         <table align="center" style="border: double 5px #242849; border-radius: 100px; padding: 10px 25px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 25px;"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="center"><a href="http://www.tackpharmalb.autos/morbidness-Diebold/c604s2395W8NG613Y625Iv1n17del36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXRQnd7FA1oNr05aPywD" style="text-decoration: none; color: #242849;" target="_blank">Start Here Now </a></td> 
-                           </tr> 
-                          </tbody> 
-                         </table> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> &nbsp; 
-                     <hr /> 
-                     <p style="
-font-family: 'Varela Round', sans-serif;
-font-size: 3.5mm;
-line-height: 7mm; text-align: center;">We value your support in advance.<br /> Warm regards,<br /> <b>The Walgreens Team.</b></p> 
-                    </section> 
-                   </div> 
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp; 
-                   <center style="background-color: #242849; padding: 15px 0;"> 
-                    <article style="max-width: 520px; margin: auto;"> 
-                     <p style="
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 12px; font-weight: 600; color: #fff;">you are bored of these, visit us <a href="http://www.tackpharmalb.autos/cd74R2395Ho86X11N6252H17deS36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQXRQnd7F1IODC05RywD0/Prentice-inhomogeneous" style="color: aqua;">here</a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</p> 
-                    </article> 
+                 <td id="jarvistoops"> 
+                  <div class="nidavelerar"> 
+                   <center class="oproyects"> 
+                    <aside id="loginstop">
+                     &nbsp;
+                    </aside> 
                    </center> 
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
-                   <br /> 
-                   <br /> &nbsp;
+                  </div> </td> 
+                 <td id="jarvistoops"> 
+                  <div class="nidavelerar"> 
+                   <center class="oproyects"> 
+                    <aside id="loginstop">
+                     &nbsp;
+                    </aside> 
+                   </center> 
+                  </div> </td> 
+                 <td id="jarvistoops"> 
+                  <div class="nidavelerar"> 
+                   <center class="oproyects"> 
+                    <aside id="loginstop"> 
+                     <div> 
+                      <div> 
+                       <div style="background-color: #F9F9F9;"> 
+                        <center style="max-width: 250px; margin: auto;">
+                         <a href="http://www.toolsjecklass.click/seedling-Eskimoizeds/7b05U2I395g8YC612bx6255P17dfQ36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQLRQnQ6p1Kk0l6vL1@wD" target="_blank"><img alt="UUYESA" src="http://www.toolsjecklass.click/3594U2395Lz7aX13P6BQ257q17dfB36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQLRQnQ6YvwQ106q12wD3/polluted-crib" width="100%" /> </a>
+                        </center> 
+                       </div> &nbsp; 
+                       <div style="border: solid 1.5px #000; max-width: 520px; margin: auto; padding: 15px 0px 0px; font-family: 'Roboto', sans-serif;; font-weight: 500; background-color: #fff; line-height: 25px;"> 
+                        <div>
+                         <b>Ace Hardware</b> is thrilled to share some exciting news! You now have the opportunity to acquire the 
+                         <b>Stanley Tool Set</b>, redeemable at any of our store locations. Act quickly and seize this chance! You have until 
+                         <b>October 7th</b> to secure these exceptional tools.                         </div> 
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 450px;"> 
+                         <tbody> 
+                          <tr> 
+                           <td><a href="http://www.toolsjecklass.click/seedling-Eskimoizeds/7b05U2I395g8YC612bx6255P17dfQ36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQLRQnQ6p1Kk0l6vL1@wD"><img alt="MMNJS" src="http://www.toolsjecklass.click/music-brush/de66Vk2Y395u7UaH12Q6m258F17dfk36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQLRQnQ6lrR10C6NL1pwD" width="100%" /> </a></td> 
+                          </tr> 
+                         </tbody> 
+                        </table> 
+                        <div>
+                         <a href="http://www.toolsjecklass.click/seedling-Eskimoizeds/7b05U2I395g8YC612bx6255P17dfQ36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQLRQnQ6p1Kk0l6vL1@wD" style="color: #fff; text-decoration: none;"><span style="display: inline-block; background-color: #5f0000; padding: 3.5% 5%; border-radius: 10px;">Start Here Now &gt; &gt; </span> </a>
+                        </div> &nbsp; 
+                        <div class="YYEASES" style="background-color: #660000;"> 
+                         <p style="margin: 0; padding: 30px 0px; color: #fff;">We appreciate your support in advance. Yours sincerely, The Ace Hardware Team.</p> 
+                        </div> 
+                       </div> 
+                      </div> 
+                     </div> 
+                    </aside> 
+                   </center> 
+                  </div> </td> 
+                 <td id="jarvistoops"> 
+                  <div class="nidavelerar"> 
+                   <center class="oproyects"> 
+                    <aside id="loginstop">
+                     &nbsp;
+                    </aside> 
+                   </center> 
                   </div> </td> 
                 </tr> 
                </tbody> 
-              </table> 
-             </divcharps> 
-             <divcharps> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
+               <tfoot> 
                 <tr> 
-                 <td class="jacsjacks">&nbsp;</td> 
+                 <td>&nbsp;</td> 
                 </tr> 
-               </tbody> 
+               </tfoot> 
               </table> 
-             </divcharps> 
-             <divcharps> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="jacsjacks">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </divcharps> 
-             <divcharps> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" class="sharpey" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="jacsjacks">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </divcharps></td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </center> 
-       </section> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.tackpharmalb.autos/2c34R2395FRY8512q62k54_17deS36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQXRQnd5NM10U6hjywDM/protect-restrict" alt=""/></body>
+             </aside> 
+            </center> 
+           </div> </td> 
+          <td id="jarvistoops"> 
+           <div class="nidavelerar"> 
+            <center class="oproyects"> 
+             <aside id="loginstop">
+              &nbsp;
+             </aside> 
+            </center> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+        <tfoot> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+        </tfoot> 
+       </table> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+   <h4 style="padding-top: 300px;">&nbsp;</h4> 
+   <div style="background-color: rgb(79, 47, 71); padding: 5mm 0;"> 
+    <footer style="max-width: 400px; margin: auto; font-family: 'Roboto', sans-serif; text-align: center; font-size: 12px; font-weight: 900; color: #fff;">
+     Anyway you can leave 
+     <a href="http://www.toolsjecklass.click/8815p2Y395V8g6m13LT6256uS17dfg36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQLRQnQ7f10JGwO5WLwDk/seedling-Eskimoizeds"> here </a>
+     <br /> US 10010 126 E 23rd St New York, NY,
+    </footer> 
+   </div> 
+   <br /> &nbsp;
+  </div>   
+ <img src="http://www.toolsjecklass.click/4a36h2m39I5GD8H513Q62SH59s17dfu36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQLRQnQ7e1wS0kH6Kk0WwD/reconciler-nightcap" alt=""/></body>
 </html>
 
---db32a95a5dbf1a8cc23fdc572759fd32101999751015--
+--19f9a7ae436f9150987c03a7aed92f2495101510229611--
 
