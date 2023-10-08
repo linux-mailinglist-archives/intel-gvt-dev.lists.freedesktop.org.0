@@ -2,45 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B552D7BCE42
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 13:53:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E5A1A7BCE9C
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 15:42:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 18A9A10E0A3;
-	Sun,  8 Oct 2023 11:53:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A41AA10E121;
+	Sun,  8 Oct 2023 13:42:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 08 Oct 2023 11:53:23 UTC
-Received: from mail.girfclasictools.click (unknown [77.83.202.34])
- by gabe.freedesktop.org (Postfix) with ESMTP id 415EB10E0A3
+X-Greylist: delayed 329 seconds by postgrey-1.36 at gabe;
+ Sun, 08 Oct 2023 13:42:44 UTC
+Received: from mail.spressdayinfo.click (unknown [157.52.235.157])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3580810E05C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  8 Oct 2023 11:53:23 +0000 (UTC)
+ Sun,  8 Oct 2023 13:42:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=girfclasictools.click; 
+ d=spressdayinfo.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=survey_rewards_at_home_depot@girfclasictools.click; 
- bh=R5LO5RnHC85x31W191Y/8ZSuYyk=;
- b=Qbdbd8dXq2dxuk4dGc6e/SINxYKjr0Ii9BxExO5EBstSkz0fkM5TxjLV4fHtjfqiLjVzMhi2gCxo
- rz7SAVrgxikb1EtEWD/Uhzwj2C09ohULPh7RfCAIWgCRDGsoP9iK5tyZSSgHMAMwu3sc55bI/Fiq
- JDjKVscKJ7HiXGraSqQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=girfclasictools.click; 
- b=M0MMW8T0xVGsjhVoEcdZK2+pYgR0RdTsS9zF2LSXULizWX9S/aZ6KJc7/xvHrVL5v/Ygm99gHSdI
- OJZsaBvHx44i178sbIA6EHHvwY9oiXx3h2+kwdSsyLmAXHmJQ18/+phNiN1mdC9Q2hwdq5dHg2c0
- 5yqDXgJnXKqo0NyFZ3k=;
-Received: by mail.girfclasictools.click id h4ac360001g7 for
+ i=brew.share.your.starbucks.opinion@spressdayinfo.click; 
+ bh=81WPQiDLtdXDYAktLb9lcDI4VUc=;
+ b=oRoyr53ENJlliFxcjhaKawQsYiC6ej31z0nibGZ356eXv2QhXdyx99n6ITrATbiSKBAy7R0gXGlk
+ EPFH/cVCBA8HCsBi6jGvqLjDjyN15c0OOeg+Qw8IDia83epNYuGkfzVoSAiwQsSg89/ysUatVRCx
+ Zcn2kyXsl8/S7CXfD0M=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=spressdayinfo.click;
+ b=d4xLkVsL5SZVO5lFdxvQZ4pT2FfqK/9qK2PgYQBz94utRzs8QD5HhIXvmQ14CG5RjJ5vTg/P4M9o
+ 9aUvldGQGfgTJUb+o0ogi5uBlUFADfOmwfQ9/3xkReHaJQ1yKca1ROhUngL7Qv/Fl/p/DHxRti3q
+ jXCG30dv3y0dYjhHATg=;
+Received: by mail.spressdayinfo.click id h4aot80001g3 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 8 Oct 2023 07:45:40 -0400 (envelope-from
- <survey_rewards_at_home_depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@girfclasictools.click>)
-Date: Sun, 8 Oct 2023 07:45:40 -0400
-From: "Survey Rewards At Home Depot"
- <survey_rewards_at_home_depot@girfclasictools.click>
+ Sun, 8 Oct 2023 09:34:19 -0400 (envelope-from
+ <brew.share.your.starbucks.opinion-intel+2Dgvt+2Ddev=lists.freedesktop.org@spressdayinfo.click>)
+Date: Sun, 8 Oct 2023 09:34:19 -0400
+From: "Brew Share Your Starbucks Opinion"
+ <brew.share.your.starbucks.opinion@spressdayinfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <138333790203.16967655259068024@girfclasictools.click>
-Subject: Limited-time opportunity: Grab a Makita Drill Set today!
+Message-ID: <10734098029824.1696772045433006@spressdayinfo.click>
+Subject: Starbucks gift cards: gift the flavor!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=9ce58cc317bb3a4bf58dc225c6cd4642101971019910001
+ boundary=d66b558ea024113c1d1d6dc9b01afbd299549429897935
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,101 +55,107 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---9ce58cc317bb3a4bf58dc225c6cd4642101971019910001
+--d66b558ea024113c1d1d6dc9b01afbd299549429897935
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html lang="en">
  <head> 
-  <link href="http://www.girfclasictools.click/rough-exponent/e405S23N95S8V6v12RO6266m17e2_36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne6p1oW0N5IOJwD" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.girfclasictools.click/piecewise-fitting/9185S2S395ny86I13U6j267qR17e2j36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQkRQne6zH10gg6iqwOD1" rel="preconnect" /> 
-  <link href="http://www.girfclasictools.click/rough-exponent/e405S23N95S8V6v12RO6266m17e2_36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne6p1oW0N5IOJwD/css2?family=Asap:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>recognized and</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
+	</style> 
+  <title>Exciting Announcement</title> 
  </head> 
- <body style="background-color: #f0f0f0;margin: 0;padding: 0;"> 
-  <center> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+ <body> 
+  <div style="
+        background-color: rgb(234, 247, 255);
+        width: 100%;
+        padding: 7% 0;"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" id="flips" style="border-collapse: collapse;" width="100%"> 
     <tbody> 
      <tr> 
-      <td> 
-       <footer style="padding-top: 5mm;padding-bottom: 5mm;background-color: #fff;"> 
-        <table align="center" style="max-width: 400px; margin: auto; border-collapse: collapse;"> 
-         <tbody> 
-          <tr> 
-           <td align="center"><a href="http://www.girfclasictools.click/7736M2C39z5k8m6W11O6268U17e2X36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne5GVZ106wLzJwD/apricots-conquerers"><img alt="PPOSA" src="http://www.girfclasictools.click/8bd6C2o3l95g7QaD13Q6g2x6aH17e2r36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQkRQne5OL10p5uklwD/bath-warehousing" width="100%" /> </a></td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </footer> 
-       <div style="padding-top: .5rem;">
-        &nbsp;
-       </div> 
-       <table style="max-width: 510px; margin: auto; border-collapse: collapse;"> 
-        <tbody> 
-         <tr> 
-          <td> 
-           <div style="background-color: #F25F01;"> 
-            <p id="lloease" style="margin: 0;padding: 3.5% 5%;font-family: 'Asap', sans-serif;;font-weight: 600;text-align: center;font-size: 1.3rem; color: #fff;">We want to express our gratitude for selecting our services. Your loyalty and support are greatly valued by us and will always be acknowledged and treasured.</p> 
-           </div> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <center> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="center"> 
-            <div> 
-             <section style="max-width: 508px;margin: auto"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center"> <p class="hyyseas" style="margin: 0;padding: 3.5% 5%;font-family: 'Asap', sans-serif;;font-weight: 600;text-align: center;font-size: 1.2rem; background-color: #fff;line-height: 1.7rem;">As an expression of our appreciation for your support, we're offering you the chance to receive a <b>MAKITA DRILL Set!</b> !</p> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </section> 
-             <table align="center" style="border-collapse: collapse; background-color: #fff; max-width: 508px; margin: auto;"> 
-              <tbody> 
-               <tr> 
-                <td align="center" width="508px"> 
-                 <div style="max-width: 508px;margin: auto; background-color: #fff;"> 
-                  <div style="max-width: 508px; margin: auto; background-color: #fff;"> 
-                   <center style="max-width: 320px; margin: auto;">
-                    <a href="http://www.girfclasictools.click/7736M2C39z5k8m6W11O6268U17e2X36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne5GVZ106wLzJwD/apricots-conquerers"><img alt="OOUESA" src="http://www.girfclasictools.click/89f4p2395okT7a13o626HLbk17e2S36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne7DtC1Il05NUUwD/explorers-thereafter" width="100%" /> </a>
-                   </center> 
-                   <p style="font-family: 'Asap', sans-serif;;font-weight: 500;text-align: center;font-size: 1.2rem; line-height: 1.7rem;; padding: 3.5% 5%;"><b>Your input is of great importance to us. </b><br /> <br /> Securing this reward is straightforward; it will require only 30 seconds of your time to provide us with your feedback, and we'll promptly send it to you.</p> 
-                   <div style="max-width: 508px; margin: auto; background-color: #F25F01; padding: 7mm 0;"> 
-                    <div style="max-width: 300px; margin: auto;"> 
-                     <center style="background-color: #fff; text-align: center; font-weight: 600; font-family: 'Asap', sans-serif;; padding: 2.5mm 5mm; border-radius: 30px; font-size: 1.5rem;">
-                      <a href="http://www.girfclasictools.click/7736M2C39z5k8m6W11O6268U17e2X36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne5GVZ106wLzJwD/apricots-conquerers" style="text-decoration: none; color: #F25F01;">Start Here Now &gt;&gt; </a>
-                     </center> 
-                    </div> 
-                   </div> 
-                  </div> 
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> 
-             <h6 style="padding-top: 30rem;">&nbsp;</h6> 
-             <article style="background-color: rgb(255, 242, 224); padding-top: 1.5rem; padding-bottom: 1.5rem; margin: 0;;"> 
-              <p style="font-weight: 900; font-size: 12px; text-align: center; max-width: 520px; margin: auto; font-family: 'Asap', sans-serif;;"><font>you can leave with sadness <a href="http://www.girfclasictools.click/piecewise-fitting/8824c2395A8R6I11c6269V17e2N36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQkRQne7jT1Ynk06CAwzAD"> here </a><br /> US 10010 126 E 23rd St New York, NY, </font></p> 
-             </article> 
-             <br /> 
-             <br /> &nbsp;
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </center> </td> 
+      <td align="center"> 
+       <div style="
+    border: double 4px #1C6D2F;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top: solid 25px #1C6D2F;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom: solid 25px #1C6D2F;
+    max-width: 33em; margin: auto;
+    background-color: #fff;
+    ;"> 
+        <section class="chaps"> 
+         <table align="center" cellpadding="10px"> 
+          <tbody> 
+           <tr> 
+            <td> 
+             <center style="max-width: 200px; margin: auto;">
+              <a href="http://www.spressdayinfo.click/2a55h23o95C8Q6m11A6274Z17e4J36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQJRQom6s1H0Yl6VlXwLD/precursor-Gothic" target="_blank"><img alt="MANSES" src="http://www.spressdayinfo.click/marketplaces-bayonets/d324g2395nv7aS11I6276S17e4L36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQJRQom6MY1OI05v@PwD" width="100%" /></a>
+             </center> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <div class="chaps"> 
+          <p style="
+        font-family: 'Overpass', sans-serif;
+        font-size: 6mm;
+        font-weight: 700;
+        text-align: center;
+        background-color: #1C6D2F; 
+        padding: 3.5%;
+        margin: 0; 
+        color: #fff;"><i><u>Your Final<br /> Communication from Starbucks</u></i></p> &nbsp; 
+          <p style="
+    font-family: 'Overpass', sans-serif;
+    margin: 0;
+    font-size: 4.5mm;
+    line-height: 7mm;
+    padding: 0 4.5%;
+    font-weight: 500;">Exciting News! <b>Starbucks</b> is presenting a special chance to obtain a <b>$100 Gift Card</b>, redeemable at any of our store locations. Don't let this opportunity slip away! You have until <b>October 8th</b> to savor our delightful beverages.</p> &nbsp; 
+          <div class="img" style="
+    padding: 3.5% 3%;
+    background-color: #f1fff4;"> 
+           <table style="max-width: 255px; margin: auto;"> 
+            <tbody> 
+             <tr> 
+              <td><a href="http://www.spressdayinfo.click/2a55h23o95C8Q6m11A6274Z17e4J36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQJRQom6s1H0Yl6VlXwLD/precursor-Gothic" target="_blank"><img alt="YYEASE" src="http://www.spressdayinfo.click/marketplaces-bayonets/6c04Y2395AQ7oa13R6z2P77N17e4Z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQJRQom7PvQPq105ULwDA" width="100%" /></a></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </div> &nbsp; 
+          <center style="max-width: 13em; margin: auto;"> 
+           <center style="background-color: rgb(32, 111, 46);padding: 4mm 5mm;border-radius: 5px;font-family: 'Overpass', sans-serif; font-size: 18px;font-weight: 900;">
+            <span id="token"><a href="http://www.spressdayinfo.click/2a55h23o95C8Q6m11A6274Z17e4J36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQJRQom6s1H0Yl6VlXwLD/precursor-Gothic" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now </a> </span>
+           </center> 
+          </center> 
+          <br /> &nbsp; 
+          <p style="
+    font-family: 'Overpass', sans-serif;
+    margin: 0;
+    font-size: 4.5mm;
+    line-height: 7mm;
+    padding: 0 4.5%;
+    font-weight: 500;">We deeply appreciate your participation.<br /> Warm regards,<br /> <b>The Starbucks Team.</b></p> 
+          <br /> &nbsp;
+         </div> 
+        </section> 
+       </div> </td> 
      </tr> 
     </tbody> 
    </table> 
-  </center>   
- <img src="http://www.girfclasictools.click/be74K2395d85YA11B626cp17e2F36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQkRQne6WF_1l05QB2wD/ager-shanty" alt=""/></body>
+   <div style="padding-top: 400px;">
+    &nbsp;
+   </div> 
+   <div style="background-color: rgb(214, 247, 255); padding: 15px 0;"> 
+    <p style="font-family: 'Overpass', sans-serif; font-weight: 600; color: #000000; text-align: center; max-width: 520px; margin: auto; font-size: 12px;"><span id="token"><i>you can leave with sadness <a href="http://www.spressdayinfo.click/24b5m239I5qK8Z611z6275I17e4k36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJRQom7E1Sq0WP5E0wJD/marketplaces-bayonets"> here </a><br /> US 10010 126 E 23rd St New York, NY, </i> </span></p> 
+   </div> 
+  </div>   
+ <img src="http://www.spressdayinfo.click/1976N23ZM95v8j5_13j62Zm78r17e4w36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQJRQom5M1t0v5y0wlD/marketplaces-bayonets" alt=""/></body>
 </html>
 
---9ce58cc317bb3a4bf58dc225c6cd4642101971019910001--
+--d66b558ea024113c1d1d6dc9b01afbd299549429897935--
 
