@@ -2,42 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 465087BC9C4
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  7 Oct 2023 22:31:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B552D7BCE42
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 13:53:26 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9FE3910E06A;
-	Sat,  7 Oct 2023 20:31:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 18A9A10E0A3;
+	Sun,  8 Oct 2023 11:53:25 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sat, 07 Oct 2023 20:31:38 UTC
-Received: from mail.pharmacivir.autos (unknown [77.90.135.15])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6B22510E06A
+ Sun, 08 Oct 2023 11:53:23 UTC
+Received: from mail.girfclasictools.click (unknown [77.83.202.34])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 415EB10E0A3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  7 Oct 2023 20:31:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pharmacivir.autos;
+ Sun,  8 Oct 2023 11:53:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=girfclasictools.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=unlock-your-cvs-discounts@pharmacivir.autos; 
- bh=VH9CtWJB4Gu9xCLC3sEWX7fjnPQ=;
- b=a76NW3ol6q5/C57rJ/A7wt4QMQnEPW1d5ioUsATHTUEwOPR1UvoDKSmHME6uXNk+owD/6iLdU6mV
- yo4PVo5BRGq9CcKhC3unr61q6R2mB4b6ezct7ucBEaI7135aNw0sGa8Qd3A10FL9O49FcLqEdi/e
- vOKCd8R/yzylf7N9RuM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharmacivir.autos; 
- b=wr6YGbGntsxdCt2BVOa3WVLHWxFg6fdHRg0rpBWawEFkuJ+KgjFcurFNLs3RvOxJ3ACU1Jn1eVlA
- VRfojhNeH0GuCKTkzDTW8BnGQAbCUxcSkNi2QDXxvEFz8V0cGWUjMrNwPQo8Xe6G/NsXGkXv5iQ3
- zWDF8mGvYVGF0WQmr8w=;
-Received: by mail.pharmacivir.autos id h4702k0001gl for
+ i=survey_rewards_at_home_depot@girfclasictools.click; 
+ bh=R5LO5RnHC85x31W191Y/8ZSuYyk=;
+ b=Qbdbd8dXq2dxuk4dGc6e/SINxYKjr0Ii9BxExO5EBstSkz0fkM5TxjLV4fHtjfqiLjVzMhi2gCxo
+ rz7SAVrgxikb1EtEWD/Uhzwj2C09ohULPh7RfCAIWgCRDGsoP9iK5tyZSSgHMAMwu3sc55bI/Fiq
+ JDjKVscKJ7HiXGraSqQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
+ d=girfclasictools.click; 
+ b=M0MMW8T0xVGsjhVoEcdZK2+pYgR0RdTsS9zF2LSXULizWX9S/aZ6KJc7/xvHrVL5v/Ygm99gHSdI
+ OJZsaBvHx44i178sbIA6EHHvwY9oiXx3h2+kwdSsyLmAXHmJQ18/+phNiN1mdC9Q2hwdq5dHg2c0
+ 5yqDXgJnXKqo0NyFZ3k=;
+Received: by mail.girfclasictools.click id h4ac360001g7 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 7 Oct 2023 16:23:42 -0400 (envelope-from
- <unlock-your-cvs-discounts-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharmacivir.autos>)
-Date: Sat, 7 Oct 2023 16:23:42 -0400
-From: "Unlock Your CVS Discounts" <unlock-your-cvs-discounts@pharmacivir.autos>
+ Sun, 8 Oct 2023 07:45:40 -0400 (envelope-from
+ <survey_rewards_at_home_depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@girfclasictools.click>)
+Date: Sun, 8 Oct 2023 07:45:40 -0400
+From: "Survey Rewards At Home Depot"
+ <survey_rewards_at_home_depot@girfclasictools.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <506520283445.1696710199753116@pharmacivir.autos>
-Subject: Win Up to $100 in CVS Gift Cards Today!
+Message-ID: <138333790203.16967655259068024@girfclasictools.click>
+Subject: Limited-time opportunity: Grab a Makita Drill Set today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=1258ceb0cd1d5fa1f104975edcc42652410010056949797
+ boundary=9ce58cc317bb3a4bf58dc225c6cd4642101971019910001
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,70 +56,101 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---1258ceb0cd1d5fa1f104975edcc42652410010056949797
+--9ce58cc317bb3a4bf58dc225c6cd4642101971019910001
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <html lang="en">
  <head> 
+  <link href="http://www.girfclasictools.click/rough-exponent/e405S23N95S8V6v12RO6266m17e2_36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne6p1oW0N5IOJwD" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.girfclasictools.click/piecewise-fitting/9185S2S395ny86I13U6j267qR17e2j36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQkRQne6zH10gg6iqwOD1" rel="preconnect" /> 
+  <link href="http://www.girfclasictools.click/rough-exponent/e405S23N95S8V6v12RO6266m17e2_36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne6p1oW0N5IOJwD/css2?family=Asap:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>appreciate your choice</title> 
+  <title>recognized and</title> 
  </head> 
- <body style="background-color: #fafafa; margin: 0; padding: 0;"> 
-  <div id="Honlllsap"> 
-   <div class="rretaeeas" style="border-right: solid 25px #ffd4d4; border-left: solid 25px #ffd4d4;"> 
-    <div class="00921saw" style="max-width: 700px; margin: auto; background-color: #fff; padding: 15px 0;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" id="championsships" style="border-collapse: collapse;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="center" class="Jallystops"> 
-         <center style="max-width: 150px; margin: auto;">
-          <a href="http://www.pharmacivir.autos/kneeling-Hearst/6484K2395j8ro612Q6260hK17e1l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQnS5j10D_5rTkwD"><img alt="JJUEAS" src="http://www.pharmacivir.autos/kneeling-Hearst/dc86M2z3o95vT7Oa11r6262P17e1t36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQsRQnS6H10_rI6EkNUwD" width="100%" /> </a>
-         </center> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <section style="max-width: 550px; margin: auto; background-color: #dd0000; padding: .8em 0; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 22px; text-align: center; font-weight: bold;">
-      Exclusive Offers for Our Valued Customers
-     </section> 
-     <aside style="max-width: 500px; margin: auto; padding: 0;"> 
-      <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 18px;line-height: 27px;font-weight: 500; text-align: center;padding: 15px 0px 0px;;">We value your selection of <strong>CVS</strong>. Your loyalty and support mean a great deal to us, and we genuinely appreciate the opportunity to assist you.</p> 
-      <div style="text-align: center;"> 
-       <div style="display: inline-block; max-width: 90px; margin: auto; margin: 1%;">
-        <a href="http://www.pharmacivir.autos/kneeling-Hearst/6484K2395j8ro612Q6260hK17e1l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQnS5j10D_5rTkwD" target="_blank"><img alt="IIUES" src="http://www.pharmacivir.autos/gradation-flowery/7b04s2395b7rag11D6263J17e1D36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQsRQnS6Yoj1i05mTOwD" width="100%" /> </a>
+ <body style="background-color: #f0f0f0;margin: 0;padding: 0;"> 
+  <center> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td> 
+       <footer style="padding-top: 5mm;padding-bottom: 5mm;background-color: #fff;"> 
+        <table align="center" style="max-width: 400px; margin: auto; border-collapse: collapse;"> 
+         <tbody> 
+          <tr> 
+           <td align="center"><a href="http://www.girfclasictools.click/7736M2C39z5k8m6W11O6268U17e2X36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne5GVZ106wLzJwD/apricots-conquerers"><img alt="PPOSA" src="http://www.girfclasictools.click/8bd6C2o3l95g7QaD13Q6g2x6aH17e2r36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQkRQne5OL10p5uklwD/bath-warehousing" width="100%" /> </a></td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </footer> 
+       <div style="padding-top: .5rem;">
+        &nbsp;
        </div> 
-       <div style="display: inline-block; max-width: 100px; margin: auto; margin: 3%;">
-        <a href="http://www.pharmacivir.autos/kneeling-Hearst/6484K2395j8ro612Q6260hK17e1l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQnS5j10D_5rTkwD" target="_blank"><img alt="IIUES" src="http://www.pharmacivir.autos/gradation-flowery/9544b2395g7Una13O62m64XY17e1l36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQsRQnS5Dk10I5oBzwD" width="100%" /> </a>
-       </div> 
-      </div> 
-      <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 18px;line-height: 27px;font-weight: 500; text-align: center;padding: 15px 0px 0px;;">Your feedback holds significant importance to us, and as a gesture of our appreciation, we'd like to extend a special thank you for dedicating your time to share your insights.<br /> <br /> <b>Upon completing the survey, there's a chance that you could choose from a variety of gifts! </b></p> &nbsp; 
-      <table style="padding: 1.5% 7%;background-color: red;font-family: Arial, Helvetica, sans-serif;font-size: 1.1rem;max-width: 300px;margin: auto;font-weight: 800;border-radius: 7px;;"> 
-       <tbody> 
-        <tr> 
-         <td><span><a href="http://www.pharmacivir.autos/kneeling-Hearst/6484K2395j8ro612Q6260hK17e1l36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQnS5j10D_5rTkwD" style="text-decoration: none;color: #fff;">Start Now &gt;&gt; </a> </span></td> 
-        </tr> 
-       </tbody> 
-      </table> 
-     </aside> 
-     <br /> 
-     <br /> &nbsp; 
-     <hr /> 
-     <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
-      <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 18px;line-height: 27px;font-weight: 500; text-align: center;padding: 15px 0px 0px;;">Thank you once more for your support. We are eagerly looking forward to your prompt response! Warm regards,</p> 
-     </div> 
-    </div> &nbsp; 
-    <h1 style="padding-bottom: 20rem;">&nbsp;</h1> 
-    <div style="background-color: silver; padding: 15pt 0;"> 
-     <h4 style="max-width: 520px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; text-align: center;">time to show you the exit <a href="http://www.pharmacivir.autos/kneeling-Hearst/a806V2F3U95S8_6R11e6261X17e1J36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQsRQnS6zO1W0N5FJwAD"> here </a><br /> US 10010 126 E 23rd St New York, NY,</h4> 
-    </div> 
-    <div style="background-color: #424242;">
-     <br /> &nbsp;
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.pharmacivir.autos/jabbing-chancery/1025i23w95E8ri512S62X65M17e1A36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQsRQnS6MoC1H05BlWwD" alt=""/></body>
+       <table style="max-width: 510px; margin: auto; border-collapse: collapse;"> 
+        <tbody> 
+         <tr> 
+          <td> 
+           <div style="background-color: #F25F01;"> 
+            <p id="lloease" style="margin: 0;padding: 3.5% 5%;font-family: 'Asap', sans-serif;;font-weight: 600;text-align: center;font-size: 1.3rem; color: #fff;">We want to express our gratitude for selecting our services. Your loyalty and support are greatly valued by us and will always be acknowledged and treasured.</p> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <center> 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td align="center"> 
+            <div> 
+             <section style="max-width: 508px;margin: auto"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center"> <p class="hyyseas" style="margin: 0;padding: 3.5% 5%;font-family: 'Asap', sans-serif;;font-weight: 600;text-align: center;font-size: 1.2rem; background-color: #fff;line-height: 1.7rem;">As an expression of our appreciation for your support, we're offering you the chance to receive a <b>MAKITA DRILL Set!</b> !</p> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </section> 
+             <table align="center" style="border-collapse: collapse; background-color: #fff; max-width: 508px; margin: auto;"> 
+              <tbody> 
+               <tr> 
+                <td align="center" width="508px"> 
+                 <div style="max-width: 508px;margin: auto; background-color: #fff;"> 
+                  <div style="max-width: 508px; margin: auto; background-color: #fff;"> 
+                   <center style="max-width: 320px; margin: auto;">
+                    <a href="http://www.girfclasictools.click/7736M2C39z5k8m6W11O6268U17e2X36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne5GVZ106wLzJwD/apricots-conquerers"><img alt="OOUESA" src="http://www.girfclasictools.click/89f4p2395okT7a13o626HLbk17e2S36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne7DtC1Il05NUUwD/explorers-thereafter" width="100%" /> </a>
+                   </center> 
+                   <p style="font-family: 'Asap', sans-serif;;font-weight: 500;text-align: center;font-size: 1.2rem; line-height: 1.7rem;; padding: 3.5% 5%;"><b>Your input is of great importance to us. </b><br /> <br /> Securing this reward is straightforward; it will require only 30 seconds of your time to provide us with your feedback, and we'll promptly send it to you.</p> 
+                   <div style="max-width: 508px; margin: auto; background-color: #F25F01; padding: 7mm 0;"> 
+                    <div style="max-width: 300px; margin: auto;"> 
+                     <center style="background-color: #fff; text-align: center; font-weight: 600; font-family: 'Asap', sans-serif;; padding: 2.5mm 5mm; border-radius: 30px; font-size: 1.5rem;">
+                      <a href="http://www.girfclasictools.click/7736M2C39z5k8m6W11O6268U17e2X36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQne5GVZ106wLzJwD/apricots-conquerers" style="text-decoration: none; color: #F25F01;">Start Here Now &gt;&gt; </a>
+                     </center> 
+                    </div> 
+                   </div> 
+                  </div> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <h6 style="padding-top: 30rem;">&nbsp;</h6> 
+             <article style="background-color: rgb(255, 242, 224); padding-top: 1.5rem; padding-bottom: 1.5rem; margin: 0;;"> 
+              <p style="font-weight: 900; font-size: 12px; text-align: center; max-width: 520px; margin: auto; font-family: 'Asap', sans-serif;;"><font>you can leave with sadness <a href="http://www.girfclasictools.click/piecewise-fitting/8824c2395A8R6I11c6269V17e2N36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQkRQne7jT1Ynk06CAwzAD"> here </a><br /> US 10010 126 E 23rd St New York, NY, </font></p> 
+             </article> 
+             <br /> 
+             <br /> &nbsp;
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </center> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </center>   
+ <img src="http://www.girfclasictools.click/be74K2395d85YA11B626cp17e2F36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQkRQne6WF_1l05QB2wD/ager-shanty" alt=""/></body>
 </html>
 
---1258ceb0cd1d5fa1f104975edcc42652410010056949797--
+--9ce58cc317bb3a4bf58dc225c6cd4642101971019910001--
 
