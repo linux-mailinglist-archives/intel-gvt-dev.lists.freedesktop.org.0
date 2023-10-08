@@ -2,46 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D87447BCE5E
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 14:48:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E2DD77BCEFC
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 16:55:22 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A730310E0BF;
-	Sun,  8 Oct 2023 12:48:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 53B7610E19A;
+	Sun,  8 Oct 2023 14:55:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 08 Oct 2023 12:48:38 UTC
-Received: from mail.harspecialtools.click (unknown [77.90.135.128])
- by gabe.freedesktop.org (Postfix) with ESMTP id 088A010E0BF
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sun, 08 Oct 2023 14:55:18 UTC
+Received: from mail.otgflyingtime.click (unknown [157.52.235.153])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7FA8B10E19B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  8 Oct 2023 12:48:38 +0000 (UTC)
+ Sun,  8 Oct 2023 14:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=harspecialtools.click; 
+ d=otgflyingtime.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor-freight-user-feedback@harspecialtools.click; 
- bh=hdrIGA1UAAnJmSDYpqMie1bZlPg=;
- b=TdTxbg9Y2rkmFmOzl1lcrKZ0aDut/2L+j5KEKdAebeLyhe38d2h31SHLwoxt3d5eIWhQUvjmsWpd
- wT1xZFof4S2QL8reLQLjSVJq0ohZit4zxuQWmpWD+T6gQ3a310jaVLjQgp6K9ghMR/WgJ2alg/x7
- vV26kaAt2ADj6OHMIW4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=harspecialtools.click; 
- b=h6VRcuQXFX+eexbWmoJ2gwIYLskBbeP0UYFCGEXStxGVqdH0dHpPVw047Fol3ch8zH+cC4SBqQ7a
- DqJEWJWryMUFuT9r6k7MZGaJLNPRmqxqclop03U52LjZea3M660RqYOTTCubGgMHjg6agijTL0ye
- 2+aGUYFX2ViSvska52Y=;
-Received: by mail.harspecialtools.click id h4arvi0001go for
+ i=your-personalized-delta-flight-information@otgflyingtime.click; 
+ bh=nKU6JmXT/SGQQz3MXsnbogCa7XQ=;
+ b=q+dtLg+6xdEUo7K0BIbwlOWvf6TvCpQarU9WL4A+esA2/Gy8RRa38jsotRencIsIKKLfxvy2Xka4
+ oUfLifYGHpBGJCvCZPoBsncBWu1kPUXVlWzkDpsmVEXq2XmAGnDWQn1GtQ7RbZj7AtUthhuhoOrP
+ mWbzF77CQ9ope8soA7M=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=otgflyingtime.click;
+ b=jU0NdI2btyPq0UWly9vD5A91Q9a2VpxatMJhs5aTldqPMCCIeKn8T5O4W2SG0DViOjBCtTLDzJEs
+ AsfYCP8gaF85XH9lNWfGa8WgbuqWtqizk4iJV8rqF1rh4AfpuGDi+3xoBajjJmk7tk9dHtelei6u
+ +A8AlPiaq/rKFg7r3PI=;
+Received: by mail.otgflyingtime.click id h4b1dc0001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 8 Oct 2023 09:59:04 -0400 (envelope-from
- <harbor-freight-user-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@harspecialtools.click>)
-Date: Sun, 8 Oct 2023 09:59:04 -0400
-From: "Harbor Freight User Feedback"
- <harbor-freight-user-feedback@harspecialtools.click>
+ Sun, 8 Oct 2023 10:44:05 -0400 (envelope-from
+ <your-personalized-delta-flight-information-intel+2Dgvt+2Ddev=lists.freedesktop.org@otgflyingtime.click>)
+Date: Sun, 8 Oct 2023 10:44:05 -0400
+From: "Your Personalized Delta Flight Information"
+ <your-personalized-delta-flight-information@otgflyingtime.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <8150927900.16967687085417@harspecialtools.click>
-Subject: A personalized Pittsburgh 225 Piece Tool Set is set aside for you -
- share your opinions to receive it.
+Message-ID: <6566230081.16967762393827@otgflyingtime.click>
+Subject: Commemorate the season's festivities with a free flight to your dream
+ destination!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=43cec1f619fc23bd882c24e8abdf62f410301410219899
+ boundary=9ef96f5a8a0a574e138de0a5ced5ac502979971020
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---43cec1f619fc23bd882c24e8abdf62f410301410219899
+--9ef96f5a8a0a574e138de0a5ced5ac502979971020
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -66,153 +65,101 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.harspecialtools.click/talkie-Barcelona/e7c4K2395Q8L6g13Q6H2y6di17e3A36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQcRQnK7wIkS10p6wpBUwD" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.harspecialtools.click/7196n23xK95l86VB13Ni626kei17e3N36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQcRQnK6yyH1z05NBwkD/talkie-Barcelona" rel="preconnect" /> 
-  <link href="http://www.harspecialtools.click/talkie-Barcelona/e7c4K2395Q8L6g13Q6H2y6di17e3A36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQcRQnK7wIkS10p6wpBUwD/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&amp;display=swap" rel="stylesheet" /> 
-  <title>excited to share</title> 
+  <title>aspect for your</title> 
+  <link href="http://www.otgflyingtime.click/protozoan-unfettered/35a5Q239R5bg86U11N6279p17e5o36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQbRQon5S1T0j6LOPwDz" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.otgflyingtime.click/yesterday-anxiously/15c6Q23w9A5iB8i611S627aq17e5x36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQbRQon5i1j0P6zAN@wD" rel="preconnect" /> 
+  <link href="http://www.otgflyingtime.click/protozoan-unfettered/35a5Q239R5bg86U11N6279p17e5o36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQbRQon5S1T0j6LOPwDz/css2?family=Asap+Condensed:wght@200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
  </head> 
  <body> 
-  <div class="shakers" style="
-        width: 100%;
-        background-color: rgb(230, 230, 230);"> 
-   <ul class="jactris" style="
-        list-style-type: none;
-        padding: 0;
-        margin: 0;"> 
-    <li class="cambrisx"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" id="container" style="border-collapse: collapse;" width="100%"> 
-      <thead> 
-       <tr> 
-        <th align="center" class="otgcomis" colspan="4" id="cabezals"> 
-         <center class="DOCTYPE"> 
-          <h6 id="shooops" style="margin: 0;">&nbsp;</h6> 
-          <div style="max-width: 205px; margin: auto;">
-           <a href="http://www.harspecialtools.click/Everest-reliving/4fe5r2Y395n86iP13z6Fi26fQ17e3z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQcRQnK5b1YV05K1WwD" target="_blank"><img alt="UYSAE" src="http://www.harspecialtools.click/breathtaking-genre/8a05W239r5NvI7a12O62I71M17e3Z36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQcRQnK6IKN10g5MJwD1" width="100%" /></a>
-          </div> 
-         </center> </th> 
-       </tr> 
-      </thead> 
-      <tbody> 
-       <tr> 
-        <td class="golprisx"> 
-         <section id="chamixtrox"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ollsings" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td class="fakastree3"> 
-              <div class="lolis">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </section> </td> 
-       </tr> 
-       <tr> 
-       </tr> 
-       <tr> 
-        <td class="golprisx" style="background-color: rgb(173, 0, 0);"> 
-         <section id="chamixtrox"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ollsings" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" class="fakastree3" colspan="2"> 
-              <div class="lolis" style="
-                                        max-width: 33em;
-                                        margin: auto;
-                                        ;"> 
-               <p style="
-font-family: 'M PLUS Rounded 1c', sans-serif;
-font-weight: 800;
-font-size: 18pt;
-color: #fff;
-">Significant Updates<br /> from Harbor Freight</p> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </section> </td> 
-       </tr> 
-       <tr> 
-       </tr> 
-       <tr> 
-        <td class="golprisx"> 
-         <section id="chamixtrox"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ollsings" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center" class="fakastree3"> 
-              <div class="lolis" style="
-                                    max-width: 33em;
-                                    margin: auto;
-                                    ;"> 
-               <center align="center" id="topsgues" style="
-background-color: #fff;
-padding: 3.5% 4%;"> 
-                <p style="
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-     font-size: 13pt;
-     font-weight: 500;
-     line-height: 20pt;
-     padding-left: 15pt;
-     padding-right: 15pt;
-     margin: 0;">We're thrilled to announce some exciting news from <b style="color: rgb(173, 0, 0);">Harbor Freight</b>. You now have the opportunity to obtain a <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.<br /> <br /> Take quick action and seize this opportunity! You have until <b>October 9th</b> to acquire these exciting tools.</p> &nbsp; 
-                <table style="max-width: 285px; margin: auto;"> 
-                 <tbody> 
-                  <tr> 
-                   <td> 
-                    <div>
-                     <a href="http://www.harspecialtools.click/Everest-reliving/4fe5r2Y395n86iP13z6Fi26fQ17e3z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQcRQnK5b1YV05K1WwD" target="_blank"><img alt="YYTSA" src="http://www.harspecialtools.click/e3h4G2395i7aHg11h6272w17e3P36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQcRQnK7QoyC1w06t3lwlD/Michigan-bordellos" width="100%" /></a>
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> &nbsp; 
-                <center style="padding-top: 1.2em;padding-bottom: 1.2em;"> 
-                 <blockquote style="margin: 0;padding: 0;background-color: #a50000;padding-top: 13pt;padding-right: 30pt;padding-bottom: 13pt;padding-left: 30pt;border-radius: 12px;font-family: 'Roboto', sans-serif;width: 12em;margin: auto;font-weight: 600;font-size: 1.1em;">
-                  <span class="reallys"><a href="http://www.harspecialtools.click/Everest-reliving/4fe5r2Y395n86iP13z6Fi26fQ17e3z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQcRQnK5b1YV05K1WwD" style="text-decoration: none;color: #fff;">Start Here Now &gt; &gt; </a> </span>
-                 </blockquote> 
-                </center> 
-               </center> &nbsp; 
-               <div class="padings" style="padding-top: 352px;">
-                &nbsp;
-               </div> 
-               <address style="
-background-color: #a50000; padding: 3.5% 0%;"> 
-                <fieldset style="border-style: none;">
-                 <legend style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-align: center; font-size: 11pt; color: #fff; line-height: 18pt; text-align: center;"> more than welcome to leave in <a href="http://www.harspecialtools.click/9354C2395O8S6w11Q6270u17e3Y36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQcRQnK5q10lD6nL@wqD/apprentice-expositions">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY, </legend>
-                </fieldset> </address> 
-               <br /> 
-               <br /> &nbsp;
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </section> </td> 
-        <td class="golprisx"> 
-         <section id="chamixtrox"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ollsings" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td class="fakastree3"> 
-              <div class="lolis">
-               &nbsp;
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </section> </td> 
-       </tr> 
-      </tbody> 
-      <tfoot> 
-       <tr> 
-        <td align="center" class="final" colspan="4">&nbsp;</td> 
-       </tr> 
-      </tfoot> 
-     </table> </li> 
-   </ul> 
-  </div>   
- <img src="http://www.harspecialtools.click/6836H2RK395E8Xy513R6273SZq17e3Z36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQcRQnK5yFP105XlOwD/sweatshirt-Holyoke" alt=""/></body>
+  <table align="center" border="0" cellpadding="0" cellspacing="0" class="choptis" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center" id="primates"> 
+      <div style="background-color: rgb(248, 248, 248); width: 100%;"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" id="clmas" style="border-collapse: collapse;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td class="shoppsrts"> 
+           <div style="max-width: 580px; margin: auto; background-color: #fff;"> 
+            <table align="center" border="0" cellpadding="10px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(37, 37, 37);" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center"> 
+                <center style="max-width: 220px; margin: auto;">
+                 <a href="http://www.otgflyingtime.click/curtain-interpolate/9186LM239m5jmt8611B627bF17e5l36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQbRQon6jW10iH5EJkwD" target="_blank"><img alt="NNBSV" src="http://www.otgflyingtime.click/4496t2nD395Y7MaK12K627ZdR17e5p36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQbRQon5OMI105FO0wD/boyfriend-canopy" width="100%" /></a>
+                </center> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <div class="jakstyle" style="max-width: 550px; margin: auto; text-align: center;"> 
+             <table> 
+              <tbody align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tr> 
+                <td align="center" aria-label="center"> 
+                 <div style="border: solid 1.5px #000;"> 
+                  <table align="center" border="0" cellpadding="15" cellspacing="0" style="border-collapse: collapse; background-color: #cecece;" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" id="clocks"> 
+                      <center>
+                       <a href="http://www.otgflyingtime.click/curtain-interpolate/9186LM239m5jmt8611B627bF17e5l36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQbRQon6jW10iH5EJkwD" target="_blank"><img alt="RRESA" src="http://www.otgflyingtime.click/e3f4q2395K7aPO11e627et17e5F36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQbRQon6av1l0L6YA0wDW/snobbish-sharecropper" width="100%" /></a>
+                      </center> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                  <div id="seconstrosp"> 
+                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: #fff;" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center" class="tex"> <p style="
+    font-family: 'Asap Condensed', sans-serif;
+    font-size: .45cm;
+    font-weight: 500;
+    line-height: .7cm;
+    padding: 0 .5cm;">We genuinely value your choice to travel with Delta! Each journey you undertake with us adds to our story, and we're excited to improve every aspect for your enjoyment.<br /> <br /> Let's take your flying experience to the next level! Share your thoughts on your recent Delta journey by participating in a brief survey. Click the link below to embark on this quick exploration.<br /> <br /> Your input doesn't just shape our future; it might also unlock an opportunity to receive a surprise $100 gift! Every viewpoint is valuable, so make sure yours counts today!<br /> <span style="color: #ff0000;">#EnhanceYourDeltaExperience.</span></p> 
+                       <table align="center" style="width: 92%; margin: auto;"> 
+                        <tbody> 
+                         <tr> 
+                          <td align="center"><a href="http://www.otgflyingtime.click/curtain-interpolate/9186LM239m5jmt8611B627bF17e5l36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQbRQon6jW10iH5EJkwD" style="text-decoration: none; color: #fff;"><span style="display: inline-block; background-color: #222222; padding: 3.5% 10%; border-radius: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 600; font-size: 24px;">Fly Better With Delta Now &raquo; </span></a></td> 
+                         </tr> 
+                        </tbody> 
+                       </table> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                   <br /> &nbsp;
+                  </div> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </div> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <h4 class="lingotes" style="padding-top: 350px;;">&nbsp;</h4> 
+       <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse; background-color: lavender;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 520px; margin: auto;"> 
+            <tbody> 
+             <tr> 
+              <td align="center" class="gobys" style="font-family: 'Asap Condensed', sans-serif; font-size: 14px; font-weight: 600; ;">Join us at the exit <a href="http://www.otgflyingtime.click/curtain-interpolate/e7c4V2395zxu8612kM627cP17e5p36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQbRQon7ULy1M0X5CTwjD">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+             </tr> 
+            </tbody> 
+           </table> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+       <h4 class="lingotes" style="padding-bottom: 150px;;">&nbsp;</h4> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.otgflyingtime.click/4495N2G395XU85M11z627fL17e5p36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQbRQon6mz1_P05K1PwD/stealing-mensurable" alt=""/></body>
 </html>
 
---43cec1f619fc23bd882c24e8abdf62f410301410219899--
+--9ef96f5a8a0a574e138de0a5ced5ac502979971020--
 
