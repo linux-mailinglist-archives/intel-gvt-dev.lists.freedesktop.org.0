@@ -1,45 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5A1A7BCE9C
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 15:42:47 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D87447BCE5E
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 14:48:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A41AA10E121;
-	Sun,  8 Oct 2023 13:42:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A730310E0BF;
+	Sun,  8 Oct 2023 12:48:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 329 seconds by postgrey-1.36 at gabe;
- Sun, 08 Oct 2023 13:42:44 UTC
-Received: from mail.spressdayinfo.click (unknown [157.52.235.157])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3580810E05C
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Sun, 08 Oct 2023 12:48:38 UTC
+Received: from mail.harspecialtools.click (unknown [77.90.135.128])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 088A010E0BF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  8 Oct 2023 13:42:44 +0000 (UTC)
+ Sun,  8 Oct 2023 12:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=spressdayinfo.click; 
+ d=harspecialtools.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=brew.share.your.starbucks.opinion@spressdayinfo.click; 
- bh=81WPQiDLtdXDYAktLb9lcDI4VUc=;
- b=oRoyr53ENJlliFxcjhaKawQsYiC6ej31z0nibGZ356eXv2QhXdyx99n6ITrATbiSKBAy7R0gXGlk
- EPFH/cVCBA8HCsBi6jGvqLjDjyN15c0OOeg+Qw8IDia83epNYuGkfzVoSAiwQsSg89/ysUatVRCx
- Zcn2kyXsl8/S7CXfD0M=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=spressdayinfo.click;
- b=d4xLkVsL5SZVO5lFdxvQZ4pT2FfqK/9qK2PgYQBz94utRzs8QD5HhIXvmQ14CG5RjJ5vTg/P4M9o
- 9aUvldGQGfgTJUb+o0ogi5uBlUFADfOmwfQ9/3xkReHaJQ1yKca1ROhUngL7Qv/Fl/p/DHxRti3q
- jXCG30dv3y0dYjhHATg=;
-Received: by mail.spressdayinfo.click id h4aot80001g3 for
+ i=harbor-freight-user-feedback@harspecialtools.click; 
+ bh=hdrIGA1UAAnJmSDYpqMie1bZlPg=;
+ b=TdTxbg9Y2rkmFmOzl1lcrKZ0aDut/2L+j5KEKdAebeLyhe38d2h31SHLwoxt3d5eIWhQUvjmsWpd
+ wT1xZFof4S2QL8reLQLjSVJq0ohZit4zxuQWmpWD+T6gQ3a310jaVLjQgp6K9ghMR/WgJ2alg/x7
+ vV26kaAt2ADj6OHMIW4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
+ d=harspecialtools.click; 
+ b=h6VRcuQXFX+eexbWmoJ2gwIYLskBbeP0UYFCGEXStxGVqdH0dHpPVw047Fol3ch8zH+cC4SBqQ7a
+ DqJEWJWryMUFuT9r6k7MZGaJLNPRmqxqclop03U52LjZea3M660RqYOTTCubGgMHjg6agijTL0ye
+ 2+aGUYFX2ViSvska52Y=;
+Received: by mail.harspecialtools.click id h4arvi0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 8 Oct 2023 09:34:19 -0400 (envelope-from
- <brew.share.your.starbucks.opinion-intel+2Dgvt+2Ddev=lists.freedesktop.org@spressdayinfo.click>)
-Date: Sun, 8 Oct 2023 09:34:19 -0400
-From: "Brew Share Your Starbucks Opinion"
- <brew.share.your.starbucks.opinion@spressdayinfo.click>
+ Sun, 8 Oct 2023 09:59:04 -0400 (envelope-from
+ <harbor-freight-user-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@harspecialtools.click>)
+Date: Sun, 8 Oct 2023 09:59:04 -0400
+From: "Harbor Freight User Feedback"
+ <harbor-freight-user-feedback@harspecialtools.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <10734098029824.1696772045433006@spressdayinfo.click>
-Subject: Starbucks gift cards: gift the flavor!
+Message-ID: <8150927900.16967687085417@harspecialtools.click>
+Subject: A personalized Pittsburgh 225 Piece Tool Set is set aside for you -
+ share your opinions to receive it.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=d66b558ea024113c1d1d6dc9b01afbd299549429897935
+ boundary=43cec1f619fc23bd882c24e8abdf62f410301410219899
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +57,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---d66b558ea024113c1d1d6dc9b01afbd299549429897935
+--43cec1f619fc23bd882c24e8abdf62f410301410219899
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,98 +66,153 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
-	</style> 
-  <title>Exciting Announcement</title> 
+  <link href="http://www.harspecialtools.click/talkie-Barcelona/e7c4K2395Q8L6g13Q6H2y6di17e3A36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQcRQnK7wIkS10p6wpBUwD" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.harspecialtools.click/7196n23xK95l86VB13Ni626kei17e3N36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQcRQnK6yyH1z05NBwkD/talkie-Barcelona" rel="preconnect" /> 
+  <link href="http://www.harspecialtools.click/talkie-Barcelona/e7c4K2395Q8L6g13Q6H2y6di17e3A36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQcRQnK7wIkS10p6wpBUwD/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&amp;display=swap" rel="stylesheet" /> 
+  <title>excited to share</title> 
  </head> 
  <body> 
-  <div style="
-        background-color: rgb(234, 247, 255);
+  <div class="shakers" style="
         width: 100%;
-        padding: 7% 0;"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" id="flips" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"> 
-       <div style="
-    border: double 4px #1C6D2F;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    border-top: solid 25px #1C6D2F;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom: solid 25px #1C6D2F;
-    max-width: 33em; margin: auto;
-    background-color: #fff;
-    ;"> 
-        <section class="chaps"> 
-         <table align="center" cellpadding="10px"> 
-          <tbody> 
-           <tr> 
-            <td> 
-             <center style="max-width: 200px; margin: auto;">
-              <a href="http://www.spressdayinfo.click/2a55h23o95C8Q6m11A6274Z17e4J36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQJRQom6s1H0Yl6VlXwLD/precursor-Gothic" target="_blank"><img alt="MANSES" src="http://www.spressdayinfo.click/marketplaces-bayonets/d324g2395nv7aS11I6276S17e4L36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQJRQom6MY1OI05v@PwD" width="100%" /></a>
-             </center> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <div class="chaps"> 
-          <p style="
-        font-family: 'Overpass', sans-serif;
-        font-size: 6mm;
-        font-weight: 700;
-        text-align: center;
-        background-color: #1C6D2F; 
-        padding: 3.5%;
-        margin: 0; 
-        color: #fff;"><i><u>Your Final<br /> Communication from Starbucks</u></i></p> &nbsp; 
-          <p style="
-    font-family: 'Overpass', sans-serif;
-    margin: 0;
-    font-size: 4.5mm;
-    line-height: 7mm;
-    padding: 0 4.5%;
-    font-weight: 500;">Exciting News! <b>Starbucks</b> is presenting a special chance to obtain a <b>$100 Gift Card</b>, redeemable at any of our store locations. Don't let this opportunity slip away! You have until <b>October 8th</b> to savor our delightful beverages.</p> &nbsp; 
-          <div class="img" style="
-    padding: 3.5% 3%;
-    background-color: #f1fff4;"> 
-           <table style="max-width: 255px; margin: auto;"> 
-            <tbody> 
-             <tr> 
-              <td><a href="http://www.spressdayinfo.click/2a55h23o95C8Q6m11A6274Z17e4J36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQJRQom6s1H0Yl6VlXwLD/precursor-Gothic" target="_blank"><img alt="YYEASE" src="http://www.spressdayinfo.click/marketplaces-bayonets/6c04Y2395AQ7oa13R6z2P77N17e4Z36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQJRQom7PvQPq105ULwDA" width="100%" /></a></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> &nbsp; 
-          <center style="max-width: 13em; margin: auto;"> 
-           <center style="background-color: rgb(32, 111, 46);padding: 4mm 5mm;border-radius: 5px;font-family: 'Overpass', sans-serif; font-size: 18px;font-weight: 900;">
-            <span id="token"><a href="http://www.spressdayinfo.click/2a55h23o95C8Q6m11A6274Z17e4J36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQJRQom6s1H0Yl6VlXwLD/precursor-Gothic" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now </a> </span>
-           </center> 
-          </center> 
-          <br /> &nbsp; 
-          <p style="
-    font-family: 'Overpass', sans-serif;
-    margin: 0;
-    font-size: 4.5mm;
-    line-height: 7mm;
-    padding: 0 4.5%;
-    font-weight: 500;">We deeply appreciate your participation.<br /> Warm regards,<br /> <b>The Starbucks Team.</b></p> 
-          <br /> &nbsp;
-         </div> 
-        </section> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <div style="padding-top: 400px;">
-    &nbsp;
-   </div> 
-   <div style="background-color: rgb(214, 247, 255); padding: 15px 0;"> 
-    <p style="font-family: 'Overpass', sans-serif; font-weight: 600; color: #000000; text-align: center; max-width: 520px; margin: auto; font-size: 12px;"><span id="token"><i>you can leave with sadness <a href="http://www.spressdayinfo.click/24b5m239I5qK8Z611z6275I17e4k36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQJRQom7E1Sq0WP5E0wJD/marketplaces-bayonets"> here </a><br /> US 10010 126 E 23rd St New York, NY, </i> </span></p> 
-   </div> 
+        background-color: rgb(230, 230, 230);"> 
+   <ul class="jactris" style="
+        list-style-type: none;
+        padding: 0;
+        margin: 0;"> 
+    <li class="cambrisx"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" id="container" style="border-collapse: collapse;" width="100%"> 
+      <thead> 
+       <tr> 
+        <th align="center" class="otgcomis" colspan="4" id="cabezals"> 
+         <center class="DOCTYPE"> 
+          <h6 id="shooops" style="margin: 0;">&nbsp;</h6> 
+          <div style="max-width: 205px; margin: auto;">
+           <a href="http://www.harspecialtools.click/Everest-reliving/4fe5r2Y395n86iP13z6Fi26fQ17e3z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQcRQnK5b1YV05K1WwD" target="_blank"><img alt="UYSAE" src="http://www.harspecialtools.click/breathtaking-genre/8a05W239r5NvI7a12O62I71M17e3Z36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQcRQnK6IKN10g5MJwD1" width="100%" /></a>
+          </div> 
+         </center> </th> 
+       </tr> 
+      </thead> 
+      <tbody> 
+       <tr> 
+        <td class="golprisx"> 
+         <section id="chamixtrox"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ollsings" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="fakastree3"> 
+              <div class="lolis">
+               &nbsp;
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </section> </td> 
+       </tr> 
+       <tr> 
+       </tr> 
+       <tr> 
+        <td class="golprisx" style="background-color: rgb(173, 0, 0);"> 
+         <section id="chamixtrox"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ollsings" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center" class="fakastree3" colspan="2"> 
+              <div class="lolis" style="
+                                        max-width: 33em;
+                                        margin: auto;
+                                        ;"> 
+               <p style="
+font-family: 'M PLUS Rounded 1c', sans-serif;
+font-weight: 800;
+font-size: 18pt;
+color: #fff;
+">Significant Updates<br /> from Harbor Freight</p> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </section> </td> 
+       </tr> 
+       <tr> 
+       </tr> 
+       <tr> 
+        <td class="golprisx"> 
+         <section id="chamixtrox"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ollsings" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center" class="fakastree3"> 
+              <div class="lolis" style="
+                                    max-width: 33em;
+                                    margin: auto;
+                                    ;"> 
+               <center align="center" id="topsgues" style="
+background-color: #fff;
+padding: 3.5% 4%;"> 
+                <p style="
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+     font-size: 13pt;
+     font-weight: 500;
+     line-height: 20pt;
+     padding-left: 15pt;
+     padding-right: 15pt;
+     margin: 0;">We're thrilled to announce some exciting news from <b style="color: rgb(173, 0, 0);">Harbor Freight</b>. You now have the opportunity to obtain a <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.<br /> <br /> Take quick action and seize this opportunity! You have until <b>October 9th</b> to acquire these exciting tools.</p> &nbsp; 
+                <table style="max-width: 285px; margin: auto;"> 
+                 <tbody> 
+                  <tr> 
+                   <td> 
+                    <div>
+                     <a href="http://www.harspecialtools.click/Everest-reliving/4fe5r2Y395n86iP13z6Fi26fQ17e3z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQcRQnK5b1YV05K1WwD" target="_blank"><img alt="YYTSA" src="http://www.harspecialtools.click/e3h4G2395i7aHg11h6272w17e3P36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQcRQnK7QoyC1w06t3lwlD/Michigan-bordellos" width="100%" /></a>
+                    </div> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> &nbsp; 
+                <center style="padding-top: 1.2em;padding-bottom: 1.2em;"> 
+                 <blockquote style="margin: 0;padding: 0;background-color: #a50000;padding-top: 13pt;padding-right: 30pt;padding-bottom: 13pt;padding-left: 30pt;border-radius: 12px;font-family: 'Roboto', sans-serif;width: 12em;margin: auto;font-weight: 600;font-size: 1.1em;">
+                  <span class="reallys"><a href="http://www.harspecialtools.click/Everest-reliving/4fe5r2Y395n86iP13z6Fi26fQ17e3z36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQcRQnK5b1YV05K1WwD" style="text-decoration: none;color: #fff;">Start Here Now &gt; &gt; </a> </span>
+                 </blockquote> 
+                </center> 
+               </center> &nbsp; 
+               <div class="padings" style="padding-top: 352px;">
+                &nbsp;
+               </div> 
+               <address style="
+background-color: #a50000; padding: 3.5% 0%;"> 
+                <fieldset style="border-style: none;">
+                 <legend style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-align: center; font-size: 11pt; color: #fff; line-height: 18pt; text-align: center;"> more than welcome to leave in <a href="http://www.harspecialtools.click/9354C2395O8S6w11Q6270u17e3Y36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQcRQnK5q10lD6nL@wqD/apprentice-expositions">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY, </legend>
+                </fieldset> </address> 
+               <br /> 
+               <br /> &nbsp;
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </section> </td> 
+        <td class="golprisx"> 
+         <section id="chamixtrox"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ollsings" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="fakastree3"> 
+              <div class="lolis">
+               &nbsp;
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </section> </td> 
+       </tr> 
+      </tbody> 
+      <tfoot> 
+       <tr> 
+        <td align="center" class="final" colspan="4">&nbsp;</td> 
+       </tr> 
+      </tfoot> 
+     </table> </li> 
+   </ul> 
   </div>   
- <img src="http://www.spressdayinfo.click/1976N23ZM95v8j5_13j62Zm78r17e4w36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQJRQom5M1t0v5y0wlD/marketplaces-bayonets" alt=""/></body>
+ <img src="http://www.harspecialtools.click/6836H2RK395E8Xy513R6273SZq17e3Z36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQcRQnK5yFP105XlOwD/sweatshirt-Holyoke" alt=""/></body>
 </html>
 
---d66b558ea024113c1d1d6dc9b01afbd299549429897935--
+--43cec1f619fc23bd882c24e8abdf62f410301410219899--
 
