@@ -2,45 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 928FD7BCF1B
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 17:36:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E310B7BCF3F
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  8 Oct 2023 18:24:56 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5588D10E010;
-	Sun,  8 Oct 2023 15:36:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC1CF10E037;
+	Sun,  8 Oct 2023 16:24:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 08 Oct 2023 15:36:07 UTC
-Received: from mail.westtodayinfos.click (unknown [77.90.135.153])
- by gabe.freedesktop.org (Postfix) with ESMTP id 751AD10E037
+ Sun, 08 Oct 2023 16:24:52 UTC
+Received: from mail.slowtoolsfree.bond (unknown [77.90.135.170])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5DB5D10E037
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  8 Oct 2023 15:36:07 +0000 (UTC)
+ Sun,  8 Oct 2023 16:24:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=westtodayinfos.click; 
+ d=slowtoolsfree.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=your.goto.source.for.southwest.flight.details@westtodayinfos.click; 
- bh=db9y/69085MjTaYaGXHx0eKr4VU=;
- b=JDqFVpmqhpof2VSU2h4mxCHsE3MRfEduXWfir+EexyJw+SZAgTGKZzuXJ10Sk9s3ujHu9l+X22E/
- Om+DpSjN13M4ju5nKBXvWsajZeJGhagj3GoB7sq1ezd+VioctCpSsUCPHRCCShp2nl8ZaTyLzgCK
- bUATSFvPPqNADtP+XUI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=westtodayinfos.click;
- b=mZc7IolbqtI+T0AInyhrhhhHyceLQ+jLjuO0UrtUDdCGtNQ8ZghDmPsnvgccdhaDZOat8cJT1PDJ
- r1Ce3kq8GIE9xi6DPBsPlUs8/0tmbscgWMC+lBi9q6mO9/tl08KHkCDl6X/tO9wiFAnjLfkMI5XV
- mOPlh+EJmK9875DLRHU=;
-Received: by mail.westtodayinfos.click id h4b66e0001g1 for
+ i=ace-hardware-variety@slowtoolsfree.bond; 
+ bh=W2gQfDmzCQs0TXH0MhiN0ly0+oE=;
+ b=nM59MMrr/zXfTyvWwE2XsRWpAnHDdtpp1zA8kqyh/jCtTxL7jc1R36kfocvsJ3+5Zub6MBN0Tp4x
+ CnFOn7F44FEdzTDCZPZeSBOrAJ+zN8twEdLXI61U1Ug4t0yY5aDJK1ckd1kHLfI9NeOD2nmAlVIw
+ 8Q4qE6A5UQFhUhUyGxs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=slowtoolsfree.bond; 
+ b=eeO7MpUrJBDxTOwPrSXo0835BVC5xhX+g6R+1in1JZtWpX4bCgQwbuo10yRd1P/7ZZC1Ffe3tuHC
+ Y8CWhUcM5HKIthNT5uA4oAbEwmg0YjYaKwHgL0OeCP60oTiYQ66ianirQDbgpgz8CpvoNqvYm0BP
+ wiQ6e/C/BmOgjqWMwBQ=;
+Received: by mail.slowtoolsfree.bond id h4blae0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 8 Oct 2023 11:28:56 -0400 (envelope-from
- <your.goto.source.for.southwest.flight.details-intel+2Dgvt+2Ddev=lists.freedesktop.org@westtodayinfos.click>)
-Date: Sun, 8 Oct 2023 11:28:56 -0400
-From: "Your GoTo Source For Southwest Flight Details"
- <your.goto.source.for.southwest.flight.details@westtodayinfos.click>
+ Sun, 8 Oct 2023 13:36:41 -0400 (envelope-from
+ <ace-hardware-variety-intel+2Dgvt+2Ddev=lists.freedesktop.org@slowtoolsfree.bond>)
+Date: Sun, 8 Oct 2023 13:36:41 -0400
+From: "ACE Hardware Variety" <ace-hardware-variety@slowtoolsfree.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <6525064959227.169677892017464@westtodayinfos.click>
-Subject: Embrace the changing season with a complimentary flight to your
- preferred getaway!
+Message-ID: <4085982808886.16967817690035@slowtoolsfree.bond>
+Subject: Survey + Prize: Participate in the survey for your shot at winning a
+ Stanley tool set.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=836ac6e1ed96c06eca6c92217360e39a102101833
+ boundary=de7b93cc86cb1bef8458d7173896275a103303995497
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,120 +55,123 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---836ac6e1ed96c06eca6c92217360e39a102101833
+--de7b93cc86cb1bef8458d7173896275a103303995497
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>improve your experiences</title> 
+  <title>these outstanding</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(238, 238, 238);"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="crowss" style="border-collapse: collapse;" width="100%"> 
+ <body> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="plapes" style="border-collapse: collapse;" width="100%"> 
+   <thead> 
+    <tr> 
+     <th align="center" style="background-color: #F9F9F9;"> 
+      <div style="max-width: 200px; margin: auto;">
+       <a href="http://www.slowtoolsfree.bond/a7U5u23J95p8Ji613Ws62n85N17e7G36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2RQo96NG1CT06yL0wXD/Shintoize-Protozoa"><img alt="BBBSEA" src="http://www.slowtoolsfree.bond/f114P2395EUI7a11r6287k17e7n36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ2RQo97LX1A0Hr6mLwlDj/unsolvable-parabola" width="100%" /> </a>
+      </div> </th> 
+    </tr> 
+   </thead> 
    <tbody> 
     <tr> 
-     <td align="center" class="calvils"> 
-      <div style="padding: 10px 0; background-color: azure;">
-       &nbsp;
-      </div> 
-      <div style="padding: 10px 0; background-color:antiquewhite">
-       &nbsp;
-      </div> 
-      <div class="champlisclock">
-       &nbsp;
-      </div> 
-      <div class="champlisclock">
-       &nbsp;
-      </div> 
-      <div class="champlisclock">
-       &nbsp;
-      </div> 
-      <div class="champlisclock">
-       &nbsp;
-      </div> 
-      <ul style="margin: 0; padding: 0; list-style-type: none;"> 
-       <li class="gfrsddsa"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" id="totals" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="center" class="gamingsxports"> 
-            <center style="max-width: 600px; margin: auto; background-color: #fff; border-style: groove; border-radius: 10px;"> 
-             <div style="padding: .6cm .8cm;"> 
-              <article style="max-width: 200px; margin: auto;">
-               <a href="http://www.westtodayinfos.click/recommendations-Dartmouth/62a4r2395cPC8612U6n280A17e6t36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ.RQoo7n1LJC0L5n@wDL"><img alt="NNHASE" src="http://www.westtodayinfos.click/ad96K2z39v5c7ahU13pw628M2t17e6q36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ.RQoo7JuK10wh6nTTw@D/released-conflicted" width="100%" /> </a>
-              </article> 
-              <div> 
-               <div>
-                &nbsp;
-               </div> 
-              </div> 
-              <p align=" center" style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7mm; margin: 0;">Your input is of the highest significance to us. Kindly participate in a short survey about your recent flight and your overall interaction with <b>Southwest</b>. Your feedback will help us improve your experiences with our airline.</p> 
-             </div> 
-             <table align="center" border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse; background-color: #faffb7;" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7mm; font-weight: 600; padding: .5cm;">We deeply appreciate your feedback. Please take a moment to engage in a brief survey about your recent flight and your overall interaction with Southwest. Your responses will play a vital role in our efforts to enhance your experiences with our airline.</td> 
-               </tr> 
-              </tbody> 
-             </table> 
-             <div> 
-              <div style="margin: 0; padding: 0;">
-               <a href="http://www.westtodayinfos.click/recommendations-Dartmouth/62a4r2395cPC8612U6n280A17e6t36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ.RQoo7n1LJC0L5n@wDL"><img alt="MMNSA" src="http://www.westtodayinfos.click/Sumerian-puppeteer/bca4V2395cV7aw13h628U3v_17e6Y36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQ.RQoo6hj10BI6sqj3wD" style="display: block;" width="100%" /> </a>
-              </div> 
-             </div> 
-             <table align="center" border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse; background-color: #DB4437;" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7mm; font-weight: 600; padding: .5cm; color: #fff;">As a gesture of our appreciation, we are delighted to offer a $100 gift as a token of our gratitude.</td> 
-               </tr> 
-              </tbody> 
-             </table> &nbsp; 
-             <p align=" center" style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7mm; margin: 0; padding: .5cm;">You can utilize the provided link to access the survey. It's a simple task that will require only a few minutes of your time, and please rest assured that your responses will be treated with confidentiality.</p> 
-             <center style="max-width: 75%; margin: auto;"> 
-              <div style="background-color: #000983; padding: 3.5% 7%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; text-align: center; font-size: 20px; border-radius: 18px;">
-               <span style="display: block;"><a href="http://www.westtodayinfos.click/recommendations-Dartmouth/62a4r2395cPC8612U6n280A17e6t36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ.RQoo7n1LJC0L5n@wDL" style="color: white; text-decoration: none;">Kick off the survey Here&gt;&gt; </a> </span>
-              </div> 
-             </center> &nbsp; 
-             <hr />&nbsp; 
-             <p>We appreciate your ongoing support, and we eagerly await your feedback.<br /> Warm regards,</p> 
-            </center> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table style="padding-bottom: 300px;"> 
-         <tbody> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table bgcolor="000983" cellpadding="15px" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="center" style="max-width: 520p; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; text-align: center; color: #fff;">Use the exit option <a href="http://www.westtodayinfos.click/5b14p2395Ki86o13n62l8t1O17e6I36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ.RQoo7g1NpO0A5HzwD3/planks-bespoke" style="color: aqua;"> here </a><br /> US 10010 126 E 23rd St New York, NY,</td> 
-          </tr> 
-         </tbody> 
-        </table> <br /> &nbsp;</li> 
-      </ul> </td> 
+     <td id="lolipolps"> 
+      <div class="stocada"> 
+       <div class="container"> 
+        <section id="logotye"> 
+         <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+          <p style="font-size: 24px; font-family: Arial, Helvetica, sans-serif; text-align: center; margin: 0; padding: 15px 0px;"><i><b>Last Reminder from<br /> Ace Hardware </b> </i></p> 
+         </div> 
+        </section> 
+       </div> 
+      </div> </td> 
+    </tr> 
+    <tr> 
+    </tr> 
+    <tr> 
+     <td id="lolipolps"> 
+      <div class="stocada"> 
+       <div class="container"> 
+        <section id="logotye" style="background-color: #ffe8e8;"> 
+         <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+          <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; ; padding-left: 30px; padding-right: 30px; line-height: 25px;"><b>Ace Hardware</b> is thrilled to share some exciting news! You now have the opportunity to acquire the <b>Stanley Tool Set</b>, redeemable at any of our store locations. Don't hesitate; seize this chance! You have until <b>October 8th</b> to secure these exceptional tools.</p> 
+         </div> 
+        </section> 
+       </div> 
+      </div> </td> 
+    </tr> 
+    <tr> 
+    </tr> 
+    <tr> 
+     <td id="lolipolps"> 
+      <div class="stocada"> 
+       <div class="container"> 
+        <section id="logotye"> 
+         <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+          <table style="max-width: 350px; margin: auto;"> 
+           <tbody> 
+            <tr> 
+             <td><a href="http://www.slowtoolsfree.bond/a7U5u23J95p8Ji613Ws62n85N17e7G36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2RQo96NG1CT06yL0wXD/Shintoize-Protozoa"><img alt="OOOOIE" src="http://www.slowtoolsfree.bond/e034z2395In7ia13rU6288KC17e7N36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2RQo95Ntt106glwDyB/whitest-actuators" width="100%" /> </a></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> 
+        </section> 
+       </div> 
+      </div> </td> 
+    </tr> 
+    <tr> 
+    </tr> 
+    <tr> 
+     <td id="lolipolps"> 
+      <div class="stocada"> 
+       <div class="container"> 
+        <section id="logotye"> 
+         <div style="max-width: 500px; margin: auto; background-color: #fff;"> 
+          <table align="center"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <center style="border: solid 1.5px #383838; border-radius: 50px; padding: 1em 1.5em; font-weight: 900; font-family: Arial, Helvetica, sans-serif; font-size: 1em; width: 12em; margin: auto;">
+               <a href="http://www.slowtoolsfree.bond/a7U5u23J95p8Ji613Ws62n85N17e7G36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2RQo96NG1CT06yL0wXD/Shintoize-Protozoa" style="text-decoration: none; color: #3b3b3b;">Start Here Now &gt; &gt; </a>
+              </center> </td> 
+            </tr> 
+           </tbody> 
+          </table> &nbsp; 
+          <div style="background-color: #3a3a3a;"> 
+           <p style="margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; ; padding-left: 30px; padding-right: 30px; line-height: 25px; font-weight: 700; padding: 1.5em 2em; color: #fff;">We appreciate your expected support. Sincerely, The Ace Hardware Team.</p> 
+          </div> 
+         </div> 
+        </section> 
+       </div> 
+      </div> </td> 
+     <td id="lolipolps"> 
+      <div class="stocada"> 
+       <div class="container"> 
+        <section id="logotye">
+         &nbsp;
+        </section> 
+       </div> 
+      </div> </td> 
     </tr> 
    </tbody> 
-  </table> 
-  <div class="champlisclock">
-   &nbsp;
-  </div> 
-  <div class="champlisclock">
-   &nbsp;
-  </div> 
-  <div class="champlisclock">
-   &nbsp;
-  </div> 
-  <div class="champlisclock">
-   &nbsp;
-  </div>   
- <img src="http://www.westtodayinfos.click/pompousness-Vinson/Qc64j2395fo85J11h6284Y17e6k36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ.RQoo7zyytI106rpAw1D" alt=""/></body>
+   <tfoot> 
+    <tr> 
+     <td> 
+      <div style="padding-top: 400px;">
+       &nbsp;
+      </div> 
+      <footer style="background-color: rgb(220, 220, 245); padding: 1.8em 0em;"> 
+       <h4 style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center;">Anyway you can leave <a href="http://www.slowtoolsfree.bond/reformulate-perchance/c605k23D95mS8_613r62q86Ry17e7F36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ2RQo97f1gJ0_U6jUwzDX"> here </a><br /> US 10010 126 E 23rd St New York, NY,</h4> 
+      </footer> </td> 
+    </tr> 
+   </tfoot> 
+  </table>   
+ <img src="http://www.slowtoolsfree.bond/whitest-actuators/1s26Q2xW395HFz8511f6289t17e7j36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ2RQo97wu10Qxx5J@wDU" alt=""/></body>
 </html>
 
---836ac6e1ed96c06eca6c92217360e39a102101833--
+--de7b93cc86cb1bef8458d7173896275a103303995497--
 
