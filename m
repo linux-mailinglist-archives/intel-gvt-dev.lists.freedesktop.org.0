@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA2B67BD97B
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 13:23:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DBF727BDA7A
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 13:57:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B902810E0F0;
-	Mon,  9 Oct 2023 11:23:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A20FA10E0F5;
+	Mon,  9 Oct 2023 11:57:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 09 Oct 2023 11:23:25 UTC
-Received: from mail.prstoolswins.click (unknown [77.90.135.154])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4CC8C10E0F0
+ Mon, 09 Oct 2023 11:57:18 UTC
+Received: from mail.homespecialkit.click (unknown [77.90.135.162])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4677B10E0F5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Oct 2023 11:23:25 +0000 (UTC)
+ Mon,  9 Oct 2023 11:57:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=prstoolswins.click; 
+ d=homespecialkit.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor.freight.love@prstoolswins.click; 
- bh=vkQpl/LR/wPXeozuvqV1p76xv08=;
- b=MQXS+6QGH1RHBYKS7nQ07vPqqH61JbQY6Gt45WrgroAaX0o3osWy6iTKLDVi/t4p/pUX07B6rL8H
- iz6jley+xLNSMHGwOk18Fh6JGrwEvlb5eaVvC4QQ7jbuRw1DMhUFXdN8jKLITaJLMNOxSfcE1jMO
- Vmpw1qzlbe6h65Y7U6A=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=prstoolswins.click; 
- b=UR/CO958AcFGmxVsNsdCesh/PIOw8N5mzzH5762mZnLlOSE/Ud+puT1SRVoKJkLM1V8PSLEM8c+4
- T3TyDK2gnSaE4bS3j+kiL4a5yzg8cxvCwb17vxhFpQd1MR4E2Mt404ZJSi+2jv/MRkR8cviz58XP
- Hy34XonGQ8TKaN5a4XI=;
-Received: by mail.prstoolswins.click id h4fhaq0001ga for
+ i=rewards-at-home-depot@homespecialkit.click; 
+ bh=iatnr678/YYgAnKPpMHl7vAbZC4=;
+ b=oLElgvon7D1pyaUp13SROPaIcA+9Ax7J4uIJVGVLmC46TiMXzVp5gHrEVYs4BsaFW3kl5tOX41JP
+ K5mA9SEGy4/XCezS4dhduTHollPD63BOsm9RwRvC53QmCxvrW1RpI0VENZTBgbzCuIkb7dgpuQG/
+ umLlKnJ6la/j7npt2Fc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=homespecialkit.click;
+ b=L+Na5vJt2o7FrX1Z6r+LOvylTAVjpfXdGXM0sBanSbDV43H1AmpmoLi4BqSTQJkUxMwfYskX/smf
+ j6MSQ92+msRhPoNoyktnInU+XhnBGI92dg6fJn2nIjMQjixqNs9Nxql6THdOUI0KjsRCYcAFUJvI
+ 3VvB9HqgOHx9NZK2dBA=;
+Received: by mail.homespecialkit.click id h4fl9s0001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 9 Oct 2023 07:14:52 -0400 (envelope-from
- <harbor.freight.love-intel+2Dgvt+2Ddev=lists.freedesktop.org@prstoolswins.click>)
-Date: Mon, 9 Oct 2023 07:14:52 -0400
-From: "Harbor Freight Love" <harbor.freight.love@prstoolswins.click>
+ Mon, 9 Oct 2023 07:48:58 -0400 (envelope-from
+ <rewards-at-home-depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@homespecialkit.click>)
+Date: Mon, 9 Oct 2023 07:48:58 -0400
+From: "Rewards At Home Depot" <rewards-at-home-depot@homespecialkit.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1870872671394.16968500843819633@prstoolswins.click>
-Subject: Champion Savings for Our Top-Tier Patrons!
+Message-ID: <13005878642.1696852121695749@homespecialkit.click>
+Subject: Claim your fresh Makita Drill Set today - act before the offer
+ expires!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=09436552d979254ce8014c928cb94977121011209966103
+ boundary=4bb52fbbe051a82bf882554f322a4f7a1039825100103971005
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---09436552d979254ce8014c928cb94977121011209966103
+--4bb52fbbe051a82bf882554f322a4f7a1039825100103971005
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,100 +63,124 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@200;300;400;500;600;700;800;900&display=swap');
-	</style> 
-  <title>tools awaits</title> 
+  <title>We want to express</title> 
  </head> 
- <body style="background-color: rgb(238, 238, 238); margin: 0; padding: 0;"> 
-  <center class="destello"> 
-   <div id="proposition" style="max-width: 33rem; margin: auto; background-color: #fff;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" class="calculator" style="border-collapse: collapse;" width="100%"> 
-     <tbody class="plopsactivos"> 
-      <tr> 
-       <td align="center" class="klapsshot"> 
-        <header class="sharmilean" style="max-width: 10rem; margin: auto;">
-         <a href="http://www.prstoolswins.click/immediate-impertinently/a9e6rj239C5O8AG612i6j28fz17e9S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQJRQoQ7SgwY1o05iBwD@" target="_blank"><img alt="QWAWA" src="http://www.prstoolswins.click/be76zq2k395jnl7a13Qw6j290Q17e9x36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQJRQoQ7B1JJ0xT6CT3BwD/allotter-disablers" width="100%" /> </a>
-        </header> </td> 
-      </tr> 
-      <tr> 
-      </tr> 
-      <tr> 
-       <td align="center" class="klapsshot"> 
-        <div style="background-color: rgb(244, 250, 255); padding: 6mm 0;">
-         <span style="font-family: 'Asap Condensed', sans-serif; font-size: 7mm; display: block; line-height: 9mm; font-weight: 500;"><i><u>Thrilling News from<br /> Harbor Freight for our valued friends. </u> </i> </span>
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div id="proposition" style="max-width: 33rem; margin: auto; background-color: #fff;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" class="calculator" style="border-collapse: collapse;" width="100%"> 
-     <tbody class="plopsactivos"> 
-      <tr> 
-       <td align="center" class="klapsshot"> <p style="font-family: 'Asap Condensed', sans-serif; font-size: 6mm; line-height: 8mm; padding-left: 4.5mm; padding-right: 4.5mm;">Discover <b>Harbor Freight's</b> newest offering! Explore the brand-new <b>Pittsburgh 225 Piece Tool Set</b>, exclusively available at our stores. Seize this opportunity now and enhance your toolkit! #YourNextFavoriteToolSet</p> 
-        <div style="background-color: #dfdfdf;"> 
-         <table align="center" style="max-width: 80%; margin: auto;"> 
+ <body style="margin: 0; padding: 0;"> 
+  <section> 
+   <dl> 
+    <dd style="margin: 0; padding: 0;">
+     &nbsp;
+    </dd> 
+   </dl> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <caption>
+     &nbsp;
+    </caption> 
+    <thead> 
+     <tr> 
+      <th>&nbsp;</th> 
+     </tr> 
+    </thead> 
+    <tbody> 
+     <tr> 
+      <td> 
+       <div> 
+        <article> 
+         <p style="margin: 0;">&nbsp;</p> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+          <thead> 
+           <tr> 
+            <th>&nbsp;</th> 
+           </tr> 
+          </thead> 
           <tbody> 
            <tr> 
-            <td align="center" id="logoimags"><a href="http://www.prstoolswins.click/immediate-impertinently/a9e6rj239C5O8AG612i6j28fz17e9S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQJRQoQ7SgwY1o05iBwD@" target="_blank"><img alt="MMMNSA" src="http://www.prstoolswins.click/allotter-disablers/ed66H2w3v95fx7aT13EO6i291D17e9R36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQJRQoQ6k10XZl6t0NwqD" style="display: block;" width="100%" /> </a></td> 
+            <td class="shivana"> 
+             <div id="singed"> 
+              <h1 id="teemo" style="margin: 0; padding: 0;">&nbsp;</h1> 
+             </div> </td> 
+            <td align="center" border="0" class="shivana"> 
+             <div id="singed"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center"> 
+                  <div> 
+                   <center style="max-width: 300px; margin: auto; padding-top: 20px;">
+                    <a href="http://www.homespecialkit.click/15b4J2395rY8g613SZ629v3S17eal36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQkRQoR6E10Nik6nU32wD/bridling-marathon"><img alt="TRESA" src="http://www.homespecialkit.click/3b35r23K95e7AaN11P6295S17eax36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQkRQoR7U1BrYX06CLwkTD/reinforcements-suppositions" width="100%" /> </a>
+                   </center> 
+                  </div> 
+                  <div style="background-color: #eeeeee;"> 
+                   <div style="max-width: 500px; margin: auto; padding: 15px 0px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1em; line-height: 1.5em;">
+                    We want to convey our appreciation for choosing our services. Your loyalty and support are greatly meaningful to us and will forever be recognized and cherished.                    </div> 
+                  </div> 
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td>&nbsp;</td> 
+                     <td>&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" colspan="2"> 
+                      <div style="max-width: 500px; margin: auto;"> 
+                       <p style="max-width: 500px; margin: auto; padding: 15px 0px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1em; line-height: 1.5em;">As a gesture of our gratitude for your support, we extend to you the opportunity to receive a <strong>MAKITA DRILL Set!</strong></p> 
+                       <table align="center"> 
+                        <tbody> 
+                         <tr> 
+                          <td align="center"><a href="http://www.homespecialkit.click/15b4J2395rY8g613SZ629v3S17eal36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQkRQoR6E10Nik6nU32wD/bridling-marathon"><img alt="MNSE" src="http://www.homespecialkit.click/7eb5O23I95l7_aW11A6296A17eaK36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQkRQoR5q1r0p5y2w1D/aggregation-counties" style="max-width: 275px; margin: auto;" width="100%" /> </a></td> 
+                         </tr> 
+                        </tbody> 
+                       </table> 
+                       <p style="max-width: 500px; margin: auto; padding: 15px 0px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1em; line-height: 1.5em;"><b>Your feedback is of great significance to us. </b><br /> <br /> <span>Securing this reward is easy; it will only require 30 seconds of your time to share your feedback with us, and we'll send it to you promptly. </span></p> 
+                      </div> 
+                      <div style="background-color: #eeeeee; padding: 2em 0em;"> 
+                       <table align="center"> 
+                        <tbody> 
+                         <tr> 
+                          <td align="center"> 
+                           <blockquote style="max-width: 300px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; padding: 1em 1.8em; background-color: #008397; border-radius: 10px;">
+                            <a href="http://www.homespecialkit.click/15b4J2395rY8g613SZ629v3S17eal36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQkRQoR6E10Nik6nU32wD/bridling-marathon" style="text-decoration: none; color: rgb(255, 255, 255);">Start Here Now &gt;&gt; </a>
+                           </blockquote> </td> 
+                         </tr> 
+                        </tbody> 
+                       </table> 
+                       <center style="padding-bottom: 399px;">
+                        &nbsp;
+                       </center> 
+                       <div style="background-color: ivory; padding: 15px 0px;"> 
+                        <section style="max-width: 450px; margin: auto;"> 
+                         <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 13px; text-align: center;">you can leave with sadness <a href="http://www.homespecialkit.click/Phipps-overjoy/2c46RB2y395D8UU612Q6294YR17eam36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQoR5h1h0k5uqwMD"> here </a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+                        </section> 
+                       </div> 
+                      </div> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <h2 id="teemo" style="margin: 0; padding: 0;">&nbsp;</h2> 
+             </div> </td> 
+            <td class="shivana"> 
+             <div id="singed"> 
+              <h3 id="teemo" style="margin: 0; padding: 0;">&nbsp;</h3> 
+             </div> </td> 
            </tr> 
           </tbody> 
          </table> 
-        </div> <p style="font-family: 'Asap Condensed', sans-serif; font-size: 6mm; line-height: 8mm; padding-left: 4.5mm; padding-right: 4.5mm;"><span style="color: #ff0000;"><b>--&gt; Act Swiftly to Grasp this Time-Sensitive Opportunity! &lt;-- </b> </span><br /> Save the date! Until October 5th, a treasure trove of outstanding tools awaits. Delve in and find your next must-have gadget today <b style="color: #ff0000;"> #ToolTimeTreats </b></p> </td> 
-       <td class="klapsshot">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div id="proposition"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" class="calculator" style="border-collapse: collapse;" width="100%"> 
-     <tbody class="plopsactivos"> 
-      <tr> 
-       <td align="center" class="klapsshot" width="100%"> 
-        <section style="background-color: rgb(255, 255, 255); padding: 2mm 0; max-width: 33rem; margin: auto;"> 
-         <div style="max-width: 33rem; margin: auto;"> 
-          <div> 
-           <div style="max-width: 25rem; background-color: #ff0000; border-radius: 5px; padding: 3.5% 5%;font-family: 'Asap Condensed', sans-serif; font-size: 20px; ;">
-            <a href="http://www.prstoolswins.click/immediate-impertinently/a9e6rj239C5O8AG612i6j28fz17e9S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQJRQoQ7SgwY1o05iBwD@" style="text-decoration: none; color: #fff;" target="_blank">You're just a few moments away from your device --&gt; </a>
-           </div> 
-          </div> 
-         </div> 
-        </section> </td> 
-       <td class="klapsshot">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div id="proposition"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" class="calculator" style="border-collapse: collapse;" width="100%"> 
-     <tbody class="plopsactivos"> 
-      <tr> 
-       <td class="klapsshot"> 
-        <div style="padding-top: 15rem; ;"> 
-         <div style="background-color: rgb(240, 240, 255); padding-top: 15px; padding-bottom: 15px;"> 
-          <center style="max-width: 33rem; margin: auto; font-size: 15px; text-align: center; font-weight: 600; font-family: 'Asap Condensed', sans-serif; ">
-           <i>more than welcome to leave in <a href=""> here </a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY, </i>
-          </center> 
-         </div> 
-        </div> <br /> <br /> &nbsp;</td> 
-       <td class="klapsshot">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-   <div id="proposition"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" class="calculator" style="border-collapse: collapse;" width="100%"> 
-     <tbody class="plopsactivos"> 
-      <tr> 
-       <td class="klapsshot">&nbsp;</td> 
-       <td class="klapsshot">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </center>   
- <img src="http://www.prstoolswins.click/b335b23S95qt8v512l6292xO17e9Q36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQJRQoQ5S1qZ06Y@wDBP/allotter-disablers" alt=""/></body>
+        </article> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+    <tfoot> 
+     <tr> 
+      <td>&nbsp;</td> 
+     </tr> 
+    </tfoot> 
+   </table> 
+  </section>   
+ <img src="http://www.homespecialkit.click/4494b2395uD85F11d6297V17eaJ36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQkRQoR6fC1Cz06VMXOwD/demythologize-lyrics" alt=""/></body>
 </html>
 
---09436552d979254ce8014c928cb94977121011209966103--
+--4bb52fbbe051a82bf882554f322a4f7a1039825100103971005--
 
