@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBF727BDA7A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 13:57:20 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 014517BDCE0
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 14:52:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A20FA10E0F5;
-	Mon,  9 Oct 2023 11:57:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C575610E112;
+	Mon,  9 Oct 2023 12:52:19 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 09 Oct 2023 11:57:18 UTC
-Received: from mail.homespecialkit.click (unknown [77.90.135.162])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4677B10E0F5
+ Mon, 09 Oct 2023 12:52:17 UTC
+Received: from mail.offerpharma.bond (unknown [77.90.135.18])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 477B110E112
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Oct 2023 11:57:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=homespecialkit.click; 
+ Mon,  9 Oct 2023 12:52:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=offerpharma.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=rewards-at-home-depot@homespecialkit.click; 
- bh=iatnr678/YYgAnKPpMHl7vAbZC4=;
- b=oLElgvon7D1pyaUp13SROPaIcA+9Ax7J4uIJVGVLmC46TiMXzVp5gHrEVYs4BsaFW3kl5tOX41JP
- K5mA9SEGy4/XCezS4dhduTHollPD63BOsm9RwRvC53QmCxvrW1RpI0VENZTBgbzCuIkb7dgpuQG/
- umLlKnJ6la/j7npt2Fc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=homespecialkit.click;
- b=L+Na5vJt2o7FrX1Z6r+LOvylTAVjpfXdGXM0sBanSbDV43H1AmpmoLi4BqSTQJkUxMwfYskX/smf
- j6MSQ92+msRhPoNoyktnInU+XhnBGI92dg6fJn2nIjMQjixqNs9Nxql6THdOUI0KjsRCYcAFUJvI
- 3VvB9HqgOHx9NZK2dBA=;
-Received: by mail.homespecialkit.click id h4fl9s0001gb for
+ i=stay_wellinformed_with_walgreens@offerpharma.bond; 
+ bh=Wm7q8kz+tqARpmnIcoDPC0k51EM=;
+ b=hlBb5JY4yCotH6f8xCk9vxTuny2QIyLFM1CpiyWQ60iK2+ke2+7oOTdxtQ2HUIKxyQOkFHOWrUX3
+ HlaMgaodf2D0cE3amMJiUSlhVeDsHTj6pPaKjJZb+peixFlgahjvyBr3bFLIOG0Jzcc+ZMBRk3ld
+ y2BrylaITC/DNlbieag=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=offerpharma.bond;
+ b=QqXhwoL7i1tgCGDeNHwQh5JmdPhhWGjsNhqGZXfm5n+amPANaw9SYc+pat01lkgIeSJcuCLBJJFc
+ 1C+YF0eutHoDh2IRcNHNuYCeW5l/GUfzsOG5ZlNcVmZC5LrzH7xO/mPp0p0EVeubZbOQ+Rr1Vr/2
+ IQVKZj1aOI0M6cnd0XA=;
+Received: by mail.offerpharma.bond id h4fro20001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 9 Oct 2023 07:48:58 -0400 (envelope-from
- <rewards-at-home-depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@homespecialkit.click>)
-Date: Mon, 9 Oct 2023 07:48:58 -0400
-From: "Rewards At Home Depot" <rewards-at-home-depot@homespecialkit.click>
+ Mon, 9 Oct 2023 08:45:15 -0400 (envelope-from
+ <stay_wellinformed_with_walgreens-intel+2Dgvt+2Ddev=lists.freedesktop.org@offerpharma.bond>)
+Date: Mon, 9 Oct 2023 08:45:15 -0400
+From: "Stay WellInformed With Walgreens"
+ <stay_wellinformed_with_walgreens@offerpharma.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <13005878642.1696852121695749@homespecialkit.click>
-Subject: Claim your fresh Makita Drill Set today - act before the offer
- expires!
+Message-ID: <20450492638752.1696855500157109@offerpharma.bond>
+Subject: Act Fast: Participate in Our Survey for a Shot at an Oral-B Series 8!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=4bb52fbbe051a82bf882554f322a4f7a1039825100103971005
+ boundary=cf475a89227c2cde89ad176f37912985501029401005
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,132 +54,109 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---4bb52fbbe051a82bf882554f322a4f7a1039825100103971005
+--cf475a89227c2cde89ad176f37912985501029401005
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>We want to express</title> 
+  <link href="http://www.offerpharma.bond/stipulating-tenth/42c6n2N3z95QW86W11q629eS17ecB36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQLRQoe6gD1hR05pywDT" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.offerpharma.bond/comedies-pityingly/c244N2395zu8Q612L629fXB17ecv36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQLRQoe5IqR106fUwDlL" rel="preconnect" /> 
+  <link href="http://www.offerpharma.bond/stipulating-tenth/42c6n2N3z95QW86W11q629eS17ecB36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQLRQoe6gD1hR05pywDT/css2?family=Niramit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet" /> 
+  <title>Announcement</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <section> 
-   <dl> 
-    <dd style="margin: 0; padding: 0;">
-     &nbsp;
-    </dd> 
-   </dl> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <caption>
-     &nbsp;
-    </caption> 
-    <thead> 
-     <tr> 
-      <th>&nbsp;</th> 
-     </tr> 
-    </thead> 
-    <tbody> 
-     <tr> 
-      <td> 
-       <div> 
-        <article> 
-         <p style="margin: 0;">&nbsp;</p> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-          <thead> 
-           <tr> 
-            <th>&nbsp;</th> 
-           </tr> 
-          </thead> 
-          <tbody> 
-           <tr> 
-            <td class="shivana"> 
-             <div id="singed"> 
-              <h1 id="teemo" style="margin: 0; padding: 0;">&nbsp;</h1> 
-             </div> </td> 
-            <td align="center" border="0" class="shivana"> 
-             <div id="singed"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center"> 
-                  <div> 
-                   <center style="max-width: 300px; margin: auto; padding-top: 20px;">
-                    <a href="http://www.homespecialkit.click/15b4J2395rY8g613SZ629v3S17eal36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQkRQoR6E10Nik6nU32wD/bridling-marathon"><img alt="TRESA" src="http://www.homespecialkit.click/3b35r23K95e7AaN11P6295S17eax36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQkRQoR7U1BrYX06CLwkTD/reinforcements-suppositions" width="100%" /> </a>
-                   </center> 
-                  </div> 
-                  <div style="background-color: #eeeeee;"> 
-                   <div style="max-width: 500px; margin: auto; padding: 15px 0px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1em; line-height: 1.5em;">
-                    We want to convey our appreciation for choosing our services. Your loyalty and support are greatly meaningful to us and will forever be recognized and cherished.                    </div> 
-                  </div> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td>&nbsp;</td> 
-                     <td>&nbsp;</td> 
-                    </tr> 
-                    <tr> 
-                     <td align="center" colspan="2"> 
-                      <div style="max-width: 500px; margin: auto;"> 
-                       <p style="max-width: 500px; margin: auto; padding: 15px 0px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1em; line-height: 1.5em;">As a gesture of our gratitude for your support, we extend to you the opportunity to receive a <strong>MAKITA DRILL Set!</strong></p> 
-                       <table align="center"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center"><a href="http://www.homespecialkit.click/15b4J2395rY8g613SZ629v3S17eal36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQkRQoR6E10Nik6nU32wD/bridling-marathon"><img alt="MNSE" src="http://www.homespecialkit.click/7eb5O23I95l7_aW11A6296A17eaK36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQkRQoR5q1r0p5y2w1D/aggregation-counties" style="max-width: 275px; margin: auto;" width="100%" /> </a></td> 
-                         </tr> 
-                        </tbody> 
-                       </table> 
-                       <p style="max-width: 500px; margin: auto; padding: 15px 0px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1em; line-height: 1.5em;"><b>Your feedback is of great significance to us. </b><br /> <br /> <span>Securing this reward is easy; it will only require 30 seconds of your time to share your feedback with us, and we'll send it to you promptly. </span></p> 
-                      </div> 
-                      <div style="background-color: #eeeeee; padding: 2em 0em;"> 
-                       <table align="center"> 
-                        <tbody> 
-                         <tr> 
-                          <td align="center"> 
-                           <blockquote style="max-width: 300px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; padding: 1em 1.8em; background-color: #008397; border-radius: 10px;">
-                            <a href="http://www.homespecialkit.click/15b4J2395rY8g613SZ629v3S17eal36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQkRQoR6E10Nik6nU32wD/bridling-marathon" style="text-decoration: none; color: rgb(255, 255, 255);">Start Here Now &gt;&gt; </a>
-                           </blockquote> </td> 
-                         </tr> 
-                        </tbody> 
-                       </table> 
-                       <center style="padding-bottom: 399px;">
-                        &nbsp;
-                       </center> 
-                       <div style="background-color: ivory; padding: 15px 0px;"> 
-                        <section style="max-width: 450px; margin: auto;"> 
-                         <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 13px; text-align: center;">you can leave with sadness <a href="http://www.homespecialkit.click/Phipps-overjoy/2c46RB2y395D8UU612Q6294YR17eam36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQoR5h1h0k5uqwMD"> here </a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-                        </section> 
-                       </div> 
-                      </div> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <h2 id="teemo" style="margin: 0; padding: 0;">&nbsp;</h2> 
-             </div> </td> 
-            <td class="shivana"> 
-             <div id="singed"> 
-              <h3 id="teemo" style="margin: 0; padding: 0;">&nbsp;</h3> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </article> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-    <tfoot> 
-     <tr> 
-      <td>&nbsp;</td> 
-     </tr> 
-    </tfoot> 
-   </table> 
-  </section>   
- <img src="http://www.homespecialkit.click/4494b2395uD85F11d6297V17eaJ36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQkRQoR6fC1Cz06VMXOwD/demythologize-lyrics" alt=""/></body>
+ <body> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="covertura" style="border-collapse: collapse; background-color: rgb(230, 230, 230);" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center" class="choismenshi" style="padding: 5% 0%;"> 
+      <div style="background-color: #252849; padding: 5px 0;"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" id="chipistas" style="border-collapse: collapse;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <center style="font-family: 'Niramit', sans-serif;; font-size: 1.5cm; font-weight: bold;">
+            <a href="http://www.offerpharma.bond/1976O2w39h5d86Ko13R6xw2a0l17ecp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQLRQoe7g1_0gyK6S0lwDW/stipulating-tenth" style="text-decoration: none; color: #db4e2a;">Walgreens</a>
+           </center> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="diminican" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center">&nbsp; 
+          <div style="box-shadow: 0 0 5px 1px; border-radius: 10px; max-width: 33.5em; margin: auto; background-color: #fff;"> 
+           <table class="demonsstarllyngs"> 
+            <tbody> 
+             <tr> 
+              <td align="center"> <p style="
+    font-family: 'Niramit', sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0;
+    padding: 3.5% 5%;
+    font-weight: 500;
+    text-align: center;">Exciting News! <b>Walgreens</b> is presenting an <b>Oral-B Series 8 Toothbrush</b> for in-store use. Act quickly, as this offer ends on October 9th.</p> 
+               <div> 
+                <table style="max-width: 273px; margin: auto;"> 
+                 <tbody> 
+                  <tr> 
+                   <td> 
+                    <center>
+                     <a href="http://www.offerpharma.bond/1976O2w39h5d86Ko13R6xw2a0l17ecp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQLRQoe7g1_0gyK6S0lwDW/stipulating-tenth"><img alt="YYTEAS" src="http://www.offerpharma.bond/8db5j23D95wZ7aC12J62Ma2q17ecW36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQLRQoe5l10LR5OXAwD/offsetting-regenerators" width="100%" /></a>
+                    </center> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> &nbsp; 
+                <div style="max-width: 250px; margin: auto;"> 
+                 <center style="background-color: #252849; padding: 3.5% 5%; border-radius: 10px; font-size: 22px; font-family: 'Niramit', sans-serif;; font-weight: bold;">
+                  <a href="http://www.offerpharma.bond/1976O2w39h5d86Ko13R6xw2a0l17ecp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQLRQoe7g1_0gyK6S0lwDW/stipulating-tenth" style="color: #fff; text-decoration: none;" target="_blank">Start Here Now</a>
+                 </center> 
+                </div> &nbsp; 
+                <hr style="width: 75%; margin: auto;" />&nbsp; 
+                <p style="
+    font-family: 'Niramit', sans-serif;
+    font-size: 14px;
+    line-height: 28px;
+    margin: 0;
+    padding: 3.5% 5%;
+    font-weight: 500;
+    text-align: center;">We appreciate your support in advance.<br /> Best regards,<br /> <strong>The Walgreens Team.</strong></p> 
+                <br /> &nbsp;
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <table style="padding-top: 300px;"> 
+       <tbody> 
+        <tr> 
+         <td align="center">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <div style="background-color: lavender; padding-top: 15px; padding-bottom: 15px;"> 
+       <p style="
+        max-width: 28rem;
+        margin: auto;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        text-align: center;
+        font-weight: 900;
+        ;">you are bored of these, visit us <a href="http://www.offerpharma.bond/9534Y2395Bp8n612z62a1Ay17ecS36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQLRQoe7s1tGqn05PJwDp/offsetting-regenerators">here</a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</p> 
+      </div> <br /> <br /> &nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.offerpharma.bond/offsetting-regenerators/e405n239g5Xs85z11N62a3x17ecH36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQLRQoe7k1rjz0w5I@wD3" alt=""/></body>
 </html>
 
---4bb52fbbe051a82bf882554f322a4f7a1039825100103971005--
+--cf475a89227c2cde89ad176f37912985501029401005--
 
