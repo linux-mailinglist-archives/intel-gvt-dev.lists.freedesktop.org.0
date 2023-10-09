@@ -2,45 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9B927BE30F
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 16:38:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 84EE67BE945
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 20:29:44 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8437010E14A;
-	Mon,  9 Oct 2023 14:38:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5E32710E124;
+	Mon,  9 Oct 2023 18:29:43 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 09 Oct 2023 14:38:33 UTC
-Received: from mail.packstatenow.bond (unknown [77.90.135.194])
- by gabe.freedesktop.org (Postfix) with ESMTP id 47D9B10E27B
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Mon, 09 Oct 2023 18:29:42 UTC
+Received: from mail.jaycetoolsinfo.site (unknown [157.52.235.148])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5198C10E124
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Oct 2023 14:38:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=packstatenow.bond;
+ Mon,  9 Oct 2023 18:29:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=jaycetoolsinfo.site; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=embrace.the.ups.assessment.hub@packstatenow.bond; 
- bh=9SxwKXihREFM8Yci2HaByksl+2Q=;
- b=Qo53hJ1L1ZBhGX1A+d70a++iO3Sn8dMu2YL9vDBIpS6yHpl3QTY+DXDyT6he3ykZz71FJO0Ut4i9
- IPAoXt/KykP3wIN/xu8uBGo31KuZow/84rzGxrFAhF7gmXMc4hJysy7DFdJvGnTsLZwRZFU+Y12s
- qq1LHqJGoAUxOB5ExwI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=packstatenow.bond; 
- b=npJSJTjPgHKbSDZbVtTCLvPXdwQNJapwcTuhysX3OOYvWWLJy8rtRwXea6jbJDZoOzfD1axzKGrB
- v+iyyafRq6T/NdJNL3SW3exOMKz50xVyHUMepvhUBxiIdj1A4a4sUniOoxPkqpTkAGvdOfsBDpTp
- /ffUJ13W4uKehfL4tkk=;
-Received: by mail.packstatenow.bond id h4g86i0001g8 for
+ i=ace.hardware.variety@jaycetoolsinfo.site; 
+ bh=VS8qbxZDVtehtjmdFo3e6MvzwRQ=;
+ b=hrXTvGW8CBX8NzMQD7ov9xUQfhqMKa+jhxXp3vSkHQrHDTSD03J3ZiEyLs7IqHJQ57vmLti6lPdn
+ nseRUisXvQFU1xiBSxh2MB0OnwHDjX2pOpf8w/iE5orb75FeuB0LGNe1yG01vMwsCACpPwJfRqc1
+ CydicSBSQktK85ewEeY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jaycetoolsinfo.site;
+ b=lgDfiBypHpj5wNlI3MdXCuVhOhsRBUDg34CYvBNg8JV1q3uRU7kmWFMSoCc/lvOXzo1ql2obZbVU
+ OYfAVW09CcFyo/r9CxBFz3Ni81zwhRFX5Sw2vMfFPiNfZ+v/4XoKJst2W8Ovf8V7tdz3hDM/Dq5f
+ F8hu6IkC6pRJACM2TQA=;
+Received: by mail.jaycetoolsinfo.site id h4h39c0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 9 Oct 2023 10:30:05 -0400 (envelope-from
- <embrace.the.ups.assessment.hub-intel+2Dgvt+2Ddev=lists.freedesktop.org@packstatenow.bond>)
-Date: Mon, 9 Oct 2023 10:30:05 -0400
-From: "Embrace The UPS Assessment Hub"
- <embrace.the.ups.assessment.hub@packstatenow.bond>
+ Mon, 9 Oct 2023 14:19:55 -0400 (envelope-from
+ <ace.hardware.variety-intel+2Dgvt+2Ddev=lists.freedesktop.org@jaycetoolsinfo.site>)
+Date: Mon, 9 Oct 2023 14:19:55 -0400
+From: "ACE Hardware Variety" <ace.hardware.variety@jaycetoolsinfo.site>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <5619510054576.16968617941817647@packstatenow.bond>
-Subject: We're steadfast in our commitment to enhancing your shipping
- satisfaction. Let us know how we're doing,
- and we'll thank you with a token of our gratitude.
+Message-ID: <14992419339.169687558700571@jaycetoolsinfo.site>
+Subject: Win a Stanley tool set: Share your thoughts and participate in our
+ drawing.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=795a6372247eb523738fbb3d5fbb9a1a101031539838
+ boundary=77ae10e3f5b4851796ae8c1d6e1e79ef491029798102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---795a6372247eb523738fbb3d5fbb9a1a101031539838
+--77ae10e3f5b4851796ae8c1d6e1e79ef491029798102
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,256 +64,61 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>preferred shipping</title> 
+  <title>redeemable at</title> 
  </head> 
- <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="container" style="border-collapse: collapse;" width="100%"> 
+ <body style="margin: 0; padding: 0; background-color: rgb(233, 233, 233); ">
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <center style="background-color: #fff; "> 
+   <div style="max-width: 200px; margin: auto; ">
+    <a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic" target="_blank"><img alt="YYEASE" src="http://www.jaycetoolsinfo.site/f115w239Y5OL7qa13UZ62bVep17f2S36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQsRQ9d5S1yh05nXwDW/raced-probable" width="100%" /></a>
+   </div> 
+  </center> 
+  <center align="center" style="background-color: #c9c9c9; "> 
+   <div style="max-width: 450px; margin: auto; background-color: #e0e0e0; "> 
+    <p style="margin: 0; font-size: 22px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; padding: 15px 0; color: #E7133F; "><i><u><b>Your Final<br /> Reminder from Ace Hardware </b> </u></i></p> 
+   </div> 
+  </center> 
+  <center> 
+   <div style="max-width: 450px; margin: auto; background-color: #fff; "> 
+    <p style="margin: 0; padding: 3.5% 5% 0; line-height: 1.7rem; font-size: 1rem; font-family:Verdana, Geneva, Tahoma, sans-serif "><b>Ace Hardware</b> is excited to announce a fantastic opportunity! You can now obtain the <b>Stanley Tool Set</b>, which is redeemable at any of our store locations. Act quickly and seize this chance! You have until <b>October 9th</b> to secure these exceptional tools.</p> 
+    <div style="max-width: 400px; margin: auto; ">
+     <a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic"><img alt="UUYSAE" src="http://www.jaycetoolsinfo.site/de55R239D5sPu7a13ts6k2bfy17f2Q36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsRQ9d7iI1p0Zn6bzwD10/Angeline-diagnostic" style="display: block; " width="100%" /></a>
+    </div> 
+    <p style="margin: 0; padding: 3.5% 5% 0; line-height: 1.7rem; font-size: 1rem; font-family:Verdana, Geneva, Tahoma, sans-serif ">We appreciate your anticipated support.<br /> Sincerely, The Ace Hardware Team.</p> &nbsp; 
+    <center style="padding: 1.4rem 0; background-color: rgb(66, 66, 66); font-family: Arial, Helvetica, sans-serif; font-size: 25px; font-weight: bold; ">
+     <a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic" style="text-decoration: none; color: #fff; " target="_blank">Start Here Now &gt; &gt; </a>
+    </center> 
+   </div> 
+  </center> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic" style="text-decoration: none; color: #fff; " target="_blank">&nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; </a> 
+  <table cellpadding="15px" style="background-color: darkgray; " width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center" id="total"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" id="subttwo" style="border-collapse: collapse;" width="100%"> 
-       <thead> 
-        <tr> 
-         <th align="center" class="tope" colspan="5"> 
-          <div>
-           &nbsp;
-          </div> </th> 
-        </tr> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td>
-          <loweresinfo> 
-           <div class="instantan"> 
-            <center id="igg">
-             &nbsp;
-            </center> 
-           </div> 
-          </loweresinfo> 
-          <loweresinfo> 
-           <div class="instantan"> 
-            <center id="igg">
-             &nbsp;
-            </center> 
-           </div> 
-          </loweresinfo> 
-          <loweresinfo> 
-           <div class="instantan"> 
-            <center id="igg"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" id="subttwo" style="border-collapse: collapse;" width="100%"> 
-              <thead> 
-               <tr> 
-                <th align="center" class="tope" colspan="5"> 
-                 <div>
-                  &nbsp;
-                 </div> </th> 
-               </tr> 
-              </thead> 
-              <tbody> 
-               <tr> 
-                <td><span>
-                  <loweresinfo> 
-                   <div class="instantan"> 
-                    <center id="igg">
-                     &nbsp;
-                    </center> 
-                   </div> 
-                  </loweresinfo> 
-                  <loweresinfo> 
-                   <div class="instantan"> 
-                    <center id="igg">
-                     &nbsp;
-                    </center> 
-                   </div> 
-                  </loweresinfo> 
-                  <loweresinfo> 
-                   <div class="instantan"> 
-                    <center id="igg"> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" id="subttwo" style="border-collapse: collapse;" width="100%"> 
-                      <thead> 
-                       <tr> 
-                        <th align="center" class="tope" colspan="5"> 
-                         <div>
-                          &nbsp;
-                         </div> </th> 
-                       </tr> 
-                      </thead> 
-                      <tbody> 
-                       <tr> 
-                        <td><span>
-                          <loweresinfo> 
-                           <div class="instantan"> 
-                            <center id="igg">
-                             &nbsp;
-                            </center> 
-                           </div> 
-                          </loweresinfo> 
-                          <loweresinfo> 
-                           <div class="instantan"> 
-                            <center id="igg">
-                             &nbsp;
-                            </center> 
-                           </div> 
-                          </loweresinfo> 
-                          <loweresinfo> 
-                           <div class="instantan"> 
-                            <center id="igg"> 
-                             <div style="background-color: rgb(238, 238, 238);"> 
-                              <div style="background-color: #3D4221; padding-top: 15px; padding-bottom: 15px;"> 
-                               <center style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 1.5px; font-size: 40px; color: #F9AC6E;">
-                                <span>UPS </span>
-                               </center> 
-                              </div> &nbsp; 
-                              <div> 
-                               <table align="center" border="0" cellpadding="0" cellspacing="0" class="dakrins" style="border-collapse: collapse;" width="100%"> 
-                                <tbody> 
-                                 <tr> 
-                                  <td align="center"> 
-                                   <div style="max-width: 550px; margin: auto; border-radius: 10px; border: solid 1.5px #3D4221; background-color: #fff;"> 
-                                    <table> 
-                                     <tbody> 
-                                      <tr> 
-                                       <td><span><a href="http://www.packstatenow.bond/ef36cJ23s95C86OV12u62a9MQ17eeR36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQjRQ9m7a1L0GQr5hzwD1/troubleshooters-disciples"><img alt="UYEA" src="http://www.packstatenow.bond/2ff6B_x2395z7Zra11S62abt17eez36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQjRQ9m5P10NN6Xl1wD2/inheriting-hostage" style="display: block; width: 95%; margin: auto; padding: 4.5% 2%;" width="100%" /></a> </span></td> 
-                                      </tr> 
-                                     </tbody> 
-                                    </table> 
-                                    <p style="
-    margin: 0;
-    padding: 0 20px 15px;
-    text-align: justify;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 5mm;
-    line-height: 7.5mm;"><span>We want to express our gratitude for choosing UPS as your preferred shipping provider. Your loyalty and support are greatly cherished by us, and we genuinely appreciate the opportunity to assist you.<br /> <br /> <a href="http://www.packstatenow.bond/ef36cJ23s95C86OV12u62a9MQ17eeR36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQjRQ9m7a1L0GQr5hzwD1/troubleshooters-disciples" target="_blank"><img alt="UUESAE" src="http://www.packstatenow.bond/89f6GF239O5wtu7a13v6y2ac_K17eex36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQjRQ9m6EOU1q06GUw@OD/cityscape-technician" style="float: right; margin-left: 3.5%; margin-top: 1.5%; outline: solid 1.5px #000;" width="35%" /></a> As part of our steadfast dedication to delivering exceptional service, we warmly invite you to participate in a brief survey about your recent shipping experience and your overall interactions with UPS.<br /> <br /> <span style="display: block; text-align: center;"><strong>Upon completing the survey, you may h
- ave the chance to qualify for a $100 Gift!</strong></span> </span></p> &nbsp; 
-                                    <div style="max-width: 90px; margin: auto;">
-                                     <span><a href="http://www.packstatenow.bond/ef36cJ23s95C86OV12u62a9MQ17eeR36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQjRQ9m7a1L0GQr5hzwD1/troubleshooters-disciples"><img alt="YYTESA" src="http://www.packstatenow.bond/b6f5G239Y5fm7aL12Q62adiv17eeM36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQjRQ9m7j1ko0or5GPwD2/magnificence-boulevard" width="100%" /></a> </span>
-                                    </div> &nbsp; 
-                                    <p style="
-    margin: 0;
-    padding: 0 20px 15px;
-    text-align: justify;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 5mm;
-    line-height: 7.5mm;"><span>To start the survey, just click the provided link. It will take only a few minutes of your time, and rest assured that your responses will be treated with the utmost confidentiality. </span></p> 
-                                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="siis" style="border-collapse: collapse;" width="100%"> 
-                                     <tbody> 
-                                      <tr> 
-                                       <td> 
-                                        <table style="max-width: 450px; margin: auto; background-color: #231F1B; border-radius: 10px; padding: .2cm 1cm; font-family: Arial, Helvetica, sans-serif; font-weight: 700;"> 
-                                         <tbody> 
-                                          <tr> 
-                                           <td align="center"><span><a href="http://www.packstatenow.bond/ef36cJ23s95C86OV12u62a9MQ17eeR36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQjRQ9m7a1L0GQr5hzwD1/troubleshooters-disciples" style="color: rgb(255, 255, 255); text-decoration: none;">Begin The Survey Here &gt; </a> </span></td> 
-                                          </tr> 
-                                         </tbody> 
-                                        </table> </td> 
-                                      </tr> 
-                                     </tbody> 
-                                    </table> 
-                                    <br /> 
-                                    <br /> 
-                                    <br /> &nbsp; 
-                                    <hr style="width: 85%; margin: auto;" />&nbsp; 
-                                    <p style="
-    margin: 0;
-    padding: 0 20px 15px;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 4mm;
-    line-height: 7.5mm;"><span>We genuinely appreciate your support, and we eagerly look forward to your response. Warm regards. </span></p> 
-                                    <br /> &nbsp;
-                                   </div> </td> 
-                                 </tr> 
-                                </tbody> 
-                               </table> 
-                              </div> 
-                              <p style="padding-top: 200px;">&nbsp;</p> 
-                              <div> 
-                               <footer style="background-color: #F9AC6E; padding-top: 15px; padding-bottom: 15px;"> 
-                                <address style="max-width: 520px; margin: auto; text-align: center; font-weight: bold; font-size: 13px;"><span>another day to leave <a href="http://www.packstatenow.bond/42b4A2395l8l6J11B62aaG17eey36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQjRQ9m5pYi105zOywD/existent-advisors">here</a><br /> US 10010 126 E 23rd St New York, NY, </span></address> 
-                               </footer> 
-                              </div> 
-                              <br /> &nbsp;
-                             </div> 
-                            </center> 
-                           </div> 
-                          </loweresinfo> 
-                          <loweresinfo> 
-                           <div class="instantan"> 
-                            <center id="igg">
-                             &nbsp;
-                            </center> 
-                           </div> 
-                          </loweresinfo> 
-                          <loweresinfo> 
-                           <div class="instantan"> 
-                            <center id="igg">
-                             &nbsp;
-                            </center> 
-                           </div> 
-                          </loweresinfo> </span></td> 
-                       </tr> 
-                      </tbody> 
-                      <tfoot> 
-                       <tr> 
-                        <td align="center" colspan="5" id="wemans">&nbsp;</td> 
-                       </tr> 
-                      </tfoot> 
-                     </table> 
-                    </center> 
-                   </div> 
-                  </loweresinfo> 
-                  <loweresinfo> 
-                   <div class="instantan"> 
-                    <center id="igg">
-                     &nbsp;
-                    </center> 
-                   </div> 
-                  </loweresinfo> 
-                  <loweresinfo> 
-                   <div class="instantan"> 
-                    <center id="igg">
-                     &nbsp;
-                    </center> 
-                   </div> 
-                  </loweresinfo> </span></td> 
-               </tr> 
-              </tbody> 
-              <tfoot> 
-               <tr> 
-                <td align="center" colspan="5" id="wemans">&nbsp;</td> 
-               </tr> 
-              </tfoot> 
-             </table> 
-            </center> 
-           </div> 
-          </loweresinfo> 
-          <loweresinfo> 
-           <div class="instantan"> 
-            <center id="igg">
-             &nbsp;
-            </center> 
-           </div> 
-          </loweresinfo> 
-          <loweresinfo> 
-           <div class="instantan"> 
-            <center id="igg">
-             &nbsp;
-            </center> 
-           </div> 
-          </loweresinfo></td> 
-        </tr> 
-       </tbody> 
-       <tfoot> 
-        <tr> 
-         <td align="center" colspan="5" id="wemans">&nbsp;</td> 
-        </tr> 
-       </tfoot> 
-      </table> </td> 
+     <td align="center"> <p style="max-width: 500px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 12px; "><a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic" style="text-decoration: none; color: #fff; " target="_blank">Anyway you can leave </a><a href="http://www.jaycetoolsinfo.site/Throneberry-saplings/f304j2395f86PU13I62bSzdI17f2J36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQ9d6yVI1w06YpwlBD">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
     </tr> 
    </tbody> 
-  </table>   
- <img src="http://www.packstatenow.bond/e7b4J2395R85iM12yj62aeD17eeP36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQjRQ9m7nhsik106FNqwDT/troubleshooters-disciples" alt=""/></body>
+  </table> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp; 
+  <br /> &nbsp;   
+ <img src="http://www.jaycetoolsinfo.site/c7d6Q23Iv95G85vj12dJ62c0j17f2N36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQsRQ9d6c1DAY06zlw3@D/maternally-altering" alt=""/></body>
 </html>
 
---795a6372247eb523738fbb3d5fbb9a1a101031539838--
+--77ae10e3f5b4851796ae8c1d6e1e79ef491029798102--
 
