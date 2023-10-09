@@ -2,43 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 014517BDCE0
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 14:52:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9B927BE30F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 16:38:35 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C575610E112;
-	Mon,  9 Oct 2023 12:52:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8437010E14A;
+	Mon,  9 Oct 2023 14:38:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Mon, 09 Oct 2023 12:52:17 UTC
-Received: from mail.offerpharma.bond (unknown [77.90.135.18])
- by gabe.freedesktop.org (Postfix) with ESMTP id 477B110E112
+ Mon, 09 Oct 2023 14:38:33 UTC
+Received: from mail.packstatenow.bond (unknown [77.90.135.194])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 47D9B10E27B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Oct 2023 12:52:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=offerpharma.bond;
+ Mon,  9 Oct 2023 14:38:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=packstatenow.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=stay_wellinformed_with_walgreens@offerpharma.bond; 
- bh=Wm7q8kz+tqARpmnIcoDPC0k51EM=;
- b=hlBb5JY4yCotH6f8xCk9vxTuny2QIyLFM1CpiyWQ60iK2+ke2+7oOTdxtQ2HUIKxyQOkFHOWrUX3
- HlaMgaodf2D0cE3amMJiUSlhVeDsHTj6pPaKjJZb+peixFlgahjvyBr3bFLIOG0Jzcc+ZMBRk3ld
- y2BrylaITC/DNlbieag=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=offerpharma.bond;
- b=QqXhwoL7i1tgCGDeNHwQh5JmdPhhWGjsNhqGZXfm5n+amPANaw9SYc+pat01lkgIeSJcuCLBJJFc
- 1C+YF0eutHoDh2IRcNHNuYCeW5l/GUfzsOG5ZlNcVmZC5LrzH7xO/mPp0p0EVeubZbOQ+Rr1Vr/2
- IQVKZj1aOI0M6cnd0XA=;
-Received: by mail.offerpharma.bond id h4fro20001ga for
+ i=embrace.the.ups.assessment.hub@packstatenow.bond; 
+ bh=9SxwKXihREFM8Yci2HaByksl+2Q=;
+ b=Qo53hJ1L1ZBhGX1A+d70a++iO3Sn8dMu2YL9vDBIpS6yHpl3QTY+DXDyT6he3ykZz71FJO0Ut4i9
+ IPAoXt/KykP3wIN/xu8uBGo31KuZow/84rzGxrFAhF7gmXMc4hJysy7DFdJvGnTsLZwRZFU+Y12s
+ qq1LHqJGoAUxOB5ExwI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=packstatenow.bond; 
+ b=npJSJTjPgHKbSDZbVtTCLvPXdwQNJapwcTuhysX3OOYvWWLJy8rtRwXea6jbJDZoOzfD1axzKGrB
+ v+iyyafRq6T/NdJNL3SW3exOMKz50xVyHUMepvhUBxiIdj1A4a4sUniOoxPkqpTkAGvdOfsBDpTp
+ /ffUJ13W4uKehfL4tkk=;
+Received: by mail.packstatenow.bond id h4g86i0001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 9 Oct 2023 08:45:15 -0400 (envelope-from
- <stay_wellinformed_with_walgreens-intel+2Dgvt+2Ddev=lists.freedesktop.org@offerpharma.bond>)
-Date: Mon, 9 Oct 2023 08:45:15 -0400
-From: "Stay WellInformed With Walgreens"
- <stay_wellinformed_with_walgreens@offerpharma.bond>
+ Mon, 9 Oct 2023 10:30:05 -0400 (envelope-from
+ <embrace.the.ups.assessment.hub-intel+2Dgvt+2Ddev=lists.freedesktop.org@packstatenow.bond>)
+Date: Mon, 9 Oct 2023 10:30:05 -0400
+From: "Embrace The UPS Assessment Hub"
+ <embrace.the.ups.assessment.hub@packstatenow.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <20450492638752.1696855500157109@offerpharma.bond>
-Subject: Act Fast: Participate in Our Survey for a Shot at an Oral-B Series 8!
+Message-ID: <5619510054576.16968617941817647@packstatenow.bond>
+Subject: We're steadfast in our commitment to enhancing your shipping
+ satisfaction. Let us know how we're doing,
+ and we'll thank you with a token of our gratitude.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=cf475a89227c2cde89ad176f37912985501029401005
+ boundary=795a6372247eb523738fbb3d5fbb9a1a101031539838
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---cf475a89227c2cde89ad176f37912985501029401005
+--795a6372247eb523738fbb3d5fbb9a1a101031539838
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,100 +65,256 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.offerpharma.bond/stipulating-tenth/42c6n2N3z95QW86W11q629eS17ecB36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQLRQoe6gD1hR05pywDT" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.offerpharma.bond/comedies-pityingly/c244N2395zu8Q612L629fXB17ecv36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQLRQoe5IqR106fUwDlL" rel="preconnect" /> 
-  <link href="http://www.offerpharma.bond/stipulating-tenth/42c6n2N3z95QW86W11q629eS17ecB36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQLRQoe6gD1hR05pywDT/css2?family=Niramit:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet" /> 
-  <title>Announcement</title> 
+  <title>preferred shipping</title> 
  </head> 
  <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="covertura" style="border-collapse: collapse; background-color: rgb(230, 230, 230);" width="100%"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" class="container" style="border-collapse: collapse;" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center" class="choismenshi" style="padding: 5% 0%;"> 
-      <div style="background-color: #252849; padding: 5px 0;"> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" id="chipistas" style="border-collapse: collapse;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> 
-           <center style="font-family: 'Niramit', sans-serif;; font-size: 1.5cm; font-weight: bold;">
-            <a href="http://www.offerpharma.bond/1976O2w39h5d86Ko13R6xw2a0l17ecp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQLRQoe7g1_0gyK6S0lwDW/stipulating-tenth" style="text-decoration: none; color: #db4e2a;">Walgreens</a>
-           </center> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </div> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="diminican" style="border-collapse: collapse;" width="100%"> 
+     <td align="center" id="total"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" id="subttwo" style="border-collapse: collapse;" width="100%"> 
+       <thead> 
+        <tr> 
+         <th align="center" class="tope" colspan="5"> 
+          <div>
+           &nbsp;
+          </div> </th> 
+        </tr> 
+       </thead> 
        <tbody> 
         <tr> 
-         <td align="center">&nbsp; 
-          <div style="box-shadow: 0 0 5px 1px; border-radius: 10px; max-width: 33.5em; margin: auto; background-color: #fff;"> 
-           <table class="demonsstarllyngs"> 
-            <tbody> 
-             <tr> 
-              <td align="center"> <p style="
-    font-family: 'Niramit', sans-serif;
-    font-size: 16px;
-    line-height: 28px;
+         <td>
+          <loweresinfo> 
+           <div class="instantan"> 
+            <center id="igg">
+             &nbsp;
+            </center> 
+           </div> 
+          </loweresinfo> 
+          <loweresinfo> 
+           <div class="instantan"> 
+            <center id="igg">
+             &nbsp;
+            </center> 
+           </div> 
+          </loweresinfo> 
+          <loweresinfo> 
+           <div class="instantan"> 
+            <center id="igg"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" id="subttwo" style="border-collapse: collapse;" width="100%"> 
+              <thead> 
+               <tr> 
+                <th align="center" class="tope" colspan="5"> 
+                 <div>
+                  &nbsp;
+                 </div> </th> 
+               </tr> 
+              </thead> 
+              <tbody> 
+               <tr> 
+                <td><span>
+                  <loweresinfo> 
+                   <div class="instantan"> 
+                    <center id="igg">
+                     &nbsp;
+                    </center> 
+                   </div> 
+                  </loweresinfo> 
+                  <loweresinfo> 
+                   <div class="instantan"> 
+                    <center id="igg">
+                     &nbsp;
+                    </center> 
+                   </div> 
+                  </loweresinfo> 
+                  <loweresinfo> 
+                   <div class="instantan"> 
+                    <center id="igg"> 
+                     <table align="center" border="0" cellpadding="0" cellspacing="0" id="subttwo" style="border-collapse: collapse;" width="100%"> 
+                      <thead> 
+                       <tr> 
+                        <th align="center" class="tope" colspan="5"> 
+                         <div>
+                          &nbsp;
+                         </div> </th> 
+                       </tr> 
+                      </thead> 
+                      <tbody> 
+                       <tr> 
+                        <td><span>
+                          <loweresinfo> 
+                           <div class="instantan"> 
+                            <center id="igg">
+                             &nbsp;
+                            </center> 
+                           </div> 
+                          </loweresinfo> 
+                          <loweresinfo> 
+                           <div class="instantan"> 
+                            <center id="igg">
+                             &nbsp;
+                            </center> 
+                           </div> 
+                          </loweresinfo> 
+                          <loweresinfo> 
+                           <div class="instantan"> 
+                            <center id="igg"> 
+                             <div style="background-color: rgb(238, 238, 238);"> 
+                              <div style="background-color: #3D4221; padding-top: 15px; padding-bottom: 15px;"> 
+                               <center style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 1.5px; font-size: 40px; color: #F9AC6E;">
+                                <span>UPS </span>
+                               </center> 
+                              </div> &nbsp; 
+                              <div> 
+                               <table align="center" border="0" cellpadding="0" cellspacing="0" class="dakrins" style="border-collapse: collapse;" width="100%"> 
+                                <tbody> 
+                                 <tr> 
+                                  <td align="center"> 
+                                   <div style="max-width: 550px; margin: auto; border-radius: 10px; border: solid 1.5px #3D4221; background-color: #fff;"> 
+                                    <table> 
+                                     <tbody> 
+                                      <tr> 
+                                       <td><span><a href="http://www.packstatenow.bond/ef36cJ23s95C86OV12u62a9MQ17eeR36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQjRQ9m7a1L0GQr5hzwD1/troubleshooters-disciples"><img alt="UYEA" src="http://www.packstatenow.bond/2ff6B_x2395z7Zra11S62abt17eez36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQjRQ9m5P10NN6Xl1wD2/inheriting-hostage" style="display: block; width: 95%; margin: auto; padding: 4.5% 2%;" width="100%" /></a> </span></td> 
+                                      </tr> 
+                                     </tbody> 
+                                    </table> 
+                                    <p style="
     margin: 0;
-    padding: 3.5% 5%;
-    font-weight: 500;
-    text-align: center;">Exciting News! <b>Walgreens</b> is presenting an <b>Oral-B Series 8 Toothbrush</b> for in-store use. Act quickly, as this offer ends on October 9th.</p> 
-               <div> 
-                <table style="max-width: 273px; margin: auto;"> 
-                 <tbody> 
-                  <tr> 
-                   <td> 
-                    <center>
-                     <a href="http://www.offerpharma.bond/1976O2w39h5d86Ko13R6xw2a0l17ecp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQLRQoe7g1_0gyK6S0lwDW/stipulating-tenth"><img alt="YYTEAS" src="http://www.offerpharma.bond/8db5j23D95wZ7aC12J62Ma2q17ecW36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQLRQoe5l10LR5OXAwD/offsetting-regenerators" width="100%" /></a>
-                    </center> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> &nbsp; 
-                <div style="max-width: 250px; margin: auto;"> 
-                 <center style="background-color: #252849; padding: 3.5% 5%; border-radius: 10px; font-size: 22px; font-family: 'Niramit', sans-serif;; font-weight: bold;">
-                  <a href="http://www.offerpharma.bond/1976O2w39h5d86Ko13R6xw2a0l17ecp36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQLRQoe7g1_0gyK6S0lwDW/stipulating-tenth" style="color: #fff; text-decoration: none;" target="_blank">Start Here Now</a>
-                 </center> 
-                </div> &nbsp; 
-                <hr style="width: 75%; margin: auto;" />&nbsp; 
-                <p style="
-    font-family: 'Niramit', sans-serif;
-    font-size: 14px;
-    line-height: 28px;
+    padding: 0 20px 15px;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5mm;
+    line-height: 7.5mm;"><span>We want to express our gratitude for choosing UPS as your preferred shipping provider. Your loyalty and support are greatly cherished by us, and we genuinely appreciate the opportunity to assist you.<br /> <br /> <a href="http://www.packstatenow.bond/ef36cJ23s95C86OV12u62a9MQ17eeR36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQjRQ9m7a1L0GQr5hzwD1/troubleshooters-disciples" target="_blank"><img alt="UUESAE" src="http://www.packstatenow.bond/89f6GF239O5wtu7a13v6y2ac_K17eex36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQjRQ9m6EOU1q06GUw@OD/cityscape-technician" style="float: right; margin-left: 3.5%; margin-top: 1.5%; outline: solid 1.5px #000;" width="35%" /></a> As part of our steadfast dedication to delivering exceptional service, we warmly invite you to participate in a brief survey about your recent shipping experience and your overall interactions with UPS.<br /> <br /> <span style="display: block; text-align: center;"><strong>Upon completing the survey, you may h
+ ave the chance to qualify for a $100 Gift!</strong></span> </span></p> &nbsp; 
+                                    <div style="max-width: 90px; margin: auto;">
+                                     <span><a href="http://www.packstatenow.bond/ef36cJ23s95C86OV12u62a9MQ17eeR36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQjRQ9m7a1L0GQr5hzwD1/troubleshooters-disciples"><img alt="YYTESA" src="http://www.packstatenow.bond/b6f5G239Y5fm7aL12Q62adiv17eeM36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQjRQ9m7j1ko0or5GPwD2/magnificence-boulevard" width="100%" /></a> </span>
+                                    </div> &nbsp; 
+                                    <p style="
     margin: 0;
-    padding: 3.5% 5%;
-    font-weight: 500;
-    text-align: center;">We appreciate your support in advance.<br /> Best regards,<br /> <strong>The Walgreens Team.</strong></p> 
-                <br /> &nbsp;
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </div> </td> 
+    padding: 0 20px 15px;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5mm;
+    line-height: 7.5mm;"><span>To start the survey, just click the provided link. It will take only a few minutes of your time, and rest assured that your responses will be treated with the utmost confidentiality. </span></p> 
+                                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="siis" style="border-collapse: collapse;" width="100%"> 
+                                     <tbody> 
+                                      <tr> 
+                                       <td> 
+                                        <table style="max-width: 450px; margin: auto; background-color: #231F1B; border-radius: 10px; padding: .2cm 1cm; font-family: Arial, Helvetica, sans-serif; font-weight: 700;"> 
+                                         <tbody> 
+                                          <tr> 
+                                           <td align="center"><span><a href="http://www.packstatenow.bond/ef36cJ23s95C86OV12u62a9MQ17eeR36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQjRQ9m7a1L0GQr5hzwD1/troubleshooters-disciples" style="color: rgb(255, 255, 255); text-decoration: none;">Begin The Survey Here &gt; </a> </span></td> 
+                                          </tr> 
+                                         </tbody> 
+                                        </table> </td> 
+                                      </tr> 
+                                     </tbody> 
+                                    </table> 
+                                    <br /> 
+                                    <br /> 
+                                    <br /> &nbsp; 
+                                    <hr style="width: 85%; margin: auto;" />&nbsp; 
+                                    <p style="
+    margin: 0;
+    padding: 0 20px 15px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4mm;
+    line-height: 7.5mm;"><span>We genuinely appreciate your support, and we eagerly look forward to your response. Warm regards. </span></p> 
+                                    <br /> &nbsp;
+                                   </div> </td> 
+                                 </tr> 
+                                </tbody> 
+                               </table> 
+                              </div> 
+                              <p style="padding-top: 200px;">&nbsp;</p> 
+                              <div> 
+                               <footer style="background-color: #F9AC6E; padding-top: 15px; padding-bottom: 15px;"> 
+                                <address style="max-width: 520px; margin: auto; text-align: center; font-weight: bold; font-size: 13px;"><span>another day to leave <a href="http://www.packstatenow.bond/42b4A2395l8l6J11B62aaG17eey36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQjRQ9m5pYi105zOywD/existent-advisors">here</a><br /> US 10010 126 E 23rd St New York, NY, </span></address> 
+                               </footer> 
+                              </div> 
+                              <br /> &nbsp;
+                             </div> 
+                            </center> 
+                           </div> 
+                          </loweresinfo> 
+                          <loweresinfo> 
+                           <div class="instantan"> 
+                            <center id="igg">
+                             &nbsp;
+                            </center> 
+                           </div> 
+                          </loweresinfo> 
+                          <loweresinfo> 
+                           <div class="instantan"> 
+                            <center id="igg">
+                             &nbsp;
+                            </center> 
+                           </div> 
+                          </loweresinfo> </span></td> 
+                       </tr> 
+                      </tbody> 
+                      <tfoot> 
+                       <tr> 
+                        <td align="center" colspan="5" id="wemans">&nbsp;</td> 
+                       </tr> 
+                      </tfoot> 
+                     </table> 
+                    </center> 
+                   </div> 
+                  </loweresinfo> 
+                  <loweresinfo> 
+                   <div class="instantan"> 
+                    <center id="igg">
+                     &nbsp;
+                    </center> 
+                   </div> 
+                  </loweresinfo> 
+                  <loweresinfo> 
+                   <div class="instantan"> 
+                    <center id="igg">
+                     &nbsp;
+                    </center> 
+                   </div> 
+                  </loweresinfo> </span></td> 
+               </tr> 
+              </tbody> 
+              <tfoot> 
+               <tr> 
+                <td align="center" colspan="5" id="wemans">&nbsp;</td> 
+               </tr> 
+              </tfoot> 
+             </table> 
+            </center> 
+           </div> 
+          </loweresinfo> 
+          <loweresinfo> 
+           <div class="instantan"> 
+            <center id="igg">
+             &nbsp;
+            </center> 
+           </div> 
+          </loweresinfo> 
+          <loweresinfo> 
+           <div class="instantan"> 
+            <center id="igg">
+             &nbsp;
+            </center> 
+           </div> 
+          </loweresinfo></td> 
         </tr> 
        </tbody> 
-      </table> 
-      <table style="padding-top: 300px;"> 
-       <tbody> 
+       <tfoot> 
         <tr> 
-         <td align="center">&nbsp;</td> 
+         <td align="center" colspan="5" id="wemans">&nbsp;</td> 
         </tr> 
-       </tbody> 
-      </table> 
-      <div style="background-color: lavender; padding-top: 15px; padding-bottom: 15px;"> 
-       <p style="
-        max-width: 28rem;
-        margin: auto;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 13px;
-        text-align: center;
-        font-weight: 900;
-        ;">you are bored of these, visit us <a href="http://www.offerpharma.bond/9534Y2395Bp8n612z62a1Ay17ecS36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQLRQoe7s1tGqn05PJwDp/offsetting-regenerators">here</a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</p> 
-      </div> <br /> <br /> &nbsp;</td> 
+       </tfoot> 
+      </table> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.offerpharma.bond/offsetting-regenerators/e405n239g5Xs85z11N62a3x17ecH36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQLRQoe7k1rjz0w5I@wD3" alt=""/></body>
+ <img src="http://www.packstatenow.bond/e7b4J2395R85iM12yj62aeD17eeP36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQjRQ9m7nhsik106FNqwDT/troubleshooters-disciples" alt=""/></body>
 </html>
 
---cf475a89227c2cde89ad176f37912985501029401005--
+--795a6372247eb523738fbb3d5fbb9a1a101031539838--
 
