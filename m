@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84EE67BE945
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 20:29:44 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E95547BEC3E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  9 Oct 2023 23:04:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5E32710E124;
-	Mon,  9 Oct 2023 18:29:43 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AE4DF10E1AE;
+	Mon,  9 Oct 2023 21:04:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Mon, 09 Oct 2023 18:29:42 UTC
-Received: from mail.jaycetoolsinfo.site (unknown [157.52.235.148])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5198C10E124
+X-Greylist: delayed 599 seconds by postgrey-1.36 at gabe;
+ Mon, 09 Oct 2023 21:04:22 UTC
+Received: from mail.pharmaclicks.space (unknown [77.90.135.132])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E50DA10E1AE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Oct 2023 18:29:42 +0000 (UTC)
+ Mon,  9 Oct 2023 21:04:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=jaycetoolsinfo.site; 
+ d=pharmaclicks.space; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=ace.hardware.variety@jaycetoolsinfo.site; 
- bh=VS8qbxZDVtehtjmdFo3e6MvzwRQ=;
- b=hrXTvGW8CBX8NzMQD7ov9xUQfhqMKa+jhxXp3vSkHQrHDTSD03J3ZiEyLs7IqHJQ57vmLti6lPdn
- nseRUisXvQFU1xiBSxh2MB0OnwHDjX2pOpf8w/iE5orb75FeuB0LGNe1yG01vMwsCACpPwJfRqc1
- CydicSBSQktK85ewEeY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=jaycetoolsinfo.site;
- b=lgDfiBypHpj5wNlI3MdXCuVhOhsRBUDg34CYvBNg8JV1q3uRU7kmWFMSoCc/lvOXzo1ql2obZbVU
- OYfAVW09CcFyo/r9CxBFz3Ni81zwhRFX5Sw2vMfFPiNfZ+v/4XoKJst2W8Ovf8V7tdz3hDM/Dq5f
- F8hu6IkC6pRJACM2TQA=;
-Received: by mail.jaycetoolsinfo.site id h4h39c0001gj for
+ i=join-the-cvs-rewards-club@pharmaclicks.space; 
+ bh=s0/SEWPrVqGaB3AH7KO0I85ODVY=;
+ b=YyeeN5+qMsh9QBclNCJVgIWZR8lIh2jaBADWtz83vVZWUOWGfsGZMGk0y7CMAJphgarERCTclmtE
+ ubUj1NVUeoB2S+59PAJlHIRtxq7Yk7QlWWwzSWzeQZuSaDoS38a12BG3rXl7xy+dsuYVXtHD9htS
+ asyKu+HYhAv6yrv00CI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharmaclicks.space; 
+ b=H3bM4Z/j09C6DMT1HbzB+IYxrFKp3D0wIhTSYSRNmM+b3y7pqcKnpC2drhR5N8g7taWJpxV4O+7Z
+ gMf2k6wWmL7961+Y+403DQy+24xacqVi7r6GgaoQs/g04iqMyvQuy9U/8HiTPoQXIrSRFXbASPlz
+ 8AHHP5v5QzA5wZitNIY=;
+Received: by mail.pharmaclicks.space id h4huqg0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 9 Oct 2023 14:19:55 -0400 (envelope-from
- <ace.hardware.variety-intel+2Dgvt+2Ddev=lists.freedesktop.org@jaycetoolsinfo.site>)
-Date: Mon, 9 Oct 2023 14:19:55 -0400
-From: "ACE Hardware Variety" <ace.hardware.variety@jaycetoolsinfo.site>
+ Mon, 9 Oct 2023 18:10:40 -0400 (envelope-from
+ <join-the-cvs-rewards-club-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharmaclicks.space>)
+Date: Mon, 9 Oct 2023 18:10:40 -0400
+From: "Join The CVS Rewards Club"
+ <join-the-cvs-rewards-club@pharmaclicks.space>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <14992419339.169687558700571@jaycetoolsinfo.site>
-Subject: Win a Stanley tool set: Share your thoughts and participate in our
- drawing.
+Message-ID: <117747875820.1696884612891699@pharmaclicks.space>
+Subject: Time-Limited Offer: Win Up to $100 in CVS Gift Cards!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=77ae10e3f5b4851796ae8c1d6e1e79ef491029798102
+ boundary=c3037c1f5bee854fe04d02736aa1b92e40295497984199100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---77ae10e3f5b4851796ae8c1d6e1e79ef491029798102
+--c3037c1f5bee854fe04d02736aa1b92e40295497984199100
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,61 +64,134 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>redeemable at</title> 
+  <title>We value your</title> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: rgb(233, 233, 233); ">
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <center style="background-color: #fff; "> 
-   <div style="max-width: 200px; margin: auto; ">
-    <a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic" target="_blank"><img alt="YYEASE" src="http://www.jaycetoolsinfo.site/f115w239Y5OL7qa13UZ62bVep17f2S36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQsRQ9d5S1yh05nXwDW/raced-probable" width="100%" /></a>
-   </div> 
-  </center> 
-  <center align="center" style="background-color: #c9c9c9; "> 
-   <div style="max-width: 450px; margin: auto; background-color: #e0e0e0; "> 
-    <p style="margin: 0; font-size: 22px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; padding: 15px 0; color: #E7133F; "><i><u><b>Your Final<br /> Reminder from Ace Hardware </b> </u></i></p> 
-   </div> 
-  </center> 
-  <center> 
-   <div style="max-width: 450px; margin: auto; background-color: #fff; "> 
-    <p style="margin: 0; padding: 3.5% 5% 0; line-height: 1.7rem; font-size: 1rem; font-family:Verdana, Geneva, Tahoma, sans-serif "><b>Ace Hardware</b> is excited to announce a fantastic opportunity! You can now obtain the <b>Stanley Tool Set</b>, which is redeemable at any of our store locations. Act quickly and seize this chance! You have until <b>October 9th</b> to secure these exceptional tools.</p> 
-    <div style="max-width: 400px; margin: auto; ">
-     <a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic"><img alt="UUYSAE" src="http://www.jaycetoolsinfo.site/de55R239D5sPu7a13ts6k2bfy17f2Q36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsRQ9d7iI1p0Zn6bzwD10/Angeline-diagnostic" style="display: block; " width="100%" /></a>
-    </div> 
-    <p style="margin: 0; padding: 3.5% 5% 0; line-height: 1.7rem; font-size: 1rem; font-family:Verdana, Geneva, Tahoma, sans-serif ">We appreciate your anticipated support.<br /> Sincerely, The Ace Hardware Team.</p> &nbsp; 
-    <center style="padding: 1.4rem 0; background-color: rgb(66, 66, 66); font-family: Arial, Helvetica, sans-serif; font-size: 25px; font-weight: bold; ">
-     <a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic" style="text-decoration: none; color: #fff; " target="_blank">Start Here Now &gt; &gt; </a>
-    </center> 
-   </div> 
-  </center> 
-  <br /> 
-  <br /> 
-  <br /> 
-  <a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic" style="text-decoration: none; color: #fff; " target="_blank">&nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; </a> 
-  <table cellpadding="15px" style="background-color: darkgray; " width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> <p style="max-width: 500px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 12px; "><a href="http://www.jaycetoolsinfo.site/7734f2395gS86_11i62bcR17f2D36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRQ9d6I1YvL06AUwNDp/Angeline-diagnostic" style="text-decoration: none; color: #fff; " target="_blank">Anyway you can leave </a><a href="http://www.jaycetoolsinfo.site/Throneberry-saplings/f304j2395f86PU13I62bSzdI17f2J36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQsRQ9d6yVI1w06YpwlBD">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
-    </tr> 
-   </tbody> 
-  </table> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp; 
-  <br /> &nbsp;   
- <img src="http://www.jaycetoolsinfo.site/c7d6Q23Iv95G85vj12dJ62c0j17f2N36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQsRQ9d6c1DAY06zlw3@D/maternally-altering" alt=""/></body>
+ <body> 
+  <ol style="list-style-type: none; padding: 0; margin: o;"> 
+   <li class="topicclicks"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="simples" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="chokars"> 
+        <center class="platinos">
+         &nbsp;
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+   <li class="topicclicks"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="simples" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="chokars"> 
+        <center class="platinos">
+         &nbsp;
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+   <li class="topicclicks"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="simples" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="chokars"> 
+        <center class="platinos"> 
+         <div style="background-color: rgb(236, 236, 236); padding: 5% 7%;"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" class="symbols" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <div> 
+               <center class="filplios" style="max-width: 120px; margin: auto;">
+                <a href="http://www.pharmaclicks.space/foolishness-provoke/3f05Nw2395fF8Z611U62c1A17f3B36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQtRQ9Q5I1u0k5k3wDp" target="_blank"><img alt="UUYEAS" src="http://www.pharmaclicks.space/Youngstown-sightseeing/bca5n2w395Y7wxa13G6h2c3CY17f3G36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQtRQ9Q6anY1N05KT3wD" width="100%" /></a>
+               </center> 
+               <aside style="max-width: 520px; margin: auto; background-color: #fff; padding: 0; margin: 0;"> 
+                <section class="showpers" style="background-color: #ff0000; padding: 5mm 0;"> 
+                 <center style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; font-size: 5mm; color: #fff;">
+                  An Exclusive Deal for Our Esteemed Customers
+                 </center> 
+                </section> 
+                <div id="blokings" style="margin: 0; padding: 0; background-color: rgb(255, 255, 255); padding: 1.8rem 2rem;"> 
+                 <h3 style="margin: 0; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; line-height: 1.7rem; font-size: 1.1rem;">We highly appreciate your choice of CVS. Your loyalty and support hold significant importance for us, and we sincerely appreciate the chance to serve you.</h3> &nbsp; 
+                 <div style="max-width: 200px; margin: auto;"> 
+                  <table style="max-width: 230px; margin: auto; border-collapse: collapse;"> 
+                   <tbody> 
+                    <tr> 
+                     <td width="90px"><a href="http://www.pharmaclicks.space/foolishness-provoke/3f05Nw2395fF8Z611U62c1A17f3B36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQtRQ9Q5I1u0k5k3wDp" target="_blank"><img alt="UUESA" src="http://www.pharmaclicks.space/completions-deify/15c5GI2395EYv7a13s62cBV4H17f3k36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQtRQ9Q5zGP105JzXwD" width="100%" /> </a></td> 
+                     <td width="100px"><a href="http://www.pharmaclicks.space/foolishness-provoke/3f05Nw2395fF8Z611U62c1A17f3B36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQtRQ9Q5I1u0k5k3wDp" target="_blank"><img alt="KKESA" src="http://www.pharmaclicks.space/collegian-fortiori/9cc6d2D39s5D7Dan11J62c5Q17f3l36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQtRQ9Q7u1MZp0v5bkwqD" width="100%" /> </a></td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                 </div> &nbsp; 
+                 <h4 id="plins" style="margin: 0; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; line-height: 1.7rem; font-size: 1.1rem;">Your feedback is of great importance to us, and as a token of our appreciation, we would like to offer you a special thank you for dedicating your time to share your insights.<br /> <br /> <b>After finishing the survey, you may have the opportunity to select from a range of gifts!</b></h4> &nbsp; 
+                 <section style="max-width: 200px; margin: auto;"> 
+                  <blockquote style="max-width: 200px; margin: auto; background-color: rgb(255, 0, 0); padding: 16px 30px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 1.2rem;">
+                   <a href="http://www.pharmaclicks.space/foolishness-provoke/3f05Nw2395fF8Z611U62c1A17f3B36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQtRQ9Q5I1u0k5k3wDp" style="text-decoration: none; color: #fff;">Star Now &gt;&gt;</a>
+                  </blockquote> 
+                 </section> &nbsp; 
+                 <h6 class="toguyes" style="margin: 0; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; line-height: 1.7rem; font-size: 1em;">Thank you once more for your support. We are eagerly looking forward to your prompt response! Warm regards,</h6> &nbsp; 
+                 <hr style="width: 85%; margin: auto; ;" />
+                </div> 
+               </aside> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp; 
+          <div style="background-color: dimgray; padding: 2% 0;"> 
+           <p style="max-width: 500px; margin: auto; color: #fff;"><font><i><b>time to show you the exit <a href="http://www.pharmaclicks.space/brazing-requisition/ef46W239Vo5d8VN611G62c2t17f3X36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQtRQ9Q5u1SS06RNO1wD">here</a><br /> US 10010 126 E 23rd St New York, NY, </b> </i> </font></p> 
+          </div> 
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+         </div> 
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+   <li class="topicclicks"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="simples" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="chokars"> 
+        <center class="platinos">
+         &nbsp;
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+   <li class="topicclicks"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="simples" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="chokars"> 
+        <center class="platinos">
+         &nbsp;
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+  </ol>   
+ <img src="http://www.pharmaclicks.space/8634n2395IH85s13zP62cF6V17f3O36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQtRQ9Q6p10kMm6cPJpwD/completions-deify" alt=""/></body>
 </html>
 
---77ae10e3f5b4851796ae8c1d6e1e79ef491029798102--
+--c3037c1f5bee854fe04d02736aa1b92e40295497984199100--
 
