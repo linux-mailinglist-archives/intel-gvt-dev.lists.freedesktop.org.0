@@ -2,45 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30B987BEDF7
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Oct 2023 00:00:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F0E5C7BFA53
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Oct 2023 13:51:03 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C4C3B10E082;
-	Mon,  9 Oct 2023 22:00:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BC05F10E1E4;
+	Tue, 10 Oct 2023 11:51:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 599 seconds by postgrey-1.36 at gabe;
- Mon, 09 Oct 2023 22:00:54 UTC
-Received: from mail.toolsfreecps.today (unknown [77.90.135.16])
- by gabe.freedesktop.org (Postfix) with ESMTP id 020CE10E082
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 10 Oct 2023 11:51:01 UTC
+Received: from mail.tapskroinfo.click (unknown [77.90.135.95])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4302610E1E4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  9 Oct 2023 22:00:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=toolsfreecps.today; 
+ Tue, 10 Oct 2023 11:51:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tapskroinfo.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor-freight-gift-opportunity@toolsfreecps.today; 
- bh=fUfUUzPqltLUHKWS+h3B0deMdP8=;
- b=JH9r3cvxE++/wHqlBMox+pLMjiQo9d0DJAsEV5hIzupG8pVodQ30YYXKZ/gmjeYvDL60PX8zenlW
- ElpfbkbOwOclBACLX9eOxXR5ZEB9Kb7DODpzui9WKgT4EXYhi10ku+OyC3ytEgtagz/rLJo3/qtK
- WMoyXaqvZQskyWVFxdQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsfreecps.today; 
- b=KivjPkdTpfovc+m/UugTSCnCR3pB/E0KozZDeIfBs03SKA+aAYTj46z2gAniiB2PMzUdF77/SC5j
- 1GrXCzZB1kBb1PNkJk3VmuQTacmO+wWb8vlpftGb+k2gVq9nyDaGeWZGnqjrto42X4sNz6/aTLy5
- brWghKbJsFFMPVkh15k=;
-Received: by mail.toolsfreecps.today id h4i5eg0001gd for
+ i=excellence.in.kroger.customer.service@tapskroinfo.click; 
+ bh=yBnGh3RakbPbkWtm1gnHB3n9VmM=;
+ b=vZV5q8b/Z2A7veCr/xIAomwCSZ5hOF9zn7XQSJBwDUVlB+Cme3bjL7CjzW/gdvkBxRvvX+hi9ACz
+ ZwUhIbnn7I5poQ7WarZEvMF4qGjULjop2X166f66dnXuUKpXkuOcvBwN5IWvAmcg+TW9MZQ+Lu9f
+ oW0kOgXrK24kJbBzq6Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tapskroinfo.click; 
+ b=GikgBCj0my3eKGl2eiVH6znwn2ALNkE4qt21e+RrMQtWLjrYZYnNsL9s1f2f83HAKyzcMZDkoBO2
+ AuUzqToOZSjfEJoMcF3gNUpE9t5eX/lOW8zeNRVyNGcYFQ8ZN1bZMgc+UCW3//qN+oEnWfFecttz
+ a3tPDCOThh0MBg80ono=;
+Received: by mail.tapskroinfo.click id h4ktaa0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 9 Oct 2023 19:09:14 -0400 (envelope-from
- <harbor-freight-gift-opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsfreecps.today>)
-Date: Mon, 9 Oct 2023 19:09:14 -0400
-From: "Harbor Freight Gift Opportunity"
- <harbor-freight-gift-opportunity@toolsfreecps.today>
+ Tue, 10 Oct 2023 07:42:44 -0400 (envelope-from
+ <excellence.in.kroger.customer.service-intel+2Dgvt+2Ddev=lists.freedesktop.org@tapskroinfo.click>)
+Date: Tue, 10 Oct 2023 07:42:44 -0400
+From: "Excellence In Kroger Customer Service"
+ <excellence.in.kroger.customer.service@tapskroinfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <7257925346654.16968881171379401@toolsfreecps.today>
-Subject: An exclusive Pittsburgh 225 Piece Tool Set is available, and it's
- waiting for your feedback &ndash; simply share your thoughts to claim it.
+Message-ID: <19012875164.1696938157382768@tapskroinfo.click>
+Subject: Embrace today's celebrations with a unique gift from us,
+ demonstrating our appreciation.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=2916d6bf82b72d527c564e4573d42810898608985
+ boundary=68c7fa2b3861d469bdc1a85b3bb67a21999931020610210171036
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,69 +55,228 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---2916d6bf82b72d527c564e4573d42810898608985
+--68c7fa2b3861d469bdc1a85b3bb67a21999931020610210171036
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html>
- <head>=20
-  <meta charset=3D"utf-8" />=20
-  <title>atomm</title>=20
- </head>=20
- <body>=20
-  <div style=3D"max-width: 489px; margin: auto; padding: 12px; border: soli=
-d 2px #eee; border-radius: 6px">=20
-   <table cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=20
-    <tbody>=20
-     <tr>=20
-      <td> <p align=3D"center"><a href=3D"http://www.toolsfreecps.today/nucleotide-Wagnerize/8a04P2395d8I6w12p6s2c7H17f4Y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5RQ9R5BG10k6LpMw@D" target=3D"_blank"><im=
-g alt=3D"QWAWA" src=3D"http://www.toolsfreecps.today/stitch-ongoing/6c05EN2395DW7aO12g6R2caX17f4D36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ5RQ9R7tT10imS6j0JUwD" style=3D"max-width: 199px" width=3D"100=
-%" /> </a></p> <h3 align=3D"center" style=3D"font-family: Gotham, 'Helvetic=
-a Neue', Helvetica, Arial, 'sans-serif'; background-color: #eee; padding: 1=
-5px;  font-size: 25px">Thrilling News from<br /> Harbor Freight for our val=
-ued friends.</h3>=20
-       <div>=20
-        <table cellpadding=3D"1" cellspacing=3D"1" width=3D"100%">=20
-         <tbody>=20
-          <tr>=20
-           <td align=3D"center" style=3D"font-family: Gotham, 'Helvetica Ne=
-ue', Helvetica, Arial, 'sans-serif'; font-size: 22px">Get acquainted with <=
-b>Harbor Freight's</b> most recent addition! Take a closer look at the fres=
-h <b>Pittsburgh 225 Piece Tool Set</b>, offered exclusively at our store br=
-anches. Don't miss out on this chance to upgrade your toolkit!<br /> &nbsp;=
- <p style=3D"margin-top: 0"><a href=3D"http://www.toolsfreecps.today/nucleotide-Wagnerize/8a04P2395d8I6w12p6s2c7H17f4Y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5RQ9R5BG10k6LpMw@D" target=3D"_blank"><img a=
-lt=3D"MMMNSA" src=3D"http://www.toolsfreecps.today/bc94Q2395dw7aL11Y62cbU17f4Z36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ5RQ9R5B1UM05X2wD0/Corinthianizes-muddler" style=3D"display: block;" width=3D"100%" =
-/> </a></p> <br /> <br /> <small style=3D"background-color: #eee"><a href=
-=3D"http://www.toolsfreecps.today/Kleinrock-gross/4a46fYU2395JSD8612z62qc8D17f4w36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ5RQ9R7b1u0ZAi5u31wD">--&gt; Act Swiftly to Grasp this Time-Sensitive Opportunity=
-! &lt;--</a></small><br /> <br /> Save the date! Until October 10th, a trea=
-sure trove of outstanding tools awaits. Delve in and find your next must-ha=
-ve gadget today <b style=3D"color: #ff0000;"> #ToolTimeTreats </b><br /> <b=
-r /> <a href=3D"http://www.toolsfreecps.today/nucleotide-Wagnerize/8a04P2395d8I6w12p6s2c7H17f4Y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5RQ9R5BG10k6LpMw@D" style=3D"text-decoration: none; font-size: 22px=
-; color: #fff; display: inline-block; padding: 15px 50px; background-color:=
- #DA0016; font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans=
-', 'DejaVu Sans', Verdana, 'sans-serif'; border-radius: 57px">Start Here No=
-w &gt; &gt; </a><br /> &nbsp;</td>=20
-          </tr>=20
-         </tbody>=20
-        </table>=20
-       </div> </td>=20
-     </tr>=20
-    </tbody>=20
-   </table>=20
-  </div>=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br />=20
-  <br /> &nbsp;=20
-  <center>
-   <span>feel comfortable leaving <a href=3D"http://www.toolsfreecps.today/3594V2395C86nM11q62c9N17f4s36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ5RQ9R5vts106JLPwDP/Corinthianizes-muddler"> here </a> we' ll =
-miss you<br /> US 10010 126 E 23rd St New York, NY,</span>
-  </center>  =20
- <img src=3D"http://www.toolsfreecps.today/Corinthianizes-muddler/8dc6Dn23J95X85rC13S62Hcqco17f4v36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ5RQ9R6s10MYh5gPwDj" alt=3D""/></body>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>genuinely value the</title> 
+ </head> 
+ <body> 
+  <div class="yemitall"> 
+   <center id="tokersstaar"> 
+    <section class="livyspre"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+      <tbody class="infinity"> 
+       <tr> 
+        <td class="nowansms"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(233, 233, 233);" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td align="center"> 
+                 <section> 
+                  <center> 
+                   <article style="max-width: 15rem; margin: auto;">
+                    <a href="http://www.tapskroinfo.click/Segovia-Ionians/7ec5n23K95L8vu611S62cdk17f5y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQpRQ9S7GkpF10r5mlwUD" target="_blank"><img alt="UUYASME" src="http://www.tapskroinfo.click/e7b5k23V95l7AaP11h62cfA17f5U36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQpRQ9S5wm10A5vWwDP/referral-nurses" width="100%" /></a>
+                   </article> 
+                  </center> 
+                 </section> 
+                 <table align="center" border="0" cellpadding="0" cellspacing="0" class="only" style="border-collapse: collapse;" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" style="background-color: rgb(247, 247, 247);">&nbsp; 
+                     <div style="max-width: 30rem; margin: auto; background-color: #fff; border-top: solid 10px #dae7ff; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom: solid 10px #dae7ff; border-bottom-right-radius: 15px; border-bottom-right-radius: 10px; padding: 5% 0%;"> 
+                      <h1 class="tokertows" style="
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    text-align: center;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    ; padding: .5rem 1.6rem;
+    margin: 0;">We wish to express our gratitude for choosing our services. Your loyalty and support hold significant value for us and will forever be recognized and cherished.</h1> 
+                      <div id="fiastocs" style="display: flex; justify-content: center; align-items: center; flex-flow: row wrap;">
+                       <a href="http://www.tapskroinfo.click/Segovia-Ionians/7ec5n23K95L8vu611S62cdk17f5y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQpRQ9S7GkpF10r5mlwUD"><img alt="NNBSA" src="http://www.tapskroinfo.click/interrelate-objecting/a084Q2395Mo7Oa13l62zdM0q17f5g36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQpRQ9S5Q1gY05z2wDW" width="90px" /></a> 
+                       <a href="http://www.tapskroinfo.click/Segovia-Ionians/7ec5n23K95L8vu611S62cdk17f5y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQpRQ9S7GkpF10r5mlwUD"><img alt="NNBSA" src="http://www.tapskroinfo.click/analyzed-diverge/44a5J23Z95eFm7a12w6r2d1T17f5y36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQpRQ9S6MYI1B05BpwjD" width="100px" /></a>
+                      </div> 
+                      <h2 class="parrs" style="
+font-size: 1.2rem;
+line-height: 1.7rem;
+text-align: center;
+font-weight: 500;
+font-family: Arial, Helvetica, sans-serif;
+; padding: .5rem 1.6rem;
+margin: 0">We deeply appreciate your continued support and eagerly await your feedback. Thank you for your ongoing support, and we look forward to hearing from you soon!</h2> 
+                      <div class="chinese" style="background-color: #2A4F92; padding: .4rem .5rem;"> 
+                       <h3 style="
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    text-align: center;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
+    ; padding: .5rem 1.6rem;
+    color: #fff;
+    margin: 0;">We greatly appreciate your ongoing support and eagerly anticipate your feedback.</h3> 
+                      </div> 
+                      <h4 class="onglys" style="
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    text-align: center;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    ; padding: .5rem 1.6rem;
+    margin: 0;">Accessing the survey is straightforward ? just click on the link provided below. It's a brief task that will take only a few minutes of your time, and please be assured that your responses will be treated with the utmost confidentiality.</h4> &nbsp; 
+                      <div style="text-align: cneter; width: 300px; margin: auto;">
+                       <a href="http://www.tapskroinfo.click/Segovia-Ionians/7ec5n23K95L8vu611S62cdk17f5y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQpRQ9S7GkpF10r5mlwUD" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline; background-color: #2A4F92; padding: 1.2rem 1.8rem; border-radius: 10px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; ;">Start Here Now &gt; &gt;</span></a>
+                      </div> &nbsp; 
+                      <h6 style="
+font-size: .8rem;
+line-height: 1.7rem;
+text-align: center;
+font-weight: 500;
+font-family: Arial, Helvetica, sans-serif;
+; padding: .5rem 1.6rem;
+margin: 0;">Once again, we appreciate your support, and we eagerly await your response! Warm regards,<br /> <b>The Kroger Survey Team</b></h6> 
+                     </div> <br /> <br /> &nbsp;<br /> <br /> &nbsp;<br /> <br /> &nbsp;<br /> <br /> &nbsp;<br /> <br /> &nbsp; 
+                     <div style="background-color: lightblue; padding-top: 1.2rem; padding-bottom: 1.2rem;"> 
+                      <p style="max-width: 30rem ; margin: auto; font-size: 12px; font-family: Arial, Helvetica, sans-serif; font-weight: 800; text-align: center;">if you need to go visit <a href="http://www.tapskroinfo.click/Segovia-Ionians/6de5a23T95GS86o12G62xceG17f5m36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQpRQ9S5r10xj6KJ2lwD">here</a><br /> 10010 126 E 23rd St New York, NY, US</p> 
+                     </div> <br /> <br /> &nbsp;<br /> <br /> &nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+      <tbody class="infinity"> 
+       <tr> 
+        <td class="nowansms"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+          <tbody class="infinity"> 
+           <tr> 
+            <td class="nowansms">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+      <tbody class="infinity"> 
+       <tr> 
+        <td class="nowansms">&nbsp;</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+      <tbody class="infinity"> 
+       <tr> 
+        <td class="nowansms">&nbsp;</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+      <tbody class="infinity"> 
+       <tr> 
+        <td class="nowansms">&nbsp;</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
+      <tbody class="infinity"> 
+       <tr> 
+        <td class="nowansms">&nbsp;</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </section> 
+   </center> 
+  </div>   
+ <img src="http://www.tapskroinfo.click/e5d4o2395r8Z5I12z62dF2H17f5r36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQpRQ9S7fU10kgX6M1WwDP/referral-nurses" alt=""/></body>
 </html>
 
---2916d6bf82b72d527c564e4573d42810898608985--
+--68c7fa2b3861d469bdc1a85b3bb67a21999931020610210171036--
 
