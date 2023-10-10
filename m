@@ -2,45 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E18067C0164
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Oct 2023 18:16:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B7F297C024E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Oct 2023 19:12:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 90F0E10E32C;
-	Tue, 10 Oct 2023 16:16:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AD3D310E15E;
+	Tue, 10 Oct 2023 17:12:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 10 Oct 2023 16:15:57 UTC
-Received: from mail.only-flyingtime.bond (unknown [77.90.135.197])
- by gabe.freedesktop.org (Postfix) with ESMTP id 77DBF10E32C
+ Tue, 10 Oct 2023 17:12:43 UTC
+Received: from mail.chaps-toolsp.click (unknown [77.90.135.202])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5BC4910E3BD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Oct 2023 16:15:57 +0000 (UTC)
+ Tue, 10 Oct 2023 17:12:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=only-flyingtime.bond; 
+ d=chaps-toolsp.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=observations.from.your.delta.airline.travel@only-flyingtime.bond; 
- bh=XYAAjHddZpQ2pKYPqV9dbfxWLAE=;
- b=OzBj+tE0ILIqwVygMkgTEwH0/v8VjBRYq/fmEqJ4tXHRGCwD5RkipwnDtFvZbly9ZeUxAmswZpKp
- 7/9NeFWr/QZIKeBdin6yWyMeoCJcAz1fQxD0kiPqErwx9Z41kksiPi74MwyrIUqWYEVHDk9I+8Gk
- MeLp5NJF33UHVcLGzJc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=only-flyingtime.bond;
- b=kOoG5NPVHh3EZ0fMtJXGH71pmC5ii1bsmzQzMM9dcPzmnbHVGBxh22nukVbJp71EFI95yEr2zdcc
- 4dnbbWGw3tEYQUqrh4ZFy+Lfz8ueKLLP5n+7UjH4jQgKFENelmiTFiYwp2lI5E2wDjtx/B1N1Dbz
- HlA0Qr3Zrv5bVWTBw6Q=;
-Received: by mail.only-flyingtime.bond id h4lsbq0001gs for
+ i=survey-rewards-at-home-depot@chaps-toolsp.click; 
+ bh=aZcmcJSSWHMkiuBdsoX7R4IhoPA=;
+ b=wBxJo7O83CsCKFTJCWga8O6FfocI6HWOIwTldzNsobzW8A/P/B7re/1Clfl4EKmnBLB1NgwqbiTq
+ K0oT6Gr1988E52tXEI03WhiDszxnL+A8al6hBF22hJgqWWoprtoZkCcYvnBiGQwPrJbgXoKebVxa
+ LSdqoYPROMIQePF4+oo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=chaps-toolsp.click; 
+ b=JWIn03HHHDDyChnth9wPdbK1NuyH3Id0L8hunJn/CgPlBA/6ypFFfjMA3yXTghMFjg4n6y/eUeQf
+ 0k+MMdxz67Apzh4S5CdjRlWYdOKRrySF6sBSkuGL6kmil5mL/CLeD7lDcXZ4/8DUL9SNj00Tx/Jd
+ 6sB3w42R/BIV4ebL8dc=;
+Received: by mail.chaps-toolsp.click id h4m30m0001g7 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Oct 2023 12:07:51 -0400 (envelope-from
- <observations.from.your.delta.airline.travel-intel+2Dgvt+2Ddev=lists.freedesktop.org@only-flyingtime.bond>)
-Date: Tue, 10 Oct 2023 12:07:51 -0400
-From: "Observations From Your Delta Airline Travel"
- <observations.from.your.delta.airline.travel@only-flyingtime.bond>
+ Tue, 10 Oct 2023 13:05:22 -0400 (envelope-from
+ <survey-rewards-at-home-depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@chaps-toolsp.click>)
+Date: Tue, 10 Oct 2023 13:05:22 -0400
+From: "Survey Rewards At Home Depot"
+ <survey-rewards-at-home-depot@chaps-toolsp.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <3263957775126.169695405978443@only-flyingtime.bond>
-Subject: Reward yourself with a complimentary flight to your dream destination
- this season &ndash; you deserve it!
+Message-ID: <5610589107.1696957515527923@chaps-toolsp.click>
+Subject: Limited-time opportunity: Grab a Makita Drill Set today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=d5e7d12a9726da2150c1053db258f1ce164198610199
+ boundary=32a3ada860abc307cca31408234c485d2229798
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---d5e7d12a9726da2150c1053db258f1ce164198610199
+--32a3ada860abc307cca31408234c485d2229798
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,108 +64,368 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>adventure you</title> 
+  <title>forever be recognized</title> 
  </head> 
  <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="closl" style="border-collapse: collapse;" width="100%"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <thead> 
+    <tr> 
+     <th>&nbsp;</th> 
+    </tr> 
+   </thead> 
    <tbody> 
     <tr> 
-     <td> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" class="shopts" style="border-collapse: collapse; max-width: 33.5rem; margin: auto; ;"> 
+     <td class="cloflows"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="loplosp" style="border-collapse: collapse;" width="100%"> 
        <tbody> 
         <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" class="ships" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td> 
-              <section class="flips"> 
-               <table style="max-width: 270px; margin: auto;"> 
-                <tbody> 
-                 <tr> 
-                  <td><a href="http://www.only-flyingtime.bond/formalization-thirtieth/7b06ypX2395Mhj8611d62e2j17f9w36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQhRQdn7mS10Owq6AMwDTA" target=""><img alt="YYTAS" src="http://www.only-flyingtime.bond/communicant-scholarly/abc4F2395U7LaH12j62Ke4K17f9m36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQhRQdn7oUq1k0N6XPPkwD" width="100%" /></a></td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </section> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
         </tr> 
        </tbody> 
-      </table> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(245, 255, 255);" width="100%"> 
+      </table> </td> 
+     <td class="cloflows"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="loplosp" style="border-collapse: collapse;" width="100%"> 
        <tbody> 
         <tr> 
-         <td align="center"> 
-          <table style="max-width: 33.5rem; margin: auto; background-color: #fff;"> 
-           <tbody> 
-            <tr> 
-             <td> 
-              <div class="towes"> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> 
-                   <div>
-                    <a href="http://www.only-flyingtime.bond/formalization-thirtieth/7b06ypX2395Mhj8611d62e2j17f9w36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQhRQdn7mS10Owq6AMwDTA"><img alt="MNSE" src="http://www.only-flyingtime.bond/sealer-outcast/be85y23N95XUy7a11N62e5H17f9A36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQhRQdn6KqH1R06zUwODp" style="display: block;" width="100%" /></a>
-                   </div> <p style="
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-size: 15px;
-                line-height: 27px;
-                padding: 4.5mm 3mm;
-                font-weight: 500;
-                ;">Thank you for choosing <strong>Delta</strong> for your travel! Every journey you take with us becomes a part of our story, and we're excited to improve every aspect for your enjoyment.<br /> <br /> Let's elevate your flying experience even more! Share your feedback about your recent Delta journey by taking a brief survey. Click the link below to begin this quick exploration.<br /> <br /> Your input not only influences our future but could also open the door to a chance at receiving a surprise <strong>$100 gift!</strong> Every perspective is valuable, so be sure to make yours count today!<br /> <span style="color: rgb(139, 0, 0); font-weight: bold;">#EnhanceYourFlightExperience. </span></p> 
-                   <center style="width: 500px; margin: auto;"> 
-                    <blockquote style="
-                        font-family: Verdana, Geneva, Tahoma, sans-serif;
-                        font-weight: bold;
-                        background-color: rgb(31, 31, 31);
-                        padding-top: .4cm; 
-                        padding-bottom: .4cm; 
-                        padding-left: .8cm; 
-                        padding-right: .8cm;
-                        border-radius: 7px;
-                        ;">
-                     <a href="http://www.only-flyingtime.bond/formalization-thirtieth/7b06ypX2395Mhj8611d62e2j17f9w36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQhRQdn7mS10Owq6AMwDTA" style="
-                    text-decoration: none;
-                    color: #fff;" target="_blank">Fly Better With Now &raquo;</a>
-                    </blockquote> 
-                   </center> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table cellpadding="200px" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <div style="max-width: 500px;
-                                margin: auto; 
-                                font-family: Arial, Helvetica, sans-serif;
-                                font-size: 12px;
-                               
-                                padding: .35cm 0;
-                                font-weight: bold;
-                                ;">
-               Join us at the exit 
-               <a href="http://www.only-flyingtime.bond/plummet-preciseness/1026LT239y5y8Vk612E6g2e3N17f9z36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQhRQdn7y1qkWi06dJBjwD">here</a>
-               <br /> US 10010 126 E 23rd St New York, NY,
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td class="cloflows"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="loplosp" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td class="cloflows"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="loplosp" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div style="background-color: rgb(255, 255, 255); width: 100%; padding: 30px 0;"> 
+           <table align="center" style="max-width: 420px; margin: auto; background-color: #fff;" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="center"><a href="http://www.chaps-toolsp.click/gloving-fibrosities/6a24J2395KlK8613j6w2te7K17faO36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQURQdo7KIQ1W0R5G@1wD" target="_blank"><img alt="UUEA" src="http://www.chaps-toolsp.click/c7d4q2395Ko7aQ13w62eOY9t17fat36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQURQdo5Sv1R06llwjJD/prettily-parser" width="100%" /></a></td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <div class="topsl span jeyces" style="background-color: rgb(236, 236, 236); width: 100%; padding: 30px 0;"> 
+            <div style="
+    border-top: solid 20px #F55D03;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    max-width: 14cm;
+    margin: auto;
+    background-color: #fff;
+    border-bottom: solid 20px #F55D03;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    padding-bottom: 0px;"> 
+             <div style="
+    background-color: #F55D03;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    text-align: center;
+    color: #fff;
+    padding: 10px 30px;">
+              We wish to express our gratitude for selecting our services. Your loyalty and support hold significant importance for us and will always be acknowledged and treasured.              </div> 
+             <center align=" center" style="
+font-family: Arial, Helvetica, sans-serif;
+font-size: 1.2rem;
+text-align: center;
+padding: 10px 30px;
+line-height: 1.7rem;">
+              To show our appreciation for your support, we offer you the chance to receive a 
+              <b>MAKITA DRILL Set</b> as a token of our gratitude!
+             </center> 
+             <center style="text-align: center;"> 
+              <blockquote style="
+        max-width: 17.5rem;
+        margin: auto;
+        padding-top: 30px;
+        text-align: center;">
+               <a href="http://www.chaps-toolsp.click/gloving-fibrosities/6a24J2395KlK8613j6w2te7K17faO36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQURQdo7KIQ1W0R5G@1wD"><img alt="OLLAE" src="http://www.chaps-toolsp.click/6a15g23p95L7G_a11l62eaI17faq36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQURQdo6CIK10J6qOpUwD/simmering-portentous" width="100%" /></a>
+              </blockquote> 
+             </center> 
+             <center align=" center" style="
+font-family: Arial, Helvetica, sans-serif;
+font-size: 1.2rem;
+text-align: center;
+padding: 10px 30px;
+line-height: 1.7rem;">
+              <strong>Your feedback holds immense importance for us.</strong>
+              <br /> 
+              <br /> Obtaining this reward is simple; all it takes is just 30 seconds of your time to provide us with your feedback, and we'll promptly send it to you.               <br /> &nbsp; 
+              <table align="center"> 
+               <tbody> 
+                <tr> 
+                 <td align="center"> 
+                  <blockquote style="max-width: 300px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; padding: 1em 1.8em; background-color: #008397; border-radius: 10px;">
+                   <a href="http://www.chaps-toolsp.click/gloving-fibrosities/6a24J2395KlK8613j6w2te7K17faO36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQURQdo7KIQ1W0R5G@1wD" style="text-decoration: none; color: rgb(255, 255, 255);">Start Here Now &gt;&gt; </a>
+                  </blockquote> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </center> 
+            </div> 
+            <h4 style="padding-top: 150px;">&nbsp;</h4> 
+            <section class="wolps" style=" padding: .5cm 0;"> 
+             <p style="
+    max-width: 499px;
+    margin: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    text-align: cemter;
+    font-weight: bold;
+    text-align: center;">you can leave with sadness <a href="http://www.chaps-toolsp.click/gloving-fibrosities/6484e2395t8uI611A62e8L17faS36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQURQdo7Pwr1Wg05MOwlD">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+            </section> 
+            <h4 style="padding-top: 50px;">&nbsp;</h4> 
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td class="cloflows"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="loplosp" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td class="cloflows"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="loplosp" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td class="cloflows"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" class="loplosp" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
+         <td class="chamises"> 
+          <div> 
+           <div class="topsl span jeyces">
+            &nbsp;
+           </div> 
+          </div> </td> 
         </tr> 
        </tbody> 
       </table> </td> 
     </tr> 
    </tbody> 
-  </table>   
- <img src="http://www.only-flyingtime.bond/communicant-scholarly/6fc5v23G95SW85D12W62eX6_17f9V36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQhRQdn7Dk1jR0N6CAj2wD" alt=""/></body>
+   <tfoot> 
+    <tr> 
+     <td align="center" class="shomblis">&nbsp;</td> 
+    </tr> 
+   </tfoot> 
+  </table>  
+  <meta charset="utf-8" /> 
+  <title></title> 
+ <img src="http://www.chaps-toolsp.click/98f5K23Z95GHy8513ry_62ebt17faH36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQURQdo5A10lv6zUMwD2/linkers-footage" alt=""/></body>
 </html>
 
---d5e7d12a9726da2150c1053db258f1ce164198610199--
+--32a3ada860abc307cca31408234c485d2229798--
 
