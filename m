@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0E5C7BFA53
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Oct 2023 13:51:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A56117BFD23
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 10 Oct 2023 15:18:00 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BC05F10E1E4;
-	Tue, 10 Oct 2023 11:51:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6DD6110E369;
+	Tue, 10 Oct 2023 13:17:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 10 Oct 2023 11:51:01 UTC
-Received: from mail.tapskroinfo.click (unknown [77.90.135.95])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4302610E1E4
+ Tue, 10 Oct 2023 13:17:57 UTC
+Received: from mail.cantoolsinfo.autos (unknown [77.83.202.33])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E5AF310E369
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Oct 2023 11:51:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tapskroinfo.click;
+ Tue, 10 Oct 2023 13:17:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=cantoolsinfo.autos; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=excellence.in.kroger.customer.service@tapskroinfo.click; 
- bh=yBnGh3RakbPbkWtm1gnHB3n9VmM=;
- b=vZV5q8b/Z2A7veCr/xIAomwCSZ5hOF9zn7XQSJBwDUVlB+Cme3bjL7CjzW/gdvkBxRvvX+hi9ACz
- ZwUhIbnn7I5poQ7WarZEvMF4qGjULjop2X166f66dnXuUKpXkuOcvBwN5IWvAmcg+TW9MZQ+Lu9f
- oW0kOgXrK24kJbBzq6Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tapskroinfo.click; 
- b=GikgBCj0my3eKGl2eiVH6znwn2ALNkE4qt21e+RrMQtWLjrYZYnNsL9s1f2f83HAKyzcMZDkoBO2
- AuUzqToOZSjfEJoMcF3gNUpE9t5eX/lOW8zeNRVyNGcYFQ8ZN1bZMgc+UCW3//qN+oEnWfFecttz
- a3tPDCOThh0MBg80ono=;
-Received: by mail.tapskroinfo.click id h4ktaa0001gd for
+ i=harbor_freight_love@cantoolsinfo.autos; 
+ bh=2aq13ZAl7Ml7TguNwi41pjBK/10=;
+ b=FX5CRACEmZQ7WC3N9BfR31aoQ1w7YN3vpPo7A5L5bxV/IzS/Gi18n0Bf+mqRe6YsLtw/3kBhzj/N
+ rW8iucnRsZgx6uccHfhy7gJ0GbEnHn/GTG0639oUb18cEPhcmn6XokQLymE+S/L/7EhtDIwFPncT
+ IPReG77XRqcM11ZStAQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=cantoolsinfo.autos; 
+ b=cwfjqS+tUHWDqV2L5gXijsSMWIFYRsFkf3mH9Ps1XT1K8PDeQoC/fsl8WsrEMa0e1Nxf5TOD64od
+ B3PcYUSrIuqkSDHOszfJoSmHvnygMoINRDalEYegWqXW5NJVHcQnkATUwtW3zx+4MaG2c5lkaFTY
+ D9WR36b14GMjJ2Zsw4Q=;
+Received: by mail.cantoolsinfo.autos id h4lgtc0001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 10 Oct 2023 07:42:44 -0400 (envelope-from
- <excellence.in.kroger.customer.service-intel+2Dgvt+2Ddev=lists.freedesktop.org@tapskroinfo.click>)
-Date: Tue, 10 Oct 2023 07:42:44 -0400
-From: "Excellence In Kroger Customer Service"
- <excellence.in.kroger.customer.service@tapskroinfo.click>
+ Tue, 10 Oct 2023 10:30:29 -0400 (envelope-from
+ <harbor_freight_love-intel+2Dgvt+2Ddev=lists.freedesktop.org@cantoolsinfo.autos>)
+Date: Tue, 10 Oct 2023 10:30:29 -0400
+From: "Harbor Freight Love" <harbor_freight_love@cantoolsinfo.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <19012875164.1696938157382768@tapskroinfo.click>
-Subject: Embrace today's celebrations with a unique gift from us,
- demonstrating our appreciation.
+Message-ID: <13075907766745.1696943393661729@cantoolsinfo.autos>
+Subject: Pop Open Exclusive Offers Reserved Just for You!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=68c7fa2b3861d469bdc1a85b3bb67a21999931020610210171036
+ boundary=1e78b3ec286062b8d7ecd4e1e32d1522971011297977
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---68c7fa2b3861d469bdc1a85b3bb67a21999931020610210171036
+--1e78b3ec286062b8d7ecd4e1e32d1522971011297977
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,219 +63,244 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>genuinely value the</title> 
+  <title>We're thrilled</title> 
  </head> 
  <body> 
-  <div class="yemitall"> 
-   <center id="tokersstaar"> 
-    <section class="livyspre"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-      <tbody class="infinity"> 
+  <center class="clavins"> 
+   <section id="topes"> 
+    <div class="inglos"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
        <tr> 
-        <td class="nowansms"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(233, 233, 233);" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td align="center"> 
-                 <section> 
-                  <center> 
-                   <article style="max-width: 15rem; margin: auto;">
-                    <a href="http://www.tapskroinfo.click/Segovia-Ionians/7ec5n23K95L8vu611S62cdk17f5y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQpRQ9S7GkpF10r5mlwUD" target="_blank"><img alt="UUYASME" src="http://www.tapskroinfo.click/e7b5k23V95l7AaP11h62cfA17f5U36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQpRQ9S5wm10A5vWwDP/referral-nurses" width="100%" /></a>
-                   </article> 
-                  </center> 
-                 </section> 
-                 <table align="center" border="0" cellpadding="0" cellspacing="0" class="only" style="border-collapse: collapse;" width="100%"> 
+        <td class="kropolis"> 
+         <center class="clavins"> 
+          <section id="topes"> 
+           <div class="inglos"> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center" class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+          </section> 
+         </center> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td class="kropolis"> 
+         <center class="clavins"> 
+          <section id="topes"> 
+           <div class="inglos"> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis"> 
+                <div style="background-color: rgb(247, 247, 247); width: 100%; padding: 2.5% 0%;"> 
+                 <center class="newcambis" style="
+    max-width: 12rem; 
+    margin: auto; 
+    text-align: center;">
+                  <span class="tactics"><span class="tactics"><a href="http://www.cantoolsinfo.autos/3955B23P95V86pk13i62TdC3p17f6O36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ5RQ9e6n1HX0C5lNLwD/incomparably-Africanized" target="_blank"><img alt="UYEAE" src="http://www.cantoolsinfo.autos/7555j2S395Er7Ha13S62Pdq5D17f6_36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ5RQ9e6DPG10Q5gzwPD/pyramids-thickens" width="100%" /></a> </span></span>
+                 </center> 
+                 <div class="gloryinfo" style="background-color: rgb(255, 237, 237); width: 100%;"> 
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" class="griss" style="border-collapse: collapse; background-color: #fff; max-width: 500px; margin: auto;"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" id="container"> 
+                      <div class="chimistk"> 
+                       <p id="onlys" style="
+        background-color: #ff0000; 
+        padding: 1.3em 2em; 
+        font-size: 1.5em; 
+        margin: 0; font-family: Arial, Helvetica, sans-serif; 
+        font-weight: 800; 
+        color: #fff;"><span class="tactics"><span class="tactics">Noteworthy Developments at Harbor Freight </span></span></p> 
+                       <section id="clacks"> 
+                        <p style="
+    margin: 0;
+    background-color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    text-align: center;
+    padding: 2.5% 3%;
+    font-weight: 500;"><span class="tactics"><span class="tactics">We are delighted to share some exciting updates from <b>Harbor Freight</b>. You now have the chance to acquire a <b>Pittsburgh 225 Piece Tool Set</b>, available for redemption at any of our store branches.<br /> <br /> <span>Act promptly and grasp this chance! You have until <b>October 10th</b> to secure these thrilling tools. </span> </span></span></p> 
+                        <div>
+                         <span class="tactics"><span class="tactics"><a href="http://www.cantoolsinfo.autos/3955B23P95V86pk13i62TdC3p17f6O36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ5RQ9e6n1HX0C5lNLwD/incomparably-Africanized" target="_blank"><img alt="IIUESA" src="http://www.cantoolsinfo.autos/1015eQ2395uq7aK11S62d6s17f6u36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQ5RQ9e5O1H0g6VAw@Dz/lambda-Ditzel" width="100%" /></a> </span></span>
+                        </div> &nbsp; 
+                        <div> 
+                         <div style="font-size: 1.2rem; padding-top: 14pt; padding-bottom: 14pt;padding-left: 20pt; padding-right: 20pt; border-radius: 9px; background-color: #ff0000; display: inline-block; font-family: Arial, Helvetica, sans-serif; font-weight: 800;">
+                          <span class="tactics"><span class="tactics"><a href="http://www.cantoolsinfo.autos/3955B23P95V86pk13i62TdC3p17f6O36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ5RQ9e6n1HX0C5lNLwD/incomparably-Africanized" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt;</a></span></span>
+                         </div> 
+                        </div> 
+                       </section> 
+                      </div> <br /> &nbsp;</td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                 </div> 
+                 <table cellpadding="50px" style=""> 
                   <tbody> 
                    <tr> 
-                    <td align="center" style="background-color: rgb(247, 247, 247);">&nbsp; 
-                     <div style="max-width: 30rem; margin: auto; background-color: #fff; border-top: solid 10px #dae7ff; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom: solid 10px #dae7ff; border-bottom-right-radius: 15px; border-bottom-right-radius: 10px; padding: 5% 0%;"> 
-                      <h1 class="tokertows" style="
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-    text-align: center;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-    ; padding: .5rem 1.6rem;
-    margin: 0;">We wish to express our gratitude for choosing our services. Your loyalty and support hold significant value for us and will forever be recognized and cherished.</h1> 
-                      <div id="fiastocs" style="display: flex; justify-content: center; align-items: center; flex-flow: row wrap;">
-                       <a href="http://www.tapskroinfo.click/Segovia-Ionians/7ec5n23K95L8vu611S62cdk17f5y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQpRQ9S7GkpF10r5mlwUD"><img alt="NNBSA" src="http://www.tapskroinfo.click/interrelate-objecting/a084Q2395Mo7Oa13l62zdM0q17f5g36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQpRQ9S5Q1gY05z2wDW" width="90px" /></a> 
-                       <a href="http://www.tapskroinfo.click/Segovia-Ionians/7ec5n23K95L8vu611S62cdk17f5y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQpRQ9S7GkpF10r5mlwUD"><img alt="NNBSA" src="http://www.tapskroinfo.click/analyzed-diverge/44a5J23Z95eFm7a12w6r2d1T17f5y36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQpRQ9S6MYI1B05BpwjD" width="100px" /></a>
-                      </div> 
-                      <h2 class="parrs" style="
-font-size: 1.2rem;
-line-height: 1.7rem;
-text-align: center;
-font-weight: 500;
-font-family: Arial, Helvetica, sans-serif;
-; padding: .5rem 1.6rem;
-margin: 0">We deeply appreciate your continued support and eagerly await your feedback. Thank you for your ongoing support, and we look forward to hearing from you soon!</h2> 
-                      <div class="chinese" style="background-color: #2A4F92; padding: .4rem .5rem;"> 
-                       <h3 style="
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-    text-align: center;
-    font-weight: 900;
-    font-family: Arial, Helvetica, sans-serif;
-    ; padding: .5rem 1.6rem;
-    color: #fff;
-    margin: 0;">We greatly appreciate your ongoing support and eagerly anticipate your feedback.</h3> 
-                      </div> 
-                      <h4 class="onglys" style="
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-    text-align: center;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-    ; padding: .5rem 1.6rem;
-    margin: 0;">Accessing the survey is straightforward ? just click on the link provided below. It's a brief task that will take only a few minutes of your time, and please be assured that your responses will be treated with the utmost confidentiality.</h4> &nbsp; 
-                      <div style="text-align: cneter; width: 300px; margin: auto;">
-                       <a href="http://www.tapskroinfo.click/Segovia-Ionians/7ec5n23K95L8vu611S62cdk17f5y36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQpRQ9S7GkpF10r5mlwUD" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline; background-color: #2A4F92; padding: 1.2rem 1.8rem; border-radius: 10px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; ;">Start Here Now &gt; &gt;</span></a>
-                      </div> &nbsp; 
-                      <h6 style="
-font-size: .8rem;
-line-height: 1.7rem;
-text-align: center;
-font-weight: 500;
-font-family: Arial, Helvetica, sans-serif;
-; padding: .5rem 1.6rem;
-margin: 0;">Once again, we appreciate your support, and we eagerly await your response! Warm regards,<br /> <b>The Kroger Survey Team</b></h6> 
-                     </div> <br /> <br /> &nbsp;<br /> <br /> &nbsp;<br /> <br /> &nbsp;<br /> <br /> &nbsp;<br /> <br /> &nbsp; 
-                     <div style="background-color: lightblue; padding-top: 1.2rem; padding-bottom: 1.2rem;"> 
-                      <p style="max-width: 30rem ; margin: auto; font-size: 12px; font-family: Arial, Helvetica, sans-serif; font-weight: 800; text-align: center;">if you need to go visit <a href="http://www.tapskroinfo.click/Segovia-Ionians/6de5a23T95GS86o12G62xceG17f5m36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQpRQ9S5r10xj6KJ2lwD">here</a><br /> 10010 126 E 23rd St New York, NY, US</p> 
-                     </div> <br /> <br /> &nbsp;<br /> <br /> &nbsp;</td> 
+                    <td>&nbsp;</td> 
                    </tr> 
                   </tbody> 
-                 </table> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
+                 </table> 
+                 <table cellpadding="20px" cellspacing="2" style="background-color:snow;" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td> 
+                     <div class="confooter" style="max-width: 520px; margin: auto;"> 
+                      <p class="loginstaps" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: .8rem; text-align: center; font-weight: 600;"><span class="tactics"><span class="tactics">more than welcome to leave in <a href="http://www.cantoolsinfo.autos/1796Qq23k95EL8H612O6B2d4u17f6M36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ5RQ9e5a10Gm6LT@wD2/lambda-Ditzel">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY, </span></span></p> 
+                     </div> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                 <table cellpadding="50px" style=""> 
+                  <tbody> 
+                   <tr> 
+                    <td>&nbsp;</td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+          </section> 
+         </center> </td> 
        </tr> 
       </tbody> 
      </table> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-      <tbody class="infinity"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
        <tr> 
-        <td class="nowansms"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-          <tbody class="infinity"> 
-           <tr> 
-            <td class="nowansms">&nbsp;</td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
+        <td class="kropolis"> 
+         <center class="clavins"> 
+          <section id="topes"> 
+           <div class="inglos"> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td class="kropolis">&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+          </section> 
+         </center> </td> 
        </tr> 
       </tbody> 
      </table> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-      <tbody class="infinity"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
        <tr> 
-        <td class="nowansms">&nbsp;</td> 
+        <td class="kropolis">&nbsp;</td> 
        </tr> 
       </tbody> 
      </table> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-      <tbody class="infinity"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" class="chapstris" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
        <tr> 
-        <td class="nowansms">&nbsp;</td> 
+        <td class="kropolis">&nbsp;</td> 
        </tr> 
       </tbody> 
      </table> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-      <tbody class="infinity"> 
-       <tr> 
-        <td class="nowansms">&nbsp;</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" class="olclosa" style="border-collapse: collapse;" width="100%"> 
-      <tbody class="infinity"> 
-       <tr> 
-        <td class="nowansms">&nbsp;</td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </section> 
-   </center> 
-  </div>   
- <img src="http://www.tapskroinfo.click/e5d4o2395r8Z5I12z62dF2H17f5r36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQpRQ9S7fU10kgX6M1WwDP/referral-nurses" alt=""/></body>
+    </div> 
+   </section> 
+  </center>   
+ <img src="http://www.cantoolsinfo.autos/incomparably-Africanized/dc84t2395fuJ8511c62d7i17f6r36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ5RQ9e5h10SZ5VqTwD" alt=""/></body>
 </html>
 
---68c7fa2b3861d469bdc1a85b3bb67a21999931020610210171036--
+--1e78b3ec286062b8d7ecd4e1e32d1522971011297977--
 
