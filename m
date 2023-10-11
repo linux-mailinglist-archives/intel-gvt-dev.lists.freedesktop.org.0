@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 707257C59B9
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Oct 2023 18:59:32 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 191FF7C5DEC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Oct 2023 21:58:10 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2F4A910E271;
-	Wed, 11 Oct 2023 16:59:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DC51510E0D6;
+	Wed, 11 Oct 2023 19:58:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Wed, 11 Oct 2023 16:59:29 UTC
-Received: from mail.tools-homfree.click (unknown [77.90.135.172])
- by gabe.freedesktop.org (Postfix) with ESMTP id 44CD810E271
+ Wed, 11 Oct 2023 19:58:07 UTC
+Received: from mail.crows-flying.click (unknown [77.90.135.210])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4790610E0D6
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Oct 2023 16:59:29 +0000 (UTC)
+ Wed, 11 Oct 2023 19:58:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=tools-homfree.click; 
+ d=crows-flying.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=customer_insights_at_home_depot@tools-homfree.click; 
- bh=PKDhftPWJLlWeHA1LoUnnyjuolM=;
- b=AM+15ch/gHX4N6Hzz5GIkxxZRpLoW+c064jb2RrKIajJh81BWfw178C4rQitIwYyyTJnJwiutFXI
- Ts+NXmFaHXFail1SL++JI3vW9gD3syrhw2/TK5hB45fXsUTeuRYTCJpCmvwrPpHAybh187RlhAAF
- U4LBDFX1Jbb/eGMp+m0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tools-homfree.click;
- b=pH8i4A7XPpQ0lfhJT4T1iI0K+FzadRbOY06LyCA5r1ECtq0gzfzkDPaGx7I2tbFoodj50xZHFKWd
- tQDaKoUFE/fu43JpYr6wSPgqlaaaresNpmW2Ab47stEpOpeCaFhzaTHRsvcLn9n7KBJu7eBPWZZE
- 0Xsa7ZVjojkLI+53abE=;
-Received: by mail.tools-homfree.click id h4ra720001gg for
+ i=survey_rewards_at_united_air@crows-flying.click; 
+ bh=7/NBYwK+8t18CV6I4SRe70WukRg=;
+ b=QG3xCUOgqoXlqrZPXnKtj3aR1EQTA9qaXpXtnzApoMwB4AsH4B8/Dytfgp4XpkA65iXJGRYJAHzk
+ CiTQ9eF33M2GJl5CantdW5s6dyXSCacOfMfLkyQezarjJ+DmEb1OZjQu4MXV6SNZzjErS7V7HSvp
+ fEnIG5q3Z12uo5c3ZNY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=crows-flying.click; 
+ b=FgZ1w4MG6P8Ig7L9p/5+kxWZnb2oaNPNEXdvUlVoj0f7sv/T2diwdVC2MhvyRF/2aUw/pRTUGny9
+ fnhkzq5ISyaVYX3d7PbRGZl900JgR08CuKEI2Ki82AUdTC2IdDvCGtAixg/+2u2gAjQo4M7aAaR8
+ 0FbCPLZECZgELYMpmm8=;
+Received: by mail.crows-flying.click id h4rv4u0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Oct 2023 12:51:24 -0400 (envelope-from
- <customer_insights_at_home_depot-intel+2Dgvt+2Ddev=lists.freedesktop.org@tools-homfree.click>)
-Date: Wed, 11 Oct 2023 12:51:24 -0400
-From: "Customer Insights At Home Depot"
- <customer_insights_at_home_depot@tools-homfree.click>
+ Wed, 11 Oct 2023 15:50:13 -0400 (envelope-from
+ <survey_rewards_at_united_air-intel+2Dgvt+2Ddev=lists.freedesktop.org@crows-flying.click>)
+Date: Wed, 11 Oct 2023 15:50:13 -0400
+From: "Survey Rewards At United Air."
+ <survey_rewards_at_united_air@crows-flying.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <12721881687636.16970430736743032@tools-homfree.click>
-Subject: Today is the day: Receive a brand new Makita Drill Set!
+Message-ID: <20371691763.16970538008891145@crows-flying.click>
+Subject: Win Exciting Travel Vouchers: Participate in Our Quick Survey Today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=ad00b30fefcc3eed30060e51ecfbb7a769999996100210189
+ boundary=9bf7f74162d9d9ed353f0a34c95dd0dd33310350
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---ad00b30fefcc3eed30060e51ecfbb7a769999996100210189
+--9bf7f74162d9d9ed353f0a34c95dd0dd33310350
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,217 +64,98 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>chance to receive</title> 
+  <title>your travel requirements</title> 
+  <link href="http://www.crows-flying.click/propounding-muffler/8a04u2395yj86h13u6J3o26l1807G36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQqRQQQ6JA1hW05gNwqD" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.crows-flying.click/4df5RB2395Q86Ak11f6327Z1807V36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQqRQQQ6NQ1r0n5LMPwD/Bien-achieving" rel="preconnect" /> 
+  <link href="http://www.crows-flying.click/propounding-muffler/8a04u2395yj86h13u6J3o26l1807G36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQqRQQQ6JA1hW05gNwqD/css2?family=Onest:wght@100; 200; 300; 400; 500; 600; 700; 800; 900&amp;display=swap" rel="stylesheet" /> 
  </head> 
- <body> 
-  <article style="background-color: rgb(226, 226, 226); width: 100%;"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" class="domprimesrs" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" class="symponys" style="border-collapse: collapse;" width="100%"> 
-        <thead> 
-         <tr> 
-          <th align="center">&nbsp;</th> 
-         </tr> 
-        </thead> 
-        <tbody> 
-         <tr> 
-          <td class="closblys"> 
-           <section class="ltdsps"> 
-            <div id="wombys"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" class="symponys" style="border-collapse: collapse;" width="100%"> 
-              <thead> 
-               <tr> 
-                <th align="center">&nbsp;</th> 
-               </tr> 
-              </thead> 
-              <tbody> 
-               <tr> 
-                <td class="closblys"> 
-                 <section class="ltdsps"> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                 </section> </td> 
-               </tr> 
-              </tbody> 
-              <tfoot> 
-               <tr> 
-                <td align="center">&nbsp;</td> 
-               </tr> 
-              </tfoot> 
-             </table> 
-            </div> 
-            <div id="wombys"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" class="symponys" style="border-collapse: collapse;" width="100%"> 
-              <thead> 
-               <tr> 
-                <th align="center">&nbsp;</th> 
-               </tr> 
-              </thead> 
-              <tbody> 
-               <tr> 
-                <td class="closblys"> 
-                 <section class="ltdsps"> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                 </section> </td> 
-               </tr> 
-              </tbody> 
-              <tfoot> 
-               <tr> 
-                <td align="center">&nbsp;</td> 
-               </tr> 
-              </tfoot> 
-             </table> 
-            </div> 
-            <div id="wombys"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" class="symponys" style="border-collapse: collapse;" width="100%"> 
-              <thead> 
-               <tr> 
-                <th align="center">&nbsp;</th> 
-               </tr> 
-              </thead> 
-              <tbody> 
-               <tr> 
-                <td class="closblys"> 
-                 <section class="ltdsps"> 
-                  <div id="wombys" style="padding: 7% 0%;"> 
-                   <center style="background-color: #fff;">
-                    &nbsp; 
-                    <div style="max-width: 400px; border-bottom: solid 1.9px #F55E03;">
-                     <span class="klows"><span class="klows"><a href="http://www.tools-homfree.click/4a36gv2X395nhD8612A631U8y1804M36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQIRQQo7yR1PA0P6PMjwLD/scarecrow-beguiled" target="_blank"><img alt="UYEA" src="http://www.tools-homfree.click/Beowulf-atypical/9904S2395q7jCa12i6L31ak1804i36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQIRQQo5Ih10D6YkMwzD" style="display: block;" width="100%" /></a></span></span>
-                    </div> &nbsp; 
-                    <div style="background-color: rgb(228, 228, 228); width: 100%; padding: 7% 0 0;"> 
-                     <section style="max-width: 380pt; margin: auto; background-color: #fff;"> 
-                      <center style="background-color: #F55E03; padding: 2.5% 2%; font-family: Arial, Helvetica, sans-serif; font-size: 16pt; font-weight: 600; color: #fff; border: solid 1.5px #F55E03;">
-                       <span class="klows"><span class="klows">We want to convey our thanks for choosing our services. Your loyalty and support are of great significance to us and will forever be recognized and cherished.<br /> &nbsp; </span></span> 
-                       <div style="background-color: #fff; padding: 3.5% 4%;"> 
-                        <p style="color: #000; margin: 0; font-weight: normal;"><span class="klows"><span class="klows">As a gesture of our gratitude for your support, we present you with the opportunity to receive a <b>MAKITA DRILL Set</b> as a token of our appreciation! </span></span></p> 
-                        <br /> 
-                        <span class="klows"><span class="klows">&nbsp; </span></span> 
-                        <table style="max-width: 225px; margin: auto;"> 
-                         <tbody> 
-                          <tr> 
-                           <td><span class="klows"><span class="klows"><a href="http://www.tools-homfree.click/4a36gv2X395nhD8612A631U8y1804M36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQIRQQo7yR1PA0P6PMjwLD/scarecrow-beguiled"><img alt="UJSAW" src="http://www.tools-homfree.click/9536z23Qi95li7aK13l6s31bTj1804B36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQIRQQo5X10Qw6jJwlqD/Lennox-handwritten" width="100%" /></a> </span></span></td> 
-                          </tr> 
-                         </tbody> 
-                        </table> 
-                        <br /> 
-                        <span class="klows"><span class="klows">&nbsp; </span></span> 
-                        <p style="color: #000; margin: 0; font-weight: normal;"><span class="klows"><span class="klows"><b>Your feedback is of great significance to us. </b><br /> &nbsp;<br /> &nbsp; <span> Securing this reward is straightforward; it only requires 30 seconds of your time to share your feedback with us, and we will promptly send it to you. </span> </span></span></p> 
-                        <span class="klows"><span class="klows"> </span></span> 
-                        <table> 
-                         <tbody> 
-                          <tr> 
-                           <td> 
-                            <div style="padding: 15px 30px; background-color: #008397; border-radius: 12px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-                             <span class="klows"><span class="klows"><a href="http://www.tools-homfree.click/4a36gv2X395nhD8612A631U8y1804M36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQIRQQo7yR1PA0P6PMjwLD/scarecrow-beguiled" style="text-decoration: none; color: #fff;">Start Here Now &gt;&gt; </a></span></span>
-                            </div> </td> 
-                          </tr> 
-                         </tbody> 
-                        </table> 
-                        <span class="klows"><span class="klows"> </span></span>
-                       </div> 
-                       <span class="klows"><span class="klows"> </span></span>
-                      </center> 
-                     </section> 
-                     <p style="padding-top: 120px;">&nbsp;</p> 
-                     <p style="padding-top: 120px;">&nbsp;</p> 
-                     <footer style="background-color: dodgerblue; padding: 2.5% 0%;"> 
-                      <p style="max-width: 500px; margin: auto; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 12px; color: #fff; font-weight: bold;"><span class="klows"><span class="klows"><span>you can leave with sadness <a href="http://www.tools-homfree.click/scarecrow-beguiled/9184K2395u8Y6l13B63h1u9Q1804K36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQIRQQo7HUjz1v05G1wXD">here</a><br /> US 10010 126 E 23rd St New York, NY, </span> </span></span></p> 
-                     </footer> 
-                     <p style="padding-top: 40px;">&nbsp;</p> 
-                    </div> 
-                   </center> 
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                 </section> </td> 
-               </tr> 
-              </tbody> 
-              <tfoot> 
-               <tr> 
-                <td align="center">&nbsp;</td> 
-               </tr> 
-              </tfoot> 
-             </table> 
-            </div> 
-            <div id="wombys"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" class="symponys" style="border-collapse: collapse;" width="100%"> 
-              <thead> 
-               <tr> 
-                <th align="center">&nbsp;</th> 
-               </tr> 
-              </thead> 
-              <tbody> 
-               <tr> 
-                <td class="closblys"> 
-                 <section class="ltdsps"> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                  <div id="wombys">
-                   &nbsp;
-                  </div> 
-                 </section> </td> 
-               </tr> 
-              </tbody> 
-              <tfoot> 
-               <tr> 
-                <td align="center">&nbsp;</td> 
-               </tr> 
-              </tfoot> 
-             </table> 
-            </div> 
-           </section> </td> 
-         </tr> 
-        </tbody> 
-        <tfoot> 
-         <tr> 
-          <td align="center">&nbsp;</td> 
-         </tr> 
-        </tfoot> 
-       </table> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </article>   
- <img src="http://www.tools-homfree.click/Lennox-handwritten/4e04n2395N8o5R13Q6rn31cv1804X36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQIRQQo5a1t0m6pNwND0" alt=""/></body>
+ <body style="margin: 0; padding: 0; "> 
+  <center align=" center" style="background-color: antiquewhite; padding: 10px; ">
+   &nbsp; 
+  </center> 
+  <center align=" center" style="background-color: rgb(255, 224, 184); padding: 10px; ">
+   &nbsp; 
+  </center> 
+  <div style="text-align: center; max-width: 33rem; margin: auto; "> 
+   <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 1.5px; font-size: 30px; color: #334388; ">UNITED AIRLINES</p> 
+  </div> 
+  <div style="background-color: antiquewhite; width: 100%; "> 
+   <div style="max-width: 33rem; margin: auto; padding: 5% 0%; "> 
+    <div style="background-color: #fff; "> 
+     <article style="padding: 3.5% 4%; "> 
+      <p style="
+        font-family: 'Onest', sans-serif; 
+        font-weight: 500; 
+        font-size: 1.2rem; 
+        line-height: 1.7rem; 
+        text-align: center; "><font>This is an opportunity for us to convey our thanks for choosing United for your travel needs. Your loyalty and support are deeply valued by us, and we genuinely cherish the opportunity to assist you. </font></p> 
+     </article> 
+     <div>
+      <a href="http://www.crows-flying.click/propounding-muffler/6484v2395r86Go13e6ZI328H1807U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQqRQQQ5Dzy105t2wDq" target="_blank"><img alt="UUESA" src="http://www.crows-flying.click/Schloss-ushers/d325F23O95m7arA11k632d_1807A36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQqRQQQ5W1s0r6fPwND@" style="display: block; " width="100%" /></a>
+     </div> 
+     <article style="padding: 3.5% 4%; "> 
+      <p style="
+    font-family: 'Onest', sans-serif; 
+    font-weight: 500; 
+    font-size: 1.2rem; 
+    line-height: 1.7rem; 
+    text-align: center; 
+    margin: 0; "><font>As we continue our dedication to delivering exceptional experiences, we warmly invite you to take part in a brief survey about your recent flight and your overall engagement with United. </font></p> 
+     </article> 
+     <div>
+      <a href="http://www.crows-flying.click/propounding-muffler/6484v2395r86Go13e6ZI328H1807U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQqRQQQ5Dzy105t2wDq" target="_blank"><img alt="UUESA" src="http://www.crows-flying.click/b155R239M5t7_an12D632eqO1807Z36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQqRQQQ5kR10w6DMAlwD/attractor-mortify" style="display: block; " width="100%" /></a>
+     </div> 
+     <article style="padding: 3.5% 4%; "> 
+      <p style="
+    font-family: 'Onest', sans-serif; 
+    font-weight: 500; 
+    font-size: 1.2rem; 
+    line-height: 1.7rem; 
+    text-align: center; 
+    margin: 0; "><font>To take part in the survey, kindly click on the link below. It' s a brief activity that will require only a few minutes of your valuable time, and be assured that your responses will be handled with the utmost confidentiality. </font></p> 
+     </article> 
+     <article style="background-color: rgb(0, 0, 88); "> 
+      <p style="padding: 3.5% 4%; color: #fff; font-family: 'Onest', sans-serif; 
+    font-weight: 500; 
+    font-size: 1.2rem; 
+    line-height: 1.7rem; 
+    text-align: center; "><font>To take part in the survey, kindly click on the link below. It' s a brief activity that will require only a few minutes of your valuable time, and be assured that your responses will be handled with the utmost confidentiality. </font></p> 
+     </article> 
+     <article style="padding: 3.5% 4%; "> 
+      <p style="font-family: 'Onest', sans-serif; 
+    font-weight: 500; 
+    font-size: 1.2rem; 
+    line-height: 1.7rem; 
+    text-align: center; 
+    margin: 0; "><font>To engage in the survey, simply click on the provided link below. It' s a brief activity that will require only a few minutes of your valuable time, and rest assured that your responses will be handled with the utmost level of confidentiality. </font></p> 
+     </article> 
+     <article> 
+      <table style="max-width: 350px; margin: auto; "> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <center style="border: double 4.5px #334388; padding: 15pt 20pt; border-radius: 100px; font-family: 'Onest', sans-serif; font-weight: bold; ">
+           <a href="http://www.crows-flying.click/propounding-muffler/6484v2395r86Go13e6ZI328H1807U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQqRQQQ5Dzy105t2wDq" style="color: #334388; text-decoration: none; " target="_blank">Get Started Now </a>
+          </center> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </article> 
+     <br /> &nbsp; 
+    </div> 
+   </div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+   <div style="padding-top: 40rem; "> 
+    <div style="background-color: #0f003d; padding: 1.5em 0; border-bottom: solid 15px #163797"> 
+     <aside style="max-width: 30rem; margin: auto; font-family: 'Signika', sans-serif ; font-size: 14px; text-align: center; font-weight: 600; color: #fff; ">
+      you can leave with sadness 
+      <a href="http://www.crows-flying.click/Krueger-devising/6de5f23q95tj86i13g632F9qD1807K36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqRQQQ7sU1uw0q5m@wMD" style="color: rgb(127, 255, 212); "> here </a>
+      <br /> US 10010 126 E 23rd St New York, NY,
+     </aside> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.crows-flying.click/counterfeiter-slouches/5946Fwx2395lG85Z11v632cT1807P36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQqRQQQ7IPm1h0v6mOB2wD" alt=""/></body>
 </html>
 
---ad00b30fefcc3eed30060e51ecfbb7a769999996100210189--
+--9bf7f74162d9d9ed353f0a34c95dd0dd33310350--
 
