@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 191FF7C5DEC
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Oct 2023 21:58:10 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 663CD7C5EC3
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Oct 2023 22:55:22 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DC51510E0D6;
-	Wed, 11 Oct 2023 19:58:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0F80610E1D4;
+	Wed, 11 Oct 2023 20:55:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Wed, 11 Oct 2023 19:58:07 UTC
-Received: from mail.crows-flying.click (unknown [77.90.135.210])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4790610E0D6
+ Wed, 11 Oct 2023 20:55:18 UTC
+Received: from mail.kro-infotops.autos (unknown [77.90.135.228])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 635B610E1D4
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Oct 2023 19:58:07 +0000 (UTC)
+ Wed, 11 Oct 2023 20:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=crows-flying.click; 
+ d=kro-infotops.autos; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=survey_rewards_at_united_air@crows-flying.click; 
- bh=7/NBYwK+8t18CV6I4SRe70WukRg=;
- b=QG3xCUOgqoXlqrZPXnKtj3aR1EQTA9qaXpXtnzApoMwB4AsH4B8/Dytfgp4XpkA65iXJGRYJAHzk
- CiTQ9eF33M2GJl5CantdW5s6dyXSCacOfMfLkyQezarjJ+DmEb1OZjQu4MXV6SNZzjErS7V7HSvp
- fEnIG5q3Z12uo5c3ZNY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=crows-flying.click; 
- b=FgZ1w4MG6P8Ig7L9p/5+kxWZnb2oaNPNEXdvUlVoj0f7sv/T2diwdVC2MhvyRF/2aUw/pRTUGny9
- fnhkzq5ISyaVYX3d7PbRGZl900JgR08CuKEI2Ki82AUdTC2IdDvCGtAixg/+2u2gAjQo4M7aAaR8
- 0FbCPLZECZgELYMpmm8=;
-Received: by mail.crows-flying.click id h4rv4u0001gq for
+ i=kroger-visitor-input@kro-infotops.autos; 
+ bh=E+kJ9v4GmeKku5rUNacFGDSoIV8=;
+ b=U6z927P0kfOlF5aV+CG00PZ0yEOD+Ygdu2ashM/fp3u8MTRtDuYKkNYNdeX799fRfdgnlRoJ9XyK
+ KZVHFoGIZlUp5KCcAFyl6CAHaRFP1f//0eSS8qxxv4rNzdFsZADrcYKS1m4c98O8exDGp/3nShIa
+ 4mHIPZdsx5LKfCYYPpA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=kro-infotops.autos; 
+ b=hopRgo4jdkbdq5w9rmiOOYsr6Wne+JQfVhA6DrN7YZ5kSs/mLpb0TEdZPiOVLFYBcQ7xjoz8Knk+
+ STbi5749m4uUU8i5OVViD3OhRZcJiuUQZDYo4B4sAibqCNPhXbfFEqhfEKlAxPQEyoss8/g5Vp4R
+ fpNKh9uMFNhgBFH4E70=;
+Received: by mail.kro-infotops.autos id h4s5rc0001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Oct 2023 15:50:13 -0400 (envelope-from
- <survey_rewards_at_united_air-intel+2Dgvt+2Ddev=lists.freedesktop.org@crows-flying.click>)
-Date: Wed, 11 Oct 2023 15:50:13 -0400
-From: "Survey Rewards At United Air."
- <survey_rewards_at_united_air@crows-flying.click>
+ Wed, 11 Oct 2023 16:47:04 -0400 (envelope-from
+ <kroger-visitor-input-intel+2Dgvt+2Ddev=lists.freedesktop.org@kro-infotops.autos>)
+Date: Wed, 11 Oct 2023 16:47:04 -0400
+From: "Kroger Visitor Input" <kroger-visitor-input@kro-infotops.autos>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <20371691763.16970538008891145@crows-flying.click>
-Subject: Win Exciting Travel Vouchers: Participate in Our Quick Survey Today!
+Message-ID: <1742084996525.1697057208872351@kro-infotops.autos>
+Subject: Commend this moment with a complimentary gift, symbolizing our thanks.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=9bf7f74162d9d9ed353f0a34c95dd0dd33310350
+ boundary=e71a8f3818918345520e9920c1900c7910298999739971100100103
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,107 +54,117 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---9bf7f74162d9d9ed353f0a34c95dd0dd33310350
+--e71a8f3818918345520e9920c1900c7910298999739971100100103
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>your travel requirements</title> 
-  <link href="http://www.crows-flying.click/propounding-muffler/8a04u2395yj86h13u6J3o26l1807G36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQqRQQQ6JA1hW05gNwqD" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.crows-flying.click/4df5RB2395Q86Ak11f6327Z1807V36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQqRQQQ6NQ1r0n5LMPwD/Bien-achieving" rel="preconnect" /> 
-  <link href="http://www.crows-flying.click/propounding-muffler/8a04u2395yj86h13u6J3o26l1807G36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQqRQQQ6JA1hW05gNwqD/css2?family=Onest:wght@100; 200; 300; 400; 500; 600; 700; 800; 900&amp;display=swap" rel="stylesheet" /> 
+  <title>shopping needs</title> 
  </head> 
- <body style="margin: 0; padding: 0; "> 
-  <center align=" center" style="background-color: antiquewhite; padding: 10px; ">
-   &nbsp; 
-  </center> 
-  <center align=" center" style="background-color: rgb(255, 224, 184); padding: 10px; ">
-   &nbsp; 
-  </center> 
-  <div style="text-align: center; max-width: 33rem; margin: auto; "> 
-   <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 1.5px; font-size: 30px; color: #334388; ">UNITED AIRLINES</p> 
-  </div> 
-  <div style="background-color: antiquewhite; width: 100%; "> 
-   <div style="max-width: 33rem; margin: auto; padding: 5% 0%; "> 
-    <div style="background-color: #fff; "> 
-     <article style="padding: 3.5% 4%; "> 
-      <p style="
-        font-family: 'Onest', sans-serif; 
-        font-weight: 500; 
-        font-size: 1.2rem; 
-        line-height: 1.7rem; 
-        text-align: center; "><font>This is an opportunity for us to convey our thanks for choosing United for your travel needs. Your loyalty and support are deeply valued by us, and we genuinely cherish the opportunity to assist you. </font></p> 
-     </article> 
-     <div>
-      <a href="http://www.crows-flying.click/propounding-muffler/6484v2395r86Go13e6ZI328H1807U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQqRQQQ5Dzy105t2wDq" target="_blank"><img alt="UUESA" src="http://www.crows-flying.click/Schloss-ushers/d325F23O95m7arA11k632d_1807A36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQqRQQQ5W1s0r6fPwND@" style="display: block; " width="100%" /></a>
-     </div> 
-     <article style="padding: 3.5% 4%; "> 
-      <p style="
-    font-family: 'Onest', sans-serif; 
-    font-weight: 500; 
-    font-size: 1.2rem; 
-    line-height: 1.7rem; 
-    text-align: center; 
-    margin: 0; "><font>As we continue our dedication to delivering exceptional experiences, we warmly invite you to take part in a brief survey about your recent flight and your overall engagement with United. </font></p> 
-     </article> 
-     <div>
-      <a href="http://www.crows-flying.click/propounding-muffler/6484v2395r86Go13e6ZI328H1807U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQqRQQQ5Dzy105t2wDq" target="_blank"><img alt="UUESA" src="http://www.crows-flying.click/b155R239M5t7_an12D632eqO1807Z36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQqRQQQ5kR10w6DMAlwD/attractor-mortify" style="display: block; " width="100%" /></a>
-     </div> 
-     <article style="padding: 3.5% 4%; "> 
-      <p style="
-    font-family: 'Onest', sans-serif; 
-    font-weight: 500; 
-    font-size: 1.2rem; 
-    line-height: 1.7rem; 
-    text-align: center; 
-    margin: 0; "><font>To take part in the survey, kindly click on the link below. It' s a brief activity that will require only a few minutes of your valuable time, and be assured that your responses will be handled with the utmost confidentiality. </font></p> 
-     </article> 
-     <article style="background-color: rgb(0, 0, 88); "> 
-      <p style="padding: 3.5% 4%; color: #fff; font-family: 'Onest', sans-serif; 
-    font-weight: 500; 
-    font-size: 1.2rem; 
-    line-height: 1.7rem; 
-    text-align: center; "><font>To take part in the survey, kindly click on the link below. It' s a brief activity that will require only a few minutes of your valuable time, and be assured that your responses will be handled with the utmost confidentiality. </font></p> 
-     </article> 
-     <article style="padding: 3.5% 4%; "> 
-      <p style="font-family: 'Onest', sans-serif; 
-    font-weight: 500; 
-    font-size: 1.2rem; 
-    line-height: 1.7rem; 
-    text-align: center; 
-    margin: 0; "><font>To engage in the survey, simply click on the provided link below. It' s a brief activity that will require only a few minutes of your valuable time, and rest assured that your responses will be handled with the utmost level of confidentiality. </font></p> 
-     </article> 
-     <article> 
-      <table style="max-width: 350px; margin: auto; "> 
-       <tbody> 
-        <tr> 
-         <td align="center"> 
-          <center style="border: double 4.5px #334388; padding: 15pt 20pt; border-radius: 100px; font-family: 'Onest', sans-serif; font-weight: bold; ">
-           <a href="http://www.crows-flying.click/propounding-muffler/6484v2395r86Go13e6ZI328H1807U36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQqRQQQ5Dzy105t2wDq" style="color: #334388; text-decoration: none; " target="_blank">Get Started Now </a>
-          </center> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-     </article> 
-     <br /> &nbsp; 
-    </div> 
-   </div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-   <div style="padding-top: 40rem; "> 
-    <div style="background-color: #0f003d; padding: 1.5em 0; border-bottom: solid 15px #163797"> 
-     <aside style="max-width: 30rem; margin: auto; font-family: 'Signika', sans-serif ; font-size: 14px; text-align: center; font-weight: 600; color: #fff; ">
-      you can leave with sadness 
-      <a href="http://www.crows-flying.click/Krueger-devising/6de5f23q95tj86i13g632F9qD1807K36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQqRQQQ7sU1uw0q5m@wMD" style="color: rgb(127, 255, 212); "> here </a>
-      <br /> US 10010 126 E 23rd St New York, NY,
-     </aside> 
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.crows-flying.click/counterfeiter-slouches/5946Fwx2395lG85Z11v632cT1807P36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQqRQQQ7IPm1h0v6mOB2wD" alt=""/></body>
+ <body style="background-color: rgb(243, 243, 243); margin: 0; padding: 0;"> 
+  <ol style="list-style-type: none; padding: 0; margin: 0;"> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <div> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" class="nowatacks" style="border-collapse: collapse; background-color: #edf4ff" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <div style=" max-width: 200px; margin: auto;">
+            <span id="totalwindws"><a href="http://www.kro-infotops.autos/drafty-electoral/e5e4z2395zvo8613Q632DBfR1808S36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQtRQQR6g1zu0r6qppJwD"><img alt="MMJSA" src="http://www.kro-infotops.autos/15b6W23rF95WRB7a12z6335V_1808T36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQtRQQR5Op10B6y@LwJD/Celsius-indenture" width="100%" /> </a> </span>
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <p style="padding-top: 10px;">&nbsp;</p> 
+      <div style="max-width: 520px;margin: auto;background-color: #fff;"> 
+       <article> 
+        <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;"><span id="totalwindws"><font>We wish to convey our thanks for selecting Kroger. Your loyalty and support hold tremendous importance for us, and we genuinely appreciate the opportunity to meet your shopping requirements. </font> </span></p> 
+       </article> 
+      </div> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <article style="max-width: 520px;margin: auto;background-color: #fff;"> 
+       <p style="margin: 0;">&nbsp;</p> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" id="hollweyyns" style="border-collapse: collapse;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <div style="display: flex; justify-content: center; align-items: center; flex-flow: wrap row;"> 
+            <center id="imgtopers" style="max-width: 90px; margin: auto; margin: 3%;">
+             <span id="totalwindws"><a href="http://www.kro-infotops.autos/drafty-electoral/e5e4z2395zvo8613Q632DBfR1808S36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQtRQQR6g1zu0r6qppJwD"><img alt="IOEOSA" src="http://www.kro-infotops.autos/upshot-brats/17a5z2C395J7raO11y6336F1808M36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQtRQQR6Fi1RQ06lOpMwD" width="100%" /> </a> </span>
+            </center> 
+            <center id="imgtopers" style="max-width: 120px; margin: auto; margin: 3%;">
+             <span id="totalwindws"><a href="http://www.kro-infotops.autos/drafty-electoral/e5e4z2395zvo8613Q632DBfR1808S36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQtRQQR6g1zu0r6qppJwD"><img alt="IIOEAX" src="http://www.kro-infotops.autos/finessing-publish/cd85KZ2395I7TaL12q6337LI1808v36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQtRQQR5O1M0k5JlwLD" width="100%" /> </a> </span>
+            </center> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </article> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <div style="max-width: 520px;margin: auto;background-color: #fff;"> 
+       <article> 
+        <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;"><span id="totalwindws"><font>Once more, thank you for your continued support. We're eagerly anticipating your feedback! Your ongoing support is highly valued, and we're eagerly looking forward to hearing from you soon! </font> </span></p> 
+       </article> 
+      </div> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <div class="calcoclicks"> 
+       <center class="omegapros"> 
+        <div style="max-width: 520px;margin: auto;background-color: #2A4F92;"> 
+         <article> 
+          <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;color: #fff;"><span id="totalwindws"><span id="totalwindws"><font>Thank you once again for your ongoing support. We're eagerly awaiting your feedback! Your consistent support is greatly valued, and we're looking forward to hearing from you with anticipation! </font> </span> </span></p> 
+         </article> 
+        </div> 
+        <div style="max-width: 520px;margin: auto;background-color: #fff;"> 
+         <article> 
+          <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;"><span id="totalwindws"><span id="totalwindws"><font>Accessing the survey is simple?just click the link provided below. It's a quick task that will require only a few minutes of your time, and rest assured that your responses will be kept confidential. </font> </span> </span></p> 
+          <center style="max-width: 520px; margin: auto; background-color: #fff;"> 
+           <p style="text-align: center; margin: 0;"><span id="totalwindws"><span id="totalwindws"><a href="http://www.kro-infotops.autos/drafty-electoral/e5e4z2395zvo8613Q632DBfR1808S36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQtRQQR6g1zu0r6qppJwD" style="text-decoration: none; color: #fff;" target="_blank"><span style="background-color: #1A4898; display: inline-block; padding: 12px 27px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; font-size: 20px; border-radius: 5px;">Start Here Now &gt; &gt; </span> </a> </span> </span></p> 
+          </center> 
+          <p style="margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;padding-top: 1.5rem;padding-bottom: 1.5rem;padding-left: 1.8rem;padding-right: 1.8rem;font-size: 4.5mm;line-height: 7mm;"><span id="totalwindws"><span id="totalwindws"><font>Thank you again for your unwavering support. We're eagerly looking forward to your feedback! Your consistent support is genuinely appreciated, and we're eager to hear from you soon!<br /> <br /> <span style="display: block; font-size: 3.8mm;"><b>Warm regards,<br /> The Kroger Survey Team </b> </span> </font> </span> </span></p> 
+         </article> 
+        </div> 
+       </center> 
+      </div> 
+     </center> 
+    </div> </li> 
+   <li class="loliplopskillers"> 
+    <div class="calcoclicks"> 
+     <center class="omegapros"> 
+      <h4 style="padding-bottom: 20rem;">&nbsp;</h4> 
+      <center style="padding: 4mm 0; background-color: lightslategrey;"> 
+       <aside style="max-width: 520px; margin: auto; text-align: center; font-size: 4mm; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 600; color: white;">
+        <span id="totalwindws">if you need to go visit <a href="http://www.kro-infotops.autos/11C6OL239U5D86Dx11H6330H1808g36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQtRQQR6H1h0jT6WPlwND/socializing-densest"> here </a><br /> 10010 126 E 23rd St New York, NY, US </span>
+       </aside> 
+      </center> 
+      <br /> &nbsp;
+     </center> 
+    </div> </li> 
+  </ol>   
+ <img src="http://www.kro-infotops.autos/Celsius-indenture/5d06u239LO5p8L5X13h63i34lx1808y36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQtRQQR6O1_0wx5tMwlD" alt=""/></body>
 </html>
 
---9bf7f74162d9d9ed353f0a34c95dd0dd33310350--
+--e71a8f3818918345520e9920c1900c7910298999739971100100103--
 
