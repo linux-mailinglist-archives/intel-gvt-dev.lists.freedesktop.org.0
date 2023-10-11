@@ -2,45 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B84BF7C52D8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Oct 2023 14:06:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 811157C5676
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Oct 2023 16:14:25 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 19D7110E75C;
-	Wed, 11 Oct 2023 12:06:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 412C010E4F9;
+	Wed, 11 Oct 2023 14:14:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 11 Oct 2023 12:06:03 UTC
-Received: from mail.tops-offerspls.click (unknown [157.52.235.150])
- by gabe.freedesktop.org (Postfix) with ESMTP id 129A610E75C
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Wed, 11 Oct 2023 14:14:23 UTC
+Received: from mail.doons-toolsf.homes (unknown [77.90.135.149])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4256710E4F9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Oct 2023 12:06:03 +0000 (UTC)
+ Wed, 11 Oct 2023 14:14:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=tops-offerspls.click; 
+ d=doons-toolsf.homes; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=stay.informed.with.delta.flight.highlights@tops-offerspls.click; 
- bh=+nCvV7OLuxbvfNwjVhguDvIK6Bc=;
- b=Hd++1iyi0xIYwkmBIgEBzZ040EQXQP9M7yn9iFnMxakY1621P8me4ojUYVcxQKgKDlZkgHhNVGWa
- BbGSlWyVTv0+j3/vVssv0ozUQK24PlxvfmmwgSaC1CzbQGQBcLkWW0Ao6EtFiXAcbfwPJfiOTPGC
- IIvUQf++8M5Y6bMQrt0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tops-offerspls.click;
- b=hoWKIa989plW+rMtmarWmVTXUTwDy+7VFkTIbkjdkDWc3IfRSi4ZfOEmlhoi8H43SMCigHtfH3RZ
- PYHyV6ro3s7FRaULmQKeGbIUbne30XUTWy51JilFy1cVv9Y2KlAT7INxMkMAp77jW525jV8B/iDS
- cRvdfuNf/Gz4aLfFxNU=;
-Received: by mail.tops-offerspls.click id h4q7qm0001gl for
+ i=ace-tools-loyalty@doons-toolsf.homes; 
+ bh=+BWkq2MKPsg6CcW+8vrX4hN3EUI=;
+ b=H0m/l1PNYPJY8+2i27d2fGgLbmbXvfUvK2XtuNh0WM7mx3jK/iH6u7XN628d4FHAeVGWsSeLIY2x
+ H6C5g2uuhkkwEWRZa1mU0RshhcolKU15M9pd8MV8u9uaXxt3NkqqtppxytZLnuE5R/COYR+fDmBe
+ DdlVo3Gbvs3kqiL9KtY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=doons-toolsf.homes; 
+ b=B+AT7Xxq23rI7tE4awxMew1flLGBjomKsgKVyGVZkdaxIcMY4DDfXzhiSyxW9a6TRbBQ7qbaR28A
+ rn2ihsx5DsbFdDSDJR/Xspk65hvyMHQ65zEX3OsWpXzke3LiIz5XVFZ6Hq8kUJu8x2pjD6qLhjTp
+ O8zI19G+d0/TY0sNkhk=;
+Received: by mail.doons-toolsf.homes id h4qmru0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 11 Oct 2023 07:57:57 -0400 (envelope-from
- <stay.informed.with.delta.flight.highlights-intel+2Dgvt+2Ddev=lists.freedesktop.org@tops-offerspls.click>)
-Date: Wed, 11 Oct 2023 07:57:57 -0400
-From: "Stay Informed With Delta Flight Highlights"
- <stay.informed.with.delta.flight.highlights@tops-offerspls.click>
+ Wed, 11 Oct 2023 10:06:16 -0400 (envelope-from
+ <ace-tools-loyalty-intel+2Dgvt+2Ddev=lists.freedesktop.org@doons-toolsf.homes>)
+Date: Wed, 11 Oct 2023 10:06:16 -0400
+From: "ACE Tools Loyalty" <ace-tools-loyalty@doons-toolsf.homes>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <8417476185628.169702544766584@tops-offerspls.click>
-Subject: You've been singled out to receive a gift from us - your assessment
- of our service holds great significance.
+Message-ID: <12775344558.16970331558924797@doons-toolsf.homes>
+Subject: Don't pass up the opportunity to win a Stanley Tool Set by sharing
+ your feedback with us!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=dbba2de52e2403c4714faad5ec06b013990098757
+ boundary=0782b7f24c441eafa062da68f6de2c55110195973244100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---dbba2de52e2403c4714faad5ec06b013990098757
+--0782b7f24c441eafa062da68f6de2c55110195973244100
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,192 +64,111 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>enjoyment</title> 
+  <title>thrilled to unveil</title> 
  </head> 
  <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(236, 236, 236);" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-       <thead> 
-        <tr> 
-         <th>&nbsp;</th> 
-        </tr> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td class="cambris"> 
-          <section class="meathrees"> 
-           <div class="calculate"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-             <thead> 
-              <tr> 
-               <th>&nbsp;</th> 
-              </tr> 
-             </thead> 
-             <tbody> 
-              <tr> 
-               <td class="cambris"> 
-                <section class="meathrees"> 
-                 <div class="calculate">
-                  &nbsp;
-                 </div> 
-                </section> </td> 
-               <td class="cambris"> 
-                <section class="meathrees"> 
-                 <div class="calculate">
-                  &nbsp;
-                 </div> 
-                </section> </td> 
-               <td class="cambris"> 
-                <section class="meathrees"> 
-                 <div class="calculate">
-                  &nbsp;
-                 </div> 
-                </section> </td> 
-               <td class="cambris"> 
-                <section class="meathrees"> 
-                 <div class="calculate">
-                  &nbsp;
-                 </div> 
-                </section> </td> 
-              </tr> 
-             </tbody> 
-             <tfoot> 
-              <tr> 
-               <td align="center"> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center"> 
-                    <div style="background-color: rgb(243, 243, 243); width: 100%; padding: 7% 0%;"> 
-                     <div style="box-shadow: 0 0 5px 1px; border-radius: 8px; max-width: 520px; margin: auto; background-color: #fff; padding: 1.5%;"> 
-                      <div> 
-                       <center align="center"> 
-                        <div style="max-width: 185px; margin: auto; border-bottom: double 4px #ff0000;">
-                         <span><a href="http://www.tops-offerspls.click/factories-amphibians/9ea4Q2395o8qk612U6304Fg1800m36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQYRQde5vvL106LJwDXJ" target="_blank"><img alt="IIOEA" src="http://www.tops-offerspls.click/factories-amphibians/c064z2395Hn7ga13FZp6305H1800N36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYRQde5Gz_105QMAwD" style="display: block;" width="100%" /></a> </span>
-                        </div> 
-                       </center> 
-                       <br /> 
-                       <span>&nbsp; </span> 
-                       <table> 
-                        <tbody> 
-                         <tr> 
-                          <td><span><a href="http://www.tops-offerspls.click/factories-amphibians/9ea4Q2395o8qk612U6304Fg1800m36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQYRQde5vvL106LJwDXJ" target="_blank"><img alt="IUSEM" src="http://www.tops-offerspls.click/mortality-summons/8dc4z2395tDP7a12A630k6Z1800j36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQYRQde7Iq1v0tv5wXwAD" style="display: block; outline: double 1.9px #000;" width="100%" /></a> </span></td> 
-                         </tr> 
-                         <tr> 
-                          <td align="center"> 
-                           <div class="texts"> 
-                            <p style="
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.7rem;
-    text-align: center;
-    ;"><span>We appreciate your choice to travel with Delta! Each adventure you embark on with us contributes to our narrative, and we're enthusiastic about enhancing every aspect for your pleasure.<br /> &nbsp;<br /> We're determined to enhance your flying experience further! Please provide feedback on your recent Delta journey through a short survey. Click the link below to start this swift exploration.<br /> &nbsp;<br /> Your feedback doesn't just shape our future; it might also lead to an opportunity to receive an unexpected $100 gift! Every viewpoint is significant, so be sure to ensure your voice counts today! <span style="color: #ff0000; font-weight: 900;">#ElevateYourTravelExperience.</span> </span></p> 
-                            <center style="width: 500px; margin: auto;"> 
-                             <blockquote style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;background-color: rgb(56, 56, 56);padding-top: .4cm;padding-bottom: .4cm;padding-left: .8cm;padding-right: .8cm;border-radius: 7px; font-size: 18px;">
-                              <span><a href="http://www.tops-offerspls.click/factories-amphibians/9ea4Q2395o8qk612U6304Fg1800m36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQYRQde5vvL106LJwDXJ" style="text-decoration: none;color: #fff;" target="_blank">Fly Better With Now &raquo; </a> </span>
-                             </blockquote> 
-                            </center> 
-                           </div> </td> 
-                         </tr> 
-                        </tbody> 
-                       </table> 
-                       <span> </span>
-                      </div> 
-                     </div> 
-                    </div> <h1 style="padding-top: 200px;">&nbsp;</h1> 
-                    <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse; background-color: gray;" width="100%"> 
-                     <tbody align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-                      <tr> 
-                       <td align="center"> <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; text-align: center; max-width: 30em; margin: auto; font-weight: 900; color: #fff;"><span>Join us at the exit <a href="">here</a><br /> US 10010 126 E 23rd St New York, NY, </span></p> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> <h1 style="padding-top: 20px;">&nbsp;</h1> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-              </tr> 
-             </tfoot> 
-            </table> 
+  <ul style="padding: 0; margin: 0; list-style-type: none;"> 
+   <li class="incque"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" class="tops" colspan="1"> 
+        <div class="maxmasx" style="background-color: rgb(238, 238, 238); width: 100%; padding: 18pt 0;"> 
+         <header class="iibseala" style="background-color: #F9F9F9;"> 
+          <blockquote> 
+           <div style="max-width: 130px; margin: auto;">
+            <a href="http://www.doons-toolsf.homes/51b4N2395jK86L12rP6308p1801D36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQHRQdK7Q1FkpH06PzWPwD/seasonal-secluded" target="_blank"><img alt="UYESA" src="http://www.doons-toolsf.homes/6654c2395pj7za11K630an1801i36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQHRQdK6a1W0Zo6AL1wMD/lexically-prolific" width="100%" /></a>
            </div> 
-          </section> </td> 
-         <td class="cambris"> 
-          <section class="meathrees"> 
-           <div class="calculate">
-            &nbsp;
-           </div> 
-          </section> </td> 
-        </tr> 
-        <tr> 
-        </tr> 
-        <tr> 
-         <td class="cambris"> 
-          <section class="meathrees"> 
-           <div class="calculate">
-            &nbsp;
-           </div> 
-          </section> </td> 
-         <td class="cambris"> 
-          <section class="meathrees"> 
-           <div class="calculate"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-             <thead> 
-              <tr> 
-               <th>&nbsp;</th> 
-              </tr> 
-             </thead> 
-             <tbody> 
-              <tr> 
-               <td class="cambris"> 
-                <section class="meathrees"> 
-                 <div class="calculate">
-                  &nbsp;
-                 </div> 
-                </section> </td> 
-               <td class="cambris"> 
-                <section class="meathrees"> 
-                 <div class="calculate">
-                  &nbsp;
-                 </div> 
-                </section> </td> 
-               <td class="cambris"> 
-                <section class="meathrees"> 
-                 <div class="calculate">
-                  &nbsp;
-                 </div> 
-                </section> </td> 
-               <td class="cambris"> 
-                <section class="meathrees"> 
-                 <div class="calculate">
-                  &nbsp;
-                 </div> 
-                </section> </td> 
-              </tr> 
-             </tbody> 
-             <tfoot> 
-              <tr> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tfoot> 
-            </table> 
-           </div> 
-          </section> </td> 
-        </tr> 
-       </tbody> 
-       <tfoot> 
-        <tr> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tfoot> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.tops-offerspls.click/af76mG23N95Qg85p12Q63P07t1800o36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQYRQde7Ig1RWD06GWwDJl/youthfulness-primrose" alt=""/></body>
+          </blockquote> 
+         </header> 
+         <br /> &nbsp;
+         <br /> &nbsp; 
+         <center> 
+          <dir style="font-size: 1px;">
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          </dir> 
+         </center> 
+         <center style="border: double 3.5px ; border-radius: 8px; max-width: 28rem; margin: auto; background-color: #fff;"> 
+          <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 14pt; font-weight: bold; padding: 0 5%; color: rgb(184, 0, 0);"><i><u>Your Final<br /> Communication from Ace Hardware</u></i></p> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" id="chosps" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; padding: 0 25pt; font-size: 14pt; line-height: 19pt;">Ace Hardware is thrilled to unveil an incredible opportunity! You can now acquire the Stanley Tool Set, a vailable for redemption at any of our store branches. Take swift action and grab this opportunity! You have until October 11th to secure these outstanding tools.</td> 
+            </tr> 
+            <tr> 
+             <td> 
+              <blockquote>
+               <a href="http://www.doons-toolsf.homes/51b4N2395jK86L12rP6308p1801D36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQHRQdK7Q1FkpH06PzWPwD/seasonal-secluded" target="_blank"><img alt="OLPSE" src="http://www.doons-toolsf.homes/4495k239S5ll7_a13dN630wbV1801X36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQHRQdK5S1TQ06QqwDyW/stabilizer-juncture" style="display: block;" width="100%" /></a>
+              </blockquote> </td> 
+            </tr> 
+            <tr> 
+             <td> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="limitos"> 
+                  <div class="dops">
+                   &nbsp;
+                  </div> </td> 
+                 <td class="limitos"> 
+                  <div class="dops">
+                   &nbsp;
+                  </div> </td> 
+                 <td class="limitos"> 
+                  <div class="dops">
+                   &nbsp;
+                  </div> </td> 
+                 <td align="center" class="limitos"> 
+                  <div class="dops"> 
+                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center"><a href="http://www.doons-toolsf.homes/51b4N2395jK86L12rP6308p1801D36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQHRQdK7Q1FkpH06PzWPwD/seasonal-secluded" style="text-decoration: none; color: white;" target="_blank"><span style="display: inline-block; padding: 3.5% 7%; background-color: rgb(24, 24, 24); border-radius: 11px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">Start Here Now &gt; &gt; </span></a></td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                   <p style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; padding: 0 25pt; font-size: 14pt; line-height: 19pt;">Your anticipated support is highly appreciated.<br /> Warm regards, The Ace Hardware Team..</p> 
+                  </div> </td> 
+                 <td class="limitos"> 
+                  <div class="dops">
+                   &nbsp;
+                  </div> </td> 
+                 <td class="limitos"> 
+                  <div class="dops">
+                   &nbsp;
+                  </div> </td> 
+                 <td class="limitos"> 
+                  <div class="dops">
+                   &nbsp;
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </center> 
+         <br /> &nbsp;
+         <br /> &nbsp;
+         <br /> &nbsp;
+         <br /> &nbsp;
+         <br /> &nbsp; 
+         <center style="background-color: darkseagreen; padding: 5mm 0;"> 
+          <aside style="max-width: 30rem; margin: auto; font-family: Arial, Helvetica, sans-serif; font-weight: 900; text-align: center; font-size: 12px; ;">
+           <i>Anyway you can leave <a href="http://www.doons-toolsf.homes/d4f6Sz2T395c8Y_612il6309t1801h36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQHRQdK6eX1n0P6z2lUwD/merchandising-pi">here</a><br /> US 10010 126 E 23rd St New York, NY, </i>
+          </aside> 
+         </center> 
+         <br /> &nbsp;
+         <br /> &nbsp;
+         <br /> &nbsp;
+         <br /> &nbsp;
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+  </ul>   
+ <img src="http://www.doons-toolsf.homes/6bw5z23R95z8m5R12v630cxT1801A36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRQdK6ft_1g05eTwDq/lexically-prolific" alt=""/></body>
 </html>
 
---dbba2de52e2403c4714faad5ec06b013990098757--
+--0782b7f24c441eafa062da68f6de2c55110195973244100--
 
