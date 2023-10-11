@@ -1,54 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 790917C5239
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Oct 2023 13:36:38 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B84BF7C52D8
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 11 Oct 2023 14:06:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BE88F10E712;
-	Wed, 11 Oct 2023 11:36:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 19D7110E75C;
+	Wed, 11 Oct 2023 12:06:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.31])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3BE1C10E712;
- Wed, 11 Oct 2023 11:36:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1697024195; x=1728560195;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=nGDOfXk8/hL0viVYqPMNYvzitIGkw3ffsjD2bFllPE8=;
- b=jDslfDp0qbMWk1P7W18ATDlJ3+JnRAa9MPGISptcMd+utwgQ2W+jSB/4
- igAKR7LW6Bl/ZyxxXBfoq+u6cJ34v1r7bKZuwPlOguIyNLaCDSO2VGkTB
- TKQjHTuuyz14rjzEpwCtxgbCddqgax0+N+eZ0NdLvZKj9ECapSnTwdbEx
- yacX0O/mq7iHrz/w9XYZKFf49saH9pxwUW+g/w9GAU1LlqLwWO0XOVM46
- 6HAqR6kLElcPQ39u0UK8QDLquU2j5XGZRVK/Rj91JELB1h58ctKD/ycgP
- fMp+JnfZN+zmf4wrawIJyRRBE56LWxIDxGTCZ6w3HTOkof+PGfBnz3vv2 w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="448837756"
-X-IronPort-AV: E=Sophos;i="6.03,214,1694761200"; d="scan'208";a="448837756"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2023 04:36:34 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="730466430"
-X-IronPort-AV: E=Sophos;i="6.03,214,1694761200"; d="scan'208";a="730466430"
-Received: from bjvanakk-mobl.ger.corp.intel.com (HELO localhost)
- ([10.252.42.111])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2023 04:36:33 -0700
-From: Jani Nikula <jani.nikula@intel.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PATCH 1/4] drm/i915/gvt: remove unused to_gvt() and reduce
- includes
-In-Reply-To: <ZSZgisH1n0L0jwoq@debian-scheme>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20230926121904.499888-1-jani.nikula@intel.com>
- <871qeafszw.fsf@intel.com> <ZSYtkk0EldETrP8l@debian-scheme>
- <878r8963o6.fsf@intel.com> <ZSZgisH1n0L0jwoq@debian-scheme>
-Date: Wed, 11 Oct 2023 14:36:29 +0300
-Message-ID: <87lec94chu.fsf@intel.com>
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 11 Oct 2023 12:06:03 UTC
+Received: from mail.tops-offerspls.click (unknown [157.52.235.150])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 129A610E75C
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 11 Oct 2023 12:06:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=tops-offerspls.click; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=stay.informed.with.delta.flight.highlights@tops-offerspls.click; 
+ bh=+nCvV7OLuxbvfNwjVhguDvIK6Bc=;
+ b=Hd++1iyi0xIYwkmBIgEBzZ040EQXQP9M7yn9iFnMxakY1621P8me4ojUYVcxQKgKDlZkgHhNVGWa
+ BbGSlWyVTv0+j3/vVssv0ozUQK24PlxvfmmwgSaC1CzbQGQBcLkWW0Ao6EtFiXAcbfwPJfiOTPGC
+ IIvUQf++8M5Y6bMQrt0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tops-offerspls.click;
+ b=hoWKIa989plW+rMtmarWmVTXUTwDy+7VFkTIbkjdkDWc3IfRSi4ZfOEmlhoi8H43SMCigHtfH3RZ
+ PYHyV6ro3s7FRaULmQKeGbIUbne30XUTWy51JilFy1cVv9Y2KlAT7INxMkMAp77jW525jV8B/iDS
+ cRvdfuNf/Gz4aLfFxNU=;
+Received: by mail.tops-offerspls.click id h4q7qm0001gl for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 11 Oct 2023 07:57:57 -0400 (envelope-from
+ <stay.informed.with.delta.flight.highlights-intel+2Dgvt+2Ddev=lists.freedesktop.org@tops-offerspls.click>)
+Date: Wed, 11 Oct 2023 07:57:57 -0400
+From: "Stay Informed With Delta Flight Highlights"
+ <stay.informed.with.delta.flight.highlights@tops-offerspls.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <8417476185628.169702544766584@tops-offerspls.click>
+Subject: You've been singled out to receive a gift from us - your assessment
+ of our service holds great significance.
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: multipart/alternative; 
+ boundary=dbba2de52e2403c4714faad5ec06b013990098757
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,44 +53,204 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- Zhi Wang <zhi.a.wang@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Wed, 11 Oct 2023, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
-> On 2023.10.11 10:04:09 +0300, Jani Nikula wrote:
->> On Wed, 11 Oct 2023, Zhenyu Wang <zhenyuw@linux.intel.com> wrote:
->> > On 2023.10.04 15:54:11 +0300, Jani Nikula wrote:
->> >> On Tue, 26 Sep 2023, Jani Nikula <jani.nikula@intel.com> wrote:
->> >> > gvt.h has no need to include i915_drv.h once the unused to_gvt() has
->> >> > been removed.
->> >> >
->> >> > Signed-off-by: Jani Nikula <jani.nikula@intel.com>
->> >> 
->> >> Zhenyu, Zhi, ping?
->> >> 
->> >
->> > Sorry for late reply, as last week was full holiday here.
->> >
->> > Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
->> >
->> > I don't think I need to do extra pick and pull request for this or
->> > let me know if you has question.
->> 
->> Did you pick them up to gvt-next or shall I pick them up to
->> drm-intel-next?
->> 
->> If the former, I think I'd actually like a pull request, because
->> otherwise the trees will be out-of-sync for a long time.
->> 
->
-> Sorry, I mean it's fine for me if you directly pick them for drm-intel-next.
+--dbba2de52e2403c4714faad5ec06b013990098757
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-Thanks for the review, pushed to drm-intel-next.
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>enjoyment</title> 
+ </head> 
+ <body> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(236, 236, 236);" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+       <thead> 
+        <tr> 
+         <th>&nbsp;</th> 
+        </tr> 
+       </thead> 
+       <tbody> 
+        <tr> 
+         <td class="cambris"> 
+          <section class="meathrees"> 
+           <div class="calculate"> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+             <thead> 
+              <tr> 
+               <th>&nbsp;</th> 
+              </tr> 
+             </thead> 
+             <tbody> 
+              <tr> 
+               <td class="cambris"> 
+                <section class="meathrees"> 
+                 <div class="calculate">
+                  &nbsp;
+                 </div> 
+                </section> </td> 
+               <td class="cambris"> 
+                <section class="meathrees"> 
+                 <div class="calculate">
+                  &nbsp;
+                 </div> 
+                </section> </td> 
+               <td class="cambris"> 
+                <section class="meathrees"> 
+                 <div class="calculate">
+                  &nbsp;
+                 </div> 
+                </section> </td> 
+               <td class="cambris"> 
+                <section class="meathrees"> 
+                 <div class="calculate">
+                  &nbsp;
+                 </div> 
+                </section> </td> 
+              </tr> 
+             </tbody> 
+             <tfoot> 
+              <tr> 
+               <td align="center"> 
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                 <tbody> 
+                  <tr> 
+                   <td align="center"> 
+                    <div style="background-color: rgb(243, 243, 243); width: 100%; padding: 7% 0%;"> 
+                     <div style="box-shadow: 0 0 5px 1px; border-radius: 8px; max-width: 520px; margin: auto; background-color: #fff; padding: 1.5%;"> 
+                      <div> 
+                       <center align="center"> 
+                        <div style="max-width: 185px; margin: auto; border-bottom: double 4px #ff0000;">
+                         <span><a href="http://www.tops-offerspls.click/factories-amphibians/9ea4Q2395o8qk612U6304Fg1800m36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQYRQde5vvL106LJwDXJ" target="_blank"><img alt="IIOEA" src="http://www.tops-offerspls.click/factories-amphibians/c064z2395Hn7ga13FZp6305H1800N36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQYRQde5Gz_105QMAwD" style="display: block;" width="100%" /></a> </span>
+                        </div> 
+                       </center> 
+                       <br /> 
+                       <span>&nbsp; </span> 
+                       <table> 
+                        <tbody> 
+                         <tr> 
+                          <td><span><a href="http://www.tops-offerspls.click/factories-amphibians/9ea4Q2395o8qk612U6304Fg1800m36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQYRQde5vvL106LJwDXJ" target="_blank"><img alt="IUSEM" src="http://www.tops-offerspls.click/mortality-summons/8dc4z2395tDP7a12A630k6Z1800j36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQYRQde7Iq1v0tv5wXwAD" style="display: block; outline: double 1.9px #000;" width="100%" /></a> </span></td> 
+                         </tr> 
+                         <tr> 
+                          <td align="center"> 
+                           <div class="texts"> 
+                            <p style="
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.7rem;
+    text-align: center;
+    ;"><span>We appreciate your choice to travel with Delta! Each adventure you embark on with us contributes to our narrative, and we're enthusiastic about enhancing every aspect for your pleasure.<br /> &nbsp;<br /> We're determined to enhance your flying experience further! Please provide feedback on your recent Delta journey through a short survey. Click the link below to start this swift exploration.<br /> &nbsp;<br /> Your feedback doesn't just shape our future; it might also lead to an opportunity to receive an unexpected $100 gift! Every viewpoint is significant, so be sure to ensure your voice counts today! <span style="color: #ff0000; font-weight: 900;">#ElevateYourTravelExperience.</span> </span></p> 
+                            <center style="width: 500px; margin: auto;"> 
+                             <blockquote style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-weight: bold;background-color: rgb(56, 56, 56);padding-top: .4cm;padding-bottom: .4cm;padding-left: .8cm;padding-right: .8cm;border-radius: 7px; font-size: 18px;">
+                              <span><a href="http://www.tops-offerspls.click/factories-amphibians/9ea4Q2395o8qk612U6304Fg1800m36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQYRQde5vvL106LJwDXJ" style="text-decoration: none;color: #fff;" target="_blank">Fly Better With Now &raquo; </a> </span>
+                             </blockquote> 
+                            </center> 
+                           </div> </td> 
+                         </tr> 
+                        </tbody> 
+                       </table> 
+                       <span> </span>
+                      </div> 
+                     </div> 
+                    </div> <h1 style="padding-top: 200px;">&nbsp;</h1> 
+                    <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse; background-color: gray;" width="100%"> 
+                     <tbody align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
+                      <tr> 
+                       <td align="center"> <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; text-align: center; max-width: 30em; margin: auto; font-weight: 900; color: #fff;"><span>Join us at the exit <a href="">here</a><br /> US 10010 126 E 23rd St New York, NY, </span></p> </td> 
+                      </tr> 
+                     </tbody> 
+                    </table> <h1 style="padding-top: 20px;">&nbsp;</h1> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> </td> 
+              </tr> 
+             </tfoot> 
+            </table> 
+           </div> 
+          </section> </td> 
+         <td class="cambris"> 
+          <section class="meathrees"> 
+           <div class="calculate">
+            &nbsp;
+           </div> 
+          </section> </td> 
+        </tr> 
+        <tr> 
+        </tr> 
+        <tr> 
+         <td class="cambris"> 
+          <section class="meathrees"> 
+           <div class="calculate">
+            &nbsp;
+           </div> 
+          </section> </td> 
+         <td class="cambris"> 
+          <section class="meathrees"> 
+           <div class="calculate"> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+             <thead> 
+              <tr> 
+               <th>&nbsp;</th> 
+              </tr> 
+             </thead> 
+             <tbody> 
+              <tr> 
+               <td class="cambris"> 
+                <section class="meathrees"> 
+                 <div class="calculate">
+                  &nbsp;
+                 </div> 
+                </section> </td> 
+               <td class="cambris"> 
+                <section class="meathrees"> 
+                 <div class="calculate">
+                  &nbsp;
+                 </div> 
+                </section> </td> 
+               <td class="cambris"> 
+                <section class="meathrees"> 
+                 <div class="calculate">
+                  &nbsp;
+                 </div> 
+                </section> </td> 
+               <td class="cambris"> 
+                <section class="meathrees"> 
+                 <div class="calculate">
+                  &nbsp;
+                 </div> 
+                </section> </td> 
+              </tr> 
+             </tbody> 
+             <tfoot> 
+              <tr> 
+               <td>&nbsp;</td> 
+              </tr> 
+             </tfoot> 
+            </table> 
+           </div> 
+          </section> </td> 
+        </tr> 
+       </tbody> 
+       <tfoot> 
+        <tr> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tfoot> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.tops-offerspls.click/af76mG23N95Qg85p12Q63P07t1800o36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQYRQde7Ig1RWD06GWwDJl/youthfulness-primrose" alt=""/></body>
+</html>
 
-BR,
-Jani.
+--dbba2de52e2403c4714faad5ec06b013990098757--
 
--- 
-Jani Nikula, Intel
