@@ -1,46 +1,88 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF10F7C703A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Oct 2023 16:25:40 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id AEB857C71F7
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Oct 2023 18:02:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BBB0310E043;
-	Thu, 12 Oct 2023 14:25:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 72A4210E151;
+	Thu, 12 Oct 2023 16:02:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 12 Oct 2023 14:25:37 UTC
-Received: from mail.klfps-toolsinfo.click (unknown [157.52.235.181])
- by gabe.freedesktop.org (Postfix) with ESMTP id DCE0A10E043
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Oct 2023 14:25:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=klfps-toolsinfo.click; 
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=ace.hardware.options@klfps-toolsinfo.click; 
- bh=mJWqwBAlow7QI1mkTAJNw1LmX6c=;
- b=G8PX0ycm+Dn6e1OmN9iND+MlQ+H/qMh8kfxL+Tbt4Q66B/WyrFa6GlKXkY9e5BEyX4Vx2kyxAAEp
- gzHiUZrYyJAOJuDnl2RfFCBvxSFGAUjFDVdnrKK5+QXWwoSZxVMvVZvxjXv9HFYvAjaLZjcx8B9o
- QBVljscNIHC/EcBTzoo=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=klfps-toolsinfo.click; 
- b=deghQKTx6fqueBlJwgKizZEqavW7wNxP0KLc8l4LQXLMr3LgzgKJLgebFi19fvmohIm10b9SgCwD
- adui+Tfhac4TfQdFdwQyLn1+16vAM+5RcA8TcrtJo0+AEWQSbtgdRg25yq9n/lAPf2le/FjLrzUw
- ghgs8i2Hb9OJr+gZy1o=;
-Received: by mail.klfps-toolsinfo.click id h50aau0001gr for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Oct 2023 11:36:52 -0400 (envelope-from
- <ace.hardware.options-intel+2Dgvt+2Ddev=lists.freedesktop.org@klfps-toolsinfo.click>)
-Date: Thu, 12 Oct 2023 11:36:52 -0400
-From: "ACE Hardware Options" <ace.hardware.options@klfps-toolsinfo.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <193078160441.16971201826053@klfps-toolsinfo.click>
-Subject: Survey + Prize: Participate in the survey for your shot at winning a
- Stanley tool set.
+Received: from EUR03-DBA-obe.outbound.protection.outlook.com
+ (mail-dbaeur03olkn2045.outbound.protection.outlook.com [40.92.58.45])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1542710E151;
+ Thu, 12 Oct 2023 16:02:40 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=epqfLqLhxqs7YL0qV0nvjzJBV94exLEhhgjuYJggipPTG7KkLJ2vkm3478p3GZlBx1UwAx8w5iwv7+sc5+M0uX9oQl5RFiIQypH6DNr0dSj+W4G5VPlxfDYkqZXsYTPEcxEBqyK4oje+DpjFTG/vMW3MzDgFuSbb+Siso91Ecs2vi54HUi3dpqRk9t4lvOdA2Glfvh4I7kGC8Oo8vzv68v0tjjAhAHZ2i+VE7tzFblD9lMSf2+AxzAUa33fShwTsTR8olp/7Ce812xift5HFL/xbSAdAL9tLi8iwu+rbp2AYT3OXYATlxDSum4ZE+OGxF7mZq+YQCkNQr8TJkMmnfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FpBscWl1q3c+a9PP+NeGab0TVKuKYE+cUuwkeSEE4lE=;
+ b=aMxuegy0gkw2V5W9YTxp8jm/GM64U+MbtZjzdeqJ5AnoA27WZ+wTjim5Am1VAWJeUC3ibwFA0hFQ0JWZ+eEq1w9W47dVSfpW56sI7IAmieINnMGonCZHCmpJ8a9rv1PWXAzGczTx5AiFkz08nJ0aCtNqHEHt95PaZcqa1zhNdhn6sVkR5o8Sin+uwX3NPuzLAmCUB09uPU4DBFYck2IyyJVoMGljulx4nBaaq6NBTcuHnI3F6OqQIgJoN4z8HXHtzse8MWw9y3ukqFUbU6JZLpTIP7T0NhRcyWy7SpUY5tqbWNDu+FDIJaHtB9l+4WXdHDcQXQLxL4qgdwSMqXFVng==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+Received: from DU0PR03MB8833.eurprd03.prod.outlook.com (2603:10a6:10:40f::14)
+ by DB9PR03MB7721.eurprd03.prod.outlook.com (2603:10a6:10:2c7::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.43; Thu, 12 Oct
+ 2023 16:02:31 +0000
+Received: from DU0PR03MB8833.eurprd03.prod.outlook.com
+ ([fe80::a353:a892:537f:dfa1]) by DU0PR03MB8833.eurprd03.prod.outlook.com
+ ([fe80::a353:a892:537f:dfa1%7]) with mapi id 15.20.6863.043; Thu, 12 Oct 2023
+ 16:02:31 +0000
+From: aa z <az56033@outlook.fr>
+Subject: From:Mrs Becky Bell.
+Thread-Topic: From:Mrs Becky Bell.
+Thread-Index: AQHZ/SWBT5jvxNxK602izzksTSUrMA==
+Date: Thu, 12 Oct 2023 16:02:31 +0000
+Message-ID: <DU0PR03MB8833A7C990EFC62CAFC8856581D3A@DU0PR03MB8833.eurprd03.prod.outlook.com>
+Accept-Language: en-GB, fr-FR, en-US
+Content-Language: en-GB
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+x-tmn: [nkd+uCtrMJxtS7aKkVQxea8C5dE0FAOo]
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DU0PR03MB8833:EE_|DB9PR03MB7721:EE_
+x-ms-office365-filtering-correlation-id: cf1fbb2e-1037-47c8-ad72-08dbcb3ca423
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: jqOI5me/DZgjQUvaMyBFKHJEqSrwziaeZ2qRwkx3i82UCSsDg0jQtxz/uTqu5mGnlTzU8Hj34OfP2DvTKDd9VRrjUi74lbQ8JIEBj4oq4wiiQseBvAM3F3MKXE5Pg3DYALCcLtzR2840TFdrAgrAAFpovGmhI5S5arDRr/b+LKmpqbHztQDNxwyRj5HvEzlvqRF3aBtgy/E6OjygLhgAhMKpDSL10e1lTAhFtCai0G7FXOPmMpIztWdj3dRVDam/86ISqZIBLib+Wlqqk9NQqNtfzV+mNEzMlpxqtzke+VUok145ZeWzC3oLiUZp4z5Ge38jWYxU3iqnLHoGH16Nh8zcfApeldqr7QrorUPs7r02ztM3EVKfTpIR6K5/fk0QZpc9CyrPie+jOFj9savUY6cDb3NZrUclicwqW6UDQdVxfw0B/DPJAQims1GSz3MzTFjM9XDriSh68OO1c0Hu+QcW0/lLYP3Kloq/GjnjEww85J74mq5lnOxoYDCACiijUuKTsiiz9bRAPZxD4YxzneqRrqCWaDsirR2EA+5jnBkUM4SI1D5PS7ICi8nzfAsr
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?iMhTyl9xGLYmYCaQ/u1mazaLJ1HOudD4hVeTodffevMxUHyRGW24qXrNr4?=
+ =?iso-8859-1?Q?+R6/QCeOv63iJdY8ike7B3XA9Uhv3MDOxCxPVmIah/qZKrYV3uYKfhSFLA?=
+ =?iso-8859-1?Q?ErdzAHrYMze0p4F+QVO5tSuxK+OWNhaFsFOcTWnPVDt6vuAhkyv5oN0KTa?=
+ =?iso-8859-1?Q?yWtiz9+7tUTktEBcG3w24TouaAt3reViHpX7rpUbvXYWmlIGoAKqDFl7Nz?=
+ =?iso-8859-1?Q?FqvnjVxB7w1OGLXkqfOk3xrFCFNvX+j5HaHenXSQ0+NjblxcYGhuaxrMmj?=
+ =?iso-8859-1?Q?09WH9Mq2717Z/JC3WldcRr7CYLpY/Av9ZoWWDpQGKc3rDKnSmIqkI7sl+N?=
+ =?iso-8859-1?Q?NNydlxUBbFqukltR0dhDSoIX6xixYBn777+hXzRcL9OCbZGzo8KGpNbomB?=
+ =?iso-8859-1?Q?kDsuKXMQf1i1FHHpc6tuYrQ2a414rxG20BH+OUpK6TwDNpOA7l7w3E0j+r?=
+ =?iso-8859-1?Q?w+HAwIAuTjDhQrJdFlu5AstxUxu+G+xDZFIdAJ2TcE99h4YFquZDN1YOqY?=
+ =?iso-8859-1?Q?6WUEPdQRWbV7V4F+YYEoQKfBsiTXeLOiphTHZbI1V6p/j6xkFHgTMHtnfl?=
+ =?iso-8859-1?Q?9rFyET/M52mcuXDoVLaabwJ6yZhKVHwvrIFALIB7o++1KR8sg798j60RAt?=
+ =?iso-8859-1?Q?g/s0HwF/zuXqRYnugzGbdhzOgz6mAkWwrgFKZR/eQ7Y8h5HQzBgXZI+4qw?=
+ =?iso-8859-1?Q?JD65mayzgTyo6UjjZBUDWc99M//tvsJkfFXQ+72WYO5sh/9GNrThhoNzg5?=
+ =?iso-8859-1?Q?uu/ZGF01XdyuzajMb2RkRfkREULyebDhiqB5BhveDinBQHQO/q0legDL54?=
+ =?iso-8859-1?Q?N4ehuYeg5K9uP3xgycaFLXMsKgZwrW9+SA49kWSZEttmbjnnjsOI52pgNL?=
+ =?iso-8859-1?Q?VXtBy/zntYmG8RJYks0tKnMoONbnW/JlHVK6Z2nqyWx2eMpbSB6HpeGSTy?=
+ =?iso-8859-1?Q?hM0rI+QR/KbKTGg/ZgIS4goXfbEc1P27ix8vACeGy43enTC/exDjL1H+AW?=
+ =?iso-8859-1?Q?HjvKuvr7VvBbNzVMB5iW9sHUcJipBNCiBK868UOQK80cPOxsTu18n5pPPI?=
+ =?iso-8859-1?Q?CT8EQTJxUT20TxpW/9PC2Hao3wqdIkWTnZKev1jagixMt4uUV40rlBqQ9s?=
+ =?iso-8859-1?Q?xf6Pn+Gi4tYjhlpD/JuQKLudMmoe0HhJLTDoRnU/vaivBpFLBe8Ql/npbc?=
+ =?iso-8859-1?Q?ViQL2C1ww9F5t7ouHJEymOtNPYyfskEptwKhKyE4MehvMXFzXhQmZdQC?=
+Content-Type: multipart/alternative;
+ boundary="_000_DU0PR03MB8833A7C990EFC62CAFC8856581D3ADU0PR03MB8833eurp_"
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=81f82a8b28b28dd76d1d7ffba686d683103103399982101101
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-76d7b.templateTenant
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DU0PR03MB8833.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: cf1fbb2e-1037-47c8-ad72-08dbcb3ca423
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Oct 2023 16:02:31.5037 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR03MB7721
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,89 +98,53 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---81f82a8b28b28dd76d1d7ffba686d683103103399982101101
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+--_000_DU0PR03MB8833A7C990EFC62CAFC8856581D3ADU0PR03MB8833eurp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <link href="http://www.klfps-toolsinfo.click/4496VwQ2395X86Zi11Q6343Q180bl36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQhRQQK6uR10lp6dpyAwD/placidly-Rothschild" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.klfps-toolsinfo.click/softwares-oleomargarine/c426E23U9U5S8r6C13Bxl6344T180bZ36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQhRQQK6SQ1uD06Q0XwDX" rel="preconnect" /> 
-  <link href="http://www.klfps-toolsinfo.click/4496VwQ2395X86Zi11Q6343Q180bl36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQhRQQK6uR10lp6dpyAwD/placidly-Rothschild/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>unveil</title> 
- </head> 
- <body> 
-  <div style="background-color: rgb(247, 247, 247); padding-top: 15px; padding-bottom: 15px;"> 
-   <header style="max-width: 185px; margin: auto;">
-    <a href="http://www.klfps-toolsinfo.click/6dd4X2395X8jT612A634w5B180bl36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhRQQK6o1OGi06QpXywD/softwares-oleomargarine" target="_blank"><img alt="GFRS" src="http://www.klfps-toolsinfo.click/c9b6u2ku395Uq7oa13n63T4P7Y180bS36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQhRQQK5Ym10R5ELUwD/cursors-demented" width="100%" /></a>
-   </header> 
-   <section style="background-color: rgb(192, 192, 192);"> 
-    <div style="max-width: 33.5rem; margin: auto; background-color: #fff;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="center" class="shopers" style="border-bottom: solid 1.9px #E7133F;"> <p style="
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 22px;
-    color: #E7133F;"><b><i>Your Last<br /> Message from Ace Hardware</i></b></p> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <article> 
-      <p><font style="display: block; font-family: 'Noto Sans', sans-serif; padding-left: 8mm; padding-right: 8mm; text-align: center; line-height: 1.7rem; font-size: 1.2rem; font-weight: 500;"><b>Ace Hardware</b> is excited to present an amazing opportunity! You can now obtain the <b>Stanley Tool Set</b>, which can be redeemed at any of our store locations. Take quick action and seize this chance! You have until <b>October 12th</b> to acquire these exceptional tools. </font></p> 
-      <table style="max-width: 450px; margin: auto;"> 
-       <tbody> 
-        <tr> 
-         <td align="center" class="trapis"><a href="http://www.klfps-toolsinfo.click/6dd4X2395X8jT612A634w5B180bl36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhRQQK6o1OGi06QpXywD/softwares-oleomargarine" target="_blank"><img alt="YESA" src="http://www.klfps-toolsinfo.click/3775I2s395cV7aT12HH6348R180bU36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQhRQQK6fu1By05S1lwD/dramatics-intruding" width="100%" /></a></td> 
-        </tr> 
-        <tr> 
-         <td align="center"> 
-          <div style="max-width: 300px; margin: auto;"> 
-           <center style="background-color: rgb(34, 34, 34);font-family: 'Noto Sans', sans-serif; font-weight: 800; font-size: 1.3rem; padding: 1rem 1.8rem; border-radius: 6px;">
-            <a href="http://www.klfps-toolsinfo.click/6dd4X2395X8jT612A634w5B180bl36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhRQQK6o1OGi06QpXywD/softwares-oleomargarine" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt;</a>
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-      </table> &nbsp; 
-      <p><font style="display: block; font-family: 'Noto Sans', sans-serif; padding-left: 8mm; padding-right: 8mm; text-align: center; line-height: 1.7rem; font-size: 1.2rem; font-weight: 500;">We deeply value your expected support. Warm regards, The Ace Hardware Team. </font></p> 
-      <br /> &nbsp;
-     </article> 
-    </div> 
-    <br /> &nbsp;
-    <br /> &nbsp;
-    <br /> &nbsp;
-    <br /> &nbsp;
-    <br /> &nbsp;
-    <br /> &nbsp; 
-    <table cellpadding="30px" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <table cellpadding="30px" style="background-color: lightcyan;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td style="text-align: center;"> <p style="max-width: 120mm; margin: auto; font-size: small;font-family: 'Noto Sans', sans-serif; font-weight: 800;">Anyway you can leave <a href="http://www.klfps-toolsinfo.click/40d4w2395gC8h612tj6346n180bk36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQhRQQK7J1sAC0L5ClwTD/therein-scripts">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <table cellpadding="30px" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </section> 
-  </div>   
- <img src="http://www.klfps-toolsinfo.click/paraphernalia-workstations/9366P2i3w95ih85N12b634D9l180bv36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQhRQQK5WWp105vJ@wD" alt=""/></body>
+
+
+I am Mrs Becky Bell of Auburn, Washington who won the $754,550,826 Million =
+Powerball Jackpot on February 6, 2023. to show my appreciation to God Mysel=
+f and my family are donating $750,000 to 20 people, hence you are getting t=
+his email. Reply to this email for more information and how to receive the =
+donation.
+Thanks
+Mrs Becky Bell.
+
+--_000_DU0PR03MB8833A7C990EFC62CAFC8856581D3ADU0PR03MB8833eurp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div class=3D"elementToProof">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);">
+<br>
+</div>
+<div id=3D"Signature">
+<div>I am Mrs Becky Bell of Auburn, Washington who won the $754,550,826 Mil=
+lion Powerball Jackpot on February 6, 2023. to show my appreciation to God =
+Myself and my family are donating $750,000 to 20 people, hence you are gett=
+ing this email. Reply to this email
+ for more information and how to receive the donation.
+<div>Thanks </div>
+Mrs Becky Bell.</div>
+</div>
+</div>
+</body>
 </html>
 
---81f82a8b28b28dd76d1d7ffba686d683103103399982101101--
-
+--_000_DU0PR03MB8833A7C990EFC62CAFC8856581D3ADU0PR03MB8833eurp_--
