@@ -2,68 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2687A7C7464
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Oct 2023 19:22:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D93D7C762F
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Oct 2023 20:57:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CE63489D56;
-	Thu, 12 Oct 2023 17:22:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A4C9B10E546;
+	Thu, 12 Oct 2023 18:57:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x129.google.com (mail-il1-x129.google.com
- [IPv6:2607:f8b0:4864:20::129])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1708710E574;
- Thu, 12 Oct 2023 17:22:15 +0000 (UTC)
-Received: by mail-il1-x129.google.com with SMTP id
- e9e14a558f8ab-3513c435465so2985785ab.0; 
- Thu, 12 Oct 2023 10:22:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1697131334; x=1697736134; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3SAgGhvFgEq3ojom6jJPWJ2MyF/faZd9tWGs5HOFcQQ=;
- b=mLc7jJWoHoBHf1eJZK0JV/voXui+ztrSDU36UzjMWJ5Z8TwAsXoDhW3kI81FqY48lg
- ZnqIXwMs/VWlJHmiPUhcYFZs0xAHxzex0ZhTq9LRYqLEwchFg9P/NyKKFbSF2sREz3zc
- 8jFxNpkOflEC38kGpUSmk1cT/D3m7+YIhCiEfiUh1T9CJ5uWpRPz6oVw05vM/IzVGqDq
- i5h6yUiA6crCRAliCTpsDmnqKIlnCShyOCFZ0AJ0g+QAk99XBnx7iKaLBim9mBecz+o5
- hy42FT04Wmji/5vzP0Jdy5U1zIshd6OOPJjj7S5Le4qMKWTsE+tinp1fALC26sIuMjAX
- 0TBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697131334; x=1697736134;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=3SAgGhvFgEq3ojom6jJPWJ2MyF/faZd9tWGs5HOFcQQ=;
- b=luoyGxHhI4wDHyHbGrXR96Sh7EKKCpqb7OJU8Cj9p1rANZYoJE+v+JixUFqZ9yj4qG
- PGTgaWgqobtQdwz31Cdp6xputz0KaWIeZEo6iC4dAdtR2aW0fbsCrj64+CqZ8nNN7Dtw
- pJCmT8lhp2sJ61WfFMQpARH3OXb2BHuAvnN4oQuk3eL66mPrfsFZ2yGDvySdQmq3L5QU
- quqS2AYO59lbvI28LW/z5P9/hxzErzZ4at2t9I/gRdjYCEYEI57NabT8zdWIIMVi2z1I
- MZq236Jt642nUahBh2EQ/yXx17b9cxkt7WSMLUjYv2UvQ+HUhYyH9UbjGTMlx3OHBIWq
- OsCg==
-X-Gm-Message-State: AOJu0Yx7kLVZMcSzDifajo+RcFUg9cGaY0Xzk64lNvjsmx7VF1KMI184
- dzphzEtPMD4CmgDAstOz1w8UPvOwDtXNXA==
-X-Google-Smtp-Source: AGHT+IFPm6eWNwHlUkCkTorLX2j6xlNTrcGNhrv2lw5AFfWnMiFPK9F+JbAQzRVXyvhlKNHyrGyDRA==
-X-Received: by 2002:a05:6e02:20c8:b0:351:35d9:f18f with SMTP id
- 8-20020a056e0220c800b0035135d9f18fmr16703410ilq.2.1697131334353; 
- Thu, 12 Oct 2023 10:22:14 -0700 (PDT)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- r25-20020a028819000000b0043cef0711c1sm3992211jai.158.2023.10.12.10.22.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Oct 2023 10:22:13 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: linux-kernel@vger.kernel.org, jbaron@akamai.com,
- gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Subject: [PATCH v7 25/25] drm: restore CONFIG_DRM_USE_DYNAMIC_DEBUG un-BROKEN
-Date: Thu, 12 Oct 2023 11:21:36 -0600
-Message-ID: <20231012172137.3286566-26-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231012172137.3286566-1-jim.cromie@gmail.com>
-References: <20231012172137.3286566-1-jim.cromie@gmail.com>
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Thu, 12 Oct 2023 18:57:45 UTC
+Received: from mail.max-toolsfree.bond (unknown [77.90.135.230])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6E99310E54E
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 12 Oct 2023 18:57:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=max-toolsfree.bond; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=home_depot_savings_team@max-toolsfree.bond; 
+ bh=VBibf4ZoYaHA6gHHzjR4bfbuFSQ=;
+ b=eyJeNPteqNY2ALtL1+BklGVFEbT8QiC5oyyR5Zgjkf9PYLl4vK1etMYOpOh8NWldnIXmVqcIfxOm
+ UzgX9C/BJxqDf/ieLWkCZ8ev1vXEKHRwpDpwCWPhGl48ETrhi1YX8fY/mJ0PSSK4Nvm95J2qYDx0
+ HW+qbolKD0uIy77pYE4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=max-toolsfree.bond; 
+ b=l1CmMNLnaG3hZ/wGUNeMj5eot8nl8bPxlQsPiKPhOB6YQ4A43Z3jr8I5FFgauoq8tCGd+nhz8FS0
+ JpBciaicHGW/w+8qX2H2GW59JkQBtXkpcAfPvnxB2BmlUWXcZTJtDz1QDqhSmEovda7DSpY8JCVc
+ bPcoNyiLAQXkswJDnGk=;
+Received: by mail.max-toolsfree.bond id h510qi0001gc for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 12 Oct 2023 14:48:09 -0400 (envelope-from
+ <home_depot_savings_team-intel+2Dgvt+2Ddev=lists.freedesktop.org@max-toolsfree.bond>)
+Date: Thu, 12 Oct 2023 14:48:09 -0400
+From: "Home Depot Savings Team" <home_depot_savings_team@max-toolsfree.bond>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <359668643931.169713647577728@max-toolsfree.bond>
+Subject: Your opportunity for a Makita Drill Set closes today - take action
+ now!
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative; 
+ boundary=b7388aa17bf1c88a068d90cd91c4e9859991698501032977
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,37 +52,140 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: groeck@google.com, linux-doc@vger.kernel.org, jani.nikula@intel.com,
- daniel.vetter@ffwll.ch, yanivt@google.com, Jim Cromie <jim.cromie@gmail.com>,
- robdclark@gmail.com, seanpaul@chromium.org, bleung@google.com,
- ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Lots of burn-in testing needed before signing, upstreaming.
+--b7388aa17bf1c88a068d90cd91c4e9859991698501032977
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-NOTE: I set default Y to maximize testing by default.
-Is there a better way to do this ?
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>loyalty and</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+	</style> 
+ </head> 
+ <body> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(228, 228, 228);" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="30px" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center"><br /> &nbsp;<br /> &nbsp; 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 33.5rem; margin: auto; background-color: #fff;"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <table cellpadding="20px" style="max-width: 485px; margin: auto;"> 
+               <tbody> 
+                <tr> 
+                 <td style="border-bottom: solid 1.9px #F55F04;"><a href="http://www.max-toolsfree.bond/e036R23Ci95CN86N13l63No5dW180fB36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQsRQR95K1Cv05hy2wD/choking-oscilloscope" target="_blank"><img alt="UUJSE" src="http://www.max-toolsfree.bond/6474y2395C7Pna13ik63Y5fx180fr36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQsRQR95aZg105HTlwD/bracelets-Ainus" style="display: block;" width="100%" /></a></td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" style="background-color: #F55F04;"> <p style="
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 600;
+    color: #fff;
+    ;">We wish to express our gratitude for selecting our services. Your loyalty and support hold immense importance for us and will always be acknowledged and treasured.<br /> &nbsp;</p> 
+                  <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" style="background-color: #fff;"> <p style="
+margin: 0;
+font-family: 'Kanit', sans-serif;
+font-size: 18px;
+line-height: 25px;
+font-weight: 400;
+color: #000;
+;">As a token of our appreciation for your support, we offer you the chance to receive a MAKITA DRILL Set as a gesture of our gratitude!</p> 
+                      <table cellpadding="20px" style="max-width: 305px; margin: auto;"> 
+                       <tbody> 
+                        <tr> 
+                         <td><a href="http://www.max-toolsfree.bond/e036R23Ci95CN86N13l63No5dW180fB36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQsRQR95K1Cv05hy2wD/choking-oscilloscope" target="_blank"><img alt="UUEJSA" src="http://www.max-toolsfree.bond/ordering-autonomously/6a24F2395wq7na13W6M36v0k180fJ36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQsRQR97SIF1Tj06W1JpwD" width="100%" /></a></td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center"> <p style="
+margin: 0;
+font-family: 'Kanit', sans-serif;
+font-size: 18px;
+line-height: 25px;
+font-weight: 600;
+color: #000;
+;">Your feedback holds great importance to us.</p> &nbsp; 
+                          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                           <tbody> 
+                            <tr> 
+                             <td align="center"> <p style="
+margin: 0;
+font-family: 'Kanit', sans-serif;
+font-size: 18px;
+line-height: 25px;
+font-weight: 400;
+color: #000;
+;">Obtaining this reward is simple; it only takes 30 seconds of your time to provide us with your feedback, and we will promptly send it to you.</p> &nbsp; 
+                              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                               <tbody> 
+                                <tr> 
+                                 <td align="center"> 
+                                  <center style="padding: 3.5% 7%; background-color: #008397; font-size: 18px;font-family: 'Kanit', sans-serif; font-weight: 600; max-width: 200px; margin: auto; border-radius: 5px;">
+                                   <a href="http://www.max-toolsfree.bond/e036R23Ci95CN86N13l63No5dW180fB36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQsRQR95K1Cv05hy2wD/choking-oscilloscope" style="color: #fff; text-decoration: none;" target="_blank">Start Here Now &gt;&gt; </a>
+                                  </center> </td> 
+                                </tr> 
+                               </tbody> 
+                              </table> <br /> &nbsp;</td> 
+                            </tr> 
+                           </tbody> 
+                          </table> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp; 
+      <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse; background-color: lightyellow;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 140mm; margin: auto;"> 
+           <tbody> 
+            <tr> 
+             <td align="center" style="font-family: 'Kanit', sans-serif; font-weight: 500; font-size: 3.5mm; text-align: center; ;">you can leave with sadness <a href="http://www.max-toolsfree.bond/24b5M239I5YT86p13t635eDOj180fP36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQsRQR95U1z0Z5UOwDX/drooped-schooled">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+        </tr> 
+       </tbody> 
+      </table> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.max-toolsfree.bond/hallmarks-describable/e9a5d2k395oN8h512v63G61F180fy36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsRQR96ui1mL06fLwDNU" alt=""/></body>
+</html>
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- drivers/gpu/drm/Kconfig | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
-index 3caa020391c7..708f5e8cb205 100644
---- a/drivers/gpu/drm/Kconfig
-+++ b/drivers/gpu/drm/Kconfig
-@@ -55,8 +55,7 @@ config DRM_DEBUG_MM
- 
- config DRM_USE_DYNAMIC_DEBUG
- 	bool "use dynamic debug to implement drm.debug"
--	default n
--	depends on BROKEN
-+	default y
- 	depends on DRM
- 	depends on DYNAMIC_DEBUG || DYNAMIC_DEBUG_CORE
- 	depends on JUMP_LABEL
--- 
-2.41.0
+--b7388aa17bf1c88a068d90cd91c4e9859991698501032977--
 
