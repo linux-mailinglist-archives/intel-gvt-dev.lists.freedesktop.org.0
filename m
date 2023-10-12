@@ -1,46 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FCE37C6F2E
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Oct 2023 15:30:30 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF10F7C703A
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Oct 2023 16:25:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5944210E4EF;
-	Thu, 12 Oct 2023 13:30:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BBB0310E043;
+	Thu, 12 Oct 2023 14:25:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 12 Oct 2023 13:30:27 UTC
-Received: from mail.tools-proyecs.bond (unknown [77.90.135.159])
- by gabe.freedesktop.org (Postfix) with ESMTP id 58C6110E4F2
+ Thu, 12 Oct 2023 14:25:37 UTC
+Received: from mail.klfps-toolsinfo.click (unknown [157.52.235.181])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DCE0A10E043
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Oct 2023 13:30:27 +0000 (UTC)
+ Thu, 12 Oct 2023 14:25:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=tools-proyecs.bond; 
+ d=klfps-toolsinfo.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor-freight-gift-opportunity@tools-proyecs.bond; 
- bh=9x56df9fgNAECxsA12ucbGdBq/c=;
- b=j6UQ/dNdzHpni9B8Ycy2EEvp54WItPrwS3AirTZTSp5Yvizzyj0UfFoy+4x2iPVSWZuHTOE925YP
- IpfITcbVm6dxctf/RJZhAaVAR3wc7PX/DYJVgp6S2b5IylBZDjuarf7m0HaiPCWJP92cNHpn3f9U
- NWJ3UMPSIb1qKVGd3gg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tools-proyecs.bond; 
- b=VywvehBQTnRoPVILlC2Rfs/T1fTNJJ6CRy/4ThyaU6BjZP9I8q6SYtha7AClCVjEkaYZIPYF62pm
- uuINyAPgcMzZre7DIc4h8pfVklEt7B+57nBK0uXogO7Pykz/YS/amjR6oHk4ivW81wKJ7pf91xYx
- Qer78bRtdKAX0O1ml2s=;
-Received: by mail.tools-proyecs.bond id h4vqf60001g8 for
+ i=ace.hardware.options@klfps-toolsinfo.click; 
+ bh=mJWqwBAlow7QI1mkTAJNw1LmX6c=;
+ b=G8PX0ycm+Dn6e1OmN9iND+MlQ+H/qMh8kfxL+Tbt4Q66B/WyrFa6GlKXkY9e5BEyX4Vx2kyxAAEp
+ gzHiUZrYyJAOJuDnl2RfFCBvxSFGAUjFDVdnrKK5+QXWwoSZxVMvVZvxjXv9HFYvAjaLZjcx8B9o
+ QBVljscNIHC/EcBTzoo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
+ d=klfps-toolsinfo.click; 
+ b=deghQKTx6fqueBlJwgKizZEqavW7wNxP0KLc8l4LQXLMr3LgzgKJLgebFi19fvmohIm10b9SgCwD
+ adui+Tfhac4TfQdFdwQyLn1+16vAM+5RcA8TcrtJo0+AEWQSbtgdRg25yq9n/lAPf2le/FjLrzUw
+ ghgs8i2Hb9OJr+gZy1o=;
+Received: by mail.klfps-toolsinfo.click id h50aau0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Oct 2023 09:21:52 -0400 (envelope-from
- <harbor-freight-gift-opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@tools-proyecs.bond>)
-Date: Thu, 12 Oct 2023 09:21:52 -0400
-From: "Harbor Freight Gift Opportunity"
- <harbor-freight-gift-opportunity@tools-proyecs.bond>
+ Thu, 12 Oct 2023 11:36:52 -0400 (envelope-from
+ <ace.hardware.options-intel+2Dgvt+2Ddev=lists.freedesktop.org@klfps-toolsinfo.click>)
+Date: Thu, 12 Oct 2023 11:36:52 -0400
+From: "ACE Hardware Options" <ace.hardware.options@klfps-toolsinfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <29771790757.16971169107413331@tools-proyecs.bond>
-Subject: A personalized Pittsburgh 225 Piece Tool Set has been set aside with
- your name on it &ndash; share your opinions, and you'll receive it.
+Message-ID: <193078160441.16971201826053@klfps-toolsinfo.click>
+Subject: Survey + Prize: Participate in the survey for your shot at winning a
+ Stanley tool set.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=c70fead95ee786d823d944f902e7d23f8710332310397
+ boundary=81f82a8b28b28dd76d1d7ffba686d683103103399982101101
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,127 +56,89 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---c70fead95ee786d823d944f902e7d23f8710332310397
+--81f82a8b28b28dd76d1d7ffba686d683103103399982101101
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
 <html lang="en">
  <head> 
+  <link href="http://www.klfps-toolsinfo.click/4496VwQ2395X86Zi11Q6343Q180bl36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQhRQQK6uR10lp6dpyAwD/placidly-Rothschild" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.klfps-toolsinfo.click/softwares-oleomargarine/c426E23U9U5S8r6C13Bxl6344T180bZ36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQhRQQK6SQ1uD06Q0XwDX" rel="preconnect" /> 
+  <link href="http://www.klfps-toolsinfo.click/4496VwQ2395X86Zi11Q6343Q180bl36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQhRQQK6uR10lp6dpyAwD/placidly-Rothschild/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>redeemed at any</title> 
-  <link href="http://www.tools-proyecs.bond/effectiveness-fulfilled/cd84r2395hD86X12u6u33cX180aD36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ6RQQe7zg1A0BP6rywDPM" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.tools-proyecs.bond/f116NB2x395U8v6k13Q63T3CdU180aK36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ6RQQe7tZ10GQI5X@pwD/Transputer-villagers" rel="preconnect" /> 
-  <link href="http://www.tools-proyecs.bond/effectiveness-fulfilled/cd84r2395hD86X12u6u33cX180aD36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ6RQQe7zg1A0BP6rywDPM/css2?family=Open+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" /> 
+  <title>unveil</title> 
  </head> 
  <body> 
-  <aside class="oltmps"> 
-   <section id="sipms"> 
-    <div style="background-color: rgb(235, 235, 235); width: 100%;"> 
-     <table align="center" border="0" cellpadding="15px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(233, 245, 255);" width="100%"> 
+  <div style="background-color: rgb(247, 247, 247); padding-top: 15px; padding-bottom: 15px;"> 
+   <header style="max-width: 185px; margin: auto;">
+    <a href="http://www.klfps-toolsinfo.click/6dd4X2395X8jT612A634w5B180bl36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhRQQK6o1OGi06QpXywD/softwares-oleomargarine" target="_blank"><img alt="GFRS" src="http://www.klfps-toolsinfo.click/c9b6u2ku395Uq7oa13n63T4P7Y180bS36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQhRQQK5Ym10R5ELUwD/cursors-demented" width="100%" /></a>
+   </header> 
+   <section style="background-color: rgb(192, 192, 192);"> 
+    <div style="max-width: 33.5rem; margin: auto; background-color: #fff;"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
       <tbody> 
        <tr> 
-        <td align="center"> 
-         <center id="topsinfo" style="max-width: 223px; margin: auto;">
-          <a href="http://www.tools-proyecs.bond/6fb5d2x395l86zv11u633es180aJ36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6RQQe5N10yj5UNwDy/pentecostal-educates" target="_blank"><img alt="IIUSAEA" src="http://www.tools-proyecs.bond/dissolved-propulsions/d6e4A2395eT_7a11j6340o180aL36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ6RQQe7M1UWhv05g3wqD" width="100%" /></a>
-         </center> </td> 
+        <td align="center" class="shopers" style="border-bottom: solid 1.9px #E7133F;"> <p style="
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 22px;
+    color: #E7133F;"><b><i>Your Last<br /> Message from Ace Hardware</i></b></p> </td> 
        </tr> 
       </tbody> 
      </table> 
-     <div class="color" style="background-color: rgb(211, 211, 211); width: 100%;"> 
-      <section id="text-align" style="background-color: rgb(167, 0, 0); max-width: 130mm; margin: auto; padding: 10px 0; text-align: center;"> 
-       <p style="font-family: 'Open Sans', sans-serif;
-font-size: x-large;
-
-
-
-
-
-
-font-weight: 550;
-color: white;
-text-shadow: 0 0 3px;">Important<br /> Announcements from Harbor Freight</p> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: #fff;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center"> <p style="
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 500;
-    text-align: center;
- 
- 
- 
- 
- 
-    padding-left: 30px;
-    padding-right: 30px;
-    line-height: 7mm;
-    font-size: 4.6mm;">We are excited to share some thrilling news from <b>Harbor Freight</b>. You now have the chance to acquire a <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store branches.<br /> <br /> Act promptly and grasp this chance! You have until <b>October 12th</b> to secure these exciting tools.</p> 
-           <table style="max-width: 253px; margin: auto;"> 
-            <tbody> 
-             <tr> 
-              <td align="center"><a href="http://www.tools-proyecs.bond/6fb5d2x395l86zv11u633es180aJ36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6RQQe5N10yj5UNwDy/pentecostal-educates" target="_blank"><img alt="IUESE" src="http://www.tools-proyecs.bond/deplored-dies/d506eT2C395L7ray11A6341w180aT36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ6RQQe6dDYH105KW0wD" width="100%" /></a></td> 
-             </tr> 
-            </tbody> 
-           </table> &nbsp; 
-           <div> 
-            <center style="padding: 3.5% 7%; background-color: rgb(119, 0, 0); border-radius: 7px; width: 200px; margin: auto; font-size: larger; 
-    
-    
-    
-    
-    
-    
-    
-    font-family: 'Open Sans', sans-serif;; font-weight: 800;">
-             <a href="http://www.tools-proyecs.bond/6fb5d2x395l86zv11u633es180aJ36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQ6RQQe5N10yj5UNwDy/pentecostal-educates" style="color: #fff; text-decoration: none;" target="_blank">Start Here Now &gt; &gt;</a>
-            </center> 
-           </div> <br /> &nbsp;</td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </section> 
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp; 
-      <table cellpadding="15px" style="background-color: cornsilk;" width="100%"> 
+     <article> 
+      <p><font style="display: block; font-family: 'Noto Sans', sans-serif; padding-left: 8mm; padding-right: 8mm; text-align: center; line-height: 1.7rem; font-size: 1.2rem; font-weight: 500;"><b>Ace Hardware</b> is excited to present an amazing opportunity! You can now obtain the <b>Stanley Tool Set</b>, which can be redeemed at any of our store locations. Take quick action and seize this chance! You have until <b>October 12th</b> to acquire these exceptional tools. </font></p> 
+      <table style="max-width: 450px; margin: auto;"> 
        <tbody> 
         <tr> 
-         <td> 
-          <article style="max-width: 30rem; margin: auto; text-align: center;"> 
-           <p style="font-size: 12px;font-family: 'Open Sans', sans-serif; font-weight: 700;"><font>more than welcome to leave in <a href="http://www.tools-proyecs.bond/deplored-dies/40e5S23o95un8C611d633fA180aQ36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ6RQQe7kQwH1l05Oqw3D">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY, </font></p> 
-          </article> </td> 
+         <td align="center" class="trapis"><a href="http://www.klfps-toolsinfo.click/6dd4X2395X8jT612A634w5B180bl36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhRQQK6o1OGi06QpXywD/softwares-oleomargarine" target="_blank"><img alt="YESA" src="http://www.klfps-toolsinfo.click/3775I2s395cV7aT12HH6348R180bU36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQhRQQK6fu1By05S1lwD/dramatics-intruding" width="100%" /></a></td> 
+        </tr> 
+        <tr> 
+         <td align="center"> 
+          <div style="max-width: 300px; margin: auto;"> 
+           <center style="background-color: rgb(34, 34, 34);font-family: 'Noto Sans', sans-serif; font-weight: 800; font-size: 1.3rem; padding: 1rem 1.8rem; border-radius: 6px;">
+            <a href="http://www.klfps-toolsinfo.click/6dd4X2395X8jT612A634w5B180bl36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQhRQQK6o1OGi06QpXywD/softwares-oleomargarine" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt;</a>
+           </center> 
+          </div> </td> 
         </tr> 
        </tbody> 
-      </table> 
+      </table> &nbsp; 
+      <p><font style="display: block; font-family: 'Noto Sans', sans-serif; padding-left: 8mm; padding-right: 8mm; text-align: center; line-height: 1.7rem; font-size: 1.2rem; font-weight: 500;">We deeply value your expected support. Warm regards, The Ace Hardware Team. </font></p> 
       <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-      <br /> &nbsp;
-     </div> 
+     </article> 
     </div> 
+    <br /> &nbsp;
+    <br /> &nbsp;
+    <br /> &nbsp;
+    <br /> &nbsp;
+    <br /> &nbsp;
+    <br /> &nbsp; 
+    <table cellpadding="30px" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table cellpadding="30px" style="background-color: lightcyan;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td style="text-align: center;"> <p style="max-width: 120mm; margin: auto; font-size: small;font-family: 'Noto Sans', sans-serif; font-weight: 800;">Anyway you can leave <a href="http://www.klfps-toolsinfo.click/40d4w2395gC8h612tj6346n180bk36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQhRQQK7J1sAC0L5ClwTD/therein-scripts">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table cellpadding="30px" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
    </section> 
-  </aside>   
- <img src="http://www.tools-proyecs.bond/b6f6zm23v95zo85S12v634J2D180aR36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ6RQQe7Dx10JYQ5fNwDW/classify-dignities" alt=""/></body>
+  </div>   
+ <img src="http://www.klfps-toolsinfo.click/paraphernalia-workstations/9366P2i3w95ih85N12b634D9l180bv36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQhRQQK5WWp105vJ@wD" alt=""/></body>
 </html>
 
---c70fead95ee786d823d944f902e7d23f8710332310397--
+--81f82a8b28b28dd76d1d7ffba686d683103103399982101101--
 
