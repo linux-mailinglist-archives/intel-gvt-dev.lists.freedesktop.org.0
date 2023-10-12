@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D93D7C762F
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Oct 2023 20:57:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 724537C7739
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 12 Oct 2023 21:48:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A4C9B10E546;
-	Thu, 12 Oct 2023 18:57:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2AAC510E546;
+	Thu, 12 Oct 2023 19:48:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Thu, 12 Oct 2023 18:57:45 UTC
-Received: from mail.max-toolsfree.bond (unknown [77.90.135.230])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6E99310E54E
+X-Greylist: delayed 837 seconds by postgrey-1.36 at gabe;
+ Thu, 12 Oct 2023 19:48:46 UTC
+Received: from mail.pharm-speed.click (unknown [77.90.135.234])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 71F4F10E546
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Oct 2023 18:57:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=max-toolsfree.bond; 
+ Thu, 12 Oct 2023 19:48:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pharm-speed.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=home_depot_savings_team@max-toolsfree.bond; 
- bh=VBibf4ZoYaHA6gHHzjR4bfbuFSQ=;
- b=eyJeNPteqNY2ALtL1+BklGVFEbT8QiC5oyyR5Zgjkf9PYLl4vK1etMYOpOh8NWldnIXmVqcIfxOm
- UzgX9C/BJxqDf/ieLWkCZ8ev1vXEKHRwpDpwCWPhGl48ETrhi1YX8fY/mJ0PSSK4Nvm95J2qYDx0
- HW+qbolKD0uIy77pYE4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=max-toolsfree.bond; 
- b=l1CmMNLnaG3hZ/wGUNeMj5eot8nl8bPxlQsPiKPhOB6YQ4A43Z3jr8I5FFgauoq8tCGd+nhz8FS0
- JpBciaicHGW/w+8qX2H2GW59JkQBtXkpcAfPvnxB2BmlUWXcZTJtDz1QDqhSmEovda7DSpY8JCVc
- bPcoNyiLAQXkswJDnGk=;
-Received: by mail.max-toolsfree.bond id h510qi0001gc for
+ i=important.walgreens.developments@pharm-speed.click; 
+ bh=wwJp2Yfk6sJefnluH2amiAXkMiw=;
+ b=XgIGff2ySXL9zVBm7tN+M+/jxtt3kbC+Urvwn7ek0lBHnE8uVZYxG24Neb8HAuJDtjZh+NnGYLr5
+ f4+fZXV9OZaQuJtEFFdJN3BWWmTt9aDO2zBETSjxQWIyTII5D6Nd2Erf6+MYHjqGqr7Ghoo0F3OE
+ 6Wk3xewxk7/fxKx3eBw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharm-speed.click; 
+ b=mlJt50YHIjjqIYPnnMRHKlox48A0TRbLfAr98eN9mff0cxJ9mSBhK40w3Boe/cfFBETy9kpcykTr
+ EObG++AWPqfTJAp+Xmyro5Cm6TmCXov4UPMXh0R6vSdRqKYmg7PbCcra5QcjQZVHuit4hOKsGZCy
+ c9sF1jdGuA8A/JTccRY=;
+Received: by mail.pharm-speed.click id h516ps0001g7 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 12 Oct 2023 14:48:09 -0400 (envelope-from
- <home_depot_savings_team-intel+2Dgvt+2Ddev=lists.freedesktop.org@max-toolsfree.bond>)
-Date: Thu, 12 Oct 2023 14:48:09 -0400
-From: "Home Depot Savings Team" <home_depot_savings_team@max-toolsfree.bond>
+ Thu, 12 Oct 2023 15:32:46 -0400 (envelope-from
+ <important.walgreens.developments-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharm-speed.click>)
+Date: Thu, 12 Oct 2023 15:32:46 -0400
+From: "Important Walgreens Developments"
+ <important.walgreens.developments@pharm-speed.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <359668643931.169713647577728@max-toolsfree.bond>
-Subject: Your opportunity for a Makita Drill Set closes today - take action
- now!
+Message-ID: <668875156901.16971391413803@pharm-speed.click>
+Subject: Don't Miss Out: Win an Oral-B Series 8 with Your Feedback!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=b7388aa17bf1c88a068d90cd91c4e9859991698501032977
+ boundary=799cda6d31d87c82537fd1dfce9b21624103563
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,137 +54,70 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---b7388aa17bf1c88a068d90cd91c4e9859991698501032977
+--799cda6d31d87c82537fd1dfce9b21624103563
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>loyalty and</title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
-	</style> 
+  <title>offer expires</title> 
  </head> 
- <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(228, 228, 228);" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="30px" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center"><br /> &nbsp;<br /> &nbsp; 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 33.5rem; margin: auto; background-color: #fff;"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <table cellpadding="20px" style="max-width: 485px; margin: auto;"> 
-               <tbody> 
-                <tr> 
-                 <td style="border-bottom: solid 1.9px #F55F04;"><a href="http://www.max-toolsfree.bond/e036R23Ci95CN86N13l63No5dW180fB36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQsRQR95K1Cv05hy2wD/choking-oscilloscope" target="_blank"><img alt="UUJSE" src="http://www.max-toolsfree.bond/6474y2395C7Pna13ik63Y5fx180fr36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQsRQR95aZg105HTlwD/bracelets-Ainus" style="display: block;" width="100%" /></a></td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" style="background-color: #F55F04;"> <p style="
-    margin: 0;
-    font-family: 'Kanit', sans-serif;
-    font-size: 18px;
-    line-height: 25px;
-    font-weight: 600;
-    color: #fff;
-    ;">We wish to express our gratitude for selecting our services. Your loyalty and support hold immense importance for us and will always be acknowledged and treasured.<br /> &nbsp;</p> 
-                  <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" style="background-color: #fff;"> <p style="
-margin: 0;
-font-family: 'Kanit', sans-serif;
-font-size: 18px;
-line-height: 25px;
-font-weight: 400;
-color: #000;
-;">As a token of our appreciation for your support, we offer you the chance to receive a MAKITA DRILL Set as a gesture of our gratitude!</p> 
-                      <table cellpadding="20px" style="max-width: 305px; margin: auto;"> 
-                       <tbody> 
-                        <tr> 
-                         <td><a href="http://www.max-toolsfree.bond/e036R23Ci95CN86N13l63No5dW180fB36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQsRQR95K1Cv05hy2wD/choking-oscilloscope" target="_blank"><img alt="UUEJSA" src="http://www.max-toolsfree.bond/ordering-autonomously/6a24F2395wq7na13W6M36v0k180fJ36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQsRQR97SIF1Tj06W1JpwD" width="100%" /></a></td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center"> <p style="
-margin: 0;
-font-family: 'Kanit', sans-serif;
-font-size: 18px;
-line-height: 25px;
-font-weight: 600;
-color: #000;
-;">Your feedback holds great importance to us.</p> &nbsp; 
-                          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                           <tbody> 
-                            <tr> 
-                             <td align="center"> <p style="
-margin: 0;
-font-family: 'Kanit', sans-serif;
-font-size: 18px;
-line-height: 25px;
-font-weight: 400;
-color: #000;
-;">Obtaining this reward is simple; it only takes 30 seconds of your time to provide us with your feedback, and we will promptly send it to you.</p> &nbsp; 
-                              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                               <tbody> 
-                                <tr> 
-                                 <td align="center"> 
-                                  <center style="padding: 3.5% 7%; background-color: #008397; font-size: 18px;font-family: 'Kanit', sans-serif; font-weight: 600; max-width: 200px; margin: auto; border-radius: 5px;">
-                                   <a href="http://www.max-toolsfree.bond/e036R23Ci95CN86N13l63No5dW180fB36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQsRQR95K1Cv05hy2wD/choking-oscilloscope" style="color: #fff; text-decoration: none;" target="_blank">Start Here Now &gt;&gt; </a>
-                                  </center> </td> 
-                                </tr> 
-                               </tbody> 
-                              </table> <br /> &nbsp;</td> 
-                            </tr> 
-                           </tbody> 
-                          </table> </td> 
-                        </tr> 
-                       </tbody> 
-                      </table> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp; 
-      <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse; background-color: lightyellow;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 140mm; margin: auto;"> 
-           <tbody> 
-            <tr> 
-             <td align="center" style="font-family: 'Kanit', sans-serif; font-weight: 500; font-size: 3.5mm; text-align: center; ;">you can leave with sadness <a href="http://www.max-toolsfree.bond/24b5M239I5YT86p13t635eDOj180fP36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQsRQR95U1z0Z5UOwDX/drooped-schooled">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.max-toolsfree.bond/hallmarks-describable/e9a5d2k395oN8h512v63G61F180fy36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQsRQR96ui1mL06fLwDNU" alt=""/></body>
+ <body style="background-color: rgb(219, 219, 219);"> 
+  <div class="tangos" style="background-color: #fff;"> 
+   <center id="names" style="max-width: 260px; margin: auto;">
+    <a href="http://www.pharm-speed.click/a614q2395I86rm13dB6362Vs1810H36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQLRQRd6QHkv106JB3kwD/urinates-McFarland"><img alt="UUEASE" src="http://www.pharm-speed.click/e994J2395Q7ZPa11s6364Y1810z36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQLRQRd7mLt1L0R6RLj0wD/deducer-Kashmir" width="100%" /> </a>
+   </center> 
+  </div> &nbsp; 
+  <div style="border: solid 1px #242849;max-width: 520px;margin: auto;border-top-left-radius: 50px;border-top-right-radius: 50px;border-bottom-left-radius: 50px;border-bottom-right-radius: 50px;background-color: #fff;border-top: solid 30px #242849;border-bottom: solid 30px #242849;"> 
+   <div>
+    &nbsp; 
+    <p style="font-size: 20px; margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 28px; padding: 0 30px; text-align: center; line-height: 27px;">Exciting News! Walgreens is introducing an <strong> Oral-B Series 8 Toothbrush </strong> for in-store use. Act quickly, as this offer expires on <strong> October 12th </strong>.</p> &nbsp; 
+    <table style="max-width: 275px; margin: auto;"> 
+     <tbody> 
+      <tr> 
+       <td><a href="http://www.pharm-speed.click/a614q2395I86rm13dB6362Vs1810H36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQLRQRd6QHkv106JB3kwD/urinates-McFarland"><img alt="HGEAS" src="http://www.pharm-speed.click/b154M2395XP7aq11z6365p1810o36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQLRQRd6l1WXr05vLkwD/acclimate-overpower" width="100%" /> </a></td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <table align="center"> 
+     <tbody> 
+      <tr> 
+       <td align="center"> 
+        <table align="center" style="border: solid 2px #242849; border-radius: 100px; padding: 10px 25px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 25px;"> 
+         <tbody> 
+          <tr> 
+           <td align="center"><a href="http://www.pharm-speed.click/a614q2395I86rm13dB6362Vs1810H36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQLRQRd6QHkv106JB3kwD/urinates-McFarland" style="text-decoration: none; color: #242849;" target="_blank">Start Here Now </a></td> 
+          </tr> 
+         </tbody> 
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> &nbsp; 
+    <p style="font-size: 16px; margin: 0; font-family: Arial, Helvetica, sans-serif; line-height: 28px; padding: 0 30px; text-align: center; line-height: 27px;">In advance, we appreciate your support.<br /> Best regards,<br /> <b>The Walgreens Team </b></p> 
+   </div> 
+  </div> 
+  <div style="padding-top: 50px;">
+   &nbsp;
+  </div> 
+  <div style="padding-top: 50px;">
+   &nbsp;
+  </div> 
+  <footer style="background-color: lavender; padding-top: 30px; padding-bottom: 30px;"> 
+   <address style="max-width: 450px; margin: auto;"> <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12px; text-align: center; font-weight: 800;;">you are bored of these, visit us <a href="http://www.pharm-speed.click/Miltonized-earlier/d505QR2395w86xs13oG6363Rw1810y36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQLRQRd7F1UUUg05rTMwD"> here </a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</p> </address> 
+  </footer> 
+  <div style="padding-top: 50px;">
+   &nbsp;
+  </div> 
+  <div style="padding-top: 50px;">
+   &nbsp;
+  </div> 
+  <div style="padding-top: 50px;">
+   &nbsp;
+  </div>   
+ <img src="http://www.pharm-speed.click/e996e239gZ5z85LN13h63T66gu1810r36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQLRQRd5h10sH5HX1wD/rationing-granulates" alt=""/></body>
 </html>
 
---b7388aa17bf1c88a068d90cd91c4e9859991698501032977--
+--799cda6d31d87c82537fd1dfce9b21624103563--
 
