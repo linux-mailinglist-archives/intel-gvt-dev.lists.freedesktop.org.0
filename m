@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08CFB7C8622
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Oct 2023 14:51:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6F977C891A
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Oct 2023 17:48:38 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D7A0B10E600;
-	Fri, 13 Oct 2023 12:51:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 811A510E1A0;
+	Fri, 13 Oct 2023 15:48:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 13 Oct 2023 12:51:21 UTC
-Received: from mail.tools-sayinfo.click (unknown [77.90.135.235])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4522110E600
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Oct 2023 15:48:36 UTC
+Received: from mail.more-toolsnow.click (unknown [157.52.235.132])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B816D10E1A0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Oct 2023 12:51:21 +0000 (UTC)
+ Fri, 13 Oct 2023 15:48:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=tools-sayinfo.click; 
+ d=more-toolsnow.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=now_on_harbor_freight@tools-sayinfo.click; 
- bh=YJRvpOxOSQDNQ+5TzYuCX+X3B7Q=;
- b=XmDwiraPeF62Y5Fx1VzuR6/i/LsNMCu54cBPfQlqH7Y8iutUuwtvnpQIX60Zc3qwQfI6YetceO6w
- g98MHMXU1ezZvX1xe59n6KoALCEkwbmnNLjZqmaokIaAuETSsBTgFuPrQZRXU29PFwbPGSMabYjO
- hYTMjrB6nuWI2ijG6mA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tools-sayinfo.click;
- b=Ocl3CFQ2WEOTbPzFF2IuE9+06T/a2gB0KKfHMXhVgDRpYKxSWUzzc5XzPt3zG7A7rXwF4Be43vdS
- PlQ1rITm/Ai3WOsz9vrzKGbDCVkTjlV0Rc9TCt56Fmhdb8LnGQhpm/P6xYTqnCxqKwo4mqx7s49I
- XAvSA59mnP+PtUbLgyM=;
-Received: by mail.tools-sayinfo.click id h5581a0001g3 for
+ i=ace_hardware_quality@more-toolsnow.click; 
+ bh=gzc4cngIHAutAy5c/TOQJ0fpjv0=;
+ b=QP5No/vWujoquv/KxAi1awpUqeOSi/JJwy9Xi/xKOnbpCnsrXdFLqrhWjET1TO8CDMxk6PR0T5H9
+ YlCWSjOZcwm0rdxjqw/ffVz4VlHdR7bp5IPneUXmb18WymzBlWNsJygKHpktzDDvcQsJXKtrCgF3
+ iItEYrEd8WqBCCnNHZ8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=more-toolsnow.click;
+ b=JgkX9z3VFU7QRImPnj9fz7eNm3q6duAXymNjpQjikj668RjlLZvTMS506wIluOoYwFe8farm5iKM
+ AwM5J2ZNauYyD3OtQPIDVnd4gyDp0R7vISCVcz+EISm83XEp2G9+eTAFIWEdRe2CjoewAzlaTVG/
+ 7zTpRPFHFexsb3Qh/tk=;
+Received: by mail.more-toolsnow.click id h55jd80001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Oct 2023 09:56:59 -0400 (envelope-from
- <now_on_harbor_freight-intel+2Dgvt+2Ddev=lists.freedesktop.org@tools-sayinfo.click>)
-Date: Fri, 13 Oct 2023 09:56:59 -0400
-From: "Now On Harbor Freight" <now_on_harbor_freight@tools-sayinfo.click>
+ Fri, 13 Oct 2023 11:34:40 -0400 (envelope-from
+ <ace_hardware_quality-intel+2Dgvt+2Ddev=lists.freedesktop.org@more-toolsnow.click>)
+Date: Fri, 13 Oct 2023 11:34:40 -0400
+From: "ACE Hardware Quality" <ace_hardware_quality@more-toolsnow.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <20129501698236.16972005918440935@tools-sayinfo.click>
-Subject: A personalized Pittsburgh 225 Piece Tool Set has been set aside with
- your name on it &ndash; share your opinions, and you'll receive it.
+Message-ID: <189397240417.16972112696346@more-toolsnow.click>
+Subject: Don't pass up the opportunity to win a Stanley Tool Set by sharing
+ your feedback with us!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=e5d34ec0ba5d11137a59901baa29947e59810010169610097101
+ boundary=37954c3f74b319caa2251adfc7ac8acd3924
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---e5d34ec0ba5d11137a59901baa29947e59810010169610097101
+--37954c3f74b319caa2251adfc7ac8acd3924
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,80 +64,65 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>now and enhance</title> 
+  <title>redeemed at</title> 
  </head> 
  <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(236, 236, 236);" width="100%"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(201, 201, 201);" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center"> 
-      <div class="containers"> 
-       <header style="max-width: 14em; margin: auto;">
-        <a href="http://www.tools-sayinfo.click/c236o239XJ5GI86y12UD6375D1813i36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQkRQRS5ig10R5N0wlD/manger-caprice" target="_blank"><img alt="JJHSA" src="http://www.tools-sayinfo.click/e995XL2395WiI7a12j6377ll1813_36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQkRQRS7IA1lY0K5dWwDU/sorest-rancid" width="100%" /></a>
-       </header> 
-       <aside style="width: 100%; background-color: rgb(212, 212, 212);"> 
-        <section class="domws" style="max-width: 33.5em; background-color: #fff; padding: 3.5% 0%;"> 
-         <div id="topyens"> 
-          <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 22px; color: rgb(219, 8, 20);"><i><u><b>Exciting Updates from<br /> Harbor Freight for our cherished friends.</b></u></i></h2> 
-          <h3 style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 28px; font-size: 15.5px; padding: 0 30px;">Explore the latest addition from Harbor Freight! Discover the brand-new Pittsburgh 225 Piece Tool Set, exclusively available at our stores. Don't miss this chance to upgrade your toolkit! #YourNextFavoriteToolSet</h3> 
-          <h3>&nbsp;</h3> 
-          <table> 
-           <tbody> 
-            <tr> 
-             <td><a href="http://www.tools-sayinfo.click/c236o239XJ5GI86y12UD6375D1813i36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQkRQRS5ig10R5N0wlD/manger-caprice" target="_blank"><img alt="VCBSA" src="http://www.tools-sayinfo.click/cemetery-repercussions/ef45R2L395f_w7a12J6378xr1813W36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQkRQRS6EKm10X6mlLUwD" width="100%" /></a></td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <h4 style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 28px; font-size: 15.5px; padding: 0 30px;"><b style="color: rgb(219, 8, 20);">--&gt; Seize this Time-Critical Opportunity with Prompt Action! &lt; --</b><br /> &nbsp; Mark your calendar! Until October 13th, an array of exceptional tools is ready for discovery. Dive in and discover your next essential gadget today.<br /> <b style="color: rgb(219, 8, 20);">#ToolTimeTreats</b></h4> 
-          <table style="max-width: 500px; margin: auto;"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <center style="background-color: rgb(219, 8, 20); padding: 13pt 24pt; border-radius: 8pt; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 12pt;">
-               <a href="http://www.tools-sayinfo.click/c236o239XJ5GI86y12UD6375D1813i36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQkRQRS5ig10R5N0wlD/manger-caprice" style="text-decoration: none; color: #fff;" target="_blank">You' re just a few moments away from your device --&gt;</a>
-              </center> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> 
-        </section> 
-        <table cellpadding="50px" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table cellpadding="50px" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td> 
-            <div style="background-color: dodgerblue; padding: 7mm 0;"> 
-             <table cellpadding="0" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: #fff; font-size: 12px;text-align: center;">more than welcome to leave in <a href="http://www.tools-sayinfo.click/1f15g2o395No86_12aX6376S1813P36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQkRQRS5qtW105gOqwD/encircle-revisits">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY,</td> 
-               </tr> 
-              </tbody> 
-             </table> 
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <table cellpadding="50px" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </aside> 
-      </div> </td> 
+     <td> 
+      <div style="background-color: #F9F9F9; display: block;"> 
+       <div style="max-width: 6cm; margin: auto; padding: .5cm 0;">
+        <a href="http://www.more-toolsnow.click/bracketing-saluting/33c5IM2395uV8W612s637fDD1815Q36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIRQRK7nz1uXN06v1wzD@" target="_blank"><img alt="BBSA" src="http://www.more-toolsnow.click/potentiometer-Guatemala/9ea5N239P5oU7na13h6w38g1n1815X36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQIRQRK6LD10Ox6WJllwD" width="100%s" /></a>
+       </div> 
+      </div> 
+      <div style="display: block; background-color: #d8d8d8; width: 100%;"> 
+       <center align="center" style="background-color: #fff; max-width: 520px; margin: auto;"> 
+        <article> 
+         <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px; text-align: center; padding: 18pt 0pt; margin: 0;"><font style="color: #E51635;"><b><i><u>Your Final<br /> Communication from Ace Hardware </u></i></b> </font><br /> <br /> <span style="font-size: 16px; display: block; padding: 0 16pt; font-weight: 500; line-height: 1.5em;"><b>Ace Hardware</b> is thrilled to offer an incredible opportunity! You can now acquire the <b>Stanley Tool Set</b>, available for redemption at any of our store branches. Act promptly and grab this chance! You have until <b>October 13th</b> to secure these outstanding tools. </span></p> 
+        </article> 
+        <div> 
+         <center style="max-width: 95%; margin: auto;">
+          <a href="http://www.more-toolsnow.click/bracketing-saluting/33c5IM2395uV8W612s637fDD1815Q36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIRQRK7nz1uXN06v1wzD@" target="_blank"><img alt="MNSA" src="http://www.more-toolsnow.click/mocker-nationals/cba4e2395SB7aP13vF638Y2_1815G36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQIRQRK5I1W0j5MMwD@" width="100%" /></a>
+         </center> 
+        </div> 
+        <div style="max-width: 300px; margin: auto;"> 
+         <table align="center" cellpadding="10px"> 
+          <tbody> 
+           <tr> 
+            <td align="center" style="background-color: rgb(36, 36, 36); padding: 15px 30px; border-radius: 10px; font-size: 20px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold;"><a href="http://www.more-toolsnow.click/bracketing-saluting/33c5IM2395uV8W612s637fDD1815Q36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIRQRK7nz1uXN06v1wzD@" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt; </a></td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> &nbsp; 
+        <p style="font-size: 16px; display: block; padding: 0 16pt; font-weight: 500; line-height: 1.5em; font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: center; margin: 0;">Your anticipated support means a great deal to us. Warm regards, The Ace Hardware Team.</p> 
+       </center> &nbsp; 
+       <div style="padding-top: 320px;;">
+        &nbsp;
+       </div> 
+       <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse; background-color: lavenderblush;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td>&nbsp;</td> 
+         </tr> 
+        </tbody> 
+        <tfoot> 
+         <tr> 
+          <td align="center"> 
+           <div style="max-width: 520px;margin: auto; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 11px; font-weight: bold;">
+            Anyway you can leave 
+            <a href="http://www.more-toolsnow.click/politer-boo/3004j2395Q8Kn612Ql6380X1815P36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQIRQRK5q10gN5iJwDp">here</a>
+            <br /> US 10010 126 E 23rd St New York, NY,
+           </div> </td> 
+         </tr> 
+        </tfoot> 
+       </table> 
+      </div> <br /> &nbsp;</td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.tools-sayinfo.click/encircle-revisits/53a5D23l95X8S5J13Q6D379rW1813T36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQkRQRS7N1vBM0w6S@OwD3" alt=""/></body>
+ <img src="http://www.more-toolsnow.click/b516HI239w5Ls85q13wI6383uz1815T36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQIRQRK5Y1Bn05rlAwD/difficulties-tablecloths" alt=""/></body>
 </html>
 
---e5d34ec0ba5d11137a59901baa29947e59810010169610097101--
+--37954c3f74b319caa2251adfc7ac8acd3924--
 
