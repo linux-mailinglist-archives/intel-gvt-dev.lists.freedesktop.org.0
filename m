@@ -1,47 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B6A57C8BE8
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Oct 2023 19:02:21 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42C427C8CC5
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Oct 2023 20:05:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 031FB10E631;
-	Fri, 13 Oct 2023 17:02:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0FEFD10E083;
+	Fri, 13 Oct 2023 18:05:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Fri, 13 Oct 2023 17:02:18 UTC
-Received: from mail.drill-specialtops.click (unknown [157.52.235.135])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4AC1910E631
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Oct 2023 18:05:47 UTC
+Received: from mail.onlytopsfly.bond (unknown [77.90.135.243])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4064010E083
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Oct 2023 17:02:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=drill-specialtops.click; 
+ Fri, 13 Oct 2023 18:05:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=onlytopsfly.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=savings.squad.at.oreilly@drill-specialtops.click; 
- bh=cNMZe4KwbTgXbFM+v+/nYx/2l/Y=;
- b=pXlyfGr7FVAbgsIKuAizOfSesIiPim07AeUvYGkl0a3gwtB/GrBq7BI5kr8yKtpK2jzzCqRNm7Zw
- cGp+31FNb1gFH/eEz3f4tnURxdSegOrzpeVoQ7pXwjnTacMVHkkoTNDIuN9er+HPnrETGb7kx7HI
- TukwAQeFE6ddLMsj9wQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=drill-specialtops.click; 
- b=lazbn7VZ2EOenBlQRGWu+Sh1kL4Z1pdA8TmncALmECwyvLihtCgaU6fByXsU9S/H1f8YpFl6rhcj
- aXiPuL0h1uiMkg+E9D3LyPmfUpTA6B+f/5h+3X5UMMZVQvdj901ewaGO1AdKB0M1JbtB1ty2u7MA
- R1MCOtocq/WIgFTw3pU=;
-Received: by mail.drill-specialtops.click id h55s1k0001g9 for
+ i=stay_updated_on_the_latest_southwest_flight_news@onlytopsfly.bond; 
+ bh=5CdHWz9oAb0shWuF9rGqIgh/mO4=;
+ b=Qva54+d6ipfrd1Qr7OQKGV2rafMofdJVOdDJi4FNovnbx44uzk/2Uwb/ewApyqWKXrEPjeoFvMdo
+ 8RuUwrtCw9WrlTMqVe12TjRzS4H7Wa3BvkGLfa3Ms5O3E3HKEnX10rYAap22YRmCEj1cTJphCxOR
+ ZPceckxsSNUtOHLP8kw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=onlytopsfly.bond;
+ b=qE5E8uC/7mKQsIBlaxq6yCmmbFp5+66vOpYV9URc2MZK1LFVIi4i1cbivtzQsjopiUHT6qSGPf6l
+ iW/xuLvSDrwBHF0BSB9Dt7KYiw8Y6dk8g8six+4nkuBt4VkwiirsgW9+hcSoUFehgOpRpp6a+Flu
+ 0lGEX006yMWhvsK2cBs=;
+Received: by mail.onlytopsfly.bond id h563fm0001gp for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Oct 2023 12:48:43 -0400 (envelope-from
- <savings.squad.at.oreilly-intel+2Dgvt+2Ddev=lists.freedesktop.org@drill-specialtops.click>)
-Date: Fri, 13 Oct 2023 12:48:43 -0400
-From: "Savings Squad At OReilly"
- <savings.squad.at.oreilly@drill-specialtops.click>
+ Fri, 13 Oct 2023 13:52:04 -0400 (envelope-from
+ <stay_updated_on_the_latest_southwest_flight_news-intel+2Dgvt+2Ddev=lists.freedesktop.org@onlytopsfly.bond>)
+Date: Fri, 13 Oct 2023 13:52:04 -0400
+From: "Stay Updated On The Latest Southwest Flight News"
+ <stay_updated_on_the_latest_southwest_flight_news@onlytopsfly.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <167441853056.16972157090001@drill-specialtops.click>
-Subject: Share your feedback now,
- and you might become the proud owner of an amazing Bosch Drill Set.
+Message-ID: <1626061104828.16972195098680669@onlytopsfly.bond>
+Subject: Celebrate the onset of the season by indulging in a complimentary
+ flight to your chosen destination!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=59bb30efa67a0e963e1b77a90b5052ae666297
+ boundary=85eb36c1a60a9116db995ea9718a22f941021009859710210306
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,88 +55,180 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---59bb30efa67a0e963e1b77a90b5052ae666297
+--85eb36c1a60a9116db995ea9718a22f941021009859710210306
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>optimus-megafive</title> 
+  <title>mokusballofs</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <table align="center" cellpadding="0" style="width: 100%;"> 
+ <body style="background-color: rgb(216, 216, 216);"> 
+  <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
    <tbody> 
     <tr> 
-     <td align="center"> 
-      <table align="center" cellpadding="0" style="width: 100%;"> 
+     <td>&nbsp;</td> 
+     <td>&nbsp;</td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td align="center" style="width: 550px; margin: auto;"> 
+      <table align="center" cellpadding="0" cellspacing="0" style="background-color: #fff;" width="100%"> 
+       <thead> 
+        <tr> 
+         <th align="center" colspan="3" width="100%">&nbsp; 
+          <div> 
+           <center> 
+            <div>
+             <a href="http://www.onlytopsfly.bond/prettiness-mercurial/6c04Q2395jm86T11b6389U1817y36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVRQSn5d1l0r6HO2wlD"><img alt="BSNESA" src="http://www.onlytopsfly.bond/receptiveness-burrowed/8285Qm2395v7aSI12p63u8bt1817D36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQVRQSn6m1LMA06BMUwyD" style="max-width: 340px; margin: auto;" width="100%" /> </a>
+            </div> 
+           </center> 
+          </div> </th> 
+        </tr> 
+       </thead> 
        <tbody> 
         <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
          <td align="center"> 
-          <table align="center" cellpadding="10px" style="width: 100%;"> 
-           <tbody> 
-            <tr> 
-             <td align="center" bgcolor="#CC2028"> 
-              <div style="max-width: 250px; margin: auto;">
-               <a href="http://www.drill-specialtops.click/e034h2395aHx8613C6384hWi1816S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ5RQSm6v1Pow06QTwBDl/interior-backbones"><img alt="thanos" src="http://www.drill-specialtops.click/8455Wo2395B7Ram11e6386m1816W36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5RQSm7MJzOs105c3MwD/electrician-constrains" width="100%" /> </a>
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table align="center" cellpadding="0" style="max-width: 530px; margin: auto;"> 
-           <tbody> 
-            <tr> 
-             <td align="center">&nbsp; 
-              <div style="padding-top: 5px; padding-left: 20px; padding-bottom: 5px; padding-right: 20px; border-radius: 5px;"> 
-               <p style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 28px; color: #333; margin: 0">Urgent Reminder<br /> from O'Reilly</p> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-          <table align="center" style="max-width: 530px; margin: auto;"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <article style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height: 1.5em;"> 
-               <p><font>Get Ready for Exciting News: <b>O'Reilly</b> Offers a <b>Bosch Drill Set</b> for In-Store Use. Act Quickly to Secure Your Exceptional Tools by <b>October 13th</b> </font></p> 
-              </article> &nbsp; 
-              <div> 
-               <div> 
-                <blockquote style="max-width: 250px; margin: auto;">
-                 <a href="http://www.drill-specialtops.click/e034h2395aHx8613C6384hWi1816S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ5RQSm6v1Pow06QTwBDl/interior-backbones" target="_blank"><img alt="lovescream" src="http://www.drill-specialtops.click/40d4R2395X7BYa12P63n87p1816w36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ5RQSm6p10IXx5cLMwD/electrician-constrains" style="margin-left: 5%;" width="100%" /></a>
-                </blockquote> 
-               </div> 
-               <center style="max-width: 300px; margin: auto; background-color: #116427; padding: 2.5% 3%; border-radius: 10px; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 18pt;">
-                <a href="http://www.drill-specialtops.click/e034h2395aHx8613C6384hWi1816S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ5RQSm6v1Pow06QTwBDl/interior-backbones" style="text-decoration: none; color: #fff;">Start Here Now &gt;&gt;</a>
-               </center> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> <br /> <br /> <br /> &nbsp; 
-          <div style="max-width: 530px; margin: auto;"> 
-           <article style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height: 1.4em; ;"> 
-            <p style="margin: 0;"><font>We genuinely appreciate your input,<br /> <b>The O'Reilly Auto Parts</b> Survey Team </font></p> 
-           </article> 
-          </div> <p style="padding-bottom: 300px;">&nbsp;</p> 
-          <div> 
-           <table align="center" cellpadding="20px" style="width: 100%;"> 
-            <tbody> 
-             <tr> 
-              <td align="center" bgcolor="132138"> <address style="max-width: 520px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #fff; font-weight: 900;">you can leave with sadness <a href="http://www.drill-specialtops.click/2ff4G2395Ig86w12a6385RX1816M36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ5RQSm6KDC1T05J@wMD/pedal-bumbling" style="color: rgb(182, 182, 243);">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
+          <div style="margin-top: -50px;"> 
+           <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+            <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td>&nbsp;</td> 
+               <td width="100%">&nbsp;</td> 
+               <td>&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td>&nbsp;</td> 
+               <td> 
+                <div style="max-width: 520px; margin: auto;"> 
+                 <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; font-size: 16px; padding-top: 20px;">
+                  We genuinely&nbsp;appreciate&nbsp;your choice to travel with 
+                  <b> Southwest Airlines </b>. Your unwavering loyalty and&nbsp;support hold significant value for us, and we are dedicated to meeting&nbsp;all your travel&nbsp;requirements.                  </center> 
+                </div> </td> 
+               <td>&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td>&nbsp;</td> 
+               <td align="center" style="background-color: rgb(254, 191, 38);"> 
+                <div style="max-width: 520px; margin: auto;"> 
+                 <center style="max-width: 520px; margin: auto;"> 
+                  <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; font-size: 16px; padding-top: 20px;">
+                   We highly value your feedback. We kindly invite you to take a few moments to participate in a brief survey regarding your recent flight experience and your overall interaction with 
+                   <b> Southwest </b>. Your input will be instrumental in improving your future experiences with our airline.                    <br /> &nbsp;
+                  </center> 
+                 </center> 
+                </div> </td> 
+               <td>&nbsp;</td> 
+              </tr> 
+              <tr> 
+               <td>&nbsp;</td> 
+               <td align="center">&nbsp; 
+                <div style="max-width: 520px; margin: auto;"> 
+                 <div>
+                  <a href="http://www.onlytopsfly.bond/prettiness-mercurial/6c04Q2395jm86T11b6389U1817y36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVRQSn5d1l0r6HO2wlD"><img alt="flys" src="http://www.onlytopsfly.bond/prettiness-mercurial/d6e6SO23B95n7aXl12QL638cm1817Z36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQVRQSn6Q1oz0J6X1PwD2" width="100%" /> </a>
+                 </div> 
+                </div> 
+                <div style="max-width: 520px; margin: auto;"> 
+                 <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; font-size: 16px; padding-top: 20px; margin: 0; text-align: center;">Accessing the survey is straightforward; just follow the link below. It's a quick task that will require only a few minutes, and please be assured that your responses will be treated with the utmost confidentiality.</p> &nbsp; 
+                 <div> 
+                  <center style="padding: 15px 20px; background-color: rgb(33, 82, 158); font-family: Arial, Helvetica, sans-serif; font-size: 20px; border-radius: 10px; width: 300px; margin: auto; font-weight: bold;">
+                   <a href="http://www.onlytopsfly.bond/prettiness-mercurial/6c04Q2395jm86T11b6389U1817y36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQVRQSn5d1l0r6HO2wlD" style="text-decoration: none; color: #fff">Kick off the survey here &gt;&gt; </a>
+                  </center> 
+                 </div> 
+                 <br /> 
+                 <br /> 
+                 <br /> &nbsp; 
+                 <div style="border-top: solid 1.3px #000; width: 15%; margin: auto;">
+                  &nbsp;
+                 </div> 
+                 <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; font-size: 15px; padding-top: 20px; margin: 0; text-align: center;">
+                  <b>We appreciate your ongoing support and eagerly await your feedback.<br /> Best regards, </b>
+                 </center> 
+                 <br /> &nbsp;
+                </div> </td> 
+               <td>&nbsp;</td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
           </div> </td> 
+         <td>&nbsp;</td> 
         </tr> 
        </tbody> 
       </table> </td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td> 
+      <table align="center" cellpadding="0" cellspacing="0" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
+     <td>&nbsp;</td> 
+    </tr> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td> 
+      <center style="padding-top: 300px; max-width: 400px; margin: auto; font-weight: 900;"> 
+       <p><font style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; text-align: center;">Use the exit option <a href="http://www.onlytopsfly.bond/b334s2395Gk86g12K6n38ap1817K36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQVRQSn7D10xlI_5o2kwD/Nantucket-squall"> here </a><br /> US 10010 126 E 23rd St New York, NY, </font></p> 
+      </center> 
+      <div style="padding-bottom: 100px;">
+       &nbsp;
+      </div> </td> 
+     <td>&nbsp;</td> 
     </tr> 
    </tbody> 
-  </table>   
- <img src="http://www.drill-specialtops.click/2a56M2AH395bg8I511l6388R1816p36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ5RQSm5Izz105Slw@D/pedal-bumbling" alt=""/></body>
+  </table> 
+  <div style="width: 100%; background-color: #fff;"> 
+   <center style="max-width: 490px; margin: auto; "> 
+    <article style="background-color: #fff; font-size: 12px; font-family: Arial, Helvetica, sans-serif; text-align: justify; padding: 15px 25px;"> 
+     <p>&nbsp;</p> 
+    </article> 
+   </center> 
+  </div>   
+ <img src="http://www.onlytopsfly.bond/receptiveness-burrowed/2106y2O3O95Y8B5H11q638du1817C36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQVRQSn6Dk10Lm6uLApwD" alt=""/></body>
 </html>
 
---59bb30efa67a0e963e1b77a90b5052ae666297--
+--85eb36c1a60a9116db995ea9718a22f941021009859710210306--
 
