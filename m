@@ -1,45 +1,47 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6F977C891A
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Oct 2023 17:48:38 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B6A57C8BE8
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Oct 2023 19:02:21 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 811A510E1A0;
-	Fri, 13 Oct 2023 15:48:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 031FB10E631;
+	Fri, 13 Oct 2023 17:02:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 13 Oct 2023 15:48:36 UTC
-Received: from mail.more-toolsnow.click (unknown [157.52.235.132])
- by gabe.freedesktop.org (Postfix) with ESMTP id B816D10E1A0
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Fri, 13 Oct 2023 17:02:18 UTC
+Received: from mail.drill-specialtops.click (unknown [157.52.235.135])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4AC1910E631
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Oct 2023 15:48:36 +0000 (UTC)
+ Fri, 13 Oct 2023 17:02:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=more-toolsnow.click; 
+ d=drill-specialtops.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=ace_hardware_quality@more-toolsnow.click; 
- bh=gzc4cngIHAutAy5c/TOQJ0fpjv0=;
- b=QP5No/vWujoquv/KxAi1awpUqeOSi/JJwy9Xi/xKOnbpCnsrXdFLqrhWjET1TO8CDMxk6PR0T5H9
- YlCWSjOZcwm0rdxjqw/ffVz4VlHdR7bp5IPneUXmb18WymzBlWNsJygKHpktzDDvcQsJXKtrCgF3
- iItEYrEd8WqBCCnNHZ8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=more-toolsnow.click;
- b=JgkX9z3VFU7QRImPnj9fz7eNm3q6duAXymNjpQjikj668RjlLZvTMS506wIluOoYwFe8farm5iKM
- AwM5J2ZNauYyD3OtQPIDVnd4gyDp0R7vISCVcz+EISm83XEp2G9+eTAFIWEdRe2CjoewAzlaTVG/
- 7zTpRPFHFexsb3Qh/tk=;
-Received: by mail.more-toolsnow.click id h55jd80001gm for
+ i=savings.squad.at.oreilly@drill-specialtops.click; 
+ bh=cNMZe4KwbTgXbFM+v+/nYx/2l/Y=;
+ b=pXlyfGr7FVAbgsIKuAizOfSesIiPim07AeUvYGkl0a3gwtB/GrBq7BI5kr8yKtpK2jzzCqRNm7Zw
+ cGp+31FNb1gFH/eEz3f4tnURxdSegOrzpeVoQ7pXwjnTacMVHkkoTNDIuN9er+HPnrETGb7kx7HI
+ TukwAQeFE6ddLMsj9wQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
+ d=drill-specialtops.click; 
+ b=lazbn7VZ2EOenBlQRGWu+Sh1kL4Z1pdA8TmncALmECwyvLihtCgaU6fByXsU9S/H1f8YpFl6rhcj
+ aXiPuL0h1uiMkg+E9D3LyPmfUpTA6B+f/5h+3X5UMMZVQvdj901ewaGO1AdKB0M1JbtB1ty2u7MA
+ R1MCOtocq/WIgFTw3pU=;
+Received: by mail.drill-specialtops.click id h55s1k0001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 13 Oct 2023 11:34:40 -0400 (envelope-from
- <ace_hardware_quality-intel+2Dgvt+2Ddev=lists.freedesktop.org@more-toolsnow.click>)
-Date: Fri, 13 Oct 2023 11:34:40 -0400
-From: "ACE Hardware Quality" <ace_hardware_quality@more-toolsnow.click>
+ Fri, 13 Oct 2023 12:48:43 -0400 (envelope-from
+ <savings.squad.at.oreilly-intel+2Dgvt+2Ddev=lists.freedesktop.org@drill-specialtops.click>)
+Date: Fri, 13 Oct 2023 12:48:43 -0400
+From: "Savings Squad At OReilly"
+ <savings.squad.at.oreilly@drill-specialtops.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <189397240417.16972112696346@more-toolsnow.click>
-Subject: Don't pass up the opportunity to win a Stanley Tool Set by sharing
- your feedback with us!
+Message-ID: <167441853056.16972157090001@drill-specialtops.click>
+Subject: Share your feedback now,
+ and you might become the proud owner of an amazing Bosch Drill Set.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=37954c3f74b319caa2251adfc7ac8acd3924
+ boundary=59bb30efa67a0e963e1b77a90b5052ae666297
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +57,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---37954c3f74b319caa2251adfc7ac8acd3924
+--59bb30efa67a0e963e1b77a90b5052ae666297
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,65 +66,79 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>redeemed at</title> 
+  <title>optimus-megafive</title> 
  </head> 
- <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(201, 201, 201);" width="100%"> 
+ <body style="margin: 0; padding: 0;"> 
+  <table align="center" cellpadding="0" style="width: 100%;"> 
    <tbody> 
     <tr> 
-     <td> 
-      <div style="background-color: #F9F9F9; display: block;"> 
-       <div style="max-width: 6cm; margin: auto; padding: .5cm 0;">
-        <a href="http://www.more-toolsnow.click/bracketing-saluting/33c5IM2395uV8W612s637fDD1815Q36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIRQRK7nz1uXN06v1wzD@" target="_blank"><img alt="BBSA" src="http://www.more-toolsnow.click/potentiometer-Guatemala/9ea5N239P5oU7na13h6w38g1n1815X36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQIRQRK6LD10Ox6WJllwD" width="100%s" /></a>
-       </div> 
-      </div> 
-      <div style="display: block; background-color: #d8d8d8; width: 100%;"> 
-       <center align="center" style="background-color: #fff; max-width: 520px; margin: auto;"> 
-        <article> 
-         <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 20px; text-align: center; padding: 18pt 0pt; margin: 0;"><font style="color: #E51635;"><b><i><u>Your Final<br /> Communication from Ace Hardware </u></i></b> </font><br /> <br /> <span style="font-size: 16px; display: block; padding: 0 16pt; font-weight: 500; line-height: 1.5em;"><b>Ace Hardware</b> is thrilled to offer an incredible opportunity! You can now acquire the <b>Stanley Tool Set</b>, available for redemption at any of our store branches. Act promptly and grab this chance! You have until <b>October 13th</b> to secure these outstanding tools. </span></p> 
-        </article> 
-        <div> 
-         <center style="max-width: 95%; margin: auto;">
-          <a href="http://www.more-toolsnow.click/bracketing-saluting/33c5IM2395uV8W612s637fDD1815Q36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIRQRK7nz1uXN06v1wzD@" target="_blank"><img alt="MNSA" src="http://www.more-toolsnow.click/mocker-nationals/cba4e2395SB7aP13vF638Y2_1815G36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQIRQRK5I1W0j5MMwD@" width="100%" /></a>
-         </center> 
-        </div> 
-        <div style="max-width: 300px; margin: auto;"> 
-         <table align="center" cellpadding="10px"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="background-color: rgb(36, 36, 36); padding: 15px 30px; border-radius: 10px; font-size: 20px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold;"><a href="http://www.more-toolsnow.click/bracketing-saluting/33c5IM2395uV8W612s637fDD1815Q36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQIRQRK7nz1uXN06v1wzD@" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt; </a></td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> &nbsp; 
-        <p style="font-size: 16px; display: block; padding: 0 16pt; font-weight: 500; line-height: 1.5em; font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: center; margin: 0;">Your anticipated support means a great deal to us. Warm regards, The Ace Hardware Team.</p> 
-       </center> &nbsp; 
-       <div style="padding-top: 320px;;">
-        &nbsp;
-       </div> 
-       <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse; background-color: lavenderblush;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td>&nbsp;</td> 
-         </tr> 
-        </tbody> 
-        <tfoot> 
-         <tr> 
-          <td align="center"> 
-           <div style="max-width: 520px;margin: auto; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 11px; font-weight: bold;">
-            Anyway you can leave 
-            <a href="http://www.more-toolsnow.click/politer-boo/3004j2395Q8Kn612Ql6380X1815P36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQIRQRK5q10gN5iJwDp">here</a>
-            <br /> US 10010 126 E 23rd St New York, NY,
-           </div> </td> 
-         </tr> 
-        </tfoot> 
-       </table> 
-      </div> <br /> &nbsp;</td> 
+     <td align="center"> 
+      <table align="center" cellpadding="0" style="width: 100%;"> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <table align="center" cellpadding="10px" style="width: 100%;"> 
+           <tbody> 
+            <tr> 
+             <td align="center" bgcolor="#CC2028"> 
+              <div style="max-width: 250px; margin: auto;">
+               <a href="http://www.drill-specialtops.click/e034h2395aHx8613C6384hWi1816S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ5RQSm6v1Pow06QTwBDl/interior-backbones"><img alt="thanos" src="http://www.drill-specialtops.click/8455Wo2395B7Ram11e6386m1816W36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ5RQSm7MJzOs105c3MwD/electrician-constrains" width="100%" /> </a>
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="center" cellpadding="0" style="max-width: 530px; margin: auto;"> 
+           <tbody> 
+            <tr> 
+             <td align="center">&nbsp; 
+              <div style="padding-top: 5px; padding-left: 20px; padding-bottom: 5px; padding-right: 20px; border-radius: 5px;"> 
+               <p style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 28px; color: #333; margin: 0">Urgent Reminder<br /> from O'Reilly</p> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+          <table align="center" style="max-width: 530px; margin: auto;"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <article style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height: 1.5em;"> 
+               <p><font>Get Ready for Exciting News: <b>O'Reilly</b> Offers a <b>Bosch Drill Set</b> for In-Store Use. Act Quickly to Secure Your Exceptional Tools by <b>October 13th</b> </font></p> 
+              </article> &nbsp; 
+              <div> 
+               <div> 
+                <blockquote style="max-width: 250px; margin: auto;">
+                 <a href="http://www.drill-specialtops.click/e034h2395aHx8613C6384hWi1816S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ5RQSm6v1Pow06QTwBDl/interior-backbones" target="_blank"><img alt="lovescream" src="http://www.drill-specialtops.click/40d4R2395X7BYa12P63n87p1816w36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ5RQSm6p10IXx5cLMwD/electrician-constrains" style="margin-left: 5%;" width="100%" /></a>
+                </blockquote> 
+               </div> 
+               <center style="max-width: 300px; margin: auto; background-color: #116427; padding: 2.5% 3%; border-radius: 10px; font-family: Arial, Helvetica, sans-serif; font-weight: 900; font-size: 18pt;">
+                <a href="http://www.drill-specialtops.click/e034h2395aHx8613C6384hWi1816S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ5RQSm6v1Pow06QTwBDl/interior-backbones" style="text-decoration: none; color: #fff;">Start Here Now &gt;&gt;</a>
+               </center> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> <br /> <br /> <br /> &nbsp; 
+          <div style="max-width: 530px; margin: auto;"> 
+           <article style="font-family: Arial, Helvetica, sans-serif; font-size: 1.2em; line-height: 1.4em; ;"> 
+            <p style="margin: 0;"><font>We genuinely appreciate your input,<br /> <b>The O'Reilly Auto Parts</b> Survey Team </font></p> 
+           </article> 
+          </div> <p style="padding-bottom: 300px;">&nbsp;</p> 
+          <div> 
+           <table align="center" cellpadding="20px" style="width: 100%;"> 
+            <tbody> 
+             <tr> 
+              <td align="center" bgcolor="132138"> <address style="max-width: 520px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #fff; font-weight: 900;">you can leave with sadness <a href="http://www.drill-specialtops.click/2ff4G2395Ig86w12a6385RX1816M36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ5RQSm6KDC1T05J@wMD/pedal-bumbling" style="color: rgb(182, 182, 243);">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </div> </td> 
+        </tr> 
+       </tbody> 
+      </table> </td> 
     </tr> 
    </tbody> 
   </table>   
- <img src="http://www.more-toolsnow.click/b516HI239w5Ls85q13wI6383uz1815T36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQIRQRK5Y1Bn05rlAwD/difficulties-tablecloths" alt=""/></body>
+ <img src="http://www.drill-specialtops.click/2a56M2AH395bg8I511l6388R1816p36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ5RQSm5Izz105Slw@D/pedal-bumbling" alt=""/></body>
 </html>
 
---37954c3f74b319caa2251adfc7ac8acd3924--
+--59bb30efa67a0e963e1b77a90b5052ae666297--
 
