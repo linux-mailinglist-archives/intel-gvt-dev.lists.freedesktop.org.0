@@ -1,54 +1,67 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6ACC7C8332
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Oct 2023 12:36:26 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16BC47C856F
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 13 Oct 2023 14:14:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7D52B10E5DE;
-	Fri, 13 Oct 2023 10:36:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E41C010E5E8;
+	Fri, 13 Oct 2023 12:14:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 4B34C10E073;
- Fri, 13 Oct 2023 10:36:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1697193382; x=1728729382;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=h5eylseGlyKInganAtlR/cJWIKhdZQLtNfHjqZwm1Xc=;
- b=PqFwb6qDqfFitrXeMk6L9f+JcJyxXqh45Dketho/sKQg/WwPzrz8KbWL
- F0G4VWX13UaA9ajSdPuEZRhIyMfonEgStcQFPCYJoICgMNUOs5q9c4Sl4
- 0DebuRs8ymGA3HShJuFWPbFc3PhWT7AV3ns3mH/WWjjGp75dAXSfQWiIp
- /Fo/unBCsw6t0izgdJqfElYLaA9JLLvgIefbdQzLKHgR9MxrwCHnbcjjE
- 0XkC+7gUkvvVYHnodxEyA86AFRmZFsfsp2CVbe/7eXUKAF/AJJxDQJcuY
- hFtgQihC0Kbb4eTyeClghBao5SESndrm2tQPA9HCYCkik+Rms2/5sHuJa A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="364516399"
-X-IronPort-AV: E=Sophos;i="6.03,221,1694761200"; d="scan'208";a="364516399"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Oct 2023 03:36:21 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="758454698"
-X-IronPort-AV: E=Sophos;i="6.03,221,1694761200"; d="scan'208";a="758454698"
-Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.74])
- by fmsmga007.fm.intel.com with SMTP; 13 Oct 2023 03:36:17 -0700
-Received: by stinkbox (sSMTP sendmail emulation);
- Fri, 13 Oct 2023 13:36:17 +0300
-Date: Fri, 13 Oct 2023 13:36:17 +0300
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Kuan-Wei Chiu <visitorckw@gmail.com>
-Subject: Re: [PATCH] drm/i915/gvt: Optimize mmio_offset_compare() for
- efficiency
-Message-ID: <ZSkdoVcMxKIbXUOW@intel.com>
-References: <20231012230449.2109078-1-visitorckw@gmail.com>
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com
+ [IPv6:2607:f8b0:4864:20::62c])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 20B2310E5E8;
+ Fri, 13 Oct 2023 12:14:03 +0000 (UTC)
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-1c9d132d92cso5612835ad.0; 
+ Fri, 13 Oct 2023 05:14:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1697199242; x=1697804042; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=X4z+hjgZoqLiz+otFUtzfcX1EPVHUCZR+4Ag5x9f1fQ=;
+ b=VwSVLAgETMMmKx534kn8TtMHLpLbyl/hSj0opq91r8fLfBFs5klwuZ55lAQ3xgPcKO
+ rAwn5dHs7+2+kFvHCrnjBtw45v/UqtjPeR9AKHI2eSGlo9hGZBvcxWtmn35T9AuLz5wf
+ 0GJ3ilD9QVhLEMEp6fa729KQ3LDyMnXx0u66Xl8E1Jgm8ETi1ZtTAJQ4lRQv81HFV4M1
+ Ijp1f8POmDNFe7Dhy3rmcOdJ3kgp5FN+xlnYryGTDl28wVc5FmA+tmy1Pf8iXSYQu5OX
+ WZwdyvxcV7FvA9u7dI0vYNJ7dGBSbyQV/HonO/vsRmACbn7ZdeX5m2iem9vNiIgHHu6p
+ csJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697199242; x=1697804042;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=X4z+hjgZoqLiz+otFUtzfcX1EPVHUCZR+4Ag5x9f1fQ=;
+ b=RF6e4NFQoQxgIgCD8f22o38Y1oc3O2Kaxurb07HJbCVsez8/zPD/1ytX328gQmsSTL
+ AN3a5utKp6tXJcaP1zcqnMAITwMFaDXuXOIzOQjjenJU66kaVDpFE59HU8wwG/gd06PE
+ AwC/CaGpb8phIpfjZRewVfalTp/Ap0VBOPWYkAc+BB55+h3ifDr639IkaVdyAOK6uGGP
+ fEIQV4JBMCO/Je8FPprMFloKt2HaG93fmMTozpxbw8QDgkzwdU2EAkEPMmHSLdYcGmj4
+ RF06syLvZBphTxv28MGQ4JuJML4xM96Gl620BGviUXOM2s7X5JEGY3r/yZApSutMF5iX
+ oP2g==
+X-Gm-Message-State: AOJu0YxNKdYfDbiq1eAth+fXKMg7bjRuW3TVx1k2wkSEsdZLHAybqFn2
+ FHDZ9hZuXUamfmjJqDma5DY=
+X-Google-Smtp-Source: AGHT+IEvL0BqKkBivK2O51JqvuzsTo5t+dd4ijMHTK++9Mpa1lZpCfypvnqQ5IeTEfD71vwd34Eezw==
+X-Received: by 2002:a17:902:ce84:b0:1c6:9312:187 with SMTP id
+ f4-20020a170902ce8400b001c693120187mr29212356plg.3.1697199242587; 
+ Fri, 13 Oct 2023 05:14:02 -0700 (PDT)
+Received: from localhost.localdomain ([140.116.154.65])
+ by smtp.gmail.com with ESMTPSA id
+ ja20-20020a170902efd400b001c1f4edfb9csm3747683plb.173.2023.10.13.05.13.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Oct 2023 05:14:01 -0700 (PDT)
+From: Kuan-Wei Chiu <visitorckw@gmail.com>
+To: ville.syrjala@linux.intel.com, zhenyuw@linux.intel.com,
+ zhi.a.wang@intel.com
+Subject: [PATCH v2] drm/i915/gvt: Optimize mmio_offset_compare() for efficiency
+Date: Fri, 13 Oct 2023 20:13:55 +0800
+Message-Id: <20231013121355.2125824-1-visitorckw@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <ZSkdoVcMxKIbXUOW@intel.com>
+References: <ZSkdoVcMxKIbXUOW@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231012230449.2109078-1-visitorckw@gmail.com>
-X-Patchwork-Hint: comment
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,52 +74,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: tvrtko.ursulin@linux.intel.com, intel-gfx@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, zhenyuw@linux.intel.com,
- dri-devel@lists.freedesktop.org, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, zhi.a.wang@intel.com
+Cc: tvrtko.ursulin@linux.intel.com, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, joonas.lahtinen@linux.intel.com,
+ linux-kernel@vger.kernel.org, jani.nikula@linux.intel.com,
+ Kuan-Wei Chiu <visitorckw@gmail.com>, dri-devel@lists.freedesktop.org,
+ daniel@ffwll.ch, rodrigo.vivi@intel.com, airlied@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Oct 13, 2023 at 07:04:49AM +0800, Kuan-Wei Chiu wrote:
-> The original code used conditional branching in the mmio_offset_compare
-> function to compare two values and return -1, 1, or 0 based on the
-> result. However, the list_sort comparison function only needs results
-> <0, >0, or =0. This patch optimizes the code to make the comparison
-> branchless, improving efficiency and reducing code size. This change
-> reduces the number of comparison operations from 1-2 to a single
-> subtraction operation, thereby saving the number of instructions.
-> 
-> Signed-off-by: Kuan-Wei Chiu <visitorckw@gmail.com>
-> ---
->  drivers/gpu/drm/i915/gvt/debugfs.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
-> index baccbf1761b7..998d82a259c8 100644
-> --- a/drivers/gpu/drm/i915/gvt/debugfs.c
-> +++ b/drivers/gpu/drm/i915/gvt/debugfs.c
-> @@ -48,11 +48,7 @@ static int mmio_offset_compare(void *priv,
->  
->  	ma = container_of(a, struct diff_mmio, node);
->  	mb = container_of(b, struct diff_mmio, node);
-> -	if (ma->offset < mb->offset)
-> -		return -1;
-> -	else if (ma->offset > mb->offset)
-> -		return 1;
-> -	return 0;
-> +	return ma->offset - mb->offset;
+The original code used conditional branching in the mmio_offset_compare
+function to compare two values and return -1, 1, or 0 based on the
+result. However, the list_sort comparison function only needs results
+<0, >0, or =0. This patch optimizes the code to make the comparison
+branchless, improving efficiency and reducing code size. This change
+reduces the number of comparison operations from 1-2 to a single
+subtraction operation, thereby saving the number of instructions.
 
-Those are unsigned ints effectively, so this only works due
-to the return value being the same size signed int. Might be
-better to add some explicit casts.
+Signed-off-by: Kuan-Wei Chiu <visitorckw@gmail.com>
+---
+v1 -> v2:
+- Add explicit type cast in case the sizes of u32 and int differ.
 
->  }
->  
->  static inline int mmio_diff_handler(struct intel_gvt *gvt,
-> -- 
-> 2.25.1
+ drivers/gpu/drm/i915/gvt/debugfs.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
+diff --git a/drivers/gpu/drm/i915/gvt/debugfs.c b/drivers/gpu/drm/i915/gvt/debugfs.c
+index baccbf1761b7..d85d8a3b5ae5 100644
+--- a/drivers/gpu/drm/i915/gvt/debugfs.c
++++ b/drivers/gpu/drm/i915/gvt/debugfs.c
+@@ -48,11 +48,7 @@ static int mmio_offset_compare(void *priv,
+ 
+ 	ma = container_of(a, struct diff_mmio, node);
+ 	mb = container_of(b, struct diff_mmio, node);
+-	if (ma->offset < mb->offset)
+-		return -1;
+-	else if (ma->offset > mb->offset)
+-		return 1;
+-	return 0;
++	return (int)ma->offset - (int)mb->offset;
+ }
+ 
+ static inline int mmio_diff_handler(struct intel_gvt *gvt,
 -- 
-Ville Syrjälä
-Intel
+2.25.1
+
