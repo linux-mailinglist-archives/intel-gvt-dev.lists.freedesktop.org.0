@@ -1,46 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A4027C98E9
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Oct 2023 14:21:51 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A3DC7C9914
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Oct 2023 15:10:57 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4CC7110E03F;
-	Sun, 15 Oct 2023 12:21:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0ADA910E0E8;
+	Sun, 15 Oct 2023 13:10:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 15 Oct 2023 12:21:48 UTC
-Received: from mail.dpls-flipskgr.bond (unknown [77.90.135.245])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7CEA510E055
+ Sun, 15 Oct 2023 13:10:54 UTC
+Received: from mail.morecl-tools.bond (unknown [77.90.135.41])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 47CA910E0E8
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Oct 2023 12:21:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=dpls-flipskgr.bond; 
+ Sun, 15 Oct 2023 13:10:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=morecl-tools.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=kroger_client_contentment@dpls-flipskgr.bond; 
- bh=k48O5qthmlj3lLZ7tmzGZEnlq/0=;
- b=SkXSH4C07+cxSJJvO6Xk9c/5el2k/srVZouv0uL7HrYSsniBdS7fn9IVUSON9Y/Z9LhXajQpefLn
- NVA5jTeRpZtVryHnDMgZycVxLA07Ya0zb7OciCr2NY61NoogCKDYuSeiuWjQvajUdtofQhiUCpO0
- wRA/smx+0TQwUDfxx2w=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dpls-flipskgr.bond; 
- b=aBQ34LtbB2eMexM3uzecBVIYYt8U9idWXZKFpGD01zZ6XR3apapXSuqjzSx3O5IBLiKVnoET6L0R
- xvkkuY7+NfuDpbZEVoIo2TxDwMldUJmT1BW/2Y9Oi/1Rp7H2Mj+nRiV6HkPFaUk2DiZn/I0Sg7no
- QpPnt9uYhV0/epow8Tk=;
-Received: by mail.dpls-flipskgr.bond id h5fclo0001gb for
+ i=harbor_freight_opinion_requested@morecl-tools.bond; 
+ bh=yEPEL1sAsdN6krpYalTTiongnIc=;
+ b=IaIJ8OKOZZ2ztP9BR3MRxV8yUE5PLvrv/iBuDwJJWa9qcBP51GbOv2XH1xqIhZ9D9fpmSJjuXzcv
+ nVpHZQuq40xKUUCGT0vTZyKrl3MmCgAA7Mcv2okMEVyvKVAJ+l8OBZvRXj/s8+4k8yiELOG8uoEi
+ 8xdHEnZbcLtUIE3EpE0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=morecl-tools.bond; 
+ b=2ewDfLdtQUIkTrU3klT4XvULWjBJJBYhWJ9jt/3ssOyjaR6jZDc3CyitxyFf08PE+XPpdrRqSQoj
+ 7E1N1W+SCKWC5mskKJFwgMcVOxvsfhbiyEx2jTXMAcCii1zIQCU2y8N/D2r/it13k9ui1N2Eokub
+ N+bswbjgHxvR90bOUMc=;
+Received: by mail.morecl-tools.bond id h5fids0001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Oct 2023 08:13:49 -0400 (envelope-from
- <kroger_client_contentment-intel+2Dgvt+2Ddev=lists.freedesktop.org@dpls-flipskgr.bond>)
-Date: Sun, 15 Oct 2023 08:13:49 -0400
-From: "Kroger Client Contentment"
- <kroger_client_contentment@dpls-flipskgr.bond>
+ Sun, 15 Oct 2023 09:02:00 -0400 (envelope-from
+ <harbor_freight_opinion_requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@morecl-tools.bond>)
+Date: Sun, 15 Oct 2023 09:02:00 -0400
+From: "Harbor Freight Opinion Requested"
+ <harbor_freight_opinion_requested@morecl-tools.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <15149516157.169737202285542@dpls-flipskgr.bond>
-Subject: Celebrate with us today and relish a complimentary gift as a symbol
- of our thankfulness.
+Message-ID: <1020105081339.16973749145013290@morecl-tools.bond>
+Subject: Unlock Your Personalized Savings: Just for Our Top Customers!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=098d3e15e8eafba7760ab46fb5c245aa41045
+ boundary=43b9c57e77446cfd4feda201fa3973181102101100810159799
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---098d3e15e8eafba7760ab46fb5c245aa41045
+--43b9c57e77446cfd4feda201fa3973181102101100810159799
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,141 +62,135 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
-	</style> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Kriyncogelocr</title> 
+  <link href="http://www.morecl-tools.bond/9355c239_5lG8i613An6V3c7O1822l36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQFRQeo5lA10D6QpwO2D/peaked-humidity" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.morecl-tools.bond/messes-idealization/9ea5O23Z95Lq8Q613S63ci8jj1822j36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQFRQeo5Lt10N6o@NOwD" rel="preconnect" /> 
+  <link href="http://www.morecl-tools.bond/9355c239_5lG8i613An6V3c7O1822l36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQFRQeo5lA10D6QpwO2D/peaked-humidity/css2?family=Lato:wght@100;300;400;700;900&amp;display=swap" rel="stylesheet" /> 
+  <title>You now have</title> 
  </head> 
  <body> 
-  <section style="width: 100%; background-color: rgb(228, 228, 228);"> 
-   <center align="center"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <center align="center">
-         <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small> 
-         <dir class="shios"> 
-         </dir> 
-         <div style="background-color: aliceblue;"> 
-          <aside style="max-width: 15.5rem; margin: auto; padding: 1.5rem 0;">
-           <a href="http://www.dpls-flipskgr.bond/gulches-historian/35a5D23T95e86xj11X63c1l1821X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXRQen5v1y0Q6z3wD02" target="_blank"><img alt="UYESA" src="http://www.dpls-flipskgr.bond/gangs-contemplates/2884m2395N7lBa13br63Kc3m1821S36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQXRQen5r1_C05RBwDj" width="100%" /></a>
-          </aside> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="plproys" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+       <thead> 
+        <tr> 
+         <th align="center" colspan="3">&nbsp;</th> 
+        </tr> 
+       </thead> 
+       <tbody> 
+        <tr> 
+         <td align="center">&nbsp;</td> 
+         <td align="center" width="100%"> 
           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+           <thead> 
+            <tr> 
+             <th align="center" colspan="3">&nbsp;</th> 
+            </tr> 
+           </thead> 
            <tbody> 
             <tr> 
+             <td align="center">&nbsp;</td> 
              <td align="center"> 
-              <div style="
-max-width: 33.2rem;
-margin: auto;
-background-color: #fff;
-    border: solid 2px #E4EDF8;
-    border-top: solid 20px #c3d2ee;
-    border-bottom: solid 20px #c3d2ee;"> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> 
-                   <div> 
-                    <p style="
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-    font-weight: 500;
-    padding: 15px 30px;
-    margin: 0;">We appreciate your participation in our survey. Your contribution is greatly valued at Kriyncogelocr, and we genuinely thank you for your feedback.</p> 
-                   </div> 
-                   <div> 
-                    <table style="max-width: 230px; margin: auto;"> 
-                     <tbody> 
-                      <tr> 
-                       <td width="90px"><a href="http://www.dpls-flipskgr.bond/gulches-historian/35a5D23T95e86xj11X63c1l1821X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXRQen5v1y0Q6z3wD02" target="_blank"><img alt="KJSEA" src="http://www.dpls-flipskgr.bond/4a34Y2395o7yPa13QrQ63c4t1821N36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQXRQen6guG10p6gWwBpD/affordable-strangeness" width="100%" /> </a></td> 
-                       <td width="110px"><a href="http://www.dpls-flipskgr.bond/gulches-historian/35a5D23T95e86xj11X63c1l1821X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXRQen5v1y0Q6z3wD02" target="_blank"><img alt="UYES" src="http://www.dpls-flipskgr.bond/stiffen-undermines/c065r239M5Rw7Ta12v63cD5L1821H36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQXRQen7VxtT10U5oPJwD" width="100%" /> </a></td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> &nbsp; <p style="
-font-family: 'Nunito', sans-serif;
-font-size: 1.2rem;
-line-height: 1.7rem;
-font-weight: 500;
-padding: 15px 30px;
-margin: 0;
-background-color: #2A4F92;
-color: #fff;">Your continuous support is of great importance to us, and we eagerly anticipate your feedback.</p> <h2 style="
-font-family: 'Nunito', sans-serif;
-font-size: 1.2rem;
-line-height: 1.7rem;
-font-weight: 500;
-padding: 15px 30px;
-margin: 0;">Accessing the survey is simple?just click the link below. It's a brief task that will take only a few minutes of your valuable time, and please be assured, your responses will be kept confidential.</h2> &nbsp; 
-                   <center>
-                    <a href="http://www.dpls-flipskgr.bond/gulches-historian/35a5D23T95e86xj11X63c1l1821X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXRQen5v1y0Q6z3wD02" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; background-color: #2A4F92; padding: 3.5% 5%; border-radius: 11px; font-size: 18px; font-weight: bold; font-family: 'Nunito', sans-serif;">Start Here Now &gt; &gt; </span></a>
-                   </center> &nbsp; <h4 style="
-font-family: 'Nunito', sans-serif;
-font-size: 1.2rem;
-line-height: 1.7rem;
-font-weight: 500;
-padding: 15px 30px;
-margin: 0;">Thank you once again for your steadfast support. We eagerly anticipate receiving your feedback soon! Your consistent support is highly valued, and we're excited to hear from you!</h4> &nbsp; 
-                   <hr />&nbsp; <p style="
-font-family: 'Nunito', sans-serif;
-font-size: 1rem;
-line-height: 1.7rem;
-font-weight: 500;
-padding: 15px 30px;
-margin: 0;">Warm regards,<br /> <b>The kroger Survey Team</b></p> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> 
-              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <thead> 
+                <tr> 
+                 <th align="center" colspan="3">&nbsp;</th> 
+                </tr> 
+               </thead> 
                <tbody> 
                 <tr> 
-                 <td>&nbsp;</td> 
+                 <td align="center">&nbsp;</td> 
+                 <td align="center"> 
+                  <div style="background-color: rgb(221, 221, 221); width: 100%; padding: 30px 0;"> 
+                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: #fff;" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center"> 
+                       <blockquote style="max-width: 14.3em; margin: auto;">
+                        <a href="http://www.morecl-tools.bond/9cb6JC23z95K8S6L12B63Bc9k1822y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRQeo7BQu10lV5mqwD2/Georgia-Whitfield" target="_blank"><img alt="YTAE" src="http://www.morecl-tools.bond/9174K2395w7aLS11v63cbk1822u36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQFRQeo7U10PAZy5SlLwD/blots-reestablishes" width="100%" /></a>
+                       </blockquote> </td> 
+                     </tr> 
+                     <tr> 
+                      <td> 
+                       <div style="background-color: #DDDDDD;"> 
+                        <div style="background-color: #ffffff; max-width: 33.5rem; margin: auto; text-align: center;"> 
+                         <center style="background-color: #ff0000;
+        padding: 5mm 0;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size: 8mm;
+        color: #fff;">
+                          Significant
+                          <br /> Updates from Harbor Freight
+                         </center> 
+                         <center style="padding: 20px 30px; text-align: center; font-size: 16px; font-family: 'Lato', sans-serif; line-height: 26px; font-weight: 600;">
+                          We are excited to share some exciting news from 
+                          <b style="color: rgb(194, 0, 0);">Harbor Freight</b>. You now have the chance to acquire a 
+                          <b style="color: rgb(194, 0, 0);">Pittsburgh 225 Piece Tool Set</b>, available for redemption at any of our store branches.                           <br /> 
+                          <br /> Act promptly and grab this chance! You have until 
+                          <strong style="color: rgb(194, 0, 0);">October 15th</strong> to secure these exciting tools.                          </center> 
+                         <div style=" background-color: #c9c9c9; padding: 1.5% 2.0%;">
+                          <a href="http://www.morecl-tools.bond/9cb6JC23z95K8S6L12B63Bc9k1822y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRQeo7BQu10lV5mqwD2/Georgia-Whitfield" target="_blank"><img alt="BLAS" src="http://www.morecl-tools.bond/40d5nY2395Nu7Pa11p63ccF1822K36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRQeo6A1wYJ06QLwDN@/perpetuation-subsidiaries" style="margin: auto;;" width="100%" /></a>
+                         </div> 
+                         <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                          <tbody> 
+                           <tr> 
+                            <td align="center"> 
+                             <center style="display: inline-block; background-color: #303030; font-weight: 900; font-size: 20px; font-family: 'Lato', sans-serif; padding-top: 15px; padding-right: 33px; padding-bottom: 15px; padding-left: 15px;">
+                              <a href="http://www.morecl-tools.bond/9cb6JC23z95K8S6L12B63Bc9k1822y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRQeo7BQu10lV5mqwD2/Georgia-Whitfield" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt;</a>
+                             </center> </td> 
+                           </tr> 
+                          </tbody> 
+                         </table> 
+                        </div> 
+                        <h4 style="padding-top: 10rem;">&nbsp;</h4> 
+                        <div style="background-color: darkgrey; padding: 2em 0;"> 
+                         <center style="max-width: 520px; margin: auto; font-size: 12px; text-align: center; font-weight: 700; font-family: 'Lato', sans-serif; ;">
+                          more than welcome to leave in 
+                          <a href="http://www.morecl-tools.bond/menarche-unforgiving/8466tA239r5V8L6P13p63icaLB1822i36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQFRQeo6pqv10C5zJ@wD">here</a> we' ll miss
+                          <br /> you US 10010 126 E 23rd St New York, NY,
+                         </center> 
+                        </div> 
+                        <h4 style="padding-top: 10rem;">&nbsp;</h4> 
+                       </div> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                  </div> </td> 
+                 <td align="center">&nbsp;</td> 
                 </tr> 
                </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
+               <tfoot> 
                 <tr> 
-                 <td>&nbsp;</td> 
+                 <td align="center" colspan="3">&nbsp;</td> 
                 </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse; background-color: lightgrey;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td> <p style="max-width: 480px; margin: auto; text-align: center; font-family: 700; font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 700;">if you need to go visit <a href="http://www.dpls-flipskgr.bond/6fb6I239vi5DG86F12j63cr2A1821u36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQXRQen7MI1oP0T5gqwOD/austerity-littering">here</a><br /> 10010 126 E 23rd St New York, NY, US</p> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp;</td> 
-                </tr> 
-               </tbody> 
+               </tfoot> 
               </table> </td> 
+             <td align="center">&nbsp;</td> 
             </tr> 
            </tbody> 
-          </table> 
-         </div> 
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </center> 
-  </section>   
- <img src="http://www.dpls-flipskgr.bond/2c36wR23M95z8Tz512eq63c6y1821l36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQXRQen5hw10Z6BNwDUl/gulches-historian" alt=""/></body>
+           <tfoot> 
+            <tr> 
+             <td align="center" colspan="3">&nbsp;</td> 
+            </tr> 
+           </tfoot> 
+          </table> </td> 
+         <td align="center">&nbsp;</td> 
+        </tr> 
+       </tbody> 
+       <tfoot> 
+        <tr> 
+         <td align="center" colspan="3">&nbsp;</td> 
+        </tr> 
+       </tfoot> 
+      </table> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.morecl-tools.bond/cd75k239s5vG85L12B6v3cdD1822T36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQFRQeo7vi1_s0X5CPwDN/brotherhood-thickness" alt=""/></body>
 </html>
 
---098d3e15e8eafba7760ab46fb5c245aa41045--
+--43b9c57e77446cfd4feda201fa3973181102101100810159799--
 
