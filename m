@@ -1,64 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88FA67C971F
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Oct 2023 00:54:39 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A4027C98E9
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Oct 2023 14:21:51 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0309410E00F;
-	Sat, 14 Oct 2023 22:54:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4CC7110E03F;
+	Sun, 15 Oct 2023 12:21:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-vk1-xa2d.google.com (mail-vk1-xa2d.google.com
- [IPv6:2607:f8b0:4864:20::a2d])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 200B810E00F;
- Sat, 14 Oct 2023 22:54:36 +0000 (UTC)
-Received: by mail-vk1-xa2d.google.com with SMTP id
- 71dfb90a1353d-49d55b90a5aso2214865e0c.0; 
- Sat, 14 Oct 2023 15:54:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1697324075; x=1697928875; darn=lists.freedesktop.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=E3dgwAPbWgceK8XnpO8ceX742rck1tlUzuW6UkEbMaQ=;
- b=ePrDhLbtJ4Exoer2Js7/+nfAlFKJ5MDzZ/EQ5O/p7q078RZeftkitF8aF37pBXYGDf
- NfVnvtfj8Wc2UhIAUgtK2/0rp5I0hcC0BlONIFHL4qTNedSuQUpgn/bDL5ku8IFiWfJn
- kAMGZ4lA6HwjcrDOYsdqC3ysXrdJFB2HFRiwJqpU9ecNEJib3UygXPfwLcYsjBwT//EV
- SzUVOO8J/QN/5a8qXj2fNrjs/3/jezC63EYmPD8piYQa0x9XBh6/aAegr/SibwmMFHGN
- GtcvS1B7jdydrgD2YB6UibUhEvnaFWXU7Uu2koItKYgIGUzKFOw+V8mp6711u9wy9245
- tx3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697324075; x=1697928875;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=E3dgwAPbWgceK8XnpO8ceX742rck1tlUzuW6UkEbMaQ=;
- b=m1JD1ak5G5nZq2Z5MUeoW+pKB7HEtIdAiJlCMxAkzg180FqxKB+5iqBtIKC3+6WaZP
- rt5NAa2uzRzzEIXH0L6poMWjybQNOB+Tk6LfURBRa9KTvBv6uqvq9ciRWMB2QHpmT+Kt
- w8qJPb4RFFNU3PvDakNoqubt/HeqVjAyE7YT481HwEjdXxLUn1MjkJdpB5XRWx3BemLN
- HvxbfWniGkFsfWFANdozNVlFm20iXpDv7uiF/hFsZssOLzuuz4chemW9EgCAIBsDLSeM
- PULzHrnDqeCl9K3tno2fWe5SNFUwVVW3vvzDQfmRmAQ1hXUTxzNHNFadAxag2k8aPx6d
- mbpg==
-X-Gm-Message-State: AOJu0YxNkJb1E0rvbn+/2HF5Qp64vvs4d+FF6Zb+JDpMckEaQhq5RkRg
- teHmdbJNRfCIC7yIHDoPBW0fLEYpRbktjtVU/w8SgrVoSsfwDQ==
-X-Google-Smtp-Source: AGHT+IFfT3nqs45wSlTdh49Mfqnd7iS4fm3NazMXcrcNd0WEk8mfYCYz456yTKkBrC2Rm6aiZ0xPlI+0DL8Ucy3wF44=
-X-Received: by 2002:a05:6122:1681:b0:49a:b587:ab79 with SMTP id
- 1-20020a056122168100b0049ab587ab79mr2277741vkl.8.1697324075009; Sat, 14 Oct
- 2023 15:54:35 -0700 (PDT)
+X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
+ Sun, 15 Oct 2023 12:21:48 UTC
+Received: from mail.dpls-flipskgr.bond (unknown [77.90.135.245])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7CEA510E055
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 15 Oct 2023 12:21:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=dpls-flipskgr.bond; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=kroger_client_contentment@dpls-flipskgr.bond; 
+ bh=k48O5qthmlj3lLZ7tmzGZEnlq/0=;
+ b=SkXSH4C07+cxSJJvO6Xk9c/5el2k/srVZouv0uL7HrYSsniBdS7fn9IVUSON9Y/Z9LhXajQpefLn
+ NVA5jTeRpZtVryHnDMgZycVxLA07Ya0zb7OciCr2NY61NoogCKDYuSeiuWjQvajUdtofQhiUCpO0
+ wRA/smx+0TQwUDfxx2w=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dpls-flipskgr.bond; 
+ b=aBQ34LtbB2eMexM3uzecBVIYYt8U9idWXZKFpGD01zZ6XR3apapXSuqjzSx3O5IBLiKVnoET6L0R
+ xvkkuY7+NfuDpbZEVoIo2TxDwMldUJmT1BW/2Y9Oi/1Rp7H2Mj+nRiV6HkPFaUk2DiZn/I0Sg7no
+ QpPnt9uYhV0/epow8Tk=;
+Received: by mail.dpls-flipskgr.bond id h5fclo0001gb for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 15 Oct 2023 08:13:49 -0400 (envelope-from
+ <kroger_client_contentment-intel+2Dgvt+2Ddev=lists.freedesktop.org@dpls-flipskgr.bond>)
+Date: Sun, 15 Oct 2023 08:13:49 -0400
+From: "Kroger Client Contentment"
+ <kroger_client_contentment@dpls-flipskgr.bond>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <15149516157.169737202285542@dpls-flipskgr.bond>
+Subject: Celebrate with us today and relish a complimentary gift as a symbol
+ of our thankfulness.
 MIME-Version: 1.0
-References: <20231013224818.3456409-1-jim.cromie@gmail.com>
-In-Reply-To: <20231013224818.3456409-1-jim.cromie@gmail.com>
-From: jim.cromie@gmail.com
-Date: Sat, 14 Oct 2023 16:54:08 -0600
-Message-ID: <CAJfuBxxc1HxYNbp1vdkh8yTOTHV-5ohskCA-twx5Uf2SmWTffg@mail.gmail.com>
-Subject: Re: [PATCH v7b 00/25] fix DRM_USE_DYNAMIC_DEBUG=y regression
-To: linux-kernel@vger.kernel.org, jbaron@akamai.com, 
- gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org, 
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org, 
- intel-gfx@lists.freedesktop.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative; 
+ boundary=098d3e15e8eafba7760ab46fb5c245aa41045
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,186 +53,152 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: lb@semihalf.com, groeck@google.com, linux-doc@vger.kernel.org,
- jani.nikula@intel.com, daniel.vetter@ffwll.ch, linux@rasmusvillemoes.dk,
- robdclark@gmail.com, mcgrof@kernel.org, seanpaul@chromium.org, joe@perches.com,
- bleung@google.com, yanivt@google.com, ville.syrjala@linux.intel.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Oct 13, 2023 at 4:48=E2=80=AFPM Jim Cromie <jim.cromie@gmail.com> w=
-rote:
->
-> hi Jason, DRM-folk
->
-> (now with checkpatch fixes)
+--098d3e15e8eafba7760ab46fb5c245aa41045
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-I missed fixing boxed-vector, am just dropping it.
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+	</style> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>Kriyncogelocr</title> 
+ </head> 
+ <body> 
+  <section style="width: 100%; background-color: rgb(228, 228, 228);"> 
+   <center align="center"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center"> 
+        <center align="center">
+         <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small> 
+         <dir class="shios"> 
+         </dir> 
+         <div style="background-color: aliceblue;"> 
+          <aside style="max-width: 15.5rem; margin: auto; padding: 1.5rem 0;">
+           <a href="http://www.dpls-flipskgr.bond/gulches-historian/35a5D23T95e86xj11X63c1l1821X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXRQen5v1y0Q6z3wD02" target="_blank"><img alt="UYESA" src="http://www.dpls-flipskgr.bond/gangs-contemplates/2884m2395N7lBa13br63Kc3m1821S36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQXRQen5r1_C05RBwDj" width="100%" /></a>
+          </aside> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <div style="
+max-width: 33.2rem;
+margin: auto;
+background-color: #fff;
+    border: solid 2px #E4EDF8;
+    border-top: solid 20px #c3d2ee;
+    border-bottom: solid 20px #c3d2ee;"> 
+               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center"> 
+                   <div> 
+                    <p style="
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    font-weight: 500;
+    padding: 15px 30px;
+    margin: 0;">We appreciate your participation in our survey. Your contribution is greatly valued at Kriyncogelocr, and we genuinely thank you for your feedback.</p> 
+                   </div> 
+                   <div> 
+                    <table style="max-width: 230px; margin: auto;"> 
+                     <tbody> 
+                      <tr> 
+                       <td width="90px"><a href="http://www.dpls-flipskgr.bond/gulches-historian/35a5D23T95e86xj11X63c1l1821X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXRQen5v1y0Q6z3wD02" target="_blank"><img alt="KJSEA" src="http://www.dpls-flipskgr.bond/4a34Y2395o7yPa13QrQ63c4t1821N36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQXRQen6guG10p6gWwBpD/affordable-strangeness" width="100%" /> </a></td> 
+                       <td width="110px"><a href="http://www.dpls-flipskgr.bond/gulches-historian/35a5D23T95e86xj11X63c1l1821X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXRQen5v1y0Q6z3wD02" target="_blank"><img alt="UYES" src="http://www.dpls-flipskgr.bond/stiffen-undermines/c065r239M5Rw7Ta12v63cD5L1821H36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQXRQen7VxtT10U5oPJwD" width="100%" /> </a></td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </div> &nbsp; <p style="
+font-family: 'Nunito', sans-serif;
+font-size: 1.2rem;
+line-height: 1.7rem;
+font-weight: 500;
+padding: 15px 30px;
+margin: 0;
+background-color: #2A4F92;
+color: #fff;">Your continuous support is of great importance to us, and we eagerly anticipate your feedback.</p> <h2 style="
+font-family: 'Nunito', sans-serif;
+font-size: 1.2rem;
+line-height: 1.7rem;
+font-weight: 500;
+padding: 15px 30px;
+margin: 0;">Accessing the survey is simple?just click the link below. It's a brief task that will take only a few minutes of your valuable time, and please be assured, your responses will be kept confidential.</h2> &nbsp; 
+                   <center>
+                    <a href="http://www.dpls-flipskgr.bond/gulches-historian/35a5D23T95e86xj11X63c1l1821X36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQXRQen5v1y0Q6z3wD02" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; background-color: #2A4F92; padding: 3.5% 5%; border-radius: 11px; font-size: 18px; font-weight: bold; font-family: 'Nunito', sans-serif;">Start Here Now &gt; &gt; </span></a>
+                   </center> &nbsp; <h4 style="
+font-family: 'Nunito', sans-serif;
+font-size: 1.2rem;
+line-height: 1.7rem;
+font-weight: 500;
+padding: 15px 30px;
+margin: 0;">Thank you once again for your steadfast support. We eagerly anticipate receiving your feedback soon! Your consistent support is highly valued, and we're excited to hear from you!</h4> &nbsp; 
+                   <hr />&nbsp; <p style="
+font-family: 'Nunito', sans-serif;
+font-size: 1rem;
+line-height: 1.7rem;
+font-weight: 500;
+padding: 15px 30px;
+margin: 0;">Warm regards,<br /> <b>The kroger Survey Team</b></p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div> 
+              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse; background-color: lightgrey;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td> <p style="max-width: 480px; margin: auto; text-align: center; font-family: 700; font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 700;">if you need to go visit <a href="http://www.dpls-flipskgr.bond/6fb6I239vi5DG86F12j63cr2A1821u36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQXRQen7MI1oP0T5gqwOD/austerity-littering">here</a><br /> 10010 126 E 23rd St New York, NY, US</p> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <table align="center" border="0" cellpadding="22" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td>&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> 
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </center> 
+  </section>   
+ <img src="http://www.dpls-flipskgr.bond/2c36wR23M95z8Tz512eq63c6y1821l36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQXRQen5hw10Z6BNwDUl/gulches-historian" alt=""/></body>
+</html>
 
->
-> This patchest fixes the chicken-egg initialization problem in the 1st
-> version of ddebug-class-maps, that DRM-CI uncovered.
->
-> The root-problem was DECLARE_DYNDBG_CLASSMAP, which broke the K&R rule:
-> "define once, refer many".  In patch 14 it is replaced by:
->
->  DYNDBG_CLASSMAP_DEFINE - define and export a struct ddebug_class_map
->  DYNDBG_CLASSMAP_USE - ref the exported struct
->
-> test-dynamic-debug is also extended with a -submod.ko, in order to
-> recapitulate the drm & drivers initialization scenario.
->
-> They're on v6.6-rc5 now, and apply cleanly to drm-tip/drm-tip.
->
-> Ive been running recent revs on rc3+, on my desktop and laptop.
->
-> The final blocker was a missing __align(8) on the ddebug_class_user
-> record inserted by DYNDBG_CLASSMAP_USE.  This caused DRM=3Dy (builtin
-> only) to have a corrupt record for drm_kms_helper (builtin dependent).
-> Curiously, a clang build did not exhibit this problem.
->
+--098d3e15e8eafba7760ab46fb5c245aa41045--
 
->
-> Widespread testing is appreciated.
-> I have scripts if anyone wants them.
->
-> I'll forward lkp-robot reports here when I get them.
-> Patches also at https://github.com/jimc/linux (dd-fix-7b)
->
-
-Date: Sat, 14 Oct 2023 18:22:28 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jim Cromie <jim.cromie@gmail.com>
-Subject: [jimc:dd-fix-7a] BUILD SUCCESS 8e96f63f570a462b859876601a5f795a159=
-99f6b
-Message-ID: <202310141826.AN7MAD40-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-
-tree/branch: https://github.com/jimc/linux.git dd-fix-7a
-branch HEAD: 8e96f63f570a462b859876601a5f795a15999f6b  drm: restore
-CONFIG_DRM_USE_DYNAMIC_DEBUG un-BROKEN
-
-elapsed time: 3187m
-
-configs tested: 103
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig   gcc
-alpha                            allyesconfig   gcc
-alpha                               defconfig   gcc
-arc                              allmodconfig   gcc
-arc                               allnoconfig   gcc
-arc                              allyesconfig   gcc
-arc                                 defconfig   gcc
-arc                   randconfig-001-20231012   gcc
-arm                              allmodconfig   gcc
-arm                               allnoconfig   gcc
-arm                              allyesconfig   gcc
-arm                                 defconfig   gcc
-arm                   randconfig-001-20231013   gcc
-arm64                            allmodconfig   gcc
-arm64                             allnoconfig   gcc
-arm64                            allyesconfig   gcc
-arm64                               defconfig   gcc
-csky                             allmodconfig   gcc
-csky                              allnoconfig   gcc
-csky                             allyesconfig   gcc
-csky                                defconfig   gcc
-i386                             allmodconfig   gcc
-i386                              allnoconfig   gcc
-i386                             allyesconfig   gcc
-i386                              debian-10.3   gcc
-i386                                defconfig   gcc
-i386                  randconfig-001-20231013   gcc
-i386                  randconfig-002-20231013   gcc
-i386                  randconfig-003-20231013   gcc
-i386                  randconfig-004-20231013   gcc
-i386                  randconfig-005-20231013   gcc
-i386                  randconfig-006-20231013   gcc
-loongarch                        allmodconfig   gcc
-loongarch                         allnoconfig   gcc
-loongarch                        allyesconfig   gcc
-loongarch                           defconfig   gcc
-loongarch             randconfig-001-20231012   gcc
-m68k                             allmodconfig   gcc
-m68k                              allnoconfig   gcc
-m68k                             allyesconfig   gcc
-m68k                                defconfig   gcc
-microblaze                       allmodconfig   gcc
-microblaze                        allnoconfig   gcc
-microblaze                       allyesconfig   gcc
-microblaze                          defconfig   gcc
-mips                             allmodconfig   gcc
-mips                              allnoconfig   gcc
-mips                             allyesconfig   gcc
-nios2                            allmodconfig   gcc
-nios2                             allnoconfig   gcc
-nios2                            allyesconfig   gcc
-nios2                               defconfig   gcc
-openrisc                         allmodconfig   gcc
-openrisc                          allnoconfig   gcc
-openrisc                         allyesconfig   gcc
-openrisc                            defconfig   gcc
-parisc                           allmodconfig   gcc
-parisc                            allnoconfig   gcc
-parisc                           allyesconfig   gcc
-parisc                              defconfig   gcc
-parisc64                            defconfig   gcc
-powerpc                           allnoconfig   gcc
-powerpc                          allyesconfig   gcc
-riscv                            allmodconfig   gcc
-riscv                             allnoconfig   gcc
-riscv                            allyesconfig   gcc
-riscv                               defconfig   gcc
-riscv                 randconfig-001-20231012   gcc
-riscv                          rv32_defconfig   gcc
-s390                             allmodconfig   gcc
-s390                              allnoconfig   gcc
-s390                             allyesconfig   gcc
-s390                                defconfig   gcc
-s390                  randconfig-001-20231012   gcc
-sh                               allmodconfig   gcc
-sh                                allnoconfig   gcc
-sh                               allyesconfig   gcc
-sh                                  defconfig   gcc
-sparc                            allmodconfig   gcc
-sparc                             allnoconfig   gcc
-sparc                            allyesconfig   gcc
-sparc                               defconfig   gcc
-sparc                 randconfig-001-20231013   gcc
-sparc64                          allmodconfig   gcc
-sparc64                          allyesconfig   gcc
-sparc64                             defconfig   gcc
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc
-um                             i386_defconfig   gcc
-um                           x86_64_defconfig   gcc
-x86_64                            allnoconfig   gcc
-x86_64                           allyesconfig   gcc
-x86_64                              defconfig   gcc
-x86_64                randconfig-001-20231013   gcc
-x86_64                randconfig-002-20231013   gcc
-x86_64                randconfig-003-20231013   gcc
-x86_64                randconfig-004-20231013   gcc
-x86_64                randconfig-005-20231013   gcc
-x86_64                randconfig-006-20231013   gcc
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc
-
---=20
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-
-> Jim Cromie (25):
-
->   dyndbg: add for_each_boxed_vector
-
-Im dropping this one, more trouble than its worth.
-hopefully one falls out of flex-array work.
