@@ -1,44 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A3DC7C9914
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Oct 2023 15:10:57 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31B617C995D
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Oct 2023 16:16:36 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0ADA910E0E8;
-	Sun, 15 Oct 2023 13:10:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C512B10E0F9;
+	Sun, 15 Oct 2023 14:16:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 15 Oct 2023 13:10:54 UTC
-Received: from mail.morecl-tools.bond (unknown [77.90.135.41])
- by gabe.freedesktop.org (Postfix) with ESMTP id 47CA910E0E8
+ Sun, 15 Oct 2023 14:16:32 UTC
+Received: from mail.dps-airlinstags.bond (unknown [77.90.135.43])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 50C7510E01F
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Oct 2023 13:10:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=morecl-tools.bond;
+ Sun, 15 Oct 2023 14:16:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=dps-airlinstags.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor_freight_opinion_requested@morecl-tools.bond; 
- bh=yEPEL1sAsdN6krpYalTTiongnIc=;
- b=IaIJ8OKOZZ2ztP9BR3MRxV8yUE5PLvrv/iBuDwJJWa9qcBP51GbOv2XH1xqIhZ9D9fpmSJjuXzcv
- nVpHZQuq40xKUUCGT0vTZyKrl3MmCgAA7Mcv2okMEVyvKVAJ+l8OBZvRXj/s8+4k8yiELOG8uoEi
- 8xdHEnZbcLtUIE3EpE0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=morecl-tools.bond; 
- b=2ewDfLdtQUIkTrU3klT4XvULWjBJJBYhWJ9jt/3ssOyjaR6jZDc3CyitxyFf08PE+XPpdrRqSQoj
- 7E1N1W+SCKWC5mskKJFwgMcVOxvsfhbiyEx2jTXMAcCii1zIQCU2y8N/D2r/it13k9ui1N2Eokub
- N+bswbjgHxvR90bOUMc=;
-Received: by mail.morecl-tools.bond id h5fids0001g9 for
+ i=uncover_delta_flight_experiences@dps-airlinstags.bond; 
+ bh=F3QXXeXO6bWPLL2Qoiio1X8IO/M=;
+ b=cnb326R4gYl8KWNCgzXG90Q2Y1bJasOs7eYBFyIxp9nnFCzKkgR7RfbKdTHVY9eCL01JhUtD6gtH
+ uUlft8zvK3TkuhGktgEieB5bAemeeFqywy04D9ORtwx7jWjHOoeQo8Wnhpw8MQ3c37Xj8QE9Qpaf
+ dohNuPiQKp3qxIz1SD8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dps-airlinstags.bond;
+ b=i9+/VoLWALfTZoyEEw0hGn9v3R4TW85bCb3r8yE9eT4chVpL0fw6dBKwth1c/dPUC8xGI0zk04DB
+ Pmk7FfYitnH1gSJUS8sBQWr/6NhyP+6zzWGfrhgSHPzrbKCENMjZVUrDB780UfwQ9StHknJc77J2
+ BY2BJjXCy1KHRnQ50L4=;
+Received: by mail.dps-airlinstags.bond id h5fq400001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Oct 2023 09:02:00 -0400 (envelope-from
- <harbor_freight_opinion_requested-intel+2Dgvt+2Ddev=lists.freedesktop.org@morecl-tools.bond>)
-Date: Sun, 15 Oct 2023 09:02:00 -0400
-From: "Harbor Freight Opinion Requested"
- <harbor_freight_opinion_requested@morecl-tools.bond>
+ Sun, 15 Oct 2023 10:07:34 -0400 (envelope-from
+ <uncover_delta_flight_experiences-intel+2Dgvt+2Ddev=lists.freedesktop.org@dps-airlinstags.bond>)
+Date: Sun, 15 Oct 2023 10:07:34 -0400
+From: "Uncover Delta Flight Experiences"
+ <uncover_delta_flight_experiences@dps-airlinstags.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1020105081339.16973749145013290@morecl-tools.bond>
-Subject: Unlock Your Personalized Savings: Just for Our Top Customers!
+Message-ID: <70335252531.16973788351428456@dps-airlinstags.bond>
+Subject: Celebrate the season by enjoying a cost-free flight to your preferred
+ destination!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=43b9c57e77446cfd4feda201fa3973181102101100810159799
+ boundary=d16ac1a8308fdaf6992c083fb17950bc1993229999
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---43b9c57e77446cfd4feda201fa3973181102101100810159799
+--d16ac1a8308fdaf6992c083fb17950bc1993229999
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,134 +65,42 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.morecl-tools.bond/9355c239_5lG8i613An6V3c7O1822l36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQFRQeo5lA10D6QpwO2D/peaked-humidity" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.morecl-tools.bond/messes-idealization/9ea5O23Z95Lq8Q613S63ci8jj1822j36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQFRQeo5Lt10N6o@NOwD" rel="preconnect" /> 
-  <link href="http://www.morecl-tools.bond/9355c239_5lG8i613An6V3c7O1822l36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQFRQeo5lA10D6QpwO2D/peaked-humidity/css2?family=Lato:wght@100;300;400;700;900&amp;display=swap" rel="stylesheet" /> 
-  <title>You now have</title> 
+  <title>experience even</title> 
  </head> 
  <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="plproys" style="border-collapse: collapse;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-       <thead> 
-        <tr> 
-         <th align="center" colspan="3">&nbsp;</th> 
-        </tr> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td align="center">&nbsp;</td> 
-         <td align="center" width="100%"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <thead> 
-            <tr> 
-             <th align="center" colspan="3">&nbsp;</th> 
-            </tr> 
-           </thead> 
-           <tbody> 
-            <tr> 
-             <td align="center">&nbsp;</td> 
-             <td align="center"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <thead> 
-                <tr> 
-                 <th align="center" colspan="3">&nbsp;</th> 
-                </tr> 
-               </thead> 
-               <tbody> 
-                <tr> 
-                 <td align="center">&nbsp;</td> 
-                 <td align="center"> 
-                  <div style="background-color: rgb(221, 221, 221); width: 100%; padding: 30px 0;"> 
-                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: #fff;" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center"> 
-                       <blockquote style="max-width: 14.3em; margin: auto;">
-                        <a href="http://www.morecl-tools.bond/9cb6JC23z95K8S6L12B63Bc9k1822y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRQeo7BQu10lV5mqwD2/Georgia-Whitfield" target="_blank"><img alt="YTAE" src="http://www.morecl-tools.bond/9174K2395w7aLS11v63cbk1822u36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQFRQeo7U10PAZy5SlLwD/blots-reestablishes" width="100%" /></a>
-                       </blockquote> </td> 
-                     </tr> 
-                     <tr> 
-                      <td> 
-                       <div style="background-color: #DDDDDD;"> 
-                        <div style="background-color: #ffffff; max-width: 33.5rem; margin: auto; text-align: center;"> 
-                         <center style="background-color: #ff0000;
-        padding: 5mm 0;
-        font-family: 'Lato', sans-serif;
-        font-weight: 700;
-        font-size: 8mm;
-        color: #fff;">
-                          Significant
-                          <br /> Updates from Harbor Freight
-                         </center> 
-                         <center style="padding: 20px 30px; text-align: center; font-size: 16px; font-family: 'Lato', sans-serif; line-height: 26px; font-weight: 600;">
-                          We are excited to share some exciting news from 
-                          <b style="color: rgb(194, 0, 0);">Harbor Freight</b>. You now have the chance to acquire a 
-                          <b style="color: rgb(194, 0, 0);">Pittsburgh 225 Piece Tool Set</b>, available for redemption at any of our store branches.                           <br /> 
-                          <br /> Act promptly and grab this chance! You have until 
-                          <strong style="color: rgb(194, 0, 0);">October 15th</strong> to secure these exciting tools.                          </center> 
-                         <div style=" background-color: #c9c9c9; padding: 1.5% 2.0%;">
-                          <a href="http://www.morecl-tools.bond/9cb6JC23z95K8S6L12B63Bc9k1822y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRQeo7BQu10lV5mqwD2/Georgia-Whitfield" target="_blank"><img alt="BLAS" src="http://www.morecl-tools.bond/40d5nY2395Nu7Pa11p63ccF1822K36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRQeo6A1wYJ06QLwDN@/perpetuation-subsidiaries" style="margin: auto;;" width="100%" /></a>
-                         </div> 
-                         <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="center"> 
-                             <center style="display: inline-block; background-color: #303030; font-weight: 900; font-size: 20px; font-family: 'Lato', sans-serif; padding-top: 15px; padding-right: 33px; padding-bottom: 15px; padding-left: 15px;">
-                              <a href="http://www.morecl-tools.bond/9cb6JC23z95K8S6L12B63Bc9k1822y36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQFRQeo7BQu10lV5mqwD2/Georgia-Whitfield" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt;</a>
-                             </center> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> 
-                        </div> 
-                        <h4 style="padding-top: 10rem;">&nbsp;</h4> 
-                        <div style="background-color: darkgrey; padding: 2em 0;"> 
-                         <center style="max-width: 520px; margin: auto; font-size: 12px; text-align: center; font-weight: 700; font-family: 'Lato', sans-serif; ;">
-                          more than welcome to leave in 
-                          <a href="http://www.morecl-tools.bond/menarche-unforgiving/8466tA239r5V8L6P13p63icaLB1822i36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQFRQeo6pqv10C5zJ@wD">here</a> we' ll miss
-                          <br /> you US 10010 126 E 23rd St New York, NY,
-                         </center> 
-                        </div> 
-                        <h4 style="padding-top: 10rem;">&nbsp;</h4> 
-                       </div> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> 
-                  </div> </td> 
-                 <td align="center">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-               <tfoot> 
-                <tr> 
-                 <td align="center" colspan="3">&nbsp;</td> 
-                </tr> 
-               </tfoot> 
-              </table> </td> 
-             <td align="center">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-           <tfoot> 
-            <tr> 
-             <td align="center" colspan="3">&nbsp;</td> 
-            </tr> 
-           </tfoot> 
-          </table> </td> 
-         <td align="center">&nbsp;</td> 
-        </tr> 
-       </tbody> 
-       <tfoot> 
-        <tr> 
-         <td align="center" colspan="3">&nbsp;</td> 
-        </tr> 
-       </tfoot> 
-      </table> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.morecl-tools.bond/cd75k239s5vG85L12B6v3cdD1822T36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQFRQeo7vi1_s0X5CPwDN/brotherhood-thickness" alt=""/></body>
+  <div style="padding-top: 20px; background-color: rgb(231, 231, 231); width: 100%; ; "> 
+   <section style="max-width: 70mm; margin: auto; ">
+    <a href="http://www.dps-airlinstags.bond/antimicrobial-pearly/6486y2Y3F95b86GN12e6v3ceh1823N36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQiRQe97is1pkY05oN@wD" target="_blank"><img alt="" src="http://www.dps-airlinstags.bond/profitable-bales/17a5D2B395fgj7a11N63d0s1823g36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQiRQe96A10Znn5QWqwD" style="display: block; " width="100%" /></a>
+    <br /> &nbsp; 
+   </section> 
+   <article style="max-width: 33.5em; margin: auto ; background-color: #fff; "> 
+    <table style="max-width: 150mm; margin: auto; "> 
+     <tbody> 
+      <tr> 
+       <td> 
+        <center>
+         <a href="http://www.dps-airlinstags.bond/antimicrobial-pearly/6486y2Y3F95b86GN12e6v3ceh1823N36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQiRQe97is1pkY05oN@wD" target="_blank"><img alt="KJSE" src="http://www.dps-airlinstags.bond/wrecking-bellman/7ce6w2y3J95kX7Va13Y6R3dZ1_1823k36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQiRQe97BKky1i06tjwpJD" width="100%" /></a>
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <p style="
+            font-family: Arial, Helvetica, sans-serif; font-weight: 500; text-align: center; padding-top: 20px; padding-left: 25px; padding-bottom: 20px; padding-right: 25px; line-height: 7.5mm; font-size: 4.5mm; "><font>We deeply value your decision to travel with Delta! Every journey you embark on with us becomes a part of our story, and we' re eager to improve every aspect to enhance your experience for even more enjoyment.<br /> <br /> Our commitment is to further elevate your flying experience! Please share your feedback about your recent Delta journey by participating in a brief survey. Click the link below to start this quick exploration.<br /> <br /> Your feedback not only influences our future but could also present you with the chance to receive an unexpected $100 gift! Every perspective is valuable, so make sure your voice is heard today!<br /> <span style="color: #ff0000; font-weight: bold; ">#ElevateYourTravelExperience. </span> </font></p> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center"><a href="http://www.dps-airlinstags.bond/antimicrobial-pearly/6486y2Y3F95b86GN12e6v3ceh1823N36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQiRQe97is1pkY05oN@wD" style="text-decoration: none; color: #fff; " target="_blank"><span style="display: inline-block; background-color: darkslategray; padding: 3mm 7mm; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 18px; border-radius: 100px; ">Fly Better With Now &raquo; </span></a></td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <br /> &nbsp; 
+   </article> 
+   <article> 
+    <p style="padding-top: 450px; "><font style="display: block; max-width: 500px; margin: auto; background-color: beige; padding: 15px 0; font-size: 12px; font-weight: bold; text-align: center; font-family: Arial, Helvetica, sans-serif; ">Join us at the exit <a href="http://www.dps-airlinstags.bond/Cc55b239l5z8z6m13GL6Y3cfJ1823t36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQiRQe96Lu10RU6V03kwD/leaderships-roused">here</a><br /> US 10010 126 E 23rd St New York, NY, </font></p> 
+   </article> 
+  </div>   
+ <img src="http://www.dps-airlinstags.bond/9174B2395zD8W512Q63dU2i1823i36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQiRQe96U1SKl05NpwDl/leaderships-roused" alt=""/></body>
 </html>
 
---43b9c57e77446cfd4feda201fa3973181102101100810159799--
+--d16ac1a8308fdaf6992c083fb17950bc1993229999--
 
