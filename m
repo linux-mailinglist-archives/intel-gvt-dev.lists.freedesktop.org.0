@@ -1,46 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31B617C995D
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Oct 2023 16:16:36 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A89977C99FD
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 15 Oct 2023 18:23:29 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C512B10E0F9;
-	Sun, 15 Oct 2023 14:16:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6F25B10E0FB;
+	Sun, 15 Oct 2023 16:23:28 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Sun, 15 Oct 2023 14:16:32 UTC
-Received: from mail.dps-airlinstags.bond (unknown [77.90.135.43])
- by gabe.freedesktop.org (Postfix) with ESMTP id 50C7510E01F
+ Sun, 15 Oct 2023 16:23:27 UTC
+Received: from mail.fly-sundayinfo.live (unknown [77.90.135.63])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 77DF410E0FB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Oct 2023 14:16:32 +0000 (UTC)
+ Sun, 15 Oct 2023 16:23:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=dps-airlinstags.bond; 
+ d=fly-sundayinfo.live; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=uncover_delta_flight_experiences@dps-airlinstags.bond; 
- bh=F3QXXeXO6bWPLL2Qoiio1X8IO/M=;
- b=cnb326R4gYl8KWNCgzXG90Q2Y1bJasOs7eYBFyIxp9nnFCzKkgR7RfbKdTHVY9eCL01JhUtD6gtH
- uUlft8zvK3TkuhGktgEieB5bAemeeFqywy04D9ORtwx7jWjHOoeQo8Wnhpw8MQ3c37Xj8QE9Qpaf
- dohNuPiQKp3qxIz1SD8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dps-airlinstags.bond;
- b=i9+/VoLWALfTZoyEEw0hGn9v3R4TW85bCb3r8yE9eT4chVpL0fw6dBKwth1c/dPUC8xGI0zk04DB
- Pmk7FfYitnH1gSJUS8sBQWr/6NhyP+6zzWGfrhgSHPzrbKCENMjZVUrDB780UfwQ9StHknJc77J2
- BY2BJjXCy1KHRnQ50L4=;
-Received: by mail.dps-airlinstags.bond id h5fq400001gk for
+ i=your.comprehensive.southwest.flight.information@fly-sundayinfo.live; 
+ bh=no3CwaK6CBd6IQHjPGdeScLXyOQ=;
+ b=H1btXsYklMC9q50tKnghK/5JLs4dal9WmVVP9FGY99o5O29jx2wcv9Ahralk9y7PL8qZMaUFmPwd
+ cW8YrKWjthdZuZuZ1XxxptmptEsAJ5s+lY4ouz2GkI4HqiC/70+75B+/Wgp2aV1BcKFMJbr1dmJf
+ Hg6VyBzkebHKeLNFLoo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fly-sundayinfo.live;
+ b=tqbOcTqUtIweLp/uqACRqBeOz5Mnky2sDaoiPNavu39m1wDtlNv5Upmgs07Nbb5LRMyaW5xJl0c5
+ MKb71Ju44AMIsET6DxR+osAzwB8bvFKcQvWNFMz0WXqJWf7VDmqdXgY4akiCacwFhtVkt4g14adG
+ phF/P+60qu4afzy1bJk=;
+Received: by mail.fly-sundayinfo.live id h5gicg0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 15 Oct 2023 10:07:34 -0400 (envelope-from
- <uncover_delta_flight_experiences-intel+2Dgvt+2Ddev=lists.freedesktop.org@dps-airlinstags.bond>)
-Date: Sun, 15 Oct 2023 10:07:34 -0400
-From: "Uncover Delta Flight Experiences"
- <uncover_delta_flight_experiences@dps-airlinstags.bond>
+ Sun, 15 Oct 2023 13:16:51 -0400 (envelope-from
+ <your.comprehensive.southwest.flight.information-intel+2Dgvt+2Ddev=lists.freedesktop.org@fly-sundayinfo.live>)
+Date: Sun, 15 Oct 2023 13:16:51 -0400
+From: "Your Comprehensive Southwest Flight Information"
+ <your.comprehensive.southwest.flight.information@fly-sundayinfo.live>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <70335252531.16973788351428456@dps-airlinstags.bond>
-Subject: Celebrate the season by enjoying a cost-free flight to your preferred
- destination!
+Message-ID: <208722908421.16973853872602186@fly-sundayinfo.live>
+Subject: Kickstart the season on the right note by claiming a no-cost flight
+ to your desired destination!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=d16ac1a8308fdaf6992c083fb17950bc1993229999
+ boundary=25960f4315303b1e03ffce4600a7b2bd91017
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---d16ac1a8308fdaf6992c083fb17950bc1993229999
+--25960f4315303b1e03ffce4600a7b2bd91017
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,42 +65,63 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>experience even</title> 
+  <title>future experiences</title> 
  </head> 
  <body> 
-  <div style="padding-top: 20px; background-color: rgb(231, 231, 231); width: 100%; ; "> 
-   <section style="max-width: 70mm; margin: auto; ">
-    <a href="http://www.dps-airlinstags.bond/antimicrobial-pearly/6486y2Y3F95b86GN12e6v3ceh1823N36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQiRQe97is1pkY05oN@wD" target="_blank"><img alt="" src="http://www.dps-airlinstags.bond/profitable-bales/17a5D2B395fgj7a11N63d0s1823g36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQiRQe96A10Znn5QWqwD" style="display: block; " width="100%" /></a>
+  <section style="background-color: rgb(226, 226, 226); width: 100%; padding: 7% 0%;"> 
+   <div style="max-width: 33.5rem; margin: auto; border: groove 4px; border-radius: 10px; background-color: #F6F8FA;">
+    &nbsp; 
+    <center align=" center" style="max-width: 96mm; margin: auto;">
+     <a href="http://www.fly-sundayinfo.live/8276UwX2395g8WN611I63d8Q1825i36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ0RQeQ5Xz1Y05SAjwD/spending-dauntless" target="_blank"><img alt="ujhsa" src="http://www.fly-sundayinfo.live/6476I23G9M5Gw7Xa12G63Zdan1825w36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ0RQeQ7HuAU1o05h@wDz/thankless-utility" width="100%" /></a>
+    </center> 
+    <p style="font-family: Arial, Helvetica, sans-serif;
+font-weight: 500; text-align: center; line-height: 1.7rem; font-size: 1.1rem; padding: 1rem 1.5rem 0; margin: 0;">We truly appreciate your decision to fly with Southwest Airlines. Your unwavering loyalty and support are of great importance to us, and we are committed to fulfilling all your travel needs</p> &nbsp; 
+    <div style="font-family: Arial, Helvetica, sans-serif;
+font-weight: 500; text-align: center; line-height: 1.7rem; font-size: 1.1rem; padding: 1rem 1.5rem; background-color: #F5CF5B;">
+     Your feedback is of great significance to us. We cordially invite you to spare a few moments to partake in a concise survey about your recent flight experience and your overall engagement with Southwest. Your input will play a crucial role in enhancing your future experiences with our airline.     </div> &nbsp; 
+    <div style="text-align: center;">
+     <a href="http://www.fly-sundayinfo.live/8276UwX2395g8WN611I63d8Q1825i36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ0RQeQ5Xz1Y05SAjwD/spending-dauntless" target="_blank"><img alt="MPS" src="http://www.fly-sundayinfo.live/5cf4B2395h7HaD12zA63dbj1825r36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQ0RQeQ6qsY10_6szpwPD/treasures-movement" style="display: block;" width="100%" /></a>
+    </div> 
+    <br /> 
+    <small style="font-family: Arial, Helvetica, sans-serif;
+font-weight: 500; text-align: center; line-height: 1.7rem; font-size: 1.1rem; padding: 1rem 1.5rem; display: block;">Accessing the survey is simple; simply click the link below. It's a brief task that will only take a few minutes, and rest assured that your responses will be handled with the highest level of confidentiality.</small> 
+    <article> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td align="center"> 
+         <center style="background-color: rgb(33, 82, 158); padding: 1.3rem 2rem; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; border-radius: 12px; width: 230px; margin: auto;">
+          <a href="http://www.fly-sundayinfo.live/8276UwX2395g8WN611I63d8Q1825i36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ0RQeQ5Xz1Y05SAjwD/spending-dauntless" style="text-decoration: none; color: #fff;" target="_blank">Kick off the survey here &gt;&gt;</a>
+         </center> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </article> &nbsp; 
+    <div style="width: 30%; margin: auto; border-bottom: solid 2px #000;">
+     &nbsp;
+    </div> &nbsp; 
+    <p style="font-family: Arial, Helvetica, sans-serif;
+font-weight: 500; text-align: center; line-height: 1.7rem; font-size: 1.1rem; padding: 1rem 1.5rem; margin: 0;">We value your continuous support and look forward to receiving your feedback with enthusiasm. Best regards,</p> 
+   </div> &nbsp; 
+   <p><br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;</p> 
+   <div>
+    <br /> &nbsp;
+    <br /> &nbsp;
     <br /> &nbsp; 
-   </section> 
-   <article style="max-width: 33.5em; margin: auto ; background-color: #fff; "> 
-    <table style="max-width: 150mm; margin: auto; "> 
-     <tbody> 
-      <tr> 
-       <td> 
-        <center>
-         <a href="http://www.dps-airlinstags.bond/antimicrobial-pearly/6486y2Y3F95b86GN12e6v3ceh1823N36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQiRQe97is1pkY05oN@wD" target="_blank"><img alt="KJSE" src="http://www.dps-airlinstags.bond/wrecking-bellman/7ce6w2y3J95kX7Va13Y6R3dZ1_1823k36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQiRQe97BKky1i06tjwpJD" width="100%" /></a>
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <p style="
-            font-family: Arial, Helvetica, sans-serif; font-weight: 500; text-align: center; padding-top: 20px; padding-left: 25px; padding-bottom: 20px; padding-right: 25px; line-height: 7.5mm; font-size: 4.5mm; "><font>We deeply value your decision to travel with Delta! Every journey you embark on with us becomes a part of our story, and we' re eager to improve every aspect to enhance your experience for even more enjoyment.<br /> <br /> Our commitment is to further elevate your flying experience! Please share your feedback about your recent Delta journey by participating in a brief survey. Click the link below to start this quick exploration.<br /> <br /> Your feedback not only influences our future but could also present you with the chance to receive an unexpected $100 gift! Every perspective is valuable, so make sure your voice is heard today!<br /> <span style="color: #ff0000; font-weight: bold; ">#ElevateYourTravelExperience. </span> </font></p> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"><a href="http://www.dps-airlinstags.bond/antimicrobial-pearly/6486y2Y3F95b86GN12e6v3ceh1823N36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQiRQe97is1pkY05oN@wD" style="text-decoration: none; color: #fff; " target="_blank"><span style="display: inline-block; background-color: darkslategray; padding: 3mm 7mm; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 18px; border-radius: 100px; ">Fly Better With Now &raquo; </span></a></td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <br /> &nbsp; 
-   </article> 
-   <article> 
-    <p style="padding-top: 450px; "><font style="display: block; max-width: 500px; margin: auto; background-color: beige; padding: 15px 0; font-size: 12px; font-weight: bold; text-align: center; font-family: Arial, Helvetica, sans-serif; ">Join us at the exit <a href="http://www.dps-airlinstags.bond/Cc55b239l5z8z6m13GL6Y3cfJ1823t36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQiRQe96Lu10RU6V03kwD/leaderships-roused">here</a><br /> US 10010 126 E 23rd St New York, NY, </font></p> 
-   </article> 
-  </div>   
- <img src="http://www.dps-airlinstags.bond/9174B2395zD8W512Q63dU2i1823i36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQiRQe96U1SKl05NpwDl/leaderships-roused" alt=""/></body>
+    <div style="background-color: mistyrose; padding: 10px 0;"> 
+     <div style="max-width: 120mm; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 3.9mm; font-weight: 700;">
+      Use the exit option 
+      <a href="http://www.fly-sundayinfo.live/bab4q2395M86hK11g63d9P1825K36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ0RQeQ6eRD1C05IPNwD/liberal-encoder">here</a>
+      <br /> US 10010 126 E 23rd St New York, NY,
+     </div> 
+    </div> &nbsp;
+    <br /> &nbsp;
+    <br /> &nbsp;
+   </div> 
+   <h1><br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;</h1> 
+  </section>   
+ <img src="http://www.fly-sundayinfo.live/Katherine-Slavize/a805z2z395I8lD512y6N3dcW1825W36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ0RQeQ5H1_0r5JAWwD" alt=""/></body>
 </html>
 
---d16ac1a8308fdaf6992c083fb17950bc1993229999--
+--25960f4315303b1e03ffce4600a7b2bd91017--
 
