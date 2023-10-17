@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 565347CC908
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Oct 2023 18:44:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 01F137CCF8F
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Oct 2023 23:59:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B557710E178;
-	Tue, 17 Oct 2023 16:44:08 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AEB5910E05A;
+	Tue, 17 Oct 2023 21:59:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Tue, 17 Oct 2023 16:44:06 UTC
-Received: from mail.runtoolstop.bond (unknown [213.21.253.63])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3D20B10E178
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Tue, 17 Oct 2023 21:59:55 UTC
+Received: from mail.fivestarflights.bond (unknown [213.21.253.70])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3B78410E05A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 17 Oct 2023 16:44:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=runtoolstop.bond;
+ Tue, 17 Oct 2023 21:59:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=fivestarflights.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=oreilly-customer-feedback@runtoolstop.bond; 
- bh=TYmHJa0Zx5UM4sf2jV4rOGT73Ec=;
- b=SkPbQpV03vGNwts/fACTUFOIydwX9/oKDMMeNau93HOs+RbhnMTjxmApgs4w3VSHm6RgHZdYIe/V
- /aV3tQ9+THEVIncEL3A1CTGu45LNP5xjXvMWJbjwUktyMvQRsUEh5upcHcJhj4eAFUJI9eG9zav2
- XXqRYWU2ysfiqfYnPMg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=runtoolstop.bond;
- b=Y/oIhQVamBfNfdj+C7xuAhGoRmPSXvY1hMcySFa79zQcrzt1JLRfRJcPgz/yeq4pv7LTIEgP0tT3
- r5yVmgPyZ3weyUAwrA/8ELUmaTISzJn+iDhc6j7R96FtBnjsB9iKj2Vx3z5IV1QkZGHgDD9opwoc
- 85KVNSgIN9+/jtOD+QI=;
-Received: by mail.runtoolstop.bond id h5qstc0001gi for
+ i=key-delta-details@fivestarflights.bond; 
+ bh=SFNXySRimnSpQMMLxVidaDy9KOA=;
+ b=WVxKugZvd0jaMnr2V/SClVCT+UqbP+0a1N3Z+raD4itDCo5/75hXJOxz8ChoMZZ1HSe4N/v3a3G1
+ ioKv/hnLxl698We1RtvWMAQCQgG42/kJ/QZaXfCD/Ny2DwLXFJqxFbtyrJ+WbibbDiFbEe8QiXcR
+ MRMEN/IRrEm5bZXdHqg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fivestarflights.bond;
+ b=vSFpqaEelEC/w3BpAMucSb/IwtRLphcCKAjNkZUtJU0kPf1TY0zL2Jrea/F2rHxhj+8VU4IRFaNS
+ XLw6fcHGmhpxLijfMHLGeHU7k3fYb+Z/eATiesbUtVD8Z/r4xpLSxo/WakamBOssA5rx+IyRQUsk
+ DPYF9R/RtcQsMk6okbw=;
+Received: by mail.fivestarflights.bond id h5s1tm0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 17 Oct 2023 12:35:44 -0400 (envelope-from
- <oreilly-customer-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@runtoolstop.bond>)
-Date: Tue, 17 Oct 2023 12:35:44 -0400
-From: "OReilly Customer Feedback" <oreilly-customer-feedback@runtoolstop.bond>
+ Tue, 17 Oct 2023 17:51:47 -0400 (envelope-from
+ <key-delta-details-intel+2Dgvt+2Ddev=lists.freedesktop.org@fivestarflights.bond>)
+Date: Tue, 17 Oct 2023 17:51:47 -0400
+From: "Key Delta Details" <key-delta-details@fivestarflights.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <115525969000.1697560525576704@runtoolstop.bond>
-Subject: An incredible Stanley Tool Set is available for you - claim it by
- sharing your thoughts.
+Message-ID: <14056641507030.16975794946410@fivestarflights.bond>
+Subject: Wholeheartedly embrace the season by accepting a free flight to your
+ desired destination!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=8c311006d3fe1bdcbe57e5e785b9ba059710241039711998100
+ boundary=203cb0615ce1664ae92dcf8a08c62328710010399926102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,66 +55,98 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---8c311006d3fe1bdcbe57e5e785b9ba059710241039711998100
+--203cb0615ce1664ae92dcf8a08c62328710010399926102
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Simply Take</title> 
- </head> 
- <body> 
-  <div style="background-color: rgb(224, 224, 224);">
-   <br /> 
-   <br /> &nbsp; 
-   <header> 
-    <center style="max-width: 520px; margin: auto; background-color: #fff; border-bottom: solid 4px #319D4E;"> 
-     <div style="max-width: 200px; margin: auto; padding: 5mm 0;">
-      <a href="http://www.runtoolstop.bond/b335u239D5l8VO613SHI6419A1833X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQkRRmQ6vC10BS5Iyw2D/parade-unanticipated" target="_blank"><img alt="HYES" src="http://www.runtoolstop.bond/e034M2395bMH7a11K641bl1833_36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQkRRmQ7Fl1UB0t5zpwDz/parade-unanticipated" style="display: block;" width="100%" /></a>
-     </div> 
-    </center> 
-   </header> 
-   <section style="max-width: 520px; margin: auto; text-align: center; background-color: #fff;"> 
-    <p style="max-width: 250px; margin: auto; display: inline-block; text-align: justify; padding: 3.5% 1%; font-family: Arial, Helvetica, sans-serif; line-height: 25px; font-size: 16px; font-weight: 500;"><b>Dear O'Reilly Auto Parts Good Shopper</b>, We Would Like To Offer You A Unique Opportunity To Receive A Brand New <b>170 PIECE STANLEY TOOL SET!</b> To Claim, Simply Take This Short Survey About Your Experience With US</p> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; display: inline-block; max-width: 240px; margin: auto;"> 
-     <tbody> 
-      <tr> 
-       <td align="center"><a href="http://www.runtoolstop.bond/b335u239D5l8VO613SHI6419A1833X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQkRRmQ6vC10BS5Iyw2D/parade-unanticipated" target="_blank"><img alt="ES" src="http://www.runtoolstop.bond/podium-blabbing/5ee5z2p395Q7aOQ12b6k41ci1833I36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQkRRmQ7ytsmR105lAzwD" width="100%" /></a></td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <p style="text-align: justify; padding: 0% 2%; font-family: Arial, Helvetica, sans-serif; line-height: 25px; font-size: 16px; font-weight: 700; color: #ff0000;">Your Opinion Is Very Valuable.</p> 
-    <div style="max-width: 280px; margin: auto;"> 
-     <center style="padding: 3.5% 7%; background-color: #319D4E; border-radius: 10px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 18px;">
-      <a href="http://www.runtoolstop.bond/b335u239D5l8VO613SHI6419A1833X36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQkRRmQ6vC10BS5Iyw2D/parade-unanticipated" style="text-decoration: none; color: #fff;" target="_blank">Get Started Now!</a>
-     </center> 
-    </div> &nbsp; 
-    <p style="font-family: Arial, Helvetica, sans-serif; line-height: 25px; font-size: 16px; font-weight: 500;">Tell Us About Your Shopping Experience And We Will Offer You This Exclusive Offer.</p> 
-    <br /> &nbsp;
-   </section> 
-   <h2 style="padding-top: 100px;">&nbsp;</h2> 
-   <h2 style="padding-top: 100px;">&nbsp;</h2> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"> 
-       <div style="max-width: 140mm; margin: auto; font-size: .8rem; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ;">
-        you can leave with sadness 
-        <a href="http://www.runtoolstop.bond/8275i2v395e86_u12Q6M41aO1833X36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQkRRmQ7D1O_X0n6GTNqwD/tensing-monogamy">here</a>
-        <br /> US 10010 126 E 23rd St New York, NY,
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <h2 style="padding-top: 100px;">&nbsp;</h2> 
-   <h2 style="padding-top: 100px;">&nbsp;</h2> 
-   <h2 style="padding-top: 100px;">&nbsp;</h2> 
-  </div>   
- <img src="http://www.runtoolstop.bond/1b54U2395X85VX12kV641dv1833r36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQkRRmQ5sw1k06i@AwD1/kingdoms-crippled" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>eager to</title>=20
+ </head>=20
+ <body>=20
+  <header style=3D"background-color: rgb(209, 209, 209);">
+   &nbsp;=20
+   <nav style=3D"background-color: #fff; max-width: 150mm; margin: auto; bo=
+rder-bottom: solid 3.5px #ff0000;">
+    &nbsp;=20
+    <center style=3D"max-width: 250px; margin: auto;">
+     <a href=3D"http://www.fivestarflights.bond/5b14o2395iIK8613b6y41yeq1834r36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQzRRmR5GVA105VlMwD/vowing-rentals" target=3D"_blank"><img alt=3D"GSE" src=3D"=
+http://www.fivestarflights.bond/applicators-swaggered/eb84w2395Ijm7a13R6s420_v1834s36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQzRRmR5L10Lv5HAw3D" style=3D"display: block;" width=3D"100%" /></a>
+    </center>=20
+   </nav>=20
+   <div style=3D"max-width: 150mm; margin: auto; background-color: #fff;">=
+=20
+    <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" style=3D"border-collapse: collapse;" width=3D"100%">=20
+     <tbody>=20
+      <tr>=20
+       <td align=3D"center">=20
+        <div>=20
+         <p style=3D"font-family: Arial, Helvetica, sans-serif; font-size: =
+16px; text-align: justify; padding: 0 3.5%; line-height: 25px;">Your choice=
+ to travel with Delta is greatly appreciated! Each journey you take with us=
+ contributes to our narrative, and we're enthusiastic about refining every =
+aspect to elevate your experience for even greater satisfaction.<br /> <br =
+/> <a href=3D"http://www.fivestarflights.bond/5b14o2395iIK8613b6y41yeq1834r36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQzRRmR5GVA105VlMwD/vowing-rentals" target=3D"_blank"><img alt=3D"YSE" src=3D"=
+http://www.fivestarflights.bond/convoys-secures/6845G23G95G7aVR12S642y1G1834D36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQzRRmR5i1K0j5zWNwD" style=3D"display: block; float: right; margin: 1.5% 2.5% 0; outline: =
+solid 1.5px #000;" width=3D"50%" /></a> We are dedicated to enhancing your =
+flying experience even more! Kindly provide your feedback on your recent De=
+lta journey by taking part in a brief survey. Begin this swift survey by cl=
+icking the link below.<br /> <br /> Your input doesn't just shape our futur=
+e; it could also offer you the opportunity to receive an unexpected $100 gi=
+ft! We value every point of view, so ensure your voice is expressed today!<=
+br /> <br /> <span style=3D"color: #ff0000; display: block; text-align: cen=
+ter; font-weight: bold;">#ElevateYourTravelExperience. </span></p>=20
+         <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td align=3D"center">=20
+             <center style=3D"background-color: cadetblue; padding-top: .3c=
+m; padding-bottom: .3cm; padding-left: .7cm; padding-right: .7cm; border-ra=
+dius: 10px; font-family: Arial, Helvetica, sans-serif; font-weight: 800; wi=
+dth: 300px; margin: auto;">
+              <a href=3D"http://www.fivestarflights.bond/5b14o2395iIK8613b6y41yeq1834r36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQzRRmR5GVA105VlMwD/vowing-rentals" style=3D"text-decoration: none; color:=
+ #fff;" target=3D"_blank">Fly Better With Now &raquo; </a>
+             </center> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table>=20
+        </div> </td>=20
+      </tr>=20
+     </tbody>=20
+    </table>=20
+   </div>=20
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;=20
+   <div style=3D"max-width: 520px; margin: auto; font-family: 'Lucida Sans'=
+, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Ve=
+rdana, sans-serif; font-size: .8rem; text-align: center; font-weight: bold;=
+">
+    <main>
+      Join us at the exit=20
+     <a href=3D"http://www.fivestarflights.bond/applicators-swaggered/8xa5hV2395Qv8F611p641fr1834g36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQzRRmR5QkK106zzAwUD">here</a>
+     <br /> US 10010 126 E 23rd St New York, NY,=20
+    </main>
+   </div>=20
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;
+   <br /> &nbsp;
+  </header>  =20
+ <img src=3D"http://www.fivestarflights.bond/revisit-scaffold/6c05n239C5ov8w512R64C22J1834W36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQzRRmR7fm1UwL05o1LwD" alt=3D""/></body>
 </html>
 
---8c311006d3fe1bdcbe57e5e785b9ba059710241039711998100--
+--203cb0615ce1664ae92dcf8a08c62328710010399926102--
 
