@@ -2,43 +2,35 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32D837CC6FA
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Oct 2023 17:05:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D0FC07CC7D5
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 17 Oct 2023 17:46:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C89B610E043;
-	Tue, 17 Oct 2023 15:05:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 8405010E306;
+	Tue, 17 Oct 2023 15:46:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 300 seconds by postgrey-1.36 at gabe;
- Tue, 17 Oct 2023 15:05:52 UTC
-Received: from mail.uptoshipping.click (unknown [77.90.135.237])
- by gabe.freedesktop.org (Postfix) with ESMTP id 01C3910E043
+X-Greylist: delayed 604 seconds by postgrey-1.36 at gabe;
+ Tue, 17 Oct 2023 15:46:55 UTC
+Received: from rongshux.cn (unknown [95.215.108.127])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 96E9610E305
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 17 Oct 2023 15:05:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=uptoshipping.click; 
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=ups-evaluation-spot@uptoshipping.click; 
- bh=eIFUB8CxhQvVMiqwYGucY/QEPoc=;
- b=NcXct9B13vQL/daJH4eq61/WAgYQ+JUAUgzzXGn+XjzaRIoFUP0C1AUS8zJMBHkOgtkdiXqtpUpJ
- wEhQ318yBsVkavXMY14pMXLINDEpVJK0m4rEZIpLozJLWhS2wu7CWRJN0/B9Bq3+vFq0uxGxt1dy
- iaE9ya8mUEpoO72UEmU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=uptoshipping.click; 
- b=cSNPtPyt06HDhbbp4sJ1cR8r3EPM5nGmSCYXBi+D+2HkQwFCdIHV5PLRtLiX61imCBVShKp9JCjC
- fVC489B9gRJcbDbMHFsHuElzAPZLAizaS40aAenYAyeYBDDkz+/3/aOhahUDxWYsYmkArGV80tvg
- dVNRU6Jg1WGD+XzzUTQ=;
-Received: by mail.uptoshipping.click id h5qhd20001g1 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 17 Oct 2023 10:57:25 -0400 (envelope-from
- <ups-evaluation-spot-intel+2Dgvt+2Ddev=lists.freedesktop.org@uptoshipping.click>)
-Date: Tue, 17 Oct 2023 10:57:25 -0400
-From: "UPS Evaluation Spot" <ups-evaluation-spot@uptoshipping.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <19694655202.16975546286202679@uptoshipping.click>
-Subject: Elevate your shipping; your feedback earns a token.
+ Tue, 17 Oct 2023 15:46:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=key1; d=rongshux.cn;
+ h=Content-Type:MIME-Version:Content-Transfer-Encoding:From:Subject:Date:To;
+ i=contact.vpass1@rongshux.cn;
+ bh=Y+DMM7s0pJ/XK0oeK195uqFKnA0kS1jbb+EhOer+Wtc=;
+ b=BcMVpk/um0d4CfCOh8ZSAV23yNTFz7avjuOwNrznDLgGIkvBTOuimbz/R5hFeloRR6W8G3D5IV4V
+ OyE6y1dXp1WS4+A4v8XmF9jLPiT0MYCfldNXt0fK0HderAkL488SmPYOGMO4BXSV4HreOHqYYe21
+ ++3b18HooyPSMfJc52/w8Bspl6Cx8th6RGfRLjRqH2uwZniZaZRdIVA1CMbRA/rNpc3ojBYgCuxO
+ Xf+qpI4NOukM/royalgqvvAc0igBOq9UemT/23qd+tTuHnk2nTHgJjQJyUo7YMXIhxrfGNu0DHXC
+ avzD7UgsQ2Qpr9Lt0tYAqOp2BR6jzVOL4qrEtw==
+Content-Type: text/html; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=fee59febb0cb4314042aa979a158469e1001029771021005409
+Content-Transfer-Encoding: base64
+From: =?utf-8?b?5LiJ5LqV5L2P5Y+L44Kr44O844OJ?= <contact.vpass1@rongshux.cn>
+Subject: =?utf-8?b?44GK5pSv5omV44GE5pel44Gu44GU5qGI5YaF?=
+Date: Tue, 17 Oct 2023 18:36:47 +0300
+To: intel-gvt-dev@lists.freedesktop.org
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,84 +45,78 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20231017154657.8405010E306@gabe.freedesktop.org>
 
---fee59febb0cb4314042aa979a158469e1001029771021005409
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>hold great</title> 
- </head> 
- <body style="margin: 0; padding: 0;"> 
-  <section style="background-color: rgb(211, 211, 211); width: 100%;"> 
-   <aside style="background-color: antiquewhite;"> 
-    <div style="max-width: 150mm; margin: auto; text-align: center;"> 
-     <h2 style="margin: 0; padding-top: 1.9rem; padding-bottom: 1.9rem; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 1.5px; font-size: 50px; color: #3E4321;">UPS</h2> 
-    </div> 
-   </aside> 
-  </section> 
-  <div style="background-color: rgb(189, 189, 189); width: 100%;"> 
-   <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
-    <p style="max-width: 520px; margin: auto; background-color: #fff; padding: 1.9rem 2rem; font-family: Arial, Helvetica, sans-serif; text-align: center; line-height: 7mm; font-size: 16px;">We wish to convey our appreciation for selecting UPS as your preferred shipping partner. Your loyalty and support mean a lot to us, and we sincerely value the chance to serve you.</p> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <center style="max-width: 520px; margin: auto; background-color: #fff;">
-         <a href="http://www.uptoshipping.click/11f4e2395rCn8612N640YeU1831H36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQTRRm96Dg1r0n5RJwDM/referred-pejorative" target="_blank"><img alt="EES" src="http://www.uptoshipping.click/bellmen-criminal/C8a6n2Y3R95Q7Bka12Q6R410z1831x36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQTRRm95w10LX6nLwkDL" width="100%" /></a>
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <center align="center"> 
-     <h4 style="padding: 1.9rem 2rem; font-family: Arial, Helvetica, sans-serif; text-align: center; line-height: 7mm;; margin: 0; font-weight: 500; font-size: 16px;">As we are committed to providing exceptional service, we extend a warm invitation to you to take part in a brief survey regarding your recent shipping experience and your overall interaction with UPS.</h4> 
-    </center> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <center style="max-width: 520px; margin: auto; background-color: #fff;">
-         <a href="http://www.uptoshipping.click/11f4e2395rCn8612N640YeU1831H36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQTRRm96Dg1r0n5RJwDM/referred-pejorative" target="_blank"><img alt="EES" src="http://www.uptoshipping.click/3ef6q23R9H5K7hia13r6MX411x1831M36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQTRRm96ivDg105IqXwD/laboriously-disclaimer" width="100%" /></a>
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <center align="center"> 
-     <h4 style="padding: 1.9rem 2rem; font-family: Arial, Helvetica, sans-serif; text-align: center; line-height: 7mm;; margin: 0; font-weight: 500; font-size: 16px;"><b>After finishing the survey, you might have the opportunity to qualify for a $100 Gift!</b></h4> 
-    </center> 
-    <aside style="max-width: 90px; margin: auto; padding: 0;">
-     <a href="http://www.uptoshipping.click/11f4e2395rCn8612N640YeU1831H36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQTRRm96Dg1r0n5RJwDM/referred-pejorative" target="_blank"><img alt="ESW" src="http://www.uptoshipping.click/amassing-agreeably/8824s2395L7SWa13YN6P412K1831k36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQTRRm95uh1O06GWUXwD" width="100%" /></a>
-    </aside> 
-    <small style="padding: 1.9rem 2rem; font-family: Arial, Helvetica, sans-serif; text-align: center; line-height: 7mm;; margin: 0; font-weight: 500; display: block; font-size: 16px;">To initiate the survey, just click the given link. It will only take a few minutes of your time, and please rest assured that your responses will be treated with the highest level of confidentiality. </small> 
-    <div style="max-width: 320px; margin: auto;"> 
-     <center style="background-color: rgb(44, 44, 44); padding: .5cm .8cm; font-family: Arial, Helvetica, sans-serif; font-weight: 800; border-radius: 10px;">
-      <a href="http://www.uptoshipping.click/11f4e2395rCn8612N640YeU1831H36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQTRRm96Dg1r0n5RJwDM/referred-pejorative" style="text-decoration: none; color: #fff;" target="_blank">Begin The Survey Here &gt;</a>
-     </center> 
-    </div> 
-    <small style="padding: 1.9rem 2rem; font-family: Arial, Helvetica, sans-serif; text-align: center; line-height: 7mm;; margin: 0; font-weight: 500; display: block; font-size: 16px;"> Your support is highly valued, and we eagerly await your response. Warm regards. </small>
-    <br /> 
-    <br /> &nbsp;
-   </div> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   <br /> 
-   <br /> 
-   <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-   <p style="max-width: 520px; margin: auto; text-align: center; font-weight: 600; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">another day to leave <a href="http://www.uptoshipping.click/a7f6m23SV95QG8o612M64C0fO1831X36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQTRRm96Y1X0rF5SlwpD/bellmen-criminal">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <em style="font-size: 1px; margin: 0; padding: 0; display: inline;">&nbsp;</em>
-   <br /> 
-   <br /> &nbsp;
-  </div>   
- <img src="http://www.uptoshipping.click/6fb5Y239C5m85PW11y6413C1831h36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQTRRm96dJX1t06up@1wD/bellmen-criminal" alt=""/></body>
-</html>
-
---fee59febb0cb4314042aa979a158469e1001029771021005409--
-
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
+L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
+Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
+bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIFNNQkMg5LiJ5LqV5L2P5Y+L44Kr44O844OJPEJSPg0KPGhyPg0KPEJS
+Pg0K5byK56S+44Kr44O844OJ44KS44GU5Yip55So44GE44Gf44Gg44GN44GC44KK44GM44Go44GG
+44GU44GW44GE44G+44GZ44CCPEJSPg0K5qyh5Zue44GK5pSv5omV6YeR6aGN44Gu44GK55+l44KJ
+44Gb44Gn44GZ44CCPEJSPg0KPEJSPg0KVnBhc3PjgqLjg5fjg6rjg7tMSU5F44O7V2Vi44Gu44GE
+44Ga44KM44GL44Gn44CB44GU5Yip55So5piO57Sw44KS44GU56K66KqN44GP44Gg44GV44GE44CC
+PEJSPg0KPEJSPg0K4pa8IFZwYXNzIFdlYiDjgafjg63jgrDjgqTjg7M8QlI+DQogPEEgaHJlZj0i
+aHR0cHM6Ly9kZWVwbmZ0LmNuIj5odHRwczovL3d3dy5zbWJjLWNhcmQuY29tL21lbWFwaS9qYXhy
+cy9tZWlzYWkvdjE8L0E+PEJSPg0KIDxCUj4NCuKWvCBMSU5FIOOBp+ODreOCsOOCpOODszxCUj4N
+CjxBIGhyZWY9Imh0dHBzOi8vZGVlcG5mdC5jbiI+aHR0cHM6Ly93d3cuc21iYy1jYXJkLmNvbS9t
+ZW0vaW5mby9saW5lL2luZGV4LmpzcDwvQT48QlI+DQogPEJSPg0K4pa8VnBhc3PjgqLjg5fjg6rj
+g4Djgqbjg7Pjg63jg7zjg4k8QlI+IA0K44O7aVBob25l44KS44GU5Yip55So44Gu5pa544CA4oC7
+QXBwIFN0b3Jl44Gr44Oq44Oz44Kv44GX44G+44GZ44CCPEJSPiANCjxBIGhyZWY9Imh0dHBzOi8v
+YXBwcy5hcHBsZS5jb20vanAvYXBwL2lkODM4MTM4NDUyP210PTgiPkFwcCBTdG9yZeOBi+OCieOD
+gOOCpuODs+ODreODvOODiTwvQT48QlI+DQo8QlI+DQrjg7tBbmRyb2lk44KS44GU5Yip55So44Gu
+5pa544CA4oC7R29vZ2xlIFBsYXnjgavjg6rjg7Pjgq/jgZfjgb7jgZnjgII8QlI+IA0KPEEgaHJl
+Zj0iaHR0cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWNvbS5zbWJj
+X2NhcmQudnBhc3MiPkdvb2dsZSBQbGF544Gn5omL44Gr5YWl44KM44KI44GGPC9BPjxCUj4NCg0K
+PEJSPjxCUj4NCuKAu+OBiuOBvuOBqOOCgeODreOCsOOCpOODs+OCteODvOODk+OCueOBlOWIqeeU
+qOOBruaWueOBr+OAgeODreOCsOOCpOODs+W+jOOBrueUu+mdouS4iumDqOOBq+OBpuOBlOimp+OB
+q+OBquOCiuOBn+OBhOOCq+ODvOODieOCkuOBlOmBuOaKnuOBj+OBoOOBleOBhOOAgjxCUj4NCuKA
+u+aYjue0sOODh+ODvOOCv+OBr+ODkeOCveOCs+ODs+OBi+OCiUNTVuODleOCoeOCpOODq+OBruOD
+gOOCpuODs+ODreODvOODieOBjOWPr+iDveOBp+OBmeOAgjxCUj4NCjxCUj4NCi0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tPEJSPg0KPEJSPg0K4pa8VnBhc3NJROOD
+u+ODkeOCueODr+ODvOODieOCkuOBiuW/mOOCjOOBruaWueOAgeacqueZu+mMsuOBruaWueOBruOB
+iuaJi+e2muOBjeOBr+OBk+OBoeOCieOBi+OCiTxCUj4NCjxBIGhyZWY9Imh0dHBzOi8vZGVlcG5m
+dC5jbiI+aHR0cHM6Ly93d3cuc21iYy1jYXJkLmNvbS9tZW0vdnBzL2xvZ2luL2luZGV4LmpzcDwv
+QT48QlI+DQrigLtWcGFzc0lE44O744OR44K544Ov44O844OJ44Gr44Gk44GE44Gm44CB6Zu76Kmx
+44O744Oh44O844Or44Gn44Gu5Zue562U44Gv6KGM44Gj44Gm44GK44KK44G+44Gb44KT44Gu44Gn
+44GU5LqG5om/44GP44Gg44GV44GE44CCPEJSPg0KPEJSPg0K4pa844GK5pSv5omV44GE6YeR6aGN
+44Gu6KGo56S644Gr44Gk44GE44GmPEJSPg0K44GK5pSv5omV44GE5pel44GMMTDml6Xjga7mlrnj
+ga7loLTlkIjjgIHjgYrmlK/miZXjgYTmnIjjga7liY3mnIgyMeaXpe+8iDI25pel44Gu5pa544Gv
+5b2T5pyINuaXpe+8ieS7pemZjeOBq+OBguOBqOOBi+OCieODquODnOODu+OBguOBqOOBi+OCieWI
+huWJsuetieOBruWIqeeUqOW+jOWkieabtOOCteODvOODk+OCueOCkjxCUj4NCuOBiueUs+OBl+i+
+vOOBv+OBhOOBn+OBoOOBhOOBn+WgtOWQiOOBr+OAgeOBiuaUr+aJleOBhOmHkemhjeOBjOWQjOOC
+teODvOODk+OCueOBiueUs+OBl+i+vOOBv+WJjeOBrumHkemhjeOBp+OBruihqOekuuOBqOOBquOB
+o+OBpuOBhOOCi+WgtOWQiOOBjOOBlOOBluOBhOOBvuOBmeOAgjxCUj4NCuOBneOBruWgtOWQiOOB
+r+OAgeaUueOCgeOBpuOBiueUs+OBl+i+vOOBv+W+jOOBruWGheWuueOBp+OAjOOBiuaUr+aJlemH
+kemhjeOBruOBiuefpeOCieOBm+OAjeOCkuOBiumAgeOCiuOBhOOBn+OBl+OBvuOBmeOAgjxCUj4N
+CjxCUj4NCiA8aHI+DQog44GE44GE44Kt44Oj44OD44K344Ol44Os44K544GM44CB44GE44GE5q+O
+5pel44KS5L2c44KL44CCPEJSPg0KSGF2ZSBhIGdvb2QgQ2FzaGxlc3MuPEJSPg0KIDxocj4NCuKW
+vFZwYXNz44Ki44OX44OqIOeUn+S9k+iqjeiovOOBp+e0oOaXqeOBj+WuieWFqOOBq+ODreOCsOOC
+pOODszxCUj4NCiA8QSBocmVmPSJodHRwczovL2NsaWNrLmNvbnRhY3QudnBhc3MubmUuanAvP3Fz
+PWZiODBiOWJlOGU3Nzc1YzBiOWIxNDA2MmU1YTI1YjIxZTM3OTIxMmVhMTc3NjQ0Y2JiNGM3MjQ2
+ZDhkZWU2MTAzOTY4MjhhNjk0ZmM2MGZmNWI1ZGUyOWU3YTU1MDJjODhmNTM0NGM3ZWE0ZjY4OTci
+PkFwcCBTdG9yZeOBi+OCieODgOOCpuODs+ODreODvOODiTwvQT48QlI+DQogPEEgaHJlZj0iaHR0
+cHM6Ly9jbGljay5jb250YWN0LnZwYXNzLm5lLmpwLz9xcz1mYjgwYjliZThlNzc3NWMwMTE0NGNi
+YTdhZDdkZWQyMDg4N2ZiOWUyZDUzYjgyZDViMWMzOWVmN2ViM2IyNzVkM2FlNGE4OWEwMjdmMDQ2
+NTQyMzljNDg3ODE2YzFmMTUwOWI4ODJjYTVlNDM0NmQ2Ij5Hb29nbGUgUGxheeOBp+aJi+OBq+WF
+peOCjOOCiOOBhjwvQT48QlI+DQogPGhyPg0KIDxlbT7lvIrnpL7jgYvjgonjgYrpgIHjgorjgZnj
+govjg6Hjg7zjg6vjgrXjg7zjg5Pjgrnjga/jgIHjgYrlrqLjgZXjgb7jgavjgZTnmbvpjLLjgYTj
+gZ/jgaDjgYTjgZ/jg4/jg7Pjg4njg6vjg43jg7w8L2VtPjxCUj4NCiA8ZW0+44Og44GM44Oh44O8
+44Or5pys5paH44Gu5YaS6aCt44Gr44Gk44GN44G+44GZ44Gu44Gn44GU56K66KqN44KS44GK6aGY
+44GE44GX44G+44GZ44CCPC9lbT48QlI+DQogPGVtPu+8iOODj+ODs+ODieODq+ODjeODvOODoOOB
+rueZu+mMsuOBjOOBquOBhOWgtOWQiOOBr+OCq+ODvOODieWQjeensOOCkuihqOekuuOBl+OBvuOB
+me+8iTwvZW0+PEJSPg0KIDxlbT48QSBocmVmPSJodHRwczovL2RlZXBuZnQuY24iPuODj+ODs+OD
+ieODq+ODjeODvOODoOOBqOOBrzwvQT48L2VtPjxCUj4NCiA8QlI+PEJSPg0KIOKWoOeZuuihjOiA
+hTxCUj4NCiA8QSBocmVmPSJodHRwczovL2RlZXBuZnQuY24iPuS4ieS6leS9j+WPi+OCq+ODvOOD
+ieagquW8j+S8muekvjwvQT48QlI+DQog44CSMTM1LTAwNjHjgIDmnbHkuqzpg73msZ/mnbHljLro
+sYrmtLIy5LiB55uuMueVqjMx5Y+3IFNNQkPosYrmtLLjg5Pjg6s8QlI+DQog44GK5ZWP44GE5ZCI
+44KP44Gb44GvPEEgaHJlZj0iaHR0cHM6Ly9jbGljay5jb250YWN0LnZwYXNzLm5lLmpwLz9xcz1m
+YjgwYjliZThlNzc3NWMwNjUwYzFjNjA1ZGI4NmMyMmYxZTBhZmRhOThlMGQ1NDc2MTZlOGEzODhl
+ZTY1ZDUwMGQ5NGE4ZDMzY2E5ZjQxYTJiYzJhMmQ1ZDcxZjljNTIxYjAzNDkwZjQ1MWQ1YWU0Ij7j
+gZPjgaHjgok8L0E+PEJSPg0KIOKAu+acrOODoeODvOODq+OBr+mHjeimgeOBquOBiuefpeOCieOB
+m+OBruOBn+OCgeOAgeODoeODvOODq+mFjeS/oeOCkuOAjOWQpuOAjeOBq+OBleOCjOOBpuOBhOOC
+i+aWueOBq+OCgumAgeS/oeOBl+OBpuOBiuOCiuOBvuOBmeOAgjxCUj4NCiA8QlI+PEJSPg0KIDxl
+bT7mnKzjg6Hjg7zjg6vjgavplqLjgZnjgovkuIDliIfjga7oqJjkuovjga7nhKHmlq3ou6LovInj
+gYrjgojjgbPlho3phY3luIPjgpLnpoHjgZjjgb7jgZnjgII8L2VtPjxCUj4NCiA8ZW0+Q29weXJp
+Z2h0IChDKSBTdW1pdG9tbyBNaXRzdWkgQ2FyZCBDby4sIEx0ZC48L2VtPjxCUj4NCjwvQk9EWT48
+L0hUTUw+DQo=
