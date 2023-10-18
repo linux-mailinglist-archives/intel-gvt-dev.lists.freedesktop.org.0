@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66E9D7CE9DB
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 18 Oct 2023 23:16:36 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 921ED7CEAE9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Oct 2023 00:02:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CBAD810E02A;
-	Wed, 18 Oct 2023 21:16:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 623B610E42D;
+	Wed, 18 Oct 2023 22:02:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 767 seconds by postgrey-1.36 at gabe;
- Wed, 18 Oct 2023 21:16:32 UTC
-Received: from mail.bluemarket.world (unknown [213.21.253.106])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3BA4C10E02A
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 18 Oct 2023 22:02:26 UTC
+Received: from mail.pharmatoday.world (unknown [213.21.253.122])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3B69F10E3F2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Oct 2023 21:16:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bluemarket.world;
+ Wed, 18 Oct 2023 22:02:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pharmatoday.world;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=kroger_customer_support@bluemarket.world; 
- bh=lZ+x5pLffJX/eQ8br7QFQKFAcwM=;
- b=Lw2asIXaSJP9ukUEh3KLyMT/rDjifltvqHnRaewbPN6dt7vdEjpxXZ51C1H60Sx8Ze6Ql2RcN41d
- 5FW9Gq3nEqk9I37Y5WHSiOSmuzmpTCI8Nx3xUMa/QEDDhASqORBirOixCXADvUVUxwY19cOtuUTM
- 7lv4RjOSJM9OMSW8ER0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bluemarket.world;
- b=Gw3/8E51qv899pdJ3OQ8rx2/3hVTp1Q/UOEewPwZvKZClqnNumGuqIW5iRQ2SzTaIldjRu+fyjGZ
- RaxsrMBzSfVVZGRTzb7/LdwKT3jN0FtQcXOfZ1xzaiY2U3OFWMVOtQzsQ6KXp6zk75Y1d4JOBEl+
- AdnNwrA2ttHmcE74Zmw=;
-Received: by mail.bluemarket.world id h615j00001gh for
+ i=find_cvs_gift_opportunities@pharmatoday.world; 
+ bh=rrJiWx+ZSLoMwbcrYzCWM2tByeA=;
+ b=JtBoSvBdQunHgy1GLoJLuZO8MRZ97M8C5lQeZ2RhDtxhSIOAH2Do0lsL/DFfjKfO3xK0pATRhfjb
+ 4k6fm7Uv22I/hCk7XYK3SQtaCmsoc7MFJdiZWoaJIi35J+3+j40pWYG3Uub87M7dX8npNy6gU4ft
+ pt2YB0y5oPFGgqGQA48=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharmatoday.world; 
+ b=n21malAFPQFTcfxNZyOTSXpBMmnqd91QJF5FnO2CW++iSeUaX1FwOzD1oI/12z1kdyWKjh5eWgKk
+ C9v3dGOGkzHcJuFLQaacg8MWWwLxF68bp+VZL1jj54u1Od0522MLRxGaDRLRBL27eNGj0LUs1aVQ
+ QcLmkkJfg1galZnTmeo=;
+Received: by mail.pharmatoday.world id h61av40001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 18 Oct 2023 16:52:51 -0400 (envelope-from
- <kroger_customer_support-intel+2Dgvt+2Ddev=lists.freedesktop.org@bluemarket.world>)
-Date: Wed, 18 Oct 2023 16:52:51 -0400
-From: "Kroger Customer Support" <kroger_customer_support@bluemarket.world>
+ Wed, 18 Oct 2023 17:54:45 -0400 (envelope-from
+ <find_cvs_gift_opportunities-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharmatoday.world>)
+Date: Wed, 18 Oct 2023 17:54:45 -0400
+From: "Find CVS Gift Opportunities"
+ <find_cvs_gift_opportunities@pharmatoday.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <12890263757.16976623670433@bluemarket.world>
-Subject: We're in a celebratory mood,
- and we extend an invitation to you to delight in a gift from us as an
- expression of our appreciation.
+Message-ID: <143309287723.169766606392816@pharmatoday.world>
+Subject: Time-Limited Offer: Win Up to $100 in CVS Gift Cards!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=e01442e549f587eec3b5ff1499adb3210679741101563
+ boundary=f9bfd3dd85018b040b7c32ef4dcc8ac5361039851039838
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---e01442e549f587eec3b5ff1499adb3210679741101563
+--f9bfd3dd85018b040b7c32ef4dcc8ac5361039851039838
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,207 +63,60 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>appreciate your</title> 
+  <title>importance</title> 
  </head> 
  <body> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(224, 224, 224);" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" id="shion" style="border-collapse: collapse;" width="100%"> 
-       <thead> 
-        <tr> 
-         <th align="center" colspan="3">&nbsp;</th> 
-        </tr> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td class="ytops"> 
-          <div class="infos"> 
-           <center id="ittt"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" id="shion" style="border-collapse: collapse;" width="100%"> 
-             <thead> 
-              <tr> 
-               <th align="center" colspan="3">&nbsp;</th> 
-              </tr> 
-             </thead> 
-             <tbody> 
-              <tr> 
-               <td class="ytops"> 
-                <div class="infos"> 
-                 <center id="ittt">
-                  &nbsp;
-                 </center> 
-                </div> </td> 
-               <td class="ytops"> 
-                <div class="infos"> 
-                 <center id="ittt"> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" id="shion" style="border-collapse: collapse;" width="100%"> 
-                   <thead> 
-                    <tr> 
-                     <th align="center" colspan="3"> 
-                      <div style="background-color: rgb(240, 248, 255); width: 100%;"> 
-                       <div style="background-color: rgb(26, 72, 152);"> 
-                        <section style="max-width: 17rem; margin: auto;">
-                         <a href="http://www.bluemarket.world/governments-preallocate/a9e5c2G395YR86y11Q6432J1838N36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQyRRnm7m1hORX05QjpwD" target="_blank"><img alt="NBS" src="http://www.bluemarket.world/60b4m2395Gz7ta13E6G43g4U1838A36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQyRRnm6pZ1V0L6qLwTDj/Sargent-contrived" width="100%" /></a>
-                        </section> 
-                        <div style="width: 100%; background-color: rgb(242, 247, 255);"> 
-                         <aside style="border: solid 4px rgb(26, 72, 152); max-width: 520px; margin: auto; padding: 20px 0; background-color: #fff;"> 
-                          <p style="
-    margin: 0;
-    font-weight: 500;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 4.5mm;
-    line-height: 7mm;
-    padding: 2.9mm 5mm;
-    ;">Thank you for taking part in our survey. Your contribution holds significant value at Kriyncogelocr, and we genuinely appreciate your feedback.</p> &nbsp; 
-                          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 210px; margin: auto;"> 
-                           <tbody> 
-                            <tr> 
-                             <td width="90px"><a href="http://www.bluemarket.world/governments-preallocate/a9e5c2G395YR86y11Q6432J1838N36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQyRRnm7m1hORX05QjpwD" target="_blank"><img alt="NSA" src="http://www.bluemarket.world/Iverson-blackjacks/5d05L2Y395U7xMa13cs64_35v1838V36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQyRRnm6kRi_105iWNwD" width="100%" /></a></td> 
-                             <td width="110px"><a href="http://www.bluemarket.world/governments-preallocate/a9e5c2G395YR86y11Q6432J1838N36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQyRRnm7m1hORX05QjpwD" target="_blank"><img alt="USA" src="http://www.bluemarket.world/5755jA2395o7ain11S6436w1838L36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQyRRnm5U10Ss6ujJwDB/moratorium-revolutionary" width="100%" /></a></td> 
-                            </tr> 
-                           </tbody> 
-                          </table> &nbsp; 
-                          <p style="
-margin: 0;
-font-weight: 500;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-size: 4.5mm;
-line-height: 7mm;
-padding: 2.9mm 5mm;
-background-color: rgb(26, 72, 152);
-color: white;">Your ongoing support is highly significant to us, and we look forward to receiving your feedback with eagerness.</p> &nbsp; 
-                          <p style="
-margin: 0;
-font-weight: 500;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-size: 4.5mm;
-line-height: 7mm;
-padding: 2.9mm 5mm;
-;">Accessing the survey is easy; just click the provided link below. It's a quick task that will require only a few minutes of your valuable time, and rest assured, your responses will be treated with the utmost confidentiality.</p> &nbsp; 
-                          <div style="max-width: 230px; margin: auto;"> 
-                           <center style=" background-color: rgb(26, 72, 152); padding: 3.5% 7%; border-radius: 7px; font-weight: bold; font-size: 18px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-                            <a href="http://www.bluemarket.world/governments-preallocate/a9e5c2G395YR86y11Q6432J1838N36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQyRRnm7m1hORX05QjpwD" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt;</a>
-                           </center> 
-                          </div> &nbsp; 
-                          <p style="margin: 0;
-font-weight: 500;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-size: 4.5mm;
-line-height: 7mm;
-padding: 2.9mm 5mm;
-;">Thank you once more for your unwavering support. We eagerly look forward to receiving your feedback soon! Your continued support is deeply appreciated, and we're eager to hear from you!</p> 
-                          <br /> &nbsp;
-                          <br /> &nbsp; 
-                          <hr /> 
-                          <p style="margin: 0;
-font-weight: 500;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-size: 3.5mm;
-line-height: 5mm;
-padding: 2.9mm 5mm;
-;">Warm regards,<br /> The kroger Survey Team</p> 
-                         </aside> 
-                         <br /> 
-                         <em>&nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;</em> 
-                         <div style="background-color: cornsilk; padding: 5mm 0;"> 
-                         </div>
-                        </div>
-                       </div>
-                      </div></th>
-                    </tr>
-                   </thead>
-                  </table>
-                  <table align="center" style="max-width: 33rem; margin: auto;"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: .9rem; text-align: center; font-family: 800; ;">if you need to go visit <a href="http://www.bluemarket.world/scorches-dragging/22e4L2395jG8k613a6i4k33_1838G36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQyRRnm5osg106wTwDyl">here</a><br /> 10010 126 E 23rd St New York, NY, US</td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </center>
-                </div> 
-                <dir>
-                 <br /> &nbsp;
-                 <br /> &nbsp;
-                 <br /> &nbsp;
-                 <br /> &nbsp;
-                 <br /> &nbsp;
-                 <br /> &nbsp;
-                 <br /> &nbsp;
-                 <br /> &nbsp;
-                 <br /> &nbsp;
-                 <br /> &nbsp; 
-                </dir>     </td>
-              </tr>  
-             </tbody>
-             <tbody> 
-              <tr> 
-               <td class="ytops"> 
-                <div class="infos"> 
-                 <center id="ittt">
-                  &nbsp;
-                 </center> 
-                </div> </td> 
-               <td class="ytops"> 
-                <div class="infos"> 
-                 <center id="ittt">
-                  &nbsp;
-                 </center> 
-                </div> </td> 
-               <td class="ytops"> 
-                <div class="infos"> 
-                 <center id="ittt">
-                  &nbsp;
-                 </center> 
-                </div> </td> 
-              </tr> 
-             </tbody> 
-             <tfoot> 
-              <tr> 
-               <td align="center" colspan="3">&nbsp;</td> 
-              </tr> 
-             </tfoot> 
-            </table> 
-           </center> 
-          </div> </td> 
-         <td class="ytops"> 
-          <div class="infos"> 
-           <center id="ittt">
-            &nbsp;
-           </center> 
-          </div> </td> 
-        </tr> 
-       </tbody> 
-       <tfoot> 
-        <tr> 
-         <td align="center" colspan="3">&nbsp;</td> 
-        </tr> 
-       </tfoot> 
-      </table>   </td> 
-     <td class="ytops"> 
-      <div class="infos"> 
-       <center id="ittt">
-        &nbsp;
-       </center> 
-      </div> </td> 
-     <td class="ytops"> 
-      <div class="infos"> 
-       <center id="ittt">
-        &nbsp;
-       </center> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td align="center" colspan="3">&nbsp;</td> 
-    </tr> 
-   </tfoot> 
-  </table>       
- <img src="http://www.bluemarket.world/moratorium-revolutionary/e045Q239T5N8i5C11z6437w1838M36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQyRRnm5yL10_6NlJ@wD" alt=""/></body>
+  <div style="background-color: #ff0000; padding-top: 15px; padding-bottom: 15px;"> 
+   <section style="max-width: 150mm; margin: auto;"> 
+    <h2 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 700; color: #fff;">A Special Offer for Our Valued Clients</h2> 
+   </section> 
+  </div> 
+  <div style="background-color: rgb(211, 239, 255); width: 100%;">
+   <main style="display: block; max-width: 520px; margin: auto; background-color: #fff; text-align: center;"> 
+    <center align="center" class="iofkls" style="max-width: 2.5cm; margin: auto; padding: .5cm 0; ;">
+     <a href="http://www.pharmatoday.world/4674U2395Xk86C12B6438qO1839w36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQvRRnn5oGy105wlwD@/breachers-woodpecker" target="_blank"><img alt="MNS" src="http://www.pharmatoday.world/Stendhal-railers/b344R2395NSB7a13m6Y4W39v1839g36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQvRRnn5r1uN06Yj@wpD" width="100%" /></a>
+    </center> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.1rem; line-height: 1.7rem; text-align: center; padding: 1.2rem 2rem;">We greatly value your selection of CVS. Your loyalty and support are of great significance to us, and we genuinely appreciate the opportunity to assist you.</td> 
+      </tr> 
+      <tr> 
+       <td> 
+        <div style="display: flex; justify-content: center; align-items: center; flex-flow:  row wrap;"> 
+         <blockquote style="max-width: 90px; margin: 20px">
+          <a href="http://www.pharmatoday.world/4674U2395Xk86C12B6438qO1839w36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQvRRnn5oGy105wlwD@/breachers-woodpecker" target="_blank"><img alt="LOL" src="http://www.pharmatoday.world/98f6tZ2I395W7VaZ11e643aR1839D36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQvRRnn6r10pYL6rNwDqj/Stendhal-railers" width="100%" /></a>
+         </blockquote> 
+         <blockquote style="max-width: 110px; margin: 20px;">
+          <a href="http://www.pharmatoday.world/4674U2395Xk86C12B6438qO1839w36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQvRRnn5oGy105wlwD@/breachers-woodpecker" target="_blank"><img alt="UESA" src="http://www.pharmatoday.world/breachers-woodpecker/c245F2n395q7lHa13U64nZ3bX1839l36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQvRRnn7HvK10iy6h2JwqD" width="100%" /></a>
+         </blockquote> 
+        </div> </td> 
+      </tr> 
+      <tr> 
+       <td style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.1rem; line-height: 1.7rem; text-align: center; padding: 1.2rem 2rem;">We highly value your feedback, and to show our appreciation, we'd like to offer you a special thank-you for taking the time to share your insights.<br /> &nbsp;<br /> &nbsp; <span> <b> Upon completing the survey, you might have the chance to choose from a variety of gifts! </b> </span></td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <div style="width: 100%; text-align: center;"> 
+     <div style="max-width: 300px; margin: auto;"> 
+      <center style="display: inline-block; font-family: Arial, Helvetica, sans-serif; font-weight: 800; background-color: #ff0000; padding: .2cm .6cm; font-size: 16px; border-radius: 100px;">
+       <a href="http://www.pharmatoday.world/4674U2395Xk86C12B6438qO1839w36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQvRRnn5oGy105wlwD@/breachers-woodpecker" style="color: #fff; text-decoration: none;" target="_blank">Star Now &gt;&gt;</a>
+      </center> 
+     </div> 
+     <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.1rem; line-height: 1.7rem; text-align: center; padding: 1.2rem 2rem; margin: 0;">Thank you once more for your support. We are eagerly looking forward to your prompt response! Warm regards,</p> 
+     <hr />
+    </div> 
+   </main> 
+   <h3 style="padding-top: 50px;">&nbsp;</h3> 
+   <h3 style="padding-top: 50px;">&nbsp;</h3> . 
+   <div style="background-color: lightpink; padding-top: 10px; padding-bottom: 10px;"> 
+    <h4 style="max-width: 450px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: .9rem; text-align: center;">time to show you the exit <a href="">here</a><br /> US 10010 126 E 23rd St New York, NY,</h4> 
+   </div> 
+   <h3 style="padding-top: 50px;">&nbsp;</h3> 
+   <h3 style="padding-top: 50px;">&nbsp;</h3> 
+  </div>   
+ <img src="http://www.pharmatoday.world/4a34Q2395BOK8511z643cM1839p36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQvRRnn5Ck10O5zpwlD/afflictive-hereabouts" alt=""/></body>
 </html>
 
---e01442e549f587eec3b5ff1499adb3210679741101563--
+--f9bfd3dd85018b040b7c32ef4dcc8ac5361039851039838--
 
