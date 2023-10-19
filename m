@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 615817D034D
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Oct 2023 22:46:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A4D107D0411
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Oct 2023 23:38:28 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 113EA10E539;
-	Thu, 19 Oct 2023 20:46:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 6E03010E562;
+	Thu, 19 Oct 2023 21:38:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 19 Oct 2023 20:46:15 UTC
-Received: from mail.movilinfopops.world (unknown [213.21.253.24])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5D03010E539
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Thu, 19 Oct 2023 21:38:25 UTC
+Received: from mail.otginfomobil.bond (unknown [213.21.253.34])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A806310E562
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Oct 2023 20:46:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=movilinfopops.world; 
+ Thu, 19 Oct 2023 21:38:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=otginfomobil.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=verizon_gift_opportunity@movilinfopops.world; 
- bh=jfPdadrxB0Rw9fTOjNJOVS3tAe8=;
- b=cyMfopT2Rvn5O/3pUYG5J/PNxw/oTMUhLxN44FTTjjk0d4bQbsjXHVSUOnrPp2VBjh+zpcYJWHO7
- nqh90dpscdGbuw2fDeOellml+h97QwRk8nP+Fq8YOEox5OeBxBxZtAvC/BK4J0TUn2gqrwfQ0wWP
- VNyKButfzZoaynljn0s=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=movilinfopops.world;
- b=G1T7aeWVO284ePaOx5k8FsygrGOl4iz0y1P/lsCGVJ/3j6KkAYCcQ9BJ5qsbQ4fSX+5AgG/5ZHdJ
- U4MzoM/8A/lMUw1GqnS9xzJL7diF9G74Tb1B8vngAA9XQP84u1KtrCfrjci5qFOf65lboDTiT8x5
- FltCf8MJ2wZ4FZrn+jw=;
-Received: by mail.movilinfopops.world id h66ape0001gt for
+ i=tmobile-customer-experience@otginfomobil.bond; 
+ bh=eTznrhHJ1VswxCEftgqtflQ3Pgc=;
+ b=KtZZXf6PjkZza2iILof+JQfObkrlksbheKcQeHul58d/7uwGMd6OHiNw4A4lcP40T2L/bASiNd25
+ JjcBf8q0eENFtk9ljPBSTKqUAVHwqSDHuwuxyXRYb0oR+CT2nAcnsMrVHzKGm+xESGiJkuMgkCM/
+ E91vjGK++W2MI4jg9HM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=otginfomobil.bond; 
+ b=SlvEv8TIGxsFznuzOHlmgf3DvIoZYNc//qmlS5N8hpSlzgD6trwWseXFgWAEo4oiVsbp1dUEbvZU
+ ywHHKzLW6by0Hh2TMwBiiWmt0jMdRU0gTY/UMhbtRm3LGyj5EsHy7KxkjqkrD2Od0ZlSAbDHZDiR
+ hj1cp7EXNgpmdwqHJLE=;
+Received: by mail.otginfomobil.bond id h66gt20001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Oct 2023 16:28:26 -0400 (envelope-from
- <verizon_gift_opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@movilinfopops.world>)
-Date: Thu, 19 Oct 2023 16:28:26 -0400
-From: "VERIZON Gift Opportunity" <verizon_gift_opportunity@movilinfopops.world>
+ Thu, 19 Oct 2023 17:29:58 -0400 (envelope-from
+ <tmobile-customer-experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@otginfomobil.bond>)
+Date: Thu, 19 Oct 2023 17:29:58 -0400
+From: "TMOBILE Customer Experience"
+ <tmobile-customer-experience@otginfomobil.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <21391230281.169774729570517@movilinfopops.world>
-Subject: Every visit a new reward that could get you anything on us
+Message-ID: <1582366224918.169775095819840@otginfomobil.bond>
+Subject: T-MOBILE reward is just a few clicks away - While supplies last
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=8a52ca573095326339ac0cf273ab66f3263
+ boundary=d5b21e539c76b3e4525fd140a2c91cf341023102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,42 +54,39 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---8a52ca573095326339ac0cf273ab66f3263
+--d5b21e539c76b3e4525fd140a2c91cf341023102
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR OUR VALUED USERS
------------------------------------------
+A Special Offer for Our Valued Users
+----------------------------------------------
 
-VERIZON
+T-Mobile
 
-
-As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your experience with Verizon in general. 
+We wanted to take a moment to thank you for choosing T-Mobile.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
 
 Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
 Upon Completion of the Survey you might have a choice between different gifts!
 
-
-Get Me There Now >>>>>
-http://www.movilinfopops.world/ribbing-Montpelier/8be5G239Y5t8wh612z6R468V1842L36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQuRRom5oMX105uzwqD
-
-
-Thank you again for your support.  We look forward to hearing from you soon
+Start Now >>>>>>>
+http://www.otginfomobil.bond/e3f4F2395I8MF612s64S6aO1843s36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQiRRon7STR1hp05iNBwD/outermost-octogenarian
 
 
-Warm regards,
-The Verizon Survey
 
+Thank you again for your support.  We look forward to hearing from you soon! Warm regards,
 
------------------------------------------
-To put an end to notices, click_here >>>>> http://www.movilinfopops.world/bystander-primrose/1f26yV239q5G86wJ13yn64Z69B1842Y36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQuRRom6No10VG5rLwDN
+The T-Mobile Survey
+
+----------------------------------------------
+
+To abandon notifications, Begin Here >>>>> http://www.otginfomobil.bond/f2f4V2395nQ86D11L646bn1843q36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQiRRon7LwxQ1T06jAz3wD/improvisation-gowns
 126 E 23rd St New York, NY, US 10010
 
 
 
-<font style="pronunciation"><span><style></span></font></style><small></small><font id="footnote"></font><font><span title="jarringly"></font></span><span style="costumed"><span face="preceding"></span></span><font></font><style size="utopia"></style>
+<font></font><style style="steepness"><big></style></big><font></font>
 
---8a52ca573095326339ac0cf273ab66f3263--
+--d5b21e539c76b3e4525fd140a2c91cf341023102--
 
