@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C0CD7D1052
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Oct 2023 15:14:06 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id E40E27D13BB
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Oct 2023 18:09:58 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2304610E0E2;
-	Fri, 20 Oct 2023 13:14:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9E85910E0FA;
+	Fri, 20 Oct 2023 16:09:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Fri, 20 Oct 2023 13:14:01 UTC
-Received: from mail.thetoolvault.world (unknown [213.21.253.42])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5CE0A10E0E2
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 20 Oct 2023 16:09:54 UTC
+Received: from mail.bluedepottools.world (unknown [213.21.253.97])
+ by gabe.freedesktop.org (Postfix) with ESMTP id A67AC10E0FA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Oct 2023 13:14:01 +0000 (UTC)
+ Fri, 20 Oct 2023 16:09:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=thetoolvault.world; 
+ d=bluedepottools.world; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor-freight-extras@thetoolvault.world; 
- bh=FCKjp/baAg627utn3P/3A6eqqjM=;
- b=A/rxZFozwM5LWwO+eI6IYs8WDxVIpDl+atCcE7UTJb3fVgGwPNyHtFyU9DtAq0veovjdut0USxTY
- AuRiAxUK/Y7nroRfloSkuJ1fKhpaXVq12iRUKbS6ofJJNuVux4mxQD85EkJ416f3Mc4l5GAHDQ2v
- W34+bP9hT52CExQBO5Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=thetoolvault.world; 
- b=hJ6ryyRoeMWHiDeOG+U6hk/7v6GoMv5MJoVmhPknjby8lssw8u4Ta0RjTF5vpF/1rdKvCHSEIDtb
- ibNgJiJYLac7YboS2qtrakF2D0u4mcq9hUw3wmuilcswP85TJStAo3mb8RmwdyGTOz5XS7E39Lg7
- eNed9gOBUSNdtJ8U3Aw=;
-Received: by mail.thetoolvault.world id h69uhi0001gi for
+ i=shopping-details@bluedepottools.world; 
+ bh=kXeUqC5pyAEqu7VVkpPVRlY4h5k=;
+ b=mo8rWmlwpr/GQVt7vR1tieRWPvMmZhp4mrFn0ky6yna9OeTl02BS4Vq8sXHFQzddCwuwdSw2yEW7
+ Fuv5GcIJFHpGmDHc/kdj/TRI977mvgjBVxBtD/8DSIUD1agBilcQRBXHh0WNkZRC3ghH0pkbgkXb
+ BlL8XPrarNkKiZrnEak=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bluedepottools.world;
+ b=mVE/ck5AVMFwu2RbdNqJsaE41ZU2ishGBlsql4qGuGUgbTEzUC9MFEO7m2kzsZPdSGaqXAOecjQT
+ QpC9bky2SKGwPcrKPCkA8GiqAB/jR5g6L0DqKvvZGA0G/gMb8IW8pxWw+0CrvXrIcBDD7xX8r81q
+ 9/Hbuxhwz+cENljrDrE=;
+Received: by mail.bluedepottools.world id h6aj540001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Oct 2023 09:00:23 -0400 (envelope-from
- <harbor-freight-extras-intel+2Dgvt+2Ddev=lists.freedesktop.org@thetoolvault.world>)
-Date: Fri, 20 Oct 2023 09:00:23 -0400
-From: "Harbor Freight Extras" <harbor-freight-extras@thetoolvault.world>
+ Fri, 20 Oct 2023 12:01:45 -0400 (envelope-from
+ <shopping-details-intel+2Dgvt+2Ddev=lists.freedesktop.org@bluedepottools.world>)
+Date: Fri, 20 Oct 2023 12:01:45 -0400
+From: "Shopping Details" <shopping-details@bluedepottools.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <249282739824.1697806806744807@thetoolvault.world>
-Subject: Tailored Savings for Our Valued Patrons!
+Message-ID: <1508209739800.16978176924856@bluedepottools.world>
+Subject: You qualify for a specially prepared Kobalt Tool set &ndash;
+ share your opinions and enjoy it.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=6986e78fda39cbf47bb08529e8667e8b9710349
+ boundary=80f9fe7b53c34d3bc233c34ac8eca25b1598
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---6986e78fda39cbf47bb08529e8667e8b9710349
+--80f9fe7b53c34d3bc233c34ac8eca25b1598
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,89 +64,74 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900;1000&display=swap');
-	</style> 
-  <title>redemption</title> 
+  <title>importance</title> 
  </head> 
  <body> 
-  <div> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" class="orgproyecs"> 
-       <center style="background-color: rgb(226, 226, 226); width: 100%;"> 
-        <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(172, 0, 0);" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="center">
-            <main style="display: block; max-width: 150mm; text-align: center;font-family: 'Mulish', sans-serif; font-weight: 900; font-size: 6mm; color: #fff;;">
-              Significant Updates from Harbor Freight 
-            </main></td> 
-          </tr> 
-         </tbody> 
-        </table> &nbsp; 
-        <div>
-         <main style="max-width: 50mm; margin: auto;"> 
-          <a href="http://www.thetoolvault.world/be76f2K3s95Gql8612g64T6cX1844Q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZRRoo7M10XSPB5EBlwD/eatings-trappers" target="_blank"><img alt="ACX" src="http://www.thetoolvault.world/compliance-inductances/33c5V2l395sQS7a11l646ez1844i36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQZRRoo6d10WoM5MJXwD" width="100%" /></a> 
-         </main>
-        </div> &nbsp; 
-        <div style="background-color: #ffd3d3;"> 
-         <aside style="background-color: #fff; max-width: 33.5em; margin: auto; text-align: center;"> 
-          <article style="padding: 2.5% 5%;"> 
-           <p style="
-    font-family: 'Mulish', sans-serif;
-    margin: 0;
-    font-size: 4.5mm;
-    line-height: 7.5mm;
-    text-align: center;
-    font-weight: 600;">We're pleased to bring you some thrilling news from Harbor Freight. You have the opportunity to obtain a Pittsburgh 225 Piece Tool Set, which can be redeemed at any of our store locations.<br /> <br /> <span>Grab this chance without delay! You have until October 20th to obtain these captivating tools. </span></p> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center"> 
-               <blockquote>
-                <a href="http://www.thetoolvault.world/be76f2K3s95Gql8612g64T6cX1844Q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZRRoo7M10XSPB5EBlwD/eatings-trappers" target="_blank"><img alt="YTS" src="http://www.thetoolvault.world/vineyards-Egyptianize/6a24v2395Gm7ia12y64J6fU1844i36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQZRRoo7H10vR_O5XUpwD" width="100%" /></a>
-               </blockquote> </td> 
-             </tr> 
-            </tbody> 
-           </table> &nbsp; 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center"> 
-               <div> 
-                <center style="background-color: rgb(172, 0, 0); padding-top: 15px; padding-bottom: 15px; padding-left: 33px; padding-right: 33px; border-radius: 100px; font-size: 18px; font-weight: 900; font-family: 'Mulish', sans-serif; width: 250px; margin: auto;">
-                 <a href="http://www.thetoolvault.world/be76f2K3s95Gql8612g64T6cX1844Q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZRRoo7M10XSPB5EBlwD/eatings-trappers" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now&gt;&gt;</a>
-                </center> 
-               </div> </td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <br /> &nbsp;
-          </article> 
-         </aside> 
-         <br /> &nbsp;
-         <br /> &nbsp;
-        </div> 
-        <br /> &nbsp;
-        <br /> &nbsp;
-        <br /> &nbsp;
-        <br /> &nbsp;
-        <br /> &nbsp; 
-        <div style="background-color: lightsteelblue; padding: 3.5% 0; text-align: center;"> 
-         <p style="max-width: 150mm; text-align: center; font-size: 12px; font-weight: 700; font-family: 'Mulish', sans-serif; margin: auto;">more than welcome to leave in <a href="http://www.thetoolvault.world/keeper-pervading/53a5X2m395Y8I6y13A6Fj46dz1844V36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQZRRoo5b1gK06SNwllD">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY,</p> 
-        </div> 
-        <br /> &nbsp;
-        <br /> &nbsp;
-        <br /> &nbsp;
-        <br /> &nbsp;
-       </center> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </div>   
- <img src="http://www.thetoolvault.world/compliance-inductances/3966gF23w95XZ85p11n6470q1844T36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQZRRoo6e10uXN5dOqwD" alt=""/></body>
+  <header style="background-color: rgb(243, 243, 243); "> 
+   <section style="padding: 7% 0%;"> 
+    <center style="max-width: 520px; margin: auto; text-align: center; background-color: #fff;">
+     <main style="background-color: #dbe3ff;"> 
+      <div style="max-width: 200px; margin: auto; padding: 15px 0;">
+       <a href="http://www.bluedepottools.world/7cd6BOU2395O86gk12s64M7eU1847U36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQzRRoQ7LtH10JJ6sNJw@D/disagrees-sparrow" target="_blank"><img alt="ZX" src="http://www.bluedepottools.world/knells-anvil/1205D239w5iI7xa12z648L0x1847s36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQzRRoQ6BJ1K0K5M0zwD" width="100%" /></a>
+      </div> 
+     </main>
+     <br /> 
+     <br /> 
+     <small style="display: block; color: #2745A6; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: bold;; font-size: 25px;">Last Notification<br /> Regarding Your Lowe's Reward </small>
+     <br /> 
+     <br /> 
+     <small style="display: block; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: .45cm; line-height: .75cm; padding: 0 .5cm ;">Exciting updates from Lowe's! A Kobalt Tool Set is available for you at our stores. Don't delay; grab this opportunity now! You have until October 20th to obtain these fantastic items. </small>
+     <br /> 
+     <br /> &nbsp; 
+     <div>
+      <a href="http://www.bluedepottools.world/7cd6BOU2395O86gk12s64M7eU1847U36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQzRRoQ7LtH10JJ6sNJw@D/disagrees-sparrow" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; font-size: 18px; border-radius: 20px; background-color: #2745A6; padding-top: 1.2rem; padding-bottom: 1.2rem; padding-left: 1.8rem; padding-right: 1.8rem;">Start Here Now &gt;&gt;</span></a>
+     </div> &nbsp; 
+     <div style="max-width: 300px; margin: auto;">
+      <a href="http://www.bluedepottools.world/7cd6BOU2395O86gk12s64M7eU1847U36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQzRRoQ7LtH10JJ6sNJw@D/disagrees-sparrow" target="_blank"><img alt="YTS" src="http://www.bluedepottools.world/60b5a23S95Bl7Ia11b6481K1847R36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQzRRoQ7LU1l0hp5sXTwD/strung-gassings" width="100%" /></a>
+     </div> 
+     <br /> 
+     <br /> 
+     <small style="display: block; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: .45cm; line-height: .75cm; padding: 0 .5cm ;">We value your involvement in our survey. Your input is of great importance to us at Lowe's, and we highly regard your feedback. </small>
+     <br /> &nbsp;
+    </center> 
+    <dir>
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> 
+     <br /> &nbsp; 
+    </dir> 
+    <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse; background-color: mistyrose;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td> 
+        <div style="max-width: 520px; margin: auto; text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: .3cm; font-weight: bold;">
+         you can leave with sadness 
+         <a href="http://www.bluedepottools.world/tablespoons-constraining/c604P2395fn8l612b647fWr1847I36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQzRRoQ6uBvC105u1BwD">here</a>
+         <br /> US 10010 126 E 23rd St New York, NY,
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> &nbsp;
+   </section> 
+  </header>   
+ <img src="http://www.bluedepottools.world/lagoons-Huxley/bac5E23w95exO8511E6482C1847F36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQzRRoQ6N1_0OC6cA0XwD" alt=""/></body>
 </html>
 
---6986e78fda39cbf47bb08529e8667e8b9710349--
+--80f9fe7b53c34d3bc233c34ac8eca25b1598--
 
