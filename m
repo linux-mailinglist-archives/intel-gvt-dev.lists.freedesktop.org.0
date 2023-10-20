@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4D107D0411
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 19 Oct 2023 23:38:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C0CD7D1052
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Oct 2023 15:14:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6E03010E562;
-	Thu, 19 Oct 2023 21:38:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2304610E0E2;
+	Fri, 20 Oct 2023 13:14:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
- Thu, 19 Oct 2023 21:38:25 UTC
-Received: from mail.otginfomobil.bond (unknown [213.21.253.34])
- by gabe.freedesktop.org (Postfix) with ESMTP id A806310E562
+ Fri, 20 Oct 2023 13:14:01 UTC
+Received: from mail.thetoolvault.world (unknown [213.21.253.42])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5CE0A10E0E2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Oct 2023 21:38:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=otginfomobil.bond;
+ Fri, 20 Oct 2023 13:14:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=thetoolvault.world; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=tmobile-customer-experience@otginfomobil.bond; 
- bh=eTznrhHJ1VswxCEftgqtflQ3Pgc=;
- b=KtZZXf6PjkZza2iILof+JQfObkrlksbheKcQeHul58d/7uwGMd6OHiNw4A4lcP40T2L/bASiNd25
- JjcBf8q0eENFtk9ljPBSTKqUAVHwqSDHuwuxyXRYb0oR+CT2nAcnsMrVHzKGm+xESGiJkuMgkCM/
- E91vjGK++W2MI4jg9HM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=otginfomobil.bond; 
- b=SlvEv8TIGxsFznuzOHlmgf3DvIoZYNc//qmlS5N8hpSlzgD6trwWseXFgWAEo4oiVsbp1dUEbvZU
- ywHHKzLW6by0Hh2TMwBiiWmt0jMdRU0gTY/UMhbtRm3LGyj5EsHy7KxkjqkrD2Od0ZlSAbDHZDiR
- hj1cp7EXNgpmdwqHJLE=;
-Received: by mail.otginfomobil.bond id h66gt20001gf for
+ i=harbor-freight-extras@thetoolvault.world; 
+ bh=FCKjp/baAg627utn3P/3A6eqqjM=;
+ b=A/rxZFozwM5LWwO+eI6IYs8WDxVIpDl+atCcE7UTJb3fVgGwPNyHtFyU9DtAq0veovjdut0USxTY
+ AuRiAxUK/Y7nroRfloSkuJ1fKhpaXVq12iRUKbS6ofJJNuVux4mxQD85EkJ416f3Mc4l5GAHDQ2v
+ W34+bP9hT52CExQBO5Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=thetoolvault.world; 
+ b=hJ6ryyRoeMWHiDeOG+U6hk/7v6GoMv5MJoVmhPknjby8lssw8u4Ta0RjTF5vpF/1rdKvCHSEIDtb
+ ibNgJiJYLac7YboS2qtrakF2D0u4mcq9hUw3wmuilcswP85TJStAo3mb8RmwdyGTOz5XS7E39Lg7
+ eNed9gOBUSNdtJ8U3Aw=;
+Received: by mail.thetoolvault.world id h69uhi0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 19 Oct 2023 17:29:58 -0400 (envelope-from
- <tmobile-customer-experience-intel+2Dgvt+2Ddev=lists.freedesktop.org@otginfomobil.bond>)
-Date: Thu, 19 Oct 2023 17:29:58 -0400
-From: "TMOBILE Customer Experience"
- <tmobile-customer-experience@otginfomobil.bond>
+ Fri, 20 Oct 2023 09:00:23 -0400 (envelope-from
+ <harbor-freight-extras-intel+2Dgvt+2Ddev=lists.freedesktop.org@thetoolvault.world>)
+Date: Fri, 20 Oct 2023 09:00:23 -0400
+From: "Harbor Freight Extras" <harbor-freight-extras@thetoolvault.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1582366224918.169775095819840@otginfomobil.bond>
-Subject: T-MOBILE reward is just a few clicks away - While supplies last
+Message-ID: <249282739824.1697806806744807@thetoolvault.world>
+Subject: Tailored Savings for Our Valued Patrons!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=d5b21e539c76b3e4525fd140a2c91cf341023102
+ boundary=6986e78fda39cbf47bb08529e8667e8b9710349
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,39 +54,98 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---d5b21e539c76b3e4525fd140a2c91cf341023102
-Content-Type: text/plain; charset=utf-8
+--6986e78fda39cbf47bb08529e8667e8b9710349
+Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
-----------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+	</style> 
+  <title>redemption</title> 
+ </head> 
+ <body> 
+  <div> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" class="orgproyecs"> 
+       <center style="background-color: rgb(226, 226, 226); width: 100%;"> 
+        <table align="center" border="0" cellpadding="20px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(172, 0, 0);" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td align="center">
+            <main style="display: block; max-width: 150mm; text-align: center;font-family: 'Mulish', sans-serif; font-weight: 900; font-size: 6mm; color: #fff;;">
+              Significant Updates from Harbor Freight 
+            </main></td> 
+          </tr> 
+         </tbody> 
+        </table> &nbsp; 
+        <div>
+         <main style="max-width: 50mm; margin: auto;"> 
+          <a href="http://www.thetoolvault.world/be76f2K3s95Gql8612g64T6cX1844Q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZRRoo7M10XSPB5EBlwD/eatings-trappers" target="_blank"><img alt="ACX" src="http://www.thetoolvault.world/compliance-inductances/33c5V2l395sQS7a11l646ez1844i36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQZRRoo6d10WoM5MJXwD" width="100%" /></a> 
+         </main>
+        </div> &nbsp; 
+        <div style="background-color: #ffd3d3;"> 
+         <aside style="background-color: #fff; max-width: 33.5em; margin: auto; text-align: center;"> 
+          <article style="padding: 2.5% 5%;"> 
+           <p style="
+    font-family: 'Mulish', sans-serif;
+    margin: 0;
+    font-size: 4.5mm;
+    line-height: 7.5mm;
+    text-align: center;
+    font-weight: 600;">We're pleased to bring you some thrilling news from Harbor Freight. You have the opportunity to obtain a Pittsburgh 225 Piece Tool Set, which can be redeemed at any of our store locations.<br /> <br /> <span>Grab this chance without delay! You have until October 20th to obtain these captivating tools. </span></p> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="center"> 
+               <blockquote>
+                <a href="http://www.thetoolvault.world/be76f2K3s95Gql8612g64T6cX1844Q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZRRoo7M10XSPB5EBlwD/eatings-trappers" target="_blank"><img alt="YTS" src="http://www.thetoolvault.world/vineyards-Egyptianize/6a24v2395Gm7ia12y64J6fU1844i36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQZRRoo7H10vR_O5XUpwD" width="100%" /></a>
+               </blockquote> </td> 
+             </tr> 
+            </tbody> 
+           </table> &nbsp; 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td align="center"> 
+               <div> 
+                <center style="background-color: rgb(172, 0, 0); padding-top: 15px; padding-bottom: 15px; padding-left: 33px; padding-right: 33px; border-radius: 100px; font-size: 18px; font-weight: 900; font-family: 'Mulish', sans-serif; width: 250px; margin: auto;">
+                 <a href="http://www.thetoolvault.world/be76f2K3s95Gql8612g64T6cX1844Q36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQZRRoo7M10XSPB5EBlwD/eatings-trappers" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now&gt;&gt;</a>
+                </center> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+           <br /> &nbsp;
+          </article> 
+         </aside> 
+         <br /> &nbsp;
+         <br /> &nbsp;
+        </div> 
+        <br /> &nbsp;
+        <br /> &nbsp;
+        <br /> &nbsp;
+        <br /> &nbsp;
+        <br /> &nbsp; 
+        <div style="background-color: lightsteelblue; padding: 3.5% 0; text-align: center;"> 
+         <p style="max-width: 150mm; text-align: center; font-size: 12px; font-weight: 700; font-family: 'Mulish', sans-serif; margin: auto;">more than welcome to leave in <a href="http://www.thetoolvault.world/keeper-pervading/53a5X2m395Y8I6y13A6Fj46dz1844V36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQZRRoo5b1gK06SNwllD">here</a> we' ll miss<br /> you US 10010 126 E 23rd St New York, NY,</p> 
+        </div> 
+        <br /> &nbsp;
+        <br /> &nbsp;
+        <br /> &nbsp;
+        <br /> &nbsp;
+       </center> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </div>   
+ <img src="http://www.thetoolvault.world/compliance-inductances/3966gF23w95XZ85p11n6470q1844T36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQZRRoo6e10uXN5dOqwD" alt=""/></body>
+</html>
 
-T-Mobile
-
-We wanted to take a moment to thank you for choosing T-Mobile.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
-
-Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-Upon Completion of the Survey you might have a choice between different gifts!
-
-Start Now >>>>>>>
-http://www.otginfomobil.bond/e3f4F2395I8MF612s64S6aO1843s36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQiRRon7STR1hp05iNBwD/outermost-octogenarian
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon! Warm regards,
-
-The T-Mobile Survey
-
-----------------------------------------------
-
-To abandon notifications, Begin Here >>>>> http://www.otginfomobil.bond/f2f4V2395nQ86D11L646bn1843q36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQiRRon7LwxQ1T06jAz3wD/improvisation-gowns
-126 E 23rd St New York, NY, US 10010
-
-
-
-<font></font><style style="steepness"><big></style></big><font></font>
-
---d5b21e539c76b3e4525fd140a2c91cf341023102--
+--6986e78fda39cbf47bb08529e8667e8b9710349--
 
