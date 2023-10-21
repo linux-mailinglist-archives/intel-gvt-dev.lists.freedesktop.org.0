@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 608017D1F7D
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Oct 2023 22:26:29 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19C597D1FAA
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Oct 2023 22:56:02 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2D56910E033;
-	Sat, 21 Oct 2023 20:26:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AC6A110E012;
+	Sat, 21 Oct 2023 20:55:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Sat, 21 Oct 2023 20:26:25 UTC
-Received: from mail.setspecial.world (unknown [213.21.253.95])
- by gabe.freedesktop.org (Postfix) with ESMTP id 9F35710E033
+ Sat, 21 Oct 2023 20:55:57 UTC
+Received: from mail.mcdayinfo.bond (unknown [213.21.253.103])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7105A10E012
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 21 Oct 2023 20:26:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=setspecial.world;
+ Sat, 21 Oct 2023 20:55:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mcdayinfo.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor_freight_rewards@setspecial.world; 
- bh=gsjrgG7c/k+EjqDGZathgqCj/iU=;
- b=SgdtdorKa3OxncTCtF3y/kKfW+kGgzISyuG1YXqkdZgdyHwHQJMA0tGPof82FzIqG1EizDZudYsJ
- CCPY7d+murXLZvIsnytRcnz1Pxay8AbaG/s+HLEWSVpo5PsUsboAVHhJAVAw4cClPXN/bX6kFD9k
- dNJZLGp2oCJxki6t6Jw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=setspecial.world;
- b=hV7lpY0XHZDMoklgWJ6sbnjeOm6kTau2knggVDh8snv2FZ9v5I7ieWp8mb+SPK70WZ3Uw+H4yFYa
- tOEp9WJMWqv+ZEyg4Yyw0XhWiMIkCBq28IRM7wjSQwYo/fMPNvz6P3tG/Xx2B/JPjHfWcsbXG183
- rcAb238x07y88VqgYRc=;
-Received: by mail.setspecial.world id h6gpv20001gi for
+ i=guest.satisfaction.at.mcdonalds@mcdayinfo.bond; 
+ bh=Hzf+1nkYcQ2tQwQqTkZuiq3G4Qo=;
+ b=JCch4dATWJDkgFEcSeeTCdtsawCzgGgxvsKrqFX/hcnJxBptRUdDnlJ6nRGhidB52uL4woPDydS6
+ Kd+zDyu09Cy1s//0+/HdjyxZjx3FnpbTXguMvbVM14cRPbUU6XlXCZvSvlLeCKL3F7xqBydZm7bH
+ Bq712j6UFlY+V/bYNZs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mcdayinfo.bond;
+ b=JeIwYzl30wTlnW0wJVJkJjN3Kh/UNmjwXb/yZRPGCoj3YhS/g099V+/XRUAgg1QnKiBJS+ns9xsQ
+ Ln/0WWXssZelX1Ox3hS643EXgqzxLGnvGcHHPqfhdU1gbYTyidMbmirjnpfwReWfQFQw4fr+4ujw
+ d1D4JF3cclqCPzWa4Dw=;
+Received: by mail.mcdayinfo.bond id h6gtdq0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 21 Oct 2023 16:17:26 -0400 (envelope-from
- <harbor_freight_rewards-intel+2Dgvt+2Ddev=lists.freedesktop.org@setspecial.world>)
-Date: Sat, 21 Oct 2023 16:17:26 -0400
-From: "Harbor Freight Rewards" <harbor_freight_rewards@setspecial.world>
+ Sat, 21 Oct 2023 16:47:56 -0400 (envelope-from
+ <guest.satisfaction.at.mcdonalds-intel+2Dgvt+2Ddev=lists.freedesktop.org@mcdayinfo.bond>)
+Date: Sat, 21 Oct 2023 16:47:56 -0400
+From: "Guest Satisfaction At McDonalds"
+ <guest.satisfaction.at.mcdonalds@mcdayinfo.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <19112935807.16979194292732@setspecial.world>
-Subject: You're eligible for a tailor-made Milwaukee Drill - express your
- thoughts and claim it.
+Message-ID: <20579733161.169792126001729@mcdayinfo.bond>
+Subject: Free Family Meal? Win and Enjoy!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=7f99f9f13552d5b45990cacafa2c88163998102999974
+ boundary=5d3c592fc8934685dcc86f0e0d30e1608100991011981029899
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,43 +54,45 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---7f99f9f13552d5b45990cacafa2c88163998102999974
+--5d3c592fc8934685dcc86f0e0d30e1608100991011981029899
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
---------------------------------------------
+A SPECIAL OFFER FOR OUR VALUED USERS
+-----------------------------------------
 
 
-HARBOR FREIGHT
+Mc Donalds
 
-We wanted to take a moment to thank you for choosing Harbor Freight.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+Where would you like to go for a family meal? And where could you find a suitable option? At McDonald's, we can provide you with that perfect choice for a family outing. 
 
-As a token of our appreciation, we would like to give you a FREE Milwaukee Drill Set! when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
+Don't miss out on this incredible opportunity! For a limited time, you can win a $100 McDonald's gift card just by completing a short survey.  Enjoy our wide variety of combos and delicious flavors. 
 
-
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+We want to thank you for choosing us as your first choice for family dining.  We value your preference and encourage you to participate in our survey for a chance to win this gift card.  Thank you for your loyalty and good luck!
 
 
-
-Take The survey >>>>>
-http://www.setspecial.world/c9b6bV239q5AM8N612J64arek1855R36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQvRR9K6k1nM0R5ulNwD/inconspicuous-perfunctory
+By taking the survey you might receive a $100 gift card
 
 
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+TAKE THE SURVEY >>>>>
+http://www.mcdayinfo.bond/e034G2395i86N_11v64b0z1856I36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQIRRdm5E1Ft06EXwWDz/permeates-attainably
 
 
-Best regards,
-The Harbor Freight Survey Team
 
---------------------------------------------
+Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
 
-To modify your email choices, click_here >>>>> http://www.setspecial.world/3954E2395C86NJ12L64afvy1855J36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQvRR9K5S1YH05g0lwD/bleacher-peacetime
+Mc Donalds Survey
+
+
+-----------------------------------------
+
+To bring notices to an end, click_here >>>>> http://www.mcdayinfo.bond/cryptographic-recompiled/31e6s2s39s5XA86n12u64bl1h1856r36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQIRRdm7b10_lPQ5NzwJD
 126 E 23rd St New York, NY, US 10010
 
-<span title="makings"></span><span></span><span></span><span face="compulsive"><span style="amber"></span></span>
 
---7f99f9f13552d5b45990cacafa2c88163998102999974--
+
+<style><style face="agglutination"><font><style><span size="converters"></style></span></style><big></font><font color="Grady"></font></style></big><style title="strengthened"></style><style color="introspective"></style>
+
+--5d3c592fc8934685dcc86f0e0d30e1608100991011981029899--
 
