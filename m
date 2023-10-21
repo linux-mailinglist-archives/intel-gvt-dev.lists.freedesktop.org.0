@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BCF47D14AB
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 20 Oct 2023 19:16:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED3BC7D1DF7
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 21 Oct 2023 17:45:05 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 605AA10E055;
-	Fri, 20 Oct 2023 17:16:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C372A10E133;
+	Sat, 21 Oct 2023 15:45:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Fri, 20 Oct 2023 17:16:51 UTC
-Received: from mail.thetoolcamp.bond (unknown [213.21.253.127])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6903910E055
+X-Greylist: delayed 311 seconds by postgrey-1.36 at gabe;
+ Sat, 21 Oct 2023 15:45:02 UTC
+Received: from mail.maxboxtool.bond (unknown [213.21.253.36])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2B8F510E133
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Oct 2023 17:16:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=thetoolcamp.bond;
+ Sat, 21 Oct 2023 15:45:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=maxboxtool.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=ace-tools-excellence@thetoolcamp.bond; 
- bh=NJHBd9uPgOHX1e1ONPd8O5kFfz4=;
- b=FOWtjK+1nQOV9+M1UWQ6RY48Ntm3TNt5kf7gaqPov/L/OCbrVEA6v1I8d0K1kkmkf8CQv8h2+1n3
- xPNpDyF1UTbFWynMqstUA4H9mJ324kcqg/iQKSqnsRMqayrB358oh7uneSWE0vWP09A/UTd7cvoL
- +LoCUChqlM87H76hQow=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=thetoolcamp.bond;
- b=LpQTxkYm72HVFZz8nEJnk1EM5EODRcU0YzbRFmUjf2GEITi4T3bhKlw0rocrX2WkIBDKNGlEwPuT
- S93f/7K8MyLWhgXfvZZCFhfMZDLpBtWLPcqQ3iLV87ZkTg5T2qRYIJ5+E2Y4iHtN3Oa3EjiSqFhv
- WC56NdpoTrT8zXpiAcw=;
-Received: by mail.thetoolcamp.bond id h6ar060001gh for
+ i=oreillys.timelimited.offers@maxboxtool.bond; 
+ bh=F3vk0Z9wM44UdJFmyl5w9FJCouE=;
+ b=VGDoXZaZCezZHEZduCFuC/pmmRa49Q3PGnsBRzjuQEgGJJ+FEkovQG6ENeZ6Pdj5dZ5Dl4TfQ5lO
+ Ee1fFIJofD6nwLrVJaO69tplvFGDXxw6m0aA/Z1dihNAoN4AvtxHKQm0zTMXBN5pBWkvFAc2S/fs
+ 5WhvsabzTEn+Z2E8NEw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maxboxtool.bond;
+ b=UO2jbfdpP+Yl1DlkA2Yg339Ukep0/tFsxtyfHGYlzmNjcqtTBCXo6ClIJjx5OEHZlmbcqwauzseh
+ tzGAKLGIxme4jcFkLLvmNFg58KktA4uXt/1+CoPxypGvhxw9sxQtLH4DMmMEhed3f8nDXVhPIa6w
+ MCC07xgL+JyY2UU4hXs=;
+Received: by mail.maxboxtool.bond id h6fovs0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 20 Oct 2023 13:08:44 -0400 (envelope-from
- <ace-tools-excellence-intel+2Dgvt+2Ddev=lists.freedesktop.org@thetoolcamp.bond>)
-Date: Fri, 20 Oct 2023 13:08:44 -0400
-From: "ACE Tools Excellence" <ace-tools-excellence@thetoolcamp.bond>
+ Sat, 21 Oct 2023 11:20:31 -0400 (envelope-from
+ <oreillys.timelimited.offers-intel+2Dgvt+2Ddev=lists.freedesktop.org@maxboxtool.bond>)
+Date: Sat, 21 Oct 2023 11:20:31 -0400
+From: "OReillys TimeLimited Offers"
+ <oreillys.timelimited.offers@maxboxtool.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <18576042815068.16978216902934@thetoolcamp.bond>
-Subject: Don't pass up the opportunity to win a Stanley Tool Set by sharing
- your feedback with us!
+Message-ID: <206106585937.16979016097461550@maxboxtool.bond>
+Subject: Secure a fantastic Bosch Drill Set as your well-deserved reward by
+ sharing your valuable insights with us.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=30a2bb45f33a06650da11bc0a03ce28b233102
+ boundary=391e81d1def979cf6a4f72a8cea81d199977710021001028
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,47 +55,73 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---30a2bb45f33a06650da11bc0a03ce28b233102
+--391e81d1def979cf6a4f72a8cea81d199977710021001028
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
+<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>store</title> 
+  <title>Exciting News</title> 
  </head> 
  <body> 
-  <article class="gomblos" style="width: 100%; background-color: rgb(226, 226, 226);"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" id="nowpass" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" class="treeplos" style="padding-top: 20px; padding-bottom: 20px;"> 
-       <section style="max-width: 16cm; margin: auto; background-color: #F9F9F9;">
-        <span style="display: block; max-width: 50mm;"><a href="http://www.thetoolcamp.bond/d314P2395DA86N11i6483q1848X36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQtRRoR7IhCZY105azw2D/indefinitely-behavioral" target="_blank"><img alt="HGS" class="shops" src="http://www.thetoolcamp.bond/landmarks-tenure/3b44Y2395pg7aH11w6485w1848D36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQtRRoR5M1vP06POpBwD" width="100%" /> </a> </span> 
-        <span style="display: block; background-color: #f0f0f0; padding-top: 5mm; padding-bottom: 5mm; font-size: .8cm; font-family: Arial, Helvetica, sans-serif; font-weight: 500; color: #E51635;"> Your Final<br /> Communication from Ace Hardware </span> 
-        <span style="display: block; background-color: #fff; padding: 3.5% 5%; font-family: Arial, Helvetica, sans-serif; font-size: .55cm; line-height: .7cm;"> Ace Hardware is excited to introduce an amazing opportunity! The Stanley Tool Set is now up for grabs, and it can be redeemed at any of our store locations. Act quickly and seize this chance! You have until October 20th to secure these exceptional tools. </span> 
-        <div style="max-width: 375px; margin: auto;">
-         <a href="http://www.thetoolcamp.bond/d314P2395DA86N11i6483q1848X36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQtRRoR7IhCZY105azw2D/indefinitely-behavioral"><img alt="PLOS" src="http://www.thetoolcamp.bond/rupture-entities/9546tw23t95rR7oa12o64P86_1848y36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQtRRoR7yRqj1o05ezPwD" width="100%" /> </a>
-        </div> 
-        <table class="botoms"> 
-         <tbody> 
-          <tr> 
-           <td> 
-            <div style=" border: solid 2.5px #E51635; padding: .4cm .9cm; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 800; ">
-             <a href="http://www.thetoolcamp.bond/d314P2395DA86N11i6483q1848X36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQtRRoR7IhCZY105azw2D/indefinitely-behavioral" style="color: #E51635; text-decoration: none;">Start Here Now &gt; &gt; </a>
-            </div> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-        <span style="display: block; background-color: #fff; padding: 3.5% 5%; font-family: Arial, Helvetica, sans-serif; font-size: .4cm; line-height: .7cm;"> We value your expected support.<br /> Best regards,<br /> The Ace Hardware Team. </span>
-       </section> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> <span style="display: block; background-color: rgb(240, 251, 255); padding: .7cm 0;"><span style="display: block; max-width: 499px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-align: center; line-height: .6cm;">Anyway you can leave <a href="http://www.thetoolcamp.bond/eb75W2Q395Egz8611M6484x1848o36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQtRRoR5X10LL5UPwlD/spreaders-mammal"> here </a><br /> US 10010 126 E 23rd St New York, NY, </span> </span><br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;</td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </article>   
- <img src="http://www.thetoolcamp.bond/rupture-entities/33c6l2kN395u85Ko12h6B487h1848k36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQtRRoR5gCi105l3lwD" alt=""/></body>
+  <center style="background-color:rgb(236, 236, 236); padding-top: 2rem; padding-bottom: 2rem;"> 
+   <nav style="border-top: solid 3.5px #2DA247; max-width: 150mm; margin: auto; border-bottom: solid 3.5px #2DA247; background-color: #fff;">
+    &nbsp; 
+    <div style="max-width: 50mm; margin: auto;">
+     <a href="http://www.maxboxtool.bond/motorcycle-Renaults/9ae6zM239j5z8Zw611Y649bQ1850A36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQHRR9d5WAQ106pyTwOD" target="_blank"><img alt="FSA" src="http://www.maxboxtool.bond/motorcycle-Renaults/8285D2r395j7KIa12cF649dO1850o36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQHRR9d6QhP10M6DyAwDX" style="display: block;" width="100%" /></a>
+    </div> 
+   </nav> 
+   <div style="background-color: #fff; max-width: 150mm; margin: auto;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <thead> 
+      <tr> 
+       <th align="center" colspan="2"> 
+        <div> 
+         <p style="margin: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 22px; font-weight: 700; padding-top: 35px; padding-bottom: 35px; color: rgb(175, 0, 0);">Crucial Notification from O'Reilly</p> 
+        </div> </th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td align="center" style="vertical-align: top;" width="50&amp;"> <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 22px; text-align: justify; padding: 0 7.5%; line-height: 29px;">Get ready for some thrilling updates: O'Reilly is providing you with a Bosch Drill Set for in-store use. Act promptly to obtain these exceptional tools by October 21st.</p> </td> 
+       <td align="center" width="50%"> 
+        <div style="padding: 5%;">
+         <a href="http://www.maxboxtool.bond/motorcycle-Renaults/9ae6zM239j5z8Zw611Y649bQ1850A36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQHRR9d5WAQ106pyTwOD" target="_blank"><img alt="BS" src="http://www.maxboxtool.bond/donkeys-striven/5b26M23jq95N7CQa13G649eSLg1850t36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQHRR9d6gR10SM5HXpwD" width="100%" /></a>
+        </div> </td> 
+      </tr> 
+      <tr> 
+       <td align="center" width="50%"> <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 16px; text-align: center; padding: 0 7.5%; line-height: 29px; color: #c40000; font-weight: 700;">We sincerely appreciate your participation, The O'Reilly Auto Parts Survey Team</p> </td> 
+       <td align="center" width="50%"> 
+        <div style="width: 220px; margin: auto;">
+         <a href="http://www.maxboxtool.bond/motorcycle-Renaults/9ae6zM239j5z8Zw611Y649bQ1850A36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQHRR9d5WAQ106pyTwOD" style="text-decoration: none; color: #fff;" target="_blank">
+          <main style="background-color: #2DA247; padding: 17px 33px; border-radius: 20px; font-weight: 700; font-family: Arial, Helvetica, sans-serif; font-size: 18px;">
+           Start Here Now &raquo;
+          </main></a>
+        </div> </td> 
+      </tr> 
+     </tbody> 
+     <tfoot> 
+      <tr> 
+       <td align="center" colspan="2"> 
+        <div style="border-top: solid 3.5px #2DA247;">
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> &nbsp; 
+         <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 12px; font-weight: 700; background-color: #f1fff4; margin: 0; padding: 15px 0;">you can leave with sadness <a href="http://www.maxboxtool.bond/8bd5d239p5R86ID11g649cK1850M36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQHRR9d6K1O0ZQ6mAWwD3/Bostonian-tautly">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+        </div> </td> 
+      </tr> 
+     </tfoot> 
+    </table> 
+   </div> &nbsp; 
+   <h4 style="padding-bottom: 450px;">&nbsp;</h4> 
+  </center>   
+ <img src="http://www.maxboxtool.bond/dc74H2395K85Un13PW64Z9fp1850t36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQHRR9d5X1RU05X2wDT/rescues-gunpowder" alt=""/></body>
 </html>
 
---30a2bb45f33a06650da11bc0a03ce28b233102--
+--391e81d1def979cf6a4f72a8cea81d199977710021001028--
 
