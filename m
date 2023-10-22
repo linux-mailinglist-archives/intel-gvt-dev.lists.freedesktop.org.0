@@ -2,43 +2,45 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86C4E7D2546
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 22 Oct 2023 20:24:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 44A717D25D6
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 22 Oct 2023 22:24:01 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 552F210E0DC;
-	Sun, 22 Oct 2023 18:24:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9915D10E06C;
+	Sun, 22 Oct 2023 20:23:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Sun, 22 Oct 2023 18:24:31 UTC
-Received: from mail.toolsunclick.bond (unknown [213.21.253.225])
- by gabe.freedesktop.org (Postfix) with ESMTP id 304C110E0DC
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sun, 22 Oct 2023 20:23:57 UTC
+Received: from mail.longtoolinfo.world (unknown [213.21.253.235])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C31CC10E06C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 22 Oct 2023 18:24:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=toolsunclick.bond;
+ Sun, 22 Oct 2023 20:23:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=longtoolinfo.world; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=ace.hardware.value@toolsunclick.bond; 
- bh=WtodfShjgOC0QlVE0h1xCpJYfGM=;
- b=ivuVttds2pbOHQ1I3GAhbEkBdcvcHy0ukwAWtyC7sVOF6UIicIdQtMNVcv3nTJWSapsbXbqAvRyt
- Rqf9npgb6IZGvlz6/+fTGVmTuNg2n28OxDslCX81AXLhV8rvXlgE7WIK/rASb8hLXhJ+KNl4gnXv
- 0sEGt4iHTFqwaxva4v8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsunclick.bond; 
- b=KYu5nkKNn4ZLr4W2pRKa2LFC5/zvEaHOXWD3chhgtCRFpSuW8hWfWTwKfdrX5liL+IswmQtIpnds
- 5DktEbx41086ZDR4FmzgznyyiusfDWZvwWFPf1DvVyKSeOu2XCu20vzPVmZWRzm38JN735Pnz4iy
- E+nyLFVaJHNBRPOrQAc=;
-Received: by mail.toolsunclick.bond id h6ltps0001gb for
+ i=lowes-shopping-particulars@longtoolinfo.world; 
+ bh=hG83OpuIbxdvZ6wW+D9FC1KjpSo=;
+ b=InMvDdWzmB5g1i48HSFHUTURUd/VEcfE6JdfgJE3PopHr7U5t4obKXi2vcY677i9+Gr4GdGObuyF
+ MdOakG7wahFj8w6uU+uz+UAeY9RcJTDdtL/NVvadhb43IviFgGinWwyd2aG+1BYPrmuMpapRZYua
+ 1Vf9I5MTc3E79uslj8E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=longtoolinfo.world; 
+ b=EXmeJsXVJzUwdhik0MyzLVbkHB5DehTsBRWpwLYnJeRjIKc1bYlaKW3wAM7/ULaDkyGMWuZxUArk
+ KT/aho0A30Q9OrKadZXJOpp58N+dOVIKfed7xhf8qPhwqNjYC6zws/BIup5UVqGxMpP4Y3axOxTs
+ nO/fOpjxh3S0wEgKlPQ=;
+Received: by mail.longtoolinfo.world id h6mbpo0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 22 Oct 2023 15:37:21 -0400 (envelope-from
- <ace.hardware.value-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsunclick.bond>)
-Date: Sun, 22 Oct 2023 15:37:21 -0400
-From: "ACE Hardware Value" <ace.hardware.value@toolsunclick.bond>
+ Sun, 22 Oct 2023 17:35:06 -0400 (envelope-from
+ <lowes-shopping-particulars-intel+2Dgvt+2Ddev=lists.freedesktop.org@longtoolinfo.world>)
+Date: Sun, 22 Oct 2023 17:35:06 -0400
+From: "Lowes Shopping Particulars"
+ <lowes-shopping-particulars@longtoolinfo.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <6655664260273.16979986155138652@toolsunclick.bond>
-Subject: Don't pass up the opportunity to win a Stanley Tool Set by sharing
- your feedback with us!
+Message-ID: <541774655963.1698005693761362@longtoolinfo.world>
+Subject: We Hold Your Assessment in High Regard: Grab a brand new Tool set -
+ today is your final opportunity.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=0a8bd5187f3349e2fd1bdaf49068866b11098
+ boundary=bc6e95e37b145992a4068731f07eda8e999102397041021038101102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,36 +56,40 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0a8bd5187f3349e2fd1bdaf49068866b11098
+--bc6e95e37b145992a4068731f07eda8e999102397041021038101102
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Ace Hardware
+A Special Offer for Our Valued Users
+------------------------------------------------
 
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+LOWE'S
 
-Your Last
-Correspondence from Ace Hardware
+We wanted to take a moment to thank you for choosing Lowe's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
 
+As a token of our appreciation, we would like to give you a FREE Stanley Tool Set when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
 
-
-Ace Hardware is thrilled to present an incredible opportunity! The Stanley Tool Set is currently available and can be redeemed at any of our store locations.  Take swift action and grasp this chance! You have until October 21st to secure these exceptional tools. 
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
 Start Here Now >>>>>
-http://www.toolsunclick.bond/22d5z2Y395C8Ry611n64c2Y185cC36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQTRRdR7F1iMCz05NqNwD/grandstand-Oderberg
+http://www.longtoolinfo.world/indecisive-dill/22e6ro2L395ekR8611O64c4o185dz36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQFRRde6ww1O0D5E1wDy
 
-We value your expected support. 
+
+
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+
+
+
 Best regards,
-The Ace Hardware Team. 
+The Lowe's Survey Team
 
+------------------------------------------------
 
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+To modify your notification preferences, click_here >>>>> http://www.longtoolinfo.world/besting-stupidity/c605H2_395m8_6C13S64cA5zS185dh36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQFRRde5hpU106sAw3PD
+126 E 23rd St New York, NY, US 10010
 
+<style color="bulldogs"><big></style></big><font></font><font lang="toasting"></font><big></big><big></big><style class="viewable"></style>
 
-you can leave with sadness here >>>>>
-http://www.toolsunclick.bond/d6d6J2p39O5W8WA611W64c3X185cs36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQTRRdR7so1T0No6Ppw@Dp/stinking-Mackey
-US 10010 126 E 23rd St New York, NY,
-
---0a8bd5187f3349e2fd1bdaf49068866b11098--
+--bc6e95e37b145992a4068731f07eda8e999102397041021038101102--
 
