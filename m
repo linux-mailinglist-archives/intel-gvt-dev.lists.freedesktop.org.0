@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F3B87D3652
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 23 Oct 2023 14:20:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CDD347D3911
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 23 Oct 2023 16:16:06 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EA35989143;
-	Mon, 23 Oct 2023 12:20:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0D62910E1EF;
+	Mon, 23 Oct 2023 14:16:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Mon, 23 Oct 2023 12:20:25 UTC
-Received: from mail.macflyinfo.bond (unknown [213.21.253.244])
- by gabe.freedesktop.org (Postfix) with ESMTP id 82D8B89143
+X-Greylist: delayed 317 seconds by postgrey-1.36 at gabe;
+ Mon, 23 Oct 2023 14:15:58 UTC
+Received: from mail.impactools.world (unknown [213.21.253.218])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C81BB10E1EF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 23 Oct 2023 12:20:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=macflyinfo.bond; 
+ Mon, 23 Oct 2023 14:15:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=impactools.world;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=thorough-delta-knowledge@macflyinfo.bond; 
- bh=FKzG+CTSjMR3Ca2F6NQH7vpPzzA=;
- b=b7CEIgBm0dXXPwQPqQHAbNu45Di5nMkySfwq1b/mIjFXaTaHJpDhCjBJwCrpOcucsblNHW/FCGI5
- 5bHOltA2vPqMqh1TuaOMhY2pmDHDKG8ZV2exfXE8sSv+0HOQNdofLon7Jm4/V3Tc0bkfdm0+jIjg
- +ikeunUmrm86h5aSoOE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=macflyinfo.bond;
- b=IYZCUWOLFvSOOl3pXMiq+arCty9cd0KLWjFaBPYgdJycLJcyjrROJs5xM4nT7+vHy/7K7jGEyoP+
- eqdSKsKnwwpELiid6fFzr8AKo6LaUBtIjTcRFWapvEuTqSypOhnFeWmTCXhM11Q+rvW7Xd4bXJdw
- aGrIhGYMZkxwVEDiiXs=;
-Received: by mail.macflyinfo.bond id h6prt00001gp for
+ i=explore.your.shopping.journey.with.lowes@impactools.world; 
+ bh=uMge6hntnR2opIKMkxiccC9/MlI=;
+ b=OUrJ1Lxex68kNu/LayeigIyFgVMw7IwBKFCpbl+2Frvhng06Jlm5wa7HuFBPXEK+3690vRuYZHOA
+ DMApREwMu6uVvGwU4yDRgBZWUqglE7FGCpvhARSrE3zuerwJJW450PPTGrwDLluzEbZ0/oDj19Ep
+ 4uEAmydAkGqq6xyFH68=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=impactools.world;
+ b=P2JHg5SnccsO92b9fy4gSAs0WrrIx20+QMR2DSWlrjL5Y+At+6RWN1c3gnnNdiW89j3jZJHPSbE9
+ XzT0Kj+BNtLobvt7e5P9uM+C05RaL8IgkiD+0Cs3WVCjA3x1xz7XDwHYIo6iMvWFyd+0IHm5j6c8
+ YKMWbprkL7WOJaXWZSM=;
+Received: by mail.impactools.world id h6q01s0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 23 Oct 2023 09:32:46 -0400 (envelope-from
- <thorough-delta-knowledge-intel+2Dgvt+2Ddev=lists.freedesktop.org@macflyinfo.bond>)
-Date: Mon, 23 Oct 2023 09:32:46 -0400
-From: "Thorough Delta Knowledge" <thorough-delta-knowledge@macflyinfo.bond>
+ Mon, 23 Oct 2023 10:07:42 -0400 (envelope-from
+ <explore.your.shopping.journey.with.lowes-intel+2Dgvt+2Ddev=lists.freedesktop.org@impactools.world>)
+Date: Mon, 23 Oct 2023 10:07:42 -0400
+From: "Explore Your Shopping Journey With Lowes"
+ <explore.your.shopping.journey.with.lowes@impactools.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1684213034016.169806314963384@macflyinfo.bond>
-Subject: It's time to take flight! Enjoy a free journey to any destination
- this season, courtesy of our generosity!
+Message-ID: <2843745405.16980700440920532@impactools.world>
+Subject: We Acknowledge Your Evaluation: Seize a brand new Tool set - today is
+ the ultimate day.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=a74f9f2059117a8003155b0d7a978d4f4541006101622
+ boundary=1ee0a162cd9a5fae004e9e6d294e2df3972869745101982102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---a74f9f2059117a8003155b0d7a978d4f4541006101622
+--1ee0a162cd9a5fae004e9e6d294e2df3972869745101982102
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,56 +64,119 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Begin this</title> 
+  <title>branches</title> 
  </head> 
  <body> 
-  <div style="background-color: rgb(211, 211, 211); width: 100%; padding: 55px 0;"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 16cm; margin: auto; "> 
+  <div style="background-color: rgb(216, 216, 216); width: 100%; padding-top: 30px; padding-bottom: 30px;"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <thead> 
+     <tr> 
+      <th align="center" colspan="5"> 
+       <div style="max-width: 140mm; margin: auto; border: solid 1px #000; border-radius: 10px; background-color: #fff;"> 
+        <div style="max-width: 120px; margin: auto; padding: 30px; ">
+         <a href="http://www.impactools.world/modest-demultiplexing/1Z24t2395tIo8612E64cfJm1860A36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQJRRQn6Eo1X0t6l1q0wD" target="_blank"><img alt="EWS" src="http://www.impactools.world/d315O23U95LJ7ua11m64d1S1860Y36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQJRRQn7lhMt1r05S1@wD/belligerent-borders" width="100%" /></a>
+        </div> 
+        <section style="border-top: solid 2.5px #2745A6;">
+         &nbsp; 
+         <p style="margin: 0; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 25px; color: #2745A6;"><u>Crucial<br /> Updates from Lowe's</u></p> &nbsp; 
+         <article> 
+          <p style="margin: 0; font-weight: 500; font-size: 18px; padding: 0px 30px; line-height: 27px; font-family: Verdana, Geneva, Tahoma, sans-serif;"><font>We're thrilled to share some exciting news with you! Lowe's is providing you with the opportunity to obtain a Stanley Tool Set, which can be claimed at any of our store locations. Don't let this chance slip by! You have until October 23rd to secure these exceptional tools. </font></p> &nbsp; 
+          <table style="max-width: 300px; margin: auto;"> 
+           <tbody> 
+            <tr> 
+             <td><a href="http://www.impactools.world/modest-demultiplexing/1Z24t2395tIo8612E64cfJm1860A36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQJRRQn6Eo1X0t6l1q0wD" target="_blank"><img alt="TRW" src="http://www.impactools.world/4495z239h5WIT7a11m64d2w1860k36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQJRRQn5qj1P05wjwND/jaundice-Perkins" width="100%" /></a></td> 
+            </tr> 
+            <tr> 
+             <td> 
+              <div>
+               &nbsp; 
+               <center style="background-color: #2745A6; padding-top: 3mm; padding-bottom: 3mm; padding-left: 5.5mm; padding-right: 5.5mm; border-radius: 11px; font-family: Arial, Helvetica, sans-serif; font-weight: 800; ;">
+                <a href="http://www.impactools.world/modest-demultiplexing/1Z24t2395tIo8612E64cfJm1860A36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQJRRQn6Eo1X0t6l1q0wD" style="color: #fff; text-decoration: none;">Start The Survey Here &gt;&gt;</a>
+               </center> 
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp; 
+              <div style="border-top: solid 2px #2745A6; text-align: center; font-weight: 500; font-size: 15px; padding: 0px 30px; line-height: 27px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+               <br /> In advance, we thank you.                <br /> 
+               <b>The Lowe's Team</b>
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </article> 
+        </section> 
+       </div>  </th>
+     </tr> 
+    </thead> 
     <tbody> 
      <tr> 
-      <td align="center" bgcolor="#ffffff"> 
-       <div style="width: 33.5rem"> 
-        <center style="max-width: 300px;">
-         <a href="http://www.macflyinfo.bond/3955J23h95VO86C12dO64cai185fy36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQtRRQm5A1hj05GMwDN/overturned-inequitable" target="_blank"><img alt="BVS" src="http://www.macflyinfo.bond/20f5pq2395eV7aZ11a64ccZ185fN36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQtRRQm5Q10oV5KywDz/obligatory-gymnasiums" width="100%" /></a>
-        </center> 
-       </div> </td> 
-     </tr> 
-     <tr style="border-top: solid 3.5px #2c2c2c; border-bottom: solid 3.5px #2c2c2c;"> 
-      <td align="center" bgcolor="#ffffff"> <p style="
-    margin: 0;
-    padding: 19px 33px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 500;
-    font-size: 1.1em;
-    line-height: 1.7em;
-    text-align: justify;">We sincerely value your decision to travel with Delta! Every journey you embark on with us adds to our story, and we are eager to enhance every aspect to elevate your experience, ensuring even greater satisfaction.<br /> <br /> <a href="http://www.macflyinfo.bond/3955J23h95VO86C12dO64cai185fy36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQtRRQm5A1hj05GMwDN/overturned-inequitable" target="_blank"><img alt="RES" src="http://www.macflyinfo.bond/b6f5u2v395I7Qax11h64cdY185fC36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQtRRQm7FvJF1J06uAwDA2/vanilla-vocabularies" style="display: block; float: left; margin-right: 2.5%; margin-top: 2.2%; " width="45%" /></a> Our commitment is to make your air travel experience even better! Please share your feedback about your recent Delta journey by participating in a short survey. You can start the survey quickly by clicking the link below.<br /> <br /> Your feedback not only influences our future but also opens the door to a chance to receive
-  an unexpected $100 gift! We highly appreciate every perspective, so be sure to share your thoughts today! <span style="display: block; color: rgb(148, 0, 0); font-weight: 800; text-align: center;">#ElevateYourTravelExperience.</span></p> &nbsp; 
-       <table> 
+      <td class="klos">&nbsp;</td> 
+      <td class="klos">&nbsp;</td> 
+      <td class="klos"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+        <thead> 
+         <tr> 
+          <th align="center" colspan="5">&nbsp;</th> 
+         </tr> 
+        </thead> 
         <tbody> 
          <tr> 
-          <td align="center"> 
-           <center style="background-color: rgb(74, 159, 210); padding: .9rem 1.7rem; border-radius: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 800;">
-            <a href="http://www.macflyinfo.bond/3955J23h95VO86C12dO64cai185fy36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQtRRQm5A1hj05GMwDN/overturned-inequitable" style="text-decoration: none; color: #fff;" target="_blank">Fly Better With Now &raquo;</a>
-           </center> </td> 
+          <td class="klos">&nbsp;</td> 
+          <td class="klos">&nbsp;</td> 
+          <td class="klos">&nbsp;</td> 
+          <td class="klos">&nbsp;</td> 
+          <td class="klos">&nbsp;</td> 
          </tr> 
         </tbody> 
-       </table> <br /> &nbsp;</td> 
+        <tfoot> 
+         <tr> 
+          <td align="center" colspan="5">&nbsp;</td> 
+         </tr> 
+        </tfoot> 
+       </table> </td> 
+      <td class="klos">&nbsp;</td> 
+      <td class="klos">&nbsp;</td> 
      </tr> 
     </tbody> 
+    <tfoot> 
+     <tr> 
+      <td align="center" colspan="5"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+        <thead> 
+         <tr> 
+          <th align="center" colspan="5">&nbsp;</th> 
+         </tr> 
+        </thead> 
+        <tbody> 
+         <tr> 
+          <td class="klos">&nbsp;</td> 
+          <td class="klos">&nbsp;</td> 
+          <td class="klos">&nbsp;</td> 
+          <td class="klos">&nbsp;</td> 
+          <td class="klos">&nbsp;</td> 
+         </tr> 
+        </tbody> 
+        <tfoot> 
+         <tr> 
+          <td align="center" colspan="5">&nbsp;</td> 
+         </tr> 
+        </tfoot> 
+       </table> 
+       <main style="padding-top: 120px;"></main> 
+       <main style="padding-top: 120px;"></main> 
+       <center style="max-width: 520px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 3.9mm; line-height: 23px; font-weight: 600 ;">
+        its your time to leave? do it 
+        <a href="http://www.impactools.world/3594P2395K8YN611Q64d0S1860I36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQJRRQn5y1G0_6wpjwDP/belligerent-borders">here</a>
+        <br /> US 10010 126 E 23rd St New York, NY,
+       </center> 
+       <main style="padding-top: 120px;"></main></td> 
+     </tr> 
+    </tfoot> 
    </table> 
-   <dl> 
-    <dd style="padding-top: 200px;">
-     &nbsp;
-    </dd> 
-   </dl> 
-   <hgroup style="max-width: 520px; margin: auto; background-color:cornsilk; padding: 15px 0;"> 
-   </hgroup> 
-   <p style="text-align: center; font-size: 11px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Join us at the exit <a href="http://www.macflyinfo.bond/Hollandaise-implicants/6666M2iB395a_86z12w64cbTL185fs36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQtRRQm5M10hF5wPw2D">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-   <dl style="padding-top: 200px;"> 
-   </dl> 
   </div>   
- <img src="http://www.macflyinfo.bond/7cd6z2jU395pS8Y511V64ceF185fQ36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQtRRQm6R1j0FF5QNNwD/cleverest-iterations" alt=""/></body>
+ <img src="http://www.impactools.world/severance-redistributes/d144m2395zs85k13O64nZd3S1860C36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQJRRQn6Al1L0Z5mUNwD" alt=""/></body>
 </html>
 
---a74f9f2059117a8003155b0d7a978d4f4541006101622--
+--1ee0a162cd9a5fae004e9e6d294e2df3972869745101982102--
 
