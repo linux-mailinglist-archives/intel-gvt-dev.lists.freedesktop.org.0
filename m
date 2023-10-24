@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0F207D5B69
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Oct 2023 21:23:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 025C07D5A47
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Oct 2023 20:16:42 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7A0A210E496;
-	Tue, 24 Oct 2023 19:23:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2FD7110E45A;
+	Tue, 24 Oct 2023 18:16:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Tue, 24 Oct 2023 19:23:09 UTC
-Received: from mail.acetoolbox.world (unknown [213.21.253.210])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8395110E493
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Tue, 24 Oct 2023 18:16:38 UTC
+Received: from mail.lowcoffees.bond (unknown [77.90.135.64])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 28B2610E459
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 24 Oct 2023 19:23:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=acetoolbox.world;
+ Tue, 24 Oct 2023 18:16:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lowcoffees.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=ace-tools-convenience@acetoolbox.world; 
- bh=r8uaTZZEP916/iFzkYfDRdI0Hx4=;
- b=XX/6DcWQAzcgGWW18QtU4ISRnJTJ16vE8fd7EzSTTagWHTqHNrSDSLc9haLiOhcPijSfBgBELqdK
- czS0KdNU/pV5rngwZxOw+uf3Vg7j197DJe08ez2NUfFjHWaFNMlrhQHjM+8LtTTLKZ1NQOZuNtty
- Y0otESnPW++1LCoiQhc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=acetoolbox.world;
- b=HTrdaLROD/gtHuO4SKdW3wQS1m+ajgDsBAwAvdOhYFWWVfRtPWyHkUp6XCMBUyz6ZQronYcDV/Rv
- HcIitMwLaHYkk0N6mHknpZWOT1y9N05+LSSR1agwbdyE/jLjgWe/3eaRRLA525EkdKot++Jb78BU
- /DssHhHkLJtscsM2WWA=;
-Received: by mail.acetoolbox.world id h70cpq0001g8 for
+ i=coffee-chats-with-starbucks@lowcoffees.bond; 
+ bh=mRMhkCL6CS1Q92jM85PMN2+JKYQ=;
+ b=JfLDXOidplixXuKZEqwF2Wh2Fac2vq92/ysnYNJTPnhLa8yAdbPJZsnVVR7Yv5GEoi2qdUik1ngl
+ 9K1Z04fjFzPTOO2ZBLqqK+2Q/dcNWnZM9qYUoWhYH9qH6hlrOB/zY11gQsfhZYLlaxBFdjA9XGFk
+ yypEP8nu14mK2MeRyWc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lowcoffees.bond;
+ b=spkH7m1g+NtLA1milzDCm6oEqMl/6XSoy6N6wzBMfVlhh+/5tfGEdw6xf9tbe4aGVYJPiUrKIxeq
+ 9P/Bbhc+tvSxN8dm3MNLcp6U5BmjGeZ4Z/8ZDM7+pLKnFky3KL32heRPBSJljydExG43S0dzKIZ+
+ RxzBrzehYqZeGh96yB4=;
+Received: by mail.lowcoffees.bond id h70ec40001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 24 Oct 2023 14:49:50 -0400 (envelope-from
- <ace-tools-convenience-intel+2Dgvt+2Ddev=lists.freedesktop.org@acetoolbox.world>)
-Date: Tue, 24 Oct 2023 14:49:50 -0400
-From: "ACE Tools Convenience" <ace-tools-convenience@acetoolbox.world>
+ Tue, 24 Oct 2023 15:28:33 -0400 (envelope-from
+ <coffee-chats-with-starbucks-intel+2Dgvt+2Ddev=lists.freedesktop.org@lowcoffees.bond>)
+Date: Tue, 24 Oct 2023 15:28:33 -0400
+From: "Coffee Chats With Starbucks"
+ <coffee-chats-with-starbucks@lowcoffees.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <2834073689719.16981733692138092@acetoolbox.world>
-Subject: Win top-notch tools: Finish the survey,
- and you could walk away with a Stanley tool set.
+Message-ID: <1463833315218.1698170901443670@lowcoffees.bond>
+Subject: "Starbucks Gift Cards: The Perfect Present."
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=fc95369157075d3cef4913672d500e03699930103103
+ boundary=466cfbc6d275023dbec727594476720349384910210060102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---fc95369157075d3cef4913672d500e03699930103103
+--466cfbc6d275023dbec727594476720349384910210060102
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,117 +62,76 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>now</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&display=swap');
+	</style> 
+  <title>delightful beverages</title> 
  </head> 
- <body> 
-  <header id="brokers"> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center"> 
-       <blockquote style="max-width: 7.45cm; margin: auto;">
-        <a href="http://www.acetoolbox.world/8094A2395Fy8s613rU6N4fds186dp36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQjRRRd5j10ZO5tWwDL/mountings-deliriously" target="_blank"><img alt="YTS" src="http://www.acetoolbox.world/commanded-quantum/8286Xn2K395F7aVy13AR64fJfz186dk36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQjRRRd6z_p10D6DOwzD0" width="100%" /> </a>
-       </blockquote> </td> 
-     </tr> 
-     <tr> 
-      <td> 
-       <div style="background-color: rgb(214, 214, 214); width: 100%;"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+ <body style="margin: 0; padding: 0; background-color: rgb(241, 241, 241);"> 
+  <center class="marketins"> 
+   <section id="contaners" style="background-color: #1A6E48; padding-top: 1mm; padding-bottom: .5mm; width: 100%;"> 
+    <article id="sprinters"> 
+     <center style="max-width: 30rem;">
+      <a href="http://www.lowcoffees.bond/laying-exemplary/6a24G2395b8C6h13H6s4Zf8D186cw36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQpRRR96u1CWr05NBwND"><img alt="PLOS" src="http://www.lowcoffees.bond/c7d6N239Xi5w7Xax13D6R4fraQ186cY36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQpRRR96Hg1F0m5m2lwD/Yorkers-modesty" width="100%" /> </a>
+     </center> 
+    </article> 
+   </section> 
+  </center> 
+  <center align="center" style="width: 100%; background-color: #ebfff6;"> 
+   <div style="max-width: 520px; margin: auto;"> 
+    <h3 style=" margin: 0; padding-top: 5mm; padding-bottom: 5mm; font-family: 'Gabarito', cursive; font-weight: 600; font-size: 8mm; color: #1A6E48;">Your Last<br /> Notification from Starbucks</h3> 
+   </div> 
+  </center> 
+  <center id="croswmmbe" style="width: 100%; background-color: #fff; padding: 5mm 0mm;"> 
+   <div style="max-width: 520px; margin: auto;"> 
+    <h3 class="sexgoncstext" style="margin: 0; padding: 0 1.8rem; font-family: 'Gabarito', cursive;; line-height: 1.7rem; font-weight: 500;">Exciting Announcement! <b style="color: #1A6E48;"> Starbucks </b> has a special offer for a <b> $100 Gift Card </b> that you can use at any of our store locations. Don't miss out on this opportunity! You have until <b> October 24th </b> to enjoy our delicious beverages.</h3> 
+   </div> 
+  </center> 
+  <center class="maxipros"> 
+   <div style="background-color: #f3fffa; width: 100%;"> 
+    <h4 class="logospros" style="margin: 0; ;">&nbsp;</h4> 
+    <table align="center" style="max-width: 18rem; margin: auto;"> 
+     <tbody> 
+      <tr> 
+       <td align="center" class="textinfo"> 
+        <center style="max-width: 250px; margin: auto;">
+         <a href="http://www.lowcoffees.bond/laying-exemplary/6a24G2395b8C6h13H6s4Zf8D186cw36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQpRRR96u1CWr05NBwND" target="_blank"><img alt="UYETS" src="http://www.lowcoffees.bond/Yorkers-modesty/15c6oL2j395Ew7Ta12Q6j4fbn186ct36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQpRRR96iw1Z0y6JBw@LD" width="100%" /> </a>
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </center> 
+  <center id="phillisn"> 
+   <section style="background-color: #fff; padding-top: 30px; padding-bottom: 30px;"> 
+    <table align="center" cellpadding="0" cellspacing="0" widtb="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center"> 
+        <table cellpadding="0px" style=" font-size: 25px; font-family: 'Gabarito', cursive; ;"> 
          <tbody> 
           <tr> 
-           <td class="infos"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-           <td class="infos"> 
-            <table align="center" border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp;</td> 
-               <td>&nbsp;</td> 
-               <td align="center"> 
-                <center style="max-width: 33.5em; margin: auto; background-color: #fff; box-shadow: inset 0 0 5px 1px; border-radius: 10px;"> 
-                 <p style="margin: 0; padding: 20px 0; font-size: 22px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; color: #ff0000;">Your Final<br /> Communication from Ace Hardware</p> 
-                 <p style="margin: 0; padding: 15px 35px; font-weight: 500; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 4mm; line-height: 7mm; text-align: center;">Ace Hardware is thrilled to offer an incredible opportunity! You can now acquire the Stanley Tool Set, which can be redeemed at any of our store branches. Act promptly and seize this chance! You have until October 24th to secure these exceptional tools.<br /> <br /> <a href="http://www.acetoolbox.world/8094A2395Fy8s613rU6N4fds186dp36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQjRRRd5j10ZO5tWwDL/mountings-deliriously" target="_blank"><img alt="NBS" src="http://www.acetoolbox.world/Kimberly-smooch/60c4h2395P7aYP13H6500RHX186dP36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQjRRRd7M1TU0SJ6SONOwD" style="display: block;" width="100%" /> </a></p> 
-                 <div style="text-align: center;"> 
-                  <center style="background-color: dimgray; padding: 15px 30px; border-radius: 15px; ; width: 200px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; font-size: 20px;">
-                   <a href="http://www.acetoolbox.world/8094A2395Fy8s613rU6N4fds186dp36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQjRRRd5j10ZO5tWwDL/mountings-deliriously" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt; &gt; </a>
-                  </center> 
-                 </div> &nbsp; 
-                 <p style="margin: 0; padding: 15px 35px; font-weight: 500; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 4mm; line-height: 7mm; text-align: center;">Your anticipated support means a great deal to us.<br /> Warm regards,<br /> <b>The Ace Hardware Team. </b></p> 
-                </center> 
-                <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td> 
-                    <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td>&nbsp;</td> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-                <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td> 
-                    <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td> 
-                        <div style="padding: 5% 0; background-color: rgb(73, 73, 73); text-align: center;"> 
-                         <p style="max-width: 130mm; margin: auto; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 800; font-size: 12px; color: white;">you can leave with sadness <a href="http://www.acetoolbox.world/commanded-quantum/d325X239i5Q86Wg11c64feD186du36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQjRRRd7J_w1PY06UOABwD"> here </a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-                        </div> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-                <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td> 
-                    <table align="center" border="0" cellpadding="20" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td>&nbsp;</td> 
-                      </tr> 
-                     </tbody> 
-                    </table> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> </td> 
-               <td>&nbsp;</td> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
-           <td class="infos"> 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> </td> 
+           <td style="border-radius: 50px; padding: 10pt 22pt; border: solid 3px #1A6E48; border-radius: 50px;"><a href="http://www.lowcoffees.bond/laying-exemplary/6a24G2395b8C6h13H6s4Zf8D186cw36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQpRRR96u1CWr05NBwND" style="color: #1A6E48; text-decoration: none;" target="_blank">Start Here Now </a></td> 
           </tr> 
          </tbody> 
-        </table> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </header>   
- <img src="http://www.acetoolbox.world/be76u23B9X5wU85W12i65h01F186dI36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQjRRRd6X1_B0P6QXwPDU/demon-Lorentzian" alt=""/></body>
+        </table> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </section> 
+  </center> 
+  <center id="croswmmbe" style="width: 100%; background-color: #fff; padding: 5mm 0mm;"> 
+   <div style="max-width: 520px; margin: auto;"> 
+    <h3 class="sexgoncstext" style="margin: 0; padding: 0 1.8rem; font-family: 'Gabarito', cursive;; line-height: 1.7rem; font-weight: 500;">We highly appreciate your involvement.<br /> Best wishes,<br /> The Starbucks Team.</h3> 
+   </div> 
+  </center> 
+  <center class="coffees" style="padding-top: 200px; ;"> 
+   <aside class="direction" style="max-width: 520px; margin: auto;font-family: 'Gabarito', cursive; font-size: .39cm;">
+    <span id="neversstocls">you can leave with sadness <a href="http://www.lowcoffees.bond/c5f4g2395C8hC611a64f9U186cs36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQpRRR95mlV105YWwlD/laying-exemplary"> here </a><br /> US 10010 126 E 23rd St New York, NY, </span>
+   </aside> 
+  </center> 
+  <br /> &nbsp;  
+ <img src="http://www.lowcoffees.bond/f116Y2R3n95cp85C13i64fcXHp186cZ36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQpRRR97zr1hyQ06gJwD0P/lurches-doorman" alt=""/></body>
 </html>
 
---fc95369157075d3cef4913672d500e03699930103103--
+--466cfbc6d275023dbec727594476720349384910210060102--
 
