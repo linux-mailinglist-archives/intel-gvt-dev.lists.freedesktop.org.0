@@ -1,45 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78AF57D5CB8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 24 Oct 2023 22:56:22 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48E977D686D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Oct 2023 12:27:50 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E7BA310E4DD;
-	Tue, 24 Oct 2023 20:56:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2309D10E62D;
+	Wed, 25 Oct 2023 10:27:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Tue, 24 Oct 2023 20:56:19 UTC
-Received: from mail.activetools.bond (unknown [213.21.253.222])
- by gabe.freedesktop.org (Postfix) with ESMTP id EA64F10E4D7
+X-Greylist: delayed 107807 seconds by postgrey-1.36 at gabe;
+ Wed, 25 Oct 2023 10:27:47 UTC
+Received: from ded543881opnetcom.mycimbonnet.com (unknown [185.213.23.153])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 15D0C10E592
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 24 Oct 2023 20:56:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=activetools.bond;
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=comprehensive_delta_insights@activetools.bond; 
- bh=52rJcb+OcBY90c0YjSJQG/XPn04=;
- b=Kg8jeQeC102SS91E+63UPScY7ChgqkdYSlcfRBUzuvVFCCmZIs70oSx8KIXHcHI/fJp4DuNOPcOM
- aaG+AZNcfPA8sc1opgyEGFBvzPVB4ZjrTlIo7tb6zCT1vF72EcgUGQNwXDnIz0F38Q9pYGCRNGkP
- Ka1EfhdIf0bt/9FEuFk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=activetools.bond;
- b=S1z0DgAp3xvW0a6X/b7xqxmUAJ7op0dTMDJh7bHdL/hFj7rPVHSVaQQI6lyfFn03CAvPrda4e5zw
- oi1p7U1VBVQ+xeKX/VdRa6EOtSC/kAU0LA8mnZtpi0+RGWxfKs7pFqdGSmo+jpD9EIx8djz5VZKm
- anOTGgiqNVBANwLV4Mg=;
-Received: by mail.activetools.bond id h7112u0001gr for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 24 Oct 2023 18:04:53 -0400 (envelope-from
- <comprehensive_delta_insights-intel+2Dgvt+2Ddev=lists.freedesktop.org@activetools.bond>)
-Date: Tue, 24 Oct 2023 18:04:53 -0400
-From: "Comprehensive Delta Insights"
- <comprehensive_delta_insights@activetools.bond>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <907956871526.16981802785273@activetools.bond>
-Subject: A special gift has been reserved just for you - all we ask for are
- your insights into our performance.
-MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=2e5470e89f4bab91e4ddcde1f0999a48683102100
+ Wed, 25 Oct 2023 10:27:46 +0000 (UTC)
+Received: from admin by ded543881opnetcom.mycimbonnet.com with local (Exim
+ 4.96.1) (envelope-from <mymashalat.com@mail.a.mcf.seamalaysia.com>)
+ id 1qv94F-00041s-1K for intel-gvt-dev@lists.freedesktop.org;
+ Tue, 24 Oct 2023 00:30:59 -0400
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: =?UTF-8?B?UmU6IEV4cGxvcmUgQ29sbG9yYWJvcmF0aW9uICYgRnVuZGluZyBPcHBvcnR1bml0aWVzIHdpdGggTUNG?=
+X-PHP-Originating-Script: 1001:a.php
+From: MCF (Malaysia)<mymashalat.com@mail.a.mcf.seamalaysia.com>
+Content-type: text/html;charset=utf-8
+Message-Id: <E1qv94F-00041s-1K@ded543881opnetcom.mycimbonnet.com>
+Date: Tue, 24 Oct 2023 00:30:59 -0400
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,48 +38,36 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: lets.help@mymashalat.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---2e5470e89f4bab91e4ddcde1f0999a48683102100
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+<!DOCTYPE html>
+<html>
 
-A Special Offer for Valued Customers
--------------------------------------------
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Funding Opportunity</title>
+</head>
 
-Delta Airlines 
+<body>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <p>To: intel-gvt-dev@lists.freedesktop.org,</p>
+                <p></p>
+                <p>Hi,</p>
+                <p>2023 is moving fast, and we're here to help you with your funding needs. Whether you have sustainable projects or startup ventures, we can provide financing up to $500 million USD at a competitive fixed interest rate of 1.46% per annum, with minimal documentation and a quick approval process within seven business days.</p>
+                <p>If you're interested or need more information, please respond with your contact details and your funding requirements.</p>
+                <p>Stay safe and feel free to reach out if you need financial assistance.</p>
+                <p>Best regards,</p>
+                <p>The MCF team</p>
+                <hr>
+                <p>Contact us: <a href="mailto:lets.help@mymashalat.com">lets.help@mymashalat.com</a></p>
+            </td>
+        </tr>
+    </table>
+</body>
 
-We wanted to take a moment to thank you for choosing Delta Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
-
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with Delta Airlines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-For completing the survey, you can receive a $100 Gift!
-
-
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.activetools.bond/aromatic-Persianize/15c5pV2395Xy86y13F650Lq9q1870H36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQCRRRS5Pho105gNywD
-
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
-
-
-The Delta Airlines Survey
-
--------------------------------------------
-
-
-To halt e-mail, click_here >>>>> http://www.activetools.bond/7376W2lm395w_A8613iV6O50aV1870J36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQCRRRS6h10JYY5sBwDJ/snored-equitably
-126 E 23rd St New York, NY, US 10010
-
-<style><style></style></style><span></span><span><font color="reviews"></span></font><font color="palms"></font>
-
---2e5470e89f4bab91e4ddcde1f0999a48683102100--
-
+</html>
