@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D5F87D73E8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Oct 2023 21:09:17 +0200 (CEST)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A6B297D73FF
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Oct 2023 21:12:04 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C3CA810E10A;
-	Wed, 25 Oct 2023 19:09:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 806F210E6DE;
+	Wed, 25 Oct 2023 19:12:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 2258 seconds by postgrey-1.36 at gabe;
- Wed, 25 Oct 2023 19:09:14 UTC
-Received: from mail.sterakwest.click (unknown [77.90.135.53])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1704410E10A
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 25 Oct 2023 19:12:02 UTC
+Received: from mail.flashcoffees.bond (unknown [77.90.135.62])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 042E810E6D5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Oct 2023 19:09:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sterakwest.click;
+ Wed, 25 Oct 2023 19:12:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flashcoffees.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=everything_you_need_to_know_about_southwest_flights@sterakwest.click; 
- bh=Q4GSr3eBBYVSlfgZB7yqYf13bmE=;
- b=bnMj5fL5LZvzGd0BDgCmmfDbLdKrQ8rfSrVLqS83HjeCH2y6Sweg4mXoiaUwPJi8B6hMo0HqL2GW
- 1KyaXYyUAGdabv2qivtuw/ngq5nQV49+lUeDAo34Gw53uVpZ0G3dTHynNgdLOT2iiLgKE18m03jh
- CzmHWzPy0nmGXz4dM7Y=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sterakwest.click;
- b=OhVcj4fmUAWosk5iCMDyshUhXOblAbfhcCBo/2ZqbFcbISQ/HWlYY/dkcrBmHESLhcFr1Qqtcpt0
- VYbxQA9xkWNa3vEiS/tqsM9ZKQGB7q5XuHqaWk/flAliIwjQn4yJn28VPivYqaCBW4ovRL6/WqgU
- Mmi3zkMP+/+Qs6NGOB0=;
-Received: by mail.sterakwest.click id h75jtk0001go for
+ i=share_your_starbucks_insights@flashcoffees.bond; 
+ bh=qBh1wnI71fDeBwbfp4/I4YEQ1GY=;
+ b=VujUl5vOarbl9n5QY2iUM/Cz4GnoWYtxAEVjHPcIc/rILMiUNhPWZz6BR4i/vBZOeFbL7BndHKZ9
+ 3Ri71f8cl9G6uaZ0H29uWEPKjMFLdrs1Tl8x5bi3XOK6sGDjZBwNkgAPaPzzqN9IdRa5d7JFQWqi
+ qirKF2PKFluVpYn++xE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flashcoffees.bond; 
+ b=lOtw30P7+ss9pD+pdltYPDQk8oibyWHRKyKAqrh21+S7LKM2raA+IdbM1BcUuJsskbxgU3qaEeze
+ tB/V4iaZGKCffq3hKdMpgZsjII/jtL69dgYK1bBJV9c3dGTbLO/H5Co226D8mbSKw2fgFzav3IRl
+ fo2MTA/w8ynB7ROXVyY=;
+Received: by mail.flashcoffees.bond id h75k840001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Oct 2023 13:17:36 -0400 (envelope-from
- <everything_you_need_to_know_about_southwest_flights-intel+2Dgvt+2Ddev=lists.freedesktop.org@sterakwest.click>)
-Date: Wed, 25 Oct 2023 13:17:36 -0400
-From: "Everything You Need To Know About Southwest Flights"
- <everything_you_need_to_know_about_southwest_flights@sterakwest.click>
+ Wed, 25 Oct 2023 14:46:32 -0400 (envelope-from
+ <share_your_starbucks_insights-intel+2Dgvt+2Ddev=lists.freedesktop.org@flashcoffees.bond>)
+Date: Wed, 25 Oct 2023 14:46:32 -0400
+From: "Share Your Starbucks Insights"
+ <share_your_starbucks_insights@flashcoffees.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <4277919400.1698254240833468@sterakwest.click>
-Subject: Immerse yourself in the seasonal spirit and take advantage of a free
- flight to your dream locale!
+Message-ID: <7364162965687.16982595698837851@flashcoffees.bond>
+Subject: "Exclusive Starbucks Daily Discount!"
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=46cfd554c8d419862c2d0cb598eb17a35102710288
+ boundary=cc6c76b4586ff2248e17134afeb9b94410129746010147100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,43 +54,45 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---46cfd554c8d419862c2d0cb598eb17a35102710288
+--cc6c76b4586ff2248e17134afeb9b94410129746010147100
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Valued Customers
--------------------------------------------
-
-SOUTHWEST 
-
-We wanted to take a moment to thank you for choosing Southwest Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
-
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with Southwest.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+A SPECIAL OFFER FOR OUR VALUED USERS
+*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
 
 
-For completing the survey, you can receive a $100 Gift!
+STARBUCKS
 
 
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
+Do you love coffee? Where do you like to have it? Starbucks can be the perfect place to satisfy your coffee cravings. 
+
+Don't miss out on this incredible opportunity! For a limited time, you can win a $100 Starbucks gift card just by completing a short survey.  Enjoy our wide variety of coffees and unique flavors. 
+
+We want to thank you for choosing us as your destination to enjoy coffee.  We value your preference and encourage you to participate in our survey for a chance to win this gift card.  Thank you for your participation and good luck!
+
+
+By taking the survey you might receive a $100 gift card
 
 
 
 TAKE THE SURVEY >>>>>
-http://www.sterakwest.click/blunt-orbital/5945i239U5SL86R11c6517G1875p36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQzRRSo5z1x0h5ilwWD
+http://www.flashcoffees.bond/afflicted-Procrustes/c426GP2T395w8v6O12k65m19K1876Z36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhRRS97UzXz10M6LLwDzW
 
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
 
+Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
 
-The Southwest Survey
+The Starbucks Survey
 
--------------------------------------------
+*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
 
-
-To change your message preferences, click_here >>>>> http://www.sterakwest.click/unassisted-Westbrook/6484Q2395G86sw13m6J51C8P1875O36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQzRRSo5Qt1L06m1@wD0
+To cut off notifications, click_here >>>>> http://www.flashcoffees.bond/2695F23Z95S8n6l13cr651jaN1876B36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQhRRS95Qu10Y6EjPwDp/representable-Hudson
 126 E 23rd St New York, NY, US 10010
 
-<font title="Gorton"></font><span id="rummy"><span size="enchantress"></span></span><small></small><big><font><span lang="attaches"><font style="inheritresses"></font></font></big></span><small><small><small></small></small></small>
 
---46cfd554c8d419862c2d0cb598eb17a35102710288--
+
+<span style="physicists"></span><style lang="adherers"><span lang="Scarborough"><font></font></style></span><small></small><style></style><font></font><style lang="ticking"></style><small><big></small></big><small></small>
+
+--cc6c76b4586ff2248e17134afeb9b94410129746010147100--
 
