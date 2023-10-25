@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6B297D73FF
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Oct 2023 21:12:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7ED467D753C
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Oct 2023 22:12:07 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 806F210E6DE;
-	Wed, 25 Oct 2023 19:12:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A43D610E6EB;
+	Wed, 25 Oct 2023 20:12:05 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 25 Oct 2023 19:12:02 UTC
-Received: from mail.flashcoffees.bond (unknown [77.90.135.62])
- by gabe.freedesktop.org (Postfix) with ESMTP id 042E810E6D5
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Wed, 25 Oct 2023 20:12:04 UTC
+Received: from mail.toollinegtr.bond (unknown [77.90.135.42])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5FFED10E5E0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Oct 2023 19:12:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=flashcoffees.bond;
+ Wed, 25 Oct 2023 20:12:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=toollinegtr.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=share_your_starbucks_insights@flashcoffees.bond; 
- bh=qBh1wnI71fDeBwbfp4/I4YEQ1GY=;
- b=VujUl5vOarbl9n5QY2iUM/Cz4GnoWYtxAEVjHPcIc/rILMiUNhPWZz6BR4i/vBZOeFbL7BndHKZ9
- 3Ri71f8cl9G6uaZ0H29uWEPKjMFLdrs1Tl8x5bi3XOK6sGDjZBwNkgAPaPzzqN9IdRa5d7JFQWqi
- qirKF2PKFluVpYn++xE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flashcoffees.bond; 
- b=lOtw30P7+ss9pD+pdltYPDQk8oibyWHRKyKAqrh21+S7LKM2raA+IdbM1BcUuJsskbxgU3qaEeze
- tB/V4iaZGKCffq3hKdMpgZsjII/jtL69dgYK1bBJV9c3dGTbLO/H5Co226D8mbSKw2fgFzav3IRl
- fo2MTA/w8ynB7ROXVyY=;
-Received: by mail.flashcoffees.bond id h75k840001gq for
+ i=essential-lowes-store-information@toollinegtr.bond; 
+ bh=8IcxkyyJR2+2brgnExwlZUgwZiY=;
+ b=HBSziWUreQPYA5yCZPKiwTq0am65m1GWnhzef1iHmQuSMQf6Yo06hKtvUniiFWDPxB+d4hWAX5WI
+ OU9cSrI3Xis/JuTUC7ojN457GUDV1ojX8yxIU+pPzQ1pjsXw/ya8tVn1/NEgEIw/CiomaChw5NwU
+ ubq7tyL9BxPgJNOMb3Q=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toollinegtr.bond;
+ b=Yy9oQ+N74nVDvyQfnA2oAqQvWUIfeLMHJinusUi86y0qcQ3mHl6XSDH4ommynFFHh3pNeO6hOhaQ
+ sZco47RuSwagV1y8ST+3VuY4XedYUoWin4fDrgqgHBWigvOIfumKqZEvk51zZzP/OIDPfj6ExaEW
+ mYUcBlKHGA6ayYUpQxE=;
+Received: by mail.toollinegtr.bond id h75r980001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Oct 2023 14:46:32 -0400 (envelope-from
- <share_your_starbucks_insights-intel+2Dgvt+2Ddev=lists.freedesktop.org@flashcoffees.bond>)
-Date: Wed, 25 Oct 2023 14:46:32 -0400
-From: "Share Your Starbucks Insights"
- <share_your_starbucks_insights@flashcoffees.bond>
+ Wed, 25 Oct 2023 16:01:36 -0400 (envelope-from
+ <essential-lowes-store-information-intel+2Dgvt+2Ddev=lists.freedesktop.org@toollinegtr.bond>)
+Date: Wed, 25 Oct 2023 16:01:36 -0400
+From: "Essential Lowes Store Information"
+ <essential-lowes-store-information@toollinegtr.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <7364162965687.16982595698837851@flashcoffees.bond>
-Subject: "Exclusive Starbucks Daily Discount!"
+Message-ID: <17960066735.16982640870833969@toollinegtr.bond>
+Subject: Acquire a tailor-made Kobalt Tool set by sharing your thoughts - it's
+ exclusively reserved for you.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=cc6c76b4586ff2248e17134afeb9b94410129746010147100
+ boundary=1f48214d1ec481c73d288f3b2f5c3dc271001014810210353
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,45 +55,39 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---cc6c76b4586ff2248e17134afeb9b94410129746010147100
+--1f48214d1ec481c73d288f3b2f5c3dc271001014810210353
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR OUR VALUED USERS
-*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
+LOWE'S
+
+======================================================
+
+Final Notice
+Regarding Your Lowe's Reward
 
 
-STARBUCKS
+Exciting News from Lowe's! A Kobalt Tool Set is 
+now available in our stores.  Don't hesitate; take 
+prompt action to seize this chance! You have until 
+October 25th to acquire these fantastic items. 
 
 
-Do you love coffee? Where do you like to have it? Starbucks can be the perfect place to satisfy your coffee cravings. 
-
-Don't miss out on this incredible opportunity! For a limited time, you can win a $100 Starbucks gift card just by completing a short survey.  Enjoy our wide variety of coffees and unique flavors. 
-
-We want to thank you for choosing us as your destination to enjoy coffee.  We value your preference and encourage you to participate in our survey for a chance to win this gift card.  Thank you for your participation and good luck!
+Start Here Now >>
+http://www.toollinegtr.bond/c9b4U2395Q8im611D651bV1877_36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQDRRSd5DBG106MWwD2z/overruns-potent
 
 
-By taking the survey you might receive a $100 gift card
+We appreciate your participation in our survey.  Your input 
+is highly valuable to us at Lowe's, and we sincerely thank 
+you for your feedback. 
+
+======================================================
 
 
-
-TAKE THE SURVEY >>>>>
-http://www.flashcoffees.bond/afflicted-Procrustes/c426GP2T395w8v6O12k65m19K1876Z36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQhRRS97UzXz10M6LLwDzW
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
-
-The Starbucks Survey
-
-*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
-
-To cut off notifications, click_here >>>>> http://www.flashcoffees.bond/2695F23Z95S8n6l13cr651jaN1876B36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQhRRS95Qu10Y6EjPwDp/representable-Hudson
-126 E 23rd St New York, NY, US 10010
+you can leave with sadness here >>
+http://www.toollinegtr.bond/Kaufman-czar/cf65B23P95b8Dq612W651zcL1877_36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQDRRSd6g1A0ZY6uWBwTD
+US 10010 126 E 23rd St New York, NY,
 
 
-
-<span style="physicists"></span><style lang="adherers"><span lang="Scarborough"><font></font></style></span><small></small><style></style><font></font><style lang="ticking"></style><small><big></small></big><small></small>
-
---cc6c76b4586ff2248e17134afeb9b94410129746010147100--
+--1f48214d1ec481c73d288f3b2f5c3dc271001014810210353--
 
