@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD7F67D75F1
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 25 Oct 2023 22:46:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AADBD7D83A7
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 26 Oct 2023 15:34:49 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9006710E715;
-	Wed, 25 Oct 2023 20:46:20 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7CB1D10E7DA;
+	Thu, 26 Oct 2023 13:34:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 25 Oct 2023 20:46:19 UTC
-Received: from mail.misticflys.click (unknown [77.90.135.7])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0909810E713
+X-Greylist: delayed 314 seconds by postgrey-1.36 at gabe;
+ Thu, 26 Oct 2023 13:34:46 UTC
+Received: from mail.crasfgtoday.bond (unknown [213.21.253.139])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 45D1210E7DA
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Oct 2023 20:46:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=misticflys.click;
+ Thu, 26 Oct 2023 13:34:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=crasfgtoday.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=delta_flight_experiences@misticflys.click; 
- bh=xWoIAAStGq7LDzQw7F7VpF6wpPk=;
- b=oYnd+141AFn8aSvwc89QpdCZe4vg+5H8e1JIKcaFz9aQy0pIO2u5t43BalJ0py5qu7uILGa5eG2l
- aGwNlAv7OYvsbotFJaWInL5D36182ko97Tt3jid8EUtFw9WqruvDQAA+pW4PMJpwLMHBT6xpOPGG
- ScJE2lqynDvaHEYy5O4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=misticflys.click;
- b=XKTE14GSE6n1qo3bUc0manyBPZaLd5eHcdNQJ+a7T+Y6Exl9W5B/VKz4pjj1HmGp9R+RN3yoa0HL
- vp+82/UqS0PNhSQLuqu7XlyB6YYn4R+8fr/3NBqaU6dUsZlX31PnYMCMcJOndlafWCsajJZxPMnq
- aXfG1dItidTGNxE2+y8=;
-Received: by mail.misticflys.click id h75v9m0001g2 for
+ i=ace-cares-quick-survey@crasfgtoday.bond; 
+ bh=fp/Ac/8WjRi7JxiCcAPrmB098zI=;
+ b=hVDdcKVHIkLRMbxgyCkdxf+0Jn5eCw1RB3flHV6At1W6KLSkzWxpeIvqKMVJh2HL9w58I9ONilSW
+ YAcvLmOx9+y9oA42GODGVlR+yPedK9/rHdA4fPbhf1rWloL3/Q2NwbU7bWN6M4tKkMXtYC5vZ33u
+ xswaY4VyHh54qRqv33M=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=crasfgtoday.bond;
+ b=F90uEsyq67yj22OjVFkzGG7yrcpr8Foc03VznntLCv0t8pMApV2LzdpPXM1WgmPABcCsMRrxI9Xe
+ doyoz09dzO1428PesHKTwVdONoZH8AaCG7H/T/f/OBI+9NEJwuT71ok0M4GVk176EI/JDqrROS+c
+ kbZH9wzZ1QCG5+L4III=;
+Received: by mail.crasfgtoday.bond id h79lfc0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 25 Oct 2023 16:38:04 -0400 (envelope-from
- <delta_flight_experiences-intel+2Dgvt+2Ddev=lists.freedesktop.org@misticflys.click>)
-Date: Wed, 25 Oct 2023 16:38:04 -0400
-From: "Delta Flight Experiences" <delta_flight_experiences@misticflys.click>
+ Thu, 26 Oct 2023 09:25:19 -0400 (envelope-from
+ <ace-cares-quick-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@crasfgtoday.bond>)
+Date: Thu, 26 Oct 2023 09:25:19 -0400
+From: "Ace Cares Quick Survey" <ace-cares-quick-survey@crasfgtoday.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <840054516078.169826625339958@misticflys.click>
-Subject: In the spirit of giving this season, we're delighted to offer you a
- free flight to any destination &ndash; savor the experience!
+Message-ID: <73939653707.169832669217793@crasfgtoday.bond>
+Subject: Craftsman Generator Giveaway - Your Shot with a Quick Survey!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=9f3b073ccc509d1e2b848ffbaa77494501012100
+ boundary=d077d4776b160ab1f49b93db4f8fe9dc897100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,43 +53,38 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---9f3b073ccc509d1e2b848ffbaa77494501012100
+--d077d4776b160ab1f49b93db4f8fe9dc897100
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-DELTA
+Dear Valued Ace Hardware Customer
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+
 
- ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. 
-
-We deeply appreciate your choice to fly with Delta! Each 
-journey you undertake with us contributes to our narrative, 
-and we are enthusiastic about improving every facet to enhance 
-your experience, guaranteeing even greater satisfaction. 
+Ace Hardware
 
 
-Our dedication is to enhance your air travel experience! Kindly 
-provide your input on your recent Delta trip by engaging in a 
-brief survey.  You can initiate the survey promptly by clicking 
-on the link below. 
+Your satisfaction means the world to us, and we're always eager to hear your thoughts.  
+That's why we're excited to offer you a fantastic opportunity.  By completing a quick 
+and easy survey or taking a few simple clicks, you could win a Craftsman Generator!
 
 
-Your input not only shapes our future but also presents an opportunity
-to receive an unexpected $100 gift! We greatly value every point of 
-view, so please do share your thoughts today!
 
-ElevateYourTravelExperience. 
-
-Fly Better With Now >>
-
-http://www.misticflys.click/receiver-Bennett/15c4q2395a8YF613U_65v1dn1878D36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQURRSQ7O10GqKn5iNw3D
+Start Here Now >>>>>
+http://www.crasfgtoday.bond/2876XP2k395J86zY13n6521YFV187aj36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQgRRSS6GJyZ105olwJD/capability-advocate
 
 
- ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. ,. 
+Don't miss this exclusive opportunity to win a fantastic prize for just a few moments of your time. 
 
 
-Join us at the exit here >>>>>>
-http://www.misticflys.click/shoulder-drafters/31e6t239GG5A8B6z13c651sjeB1878n36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQURRSQ6B1omL06W3TwlD
-US 10010 126 E 23rd St New York, NY,
+Thank you for being a valued member of the Ace Hardware family.  Your opinion is essential to us, 
+and we can't wait to hear from you. 
 
---9f3b073ccc509d1e2b848ffbaa77494501012100--
+
+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+
+
+more than welcome to leave in here >>> we' ll miss
+http://www.crasfgtoday.bond/Dionysus-disqualification/13e5Qu2395D86n_11J6522Z187am36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQgRRSS5n10kt5XUlwD
+you US 10010 126 E 23rd St New York, NY,
+
+--d077d4776b160ab1f49b93db4f8fe9dc897100--
 
