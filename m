@@ -2,68 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CCCA7DD9E0
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  1 Nov 2023 01:27:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED4A97DE174
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  1 Nov 2023 14:24:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8C16010E641;
-	Wed,  1 Nov 2023 00:26:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9038710E6DD;
+	Wed,  1 Nov 2023 13:24:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-il1-x129.google.com (mail-il1-x129.google.com
- [IPv6:2607:f8b0:4864:20::129])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 808FB10E5FD;
- Wed,  1 Nov 2023 00:26:50 +0000 (UTC)
-Received: by mail-il1-x129.google.com with SMTP id
- e9e14a558f8ab-35742cbb670so22934805ab.2; 
- Tue, 31 Oct 2023 17:26:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698798410; x=1699403210; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3SAgGhvFgEq3ojom6jJPWJ2MyF/faZd9tWGs5HOFcQQ=;
- b=bI9zprPMgTz0BmAlRl9apGEqlHSvSHxepom9h0H12cRylus6cbWQc/TSvOyhDD9bfA
- EUIAx8ifPfox0JcVlRKJ4DCz58epHdtxY4mFF6nOy6GciyZ/d/RWzxtcDrnhWHwgA1r8
- rOBgLLzjtN2k19HD2oiCk1H6rVr+syC/KHNAR279/V7dX0ChVh1dK9jlaVlnm3SSO2op
- Ob1tDC3ib2GUDPiUgDzbuZVeh5FYXhuSzarI6vXAWK5TkV3A8eU5jTZ9kjLGJoS7SDHD
- n6zpSI0aEXXIYEFKr2Aqn3bZEknk3Z48TsTYwd0vMag39OWDq1hoohhGNZUrx/kNkalU
- vdQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698798410; x=1699403210;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=3SAgGhvFgEq3ojom6jJPWJ2MyF/faZd9tWGs5HOFcQQ=;
- b=m6xIRvF7/dmlgmKGetJLyP/Yj/auBPXxC+AHnQXuSf9T7PtzkBLQF/RMOVV4otmFyp
- tLmnt9iB3TYCGk9FYuQOkaIdKCZpCfqnpo/lE0VvAurgkdsKx/eezYyDUwI9/nxLi4qp
- G9bwbjw/v/9uF81nVqve9/0g90Pqb/lUmBXtW1Uu9+gYygnC0DSxi5MLtlnoeTZUik6O
- oLDR607o/5CfHYwUYivUfiPKf4oGJX0LftX1gqq8mdkywF7IRzhzS4ZFGGmmnKX23fRC
- heFuucklbCC0ht/hW1X0d9NF6IW1/XWDExnivyFWKg7QES3KZ0zOQduYeORUdtsZ0YkF
- XwWw==
-X-Gm-Message-State: AOJu0Yyr+ja2MGRglU6743FyQKFI2eYtgO5strsTe0QDb5V+jHUGOEEF
- t6mjdG4v/rnFkQszP7Su4Dg=
-X-Google-Smtp-Source: AGHT+IFaLMPhKAQDiXwdcpHNHlQB0x4IFVrH9A1QbFz7CNOFwFce//LXq9uQbZHYcyJx7HoGA67UZQ==
-X-Received: by 2002:a05:6e02:1522:b0:357:a180:6b74 with SMTP id
- i2-20020a056e02152200b00357a1806b74mr19332114ilu.27.1698798409806; 
- Tue, 31 Oct 2023 17:26:49 -0700 (PDT)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- t1-20020a92c901000000b00357cc8df1d5sm141701ilp.68.2023.10.31.17.26.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Oct 2023 17:26:49 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: linux-kernel@vger.kernel.org, jbaron@akamai.com,
- gregkh@linuxfoundation.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Subject: [PATCH v7d 23/23] drm: restore CONFIG_DRM_USE_DYNAMIC_DEBUG un-BROKEN
-Date: Tue, 31 Oct 2023 18:26:09 -0600
-Message-ID: <20231101002609.3533731-24-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231101002609.3533731-1-jim.cromie@gmail.com>
-References: <20231101002609.3533731-1-jim.cromie@gmail.com>
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Wed, 01 Nov 2023 13:24:54 UTC
+Received: from mail.costcdealsinfo.click (unknown [77.90.135.39])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F1D1D10E6DC
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  1 Nov 2023 13:24:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=costcdealsinfo.click; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=limitedtime-offer-alert-at-costco@costcdealsinfo.click; 
+ bh=HhDk6q5jTtmsPnhkmtBkVlyudxs=;
+ b=O7WcKBE5I83oSGzVv8RrlotucVE4CV5SuSGIqpEXrXC2GgyrDrcZHS1H5VqssLVpdvzDFyb1GUCs
+ 3XiI81cyov9mqFD382ulkaRGFeGW8ly7hM0W3c+qCbFJ744hlQc17bFFoCnyRrTq/kzAzQhu8jWw
+ IT65riBZ+R2ERVCkudQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=costcdealsinfo.click;
+ b=scj2Eri4HAz41xMPfiK4gmGYqK1XreijAbXN4NoE9Xgc2d/CYLFzjJcmcQYRIPO20A2cX2wBkcc1
+ toHhL5A7eYxAaV+3qpOEZkH0tmtoYpERO85fhi6XKP0D8O1cO1xKT0QEN3U1kxNKjyQUsVbWhdP/
+ BRFS8X2L2FmzZfmxZsA=;
+Received: by mail.costcdealsinfo.click id h898qe0001gt for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 1 Nov 2023 09:15:17 -0400 (envelope-from
+ <limitedtime-offer-alert-at-costco-intel+2Dgvt+2Ddev=lists.freedesktop.org@costcdealsinfo.click>)
+Date: Wed, 1 Nov 2023 09:15:17 -0400
+From: "Limitedtime Offer Alert At Costco"
+ <limitedtime-offer-alert-at-costco@costcdealsinfo.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <14046843806.16988444996198149@costcdealsinfo.click>
+Subject: Quick Survey, Big Rewards: Claim Your Costco Gift Card Today!
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative; 
+ boundary=2f533046c8ad656675b23b8c3039d2e8989817
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,41 +52,43 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: quic_saipraka@quicinc.com, linux-doc@vger.kernel.org,
- daniel.vetter@ffwll.ch, linux@rasmusvillemoes.dk, will@kernel.org,
- ville.syrjala@linux.intel.com, groeck@google.com, maz@kernel.org,
- mcgrof@kernel.org, mingo@redhat.com, catalin.marinas@arm.com, arnd@arndb.de,
- jani.nikula@intel.com, linux-arm-msm@vger.kernel.org, seanpaul@chromium.org,
- linux-arm-kernel@lists.infradead.org, lb@semihalf.com, jim.cromie@gmail.com,
- yanivt@google.com, robdclark@gmail.com, quic_psodagud@quicinc.com,
- joe@perches.com, bleung@google.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Lots of burn-in testing needed before signing, upstreaming.
+--2f533046c8ad656675b23b8c3039d2e8989817
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-NOTE: I set default Y to maximize testing by default.
-Is there a better way to do this ?
+A Special Offer for Our Valued Users
+---------------------------------------------
 
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- drivers/gpu/drm/Kconfig | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+COSTCO WHOLESALE
 
-diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
-index 3caa020391c7..708f5e8cb205 100644
---- a/drivers/gpu/drm/Kconfig
-+++ b/drivers/gpu/drm/Kconfig
-@@ -55,8 +55,7 @@ config DRM_DEBUG_MM
- 
- config DRM_USE_DYNAMIC_DEBUG
- 	bool "use dynamic debug to implement drm.debug"
--	default n
--	depends on BROKEN
-+	default y
- 	depends on DRM
- 	depends on DYNAMIC_DEBUG || DYNAMIC_DEBUG_CORE
- 	depends on JUMP_LABEL
--- 
-2.41.0
+We sincerely appreciate you choosing us as your first option to meet your needs, and we take pride in being a part of your life and providing you with high-quality products and services. 
+
+That's why you have the opportunity to win a $100 gift card! Just complete a short survey from "Costco. " However, this unique opportunity is time-limited, so we recommend that you don't let it slip away. 
+
+
+We want to express our deepest gratitude for your participation in this brief survey.  You cannot miss this incredible opportunity to win a $100 prize by simply completing it.  We value your opinion and your time, and we look forward to remaining your number one choice in the future. 
+
+
+
+Start Here Now >>>>>
+http://www.costcdealsinfo.click/admirably-nitrous/1205kx2395VRP8613l65Rdbiz18a7H36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQiRSo97Qg1DX0M5JX3wD
+
+
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+
+
+Best regards,
+The Costco Survey Team
+
+---------------------------------------------
+
+No longer want to receive notifications?, click_here >>>>> http://www.costcdealsinfo.click/backscatters-strings/8a06R23iI95iU8g613P6Q5dc_x18a7U36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQiRSo97tvZ10Mu5Q3wDO
+126 E 23rd St New York, NY, US 10010
+
+<span><big></big></span><style></style><font class="chatterer"><span lang="bicentennial"></span></font>
+
+--2f533046c8ad656675b23b8c3039d2e8989817--
 
