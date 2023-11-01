@@ -2,42 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEBB67DE774
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  1 Nov 2023 22:36:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C96EC7DE7C2
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  1 Nov 2023 22:57:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AC0E010E7BF;
-	Wed,  1 Nov 2023 21:36:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A17F210E7CD;
+	Wed,  1 Nov 2023 21:57:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 894 seconds by postgrey-1.36 at gabe;
- Wed, 01 Nov 2023 21:36:26 UTC
-Received: from mail.pacstreews.click (unknown [77.90.135.90])
- by gabe.freedesktop.org (Postfix) with ESMTP id CC13210E7B9
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Wed, 01 Nov 2023 21:57:28 UTC
+Received: from mail.lineborkee.bond (unknown [77.90.135.96])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 0D54610E7CC
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  1 Nov 2023 21:36:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pacstreews.click;
+ Wed,  1 Nov 2023 21:57:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lineborkee.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=complete_ups_survey_now@pacstreews.click; 
- bh=7paRd+zc+guqDXsliGD/5QUjSsU=;
- b=SBMPrd+LXrfZxo8cr+gXMpqxC88rrVGg7fJnzbiLGR2vjS1bKuz7mp1Sd/c9P/H6YwcRVA59GsPK
- QSGMHV/MTHigGQbODsDrSOEQviyPfSMkXWQq4pO9EAsNgb+EGcaY7TfiSJZGmk7KkzGcVpL7qZ9x
- 5HvOcJCYOSlZgnngIG8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pacstreews.click;
- b=lf8FonGjdQdBMCZ5Kpd3PN/IKjj+nLubKPhcTekQ6YSHT/QFnZbxYmzqwTnGbnh57ImqmOAelWHk
- k9cOse1xVy03iLhsUQdiZml6bqigMEwAfJQ/FFskrbbRH+liZ3JuPeRm+JDH+HzOGc6HZZG52G9h
- /DHet4y/4k7SqZPloHg=;
-Received: by mail.pacstreews.click id h8bbok0001g4 for
+ i=harbor.freight.quick.survey.promo@lineborkee.bond; 
+ bh=paFk6p3zC7wm7cvgHdTA7P1hbn0=;
+ b=uB4NUK/E+eSRZKCwmGJJyPeD0LwMuNu0ocFza+znVu9OIv9jrTO+whJnOCAyDQgu4DHaFUlFK43S
+ Hg3y5hnjr1FurE+SltX95xQBNR7wIDy8heq151iP5oUyQYT4qK5EShC+0aYL9aAr3Y+cRdj+jTx2
+ /Xg+Y88+10XUhOoJOes=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lineborkee.bond;
+ b=BpyZVlf8fAVya6d9ETjpY8FAmox0zGarLL39E3SZ+i6QRKtFInCcNK3TelFPWtpO9YCVmqLPEtrU
+ eoQbLW+qK0KNY3WalTrfbKEplUPblD1Q/hKmUkWprFRYV6IFMnhFNystPGAYp28JZeXoEKuwLk/F
+ /fXUM1imACX8bkyCX2k=;
+Received: by mail.lineborkee.bond id h8be7g0001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 1 Nov 2023 18:38:37 -0400 (envelope-from
- <complete_ups_survey_now-intel+2Dgvt+2Ddev=lists.freedesktop.org@pacstreews.click>)
-Date: Wed, 1 Nov 2023 18:38:37 -0400
-From: "Complete UPS Survey Now" <complete_ups_survey_now@pacstreews.click>
+ Wed, 1 Nov 2023 19:09:20 -0400 (envelope-from
+ <harbor.freight.quick.survey.promo-intel+2Dgvt+2Ddev=lists.freedesktop.org@lineborkee.bond>)
+Date: Wed, 1 Nov 2023 19:09:20 -0400
+From: "Harbor Freight Quick Survey Promo"
+ <harbor.freight.quick.survey.promo@lineborkee.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <482987044597.169887349466755@pacstreews.click>
-Subject: Share Your Opinions with UPS &ndash; Time's Running Out!
+Message-ID: <16052683564.169887536325821@lineborkee.bond>
+Subject: Share Your Opinions with Harbor Freight &ndash;
+ Time's Running Out for a Free Milwaukee Drill Set!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=b343032ed9004bb8bd6631e3ec72348624101101980971039848
+ boundary=9d23c9f99c285690aff17031301d883910010199763815
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,39 +55,43 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---b343032ed9004bb8bd6631e3ec72348624101101980971039848
+--9d23c9f99c285690aff17031301d883910010199763815
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Valued Customers
----------------------------------------------
-
-UPS
-
-We wanted to take a moment to thank you for choosing UPS for your shipping needs.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
-
-As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+A Special Offer for Our Valued Users
+--------------------------------------------
 
 
-For completing the survey, you can receive a $100 Gift!
+HARBOR FREIGHT
 
+We wanted to take a moment to thank you for choosing Harbor Freight.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
 
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
+As a token of our appreciation, we would like to give you a FREE Milwaukee Drill Set! when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
 
 
 
-TAKE THE SURVEY >>>>>
-http://www.pacstreews.click/blinkers-undergone/8a05a2U395aj86j13Bs6w5f6n18aeY36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQDRS9m5AS10K6yLTwlD
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards,
 
-The UPS Survey Team
+Take The survey >>>>>
+http://www.lineborkee.bond/grasped-heron/8825uN2395IQU8612o6J5f8R18afN36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQCRS9n7cS1qVn05f3WwD
 
----------------------------------------------
-another day to leave here >>>>
-http://www.pacstreews.click/Arkansas-shepherds/9906X23SM95OB8o612kv65f7F18aen36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQDRS9m5g10Jl5NTwDW
-US 10010 126 E 23rd St New York, NY,
 
---b343032ed9004bb8bd6631e3ec72348624101101980971039848--
+
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+
+
+Best regards,
+The Harbor Freight Survey Team
+
+--------------------------------------------
+
+To cut communications, click_here >>>>> http://www.lineborkee.bond/9714O2395Q8X6Z13e65fx9CM18afm36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCRS9n6PC10Kq5ckwDO/extremity-stagecoach
+126 E 23rd St New York, NY, US 10010
+
+<font size="cutthroat"></font><font id="Joanne"><font size="Templeton"></font></font><span size="stands"></span><big></big><font id="desecrate"></font><style style="obviate"></style><span dir="Gabon"></span>
+
+--9d23c9f99c285690aff17031301d883910010199763815--
 
