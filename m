@@ -2,45 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3D527DFAE1
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Nov 2023 20:26:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A72847DFB11
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Nov 2023 20:43:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A59B010E998;
-	Thu,  2 Nov 2023 19:26:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 77F2510E99A;
+	Thu,  2 Nov 2023 19:43:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 02 Nov 2023 19:26:21 UTC
-Received: from mail.dvrcoffeelic.click (unknown [77.90.135.204])
- by gabe.freedesktop.org (Postfix) with ESMTP id 87DF110E9A0
+ Thu, 02 Nov 2023 19:43:00 UTC
+Received: from mail.sharpstools.bond (unknown [77.90.135.212])
+ by gabe.freedesktop.org (Postfix) with ESMTP id F1A7A10E997
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  2 Nov 2023 19:26:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=dvrcoffeelic.click; 
+ Thu,  2 Nov 2023 19:43:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=sharpstools.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=limitedtime.starbucks.promo.request@dvrcoffeelic.click; 
- bh=iFBL2e68YaSile9fwLTaM4YMiDc=;
- b=BCI7bqbeKwNdnIvTvIale53nXnXCiDfxsFWM/22BDBRGXN+T3TuidZ3Y/+FGYVl4XA0VwdHYVtNX
- WsHqOg2N9NuE/bYCnxemjLRayJ+lQauCoqZylWkY5f4OBSuw7NwqH7RlfK/VMXrdoCupNLOJVECc
- RpyV9B1G+8dQ5Z8A5hI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dvrcoffeelic.click; 
- b=nV+jFgdkQwdMIEjqYBSvqLB6kgVeDstQVBrcdGslkwOvfHpqxmXWlup//rF2GU152K2yk+ufml4q
- b52kGciMJ2bW9cz9TDnIM+bNMRhHFzFyc9PNDlsATqSP02cOw1kI5fRraoHC7RIiL+Q0XaE5WVkf
- hZO4c4RhBW8t8QVJhZ0=;
-Received: by mail.dvrcoffeelic.click id h8frtq0001gr for
+ i=complete-ace-quick-survey@sharpstools.bond; 
+ bh=+SWIIIT7UzaBgy390QrV23eBmQ8=;
+ b=phIaQWirM+ufLGDLyNitBOsE6KGEn2ZkIoMRlMicAYnlGWuIHFz7m+9hBkQYU8uN4/3E+omFT+Eo
+ DFWwyzPXty6q0RvCQG1kabyY/7aSp2IvvGn0RHzuX5eT/C0zEKRJ7d+IuRibpGqS/DWpnoZGynx1
+ YBOilJ23iUa2e6Ufsxw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=sharpstools.bond;
+ b=j/yDhtTV+fzzaRdsQS48ERZ13IrVxLQ8Zj5E4EgJR5lC7fwlm/maAHeAnaxkIBw+nc919/miVHnu
+ 6Dts7HYJT8Kh738oo5xCMyj3kWWa0QNKwdlI/TWNyrlt0hnfP/9BLoxOSPcMI26BaD4lQDnoEHgI
+ VSM9Mrev5ms1wY6jyyk=;
+Received: by mail.sharpstools.bond id h8ftsa0001gc for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 2 Nov 2023 15:03:19 -0400 (envelope-from
- <limitedtime.starbucks.promo.request-intel+2Dgvt+2Ddev=lists.freedesktop.org@dvrcoffeelic.click>)
-Date: Thu, 2 Nov 2023 15:03:19 -0400
-From: "LimitedTime Starbucks Promo Request"
- <limitedtime.starbucks.promo.request@dvrcoffeelic.click>
+ Thu, 2 Nov 2023 15:33:43 -0400 (envelope-from
+ <complete-ace-quick-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@sharpstools.bond>)
+Date: Thu, 2 Nov 2023 15:33:43 -0400
+From: "Complete ACE Quick Survey" <complete-ace-quick-survey@sharpstools.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <2105841882.169895177838368@dvrcoffeelic.click>
-Subject: Survey for Starbucks Special: Share Your Opinions and Unlock
- Exclusive Coffee Perks!
+Message-ID: <697242067379.16989536050163@sharpstools.bond>
+Subject: Survey for ACE Hardware Special: Share Your Opinions and Unlock a
+ DeWalt Drill Set!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=05cbf705b61bb13d2e7786294f6c55bc0103153499179
+ boundary=551c9bbc43ec4ef0a280e6acb3ce760510101026199040102101
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,37 +54,44 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---05cbf705b61bb13d2e7786294f6c55bc0103153499179
+--551c9bbc43ec4ef0a280e6acb3ce760510101026199040102101
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Starbucks
+A Special Offer for Our Valued Users
+*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
 
-<><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
-Your Last
-Message from Starbucks
+ACE HARDWARE
 
-Exciting News! Starbucks is presenting a special 
-chance to obtain a $100 Gift Card, redeemable at any 
-of our store locations.  Don't let this opportunity slip away! 
-You have until November 2nd to savor our delightful beverages. 
+We hope this email finds you well.  At Ace Hardware, we value your feedback and are committed to providing you with the best shopping experience possible.  That's why we want to offer you a special incentive for taking the time to complete our customer survey. 
 
-Start Here Now>>>>>
-http://www.dvrcoffeelic.click/strobes-posse/bac5Y23z95QM86q12gZ660eR18b5Q36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQBRS9S6rR1Q0P5uzwDO
+As a token of our appreciation, we would like to give you a FREE DeWalt drill set when you fill out our survey.  This set includes powerful and durable drills that will make any DIY project a success and is yours to keep, no strings attached. 
 
-We greatly appreciate your involvement. 
-Sincerely,
-The Starbucks Team. 
+
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is important to us and will help us continue to improve the shopping experience for all our customers. 
+
+
+Take the Survey >>>>>
+http://www.sharpstools.bond/c054c2395KI86I11Y6610G18b6t36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQFRS9e5b1p0U5nkpwD/runner-triviality
 
 
 
-<><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
 
-you can leave with sadness here>>>>>
-http://www.dvrcoffeelic.click/strobes-posse/a086u23sp95K8Y6l13Qz6m60fD18b5B36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQBRS9S7U1Ukl0Q5zlwAD
-US 10010 126 E 23rd St New York, NY,
 
---05cbf705b61bb13d2e7786294f6c55bc0103153499179--
+Best regards,
+The Ace Hardware Team
+
+
+*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+
+To sever messages, click_here >>>>> http://www.sharpstools.bond/runner-triviality/e9a6Ui239F5F86WD13H6Y61q1k18b6t36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQFRS9e6mRhv105Ol2wD
+126 E 23rd St New York, NY, US 10010
+
+<font><big></font></big><span color="considerately"><big><small></span></big><span face="Sanderling"><style class="glued"></style></span></small><span title="Finnegan"></span><big><big></big><font size="irregulars"></font></big>
+
+--551c9bbc43ec4ef0a280e6acb3ce760510101026199040102101--
 
