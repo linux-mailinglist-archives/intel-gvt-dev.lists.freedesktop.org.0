@@ -1,45 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id C96EC7DE7C2
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  1 Nov 2023 22:57:30 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FEDF7DF1B3
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 Nov 2023 12:52:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A17F210E7CD;
-	Wed,  1 Nov 2023 21:57:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7271510E862;
+	Thu,  2 Nov 2023 11:52:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 01 Nov 2023 21:57:28 UTC
-Received: from mail.lineborkee.bond (unknown [77.90.135.96])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0D54610E7CC
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Thu, 02 Nov 2023 11:52:03 UTC
+Received: from mail.wihalwtoday.click (unknown [77.90.135.103])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1E24610E861
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  1 Nov 2023 21:57:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lineborkee.bond; 
+ Thu,  2 Nov 2023 11:52:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wihalwtoday.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=harbor.freight.quick.survey.promo@lineborkee.bond; 
- bh=paFk6p3zC7wm7cvgHdTA7P1hbn0=;
- b=uB4NUK/E+eSRZKCwmGJJyPeD0LwMuNu0ocFza+znVu9OIv9jrTO+whJnOCAyDQgu4DHaFUlFK43S
- Hg3y5hnjr1FurE+SltX95xQBNR7wIDy8heq151iP5oUyQYT4qK5EShC+0aYL9aAr3Y+cRdj+jTx2
- /Xg+Y88+10XUhOoJOes=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lineborkee.bond;
- b=BpyZVlf8fAVya6d9ETjpY8FAmox0zGarLL39E3SZ+i6QRKtFInCcNK3TelFPWtpO9YCVmqLPEtrU
- eoQbLW+qK0KNY3WalTrfbKEplUPblD1Q/hKmUkWprFRYV6IFMnhFNystPGAYp28JZeXoEKuwLk/F
- /fXUM1imACX8bkyCX2k=;
-Received: by mail.lineborkee.bond id h8be7g0001gq for
+ i=days_promotion_survey@wihalwtoday.click; 
+ bh=MvTb2WiO9podp9TkClggxv3512E=;
+ b=IPXMz+zssZgPNtZ8/rIlWQI9u0hM7B4exsDFlZ9sjUwuwSD0zNad21bo/hTPfHzyEBRe+4hV20EW
+ X62nCt9FBk7ItgbYGDq0BWyacEdq/Rh3QHb1q5Lh2J2L05VJuCZ0MQYsRs/ZgXtOVxGWKyJNDIVk
+ 4lGp+tWAXqXfUjLahPk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wihalwtoday.click; 
+ b=tuoteOXJm0doElFrOiqPXFwkW9zITh+9g5mquE62V1Auli0MN8xx00jdw35t6mHTG4qyyoB3zX0p
+ XYum6Yc+tTfSHj3H9gxgDS+/M8XYg6OCoEAQ8W0qCNEA4YWJvVbiFFsj0WctvLG8IABKI8GycP6J
+ IU2SfKrjxf6U8D6iXlw=;
+Received: by mail.wihalwtoday.click id h8e6m60001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 1 Nov 2023 19:09:20 -0400 (envelope-from
- <harbor.freight.quick.survey.promo-intel+2Dgvt+2Ddev=lists.freedesktop.org@lineborkee.bond>)
-Date: Wed, 1 Nov 2023 19:09:20 -0400
-From: "Harbor Freight Quick Survey Promo"
- <harbor.freight.quick.survey.promo@lineborkee.bond>
+ Thu, 2 Nov 2023 07:43:53 -0400 (envelope-from
+ <days_promotion_survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@wihalwtoday.click>)
+Date: Thu, 2 Nov 2023 07:43:53 -0400
+From: "Days Promotion Survey" <days_promotion_survey@wihalwtoday.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <16052683564.169887536325821@lineborkee.bond>
-Subject: Share Your Opinions with Harbor Freight &ndash;
- Time's Running Out for a Free Milwaukee Drill Set!
+Message-ID: <3603587023.16989254011340@wihalwtoday.click>
+Subject: Survey Alert: Lowe's Day Promo and Free Tools Inside.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=9d23c9f99c285690aff17031301d883910010199763815
+ boundary=c2d657039ff76a4243b21e75545efa1270729899999
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,43 +53,42 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---9d23c9f99c285690aff17031301d883910010199763815
+--c2d657039ff76a4243b21e75545efa1270729899999
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
---------------------------------------------
+Lowe's
+
+**************************************************
 
 
-HARBOR FREIGHT
-
-We wanted to take a moment to thank you for choosing Harbor Freight.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
-
-As a token of our appreciation, we would like to give you a FREE Milwaukee Drill Set! when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
+Exclusive Offer
+Win a Wiha Screwdriver Tray Set!
+__________________________________________________
 
 
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-
-Take The survey >>>>>
-http://www.lineborkee.bond/grasped-heron/8825uN2395IQU8612o6J5f8R18afN36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQCRS9n7cS1qVn05f3WwD
+Great news from Lowe's! We have a remarkable Wiha Screwdriver Tray Set 
+waiting for you.  It's as simple as a few clicks or completing a quick 
+survey to enter.  Act now! You have until October 31st to claim this fantastic prize. 
 
 
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+Start Here to Win > >
+http://www.wihalwtoday.click/dismiss-teaching/d8c4V2395Eq8T612F65fawI18b0n36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQZRS9o6es1vT05KOlwD
 
 
-Best regards,
-The Harbor Freight Survey Team
 
---------------------------------------------
+Your input is invaluable to us at Lowe's.  We deeply appreciate your 
+participation in our survey.  Your feedback means the world to us, and 
+we hold it in high regard. 
 
-To cut communications, click_here >>>>> http://www.lineborkee.bond/9714O2395Q8X6Z13e65fx9CM18afm36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCRS9n6PC10Kq5ckwDO/extremity-stagecoach
-126 E 23rd St New York, NY, US 10010
 
-<font size="cutthroat"></font><font id="Joanne"><font size="Templeton"></font></font><span size="stands"></span><big></big><font id="desecrate"></font><style style="obviate"></style><span dir="Gabon"></span>
+**************************************************
 
---9d23c9f99c285690aff17031301d883910010199763815--
+
+you can leave with sadness here >>>>>
+http://www.wihalwtoday.click/desiring-replying/5d04l2395BC8A611k65fbk18b0Z36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQZRS9o5ao1q05EPWwD
+US 10010 126 E 23rd St New York, NY,
+
+--c2d657039ff76a4243b21e75545efa1270729899999--
 
