@@ -1,45 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A11EC7E046F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Nov 2023 15:12:08 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7580E7E03CB
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Nov 2023 14:34:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 347F310E9F8;
-	Fri,  3 Nov 2023 14:12:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4C94A10E9E5;
+	Fri,  3 Nov 2023 13:34:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 03 Nov 2023 14:12:05 UTC
-Received: from mail.shopsflynew.click (unknown [77.90.135.40])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7EA8410E9F7
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Fri, 03 Nov 2023 13:34:52 UTC
+Received: from mail.hbpittspecial.bond (unknown [77.90.135.253])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7E8EB10E9E5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Nov 2023 14:12:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shopsflynew.click;
+ Fri,  3 Nov 2023 13:34:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=hbpittspecial.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=quick-united-airlines-promo-survey@shopsflynew.click; 
- bh=Cj4FbYYl4dgopRWSrMvKsYi8iOo=;
- b=SXp4myghl3tM0D8+jZOv0YuO0gw8zrYfz511Yg5RW2PoLjIRk9luOS1OvhbFQGZXqymK53r93jHL
- ptAVYUDTmURSuaOomNPdaOkCkrz2NmDaSjslRU5zSKrFItZlFpUkIYmpmnpJQXVbYoeoFgEIYWOC
- 74xMls3NJillKXcKnvc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shopsflynew.click; 
- b=Q39VPtSkEdpLpcdMP8mv26m+RbMloF6ps4egxXDU2Iu+ur5KcSfrFtB9VAEG7TxVvWh1MShHGT2z
- yiZKiwu4zI6QKEOX4fZgHm6JmSFUUgQ+QkoM/s3RvR7Ea4fNpckNMD/nBmX6lry0YXq2P2TxCXyG
- RDDf2INR5/sBNQ8LD0w=;
-Received: by mail.shopsflynew.click id h8jvra0001gl for
+ i=harbor.freights.tool.assortment@hbpittspecial.bond; 
+ bh=yMHRj8lh2NbfAv4NgPQtcqCcU84=;
+ b=AhDOOmEFH9nWbIiB2v6TqhuqFS3yTXphzWu6joQBJi5xB7qSIyYvypdeYBzJcA6L3CJ9j8Ce+Whc
+ Ar2iWb1JZOe32QfQOSMokxO9CjCvLpZlaOWCUaStpUsrR7eLAPoUdAP3S66A+St1bLzPRk6SrxrB
+ rzEvjoLhTsfCYQmd6y4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hbpittspecial.bond; 
+ b=W9ss1tWwt4Eke+JHe4WO7ejWpJLELmJYNdZ9x/uwN9jRmFwPsmPiWEc9vgOIVSKftK7knuq4Y506
+ jPrutA1Sx3bEBCrKl6QZNW44H6lcZNWRhoJtSGUOn/8mdk6wx/TIjRRQgPs/yEl+PY2kKBOlgeyt
+ oiE44y+Tirrg3o4ht2I=;
+Received: by mail.hbpittspecial.bond id h8k4qk0001gm for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 3 Nov 2023 10:04:56 -0400 (envelope-from
- <quick-united-airlines-promo-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@shopsflynew.click>)
-Date: Fri, 3 Nov 2023 10:04:56 -0400
-From: "Quick United Airlines Promo Survey"
- <quick-united-airlines-promo-survey@shopsflynew.click>
+ Fri, 3 Nov 2023 10:41:27 -0400 (envelope-from
+ <harbor.freights.tool.assortment-intel+2Dgvt+2Ddev=lists.freedesktop.org@hbpittspecial.bond>)
+Date: Fri, 3 Nov 2023 10:41:27 -0400
+From: "Harbor Freights Tool Assortment"
+ <harbor.freights.tool.assortment@hbpittspecial.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <120152232798.1699020255902847@shopsflynew.click>
-Subject: United Airlines Promo of the Day: Participate in the Survey and
- Unlock Travel Perks.
+Message-ID: <578309168159.1699017678542794@hbpittspecial.bond>
+Subject: A distinctive Tool set has been earmarked for you - enjoy the
+ benefits by sharing your opinions.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=0ceca3ed762563eeeded59df093cc52129987
+ boundary=5218a1a35e4d0729208e073d231c7ad3100314
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,41 +56,36 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0ceca3ed762563eeeded59df093cc52129987
+--5218a1a35e4d0729208e073d231c7ad3100314
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-UNITED AIRLINES
+Harbor Freight
 
-=====================================================
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
-
-
-In United, we deeply value your preference and trust in our services.  As a token of our appreciation, we are pleased to offer you the opportunity to participate in a brief survey that will only take a few seconds of your time. 
+Crucial Updates from Harbor Freight
 
 
-Your feedback is crucial for us to continue improving and provide you with the travel experience you deserve.  Furthermore, by completing the survey, you will have the chance to receive a $100 gift card that you can use for any of our services. 
-
-
-Let us know what you think and claim your reward today!
-
-
-Get Started Now>>>>>
-http://www.shopsflynew.click/uprooting-cajoling/e7c5b23x95Lo86r11z6618B18ba_36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQyRSdo6Hn1u0k6bBwD3N
-
-
-Don't miss the chance to share your feedback and be rewarded for it.  We hope you continue to enjoy your travel experience with United Airlines. 
-
-Sincerely,
-The United Airlines Team
+We're excited to bring you some exciting news from Harbor Freight.  
+You now have the opportunity to obtain a Pittsburgh 225 Piece Tool 
+Set, which can be claimed at any of our retail locations. 
 
 
 
-=====================================================
-you can leave with sadness here>>>>>
-http://www.shopsflynew.click/2876YM239J5D86CI11A6619G18baG36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQyRSdo7rD10sMo6GPwDMX/exalting-picnicking
-US 10010 126 E 23rd St New York, NY,
+Don't hesitate to seize this opportunity! You have until November 2nd 
+to obtain these captivating tools. 
 
 
---0ceca3ed762563eeeded59df093cc52129987--
+Start Here Now > >
+http://www.hbpittspecial.bond/c9b5X23q95Dpq8611Q6616m18b9S36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ.RSdn6Xpj10D5fPWwD/Manama-nutshell
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+
+more than welcome to leave in here >>> we' ll miss
+http://www.hbpittspecial.bond/b155U23V95sLs8613u6P61D7t18b9B36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ.RSdn6OUBO106NLwDB@/shameless-Heathman
+you US 10010 126 E 23rd St New York, NY,
+
+--5218a1a35e4d0729208e073d231c7ad3100314--
 
