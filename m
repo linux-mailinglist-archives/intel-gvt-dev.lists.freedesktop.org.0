@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E9ED7E0D70
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Nov 2023 04:16:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 335FB7E0FDD
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Nov 2023 15:18:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 277EA10E0AC;
-	Sat,  4 Nov 2023 03:16:12 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0476410E036;
+	Sat,  4 Nov 2023 14:17:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sat, 04 Nov 2023 03:16:10 UTC
-Received: from mail.stacksvzic.click (unknown [213.21.253.105])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7509810E1E4
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Sat, 04 Nov 2023 14:17:56 UTC
+Received: from mail.newstikcsto.click (unknown [213.21.253.23])
+ by gabe.freedesktop.org (Postfix) with ESMTP id ED02310E036
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Nov 2023 03:16:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=stacksvzic.click;
+ Sat,  4 Nov 2023 14:17:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=newstikcsto.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=fast.verizon.survey.for.iphone@stacksvzic.click; 
- bh=uuIIR1sm/m8nelp5AICiI5Ywu8s=;
- b=FLBWcuY+c90VZ1c7ttLh2PvC0sl3pT8QAMyXLba8LyQg/KxbQdwWOF3Ik6z6dZ2IR9J+Bv98YQCt
- Zto1G+d9ECUwgCQmCQp+DEyvFSu3FzlhEwWPu8DFdZyPpKmGR4ux///J/u5h1EOr6o9BKiuNU+BF
- jgwHXVPGZuJciK286ac=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=stacksvzic.click;
- b=2NOavSkxOjXhKdAwij8R/2NoFvOUKd8ADQwdqUfP9HVtHbFIQXZ8UXv1Ta+dHR8fvWP3XevFvS+c
- w7lOhxAorvXm2s6ZHSc/S+qfWp4tf7NzbbCOWnbmxeIcN+lADm0mzuUmJ7EHEXmsjKgK3roXmq9l
- X0SLt7EfV34RayUyRZY=;
-Received: by mail.stacksvzic.click id h8mrnk0001g6 for
+ i=your.experience.with.harbor.freight@newstikcsto.click; 
+ bh=V5AKG2W2zYAW5tzR4C0Nqb4vmjM=;
+ b=G8wyHP9MxND/WPlj9F9gFvXEWi4WBsDO7QAR5+8bEOU2R+bsGZ7wRPBQwdSTkIBjHQ9rvvQ36k/D
+ bnjpyx4yP1OAwXfcTlb6CPXGQEVXiQxJs5XzZIDYxfeNAe99g0LqWQv5pwUoL0uOIzgqwhfWK3Oi
+ r8B1/JgIEvjkwF2FDI4=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=newstikcsto.click; 
+ b=Fpo2KdMhBgc+2SKsLENvJaV4D1nAJl/zLhTH5VFdYe7cDEnhnkPypg2JKhqin7JoKsiYNqTfv9h1
+ og0J/c45FjUjoobVk0ncLr6IDo1N7pa2SQF4eDXHA9bPsNflrIvlbuMjkOZITV9XfOG2VATZD8+w
+ EE5ix7Zw2HK26VAHlaM=;
+Received: by mail.newstikcsto.click id h8p99a0001gr for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 3 Nov 2023 23:08:17 -0400 (envelope-from
- <fast.verizon.survey.for.iphone-intel+2Dgvt+2Ddev=lists.freedesktop.org@stacksvzic.click>)
-Date: Fri, 3 Nov 2023 23:08:17 -0400
-From: "Fast Verizon Survey For IPhone"
- <fast.verizon.survey.for.iphone@stacksvzic.click>
+ Sat, 4 Nov 2023 07:44:47 -0400 (envelope-from
+ <your.experience.with.harbor.freight-intel+2Dgvt+2Ddev=lists.freedesktop.org@newstikcsto.click>)
+Date: Sat, 4 Nov 2023 07:44:47 -0400
+From: "Your Experience With Harbor Freight"
+ <your.experience.with.harbor.freight@newstikcsto.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <19430913066199.16990672563863348@stacksvzic.click>
-Subject: Claim Your iPhone PRO 15: Complete the Verizon Survey Today.
+Message-ID: <21383075676.16990982793528@newstikcsto.click>
+Subject: Reserved Exclusive Offers Just for You!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=5716e983fb285af2c2374dfd722352f71009897697999961971
+ boundary=d57a0486af32fca4c129709246d56e5f101973410271037
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,59 +54,36 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---5716e983fb285af2c2374dfd722352f71009897697999961971
+--d57a0486af32fca4c129709246d56e5f101973410271037
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
-VERIZON
+Harbor Freight
 
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
-=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=
-=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D
-
-
-Dear Valued Customer,
-
-At Verizon, we truly appreciate your loyalty and trust in our services. =20
-As a token of our gratitude, we're excited to present an exclusive=20
-limited-time offer just for you.=20
-
-Get the Chance to Win an iPhone PRO 15!
+Crucial Updates from Harbor Freight
 
 
-All you need to do is complete a quick, small survey to enter our giveaway.=
- =20
-Your feedback matters, and we want to ensure your experience with us is=20
-exceptional.  By participating, you not only help us improve but also stand=
-=20
-a chance to win the latest iPhone PRO 15.=20
+We're excited to bring you some exciting news from Harbor Freight.  
+You now have the opportunity to obtain a Pittsburgh 225 Piece Tool 
+Set, which can be claimed at any of our retail locations. 
 
 
-Take the Survey Now
-http://www.stacksvzic.click/24b5l239s5Lx8G611h663bX18c2J36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQtRSQn6quv10D6MN@w1D/preferring-compact
+
+Don't hesitate to seize this opportunity! You have until November 4th
+to obtain these captivating tools. 
 
 
-Hurry =E2=80=93 This Offer Expires Soon!
+Start Here Now > >
+http://www.newstikcsto.click/6a14M2395LOw8612a66L3dI18c3S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQNRSQo5Cph105Up1wD/Brumidi-Dalzell
 
-Don't miss out on the opportunity to win this amazing prize. =20
-The survey will be available for a limited time, so act fast to=20
-secure your chance to own the iPhone PRO 15.=20
-
-
-We thank you for your continued support, and we look forward=20
-to your valuable feedback.  Your opinion drives us to provide=20
-you with the best service.=20
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
 
-Best regards,
-The Verizon Team
+more than welcome to leave in here >>> we' ll miss
+http://www.newstikcsto.click/33b4F2395v8M6T11a663eP18c3H36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQNRSQo7NPg1qz05QPPwD/curs-dismounting
+you US 10010 126 E 23rd St New York, NY,
 
-=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=
-=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D
-
-you can leave with sadness here >>>>>
-http://www.stacksvzic.click/b516j2m39p5Q86XH11o663cS18c2D36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQtRSQn5VGW105jJlwD/attaching-vindictive
-US 10010 126 E 23rd St New York, NY,
-
---5716e983fb285af2c2374dfd722352f71009897697999961971--
+--d57a0486af32fca4c129709246d56e5f101973410271037--
 
