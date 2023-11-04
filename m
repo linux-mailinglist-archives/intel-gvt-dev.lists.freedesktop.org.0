@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB2BF7E0A34
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  3 Nov 2023 21:20:56 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA2FF7E0D5D
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Nov 2023 04:02:52 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8C6AF10EAB2;
-	Fri,  3 Nov 2023 20:20:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 89DA910E1D4;
+	Sat,  4 Nov 2023 03:02:49 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 03 Nov 2023 20:20:53 UTC
-Received: from mail.toolsmoreinfo.click (unknown [77.90.135.2])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8F67310EAAF
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sat, 04 Nov 2023 03:02:46 UTC
+Received: from mail.infotoolschat.bond (unknown [213.21.253.107])
+ by gabe.freedesktop.org (Postfix) with ESMTP id AB6F510E0DD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  3 Nov 2023 20:20:53 +0000 (UTC)
+ Sat,  4 Nov 2023 03:02:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=toolsmoreinfo.click; 
+ d=infotoolschat.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=win-with-lowes-survey@toolsmoreinfo.click; 
- bh=87IURbQediZvuvio+F/ItSABhgI=;
- b=ojL03aEi/0hpcrtPcb3u6RKWJRiRJ2lS7P4PQdfubYgOG+ojVNm2s0qKlrhHtSWizfVSAijyoFyD
- iB1jHdKjqR/8RgjRN6BkDHYbjwMA1JraumN6UpN5zVPPJIsqNiIt0Raiaijxg/8VnErjFmUqk2Mz
- A2LagjYTdKQjiSbNT/o=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsmoreinfo.click;
- b=NgDhz5MYUudS8pauS1+Ia2bAL8naCv/30fcjDPYKZRfTVpl/gCSfngeL6rSHYyDiA7SxaX/ShQ+8
- mhhIpRtPVClkGy2F9H9qTPfrVmmIESikhlbFqaPCXdZynoQVdHLJ4ofK9v0iN/cqZ9zfQNM5TXN9
- e4WWRQLreHcPQCrTSok=;
-Received: by mail.toolsmoreinfo.click id h8lkd40001g0 for
+ i=special_offer_response@infotoolschat.bond; 
+ bh=UIAFHEovhLaj8t+b0xrGRaReTvI=;
+ b=wH+/b30mT8riAXqVbLKZ6dQlKK+I7FRrO4rBBejmSwP2p0RtxocUYKxBIrDiLuIPa6Lg6Zo1SF40
+ SE86ZaBcVVhXY0Euv0Cr/ULADJf42DzTJbti1eY4YjyqrMSC1DJ1EY/gh9hQ4ps4CfD2K6d6oJdN
+ 8RENhkSS+jzRObbCx2s=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=infotoolschat.bond; 
+ b=HxGAx3VETGKheDRUol/rPM8r3JP29nnNuyfEJR+z+s3ezSO6XAfrnntrZTjSmEYU6WadOTTOlYj1
+ L1b1w9o4Db8jnTI5YvpBjHhdbvW6Qaq7OxWoU5T2nuBcFNZtjCiTOu+mRP5oWGCtBDUWV79vBROv
+ zrwYYdQPI6ZF381q4Fw=;
+Received: by mail.infotoolschat.bond id h8mq5c0001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 3 Nov 2023 17:14:28 -0400 (envelope-from
- <win-with-lowes-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsmoreinfo.click>)
-Date: Fri, 3 Nov 2023 17:14:28 -0400
-From: "Win With Lowes Survey" <win-with-lowes-survey@toolsmoreinfo.click>
+ Fri, 3 Nov 2023 22:41:13 -0400 (envelope-from
+ <special_offer_response-intel+2Dgvt+2Ddev=lists.freedesktop.org@infotoolschat.bond>)
+Date: Fri, 3 Nov 2023 22:41:13 -0400
+From: "Special Offer Response" <special_offer_response@infotoolschat.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <2001940255.16990412691776083@toolsmoreinfo.click>
-Subject: Quick Lowe's Survey: Time-Limited Offer &ndash;
- Share Your Opinions and Win a Stanley Tool Set!
+Message-ID: <14331205135.16990656580963@infotoolschat.bond>
+Subject: Your Feedback Matters: Lowe's Survey & Free Tools.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=f52484a4666f26cce707dffef368914b5281029797988
+ boundary=21559812a57676f6ceeaf4eb568ab3791796102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,116 +54,42 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---f52484a4666f26cce707dffef368914b5281029797988
-Content-Type: text/html; charset=us-ascii
+--21559812a57676f6ceeaf4eb568ab3791796102
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>these excellent tools</title> 
- </head> 
- <body> 
-  <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-   <caption>
-    &nbsp;
-   </caption> 
-   <thead> 
-    <tr> 
-     <th class="noproblemrs">&nbsp;</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td class="totalinfos"> 
-      <div id="invationsgross"> 
-       <center class="flpops">
-        &nbsp;
-       </center> 
-       <center class="flpops">
-        &nbsp;
-       </center> 
-       <center class="flpops">
-        &nbsp;
-       </center> 
-       <center class="flpops">
-        &nbsp;
-       </center> 
-      </div> </td> 
-     <td class="lowes"> 
-      <center> 
-       <div id="nova"> 
-        <div> 
-         <div style="background-color: #e6ecff;"> 
-          <article> 
-           <p>&nbsp;</p> 
-           <table align="center" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center"><font><a href="http://www.toolsmoreinfo.click/permeation-bumblebee/9545R23N95o8QV611r6630C18bfG36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQZRSdS5k1z0M6EUwND1"><img alt="UUJS" src="http://www.toolsmoreinfo.click/respite-pushes/5d05z23W95r7iha13C663gO2R18bfO36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQZRSdS5Sv1W05nWwDW" style="display: inline-block; max-width: 250px; margin: auto;" width="100%" /> </a> </font></td> 
-             </tr> 
-            </tbody> 
-           </table> 
-          </article> 
-         </div> 
-         <div style="max-width: 500px; margin: auto; background-color: #2944A6; padding: 1% 1%; border-radius: 10px;"> 
-          <div style="background-color: #2944A6; font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-align: center; font-size: 20px; color: white; padding: 18px 0px;">
-           Last Reminder from Lowe's
-          </div> 
-          <div style="background-color: #fff; text-align: center; padding: 1.8em 0 1em;">
-           <a href="http://www.toolsmoreinfo.click/permeation-bumblebee/9545R23N95o8QV611r6630C18bfG36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQZRSdS5k1z0M6EUwND1" target="_blank"><img alt="MMNSAE" src="http://www.toolsmoreinfo.click/e035s23p95RjP7a12E6633Oz18bfK36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQZRSdS7Xk1qy0O5g2wPD/disgustedly-reabbreviated" style="display: block; max-width: 310px; margin: auto;" width="100%" /> </a>
-          </div> 
-          <div style="background-color: #fff;"> 
-           <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 28px; background-color: #fff; margin: 0; padding: 0 1em ;">Exciting Announcement! <b> Lowe's </b> presents a unique opportunity to obtain a <b> Stanley Tool Set </b>, which can be used at any of our store locations. Don't let this opportunity pass you by! You have until <b> November 3rd </b> to secure these outstanding tools.</p> 
-          </div> &nbsp; 
-          <table align="center" cellpadding="5" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <center style="padding: 1em 0em; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 18px; background-color: #fff; width: 300px; border-radius: 20px;">
-               <a href="http://www.toolsmoreinfo.click/permeation-bumblebee/9545R23N95o8QV611r6630C18bfG36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQZRSdS5k1z0M6EUwND1" style="text-decoration: none; color: #2944A6;">Start The Survey Here &gt;&gt; </a>
-              </center> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> 
-        </div> 
-       </div> 
-      </center> <p style="padding-top: 120px;">&nbsp;</p> 
-      <div style="max-width: 400px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 18px;"> 
-       <div style="border-bottom: solid 3px #2944A6; width: 100px; margin: auto;">
-        &nbsp;
-       </div> 
-       <br /> Thank you in advance,
-       <br /> 
-       <b>The Lowe's Team </b>
-      </div> </td> 
-     <td class="lowes"> 
-      <center> 
-       <div id="nova">
-        &nbsp;
-       </div> 
-      </center> </td> 
-     <td class="lowes"> 
-      <center> 
-       <div id="nova">
-        &nbsp;
-       </div> 
-      </center> </td> 
-    </tr> 
-   </tbody> 
-   <tfoot> 
-    <tr> 
-     <td align="center" colspan="4"> <p style="padding-top: 450px;">&nbsp;</p> 
-      <div style="max-width: 300px; margin: auto; text-align: center;"> 
-       <p>its your time to leave? do it <a href="http://www.toolsmoreinfo.click/3776Esj2395ezU8611A6631A18bfJ36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQZRSdS5RGv105ulw1D/tutorials-connotes"> here </a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-      </div> <p style="padding-top: 20px;">&nbsp;</p> </td> 
-    </tr> 
-   </tfoot> 
-  </table>   
- <img src="http://www.toolsmoreinfo.click/chewing-dirtiness/d6e5t239i5jR85V13S66yn34p18bfG36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQZRSdS6wNJ10D6pU@w3D" alt=""/></body>
-</html>
+Lowe's
 
---f52484a4666f26cce707dffef368914b5281029797988--
+**************************************************
+
+
+Exclusive Offer
+Win a Wiha Screwdriver Tray Set!
+__________________________________________________
+
+
+Great news from Lowe's! We have a remarkable Wiha Screwdriver Tray Set 
+waiting for you.  It's as simple as a few clicks or completing a quick 
+survey to enter.  Act now! You have until November 3rd to claim this fantastic prize. 
+
+
+
+Start Here to Win > >
+http://www.infotoolschat.bond/f114M2395p86RZ13Uk66Q39Y18c1I36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQYRSQm6u1I0Tz6J@0zwD/leaguer-waterfalls
+
+
+
+Your input is invaluable to us at Lowe's.  We deeply appreciate your 
+participation in our survey.  Your feedback means the world to us, and 
+we hold it in high regard. 
+
+
+**************************************************
+
+
+you can leave with sadness here >>>>>
+http://www.infotoolschat.bond/cf54B2395B86AD13j663AiaX18c1T36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQYRSQm5q10BM5LOwDy/ventilates-loner
+US 10010 126 E 23rd St New York, NY,
+
+--21559812a57676f6ceeaf4eb568ab3791796102--
 
