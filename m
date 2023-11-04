@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 335FB7E0FDD
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Nov 2023 15:18:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B2387E1091
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Nov 2023 19:02:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0476410E036;
-	Sat,  4 Nov 2023 14:17:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4486D10E22E;
+	Sat,  4 Nov 2023 18:02:54 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sat, 04 Nov 2023 14:17:56 UTC
-Received: from mail.newstikcsto.click (unknown [213.21.253.23])
- by gabe.freedesktop.org (Postfix) with ESMTP id ED02310E036
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Sat, 04 Nov 2023 18:02:51 UTC
+Received: from mail.newcoffeetf.click (unknown [213.21.253.30])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C5E0310E22E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Nov 2023 14:17:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=newstikcsto.click;
+ Sat,  4 Nov 2023 18:02:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=newcoffeetf.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=your.experience.with.harbor.freight@newstikcsto.click; 
- bh=V5AKG2W2zYAW5tzR4C0Nqb4vmjM=;
- b=G8wyHP9MxND/WPlj9F9gFvXEWi4WBsDO7QAR5+8bEOU2R+bsGZ7wRPBQwdSTkIBjHQ9rvvQ36k/D
- bnjpyx4yP1OAwXfcTlb6CPXGQEVXiQxJs5XzZIDYxfeNAe99g0LqWQv5pwUoL0uOIzgqwhfWK3Oi
- r8B1/JgIEvjkwF2FDI4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=newstikcsto.click; 
- b=Fpo2KdMhBgc+2SKsLENvJaV4D1nAJl/zLhTH5VFdYe7cDEnhnkPypg2JKhqin7JoKsiYNqTfv9h1
- og0J/c45FjUjoobVk0ncLr6IDo1N7pa2SQF4eDXHA9bPsNflrIvlbuMjkOZITV9XfOG2VATZD8+w
- EE5ix7Zw2HK26VAHlaM=;
-Received: by mail.newstikcsto.click id h8p99a0001gr for
+ i=join_starbucks_survey_today@newcoffeetf.click; 
+ bh=bLuo63Y+KPsJI6ihERGbSjm5huM=;
+ b=LKnKk9t59siGTmIgRNkUm/hdfg0XD/sTg4MaNRPDQN3+/OJmMZGRrM/ckvIQYcatl/PT5pKqwlvl
+ L4faa4aitAMRRXwkn6AKnzEwAPbmk0ZzoFO8zuGy6jrY+DN3r4v1YfQ6jvH3XWgvTmkfRDrxWZPi
+ g/YTuUJkijOwToKkJVU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=newcoffeetf.click; 
+ b=jGVXN+CEa+31pRWwq6tH4/IRfuYnRKtd2wphXhhnCN1OvWURBneN/Na+RrN1RnQl+BHDGC5hqEkZ
+ oBpNCLh75tsqPivoXGZfijSgBg8hTz2pGsn7cWMDTSoHWUy1jisdN1m093GXRE/akLYoNED3TyVy
+ J/x47KnltblD/z7cLeE=;
+Received: by mail.newcoffeetf.click id h8q3km0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 4 Nov 2023 07:44:47 -0400 (envelope-from
- <your.experience.with.harbor.freight-intel+2Dgvt+2Ddev=lists.freedesktop.org@newstikcsto.click>)
-Date: Sat, 4 Nov 2023 07:44:47 -0400
-From: "Your Experience With Harbor Freight"
- <your.experience.with.harbor.freight@newstikcsto.click>
+ Sat, 4 Nov 2023 13:17:05 -0400 (envelope-from
+ <join_starbucks_survey_today-intel+2Dgvt+2Ddev=lists.freedesktop.org@newcoffeetf.click>)
+Date: Sat, 4 Nov 2023 13:17:05 -0400
+From: "Join Starbucks Survey Today"
+ <join_starbucks_survey_today@newcoffeetf.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <21383075676.16990982793528@newstikcsto.click>
-Subject: Reserved Exclusive Offers Just for You!
+Message-ID: <9092688736720.16991182130606739@newcoffeetf.click>
+Subject: Limited-Time Starbucks Survey: Your Feedback Can Unlock Exclusive
+ Daily Coffee Perks!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=d57a0486af32fca4c129709246d56e5f101973410271037
+ boundary=19fc5319007422a74daf529afcfc4f4297651032102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,36 +55,45 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---d57a0486af32fca4c129709246d56e5f101973410271037
+--19fc5319007422a74daf529afcfc4f4297651032102
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Harbor Freight
-
--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-
-Crucial Updates from Harbor Freight
+A SPECIAL OFFER FOR OUR VALUED USERS
+*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
 
 
-We're excited to bring you some exciting news from Harbor Freight.  
-You now have the opportunity to obtain a Pittsburgh 225 Piece Tool 
-Set, which can be claimed at any of our retail locations. 
+STARBUCKS
+
+
+Do you love coffee? Where do you like to have it? Starbucks can be the perfect place to satisfy your coffee cravings. 
+
+Don't miss out on this incredible opportunity! For a limited time, you can win a $100 Starbucks gift card just by completing a short survey.  Enjoy our wide variety of coffees and unique flavors. 
+
+We want to thank you for choosing us as your destination to enjoy coffee.  We value your preference and encourage you to participate in our survey for a chance to win this gift card.  Thank you for your participation and good luck!
+
+
+By taking the survey you might receive a $100 gift card
 
 
 
-Don't hesitate to seize this opportunity! You have until November 4th
-to obtain these captivating tools. 
+TAKE THE SURVEY >>>>>
+http://www.newcoffeetf.click/7734H2395aA86G12i66l41D18c5G36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQgRSQd6SR1LI06C@Tw2D/horizons-rotates
 
 
-Start Here Now > >
-http://www.newstikcsto.click/6a14M2395LOw8612a66L3dI18c3S36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQNRSQo5Cph105Up1wD/Brumidi-Dalzell
 
--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
+
+The Starbucks Survey
+
+*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
+
+To change your email preferences, click_here >>>>> http://www.newcoffeetf.click/invades-externally/4fe5M239R5hr8x612m6G642T18c5k36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQgRSQd7N10pmYl6Kk@WwD
+126 E 23rd St New York, NY, US 10010
 
 
-more than welcome to leave in here >>> we' ll miss
-http://www.newstikcsto.click/33b4F2395v8M6T11a663eP18c3H36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQNRSQo7NPg1qz05QPPwD/curs-dismounting
-you US 10010 126 E 23rd St New York, NY,
 
---d57a0486af32fca4c129709246d56e5f101973410271037--
+<font dir="squirrel"></font><font class="alacrity"></font><span size="schemes"><span face="providing"></span></span><style></style><style size="immunization"></style><span face="footpath"></span>
+
+--19fc5319007422a74daf529afcfc4f4297651032102--
 
