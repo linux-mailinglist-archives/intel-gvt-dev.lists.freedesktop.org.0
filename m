@@ -2,44 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DE097E13CB
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Nov 2023 15:03:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 35F9C7E1704
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Nov 2023 22:59:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E424310E11B;
-	Sun,  5 Nov 2023 14:03:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 014FC10E242;
+	Sun,  5 Nov 2023 21:59:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Sun, 05 Nov 2023 14:03:03 UTC
-Received: from mail.shopmobile.click (unknown [194.116.229.45])
- by gabe.freedesktop.org (Postfix) with ESMTP id 25B7B10E117
+X-Greylist: delayed 5146 seconds by postgrey-1.36 at gabe;
+ Sun, 05 Nov 2023 21:59:30 UTC
+Received: from SMTP-HCRC-200.brggroup.vn (unknown [42.112.212.144])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2880010E242
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  5 Nov 2023 14:03:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shopmobile.click;
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=limitedtime.tmobile.offer.review@shopmobile.click; 
- bh=sJ56PjdLRQ7QjUSHgYwIanFkHAo=;
- b=TeN7ojAz+jW3B2CPydVZuLFQFkaZI0eEjKLU63O4EpHxMUSvh93P+yPkmdpTwR7UdRa2I5at1EyO
- WLrwWyBwm+CvTqwpg3HjVBeTrXDMZshonmtW6MlIuAhw96mJwMzXVO9QY+U3GEWn7o69T1FzkIdR
- mhcSI5jMnRpwInRMMV8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shopmobile.click;
- b=fqsA5EVeHQUjTfTOlTVtgNidIYRXk2Iv2EQVul96ta1WoHe2Jjr1RRkPgBmFSu4GcNSP3SYYGsgo
- LbRdpYVnCWV5t4maBU/ifpuXVpEZcHa2j155di8SDII2cqtAGMtV3ySiUJehcPteeQCqEwbEfp4i
- kefBFhDF+LXHS5TOosM=;
-Received: by mail.shopmobile.click id h8ug9e0001g1 for
- <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 5 Nov 2023 08:55:08 -0500 (envelope-from
- <limitedtime.tmobile.offer.review-intel+2Dgvt+2Ddev=lists.freedesktop.org@shopmobile.click>)
-Date: Sun, 5 Nov 2023 08:55:08 -0500
-From: "Limitedtime TMobile Offer Review."
- <limitedtime.tmobile.offer.review@shopmobile.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <167485138274.16991924905583@shopmobile.click>
-Subject: Act Now: T-Mobile's Daily Promo Evaluation &ndash;
- Time-Sensitive Survey
+ Sun,  5 Nov 2023 21:59:29 +0000 (UTC)
+Received: from SMTP-HCRC-200.brggroup.vn (localhost [127.0.0.1])
+ by SMTP-HCRC-200.brggroup.vn (SMTP-CTTV) with ESMTP id 265A9192F2;
+ Mon,  6 Nov 2023 01:58:05 +0700 (+07)
+Received: from zimbra.hcrc.vn (unknown [192.168.200.66])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by SMTP-HCRC-200.brggroup.vn (SMTP-CTTV) with ESMTPS id 1F9A61956F;
+ Mon,  6 Nov 2023 01:58:05 +0700 (+07)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra.hcrc.vn (Postfix) with ESMTP id B15B21B8203A;
+ Mon,  6 Nov 2023 01:58:06 +0700 (+07)
+Received: from zimbra.hcrc.vn ([127.0.0.1])
+ by localhost (zimbra.hcrc.vn [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id 8mcOcAErjmPA; Mon,  6 Nov 2023 01:58:06 +0700 (+07)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra.hcrc.vn (Postfix) with ESMTP id 809531B824EE;
+ Mon,  6 Nov 2023 01:58:06 +0700 (+07)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra.hcrc.vn 809531B824EE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hcrc.vn;
+ s=64D43D38-C7D6-11ED-8EFE-0027945F1BFA; t=1699210686;
+ bh=WOZURJ77pkiMUL2pPLC14ifVPRvyTQIBEQmxuN1ezAA=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=JEImj1vLRnKy+22FMhEr6i/KqvxpwH6N6Hd78AdgT1uAU+G9qocwn0MPNq8G1GXRR
+ YAnX7PDRIIoKoinbDkLIvpii9jtMt+zetMugzgWbNOaM9JrRyLg6Cvdhey7ke2dLQu
+ rfopdnL9PBxCMNlrl/5pzPhBFQ6H22H+7fAl1/Mist0eqfDZntaj8teTbrzCUN/Rek
+ LTOKW+NeES81waTb0xgsE3Qyd46PWwdRbPHQsraLKSYT9SrHsBGdIvhx8hx9sBaoPB
+ jLZXSgis0EEy7h+BIXrdOyaGI7w7Eizresq9YMc5GaDZQJEnWRKCa1RPQV8gzlteGZ
+ qEtoFXg/wv6gw==
+X-Virus-Scanned: amavisd-new at hcrc.vn
+Received: from zimbra.hcrc.vn ([127.0.0.1])
+ by localhost (zimbra.hcrc.vn [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id wnmZ1-OtIRVg; Mon,  6 Nov 2023 01:58:06 +0700 (+07)
+Received: from [192.168.1.152] (unknown [51.179.100.52])
+ by zimbra.hcrc.vn (Postfix) with ESMTPSA id 1DF2B1B8254A;
+ Mon,  6 Nov 2023 01:57:59 +0700 (+07)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=9bea15e10b3bd5142acfc4377f20680a299
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: =?utf-8?b?4oKsIDEwMC4wMDAuMDAwPw==?=
+To: Recipients <ch.31hamnghi@hcrc.vn>
+From: ch.31hamnghi@hcrc.vn
+Date: Sun, 05 Nov 2023 19:57:45 +0100
+Message-Id: <20231105185800.1DF2B1B8254A@zimbra.hcrc.vn>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,40 +71,16 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: joliushk@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---9bea15e10b3bd5142acfc4377f20680a299
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Goededag,
+Ik ben mevrouw Joanna Liu en een medewerker van Citi Bank Hong Kong.
+Kan ik =E2=82=AC 100.000.000 aan u overmaken? Kan ik je vertrouwen
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>support</title> 
- </head> 
- <body style="margin: 0; padding: 0;"> 
-  <div style="background-color: rgb(219, 219, 219); width: 100%; padding-top: 35px; padding-bottom: 35px;"> 
-   <center style="max-width: 520px; margin: auto; text-align: center; background-color: #fff; padding: 0px 0px;"> 
-    <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 800; margin: 0; background-color: #f1f1f1; padding: 15px;">An Exclusive Deal for Our Esteemed Customers</p> 
-    <p style="background-color: #fff; margin: 0; max-width: 200px; margin: auto;"><a href="http://www.shopmobile.click/9175I23n95o8Kl611F6657u18cbq36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRSRm5W10VK6oyjwD1/modularizing-miniatures"><img alt="NBS" src="http://www.shopmobile.click/a615l239v5bjS7a13i6659yko18cbX36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQHRSRm7k1NRw0u5m2wND/replaces-Mayans" width="100%" /></a></p> 
-    <hr color="black" size="2px" style="margin: 0;" />&nbsp; 
-    <p style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; line-height: 7mm; padding: 0 30px;">We'd like to express our gratitude for selecting T-Mobile. Your loyalty and support are greatly appreciated, and we cherish the chance to be of service to you.</p> 
-    <p style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; line-height: 7mm; padding: 0 30px;">We highly value your feedback, and as a token of our gratitude for sharing your thoughts, we'd like to offer you a little gesture of appreciation.</p> 
-    <p style="margin: 0; vertical-align: top;"><a href="http://www.shopmobile.click/9175I23n95o8Kl611F6657u18cbq36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRSRm5W10VK6oyjwD1/modularizing-miniatures" target="_blank"><img alt="BVSW" src="http://www.shopmobile.click/retransmits-stamen/eb84s2395iwV7a12N665alv18cbZ36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQHRSRm7YCS1_0X6Q@WwJD" style="display: inline-block;" width="90px" /></a> <a href="http://www.shopmobile.click/9175I23n95o8Kl611F6657u18cbq36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRSRm5W10VK6oyjwD1/modularizing-miniatures" target="_blank"><img alt="BNES" src="http://www.shopmobile.click/e996sHM2395Wz7ao12LP665b_18cbq36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQHRSRm5KjF106FUwUlD/Camino-Hopkins" style="display: inline-block;" width="120px" /></a></p> 
-    <p style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; line-height: 7mm; padding: 0 30px;"><b>After finishing the survey, you could potentially select from various gift options.</b></p> &nbsp; 
-    <p><a href="http://www.shopmobile.click/9175I23n95o8Kl611F6657u18cbq36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRSRm5W10VK6oyjwD1/modularizing-miniatures" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; padding: 2.5% 10%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; background-color: rgb(44, 44, 44); border-radius: 10px; font-size: 20px;">Start Now</span></a></p> &nbsp; 
-    <hr /> 
-    <p style="font-size: 14px; font-family: Arial, Helvetica, sans-serif; line-height: 7mm; padding: 0 30px;">Once more, we appreciate your support, and we eagerly await your response in the near future.<br /> Best regards,<br /> <strong>The T-Mobile Survey Team</strong></p> 
-   </center> &nbsp; 
-   <p><br /> &nbsp;</p> 
-   <address style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 12px; text-align: center; font-weight: 600;">more than welcome to leave in <a href="http://www.shopmobile.click/Montenegro-informative/R125B23Z95U86Nu12J66z58G18cbA36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQHRSRm6ej10SF6vOw3PD">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY,</address> 
-   <p>&nbsp;</p> 
-  </div>   
- <img src="http://www.shopmobile.click/60b4P2395a8nI513bS6p65cW18cbj36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQHRSRm7w1XJV0F5IAAwD/Montenegro-informative" alt=""/></body>
-</html>
 
---9bea15e10b3bd5142acfc4377f20680a299--
+Ik wacht op jullie reacties
+Met vriendelijke groeten
+mevrouw Joanna Liu
 
