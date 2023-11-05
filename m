@@ -2,42 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 248CB7E1085
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  4 Nov 2023 18:52:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DE097E13CB
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Nov 2023 15:03:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 92E2C10E22B;
-	Sat,  4 Nov 2023 17:52:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E424310E11B;
+	Sun,  5 Nov 2023 14:03:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 313 seconds by postgrey-1.36 at gabe;
- Sat, 04 Nov 2023 17:52:10 UTC
-Received: from mail.linesprees.click (unknown [213.21.253.43])
- by gabe.freedesktop.org (Postfix) with ESMTP id A9F7C10E228
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Sun, 05 Nov 2023 14:03:03 UTC
+Received: from mail.shopmobile.click (unknown [194.116.229.45])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 25B7B10E117
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  4 Nov 2023 17:52:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=linesprees.click;
+ Sun,  5 Nov 2023 14:03:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=shopmobile.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=timesensitive-att-inquiry@linesprees.click; 
- bh=ajNACt8qyl9qMvPiLN3268BEIlU=;
- b=BtNQoeBKsLSwL8jA7UAvVBm1SL881b+r81roXNjlFos8Sh7uwJMs9GUVFmSU+K54irGA0mnpRFmv
- YnsKuollFpF8HMMflLxbQcwdFA0xlUAft+rn5jAJstn3FgzwCiClngMKsz55YJ5wBo04fVYUjE4e
- XTlcwiq6sJeLjQQY3gA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=linesprees.click;
- b=DNbsWGDlPb8GQ+5gPCUHr9047/sCVaC3dYYVjk161Apdhr0PCO+valaJY7aa4u0ss/u/24nPte+Q
- JZcfzr8/OgJ+U+DUc+xehRKs34afcKgxoD6dwlCECeYBYLmzRUe3bMuNganLAgp/BZ4Uwn6JnXXK
- szQwjGbn2Zg7GBeJjDI=;
-Received: by mail.linesprees.click id h8q2ck0001g8 for
+ i=limitedtime.tmobile.offer.review@shopmobile.click; 
+ bh=sJ56PjdLRQ7QjUSHgYwIanFkHAo=;
+ b=TeN7ojAz+jW3B2CPydVZuLFQFkaZI0eEjKLU63O4EpHxMUSvh93P+yPkmdpTwR7UdRa2I5at1EyO
+ WLrwWyBwm+CvTqwpg3HjVBeTrXDMZshonmtW6MlIuAhw96mJwMzXVO9QY+U3GEWn7o69T1FzkIdR
+ mhcSI5jMnRpwInRMMV8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=shopmobile.click;
+ b=fqsA5EVeHQUjTfTOlTVtgNidIYRXk2Iv2EQVul96ta1WoHe2Jjr1RRkPgBmFSu4GcNSP3SYYGsgo
+ LbRdpYVnCWV5t4maBU/ifpuXVpEZcHa2j155di8SDII2cqtAGMtV3ySiUJehcPteeQCqEwbEfp4i
+ kefBFhDF+LXHS5TOosM=;
+Received: by mail.shopmobile.click id h8ug9e0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 4 Nov 2023 13:44:23 -0400 (envelope-from
- <timesensitive-att-inquiry-intel+2Dgvt+2Ddev=lists.freedesktop.org@linesprees.click>)
-Date: Sat, 4 Nov 2023 13:44:23 -0400
-From: "TimeSensitive ATT Inquiry" <timesensitive-att-inquiry@linesprees.click>
+ Sun, 5 Nov 2023 08:55:08 -0500 (envelope-from
+ <limitedtime.tmobile.offer.review-intel+2Dgvt+2Ddev=lists.freedesktop.org@shopmobile.click>)
+Date: Sun, 5 Nov 2023 08:55:08 -0500
+From: "Limitedtime TMobile Offer Review."
+ <limitedtime.tmobile.offer.review@shopmobile.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <12802720520.16991198440142278@linesprees.click>
-Subject: AT&T Daily Promo Feedback Request: Your Opinions, Our Benefits!
+Message-ID: <167485138274.16991924905583@shopmobile.click>
+Subject: Act Now: T-Mobile's Daily Promo Evaluation &ndash;
+ Time-Sensitive Survey
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=dc876a823f038e9b097dbd6fd9fd0f00265101
+ boundary=9bea15e10b3bd5142acfc4377f20680a299
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,38 +55,37 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---dc876a823f038e9b097dbd6fd9fd0f00265101
-Content-Type: text/plain; charset=utf-8
+--9bea15e10b3bd5142acfc4377f20680a299
+Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR OUR VALUED USERS
----------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>support</title> 
+ </head> 
+ <body style="margin: 0; padding: 0;"> 
+  <div style="background-color: rgb(219, 219, 219); width: 100%; padding-top: 35px; padding-bottom: 35px;"> 
+   <center style="max-width: 520px; margin: auto; text-align: center; background-color: #fff; padding: 0px 0px;"> 
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: 800; margin: 0; background-color: #f1f1f1; padding: 15px;">An Exclusive Deal for Our Esteemed Customers</p> 
+    <p style="background-color: #fff; margin: 0; max-width: 200px; margin: auto;"><a href="http://www.shopmobile.click/9175I23n95o8Kl611F6657u18cbq36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRSRm5W10VK6oyjwD1/modularizing-miniatures"><img alt="NBS" src="http://www.shopmobile.click/a615l239v5bjS7a13i6659yko18cbX36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQHRSRm7k1NRw0u5m2wND/replaces-Mayans" width="100%" /></a></p> 
+    <hr color="black" size="2px" style="margin: 0;" />&nbsp; 
+    <p style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; line-height: 7mm; padding: 0 30px;">We'd like to express our gratitude for selecting T-Mobile. Your loyalty and support are greatly appreciated, and we cherish the chance to be of service to you.</p> 
+    <p style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; line-height: 7mm; padding: 0 30px;">We highly value your feedback, and as a token of our gratitude for sharing your thoughts, we'd like to offer you a little gesture of appreciation.</p> 
+    <p style="margin: 0; vertical-align: top;"><a href="http://www.shopmobile.click/9175I23n95o8Kl611F6657u18cbq36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRSRm5W10VK6oyjwD1/modularizing-miniatures" target="_blank"><img alt="BVSW" src="http://www.shopmobile.click/retransmits-stamen/eb84s2395iwV7a12N665alv18cbZ36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQHRSRm7YCS1_0X6Q@WwJD" style="display: inline-block;" width="90px" /></a> <a href="http://www.shopmobile.click/9175I23n95o8Kl611F6657u18cbq36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRSRm5W10VK6oyjwD1/modularizing-miniatures" target="_blank"><img alt="BNES" src="http://www.shopmobile.click/e996sHM2395Wz7ao12LP665b_18cbq36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQHRSRm5KjF106FUwUlD/Camino-Hopkins" style="display: inline-block;" width="120px" /></a></p> 
+    <p style="font-size: 16px; font-family: Arial, Helvetica, sans-serif; line-height: 7mm; padding: 0 30px;"><b>After finishing the survey, you could potentially select from various gift options.</b></p> &nbsp; 
+    <p><a href="http://www.shopmobile.click/9175I23n95o8Kl611F6657u18cbq36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQHRSRm5W10VK6oyjwD1/modularizing-miniatures" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; padding: 2.5% 10%; font-family: Arial, Helvetica, sans-serif; font-weight: bold; background-color: rgb(44, 44, 44); border-radius: 10px; font-size: 20px;">Start Now</span></a></p> &nbsp; 
+    <hr /> 
+    <p style="font-size: 14px; font-family: Arial, Helvetica, sans-serif; line-height: 7mm; padding: 0 30px;">Once more, we appreciate your support, and we eagerly await your response in the near future.<br /> Best regards,<br /> <strong>The T-Mobile Survey Team</strong></p> 
+   </center> &nbsp; 
+   <p><br /> &nbsp;</p> 
+   <address style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 12px; text-align: center; font-weight: 600;">more than welcome to leave in <a href="http://www.shopmobile.click/Montenegro-informative/R125B23Z95U86Nu12J66z58G18cbA36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQHRSRm6ej10SF6vOw3PD">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY,</address> 
+   <p>&nbsp;</p> 
+  </div>   
+ <img src="http://www.shopmobile.click/60b4P2395a8nI513bS6p65cW18cbj36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQHRSRm7w1XJV0F5IAAwD/Montenegro-informative" alt=""/></body>
+</html>
 
-AT&T
-
-We appreciate your preference as a special brand.  We know there are many options on the market and we are grateful for your continued loyalty and support.  We are committed to continuing to provide high-quality products and services that meet your needs. 
-
-So as a token of our appreciation, we'd like to offer you the opportunity to receive a special gift at AT&T.  Just by completing a short survey and you can get an exclusive gift.  Do not miss this opportunity!
-
-
-TAKE THE SURVEY >>>>>
-http://www.linesprees.click/2876vX2_395e8Z6O13s664Vw3H18c6R36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQLRSQQ6j1Lzh06dXXwND/nearsighted-numerous
-
-
-We're sure you'll love our special gift from AT&T, and we hope you enjoy your experience with us.  Complete the survey today and you will receive this wonderful award for your valuable time and opinion.  
-
-
-Thank you again for your preference and we look forward to serving you in the future!, Warm regards
-
-The AT&T Survey
-
----------------------------------------------
-To abandon communications, click_here >>>>> http://www.linesprees.click/4496D2M39P5j8Hg612B6j644w18c6J36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQLRSQQ5G10QP6UlkwD@/Simpson-sylvan
-126 E 23rd St New York, NY, US 10010
-
-
-
-<span></span><font face="octopus"></font><small></small><span></span><font id="puffing"></font><span dir="antibodies"></span>
-
---dc876a823f038e9b097dbd6fd9fd0f00265101--
+--9bea15e10b3bd5142acfc4377f20680a299--
 
