@@ -1,64 +1,32 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35F9C7E1704
-	for <lists+intel-gvt-dev@lfdr.de>; Sun,  5 Nov 2023 22:59:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BDB57E2A2B
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Nov 2023 17:44:09 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 014FC10E242;
-	Sun,  5 Nov 2023 21:59:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1534710E359;
+	Mon,  6 Nov 2023 16:44:08 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 5146 seconds by postgrey-1.36 at gabe;
- Sun, 05 Nov 2023 21:59:30 UTC
-Received: from SMTP-HCRC-200.brggroup.vn (unknown [42.112.212.144])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2880010E242
+X-Greylist: delayed 431 seconds by postgrey-1.36 at gabe;
+ Mon, 06 Nov 2023 16:44:06 UTC
+Received: from users011.phy.heteml.jp (users011.phy.heteml.jp [157.7.44.201])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8F01810E359
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun,  5 Nov 2023 21:59:29 +0000 (UTC)
-Received: from SMTP-HCRC-200.brggroup.vn (localhost [127.0.0.1])
- by SMTP-HCRC-200.brggroup.vn (SMTP-CTTV) with ESMTP id 265A9192F2;
- Mon,  6 Nov 2023 01:58:05 +0700 (+07)
-Received: from zimbra.hcrc.vn (unknown [192.168.200.66])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by SMTP-HCRC-200.brggroup.vn (SMTP-CTTV) with ESMTPS id 1F9A61956F;
- Mon,  6 Nov 2023 01:58:05 +0700 (+07)
-Received: from localhost (localhost [127.0.0.1])
- by zimbra.hcrc.vn (Postfix) with ESMTP id B15B21B8203A;
- Mon,  6 Nov 2023 01:58:06 +0700 (+07)
-Received: from zimbra.hcrc.vn ([127.0.0.1])
- by localhost (zimbra.hcrc.vn [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 8mcOcAErjmPA; Mon,  6 Nov 2023 01:58:06 +0700 (+07)
-Received: from localhost (localhost [127.0.0.1])
- by zimbra.hcrc.vn (Postfix) with ESMTP id 809531B824EE;
- Mon,  6 Nov 2023 01:58:06 +0700 (+07)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra.hcrc.vn 809531B824EE
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hcrc.vn;
- s=64D43D38-C7D6-11ED-8EFE-0027945F1BFA; t=1699210686;
- bh=WOZURJ77pkiMUL2pPLC14ifVPRvyTQIBEQmxuN1ezAA=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=JEImj1vLRnKy+22FMhEr6i/KqvxpwH6N6Hd78AdgT1uAU+G9qocwn0MPNq8G1GXRR
- YAnX7PDRIIoKoinbDkLIvpii9jtMt+zetMugzgWbNOaM9JrRyLg6Cvdhey7ke2dLQu
- rfopdnL9PBxCMNlrl/5pzPhBFQ6H22H+7fAl1/Mist0eqfDZntaj8teTbrzCUN/Rek
- LTOKW+NeES81waTb0xgsE3Qyd46PWwdRbPHQsraLKSYT9SrHsBGdIvhx8hx9sBaoPB
- jLZXSgis0EEy7h+BIXrdOyaGI7w7Eizresq9YMc5GaDZQJEnWRKCa1RPQV8gzlteGZ
- qEtoFXg/wv6gw==
-X-Virus-Scanned: amavisd-new at hcrc.vn
-Received: from zimbra.hcrc.vn ([127.0.0.1])
- by localhost (zimbra.hcrc.vn [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id wnmZ1-OtIRVg; Mon,  6 Nov 2023 01:58:06 +0700 (+07)
-Received: from [192.168.1.152] (unknown [51.179.100.52])
- by zimbra.hcrc.vn (Postfix) with ESMTPSA id 1DF2B1B8254A;
- Mon,  6 Nov 2023 01:57:59 +0700 (+07)
-Content-Type: text/plain; charset="utf-8"
+ Mon,  6 Nov 2023 16:44:06 +0000 (UTC)
+Received: by users011.phy.heteml.jp (Postfix, from userid 492)
+ id B7702F40F5E; Tue,  7 Nov 2023 01:36:52 +0900 (JST)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: anchor-tag.com "When You're Always Distracted"
+X-PHP-Originating-Script: 16456:PHPMailer.php
+Date: Mon, 6 Nov 2023 16:36:52 +0000
+From: "anchor-tag.com" <kobayashi@anchor-tag.com>
+Message-ID: <ohuOuW0rdMxorl5ZSv6v8hr0iVNY0Hxn5PmUx0EP6og@anchor-tag.com>
+X-Mailer: PHPMailer 6.8.0 (https://github.com/PHPMailer/PHPMailer)
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: =?utf-8?b?4oKsIDEwMC4wMDAuMDAwPw==?=
-To: Recipients <ch.31hamnghi@hcrc.vn>
-From: ch.31hamnghi@hcrc.vn
-Date: Sun, 05 Nov 2023 19:57:45 +0100
-Message-Id: <20231105185800.1DF2B1B8254A@zimbra.hcrc.vn>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,16 +39,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: joliushk@gmail.com
+Reply-To: kobayashi@anchor-tag.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Goededag,
-Ik ben mevrouw Joanna Liu en een medewerker van Citi Bank Hong Kong.
-Kan ik =E2=82=AC 100.000.000 aan u overmaken? Kan ik je vertrouwen
+お問い合わせありがとうございます。
+いただきましたお問い合わせ内容を確認いたしまして、後ほど担当者よりご連絡いたします。
+
+メッセージ内容:
+Craving Your Attention and Presence 
+My one and only, your love is my anchor. 
+If you can spare a moment, might you take a look at my page via this link: https://tinyurl.com/ywhwwsjy#qJN7i8   I've shared some recent photos and updates from current events there. It would be fantastic to catch up and share our experiences.
 
 
-Ik wacht op jullie reacties
-Met vriendelijke groeten
-mevrouw Joanna Liu
+--------------------------------------------------------------------------
+アンカータグ
+〒154-0011
+東京都世田谷区上馬2₋27-5 スタンフォードクラシック203
+https://anchor-tag.com
+--------------------------------------------------------------------------
 
