@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27F557E2E41
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Nov 2023 21:35:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F13D7E2EAF
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Nov 2023 22:09:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id E738F10E409;
-	Mon,  6 Nov 2023 20:35:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2ACE510E421;
+	Mon,  6 Nov 2023 21:09:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Mon, 06 Nov 2023 20:35:02 UTC
-Received: from mail.rellnakrog.bond (unknown [194.116.236.236])
- by gabe.freedesktop.org (Postfix) with ESMTP id BBB0210E406
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Mon, 06 Nov 2023 21:09:13 UTC
+Received: from mail.livemobilot.click (unknown [194.116.236.228])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 12C5E10E421
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  6 Nov 2023 20:35:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=rellnakrog.bond; 
+ Mon,  6 Nov 2023 21:09:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=livemobilot.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=share-your-thoughts-for-promo@rellnakrog.bond; 
- bh=aq0Gwz7Hu7Bm0fkQuo0CVbUl8cA=;
- b=gMsDGHtl3KLZ3zDIYeQoH9R98O5JuQKYThVELU6XZzAhaQtBSwqWfOkdGq/Z3Rz4uo7ys+iR338P
- h8d/xsy2/J2UDaRhZzfVo6MVUn13ukuFAz1L7TkbLGzqq8dK5cpo11hsDMytPUcbDbQVuaR5ajq0
- PpPQttY5FTJUSUDwQHY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=rellnakrog.bond;
- b=eqVzdfbLHa0ZlHIY6SVNLw7pju/hFEEdMQYHJbr5fiwBoY5z8dLttmAjqGSHpk0YxR1KPbsvkAu8
- Jl6whNXEXkBzuU1w0HE3rcBf2+wcEqM+VelJzclMc9nxlfFQrnDuV5xGCG2MA/sz4J5wT5TLRqDx
- 08OP5TzegPYNQBTxFAM=;
-Received: by mail.rellnakrog.bond id h956vc0001gp for
+ i=survey_timesensitive_offer@livemobilot.click; 
+ bh=LffcwzZ9/IWCNyta0AnwyDZnml4=;
+ b=hTuPmHEh2eCjPDhakX7MkAnAvta0e0YJ1F0UnLVJCm7ZrnQVK6ADavAqGIDVhnpHYOefQ24WaLe7
+ QPvEjG90gpeY3nOULmUB46hPjMIX6EjgB4ZrhIP17365LqvLhcsrrMPJ7Kb0wcF8xLcR5INsRBk3
+ Fpz61n1xZjZ1xCNI7vA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=livemobilot.click; 
+ b=d9cMKcqspIH434h38D27TpG9saWcRhWr8JhXEEEj1Mp9DSwQJu85vhBV54uecZDO9HH7k9B2US+9
+ rllMUFGWd7A0P44s+o+7UKSQSQfkCQtfGkm1sH1p5cQTjH7DJS2k1ttjFqcJ0x93ChlP2DBxHicg
+ sezGUb1QyD/mQRkfhBM=;
+Received: by mail.livemobilot.click id h95avi0001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 6 Nov 2023 15:26:34 -0500 (envelope-from
- <share-your-thoughts-for-promo-intel+2Dgvt+2Ddev=lists.freedesktop.org@rellnakrog.bond>)
-Date: Mon, 6 Nov 2023 15:26:34 -0500
-From: "Share Your Thoughts For Promo"
- <share-your-thoughts-for-promo@rellnakrog.bond>
+ Mon, 6 Nov 2023 15:58:41 -0500 (envelope-from
+ <survey_timesensitive_offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@livemobilot.click>)
+Date: Mon, 6 Nov 2023 15:58:41 -0500
+From: "Survey TimeSensitive Offer"
+ <survey_timesensitive_offer@livemobilot.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <5580498883925.16993023752931620@rellnakrog.bond>
-Subject: Urgent Survey: Grab Your Day Promo Savings Now!
+Message-ID: <1452914277949.16993043151447@livemobilot.click>
+Subject: Verizon's Survey Exclusive: Win an iPhone PRO 15 in No Time.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=0a8f9f4e276ffde32f000f3668b34d96999947139997908
+ boundary=62655aef2abfc1b4b625060f7ebe19bd9189
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,49 +54,59 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0a8f9f4e276ffde32f000f3668b34d96999947139997908
+--62655aef2abfc1b4b625060f7ebe19bd9189
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 
-Kroger
-
-*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
+VERIZON
 
 
-We express our thanks for your involvement in our survey.  Your input is of=
+=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=
+=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D
+
+
+Dear Valued Customer,
+
+At Verizon, we truly appreciate your loyalty and trust in our services. =20
+As a token of our gratitude, we're excited to present an exclusive=20
+limited-time offer just for you.=20
+
+Get the Chance to Win an iPhone PRO 15!
+
+
+All you need to do is complete a quick, small survey to enter our giveaway.=
+ =20
+Your feedback matters, and we want to ensure your experience with us is=20
+exceptional.  By participating, you not only help us improve but also stand=
 =20
-great worth to Kriyncogelocr, and we genuinely appreciate your feedback.=20
+a chance to win the latest iPhone PRO 15.=20
 
 
-Your ongoing support is highly valued, and we look forward to receiving you=
-r feedback with anticipation.=20
+Take the Survey Now
+http://www.livemobilot.click/relieves-Madhya/17a5C239k5aBr8613q667fwYz18d6j36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQzRSSn5ny10O5zJwXD
 
 
-Accessing the survey is effortless =E2=80=93 just click the link below.  It=
-'s a short task that will take only a few minutes of your valuable time, an=
-d rest assured that your responses will be treated with the highest level o=
-f confidentiality.=20
+Hurry =E2=80=93 This Offer Expires Soon!
 
-Start Here Now >>
-http://www.rellnakrog.bond/cashes-championed/6665m2i395el86x11E667dw18d5B36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQHRSSm6kN1J0_6AMqwD2
-
-We once more convey our sincere thanks for your unwavering support.  We loo=
-k forward to receiving your feedback soon.  Your continued support is genui=
-nely appreciated, and we're excited to hear from you!
+Don't miss out on the opportunity to win this amazing prize. =20
+The survey will be available for a limited time, so act fast to=20
+secure your chance to own the iPhone PRO 15.=20
 
 
-Warm regards,
-The kroger Survey Team
+We thank you for your continued support, and we look forward=20
+to your valuable feedback.  Your opinion drives us to provide=20
+you with the best service.=20
 
 
-*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
+Best regards,
+The Verizon Team
 
-To shut off communications, click_here >>>>> http://www.rellnakrog.bond/5cf4b2395rC8B611g667ek18d5G36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQHRSSm7wDH10MS6J3wDU@/desolately-Onondaga
-126 E 23rd St New York, NY, US 10010
+=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=
+=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D
 
+you can leave with sadness here >>>>>
+http://www.livemobilot.click/a076N239Jz5lFP8611X6680j18d6N36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQzRSSn7vt1zo_05fPwjD/labelled-advisable
+US 10010 126 E 23rd St New York, NY,
 
-
-<style><span></style></span><span face="submode"></span><style><font></style></font><span style="complexion"></span><style></style>
-
---0a8f9f4e276ffde32f000f3668b34d96999947139997908--
+--62655aef2abfc1b4b625060f7ebe19bd9189--
 
