@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 098937E2AF6
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Nov 2023 18:31:18 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CC797E2CC3
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Nov 2023 20:21:59 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7FC7B10E392;
-	Mon,  6 Nov 2023 17:31:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B236E10E3E5;
+	Mon,  6 Nov 2023 19:21:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Mon, 06 Nov 2023 17:31:14 UTC
-Received: from mail.ckfattnow.bond (unknown [194.116.229.42])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4A94D10E38F
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Mon, 06 Nov 2023 19:21:55 UTC
+Received: from mail.womspsex.click (unknown [194.116.229.54])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 18F6310E3E3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  6 Nov 2023 17:31:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=ckfattnow.bond; 
+ Mon,  6 Nov 2023 19:21:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=womspsex.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=quick-att-survey-opportunity@ckfattnow.bond; 
- bh=iREPHiTajSg7H5PCQCFZV2jiyMw=;
- b=tF6OHjXarJTSgwpmoTFwGithmIfxiPnwxFBu5TK//GZ8Bf1qAKyOBVNEA5UJMSG1enJVvoQHZI0u
- LAVD1+YVRGsXN4ZoyfVblD3KDUx9NSPbMX0Fjl0jH2JGNQCG+9htoWO8OFHP/WOK9pL8FJV8Nz3I
- Dh+buKfIsObtuNYhVj4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=ckfattnow.bond;
- b=pk9HFPQwxcBcEqPc5ON5FGvUr+xYqsrWPL4ifcqPFY1E5jyNwJZIdFYQZlx9R/nEHsP0QTmC5yan
- RS4Fqwup2BtSagHyLM+Ea3QS6nzPXNNqqXAIJUo1DO+i9ZZuXw2UrKyyrBzkw4MoL9OvdwDv1r7r
- nE6gS68vbsTEsp/BAx0=;
-Received: by mail.ckfattnow.bond id h94qom0001gp for
+ i=timesensitive.fedex.questionnaire@womspsex.click; 
+ bh=K+ycfG/9WobWIHgEGgxz4kF6q88=;
+ b=JA2CocbLqPWipeGyzvmPH1PGry0vhn+F6O8RuYL8jwzZaNJFsYKQVrx8XHrCApG4cXSZJEz66xkS
+ WjEVIViz0QHM+Db4SZvxDDFASKkRFgvBJh2YWz2U2xfXIdrVWZ3TcU1ZGf+1HWWsYJgY4zP4XRnh
+ Irbk51YyVbJJyx1EU4o=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=womspsex.click;
+ b=SHPY2IvTKklbaT+6yFXbIlm71yUSoOdJHrVLxOii5PkksYipW0Lfuh31+i311xeOqoKpypxyKAxF
+ JSwGnwDKLIfbc2DzmkXfIyirh1uObgGk4iTZ7+W+M0/6ayIkgyfmUHeFaT1gk/3hq5GXdEPcHpX8
+ iDvQcaNUSXpghMGENsg=;
+Received: by mail.womspsex.click id h94ud60001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 6 Nov 2023 13:23:48 -0500 (envelope-from
- <quick-att-survey-opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@ckfattnow.bond>)
-Date: Mon, 6 Nov 2023 13:23:48 -0500
-From: "Quick ATT Survey Opportunity."
- <quick-att-survey-opportunity@ckfattnow.bond>
+ Mon, 6 Nov 2023 13:53:01 -0500 (envelope-from
+ <timesensitive.fedex.questionnaire-intel+2Dgvt+2Ddev=lists.freedesktop.org@womspsex.click>)
+Date: Mon, 6 Nov 2023 13:53:01 -0500
+From: "Timesensitive FedEx Questionnaire."
+ <timesensitive.fedex.questionnaire@womspsex.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <13124481284.16992902364925680@ckfattnow.bond>
-Subject: Complete AT&T's Quick Survey Now for Exclusive Daily Deal Insights
+Message-ID: <1166650314676.16992967736048@womspsex.click>
+Subject: Last Chance to Participate in FedEx's Limited-Time Survey for Daily
+ Promotions!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=d9feeb527a04cb2d4a463136b9003a7310310249798971027102466
+ boundary=de29347d535a37dfb6bcb8c914f07bf31011019510030
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---d9feeb527a04cb2d4a463136b9003a7310310249798971027102466
+--de29347d535a37dfb6bcb8c914f07bf31011019510030
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,38 +64,61 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>token</title> 
+  <title>cherish</title> 
  </head> 
- <body style="margin: 0; padding: 0; "> 
-  <div style="width: 100%; background-color: rgb(233, 233, 233); ">
-   <br /> 
-   <br /> &nbsp; 
-   <div style="max-width: 600px; margin: auto; "> 
-    <div style="background-color: #fff; "> 
-     <div> 
-      <p style="max-width: 220px; margin: auto; "><a href="http://www.ckfattnow.bond/seekers-disguised/9ae4I2395NU86Q13N6Cs667A18d1R36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQXRSRR7iQ10PRS5eNwDM" target="_blank"><img alt="GTS" src="http://www.ckfattnow.bond/fielded-enrollments/cba6d2L39G5SI7aT12CI6669t18d1V36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQXRSRR7lu1Om0D6XXw2D@" width="100%" /></a></p> 
-      <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 800; text-align: center; margin: 0; padding-top: 30px; border-bottom: solid 2.5px rgb(9, 123, 168); ">An Exclusive Deal for Our Esteemed Customers<br /> &nbsp; </p> 
-     </div> 
-     <p style="padding: 18px 30px 18px 30px; font-family: Arial, Helvetica, sans-serif; font-weight: 500; text-align: center; line-height: 27px; font-size: 4.5mm; ">We value your choice as a distinguished brand. We understand that there are numerous alternatives available, and we sincerely thank you for your ongoing loyalty and support. Our commitment to delivering top-notch products and services tailored to your needs remains unwavering.<br /> <br /> <a href="http://www.ckfattnow.bond/seekers-disguised/9ae4I2395NU86Q13N6Cs667A18d1R36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQXRSRR7iQ10PRS5eNwDM"><img alt="BGS" src="http://www.ckfattnow.bond/7eb5H239m5Q_7Ja11O666aq18d1_36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQXRSRR7AtV1xY06QAwDzW/cats-earnestly" style="display: inline-block; " width="90px" /></a> <a href="http://www.ckfattnow.bond/seekers-disguised/9ae4I2395NU86Q13N6Cs667A18d1R36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQXRSRR7iQ10PRS5eNwDM"><img alt="NBS" src="http://www.ckfattnow.bond/6bf4
- d2395AG7va12p6Z66bR18d1r36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQXRSRR6XM1OH06yMkwWD/seekers-disguised" style="display: inline-block; " width="110px" /></a><br /> <br /> As a gesture of our appreciation, we' d like to extend an offer for you to receive a special gift from <strong>AT&amp; T</strong>. Simply by participating in a brief survey, you can secure this exclusive gift. Don' t let this opportunity pass you by!</p> 
-     <center> 
-      <p><a href="http://www.ckfattnow.bond/seekers-disguised/9ae4I2395NU86Q13N6Cs667A18d1R36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQXRSRR7iQ10PRS5eNwDM" style="text-decoration: none; color: rgb(9, 123, 168); " target=""><span style="display: inline-block; padding: 13px 33px; border-radius: 50px; border: solid 3px rgb(9, 123, 168); font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 22px; ">TAKE THE SURVEY</span></a></p> 
-     </center> &nbsp; 
-     <p style="padding: 18px 30px 18px 30px; font-family: Arial, Helvetica, sans-serif; font-weight: 500; text-align: center; line-height: 27px; font-size: 4.5mm; ">We' re confident that you' ll appreciate the unique gift from AT&amp; T, and we trust that you' ll have a great experience with us. Take the survey today to claim this fantastic reward for your valuable time and insights.<br /> <br /> <span style="display: block; border-bottom: solid 1.5px rgb(9, 123, 168); ">&nbsp; </span><br /> <span style="font-size: 3.9mm; ">Thank you once more for choosing us, and we anticipate the opportunity to serve you again in the future!<br /> Warm regards,<br /> <br /> The AT&amp; T Survey Team</span></p> 
-     <br /> &nbsp; 
+ <body style="margin: 0; padding: 0;"> 
+  <div style="background-color: rgb(247, 247, 247); width: 100%;"> 
+   <section> 
+    <div style="padding-top: 1.2rem; padding-bottom: 1.2rem;"> 
+     <article id="iboosl"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center" id="clowflrows"> 
+          <center style="max-width: 33.5em; margin: auto; background-color: #fff; border-bottom: solid 4px #0c113f; padding-bottom: 30px;">
+           &nbsp; 
+           <div style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 2.5px; font-weight: bold; text-align: center;;"> 
+            <h3 style="margin: 0; font-size: 40px;"><a href="http://www.womspsex.click/achievable-nitrogen/71a5t239h5oL8U611y6674H18d3X36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQhRSRe5nA1A05olwBD" style="text-decoration: none; color: #2B1C51;">Fed</a><a href="http://www.womspsex.click/achievable-nitrogen/71a5t239h5oL8U611y6674H18d3X36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQhRSRe5nA1A05olwBD" style="text-decoration: none; color: #D52900;">Ex</a></h3> 
+           </div> 
+           <div style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7.5mm; padding: 0 30px ;"> 
+            <h4>We wish to convey our appreciation for selecting FedEx as your preferred shipping provider. Your loyalty and support mean a great deal to us, and we highly value the opportunity to assist you.</h4> 
+           </div> 
+           <p><a href="http://www.womspsex.click/achievable-nitrogen/71a5t239h5oL8U611y6674H18d3X36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQhRSRe5nA1A05olwBD" target="_blank"><img alt="BGS" src="http://www.womspsex.click/13d6h23r9v5wJ7_a11K6675Y18d3t36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQhRSRe7A_AsJ106WXlwDk/Amman-Jennifer" width="100%" /></a></p> 
+           <div style="background-color: #0c113f; padding: 1.5% 3%;"> 
+            <div style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7.5mm; color: #fff;"> 
+             <h4>We'd like to express our appreciation for choosing FedEx as your preferred shipping partner. Your loyalty and support are truly valued, and we cherish the opportunity to be of service to you.</h4> 
+            </div> 
+           </div> 
+           <div style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7.5mm; padding: 0 30px ;"> 
+            <h1>After completing the survey, you could qualify for a $100 gift!</h1> 
+            <a href="http://www.womspsex.click/achievable-nitrogen/71a5t239h5oL8U611y6674H18d3X36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQhRSRe5nA1A05olwBD"><img alt="QSA" src="http://www.womspsex.click/motorcar-procedural/7745G239s5n7akB11h6676o18d3k36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQhRSRe7fSs1qn05fJwDl" width="90px" /></a>
+           </div> &nbsp; 
+           <div> 
+            <h6 style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7.5mm; padding: 0 30px; margin: 0 ;">To begin the survey, simply click on the link provided below. It's a quick task that will require just a few minutes of your time, and rest assured that your responses will remain confidential.</h6> 
+           </div> &nbsp; 
+           <table align="center"> 
+            <tbody> 
+             <tr> 
+              <td align="center"> 
+               <center style="border: solid 3px #D52900; padding: 13px 30px; border-radius: 50px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 30px;">
+                <a href="http://www.womspsex.click/achievable-nitrogen/71a5t239h5oL8U611y6674H18d3X36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQhRSRe5nA1A05olwBD" style="text-decoration: none; color: #D52900;" target="_blank">Start Here Now &gt;&gt;</a>
+               </center> </td> 
+             </tr> 
+            </tbody> 
+           </table> &nbsp; 
+           <div style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7.5mm; padding: 0 30px ;"> 
+            <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 4.5mm; line-height: 7.5mm; padding: 0 30px; margin: 0 ;">We deeply value your support and look forward to your reply. Best regards.</h2> 
+           </div> 
+          </center> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </article> 
     </div> 
-   </div> 
-   <div style="padding-bottom: 150px; ">
-    &nbsp; 
-   </div> 
-   <div> 
-    <address style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 12px; text-align: center; font-weight: 600; ">more than welcome to leave in <a href="http://www.ckfattnow.bond/6fb4A2395Yo86Z13Y66I6R8S18d1F36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQXRSRR6A10RW_6I0lwD1/Ibsen-cookies">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY,</address> 
-   </div> 
-   <br /> 
-   <br /> &nbsp; 
+   </section> 
   </div>   
- <img src="http://www.ckfattnow.bond/instability-slapstick/62a5X239S5v8v5l11G666cV18d1I36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQXRSRR5w1un06FqwD@O" alt=""/></body>
+ <img src="http://www.womspsex.click/d136I2G3C95P8C5l13w667pB7U18d3G36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQhRSRe6KTS10M6lTywDT/achievable-nitrogen" alt=""/></body>
 </html>
 
---d9feeb527a04cb2d4a463136b9003a7310310249798971027102466--
+--de29347d535a37dfb6bcb8c914f07bf31011019510030--
 
