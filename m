@@ -1,44 +1,31 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F13D7E2EAF
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  6 Nov 2023 22:09:16 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7F0F7E386A
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Nov 2023 11:08:22 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2ACE510E421;
-	Mon,  6 Nov 2023 21:09:15 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7EF8C10E507;
+	Tue,  7 Nov 2023 10:08:21 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Mon, 06 Nov 2023 21:09:13 UTC
-Received: from mail.livemobilot.click (unknown [194.116.236.228])
- by gabe.freedesktop.org (Postfix) with ESMTP id 12C5E10E421
+X-Greylist: delayed 599 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Nov 2023 10:08:19 UTC
+Received: from CoffeyJet.com (mail.coffeyjet.com [104.151.176.135])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D154D10E503
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  6 Nov 2023 21:09:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=livemobilot.click;
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=survey_timesensitive_offer@livemobilot.click; 
- bh=LffcwzZ9/IWCNyta0AnwyDZnml4=;
- b=hTuPmHEh2eCjPDhakX7MkAnAvta0e0YJ1F0UnLVJCm7ZrnQVK6ADavAqGIDVhnpHYOefQ24WaLe7
- QPvEjG90gpeY3nOULmUB46hPjMIX6EjgB4ZrhIP17365LqvLhcsrrMPJ7Kb0wcF8xLcR5INsRBk3
- Fpz61n1xZjZ1xCNI7vA=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=livemobilot.click; 
- b=d9cMKcqspIH434h38D27TpG9saWcRhWr8JhXEEEj1Mp9DSwQJu85vhBV54uecZDO9HH7k9B2US+9
- rllMUFGWd7A0P44s+o+7UKSQSQfkCQtfGkm1sH1p5cQTjH7DJS2k1ttjFqcJ0x93ChlP2DBxHicg
- sezGUb1QyD/mQRkfhBM=;
-Received: by mail.livemobilot.click id h95avi0001gb for
- <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 6 Nov 2023 15:58:41 -0500 (envelope-from
- <survey_timesensitive_offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@livemobilot.click>)
-Date: Mon, 6 Nov 2023 15:58:41 -0500
-From: "Survey TimeSensitive Offer"
- <survey_timesensitive_offer@livemobilot.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1452914277949.16993043151447@livemobilot.click>
-Subject: Verizon's Survey Exclusive: Win an iPhone PRO 15 in No Time.
+ Tue,  7 Nov 2023 10:08:19 +0000 (UTC)
+Received: from jsli.com ([2.25.10.104]) by CoffeyJet.com with
+ MailEnable ESMTPA; Tue, 7 Nov 2023 02:58:11 -0700
+From: " EuroMillions Winner Frances Patrick Connolly "  <john@jsli.com>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Claim your donations today.
+Date: 07 Nov 2023 09:58:14 +0000
+Message-ID: <20231107095813.6F4E601805D54483@jsli.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=62655aef2abfc1b4b625060f7ebe19bd9189
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,62 +38,29 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: patrickcf22p@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---62655aef2abfc1b4b625060f7ebe19bd9189
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-VERIZON
-
-
-=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=
-=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D
-
-
-Dear Valued Customer,
-
-At Verizon, we truly appreciate your loyalty and trust in our services. =20
-As a token of our gratitude, we're excited to present an exclusive=20
-limited-time offer just for you.=20
-
-Get the Chance to Win an iPhone PRO 15!
-
-
-All you need to do is complete a quick, small survey to enter our giveaway.=
- =20
-Your feedback matters, and we want to ensure your experience with us is=20
-exceptional.  By participating, you not only help us improve but also stand=
-=20
-a chance to win the latest iPhone PRO 15.=20
-
-
-Take the Survey Now
-http://www.livemobilot.click/relieves-Madhya/17a5C239k5aBr8613q667fwYz18d6j36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQzRSSn5ny10O5zJwXD
-
-
-Hurry =E2=80=93 This Offer Expires Soon!
-
-Don't miss out on the opportunity to win this amazing prize. =20
-The survey will be available for a limited time, so act fast to=20
-secure your chance to own the iPhone PRO 15.=20
-
-
-We thank you for your continued support, and we look forward=20
-to your valuable feedback.  Your opinion drives us to provide=20
-you with the best service.=20
-
-
-Best regards,
-The Verizon Team
-
-=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D=3D_=
-=3D=3D_=3D=3D_=3D=3D_=3D=3D_=3D
-
-you can leave with sadness here >>>>>
-http://www.livemobilot.click/a076N239Jz5lFP8611X6680j18d6N36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQzRSSn7vt1zo_05fPwjD/labelled-advisable
-US 10010 126 E 23rd St New York, NY,
-
---62655aef2abfc1b4b625060f7ebe19bd9189--
-
+<HTML><HEAD>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.10570.1001"></HEAD>
+<body>
+<P>Attention<BR>Send your response to ( <A href=3D"mailto:patrickcf22@aol.c=
+om">patrickcf22@aol.com</A> ) more details about the Winning</P>
+<P>Our Names are Frances and Patrick Connolly from County Armagh in<BR>Nort=
+hern Ireland. We Just Won 115 Million Pounds from the<BR>EuroMillions lotte=
+ry jackpot Lottery draw. We are therefore giving out<BR>Grant donation of 1=
+,500,000.00 pounds each to (50) Lucky<BR>international recipients worldwide=
+ to show God our appreciation. You<BR>received this message because you hav=
+e be listed as one of the (50)<BR>lucky Individual Selected.</P>
+<P>Kindly send us the below details so that we can transfer your<BR>&#1032;=
+1,500,000.00 pounds in your name or direct our bank to effect the<BR>transf=
+er of the funds to your operational bank account in your country.</P>
+<P>Full Name:<BR>Mobile No:<BR>Age:<BR>Country:</P>
+<P>Kindly visit the link for more details about the Winning;<BR><A href=3D"=
+https://www.bbc.com/news/uk-northern-ireland-46756469">https://www.bbc.com/=
+news/uk-northern-ireland-46756469</A></P>
+<P><BR>Send your response to ( <A href=3D"mailto:patrickcf22@aol.com">patri=
+ckcf22@aol.com</A> )</P>
+<P>Congratulation to You.<BR>Frances &amp; Patrick Connolly</P></BODY></HTM=
+L>
