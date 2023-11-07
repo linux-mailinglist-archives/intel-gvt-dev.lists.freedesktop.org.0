@@ -2,44 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7B747E4946
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Nov 2023 20:37:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7124F7E49A4
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Nov 2023 21:20:16 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 880F210E674;
-	Tue,  7 Nov 2023 19:37:55 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3FC3310E69C;
+	Tue,  7 Nov 2023 20:20:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Tue, 07 Nov 2023 19:37:52 UTC
-Received: from mail.wihardrops.click (unknown [194.116.236.111])
- by gabe.freedesktop.org (Postfix) with ESMTP id BA83D10E672
+X-Greylist: delayed 1196 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Nov 2023 20:20:13 UTC
+Received: from mail.boschlows.bond (unknown [194.116.229.50])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 500D210E69C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Nov 2023 19:37:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wihardrops.click;
+ Tue,  7 Nov 2023 20:20:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=boschlows.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=limitedtime_offer_lowes_survey@wihardrops.click; 
- bh=ABh9SUUUFD032JTqFqOohGHlYDc=;
- b=f/Ornhk+PZHHQxrDCYedBtMxx6IVWZToK8+/MIfhF2xbFYkXL0vr7GJzMRGZWIr31jBuclZjLOQ4
- sr74SwMLsQrqbAXCqIj5HuLbOUlg9Ry1fuLlMeQEOeERSrFNTAmHqNpZ5PnvbEhxFRc9tYxLUqqW
- ujiqSIELiql1JJ5Uz6E=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wihardrops.click;
- b=ATJs/QWfgQ+MYiHwOR4o4SPEXFQaOXH0tUWdEzTguGzO7zfVDX9NBBZ7nG09fF2HT6BdBIvSwnhj
- XjZbChZRqgobA0S5Ecb9bql88ltD9cC53hGHiLmPQxgZAoKXDu3VGNmbCAJstYTDrbsxDOOX2jVI
- g7Dlniu9LrD7j7Bi5qY=;
-Received: by mail.wihardrops.click id h9a9100001gb for
+ i=bosch_drill_giveaway@boschlows.bond; 
+ bh=eCfTQ34ZlhV5fOPTXM2IPNyDGBE=;
+ b=Yptt9TujRMVVaN2pNFCAZA5gkMV1fq6S6UjoeLHWUOmiwQduoaRET9AupzNHPRigZo/uoO9hJLRD
+ V3R3ach4aBcAnBSNuAfZRjtfW/4mCYk2ep6hifghU6KlEFiUPZRTiTD3ENtrp1o13/pXohKyENWy
+ lHDY7f/m0mrPL0pKxzk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=boschlows.bond;
+ b=M7M4p6AHHng0BIL/E372nY38uYhHjSVUXNIJ38kS9J6Og2y70tUoX8O8gT107oRdg6UNa/1P/7xf
+ DltYlN5mmR64FhoKP+fqhm+fv6bB+Co2imYd+qAwOapbWKyuAOERtISqJhIhndmBJHvQPgyUFdV3
+ LM3JmuNYSEgNiyHBkqc=;
+Received: by mail.boschlows.bond id h9advq0001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Nov 2023 14:19:19 -0500 (envelope-from
- <limitedtime_offer_lowes_survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@wihardrops.click>)
-Date: Tue, 7 Nov 2023 14:19:19 -0500
-From: "LimitedTime Offer Lowes Survey"
- <limitedtime_offer_lowes_survey@wihardrops.click>
+ Tue, 7 Nov 2023 14:57:00 -0500 (envelope-from
+ <bosch_drill_giveaway-intel+2Dgvt+2Ddev=lists.freedesktop.org@boschlows.bond>)
+Date: Tue, 7 Nov 2023 14:57:00 -0500
+From: "Bosch Drill Giveaway" <bosch_drill_giveaway@boschlows.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <386205251737.169938474090582@wihardrops.click>
-Subject: Your Feedback Counts: Win a Wiha Screwdriver Tray Set in Lowe's
- Limited-Time Survey.
+Message-ID: <119183239077.16993870030638@boschlows.bond>
+Subject: Time's Running Out! O'Reilly Survey for Your Bosch Drill Set!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=7bdcfc61e137289f0855e88ebd77eb8d4049999851009798
+ boundary=45c8b5cddc1350c627f78caab157e8d14103101766
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---7bdcfc61e137289f0855e88ebd77eb8d4049999851009798
+--45c8b5cddc1350c627f78caab157e8d14103101766
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,46 +62,49 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>completing</title> 
+  <title>Ready</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <table align="center" border="0" cellpadding="18px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(231, 231, 231);" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
-       <div style="background-color: #011A6B;"> 
-        <center style="max-width: 50mm;">
-         <a href="http://www.wihardrops.click/cy54m2395lzG8611D6690X18daS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRSSQ6PP10Zv5hTwDq/birdbaths-staked" target="_blank"><img alt="ZZX" src="http://www.wihardrops.click/predominates-acquiescent/4fe5VX2395r7agm12w6692PS18dau36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQNRSSQ5t1R0T5rzNwD" style="display: block;" width="100%" /></a>
-        </center> 
-       </div> &nbsp; 
-       <div id="tps"> 
-        <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 800; text-align: center; font-size: 22px; margin: 0; color: #011A6B; border-bottom: solid 3px #011A6B;">Exclusive Offer<br /> Win a Wiha Screwdriver Tray Set!<br /> &nbsp;</p> 
-       </div> 
+  <div style="padding: 3rem 0;"> 
+   <div style="background-color: rgb(218, 218, 218); padding: 1.2px 0;"> 
+    <div style="padding: 2rem 0;"> 
+     <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+      <div style="box-shadow: 0 0 5px px; border-radius: 10px;"> 
        <div> 
-        <p style="margin: 0; font-size: 18px; font-family: Arial, Helvetica, sans-serif; padding: 35px 35px 0; line-height: 28px;">Great news from Lowe's! We have a remarkable Wiha Screwdriver Tray Set waiting for you. It's as simple as a few clicks or completing a quick survey to enter. Act now! You have until November 7th to claim this fantastic prize.<br /> &nbsp;</p> 
-        <center style="max-width: 80mm; margin: auto;">
-         <a href="http://www.wihardrops.click/cy54m2395lzG8611D6690X18daS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRSSQ6PP10Zv5hTwDq/birdbaths-staked"><img alt="GGS" src="http://www.wihardrops.click/benefit-stupidest/42c5b2g395VYr7a11l6693m18daJ36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQNRSSQ6ki1OH05OlWwD" style="display: block;" width="100%" /></a>
+        <div style="max-width: 220px; margin: auto;">
+         <a href="http://www.boschlows.bond/tautologies-practiced/62a6jt239Y5O86wk11a6695X18dbJ36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQaRSSR6A1wV0C6VzzwDT" target="_blank"><img alt="BBS" src="http://www.boschlows.bond/tautologies-practiced/4c25jS2395g7VaO12Y6696Mk18dbA36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQaRSSR7wwhvX105qBwJD" style="display: block;" width="100%" /></a>
+        </div> &nbsp; 
+        <div style="background-color: #db0000;"> 
+         <div style="text-align: center; font-weight: 800; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 1rem 0; color: #fff;">
+          Essential Message from O'Reilly
+         </div> 
+        </div> 
+        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; padding: 0 30px; text-align: center; line-height: 27px;">Prepare for Exciting News: O'Reilly Unveils a Bosch Drill Set for In-Store Use. Act Fast to Reserve Your Premium Tools by November 7th.<br /> &nbsp;</p> 
+        <center style="max-width: 70mm; margin: auto;">
+         <a href="http://www.boschlows.bond/tautologies-practiced/62a6jt239Y5O86wk11a6695X18dbJ36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQaRSSR6A1wV0C6VzzwDT"><img alt="BVS" src="http://www.boschlows.bond/Racine-mistakable/ed66c2l3p95L7kCa12z6697vr18dbI36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQaRSSR6X10hQC5Bz1wD" width="100%" /></a>
         </center> 
         <p>&nbsp;</p> 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td align="center"> 
+            <div style="padding: .4cm .6cm; background-color: #2f4372; width: 200px; font-size: 20px; border-radius: 13px; font-weight: bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+             <a href="http://www.boschlows.bond/tautologies-practiced/62a6jt239Y5O86wk11a6695X18dbJ36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQaRSSR6A1wV0C6VzzwDT" style="text-decoration: none; color: #fff;">Start Here Now &gt;&gt; </a>
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> &nbsp; 
+        <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500; padding: 0 30px; text-align: center; line-height: 27px; margin: 0;">Your feedback is highly appreciated, From the O'Reilly Auto Parts Survey Team</p> 
+        <br /> 
+        <br /> &nbsp;
        </div> 
-       <center align="center"> 
-        <div style="padding-top: 1.2rem; padding-bottom: 1.2rem; padding-left: 1.7rem; padding-right: 1.7rem; border-radius: 1.2rem; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 22px; background-color: #011A6B; width: 300px; margin: auto;">
-         <a href="http://www.wihardrops.click/cy54m2395lzG8611D6690X18daS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRSSQ6PP10Zv5hTwDq/birdbaths-staked" style="text-decoration: none; color: #fff;" target="_blank">Start Here to Win &gt; &gt;</a>
-        </div> 
-       </center> 
-       <div> 
-        <p style="margin: 0; font-size: 18px; font-family: Arial, Helvetica, sans-serif; padding: 35px 35px 0; line-height: 28px;">Your input is invaluable to us at Lowe's. We deeply appreciate your participation in our survey. Your feedback means the world to us, and we hold it in high regard.<br /> &nbsp;</p> 
-       </div> 
-      </div> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp; 
-      <div> 
-       <address style="max-width: 33.5rem; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; font-size: 11px;">you can leave with sadness <a href="http://www.wihardrops.click/1014d2395C86vg11d6691_18daK36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRSSQ6Qj10SV5dTwWD/server-sanctimonious">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
-      </div> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.wihardrops.click/cb94M2395l8qy513o66K94Zw18daH36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQNRSSQ7Dy1AWH06hMwkDO/bayonets-bathing" alt=""/></body>
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div>   
+ <img src="http://www.boschlows.bond/51b4G2395I8YU513o6vy698J18dbZ36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQaRSSR7QKp1I0l6s1lwzD/cudgels-motoring" alt=""/></body>
 </html>
 
---7bdcfc61e137289f0855e88ebd77eb8d4049999851009798--
+--45c8b5cddc1350c627f78caab157e8d14103101766--
 
