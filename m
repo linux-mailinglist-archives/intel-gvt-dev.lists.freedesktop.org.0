@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC4217E45F8
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Nov 2023 17:27:15 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 543007E47DF
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Nov 2023 19:09:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9307F10E61D;
-	Tue,  7 Nov 2023 16:27:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1DB5C10E641;
+	Tue,  7 Nov 2023 18:09:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Tue, 07 Nov 2023 16:27:12 UTC
-Received: from mail.morecoffee.click (unknown [194.116.236.243])
- by gabe.freedesktop.org (Postfix) with ESMTP id 84ACF10E61D
+X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Nov 2023 18:09:54 UTC
+Received: from mail.blocksmobil.bond (unknown [194.116.236.254])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 99B1610E05C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Nov 2023 16:27:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=morecoffee.click;
+ Tue,  7 Nov 2023 18:09:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=blocksmobil.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=last-chance-starbucks-survey-for-promo@morecoffee.click; 
- bh=BL1Od7RPpVo38Axf7Q3Um4HpvS4=;
- b=Q49yi5yEHPreJ6PAbxoDUn6jYMlFL0QYHd225yNLZzIowNLJ0ywmMbMDwyXUvYtpHUFkiPgHzy5T
- +y3lop+A+vMFrYZrizAa+/eTAlWmBLaKv86L3/2by/1PG7mPKPirQLEtxqC4EYZ61MFPp6wnfw3t
- nkWOQ33lbwDv+66vNCw=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=morecoffee.click;
- b=QrR66qDwsVwrHffOcGuDEzNF1QcB1p9lgHP7Gec1tEv5HT+SAiq/BARbHyZBng/7fZXj+Vi7S2vj
- VMDox+x+p69uBoU0e4hmlqVP7D02RW4Y6brI95geT6ubibg9h6hI80+OF505x2lnVLG15KwPJN2Q
- wce1e4xa4czbGxyCJFs=;
-Received: by mail.morecoffee.click id h99s0g0001gc for
+ i=quick.feedback.win.iphone.pro@blocksmobil.bond; 
+ bh=uMetJ/EU+HCAWS2bW0B+2STKfX8=;
+ b=mNtu52yBeg9IQSEoBZ9Bb13wAn2KzrPvpuxqAxWsobmBzx067DsY+UwYe3EZo/f/QkMFF3wAD/3Q
+ IMOcXz2JZBhLo6R8nURe4Q19UPX1Ahug3LWH0dodVvZTXy3Tta88akendOcDAVOxUY+HCfAUaHXt
+ qzV/LbE8WiLorj5U7z8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=blocksmobil.bond;
+ b=Pf9YONmPBGgow5aXcjXoLGowApDFS8ZzwEm3WfT8/3YhfLQ73KBj9sabgGpu/3/a4bJXFSh7xPDE
+ HmuYP8DlJ8pTqAh8LVlOf3+5V/E+h5vztiwQP4JiZspQ9G6ki82c3SwgEAhy1HKdYWdvH2sVQRO2
+ SeiH/+i5Tg/i9e9azjI=;
+Received: by mail.blocksmobil.bond id h99un40001gd for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Nov 2023 12:21:45 -0500 (envelope-from
- <last-chance-starbucks-survey-for-promo-intel+2Dgvt+2Ddev=lists.freedesktop.org@morecoffee.click>)
-Date: Tue, 7 Nov 2023 12:21:45 -0500
-From: "Last Chance Starbucks Survey For Promo"
- <last-chance-starbucks-survey-for-promo@morecoffee.click>
+ Tue, 7 Nov 2023 12:52:23 -0500 (envelope-from
+ <quick.feedback.win.iphone.pro-intel+2Dgvt+2Ddev=lists.freedesktop.org@blocksmobil.bond>)
+Date: Tue, 7 Nov 2023 12:52:23 -0500
+From: "Quick Feedback Win IPhone Pro"
+ <quick.feedback.win.iphone.pro@blocksmobil.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <187366644387.1699372921342985@morecoffee.click>
-Subject: Starbucks Day Promo: Act Now and Complete the Survey for Rewards.
+Message-ID: <12048350119574.1699379521437603@blocksmobil.bond>
+Subject: Survey to Win an iPhone Pro 15 in Today's Day Promo &ndash;
+ Join Verizon Now!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=ed8b9b7a32ffb0cf1a7db1f68ff5d9f491410399399101
+ boundary=e488ba2c7db956e762ed5d5b30cd0d5299103
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---ed8b9b7a32ffb0cf1a7db1f68ff5d9f491410399399101
+--e488ba2c7db956e762ed5d5b30cd0d5299103
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,94 +64,87 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>enjoy</title> 
+  <title>limited</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <header id="vasbplis"> 
-   <nav id="sssna"> 
+  <ol style="list-style-type: none; padding: 0; margin: 0;"> 
+   <li id="bblsas"> 
     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
      <tbody> 
       <tr> 
-       <td align="center" id="shepths"> 
-        <div style="background-color: rgb(235, 235, 235); width: 100%; padding-top: .7cm; padding-bottom: .7cm;"> 
-         <section id="chaphs"> 
-          <div style="background-color: #1A6E48; padding: 15px 0;"> 
-           <div style="max-width: 70mm; margin: auto;">
-            <a href="http://www.morecoffee.click/sword-impoverished/62a4l2395z86IL13i6O6N86Z18d8C36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQXRSS96A1G0oP5vMJwD" target="_blank"><img alt="MNS" src="http://www.morecoffee.click/6296DXQ2395b7aVu12p6688ys18d8Z36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQXRSS95ixT105BjwD0/Bernardino-Tucson" style="display: block;" width="100%" /></a>
+       <td align="center"> 
+        <center align="cneter" id="tottsal" style="background-color: rgb(238, 238, 238); width: 100%;">
+         <br /> 
+         <br /> &nbsp; 
+         <div> 
+          <table align="center" border="0" cellpadding="13px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(32, 32, 32);" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 12mm;"> 
+              <div style="max-width: 300px; margin: auto;"> 
+               <center>
+                <a href="http://www.blocksmobil.bond/4855z2t395D86ql13g66T8lco18d9K36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQMRSSd5nk1Y06Yl3wDB/martyrdom-injunctions" style="text-decoration: none; color: #fff;"><b style="color: #ff0000;">V</b>erizon</a>
+               </center> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> &nbsp; 
+          <center align="center" class="symblis" style="background-color: #fff; max-width: 18cm; margin: auto; text-align: center;"> 
+           <div> 
+            <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 800; font-size: 25px; margin: 0; padding: .8cm 0;">Esteemed Customer</h1> 
+            <div style="padding: 0 60px;"> 
+             <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 5.5mm; line-height: 7mm; ;">At Verizon, we highly appreciate your loyalty and the trust you've placed in our services. To demonstrate our appreciation, we are excited to present a unique, limited-time offer designed exclusively for you.<br /> <br /> <b>Have the opportunity to win an iPhone PRO 15!</b> <a href="http://www.blocksmobil.bond/4855z2t395D86ql13g66T8lco18d9K36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQMRSSd5nk1Y06Yl3wDB/martyrdom-injunctions" target="_blank"><img alt="YTS" src="http://www.blocksmobil.bond/1016IM239L5Jt7aP11f668eG18d9q36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQMRSSd7uA10KCh6KWw2Dl/byproducts-faraway" width="100%" /></a></h2> 
+             <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 5.5mm; line-height: 7mm; ;">Engage in a quick and to-the-point survey to enter our giveaway for a chance to win. Your feedback is of utmost importance to us, as we are dedicated to providing an exceptional experience for you. By participating, you not only contribute to our continuous enhancement but also qualify for the opportunity to receive the state-of-the-art iPhone PRO 15.</h3> &nbsp; 
+             <div> 
+              <table align="center"> 
+               <tbody> 
+                <tr> 
+                 <td align="center"> 
+                  <div>
+                   <a href="http://www.blocksmobil.bond/4855z2t395D86ql13g66T8lco18d9K36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQMRSSd5nk1Y06Yl3wDB/martyrdom-injunctions" style="text-decoration: none; color: #fff;"><span style="display: inline-block; padding: 1.5rem 1.7rem; border-radius: 1.2rem; font-family: Arial, Helvetica, sans-serif; font-weight: bold; background-color: rgb(31, 31, 31);">Take the Survey Now</span></a>
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <h5 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 5.5mm; line-height: 7mm; ;"><b>Hurry * This Offer Expires Soon!</b><br /> <br /> Be sure to grab the opportunity to attain this amazing prize, as the survey will be open for a limited time. Take prompt action to secure your chance to own the iPhone PRO 15.<br /> <br /> We extend our appreciation for your continuous support and eagerly anticipate receiving your invaluable feedback. Your input motivates us to provide you with the best service possible.</h5> &nbsp; 
+              <hr /> 
+              <h6 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 5.5mm; line-height: 7mm; ;"><b>Best regards,<br /> The Verizon Team </b><br /> &nbsp;</h6> 
+             </div> 
+            </div> 
            </div> 
-          </div> 
-          <div> 
-           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-            <tbody> 
-             <tr> 
-              <td align="center">&nbsp; 
-               <div style="max-width: 40rem; margin: auto; text-align: center; background-color: #fff;"> 
-                <article> 
-                 <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 1.2rem; margin: 0; padding: 20px 0; font-weight: 700; color: #1A6E48;"><font>Your Final<br /> Notification from Starbucks </font></p> 
-                </article> 
-                <hr color="#000" size="2px" style="margin: 0;" />&nbsp; 
-                <div class="imbosx">
-                 <a href="http://www.morecoffee.click/sword-impoverished/62a4l2395z86IL13i6O6N86Z18d8C36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQXRSS96A1G0oP5vMJwD" target="_blank"><img alt="RES" src="http://www.morecoffee.click/b6f5D239x5f7zay12F668n9r18d8T36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQXRSS96th1gG06gTWLwD/stirring-kindergarten" width="120px" /></a>
-                 <br /> &nbsp; 
-                 <h2 style="margin: 0; font-weight: normal; font-family: Arial, Helvetica, sans-serif; font-weight: 500; padding: 0 70px; font-size: 1.1rem; line-height: 1.7rem;">Exciting news! Starbucks is delighted to offer a special promotion for a $100 Gift Card that can be used at any of our store locations. Don't let this opportunity slip away. You have until November 7th to savor these delightful beverages.</h2> 
-                 <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                  <tbody> 
-                   <tr> 
-                    <td class="lloslae">&nbsp;</td> 
-                    <td align="center" class="lloslae"> 
-                     <div style="max-width: 225px; margin: auto; padding: 20px 0;">
-                      <a href="http://www.morecoffee.click/sword-impoverished/62a4l2395z86IL13i6O6N86Z18d8C36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQXRSS96A1G0oP5vMJwD" target="_blank"><img alt="NBS" src="http://www.morecoffee.click/4c16pp2r395h7Wva12Bq668as18d8g36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQXRSS96z1M0lg6UpkqwD/stirring-kindergarten" width="100%" /></a>
-                     </div> </td> 
-                   </tr> 
-                   <tr> 
-                    <td align="center" colspan="2"> 
-                     <div> 
-                      <div style="border: solid 2.5px #1A6E48; border-radius: 50px; padding: .4cm .7cm; width: 250px; margin: auto; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
-                       <a href="http://www.morecoffee.click/sword-impoverished/62a4l2395z86IL13i6O6N86Z18d8C36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQXRSS96A1G0oP5vMJwD" style="color: #1A6E48; text-decoration: none;" target="_blank">Start Here Now &gt;&gt; </a>
-                      </div> 
-                     </div> </td> 
-                   </tr> 
-                   <tr> 
-                    <td align="center" colspan="2"> 
-                     <div> 
-                      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                       <tbody> 
-                        <tr> 
-                         <td align="center" class="thas">&nbsp; <p style="margin: 0; font-weight: normal; font-family: Arial, Helvetica, sans-serif; font-weight: 500; padding: 0 70px; font-size: .9rem; line-height: 1.7rem;">Your participation is valued.<br /> Warm regards,<br /> <b>The Starbucks Team.</b></p> <br /> &nbsp;</td> 
-                        </tr> 
-                       </tbody> 
-                      </table> 
-                     </div> </td> 
-                   </tr> 
-                  </tbody> 
-                 </table> 
-                </div> 
-               </div> <br /> &nbsp;</td> 
-             </tr> 
-            </tbody> 
-           </table> 
-           <br /> &nbsp;
-           <br /> &nbsp;
-           <br /> &nbsp;
-           <br /> &nbsp;
-           <br /> &nbsp;
-           <br /> &nbsp;
-           <br /> &nbsp;
-           <br /> &nbsp;
-           <br /> &nbsp;
-          </div> 
-          <div style="background-color: #e9fff5; padding: 20px 0;"> 
-           <p style="max-width: 520px; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; font-size: 12px;">you can leave with sadness <a href="http://www.morecoffee.click/6296uC2l395B86nS12m6687lI18d8_36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQXRSS95z1oM05SBlwD/brisk-Mikhail">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-          </div> 
-         </section> 
-        </div> </td> 
+          </center> 
+         </div> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> &nbsp; 
+         <div style="max-width: 520px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-align: center; font-weight: 800;">
+          you can leave with sadness 
+          <a href="http://www.blocksmobil.bond/d315Kl2395Qv86t11S668dC18d9_36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQMRSSd7P1SK0At6clyjwD/silica-anode">here</a>
+          <br /> US 10010 126 E 23rd St New York, NY,
+         </div> 
+         <br /> 
+         <br /> &nbsp;
+        </center> </td> 
       </tr> 
      </tbody> 
-    </table> 
-   </nav> 
-  </header>   
- <img src="http://www.morecoffee.click/stirring-kindergarten/4eW5Y239p5z85Rt13W66g8Fbm18d8U36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQXRSS97z10qvlk6F@1ywD" alt=""/></body>
+    </table> </li> 
+  </ol>   
+ <img src="http://www.blocksmobil.bond/3775V2I395O8jq513A6Q68fIP18d9N36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMRSSd7j1GMg0n5Cz@wD/silica-anode" alt=""/></body>
 </html>
 
---ed8b9b7a32ffb0cf1a7db1f68ff5d9f491410399399101--
+--e488ba2c7db956e762ed5d5b30cd0d5299103--
 
