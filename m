@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 543007E47DF
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Nov 2023 19:09:58 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7B747E4946
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  7 Nov 2023 20:37:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1DB5C10E641;
-	Tue,  7 Nov 2023 18:09:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 880F210E674;
+	Tue,  7 Nov 2023 19:37:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
- Tue, 07 Nov 2023 18:09:54 UTC
-Received: from mail.blocksmobil.bond (unknown [194.116.236.254])
- by gabe.freedesktop.org (Postfix) with ESMTP id 99B1610E05C
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Tue, 07 Nov 2023 19:37:52 UTC
+Received: from mail.wihardrops.click (unknown [194.116.236.111])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BA83D10E672
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  7 Nov 2023 18:09:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=blocksmobil.bond;
+ Tue,  7 Nov 2023 19:37:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=wihardrops.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=quick.feedback.win.iphone.pro@blocksmobil.bond; 
- bh=uMetJ/EU+HCAWS2bW0B+2STKfX8=;
- b=mNtu52yBeg9IQSEoBZ9Bb13wAn2KzrPvpuxqAxWsobmBzx067DsY+UwYe3EZo/f/QkMFF3wAD/3Q
- IMOcXz2JZBhLo6R8nURe4Q19UPX1Ahug3LWH0dodVvZTXy3Tta88akendOcDAVOxUY+HCfAUaHXt
- qzV/LbE8WiLorj5U7z8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=blocksmobil.bond;
- b=Pf9YONmPBGgow5aXcjXoLGowApDFS8ZzwEm3WfT8/3YhfLQ73KBj9sabgGpu/3/a4bJXFSh7xPDE
- HmuYP8DlJ8pTqAh8LVlOf3+5V/E+h5vztiwQP4JiZspQ9G6ki82c3SwgEAhy1HKdYWdvH2sVQRO2
- SeiH/+i5Tg/i9e9azjI=;
-Received: by mail.blocksmobil.bond id h99un40001gd for
+ i=limitedtime_offer_lowes_survey@wihardrops.click; 
+ bh=ABh9SUUUFD032JTqFqOohGHlYDc=;
+ b=f/Ornhk+PZHHQxrDCYedBtMxx6IVWZToK8+/MIfhF2xbFYkXL0vr7GJzMRGZWIr31jBuclZjLOQ4
+ sr74SwMLsQrqbAXCqIj5HuLbOUlg9Ry1fuLlMeQEOeERSrFNTAmHqNpZ5PnvbEhxFRc9tYxLUqqW
+ ujiqSIELiql1JJ5Uz6E=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wihardrops.click;
+ b=ATJs/QWfgQ+MYiHwOR4o4SPEXFQaOXH0tUWdEzTguGzO7zfVDX9NBBZ7nG09fF2HT6BdBIvSwnhj
+ XjZbChZRqgobA0S5Ecb9bql88ltD9cC53hGHiLmPQxgZAoKXDu3VGNmbCAJstYTDrbsxDOOX2jVI
+ g7Dlniu9LrD7j7Bi5qY=;
+Received: by mail.wihardrops.click id h9a9100001gb for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 7 Nov 2023 12:52:23 -0500 (envelope-from
- <quick.feedback.win.iphone.pro-intel+2Dgvt+2Ddev=lists.freedesktop.org@blocksmobil.bond>)
-Date: Tue, 7 Nov 2023 12:52:23 -0500
-From: "Quick Feedback Win IPhone Pro"
- <quick.feedback.win.iphone.pro@blocksmobil.bond>
+ Tue, 7 Nov 2023 14:19:19 -0500 (envelope-from
+ <limitedtime_offer_lowes_survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@wihardrops.click>)
+Date: Tue, 7 Nov 2023 14:19:19 -0500
+From: "LimitedTime Offer Lowes Survey"
+ <limitedtime_offer_lowes_survey@wihardrops.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <12048350119574.1699379521437603@blocksmobil.bond>
-Subject: Survey to Win an iPhone Pro 15 in Today's Day Promo &ndash;
- Join Verizon Now!
+Message-ID: <386205251737.169938474090582@wihardrops.click>
+Subject: Your Feedback Counts: Win a Wiha Screwdriver Tray Set in Lowe's
+ Limited-Time Survey.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=e488ba2c7db956e762ed5d5b30cd0d5299103
+ boundary=7bdcfc61e137289f0855e88ebd77eb8d4049999851009798
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---e488ba2c7db956e762ed5d5b30cd0d5299103
+--7bdcfc61e137289f0855e88ebd77eb8d4049999851009798
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,87 +64,46 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>limited</title> 
+  <title>completing</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <ol style="list-style-type: none; padding: 0; margin: 0;"> 
-   <li id="bblsas"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <center align="cneter" id="tottsal" style="background-color: rgb(238, 238, 238); width: 100%;">
-         <br /> 
-         <br /> &nbsp; 
-         <div> 
-          <table align="center" border="0" cellpadding="13px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(32, 32, 32);" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 12mm;"> 
-              <div style="max-width: 300px; margin: auto;"> 
-               <center>
-                <a href="http://www.blocksmobil.bond/4855z2t395D86ql13g66T8lco18d9K36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQMRSSd5nk1Y06Yl3wDB/martyrdom-injunctions" style="text-decoration: none; color: #fff;"><b style="color: #ff0000;">V</b>erizon</a>
-               </center> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> &nbsp; 
-          <center align="center" class="symblis" style="background-color: #fff; max-width: 18cm; margin: auto; text-align: center;"> 
-           <div> 
-            <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 800; font-size: 25px; margin: 0; padding: .8cm 0;">Esteemed Customer</h1> 
-            <div style="padding: 0 60px;"> 
-             <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 5.5mm; line-height: 7mm; ;">At Verizon, we highly appreciate your loyalty and the trust you've placed in our services. To demonstrate our appreciation, we are excited to present a unique, limited-time offer designed exclusively for you.<br /> <br /> <b>Have the opportunity to win an iPhone PRO 15!</b> <a href="http://www.blocksmobil.bond/4855z2t395D86ql13g66T8lco18d9K36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQMRSSd5nk1Y06Yl3wDB/martyrdom-injunctions" target="_blank"><img alt="YTS" src="http://www.blocksmobil.bond/1016IM239L5Jt7aP11f668eG18d9q36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQMRSSd7uA10KCh6KWw2Dl/byproducts-faraway" width="100%" /></a></h2> 
-             <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 5.5mm; line-height: 7mm; ;">Engage in a quick and to-the-point survey to enter our giveaway for a chance to win. Your feedback is of utmost importance to us, as we are dedicated to providing an exceptional experience for you. By participating, you not only contribute to our continuous enhancement but also qualify for the opportunity to receive the state-of-the-art iPhone PRO 15.</h3> &nbsp; 
-             <div> 
-              <table align="center"> 
-               <tbody> 
-                <tr> 
-                 <td align="center"> 
-                  <div>
-                   <a href="http://www.blocksmobil.bond/4855z2t395D86ql13g66T8lco18d9K36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQMRSSd5nk1Y06Yl3wDB/martyrdom-injunctions" style="text-decoration: none; color: #fff;"><span style="display: inline-block; padding: 1.5rem 1.7rem; border-radius: 1.2rem; font-family: Arial, Helvetica, sans-serif; font-weight: bold; background-color: rgb(31, 31, 31);">Take the Survey Now</span></a>
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <h5 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 5.5mm; line-height: 7mm; ;"><b>Hurry * This Offer Expires Soon!</b><br /> <br /> Be sure to grab the opportunity to attain this amazing prize, as the survey will be open for a limited time. Take prompt action to secure your chance to own the iPhone PRO 15.<br /> <br /> We extend our appreciation for your continuous support and eagerly anticipate receiving your invaluable feedback. Your input motivates us to provide you with the best service possible.</h5> &nbsp; 
-              <hr /> 
-              <h6 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 5.5mm; line-height: 7mm; ;"><b>Best regards,<br /> The Verizon Team </b><br /> &nbsp;</h6> 
-             </div> 
-            </div> 
-           </div> 
-          </center> 
-         </div> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> &nbsp; 
-         <div style="max-width: 520px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-align: center; font-weight: 800;">
-          you can leave with sadness 
-          <a href="http://www.blocksmobil.bond/d315Kl2395Qv86t11S668dC18d9_36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQMRSSd7P1SK0At6clyjwD/silica-anode">here</a>
-          <br /> US 10010 126 E 23rd St New York, NY,
-         </div> 
-         <br /> 
-         <br /> &nbsp;
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> </li> 
-  </ol>   
- <img src="http://www.blocksmobil.bond/3775V2I395O8jq513A6Q68fIP18d9N36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQMRSSd7j1GMg0n5Cz@wD/silica-anode" alt=""/></body>
+  <table align="center" border="0" cellpadding="18px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(231, 231, 231);" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <div style="max-width: 520px; margin: auto; background-color: #fff;"> 
+       <div style="background-color: #011A6B;"> 
+        <center style="max-width: 50mm;">
+         <a href="http://www.wihardrops.click/cy54m2395lzG8611D6690X18daS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRSSQ6PP10Zv5hTwDq/birdbaths-staked" target="_blank"><img alt="ZZX" src="http://www.wihardrops.click/predominates-acquiescent/4fe5VX2395r7agm12w6692PS18dau36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQNRSSQ5t1R0T5rzNwD" style="display: block;" width="100%" /></a>
+        </center> 
+       </div> &nbsp; 
+       <div id="tps"> 
+        <p style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 800; text-align: center; font-size: 22px; margin: 0; color: #011A6B; border-bottom: solid 3px #011A6B;">Exclusive Offer<br /> Win a Wiha Screwdriver Tray Set!<br /> &nbsp;</p> 
+       </div> 
+       <div> 
+        <p style="margin: 0; font-size: 18px; font-family: Arial, Helvetica, sans-serif; padding: 35px 35px 0; line-height: 28px;">Great news from Lowe's! We have a remarkable Wiha Screwdriver Tray Set waiting for you. It's as simple as a few clicks or completing a quick survey to enter. Act now! You have until November 7th to claim this fantastic prize.<br /> &nbsp;</p> 
+        <center style="max-width: 80mm; margin: auto;">
+         <a href="http://www.wihardrops.click/cy54m2395lzG8611D6690X18daS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRSSQ6PP10Zv5hTwDq/birdbaths-staked"><img alt="GGS" src="http://www.wihardrops.click/benefit-stupidest/42c5b2g395VYr7a11l6693m18daJ36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQNRSSQ6ki1OH05OlWwD" style="display: block;" width="100%" /></a>
+        </center> 
+        <p>&nbsp;</p> 
+       </div> 
+       <center align="center"> 
+        <div style="padding-top: 1.2rem; padding-bottom: 1.2rem; padding-left: 1.7rem; padding-right: 1.7rem; border-radius: 1.2rem; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 22px; background-color: #011A6B; width: 300px; margin: auto;">
+         <a href="http://www.wihardrops.click/cy54m2395lzG8611D6690X18daS36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRSSQ6PP10Zv5hTwDq/birdbaths-staked" style="text-decoration: none; color: #fff;" target="_blank">Start Here to Win &gt; &gt;</a>
+        </div> 
+       </center> 
+       <div> 
+        <p style="margin: 0; font-size: 18px; font-family: Arial, Helvetica, sans-serif; padding: 35px 35px 0; line-height: 28px;">Your input is invaluable to us at Lowe's. We deeply appreciate your participation in our survey. Your feedback means the world to us, and we hold it in high regard.<br /> &nbsp;</p> 
+       </div> 
+      </div> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp; 
+      <div> 
+       <address style="max-width: 33.5rem; margin: auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700; font-size: 11px;">you can leave with sadness <a href="http://www.wihardrops.click/1014d2395C86vg11d6691_18daK36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQNRSSQ6Qj10SV5dTwWD/server-sanctimonious">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
+      </div> <br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.wihardrops.click/cb94M2395l8qy513o66K94Zw18daH36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQNRSSQ7Dy1AWH06hMwkDO/bayonets-bathing" alt=""/></body>
 </html>
 
---e488ba2c7db956e762ed5d5b30cd0d5299103--
+--7bdcfc61e137289f0855e88ebd77eb8d4049999851009798--
 
