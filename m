@@ -1,44 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAB477E5CC1
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Nov 2023 18:52:39 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5EFA7E5F92
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Nov 2023 22:01:23 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A5E1210E185;
-	Wed,  8 Nov 2023 17:52:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 650E810E853;
+	Wed,  8 Nov 2023 21:01:22 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Wed, 08 Nov 2023 17:52:35 UTC
-Received: from mail.pcksthrees.click (unknown [194.116.236.114])
- by gabe.freedesktop.org (Postfix) with ESMTP id C285110E0D9
+X-Greylist: delayed 369 seconds by postgrey-1.36 at gabe;
+ Wed, 08 Nov 2023 21:01:20 UTC
+Received: from mail.borpiitslive.click (unknown [194.116.236.122])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 1C26210E851
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  8 Nov 2023 17:52:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pcksthrees.click;
+ Wed,  8 Nov 2023 21:01:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=borpiitslive.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=exclusive_survey_offer_from_fedex@pcksthrees.click; 
- bh=4E5Ucf5awUekLrDHv8dcu19A0RY=;
- b=ZZb//IGkR2bZqcgTKUccKCn2HQZnYe2yQsKCf6Qtmd+FkbiiKrzhfAZbAsyzEJ48wvQbct7GoXDs
- y5sG5xcqxlrAQe666sKUmlb6zjupBF6AaJ4VM/US1MMAI/Ab3jYyzJlJTKLgF1nIoifA/r7pafuf
- LBsDNSgZANqUPokXJUU=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pcksthrees.click;
- b=OeWELjvLhHBBJPvNfpx74C2iJM0XGLY3bLctJ+Yis/nnU0+JIASPbNsUfOzWieBOJm9Dsq2wmlx7
- 5syocSfi9Y5T6wPyG4H5EdEi7gbT5J5mBcAhBNkT7vEN7xSeq+053bKb6blF5+gqMKnDTs4fi4dz
- Q1LLQGuwd389YVBoX7w=;
-Received: by mail.pcksthrees.click id h9feok0001g4 for
+ i=special.offer.for.a.limited.time@borpiitslive.click; 
+ bh=o5QdgK7xyDsb/6NI0eZDP4QJQls=;
+ b=o+bdXtvcRVgmTeuUETX1fs35K/6PT3si3+Xu1Ji6AaM2bRxHMpn2PzXRKVSSkdpct+Bj7oLjUkp5
+ 0reb9U+HURrhn0K5pDWsG1FeGa99wz0WiZsfB8wNZUwv0QKfWqRgmFckBUfMh5jLncvSBUQX4Qop
+ 8VvWtUkRMSOLUy1aDAc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=borpiitslive.click; 
+ b=nxCCAfZBXZmKuN4ccJg4YaPAS6MgDo1OQfQOoDxI3gXJGF5fS3U4ITrlwdlt7SY89M+GbTA/gOTS
+ bn/oh4bvQdbitDbvoRYWh4v/kBf7eMbAhAnZbNyCAKOIZt/mjNUJFPvFKN2+c1Fzgc+shBOmnRG5
+ sOBjZjzStYfcYShqKwU=;
+Received: by mail.borpiitslive.click id h9fri00001gf for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 8 Nov 2023 14:03:03 -0500 (envelope-from
- <exclusive_survey_offer_from_fedex-intel+2Dgvt+2Ddev=lists.freedesktop.org@pcksthrees.click>)
-Date: Wed, 8 Nov 2023 14:03:03 -0500
-From: "Exclusive Survey Offer From FedEx"
- <exclusive_survey_offer_from_fedex@pcksthrees.click>
+ Wed, 8 Nov 2023 15:51:49 -0500 (envelope-from
+ <special.offer.for.a.limited.time-intel+2Dgvt+2Ddev=lists.freedesktop.org@borpiitslive.click>)
+Date: Wed, 8 Nov 2023 15:51:49 -0500
+From: "Special Offer For A Limited Time"
+ <special.offer.for.a.limited.time@borpiitslive.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <16262324909021.1699465398062644@pcksthrees.click>
-Subject: Unlock Your Victory: Time's Running Out to Succeed in FedEx's Survey!
+Message-ID: <15015626675554.169947668922588@borpiitslive.click>
+Subject: Participate Today in Our Harbor Freight Survey for Daily Promotions &
+ a Pittsburgh Set!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=4cc37150ff11ffe9d225577278137add61000
+ boundary=57770f7444c612639746c84bbd1395fd1011024101999599
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,54 +56,36 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---4cc37150ff11ffe9d225577278137add61000
-Content-Type: text/html; charset=us-ascii
+--57770f7444c612639746c84bbd1395fd1011024101999599
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
-	</style> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>partner</title> 
- </head> 
- <body> 
-  <div style="width: 100%; background-color: rgb(243, 243, 243);">
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp; 
-   <div style="max-width: 520px; margin: auto; text-align: center; background-color: #fff; font-family: 'Overpass', sans-serif; padding: 0 20px; line-height: 1.7rem; font-size: 1.1rem; ;"> 
-    <p style="font-weight: bold; font-size: 45px; margin: 0; padding: 15px 0;"><br /> <a href="http://www.pcksthrees.click/expending-feverish/35a4S2395zOQ8611h66ael18e1A36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQZRSeo6Ay10Lw5y0UwD" style="text-decoration: none; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 4px;"><span style="color: #281954;">Fed</span><span style="color: #F52100;">Ex</span></a></p> 
-    <p>We want to express our gratitude for choosing FedEx as your preferred shipping provider. Your loyalty and support are extremely important to us, and we deeply appreciate the chance to serve you.</p> 
-    <p style="margin: 0;"><a href="http://www.pcksthrees.click/expending-feverish/35a4S2395zOQ8611h66ael18e1A36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQZRSeo6Ay10Lw5y0UwD" target="_blank"><img alt="YYTS" src="http://www.pcksthrees.click/2875D239N5nU7aH11z66b0I18e1q36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQZRSeo5P10_l6m@TwXD/havoc-ordinariness" style="display: block; margin: auto;" width="85%" /></a></p> 
-    <p>We wish to convey our gratitude for selecting FedEx as your preferred shipping partner. Your loyalty and support hold significant value for us, and we hold the opportunity to serve you in high regard.</p> 
-    <p><b>Upon finishing the survey, you may become eligible for a $100 gift!</b></p> 
-    <p><a href="http://www.pcksthrees.click/expending-feverish/35a4S2395zOQ8611h66ael18e1A36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQZRSeo6Ay10Lw5y0UwD" target="_blank"><img alt="BGS" src="http://www.pcksthrees.click/5934z2395s7GDa11V66b1S18e1k36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQZRSeo7J10XQjN5oy@wD/expending-feverish" style="display: block; margin: auto;" width="90px" /></a></p> 
-    <p>To initiate the survey, please click on the link provided below. It's a brief task that will only take a few minutes of your time, and be assured that your answers will be kept confidential.</p> &nbsp; 
-    <p style="border-radius: 30px; border: solid 4px #F52100; width: 220px; margin: auto; font-size: 20px; padding: 2.5% 5%; font-weight: 900;"><a href="http://www.pcksthrees.click/expending-feverish/35a4S2395zOQ8611h66ael18e1A36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQZRSeo6Ay10Lw5y0UwD" style="color: #F52100; text-decoration: none;">Start Here Now &gt;&gt; </a></p> &nbsp; 
-    <p style="border-top: solid 1.5px ;"><br /> Your support is highly appreciated, and we eagerly await your response.<br /> Best regards.</p> 
-   </div> 
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp; 
-   <address style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 12px; text-align: center; font-weight: 600;">more than welcome to leave in <a href="http://www.pcksthrees.click/nonextensible-infirmity/7ce4D2395wg86h11g66afs18e1S36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQZRSeo7yutwL105B@wkD">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY,</address> 
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-  </div>   
- <img src="http://www.pcksthrees.click/5396t239O_5X8Ps513k66bt2Zs18e1Q36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQZRSeo7Qq1OXr05JTwjD/boost-vocationally" alt=""/></body>
-</html>
+Harbor Freight
 
---4cc37150ff11ffe9d225577278137add61000--
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+Crucial Updates from Harbor Freight
+
+
+We're excited to bring you some exciting news from Harbor Freight.  
+You now have the opportunity to obtain a Pittsburgh 225 Piece Tool 
+Set, which can be claimed at any of our retail locations. 
+
+
+
+Don't hesitate to seize this opportunity! You have until November 8th
+to obtain these captivating tools. 
+
+
+Start Here Now > >
+http://www.borpiitslive.click/aw74t2395j86so13M6U6bM9t18e4C36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ8RSeQ7oi1x0Ol6Skw0XD/boating-flasher
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+
+
+more than welcome to leave in here >>> we' ll miss
+http://www.borpiitslive.click/4c15Jz2395jj8F612k66bwaX18e4o36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQ8RSeQ6ht1K0v5XWwLD/narrow-Eucharist
+you US 10010 126 E 23rd St New York, NY,
+
+--57770f7444c612639746c84bbd1395fd1011024101999599--
 
