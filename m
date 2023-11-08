@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6EB97E58AC
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Nov 2023 15:25:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C7AB97E5BED
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Nov 2023 18:04:10 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EA2A110E779;
-	Wed,  8 Nov 2023 14:25:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 974DC10E7F7;
+	Wed,  8 Nov 2023 17:04:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Wed, 08 Nov 2023 14:25:07 UTC
-Received: from mail.pharmtpgs.click (unknown [194.116.229.56])
- by gabe.freedesktop.org (Postfix) with ESMTP id D70E410E779
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Wed, 08 Nov 2023 17:04:07 UTC
+Received: from mail.chaksmobil.click (unknown [194.116.236.102])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3DCFB10E7F1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  8 Nov 2023 14:25:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pharmtpgs.click; 
+ Wed,  8 Nov 2023 17:04:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=chaksmobil.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=fast-feedback-contest@pharmtpgs.click; 
- bh=wFXQHO4FuKQKs9/lc1OTZVz6Mnk=;
- b=Ik7lgpRmusLO/Kv2q+x448YnUSI3hUBgmCUsc0SvEIg1NrpTjpdh84pFhiVRxATjKFe2uZrKyfm3
- UnlKyu2/gR2jL+TOtaaJ14qj/Kma07bsK2H2xYRqzM2zExHsGQCY4WdQDS/ZIMffIU/fnjesAwD/
- 9CwTRTVDQr0hpvI+Gx4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharmtpgs.click;
- b=k6uZZpUlpnUeGTea4ZPx8wecIcooARsUEJf9LHddfkeo80urm8Gy2ekAnCbXvKSwD4AmmbkiELCP
- 0QBJCMbxGb882TRXc2s6GoSH7eUpJUa3cM3anCWRMJmJsHAy45KxSGyL57u4jIDKD9iFWVbtuVa0
- RVwLWrR7C9jxKtZX+38=;
-Received: by mail.pharmtpgs.click id h9ed480001g6 for
+ i=tmobile.survey.now@chaksmobil.click; 
+ bh=PIvmQprTb/Ojtg2xGGINzAL6Dj0=;
+ b=rdDfD52AwLXZyPBppXbSoY85wCo6EoO8LJjTl7JwzuVZRvG+M06m2catwJWRcqPOTGI+8b+A97jZ
+ Un8WSdg/oBVN/eTWptoCYmRAFNzhIQDHew7npu4U94UJnNVYKlQw7cpthbpfK9v4B+FuxhnlBBN1
+ M7/Eep+yzb/Viv/S76c=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=chaksmobil.click;
+ b=fgAdp4svHkApBhzAqKfSCTeDe9edrTSAZzrOuinQc7KCD2QQl/VGdmx/on/EJVf/n3khQjdy5AgB
+ fdoID2Eb4wfPjn3BO1l51yfbkvZjzXuP2Y6pSEe3kgutAFUMaoYI1lDgWN8Gu6Pvp1I7SmtCMy5x
+ W3gLxLVxUIBFi8RNcME=;
+Received: by mail.chaksmobil.click id h9f92q0001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 8 Nov 2023 08:57:09 -0500 (envelope-from
- <fast-feedback-contest-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharmtpgs.click>)
-Date: Wed, 8 Nov 2023 08:57:09 -0500
-From: "Fast Feedback Contest" <fast-feedback-contest@pharmtpgs.click>
+ Wed, 8 Nov 2023 13:04:43 -0500 (envelope-from
+ <tmobile.survey.now-intel+2Dgvt+2Ddev=lists.freedesktop.org@chaksmobil.click>)
+Date: Wed, 8 Nov 2023 13:04:43 -0500
+From: "TMobile Survey Now" <tmobile.survey.now@chaksmobil.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <201859671477.16994518257123@pharmtpgs.click>
-Subject: Take Walgreens' Survey for a Shot at a Free Oral-B Series 8
- Toothbrush!
+Message-ID: <1553281132689.16994618986960@chaksmobil.click>
+Subject: Hurry! Limited Time T-Mobile Survey for Exclusive Daily Deals!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=c1649c151b96a5e047d1bbf4f89dfc3e1017110075198103
+ boundary=b12dd322d4f344c597384ec1955fdd89759979881009
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,116 +53,128 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---c1649c151b96a5e047d1bbf4f89dfc3e1017110075198103
+--b12dd322d4f344c597384ec1955fdd89759979881009
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 
 <!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300; 400; 500; 600; 700; 800&display=swap'); 
-	</style> 
-  <title>Exciting</title> 
- </head> 
- <body style="margin: 0; padding: 0; "> 
-  <header> 
-   <div style="background-color: rgb(245, 245, 245); width: 100%; "> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <div style="padding: 18px 0; "> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" class="shiooml" width="100%"> 
-             <center style="background-color: #252849; padding: 15px 0; "> 
-              <div style="max-width: 60mm; margin: auto; ">
-               <a href="http://www.pharmtpgs.click/bookworm-Lancaster/b345A23Z95kFq8611B669dY18deg36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQDRSSK6lO1Z0B5FpwUD" target="_blank"><img alt="WAS" src="http://www.pharmtpgs.click/Synge-Shulman/e9a4d2395z7tYa11S669fv18deK36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQDRSSK6GkZ10n6STwqDA" style="display: block; " width="100%" /></a>
-              </div> 
-             </center> 
-             <div style="background-color: rgb(211, 211, 211); width: 100%; "> 
-              <div style="max-width: 160mm; margin: auto; background-color: #fff; "> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> <h1 style="margin: 0; font-size: 1.7rem; font-family: 'Open Sans', sans-serif; font-weight: 800; text-align: center; padding: 15px 0; border-bottom: 2px ; ">Final<br /> Walgreens Notification</h1> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> 
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td align="center" colspan="4"> 
-             <div style="background-color: rgb(211, 211, 211); width: 100%; "> 
-              <div style="max-width: 160mm; margin: auto; background-color: #fff; "> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="klopks">&nbsp; </td> 
-                  <td align="center" class="klopks"> <p style="font-family: 'Open Sans', sans-serif; font-weight: 500; margin: 0; padding: 0px 60px; line-height: 27px; ">Thrilling Announcement: <b>Walgreens</b> now presents the Oral-B Series 8 toothbrush, available for use at any of our stores. Don' t miss out on this chance! You have until <b>November 8th</b> to obtain these captivating products.</p> </td> 
-                  <td class="klopks">&nbsp; </td> 
-                 </tr> 
-                 <tr> 
-                  <td colspan="3" id="imgst"> 
-                   <div style="padding-top: 40px; "> 
-                    <center style="max-width: 90mm; margin: auto; ">
-                     <a href="http://www.pharmtpgs.click/bookworm-Lancaster/b345A23Z95kFq8611B669dY18deg36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQDRSSK6lO1Z0B5FpwUD"><img alt="TES" src="http://www.pharmtpgs.click/bookworm-Lancaster/e9a6iBH2395OQ7az12St66a0F18dew36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQDRSSK6Km1Qk05wzwDU" style="display: block; " width="100%" /></a>
-                    </center> 
-                   </div> </td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" colspan="3"> 
-                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" id="bliscks">&nbsp; 
-                       <div> 
-                        <center style="padding-top: 12px; padding-bottom: 12px; padding-right: 30px; padding-left: 30px; background-color: #E8300E; width: 250px; font-family: 'Open Sans', sans-serif; font-weight: 900; font-size: 22px ; ">
-                         <a href="http://www.pharmtpgs.click/bookworm-Lancaster/b345A23Z95kFq8611B669dY18deg36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQDRSSK6lO1Z0B5FpwUD" style="text-decoration: none; color: #fff; " target="_blank">Begin Here Now &gt; &gt; </a>
-                        </center> 
-                       </div> &nbsp; <p style="font-family: 'Open Sans', sans-serif; font-weight: 700; margin: 0; padding: 0px 60px; line-height: 27px; ">With gratitude in advance, The Walgreens Team.</p> <br /> <br /> &nbsp; </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> 
-              <div style="padding-top: 200px; ">
-               &nbsp; 
-              </div> 
-              <table align="center" border="0" cellpadding="10px" cellspacing="0" style="border-collapse: collapse; background-color: #252849; " width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td>&nbsp; </td> 
-                 <td align="center" id="glows"> 
-                  <div style="max-width: 150mm; margin: auto; font-family: 'Open Sans', sans-serif; font-weight: 800; font-size: 2.55mm; text-align: center; color: #fff; ">
-                   Anyway you can leave 
-                   <a href="http://www.pharmtpgs.click/1f16M23Xo95No8Z611J669el18deA36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQDRSSK5Wq10h6sTMwDN/logically-indecision" style="color: aqua; ">here</a>
-                   <br /> US 10010 126 E 23rd St New York, NY,
-                  </div> </td> 
-                 <td>&nbsp; </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-              <br /> 
-              <br /> &nbsp; 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </header>   
- <img src="http://www.pharmtpgs.click/7376s2P3F95DR8q512u66ay1N18deZ36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQDRSSK7a1xk0Tp6XzN0wD/vindictive-corrections" alt=""/></body>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <style type=3D"text/css">@import url('https://fonts.googleapis.com/css2?f=
+amily=3DArchivo:wght@100;200;300;400;500;600;700;800;900&display=3Dswap');
+=09</style>=20
+  <title>support</title>=20
+ </head>=20
+ <body>=20
+  <aside>=20
+   <ol style=3D"list-style-type: none; padding: 0; margin: 0;">=20
+    <li id=3D"novatecst">=20
+     <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" style=3D"border-collapse: collapse;" width=3D"100%">=20
+      <tbody>=20
+       <tr>=20
+        <td class=3D"pllts">&nbsp;</td>=20
+        <td class=3D"pllts">&nbsp;</td>=20
+        <td align=3D"center" class=3D"pllts" width=3D"100%">=20
+         <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
+          <thead>=20
+           <tr>=20
+            <th id=3D"ipracs">=20
+             <div style=3D"background-color: rgb(236, 236, 236); width: 100=
+%; padding: 30px 0;">=20
+              <div style=3D"background-color: aliceblue; width: 100%;">=20
+               <div style=3D"max-width: 150mm; margin: auto; text-align: ce=
+nter; background-color: #fff;">=20
+                <article>=20
+                 <table align=3D"center" border=3D"0" cellpadding=3D"0" cel=
+lspacing=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
+                  <tbody>=20
+                   <tr>=20
+                    <td id=3D"blocksters">=20
+                     <center style=3D"font-family: 'Archivo', sans-serif;; =
+font-weight: 700; text-align: center; font-size: 5mm; padding: .7cm 0;">
+                      A Special Offer Reserved for Our Valued Clients
+                     </center> </td>=20
+                   </tr>=20
+                  </tbody>=20
+                 </table>=20
+                 <p style=3D"margin: 0;"><a href=3D"http://www.chaksmobil.click/Somerset-autonavigators/1b64K2395bZ8q611h66a8S18e0L36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQVRSen6G1OG0J6LP2wJD" target=3D"_=
+blank"><img alt=3D"XZX" src=3D"http://www.chaksmobil.click/impeding-amateurs/e9a4B2395oG7aP12v66Paaz18e0n36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQVRSen5YX1h05mj@wD" style=3D"display: block; margin=
+: auto;" width=3D"35%" /></a><br /> <font style=3D"display: block; font-siz=
+e: 1.1rem; padding: 0 2rem; font-weight: 500; font-family: 'Archivo', sans-=
+serif;; line-height: 1.6rem; border-top: solid 1px #FE0079;">We want to con=
+vey our appreciation for choosing T-Mobile. We value your loyalty and suppo=
+rt, and we treasure the opportunity to assist you.<br /> <br /> Your feedba=
+ck is of great importance to us, and as a token of our thanks for sharing y=
+our thoughts, we would like to offer a small token of appreciation. </font>=
+<br /> <br /> <a href=3D"http://www.chaksmobil.click/Somerset-autonavigators/1b64K2395bZ8q611h66a8S18e0L36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQVRSen6G1OG0J6LP2wJD" target=3D"_blank"><img alt=3D"WQS" src=
+=3D"http://www.chaksmobil.click/5cf5AJ2395j7arg13a66gabBD18e0Y36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQVRSen6w1Cw0B6vJwOBD/orthodoxy-asserters" style=3D"display: inline-block; margin: auto;" width=3D"11=
+0px" /></a> <a href=3D"http://www.chaksmobil.click/Somerset-autonavigators/1b64K2395bZ8q611h66a8S18e0L36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQVRSen6G1OG0J6LP2wJD" target=3D"_blank"><img alt=3D"LLP" src=
+=3D"http://www.chaksmobil.click/7916S2k39w5a7ayy13Qt66acur18e0_36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQVRSen5q1Ij06OqMw@D/stories-Melinda" style=3D"display: inline-block; margin: auto;" width=3D"90=
+px" /></a><br /> <br /> <span style=3D"display: block; font-size: 1.1rem; p=
+adding: 0 2rem; font-weight: 600; font-family: 'Archivo', sans-serif;; line=
+-height: 1.6rem;"><strong>Upon completing the survey, you have the opportun=
+ity to choose from a variety of gift options.</strong></span></p>=20
+                 <br />=20
+                 <br /> &nbsp;=20
+                </article>
+               </div>
+              </div>
+             </div></th>
+           </tr>
+          </thead>
+         </table>
+         <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"border-collapse: collapse;" width=3D"100%">=20
+          <tbody>=20
+           <tr>=20
+            <td align=3D"center" id=3D"flipss">=20
+             <center style=3D"padding: 4mm 7mm;font-family: 'Archivo', sans=
+-serif; font-size: 6mm; background-color: #3f3f3f; width: 210px; margin: au=
+to; border-radius: 30px;">
+              <a href=3D"http://www.chaksmobil.click/Somerset-autonavigators/1b64K2395bZ8q611h66a8S18e0L36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQVRSen6G1OG0J6LP2wJD" style=3D"text-decoration: none; color:=
+ #fff;" target=3D"_blank">Start Now</a>
+             </center> </td>=20
+           </tr>=20
+           <tr>=20
+            <td><br /> <br /> &nbsp;=20
+             <div>=20
+              <hr />=20
+              <center style=3D"display: block; font-size: .9rem; padding: 0=
+ 2rem; font-weight: 500; font-family: 'Archivo', sans-serif;; line-height: =
+1.6rem;">
+               <br /> Again, we value your support and look forward to hear=
+ing from you in the near future. Sincerely,
+               <br />=20
+               <b>The T-Mobile Survey Team</b>
+              </center>=20
+             </div> </td>=20
+           </tr>=20
+          </tbody>=20
+         </table> <br /> &nbsp;  <br /> <br /> &nbsp;<br /> <br /> &nbsp;<b=
+r /> <br /> &nbsp;<br /> <br /> &nbsp;<br /> <br /> &nbsp;=20
+         <div style=3D"padding: 50px 0;">=20
+          <address style=3D"max-width: 150mm; margin: auto; font-size: 11px=
+;font-family: 'Archivo', sans-serif; line-height: 18px;">more than welcome =
+to leave in <a href=3D"http://www.chaksmobil.click/stories-Melinda/e7c6WQ2G395M8_D613cuD66a9D18e0n36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQVRSen5zj1s06IAAwDM">here</a> we' ll miss you<br /> US 10010 =
+126 E 23rd St New York, NY,</address>=20
+         </div>   </td>
+       </tr> =20
+      </tbody>
+      <tbody>=20
+       <tr>=20
+        <td>&nbsp;</td>=20
+       </tr>=20
+      </tbody>=20
+     </table>  &nbsp; &nbsp;    </li>=20
+   </ol>=20
+  </aside>  =20
+ <img src=3D"http://www.chaksmobil.click/stories-Melinda/8466d2X3x95voK8511z66adz18e0D36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQVRSen6BDs10q6PkTwqD" alt=3D""/></body>
 </html>
 
---c1649c151b96a5e047d1bbf4f89dfc3e1017110075198103--
+--b12dd322d4f344c597384ec1955fdd89759979881009--
 
