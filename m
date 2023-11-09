@@ -2,45 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 547E27E6086
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  8 Nov 2023 23:57:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9C6D7E6C9A
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  9 Nov 2023 15:46:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 50FC610E889;
-	Wed,  8 Nov 2023 22:57:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DF98A10E8BA;
+	Thu,  9 Nov 2023 14:46:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
- Wed, 08 Nov 2023 22:57:19 UTC
-Received: from mail.miniwalswich.click (unknown [194.116.229.61])
- by gabe.freedesktop.org (Postfix) with ESMTP id 72DC410E881
+X-Greylist: delayed 613 seconds by postgrey-1.36 at gabe;
+ Thu, 09 Nov 2023 14:46:39 UTC
+Received: from mail.gpinfokrog.click (unknown [194.116.236.246])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 92F8410E8B9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  8 Nov 2023 22:57:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=miniwalswich.click; 
+ Thu,  9 Nov 2023 14:46:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gpinfokrog.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=daily-promotion-and-survey-feedback@miniwalswich.click; 
- bh=NNcj9QguJ675ld/rVoRK2OZ5DTU=;
- b=YAUyupPqSYcPQ0q5Z2QC6LwmLy8RPr8hijgVMhTQzTuVhzC80ruq3LQ4Ptw3F0ZCLI7E8FCIZCPW
- 3UUSsVzsgyqjOiLgXEEtjA/yAQU6kIRjBTVjFUCPJLTCxqAawNsKqe7j6IidQxLZD/rjxAmW9zkA
- GO8KJCPP/fmi/JyqUoQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=miniwalswich.click; 
- b=aH8pTdEnEjRVsBtrIxmNeJROddVpAiejQ8dXhoJZWjNzD7OksTwFpyS7E9yCLBTAbc+ZpHj8tAIm
- lSUlnY8IP9S4xeyCaqYug/pAvli3uaBW3e7PQZMNf1n8Y3JqlyCj/jQkxU6OY13JisHrZf4sZEWE
- vCiEQ++2QIST2NqmA3s=;
-Received: by mail.miniwalswich.click id h9g94u0001ga for
+ i=unlock-savings-with-kroger-survey@gpinfokrog.click; 
+ bh=CDNEk+os1RiY1igy+zqOTkB5+Wk=;
+ b=fx73wiubncVS1gnQA0nk7Y5XYCgTvVYl/mF+0Jq8lyw6prIi36wDP4l7kvi7qJjhdQBICMIRprMW
+ MsCnF5B2Q/XJQvVDn0WOusd8j5d+o1ShWSnGdFBxep/9E+6sklMRlqj6E68VzyOD6LmGzEBoww9X
+ N/qxZIiF+eFWdFT3Acg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gpinfokrog.click;
+ b=DtpaR+uVfAB8cUYGaVzH9LmkylHRajJl4L3Spj2i2nKVV97QqgRuSfry2pzeJr3FunvS9iJQ4a+2
+ q7DMTKhqQmNy1OhihECpmSLymqf2pOKkOglU9Q3vrClyrBgTpr5qcTOHvHxqdC1Roe16K2yeF2zh
+ 7PkawiplPmPzfinSPwI=;
+Received: by mail.gpinfokrog.click id h9jocu0001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 8 Nov 2023 17:16:15 -0500 (envelope-from
- <daily-promotion-and-survey-feedback-intel+2Dgvt+2Ddev=lists.freedesktop.org@miniwalswich.click>)
-Date: Wed, 8 Nov 2023 17:16:15 -0500
-From: "Daily Promotion And Survey Feedback"
- <daily-promotion-and-survey-feedback@miniwalswich.click>
+ Thu, 9 Nov 2023 09:04:45 -0500 (envelope-from
+ <unlock-savings-with-kroger-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@gpinfokrog.click>)
+Date: Thu, 9 Nov 2023 09:04:45 -0500
+From: "Unlock Savings With Kroger Survey"
+ <unlock-savings-with-kroger-survey@gpinfokrog.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <13577247531545.1699481757761451@miniwalswich.click>
-Subject: Exclusive Deal: Join Walmart's Survey for Prizes and an Opportunity
- to Win a Nintendo Switch!
+Message-ID: <164705718221.16995386646230831@gpinfokrog.click>
+Subject: Savor a gift from us today as we celebrate and convey our
+ appreciation.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=658c09b08231b14c7720938471b59612978101999799
+ boundary=5bb8e2e27244e9db59c5b71726584e9410310310004979919983
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,39 +55,118 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---658c09b08231b14c7720938471b59612978101999799
-Content-Type: text/plain; charset=utf-8
+--5bb8e2e27244e9db59c5b71726584e9410310310004979919983
+Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR OUR VALUED USERS
----------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
+	</style> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>choice</title> 
+ </head> 
+ <body style="margin: 0; padding: 0;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center" class="ttrsq"> 
+      <div> 
+       <section> 
+        <center style="background-color: rgb(228, 228, 228); width: 100%;"> 
+         <div style="padding-top: 25px;">
+          &nbsp;
+         </div> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td class="yy">&nbsp;</td> 
+            <td class="yy">&nbsp;</td> 
+            <td align="center" class="yy" width="100%"> 
+             <div style="background-color: rgb(223, 223, 223); width: 100%;"> 
+              <center style="max-width: 33.5rem; margin: auto; background-color: #fff; font-family: 'Jost', sans-serif;"> 
+               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center" colspan="5"> 
+                   <div style="background-color: #f5f9ff; padding-top: 1em; padding-bottom: 1em;"> 
+                    <div style="max-width: 225px; margin: auto;">
+                     <a href="http://www.gpinfokrog.click/carrion-legibly/31e4a2395X86JD12r66Fc5g18e8o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQBRSeK5SRm106uBwDpz"><img alt="NBSE" src="http://www.gpinfokrog.click/playwrights-fermentation/9ea4H2395Wz7ag13R66_cS7O18e8i36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQBRSeK6HUC1k05P0OwD" style="display: block;" width="100%" /></a>
+                    </div> 
+                   </div> </td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" class="kklos" colspan="5" width="100%"> 
+                   <div> 
+                    <p style="margin: 0; padding: 3.5% 5%; font-weight: 500; font-size: 1.1rem; line-height: 1.7rem;">We'd like to convey our gratitude for your selection. Your loyalty and support are greatly valued, and we sincerely cherish the chance to meet your shopping requirements.<br /> <br /> <font><a href="http://www.gpinfokrog.click/carrion-legibly/31e4a2395X86JD12r66Fc5g18e8o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQBRSeK5SRm106uBwDpz"><img alt="RES" src="http://www.gpinfokrog.click/encyclopedic-Aventine/8286M2N39R5m7OaM13G6A6Wc8F18e8O36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQBRSeK6rJz1M06UMyLwD" style="display: inline-block; margin: auto;" width="90px" /></a> <a href="http://www.gpinfokrog.click/carrion-legibly/31e4a2395X86JD12r66Fc5g18e8o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQBRSeK5SRm106uBwDpz"><img alt="RES" src="http://www.gpinfokrog.click/housed-Appia/b704a2395b7aBA13J66cs9tx18e8v36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQBRSeK5k10HF5XTwDA" style="display: inline-block
+ ; margin: auto;" width="110px" /></a> </font></p> 
+                    <div style="background-color: #d4d4d4; padding: 20px 30px;"> 
+                     <article> 
+                      <p style="margin: 0; font-weight: 500; font-size: 1.1rem; line-height: 1.7rem;">We highly value your choice! Your loyalty and support are of great importance, and we genuinely appreciate the chance to be of service to you.<br /> <br /> As a token of our gratitude for your feedback, you'll have the opportunity to potentially qualify for a $100 gift.</p> 
+                     </article> 
+                    </div> 
+                   </div> </td> 
+                 </tr> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                  <td>&nbsp;</td> 
+                  <td align="center" style="width: 33.5rem;"> 
+                   <div style="margin: 0; padding: 3.5% 5%; font-weight: 500; font-size: 1.1rem; line-height: 1.7rem;">
+                    To take part in the survey, please click on the provided link. The survey should only take a few minutes of your time, and we want to assure you that your responses will be kept entirely confidential.                    </div> </td> 
+                  <td>&nbsp;</td> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" colspan="5"> 
+                   <div> 
+                    <center style="background-color: rgb(41, 77, 145); padding: 2.5% 5%; border-radius: 5px; width: 225px; margin: auto; font-weight: bold; font-size: 20px;">
+                     <a href="http://www.gpinfokrog.click/carrion-legibly/31e4a2395X86JD12r66Fc5g18e8o36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQBRSeK5SRm106uBwDpz" style="text-decoration: none; color: #fff;">Get Me Started</a>
+                    </center> 
+                   </div> &nbsp; 
+                   <hr /> <p style="font-size: 16px; text-align: center; font-weight: 500; padding: 0 30px;">Thank you once again for your support. We eagerly anticipate hearing from you soon!<br /> Warm regards,</p> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </center> 
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp; 
+              <div style="font-family: 'Jost', sans-serif;; font-weight: 700; font-size: .7rem; text-align: center; max-width: 33.5rem; margin: auto;">
+               if you need to go visit 
+               <a href="http://www.gpinfokrog.click/housed-Appia/26a4O2395m8pR612B66cY6o18e8y36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQBRSeK5J1RR06Ozw3OD">here</a>
+               <br /> 10010 126 E 23rd St New York, NY, US 
+               <h6>&nbsp;</h6> 
+              </div> 
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+              <br /> &nbsp;
+             </div> </td> 
+            <td class="yy">&nbsp;</td> 
+            <td class="yy">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <div style="padding-top: 25px;">
+          &nbsp;
+         </div> 
+        </center> 
+       </section> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.gpinfokrog.click/carrion-legibly/e4L4d2395O8PL513M6Z6caQK18e8P36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQBRSeK6U1LZ0Y6jNwA2D" alt=""/></body>
+</html>
 
-Walmart Revshare
-
-On behalf of our special brand, we would like to thank you for choosing us.  We are proud to know that our products and services meet your needs and we strive to continue providing you with the best shopping experience possible. 
-
-
-As a token of our appreciation, we would like to offer you a special gift from our partner brand, Walmart.  Complete a short survey and you could have the chance to win a Nintendo Switch.  It's our way of thanking you for choosing us as your preferred provider. 
-
-
-TAKE THE SURVEY >>>>>
-http://www.miniwalswich.click/evolutions-stripper/15c4s2395o86SR11V66bdo18e6t36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQCRSeS5QWY106hTXywD
-
-
-We are confident that you will enjoy your new Nintendo Switch and we hope that you will continue to choose our special brand.  Complete the survey today and have the opportunity to receive this wonderful prize.  
-
-
-Thank you for your valuable time and feedback!, Warm regards
-
-The Walmart Survey
-
----------------------------------------------
-To end communications, click_here >>>>> http://www.miniwalswich.click/house-scabbard/33c5cK2395VvQ8611z66beV18e6v36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQCRSeS5X1NZ06g0ppwD
-126 E 23rd St New York, NY, US 10010
-
-
-
-<font><span color="inadmissible"></span></font><span id="mortars"><big><style></span><span class="interrelationship"><font></span></font></style></big><span style="Sunbelt"></span><style style="operand"></style>
-
---658c09b08231b14c7720938471b59612978101999799--
+--5bb8e2e27244e9db59c5b71726584e9410310310004979919983--
 
