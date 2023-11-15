@@ -1,45 +1,54 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 195DB805703
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Dec 2023 15:18:42 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D539880BC80
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Dec 2023 19:01:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id F21FF10E54B;
-	Tue,  5 Dec 2023 14:18:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 503AF10E036;
+	Sun, 10 Dec 2023 18:01:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 05 Dec 2023 14:18:38 UTC
-Received: from mail.mcinfodropcp.top (unknown [77.83.203.85])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6452910E12B
+Received: from mail.dgi.cm (mail.dgi.cm [41.204.75.246])
+ by gabe.freedesktop.org (Postfix) with SMTP id 8314C10E036
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  5 Dec 2023 14:18:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mcinfodropcp.top;
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=guest_satisfaction_at_mcdonalds@mcinfodropcp.top; 
- bh=ckzPso6DJy3jaPs0ONLre0aOAwA=;
- b=psUWXroValN+CK0aIQ7ECeFQOd/YeLzOVUS/YGc4EvGvgHGk0S6BH9ySadtheqr9kfnWfgEjiPve
- g7XHHCW+y9dJd+zw9uLiBek0OxFOZ0fAXcuM1bbPWbgIGaxiZb/TjfgktZKXOShGdiu3j4TLBms+
- c7ITO98vnnzfeW63t4A=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mcinfodropcp.top;
- b=C+sRCHaDYxYkd9XPhJV8CKp+NTUkT/XmXZjK2WmqQ156E4BaXjv9R05mA3xYaZWUj8DvKOIp3T8e
- pLei6tMwSW0t5UZc/fYVQANtVaa59bjq/f8G/VhdmqeTVSXb36Y0rNOEAb/iThhVWkchVxEzLXHk
- u1LEOFO5XZ5+sRoM9/k=;
-Received: by mail.mcinfodropcp.top id hdt1ru0001gk for
- <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 5 Dec 2023 10:19:31 -0500 (envelope-from
- <guest_satisfaction_at_mcdonalds-intel+2Dgvt+2Ddev=lists.freedesktop.org@mcinfodropcp.top>)
-Date: Tue, 5 Dec 2023 10:19:31 -0500
-From: "Guest Satisfaction At McDonalds"
- <guest_satisfaction_at_mcdonalds@mcinfodropcp.top>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <150446603327.170178481466766@mcinfodropcp.top>
-Subject: McDonald's Survey: Share Your Thoughts &ndash;
- Limited Time Offers Await! Grab Today's Exclusive Daily Deals!
+ Sun, 10 Dec 2023 18:01:28 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.dgi.cm (Postfix) with ESMTP id D15C5451A43B0;
+ Fri, 24 Nov 2023 11:13:52 +0100 (WAT)
+Received: from mail.dgi.cm ([127.0.0.1])
+ by localhost (mail.dgi.cm [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id T9gPdhY8jaOj; Fri, 24 Nov 2023 11:13:47 +0100 (WAT)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by mail.dgi.cm (Postfix) with ESMTP id 85BE5451A43BC;
+ Mon, 20 Nov 2023 06:53:48 +0100 (WAT)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.dgi.cm 85BE5451A43BC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dgi.cm;
+ s=256E86CA-A1B9-11EB-B2D5-78A7C390D23B; t=1700459628;
+ bh=f+KCAW8fVXgT9eb4aWNUoJfrPYz/ksHfZhlvWByXqOE=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=CzAT15VXc61opeBWlBdVMoP2KxEIywGSfZnbMbNg4LEo0PUc5oPNC0dtb65l13vHj
+ C7g93cBgM622xaDLoAVJBzTEF2s3aAzbKRjuvGIz31Oo5blvlGAvUaTXnMwBnBWzEb
+ vtAAKipSamRTcr4RAghbvtVK4o5SEj+1jd3rxyY3kt6/lyY55s0gWC9KFGq/UswI5d
+ ktD9qnLF/l67uaTSCX6qjLVGE3Bc5E0Hxnwnsdztz/pd6L75+QVtbOsjV9kSSpvohW
+ uXxtEx10JEplFXJscsx4f0+uQNtjNG/HNqX7yoXPZxXXIb4+cdVBxS0GpiSmcnii8r
+ hKjmm9ne0RxAw==
+X-Virus-Scanned: amavisd-new at dgi.cm
+Received: from mail.dgi.cm ([127.0.0.1])
+ by localhost (mail.dgi.cm [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id EIwdsNklOYXr; Mon, 20 Nov 2023 06:53:48 +0100 (WAT)
+Received: from [192.168.100.34] (unknown [41.90.182.115])
+ by mail.dgi.cm (Postfix) with ESMTPSA id 9D09346B1B32A;
+ Wed, 15 Nov 2023 22:55:58 +0100 (WAT)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=2612bd53d9c1a2362b747229e9d6660d10349743
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: Important $2.5 Million
+To: Recipients <noreply@dgi.cm>
+From: "Kristine Wellenstein" <noreply@dgi.cm>
+Date: Wed, 15 Nov 2023 12:55:46 -0900
+Message-Id: <20231115215559.9D09346B1B32A@mail.dgi.cm>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,55 +61,18 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: wellensteinfoundation251@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---2612bd53d9c1a2362b747229e9d6660d10349743
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-A SPECIAL OFFER FOR OUR VALUED USERS
------------------------------------------
 
 
-Mc Donalds
+Hello , I've emailed you several times because my foundation has chosen you=
+ to receive a $2.5 million dollars cash donation for my charity project in =
+which I won a fortune of $426 million Mega Millions jackpot on January 28th=
+. Your name and email address came out victorious. When you get this email,=
+ please get in touch with me ASAP for more details and the claiming process.
 
-Where would you like to go for a family meal? And where could 
-you find a suitable option? At McDonald's, we can provide you
- with that perfect choice for a family outing. 
-
-Don't miss out on this incredible opportunity! For a limited time,
- you can win a $100 McDonald's gift card just by completing a short 
- survey.  Enjoy our wide variety of combos and delicious flavors. 
-
-We want to thank you for choosing us as your first choice for 
-family dining.  We value your preference and encourage you to 
-participate in our survey for a chance to win this gift card.  
-Thank you for your loyalty and good luck!
-
-
-By taking the survey you might receive a $100 gift card
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.mcinfodropcp.top/blotting-individualized/b525S2i395JW86Z11Q69dct19b1T36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQaRKKR5X10lM6t11wDU
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
-
-Mc Donalds Survey
-
-
------------------------------------------
-
-To put a stop to email, click_here >>>>> http://www.mcinfodropcp.top/e7b5p23Y95W8J6j12h69dId_19b1s36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQaRKKR7UM10mRT6gWwzDT/salutary-understandingly
-126 E 23rd St New York, NY, US 10010
-
-
-
-<span></span><span><font></font></span><style size="censored"><span color="Moser"></span><font color="hunting"><span color="thunder"><font dir="Pauling"><small></span></style></font></small><small></small></font><font lang="strolled"></font>
-
---2612bd53d9c1a2362b747229e9d6660d10349743--
-
+Best wishes,
+Mrs. Kristine Wellenstein
+Copyright =A9?2023 The Wallerstein Foundation. All Rights Reserved
