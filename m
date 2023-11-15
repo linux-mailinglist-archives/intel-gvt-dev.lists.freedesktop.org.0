@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92BAF7ECAB8
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Nov 2023 19:45:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29EEB7ED1E9
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 15 Nov 2023 21:20:41 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 661AE10E56D;
-	Wed, 15 Nov 2023 18:45:29 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 01BD310E59F;
+	Wed, 15 Nov 2023 20:20:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Wed, 15 Nov 2023 18:45:27 UTC
-Received: from mail.boschoplt.click (unknown [194.116.236.121])
- by gabe.freedesktop.org (Postfix) with ESMTP id 631BE10E566
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Wed, 15 Nov 2023 20:20:37 UTC
+Received: from mail.hcloksphar.world (unknown [194.116.236.250])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 41AF610E1E1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Nov 2023 18:45:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=boschoplt.click; 
+ Wed, 15 Nov 2023 20:20:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hcloksphar.world;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=tabatha.carchidi@boschoplt.click; 
- bh=OzazDsL/FV5DQCMH82v1291u8v0=;
- b=Tb8tixuIAv7ZwWoTSvxV0QvQNNjOTaI1H7Z+BvLUhp14QHvaKwfJV3M1u0Ibx7DObrJnNGb9yFqf
- AEKS6gOEoiozndCgP4Lw4H/owyB5bTcnsMBM5FK+S1r86C/sUAXeI86wvz2hknOy9yYU78wMzxXr
- 15yFwXgmO7a/se6aahg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=boschoplt.click;
- b=Pwl6RMyXFirCGdeq0Bw506ck2PsRNEU+DrSfMxElm6kg13FquhLaGN1bKAv90/9zqCKQgaWCNaEC
- y592BIBtONv/Hv00zo7wFh+v+Y0lyWbePdoozqOmYNDurR4CgO3sQvHmpcHbI3E7RzXlSFQsX/MT
- gE3FKOKoZD4tkf5QBX4=;
-Received: by mail.boschoplt.click id haki660001gc for
+ i=walgreens_alert_win_today@hcloksphar.world; 
+ bh=H2BA6RKTyemkENPoHM4MLzoaC7s=;
+ b=l1plegxU/WZHQMhefzqiD2LPhRQ75rky4pCp9vMDJmqeEXk6pgKM7pqcd6uddg6oWXp/me3nwzgx
+ 2TEp4Yu3UPZe+fr9MR8MZ8ZPvqPYmGZsbHk3gpDymWwdYZQ06yvYjrKfbJhYRVXq8bQ27pyiH1bJ
+ 49jmKr4c3/FA3RGMGDs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hcloksphar.world;
+ b=rRcPIrqcJE5UISDbR+NatTRvQcjNkZRUt6AE65bbAiOna3Bjxud4JmH7uAytoiUUH41OMlKYvNA/
+ KMwW92Aqed93ofxQvrRU7s72SRiealYvfOGgv6pccUnwn4tD7Y05WFZA54/sgpvLMiLZGry61DNX
+ RONmknCPWHuAhKs8MW8=;
+Received: by mail.hcloksphar.world id hakk1a0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 15 Nov 2023 14:57:28 -0500 (envelope-from
- <tabatha.carchidi-intel+2Dgvt+2Ddev=lists.freedesktop.org@boschoplt.click>)
-Date: Wed, 15 Nov 2023 14:57:28 -0500
-From: Tabatha Carchidi <tabatha.carchidi@boschoplt.click>
+ Wed, 15 Nov 2023 15:10:45 -0500 (envelope-from
+ <walgreens_alert_win_today-intel+2Dgvt+2Ddev=lists.freedesktop.org@hcloksphar.world>)
+Date: Wed, 15 Nov 2023 15:10:45 -0500
+From: "Walgreens Alert Win Today" <walgreens_alert_win_today@hcloksphar.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <17746312984.17000734379152911@boschoplt.click>
-Subject: Time's Ticking: O'Reilly's Limited-time Survey Bonus&mdash;
- Win Bosch Drill Set!
+Message-ID: <6718223105306.170007902466880@hcloksphar.world>
+Subject: Quick Survey, Big Win: Walgreens Rewards You with Oral-B Series 8!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=1c32072143ef377344f258cf8cd601871016708
+ boundary=1035960fd0bc25b29fd2dba097d1e42e516
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---1c32072143ef377344f258cf8cd601871016708
+--1035960fd0bc25b29fd2dba097d1e42e516
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,104 +62,50 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap');
 	</style> 
-  <title>prompt</title> 
+  <title>Expires</title> 
  </head> 
- <body style="margin: 0; padding: 0; font-family: 'Be Vietnam Pro', sans-serif;"> 
-  <section> 
-   <div style="width: 100%; background-color: rgb(233, 233, 233);"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center" id="toplos"> 
-        <div style="padding: 45px 0px;"> 
-         <div style="max-width: 33.5rem; margin: auto; text-align: center; background-color: #fff; margin: 2% 1%;"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <thead> 
-            <tr> 
-             <th colspan="3"> 
-              <div style="background-color: rgb(161, 0, 0); padding: 15px 0;"> 
-               <center style="max-width: 12rem; margin: auto;">
-                <a href="http://www.boschoplt.click/Beowulf-Serbia/a9e5d23O95i86nO13OW67l92V1915A36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQZRe9R5KRR105nOwDL" target="_blank"><img alt="TRS" src="http://www.boschoplt.click/f116mR23C95kOi7a13YJ679P4S1915B36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQZRe9R7sv1jnC05tB3wD/Beowulf-Serbia" style="display: block;" width="100%" /></a>
-               </center> 
-              </div> </th> 
-            </tr> 
-           </thead> 
-           <tbody> 
-            <tr> 
-             <td class="plos">&nbsp;</td> 
-             <td class="plos" width="100%"> 
-              <div> 
-               <center style="border-bottom: solid 4px rgb(161, 0, 0);"> 
-                <h1>Crucial<br /> Notification from O'Reilly</h1> 
-               </center> 
-              </div> 
-              <center> 
-               <article> 
-                <p style="font-size: 4.5mm; line-height: 7mm; padding-left: 30px; padding-right: 30px;"><font>Prepare for exciting news: O'Reilly is unveiling a Bosch Drill Set in-store. Act promptly to ensure the acquisition of your premium tools by November 15th. </font></p> 
-                <center style="max-width: 19rem; margin: auto;">
-                 <a href="http://www.boschoplt.click/Beowulf-Serbia/a9e5d23O95i86nO13OW67l92V1915A36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQZRe9R5KRR105nOwDL"><img alt="TRS" src="http://www.boschoplt.click/5cf4K2395E7aXS13e67t95Pv1915o36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQZRe9R7olzZ10l6ROwDNO/unknown-determinacy" width="100%" /></a>
-                </center> 
-               </article> 
-               <table align="center"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                  <td>&nbsp;</td> 
-                  <td align="center;"> 
-                   <div style="padding: 15px 0; width: 250px; margin: auto;"> 
-                    <center style="background-color: #192c5f; padding-top: 1rem; padding-bottom: 1rem; padding-left: 1.7rem; padding-right: 1.7rem; border-radius: 1rem; font-weight: bold; font-size: 1.1rem;">
-                     <a href="http://www.boschoplt.click/Beowulf-Serbia/a9e5d23O95i86nO13OW67l92V1915A36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQZRe9R5KRR105nOwDL" style="text-decoration: NOne; color: #fff;" target="_blank">Start Here Now &gt;&gt;</a>
-                    </center> 
-                   </div> </td> 
-                  <td>&nbsp;</td> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" colspan="5">&nbsp; 
-                   <div style="font-size: 4.5mm; line-height: 7mm; font-weight: 700;">
-                    We highly value your feedback,
-                    <br /> The O'Reilly Auto Parts Survey Team
-                   </div> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </center> </td> 
-             <td class="plos">&nbsp;</td> 
-            </tr> 
-           </tbody> 
-           <tfoot> 
-            <tr> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tfoot> 
-          </table> 
+ <body style="margin: 0; padding: 0; font-family: 'Merriweather Sans', sans-serif;"> 
+  <section style="background-color: rgb(241, 241, 241); width: 100%;"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" style="padding-top: 50px; padding-bottom: 50px;"> 
+       <center style="max-width: 16cm; margin: auto; border: solid 1px #000; border-radius: 15px; background-color: #fff;"> 
+        <div> 
+         <article> 
+          <p style="max-width: 14rem; margin: auto; padding: 18px 0;"><a href="http://www.hcloksphar.world/urgently-likened/b344U2395v8TD613v_6Y79cJ1917T36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQjRe9e5UJ1L05ElwzD"><img alt="QSE" src="http://www.hcloksphar.world/repel-inversely/e224M2395eWY7a12Q679eVG1917j36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQjRe9e5W1N0i6hAwPWD" style="display: block;" width="100%" /></a></p> 
+         </article> 
+        </div> 
+        <div style="padding: 0 6mm; font-size: 1.1rem; line-height: 1.7rem; ;">
+         Thrilling News! Walgreens Introduces an Oral-B Series 8 Toothbrush for In-Store Utilization. Take Swift Action, as this Promotion Expires on November 15th.          <br /> &nbsp; 
+         <center style="max-width: 250px; margin: auto;"> 
+          <div style="background-color: #182E77; padding-top: 4mm; padding-bottom: 4mm; padding-left: 7mm; padding-right: 7mm; font-weight: bold; font-size: 18px; border-radius: 5px;">
+           <a href="http://www.hcloksphar.world/urgently-likened/b344U2395v8TD613v_6Y79cJ1917T36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQjRe9e5UJ1L05ElwzD" style="text-decoration: none; color: white;" target="_blank">Start Here Now </a>
+          </div> 
+         </center> &nbsp; 
+         <div style="max-width: 22rem; margin: auto;">
+          <a href="http://www.hcloksphar.world/urgently-likened/b344U2395v8TD613v_6Y79cJ1917T36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQjRe9e5UJ1L05ElwzD"><img alt="YTS" src="http://www.hcloksphar.world/98f5B23p95z7sSa11m679fq1917i36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQjRe9e5jhM106wAwDM@/urgently-likened" width="100%" /> </a>
          </div> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center" style="padding-top: 250px;"> 
-        <aside> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" style="padding-bottom: 120px; font-size: 12px; font-weight: 800;">you can leave with sadness <a href="http://www.boschoplt.click/2694r2395uL8V612Ht6793j1915u36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQZRe9R5P1i0N5FqwDl/Nashville-workstations">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </aside> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
+         <br /> 
+         <span style="font-weight: bold;">Thank you in advance,<br /> The Walgreens Team</span>
+         <br /> &nbsp;
+        </div> 
+       </center> <br /> <br /> <br /> <br /> <br /> <br /> <br /> &nbsp; 
+       <div> 
+        <div style="max-width: 14cm; margin: auto; font-weight: bold; text-align: center; font-size: 12px;">
+         you are bored of these, visit us 
+         <a href="http://www.hcloksphar.world/d6d5O23L95Q8s6M13UQ679dks1917G36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQjRe9e6H1SN_06tqkMwD/urgently-likened">here</a> and leave for good
+         <br /> US 10010 126 E 23rd St New York, NY,
+        </div> 
+       </div> <br /> <br /> <br /> <br /> <br /> <br /> &nbsp;</td> 
+     </tr> 
+    </tbody> 
+   </table> 
   </section>   
- <img src="http://www.boschoplt.click/fictitious-adhesive/5ee5OH2395A85Bu11d6796s1915M36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQZRe9R7oXT1OO06tJOwXD" alt=""/></body>
+ <img src="http://www.hcloksphar.world/9536d2y39G5a8G5G12t67aH0R1917x36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQjRe9e5G1z0N6gpw1DN/partisan-beret" alt=""/></body>
 </html>
 
---1c32072143ef377344f258cf8cd601871016708--
+--1035960fd0bc25b29fd2dba097d1e42e516--
 
