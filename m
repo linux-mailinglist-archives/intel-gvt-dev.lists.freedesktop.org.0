@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 106247EE58A
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Nov 2023 17:51:09 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3FC67EE6CD
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 16 Nov 2023 19:35:36 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C21B910E64A;
-	Thu, 16 Nov 2023 16:51:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 78E7D10E660;
+	Thu, 16 Nov 2023 18:35:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 317 seconds by postgrey-1.36 at gabe;
- Thu, 16 Nov 2023 16:51:05 UTC
-Received: from mail.dpscosthg.world (unknown [213.21.253.167])
- by gabe.freedesktop.org (Postfix) with ESMTP id 78B1310E645
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Thu, 16 Nov 2023 18:35:33 UTC
+Received: from mail.logfeesdx.click (unknown [213.21.253.177])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DC8CF10E65C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Nov 2023 16:51:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dpscosthg.world; 
+ Thu, 16 Nov 2023 18:35:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=logfeesdx.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=costco_survey_flash@dpscosthg.world; 
- bh=ZhRuNXZksLCRs6NyMnU4L1qrYQU=;
- b=GR/coRzhi9Vi9H4GqoYAvUBM1uxII1/+odBbC+NJ5PAVALubYVpbEeOID5E2M5NDjUrLnUpKDqq/
- YGOfJu0Lu/ZzO5ma/qqFUQOZGCpo5E4DnQankmmB5WkK74MF8x1vhC30XZkdhM+4XAqsijE97EM/
- Wm4s3zDMrDXvsQ6tits=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dpscosthg.world;
- b=pK8r0ClNQ9uhrpEAgrR62iWpeB5G+Nvz41sIpo7NcLreLOXjciFroP3KfUWa83+DZcR0wARoIYj1
- 7DJYSR3rxQtSfiz50eRoqirmbHyqoMPVe4N8cpnsIwjt+Hs9RD5hol704fRdNoKl5Se5BMGkbmRs
- xHAtHvFWdQSsdCKls2Q=;
-Received: by mail.dpscosthg.world id hap47i0001g2 for
+ i=fedex.timelimited.offer@logfeesdx.click; 
+ bh=Jzm+In30byNIKb4+0Mj89I2jpn4=;
+ b=RSJyCit/AAGayIGsDxFCVHLk0cdsWJKvQ4ej2OJKAUHDxKasLjwzo/HEI7cvcbLedqvAw4YDZ42A
+ WIalyZhjsdUWXZyERiWTbdb/QsKRnts0NtEZHQOYCHkh2eD3bj6z3DvVOz2zZBQck42934SARJSp
+ Dit15mSwPMRcKcJWCmA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=logfeesdx.click;
+ b=npj8BHm5A+Sk8WX02Q3buFScd2vBJagXzwYnTUv33CZ4rRbbs3doa7mw0CSWF9vAUwK1kE6vNh17
+ FQteKQep6hxXr8xsrSqgjsTWU6VNcox0hq5vtWVcFIveHHehj0/8TP09V6mwUxqCr/GpOsOX0Jfj
+ n0iu4PMw0J92nktk4uw=;
+Received: by mail.logfeesdx.click id hapgfc0001g0 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 16 Nov 2023 11:42:34 -0500 (envelope-from
- <costco_survey_flash-intel+2Dgvt+2Ddev=lists.freedesktop.org@dpscosthg.world>)
-Date: Thu, 16 Nov 2023 11:42:34 -0500
-From: "Costco Survey Flash" <costco_survey_flash@dpscosthg.world>
+ Thu, 16 Nov 2023 13:06:07 -0500 (envelope-from
+ <fedex.timelimited.offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@logfeesdx.click>)
+Date: Thu, 16 Nov 2023 13:06:07 -0500
+From: "FedEx TimeLimited Offer" <fedex.timelimited.offer@logfeesdx.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1417687117028.170015293603606@dpscosthg.world>
-Subject: Quick Shot: Costco Exclusive Survey for Time-Limited Daily
- Promotions&mdash; Don't Miss Your Chance!
+Message-ID: <17010265163072.1700157948714377@logfeesdx.click>
+Subject: Don't Miss Out: FedEx's Quick Promo Survey for Daily Delights!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=26844041a3e8f53159454ea1f33fc05996688972697157
+ boundary=10ca7ea8ad101b485dcee1cc41cfcd931031029997980
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,67 +53,153 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---26844041a3e8f53159454ea1f33fc05996688972697157
+--10ca7ea8ad101b485dcee1cc41cfcd931031029997980
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&display=swap');
-	</style> 
-  <title>welcome</title> 
+  <title>loyalty and support</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <center style="background-color: rgb(233, 233, 233);"> 
-   <div style="width: 100%; padding-top: .8cm; padding-bottom: .8cm;"> 
-    <section> 
-     <div style="max-width: 15.5cm; margin: auto; background-color: #fff; font-family: 'Source Sans 3', sans-serif;"> 
-      <article> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center" style="padding-top: 15px; padding-bottom: 15px;"> <h2 style="margin: 0; font-weight: 700; text-align: center; font-size: 22px; color: #000000;">Attaining the ideal gift?a $100 Costco<br /> Gift Card?is merely a few clicks away.</h2> </td> 
-         </tr> 
-         <tr> 
-          <td> 
-           <blockquote style="max-width: 95%; margin: auto;">
-            <a href="http://www.dpscosthg.world/4df5K239R5V8R6D12X67b2iq191bB36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2Redo6Yx1gu05UzkwD/stamina-cued" target="_blank"><img alt="YTS" src="http://www.dpscosthg.world/6qb4R2395q7aY_11n67b4g191b_36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQ2Redo7Pn1SwN05jlwMD/momentarily-badge" style="display: block;" width="100%" /></a>
-           </blockquote> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-       <div style="font-family: 'Source Sans 3', sans-serif; font-size: 4.5mm; line-height: 7mm; text-align: center; font-weight: 500; padding: 0 12mm;">
-        At Costco, we are dedicated to improving the shopping experience for our members. To fine-tune our services, we appreciate and encourage your feedback. 
-        <div style="max-width: 120px; margin: auto; padding: 18px 0;">
-         <a href="http://www.dpscosthg.world/4df5K239R5V8R6D12X67b2iq191bB36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2Redo6Yx1gu05UzkwD/stamina-cued" target="_blank"><img alt="YTS" src="http://www.dpscosthg.world/Ga75S239Z5vi7_a12U6G7b5H191bW36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ2Redo5h10rO5c1wpD/comparing-Waveland" style="display: block;" width="100%" /></a>
-        </div> Engage in our short survey to share your thoughts on our store, products, and services. As a token of appreciation for your time, all survey participants will have the opportunity to enter a drawing and win a $100 Costco gift card.         <br /> &nbsp; 
-        <table align="center"> 
+  <div> 
+   <center style="border-right: solid 30px #ebebeb; border-left: solid 30px #ebebeb;"> 
+    <h3 style="margin: 0;">&nbsp;</h3> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
+     <caption>
+      &nbsp;
+     </caption> 
+     <thead> 
+      <tr> 
+       <th>&nbsp;</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td class="logysbaron">&nbsp;</td> 
+       <td class="logysbaron">&nbsp;</td> 
+       <td class="logysbaron"> 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
+         <caption>
+          &nbsp;
+         </caption> 
+         <thead> 
+          <tr> 
+           <th>&nbsp;</th> 
+          </tr> 
+         </thead> 
          <tbody> 
           <tr> 
-           <td align="center"> 
-            <center style="padding-top: .4cm; padding-bottom: .4cm; padding-left: .7cm; padding-right: .7cm; border-radius: 1rem; background-color: rgb(0,98,168); font-size: 1.2rem; font-weight: 7000;">
-             <a href="http://www.dpscosthg.world/4df5K239R5V8R6D12X67b2iq191bB36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQ2Redo6Yx1gu05UzkwD/stamina-cued" style="text-decoration: none; color: white;">Go And Starte Now</a>
-            </center> </td> 
+           <td id="valoraninfo">&nbsp;</td> 
+           <td id="valoraninfo"> 
+            <div> 
+             <div> 
+              <header style="margin: 0; padding: 0;"> 
+               <center> 
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
+                 <tbody> 
+                  <tr> 
+                   <td> 
+                    <div> 
+                     <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 800; font-size: 55px;">
+                      <a href="http://www.logfeesdx.click/5574K2395wA8w613W67kbu7G191ci36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQwRed95OG10U6glJzwD/systematizing-equilibria" style="text-decoration: none; color: #06004A;">Fed </a>
+                      <a href="http://www.logfeesdx.click/5574K2395wA8w613W67kbu7G191ci36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQwRed95OG10U6glJzwD/systematizing-equilibria" style="text-decoration: none; color: #BD1609;"> Ex </a>
+                     </center> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> 
+               </center> 
+              </header> &nbsp; 
+              <div style="background-color: rgb(255, 249, 242); padding: 15px 0px;"> 
+               <section style="max-width: 520px; margin: auto;"> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;">We want to express our gratitude for choosing FedEx as your preferred shipping partner. Your loyalty and support mean a lot to us, and we truly appreciate the chance to assist you.</p> 
+               </section> 
+              </div> 
+              <div style="max-width: 520px; margin: auto;"> 
+               <table> 
+                <tbody> 
+                 <tr> 
+                  <td><a href="http://www.logfeesdx.click/5574K2395wA8w613W67kbu7G191ci36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQwRed95OG10U6glJzwD/systematizing-equilibria"><img alt="JHESA" src="http://www.logfeesdx.click/c056S239WY5W7z_a11c67b9p191cq36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQwRed95MS10z6VBwDPj/utters-thrusters" style="display: block; " width="100%" /> </a></td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div> 
+              <div style="max-width: 520px; margin: auto;"> 
+               <article> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><font>As we remain dedicated to delivering outstanding service, we warmly encourage you to participate in a short survey regarding your recent shipping experience and your overall interaction with FedEx. </font></p> 
+               </article> 
+              </div> &nbsp; 
+              <div style="background-color: rgb(255, 249, 242); padding: 15px 0px;"> 
+               <section style="max-width: 520px; margin: auto;"> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><b>Upon completing the survey, you may have the chance to qualify for a $100 Gift! </b></p> 
+               </section> 
+              </div> 
+              <div style="max-width: 520px; margin: auto;"> 
+               <table align="center"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center"><a href="http://www.logfeesdx.click/5574K2395wA8w613W67kbu7G191ci36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQwRed95OG10U6glJzwD/systematizing-equilibria"><img alt="JHESA" src="http://www.logfeesdx.click/7916k239jN5S7Yau13B6n7bayL191cG36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQwRed95rq1v06wqTwUD/heathen-Kingston" style="display: block; max-width: 90px;" width="100%" /> </a></td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div> &nbsp; 
+              <div style="max-width: 520px; margin: auto;"> 
+               <article> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><font>To start the survey, simply click on the link provided below. It's a quick task that will require only a few minutes, and rest assured that your responses will remain confidential. </font></p> 
+               </article> 
+              </div> &nbsp; 
+              <div style="max-width: 520px; margin: auto;"> 
+               <table align="center"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center"> 
+                   <blockquote style="max-width: 300px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; padding: 1em 1.8em; background-color: #2e2e2e; border-radius: 10px;">
+                    <a href="http://www.logfeesdx.click/5574K2395wA8w613W67kbu7G191ci36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQwRed95OG10U6glJzwD/systematizing-equilibria" style="text-decoration: none; color: rgb(255, 255, 255);">Start Here Now &gt;&gt; </a>
+                   </blockquote> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div> &nbsp; 
+              <div style="max-width: 520px; margin: auto;"> 
+               <article> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; text-align: center; line-height: 28px; margin: 0;"><font>Your support is highly valued, and we look forward to hearing from you soon.<br /> Warm regards. </font></p> 
+               </article> 
+              </div> 
+              <p style="padding-bottom: 300px;">&nbsp;</p> 
+              <hr /> 
+              <footer style="max-width: 520px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 12px;"> 
+               <address>another day to leave <a href="http://www.logfeesdx.click/b335Y23R95t_p8613z6D7bK8_191cn36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQwRed96E10HuU6OT1qwD/Scorpio-cleverest"> here </a><br /> US 10010 126 E 23rd St New York, NY,</address> 
+              </footer> 
+              <br /> &nbsp;
+             </div> 
+            </div> </td> 
+           <td id="valoraninfo">&nbsp;</td> 
+           <td id="valoraninfo">&nbsp;</td> 
           </tr> 
          </tbody> 
-        </table> 
-        <br /> &nbsp;
-       </div> 
-      </article> 
-     </div> 
-    </section> 
-    <div style="padding-top: 250px; padding-bottom: 180px;"> 
-     <center style="max-width: 12cm; margin: auto; font-size: .4rem; text-align: center; font-weight: 700; ;font-family: 'Source Sans 3', sans-serif;"> 
-      <h1>more than welcome to leave in <a href="http://www.dpscosthg.world/colonies-planetesimal/a9e4a2395G8Sy611J67b3R191bw36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQ2Redo6jOh10l6DL@0wD">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY,</h1> 
-     </center> 
-    </div> 
-   </div> 
-  </center>   
- <img src="http://www.dpscosthg.world/downlinks-Judith/5765k239o5tmL8511X67b6u191bY36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ2Redo5X10OG6zlw@Dq" alt=""/></body>
+         <tfoot> 
+          <tr> 
+           <td>&nbsp;</td> 
+          </tr> 
+         </tfoot> 
+        </table> </td> 
+       <td class="logysbaron">&nbsp;</td> 
+       <td class="logysbaron">&nbsp;</td> 
+      </tr> 
+     </tbody> 
+     <tfoot> 
+      <tr> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tfoot> 
+    </table> 
+   </center> 
+  </div>   
+ <img src="http://www.logfeesdx.click/2gf5b2M395E8l5y13t67b_ibx191cP36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQwRed97zC1V0Hi6qMXwDy/heathen-Kingston" alt=""/></body>
 </html>
 
---26844041a3e8f53159454ea1f33fc05996688972697157--
+--10ca7ea8ad101b485dcee1cc41cfcd931031029997980--
 
