@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id D774B7EF81E
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Nov 2023 21:03:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D1DF17EF7AD
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Nov 2023 20:07:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AC01110E771;
-	Fri, 17 Nov 2023 20:03:45 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2FF5410E765;
+	Fri, 17 Nov 2023 19:07:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 4184 seconds by postgrey-1.36 at gabe;
- Fri, 17 Nov 2023 20:03:43 UTC
-Received: from server.cncontroladmon.com (server.cncontroladmon.com
- [192.249.125.50])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 080A510E771
+X-Greylist: delayed 369 seconds by postgrey-1.36 at gabe;
+ Fri, 17 Nov 2023 19:07:51 UTC
+Received: from mail.borinfotoday.click (unknown [77.83.203.145])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5482710E151
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Nov 2023 20:03:43 +0000 (UTC)
-Received: from mailnull by server.cncontroladmon.com with local (Exim 4.96.2)
- id 1r43yY-0002Tj-0C for intel-gvt-dev@lists.freedesktop.org;
- Fri, 17 Nov 2023 10:53:58 -0800
-X-Failed-Recipients: username@website.com
-Auto-Submitted: auto-replied
-From: Mail Delivery System <Mailer-Daemon@server.cncontroladmon.com>
-To: intel-gvt-dev@lists.freedesktop.org
-References: <762f8729485820537f14bca8d07fa7b2@grupopauel.com>
-Content-Type: multipart/report; report-type=delivery-status;
- boundary=1700247238-eximdsn-801379182
+ Fri, 17 Nov 2023 19:07:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=borinfotoday.click; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=survey.time.harbor.special@borinfotoday.click; 
+ bh=ybciopG9eDelKOhOEBC2tVK/0W0=;
+ b=ToWtutsk8ZHxDGRqanxNjzGeBeAcXFdzlsqHn5wCPcpEkmkr//V7tCgIhFMVNpHRXAGy7HJKkNzq
+ DYpG5WzaIHAN40Fd4vcoJRHhZlvHlpDGGjL1wBm10iXBZkDQWR1VxpXyD9To53G/bV/7Q9GtwUvm
+ SgeGOeRiM5IL5MHiHSw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=borinfotoday.click; 
+ b=G/FIOe1+dsOfwvSkaPHQP7KQ3FB9N19yoC1PmICQ/yuQJRtvKgHdrmPRv42Cu74dZswIjovl/bpe
+ 07iz80I4IMxIwJTqGXS5mRqS91SY1PwE3uiRQ/FzQdWWZDRKlAGITPj5AS2zeKASrQQ+tpcXm64Y
+ iIjlJdEYpqtsN9ST8kU=;
+Received: by mail.borinfotoday.click id haut0e0001g7 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 17 Nov 2023 13:59:10 -0500 (envelope-from
+ <survey.time.harbor.special-intel+2Dgvt+2Ddev=lists.freedesktop.org@borinfotoday.click>)
+Date: Fri, 17 Nov 2023 13:59:10 -0500
+From: "Survey Time Harbor Special."
+ <survey.time.harbor.special@borinfotoday.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <21002431687.170024753325102@borinfotoday.click>
+Subject: Harbor Rewards Unleashed: Swift Survey for Daily Promotions!
 MIME-Version: 1.0
-Subject: Mail delivery failed: returning message to sender
-Message-Id: <E1r43yY-0002Tj-0C@server.cncontroladmon.com>
-Date: Fri, 17 Nov 2023 10:53:58 -0800
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server.cncontroladmon.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - 
-X-Get-Message-Sender-Via: server.cncontroladmon.com: sender_ident via
- received_protocol == local: mailnull/primary_hostname/system user
-X-Authenticated-Sender: server.cncontroladmon.com: mailnull
+Content-Type: multipart/alternative; 
+ boundary=6a47db9d77ef3e48adb7f01081e229ac102988695103710156
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,73 +55,43 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---1700247238-eximdsn-801379182
-Content-type: text/plain; charset=us-ascii
+--6a47db9d77ef3e48adb7f01081e229ac102988695103710156
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-This message was created automatically by mail delivery software.
-
-A message that you sent could not be delivered to one or more of its
-recipients. This is a permanent error. The following address(es) failed:
-
-  username@website.com
-    host mailsrv101.in2net.com [65.61.198.231]
-    SMTP error from remote mail server after RCPT TO:<username@website.com>:
-    550 <username@website.com> No such user here
-
---1700247238-eximdsn-801379182
-Content-type: message/delivery-status
-
-Reporting-MTA: dns; server.cncontroladmon.com
-
-Action: failed
-Final-Recipient: rfc822;username@website.com
-Status: 5.0.0
-Remote-MTA: dns; mailsrv101.in2net.com
-Diagnostic-Code: smtp; 550 <username@website.com> No such user here
-
---1700247238-eximdsn-801379182
-Content-type: message/rfc822
-
-Return-path: <intel-gvt-dev@lists.freedesktop.org>
-Received: from grupopau by server.cncontroladmon.com with local (Exim 4.96.2)
-	(envelope-from <intel-gvt-dev@lists.freedesktop.org>)
-	id 1r43yW-0002TZ-2g
-	for username@website.com;
-	Fri, 17 Nov 2023 10:53:57 -0800
-To: Your Name <username@website.com>
-Subject: Seeking Reassurance and Reconciliation
-X-PHP-Script: grupopauel.com/include/sendemail.php for 135.181.72.254
-X-PHP-Originating-Script: 1012:class.phpmailer.php
-Date: Fri, 17 Nov 2023 18:53:56 +0000
-From: apaniaturi <intel-gvt-dev@lists.freedesktop.org>
-Reply-To: apaniaturi <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <762f8729485820537f14bca8d07fa7b2@grupopauel.com>
-X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
-MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="b1_762f8729485820537f14bca8d07fa7b2"
-Content-Transfer-Encoding: 8bit
-
-This is a multi-part message in MIME format.
-
---b1_762f8729485820537f14bca8d07fa7b2
-Content-Type: text/plain; charset=us-ascii
-
-Name: apaniaturi Email: intel-gvt-dev@lists.freedesktop.org Phone: 82162535592 Service:  Message: Yearning for Your Affectionate Words 
-Dearest, you're the missing piece to my puzzle. 
-In case you have a bit of free time, would you kindly check out my page through this link: https://tinyurl.com/yr9h5c2p#cALIJZ   I've shared some new photos and updates from recent events there. It would be fantastic to catch up and share our experiences. This Form was submitted from: http://grupopauel.com/contacto.html
+A Special Offer for Our Valued Users
+--------------------------------------------
 
 
---b1_762f8729485820537f14bca8d07fa7b2
-Content-Type: text/html; charset=us-ascii
+HARBOR FREIGHT
 
-Name: apaniaturi<br><br> Email: intel-gvt-dev@lists.freedesktop.org<br><br> Phone: 82162535592<br><br> Service: <br><br> Message: Yearning for Your Affectionate Words 
-Dearest, you're the missing piece to my puzzle. 
-In case you have a bit of free time, would you kindly check out my page through this link: https://tinyurl.com/yr9h5c2p#cALIJZ   I've shared some new photos and updates from recent events there. It would be fantastic to catch up and share our experiences.<br><br> <br><br><br>This Form was submitted from: http://grupopauel.com/contacto.html
+We wanted to take a moment to thank you for choosing Harbor Freight.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+
+As a token of our appreciation, we would like to give you a FREE Milwaukee Drill Set! when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
 
 
 
---b1_762f8729485820537f14bca8d07fa7b2--
+To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
---1700247238-eximdsn-801379182--
+
+Take The survey >>>>>
+http://www.borinfotoday.click/memorized-jousts/3d24e2395b86gl11V67d4B1929w36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQaReQR7VWTC10M5by@wD
+
+
+
+Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
+
+
+Best regards,
+The Harbor Freight Survey Team
+
+--------------------------------------------
+
+No longer want to receive email information?, click_here >>>>> http://www.borinfotoday.click/a436g23S9m5oH86m11o67d5l1929H36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQaReQR5QCK106bAwDpU/extremes-governmental
+126 E 23rd St New York, NY, US 10010
+
+<span class="dislocates"><font class="bumblers"></span><span></font><span id="planoconvex"></span></span>
+
+--6a47db9d77ef3e48adb7f01081e229ac102988695103710156--
+
