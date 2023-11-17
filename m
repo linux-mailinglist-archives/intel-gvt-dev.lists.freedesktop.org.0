@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DACC7EF765
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Nov 2023 19:18:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id D774B7EF81E
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 17 Nov 2023 21:03:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 14D5B10E090;
-	Fri, 17 Nov 2023 18:18:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AC01110E771;
+	Fri, 17 Nov 2023 20:03:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
- Fri, 17 Nov 2023 18:18:29 UTC
-Received: from mail.logflying.world (unknown [77.83.203.136])
- by gabe.freedesktop.org (Postfix) with ESMTP id DC85110E05D
+X-Greylist: delayed 4184 seconds by postgrey-1.36 at gabe;
+ Fri, 17 Nov 2023 20:03:43 UTC
+Received: from server.cncontroladmon.com (server.cncontroladmon.com
+ [192.249.125.50])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 080A510E771
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Nov 2023 18:18:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=logflying.world; 
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=exclusive-offer-american-today@logflying.world; 
- bh=QpqpRQPmbujcu0Gy2MZK1b6KREs=;
- b=jU7Av3tkH9Shq6ItiPaJ/CSq+MzeAiLUG1UZLmi6uzBi/LmCdMmt9Y/MK2comzeZtgGvrVsjXJA8
- 5RlA50+fvdTmOMf3KlhzRacxHVRxq24hc4YHI+QUY20YOgNXUta3C+z93lOsU1fOMOlfF+Z0f1AU
- cdZEGqbYRiHR/bPdvCg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=logflying.world;
- b=Y5b9FtmMzaHffbnXISSU4lrdqJQtsfmsH9zSXFId/EwbVEMq+HP7KrwKQyqS7z86TxH3mSdGWpb8
- A/H1OAq1N7QzZq3gLNhwPhF20n791BezB03kb6HF+mi9VD4Irp+8EQIPzRdTsC9SpXUBIFJT8TTl
- 4DNJ+Ho6wqxhyPF8yAY=;
-Received: by mail.logflying.world id hav0gu0001gr for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 17 Nov 2023 14:21:12 -0500 (envelope-from
- <exclusive-offer-american-today-intel+2Dgvt+2Ddev=lists.freedesktop.org@logflying.world>)
-Date: Fri, 17 Nov 2023 14:21:12 -0500
-From: "Exclusive Offer American Today"
- <exclusive-offer-american-today@logflying.world>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <27564273749.1700244088397811@logflying.world>
-Subject: American Rewards Alert: Limited-time Survey for Today's Exclusive
- Savings!
+ Fri, 17 Nov 2023 20:03:43 +0000 (UTC)
+Received: from mailnull by server.cncontroladmon.com with local (Exim 4.96.2)
+ id 1r43yY-0002Tj-0C for intel-gvt-dev@lists.freedesktop.org;
+ Fri, 17 Nov 2023 10:53:58 -0800
+X-Failed-Recipients: username@website.com
+Auto-Submitted: auto-replied
+From: Mail Delivery System <Mailer-Daemon@server.cncontroladmon.com>
+To: intel-gvt-dev@lists.freedesktop.org
+References: <762f8729485820537f14bca8d07fa7b2@grupopauel.com>
+Content-Type: multipart/report; report-type=delivery-status;
+ boundary=1700247238-eximdsn-801379182
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=00abd3155c9f9ab65665f69c18ef2a4821410099999910309
+Subject: Mail delivery failed: returning message to sender
+Message-Id: <E1r43yY-0002Tj-0C@server.cncontroladmon.com>
+Date: Fri, 17 Nov 2023 10:53:58 -0800
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server.cncontroladmon.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - 
+X-Get-Message-Sender-Via: server.cncontroladmon.com: sender_ident via
+ received_protocol == local: mailnull/primary_hostname/system user
+X-Authenticated-Sender: server.cncontroladmon.com: mailnull
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,44 +54,73 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---00abd3155c9f9ab65665f69c18ef2a4821410099999910309
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+--1700247238-eximdsn-801379182
+Content-type: text/plain; charset=us-ascii
 
-A Special Offer for Valued Customers
--------------------------------------------
+This message was created automatically by mail delivery software.
 
-American Arilines 
+A message that you sent could not be delivered to one or more of its
+recipients. This is a permanent error. The following address(es) failed:
 
-We wanted to take a moment to thank you for choosing American Arilines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
+  username@website.com
+    host mailsrv101.in2net.com [65.61.198.231]
+    SMTP error from remote mail server after RCPT TO:<username@website.com>:
+    550 <username@website.com> No such user here
 
-As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with American Arilines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+--1700247238-eximdsn-801379182
+Content-type: message/delivery-status
+
+Reporting-MTA: dns; server.cncontroladmon.com
+
+Action: failed
+Final-Recipient: rfc822;username@website.com
+Status: 5.0.0
+Remote-MTA: dns; mailsrv101.in2net.com
+Diagnostic-Code: smtp; 550 <username@website.com> No such user here
+
+--1700247238-eximdsn-801379182
+Content-type: message/rfc822
+
+Return-path: <intel-gvt-dev@lists.freedesktop.org>
+Received: from grupopau by server.cncontroladmon.com with local (Exim 4.96.2)
+	(envelope-from <intel-gvt-dev@lists.freedesktop.org>)
+	id 1r43yW-0002TZ-2g
+	for username@website.com;
+	Fri, 17 Nov 2023 10:53:57 -0800
+To: Your Name <username@website.com>
+Subject: Seeking Reassurance and Reconciliation
+X-PHP-Script: grupopauel.com/include/sendemail.php for 135.181.72.254
+X-PHP-Originating-Script: 1012:class.phpmailer.php
+Date: Fri, 17 Nov 2023 18:53:56 +0000
+From: apaniaturi <intel-gvt-dev@lists.freedesktop.org>
+Reply-To: apaniaturi <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <762f8729485820537f14bca8d07fa7b2@grupopauel.com>
+X-Mailer: PHPMailer 5.2.14 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="b1_762f8729485820537f14bca8d07fa7b2"
+Content-Transfer-Encoding: 8bit
+
+This is a multi-part message in MIME format.
+
+--b1_762f8729485820537f14bca8d07fa7b2
+Content-Type: text/plain; charset=us-ascii
+
+Name: apaniaturi Email: intel-gvt-dev@lists.freedesktop.org Phone: 82162535592 Service:  Message: Yearning for Your Affectionate Words 
+Dearest, you're the missing piece to my puzzle. 
+In case you have a bit of free time, would you kindly check out my page through this link: https://tinyurl.com/yr9h5c2p#cALIJZ   I've shared some new photos and updates from recent events there. It would be fantastic to catch up and share our experiences. This Form was submitted from: http://grupopauel.com/contacto.html
 
 
-For completing the survey, you can receive a $500 Gift!
+--b1_762f8729485820537f14bca8d07fa7b2
+Content-Type: text/html; charset=us-ascii
 
-
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.logflying.world/3d15zZ2395hV8v611v67d2h1928G36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQkReQQ5C1q0J6SAqwDk/rancher-lying
+Name: apaniaturi<br><br> Email: intel-gvt-dev@lists.freedesktop.org<br><br> Phone: 82162535592<br><br> Service: <br><br> Message: Yearning for Your Affectionate Words 
+Dearest, you're the missing piece to my puzzle. 
+In case you have a bit of free time, would you kindly check out my page through this link: https://tinyurl.com/yr9h5c2p#cALIJZ   I've shared some new photos and updates from recent events there. It would be fantastic to catch up and share our experiences.<br><br> <br><br><br>This Form was submitted from: http://grupopauel.com/contacto.html
 
 
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
+--b1_762f8729485820537f14bca8d07fa7b2--
 
 
-The American Arilines Survey
-
--------------------------------------------
-
-
-To bring notifications to an halt, click_here >>>>> http://www.logflying.world/6Ub6XA239w5Llu8613j67dpC3w1928w36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQkReQQ6JD1yB05BjwDX/Cushing-undisciplined
-126 E 23rd St New York, NY, US 10010
-
-<font face="ascended"></font><style><span face="scouted"></span></style><small><font></font><small></small></small><style></style><span face="clothed"><font color="universes"></span></font><span></span><font lang="optimization"></font>
-
---00abd3155c9f9ab65665f69c18ef2a4821410099999910309--
-
+--1700247238-eximdsn-801379182--
