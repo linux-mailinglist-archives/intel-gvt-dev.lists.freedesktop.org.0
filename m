@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FA997F0031
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Nov 2023 15:52:29 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C72E67F0046
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Nov 2023 16:17:40 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 38B0F10E098;
-	Sat, 18 Nov 2023 14:52:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 72BEA10E166;
+	Sat, 18 Nov 2023 15:17:39 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Sat, 18 Nov 2023 14:52:25 UTC
-Received: from mail.pacstoday.world (unknown [77.83.203.180])
- by gabe.freedesktop.org (Postfix) with ESMTP id A9D2310E08A
+X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
+ Sat, 18 Nov 2023 15:17:36 UTC
+Received: from mail.packslown.world (unknown [77.83.203.208])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D11FA10E153
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 18 Nov 2023 14:52:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pacstoday.world; 
+ Sat, 18 Nov 2023 15:17:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=packslown.world; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=participate-in-a-quick-survey-for-prizes@pacstoday.world; 
- bh=1VrdkzP/YlAs6oBe2V7NyOFzpRE=;
- b=C6xHI7p8ouie6pGx+RGDtcPc56XVC6FTuyqs47SscPHou+HmVcb5voeN8Dwm/ozGYa3Ab62lXIkq
- GuTlXxC4ai6eXD42DQuVEQD3H7XhHp2ZY7MD9JRSQKEGdtI2YdkwBPuZOZFK0ugzXVzJZyAtmCjg
- XoF9MzIewX34ZOqgBiM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pacstoday.world;
- b=LPBT7OFcl7ZV0oQtSghiEfBgJav3SGAn4LAmZ5Py7Yi9TJu/kU2kSokSE0Mx4CQAwp0fRP+KTmV3
- yM40Sp37GXQWnxBYorgK3vHu+hA/GVNEL7b57oyhc4a5HRc2BR1JScVrPmZOtxWkDkHEHI0ZaQy4
- mxHOzjIyXQW416eYFC8=;
-Received: by mail.pacstoday.world id hb3h440001gp for
+ i=hurry_fedex_deal@packslown.world; 
+ bh=O+X9NDCy/nvDuLD23JhcKtpR0m0=;
+ b=BnpTWs6V8BxaF9uWF3Wde4pAJeUv9gsbF7I+f8HvMHxfgfPLPyRg4NBgEKa7ND2pGKAZCtMZ4dbJ
+ bs9GzBISarULGoJxsfCzAQ/QWNbzdddVb/ezKkXbWgXjk2chSa76aFriQaiA2BFiO7dInv1IgPCy
+ TNyFtuzw8hv0y5we1hU=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=packslown.world;
+ b=n+a5RM+ssbSF3Fk5TBFO4yapLm3frmOVk2MXQitCDpLit9AYEAnbqj5xJ+o7AzqjDthdYt4nQq0J
+ 08pmReY+iAHXqgir54YyoY8QAOr3omCKt5mBR6c3xg6JQK9F4G4/pC4U2hAlW+bAU6juofAhkdwM
+ fs/ipanwirlFeMTpJZo=;
+Received: by mail.packslown.world id hb3k2i0001gc for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 18 Nov 2023 11:00:51 -0500 (envelope-from
- <participate-in-a-quick-survey-for-prizes-intel+2Dgvt+2Ddev=lists.freedesktop.org@pacstoday.world>)
-Date: Sat, 18 Nov 2023 11:00:51 -0500
-From: "Participate In A Quick Survey For Prizes"
- <participate-in-a-quick-survey-for-prizes@pacstoday.world>
+ Sat, 18 Nov 2023 11:29:37 -0500 (envelope-from
+ <hurry_fedex_deal-intel+2Dgvt+2Ddev=lists.freedesktop.org@packslown.world>)
+Date: Sat, 18 Nov 2023 11:29:37 -0500
+From: "Hurry FedEx Deal" <hurry_fedex_deal@packslown.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <12285520617500.1700318479990484@pacstoday.world>
-Subject: Daily Promo & UPS: Swift Survey for Immediate Limited-Time Rewards!
+Message-ID: <417426027239.17003201596841379@packslown.world>
+Subject: FedEx Swift Feedback Offer: Today's Exclusive Unveiling!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=8cb0dc074e73a6bef03e6cccfdf4c2aa7979898101
+ boundary=b0ac1d5bbc44d81149f906ad2915cba8061001020291598101
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,81 +53,37 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---8cb0dc074e73a6bef03e6cccfdf4c2aa7979898101
-Content-Type: text/html; charset=us-ascii
+--b0ac1d5bbc44d81149f906ad2915cba8061001020291598101
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
-	</style> 
-  <title>shipping</title> 
- </head> 
- <body style="margin: 0; padding: 0; font-family: 'Raleway', sans-serif;"> 
-  <div style="background-color: rgb(235, 235, 235); width: 100%;"> 
-   <ul style="list-style: none; padding: 7% 0; margin: 0;"> 
-    <li class="shops"> 
-     <center> 
-      <div style="background-color: #fff; max-width: 14cm; margin: auto;"> 
-       <center style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 2px; font-size: 60px; background-color: #3E4321; ;">
-        <a href="http://www.pacstoday.world/Cohn-bookmark/d504i2395oH86m13V6O7dah_192ch36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ8ReQK7hV10zDS6IlL0wD" style="text-decoration: none; color: white;">UPS</a>
-       </center> 
-      </div> 
-     </center> </li> 
-    <li> 
-     <div style="background-color: #fff; max-width: 14cm; margin: auto;"> 
-      <center> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center" class="pplos"> <p style="font-size: 4.5mm; line-height: 7mm; font-weight: 500; padding: 0 10mm;">We'd like to express our gratitude for choosing UPS as your shipping solution. Your loyalty and support mean a lot to us, and we sincerely thank you for giving us the chance to be of service to you. <a href="http://www.pacstoday.world/Cohn-bookmark/d504i2395oH86m13V6O7dah_192ch36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ8ReQK7hV10zDS6IlL0wD"><img alt="EDE" src="http://www.pacstoday.world/Royce-Greentree/26a4m2395Dv7aV11d67dcw192cT36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ8ReQK7Q1h0ZnB6tjwjOD" style="display: block; padding: 4% 0%;" width="85%" /></a></p> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </center> 
-     </div> </li> 
-    <li id="ibssso"> 
-     <div style=" background-color: #ffffff; max-width: 14cm; margin: auto;"> 
-      <center style="font-size: 4.5mm; line-height: 7mm; font-weight: 500; padding: 5mm 10mm; background-color: #ca7d25; font-weight: bold; color: white;">
-       Claiming The $100 UPS Card for your upcoming shipment is just a few clicks away.       </center> 
-     </div> </li> 
-    <li> 
-     <div style=" background-color: #ffffff; max-width: 14cm; margin: auto;"> 
-      <center style="font-size: 4.5mm; line-height: 7mm; font-weight: 500; padding: 7mm 10mm;">
-       Kindly spare a moment to fill out our short 20-Second Service Survey regarding your recent interaction with us. 
-       <div style="max-width: 90px; margin: auto; padding: 28px 0 0;">
-        <a href="http://www.pacstoday.world/Cohn-bookmark/d504i2395oH86m13V6O7dah_192ch36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ8ReQK7hV10zDS6IlL0wD"><img alt="YTS" src="http://www.pacstoday.world/Royce-Greentree/e9a6D239qu5mr7aO12Vo67ddX192cD36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ8ReQK5QS10U6M@q1wD" style="display: block;" width="100%" /> </a>
-       </div> 
-      </center> 
-     </div> </li> 
-    <li> 
-     <div style=" background-color: #ffffff; max-width: 14cm; margin: auto; text-align: center;"> 
-      <table align="center" id="boottoms"> 
-       <tbody> 
-        <tr> 
-         <td align="center" class="iiuys"> 
-          <center style="background-color: #3E4321; font-size: 18px; background-color: #3E4321; font-weight: 900; padding: 5mm 10mm; border-radius: 5px;">
-           <a href="http://www.pacstoday.world/Cohn-bookmark/d504i2395oH86m13V6O7dah_192ch36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ8ReQK7hV10zDS6IlL0wD" style="text-decoration: none; color: white;" target="_blank">Get Started Now</a>
-          </center> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <br /> 
-      <br /> 
-      <b style="font-size: 4.5mm; line-height: 7mm; font-weight: 800; ">Warm regards,<br /> UPS Review Center</b>
-      <br /> &nbsp;
-     </div> </li> 
-    <li style="padding-top: 250px; padding-bottom: 200px;"> 
-     <div> 
-      <p style="max-width: 520px; margin: auto; font-size: 12px; font-weight: 700; text-align: center;">another day to leave <a href="http://www.pacstoday.world/2ff5g2D395ymy8612P67Bdbg192cF36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ8ReQK7uqS10SH6B200wD/implementor-Julies">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-     </div> </li> 
-   </ul> 
-  </div>   
- <img src="http://www.pacstoday.world/13d4Q2395eF85A11W67dep192cr36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ8ReQK5Mwt106QMwDL@/brainwash-principle" alt=""/></body>
-</html>
+Fedex
 
---8cb0dc074e73a6bef03e6cccfdf4c2aa7979898101--
+*********************************************
+
+
+We want to express our gratitude for choosing FedEx as your preferred shipping service.  Your loyalty and support are sincerely valued, and we cherish the chance to be of service to you. 
+
+Your selection of FedEx as your preferred shipping partner is greatly acknowledged.  Your loyalty and support are of immense importance to us, and we hold the opportunity to serve you in high regard. 
+
+
+After completing the survey, you may qualify for a $100 gift!
+
+
+To start the survey, simply click on the link below.  It's a quick task that will require just a few minutes of your time, and rest assured that your responses will remain confidential. 
+
+
+Start Here Now >>
+http://www.packslown.world/3ef4u2395JL8N611H67dfm192dZ36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ.ReRm6Kk1W0H6HLkJwD/biology-aorta
+
+Your support is greatly appreciated, and we eagerly anticipate your response.  Warm regards. 
+
+
+*********************************************
+
+another day to leave here >>>
+http://www.packslown.world/salads-extinct/2a65M239T5qmy8611R67e0g192dw36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ.ReRm5KrX105pX@wD
+US 10010 126 E 23rd St New York, NY,
+
+--b0ac1d5bbc44d81149f906ad2915cba8061001020291598101--
 
