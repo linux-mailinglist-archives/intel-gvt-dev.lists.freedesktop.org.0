@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 528537F014D
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Nov 2023 18:32:56 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDE187F01ED
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Nov 2023 19:26:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C6B0D10E16F;
-	Sat, 18 Nov 2023 17:32:54 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 384B610E354;
+	Sat, 18 Nov 2023 18:26:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sat, 18 Nov 2023 17:32:52 UTC
-Received: from mail.maxtoolswo.click (unknown [77.83.203.21])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1EE6910E002
+X-Greylist: delayed 1282 seconds by postgrey-1.36 at gabe;
+ Sat, 18 Nov 2023 18:26:54 UTC
+Received: from mail.nbpkroginc.world (unknown [77.83.203.216])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 40C2C10E34A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 18 Nov 2023 17:32:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=maxtoolswo.click;
+ Sat, 18 Nov 2023 18:26:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=nbpkroginc.world;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=swift_home_depot_survey_specials@maxtoolswo.click; 
- bh=VENEn0IVArsANRUHOZpi9xy5UjI=;
- b=dxUf+PbR9uXtNCumI6ORNDF3BtqPdirPc+ZEbujG1aQhZvrO1c9iFnoqCfvSQLnrMQFuldAcICcC
- YjJmrsUJpC5rL9UxfVCyg/S4wNQNC0VnayhABD3joevfXbpaLAXa5K1EjEQXY9d+2jqsjYQKlFnd
- zQB2LlqsUAGPr1dN0NQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maxtoolswo.click;
- b=pauAZpJFbsqCog1JR8FyieDGMiLwIS4iQ+uUDqbhZur7JIGQHXvz/dqhY23B06rLGitJ5b4LksCO
- k3/3QtAN1OFFbckcZE4JE5JNJT48eaRdBnniEFUQUrvwMojI7YbZtevt7kMKEz1gKnp3E9eQh6YX
- hEpF1hnpKMHEC8jOryI=;
-Received: by mail.maxtoolswo.click id hb3qk80001ge for
+ i=participate.and.win.kroger.exclusives@nbpkroginc.world; 
+ bh=h8Z4QCJbQtW8eucldcP2TToI9/8=;
+ b=GV/KD4M88tZ7fuf1QFp5du6Rv/JlB7n3XtTzQAWRzv3U1XUNCl9A7g2LR2LdGs1SXYQ7eSedHb6D
+ DJi9hc9FWyoD5tjz1xHp1c9cf8pg0lOQL7ZWkPA8xTzL/a2F5qhDr2yNoLpfRkRtTh2M02bTcQhH
+ +s52SgtMpdzT0PoFh9Y=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=nbpkroginc.world;
+ b=UELWqCiccaxuHODz8eIXnz7GFNZDoooqwMvmqQUlSz4dShH5Sya0bs0lHZHnChI3N2Y3O6DZNmT5
+ cpD0b80PvJ4fiBZjwEpFL7ESEdIDrEZWISG1Gl1zbPkFTmrn7pXHjVTMuQwjLndd/tvwTYWuBCmy
+ JJYJbd7p1XdC8wrEa24=;
+Received: by mail.nbpkroginc.world id hb4a8c0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 18 Nov 2023 12:18:18 -0500 (envelope-from
- <swift_home_depot_survey_specials-intel+2Dgvt+2Ddev=lists.freedesktop.org@maxtoolswo.click>)
-Date: Sat, 18 Nov 2023 12:18:18 -0500
-From: "Swift Home Depot Survey Specials"
- <swift_home_depot_survey_specials@maxtoolswo.click>
+ Sat, 18 Nov 2023 14:19:04 -0500 (envelope-from
+ <participate.and.win.kroger.exclusives-intel+2Dgvt+2Ddev=lists.freedesktop.org@nbpkroginc.world>)
+Date: Sat, 18 Nov 2023 14:19:04 -0500
+From: "Participate And Win Kroger Exclusives."
+ <participate.and.win.kroger.exclusives@nbpkroginc.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <21282036207886.17003278730400@maxtoolswo.click>
-Subject: Swift Feedback, Daily Savings: Home Depot Limited-Time Survey + Prize!
+Message-ID: <100538911282.170033037266307@nbpkroginc.world>
+Subject: Kroger Survey: Take Immediate Action for Time-limited Exclusive
+ Rewards!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=25d09cd290d6de1dd01367215891e91854510310029
+ boundary=57fe1fd395896931335fd218dd4bb9a49829732484
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,65 +55,93 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---25d09cd290d6de1dd01367215891e91854510310029
+--57fe1fd395896931335fd218dd4bb9a49829732484
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>cherished</title>=20
-  <link href=3D"http://www.maxtoolswo.click/shells-dissociate/e9a4l2395C8GN611l67eft1930C36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQaReR97P1PS0pj6nPNwOD" rel=3D"preconnect" />=20
-  <link crossorigin=3D"" href=3D"http://www.maxtoolswo.click/b336r2B3V95Q8pg612Y67hf0Y1930v36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQaReR95N10qo5NOOwD/parameterizes-mellowness" rel=3D"preconnect" />=20
-  <link href=3D"http://www.maxtoolswo.click/shells-dissociate/e9a4l2395C8GN611l67eft1930C36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQaReR97P1PS0pj6nPNwOD/css2?family=3DFira+Sans:wght@100;200;300;400;500=
-;600;700;800;900&amp;display=3Dswap" rel=3D"stylesheet" />=20
- </head>=20
- <body style=3D"margin: 0; padding: 0; font-family: 'Fira Sans', sans-serif=
-;">=20
-  <div style=3D"background-color: rgb(248, 252, 255); width: 100%;">
-   <br />=20
-   <br /> &nbsp;=20
-   <div>=20
-    <p style=3D"background-color: rgb(223,110,7); margin: 0; padding: 25px =
-35px; max-width: 29.3em; margin: auto;"><a href=3D"http://www.maxtoolswo.click/6836BD2J395k8UH612cM67f1P1930Z36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQaReR96o1x0wC6ETwD@l/contemporaries-Viking" target=3D"_b=
-lank"><img alt=3D"ESE" src=3D"http://www.maxtoolswo.click/a256F2z3g95DBp7a11i67f3Y1930W36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQaReR95Y1iN05vJwPD/shells-dissociate" style=3D"display: block; margin:=
- auto;" width=3D"60%" /></a></p>=20
-    <p style=3D"max-width: 30em; margin: auto; text-align: center; font-wei=
-ght: 500; padding-top: 30px; background-color: #fff; padding-left: 30px; pa=
-dding-right: 30px; line-height: 7mm;">We want to express our gratitude for =
-selecting our services. Your loyalty and support are highly valued, and the=
-y will always be acknowledged and cherished.<br /> <br /> As a token of our=
- appreciation for your support, we offer you the chance to receive a MAKITA=
- DRILL Set!<br /> <br /> <a href=3D"http://www.maxtoolswo.click/6836BD2J395k8UH612cM67f1P1930Z36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQaReR96o1x0wC6ETwD@l/contemporaries-Viking" target=3D"_blank"><img alt=
-=3D"VSC" src=3D"http://www.maxtoolswo.click/6bB5f2U395w7haG12p67kf4y1930D36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQaReR97EG1nN0u5YMOwD/Knutson-expands" style=3D"display: block; margin: auto;" width=
-=3D"65%" /></a><br /> <br /> <span style=3D"font-weight: bold;">Your feedba=
-ck holds significant importance for us. </span><br /> <br /> Claiming this =
-reward is simple; it will take only 30 seconds of your time to share your f=
-eedback, and we'll quickly send it to you.<br /> <br /> <br /> <a href=3D"=
-http://www.maxtoolswo.click/6836BD2J395k8UH612cM67f1P1930Z36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQaReR96o1x0wC6ETwD@l/contemporaries-Viking" style=3D"text-decoration: none; color: white;" target=3D"_blank"=
-><span style=3D"background-color:rgb(1,128,146); padding: 2.5% 5%; font-siz=
-e: 20px; border-radius: 10px;">Start Here Now</span></a><br /> <br /> &nbsp=
-;</p>=20
-    <div style=3D"padding: 200px 0;">=20
-     <footer style=3D"max-width: 500px; margin: auto; text-align: center; f=
-ont-weight: 700; font-size: 12px ;">
-      you can leave with sadness=20
-      <a href=3D"http://www.maxtoolswo.click/Knutson-expands/5b26G2l39R5agS8612O6p7f2g1930q36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQaReR95q1oR05ENXwD">here</a>
-      <br /> US 10010 126 E 23rd St New York, NY,
-     </footer>=20
-    </div>=20
-    <div>
-     &nbsp;
-    </div>=20
-   </div>=20
-   <br />=20
-   <br /> &nbsp;
-  </div>  =20
- <img src=3D"http://www.maxtoolswo.click/8db5iw2395XMv8513N6T7Af5L1930N36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQaReR95P1RO05RzBwD/temperamental-vacate" alt=3D""/></body>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <link href="http://www.nbpkroginc.world/decades-testify/33c5Ok2395Vn8t612I67f6Cg1931I36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQVReRd6vHP1s05uOwXD" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.nbpkroginc.world/tantalizing-growths/4c24X2395t86uo12o67gf7H1931y36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQVReRd5A10s_5iAwkD" rel="preconnect" /> 
+  <link href="http://www.nbpkroginc.world/decades-testify/33c5Ok2395Vn8t612I67f6Cg1931I36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQVReRd6vHP1s05uOwXD/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
+  <title>assured</title> 
+ </head> 
+ <body style="margin: 0; padding: 0; font-family: 'Prompt', sans-serif;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <center style="width: 100%; background-color: rgb(245, 250, 255);"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+        <thead> 
+         <tr> 
+          <th align="center" class="bbblros" style="padding-top: 20px;">&nbsp;</th> 
+         </tr> 
+        </thead> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <div style="max-width: 33.4em; margin: auto; text-align: center; background-color: #fff;"> 
+            <div> 
+             <center style="background-color: rgb(26,72,152);">
+              <a href="http://www.nbpkroginc.world/discipline-vacancies/b164p2395VI86s13h67fk8GF1931w36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQVReRd7V1Q0oxB5VPLwD" target="_blank"><img alt="YTSE" src="http://www.nbpkroginc.world/Rochford-homicide/b8e5A23x95G_H7a11D67faK1931y36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQVReRd6zoH1W06YUwDXy" style="display: block; margin: auto;" width="35%" /></a>
+             </center> 
+             <center style="padding-top: 30px; padding-left: 30px; padding-right: 30px;">
+              We genuinely thank you for choosing to shop at Kroger. Your loyalty and support are highly meaningful to us, and we truly appreciate the opportunity to assist you.              </center> &nbsp; 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="230px"> 
+              <tbody> 
+               <tr> 
+                <td align="center" width="90px"> 
+                 <div>
+                  <a href="http://www.nbpkroginc.world/discipline-vacancies/b164p2395VI86s13h67fk8GF1931w36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQVReRd7V1Q0oxB5VPLwD" target="_blank"><img alt="BVS" src="http://www.nbpkroginc.world/c5N6tBs2395A7OaB11w67fbQ1931I36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQVReRd7c10liLh6a3wDkL/decades-testify" style="display: block;" width="100%" /></a>
+                 </div> </td> 
+                <td align="center" width="120px"> 
+                 <div>
+                  <a href="http://www.nbpkroginc.world/discipline-vacancies/b164p2395VI86s13h67fk8GF1931w36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQVReRd7V1Q0oxB5VPLwD" target="_blank"><img alt="HGE" src="http://www.nbpkroginc.world/a7W5X239n5j7qLa13cK6U7fcm1931P36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQVReRd6q10RTL6ty@wD@/discipline-vacancies" style="display: block;" width="100%" /></a>
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+             <div style="padding-top: 30px; padding-left: 30px; padding-right: 30px;">
+              <b>As a gesture of appreciation for your input, you will have the chance to be eligible for a $100 gift. </b>
+              <br /> 
+              <br /> You are welcome to participate in the survey by clicking on the link below. Rest assured that your responses will be handled confidentially, and the survey will only take a few minutes of your time.               <br /> &nbsp; 
+              <table align="center"> 
+               <tbody> 
+                <tr> 
+                 <td align="center"> 
+                  <center style="background-color: rgb(26,72,152); padding: 13px 33px; font-weight: 700; border-radius: 15px;">
+                   <a href="http://www.nbpkroginc.world/discipline-vacancies/b164p2395VI86s13h67fk8GF1931w36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQVReRd7V1Q0oxB5VPLwD" style="text-decoration: none; color: white;" target="_blank">Start Here Now &gt; &gt;</a>
+                  </center> </td> 
+                </tr> 
+               </tbody> 
+              </table> &nbsp; 
+              <div>
+               Thanks again for your support. We anticipate hearing from you soon! Best regards,
+               <br /> 
+               <b>The Kroger Survey Team</b>
+               <br /> &nbsp;
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+           <aside style="padding-top: 100px; padding-bottom: 200px;"> 
+            <footer> 
+             <address style="max-width: 520px; margin: auto; text-align: center; font-size: 12px; font-weight: 700;">if you need to go visit <a href="http://www.nbpkroginc.world/tantalizing-growths/c426zk239G5nZ86F12a67jf9S1931j36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQVReRd6onC1X06vOjAwD">here</a><br /> 10010 126 E 23rd St New York, NY, US</address> 
+            </footer> 
+           </aside> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </center> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.nbpkroginc.world/1f15V2C395g85w_12G67fdSH1931M36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQVReRd6g1lkK05IqwMD/tantalizing-growths" alt=""/></body>
 </html>
 
---25d09cd290d6de1dd01367215891e91854510310029--
+--57fe1fd395896931335fd218dd4bb9a49829732484--
 
