@@ -2,43 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F3177F012B
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Nov 2023 17:40:58 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4086C7F0134
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 18 Nov 2023 17:46:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C9A5C10E311;
-	Sat, 18 Nov 2023 16:40:56 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ACAF310E324;
+	Sat, 18 Nov 2023 16:46:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 921 seconds by postgrey-1.36 at gabe;
- Sat, 18 Nov 2023 16:40:54 UTC
-Received: from mail.pharinfocp.click (unknown [77.83.203.192])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5F41C10E169
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Sat, 18 Nov 2023 16:46:01 UTC
+Received: from mail.toolsnovas.bond (unknown [77.83.203.201])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6C7A810E2FF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 18 Nov 2023 16:40:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=pharinfocp.click;
+ Sat, 18 Nov 2023 16:46:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=toolsnovas.bond; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=survey.special.walgreens.rewards@pharinfocp.click; 
- bh=U9OmzVwtaFIHgI5bBYYrZ5YwlSQ=;
- b=LVRpvxR1vhL5GnUJo4g7AdFEp7zEc+HFwrQjR8iZSRKIToPZieMx84690z+qDDH4tsVNkQlbX/ql
- y/DrZv7qL5ofkPpOh7YplkfYitvB9VlNUoDTX+m/M8yfR4tijgq1eXIHRNtcPJykJOONrdI8F9XS
- qmhaSgmnoGp29lz3hnE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=pharinfocp.click;
- b=BRAoH3mQhR3ASX4YzfXl29JOC7gKVsdNg6mWVxtP53OjmfUQOGGIoXiE5ja0H0xkJFHA5mgl+SYG
- YpR1c7mhdSklv6U1u+AYONI+N6xNNaL9aMMlkxUuOQkzMdOjrl891YX5g4ypSDPAfMRA2B+fU1x9
- dASi7stSJfLIiiHBDjQ=;
-Received: by mail.pharinfocp.click id hb3tqs0001gj for
+ i=short.ace.poll@toolsnovas.bond; 
+ bh=g2Rsbz4EpwqKdaenrgLzx+KL+pU=;
+ b=rslSiYLPUqGDUD6melXxA3GlicHMvK6Cmjrh2Ybz5o6UtQ1MIBwcKF3ynVUi0dKqZSmkbD5MzdcW
+ IA9aXOd7fFdDFScOasZpsCKPhGm+lGOp/F7b4HpBUGEbX4hsv4EwOTmyp6cPBKSosqcxBpITuIn2
+ AkKxVqpb7rFITpleyxg=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsnovas.bond;
+ b=T5yHdgkl11b2gXXE9q4/l9dX5bA9OcFldJ42aw1dSgofHwDoF3TZ0n9VCbGsMz2hys/uRzoOeNNS
+ Y/k4EoVgsW134Sl7OZT9USaB0fbkzA8EwlZXpBysBRwefHqO/hCltVV4EkwhpIbe4f9dzQnghdIr
+ uWD+gcmM+b5KAw+za8A=;
+Received: by mail.toolsnovas.bond id hb3ue20001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 18 Nov 2023 12:04:29 -0500 (envelope-from
- <survey.special.walgreens.rewards-intel+2Dgvt+2Ddev=lists.freedesktop.org@pharinfocp.click>)
-Date: Sat, 18 Nov 2023 12:04:29 -0500
-From: "Survey Special Walgreens Rewards."
- <survey.special.walgreens.rewards@pharinfocp.click>
+ Sat, 18 Nov 2023 12:52:59 -0500 (envelope-from
+ <short.ace.poll-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsnovas.bond>)
+Date: Sat, 18 Nov 2023 12:52:59 -0500
+From: "Short Ace Poll" <short.ace.poll@toolsnovas.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <10389969591.170032221318231@pharinfocp.click>
-Subject: Today Only: Walgreens's Daily Survey&mdash;Chance to Win Oral-B!
+Message-ID: <1453275851490.17003250192404326@toolsnovas.bond>
+Subject: Ace's Exclusive Offer: Free Stanley Tool Set in Survey!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=0e5373afad1227ba6068effde80a1acf91031519710112
+ boundary=a152ebef40644a353b5e4957f8b7ed2999081029899
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0e5373afad1227ba6068effde80a1acf91031519710112
+--a152ebef40644a353b5e4957f8b7ed2999081029899
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,80 +62,53 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.pharinfocp.click/3ef6hB23K95Ur86m13f6t7e1XR192ev36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQxReRn5K1t0P5XNywD/Nazarene-eccentrics" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.pharinfocp.click/coexisted-cluster/c245R2V395E8F6y13O6C7eU2_192eC36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQxReRn6P10VAi5EJwBD" rel="preconnect" /> 
-  <link href="http://www.pharinfocp.click/3ef6hB23K95Ur86m13f6t7e1XR192ev36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQxReRn5K1t0P5XNywD/Nazarene-eccentrics/css2?family=Rubik:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
-  <title>Utilization</title> 
+  <link href="http://www.toolsnovas.bond/league-Tarrytown/ed66zPS2395zl8j613l67e8lVL192fk36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQrReRo7nltQ1t05sTqwD" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.toolsnovas.bond/pricking-luckier/eb86a239uR5K86KK11j67e9p192fh36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQrReRo6j1hBB05SyOwD" rel="preconnect" /> 
+  <link href="http://www.toolsnovas.bond/league-Tarrytown/ed66zPS2395zl8j613l67e8lVL192fk36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQrReRo7nltQ1t05sTqwD/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
+  <title>locations</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <div style="background-color: #e9e9e9; font-family: 'Rubik', sans-serif;">
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp; 
-   <div style="max-width: 30.5rem; margin: auto; background-color: #fff; border-radius: 15px; border: double 4px #000;"> 
-    <center>
-     &nbsp; 
-     <table align="center"> 
-      <tbody> 
-       <tr> 
-        <td align="center" id="logoss"> 
-         <center style="max-width: 70mm; margin: auto;">
-          <a href="http://www.pharinfocp.click/acceptability-absorbing/62a4o2395lx86V13O67eX3hn192er36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQxReRn5I1_Q06UlywJD" target="_blank"><img alt="TWS" src="http://www.pharinfocp.click/conceivably-responsibleness/8dc5v23n95SCx7a12g67xe5m192eV36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQxReRn7tH1YLN06d@@@wD" style="display: block;" width="100%" /></a>
-         </center> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </center> 
-    <section> 
-     <aside> 
-      <article> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-        <tbody> 
-         <tr> 
-          <td align="center">&nbsp; 
-           <center style="padding: 0 10mm; line-height: 6.5mm;">
-            Exciting Announcement! Walgreens Presents an Oral-B Series 8 Toothbrush for In-Store Use. Act Quickly, as this Offer Expires on November 18th.            </center> 
-           <center style="width: 220px; margin: auto; padding: 30px 0;"> 
-            <div style="background-color: rgb(36,42,75); padding: 3mm 5mm; font-weight: 800;;">
-             <a href="http://www.pharinfocp.click/acceptability-absorbing/62a4o2395lx86V13O67eX3hn192er36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQxReRn5I1_Q06UlywJD" style="color: white; text-decoration: none;" target="_blank">Start Here Now</a>
-            </div> 
-           </center> &nbsp; 
-           <center style="max-width: 70mm; margin: auto;">
-            <a href="http://www.pharinfocp.click/acceptability-absorbing/62a4o2395lx86V13O67eX3hn192er36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQxReRn5I1_Q06UlywJD"><img alt="ES" src="http://www.pharinfocp.click/4854g2395l7ao_11e67e6y192eS36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQxReRn7WYKp10S5p2wAD/railways-gathering" width="100%" /></a>
-           </center> </td> 
-         </tr> 
-         <tr> 
-          <td> 
-           <center style="font-weight: 600; padding: 30px 0;">
-            Thank you in advance,
-            <br /> The Walgreens Team
-           </center> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </article> 
-     </aside> 
-    </section> 
-   </div> 
-   <div style="padding-top: 150px;;"> 
-    <div style="max-width: 150mm; margin: auto; text-align: center; font-weight: 700; font-size: 12px; line-height: 5mm;">
-     you are bored of these, visit us 
-     <a href="http://www.pharinfocp.click/bab4r2395oJn8611w67e4z192eJ36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQxReRn6a1Mu0Q6byAwD2/memberships-signatures">here</a> and leave for good
-     <br /> US 10010 126 E 23rd St New York, NY,
-    </div> 
-   </div> 
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
-  </div>   
- <img src="http://www.pharinfocp.click/bab5X2R395oLN8513ew67e7xx192eS36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQxReRn7r10qLOk5MXUwD/coexisted-cluster" alt=""/></body>
+  <section style="background-color: rgb(250, 253, 255); width: 100%; font-family: 'Kanit', sans-serif;"> 
+   <article> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" class="YYTS" style="padding-top: 50px; padding-bottom: 50px;"> 
+        <div style="max-width: 155mm; margin: auto; background-color: #F9F9F9; border-radius: 15px; box-shadow: inset 0 0 5px 1px;"> 
+         <div> 
+          <center style="max-width: 12rem; margin: auto; padding: 15px 0;">
+           <a href="http://www.toolsnovas.bond/eb76iR239F5QID8612B67eHaS192fr36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQrReRo5J1H0i5s2MwD/exhibitors-potentials" target="_blank"><img alt="VBS" src="http://www.toolsnovas.bond/11f6RRN2395ps7ta11q67ecr192fQ36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQrReRo5MlA105AyUwD/possessing-cohesive" style="display: block;" width="100%" /></a>
+          </center> 
+         </div> 
+         <center> 
+          <p style="font-size: 22px; font-weight: 700; color: rgb(229,22,53); margin: 0;">Your Final<br /> Alert from Ace Hardware</p> &nbsp; 
+          <div style="padding: 0 50px; font-size: 4.5mm; line-height: 7mm; font-weight: 500;">
+           Ace Hardware is thrilled to present an incredible opportunity! The Stanley Tool Set is now available for you to acquire at any of our store locations. Act promptly and seize this chance! The deadline to secure these outstanding tools is November 18th.           </div> 
+          <div> 
+           <div style="max-width: 22em; margin: auto; padding-top: 2em; padding-bottom: 2em;">
+            <a href="http://www.toolsnovas.bond/eb76iR239F5QID8612B67eHaS192fr36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQrReRo5J1H0i5s2MwD/exhibitors-potentials" target="_blank"><img alt="VBS" src="http://www.toolsnovas.bond/3ef5c239l5Fm7Ua11d67ed_192ft36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQrReRo6jSv1R06Q3ywpD/systemic-Pensacola" style="display: block;" width="100%" /></a>
+           </div> 
+          </div> 
+          <div style="padding: 0 50px; font-size: 4.5mm; line-height: 7mm; font-weight: 500;">
+           We appreciate your anticipated support.            <br /> Sincerely, The Ace Hardware Team.           </div> &nbsp; 
+          <div style="width: 220px; margin: auto; ;"> 
+           <center style="background-color: rgb(32, 32, 32); font-weight: 700; border-radius: 15px; font-size: 18px; padding: .4cm .7cm;">
+            <a href="http://www.toolsnovas.bond/eb76iR239F5QID8612B67eHaS192fr36gbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQrReRo5J1H0i5s2MwD/exhibitors-potentials" style="text-decoration: none; color: white;" target="_blank">Start Here Now</a>
+           </center> 
+          </div> 
+          <br /> &nbsp;
+         </center> 
+        </div> <br /> <br /> &nbsp; 
+        <center> 
+         <address style="font-weight: 700; font-size: 12px; text-align: center; max-width: 13cm; margin: auto;">Anyway you can leave <a href="http://www.toolsnovas.bond/league-Tarrytown/60c5M2u395El8D611E67ebY192fj36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQrReRo5NP1U06Qy0wzD">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
+        </center> <br /> <br /> &nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </article> 
+  </section>   
+ <img src="http://www.toolsnovas.bond/d4f5R23C95iv8x513mL67eLew192fz36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQrReRo7s1Jy0NS6GBjwDp/pricking-luckier" alt=""/></body>
 </html>
 
---0e5373afad1227ba6068effde80a1acf91031519710112--
+--a152ebef40644a353b5e4957f8b7ed2999081029899--
 
