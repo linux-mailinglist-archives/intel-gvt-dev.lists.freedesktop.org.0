@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 908527F06BE
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 19 Nov 2023 15:10:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B88EA7F06EF
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 19 Nov 2023 15:44:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5E26210E0E5;
-	Sun, 19 Nov 2023 14:10:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 94E7D10E270;
+	Sun, 19 Nov 2023 14:44:27 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Sun, 19 Nov 2023 14:10:34 UTC
-Received: from mail.dvgamobil.click (unknown [77.83.203.243])
- by gabe.freedesktop.org (Postfix) with ESMTP id F16CF10E225
+X-Greylist: delayed 306 seconds by postgrey-1.36 at gabe;
+ Sun, 19 Nov 2023 14:44:25 UTC
+Received: from mail.gombsatt.bond (unknown [77.83.203.27])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7BEE410E202
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 19 Nov 2023 14:10:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dvgamobil.click; 
+ Sun, 19 Nov 2023 14:44:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=gombsatt.bond;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=now.available.tmobile.daily.specials@dvgamobil.click; 
- bh=uAek1WfgV4Ewr4XIu8pv2irUURw=;
- b=qfbK/9A3FWhoSDcQ5EeUpzFsB/VhcCvHlRsjKqJ5KyvPmAmc2R4pRb07O72ZjrTETI4WjBXEGX5U
- t0ksah/eTR9jVUNswYKgeSeDL0VT3m3fp7qu3arh60VvChkiob4F+UHbbAcF93lkGFjoD8nOFlKq
- V6bUJXloGth2rqPxFQE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dvgamobil.click;
- b=gI23lCjSRgysbrHlfzu7RMVgmjeh0EyERm22xd2khP8ex86C75r8vmy7CIQoJqhFmJKSV4Y8VvEm
- tMsWnSCIdvn1EH3owFqusl8sBLgZwYcyBjc0mG9+1nmEZXeXmdxeuMGICJd+RbUPM/brdIiyErFv
- ZFRflg3WgP/LSICPsO0=;
-Received: by mail.dvgamobil.click id hb8blm0001gb for
+ i=now.available.att.daily.specials@gombsatt.bond; 
+ bh=Mtz4Dwm8s7hR7/tlhiTCFvWVxYU=;
+ b=lRwFJjXnE6wX8G/Es/yiLT3TLkua2tbv48LHZtxoHScI4fUHbD7ade3PU6B480cX9cv80TQ0G7a+
+ PnhKmqRAFq1QI7IuT+WS5mUegE4KmgqL9/wYjlLAG+nLEe1hnXlyK/pI7yT+F7K+X7Ryr1zYvtRl
+ 2RSN+gyWgGfQ0VvV5Rw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gombsatt.bond;
+ b=WDczsIwivKmEZTgZ+yikyY9Y8SWp3bBuIBG3iCfXPyoE8MDCLJ7T6NwaCEY3q7qBkMS+67eMise5
+ zv1me2JQ4o6GsNMCKhs8ICL2JKmaqRIblpqcWRFDIlyCLN5kpeY1AWgV2S4n3TCU2zyvvtToC3yV
+ YFbQ3araY2MlBQYfh1Y=;
+Received: by mail.gombsatt.bond id hb8fki0001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 19 Nov 2023 09:01:51 -0500 (envelope-from
- <now.available.tmobile.daily.specials-intel+2Dgvt+2Ddev=lists.freedesktop.org@dvgamobil.click>)
-Date: Sun, 19 Nov 2023 09:01:51 -0500
-From: "Now Available TMobile Daily Specials"
- <now.available.tmobile.daily.specials@dvgamobil.click>
+ Sun, 19 Nov 2023 09:34:38 -0500 (envelope-from
+ <now.available.att.daily.specials-intel+2Dgvt+2Ddev=lists.freedesktop.org@gombsatt.bond>)
+Date: Sun, 19 Nov 2023 09:34:38 -0500
+From: "Now Available ATT Daily Specials"
+ <now.available.att.daily.specials@gombsatt.bond>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <9593493711565.17004025008152666@dvgamobil.click>
-Subject: Act Fast! Engage in T-Mobile's Limited-Time Offer Survey for
- Exclusive Rewards!
+Message-ID: <17157632407.170040445040171@gombsatt.bond>
+Subject: Exclusive Opportunity: AT&T Daily Promo Survey for Limited-Time
+ Offers!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=ca12dacfbc721420a66ec1b38870ec0847910399
+ boundary=8e171ffadea6ba5ad651c99e6e5d952949803102837778100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,39 +55,41 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---ca12dacfbc721420a66ec1b38870ec0847910399
+--8e171ffadea6ba5ad651c99e6e5d952949803102837778100
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
-----------------------------------------------
+A SPECIAL OFFER FOR OUR VALUED USERS
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 
-T-Mobile
+AT&T
 
-We wanted to take a moment to thank you for choosing T-Mobile.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+We wanted to take a moment to thank you for choosing AT&T.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+
+TAKE THE SURVEY >>>>>
+http://www.gombsatt.bond/waiver-presumptive/7926bh239h5ay86u11R6806w1936Q36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQBReRK7cjO1j0r6m1wAWD
+
 
 Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
+
 Upon Completion of the Survey you might have a choice between different gifts!
 
-Start Now >>>>>>>
-http://www.dvgamobil.click/cf56h239gZ5IPN8611M6804A1935u36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ6ReRe6S10lJl5q1wND/clandestine-certifier
 
 
 
-Thank you again for your support.  We look forward to hearing from you soon! Warm regards,
+Thank you again for your support.  We look forward to hearing from you soon!, Warm regards
 
-The T-Mobile Survey
+The AT&T Survey
 
-----------------------------------------------
-
-To halt notifications, Do This >>>>> http://www.dvgamobil.click/stewards-approximates/b8e4B2395Q86Ov12H680M5Q1935i36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ6ReRe6btW1K05hBBwD
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+No longer wish to receive communications?, click_here >>>>> http://www.gombsatt.bond/applications-mortifies/30l4i2395C8xT612H680V7i1936V36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQBReRK5c1M0T6lPAzwD
 126 E 23rd St New York, NY, US 10010
 
 
 
-<span></span><small><span><font size="forgettable"></span></font><small></small></small><font style="superfluities"><style></style></font>
+<big><style face="Morgan"></style></big><span style="insiders"><small></span></small><big></big><big></big><font class="cosponsor"></font><span></span><style></style>
 
---ca12dacfbc721420a66ec1b38870ec0847910399--
+--8e171ffadea6ba5ad651c99e6e5d952949803102837778100--
 
