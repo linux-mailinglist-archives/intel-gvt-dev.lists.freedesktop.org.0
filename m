@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F39E7F16B9
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Nov 2023 16:07:48 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E40337F190D
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Nov 2023 17:47:14 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 40DE510E3FB;
-	Mon, 20 Nov 2023 15:07:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AFBEC10E0C5;
+	Mon, 20 Nov 2023 16:47:13 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Mon, 20 Nov 2023 15:07:44 UTC
-Received: from mail.maxoralbinfo.bond (unknown [77.83.203.103])
- by gabe.freedesktop.org (Postfix) with ESMTP id E8DFA10E3E5
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Mon, 20 Nov 2023 16:47:11 UTC
+Received: from mail.toolspowinfo.click (unknown [77.83.203.125])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4483410E0C5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Nov 2023 15:07:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=maxoralbinfo.bond;
+ Mon, 20 Nov 2023 16:47:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=toolspowinfo.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=quick-poll-walgreens-rewards-await-you@maxoralbinfo.bond; 
- bh=H0RS1Pe5uQPfCWR/jxNhw5ufx+8=;
- b=P7Q8rad8N4saJ6L7EofHDKcRnIho5TZDfKhysemrEmcJvCC+xsc17esNizvS49Iyp1ViCBRX2MQ2
- k8vdcjchgSw2f40U0xCimOundHypOrOvspyxW8op2GzrQ5hFOg57fRpMn8btl8UaqJZFVGZImzwU
- D0IVOWmtKs9pPp9dtyE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maxoralbinfo.bond; 
- b=jaeL9hWZRqfnBmiL08jNb+otwyi9LT24vEhWdciKeeGDA7zWlKBvXpa1qhhD7NbeCUl2r+FKsApi
- +0Hlhqv1jTpBoThH6Yy7CJ41a4g0RHyKCLUiboqwSV/pIhZMILxG7WmHuiHIDDgeKtTzjfBuVE/V
- hVsf9w7mStn3Zxcno6g=;
-Received: by mail.maxoralbinfo.bond id hbe4dc0001g0 for
+ i=quick_poll_lowes_rewards_await_you@toolspowinfo.click; 
+ bh=vrW6avxYUtfEWJE16Iy7r5E270k=;
+ b=LLowXJuW2ujVGIGIe/yEEf8Gp0kPYPLTVkCv+8MMxyC1Nch5SqHT8d6lyHcUUkUorkvDlSoNZ2L2
+ ksDOhpJmK/sKq9s8fpuPIziTUjB23O1NkhQXOh3/IEfaBq60e9fJOTzWKRl6qmThhwScxHpSbcrL
+ 39P/Z3pO8Q5rioQv60U=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolspowinfo.click; 
+ b=MBSsp6uybo5FdP3kUKR+7SpywZdmpWrhh4gtaJeGkMk1jrydEXbGYfsqJQ7jZc3Ow8rry6qgHfSk
+ 5O3jVm2yC17QbNCiUfPCvFlpAJYAXQtBzexVy6CcOhRTfz5KgxEoL8i+KLbMipYBGvLvjrjL/4tO
+ FhplqH1wSTmqIoYHh9I=;
+Received: by mail.toolspowinfo.click id hbe6ou0001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Nov 2023 11:10:28 -0500 (envelope-from
- <quick-poll-walgreens-rewards-await-you-intel+2Dgvt+2Ddev=lists.freedesktop.org@maxoralbinfo.bond>)
-Date: Mon, 20 Nov 2023 11:10:28 -0500
-From: "Quick Poll Walgreens Rewards Await You."
- <quick-poll-walgreens-rewards-await-you@maxoralbinfo.bond>
+ Mon, 20 Nov 2023 11:36:48 -0500 (envelope-from
+ <quick_poll_lowes_rewards_await_you-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolspowinfo.click>)
+Date: Mon, 20 Nov 2023 11:36:48 -0500
+From: "Quick Poll Lowes Rewards Await You."
+ <quick_poll_lowes_rewards_await_you@toolspowinfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <8770964498924.17004918546837868@maxoralbinfo.bond>
-Subject: Daily Bonus: Walgreens Survey&mdash;
- Your Chance to Win a Free Oral-B Series 8!
+Message-ID: <2521721143267.170049819942817@toolspowinfo.click>
+Subject: Your Chance: Lowe's Quick Survey&mdash;Free Kobalt Bonus.
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=3b84256321787e6d5b8d55932039514959819910193971011
+ boundary=ae0b02942787d93544dc24fe15f38d931031627
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---3b84256321787e6d5b8d55932039514959819910193971011
+--ae0b02942787d93544dc24fe15f38d931031627
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,20 +64,30 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Exciting Announcement</title> 
+  <title>Exciting News from</title> 
  </head> 
- <body> 
-  <section> 
-   <table align="center" cellpadding="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td> 
-       <center> 
-        <blockquote style="margin: 0; padding: 0;"> 
-         <ol style="list-style-type: none; padding: 0; margin: 0; background-color: #fff; max-width: 520px; margin: auto;"> 
-          <li class="Geoproyecs"> 
-           <div id="tactics" style="max-width: 520px; margin: auto;"> 
-            <table align=""> 
+ <body style="margin: 0; padding: 0; background-color: #e6e6e6;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" class="nidaveleir" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <center class="targerians"> 
+       <blockquote id="propers"> 
+        <div id="caption"> 
+         <ol style="max-width: 545px; margin: auto; text-align: center; background-color: #fff; padding: 0; list-style-type: none; padding-left: 30px; padding-right: 30px;"> 
+          <li class="dominicstall"> 
+           <div id="shoppersclock"> 
+            <table style="max-width: 235px; margin: auto;"> 
+             <tbody> 
+              <tr> 
+               <td><span><a href="http://www.toolspowinfo.click/5755i239V5DV8s611W6828W193ek36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQOReSS6nup1k05rq0wD/lyncher-knocking" target="_blank"><img alt="HEAS" src="http://www.toolspowinfo.click/c9b5z23k95epG7a11c682as193es36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQOReSS6sxT1h05cBwDz/Americas-boastful" width="100%" /></a> </span></td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> </li> 
+          <li class="dominicstall"> 
+           <div id="shoppersclock"> 
+            <table> 
              <tbody> 
               <tr> 
                <td>&nbsp;</td> 
@@ -85,62 +95,64 @@ Content-Transfer-Encoding: 7bit
              </tbody> 
             </table> 
            </div> </li> 
-          <li class="Geoproyecs"> 
-           <div id="tactics">
-            <a href="http://www.maxoralbinfo.bond/seeker-automobile/42c4J2395mq8_613z6HM81eY193cn36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQAReSQ7Yrr1H0r5QLwlD"><img alt="KJHEA" src="http://www.maxoralbinfo.bond/admirers-representativeness/a264j2395Vp7aM13m6X8n20q193cJ36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQAReSQ5S1oG06p@ykwD" style="max-width: 280px; margin: auto;" width="100%" /></a>
-           </div> </li> 
-          <li class="Geoproyecs"> 
-           <div id="tactics" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 28px;">
-            Thrilling News! Walgreens Introduces the 
-            <b>Oral-B Series 8 Toothbrush</b> for In-Store Use. Act Fast, as this Offer Expires on 
-            <b>November 20th</b>.            </div> </li> 
-          <li class="Geoproyecs"> 
-           <div id="tactics">
-            &nbsp; 
+          <li class="dominicstall"> 
+           <div id="shoppersclock"> 
             <table> 
              <tbody> 
               <tr> 
-               <td>&nbsp; 
-                <table align="center" cellpadding="20px" style="background-color: #242A4B; border-radius: 10px;"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center" style="font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; width: 180px;"><a href="http://www.maxoralbinfo.bond/seeker-automobile/42c4J2395mq8_613z6HM81eY193cn36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQAReSQ7Yrr1H0r5QLwlD" style="text-decoration: none; color: #fff;">Start Here Now </a></td> 
-                  </tr> 
-                 </tbody> 
-                </table> <br /> &nbsp;</td> 
+               <td>&nbsp;</td> 
               </tr> 
              </tbody> 
             </table> 
            </div> </li> 
-          <li class="Geoproyecs"> 
-           <div id="tactics"> 
-            <table align="center" width="380px"> 
-             <tbody> 
-              <tr> 
-               <td align="center"><a href="http://www.maxoralbinfo.bond/seeker-automobile/42c4J2395mq8_613z6HM81eY193cn36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQAReSQ7Yrr1H0r5QLwlD"><img alt="JEHA" src="http://www.maxoralbinfo.bond/3955t23h95PF7Ha11z6821G193cA36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQAReSQ5vWZ106UWA@wD/phraseology-Carbone" width="100%" /></a></td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> </li> 
-          <li class="Geoproyecs"> 
-           <div id="tactics" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 28px;">
-            <strong>Thank you in advance, The Walgreens Team</strong> 
-            <div style="padding-bottom: 10em;">
-             &nbsp;
+          <li class="seconstext"> 
+           <div style="border: double 4px #2745A6; border-radius: 10px;"> 
+            <div style="padding: .5em 1.5em;"> 
+             <h4 style="margin: 0; text-align: center; color: #2745A6; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.6em;"><u>Final Reminder<br /> Regarding Your Lowe's Reward</u></h4> 
+            </div> &nbsp; 
+            <div style="padding: .5em 1.5em;"> 
+             <h2 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; font-weight: 500;">Exciting Announcement from Lowe's! A Kobalt Tool Set awaits you in our stores. Act promptly, and don't miss this opportunity! You have until November 20th to secure these fantastic items.</h2> &nbsp; 
+             <center style="max-width: 300px; margin: auto;"> 
+              <div style="padding-top: 16px; padding-bottom: 16px;; padding-left: 34px; padding-right: 34px; border-radius: 4px; background-color: #2745A6; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 18px;">
+               <a href="http://www.toolspowinfo.click/5755i239V5DV8s611W6828W193ek36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQOReSS6nup1k05rq0wD/lyncher-knocking" style="text-decoration: none; color: white;">Start Here Now &gt;&gt;</a>
+              </div> 
+             </center> &nbsp; 
+             <center style="max-width: 323px; margin: auto;">
+              <a href="http://www.toolspowinfo.click/5755i239V5DV8s611W6828W193ek36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQOReSS6nup1k05rq0wD/lyncher-knocking" target="_blank"><img alt="OOEPAS" src="http://www.toolspowinfo.click/cf56s2h39j5n7att11t682bX193eN36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQOReSS5eR1X05XOWwD/lyncher-knocking" width="100%" /></a>
+             </center> &nbsp; 
+             <h6 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; font-weight: 500;">We appreciate your participation in our survey. Your input is highly valuable to us at Lowe's, and we sincerely thank you for taking the time to share your feedback.</h6> 
+             <br /> 
+             <br /> &nbsp;
             </div> 
-            <footer> 
-             <address style="font-family: Arial, Helvetica, sans-serif; font-size: 13px;">you are bored of these, visit us <a href="http://www.maxoralbinfo.bond/abb4k2395Rk8M612vG681fY193cp36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQAReSQ6RQ1t0Y5oWkwD/barbiturates-talker">here</a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</address> 
-            </footer> 
-           </div> </li> 
+           </div> <br /> <br /> &nbsp;</li> 
          </ol> 
-        </blockquote> 
-       </center> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </section>   
- <img src="http://www.maxoralbinfo.bond/3d16S2W39Y5eR8o513g6x8u22g193cn36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQAReSQ6W1TC0V5MkXwD/discrete-retype" alt=""/></body>
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> &nbsp; 
+         <div style="background-color: #2745A6; padding: 3mm 0mm;"> 
+          <footer style="max-width: 420px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 12px; text-align: center; font-weight: 700; color: white;">
+           you can leave with sadness 
+           <a href="http://www.toolspowinfo.click/carelessness-ampersands/a445J239R5W8rQ613z6A829kp193e_36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQOReSS6LN1y0L6mWw@lD" style="color: #00ffff;">here</a>
+           <br /> US 10010 126 E 23rd St New York, NY,
+          </footer> 
+         </div> 
+        </div> 
+       </blockquote> 
+      </center> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.toolspowinfo.click/lyncher-knocking/a085mB2395z8Hw511b682cN193eT36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQOReSS5X1O0j6iPPw@D" alt=""/></body>
 </html>
 
---3b84256321787e6d5b8d55932039514959819910193971011--
+--ae0b02942787d93544dc24fe15f38d931031627--
 
