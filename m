@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E40337F190D
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Nov 2023 17:47:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A714E7F1C35
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 20 Nov 2023 19:21:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AFBEC10E0C5;
-	Mon, 20 Nov 2023 16:47:13 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1A8B610E11B;
+	Mon, 20 Nov 2023 18:21:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 20 Nov 2023 16:47:11 UTC
-Received: from mail.toolspowinfo.click (unknown [77.83.203.125])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4483410E0C5
+X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
+ Mon, 20 Nov 2023 18:20:58 UTC
+Received: from mail.droppacks.world (unknown [77.83.203.140])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6C35110E10C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Nov 2023 16:47:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=toolspowinfo.click; 
+ Mon, 20 Nov 2023 18:20:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=droppacks.world; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=quick_poll_lowes_rewards_await_you@toolspowinfo.click; 
- bh=vrW6avxYUtfEWJE16Iy7r5E270k=;
- b=LLowXJuW2ujVGIGIe/yEEf8Gp0kPYPLTVkCv+8MMxyC1Nch5SqHT8d6lyHcUUkUorkvDlSoNZ2L2
- ksDOhpJmK/sKq9s8fpuPIziTUjB23O1NkhQXOh3/IEfaBq60e9fJOTzWKRl6qmThhwScxHpSbcrL
- 39P/Z3pO8Q5rioQv60U=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolspowinfo.click; 
- b=MBSsp6uybo5FdP3kUKR+7SpywZdmpWrhh4gtaJeGkMk1jrydEXbGYfsqJQ7jZc3Ow8rry6qgHfSk
- 5O3jVm2yC17QbNCiUfPCvFlpAJYAXQtBzexVy6CcOhRTfz5KgxEoL8i+KLbMipYBGvLvjrjL/4tO
- FhplqH1wSTmqIoYHh9I=;
-Received: by mail.toolspowinfo.click id hbe6ou0001g5 for
+ i=quick_ups_feedback_limited_time_promo@droppacks.world; 
+ bh=MaFf8ySsh3Qq+FgVzEa+wvTnH6Q=;
+ b=G+Dubr3bBu49XkdFf8GQKkAOFift6S8TVzL5TuLsMonaOiFD3wIOfNuD9B8bcZBw6LPcqIkN+HFM
+ 3B7p2H9AoCBepnU2D5avPGsKAh5446fniA7qhjY2fQqeKpLayh53dMAFUuk4u6kr4P+p9E98WVUg
+ fAsFrzvQG+WPrK5jl10=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=droppacks.world;
+ b=h+86pw+0TLRpRCQ0xKtrBtVOHnUlb+dcjBv8SKHAAkJzm0aK+PVdQtygsHSxRiw9bA1VvV8pYbQH
+ UNy2EQPk8V4q/PLbQjm1p6BBA2UtOhQQLBeWeGL09B3Lnx9LCgoobv+HBgtMZrvFFzb6Zg76SUTd
+ 2siUBfIGyjqCwTWbE5U=;
+Received: by mail.droppacks.world id hbehok0001go for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 20 Nov 2023 11:36:48 -0500 (envelope-from
- <quick_poll_lowes_rewards_await_you-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolspowinfo.click>)
-Date: Mon, 20 Nov 2023 11:36:48 -0500
-From: "Quick Poll Lowes Rewards Await You."
- <quick_poll_lowes_rewards_await_you@toolspowinfo.click>
+ Mon, 20 Nov 2023 13:11:08 -0500 (envelope-from
+ <quick_ups_feedback_limited_time_promo-intel+2Dgvt+2Ddev=lists.freedesktop.org@droppacks.world>)
+Date: Mon, 20 Nov 2023 13:11:08 -0500
+From: "Quick UPS Feedback Limited Time Promo"
+ <quick_ups_feedback_limited_time_promo@droppacks.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <2521721143267.170049819942817@toolspowinfo.click>
-Subject: Your Chance: Lowe's Quick Survey&mdash;Free Kobalt Bonus.
+Message-ID: <6786145107912.170050385817691@droppacks.world>
+Subject: Unlock Daily Promotions: Quick UPS Survey &ndash;
+ Limited Time, Act Fast!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=ae0b02942787d93544dc24fe15f38d931031627
+ boundary=bf5842972f7efcaf71e2bb6136aaaeb731001
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---ae0b02942787d93544dc24fe15f38d931031627
+--bf5842972f7efcaf71e2bb6136aaaeb731001
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,95 +64,136 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Exciting News from</title> 
+  <title>preferred shipping</title> 
+  <link href="http://www.droppacks.world/3956U2j39u5eHV8611Y682dm193fL36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQFReSe6hg10rW5wWywD/Judaism-quarrels" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.droppacks.world/canyon-turkeys/4864d2395euU8613US68B2eh193fk36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQFReSe7y1BSkY05DAwDT" rel="preconnect" /> 
+  <link href="http://www.droppacks.world/3956U2j39u5eHV8611Y682dm193fL36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQFReSe6hg10rW5wWywD/Judaism-quarrels/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
  </head> 
- <body style="margin: 0; padding: 0; background-color: #e6e6e6;"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" class="nidaveleir" style="border-collapse: collapse;" width="100%"> 
+ <body> 
+  <table border="0" cellpadding="" style="border-collapse: collapse;" width="100%"> 
+   <thead> 
+    <tr> 
+     <th class="tactics">&nbsp;</th> 
+    </tr> 
+   </thead> 
    <tbody> 
     <tr> 
-     <td align="center"> 
-      <center class="targerians"> 
-       <blockquote id="propers"> 
-        <div id="caption"> 
-         <ol style="max-width: 545px; margin: auto; text-align: center; background-color: #fff; padding: 0; list-style-type: none; padding-left: 30px; padding-right: 30px;"> 
-          <li class="dominicstall"> 
-           <div id="shoppersclock"> 
-            <table style="max-width: 235px; margin: auto;"> 
-             <tbody> 
-              <tr> 
-               <td><span><a href="http://www.toolspowinfo.click/5755i239V5DV8s611W6828W193ek36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQOReSS6nup1k05rq0wD/lyncher-knocking" target="_blank"><img alt="HEAS" src="http://www.toolspowinfo.click/c9b5z23k95epG7a11c682as193es36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQOReSS6sxT1h05cBwDz/Americas-boastful" width="100%" /></a> </span></td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> </li> 
-          <li class="dominicstall"> 
-           <div id="shoppersclock"> 
-            <table> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> </li> 
-          <li class="dominicstall"> 
-           <div id="shoppersclock"> 
-            <table> 
-             <tbody> 
-              <tr> 
-               <td>&nbsp;</td> 
-              </tr> 
-             </tbody> 
-            </table> 
-           </div> </li> 
-          <li class="seconstext"> 
-           <div style="border: double 4px #2745A6; border-radius: 10px;"> 
-            <div style="padding: .5em 1.5em;"> 
-             <h4 style="margin: 0; text-align: center; color: #2745A6; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.6em;"><u>Final Reminder<br /> Regarding Your Lowe's Reward</u></h4> 
-            </div> &nbsp; 
-            <div style="padding: .5em 1.5em;"> 
-             <h2 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; font-weight: 500;">Exciting Announcement from Lowe's! A Kobalt Tool Set awaits you in our stores. Act promptly, and don't miss this opportunity! You have until November 20th to secure these fantastic items.</h2> &nbsp; 
-             <center style="max-width: 300px; margin: auto;"> 
-              <div style="padding-top: 16px; padding-bottom: 16px;; padding-left: 34px; padding-right: 34px; border-radius: 4px; background-color: #2745A6; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 18px;">
-               <a href="http://www.toolspowinfo.click/5755i239V5DV8s611W6828W193ek36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQOReSS6nup1k05rq0wD/lyncher-knocking" style="text-decoration: none; color: white;">Start Here Now &gt;&gt;</a>
-              </div> 
-             </center> &nbsp; 
-             <center style="max-width: 323px; margin: auto;">
-              <a href="http://www.toolspowinfo.click/5755i239V5DV8s611W6828W193ek36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7JQOReSS6nup1k05rq0wD/lyncher-knocking" target="_blank"><img alt="OOEPAS" src="http://www.toolspowinfo.click/cf56s2h39j5n7att11t682bX193eN36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQOReSS5eR1X05XOWwD/lyncher-knocking" width="100%" /></a>
-             </center> &nbsp; 
-             <h6 style="margin: 0; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.2em; font-weight: 500;">We appreciate your participation in our survey. Your input is highly valuable to us at Lowe's, and we sincerely thank you for taking the time to share your feedback.</h6> 
-             <br /> 
-             <br /> &nbsp;
-            </div> 
-           </div> <br /> <br /> &nbsp;</li> 
-         </ol> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> 
-         <br /> &nbsp; 
-         <div style="background-color: #2745A6; padding: 3mm 0mm;"> 
-          <footer style="max-width: 420px; margin: auto; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 12px; text-align: center; font-weight: 700; color: white;">
-           you can leave with sadness 
-           <a href="http://www.toolspowinfo.click/carelessness-ampersands/a445J239R5W8rQ613z6A829kp193e_36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQOReSS6LN1y0L6mWw@lD" style="color: #00ffff;">here</a>
-           <br /> US 10010 126 E 23rd St New York, NY,
-          </footer> 
-         </div> 
-        </div> 
-       </blockquote> 
-      </center> </td> 
+     <td id="yamilogins"> 
+      <div class="acenew"> 
+       <center>
+        &nbsp;
+       </center> 
+      </div> </td> 
+     <td id="yamilogins"> 
+      <div class="acenew"> 
+       <center>
+        &nbsp;
+       </center> 
+      </div> </td> 
+     <td id="yamilogins"> 
+      <div class="acenew"> 
+       <center>
+        &nbsp;
+       </center> 
+      </div> </td> 
+     <td id="yamilogins"> 
+      <div class="acenew"> 
+       <center>
+        &nbsp;
+       </center> 
+      </div> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" colspan="4">&nbsp;</td> 
     </tr> 
    </tbody> 
+   <tfoot> 
+    <tr> 
+     <td align="center" colspan="4"> 
+      <div style="background-color: #e2e2e2;">
+       &nbsp; 
+       <div style="max-width: 510px; margin: auto; background-color: #fff; padding-left: 20px; padding-right: 20px;"> 
+        <header> 
+         <div> 
+          <table align="center" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 1px; font-size: 40px;"><a href="http://www.droppacks.world/de56KX239H5AR8m612L6I82fw193ft36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQFReSe5G10yz6yPT0wD/gallantly-thinkable" style="text-decoration: none; color: #3B411F;">UPS</a></td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> 
+        </header> 
+        <section> 
+         <div> 
+          <p style="font-family: 'Catamaran', sans-serif;; font-weight: 500; text-align: center; font-size: 1.2em; line-height: 1.6em;">We want to express our gratitude for choosing UPS as your preferred shipping provider. Your loyalty and support are highly valued by us, and we genuinely appreciate the opportunity to assist you.</p> 
+         </div> 
+         <table> 
+          <tbody> 
+           <tr> 
+            <td> 
+             <ul style="list-style-type: none; padding: 0; margin: 0;"> 
+              <li class="foto"><a href="http://www.droppacks.world/de56KX239H5AR8m612L6I82fw193ft36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQFReSe5G10yz6yPT0wD/gallantly-thinkable" target="_blank"><img alt="UEAE" src="http://www.droppacks.world/89f4t2395qn7aG11z6831R193fR36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQFReSe7y1mU0Nw6SlPwDA/undeveloped-refines" width="100%" /></a></li> 
+             </ul> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <div> 
+          <p style="font-family: 'Catamaran', sans-serif;; font-weight: 500; text-align: center; font-size: 1.2em; line-height: 1.6em;">As we remain dedicated to delivering exceptional service, we warmly invite you to participate in a brief survey about your recent shipping experience and your overall interaction with UPS.</p> 
+         </div> 
+        </section> 
+        <table> 
+         <tbody> 
+          <tr> 
+           <td> 
+            <ul style="list-style-type: none; padding: 0; margin: 0;"> 
+             <li class="foto"><a href="http://www.droppacks.world/de56KX239H5AR8m612L6I82fw193ft36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQFReSe5G10yz6yPT0wD/gallantly-thinkable" target="_blank"><img alt="UEAE" src="http://www.droppacks.world/throated-province/dc84n2395o7iaD11j6832W193fB36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQFReSe7j_h1i0D5UPwXD" width="100%" /></a></li> 
+            </ul> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <div> 
+         <p style="font-family: 'Catamaran', sans-serif;; font-weight: 500; text-align: center; font-size: 1.2em; line-height: 1.6em;"><b>Upon completing the survey, you may have the chance to qualify for a $100 Gift!</b></p> 
+         <center style="max-width: 90px; margin: auto;">
+          <a href="http://www.droppacks.world/de56KX239H5AR8m612L6I82fw193ft36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQFReSe5G10yz6yPT0wD/gallantly-thinkable"><img alt="ASEAE" src="http://www.droppacks.world/notarized-resynchronizing/3d25b239Z5U7Lat13J68h3U3i193ft36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQFReSe5D1oP06zzwLDA" style="display: block;" width="100%" /></a>
+         </center> 
+         <p>&nbsp;</p> 
+        </div> 
+        <div> 
+         <p style="font-family: 'Catamaran', sans-serif;; font-weight: 500; text-align: center; font-size: 1.2em; line-height: 1.6em;">You can start the survey by clicking the link below. It should only take a few minutes of your time, and rest assured that your responses will be treated as confidential.</p> 
+        </div> 
+        <table> 
+         <tbody> 
+          <tr> 
+           <td> 
+            <table style="max-width: 250px; margin: auto; background-color: #231F1B; border-radius: 10px; padding: .2cm .8cm; font-family: 'Catamaran', sans-serif; font-weight: 700;"> 
+             <tbody> 
+              <tr> 
+               <td align="center"><a href="http://www.droppacks.world/de56KX239H5AR8m612L6I82fw193ft36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQFReSe5G10yz6yPT0wD/gallantly-thinkable" style="color: rgb(255, 255, 255); text-decoration: none;">Begin The Survey Here &gt; </a></td> 
+              </tr> 
+             </tbody> 
+            </table> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <br /> 
+        <br /> &nbsp; 
+        <div> 
+         <p style="font-family: 'Catamaran', sans-serif;; font-weight: 500; text-align: center; font-size: .9em; line-height: 1.3em;">Your support is highly valued, and we eagerly await your response.<br /> Warm regards.</p> 
+        </div> 
+       </div> 
+       <br /> 
+       <br /> 
+       <br /> &nbsp;
+      </div> 
+      <ul style="padding: 0; margin: 0; list-style-type: none;background-color: #e9e9e9;"> 
+       <li style="max-width: 450px; margin: auto; padding-top: 20px; padding-bottom: 20px; font-family: 'Catamaran', sans-serif; font-weight: 600;">another day to leave <a href="http://www.droppacks.world/6a16L2u39t5M8w6q12H68Z30q193fp36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQFReSe7c1qNgl05wzwBD/forecast-consideration">here</a><br /> US 10010 126 E 23rd St New York, NY,</li> 
+      </ul> </td> 
+    </tr> 
+   </tfoot> 
   </table>   
- <img src="http://www.toolspowinfo.click/lyncher-knocking/a085mB2395z8Hw511b682cN193eT36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQOReSS5X1O0j6iPPw@D" alt=""/></body>
+ <img src="http://www.droppacks.world/a7f5e2C395fV85T11m6834v193fz36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQFReSe6zTVg106f3lwAD/autobiographies-viruses" alt=""/></body>
 </html>
 
---ae0b02942787d93544dc24fe15f38d931031627--
+--bf5842972f7efcaf71e2bb6136aaaeb731001--
 
