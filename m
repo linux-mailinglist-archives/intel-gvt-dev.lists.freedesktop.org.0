@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF9B97F324F
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Nov 2023 16:25:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E75B7F3406
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Nov 2023 17:40:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id CBC9810E4F1;
-	Tue, 21 Nov 2023 15:25:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DCBE310E50D;
+	Tue, 21 Nov 2023 16:40:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 1818 seconds by postgrey-1.36 at gabe;
- Tue, 21 Nov 2023 15:25:20 UTC
-Received: from mail.glytoolsmax.click (unknown [77.83.203.253])
- by gabe.freedesktop.org (Postfix) with ESMTP id 94E6510E4DC
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Tue, 21 Nov 2023 16:40:39 UTC
+Received: from mail.wihsetoffers.click (unknown [77.83.203.46])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EE71810E50D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Nov 2023 15:25:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=glytoolsmax.click;
+ Tue, 21 Nov 2023 16:40:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=wihsetoffers.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=oreilly_flash_deal_win_bosch_drill@glytoolsmax.click; 
- bh=40/DUsTLaWlXBiF0sYV4n6knpSA=;
- b=Cum3S5uy7wxdOnx3oCmyEzd4Rb4u948II0p2TgT+RERTMASW6nE8F7cvkX2ny+bB4uAKUTOhn3iz
- l4ykM+xuurHSmtSXmJ6rmUAy50jyC4SglfXBC+AYjhRiTBz57aWo8C8/Rh4Va2S3aeK7XicopBYW
- iLdUipc5eoEUEXkU2pQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=glytoolsmax.click; 
- b=RzEQezhMFYA9xlaM6iK29MUfFjcMWma/BvJRpo4MDK7g99pprQPS6Q9NLjAIxkb2aixQtVsVU8lA
- TtmTBDWg1zKVA3vUKsmRg16TzgMFBVmqCTUYyIilTAePh9f0L2UBT0PSPs89l+EMQSTfIZXoYIEI
- fbwZnt0+jylziU9t/CE=;
-Received: by mail.glytoolsmax.click id hbjf780001go for
+ i=quick-shot-feedback-win-now@wihsetoffers.click; 
+ bh=OF2MOKFUITYJGcBrWnyxhGYCEMQ=;
+ b=j9zTqLlf2ZQlqeN25gR1VTAV2461ZV8ClSp9dFS3fSvHCmGSNM0l+QIJ6CCduaIExQUJRm4JdR+b
+ n+BBn42lQVa4ybFvKjQCnCW52d2s+/smx4dRXIKyIsA7evxmTwNWZoal68XMG3+O97NkW/9Vhv2o
+ kB9X8XU+NaUX3g/sw+o=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=wihsetoffers.click; 
+ b=POkKKlDq+7PDbOQiIavOaHuOMTrU2FLxIfQwFlBnbwif68ugsg///IveZGYtAZt1FKJTJgRYGoPU
+ h3Dea6Jljzny2kQeFrzXjxxf+r8UNxiDvmv0q4xqwVMcHn8zZ1BsfXaoHHedTNUHYnBENnf+Efe6
+ Ls/SigH56MrkFgXXLE8=;
+Received: by mail.wihsetoffers.click id hbjeog0001gu for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Nov 2023 10:56:15 -0500 (envelope-from
- <oreilly_flash_deal_win_bosch_drill-intel+2Dgvt+2Ddev=lists.freedesktop.org@glytoolsmax.click>)
-Date: Tue, 21 Nov 2023 10:56:15 -0500
-From: "OReilly Flash Deal Win Bosch Drill"
- <oreilly_flash_deal_win_bosch_drill@glytoolsmax.click>
+ Tue, 21 Nov 2023 11:16:09 -0500 (envelope-from
+ <quick-shot-feedback-win-now-intel+2Dgvt+2Ddev=lists.freedesktop.org@wihsetoffers.click>)
+Date: Tue, 21 Nov 2023 11:16:09 -0500
+From: "Quick Shot Feedback Win Now"
+ <quick-shot-feedback-win-now@wihsetoffers.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <124417842309.17005774002416@glytoolsmax.click>
-Subject: Survey and Win: O'Reilly's Exclusive Drill Set Promotion with Bosch!
+Message-ID: <8507865231.17005833370533292@wihsetoffers.click>
+Subject: Lowe's Survey: Seize the Chance to Win a Wiha Set!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=ee3854a6f939a8e6ff18cd9771a1041c0397102227
+ boundary=5945b3bc6624fcd64579aa4b8d4514d5101210114100910330
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,82 +55,110 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---ee3854a6f939a8e6ff18cd9771a1041c0397102227
+--5945b3bc6624fcd64579aa4b8d4514d5101210114100910330
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <link href="http://www.glytoolsmax.click/lingered-Prussianizers/2885f2S395r8P6T11b6845s1948J36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQbReeS6mq10uN5aUwDP" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.glytoolsmax.click/ed56m2h3u95R86zM13sj6846Gh1948C36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQbReeS7c1C0gkO5r@AwD/coveting-cigarettes" rel="preconnect" /> 
-  <link href="http://www.glytoolsmax.click/lingered-Prussianizers/2885f2S395r8P6T11b6845s1948J36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQbReeS6mq10uN5aUwDP/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap');
+	</style> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>ensure</title> 
+  <title>fantastic</title> 
  </head> 
- <body style="font-family: 'Exo 2', sans-serif; margin: 0; padding: 0;"> 
-  <div style="width: 100%; background-color: rgb(238, 238, 238);"> 
-   <div style="padding: 45px 0px;"> 
-    <div style="background-color: #fff; max-width: 140mm; margin: auto; text-align: center;"> 
-     <center> 
-      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-       <tbody> 
-        <tr> 
-         <td align="center" class="info"> 
-          <div style="background-color: rgb(180, 15, 15); padding: 12px 0;"> 
-           <center style="max-width: 200px; margin: auto; ">
-            <a href="http://www.glytoolsmax.click/Dodd-firming/d145X23r95l8hP611s6847y1948K36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQbReeS6zl10AO5K@wDy"><img alt="RES" src="http://www.glytoolsmax.click/lingered-Prussianizers/5d05F2k395u7Haq12e684C9m1948M36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQbReeS5o1lp06QLLMwD" style="display: block;" width="100%" /></a>
-           </center> 
-          </div> </td> 
-        </tr> 
-        <tr> 
-         <td> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td align="center" colspan="5"> 
-              <div> 
-               <p style="font-weight: 700; font-size: 24px; color: rgb(44,161,76); border-bottom: solid 3px #000; padding: 15px 0; margin: 0;">Critical<br /> Alert from O'Reilly</p> 
-               <center style="padding: 3.5% 5%; line-height: 7mm; font-size: 4.5mm; font-weight: 500;">
-                Get ready for thrilling updates: O'Reilly is introducing a Bosch Drill Set in the store. Take swift action to secure your premium tools by November 21st.                 <br /> 
-                <br /> 
-                <a href="http://www.glytoolsmax.click/Dodd-firming/d145X23r95l8hP611s6847y1948K36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQbReeS6zl10AO5K@wDy" target="_blank"><img alt="YTS" src="http://www.glytoolsmax.click/lingered-Prussianizers/8dc5sj2395fv7Ga13C6HT84aD1948C36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQbReeS5Eh10Y5JNwWD" style="display: block; margin: auto;" width="65%" /></a>
-               </center> 
-               <div> 
-                <center style="background-color: rgb(24,38,60); border-radius: 10px; padding: 14px 33px; font-size: 20px; width: 200px; margin: auto; font-weight: 800;">
-                 <a href="http://www.glytoolsmax.click/Dodd-firming/d145X23r95l8hP611s6847y1948K36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQbReeS6zl10AO5K@wDy" style="color: white; text-decoration: none;" target="_blank">Start Here Now &gt;&gt;</a>
-                </center> 
-               </div> &nbsp; 
-               <article> 
-                <p style="margin: 0; font-size: 4.5mm; line-height: 7mm; font-weight: 500;">We highly value your feedback,<br /> <strong>The O'Reilly Auto Parts Survey Team</strong></p> 
-               </article> 
-               <br /> &nbsp;
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-        </tr> 
-       </tbody> 
-      </table> 
-      <div style="padding-top: 245px; padding-bottom: 130px; background-color: rgb(238,238,238); font-weight: 600; font-size: 12px;">
-       you can leave with sadness 
-       <a href="http://www.glytoolsmax.click/51b4p2395v8W6h11n6848p1948t36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQbReeS5nUp106Xkwk3D/lingered-Prussianizers">here</a>
-       <br /> US 10010 126 E 23rd St New York, NY,
-      </div> 
-     </center> 
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.glytoolsmax.click/4fd5F239s5y85KX13A68zN4bj1948l36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQbReeS7WpN10_n5NNAwD/reside-disgraceful" alt=""/></body>
+ <body style="margin: 0; padding: 0;"> 
+  <center id="pplos"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" class="oggtoks"> 
+       <div style="width: 100%; background-color: rgb(231, 231, 231); padding: .6mm 0;">
+        &nbsp; 
+        <div style="max-width: 33.5rem; margin: auto; background-color: #fff; text-align: center; font-family: 'Libre Franklin', sans-serif;;">
+         &nbsp; 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-family: 'Libre Franklin', sans-serif;" width="100%"> 
+          <thead> 
+           <tr> 
+            <th align="center" colspan="3" id="btts"> 
+             <div style="border-bottom: solid 3.5px rgb(39,69,166); padding-bottom: 12px;"> 
+              <center style="max-width: 12rem; margin: auto;">
+               <a href="http://www.wihsetoffers.click/highness-Harrington/35a6S239Ii5I8J6Y12O6p84ex194am36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ0ReeK5m1W0I6JAzpwD"><img alt="QWA" src="http://www.wihsetoffers.click/jewelries-outlives/af85NT2395QGP7a12k6850JC194ah36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ0ReeK5DW1M06ByzwDj" style="display: block;" width="100%" /> </a>
+              </center> 
+             </div> </th> 
+           </tr> 
+          </thead> 
+          <tbody> 
+           <tr> 
+            <td class="jsplos">&nbsp;</td> 
+            <td class="jsplos" style="font-family: 'Libre Franklin', sans-serif;"> 
+             <div style="padding-top: 20px;"> 
+              <center style="font-weight: 700; font-size: 5mm; color: rgb(39,69,166); border-bottom: solid 3.5px rgb(39,69,166); padding-bottom: 18px;">
+               Exclusive Deal
+               <br /> Stand a chance to win a Wiha Screwdriver Tray Set!
+              </center> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" class="textlolis"> <p style="padding: 17px 30px; text-align: justify; font-size: 4mm; line-height: 7mm; font-weight: 500; ;"><a href="http://www.wihsetoffers.click/highness-Harrington/35a6S239Ii5I8J6Y12O6p84ex194am36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ0ReeK5m1W0I6JAzpwD" target="_blank"><img alt="MMKS" src="http://www.wihsetoffers.click/jewelries-outlives/ed65u2i395E7CaM13R685O1WR194al36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ0ReeK6y1pJ0N5iUwDL" style="display: block; float: right; margin-left: 3.5%; margin-top: 3.5%;" width="33%" /> </a> Exciting update from Lowe's! A fantastic Wiha Screwdriver Tray Set is ready for you. It's just a matter of a few clicks or completing a brief survey to participate. Don't miss out! You have until November 21st to seize this incredible prize.</p> 
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                    </tr> 
+                    <tr> 
+                     <td> 
+                      <div> 
+                       <center style="background-color: rgb(39,69,166); font-weight: bold; font-size: 18px; padding: 14px 28px; border-radius: 11px; width: 220px; margin: auto;">
+                        <a href="http://www.wihsetoffers.click/highness-Harrington/35a6S239Ii5I8J6Y12O6p84ex194am36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ0ReeK5m1W0I6JAzpwD" style="text-decoration: none; color: white;" target="_blank">Start Here to Win </a>
+                       </center> 
+                      </div> <br /> &nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center"> 
+                      <div style="max-width: 320px; margin: auto;">
+                       <a href="http://www.wihsetoffers.click/highness-Harrington/35a6S239Ii5I8J6Y12O6p84ex194am36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ0ReeK5m1W0I6JAzpwD" target="_blank"><img alt="RES" src="http://www.wihsetoffers.click/popcorn-merriment/6fc6ni2B395OJ7Aa12R685q2u194an36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ0ReeK5n10us5cLwDB" style="display: block;" width="100%" /> </a>
+                      </div> </td> 
+                    </tr> 
+                    <tr> 
+                     <td> 
+                      <div> 
+                       <p style="padding: 17px 30px; text-align: center; font-size: 4mm; line-height: 7mm; font-weight: 600;">Your contribution is priceless to us at Lowe's. We sincerely value your engagement in our survey. Your feedback holds immense importance, and we highly esteem it.</p> 
+                      </div> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+             </div> </td> 
+            <td class="jsplos">&nbsp;</td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <div style="padding-top: 300px; background-color: rgb(231, 231, 231);"> 
+          <aside> 
+           <div> 
+            <center style="font-size: 12px; font-weight: 700;">
+             more than welcome to leave in 
+             <a href="http://www.wihsetoffers.click/c7d4K2395zu86t11z684fR194an36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ0ReeK7P1k0tBo5QAqwD/misplacing-sanctity"> here </a> we' ll miss you
+             <br /> US 10010 126 E 23rd St New York, NY,
+            </center> 
+           </div> 
+          </aside> 
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+          <br /> &nbsp;
+         </div> 
+        </div> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </center>   
+ <img src="http://www.wihsetoffers.click/popcorn-merriment/4fe4J2395aw8z512O685D3O194ar36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ0ReeK7S10ViKQ6a@y@wD" alt=""/></body>
 </html>
 
---ee3854a6f939a8e6ff18cd9771a1041c0397102227--
+--5945b3bc6624fcd64579aa4b8d4514d5101210114100910330--
 
