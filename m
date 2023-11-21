@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78CFB7F2DD4
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Nov 2023 13:57:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 24AA67F3060
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 21 Nov 2023 15:11:21 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4739110E281;
-	Tue, 21 Nov 2023 12:57:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 09F0110E4C1;
+	Tue, 21 Nov 2023 14:11:20 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
- Tue, 21 Nov 2023 12:57:19 UTC
-Received: from mail.milwastools.click (unknown [77.83.203.232])
- by gabe.freedesktop.org (Postfix) with ESMTP id F1A4310E281
+ Tue, 21 Nov 2023 14:11:17 UTC
+Received: from mail.bblacostinfo.world (unknown [77.83.203.241])
+ by gabe.freedesktop.org (Postfix) with ESMTP id EDEA410E4B5
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Nov 2023 12:57:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=milwastools.click;
+ Tue, 21 Nov 2023 14:11:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=bblacostinfo.world; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=instant.win.harbor.bonus@milwastools.click; 
- bh=3bIsSxGdbivgVuLi4hnLLZZ7dBQ=;
- b=zc0BgXOxwuQzf12HZbFHrIE7qg0QyNJC1TmfA7LN8BBPWI7uii/vr7YKs7MugkroksYZO1/b0WLl
- p5yhu7O2K00Rai1jLIv9MAuvBamEPkQ9h0RqIf0lZSm+M+52Ly1Xi4K2txwT4pJwUDt2S0CjWmbE
- Vf6fLmnfhtRGPxKdaPI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=milwastools.click; 
- b=OcUxoaXSjO5PLDexsq63S87Az2O1YHQsUPJB8WOtCfzUM4jxEOlMdwR7tYU4An4EIod91fqx9cdo
- 3JzyJkVIULAg2t/bYEoT5qdXc6RXXAIG4KjPsECCyZAcz6Hntmk1dokHX75hF0j84gcHTORgZEYI
- c96labNIFMIrtRK8Xgg=;
-Received: by mail.milwastools.click id hbikj00001gu for
+ i=costco_timelimited_offer@bblacostinfo.world; 
+ bh=XEhQ0x3sumdMer1R87m4rsBt/1E=;
+ b=UHJaDSr4DQWAzyZ6HSn5+0Hh/GMwLC+pmqo+tCVmRBs3/2CFUX9JuX2rpdfW1cG6MYcSJwRzHBU1
+ hdnEac936OT7NLulQtNNPGPZnKXpeQ/71epwFqkTW0RaFKIDnBHIMywz+DgBVvbhzy+QKKcazgKr
+ YsOYtWiZSF8J7afC5ig=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bblacostinfo.world; 
+ b=SbiqjnyDLz/L0hk+3E7OAbk61Vex9hlxYWxqm0KYHKRPVbzIdd/99WfMqFB/mE5b9MwOgh1BiiDG
+ UOGdrzvfGr+RaFhAKpGHjNpoY9VXC0WPOgZLqigtixZa2/lRR5s1UC+zjY1Cw+N+Z3lNrqV5MAiH
+ 2FKhu8tRX7gIhOhrTK0=;
+Received: by mail.bblacostinfo.world id hbit8c0001g0 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 21 Nov 2023 07:42:47 -0500 (envelope-from
- <instant.win.harbor.bonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@milwastools.click>)
-Date: Tue, 21 Nov 2023 07:42:47 -0500
-From: "Instant Win Harbor Bonus." <instant.win.harbor.bonus@milwastools.click>
+ Tue, 21 Nov 2023 08:32:08 -0500 (envelope-from
+ <costco_timelimited_offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@bblacostinfo.world>)
+Date: Tue, 21 Nov 2023 08:32:08 -0500
+From: "Costco TimeLimited Offer" <costco_timelimited_offer@bblacostinfo.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1496744161732.170057055339277@milwastools.click>
-Subject: Quick Harbor Freight Survey: Limited Time &ndash;
- Win Daily Bonuses, Drill Set Inside!
+Message-ID: <1376888533.17005735028644@bblacostinfo.world>
+Subject: Limited-Time Offer Inside: Costco Daily Promo Survey for Exclusive
+ Deals and Instant Savings!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=12159feb2d21a804b298f1573df19912415791007
+ boundary=d570ba44ecd9bbf0316263cd20c5070c99708410198
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,43 +55,39 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---12159feb2d21a804b298f1573df19912415791007
+--d570ba44ecd9bbf0316263cd20c5070c99708410198
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
 A Special Offer for Our Valued Users
---------------------------------------------
+---------------------------------------------
 
+COSTCO WHOLESALE
 
-HARBOR FREIGHT
+We genuinely thank you for selecting us as your primary choice for meeting your needs.  Being a part of your life and delivering high-quality products and services is a source of pride for us. 
 
-We wanted to take a moment to thank you for choosing Harbor Freight.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+As a token of our appreciation, you now have the chance to win a $100 gift card! Simply complete a brief survey from "Costco. " However, please note that this unique opportunity is time-sensitive, so we recommend not letting it pass by. 
 
-As a token of our appreciation, we would like to give you a FREE Milwaukee Drill Set! when you fill out our survey.  This set includes a variety of high-quality tools that will help you tackle any home improvement project and is yours to keep, no strings attached. 
-
-
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+Our deepest gratitude goes out to you for taking the time to participate in this brief survey.  Don't miss the incredible chance to win a $100 prize by completing it.  Your opinion and time are highly valued, and we eagerly anticipate remaining your top choice in the future. 
 
 
 
-Take The survey >>>>>
-http://www.milwastools.click/1f15R239q5iK8i612v6V841i1946I36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQhReeQ7MWp10my5rlLwD/flossing-sullenly
-
+Start Here Now >>>>>
+http://www.bblacostinfo.world/rectangle-prisoner/4e05hk2395z8w6G12S6W843J1947X36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQhReeR7t1X0O_x6Ip0@wD
 
 
 Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
 
 Best regards,
-The Harbor Freight Survey Team
+The Costco Survey Team
 
---------------------------------------------
+---------------------------------------------
 
-To cease email, click_here >>>>> http://www.milwastools.click/e996L2q3s95CJY8613fk68H42V1946n36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQhReeQ5P1YJ06RlBwND/forests-namelessly
+To bring communication to an end, click_here >>>>> http://www.bblacostinfo.world/Caruso-respite/9ea6M2N_395o86iQ13R6s8Y44z1947m36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhReeR6vj10yu6bzwTUD
 126 E 23rd St New York, NY, US 10010
 
-<style style="dampens"><span size="Brahmsian"></span></style><style title="alga"><style></style></style>
+<span title="emptiness"></span><span face="caring"><big></span></big><style lang="radio"></style><small><font lang="minded"></small></font>
 
---12159feb2d21a804b298f1573df19912415791007--
+--d570ba44ecd9bbf0316263cd20c5070c99708410198--
 
