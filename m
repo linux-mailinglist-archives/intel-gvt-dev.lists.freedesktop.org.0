@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD5E17F4DD6
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Nov 2023 18:08:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 315767F4ED7
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Nov 2023 18:59:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7A10010E6A2;
-	Wed, 22 Nov 2023 17:08:50 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B672C10E0A7;
+	Wed, 22 Nov 2023 17:59:52 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 22 Nov 2023 17:08:47 UTC
-Received: from mail.docspreinf.click (unknown [77.83.203.36])
- by gabe.freedesktop.org (Postfix) with ESMTP id C7B6610E69B
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 22 Nov 2023 17:59:50 UTC
+Received: from mail.borcksinfogp.world (unknown [77.83.203.48])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D36B710E0A7
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Nov 2023 17:08:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=docspreinf.click;
+ Wed, 22 Nov 2023 17:59:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=borcksinfogp.world; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=times-ticking-walgreens-bonus-oralb@docspreinf.click; 
- bh=bquiWoHlcxgYVoaPYd3Qkqgz3ik=;
- b=v4TlavpsuNp8u/Tf+4NUig0NejCMYfJaQ5py6GA68wL6xyg2S7VCGpvmB190PxaLHnUSNY0Hh1ko
- 1/7xdANyL6h1auF7N/2rAd7sdXBYZFxDsHx9MWCf/GRka+X3qQwF7CpDRe780++uH4WpUDgLSE0u
- RjduPPtv4gtF5ZIjyTY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=docspreinf.click;
- b=nw2sB7ZlGkmG04Gy9yc37ZtAgQO02hv3Y7rTO7yhTMUY4gU9LvTffPGbYRtyx9WSFIcamHqTwya/
- B+HwJh+/Fp2WqghzJfg/PoJgBg/cNt3I/vnyxMwvKUkzKw/5QKzGXZrWwEIIlm23K1v8faMgYTjP
- +nzLjlRr64vQ/Q+2dos=;
-Received: by mail.docspreinf.click id hbp4340001gh for
+ i=todays-buzz-starbucks-survey@borcksinfogp.world; 
+ bh=HrtOi9P7/0vp41vx2YO4KRD0M1s=;
+ b=HNi/cci2X6pfpIn6ywQ+W2Lu6MZMj4AbrEBfsru+m3IID92YVjpRlVs/Mi+oddmx1GflrehPWN4G
+ MADxZu+h8sDQi7LzrCLOrcW9c5ez7RjgmaTGrHdlT3tWBTDVzPRMJDyEhZzpMtmZBhtdyMwTGLqM
+ iLvi7RBNkGhzLOPaBvk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=borcksinfogp.world; 
+ b=K16/EilvBoSrBHBBJYYorKz4+H2JYUK3923WiqP5d8y3CJM4/eiS7L3uwS9M8lL+wjys3S27BYJV
+ iM6ulwNhHJ54Zb4XXEsfd8GRiuN0AmAnblS3iMWJ1YshLBC+YK5RRMILpV1aHBS0fK31RsAZvYex
+ Dt5hWjmxgHtKqkr1Op0=;
+Received: by mail.borcksinfogp.world id hbpa2i0001g8 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Nov 2023 13:19:31 -0500 (envelope-from
- <times-ticking-walgreens-bonus-oralb-intel+2Dgvt+2Ddev=lists.freedesktop.org@docspreinf.click>)
-Date: Wed, 22 Nov 2023 13:19:31 -0500
-From: "Times Ticking Walgreens Bonus OralB."
- <times-ticking-walgreens-bonus-oralb@docspreinf.click>
+ Wed, 22 Nov 2023 13:57:25 -0500 (envelope-from
+ <todays-buzz-starbucks-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@borcksinfogp.world>)
+Date: Wed, 22 Nov 2023 13:57:25 -0500
+From: "Todays Buzz Starbucks Survey"
+ <todays-buzz-starbucks-survey@borcksinfogp.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <62115199192.170067239725116@docspreinf.click>
-Subject: Survey and Win: Walgreens's Exclusive Oral-B Series 8 Promotion!
+Message-ID: <10197472896.170067467462592@borcksinfogp.world>
+Subject: Time Crunch! Participate in Starbucks Daily Promo Survey Now!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=262c7b9659b55450baa61562d24a74691018100100
+ boundary=89bf9dbb0aed057a9f237438bc8995b69700283
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---262c7b9659b55450baa61562d24a74691018100100
+--89bf9dbb0aed057a9f237438bc8995b69700283
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,46 +63,96 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap');
-	</style> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Fast</title> 
+  <title>coconuupsvers</title> 
  </head> 
- <body style="font-family: 'Radio Canada', sans-serif;"> 
-  <div style="background-color: rgb(245, 245, 245); width: 100%;"> 
-   <div style="padding: 2rem 0;">
-    &nbsp; 
-    <div style="max-width: 550px; margin: auto; background-color: #fff; text-align: center;">
-     &nbsp; 
-     <p style="max-width: 220px; margin: auto;"><a href="http://www.docspreinf.click/unguided-unjustifiable/daa5ww2395X86pn11e686fK1951O36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQTReKR5ImQ105hBlwD" target="_blank"><img alt="YTS" src="http://www.docspreinf.click/mural-tendencies/5d04H2395j7azy12B68W71j1951R36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQTReKR7B1Y0CvL5tOwlD" width="100%" /></a></p> 
-     <p style="padding: 15px 40px; line-height: 27px;">Exciting Announcement! Walgreens Unveils the Oral-B Series 8 Toothbrush for In-Store Usage. Take Swift Action, as this Promotion Ends on November 22nd.</p> 
-     <p style="padding: 1.5% 4%; background-color: rgb(36,42,75); width: 220px; margin: auto; border-radius: 7px; font-weight: bold; font-size: 22px;"><a href="http://www.docspreinf.click/unguided-unjustifiable/daa5ww2395X86pn11e686fK1951O36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQTReKR5ImQ105hBlwD" style="text-decoration: none; color: white;" target="_blank">Start Here Now</a></p> &nbsp; 
-     <p style="max-width: 350px; margin: auto;"><a href="http://www.docspreinf.click/unguided-unjustifiable/daa5ww2395X86pn11e686fK1951O36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQTReKR5ImQ105hBlwD" target="_blank"><img alt="TRS" src="http://www.docspreinf.click/3d16So23z95i7aty13t6872CYU1951m36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQTReKR6m1G0BI6LkJAwD/unsound-crossing" style="display: block;" width="100%" /></a></p> &nbsp; 
-     <p style="font-weight: bold; font-size: 18px; font-weight: bold;">Thank you in advance, The Walgreens Team</p> 
-     <br /> &nbsp;
+ <body style="margin: 0; padding: 0;"> 
+  <div> 
+   <div style="background-color: #1A6E48; width: 100%;"> 
+    <table align="center"> 
+     <tbody> 
+      <tr> 
+       <th>&nbsp;</th> 
+      </tr> 
+     </tbody> 
+     <thead> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td>&nbsp;</td> 
+       <td align="center"> 
+        <div style="max-width: 350px; margin: auto;"> 
+         <p><font><a href="http://www.borcksinfogp.world/51b4H2395a8Q6D13qC6o874V1952L36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXReKS7lDxj10x6XlyXwD/wrappings-preached" target="_blank"><img alt="agsdia" src="http://www.borcksinfogp.world/d135F2j395gq7va11t6876Y1952T36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXReKS5kI10G5WXwDX/composition-honing" width="100%" /></a></font></p> 
+        </div> </td> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+   <div style="background-color: #f5f5f5;"> 
+    <div> 
+     <p style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 900; margin: 0; padding-top: 15px; padding-top: 15px; color: #1C6E2E;"><font>Your Last Reminder from Starbucks </font></p> 
     </div> 
+    <div style="background-color: #fff; max-width: 520px; margin: auto;"> 
+     <div style="padding-top: 0em; padding-right: 1.3em; padding-bottom: 1.2em; padding-left: 1.3em;"> 
+      <table align="center"> 
+       <tbody> 
+        <tr> 
+         <th>&nbsp;</th> 
+        </tr> 
+       </tbody> 
+       <thead> 
+       </thead> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td style="width: 100%;">&nbsp; 
+          <table align="center"> 
+           <tbody> 
+            <tr> 
+             <td>&nbsp;</td> 
+             <td align="center"> 
+              <div> 
+               <p style="margin: 0;">&nbsp;</p> 
+               <article>
+                <font style="margin: 0; font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; display: block;">We're thrilled to announce that <strong>Starbucks</strong> is currently running a special promotion, giving you the opportunity to enjoy a <strong>$100 Gift</strong> at any of our store locations. Don't miss out on this fantastic offer! You have until <strong>November 22nd</strong> to redeem these delightful beverages. </font>
+               </article> 
+               <p>&nbsp;</p> 
+              </div> </td> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+             <td align="center"> 
+              <div> 
+               <center style="max-width: 220px; margin: auto;">
+                <a href="http://www.borcksinfogp.world/51b4H2395a8Q6D13qC6o874V1952L36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXReKS7lDxj10x6XlyXwD/wrappings-preached" target="_blank"><img alt="klasdj" src="http://www.borcksinfogp.world/scolds-fanciers/ed64c2395hm7ga12y687W7z1952C36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQXReKS5zxr106l@N@wD" width="100%" /> </a>
+               </center> 
+              </div> <br /> <br /> <a href="http://www.borcksinfogp.world/51b4H2395a8Q6D13qC6o874V1952L36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXReKS7lDxj10x6XlyXwD/wrappings-preached" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; padding: 17px 33px; border-radius: 15px; background-color: #000; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 18px;">Start Here Now &gt;&gt;</span></a></td> 
+             <td>&nbsp;</td> 
+            </tr> 
+           </tbody> 
+          </table> </td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </div> 
+    </div> &nbsp; 
+    <div style="max-width: 520px; margin: auto;"> 
+     <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; text-align: center; font-size: 16px; color: #1A6E48;">Your participation is valued.<br /> Warm regards, The Starbucks Team.</p> 
+    </div> 
+    <p style="padding-top: 155px;">&nbsp;</p> 
    </div> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> 
-   <br /> &nbsp; 
-   <div style="max-width: 150mm; margin: auto;"> 
-    <center style="font-size: 3mm; font-weight: 700; line-height: 5mm;">
-     you are bored of these, visit us 
-     <a href="http://www.docspreinf.click/8f94a2395KNH8613t6K870MB1951g36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQTReKR5llJ106k1BBwD/unsound-crossing">here</a> and leave for good
-     <br /> US 10010 126 E 23rd St New York, NY,
-    </center> 
+   <div style="background-color: #f5f5f5;"> 
+    <div style="border: solid 3.5px #1A6E48; border-radius: 10px; max-width: 600px; margin: auto; background-color: #b9ffe2;"> 
+     <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold; font-size: 14px; text-align: center;">you can leave with sadness <a href="http://www.borcksinfogp.world/af76Y2M39t5wg8D611y6875L1952k36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQXReKS6W1p0OJ6V1wpD@/alkyl-plutonium">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+    </div> 
+    <br /> &nbsp;
    </div> 
-   <br /> 
-   <br /> &nbsp;
   </div>   
- <img src="http://www.docspreinf.click/7af6P2gw395Q85UW13pj6U873n1951v36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQTReKR6CQ1i0H6jyw0Dp/Rozelle-Monroe" alt=""/></body>
+ <img src="http://www.borcksinfogp.world/decreed-accountancy/9365C239_5PJx8512U687Z8o1952s36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQXReKS6zB10Cy6qJw2OD" alt=""/></body>
 </html>
 
---262c7b9659b55450baa61562d24a74691018100100--
+--89bf9dbb0aed057a9f237438bc8995b69700283--
 
