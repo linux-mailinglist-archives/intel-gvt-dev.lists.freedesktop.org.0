@@ -1,45 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 315767F4ED7
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Nov 2023 18:59:54 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B36CA7F4F38
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 22 Nov 2023 19:21:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B672C10E0A7;
-	Wed, 22 Nov 2023 17:59:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 82EBB10E0BD;
+	Wed, 22 Nov 2023 18:21:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 22 Nov 2023 17:59:50 UTC
-Received: from mail.borcksinfogp.world (unknown [77.83.203.48])
- by gabe.freedesktop.org (Postfix) with ESMTP id D36B710E0A7
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Wed, 22 Nov 2023 18:21:16 UTC
+Received: from mail.circletools.click (unknown [77.83.203.7])
+ by gabe.freedesktop.org (Postfix) with ESMTP id DA3C210E0BD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Nov 2023 17:59:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=borcksinfogp.world; 
+ Wed, 22 Nov 2023 18:21:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=circletools.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=todays-buzz-starbucks-survey@borcksinfogp.world; 
- bh=HrtOi9P7/0vp41vx2YO4KRD0M1s=;
- b=HNi/cci2X6pfpIn6ywQ+W2Lu6MZMj4AbrEBfsru+m3IID92YVjpRlVs/Mi+oddmx1GflrehPWN4G
- MADxZu+h8sDQi7LzrCLOrcW9c5ez7RjgmaTGrHdlT3tWBTDVzPRMJDyEhZzpMtmZBhtdyMwTGLqM
- iLvi7RBNkGhzLOPaBvk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=borcksinfogp.world; 
- b=K16/EilvBoSrBHBBJYYorKz4+H2JYUK3923WiqP5d8y3CJM4/eiS7L3uwS9M8lL+wjys3S27BYJV
- iM6ulwNhHJ54Zb4XXEsfd8GRiuN0AmAnblS3iMWJ1YshLBC+YK5RRMILpV1aHBS0fK31RsAZvYex
- Dt5hWjmxgHtKqkr1Op0=;
-Received: by mail.borcksinfogp.world id hbpa2i0001g8 for
+ i=day-promo-survey@circletools.click; 
+ bh=s+rEdHti96FYOu8QemeC0rsgTQQ=;
+ b=lxY99bOoeb0ENulqpD8e/1UPwuycWGayKgTOyiWh2AxAoWjzRVgeXPMMDxzNcrZKdeWQUQVXY2xi
+ Rz4PxOyi73nOe1uHOhWZXtHJpJbTOOuRw7QiJQE9eoFmTbc0RA5G849WeI4DdUw0wCWCIb0d3J8W
+ un8/q3jXuce1dF653Q8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=circletools.click; 
+ b=cP6EdDE3QtUWpZolFCsNsaXzspFkU5muzZm4cK4KI5a1ZWW/SShoIb7QlJLEFWBAB9vHGvPVW2JY
+ rHh83+1VNEzH1elDjzzadWJ3CkmXESEIJGnkrIbjjpZWXT2X4+Ux3OaiR//jKw1iiLZIBEqFmWwD
+ uAwTkYnAqJF3KNDyvbI=;
+Received: by mail.circletools.click id hbpciu0001gi for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 22 Nov 2023 13:57:25 -0500 (envelope-from
- <todays-buzz-starbucks-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@borcksinfogp.world>)
-Date: Wed, 22 Nov 2023 13:57:25 -0500
-From: "Todays Buzz Starbucks Survey"
- <todays-buzz-starbucks-survey@borcksinfogp.world>
+ Wed, 22 Nov 2023 14:32:20 -0500 (envelope-from
+ <day-promo-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@circletools.click>)
+Date: Wed, 22 Nov 2023 14:32:20 -0500
+From: "Day Promo Survey" <day-promo-survey@circletools.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <10197472896.170067467462592@borcksinfogp.world>
-Subject: Time Crunch! Participate in Starbucks Daily Promo Survey Now!
+Message-ID: <26228204659.17006767708510707@circletools.click>
+Subject: Last Chance: Take the Ace Survey and Win Stanley Tools!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=89bf9dbb0aed057a9f237438bc8995b69700283
+ boundary=7b42079e87a71ddf47e2bf27b52b34221031019737973103826
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---89bf9dbb0aed057a9f237438bc8995b69700283
+--7b42079e87a71ddf47e2bf27b52b34221031019737973103826
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,96 +61,103 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=REM:wght@100;200;300;400;500;600;700;800;900&display=swap');
+	</style> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>coconuupsvers</title> 
+  <title>redeemed</title> 
  </head> 
- <body style="margin: 0; padding: 0;"> 
-  <div> 
-   <div style="background-color: #1A6E48; width: 100%;"> 
-    <table align="center"> 
+ <body style="font-family: 'REM', sans-serif;"> 
+  <section style="background-color: rgb(231, 231, 231); width: 100%;"> 
+   <div style="width: 100%; padding: 3em 0;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
      <tbody> 
       <tr> 
-       <th>&nbsp;</th> 
-      </tr> 
-     </tbody> 
-     <thead> 
-     </thead> 
-     <tbody> 
-      <tr> 
-       <td>&nbsp;</td> 
        <td align="center"> 
-        <div style="max-width: 350px; margin: auto;"> 
-         <p><font><a href="http://www.borcksinfogp.world/51b4H2395a8Q6D13qC6o874V1952L36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXReKS7lDxj10x6XlyXwD/wrappings-preached" target="_blank"><img alt="agsdia" src="http://www.borcksinfogp.world/d135F2j395gq7va11t6876Y1952T36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQXReKS5kI10G5WXwDX/composition-honing" width="100%" /></a></font></p> 
+        <div style="max-width: 33.5rem; margin: auto; text-align: center; background-color: #F9F9F9;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td align="center" class="iiibs" colspan="4"> 
+                 <div style="max-width: 200px; margin: auto; ;">
+                  <a href="http://www.circletools.click/Occidentalized-prefixed/b166fJ2j395d8xL611D6879n1953q36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQPReKe5j10vn6m1PMwD" target="_blank"><img alt="YTS" src="http://www.circletools.click/7eb4A2395E7Mga11w687bI1953_36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQPReKe7m10Lhoq5DlTwD/feature-reformation" style="display: block;" width="100%" /></a>
+                 </div> </td> 
+               </tr> 
+               <tr> 
+                <td class="jjus"> 
+                 <div>
+                  &nbsp;
+                 </div> </td> 
+                <td class="jjus"> 
+                 <div>
+                  &nbsp;
+                 </div> </td> 
+                <td class="jjus"> 
+                 <div>
+                  &nbsp;
+                 </div> </td> 
+                <td class="jjus"> 
+                 <div>
+                  &nbsp;
+                 </div> </td> 
+               </tr> 
+               <tr> 
+                <td align="center" colspan="4"> 
+                 <div> 
+                  <h2 style="margin: 0; font-weight: bold; text-align: center; font-size: 24px;">Closing Announcement<br /> from Ace Hardware</h2> 
+                 </div> </td> 
+               </tr> 
+               <tr> 
+                <td align="center" class="info" colspan="4"> 
+                 <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center"> 
+                     <div> 
+                      <h3 style="font-size: 18px; line-height: 7mm; font-size: 4mm; font-weight: 500; padding: 3.5% 5%; margin: 0;">Ace Hardware is thrilled to share some incredible news! You now have the opportunity to acquire the Stanley Tool Set, redeemable at any of our retail locations. Act promptly and take advantage of this opportunity! You have until November 22nd to secure these exceptional tools.</h3> 
+                      <a href="http://www.circletools.click/Occidentalized-prefixed/b166fJ2j395d8xL611D6879n1953q36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQPReKe5j10vn6m1PMwD" target="_blank"><img alt="NHS" src="http://www.circletools.click/51b4K2395Q7aJU11F687cT1953K36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQPReKe5z1O0r5K2w3D/germination-Eastland" style="display: block; margin: auto;" width="70%" /></a>
+                     </div> </td> 
+                   </tr> 
+                   <tr> 
+                    <td align="center" style="padding-top: 20px; padding-bottom: 20px;"> 
+                     <div> 
+                      <center style="display: inline-block; padding: 13px 34px; border-radius: 7px; background-color: rgb(229,22,53); font-weight: bold; font-size: 22px;">
+                       <a href="http://www.circletools.click/Occidentalized-prefixed/b166fJ2j395d8xL611D6879n1953q36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQPReKe5j10vn6m1PMwD" style="text-decoration: none; color: white;" target="_blank">Start Here Now</a>
+                      </center> 
+                     </div> </td> 
+                   </tr> 
+                   <tr> 
+                    <td align="center">&nbsp; 
+                     <div style="background-color: rgb(229,22,53); padding-top: 15px; padding-bottom: 15px; padding-left: 30px; padding-right: 30px; color: white; text-align: center; font-weight: bold; font-size: 18px; line-height: 30px;">
+                      In anticipation of your support, we express our gratitude. Sincerely, The Ace Hardware Team.                      </div> </td> 
+                   </tr> 
+                   <tr> 
+                    <td align="center" style="padding-top: 220px; padding-bottom: 180px; background-color: rgb(231,231,231);"> 
+                     <div style="font-weight: bold; text-align: center; font-size: 12px; font-weight: 800; line-height: 28px;">
+                      Anyway you can leave 
+                      <a href="http://www.circletools.click/laces-board/5585S23R95wL8p611O687aQ1953T36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQPReKe6e1M0mx5PzwMD">here</a>
+                      <br /> US 10010 126 E 23rd St New York, NY,
+                     </div> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </td> 
+               </tr> 
+              </tbody> 
+             </table> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
         </div> </td> 
-       <td>&nbsp;</td> 
       </tr> 
      </tbody> 
     </table> 
    </div> 
-   <div style="background-color: #f5f5f5;"> 
-    <div> 
-     <p style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-weight: 900; margin: 0; padding-top: 15px; padding-top: 15px; color: #1C6E2E;"><font>Your Last Reminder from Starbucks </font></p> 
-    </div> 
-    <div style="background-color: #fff; max-width: 520px; margin: auto;"> 
-     <div style="padding-top: 0em; padding-right: 1.3em; padding-bottom: 1.2em; padding-left: 1.3em;"> 
-      <table align="center"> 
-       <tbody> 
-        <tr> 
-         <th>&nbsp;</th> 
-        </tr> 
-       </tbody> 
-       <thead> 
-       </thead> 
-       <tbody> 
-        <tr> 
-         <td>&nbsp;</td> 
-         <td style="width: 100%;">&nbsp; 
-          <table align="center"> 
-           <tbody> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td align="center"> 
-              <div> 
-               <p style="margin: 0;">&nbsp;</p> 
-               <article>
-                <font style="margin: 0; font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: 500; line-height: 25px; display: block;">We're thrilled to announce that <strong>Starbucks</strong> is currently running a special promotion, giving you the opportunity to enjoy a <strong>$100 Gift</strong> at any of our store locations. Don't miss out on this fantastic offer! You have until <strong>November 22nd</strong> to redeem these delightful beverages. </font>
-               </article> 
-               <p>&nbsp;</p> 
-              </div> </td> 
-             <td>&nbsp;</td> 
-            </tr> 
-            <tr> 
-             <td>&nbsp;</td> 
-             <td align="center"> 
-              <div> 
-               <center style="max-width: 220px; margin: auto;">
-                <a href="http://www.borcksinfogp.world/51b4H2395a8Q6D13qC6o874V1952L36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXReKS7lDxj10x6XlyXwD/wrappings-preached" target="_blank"><img alt="klasdj" src="http://www.borcksinfogp.world/scolds-fanciers/ed64c2395hm7ga12y687W7z1952C36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQXReKS5zxr106l@N@wD" width="100%" /> </a>
-               </center> 
-              </div> <br /> <br /> <a href="http://www.borcksinfogp.world/51b4H2395a8Q6D13qC6o874V1952L36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQXReKS7lDxj10x6XlyXwD/wrappings-preached" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; padding: 17px 33px; border-radius: 15px; background-color: #000; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 18px;">Start Here Now &gt;&gt;</span></a></td> 
-             <td>&nbsp;</td> 
-            </tr> 
-           </tbody> 
-          </table> </td> 
-         <td>&nbsp;</td> 
-        </tr> 
-       </tbody> 
-      </table> 
-     </div> 
-    </div> &nbsp; 
-    <div style="max-width: 520px; margin: auto;"> 
-     <p style="font-family: Arial, Helvetica, sans-serif; font-weight: 900; text-align: center; font-size: 16px; color: #1A6E48;">Your participation is valued.<br /> Warm regards, The Starbucks Team.</p> 
-    </div> 
-    <p style="padding-top: 155px;">&nbsp;</p> 
-   </div> 
-   <div style="background-color: #f5f5f5;"> 
-    <div style="border: solid 3.5px #1A6E48; border-radius: 10px; max-width: 600px; margin: auto; background-color: #b9ffe2;"> 
-     <p style="font-family: Georgia, 'Times New Roman', Times, serif; font-weight: bold; font-size: 14px; text-align: center;">you can leave with sadness <a href="http://www.borcksinfogp.world/af76Y2M39t5wg8D611y6875L1952k36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQXReKS6W1p0OJ6V1wpD@/alkyl-plutonium">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
-    </div> 
-    <br /> &nbsp;
-   </div> 
-  </div>   
- <img src="http://www.borcksinfogp.world/decreed-accountancy/9365C239_5PJx8512U687Z8o1952s36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQXReKS6zB10Cy6qJw2OD" alt=""/></body>
+  </section>   
+ <img src="http://www.circletools.click/remains-easing/7925tz2395m85Fu13cV687SdO1953s36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQPReKe5dh1u06tTwyzD" alt=""/></body>
 </html>
 
---89bf9dbb0aed057a9f237438bc8995b69700283--
+--7b42079e87a71ddf47e2bf27b52b34221031019737973103826--
 
