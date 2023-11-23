@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C74C7F6002
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 14:19:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DBC37F63AB
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 17:09:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 05D8310E743;
-	Thu, 23 Nov 2023 13:18:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 021F310E15F;
+	Thu, 23 Nov 2023 16:09:37 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A99FB10E743;
- Thu, 23 Nov 2023 13:18:56 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 11DDCCE2912;
- Thu, 23 Nov 2023 13:18:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FFAAC433C9;
- Thu, 23 Nov 2023 13:18:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1700745532;
- bh=BJOuctG/jOXVT0hO6qxyVXBeYyH4TG/ylT0dyLa92yI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=r42g7gVEtjBJ5WfLPAfCypJTdeIZa9tza+98XErRLkZuJq42IHSNqt9TjDoS1u/dO
- mqRTO6hyOgRcqG5Vqi98sspSbfx6Ne64w0KZSaAUUdSmCRm0SeW9B8r2AffO7bhDq0
- voQrIzDl2Rys7kYNdpWCPkldE19sNixdWiKMUoa9j34EYG62L/DgZtbbaspmEPmu14
- PuPzBMdYXfPSBprGxxIV2rleVHq+xRFaQ7/X8REU4C8BYG2H4sP4+OADV7Tg2Ri8NY
- w8CXZUWWNJUaMlJH5PPc15vZ4ox/kvWZIeet2zBszz9qi15zBW/WlVu+mFthIg8ovM
- qoF7yc2VytIMg==
-Date: Thu, 23 Nov 2023 14:18:33 +0100
-From: Christian Brauner <brauner@kernel.org>
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Subject: Re: [PATCH v2 2/4] eventfd: simplify eventfd_signal()
-Message-ID: <20231123-portwein-geeignet-787b940c7d2d@brauner>
-References: <20231122-vfs-eventfd-signal-v2-0-bd549b14ce0c@kernel.org>
- <20231122-vfs-eventfd-signal-v2-2-bd549b14ce0c@kernel.org>
- <877cm9n7dh.fsf@intel.com>
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Thu, 23 Nov 2023 16:09:34 UTC
+Received: from mail.tooljoy.click (unknown [77.83.203.83])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 356D410E15F
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 Nov 2023 16:09:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tooljoy.click;
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=todays_promo_lowes_survey_for_kobalt_tools@tooljoy.click; 
+ bh=asN80T0kAXReZk+UNicdBdYN1BA=;
+ b=UlDLnn4q3MZOOThkYTbXJAZ60IVmqB4m9PgdNkDhO/3jX8xX6ovRqeHBhe8v1B6ozDZCZFJKdX9k
+ /kO2y1sfWab9JhKbQulMoZAEsDa3yVg/366z/ML4znbg7y15oFrncB68R7lNfKGleJ9Cdd8hD2Vs
+ 8q1NXMLsz+RBizuMZ3I=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tooljoy.click;
+ b=K5uFQNee3CPu0ajl3EcSU9OxmQ/9UwyyVmKYGVxlEWMiWZKxBU5drJ2MsEIfdXxqfCW1ePvsWiml
+ L/NLJDJUcHJuwOoZEEnN/xUs/h8r8JWxnovMqvXJ8DuIB3TFBLq5+ECDUU8qJFwnLOxKoc+21+zN
+ WhIfnrqEeNiHhXjwVsE=;
+Received: by mail.tooljoy.click id hbtsjs0001g5 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 Nov 2023 10:46:04 -0500 (envelope-from
+ <todays_promo_lowes_survey_for_kobalt_tools-intel+2Dgvt+2Ddev=lists.freedesktop.org@tooljoy.click>)
+Date: Thu, 23 Nov 2023 10:46:04 -0500
+From: "Todays Promo Lowes Survey For Kobalt Tools."
+ <todays_promo_lowes_survey_for_kobalt_tools@tooljoy.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <6239186511306.170075435875005@tooljoy.click>
+Subject: Quick Poll: Lowe's Rewards&mdash;Today's Exclusive Promo!
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <877cm9n7dh.fsf@intel.com>
+Content-Type: multipart/alternative; 
+ boundary=d09fa60901c7bc62f9d7ae75c54b2fac2013
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,52 +51,60 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-usb@vger.kernel.org, Jan Kara <jack@suse.cz>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Paul Durrant <paul@xen.org>,
- Tom Rix <trix@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Dave Hansen <dave.hansen@linux.intel.com>, dri-devel@lists.freedesktop.org,
- Michal Hocko <mhocko@kernel.org>, linux-mm@kvack.org,
- Kirti Wankhede <kwankhede@nvidia.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Jens Axboe <axboe@kernel.dk>, Vineeth Vijayan <vneethv@linux.ibm.com>,
- Diana Craciun <diana.craciun@oss.nxp.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, David Airlie <airlied@gmail.com>,
- Christoph Hellwig <hch@lst.de>, Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
- Shakeel Butt <shakeelb@google.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Leon Romanovsky <leon@kernel.org>, Harald Freudenberger <freude@linux.ibm.com>,
- Fei Li <fei1.li@intel.com>, x86@kernel.org,
- Roman Gushchin <roman.gushchin@linux.dev>, Halil Pasic <pasic@linux.ibm.com>,
- Jason Gunthorpe <jgg@ziepe.ca>, Ingo Molnar <mingo@redhat.com>,
- intel-gfx@lists.freedesktop.org,
- Christian Borntraeger <borntraeger@linux.ibm.com>, linux-fpga@vger.kernel.org,
- Zhi Wang <zhi.a.wang@intel.com>, Wu Hao <hao.wu@intel.com>,
- Jason Herne <jjherne@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Andrew Donnellan <ajd@linux.ibm.com>, Arnd Bergmann <arnd@arndb.de>,
- linux-s390@vger.kernel.org, Heiko Carstens <hca@linux.ibm.com>,
- Johannes Weiner <hannes@cmpxchg.org>, linuxppc-dev@lists.ozlabs.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Frederic Barrat <fbarrat@linux.ibm.com>,
- Alex Williamson <alex.williamson@redhat.com>, Borislav Petkov <bp@alien8.de>,
- kvm@vger.kernel.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- cgroups@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
- virtualization@lists.linux-foundation.org, intel-gvt-dev@lists.freedesktop.org,
- io-uring@vger.kernel.org, netdev@vger.kernel.org,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- Pavel Begunkov <asml.silence@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- Sean Christopherson <seanjc@google.com>, Oded Gabbay <ogabbay@kernel.org>,
- Muchun Song <muchun.song@linux.dev>,
- Peter Oberparleiter <oberpar@linux.ibm.com>, linux-kernel@vger.kernel.org,
- linux-rdma@vger.kernel.org, Benjamin LaHaise <bcrl@kvack.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Sven Schnelle <svens@linux.ibm.com>,
- Daniel Vetter <daniel@ffwll.ch>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-fsdevel@vger.kernel.org,
- Moritz Fischer <mdf@kernel.org>, Vitaly Kuznetsov <vkuznets@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>, Xu Yilun <yilun.xu@intel.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> >   * eventfd_signal - Adds @n to the eventfd counter.
-> 
-> This still refers to @n here, and in patch 4.
+--d09fa60901c7bc62f9d7ae75c54b2fac2013
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 
-Fixed and folded. Thanks!
+<!DOCTYPE html>
+<html lang=3D"en">
+ <head>=20
+  <meta charset=3D"UTF-8" />=20
+  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
+ort" />=20
+  <title>stores</title>=20
+  <style type=3D"text/css">@import url('https://fonts.googleapis.com/css2?f=
+amily=3DREM:wght@100; 200; 300; 400; 500; 600; 700; 800; 900&display=3Dswap=
+');=20
+=09</style>=20
+ </head>=20
+ <body style=3D"font-family: 'REM', sans-serif; ">=20
+  <center style=3D"background-color: rgb(223, 223, 223); width: 100%; paddi=
+ng: 41px 0">=20
+   <p style=3D"margin: 0; max-width: 530px; margin: auto; background-color:=
+ #fff; border-bottom: solid 5px rgb(39,69,166); border-top: solid 5px rgb(3=
+9,69,166); "><br /> <a href=3D"http://www.tooljoy.click/actualization-discriminate/2106r2k3n95j8Po613a6883Zst1955p36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQNRKmm7SM1J0PF6oMwkDz" target=3D"_blank"><img alt=3D"NN=
+C" src=3D"http://www.tooljoy.click/accurately-scribe/e7c4O2395yt7za13R688X5mR1955z36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQNRKmm7hDWx10P6l@wD3X" style=3D"display: block; margin: auto; " width=3D"30=
+%" /></a></p>=20
+   <p style=3D"margin: 0; max-width: 530px; margin: auto; background-color:=
+ #fff; font-size: 5.5mm; line-height: 7mm; font-weight: 700; padding: 5mm 0=
+; ">Ultimate Advisory<br /> Regarding Your Lowe' s Reward</p>=20
+   <p style=3D"margin: 0; max-width: 530px; margin: auto; background-color:=
+ #fff; font-size: 4mm; line-height: 7mm; "><font style=3D"display: block; p=
+adding: 3.5% 5%; ">Exciting Announcement from Lowe' s! A Kobalt Tool Set is=
+ now in stock at our stores. Take swift action; don' t miss out on this cha=
+nce! You have until November 23rd to secure these exceptional items.<br /> =
+<br /> <a href=3D"http://www.tooljoy.click/actualization-discriminate/2106r2k3n95j8Po613a6883Zst1955p36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQNRKmm7SM1J0PF6oMwkDz" style=3D"text-decoration: none; color: #fff; =
+" target=3D"_blank"><span style=3D"background-color: rgb(72,71,78); padding=
+: .4cm .8cm; display: inline-block; font-weight: 700; font-size: 5.5mm; bor=
+der-radius: 15px; ">Start Here Now</span></a> </font><br /> <a href=3D"=
+http://www.tooljoy.click/actualization-discriminate/2106r2k3n95j8Po613a6883Zst1955p36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQNRKmm7SM1J0PF6oMwkDz"><img alt=3D"YTS" src=3D"http://www.tooljoy.click/deallocations-Chauncey/22e5v239A5w7sPa11k6886R1955g36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQNRKmm7axA10lu6KB0NwD" style=3D"display: block; margi=
+n: auto; " width=3D"75%" /></a><br /> <br /> <font style=3D"display: block;=
+ padding: 0% 5% 3.5%">Your participation in our survey is acknowledged and =
+appreciated. Your insights are highly valuable to us at Lowe' s, and we gen=
+uinely thank you for providing your feedback. </font></p> &nbsp;=20
+   <div style=3D"padding-top: 200px; padding-bottom: 120px; background-colo=
+r: rgb(233,233,233); font-size: 12px; font-weight: 700; text-align: center;=
+ line-height: 18px; ">
+    you can leave with sadness=20
+    <a href=3D"http://www.tooljoy.click/schizophrenia-peeled/6486Dr23U95F86KP12N68M84X1955y36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQNRKmm7q10iNzt6cUAwD@">here</a>
+    <br /> US 10010 126 E 23rd St New York, NY,
+   </div>=20
+  </center>  =20
+ <img src=3D"http://www.tooljoy.click/13d6O2q3l95K8GW511t6887K1955L36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQNRKmm5r1wq05FqUwD/accurately-scribe" alt=3D""/></body>
+</html>
+
+--d09fa60901c7bc62f9d7ae75c54b2fac2013--
+
