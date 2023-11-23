@@ -2,44 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 960EF7F68A1
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 22:18:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CF0DB7F68CD
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 23:08:02 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6A89D10E0D9;
-	Thu, 23 Nov 2023 21:18:01 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AB39A10E030;
+	Thu, 23 Nov 2023 22:08:01 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 23 Nov 2023 21:17:58 UTC
-Received: from mail.getupmobile.click (unknown [77.83.203.143])
- by gabe.freedesktop.org (Postfix) with ESMTP id E6BDD10E0D9
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Thu, 23 Nov 2023 22:07:59 UTC
+Received: from mail.toolndevice.world (unknown [77.83.203.152])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E600B10E030
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 21:17:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=getupmobile.click;
+ Thu, 23 Nov 2023 22:07:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=toolndevice.world;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=act.fast.tmobile.exclusive.deal@getupmobile.click; 
- bh=9SZxD/AoIIgQfQRzZU9dgyFr7xg=;
- b=CVNX/Ih4jvwQsePWe6qIc5rzX5fSWShKtUHb6yd0SptfV2kmvqnkq1tblQnpELUL6BQNJdfjk/zX
- jzQ4bC2xoKpmJqv1b7tGGrf+wOxAJ1WowaOef2HA6950PdERZsX7VOSxJRgrLyZIgSLegrOSdKI0
- OLWgv2eHYT8p9TtV4TY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=getupmobile.click; 
- b=IS/nuaHdbWMbppj53qJL8w+DBodOmThtXWcm1tTt+p3P6ZYL7ojvmvN7mJzq8QoR49HIFqryvu9t
- 1MTBRBHHEDd91vf6+pdU5LP6NumDwBSDpfR37Ldl7CVzkEX9f7UuNtyhSIN0kxwsfF1/s94D2FIg
- DsAlWDPH1RihTxaDn9w=;
-Received: by mail.getupmobile.click id hbv0oe0001g2 for
+ i=survey_to_win_wiha_set@toolndevice.world; 
+ bh=QjECm5Wkd23FEbZroiqJNkDmCxs=;
+ b=jySSFfONmCdzwCcWlPATZyAvyo0B1GlcDK293pXirs8iz5KVay24Cu2Znkz5Npym1oLgb8LOc3yx
+ I1wdvjvPsKQ/TBTanPF7fgKcKLASiTdvc2uGiLhTVex0/n+G/qNSaVD9KCj8tUstT4PeeQ00RFYE
+ maQfn7Ce4tBHMyvoKRk=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolndevice.world; 
+ b=U8sCs+fyHWZaFucR36/tCbkbCdtCqFd6Tz+79p+T2cQwRqPjyir367VXXebBOzzipZkcOT9lT9Fe
+ n8FE23FFYZJSoPrOk7DmSzuaYzVeDmqgdc/cdPX//nxQPE0WDjDTDjQE5q5mw/vEuTBP/JWHrJi0
+ QYS48iYkI60pAibGAMc=;
+Received: by mail.toolndevice.world id hbv6k00001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 15:54:55 -0500 (envelope-from
- <act.fast.tmobile.exclusive.deal-intel+2Dgvt+2Ddev=lists.freedesktop.org@getupmobile.click>)
-Date: Thu, 23 Nov 2023 15:54:55 -0500
-From: "Act Fast TMobile Exclusive Deal"
- <act.fast.tmobile.exclusive.deal@getupmobile.click>
+ Thu, 23 Nov 2023 17:00:34 -0500 (envelope-from
+ <survey_to_win_wiha_set-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolndevice.world>)
+Date: Thu, 23 Nov 2023 17:00:34 -0500
+From: "Survey To Win Wiha Set" <survey_to_win_wiha_set@toolndevice.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <84416924615.170077288473357@getupmobile.click>
-Subject: Voice Your Thoughts: T-Mobile's Daily Promo Survey - Exclusive
- Rewards Await!
+Message-ID: <130334354000.170077681033545@toolndevice.world>
+Subject: Voice Your Opinions: Lowe's Daily Win Opportunity Awaits You!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=691bdf7c9fce759f4a5bf4a917304c4a3349
+ boundary=9e9c5efeeb583311e81998d490da7d4b10360160
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,42 +53,42 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---691bdf7c9fce759f4a5bf4a917304c4a3349
+--9e9c5efeeb583311e81998d490da7d4b10360160
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
-----------------------------------------------
+Lowe's
 
-T-Mobile
-
-We wanted to take a moment to thank you for choosing T-Mobile.  
-Your loyalty and support mean the world to us, and we are grateful 
-for the opportunity to serve you. 
-
-Your feedback is incredibly important to us, and we would like to 
-offer you a token of our appreciation for taking the time to share your thoughts. 
+**************************************************
 
 
-Upon Completion of the Survey you might have a choice between different gifts!
+Exclusive Offer
+Win a Wiha Screwdriver Tray Set!
+__________________________________________________
 
-Start Now >>>>>>>
-http://www.getupmobile.click/icing-bodyguard/d6e6w23Bk95a8tn613WC68aw2g195ct36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQ.RKmS7y10Gm_i5S3wUD
+
+Great news from Lowe's! We have a remarkable Wiha Screwdriver Tray Set 
+waiting for you.  It's as simple as a few clicks or completing a quick 
+survey to enter.  Act now! You have until November 23rd to claim this fantastic prize. 
 
 
 
-Thank you again for your support.  We look forward to hearing from you soon! Warm regards,
-
-The T-Mobile Survey
-
-----------------------------------------------
-
-To modify your email preferences, Visit Right Here >>>>> http://www.getupmobile.click/dc75nv2395Nh8v613g68aLj3H195ch36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ.RKmS7L1L0FwC6B@@1wD/icing-bodyguard
-126 E 23rd St New York, NY, US 10010
+Start Here to Win > >
+http://www.toolndevice.world/7735a23G95zz8q613e6L8aF4G195dT36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQHRKme6O10tCO6VUw3DN/Germanic-prescribed
 
 
 
-<style><span></style></span><style dir="Jacobean"></style><span style="quartered"></span><font></font><span><style><span title="workshop"><span face="upheld"></span></span><style></style></span></style><style size="riboflavin"></style>
+Your input is invaluable to us at Lowe's.  We deeply appreciate your 
+participation in our survey.  Your feedback means the world to us, and 
+we hold it in high regard. 
 
---691bdf7c9fce759f4a5bf4a917304c4a3349--
+
+**************************************************
+
+
+you can leave with sadness here >>>>>
+http://www.toolndevice.world/b515S239p5eT8C611b68a5k195dN36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQHRKme6Q1mP0H6Gp2wWD/teacher-chartering
+US 10010 126 E 23rd St New York, NY,
+
+--9e9c5efeeb583311e81998d490da7d4b10360160--
 
