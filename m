@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DBC37F63AB
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 17:09:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D7CBD7F6430
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 17:41:58 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 021F310E15F;
-	Thu, 23 Nov 2023 16:09:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id AD52E10E2C0;
+	Thu, 23 Nov 2023 16:41:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 23 Nov 2023 16:09:34 UTC
-Received: from mail.tooljoy.click (unknown [77.83.203.83])
- by gabe.freedesktop.org (Postfix) with ESMTP id 356D410E15F
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Thu, 23 Nov 2023 16:41:55 UTC
+Received: from mail.flightontrip.world (unknown [77.83.203.93])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E8F7210E2C0
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 16:09:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=tooljoy.click;
+ Thu, 23 Nov 2023 16:41:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=flightontrip.world; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=todays_promo_lowes_survey_for_kobalt_tools@tooljoy.click; 
- bh=asN80T0kAXReZk+UNicdBdYN1BA=;
- b=UlDLnn4q3MZOOThkYTbXJAZ60IVmqB4m9PgdNkDhO/3jX8xX6ovRqeHBhe8v1B6ozDZCZFJKdX9k
- /kO2y1sfWab9JhKbQulMoZAEsDa3yVg/366z/ML4znbg7y15oFrncB68R7lNfKGleJ9Cdd8hD2Vs
- 8q1NXMLsz+RBizuMZ3I=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=tooljoy.click;
- b=K5uFQNee3CPu0ajl3EcSU9OxmQ/9UwyyVmKYGVxlEWMiWZKxBU5drJ2MsEIfdXxqfCW1ePvsWiml
- L/NLJDJUcHJuwOoZEEnN/xUs/h8r8JWxnovMqvXJ8DuIB3TFBLq5+ECDUU8qJFwnLOxKoc+21+zN
- WhIfnrqEeNiHhXjwVsE=;
-Received: by mail.tooljoy.click id hbtsjs0001g5 for
+ i=snap.deltas.survey.deal@flightontrip.world; 
+ bh=7tul+m6LAduhYm0p2nh7dXdn7UM=;
+ b=Sb946V5kqwJp2ssW5oIc7cLbbGZd5g0ozFDix0Ru8ZFxUucMCz5vpVKMqzgf6zLhDYnKc22urxNV
+ 5Dxf4S+uUlwW4FIQnb2jajW5KIuVcF/qNovE04DugtCXz3frtZH+qjSufOunra8pAz3k0w3VFju6
+ 93t8HJQ9nryp4VbpUdw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=flightontrip.world; 
+ b=C+Ok2Q2eGu7snv8e4NMEKEgo3KaYdXSPkkjxxaoR4TpVxvKBDGelwrtnM38dtE96P7LAe7ffBQWr
+ 3Aqrtt795cmpl7N0roMD3SIIIarEi6XKDISxmQXXVaRfmlHm7p0QQ+8ft8Xn+HCqTCvyBXp3TSDP
+ CP9nca8d4NJ2wVno9+g=;
+Received: by mail.flightontrip.world id hbu0d80001gg for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 10:46:04 -0500 (envelope-from
- <todays_promo_lowes_survey_for_kobalt_tools-intel+2Dgvt+2Ddev=lists.freedesktop.org@tooljoy.click>)
-Date: Thu, 23 Nov 2023 10:46:04 -0500
-From: "Todays Promo Lowes Survey For Kobalt Tools."
- <todays_promo_lowes_survey_for_kobalt_tools@tooljoy.click>
+ Thu, 23 Nov 2023 11:34:13 -0500 (envelope-from
+ <snap.deltas.survey.deal-intel+2Dgvt+2Ddev=lists.freedesktop.org@flightontrip.world>)
+Date: Thu, 23 Nov 2023 11:34:13 -0500
+From: "Snap Deltas Survey Deal" <snap.deltas.survey.deal@flightontrip.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <6239186511306.170075435875005@tooljoy.click>
-Subject: Quick Poll: Lowe's Rewards&mdash;Today's Exclusive Promo!
+Message-ID: <367021019331.17007572386553416@flightontrip.world>
+Subject: Take Swift Action: Delta's Survey Special Ends Today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=d09fa60901c7bc62f9d7ae75c54b2fac2013
+ boundary=b2e41fdad0091b885caa60b101b8111d98996410077001039799
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,57 +54,65 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---d09fa60901c7bc62f9d7ae75c54b2fac2013
+--b2e41fdad0091b885caa60b101b8111d98996410077001039799
 Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 
 <!DOCTYPE html>
-<html lang=3D"en">
- <head>=20
-  <meta charset=3D"UTF-8" />=20
-  <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"viewp=
-ort" />=20
-  <title>stores</title>=20
-  <style type=3D"text/css">@import url('https://fonts.googleapis.com/css2?f=
-amily=3DREM:wght@100; 200; 300; 400; 500; 600; 700; 800; 900&display=3Dswap=
-');=20
-=09</style>=20
- </head>=20
- <body style=3D"font-family: 'REM', sans-serif; ">=20
-  <center style=3D"background-color: rgb(223, 223, 223); width: 100%; paddi=
-ng: 41px 0">=20
-   <p style=3D"margin: 0; max-width: 530px; margin: auto; background-color:=
- #fff; border-bottom: solid 5px rgb(39,69,166); border-top: solid 5px rgb(3=
-9,69,166); "><br /> <a href=3D"http://www.tooljoy.click/actualization-discriminate/2106r2k3n95j8Po613a6883Zst1955p36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQNRKmm7SM1J0PF6oMwkDz" target=3D"_blank"><img alt=3D"NN=
-C" src=3D"http://www.tooljoy.click/accurately-scribe/e7c4O2395yt7za13R688X5mR1955z36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQNRKmm7hDWx10P6l@wD3X" style=3D"display: block; margin: auto; " width=3D"30=
-%" /></a></p>=20
-   <p style=3D"margin: 0; max-width: 530px; margin: auto; background-color:=
- #fff; font-size: 5.5mm; line-height: 7mm; font-weight: 700; padding: 5mm 0=
-; ">Ultimate Advisory<br /> Regarding Your Lowe' s Reward</p>=20
-   <p style=3D"margin: 0; max-width: 530px; margin: auto; background-color:=
- #fff; font-size: 4mm; line-height: 7mm; "><font style=3D"display: block; p=
-adding: 3.5% 5%; ">Exciting Announcement from Lowe' s! A Kobalt Tool Set is=
- now in stock at our stores. Take swift action; don' t miss out on this cha=
-nce! You have until November 23rd to secure these exceptional items.<br /> =
-<br /> <a href=3D"http://www.tooljoy.click/actualization-discriminate/2106r2k3n95j8Po613a6883Zst1955p36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQNRKmm7SM1J0PF6oMwkDz" style=3D"text-decoration: none; color: #fff; =
-" target=3D"_blank"><span style=3D"background-color: rgb(72,71,78); padding=
-: .4cm .8cm; display: inline-block; font-weight: 700; font-size: 5.5mm; bor=
-der-radius: 15px; ">Start Here Now</span></a> </font><br /> <a href=3D"=
-http://www.tooljoy.click/actualization-discriminate/2106r2k3n95j8Po613a6883Zst1955p36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQNRKmm7SM1J0PF6oMwkDz"><img alt=3D"YTS" src=3D"http://www.tooljoy.click/deallocations-Chauncey/22e5v239A5w7sPa11k6886R1955g36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQNRKmm7axA10lu6KB0NwD" style=3D"display: block; margi=
-n: auto; " width=3D"75%" /></a><br /> <br /> <font style=3D"display: block;=
- padding: 0% 5% 3.5%">Your participation in our survey is acknowledged and =
-appreciated. Your insights are highly valuable to us at Lowe' s, and we gen=
-uinely thank you for providing your feedback. </font></p> &nbsp;=20
-   <div style=3D"padding-top: 200px; padding-bottom: 120px; background-colo=
-r: rgb(233,233,233); font-size: 12px; font-weight: 700; text-align: center;=
- line-height: 18px; ">
-    you can leave with sadness=20
-    <a href=3D"http://www.tooljoy.click/schizophrenia-peeled/6486Dr23U95F86KP12N68M84X1955y36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQNRKmm7q10iNzt6cUAwD@">here</a>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Georama:wght@100;200;300;400;500;600;700;800;900&display=swap');
+	</style> 
+  <title>wanted</title> 
+ </head> 
+ <body style="font-family: 'Georama', sans-serif;"> 
+  <div style="background-color: rgb(224, 224, 224); width: 100%; padding: 30px 0;"> 
+   <div style="background-color: rgb(194, 194, 194); width: 100%; padding: 30px 0;"> 
+    <div style="background-color: rgb(228, 228, 228); width: 100%; padding: 45px 0;"> 
+     <center class="containers" style="max-width: 155mm; margin: auto; text-align: center; background-color: #fff;"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: #272727;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td align="center"> 
+          <center style="max-width: 200px; margin: auto; padding: 22px 0;">
+           <a href="http://www.flightontrip.world/Incas-slings/ada5O2_395e8R6U12ru6888M1956y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhRKmn5ls10l5tPwD2" target="_blank"><img alt="YS" src="http://www.flightontrip.world/3596pFA2395kYY7a11A688aX1956D36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQhRKmn7pqXF10Y5wWwpD/quarters-accomplices" width="100%" /></a>
+          </center> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <div style="background-color: #dbdbdb;"> 
+       <center style="padding: 20px 10px;"> 
+        <div style="max-width: 95%; margin: auto;">
+         <a href="http://www.flightontrip.world/Incas-slings/ada5O2_395e8R6U12ru6888M1956y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhRKmn5ls10l5tPwD2" target="_blank"><img alt="MMKS" src="http://www.flightontrip.world/Nicosia-untapped/2885o2V395u7yaR12Q688bRt1956m36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQhRKmn7t1q0ABT5ilywD" style="display: block; outline: solid 1.5px #000;" width="100%" /></a>
+        </div> 
+       </center> 
+      </div> 
+      <div id="ibbos" style="padding: 25px 45px;"> 
+       <p style="margin: 0; font-size: 1.1rem; line-height: 1.7rem; ; font-weight: 500;">We appreciate your decision to travel with Delta! Every journey you undertake with us adds to our story, and we are eager to improve every aspect to ensure your satisfaction.<br /> <br /> Elevate your air travel experience with us! Share your thoughts on your recent Delta journey through a concise survey. Click the link below to commence this brief exploration.<br /> <br /> Your feedback not only influences our future but also gives you the chance to possibly receive an unforeseen $100 gift! Every perspective is important, so make sure your input counts today!<br /> <br /> <span style="color: #6b0000; font-weight: bold;">#EnhanceYourDeltaExperience. </span></p> &nbsp; 
+       <table align="center"> 
+        <tbody> 
+         <tr> 
+          <td align="center" class="btosm"> 
+           <div style="background-color: #272727; padding-top: 4mm; padding-bottom: 4mm; padding-left: 8mm; padding-right: 8mm; border-radius: 5px; font-weight: bold;font-size: 1.3rem;">
+            <a href="http://www.flightontrip.world/Incas-slings/ada5O2_395e8R6U12ru6888M1956y36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQhRKmn5ls10l5tPwD2" style="text-decoration: none; color: white;" target="_blank">Fly Better With Delta Now &raquo;</a>
+           </div> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </center> 
+    </div> 
+   </div> 
+   <div style="padding-top: 50px;padding-bottom: 50px; max-width: 524px; margin: auto; text-align: center; font-weight: 700; font-size: 12px;">
+    Join us at the exit 
+    <a href="http://www.flightontrip.world/b8d5W2A395Cq8o613P6tL889M1956_36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQhRKmn5Wt10Z5BPwDk/Nicosia-untapped">here</a>
     <br /> US 10010 126 E 23rd St New York, NY,
-   </div>=20
-  </center>  =20
- <img src=3D"http://www.tooljoy.click/13d6O2q3l95K8GW511t6887K1955L36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQNRKmm5r1wq05FqUwD/accurately-scribe" alt=3D""/></body>
+   </div> 
+  </div>   
+ <img src="http://www.flightontrip.world/8456Q23yF95cM8O513wmt688cp1956j36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQhRKmn6z1T0SQ6k0wDzB/quarters-accomplices" alt=""/></body>
 </html>
 
---d09fa60901c7bc62f9d7ae75c54b2fac2013--
+--b2e41fdad0091b885caa60b101b8111d98996410077001039799--
 
