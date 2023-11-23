@@ -1,59 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01F797F6514
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 18:18:05 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id A42EA7F65FE
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 19:09:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C9AB410E034;
-	Thu, 23 Nov 2023 17:18:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 809FE10E172;
+	Thu, 23 Nov 2023 18:09:31 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-oo1-xc42.google.com (mail-oo1-xc42.google.com
- [IPv6:2607:f8b0:4864:20::c42])
- by gabe.freedesktop.org (Postfix) with ESMTPS id EB3E910E08B
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Thu, 23 Nov 2023 18:09:29 UTC
+Received: from mail.fullfillships.click (unknown [77.83.203.111])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 420E210E172
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 17:18:00 +0000 (UTC)
-Received: by mail-oo1-xc42.google.com with SMTP id
- 006d021491bc7-58a7d13b00bso605029eaf.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 09:18:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=unn-edu-ng.20230601.gappssmtp.com; s=20230601; t=1700759880; x=1701364680;
- darn=lists.freedesktop.org; 
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=TvtWeM+Mwb3OHFcjh6p5CSC2tuQSRqfCHfpkw+ypzu8=;
- b=DsLrXirVSeL37SyFAcsUqVmSEBJraooJIfvNf5ldLcmEByU7Q4ZyOhSS0vma53bp41
- HOoBL6TRzANmfZcn40N5/Cxh7Qtt3wk4A1O+2+yZiaajXEFwpauK6MqK9cbulCyhTN4S
- HDtlZaAnxi3NLh4zEd6ngvAwFdeU2016gpMZeCtOk3z0joyBS0ZlrZn+waaul3lmxOfM
- iYWXEVk8ON2mFpO/THI7ESM2ncHvV3Ejf+sRwU9ltvn8Gj7nl7JYaGup03aCLMMUca8f
- TKZzNAcs/TrVmbc92TYld6MzPpDaZzUG6kLND+B7YJYFcD75cgSD/m2NcAU3ZnqU0geb
- LGYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700759880; x=1701364680;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=TvtWeM+Mwb3OHFcjh6p5CSC2tuQSRqfCHfpkw+ypzu8=;
- b=eUhwbTJW4JqviUxxzsO/hOktjn4jZhHcTiA35GDVabfAK/2Z70GeBLOW7gvTk+EDs/
- sC8KAazoOK7i8q0IQtKjoCJk3bdAFJPP/aRLaBw0zuAEt4vXmm5g7DrnyHiqz01t+geb
- h872VfAFjhsvYywBQMM/5LgHNEtGPKHtEVW5Uvk/Qd/Qq63vGB5zAUYV2XV/DsOziciN
- cQb18q9XASkLviLx7xGRFoPK8MYJkUtgu27/LZOvrLruMb1mgPepakAo9xyk/upA+bwg
- lPx1Lm0XVGLibWXvNlqaEFbv1Nh6AcjIG8fiFZWs9uBdBOaYcdAd1Les99V6QoRiL5EX
- OUlQ==
-X-Gm-Message-State: AOJu0YyGwKItVqxG6BqbLTKPASfjuDIzIbY38NiR2qu+VZl7MJaoJOuj
- hFYpZFbyc5NALHUru40+0fgUEx9HFddzzUsTnIBDkb8X761LX8p0nduzixXP
-X-Google-Smtp-Source: AGHT+IHFTm7FSZvqD0lj2YN30YtHE74aH+v2/rptK6u1L1yD6ssFcpTJmXMrj127JwUM0nsaUdayGhvzJsfcWj0z6Fo=
-X-Received: by 2002:a05:6358:4429:b0:16d:ed11:4d19 with SMTP id
- z41-20020a056358442900b0016ded114d19mr7112461rwc.19.1700759879728; Thu, 23
- Nov 2023 09:17:59 -0800 (PST)
+ Thu, 23 Nov 2023 18:09:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=fullfillships.click; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=your.say.fedex@fullfillships.click; 
+ bh=Ez9gyPokLajCape3Z16Mw3+4Zfs=;
+ b=gfH4hSLB7p2TLukLA5Ax1QMEy3D26nJw43V+TRY4ldjyHKv8wZ5G7VEm2wR3VMn2Db+wGONZHWZa
+ F6GR+F91mz8VsANXXsycHKfIv0p0sSN5jN8fWLN/ApVIa6OmYdLvYxfcvK7IpnHAAY1IYP+gm1lD
+ /9rfLbKhQ1S9G1vc0KQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fullfillships.click;
+ b=PLxQP7DKs8XmdzgnH38w690T+KqIfBkCSUWwqdlTo3B0nxF7Sb6E08ih0aV1V0MJ/U5xz4aSm4Ez
+ uk30fpoprbujR0BtALQSI9Ry1FBQu78+8+P+/CVV8gkrWMSExUPsrgyIqkQVZyyvaH0DlcHLHyxW
+ mXeMjZyXqGKyaMCfsZo=;
+Received: by mail.fullfillships.click id hbuali0001go for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 Nov 2023 12:48:34 -0500 (envelope-from
+ <your.say.fedex-intel+2Dgvt+2Ddev=lists.freedesktop.org@fullfillships.click>)
+Date: Thu, 23 Nov 2023 12:48:34 -0500
+From: "Your Say FedEx" <your.say.fedex@fullfillships.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <74977133701.1700761621526685@fullfillships.click>
+Subject: Participate in FedEx's Quick Poll for Daily Limited-Time Promotions!
 MIME-Version: 1.0
-From: Jennifer Osarf <mariagoretti.omego.172913@unn.edu.ng>
-Date: Thu, 23 Nov 2023 17:17:47 +0000
-Message-ID: <CADiG0bQ_GFYSA3WmSnx1a-SpOaua7LR+aD_CYB3DmREexBxjtQ@mail.gmail.com>
-Subject: cooperation for more details
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000007ad242060ad504e2"
+Content-Type: multipart/alternative; 
+ boundary=aecba24bd6fbd2446717698777fe4c1d8409897599099100
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,175 +51,156 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: jennifer@unitedstatesgrant.us
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---0000000000007ad242060ad504e2
-Content-Type: text/plain; charset="UTF-8"
+--aecba24bd6fbd2446717698777fe4c1d8409897599099100
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
--- 
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>loyalty and support</title> 
+ </head> 
+ <body style="margin: 0; padding: 0;"> 
+  <div> 
+   <center style="border-right: solid 30px #ebebeb; border-left: solid 30px #ebebeb;"> 
+    <h3 style="margin: 0;">&nbsp;</h3> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
+     <caption>
+      &nbsp;
+     </caption> 
+     <thead> 
+      <tr> 
+       <th>&nbsp;</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+      <tr> 
+       <td class="logysbaron">&nbsp;</td> 
+       <td class="logysbaron">&nbsp;</td> 
+       <td class="logysbaron"> 
+        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
+         <caption>
+          &nbsp;
+         </caption> 
+         <thead> 
+          <tr> 
+           <th>&nbsp;</th> 
+          </tr> 
+         </thead> 
+         <tbody> 
+          <tr> 
+           <td id="valoraninfo">&nbsp;</td> 
+           <td id="valoraninfo"> 
+            <div> 
+             <div> 
+              <header style="margin: 0; padding: 0;"> 
+               <center> 
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
+                 <tbody> 
+                  <tr> 
+                   <td> 
+                    <div> 
+                     <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 800; font-size: 55px;">
+                      <a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin" style="text-decoration: none; color: #06004A;">Fed </a> 
+                      <a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin" style="text-decoration: none; color: #BD1609;"> Ex </a>
+                     </center> 
+                    </div> </td> 
+                  </tr> 
+                 </tbody> 
+                </table> 
+               </center> 
+              </header> &nbsp; 
+              <div style="background-color: rgb(255, 249, 242); padding: 15px 0px;"> 
+               <section style="max-width: 520px; margin: auto;"> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;">We want to express our gratitude for choosing FedEx as your preferred shipping partner. Your loyalty and support mean a lot to us, and we truly appreciate the chance to assist you.</p> 
+               </section> 
+              </div> 
+              <div style="max-width: 520px; margin: auto;"> 
+               <table> 
+                <tbody> 
+                 <tr> 
+                  <td><a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin"><img alt="JHESA" src="http://www.fullfillships.click/bivouac-lowlands/13e6Iiq2395SYP7a11z6897A1958_36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQPRKm95qAJ106rMWwOD" style="display: block; " width="100%" /> </a></td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div> 
+              <div style="max-width: 520px; margin: auto;"> 
+               <article> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><font>As we remain dedicated to delivering outstanding service, we warmly encourage you to participate in a short survey regarding your recent shipping experience and your overall interaction with FedEx. </font></p> 
+               </article> 
+              </div> &nbsp; 
+              <div style="background-color: rgb(255, 249, 242); padding: 15px 0px;"> 
+               <section style="max-width: 520px; margin: auto;"> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><b>Upon completing the survey, you may have the chance to qualify for a $100 Gift! </b></p> 
+               </section> 
+              </div> 
+              <div style="max-width: 520px; margin: auto;"> 
+               <table align="center"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center"><a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin"><img alt="JHESA" src="http://www.fullfillships.click/memorabilia-Christiansen/7b05o23p95X7taK12M689q8j1958K36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQPRKm97E1zvoV06h@2wAD" style="display: block; max-width: 90px;" width="100%" /> </a></td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div> &nbsp; 
+              <div style="max-width: 520px; margin: auto;"> 
+               <article> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><font>To start the survey, simply click on the link provided below. It's a quick task that will require only a few minutes, and rest assured that your responses will remain confidential. </font></p> 
+               </article> 
+              </div> &nbsp; 
+              <div style="max-width: 520px; margin: auto;"> 
+               <table align="center"> 
+                <tbody> 
+                 <tr> 
+                  <td align="center"> 
+                   <blockquote style="max-width: 300px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; padding: 1em 1.8em; background-color: #2e2e2e; border-radius: 10px;">
+                    <a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin" style="text-decoration: none; color: rgb(255, 255, 255);">Start Here Now &gt;&gt; </a>
+                   </blockquote> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div> &nbsp; 
+              <div style="max-width: 520px; margin: auto;"> 
+               <article> 
+                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; text-align: center; line-height: 28px; margin: 0;"><font>Your support is highly valued, and we look forward to hearing from you soon.<br /> Warm regards. </font></p> 
+               </article> 
+              </div> 
+              <p style="padding-bottom: 300px;">&nbsp;</p> 
+              <hr /> 
+              <footer style="max-width: 520px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 12px;"> 
+               <address>another day to leave <a href="http://www.fullfillships.click/b334Q2395iBF8611o6896u1958k36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQPRKm97nIKU10T5pJjwD/subterranean-napkin"> here </a><br /> US 10010 126 E 23rd St New York, NY,</address> 
+              </footer> 
+              <br /> &nbsp;
+             </div> 
+            </div> </td> 
+           <td id="valoraninfo">&nbsp;</td> 
+           <td id="valoraninfo">&nbsp;</td> 
+          </tr> 
+         </tbody> 
+         <tfoot> 
+          <tr> 
+           <td>&nbsp;</td> 
+          </tr> 
+         </tfoot> 
+        </table> </td> 
+       <td class="logysbaron">&nbsp;</td> 
+       <td class="logysbaron">&nbsp;</td> 
+      </tr> 
+     </tbody> 
+     <tfoot> 
+      <tr> 
+       <td>&nbsp;</td> 
+      </tr> 
+     </tfoot> 
+    </table> 
+   </center> 
+  </div>   
+ <img src="http://www.fullfillships.click/memorabilia-Christiansen/b705Lj2395DW8i513nD689_9r1958l36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQPRKm96vv1tl06nlJwOD" alt=""/></body>
+</html>
 
-*Hello Dear.*
+--aecba24bd6fbd2446717698777fe4c1d8409897599099100--
 
-
-
-*  I am Mrs. Jennifer Osarf, a personal Accountant/Executive board of*
-
-*Directors working with Texas Bank United Kingdom (London). I*
-
-*have an interesting business proposal for you that will be of immense*
-
-*benefit to both of us. Although this may be hard for you to believe,*
-
-*we stand to gain a huge amount between us in a matter of days. Please*
-
-*grant me the benefit of doubt and hear me out. I need you to signify*
-
-*your interest by replying to my mail*
-
-
-
-*Honestly, i have business transaction worth the sum of*
-
-*(US$8,200,000.00) Eight Million two hundred thousand united state*
-
-*dollars to transfer to you through proper documentation in position of*
-
-*your own Account Most importantly, I will need you to promise to keep*
-
-*whatever you learn from me between us even if you decide not to go*
-
-*along with me. I will make more details available to you on receipt of*
-
-*a positive response from you.*
-
-
-
-*This transaction is risk-free; please urgently confirm your*
-
-*willingness and interest to assist in this deal, I am in good faith*
-
-*and with trust waiting for your Urgent response and maximum*
-
-*cooperation for more details*
-
-
-*Best Regards,*
-
-*Mrs Jennifer Osarf.*
-
---0000000000007ad242060ad504e2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br clear=3D"all"><div><br></div><span class=3D"gmail_sign=
-ature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature" data=
--smartmail=3D"gmail_signature"><div dir=3D"ltr"><p style=3D"font-size:13px;=
-color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,=
-sans-serif;margin:0px;font-stretch:normal;line-height:normal;outline:none!i=
-mportant"><b style=3D"outline:none!important">Hello Dear.</b></p><p style=
-=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quo=
-t;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:no=
-rmal;outline:none!important"><b style=3D"outline:none!important"><br style=
-=3D"outline:none!important"></b></p><p style=3D"font-size:13px;color:rgb(29=
-,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;m=
-argin:0px;font-stretch:normal;line-height:normal;outline:none!important"><b=
- style=3D"outline:none!important"><br style=3D"outline:none!important"></b>=
-</p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvet=
-ica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;li=
-ne-height:normal;outline:none!important"><b style=3D"outline:none!important=
-">=C2=A0 I am Mrs. Jennifer Osarf, a personal Accountant/Executive board of=
-</b></p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;He=
-lvetica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:norma=
-l;line-height:normal;outline:none!important"><b style=3D"outline:none!impor=
-tant">Directors working with Texas Bank United Kingdom (London). I</b></p><=
-p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica N=
-eue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-he=
-ight:normal;outline:none!important"><b style=3D"outline:none!important">hav=
-e an interesting business proposal for you that will be of immense</b></p><=
-p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica N=
-eue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-he=
-ight:normal;outline:none!important"><b style=3D"outline:none!important">ben=
-efit to both of us. Although this may be hard for you to believe,</b></p><p=
- style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Ne=
-ue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-hei=
-ght:normal;outline:none!important"><b style=3D"outline:none!important">we s=
-tand to gain a huge amount between us in a matter of days. Please</b></p><p=
- style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Ne=
-ue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-hei=
-ght:normal;outline:none!important"><b style=3D"outline:none!important">gran=
-t me the benefit of doubt and hear me out. I need you to signify</b></p><p =
-style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neu=
-e&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-heig=
-ht:normal;outline:none!important"><b style=3D"outline:none!important">your =
-interest by replying to my mail</b></p><p style=3D"font-size:13px;color:rgb=
-(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-seri=
-f;margin:0px;font-stretch:normal;line-height:normal;outline:none!important"=
-><b style=3D"outline:none!important"><br style=3D"outline:none!important"><=
-/b></p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Hel=
-vetica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal=
-;line-height:normal;outline:none!important"><b style=3D"outline:none!import=
-ant"><br style=3D"outline:none!important"></b></p><p style=3D"font-size:13p=
-x;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Aria=
-l,sans-serif;margin:0px;font-stretch:normal;line-height:normal;outline:none=
-!important"><b style=3D"outline:none!important">Honestly, i have business t=
-ransaction worth the sum of</b></p><p style=3D"font-size:13px;color:rgb(29,=
-34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;ma=
-rgin:0px;font-stretch:normal;line-height:normal;outline:none!important"><b =
-style=3D"outline:none!important">(US$8,200,000.00) Eight Million two hundre=
-d thousand united state</b></p><p style=3D"font-size:13px;color:rgb(29,34,4=
-0);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margin=
-:0px;font-stretch:normal;line-height:normal;outline:none!important"><b styl=
-e=3D"outline:none!important">dollars to transfer to you through proper docu=
-mentation in position of</b></p><p style=3D"font-size:13px;color:rgb(29,34,=
-40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margi=
-n:0px;font-stretch:normal;line-height:normal;outline:none!important"><b sty=
-le=3D"outline:none!important">your own Account Most importantly, I will nee=
-d you to promise to keep</b></p><p style=3D"font-size:13px;color:rgb(29,34,=
-40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margi=
-n:0px;font-stretch:normal;line-height:normal;outline:none!important"><b sty=
-le=3D"outline:none!important">whatever you learn from me between us even if=
- you decide not to go</b></p><p style=3D"font-size:13px;color:rgb(29,34,40)=
-;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margin:0=
-px;font-stretch:normal;line-height:normal;outline:none!important"><b style=
-=3D"outline:none!important">along with me. I will make more details availab=
-le to you on receipt of</b></p><p style=3D"font-size:13px;color:rgb(29,34,4=
-0);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margin=
-:0px;font-stretch:normal;line-height:normal;outline:none!important"><b styl=
-e=3D"outline:none!important">a positive response from you.</b></p><p style=
-=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quo=
-t;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:no=
-rmal;outline:none!important"><b style=3D"outline:none!important"><br style=
-=3D"outline:none!important"></b></p><p style=3D"font-size:13px;color:rgb(29=
-,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;m=
-argin:0px;font-stretch:normal;line-height:normal;outline:none!important"><b=
- style=3D"outline:none!important"><br style=3D"outline:none!important"></b>=
-</p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvet=
-ica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;li=
-ne-height:normal;outline:none!important"><b style=3D"outline:none!important=
-">This transaction is risk-free; please urgently confirm your</b></p><p sty=
-le=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&q=
-uot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:=
-normal;outline:none!important"><b style=3D"outline:none!important">willingn=
-ess and interest to assist in this deal, I am in good faith</b></p><p style=
-=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quo=
-t;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:no=
-rmal;outline:none!important"><b style=3D"outline:none!important">and with t=
-rust waiting for your Urgent response and maximum</b></p><p style=3D"font-s=
-ize:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helveti=
-ca,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:normal;outli=
-ne:none!important"><b style=3D"outline:none!important">cooperation for more=
- details</b></p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:=
-&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stret=
-ch:normal;line-height:normal;outline:none!important"><b style=3D"outline:no=
-ne!important"><br style=3D"outline:none!important"></b></p><p style=3D"font=
--size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helve=
-tica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:normal;out=
-line:none!important"><b style=3D"outline:none!important">Best Regards,</b><=
-/p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helveti=
-ca Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;lin=
-e-height:normal;outline:none!important"><b style=3D"outline:none!important"=
->Mrs Jennifer Osarf.</b></p></div></div></div>
-
---0000000000007ad242060ad504e2--
