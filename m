@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22C5D7F5FC3
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 14:12:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C74C7F6002
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 14:19:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5F12A10E741;
-	Thu, 23 Nov 2023 13:12:24 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 05D8310E743;
+	Thu, 23 Nov 2023 13:18:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 30C6810E73C;
- Thu, 23 Nov 2023 13:12:21 +0000 (UTC)
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A99FB10E743;
+ Thu, 23 Nov 2023 13:18:56 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id EF5AECE28FE;
- Thu, 23 Nov 2023 13:12:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B246C433C7;
- Thu, 23 Nov 2023 13:11:59 +0000 (UTC)
+ by sin.source.kernel.org (Postfix) with ESMTP id 11DDCCE2912;
+ Thu, 23 Nov 2023 13:18:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FFAAC433C9;
+ Thu, 23 Nov 2023 13:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1700745135;
- bh=VBAn7FZcvw1drif9KzTmaabLPVAYO4zX2eeQPqBTwFw=;
+ s=k20201202; t=1700745532;
+ bh=BJOuctG/jOXVT0hO6qxyVXBeYyH4TG/ylT0dyLa92yI=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=nSfg5H2PW95uhmCyWswaCk18HBzNnUr8lrZC9/jswVOaVEk9Necoc/3PSsg/eWI+c
- nUSNVQiBVNuTkdJG4ZroseK0fKTuKodiCnTfp5VBFncFM3thhaeXbqdq7/1OyUlFkh
- hvhoTdxdxKP2qiIgsXRrtgQ8aW/glFRtrG5pk0o8niH7Far3mtrppzle/A5KWCQFN1
- 0J9D7XnhqZQWKtQ8+7lAsz1DeizPazr+k6Se4xCbJkyOxPi+pXbCyvcnpPCySfoTu/
- nxY4zeQuXLH9O0FYHNYyhAuFpYV+0VZCYLV3awl8R2o5zjol3Qy1blkTCXoR/k3lKT
- V10Lsp2N5sNOQ==
-Date: Thu, 23 Nov 2023 14:11:56 +0100
+ b=r42g7gVEtjBJ5WfLPAfCypJTdeIZa9tza+98XErRLkZuJq42IHSNqt9TjDoS1u/dO
+ mqRTO6hyOgRcqG5Vqi98sspSbfx6Ne64w0KZSaAUUdSmCRm0SeW9B8r2AffO7bhDq0
+ voQrIzDl2Rys7kYNdpWCPkldE19sNixdWiKMUoa9j34EYG62L/DgZtbbaspmEPmu14
+ PuPzBMdYXfPSBprGxxIV2rleVHq+xRFaQ7/X8REU4C8BYG2H4sP4+OADV7Tg2Ri8NY
+ w8CXZUWWNJUaMlJH5PPc15vZ4ox/kvWZIeet2zBszz9qi15zBW/WlVu+mFthIg8ovM
+ qoF7yc2VytIMg==
+Date: Thu, 23 Nov 2023 14:18:33 +0100
 From: Christian Brauner <brauner@kernel.org>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Subject: Re: [PATCH v2 1/4] i915: make inject_virtual_interrupt() void
-Message-ID: <20231123-randlage-instinkt-e458628d2d7c@brauner>
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Subject: Re: [PATCH v2 2/4] eventfd: simplify eventfd_signal()
+Message-ID: <20231123-portwein-geeignet-787b940c7d2d@brauner>
 References: <20231122-vfs-eventfd-signal-v2-0-bd549b14ce0c@kernel.org>
- <20231122-vfs-eventfd-signal-v2-1-bd549b14ce0c@kernel.org>
- <ZV6buHrQy2+CJ7xX@debian-scheme>
+ <20231122-vfs-eventfd-signal-v2-2-bd549b14ce0c@kernel.org>
+ <877cm9n7dh.fsf@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <ZV6buHrQy2+CJ7xX@debian-scheme>
+In-Reply-To: <877cm9n7dh.fsf@intel.com>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,8 +74,7 @@ Cc: linux-aio@kvack.org, linux-usb@vger.kernel.org, Jan Kara <jack@suse.cz>,
  Andrew Donnellan <ajd@linux.ibm.com>, Arnd Bergmann <arnd@arndb.de>,
  linux-s390@vger.kernel.org, Heiko Carstens <hca@linux.ibm.com>,
  Johannes Weiner <hannes@cmpxchg.org>, linuxppc-dev@lists.ozlabs.org,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Frederic Barrat <fbarrat@linux.ibm.com>,
+ Zhenyu Wang <zhenyuw@linux.intel.com>, Frederic Barrat <fbarrat@linux.ibm.com>,
  Alex Williamson <alex.williamson@redhat.com>, Borislav Petkov <bp@alien8.de>,
  kvm@vger.kernel.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
  cgroups@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
@@ -97,13 +95,8 @@ Cc: linux-aio@kvack.org, linux-usb@vger.kernel.org, Jan Kara <jack@suse.cz>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-> > +	if (!vgpu->msi_trigger)
-> > +		return;
-> > +	eventfd_signal(vgpu->msi_trigger, 1);
-> >  }
+> >   * eventfd_signal - Adds @n to the eventfd counter.
 > 
-> I think it's a little simpler to write as
->     if (vgpu->msi_trigger)
->             eventfd_signal(vgpu->msi_trigger, 1);
+> This still refers to @n here, and in patch 4.
 
-Good point. I folded that suggestion into the patch.
+Fixed and folded. Thanks!
