@@ -2,31 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 538747F57FF
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 07:03:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C72ED7F5A7E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 09:51:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 200B110E6CC;
-	Thu, 23 Nov 2023 06:03:48 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A742D10E6E9;
+	Thu, 23 Nov 2023 08:51:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 369 seconds by postgrey-1.36 at gabe;
- Thu, 23 Nov 2023 06:03:45 UTC
-Received: from vps625532.ovh.net (42.ip-51-75-23.eu [51.75.23.42])
- by gabe.freedesktop.org (Postfix) with ESMTP id E2C9B10E0CE
+X-Greylist: delayed 331 seconds by postgrey-1.36 at gabe;
+ Thu, 23 Nov 2023 08:51:31 UTC
+Received: from mail.createwise.pl (mail.createwise.pl [94.177.238.248])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5B53A10E6E9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 06:03:45 +0000 (UTC)
-Received: by vps625532.ovh.net (Postfix)
- id 88B3521298; Thu, 23 Nov 2023 06:57:39 +0100 (CET)
-Date: Thu, 23 Nov 2023 06:57:39 +0100 (CET)
-From: Mail Delivery System <MAILER-DAEMON@vps625532.ovh.net>
-Subject: Undelivered Mail Returned to Sender
-To: intel-gvt-dev@lists.freedesktop.org
-Auto-Submitted: auto-replied
+ Thu, 23 Nov 2023 08:51:31 +0000 (UTC)
+Received: by mail.createwise.pl (Postfix, from userid 1002)
+ id 406AD828AE; Thu, 23 Nov 2023 09:45:58 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=createwise.pl;
+ s=mail; t=1700729159;
+ bh=2Gvqf7hA/9cZDZu4d+k23RQ3ZaucYxVnotsi8Wlu3mw=;
+ h=Date:From:To:Subject:From;
+ b=l0F5MfD+4z4SeSj2ML/IAVDSLy6GWtMILz3TtvPMswKr/+Ezj7pwHnSFd5w7Eax+S
+ BpfmjeTVfdT8xIaZq8G30+Wd1MJs8N4k7BNq73hRV3RE/bL0ZWB1KtTXqvMOs25uNO
+ CY70y3bFW7YSbqKcZVOFJbmXg5mRiXLrKwf8WFSe03gkUP3dCWP+fYlrd/MXNRD4ue
+ EByEHlUvTx8xXHjF1QZRWupVgIg6c4eIufMgFPIaSclWAeWlqzCxqJl6FJV91XzjRP
+ WuOTui4FcQ6TXd4X7lBtxsC5lIvhIzz/2egw/1A6o9pUtlp8EVy/xCFBHgqZLBN+3w
+ YF7P9FuCbrFFQ==
+Received: by mail.createwise.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 Nov 2023 08:45:39 GMT
+Message-ID: <20231123084500-0.1.b.fdd.0.en4dg0b7a1@createwise.pl>
+Date: Thu, 23 Nov 2023 08:45:39 GMT
+From: "Kamil Wejerowski" <kamil.wejerowski@createwise.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Aplikacja dla mobilnego handlowca
+X-Mailer: mail.createwise.pl
 MIME-Version: 1.0
-Content-Type: multipart/report; report-type=delivery-status;
- boundary="768F320518.1700719059/vps625532.ovh.net"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20231123055739.88B3521298@vps625532.ovh.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,72 +53,36 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a MIME-encapsulated message.
+Szanowni Pa=C5=84stwo,
 
---768F320518.1700719059/vps625532.ovh.net
-Content-Description: Notification
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+czy Pa=C5=84stwa handlowcy maj=C4=85 mo=C5=BCliwo=C5=9B=C4=87 zarz=C4=85d=
+zania ofertami, sk=C5=82adania zam=C3=B3wie=C5=84, kontrolowania ich real=
+izacji czy planowania swoich dzia=C5=82a=C5=84 w terenie, sali konferency=
+jnej lub w podr=C3=B3=C5=BCy - na telefonie?
 
-This is the mail system at host vps625532.ovh.net.
+Poniewa=C5=BC smartphone jest dzisiaj nieod=C5=82=C4=85czn=C4=85 cz=C4=99=
+=C5=9Bci=C4=85 =C5=BCycia, nasza aplikacja przekszta=C5=82ca go w mobilne=
+ biuro handlowca.=20
 
-I'm sorry to have to inform you that your message could not
-be delivered to one or more recipients. It's attached below.
+Niezale=C5=BCnie od czasu i miejsca wszystkie niezb=C4=99dne narz=C4=99dz=
+ia s=C4=85 na wyci=C4=85gni=C4=99cie r=C4=99ki - zam=C3=B3wienia, baza Kl=
+ient=C3=B3w, dost=C4=99p do dokument=C3=B3w, stan=C3=B3w magazynowych, au=
+tomatyczne raportowanie, kontrola targetu, optymalizacja tras i wiele wi=C4=
+=99cej.
 
-For further assistance, please send mail to postmaster.
+To tak=C5=BCe nieodzowne wsparcie dla mened=C5=BCer=C3=B3w sprzeda=C5=BCy=
+, kt=C3=B3rzy z poziomu aplikacji mog=C4=85 na bie=C5=BC=C4=85co monitoro=
+wa=C4=87 dzia=C5=82ania, takie jak: zbieranie zam=C3=B3wie=C5=84, mobilna=
+ sprzeda=C5=BC, realizacja wizyt czy wype=C5=82nianie ankiet.
 
-If you do so, please include this problem report. You can
-delete your own text from the attached returned message.
+Dzi=C4=99ki aplikacji, handlowcy nie trac=C4=85 czasu na zb=C4=99dne szuk=
+anie informacji czy r=C4=99czne przepisywanie danych, a w pe=C5=82ni mog=C4=
+=85 skupi=C4=87 si=C4=99 na budowaniu relacji z kontrahentem i generowani=
+u sprzeda=C5=BCy.
 
-                   The mail system
-
-<contact@pprod.net>: host mx1.ovh.net[188.165.47.122] said: 554 5.7.1
-    <contact@pprod.net>: Relay access denied (in reply to RCPT TO command)
-
---768F320518.1700719059/vps625532.ovh.net
-Content-Description: Delivery report
-Content-Type: message/delivery-status
-
-Reporting-MTA: dns; vps625532.ovh.net
-X-Postfix-Queue-ID: 768F320518
-X-Postfix-Sender: rfc822; intel-gvt-dev@lists.freedesktop.org
-Arrival-Date: Thu, 23 Nov 2023 06:57:38 +0100 (CET)
-
-Final-Recipient: rfc822; contact@pprod.net
-Original-Recipient: rfc822;contact@pprod.net
-Action: failed
-Status: 5.7.1
-Remote-MTA: dns; mx1.ovh.net
-Diagnostic-Code: smtp; 554 5.7.1 <contact@pprod.net>: Relay access denied
-
---768F320518.1700719059/vps625532.ovh.net
-Content-Description: Undelivered Message
-Content-Type: message/rfc822
-Content-Transfer-Encoding: 8bit
-
-Return-Path: <intel-gvt-dev@lists.freedesktop.org>
-Received: by vps625532.ovh.net (Postfix, from userid 33)
-	id 768F320518; Thu, 23 Nov 2023 06:57:38 +0100 (CET)
-To: contact@pprod.net
-Subject: I promised.
-MIME-Version: 1.0
-Content-Type: text/html; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8Bit
-X-Mailer: Drupal
-Sender: intel-gvt-dev@lists.freedesktop.org
-From: Gyclecor <intel-gvt-dev@lists.freedesktop.org>
-Reply-to: Gyclecor <intel-gvt-dev@lists.freedesktop.org>
-Message-Id: <20231123055738.768F320518@vps625532.ovh.net>
-Date: Thu, 23 Nov 2023 06:57:38 +0100 (CET)
-
-<html>
-<head>
-  <title>I promised.</title>
-</head>
-<body>
-Hi, this is Anna. I am sending you my intimate photos as I promised. https://tinyurl.com/ytmjal3p#k5jN9V
-</body>
-</html>
+Dostrzegaj=C4=85 Pa=C5=84stwo mo=C5=BCliwo=C5=9B=C4=87 wykorzystania taki=
+ego narz=C4=99dzia w swojej firmie?
 
 
---768F320518.1700719059/vps625532.ovh.net--
+Pozdrawiam
+Kamil Wejerowski
