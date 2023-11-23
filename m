@@ -1,46 +1,59 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 749377F6516
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 18:18:22 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01F797F6514
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 18:18:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 55CBE10E08B;
-	Thu, 23 Nov 2023 17:18:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C9AB410E034;
+	Thu, 23 Nov 2023 17:18:03 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 23 Nov 2023 17:18:18 UTC
-Received: from mail.grocerycircle.click (unknown [77.83.203.98])
- by gabe.freedesktop.org (Postfix) with ESMTP id E529510E034
+Received: from mail-oo1-xc42.google.com (mail-oo1-xc42.google.com
+ [IPv6:2607:f8b0:4864:20::c42])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EB3E910E08B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 17:18:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=grocerycircle.click; 
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=exclusive_deal_kroger_today@grocerycircle.click; 
- bh=wbfwS0+4+LmTIwOyfz5rSqUqEsM=;
- b=Awzc67oNQNnBVFsIOTm5Id7b2UmYMQFaXjF7YPl8hB7/iY7vIX/EiytXwCqpeqlRHy1/IE3Kh5GD
- KRije7U+A9sAlnekRZEGfMJ2oT2L/dr/rYbtKnGDC1ylKQiYBN6uK011cyrNYJdakhKulXe73Esu
- iozyCsJQ+vtL/TT0Ri8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=grocerycircle.click;
- b=DIz313ciloU6Mhm1+opqf5KGQpY98Bx+omV8mA1zJcRazITZN6NaSj6+5utO1QjUrnhA7f2FulnH
- EVzWvLbsuoGPiZbHuzejCfFRkIRifTA6HEyQLBfRE2yEpriYkw/kzpPMlUFLYI391KwuH266KGxq
- /S3QLKEhGzywPQe1g5I=;
-Received: by mail.grocerycircle.click id hbu4lm0001gi for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 12:10:10 -0500 (envelope-from
- <exclusive_deal_kroger_today-intel+2Dgvt+2Ddev=lists.freedesktop.org@grocerycircle.click>)
-Date: Thu, 23 Nov 2023 12:10:10 -0500
-From: "Exclusive Deal Kroger Today"
- <exclusive_deal_kroger_today@grocerycircle.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <85630363165.17007593734818862@grocerycircle.click>
-Subject: Snap up a Survey Deal: Kroger's Limited-Time Feedback for Daily
- Specials!
+ Thu, 23 Nov 2023 17:18:00 +0000 (UTC)
+Received: by mail-oo1-xc42.google.com with SMTP id
+ 006d021491bc7-58a7d13b00bso605029eaf.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 Nov 2023 09:18:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=unn-edu-ng.20230601.gappssmtp.com; s=20230601; t=1700759880; x=1701364680;
+ darn=lists.freedesktop.org; 
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=TvtWeM+Mwb3OHFcjh6p5CSC2tuQSRqfCHfpkw+ypzu8=;
+ b=DsLrXirVSeL37SyFAcsUqVmSEBJraooJIfvNf5ldLcmEByU7Q4ZyOhSS0vma53bp41
+ HOoBL6TRzANmfZcn40N5/Cxh7Qtt3wk4A1O+2+yZiaajXEFwpauK6MqK9cbulCyhTN4S
+ HDtlZaAnxi3NLh4zEd6ngvAwFdeU2016gpMZeCtOk3z0joyBS0ZlrZn+waaul3lmxOfM
+ iYWXEVk8ON2mFpO/THI7ESM2ncHvV3Ejf+sRwU9ltvn8Gj7nl7JYaGup03aCLMMUca8f
+ TKZzNAcs/TrVmbc92TYld6MzPpDaZzUG6kLND+B7YJYFcD75cgSD/m2NcAU3ZnqU0geb
+ LGYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1700759880; x=1701364680;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=TvtWeM+Mwb3OHFcjh6p5CSC2tuQSRqfCHfpkw+ypzu8=;
+ b=eUhwbTJW4JqviUxxzsO/hOktjn4jZhHcTiA35GDVabfAK/2Z70GeBLOW7gvTk+EDs/
+ sC8KAazoOK7i8q0IQtKjoCJk3bdAFJPP/aRLaBw0zuAEt4vXmm5g7DrnyHiqz01t+geb
+ h872VfAFjhsvYywBQMM/5LgHNEtGPKHtEVW5Uvk/Qd/Qq63vGB5zAUYV2XV/DsOziciN
+ cQb18q9XASkLviLx7xGRFoPK8MYJkUtgu27/LZOvrLruMb1mgPepakAo9xyk/upA+bwg
+ lPx1Lm0XVGLibWXvNlqaEFbv1Nh6AcjIG8fiFZWs9uBdBOaYcdAd1Les99V6QoRiL5EX
+ OUlQ==
+X-Gm-Message-State: AOJu0YyGwKItVqxG6BqbLTKPASfjuDIzIbY38NiR2qu+VZl7MJaoJOuj
+ hFYpZFbyc5NALHUru40+0fgUEx9HFddzzUsTnIBDkb8X761LX8p0nduzixXP
+X-Google-Smtp-Source: AGHT+IHFTm7FSZvqD0lj2YN30YtHE74aH+v2/rptK6u1L1yD6ssFcpTJmXMrj127JwUM0nsaUdayGhvzJsfcWj0z6Fo=
+X-Received: by 2002:a05:6358:4429:b0:16d:ed11:4d19 with SMTP id
+ z41-20020a056358442900b0016ded114d19mr7112461rwc.19.1700759879728; Thu, 23
+ Nov 2023 09:17:59 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=f922eebe5e70e7b7dd4c3d2bc15ecb9110210299498
+From: Jennifer Osarf <mariagoretti.omego.172913@unn.edu.ng>
+Date: Thu, 23 Nov 2023 17:17:47 +0000
+Message-ID: <CADiG0bQ_GFYSA3WmSnx1a-SpOaua7LR+aD_CYB3DmREexBxjtQ@mail.gmail.com>
+Subject: cooperation for more details
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000007ad242060ad504e2"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,95 +66,175 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: jennifer@unitedstatesgrant.us
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---f922eebe5e70e7b7dd4c3d2bc15ecb9110210299498
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+--0000000000007ad242060ad504e2
+Content-Type: text/plain; charset="UTF-8"
 
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <link href="http://www.grocerycircle.click/Somerville-propagating/b524P2395Xr86Q13sYp688dq1957N36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ2RKmo7zV10ZKL6wzy0wD" rel="preconnect" /> 
-  <link crossorigin="" href="http://www.grocerycircle.click/notched-Byzantinizes/cL64W2395rnj8612t688KeW1957i36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ2RKmo5d1Lw05W2wTD" rel="preconnect" /> 
-  <link href="http://www.grocerycircle.click/Somerville-propagating/b524P2395Xr86Q13sYp688dq1957N36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ2RKmo7zV10ZKL6wzy0wD/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
-  <title>assured</title> 
- </head> 
- <body style="margin: 0; padding: 0; font-family: 'Prompt', sans-serif;"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td align="center"> 
-      <center style="width: 100%; background-color: rgb(245, 250, 255);"> 
-       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-        <thead> 
-         <tr> 
-          <th align="center" class="bbblros" style="padding-top: 20px;">&nbsp;</th> 
-         </tr> 
-        </thead> 
-        <tbody> 
-         <tr> 
-          <td align="center"> 
-           <div style="max-width: 33.4em; margin: auto; text-align: center; background-color: #fff;"> 
-            <div> 
-             <center style="background-color: rgb(26,72,152);">
-              <a href="http://www.grocerycircle.click/Perkins-cottages/b526qr23U95E8y6S12c688fZY1957w36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ2RKmo7ugK10Hh6iLwDll" target="_blank"><img alt="YTSE" src="http://www.grocerycircle.click/Somerville-propagating/3J04V2395QO7sa12d68I91l1957k36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ2RKmo5h10vy6rjlwTD" style="display: block; margin: auto;" width="35%" /> </a>
-             </center> 
-             <center style="padding-top: 30px; padding-left: 30px; padding-right: 30px;">
-              We genuinely thank you for choosing to shop at Kroger. Your loyalty and support are highly meaningful to us, and we truly appreciate the opportunity to assist you.              </center> &nbsp; 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="230px"> 
-              <tbody> 
-               <tr> 
-                <td align="center" width="90px"> 
-                 <div>
-                  <a href="http://www.grocerycircle.click/Perkins-cottages/b526qr23U95E8y6S12c688fZY1957w36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ2RKmo7ugK10Hh6iLwDll" target="_blank"><img alt="BVS" src="http://www.grocerycircle.click/bottles-Bohemia/7b05X2X395BJL7a13Q6D892mw1957O36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ2RKmo6oxpg106yMXwDp" style="display: block;" width="100%" /> </a>
-                 </div> </td> 
-                <td align="center" width="120px"> 
-                 <div>
-                  <a href="http://www.grocerycircle.click/Perkins-cottages/b526qr23U95E8y6S12c688fZY1957w36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ2RKmo7ugK10Hh6iLwDll" target="_blank"><img alt="HGE" src="http://www.grocerycircle.click/bottles-Bohemia/9725c2A395c7asn13k689xO3i1957t36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ2RKmo7RsH1gL06aOJOwD" style="display: block;" width="100%" /> </a>
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> 
-             <div style="padding-top: 30px; padding-left: 30px; padding-right: 30px;">
-              <b>As a gesture of appreciation for your input, you will have the chance to be eligible for a $100 gift. </b>
-              <br /> 
-              <br /> You are welcome to participate in the survey by clicking on the link below. Rest assured that your responses will be handled confidentially, and the survey will only take a few minutes of your time.               <br /> &nbsp; 
-              <table align="center"> 
-               <tbody> 
-                <tr> 
-                 <td align="center"> 
-                  <center style="background-color: rgb(26,72,152); padding: 13px 33px; font-weight: 700; border-radius: 15px;">
-                   <a href="http://www.grocerycircle.click/Perkins-cottages/b526qr23U95E8y6S12c688fZY1957w36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ2RKmo7ugK10Hh6iLwDll" style="text-decoration: none; color: white;" target="_blank">Start Here Now &gt; &gt; </a>
-                  </center> </td> 
-                </tr> 
-               </tbody> 
-              </table> &nbsp; 
-              <div>
-               Thanks again for your support. We anticipate hearing from you soon! Best regards,
-               <br /> 
-               <b>The Kroger Survey Team </b>
-               <br /> &nbsp;
-              </div> 
-             </div> 
-            </div> 
-           </div> 
-           <aside style="padding-top: 100px; padding-bottom: 200px;"> 
-            <footer> 
-             <address style="max-width: 520px; margin: auto; text-align: center; font-size: 12px; font-weight: 700;">if you need to go visit <a href="http://www.grocerycircle.click/seasonings-worthiest/3965KP2395qn8M613D689q0uG1957t36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ2RKmo6RO1Qy06WjwDLq"> here </a><br /> 10010 126 E 23rd St New York, NY, US</address> 
-            </footer> 
-           </aside> </td> 
-         </tr> 
-        </tbody> 
-       </table> 
-      </center> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.grocerycircle.click/e5d4l2395h8Dw513J68xH94W1957v36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ2RKmo6m1FB0W5Sp0wD/reprieves-motives" alt=""/></body>
-</html>
+-- 
 
---f922eebe5e70e7b7dd4c3d2bc15ecb9110210299498--
+*Hello Dear.*
 
+
+
+*  I am Mrs. Jennifer Osarf, a personal Accountant/Executive board of*
+
+*Directors working with Texas Bank United Kingdom (London). I*
+
+*have an interesting business proposal for you that will be of immense*
+
+*benefit to both of us. Although this may be hard for you to believe,*
+
+*we stand to gain a huge amount between us in a matter of days. Please*
+
+*grant me the benefit of doubt and hear me out. I need you to signify*
+
+*your interest by replying to my mail*
+
+
+
+*Honestly, i have business transaction worth the sum of*
+
+*(US$8,200,000.00) Eight Million two hundred thousand united state*
+
+*dollars to transfer to you through proper documentation in position of*
+
+*your own Account Most importantly, I will need you to promise to keep*
+
+*whatever you learn from me between us even if you decide not to go*
+
+*along with me. I will make more details available to you on receipt of*
+
+*a positive response from you.*
+
+
+
+*This transaction is risk-free; please urgently confirm your*
+
+*willingness and interest to assist in this deal, I am in good faith*
+
+*and with trust waiting for your Urgent response and maximum*
+
+*cooperation for more details*
+
+
+*Best Regards,*
+
+*Mrs Jennifer Osarf.*
+
+--0000000000007ad242060ad504e2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br clear=3D"all"><div><br></div><span class=3D"gmail_sign=
+ature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature" data=
+-smartmail=3D"gmail_signature"><div dir=3D"ltr"><p style=3D"font-size:13px;=
+color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,=
+sans-serif;margin:0px;font-stretch:normal;line-height:normal;outline:none!i=
+mportant"><b style=3D"outline:none!important">Hello Dear.</b></p><p style=
+=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quo=
+t;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:no=
+rmal;outline:none!important"><b style=3D"outline:none!important"><br style=
+=3D"outline:none!important"></b></p><p style=3D"font-size:13px;color:rgb(29=
+,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;m=
+argin:0px;font-stretch:normal;line-height:normal;outline:none!important"><b=
+ style=3D"outline:none!important"><br style=3D"outline:none!important"></b>=
+</p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvet=
+ica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;li=
+ne-height:normal;outline:none!important"><b style=3D"outline:none!important=
+">=C2=A0 I am Mrs. Jennifer Osarf, a personal Accountant/Executive board of=
+</b></p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;He=
+lvetica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:norma=
+l;line-height:normal;outline:none!important"><b style=3D"outline:none!impor=
+tant">Directors working with Texas Bank United Kingdom (London). I</b></p><=
+p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica N=
+eue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-he=
+ight:normal;outline:none!important"><b style=3D"outline:none!important">hav=
+e an interesting business proposal for you that will be of immense</b></p><=
+p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica N=
+eue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-he=
+ight:normal;outline:none!important"><b style=3D"outline:none!important">ben=
+efit to both of us. Although this may be hard for you to believe,</b></p><p=
+ style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Ne=
+ue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-hei=
+ght:normal;outline:none!important"><b style=3D"outline:none!important">we s=
+tand to gain a huge amount between us in a matter of days. Please</b></p><p=
+ style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Ne=
+ue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-hei=
+ght:normal;outline:none!important"><b style=3D"outline:none!important">gran=
+t me the benefit of doubt and hear me out. I need you to signify</b></p><p =
+style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neu=
+e&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-heig=
+ht:normal;outline:none!important"><b style=3D"outline:none!important">your =
+interest by replying to my mail</b></p><p style=3D"font-size:13px;color:rgb=
+(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-seri=
+f;margin:0px;font-stretch:normal;line-height:normal;outline:none!important"=
+><b style=3D"outline:none!important"><br style=3D"outline:none!important"><=
+/b></p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Hel=
+vetica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal=
+;line-height:normal;outline:none!important"><b style=3D"outline:none!import=
+ant"><br style=3D"outline:none!important"></b></p><p style=3D"font-size:13p=
+x;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Aria=
+l,sans-serif;margin:0px;font-stretch:normal;line-height:normal;outline:none=
+!important"><b style=3D"outline:none!important">Honestly, i have business t=
+ransaction worth the sum of</b></p><p style=3D"font-size:13px;color:rgb(29,=
+34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;ma=
+rgin:0px;font-stretch:normal;line-height:normal;outline:none!important"><b =
+style=3D"outline:none!important">(US$8,200,000.00) Eight Million two hundre=
+d thousand united state</b></p><p style=3D"font-size:13px;color:rgb(29,34,4=
+0);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margin=
+:0px;font-stretch:normal;line-height:normal;outline:none!important"><b styl=
+e=3D"outline:none!important">dollars to transfer to you through proper docu=
+mentation in position of</b></p><p style=3D"font-size:13px;color:rgb(29,34,=
+40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margi=
+n:0px;font-stretch:normal;line-height:normal;outline:none!important"><b sty=
+le=3D"outline:none!important">your own Account Most importantly, I will nee=
+d you to promise to keep</b></p><p style=3D"font-size:13px;color:rgb(29,34,=
+40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margi=
+n:0px;font-stretch:normal;line-height:normal;outline:none!important"><b sty=
+le=3D"outline:none!important">whatever you learn from me between us even if=
+ you decide not to go</b></p><p style=3D"font-size:13px;color:rgb(29,34,40)=
+;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margin:0=
+px;font-stretch:normal;line-height:normal;outline:none!important"><b style=
+=3D"outline:none!important">along with me. I will make more details availab=
+le to you on receipt of</b></p><p style=3D"font-size:13px;color:rgb(29,34,4=
+0);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margin=
+:0px;font-stretch:normal;line-height:normal;outline:none!important"><b styl=
+e=3D"outline:none!important">a positive response from you.</b></p><p style=
+=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quo=
+t;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:no=
+rmal;outline:none!important"><b style=3D"outline:none!important"><br style=
+=3D"outline:none!important"></b></p><p style=3D"font-size:13px;color:rgb(29=
+,34,40);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;m=
+argin:0px;font-stretch:normal;line-height:normal;outline:none!important"><b=
+ style=3D"outline:none!important"><br style=3D"outline:none!important"></b>=
+</p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvet=
+ica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;li=
+ne-height:normal;outline:none!important"><b style=3D"outline:none!important=
+">This transaction is risk-free; please urgently confirm your</b></p><p sty=
+le=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&q=
+uot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:=
+normal;outline:none!important"><b style=3D"outline:none!important">willingn=
+ess and interest to assist in this deal, I am in good faith</b></p><p style=
+=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quo=
+t;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:no=
+rmal;outline:none!important"><b style=3D"outline:none!important">and with t=
+rust waiting for your Urgent response and maximum</b></p><p style=3D"font-s=
+ize:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helveti=
+ca,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:normal;outli=
+ne:none!important"><b style=3D"outline:none!important">cooperation for more=
+ details</b></p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:=
+&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stret=
+ch:normal;line-height:normal;outline:none!important"><b style=3D"outline:no=
+ne!important"><br style=3D"outline:none!important"></b></p><p style=3D"font=
+-size:13px;color:rgb(29,34,40);font-family:&quot;Helvetica Neue&quot;,Helve=
+tica,Arial,sans-serif;margin:0px;font-stretch:normal;line-height:normal;out=
+line:none!important"><b style=3D"outline:none!important">Best Regards,</b><=
+/p><p style=3D"font-size:13px;color:rgb(29,34,40);font-family:&quot;Helveti=
+ca Neue&quot;,Helvetica,Arial,sans-serif;margin:0px;font-stretch:normal;lin=
+e-height:normal;outline:none!important"><b style=3D"outline:none!important"=
+>Mrs Jennifer Osarf.</b></p></div></div></div>
+
+--0000000000007ad242060ad504e2--
