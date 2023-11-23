@@ -1,44 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A42EA7F65FE
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 19:09:32 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E4FEA7F669B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 Nov 2023 19:46:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 809FE10E172;
-	Thu, 23 Nov 2023 18:09:31 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BFA0210E32A;
+	Thu, 23 Nov 2023 18:46:56 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 23 Nov 2023 18:09:29 UTC
-Received: from mail.fullfillships.click (unknown [77.83.203.111])
- by gabe.freedesktop.org (Postfix) with ESMTP id 420E210E172
+ Thu, 23 Nov 2023 18:46:54 UTC
+Received: from mail.goandtools.world (unknown [77.83.203.118])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 007C810E32A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 18:09:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=fullfillships.click; 
+ Thu, 23 Nov 2023 18:46:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=goandtools.world;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=your.say.fedex@fullfillships.click; 
- bh=Ez9gyPokLajCape3Z16Mw3+4Zfs=;
- b=gfH4hSLB7p2TLukLA5Ax1QMEy3D26nJw43V+TRY4ldjyHKv8wZ5G7VEm2wR3VMn2Db+wGONZHWZa
- F6GR+F91mz8VsANXXsycHKfIv0p0sSN5jN8fWLN/ApVIa6OmYdLvYxfcvK7IpnHAAY1IYP+gm1lD
- /9rfLbKhQ1S9G1vc0KQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=fullfillships.click;
- b=PLxQP7DKs8XmdzgnH38w690T+KqIfBkCSUWwqdlTo3B0nxF7Sb6E08ih0aV1V0MJ/U5xz4aSm4Ez
- uk30fpoprbujR0BtALQSI9Ry1FBQu78+8+P+/CVV8gkrWMSExUPsrgyIqkQVZyyvaH0DlcHLHyxW
- mXeMjZyXqGKyaMCfsZo=;
-Received: by mail.fullfillships.click id hbuali0001go for
+ i=ace.tool.set.survey@goandtools.world; 
+ bh=gHi9cdhnpySGGsh7KK3Eo8/OZXY=;
+ b=A2jtejdHDeRyusZA+d4pEgtL32rY7oaUf5Co0UGq6h1k3OXsjh4F7lGA0WOTLo0qJjssAznGrWL8
+ N46LyG4J4rfoxEz+FMM1YpDrMKvW/X3brWZfimYDVJArXdoyiYGUfipQ5IiZLxYHsq+7/V1BBhI7
+ kKWMM2J/tXEFemTd0/U=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=goandtools.world;
+ b=k3yYs6uX0AcGsoEtc3B8RTyZQVaEb5DByHtwUuowFulwINnWVdbi8HCaEMkHI1EdYDopqHvagHub
+ JIvdKyi++8l/oOuN7wPzX/1mrWghlZdlcCzgaCojL0xVg86ahVgPdMa1TUe85f64KTZKDT/bp8ax
+ pZ4/YZamGfmFwfSexwg=;
+Received: by mail.goandtools.world id hbuf1u0001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 23 Nov 2023 12:48:34 -0500 (envelope-from
- <your.say.fedex-intel+2Dgvt+2Ddev=lists.freedesktop.org@fullfillships.click>)
-Date: Thu, 23 Nov 2023 12:48:34 -0500
-From: "Your Say FedEx" <your.say.fedex@fullfillships.click>
+ Thu, 23 Nov 2023 13:35:52 -0500 (envelope-from
+ <ace.tool.set.survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@goandtools.world>)
+Date: Thu, 23 Nov 2023 13:35:52 -0500
+From: "Ace Tool Set Survey" <ace.tool.set.survey@goandtools.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <74977133701.1700761621526685@fullfillships.click>
-Subject: Participate in FedEx's Quick Poll for Daily Limited-Time Promotions!
+Message-ID: <39868059780.1700764540729190@goandtools.world>
+Subject: Ace Rewards Unleashed: Quick Survey for Daily Promotions!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=aecba24bd6fbd2446717698777fe4c1d8409897599099100
+ boundary=a8edd8c22f34cee67ac6c0500a990e733381030499249892
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---aecba24bd6fbd2446717698777fe4c1d8409897599099100
+--a8edd8c22f34cee67ac6c0500a990e733381030499249892
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -62,145 +61,131 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>loyalty and support</title> 
+  <title>new age</title> 
  </head> 
  <body style="margin: 0; padding: 0;"> 
-  <div> 
-   <center style="border-right: solid 30px #ebebeb; border-left: solid 30px #ebebeb;"> 
-    <h3 style="margin: 0;">&nbsp;</h3> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
-     <caption>
-      &nbsp;
-     </caption> 
-     <thead> 
-      <tr> 
-       <th>&nbsp;</th> 
-      </tr> 
-     </thead> 
-     <tbody> 
-      <tr> 
-       <td class="logysbaron">&nbsp;</td> 
-       <td class="logysbaron">&nbsp;</td> 
-       <td class="logysbaron"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
-         <caption>
-          &nbsp;
-         </caption> 
-         <thead> 
-          <tr> 
-           <th>&nbsp;</th> 
-          </tr> 
-         </thead> 
-         <tbody> 
-          <tr> 
-           <td id="valoraninfo">&nbsp;</td> 
-           <td id="valoraninfo"> 
-            <div> 
-             <div> 
-              <header style="margin: 0; padding: 0;"> 
-               <center> 
-                <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: auto;" width="100%"> 
-                 <tbody> 
-                  <tr> 
-                   <td> 
-                    <div> 
-                     <center style="font-family: Arial, Helvetica, sans-serif; font-weight: 800; font-size: 55px;">
-                      <a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin" style="text-decoration: none; color: #06004A;">Fed </a> 
-                      <a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin" style="text-decoration: none; color: #BD1609;"> Ex </a>
-                     </center> 
-                    </div> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-               </center> 
-              </header> &nbsp; 
-              <div style="background-color: rgb(255, 249, 242); padding: 15px 0px;"> 
-               <section style="max-width: 520px; margin: auto;"> 
-                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;">We want to express our gratitude for choosing FedEx as your preferred shipping partner. Your loyalty and support mean a lot to us, and we truly appreciate the chance to assist you.</p> 
-               </section> 
-              </div> 
-              <div style="max-width: 520px; margin: auto;"> 
-               <table> 
-                <tbody> 
-                 <tr> 
-                  <td><a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin"><img alt="JHESA" src="http://www.fullfillships.click/bivouac-lowlands/13e6Iiq2395SYP7a11z6897A1958_36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQPRKm95qAJ106rMWwOD" style="display: block; " width="100%" /> </a></td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> 
-              <div style="max-width: 520px; margin: auto;"> 
-               <article> 
-                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><font>As we remain dedicated to delivering outstanding service, we warmly encourage you to participate in a short survey regarding your recent shipping experience and your overall interaction with FedEx. </font></p> 
-               </article> 
-              </div> &nbsp; 
-              <div style="background-color: rgb(255, 249, 242); padding: 15px 0px;"> 
-               <section style="max-width: 520px; margin: auto;"> 
-                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><b>Upon completing the survey, you may have the chance to qualify for a $100 Gift! </b></p> 
-               </section> 
-              </div> 
-              <div style="max-width: 520px; margin: auto;"> 
-               <table align="center"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"><a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin"><img alt="JHESA" src="http://www.fullfillships.click/memorabilia-Christiansen/7b05o23p95X7taK12M689q8j1958K36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQPRKm97E1zvoV06h@2wAD" style="display: block; max-width: 90px;" width="100%" /> </a></td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> &nbsp; 
-              <div style="max-width: 520px; margin: auto;"> 
-               <article> 
-                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; text-align: center; line-height: 28px; margin: 0;"><font>To start the survey, simply click on the link provided below. It's a quick task that will require only a few minutes, and rest assured that your responses will remain confidential. </font></p> 
-               </article> 
-              </div> &nbsp; 
-              <div style="max-width: 520px; margin: auto;"> 
-               <table align="center"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center"> 
-                   <blockquote style="max-width: 300px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; padding: 1em 1.8em; background-color: #2e2e2e; border-radius: 10px;">
-                    <a href="http://www.fullfillships.click/c7d5S23N95CT86B12Vx6895P1958u36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQPRKm96hK10vH5ypwDN/subterranean-napkin" style="text-decoration: none; color: rgb(255, 255, 255);">Start Here Now &gt;&gt; </a>
-                   </blockquote> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> &nbsp; 
-              <div style="max-width: 520px; margin: auto;"> 
-               <article> 
-                <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; text-align: center; line-height: 28px; margin: 0;"><font>Your support is highly valued, and we look forward to hearing from you soon.<br /> Warm regards. </font></p> 
-               </article> 
-              </div> 
-              <p style="padding-bottom: 300px;">&nbsp;</p> 
-              <hr /> 
-              <footer style="max-width: 520px; margin: auto; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 12px;"> 
-               <address>another day to leave <a href="http://www.fullfillships.click/b334Q2395iBF8611o6896u1958k36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQPRKm97nIKU10T5pJjwD/subterranean-napkin"> here </a><br /> US 10010 126 E 23rd St New York, NY,</address> 
-              </footer> 
-              <br /> &nbsp;
-             </div> 
-            </div> </td> 
-           <td id="valoraninfo">&nbsp;</td> 
-           <td id="valoraninfo">&nbsp;</td> 
-          </tr> 
-         </tbody> 
-         <tfoot> 
-          <tr> 
-           <td>&nbsp;</td> 
-          </tr> 
-         </tfoot> 
-        </table> </td> 
-       <td class="logysbaron">&nbsp;</td> 
-       <td class="logysbaron">&nbsp;</td> 
-      </tr> 
-     </tbody> 
-     <tfoot> 
-      <tr> 
-       <td>&nbsp;</td> 
-      </tr> 
-     </tfoot> 
-    </table> 
+  <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <caption>
+    &nbsp;
+   </caption> 
+   <thead> 
+    <tr> 
+     <th>&nbsp;</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr> 
+     <td>&nbsp;</td> 
+     <td> 
+      <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
+       <caption>
+        &nbsp;
+       </caption> 
+       <thead> 
+        <tr> 
+         <th>&nbsp;</th> 
+        </tr> 
+       </thead> 
+       <tbody> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td style="background-color: #333333; "> 
+          <div style="max-width: 550px; margin: auto; color: white;"> 
+           <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16pt; text-align: center; padding-right: 20px; padding-left: 20px; font-weight: 900;">Get your hands on a $100 Ace Hardware gift card with just a few simple clicks!</p> 
+          </div> </td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp; 
+          <table align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse; max-width: 550px; margin: auto;"> 
+           <caption>
+            &nbsp;
+           </caption> 
+           <thead> 
+            <tr> 
+             <th>&nbsp;</th> 
+            </tr> 
+           </thead> 
+           <tbody> 
+            <tr> 
+             <td>&nbsp;</td> 
+             <td style="background-color: #CD002A;">&nbsp; 
+              <center style="max-width: 500px; margin: auto;">
+               <a href="http://www.goandtools.world/renamed-intramural/1205C239F5y_8M613JV68F9av1959Y36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQJRKmd5h1B0Y5STUwD" target="_blank"><img alt="autos" src="http://www.goandtools.world/6474H2395M7WTa13r6N8Z9cP1959x36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQJRKmd6YkF10n6e@TTwD/aforementioned-antagonized" width="100%" /> </a>
+              </center> </td> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+             <td style="background-color: white;"> 
+              <div> 
+               <p style="font-size: 16pt; font-family: Arial, Helvetica, sans-serif; text-align: center;">Complete Our Customer Survey And Get A Chance To Win A <b> $100 Ace Hardware Gift Card </b>. Your Feedback Helps Us Improve, And We Value Your Opinions.</p> 
+              </div> </td> 
+             <td>&nbsp;</td> 
+            </tr> 
+            <tr> 
+             <td>&nbsp;</td> 
+             <td>&nbsp;</td> 
+             <td>&nbsp;</td> 
+            </tr> 
+           </tbody> 
+           <tfoot> 
+            <tr> 
+             <td>&nbsp;</td> 
+            </tr> 
+           </tfoot> 
+          </table> </td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+       <tfoot> 
+        <tr> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tfoot> 
+      </table> 
+      <div style="max-width: 450px; margin: auto;"> 
+       <p style="font-size: 16pt; font-family: Arial, Helvetica, sans-serif; text-align: center; padding-left: 20px; padding-right: 20px; margin: 0;">&nbsp;</p> 
+      </div> 
+      <div style="max-width: 450px; margin: auto; text-align: center;">
+       <a href="http://www.goandtools.world/renamed-intramural/1205C239F5y_8M613JV68F9av1959Y36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQJRKmd5h1B0Y5STUwD" style="text-decoration: none; color: rgb(255, 255, 255);"><span style="display: inline-block; background-color: #CC0534; padding: 16px 32px; font-size: 18px; font-weight: bold;">Start Here Now &gt; &gt; </span> </a>
+      </div> </td> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tbody> 
+   <tfoot> 
+    <tr> 
+     <td>&nbsp;</td> 
+    </tr> 
+   </tfoot> 
+  </table> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <div style="background-color: rgb(68, 68, 68); padding-top: 1em; padding-bottom: 1em;"> 
+   <center style="max-width: 450px; margin: auto;"> 
+    <p style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: white; font-size: 12px;">you can leave with sadness <a href="http://www.goandtools.world/tantalizingly-hungrier/a626Bx239V5V86CC11I689bD1959V36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQJRKmd7Hu1qp0I5qpwyD"> here </a><br /> US 10010 126 E 23rd St New York, NY,</p> 
    </center> 
   </div>   
- <img src="http://www.fullfillships.click/memorabilia-Christiansen/b705Lj2395DW8i513nD689_9r1958l36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQPRKm96vv1tl06nlJwOD" alt=""/></body>
+ <img src="http://www.goandtools.world/42b5R23g95y85mv13b6Sk89dD1959S36QbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQJRKmd6mU1J0g6eWywD2/transpose-psychology" alt=""/></body>
 </html>
 
---aecba24bd6fbd2446717698777fe4c1d8409897599099100--
+--a8edd8c22f34cee67ac6c0500a990e733381030499249892--
 
