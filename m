@@ -1,47 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C69F7F7366
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Nov 2023 13:06:54 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CFB17F74B6
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Nov 2023 14:19:55 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0566910E1C2;
-	Fri, 24 Nov 2023 12:06:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DF30A10E7DD;
+	Fri, 24 Nov 2023 13:19:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 24 Nov 2023 12:06:50 UTC
-Received: from mail.draffsinfotools.click (unknown [77.83.203.149])
- by gabe.freedesktop.org (Postfix) with ESMTP id E79C110E1C2
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Fri, 24 Nov 2023 13:19:52 UTC
+Received: from mail.dropscoffees.click (unknown [77.83.203.162])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 2D8CB10E7DD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 Nov 2023 12:06:50 +0000 (UTC)
+ Fri, 24 Nov 2023 13:19:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=draffsinfotools.click; 
+ d=dropscoffees.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=rate_to_win_harbor_tools@draffsinfotools.click; 
- bh=DzQNQtd2bTySO2iHU2+u1wl9pHQ=;
- b=onPbZGyE1gRe4FR+3HyuAT0A0E/bxSihhMqvha5oBBpwUSVAVW2kdrL2Q8hWB/wytESy224NzKHU
- P3qrgOEWkBENqEztPPrsRSwZdu9WmPKY0ch5ryosSFoRDjXo4ycaHPWgI512NUaRDR6l7wFMZDZK
- wK9WcChfHAd6IiJPvYE=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=draffsinfotools.click; 
- b=gldkiNmBYHubVE53u9oYomYVXzCzml0T/yb4A6UqntgnIywK7fnwPUrdCsrovkojOLIGJK2d6KlG
- njjGJdCE/mdBUnXHLHqt829XeWuSmHDlbP24O2qaEa9sCs6UjHNKjwr+L2X/A5pxvqEJHBwpAlaW
- bNfp3f8u/2mw//Op2vw=;
-Received: by mail.draffsinfotools.click id hc28tm0001gd for
+ i=limitedtime-starbucks-survey-bonus@dropscoffees.click; 
+ bh=g7HtmERzJXW7NJD1a/gBMXR2KA4=;
+ b=KEyKVXGoRkMX6A6nQihdgDWECiekPZZ7dLBh+yn2cqybEGJNY3vBAhq5DNyJnM9DUq0ryG+fpctW
+ keRUVuLnkuOmZmjCGJcM4E8IK0/eH/7twc53dzq1TXCYobU8vGLQCuDHzboAAggHoQ59Pd7ab0Vq
+ bvAHBwYcCDSiFF+F0eQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dropscoffees.click; 
+ b=VpG+fd9RvQthMrmvhC5bDaDv70G3MuQXUfjnocqrwgcZUApVXyY3khw6aafokpp9N2BxF2kJ98pQ
+ vKZC4aKddhO4sAsnTSKsZaXz5mlc6BmhnovH5gZFtXQyWHEbyPT7QLDHU3s4DrVgCNOrqMxYs6/V
+ gU6nZ7D/IEXyHC/cbdk=;
+Received: by mail.dropscoffees.click id hc2qog0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 Nov 2023 06:58:03 -0500 (envelope-from
- <rate_to_win_harbor_tools-intel+2Dgvt+2Ddev=lists.freedesktop.org@draffsinfotools.click>)
-Date: Fri, 24 Nov 2023 06:58:03 -0500
-From: "Rate To Win Harbor Tools"
- <rate_to_win_harbor_tools@draffsinfotools.click>
+ Fri, 24 Nov 2023 09:23:15 -0500 (envelope-from
+ <limitedtime-starbucks-survey-bonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@dropscoffees.click>)
+Date: Fri, 24 Nov 2023 09:23:15 -0500
+From: "LimitedTime Starbucks Survey Bonus"
+ <limitedtime-starbucks-survey-bonus@dropscoffees.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <56445162766.1700827053836321@draffsinfotools.click>
-Subject: Today Only: Harbor Freight Survey + Free Pittsburgh Tool Set
- Opportunity!
+Message-ID: <1690738561087.170083103038533@dropscoffees.click>
+Subject: Discover Starbucks Insights: Engage in a Time-Limited Survey for
+ Daily Promotional Delights!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=a37bd060807cbc241a4f98e08282463b9856102291008101662
+ boundary=02a4ee7fae92c2677c2aebe28aee606419097731103
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---a37bd060807cbc241a4f98e08282463b9856102291008101662
+--02a4ee7fae92c2677c2aebe28aee606419097731103
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -66,171 +65,58 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>acquire</title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap');
 	</style> 
+  <title>special</title> 
  </head> 
- <body style="font-family: 'Karla', sans-serif;"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" id="bblimsp" style="border-collapse: collapse; background-color: rgb(233, 233, 233);" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td class="gloryshvia"> 
-      <div class="shivv" style="padding-top: 1.5cm; padding-bottom: 1.5cm; width: 100%;"> 
-       <center id="tmplos" style="padding-top: 30px; padding-bottom: 30px;"> 
-        <section> 
-         <center id="basilk" style="max-width: 524px; margin: auto; text-align: center; background-color: #fff;"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td class="llops"> 
-              <div class="bhhs">
-               <main></main>
-              </div> </td> 
-             <td class="llops"> 
-              <div class="bhhs">
-               <main></main>
-              </div> </td> 
-             <td class="llops"> 
-              <div class="bhhs">
-               <main></main>
-              </div> </td> 
-             <td class="llops"> 
-              <div class="bhhs">
-               <main></main>
-              </div> </td> 
-             <td class="llops"> 
-              <div class="bhhs">
-               <main></main>
-              </div> </td> 
-             <td class="llops"> 
-              <div class="bhhs">
-               <main></main>
-              </div> </td> 
-             <td class="llops"> 
-              <div class="bhhs">
-               <main></main>
-              </div> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" class="simblos" colspan="7"> 
-              <center style="background-color: rgb(165, 10, 10); padding: 15px 0;"> 
-               <div> 
-                <h2 style="margin: 0; font-size: 5.5mm; font-weight: 800; color: white;">Critical Announcements<br /> from Harbor Freight</h2> 
-               </div> 
-              </center> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" colspan="7" id="doblecontainns"> 
-              <div class="shopbs"> 
-               <center id="nngtx" style="max-width: 180px; margin: auto; padding-top: 15px; padding-bottom: 15px;">
-                <a href="http://www.draffsinfotools.click/concatenated-posters/3d25q2u395ry8i613URB68a6k195eh36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQZRKmK5W10zs5C3PwD" target="_blank"><img alt="UUYS" src="http://www.draffsinfotools.click/indiscriminate-grandpa/2885PU2395npL7a11q68a8r195es36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQZRKmK7ijgXL105NlXwD" style="display: block;" width="100%" /></a>
-               </center> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="opllls"> 
-                   <aside style="margin: 0; padding: 0;"> 
-                    <dir style="margin: 0; padding: 0;"> 
-                    </dir> 
-                   </aside> </td> 
-                  <td class="opllls"> 
-                   <aside style="margin: 0; padding: 0;"> 
-                    <dir style="margin: 0; padding: 0;"> 
-                    </dir> 
-                   </aside> </td> 
-                  <td class="opllls"> 
-                   <aside style="margin: 0; padding: 0;"> 
-                    <dir style="margin: 0; padding: 0;"> 
-                    </dir> 
-                   </aside> </td> 
-                  <td class="opllls"> 
-                   <aside style="margin: 0; padding: 0;"> 
-                    <dir style="margin: 0; padding: 0;"> 
-                    </dir> 
-                   </aside> </td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" colspan="4" id="sublime"> 
-                   <div style="border-top: solid 5px rgb(165, 10, 10);"> 
-                    <section style="padding: 25px 45px; font-weight: 500; font-size: 4mm; line-height: 7mm; ;">
-                     We are pleased to announce some thrilling news from 
-                     <b>Harbor Freight</b>. You now have the opportunity to get your hands on a 
-                     <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.                      <br /> 
-                     <br /> Don't miss out on this opportunity! You have until 
-                     <b>November 24th</b> to acquire these enticing tools.                     </section> 
-                    <table align="center"> 
-                     <tbody> 
-                      <tr> 
-                       <td align="cebter"> 
-                        <div style="background-color: rgb(165, 10, 10); padding: 14px 5px; border-radius: 5px; font-weight: bold; font-size: 20px; width: 200px; text-align: center;">
-                         <a href="http://www.draffsinfotools.click/concatenated-posters/3d25q2u395ry8i613URB68a6k195eh36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQZRKmK5W10zs5C3PwD" style="text-decoration: none; color: white;">Start Here Now</a>
-                        </div> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                     <tbody> 
-                      <tr> 
-                       <td align="center" style="padding-top: 22px; padding-bottom: 22px;"> 
-                        <div style="max-width: 70mm; margin: auto;">
-                         <a href="http://www.draffsinfotools.click/concatenated-posters/3d25q2u395ry8i613URB68a6k195eh36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQZRKmK5W10zs5C3PwD"><img alt="USW" src="http://www.draffsinfotools.click/7af4O2395k7alO11S68a9L195eD36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQZRKmK7S1Bj0Mk5IqwDz/Berglund-endanger" width="100%" /></a>
-                        </div> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </div> </td> 
-                 </tr> 
-                 <tr> 
-                  <td class="joacks"> 
-                   <div> 
-                    <article>
-                     <main></main>
-                    </article> 
-                   </div> </td> 
-                  <td class="joacks"> 
-                   <div> 
-                    <article>
-                     <main></main>
-                    </article> 
-                   </div> </td> 
-                  <td class="joacks"> 
-                   <div> 
-                    <article>
-                     <main></main>
-                    </article> 
-                   </div> </td> 
-                  <td class="joacks"> 
-                   <div> 
-                    <article>
-                     <main></main>
-                    </article> 
-                   </div> </td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" colspan="4" id="footers"> 
-                   <div style="padding-top: 320px; background-color: rgb(233,233,233); padding-bottom: 200px;"> 
-                    <div style="font-size: 12px; text-align: center; font-weight: 800;;">
-                     more than welcome to leave in 
-                     <a href="http://www.draffsinfotools.click/examined-settle/5586D2_3T95h8QO613EC68a7oA195el36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQZRKmK5lh10D6XTWlwD">here</a> we' ll miss
-                     <br /> you US 10010 126 E 23rd St New York, NY,
-                    </div> 
-                   </div> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </center> 
-        </section> 
-       </center> 
-      </div> </td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.draffsinfotools.click/4a36P23yF95LA85J13c6VT8aap195eg36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQZRKmK5I1it06P131wD/epithets-understanding" alt=""/></body>
+ <body style="font-family: 'Libre Franklin', sans-serif;"> 
+  <section style="background-color: rgb(221, 221, 221); width: 100%; text-align: center;"> 
+   <center style="padding-top: 8mm; padding-bottom: 8mm;"> 
+    <div style="max-width: 155mm; margin: auto; background-color: #fff;;"> 
+     <ul style="list-style-type: none; margin: 0; padding: 0;"> 
+      <li class="livings"> 
+       <div style="background-color: rgb(26,110,72); padding: 15px 0;"> 
+        <div style="max-width: 250px; margin: auto;">
+         <a href="http://www.dropscoffees.click/cleverness-gambler/8286P239Hx5gH8P612v68JabV195fG36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQORKnm7l1D0vO_6szXwDP" target="_blank"><img alt="HYS" src="http://www.dropscoffees.click/9ad6Q23M9J5t7Rap13nZ6H8ady195fm36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQORKnm5wYl106SWlPwD/stratified-outstrips" style="display: block;" width="100%" /></a>
+        </div> 
+       </div> </li> 
+      <li> 
+       <div style="border: solid 4px rgb(26,110,72);"> 
+        <ul style="list-style-type: none; padding: 0; margin: 0;"> 
+         <li class="blickscracks"> 
+          <div> 
+           <h3 style="font-weight: 800; font-size: 22px;"><i><u>Your Ultimate<br /> Reminder from Starbucks</u></i></h3> 
+           <a href="http://www.dropscoffees.click/cleverness-gambler/8286P239Hx5gH8P612v68JabV195fG36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQORKnm7l1D0vO_6szXwDP"><img alt="NHS" src="http://www.dropscoffees.click/6dd4A2395zN7Oa13h68DsaeF195fD36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQORKnm6Y1Yz0Y5IkwD2/recollections-ingrown" style="display: block; margin: auto;" width="110px" /></a> 
+           <h4 style="font-size: 16px; line-height: 28px; padding: 3.5% 5%; font-weight: 500; margin: 0;">Exciting Update: <b>Starbucks</b> is currently conducting a special promotion, granting you the opportunity to experience a <b>$100 Gift</b> at any of our store locations. Don't miss out on this fantastic offer! You have until <b>November 24th</b> to savor these delightful beverages.</h4> 
+           <div style="width: 250px; margin: auto;"> 
+            <center style="background-color: rgb(24, 24, 24); padding-top: 15px; padding-bottom: 15px; padding-left: 20px; padding-right: 20px; border-radius: 4px; font-weight: bold; font-size: 22px;">
+             <a href="http://www.dropscoffees.click/cleverness-gambler/8286P239Hx5gH8P612v68JabV195fG36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQORKnm7l1D0vO_6szXwDP" style="text-decoration: none; color: white;" target="_blank">Start Here Now &gt;&gt;</a>
+            </center> 
+           </div> &nbsp; 
+           <div style="max-width: 205px; margin: auto;">
+            <a href="http://www.dropscoffees.click/cleverness-gambler/8286P239Hx5gH8P612v68JabV195fG36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQORKnm7l1D0vO_6szXwDP" target="_blank"><img alt="NSE" src="http://www.dropscoffees.click/recollections-ingrown/d145r2W395BD7as13J6r8aUf_195fM36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQORKnm7K1oT0Fm5S1MwD" width="100%" /></a>
+           </div> 
+          </div> </li> 
+         <li>&nbsp; 
+          <div style="background-color: rgb(26,110,72); padding: 15px 0;"> 
+           <div style="font-weight: bold; font-size: 18px; color: white; line-height: 30px;">
+            Your involvement is highly regarded.             <br /> Warm wishes, The Starbucks Team.            </div> 
+          </div> </li> 
+        </ul> 
+       </div> </li> 
+     </ul> 
+     <div style="padding-top: 200px; padding-bottom: 150px; background-color: rgb(221,221,221);"> 
+      <center style="border: solid 3px rgb(26,110,72); padding: 15px 0; background-color: #fff; font-size: 12px; font-weight: bold; line-height: 29px;">
+       you can leave with sadness 
+       <a href="http://www.dropscoffees.click/33b5N2C395EjR8613urJ68acr195fQ36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQORKnm7Qj1Vyq06bUwODT/anarchism-pathological">here</a>
+       <br /> US 10010 126 E 23rd St New York, NY,
+      </center> 
+     </div> 
+    </div> 
+   </center> 
+  </section>   
+ <img src="http://www.dropscoffees.click/4495z23g95pGL8511X68b0M195fP36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQORKnm7yv1F0ky5U1MwD/buttonholes-wardens" alt=""/></body>
 </html>
 
---a37bd060807cbc241a4f98e08282463b9856102291008101662--
+--02a4ee7fae92c2677c2aebe28aee606419097731103--
 
