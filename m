@@ -2,54 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C0D97F729F
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Nov 2023 12:23:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C69F7F7366
+	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 Nov 2023 13:06:54 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DFE4110E1C3;
-	Fri, 24 Nov 2023 11:23:07 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0566910E1C2;
+	Fri, 24 Nov 2023 12:06:53 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 964 seconds by postgrey-1.36 at gabe;
- Fri, 24 Nov 2023 11:23:05 UTC
-Received: from mx-retry-4.pod28.euc1.zdsys.com
- (mx-retry-4.pod28.euc1.zdsys.com [188.172.138.49])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B17E110E1C3
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Fri, 24 Nov 2023 12:06:50 UTC
+Received: from mail.draffsinfotools.click (unknown [77.83.203.149])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E79C110E1C2
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 Nov 2023 11:23:05 +0000 (UTC)
-Received: from outbyoip4.pod28.euc1.zdsys.com (unknown [10.222.113.170])
- by mx-retry-1.pod28.euc1.zdsys.com (Zendesk) with ESMTP
- id 675a412e-937c-4258-a440-9533db661293;
- Fri, 24 Nov 2023 11:07:01 +0000 (UTC)
-Received: from zendesk.com (ip-10-222-112-19.eu-central-1.compute.internal
- [10.222.112.19])
- by outbyoip4.pod28.euc1.zdsys.com (Postfix) with ESMTP id 4ScByC4Z7Zz14K2s
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 Nov 2023 11:06:59 +0000 (UTC)
-Date: Fri, 24 Nov 2023 11:06:59 +0000
-From: Forum Media Polska <support@forummediapolskahelp.zendesk.com>
-To: Intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1E9K6X79E7E_656083d36edde_4b42a47547049_sprut@zendesk.com>
-In-Reply-To: <1700547324.655c4afccd7c8@www.nauczycielprzedszkola.pl>
-References: <1E9K6X79E7E@zendesk.com>
- <1700547324.655c4afccd7c8@www.nauczycielprzedszkola.pl>
-Subject: =?UTF-8?Q?Cze=C5=9B=C4=87!_Otrzymali=C5=9Bmy_Twoje?=
- =?UTF-8?Q?_zg=C5=82oszenie!?=
-Mime-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="--==_mimepart_656083d385184_4b42a47547157";
- charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Delivery-Context: event-id-11453716557468
-Auto-Submitted: auto-generated
-X-Auto-Response-Suppress: All
-X-Mailer: Zendesk Mailer
-X-Zendesk-From-Account-Id: 3e8f851
-X-Zendesk-Email-Id: 01HG0G5WGVJB4H2ETGXENHQZ3M
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zendesk.com;
- q=dns/txt; s=zendesk1; t=1700824019;
- bh=Zvhoba5LPgTp7dnn/v9VS61T69pidb+4rMfZHS2h5Rs=;
- h=date:from:reply-to:to:message-id:in-reply-to:references:subject:mime-version:content-type:content-transfer-encoding;
- b=NP0NiQEKBuqKHk8U695VryavQKTbFl45Wwebur/OzOGsbfwPcZMt3SAWLLn+P67E99GKGU2Ps05/+DIGgTMxIz7mpugfHGEPc38DDBFBy3hRRW0+WjZkm7IJHz4g3yg3CCZRRkJ9zpP/WdwRG5sNteH7IaiAAQUlRlBqorNg6OBT2S1teIHZMY3iMWioVdORRVfG82PGFe6uXz4dBokTwuoQBt3GNpuXWCh0v/5qDSMsFqkwCn9nee3Gmu8hQRxPzthQm5IXW+ierSibn7m2iaqO616+7Rs3FQnxTjXXBWhl0FPHl2nwHkckWZSSM8Fp6+irc7POa7do0ulKCgeGLQ==
+ Fri, 24 Nov 2023 12:06:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=draffsinfotools.click; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=rate_to_win_harbor_tools@draffsinfotools.click; 
+ bh=DzQNQtd2bTySO2iHU2+u1wl9pHQ=;
+ b=onPbZGyE1gRe4FR+3HyuAT0A0E/bxSihhMqvha5oBBpwUSVAVW2kdrL2Q8hWB/wytESy224NzKHU
+ P3qrgOEWkBENqEztPPrsRSwZdu9WmPKY0ch5ryosSFoRDjXo4ycaHPWgI512NUaRDR6l7wFMZDZK
+ wK9WcChfHAd6IiJPvYE=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
+ d=draffsinfotools.click; 
+ b=gldkiNmBYHubVE53u9oYomYVXzCzml0T/yb4A6UqntgnIywK7fnwPUrdCsrovkojOLIGJK2d6KlG
+ njjGJdCE/mdBUnXHLHqt829XeWuSmHDlbP24O2qaEa9sCs6UjHNKjwr+L2X/A5pxvqEJHBwpAlaW
+ bNfp3f8u/2mw//Op2vw=;
+Received: by mail.draffsinfotools.click id hc28tm0001gd for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 24 Nov 2023 06:58:03 -0500 (envelope-from
+ <rate_to_win_harbor_tools-intel+2Dgvt+2Ddev=lists.freedesktop.org@draffsinfotools.click>)
+Date: Fri, 24 Nov 2023 06:58:03 -0500
+From: "Rate To Win Harbor Tools"
+ <rate_to_win_harbor_tools@draffsinfotools.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <56445162766.1700827053836321@draffsinfotools.click>
+Subject: Today Only: Harbor Freight Survey + Free Pittsburgh Tool Set
+ Opportunity!
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+ boundary=a37bd060807cbc241a4f98e08282463b9856102291008101662
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,106 +54,183 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Forum Media Polska <support+id41174@forummediapolskahelp.zendesk.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
+--a37bd060807cbc241a4f98e08282463b9856102291008101662
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-----==_mimepart_656083d385184_4b42a47547157
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>acquire</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
+	</style> 
+ </head> 
+ <body style="font-family: 'Karla', sans-serif;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" id="bblimsp" style="border-collapse: collapse; background-color: rgb(233, 233, 233);" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td class="gloryshvia"> 
+      <div class="shivv" style="padding-top: 1.5cm; padding-bottom: 1.5cm; width: 100%;"> 
+       <center id="tmplos" style="padding-top: 30px; padding-bottom: 30px;"> 
+        <section> 
+         <center id="basilk" style="max-width: 524px; margin: auto; text-align: center; background-color: #fff;"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td class="llops"> 
+              <div class="bhhs">
+               <main></main>
+              </div> </td> 
+             <td class="llops"> 
+              <div class="bhhs">
+               <main></main>
+              </div> </td> 
+             <td class="llops"> 
+              <div class="bhhs">
+               <main></main>
+              </div> </td> 
+             <td class="llops"> 
+              <div class="bhhs">
+               <main></main>
+              </div> </td> 
+             <td class="llops"> 
+              <div class="bhhs">
+               <main></main>
+              </div> </td> 
+             <td class="llops"> 
+              <div class="bhhs">
+               <main></main>
+              </div> </td> 
+             <td class="llops"> 
+              <div class="bhhs">
+               <main></main>
+              </div> </td> 
+            </tr> 
+            <tr> 
+             <td align="center" class="simblos" colspan="7"> 
+              <center style="background-color: rgb(165, 10, 10); padding: 15px 0;"> 
+               <div> 
+                <h2 style="margin: 0; font-size: 5.5mm; font-weight: 800; color: white;">Critical Announcements<br /> from Harbor Freight</h2> 
+               </div> 
+              </center> </td> 
+            </tr> 
+            <tr> 
+             <td align="center" colspan="7" id="doblecontainns"> 
+              <div class="shopbs"> 
+               <center id="nngtx" style="max-width: 180px; margin: auto; padding-top: 15px; padding-bottom: 15px;">
+                <a href="http://www.draffsinfotools.click/concatenated-posters/3d25q2u395ry8i613URB68a6k195eh36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQZRKmK5W10zs5C3PwD" target="_blank"><img alt="UUYS" src="http://www.draffsinfotools.click/indiscriminate-grandpa/2885PU2395npL7a11q68a8r195es36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQZRKmK7ijgXL105NlXwD" style="display: block;" width="100%" /></a>
+               </center> 
+               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td class="opllls"> 
+                   <aside style="margin: 0; padding: 0;"> 
+                    <dir style="margin: 0; padding: 0;"> 
+                    </dir> 
+                   </aside> </td> 
+                  <td class="opllls"> 
+                   <aside style="margin: 0; padding: 0;"> 
+                    <dir style="margin: 0; padding: 0;"> 
+                    </dir> 
+                   </aside> </td> 
+                  <td class="opllls"> 
+                   <aside style="margin: 0; padding: 0;"> 
+                    <dir style="margin: 0; padding: 0;"> 
+                    </dir> 
+                   </aside> </td> 
+                  <td class="opllls"> 
+                   <aside style="margin: 0; padding: 0;"> 
+                    <dir style="margin: 0; padding: 0;"> 
+                    </dir> 
+                   </aside> </td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" colspan="4" id="sublime"> 
+                   <div style="border-top: solid 5px rgb(165, 10, 10);"> 
+                    <section style="padding: 25px 45px; font-weight: 500; font-size: 4mm; line-height: 7mm; ;">
+                     We are pleased to announce some thrilling news from 
+                     <b>Harbor Freight</b>. You now have the opportunity to get your hands on a 
+                     <b>Pittsburgh 225 Piece Tool Set</b>, which can be redeemed at any of our store locations.                      <br /> 
+                     <br /> Don't miss out on this opportunity! You have until 
+                     <b>November 24th</b> to acquire these enticing tools.                     </section> 
+                    <table align="center"> 
+                     <tbody> 
+                      <tr> 
+                       <td align="cebter"> 
+                        <div style="background-color: rgb(165, 10, 10); padding: 14px 5px; border-radius: 5px; font-weight: bold; font-size: 20px; width: 200px; text-align: center;">
+                         <a href="http://www.draffsinfotools.click/concatenated-posters/3d25q2u395ry8i613URB68a6k195eh36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQZRKmK5W10zs5C3PwD" style="text-decoration: none; color: white;">Start Here Now</a>
+                        </div> </td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                     <tbody> 
+                      <tr> 
+                       <td align="center" style="padding-top: 22px; padding-bottom: 22px;"> 
+                        <div style="max-width: 70mm; margin: auto;">
+                         <a href="http://www.draffsinfotools.click/concatenated-posters/3d25q2u395ry8i613URB68a6k195eh36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQZRKmK5W10zs5C3PwD"><img alt="USW" src="http://www.draffsinfotools.click/7af4O2395k7alO11S68a9L195eD36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQZRKmK7S1Bj0Mk5IqwDz/Berglund-endanger" width="100%" /></a>
+                        </div> </td> 
+                      </tr> 
+                     </tbody> 
+                    </table> 
+                   </div> </td> 
+                 </tr> 
+                 <tr> 
+                  <td class="joacks"> 
+                   <div> 
+                    <article>
+                     <main></main>
+                    </article> 
+                   </div> </td> 
+                  <td class="joacks"> 
+                   <div> 
+                    <article>
+                     <main></main>
+                    </article> 
+                   </div> </td> 
+                  <td class="joacks"> 
+                   <div> 
+                    <article>
+                     <main></main>
+                    </article> 
+                   </div> </td> 
+                  <td class="joacks"> 
+                   <div> 
+                    <article>
+                     <main></main>
+                    </article> 
+                   </div> </td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" colspan="4" id="footers"> 
+                   <div style="padding-top: 320px; background-color: rgb(233,233,233); padding-bottom: 200px;"> 
+                    <div style="font-size: 12px; text-align: center; font-weight: 800;;">
+                     more than welcome to leave in 
+                     <a href="http://www.draffsinfotools.click/examined-settle/5586D2_3T95h8QO613EC68a7oA195el36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQZRKmK5lh10D6XTWlwD">here</a> we' ll miss
+                     <br /> you US 10010 126 E 23rd St New York, NY,
+                    </div> 
+                   </div> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </center> 
+        </section> 
+       </center> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.draffsinfotools.click/4a36P23yF95LA85J13c6VT8aap195eg36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQZRKmK5I1it06P131wD/epithets-understanding" alt=""/></body>
+</html>
 
-Cze=C5=9B=C4=87 Intel-gvt-dev!=0D
-=0D
-Potwierdzamy, =C5=BCe otrzymali=C5=9Bmy Twoje zg=C5=82oszenie, kt=C3=B3re=
-mu nadali=C5=9Bmy indywidualny numer (41174).=0D
-Odpiszemy najszybciej jak to mo=C5=BCliwe i wr=C3=B3cimy do Ciebie z najl=
-epszym rozwi=C4=85zaniem.=0D
-=0D
-Prosimy o wyrozumia=C5=82o=C5=9B=C4=87.=0D
-=0D
-Je=C5=9Bli pojawi=C4=85 si=C4=99 jakiekolwiek dodatkowe pytania lub w=C4=85=
-tpliwo=C5=9Bci, nie wahaj si=C4=99 skontaktowa=C4=87 z nami ponownie. =0D=
+--a37bd060807cbc241a4f98e08282463b9856102291008101662--
 
-Nasz zesp=C3=B3=C5=82 jest gotowy, by udzieli=C4=87 Ci wszelkiej pomocy i=
- wsparcia.=0D
-=0D
-=0D
-=0D
---------------------------------=0D
-Ten e-mail zosta=C5=82 wys=C5=82any z konta Forum Media Polska.=0D
-=0D
-=0D
-=0D
-=0D
-=0D
-=0D
-=0D
-=0D
-=0D
-=0D
-=0D
-[1E9K6X-79E7E]=
-
-----==_mimepart_656083d385184_4b42a47547157
-Content-Type: text/html;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<!DOCTYPE html><html dir=3D"auto"><head>=0D
-  <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
-">=0D
-  <style type=3D"text/css">=0D
-    table td {=0D
-      border-collapse: collapse;=0D
-    }=0D
-    body[dir=3Drtl] .directional_text_wrapper { direction: rtl; unicode-b=
-idi: embed; }=0D
-=0D
-  </style>=0D
-=0D
-          <style type=3D"text/css">=0D
-            @media only screen and (max-width: 768px) {=0D
-              .simplified-email-footer .namecard {=0D
-                display: block;=0D
-                min-width: 100%;=0D
-                padding: 0 0 16px 0; }=0D
-=0D
-              .simplified-email-footer .content {=0D
-                padding: 16px; }=0D
-            }=0D
-          </style>=0D
-        </head>=0D
-<body lang=3D"pl" style=3D"width: 100%!important; margin: 0; padding: 0;"=
->=0D
-<div style=3D"text-align: center;">=0D
-<img style=3D" width: 10%;" src=3D"https://forumlogopedy.pl/media/cache/o=
-rigin/uploads/646/366/6463661d9ffe7176494310.png"></div>=0D
-=0D
-  <div style=3D"font-family: 'system-ui','-apple-system','BlinkMacSystemF=
-ont','Segoe UI','Roboto','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Ne=
-ue','Arial','sans-serif'; font-size: 14px; line-height: 1.5; color:#44444=
-4;">=0D
-    <p dir=3D"ltr">Cze=C5=9B=C4=87 Intel-gvt-dev!</p><p dir=3D"ltr">Potwi=
-erdzamy, =C5=BCe otrzymali=C5=9Bmy Twoje zg=C5=82oszenie, kt=C3=B3remu na=
-dali=C5=9Bmy indywidualny numer (41174).<br>Odpiszemy najszybciej jak to =
-mo=C5=BCliwe i wr=C3=B3cimy do Ciebie z najlepszym rozwi=C4=85zaniem.</p>=
-<p dir=3D"ltr">Prosimy o wyrozumia=C5=82o=C5=9B=C4=87.</p><p dir=3D"ltr">=
-Je=C5=9Bli pojawi=C4=85 si=C4=99 jakiekolwiek dodatkowe pytania lub w=C4=85=
-tpliwo=C5=9Bci, nie wahaj si=C4=99 skontaktowa=C4=87 z nami ponownie. <br=
->Nasz zesp=C3=B3=C5=82 jest gotowy, by udzieli=C4=87 Ci wszelkiej pomocy =
-i wsparcia.</p>=0D
-  </div><br>=0D
-  <div style=3D"font-family: 'system-ui','-apple-system','BlinkMacSystemF=
-ont','Segoe UI','Roboto','Oxygen-Sans','Ubuntu','Cantarell','Helvetica Ne=
-ue','Arial','sans-serif'; font-size: 12px; line-height: 1.5; color: #aaaa=
-aa; margin: 10px 0 14px 0; padding-top: 10px;">=0D
-    Ten e-mail zosta=C5=82 wys=C5=82any z konta Forum Media Polska.=0D
-  </div><br>=0D
-  =0D
-<span style=3D"color:#FFFFFF" aria-hidden=3D"true">[1E9K6X-79E7E]</span>=0D=
-
-</body></html>=
-
-----==_mimepart_656083d385184_4b42a47547157--
