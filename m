@@ -1,45 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26A797F8A15
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Nov 2023 12:11:55 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E3FE7F8AC3
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Nov 2023 13:29:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9D67310E0F7;
-	Sat, 25 Nov 2023 11:11:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id DA11C10E23A;
+	Sat, 25 Nov 2023 12:29:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Sat, 25 Nov 2023 11:11:51 UTC
-Received: from mail.mcslowins.world (unknown [77.83.203.195])
- by gabe.freedesktop.org (Postfix) with ESMTP id C09E010E0F7
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Sat, 25 Nov 2023 12:29:44 UTC
+Received: from mail.darksipinfo.click (unknown [77.83.203.226])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 381A610E1CD
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Nov 2023 11:11:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mcslowins.world; 
+ Sat, 25 Nov 2023 12:29:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=darksipinfo.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=quick_mcds_survey_limited_slots@mcslowins.world; 
- bh=l5o7MVLD2Hps2sJuoAeUKYBNWU0=;
- b=ca5TUzwGDNJh/hnvMFjZg7eq7VqRDqj24Uq/TF2ifFwt3npKk/aqJiHhHSSPk1PyKtpxghZYKZMV
- 3kxcxqMXLPnIvhQGURQHlBZpsMhkV8vU3MFwovR10Xr5jNz04kvRPL8ZZd2tgJ/fplJaUq4R5QYf
- uaXwKrj9eYdmNi4Piio=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mcslowins.world;
- b=idNwEb7D5St23dOIXDMHfmk4F1Uzw86Rc5C/yUgf28GsGbN6EhavbrfLykhp6/GM5WDNNdBE8AKl
- 2xP/Uil484kWAGXSgaWH5fOYWLTgvc59VMQEbdH2ElrNUmNO6rJkWcGCg/aiXlfcwaAvthARBTJt
- Qg8UmnfQazwn5UCbbuY=;
-Received: by mail.mcslowins.world id hc7b7e0001g9 for
+ i=verizon.survey.win.iphone.15.pro@darksipinfo.click; 
+ bh=NyLZ37A4kAayc2Z4jhAsg0tps+4=;
+ b=tKjQSaqlmu2ICLr49zCzhe2OABvFEhJxMIWPMHpVgVbvyywzc9WcsoflyOyUZU1GSrlylxFSdq16
+ +0IN64nkfSW7FtqbM004WGXV5KFBiDgTtV0q9U9VEQrGPx5aAR1OWB83r8nfCJ0jAbB9HJK6640W
+ 8KqOsKccIZL7HcgeQZs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=darksipinfo.click; 
+ b=J5LIT0RXOjaQRnfS06jS4BQajAEiduRiJhjJDog3rDNuLB2Pr8hWNQNdGfv9SH1HaAZmU35Chd4J
+ bA3tMq0SUCIyU4K6RuANv2LgFtD22cQjcWsG+NvAHKmdAjsGh/pGOpTpX+yDe25wKNaNr81i7nva
+ 65RoSq33xbh1Iul5KJk=;
+Received: by mail.darksipinfo.click id hc7kbg0001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Nov 2023 06:03:22 -0500 (envelope-from
- <quick_mcds_survey_limited_slots-intel+2Dgvt+2Ddev=lists.freedesktop.org@mcslowins.world>)
-Date: Sat, 25 Nov 2023 06:03:22 -0500
-From: "Quick McDs Survey Limited Slots"
- <quick_mcds_survey_limited_slots@mcslowins.world>
+ Sat, 25 Nov 2023 07:21:15 -0500 (envelope-from
+ <verizon.survey.win.iphone.15.pro-intel+2Dgvt+2Ddev=lists.freedesktop.org@darksipinfo.click>)
+Date: Sat, 25 Nov 2023 07:21:15 -0500
+From: "Verizon Survey Win IPhone 15 Pro"
+ <verizon.survey.win.iphone.15.pro@darksipinfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <42557350701.17009101827879620@mcslowins.world>
-Subject: Quick McD's Survey Alert: Limited Time, Exclusive Daily Promotions
- &ndash; Act Now!
+Message-ID: <14555995243480.17009148675156163@darksipinfo.click>
+Subject: Verizon Alert: Win iPhone 15 Pro Today&mdash;Take the Quick Survey!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=bcc5e62290affdffb7e8f9bce3526ae13410110198100
+ boundary=d10ff4c7c1be76084dfab9df513f154199391033
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,197 +54,95 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---bcc5e62290affdffb7e8f9bce3526ae13410110198100
+--d10ff4c7c1be76084dfab9df513f154199391033
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>out</title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300; 400; 500; 600; 700; 800; 900&display=swap'); 
-	</style> 
+  <title>limited</title> 
  </head> 
- <body style="font-family: 'Rubik', sans-serif; "> 
-  <div style="background-color: rgb(226, 226, 226); width: 100%; "> 
-   <div style="padding-top: 50px; padding-bottom: 50px; "> 
-    <div style="max-width: 33.5rem; margin: auto; background-color: #fff; border-radius: 15px; "> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="center" class="infogrameas"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center" class="shofs" colspan="5" style="padding-top: 15px; padding-bottom: 15px; "> 
+ <body style="margin: 0; padding: 0;"> 
+  <ol style="list-style-type: none; padding: 0; margin: 0;"> 
+   <li id="bblsas"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center"> 
+        <center align="cneter" id="tottsal" style="background-color: rgb(238, 238, 238); width: 100%;">
+         <br /> 
+         <br /> &nbsp; 
+         <div> 
+          <table align="center" border="0" cellpadding="13px" cellspacing="0" style="border-collapse: collapse; background-color: rgb(32, 32, 32);" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 50px;"> 
+              <div style="max-width: 300px; margin: auto;"> 
+               <center>
+                <a href="http://www.darksipinfo.click/dispute-desiccate/b166k2F3z95ET86h12J68c3xP1964h36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQHRKnQ6V__1l05fUlwD" style="text-decoration: none; color: #fff;"><b style="color: #ff0000;">V<span style="color: #fff;">erizon</span> </b> </a>
+               </center> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> &nbsp; 
+          <center align="center" class="symblis" style="background-color: #fff; max-width: 18cm; margin: auto; text-align: center;"> 
+           <div> 
+            <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 800; font-size: 25px; margin: 0; padding: .8cm 0;">Esteemed Customer</h1> 
+            <div style="padding: 0 60px;"> 
+             <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 1.3rem; line-height: 1.7rem; ;">At Verizon, we highly appreciate your loyalty and the trust you've placed in our services. To demonstrate our appreciation, we are excited to present a unique, limited-time offer designed exclusively for you.<br /> <br /> <b>Have the opportunity to win an iPhone PRO 15! </b> <a href="http://www.darksipinfo.click/dispute-desiccate/b166k2F3z95ET86h12J68c3xP1964h36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQHRKnQ6V__1l05fUlwD" target="_blank"> <img alt="YTS" src="http://www.darksipinfo.click/cleaner-swallows/15c6r239OF5h7ahM11d68c5U1964U36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQHRKnQ5nj1v05wB2wD" width="100%" /> </a></h2> 
+             <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 1.4rem; line-height: 1.7rem; ;">Engage in a quick and to-the-point survey to enter our giveaway for a chance to win. Your feedback is of utmost importance to us, as we are dedicated to providing an exceptional experience for you. By participating, you not only contribute to our continuous enhancement but also qualify for the opportunity to receive the state-of-the-art iPhone PRO 15.</h3> &nbsp; 
              <div> 
-              <center style="max-width: 423px; margin: auto; ">
-               <a href="http://www.mcslowins.world/b334Q2395m86VF12p68bx9X1962W36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwRKn96J1_Qp05v1wDT/overflows-blemish"><img alt="IIUSE" src="http://www.mcslowins.world/overflows-blemish/3f06aS2o395E7ZRa11d68bbm1962J36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQwRKn97FUw10Lv5EqPwD" style="display: block; " width="100%" /></a>
-              </center> 
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td class="LLOSP"> 
-             <aside class="llos"> 
-              <div id="clocks"> 
-               <section>
-                &nbsp; 
-               </section> 
-              </div> 
-             </aside> </td> 
-            <td class="LLOSP"> 
-             <aside class="llos"> 
-              <div id="clocks"> 
-               <section>
-                &nbsp; 
-               </section> 
-              </div> 
-             </aside> </td> 
-            <td class="LLOSP"> 
-             <aside class="llos"> 
-              <div id="clocks"> 
-               <section>
-                &nbsp; 
-               </section> 
-              </div> 
-             </aside> </td> 
-            <td class="LLOSP"> 
-             <aside class="llos"> 
-              <div id="clocks"> 
-               <section>
-                &nbsp; 
-               </section> 
-              </div> 
-             </aside> </td> 
-            <td class="LLOSP"> 
-             <aside class="llos"> 
-              <div id="clocks"> 
-               <section>
-                &nbsp; 
-               </section> 
-              </div> 
-             </aside> </td> 
-           </tr> 
-           <tr> 
-            <td class="loliports" colspan="5"> 
-             <div> 
-              <p style="margin: 0; max-width: 278px; margin: auto; "><a href="http://www.mcslowins.world/b334Q2395m86VF12p68bx9X1962W36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwRKn96J1_Qp05v1wDT/overflows-blemish" target="_blank"><img alt="NBSW" src="http://www.mcslowins.world/bc94k2395QKx7a12W6t8bcC1962s36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQwRKn96sDt1D05bOwDT/unclaimed-designated" style="display: block; " width="100%" /></a></p> 
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td class="GABSS"> 
-             <div>
-              <span>
-               <main></main> </span>
-             </div> </td> 
-            <td class="GABSS"> 
-             <div>
-              <span>
-               <main></main> </span>
-             </div> </td> 
-            <td class="GABSS"> 
-             <div>
-              <span>
-               <main></main> </span>
-             </div> </td> 
-            <td class="GABSS"> 
-             <div>
-              <span>
-               <main></main> </span>
-             </div> </td> 
-            <td class="GABSS"> 
-             <div>
-              <span>
-               <main></main> </span>
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td align="center"> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-              <tbody> 
-               <tr> 
-                <td align="center" id="bblos"> 
-                 <div> 
-                  <p style="font-size: 18px; line-height: 28px; padding: 3.5% 5%; font-weight: 500; ">Your trust and loyalty have been apparent in your interactions with us. You' re not merely a committed client but also a treasured friend. We genuinely appreciate your support and the choice to engage with us.<br /> <br /> <a href="http://www.mcslowins.world/b334Q2395m86VF12p68bx9X1962W36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwRKn96J1_Qp05v1wDT/overflows-blemish" target="_blank"><img alt="UUYES" src="http://www.mcslowins.world/5935S2Z395zMq7a12i68bdTs1962T36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQwRKn96cIUU105tXwDX/admission-Tuscarora" style="display: block; " width="100%" /></a> <font style="background-color: rgb(244,152,43); padding: 3.5% 4%; display: block; font-weight: 500; "> In alignment with our commitment to ensuring the utmost satisfaction, we warmly invite you to participate in a brief survey concerning your recent experience and overall interaction with our services. </font
- ><br /> To participate in the survey, just click the link provided below. It will only require a few minutes of your time, and your responses will be kept entirely confidential.</p> 
-                  <table align="center"> 
-                   <tbody> 
-                    <tr> 
-                     <td> 
-                      <center style="background-color: rgb(245,65,67); padding: 16px 33px; font-size: 20px; font-weight: bold; ">
-                       <a href="http://www.mcslowins.world/b334Q2395m86VF12p68bx9X1962W36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQwRKn96J1_Qp05v1wDT/overflows-blemish" style="text-decoration: none; color: white; ">Go here To Start</a>
-                      </center> </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-                   <tbody> 
-                    <tr> 
-                     <td align="center">&nbsp; 
-                      <div style="padding: 15px 20px; background-color: #f1f1f1; ">
-                       Once more, we appreciate your support. We eagerly await your response. Warm regards,
-                      </div> <br /> &nbsp; </td> 
-                    </tr> 
-                   </tbody> 
-                  </table> 
-                 </div> </td> 
-               </tr> 
-              </tbody> 
-             </table> </td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: #E2E2E2; " width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="center"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
-          <tbody> 
-           <tr> 
-            <td class="jJHSE"> 
-             <div>
-              &nbsp; 
-             </div> </td> 
-            <td class="jJHSE"> 
-             <div>
-              &nbsp; 
-             </div> </td> 
-            <td class="jJHSE"> 
-             <div>
-              &nbsp; 
-             </div> </td> 
-            <td class="jJHSE"> 
-             <div>
-              &nbsp; 
-             </div> </td> 
-            <td class="jJHSE"> 
-             <div>
-              &nbsp; 
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td align="center" colspan="5"> 
-             <div style="padding-top: 300px; padding-top: 150px; font-weight: 700; font-size: 12px; text-align: center; line-height: 22px; ">
-              this will lead you to the 
-              <a href="http://www.mcslowins.world/15b5M2N395Rq8O611S68bak1962G36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQwRKn97s1x0Oyt5cOw2D/reuniting-appurtenances">Exit</a> for good
-              <br /> US 10010 126 E 23rd St New York, NY,
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </div> 
-   </div> 
-  </div>   
- <img src="http://www.mcslowins.world/observation-hampers/15c6p23z9Y5fk85J11B68bey1962p36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQwRKn97vV10Lkz5W3kwD" alt=""/></body>
+              <table align="center"> 
+               <tbody> 
+                <tr> 
+                 <td align="center"> 
+                  <div>
+                   <a href="http://www.darksipinfo.click/dispute-desiccate/b166k2F3z95ET86h12J68c3xP1964h36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQHRKnQ6V__1l05fUlwD" style="text-decoration: none; color: #fff;"><span style="display: inline-block; padding: 1.5rem 1.7rem; border-radius: 1.2rem; font-family: Arial, Helvetica, sans-serif; font-weight: bold; background-color: rgb(31, 31, 31);">Take the Survey Now </span> </a>
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> 
+              <h5 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 1.4rem; line-height: 1.7rem; ;"><b>Hurry * This Offer Expires Soon! </b><br /> <br /> Be sure to grab the opportunity to attain this amazing prize, as the survey will be open for a limited time. Take prompt action to secure your chance to own the iPhone PRO 15.<br /> <br /> We extend our appreciation for your continuous support and eagerly anticipate receiving your invaluable feedback. Your input motivates us to provide you with the best service possible.</h5> &nbsp; 
+              <hr /> 
+              <h6 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 500; font-size: 1.4rem; line-height: 1.7rem; ;"><b>Best regards,<br /> The Verizon Team </b><br /> &nbsp;</h6> 
+             </div> 
+            </div> 
+           </div> 
+          </center> 
+         </div> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> 
+         <br /> &nbsp; 
+         <div style="max-width: 520px; margin: auto; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-align: center; font-weight: 800;">
+          you can leave with sadness 
+          <a href="http://www.darksipinfo.click/1b55U23m95n86PW12W68c4lk1964r36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQHRKnQ6Qr1j0x5VJ2wD/cleaner-swallows"> here </a>
+          <br /> US 10010 126 E 23rd St New York, NY,
+         </div> 
+         <br /> 
+         <br /> &nbsp;
+        </center> </td> 
+      </tr> 
+     </tbody> 
+    </table> </li> 
+  </ol>   
+ <img src="http://www.darksipinfo.click/e7b5t2A395uxV8512e68cz6S1964H36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQHRKnQ7j1JGSr06SUlqwD/reprograms-utilizes" alt=""/></body>
 </html>
 
---bcc5e62290affdffb7e8f9bce3526ae13410110198100--
+--d10ff4c7c1be76084dfab9df513f154199391033--
 
