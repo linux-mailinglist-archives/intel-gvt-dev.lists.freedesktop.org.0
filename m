@@ -1,43 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9981A7F8C04
-	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Nov 2023 16:21:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 863227F8C41
+	for <lists+intel-gvt-dev@lfdr.de>; Sat, 25 Nov 2023 17:06:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 0FE9310E046;
-	Sat, 25 Nov 2023 15:21:39 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B798110E036;
+	Sat, 25 Nov 2023 16:05:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Sat, 25 Nov 2023 15:21:36 UTC
-Received: from mail.lognskohls.click (unknown [77.83.203.24])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3F0C110E046
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Sat, 25 Nov 2023 16:05:56 UTC
+Received: from mail.mkflyinginfo.click (unknown [77.83.203.254])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7ED5710E033
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Nov 2023 15:21:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=lognskohls.click;
+ Sat, 25 Nov 2023 16:05:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=mkflyinginfo.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=times-ticking-kohls-bonus@lognskohls.click; 
- bh=TkYY60PlBRrU6cuR/hRhvymBh3Q=;
- b=TVjUs5MQaURE4/cCZ8sJRJ0SPtQBKj8aqYInrcll3+GsFxLhXZ3cCzYPPzog69Bf6SICRYIrOWiQ
- HYoZdNQ721wt5R8QN1jV0SQTJmFu+TzwmM1rdYbkjvYZR+Dc1hsTGP+/QGElStpshCy5S4NpWAOo
- 7Cp9PR9MgGyMQmQvf1o=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=lognskohls.click;
- b=jBcfxvaHWqzPOnZ4LEG+43JJweH3bkwpmCtdaltZk458U16PF2sJ/wet1FNLf6bx/Y5qAzwYfdtF
- 8aGN34rhMgmdTsgnyAQ9KMX0aGDlAhyPDc/vdOE4ty1K5dJGUQZfTcB6sLyGxtIX5T8m1uFoHApM
- FvrYmUomvVKheRRuX74=;
-Received: by mail.lognskohls.click id hc88g00001gs for
+ i=deal.alert.united.time.sensitive@mkflyinginfo.click; 
+ bh=bcisPqWrnjDu8huOE8QKJekxjz8=;
+ b=mdALMOLmmHkArOcOxPrIcxPQa04uZJN/GLwveBeXUVk7yLbf4gKcgS58CJgXUQ5Rk/srLJd60avK
+ fMfoR13KfHkJQZsJfYGveuiedxt/SwKGnHdWJsHlKi6l/P/nNpR4Wo0WCRoWKtHYWHnbWdRmYthm
+ izui1KcLQ8UcOYQ2iHQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mkflyinginfo.click; 
+ b=RZNiHiwls61821gNdHJ3fHLflJ33sUm3JTTV6LoYU2xjvjxHa6YsM+H1IewOnEt6GLk0YpMq9gAH
+ 8Rcaynw4vVuYu6h0z/hy3yltzL4m2+RnesoIhC+gOM2HuO1ExbE3RF09b4Ug5fOckGHC5lGcWCoN
+ fvrHk41fuDItaO5H0dE=;
+Received: by mail.mkflyinginfo.click id hc8dm80001gn for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 25 Nov 2023 10:12:16 -0500 (envelope-from
- <times-ticking-kohls-bonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@lognskohls.click>)
-Date: Sat, 25 Nov 2023 10:12:16 -0500
-From: "Times Ticking Kohls Bonus." <times-ticking-kohls-bonus@lognskohls.click>
+ Sat, 25 Nov 2023 10:58:44 -0500 (envelope-from
+ <deal.alert.united.time.sensitive-intel+2Dgvt+2Ddev=lists.freedesktop.org@mkflyinginfo.click>)
+Date: Sat, 25 Nov 2023 10:58:44 -0500
+From: "Deal Alert United Time Sensitive."
+ <deal.alert.united.time.sensitive@mkflyinginfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1155404486823.1700925115576374@lognskohls.click>
-Subject: Kohl's Rewards Unleashed: Quick Survey for Daily Promos!
+Message-ID: <1727518447871.17009279197426974@mkflyinginfo.click>
+Subject: United Advantage: Act Fast for Limited-time Survey Benefits Today!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=7b0ff304c2a0a9d5dcc21838cb6e69a4210291
+ boundary=1cf849afa08285d69dbfa9fef6ed6c0d241899510197
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,42 +55,44 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---7b0ff304c2a0a9d5dcc21838cb6e69a4210291
+--1cf849afa08285d69dbfa9fef6ed6c0d241899510197
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
------------------------------------------------
+A Special Offer for Valued Customers
+-------------------------------------------
 
-KOHL'S Rewards
+United Airlines 
 
-We wanted to take a moment to thank you for choosing Kohl's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
+We wanted to take a moment to thank you for choosing United Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
 
-
-As a token of our appreciation, we would like to give you a FREE Ninja Air Fryer when you fill out our survey.  This kitchen appliance is a high-quality air fryer that will allow you to cook healthy and delicious meals with ease and is yours to keep, no strings attached. 
-
-
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with United Airlines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
-Start Here Now>>>>>
-http://www.lognskohls.click/Euterpe-diagnosable/7ce4d2395XZv8613P68Ycj9A1966u36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQgRKnS5UQ10t6Fy13wD
+For completing the survey, you can receive a $500 Gift!
+
+
+To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
 
 
 
+TAKE THE SURVEY >>>>>
+http://www.mkflyinginfo.click/b6f6lQN2395kN8T613D68cblVq1967s36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQ.RKne7jr1zz0u5l23wD/incidents-soprano
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
 
-Best regards,
-The Kohl's Survey Team
 
------------------------------------------------
-To cut out your subscription, click_here >>>>> http://www.lognskohls.click/Normandy-regulator/c605S239h5kP86P11Q68caB1966u36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQgRKnS6K1G0wN6lXlNwD
+Thank you again for your support.  We look forward to hearing from you soon Warm regards
+
+
+The United Airlines Survey
+
+-------------------------------------------
+
+
+To conclude notifications, click_here >>>>> http://www.mkflyinginfo.click/1976Qjo2395hZi8613cs68cmcx1967H36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ.RKne6a1PT0R6HLlLwD/bartering-Normanizes
 126 E 23rd St New York, NY, US 10010
 
+<big><span></span><style></big></style><font dir="deductive"></font><font><style><font><big></style></font></big></font>
 
-
-<font id="Vaughn"><big></font></big><big><big></big><small></small></big><font></font>
-
---7b0ff304c2a0a9d5dcc21838cb6e69a4210291--
+--1cf849afa08285d69dbfa9fef6ed6c0d241899510197--
 
