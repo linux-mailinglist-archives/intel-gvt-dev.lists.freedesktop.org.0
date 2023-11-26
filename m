@@ -1,45 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E15C7F94BB
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 26 Nov 2023 18:58:01 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 426C07F94F9
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 26 Nov 2023 20:08:33 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1689010E138;
-	Sun, 26 Nov 2023 17:58:00 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1797110E145;
+	Sun, 26 Nov 2023 19:08:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Sun, 26 Nov 2023 17:57:58 UTC
-Received: from mail.offersfreeinf.click (unknown [77.83.203.101])
- by gabe.freedesktop.org (Postfix) with ESMTP id 076A310E03E
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sun, 26 Nov 2023 19:08:30 UTC
+Received: from mail.podinfotoday.click (unknown [77.83.203.116])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7BAA010E145
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 26 Nov 2023 17:57:58 +0000 (UTC)
+ Sun, 26 Nov 2023 19:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=offersfreeinf.click; 
+ d=podinfotoday.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=now.costco.daily@offersfreeinf.click; 
- bh=Y36/85v2fcuOmperlfbFJnvrF8o=;
- b=XQsY5unUYnEFqSHYUSaS9G/Xjuw0vlt+PTpXmfK2xMXteXvXYtE1lw0GQ9XAhVX+WhvR0i3YIokN
- 5EX1DgEnzc3/PGPwodrXZiMVbx28485QntPsBmOzo1IPFuXLvrS+pzPkYBp0QlF9vh2xxBehQDAS
- mEiVMKbnq0B7sjyKLSg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=offersfreeinf.click;
- b=TmJSn4ie9HUhCYZiJ79ODoG+Smzna6l6SLNX+/YEpajrJGlHDHSLFPWmKfaYimX/R5n82YcMGgbX
- ztx6D5jhhN+AdoJRxVG5ZaksYf+a7YLTBC/FxyUijPjoOQC0uFUnGCwKiPNpiCH4cPot8CEqEmr6
- AWlPF3MsHef+FyasVds=;
-Received: by mail.offersfreeinf.click id hce3ic0001gv for
+ i=daily.promo.home.depot.survey@podinfotoday.click; 
+ bh=98wDqNNAZowznxHCurLs/DWBlVg=;
+ b=qFFMoF7KwbOj0LNDUp+bkwz7WWAG5zsZWyJF6sSswyUyeGqpwi9T9XCDSS3E8e3wFGKHo6f/Etl0
+ 9TSUiT2EiDnGvQhSqJoj+kLpSTbVF0TinC7QcuoXBMq3fvSRhRMKgMLx0FIu8uoqqg+jTcFFlPrj
+ YEtwNWyTUKpKf6hg/uI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=podinfotoday.click; 
+ b=N+vxhXukQ0HWOuipzzOjvqGa+bLwuCLubXnWSZWq5FUgyTJmSgAu/5WDqK5JaSQLXnCEYN0BUO8Q
+ 0dfE6t93nuKaPBplp1GboDjTNTazlTtsaEQI+BgXUTV8cyfqMrwzalooHIWMiL9G9r9U/ZNHoORA
+ yjCpbdSrpxleNi5MCZc=;
+Received: by mail.podinfotoday.click id hcel3m0001g2 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 26 Nov 2023 12:49:16 -0500 (envelope-from
- <now.costco.daily-intel+2Dgvt+2Ddev=lists.freedesktop.org@offersfreeinf.click>)
-Date: Sun, 26 Nov 2023 12:49:16 -0500
-From: "Now Costco Daily" <now.costco.daily@offersfreeinf.click>
+ Sun, 26 Nov 2023 15:11:59 -0500 (envelope-from
+ <daily.promo.home.depot.survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@podinfotoday.click>)
+Date: Sun, 26 Nov 2023 15:11:59 -0500
+From: "Daily Promo Home Depot Survey."
+ <daily.promo.home.depot.survey@podinfotoday.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <214416313626.17010209489963236@offersfreeinf.click>
-Subject: Your Voice Matters: Take Costco's Quick Survey for Daily Savings and
- Exclusive Promotions!
+Message-ID: <1318109894184.1701024748766599@podinfotoday.click>
+Subject: Don't Miss Out on Home Depot's Exclusive Limited-time Offer!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=5651b183ec82ef25c57176c741b3f1ab101597102103103331019898
+ boundary=43b35b75130fced0ec40a7422b7087d97610009943299
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,47 +55,45 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---5651b183ec82ef25c57176c741b3f1ab101597102103103331019898
+--43b35b75130fced0ec40a7422b7087d97610009943299
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
----------------------------------------------
+A SPECIAL OFFER FOR VALUED CUSTOMERS
+-----------------------------------------
 
-COSTCO WHOLESALE
 
-We genuinely thank you for selecting us as your primary choice for 
-meeting your needs.  Being a part of your life and delivering high-quality 
-products and services is a source of pride for us. 
+The Home Depot
 
-As a token of our appreciation, you now have the chance to win a $100 
-gift card! Simply complete a brief survey from "Costco. " However, please
- note that this unique opportunity is time-sensitive, so we recommend not letting it pass by. 
 
-Our deepest gratitude goes out to you for taking the time to participate 
-in this brief survey.  Don't miss the incredible chance to win a $100 prize 
-by completing it.  Your opinion and time are highly valued, and we eagerly 
-anticipate remaining your top choice in the future. 
+The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer. 
+
+
+As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+
+
+For completing the survey, you can receive a $100 Gift!
 
 
 
-Start Here Now >>>>>
-http://www.offersfreeinf.click/6dd5I239z5E8Bp613Q68e2nAV196ci36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQPRKo96QF1QQ06vzw@DO/hamming-compounded
+TAKE THE SURVEY >>>>>
+http://www.podinfotoday.click/Monty-snowed/6de6oZ2J395zx8h611X68e4k196do36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQwRKod7VV_1Ak05vyNwD
 
 
-Thank you for your continued support and for taking the time to fill out 
-our survey.  We look forward to hearing from you soon. 
 
 
-Best regards,
-The Costco Survey Team
+Thank you again for your support.  We look forward to hearing from you soon Warm regards
 
----------------------------------------------
+The Home Depot Survey
 
-To drop e-mail, click_here >>>>> http://www.offersfreeinf.click/c236e239rs5U8Gs612uK68e3y196cy36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQPRKo97Wr10kLn5EkwBD/sommelier-swabbing
+-----------------------------------------
+
+To change your communication options, click_here >>>>> http://www.podinfotoday.click/outperform-behooves/8824l2395t8P6n12S6C8e5r196dB36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQwRKod7JBit10B5NUzwD
 126 E 23rd St New York, NY, US 10010
 
-<style><font style="forgeries"></style><span style="stoichiometry"></font></span><style style="motivated"></style><span size="resourceful"></span><span class="rejectors"></span><span dir="lurched"></span><style title="memorandum"></style>
 
---5651b183ec82ef25c57176c741b3f1ab101597102103103331019898--
+
+<style style="witnessed"></style><span style="refrigerate"><span title="consultative"></span></span><span style="displacement"></span><font><span class="atonally"></font></span><style id="related"></style>
+
+--43b35b75130fced0ec40a7422b7087d97610009943299--
 
