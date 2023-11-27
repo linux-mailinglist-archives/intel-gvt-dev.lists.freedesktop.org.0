@@ -1,45 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 426C07F94F9
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 26 Nov 2023 20:08:33 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id A6ED47FA047
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 Nov 2023 14:05:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1797110E145;
-	Sun, 26 Nov 2023 19:08:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E03F710E264;
+	Mon, 27 Nov 2023 13:05:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Sun, 26 Nov 2023 19:08:30 UTC
-Received: from mail.podinfotoday.click (unknown [77.83.203.116])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7BAA010E145
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Mon, 27 Nov 2023 13:05:43 UTC
+Received: from mail.magiccoffees.click (unknown [77.83.203.124])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E06F410E264
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 26 Nov 2023 19:08:30 +0000 (UTC)
+ Mon, 27 Nov 2023 13:05:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=podinfotoday.click; 
+ d=magiccoffees.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=daily.promo.home.depot.survey@podinfotoday.click; 
- bh=98wDqNNAZowznxHCurLs/DWBlVg=;
- b=qFFMoF7KwbOj0LNDUp+bkwz7WWAG5zsZWyJF6sSswyUyeGqpwi9T9XCDSS3E8e3wFGKHo6f/Etl0
- 9TSUiT2EiDnGvQhSqJoj+kLpSTbVF0TinC7QcuoXBMq3fvSRhRMKgMLx0FIu8uoqqg+jTcFFlPrj
- YEtwNWyTUKpKf6hg/uI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=podinfotoday.click; 
- b=N+vxhXukQ0HWOuipzzOjvqGa+bLwuCLubXnWSZWq5FUgyTJmSgAu/5WDqK5JaSQLXnCEYN0BUO8Q
- 0dfE6t93nuKaPBplp1GboDjTNTazlTtsaEQI+BgXUTV8cyfqMrwzalooHIWMiL9G9r9U/ZNHoORA
- yjCpbdSrpxleNi5MCZc=;
-Received: by mail.podinfotoday.click id hcel3m0001g2 for
+ i=starbucks-survey-special-limited-time@magiccoffees.click; 
+ bh=k6Lo6N9RpElkiR8jmpMWlUooer4=;
+ b=UJzyCSai3TFTz1p157j6hLz2QWA1kkK76uz4UYgxjCycu5870T7uABvaNh3QVpc8Wb/Rah1PJmGe
+ dEfrysKszeh1yIdj0ado2n9w5U34T/JE2CUea2YkUQ9eaEwAtl8VV0PNH8BNAGkkCogMCvvTkDmt
+ q6JvdCxx13SYMA7kAUo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=magiccoffees.click; 
+ b=Qs7t5C0RWpSy8slx48tVL2VMHi3+ZrJ8qWYDUT6VliwAEmxqGvliK+t7CJHRbbd81VtpIBSoTdk4
+ 4GhBP6V7KQzcKKqSTJtM0x6npNlbBGjueLS/EK/p8Hi8hFP7gTc9C8Nwxtf3KTlKgPWOLc4SJ/Kq
+ AOLkSVybTP+FtWZLfk4=;
+Received: by mail.magiccoffees.click id hcia2g0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 26 Nov 2023 15:11:59 -0500 (envelope-from
- <daily.promo.home.depot.survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@podinfotoday.click>)
-Date: Sun, 26 Nov 2023 15:11:59 -0500
-From: "Daily Promo Home Depot Survey."
- <daily.promo.home.depot.survey@podinfotoday.click>
+ Mon, 27 Nov 2023 07:49:34 -0500 (envelope-from
+ <starbucks-survey-special-limited-time-intel+2Dgvt+2Ddev=lists.freedesktop.org@magiccoffees.click>)
+Date: Mon, 27 Nov 2023 07:49:34 -0500
+From: "Starbucks Survey Special Limited Time"
+ <starbucks-survey-special-limited-time@magiccoffees.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1318109894184.1701024748766599@podinfotoday.click>
-Subject: Don't Miss Out on Home Depot's Exclusive Limited-time Offer!
+Message-ID: <16432294444.170108935321736@magiccoffees.click>
+Subject: Swift Feedback, Instant Starbucks Daily Discounts &ndash;
+ Don't Miss Out!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=43b35b75130fced0ec40a7422b7087d97610009943299
+ boundary=e99f461d85554473fa8d63e94d45b2e770981020972
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,45 +56,182 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---43b35b75130fced0ec40a7422b7087d97610009943299
-Content-Type: text/plain; charset=utf-8
+--e99f461d85554473fa8d63e94d45b2e770981020972
+Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR VALUED CUSTOMERS
------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>branches</title> 
+ </head> 
+ <body> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(219, 219, 219);" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <div> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+        <thead> 
+         <tr> 
+          <th align="center" colspan="5">&nbsp;</th> 
+         </tr> 
+        </thead> 
+        <tbody> 
+         <tr> 
+          <td class="kobis"> 
+           <div class="iggtaks"> 
+            <center id="njpos">
+             &nbsp;
+            </center> 
+           </div> </td> 
+          <td class="kobis"> 
+           <div class="iggtaks"> 
+            <center id="njpos"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+              <thead> 
+               <tr> 
+                <th align="center" colspan="5"> 
+                 <div style="background-color: #1D6D2E; width: 100%;"> 
+                  <section style="max-width: 90mm; margin: auto; padding: 15px 0;">
+                   <a href="http://www.magiccoffees.click/copyrightable-barns/5ee5C2S395H8U6n11a68e6g196es36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkRKoQ6X10Quw5M0XwD" target="_blank"><img alt="POS" src="http://www.magiccoffees.click/prudence-Presbyterianize/7386Q239vz5vI7ga13z6v8e8oD196eh36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQkRKoQ6gCsi106hpqlwD" width="100%" /></a>
+                  </section> 
+                 </div> </th> 
+               </tr> 
+              </thead> 
+              <tbody> 
+               <tr> 
+                <td class="kobis"> 
+                 <div class="iggtaks"> 
+                  <center id="njpos">
+                   &nbsp;
+                  </center> 
+                 </div> </td> 
+                <td class="kobis"> 
+                 <div class="iggtaks"> 
+                  <center id="njpos"> 
+                   <div style="width: 100%; background-color: #f0f0f0;">
+                    &nbsp; 
+                    <center style="max-width: 33.5rem; margin: auto; background-color: #fff;"> 
+                     <div style="padding-top: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 24px; font-weight: 600; color: #1D6D2E;">
+                      Your Final
+                      <br /> Starbucks Reminder
+                     </div> 
+                     <center style="text-decoration: none; display: block; padding: 3.5% 5%; font-family: Arial, Helvetica, sans-serif; font-size: 1.1rem; line-height: 1.7em; ;">
+                      Thrilling updates from Starbucks are here! We present a special promotion for a $100 Gift Card usable at any of our store locations. Act now to seize this opportunity! You have until November 27th to enjoy these delightful beverages.                      </center> 
+                     <div> 
+                      <table> 
+                       <tbody> 
+                        <tr> 
+                         <td> 
+                          <blockquote style="border-radius: 10px; border: solid 3.5px #1D6D2E; padding: 1rem 1.8rem; font-size: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
+                           <a href="http://www.magiccoffees.click/copyrightable-barns/5ee5C2S395H8U6n11a68e6g196es36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkRKoQ6X10Quw5M0XwD" style="color: #1D6D2E; text-decoration: none;" target="_blank">Start Here Now &gt; &gt;</a>
+                          </blockquote> </td> 
+                        </tr> 
+                        <tr> 
+                         <td align="center"> 
+                          <div style="max-width: 200px; margin: auto;">
+                           <a href="http://www.magiccoffees.click/copyrightable-barns/5ee5C2S395H8U6n11a68e6g196es36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQkRKoQ6X10Quw5M0XwD" target="_blank"><img alt="QSA" src="http://www.magiccoffees.click/4a35L239v5z7aIh12D68Oe9p196eA36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQkRKoQ6Wi10Pq5S@kwD/acknowledgment-streetcar" width="100%" /></a>
+                          </div> </td> 
+                        </tr> 
+                        <tr> 
+                         <td align="center" style="text-decoration: none; display: block;; font-family: Arial, Helvetica, sans-serif; font-size: 1.1rem; line-height: 1.7em; ;"><br /> <br /> Thank you for taking part.<br /> Warm regards, The Starbucks Team.</td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                     </div> 
+                    </center> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> &nbsp; 
+                    <div style="background-color: rgb(231, 231, 231); padding-top: 20px; padding-bottom: 20px;;"> 
+                     <center style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 12px; text-align: center; display: block; max-width: 33.5rem; margin: auto; font-weight: 700; line-height: 27px;">
+                      you can leave with sadness 
+                      <a href="http://www.magiccoffees.click/e5d5L2F395YAR8612o6n8e7_196em36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQkRKoQ5D10tx5cp0wD/acknowledgment-streetcar">here</a>
+                      <br /> US 10010 126 E 23rd St New York, NY,
+                     </center> 
+                    </div> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> 
+                    <br /> &nbsp;
+                   </div> 
+                  </center> 
+                 </div> </td> 
+                <td class="kobis"> 
+                 <div class="iggtaks"> 
+                  <center id="njpos">
+                   &nbsp;
+                  </center> 
+                 </div> </td> 
+                <td class="kobis"> 
+                 <div class="iggtaks"> 
+                  <center id="njpos">
+                   &nbsp;
+                  </center> 
+                 </div> </td> 
+                <td class="kobis"> 
+                 <div class="iggtaks"> 
+                  <center id="njpos">
+                   &nbsp;
+                  </center> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+              <tfoot> 
+               <tr> 
+                <td align="center" colspan="5">&nbsp;</td> 
+               </tr> 
+              </tfoot> 
+             </table> 
+            </center> 
+           </div> </td> 
+          <td class="kobis"> 
+           <div class="iggtaks"> 
+            <center id="njpos">
+             &nbsp;
+            </center> 
+           </div> </td> 
+          <td class="kobis"> 
+           <div class="iggtaks"> 
+            <center id="njpos">
+             &nbsp;
+            </center> 
+           </div> </td> 
+          <td class="kobis"> 
+           <div class="iggtaks"> 
+            <center id="njpos">
+             &nbsp;
+            </center> 
+           </div> </td> 
+         </tr> 
+        </tbody> 
+        <tfoot> 
+         <tr> 
+          <td align="center" colspan="5">&nbsp;</td> 
+         </tr> 
+        </tfoot> 
+       </table> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.magiccoffees.click/f115v23C95i8q5U12j68eVaS196eM36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQkRKoQ5r1ZC05JkwlD/Anglican-unordered" alt=""/></body>
+</html>
 
-
-The Home Depot
-
-
-The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer. 
-
-
-As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-For completing the survey, you can receive a $100 Gift!
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.podinfotoday.click/Monty-snowed/6de6oZ2J395zx8h611X68e4k196do36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQwRKod7VV_1Ak05vyNwD
-
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
-
-The Home Depot Survey
-
------------------------------------------
-
-To change your communication options, click_here >>>>> http://www.podinfotoday.click/outperform-behooves/8824l2395t8P6n12S6C8e5r196dB36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQwRKod7JBit10B5NUzwD
-126 E 23rd St New York, NY, US 10010
-
-
-
-<style style="witnessed"></style><span style="refrigerate"><span title="consultative"></span></span><span style="displacement"></span><font><span class="atonally"></font></span><style id="related"></style>
-
---43b35b75130fced0ec40a7422b7087d97610009943299--
+--e99f461d85554473fa8d63e94d45b2e770981020972--
 
