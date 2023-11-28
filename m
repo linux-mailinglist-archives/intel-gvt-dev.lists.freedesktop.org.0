@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2208B7FC2FD
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Nov 2023 19:20:37 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 209377FC44C
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Nov 2023 20:34:13 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C573410E127;
-	Tue, 28 Nov 2023 18:20:35 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BBBFD10E17D;
+	Tue, 28 Nov 2023 19:34:11 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Tue, 28 Nov 2023 18:20:34 UTC
-Received: from mail.floweswihascr.click (unknown [77.83.203.251])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3CD8D10E002
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Tue, 28 Nov 2023 19:34:09 UTC
+Received: from mail.buckscoffeinc.click (unknown [77.83.203.176])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 38AC710E17D
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Nov 2023 18:20:34 +0000 (UTC)
+ Tue, 28 Nov 2023 19:34:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=floweswihascr.click; 
+ d=buckscoffeinc.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=wiha.giveaway.at.lowes@floweswihascr.click; 
- bh=VBxapTw0jGModYK19WPEQRTwLbA=;
- b=BH5cG0ryt2QXSA1Jdn+64BFZuw1fd+PUONpbUtVMDECX2Hp9cbXkeRo3VTrA+4tU9WaTvA2vwyua
- 6h+s3zOktKfF3+cSNci6odVpvZ+p/Czlf/ZuqtNDjxCXOI92P1VZAyDfXxE3wNvTuOBlyQjAkR8q
- o+Bva3PDznKAke1LRCI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=floweswihascr.click;
- b=a0zEA/hJwwpn6UqOamusvIEyre/txtr8CKeIzK4Yy3RU+a4AzvqICIZPzVhZ/2M2cJTH+PTki2s+
- /7dBN/HIXbRVy0dCdfZWyonr6rrRo19P4nV/xu3KINi85U/PhO4znlRMUBz+6Od1txuh7Q9Fj/u8
- jZWK49LflKPNCQ1+IxI=;
-Received: by mail.floweswihascr.click id hconn40001gg for
+ i=starbucks-exclusive-your-quick-survey@buckscoffeinc.click; 
+ bh=KfLovaCiPojq+2ksmVSzh/T6aMs=;
+ b=OJY9JPxvjXkvP9hdYV3UqXS12LrWt4CiUakFqPOuJvFO+lFSekRtoXy0gUN28qLHPvDhkjEp4e+l
+ ynN67Kg7nl1yHkIUQTRBG4L/+rN0r2XOVsTPFCTiCuMZe6zEK0abPZeTEuKn3uqDUgyIF9nOPmqf
+ 1+vBnLhQtIVkruN4UTc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=buckscoffeinc.click;
+ b=2aLc7hdCz0Rr/r5G6f16B5KCPU93SFJ6ZEyhs7UgBw/SaSlLGJHNeVvs+seujaQgh8R4bHZJ8NdW
+ sS2TVy7S9bVJvaBBuqFz0wQ/2ZF5f/eTJJPDv5S3ZxC5JzA84pimitL3d42o08pRhbdwp8i98Dqr
+ xCbVjZwinK1BI4m68Q8=;
+Received: by mail.buckscoffeinc.click id hcp0b20001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Nov 2023 13:12:33 -0500 (envelope-from
- <wiha.giveaway.at.lowes-intel+2Dgvt+2Ddev=lists.freedesktop.org@floweswihascr.click>)
-Date: Tue, 28 Nov 2023 13:12:33 -0500
-From: "Wiha Giveaway At Lowes" <wiha.giveaway.at.lowes@floweswihascr.click>
+ Tue, 28 Nov 2023 14:25:19 -0500 (envelope-from
+ <starbucks-exclusive-your-quick-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@buckscoffeinc.click>)
+Date: Tue, 28 Nov 2023 14:25:19 -0500
+From: "Starbucks Exclusive Your Quick Survey"
+ <starbucks-exclusive-your-quick-survey@buckscoffeinc.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <96368357950.170119514160060@floweswihascr.click>
-Subject: Lowe's Survey: Seize the Chance to Win a Wiha Set!
+Message-ID: <1159034982353.17011995031635@buckscoffeinc.click>
+Subject: Time-Sensitive: Participate in Starbucks' Survey for Daily Savings!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=bd2360041c317ac75e3907420f62db331198506
+ boundary=f5e84525446c34780122a58cb408654b863
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,42 +55,184 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---bd2360041c317ac75e3907420f62db331198506
-Content-Type: text/plain; charset=utf-8
+--f5e84525446c34780122a58cb408654b863
+Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-Lowe's
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100; 200; 300; 400; 500; 600; 700; 800; 900&display=swap'); 
+	</style> 
+  <title>icons</title> 
+ </head> 
+ <body style="font-family: 'Urbanist', sans-serif; "> 
+  <section style="background-color: rgb(240, 240, 240); width: 100%; "> 
+   <div class="groosmb" style="padding-top: 2rem; padding-bottom: 2rem; "> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" id="blocksstyles" style="border-collapse: collapse; " width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" colspan="5" id="gooblics"> 
+        <div style="max-width: 548px; margin: auto; background-color: #fff; "> 
+         <ul style="list-style-type: none; padding: 0; margin: 0; "> 
+          <li class="blickcrakcs"> 
+           <center> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; " width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center"> 
+                <center> 
+                 <div style="max-width: 295px; margin: auto; padding-top: 18px; padding-bottom: 18px; ">
+                  <a href="http://www.buckscoffeinc.click/Selena-iciness/3d24J2395w86Im12wQ6915t197dU36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ1RKdm7n10IUwj5SN1wD" target="_blank"><img alt="NBS" src="http://www.buckscoffeinc.click/prohibiting-fermenting/c244E2395dv7aJ11o6917X197dj36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ1RKdm6nQ1j0W6zkwLJD" style="display: block; " width="100%" /></a>
+                 </div> 
+                 <div> 
+                  <h4 style="margin: 0; font-size: 24px; color: rgb(29,110,44); ">Starbucks' Ultimate Reminder</h4> 
+                 </div> 
+                 <table align="center" border="0" cellpadding="0" cellspacing="0" id="bbsglos" style="border-collapse: collapse; " width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" colspan="5" id="dlomws" style="padding-top: 20px; padding-bottom: 20px; "> 
+                     <div>
+                      <a href="http://www.buckscoffeinc.click/Selena-iciness/3d24J2395w86Im12wQ6915t197dU36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ1RKdm7n10IUwj5SN1wD"><img alt="EES" src="http://www.buckscoffeinc.click/13d5F2m395zLv7a11q6918O197dh36NbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ1RKdm7G1V0Qry6HW@wkD/prohibiting-fermenting" style="display: block; margin: auto; " width="145px" /></a>
+                     </div> </td> 
+                   </tr> 
+                   <tr> 
+                    <td class="llose"> 
+                     <section> 
+                      <article style="margin: 0; padding: 0; "> 
+                       <div> 
+                        <dir style="margin: 0; padding: 0; "> 
+                        </dir> 
+                       </div> 
+                      </article> 
+                     </section> </td> 
+                    <td class="llose"> 
+                     <section> 
+                      <article> 
+                       <div> 
+                        <dir style="margin: 0; padding: 0; "> 
+                        </dir> 
+                       </div> 
+                      </article> 
+                     </section> </td> 
+                    <td class="llose"> 
+                     <section> 
+                      <article> 
+                       <div> 
+                        <dir style="margin: 0; padding: 0; "> 
+                        </dir> 
+                       </div> 
+                      </article> 
+                     </section> </td> 
+                    <td class="llose"> 
+                     <section> 
+                      <article> 
+                       <div> 
+                        <dir style="margin: 0; padding: 0; "> 
+                        </dir> 
+                       </div> 
+                      </article> 
+                     </section> </td> 
+                   </tr> 
+                   <tr> 
+                    <td align="center" colspan="5" id="blocksts"> 
+                     <center> 
+                      <p style="margin: 0; font-weight: 500; padding: 1.5% 5%; font-size: 20px; line-height: 30px; ">Exciting News: Starbucks is currently running a special promotion, giving you the chance to enjoy a $100 Gift at any of our store locations. Don' t let this fantastic offer pass you by! You have until November 28th to indulge in these delightful beverages.</p> 
+                      <ul style="list-style-type: none; padding: 0; margin: 0; "> 
+                       <li> 
+                        <div style="padding: 35px 0; "> 
+                         <center style="background-color: rgb(36, 36, 36); padding-top: 1rem; padding-bottom: 1rem; padding-left: 1.4rem; padding-right: 1.4rem; width: 210px; margin: auto; border-radius: 5px; font-weight: 800; font-size: 1.4rem; ">
+                          <a href="http://www.buckscoffeinc.click/Selena-iciness/3d24J2395w86Im12wQ6915t197dU36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ1RKdm7n10IUwj5SN1wD" style="text-decoration: none; color: white; " target="_blank">Start Here Now &gt; &gt; </a>
+                         </center> 
+                        </div> </li> 
+                       <li class="gloyyss" style="background-color: rgb(247, 255, 249); "> 
+                        <div style="max-width: 265px; margin: auto; ">
+                         <a href="http://www.buckscoffeinc.click/Selena-iciness/3d24J2395w86Im12wQ6915t197dU36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ1RKdm7n10IUwj5SN1wD"><img alt="JUSE" src="http://www.buckscoffeinc.click/3956jS239X5P7YJa12d69i19n197dk36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ1RKdm6ihw10R5DUwDp/Barbara-microword" style="display: block; " width="100%" /></a>
+                        </div> </li> 
+                       <li> 
+                        <div> 
+                         <h3 style="font-weight: 800; padding: 1.5% 5%; font-size: 20px; line-height: 30px; ">We highly value your participation.<br /> Warm regards, The Starbucks Team.</h3> 
+                        </div> </li> 
+                      </ul> 
+                     </center> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </center> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </center> </li> 
+         </ul> 
+        </div> </td> 
+      </tr> 
+      <tr> 
+       <td class="lloser"> 
+        <div id="igns"> 
+         <section class="llkos">
+          <main> 
+           <dir> 
+           </dir> 
+          </main>
+         </section> 
+        </div> </td> 
+       <td class="lloser"> 
+        <div id="igns"> 
+         <section class="llkos">
+          <main> 
+           <dir> 
+           </dir> 
+          </main>
+         </section> 
+        </div> </td> 
+       <td class="lloser"> 
+        <div id="igns"> 
+         <section class="llkos">
+          <main> 
+           <dir> 
+           </dir> 
+          </main>
+         </section> 
+        </div> </td> 
+       <td class="lloser"> 
+        <div id="igns"> 
+         <section class="llkos">
+          <main> 
+           <dir> 
+           </dir> 
+          </main>
+         </section> 
+        </div> </td> 
+       <td class="lloser"> 
+        <div id="igns"> 
+         <section class="llkos">
+          <main> 
+           <dir> 
+           </dir> 
+          </main>
+         </section> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+     <tfoot> 
+      <tr> 
+       <td align="center" class="kkols" colspan="5"> 
+        <div style="padding-top: 300px; padding-bottom: 150px; "> 
+         <center style="font-size: 12p; text-align: center; font-weight: 800; line-height: 20px; max-width: 520px; margin: auto; text-align: center; ">
+          you can leave with sadness 
+          <a href="http://www.buckscoffeinc.click/b335k23I95cqw8613Spj6916n197do36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ1RKdm7z1Mw0AL6AJPBwD/innards-spread">here</a>
+          <br /> US 10010 126 E 23rd St New York, NY,
+         </center> 
+        </div> </td> 
+      </tr> 
+     </tfoot> 
+    </table> 
+   </div> 
+  </section>   
+ <img src="http://www.buckscoffeinc.click/Selena-iciness/f304M2395E8V5x12q6s91ai197dV36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ1RKdm7bqY1Kw06pqwT@D" alt=""/></body>
+</html>
 
-**************************************************
-
-
-Exclusive Offer
-Win a Wiha Screwdriver Tray Set!
-__________________________________________________
-
-
-Great news from Lowe's! We have a remarkable Wiha Screwdriver Tray Set 
-waiting for you.  It's as simple as a few clicks or completing a quick 
-survey to enter.  Act now! You have until November 28th to claim this fantastic prize. 
-
-
-
-Start Here to Win > >
-http://www.floweswihascr.click/8635G239x5Fm8w612g691v3h197cu36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQPRK9K6ILVQ105cz0wD/examining-gadgetry
-
-
-
-Your input is invaluable to us at Lowe's.  We deeply appreciate your 
-participation in our survey.  Your feedback means the world to us, and 
-we hold it in high regard. 
-
-
-**************************************************
-
-
-you can leave with sadness here >>>>>
-http://www.floweswihascr.click/9cb4o2395YU86h11z6914B197cq36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQPRK9K6crQ1U05RT1wD/shouters-outlines
-US 10010 126 E 23rd St New York, NY,
-
---bd2360041c317ac75e3907420f62db331198506--
+--f5e84525446c34780122a58cb408654b863--
 
