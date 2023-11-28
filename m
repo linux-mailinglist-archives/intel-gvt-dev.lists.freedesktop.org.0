@@ -1,44 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 884F67FBF4E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Nov 2023 17:40:28 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id B8D827FC07E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 28 Nov 2023 18:46:56 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5A72B10E12D;
-	Tue, 28 Nov 2023 16:40:27 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 97DE310E2C0;
+	Tue, 28 Nov 2023 17:46:55 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 28 Nov 2023 16:40:25 UTC
-Received: from mail.maxvzinfocrl.click (unknown [77.83.203.160])
- by gabe.freedesktop.org (Postfix) with ESMTP id CD12E10E12D
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Tue, 28 Nov 2023 17:46:53 UTC
+Received: from mail.maktopinfo.world (unknown [77.83.203.244])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3EABC10E182
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Nov 2023 16:40:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=maxvzinfocrl.click; 
+ Tue, 28 Nov 2023 17:46:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=maktopinfo.world;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=last-chance-survey@maxvzinfocrl.click; 
- bh=oOUGZuM76xuLTqqwshyclWjF2F4=;
- b=KEunPgL4b6JjqEsoNtH7JwvYFiXgZASGsdV1ja7c8202o0WVzD7DUX+v83SSEDRHHe8zUzYj9mls
- Df46YsU5Mx+YNfJKMxDiHRJh7XoPhz09N+NH97H1vSuooAAMAwkb7vtPgG6dz/D13vwrJgOcTMOD
- jtcQttZ9AxV9GtrE0c0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maxvzinfocrl.click; 
- b=WpuM98YGsEht8zoNI6h+laxxrB/tpuDgtcE9J60MMoh6QhZwP1KUlsLUHUGFKqNWgb/4Y+lOe0RC
- sKFBtx8GppVntsYtrZthiyfVDOEo2IJSbuc4N8PZtfq8TdyRmf51A+irdGYf55gG7PrCPVpNmIW0
- TTGF9nX7kUZTrzdtwwE=;
-Received: by mail.maxvzinfocrl.click id hcol880001g1 for
+ i=walmart_quick_survey_special@maktopinfo.world; 
+ bh=l+jL1YvHbCA7T/U7F721xfC7MOI=;
+ b=joR3bqAd34VjGwRC1pnhqdZnBP5IBH+eIvZyA1drKNWZznU5/A+j/u5SBYq3fDe/HybOcwYunDWj
+ 36untnFC1V4YBWpN8k6rNwUODBX6K7m83TziUPbluJu71jNZ7JipLaxrKjP4qBcnCSRe4EmdsoX3
+ BIbCtm0q1axRb2KduTo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maktopinfo.world;
+ b=Zx6NCy5LbGOZLwe9bXa8YsSOGA1ANNQ+lAQhml/oe2mhBmOTdQ3ZqXjJmBUjR7vQY7guRjGW48YM
+ 0qtvyo1jSOQTxpRT6ZXb121psD2CQyahSWp9FD3LOruYCUqyXRhg18oBXkX12L2KariyydYep8Pm
+ d0PBMU9ElisjwwE1P/Q=;
+Received: by mail.maktopinfo.world id hcojoq0001g5 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 28 Nov 2023 12:44:43 -0500 (envelope-from
- <last-chance-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@maxvzinfocrl.click>)
-Date: Tue, 28 Nov 2023 12:44:43 -0500
-From: "Last Chance Survey" <last-chance-survey@maxvzinfocrl.click>
+ Tue, 28 Nov 2023 12:29:29 -0500 (envelope-from
+ <walmart_quick_survey_special-intel+2Dgvt+2Ddev=lists.freedesktop.org@maktopinfo.world>)
+Date: Tue, 28 Nov 2023 12:29:29 -0500
+From: "Walmart Quick Survey Special"
+ <walmart_quick_survey_special@maktopinfo.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <20724042611.1701188723130553@maxvzinfocrl.click>
-Subject: Verizon Survey Alert: Limited-Time Feedback for Daily Specials!
+Message-ID: <1440755608196.17011925571697500@maktopinfo.world>
+Subject: Participate in Walmart's Survey for Exclusive Day Deals!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=381d57f24fb71cdaf1eb48358431dd8919714101987
+ boundary=b73d8c7877f1597e334733b4f2f713e57999
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,42 +54,50 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---381d57f24fb71cdaf1eb48358431dd8919714101987
+--b73d8c7877f1597e334733b4f2f713e57999
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR OUR VALUED USERS
-<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+A SPECIAL OFFER FOR OUR VALUED CUSTOMERS
 
-VERIZON
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
 
+Walmart
 
-As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your experience with Verizon in general. 
+Looking for the ultimate shopping destination for your family's needs? 
+Look no further than Walmart, where we offer a diverse range of products 
+to meet all your requirements. 
 
-Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+Don't miss this fantastic opportunity! For a limited time, you have the 
+chance to win a $100 Walmart gift card by completing a brief survey.  
+Explore our vast selection of quality goods and unbeatable prices. 
 
-
-Upon Completion of the Survey you might have a choice between different gifts!
-
-
-Get Me There Now >>>>>
-http://www.maxvzinfocrl.click/2fj6mDK2395j8ml613W6K9B0fY197aR36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQCRK9S6lp1v0t5O1JwD/selling-bilinear
-
-
-Thank you again for your support.  We look forward to hearing from you soon
-
-
-Warm regards,
-The Verizon Survey
+We want to express our gratitude for choosing Walmart as your go-to 
+shopping destination.  Your preference means the world to us, and we 
+invite you to participate in our survey for a shot at winning this 
+exclusive gift card.  Thank you for your continued loyalty and best of luck!
 
 
-<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-No longer wish to receive email notifications?, click_here >>>>> http://www.maxvzinfocrl.click/51b6m23BK95u8L6D13hAH6910h197aU36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQCRK9S6KsW1t06nJwJDM/virtuous-impedance
-126 E 23rd St New York, NY, US 10010
+By completing the survey, you could receive a $100 gift card
+
+TAKE THE SURVEY >>>>>
+http://www.maktopinfo.world/paraphrased-Giles/71a4m2395gO8w613QC6911J_197bY36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQDRK9e6FUx10q5ajwAD
 
 
 
-<font class="taint"></font><font dir="springy"></font><span></span><span title="transitiveness"><font color="derogatory"></span></font><font></font>
 
---381d57f24fb71cdaf1eb48358431dd8919714101987--
+
+
+Thank you once again for your ongoing support.  We eagerly await your feedback and look forward to serving you with unbeatable value! Warm regards. 
+
+Walmart Survey
+
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+
+more than welcome to leave in here >>> we' ll miss
+http://www.maktopinfo.world/4a36L2U3M95WBj8612E69L12V197bA36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQDRK9e5uO10x5bjwyD/narrate-hysterically
+you US 10010 126 E 23rd St New York, NY,
+
+--b73d8c7877f1597e334733b4f2f713e57999--
 
