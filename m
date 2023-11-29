@@ -2,45 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FED57FD8F6
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Nov 2023 15:09:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 17B137FDAD3
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Nov 2023 16:09:04 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 16F4B10E1F6;
-	Wed, 29 Nov 2023 14:09:05 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E20CD10E60D;
+	Wed, 29 Nov 2023 15:09:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 304 seconds by postgrey-1.36 at gabe;
- Wed, 29 Nov 2023 14:09:03 UTC
-Received: from mail.bgoinattinfo.click (unknown [77.83.203.169])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0EB8B10E1F6
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 29 Nov 2023 15:09:00 UTC
+Received: from mail.olpenigsfdx.world (unknown [77.83.203.220])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D607C10E0EB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Nov 2023 14:09:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=bgoinattinfo.click; 
+ Wed, 29 Nov 2023 15:09:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=olpenigsfdx.world;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=limitedtime.att.insightful.inquiry@bgoinattinfo.click; 
- bh=pjPiNM71iV5bSY7DdNPtjl8QBLU=;
- b=aQJMH16eaYxS87O6vEXNCwPBCVkQUeffS35L8C3wqiefN70vjoGnh32CYYDeupmmRDJUNYJxnWQN
- 5agl2m+q4g5M4FUirRENW8ngTJJSknvNclRUzBt0E7lzkvfwUQfKWjTyLmw1DCMi5kwCE+0NSa0l
- Uwgf3lOET47tNgfk06g=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bgoinattinfo.click; 
- b=d6e02bD44+O8TKAiWgrcxIg7WNiQuWzeQpns8ML2k2vLqrlxLEooO3bcapCSYKzY7s5CNAu2kFPz
- VhOOaJ3rskncPp8TokLPZclaZl3NGI6juv7/tKq/L2QdYolUjvCws+x9seiHBeSNq2PPmHX/9qjG
- 151ksoAZyHCF6KihUuw=;
-Received: by mail.bgoinattinfo.click id hct2vu0001gi for
+ i=survey_for_today@olpenigsfdx.world; 
+ bh=xsejXRWatxGu2Cthusq+P44epXk=;
+ b=pUBzKE10DNCp6h7wJcQBTowH5Fy6YiL6GKTj9MskVDMgAkkmvYFnugZfP4xoZFlpJCnIzi4mgSdL
+ IMIDQXaTkanKsizssV9FG5YsXQduDdgdhYCXfiD1rqOedZq8M4ESjtxC8GkUS5z/hIXcY7w70hQR
+ MqU3AmCoKhYEPGdajWc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=olpenigsfdx.world; 
+ b=pd3cQD0RRleuGauOKNwCc/JTxdCe4cnK9+xhEKmOvqj9XpPFVuq/QeMLZqdnxdd665ZMizD4c6Ec
+ aOU5YouF3sw2WppzaVS6ZMA17rq7zNOSOZeCX1zROmjVp0uxax9J+nxr49rqSLc7nBAHANYXBO8a
+ BJw2+5DE7VH2mGHLydo=;
+Received: by mail.olpenigsfdx.world id hcta0q0001g1 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Nov 2023 09:00:13 -0500 (envelope-from
- <limitedtime.att.insightful.inquiry-intel+2Dgvt+2Ddev=lists.freedesktop.org@bgoinattinfo.click>)
-Date: Wed, 29 Nov 2023 09:00:13 -0500
-From: "LimitedTime ATT Insightful Inquiry"
- <limitedtime.att.insightful.inquiry@bgoinattinfo.click>
+ Wed, 29 Nov 2023 09:51:10 -0500 (envelope-from
+ <survey_for_today-intel+2Dgvt+2Ddev=lists.freedesktop.org@olpenigsfdx.world>)
+Date: Wed, 29 Nov 2023 09:51:10 -0500
+From: "Survey For Today" <survey_for_today@olpenigsfdx.world>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <6043782795761.17012664047503038@bgoinattinfo.click>
-Subject: Exclusive Invite: Participate in AT&T's Time-Limited Survey for Daily
- Specials!
+Message-ID: <1427539236681.1701269452440658@olpenigsfdx.world>
+Subject: Act Quickly! FedEx's Daily Deal Alert Survey Awaits You!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=2616216dd9642b36b9b8a00e62511ac12103297100599
+ boundary=e266f833345fa9f73a11c993851b88af36100610010201019710205
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---2616216dd9642b36b9b8a00e62511ac12103297100599
+--e266f833345fa9f73a11c993851b88af36100610010201019710205
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,68 +61,115 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@100;200;300;400;500;600;700;800;900&display=swap');
-	</style> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>prohibited</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap');
+	</style> 
+  <title>forms</title> 
  </head> 
- <body style="font-family: 'Grandstander', cursive;"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-    </tr> 
-    <tr> 
-     <td align="center" colspan="5" id="clows"> 
-      <div style="background-color: rgb(252, 252, 252); width: 100%;"> 
-       <center style="padding-top: 50px; padding-bottom: 50px;"> 
-        <div style="border-radius: 20px; max-width: 34em; margin: auto; text-align: center; background-color: #fff;"> 
-         <center style="background-color: rgb(52,161,220); border-top-left-radius: 20px; border-top-right-radius: 20px; padding: 20px 0; font-weight: 700; color: #fff;">
-          A Special Offer Tailored Exclusively for Our Esteemed Customers
-         </center> &nbsp; 
-         <div style="max-width: 200px; margin: auto;">
-          <a href="http://www.bgoinattinfo.click/5575Gx2395vP8R612dX6928z1980S36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ8RKd95sW10r6eWwAD@/disjointly-shaggy" target="_blank"><img alt="NBS" src="http://www.bgoinattinfo.click/Concordia-optoacoustic/c9c6I23mv95LU7oa12pT692ar1980h36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQ8RKd97DphP1j06CyWwDJ" style="display: block;" width="100%" /></a>
-         </div> 
-         <p style="margin: 0; padding: 25px 35px 10px; border-top:  solid 3px rgb(52,161,220); line-height: 29px; font-size: 18px;">Conveying gratitude for selecting our services is a priority for us. Your loyalty and support hold considerable importance, and we appreciate the chance to be of assistance.</p> 
-         <a href="http://www.bgoinattinfo.click/5575Gx2395vP8R612dX6928z1980S36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ8RKd95sW10r6eWwAD@/disjointly-shaggy" target="_blank"><img alt="JJUS" src="http://www.bgoinattinfo.click/9e94D2395Hs7aO12J692bvn1980C36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ8RKd97DUgH10u6aWO3wD/disjointly-shaggy" style="display: block;" width="100%" /></a> 
-         <p style="margin: 0; padding: 25px 35px 10px;  line-height: 29px; font-size: 18px;">In recognition of your valuable input, we are delighted to present a small token of thanks as an expression of gratitude for the time you have dedicated to us.<br /> <br /> After finishing, your next step is to choose from a variety of gift options for your pleasure.</p> 
-         <div style="max-width: 250px; margin: auto; padding: 22px 0;"> 
-          <center style="padding: 15px 30px; font-weight: 800; font-size: 22px; background-color: rgb(52,161,220);">
-           <a href="http://www.bgoinattinfo.click/5575Gx2395vP8R612dX6928z1980S36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7OQ8RKd95sW10r6eWwAD@/disjointly-shaggy" style="text-decoration: none; color: white;" target="_blank">Start Now </a>
-          </center> 
-         </div> 
-         <p style="margin: 0; padding: 25px 35px 10px;  line-height: 29px; font-size: 18px;">Thanks once more for your support. We anticipate your response eagerly! Best regards,</p> 
-        </div> 
-       </center> 
-       <div style="padding-top: 15px; background-color: rgb(52,161,220);"> 
-        <div> 
-         <div style="max-width: 520px; margin: auto; text-align: center; font-weight: 800; font-size: 12px; color: white;">
-          more than welcome to leave in 
-          <a href="http://www.bgoinattinfo.click/disjointly-shaggy/1206pLp2395Q8o6C11F6929T1980B36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ8RKd96Cq1VT06fzp1wD">here</a> we' ll miss you
-          <br /> US 10010 126 E 23rd St New York, NY,
-         </div> 
-         <div style="padding-top: 15px; background-color: rgb(52,161,220);">
-          &nbsp;
-         </div> 
-        </div> 
-       </div> 
-      </div> </td> 
-    </tr> 
-    <tr> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-     <td>&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.bgoinattinfo.click/1b55Q239S5D8F5x13M692mcFu1980w36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ8RKd95X10RS6nOJwDq/disjointly-shaggy" alt=""/></body>
+ <body style="font-family: 'Schibsted Grotesk', sans-serif;"> 
+  <section id="blongs"> 
+   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+    <tbody> 
+     <tr> 
+      <td align="center" class="GLOSBS"> 
+       <div style="width: 100%; background-color: rgb(247, 247, 247);"> 
+        <ul style="list-style-type: none; margin: 0; padding: 50px 0;"> 
+         <li class="bbflosgf"> 
+          <div> 
+           <div style="background-color: rgb(223, 223, 223); padding: 0px 0;"> 
+            <center style="max-width: 555px; margin: auto; text-align: center; background-color: #fff;"> 
+             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+               </tr> 
+               <tr> 
+                <td class="glojuuas" colspan="5"> 
+                 <div style="font-family: Arial, Helvetica, sans-serif;"> 
+                  <center style="font-size: 55px; font-weight: bold;">
+                   <a href="http://www.olpenigsfdx.world/13d6I2g3s95PO86D13CkD692dM1981w36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQMRKdd6zGCS105NpwOD/bicarbonate-adherents" style="text-decoration: none;"><b style="color: rgb(48,25,85);">Fed<b style="color: rgb(246,34,0);">Ex</b></b></a>
+                  </center> 
+                 </div> </td> 
+               </tr> 
+               <tr> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+               </tr> 
+               <tr> 
+                <td align="center" class="docsbblsx" colspan="5" style="border-top: double 4px;"> 
+                 <div> 
+                  <h1 style="font-size: 1.1rem; line-height: 1.7rem; margin: 0; padding: 28px 38px 0; font-weight: 500;">We wish to extend our thanks for selecting FedEx as your preferred shipping partner. Your loyalty and support hold great significance for us, and we genuinely value the opportunity to be of assistance to you.</h1> 
+                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                   <tbody> 
+                    <tr> 
+                     <td align="center" class="shopsllg" colspan="6"> 
+                      <div style="padding: 15px 0 0;">
+                       <a href="http://www.olpenigsfdx.world/13d6I2g3s95PO86D13CkD692dM1981w36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQMRKdd6zGCS105NpwOD/bicarbonate-adherents" target="_blank"><img alt="JUSE" src="http://www.olpenigsfdx.world/satellite-modifies/bca6nFj2395Fm7_a11X692fj1981j36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQMRKdd5is1s05Y10wD" style="display: block;" width="100%" /></a>
+                      </div> </td> 
+                    </tr> 
+                    <tr> 
+                     <td class="lloghs">&nbsp;</td> 
+                     <td class="lloghs">&nbsp;</td> 
+                     <td class="lloghs">&nbsp;</td> 
+                     <td class="lloghs">&nbsp;</td> 
+                     <td class="lloghs">&nbsp;</td> 
+                     <td class="lloghs">&nbsp;</td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" colspan="6"> 
+                      <div> 
+                       <h2 style="font-size: 1.1rem; line-height: 1.7rem; margin: 0; padding: 0px 38px 0; font-weight: 500;">As our commitment to providing exceptional service persists, we cordially invite you to engage in a brief survey concerning your recent shipping experience and your overall interaction with FedEx.</h2> 
+                      </div> </td> 
+                    </tr> 
+                    <tr> 
+                     <td align="center" class="nowams" colspan="6">&nbsp; 
+                      <div> 
+                       <center>
+                        <strong>After finishing the survey, you might qualify for a $100 Gift!</strong>
+                       </center> 
+                      </div> <br /> <a href="http://www.olpenigsfdx.world/13d6I2g3s95PO86D13CkD692dM1981w36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQMRKdd6zGCS105NpwOD/bicarbonate-adherents" target="_blank"><img alt="BHSE" src="http://www.olpenigsfdx.world/superintendent-remainder/9726E2P39B5d7HIa13wG69S30T1981r36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQMRKdd7m10RKmp6P2PwWD" style="display: block; margin: auto;" width="90px" /></a> 
+                      <div style="text-align: center;"> 
+                       <h2 style="font-size: 1.1rem; line-height: 1.7rem; margin: 0; padding: 0px 38px 0; font-weight: 500;">To initiate the survey, just click the link below. It's a brief task that will take only a few minutes, and be assured that your responses will be kept confidential.</h2> 
+                      </div> 
+                      <div style="max-width: 280px; margin: auto; padding: 45px 0;"> 
+                       <center style="background-color: rgb(53, 53, 53); padding-top: 12px; padding-bottom: 12px; padding-left: 28px; padding-right: 28px; font-size: 24px; font-weight: bold;">
+                        <a href="http://www.olpenigsfdx.world/13d6I2g3s95PO86D13CkD692dM1981w36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7lQMRKdd6zGCS105NpwOD/bicarbonate-adherents" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt;&gt;</a>
+                       </center> 
+                      </div> 
+                      <div style="text-align: center;"> 
+                       <h2 style="font-size: 1.1rem; line-height: 1.7rem; margin: 0; padding: 0px 38px 0; font-weight: 500;">Your support is highly valued, and we look forward to hearing from you soon. Warm regards.</h2> &nbsp; 
+                       <div style="padding-top: 160px; background-color: rgb(223,223,223); padding-bottom: 160px;"> 
+                        <center style="font-size: 12px; font-weight: 700; ;"> 
+                         <hr />another day to leave 
+                         <a href="http://www.olpenigsfdx.world/13d6mm239r5n8Cj613wq69l2em1981M36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQMRKdd7nZVPC106wlLlwD/bicarbonate-adherents">here</a>
+                         <br /> US 10010 126 E 23rd St New York, NY,
+                        </center> 
+                       </div> 
+                      </div> </td> 
+                    </tr> 
+                   </tbody> 
+                  </table> 
+                 </div> </td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </center> 
+           </div> 
+          </div> </li> 
+        </ul> 
+       </div> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </section>   
+ <img src="http://www.olpenigsfdx.world/ef34w2395y85nP12E693D1B1981O36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQMRKdd7Pq1sk0r6B@lwqD/alphabet-abruptly" alt=""/></body>
 </html>
 
---2616216dd9642b36b9b8a00e62511ac12103297100599--
+--e266f833345fa9f73a11c993851b88af36100610010201019710205--
 
