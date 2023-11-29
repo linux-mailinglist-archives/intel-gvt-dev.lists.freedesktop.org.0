@@ -1,63 +1,50 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EFA37FCE28
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Nov 2023 06:15:19 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id CA7A27FD0AE
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Nov 2023 09:28:07 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 34A1310E5F8;
-	Wed, 29 Nov 2023 05:15:17 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1D7D510E14F;
+	Wed, 29 Nov 2023 08:28:06 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ej1-x633.google.com (mail-ej1-x633.google.com
- [IPv6:2a00:1450:4864:20::633])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 65E7410E17C;
- Wed, 29 Nov 2023 05:15:12 +0000 (UTC)
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-9fa45e75ed9so856448766b.1; 
- Tue, 28 Nov 2023 21:15:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701234911; x=1701839711; darn=lists.freedesktop.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7Q9CRtsR/lkt7Cw/fHi7bDvZN/itsXqjiup0ZTmySxA=;
- b=Du02PcJLivS87nM16v2WxQfdJB63pi7B0nNrCnpgBFn0OYI/9YG6yeABNlD94+fxUK
- PRGBEghXReSKgKSFSnN/DLHfKZrIIsJtCcw3I4XDYzUbJCKwa5otjnyQK1O4owClE0Il
- oyymHEbs/I0KICo0NkowwEUE+vD8m9SFXem8mLzTdtgq2DgPbWtY/pJYkQlqLctnJ5QC
- 1pGuYOG0yuNONzQZtwfKrV07HaZ/h5USHA4dWSpFbSCjEz0BeDEXIWwCosvRxgUEri8b
- rBmnJyw4oS+yYKXt4AZgK3lYioQgKxGtoMsPrqQMgOC15Ty2tuXQropwgn5+UXQoJYmJ
- J4Yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701234911; x=1701839711;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7Q9CRtsR/lkt7Cw/fHi7bDvZN/itsXqjiup0ZTmySxA=;
- b=u/vqGmJSEozfzxeBixenW/sZ/DXEWQJ2Bh6fXTxw1J6TcsXEqp+dhW/FgSUUDmFlEp
- oYbRVT9Vq2mck2HcqhkrxIftE6PanTI+T3uWAiwzn4dROlKmOinODvYQlQEXibN3M1fJ
- xVL0aZJJgSC/voteI33xOlEB4NBnVrgf7W0lR+M++0RWYbrmWAaPvpa7JNf4rgDjE6Io
- RYHPP3jPqtE/+NeSNvM4hmyeRbj8oy3uRGJbI8Ngr1tN3KAGcGjvboPqTt9QWV7/G7rv
- 5i5790BdiZVlhvGBJKGTt7m/Ep3LmKRXMUg/Wps1Ng/SWvQzZeOiX8npKm8yce/UWvm4
- bbKw==
-X-Gm-Message-State: AOJu0YyFK+/VAtnZL4OSKY2jvgJtBLoh0YsTzme3+dw+uGuX61/uJX+Q
- 1nXI+MS0cM1xK+REDARaA94yOZxRhTHrJ43X4eU=
-X-Google-Smtp-Source: AGHT+IF8BQbzvC8JUMcPZoTIvdOo/gY/kUL91mdf8zioqThU2TU+yw6ExoLa9toWLp2NMd4yrs5b7C6bb/cyNxAjx+o=
-X-Received: by 2002:a17:906:5299:b0:a00:8706:c82e with SMTP id
- c25-20020a170906529900b00a008706c82emr13477614ejm.18.1701234910430; Tue, 28
- Nov 2023 21:15:10 -0800 (PST)
-MIME-Version: 1.0
+Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 801CE10E064;
+ Wed, 29 Nov 2023 08:28:03 +0000 (UTC)
+Received: from kwepemm600020.china.huawei.com (unknown [172.30.72.55])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4SgC6F0YZczsRdJ;
+ Wed, 29 Nov 2023 16:24:21 +0800 (CST)
+Received: from kwepemm000018.china.huawei.com (7.193.23.4) by
+ kwepemm600020.china.huawei.com (7.193.23.147) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Wed, 29 Nov 2023 16:27:59 +0800
+Received: from kwepemm000018.china.huawei.com ([7.193.23.4]) by
+ kwepemm000018.china.huawei.com ([7.193.23.4]) with mapi id 15.01.2507.035;
+ Wed, 29 Nov 2023 16:27:59 +0800
+From: zhuweixi <weixi.zhu@huawei.com>
+To: Dave Airlie <airlied@gmail.com>, =?utf-8?B?Q2hyaXN0aWFuIEvDtm5pZw==?=
+ <christian.koenig@amd.com>
+Subject: RE: [RFC PATCH 0/6] Supporting GMEM (generalized memory management)
+ for external memory devices
+Thread-Topic: [RFC PATCH 0/6] Supporting GMEM (generalized memory management)
+ for external memory devices
+Thread-Index: AQHaIfl9wrtrX0lryUy6fTQuS5BXZrCPLVeAgAEOlwCAALjigA==
+Date: Wed, 29 Nov 2023 08:27:59 +0000
+Message-ID: <a07fd33c6f9e44418c528de06f89707e@huawei.com>
 References: <20231128125025.4449-1-weixi.zhu@huawei.com>
  <9308a79d-e312-4e6d-98fe-75dc6d0fbeda@amd.com>
-In-Reply-To: <9308a79d-e312-4e6d-98fe-75dc6d0fbeda@amd.com>
-From: Dave Airlie <airlied@gmail.com>
-Date: Wed, 29 Nov 2023 15:14:58 +1000
-Message-ID: <CAPM=9tx-d-Au_bjX0vYxv6OwqiSjmbbMC7ebWpTsQgFNddWDuw@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/6] Supporting GMEM (generalized memory management)
- for external memory devices
-To: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ <CAPM=9tx-d-Au_bjX0vYxv6OwqiSjmbbMC7ebWpTsQgFNddWDuw@mail.gmail.com>
+In-Reply-To: <CAPM=9tx-d-Au_bjX0vYxv6OwqiSjmbbMC7ebWpTsQgFNddWDuw@mail.gmail.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.179.172]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,138 +57,156 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: joonas.lahtinen@linux.intel.com, dri-devel@lists.freedesktop.org,
- linux-mm@kvack.org, leonro@nvidia.com, apopple@nvidia.com,
- amd-gfx@lists.freedesktop.org, mgorman@suse.de, ziy@nvidia.com,
- zhi.a.wang@intel.com, rcampbell@nvidia.com, jgg@nvidia.com,
- weixi.zhu@openeuler.sh, jhubbard@nvidia.com, intel-gfx@lists.freedesktop.org,
- mhairgrove@nvidia.com, zhenyuw@linux.intel.com, jglisse@redhat.com,
- Weixi Zhu <weixi.zhu@huawei.com>, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, jani.nikula@linux.intel.com,
- tvrtko.ursulin@linux.intel.com, Felix.Kuehling@amd.com, Xinhui.Pan@amd.com,
- linux-kernel@vger.kernel.org, alexander.deucher@amd.com,
- akpm@linux-foundation.org, ogabbay@kernel.org
+Cc: "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mm@kvack.org" <linux-mm@kvack.org>,
+ "leonro@nvidia.com" <leonro@nvidia.com>,
+ "apopple@nvidia.com" <apopple@nvidia.com>,
+ "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+ "mgorman@suse.de" <mgorman@suse.de>, "ziy@nvidia.com" <ziy@nvidia.com>,
+ "zhi.a.wang@intel.com" <zhi.a.wang@intel.com>,
+ "rcampbell@nvidia.com" <rcampbell@nvidia.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
+ "weixi.zhu@openeuler.sh" <weixi.zhu@openeuler.sh>,
+ "jhubbard@nvidia.com" <jhubbard@nvidia.com>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "mhairgrove@nvidia.com" <mhairgrove@nvidia.com>,
+ "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
+ "jglisse@redhat.com" <jglisse@redhat.com>,
+ "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
+ "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
+ "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
+ "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
+ "Felix.Kuehling@amd.com" <Felix.Kuehling@amd.com>,
+ "Xinhui.Pan@amd.com" <Xinhui.Pan@amd.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "alexander.deucher@amd.com" <alexander.deucher@amd.com>,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+ "ogabbay@kernel.org" <ogabbay@kernel.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Tue, 28 Nov 2023 at 23:07, Christian K=C3=B6nig <christian.koenig@amd.co=
-m> wrote:
->
-> Am 28.11.23 um 13:50 schrieb Weixi Zhu:
-> > The problem:
-> >
-> > Accelerator driver developers are forced to reinvent external MM subsys=
-tems
-> > case by case, because Linux core MM only considers host memory resource=
-s.
-> > These reinvented MM subsystems have similar orders of magnitude of LoC =
-as
-> > Linux MM (80K), e.g. Nvidia-UVM has 70K, AMD GPU has 14K and Huawei NPU=
- has
-> > 30K. Meanwhile, more and more vendors are implementing their own
-> > accelerators, e.g. Microsoft's Maia 100. At the same time,
-> > application-level developers suffer from poor programmability -- they m=
-ust
-> > consider parallel address spaces and be careful about the limited devic=
-e
-> > DRAM capacity. This can be alleviated if a malloc()-ed virtual address =
-can
-> > be shared by the accelerator, or the abundant host DRAM can further
-> > transparently backup the device local memory.
-> >
-> > These external MM systems share similar mechanisms except for the
-> > hardware-dependent part, so reinventing them is effectively introducing
-> > redundant code (14K~70K for each case). Such developing/maintaining is =
-not
-> > cheap. Furthermore, to share a malloc()-ed virtual address, device driv=
-ers
-> > need to deeply interact with Linux MM via low-level MM APIs, e.g. MMU
-> > notifiers/HMM. This raises the bar for driver development, since develo=
-pers
-> > must understand how Linux MM works. Further, it creates code maintenanc=
-e
-> > problems -- any changes to Linux MM potentially require coordinated cha=
-nges
-> > to accelerator drivers using low-level MM APIs.
-> >
-> > Putting a cache-coherent bus between host and device will not make thes=
-e
-> > external MM subsystems disappear. For example, a throughput-oriented
-> > accelerator will not tolerate executing heavy memory access workload wi=
-th
-> > a host MMU/IOMMU via a remote bus. Therefore, devices will still have
-> > their own MMU and pick a simpler page table format for lower address
-> > translation overhead, requiring external MM subsystems.
-> >
-> > --------------------
-> >
-> > What GMEM (Generalized Memory Management [1]) does:
-> >
-> > GMEM extends Linux MM to share its machine-independent MM code. Only
-> > high-level interface is provided for device drivers. This prevents
-> > accelerator drivers from reinventing the wheel, but relies on drivers t=
-o
-> > implement their hardware-dependent functions declared by GMEM. GMEM's k=
-ey
-> > interface include gm_dev_create(), gm_as_create(), gm_as_attach() and
-> > gm_dev_register_physmem(). Here briefly describe how a device driver
-> > utilizes them:
-> > 1. At boot time, call gm_dev_create() and registers the implementation =
-of
-> >     hardware-dependent functions as declared in struct gm_mmu.
-> >       - If the device has local DRAM, call gm_dev_register_physmem() to
-> >         register available physical addresses.
-> > 2. When a device context is initialized (e.g. triggered by ioctl), chec=
-k if
-> >     the current CPU process has been attached to a gmem address space
-> >     (struct gm_as). If not, call gm_as_create() and point current->mm->=
-gm_as
-> >     to it.
-> > 3. Call gm_as_attach() to attach the device context to a gmem address s=
-pace.
-> > 4. Invoke gm_dev_fault() to resolve a page fault or prepare data before
-> >     device computation happens.
-> >
-> > GMEM has changed the following assumptions in Linux MM:
-> >    1. An mm_struct not only handle a single CPU context, but may also h=
-andle
-> >       external memory contexts encapsulated as gm_context listed in
-> >       mm->gm_as. An external memory context can include a few or all of=
- the
-> >       following parts: an external MMU (that requires TLB invalidation)=
-, an
-> >       external page table (that requires PTE manipulation) and external=
- DRAM
-> >       (that requires physical memory management).
->
-> Well that is pretty much exactly what AMD has already proposed with KFD
-> and was rejected for rather good reasons.
-
-> >
-> > MMU functions
-> > The MMU functions peer_map() and peer_unmap() overlap other functions,
-> > leaving a question if the MMU functions should be decoupled as more bas=
-ic
-> > operations. Decoupling them could potentially prevent device drivers
-> > coalescing these basic steps within a single host-device communication
-> > operation, while coupling them makes it more difficult for device drive=
-rs
-> > to utilize GMEM interface.
->
-> Well to be honest all of this sounds like history to me. We have already
-> seen the same basic approach in KFD, HMM and to some extend in TTM as wel=
-l.
->
-> And all of them more or less failed. Why should this here be different?
-
-
-Any info we have on why this has failed to work in the past would be
-useful to provide. This is one of those cases where we may not have
-documented the bad ideas to stop future developers from thinking they
-are bad.
-
-I do think we would want more common code in this area, but I would
-think we'd have it more on the driver infrastructure side, than in the
-core mm.
-
-Dave.
+R2xhZCB0byBoZWFyIHRoYXQgbW9yZSBzaGFyYWJsZSBjb2RlIGlzIGRlc2lyYWJsZS4gDQpJTUhP
+LCBmb3IgYSBjb21tb24gTU0gc3Vic3lzdGVtLCBpdCBpcyBtb3JlIGJlbmVmaWNpYWwgZm9yIA0K
+R01FTSB0byBleHRlbmQgY29yZSBNTSBpbnN0ZWFkIG9mIGJ1aWxkaW5nIGEgc2VwYXJhdGUgb25l
+Lg0KDQpBcyBzdGF0ZWQgaW4gdGhlIGJlZ2lubmluZyBvZiBteSBSRkMgbGV0dGVyLCBNTSBzeXN0
+ZW1zIGFyZSANCmxhcmdlIGFuZCBzaW1pbGFyLiBFdmVuIGEgc29waGlzdGljYXRlZCBvbmUgbGlr
+ZSBMaW51eCBNTQ0KdGhhdCBoYXMgZXZvbHZlZCBvdmVyIGRlY2FkZXMgc3RpbGwgc3VmZmVycyBm
+cm9tIGFuIGluY3JlYXNpbmcgDQpudW1iZXIgb2YgYnVnc1sxXS4gU28sIGRpcmVjdGx5IGV4dGVu
+ZGluZyBjb3JlIE1NIHRvIHN1cHBvcnQNCmRldmljZXMgbm90IG9ubHkgYXZvaWRzIG9wZW5pbmcg
+YSBuZXcgYm94IG9mIGJ1Z3MsIGJ1dCBhbHNvIA0KYWxsb3dzIHRoZSBjb21tdW5pdHkgdG8gY29u
+Y2VudHJhdGUgb24gbWFpbnRhaW5pbmcgb25lIHNpbmdsZSANCk1NIHN5c3RlbS4gT24gdGhlIG90
+aGVyIHNpZGUsIEdNRU0gZG9lcyBubyBodXJ0IHRvIGNvcmUgTU0NCklmIGEgQ1BVIHByb2Nlc3Mg
+aXMgbm90IGF0dGFjaGVkIHdpdGggZGV2aWNlIGNvbnRleHRzLg0KDQpAQ2hyaXN0aWFuLCBjb3Vs
+ZCB5b3UgcHJvdmlkZSBtb3JlIGluZm9ybWF0aW9uIG9uIHdoYXQgQU1EDQpwcm9wb3NlZCB3aXRo
+IEtGRCBhbmQgd2h5IGl0IHdhcyByZWplY3RlZD8NCg0KWzFdIEh1YW5nLCBKaWFuLCBNb2ludWRk
+aW4gSy4gUXVyZXNoaSwgYW5kIEthcnN0ZW4gU2Nod2FuLiAiQW4gZXZvbHV0aW9uYXJ5IHN0dWR5
+IG9mIGxpbnV4IG1lbW9yeSBtYW5hZ2VtZW50IGZvciBmdW4gYW5kIHByb2ZpdC4iIDIwMTYgVVNF
+TklYIEFubnVhbCBUZWNobmljYWwgQ29uZmVyZW5jZSAoVVNFTklYIEFUQyAxNikuIDIwMTYuDQoN
+ClRoYW5rcywNCldlaXhpDQoNCi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQpGcm9tOiBEYXZl
+IEFpcmxpZSA8YWlybGllZEBnbWFpbC5jb20+IA0KU2VudDogV2VkbmVzZGF5LCBOb3ZlbWJlciAy
+OSwgMjAyMyAxOjE1IFBNDQpUbzogQ2hyaXN0aWFuIEvDtm5pZyA8Y2hyaXN0aWFuLmtvZW5pZ0Bh
+bWQuY29tPg0KQ2M6IHpodXdlaXhpIDx3ZWl4aS56aHVAaHVhd2VpLmNvbT47IGxpbnV4LW1tQGt2
+YWNrLm9yZzsgbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZzsgYWtwbUBsaW51eC1mb3VuZGF0
+aW9uLm9yZzsgd2VpeGkuemh1QG9wZW5ldWxlci5zaDsgbWdvcm1hbkBzdXNlLmRlOyBqZ2xpc3Nl
+QHJlZGhhdC5jb207IHJjYW1wYmVsbEBudmlkaWEuY29tOyBqaHViYmFyZEBudmlkaWEuY29tOyBh
+cG9wcGxlQG52aWRpYS5jb207IG1oYWlyZ3JvdmVAbnZpZGlhLmNvbTsgeml5QG52aWRpYS5jb207
+IGFsZXhhbmRlci5kZXVjaGVyQGFtZC5jb207IFhpbmh1aS5QYW5AYW1kLmNvbTsgYW1kLWdmeEBs
+aXN0cy5mcmVlZGVza3RvcC5vcmc7IEZlbGl4Lkt1ZWhsaW5nQGFtZC5jb207IG9nYWJiYXlAa2Vy
+bmVsLm9yZzsgZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZzsgamdnQG52aWRpYS5jb207
+IGxlb25yb0BudmlkaWEuY29tOyB6aGVueXV3QGxpbnV4LmludGVsLmNvbTsgemhpLmEud2FuZ0Bp
+bnRlbC5jb207IGludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyBpbnRlbC1nZnhA
+bGlzdHMuZnJlZWRlc2t0b3Aub3JnOyBqYW5pLm5pa3VsYUBsaW51eC5pbnRlbC5jb207IGpvb25h
+cy5sYWh0aW5lbkBsaW51eC5pbnRlbC5jb207IHJvZHJpZ28udml2aUBpbnRlbC5jb207IHR2cnRr
+by51cnN1bGluQGxpbnV4LmludGVsLmNvbQ0KU3ViamVjdDogUmU6IFtSRkMgUEFUQ0ggMC82XSBT
+dXBwb3J0aW5nIEdNRU0gKGdlbmVyYWxpemVkIG1lbW9yeSBtYW5hZ2VtZW50KSBmb3IgZXh0ZXJu
+YWwgbWVtb3J5IGRldmljZXMNCg0KT24gVHVlLCAyOCBOb3YgMjAyMyBhdCAyMzowNywgQ2hyaXN0
+aWFuIEvDtm5pZyA8Y2hyaXN0aWFuLmtvZW5pZ0BhbWQuY29tPiB3cm90ZToNCj4NCj4gQW0gMjgu
+MTEuMjMgdW0gMTM6NTAgc2NocmllYiBXZWl4aSBaaHU6DQo+ID4gVGhlIHByb2JsZW06DQo+ID4N
+Cj4gPiBBY2NlbGVyYXRvciBkcml2ZXIgZGV2ZWxvcGVycyBhcmUgZm9yY2VkIHRvIHJlaW52ZW50
+IGV4dGVybmFsIE1NIHN1YnN5c3RlbXMNCj4gPiBjYXNlIGJ5IGNhc2UsIGJlY2F1c2UgTGludXgg
+Y29yZSBNTSBvbmx5IGNvbnNpZGVycyBob3N0IG1lbW9yeSByZXNvdXJjZXMuDQo+ID4gVGhlc2Ug
+cmVpbnZlbnRlZCBNTSBzdWJzeXN0ZW1zIGhhdmUgc2ltaWxhciBvcmRlcnMgb2YgbWFnbml0dWRl
+IG9mIExvQyBhcw0KPiA+IExpbnV4IE1NICg4MEspLCBlLmcuIE52aWRpYS1VVk0gaGFzIDcwSywg
+QU1EIEdQVSBoYXMgMTRLIGFuZCBIdWF3ZWkgTlBVIGhhcw0KPiA+IDMwSy4gTWVhbndoaWxlLCBt
+b3JlIGFuZCBtb3JlIHZlbmRvcnMgYXJlIGltcGxlbWVudGluZyB0aGVpciBvd24NCj4gPiBhY2Nl
+bGVyYXRvcnMsIGUuZy4gTWljcm9zb2Z0J3MgTWFpYSAxMDAuIEF0IHRoZSBzYW1lIHRpbWUsDQo+
+ID4gYXBwbGljYXRpb24tbGV2ZWwgZGV2ZWxvcGVycyBzdWZmZXIgZnJvbSBwb29yIHByb2dyYW1t
+YWJpbGl0eSAtLSB0aGV5IG11c3QNCj4gPiBjb25zaWRlciBwYXJhbGxlbCBhZGRyZXNzIHNwYWNl
+cyBhbmQgYmUgY2FyZWZ1bCBhYm91dCB0aGUgbGltaXRlZCBkZXZpY2UNCj4gPiBEUkFNIGNhcGFj
+aXR5LiBUaGlzIGNhbiBiZSBhbGxldmlhdGVkIGlmIGEgbWFsbG9jKCktZWQgdmlydHVhbCBhZGRy
+ZXNzIGNhbg0KPiA+IGJlIHNoYXJlZCBieSB0aGUgYWNjZWxlcmF0b3IsIG9yIHRoZSBhYnVuZGFu
+dCBob3N0IERSQU0gY2FuIGZ1cnRoZXINCj4gPiB0cmFuc3BhcmVudGx5IGJhY2t1cCB0aGUgZGV2
+aWNlIGxvY2FsIG1lbW9yeS4NCj4gPg0KPiA+IFRoZXNlIGV4dGVybmFsIE1NIHN5c3RlbXMgc2hh
+cmUgc2ltaWxhciBtZWNoYW5pc21zIGV4Y2VwdCBmb3IgdGhlDQo+ID4gaGFyZHdhcmUtZGVwZW5k
+ZW50IHBhcnQsIHNvIHJlaW52ZW50aW5nIHRoZW0gaXMgZWZmZWN0aXZlbHkgaW50cm9kdWNpbmcN
+Cj4gPiByZWR1bmRhbnQgY29kZSAoMTRLfjcwSyBmb3IgZWFjaCBjYXNlKS4gU3VjaCBkZXZlbG9w
+aW5nL21haW50YWluaW5nIGlzIG5vdA0KPiA+IGNoZWFwLiBGdXJ0aGVybW9yZSwgdG8gc2hhcmUg
+YSBtYWxsb2MoKS1lZCB2aXJ0dWFsIGFkZHJlc3MsIGRldmljZSBkcml2ZXJzDQo+ID4gbmVlZCB0
+byBkZWVwbHkgaW50ZXJhY3Qgd2l0aCBMaW51eCBNTSB2aWEgbG93LWxldmVsIE1NIEFQSXMsIGUu
+Zy4gTU1VDQo+ID4gbm90aWZpZXJzL0hNTS4gVGhpcyByYWlzZXMgdGhlIGJhciBmb3IgZHJpdmVy
+IGRldmVsb3BtZW50LCBzaW5jZSBkZXZlbG9wZXJzDQo+ID4gbXVzdCB1bmRlcnN0YW5kIGhvdyBM
+aW51eCBNTSB3b3Jrcy4gRnVydGhlciwgaXQgY3JlYXRlcyBjb2RlIG1haW50ZW5hbmNlDQo+ID4g
+cHJvYmxlbXMgLS0gYW55IGNoYW5nZXMgdG8gTGludXggTU0gcG90ZW50aWFsbHkgcmVxdWlyZSBj
+b29yZGluYXRlZCBjaGFuZ2VzDQo+ID4gdG8gYWNjZWxlcmF0b3IgZHJpdmVycyB1c2luZyBsb3ct
+bGV2ZWwgTU0gQVBJcy4NCj4gPg0KPiA+IFB1dHRpbmcgYSBjYWNoZS1jb2hlcmVudCBidXMgYmV0
+d2VlbiBob3N0IGFuZCBkZXZpY2Ugd2lsbCBub3QgbWFrZSB0aGVzZQ0KPiA+IGV4dGVybmFsIE1N
+IHN1YnN5c3RlbXMgZGlzYXBwZWFyLiBGb3IgZXhhbXBsZSwgYSB0aHJvdWdocHV0LW9yaWVudGVk
+DQo+ID4gYWNjZWxlcmF0b3Igd2lsbCBub3QgdG9sZXJhdGUgZXhlY3V0aW5nIGhlYXZ5IG1lbW9y
+eSBhY2Nlc3Mgd29ya2xvYWQgd2l0aA0KPiA+IGEgaG9zdCBNTVUvSU9NTVUgdmlhIGEgcmVtb3Rl
+IGJ1cy4gVGhlcmVmb3JlLCBkZXZpY2VzIHdpbGwgc3RpbGwgaGF2ZQ0KPiA+IHRoZWlyIG93biBN
+TVUgYW5kIHBpY2sgYSBzaW1wbGVyIHBhZ2UgdGFibGUgZm9ybWF0IGZvciBsb3dlciBhZGRyZXNz
+DQo+ID4gdHJhbnNsYXRpb24gb3ZlcmhlYWQsIHJlcXVpcmluZyBleHRlcm5hbCBNTSBzdWJzeXN0
+ZW1zLg0KPiA+DQo+ID4gLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gPg0KPiA+IFdoYXQgR01FTSAo
+R2VuZXJhbGl6ZWQgTWVtb3J5IE1hbmFnZW1lbnQgWzFdKSBkb2VzOg0KPiA+DQo+ID4gR01FTSBl
+eHRlbmRzIExpbnV4IE1NIHRvIHNoYXJlIGl0cyBtYWNoaW5lLWluZGVwZW5kZW50IE1NIGNvZGUu
+IE9ubHkNCj4gPiBoaWdoLWxldmVsIGludGVyZmFjZSBpcyBwcm92aWRlZCBmb3IgZGV2aWNlIGRy
+aXZlcnMuIFRoaXMgcHJldmVudHMNCj4gPiBhY2NlbGVyYXRvciBkcml2ZXJzIGZyb20gcmVpbnZl
+bnRpbmcgdGhlIHdoZWVsLCBidXQgcmVsaWVzIG9uIGRyaXZlcnMgdG8NCj4gPiBpbXBsZW1lbnQg
+dGhlaXIgaGFyZHdhcmUtZGVwZW5kZW50IGZ1bmN0aW9ucyBkZWNsYXJlZCBieSBHTUVNLiBHTUVN
+J3Mga2V5DQo+ID4gaW50ZXJmYWNlIGluY2x1ZGUgZ21fZGV2X2NyZWF0ZSgpLCBnbV9hc19jcmVh
+dGUoKSwgZ21fYXNfYXR0YWNoKCkgYW5kDQo+ID4gZ21fZGV2X3JlZ2lzdGVyX3BoeXNtZW0oKS4g
+SGVyZSBicmllZmx5IGRlc2NyaWJlIGhvdyBhIGRldmljZSBkcml2ZXINCj4gPiB1dGlsaXplcyB0
+aGVtOg0KPiA+IDEuIEF0IGJvb3QgdGltZSwgY2FsbCBnbV9kZXZfY3JlYXRlKCkgYW5kIHJlZ2lz
+dGVycyB0aGUgaW1wbGVtZW50YXRpb24gb2YNCj4gPiAgICAgaGFyZHdhcmUtZGVwZW5kZW50IGZ1
+bmN0aW9ucyBhcyBkZWNsYXJlZCBpbiBzdHJ1Y3QgZ21fbW11Lg0KPiA+ICAgICAgIC0gSWYgdGhl
+IGRldmljZSBoYXMgbG9jYWwgRFJBTSwgY2FsbCBnbV9kZXZfcmVnaXN0ZXJfcGh5c21lbSgpIHRv
+DQo+ID4gICAgICAgICByZWdpc3RlciBhdmFpbGFibGUgcGh5c2ljYWwgYWRkcmVzc2VzLg0KPiA+
+IDIuIFdoZW4gYSBkZXZpY2UgY29udGV4dCBpcyBpbml0aWFsaXplZCAoZS5nLiB0cmlnZ2VyZWQg
+YnkgaW9jdGwpLCBjaGVjayBpZg0KPiA+ICAgICB0aGUgY3VycmVudCBDUFUgcHJvY2VzcyBoYXMg
+YmVlbiBhdHRhY2hlZCB0byBhIGdtZW0gYWRkcmVzcyBzcGFjZQ0KPiA+ICAgICAoc3RydWN0IGdt
+X2FzKS4gSWYgbm90LCBjYWxsIGdtX2FzX2NyZWF0ZSgpIGFuZCBwb2ludCBjdXJyZW50LT5tbS0+
+Z21fYXMNCj4gPiAgICAgdG8gaXQuDQo+ID4gMy4gQ2FsbCBnbV9hc19hdHRhY2goKSB0byBhdHRh
+Y2ggdGhlIGRldmljZSBjb250ZXh0IHRvIGEgZ21lbSBhZGRyZXNzIHNwYWNlLg0KPiA+IDQuIElu
+dm9rZSBnbV9kZXZfZmF1bHQoKSB0byByZXNvbHZlIGEgcGFnZSBmYXVsdCBvciBwcmVwYXJlIGRh
+dGEgYmVmb3JlDQo+ID4gICAgIGRldmljZSBjb21wdXRhdGlvbiBoYXBwZW5zLg0KPiA+DQo+ID4g
+R01FTSBoYXMgY2hhbmdlZCB0aGUgZm9sbG93aW5nIGFzc3VtcHRpb25zIGluIExpbnV4IE1NOg0K
+PiA+ICAgIDEuIEFuIG1tX3N0cnVjdCBub3Qgb25seSBoYW5kbGUgYSBzaW5nbGUgQ1BVIGNvbnRl
+eHQsIGJ1dCBtYXkgYWxzbyBoYW5kbGUNCj4gPiAgICAgICBleHRlcm5hbCBtZW1vcnkgY29udGV4
+dHMgZW5jYXBzdWxhdGVkIGFzIGdtX2NvbnRleHQgbGlzdGVkIGluDQo+ID4gICAgICAgbW0tPmdt
+X2FzLiBBbiBleHRlcm5hbCBtZW1vcnkgY29udGV4dCBjYW4gaW5jbHVkZSBhIGZldyBvciBhbGwg
+b2YgdGhlDQo+ID4gICAgICAgZm9sbG93aW5nIHBhcnRzOiBhbiBleHRlcm5hbCBNTVUgKHRoYXQg
+cmVxdWlyZXMgVExCIGludmFsaWRhdGlvbiksIGFuDQo+ID4gICAgICAgZXh0ZXJuYWwgcGFnZSB0
+YWJsZSAodGhhdCByZXF1aXJlcyBQVEUgbWFuaXB1bGF0aW9uKSBhbmQgZXh0ZXJuYWwgRFJBTQ0K
+PiA+ICAgICAgICh0aGF0IHJlcXVpcmVzIHBoeXNpY2FsIG1lbW9yeSBtYW5hZ2VtZW50KS4NCj4N
+Cj4gV2VsbCB0aGF0IGlzIHByZXR0eSBtdWNoIGV4YWN0bHkgd2hhdCBBTUQgaGFzIGFscmVhZHkg
+cHJvcG9zZWQgd2l0aCBLRkQNCj4gYW5kIHdhcyByZWplY3RlZCBmb3IgcmF0aGVyIGdvb2QgcmVh
+c29ucy4NCg0KPiA+DQo+ID4gTU1VIGZ1bmN0aW9ucw0KPiA+IFRoZSBNTVUgZnVuY3Rpb25zIHBl
+ZXJfbWFwKCkgYW5kIHBlZXJfdW5tYXAoKSBvdmVybGFwIG90aGVyIGZ1bmN0aW9ucywNCj4gPiBs
+ZWF2aW5nIGEgcXVlc3Rpb24gaWYgdGhlIE1NVSBmdW5jdGlvbnMgc2hvdWxkIGJlIGRlY291cGxl
+ZCBhcyBtb3JlIGJhc2ljDQo+ID4gb3BlcmF0aW9ucy4gRGVjb3VwbGluZyB0aGVtIGNvdWxkIHBv
+dGVudGlhbGx5IHByZXZlbnQgZGV2aWNlIGRyaXZlcnMNCj4gPiBjb2FsZXNjaW5nIHRoZXNlIGJh
+c2ljIHN0ZXBzIHdpdGhpbiBhIHNpbmdsZSBob3N0LWRldmljZSBjb21tdW5pY2F0aW9uDQo+ID4g
+b3BlcmF0aW9uLCB3aGlsZSBjb3VwbGluZyB0aGVtIG1ha2VzIGl0IG1vcmUgZGlmZmljdWx0IGZv
+ciBkZXZpY2UgZHJpdmVycw0KPiA+IHRvIHV0aWxpemUgR01FTSBpbnRlcmZhY2UuDQo+DQo+IFdl
+bGwgdG8gYmUgaG9uZXN0IGFsbCBvZiB0aGlzIHNvdW5kcyBsaWtlIGhpc3RvcnkgdG8gbWUuIFdl
+IGhhdmUgYWxyZWFkeQ0KPiBzZWVuIHRoZSBzYW1lIGJhc2ljIGFwcHJvYWNoIGluIEtGRCwgSE1N
+IGFuZCB0byBzb21lIGV4dGVuZCBpbiBUVE0gYXMgd2VsbC4NCj4NCj4gQW5kIGFsbCBvZiB0aGVt
+IG1vcmUgb3IgbGVzcyBmYWlsZWQuIFdoeSBzaG91bGQgdGhpcyBoZXJlIGJlIGRpZmZlcmVudD8N
+Cg0KDQpBbnkgaW5mbyB3ZSBoYXZlIG9uIHdoeSB0aGlzIGhhcyBmYWlsZWQgdG8gd29yayBpbiB0
+aGUgcGFzdCB3b3VsZCBiZQ0KdXNlZnVsIHRvIHByb3ZpZGUuIFRoaXMgaXMgb25lIG9mIHRob3Nl
+IGNhc2VzIHdoZXJlIHdlIG1heSBub3QgaGF2ZQ0KZG9jdW1lbnRlZCB0aGUgYmFkIGlkZWFzIHRv
+IHN0b3AgZnV0dXJlIGRldmVsb3BlcnMgZnJvbSB0aGlua2luZyB0aGV5DQphcmUgYmFkLg0KDQpJ
+IGRvIHRoaW5rIHdlIHdvdWxkIHdhbnQgbW9yZSBjb21tb24gY29kZSBpbiB0aGlzIGFyZWEsIGJ1
+dCBJIHdvdWxkDQp0aGluayB3ZSdkIGhhdmUgaXQgbW9yZSBvbiB0aGUgZHJpdmVyIGluZnJhc3Ry
+dWN0dXJlIHNpZGUsIHRoYW4gaW4gdGhlDQpjb3JlIG1tLg0KDQpEYXZlLg0K
