@@ -1,46 +1,43 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13E297FDBCA
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Nov 2023 16:45:42 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80C567FDDCB
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 29 Nov 2023 17:58:35 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id ED23710E61D;
-	Wed, 29 Nov 2023 15:45:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 223AB10E65F;
+	Wed, 29 Nov 2023 16:58:32 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 29 Nov 2023 15:45:38 UTC
-Received: from mail.bklinfounited.click (unknown [77.83.203.225])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3C1CA10E61A
+ Wed, 29 Nov 2023 16:58:26 UTC
+Received: from mail.htromstools.click (unknown [77.83.203.239])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7D85E10E642
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Nov 2023 15:45:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=bklinfounited.click; 
+ Wed, 29 Nov 2023 16:58:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=htromstools.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=flash.deal.united.act.now@bklinfounited.click; 
- bh=VQQPK3NrjpPxVWthJxuRpAFJcvk=;
- b=qUjk7ovm+AadkzCKIYu5YxsnskuaRiOGll55QFMocQptQPqVI/aRse6C6FNj69lM6g5dHQo1g47o
- i4WoGTILGDp0Lml5PE5Y0GBQzN0qowI8b3p/aPcW/1LxMqfEaQI12uEslJqSeVrRH62x5s1Mp9m9
- x09DIh1n4C51bjeKhqQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bklinfounited.click;
- b=ZlnPhhRvVLjV/rttBXE+yOfengTRGUM1O4R71gNGDup/h1O3QP9qfa7bEbiv0aLJVrzX5aG3Oj5A
- WmfutZkkQqn4Twl2+JFVN5cAlr8ZAf35kVNekLBZ+VgOIiG2tQM7TwsP7K62YKTo2w1IIS0Lho3/
- Q8J/xcFAUsZz4YdcnH4=;
-Received: by mail.bklinfounited.click id hctea40001gh for
+ i=stanley_tool_promo_alert@htromstools.click; 
+ bh=IbCX7kAs+MTp/gb4lSX6N1+14GA=;
+ b=RrLEB4yDHbRh73hYdfBIjaTOOutO5NaEQro6rcHs7QIN2ZfAuLqPiZgM+kLAp8B2BHujbnVYGzh2
+ i2F06C8pqdluHQS7TIOJiKmDZT5hppxN9B/Kwof+f445OroFTDulB07z8zlKhaGa8Vvw07BO2EUt
+ 99uYG92rG1w0Kiblk58=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=htromstools.click; 
+ b=ap8WMyS85OvtIo6MWu24U5n8Nz61hotDDseomYaF5sQCwx53l/GqkkcrRv5CKVRmkGDdxd6HsoTC
+ 5LmMnIQ68p0+y9XlUu4s5wX1OLeiFTYMhdgOC5WEI9vNPQvkJPSJfTYjAe2gwWzk+thOtfLy8TyC
+ 2gX+oT7zF/bYbyvtzgU=;
+Received: by mail.htromstools.click id hcu03m0001g7 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 29 Nov 2023 10:38:21 -0500 (envelope-from
- <flash.deal.united.act.now-intel+2Dgvt+2Ddev=lists.freedesktop.org@bklinfounited.click>)
-Date: Wed, 29 Nov 2023 10:38:21 -0500
-From: "Flash Deal United Act Now"
- <flash.deal.united.act.now@bklinfounited.click>
+ Wed, 29 Nov 2023 13:00:20 -0500 (envelope-from
+ <stanley_tool_promo_alert-intel+2Dgvt+2Ddev=lists.freedesktop.org@htromstools.click>)
+Date: Wed, 29 Nov 2023 13:00:20 -0500
+From: "Stanley Tool Promo Alert" <stanley_tool_promo_alert@htromstools.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <41965915288.17012722863209635@bklinfounited.click>
-Subject: United Airlines Survey: Exclusive Offers &ndash;
- Act Now, Time-Limited!
+Message-ID: <11411055735398.17012760525003@htromstools.click>
+Subject: Ace Hardware's Daily Promo: Win a Stanley Tool Set Now!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=9ef7f8df85300df3a71feb8a76483166102103199710310310298102
+ boundary=d9604af64c7916b6d09e9bf966e83231341023710110111975
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---9ef7f8df85300df3a71feb8a76483166102103199710310310298102
+--d9604af64c7916b6d09e9bf966e83231341023710110111975
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -65,47 +62,57 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
-	</style> 
-  <title>Knowledge</title> 
+  <link href="http://www.htromstools.click/8bd5s239C5gn8R613U693p7Yo1983z36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQsRKdR7jtQ1HR06pMPNwD/bridling-policemen" rel="preconnect" /> 
+  <link crossorigin="" href="http://www.htromstools.click/2e16XyH2395B86FV13FW6u938v1983G36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQsRKdR7aPPl1J06kjwDjl/Macedonian-drafts" rel="preconnect" /> 
+  <link href="http://www.htromstools.click/8bd5s239C5gn8R613U693p7Yo1983z36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQsRKdR7jtQ1HR06pMPNwD/bridling-policemen/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" /> 
+  <title>teaching</title> 
  </head> 
- <body style="font-family: 'Noto Sans', sans-serif;"> 
-  <div style="background-color: rgb(230, 230, 230); width: 100%;"> 
-   <div style="padding: 3rem 0;"> 
-    <ol style="list-style-type: none; padding: 0; margin: 0;"> 
-     <li> 
-      <div style="max-width: 34em; margin: auto; background-color: #fff; border-radius: 15px; box-shadow: 0 0 5px 1px; text-align: center;"> 
-       <div> 
-        <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 2px; font-size: 28px; padding-top: 15px; padding-bottom: 15px;"><a href="http://www.bklinfounited.click/chlorophyll-annulled/35a4N2395lF86v13Qu6y932m1982q36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQwRKdQ5uU10J5qNwDq" style="text-decoration: none; color: rgb(49,69,140); border-bottom: solid 5px rgb(49,69,140);" target="_blank">United Airlines</a></p> 
-        <p style="font-weight: 500; font-size: 1.1em; line-height: 1.75em; padding: 0 35px;">This is an opportunity for us to convey our appreciation for choosing United for your travel needs. Your loyalty and support hold significant value for us, and we sincerely appreciate the privilege of assisting you.</p> 
-        <a href="http://www.bklinfounited.click/chlorophyll-annulled/35a4N2395lF86v13Qu6y932m1982q36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQwRKdQ5uU10J5qNwDq" target="_blank"><img alt="UYES" src="http://www.bklinfounited.click/d4f5Q23O95oAw7a13M69G34Iy1982l36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQwRKdQ7fQS1J0s5M2pwD/Brendan-alphabets" style="display: block;" width="100%" /></a> 
-        <p style="font-weight: 500; font-size: 1.1em; line-height: 1.75em; padding: 0 35px;">Continuing our dedication to delivering exceptional experiences, we warmly invite you to engage in a brief survey regarding your recent flight and your overall interaction with United.</p> 
-        <a href="http://www.bklinfounited.click/chlorophyll-annulled/35a4N2395lF86v13Qu6y932m1982q36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQwRKdQ5uU10J5qNwDq" target="_blank"><img alt="IUE" src="http://www.bklinfounited.click/detects-cranberry/cf65a23A95U7HNa13h693r5GQ1982t36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQwRKdQ7X1QzyW06lWwTDj" style="display: block; margin: auto;" width="95%" /></a> 
-        <p style="font-weight: 500; font-size: 1.1em; line-height: 1.75em; padding: 20px 35px; background-color: rgb(49,69,140); color: white;">To join the survey, kindly click the link below. It's a brief task that will require only a few minutes of your valuable time, and be assured that your responses will be handled with the utmost confidentiality.</p> &nbsp; 
-        <div> 
-         <center style="font-size: 25px; border: solid 3px rgb(49,69,140); padding: 15px 34px; border-radius: 50px; width: 250px; margin: auto; font-weight: bold;">
-          <a href="http://www.bklinfounited.click/chlorophyll-annulled/35a4N2395lF86v13Qu6y932m1982q36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQwRKdQ5uU10J5qNwDq" style="text-decoration: none; color: rgb(49,69,140);" target="_blank">Get Started Now </a>
-         </center> 
-         <br /> &nbsp;
-        </div> 
-       </div> 
-      </div> </li> 
-     <br /> 
+ <body style="font-family: 'Kanit', sans-serif; margin: 0; padding: 0;"> 
+  <div style="padding-top: 25px; padding-bottom: 25px; background-color: rgb(201, 201, 201); width: 100%;"> 
+   <div style="padding-top: 25px; padding-bottom: 25px; background-color: rgb(158, 158, 158); width: 100%;"> 
+    <div style="background-color: #fff; width: 100%; padding-top: 35px; padding-bottom: 35px;"> 
+     <div style="background-color: #e2e2e2; width: 100%;"> 
+      <div style="max-width: 540px; margin: auto; text-align: center; background-color: #fff;"> 
+       <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+        <tbody> 
+         <tr> 
+          <td align="center"> 
+           <section style="border-top: solid 3px rgb(231,19,63); border-bottom: solid 3px rgb(231,19,63);"> 
+            <div style="max-width: 223px; margin: auto; padding: 10px 0;">
+             <a href="http://www.htromstools.click/Macedonian-drafts/6de4K2395eY86_13f6F939P_1983F36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRKdR6i1J0QX5hlBwD" target="_blank"><img alt="MMN" src="http://www.htromstools.click/discredited-abatements/6484O2395c7Bar11i693bj1983_36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQsRKdR7g10SPQA5AkzwD" style="display: block;" width="100%" /></a>
+            </div> 
+           </section> </td> 
+         </tr> 
+         <tr> 
+          <td> 
+           <center> 
+            <p style="font-size: 25px; font-weight: 700; margin: 0; line-height: 30px; padding-top: 20px;;">Closing Notice<br /> from Ace Hardware</p> &nbsp; 
+            <p style="margin: 0; font-size: 17px; line-height: 28px; padding: 0 32px; font-weight: 500;">Exciting Update from Ace Hardware! You now have the chance to obtain the Stanley Tool Set, available for redemption at any of our store locations. Seize this opportunity promptly! The offer is valid until November 29th for you to acquire these exceptional tools.</p> &nbsp; 
+            <div style="max-width: 320px; margin: auto;">
+             <a href="http://www.htromstools.click/Macedonian-drafts/6de4K2395eY86_13f6F939P_1983F36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRKdR6i1J0QX5hlBwD" target="_blank"><img alt="UYES" src="http://www.htromstools.click/51b6d2ZW395Q7aVK12q693ciS1983J36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQsRKdR5W1pH06AlwDBX/relieving-noons" style="display: block;" width="100%" /></a>
+            </div> 
+            <p><a href="http://www.htromstools.click/Macedonian-drafts/6de4K2395eY86_13f6F939P_1983F36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRKdR6i1J0QX5hlBwD" style="text-decoration: none; color: #fff;" target="_blank"><span style="display: inline-block; background-color: rgb(231,19,63);padding-top: 13px; padding-bottom: 13px; padding-left: 29px; padding-right: 29px; border-radius: 5px; font-weight: bold; font-size: 25px;">Start Here Now </span></a></p> &nbsp; 
+            <p style="background-color: rgb(231,19,63); margin: 0; padding: 1.8% 3%; font-size: 17px; line-height: 28px; font-weight: 700; color: #fff;">Anticipating your support, we extend our sincere gratitude. Regards, The Ace Hardware Team.</p> 
+           </center> </td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </div> 
      <br /> 
      <br /> &nbsp; 
-     <li style="background-color: rgb(230,230,230);"><br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp;<br /> &nbsp; 
-      <div style="background-color: rgb(49,69,140); padding: 15px 0;"> 
-       <center style="max-width: 533px; margin: auto; text-align: center; font-weight: 800; font-size: 12px; color: #fff;">
-        you can leave with sadness 
-        <a href="http://www.bklinfounited.click/c7d5X2v395k86lg12X6933Zq1982J36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQwRKdQ5Ay1o05UJLwD/Brendan-alphabets" style="color: aqua;">here</a>
-        <br /> US 10010 126 E 23rd St New York, NY,
-       </center> 
-      </div> </li> 
-    </ol> 
+     <div style="background-color: rgb(51,50,42); padding: 18px 0;"> 
+      <center style="max-width: 548px; margin: auto; font-weight: 700; font-size: 12px; color: white;"> 
+       <p>Anyway you can leave <a href="http://www.htromstools.click/6bf6bL2D395s86NN12K693Yay1983t36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQsRKdR5Qj10r5BJ@wD/advertised-finalized" style="color: aquamarine;">here</a><br /> US 10010 126 E 23rd St New York, NY,</p> 
+      </center> 
+     </div> 
+     <br /> 
+     <br /> &nbsp;
+    </div> 
    </div> 
   </div>   
- <img src="http://www.bklinfounited.click/chlorophyll-annulled/8465R239Y5u85TY12O6936jC1982K36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQwRKdQ5l10sv6t@@3wD" alt=""/></body>
+ <img src="http://www.htromstools.click/8815Y2I395BJ85F12q69h3dj1983C36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7IQsRKdR7BtHoF106X@ypwD/discredited-abatements" alt=""/></body>
 </html>
 
---9ef7f8df85300df3a71feb8a76483166102103199710310310298102--
+--d9604af64c7916b6d09e9bf966e83231341023710110111975--
 
