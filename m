@@ -1,77 +1,56 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id E94107FEA81
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Nov 2023 09:27:54 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 536D57FED46
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Nov 2023 11:48:36 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B9FDC10E6BE;
-	Thu, 30 Nov 2023 08:27:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C38A310E6DF;
+	Thu, 30 Nov 2023 10:48:34 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lf1-x12d.google.com (mail-lf1-x12d.google.com
- [IPv6:2a00:1450:4864:20::12d])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5632810E6BD;
- Thu, 30 Nov 2023 08:27:51 +0000 (UTC)
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-50bbb4de875so964892e87.0; 
- Thu, 30 Nov 2023 00:27:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701332869; x=1701937669; darn=lists.freedesktop.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=+J7Dw0xS7njLls6LRLf0GFFRCC6R0nx+ESlm94JNcIs=;
- b=fk5sobDe45Vm0Dctkzkoa4ns4HSBZfUV1Vvb/kAsh8rRhF9UHvIiWrMmkTwFBNsof7
- 7Bi6/kFbYwnSNXNNX3TMJExURhyxuOUu4EEXRWcV0zpbQpxbNCyaTOAdc/+c14XUzU1a
- v5aeG0p0kCfagm+ZNPD4Tss9MVwGb8uAoWkHj3ARmF5/HRxXsVhikDYENGAPj75h1MKV
- DslGhEyNAuwUqJE08yNB8oX/XXP/1GNg1tkfZdu3Ztut3jT3FAkZ56pEoGSdF3rTD9oK
- LGvkkjq8rHSHDsODT1Z3KDs0/2n3jr6peYYPKbEVrxVwcMyrQ9V+BGmuH8DhlqYyLwkV
- B0aQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701332869; x=1701937669;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+J7Dw0xS7njLls6LRLf0GFFRCC6R0nx+ESlm94JNcIs=;
- b=dRiTcioUxJJT5lrkMpn8c6qhbMgxEZ3k5P6SRupIu9ddDqtZb88Lnej4p3RQe4T3ii
- mrVdQ2+uc+2m1jCfmhqx2ko/QSYpUqBSVdjiaytxp7DX968iMxLt0Kbz6U+IgbnQmlwK
- 2iuDJQiV0STqxpnq2pGLnIT4Y4X95U6DmtK3ZSF94+LvPMc4QxHMCHnYRF+Rt6qoxxTv
- Ur9lTEs9EqetKwIMerfvJPzE2sWb6UyyKbc2LKXA64kipMsQ5pycttaFXZ1HmKTt9Xib
- ttuhWX4EPCscbx4EJAjFakx9HWILv6iXVQ0t+QALM3f/o5rUfVbZZVRAA9zfJx0goHh4
- UFZg==
-X-Gm-Message-State: AOJu0YxzMRO7Vp2EAAUXexjpTllV2kmCNrWVfn119ISUCGhvSACsauUy
- d93KbNY3M6JX2Z5mfLehVrk=
-X-Google-Smtp-Source: AGHT+IF03WzohOCAOFDPfOmLeaFp7RZCFKxQ+YxMwrkoP0QP4/RXaRhf+B5nuuPq8R1GGPEyqyl7tw==
-X-Received: by 2002:a05:6512:e84:b0:50b:c975:8b30 with SMTP id
- bi4-20020a0565120e8400b0050bc9758b30mr2145792lfb.66.1701332869075; 
- Thu, 30 Nov 2023 00:27:49 -0800 (PST)
-Received: from [10.254.108.81] (munvpn.amd.com. [165.204.72.6])
- by smtp.gmail.com with ESMTPSA id
- d13-20020a05600c34cd00b0040b540ff0a5sm1115323wmq.19.2023.11.30.00.27.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Nov 2023 00:27:48 -0800 (PST)
-Message-ID: <65c01257-b96d-4365-a86a-4d0758a8ec65@gmail.com>
-Date: Thu, 30 Nov 2023 09:27:46 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/6] Supporting GMEM (generalized memory management)
- for external memory devices
-Content-Language: en-US
-To: "Zeng, Oak" <oak.zeng@intel.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Weixi Zhu <weixi.zhu@huawei.com>, "linux-mm@kvack.org" <linux-mm@kvack.org>,
+Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4784E10E23C;
+ Thu, 30 Nov 2023 10:48:31 +0000 (UTC)
+Received: from kwepemm000018.china.huawei.com (unknown [172.30.72.53])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Sgt9q55LlzsRVM;
+ Thu, 30 Nov 2023 18:44:47 +0800 (CST)
+Received: from kwepemm000018.china.huawei.com (7.193.23.4) by
+ kwepemm000018.china.huawei.com (7.193.23.4) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 30 Nov 2023 18:48:27 +0800
+Received: from kwepemm000018.china.huawei.com ([7.193.23.4]) by
+ kwepemm000018.china.huawei.com ([7.193.23.4]) with mapi id 15.01.2507.035;
+ Thu, 30 Nov 2023 18:48:27 +0800
+From: zhuweixi <weixi.zhu@huawei.com>
+To: =?utf-8?B?Q2hyaXN0aWFuIEvDtm5pZw==?= <ckoenig.leichtzumerken@gmail.com>,
+ "Zeng, Oak" <oak.zeng@intel.com>, =?utf-8?B?Q2hyaXN0aWFuIEvDtm5pZw==?=
+ <christian.koenig@amd.com>, "linux-mm@kvack.org" <linux-mm@kvack.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
- Danilo Krummrich <dakr@redhat.com>, Dave Airlie <airlied@redhat.com>,
- Daniel Vetter <daniel@ffwll.ch>
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>, Danilo Krummrich
+ <dakr@redhat.com>, Dave Airlie <airlied@redhat.com>, Daniel Vetter
+ <daniel@ffwll.ch>
+Subject: RE: [RFC PATCH 0/6] Supporting GMEM (generalized memory management)
+ for external memory devices
+Thread-Topic: [RFC PATCH 0/6] Supporting GMEM (generalized memory management)
+ for external memory devices
+Thread-Index: AQHaIfl9wrtrX0lryUy6fTQuS5BXZrCPLh+AgAItO4CAAKjHAIAAq3rg
+Date: Thu, 30 Nov 2023 10:48:27 +0000
+Message-ID: <cee6e5ba46f84557b0cd9122eaa8ae17@huawei.com>
 References: <20231128125025.4449-1-weixi.zhu@huawei.com>
  <56ec69e0-fee1-4edf-8839-62ba6a2f0183@amd.com>
  <SA1PR11MB69918A97B03BC578CFD15EBA9283A@SA1PR11MB6991.namprd11.prod.outlook.com>
-From: =?UTF-8?Q?Christian_K=C3=B6nig?= <ckoenig.leichtzumerken@gmail.com>
-In-Reply-To: <SA1PR11MB69918A97B03BC578CFD15EBA9283A@SA1PR11MB6991.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ <65c01257-b96d-4365-a86a-4d0758a8ec65@gmail.com>
+In-Reply-To: <65c01257-b96d-4365-a86a-4d0758a8ec65@gmail.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.174.179.172]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,7 +74,8 @@ Cc: "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
  "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
  "jglisse@redhat.com" <jglisse@redhat.com>,
  "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "Vivi, Rodrigo" <rodrigo.vivi@intel.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "Vivi, 
+ Rodrigo" <rodrigo.vivi@intel.com>,
  "alexander.deucher@amd.com" <alexander.deucher@amd.com>,
  "Felix.Kuehling@amd.com" <Felix.Kuehling@amd.com>,
  "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
@@ -104,345 +84,411 @@ Cc: "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Hi Oak,
-
-yeah, #4 is indeed a really good point and I think Felix will agree to 
-that as well.
-
-HMM is basically still missing a way to advise device attributes for the 
-CPU address space. Both migration strategy as well as device specific 
-information (like cache preferences) fall into this category.
-
-Since there is a device specific component in those attributes as well I 
-think device specific IOCTLs still make sense to update them, but HMM 
-should offer the functionality to manage and store those information.
-
-Split and merge of VMAs only become a problem if you attach those 
-information to VMAs, if you keep them completely separate than that 
-doesn't become an issue either. The down side of this approach is that 
-you don't get automatically extending attribute ranges for growing VMAs 
-for example.
-
-Regards,
-Christian.
-
-Am 29.11.23 um 23:23 schrieb Zeng, Oak:
-> Hi Weixi,
->
-> Even though Christian has listed reasons rejecting this proposal (yes they are very reasonable to me), I would open my mind and further explore the possibility here. Since the current GPU driver uses a hmm based implementation (AMD and NV has done this; At Intel we are catching up), I want to explore how much we can benefit from the proposed approach and how your approach can solve some pain points of our development. So basically what I am questioning here is: what is the advantage of your approach against hmm.
->
-> To implement a UVM (unified virtual address space b/t cpu and gpu device), with hmm, driver essentially need to implement below functions:
->
-> 1. device page table update. Your approach requires the same because this is device specific codes
->
-> 2. Some migration functions to migrate memory b/t system memory and GPU local memory. My understanding is, even though you generalized this a bit, such as modified cpu page fault path, provided "general" gm_dev_fault handler... but device driver still need to provide migration functions because migration functions have to be device specific (i.e., using device dma/copy engine for performance purpose). Right?
->
-> 3. GPU physical memory management, this part is now in drm/buddy, shared by all drivers. I think with your approach, driver still need to provide callback functions to allocate/free physical pages. Right? Or do you let linux core mm buddy manage device memory directly?
->
-> 4. madvise/hints/virtual address range management. This has been pain point for us. Right now device driver has to maintain certain virtual address range data structure to maintain hints and other virtual address range based memory attributes. Driver need to sync with linux vma. Driver need to explicitly deal with range split/merging... HMM doesn't provide support in this area. Your approach seems cleaner/simpler to me...
->
->
-> So in above, I have examined the some key factors of a gpu UVM memory manager. I think for #1 and #2, hmm has provide pretty good abstraction/tools for address space mirroring and migration helpers. For #3, since we have a common drm/buddy layer, I don't think it is a big problem for driver writer now.
->
-> I do see #4 is something you solved more beautifully, requires new system call though.
->
-> Oak
->
->
->> -----Original Message-----
->> From: dri-devel <dri-devel-bounces@lists.freedesktop.org> On Behalf Of
->> Christian König
->> Sent: Tuesday, November 28, 2023 8:09 AM
->> To: Weixi Zhu <weixi.zhu@huawei.com>; linux-mm@kvack.org; linux-
->> kernel@vger.kernel.org; akpm@linux-foundation.org; Danilo Krummrich
->> <dakr@redhat.com>; Dave Airlie <airlied@redhat.com>; Daniel Vetter
->> <daniel@ffwll.ch>
->> Cc: dri-devel@lists.freedesktop.org; leonro@nvidia.com; apopple@nvidia.com;
->> amd-gfx@lists.freedesktop.org; mgorman@suse.de; ziy@nvidia.com; Wang, Zhi
->> A <zhi.a.wang@intel.com>; rcampbell@nvidia.com; jgg@nvidia.com;
->> weixi.zhu@openeuler.sh; jhubbard@nvidia.com; intel-gfx@lists.freedesktop.org;
->> mhairgrove@nvidia.com; jglisse@redhat.com; Vivi, Rodrigo
->> <rodrigo.vivi@intel.com>; intel-gvt-dev@lists.freedesktop.org;
->> tvrtko.ursulin@linux.intel.com; Felix.Kuehling@amd.com; Xinhui.Pan@amd.com;
->> alexander.deucher@amd.com; ogabbay@kernel.org
->> Subject: Re: [RFC PATCH 0/6] Supporting GMEM (generalized memory
->> management) for external memory devices
->>
->> Adding a few missing important people to the explicit to list.
->>
->> Am 28.11.23 um 13:50 schrieb Weixi Zhu:
->>> The problem:
->>>
->>> Accelerator driver developers are forced to reinvent external MM subsystems
->>> case by case, because Linux core MM only considers host memory resources.
->>> These reinvented MM subsystems have similar orders of magnitude of LoC as
->>> Linux MM (80K), e.g. Nvidia-UVM has 70K, AMD GPU has 14K and Huawei NPU
->> has
->>> 30K. Meanwhile, more and more vendors are implementing their own
->>> accelerators, e.g. Microsoft's Maia 100. At the same time,
->>> application-level developers suffer from poor programmability -- they must
->>> consider parallel address spaces and be careful about the limited device
->>> DRAM capacity. This can be alleviated if a malloc()-ed virtual address can
->>> be shared by the accelerator, or the abundant host DRAM can further
->>> transparently backup the device local memory.
->>>
->>> These external MM systems share similar mechanisms except for the
->>> hardware-dependent part, so reinventing them is effectively introducing
->>> redundant code (14K~70K for each case). Such developing/maintaining is not
->>> cheap. Furthermore, to share a malloc()-ed virtual address, device drivers
->>> need to deeply interact with Linux MM via low-level MM APIs, e.g. MMU
->>> notifiers/HMM. This raises the bar for driver development, since developers
->>> must understand how Linux MM works. Further, it creates code maintenance
->>> problems -- any changes to Linux MM potentially require coordinated changes
->>> to accelerator drivers using low-level MM APIs.
->>>
->>> Putting a cache-coherent bus between host and device will not make these
->>> external MM subsystems disappear. For example, a throughput-oriented
->>> accelerator will not tolerate executing heavy memory access workload with
->>> a host MMU/IOMMU via a remote bus. Therefore, devices will still have
->>> their own MMU and pick a simpler page table format for lower address
->>> translation overhead, requiring external MM subsystems.
->>>
->>> --------------------
->>>
->>> What GMEM (Generalized Memory Management [1]) does:
->>>
->>> GMEM extends Linux MM to share its machine-independent MM code. Only
->>> high-level interface is provided for device drivers. This prevents
->>> accelerator drivers from reinventing the wheel, but relies on drivers to
->>> implement their hardware-dependent functions declared by GMEM. GMEM's
->> key
->>> interface include gm_dev_create(), gm_as_create(), gm_as_attach() and
->>> gm_dev_register_physmem(). Here briefly describe how a device driver
->>> utilizes them:
->>> 1. At boot time, call gm_dev_create() and registers the implementation of
->>>      hardware-dependent functions as declared in struct gm_mmu.
->>>        - If the device has local DRAM, call gm_dev_register_physmem() to
->>>          register available physical addresses.
->>> 2. When a device context is initialized (e.g. triggered by ioctl), check if
->>>      the current CPU process has been attached to a gmem address space
->>>      (struct gm_as). If not, call gm_as_create() and point current->mm->gm_as
->>>      to it.
->>> 3. Call gm_as_attach() to attach the device context to a gmem address space.
->>> 4. Invoke gm_dev_fault() to resolve a page fault or prepare data before
->>>      device computation happens.
->>>
->>> GMEM has changed the following assumptions in Linux MM:
->>>     1. An mm_struct not only handle a single CPU context, but may also handle
->>>        external memory contexts encapsulated as gm_context listed in
->>>        mm->gm_as. An external memory context can include a few or all of the
->>>        following parts: an external MMU (that requires TLB invalidation), an
->>>        external page table (that requires PTE manipulation) and external DRAM
->>>        (that requires physical memory management).
->>>     2. Faulting a MAP_PRIVATE VMA with no CPU PTE found does not necessarily
->>>        mean that a zero-filled physical page should be mapped. The virtual
->>>        page may have been mapped to an external memory device.
->>>     3. Unmapping a page may include sending device TLB invalidation (even if
->>>        its MMU shares CPU page table) and manipulating device PTEs.
->>>
->>> --------------------
->>>
->>> Semantics of new syscalls:
->>>
->>> 1. mmap(..., MAP_PRIVATE | MAP_PEER_SHARED)
->>>       Allocate virtual address that is shared between the CPU and all
->>>       attached devices. Data is guaranteed to be coherent whenever the
->>>       address is accessed by either CPU or any attached device. If the device
->>>       does not support page fault, then device driver is responsible for
->>>       faulting memory before data gets accessed. By default, the CPU DRAM is
->>>       can be used as a swap backup for the device local memory.
->>> 2. hmadvise(NUMA_id, va_start, size, memory_hint)
->>>       Issuing memory hint for a given VMA. This extends traditional madvise()
->>>       syscall with an extra argument so that programmers have better control
->>>       with heterogeneous devices registered as NUMA nodes. One useful
->> memory
->>>       hint could be MADV_PREFETCH, which guarantees that the physical data of
->>>       the given VMA [VA, VA+size) is migrated to NUMA node #id. Another
->>>       useful memory hint is MADV_DONTNEED. This is helpful to increase device
->>>       memory utilization. It is worth considering extending the existing
->>>       madvise() syscall with one additional argument.
->>>
->>> --------------------
->>>
->>> Implementation details
->>>
->>> 1. New VMA flag: MAP_PEER_SHARED
->>>
->>> This new flag helps isolate GMEM feature, so that common processes with
->>> no device attached does not need to maintain any logical page table. It
->>> can be deleted if the extra overhead from GMEM is acceptable.
->>>
->>> 2. MMU functions
->>> The device driver must implement the MMU functions declared in struct
->>> gm_mmu.
->>>
->>> VA functions: peer_va_alloc_fixed(), peer_va_free()
->>>
->>> They are used to negotiate a common available VMA between a host
->>> process and a device process at the mmap() time. This is because some
->>> accelerators like Intel Xeon Phi or Huawei's Ascend NPU have their
->>> acceleration tasks executed within a device CPU process context. Some
->>> accelerators may also choose a different format of virtual address
->>> space.
->>>
->>> PA functions: alloc_page(), free_page(), prepare_page()
->>>
->>> Alloc_page() and free_page() are used to allocate and free device physical
->>> pages. Prepare_page() is used to zero-fill or DMA the data of a physical
->>> page. These functions were removed from the submitted patch, since GMEM
->>> does not need to invoke them when testing Huawei's NPU accelerator. The
->> NPU
->>> accelerator has an OS running in the device that manages the device
->>> physical memory. However, even for such a device it is better for the host
->>> to directly manage device physical memory, which saves device HBM and
->>> avoids synchronizing management status between the host and device.
->>>
->>> Page-table functions: pmap_create()/destroy()/enter()/release()/protect()
->>>
->>> They are used to create and destroy device page tables, install and
->>> uninstall page table entries and to change the protection of page table
->>> entries.
->>>
->>> TLB-invalidation functions: tlb_invl(), tlb_invl_coalesced()
->>>
->>> They are used to invalidate the TLB entries of a given range of VA or
->>> invalidate a given list of VMAs.
->>>
->>> Wrapper functions: peer_map() and peer_unmap()
->>>
->>> These two functions are used to create or destroy a device mapping which
->>> could include allocating physical memory and copying data. They effectively
->>> wraps the PA functions, Page-table functions and TLB-invalidation
->>> functions. Implementing these steps together allows devices to optimize the
->>> communication cost between host and device. However, it requires the device
->>> driver to correctly order these steps.
->>>
->>> 3. Tracking logical mappings:
->>>
->>> Each process starts maintaining an xarray in mm->vm_obj->logical_page_table
->>> at the first time a host process calls mmap(MAP_PRIVATE |
->> MAP_PEER_SHARED).
->>> When a virtual page gets touched, its mapping status is created and stored
->>> in struct gm_mapping. The logical page table is utilized to query the
->>> struct gm_mapping given a virtual address. GMEM extends Linux MM to
->> update
->>> and lookup these logical mappings. For example, in the patch set we modify
->>> the page fault path of to additionally check the logical mapping of
->>> MAP_PEER_SHARED VMAs and identify if a device page should be migrated.
->>> Similarly, if the device driver wants to resolve a device page fault or
->>> prefetch data, the driver should call gm_dev_fault(). This function
->>> examines the mapping status and determines whether the device driver should
->>> migrate a CPU page to device or install a zero-filled device page.
->>>
->>> The logical mapping abstraction enhances the extensibility of Linux core MM
->>> (a virtual page may be mapped to a device physical page without any CPU PTE
->>> installed). The current implementation is not complete, since it only
->>> focused on anonymous VMAs with MAP_PEER_SHARED flag. The future plan of
->>> logical page table is to provide a generic abstraction layer that support
->>> common anonymous memory (I am looking at you, transparent huge pages)
->> and
->>> file-backed memory.
->>>
->>> --------------------
->>>
->>> Use cases
->>>
->>> GMEM has been tested over Huawei's NPU (neural process unit) device driver.
->>> The original NPU device driver has approximately 30,000 lines of code for
->>> memory management. On the contrary, the GMEM-based one has less than 30
->>> lines of code calling GMEM API, with approximately 3,700 lines of code
->>> implementing the MMU functions. This effectively saves over 26,200 lines
->>> of MM code for one driver. Therefore, developers from accelerator vendors,
->>> including Nvidia, AMD, Intel and other companies are welcome to discuss if
->>> GMEM could be helpful.
->>>
->>> Using GMEM-based driver, it is possible to write a C-style accelerator code
->>> with malloc(), whose underlying mmap() syscall should include
->>> MAP_PEER_SHARED according to current GMEM implementation. Importantly,
->> GMEM
->>> guarantees a coherent view of memory between the host and all attached
->>> devices. This means that any data written by the CPU or any attached
->>> accelerator can be seen by the next memory load instruction issued by any
->>> attached accelerator or the CPU. Furthermore, the NPU device was able to
->>> oversubscribe memory by swapping memory to host DDR. Note that this
->> memory
->>> oversubscription mechanism can be universal if the physical memory
->>> management is provided by GMEM. Other potential use cases of GMEM could
->>> include the IOMMU driver, KVM and RDMA drivers, as long as the device needs
->>> to manage external memory resources like VMAs, MMUs or local DRAMs.
->>>
->>> --------------------
->>>
->>> Discussion
->>>
->>> Physical memory management
->>> Most accelerators require the host OS to manage device DRAM. Even
->>> accelerators capable of running an OS inside the driver can benefit from
->>> it, since it helps avoid synchronizing management status between the host
->>> and device. In Linux OSS EU summit 2023, Hannes Reinecke from SUSE Labs
->>> suggested that people are concerned with the memory consumption of struct
->>> page (which considers all generic scenarios for the kernel). This leads to
->>> a possible solution that, instead of reusing Linux struct page and
->>> ZONE_DEVICE mechanism, GMEM can implement an isolated buddy allocator
->> for
->>> the device to instantiate and register. The isolation is useful because
->>> device DRAM physical address space is independent. Furthermore, the
->>> isolated buddy allocator can utilize a customized struct page that consumes
->>> less memory. It is worth discussing if accelerator vendors desire this
->>> solution.
->>>
->>> MMU functions
->>> The MMU functions peer_map() and peer_unmap() overlap other functions,
->>> leaving a question if the MMU functions should be decoupled as more basic
->>> operations. Decoupling them could potentially prevent device drivers
->>> coalescing these basic steps within a single host-device communication
->>> operation, while coupling them makes it more difficult for device drivers
->>> to utilize GMEM interface.
->>>
->>> The idea of GMEM was originated from Weixi's PhD study with
->>> Prof. Scott Rixner and Prof. Alan L. Cox at Rice University.
->>>
->>> [1] https://arxiv.org/abs/2310.12554.
->>>
->>> Weixi Zhu (6):
->>>     mm/gmem: add heterogeneous NUMA node
->>>     mm/gmem: add arch-independent abstraction to track address mapping
->>>       status
->>>     mm/gmem: add GMEM (Generalized Memory Management) interface for
->>>       external accelerators
->>>     mm/gmem: add new syscall hmadvise() to issue memory hints for
->>>       heterogeneous NUMA nodes
->>>     mm/gmem: resolve VMA conflicts for attached peer devices
->>>     mm/gmem: extending Linux core MM to support unified virtual address
->>>       space
->>>
->>>    arch/arm64/include/asm/unistd.h         |   2 +-
->>>    arch/arm64/include/asm/unistd32.h       |   2 +
->>>    drivers/base/node.c                     |   6 +
->>>    fs/proc/task_mmu.c                      |   3 +
->>>    include/linux/gmem.h                    | 368 ++++++++++++
->>>    include/linux/mm.h                      |   8 +
->>>    include/linux/mm_types.h                |   5 +
->>>    include/linux/nodemask.h                |  10 +
->>>    include/uapi/asm-generic/mman-common.h  |   4 +
->>>    include/uapi/asm-generic/unistd.h       |   5 +-
->>>    init/main.c                             |   2 +
->>>    kernel/fork.c                           |   5 +
->>>    kernel/sys_ni.c                         |   2 +
->>>    mm/Kconfig                              |  14 +
->>>    mm/Makefile                             |   1 +
->>>    mm/gmem.c                               | 746 ++++++++++++++++++++++++
->>>    mm/huge_memory.c                        |  85 ++-
->>>    mm/memory.c                             |  42 +-
->>>    mm/mempolicy.c                          |   4 +
->>>    mm/mmap.c                               |  40 +-
->>>    mm/oom_kill.c                           |   2 +
->>>    mm/page_alloc.c                         |   3 +
->>>    mm/vm_object.c                          | 309 ++++++++++
->>>    tools/include/uapi/asm-generic/unistd.h |   5 +-
->>>    24 files changed, 1654 insertions(+), 19 deletions(-)
->>>    create mode 100644 include/linux/gmem.h
->>>    create mode 100644 mm/gmem.c
->>>    create mode 100644 mm/vm_object.c
->>>
-
+R2xhZCB0byBrbm93IHRoYXQgdGhlcmUgaXMgYSBjb21tb24gZGVtYW5kIGZvciBhIG5ldyBzeXNj
+YWxsIGxpa2UgaG1hZHZpc2UoKS4gSSBleHBlY3QgaXQgd291bGQgYWxzbyBiZSB1c2VmdWwgZm9y
+IGhvbW9nZW5lb3VzIE5VTUEgY2FzZXMuIENyZWRpdHMgdG8gY3VkYU1lbUFkdmlzZSgpIEFQSSB3
+aGljaCBicm91Z2h0IHRoaXMgaWRlYSB0byBHTUVNJ3MgZGVzaWduLg0KDQpUbyBhbnN3ZXIgQE9h
+aydzIHF1ZXN0aW9ucyBhYm91dCBHTUVNIHZzLiBITU0sDQoNCkhlcmUgaXMgdGhlIG1ham9yIGRp
+ZmZlcmVuY2U6DQogIEdNRU0ncyBtYWluIHRhcmdldCBpcyB0byBzdG9wIGRyaXZlcnMgZnJvbSBy
+ZWludmVudGluZyBNTSBjb2RlLCB3aGlsZSBITU0vTU1VIG5vdGlmaWVycyBwcm92aWRlIGEgY29t
+cGF0aWJsZSBzdHJ1Y3QgcGFnZSBzb2x1dGlvbiBhbmQgYSBjb29yZGluYXRpb24gbWVjaGFuaXNt
+IGZvciBleGlzdGluZyBkZXZpY2UgZHJpdmVyIE1NcyB0aGF0IHJlcXVpcmVzIGFkZGluZyBleHRy
+YSBjb2RlIHRvIGludGVyYWN0IHdpdGggQ1BVIE1NLg0KDQpBIHN0cmFpZ2h0Zm9yd2FyZCBxdWFs
+aXRhdGl2ZSByZXN1bHQgZm9yIHRoZSBtYWluIHRhcmdldDogYWZ0ZXIgaW50ZWdyYXRpbmcgSHVh
+d2VpJ3MgQXNjZW5kIE5QVSBkcml2ZXIgd2l0aCBHTUVNJ3MgaW50ZXJmYWNlLCAzMCwwMDAgbGlu
+ZXMgb2YgTU0gY29kZSB3ZXJlIGN1dCwgbGVhdmluZyA8MTAwIGxpbmVzIGludm9raW5nIEdNRU0g
+aW50ZXJmYWNlIGFuZCAzLDcwMCBsaW5lcyBpbXBsZW1lbnRpbmcgdmVuZG9yLXNwZWNpZmljIGZ1
+bmN0aW9ucy4gU29tZSBjb2RlIGZyb20gdGhlIDMsNzAwIGxpbmVzIHNob3VsZCBiZSBmdXJ0aGVy
+IG1vdmVkIHRvIEdNRU0gYXMgYSBnZW5lcmFsaXplZCBmZWF0dXJlIGxpa2UgZGV2aWNlIG1lbW9y
+eSBvdmVyc3Vic2NyaXB0aW9uLCBidXQgbm90IGluY2x1ZGVkIGluIHRoaXMgUkZDIHBhdGNoIHll
+dC4gDQoNCkEgbGlzdCBvZiBoaWdoLWxldmVsIGRpZmZlcmVuY2VzOiANCiAgMS4gV2l0aCBITU0v
+TU1VIG5vdGlmaWVycywgZHJpdmVycyBuZWVkIHRvIGZpcnN0IGltcGxlbWVudCBhIGZ1bGwgTU0g
+c3Vic3lzdGVtLiBXaXRoIEdNRU0sIGRyaXZlcnMgY2FuIHJldXNlIExpbnV4J3MgY29yZSBNTS4N
+Cg0KICAyLiBITU0gZW5jb2RlcyBkZXZpY2UgbWFwcGluZyBpbmZvcm1hdGlvbiBpbiB0aGUgQ1BV
+IGFyY2gtZGVwZW5kZW50IFBURXMsIHdoaWxlIEdNRU0gcHJvcG9zZXMgYW4gYWJzdHJhY3Rpb24g
+bGF5ZXIgaW4gdm1fb2JqZWN0LiBTaW5jZSBHTUVNJ3MgYXBwcm9hY2ggZnVydGhlciBkZWNvdXBs
+ZXMgdGhlIGFyY2gtcmVsYXRlZCBzdHVmZiwgZHJpdmVycyBkbyBub3QgbmVlZCB0byBpbXBsZW1l
+bnQgc2VwYXJhdGUgY29kZSBmb3IgWDg2L0FSTSBhbmQgZXRjLg0KDQogIDMuIE1NVSBub3RpZmll
+cnMgcmVnaXN0ZXIgaG9va3MgYXQgY2VydGFpbiBjb3JlIE1NIGV2ZW50cywgd2hpbGUgR01FTSBk
+ZWNsYXJlcyBiYXNpYyBmdW5jdGlvbnMgYW5kIGludGVybmFsbHkgaW52b2tlcyB0aGVtLiBHTUVN
+IHJlcXVpcmVzIGxlc3MgZnJvbSB0aGUgZHJpdmVyIHNpZGUgLS0gbm8gbmVlZCB0byB1bmRlcnN0
+YW5kIHdoYXQgY29yZSBNTSBiZWhhdmVzIGF0IGNlcnRhaW4gTU1VIGV2ZW50cy4gR01FTSBhbHNv
+IGV4cGVjdHMgZmV3ZXIgYnVncyB0aGFuIE1NVSBub3RpZmllcnM6IGltcGxlbWVudGluZyBiYXNp
+YyBvcGVyYXRpb25zIHdpdGggc3RhbmRhcmQgZGVjbGFyYXRpb25zIHZzLiBpbXBsZW1lbnRpbmcg
+d2hhdGV2ZXIgcmFuZG9tIGRldmljZSBNTSBsb2dpYyBpbiBNTVUgbm90aWZpZXJzLg0KDQogIDQu
+IEdNRU0gcGxhbnMgdG8gc3VwcG9ydCBhIG1vcmUgbGlnaHR3ZWlnaHQgcGh5c2ljYWwgbWVtb3J5
+IG1hbmFnZW1lbnQuIFRoZSBkaXNjdXNzaW9uIGFib3V0IHRoaXMgcGFydCBjYW4gYmUgZm91bmQg
+aW4gbXkgY292ZXIgbGV0dGVyLiBUaGUgcXVlc3Rpb24gaXMgd2hldGhlciBzdHJ1Y3QgcGFnZSBz
+aG91bGQgYmUgY29tcGF0aWJsZSAoZGlyZWN0bHkgdXNlIEhNTSdzIFpPTkVfREVWSUNFIHNvbHV0
+aW9uKSBvciBhIHRyaW1tZWQsIHNtYWxsZXIgc3RydWN0IHBhZ2UgdGhhdCBzYXRpc2ZpZXMgZ2Vu
+ZXJhbGl6ZWQgZGVtYW5kcyBmcm9tIGFjY2VsZXJhdG9ycyBpcyBtb3JlIHByZWZlcnJhYmxlPw0K
+DQogIDUuIEdNRU0gaGFzIGJlZW4gZGVtb25zdHJhdGVkIHRvIGFsbG93IGRldmljZSBtZW1vcnkg
+b3ZlcnN1YnNjcmlwdGlvbiAoYSBHTUVNLWJhc2VkIDMyR0IgTlBVIGNhcmQgY2FuIHJ1biBhIEdQ
+VCBtb2RlbCBvdmVyc3Vic2NyaWJpbmcgNTAwR0IgaG9zdCBERFIpLCB3aGlsZSBkcml2ZXJzIHVz
+aW5nIEhNTS9NTVUgbm90aWZpZXIgbXVzdCBpbXBsZW1lbnQgdGhpcyBsb2dpYyBvbmUgYnkgb25l
+LiBJIHdpbGwgc3VibWl0IHRoaXMgcGFydCBpbiBhIGZ1dHVyZSBSRkMgcGF0Y2guDQoNCkkgd2Fu
+dCB0byByZWl0ZXJhdGUgdGhhdCBHTUVNJ3Mgc2hhcmVkIGFkZHJlc3Mgc3BhY2Ugc3VwcG9ydCBp
+cyBhIGJvbnVzIHJlc3VsdCwgbm90IGEgbWFpbiBjb250cmlidXRpb24uLi4gSXQgd2FzIGRvbmUg
+YmVjYXVzZSBpdCB3YXMgbm90IGRpZmZpY3VsdCB0byBpbXBsZW1lbnQgaW50ZXJuYWwgQ1BVLWRl
+dmljZSBjb29yZGluYXRpb24gbWVjaGFuaXNtIHdoZW4gY29yZSBNTSBpcyBleHRlbmRlZCBieSBH
+TUVNIHRvIHN1cHBvcnQgZGV2aWNlcy4NCg0KLVdlaXhpDQoNCi0tLS0tT3JpZ2luYWwgTWVzc2Fn
+ZS0tLS0tDQpGcm9tOiBDaHJpc3RpYW4gS8O2bmlnIDxja29lbmlnLmxlaWNodHp1bWVya2VuQGdt
+YWlsLmNvbT4gDQpTZW50OiBUaHVyc2RheSwgTm92ZW1iZXIgMzAsIDIwMjMgNDoyOCBQTQ0KVG86
+IFplbmcsIE9hayA8b2FrLnplbmdAaW50ZWwuY29tPjsgQ2hyaXN0aWFuIEvDtm5pZyA8Y2hyaXN0
+aWFuLmtvZW5pZ0BhbWQuY29tPjsgemh1d2VpeGkgPHdlaXhpLnpodUBodWF3ZWkuY29tPjsgbGlu
+dXgtbW1Aa3ZhY2sub3JnOyBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnOyBha3BtQGxpbnV4
+LWZvdW5kYXRpb24ub3JnOyBEYW5pbG8gS3J1bW1yaWNoIDxkYWtyQHJlZGhhdC5jb20+OyBEYXZl
+IEFpcmxpZSA8YWlybGllZEByZWRoYXQuY29tPjsgRGFuaWVsIFZldHRlciA8ZGFuaWVsQGZmd2xs
+LmNoPg0KQ2M6IGludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyByY2FtcGJlbGxA
+bnZpZGlhLmNvbTsgbWhhaXJncm92ZUBudmlkaWEuY29tOyBqZ2dAbnZpZGlhLmNvbTsgd2VpeGku
+emh1QG9wZW5ldWxlci5zaDsgamh1YmJhcmRAbnZpZGlhLmNvbTsgaW50ZWwtZ2Z4QGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZzsgYXBvcHBsZUBudmlkaWEuY29tOyBYaW5odWkuUGFuQGFtZC5jb207IGFt
+ZC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyB0dnJ0a28udXJzdWxpbkBsaW51eC5pbnRlbC5j
+b207IG9nYWJiYXlAa2VybmVsLm9yZzsgamdsaXNzZUByZWRoYXQuY29tOyBkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnOyB6aXlAbnZpZGlhLmNvbTsgVml2aSwgUm9kcmlnbyA8cm9kcmln
+by52aXZpQGludGVsLmNvbT47IGFsZXhhbmRlci5kZXVjaGVyQGFtZC5jb207IGxlb25yb0Budmlk
+aWEuY29tOyBGZWxpeC5LdWVobGluZ0BhbWQuY29tOyBXYW5nLCBaaGkgQSA8emhpLmEud2FuZ0Bp
+bnRlbC5jb20+OyBtZ29ybWFuQHN1c2UuZGUNClN1YmplY3Q6IFJlOiBbUkZDIFBBVENIIDAvNl0g
+U3VwcG9ydGluZyBHTUVNIChnZW5lcmFsaXplZCBtZW1vcnkgbWFuYWdlbWVudCkgZm9yIGV4dGVy
+bmFsIG1lbW9yeSBkZXZpY2VzDQoNCkhpIE9haywNCg0KeWVhaCwgIzQgaXMgaW5kZWVkIGEgcmVh
+bGx5IGdvb2QgcG9pbnQgYW5kIEkgdGhpbmsgRmVsaXggd2lsbCBhZ3JlZSB0byB0aGF0IGFzIHdl
+bGwuDQoNCkhNTSBpcyBiYXNpY2FsbHkgc3RpbGwgbWlzc2luZyBhIHdheSB0byBhZHZpc2UgZGV2
+aWNlIGF0dHJpYnV0ZXMgZm9yIHRoZSBDUFUgYWRkcmVzcyBzcGFjZS4gQm90aCBtaWdyYXRpb24g
+c3RyYXRlZ3kgYXMgd2VsbCBhcyBkZXZpY2Ugc3BlY2lmaWMgaW5mb3JtYXRpb24gKGxpa2UgY2Fj
+aGUgcHJlZmVyZW5jZXMpIGZhbGwgaW50byB0aGlzIGNhdGVnb3J5Lg0KDQpTaW5jZSB0aGVyZSBp
+cyBhIGRldmljZSBzcGVjaWZpYyBjb21wb25lbnQgaW4gdGhvc2UgYXR0cmlidXRlcyBhcyB3ZWxs
+IEkgdGhpbmsgZGV2aWNlIHNwZWNpZmljIElPQ1RMcyBzdGlsbCBtYWtlIHNlbnNlIHRvIHVwZGF0
+ZSB0aGVtLCBidXQgSE1NIHNob3VsZCBvZmZlciB0aGUgZnVuY3Rpb25hbGl0eSB0byBtYW5hZ2Ug
+YW5kIHN0b3JlIHRob3NlIGluZm9ybWF0aW9uLg0KDQpTcGxpdCBhbmQgbWVyZ2Ugb2YgVk1BcyBv
+bmx5IGJlY29tZSBhIHByb2JsZW0gaWYgeW91IGF0dGFjaCB0aG9zZSBpbmZvcm1hdGlvbiB0byBW
+TUFzLCBpZiB5b3Uga2VlcCB0aGVtIGNvbXBsZXRlbHkgc2VwYXJhdGUgdGhhbiB0aGF0IGRvZXNu
+J3QgYmVjb21lIGFuIGlzc3VlIGVpdGhlci4gVGhlIGRvd24gc2lkZSBvZiB0aGlzIGFwcHJvYWNo
+IGlzIHRoYXQgeW91IGRvbid0IGdldCBhdXRvbWF0aWNhbGx5IGV4dGVuZGluZyBhdHRyaWJ1dGUg
+cmFuZ2VzIGZvciBncm93aW5nIFZNQXMgZm9yIGV4YW1wbGUuDQoNClJlZ2FyZHMsDQpDaHJpc3Rp
+YW4uDQoNCkFtIDI5LjExLjIzIHVtIDIzOjIzIHNjaHJpZWIgWmVuZywgT2FrOg0KPiBIaSBXZWl4
+aSwNCj4NCj4gRXZlbiB0aG91Z2ggQ2hyaXN0aWFuIGhhcyBsaXN0ZWQgcmVhc29ucyByZWplY3Rp
+bmcgdGhpcyBwcm9wb3NhbCAoeWVzIHRoZXkgYXJlIHZlcnkgcmVhc29uYWJsZSB0byBtZSksIEkg
+d291bGQgb3BlbiBteSBtaW5kIGFuZCBmdXJ0aGVyIGV4cGxvcmUgdGhlIHBvc3NpYmlsaXR5IGhl
+cmUuIFNpbmNlIHRoZSBjdXJyZW50IEdQVSBkcml2ZXIgdXNlcyBhIGhtbSBiYXNlZCBpbXBsZW1l
+bnRhdGlvbiAoQU1EIGFuZCBOViBoYXMgZG9uZSB0aGlzOyBBdCBJbnRlbCB3ZSBhcmUgY2F0Y2hp
+bmcgdXApLCBJIHdhbnQgdG8gZXhwbG9yZSBob3cgbXVjaCB3ZSBjYW4gYmVuZWZpdCBmcm9tIHRo
+ZSBwcm9wb3NlZCBhcHByb2FjaCBhbmQgaG93IHlvdXIgYXBwcm9hY2ggY2FuIHNvbHZlIHNvbWUg
+cGFpbiBwb2ludHMgb2Ygb3VyIGRldmVsb3BtZW50LiBTbyBiYXNpY2FsbHkgd2hhdCBJIGFtIHF1
+ZXN0aW9uaW5nIGhlcmUgaXM6IHdoYXQgaXMgdGhlIGFkdmFudGFnZSBvZiB5b3VyIGFwcHJvYWNo
+IGFnYWluc3QgaG1tLg0KPg0KPiBUbyBpbXBsZW1lbnQgYSBVVk0gKHVuaWZpZWQgdmlydHVhbCBh
+ZGRyZXNzIHNwYWNlIGIvdCBjcHUgYW5kIGdwdSBkZXZpY2UpLCB3aXRoIGhtbSwgZHJpdmVyIGVz
+c2VudGlhbGx5IG5lZWQgdG8gaW1wbGVtZW50IGJlbG93IGZ1bmN0aW9uczoNCj4NCj4gMS4gZGV2
+aWNlIHBhZ2UgdGFibGUgdXBkYXRlLiBZb3VyIGFwcHJvYWNoIHJlcXVpcmVzIHRoZSBzYW1lIGJl
+Y2F1c2UgDQo+IHRoaXMgaXMgZGV2aWNlIHNwZWNpZmljIGNvZGVzDQo+DQo+IDIuIFNvbWUgbWln
+cmF0aW9uIGZ1bmN0aW9ucyB0byBtaWdyYXRlIG1lbW9yeSBiL3Qgc3lzdGVtIG1lbW9yeSBhbmQg
+R1BVIGxvY2FsIG1lbW9yeS4gTXkgdW5kZXJzdGFuZGluZyBpcywgZXZlbiB0aG91Z2ggeW91IGdl
+bmVyYWxpemVkIHRoaXMgYSBiaXQsIHN1Y2ggYXMgbW9kaWZpZWQgY3B1IHBhZ2UgZmF1bHQgcGF0
+aCwgcHJvdmlkZWQgImdlbmVyYWwiIGdtX2Rldl9mYXVsdCBoYW5kbGVyLi4uIGJ1dCBkZXZpY2Ug
+ZHJpdmVyIHN0aWxsIG5lZWQgdG8gcHJvdmlkZSBtaWdyYXRpb24gZnVuY3Rpb25zIGJlY2F1c2Ug
+bWlncmF0aW9uIGZ1bmN0aW9ucyBoYXZlIHRvIGJlIGRldmljZSBzcGVjaWZpYyAoaS5lLiwgdXNp
+bmcgZGV2aWNlIGRtYS9jb3B5IGVuZ2luZSBmb3IgcGVyZm9ybWFuY2UgcHVycG9zZSkuIFJpZ2h0
+Pw0KPg0KPiAzLiBHUFUgcGh5c2ljYWwgbWVtb3J5IG1hbmFnZW1lbnQsIHRoaXMgcGFydCBpcyBu
+b3cgaW4gZHJtL2J1ZGR5LCBzaGFyZWQgYnkgYWxsIGRyaXZlcnMuIEkgdGhpbmsgd2l0aCB5b3Vy
+IGFwcHJvYWNoLCBkcml2ZXIgc3RpbGwgbmVlZCB0byBwcm92aWRlIGNhbGxiYWNrIGZ1bmN0aW9u
+cyB0byBhbGxvY2F0ZS9mcmVlIHBoeXNpY2FsIHBhZ2VzLiBSaWdodD8gT3IgZG8geW91IGxldCBs
+aW51eCBjb3JlIG1tIGJ1ZGR5IG1hbmFnZSBkZXZpY2UgbWVtb3J5IGRpcmVjdGx5Pw0KPg0KPiA0
+LiBtYWR2aXNlL2hpbnRzL3ZpcnR1YWwgYWRkcmVzcyByYW5nZSBtYW5hZ2VtZW50LiBUaGlzIGhh
+cyBiZWVuIHBhaW4gcG9pbnQgZm9yIHVzLiBSaWdodCBub3cgZGV2aWNlIGRyaXZlciBoYXMgdG8g
+bWFpbnRhaW4gY2VydGFpbiB2aXJ0dWFsIGFkZHJlc3MgcmFuZ2UgZGF0YSBzdHJ1Y3R1cmUgdG8g
+bWFpbnRhaW4gaGludHMgYW5kIG90aGVyIHZpcnR1YWwgYWRkcmVzcyByYW5nZSBiYXNlZCBtZW1v
+cnkgYXR0cmlidXRlcy4gRHJpdmVyIG5lZWQgdG8gc3luYyB3aXRoIGxpbnV4IHZtYS4gRHJpdmVy
+IG5lZWQgdG8gZXhwbGljaXRseSBkZWFsIHdpdGggcmFuZ2Ugc3BsaXQvbWVyZ2luZy4uLiBITU0g
+ZG9lc24ndCBwcm92aWRlIHN1cHBvcnQgaW4gdGhpcyBhcmVhLiBZb3VyIGFwcHJvYWNoIHNlZW1z
+IGNsZWFuZXIvc2ltcGxlciB0byBtZS4uLg0KPg0KPg0KPiBTbyBpbiBhYm92ZSwgSSBoYXZlIGV4
+YW1pbmVkIHRoZSBzb21lIGtleSBmYWN0b3JzIG9mIGEgZ3B1IFVWTSBtZW1vcnkgbWFuYWdlci4g
+SSB0aGluayBmb3IgIzEgYW5kICMyLCBobW0gaGFzIHByb3ZpZGUgcHJldHR5IGdvb2QgYWJzdHJh
+Y3Rpb24vdG9vbHMgZm9yIGFkZHJlc3Mgc3BhY2UgbWlycm9yaW5nIGFuZCBtaWdyYXRpb24gaGVs
+cGVycy4gRm9yICMzLCBzaW5jZSB3ZSBoYXZlIGEgY29tbW9uIGRybS9idWRkeSBsYXllciwgSSBk
+b24ndCB0aGluayBpdCBpcyBhIGJpZyBwcm9ibGVtIGZvciBkcml2ZXIgd3JpdGVyIG5vdy4NCj4N
+Cj4gSSBkbyBzZWUgIzQgaXMgc29tZXRoaW5nIHlvdSBzb2x2ZWQgbW9yZSBiZWF1dGlmdWxseSwg
+cmVxdWlyZXMgbmV3IHN5c3RlbSBjYWxsIHRob3VnaC4NCj4NCj4gT2FrDQo+DQo+DQo+PiAtLS0t
+LU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPj4gRnJvbTogZHJpLWRldmVsIDxkcmktZGV2ZWwtYm91
+bmNlc0BsaXN0cy5mcmVlZGVza3RvcC5vcmc+IE9uIEJlaGFsZiANCj4+IE9mIENocmlzdGlhbiBL
+w7ZuaWcNCj4+IFNlbnQ6IFR1ZXNkYXksIE5vdmVtYmVyIDI4LCAyMDIzIDg6MDkgQU0NCj4+IFRv
+OiBXZWl4aSBaaHUgPHdlaXhpLnpodUBodWF3ZWkuY29tPjsgbGludXgtbW1Aa3ZhY2sub3JnOyBs
+aW51eC0gDQo+PiBrZXJuZWxAdmdlci5rZXJuZWwub3JnOyBha3BtQGxpbnV4LWZvdW5kYXRpb24u
+b3JnOyBEYW5pbG8gS3J1bW1yaWNoIA0KPj4gPGRha3JAcmVkaGF0LmNvbT47IERhdmUgQWlybGll
+IDxhaXJsaWVkQHJlZGhhdC5jb20+OyBEYW5pZWwgVmV0dGVyIA0KPj4gPGRhbmllbEBmZndsbC5j
+aD4NCj4+IENjOiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOyBsZW9ucm9AbnZpZGlh
+LmNvbTsgDQo+PiBhcG9wcGxlQG52aWRpYS5jb207IGFtZC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Au
+b3JnOyBtZ29ybWFuQHN1c2UuZGU7IA0KPj4geml5QG52aWRpYS5jb207IFdhbmcsIFpoaSBBIDx6
+aGkuYS53YW5nQGludGVsLmNvbT47IA0KPj4gcmNhbXBiZWxsQG52aWRpYS5jb207IGpnZ0Budmlk
+aWEuY29tOyB3ZWl4aS56aHVAb3BlbmV1bGVyLnNoOyANCj4+IGpodWJiYXJkQG52aWRpYS5jb207
+IGludGVsLWdmeEBsaXN0cy5mcmVlZGVza3RvcC5vcmc7IA0KPj4gbWhhaXJncm92ZUBudmlkaWEu
+Y29tOyBqZ2xpc3NlQHJlZGhhdC5jb207IFZpdmksIFJvZHJpZ28gDQo+PiA8cm9kcmlnby52aXZp
+QGludGVsLmNvbT47IGludGVsLWd2dC1kZXZAbGlzdHMuZnJlZWRlc2t0b3Aub3JnOw0KPj4gdHZy
+dGtvLnVyc3VsaW5AbGludXguaW50ZWwuY29tOyBGZWxpeC5LdWVobGluZ0BhbWQuY29tOyANCj4+
+IFhpbmh1aS5QYW5AYW1kLmNvbTsgYWxleGFuZGVyLmRldWNoZXJAYW1kLmNvbTsgb2dhYmJheUBr
+ZXJuZWwub3JnDQo+PiBTdWJqZWN0OiBSZTogW1JGQyBQQVRDSCAwLzZdIFN1cHBvcnRpbmcgR01F
+TSAoZ2VuZXJhbGl6ZWQgbWVtb3J5DQo+PiBtYW5hZ2VtZW50KSBmb3IgZXh0ZXJuYWwgbWVtb3J5
+IGRldmljZXMNCj4+DQo+PiBBZGRpbmcgYSBmZXcgbWlzc2luZyBpbXBvcnRhbnQgcGVvcGxlIHRv
+IHRoZSBleHBsaWNpdCB0byBsaXN0Lg0KPj4NCj4+IEFtIDI4LjExLjIzIHVtIDEzOjUwIHNjaHJp
+ZWIgV2VpeGkgWmh1Og0KPj4+IFRoZSBwcm9ibGVtOg0KPj4+DQo+Pj4gQWNjZWxlcmF0b3IgZHJp
+dmVyIGRldmVsb3BlcnMgYXJlIGZvcmNlZCB0byByZWludmVudCBleHRlcm5hbCBNTSANCj4+PiBz
+dWJzeXN0ZW1zIGNhc2UgYnkgY2FzZSwgYmVjYXVzZSBMaW51eCBjb3JlIE1NIG9ubHkgY29uc2lk
+ZXJzIGhvc3QgbWVtb3J5IHJlc291cmNlcy4NCj4+PiBUaGVzZSByZWludmVudGVkIE1NIHN1YnN5
+c3RlbXMgaGF2ZSBzaW1pbGFyIG9yZGVycyBvZiBtYWduaXR1ZGUgb2YgDQo+Pj4gTG9DIGFzIExp
+bnV4IE1NICg4MEspLCBlLmcuIE52aWRpYS1VVk0gaGFzIDcwSywgQU1EIEdQVSBoYXMgMTRLIGFu
+ZCANCj4+PiBIdWF3ZWkgTlBVDQo+PiBoYXMNCj4+PiAzMEsuIE1lYW53aGlsZSwgbW9yZSBhbmQg
+bW9yZSB2ZW5kb3JzIGFyZSBpbXBsZW1lbnRpbmcgdGhlaXIgb3duIA0KPj4+IGFjY2VsZXJhdG9y
+cywgZS5nLiBNaWNyb3NvZnQncyBNYWlhIDEwMC4gQXQgdGhlIHNhbWUgdGltZSwgDQo+Pj4gYXBw
+bGljYXRpb24tbGV2ZWwgZGV2ZWxvcGVycyBzdWZmZXIgZnJvbSBwb29yIHByb2dyYW1tYWJpbGl0
+eSAtLSANCj4+PiB0aGV5IG11c3QgY29uc2lkZXIgcGFyYWxsZWwgYWRkcmVzcyBzcGFjZXMgYW5k
+IGJlIGNhcmVmdWwgYWJvdXQgdGhlIA0KPj4+IGxpbWl0ZWQgZGV2aWNlIERSQU0gY2FwYWNpdHku
+IFRoaXMgY2FuIGJlIGFsbGV2aWF0ZWQgaWYgYSANCj4+PiBtYWxsb2MoKS1lZCB2aXJ0dWFsIGFk
+ZHJlc3MgY2FuIGJlIHNoYXJlZCBieSB0aGUgYWNjZWxlcmF0b3IsIG9yIHRoZSANCj4+PiBhYnVu
+ZGFudCBob3N0IERSQU0gY2FuIGZ1cnRoZXIgdHJhbnNwYXJlbnRseSBiYWNrdXAgdGhlIGRldmlj
+ZSBsb2NhbCBtZW1vcnkuDQo+Pj4NCj4+PiBUaGVzZSBleHRlcm5hbCBNTSBzeXN0ZW1zIHNoYXJl
+IHNpbWlsYXIgbWVjaGFuaXNtcyBleGNlcHQgZm9yIHRoZSANCj4+PiBoYXJkd2FyZS1kZXBlbmRl
+bnQgcGFydCwgc28gcmVpbnZlbnRpbmcgdGhlbSBpcyBlZmZlY3RpdmVseSANCj4+PiBpbnRyb2R1
+Y2luZyByZWR1bmRhbnQgY29kZSAoMTRLfjcwSyBmb3IgZWFjaCBjYXNlKS4gU3VjaCANCj4+PiBk
+ZXZlbG9waW5nL21haW50YWluaW5nIGlzIG5vdCBjaGVhcC4gRnVydGhlcm1vcmUsIHRvIHNoYXJl
+IGEgDQo+Pj4gbWFsbG9jKCktZWQgdmlydHVhbCBhZGRyZXNzLCBkZXZpY2UgZHJpdmVycyBuZWVk
+IHRvIGRlZXBseSBpbnRlcmFjdCANCj4+PiB3aXRoIExpbnV4IE1NIHZpYSBsb3ctbGV2ZWwgTU0g
+QVBJcywgZS5nLiBNTVUgbm90aWZpZXJzL0hNTS4gVGhpcyANCj4+PiByYWlzZXMgdGhlIGJhciBm
+b3IgZHJpdmVyIGRldmVsb3BtZW50LCBzaW5jZSBkZXZlbG9wZXJzIG11c3QgDQo+Pj4gdW5kZXJz
+dGFuZCBob3cgTGludXggTU0gd29ya3MuIEZ1cnRoZXIsIGl0IGNyZWF0ZXMgY29kZSBtYWludGVu
+YW5jZSANCj4+PiBwcm9ibGVtcyAtLSBhbnkgY2hhbmdlcyB0byBMaW51eCBNTSBwb3RlbnRpYWxs
+eSByZXF1aXJlIGNvb3JkaW5hdGVkIGNoYW5nZXMgdG8gYWNjZWxlcmF0b3IgZHJpdmVycyB1c2lu
+ZyBsb3ctbGV2ZWwgTU0gQVBJcy4NCj4+Pg0KPj4+IFB1dHRpbmcgYSBjYWNoZS1jb2hlcmVudCBi
+dXMgYmV0d2VlbiBob3N0IGFuZCBkZXZpY2Ugd2lsbCBub3QgbWFrZSANCj4+PiB0aGVzZSBleHRl
+cm5hbCBNTSBzdWJzeXN0ZW1zIGRpc2FwcGVhci4gRm9yIGV4YW1wbGUsIGEgDQo+Pj4gdGhyb3Vn
+aHB1dC1vcmllbnRlZCBhY2NlbGVyYXRvciB3aWxsIG5vdCB0b2xlcmF0ZSBleGVjdXRpbmcgaGVh
+dnkgDQo+Pj4gbWVtb3J5IGFjY2VzcyB3b3JrbG9hZCB3aXRoIGEgaG9zdCBNTVUvSU9NTVUgdmlh
+IGEgcmVtb3RlIGJ1cy4gDQo+Pj4gVGhlcmVmb3JlLCBkZXZpY2VzIHdpbGwgc3RpbGwgaGF2ZSB0
+aGVpciBvd24gTU1VIGFuZCBwaWNrIGEgc2ltcGxlciANCj4+PiBwYWdlIHRhYmxlIGZvcm1hdCBm
+b3IgbG93ZXIgYWRkcmVzcyB0cmFuc2xhdGlvbiBvdmVyaGVhZCwgcmVxdWlyaW5nIGV4dGVybmFs
+IE1NIHN1YnN5c3RlbXMuDQo+Pj4NCj4+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPj4+DQo+Pj4g
+V2hhdCBHTUVNIChHZW5lcmFsaXplZCBNZW1vcnkgTWFuYWdlbWVudCBbMV0pIGRvZXM6DQo+Pj4N
+Cj4+PiBHTUVNIGV4dGVuZHMgTGludXggTU0gdG8gc2hhcmUgaXRzIG1hY2hpbmUtaW5kZXBlbmRl
+bnQgTU0gY29kZS4gT25seSANCj4+PiBoaWdoLWxldmVsIGludGVyZmFjZSBpcyBwcm92aWRlZCBm
+b3IgZGV2aWNlIGRyaXZlcnMuIFRoaXMgcHJldmVudHMgDQo+Pj4gYWNjZWxlcmF0b3IgZHJpdmVy
+cyBmcm9tIHJlaW52ZW50aW5nIHRoZSB3aGVlbCwgYnV0IHJlbGllcyBvbiANCj4+PiBkcml2ZXJz
+IHRvIGltcGxlbWVudCB0aGVpciBoYXJkd2FyZS1kZXBlbmRlbnQgZnVuY3Rpb25zIGRlY2xhcmVk
+IGJ5IA0KPj4+IEdNRU0uIEdNRU0ncw0KPj4ga2V5DQo+Pj4gaW50ZXJmYWNlIGluY2x1ZGUgZ21f
+ZGV2X2NyZWF0ZSgpLCBnbV9hc19jcmVhdGUoKSwgZ21fYXNfYXR0YWNoKCkgDQo+Pj4gYW5kIGdt
+X2Rldl9yZWdpc3Rlcl9waHlzbWVtKCkuIEhlcmUgYnJpZWZseSBkZXNjcmliZSBob3cgYSBkZXZp
+Y2UgDQo+Pj4gZHJpdmVyIHV0aWxpemVzIHRoZW06DQo+Pj4gMS4gQXQgYm9vdCB0aW1lLCBjYWxs
+IGdtX2Rldl9jcmVhdGUoKSBhbmQgcmVnaXN0ZXJzIHRoZSBpbXBsZW1lbnRhdGlvbiBvZg0KPj4+
+ICAgICAgaGFyZHdhcmUtZGVwZW5kZW50IGZ1bmN0aW9ucyBhcyBkZWNsYXJlZCBpbiBzdHJ1Y3Qg
+Z21fbW11Lg0KPj4+ICAgICAgICAtIElmIHRoZSBkZXZpY2UgaGFzIGxvY2FsIERSQU0sIGNhbGwg
+Z21fZGV2X3JlZ2lzdGVyX3BoeXNtZW0oKSB0bw0KPj4+ICAgICAgICAgIHJlZ2lzdGVyIGF2YWls
+YWJsZSBwaHlzaWNhbCBhZGRyZXNzZXMuDQo+Pj4gMi4gV2hlbiBhIGRldmljZSBjb250ZXh0IGlz
+IGluaXRpYWxpemVkIChlLmcuIHRyaWdnZXJlZCBieSBpb2N0bCksIGNoZWNrIGlmDQo+Pj4gICAg
+ICB0aGUgY3VycmVudCBDUFUgcHJvY2VzcyBoYXMgYmVlbiBhdHRhY2hlZCB0byBhIGdtZW0gYWRk
+cmVzcyBzcGFjZQ0KPj4+ICAgICAgKHN0cnVjdCBnbV9hcykuIElmIG5vdCwgY2FsbCBnbV9hc19j
+cmVhdGUoKSBhbmQgcG9pbnQgY3VycmVudC0+bW0tPmdtX2FzDQo+Pj4gICAgICB0byBpdC4NCj4+
+PiAzLiBDYWxsIGdtX2FzX2F0dGFjaCgpIHRvIGF0dGFjaCB0aGUgZGV2aWNlIGNvbnRleHQgdG8g
+YSBnbWVtIGFkZHJlc3Mgc3BhY2UuDQo+Pj4gNC4gSW52b2tlIGdtX2Rldl9mYXVsdCgpIHRvIHJl
+c29sdmUgYSBwYWdlIGZhdWx0IG9yIHByZXBhcmUgZGF0YSBiZWZvcmUNCj4+PiAgICAgIGRldmlj
+ZSBjb21wdXRhdGlvbiBoYXBwZW5zLg0KPj4+DQo+Pj4gR01FTSBoYXMgY2hhbmdlZCB0aGUgZm9s
+bG93aW5nIGFzc3VtcHRpb25zIGluIExpbnV4IE1NOg0KPj4+ICAgICAxLiBBbiBtbV9zdHJ1Y3Qg
+bm90IG9ubHkgaGFuZGxlIGEgc2luZ2xlIENQVSBjb250ZXh0LCBidXQgbWF5IGFsc28gaGFuZGxl
+DQo+Pj4gICAgICAgIGV4dGVybmFsIG1lbW9yeSBjb250ZXh0cyBlbmNhcHN1bGF0ZWQgYXMgZ21f
+Y29udGV4dCBsaXN0ZWQgaW4NCj4+PiAgICAgICAgbW0tPmdtX2FzLiBBbiBleHRlcm5hbCBtZW1v
+cnkgY29udGV4dCBjYW4gaW5jbHVkZSBhIGZldyBvciBhbGwgb2YgdGhlDQo+Pj4gICAgICAgIGZv
+bGxvd2luZyBwYXJ0czogYW4gZXh0ZXJuYWwgTU1VICh0aGF0IHJlcXVpcmVzIFRMQiBpbnZhbGlk
+YXRpb24pLCBhbg0KPj4+ICAgICAgICBleHRlcm5hbCBwYWdlIHRhYmxlICh0aGF0IHJlcXVpcmVz
+IFBURSBtYW5pcHVsYXRpb24pIGFuZCBleHRlcm5hbCBEUkFNDQo+Pj4gICAgICAgICh0aGF0IHJl
+cXVpcmVzIHBoeXNpY2FsIG1lbW9yeSBtYW5hZ2VtZW50KS4NCj4+PiAgICAgMi4gRmF1bHRpbmcg
+YSBNQVBfUFJJVkFURSBWTUEgd2l0aCBubyBDUFUgUFRFIGZvdW5kIGRvZXMgbm90IG5lY2Vzc2Fy
+aWx5DQo+Pj4gICAgICAgIG1lYW4gdGhhdCBhIHplcm8tZmlsbGVkIHBoeXNpY2FsIHBhZ2Ugc2hv
+dWxkIGJlIG1hcHBlZC4gVGhlIHZpcnR1YWwNCj4+PiAgICAgICAgcGFnZSBtYXkgaGF2ZSBiZWVu
+IG1hcHBlZCB0byBhbiBleHRlcm5hbCBtZW1vcnkgZGV2aWNlLg0KPj4+ICAgICAzLiBVbm1hcHBp
+bmcgYSBwYWdlIG1heSBpbmNsdWRlIHNlbmRpbmcgZGV2aWNlIFRMQiBpbnZhbGlkYXRpb24gKGV2
+ZW4gaWYNCj4+PiAgICAgICAgaXRzIE1NVSBzaGFyZXMgQ1BVIHBhZ2UgdGFibGUpIGFuZCBtYW5p
+cHVsYXRpbmcgZGV2aWNlIFBURXMuDQo+Pj4NCj4+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLQ0KPj4+
+DQo+Pj4gU2VtYW50aWNzIG9mIG5ldyBzeXNjYWxsczoNCj4+Pg0KPj4+IDEuIG1tYXAoLi4uLCBN
+QVBfUFJJVkFURSB8IE1BUF9QRUVSX1NIQVJFRCkNCj4+PiAgICAgICBBbGxvY2F0ZSB2aXJ0dWFs
+IGFkZHJlc3MgdGhhdCBpcyBzaGFyZWQgYmV0d2VlbiB0aGUgQ1BVIGFuZCBhbGwNCj4+PiAgICAg
+ICBhdHRhY2hlZCBkZXZpY2VzLiBEYXRhIGlzIGd1YXJhbnRlZWQgdG8gYmUgY29oZXJlbnQgd2hl
+bmV2ZXIgdGhlDQo+Pj4gICAgICAgYWRkcmVzcyBpcyBhY2Nlc3NlZCBieSBlaXRoZXIgQ1BVIG9y
+IGFueSBhdHRhY2hlZCBkZXZpY2UuIElmIHRoZSBkZXZpY2UNCj4+PiAgICAgICBkb2VzIG5vdCBz
+dXBwb3J0IHBhZ2UgZmF1bHQsIHRoZW4gZGV2aWNlIGRyaXZlciBpcyByZXNwb25zaWJsZSBmb3IN
+Cj4+PiAgICAgICBmYXVsdGluZyBtZW1vcnkgYmVmb3JlIGRhdGEgZ2V0cyBhY2Nlc3NlZC4gQnkg
+ZGVmYXVsdCwgdGhlIENQVSBEUkFNIGlzDQo+Pj4gICAgICAgY2FuIGJlIHVzZWQgYXMgYSBzd2Fw
+IGJhY2t1cCBmb3IgdGhlIGRldmljZSBsb2NhbCBtZW1vcnkuDQo+Pj4gMi4gaG1hZHZpc2UoTlVN
+QV9pZCwgdmFfc3RhcnQsIHNpemUsIG1lbW9yeV9oaW50KQ0KPj4+ICAgICAgIElzc3VpbmcgbWVt
+b3J5IGhpbnQgZm9yIGEgZ2l2ZW4gVk1BLiBUaGlzIGV4dGVuZHMgdHJhZGl0aW9uYWwgbWFkdmlz
+ZSgpDQo+Pj4gICAgICAgc3lzY2FsbCB3aXRoIGFuIGV4dHJhIGFyZ3VtZW50IHNvIHRoYXQgcHJv
+Z3JhbW1lcnMgaGF2ZSBiZXR0ZXIgY29udHJvbA0KPj4+ICAgICAgIHdpdGggaGV0ZXJvZ2VuZW91
+cyBkZXZpY2VzIHJlZ2lzdGVyZWQgYXMgTlVNQSBub2Rlcy4gT25lIA0KPj4+IHVzZWZ1bA0KPj4g
+bWVtb3J5DQo+Pj4gICAgICAgaGludCBjb3VsZCBiZSBNQURWX1BSRUZFVENILCB3aGljaCBndWFy
+YW50ZWVzIHRoYXQgdGhlIHBoeXNpY2FsIGRhdGEgb2YNCj4+PiAgICAgICB0aGUgZ2l2ZW4gVk1B
+IFtWQSwgVkErc2l6ZSkgaXMgbWlncmF0ZWQgdG8gTlVNQSBub2RlICNpZC4gQW5vdGhlcg0KPj4+
+ICAgICAgIHVzZWZ1bCBtZW1vcnkgaGludCBpcyBNQURWX0RPTlRORUVELiBUaGlzIGlzIGhlbHBm
+dWwgdG8gaW5jcmVhc2UgZGV2aWNlDQo+Pj4gICAgICAgbWVtb3J5IHV0aWxpemF0aW9uLiBJdCBp
+cyB3b3J0aCBjb25zaWRlcmluZyBleHRlbmRpbmcgdGhlIGV4aXN0aW5nDQo+Pj4gICAgICAgbWFk
+dmlzZSgpIHN5c2NhbGwgd2l0aCBvbmUgYWRkaXRpb25hbCBhcmd1bWVudC4NCj4+Pg0KPj4+IC0t
+LS0tLS0tLS0tLS0tLS0tLS0tDQo+Pj4NCj4+PiBJbXBsZW1lbnRhdGlvbiBkZXRhaWxzDQo+Pj4N
+Cj4+PiAxLiBOZXcgVk1BIGZsYWc6IE1BUF9QRUVSX1NIQVJFRA0KPj4+DQo+Pj4gVGhpcyBuZXcg
+ZmxhZyBoZWxwcyBpc29sYXRlIEdNRU0gZmVhdHVyZSwgc28gdGhhdCBjb21tb24gcHJvY2Vzc2Vz
+IA0KPj4+IHdpdGggbm8gZGV2aWNlIGF0dGFjaGVkIGRvZXMgbm90IG5lZWQgdG8gbWFpbnRhaW4g
+YW55IGxvZ2ljYWwgcGFnZSANCj4+PiB0YWJsZS4gSXQgY2FuIGJlIGRlbGV0ZWQgaWYgdGhlIGV4
+dHJhIG92ZXJoZWFkIGZyb20gR01FTSBpcyBhY2NlcHRhYmxlLg0KPj4+DQo+Pj4gMi4gTU1VIGZ1
+bmN0aW9ucw0KPj4+IFRoZSBkZXZpY2UgZHJpdmVyIG11c3QgaW1wbGVtZW50IHRoZSBNTVUgZnVu
+Y3Rpb25zIGRlY2xhcmVkIGluIA0KPj4+IHN0cnVjdCBnbV9tbXUuDQo+Pj4NCj4+PiBWQSBmdW5j
+dGlvbnM6IHBlZXJfdmFfYWxsb2NfZml4ZWQoKSwgcGVlcl92YV9mcmVlKCkNCj4+Pg0KPj4+IFRo
+ZXkgYXJlIHVzZWQgdG8gbmVnb3RpYXRlIGEgY29tbW9uIGF2YWlsYWJsZSBWTUEgYmV0d2VlbiBh
+IGhvc3QgDQo+Pj4gcHJvY2VzcyBhbmQgYSBkZXZpY2UgcHJvY2VzcyBhdCB0aGUgbW1hcCgpIHRp
+bWUuIFRoaXMgaXMgYmVjYXVzZSANCj4+PiBzb21lIGFjY2VsZXJhdG9ycyBsaWtlIEludGVsIFhl
+b24gUGhpIG9yIEh1YXdlaSdzIEFzY2VuZCBOUFUgaGF2ZSANCj4+PiB0aGVpciBhY2NlbGVyYXRp
+b24gdGFza3MgZXhlY3V0ZWQgd2l0aGluIGEgZGV2aWNlIENQVSBwcm9jZXNzIA0KPj4+IGNvbnRl
+eHQuIFNvbWUgYWNjZWxlcmF0b3JzIG1heSBhbHNvIGNob29zZSBhIGRpZmZlcmVudCBmb3JtYXQg
+b2YgDQo+Pj4gdmlydHVhbCBhZGRyZXNzIHNwYWNlLg0KPj4+DQo+Pj4gUEEgZnVuY3Rpb25zOiBh
+bGxvY19wYWdlKCksIGZyZWVfcGFnZSgpLCBwcmVwYXJlX3BhZ2UoKQ0KPj4+DQo+Pj4gQWxsb2Nf
+cGFnZSgpIGFuZCBmcmVlX3BhZ2UoKSBhcmUgdXNlZCB0byBhbGxvY2F0ZSBhbmQgZnJlZSBkZXZp
+Y2UgDQo+Pj4gcGh5c2ljYWwgcGFnZXMuIFByZXBhcmVfcGFnZSgpIGlzIHVzZWQgdG8gemVyby1m
+aWxsIG9yIERNQSB0aGUgZGF0YSANCj4+PiBvZiBhIHBoeXNpY2FsIHBhZ2UuIFRoZXNlIGZ1bmN0
+aW9ucyB3ZXJlIHJlbW92ZWQgZnJvbSB0aGUgc3VibWl0dGVkIA0KPj4+IHBhdGNoLCBzaW5jZSBH
+TUVNIGRvZXMgbm90IG5lZWQgdG8gaW52b2tlIHRoZW0gd2hlbiB0ZXN0aW5nIEh1YXdlaSdzIA0K
+Pj4+IE5QVSBhY2NlbGVyYXRvci4gVGhlDQo+PiBOUFUNCj4+PiBhY2NlbGVyYXRvciBoYXMgYW4g
+T1MgcnVubmluZyBpbiB0aGUgZGV2aWNlIHRoYXQgbWFuYWdlcyB0aGUgZGV2aWNlIA0KPj4+IHBo
+eXNpY2FsIG1lbW9yeS4gSG93ZXZlciwgZXZlbiBmb3Igc3VjaCBhIGRldmljZSBpdCBpcyBiZXR0
+ZXIgZm9yIA0KPj4+IHRoZSBob3N0IHRvIGRpcmVjdGx5IG1hbmFnZSBkZXZpY2UgcGh5c2ljYWwg
+bWVtb3J5LCB3aGljaCBzYXZlcyANCj4+PiBkZXZpY2UgSEJNIGFuZCBhdm9pZHMgc3luY2hyb25p
+emluZyBtYW5hZ2VtZW50IHN0YXR1cyBiZXR3ZWVuIHRoZSBob3N0IGFuZCBkZXZpY2UuDQo+Pj4N
+Cj4+PiBQYWdlLXRhYmxlIGZ1bmN0aW9uczogDQo+Pj4gcG1hcF9jcmVhdGUoKS9kZXN0cm95KCkv
+ZW50ZXIoKS9yZWxlYXNlKCkvcHJvdGVjdCgpDQo+Pj4NCj4+PiBUaGV5IGFyZSB1c2VkIHRvIGNy
+ZWF0ZSBhbmQgZGVzdHJveSBkZXZpY2UgcGFnZSB0YWJsZXMsIGluc3RhbGwgYW5kIA0KPj4+IHVu
+aW5zdGFsbCBwYWdlIHRhYmxlIGVudHJpZXMgYW5kIHRvIGNoYW5nZSB0aGUgcHJvdGVjdGlvbiBv
+ZiBwYWdlIA0KPj4+IHRhYmxlIGVudHJpZXMuDQo+Pj4NCj4+PiBUTEItaW52YWxpZGF0aW9uIGZ1
+bmN0aW9uczogdGxiX2ludmwoKSwgdGxiX2ludmxfY29hbGVzY2VkKCkNCj4+Pg0KPj4+IFRoZXkg
+YXJlIHVzZWQgdG8gaW52YWxpZGF0ZSB0aGUgVExCIGVudHJpZXMgb2YgYSBnaXZlbiByYW5nZSBv
+ZiBWQSANCj4+PiBvciBpbnZhbGlkYXRlIGEgZ2l2ZW4gbGlzdCBvZiBWTUFzLg0KPj4+DQo+Pj4g
+V3JhcHBlciBmdW5jdGlvbnM6IHBlZXJfbWFwKCkgYW5kIHBlZXJfdW5tYXAoKQ0KPj4+DQo+Pj4g
+VGhlc2UgdHdvIGZ1bmN0aW9ucyBhcmUgdXNlZCB0byBjcmVhdGUgb3IgZGVzdHJveSBhIGRldmlj
+ZSBtYXBwaW5nIA0KPj4+IHdoaWNoIGNvdWxkIGluY2x1ZGUgYWxsb2NhdGluZyBwaHlzaWNhbCBt
+ZW1vcnkgYW5kIGNvcHlpbmcgZGF0YS4gDQo+Pj4gVGhleSBlZmZlY3RpdmVseSB3cmFwcyB0aGUg
+UEEgZnVuY3Rpb25zLCBQYWdlLXRhYmxlIGZ1bmN0aW9ucyBhbmQgDQo+Pj4gVExCLWludmFsaWRh
+dGlvbiBmdW5jdGlvbnMuIEltcGxlbWVudGluZyB0aGVzZSBzdGVwcyB0b2dldGhlciBhbGxvd3Mg
+DQo+Pj4gZGV2aWNlcyB0byBvcHRpbWl6ZSB0aGUgY29tbXVuaWNhdGlvbiBjb3N0IGJldHdlZW4g
+aG9zdCBhbmQgZGV2aWNlLiANCj4+PiBIb3dldmVyLCBpdCByZXF1aXJlcyB0aGUgZGV2aWNlIGRy
+aXZlciB0byBjb3JyZWN0bHkgb3JkZXIgdGhlc2Ugc3RlcHMuDQo+Pj4NCj4+PiAzLiBUcmFja2lu
+ZyBsb2dpY2FsIG1hcHBpbmdzOg0KPj4+DQo+Pj4gRWFjaCBwcm9jZXNzIHN0YXJ0cyBtYWludGFp
+bmluZyBhbiB4YXJyYXkgaW4gDQo+Pj4gbW0tPnZtX29iai0+bG9naWNhbF9wYWdlX3RhYmxlIGF0
+IHRoZSBmaXJzdCB0aW1lIGEgaG9zdCBwcm9jZXNzIA0KPj4+IGNhbGxzIG1tYXAoTUFQX1BSSVZB
+VEUgfA0KPj4gTUFQX1BFRVJfU0hBUkVEKS4NCj4+PiBXaGVuIGEgdmlydHVhbCBwYWdlIGdldHMg
+dG91Y2hlZCwgaXRzIG1hcHBpbmcgc3RhdHVzIGlzIGNyZWF0ZWQgYW5kIA0KPj4+IHN0b3JlZCBp
+biBzdHJ1Y3QgZ21fbWFwcGluZy4gVGhlIGxvZ2ljYWwgcGFnZSB0YWJsZSBpcyB1dGlsaXplZCB0
+byANCj4+PiBxdWVyeSB0aGUgc3RydWN0IGdtX21hcHBpbmcgZ2l2ZW4gYSB2aXJ0dWFsIGFkZHJl
+c3MuIEdNRU0gZXh0ZW5kcyANCj4+PiBMaW51eCBNTSB0bw0KPj4gdXBkYXRlDQo+Pj4gYW5kIGxv
+b2t1cCB0aGVzZSBsb2dpY2FsIG1hcHBpbmdzLiBGb3IgZXhhbXBsZSwgaW4gdGhlIHBhdGNoIHNl
+dCB3ZSANCj4+PiBtb2RpZnkgdGhlIHBhZ2UgZmF1bHQgcGF0aCBvZiB0byBhZGRpdGlvbmFsbHkg
+Y2hlY2sgdGhlIGxvZ2ljYWwgDQo+Pj4gbWFwcGluZyBvZiBNQVBfUEVFUl9TSEFSRUQgVk1BcyBh
+bmQgaWRlbnRpZnkgaWYgYSBkZXZpY2UgcGFnZSBzaG91bGQgYmUgbWlncmF0ZWQuDQo+Pj4gU2lt
+aWxhcmx5LCBpZiB0aGUgZGV2aWNlIGRyaXZlciB3YW50cyB0byByZXNvbHZlIGEgZGV2aWNlIHBh
+Z2UgZmF1bHQgDQo+Pj4gb3IgcHJlZmV0Y2ggZGF0YSwgdGhlIGRyaXZlciBzaG91bGQgY2FsbCBn
+bV9kZXZfZmF1bHQoKS4gVGhpcyANCj4+PiBmdW5jdGlvbiBleGFtaW5lcyB0aGUgbWFwcGluZyBz
+dGF0dXMgYW5kIGRldGVybWluZXMgd2hldGhlciB0aGUgDQo+Pj4gZGV2aWNlIGRyaXZlciBzaG91
+bGQgbWlncmF0ZSBhIENQVSBwYWdlIHRvIGRldmljZSBvciBpbnN0YWxsIGEgemVyby1maWxsZWQg
+ZGV2aWNlIHBhZ2UuDQo+Pj4NCj4+PiBUaGUgbG9naWNhbCBtYXBwaW5nIGFic3RyYWN0aW9uIGVu
+aGFuY2VzIHRoZSBleHRlbnNpYmlsaXR5IG9mIExpbnV4IA0KPj4+IGNvcmUgTU0gKGEgdmlydHVh
+bCBwYWdlIG1heSBiZSBtYXBwZWQgdG8gYSBkZXZpY2UgcGh5c2ljYWwgcGFnZSANCj4+PiB3aXRo
+b3V0IGFueSBDUFUgUFRFIGluc3RhbGxlZCkuIFRoZSBjdXJyZW50IGltcGxlbWVudGF0aW9uIGlz
+IG5vdCANCj4+PiBjb21wbGV0ZSwgc2luY2UgaXQgb25seSBmb2N1c2VkIG9uIGFub255bW91cyBW
+TUFzIHdpdGggDQo+Pj4gTUFQX1BFRVJfU0hBUkVEIGZsYWcuIFRoZSBmdXR1cmUgcGxhbiBvZiBs
+b2dpY2FsIHBhZ2UgdGFibGUgaXMgdG8gDQo+Pj4gcHJvdmlkZSBhIGdlbmVyaWMgYWJzdHJhY3Rp
+b24gbGF5ZXIgdGhhdCBzdXBwb3J0IGNvbW1vbiBhbm9ueW1vdXMgDQo+Pj4gbWVtb3J5IChJIGFt
+IGxvb2tpbmcgYXQgeW91LCB0cmFuc3BhcmVudCBodWdlIHBhZ2VzKQ0KPj4gYW5kDQo+Pj4gZmls
+ZS1iYWNrZWQgbWVtb3J5Lg0KPj4+DQo+Pj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4+Pg0KPj4+
+IFVzZSBjYXNlcw0KPj4+DQo+Pj4gR01FTSBoYXMgYmVlbiB0ZXN0ZWQgb3ZlciBIdWF3ZWkncyBO
+UFUgKG5ldXJhbCBwcm9jZXNzIHVuaXQpIGRldmljZSBkcml2ZXIuDQo+Pj4gVGhlIG9yaWdpbmFs
+IE5QVSBkZXZpY2UgZHJpdmVyIGhhcyBhcHByb3hpbWF0ZWx5IDMwLDAwMCBsaW5lcyBvZiANCj4+
+PiBjb2RlIGZvciBtZW1vcnkgbWFuYWdlbWVudC4gT24gdGhlIGNvbnRyYXJ5LCB0aGUgR01FTS1i
+YXNlZCBvbmUgaGFzIA0KPj4+IGxlc3MgdGhhbiAzMCBsaW5lcyBvZiBjb2RlIGNhbGxpbmcgR01F
+TSBBUEksIHdpdGggYXBwcm94aW1hdGVseSANCj4+PiAzLDcwMCBsaW5lcyBvZiBjb2RlIGltcGxl
+bWVudGluZyB0aGUgTU1VIGZ1bmN0aW9ucy4gVGhpcyBlZmZlY3RpdmVseSANCj4+PiBzYXZlcyBv
+dmVyIDI2LDIwMCBsaW5lcyBvZiBNTSBjb2RlIGZvciBvbmUgZHJpdmVyLiBUaGVyZWZvcmUsIA0K
+Pj4+IGRldmVsb3BlcnMgZnJvbSBhY2NlbGVyYXRvciB2ZW5kb3JzLCBpbmNsdWRpbmcgTnZpZGlh
+LCBBTUQsIEludGVsIA0KPj4+IGFuZCBvdGhlciBjb21wYW5pZXMgYXJlIHdlbGNvbWUgdG8gZGlz
+Y3VzcyBpZiBHTUVNIGNvdWxkIGJlIGhlbHBmdWwuDQo+Pj4NCj4+PiBVc2luZyBHTUVNLWJhc2Vk
+IGRyaXZlciwgaXQgaXMgcG9zc2libGUgdG8gd3JpdGUgYSBDLXN0eWxlIA0KPj4+IGFjY2VsZXJh
+dG9yIGNvZGUgd2l0aCBtYWxsb2MoKSwgd2hvc2UgdW5kZXJseWluZyBtbWFwKCkgc3lzY2FsbCAN
+Cj4+PiBzaG91bGQgaW5jbHVkZSBNQVBfUEVFUl9TSEFSRUQgYWNjb3JkaW5nIHRvIGN1cnJlbnQg
+R01FTSANCj4+PiBpbXBsZW1lbnRhdGlvbi4gSW1wb3J0YW50bHksDQo+PiBHTUVNDQo+Pj4gZ3Vh
+cmFudGVlcyBhIGNvaGVyZW50IHZpZXcgb2YgbWVtb3J5IGJldHdlZW4gdGhlIGhvc3QgYW5kIGFs
+bCANCj4+PiBhdHRhY2hlZCBkZXZpY2VzLiBUaGlzIG1lYW5zIHRoYXQgYW55IGRhdGEgd3JpdHRl
+biBieSB0aGUgQ1BVIG9yIGFueSANCj4+PiBhdHRhY2hlZCBhY2NlbGVyYXRvciBjYW4gYmUgc2Vl
+biBieSB0aGUgbmV4dCBtZW1vcnkgbG9hZCBpbnN0cnVjdGlvbiANCj4+PiBpc3N1ZWQgYnkgYW55
+IGF0dGFjaGVkIGFjY2VsZXJhdG9yIG9yIHRoZSBDUFUuIEZ1cnRoZXJtb3JlLCB0aGUgTlBVIA0K
+Pj4+IGRldmljZSB3YXMgYWJsZSB0byBvdmVyc3Vic2NyaWJlIG1lbW9yeSBieSBzd2FwcGluZyBt
+ZW1vcnkgdG8gaG9zdCANCj4+PiBERFIuIE5vdGUgdGhhdCB0aGlzDQo+PiBtZW1vcnkNCj4+PiBv
+dmVyc3Vic2NyaXB0aW9uIG1lY2hhbmlzbSBjYW4gYmUgdW5pdmVyc2FsIGlmIHRoZSBwaHlzaWNh
+bCBtZW1vcnkgDQo+Pj4gbWFuYWdlbWVudCBpcyBwcm92aWRlZCBieSBHTUVNLiBPdGhlciBwb3Rl
+bnRpYWwgdXNlIGNhc2VzIG9mIEdNRU0gDQo+Pj4gY291bGQgaW5jbHVkZSB0aGUgSU9NTVUgZHJp
+dmVyLCBLVk0gYW5kIFJETUEgZHJpdmVycywgYXMgbG9uZyBhcyB0aGUgDQo+Pj4gZGV2aWNlIG5l
+ZWRzIHRvIG1hbmFnZSBleHRlcm5hbCBtZW1vcnkgcmVzb3VyY2VzIGxpa2UgVk1BcywgTU1VcyBv
+ciBsb2NhbCBEUkFNcy4NCj4+Pg0KPj4+IC0tLS0tLS0tLS0tLS0tLS0tLS0tDQo+Pj4NCj4+PiBE
+aXNjdXNzaW9uDQo+Pj4NCj4+PiBQaHlzaWNhbCBtZW1vcnkgbWFuYWdlbWVudA0KPj4+IE1vc3Qg
+YWNjZWxlcmF0b3JzIHJlcXVpcmUgdGhlIGhvc3QgT1MgdG8gbWFuYWdlIGRldmljZSBEUkFNLiBF
+dmVuIA0KPj4+IGFjY2VsZXJhdG9ycyBjYXBhYmxlIG9mIHJ1bm5pbmcgYW4gT1MgaW5zaWRlIHRo
+ZSBkcml2ZXIgY2FuIGJlbmVmaXQgDQo+Pj4gZnJvbSBpdCwgc2luY2UgaXQgaGVscHMgYXZvaWQg
+c3luY2hyb25pemluZyBtYW5hZ2VtZW50IHN0YXR1cyANCj4+PiBiZXR3ZWVuIHRoZSBob3N0IGFu
+ZCBkZXZpY2UuIEluIExpbnV4IE9TUyBFVSBzdW1taXQgMjAyMywgSGFubmVzIA0KPj4+IFJlaW5l
+Y2tlIGZyb20gU1VTRSBMYWJzIHN1Z2dlc3RlZCB0aGF0IHBlb3BsZSBhcmUgY29uY2VybmVkIHdp
+dGggdGhlIA0KPj4+IG1lbW9yeSBjb25zdW1wdGlvbiBvZiBzdHJ1Y3QgcGFnZSAod2hpY2ggY29u
+c2lkZXJzIGFsbCBnZW5lcmljIA0KPj4+IHNjZW5hcmlvcyBmb3IgdGhlIGtlcm5lbCkuIFRoaXMg
+bGVhZHMgdG8gYSBwb3NzaWJsZSBzb2x1dGlvbiB0aGF0LCANCj4+PiBpbnN0ZWFkIG9mIHJldXNp
+bmcgTGludXggc3RydWN0IHBhZ2UgYW5kIFpPTkVfREVWSUNFIG1lY2hhbmlzbSwgR01FTSANCj4+
+PiBjYW4gaW1wbGVtZW50IGFuIGlzb2xhdGVkIGJ1ZGR5IGFsbG9jYXRvcg0KPj4gZm9yDQo+Pj4g
+dGhlIGRldmljZSB0byBpbnN0YW50aWF0ZSBhbmQgcmVnaXN0ZXIuIFRoZSBpc29sYXRpb24gaXMg
+dXNlZnVsIA0KPj4+IGJlY2F1c2UgZGV2aWNlIERSQU0gcGh5c2ljYWwgYWRkcmVzcyBzcGFjZSBp
+cyBpbmRlcGVuZGVudC4gDQo+Pj4gRnVydGhlcm1vcmUsIHRoZSBpc29sYXRlZCBidWRkeSBhbGxv
+Y2F0b3IgY2FuIHV0aWxpemUgYSBjdXN0b21pemVkIA0KPj4+IHN0cnVjdCBwYWdlIHRoYXQgY29u
+c3VtZXMgbGVzcyBtZW1vcnkuIEl0IGlzIHdvcnRoIGRpc2N1c3NpbmcgaWYgDQo+Pj4gYWNjZWxl
+cmF0b3IgdmVuZG9ycyBkZXNpcmUgdGhpcyBzb2x1dGlvbi4NCj4+Pg0KPj4+IE1NVSBmdW5jdGlv
+bnMNCj4+PiBUaGUgTU1VIGZ1bmN0aW9ucyBwZWVyX21hcCgpIGFuZCBwZWVyX3VubWFwKCkgb3Zl
+cmxhcCBvdGhlciANCj4+PiBmdW5jdGlvbnMsIGxlYXZpbmcgYSBxdWVzdGlvbiBpZiB0aGUgTU1V
+IGZ1bmN0aW9ucyBzaG91bGQgYmUgDQo+Pj4gZGVjb3VwbGVkIGFzIG1vcmUgYmFzaWMgb3BlcmF0
+aW9ucy4gRGVjb3VwbGluZyB0aGVtIGNvdWxkIA0KPj4+IHBvdGVudGlhbGx5IHByZXZlbnQgZGV2
+aWNlIGRyaXZlcnMgY29hbGVzY2luZyB0aGVzZSBiYXNpYyBzdGVwcyANCj4+PiB3aXRoaW4gYSBz
+aW5nbGUgaG9zdC1kZXZpY2UgY29tbXVuaWNhdGlvbiBvcGVyYXRpb24sIHdoaWxlIGNvdXBsaW5n
+IA0KPj4+IHRoZW0gbWFrZXMgaXQgbW9yZSBkaWZmaWN1bHQgZm9yIGRldmljZSBkcml2ZXJzIHRv
+IHV0aWxpemUgR01FTSBpbnRlcmZhY2UuDQo+Pj4NCj4+PiBUaGUgaWRlYSBvZiBHTUVNIHdhcyBv
+cmlnaW5hdGVkIGZyb20gV2VpeGkncyBQaEQgc3R1ZHkgd2l0aCBQcm9mLiANCj4+PiBTY290dCBS
+aXhuZXIgYW5kIFByb2YuIEFsYW4gTC4gQ294IGF0IFJpY2UgVW5pdmVyc2l0eS4NCj4+Pg0KPj4+
+IFsxXSBodHRwczovL2FyeGl2Lm9yZy9hYnMvMjMxMC4xMjU1NC4NCj4+Pg0KPj4+IFdlaXhpIFpo
+dSAoNik6DQo+Pj4gICAgIG1tL2dtZW06IGFkZCBoZXRlcm9nZW5lb3VzIE5VTUEgbm9kZQ0KPj4+
+ICAgICBtbS9nbWVtOiBhZGQgYXJjaC1pbmRlcGVuZGVudCBhYnN0cmFjdGlvbiB0byB0cmFjayBh
+ZGRyZXNzIG1hcHBpbmcNCj4+PiAgICAgICBzdGF0dXMNCj4+PiAgICAgbW0vZ21lbTogYWRkIEdN
+RU0gKEdlbmVyYWxpemVkIE1lbW9yeSBNYW5hZ2VtZW50KSBpbnRlcmZhY2UgZm9yDQo+Pj4gICAg
+ICAgZXh0ZXJuYWwgYWNjZWxlcmF0b3JzDQo+Pj4gICAgIG1tL2dtZW06IGFkZCBuZXcgc3lzY2Fs
+bCBobWFkdmlzZSgpIHRvIGlzc3VlIG1lbW9yeSBoaW50cyBmb3INCj4+PiAgICAgICBoZXRlcm9n
+ZW5lb3VzIE5VTUEgbm9kZXMNCj4+PiAgICAgbW0vZ21lbTogcmVzb2x2ZSBWTUEgY29uZmxpY3Rz
+IGZvciBhdHRhY2hlZCBwZWVyIGRldmljZXMNCj4+PiAgICAgbW0vZ21lbTogZXh0ZW5kaW5nIExp
+bnV4IGNvcmUgTU0gdG8gc3VwcG9ydCB1bmlmaWVkIHZpcnR1YWwgYWRkcmVzcw0KPj4+ICAgICAg
+IHNwYWNlDQo+Pj4NCj4+PiAgICBhcmNoL2FybTY0L2luY2x1ZGUvYXNtL3VuaXN0ZC5oICAgICAg
+ICAgfCAgIDIgKy0NCj4+PiAgICBhcmNoL2FybTY0L2luY2x1ZGUvYXNtL3VuaXN0ZDMyLmggICAg
+ICAgfCAgIDIgKw0KPj4+ICAgIGRyaXZlcnMvYmFzZS9ub2RlLmMgICAgICAgICAgICAgICAgICAg
+ICB8ICAgNiArDQo+Pj4gICAgZnMvcHJvYy90YXNrX21tdS5jICAgICAgICAgICAgICAgICAgICAg
+IHwgICAzICsNCj4+PiAgICBpbmNsdWRlL2xpbnV4L2dtZW0uaCAgICAgICAgICAgICAgICAgICAg
+fCAzNjggKysrKysrKysrKysrDQo+Pj4gICAgaW5jbHVkZS9saW51eC9tbS5oICAgICAgICAgICAg
+ICAgICAgICAgIHwgICA4ICsNCj4+PiAgICBpbmNsdWRlL2xpbnV4L21tX3R5cGVzLmggICAgICAg
+ICAgICAgICAgfCAgIDUgKw0KPj4+ICAgIGluY2x1ZGUvbGludXgvbm9kZW1hc2suaCAgICAgICAg
+ICAgICAgICB8ICAxMCArDQo+Pj4gICAgaW5jbHVkZS91YXBpL2FzbS1nZW5lcmljL21tYW4tY29t
+bW9uLmggIHwgICA0ICsNCj4+PiAgICBpbmNsdWRlL3VhcGkvYXNtLWdlbmVyaWMvdW5pc3RkLmgg
+ICAgICAgfCAgIDUgKy0NCj4+PiAgICBpbml0L21haW4uYyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgfCAgIDIgKw0KPj4+ICAgIGtlcm5lbC9mb3JrLmMgICAgICAgICAgICAgICAgICAgICAg
+ICAgICB8ICAgNSArDQo+Pj4gICAga2VybmVsL3N5c19uaS5jICAgICAgICAgICAgICAgICAgICAg
+ICAgIHwgICAyICsNCj4+PiAgICBtbS9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgfCAgMTQgKw0KPj4+ICAgIG1tL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICB8ICAgMSArDQo+Pj4gICAgbW0vZ21lbS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHwgNzQ2ICsrKysrKysrKysrKysrKysrKysrKysrKw0KPj4+ICAgIG1tL2h1Z2VfbWVtb3J5LmMg
+ICAgICAgICAgICAgICAgICAgICAgICB8ICA4NSArKy0NCj4+PiAgICBtbS9tZW1vcnkuYyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgfCAgNDIgKy0NCj4+PiAgICBtbS9tZW1wb2xpY3kuYyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDQgKw0KPj4+ICAgIG1tL21tYXAuYyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICB8ICA0MCArLQ0KPj4+ICAgIG1tL29vbV9raWxsLmMgICAg
+ICAgICAgICAgICAgICAgICAgICAgICB8ICAgMiArDQo+Pj4gICAgbW0vcGFnZV9hbGxvYy5jICAg
+ICAgICAgICAgICAgICAgICAgICAgIHwgICAzICsNCj4+PiAgICBtbS92bV9vYmplY3QuYyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgfCAzMDkgKysrKysrKysrKw0KPj4+ICAgIHRvb2xzL2luY2x1
+ZGUvdWFwaS9hc20tZ2VuZXJpYy91bmlzdGQuaCB8ICAgNSArLQ0KPj4+ICAgIDI0IGZpbGVzIGNo
+YW5nZWQsIDE2NTQgaW5zZXJ0aW9ucygrKSwgMTkgZGVsZXRpb25zKC0pDQo+Pj4gICAgY3JlYXRl
+IG1vZGUgMTAwNjQ0IGluY2x1ZGUvbGludXgvZ21lbS5oDQo+Pj4gICAgY3JlYXRlIG1vZGUgMTAw
+NjQ0IG1tL2dtZW0uYw0KPj4+ICAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBtbS92bV9vYmplY3QuYw0K
+Pj4+DQoNCg==
