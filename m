@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69D1E7FF5D0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Nov 2023 17:32:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 95D207FF7E6
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Nov 2023 18:16:38 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4049010E033;
-	Thu, 30 Nov 2023 16:32:04 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CE77D10E74C;
+	Thu, 30 Nov 2023 17:16:35 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Thu, 30 Nov 2023 16:32:02 UTC
-Received: from mail.toolsmigison.world (unknown [77.83.203.183])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4241310E033
+ Thu, 30 Nov 2023 17:16:32 UTC
+Received: from mail.backsinfospc.click (unknown [77.83.203.193])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E896310E74B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Nov 2023 16:32:02 +0000 (UTC)
+ Thu, 30 Nov 2023 17:16:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=toolsmigison.world; 
+ d=backsinfospc.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=todays-promo-home-depot-exclusive@toolsmigison.world; 
- bh=wKCZfR3VgZJx6ELAZhnlZRK+jqU=;
- b=G2sRqDQXdM/WgkacjHWndUUZSkmTue+j1hrnvY23MbVbO//EzKOldsuDV1BTCmEH54FFouVG7VwA
- eh/9qu5nPZG+MST6V/+oOGpKrVQp0r/tcQfJApae4r1hW2DnVl5PaOzAh0NxlXqNHXzhq14mRNYC
- 6nOihVzxP2prIGQlSuQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsmigison.world; 
- b=sSQBXILEu88+vw3YbU+TiGoz//Q8F8qF+A6dCHV+iK/Tft+kH2Heh0Jh/Y13sNI1IrxqRWm52u8S
- K6IfidfeLjVd1PZL25xipqUsM8gTeTF9ok8mZlN9HbeqnOXqXEYiiHkpK2myagVh65/eM8KZcYIE
- vAl+rOkujbKvUvYYNJM=;
-Received: by mail.toolsmigison.world id hd2sg40001g7 for
+ i=todays.promo.kohls.exclusive@backsinfospc.click; 
+ bh=EguaGb+E7Sz7be3Bz8B6VrK6/XM=;
+ b=V3wkVYEI5gzwsvDC3SCMlpIfaod+AtJZSx6K4778OVggQWZPIJxRRVC4SkyL9U/kPN8AHYg3PTMo
+ qxK8laV0yaSYi10O79IoNokXGLzN8N19hR6gH6lbIPKx78BCfCkKr4Uj87kFj1Vkt4So+L6Jh0OF
+ DQi5HOQUdd+qskbiWOo=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=backsinfospc.click; 
+ b=RWSu40JRj5PeN40hbnUQ65K4lx84pzaElfL2whB+8Ug4xUBbIgYpM7MU6EJUCPQBJksrhKRJCHWv
+ Elrmz2yq9ZAOCHaV2ao2bPej9m3vIq6pd6CNiI1CghE8r5ZKPo+Kzu9yVgY292UjDJ/WNogc5fMB
+ gn3AL/LYjHtN7+WwWVk=;
+Received: by mail.backsinfospc.click id hd31n20001gq for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Nov 2023 11:22:29 -0500 (envelope-from
- <todays-promo-home-depot-exclusive-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsmigison.world>)
-Date: Thu, 30 Nov 2023 11:22:29 -0500
-From: "Todays Promo Home Depot Exclusive."
- <todays-promo-home-depot-exclusive@toolsmigison.world>
+ Thu, 30 Nov 2023 12:07:55 -0500 (envelope-from
+ <todays.promo.kohls.exclusive-intel+2Dgvt+2Ddev=lists.freedesktop.org@backsinfospc.click>)
+Date: Thu, 30 Nov 2023 12:07:55 -0500
+From: "Todays Promo Kohls Exclusive."
+ <todays.promo.kohls.exclusive@backsinfospc.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <5824799747845.17013613363528864@toolsmigison.world>
-Subject: Act Now for Exclusive Home Depot Specials!
+Message-ID: <156463648603.17013640676192498@backsinfospc.click>
+Subject: Quick Survey, Big Rewards: Kohl's Daily Limited-time Offers Await You!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=c3fb85c6726cc9f6e491fbae85ab4c72971039101831002
+ boundary=1da34baa688b75bee480edbbab36510a10049100367
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---c3fb85c6726cc9f6e491fbae85ab4c72971039101831002
+--1da34baa688b75bee480edbbab36510a10049100367
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,168 +64,57 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap');
 	</style> 
-  <title>leisure</title> 
+  <title>Knowledge</title> 
  </head> 
- <body style="font-family: 'Overpass', sans-serif;"> 
-  <section> 
-   <div style="background-color: rgb(243, 243, 243); width: 100%;;"> 
-    <h6 style="padding-top: 40px;">&nbsp;</h6> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <div style="max-width: 33.8rem; margin: auto; background-color: #fff; text-align: center; font-weight: 500;"> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td> 
-             <div> 
-              <section> 
-               <article>
-                &nbsp;
-               </article> 
-              </section> 
-             </div> </td> 
-            <td> 
-             <div> 
-              <section> 
-               <article>
-                &nbsp;
-               </article> 
-              </section> 
-             </div> </td> 
-            <td> 
-             <div> 
-              <section> 
-               <article>
-                &nbsp;
-               </article> 
-              </section> 
-             </div> </td> 
-            <td> 
-             <div> 
-              <section> 
-               <article>
-                &nbsp;
-               </article> 
-              </section> 
-             </div> </td> 
-            <td> 
-             <div> 
-              <section> 
-               <article>
-                &nbsp;
-               </article> 
-              </section> 
-             </div> </td> 
-            <td> 
-             <div> 
-              <section> 
-               <article>
-                &nbsp;
-               </article> 
-              </section> 
-             </div> </td> 
-           </tr> 
-           <tr> 
-            <td align="center" class="llops" colspan="6"> 
-             <div> 
-              <center> 
-               <h2 style="font-size: 22px; font-weight: 700; margin: 0; padding: 15px 0; background-color: rgb(243,96,4); color: white;">A Special Offer Tailored for Our Appreciated Customers</h2> 
-               <center style="max-width: 280px; margin: auto; padding: 30px 0;">
-                <a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled" target="_blank"><img alt="NJS" src="http://www.toolsmigison.world/widowed-Scrooge/c245s23M95X7XaA12z695wct198aN36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQFRKQd7d1RGVw05fPwDW" style="display: block;" width="100%" /></a>
-               </center> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td>&nbsp;</td> 
-                  <td>&nbsp;</td> 
-                  <td>&nbsp;</td> 
-                  <td>&nbsp;</td> 
-                  <td>&nbsp;</td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" colspan="5"> 
-                   <div>
-                    <a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled"><img alt="JUES" src="http://www.toolsmigison.world/e5d4w2395A7aJg11F695du198aG36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQFRKQd5G1j0A6IBl2wD/organizable-polled" style="display: block;" width="100%" /></a>
-                   </div> </td> 
-                 </tr> 
-                 <tr> 
-                  <td> 
-                   <center>
-                    &nbsp;
-                   </center> </td> 
-                  <td> 
-                   <center>
-                    &nbsp;
-                   </center> </td> 
-                  <td> 
-                   <center>
-                    &nbsp;
-                   </center> </td> 
-                  <td> 
-                   <center>
-                    &nbsp;
-                   </center> </td> 
-                  <td> 
-                   <center>
-                    &nbsp;
-                   </center> </td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" class="tiops" colspan="5"> 
-                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center"> 
-                       <center> 
-                        <p style="margin: 0; padding: 2.5% 6%; line-height: 28px; font-size: 18px; font-weight: 500;">The Home Depot seizes this moment to convey our heartfelt thanks for selecting us as your home improvement retailer.<br /> <br /> As part of our dedication to ensuring the utmost satisfaction, we encourage you to take part in a short survey regarding your recent and overall experience with The Home Depot. Your feedback is greatly appreciated, and as a token of our gratitude for sharing your thoughts, we would like to extend a gesture of thanks.</p> &nbsp; 
-                        <table align="center" border="0" cellpadding="15px" cellspacing="0" style="border-collapse: collapse; padding-top: 0px; padding-bottom: 0px;" width="280px"> 
-                         <tbody> 
-                          <tr> 
-                           <td align="center" class="lolse" width="120px"><a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled"><img alt="MKS" src="http://www.toolsmigison.world/drawings-chartable/bca4n2395Q7paw12R69K5eK198ai36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQFRKQd6w1__0w6CzqwD@" style="display: block;" width="100%" /></a></td> 
-                           <td class="lolse" width="130px"><a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled"><img alt="MNSE" src="http://www.toolsmigison.world/a7f5iv2395K_7aK12ul695fO198at36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQFRKQd7eQ1M0HV6c00wD1/archeological-adultery" style="display: block;" width="100%" /></a></td> 
-                          </tr> 
-                         </tbody> 
-                        </table> &nbsp; 
-                        <div> 
-                         <h4 style="margin: 0; padding: 2.5% 6%; line-height: 28px; font-size: 18px; font-weight: 500;"><strong>After completing the survey, you are eligible to receive a $100 Gift!</strong></h4> 
-                         <table align="center" class="infotecs"> 
-                          <tbody> 
-                           <tr> 
-                            <td align="center"> 
-                             <blockquote style="padding: 13px 35px; border-radius: 5px; background-color: rgb(223,110,7); font-weight: bold; ;">
-                              <a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled" style="text-decoration: none; color: white;" target="_blank">TAKE THE SURVEY </a>
-                             </blockquote> </td> 
-                           </tr> 
-                          </tbody> 
-                         </table> &nbsp; 
-                         <hr /> 
-                         <h3 style="margin: 0; padding: 2.5% 6%; line-height: 28px; font-size: 18px; font-weight: 500;">Thanks once more for your support. We anticipate hearing from you soon. Warm regards,<br /> <strong>The Home Depot Survey Team</strong></h3> 
-                        </div> 
-                       </center> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-              </center> 
-             </div> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-        </div> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <h6 style="padding-top: 40px;">&nbsp;</h6> 
+ <body style="font-family: 'Prompt', sans-serif;"> 
+  <div> 
+   <div> 
+    <div> 
+     <div style="background-color: rgb(53, 53, 53); max-width: 545px; margin: auto; text-align: center; padding: 15px 0;"> 
+      <center style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; letter-spacing: 2px; font-size: 50px;">
+       <a href="http://www.backsinfospc.click/5ed4K2395U8F6x12i6X961k198bZ36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQARKQQ5S1IA06Ky0wDy/Indochina-colonist" style="text-decoration: none; color: white;">KOHL'S</a>
+      </center> 
+     </div> 
+    </div> 
+    <center style="background-color: rgb(235, 235, 235); width: 100%;"> 
+     <div style="max-width: 545px; margin: auto; text-align: center; background-color: #fff;"> 
+      <div> 
+       <h4 style="margin: 0; padding: 45px 45px ; line-height: 28px; font-size: 17px; font-weight: 500;">Get ready for an exclusive deal! Kohl's is presenting you with the chance to own a Ninja Air Fryer at our retail locations!<br /> <br /> Act on this opportunity now! You have until November 30th to obtain these thrilling</h4> 
+       <div style="max-width: 450px; margin: auto;"> 
+        <center style="background-color: rgb(53, 53, 53); font-size: 20px; font-weight: 700; padding: 18px 28px;">
+         <a href="http://www.backsinfospc.click/5ed4K2395U8F6x12i6X961k198bZ36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQARKQQ5S1IA06Ky0wDy/Indochina-colonist" style="text-decoration: none; color: white;" target="_blank">Start The Survey Here &gt; &gt; </a>
+        </center> 
+       </div> 
+       <div> 
+        <blockquote style="max-width: 350px; margin: auto;">
+         <a href="http://www.backsinfospc.click/5ed4K2395U8F6x12i6X961k198bZ36MbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQARKQQ5S1IA06Ky0wDy/Indochina-colonist"><img alt="isjes" src="http://www.backsinfospc.click/9356m239TO5zFj7a13Q6963DUL198bi36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQARKQQ7oGhV1j06zLw@DO/epitaxial-reflects" style="display: block;" width="100%" /></a>
+        </blockquote> 
+       </div> 
+      </div> 
+      <center style="font-weight: bold; font-size: 18px;">
+       Thank you in advance,
+       <br /> The Kohl' s Team
+      </center> 
+      <br /> &nbsp;
+     </div> 
+     <br /> 
+     <br /> &nbsp; 
+     <div style="background-color: rgb(53, 53, 53); padding: 20px 0;"> 
+      <div style="max-width: 520px; text-align: center; font-size: 12px; line-height: 20px; color: white;">
+       are you ready leave? do it 
+       <a href="http://www.backsinfospc.click/e995h239N5p8UD611R6962p198bY36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQARKQQ6asu10k5M0LwD/homosexual-plainest" style="color: aqua;">here</a>
+       <br /> US 10010 126 E 23rd St New York, NY,
+      </div> 
+     </div> 
+     <br /> 
+     <br /> &nbsp;
+    </center> 
    </div> 
-  </section>   
- <img src="http://www.toolsmigison.world/drawings-chartable/bca5z2m395Usm8512c6N960C198az36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQFRKQd7pqTVt106U@wLkD" alt=""/></body>
+  </div>   
+ <img src="http://www.backsinfospc.click/de55nU2395W8K5Y12H6q964q198bM36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQARKQQ5c1Gs05zlwD3/penal-concretes" alt=""/></body>
 </html>
 
---c3fb85c6726cc9f6e491fbae85ab4c72971039101831002--
+--1da34baa688b75bee480edbbab36510a10049100367--
 
