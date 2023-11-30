@@ -2,130 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9FCD7FF2F5
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Nov 2023 15:55:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 69D1E7FF5D0
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 Nov 2023 17:32:05 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 814B410E00C;
-	Thu, 30 Nov 2023 14:55:36 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4049010E033;
+	Thu, 30 Nov 2023 16:32:04 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3177B10E00C
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Thu, 30 Nov 2023 16:32:02 UTC
+Received: from mail.toolsmigison.world (unknown [77.83.203.183])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4241310E033
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Nov 2023 14:55:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1701356133;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=3MkX9L260VE1IDa1iNZ8qTYd7MmlC3YR6eBZVWebvRs=;
- b=S1crRjjG9TNYL6I4NP8eO4V/Ulf3avYLdRRU9sVIVJRiatyF/hcx/Rr3QaHi7UcL61ZO+L
- Sgyc6esqCxKDfqp4JAq48YvOpm3UOO8CjUx0wXiFMTw3YIqGWUbrUS2YKISXS85HEVTKVC
- 5wUQO7fptgRHh7exdgwsQ7aioep7MQs=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-192-DDWEsFEXPaCXtRhUTvKVAQ-1; Thu, 30 Nov 2023 09:55:31 -0500
-X-MC-Unique: DDWEsFEXPaCXtRhUTvKVAQ-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-333019151b2so915026f8f.2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 30 Nov 2023 06:55:31 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701356130; x=1701960930;
- h=content-transfer-encoding:in-reply-to:organization:autocrypt:from
- :references:cc:to:content-language:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3MkX9L260VE1IDa1iNZ8qTYd7MmlC3YR6eBZVWebvRs=;
- b=n+6ZMXDT7Yd+eksf4N5rgfbgjd6kDkzuuGFxSchDMAQvnb+QE2smQrnvO0fKIBHV/g
- 8EplKd+MoJZ73aodyDeQaMacEBJSTw3bs3DmXVmSYb3QrgMmtL2JipgBzfA1swI2Vf8d
- RuiBdkBjDTrxsn+LGT7YYRbgdRbd6gLbhAJ9+pTAJgQsbo9BxqDLSgr3mam7sAl/eOSN
- hhu/joRrHUPJx1NRNp728amBT3aAyIS1xwjwBQmzsZs1YEJeU4TeiuzX+Vgg3AqMVL5f
- nptDY8caUr3rslxdqWgWfjjm9q+s6Rf/Y4ACgp68M76u2FIzpEzCjRLU7J96jJJYoSRw
- aQYw==
-X-Gm-Message-State: AOJu0Yz8YqHZwaMlhgvqHXHPWIS+1HLrTOXsBt7lGntrwvj4s+GreWza
- QlJPVOMMsMv6JVq96u+Qa/1ILmraELKsHurVjGwhaWFSsgmHxRTbQm5RCWRqqLu1tYDF0AbHEJJ
- QYa3ybHUJFfSTqDASTn68n23hfxJHZxw/RA==
-X-Received: by 2002:adf:e410:0:b0:333:1fb9:530f with SMTP id
- g16-20020adfe410000000b003331fb9530fmr1857459wrm.55.1701356130555; 
- Thu, 30 Nov 2023 06:55:30 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE/mbXc17N7kGIlfoFDWdWhHcYQvNgKifG5gmiCc+p4oYAIyO9zLG8EdZ5/OaxBiny4fUE88A==
-X-Received: by 2002:adf:e410:0:b0:333:1fb9:530f with SMTP id
- g16-20020adfe410000000b003331fb9530fmr1857444wrm.55.1701356130160; 
- Thu, 30 Nov 2023 06:55:30 -0800 (PST)
-Received: from ?IPV6:2a09:80c0:192:0:5dac:bf3d:c41:c3e7?
- ([2a09:80c0:192:0:5dac:bf3d:c41:c3e7])
- by smtp.gmail.com with ESMTPSA id
- p8-20020adfcc88000000b0032f9688ea48sm1732045wrj.10.2023.11.30.06.55.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Nov 2023 06:55:29 -0800 (PST)
-Message-ID: <188814aa-4f55-40c6-961c-6105c89d76f3@redhat.com>
-Date: Thu, 30 Nov 2023 15:55:28 +0100
+ Thu, 30 Nov 2023 16:32:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=toolsmigison.world; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=todays-promo-home-depot-exclusive@toolsmigison.world; 
+ bh=wKCZfR3VgZJx6ELAZhnlZRK+jqU=;
+ b=G2sRqDQXdM/WgkacjHWndUUZSkmTue+j1hrnvY23MbVbO//EzKOldsuDV1BTCmEH54FFouVG7VwA
+ eh/9qu5nPZG+MST6V/+oOGpKrVQp0r/tcQfJApae4r1hW2DnVl5PaOzAh0NxlXqNHXzhq14mRNYC
+ 6nOihVzxP2prIGQlSuQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsmigison.world; 
+ b=sSQBXILEu88+vw3YbU+TiGoz//Q8F8qF+A6dCHV+iK/Tft+kH2Heh0Jh/Y13sNI1IrxqRWm52u8S
+ K6IfidfeLjVd1PZL25xipqUsM8gTeTF9ok8mZlN9HbeqnOXqXEYiiHkpK2myagVh65/eM8KZcYIE
+ vAl+rOkujbKvUvYYNJM=;
+Received: by mail.toolsmigison.world id hd2sg40001g7 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 30 Nov 2023 11:22:29 -0500 (envelope-from
+ <todays-promo-home-depot-exclusive-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsmigison.world>)
+Date: Thu, 30 Nov 2023 11:22:29 -0500
+From: "Todays Promo Home Depot Exclusive."
+ <todays-promo-home-depot-exclusive@toolsmigison.world>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <5824799747845.17013613363528864@toolsmigison.world>
+Subject: Act Now for Exclusive Home Depot Specials!
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/6] Supporting GMEM (generalized memory management)
- for external memory devices
-To: zhuweixi <weixi.zhu@huawei.com>, Dave Airlie <airlied@gmail.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
-References: <20231128125025.4449-1-weixi.zhu@huawei.com>
- <9308a79d-e312-4e6d-98fe-75dc6d0fbeda@amd.com>
- <CAPM=9tx-d-Au_bjX0vYxv6OwqiSjmbbMC7ebWpTsQgFNddWDuw@mail.gmail.com>
- <a07fd33c6f9e44418c528de06f89707e@huawei.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <a07fd33c6f9e44418c528de06f89707e@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/alternative; 
+ boundary=c3fb85c6726cc9f6e491fbae85ab4c72971039101831002
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -138,44 +52,180 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>,
- "leonro@nvidia.com" <leonro@nvidia.com>,
- "apopple@nvidia.com" <apopple@nvidia.com>,
- "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
- "mgorman@suse.de" <mgorman@suse.de>, "ziy@nvidia.com" <ziy@nvidia.com>,
- "zhi.a.wang@intel.com" <zhi.a.wang@intel.com>,
- "rcampbell@nvidia.com" <rcampbell@nvidia.com>,
- "jgg@nvidia.com" <jgg@nvidia.com>,
- "weixi.zhu@openeuler.sh" <weixi.zhu@openeuler.sh>,
- "jhubbard@nvidia.com" <jhubbard@nvidia.com>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "mhairgrove@nvidia.com" <mhairgrove@nvidia.com>,
- "zhenyuw@linux.intel.com" <zhenyuw@linux.intel.com>,
- "jglisse@redhat.com" <jglisse@redhat.com>,
- "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
- "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
- "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>,
- "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
- "Felix.Kuehling@amd.com" <Felix.Kuehling@amd.com>,
- "Xinhui.Pan@amd.com" <Xinhui.Pan@amd.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "alexander.deucher@amd.com" <alexander.deucher@amd.com>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
- "ogabbay@kernel.org" <ogabbay@kernel.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 29.11.23 09:27, zhuweixi wrote:
-> Glad to hear that more sharable code is desirable.
-> IMHO, for a common MM subsystem, it is more beneficial for
-> GMEM to extend core MM instead of building a separate one.
+--c3fb85c6726cc9f6e491fbae85ab4c72971039101831002
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 
-More core-mm complexity, awesome, we all love that! ;)
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
+	</style> 
+  <title>leisure</title> 
+ </head> 
+ <body style="font-family: 'Overpass', sans-serif;"> 
+  <section> 
+   <div style="background-color: rgb(243, 243, 243); width: 100%;;"> 
+    <h6 style="padding-top: 40px;">&nbsp;</h6> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center"> 
+        <div style="max-width: 33.8rem; margin: auto; background-color: #fff; text-align: center; font-weight: 500;"> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td> 
+             <div> 
+              <section> 
+               <article>
+                &nbsp;
+               </article> 
+              </section> 
+             </div> </td> 
+            <td> 
+             <div> 
+              <section> 
+               <article>
+                &nbsp;
+               </article> 
+              </section> 
+             </div> </td> 
+            <td> 
+             <div> 
+              <section> 
+               <article>
+                &nbsp;
+               </article> 
+              </section> 
+             </div> </td> 
+            <td> 
+             <div> 
+              <section> 
+               <article>
+                &nbsp;
+               </article> 
+              </section> 
+             </div> </td> 
+            <td> 
+             <div> 
+              <section> 
+               <article>
+                &nbsp;
+               </article> 
+              </section> 
+             </div> </td> 
+            <td> 
+             <div> 
+              <section> 
+               <article>
+                &nbsp;
+               </article> 
+              </section> 
+             </div> </td> 
+           </tr> 
+           <tr> 
+            <td align="center" class="llops" colspan="6"> 
+             <div> 
+              <center> 
+               <h2 style="font-size: 22px; font-weight: 700; margin: 0; padding: 15px 0; background-color: rgb(243,96,4); color: white;">A Special Offer Tailored for Our Appreciated Customers</h2> 
+               <center style="max-width: 280px; margin: auto; padding: 30px 0;">
+                <a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled" target="_blank"><img alt="NJS" src="http://www.toolsmigison.world/widowed-Scrooge/c245s23M95X7XaA12z695wct198aN36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQFRKQd7d1RGVw05fPwDW" style="display: block;" width="100%" /></a>
+               </center> 
+               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                <tbody> 
+                 <tr> 
+                  <td>&nbsp;</td> 
+                  <td>&nbsp;</td> 
+                  <td>&nbsp;</td> 
+                  <td>&nbsp;</td> 
+                  <td>&nbsp;</td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" colspan="5"> 
+                   <div>
+                    <a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled"><img alt="JUES" src="http://www.toolsmigison.world/e5d4w2395A7aJg11F695du198aG36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQFRKQd5G1j0A6IBl2wD/organizable-polled" style="display: block;" width="100%" /></a>
+                   </div> </td> 
+                 </tr> 
+                 <tr> 
+                  <td> 
+                   <center>
+                    &nbsp;
+                   </center> </td> 
+                  <td> 
+                   <center>
+                    &nbsp;
+                   </center> </td> 
+                  <td> 
+                   <center>
+                    &nbsp;
+                   </center> </td> 
+                  <td> 
+                   <center>
+                    &nbsp;
+                   </center> </td> 
+                  <td> 
+                   <center>
+                    &nbsp;
+                   </center> </td> 
+                 </tr> 
+                 <tr> 
+                  <td align="center" class="tiops" colspan="5"> 
+                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center"> 
+                       <center> 
+                        <p style="margin: 0; padding: 2.5% 6%; line-height: 28px; font-size: 18px; font-weight: 500;">The Home Depot seizes this moment to convey our heartfelt thanks for selecting us as your home improvement retailer.<br /> <br /> As part of our dedication to ensuring the utmost satisfaction, we encourage you to take part in a short survey regarding your recent and overall experience with The Home Depot. Your feedback is greatly appreciated, and as a token of our gratitude for sharing your thoughts, we would like to extend a gesture of thanks.</p> &nbsp; 
+                        <table align="center" border="0" cellpadding="15px" cellspacing="0" style="border-collapse: collapse; padding-top: 0px; padding-bottom: 0px;" width="280px"> 
+                         <tbody> 
+                          <tr> 
+                           <td align="center" class="lolse" width="120px"><a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled"><img alt="MKS" src="http://www.toolsmigison.world/drawings-chartable/bca4n2395Q7paw12R69K5eK198ai36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQFRKQd6w1__0w6CzqwD@" style="display: block;" width="100%" /></a></td> 
+                           <td class="lolse" width="130px"><a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled"><img alt="MNSE" src="http://www.toolsmigison.world/a7f5iv2395K_7aK12ul695fO198at36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQFRKQd7eQ1M0HV6c00wD1/archeological-adultery" style="display: block;" width="100%" /></a></td> 
+                          </tr> 
+                         </tbody> 
+                        </table> &nbsp; 
+                        <div> 
+                         <h4 style="margin: 0; padding: 2.5% 6%; line-height: 28px; font-size: 18px; font-weight: 500;"><strong>After completing the survey, you are eligible to receive a $100 Gift!</strong></h4> 
+                         <table align="center" class="infotecs"> 
+                          <tbody> 
+                           <tr> 
+                            <td align="center"> 
+                             <blockquote style="padding: 13px 35px; border-radius: 5px; background-color: rgb(223,110,7); font-weight: bold; ;">
+                              <a href="http://www.toolsmigison.world/9e96r239pY5r8L6O12Y6X95bz198ak36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQFRKQd5MoH105DUlwD/organizable-polled" style="text-decoration: none; color: white;" target="_blank">TAKE THE SURVEY </a>
+                             </blockquote> </td> 
+                           </tr> 
+                          </tbody> 
+                         </table> &nbsp; 
+                         <hr /> 
+                         <h3 style="margin: 0; padding: 2.5% 6%; line-height: 28px; font-size: 18px; font-weight: 500;">Thanks once more for your support. We anticipate hearing from you soon. Warm regards,<br /> <strong>The Home Depot Survey Team</strong></h3> 
+                        </div> 
+                       </center> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> </td> 
+                 </tr> 
+                </tbody> 
+               </table> 
+              </center> 
+             </div> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+        </div> </td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <h6 style="padding-top: 40px;">&nbsp;</h6> 
+   </div> 
+  </section>   
+ <img src="http://www.toolsmigison.world/drawings-chartable/bca5z2m395Usm8512c6N960C198az36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQFRKQd7pqTVt106U@wLkD" alt=""/></body>
+</html>
 
--- 
-Cheers,
-
-David / dhildenb
+--c3fb85c6726cc9f6e491fbae85ab4c72971039101831002--
 
