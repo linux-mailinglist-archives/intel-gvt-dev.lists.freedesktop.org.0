@@ -1,47 +1,36 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5851800CCA
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Dec 2023 15:01:53 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3646C800D9D
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Dec 2023 15:46:11 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 70EA710E8B0;
-	Fri,  1 Dec 2023 14:01:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E150810E8B3;
+	Fri,  1 Dec 2023 14:46:09 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 472 seconds by postgrey-1.36 at gabe;
- Fri, 01 Dec 2023 14:01:49 UTC
-Received: from mail.trackscoffesinf.world (unknown [77.83.203.218])
- by gabe.freedesktop.org (Postfix) with ESMTP id 49A1410E8AD
+X-Greylist: delayed 468 seconds by postgrey-1.36 at gabe;
+ Fri, 01 Dec 2023 14:46:07 UTC
+Received: from server.linux98.papaki.gr (server.linux98.papaki.gr
+ [178.63.11.53])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 474F410E8B3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  1 Dec 2023 14:01:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=trackscoffesinf.world; 
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=your_opinions_matter_at_starbucks@trackscoffesinf.world; 
- bh=o7dfR8952PNlFbWHzgpxGCviyBI=;
- b=Oyd99RxaLonDYTNN0abE3GBXZylsQhAAPwdNgb0M+sT0Wud83oAIcsrGiKhuP+gLinHTIhCDPhWB
- ItI2+EdjJlwi227u7DvN1VA6srjgTCR1IpLkM6QJn2Iu9acX1n67S8qtPpSB4bVO2FbxU35zAyPQ
- oCyAtslKsqHfD3cd0nQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=trackscoffesinf.world; 
- b=HeWIPGFUDgCI8N0XdBVzPC7liWvJE6BLWJf07iSG42/+otO3W0QF4b8IhNAvs5crSJ/iyA+T7t0W
- EMaaM9x7dMoePeDE8FF3WWpFEWJHhY5TbBIp120Rz3bYaSn085psYmEv1KCiebaSMXljyy3LEJGe
- mZ3pbUlc/SXiX1CHTj0=;
-Received: by mail.trackscoffesinf.world id hd7jkq0001gn for
- <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 1 Dec 2023 08:50:48 -0500 (envelope-from
- <your_opinions_matter_at_starbucks-intel+2Dgvt+2Ddev=lists.freedesktop.org@trackscoffesinf.world>)
-Date: Fri, 1 Dec 2023 08:50:48 -0500
-From: "Your Opinions Matter At Starbucks"
- <your_opinions_matter_at_starbucks@trackscoffesinf.world>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <10766043744548.1701438637516577@trackscoffesinf.world>
-Subject: Respond for Exclusive Offers: Engage in Starbucks' Quick Feedback
- Survey!
+ Fri,  1 Dec 2023 14:46:07 +0000 (UTC)
+Received: by server.linux98.papaki.gr (Postfix, from userid 10053)
+ id 8E92D2445738; Fri,  1 Dec 2023 16:38:16 +0200 (EET)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: =?utf-8?B?zpHOvc+Ezq/Os8+BzrHPhs6/IM+Ezr/PhTogSSBwcm9taXNlZC4=?=
+X-PHP-Originating-Script: 10053:class.phpmailer.php
+Date: Fri, 1 Dec 2023 16:38:16 +0200
+From: "info@techgrafeio.gr" <info@techgrafeio.gr>
+Message-ID: <17d07b5267925c58f4187cbfa34f408c@www.techgrafeio.gr>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=18c4987f6ed4c53c70116041b2252fd9210044
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+X-PPP-Message-ID: <170144149650.25620.12044219901958619564@server.linux98.papaki.gr>
+X-PPP-Vhost: techgrafeio.gr
+X-Virus-Scanned: clamav-milter 0.103.11 at server.linux98.papaki.gr
+X-Virus-Status: Clean
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,48 +43,16 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: rowInjuro <intel-gvt-dev@lists.freedesktop.org>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---18c4987f6ed4c53c70116041b2252fd9210044
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-
-A SPECIAL OFFER FOR OUR VALUED USERS
-*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
-
-
-STARBUCKS
-
-
-Do you love coffee? Where do you like to have it? Starbucks can be the perfect place to satisfy your coffee cravings. 
-
-Don't miss out on this incredible opportunity! For a limited time, you can win a $100 Starbucks gift card just by completing a short survey.  Enjoy our wide variety of coffees and unique flavors. 
-
-We want to thank you for choosing us as your destination to enjoy coffee.  We value your preference and encourage you to participate in our survey for a chance to win this gift card.  Thank you for your participation and good luck!
-
-
-By taking the survey you might receive a $100 gift card
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.trackscoffesinf.world/a075m23K95Sy86P12o_6975O1994R36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ4RKRd5WtI105V1pwD/etiquette-permeates
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
-
-The Starbucks Survey
-
-*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
-
-To sever email, click_here >>>>> http://www.trackscoffesinf.world/e215z239Z5h86QO11X6976h1994B36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7GQ4RKRd6A1XWv05A02wD/Moors-preparation
-126 E 23rd St New York, NY, US 10010
-
-
-
-<font size="churchyards"></font><style lang="franker"><small></style></small><style dir="interaction"><font title="gateways"><span></span><big></font></big></style><font class="unkindness"></font>
-
---18c4987f6ed4c53c70116041b2252fd9210044--
-
+zpHOus6/zrvOv8+FzrjOtc6vIM6xzr3PhM6vzrPPgc6xz4bOvyDPhM6/z4UgzrzOt869z43OvM6x
+z4TOv8+CIM+Azr/PhSDPg8+EzrXOr867zrHPhM61IM+Dz4TOv869L8+Dz4TOt869IM6kz4POrM67
+zrHPgiDOkc64LiDOlc+FzqzOs86zzrXOu86/z4IgzrzOrc+Dz4kgzqPPhc69zq3Pgc6zzrXOuc6x
+IM6RLs6VLgoKzpHPhc+Ez4wgzrXOr869zrHOuSDOrc69zrEgzrTOuc61z4HOtc+Fzr3Ot8+EzrnO
+us+MIM68zq7Ovc+FzrzOsSDOvM6tz4PPiSBodHRwczovL3d3dy50ZWNoZ3JhZmVpby5nci8gzrHP
+gM+MIM+Ezr/OvS/PhM63zr06CnJvd0luanVybyA8aW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVz
+a3RvcC5vcmc+CgpIaSwgdGhpcyBpcyBKZW5pZmZlci4gSSBhbSBzZW5kaW5nIHlvdSBteSBpbnRp
+bWF0ZSBwaG90b3MgYXMgSSBwcm9taXNlZC4gaHR0cHM6Ly90aW55dXJsLmNvbS95cnpmZHZ5byNr
+NWpOOVYKCg==
