@@ -2,43 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B501801388
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Dec 2023 20:24:38 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE190801480
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Dec 2023 21:31:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3E00B10E946;
-	Fri,  1 Dec 2023 19:24:37 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9B01E10E955;
+	Fri,  1 Dec 2023 20:31:41 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 318 seconds by postgrey-1.36 at gabe;
- Fri, 01 Dec 2023 19:24:30 UTC
-Received: from mail.bromwsdepot.world (unknown [77.83.203.28])
- by gabe.freedesktop.org (Postfix) with ESMTP id CDEB510E947
+X-Greylist: delayed 323 seconds by postgrey-1.36 at gabe;
+ Fri, 01 Dec 2023 20:31:33 UTC
+Received: from mail.grobymartk.click (unknown [77.83.203.134])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6890310E146
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  1 Dec 2023 19:24:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=bromwsdepot.world;
+ Fri,  1 Dec 2023 20:31:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=grobymartk.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=home_depot_alert_win_today@bromwsdepot.world; 
- bh=Gh1UKILGGT6L7OG3ZwqP77667K8=;
- b=czLLI9tgH2b+wYrl0Cil2f7d/C+A0bxTFEHYjQcc4cD4AaZsk/T7bKBGngFsbW7jvp6leXr53h1L
- yAw5cxfxPVLLCznNx/K1GGMbsveye2WmrBcRlXO5OUneyhPCfg4atP5bpfvxg5laMQwzlyUoiay4
- DBNrqkweMokhuH+GkOY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=bromwsdepot.world; 
- b=I0cQsubJqYUigMmbT8VvJYkAKMAozpx8kxpikr28XwXXDUsM7XKLlKAhKNWmHU8d0zson/WgNpEb
- C4YVm5ii+nRZ6qp6RmLSDmFHRA26Pe/kX1CpJMdslfpnvU4csvl/2l3TlB8bkB/K3AvxX2k7JP5f
- nZFGbfnBhPMppeD/9v0=;
-Received: by mail.bromwsdepot.world id hd8peu0001gc for
+ i=quick_walmart_poll_act_fast@grobymartk.click; 
+ bh=cvCVk7DEsEkoKx7A7674lKGd3TE=;
+ b=UPdjR01PG17lDMbPE/MWAKpHDK+89RcojZAUJ7z1nVkl7vJWmuRiVAwXwW0Bg3D597vL2FfYRvEu
+ EWEjIeyXkajBy0akL0Wr9aediZCv4OXibdNo/iToVEB7LMo5WG5mYXC+MwduHnM4INOIyymzGtQg
+ V5frDOHzmRS13335Q/c=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=grobymartk.click;
+ b=B2j3Hje0rtp49ANPae1Xi7vDe2GxIeIzEWZm7dHElmrkFIE06anrynW6vHE34j4L3nhhZyhHANx1
+ t0cJhNpEeuehU+I978EiJBtdVb+i9CQA5AP5MyiaNwmYeTzZwp7C2ju79MHrv65QwDIVRB8daMom
+ 77YyOrCTcbdJuFg5nk0=;
+Received: by mail.grobymartk.click id hd9aim0001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 1 Dec 2023 13:56:58 -0500 (envelope-from
- <home_depot_alert_win_today-intel+2Dgvt+2Ddev=lists.freedesktop.org@bromwsdepot.world>)
-Date: Fri, 1 Dec 2023 13:56:58 -0500
-From: "Home Depot Alert Win Today"
- <home_depot_alert_win_today@bromwsdepot.world>
+ Fri, 1 Dec 2023 16:24:17 -0500 (envelope-from
+ <quick_walmart_poll_act_fast-intel+2Dgvt+2Ddev=lists.freedesktop.org@grobymartk.click>)
+Date: Fri, 1 Dec 2023 16:24:17 -0500
+From: "Quick Walmart Poll Act Fast"
+ <quick_walmart_poll_act_fast@grobymartk.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <5858771830553.17014569370174@bromwsdepot.world>
-Subject: Time-sensitive Promos: Home Depot Deal Alert!
+Message-ID: <167433964845.1701461092007976@grobymartk.click>
+Subject: Walmart's Rapid Survey: Your Pass to Daily Deals!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=75dc4d147f61d4f4ce145c838238945f999859998996100
+ boundary=d2e2655f71ad32e0275bac14ae8601e7767530210028997
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,45 +54,50 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---75dc4d147f61d4f4ce145c838238945f999859998996100
+--d2e2655f71ad32e0275bac14ae8601e7767530210028997
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR VALUED CUSTOMERS
------------------------------------------
+A SPECIAL OFFER FOR OUR VALUED CUSTOMERS
+
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+Walmart
+
+Looking for the ultimate shopping destination for your family's needs? 
+Look no further than Walmart, where we offer a diverse range of products 
+to meet all your requirements. 
+
+Don't miss this fantastic opportunity! For a limited time, you have the 
+chance to win a $100 Walmart gift card by completing a brief survey.  
+Explore our vast selection of quality goods and unbeatable prices. 
+
+We want to express our gratitude for choosing Walmart as your go-to 
+shopping destination.  Your preference means the world to us, and we 
+invite you to participate in our survey for a shot at winning this 
+exclusive gift card.  Thank you for your continued loyalty and best of luck!
 
 
-The Home Depot
-
-
-The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer. 
-
-
-As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-For completing the survey, you can receive a $100 Gift!
-
-
+By completing the survey, you could receive a $100 gift card
 
 TAKE THE SURVEY >>>>>
-http://www.bromwsdepot.world/Socrates-quadrillion/9365z239Y5h8Mi612fH6981D199aT36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQFRKSm6fKk1B06jy0wDl
+http://www.grobymartk.click/7cd5S239g5L8y6r11i6983q199bq36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQMRKSn7r1JMJ0R6BTw3DU/Camilla-voluntarily
 
 
 
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
-
-The Home Depot Survey
-
------------------------------------------
-
-To modify your email choices, click_here >>>>> http://www.bromwsdepot.world/8f95j239G5fg86i12h6982hh199aM36ebrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQFRKSm6vlW1n06C@wDMT/Socrates-quadrillion
-126 E 23rd St New York, NY, US 10010
 
 
+Thank you once again for your ongoing support.  We eagerly await your feedback and look forward to serving you with unbeatable value! Warm regards. 
 
-<font color="respectably"></font><style dir="asynchronism"></style><span id="decal"></span><font face="leftward"></font><font></font><big></big><style></style>
+Walmart Survey
 
---75dc4d147f61d4f4ce145c838238945f999859998996100--
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+
+more than welcome to leave in here >>> we' ll miss
+http://www.grobymartk.click/deterring-hinges/dc86D2gy395AHg8612qw6984K199bS36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQMRKSn6V10qUg5nWwD2
+you US 10010 126 E 23rd St New York, NY,
+
+--d2e2655f71ad32e0275bac14ae8601e7767530210028997--
 
