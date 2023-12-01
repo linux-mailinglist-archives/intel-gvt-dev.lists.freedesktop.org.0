@@ -1,60 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15C6B800FE2
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Dec 2023 17:17:20 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id F035E800ED7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Dec 2023 16:53:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7B99A10E096;
-	Fri,  1 Dec 2023 16:17:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C17DE10E02C;
+	Fri,  1 Dec 2023 15:53:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com
- [IPv6:2607:f8b0:4864:20::102d])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 2C42310E0FE
+X-Greylist: delayed 312 seconds by postgrey-1.36 at gabe;
+ Fri, 01 Dec 2023 15:53:34 UTC
+Received: from mail.glowsinfofly.click (unknown [77.83.203.230])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6F22810E02C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  1 Dec 2023 16:17:16 +0000 (UTC)
-Received: by mail-pj1-x102d.google.com with SMTP id
- 98e67ed59e1d1-2839b922c18so2071879a91.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 01 Dec 2023 08:17:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701447435; x=1702052235; darn=lists.freedesktop.org;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cr7cM7fO34/EWWCirV2MEFZOqmdwL2yQHbgrxe1S29E=;
- b=RCykNUy6BO4wXk27z706uoDFH77uJWuQ96+NMeYDoj0XV5o0GYPgofNq1kE1ZDpJ+x
- PXBA07gvw+iOGiDG4J761Yx1tK+nriQjc2fMVh0i1CfRZmMF7co/rxl3cpA8wr3FXYAt
- DDfid/yqUKhwNHb6XT1lmTIk/iKpH30n5cJLNvRP2YKZJQN0ObHLu4PgJMRxw/6vkbGB
- lAzagpgZM/ICyMv3nEw66XKcqmeYbkxEBvyn7oBftqsA5wPCBDwMe/TDfPXDeZ9R4zex
- cZr6IEAU7Jse9fupslgKXvgYAn7WizQo8Az8Zops11HyLCXh4d4rQVc7bjxHlPuisChO
- 6lxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701447435; x=1702052235;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cr7cM7fO34/EWWCirV2MEFZOqmdwL2yQHbgrxe1S29E=;
- b=Hdou89WFQ6n2WuHFhLIrJeTpxlh8T3F6SaLFVGxLSSlQLOZ0RbPcqLTmpM6Gkh1nFL
- aei/Oz1SNKVK749Y1/J7VCJdiWjZXouwXvw3jqifJMdoS0MGpWOluOQUy1b4Y5Lwj4pS
- UiiDUSqYphcrjdnbRCyZl7SLgKfidViHthsa39AK4LkIM9JBKdUVpBHZR408jWT7hlJ5
- SpXE86qdMdYMEBoqpT1+fEAEpGY7/eAhBxWeyw9IbRJAZ5coTubvh2OMBQ6UhFVkgNpN
- Ezppld6E+iZsOKLomgYc3YTQRkiM3ukGaqFzwQm2/JtPrTwYykeKQ/32UUgT4F1kXP7I
- jJIg==
-X-Gm-Message-State: AOJu0YzMotCKJLy0vtnOeQ7D5t6MepqubbSggbSgIdVMQwKL437M2CL6
- cvmz2CKCwx2eThBzb0K/IMcTIPzDCezfN9inNuQ=
-X-Google-Smtp-Source: AGHT+IESiN+z5JcDYJIRaEwT3+FCAoNN+76pPjehRDwjBNdNYBEN2TGE7eyWNWkd9P7WxGbhL+rpDlPJAd1/3lgdAac=
-X-Received: by 2002:a17:90a:1910:b0:281:d55:6fe8 with SMTP id
- 16-20020a17090a191000b002810d556fe8mr21385198pjg.24.1701447435056; Fri, 01
- Dec 2023 08:17:15 -0800 (PST)
+ Fri,  1 Dec 2023 15:53:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=glowsinfofly.click; 
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
+ i=times.ticking.united.bonus@glowsinfofly.click; 
+ bh=zQoR4ztrpb0cgSGEvi2qge9KFe4=;
+ b=j/rfmEE/1uNOCIm5PTYPlFoqQDEIRhhYo8mdMXG3FayOcZsEOHpkS0ajYYY5rAji2G42nVP6oq+7
+ w1ya0O3PRDpAt6KM1c2IDUwRBd7qTEuTRbybRvUBM7fgOnKS7dGIgXqic3wIR11/CDUrQe4+W85/
+ Dhxq4AhnOjizZ+5/Jvw=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=glowsinfofly.click; 
+ b=sXBXXw4gkEsutGJeLTQF5+H8txUQ8g7oD6vtGkYDiIF9AZ41T69BkKRweFcP4YIsaUO52RjDda1z
+ zTYHXqsa6pFll9+W22gtJqLyP90tULzDz0zBd4tACaL/K5/JzfBkyebfMwaI1glyRWIpI1a14toZ
+ MD2DFAeB4ZG1Z3p3qE0=;
+Received: by mail.glowsinfofly.click id hd8a080001g7 for
+ <intel-gvt-dev@lists.freedesktop.org>;
+ Fri, 1 Dec 2023 11:54:30 -0500 (envelope-from
+ <times.ticking.united.bonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@glowsinfofly.click>)
+Date: Fri, 1 Dec 2023 11:54:30 -0500
+From: "Times Ticking United Bonus."
+ <times.ticking.united.bonus@glowsinfofly.click>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Message-ID: <19347855169715.17014449217115753@glowsinfofly.click>
+Subject: Participate in United Airlines' Quick Survey for Exclusive Day Deals!
 MIME-Version: 1.0
-Received: by 2002:a05:7301:108c:b0:fc:727:2c9d with HTTP; Fri, 1 Dec 2023
- 08:17:14 -0800 (PST)
-From: "Mr. Joseph Ben." <michaelwilliam353djj@gmail.com>
-Date: Fri, 1 Dec 2023 08:17:14 -0800
-Message-ID: <CAO-dGFmLKJRskR8-cvAPLgctsAqNWmQQitno4gbJSZFA8KFPFQ@mail.gmail.com>
-Subject: Attention Dear Customer,
-To: undisclosed-recipients:;
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/alternative; 
+ boundary=219fbaa7fc47d5cfd43730a738f6aef910289845999978981
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,38 +52,47 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: officialoffice20203@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Attention Dear Customer,
+--219fbaa7fc47d5cfd43730a738f6aef910289845999978981
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-In a recent meeting held with the new Elect President And FBI Director
-concerning debt reconciliation, this is to inform you that we have
-agreed to
-release your fund worth ($5.8 million) which will come via Global
-Automatic Teller Machine debit master Card as instructed from our
-headquarter by Christopher Wray.
-Director of the Federal Bureau of Investigation (FBI).
+A Special Offer for Valued Customers
+-------------------------------------------
 
-I will clearly inform you that after the meeting we had with the FBI
-director Mr. Christopher Wray, we have agreed to release your fund
-worth ($5.8 million) via Global Automatic Teller Machine debit master
-Card.
+United Airlines 
 
-However, the below information is needed as to enable the profiling of
-your ATM card and its delivery to you:
+We wanted to take a moment to thank you for choosing United Airlines for your travel needs.  Your loyalty and support mean the world to them, and they are grateful for the opportunity to serve you. 
 
-1. Full Name:
-2. Age\Occupation:
-3. Phone Number:
-4. delivering Address:
-Contact Email..officialoffice20203@gmail.com
+As part of their commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent flight and overall experience with United Airlines.  Your feedback is incredibly important to them, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
-Once we receive this required address, we will proceed the delivery
-without delay.
-Contact Person: Mr. Ben
 
-Thank you.
-Mr. Ben
-FBI General Director Washington DC USA.
+For completing the survey, you can receive a $100 Gift!
+
+
+To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
+
+
+
+TAKE THE SURVEY >>>>>
+http://www.glowsinfofly.click/8094H2395m8y6v13l697K9nQ1996I36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQJRKRR7P10Q_Hj6z1wWTD/confinements-plague
+
+
+
+Thank you again for your support.  We look forward to hearing from you soon Warm regards
+
+
+The United Airlines Survey
+
+-------------------------------------------
+
+
+No longer want to receive e-mail from us?, click_here >>>>> http://www.glowsinfofly.click/insures-coupling/5ee5J2z395O8iU611e697aw1996S36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQJRKRR5A1Bv06mljXwD
+126 E 23rd St New York, NY, US 10010
+
+<span size="Karamazov"></span><font class="smasher"></font><big></big><font></font><span><span></span><span color="revolutionize"></span><big></big></span><small></small><font title="reformat"></font><small></small>
+
+--219fbaa7fc47d5cfd43730a738f6aef910289845999978981--
+
