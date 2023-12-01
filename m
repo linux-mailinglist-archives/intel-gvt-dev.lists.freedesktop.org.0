@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3F18800B07
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Dec 2023 13:36:35 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3261800B7C
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  1 Dec 2023 14:12:37 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 93B9110E859;
-	Fri,  1 Dec 2023 12:36:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1F80F10E85A;
+	Fri,  1 Dec 2023 13:12:36 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Fri, 01 Dec 2023 12:36:32 UTC
-Received: from mail.blockspacks.click (unknown [77.83.203.200])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8C4FA10E859
+ Fri, 01 Dec 2023 13:12:30 UTC
+Received: from mail.infoclowup.click (unknown [77.83.203.211])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 7FA0910E871
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  1 Dec 2023 12:36:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=blockspacks.click;
+ Fri,  1 Dec 2023 13:12:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=infoclowup.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=your_say_fedex@blockspacks.click; 
- bh=EABCLudHfSDX4cKF97pMJIEIA1s=;
- b=ly2Oyw82MZR05kpVx8/hgsIdD+DOb0XetgTIBEabHAg6qBGdirNcUY/q8GXqc6H2ULDA/27SX2Wf
- hwvYF73MUU/buGI8Fny4k5pOzfFV5veQY9wo4pE9SWrVmAlZKyFap664/jHcBG0NTE+PzsorDE9+
- 0jM5KIJDyPWCmYhTjI8=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=blockspacks.click; 
- b=crrVsraI63Y3QYAshxfwAwyPvWeXq2NjwEu2S7ZUdnhHXpQboaPCmO1i7eMnMlc93IAd7erkjcSU
- cSIiacL2rUGyHl6w73sHUpiZ5vcASRF9oyPy33A43kFmIHFnNmQsw4jYbAdW+2i+x7XsjyP1001A
- yJadlR4Tg3BdkGLdAQ0=;
-Received: by mail.blockspacks.click id hd79l00001gm for
+ i=exclusive_ups_survey_act_now@infoclowup.click; 
+ bh=d514YunpUcUDoQgEueL130Ldves=;
+ b=JvSA9JuIuUW6XwBggMfgPPQY9nbtTzie/fjIay0pocxZaCgW08Trqn6dnAD3LF6rWUNzRGwdPsl5
+ YbU+ORaIvkuy/PZfdzQV8KwkF5lktmHFqi3RJlYXIXO/JKMx2kFSHdeC2uQUjjRAZ8YlN1PDgVM3
+ nhmxR6yu11zSW4ByGS8=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=infoclowup.click;
+ b=E3NGCM0PkXyU8kvapI8ewU5MoxwzYlq+TioAEGAxyj1s93Meo6FCU3MXSeO9Lfw4MvRs3frb1/1N
+ 8m5JmVqtN3rq11aZp0+cWY5yVyfKRPEcA4NnEpfCp2CaMGeMmwfdFwbmjlDfpbhwjJ2PUBYBH0i+
+ R7K2Qs4ArtQo/0KBgLs=;
+Received: by mail.infoclowup.click id hd7drs0001g0 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 1 Dec 2023 07:28:03 -0500 (envelope-from
- <your_say_fedex-intel+2Dgvt+2Ddev=lists.freedesktop.org@blockspacks.click>)
-Date: Fri, 1 Dec 2023 07:28:03 -0500
-From: "Your Say FedEx" <your_say_fedex@blockspacks.click>
+ Fri, 1 Dec 2023 08:03:25 -0500 (envelope-from
+ <exclusive_ups_survey_act_now-intel+2Dgvt+2Ddev=lists.freedesktop.org@infoclowup.click>)
+Date: Fri, 1 Dec 2023 08:03:25 -0500
+From: "Exclusive UPS Survey Act Now"
+ <exclusive_ups_survey_act_now@infoclowup.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <20327126987297.170143366498485@blockspacks.click>
-Subject: FedEx Countdown: Limited-Time Survey,
- Daily Promos - Share Your Thoughts Now!
+Message-ID: <323852731439.1701435787484835@infoclowup.click>
+Subject: UPS Survey Sensation: Time-Limited, Daily Promos - Your Feedback,
+ Your Rewards!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=5af142e35d5424637776207892faa0d39610198681035
+ boundary=cc4f116344e9ca3051dbeff7efe5e05e934
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,43 +55,39 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---5af142e35d5424637776207892faa0d39610198681035
+--cc4f116344e9ca3051dbeff7efe5e05e934
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-Fedex
+A Special Offer for Valued Customers
+---------------------------------------------
 
-*********************************************
+UPS
 
+We wanted to take a moment to thank you for choosing UPS for your shipping needs.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
 
-We want to express our gratitude for choosing FedEx as your preferred shipping 
-service.  Your loyalty and support are sincerely valued, and we cherish the chance 
-to be of service to you. 
-
-Your selection of FedEx as your preferred shipping partner is greatly acknowledged.  
-Your loyalty and support are of immense importance to us, and we hold the opportunity 
-to serve you in high regard. 
+As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
 
 
-After completing the survey, you may qualify for a $100 gift!
+For completing the survey, you can receive a $100 Gift!
 
 
-To start the survey, simply click on the link below.  It's a quick task that will 
-require just a few minutes of your time, and rest assured that your responses will 
-remain confidential. 
+To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
 
 
-Start Here Now >>
-http://www.blockspacks.click/customized-times/1f24G2395f86_D11R6971i1992n36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQMRKRo6zk1GM06eyMwDW
 
-Your support is greatly appreciated, and we eagerly anticipate your response.  Warm regards. 
+TAKE THE SURVEY >>>>>
+http://www.infoclowup.click/5396no239y5W8Jx611K6973S1993P36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQHRKR96f1J0yX5yzPwD/pricking-pursed
 
 
-*********************************************
+Thank you again for your support.  We look forward to hearing from you soon Warm regards,
 
-another day to leave here >>>
-http://www.blockspacks.click/8f96PK239x5d86JI12ux6972i1992D36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQMRKRo7C1BT0xV5YNwD0/apprehensible-pushed
+The UPS Survey Team
+
+---------------------------------------------
+another day to leave here >>>>
+http://www.infoclowup.click/c5f6aWL2395G8o6H12nx6974x1993U36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQHRKR97qG10ytV6qkWwlD/bearable-pinkest
 US 10010 126 E 23rd St New York, NY,
 
---5af142e35d5424637776207892faa0d39610198681035--
+--cc4f116344e9ca3051dbeff7efe5e05e934--
 
