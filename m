@@ -1,46 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA6CF801D0E
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Dec 2023 14:37:40 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AD12801D66
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Dec 2023 15:51:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id DB78610E234;
-	Sat,  2 Dec 2023 13:37:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 49F0810E1EB;
+	Sat,  2 Dec 2023 14:51:15 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 473 seconds by postgrey-1.36 at gabe;
- Sat, 02 Dec 2023 13:37:26 UTC
-Received: from mail.gomcinfodona.click (unknown [77.83.203.168])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6D31310E080
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Sat, 02 Dec 2023 14:51:03 UTC
+Received: from mail.banksattinfocs.click (unknown [77.83.203.198])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6E08F10E080
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  2 Dec 2023 13:37:26 +0000 (UTC)
+ Sat,  2 Dec 2023 14:50:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=gomcinfodona.click; 
+ d=banksattinfocs.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=limited.time.mcdonalds.promo.survey@gomcinfodona.click; 
- bh=6ZTPD9ltJ2v7V0swJ8iRsSG+Hc4=;
- b=jDbCR5ue1hgkitpXa7cpaseXuAsbFGB8BsG7B/5tdLFiUlJJXBQI4RpMAdzzT3iK7MCGLU/FezJI
- yZYYbM4MUsSlDOVPwGMLa1wJITfMOsOar6mYyYP6YLsVYP8zuoFyFAgZSLJb3UlH3veVeVX4aCGQ
- QF6D8nouw3acZsPaMP4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gomcinfodona.click; 
- b=fvkkdWhoWPLK3rHgpGfkVaXlPkGMfODZViEc2QVROBk/jhy1I+tV3CWlI6xscpOHjLf1s5vBJIbU
- mhPNSeoiktoJ20sCvbyIqX1OFcNM/jjGJY6ymhDwtnxnp7eHMRynxT8AtHsO/SBsxcsUxLnaIbRd
- 5nLgeZKlukKFY/20PX4=;
-Received: by mail.gomcinfodona.click id hdd2pm0001gd for
+ i=opinions-wanted-att-limited-time@banksattinfocs.click; 
+ bh=qUpRp1DuC3oy99E9fgDmbJUt1OM=;
+ b=K4yO//I9urexTm/UhsPf5PKbxl9APPamW4qGWyn37Q3ki7BM282l6eF20vat16uN9xHHU2h/66yH
+ 3FyMBuNkARPhpXfFFDU9cCGS4L+dZiEak5STBL7C5HN/JFCPCLK0TV2+e/JVp+iCzz0n0w0Sj68W
+ ocJ9d12d7P7uJk0e0BI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=banksattinfocs.click;
+ b=jNWGuFYgWapIDg5Zal0AQrxAx/+WIOITi/EuABYhC0GMjLJNi/eACnuR7f8OPFV96L/KH9kD6e8p
+ 0TEfAL0/lW/zKJPRy6+Fm0Yn/G/jsxxZm4Qq4nSFACnMdsPGuVfDVzrJQehupu6apMaykATxpKvC
+ B4KyiZfVj24/n37Oh34=;
+Received: by mail.banksattinfocs.click id hdd25i0001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 2 Dec 2023 09:28:13 -0500 (envelope-from
- <limited.time.mcdonalds.promo.survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@gomcinfodona.click>)
-Date: Sat, 2 Dec 2023 09:28:13 -0500
-From: "Limited Time McDonalds Promo Survey"
- <limited.time.mcdonalds.promo.survey@gomcinfodona.click>
+ Sat, 2 Dec 2023 09:44:02 -0500 (envelope-from
+ <opinions-wanted-att-limited-time-intel+2Dgvt+2Ddev=lists.freedesktop.org@banksattinfocs.click>)
+Date: Sat, 2 Dec 2023 09:44:02 -0500
+From: "Opinions Wanted ATT Limited Time"
+ <opinions-wanted-att-limited-time@banksattinfocs.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <499331278695.17015225344538@gomcinfodona.click>
-Subject: Unlock Rewards: McDonald's Survey - Limited-Time Offers,
- Daily Specials - Participate Today!
+Message-ID: <1852634372072.170152822622786@banksattinfocs.click>
+Subject: AT&T Feedback Alert: Complete Survey for Time-Sensitive Daily Offers!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=ed11709eca63916cc3c0451e55941d0510361382989
+ boundary=7afbdd73354db270be09118cdd4bf7fc941036881037
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---ed11709eca63916cc3c0451e55941d0510361382989
+--7afbdd73354db270be09118cdd4bf7fc941036881037
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,167 +63,145 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 	</style> 
-  <title>expression</title> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>reasonable</title> 
  </head> 
- <body style="font-family: 'Karla', sans-serif;"> 
-  <center style="background-color: rgb(224, 224, 224); width: 100%;"> 
-   <div style="padding: 50px 0;"> 
-    <section class="infogramssl"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="center" id="glpbs"> 
+ <body style="font-family: 'Lato', sans-serif;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center" class="bblos"> 
+      <div style="background-color: rgb(230, 230, 230); width: 100%;">
+       <br /> &nbsp;
+       <br /> &nbsp;
+       <br /> &nbsp; 
+       <div> 
+        <section> 
          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
           <tbody> 
            <tr> 
-            <td align="center" class="doctyepinfoglows" colspan="7"> 
-             <div style="max-width: 555px; margin: auto; text-align: center; background-color: #fff;"> 
-              <center> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td class="jjus"> 
-                   <section> 
-                    <div> 
-                     <dir style="margin: 0; padding: 0;"> 
-                     </dir> 
-                    </div> 
-                   </section> </td> 
-                  <td class="jjus"> 
-                   <section> 
-                    <div> 
-                     <dir style="margin: 0; padding: 0;"> 
-                     </dir> 
-                    </div> 
-                   </section> </td> 
-                  <td class="jjus"> 
-                   <section> 
-                    <div> 
-                     <dir style="margin: 0; padding: 0;"> 
-                     </dir> 
-                    </div> 
-                   </section> </td> 
-                  <td class="jjus"> 
-                   <section> 
-                    <div> 
-                     <dir style="margin: 0; padding: 0;"> 
-                     </dir> 
-                    </div> 
-                   </section> </td> 
-                  <td class="jjus"> 
-                   <section> 
-                    <div> 
-                     <dir style="margin: 0; padding: 0;"> 
-                     </dir> 
-                    </div> 
-                   </section> </td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" colspan="5" id="bbflibps"> 
-                   <center> 
-                    <div style="max-width: 485px; margin: auto;"> 
-                     <h2 style="margin: 0;"><a href="http://www.gomcinfodona.click/e215P2o395S86KD12JD698bx199dj36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQWRKS95zK10R6dXOw@D/microprogramming-grayest"><img alt="NJSE" src="http://www.gomcinfodona.click/abb6ev2t395O7JOa11q698dS199dp36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7LQWRKS95oxQ106My@3wD/Saturdays-poaches" style="display: block;" width="100%" /></a></h2> 
-                    </div> 
-                    <center style="max-width: 280px; margin: auto; padding: 23px 0;">
-                     <a href="http://www.gomcinfodona.click/e215P2o395S86KD12JD698bx199dj36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQWRKS95zK10R6dXOw@D/microprogramming-grayest" target="_blank"><img alt="USYE" src="http://www.gomcinfodona.click/captivation-underestimate/a445zz2395e7aiN11t698eX199dp36qbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQWRKS95H10ni5e@1wD" style="display: block;" width="100%" /></a>
-                    </center> 
-                   </center> </td> 
-                 </tr> 
-                 <tr> 
-                  <td align="center" colspan="5"> 
-                   <div> 
-                    <p style="margin: 0; font-size: 17px; line-height: 29px; padding: 0 43px; font-weight: 500;">Your trust and loyalty are evident in your interactions with us. You are more than just a devoted customer; you are a cherished friend. We genuinely appreciate your support and the choice to engage with us.</p> 
-                    <center style="padding: 22px 0 0;">
-                     <a href="http://www.gomcinfodona.click/e215P2o395S86KD12JD698bx199dj36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQWRKS95zK10R6dXOw@D/microprogramming-grayest" target="_blank"><img alt="MNSE" src="http://www.gomcinfodona.click/d4f5N239v5F7jai11M698fG199dp36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQWRKS97u10wzxr5qXwlD/microprogramming-grayest" style="display: block;" width="100%" /></a>
-                    </center> 
-                    <p style="background-color: rgb(245,161,24); margin: 0; padding: 24px 33px; font-weight: 700; font-size: 17px; line-height: 28px; color: white;">Aligned with our commitment to ensuring utmost satisfaction, we warmly encourage you to participate in a brief survey about your recent experience and overall interaction with our services.</p> 
-                    <center>
-                     <a href="http://www.gomcinfodona.click/e215P2o395S86KD12JD698bx199dj36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQWRKS95zK10R6dXOw@D/microprogramming-grayest" target="_blank"><img alt="SIUES" src="http://www.gomcinfodona.click/3596n23P9u5mL7aL12X6990VW199dG36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQWRKS97Gx10UmJ5D0TwD/microprogramming-grayest" width="100%" /></a>
-                    </center> 
-                    <p style="margin: 0; font-size: 17px; line-height: 29px; padding: 0 43px; font-weight: 500;">To participate in the survey, just click on the link below. It's a brief task that will require only a few minutes of your time, and be assured that your responses will be handled with complete confidentiality.</p> 
-                    <center> 
-                     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                      <tbody> 
-                       <tr> 
-                        <td align="center"> 
-                         <div style="padding: 36px 0;">
-                          <a href="http://www.gomcinfodona.click/e215P2o395S86KD12JD698bx199dj36GbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQWRKS95zK10R6dXOw@D/microprogramming-grayest" style="text-decoration: none; color: white;" target="_blank"><span style="display: inline-block; padding: 2.9% 6%; background-color: rgb(217,17,18); border-radius: 5px; font-weight: bold; font-size: 20px;">Go here To Start </span></a>
-                         </div> </td> 
-                       </tr> 
-                      </tbody> 
-                     </table> 
-                     <p style="margin: 0; font-size: 17px; line-height: 29px; padding: 0 43px; font-weight: 500;">Again, we appreciate your support. We eagerly await your response. Warm regards.</p> 
-                     <br /> &nbsp;
-                    </center> 
-                   </div> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <div style="padding-top: 352px; padding-bottom: 150px; background-color: rgb(224,224,224);"> 
-                <center style="background-color: #fff; max-width: 450px; padding: 0px 33px; border-radius: 5px; border: double 4px ;"> 
-                 <h4 style="font-size: 12px; text-align: center; font-weight: 800; line-height: 20px;">this will lead you to the <a href="http://www.gomcinfodona.click/reentered-councilwomen/cd86C2P39V5OB8P611A698ch199dP36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQWRKS95vlm106qyJBwD">Exit</a> for good<br /> US 10010 126 E 23rd St New York, NY,</h4> 
-                </center> 
-               </div> 
-              </center> 
+            <td class="llose"> 
+             <div>
+              &nbsp;
+             </div> </td> 
+            <td class="llose"> 
+             <div>
+              &nbsp;
+             </div> </td> 
+            <td class="llose"> 
+             <div>
+              &nbsp;
+             </div> </td> 
+            <td class="llose"> 
+             <div>
+              &nbsp;
+             </div> </td> 
+            <td class="llose"> 
+             <div>
+              &nbsp;
              </div> </td> 
            </tr> 
            <tr> 
-            <td> 
-             <section> 
-              <aside>
-               <main></main>
-              </aside> 
-             </section> </td> 
-            <td> 
-             <section> 
-              <aside>
-               <main></main>
-              </aside> 
-             </section> </td> 
-            <td> 
-             <section> 
-              <aside>
-               <main></main>
-              </aside> 
-             </section> </td> 
-            <td> 
-             <section> 
-              <aside>
-               <main></main>
-              </aside> 
-             </section> </td> 
-            <td> 
-             <section> 
-              <aside>
-               <main></main>
-              </aside> 
-             </section> </td> 
-            <td> 
-             <section> 
-              <aside>
-               <main></main>
-              </aside> 
-             </section> </td> 
-            <td> 
-             <section> 
-              <aside>
-               <main></main>
-              </aside> 
-             </section> </td> 
+            <td align="center" colspan="5"> 
+             <div style="max-width: 528px; margin: auto; text-align: center; background-color: #fff;"> 
+              <center> 
+               <ul style="list-style-type: none; padding: 0; margin: 0;"> 
+                <li> 
+                 <center> 
+                  <h2 style="font-size: 22px; font-weight: 700; margin: 0; padding: 1.4rem; background-color: rgb(53,159,219); color: #fff;">An Exclusive Proposition Crafted<br /> Specifically for Our Valued Clients</h2> 
+                 </center> </li> 
+                <li> 
+                 <div> 
+                  <center style="max-width: 235px; margin: auto;">
+                   <a href="http://www.banksattinfocs.click/9355p2z395OV8C611r6998Q199fr36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2RKSQ6q1W0Gm6V@0ywD/secondary-gecko" target="_blank"><img alt="WQS" src="http://www.banksattinfocs.click/interviewers-maritime/42c4z2395U7jah11G699ap199ft36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7RQ2RKSQ6OJ10ss5Yj2wD" style="display: block;" width="100%" /></a>
+                  </center> 
+                 </div> </li> 
+                <li> 
+                 <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td align="center" class="fhools" colspan="4"> 
+                     <hr color="359FDB" size="3px" /> 
+                     <div> 
+                      <h2 style="font-size: 1.1rem; margin: 0; font-weight: 500; line-height: 1.7rem; text-align: center; padding: 15px 38px 0;">Expressing appreciation for choosing our services is a top priority. Your loyalty and support carry significant weight, and we value the opportunity to assist you.<br /> &nbsp;</h2> 
+                      <blockquote style="margin: 0;">
+                       <a href="http://www.banksattinfocs.click/9355p2z395OV8C611r6998Q199fr36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2RKSQ6q1W0Gm6V@0ywD/secondary-gecko"><img alt="UYSE" src="http://www.banksattinfocs.click/encumber-transform/5764D2395iQ7aI11k699bX199fO36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7KQ2RKSQ7z10inKC5RjwLD" style="display: block;" width="100%" /></a>
+                      </blockquote> 
+                      <h3 style="font-size: 1.1rem; margin: 0; font-weight: 500; line-height: 1.7rem; text-align: center; padding: 15px 38px 0;">Acknowledging your valuable input, we are pleased to offer a small token of thanks as an expression of gratitude for the time you have devoted to us.<br /> <br /> Upon completion, your subsequent action is to select from a range of gift options for your enjoyment.</h3> &nbsp; 
+                      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                       <tbody> 
+                        <tr> 
+                         <td align="center"> 
+                          <div style="max-width: 245px; margin: auto; padding: 22px 0;"> 
+                           <center style="background-color: rgb(53,159,219); padding-top: 17px; padding-bottom: 17px; padding-left: 33px; padding-right: 33px; border-radius: 7px; font-size: 27px; font-weight: bold;">
+                            <a href="http://www.banksattinfocs.click/9355p2z395OV8C611r6998Q199fr36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ2RKSQ6q1W0Gm6V@0ywD/secondary-gecko" style="text-decoration: none; color: white;" target="_blank">Start Now </a>
+                           </center> 
+                          </div> </td> 
+                        </tr> 
+                        <tr> 
+                         <td align="center"> 
+                          <div style="font-size: 1.1rem; margin: 0; font-weight: 500; line-height: 1.7rem; text-align: center; padding: 15px 38px 0;">
+                           Thanks once more for your support. We anticipate your response eagerly! Best regards,
+                           <br /> &nbsp;
+                          </div> </td> 
+                        </tr> 
+                       </tbody> 
+                      </table> 
+                      <div style="background-color: #E6E6E6; padding-top: 120px;">
+                       &nbsp; 
+                       <center style="border: double 4px rgb(53,159,219); padding: 22px 35px; border-radius: 3px; background-color: #fff;"> 
+                        <h4 style="margin: 0; font-size: 12px; font-weight: bold; line-height: 22px;">more than welcome to leave in <a href="http://www.banksattinfocs.click/encumber-transform/6486k23K9T5d8Z6l13H699H9tN199fO36XbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7wQ2RKSQ5G10jH5DywDN">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY,</h4> 
+                       </center> 
+                      </div> 
+                     </div> </td> 
+                   </tr> 
+                   <tr> 
+                    <td class="pplos"> 
+                     <div> 
+                      <aside>
+                       &nbsp;
+                      </aside> 
+                     </div> </td> 
+                    <td class="pplos"> 
+                     <div> 
+                      <aside>
+                       &nbsp;
+                      </aside> 
+                     </div> </td> 
+                    <td class="pplos"> 
+                     <div> 
+                      <aside>
+                       &nbsp;
+                      </aside> 
+                     </div> </td> 
+                    <td class="pplos"> 
+                     <div> 
+                      <aside>
+                       &nbsp;
+                      </aside> 
+                     </div> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> </li> 
+               </ul> 
+              </center> 
+             </div> </td> 
            </tr> 
           </tbody> 
-         </table> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </section> 
-   </div> 
-  </center>   
- <img src="http://www.gomcinfodona.click/blooming-vetoes/af85d2q395B8X5j12B6991Du199dS36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQWRKS96tyRC105uAJwD" alt=""/></body>
+         </table> 
+        </section> 
+       </div> 
+       <br /> &nbsp;
+       <br /> &nbsp;
+       <br /> &nbsp;
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.banksattinfocs.click/2e15hN2395o85ys13Kv699cHK199fo36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ2RKSQ5V1P0s6AlAwDL/loyally-hawked" alt=""/></body>
 </html>
 
---ed11709eca63916cc3c0451e55941d0510361382989--
+--7afbdd73354db270be09118cdd4bf7fc941036881037--
 
