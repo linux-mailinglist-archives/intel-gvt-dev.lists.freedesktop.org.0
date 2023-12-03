@@ -2,66 +2,46 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6AC4D801D67
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  2 Dec 2023 15:51:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8858F80260E
+	for <lists+intel-gvt-dev@lfdr.de>; Sun,  3 Dec 2023 18:49:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 03E6510E1FA;
-	Sat,  2 Dec 2023 14:51:25 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4D74810E071;
+	Sun,  3 Dec 2023 17:49:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-ua1-x933.google.com (mail-ua1-x933.google.com
- [IPv6:2607:f8b0:4864:20::933])
- by gabe.freedesktop.org (Postfix) with ESMTPS id B0BE810E1EB;
- Sat,  2 Dec 2023 14:50:49 +0000 (UTC)
-Received: by mail-ua1-x933.google.com with SMTP id
- a1e0cc1a2514c-7c46c7bc538so985252241.3; 
- Sat, 02 Dec 2023 06:50:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701528648; x=1702133448; darn=lists.freedesktop.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1ixg28vCNyeYFge8+qwTnb3fR5Cn16tF+NefpRupJIo=;
- b=k1tbGjKJFz72vQQSJHBuAK1MdahleUWjkfNmYUmMZWuVK4Vaw18cJ2aauuXJZD7XTi
- iw6qORjLv71LdYiFdGXLUZDE8G95yWqpY6icntieVTQa89gIAm1ra5WszR3oI0l4Jxti
- NtwvC0k9TcP84OruN1D13i4KeWqrG8VufYshRF9i1S+MdoYyXBkCVtByj5Vpzh/yHAKK
- mr6cC+I3V5mZ4fQ8UMO6kjYGNVHWhueJnfyboKoFFqTtSV++tInsdrAk/jPBrhKjlH9R
- Hi7NP6cFsNqteRNNXC9vp45llDJAzd8yBdQhIXrzmAT474SwLIm9h1EvANCfdKRSRAiK
- kQAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701528648; x=1702133448;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=1ixg28vCNyeYFge8+qwTnb3fR5Cn16tF+NefpRupJIo=;
- b=CA39W95puG/uUxIlDtq0EAZuYHvVrRQnN5M/P7ooj8LlfWAfHRQkj/jy2Lg3HnKtTm
- V1xWAeW8UuFrl4VK51kt0rlERDrCMOIlta7KiWMvnSrFveD/2rhb6mwZyg4lEaHmUyfB
- JUADlamoeJrU+IzwQO4uv48eFv6E9+JRtyfssV7nLNNz1x4kz/0JaO8glgpsi9bplSI0
- yi2JuXZn/DumO87s8Y913cLLx8LWkExlmzl9V0jAGWzqf3KbYGX084tZ3bNmavHgZcjV
- ZixBtkCFvATQI625fshfjXwJFBcZbOWCFuoy3+tirzAxUz2Z67IJUPJ3T68W+sC3tBo9
- F/Ng==
-X-Gm-Message-State: AOJu0YwI2QDsNWEATAzefolpctxmOsMtVqRRX0prTc08DLxWWjqae/At
- KuXJDf2Ejs4NamJwvExxrJ5oJh1xcfVN8D3hqSU=
-X-Google-Smtp-Source: AGHT+IE8qec2C6k83JGXnys0GKx41rq3i+6tLZnIp70pSrjs+tyidT8f0JZ+1VYuv6XjXPDL9j5GVHRqH6qDQRBzggY=
-X-Received: by 2002:a67:e989:0:b0:464:4aca:51e8 with SMTP id
- b9-20020a67e989000000b004644aca51e8mr431734vso.35.1701528648668; Sat, 02 Dec
- 2023 06:50:48 -0800 (PST)
+X-Greylist: delayed 4448 seconds by postgrey-1.36 at gabe;
+ Sun, 03 Dec 2023 17:49:38 UTC
+Received: from server1.sedef.asia (unknown [203.15.11.225])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E88CA10E071
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun,  3 Dec 2023 17:49:38 +0000 (UTC)
+Received: from e.ossedm.com (49.234.60.251) by server1.sedef.asia id
+ hdivr60e97c0 for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 4 Dec 2023 00:35:28 +0800 (envelope-from <test01@sedef.asia>)
+Message-ID: <c6087cf23d02fbfb8272eb30ade23212@sedef.asia>
+Date: Sun, 03 Dec 2023 16:35:27 +0000
+Subject: GPS Tracking Devices for IT Solution
+From: GPS IT <alliangps@gmail.com>
+To: "intel-gvt-dev@lists.freedesktop.org" <intel-gvt-dev@lists.freedesktop.org>
 MIME-Version: 1.0
-References: <20231128125025.4449-1-weixi.zhu@huawei.com>
- <20231128125025.4449-3-weixi.zhu@huawei.com>
- <e4eb5a24-e9cf-4944-9614-df5f5f3a7163@redhat.com>
-In-Reply-To: <e4eb5a24-e9cf-4944-9614-df5f5f3a7163@redhat.com>
-From: Pedro Falcato <pedro.falcato@gmail.com>
-Date: Sat, 2 Dec 2023 14:50:37 +0000
-Message-ID: <CAKbZUD25mwVXowDcN1Cj5Op9wRAopYhYZcesR0tk2r_Wn-d95g@mail.gmail.com>
-Subject: Re: [RFC PATCH 2/6] mm/gmem: add arch-independent abstraction to
- track address mapping status
-To: David Hildenbrand <david@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/alternative;
+ boundary="_=_swift_v4_1701621327_7e187453cb715748b26075411c19d8fc_=_"
+X-Sender: test01@sedef.asia
+X-Report-Abuse: Please report abuse for this campaign here:
+ http://e.ossedm.com/index.php/campaigns/za33583n9n30d/report-abuse/js379w5fge2d5/tk748y1vgedf7
+X-Receiver: intel-gvt-dev@lists.freedesktop.org
+X-Qftx-Tracking-Did: 0
+X-Qftx-Subscriber-Uid: tk748y1vgedf7
+X-Qftx-Mailer: SwiftMailer - 5.4.x
+X-Qftx-EBS: http://e.ossedm.com/index.php/lists/block-address
+X-Qftx-Delivery-Sid: 33
+X-Qftx-Customer-Uid: dz2209hnmf05f
+X-Qftx-Customer-Gid: 1
+X-Qftx-Campaign-Uid: za33583n9n30d
+Precedence: bulk
+Feedback-ID: za33583n9n30d:tk748y1vgedf7:js379w5fge2d5:dz2209hnmf05f
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: "Intel GVT \(Graphics Virtualization\) development list"
  <intel-gvt-dev.lists.freedesktop.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gvt-dev>, 
@@ -71,149 +51,188 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: joonas.lahtinen@linux.intel.com, dri-devel@lists.freedesktop.org,
- linux-mm@kvack.org, leonro@nvidia.com, apopple@nvidia.com,
- amd-gfx@lists.freedesktop.org, mgorman@suse.de, ziy@nvidia.com,
- zhi.a.wang@intel.com, rcampbell@nvidia.com, jgg@nvidia.com,
- weixi.zhu@openeuler.sh, jhubbard@nvidia.com, intel-gfx@lists.freedesktop.org,
- mhairgrove@nvidia.com, zhenyuw@linux.intel.com, jglisse@redhat.com,
- Weixi Zhu <weixi.zhu@huawei.com>, rodrigo.vivi@intel.com,
- intel-gvt-dev@lists.freedesktop.org, jani.nikula@linux.intel.com,
- tvrtko.ursulin@linux.intel.com, Felix.Kuehling@amd.com, Xinhui.Pan@amd.com,
- linux-kernel@vger.kernel.org, christian.koenig@amd.com,
- alexander.deucher@amd.com, akpm@linux-foundation.org, ogabbay@kernel.org
+Reply-To: GPS IT <alliangps@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Fri, Dec 1, 2023 at 9:23=E2=80=AFAM David Hildenbrand <david@redhat.com>=
- wrote:
->
-> On 28.11.23 13:50, Weixi Zhu wrote:
-> > This patch adds an abstraction layer, struct vm_object, that maintains
-> > per-process virtual-to-physical mapping status stored in struct gm_mapp=
-ing.
-> > For example, a virtual page may be mapped to a CPU physical page or to =
-a
-> > device physical page. Struct vm_object effectively maintains an
-> > arch-independent page table, which is defined as a "logical page table"=
-.
-> > While arch-dependent page table used by a real MMU is named a "physical
-> > page table". The logical page table is useful if Linux core MM is exten=
-ded
-> > to handle a unified virtual address space with external accelerators us=
-ing
-> > customized MMUs.
->
-> Which raises the question why we are dealing with anonymous memory at
-> all? Why not go for shmem if you are already only special-casing VMAs
-> with a MMAP flag right now?
->
-> That would maybe avoid having to introduce controversial BSD design
-> concepts into Linux, that feel like going a step backwards in time to me
-> and adding *more* MM complexity.
->
-> >
-> > In this patch, struct vm_object utilizes a radix
-> > tree (xarray) to track where a virtual page is mapped to. This adds ext=
-ra
-> > memory consumption from xarray, but provides a nice abstraction to isol=
-ate
-> > mapping status from the machine-dependent layer (PTEs). Besides support=
-ing
-> > accelerators with external MMUs, struct vm_object is planned to further
-> > union with i_pages in struct address_mapping for file-backed memory.
->
-> A file already has a tree structure (pagecache) to manage the pages that
-> are theoretically mapped. It's easy to translate from a VMA to a page
-> inside that tree structure that is currently not present in page tables.
->
-> Why the need for that tree structure if you can just remove anon memory
-> from the picture?
->
-> >
-> > The idea of struct vm_object is originated from FreeBSD VM design, whic=
-h
-> > provides a unified abstraction for anonymous memory, file-backed memory=
-,
-> > page cache and etc[1].
->
-> :/
->
-> > Currently, Linux utilizes a set of hierarchical page walk functions to
-> > abstract page table manipulations of different CPU architecture. The
-> > problem happens when a device wants to reuse Linux MM code to manage it=
-s
-> > page table -- the device page table may not be accessible to the CPU.
-> > Existing solution like Linux HMM utilizes the MMU notifier mechanisms t=
-o
-> > invoke device-specific MMU functions, but relies on encoding the mappin=
-g
-> > status on the CPU page table entries. This entangles machine-independen=
-t
-> > code with machine-dependent code, and also brings unnecessary restricti=
-ons.
->
-> Why? we have primitives to walk arch page tables in a non-arch specific
-> fashion and are using them all over the place.
->
-> We even have various mechanisms to map something into the page tables
-> and get the CPU to fault on it, as if it is inaccessible (PROT_NONE as
-> used for NUMA balancing, fake swap entries).
->
-> > The PTE size and format vary arch by arch, which harms the extensibilit=
-y.
->
-> Not really.
->
-> We might have some features limited to some architectures because of the
-> lack of PTE bits. And usually the problem is that people don't care
-> enough about enabling these features on older architectures.
->
-> If we ever *really* need more space for sw-defined data, it would be
-> possible to allocate auxiliary data for page tables only where required
-> (where the features apply), instead of crafting a completely new,
-> auxiliary datastructure with it's own locking.
->
-> So far it was not required to enable the feature we need on the
-> architectures we care about.
->
-> >
-> > [1] https://docs.freebsd.org/en/articles/vm-design/
->
-> In the cover letter you have:
->
-> "The future plan of logical page table is to provide a generic
-> abstraction layer that support common anonymous memory (I am looking at
-> you, transparent huge pages) and file-backed memory."
->
-> Which I doubt will happen; there is little interest in making anonymous
-> memory management slower, more serialized, and wasting more memory on
-> metadata.
 
-Also worth noting that:
+--_=_swift_v4_1701621327_7e187453cb715748b26075411c19d8fc_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-1) Mach VM (which FreeBSD inherited, from the old BSD) vm_objects
-aren't quite what's being stated here, rather they are somewhat
-replacements for both anon_vma and address_space[1]. Very similarly to
-Linux, they take pages from vm_objects and map them in page tables
-using pmap (the big difference is anon memory, which has its
-bookkeeping in page tables, on Linux)
+Hello
+We=C2=A0are=C2=A0a=C2=A0professional=C2=A0manufacturer=C2=A0and=
+=C2=A0designer=C2=A0in=C2=A0GPS=C2=A0tracking=C2=A0devices.
+Would=C2=
+=A0you=C2=A0please=C2=A0check=C2=A0if=C2=A0below=C2=A04G=C2=A0SOS=C2=A0butt=
+on=C2=A0GPS=C2=A0tracker=C2=A0can=C2=A0help=C2=A0you=C2=A0or=C2=A0not?
+Id=
+eal it can be used on lone worker solution, child protection and
+elder ca=
+re etc
+Big=C2=A0SOS=C2=A0button=C2=A0for=C2=A0emergency=C2=A0rescued=
+=C2=A0
+Fall=C2=A0down=C2=A0alarm=C2=A0to=C2=A0control=C2=A0center
+4G=
+=C2=A0LTE=C2=A0network=C2=A0for=C2=A0GPS=C2=A0tracking=C2=A0data
+Two=
+=C2=A0ways=C2=A0voice=C2=A0communication
+Mini=C2=A0design=C2=A0for=C2=
+=A0easy=C2=A0portable
+=C2=A0
+SOS=C2=A0button=C2=A0and=C2=A0talking=
+=C2=A0button
+There=C2=A0are=C2=A0one=C2=A0big=C2=A0SOS=C2=A0button=C2=
+=A0and=C2=A0call=C2=A0button=C2=A0for=C2=A0two=C2=A0ways=C2=A0talking.
+Pr=
+ess=C2=A0SOS=C2=A0button=C2=A0for=C2=A05=C2=A0seconds=C2=A0then=C2=A0it=
+=C2=A0will=C2=A0triggers=C2=A0alarm=C2=A0for=C2=A0help;=C2=A0
+Call=C2=
+=A0button=C2=A0speed=C2=A0dial=C2=A0for=C2=A0clear=C2=A0communication.
+=
+=C2=A0
+Fall=C2=A0down=C2=A0/=C2=A0man=C2=A0down=C2=A0/Tilt=C2=A0detection=
+=C2=A0and=C2=A0alarm
+After=C2=A0the=C2=A0people=C2=A0fall=C2=A0down,=
+=C2=A0the=C2=A0tracker=C2=A0will=C2=A0send=C2=A0alert=C2=A0and=C2=A0call=
+=C2=A0the=C2=A0control=C2=A0room
+Ideal=C2=A0for=C2=A0lone=C2=A0worker,=
+=C2=A0elder=C2=A0or=C2=A0dementia.=C2=A0Also=C2=A0the=C2=A0tracker=C2=A0wil=
+l=C2=A0call=C2=A0the=C2=A0SOS=C2=A0number=C2=A0once=C2=A0the=C2=A0fall=
+=C2=A0down=C2=A0detected.=C2=A0
+=C2=A0
+Geo-fence=C2=A0alarm
+When=
+=C2=A0the=C2=A0elder=C2=A0get=C2=A0in=C2=A0or=C2=A0out=C2=A0of=C2=A0any=
+=C2=A0Geo-fence,=C2=A0it=C2=A0will=C2=A0send=C2=A0alarm=C2=A0to=C2=A0APP.=
+=C2=A0
+Easier=C2=A0to=C2=A0know=C2=A0the=C2=A0device=C2=A0holder's=C2=
+=A0movement,=C2=A0offering=C2=A0more=C2=A0cares=C2=A0to=C2=A0the=C2=A0famil=
+ies=C2=A0or=C2=A0control=C2=A0room.
+=C2=A0
+Real=C2=A0time=C2=A0position=
+=C2=A0and=C2=A0history=C2=A0tracking
+Control=C2=A0room=C2=A0or=C2=A0famil=
+y=C2=A0can=C2=A0track=C2=A0the=C2=A0elder=C2=A0position=C2=A0in=C2=A0real=
+=C2=A0time=C2=A0from=C2=A0computer,=C2=A0mobile=C2=A0phone=C2=A0APP.
+Keep=
+=C2=A0eye=C2=A0on=C2=A0their=C2=A0safe=C2=A0position,=C2=A0also=C2=A0can=
+=C2=A0track=C2=A0their=C2=A0history=C2=A0position=C2=A0where=C2=A0they=
+=C2=A0gone.=C2=A0
+GPS=C2=A0Tracker=C2=A0is=C2=A0a=C2=A0real-time=C2=A0tra=
+cking=C2=A0and=C2=A0remote=C2=A0monitoring=C2=A0system=C2=A0for=C2=A0asset=
+=C2=A0security=C2=A0protection;=C2=A0
+Always=C2=A0it=C2=A0can=C2=A0be=
+=C2=A0used=C2=A0on=C2=A0lone=C2=A0worker=C2=A0solution,=C2=A0asset=C2=A0con=
+trol,=C2=A0vehicle=C2=A0management,=C2=A0elder=C2=A0care,=C2=A0child=C2=
+=A0tracking=C2=A0and=C2=A0pet=C2=A0locating=C2=A0etc.
+=C2=A0
+We=C2=
+=A0have=C2=A0passed=C2=A0through=C2=A0ISO9001:2000;=C2=A0ISO14001:2004;=
+=C2=A0
+It=C2=A0would=C2=A0be=C2=A0our=C2=A0pleasure=C2=A0to=C2=A0build=
+=C2=A0a=C2=A0business=C2=A0relationship=C2=A0with=C2=A0you=C2=A0and=C2=
+=A0supply=C2=A0your=C2=A0stores=C2=A0with=C2=A0our=C2=A0quality=C2=A0produc=
+ts.=C2=A0
+Please reply us direct if=C2=A0you=C2=A0want=C2=A0to=C2=A0get=
+=C2=A0more=C2=A0details.
+Thank you very much
+GoTrack
+http://e.ossedm.=
+com/index.php/lists/js379w5fge2d5/unsubscribe/tk748y1vgedf7/za33583n9n30d
 
-2) These vm_objects were a horrendous mistake (see CoW chaining) and
-FreeBSD has to go to horrendous lengths to make them tolerable. The
-UVM paper/dissertation (by Charles Cranor) talks about these issues at
-length, and 20 years later it's still true.
+--_=_swift_v4_1701621327_7e187453cb715748b26075411c19d8fc_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-3) Despite Linux MM having its warts, it's probably correct to
-consider it a solid improvement over FreeBSD MM or NetBSD UVM
+<!DOCTYPE html>
+<html>
+<head><meta charset=3D"utf-8"/>
+=09<title></title>
+</head>
+<body>Hello<br />
+<br />
+We=C2=A0are=C2=A0a=C2=A0professional=C2=A0manufacturer=C2=A0and=C2=A0design=
+er=C2=A0in=C2=A0GPS=C2=A0tracking=C2=A0devices.<br />
+Would=C2=A0you=C2=A0please=C2=A0check=C2=A0if=C2=A0below=C2=A04G=C2=A0SOS=
+=C2=A0button=C2=A0GPS=C2=A0tracker=C2=A0can=C2=A0help=C2=A0you=C2=A0or=
+=C2=A0not?<br />
+Ideal it can be used on lone worker solution, child protection and elder ca=
+re etc<br />
+<br />
+<img alt=3D"" src=3D"https://scontent-hkg4-1.xx.fbcdn.net/v/t39.30808-6/369=
+969213_5935099729925126_4445456869490432970_n.jpg?_nc_cat=3D107&amp;ccb=3D1=
+-7&amp;_nc_sid=3D5f2048&amp;_nc_ohc=3DtX4JysgGQdIAX_5hT8W&amp;_nc_oc=3DAQl5=
+bsbI2N5AhdVYZdVh_nREVzXJiCzsdeFqA3wWA4a4_asPxG7IUqE1JTOSB4ZVweQ&amp;_nc_ht=
+=3Dscontent-hkg4-1.xx&amp;oh=3D00_AfBcort_M_f5j6Lc_2qWXcF-ow1QEuzT3YM3Iv6jz=
+97r0g&amp;oe=3D656941EC" style=3D"width: 612px; height: 262px;" /><br />
+Big=C2=A0SOS=C2=A0button=C2=A0for=C2=A0emergency=C2=A0rescued=C2=A0<br />
+Fall=C2=A0down=C2=A0alarm=C2=A0to=C2=A0control=C2=A0center<br />
+4G=C2=A0LTE=C2=A0network=C2=A0for=C2=A0GPS=C2=A0tracking=C2=A0data<br />
+Two=C2=A0ways=C2=A0voice=C2=A0communication<br />
+Mini=C2=A0design=C2=A0for=C2=A0easy=C2=A0portable<br />
+<br />
+=C2=A0<br />
+<strong>SOS=C2=A0button=C2=A0and=C2=A0talking=C2=A0button</strong><br />
+There=C2=A0are=C2=A0one=C2=A0big=C2=A0SOS=C2=A0button=C2=A0and=C2=A0call=
+=C2=A0button=C2=A0for=C2=A0two=C2=A0ways=C2=A0talking.<br />
+Press=C2=A0SOS=C2=A0button=C2=A0for=C2=A05=C2=A0seconds=C2=A0then=C2=A0it=
+=C2=A0will=C2=A0triggers=C2=A0alarm=C2=A0for=C2=A0help;=C2=A0<br />
+Call=C2=A0button=C2=A0speed=C2=A0dial=C2=A0for=C2=A0clear=C2=A0communicatio=
+n.<br />
+=C2=A0<br />
+<strong>Fall=C2=A0down=C2=A0/=C2=A0man=C2=A0down=C2=A0/Tilt=C2=A0detection=
+=C2=A0and=C2=A0alarm</strong><br />
+After=C2=A0the=C2=A0people=C2=A0fall=C2=A0down,=C2=A0the=C2=A0tracker=C2=
+=A0will=C2=A0send=C2=A0alert=C2=A0and=C2=A0call=C2=A0the=C2=A0control=C2=
+=A0room<br />
+Ideal=C2=A0for=C2=A0lone=C2=A0worker,=C2=A0elder=C2=A0or=C2=A0dementia.=
+=C2=A0Also=C2=A0the=C2=A0tracker=C2=A0will=C2=A0call=C2=A0the=C2=A0SOS=
+=C2=A0number=C2=A0once=C2=A0the=C2=A0fall=C2=A0down=C2=A0detected.=C2=A0<br=
+ />
+=C2=A0<br />
+<strong>Geo-fence=C2=A0alarm</strong><br />
+When=C2=A0the=C2=A0elder=C2=A0get=C2=A0in=C2=A0or=C2=A0out=C2=A0of=C2=A0any=
+=C2=A0Geo-fence,=C2=A0it=C2=A0will=C2=A0send=C2=A0alarm=C2=A0to=C2=A0APP.=
+=C2=A0<br />
+Easier=C2=A0to=C2=A0know=C2=A0the=C2=A0device=C2=A0holder's=C2=A0movement,=
+=C2=A0offering=C2=A0more=C2=A0cares=C2=A0to=C2=A0the=C2=A0families=C2=A0or=
+=C2=A0control=C2=A0room.<br />
+=C2=A0<br />
+<strong>Real=C2=A0time=C2=A0position=C2=A0and=C2=A0history=C2=A0tracking</s=
+trong><br />
+Control=C2=A0room=C2=A0or=C2=A0family=C2=A0can=C2=A0track=C2=A0the=C2=A0eld=
+er=C2=A0position=C2=A0in=C2=A0real=C2=A0time=C2=A0from=C2=A0computer,=C2=
+=A0mobile=C2=A0phone=C2=A0APP.<br />
+Keep=C2=A0eye=C2=A0on=C2=A0their=C2=A0safe=C2=A0position,=C2=A0also=C2=
+=A0can=C2=A0track=C2=A0their=C2=A0history=C2=A0position=C2=A0where=C2=A0the=
+y=C2=A0gone.=C2=A0<br />
+<br />
+<br />
+GPS=C2=A0Tracker=C2=A0is=C2=A0a=C2=A0real-time=C2=A0tracking=C2=A0and=C2=
+=A0remote=C2=A0monitoring=C2=A0system=C2=A0for=C2=A0asset=C2=A0security=
+=C2=A0protection;=C2=A0<br />
+Always=C2=A0it=C2=A0can=C2=A0be=C2=A0used=C2=A0on=C2=A0lone=C2=A0worker=
+=C2=A0solution,=C2=A0asset=C2=A0control,=C2=A0vehicle=C2=A0management,=
+=C2=A0elder=C2=A0care,=C2=A0child=C2=A0tracking=C2=A0and=C2=A0pet=C2=A0loca=
+ting=C2=A0etc.<br />
+=C2=A0<br />
+We=C2=A0have=C2=A0passed=C2=A0through=C2=A0ISO9001:2000;=C2=A0ISO14001:2004=
+;=C2=A0<br />
+It=C2=A0would=C2=A0be=C2=A0our=C2=A0pleasure=C2=A0to=C2=A0build=C2=A0a=
+=C2=A0business=C2=A0relationship=C2=A0with=C2=A0you=C2=A0and=C2=A0supply=
+=C2=A0your=C2=A0stores=C2=A0with=C2=A0our=C2=A0quality=C2=A0products.=C2=
+=A0<br />
+<br />
+Please reply us direct if=C2=A0you=C2=A0want=C2=A0to=C2=A0get=C2=A0more=
+=C2=A0details.<br />
+<br />
+Thank you very much<br />
+GoTrack<br />
+<br />
+http://e.ossedm.com/index.php/lists/js379w5fge2d5/unsubscribe/tk748y1vgedf7=
+/za33583n9n30d</body>
+</html>
 
-And, finally, randomly tacking on core MM concepts from other systems
-is at best a *really weird* idea. Particularly when they aren't even
-what was stated!
+--_=_swift_v4_1701621327_7e187453cb715748b26075411c19d8fc_=_--
 
-[1] If you really can't use PTEs, I don't see how you can't use file
-mappings and/or some vm_operations_struct workarounds, when the
-patch's vm_object is literally just an xarray with a different name
-
---=20
-Pedro
