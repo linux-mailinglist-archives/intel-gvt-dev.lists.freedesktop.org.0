@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFF0D803EB5
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Dec 2023 20:49:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 318D4803F4E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Dec 2023 21:29:59 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A4A0A10E21C;
-	Mon,  4 Dec 2023 19:49:32 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 5FA9310E3DF;
+	Mon,  4 Dec 2023 20:29:57 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Mon, 04 Dec 2023 19:49:28 UTC
-Received: from mail.captoolsacehard.top (unknown [77.83.203.89])
- by gabe.freedesktop.org (Postfix) with ESMTP id D20D610E21C
+X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
+ Mon, 04 Dec 2023 20:29:55 UTC
+Received: from mail.dpflyingoncs.top (unknown [77.83.203.96])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6691810E339
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  4 Dec 2023 19:49:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=captoolsacehard.top; 
+ Mon,  4 Dec 2023 20:29:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dpflyingoncs.top;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=instant-win-ace-bonus@captoolsacehard.top; 
- bh=NP20aoRGHhgJcI2NetbqCTuyA1c=;
- b=tgCakj89S195t/+FjUU+tuJFkfKrkv372VtNA5F0AraINdIj+fKVBWUUjPdFA82Dlb2yIXSbtbBi
- TwXZuAj7vxI7jRl18havQheH+zxFcVYxSXhd3R0tMUI49eVVj5fSB+FOWBlekPCMe1z7I11mLCn4
- BGrHP51ywi/n1mIVWbQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=captoolsacehard.top;
- b=2F8DmWaxRUgRVOeIQ/J9gG2CRnh+oREWdPCyairzc3B/CxzGPWiLRuE4IEj7gIYWhaWsFzlt2o0p
- 747koHy7cfl+jn9Z3OwKMzbW/QakVo3NIbFBJqKF4iHCKXV3s75PpnLi7NnzhnPamo3NrJpvyALK
- mIpIDelGRohH3aBYkYI=;
-Received: by mail.captoolsacehard.top id hdomki0001g5 for
+ i=win-with-southwest-quick-survey@dpflyingoncs.top; 
+ bh=8dlO7hylzsCdqz2ogWK5yRJRGHM=;
+ b=hu7twr47MsLGgrirALFyrDV2f85sohIcq7ir+Pvy+6IicO9F5NDJ5oJ91nbkWAhZiGbYKnmYYwPp
+ 2p7OSFozooPgQOoeFTwubgOBiJLDL5TA40wSfUFl/T5jdOopuRH7rPUJAUj8uEYBcWcElLQapR8c
+ Vrpd+HAnpBr+jZzfupc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dpflyingoncs.top;
+ b=vjcDTXUuftyF5fZddfmXIZXsyVOkDJk5cZodA3hMxtuVyFAXtZ5ny3X+MVaAIForwZ3Q2N3CAwGV
+ O4dJfpy6E8+saP8Hll6m9PcxyclWdh8j0RBUNXbwvN5YZrpRi6KH86LO0kjRCrlBVSSWw5lS1KdJ
+ +OB0AeysKdDWLYaULYQ=;
+Received: by mail.dpflyingoncs.top id hdorc60001g4 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 4 Dec 2023 14:33:20 -0500 (envelope-from
- <instant-win-ace-bonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@captoolsacehard.top>)
-Date: Mon, 4 Dec 2023 14:33:20 -0500
-From: "Instant Win Ace Bonus." <instant-win-ace-bonus@captoolsacehard.top>
+ Mon, 4 Dec 2023 15:21:13 -0500 (envelope-from
+ <win-with-southwest-quick-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@dpflyingoncs.top>)
+Date: Mon, 4 Dec 2023 15:21:13 -0500
+From: "Win With Southwest Quick Survey"
+ <win-with-southwest-quick-survey@dpflyingoncs.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <17917508139.1701718390036851@captoolsacehard.top>
-Subject: Ace Hardware Wants You! Complete Quick Survey for Limited-Time Daily
- Deals!
+Message-ID: <4638579473999.170172125120800@dpflyingoncs.top>
+Subject: Hurry, Participate Now: Southwest's Survey for Daily Promo Surprises!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=58876b8241385c6d6161cf08fffc1f6f100219497
+ boundary=c2f4fae5e10f6e5d5f74dd9718de4df999919810110310159849
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---58876b8241385c6d6161cf08fffc1f6f100219497
+--c2f4fae5e10f6e5d5f74dd9718de4df999919810110310159849
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,54 +62,97 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>few easy</title> 
+  <title>genuinely</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap');
+	</style> 
  </head> 
- <body style="background-color: rgb(230, 230, 230);"> 
-  <center style="background-color: #ff0000; padding: 1.5rem 0;"> 
-   <div style="max-width: 28rem; margin: auto;"> 
-    <h2 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; font-size: 20px; color: white;">Get your hands on a $100 Ace Hardware<br /> gift card with just a few simple clicks!</h2> 
+ <body> 
+  <section class="onglys"> 
+   <div id="iibso" style="background-color: #ffffff; width: 100%;">
+    &nbsp; 
+    <aside class="ranguye"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
+       <tr> 
+        <td align="center"> 
+         <div style="max-width: 16cm; margin: auto; background-color: #F6F8FA; font-family: 'Schibsted Grotesk', sans-serif;"> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center"> 
+              <div style="max-width: 325px; margin: auto;">
+               <a href="http://www.dpflyingoncs.top/5754r2395l8rN612y69Sd4p19afD36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQMRKKd5k10DT5LWwUD/inaction-Honeywell" target="_blank"><img alt="RES" src="http://www.dpflyingoncs.top/c7d5r239w5sx7ka12Y6I9d6w19afV36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQMRKKd5tYl105QUwUD/microbicidal-underfoot" style="display: block; padding: 1.9rem 0;" width="100%" /> </a>
+              </div> </td> 
+            </tr> 
+            <tr bgcolor="ffffff"> 
+             <td> <p style="margin: 0; padding: 15px 47px; text-align: center; font-size: 4.5mm; line-height: 7mm;">We wish to express our gratitude for choosing Southwest for your travel requirements. Your loyalty and support are paramount to us, and we truly appreciate the opportunity to be of service to you.</p> </td> 
+            </tr> 
+            <tr bgcolor="ffffff"> 
+             <td> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td class="kkysk">&nbsp;</td> 
+                 <td class="kkysk">&nbsp;</td> 
+                 <td align="center" class="kkysk"> 
+                  <div style="max-width: 85%; margin: auto;">
+                   <a href="http://www.dpflyingoncs.top/5754r2395l8rN612y69Sd4p19afD36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQMRKKd5k10DT5LWwUD/inaction-Honeywell"><img alt="NBS" src="http://www.dpflyingoncs.top/d4f4b2395pU7ma11D69d7w19afr36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQMRKKd6SX1k0n5SNwDz/megaword-seized" width="100%" /> </a>
+                  </div> </td> 
+                 <td class="kkysk">&nbsp;</td> 
+                 <td class="kkysk">&nbsp;</td> 
+                </tr> 
+               </tbody> 
+              </table> <p style="margin: 0; padding: 15px 47px; text-align: center; font-size: 4.5mm; line-height: 7mm;">In our ongoing commitment to delivering outstanding experiences, we cordially invite you to participate in a brief survey regarding your recent flight and overall experience with Southwest.<br /> <br /> We highly value your feedback, and as a token of our appreciation for your time and input, we would like to offer you a special gesture.</p> 
+              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+               <tbody> 
+                <tr> 
+                 <td align="center" class="jyys"> 
+                  <div style="max-width: 90px; margin: auto;">
+                   <a href="http://www.dpflyingoncs.top/5754r2395l8rN612y69Sd4p19afD36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQMRKKd5k10DT5LWwUD/inaction-Honeywell" target="_blank"><img alt="FRES" src="http://www.dpflyingoncs.top/circulated-homicide/9ae6A2nO395E7aRU11S69d8D19afV36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMRKKd7tGJv10A5zywlD" width="100%" /> </a>
+                  </div> </td> 
+                </tr> 
+                <tr> 
+                 <td> <p style="margin: 0; padding: 15px 47px; text-align: center; font-size: 4.5mm; line-height: 7mm;">To participate in the survey, kindly click on the link below. The survey is expected to take only a few minutes of your time, and we want to reassure you that your responses will be kept completely confidential.</p> 
+                  <div> 
+                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                    <tbody> 
+                     <tr> 
+                      <td align="center" id="ppos"> 
+                       <div>
+                        &nbsp; 
+                        <center style="font-weight: 900; padding: 1rem 1.5rem; background-color: rgb(10, 43, 92); width: 230px; margin: auto; border-radius: 7px;">
+                         <a href="http://www.dpflyingoncs.top/5754r2395l8rN612y69Sd4p19afD36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQMRKKd5k10DT5LWwUD/inaction-Honeywell" style="text-decoration: none; color: white;">Start The Survey Here &gt;&gt; </a>
+                        </center> 
+                       </div> </td> 
+                     </tr> 
+                    </tbody> 
+                   </table> 
+                  </div> </td> 
+                </tr> 
+               </tbody> 
+              </table> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </div> <br /> <br /> &nbsp; 
+         <div style="max-width: 16cm; margin: auto; background-color: #F6F8FA; font-family: 'Chivo', sans-serif;"> 
+          <p style="margin: 0; padding: 15px 20px; text-align: center; font-size: 3.5mm; font-family: 'Chivo', sans-serif;">We appreciate your ongoing support and for dedicating time to complete our survey.<br /> <br /> We eagerly await your response.<br /> <br /> Best regards,</p> &nbsp; 
+          <div style="background-color: #ffffff; padding-top: 250px; padding-bottom: 100px;"> 
+           <div style="padding: 30px 0; background-color: antiquewhite; font-size: 11px; font-weight: 800; ;">
+            Use the exit option 
+            <a href="http://www.dpflyingoncs.top/inaction-Honeywell/af85S23P95aK8u612v69dB5M19afy36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQMRKKd6vRs10z6O0wykD"> here </a>
+            <br /> US 10010 126 E 23rd St New York, NY,
+           </div> 
+          </div> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </aside> 
    </div> 
-  </center> 
-  <center style="max-width: 533px; margin: auto ; background-color: #fff;">
-   &nbsp; 
-   <blockquote style="margin: 0; padding: 0; padding: 15px 15px; background-color: #CF002A;">
-    <a href="http://www.captoolsacehard.top/solves-dubbed/80a5Go2395NSI8612B69dK1n19aeW36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQbRKK97W10zDHn5r@wDJ" target="_blank"><img alt="JJHEA" src="http://www.captoolsacehard.top/broadcaster-premiers/60c6mnQ2395h7Ta_13c6wn9d2h19aer36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7WQbRKK96P1ImB05gT0wD" width="100%" /> </a>
-   </blockquote> &nbsp; 
-   <h3 style="font-size: 1.2rem; text-align: center; font-weight: normal; font-family: Arial, Helvetica, sans-serif; margin: 0;padding-bottom: 15px; padding-left: 30px; padding-right: 30px; line-height: 1.7rem;">Complete Our Customer Survey And Get A Chance To Win A <b> $100 Ace Hardware Gift Card </b>. Your Feedback Helps Us Improve, And We Value Your Opinions.</h3> 
-   <div> 
-    <div style="background-color: #ff0000; padding-top: 20px; padding-bottom: 20px; font-size: 24px; font-weight: 900; font-family: Arial, Helvetica, sans-serif;">
-     <a href="http://www.captoolsacehard.top/solves-dubbed/80a5Go2395NSI8612B69dK1n19aeW36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQbRKK97W10zDHn5r@wDJ" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now &gt;&gt; </a>
-    </div> 
-   </div> 
-  </center> 
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp; 
-  <div style="background-color: darkred; padding: 1.8rem 0;"> 
-   <section style="max-width: 520px; margin: auto;"> 
-    <h4 style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; text-align: center; color: #fff;"><i>you can leave with sadness <a href=""> here </a><br /> US 10010 126 E 23rd St New York, NY, </i></h4> 
-   </section> 
-  </div> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;
-  <br /> &nbsp;  
- <img src="http://www.captoolsacehard.top/musician-binders/80a6i2X39P5py8w512A69d3Ig19aeR36mbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQbRKK96yY1Jr05mlMwD" alt=""/></body>
+  </section>   
+ <img src="http://www.dpflyingoncs.top/3ef4r2395c8u5m11a69d9X19afN36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQMRKKd7SlM10Xh6J@UwDX/microbicidal-underfoot" alt=""/></body>
 </html>
 
---58876b8241385c6d6161cf08fffc1f6f100219497--
+--c2f4fae5e10f6e5d5f74dd9718de4df999919810110310159849--
 
