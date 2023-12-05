@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C158E8059EA
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Dec 2023 17:25:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 52722805EA2
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Dec 2023 20:30:46 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9587D10E377;
-	Tue,  5 Dec 2023 16:25:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2F3AF10E522;
+	Tue,  5 Dec 2023 19:30:45 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Tue, 05 Dec 2023 16:25:19 UTC
-Received: from mail.vgltoolsaceinfo.top (unknown [77.83.203.55])
- by gabe.freedesktop.org (Postfix) with ESMTP id BEF3210E583
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Tue, 05 Dec 2023 19:30:42 UTC
+Received: from mail.blogkroginfotacs.click (unknown [77.83.203.81])
+ by gabe.freedesktop.org (Postfix) with ESMTP id C744310E508
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  5 Dec 2023 16:25:19 +0000 (UTC)
+ Tue,  5 Dec 2023 19:30:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=vgltoolsaceinfo.top; 
+ d=blogkroginfotacs.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=times.ticking.ace.bonus@vgltoolsaceinfo.top; 
- bh=UxxCE+XJxk95Zs5cwlnv4VHYfT8=;
- b=oxZH4lxAdUQh1jO/cuqUr2ybsJTURHdNPLmXU7lP/t5IlB4WM4F04Yuju2WgnELdu/VUKFRfrofV
- mswOTtWwKda+/2onwrZa3oGXJ4+v2va1lgSpr8hc5lKMADcSPwoAzXDWDVK5HDyAu6pBtCRua8Yw
- AH+Tgvy/AQqu563ONCY=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=vgltoolsaceinfo.top;
- b=QJlmfSS4o6ftg5qCXF/2dEH2YwX1wQGuFBsR6YkmfYSVYpeJq1gTJlitFlMrcNcaFZqJzvxVav2A
- YOt+mDDXl+CqwXdt95dzX6E9Ox6BPhtEEbvnb9FUBAQDyKaHrvGAuitM+Z8lPnYKgZVzfXJb+Dn+
- pXvwuYjjWL/rc8JcfCM=;
-Received: by mail.vgltoolsaceinfo.top id hdtgn00001gn for
+ i=todays.buzz.kroger@blogkroginfotacs.click; 
+ bh=jaMvQ0H87f8kyOkmJsYXrmVyCwE=;
+ b=z1sD+k2eIIVw4Mf/j8Sj3Y7ExMdCO9hwI+VV479/buLBlmkrJrzXTxhM1PUWb4Spt3bmZ8PRJKil
+ bL8M7YaZUy/TUAgWp1tQCC8DTk9OX2chiH4SIjbFe6WnklSJSx0xww1bZmWtBfS+y/6aQLMqWu4F
+ 6zAW7OuKox8NQ3MVFfs=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
+ d=blogkroginfotacs.click; 
+ b=Uwkvtb4g0nrAGQ7RC+KTDaiL/GysNNAFJDsCUGjyZmQin1l4YtCsgwxSqvTPbI/g2Q4X/ajhoUHG
+ xQNrCI+zRv3cEkR890jtpUT6yHeZF+uD5cOki+ezcQU7ve9hmzNrI+os0NReBHLpCfjJ/5FiwAEE
+ cME0OVdjmuVoIMtkTkE=;
+Received: by mail.blogkroginfotacs.click id hdu6e60001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 5 Dec 2023 12:28:36 -0500 (envelope-from
- <times.ticking.ace.bonus-intel+2Dgvt+2Ddev=lists.freedesktop.org@vgltoolsaceinfo.top>)
-Date: Tue, 5 Dec 2023 12:28:36 -0500
-From: "Times Ticking Ace Bonus." <times.ticking.ace.bonus@vgltoolsaceinfo.top>
+ Tue, 5 Dec 2023 15:33:17 -0500 (envelope-from
+ <todays.buzz.kroger-intel+2Dgvt+2Ddev=lists.freedesktop.org@blogkroginfotacs.click>)
+Date: Tue, 5 Dec 2023 15:33:17 -0500
+From: "Todays Buzz Kroger" <todays.buzz.kroger@blogkroginfotacs.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <604507873.1701792563838900@vgltoolsaceinfo.top>
-Subject: Exclusive Ace Hardware Promo: Complete Survey for Time-Limited Daily
- Deals &ndash; Your Opinions Matter!
+Message-ID: <17522733661694.17018036422708@blogkroginfotacs.click>
+Subject: Kroger Wants You! Complete Quick Survey for Limited-Time Daily Deals!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=648fd972d08877209b20308452366c67981971033610139
+ boundary=8aaca913074359f429b0f086063d8291988710129989
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,150 +55,42 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---648fd972d08877209b20308452366c67981971033610139
-Content-Type: text/html; charset=us-ascii
+--8aaca913074359f429b0f086063d8291988710129989
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Kulim+Park:wght@200;300;400;600;700&display=swap');
-	</style> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>makes</title> 
- </head> 
- <body style="font-family: 'Kulim Park', sans-serif;"> 
-  <section> 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td align="center" class="treius"> 
-       <div style="background-color: aliceblue; width: 100%;"> 
-        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-         <tbody> 
-          <tr> 
-           <td align="center"> 
-            <center style="background-color: rgb(219, 219, 219);"> 
-             <center style="background-color: rgb(44,39,41); padding: 20px 0;"> 
-              <div style="max-width: 533px; margin: auto; font-weight: 700; font-size: 18px; line-height: 28px; color: white;"> 
-               <h1 style="margin: 0; font-size: 18px;">Acquire a $100 Ace Hardware gift card<br /> with just a few straightforward clicks!</h1> 
-              </div> 
-             </center> 
-             <br /> 
-             <br /> &nbsp; 
-             <div style="max-width: 533px; margin: auto; background-color: #fff; text-align: center;"> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td> 
-                  <div> 
-                   <section> 
-                    <article>
-                     <span>
-                      <main style="margin: 0; padding: 0;"></main> </span>
-                    </article> 
-                   </section> 
-                  </div> </td> 
-                 <td> 
-                  <div> 
-                   <section> 
-                    <article>
-                     <span>
-                      <main style="margin: 0; padding: 0;"></main> </span>
-                    </article> 
-                   </section> 
-                  </div> </td> 
-                 <td> 
-                  <div> 
-                   <section> 
-                    <article>
-                     <span>
-                      <main style="margin: 0; padding: 0;"></main> </span>
-                    </article> 
-                   </section> 
-                  </div> </td> 
-                 <td> 
-                  <div> 
-                   <section> 
-                    <article>
-                     <span>
-                      <main style="margin: 0; padding: 0;"></main> </span>
-                    </article> 
-                   </section> 
-                  </div> </td> 
-                 <td> 
-                  <div> 
-                   <section> 
-                    <article>
-                     <span>
-                      <main></main> </span>
-                    </article> 
-                   </section> 
-                  </div> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" colspan="5"> 
-                  <center style="background-color: rgb(205,1,40);"> 
-                   <p style="margin: 0;">&nbsp;</p> 
-                   <center style="padding: 20px 20px;">
-                    <a href="http://www.vgltoolsaceinfo.top/8634m2395LN86F12n6B9e0r19b3C36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQjRKKe5tA1Q05v@wDO/aborting-tankers" target="_blank"><img alt="TESE" src="http://www.vgltoolsaceinfo.top/mounter-Shakespearize/ada4j2395HP7aA13I69Xe2yo19b3x36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQjRKKe5dS10h6plqqwD" style="display: block;" width="100%" /> </a>
-                   </center> 
-                   <p>&nbsp;</p> 
-                  </center> </td> 
-                </tr> 
-                <tr> 
-                 <td align="center" colspan="5"> <p style="margin: 0; padding: 0 40px; line-height: 28px; font-size: 17px; font-weight: 700;">Participate in our customer survey for a chance to win a $100 Ace Hardware Gift Card. Your feedback is crucial for our improvement, and we genuinely value your opinions.</p> &nbsp; 
-                  <div style="padding-top: 25px; padding-bottom: 25px; background-color: rgb(205,1,40);"> 
-                   <center style="border: solid 3px #fff; border-radius: 15px; font-weight: bold; font-size: 18px; width: 300px; margin: auto; padding: 18px 0;">
-                    <a href="http://www.vgltoolsaceinfo.top/8634m2395LN86F12n6B9e0r19b3C36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQjRKKe5tA1Q05v@wDO/aborting-tankers" style="text-decoration: none; color: white;">Start Here Now &gt;&gt;</a>
-                   </center> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> 
-             </div> 
-             <br /> &nbsp;
-             <br /> &nbsp;
-             <br /> &nbsp;
-             <br /> &nbsp;
-             <br /> &nbsp;
-             <br /> &nbsp; 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-              <tbody> 
-               <tr> 
-                <td class="polse">&nbsp;</td> 
-                <td class="polse">&nbsp;</td> 
-                <td class="polse">&nbsp;</td> 
-                <td class="polse">&nbsp;</td> 
-                <td class="polse">&nbsp;</td> 
-               </tr> 
-               <tr> 
-                <td align="center" colspan="5"> 
-                 <div style="background-color: rgb(205,1,40); padding: 15px 0;"> 
-                  <address style="font-size: 13px; line-height: 19px; font-weight: bold; color: white;">you can leave with sadness <a href="http://www.vgltoolsaceinfo.top/a9d4e2395KQy8611a69e1M19b3R36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQjRKKe6A10Tix5mMWwD/Tananarive-evaluative">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
-                 </div> </td> 
-               </tr> 
-               <tr> 
-                <td>&nbsp;</td> 
-                <td>&nbsp;</td> 
-                <td>&nbsp;</td> 
-                <td>&nbsp;</td> 
-                <td>&nbsp;</td> 
-               </tr> 
-              </tbody> 
-             </table> 
-            </center> </td> 
-          </tr> 
-         </tbody> 
-        </table> 
-       </div> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-  </section>   
- <img src="http://www.vgltoolsaceinfo.top/politicking-condemning/a626JV23z95SC8_513I6qw9e3k19b3i36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQjRKKe6qgiw106iXwXqD" alt=""/></body>
-</html>
+Kroger
 
---648fd972d08877209b20308452366c67981971033610139--
+*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
+
+
+We express our thanks for your involvement in our survey.  Your input is of 
+great worth to Kroger, and we genuinely appreciate your feedback. 
+
+
+Your ongoing support is highly valued, and we look forward to receiving your feedback with anticipation. 
+
+
+Accessing the survey is effortless - just click the link below.  It's a short task that will take only a few minutes of your valuable time, and rest assured that your responses will be treated with the highest level of confidentiality. 
+
+Start Here Now >>
+http://www.blogkroginfotacs.click/rubbing-homosexual/e404f2395l86Uv12h69CecI19b6K36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQbSmmn6qLF1G06cUUwDy
+
+We once more convey our sincere thanks for your unwavering support.  We look forward to receiving your feedback soon.  Your continued support is genuinely appreciated, and we're excited to hear from you!
+
+
+Warm regards,
+The kroger Survey Team
+
+
+*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
+
+To withdraw from email, click_here >>>>> http://www.blogkroginfotacs.click/5ed6NN239Y5Qh86i12Y6z9edo19b6G36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQbSmmn5l1vJ06QX3UwD/lioness-soaked
+126 E 23rd St New York, NY, US 10010
+
+
+
+<span dir="regularly"></span><span><font></font></span><font color="memorize"></font>
+
+--8aaca913074359f429b0f086063d8291988710129989--
 
