@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 318D4803F4E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Dec 2023 21:29:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 195DB805703
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  5 Dec 2023 15:18:42 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5FA9310E3DF;
-	Mon,  4 Dec 2023 20:29:57 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F21FF10E54B;
+	Tue,  5 Dec 2023 14:18:40 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Mon, 04 Dec 2023 20:29:55 UTC
-Received: from mail.dpflyingoncs.top (unknown [77.83.203.96])
- by gabe.freedesktop.org (Postfix) with ESMTP id 6691810E339
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Tue, 05 Dec 2023 14:18:38 UTC
+Received: from mail.mcinfodropcp.top (unknown [77.83.203.85])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6452910E12B
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  4 Dec 2023 20:29:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dpflyingoncs.top;
+ Tue,  5 Dec 2023 14:18:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=mcinfodropcp.top;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=win-with-southwest-quick-survey@dpflyingoncs.top; 
- bh=8dlO7hylzsCdqz2ogWK5yRJRGHM=;
- b=hu7twr47MsLGgrirALFyrDV2f85sohIcq7ir+Pvy+6IicO9F5NDJ5oJ91nbkWAhZiGbYKnmYYwPp
- 2p7OSFozooPgQOoeFTwubgOBiJLDL5TA40wSfUFl/T5jdOopuRH7rPUJAUj8uEYBcWcElLQapR8c
- Vrpd+HAnpBr+jZzfupc=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dpflyingoncs.top;
- b=vjcDTXUuftyF5fZddfmXIZXsyVOkDJk5cZodA3hMxtuVyFAXtZ5ny3X+MVaAIForwZ3Q2N3CAwGV
- O4dJfpy6E8+saP8Hll6m9PcxyclWdh8j0RBUNXbwvN5YZrpRi6KH86LO0kjRCrlBVSSWw5lS1KdJ
- +OB0AeysKdDWLYaULYQ=;
-Received: by mail.dpflyingoncs.top id hdorc60001g4 for
+ i=guest_satisfaction_at_mcdonalds@mcinfodropcp.top; 
+ bh=ckzPso6DJy3jaPs0ONLre0aOAwA=;
+ b=psUWXroValN+CK0aIQ7ECeFQOd/YeLzOVUS/YGc4EvGvgHGk0S6BH9ySadtheqr9kfnWfgEjiPve
+ g7XHHCW+y9dJd+zw9uLiBek0OxFOZ0fAXcuM1bbPWbgIGaxiZb/TjfgktZKXOShGdiu3j4TLBms+
+ c7ITO98vnnzfeW63t4A=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=mcinfodropcp.top;
+ b=C+sRCHaDYxYkd9XPhJV8CKp+NTUkT/XmXZjK2WmqQ156E4BaXjv9R05mA3xYaZWUj8DvKOIp3T8e
+ pLei6tMwSW0t5UZc/fYVQANtVaa59bjq/f8G/VhdmqeTVSXb36Y0rNOEAb/iThhVWkchVxEzLXHk
+ u1LEOFO5XZ5+sRoM9/k=;
+Received: by mail.mcinfodropcp.top id hdt1ru0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 4 Dec 2023 15:21:13 -0500 (envelope-from
- <win-with-southwest-quick-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@dpflyingoncs.top>)
-Date: Mon, 4 Dec 2023 15:21:13 -0500
-From: "Win With Southwest Quick Survey"
- <win-with-southwest-quick-survey@dpflyingoncs.top>
+ Tue, 5 Dec 2023 10:19:31 -0500 (envelope-from
+ <guest_satisfaction_at_mcdonalds-intel+2Dgvt+2Ddev=lists.freedesktop.org@mcinfodropcp.top>)
+Date: Tue, 5 Dec 2023 10:19:31 -0500
+From: "Guest Satisfaction At McDonalds"
+ <guest_satisfaction_at_mcdonalds@mcinfodropcp.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <4638579473999.170172125120800@dpflyingoncs.top>
-Subject: Hurry, Participate Now: Southwest's Survey for Daily Promo Surprises!
+Message-ID: <150446603327.170178481466766@mcinfodropcp.top>
+Subject: McDonald's Survey: Share Your Thoughts &ndash;
+ Limited Time Offers Await! Grab Today's Exclusive Daily Deals!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=c2f4fae5e10f6e5d5f74dd9718de4df999919810110310159849
+ boundary=2612bd53d9c1a2362b747229e9d6660d10349743
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,105 +55,52 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---c2f4fae5e10f6e5d5f74dd9718de4df999919810110310159849
-Content-Type: text/html; charset=us-ascii
+--2612bd53d9c1a2362b747229e9d6660d10349743
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>genuinely</title> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&display=swap');
-	</style> 
- </head> 
- <body> 
-  <section class="onglys"> 
-   <div id="iibso" style="background-color: #ffffff; width: 100%;">
-    &nbsp; 
-    <aside class="ranguye"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="center"> 
-         <div style="max-width: 16cm; margin: auto; background-color: #F6F8FA; font-family: 'Schibsted Grotesk', sans-serif;"> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <div style="max-width: 325px; margin: auto;">
-               <a href="http://www.dpflyingoncs.top/5754r2395l8rN612y69Sd4p19afD36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQMRKKd5k10DT5LWwUD/inaction-Honeywell" target="_blank"><img alt="RES" src="http://www.dpflyingoncs.top/c7d5r239w5sx7ka12Y6I9d6w19afV36RbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQMRKKd5tYl105QUwUD/microbicidal-underfoot" style="display: block; padding: 1.9rem 0;" width="100%" /> </a>
-              </div> </td> 
-            </tr> 
-            <tr bgcolor="ffffff"> 
-             <td> <p style="margin: 0; padding: 15px 47px; text-align: center; font-size: 4.5mm; line-height: 7mm;">We wish to express our gratitude for choosing Southwest for your travel requirements. Your loyalty and support are paramount to us, and we truly appreciate the opportunity to be of service to you.</p> </td> 
-            </tr> 
-            <tr bgcolor="ffffff"> 
-             <td> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td class="kkysk">&nbsp;</td> 
-                 <td class="kkysk">&nbsp;</td> 
-                 <td align="center" class="kkysk"> 
-                  <div style="max-width: 85%; margin: auto;">
-                   <a href="http://www.dpflyingoncs.top/5754r2395l8rN612y69Sd4p19afD36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQMRKKd5k10DT5LWwUD/inaction-Honeywell"><img alt="NBS" src="http://www.dpflyingoncs.top/d4f4b2395pU7ma11D69d7w19afr36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQMRKKd6SX1k0n5SNwDz/megaword-seized" width="100%" /> </a>
-                  </div> </td> 
-                 <td class="kkysk">&nbsp;</td> 
-                 <td class="kkysk">&nbsp;</td> 
-                </tr> 
-               </tbody> 
-              </table> <p style="margin: 0; padding: 15px 47px; text-align: center; font-size: 4.5mm; line-height: 7mm;">In our ongoing commitment to delivering outstanding experiences, we cordially invite you to participate in a brief survey regarding your recent flight and overall experience with Southwest.<br /> <br /> We highly value your feedback, and as a token of our appreciation for your time and input, we would like to offer you a special gesture.</p> 
-              <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-               <tbody> 
-                <tr> 
-                 <td align="center" class="jyys"> 
-                  <div style="max-width: 90px; margin: auto;">
-                   <a href="http://www.dpflyingoncs.top/5754r2395l8rN612y69Sd4p19afD36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQMRKKd5k10DT5LWwUD/inaction-Honeywell" target="_blank"><img alt="FRES" src="http://www.dpflyingoncs.top/circulated-homicide/9ae6A2nO395E7aRU11S69d8D19afV36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQMRKKd7tGJv10A5zywlD" width="100%" /> </a>
-                  </div> </td> 
-                </tr> 
-                <tr> 
-                 <td> <p style="margin: 0; padding: 15px 47px; text-align: center; font-size: 4.5mm; line-height: 7mm;">To participate in the survey, kindly click on the link below. The survey is expected to take only a few minutes of your time, and we want to reassure you that your responses will be kept completely confidential.</p> 
-                  <div> 
-                   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                    <tbody> 
-                     <tr> 
-                      <td align="center" id="ppos"> 
-                       <div>
-                        &nbsp; 
-                        <center style="font-weight: 900; padding: 1rem 1.5rem; background-color: rgb(10, 43, 92); width: 230px; margin: auto; border-radius: 7px;">
-                         <a href="http://www.dpflyingoncs.top/5754r2395l8rN612y69Sd4p19afD36HbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQMRKKd5k10DT5LWwUD/inaction-Honeywell" style="text-decoration: none; color: white;">Start The Survey Here &gt;&gt; </a>
-                        </center> 
-                       </div> </td> 
-                     </tr> 
-                    </tbody> 
-                   </table> 
-                  </div> </td> 
-                </tr> 
-               </tbody> 
-              </table> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </div> <br /> <br /> &nbsp; 
-         <div style="max-width: 16cm; margin: auto; background-color: #F6F8FA; font-family: 'Chivo', sans-serif;"> 
-          <p style="margin: 0; padding: 15px 20px; text-align: center; font-size: 3.5mm; font-family: 'Chivo', sans-serif;">We appreciate your ongoing support and for dedicating time to complete our survey.<br /> <br /> We eagerly await your response.<br /> <br /> Best regards,</p> &nbsp; 
-          <div style="background-color: #ffffff; padding-top: 250px; padding-bottom: 100px;"> 
-           <div style="padding: 30px 0; background-color: antiquewhite; font-size: 11px; font-weight: 800; ;">
-            Use the exit option 
-            <a href="http://www.dpflyingoncs.top/inaction-Honeywell/af85S23P95aK8u612v69dB5M19afy36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQMRKKd6vRs10z6O0wykD"> here </a>
-            <br /> US 10010 126 E 23rd St New York, NY,
-           </div> 
-          </div> 
-         </div> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
-    </aside> 
-   </div> 
-  </section>   
- <img src="http://www.dpflyingoncs.top/3ef4r2395c8u5m11a69d9X19afN36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQMRKKd7SlM10Xh6J@UwDX/microbicidal-underfoot" alt=""/></body>
-</html>
+A SPECIAL OFFER FOR OUR VALUED USERS
+-----------------------------------------
 
---c2f4fae5e10f6e5d5f74dd9718de4df999919810110310159849--
+
+Mc Donalds
+
+Where would you like to go for a family meal? And where could 
+you find a suitable option? At McDonald's, we can provide you
+ with that perfect choice for a family outing. 
+
+Don't miss out on this incredible opportunity! For a limited time,
+ you can win a $100 McDonald's gift card just by completing a short 
+ survey.  Enjoy our wide variety of combos and delicious flavors. 
+
+We want to thank you for choosing us as your first choice for 
+family dining.  We value your preference and encourage you to 
+participate in our survey for a chance to win this gift card.  
+Thank you for your loyalty and good luck!
+
+
+By taking the survey you might receive a $100 gift card
+
+
+
+TAKE THE SURVEY >>>>>
+http://www.mcinfodropcp.top/blotting-individualized/b525S2i395JW86Z11Q69dct19b1T36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7YQaRKKR5X10lM6t11wDU
+
+
+
+Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
+
+Mc Donalds Survey
+
+
+-----------------------------------------
+
+To put a stop to email, click_here >>>>> http://www.mcinfodropcp.top/e7b5p23Y95W8J6j12h69dId_19b1s36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQaRKKR7UM10mRT6gWwzDT/salutary-understandingly
+126 E 23rd St New York, NY, US 10010
+
+
+
+<span></span><span><font></font></span><style size="censored"><span color="Moser"></span><font color="hunting"><span color="thunder"><font dir="Pauling"><small></span></style></font></small><small></small></font><font lang="strolled"></font>
+
+--2612bd53d9c1a2362b747229e9d6660d10349743--
 
