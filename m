@@ -1,45 +1,64 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60C56807763
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Dec 2023 19:17:27 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC8DD80781C
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Dec 2023 19:52:30 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 382BF10E113;
-	Wed,  6 Dec 2023 18:17:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id CF63D10E7A0;
+	Wed,  6 Dec 2023 18:52:29 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 309 seconds by postgrey-1.36 at gabe;
- Wed, 06 Dec 2023 18:17:24 UTC
-Received: from mail.gamblyscostrs.click (unknown [77.83.203.165])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4027410E113
- for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  6 Dec 2023 18:17:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=gamblyscostrs.click; 
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=act.fast.costco.day.specials@gamblyscostrs.click; 
- bh=FhHDd0mqAFMRJmyiemWlb+8YcuM=;
- b=Jjc9h67fBj6SqhOK9PXscW+r9MLNsg6e8S3/nfcdnR3H3+bZvk/W/sHa4LH4E3GVvpnjemD0PlNd
- bhCFsy0r8APN6T1XPzwCSjRsBePa1TxmJlUAdXQuhMy1kbUFGGgJ+f3JVTUAgoer3m6KRwznOc1w
- cCzyctn4+OlXVAA+Gsk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gamblyscostrs.click;
- b=scELg6RRnYoB7qPIzqvMBALf+QTBVfp+jJQ68+G59cdFo9dvvwfSCNxrZpTNz3zeZCuKivgTYDGh
- iYLY1FmRWLh8YwfprErRk8OqZG4PV4XbfZZQrGRBh67UX63SWHaoBvsy5TdkPwCeZrbZaIGICMk0
- hjxjv903DP9ngn+5bT4=;
-Received: by mail.gamblyscostrs.click id he2tb80001gi for
- <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 6 Dec 2023 13:06:12 -0500 (envelope-from
- <act.fast.costco.day.specials-intel+2Dgvt+2Ddev=lists.freedesktop.org@gamblyscostrs.click>)
-Date: Wed, 6 Dec 2023 13:06:12 -0500
-From: "Act Fast Costco Day Specials"
- <act.fast.costco.day.specials@gamblyscostrs.click>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <2009091254312.17018859620615@gamblyscostrs.click>
-Subject: Don't Wait! Costco Survey Reveals Daily Savings &ndash; Act Fast!
+Received: from lhr.gtn-esa2.in (gtnesa2.ptcl.net [59.103.87.20])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 6BEBA10E78E;
+ Wed,  6 Dec 2023 18:52:26 +0000 (UTC)
+Message-Id: <573856$1hl6ol@lhr.gtn-esa2.in>
+X-IPAS-Result: =?us-ascii?q?A2EsDAAywnBl/0+gtbZaHQEBAQEJARIBBQUBQAmBRgKFD?=
+ =?us-ascii?q?4RTqR2GRxOBag8BAQEBAQEBAQFNBAEBhQaHLSc6BA0BAgQBAQEBAwIDAQEBA?=
+ =?us-ascii?q?QEBAwEBAQUBAQEBAQEGAwECAoEZhS9Ghk0nVigNAhkNAkkWE4Vfrw6BMhpnh?=
+ =?us-ascii?q?F+xTi4Bgm6FHwGBUIQIkBABEgGDfBWCUwSJFwcyhUopiTqGegcCBXBHcBsDB?=
+ =?us-ascii?q?wN/DysHBC0iBgkULSMGUQQoIQkTEj4Ea4JECoECPw8OEYI9YTYZSIJbFQw0S?=
+ =?us-ascii?q?nUQQheBEW4bEx43ERIXDQMIdB0CMjwDBQMEMwoSDQshBVYDRQZJCwMCGgUDA?=
+ =?us-ascii?q?wSBMwUNHgIQLCcDAxJJAhAUAzsDAwYDCzEDMIEZDE8Dax82CTwPDB8COQ0nI?=
+ =?us-ascii?q?wIsVgUSAhYDJBo2EQkLKAMvBjsCEwwGBgleJhYJBCcDCAQDXAsDMxEdNwkDe?=
+ =?us-ascii?q?D01CAwbRAhHHRKjNXgBgUdEgRAhhUKNdoNoih6DTqBOB44Sm0cBk14DkjZHh?=
+ =?us-ascii?q?ziEaotZIKo1DX9whCdSGaItaTsCBwsBAQMJimIBAQ?=
+IronPort-Data: A9a23:9yOLxKnLKSVVKOFqcOFlMdLo5gxkJkRdPkR7XQ2eYbSJt1+Wr1Gzt
+ xIfCGnQPvqKYTenKNglPIu1/UkHvpTRyNJkSgdurX01Ri4T+ZvOCP2ndUqhZCn6wu8v7a5EA
+ 2fyTvGacajYm1eF/k/F3oDJ9CU6jefSLlbFILas1hpZHGeIcw9/z0o/8wIFqtQw24PgWVvT4
+ YiaT/D3YTdJ5RYlagr41Ire8HuDjNyq0N/PlgVjDRzjlAa2e0g9VPrzF4noR5fLatA88tqBe
+ gr25OrRElU1XfsaIojNfr7TKiXmS1NJVOSEoiI+t6OK2nCuqsGuu0qS2TV1hUp/0l20c95NJ
+ NpltsGTQFoRZLPwl+FeDEN6KiR8fpdnweqSSZS/mZT7I0zuT0Cq2/xoSVk/NowW++0xCmZLs
+ +AHQNwPRknT3aTvkOv9E7c0wJtyRCXoFNp3VnVI5CvYA7AFQZnFa73W7tse2joswNhNdRrbT
+ 5dDMWUyNkSdC/FJElBUMr8/wOaOuj68fQEGmVjKn4gd7GeGmWSd15CoarI5YOeiSthcmEmJu
+ yTZ9mL2WE0yO9mWyD7D+XWp7sfdnT75WYsUG6C/3vhohUDVy2AOThYQPXO/oOi4jEGWUtRbK
+ kgd5Wwlqq1a3FyvXsTVVhu8oXqNoVgXXN84O+k79R2EzYLd5QKYAmEbCDVGbbQOsNIxVDUt4
+ VaNh9PgLTtyrLmSTnHb/bCRxRu1KDgUJGgNeCYCQiMK5tDipMc4iRenZtlsAL6lk/WsQ2+2y
+ DePxAA/jr4Ly9EG3aCy5kzKmRqjo5HISkg+4QC/dmak6B5pIY2ofYql7R3c8vBNNq6HQVSb+
+ nsJgc6T6KYJF57lvDyMSeICAbiv6LCOMDDaqV9pA5QlsT+q/haLfIZM7TU7K0l5GsIFYiPyJ
+ kHJtA5d6YRQIHyyK6htbOqZCsI2wKylGsr5E/zZcPJKY4Ntb0mJ5ixjaUOL3HzqiA4ri65XE
+ YWbcIClS2kTD6tPzTyqSuNb2rgurggsxW7VVI3k5xCm16eOIn+TVboBdlCJa4gR/qOFsRjc9
+ ZBbKeOLzQlSVKv1ZSy/2Y0eM1EMa2Q6DJbeqspLe+rFKQ1jcEkxTfjM0LondKRugqRW0OrE4
+ ze9WSdw2lr2gnnGIAOFYXBubpvrXJB863kmPS9qMFq1nXggCbtD949GJ8FxJOl+srU9lbgrH
+ pHpZvm9PxiGcRyfkxx1UHU3hNYKmMiD7e5FA8ZpjPXTsXKtq8wlN+IIpjfSyRQ=
+IronPort-HdrOrdr: A9a23:dJEpC6NjUEN/qMBcTtGjsMiBIKoaSvp037Dk7SBModU8SKClfq
+ eV8cjztCWetN9/YgBCpTntAsi9qBDnn6KdiLN5VYtKOjOW2ldAR7sM0WKN+VPdJxE=
+X-Talos-CUID: 9a23:XnwzD21ljDM6cZltvjevNLxfGZ0GeyDllmnsLEr7VjxLcbiXCmWxwfYx
+X-Talos-MUID: 9a23:Bs9MQQaBFnnTQeBTsHzWqTA+NeFUpOegNB48m8o8meOLOnkl
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-AV: E=Sophos;i="6.04,256,1695668400"; d="scan'208";a="52075285"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from unknown (HELO TS.pan-pacific.com.tw) ([182.181.160.79])
+ by lhr.gtn-esa2.in with ESMTP; 06 Dec 2023 23:52:14 +0500
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=3961bf4ccd32551cdf83f32174b4821a910222100
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: #Congrat!!
+To: "t.maruyama@n-mtec.co.jp" <Arif.Khan@ptcl.net.pk>
+From: <Arif.Khan@ptcl.net.pk>
+Date: Thu, 07 Dec 2023 02:52:01 +0800
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,107 +71,19 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: grantsprogram@cpn.it
+Cc: asghar.meo@ptcl.net.pk
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---3961bf4ccd32551cdf83f32174b4821a910222100
-Content-Type: text/html; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Congrat!!
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Georama:wght@100;200;300;400;500;600;700;800;900&display=swap');
-	</style> 
-  <title>shall be held</title> 
- </head> 
- <body style="font-family: 'Georama', sans-serif;"> 
-  <center style="background-color: rgb(231, 231, 231); width: 100%;"> 
-   <header style="padding: 35px 0;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <center style="max-width: 540px; margin: auto; background-color: #fff;"> 
-         <article> 
-          <p style="max-width: 400px; margin: auto;"><a href="http://www.gamblyscostrs.click/rubies-Bartlett/3965tN2395y_8j613M6ma0dIz19ben36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2SmmK7LD1Fw0k6Y2ypwD" target="_blank"><img alt="JUSE" src="http://www.gamblyscostrs.click/9ad6AL239p5HVT7a13DnJ6a0fP19bes36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ2SmmK5Iv10G5CywDO/Eduardo-evolving" style="display: block;" width="100%" /></a></p> 
-          <p style="max-width: 244px; margin: auto;"><a href="http://www.gamblyscostrs.click/rubies-Bartlett/3965tN2395y_8j613M6ma0dIz19ben36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2SmmK7LD1Fw0k6Y2ypwD" target="_blank"><img alt="USE" src="http://www.gamblyscostrs.click/7914c2395O7aKn11L6a10H19beK36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ2SmmK6j1BwW06U@B2wD/eradicates-quintet" style="display: block;" width="100%" /></a></p> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <div style="padding: 33px 0;"> 
-               <h6 style="margin: 0; font-size: 18px; line-height: 30px; font-weight: 500; padding: 0 45px;">We genuinely appreciate your decision to select us as your primary solution for fulfilling your needs. Being a part of your life and providing excellent products and services brings us immense pride.</h6> 
-               <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-                <tbody> 
-                 <tr> 
-                  <td align="center" class="dingos"> 
-                   <center style="padding: 25px 0;"> 
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="230px"> 
-                     <tbody> 
-                      <tr> 
-                       <td align="center" width="90px"> 
-                        <div>
-                         <a href="http://www.gamblyscostrs.click/rubies-Bartlett/3965tN2395y_8j613M6ma0dIz19ben36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2SmmK7LD1Fw0k6Y2ypwD" target="_blank"><img alt="NHSE" src="http://www.gamblyscostrs.click/1f16R23zH95K7alG11j6a11y19bex36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7BQ2SmmK5b1V0q5zpUwD/checking-forefinger" style="display: block;" width="100%" /> </a>
-                        </div> </td> 
-                       <td align="center" width="100px"> 
-                        <div>
-                         <a href="http://www.gamblyscostrs.click/rubies-Bartlett/3965tN2395y_8j613M6ma0dIz19ben36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2SmmK7LD1Fw0k6Y2ypwD" target="_blank"><img alt="NHSE" src="http://www.gamblyscostrs.click/Eduardo-evolving/bac6e2FR395d7aQx11l6a12y19bev36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQ2SmmK6C1GlH06C1wDj@" style="display: block;" width="100%" /> </a>
-                        </div> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </center> 
-                   <center> 
-                    <h4 style="margin: 0; font-size: 18px; line-height: 30px; font-weight: 500; padding: 0 45px;">We express our heartfelt thanks to you for dedicating your time to complete this brief survey. Seize the fantastic opportunity to win a $100 prize through your participation. Your valuable opinion and time are truly appreciated, and we look forward to remaining your preferred choice in the future.</h4> 
-                    <table align="center"> 
-                     <tbody> 
-                      <tr> 
-                       <td align="center"> 
-                        <div style="padding: 35px 0;"> 
-                         <center style="background-color: rgb(4,97,168); padding: 18px 45px; font-weight: bold; font-size: 20px; border-radius: 10px;">
-                          <a href="http://www.gamblyscostrs.click/rubies-Bartlett/3965tN2395y_8j613M6ma0dIz19ben36pbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2SmmK7LD1Fw0k6Y2ypwD" style="text-decoration: none; color: #fff;" target="_blank">Start Here Now </a>
-                         </center> 
-                        </div> </td> 
-                      </tr> 
-                     </tbody> 
-                    </table> 
-                   </center> </td> 
-                 </tr> 
-                </tbody> 
-               </table> 
-               <hr /> 
-               <div> 
-                <center> 
-                 <h6 style="margin: 0; font-size: 14px; line-height: 30px; font-weight: 500; padding: 0 45px;">We deeply appreciate your ongoing support and the time you've invested in completing our survey. We eagerly await your response. Best regards,<br /> <strong>The Costco Survey Team.</strong></h6> 
-                </center> 
-               </div> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </article> 
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-    <div> 
-     <div> 
-      <div style="padding-top: 120px; padding-bottom: 120px;"> 
-       <div style="font-size: 12px; font-weight: 700; line-height: 22px; text-align: center; max-width: 450px;">
-        more than welcome to leave in 
-        <a href="http://www.gamblyscostrs.click/2c34r2395EV86B13ouD6a0ej19beW36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ2SmmK7fh1oih06aJAwDL/preallocating-silica">here</a> we' ll miss you
-        <br /> US 10010 126 E 23rd St New York, NY,
-       </div> 
-      </div> 
-     </div> 
-    </div> 
-   </header> 
-  </center>   
- <img src="http://www.gamblyscostrs.click/searchingly-uniquely/c425io2395SM8Y511R6a13G19bez36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ2SmmK5XA10q6GPMwND" alt=""/></body>
-</html>
+Ref No: BEH/XGM/012/0023.
 
---3961bf4ccd32551cdf83f32174b4821a910222100--
+Your email address was chosen at random during an internet search to receiv=
+e USD 805,000.00 from me, the chairman and CEO of Berkshire Hathaway. If yo=
+u are interested respond promptly via this e-mail:{grantsprogram@cpn.it} to=
+ learn more about the donation and how to claim it.
 
+Regards,
+Warren Edward Buffett
