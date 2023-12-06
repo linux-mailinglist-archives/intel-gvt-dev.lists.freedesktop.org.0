@@ -2,45 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F49A807345
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Dec 2023 16:04:59 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 32F32807490
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Dec 2023 17:11:00 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 42E3D10E74B;
-	Wed,  6 Dec 2023 15:04:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 0955910E74A;
+	Wed,  6 Dec 2023 16:10:59 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 06 Dec 2023 15:04:55 UTC
-Received: from mail.maxmobilecash.click (unknown [77.83.203.13])
- by gabe.freedesktop.org (Postfix) with ESMTP id 5011210E73E
+ Wed, 06 Dec 2023 16:10:56 UTC
+Received: from mail.toolsshoppers.top (unknown [77.83.203.14])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 3F9A210E74A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  6 Dec 2023 15:04:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=maxmobilecash.click; 
+ Wed,  6 Dec 2023 16:10:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=toolsshoppers.top;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=tmobile-flash-promo-alert@maxmobilecash.click; 
- bh=69UnBF4q/LCSES38ybQH97jnu0c=;
- b=W7erxhDnyDvu0IDVIkVGKDOBAv0xDSTZTLiAgboVM8YaNQaZSm6vP2CoE5wmct4BBj7/SjO5gyqd
- vgMr2B8vkS7I2lpW02TPJ7AVsLmRl8dcgjk+W01TQpkKVprU9m8M9DcVPfGEy0BFpEor0zU0RCwj
- IPJGSX538EUDy8vyVGI=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maxmobilecash.click;
- b=gJM4ELb7JdMoQ6cyzq1m5ueEyJOFd4zsF5WvB+yZhjKuZ+IrzGSXu1JWvnSSoltqk3aNMzOBIuOh
- 33bLmiIl2+gbofr03ZjYkui2rJBSwSj6fxQfyF7LR0ZTESLV0v/EY20+gNIAduGZNHJEzfu7+MAp
- v5OQFp06i/7p4iVedZk=;
-Received: by mail.maxmobilecash.click id he26pe0001gt for
+ i=aces.fast.survey@toolsshoppers.top; 
+ bh=iQhoH+d/MHvf1x+ai02VhEYowGI=;
+ b=FWJztB7lulxrutpqHtvzRFLZ57ndXMS4M0sRuCndYOfG2c19duoWkgFyoSS7bPej5tP1Fxnlm2I2
+ LOIgwCP4SiDFkF4zLHNjVd0GQqMKyN76Fr7w9184DDAhe9N8UWKMXtVCrLrFYTuh6IS7m1835n+T
+ NY1BmtJv3uOtBv/rgOc=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=toolsshoppers.top; 
+ b=rKjKkOX+9XeZv1UT4/keKQjbt+tVcR6u+YXNVNa0n/QcVLOpiIoG3UU+MVcjfBBQIpU+IL2bfot8
+ m7gSWvouWmm8bSW7tFjWDTyVdHzsv7q+JkSx7AbP7xeIDg4YhC1XJgEFFa+VzYimE+Qff+4JQbYq
+ Xifvpf73yYUl+U5xA+8=;
+Received: by mail.toolsshoppers.top id he2eh00001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 6 Dec 2023 09:56:17 -0500 (envelope-from
- <tmobile-flash-promo-alert-intel+2Dgvt+2Ddev=lists.freedesktop.org@maxmobilecash.click>)
-Date: Wed, 6 Dec 2023 09:56:17 -0500
-From: "TMobile Flash Promo Alert"
- <tmobile-flash-promo-alert@maxmobilecash.click>
+ Wed, 6 Dec 2023 10:54:13 -0500 (envelope-from
+ <aces.fast.survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@toolsshoppers.top>)
+Date: Wed, 6 Dec 2023 10:54:13 -0500
+From: "Aces Fast Survey" <aces.fast.survey@toolsshoppers.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <8889828050997.1701874569783201@maxmobilecash.click>
-Subject: Today Only: T-Mobile Survey for Exclusive Daily Deals &ndash;
- Your Feedback Needed Now!
+Message-ID: <11659947582.17018780316266@toolsshoppers.top>
+Subject: Exclusive Ace Deals: Quick Survey for Today's Promotions!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=199e8a4408b58a097b9f6e8aa73f932b981035100991031028100062
+ boundary=72f0c19eaad599581e2103fe79335bdc798100103
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---199e8a4408b58a097b9f6e8aa73f932b981035100991031028100062
+--72f0c19eaad599581e2103fe79335bdc798100103
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,111 +61,238 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Gantari:wght@100;200;300;400;500;600;700;800;900&display=swap');
+	</style> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>participating</title> 
+  <title>freedom</title> 
  </head> 
- <body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
-  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-   <tbody> 
-    <tr> 
-     <td> 
-      <section> 
-       <aside> 
-        <div>
-         <span>
-          <main></main> </span>
-        </div> 
-       </aside> 
-      </section> </td> 
-     <td> 
-      <section> 
-       <aside> 
-        <div>
-         <span>
-          <main></main> </span>
-        </div> 
-       </aside> 
-      </section> </td> 
-     <td> 
-      <section> 
-       <aside> 
-        <div>
-         <span>
-          <main></main> </span>
-        </div> 
-       </aside> 
-      </section> </td> 
-     <td> 
-      <section> 
-       <aside> 
-        <div>
-         <span>
-          <main></main> </span>
-        </div> 
-       </aside> 
-      </section> </td> 
-    </tr> 
-    <tr> 
-     <td align="center" colspan="4" id="glowbks">&nbsp;&nbsp;&nbsp;&nbsp; 
-      <div style="max-width: 533px; margin: auto; text-align: center;"> 
-       <center> 
-        <aside> 
-         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(183,45,94); padding: 15px 30px;" width="100%"> 
-          <tbody> 
-           <tr> 
-            <td align="center"> 
-             <center> 
-              <h4 style="font-size: 45px; margin: 0; padding: 15px 0; color: white;"><a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D" style="text-decoration: none; color: white;">T-Mobile</a></h4> 
-             </center> </td> 
-           </tr> 
-          </tbody> 
-         </table> 
-         <div> 
-          <center> 
-           <p style="border-top: solid 5px #000; border-bottom: solid 5px #000; font-size: 22px; font-weight: 500; line-height: 30px;">A Special Deal Crafted<br /> Especially for Our Valued Customers</p> 
-          </center> 
-          <p style="padding-top: 25px; margin: 0; font-size: 18px; line-height: 28px; text-align: center; width: 480px; margin: auto;">We want to extend our appreciation for choosing T-Mobile. Your loyalty and support are highly valued, and we treasure the opportunity to assist you.</p> 
-          <div style="padding-top: 22px; padding-bottom: 22px;">
-           <a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D" target="_blank"><img alt="UUSE" src="http://www.maxmobilecash.click/vigilantly-fraction/b704i2395L7auY11p69f9D19baV36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ.SmmQ7USDym105R2TwD" style="display: block;" width="100%" /></a>
-          </div> 
-          <p style=" margin: 0; font-size: 18px; line-height: 28px; text-align: center; width: 480px; margin: auto;">Your feedback is highly valued, and as a token of our gratitude for sharing your thoughts, we'd like to offer a small gesture of appreciation.</p> &nbsp; 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; padding-top: 20px; padding-bottom: 20px;" width="230px"> 
-           <tbody> 
-            <tr> 
-             <td align="center" class="lolse" width="90px"><a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D"><img alt="MKS" src="http://www.maxmobilecash.click/Anglophobia-investors/9ae4a2395Q7BaG12V6j9faL19baT36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ.SmmQ7BT1J0om6bkJ0wD" style="display: block;" width="100%" /> </a></td> 
-             <td class="lolse" width="110px"><a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D"><img alt="MNSE" src="http://www.maxmobilecash.click/3774S2395L7alv12d69fXbw19baW36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ.SmmQ6o1RKT05aPwMD/silting-bumptiously" style="display: block;" width="100%" /> </a></td> 
-            </tr> 
-           </tbody> 
-          </table> &nbsp; 
-          <h3 style=" margin: 0; font-size: 18px; line-height: 28px; text-align: center; width: 480px; margin: auto; font-weight: 700;">Upon completion of the survey, you can choose a gift from a varied range of options.</h3> &nbsp; 
-          <div style="max-width: 220px; margin: auto; padding-top: 30px; padding-bottom: 30px;"> 
-           <center style="background-color: rgb(36, 36, 36); padding: 5.8% 5%; font-weight: bold; font-size: 24px; ;">
-            <a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D" style="text-decoration: none; color: white;" target="_blank">Start Now </a>
+ <body style="font-family: 'Gantari', sans-serif;"> 
+  <div style="background-color: rgb(235, 235, 235); width: 100%;"> 
+   <center style="border-top: double 8px #cecece;"> 
+    <section style="padding: 45px 0;"> 
+     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+      <tbody> 
+       <tr style="background-color: rgb(235, 235, 235);"> 
+        <td class="klogos"> 
+         <section> 
+          <div> 
+           <center> 
+            <aside>
+             <span>
+              <main style="padding: 0; margin: 0;"> 
+               <cite style="padding: 0; margin: 0;"> </cite> 
+               <dir style="padding: 0; margin: 0;"> 
+               </dir> 
+               <cite style="padding: 0; margin: 0;"> </cite> 
+              </main> </span>
+            </aside> 
            </center> 
           </div> 
-          <br /> 
-          <br /> &nbsp;
-         </div> 
-        </aside> 
-       </center> 
-      </div> 
-      <div style="padding-bottom: 180px; background-color: rgb(224, 224, 224);"> 
-       <center style="max-width: 520px; margin: auto;"> 
-        <p style="padding-top: 25px; margin: 0; font-size: 18px; line-height: 28px; text-align: center; width: 480px; margin: auto;">Once more, we appreciate your support and eagerly await your response in the near future. Best regards,<br /> <strong>The T-Mobile Survey Team</strong></p> 
-        <br /> 
-        <br /> &nbsp; 
-        <div style="background-color: #333333; padding: 15px 0; color: white; font-size: 12px; text-align: center; line-height: 18px; font-weight: 500;">
-         more than welcome to leave in 
-         <a href="http://www.maxmobilecash.click/1f14f2395Ri86i13z69fSU8o19baI36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ.SmmQ5U1L0S6Wy3zwD/pitiful-shouters" style="color: aquamarine;">here</a> we' ll miss you
-         <br /> US 10010 126 E 23rd St New York, NY,
-        </div> 
-       </center> 
-      </div> &nbsp;&nbsp;&nbsp;&nbsp;</td> 
-    </tr> 
-   </tbody> 
-  </table>   
- <img src="http://www.maxmobilecash.click/modularization-deploys/8a05ik2395ii85t11j69fcX19baM36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ.SmmQ5K1BD05VAwDU" alt=""/></body>
+         </section> </td> 
+        <td class="klogos"> 
+         <section> 
+          <div> 
+           <center> 
+            <aside>
+             <span>
+              <main style="padding: 0; margin: 0;"> 
+               <cite style="padding: 0; margin: 0;"> </cite> 
+               <dir style="padding: 0; margin: 0;"> 
+               </dir> 
+               <cite style="padding: 0; margin: 0;"> </cite> 
+              </main> </span>
+            </aside> 
+           </center> 
+          </div> 
+         </section> </td> 
+        <td class="klogos"> 
+         <section> 
+          <div> 
+           <center> 
+            <aside>
+             <span>
+              <main style="padding: 0; margin: 0;"> 
+               <cite style="padding: 0; margin: 0;"> </cite> 
+               <dir style="padding: 0; margin: 0;"> 
+               </dir> 
+               <cite style="padding: 0; margin: 0;"> </cite> 
+              </main> </span>
+            </aside> 
+           </center> 
+          </div> 
+         </section> </td> 
+        <td class="klogos"> 
+         <section> 
+          <div> 
+           <center> 
+            <aside>
+             <span>
+              <main style="padding: 0; margin: 0;"> 
+               <cite style="padding: 0; margin: 0;"> </cite> 
+               <dir style="padding: 0; margin: 0;"> 
+               </dir> 
+               <cite style="padding: 0; margin: 0;"> </cite> 
+              </main> </span>
+            </aside> 
+           </center> 
+          </div> 
+         </section> </td> 
+       </tr> 
+       <tr> 
+        <td align="center" class="shopbs" colspan="5"> 
+         <div style="max-width: 33.8rem; margin: auto; text-align: center; background-color: #fff;"> 
+          <center> 
+           <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+            <tbody> 
+             <tr> 
+              <td class="louiuse"> 
+               <aside> 
+                <article>
+                 &nbsp;
+                </article> 
+               </aside> </td> 
+              <td class="louiuse"> 
+               <aside> 
+                <article>
+                 &nbsp;
+                </article> 
+               </aside> </td> 
+              <td class="louiuse"> 
+               <aside> 
+                <article>
+                 &nbsp;
+                </article> 
+               </aside> </td> 
+              <td class="louiuse"> 
+               <aside> 
+                <article>
+                 &nbsp;
+                </article> 
+               </aside> </td> 
+             </tr> 
+             <tr> 
+              <td align="center" colspan="5"> 
+               <center style="padding: 15px 0; text-align: center; background-color: rgb(194, 0, 0);"> 
+                <h3 style="margin: 0; font-size: 18px; line-height: 29px; color: white;">Obtain a $100 Ace Hardware gift card<br /> with just a few simple clicks!</h3> 
+               </center> </td> 
+             </tr> 
+             <tr> 
+              <td colspan="5"> 
+               <div style="padding-top: 45px; background-color: rgb(235,235,235);"> 
+                <section id="bblks" style="background-color: #fff;"> 
+                 <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+                  <tbody> 
+                   <tr> 
+                    <td> 
+                     <section> 
+                      <div> 
+                       <aside>
+                        <main></main> 
+                        <main></main>
+                       </aside> 
+                      </div> 
+                     </section> </td> 
+                    <td> 
+                     <section> 
+                      <div> 
+                       <aside>
+                        <main></main> 
+                        <main></main>
+                       </aside> 
+                      </div> 
+                     </section> </td> 
+                    <td> 
+                     <section> 
+                      <div> 
+                       <aside>
+                        <main></main> 
+                        <main></main>
+                       </aside> 
+                      </div> 
+                     </section> </td> 
+                    <td> 
+                     <section> 
+                      <div> 
+                       <aside>
+                        <main></main> 
+                        <main></main>
+                       </aside> 
+                      </div> 
+                     </section> </td> 
+                   </tr> 
+                   <tr> 
+                    <td align="center" colspan="4" id="context"> 
+                     <div style="background-color: rgb(209,2,44);"> 
+                      <center style="padding: 10px 10px;">
+                       <a href="http://www.toolsshoppers.top/Nathaniel-refinery/60c5q2H395PU86I13w6l9fFdL19bbi36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ4SmmR6nZ10T_6gTwDWM" target="_blank"><img alt="UYES" src="http://www.toolsshoppers.top/Nathaniel-refinery/1d46em2y395tx7ua13ss69Bffu19bbk36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7uQ4SmmR7wl1YFw05R@UwD" style="display: block;" width="100%" /></a>
+                      </center> 
+                     </div> </td> 
+                   </tr> 
+                   <tr> 
+                    <td> 
+                     <div> 
+                      <section> 
+                       <article>
+                        &nbsp;
+                       </article> 
+                      </section> 
+                     </div> </td> 
+                    <td> 
+                     <div> 
+                      <section> 
+                       <article>
+                        &nbsp;
+                       </article> 
+                      </section> 
+                     </div> </td> 
+                    <td> 
+                     <div> 
+                      <section> 
+                       <article>
+                        &nbsp;
+                       </article> 
+                      </section> 
+                     </div> </td> 
+                   </tr> 
+                   <tr> 
+                    <td align="center" colspan="4" id="bloxks"> 
+                     <div> 
+                      <h3 style="margin: 0; font-size: 17px; line-height: 28px; ; padding: 25px 35px; font-weight: 600;">Engage in our customer survey for an opportunity to receive a $100 Ace Hardware Gift Card. Your feedback is essential for our enhancement, and we truly appreciate your opinions.</h3> &nbsp; 
+                      <div style="border: solid 3px rgb(194, 0, 0); padding: 20px 15px; width: 300px; margin: auto; font-size: 22px; font-weight: 800; border-radius: 3px;">
+                       <a href="http://www.toolsshoppers.top/Nathaniel-refinery/60c5q2H395PU86I13w6l9fFdL19bbi36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ4SmmR6nZ10T_6gTwDWM" style="text-decoration: none; color: rgb(194, 0, 0); width: 300px; margin: auto;" target="_blank">Start Here Now &gt;&gt; </a>
+                      </div> 
+                      <br /> 
+                      <br /> &nbsp; 
+                      <div style="padding-top: 250px; background-color: rgb(235, 235, 235);"> 
+                       <center style="background-color: rgb(80, 80, 80); padding-top: 1.2rem; padding-bottom: 1.2rem;"> 
+                        <table align="center"> 
+                         <tbody> 
+                          <tr> 
+                           <td align="center" class="footers" style="font-size: 12px; font-weight: 700; line-height: 20px; color: white;">you can leave with sadness <a href="http://www.toolsshoppers.top/Lloyd-consulates/15c5X2G395g86Cl13Eo69wfes19bbD36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ4SmmR7Vk1wj0K6p1JPwD">here</a><br /> US 10010 126 E 23rd St New York, NY,</td> 
+                          </tr> 
+                         </tbody> 
+                        </table> 
+                       </center> 
+                      </div> 
+                     </div> </td> 
+                   </tr> 
+                  </tbody> 
+                 </table> 
+                </section> 
+               </div> </td> 
+             </tr> 
+            </tbody> 
+           </table> 
+          </center> 
+         </div> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+    </section> 
+   </center> 
+  </div>   
+ <img src="http://www.toolsshoppers.top/b8d4z2395sM8X513k6a00yUj19bby36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQ4SmmR7N1rs0Tz6zWywpD/Lloyd-consulates" alt=""/></body>
 </html>
 
---199e8a4408b58a097b9f6e8aa73f932b981035100991031028100062--
+--72f0c19eaad599581e2103fe79335bdc798100103--
 
