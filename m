@@ -1,45 +1,46 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A87EB8072E3
-	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Dec 2023 15:45:43 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F49A807345
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  6 Dec 2023 16:04:59 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 840FE10E74E;
-	Wed,  6 Dec 2023 14:45:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 42E3D10E74B;
+	Wed,  6 Dec 2023 15:04:58 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Wed, 06 Dec 2023 14:45:40 UTC
-Received: from mail.blocksvzinfo.top (unknown [77.83.203.12])
- by gabe.freedesktop.org (Postfix) with ESMTP id 3907910E74E
+ Wed, 06 Dec 2023 15:04:55 UTC
+Received: from mail.maxmobilecash.click (unknown [77.83.203.13])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 5011210E73E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed,  6 Dec 2023 14:45:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=blocksvzinfo.top;
+ Wed,  6 Dec 2023 15:04:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=maxmobilecash.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=verizon.daily.offer@blocksvzinfo.top; 
- bh=IV88vrk3Gqzda2mh/k/3xk9qWHM=;
- b=dzPs7NfVyMCsIbeoNw1/uXl3y6T0+lfLKZpI9kfCCBvwJy5UE+Zyt3NhCv4zKcDeQQ0YO7u2/kBB
- 8VsyW3LXKWT+apb7f5ijAN3mKKgFSHlobr/hYJi5ZpEcDYju1uNh7V9Rt0sNhqigl0TTPhpq/mdh
- aPjJISwE122U/0qrOPs=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=blocksvzinfo.top;
- b=u2/LZ88HgsSk0shlimkILGzvmND7sBus644DNlBoOReD8/EkF3WfkHQ97oHvf8Fw1Xr7Pep0uDzG
- aQV+UmLyfZmihV/RRMmNDOQigc5nYSXq5syXNv7OaKLKLj6IPY9K04m8KG7TkNw5UjEXSdyHzQq/
- hfIGekSS1T+cmHpBM3Q=;
-Received: by mail.blocksvzinfo.top id he24h80001gh for
+ i=tmobile-flash-promo-alert@maxmobilecash.click; 
+ bh=69UnBF4q/LCSES38ybQH97jnu0c=;
+ b=W7erxhDnyDvu0IDVIkVGKDOBAv0xDSTZTLiAgboVM8YaNQaZSm6vP2CoE5wmct4BBj7/SjO5gyqd
+ vgMr2B8vkS7I2lpW02TPJ7AVsLmRl8dcgjk+W01TQpkKVprU9m8M9DcVPfGEy0BFpEor0zU0RCwj
+ IPJGSX538EUDy8vyVGI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=maxmobilecash.click;
+ b=gJM4ELb7JdMoQ6cyzq1m5ueEyJOFd4zsF5WvB+yZhjKuZ+IrzGSXu1JWvnSSoltqk3aNMzOBIuOh
+ 33bLmiIl2+gbofr03ZjYkui2rJBSwSj6fxQfyF7LR0ZTESLV0v/EY20+gNIAduGZNHJEzfu7+MAp
+ v5OQFp06i/7p4iVedZk=;
+Received: by mail.maxmobilecash.click id he26pe0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 6 Dec 2023 09:30:16 -0500 (envelope-from
- <verizon.daily.offer-intel+2Dgvt+2Ddev=lists.freedesktop.org@blocksvzinfo.top>)
-Date: Wed, 6 Dec 2023 09:30:16 -0500
-From: "Verizon Daily Offer" <verizon.daily.offer@blocksvzinfo.top>
+ Wed, 6 Dec 2023 09:56:17 -0500 (envelope-from
+ <tmobile-flash-promo-alert-intel+2Dgvt+2Ddev=lists.freedesktop.org@maxmobilecash.click>)
+Date: Wed, 6 Dec 2023 09:56:17 -0500
+From: "TMobile Flash Promo Alert"
+ <tmobile-flash-promo-alert@maxmobilecash.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <47817550804.1701873000699225@blocksvzinfo.top>
-Subject: Quick Survey,
- Big Discounts: Verizon's Time-Limited Daily Promotions Await Your
- Input!
+Message-ID: <8889828050997.1701874569783201@maxmobilecash.click>
+Subject: Today Only: T-Mobile Survey for Exclusive Daily Deals &ndash;
+ Your Feedback Needed Now!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=1612e8aaf4876e21a80703ee7bdc4c887420101103987
+ boundary=199e8a4408b58a097b9f6e8aa73f932b981035100991031028100062
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +56,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---1612e8aaf4876e21a80703ee7bdc4c887420101103987
+--199e8a4408b58a097b9f6e8aa73f932b981035100991031028100062
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,82 +65,110 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>Document</title> 
+  <title>participating</title> 
  </head> 
- <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> 
-  <div style=" padding-bottom: 3rem;"> 
-   <article> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td align="center"> 
-        <center> 
-         <ul style="list-style-type: none; padding: 0; margin: 0;"> 
-          <li class="showpppers"> 
-           <div>
-            &nbsp;
-           </div> 
-           <div>
-            &nbsp;
-           </div> <h1 style="padding-top: 0rem; margin: 0;">&nbsp;</h1> 
-           <div style="background-color: #2b2b2b; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: 40px; letter-spacing: 1.5px; padding-top: 15px; padding-bottom: 15px; font-weight: 500;"> 
-            <center style="max-width: 552px; margin: auto;">
-             <a href="http://www.blocksvzinfo.top/importing-servicemen/5585Au2395W8F6v13f69Lf2xh19b9Z36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ2Smmd6p1PO0v6Q@LwPD" style="text-decoration: none; color: white;"><b style="color: red;">V</b>erizon</a>
-            </center> 
-           </div> 
-           <div style="background-color: #fdfdfd;"> 
-            <div style="max-width: 555px; margin: auto; text-align: center; background-color: #fff;"> 
-             <ul style="list-style-type: none; padding: 0; margin: 0;"> 
-              <li class="blocks"> 
-               <center style="max-width: 420px; margin: auto;">
-                <a href="http://www.blocksvzinfo.top/importing-servicemen/5585Au2395W8F6v13f69Lf2xh19b9Z36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ2Smmd6p1PO0v6Q@LwPD" target="_blank"><img alt="JUSE" src="http://www.blocksvzinfo.top/tuples-suburb/6fc4X2395j7yaj12c69qf4r19b9o36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ2Smmd6ztA10q6KPwBBD" style="display: block;" width="100%" /></a>
-               </center> </li> 
-              <li> 
-               <center> 
-                <p style="font-weight: bold; font-size: 16px; text-align: center;">Obtain a $100 Verizon Gift Card with Just One Click!</p> 
-                <center style="background-color: #dfdfdf; padding: 15px 20px; border-radius: 15px;"> 
-                 <p style="font-size: 17px; font-weight: 500; margin: 0; line-height: 28px;">Share your opinions with us and get a $100 Verizon gift card to enhance your mobile service.</p> 
-                </center> 
-               </center> </li> 
-              <li> 
-               <div>
-                <a href="http://www.blocksvzinfo.top/importing-servicemen/5585Au2395W8F6v13f69Lf2xh19b9Z36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ2Smmd6p1PO0v6Q@LwPD"><img alt="USE" src="http://www.blocksvzinfo.top/hostage-collapse/13e5Q2p395EZT7a11S69f5j19b9V36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ2Smmd6Q1wu0p5UpXwD" style="display: block;" width="100%" /></a>
-               </div> </li> 
-              <li> 
-               <div> 
-                <p style="font-size: 17px; font-weight: 500; margin: 0; line-height: 28px;">We highly value your feedback, and we're eager to hear your thoughts on our products, services, and customer support. Quickly share your opinions by participating in our concise 20-Second Service Survey, based on your recent interaction with us.</p> 
-                <table align="center"> 
-                 <tbody> 
-                  <tr> 
-                   <td align="center"> 
-                    <center style="padding-top: 50px ;"> 
-                     <center style="font-weight: bold; background-color: #2b2b2b; color: white; padding: 20px 50px; font-size: 18px;">
-                      <a href="http://www.blocksvzinfo.top/importing-servicemen/5585Au2395W8F6v13f69Lf2xh19b9Z36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ2Smmd6p1PO0v6Q@LwPD" style="text-decoration: none; color: #fff;" target="_blank">Go And Start Now </a>
-                     </center> 
-                    </center> </td> 
-                  </tr> 
-                 </tbody> 
-                </table> 
-               </div> </li> 
-             </ul> 
-            </div> 
-           </div> </li> 
-         </ul> 
-         <div style="padding-top: 300px;;"> 
-          <center style="background-color: #2b2b2b; padding: 15px 0;"> 
-           <article style="max-width: 520px; margin: auto;"> 
-            <p style="font-size: 12px; font-weight: 700; text-align: center; line-height: 22px; color: white;">more than welcome to leave in <a href="http://www.blocksvzinfo.top/e7b5c2D395Y86zg13K69fX3yF19b9y36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ2Smmd5I1l0W5IMwTD/coronary-listless" style="color: aqua;">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY,</p> 
-           </article> 
+ <body style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td> 
+      <section> 
+       <aside> 
+        <div>
+         <span>
+          <main></main> </span>
+        </div> 
+       </aside> 
+      </section> </td> 
+     <td> 
+      <section> 
+       <aside> 
+        <div>
+         <span>
+          <main></main> </span>
+        </div> 
+       </aside> 
+      </section> </td> 
+     <td> 
+      <section> 
+       <aside> 
+        <div>
+         <span>
+          <main></main> </span>
+        </div> 
+       </aside> 
+      </section> </td> 
+     <td> 
+      <section> 
+       <aside> 
+        <div>
+         <span>
+          <main></main> </span>
+        </div> 
+       </aside> 
+      </section> </td> 
+    </tr> 
+    <tr> 
+     <td align="center" colspan="4" id="glowbks">&nbsp;&nbsp;&nbsp;&nbsp; 
+      <div style="max-width: 533px; margin: auto; text-align: center;"> 
+       <center> 
+        <aside> 
+         <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; background-color: rgb(183,45,94); padding: 15px 30px;" width="100%"> 
+          <tbody> 
+           <tr> 
+            <td align="center"> 
+             <center> 
+              <h4 style="font-size: 45px; margin: 0; padding: 15px 0; color: white;"><a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D" style="text-decoration: none; color: white;">T-Mobile</a></h4> 
+             </center> </td> 
+           </tr> 
+          </tbody> 
+         </table> 
+         <div> 
+          <center> 
+           <p style="border-top: solid 5px #000; border-bottom: solid 5px #000; font-size: 22px; font-weight: 500; line-height: 30px;">A Special Deal Crafted<br /> Especially for Our Valued Customers</p> 
           </center> 
+          <p style="padding-top: 25px; margin: 0; font-size: 18px; line-height: 28px; text-align: center; width: 480px; margin: auto;">We want to extend our appreciation for choosing T-Mobile. Your loyalty and support are highly valued, and we treasure the opportunity to assist you.</p> 
+          <div style="padding-top: 22px; padding-bottom: 22px;">
+           <a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D" target="_blank"><img alt="UUSE" src="http://www.maxmobilecash.click/vigilantly-fraction/b704i2395L7auY11p69f9D19baV36lbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ.SmmQ7USDym105R2TwD" style="display: block;" width="100%" /></a>
+          </div> 
+          <p style=" margin: 0; font-size: 18px; line-height: 28px; text-align: center; width: 480px; margin: auto;">Your feedback is highly valued, and as a token of our gratitude for sharing your thoughts, we'd like to offer a small gesture of appreciation.</p> &nbsp; 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; padding-top: 20px; padding-bottom: 20px;" width="230px"> 
+           <tbody> 
+            <tr> 
+             <td align="center" class="lolse" width="90px"><a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D"><img alt="MKS" src="http://www.maxmobilecash.click/Anglophobia-investors/9ae4a2395Q7BaG12V6j9faL19baT36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ.SmmQ7BT1J0om6bkJ0wD" style="display: block;" width="100%" /> </a></td> 
+             <td class="lolse" width="110px"><a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D"><img alt="MNSE" src="http://www.maxmobilecash.click/3774S2395L7alv12d69fXbw19baW36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ.SmmQ6o1RKT05aPwMD/silting-bumptiously" style="display: block;" width="100%" /> </a></td> 
+            </tr> 
+           </tbody> 
+          </table> &nbsp; 
+          <h3 style=" margin: 0; font-size: 18px; line-height: 28px; text-align: center; width: 480px; margin: auto; font-weight: 700;">Upon completion of the survey, you can choose a gift from a varied range of options.</h3> &nbsp; 
+          <div style="max-width: 220px; margin: auto; padding-top: 30px; padding-bottom: 30px;"> 
+           <center style="background-color: rgb(36, 36, 36); padding: 5.8% 5%; font-weight: bold; font-size: 24px; ;">
+            <a href="http://www.maxmobilecash.click/cornucopia-delineate/8825W23N95ts8z612z69f7Yj19baX36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ.SmmQ5N1B0j5VOw0D" style="text-decoration: none; color: white;" target="_blank">Start Now </a>
+           </center> 
+          </div> 
+          <br /> 
+          <br /> &nbsp;
          </div> 
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </article> 
-  </div>   
- <img src="http://www.blocksvzinfo.top/6654G2395dDR8512r69yf6k19b9R36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ2Smmd7Eo1Y0XV5RWlwD/directives-steeps" alt=""/></body>
+        </aside> 
+       </center> 
+      </div> 
+      <div style="padding-bottom: 180px; background-color: rgb(224, 224, 224);"> 
+       <center style="max-width: 520px; margin: auto;"> 
+        <p style="padding-top: 25px; margin: 0; font-size: 18px; line-height: 28px; text-align: center; width: 480px; margin: auto;">Once more, we appreciate your support and eagerly await your response in the near future. Best regards,<br /> <strong>The T-Mobile Survey Team</strong></p> 
+        <br /> 
+        <br /> &nbsp; 
+        <div style="background-color: #333333; padding: 15px 0; color: white; font-size: 12px; text-align: center; line-height: 18px; font-weight: 500;">
+         more than welcome to leave in 
+         <a href="http://www.maxmobilecash.click/1f14f2395Ri86i13z69fSU8o19baI36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7tQ.SmmQ5U1L0S6Wy3zwD/pitiful-shouters" style="color: aquamarine;">here</a> we' ll miss you
+         <br /> US 10010 126 E 23rd St New York, NY,
+        </div> 
+       </center> 
+      </div> &nbsp;&nbsp;&nbsp;&nbsp;</td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.maxmobilecash.click/modularization-deploys/8a05ik2395ii85t11j69fcX19baM36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ.SmmQ5K1BD05VAwDU" alt=""/></body>
 </html>
 
---1612e8aaf4876e21a80703ee7bdc4c887420101103987--
+--199e8a4408b58a097b9f6e8aa73f932b981035100991031028100062--
 
