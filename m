@@ -1,46 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC53D808AC8
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Dec 2023 15:38:00 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id 405AD8089C8
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Dec 2023 15:03:15 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id AE46810E8A5;
-	Thu,  7 Dec 2023 14:37:59 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1BA4110E1E1;
+	Thu,  7 Dec 2023 14:03:14 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 301 seconds by postgrey-1.36 at gabe;
- Thu, 07 Dec 2023 14:37:57 UTC
-Received: from mail.infpackstodays.click (unknown [77.83.203.215])
- by gabe.freedesktop.org (Postfix) with ESMTP id 4869310E8A5
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Thu, 07 Dec 2023 14:03:11 UTC
+Received: from mail.dptoolspittsb.top (unknown [77.83.203.203])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 4D47C10E1E1
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  7 Dec 2023 14:37:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=infpackstodays.click; 
+ Thu,  7 Dec 2023 14:03:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=dptoolspittsb.top;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=limited.time.ups.promo.survey@infpackstodays.click; 
- bh=yceuelUs5WXLnSmfghfOZ7I9cbY=;
- b=AFSnNiPPVhZ3PkqkyQ5a3WcPRM+HZ8Qe/uqr5jC8j8BLc39+dOOS02BYCCb3AeBT9eib2PbSROVF
- gRnApDk7y9rgf9wd94vKSHAv8OT/XaIS4B9SbPkGGZiaENIKy2M2a7k21qvZ8U5fAJ0fktvjEvn4
- MslK0SaZdCHxljbnPVg=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=infpackstodays.click;
- b=NqcxwHCEeJxX9RWLtaHay23D6i45bhAyUy9jcS6GFr2iu6Vx+a7y64/9cS8svPU9t1PIQlWOKcGQ
- 4EMdGW0skr90c+k7M+Di1uO7LMgfOkxTDyrReNPNgcBVQ6GyHLlw8/JCxRHVDkELYQ0YNWT4dYcc
- 962Q4CYZaNjby2fVnGc=;
-Received: by mail.infpackstodays.click id he7cca0001g3 for
+ i=quick.survey.win.big@dptoolspittsb.top; 
+ bh=0PSozDRlWsvHfedtOiR6I0VZ0oY=;
+ b=QyHQF2lkOOzUvUycZeJrL8E9B3g4j0R0ed6S7Ofmz6lpg4odpK0rm/18rKOzUcSdNtgOl4ic/xWU
+ IpLp6VpHHPhjPkitImkjXP20Ir4t1PKKBdaKRTBvkIyI0lJTs+jrsCwKvpfjVtpIG1zTnb4o6bhT
+ pXpgKYpcod/DkGJ045s=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dptoolspittsb.top; 
+ b=WbG9ktz8mvGlqUSPXYVxbHnMk2y5sZW/SHLnH6+TleBtGj+1N2knTbHe0OEHXs9AL2sqt+C+S8JD
+ XGLN4z1iW1pKbPfzsm7TKGsDx5KeUQg66VQVURuBYcXuqRkS1aZQTvMCMqKq7tx1q6UaIRw0TZfD
+ 5f4KUy8xony5WRRb1Rg=;
+Received: by mail.dptoolspittsb.top id he7hhq0001gj for
  <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 7 Dec 2023 09:28:41 -0500 (envelope-from
- <limited.time.ups.promo.survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@infpackstodays.click>)
-Date: Thu, 7 Dec 2023 09:28:41 -0500
-From: "Limited Time UPS Promo Survey"
- <limited.time.ups.promo.survey@infpackstodays.click>
+ Thu, 7 Dec 2023 10:06:21 -0500 (envelope-from
+ <quick.survey.win.big-intel+2Dgvt+2Ddev=lists.freedesktop.org@dptoolspittsb.top>)
+Date: Thu, 7 Dec 2023 10:06:21 -0500
+From: "Quick Survey Win Big" <quick.survey.win.big@dptoolspittsb.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <20962658386227.17019593001771@infpackstodays.click>
-Subject: Today Only: UPS Survey for Exclusive Daily Deals &ndash;
- Your Feedback Needed Now!
+Message-ID: <4889773802064.1701956817883363@dptoolspittsb.top>
+Subject: Swift Input, Big Wins: Harbor Freight Survey Unlocks Today's Specials
+ &ndash; Don't Miss Out, Respond Now!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=9e7eb2e50b5fb084ff33cba23ff1e67f859701021021039708
+ boundary=61847dd5ecdb97b1aa5de2cfe69466bd69990898
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,39 +54,37 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---9e7eb2e50b5fb084ff33cba23ff1e67f859701021021039708
+--61847dd5ecdb97b1aa5de2cfe69466bd69990898
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Valued Customers
----------------------------------------------
+Harbor Freight
 
-UPS
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
-We wanted to take a moment to thank you for choosing UPS for your shipping needs.  Your loyalty and support mean the world, and we are grateful for the opportunity to serve you. 
-
-As part of our commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent shipping and overall experience with UPS.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+Crucial Updates from Harbor Freight
 
 
-For completing the survey, you can receive a $100 Gift!
-
-
-To take the survey, simply click on the link below.  It should only take a few minutes, and your responses will be completely confidential. 
+We're excited to bring you some exciting news from Harbor Freight.  
+You now have the opportunity to obtain a Pittsburgh 225 Piece Tool 
+Set, which can be claimed at any of our retail locations. 
 
 
 
-TAKE THE SURVEY >>>>>
-http://www.infpackstodays.click/c7d6jD2v395vp8D611p6a1eO19c4z36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7PQ.SmnQ6y10XLt5D3lwD/necks-dialing
+
+Don't hesitate to seize this opportunity! You have until 
+December 7th to obtain these captivating tools. 
 
 
-Thank you again for your support.  We look forward to hearing from you soon Warm regards,
+Start Here Now > >
+http://www.dptoolspittsb.top/vectorization-birthed/7b05g2L395y86nz12S6a1cwI19c3U36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ4Smnd7f1pBKU05slJwD
 
-The UPS Survey Team
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 
----------------------------------------------
-another day to leave here >>>>
-http://www.infpackstodays.click/22d4X2395a86vV12j6ta1fn19c4q36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7rQ.SmnQ6r1XYr06YONywD/Indianapolis-gloom
-US 10010 126 E 23rd St New York, NY,
 
---9e7eb2e50b5fb084ff33cba23ff1e67f859701021021039708--
+more than welcome to leave in here >>> we' ll miss
+http://www.dptoolspittsb.top/truthful-semantic/6de4r2395eN86H11v6a1dw19c3K36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQ4Smnd5h10gu6mBw0TD
+you US 10010 126 E 23rd St New York, NY,
+
+--61847dd5ecdb97b1aa5de2cfe69466bd69990898--
 
