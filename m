@@ -1,44 +1,74 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBE29808DB5
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Dec 2023 17:45:17 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D434808E3E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  7 Dec 2023 18:10:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 8647510E918;
-	Thu,  7 Dec 2023 16:45:16 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 48CA310E12E;
+	Thu,  7 Dec 2023 17:10:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Thu, 07 Dec 2023 16:45:12 UTC
-Received: from mail.potwaitspoint.top (unknown [77.83.203.247])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8F95810E921
+X-Greylist: delayed 1895 seconds by postgrey-1.36 at gabe;
+ Thu, 07 Dec 2023 17:10:31 UTC
+Received: from se-filter03.tld-mx.com (se-filter03.tld-mx.com
+ [IPv6:2c0f:f850:1:218::2])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id ECA4E10E12E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  7 Dec 2023 16:45:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=potwaitspoint.top;
- h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=free-rewards-home-depot-survey@potwaitspoint.top; 
- bh=UKK0ZdBXRXf9XsQB/u6aToeQjes=;
- b=3jifEZcy87k0+wxW2sMr/MHczxkwnB0Nr3RDl9S/8Ac7SPOGjvb/h7oBHQ5qsv/C2FElv4NRnPo6
- ta6ofKIW1/2T/S+P/qkyOHfzKxv83TRVXyyk9DjjhQfXSXVvksoKq8aSbqjzDT7v//hxkkNoNRpf
- hurK/YLRIWDOsJ+D0FQ=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=potwaitspoint.top; 
- b=JKj7uuYy2az9sjgpc46ycVwIPD8m40sD7KkFAbbelaax5YahuB97Bg7c3Jbj4GyD7BfIG+WMT+Mq
- 0R4bUdnk5Z9Vi3n9vOejjNNTdaGsj/gDSh5pdmNnviBuwFnR54LR69ZXcWqvGv1J8alUmLtWQN64
- ZX3FaK+AGn/L4CcZROc=;
-Received: by mail.potwaitspoint.top id he7r9g0001gb for
- <intel-gvt-dev@lists.freedesktop.org>;
- Thu, 7 Dec 2023 11:17:54 -0500 (envelope-from
- <free-rewards-home-depot-survey-intel+2Dgvt+2Ddev=lists.freedesktop.org@potwaitspoint.top>)
-Date: Thu, 7 Dec 2023 11:17:54 -0500
-From: "Free Rewards Home Depot Survey."
- <free-rewards-home-depot-survey@potwaitspoint.top>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1530157952772.170196585463252@potwaitspoint.top>
-Subject: Limited-time Savings at Home Depot&mdash;Flash Deal Alert!
-MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary=a10984f066a226842856cb8b4f45d0ba103710111101
+ Thu,  7 Dec 2023 17:10:31 +0000 (UTC)
+Received: from cp22.domains.co.za ([169.239.218.32])
+ by se-filter03.tld-mx.com with esmtps (TLSv1.2:AES128-GCM-SHA256:128)
+ (Exim 4.92) (envelope-from <emergeso@cp22.domains.co.za>)
+ id 1rBHOZ-007S0l-ET
+ for intel-gvt-dev@lists.freedesktop.org; Thu, 07 Dec 2023 18:38:52 +0200
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=cp22.domains.co.za; s=default; h=Date:Message-Id:From:Subject:To:Sender:
+ Reply-To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=rkBf8JIzG/AsXZKMDVrVbwPC9YwSVbTUApm9CSKg7r0=; b=Lqh7mguxE+IGaZreiJKSjeznNt
+ KvnSsQc4uGz1+JQbG3+Xldvk/NDpkxAj3taMsoSJ9ngSDc9J4tYwDkO5bvBqIA7VcjV9l9pED8J0q
+ TFaFn7BBD6YTtRxJfAgtU70Ds249QHRdZcr/8gHN/M/CSHuTeh1lGEGO9UQwFRz0bUlC4IOLN7PSc
+ 1o5uWpBkUbB+CoTY1Txip+e6sLRlRj145Jw8sOSxY6LegOJdz95ZR6YbOvmUm0KnlADnx2zBK4OAW
+ FGlFvubQq+fkKPrNE1E4XFu11IE+R8bVjrFhrKZz4A5WT5pYx3vLFNw/SKjR33+X4YlNNrrBGy4+H
+ P6r85O0w==;
+Received: from emergeso by cp22.domains.co.za with local (Exim 4.96.2)
+ (envelope-from <emergeso@cp22.domains.co.za>) id 1rBHOY-0005Xa-1C
+ for intel-gvt-dev@lists.freedesktop.org;
+ Thu, 07 Dec 2023 18:38:38 +0200
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Copy of your form submission
+X-PHP-Script: emergesolutions.co.za/contact_process.php for 138.199.7.130
+X-PHP-Originating-Script: 1753:contact_process.php
+From: shegun@emergesolutions.co.za
+Message-Id: <E1rBHOY-0005Xa-1C@cp22.domains.co.za>
+Date: Thu, 07 Dec 2023 18:38:38 +0200
+X-AuthUser: emergeso
+X-Originating-IP: 169.239.218.32
+X-SpamExperts-Domain: cp22.domains.co.za
+X-SpamExperts-Username: 169.239.218.32
+Authentication-Results: tld-mx.com;
+ auth=pass smtp.auth=169.239.218.32@cp22.domains.co.za
+X-SpamExperts-Outgoing-Class: unsure
+X-SpamExperts-Outgoing-Evidence: Combined (0.65)
+X-Recommended-Action: accept
+X-Filter-ID: Pt3MvcO5N4iKaDQ5O6lkdGlMVN6RH8bjRMzItlySaT/ZbiVFTHSoC3VL07v0s1LdPUtbdvnXkggZ
+ 3YnVId/Y5jcf0yeVQAvfjHznO7+bT5zuw9h+h1zAannW6FFT1C8uV7/OA1M1ilNEwd/bINE37qFE
+ 3UJM4cFl+Iid+N6xLmGPsV5prpxfNKTaELz81ryJWmuNA8WTybi1JN85FSnfKXag7nPZUtzcfvYi
+ hWfaqKAzJGKZFQDicgnfKvApqtvvjzgrf8QKU/vQFfxLBRJ2ThaSwa5YYGoXqCnjM0ZKteUI6J/M
+ tx+QoirjHW/a/jtXDUSQqjvRt/F/vgmlOHfT5nPuJfOIAQpYEteY7zmkHA+rMIibkpY46HKySyiI
+ 2P6osIZXKmwzbGT4VvpTL0Eb54bT3EszvIbAbB2Zy01d/7IXjkdTeVZ2qGWx/wHRpX68nXp7ZiEZ
+ MRNwIR4IbTbWa3UbJJ2cqu0NKc36+gIWQ5zjCNGSU/UdFKYhkRGnQY2TvvE/X9f4ikS6v/cnqp1T
+ bBmSvC6qJad8oDRDO7zv2HxUmIXDvU1PvO1t/QJPXwvmqOB4PynbZjUxDYa/iqJucA2QEetkvH00
+ /xmn6oF5z8skuB4fLNdsm49znGEOwW1RyaT+fhnmPmZ+OUuV5BM6eyy5Vo6xOiF9lxkCbdmQZuSA
+ DCJKbJV6+0eFVnejuudhpEGXqaejzlsz1A0gN73gYeV2KqQFuD3VSWAitKq5pnFaNNEpjoYYJ2Z0
+ BKQQqJqsMyb8JuNAaEZk+iSjjJO2I/0jveDf9khBB+5Yp6+dn8PrqdBtHZLdSKbaqxt8eJe47j2Z
+ i71fksgjDca8WggwfaQElPJyNJdgFsJFEs/93MUQ8t1vALIBX289UIJG4u0r5AnI+wExEi2ZXZcw
+ Fmj/G/Z0h9QRHd3LSu5dZb181RSH6FVFVxrMF422/Opw4+rZ6Bb00eACLoB4nYmyffPgfoBxPllC
+ wMn3ftLm/l6sXe130mHVjQnGED/5ZMG443Mdo7fok5IF6YZ0VoJLTTx/sGw0ye9BIr+3UFXxnPkn
+ t8gIcrni2VmWSrBU+2pv4GmbgHE+WULAyfd+0ub+Xqxd7XUORXqJwadJGwfLhGtN7hs=
+X-Report-Abuse-To: spam@se-filter04.tld-mx.com
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,41 +84,8 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---a10984f066a226842856cb8b4f45d0ba103710111101
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Here is a copy of your message Typereutt
 
-The Home Depot
-
-
-The Home Depot would like to take this opportunity to express our sincere gratitude for choosing us as your home improvement retailer. 
-
-
-As part of the commitment to providing the best possible experience, we would like to invite you to participate in a brief survey about your recent experience and overall experience with The Home Depot.  Your feedback is incredibly important, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
-
-
-For completing the survey, you can receive a $100 Gift!
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.potwaitspoint.top/ed55i239I5DS8Q612y6as22T19c6i36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQBSmnS6HC10MM6eBwl@D/Centrex-mediums
-
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon Warm regards
-
-The Home Depot Survey
-
------------------------------------------
-
-To cease communications, click_here >>>>> http://www.potwaitspoint.top/1015Ly2395hJ8u613m6maX23X19c6t36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQBSmnS7CqZM1g06mjwMDz/Centrex-mediums
-126 E 23rd St New York, NY, US 10010
-
-
-
-<font class="insulating"></font><span style="bordello"></span><span title="exactingly"><font size="Corsican"></font></span><font face="harmed"></font><font></font>
-
---a10984f066a226842856cb8b4f45d0ba103710111101--
-
+The Void in Our Relationship 
+My heart is a book, and every page is about you. 
+If you get a chance, might you take a look at my page via this link: https://tinyurl.com/yr5jhg94#k5jN9V   I've uploaded some new photos and updates from recent events there. It would be wonderful to catch up and share our experiences.
