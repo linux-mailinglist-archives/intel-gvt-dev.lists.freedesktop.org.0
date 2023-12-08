@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0674F80A7BB
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Dec 2023 16:42:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40CB880A8F9
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  8 Dec 2023 17:31:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D1B1410EAA7;
-	Fri,  8 Dec 2023 15:42:02 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 161D710EACC;
+	Fri,  8 Dec 2023 16:31:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Fri, 08 Dec 2023 15:42:00 UTC
-Received: from mail.blockspacks.top (unknown [77.83.203.45])
- by gabe.freedesktop.org (Postfix) with ESMTP id E38CF10EAA7
+ Fri, 08 Dec 2023 16:31:46 UTC
+Received: from mail.freejgmcinfo.click (unknown [77.83.203.70])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 470C410EACB
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri,  8 Dec 2023 15:42:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=blockspacks.top; 
+ Fri,  8 Dec 2023 16:31:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=freejgmcinfo.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=hurry.ups.promo.ending.soon@blockspacks.top; 
- bh=HR9erRHOG9oSuxdK9uZh93yH2Vs=;
- b=RrR1tvKtGUShYgjMwjArjgfIA0rBz5dPEOEHSP+xgCsUEP1TAFjBELk8enLaEA0kwFy3tlbqs5+S
- /8qaaqsLqOguzDo5PI05Ju0VzzbZCJbKyI8nFMzPn4ZPqQsTe/xXPWY50rdckekc2K00lIeSTrAy
- N18pALHq7zWyD5EN0F0=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=blockspacks.top;
- b=hmmpveAqfiLYCacTCdo9ijUFLlBn8dHMM/xxSVtNcbG9ZjyxkXcBYjyEoOzaCzB/PT7z3wduQYIA
- RKEwTbzGc5HmiqRHiihCJTDb8CS7fu5CkgiiuZCf+diZeNJ7wPeXNU8/FPRZUtOE8hkAY+BT6Kbh
- 6fY7w14ASw14TJgxTRU=;
-Received: by mail.blockspacks.top id hecski0001go for
+ i=swift.survey.deal@freejgmcinfo.click; 
+ bh=xrorH6rbXxQucZavDItIdrmiHmk=;
+ b=J4CsCqoejI/vrQsdUIGG75SC5yDTgUxm/dJG4gqYw8+cE0uLcDz9n+efujFoG9GaNJkeUhjEWNOx
+ hK64hot6TydTVECkrwAUbhEpKosXBtCMFx/bT2hseN3Y4ubEjZy4NahVHjhTReIwmsahZhb8dNRx
+ cedVYCuYX0THwOthc7w=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=freejgmcinfo.click; 
+ b=GLFy2HESPme1stvZC16Irn8retrmFPd/RBzBZ+N2BUMTfdCitG5DRcNaesmACYEXLDLqV9e3zKy5
+ oXInFcZQ5WDWFzgTau/jAw4Zf5EduVa276fJDO6xdtgLSi6OdK/enIMvOISwih8IMgq46bowvmSq
+ t+84lhv0VbXdjggnxiU=;
+Received: by mail.freejgmcinfo.click id hed2f40001ga for
  <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 8 Dec 2023 10:33:35 -0500 (envelope-from
- <hurry.ups.promo.ending.soon-intel+2Dgvt+2Ddev=lists.freedesktop.org@blockspacks.top>)
-Date: Fri, 8 Dec 2023 10:33:35 -0500
-From: "Hurry UPS Promo Ending Soon"
- <hurry.ups.promo.ending.soon@blockspacks.top>
+ Fri, 8 Dec 2023 11:24:21 -0500 (envelope-from
+ <swift.survey.deal-intel+2Dgvt+2Ddev=lists.freedesktop.org@freejgmcinfo.click>)
+Date: Fri, 8 Dec 2023 11:24:21 -0500
+From: "Swift Survey Deal" <swift.survey.deal@freejgmcinfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <1557689947094.17020496057630898@blockspacks.top>
-Subject: Limited Time Discounts: UPS Survey Unlocks Day's Best Promotions
- &ndash; Respond ASAP!
+Message-ID: <110422927593.1702052648604080@freejgmcinfo.click>
+Subject: Limited Time, Big Flavor: McD's Survey Now!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=94ae7eb899e06c51413d164c5d1dcd408103699102102
+ boundary=764c717e32f3807b6e0955cfa11d722e61039581038
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---94ae7eb899e06c51413d164c5d1dcd408103699102102
+--764c717e32f3807b6e0955cfa11d722e61039581038
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,61 +62,50 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap');
-	</style> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <title>understanding of these</title> 
+  <title>freedom of opinion</title> 
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap');
+	</style> 
  </head> 
- <body style="font-family: 'Rethink Sans', sans-serif;"> 
-  <div style="background-color: rgb(245,206,133); padding: 10px 0;">
-   &nbsp;
-  </div> 
-  <div> 
-   <center style="max-width: 500px; margin: auto; text-align: center;"> 
-    <h4 style="font-size: 50px; margin: 0; font-weight: bold;"><u style="color: rgb(245,206,133);"><b style="color: #000;">UPS</b></u></h4> 
-   </center> &nbsp; 
-   <p style="max-width: 533px; margin: auto; text-align: center; font-size: 18px; line-height: 30px; font-weight: 500;">We'd like to express our gratitude for selecting UPS for your shipping requirements. Your loyalty and backing are immensely valued, and we appreciate the chance to assist you.</p> &nbsp; 
-   <div style="max-width: 533px; margin: auto;"> 
-    <div>
-     <a href="http://www.blockspacks.top/a616R2gg395cL86m13os6a3r4N19ccA36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQDSmo97i1g0QmQ5U2LwD/globe-bewildered" target="_blank"><img alt="YES" src="http://www.blockspacks.top/8096J239Gz5nF7aO13t6a3oL6I19ccZ36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7yQDSmo95Gr10j6V@UwBD/dickens-overruns" style="display: block; margin: auto;" width="90px" /></a>
-    </div> 
-   </div> &nbsp; 
-   <p style="max-width: 533px; margin: auto; text-align: center; font-size: 18px; line-height: 30px; font-weight: 500;">You're just a few clicks away from claiming your <strong>$100 UPS Card</strong> for your upcoming shipment.</p> 
-   <div style="max-width: 450px; margin: auto; padding: 33px 0;">
-    <a href="http://www.blockspacks.top/a616R2gg395cL86m13os6a3r4N19ccA36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQDSmo97i1g0QmQ5U2LwD/globe-bewildered" target="_blank"><img alt="NHS" src="http://www.blockspacks.top/dickens-overruns/1b65s239y5qY7al13iS6a3S7j19ccR36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQDSmo95njC105S3wDX" style="display: block;" width="100%" /></a>
-   </div> 
+ <body style="font-family: 'IBM Plex Sans', sans-serif;"> 
+  <div style="background-color: rgb(236, 236, 236); width: 100%;;"> 
    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
     <tbody> 
      <tr> 
-      <td align="center"> 
-       <div style="max-width: 500px; margin: auto; text-align: center;"> 
-        <center style="background-color: rgb(62,67,33); border-radius: 30px; padding: 1.2rem 2rem; font-weight: bold; width: 255px; margin: auto;">
-         <a href="http://www.blockspacks.top/a616R2gg395cL86m13os6a3r4N19ccA36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQDSmo97i1g0QmQ5U2LwD/globe-bewildered" style="text-decoration: none; color: white;" target="_blank">TAKE THE SURVEY NOW </a>
-        </center> 
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td> 
-       <div style="max-width: 520px; margin: auto; line-height: 28px; font-size: 18px;"> 
-        <center> 
-         <h4 style="margin: 0; padding: 20px 0 ; font-weight: 500;">Kindly take a moment to fill out our brief 20-Second Service Survey regarding your most recent interaction with us.<br /> Best regards,<br /> <strong>UPS Review Center</strong></h4> 
-        </center> 
-       </div> </td> 
-     </tr> 
-     <tr> 
-      <td><br /> <br /> <br /> &nbsp; 
-       <hr /> 
-       <div style="padding-bottom: 150px;"> 
-        <center style="max-width: 450px; margin: auto;"> 
-         <address style="font-size: 12px; font-weight: 800; text-align: center; line-height: 23px;">another day to leave <a href="http://www.blockspacks.top/9176N239mW5GnU8612D6Fa35T19ccX36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQDSmo95gL10Z5LMwDB/spikes-Woodbury">here</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
-        </center> 
+      <td align="center" style="padding-top: 20px; padding-bottom: 20px;"> 
+       <div style="max-width: 550px; margin: auto; text-align: center; background-color: #fff;"> 
+        <p style="margin: 0; max-width: 480px; margin: auto;"><a href="http://www.freejgmcinfo.click/4854G2395J8uB612K6qa39Y19cdt36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCSmod7SI10MVN6fTwDlT/reachability-Sorrentine" target="_blank"><img alt="UUYES" src="http://www.freejgmcinfo.click/1f16J23ZI95zUS7a11n6a3bk19cdH36JbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7DQCSmod6Xm1VT06N1XwXD/Kiwanis-Gertrude" style="display: block;" width="100%" /></a></p> 
+        <p style="margin: 0; font-size: 63px; padding: 15px 0; font-weight: bold; background-color: rgb(248,63,66); color: white;">McDonalds</p> 
+        <h2 style="margin: 0; font-size: 18px; line-height: 30px; padding: 15px 45px 14px; font-weight: 500;">We genuinely appreciate your choice in making our restaurant your favorite. It is a privilege to serve you, and we consider your loyalty invaluable.</h2> 
+        <div>
+         <a href="http://www.freejgmcinfo.click/4854G2395J8uB612K6qa39Y19cdt36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCSmod7SI10MVN6fTwDlT/reachability-Sorrentine" target="_blank"><img alt="JUES" src="http://www.freejgmcinfo.click/reachability-Sorrentine/7ce5wG2395BC7aU11L6a3cZ19cdC36VbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQCSmod5cv1v06SAwjkD" style="display: block;" width="100%" /></a>
+        </div> 
+        <h4 style="margin: 0; font-size: 18px; line-height: 30px; padding: 15px 45px 14px; font-weight: 500;">Aligned with our commitment to delivering the utmost satisfaction, we warmly welcome you to participate in a concise survey regarding your recent encounter and overall engagement with our services.<br /> <br /> To participate in the survey, just click the link provided below. It will require only a few minutes of your time, and rest assured, your answers will remain entirely confidential.</h4> 
+        <table align="center"> 
+         <tbody> 
+          <tr> 
+           <td align="center"> 
+            <div style="max-width: 250px; margin: auto;"> 
+             <center>
+              <a href="http://www.freejgmcinfo.click/4854G2395J8uB612K6qa39Y19cdt36ObrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCSmod7SI10MVN6fTwDlT/reachability-Sorrentine" target="_blank"><img alt="UYES" src="http://www.freejgmcinfo.click/analogies-blockhouses/3965uz2395GQ7aQ11O6a3dy19cdQ36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQCSmod7jH1MZG06PPlPwD" style="display: block;" width="100%" /> </a>
+             </center> 
+            </div> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <div style="padding: 2%;"> 
+         <h6 style="margin: 0; font-size: 18px; line-height: 30px; padding: 15px 45px 14px; font-weight: 500; background-color: rgb(236, 236, 236);">Thank you once more for your assistance. We anticipate receiving your response soon.<br /> Best regards,</h6> 
+        </div> 
+       </div> 
+       <div style="padding-top: 250px; background-color: rgb(236, 236, 236);"> 
+        <address>this will lead you to the <a href="http://www.freejgmcinfo.click/8636Q23xs95B86X_11U6a3ak19cdX36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7VQCSmod6SkN10W6kjwLAD/drawers-islet">Exit</a> for good<br /> US 10010 126 E 23rd St New York, NY,</address> 
        </div> </td> 
      </tr> 
     </tbody> 
    </table> 
   </div>   
- <img src="http://www.blockspacks.top/eb75r23W95Is85X13S6Ya38op19ccF36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQDSmo95wYh105QMXwD/globe-bewildered" alt=""/></body>
+ <img src="http://www.freejgmcinfo.click/2875qL2395K8H5Y13a6a3eQlo19cdI36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7HQCSmod5L1wi06EXOlwD/drawers-islet" alt=""/></body>
 </html>
 
---94ae7eb899e06c51413d164c5d1dcd408103699102102--
+--764c717e32f3807b6e0955cfa11d722e61039581038--
 
