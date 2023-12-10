@@ -1,46 +1,44 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19C0980B518
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Dec 2023 16:42:00 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5BCC80BC45
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Dec 2023 17:59:25 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id D912510E1D2;
-	Sat,  9 Dec 2023 15:41:58 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A77A110E2AF;
+	Sun, 10 Dec 2023 16:59:24 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 307 seconds by postgrey-1.36 at gabe;
- Sat, 09 Dec 2023 15:41:56 UTC
-Received: from mail.dpcoffeesfrees.click (unknown [77.83.203.53])
- by gabe.freedesktop.org (Postfix) with ESMTP id 14D0F10E1B0
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Sun, 10 Dec 2023 16:59:22 UTC
+Received: from mail.backstoolsinfo.top (unknown [77.83.203.167])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 512D610E2AF
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  9 Dec 2023 15:41:56 +0000 (UTC)
+ Sun, 10 Dec 2023 16:59:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=dpcoffeesfrees.click; 
+ d=backstoolsinfo.top; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=timelimited-starbucks-feedback-opportunity@dpcoffeesfrees.click; 
- bh=5FiimKpBmfhnkTk7N75XUSFnnFk=;
- b=aklWCYuyrs/KUYSKPTyn6qSPVgTqGU2Ndf7h8CunUvi7ADA1SNV+AnJ3Mn0JWphmPDQr3GXDMf+H
- r+owHlPLazuf5ZLznyk1ARZdy+h90p0Red4TvikpC6t8DP1qCiA0KOtist6nO5b/4S/PXzyfghaA
- 6oP4H65gM+bTDTRK9Z4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=dpcoffeesfrees.click;
- b=f+rPxHhQCpJCFXVQFE4K54A5jeBPNBb5AE7WXkojYyRGn41m4hNVQG4Pb51q28IL5gia185WxbWS
- ZHJB7Rq855nVFhBdJRvwGM56aRoJW32PuixPDD1zvF6tL4B3styCXoaIGW2Mar3A914Pi2i4eHlG
- 6v+CFBJNzr7ipJAZz8c=;
-Received: by mail.dpcoffeesfrees.click id heieju0001gv for
+ i=get-stanley-tools-free@backstoolsinfo.top; 
+ bh=quBbsmn138I24SwwE0Qd+3mTatY=;
+ b=JEzLR+0skt2ItLtCutypO+N7eMyOf7YBg+wLoxImMVhrv6tWJ6VrjgukselriqhNfMhgQkydTBlU
+ PSusqIWmFIral/yhF1KBtfzS7D7pUusiDmVqGJqNmGZYcofN8Rj59HCXf7sSXb5QjDbS4FvgGt7k
+ jxTNLE43ybrCmdjSuX0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=backstoolsinfo.top; 
+ b=e4MDKjG8kya3XSdVUIuDhOt4+jqjJd3Uw+MY4vfFA3k8iJNj9yk8kl1jfIHN5keNt1PV9OqYku83
+ RnHGVhQVLAL5wbNSojmJXp6E2kE+LDaL20Vdt/KOVqcxDrhT8UsJ+b6vUJEiPXK7/eqIpkWKRZLE
+ loHCtHjZozpUab/i4W0=;
+Received: by mail.backstoolsinfo.top id henn6k0001gs for
  <intel-gvt-dev@lists.freedesktop.org>;
- Sat, 9 Dec 2023 11:38:16 -0500 (envelope-from
- <timelimited-starbucks-feedback-opportunity-intel+2Dgvt+2Ddev=lists.freedesktop.org@dpcoffeesfrees.click>)
-Date: Sat, 9 Dec 2023 11:38:16 -0500
-From: "TimeLimited Starbucks Feedback Opportunity"
- <timelimited-starbucks-feedback-opportunity@dpcoffeesfrees.click>
+ Sun, 10 Dec 2023 11:51:18 -0500 (envelope-from
+ <get-stanley-tools-free-intel+2Dgvt+2Ddev=lists.freedesktop.org@backstoolsinfo.top>)
+Date: Sun, 10 Dec 2023 11:51:18 -0500
+From: "Get Stanley Tools Free" <get-stanley-tools-free@backstoolsinfo.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <3384569811947.17021351608796830@dpcoffeesfrees.click>
-Subject: You're Invited by Starbucks: Share Your Input in the Daily Promotions
- Survey!
+Message-ID: <447271561217.17022270638154@backstoolsinfo.top>
+Subject: Ace's Exclusive Offer: Free Stanley Tool Set in Survey!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=f17d8aebfb74e6523cc2e20705c18c3e910310149843997103
+ boundary=772d51c32e0b9f784925e5403797d3d02103810144979969
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,45 +54,99 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---f17d8aebfb74e6523cc2e20705c18c3e910310149843997103
-Content-Type: text/plain; charset=utf-8
+--772d51c32e0b9f784925e5403797d3d02103810144979969
+Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
-A SPECIAL OFFER FOR OUR VALUED USERS
-*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="UTF-8" /> 
+  <title>sight of</title> 
+ </head> 
+ <body marginwidth="0"> 
+  <center>
+   <a href="http://www.backstoolsinfo.top/dumbest-Ticonderoga/9366N2A3G95Q8p6v13c6aU6t8x19ddg36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQbSmdm5q1Ak06spLwLD"><img alt="" src="http://www.backstoolsinfo.top/dc76rp2T395Q7nga12z6a6aPI19ddI36UbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQbSmdm5gDn106QMw3pD/beakers-misuse" style="display: block" width="200" /></a> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <p style="display: inline-block; margin-top: 0">-</p> 
+   <p style="display: inline-block;margin-top: 0">-</p> 
+   <div style="background-color:#EFEFEF; padding: 20px"> 
+    <table align="center" bgcolor="#fff" border="0" cellpadding="1" cellspacing="0" style="max-width: 499px" width="100%"> 
+     <tbody> 
+      <tr> 
+       <th align="center" style="padding: 15px; font-size: 28pt; font-family: sans-serif; color: #E71540">Ace Hardware Last Reminder</th> 
+      </tr> 
+      <tr> 
+       <td align="center"> 
+        <table border="0" cellpadding="1" cellspacing="1" width="100%"> 
+         <tbody> 
+          <tr> 
+           <td>&nbsp;</td> 
+           <td align="center" style="font-family: Gotham, 'Helvetica Neue', Helvetica, Arial, 'sans-serif'; font-size: 22px">Exciting Update! <strong>Ace Hardware</strong> is presenting a special opportunity to obtain a <b>Stanley Tool Set</b>, which can be used at any of our store locations. Don' t let this opportunity pass you by! You have until December 10th to secure these outstanding tools.</td> 
+           <td>&nbsp;</td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <div style="background-color: #D40629; display: inline-block; font-family: sans-serif; padding: 15px; border-radius: 8px; font-size: 29px; margin-top: 20px; margin-bottom: 25px">
+         <a href="http://www.backstoolsinfo.top/dumbest-Ticonderoga/9366N2A3G95Q8p6v13c6aU6t8x19ddg36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQbSmdm5q1Ak06spLwLD" style="color: #fff; text-decoration: none; " target="_blank">Start The Survey Here &gt; &gt;</a>
+        </div> 
+        <div style="padding: 1.5px; margin: 1.5px"> 
+         <div style="padding: 1.5px; margin: 1.5px"> 
+          <div style="padding: 1.5px; margin: 1.5px"> 
+           <div style="padding: 1.5px; margin: 1.5px"> 
+            <div style="padding: 1.5px; margin: 1.5px">
+             <a href="http://www.backstoolsinfo.top/dumbest-Ticonderoga/9366N2A3G95Q8p6v13c6aU6t8x19ddg36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQbSmdm5q1Ak06spLwLD"><img alt="west" src="http://www.backstoolsinfo.top/5395E23P95y7aoD13FQ6aC6bT19ddr36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7EQbSmdm5c1WH06sJNzwD/transitioned-ambuscade" style="max-width: 344px" width="100%" /> </a>
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> </td> 
+      </tr> 
+      <tr bgcolor="#D40629"> 
+       <td>&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td align="center" bgcolor="#D40629" style="font-family: sans-serif; color: white; font-size: 22px">Thank you in advance,<br /> <b>The Ace Hardware Team</b><br /> &nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+   </div> 
+  </center> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> 
+  <br /> &nbsp; 
+  <section style="display: block; font-size: 13px"> 
+   <center>
+    <font face="arial">its your time to leave? do it <a href="http://www.backstoolsinfo.top/abridges-bulwark/7924U2395z8r6n11M6a69l19ddX36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQbSmdm7CWZo1s06MzWwD2" style="color: #15a3e0; ">here</a><br /> US 10010 126 E 23rd St New York, NY,</font>
+   </center> 
+  </section>   
+ <img src="http://www.backstoolsinfo.top/40d6W2V39J5fI8t512g6a6cjY19ddX36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQbSmdm7chB10yy5JBw@D/transitioned-ambuscade" alt=""/></body>
+</html>
 
-
-STARBUCKS
-
-
-Do you love coffee? Where do you like to have it? Starbucks can be the perfect place to satisfy your coffee cravings. 
-
-Don't miss out on this incredible opportunity! For a limited time, you can win a $100 Starbucks gift card just by completing a short survey.  Enjoy our wide variety of coffees and unique flavors. 
-
-We want to thank you for choosing us as your destination to enjoy coffee.  We value your preference and encourage you to participate in our survey for a chance to win this gift card.  Thank you for your participation and good luck!
-
-
-By taking the survey you might receive a $100 gift card
-
-
-
-TAKE THE SURVEY >>>>>
-http://www.dpcoffeesfrees.click/13d6b239ih5zk8N613w6ah5q3p19d6K36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7fQ3Sm997RxRo1j05pzpwD/evolute-paying
-
-
-
-Thank you again for your support.  We look forward to hearing from you soon! Warm regards. 
-
-The Starbucks Survey
-
-*+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+**+*
-
-To change your subscription options, click_here >>>>> http://www.dpcoffeesfrees.click/Bernard-disconnecting/6cT4w2395XD8r613JM6al54g19d6l36WbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7eQ3Sm996rmn10Z6a0TwDA
-126 E 23rd St New York, NY, US 10010
-
-
-
-<small></small><span style="scuffled"></span><span title="alternatives"><big><small></big></span></small><span id="banal"></span><span><small><style></span></small></style><font title="pinches"></font>
-
---f17d8aebfb74e6523cc2e20705c18c3e910310149843997103--
+--772d51c32e0b9f784925e5403797d3d02103810144979969--
 
