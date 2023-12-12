@@ -2,44 +2,43 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 24C6980F749
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Dec 2023 20:54:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6DB0080F8BE
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Dec 2023 21:57:34 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C1EB910E09D;
-	Tue, 12 Dec 2023 19:54:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 48BB610E6C4;
+	Tue, 12 Dec 2023 20:57:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Tue, 12 Dec 2023 19:54:20 UTC
-Received: from mail.goodmkrogtps.click (unknown [77.83.203.249])
- by gabe.freedesktop.org (Postfix) with ESMTP id 0CA9810E067
+X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
+ Tue, 12 Dec 2023 20:57:29 UTC
+Received: from mail.longsheepstools.top (unknown [77.83.203.43])
+ by gabe.freedesktop.org (Postfix) with ESMTP id BEA0910E68C
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Dec 2023 19:54:20 +0000 (UTC)
+ Tue, 12 Dec 2023 20:57:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=goodmkrogtps.click; 
+ d=longsheepstools.top; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=days_promo_kroger_survey_special@goodmkrogtps.click; 
- bh=zlS66TSTN353VF4cC/8BjMmNZHs=;
- b=VjitO0Oo9a07has6XPkGtJf36SjWs0jO0VKRsyDjMUYVca8QJ/Sd2wpaV/cr30PhwP1ZoKOsbwK7
- Kip0BFsC8zB4qynwPIIkoYKSKx2vn6iozTTCUm+tSPZtbGq/lg+Xh8rrz79xZLM9aVWpo0XgW+o6
- fHpJnwYfh+5TRDPSegk=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=goodmkrogtps.click; 
- b=i14vzNrclkbjcjo9sLi0WDE97Cz/SjX7V/cuM2TakIHXq8cQfusqMP/sStJOICpn994pChvzf1UK
- DlLAl7qrpyjyGPbpAhHkDzHzvY7iaWs8Z/v7GLXrVB5LNpQgANqBgWpRDkLbKUJwOt/lAYUD7bVY
- kZKl0DV5m6ygszMNFII=;
-Received: by mail.goodmkrogtps.click id hf2t6o0001ge for
+ i=day-promo-overview@longsheepstools.top; 
+ bh=BBpKBgfPa8ikA+god+olSjXe9k0=;
+ b=Q+a2/3fyvKQJor4m54UoZ/+U/DHXqZSCR8mezpZ1XfeM+fE55gLWJjvAfG8HAxFUH93hAa83HSQU
+ jj870McrPMUoQGMVEhfoq1Xpou/wp63QhUqH2LQBMVtE33hgFyIyYXE+b+ZoPSsjNSbW5fRPybMz
+ cUfMiyLcNc3ueFLUHFY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=longsheepstools.top;
+ b=QVuIvPG6d0i/+OuESTk2TjiXf8WS/xsN5cl9yUw/IOOwZmPD2pkcUa7LwdCQ8VCyflXfmPDN5Nl5
+ m3IIAohiIJgiFN4tIeI1uII6o1qpP3ITjUZdRymFkgrJAfknB+z1IYZgRpIlTBtjvIU8xh1cFLy/
+ heXqaH1MQYMoUQ4S1uo=;
+Received: by mail.longsheepstools.top id hf34ji0001g9 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Dec 2023 14:46:58 -0500 (envelope-from
- <days_promo_kroger_survey_special-intel+2Dgvt+2Ddev=lists.freedesktop.org@goodmkrogtps.click>)
-Date: Tue, 12 Dec 2023 14:46:58 -0500
-From: "Days Promo Kroger Survey Special"
- <days_promo_kroger_survey_special@goodmkrogtps.click>
+ Tue, 12 Dec 2023 15:49:52 -0500 (envelope-from
+ <day-promo-overview-intel+2Dgvt+2Ddev=lists.freedesktop.org@longsheepstools.top>)
+Date: Tue, 12 Dec 2023 15:49:52 -0500
+From: "Day Promo Overview" <day-promo-overview@longsheepstools.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <97423507869.1702410393535575@goodmkrogtps.click>
-Subject: The Clock is Ticking: Kroger Needs Your Insights for Promotions!
+Message-ID: <3897841087.17024141812052090@longsheepstools.top>
+Subject: Win a Wiha Screwdriver Set: Participate in the survey!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=3d33f57f573e1bfa1c2ee3e9e3b9bd3a469777103
+ boundary=f8f4bf5a7c9e1c15bb1368e63bd00f790019101102510338
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +54,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---3d33f57f573e1bfa1c2ee3e9e3b9bd3a469777103
+--f8f4bf5a7c9e1c15bb1368e63bd00f790019101102510338
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,102 +62,177 @@ Content-Transfer-Encoding: 7bit
 <html lang="en">
  <head> 
   <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=REM:wght@100;200;300;400;500;600;700;800;900&display=swap');
 	</style> 
-  <title>reasonable limitation</title> 
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
+  <title>When you have</title> 
  </head> 
- <body style="font-family: 'Hanken Grotesk', sans-serif;"> 
-  <section> 
-   <div style="background-color: rgb(245, 245, 245); width: 100%; padding-top: 33px; padding-bottom: 33px;"> 
-    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-     <tbody> 
-      <tr> 
-       <td> 
-        <div>
-         &nbsp;
-        </div> </td> 
-       <td> 
-        <div>
-         &nbsp;
-        </div> </td> 
-       <td> 
-        <div>
-         &nbsp;
-        </div> </td> 
-       <td> 
-        <div>
-         &nbsp;
-        </div> </td> 
-      </tr> 
-      <tr> 
-       <td align="center" colspan="4" id="bblosx"> 
-        <center> 
-         <div style="max-width: 555px; margin: auto; text-align: center; background-color: #fff;"> 
-          <ul style="list-style-type: none; padding: 0; margin: 0;"> 
-           <li id="listprimcips"> 
-            <div style="background-color: rgb(26,72,152); padding: 10px 0;"> 
-             <center style="max-width: 200px; margin: auto;">
-              <a href="http://www.goodmkrogtps.click/mensuration-deceitful/e404N2395V86rv12p6aL82n19e2R36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQCSmdQ6RYw1R06z1wWD@" target="_blank"><img alt="YES" src="http://www.goodmkrogtps.click/c5k6s2l39j5S7yaL13Op6a84Bo19e2N36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7UQCSmdQ7FAF10hU5RBwDj/grinders-farewells" style="display: block;" width="100%" /></a>
-             </center> 
-            </div> </li> 
-           <li> 
-            <div> 
-             <center> 
-              <h4 style="margin: 0; padding: 27px 33px; font-size: 1.1rem; line-height: 1.7rem; font-weight: 500;">We want to convey our gratitude for choosing us. Your loyalty and support mean a great deal to us, and we truly value the chance to fulfill your shopping requirements.</h4> 
-             </center> 
-            </div> </li> 
-           <li> 
-            <div> 
-             <center> 
-              <div style="display: inline-block; max-width: 90px; margin: auto;">
-               <a href="http://www.goodmkrogtps.click/mensuration-deceitful/e404N2395V86rv12p6aL82n19e2R36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQCSmdQ6RYw1R06z1wWD@"><img alt="EQS" src="http://www.goodmkrogtps.click/5574j2395hM7ra13HB6Ba85U19e2z36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQCSmdQ7GIy10qU5dBwDL/bricklayers-octopus" style="display: block;" width="100%" /></a>
-              </div> 
-              <div style="display: inline-block; max-width: 115px; margin: auto;">
-               <a href="http://www.goodmkrogtps.click/mensuration-deceitful/e404N2395V86rv12p6aL82n19e2R36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQCSmdQ6RYw1R06z1wWD@"><img alt="EQS" src="http://www.goodmkrogtps.click/containing-observes/5ee5X2J395i7ahS12P6Na86L19e2F36EbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7XQCSmdQ6Im10yg6nywlDT" style="display: block;" width="100%" /></a>
-              </div> 
-             </center> 
-            </div> </li> 
-           <li> 
-            <div> 
-             <h4 style="margin: 0; padding: 27px 33px; font-size: 1.1rem; line-height: 1.7rem; font-weight: 500;">We highly appreciate your choice in selecting us! Your loyalty and support mean a lot to us, and we are grateful for the chance to help you.<br /> <br /> As a token of our gratitude for your feedback, you have the opportunity to potentially receive a $100 gift.<br /> <br /> To take part in the survey, please click the provided link. The survey will only take a few minutes of your time, and be assured that your responses will be kept completely confidential.</h4> 
-            </div> </li> 
-           <li> 
-            <article> 
-             <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+ <body style="font-family: 'REM', sans-serif;"> 
+  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+   <tbody> 
+    <tr> 
+     <td align="center"> 
+      <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+       <tbody> 
+        <tr> 
+         <td> 
+          <section> 
+           <div> 
+            <aside> 
+             <table> 
               <tbody> 
                <tr> 
-                <td align="center" class="frons"> 
-                 <div> 
-                  <center style="background-color: rgb(26,72,152); padding: 20px 30px; width: 250px; margin: auto; font-size: 22px; font-weight: 800;">
-                   <a href="http://www.goodmkrogtps.click/mensuration-deceitful/e404N2395V86rv12p6aL82n19e2R36dbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7iQCSmdQ6RYw1R06z1wWD@" style="text-decoration: none; color: white;">Get Me Started </a>
-                  </center> 
-                 </div> </td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
                </tr> 
               </tbody> 
              </table> 
-            </article> </li> 
-           <li><br /> <br /> &nbsp; 
-            <div style="padding-top: 30px; border-top: dashed 2px rgb(26,72,152);"> 
-             <p style="margin: 0; padding: 27px 33px; font-size: 1.1rem; line-height: 1.7rem; font-weight: 500;">Thanks once more for your assistance. We look forward to receiving your response soon!<br /> Best regards,</p> 
-             <center style="padding-top: 30px;"> 
-              <div style="background-color: rgb(245, 245, 245); font-size: 12px; font-weight: bold; text-align: center; line-height: 20px; padding: 20px 0;">
-               In order to leave go 
-               <a href="http://www.goodmkrogtps.click/inlets-handkerchief/8284g2395DI86_12H6aU83s19e2i36cbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQCSmdQ7wBGr10i5gLXwD">here</a>
-               <br /> US 10010 126 E 23rd St New York, NY,
-              </div> 
-             </center> 
-            </div> </li> 
-          </ul> 
+            </aside> 
+           </div> 
+          </section> </td> 
+         <td> 
+          <section> 
+           <div> 
+            <aside> 
+             <table> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </aside> 
+           </div> 
+          </section> </td> 
+         <td> 
+          <section> 
+           <div> 
+            <aside> 
+             <table> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </aside> 
+           </div> 
+          </section> </td> 
+         <td> 
+          <section> 
+           <div> 
+            <aside> 
+             <table> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </aside> 
+           </div> 
+          </section> </td> 
+         <td> 
+          <section> 
+           <div> 
+            <aside> 
+             <table> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </aside> 
+           </div> 
+          </section> </td> 
+         <td> 
+          <section> 
+           <div> 
+            <aside> 
+             <table> 
+              <tbody> 
+               <tr> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+                <td>&nbsp;</td> 
+               </tr> 
+              </tbody> 
+             </table> 
+            </aside> 
+           </div> 
+          </section> </td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <div style="background-color: rgb(250, 250, 250); width: 100%; text-align: center;"> 
+       <div> 
+        <center style="max-width: 561px; margin: auto; background-color: #fff;"> 
+         <section> 
+          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+           <tbody> 
+            <tr> 
+             <td align="center" id="colorwihts"> 
+              <div style="color: rgb(1,26,107) ; padding: 22px 0;"> 
+               <h2 style="margin: 0; font-size: 22px; ;">Exclusive Deal: Seize the chance to get a Wiha Screwdriver Tray Set!</h2> 
+              </div> </td> 
+            </tr> 
+           </tbody> 
+          </table> 
+         </section> 
+         <center style="background-color: rgb(1,26,107); padding: 17px 0;"> 
+          <div style="max-width: 200px; margin: auto;">
+           <a href="http://www.longsheepstools.top/31d6C23B9v5M8L6G13qo6Ca88O19e3R36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ3SmdR6fP1PM05o@pwD/baggers-Bess" target="_blank"><img alt="bhse" src="http://www.longsheepstools.top/c054R2395D7GYa12F6a8Law19e3P36ibrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ3SmdR6l1BO0r5rJwqD/baggers-Bess" style="display: block;" width="100%" /></a>
+          </div> 
+         </center> 
+         <div> 
+          <h4 style="margin: 0; padding: 33px 35px; font-weight: 500; font-size: 18px; text-align: justify; line-height: 28px;"><a href="http://www.longsheepstools.top/31d6C23B9v5M8L6G13qo6Ca88O19e3R36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ3SmdR6fP1PM05o@pwD/baggers-Bess" target="_blank"><img alt="hses" src="http://www.longsheepstools.top/8db6aNp2395av7va13VXg6a8bM19e3n36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ3SmdR6dR10Yq6QBwyPD/summing-advertisement" style="display: block; float: right; margin-left: 3.5%; margin-top: 1.9%;" width="29%" /></a> Exciting updates from Lowe's! A fantastic Wiha Screwdriver Tray Set is ready for you, and all you need to do is click a few times or complete a brief survey to participate. Take action promptly to ensure you seize this wonderful opportunity! The deadline to secure this incredible prize is December 12th.</h4> 
+          <div> 
+           <div style="display: inline-block; max-width: 230px; margin: auto; vertical-align: top; margin-top: 5%;"> 
+            <center style="background-color: rgb(1,26,107); padding: 18px 30px; display: inline-block; font-size: 18px; font-weight: bold;">
+             <a href="http://www.longsheepstools.top/31d6C23B9v5M8L6G13qo6Ca88O19e3R36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ3SmdR6fP1PM05o@pwD/baggers-Bess" style="text-decoration: none; color: white;" target="_blank">Start Here To Win </a>
+            </center> 
+           </div> 
+           <div style="display: inline-block; max-width: 200px; margin: auto; margin-left: 8%;">
+            <a href="http://www.longsheepstools.top/31d6C23B9v5M8L6G13qo6Ca88O19e3R36ybrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7kQ3SmdR6fP1PM05o@pwD/baggers-Bess" target="_blank"><img alt="uyyse" src="http://www.longsheepstools.top/polynomials-rickety/daa5S23Q95k7zKa11B6a8cw19e3Q36PbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQ3SmdR6Nx1WV05r3wJD" style="display: block;" width="100%" /></a>
+           </div> 
+          </div> 
+          <div> 
+           <p style="margin: 0; padding: 33px 35px; font-weight: 500; font-size: 18px; text-align: center; line-height: 28px;">We highly value your contribution to Lowe's. Your active participation in our survey is genuinely appreciated. Your feedback is crucial to us, and we hold it in high regard.</p> 
+          </div> 
          </div> 
-        </center> </td> 
-      </tr> 
-     </tbody> 
-    </table> 
-   </div> 
-  </section>   
- <img src="http://www.goodmkrogtps.click/imitate-outlaws/d324A2395f8o5O12I6ak87C19e2v36LbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQCSmdQ5jZ10I6tkwDlk" alt=""/></body>
+        </center> 
+       </div> 
+       <br /> &nbsp;
+       <br /> &nbsp;
+       <br /> &nbsp;
+       <br /> &nbsp;
+      </div> 
+      <div> 
+       <center> 
+        <h4 style="font-size: 12px; font-weight: 700; line-height: 22px;">more than welcome to leave in <a href="http://www.longsheepstools.top/9535L23x95b8Ps613I6CaC89Y19e3y36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ3SmdR5N10Rv5UywJD/acquiesce-souvenir">here</a> we' ll miss you<br /> US 10010 126 E 23rd St New York, NY,</h4> 
+       </center> 
+      </div> </td> 
+    </tr> 
+   </tbody> 
+  </table>   
+ <img src="http://www.longsheepstools.top/7736NK2R395KI85J12O6Za8dt19e3m36hbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQ3SmdR6V1FvX05ij1wD/streamers-intimating" alt=""/></body>
 </html>
 
---3d33f57f573e1bfa1c2ee3e9e3b9bd3a469777103--
+--f8f4bf5a7c9e1c15bb1368e63bd00f790019101102510338--
 
