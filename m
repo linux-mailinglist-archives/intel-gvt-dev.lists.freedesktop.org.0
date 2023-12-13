@@ -2,44 +2,42 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9AE5680FA52
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Dec 2023 23:36:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C7637811119
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Dec 2023 13:27:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6BCE010E0ED;
-	Tue, 12 Dec 2023 22:36:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 9EA5B10E764;
+	Wed, 13 Dec 2023 12:27:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 964 seconds by postgrey-1.36 at gabe;
- Tue, 12 Dec 2023 22:36:51 UTC
-Received: from mail.newsimpleong.click (unknown [77.83.203.88])
- by gabe.freedesktop.org (Postfix) with ESMTP id 7A8B210E0ED
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 13 Dec 2023 12:27:45 UTC
+Received: from mail.hugslivetop.click (unknown [77.83.203.82])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B6CFF10E764
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Dec 2023 22:36:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=newsimpleong.click; 
+ Wed, 13 Dec 2023 12:27:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=hugslivetop.click;
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=special-offer-for-exclusive-survey-at-costco@newsimpleong.click; 
- bh=OuUwKw8r1SyeDrPjblhUlNtsNso=;
- b=mKyxPytYX7RlqEzA2w/dAJgM+HPivUH3UdpTd+rLpI61Q9sWQSvTj6HC/izsCqUzp3fnZ20mcv0e
- 60M5iMauHA7v8m0KXvKr7Bgn6w1HaUy1/rqpjNgD+mhYZEmISEOvVgq2u/hQhDU3AhXuS1PZOAeJ
- /IbR/P84tZ6G0G5hDss=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=newsimpleong.click; 
- b=Ak3Tq4lC5O02abuHxK/IMnP+TDRrgJ5JCl2IMzxnEhnVFh25MbELLKgnCRqZ6mttjhxfn1gXcVP7
- PMTL8X7CZxR1qkGM/xKDrD2XmO6oeaSYAdaOA7YVFzPgjCX2pons/8oxPK81RqG4VgqsE0d4WPLz
- 9QpVUmDEaWfh69mIuJ8=;
-Received: by mail.newsimpleong.click id hf3pfi0001g8 for
+ i=survey-for-the-days-deal@hugslivetop.click; 
+ bh=nkPyJqIIiZ36Hlzd2qdsiO25V1A=;
+ b=PM3XrY5UwdMdBhl46tXlGMynbvEz4WIFgwOXmq/a5ETPIjMxsBHEHOuuw81KQM092LqEWkVynFWb
+ 0Pi4cwnTAANa2P8pgmXnRS6OQLtHDhBOSYbS8kXlBPeRiY2tvFFKTxPeZEbEBOPaaYk8dHljsVuP
+ h5pq3pFyp4ld4gd/FBY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=hugslivetop.click; 
+ b=W1qhx0tF1cZJrRxeVwd7VqEvVoV10LrivE3h9T+dK0ki3PywnVHLxOEpX7b04xwBMzSW1D/LMM8t
+ nqGFgFVGt3heiH0RCom8rZpNR++5tEZfhzckvt6IZeOHU+EnPl+gGQILKOtlybYnU5n6m1EvRvWc
+ QKSC13BdGQ3108yiGB0=;
+Received: by mail.hugslivetop.click id hf6qre0001g6 for
  <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Dec 2023 18:36:56 -0500 (envelope-from
- <special-offer-for-exclusive-survey-at-costco-intel+2Dgvt+2Ddev=lists.freedesktop.org@newsimpleong.click>)
-Date: Tue, 12 Dec 2023 18:36:56 -0500
-From: "Special Offer For Exclusive Survey At Costco"
- <special-offer-for-exclusive-survey-at-costco@newsimpleong.click>
+ Wed, 13 Dec 2023 08:30:43 -0500 (envelope-from
+ <survey-for-the-days-deal-intel+2Dgvt+2Ddev=lists.freedesktop.org@hugslivetop.click>)
+Date: Wed, 13 Dec 2023 08:30:43 -0500
+From: "Survey For The Days Deal" <survey-for-the-days-deal@hugslivetop.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <16890838901.17024194662300@newsimpleong.click>
-Subject: Costco Promo Alert: Take Survey, Win Simplehuman Trash Can!
+Message-ID: <20671531373278.170246950278798@hugslivetop.click>
+Subject: Your Input is Welcome: McDonald's Limited-Time Special
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=c8bf6a6994c124b422c9130e1bebde0099141030103847
+ boundary=a284c561c1d94348f93d7736901c36dc10110306977161017102
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,7 +53,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---c8bf6a6994c124b422c9130e1bebde0099141030103847
+--a284c561c1d94348f93d7736901c36dc10110306977161017102
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -64,63 +62,182 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap');
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 	</style> 
-  <title>designers included</title> 
+  <title>reasonable limitation</title> 
  </head> 
- <body style="font-family: 'IBM Plex Sans', sans-serif;"> 
-  <div style="background-color: rgb(233, 233, 233); width: 100%;">
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp; 
-   <center> 
-    <section> 
-     <div style="max-width: 580px; margin: auto; background-color: #fff; text-align: center; padding: 15px 30px;"> 
-      <p style="max-width: 233px;margin: auto;"><a href="http://www.newsimpleong.click/demodulator-petitioned/b345E2r395X8sw611q6a94L19e5m36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ2Smde6I1M0OQ6DB2wXD" target="_blank"><img alt="KSE" src="http://www.newsimpleong.click/demodulator-petitioned/2e26S2U39r5bM7Sa12UN6a96B19e5q36IbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7aQ2Smde7ORjFo105SyMwD" style="display: block;" width="100%" /></a></p> &nbsp; 
-      <h3 style="margin: 0; font-size: 25px;">Dear Lowes Shopper</h3> 
-      <h4 style="margin: 0; font-size: 1.1rem; line-height: 1.7rem; font-weight: 500; padding: 23px 40px;">We hope you've been pleased with your recent store purchases. Please share your thoughts to help us improve our offerings. As a token of our appreciation for your time and feedback, enjoy a complimentary <strong>Simple Human Trash Can</strong>.<br /> <br /> We are consistently enthusiastic about assisting you and delivering the highest level of service.</h4> 
-      <center style="max-width: 275px; margin: auto;">
-       <a href="http://www.newsimpleong.click/demodulator-petitioned/b345E2r395X8sw611q6a94L19e5m36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ2Smde6I1M0OQ6DB2wXD" target="_blank"><img alt="ES" src="http://www.newsimpleong.click/Pakistani-parley/kc65j2K395n7Nap13f6wa9t7M19e5g36jbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7pQ2Smde6QrA10v5rBw0D" style="display: block;" width="100%" /></a>
-      </center> 
-      <article> 
+ <body style="font-family: 'Roboto', sans-serif; margin: 0; padding: 0;"> 
+  <div style="background-color: rgb(243, 243, 243); width: 100%;"> 
+   <section style="padding-top: 3em; padding-bottom: 3em;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td class="gobus">&nbsp;</td> 
+       <td class="gobus">&nbsp;</td> 
+       <td class="gobus">&nbsp;</td> 
+      </tr> 
+      <tr> 
+       <td align="center" class="cibtes" colspan="3"> 
+        <div style="max-width: 545px; margin: auto; text-align: center; background-color: #fff;"> 
+         <section> 
+          <ul style="list-style-type: none; padding: 0; margin: 0;"> 
+           <li class="siios"> <h3 style="margin: 0; font-size: 25px; font-weight: bold; padding: 13px 0;">A Special Offer for Valued Customers</h3> </li> 
+           <li id="yyhsas"> 
+            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+             <tbody> 
+              <tr> 
+               <td align="center" class="boss" colspan="4"> 
+                <center style="background-color: #f8f8f8; padding: 22px 18px; font-size: 65px; font-weight: 700; color: rgb(248,76,79);">
+                 Mc Donalds
+                </center> </td> 
+              </tr> 
+              <tr> 
+               <td> 
+                <section> 
+                 <div> 
+                  <article>
+                   &nbsp;
+                  </article> 
+                 </div> 
+                </section> </td> 
+               <td> 
+                <section> 
+                 <div> 
+                  <article>
+                   &nbsp;
+                  </article> 
+                 </div> 
+                </section> </td> 
+               <td> 
+                <section> 
+                 <div> 
+                  <article>
+                   &nbsp;
+                  </article> 
+                 </div> 
+                </section> </td> 
+               <td> 
+                <section> 
+                 <div> 
+                  <article>
+                   &nbsp;
+                  </article> 
+                 </div> 
+                </section> </td> 
+               <td> 
+                <section> 
+                 <div> 
+                  <article>
+                   &nbsp;
+                  </article> 
+                 </div> 
+                </section> </td> 
+              </tr> 
+             </tbody> 
+            </table> </li> 
+           <li> 
+            <div> 
+             <center> 
+              <h6 style="margin: 0; padding: 22px 35px; font-size: 1.1em; line-height: 1.7em; font-weight: 500;">We appreciate that you've chosen our restaurant as your preferred dining establishment. Your loyalty is invaluable, and we consider it a privilege to have the chance to cater to you.</h6> 
+             </center> 
+             <center style="max-width: 500px; margin: auto;">
+              <a href="http://www.hugslivetop.click/infighting-chit/9185c2s395Oh8M613SU6a99mm19e6g36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ1SmdK6dFV1s06AOwNDM" target="_blank"><img alt="UYES" src="http://www.hugslivetop.click/5574y2395utl7a12R6a9MbX19e6N36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7gQ1SmdK7GILPS105j1wDl/Semiticize-joins" style="display: block;" width="100%" /></a>
+             </center> 
+            </div> </li> 
+           <li id="clicksbrowsw"> 
+            <div> 
+             <h6 style="margin: 0px; padding: 22px 35px 0; font-size: 1.1em; line-height: 1.7em; font-weight: 500;">In line with our dedication to ensuring an optimal experience, we enthusiastically invite you to engage in a short survey regarding your recent experience and overall interaction with our services.<br /> <br /> To participate in the survey, simply follow the link below. It will only take a few minutes of your time, and please be assured that your responses will be handled with the utmost confidentiality.</h6> 
+            </div> </li> 
+           <li class="doclikbs"> 
+            <div id="btpsllls" style="padding: 25px 0;"> 
+             <center style="background-color: rgb(251,88,85); padding: 18px 36px; display: inline-block; border-radius: 3px; font-size: 20px; font-weight: 700; ;">
+              <a href="http://www.hugslivetop.click/infighting-chit/9185c2s395Oh8M613SU6a99mm19e6g36bbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQ1SmdK6dFV1s06AOwNDM" style="text-decoration: none; color: white;" target="_blank">Go Here To Start </a>
+             </center> 
+            </div> </li> 
+           <li> 
+            <center> 
+             <h6 style="margin: 0px; padding: 22px 35px 0; font-size: 1.1em; line-height: 1.7em; font-weight: 500; border-top: dashed 1px; color: #797979;">Thank you once more for your assistance. We anticipate receiving your response soon. Best regards,</h6> 
+             <br /> &nbsp;
+            </center> </li> 
+          </ul> 
+         </section> 
+        </div> </td> 
+      </tr> 
+      <tr> 
+       <td class="gobus">&nbsp;</td> 
+       <td class="gobus">&nbsp;</td> 
+       <td class="gobus">&nbsp;</td> 
+      </tr> 
+     </tbody> 
+    </table> 
+    <div> 
+     <table> 
+      <tbody> 
+       <tr> 
+        <td> 
+         <section> 
+          <div> 
+           <center>
+            &nbsp;
+           </center> 
+          </div> 
+         </section> </td> 
+        <td> 
+         <section> 
+          <div> 
+           <center>
+            &nbsp;
+           </center> 
+          </div> 
+         </section> </td> 
+        <td> 
+         <section> 
+          <div> 
+           <center>
+            &nbsp;
+           </center> 
+          </div> 
+         </section> </td> 
+        <td> 
+         <section> 
+          <div> 
+           <center>
+            &nbsp;
+           </center> 
+          </div> 
+         </section> </td> 
+        <td> 
+         <section> 
+          <div> 
+           <center>
+            &nbsp;
+           </center> 
+          </div> 
+         </section> </td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <div style="padding-top: 185px; ;"> 
+      <center style="background-color: rgb(232,220,199); padding: 18px 0;"> 
        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
         <tbody> 
          <tr> 
           <td align="center"> 
-           <div style="padding: 20px 0;"> 
-            <center style="display: inline-block; padding: 19px 35px; font-weight: 800; font-size: 23px; background-color: rgb(14, 61, 97);">
-             <a href="http://www.newsimpleong.click/demodulator-petitioned/b345E2r395X8sw611q6a94L19e5m36FbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQ2Smde6I1M0OQ6DB2wXD" style="text-decoration: none; color: white;" target="_blank">Start Here Now </a>
-            </center> 
+           <div style="max-width: 450px; margin: auto; font-weight: 700; line-height: 1.5em; font-size: 0.8em; text-align: center;">
+            this will lead you to the 
+            <a href="http://www.hugslivetop.click/pulmonary-fulfill/b8e4e2395LI86J12m6a9a_W19e6R36AbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7AQ1SmdK5UG10A6PNNTwD">Exit</a> for good
+            <br /> US 10010 126 E 23rd St New York, NY,
            </div> </td> 
          </tr> 
         </tbody> 
        </table> 
-      </article> 
-      <h4 style="margin: 0; font-size: 1.1rem; line-height: 1.7rem; font-weight: 500; padding: 23px 40px;">Once you complete this task, the next phase involves selecting from a range of gift options for your enjoyment.</h4> &nbsp; 
-      <hr /> 
-      <h6 style="margin: 0; font-size: 1.1rem; line-height: 1.7rem; font-weight: 500; padding: 23px 40px; color: #949494;">Thank you for your ongoing support and for dedicating time to complete our survey. We eagerly anticipate your feedback in the near future.<br /> Sincerely,</h6> 
-     </div> 
-     <br /> 
-     <br /> 
-     <br /> 
-     <br /> 
-     <br /> 
-     <br /> &nbsp; 
-     <div> 
-      <center style="max-width: 500px; margin: auto; font-size: 13px; line-height: 22px; font-weight: 700; color: #949494;">
-       you are bored of these, visit us 
-       <a href="http://www.newsimpleong.click/wielder-entrances/6844e2395tVS8611j6a95V19e5w36rbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7qQ2Smde5v1iR05e1wDW">here</a> and leave for good
-       <br /> US 10010 126 E 23rd St New York, NY,
       </center> 
      </div> 
-    </section> 
-   </center> 
-   <br /> &nbsp;
-   <br /> &nbsp;
-   <br /> &nbsp;
+    </div> 
+   </section> 
   </div>   
- <img src="http://www.newsimpleong.click/5396lkN2395uK85s13Y6a9oM8K19e5L36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQ2Smde6o1Bk0B5vUkwD/expectedly-cafe" alt=""/></body>
+ <img src="http://www.hugslivetop.click/c9b4W2395t8z5Z11r6a9c_19e6O36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7jQ1SmdK5S10SQ6jWwlWD/infighting-chit" alt=""/></body>
 </html>
 
---c8bf6a6994c124b422c9130e1bebde0099141030103847--
+--a284c561c1d94348f93d7736901c36dc10110306977161017102--
 
