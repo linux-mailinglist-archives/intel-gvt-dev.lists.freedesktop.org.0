@@ -2,44 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB850811B75
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Dec 2023 18:43:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CF2DE811CEC
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Dec 2023 19:40:48 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 651E310E7C8;
-	Wed, 13 Dec 2023 17:43:42 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id ADE8410E2A3;
+	Wed, 13 Dec 2023 18:40:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 303 seconds by postgrey-1.36 at gabe;
- Wed, 13 Dec 2023 17:43:40 UTC
-Received: from mail.blockshomenf.click (unknown [77.83.203.207])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8024510E7C8
+X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
+ Wed, 13 Dec 2023 18:40:46 UTC
+Received: from mail.glasstopinfowal.top (unknown [77.83.203.217])
+ by gabe.freedesktop.org (Postfix) with ESMTP id 35B5D10E2A3
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 13 Dec 2023 17:43:40 +0000 (UTC)
+ Wed, 13 Dec 2023 18:40:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=blockshomenf.click; 
+ d=glasstopinfowal.top; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=home-depot-survey-exclusive@blockshomenf.click; 
- bh=eNXeN5MWs7TkHeq8+RR59qwHTMY=;
- b=NL7ybGLwL1JSlV+T/wPBJuy0/hlAqz6woZkuG3l2eXQslEh/Ue2iwHsFiqcZXxnaZUYYlg2LOpSA
- V4F6fUrQTynKELr6+s9r1PWJEyuuoV1gnRg7I2iIhaXLZOXK14qxf6zTgdIxs4ZkqMVchhOyOs5K
- u9f4bNd1HmPJaPjAj7A=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=blockshomenf.click; 
- b=CuXFutsf5tJ5sQ0dbk9Xd52elDZJOsnXRaYG5zZ48xP5JMSBHEkZ/c9BdzagL7P9rYBO9c+l4kVF
- KO1LMGRjN7WLIscK/x/28fxuUAuVCYzV42qxlq6YImN0aylSWkompUB0Z5rPIEwgFlm+rtUCFRtb
- XfwryPuM1PZUdg/ncPQ=;
-Received: by mail.blockshomenf.click id hf7mko0001gi for
+ i=limited-time-walmart-survey-rewards@glasstopinfowal.top; 
+ bh=NTja1h+dk9XiiqWffUBId73eEd4=;
+ b=v6d5PLUDF+sYO4Ul/6ZtEx1E1KvMhqdOuQVCYPHHz+8VsvTbEZQkHEkrOGPmvV32biSMXP2LiNox
+ 07eP5jhcA5o3xibRC8sfVuuVY7PW4ZEkxmQ/sUMFuj1F6oqRRDm337Kpd6GdgY4zhcnZxG/A3uK1
+ KdCLniA4Fk7+qPZYSXA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=glasstopinfowal.top;
+ b=GzSc7tN4Lq7jqvLaWbseoDPqhTOy82+yuIgbgKqW8Lz4WQ9XaLGZkvmv2UKk1jctRZMkibTXo/C7
+ uYJZXwtmzuGRQWknPrG48VsYAoA+L3Om77dJy5GNgnz3/wgeucOL9jkQK6vqH3Kx4vuEEPvj9aNF
+ G8bej12gYoyMMVPQPyg=;
+Received: by mail.glasstopinfowal.top id hf86i60001gl for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 13 Dec 2023 12:34:32 -0500 (envelope-from
- <home-depot-survey-exclusive-intel+2Dgvt+2Ddev=lists.freedesktop.org@blockshomenf.click>)
-Date: Wed, 13 Dec 2023 12:34:32 -0500
-From: "Home Depot Survey Exclusive"
- <home-depot-survey-exclusive@blockshomenf.click>
+ Wed, 13 Dec 2023 14:48:29 -0500 (envelope-from
+ <limited-time-walmart-survey-rewards-intel+2Dgvt+2Ddev=lists.freedesktop.org@glasstopinfowal.top>)
+Date: Wed, 13 Dec 2023 14:48:29 -0500
+From: "Limited Time Walmart Survey Rewards"
+ <limited-time-walmart-survey-rewards@glasstopinfowal.top>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <120128883417.17024888614409@blockshomenf.click>
-Subject: Home Depot Survey: Share Your Thoughts, Win Rewards!
+Message-ID: <125406451068.170249216833226@glasstopinfowal.top>
+Subject: Today's Deals: Walmart Survey for Limited-Time Savings!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=bf9dc3b5eac1852bd97a812987a513272355521003386
+ boundary=3bd865fc61309a0fde920b4a6825db5f1035523
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,82 +55,50 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---bf9dc3b5eac1852bd97a812987a513272355521003386
-Content-Type: text/html; charset=us-ascii
+--3bd865fc61309a0fde920b4a6825db5f1035523
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-<!DOCTYPE html>
-<html lang="en">
- <head> 
-  <meta charset="UTF-8" /> 
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@100;200;300;400;500;600;700;800&display=swap');
-	</style> 
-  <title>icons makes it</title> 
- </head> 
- <body style="font-family: 'Sarabun', sans-serif; margin: 0; padding: 0;"> 
-  <section style="background-color: rgb(236, 236, 236); width: 100%;">
-   <br /> 
-   <br /> &nbsp; 
-   <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-    <tbody> 
-     <tr> 
-      <td> 
-       <center style="background-color: #fff;"> 
-        <div style="max-width: 520px; margin: auto; text-align: center;"> 
-         <center style="max-width: 350px; margin: auto; padding: 15px 0;">
-          <a href="http://www.blockshomenf.click/dissipation-nickels/e226k239HI5o8i6K12X6akafu19ebN36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ3SmQd6g1_qu05K@WwD" target="_blank"><img alt="NHSE" src="http://www.blockshomenf.click/implementor-enlisted/9366K2r3p95h7kaw11c6ab1l19ebZ36obrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7oQ3SmQd6A1G0kI6SUJwDP" style="display: block;" width="100%" /></a>
-         </center> 
-         <article> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> 
-              <center> 
-               <h2 style="margin: 0; font-weight: 500; font-size: 25px; ;"><strong>Congratulations</strong>, Home Depot Winner!</h2> 
-              </center> </td> 
-            </tr> 
-            <tr> 
-             <td align="center"> <h4 style="font-size: 17px; line-height: 28px; font-weight: 500;">Congratulations! You've been chosen as the recipient of a Home Depot prize. To claim your reward, kindly spare a moment to respond to a few short questions regarding your interaction with us. Please click the button below to verify and receive your package.</h4> </td> 
-            </tr> 
-            <tr> 
-             <td align="center"> 
-              <div> 
-               <h2 style="margin: 0; font-weight: 500; font-size: 25px; ;"><strong>Your Reward:</strong> $200 PROMO REWARD</h2> 
-               <br /> 
-               <a href="http://www.blockshomenf.click/dissipation-nickels/e226k239HI5o8i6K12X6akafu19ebN36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ3SmQd6g1_qu05K@WwD" target="_blank"><img alt="see" src="http://www.blockshomenf.click/4854U2395QK7ra13S6abs2G_19ebQ36KbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7CQ3SmQd6Ay1T0k5yBywD/everybody-pogrom" style="display: block;" width="90px" /></a>
-               <br /> &nbsp; 
-               <h5 style="margin: 0; font-weight: 500; font-size: 17px; ;">Please click the button below to confirm and claim your $200 promotional reward.</h5> &nbsp; 
-               <div> 
-                <center style="font-size: 30px; background-color: rgb(241,94,4); display: inline-block; padding: 20px 45px; font-weight: bold;">
-                 <a href="http://www.blockshomenf.click/dissipation-nickels/e226k239HI5o8i6K12X6akafu19ebN36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ3SmQd6g1_qu05K@WwD" style="text-decoration: none; color: white;" target="_blank">Take Survey Now!</a>
-                </center> 
-               </div> &nbsp; 
-               <h4 style="margin: 0; font-weight: 500; font-size: 17px; ;">ATTENTION: This Reward Offer Expire On 12-13-2023<br /> <a href="http://www.blockshomenf.click/dissipation-nickels/e226k239HI5o8i6K12X6akafu19ebN36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQ3SmQd6g1_qu05K@WwD"><b>Please confirm receipt</b></a><br /> <br /> Regards,<br /> <strong>Home Depot Rewards</strong></h4> 
-               <br /> 
-               <br /> 
-               <br /> 
-               <br /> 
-               <br /> &nbsp; 
-               <footer> 
-                <address> 
-                 <hr />Your free will can lead you to the <a href="http://www.blockshomenf.click/6a14P2395F86Zx13w6ab0VpG19ebn36nbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7FQ3SmQd5e10nv6LlwP0D/enlightened-regards">exit</a><br /> US 10010 126 E 23rd St New York, NY,<br /> &nbsp;</address> 
-               </footer> 
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </article> 
-        </div> 
-       </center> </td> 
-     </tr> 
-    </tbody> 
-   </table> 
-   <br /> 
-   <br /> &nbsp;
-  </section>   
- <img src="http://www.blockshomenf.click/e3f6aD2W395bjY8513O6ab3vVL19ebT36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7MQ3SmQd6UwkV105dkwDU/testimonies-DECsystem" alt=""/></body>
-</html>
+A SPECIAL OFFER FOR OUR VALUED CUSTOMERS
 
---bf9dc3b5eac1852bd97a812987a513272355521003386--
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+Walmart
+
+Looking for the ultimate shopping destination for your family's needs? 
+Look no further than Walmart, where we offer a diverse range of products 
+to meet all your requirements. 
+
+Don't miss this fantastic opportunity! For a limited time, you have the 
+chance to win a $100 Walmart gift card by completing a brief survey.  
+Explore our vast selection of quality goods and unbeatable prices. 
+
+We want to express our gratitude for choosing Walmart as your go-to 
+shopping destination.  Your preference means the world to us, and we 
+invite you to participate in our survey for a shot at winning this 
+exclusive gift card.  Thank you for your continued loyalty and best of luck!
+
+
+By completing the survey, you could receive a $100 gift card
+
+TAKE THE SURVEY >>>>>
+http://www.glasstopinfowal.top/caverns-flowering/35a4j2395Ov8X613J6gaBb4N19ecS36DbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7bQ1SmQQ7hz1DA0U6zB2@wD
+
+
+
+
+
+
+Thank you once again for your ongoing support.  We eagerly await your feedback and look forward to serving you with unbeatable value! Warm regards. 
+
+Walmart Survey
+
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+
+more than welcome to leave in here >>> we' ll miss
+http://www.glasstopinfowal.top/gaseously-Oregon/13e5g2l395QW8G612t6Hab5U19ecJ36wbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7NQ1SmQQ5H1CM05VAw1D
+you US 10010 126 E 23rd St New York, NY,
+
+--3bd865fc61309a0fde920b4a6825db5f1035523--
 
