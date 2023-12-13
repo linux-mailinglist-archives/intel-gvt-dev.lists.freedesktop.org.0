@@ -2,43 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B47B811FC6
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Dec 2023 21:16:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CD3A811E60
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Dec 2023 20:13:32 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2E72A10E817;
-	Wed, 13 Dec 2023 20:16:09 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E43E310E817;
+	Wed, 13 Dec 2023 19:13:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 336 seconds by postgrey-1.36 at gabe;
- Wed, 13 Dec 2023 20:16:06 UTC
-Received: from mail.infofryerstop.click (unknown [77.83.203.77])
- by gabe.freedesktop.org (Postfix) with ESMTP id AA91610E817
+X-Greylist: delayed 308 seconds by postgrey-1.36 at gabe;
+ Wed, 13 Dec 2023 19:13:28 UTC
+Received: from mail.typinfowalgr.click (unknown [77.83.203.210])
+ by gabe.freedesktop.org (Postfix) with ESMTP id B777210E804
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 13 Dec 2023 20:16:06 +0000 (UTC)
+ Wed, 13 Dec 2023 19:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=infofryerstop.click; 
+ d=typinfowalgr.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=kohls_alert_win_today@infofryerstop.click; 
- bh=wGYrYj7bL0mKLgY/ibN5wIPQqoI=;
- b=xVwQTNOfJ5RWjYpJhkh6NVH4FdjB8LAtEeggCvI69k1zYcbYv4TdOe+KzAyi3GYcqyKDjg+fKyfx
- 1CNmo+yauR4JW17TTJfKJ1On83eJc52fkyyRGByoGXTNl2wOHYY47XbiS2AR7PToGl5ncZZtjQ5Z
- 4TK4VL85bbN7r2hWSk4=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=infofryerstop.click;
- b=lkn5uhKhWQ8UU4+qIyjeW/IVfuT5TtYBvo+REm/133QUgPMplP+v6ceJlxfa7DG3EQBvOTrp8J7U
- 0GMRxVnRQusBYF+uU7NlEMM/69VwnWGpSoqImY65sL2nC6bVNV5qUuLvVx8yDk2yMnaJGubA8V3y
- D/vJtEGEmeghEkEFrUA=;
-Received: by mail.infofryerstop.click id hf88gc0001gj for
+ i=walgreens-alert-win-today@typinfowalgr.click; 
+ bh=XDKH+BiDScK1FFW6N+wZJPRenbg=;
+ b=asczHMx19XRgiIhOMP6eJzzAXz6sfwbx2YCk5gjb612b+QzsNo4jspc0xJ2DngF5daYUDbfyIEdG
+ AZLcWdHWCWAOh9pd76z/B9ZSMoDCY648blM+ArCLY1IULpT5trx+BaQzUO8qTYlGcnwXleRnLT8x
+ SxT6K3tmIxRibPIcyvY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=typinfowalgr.click; 
+ b=GYz6xHrKEZ5owymHKIma4uLdmzbhgE/dLBDhSyQ6s2cldCudNiWqUgFscxzuL+tXjsviugSWvXIV
+ vyxq2BswjTwXV5YFy1iifF4iJc9IcvM07SPu3SOR465Go6i6LGuXv9pNubEp/vbgYCQhI8PMPO+7
+ aFDs8lOX+MneLif4yXw=;
+Received: by mail.typinfowalgr.click id hf8acs0001gt for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 13 Dec 2023 15:03:46 -0500 (envelope-from
- <kohls_alert_win_today-intel+2Dgvt+2Ddev=lists.freedesktop.org@infofryerstop.click>)
-Date: Wed, 13 Dec 2023 15:03:46 -0500
-From: "Kohls Alert Win Today" <kohls_alert_win_today@infofryerstop.click>
+ Wed, 13 Dec 2023 15:24:16 -0500 (envelope-from
+ <walgreens-alert-win-today-intel+2Dgvt+2Ddev=lists.freedesktop.org@typinfowalgr.click>)
+Date: Wed, 13 Dec 2023 15:24:16 -0500
+From: "Walgreens Alert Win Today"
+ <walgreens-alert-win-today@typinfowalgr.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <125451497872.1702497794695939@infofryerstop.click>
-Subject: Kohl's Advantage: Act Fast for Limited-time Survey Benefits Today!
+Message-ID: <41306579367.17024943071911@typinfowalgr.click>
+Subject: Quick Survey, Big Win: Walgreens Rewards You with Oral-B Series 8!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=c16377afb9bed5338b0801206b1e3be56992888
+ boundary=3f19c70bc3588f1a3844f93d706400216310081028
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,42 +55,39 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---c16377afb9bed5338b0801206b1e3be56992888
+--3f19c70bc3588f1a3844f93d706400216310081028
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 
-A Special Offer for Our Valued Users
------------------------------------------------
+__--__--__--____--__--__--____--__--__--____--__--__--__
 
-KOHL'S Rewards
+Walgreens
 
-We wanted to take a moment to thank you for choosing Kohl's.  Your loyalty and support mean the world to us, and we are grateful for the opportunity to serve you. 
-
-
-As a token of our appreciation, we would like to give you a FREE Ninja Air Fryer when you fill out our survey.  This kitchen appliance is a high-quality air fryer that will allow you to cook healthy and delicious meals with ease and is yours to keep, no strings attached. 
+__--__--__--____--__--__--____--__--__--____--__--__--__
 
 
-To take advantage of this offer, simply click on the button below to access the survey.  Your feedback is incredibly important to us, and we would like to offer you a token of our appreciation for taking the time to share your thoughts. 
+Thrilling News: Walgreens is now showcasing 
+the Oral-B Series 8 toothbrush for in-store 
+use.  Don't wait! You can buy these fantastic 
+products until December 13th. 
 
 
-Start Here Now>>>>>
-http://www.infofryerstop.click/40d5a2p395RGj8612O6Gab8L19eeh36vbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7SQPSmQS6j1AOm05hJwlD/meant-sacrificer
+Start Here Now >>>>>
+http://www.typinfowalgr.click/33b5UC2395Rr86G12u6Qab6T19edj36tbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQhSmQR5wy1B05NklwD/shabby-Bizet
 
 
+Thank you in advance, The Walgreens Team
 
+__--__--__--____--__--__--____--__--__--____--__--__--__
 
-Thank you for your continued support and for taking the time to fill out our survey.  We look forward to hearing from you soon. 
-
-Best regards,
-The Kohl's Survey Team
-
------------------------------------------------
-To halt e-mail, click_here >>>>> http://www.infofryerstop.click/bc96Q2jO395S8Rg612O6Aab9U19eeM36kbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7cQPSmQS5HC1_06vUW3wD/embargoes-Provence
-126 E 23rd St New York, NY, US 10010
+you are bored of these, visit us here >>>>>
+http://www.typinfowalgr.click/4675aX2395yH8M612l6abM7i19edU36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7hQhSmQR6VUG1u06Qp3wDJ/enhance-ingest
+and leave for good
+US 10010 126 E 23rd St New York, NY,
 
 
 
-<style><style><style lang="linkages"></style></style></style><span title="decentralized"><span></span></span><span></span><small></small><big></big><font></font><big></big>
 
---c16377afb9bed5338b0801206b1e3be56992888--
+
+--3f19c70bc3588f1a3844f93d706400216310081028--
 
