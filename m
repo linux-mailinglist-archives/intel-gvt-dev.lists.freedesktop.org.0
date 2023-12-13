@@ -1,44 +1,45 @@
 Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
-Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36D638118CF
-	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Dec 2023 17:12:07 +0100 (CET)
+Received: from gabe.freedesktop.org (gabe.freedesktop.org [IPv6:2610:10:20:722:a800:ff:fe36:1795])
+	by mail.lfdr.de (Postfix) with ESMTPS id C46538115F3
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 13 Dec 2023 16:18:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1D28110E27E;
-	Wed, 13 Dec 2023 16:12:06 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A1CEA10E2DA;
+	Wed, 13 Dec 2023 15:18:48 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 302 seconds by postgrey-1.36 at gabe;
- Wed, 13 Dec 2023 16:12:03 UTC
-Received: from mail.glocksbucks.top (unknown [77.83.203.47])
- by gabe.freedesktop.org (Postfix) with ESMTP id B2FB810E27E
+X-Greylist: delayed 305 seconds by postgrey-1.36 at gabe;
+ Wed, 13 Dec 2023 15:18:41 UTC
+Received: from mail.glopscostinfo.click (unknown [77.83.203.242])
+ by gabe.freedesktop.org (Postfix) with ESMTP id E033010E764
  for <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 13 Dec 2023 16:12:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim; d=glocksbucks.top; 
+ Wed, 13 Dec 2023 15:18:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=glopscostinfo.click; 
  h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:List-Unsubscribe;
- i=starbucks.wants.your.quick.input@glocksbucks.top; 
- bh=dqLfV0Qa3Us9FqakRxbHCtngpIE=;
- b=EajsA+RbC2rToeUkkK2AHOy/xCIzQOmWQLek4bs5kW6ze+Y4ewnXWK/gFfd90MYZo7kdr+mcD/xD
- DWQLSCuNbkGSmXKIGbg8Ez+SqHdxWnDnyThSMAqAUPZp6/0T86f/H3E0zHRJZQ+7mNyLzMwF0VFe
- lh26+P3wQKBaT07ct+E=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=glocksbucks.top;
- b=kYm7H7GCO1TVWVU4x57hVFpHCptLzQPqBEn32waqnwMtOked7QEMg35/krS8ZLMzEqyFhE6vzc0l
- WPRooXp+gqPwvYMsnn808/xgXE3dPgDzQ3ndpYXpnnlGOh5knumYmaiVEO9h9DInp4IBtMSpnFZ4
- SJZi3ntZMnBxiXTMEeM=;
-Received: by mail.glocksbucks.top id hf7bt60001go for
+ i=prompt.feedback.from.costco@glopscostinfo.click; 
+ bh=bo8uZbRvT6UdTqpuRmDtUn28zWk=;
+ b=dykjpnE5RqY/LQsMO/Tt6MepjRqR6McbuOBhe3xglWu0mE9rA7Ddt+Lld6eNQ6NnJFrz+AxSIg6f
+ qY09HbSLiQEhLcEieeVHv5xrE0qwwKywhen1mnQGiJfPxFYhRCSuzLgfquEjsHU64Y+P1ns9Kwcu
+ ilF8wgcYmbr3oX6C7VI=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=glopscostinfo.click;
+ b=n6Sv4dTK9i3TQYIKULujhsUhh7xO0oafr9OgWgnjjH9Z1YwL3a7v3Li/8CxzIWhYsuWsb3nr0DNo
+ dHsGT/0a3xwTqsh0TpoDlD5y4hDophPr7I83YOM63Hq2ZMEBd8GDK7EVRhjrPeSFlCEdR0ttFZud
+ E3QrOgqfEXWB9ItW1f0=;
+Received: by mail.glopscostinfo.click id hf7ese0001gk for
  <intel-gvt-dev@lists.freedesktop.org>;
- Wed, 13 Dec 2023 10:54:27 -0500 (envelope-from
- <starbucks.wants.your.quick.input-intel+2Dgvt+2Ddev=lists.freedesktop.org@glocksbucks.top>)
-Date: Wed, 13 Dec 2023 10:54:27 -0500
-From: "Starbucks Wants Your Quick Input"
- <starbucks.wants.your.quick.input@glocksbucks.top>
+ Wed, 13 Dec 2023 11:21:18 -0500 (envelope-from
+ <prompt.feedback.from.costco-intel+2Dgvt+2Ddev=lists.freedesktop.org@glopscostinfo.click>)
+Date: Wed, 13 Dec 2023 11:21:18 -0500
+From: "Prompt Feedback From Costco"
+ <prompt.feedback.from.costco@glopscostinfo.click>
 To: <intel-gvt-dev@lists.freedesktop.org>
-Message-ID: <5691268309694.170248284801293@glocksbucks.top>
-Subject: Starbucks Survey: Share your insights for rewarding benefits!
+Message-ID: <471397340347.170247974349711@glopscostinfo.click>
+Subject: Costco Members Only: Take Survey, Win Simplehuman Trash Can!
 MIME-Version: 1.0
 Content-Type: multipart/alternative; 
- boundary=a7ba85285fd1ae53904198a7d7efdf60100103310101880979797
+ boundary=a72581c61761632d413497d8f995e20f811555
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,7 +55,7 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---a7ba85285fd1ae53904198a7d7efdf60100103310101880979797
+--a72581c61761632d413497d8f995e20f811555
 Content-Type: text/html; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 
@@ -63,58 +64,64 @@ Content-Transfer-Encoding: 7bit
  <head> 
   <meta charset="UTF-8" /> 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" /> 
-  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
+  <style type="text/css">@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900;9..40,1000&display=swap');
 	</style> 
-  <title>conscience and</title> 
+  <title>are in the world</title> 
  </head> 
- <body style="font-family: 'Jost', sans-serif; margin: 0; padding: 0;"> 
-  <div style="background-color: rgb(233, 233, 233); width: 100%;;"> 
-   <div style="padding-top: 55px; padding-bottom: 55px;"> 
-    <center style="max-width: 600px; margin: auto; text-align: center; background-color: #fff;"> 
-     <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-      <tbody> 
-       <tr> 
-        <td align="center"> <p style="max-width: 400px; margin: auto;"><a href="http://www.glocksbucks.top/Bassett-canaries/3785e239A5O8t6u13js6aa7yi19e9G36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQPSmQo6dsNy105nkw@D" target="_blank"><img alt="IUE" src="http://www.glocksbucks.top/9cb4j2395kj7na11S6aa9U19e9C36zbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7QQPSmQo7mU1TD0G5LNJwD/temperance-poetic" style="display: block;" width="100%" /></a></p> 
-         <center> 
-          <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
-           <tbody> 
-            <tr> 
-             <td align="center"> <h2 style="margin: 0; font-size: 18px; padding-top: 20px; font-size: 23px; font-weight: 500;"><b>Congratulations,</b> Starbucks Winner!</h2> </td> 
-            </tr> 
-            <tr> 
-             <td align="center" class="shooos"> <h4 style="margin: 0; font-size: 19px; line-height: 30px; font-weight: 500; padding: 25px 45px;">Congratulations! You've been chosen as the recipient of a Starbucks prize. To redeem your reward, kindly spare a moment to respond to a brief survey regarding your interactions with us. Simply click the button below to verify and secure your package.</h4> 
-              <article> 
-               <p style="margin: 0; font-size: 19px; line-height: 30px; font-weight: 500; padding: 25px 45px;"><strong>Your Reward:</strong> $200 PROMO REWARD<br /> <br /> <span>Click on the button below to confirm and receive your $200 PROMO REWARD</span></p> 
-              </article> </td> 
-            </tr> 
-            <tr> 
-             <td align="center"> 
-              <div> 
-               <p style="font-size: 30px; font-weight: 700;"><a href="http://www.glocksbucks.top/Bassett-canaries/3785e239A5O8t6u13js6aa7yi19e9G36SbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7mQPSmQo6dsNy105nkw@D" target="_blank">Take Survey Now! </a></p> 
-              </div> 
-              <div style="padding: 30px; margin: 0; font-size: 19px; line-height: 30px; font-weight: 500; padding: 25px 45px;">
-               ATTENTION : This Reward Offer Expire On 12-13-2023
-               <br /> 
-               <br /> 
-               <span>Regards,<br /> Starbucks Rewards </span>
-              </div> </td> 
-            </tr> 
-           </tbody> 
-          </table> 
-         </center> </td> 
-       </tr> 
-      </tbody> 
-     </table> 
+ <body style="font-family: 'DM Sans', sans-serif; margin: 0; padding: 0;">
+  <br /> &nbsp;
+  <br /> &nbsp; 
+  <div style="background-color: rgb(230, 230, 230); width: 100%;"> 
+   <div style="max-width: 580px; margin: auto; text-align: center; background-color: #fff;"> 
+    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;" width="100%"> 
+     <tbody> 
+      <tr> 
+       <td align="center" id="bblas"> 
+        <section> 
+         <article> 
+          <div style="max-width: 233px; margin: auto; padding-top: 25px;">
+           <a href="http://www.glopscostinfo.click/memoirs-literatures/2e25p2J395iOo8612t6qaa2x19e8l36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQASmQn5m10hh6QBLwjD" target="_blank"><img alt="bgs" src="http://www.glopscostinfo.click/manometers-employees/5766Wm2F395m7oam12g6ava4z19e8q36abrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7zQASmQn5p1HG05hkOwD" style="display: block;" width="100%" /></a>
+          </div> 
+         </article> 
+        </section> </td> 
+      </tr> 
+     </tbody> 
+    </table> &nbsp; 
+    <center style="background-color: #f1f1f1;"> 
+     <p style="margin: 0; font-size: 30px; font-weight: 800;">Dear Lowes Shopper</p> 
+    </center> 
+    <center style="padding: 22px 35px;"> 
+     <p style="margin: 0; font-size: 1.1em; line-height: 1.7em; text-align: center; font-weight: 500;">We trust that your recent store acquisitions have brought satisfaction. Kindly express your thoughts to aid us in enhancing our product range. To show our gratitude for your valuable time and feedback, receive a complimentary <b>Simple Human Trash Can</b>.<br /> <br /> Our commitment to assisting you and providing top-notch service remains unwavering.</p> 
+    </center> 
+    <p style="max-width: 266px; margin: auto;"><a href="http://www.glopscostinfo.click/memoirs-literatures/2e25p2J395iOo8612t6qaa2x19e8l36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQASmQn5m10hh6QBLwjD" target="_blank"><img alt="jhse" src="http://www.glopscostinfo.click/5ed6o2K39y5cv7ar11r6aa5M19e8u36sbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7sQASmQn6njAL106FpwJ2D/memoirs-literatures" style="display: block;" width="100%" /></a></p> 
+    <center style="padding: 22px 0;"> 
+     <h4>&nbsp;</h4> 
+     <center style="background-color: rgb(1,93,161); display: inline-block; padding-top: 20px; padding-bottom: 20px; padding-left: 40px; padding-right: 40px; font-weight: 800; font-size: 22px; border-radius: 7px;">
+      <a href="http://www.glopscostinfo.click/memoirs-literatures/2e25p2J395iOo8612t6qaa2x19e8l36fbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQASmQn5m10hh6QBLwjD" style="text-decoration: none; color: white;" target="_blank">Start Here Now </a>
+     </center> 
+    </center> 
+    <aside> 
+     <article> 
+      <p style="margin: 0; font-size: 1.1em; line-height: 1.7em; text-align: center; font-weight: 500;">After finishing this assignment, the subsequent step is to choose from a variety of gift options to enhance your pleasure.</p> 
+     </article> 
+    </aside> &nbsp; 
+    <hr /> 
+    <center> 
+     <div> 
+      <p style="margin: 0; font-size: 1.1em; line-height: 1.7em; text-align: center; font-weight: 500; color: rgb(102, 102, 102); padding: 18px 33px;">We appreciate your continuous support and the time you've devoted to participating in our survey. We look forward to receiving your feedback soon.<br /> Best regards,</p> 
+     </div> 
     </center> 
    </div> 
-   <div style="padding: 200px 0;"> 
-    <footer> 
-     <address style="max-width: 480px; margin: auto; text-align: center; font-size: 12px; font-weight: bold; line-height: 22px;">Your free will can lead you to the <a href="http://www.glocksbucks.top/bang-dirtily/9366uxL2395hF8v612R6Faa8X19e9o36YbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQPSmQo5sS1C06KNwPDO">exit</a><br /> US 10010 126 E 23rd St New York, NY,</address> 
-    </footer> 
-   </div> 
-  </div>   
- <img src="http://www.glocksbucks.top/improvisational-plundering/7ce4w2395X85NK13LL6qaaaG19e9P36ubrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7dQPSmQo7f1S0Bno5yBywD" alt=""/></body>
+  </div> 
+  <div style="padding-top: 200px;"> 
+   <h6 style="margin: 0; font-size: 12px; font-weight: 800; line-height: 22px; text-align: center; max-width: 500px; margin: auto;">you are bored of these, visit us <a href="http://www.glopscostinfo.click/7554k2395R8q6m12n6aaY3Z19e8w36CbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7vQASmQn6v10Rlw5XMwDq/memoirs-literatures">here</a> and leave for good<br /> US 10010 126 E 23rd St New York, NY,</h6> 
+  </div> 
+  <br /> &nbsp;
+  <br /> &nbsp;
+  <br /> &nbsp;
+  <br /> &nbsp;  
+ <img src="http://www.glopscostinfo.click/blade-termination/7925Wk2395j8J5C12M6taa6x19e8I36BbrxIh-Z5x-HI5fhbwxwEYvIIHIwgxstEsvZ7nQASmQn5Q1H_06yXM@wD" alt=""/></body>
 </html>
 
---a7ba85285fd1ae53904198a7d7efdf60100103310101880979797--
+--a72581c61761632d413497d8f995e20f811555--
 
