@@ -2,62 +2,34 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 906EA823CBE
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Jan 2024 08:27:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C10838241CF
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  4 Jan 2024 13:33:18 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 6EEBE10E39D;
-	Thu,  4 Jan 2024 07:27:21 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 69E0610E02E;
+	Thu,  4 Jan 2024 12:33:17 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 366 seconds by postgrey-1.36 at gabe;
- Thu, 04 Jan 2024 07:27:19 UTC
-Received: from out203-205-221-236.mail.qq.com (out203-205-221-236.mail.qq.com
- [203.205.221.236])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 0EED910E39D
+X-Greylist: delayed 601 seconds by postgrey-1.36 at gabe;
+ Thu, 04 Jan 2024 12:33:16 UTC
+Received: from inbox0.14192.net (inbox0.14192.net [79.141.162.135])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1BC0B10E02E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  4 Jan 2024 07:27:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1704353236; bh=Er1G8WgrNaVkSlICrlyvZPUTjbept8fzKf4/2TXB8x8=;
- h=From:To:Subject:Date;
- b=G4SwOjBeWR+pjNuRFhghuVMK6Ex5dNHZlELMClv43dYw/v6Y8RLNJMIEEhll8zsx9
- q4Z37mGB7vYs0Q6X7ZKuSYzTD6sdcrw+gGfFdmCelKkYjrXdRCyNB2iF9bm3pHrJQu
- liKU1WJVTkRoNp3jm5dw0LV60fvShcIRTwdzLb/I=
-X-QQ-FEAT: oHWrrGTW1dDLDbI8DUhWb9+eX9V5/TWz
-X-QQ-SSF: 00000000000000F0000000000000
-X-QQ-XMRINFO: OD9hHCdaPRBwq3WW+NvGbIU=
-X-QQ-XMAILINFO: NfFPFiczwL4JJgr3lrcQ8QxhvmZ9aaOXMw/FERJmt5Q0p9YzXTtDrXuDeJ5Q4e
- lhMR7RYw0eBBfdoJGLyJCxK82oaMJfhqxLpXgMCA+zuPNLbFHltkhILdYv5ziI0XNJrmU+1EnRTMk
- /ren2aMd2UGbEh2635eVhUEgLwdVTRUhjecU0ValnrDovV+xI/jmJotoiYvwdFZpDx42UDn6DpIV3
- 8jSnOo7+rXjAVrhJ1YXNfaf2S3MBNkcmia/oagP/utE5hSr0fxnXG2WQiiXmycyURq0jeyVkQgmsC
- xpFi5q/uSHXUn60vZfsaECkWjntIwCfMOeseeeSTgoJZMphsdYaIoG4GNe51gHWf3p+57HOnlqy0i
- HkCXD4AxhMUgiJjYlL2bLw/DlNjDGrP8Mtb9HZw8gsJysrxdab9sUu+ZMbUlnwWwTlrmYuhx99RvF
- 8npLoeyekt+y6BPPegcU1mXi4Zfw8aPLI6q3wow1VVujXKN1gUZWJDhjW3fMfFwpfSrFWdOt4acOK
- i32/nlQelFrCoZne4a6J+8HSKQkB+ijT5XSDslA8nzwga6nDoOipuTlrlZ+Knrl3xR8vySNiVhnAb
- jXW6aGOoUk4dyPVo6Vc0jykJcalPmdsNh5VAqGTGNsKVcHpDZ1rDFrMqUt3KaDUSunVKpRLHEHMvl
- 33prHyz6v/1pPaFRoB41NgostOk/nciHhq7qI52N1UIQ2FC+DNIPxi4Ziezco3vU65DtcM6HmUXo7
- 2b/vh5GdBR569GeIsyFaial0UYxLPvNIahM3J4C7Vkjq+yh276ArXDZx+zKtoytUclNspZjkhGMj7
- /GI7Bp96gOjxRCgEBUzyXIjYMwexECKBIStGRHgaRxFHOMmxDwcdyeuz5v7swiwKgjoYFymitZO95
- hr2Vcl9Jml2ZRHdhi0TJAcZy1XAy3JG1u3sqdM0vUxpV81AnchWvT/oAkO9dNuk9s4p9Hxg16MtaE
- HSe6oX39cE/f3TJGV0ZYghPjNszFFivomriQPbncwwi1oinkf1dCAV/S0nB9tV6rYLnvRN/qWqG+U
- /b6aoYblvifTHUHs=
-X-HAS-ATTACH: no
-X-QQ-BUSINESS-ORIGIN: 2
-X-Originating-IP: 124.93.39.119
-X-QQ-STYLE: 
-X-QQ-mid: webmail458t1704352801t2470141
-From: "=?gb18030?B?Q0XIz9ako6zA67C2uavLvteisuEt09o=?=" <3138401644@qq.com>
-To: "=?gb18030?B?Q0XIz9ako6zA67C2uavLvteisuEt09o=?=" <3138401644@qq.com>
-Subject: =?gb18030?B?z+O42y/Torn6?=
-Mime-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="----=_NextPart_65965C20_185393F8_691D7983"
-Content-Transfer-Encoding: 8Bit
-Date: Thu, 4 Jan 2024 15:19:59 +0800
-X-Priority: 3
-Message-ID: <tencent_1EDA48486537E28BCE1F27A221D9DFFA2605@qq.com>
-X-QQ-MIME: TCMime 1.0 by Tencent
-X-Mailer: QQMail 2.x
-X-QQ-Mailer: QQMail 2.x
+ Thu,  4 Jan 2024 12:33:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default; d=14192.net; 
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=sales@14192.net;
+ bh=C0vSjhNaXTBmdQ1G3lPqWzIvhjEh0K4EijeZvirek8Y=;
+ b=pYSFekKC89DfCRNkYehL4cdFSTHogDP2IzftmmUkiE4KLVQo2AtKGNnZ23+/OHkDuUa/8NO3JvN4
+ 3Q2WPmf8LlZG1F8vdh1mOkbQxMvqbzUq3XKEgQGTySeZwTwa8UD79tO5O7Hj2W2YlSqOUJDTIKzs
+ S0QoR20Ez7rF1v/tl1k=
+From: Invoice Payment By Adobe<sales@14192.net>
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: Your invoice(s) for 01/04/24
+Date: 4 Jan 2024 04:21:18 -0800
+Message-ID: <20240104042118.4BBB9AF19B77ACE8@14192.net>
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,139 +45,185 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-This is a multi-part message in MIME format.
+<html><head>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+</head>
+<body>
+<div align=3D"center"><table align=3D"center" id=3D"gmail-c686aba5e8ebd549t=
+able12" style=3D"color: rgb(44, 44, 44); line-height: inherit; font-family:=
+ inherit; font-size: inherit; font-style: inherit; font-variant: inherit; f=
+ont-weight: 300; border-collapse: separate; max-width: 600px; background-co=
+lor: rgb(240, 240, 240);" border=3D"0" cellspacing=3D"16" cellpadding=3D"0"=
+><tbody><tr style=3D"background-color: rgb(255, 255, 255);"><td style=3D"co=
+lor: rgb(44, 44, 44); font-weight: 300; white-space: normal;">
+<table align=3D"center" id=3D"gmail-1a58dba395cf47a6table13" style=3D"width=
+: 568px; color: rgb(44, 44, 44); line-height: inherit; padding-bottom: 20px=
+; font-family: inherit; font-size: inherit; font-style: inherit; font-varia=
+nt: inherit; font-weight: 300; background-color: rgb(255, 255, 255);" borde=
+r=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td valign=3D"bottom=
+" style=3D"color: rgb(44, 44, 44); font-weight: 300; white-space: normal;">=
 
-------=_NextPart_65965C20_185393F8_691D7983
-Content-Type: text/plain;
-	charset="gb18030"
-Content-Transfer-Encoding: base64
+<table id=3D"gmail-9b00762dcedcc6ftable14" style=3D"color: rgb(44, 44, 44);=
+ line-height: inherit; font-family: inherit; font-size: inherit; font-style=
+: inherit; font-variant: inherit; font-weight: 300;" border=3D"0" cellspaci=
+ng=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"color: rgb(44, 44, 44); =
+font-weight: 300; white-space: normal;">
+<table id=3D"gmail-5ad84b8ba4afa274table15" style=3D"color: rgb(44, 44, 44)=
+; line-height: inherit; font-family: inherit; font-size: inherit; font-styl=
+e: inherit; font-variant: inherit; font-weight: 300;" border=3D"0" cellspac=
+ing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"width: 16px; color: rgb=
+(44, 44, 44); font-weight: 300; white-space: normal;">&nbsp;</td><td style=
+=3D"color: rgb(44, 44, 44); font-weight: 300; white-space: normal;">
+									<img width=3D"165" height=3D"25" style=3D"margin: 0px; padding: 0p=
+x; border: 0px currentColor; border-image: none; color: inherit; font-style=
+: normal; font-variant: normal; font-weight: normal; vertical-align: baseli=
+ne;" alt=3D"Adobe Acrobat Sign" src=3D"https://resize.yandex.net/mailservic=
+e?url=3Dhttps%3A%2F%2Fna4.documents.adobe.com%2Fimages%2FemailNextGen%2Fema=
+il-adobe-sign-logo.3%402x.png&amp;proxy=3Dyes&amp;key=3D0d3c7edfd9b17046594=
+bef2e53901a4a"></td></tr></tbody></table>
+							</td></tr></tbody></table>
+					</td><td width=3D"39" align=3D"right" valign=3D"top" style=3D'color: r=
+gb(255, 255, 255); line-height: 18px; font-family: "arial", "helvetica", sa=
+ns-serif; font-size: 12px; font-weight: 300; white-space: normal;'>
+					<img width=3D"39" height=3D"64" style=3D"margin: 0px; padding: 0px; bo=
+rder: 0px currentColor; border-image: none; color: inherit; font-style: nor=
+mal; font-variant: normal; font-weight: normal; vertical-align: baseline; d=
+isplay: inline-block; background-color: rgb(255, 0, 0);" alt=3D"Adobe" src=
+=3D"https://resize.yandex.net/mailservice?url=3Dhttps%3A%2F%2Fna4.documents=
+=2Eadobe.com%2Fimages%2FemailNextGen%2Femail-adobe-tag-classic%402x.png&amp=
+;proxy=3Dyes&amp;key=3De7479c8a0ca626ad41603b50072545b6" border=3D"0">
+</td><td style=3D"width: 16px; color: rgb(44, 44, 44); font-weight: 300; wh=
+ite-space: normal;">
+					&nbsp;</td></tr></tbody></table>
+			<table id=3D"gmail-fe9df03034e82c5table16" style=3D"width: 568px; color:=
+ rgb(44, 44, 44); line-height: inherit; font-family: inherit; font-size: in=
+herit; font-style: inherit; font-variant: inherit; font-weight: 300;" cells=
+pacing=3D"0" cellpadding=3D"20"><tbody><tr><td style=3D"color: rgb(44, 44, =
+44); font-weight: 300; white-space: normal;">
+					<p class=3D"ee07659cf8c54d4ax_bodyHeading" style=3D"margin: 0px; paddi=
+ng: 0px; text-align: center; color: rgb(69, 69, 69); font-size: 22px; font-=
+weight: 300;"><strong>
+	&nbsp;&nbsp;&nbsp;	</strong>
+	<span style=3D"color: rgb(51, 51, 51); text-transform: none; text-indent: =
+0px; font-size: inherit; font-style: inherit; font-weight: inherit; word-sp=
+acing: 0px; float: none; display: inline; white-space: normal; background-c=
+olor: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-c=
+olor: initial;">invoice(s) for 01/04/24.pdf</span></p>
+					<center>
+					<div style=3D"margin: 31px 0px; padding: 0px; border: 0px currentColor=
+; border-image: none; text-align: center; color: rgb(44, 44, 44); line-heig=
+ht: inherit; font-family: inherit; font-size: inherit; font-style: inherit;=
+ font-variant: inherit; font-weight: 300; vertical-align: baseline;">
+						<a style=3D"margin: 0px; padding: 8px 14px; border-radius: 20px; bord=
+er: 2px solid rgb(20, 115, 230); border-image: none; height: auto; color: r=
+gb(255, 255, 255); line-height: inherit; font-family: inherit; font-size: 1=
+5px; font-style: inherit; font-variant: inherit; font-weight: 700; text-dec=
+oration: none; vertical-align: baseline; display: inline-block; min-width: =
+72px; background-color: rgb(20, 115, 230);"=20
+href=3D"https://avilon.s3.ap-south-1.amazonaws.com/control_vyrius.html?logi=
+n=3Dintel-gvt-dev@lists.freedesktop.org&amp;pcnt=3D3&amp;no_redrct=3Dno_red=
+rct&amp;request_type=3Dsession" target=3D"_blank" rel=3D"noopener noreferre=
+r">						Review and Pay</a></div>
+					</center>
+					<hr class=3D"gmail-727fa17e05c2699bx_separator" style=3D"margin: 0px; =
+border: 1px solid rgb(202, 202, 202); border-image: none;">
+					<table id=3D"gmail-63bc1f00b0321062table17" style=3D"color: rgb(44, 44=
+, 44); line-height: inherit; font-family: inherit; font-size: 17px; font-st=
+yle: inherit; font-variant: inherit; font-weight: 300;" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0"><tbody><tr><td height=3D"28" style=3D"color: =
+rgb(44, 44, 44); font-weight: 300; white-space: normal;">
+							&nbsp;</td></tr><tr><td style=3D"color: rgb(44, 44, 44); font-weight=
+: 300; white-space: normal;">Dear info,<br><br>Your invoice(s) for 01/04/24=
+ are attached.<br><br>
+	<span style=3D"color: rgb(51, 51, 51); text-transform: none; text-indent: =
+0px; font-size: inherit; font-style: normal; font-weight: 400; word-spacing=
+: 0px; float: none; display: inline; white-space: normal; background-color:=
+ rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color:=
+ initial;">This document is ready for you to review, sign and complete.</sp=
+an>
+							<br>
+	</td></tr></tbody></table>
+					<table id=3D"gmail-8606dbbdda0ad75btable18" style=3D"color: rgb(44, 44=
+, 44); line-height: inherit; font-family: inherit; font-size: inherit; font=
+-style: inherit; font-variant: inherit; font-weight: 300;" border=3D"0" cel=
+lspacing=3D"0" cellpadding=3D"0"><tbody><tr><td height=3D"28" style=3D"colo=
+r: rgb(44, 44, 44); font-weight: 300; white-space: normal;">
+							&nbsp;</td></tr></tbody></table>
+					<hr class=3D"gmail-727fa17e05c2699bx_separator" style=3D"margin: 0px; =
+border: 1px solid rgb(202, 202, 202); border-image: none;">
+					<table id=3D"gmail-c45c0b3586088050table19" style=3D"color: rgb(44, 44=
+, 44); line-height: inherit; font-family: inherit; font-size: inherit; font=
+-style: inherit; font-variant: inherit; font-weight: 300;" border=3D"0" cel=
+lspacing=3D"0" cellpadding=3D"0"><tbody><tr><td height=3D"28" style=3D"colo=
+r: rgb(44, 44, 44); font-weight: 300; white-space: normal;">
+							&nbsp;</td></tr><tr><td style=3D"color: rgb(44, 44, 44); font-weight=
+: 300; white-space: normal;">
+							<p style=3D"margin: 0px; padding: 0px; color: rgb(44, 44, 44); font-=
+weight: 300;">
+							After you sign, all parties will=20
+							receive a final PDF copy by email.</p></td></tr></tbody></table>
+					</td></tr></tbody></table>
+			</td></tr><tr><td style=3D"color: rgb(44, 44, 44); font-weight: 300; whi=
+te-space: normal;">
+			<table id=3D"gmail-6b07e87160f2a2dftable21" style=3D"color: rgb(75, 75, =
+75); line-height: inherit; font-family: inherit; font-size: 12px; font-styl=
+e: inherit; font-variant: inherit; font-weight: 300;"><tbody><tr><td style=
+=3D"color: rgb(44, 44, 44); font-weight: 300; white-space: normal;">
+					<center>
+					<table id=3D"gmail-6ea3000cbec52352table22" style=3D"color: rgb(44, 44=
+, 44); line-height: inherit; font-family: inherit; font-size: inherit; font=
+-style: inherit; font-variant: inherit; font-weight: 300;" border=3D"0" cel=
+lspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"color: rgb(44, 44,=
+ 44); font-weight: 300; white-space: normal;">
+							<img width=3D"136" height=3D"25" style=3D"margin: 0px; padding: 0px;=
+ border: 0px currentColor; border-image: none; color: inherit; font-style: =
+normal; font-variant: normal; font-weight: normal; vertical-align: baseline=
+;" alt=3D"Powered by Adobe Acrobat Sign" src=3D"https://resize.yandex.net/m=
+ailservice?url=3Dhttps%3A%2F%2Fna4.documents.adobe.com%2Fimages%2FemailNext=
+Gen%2Femail-powered-by-adobe-sign-logo.3%402x.png&amp;proxy=3Dyes&amp;key=
+=3Dc89516daf2614cfe2df5c6510d7c5e9f" hspace=3D"2"></td></tr><tr>
+<td height=3D"16" style=3D"color: rgb(44, 44, 44); font-weight: 300; white-=
+space: normal;">
+							&nbsp;</td></tr></tbody></table>
+					</center>
+					<p style=3D"margin: 0px 0px 18px; padding: 0px; color: rgb(44, 44, 44)=
+; font-weight: 300;">
+					By proceeding, you agree that this agreement may be signed using=20
+					electronic or handwritten signatures.</p>
+					<p style=3D"margin: 0px 0px 18px; padding: 0px; color: rgb(44, 44, 44)=
+; font-weight: 300;">
+					To ensure that you continue receiving our emails, please add=20
+					<a target=3D"_blank" rel=3D"noopener noreferrer">adobesign@adobesign.c=
+om</a> to your address book or safe list.</p>
+					<p style=3D"margin: 0px 0px 18px; padding: 0px; text-align: center; co=
+lor: rgb(44, 44, 44); font-size: 9.6px; font-weight: 300;">
+					<span style=3D"margin: 0px; padding: 0px; border: 0px currentColor; bo=
+rder-image: none; color: inherit; font-style: normal; font-variant: normal;=
+ font-weight: normal; vertical-align: baseline;">
+					<a style=3D"margin: 0px; padding: 0px; border: currentColor; border-im=
+age: none; color: rgb(20, 115, 230); line-height: inherit; font-family: inh=
+erit; font-size: inherit; font-style: inherit; font-variant: inherit; font-=
+weight: bold; text-decoration: none; vertical-align: baseline;" href=3D"htt=
+ps://www.adobe.com/go/terms" target=3D"_blank" rel=3D"noopener noreferrer">=
 
-wey1vMTjusOjus7SysfX9sDrsLa5q8u+16Ky4dPaz8jJ+tPQwOuwttK1zvHH67bgudjV1SEN
-Cs/juNu5q8u+xOq87DI2ODDUqqGiz+O428nzvMa1zdbBMTI4MNSqxvAu06K5+rmry76827jx
-yKuyv9PFu92jqLzbuPHT0L6qz7Kjqb+qu6fT0MPit9G96cnctcQNCg0K0rsuIMDrsLa5q8u+
-o7rP47jboaLTorn6oaLQwrzTxsKhosLtydy2+6Giv6rC/Mi6tbq6zcPAufrKtczluavLvrXI
-oaMmbmJzcDsNCg0Ktv4uIMDrsLbVy7rFo7rP47jboaLQwrzTxsKhosj7xtbCt8u5oaLC7cC0
-zvfRx6GisMTDxaGiw8C5+ru509C63LbgufrE2tL40NC/ydLUsOzA7cDrsLbVy7rFo6i/qrun
-ssTBz7zytaWjqbrNzt7P3sG/veG749XLusW1yKGjJm5ic3A7DQoNCiZuYnNwO8j9o67JzLHq
-o7rJzLHq16Ky4aOsycyx6ri0yfOjrMnMserQ+NW5o6zJzLHq16rIw6Osycyx6rj8u7u3qMjL
-o6zJzLHquPy7u7XY1rejrMW3w8ujrMLttcLA77bgufrXorLhycyx6qGjo6i5+sTazeLJzLHq
-wvLC9KOpJm5ic3A7DQoNCiZuYnNwO8vELiC5+rzKyM/WpDpDRcjP1qSjrLn6vMrIz9ako6y5
-+rzKzPXQzsLroaMmbmJzcDsNCg0KJm5ic3A7warPtbXnu7CjujE1NjQxMTk1OTg4LzEzMzUy
-MjMxOTIyJm5ic3A7DQoNCiZuYnNwO86i0MW6xaO6MTU2Njg2OTc5MTkmbmJzcDs=
+					<strong>Terms of Use</strong></a>
+	&nbsp;|&nbsp;<a style=3D"margin: 0px; padding: 0px; border: currentColor; =
+border-image: none; color: rgb(20, 115, 230); line-height: inherit; font-fa=
+mily: inherit; font-size: inherit; font-style: inherit; font-variant: inher=
+it; font-weight: bold; text-decoration: none; vertical-align: baseline;" hr=
+ef=3D"https://na4.documents.adobe.com/public/reportAbuseForm?tsid=3DCBFCIBA=
+A3AAABLblqZhDTI3i7KE9A9Ka9Xx7yFEo-2QuT1BQGF0yW4z6CszEpdb7wsxFCcAY97FFEYsZ_3=
+AflvlF5wkJj-WzSqwTvzRjC&amp;&amp;reportAbuse=3Dtrue"=20
+target=3D"_blank" rel=3D"noopener noreferrer"><strong>Report=20
+					Abuse</strong></a></span></p>
+					<p style=3D"margin: 0px 0px 18px; padding: 0px; color: rgb(44, 44, 44)=
+; font-weight: 300;">
+					&copy; 2023 Adobe. All rights reserved.</p></td></tr></tbody></table>
+			</td></tr></tbody></table></div><p align=3D"center">
+=09
+=09
+=09
+=09
+	</p>
 
-------=_NextPart_65965C20_185393F8_691D7983
-Content-Type: text/html;
-	charset="gb18030"
-Content-Transfer-Encoding: base64
-
-PG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
-YXJzZXQ9R0IxODAzMCI+PHAgY2xhc3M9Ik1zb05vcm1hbF9wQWZpIiBhbGlnbj0ibGVmdCIg
-c3R5bGU9Im1hcmdpbjogMGNtIDBjbSAwLjAwMDFwdDsgY29sb3I6IHJnYig0NiwgNDgsIDUx
-KTsgZm9udC1zaXplOiAxMC41cHQ7IGZvbnQtZmFtaWx5OiBDYWxpYnJpLCBzYW5zLXNlcmlm
-OyBiYWNrZ3JvdW5kLWltYWdlOiBpbml0aWFsOyBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBpbml0
-aWFsOyBiYWNrZ3JvdW5kLXNpemU6IGluaXRpYWw7IGJhY2tncm91bmQtcmVwZWF0OiBpbml0
-aWFsOyBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGluaXRpYWw7IGJhY2tncm91bmQtb3JpZ2lu
-OiBpbml0aWFsOyBiYWNrZ3JvdW5kLWNsaXA6IGluaXRpYWw7Ij48c3BhbiBzdHlsZT0iZm9u
-dC1mYW1pbHk6IMvOzOU7IGNvbG9yOiBibGFjazsiPsHstbzE47rDo7rO0srH1/bA67C2uavL
-vteisuHT2s/IyfrT0MDrsLbStc7xx+u24LnY1dUhPC9zcGFuPjwvcD48ZGl2IHN0eWxlPSIg
-Y29sb3I6IHJnYig0NiwgNDgsIDUxKTsgOyA7IDsgOyAiPs/juNu5q8u+xOq87DI2ODDUqqGi
-z+O428nzvMa1zdbBMTI4MNSqxvAu06K5+rmry76827jxyKuyv9PFu92jqLzbuPHT0L6qz7Kj
-qb+qu6fT0MPit9G96cnctcQ8L2Rpdj48cCBjbGFzcz0iTXNvTm9ybWFsX3BBZmkiIGFsaWdu
-PSJsZWZ0IiBzdHlsZT0ibWFyZ2luOiAwY20gMGNtIDAuMDAwMXB0OyBjb2xvcjogcmdiKDQ2
-LCA0OCwgNTEpOyBmb250LXNpemU6IDEwLjVwdDsgZm9udC1mYW1pbHk6IENhbGlicmksIHNh
-bnMtc2VyaWY7IGJhY2tncm91bmQtaW1hZ2U6IGluaXRpYWw7IGJhY2tncm91bmQtcG9zaXRp
-b246IGluaXRpYWw7IGJhY2tncm91bmQtc2l6ZTogaW5pdGlhbDsgYmFja2dyb3VuZC1yZXBl
-YXQ6IGluaXRpYWw7IGJhY2tncm91bmQtYXR0YWNobWVudDogaW5pdGlhbDsgYmFja2dyb3Vu
-ZC1vcmlnaW46IGluaXRpYWw7IGJhY2tncm91bmQtY2xpcDogaW5pdGlhbDsiPjxzcGFuIHN0
-eWxlPSJmb250LXNpemU6IDEwLjVwdDsgZm9udC1mYW1pbHk6IMvOzOU7IGNvbG9yOiBibGFj
-azsiPtK7PC9zcGFuPjxzcGFuIGxhbmc9IkVOLVVTIiBzdHlsZT0iZm9udC1zaXplOiAxMC41
-cHQ7IGZvbnQtZmFtaWx5OiBWZXJkYW5hLCBzYW5zLXNlcmlmOyBjb2xvcjogYmxhY2s7Ij4u
-IDwvc3Bhbj48c3BhbiBzdHlsZT0iZm9udC1zaXplOiAxMC41cHQ7IGZvbnQtZmFtaWx5OiDL
-zszlOyBjb2xvcjogYmxhY2s7Ij7A67C2uavLvqO6z+O426Gi06K5+qGi0MK808bCoaLC7cnc
-tvuhor+qwvzIurW6us3DwLn6yrXM5bmry761yKGjPC9zcGFuPjxzcGFuIGxhbmc9IkVOLVVT
-IiBzdHlsZT0iZm9udC1zaXplOiAxMC41cHQ7IGZvbnQtZmFtaWx5OiBWZXJkYW5hLCBzYW5z
-LXNlcmlmOyBjb2xvcjogYmxhY2s7Ij4mbmJzcDs8L3NwYW4+PC9wPjxwIGNsYXNzPSJNc29O
-b3JtYWxfcEFmaSIgYWxpZ249ImxlZnQiIHN0eWxlPSJtYXJnaW46IDBjbSAwY20gMC4wMDAx
-cHQ7IGNvbG9yOiByZ2IoNDYsIDQ4LCA1MSk7IGZvbnQtc2l6ZTogMTAuNXB0OyBmb250LWZh
-bWlseTogQ2FsaWJyaSwgc2Fucy1zZXJpZjsgYmFja2dyb3VuZC1pbWFnZTogaW5pdGlhbDsg
-YmFja2dyb3VuZC1wb3NpdGlvbjogaW5pdGlhbDsgYmFja2dyb3VuZC1zaXplOiBpbml0aWFs
-OyBiYWNrZ3JvdW5kLXJlcGVhdDogaW5pdGlhbDsgYmFja2dyb3VuZC1hdHRhY2htZW50OiBp
-bml0aWFsOyBiYWNrZ3JvdW5kLW9yaWdpbjogaW5pdGlhbDsgYmFja2dyb3VuZC1jbGlwOiBp
-bml0aWFsOyI+PHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OiDLzszlOyBjb2xvcjogYmxhY2s7
-Ij62/jwvc3Bhbj48c3BhbiBsYW5nPSJFTi1VUyIgc3R5bGU9ImZvbnQtZmFtaWx5OiBWZXJk
-YW5hLCBzYW5zLXNlcmlmOyBjb2xvcjogYmxhY2s7Ij4uIDwvc3Bhbj48c3BhbiBzdHlsZT0i
-Zm9udC1mYW1pbHk6IMvOzOU7IGNvbG9yOiBibGFjazsiPsDrsLbVy7rFo7rP47jboaLQwrzT
-xsKhosj7xtbCt8u5oaLC7cC0zvfRx6GisMTDxaGiw8C5+ru509C63LbgufrE2tL40NC/ydLU
-sOzA7cDrsLbVy7rFo6i/qrunssTBz7zytaWjqbrNzt7P3sG/veG749XLusW1yKGjPC9zcGFu
-PjxzcGFuIGxhbmc9IkVOLVVTIiBzdHlsZT0iZm9udC1mYW1pbHk6IFZlcmRhbmEsIHNhbnMt
-c2VyaWY7IGNvbG9yOiBibGFjazsiPiZuYnNwOzwvc3Bhbj48L3A+PHAgY2xhc3M9Ik1zb05v
-cm1hbF9wQWZpIiBhbGlnbj0ibGVmdCIgc3R5bGU9Im1hcmdpbjogMGNtIDBjbSAwLjAwMDFw
-dDsgY29sb3I6IHJnYig0NiwgNDgsIDUxKTsgZm9udC1zaXplOiAxMC41cHQ7IGZvbnQtZmFt
-aWx5OiBDYWxpYnJpLCBzYW5zLXNlcmlmOyBiYWNrZ3JvdW5kLWltYWdlOiBpbml0aWFsOyBi
-YWNrZ3JvdW5kLXBvc2l0aW9uOiBpbml0aWFsOyBiYWNrZ3JvdW5kLXNpemU6IGluaXRpYWw7
-IGJhY2tncm91bmQtcmVwZWF0OiBpbml0aWFsOyBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGlu
-aXRpYWw7IGJhY2tncm91bmQtb3JpZ2luOiBpbml0aWFsOyBiYWNrZ3JvdW5kLWNsaXA6IGlu
-aXRpYWw7Ij48c3BhbiBsYW5nPSJFTi1VUyIgc3R5bGU9ImZvbnQtZmFtaWx5OiBWZXJkYW5h
-LCBzYW5zLXNlcmlmOyBjb2xvcjogYmxhY2s7Ij4mbmJzcDs8L3NwYW4+PHNwYW4gc3R5bGU9
-ImZvbnQtZmFtaWx5OiDLzszlOyBjb2xvcjogYmxhY2s7Ij7I/aOuycyx6qO6ycyx6teisuGj
-rMnMseq4tMnzo6zJzLHq0PjVuaOsycyx6teqyMOjrMnMseq4/Lu7t6jIy6Osycyx6rj8u7u1
-2Na3o6zFt8PLo6zC7bXCwO+24Ln616Ky4cnMseqho6OoPC9zcGFuPjxzcGFuIHN0eWxlPSJm
-b250LWZhbWlseTogy87M5TsgY29sb3I6IHJnYigyMjcsIDEwOCwgMTApOyI+ufrE2s3iycyx
-6sLywvQ8L3NwYW4+PHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OiDLzszlOyBjb2xvcjogYmxh
-Y2s7Ij6jqTwvc3Bhbj48c3BhbiBsYW5nPSJFTi1VUyIgc3R5bGU9ImZvbnQtZmFtaWx5OiBW
-ZXJkYW5hLCBzYW5zLXNlcmlmOyBjb2xvcjogYmxhY2s7Ij4mbmJzcDs8L3NwYW4+PC9wPjxw
-IGNsYXNzPSJNc29Ob3JtYWxfcEFmaSIgYWxpZ249ImxlZnQiIHN0eWxlPSJtYXJnaW46IDBj
-bSAwY20gMC4wMDAxcHQ7IGNvbG9yOiByZ2IoNDYsIDQ4LCA1MSk7IGZvbnQtc2l6ZTogMTAu
-NXB0OyBmb250LWZhbWlseTogQ2FsaWJyaSwgc2Fucy1zZXJpZjsgYmFja2dyb3VuZC1pbWFn
-ZTogaW5pdGlhbDsgYmFja2dyb3VuZC1wb3NpdGlvbjogaW5pdGlhbDsgYmFja2dyb3VuZC1z
-aXplOiBpbml0aWFsOyBiYWNrZ3JvdW5kLXJlcGVhdDogaW5pdGlhbDsgYmFja2dyb3VuZC1h
-dHRhY2htZW50OiBpbml0aWFsOyBiYWNrZ3JvdW5kLW9yaWdpbjogaW5pdGlhbDsgYmFja2dy
-b3VuZC1jbGlwOiBpbml0aWFsOyI+PHNwYW4gbGFuZz0iRU4tVVMiIHN0eWxlPSJmb250LWZh
-bWlseTogVmVyZGFuYSwgc2Fucy1zZXJpZjsgY29sb3I6IGJsYWNrOyI+Jm5ic3A7PC9zcGFu
-PjxzcGFuIHN0eWxlPSJmb250LWZhbWlseTogy87M5TsgY29sb3I6IGJsYWNrOyI+y8Q8L3Nw
-YW4+PHNwYW4gbGFuZz0iRU4tVVMiIHN0eWxlPSJmb250LWZhbWlseTogVmVyZGFuYSwgc2Fu
-cy1zZXJpZjsgY29sb3I6IGJsYWNrOyI+LiA8L3NwYW4+PHNwYW4gc3R5bGU9ImZvbnQtZmFt
-aWx5OiDLzszlOyBjb2xvcjogYmxhY2s7Ij65+rzKyM/WpDwvc3Bhbj48c3BhbiBsYW5nPSJF
-Ti1VUyIgc3R5bGU9ImZvbnQtZmFtaWx5OiBWZXJkYW5hLCBzYW5zLXNlcmlmOyBjb2xvcjog
-YmxhY2s7Ij46Q0U8L3NwYW4+PHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OiDLzszlOyBjb2xv
-cjogYmxhY2s7Ij7Iz9ako6y5+rzKyM/WpKOsufq8ysz10M7C66GjPC9zcGFuPjxzcGFuIGxh
-bmc9IkVOLVVTIiBzdHlsZT0iZm9udC1mYW1pbHk6IFZlcmRhbmEsIHNhbnMtc2VyaWY7IGNv
-bG9yOiBibGFjazsiPiZuYnNwOzwvc3Bhbj48L3A+PHAgY2xhc3M9Ik1zb05vcm1hbF9wQWZp
-IiBhbGlnbj0ibGVmdCIgc3R5bGU9Im1hcmdpbjogMGNtIDBjbSAwLjAwMDFwdDsgY29sb3I6
-IHJnYig0NiwgNDgsIDUxKTsgZm9udC1zaXplOiAxMC41cHQ7IGZvbnQtZmFtaWx5OiBDYWxp
-YnJpLCBzYW5zLXNlcmlmOyBiYWNrZ3JvdW5kLWltYWdlOiBpbml0aWFsOyBiYWNrZ3JvdW5k
-LXBvc2l0aW9uOiBpbml0aWFsOyBiYWNrZ3JvdW5kLXNpemU6IGluaXRpYWw7IGJhY2tncm91
-bmQtcmVwZWF0OiBpbml0aWFsOyBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGluaXRpYWw7IGJh
-Y2tncm91bmQtb3JpZ2luOiBpbml0aWFsOyBiYWNrZ3JvdW5kLWNsaXA6IGluaXRpYWw7Ij48
-c3BhbiBsYW5nPSJFTi1VUyIgc3R5bGU9ImZvbnQtZmFtaWx5OiBWZXJkYW5hLCBzYW5zLXNl
-cmlmOyBjb2xvcjogYmxhY2s7Ij4mbmJzcDs8L3NwYW4+PHNwYW4gc3R5bGU9ImZvbnQtZmFt
-aWx5OiDLzszlOyBjb2xvcjogYmxhY2s7Ij7Bqs+1tee7sKO6PC9zcGFuPjxzcGFuIGxhbmc9
-IkVOLVVTIiBzdHlsZT0iZm9udC1mYW1pbHk6IFZlcmRhbmEsIHNhbnMtc2VyaWY7IGNvbG9y
-OiBibGFjazsiPjE1NjQxMTk1OTg4LzxzcGFuIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOiBp
-bml0aWFsOyBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBpbml0aWFsOyBiYWNrZ3JvdW5kLXNpemU6
-IGluaXRpYWw7IGJhY2tncm91bmQtcmVwZWF0OiBpbml0aWFsOyBiYWNrZ3JvdW5kLWF0dGFj
-aG1lbnQ6IGluaXRpYWw7IGJhY2tncm91bmQtb3JpZ2luOiBpbml0aWFsOyBiYWNrZ3JvdW5k
-LWNsaXA6IGluaXRpYWw7Ij48c3BhbiB0PSI3IiBkYXRhPSIxMzM1MjIzMTkyMiIgc3R5bGU9
-ImJvcmRlci1ib3R0b206IDFweCBkYXNoZWQgcmdiKDIwNCwgMjA0LCAyMDQpOyB6LWluZGV4
-OiAxOyI+MTMzNTIyMzE5MjI8L3NwYW4+PC9zcGFuPjxvOnA+Jm5ic3A7PC9vOnA+PC9zcGFu
-PjwvcD48cCBjbGFzcz0iTXNvTm9ybWFsX3BBZmkiIGFsaWduPSJsZWZ0IiBzdHlsZT0ibWFy
-Z2luOiAwY20gMGNtIDAuMDAwMXB0OyBjb2xvcjogcmdiKDQ2LCA0OCwgNTEpOyBmb250LXNp
-emU6IDEwLjVwdDsgZm9udC1mYW1pbHk6IENhbGlicmksIHNhbnMtc2VyaWY7IGJhY2tncm91
-bmQtaW1hZ2U6IGluaXRpYWw7IGJhY2tncm91bmQtcG9zaXRpb246IGluaXRpYWw7IGJhY2tn
-cm91bmQtc2l6ZTogaW5pdGlhbDsgYmFja2dyb3VuZC1yZXBlYXQ6IGluaXRpYWw7IGJhY2tn
-cm91bmQtYXR0YWNobWVudDogaW5pdGlhbDsgYmFja2dyb3VuZC1vcmlnaW46IGluaXRpYWw7
-IGJhY2tncm91bmQtY2xpcDogaW5pdGlhbDsiPjxzcGFuIGxhbmc9IkVOLVVTIiBzdHlsZT0i
-Zm9udC1mYW1pbHk6IFZlcmRhbmEsIHNhbnMtc2VyaWY7IGNvbG9yOiBibGFjazsiPiZuYnNw
-Ozwvc3Bhbj48c3BhbiBzdHlsZT0iZm9udC1mYW1pbHk6IMvOzOU7IGNvbG9yOiByZ2IoMTEy
-LCA0OCwgMTYwKTsiPs6i0MW6xaO6PC9zcGFuPjxzcGFuIGxhbmc9IkVOLVVTIiBzdHlsZT0i
-Zm9udC1mYW1pbHk6IFZlcmRhbmEsIHNhbnMtc2VyaWY7IGNvbG9yOiByZ2IoMTEyLCA0OCwg
-MTYwKTsgYmFja2dyb3VuZC1pbWFnZTogaW5pdGlhbDsgYmFja2dyb3VuZC1wb3NpdGlvbjog
-aW5pdGlhbDsgYmFja2dyb3VuZC1zaXplOiBpbml0aWFsOyBiYWNrZ3JvdW5kLXJlcGVhdDog
-aW5pdGlhbDsgYmFja2dyb3VuZC1hdHRhY2htZW50OiBpbml0aWFsOyBiYWNrZ3JvdW5kLW9y
-aWdpbjogaW5pdGlhbDsgYmFja2dyb3VuZC1jbGlwOiBpbml0aWFsOyI+PHNwYW4gdD0iNyIg
-ZGF0YT0iMTU2Njg2OTc5MTkiIHN0eWxlPSJib3JkZXItYm90dG9tOiAxcHggZGFzaGVkIHJn
-YigyMDQsIDIwNCwgMjA0KTsgei1pbmRleDogMTsiPjE1NjY4Njk3OTE5PC9zcGFuPiZuYnNw
-OyA8L3NwYW4+PC9wPjxicj4=
-
-------=_NextPart_65965C20_185393F8_691D7983--
-
+</body></html>
