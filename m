@@ -2,36 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECCBC84028C
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jan 2024 11:12:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E560684146E
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jan 2024 21:40:47 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C9EAE10E2DE;
-	Mon, 29 Jan 2024 10:12:18 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 764B2112B09;
+	Mon, 29 Jan 2024 20:40:46 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 603 seconds by postgrey-1.36 at gabe;
- Mon, 29 Jan 2024 10:12:17 UTC
-Received: from iqdsoor.cn (unknown [194.87.31.42])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 690B910E2DE
+Received: from s24.n8.n84.n66.static.myhostcenter.net (unknown [66.84.8.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 20DF5112B07
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 29 Jan 2024 10:12:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=key1; d=iqdsoor.cn;
- h=Content-Type:MIME-Version:Content-Transfer-Encoding:From:Subject:Date:To;
- i=aeoncard1@iqdsoor.cn;
- bh=USuz28bF+5U547sGvkP9xBdzHHt5h9FSdbtH8RnsCzQ=;
- b=Xwty+0mjXDad13cJTx6foKNx+YqAvgcIM4ayMAtApRDxDIIN6JrziTKGKadYnhHPZ5r6gPll+lrX
- /v7WhhlRZc2E99aNoRGOM140u6d8l4+3wjuLbEVnStKe2oz0PKHtYrLghQLP2EFzHoJl0Av76FWX
- CPjMeEQ4ZQbIvBKnYMJg3gWleSctVZigsNzTez6/nGqueFEfuqE2Hd0ubvNMZaSANBxfh6+rTiy4
- 8KRGT5q0JI1rTRbnT/OC1genE3+NqVNLPQaoYz0d72PyVzh3A3Vho7DR3yZCscp+QOmg0kKzPwaC
- Ora/YDljkNeUgJAhapDFO8z9tkOE+LBdHZ7kxA==
-Content-Type: text/html; charset="utf-8"
+ Mon, 29 Jan 2024 20:40:45 +0000 (UTC)
+Received: from [::1] (port=45832 helo=User)
+ by server1.navajomanufacturing.com with smtp (Exim 4.96.2)
+ (envelope-from <maleek.kazeem@hotmail.com>) id 1rTqlj-0007An-3A;
+ Sat, 27 Jan 2024 22:03:20 +0000
+From: "Maleek Kazeem"<maleek.kazeem@hotmail.com>
+Subject: Re: follow up on my earlier message sent to you
+Date: Sat, 27 Jan 2024 22:03:19 -0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: base64
-From: =?utf-8?b?44Kk44Kq44Oz44OV44Kj44OK44Oz44K344Oj44Or44K144O844OT44K55qCq?=
- =?utf-8?b?5byP5Lya56S+?= <aeoncard1@iqdsoor.cn>
-Subject: =?utf-8?b?MeaciOOBlOiri+axgumhjeOBruOBiuefpeOCieOBmw==?=
-Date: Mon, 29 Jan 2024 11:01:58 +0100
-To: intel-gvt-dev@lists.freedesktop.org
+Content-Type: text/html;
+	charset="Windows-1251"
+Content-Transfer-Encoding: 7bit
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - server1.navajomanufacturing.com
+X-AntiAbuse: Original Domain - lists.freedesktop.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - hotmail.com
+X-Get-Message-Sender-Via: server1.navajomanufacturing.com: acl_c_authenticated_local_user:
+ root
+X-Authenticated-Sender: server1.navajomanufacturing.com: root
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -44,122 +52,58 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: maleek.kazeem@outlook.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20240129101218.C9EAE10E2DE@gabe.freedesktop.org>
+Message-Id: <20240129204046.764B2112B09@gabe.freedesktop.org>
 
-PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
-L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
-Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
-bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCuOBhOOBpOOCguOC
-pOOCquODs+ODnuODvOOCr+OBruOCq+ODvOODieOCkuOBlOWIqeeUqOOBhOOBn+OBoOOBjeOAgeOB
-guOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgjxCUj4NCuacrOODoeODvOODq+OBr1dlYuaY
-jue0sCjnkrDlooPlrqPoqIAp44Gr44GU55m76Yyy44GE44Gf44Gg44GE44Gm44GE44KL44GK5a6i
-44GV44G+44Gr44GK6YCB44KK44GX44Gm44GK44KK44G+44GZ44CCPEJSPg0KPEJSPg0KMeaciOOB
-ruOBlOiri+axgumhjeOBjOeiuuWumuOBhOOBn+OBl+OBvuOBl+OBn+OAgjxCUj4NCjxCUj4NCuKU
-geKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj4NCuOBiuaUr+aJleOBhOOBq+OBpOOBhOOBpjxCUj4N
-CuKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj4NCuOBlOWIqeeUqOOCq+ODvOODiSDvvJog44Kk
-44Kq44Oz44Kr44O844OJ44K744Os44Kv44OIPEJSPg0K44GK5pSv5omV5pelIO+8mjIwMjTlubQy
-5pyIOOaXpTxCUj4NCjxCUj4NCuWPo+W6p+aui+mrmOOBruOBlOeiuuiqjeODu+OBlOWFpemHkeOB
-r+OAgeOBiuaUr+aJleaXpeOBruWJjeWWtualreaXpeOBvuOBp+OBq+OBiumhmOOBhOOBhOOBn+OB
-l+OBvuOBmeOAgjxCUj4NCuOBlOWIqeeUqOaYjue0sOOBr+OAgeOCouODl+ODquOAjOOCpOOCquOD
-s+OCpuOCqeODrOODg+ODiOOAjeOBvuOBn+OBr+ODm+ODvOODoOODmuODvOOCuOOAjOaaruOCieOB
-l+OBruODnuODjeODvOOCteOCpOODiOOAjeOBuOODreOCsOOCpOODs+OBhOOBn+OBoOOBjeOBlOei
-uuiqjeOBj+OBoOOBleOBhOOAgjxCUj4NCjxCUj4NCuKWvOOBlOiri+axguaYjue0sOOBruOBlOei
-uuiqjeOBr+OBk+OBoeOCiTxCUj4NCiA8QSBocmVmPSJodHRwczovL2Flb24ueG56ZWZ1ay5jbj90
-b2tlbj0zY2E3NWJlMjM4YWIxMzA4MWFiZDNjZWNjODU5MGNiODVjMGFkZmJhNThjNmZjNmEwODEz
-M2FjNDA3MDAzOTZkJmU9YVc1MFpXd3RaM1owTFdSbGRrQnNhWE4wY3k1bWNtVmxaR1Z6YTNSdmND
-NXZjbWM9Ij5odHRwczovL3d3dy5hZW9uLmNvLmpwL2FwcC88L0E+PEJSPg0KIDxCUj4NCiDigLvj
-g6Hjg7zjg6vkvZzmiJDmmYLngrnjgafjga7oq4vmsYLnorrlrprpoY3jgavjgarjgorjgb7jgZnj
-gILjgZTliKnnlKjnirbms4Hjgavjgojjgorlho3luqboq4vmsYLpoY3norrlrprjg6Hjg7zjg6vj
-gpLjgYrpgIHjgorjgZnjgovloLTlkIjjgYzjgZTjgZbjgYTjgb7jgZnjgII8QlI+DQrigLvjgYrl
-vJXokL3lj6Pluqfjga7oqK3lrprjgYzlrozkuobjgZfjgabjgYTjgarjgYTloLTlkIjjga/jgIHm
-nIjmnKvpoIPjgavnmbrpgIHjgYTjgZ/jgZfjgb7jgZnjgrPjg7Pjg5Pjg4vjga7mjK/ovrznlKjn
-tJnjgafjga7jgYrmlK/miZXjgYTjgpLjgYrpoZjjgYTjgYTjgZ/jgZfjgb7jgZnjgILjgYrlvJXo
-kL3lj6Pluqfjga7oqK3lrprjgYzlrozkuobjgZfjgZ/jgYvjgZTkuI3mmI7jgarloLTlkIjjga/k
-uIvoqJjjgojjgorjgZTnorroqo3jgY/jgaDjgZXjgYTjgII8QlI+DQogPEEgaHJlZj0iaHR0cHM6
-Ly9hZW9uLnhuemVmdWsuY24/dG9rZW49M2NhNzViZTIzOGFiMTMwODFhYmQzY2VjYzg1OTBjYjg1
-YzBhZGZiYTU4YzZmYzZhMDgxMzNhYzQwNzAwMzk2ZCZlPWFXNTBaV3d0WjNaMExXUmxka0JzYVhO
-MGN5NW1jbVZsWkdWemEzUnZjQzV2Y21jPSI+aHR0cHM6Ly9mYXEuYWVvbi5jby5qcC9mYXEvc2hv
-dy82NjA/c2l0ZV9kb21haW49ZGVmYXVsdDwvQT48QlI+DQrigLvkuIDpg6jjgIHjgYrlvJXokL3m
-l6XjgYznlbDjgarjgovjgqvjg7zjg4njgYzjgZTjgZbjgYTjgb7jgZnjgII8QlI+DQo8QlI+IA0K
-4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSBPEJSPiANCldBT04gUE9JTlTjgavjgaTjgYTjgaY8QlI+
-IA0K4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSBPEJSPiANCuOCr+ODrOOCuOODg+ODiOODu+ODh+OD
-k+ODg+ODiOaJleOBhOOBp+OBn+OBvuOCi1dBT04gUE9JTlTmlbDjga/mr47mnIgyNeaXpeOBq+OD
-h+ODvOOCv+OBjOabtOaWsOOBleOCjOOBvuOBmeOAguOCouODl+ODquOAjOOCpOOCquODs+OCpuOC
-qeODrOODg+ODiOOAjeOBvuOBn+OBr+ODm+ODvOODoOODmuODvOOCuOOAjOaaruOCieOBl+OBruOD
-nuODjeODvOOCteOCpOODiOOAjeOBuOODreOCsOOCpOODs+OBhOOBn+OBoOOBjeOBlOeiuuiqjeOB
-j+OBoOOBleOBhOOAgjxCUj4NCihXQU9OIFBPSU5U44GM6YCy5ZGI44GV44KM44Gq44GE44Kr44O8
-44OJ44Gv44GU5Yip55So44GE44Gf44Gg44GR44G+44Gb44KTKTxCUj4NCjxCUj4NCuKWvOaaruOC
-ieOBl+OBruODnuODjeODvOOCteOCpOODiOOBr+OBk+OBoeOCiTxCUj4NCjxBIGhyZWY9Imh0dHBz
-Oi8vd3d3LmFlb24uY28uanAvYXBwL3BvaW50LyI+aHR0cHM6Ly93d3cuYWVvbi5jby5qcC9hcHAv
-cG9pbnQvPC9BPjxCUj4NCuKWvFdBT04gUE9JTlTjga7kvb/jgYjjgovlupfoiJfjg7vkvb/jgYTm
-lrnjgavplqLjgZfjgabjga/jgZPjgaHjgok8QlI+DQo8QSBocmVmPSJodHRwczovL2ZhcS5hZW9u
-LmNvLmpwL2ZhcS9zaG93LzU2Mj9iYWNrPWZyb250JTJGY2F0ZWdvcnklM0FzaG93JmNhdGVnb3J5
-X2lkPTE2NiZwYWdlPTEmc2l0ZV9kb21haW49ZGVmYXVsdCZzb3J0PXNvcnRfYWNjZXNzJnNvcnRf
-b3JkZXI9ZGVzYw0KIj5odHRwczovL2ZhcS5hZW9uLmNvLmpwL2ZhcS9zaG93LzU2Mj9iYWNrPWZy
-b250JTJGY2F0ZWdvcnklM0FzaG93JmNhdGVnb3J5X2lkPTE2NiZwYWdlPTEmc2l0ZV9kb21haW49
-ZGVmYXVsdCZzb3J0PXNvcnRfYWNjZXNzJnNvcnRfb3JkZXI9ZGVzYw0KPC9BPjxCUj4NCjxCUj4N
-CuKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj4gDQrjgqLjg5fjg6rjgoTjg6Hjg7zjg6vjgafj
-gYrjg4jjgq/jgarmg4XloLHjgYzlj5flj5bjgozjgb7jgZnvvIE8QlI+DQrilIHilIHilIHilIHi
-lIHilIHilIHilIE8QlI+DQrjgqTjgqrjg7Pjgqvjg7zjg4nlhazlvI/jgqLjg5fjg6rjgIzjgqTj
-gqrjg7Pjgqbjgqnjg6zjg4Pjg4jjgI3jgarjgonjgZTliKnnlKjmmI7ntLDjga7norroqo3jgoTj
-g53jgqTjg7Pjg4jkuqTmj5vjga/jgoLjgaHjgo3jgpPjgIHkvJrlk6HpmZDlrprjgq/jg7zjg53j
-g7PjgoLliKnnlKjjgafjgY3kvr/liKnjgafjgYrjg4jjgq/imao8QlI+DQrilrxpUGhvbmXjgpLj
-gYrmjIHjgaHjga7mlrnjga/jgZPjgaHjgok8QlI+DQo8QSBocmVmPSJodHRwczovL2l0dW5lcy5h
-cHBsZS5jb20vanAvYXBwL2Flb24td2FsbGV0L2lkMTEwMDU2NDg0Mj9sPWphJmxzPTEmbXQ9OCI+
-aHR0cHM6Ly9pdHVuZXMuYXBwbGUuY29tL2pwL2FwcC9hZW9uLXdhbGxldC9pZDExMDA1NjQ4NDI/
-bD1qYSZscz0xJm10PTg8L0E+PEJSPg0K4pa8QW5kcm9pZOOCueODnuODm+OCkuOBiuaMgeOBoeOB
-ruaWueOBr+OBk+OBoeOCiTxCUj4NCjxBIGhyZWY9Imh0dHBzOi8vcGxheS5nb29nbGUuY29tL3N0
-b3JlL2FwcHMvZGV0YWlscz9pZD1qcC5jby5hZW9uLmNyZWRpdC5hbmRyb2lkLndhbGxldCI+aHR0
-cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWpwLmNvLmFlb24uY3Jl
-ZGl0LmFuZHJvaWQud2FsbGV0PC9BPjxCUj4NCjxCUj4NCuKWvOOCpOOCquODs+OBquOBqeOBp+OB
-ruOBiuiyt+OBhOeJqeaDheWgseOChOOCq+ODvOODieOCreODo+ODs+ODmuODvOODs+aDheWgseOC
-guOBhOOBoeaXqeOBj+OBiuWxiuOBke+8geODoeODvOODq+ODnuOCrOOCuOODs+OBruOBlOeZu+mM
-suOBr+OBk+OBoeOCiTxCUj4NCjxBIGhyZWY9Imh0dHBzOi8vYWVvbi54bnplZnVrLmNuP3Rva2Vu
-PTNjYTc1YmUyMzhhYjEzMDgxYWJkM2NlY2M4NTkwY2I4NWMwYWRmYmE1OGM2ZmM2YTA4MTMzYWM0
-MDcwMDM5NmQmZT1hVzUwWld3dFozWjBMV1JsZGtCc2FYTjBjeTVtY21WbFpHVnphM1J2Y0M1dmNt
-Yz0iPmh0dHBzOi8vd3d3LmFlb24uY28uanAvc2VydmljZS9uZXdzbGV0dGVyLzwvQT48QlI+DQri
-lIHilIHilIHilIHilIHilIHilIHilIE8QlI+DQrjgYrlrqLjgZXjgb7mg4XloLHjga7mnIDmlrDl
-jJbjgavjgaTjgYTjgaY8QlI+DQrilIHilIHilIHilIHilIHilIHilIHilIE8QlI+DQrjgZTnmbvp
-jLLmg4XloLEo5rCP5ZCN44CB5L2P5omA44CB6YCj57Wh5YWI44CB44Oh44O844Or44Ki44OJ44Os
-44K544Gq44GpKeOBq+WkieabtOOBjOOBlOOBluOBhOOBvuOBl+OBn+OCieOAgeaaruOCieOBl+OB
-ruODnuODjeODvOOCteOCpOODiOOCiOOCiuOBiuaJi+e2muOBjeOCkuOBiumhmOOBhOOBhOOBn+OB
-l+OBvuOBmeOAgjxCUj4NCjxCUj4NCuKJquS9j+aJgOWkieabtOaJi+e2muOBjeOBruOBiumhmOOB
-hOKJqzxCUj4NCuOBiuW8lei2iuOBl+OBquOBqeOBp+S9j+aJgOOBq+WkieabtOOBjOeUn+OBmOOB
-n+mam+OBq+OBr+OAgeOBiuaXqeOCgeOBq+S9j+aJgOWkieabtOOBruWxiuWHuuOCkuOBiumhmOOB
-hOOBhOOBn+OBl+OBvuOBmeOAguOBiuWxiuOBkeOBhOOBn+OBoOOBkeOBquOBhOWgtOWQiOOAgemD
-temAgeOBq+OCiOOCi+mHjeimgeOBquOBiuefpeOCieOBm+OBjOWxiuOBi+OBquOBhOWgtOWQiOOC
-guOBguOCiuOBvuOBmeOBruOBp+OBlOazqOaEj+OBj+OBoOOBleOBhOOAgjxCUj4NCjxCUj4NCuKW
-vOOCq+ODvOODieeZu+mMsuWGheWuueeFp+S8muODu+WkieabtOOBq+OBpOOBhOOBpuOBr+OBk+OB
-oeOCiTxCUj4NCiA8QSBocmVmPSJodHRwczovL2Flb24ueG56ZWZ1ay5jbj90b2tlbj0zY2E3NWJl
-MjM4YWIxMzA4MWFiZDNjZWNjODU5MGNiODVjMGFkZmJhNThjNmZjNmEwODEzM2FjNDA3MDAzOTZk
-JmU9YVc1MFpXd3RaM1owTFdSbGRrQnNhWE4wY3k1bWNtVmxaR1Z6YTNSdmNDNXZjbWM9Ij5odHRw
-czovL3d3dy5hZW9uLmNvLmpwL2lucXVpcnkvY2hhbmdlLzwvQT48QlI+DQogPEJSPg0KIOKWvOOD
-oeODvOODq+OCouODieODrOOCueOBruWkieabtOOBr+OBk+OBoeOCiSA8QlI+DQogPEEgaHJlZj0i
-aHR0cHM6Ly9vOGQ1YS5jbiI+aHR0cHM6Ly93d3cuYWVvbi5jby5qcC9hcHAvc2V0dGluZ3MvcHJv
-ZmlsZS88L0E+PEJSPg0KPEJSPg0K77yd77yd77yd77yd77yd77yd77yd77yd77ydPEJSPg0K4pag
-44Kk44Kq44Oz44K544Kv44Ko44Ki44Oh44Oz44OQ44O8SUTjg7vjg5Hjgrnjg6/jg7zjg4njgpLj
-gYrlv5jjgozjga7loLTlkIg8QlI+DQogPGVtPjxBIGhyZWY9Imh0dHBzOi8vYWVvbi54bnplZnVr
-LmNuP3Rva2VuPTNjYTc1YmUyMzhhYjEzMDgxYWJkM2NlY2M4NTkwY2I4NWMwYWRmYmE1OGM2ZmM2
-YTA4MTMzYWM0MDcwMDM5NmQmZT1hVzUwWld3dFozWjBMV1JsZGtCc2FYTjBjeTVtY21WbFpHVnph
-M1J2Y0M1dmNtYz0iPmh0dHBzOi8vd3d3LmFlb24uY28uanAvYXBwL3NlYXJjaF9pZF9wd19yZWlz
-c3VlLzwvQT48L2VtPjxCUj4NCiA8QlI+DQog4pag44GK5ZWP44GE5ZCI44KP44Gb5YWIPEJSPg0K
-IDxBIGhyZWY9Imh0dHBzOi8vYWVvbi54bnplZnVrLmNuP3Rva2VuPTNjYTc1YmUyMzhhYjEzMDgx
-YWJkM2NlY2M4NTkwY2I4NWMwYWRmYmE1OGM2ZmM2YTA4MTMzYWM0MDcwMDM5NmQmZT1hVzUwWld3
-dFozWjBMV1JsZGtCc2FYTjBjeTVtY21WbFpHVnphM1J2Y0M1dmNtYz0iPmh0dHBzOi8vd3d3LmFl
-b24uY28uanAvaW5xdWlyeS88L0E+PEJSPg0KIDxCUj4NCu+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8
-ne+8nTxCUj4NCuOBk+OBruODoeODvOODq+OCouODieODrOOCuVsgc3RhdGVtZW50QGVtYWlsLmFl
-b24uY28uanAgXeOBr+mAgeS/oeWwgueUqOOCouODieODrOOCueOBruOBn+OCgeOAgeOBlOi/lOS/
-oeOBhOOBn+OBoOOBhOOBpuOCguOBlOeUqOS7tuOBr+aJv+OCjOOBvuOBm+OCk+OAgjxCUj4NCuW9
-k+ODoeODvOODq+OBq+OBiuW/g+W9k+OBn+OCiuOBruOBquOBhOaWueOBr+OAgeWkp+WkieOBiuaJ
-i+aVsOOCkuOBiuaOm+OBkeOBhOOBn+OBl+OBvuOBmeOBjOOAgeOBneOBruaXqOOCkuOBiuabuOOB
-jea3u+OBiOOBhOOBn+OBoOOBjeS4i+iomOOCouODieODrOOCueOBvuOBp+OBiumAgeOCiuOBj+OB
-oOOBleOBhOOAgjxCUj4NCm5ldGJyYW5jaEBhZW9uLmNvLmpwPEJSPg0KPEJSPg0K4pSB4pSB4pSB
-4pSB4pSB4pSB4pSB4pSB4pSBPEJSPg0K55m66KGM77ya5qCq5byP5Lya56S+44Kk44Kq44Oz6YqA
-6KGMPEJSPg0KaHR0cHM6Ly93d3cuYWVvbmJhbmsuY28uanAvPEJSPg0KPEJSPg0K5qWt5YuZ5Y+X
-6KiX5Lya56S+77ya44Kk44Kq44Oz44OV44Kj44OK44Oz44K344Oj44Or44K144O844OT44K55qCq
-5byP5Lya56S+PEJSPg0KaHR0cHM6Ly93d3cuYWVvbmZpbmFuY2lhbC5jby5qcC88QlI+DQo8QlI+
-DQrjgZPjga7jg6Hjg7zjg6vjgavmjrLovInjgZXjgozjgZ/lhoXlrrnjgpLoqLHlj6/jgarjgY/o
-u6LovInjgZnjgovjgZPjgajjgpLnpoHjgZjjgb7jgZnjgII8QlI+DQrilIHilIHilIHilIHilIHi
-lIHilIHilIHilIE8QlI+DQo8L0JPRFk+PC9IVE1MPg0K
+<HTML><HEAD><TITLE></TITLE>
+</HEAD>
+<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
+<FONT size=2 color=#000000 face="Arial">
+<DIV>
+<FONT size=3 face="Verdana">Dear&nbsp; Sir/Madam,</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">Hope you are doing great?</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">I'm following up on the previously email I sent to you.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">I understand that you are busy, but I would appreciate</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">it if you could review this brief message and respond</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">to me as quickly as possible.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">I'm a Mandate and International Outsource Personel. In my</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">long years of work with top financial management companies</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">in Europe, I presently have a client who have funds for </FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">investment and good a thing, She chooses to invest in your</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">Country either on Equity or Loan basis.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">Please feel free to reply to me immediately so that we can</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">talk more about it since your Country is the investor’s</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">choice for investments on your care and management.</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">Kind regards,</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
+<DIV>
+<FONT size=3 face="Verdana"><U>Maleek Kazeem&nbsp;&nbsp; |&nbsp; </U></FONT><FONT size=3 color=#0000FF face="Verdana"><U>m.kazeem@maleek-kazeem.com</U></FONT></DIV>
+</FONT>
+</BODY></HTML>
