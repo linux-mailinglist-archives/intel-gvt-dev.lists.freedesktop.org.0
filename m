@@ -2,50 +2,36 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id D21C683FCCC
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jan 2024 04:36:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ECCBC84028C
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jan 2024 11:12:19 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B157A10F28D;
-	Mon, 29 Jan 2024 03:36:34 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id C9EAE10E2DE;
+	Mon, 29 Jan 2024 10:12:18 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 6B37810F28D;
- Mon, 29 Jan 2024 03:36:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706499393; x=1738035393;
- h=date:from:to:cc:subject:message-id:reply-to:references:
- mime-version:in-reply-to;
- bh=DTK+Uv/HINzvJpySwWLfjp2M9gYLySqkKhOfo+5AGpI=;
- b=cBalCq59ca69lvcmnJuixCGBdRkoZiDlaQ49d/VzIT7+HclOnZL4SP91
- fuw6a+M/jKyCfQjjIghoRV04A2EsJl88z2a6d0ibhnRAP1rU1by3suMlG
- dC3gjMso+1XOUrDUn3aU91aE3WBgj+uFZJ8agZoTvwRi8IRe9IkYF5ujE
- bYp4PDwHoma+qTkUDjuLcyJ3obcicYdK53DD8tJlb6Pjbdx4i6Wcm3xW+
- i7h8p84K3YoSUR/qqL1uUOVLb5tXBmHIshhMONUL5lF3SwUy/BfB9PXaZ
- iDB4CtjmPFX3rlDW0DWdlIBisaXjj2CAB9PnQiRQL4FK0oBFhXLEHoXoG g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10967"; a="9952027"
-X-IronPort-AV: E=Sophos;i="6.05,226,1701158400"; d="asc'?scan'208";a="9952027"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jan 2024 19:36:27 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10967"; a="737252624"
-X-IronPort-AV: E=Sophos;i="6.05,226,1701158400"; 
- d="asc'?scan'208";a="737252624"
-Received: from debian-skl.sh.intel.com (HELO debian-skl) ([10.239.160.45])
- by orsmga003.jf.intel.com with ESMTP; 28 Jan 2024 19:36:23 -0800
-Date: Mon, 29 Jan 2024 11:37:12 +0800
-From: Zhenyu Wang <zhenyuw@linux.intel.com>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Subject: Re: [PATCH] drm/i915/gvt: Fix uninitialized variable in handle_mmio()
-Message-ID: <ZbcdaBVJeKLqaKNR@debian-scheme>
-References: <11957c20-b178-4027-9b0a-e32e9591dd7c@moroto.mountain>
+X-Greylist: delayed 603 seconds by postgrey-1.36 at gabe;
+ Mon, 29 Jan 2024 10:12:17 UTC
+Received: from iqdsoor.cn (unknown [194.87.31.42])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 690B910E2DE
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon, 29 Jan 2024 10:12:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=key1; d=iqdsoor.cn;
+ h=Content-Type:MIME-Version:Content-Transfer-Encoding:From:Subject:Date:To;
+ i=aeoncard1@iqdsoor.cn;
+ bh=USuz28bF+5U547sGvkP9xBdzHHt5h9FSdbtH8RnsCzQ=;
+ b=Xwty+0mjXDad13cJTx6foKNx+YqAvgcIM4ayMAtApRDxDIIN6JrziTKGKadYnhHPZ5r6gPll+lrX
+ /v7WhhlRZc2E99aNoRGOM140u6d8l4+3wjuLbEVnStKe2oz0PKHtYrLghQLP2EFzHoJl0Av76FWX
+ CPjMeEQ4ZQbIvBKnYMJg3gWleSctVZigsNzTez6/nGqueFEfuqE2Hd0ubvNMZaSANBxfh6+rTiy4
+ 8KRGT5q0JI1rTRbnT/OC1genE3+NqVNLPQaoYz0d72PyVzh3A3Vho7DR3yZCscp+QOmg0kKzPwaC
+ Ora/YDljkNeUgJAhapDFO8z9tkOE+LBdHZ7kxA==
+Content-Type: text/html; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature"; boundary="fFznBIJrCBlpQLxV"
-Content-Disposition: inline
-In-Reply-To: <11957c20-b178-4027-9b0a-e32e9591dd7c@moroto.mountain>
+Content-Transfer-Encoding: base64
+From: =?utf-8?b?44Kk44Kq44Oz44OV44Kj44OK44Oz44K344Oj44Or44K144O844OT44K55qCq?=
+ =?utf-8?b?5byP5Lya56S+?= <aeoncard1@iqdsoor.cn>
+Subject: =?utf-8?b?MeaciOOBlOiri+axgumhjeOBruOBiuefpeOCieOBmw==?=
+Date: Mon, 29 Jan 2024 11:01:58 +0100
+To: intel-gvt-dev@lists.freedesktop.org
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,69 +44,122 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
- Jani Nikula <jani.nikula@linux.intel.com>, dri-devel@lists.freedesktop.org,
- Daniel Vetter <daniel@ffwll.ch>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- David Airlie <airlied@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
+Message-Id: <20240129101218.C9EAE10E2DE@gabe.freedesktop.org>
 
-
---fFznBIJrCBlpQLxV
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 2024.01.26 11:41:47 +0300, Dan Carpenter wrote:
-> This code prints the wrong variable in the warning message.  It should
-> print "i" instead of "info->offset".  On the first iteration "info" is
-> uninitialized leading to a crash and on subsequent iterations it prints
-> the previous offset instead of the current one.
->=20
-> Fixes: e0f74ed4634d ("i915/gvt: Separate the MMIO tracking table from GVT=
--g")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
-> ---
->  drivers/gpu/drm/i915/gvt/handlers.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/g=
-vt/handlers.c
-> index 90f6c1ece57d..efcb00472be2 100644
-> --- a/drivers/gpu/drm/i915/gvt/handlers.c
-> +++ b/drivers/gpu/drm/i915/gvt/handlers.c
-> @@ -2849,8 +2849,7 @@ static int handle_mmio(struct intel_gvt_mmio_table_=
-iter *iter, u32 offset,
->  	for (i =3D start; i < end; i +=3D 4) {
->  		p =3D intel_gvt_find_mmio_info(gvt, i);
->  		if (p) {
-> -			WARN(1, "dup mmio definition offset %x\n",
-> -				info->offset);
-> +			WARN(1, "dup mmio definition offset %x\n", i);
-> =20
->  			/* We return -EEXIST here to make GVT-g load fail.
->  			 * So duplicated MMIO can be found as soon as
-> --=20
-> 2.43.0
->
-
-Thanks for the fix.
-
-Reviewed-by: Zhenyu Wang <zhenyuw@linux.intel.com>
-
-
---fFznBIJrCBlpQLxV
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCZbcdZAAKCRCxBBozTXgY
-J2ggAKCd25TTBDuQLbVH3Z0bjmgfKdx2/ACdGvx9Npm4P2p4XDkYtaiqEkyy4Zk=
-=/6Nx
------END PGP SIGNATURE-----
-
---fFznBIJrCBlpQLxV--
+PCFET0NUWVBFIEhUTUwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMCBUcmFuc2l0aW9uYWwv
+L0VOIj4NCjxIVE1MPjxIRUFEPg0KPE1FVEEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0
+Zi04IiBodHRwLWVxdWl2PUNvbnRlbnQtVHlwZT4NCjxNRVRBIG5hbWU9R0VORVJBVE9SIGNvbnRl
+bnQ9Ik1TSFRNTCAxMS4wMC4xMDU3MC4xMDAxIj48L0hFQUQ+DQo8Qk9EWT4NCuOBhOOBpOOCguOC
+pOOCquODs+ODnuODvOOCr+OBruOCq+ODvOODieOCkuOBlOWIqeeUqOOBhOOBn+OBoOOBjeOAgeOB
+guOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgjxCUj4NCuacrOODoeODvOODq+OBr1dlYuaY
+jue0sCjnkrDlooPlrqPoqIAp44Gr44GU55m76Yyy44GE44Gf44Gg44GE44Gm44GE44KL44GK5a6i
+44GV44G+44Gr44GK6YCB44KK44GX44Gm44GK44KK44G+44GZ44CCPEJSPg0KPEJSPg0KMeaciOOB
+ruOBlOiri+axgumhjeOBjOeiuuWumuOBhOOBn+OBl+OBvuOBl+OBn+OAgjxCUj4NCjxCUj4NCuKU
+geKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj4NCuOBiuaUr+aJleOBhOOBq+OBpOOBhOOBpjxCUj4N
+CuKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj4NCuOBlOWIqeeUqOOCq+ODvOODiSDvvJog44Kk
+44Kq44Oz44Kr44O844OJ44K744Os44Kv44OIPEJSPg0K44GK5pSv5omV5pelIO+8mjIwMjTlubQy
+5pyIOOaXpTxCUj4NCjxCUj4NCuWPo+W6p+aui+mrmOOBruOBlOeiuuiqjeODu+OBlOWFpemHkeOB
+r+OAgeOBiuaUr+aJleaXpeOBruWJjeWWtualreaXpeOBvuOBp+OBq+OBiumhmOOBhOOBhOOBn+OB
+l+OBvuOBmeOAgjxCUj4NCuOBlOWIqeeUqOaYjue0sOOBr+OAgeOCouODl+ODquOAjOOCpOOCquOD
+s+OCpuOCqeODrOODg+ODiOOAjeOBvuOBn+OBr+ODm+ODvOODoOODmuODvOOCuOOAjOaaruOCieOB
+l+OBruODnuODjeODvOOCteOCpOODiOOAjeOBuOODreOCsOOCpOODs+OBhOOBn+OBoOOBjeOBlOei
+uuiqjeOBj+OBoOOBleOBhOOAgjxCUj4NCjxCUj4NCuKWvOOBlOiri+axguaYjue0sOOBruOBlOei
+uuiqjeOBr+OBk+OBoeOCiTxCUj4NCiA8QSBocmVmPSJodHRwczovL2Flb24ueG56ZWZ1ay5jbj90
+b2tlbj0zY2E3NWJlMjM4YWIxMzA4MWFiZDNjZWNjODU5MGNiODVjMGFkZmJhNThjNmZjNmEwODEz
+M2FjNDA3MDAzOTZkJmU9YVc1MFpXd3RaM1owTFdSbGRrQnNhWE4wY3k1bWNtVmxaR1Z6YTNSdmND
+NXZjbWM9Ij5odHRwczovL3d3dy5hZW9uLmNvLmpwL2FwcC88L0E+PEJSPg0KIDxCUj4NCiDigLvj
+g6Hjg7zjg6vkvZzmiJDmmYLngrnjgafjga7oq4vmsYLnorrlrprpoY3jgavjgarjgorjgb7jgZnj
+gILjgZTliKnnlKjnirbms4Hjgavjgojjgorlho3luqboq4vmsYLpoY3norrlrprjg6Hjg7zjg6vj
+gpLjgYrpgIHjgorjgZnjgovloLTlkIjjgYzjgZTjgZbjgYTjgb7jgZnjgII8QlI+DQrigLvjgYrl
+vJXokL3lj6Pluqfjga7oqK3lrprjgYzlrozkuobjgZfjgabjgYTjgarjgYTloLTlkIjjga/jgIHm
+nIjmnKvpoIPjgavnmbrpgIHjgYTjgZ/jgZfjgb7jgZnjgrPjg7Pjg5Pjg4vjga7mjK/ovrznlKjn
+tJnjgafjga7jgYrmlK/miZXjgYTjgpLjgYrpoZjjgYTjgYTjgZ/jgZfjgb7jgZnjgILjgYrlvJXo
+kL3lj6Pluqfjga7oqK3lrprjgYzlrozkuobjgZfjgZ/jgYvjgZTkuI3mmI7jgarloLTlkIjjga/k
+uIvoqJjjgojjgorjgZTnorroqo3jgY/jgaDjgZXjgYTjgII8QlI+DQogPEEgaHJlZj0iaHR0cHM6
+Ly9hZW9uLnhuemVmdWsuY24/dG9rZW49M2NhNzViZTIzOGFiMTMwODFhYmQzY2VjYzg1OTBjYjg1
+YzBhZGZiYTU4YzZmYzZhMDgxMzNhYzQwNzAwMzk2ZCZlPWFXNTBaV3d0WjNaMExXUmxka0JzYVhO
+MGN5NW1jbVZsWkdWemEzUnZjQzV2Y21jPSI+aHR0cHM6Ly9mYXEuYWVvbi5jby5qcC9mYXEvc2hv
+dy82NjA/c2l0ZV9kb21haW49ZGVmYXVsdDwvQT48QlI+DQrigLvkuIDpg6jjgIHjgYrlvJXokL3m
+l6XjgYznlbDjgarjgovjgqvjg7zjg4njgYzjgZTjgZbjgYTjgb7jgZnjgII8QlI+DQo8QlI+IA0K
+4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSBPEJSPiANCldBT04gUE9JTlTjgavjgaTjgYTjgaY8QlI+
+IA0K4pSB4pSB4pSB4pSB4pSB4pSB4pSB4pSBPEJSPiANCuOCr+ODrOOCuOODg+ODiOODu+ODh+OD
+k+ODg+ODiOaJleOBhOOBp+OBn+OBvuOCi1dBT04gUE9JTlTmlbDjga/mr47mnIgyNeaXpeOBq+OD
+h+ODvOOCv+OBjOabtOaWsOOBleOCjOOBvuOBmeOAguOCouODl+ODquOAjOOCpOOCquODs+OCpuOC
+qeODrOODg+ODiOOAjeOBvuOBn+OBr+ODm+ODvOODoOODmuODvOOCuOOAjOaaruOCieOBl+OBruOD
+nuODjeODvOOCteOCpOODiOOAjeOBuOODreOCsOOCpOODs+OBhOOBn+OBoOOBjeOBlOeiuuiqjeOB
+j+OBoOOBleOBhOOAgjxCUj4NCihXQU9OIFBPSU5U44GM6YCy5ZGI44GV44KM44Gq44GE44Kr44O8
+44OJ44Gv44GU5Yip55So44GE44Gf44Gg44GR44G+44Gb44KTKTxCUj4NCjxCUj4NCuKWvOaaruOC
+ieOBl+OBruODnuODjeODvOOCteOCpOODiOOBr+OBk+OBoeOCiTxCUj4NCjxBIGhyZWY9Imh0dHBz
+Oi8vd3d3LmFlb24uY28uanAvYXBwL3BvaW50LyI+aHR0cHM6Ly93d3cuYWVvbi5jby5qcC9hcHAv
+cG9pbnQvPC9BPjxCUj4NCuKWvFdBT04gUE9JTlTjga7kvb/jgYjjgovlupfoiJfjg7vkvb/jgYTm
+lrnjgavplqLjgZfjgabjga/jgZPjgaHjgok8QlI+DQo8QSBocmVmPSJodHRwczovL2ZhcS5hZW9u
+LmNvLmpwL2ZhcS9zaG93LzU2Mj9iYWNrPWZyb250JTJGY2F0ZWdvcnklM0FzaG93JmNhdGVnb3J5
+X2lkPTE2NiZwYWdlPTEmc2l0ZV9kb21haW49ZGVmYXVsdCZzb3J0PXNvcnRfYWNjZXNzJnNvcnRf
+b3JkZXI9ZGVzYw0KIj5odHRwczovL2ZhcS5hZW9uLmNvLmpwL2ZhcS9zaG93LzU2Mj9iYWNrPWZy
+b250JTJGY2F0ZWdvcnklM0FzaG93JmNhdGVnb3J5X2lkPTE2NiZwYWdlPTEmc2l0ZV9kb21haW49
+ZGVmYXVsdCZzb3J0PXNvcnRfYWNjZXNzJnNvcnRfb3JkZXI9ZGVzYw0KPC9BPjxCUj4NCjxCUj4N
+CuKUgeKUgeKUgeKUgeKUgeKUgeKUgeKUgTxCUj4gDQrjgqLjg5fjg6rjgoTjg6Hjg7zjg6vjgafj
+gYrjg4jjgq/jgarmg4XloLHjgYzlj5flj5bjgozjgb7jgZnvvIE8QlI+DQrilIHilIHilIHilIHi
+lIHilIHilIHilIE8QlI+DQrjgqTjgqrjg7Pjgqvjg7zjg4nlhazlvI/jgqLjg5fjg6rjgIzjgqTj
+gqrjg7Pjgqbjgqnjg6zjg4Pjg4jjgI3jgarjgonjgZTliKnnlKjmmI7ntLDjga7norroqo3jgoTj
+g53jgqTjg7Pjg4jkuqTmj5vjga/jgoLjgaHjgo3jgpPjgIHkvJrlk6HpmZDlrprjgq/jg7zjg53j
+g7PjgoLliKnnlKjjgafjgY3kvr/liKnjgafjgYrjg4jjgq/imao8QlI+DQrilrxpUGhvbmXjgpLj
+gYrmjIHjgaHjga7mlrnjga/jgZPjgaHjgok8QlI+DQo8QSBocmVmPSJodHRwczovL2l0dW5lcy5h
+cHBsZS5jb20vanAvYXBwL2Flb24td2FsbGV0L2lkMTEwMDU2NDg0Mj9sPWphJmxzPTEmbXQ9OCI+
+aHR0cHM6Ly9pdHVuZXMuYXBwbGUuY29tL2pwL2FwcC9hZW9uLXdhbGxldC9pZDExMDA1NjQ4NDI/
+bD1qYSZscz0xJm10PTg8L0E+PEJSPg0K4pa8QW5kcm9pZOOCueODnuODm+OCkuOBiuaMgeOBoeOB
+ruaWueOBr+OBk+OBoeOCiTxCUj4NCjxBIGhyZWY9Imh0dHBzOi8vcGxheS5nb29nbGUuY29tL3N0
+b3JlL2FwcHMvZGV0YWlscz9pZD1qcC5jby5hZW9uLmNyZWRpdC5hbmRyb2lkLndhbGxldCI+aHR0
+cHM6Ly9wbGF5Lmdvb2dsZS5jb20vc3RvcmUvYXBwcy9kZXRhaWxzP2lkPWpwLmNvLmFlb24uY3Jl
+ZGl0LmFuZHJvaWQud2FsbGV0PC9BPjxCUj4NCjxCUj4NCuKWvOOCpOOCquODs+OBquOBqeOBp+OB
+ruOBiuiyt+OBhOeJqeaDheWgseOChOOCq+ODvOODieOCreODo+ODs+ODmuODvOODs+aDheWgseOC
+guOBhOOBoeaXqeOBj+OBiuWxiuOBke+8geODoeODvOODq+ODnuOCrOOCuOODs+OBruOBlOeZu+mM
+suOBr+OBk+OBoeOCiTxCUj4NCjxBIGhyZWY9Imh0dHBzOi8vYWVvbi54bnplZnVrLmNuP3Rva2Vu
+PTNjYTc1YmUyMzhhYjEzMDgxYWJkM2NlY2M4NTkwY2I4NWMwYWRmYmE1OGM2ZmM2YTA4MTMzYWM0
+MDcwMDM5NmQmZT1hVzUwWld3dFozWjBMV1JsZGtCc2FYTjBjeTVtY21WbFpHVnphM1J2Y0M1dmNt
+Yz0iPmh0dHBzOi8vd3d3LmFlb24uY28uanAvc2VydmljZS9uZXdzbGV0dGVyLzwvQT48QlI+DQri
+lIHilIHilIHilIHilIHilIHilIHilIE8QlI+DQrjgYrlrqLjgZXjgb7mg4XloLHjga7mnIDmlrDl
+jJbjgavjgaTjgYTjgaY8QlI+DQrilIHilIHilIHilIHilIHilIHilIHilIE8QlI+DQrjgZTnmbvp
+jLLmg4XloLEo5rCP5ZCN44CB5L2P5omA44CB6YCj57Wh5YWI44CB44Oh44O844Or44Ki44OJ44Os
+44K544Gq44GpKeOBq+WkieabtOOBjOOBlOOBluOBhOOBvuOBl+OBn+OCieOAgeaaruOCieOBl+OB
+ruODnuODjeODvOOCteOCpOODiOOCiOOCiuOBiuaJi+e2muOBjeOCkuOBiumhmOOBhOOBhOOBn+OB
+l+OBvuOBmeOAgjxCUj4NCjxCUj4NCuKJquS9j+aJgOWkieabtOaJi+e2muOBjeOBruOBiumhmOOB
+hOKJqzxCUj4NCuOBiuW8lei2iuOBl+OBquOBqeOBp+S9j+aJgOOBq+WkieabtOOBjOeUn+OBmOOB
+n+mam+OBq+OBr+OAgeOBiuaXqeOCgeOBq+S9j+aJgOWkieabtOOBruWxiuWHuuOCkuOBiumhmOOB
+hOOBhOOBn+OBl+OBvuOBmeOAguOBiuWxiuOBkeOBhOOBn+OBoOOBkeOBquOBhOWgtOWQiOOAgemD
+temAgeOBq+OCiOOCi+mHjeimgeOBquOBiuefpeOCieOBm+OBjOWxiuOBi+OBquOBhOWgtOWQiOOC
+guOBguOCiuOBvuOBmeOBruOBp+OBlOazqOaEj+OBj+OBoOOBleOBhOOAgjxCUj4NCjxCUj4NCuKW
+vOOCq+ODvOODieeZu+mMsuWGheWuueeFp+S8muODu+WkieabtOOBq+OBpOOBhOOBpuOBr+OBk+OB
+oeOCiTxCUj4NCiA8QSBocmVmPSJodHRwczovL2Flb24ueG56ZWZ1ay5jbj90b2tlbj0zY2E3NWJl
+MjM4YWIxMzA4MWFiZDNjZWNjODU5MGNiODVjMGFkZmJhNThjNmZjNmEwODEzM2FjNDA3MDAzOTZk
+JmU9YVc1MFpXd3RaM1owTFdSbGRrQnNhWE4wY3k1bWNtVmxaR1Z6YTNSdmNDNXZjbWM9Ij5odHRw
+czovL3d3dy5hZW9uLmNvLmpwL2lucXVpcnkvY2hhbmdlLzwvQT48QlI+DQogPEJSPg0KIOKWvOOD
+oeODvOODq+OCouODieODrOOCueOBruWkieabtOOBr+OBk+OBoeOCiSA8QlI+DQogPEEgaHJlZj0i
+aHR0cHM6Ly9vOGQ1YS5jbiI+aHR0cHM6Ly93d3cuYWVvbi5jby5qcC9hcHAvc2V0dGluZ3MvcHJv
+ZmlsZS88L0E+PEJSPg0KPEJSPg0K77yd77yd77yd77yd77yd77yd77yd77yd77ydPEJSPg0K4pag
+44Kk44Kq44Oz44K544Kv44Ko44Ki44Oh44Oz44OQ44O8SUTjg7vjg5Hjgrnjg6/jg7zjg4njgpLj
+gYrlv5jjgozjga7loLTlkIg8QlI+DQogPGVtPjxBIGhyZWY9Imh0dHBzOi8vYWVvbi54bnplZnVr
+LmNuP3Rva2VuPTNjYTc1YmUyMzhhYjEzMDgxYWJkM2NlY2M4NTkwY2I4NWMwYWRmYmE1OGM2ZmM2
+YTA4MTMzYWM0MDcwMDM5NmQmZT1hVzUwWld3dFozWjBMV1JsZGtCc2FYTjBjeTVtY21WbFpHVnph
+M1J2Y0M1dmNtYz0iPmh0dHBzOi8vd3d3LmFlb24uY28uanAvYXBwL3NlYXJjaF9pZF9wd19yZWlz
+c3VlLzwvQT48L2VtPjxCUj4NCiA8QlI+DQog4pag44GK5ZWP44GE5ZCI44KP44Gb5YWIPEJSPg0K
+IDxBIGhyZWY9Imh0dHBzOi8vYWVvbi54bnplZnVrLmNuP3Rva2VuPTNjYTc1YmUyMzhhYjEzMDgx
+YWJkM2NlY2M4NTkwY2I4NWMwYWRmYmE1OGM2ZmM2YTA4MTMzYWM0MDcwMDM5NmQmZT1hVzUwWld3
+dFozWjBMV1JsZGtCc2FYTjBjeTVtY21WbFpHVnphM1J2Y0M1dmNtYz0iPmh0dHBzOi8vd3d3LmFl
+b24uY28uanAvaW5xdWlyeS88L0E+PEJSPg0KIDxCUj4NCu+8ne+8ne+8ne+8ne+8ne+8ne+8ne+8
+ne+8nTxCUj4NCuOBk+OBruODoeODvOODq+OCouODieODrOOCuVsgc3RhdGVtZW50QGVtYWlsLmFl
+b24uY28uanAgXeOBr+mAgeS/oeWwgueUqOOCouODieODrOOCueOBruOBn+OCgeOAgeOBlOi/lOS/
+oeOBhOOBn+OBoOOBhOOBpuOCguOBlOeUqOS7tuOBr+aJv+OCjOOBvuOBm+OCk+OAgjxCUj4NCuW9
+k+ODoeODvOODq+OBq+OBiuW/g+W9k+OBn+OCiuOBruOBquOBhOaWueOBr+OAgeWkp+WkieOBiuaJ
+i+aVsOOCkuOBiuaOm+OBkeOBhOOBn+OBl+OBvuOBmeOBjOOAgeOBneOBruaXqOOCkuOBiuabuOOB
+jea3u+OBiOOBhOOBn+OBoOOBjeS4i+iomOOCouODieODrOOCueOBvuOBp+OBiumAgeOCiuOBj+OB
+oOOBleOBhOOAgjxCUj4NCm5ldGJyYW5jaEBhZW9uLmNvLmpwPEJSPg0KPEJSPg0K4pSB4pSB4pSB
+4pSB4pSB4pSB4pSB4pSB4pSBPEJSPg0K55m66KGM77ya5qCq5byP5Lya56S+44Kk44Kq44Oz6YqA
+6KGMPEJSPg0KaHR0cHM6Ly93d3cuYWVvbmJhbmsuY28uanAvPEJSPg0KPEJSPg0K5qWt5YuZ5Y+X
+6KiX5Lya56S+77ya44Kk44Kq44Oz44OV44Kj44OK44Oz44K344Oj44Or44K144O844OT44K55qCq
+5byP5Lya56S+PEJSPg0KaHR0cHM6Ly93d3cuYWVvbmZpbmFuY2lhbC5jby5qcC88QlI+DQo8QlI+
+DQrjgZPjga7jg6Hjg7zjg6vjgavmjrLovInjgZXjgozjgZ/lhoXlrrnjgpLoqLHlj6/jgarjgY/o
+u6LovInjgZnjgovjgZPjgajjgpLnpoHjgZjjgb7jgZnjgII8QlI+DQrilIHilIHilIHilIHilIHi
+lIHilIHilIHilIE8QlI+DQo8L0JPRFk+PC9IVE1MPg0K
