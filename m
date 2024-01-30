@@ -2,44 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id E560684146E
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Jan 2024 21:40:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DA484841ECE
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 30 Jan 2024 10:08:43 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 764B2112B09;
-	Mon, 29 Jan 2024 20:40:46 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id BCAB310F842;
+	Tue, 30 Jan 2024 09:08:42 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from s24.n8.n84.n66.static.myhostcenter.net (unknown [66.84.8.24])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 20DF5112B07
+X-Greylist: delayed 546 seconds by postgrey-1.36 at gabe;
+ Tue, 30 Jan 2024 09:08:41 UTC
+Received: from sendemail77.com (sendemail77.com [57.128.201.141])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 13DEB10F842
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 29 Jan 2024 20:40:45 +0000 (UTC)
-Received: from [::1] (port=45832 helo=User)
- by server1.navajomanufacturing.com with smtp (Exim 4.96.2)
- (envelope-from <maleek.kazeem@hotmail.com>) id 1rTqlj-0007An-3A;
- Sat, 27 Jan 2024 22:03:20 +0000
-From: "Maleek Kazeem"<maleek.kazeem@hotmail.com>
-Subject: Re: follow up on my earlier message sent to you
-Date: Sat, 27 Jan 2024 22:03:19 -0000
+ Tue, 30 Jan 2024 09:08:41 +0000 (UTC)
+Received: from [45.129.14.76] (unknown [45.129.14.76])
+ by sendemail77.com (Postfix) with ESMTPA id 4BE557A02E;
+ Tue, 30 Jan 2024 08:55:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 sendemail77.com 4BE557A02E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendemail77.com;
+ s=default; t=1706604908;
+ bh=HYQ5DHl0KP89+SpOFAyd7UKqIf089LtHyUMNb+8vbHU=;
+ h=Subject:To:From:Date:Reply-To:From;
+ b=oFmjZo/ZKmDX9INdIdmCOlZCp+ooCqGXPry+0Qp8MnyCc0OIjLmApTpQwwRRDu2yR
+ NeZlzvV+uDRpxcO0mGjk7mzfZzEt7c6nTmVIt+hL6e9guyAUXAn8i4rrrYh1zkaGYz
+ hXOVAtsOe8hiGVQ5nHJ2nTu2jLPGWX/LICTkD3AIgky+4IC0YcUSQRnAzi3pShvZCt
+ QTTamCRmrtZzyU5PeLROmzMqTVkl6tkpqGdRL6DZpRCC2SEIe8vWz3I7l+lx/S/EqB
+ RYxDFaTXxH8TMrStn6qMUalOMHGPhGUhjf87/dNoyH73AYK+301Bt7E6EeawAaFPri
+ qt5Nmwb94AOrA==
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Content-Type: text/html;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server1.navajomanufacturing.com
-X-AntiAbuse: Original Domain - lists.freedesktop.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - hotmail.com
-X-Get-Message-Sender-Via: server1.navajomanufacturing.com: acl_c_authenticated_local_user:
- root
-X-Authenticated-Sender: server1.navajomanufacturing.com: root
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: Present you as NOK
+To: Recipients <smtp@sendemail77.com>
+From: "Horst Angerer" <smtp@sendemail77.com>
+Date: Tue, 30 Jan 2024 00:55:06 -0800
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,58 +49,36 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: maleek.kazeem@outlook.com
+Reply-To: cm_ncc@hotmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
-Message-Id: <20240129204046.764B2112B09@gabe.freedesktop.org>
+Message-Id: <20240130090842.BCAB310F842@gabe.freedesktop.org>
 
-<HTML><HEAD><TITLE></TITLE>
-</HEAD>
-<BODY bgcolor=#FFFFFF leftmargin=5 topmargin=5 rightmargin=5 bottommargin=5>
-<FONT size=2 color=#000000 face="Arial">
-<DIV>
-<FONT size=3 face="Verdana">Dear&nbsp; Sir/Madam,</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">Hope you are doing great?</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">I'm following up on the previously email I sent to you.</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">I understand that you are busy, but I would appreciate</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">it if you could review this brief message and respond</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">to me as quickly as possible.</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">I'm a Mandate and International Outsource Personel. In my</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">long years of work with top financial management companies</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">in Europe, I presently have a client who have funds for </FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">investment and good a thing, She chooses to invest in your</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">Country either on Equity or Loan basis.</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">Please feel free to reply to me immediately so that we can</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">talk more about it since your Country is the investor’s</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">choice for investments on your care and management.</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">Kind regards,</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana">&nbsp;</FONT></DIV>
-<DIV>
-<FONT size=3 face="Verdana"><U>Maleek Kazeem&nbsp;&nbsp; |&nbsp; </U></FONT><FONT size=3 color=#0000FF face="Verdana"><U>m.kazeem@maleek-kazeem.com</U></FONT></DIV>
-</FONT>
-</BODY></HTML>
+Hello,
+
+My name is Horst Angerer, we are unfamiliar with each other, I am a senior =
+account manager with Santander Bank Great Britian. I have worked here for a=
+ little more than 20 years now and I would like to present a profitable bus=
+iness deal to you. I am presenting this deal to you because you are very im=
+portant to this deal as you will find out.
+
+I was the personal accountant to one of our late customers, a foreign contr=
+actor with Royal Dutch plc who has an investment account with my bank. He l=
+ost his life in a car crash in 2013.  He died without leaving a will. Sever=
+al efforts were made to find his extended family through his embassy withou=
+t success. I received a notice last week to provide the next of kin because=
+ i am his accountant or the account will be closed in 14 days time. I am co=
+ntacting you to apply for the money left behind because you have the same l=
+ast name as my client. This will be done legally respecting UK laws and suc=
+cess is guaranteed if we cooperate on this. The bank will release the accou=
+nt to you because of your last name and my recommendation of you as the nex=
+t of kin. I am a very religious person and I cannot lie; I expect the same =
+from you.
+
+I propose we share the proceeds 50:50, I think this is fair. I will give yo=
+u all the necessary information about the deal when I get your response.
+
+Please get back to me as soon as you can for further discussion.
+
+Warm regards,
+Horst
