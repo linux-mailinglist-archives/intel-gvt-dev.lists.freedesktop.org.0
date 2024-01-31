@@ -2,64 +2,50 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 103A2842EA6
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 30 Jan 2024 22:29:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 58B0E843B3D
+	for <lists+intel-gvt-dev@lfdr.de>; Wed, 31 Jan 2024 10:38:03 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 88CA81135F7;
-	Tue, 30 Jan 2024 21:28:53 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 36F8C10FD38;
+	Wed, 31 Jan 2024 09:38:02 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-lj1-f176.google.com (mail-lj1-f176.google.com
- [209.85.208.176])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 1971D113612
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 30 Jan 2024 21:28:52 +0000 (UTC)
-Received: by mail-lj1-f176.google.com with SMTP id
- 38308e7fff4ca-2cf44decb72so8931971fa.0
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 30 Jan 2024 13:28:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706650070; x=1707254870; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=8F+8Ja8urYH+l87ud/VeWHqnP/Oq6Ivx1TH4610GCnM=;
- b=OuWr8In2hOg+424lyjGsWXuitpPygkmFONCudHKrs/FNuiMF140Y+2NLwX+aPQ2V52
- flm7Fe8QiwsstU9xBjTZfS5UGudNmXiV4scr0Q/uOqGlHOPa1bcddntCEXc6hKWILWN1
- 3BbV+q599nNFyNaCtzEYpnBTxN/dCOD5V7mmXFVFwcdDOjO+xP9C3wLe5bgF97KTNxlw
- YecE2mTfdiCCisgIXbzTIENKmvM18R4s9BhEnkpZV3ruku38PJ/CS1Ha3qn0mpKzpssy
- Fafi32JoVpwcA3IqnPAAGe/E9un+kJOHxO6Z3IcM7ct12udvGftbyjK7j9fYEuie51qY
- JQJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706650070; x=1707254870;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8F+8Ja8urYH+l87ud/VeWHqnP/Oq6Ivx1TH4610GCnM=;
- b=YBLSheJV94nk6k0ntI9/Du1isgqenNSNBiuqE3qgWtrqUu2HcvjAsEQoLwlzzVQJXd
- gQaL9Mofwh8gtjZ63tHq6DszkVLyV/Yj2I87btS2krgN8V94mgfsmNRnKgk8Rzfd3N/c
- 2cmKQ2wEFkeZRLyehFKpsJ5B4KlcB2HAmYviUB7u9WEb1Vs8b/dnYRX+0N1j0wmEzMMB
- rXlj1/VNePk/PTkIFL57Bt2tRqBByCnNJsdYBJvOF5KfCBrqOqntuLjHFUy92uXbCBcm
- ePn3aoJrn1KIRTURD7Ik1JFq8ti2BEhfy2MsKVD5f41uZFqjGX3YMk+pnNDX1a6/PvlF
- OyNA==
-X-Gm-Message-State: AOJu0YzBiPB4NfooAJzWGwePph+glr13GqbK9joY8NpqtPI8NoUreo50
- BH9cIyd9N6S6XRqLW8LwxtTBJetmQQC0FkMx/VSZ1IimqHy59NMPvtyDzI8hnvc=
-X-Google-Smtp-Source: AGHT+IEtDgU3vR122u7Ag+F0fLXgv4PBCe44CqmVMQf86rmYcEX2vjJUwAzjql3UF3iOqNx0VdDbGg==
-X-Received: by 2002:a2e:4611:0:b0:2cd:fb0e:1f68 with SMTP id
- t17-20020a2e4611000000b002cdfb0e1f68mr6067913lja.5.1706650069841; 
- Tue, 30 Jan 2024 13:27:49 -0800 (PST)
-Received: from inno-dev.lan (88-115-161-74.elisa-laajakaista.fi.
- [88.115.161.74]) by smtp.gmail.com with ESMTPSA id
- p8-20020a2e7408000000b002cdfbbb4f8asm1652302ljc.74.2024.01.30.13.27.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Jan 2024 13:27:49 -0800 (PST)
-From: Zhi Wang <zhi.wang.linux@gmail.com>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: [PATCH] MAINTAINERS: Update Zhi Wang's email address
-Date: Tue, 30 Jan 2024 21:27:43 +0000
-Message-Id: <20240130212743.7727-1-zhi.wang.linux@gmail.com>
-X-Mailer: git-send-email 2.34.1
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A441310F4D2;
+ Wed, 31 Jan 2024 09:38:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1706693881; x=1738229881;
+ h=date:from:to:cc:subject:message-id:reply-to:mime-version;
+ bh=OIorUhZBeReQVurTkeItZ8NMRYrqCLlP5LSALyijMvM=;
+ b=QTuU+H+yEfvfI83DmZ9XsW7/FE3Fefdv1iUOustkDHu2+8bt+OYmnWjl
+ 96rlUnEWDEZK4Ks5zRDOC97l39eV2ICc+v67yO4Q4f6q8rTKO1JbbSEUb
+ ArGMT6kBdWmMGjHkyl6tcPu9+wkDOBNxyQww68ZTtKaxJk2cW4x099mkD
+ N7LfozGY3pc88R+uAWuwf105R/FKSw3ubHL/srDsHD8xOlD15U53jfIu+
+ N6PbRVU7npYVPSWm5HantH8X00mnXfpo5ttG+51YBxNQk9EKpba89iMZF
+ i9k5Q0wDlaOP/gkUKOzTA0c19yHmS8SJt/4/zTV+aSgOIMZSSQnNYBkFO A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="10215305"
+X-IronPort-AV: E=Sophos;i="6.05,231,1701158400"; 
+ d="asc'?scan'208";a="10215305"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jan 2024 01:38:00 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="822505537"
+X-IronPort-AV: E=Sophos;i="6.05,231,1701158400"; 
+ d="asc'?scan'208";a="822505537"
+Received: from debian-skl.sh.intel.com (HELO debian-skl) ([10.239.160.45])
+ by orsmga001.jf.intel.com with ESMTP; 31 Jan 2024 01:37:57 -0800
+Date: Wed, 31 Jan 2024 17:38:51 +0800
+From: Zhenyu Wang <zhenyuw@linux.intel.com>
+To: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Jani Nikula <jani.nikula@intel.com>,
+ "Vivi, Rodrigo" <rodrigo.vivi@intel.com>
+Subject: [PULL] gvt-fixes
+Message-ID: <ZboVK03/Eb/jt7wf@debian-scheme>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+ protocol="application/pgp-signature"; boundary="QQvuDcYg+aj5hqnK"
+Content-Disposition: inline
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,31 +58,69 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Cc: Zhi Wang <zhi.wang.linux@gmail.com>, Zhenyu Wang <zhenyuw@linux.intel.com>
+Reply-To: Zhenyu Wang <zhenyuw@linux.intel.com>
+Cc: intel-gfx <intel-gfx@lists.freedesktop.org>,
+ intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>, zhi.wang.linux@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Update my email address to zhi.wang.linux@gmail.com.
 
-CC: Zhenyu Wang <zhenyuw@linux.intel.com>
-Signed-off-by: Zhi Wang <zhi.wang.linux@gmail.com>
+--QQvuDcYg+aj5hqnK
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Hi, Joonas
+
+Here is another gvt-fixes pull which contains fixes on doc link and
+one uninitialized variable in warning message, also update about Zhi's
+new mail address in MAINTAINERS.
+
+Thanks.
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The following changes since commit f9f031dd21a7ce13a13862fa5281d32e1029c70f:
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 32a47aa6aa76..3d36696e99a6 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -10801,7 +10801,7 @@ F:	drivers/gpio/gpio-tangier.h
- 
- INTEL GVT-g DRIVERS (Intel GPU Virtualization)
- M:	Zhenyu Wang <zhenyuw@linux.intel.com>
--M:	Zhi Wang <zhi.a.wang@intel.com>
-+M:	Zhi Wang <zhi.wang.linux@gmail.com>
- L:	intel-gvt-dev@lists.freedesktop.org
- L:	intel-gfx@lists.freedesktop.org
- S:	Supported
--- 
-2.34.1
+  drm/i915/psr: Only allow PSR in LPSP mode on HSW non-ULT (2024-01-25 10:44:13 +0200)
 
+are available in the Git repository at:
+
+  https://github.com/intel/gvt-linux tags/gvt-fixes-2024-01-31
+
+for you to fetch changes up to 88569fa2c3bc83d77a96580da94dd35edee0f893:
+
+  MAINTAINERS: Update Zhi Wang's email address (2024-01-31 17:19:15 +0800)
+
+----------------------------------------------------------------
+gvt-fixes-2024-01-31
+
+- Fix broken gvt doc link (Zhenyu)
+- Fix one uninitialized variable bug in warning (Dan)
+- Update Zhi's new email address in MAINTAINERS file. (Zhi)
+
+----------------------------------------------------------------
+Dan Carpenter (1):
+      drm/i915/gvt: Fix uninitialized variable in handle_mmio()
+
+Zhenyu Wang (1):
+      drm/i915: Replace dead 01.org link
+
+Zhi Wang (1):
+      MAINTAINERS: Update Zhi Wang's email address
+
+ MAINTAINERS                         | 4 ++--
+ drivers/gpu/drm/i915/Kconfig        | 2 +-
+ drivers/gpu/drm/i915/gvt/handlers.c | 3 +--
+ drivers/gpu/drm/i915/intel_gvt.c    | 2 +-
+ 4 files changed, 5 insertions(+), 6 deletions(-)
+
+--QQvuDcYg+aj5hqnK
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EARECAB0WIQTXuabgHDW6LPt9CICxBBozTXgYJwUCZboVJAAKCRCxBBozTXgY
+J6pKAJ0SCVZXC9bPKUlu5tg6BVbSEjrqQgCeKCTPSKD5rmhfPWUTssIEHlNr72g=
+=GZlb
+-----END PGP SIGNATURE-----
+
+--QQvuDcYg+aj5hqnK--
