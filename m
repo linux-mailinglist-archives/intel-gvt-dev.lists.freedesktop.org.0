@@ -2,34 +2,38 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29F4F844EA0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Feb 2024 02:23:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E42E8452D9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  1 Feb 2024 09:37:49 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 079A510E372;
-	Thu,  1 Feb 2024 01:23:03 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E765710E5DE;
+	Thu,  1 Feb 2024 08:37:47 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from frankyandricky.cc (frankyandricky.cc [172.245.92.82])
- by gabe.freedesktop.org (Postfix) with ESMTPS id A5B9A10E372
+Received: from mail.OriginHub.pl (mail.originhub.pl [164.132.224.223])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id EA5D510E5DE
  for <intel-gvt-dev@lists.freedesktop.org>;
- Thu,  1 Feb 2024 01:23:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=re1;
- d=frankyandricky.cc; 
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=info@frankyandricky.cc;
- bh=N1zSxRTSLEkRc+K3IqB9O8uh5NwbOkREj2T+DkfdU/k=;
- b=D4gqZ6XUAXf2fW18JbDso6ZaIq9fflXViJ4nvMQykmHA3sF0yH2Zgr51IJjkw4I5zE4yg86f0kVc
- gLCuol5s9RIC9Zg4OMivy5kj7yvi6h0J/LLun5fHQ5iiJNYubNYHSpKsRaVMlZ9pHqDV0IyavHJL
- Kan7TRDsuPtFti7wB0hdvgmWxihHDdDIY2gzcMpk54pYeQ5ucOVoJ0K5H00XnadTkgnEUXT65ETt
- crp2MQrmKWigWXFEnZh86niiiAfJjoKOBXkPDxRwNKZBG5QnSTZdvaLk4c95sBai0LUOs4l4ac+q
- dQmTtJnWHZlftcuYU7h85p6snPS82pek2z51sA==
-From: "HR Department" <info@frankyandricky.cc>
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: Employee Performance Report - Dec '23
-Date: 31 Jan 2024 17:23:00 -0800
-Message-ID: <20240131172259.557F1A3A46ADDAEA@frankyandricky.cc>
+ Thu,  1 Feb 2024 08:37:46 +0000 (UTC)
+Received: by mail.OriginHub.pl (Postfix, from userid 1002)
+ id F242C46F2E; Thu,  1 Feb 2024 08:36:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=OriginHub.pl; s=mail;
+ t=1706776641; bh=dwoca0X6C9VXklO/zRgFQCPapTk5LFz4tKaENdvy6Po=;
+ h=Date:From:To:Subject:From;
+ b=eZ5UAshMBvuQVGSTon6/cGvfTP9KmbUGjgHfCu/bv3oiIzdaXr2ee9qpQp8DJWrXs
+ nSiMq3DwcHtkx1LI7AHhs7UQLpMAE6ZJicIn94BpPpG025IusU1aA8XHMX+fAE/7sh
+ WCFyxgRWh1fJ23cW/MsXndV1EnEGoCP67KxQ2g+RiLME1QUBuBp2eN1ki7FqPDH0CU
+ sSrdq84tyl3RSTbCf8D1cwUCb1QarWrx+b2t4YNs/iyi/X7xThyCjd3KxWYBN9KTCk
+ MRBMMOf8UkHnzNCn4IIH0HyMMs2diajVg0XPLQQ3uerqtK9pqYn+PBFQNDbZ/qLCs+
+ 4vaBNfaTqhtMw==
+Received: by mail.OriginHub.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu,  1 Feb 2024 08:35:47 GMT
+Message-ID: <20240201074500-0.1.4n.1012t.0.g7osgnl0vg@OriginHub.pl>
+Date: Thu,  1 Feb 2024 08:35:47 GMT
+From: =?UTF-8?Q?"Rados=C5=82aw_Grabowski"?= <radoslaw.grabowski@originhub.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: W sprawie samochodu
+X-Mailer: mail.OriginHub.pl
 MIME-Version: 1.0
-Content-Type: text/html
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
@@ -46,17 +50,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html><head>
-<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
-</head>
-<body><p><br>Greetings,<br><br>Find below link to past month's employees pe=
-rformance report,&nbsp;Dec '23 :<br><br><a href=3D"http://sndbgmgmwwzsukanp=
-cf.guiadaautopeca.com.br/?userid=3DaW50ZWwtZ3Z0LWRldkBsaXN0cy5mcmVlZGVza3Rv=
-cC5vcmc=3D">inter-records/staff.lists.freedesktop.org/news/empl.record/2023=
--reports/filenumber7515308534</a><br>&nbsp;<br> Note: All names highlighted=
- in red indicate employees to be terminated.<br><br><span style=3D"font-siz=
-e: 9pt;"><strong><em><font color=3D"#f71d08">
-LOGIN WITH UPDATED DETAILS TO ENABLE ACCESS</font></em></strong></span><br>=
-&nbsp;<br> <br>Best regards,<br>
-Director of HR&nbsp; <br>hr.director@lists.freedesktop.org<br>Human Resourc=
-e Department<br>lists.freedesktop.org<br></p></body></html>
+Dzie=C5=84 dobry,
+
+chcieliby=C5=9Bmy zapewni=C4=87 Pa=C5=84stwu kompleksowe rozwi=C4=85zania=
+, je=C5=9Bli chodzi o system monitoringu GPS.
+
+Precyzyjne monitorowanie pojazd=C3=B3w na mapach cyfrowych, =C5=9Bledzeni=
+e ich parametr=C3=B3w eksploatacyjnych w czasie rzeczywistym oraz kontrol=
+a paliwa to kluczowe funkcjonalno=C5=9Bci naszego systemu.=20
+
+Organizowanie pracy pracownik=C3=B3w jest dzi=C4=99ki temu prostsze i bar=
+dziej efektywne, a oszcz=C4=99dno=C5=9Bci i optymalizacja w zakresie pono=
+szonych koszt=C3=B3w, maj=C4=85 dla ka=C5=BCdego przedsi=C4=99biorcy ogro=
+mne znaczenie.
+
+Dopasujemy nasz=C4=85 ofert=C4=99 do Pa=C5=84stwa oczekiwa=C5=84 i potrze=
+b organizacji. Czy mogliby=C5=9Bmy porozmawia=C4=87 o naszej propozycji?
+
+
+Pozdrawiam
+Rados=C5=82aw Grabowski
