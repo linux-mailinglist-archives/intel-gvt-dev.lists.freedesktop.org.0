@@ -2,78 +2,81 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 990DD84F950
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  9 Feb 2024 17:08:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91B73850BB7
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 11 Feb 2024 22:51:06 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5946810F4B1;
-	Fri,  9 Feb 2024 16:08:33 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4AFEF10E6D7;
+	Sun, 11 Feb 2024 21:51:05 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="Fw6XIdkP";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="CO0mTmbA";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com
- [209.85.128.51])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3689110F4B1;
- Fri,  9 Feb 2024 16:08:32 +0000 (UTC)
-Received: by mail-wm1-f51.google.com with SMTP id
- 5b1f17b1804b1-4105a6be071so6824215e9.1; 
- Fri, 09 Feb 2024 08:08:32 -0800 (PST)
+Received: from mail-lj1-f177.google.com (mail-lj1-f177.google.com
+ [209.85.208.177])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id C461010E2AA;
+ Sun, 11 Feb 2024 21:51:02 +0000 (UTC)
+Received: by mail-lj1-f177.google.com with SMTP id
+ 38308e7fff4ca-2d0bdb8061fso4067751fa.1; 
+ Sun, 11 Feb 2024 13:51:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1707494910; x=1708099710; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=TzLKSpIbztwzPT6C+IS9b5enm2u51uagMPSnubcJ8hg=;
- b=Fw6XIdkPWqbSMnCXuvoW1v6YbJ8rouDGV8/gg1gEDAUdsKZAImHQyS/zqTUS9/CSeG
- iLTk2aXHarYo4uQZNDiG43tZGfi9ZJ1WNqFqtUJtZOW6nqqkAwOjMeC+AqfI3oQ2Q7p+
- sqENcCPikOKOjskEILNWBmzU0qyrV4EIfRyS+ZwKTXtLDSDALVHMWzzlWgNO6J9+C35J
- WWq7GuyVJnKoAKYbU5ihnOc2yHa2cY3UZgSeME3M09TycAiq9yBMyhz/2mMlVJq4L5bt
- fau/MzcKqWMHdOHmYiteu3N681n6ppdBxYWl9aoGHF7y7QqzC8gq5SDmdPOJRbzC44PC
- hDNQ==
+ d=gmail.com; s=20230601; t=1707688256; x=1708293056; darn=lists.freedesktop.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=BCiwfWXaBiDiiMoNauIUr8Aq7JRDoqoJY68Ac5P8N3Q=;
+ b=CO0mTmbA+zgHDhNpVF4m2Ftr7ro1f7a/OpoQbxmEr5GMkrJ64aSP/DcL6Rdc+3rzm+
+ IHVp5GFdaP6jqo9Rxv3dR5Wi2It8KGFZARO+neOqP4I8qQjSYqWLE0BnUNwfHZuz0ZlP
+ 5kBMQ6LDu58b7wM91cEU6aqKv6t5CSXpXTTEBSRNHSKytElBAhMdMjZNIJD/ObDhb6hf
+ QuSzPrY0oCLBF7rIzlRETgkUCC7D0TUgMq1trHBCoWiH5vw+ts9BTy8LqfioY2DTGdm+
+ fTzDtykuRFASowrAMdlBAbRrhpVUgwIvq0m+Wkgz9M1fZqxzhBiYqrqhkv6W0VqvizEB
+ C+tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707494910; x=1708099710;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=TzLKSpIbztwzPT6C+IS9b5enm2u51uagMPSnubcJ8hg=;
- b=NhybQN496rEPpl9zCeZj6EPSXPWHdesZcuFXricE559zqoAhwoikjwan2M1Vn86OqN
- ZEe+042DKnKg0yigZCNh+UAjmBys+w4T3IcXI0x+6P1R4KNaP/cWcVDsNroZdCC78Wuw
- +fn8zS48pw+vVNYtK5BvuM2JkijAHyc+uGqtqU7znEPV9tdm1slE+Qu5jBLNEyPYQoYL
- Kf8aHYzJ20CYN7DoAbqxdxb4eEyKWsmZNiTW+J5NmeveuZs6j/7yEcxZ0tMc4sJ2aMpn
- he9JnPUwn+iCWqXGV4ooIVK+RvXD3TzcM137R1F7pV5tMSB09zIRkJ+Ml4DfI2Drwb2Q
- cDnw==
+ d=1e100.net; s=20230601; t=1707688256; x=1708293056;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=BCiwfWXaBiDiiMoNauIUr8Aq7JRDoqoJY68Ac5P8N3Q=;
+ b=LZZz0hvkvV5JtN67W3Lc4HIwvcjxGq2Z2eG9SdvEF+LxVJlw50xLRnT7N+yA70cwOS
+ pU+DZaFmqduPYq6jjklcq6TuXdBxXXNhQupzvh/UWQrgRhBhqUaA6CdEeoB8+kNFCVT9
+ J23fFgbV/cESVuPH1QakPzwSIIZwobj96reJc+S1TtD2IhThnXtYVuQgXST8CmGWh516
+ sXslvfOl9C2iFodWmQaMhqOTZZ9xxnshz3NOEXdlYPYbL3HlQE2JGNNzUI4ArYg48n2K
+ 5JAPwf2NDdDRCL5qRX2wfp/E9fjSCULrejTEcuJNTIWyeTZ0l5ASD3U53mD0lc57tjEJ
+ PRaQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV8Rq/W7qZNnC1mSmnA0v+hv+bKVUC2UOBdYROKE5gcEKaMgSRxssxp7Z47tCg9TtInCXqeKbM4lHlVnrnf5RL977UI6UotnSvnauZ0o9rJwWXp51C9LmdUaLPaf05tFaRQe+qlMVJG0NP8+8MdlCEncYgdHtjd8XnsEJN6LOd0iSUwVgAOXf+gUUInPx/OZS7+cgK/NQ==
-X-Gm-Message-State: AOJu0YyLEzBE39Qx46/kQdUdYzTwtvx2AtTfWOQcYKFN1wnJPQHAyywC
- 49ooDvTPkZI6bKYwIQill8J6rBsS6HXkh7gqD0aDvC3bQ6kCskTS
-X-Google-Smtp-Source: AGHT+IGG4FUlez14b7GsJi67PNeZ+8sCc1WWZLXozkMxO09v6l31xu/rN0T+bT/YmhzLPY8b6U5upA==
-X-Received: by 2002:a05:600c:1551:b0:410:8782:cf7b with SMTP id
- f17-20020a05600c155100b004108782cf7bmr49204wmg.20.1707494910424; 
- Fri, 09 Feb 2024 08:08:30 -0800 (PST)
+ AJvYcCWEvKHEjYIWfABFvcF9QtzIdfwfZxcqMYG/jY/yK+eeQo+3YZfldaRpDtXXeS9oenuqHuIbKOIAtwmjR6RS2ACGWKi6XxXGpGwCsgIwnq7ABVZQUW/yH0bXPUp74enuuly/KdMsmwUEyHBZt+HEqN+6X8ein/Hx0jeYNQWW+YG7QuWU+Ojb6RgtsizeCG8DMHDpFOWetw==
+X-Gm-Message-State: AOJu0YwSkYXBn8RE7u5CkUmIs4EI4o3dPABd4vQGJhmfckY0dVVxh/GL
+ pAUditEP4E3JWmoRWtivUDILr9bLNzWEPND32uk8Y1ga1z0rh6Ce
+X-Google-Smtp-Source: AGHT+IF2zWkwXblenI1gRXr70yrT64HoBD+FajchtchHXmqpxVAuXiJ0OFipLmO1Ysv08aBR9nCokA==
+X-Received: by 2002:ac2:434b:0:b0:511:680c:94e9 with SMTP id
+ o11-20020ac2434b000000b00511680c94e9mr2303766lfl.3.1707688255748; 
+ Sun, 11 Feb 2024 13:50:55 -0800 (PST)
 X-Forwarded-Encrypted: i=1;
- AJvYcCVC2z7Iy56PqWUKiYFwZYuHACZNPyFNI1Bh1wkW+1/C/J2VPGzeszoYxrJtoEFiPtlYewdKOl7pOPY/mikYD9y5huVYlBzwgEWfljjhovrCN0O3JhAzKdfP7TyoAxkND+nzoWivMJLaHrbLbgl5TkDP4FqKbB1YMzI6k0j21dpqOzt7b4K6jABPVM+JrJ9TIgWfcEF/nVxPa8p704bXXhA0qHu6mGT4HIwVK6Jqu60yZsNSDYA8xLMsr96IAZRYgcF6RPFI3C9GXW3gFV9nMhI3jW19m6MM6uAAdZ+V3KTUhmuPx7UE5rzF/i3Efvg9l/yNsTjc9+zT+pakLtc6E6L1afh6AXKcQEoxv3hbb58FEIXC3Sl0p3vEmwVqI+uDVMOEqteaBdq3alng5ziOtfQkcZ/scLzVAJU3hXNG/iCzMVyg1t66V5wq/Sg8y1yVOZSqUsGWsU1P5gROsp6Xshk3QSVDIQHRxOdiM1JYjPs=
-Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net.
- [80.193.200.194]) by smtp.gmail.com with ESMTPSA id
- l11-20020a5d674b000000b0033b583ba5e0sm2124312wrw.92.2024.02.09.08.08.29
+ AJvYcCWa+ad82KJzb5NNgxC9WfLsveEabqTv2bjpzz476MAr69saqz91H0Xpc3s7eHOWxvuh4tlA4b0dZTxY+I3ZsAyB9GrX+1syIQQUQoJHuiPJxrI5rQHTYVf2shmHFohsuNfo4eo18qFVwgszoOR8ZThcdwQf3GYBStOLX0p+WkIJu/n9Y8OIb8cp4z60WDsGBGjWk9ENHUXd1Gpf/izAQYP0+PgN8oJAKff/n4acdnUglwdQB0ZmC+Kfl5YciYzqg88WjozhRrVEIvYTrzfnU2V1MeHU3YR4paLGpdmGGfbffA2fHzK+Zds7XafjQmQjX9ulWRys5hsqpJgsxVqm5MqyDDsN4E0Q3wvlQbFhAIaHWtGjFRLST52leU4/sgTjlQT03yd5aiCn6t2z88+Zu+mitNrnRKjAMrxJ4BOuaDhkvlbr3fM8xvjNlkLTYc1XRbNCiuGnHaU7iMfTFPHD
+Received: from localhost (88-115-160-21.elisa-laajakaista.fi. [88.115.160.21])
+ by smtp.gmail.com with ESMTPSA id
+ v24-20020ac25598000000b005118f40845fsm77733lfg.281.2024.02.11.13.50.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Feb 2024 08:08:29 -0800 (PST)
-From: Colin Ian King <colin.i.king@gmail.com>
-To: Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
- David Airlie <airlied@gmail.com>, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH][next] drm/i915/gvt: remove redundant assignment to pointer map
-Date: Fri,  9 Feb 2024 16:08:29 +0000
-Message-Id: <20240209160829.3930396-1-colin.i.king@gmail.com>
-X-Mailer: git-send-email 2.39.2
+ Sun, 11 Feb 2024 13:50:55 -0800 (PST)
+Date: Sun, 11 Feb 2024 23:50:53 +0200
+From: Zhi Wang <zhi.wang.linux@gmail.com>
+To: Colin Ian King <colin.i.king@gmail.com>
+Cc: Zhenyu Wang <zhenyuw@linux.intel.com>, Jani Nikula
+ <jani.nikula@linux.intel.com>, Joonas Lahtinen
+ <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, David Airlie
+ <airlied@gmail.com>, intel-gvt-dev@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH][next] drm/i915/gvt: remove redundant assignment to
+ pointer map
+Message-ID: <20240211235053.00002b5c.zhi.wang.linux@gmail.com>
+In-Reply-To: <20240209160829.3930396-1-colin.i.king@gmail.com>
+References: <20240209160829.3930396-1-colin.i.king@gmail.com>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.34; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,32 +92,36 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-The pointer map is being initialized with a value that is never
-read, it is being re-assigned later on in a for-loop. The
-initialization is redundant and can be removed.
+On Fri,  9 Feb 2024 16:08:29 +0000
+Colin Ian King <colin.i.king@gmail.com> wrote:
 
-Cleans up clang scan build warning:
-drivers/gpu/drm/i915/gvt/interrupt.c:346:28: warning: Value stored to
-'map' during its initialization is never read [deadcode.DeadStores]
+> The pointer map is being initialized with a value that is never
+> read, it is being re-assigned later on in a for-loop. The
+> initialization is redundant and can be removed.
+> 
+> Cleans up clang scan build warning:
+> drivers/gpu/drm/i915/gvt/interrupt.c:346:28: warning: Value stored to
+> 'map' during its initialization is never read [deadcode.DeadStores]
+> 
+> Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+> ---
+>  drivers/gpu/drm/i915/gvt/interrupt.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/i915/gvt/interrupt.c
+> b/drivers/gpu/drm/i915/gvt/interrupt.c index
+> c8e7dfc9f791..8c8e37f50a45 100644 ---
+> a/drivers/gpu/drm/i915/gvt/interrupt.c +++
+> b/drivers/gpu/drm/i915/gvt/interrupt.c @@ -343,7 +343,7 @@ static
+> void update_upstream_irq(struct intel_vgpu *vgpu, {
+>  	struct drm_i915_private *i915 = vgpu->gvt->gt->i915;
+>  	struct intel_gvt_irq *irq = &vgpu->gvt->irq;
+> -	struct intel_gvt_irq_map *map = irq->irq_map;
+> +	struct intel_gvt_irq_map *map;
+>  	struct intel_gvt_irq_info *up_irq_info = NULL;
+>  	u32 set_bits = 0;
+>  	u32 clear_bits = 0;
 
-Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
----
- drivers/gpu/drm/i915/gvt/interrupt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks for the patch!
 
-diff --git a/drivers/gpu/drm/i915/gvt/interrupt.c b/drivers/gpu/drm/i915/gvt/interrupt.c
-index c8e7dfc9f791..8c8e37f50a45 100644
---- a/drivers/gpu/drm/i915/gvt/interrupt.c
-+++ b/drivers/gpu/drm/i915/gvt/interrupt.c
-@@ -343,7 +343,7 @@ static void update_upstream_irq(struct intel_vgpu *vgpu,
- {
- 	struct drm_i915_private *i915 = vgpu->gvt->gt->i915;
- 	struct intel_gvt_irq *irq = &vgpu->gvt->irq;
--	struct intel_gvt_irq_map *map = irq->irq_map;
-+	struct intel_gvt_irq_map *map;
- 	struct intel_gvt_irq_info *up_irq_info = NULL;
- 	u32 set_bits = 0;
- 	u32 clear_bits = 0;
--- 
-2.39.2
-
+Reviewed-by: Zhi Wang <zhi.wang.linux@gmail.com>
