@@ -2,42 +2,44 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3BF186FAE8
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Mar 2024 08:32:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2633486FC4F
+	for <lists+intel-gvt-dev@lfdr.de>; Mon,  4 Mar 2024 09:50:57 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 9ADE110FDB4;
-	Mon,  4 Mar 2024 07:32:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A52CE10FE77;
+	Mon,  4 Mar 2024 08:50:55 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=service.kaliselectronics.com header.i=@service.kaliselectronics.com header.b="oULjRxAp";
+	dkim=pass (2048-bit key; secure) header.d=quirkbyte.pl header.i=@quirkbyte.pl header.b="aPUM0phY";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 320 seconds by postgrey-1.36 at gabe;
- Mon, 04 Mar 2024 07:32:45 UTC
-Received: from smtp5-43.comingchina.net (unknown [107.179.5.43])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 7A68A10FDB4
+X-Greylist: delayed 401 seconds by postgrey-1.36 at gabe;
+ Mon, 04 Mar 2024 08:50:53 UTC
+Received: from mail.quirkbyte.pl (mail.quirkbyte.pl [94.177.238.152])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2911C10FE76
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  4 Mar 2024 07:32:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; 
- d=service.kaliselectronics.com; 
- i=@service.kaliselectronics.com; q=dns/txt; s=umail; 
- t=1709537564; h=content-type : mime-version : message-id 
- : reply-to : subject : from : to : date : subject : from 
- : date; bh=deTBteOGe6aMis7TzxbsSGyDZ4lGfkKA2RmDGMowyWw=; 
- b=oULjRxApVw+omUEOXHw/y0xQrDIJ2lobC8RVHqeg5xQM9a4+M36YMY2k
- i2oHaROx7m4/HkE0uTegvymgcxAGp6l965y3hSgfqsUki+SKun/A3kpJUU
- 6lH34K0fA8/L99NKUrLFJs+z6AmEYT3jZFyRB2DU1ZyFYI909x7eecXkI=
-Received: from helo (unknown [127.0.0.1])
- by smtp.service.kaliselectronics.com (Postfix) with ESMTP id GpTHnkaByuvc
- for <alisa@service.kaliselectronics.com>; Mon, 04 Mar 2024 15:26:06 +0800
-Content-Type: multipart/mixed; boundary="===============5404746817164541697=="
+ Mon,  4 Mar 2024 08:50:53 +0000 (UTC)
+Received: by mail.quirkbyte.pl (Postfix, from userid 1002)
+ id 5F72083B9A; Mon,  4 Mar 2024 09:41:43 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=quirkbyte.pl; s=mail;
+ t=1709541749; bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=;
+ h=Date:From:To:Subject:From;
+ b=aPUM0phYHo3GaQAozdDwpx1QiNj5+2ptmcxFLc9cmWP+YzxQvgCs+frl4EHxJpDjL
+ QrT61+h5zcffsvfxvr2nEYP0BCVYsMmRqd7FjxM9ATmMWYy+NCZDrnrUfCj4jDUaDl
+ illtEVnx/NgkbGLqX6+ibfCFURIDK9QjpX2IzxZPkQpBL+HimlONUHL0z6WKhxpibz
+ mHcOKx5nJy/GXq6y0ZpBx84xZ0Ko2kl1ZB+ivvlVNVR0hrov4+q62CRPdF8lEMbDTA
+ Pm+jOMuI/gzWgcQOB6/XIF4LzO6CsM9zrIfvZxX5SfurSFsMM/klfqljuGeMtMmhBO
+ q4wcFoICprACw==
+Received: by mail.quirkbyte.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Mon,  4 Mar 2024 08:40:41 GMT
+Message-ID: <20240304084500-0.1.1n.wo85.0.d4y8w5mqmo@quirkbyte.pl>
+Date: Mon,  4 Mar 2024 08:40:41 GMT
+From: "Norbert Karecki" <norbert.karecki@quirkbyte.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Fotowoltaika - propozycja instalacji
+X-Mailer: mail.quirkbyte.pl
 MIME-Version: 1.0
-Message-Id: <20240304152606.78252-{14553:20240304152245-14553-68}-0008257@service.kaliselectronics.com>
-Subject: =?utf-8?q?Re=3A_IFM__E80361?=
-From: Alisa Luo <alisa@service.kaliselectronics.com>
-To: intel-gvt-dev <intel-gvt-dev@lists.freedesktop.org>
-Date: Mon, 04 Mar 2024 15:26:06 +0800
-Mail-ID: 65e57702e138236ae262f8b8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,100 +52,26 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: alisa@kaliselectronics.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
---===============5404746817164541697==
-Content-Type: text/html; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: base64
+Dzie=C5=84 dobry,
+=20
+Czy rozwa=C5=BCali Pa=C5=84stwo monta=C5=BC systemu fotowoltaicznego?
+=20
+Instalacja fotowoltaiczna jest najlepszym sposobem na obni=C5=BCenie wyso=
+ko=C5=9Bci rachunk=C3=B3w za pr=C4=85d (pozostaj=C4=85 tylko op=C5=82aty =
+sta=C5=82e) i zabezpieczenie si=C4=99 przed rosn=C4=85cymi cenami energii=
+ elektrycznej. Jest to w pe=C5=82ni odnawialne i bezemisyjne =C5=BAr=C3=B3=
+d=C5=82o energii, dzi=C4=99ki czemu przyczyniamy si=C4=99 do ochrony =C5=9B=
+rodowiska naturalnego.
+=20
+Dzia=C5=82amy od wielu lat na rynku energetycznym. Przygotujemy projekt, =
+wycen=C4=99 oraz kompleksowo wykonamy i zg=C5=82osimy realizacj=C4=99 do =
+zak=C5=82adu energetycznego.=20
+=20
+Czy chc=C4=85 Pa=C5=84stwo pozna=C4=87 nasz=C4=85 propozycj=C4=99? =20
 
-PGh0bWw+RGVhciBQdXJjaGFzZSBNYW5hZ2VyLDxiciAvPgpIYXBweSBkYXkgdG8geW91LkhvdyBh
-cmUgeW91IG15IGZyaWVuZCA/PGJyIC8+CjxiciAvPgpNYXkgSSBrbm93IGlmIHlvdSBoYXZlIGFu
-eSBuZXcgUHJvamVjdCBmb3ImbmJzcDs8c3Ryb25nPkluZHVzdHJpYWwgQ29udHJvbCBQcm9kdWN0
-czwvc3Ryb25nPiZuYnNwO2xhdGVseSA/PGJyIC8+ClN1Y2ggYXMgdGhlIEJyYW5kczombmJzcDsg
-Jm5ic3A7SUZN44CBU2llbWVuc+OAgVNjaG5laWRlcuOAgVBob2VuaXjjgIFBbGxlbiBCcmFkbGV5
-44CBUHJvLWZhY2XjgIFFYXRvbi4uLi4uLjxiciAvPgo8YnIgLz4KPHN0cm9uZz5XZSBhcmUgc2hh
-cmluZyBQYXJ0IE51bWJlcnMgd2hpY2ggYXJlIG91ciBIb3QgU2FsZXMgaXRlbXMgd2l0aCAmcXVv
-dDsgQUJCIGFuZCZuYnNwO1NpZW1lbnMgJnF1b3Q7IGFzIGJlbG93IDo8L3N0cm9uZz48YnIgLz4K
-Jm5ic3A7Cjx0YWJsZSBoZWlnaHQ9IjMyMCIgd2lkdGg9IjM4NCI+Cgk8Y29sZ3JvdXA+CgkJPGNv
-bCB3aWR0aD0iMTMwIiAvPgoJCTxjb2wgd2lkdGg9IjcyIiAvPgoJCTxjb2wgd2lkdGg9IjE4MiIg
-Lz4KCTwvY29sZ3JvdXA+Cgk8dGJvZHk+CgkJPHRyIGhlaWdodD0iMjYiPgoJCQk8dGQgaGVpZ2h0
-PSIyNiIgd2lkdGg9IjEzMCIgeDpzdHI9Ing6c3RyIj5QYXJ0IE51bWJlcjwvdGQ+CgkJCTx0ZCB3
-aWR0aD0iNzIiIHg6c3RyPSJ4OnN0ciI+TUZHPC90ZD4KCQkJPHRkIHdpZHRoPSIxODIiIHg6c3Ry
-PSJ4OnN0ciI+VW5pdCBQcmljZTwvdGQ+CgkJPC90cj4KCQk8dHIgaGVpZ2h0PSIyNiI+CgkJCTx0
-ZCBoZWlnaHQ9IjI2IiB3aWR0aD0iMTMwIiB4OnN0cj0ieDpzdHIiPkRURTEwMjwvdGQ+CgkJCTx0
-ZCB3aWR0aD0iNzIiIHg6c3RyPSJ4OnN0ciI+SUZNPC90ZD4KCQkJPHRkIHg6bnVtPSI5MTkuMDY2
-NjY2NjY2NjY3Ij4kOTE5LjA3PC90ZD4KCQk8L3RyPgoJCTx0ciBoZWlnaHQ9IjI2Ij4KCQkJPHRk
-IGhlaWdodD0iMjYiIHdpZHRoPSIxMzAiIHg6c3RyPSJ4OnN0ciI+R001MDRTPC90ZD4KCQkJPHRk
-IHdpZHRoPSI3MiIgeDpzdHI9Ing6c3RyIj5JRk08L3RkPgoJCQk8dGQgeDpudW09IjE1Mi4yODA5
-NTIzODA5NTIiPiQxNTIuMjg8L3RkPgoJCTwvdHI+CgkJPHRyIGhlaWdodD0iMjYiPgoJCQk8dGQg
-aGVpZ2h0PSIyNiIgd2lkdGg9IjEzMCIgeDpzdHI9Ing6c3RyIj5FODAzNjE8L3RkPgoJCQk8dGQg
-d2lkdGg9IjcyIiB4OnN0cj0ieDpzdHIiPklGTTwvdGQ+CgkJCTx0ZCB4Om51bT0iMjEuNzAzMTc0
-NjAzMTc0NiI+JDIxLjcwPC90ZD4KCQk8L3RyPgoJCTx0ciBoZWlnaHQ9IjI2Ij4KCQkJPHRkIGhl
-aWdodD0iMjYiIHdpZHRoPSIxMzAiIHg6c3RyPSJ4OnN0ciI+RTExNTA0PC90ZD4KCQkJPHRkIHdp
-ZHRoPSI3MiIgeDpzdHI9Ing6c3RyIj5JRk08L3RkPgoJCQk8dGQgeDpudW09IjE1Ljk2MzQ5MjA2
-MzQ5MjEiPiQxNS45NjwvdGQ+CgkJPC90cj4KCQk8dHIgaGVpZ2h0PSIyNiI+CgkJCTx0ZCBoZWln
-aHQ9IjI2IiB3aWR0aD0iMTMwIiB4OnN0cj0ieDpzdHIiPklZNTAyOTwvdGQ+CgkJCTx0ZCB3aWR0
-aD0iNzIiIHg6c3RyPSJ4OnN0ciI+SUZNPC90ZD4KCQkJPHRkIHg6bnVtPSI4MC43MTQyODU3MTQy
-ODU3Ij4kODAuNzE8L3RkPgoJCTwvdHI+CgkJPHRyIGhlaWdodD0iMjYiPgoJCQk8dGQgaGVpZ2h0
-PSIyNiIgd2lkdGg9IjEzMCIgeDpzdHI9Ing6c3RyIj5POFMyMDA8L3RkPgoJCQk8dGQgd2lkdGg9
-IjcyIiB4OnN0cj0ieDpzdHIiPklGTTwvdGQ+CgkJCTx0ZCB4Om51bT0iNjQuNzUwNzkzNjUwNzkz
-NiI+JDY0Ljc1PC90ZD4KCQk8L3RyPgoJCTx0ciBoZWlnaHQ9IjI2Ij4KCQkJPHRkIGhlaWdodD0i
-MjYiIHdpZHRoPSIxMzAiIHg6c3RyPSJ4OnN0ciI+TzhQMjAwPC90ZD4KCQkJPHRkIHdpZHRoPSI3
-MiIgeDpzdHI9Ing6c3RyIj5JRk08L3RkPgoJCQk8dGQgeDpudW09IjkxLjY1NTU1NTU1NTU1NTYi
-PiQ5MS42NjwvdGQ+CgkJPC90cj4KCQk8dHIgaGVpZ2h0PSIyNiI+CgkJCTx0ZCBoZWlnaHQ9IjI2
-IiB3aWR0aD0iMTMwIiB4OnN0cj0ieDpzdHIiPk84SDIxNDwvdGQ+CgkJCTx0ZCB3aWR0aD0iNzIi
-IHg6c3RyPSJ4OnN0ciI+SUZNPC90ZD4KCQkJPHRkIHg6bnVtPSIxMDYuMzYzNDkyMDYzNDkyIj4k
-MTA2LjM2PC90ZD4KCQk8L3RyPgoJCTx0ciBoZWlnaHQ9IjI2Ij4KCQkJPHRkIGhlaWdodD0iMjYi
-IHdpZHRoPSIxMzAiIHg6c3RyPSJ4OnN0ciI+TzhFMjAwPC90ZD4KCQkJPHRkIHdpZHRoPSI3MiIg
-eDpzdHI9Ing6c3RyIj5JRk08L3RkPgoJCQk8dGQgeDpudW09Ijc0LjQzNjUwNzkzNjUwNzkiPiQ3
-NC40NDwvdGQ+CgkJPC90cj4KCQk8dHIgaGVpZ2h0PSIyNiI+CgkJCTx0ZCBoZWlnaHQ9IjI2IiB3
-aWR0aD0iMTMwIiB4OnN0cj0ieDpzdHIiPklMNTAwNDwvdGQ+CgkJCTx0ZCB3aWR0aD0iNzIiIHg6
-c3RyPSJ4OnN0ciI+SUZNPC90ZD4KCQkJPHRkIHg6bnVtPSI3My43MTkwNDc2MTkwNDc2Ij4kNzMu
-NzI8L3RkPgoJCTwvdHI+CgkJPHRyIGhlaWdodD0iMjYiPgoJCQk8dGQgaGVpZ2h0PSIyNiIgd2lk
-dGg9IjEzMCIgeDpzdHI9Ing6c3RyIj5PN1MyMDA8L3RkPgoJCQk8dGQgd2lkdGg9IjcyIiB4OnN0
-cj0ieDpzdHIiPklGTTwvdGQ+CgkJCTx0ZCB4Om51bT0iNjcuNjIwNjM0OTIwNjM0OSI+JDY3LjYy
-PC90ZD4KCQk8L3RyPgoJPC90Ym9keT4KPC90YWJsZT4KPGJyIC8+CjxiciAvPgo8c3Ryb25nPldl
-bGNvbWUgdG8geW91ciBSRlEgd2l0aCBQYXJ0IE51bWJlcnMgYXQgYW55IHRpbWUgfjwvc3Ryb25n
-PjxiciAvPgo8YnIgLz4KPGVtPlRoYW5rcyBhbmQgYmVzdCByZWdhcmRzLjwvZW0+PGJyIC8+Cjxl
-bT48c3Ryb25nPkFsaXNhIEx1bzwvc3Ryb25nPjwvZW0+PGJyIC8+CjxlbT5TYWxlcyBUZWFtcyBN
-YW5hZ2VyPC9lbT48YnIgLz4KPGJyIC8+CjxlbT4qQ29tcGFueSBOYW1lOiBLYWxpcyBFbGVjdHJv
-bmljcyBDby4sIEx0ZC48L2VtPjxiciAvPgo8ZW0+KlNreXBlIElEOiZuYnNwOzwvZW0+YWxpc2FA
-a2FsaXNlbGVjdHJvbmljcy5jb208YnIgLz4KPGVtPipUZWw6ICs4NiAwNzU1IDI4MjYzMjk3PC9l
-bT48YnIgLz4KPGVtPipGYXg6ICs4NiAwNzU1IDI4MjYzMjk3PGJyIC8+CipXZWJpc3RlOiBodHRw
-czovL3d3dy5rYWxpc2VsZWN0cm9uaWNzLmNvbTxiciAvPgoqQWRkcmVzczogMzJDLCBBbkxpYW5n
-Um9hZCBIZW5nR2FuZyBMb25nIEdhbmcgRGlzdCwgU2hlblpoZW4gLCBDaGluYSwgNTE4MTEyPC9l
-bT4KCjxwIHN0eWxlPSJ0ZXh0LWFsaWduOmNlbnRlciI+SWYgdGhlIG1lc3NhZ2UgY29udGVudCBk
-b2VzIG5vdCBkaXNwbGF5IHByb3Blcmx5LCZuYnNwOyZuYnNwOzxhIGhyZWY9Imh0dHBzOi8vY291
-bnQua2FsaXNlbGVjdHJvbmljcy5jb20vbmV3X3RyYWNrL3Q0L05UQXpPVFV3T1h4OE1qQXlOREF6
-TURReE5USXlORFV0TVRRMU5UTXROamg4ZkdsdWRHVnNMV2QyZEMxa1pYWkFiR2x6ZEhNdVpuSmxa
-V1JsYzJ0MGIzQXViM0puZkh4b2RIUndjem92TDJOdmRXNTBMbXRoYVhscGMzUmxZMmh1YjJ4dloz
-a3VZMjl0TDNBdlAzSTlhVzUwWld3dFozWjBMV1JsZGtCc2FYTjBjeTVtY21WbFpHVnphM1J2Y0M1
-dmNtY21ZVzF3TzNNOU16WTNOalU1TVNaaGJYQTdkRDB4TURJeU5EQTVKbUZ0Y0R0c1BURTBOVFV6
-WHpJM01qRTFOekFtWVcxd08yWTlhVzUwWld3dFozWjBMV1JsZGc9PSIgdGFyZ2V0PSJfYmxhbmsi
-PmNsaWNrIGhlcmU8L2E+Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7PGEgaHJl
-Zj0iaHR0cHM6Ly9jb3VudC5rYWxpc2VsZWN0cm9uaWNzLmNvbS9uZXdfdHJhY2svdDQvTlRBek9U
-VXdPWHg4TWpBeU5EQXpNRFF4TlRJeU5EVXRNVFExTlRNdE5qaDhmR2x1ZEdWc0xXZDJkQzFrWlha
-QWJHbHpkSE11Wm5KbFpXUmxjMnQwYjNBdWIzSm5mSHhvZEhSd2N6b3ZMMk52ZFc1MExtdGhhWGxw
-YzNSbFkyaHViMnh2WjNrdVkyOXRMM1JsYlhCc1lYUmxMMkZxWVhoZmRXNXpkV0p6WTNKcFltVmZi
-M0pmWTI5dGNHeGhhVzUwY3k4X2JXRnBiR2x6ZEQweE5EVTFNMTh5TnpJeE5UY3dKbUZ0Y0R0eVpX
-TnBjR1Z1ZEhNOWFXNTBaV3d0WjNaMExXUmxka0JzYVhOMGN5NW1jbVZsWkdWemEzUnZjQzV2Y21j
-bVlXMXdPMjF2WkdVOU1BPT0iIHRhcmdldD0iX2JsYW5rIj51bnN1YnNjcmliZTwvYT4mbmJzcDsm
-bmJzcDs8YSBocmVmPSJodHRwczovL2NvdW50LmthbGlzZWxlY3Ryb25pY3MuY29tL25ld190cmFj
-ay90NC9OVEF6T1RVd09YeDhNakF5TkRBek1EUXhOVEl5TkRVdE1UUTFOVE10TmpoOGZHbHVkR1Zz
-TFdkMmRDMWtaWFpBYkdsemRITXVabkpsWldSbGMydDBiM0F1YjNKbmZIeG9kSFJ3Y3pvdkwyTnZk
-VzUwTG10aGFYbHBjM1JsWTJodWIyeHZaM2t1WTI5dEwzUmxiWEJzWVhSbEwyRnFZWGhmZFc1emRX
-SnpZM0pwWW1WZmIzSmZZMjl0Y0d4aGFXNTBjeThfYldGcGJHbHpkRDB4TkRVMU0xOHlOekl4TlRj
-d0ptRnRjRHR5WldOcGNHVnVkSE05YVc1MFpXd3RaM1owTFdSbGRrQnNhWE4wY3k1bWNtVmxaR1Z6
-YTNSdmNDNXZjbWNtWVcxd08yMXZaR1U5TWlaaGJYQTdkR1Z0Y0d4aGRHVmZhV1E5TVRBeU1qUXdP
-U1poYlhBN2RYTmxjbDlwWkQweE5EVTFNeVpoYlhBN2MyVnVaRjlwWkQwek5qYzJOVGt4Sm1GdGNE
-dHpkV0pxWldOMFBWSmxPaUJKUmswZ0lFVTRNRE0yTVE9PSIgdGFyZ2V0PSJfYmxhbmsiPmNvbXBs
-YWludDwvYT48L3A+PGltZyBzcmM9Imh0dHBzOi8vY291bnQua2FsaXNlbGVjdHJvbmljcy5jb20v
-bmV3X3RyYWNrL3Q0L05UQXpPVFV3T1h4OE1qQXlOREF6TURReE5USXlORFV0TVRRMU5UTXROamg4
-ZkdsdWRHVnNMV2QyZEMxa1pYWkFiR2x6ZEhNdVpuSmxaV1JsYzJ0MGIzQXViM0puLmdpZiIgYm9y
-ZGVyPSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBzdHlsZT0iZGlzcGxheTpub25lIiAvPjwvaHRt
-bD4=
 
---===============5404746817164541697==--
+Pozdrawiam
+Norbert Karecki
