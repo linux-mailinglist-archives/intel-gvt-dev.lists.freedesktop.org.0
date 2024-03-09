@@ -2,60 +2,59 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 081BB877773
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 10 Mar 2024 16:19:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5546C877279
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Mar 2024 18:37:53 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7772210E05C;
-	Sun, 10 Mar 2024 15:19:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 2BE57112258;
+	Sat,  9 Mar 2024 17:37:52 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=hikari-net.co.jp header.i=@hikari-net.co.jp header.b="gAIr98U8";
+	dkim=pass (1024-bit key; unprotected) header.d=hikari-net.co.jp header.i=@hikari-net.co.jp header.b="ZPyq8fKh";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mwp-bld-mts-006c1.ocn.ad.jp (mwp-bld-mts-006c1.ocn.ad.jp
- [210.154.211.4])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 35AB710E05C
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 10 Mar 2024 15:19:11 +0000 (UTC)
-Received: from cmn-spm-mts-002c1.ocn.ad.jp (cmn-spm-mts-002c1.ocn.ad.jp
- [153.153.67.133])
- by mwp-bld-mts-006c1.ocn.ad.jp (Postfix) with ESMTP id A013529A071
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  9 Mar 2024 22:02:15 +0900 (JST)
-Received: from oa-arf-ucb052.ocn.ad.jp ([153.149.142.198])
- by cmn-spm-mts-002c1.ocn.ad.jp with ESMTP
- id iwL9rcffnCdj6iwL9rI3fP; Sat, 09 Mar 2024 22:02:15 +0900
+X-Greylist: delayed 16471 seconds by postgrey-1.36 at gabe;
+ Sat, 09 Mar 2024 17:37:51 UTC
+Received: from mwp-bld-mts-004c1.ocn.ad.jp (mwp-bld-mts-004c1.ocn.ad.jp
+ [210.154.211.2])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 36CEB112258;
+ Sat,  9 Mar 2024 17:37:51 +0000 (UTC)
+Received: from cmn-spm-mts-001c1.ocn.ad.jp (cmn-spm-mts-001c1.ocn.ad.jp
+ [153.153.67.130])
+ by mwp-bld-mts-004c1.ocn.ad.jp (Postfix) with ESMTP id 3124C2F5E4E;
+ Sat,  9 Mar 2024 22:03:19 +0900 (JST)
+Received: from oa-arf-ucb051.ocn.ad.jp ([153.149.142.197])
+ by cmn-spm-mts-001c1.ocn.ad.jp with ESMTP
+ id iwMBrsmv2DXd9iwMBr7YV9; Sat, 09 Mar 2024 22:03:19 +0900
 X-BIZ-RELAY: yes
 Received: from oa-archive05.ocn.ad.jp (localhost [127.0.0.1])
- by oa-arf-ucb052.ocn.ad.jp (Postfix) with ESMTP id 2A03C16202B2
- for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  9 Mar 2024 22:02:15 +0900 (JST)
-Received: from mgw-vc-mts-001c1.ocn.ad.jp ([153.138.213.203]) by m-FILTER with
- ESMTP; Sat, 9 Mar 2024 22:02:15 +0900
-Received: from mwp-sdgw-mts-007c1.ocn.ad.jp ([122.28.88.74])
- by mgw-vc-mts-001c1.ocn.ad.jp with ESMTP
- id iwL0rwQQOH4FziwL0rRTuH; Sat, 09 Mar 2024 22:02:06 +0900
+ by oa-arf-ucb051.ocn.ad.jp (Postfix) with ESMTP id EC6D83E02AF;
+ Sat,  9 Mar 2024 22:03:18 +0900 (JST)
+Received: from mgw-vc-mts-002c1.ocn.ad.jp ([153.138.213.206]) by m-FILTER with
+ ESMTP; Sat, 9 Mar 2024 22:03:18 +0900
+Received: from mwp-sdgw-mts-008c1.ocn.ad.jp ([122.28.88.75])
+ by mgw-vc-mts-002c1.ocn.ad.jp with ESMTP
+ id iwM4rmpv5nYb9iwM4raxIj; Sat, 09 Mar 2024 22:03:12 +0900
 Received: from c15pes1g.mwprem.net (c15pes1g.mwprem.net [122.17.164.198])
- by mwp-sdgw-mts-007c1.ocn.ad.jp (Postfix) with SMTP id C831D8000440;
- Sat,  9 Mar 2024 22:02:05 +0900 (JST)
+ by mwp-sdgw-mts-008c1.ocn.ad.jp (Postfix) with SMTP id F06C88000440;
+ Sat,  9 Mar 2024 22:03:11 +0900 (JST)
 Authentication-Results: c15pes1g.mwprem.net;
  arc=none smtp.client-ip=105.163.1.13
-ARC-Seal: i=1; a=rsa-sha256; d=mwprem.net; s=default; t=1709989323; cv=none;
- b=d5YPmKA628MkAf2343FRIlF14bpd6xcvP7zFXHSs5aqT+rGDUxTNFoImmNGbkXkyEIicpB6VAgQdgQy9+k+YgJmpsYT1ERU/H2+XcKVkIrps+cavZKWqEZ+RjEI5e+80vCoo1hROBzjVOpzxlQgtKbH8f6E/r32DrRFhuT+lNZI=
+ARC-Seal: i=1; a=rsa-sha256; d=mwprem.net; s=default; t=1709989391; cv=none;
+ b=Izxy8n3QQGs/0ZVdfQP1oirU1aUdH4/HwWx/GXbdzQLZK3smXoYEQXDqcb2eqj2uBEpQzsQzS1obFNnhNsnW94hFo9s4FgbFCU5cdV/CEDQZrGDvTQaKXsOISms7Yfvmvx1V6y4Opuhp/+83z6tuSRSG9SVVS7OT4DCAw/8LvOM=
 ARC-Message-Signature: i=1; a=rsa-sha256; d=mwprem.net; s=default;
- t=1709989323; c=relaxed/relaxed;
+ t=1709989391; c=relaxed/relaxed;
  bh=F/dF+vnQhssMaNRNkzkSQ4+a1B08I6ehSpLZkwqqR4I=;
  h=DKIM-Signature:MIME-Version:Subject:To:From:Date:Message-Id;
- b=GzEprQkB+huqlyrH+uZZOD567+Zz8D5MDQjHc5QuLI+83kiD9C5KXECwX66x0hyOdyuCucmPwaIbesKhQF++hSRg9o313zoyITPq83ImMIZFG54fNqKltXQiZNYoZgMk/0vDRxfy6jr+MzUpJkNyczbe/leoVqzb7xORkFDam0Q=
+ b=oOgdTGepEvYyk1TjG95JyVrhxBZluePNFXICFPo9QwYkP8ZLCw14X/IMZlbT6z6vN4GLEAqsI5QaeLGwmPdoRpZnPHA1M/1YLDpueOv0IUTfDJvW1gZIidf+sA3oADfU+3rl/PgbgN4B+7QIv8CGFpNJQjX/RsdsWUKP3O6USVM=
 ARC-Authentication-Results: i=1; c15pes1g.mwprem.net;
  arc=none smtp.client-ip=105.163.1.13
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hikari-net.co.jp;
- s=bizmw; t=1709989323;
+ s=bizmw; t=1709989391;
  bh=F/dF+vnQhssMaNRNkzkSQ4+a1B08I6ehSpLZkwqqR4I=;
  h=Subject:To:From:Date:Reply-To:From;
- b=gAIr98U8Ng+FGUUwNouyeWAKV6qvxoGej0aJ5b8wlcT4IFencvsYXqEqxbJHwynEa
- yoaiL95SFQastg9JR3xaL3/0VXTlddhLxSV1m6SfCqjFnAWDSJWM+SEMouFnCDbiGF
- 8Io2NZurohBLAuc6a6hY2XC0GNlam/3WoOfCvEog=
+ b=ZPyq8fKh/VYDnuYtmMvts3XsfqxPMuqTyaqF0eyX+BES4YHKy5y63SMjlRePYvXpU
+ 9cdAtuIRvCYBHlD6QN+Ne3zi22l0wObKfu6/GZVgaVxU4QEymuQxMSn+orDldsxnVH
+ ANNEL2V3I1U++7ZlJb16MAXVgorNfCV53nl5n70A=
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -64,8 +63,8 @@ Subject: =?utf-8?q?RE=3AEtes-vous_toujours_int=C3=A9ress=C3=A9_par_cette_subvent
  =?utf-8?b?biA/?=
 To: Recipients <skamei@hikari-net.co.jp>
 From: Mr Tom Huddleston< skamei@hikari-net.co.jp>
-Date: Sat, 09 Mar 2024 05:01:48 -0800
-Message-Id: <20240309130156.ADFBAC15FE89@c15pes1g.mwprem.net>
+Date: Sat, 09 Mar 2024 05:02:53 -0800
+Message-Id: <20240309130305.03097C15FE89@c15pes1g.mwprem.net>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
