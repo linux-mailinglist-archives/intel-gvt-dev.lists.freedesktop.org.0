@@ -2,69 +2,41 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5546C877279
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  9 Mar 2024 18:37:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CABC0879934
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Mar 2024 17:43:29 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 2BE57112258;
-	Sat,  9 Mar 2024 17:37:52 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id A6C1E10F4CC;
+	Tue, 12 Mar 2024 16:43:28 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=hikari-net.co.jp header.i=@hikari-net.co.jp header.b="ZPyq8fKh";
+	dkim=pass (1024-bit key; unprotected) header.d=hqb007.com header.i=@hqb007.com header.b="iUj7gtQF";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 16471 seconds by postgrey-1.36 at gabe;
- Sat, 09 Mar 2024 17:37:51 UTC
-Received: from mwp-bld-mts-004c1.ocn.ad.jp (mwp-bld-mts-004c1.ocn.ad.jp
- [210.154.211.2])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 36CEB112258;
- Sat,  9 Mar 2024 17:37:51 +0000 (UTC)
-Received: from cmn-spm-mts-001c1.ocn.ad.jp (cmn-spm-mts-001c1.ocn.ad.jp
- [153.153.67.130])
- by mwp-bld-mts-004c1.ocn.ad.jp (Postfix) with ESMTP id 3124C2F5E4E;
- Sat,  9 Mar 2024 22:03:19 +0900 (JST)
-Received: from oa-arf-ucb051.ocn.ad.jp ([153.149.142.197])
- by cmn-spm-mts-001c1.ocn.ad.jp with ESMTP
- id iwMBrsmv2DXd9iwMBr7YV9; Sat, 09 Mar 2024 22:03:19 +0900
-X-BIZ-RELAY: yes
-Received: from oa-archive05.ocn.ad.jp (localhost [127.0.0.1])
- by oa-arf-ucb051.ocn.ad.jp (Postfix) with ESMTP id EC6D83E02AF;
- Sat,  9 Mar 2024 22:03:18 +0900 (JST)
-Received: from mgw-vc-mts-002c1.ocn.ad.jp ([153.138.213.206]) by m-FILTER with
- ESMTP; Sat, 9 Mar 2024 22:03:18 +0900
-Received: from mwp-sdgw-mts-008c1.ocn.ad.jp ([122.28.88.75])
- by mgw-vc-mts-002c1.ocn.ad.jp with ESMTP
- id iwM4rmpv5nYb9iwM4raxIj; Sat, 09 Mar 2024 22:03:12 +0900
-Received: from c15pes1g.mwprem.net (c15pes1g.mwprem.net [122.17.164.198])
- by mwp-sdgw-mts-008c1.ocn.ad.jp (Postfix) with SMTP id F06C88000440;
- Sat,  9 Mar 2024 22:03:11 +0900 (JST)
-Authentication-Results: c15pes1g.mwprem.net;
- arc=none smtp.client-ip=105.163.1.13
-ARC-Seal: i=1; a=rsa-sha256; d=mwprem.net; s=default; t=1709989391; cv=none;
- b=Izxy8n3QQGs/0ZVdfQP1oirU1aUdH4/HwWx/GXbdzQLZK3smXoYEQXDqcb2eqj2uBEpQzsQzS1obFNnhNsnW94hFo9s4FgbFCU5cdV/CEDQZrGDvTQaKXsOISms7Yfvmvx1V6y4Opuhp/+83z6tuSRSG9SVVS7OT4DCAw/8LvOM=
-ARC-Message-Signature: i=1; a=rsa-sha256; d=mwprem.net; s=default;
- t=1709989391; c=relaxed/relaxed;
- bh=F/dF+vnQhssMaNRNkzkSQ4+a1B08I6ehSpLZkwqqR4I=;
- h=DKIM-Signature:MIME-Version:Subject:To:From:Date:Message-Id;
- b=oOgdTGepEvYyk1TjG95JyVrhxBZluePNFXICFPo9QwYkP8ZLCw14X/IMZlbT6z6vN4GLEAqsI5QaeLGwmPdoRpZnPHA1M/1YLDpueOv0IUTfDJvW1gZIidf+sA3oADfU+3rl/PgbgN4B+7QIv8CGFpNJQjX/RsdsWUKP3O6USVM=
-ARC-Authentication-Results: i=1; c15pes1g.mwprem.net;
- arc=none smtp.client-ip=105.163.1.13
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hikari-net.co.jp;
- s=bizmw; t=1709989391;
- bh=F/dF+vnQhssMaNRNkzkSQ4+a1B08I6ehSpLZkwqqR4I=;
- h=Subject:To:From:Date:Reply-To:From;
- b=ZPyq8fKh/VYDnuYtmMvts3XsfqxPMuqTyaqF0eyX+BES4YHKy5y63SMjlRePYvXpU
- 9cdAtuIRvCYBHlD6QN+Ne3zi22l0wObKfu6/GZVgaVxU4QEymuQxMSn+orDldsxnVH
- ANNEL2V3I1U++7ZlJb16MAXVgorNfCV53nl5n70A=
-Content-Type: text/plain; charset="utf-8"
+X-Greylist: delayed 3614 seconds by postgrey-1.36 at gabe;
+ Tue, 12 Mar 2024 16:43:26 UTC
+Received: from yj-jingrun.com (yj-jingrun.com [185.218.100.84])
+ by gabe.freedesktop.org (Postfix) with ESMTP id D93E510F49A
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 12 Mar 2024 16:43:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=hqb007.com;
+ h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ bh=IXvgb2xyHiEZ/8x3IVbqull8UNc=;
+ b=iUj7gtQFdoeUimByC9DkeTCps8xhypTBjkIq7Dkgos4bUiD6ykQfuAOA6XTnGJSyY1z7cAN2VYeo
+ GonEIIlVvA5GBNxbt8h+eVkW9C2/jqK9hK7xuiHNAfkqaJ4guBFh3oVIuyrCbNxjjWS2rW4CsOw/
+ sVB62bNbDslC0apPSDM=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=hqb007.com;
+ b=Oq6oeQLHBQ4Nqe9m51AhjqlMEZKuxZGDZLY71m6do2ODOPJyukAq1dZr9iwmDBllQO1lazFzrxOm
+ WEKdH23Ri35KwARWTAGtiWQ5h6lRoKaLtB3ASpOvOcU0vHJHUffdXzdXxJXLaEESIQVsluxKPv23
+ 0Uo/Tt4sQIavOsigtJQ=;
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: following up on my last email from last week - about our electric
+ bicycle
+Message-ID: <3be2003d5ba1106a11b80e1f36ad6155@hqb007.com>
+Date: Tue, 12 Mar 2024 15:28:25 +0100
+From: "Gary P" <garyppzl@hqb007.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Description: Mail message body
-Subject: =?utf-8?q?RE=3AEtes-vous_toujours_int=C3=A9ress=C3=A9_par_cette_subventio?=
- =?utf-8?b?biA/?=
-To: Recipients <skamei@hikari-net.co.jp>
-From: Mr Tom Huddleston< skamei@hikari-net.co.jp>
-Date: Sat, 09 Mar 2024 05:02:53 -0800
-Message-Id: <20240309130305.03097C15FE89@c15pes1g.mwprem.net>
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,29 +49,79 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: tomhuddlestonjr4@gmail.com
+Reply-To: garyp@hqb007.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Cher ami,
-
-
-J'esp=C3=A8re que tu vas bien! Je vous =C3=A9cris pour conna=C3=AEtre le do=
-n de 800 000,00 =E2=82=AC qui vous a =C3=A9t=C3=A9 accord=C3=A9. S=E2=80=99=
-il y a des changements ou si vous avez envisag=C3=A9 une r=C3=A9vision du f=
-inancement, veuillez m=E2=80=99en informer imm=C3=A9diatement. par email di=
-rectement
-
- (tomhuddlestonjr1@gmail.com)
-
-Et si cette subvention n=E2=80=99est plus n=C3=A9cessaire, n=E2=80=99h=C3=
-=A9sitez pas =C3=A0 nous le faire savoir afin qu=E2=80=99elle puisse =C3=AA=
-tre transmise =C3=A0 quelqu=E2=80=99un d=E2=80=99autre.
-
-Si vous avez besoin d'aide ou d'informations suppl=C3=A9mentaires, n'h=C3=
-=A9sitez pas =C3=A0 me contacter.
-
-Cordialement
-
-Tom Huddleston Jr.
+<html>
+<head>
+</head>
+<body>
+Hi,<br /> <br /> We are glad to present our cutting-edge foldable electric
+bike, specifically designed for adults. <br />This bike comes equipped with
+4.0 fat tires, which enhance the comfort and stability of your ride,
+propelling your cycling experience to unprecedented levels.<br /> <br />
+Key features and advantages:<br /> 4.0 fat tires for all-terrain
+versatility: our electric bike boasts 20 inch 4.0 fat tires that provide
+improved grip and traction on a variety of surfaces. <br />whether it's
+off-road trails or urban pavements, these tires ensure a smooth and stable
+ride by absorbing shocks and bumps with ease. <br />the increased contact
+area with the ground also means better handling and a safer ride,
+especially under challenging weather conditions.<br /> <br /> 500w motor
+for powerful performance: the bike is powered by a high-speed brushless
+500w motor, <br />ideal for conquering hills and reaching up to 30mph with
+an impressive 85n.m torque. this motor ensures a perfect blend of speed and
+<br />efficiency for your daily commutes or leisurely rides.<br /> <br />
+Long-range 48v 13ah lithium battery: with the capability to travel up to
+50km on pedal-assist mode, our e-bike is perfect for long-distance rides.
+<br />the battery is equipped with a BMS system for enhanced safety and
+features a quick 4-5 hour charge time, so you're always ready to go.<br />
+<br /> CE certification for peace of mind: safety and compliance are our
+top priorities. our foldable e-bike is CE certified, adhering to the strict
+European <br />standards for safety and performance, ensuring you receive a
+product that is both reliable and high-quality.<br /><br /><img
+src="https://i0.wp.com/www.leeco-riders.com/wp-content/uploads/2023/06/img_0610.jpeg?fit=1000%252C1000&amp;ssl=1"
+width="1000" height="1000" /><br /> <br /><br /> <br /> If you are
+interested in purchasing our ebikes, please provide us with your detailed
+address. This will allow us to calculate the cost accurately <br />and
+arrange the delivery of your purchase. Your prompt provision of this
+information will ensure a smooth transaction and timely dispatch of your
+ebikes<br /> <br /> Superior hydraulic disc brakes: our bike is equipped
+with hydraulic disc brakes that offer exceptional stopping power, reducing
+braking distance by 50 percent <br />compared to standard mechanical
+brakes. this means you can ride with confidence, knowing you have the best
+in class braking technology at your fingertips.<br /> <br /> Designed for
+comfort and durability: the carbon steel front fork with rebound and lock
+functions, combined with a 7-speed gear shift system, <br />provides a
+customizable and comfortable riding experience. the 6061 aluminum frame and
+integrated alloy wheel are designed to withstand <br />heavier weights and
+absorb shocks, ensuring longevity and a consistently smooth ride.<br /> <br
+/> We are confident that our new foldable electric bike with 4.0 fat tires
+will be a compelling addition to your product lineup, attracting customers
+<br />seeking a premium, versatile, and eco-friendly mode of
+transportation.<br /> <br /> If you are interested in purchasing our
+ebikes, please provide us with your detailed address. This will allow us to
+calculate the cost accurately and <br />arrange the delivery of your
+purchase. Your prompt provision of this information will ensure a smooth
+transaction and timely dispatch of your ebikes.<br /> <br /> Thank you for
+choosing to do business with us. we are keen to collaborate with you and
+bring this exceptional bike to your customers.<br /> <br /> Thanks,<br />
+Gary Parker<br /> Manufacture of electric bicycle<br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
+/><br /><br /><br /><br /><br />Welcome to our factory.
+</body>
+</html>
 
