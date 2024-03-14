@@ -2,41 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id CABC0879934
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 12 Mar 2024 17:43:29 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A68A687BA7B
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 14 Mar 2024 10:33:35 +0100 (CET)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id A6C1E10F4CC;
-	Tue, 12 Mar 2024 16:43:28 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 860FB10F9EC;
+	Thu, 14 Mar 2024 09:33:34 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=hqb007.com header.i=@hqb007.com header.b="iUj7gtQF";
+	dkim=pass (1024-bit key; unprotected) header.d=jabarprov.go.id header.i=@jabarprov.go.id header.b="srgs5UWT";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 3614 seconds by postgrey-1.36 at gabe;
- Tue, 12 Mar 2024 16:43:26 UTC
-Received: from yj-jingrun.com (yj-jingrun.com [185.218.100.84])
- by gabe.freedesktop.org (Postfix) with ESMTP id D93E510F49A
- for <intel-gvt-dev@lists.freedesktop.org>;
- Tue, 12 Mar 2024 16:43:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mail; d=hqb007.com;
- h=To:Subject:Message-ID:Date:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding;
- bh=IXvgb2xyHiEZ/8x3IVbqull8UNc=;
- b=iUj7gtQFdoeUimByC9DkeTCps8xhypTBjkIq7Dkgos4bUiD6ykQfuAOA6XTnGJSyY1z7cAN2VYeo
- GonEIIlVvA5GBNxbt8h+eVkW9C2/jqK9hK7xuiHNAfkqaJ4guBFh3oVIuyrCbNxjjWS2rW4CsOw/
- sVB62bNbDslC0apPSDM=
-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=mail; d=hqb007.com;
- b=Oq6oeQLHBQ4Nqe9m51AhjqlMEZKuxZGDZLY71m6do2ODOPJyukAq1dZr9iwmDBllQO1lazFzrxOm
- WEKdH23Ri35KwARWTAGtiWQ5h6lRoKaLtB3ASpOvOcU0vHJHUffdXzdXxJXLaEESIQVsluxKPv23
- 0Uo/Tt4sQIavOsigtJQ=;
-To: intel-gvt-dev@lists.freedesktop.org
-Subject: following up on my last email from last week - about our electric
- bicycle
-Message-ID: <3be2003d5ba1106a11b80e1f36ad6155@hqb007.com>
-Date: Tue, 12 Mar 2024 15:28:25 +0100
-From: "Gary P" <garyppzl@hqb007.com>
+X-Greylist: delayed 568 seconds by postgrey-1.36 at gabe;
+ Thu, 14 Mar 2024 09:33:33 UTC
+Received: from smtp.jabarprov.go.id (unknown [103.122.5.168])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 0541410F9EC;
+ Thu, 14 Mar 2024 09:33:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp.jabarprov.go.id (Postfix) with ESMTP id 54A76101727B0;
+ Thu, 14 Mar 2024 16:18:37 +0700 (WIB)
+Received: from smtp.jabarprov.go.id ([127.0.0.1])
+ by localhost (smtp.jabarprov.go.id [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id NOeV2ZdeafzQ; Thu, 14 Mar 2024 16:18:36 +0700 (WIB)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp.jabarprov.go.id (Postfix) with ESMTP id E549210172C39;
+ Thu, 14 Mar 2024 16:18:35 +0700 (WIB)
+DKIM-Filter: OpenDKIM Filter v2.10.3 smtp.jabarprov.go.id E549210172C39
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jabarprov.go.id;
+ s=47EFEBD6-6370-11EA-9367-E0C413ED8DF0; t=1710407916;
+ bh=Xw0EwBUq+xquySjfzdJf9ZhpV4uNCYwqlS5Kg+0P0dw=;
+ h=Date:From:Message-ID:MIME-Version;
+ b=srgs5UWT/ILdXLWlqRuAHJe9K4XlTesqBWcXsQxI0GWwJZ6i0jk5JtZh2mJktURSv
+ dUDnX95n376FsRvgQagdguSvk4LCL/F5enF7yYfkZWMYZXJ3Pf/YONFwROB60KPzOg
+ dbs6fAY1IlsB7BuUniA4PWyVLBY0+teNJ1wSXAOI=
+X-Virus-Scanned: amavisd-new at 
+Received: from smtp.jabarprov.go.id ([127.0.0.1])
+ by localhost (smtp.jabarprov.go.id [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id iM8PukqkXJ7f; Thu, 14 Mar 2024 16:18:35 +0700 (WIB)
+Received: from mailbox8.jabarprov.go.id (unknown [103.122.5.134])
+ by smtp.jabarprov.go.id (Postfix) with ESMTP id 1FD4B10169825;
+ Thu, 14 Mar 2024 16:17:58 +0700 (WIB)
+Date: Thu, 14 Mar 2024 16:20:44 +0700 (WIB)
+From: SHINTA PUSPARANI <198001192022212007@jabarprov.go.id>
+Message-ID: <1399587943.978907.1710408044300.JavaMail.zimbra@jabarprov.go.id>
+Subject: LOAN
 MIME-Version: 1.0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/alternative; 
+ boundary="=_778da86c-86a7-4e60-8fa3-433bad527da2"
+X-Originating-IP: [104.243.215.132]
+X-Mailer: Zimbra 8.8.15_GA_4581 (ZimbraWebClient - GC122 (Win)/8.8.15_GA_4581)
+Thread-Index: mee6OXkk8ysiZOT2oC+X31c8nn3m+Q==
+Thread-Topic: LOAN
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,79 +64,23 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: garyp@hqb007.com
+Reply-To: "excelmortgageloan.us@protonmail.ch"
+ <excelmortgageloan.us@protonmail.ch>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-<html>
-<head>
-</head>
-<body>
-Hi,<br /> <br /> We are glad to present our cutting-edge foldable electric
-bike, specifically designed for adults. <br />This bike comes equipped with
-4.0 fat tires, which enhance the comfort and stability of your ride,
-propelling your cycling experience to unprecedented levels.<br /> <br />
-Key features and advantages:<br /> 4.0 fat tires for all-terrain
-versatility: our electric bike boasts 20 inch 4.0 fat tires that provide
-improved grip and traction on a variety of surfaces. <br />whether it's
-off-road trails or urban pavements, these tires ensure a smooth and stable
-ride by absorbing shocks and bumps with ease. <br />the increased contact
-area with the ground also means better handling and a safer ride,
-especially under challenging weather conditions.<br /> <br /> 500w motor
-for powerful performance: the bike is powered by a high-speed brushless
-500w motor, <br />ideal for conquering hills and reaching up to 30mph with
-an impressive 85n.m torque. this motor ensures a perfect blend of speed and
-<br />efficiency for your daily commutes or leisurely rides.<br /> <br />
-Long-range 48v 13ah lithium battery: with the capability to travel up to
-50km on pedal-assist mode, our e-bike is perfect for long-distance rides.
-<br />the battery is equipped with a BMS system for enhanced safety and
-features a quick 4-5 hour charge time, so you're always ready to go.<br />
-<br /> CE certification for peace of mind: safety and compliance are our
-top priorities. our foldable e-bike is CE certified, adhering to the strict
-European <br />standards for safety and performance, ensuring you receive a
-product that is both reliable and high-quality.<br /><br /><img
-src="https://i0.wp.com/www.leeco-riders.com/wp-content/uploads/2023/06/img_0610.jpeg?fit=1000%252C1000&amp;ssl=1"
-width="1000" height="1000" /><br /> <br /><br /> <br /> If you are
-interested in purchasing our ebikes, please provide us with your detailed
-address. This will allow us to calculate the cost accurately <br />and
-arrange the delivery of your purchase. Your prompt provision of this
-information will ensure a smooth transaction and timely dispatch of your
-ebikes<br /> <br /> Superior hydraulic disc brakes: our bike is equipped
-with hydraulic disc brakes that offer exceptional stopping power, reducing
-braking distance by 50 percent <br />compared to standard mechanical
-brakes. this means you can ride with confidence, knowing you have the best
-in class braking technology at your fingertips.<br /> <br /> Designed for
-comfort and durability: the carbon steel front fork with rebound and lock
-functions, combined with a 7-speed gear shift system, <br />provides a
-customizable and comfortable riding experience. the 6061 aluminum frame and
-integrated alloy wheel are designed to withstand <br />heavier weights and
-absorb shocks, ensuring longevity and a consistently smooth ride.<br /> <br
-/> We are confident that our new foldable electric bike with 4.0 fat tires
-will be a compelling addition to your product lineup, attracting customers
-<br />seeking a premium, versatile, and eco-friendly mode of
-transportation.<br /> <br /> If you are interested in purchasing our
-ebikes, please provide us with your detailed address. This will allow us to
-calculate the cost accurately and <br />arrange the delivery of your
-purchase. Your prompt provision of this information will ensure a smooth
-transaction and timely dispatch of your ebikes.<br /> <br /> Thank you for
-choosing to do business with us. we are keen to collaborate with you and
-bring this exceptional bike to your customers.<br /> <br /> Thanks,<br />
-Gary Parker<br /> Manufacture of electric bicycle<br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br
-/><br /><br /><br /><br /><br />Welcome to our factory.
-</body>
-</html>
+--=_778da86c-86a7-4e60-8fa3-433bad527da2
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
+
+
+Good Day 
+E.L.M Loan invite you to partner with us and benefit in our new Loan and Project funding program. Agricultural finance ,or home loans at a fixed interest rate of 2% per annual. We also offer business and corporate loans at 3% rate and loan for business expansion. email contact: 
+
+--=_778da86c-86a7-4e60-8fa3-433bad527da2
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html><body><div style="font-family: arial, helvetica, sans-serif; font-size: 12pt; color: #000000"><div><br></div><div><br></div><div data-marker="__SIG_PRE__">Good Day<br>E.L.M Loan &nbsp;invite you to partner with us and benefit in our new Loan and Project funding program. Agricultural finance ,or home loans at a fixed interest rate of 2% per annual. We also offer business and corporate loans at 3% rate and loan for business expansion. email contact:</div></div></body></html>
+--=_778da86c-86a7-4e60-8fa3-433bad527da2--
