@@ -2,22 +2,67 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1D71892216
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 29 Mar 2024 18:02:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6EA988933B1
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 31 Mar 2024 18:46:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 5A38A10E50E;
-	Fri, 29 Mar 2024 17:02:14 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4FA9710ED64;
+	Sun, 31 Mar 2024 16:46:39 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
 	dkim=fail reason="signature verification failed" (1024-bit key; unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.b="Fq9Foy0j";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from linux.microsoft.com (linux.microsoft.com [13.77.154.182])
- by gabe.freedesktop.org (Postfix) with ESMTP id 1DAE41127D2;
- Fri, 29 Mar 2024 17:02:11 +0000 (UTC)
-Received: from rrs24-12-35.corp.microsoft.com (unknown [131.107.147.137])
- by linux.microsoft.com (Postfix) with ESMTPSA id AE66620E6F3E;
- Fri, 29 Mar 2024 10:02:10 -0700 (PDT)
+X-Greylist: delayed 385 seconds by postgrey-1.36 at gabe;
+ Sun, 31 Mar 2024 16:46:37 UTC
+Received: from a.mx.secunet.com (a.mx.secunet.com [62.96.220.36])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 1582110ED64
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Sun, 31 Mar 2024 16:46:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by a.mx.secunet.com (Postfix) with ESMTP id 612FE208D6;
+ Sun, 31 Mar 2024 18:40:11 +0200 (CEST)
+X-Virus-Scanned: by secunet
+Received: from a.mx.secunet.com ([127.0.0.1])
+ by localhost (a.mx.secunet.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rMNLqmCsccHt; Sun, 31 Mar 2024 18:40:09 +0200 (CEST)
+Received: from mailout2.secunet.com (mailout2.secunet.com [62.96.220.49])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by a.mx.secunet.com (Postfix) with ESMTPS id 8880D2087C;
+ Sun, 31 Mar 2024 18:40:05 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 a.mx.secunet.com 8880D2087C
+Received: from cas-essen-01.secunet.de (unknown [10.53.40.201])
+ by mailout2.secunet.com (Postfix) with ESMTP id 7A245800050;
+ Sun, 31 Mar 2024 18:40:05 +0200 (CEST)
+Received: from mbx-essen-01.secunet.de (10.53.40.197) by
+ cas-essen-01.secunet.de (10.53.40.201) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Sun, 31 Mar 2024 18:40:05 +0200
+Received: from Pickup by mbx-essen-01.secunet.de with Microsoft SMTP Server id
+ 15.1.2507.17; Sun, 31 Mar 2024 16:36:30 +0000
+X-sender: <intel-gfx-bounces@lists.freedesktop.org>
+X-Receiver: <martin.weber@secunet.com> ORCPT=rfc822;martin.weber@secunet.com
+ NOTIFY=NEVER;
+ X-ExtendedProps=BQAVABYAAgAAAAUAFAARAJuYHy0vkvxLoOu7fW2WcxcPADUAAABNaWNyb3NvZnQuRXhjaGFuZ2UuVHJhbnNwb3J0LkRpcmVjdG9yeURhdGEuSXNSZXNvdXJjZQIAAAUAagAJAAEAAAAAAAAABQAWAAIAAAUAQwACAAAFAEYABwADAAAABQBHAAIAAAUAEgAPAF4AAAAvbz1zZWN1bmV0L291PUV4Y2hhbmdlIEFkbWluaXN0cmF0aXZlIEdyb3VwIChGWURJQk9IRjIzU1BETFQpL2NuPVJlY2lwaWVudHMvY249V2ViZXIgTWFydGluOTU1BQALABcAvgAAALMpUnVJ4+pPsL47FHo+lvtDTj1EQjIsQ049RGF0YWJhc2VzLENOPUV4Y2hhbmdlIEFkbWluaXN0cmF0aXZlIEdyb3VwIChGWURJQk9IRjIzU1BETFQpLENOPUFkbWluaXN0cmF0aXZlIEdyb3VwcyxDTj1zZWN1bmV0LENOPU1pY3Jvc29mdCBFeGNoYW5nZSxDTj1TZXJ2aWNlcyxDTj1Db25maWd1cmF0aW9uLERDPXNlY3VuZXQsREM9ZGUFAA4AEQBACf3SYEkDT461FZzDv+B7BQAdAA8ADAAAAG1ieC1lc3Nlbi0wMQUAPAACAAAPADYAAABNaWNyb3NvZnQuRXhjaGFuZ2UuVHJhbnNwb3J0Lk1haWxSZWNpcGllbnQuRGlzcGxheU5hbWUPAA0AAABXZWJlciwgTWFydGluBQAMAAIAAAUAbAACAAAFAFgAFwBGAAAAm5gfLS+S/Eug67t9bZZzF0NOPVdlYmVyIE1hcnRpbixPVT1Vc2VycyxPVT1NaWdyYXRpb24sREM9c2VjdW5ldCxEQz1kZQUAJgACAAEFACIADwAxAAAAQXV0b1Jlc3BvbnNlU3VwcHJlc3M6IDANClRyYW5zbWl0SGlzdG9yeTogRmFsc2UNCg8AL
+ wAAAE1pY3Jvc29mdC5FeGNoYW5nZS5UcmFuc3BvcnQuRXhwYW5zaW9uR3JvdXBUeXBlDwAVAAAATWVtYmVyc0dyb3VwRXhwYW5zaW9uBQAjAAIAAQ==
+X-CreatedBy: MSExchange15
+X-HeloDomain: b.mx.secunet.com
+X-ExtendedProps: BQBjAAoAeHUFfe5Q3AgFAGEACAABAAAABQA3AAIAAA8APAAAAE1pY3Jvc29mdC5FeGNoYW5nZS5UcmFuc3BvcnQuTWFpbFJlY2lwaWVudC5Pcmdhbml6YXRpb25TY29wZREAAAAAAAAAAAAAAAAAAAAAAAUASQACAAEFAAQAFCABAAAAGAAAAG1hcnRpbi53ZWJlckBzZWN1bmV0LmNvbQUABgACAAEFACkAAgABDwAJAAAAQ0lBdWRpdGVkAgABBQACAAcAAQAAAAUAAwAHAAAAAAAFAAUAAgABBQBiAAoA0gAAAO+KAAAFAGQADwADAAAASHVi
+X-Source: SMTP:Default MBX-ESSEN-02
+X-SourceIPAddress: 62.96.220.37
+X-EndOfInjectedXHeaders: 76315
+X-Virus-Scanned: by secunet
+Received-SPF: Pass (sender SPF authorized) identity=mailfrom;
+ client-ip=131.252.210.177; helo=gabe.freedesktop.org;
+ envelope-from=intel-gfx-bounces@lists.freedesktop.org;
+ receiver=martin.weber@secunet.com 
+DKIM-Filter: OpenDKIM Filter v2.11.0 b.mx.secunet.com 3842F20322
+Authentication-Results: b.mx.secunet.com;
+ dkim=fail reason="signature verification failed" (1024-bit key)
+ header.d=linux.microsoft.com header.i=@linux.microsoft.com
+ header.b="Fq9Foy0j"
+X-Original-To: intel-gfx@lists.freedesktop.org
+Delivered-To: intel-gfx@lists.freedesktop.org
 DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com AE66620E6F3E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
  s=default; t=1711731731;
@@ -58,15 +103,19 @@ Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
 Subject: [PATCH v0 03/14] drm/gma500,
  drm/i915: Make I2C terminology more inclusive
 Date: Fri, 29 Mar 2024 17:00:27 +0000
-Message-Id: <20240329170038.3863998-4-eahariha@linux.microsoft.com>
+Message-ID: <20240329170038.3863998-4-eahariha@linux.microsoft.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240329170038.3863998-1-eahariha@linux.microsoft.com>
 References: <20240329170038.3863998-1-eahariha@linux.microsoft.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-BeenThere: intel-gvt-dev@lists.freedesktop.org
+X-Mailman-Approved-At: Sun, 31 Mar 2024 08:50:08 +0000
+X-BeenThere: intel-gfx@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
+Content-Type: text/plain
+X-EXCLAIMER-MD-CONFIG: 2c86f778-e09b-4440-8b15-867914633a10
+X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 List-Id: "Intel GVT \(Graphics Virtualization\) development list"
  <intel-gvt-dev.lists.freedesktop.org>
 List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gvt-dev>, 
@@ -1321,4 +1370,5 @@ index d2bed466540a..88fa6877ec90 100644
  	u8 dvo_config;
 -- 
 2.34.1
+
 
