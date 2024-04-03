@@ -2,71 +2,30 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02361895B91
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  2 Apr 2024 20:19:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3ABB8896CC5
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  3 Apr 2024 12:40:45 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C00DC10FE05;
-	Tue,  2 Apr 2024 18:19:06 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.b="DWioxHIz";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id 19FD31120CC;
+	Wed,  3 Apr 2024 10:40:44 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from linux.microsoft.com (linux.microsoft.com [13.77.154.182])
- by gabe.freedesktop.org (Postfix) with ESMTP id C70C610FF50;
- Tue,  2 Apr 2024 18:19:05 +0000 (UTC)
-Received: from [100.64.232.220] (unknown [20.29.225.195])
- by linux.microsoft.com (Postfix) with ESMTPSA id 44D9220E8BDC;
- Tue,  2 Apr 2024 11:19:04 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 44D9220E8BDC
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1712081945;
- bh=6CxfCTy2hvljG0KtnNfE1+yaCZUecQ3XXshhsgNm9Uw=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=DWioxHIzgS3pFY1uvHRovezlPv1RdDLcO2IT9/uxBMLrPIYLmaifrAV+YozRfQao5
- rn7ZeC4782fWxJ68W1tiLG19p3MAqbIzFdJeAEkZWoLgMwgJMeelbVPX1Afg8R8m6u
- UVRz1yN/74Ux892MYhIq1XY0LntOnyafVlWsWEQ4=
-Message-ID: <75428d6c-c40a-43d8-84e3-f9ed161c37e2@linux.microsoft.com>
-Date: Tue, 2 Apr 2024 11:19:03 -0700
+X-Greylist: delayed 1600 seconds by postgrey-1.36 at gabe;
+ Wed, 03 Apr 2024 10:40:42 UTC
+Received: from vmi1722381.contaboserver.net (vmi1722381.contaboserver.net
+ [89.117.149.19])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4E0FD1120CC
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  3 Apr 2024 10:40:42 +0000 (UTC)
+Received: by vmi1722381.contaboserver.net (Postfix, from userid 0)
+ id 22E9415E1E49; Wed,  3 Apr 2024 05:11:02 -0500 (CDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v0 03/14] drm/gma500,drm/i915: Make I2C terminology more
- inclusive
-To: Jani Nikula <jani.nikula@linux.intel.com>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, Zhenyu Wang
- <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>,
- dri-devel@lists.freedesktop.org, open list <linux-kernel@vger.kernel.org>,
- "open list:INTEL DRM DISPLAY FOR XE AND I915 DRIVERS"
- <intel-gfx@lists.freedesktop.org>,
- "open list:INTEL DRM DISPLAY FOR XE AND I915 DRIVERS"
- <intel-xe@lists.freedesktop.org>,
- "open list:INTEL GVT-g DRIVERS (Intel GPU Virtualization)"
- <intel-gvt-dev@lists.freedesktop.org>
-Cc: Wolfram Sang <wsa+renesas@sang-engineering.com>,
- "open list:RADEON and AMDGPU DRM DRIVERS" <amd-gfx@lists.freedesktop.org>,
- "open list:DRM DRIVER FOR NVIDIA GEFORCE/QUADRO GPUS"
- <nouveau@lists.freedesktop.org>,
- "open list:I2C SUBSYSTEM HOST DRIVERS" <linux-i2c@vger.kernel.org>,
- "open list:BTTV VIDEO4LINUX DRIVER" <linux-media@vger.kernel.org>,
- "open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
-References: <20240329170038.3863998-1-eahariha@linux.microsoft.com>
- <20240329170038.3863998-4-eahariha@linux.microsoft.com>
- <87a5mcfbms.fsf@intel.com>
- <7d5e6ed0-ffe9-46c2-b3b4-a4a47c09532e@linux.microsoft.com>
- <87ttkjesx8.fsf@intel.com>
- <fde7a0da-1981-48db-95e2-96d45655c11c@linux.microsoft.com>
- <87o7aremfz.fsf@intel.com>
-Content-Language: en-CA
-From: Easwar Hariharan <eahariha@linux.microsoft.com>
-In-Reply-To: <87o7aremfz.fsf@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
+Subject: Actualizacion Importante: Verificacion de numero de telefono ! ID:8523
+From: ING <Mail8523live__ing@Mail8523live__ing.es>
+To: intel-gvt-dev@lists.freedesktop.org
+Message-Id: <20240403101102.22E9415E1E49@vmi1722381.contaboserver.net>
+Date: Wed,  3 Apr 2024 05:11:02 -0500 (CDT)
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,70 +41,62 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 4/2/2024 9:52 AM, Jani Nikula wrote:
-> On Tue, 02 Apr 2024, Easwar Hariharan <eahariha@linux.microsoft.com> wrote:
->> On 4/2/2024 7:32 AM, Jani Nikula wrote:
->>> On Tue, 02 Apr 2024, Easwar Hariharan <eahariha@linux.microsoft.com> wrote:
->>>> On 4/2/2024 12:48 AM, Jani Nikula wrote:
->>>>> On Fri, 29 Mar 2024, Easwar Hariharan <eahariha@linux.microsoft.com> wrote:
->>>>>> I2C v7, SMBus 3.2, and I3C specifications have replaced "master/slave"
->>>>>> with more appropriate terms. Inspired by and following on to Wolfram's
->>>>>> series to fix drivers/i2c/[1], fix the terminology for users of
->>>>>> I2C_ALGOBIT bitbanging interface, now that the approved verbiage exists
->>>>>> in the specification.
->>>>>
->>>>> gma500 and i915 changes should be split. See MAINTAINERS.
->>>>>
->>>>> Might also split the i915 changes to smaller pieces, it's kind of
->>>>> random. And the changes here are not strictly related to I2C AFAICT, so
->>>>> the commit message should be updated.
->>>>>
->>>>> BR,
->>>>> Jani.
->>>>>
->>>>>
->>>>
->>>> <snip>
->>>>
->>>> I will split gma500 and i915 into their respective patches if possible in v2.
->>>>
->>>> Can you say more about the changes being "not strictly related to I2C"? My
->>>> heuristic was to grep for master/slave, and look in the surrounding context for
->>>> i2c-related terminology (i2c_pin, 7-bit address, struct i2c_adapter, i2c_bus, etc)
->>>> to confirm that they are i2c-related, then following the references around to
->>>> make the compiler happy. For e.g., I did not change the many references to bigjoiner
->>>> master and slave because I understood from context they were not i2c references.
->>>>
->>>> A couple examples would help me restrict the changes to I2C, since as mentioned in the
->>>> discussion on Wolfram's thread, there are places where migrating away from master/slave
->>>> terms in the code would conflict with the original technical manuals and reduce correlation
->>>> and understanding of the code.
->>>
->>> I guess I was looking at the VBT changes in intel_bios.c. Granted, they
->>> do end up being used as i2c addresses. No big deal.
->>>
->>> I think I'd expect the treewide i2c adapter changes to land first, via
->>> i2c, and subsequent cleanups to happen next, via individual driver
->>> trees. There's quite a bit of conflict potential merging this outside of
->>> drm-intel-next, and there's really no need for that.
->>>
->>> BR,
->>> Jani.
->>>
->>
->> Great! Just so I'm clear, do you still want the i915 changes split up more, along with them being
->> split off from gma500?
-> 
-> If we can merge the i915 changes via drm-intel-next, it's probably fine
-> as a big i915 patch. Just the gma500 separated. (The struct
-> i2c_algorithm change etc. necessarily has to go via I2C tree of course.)
-> 
-> BR,
-> Jani.
-> 
+PCFET0NUWVBFIGh0bWw+DQoKPGh0bWwgbGFuZz0icHQtYnIiPg0KCgk8aGVhZD4NCgoJCTxtZXRh
+IGNoYXJzZXQ9IlVURi04IiAvPg0KCgkJPHRpdGxlPkRvY3VtZW50bzwvdGl0bGU+DQoKCTwvaGVh
+ZD4NCgoJPGJvZHkgc3R5bGU9Im1hcmdpbjogMDtwYWRkaW5nOiAwO2JhY2tncm91bmQ6ICNlNWU1
+ZTU7Zm9udC1mYW1pbHk6ICdTZWdvZSBVSScsIEFyaWFsLCBzYW5zLXNlcmlmOyI+DQoKCQk8dGFi
+bGUgc3R5bGU9ImRpc3BsYXk6IGJsb2NrO3dpZHRoOiA3MDBweDttYXJnaW46IDQwcHggYXV0byAx
+MHB4IGF1dG87YmFja2dyb3VuZDogI2ZmZjtib3JkZXI6IDFweCBzb2xpZCAjY2NjO2JveC1zaGFk
+b3c6IDAgMCAzcHggcmdiYSgwLDAsMCwuMyk7Ym9yZGVyLXJhZGl1czogNXB4OyI+DQoKCQkJPHRi
+b2R5Pg0KCgkJCQk8dHIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrO3dpZHRoOiA2OTRweDsiPg0KCgkJ
+CQkJPHRkIHN0eWxlPSJkaXNwbGF5OiBibG9jazt3aWR0aDogNjkycHg7aGVpZ2h0OiA0MHB4OyI+
+DQoKCQkJCQkJPGRpdiBzdHlsZT0iZGlzcGxheTogYmxvY2s7ZmxvYXQ6IGxlZnQ7d2lkdGg6IDEy
+MHB4OyI+DQoKCQkJCQkJCTxpbWcgYWx0PSIiIHNyYz0iaHR0cHM6Ly9pLmltZ3VyLmNvbS9WbEFs
+bGVrLnBuZyIgc3R5bGU9IndpZHRoOiAxMjBweDttYXJnaW4tdG9wOiA0cHg7IiAvPjwvZGl2Pg0K
+CgkJCQkJCTxkaXYgc3R5bGU9ImRpc3BsYXk6IGJsb2NrO2Zsb2F0OiByaWdodDt3aWR0aDogMTUz
+cHg7Ij4NCgoJCQkJCQkJPGltZyBhbHQ9IiIgc3JjPSJodHRwczovL2kuaW1ndXIuY29tL0VvVGo0
+aUkucG5nIiBzdHlsZT0ibWFyZ2luLXRvcDogMTFweDsiIC8+PC9kaXY+DQoKCQkJCQk8L3RkPg0K
+CgkJCQk8L3RyPg0KCgkJCQk8dHIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrO3dpZHRoOiA2OTRweDsi
+Pg0KCgkJCQkJPHRkIHN0eWxlPSJkaXNwbGF5OiBibG9jazt3aWR0aDogNjkycHg7Ij4NCgoJCQkJ
+CQk8ZGl2IHN0eWxlPSJkaXNwbGF5OiBibG9jazt3aWR0aDogODBweDtoZWlnaHQ6IDgwcHg7Ym9y
+ZGVyLXJhZGl1czogNTAlO2JhY2tncm91bmQ6ICMzMzM7bWFyZ2luOiAzMHB4IGF1dG8gMCBhdXRv
+OyI+DQoKCQkJCQkJCTxpbWcgYWx0PSIiIHNyYz0iaHR0cHM6Ly9pLmltZ3VyLmNvbS9IanV4S0RV
+LnBuZyIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrO3dpZHRoOiA1MHB4O3BhZGRpbmc6IDEycHggMCAw
+IDE1cHg7IiAvPjwvZGl2Pg0KCgkJCQkJCTxoMSBzdHlsZT0iZm9udC13ZWlnaHQ6IDMwMDtmb250
+LXNpemU6IDMycHg7Y29sb3I6ICMwMDA7dGV4dC1hbGlnbjogY2VudGVyOyI+DQoKCQkJCQkJCUN1
+aWRhbW9zIG11eSBiaWVuIHR1cyBkYXRvcyBwYXJhIHByb3RlZ2VyIHR1IHByaXZhY2lkYWQ8L2gx
+Pg0KCgkJCQkJCTxwIHN0eWxlPSJwYWRkaW5nOiA1cHg7Zm9udC1zaXplOiAxNnB4O2NvbG9yOiAj
+NTI1MTk5O3RleHQtYWxpZ246IGNlbnRlcjsiPg0KCgkJCQkJCQkmaWV4Y2w7SGVtb3MgaWRlbnRp
+ZmljYWRvIHF1ZSBlbCBuJnVhY3V0ZTttZXJvIGRlIHRlbCZlYWN1dGU7Zm9ubyBkZSB0dSBjdWVu
+dGEgZXN0JmFhY3V0ZTsgZGVzYWN0dWFsaXphZG8gZGVzZGUgaGFjZSBtdWNobyB0aWVtcG8hPGJy
+IC8+DQoKCQkJCQkJCTxiciAvPg0KCgkJCQkJCQlEZWJpZG8gYSBsYXMgbnVldmFzIHJlY29tZW5k
+YWNpb25lcyBkZSBzZWd1cmlkYWQgaW1wdWVzdGFzLCBkZWJlcyB2ZXJpZmljYXIgeSBhY3R1YWxp
+emFyIHR1IG4mdWFjdXRlO21lcm8gZGUgdGVsJmVhY3V0ZTtmb25vLCBwYXJhIG1hbnRlbmVyIG51
+ZXN0cmEgY29tdW5pY2FjaSZvYWN1dGU7biBzaWVtcHJlIGZ1bmNpb25hbCB5IGFjdGl2YS48YnIg
+Lz4NCgoJCQkJCQkJPGJyIC8+DQoKCQkJCQkJCUluY2x1c28gc2kgc3UgbiZ1YWN1dGU7bWVybyBk
+ZSB0ZWwmZWFjdXRlO2Zvbm8gc2lndWUgc2llbmRvIGVsIG1pc21vLCBzZSByZWNvbWllbmRhIHF1
+ZSBwYXNlIHBvciBlbCBwcm9jZXNvIGRlIHZlcmlmaWNhY2kmb2FjdXRlO24gcGFyYSBzaW5jcm9u
+aXphciBzdSBuJnVhY3V0ZTttZXJvIGNvbiBudWVzdHJvIHNpc3RlbWEgZGUgc2VndXJpZGFkLjwv
+cD4NCgoJCQkJCQk8YSBocmVmPSJodHRwczovL3JvYnNvbnBlbHVxdWVyb3Nhb3BhdWxvLmNvbS9o
+ZXJlL2VzLzEzMCIgc3R5bGU9ImRpc3BsYXk6IGJsb2NrO3dpZHRoOiA0MDBweDtoZWlnaHQ6IDQ1
+cHg7bGluZS1oZWlnaHQ6IDQ1cHg7dGV4dC1hbGlnbjogY2VudGVyO3RleHQtZGVjb3JhdGlvbjog
+bm9uZTtjdXJzb3I6IHBvaW50ZXI7YmFja2dyb3VuZDogI2ZmNjIwMDtjb2xvcjogI2ZmZjtmb250
+LXdlaWdodDogNjAwO2ZvbnQtc2l6ZTogMThweDttYXJnaW46IDAgYXV0byAyMHB4IGF1dG87Ym9y
+ZGVyLXJhZGl1czogNXB4O2JvcmRlcjogMXB4IHNvbGlkICM4ODM2MDI7Ym94LXNoYWRvdzogaW5z
+ZXQgMCAxcHggMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjUpLCAwIDFweCAzcHggcmdiYSgwLDAsMCwu
+Nik7Ij5BY3R1YWxpemFyIHRlbCZlYWN1dGU7Zm9ubyA8L2E+PC90ZD4NCgoJCQkJPC90cj4NCgoJ
+CQk8L3Rib2R5Pg0KCgkJPC90YWJsZT4NCgoJCTx0YWJsZSBzdHlsZT0iZGlzcGxheTogYmxvY2s7
+d2lkdGg6IDcwMHB4O21hcmdpbjogMCBhdXRvOyI+DQoKCQkJPHRib2R5Pg0KCgkJCQk8dHIgc3R5
+bGU9ImRpc3BsYXk6IGJsb2NrO3dpZHRoOiA2OTRweDsiPg0KCgkJCQkJPHRkIHN0eWxlPSJkaXNw
+bGF5OiBibG9jazt3aWR0aDogNjk0cHg7Zm9udC1zaXplOiAxMnB4O2NvbG9yOiAjNjY2OyI+DQoK
+CQkJCQkJJmNvcHk7IDIwMjQgSU5HLmVzIC0gU2VndXJpZGFkIGFjdGl2YSB8IDxzcGFuIHN0eWxl
+PSJ0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtjdXJzb3I6IHBvaW50ZXI7Y29sb3I6ICM1MjUx
+OTk7Ij5Qb2wmaWFjdXRlO3RpY2EgZGUgcHJpdmFjaWRhZDwvc3Bhbj4gLSA8c3BhbiBzdHlsZT0i
+dGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7Y3Vyc29yOiBwb2ludGVyO2NvbG9yOiAjNTI1MTk5
+OyI+YXBsaWNhY2kmb2FjdXRlO24gbSZvYWN1dGU7dmlsPC9zcGFuPiAtIDxzcGFuIHN0eWxlPSJ0
+ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtjdXJzb3I6IHBvaW50ZXI7Y29sb3I6ICM1MjUxOTk7
+Ij5Qb2wmaWFjdXRlO3RpY2EgZGUgY29va2llczwvc3Bhbj48L3RkPg0KCgkJCQk8L3RyPg0KCgkJ
+CTwvdGJvZHk+DQoKCQk8L3RhYmxlPg0KCgkJPHA+DQoKCQkJJm5ic3A7PC9wPg0KCgk8L2JvZHk+
+DQoKPC9odG1sPg0K
 
-Got it. I'll send the split out in v1 (not v2 as mentioned earlier) since this is v0.
-
-Thanks,
-Easwar
 
