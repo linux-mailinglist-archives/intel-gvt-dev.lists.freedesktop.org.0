@@ -2,45 +2,61 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4716B89AB38
-	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 Apr 2024 16:01:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EEEE589AC6D
+	for <lists+intel-gvt-dev@lfdr.de>; Sat,  6 Apr 2024 19:25:40 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id B593D10EFBB;
-	Sat,  6 Apr 2024 14:01:26 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id B5F4010F2E9;
+	Sat,  6 Apr 2024 17:25:39 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=pass (1024-bit key; unprotected) header.d=milanobrasil.com.br header.i=@milanobrasil.com.br header.b="OA+4kAOg";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 425 seconds by postgrey-1.36 at gabe;
- Sat, 06 Apr 2024 14:01:24 UTC
-Received: from bmailout2.hostsharing.net (bmailout2.hostsharing.net
- [83.223.78.240])
- by gabe.freedesktop.org (Postfix) with ESMTPS id E8EF710EDC4
+X-Greylist: delayed 396 seconds by postgrey-1.36 at gabe;
+ Sat, 06 Apr 2024 17:25:37 UTC
+Received: from obiwan.corp.milanobrasil.com.br
+ (obiwan.corp.milanobrasil.com.br [201.38.81.90])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 4909E10F2E9
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sat,  6 Apr 2024 14:01:24 +0000 (UTC)
-Received: from h08.hostsharing.net (h08.hostsharing.net
- [IPv6:2a01:37:1000::53df:5f1c:0])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256
- client-signature RSA-PSS (4096 bits) client-digest SHA256)
- (Client CN "*.hostsharing.net", Issuer "RapidSSL TLS RSA CA G1" (verified OK))
- by bmailout2.hostsharing.net (Postfix) with ESMTPS id 879992800B3F1;
- Sat,  6 Apr 2024 15:54:16 +0200 (CEST)
-Received: by h08.hostsharing.net (Postfix, from userid 100393)
- id 8084A9926B3; Sat,  6 Apr 2024 15:54:16 +0200 (CEST)
-Message-Id: <92ee0a0e83a5a3f3474845db6c8575297698933a.1712410202.git.lukas@wunner.de>
-In-Reply-To: <cover.1712410202.git.lukas@wunner.de>
-References: <cover.1712410202.git.lukas@wunner.de>
-From: Lukas Wunner <lukas@wunner.de>
-Date: Sat, 6 Apr 2024 15:52:02 +0200
-Subject: [PATCH 2/2] treewide: Use sysfs_bin_attr_simple_read() helper
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-kernel@vger.kernel.org
-Cc: Michael Ellerman <mpe@ellerman.id.au>, linuxppc-dev@lists.ozlabs.org,
- linux-acpi@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
- Ard Biesheuvel <ardb@kernel.org>, linux-efi@vger.kernel.org,
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>,
- intel-gvt-dev@lists.freedesktop.org,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org,
- Luis Chamberlain <mcgrof@kernel.org>, linux-modules@vger.kernel.org
+ Sat,  6 Apr 2024 17:25:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by obiwan.corp.milanobrasil.com.br (Postfix) with ESMTP id 8773BA6E999;
+ Sat,  6 Apr 2024 14:12:26 -0300 (-03)
+Received: from obiwan.corp.milanobrasil.com.br ([127.0.0.1])
+ by localhost (obiwan.corp.milanobrasil.com.br [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id Wi2jvuXOwvJE; Sat,  6 Apr 2024 14:12:26 -0300 (-03)
+Received: from localhost (localhost [127.0.0.1])
+ by obiwan.corp.milanobrasil.com.br (Postfix) with ESMTP id 7272EA6E991;
+ Sat,  6 Apr 2024 14:12:25 -0300 (-03)
+DKIM-Filter: OpenDKIM Filter v2.9.2 obiwan.corp.milanobrasil.com.br 7272EA6E991
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=milanobrasil.com.br;
+ s=FE0EA6D2-E592-11EB-B375-C1C10269EFE2; t=1712423545;
+ bh=EX0jWscicWj4A4Y47ikPu7vjTgeNiUWE5fVWsvHeuRY=;
+ h=Date:From:Reply-To:Message-ID:Subject:MIME-Version:Content-Type;
+ b=OA+4kAOgv6QmVJ/cy3pIVZxbhRqsskbgd9Yblv4wJn3gvtAPq1RDiDmB6vgzz3/GZ
+ F3Y4DWbxZZgOZN6yNFdTCnya38njwKgTg8W4TSbajeaQBQOyPajVG6/+EwXHJ83vNS
+ cCPvNAJNLGqIVeNy97Jjs8YjQo6hvcW2leVj55JM=
+X-Virus-Scanned: amavisd-new at obiwan.corp.milanobrasil.com.br
+Received: from obiwan.corp.milanobrasil.com.br ([127.0.0.1])
+ by localhost (obiwan.corp.milanobrasil.com.br [127.0.0.1]) (amavisd-new,
+ port 10026)
+ with ESMTP id KUBhWrOCWkiL; Sat,  6 Apr 2024 14:12:25 -0300 (-03)
+Received: from obiwan.corp.milanobrasil.com.br
+ (obiwan.corp.milanobrasil.com.br [192.168.15.171])
+ by obiwan.corp.milanobrasil.com.br (Postfix) with ESMTP id 61A8BA6E984;
+ Sat,  6 Apr 2024 14:12:24 -0300 (-03)
+Date: Sat, 6 Apr 2024 14:12:24 -0300 (BRT)
+From: "Alice Silva - Mercatto (analitico)" <alice.silva@milanobrasil.com.br>
+Message-ID: <1795664930.1121.1712423544353.JavaMail.zimbra@milanobrasil.com.br>
+Subject: LOAN
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_1120_441898654.1712423544352"
+X-Originating-IP: [192.168.15.171]
+X-Mailer: Zimbra 8.6.0_GA_1242 (ZimbraWebClient - GC123 (Win)/8.6.0_GA_1242)
+Thread-Topic: LOAN
+Thread-Index: 0RVTd+4kXacnEtH3lBR3+pOhvn3M4A==
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,249 +69,37 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: "terrysean918@gmail.com" <terrysean918@gmail.com>
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Deduplicate ->read() callbacks of bin_attributes which are backed by a
-simple buffer in memory:
+------=_Part_1120_441898654.1712423544352
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 
-Use the newly introduced sysfs_bin_attr_simple_read() helper instead,
-either by referencing it directly or by declaring such bin_attributes
-with BIN_ATTR_SIMPLE_RO() or BIN_ATTR_SIMPLE_ADMIN_RO().
 
-Aside from a reduction of LoC, this shaves off a few bytes from vmlinux
-(304 bytes on an x86_64 allyesconfig).
 
-No functional change intended.
 
-Signed-off-by: Lukas Wunner <lukas@wunner.de>
----
- arch/powerpc/platforms/powernv/opal.c              | 10 +--------
- drivers/acpi/bgrt.c                                |  9 +-------
- drivers/firmware/dmi_scan.c                        | 12 ++--------
- drivers/firmware/efi/rci2-table.c                  | 10 +--------
- drivers/gpu/drm/i915/gvt/firmware.c                | 26 +++++-----------------
- .../intel/int340x_thermal/int3400_thermal.c        |  9 +-------
- init/initramfs.c                                   | 10 +--------
- kernel/module/sysfs.c                              | 13 +----------
- 8 files changed, 14 insertions(+), 85 deletions(-)
 
-diff --git a/arch/powerpc/platforms/powernv/opal.c b/arch/powerpc/platforms/powernv/opal.c
-index 45dd77e..5d0f35b 100644
---- a/arch/powerpc/platforms/powernv/opal.c
-+++ b/arch/powerpc/platforms/powernv/opal.c
-@@ -792,14 +792,6 @@ static int __init opal_sysfs_init(void)
- 	return 0;
- }
- 
--static ssize_t export_attr_read(struct file *fp, struct kobject *kobj,
--				struct bin_attribute *bin_attr, char *buf,
--				loff_t off, size_t count)
--{
--	return memory_read_from_buffer(buf, count, &off, bin_attr->private,
--				       bin_attr->size);
--}
--
- static int opal_add_one_export(struct kobject *parent, const char *export_name,
- 			       struct device_node *np, const char *prop_name)
- {
-@@ -826,7 +818,7 @@ static int opal_add_one_export(struct kobject *parent, const char *export_name,
- 	sysfs_bin_attr_init(attr);
- 	attr->attr.name = name;
- 	attr->attr.mode = 0400;
--	attr->read = export_attr_read;
-+	attr->read = sysfs_bin_attr_simple_read;
- 	attr->private = __va(vals[0]);
- 	attr->size = vals[1];
- 
-diff --git a/drivers/acpi/bgrt.c b/drivers/acpi/bgrt.c
-index e4fb9e2..d1d9c92 100644
---- a/drivers/acpi/bgrt.c
-+++ b/drivers/acpi/bgrt.c
-@@ -29,14 +29,7 @@
- BGRT_SHOW(xoffset, image_offset_x);
- BGRT_SHOW(yoffset, image_offset_y);
- 
--static ssize_t image_read(struct file *file, struct kobject *kobj,
--	       struct bin_attribute *attr, char *buf, loff_t off, size_t count)
--{
--	memcpy(buf, attr->private + off, count);
--	return count;
--}
--
--static BIN_ATTR_RO(image, 0);	/* size gets filled in later */
-+static BIN_ATTR_SIMPLE_RO(image);
- 
- static struct attribute *bgrt_attributes[] = {
- 	&bgrt_attr_version.attr,
-diff --git a/drivers/firmware/dmi_scan.c b/drivers/firmware/dmi_scan.c
-index 015c95a..3d0f773 100644
---- a/drivers/firmware/dmi_scan.c
-+++ b/drivers/firmware/dmi_scan.c
-@@ -746,16 +746,8 @@ static void __init dmi_scan_machine(void)
- 	pr_info("DMI not present or invalid.\n");
- }
- 
--static ssize_t raw_table_read(struct file *file, struct kobject *kobj,
--			      struct bin_attribute *attr, char *buf,
--			      loff_t pos, size_t count)
--{
--	memcpy(buf, attr->private + pos, count);
--	return count;
--}
--
--static BIN_ATTR(smbios_entry_point, S_IRUSR, raw_table_read, NULL, 0);
--static BIN_ATTR(DMI, S_IRUSR, raw_table_read, NULL, 0);
-+static BIN_ATTR_SIMPLE_ADMIN_RO(smbios_entry_point);
-+static BIN_ATTR_SIMPLE_ADMIN_RO(DMI);
- 
- static int __init dmi_init(void)
- {
-diff --git a/drivers/firmware/efi/rci2-table.c b/drivers/firmware/efi/rci2-table.c
-index de1a9a1..4fd45d6 100644
---- a/drivers/firmware/efi/rci2-table.c
-+++ b/drivers/firmware/efi/rci2-table.c
-@@ -40,15 +40,7 @@ struct rci2_table_global_hdr {
- static u32 rci2_table_len;
- unsigned long rci2_table_phys __ro_after_init = EFI_INVALID_TABLE_ADDR;
- 
--static ssize_t raw_table_read(struct file *file, struct kobject *kobj,
--			      struct bin_attribute *attr, char *buf,
--			      loff_t pos, size_t count)
--{
--	memcpy(buf, attr->private + pos, count);
--	return count;
--}
--
--static BIN_ATTR(rci2, S_IRUSR, raw_table_read, NULL, 0);
-+static BIN_ATTR_SIMPLE_ADMIN_RO(rci2);
- 
- static u16 checksum(void)
- {
-diff --git a/drivers/gpu/drm/i915/gvt/firmware.c b/drivers/gpu/drm/i915/gvt/firmware.c
-index 4dd52ac..5e66a26 100644
---- a/drivers/gpu/drm/i915/gvt/firmware.c
-+++ b/drivers/gpu/drm/i915/gvt/firmware.c
-@@ -50,21 +50,7 @@ struct gvt_firmware_header {
- 
- #define dev_to_drm_minor(d) dev_get_drvdata((d))
- 
--static ssize_t
--gvt_firmware_read(struct file *filp, struct kobject *kobj,
--	     struct bin_attribute *attr, char *buf,
--	     loff_t offset, size_t count)
--{
--	memcpy(buf, attr->private + offset, count);
--	return count;
--}
--
--static struct bin_attribute firmware_attr = {
--	.attr = {.name = "gvt_firmware", .mode = (S_IRUSR)},
--	.read = gvt_firmware_read,
--	.write = NULL,
--	.mmap = NULL,
--};
-+static BIN_ATTR_SIMPLE_ADMIN_RO(gvt_firmware);
- 
- static int expose_firmware_sysfs(struct intel_gvt *gvt)
- {
-@@ -107,10 +93,10 @@ static int expose_firmware_sysfs(struct intel_gvt *gvt)
- 	crc32_start = offsetof(struct gvt_firmware_header, version);
- 	h->crc32 = crc32_le(0, firmware + crc32_start, size - crc32_start);
- 
--	firmware_attr.size = size;
--	firmware_attr.private = firmware;
-+	bin_attr_gvt_firmware.size = size;
-+	bin_attr_gvt_firmware.private = firmware;
- 
--	ret = device_create_bin_file(&pdev->dev, &firmware_attr);
-+	ret = device_create_bin_file(&pdev->dev, &bin_attr_gvt_firmware);
- 	if (ret) {
- 		vfree(firmware);
- 		return ret;
-@@ -122,8 +108,8 @@ static void clean_firmware_sysfs(struct intel_gvt *gvt)
- {
- 	struct pci_dev *pdev = to_pci_dev(gvt->gt->i915->drm.dev);
- 
--	device_remove_bin_file(&pdev->dev, &firmware_attr);
--	vfree(firmware_attr.private);
-+	device_remove_bin_file(&pdev->dev, &bin_attr_gvt_firmware);
-+	vfree(bin_attr_gvt_firmware.private);
- }
- 
- /**
-diff --git a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-index 427d370..6d4b51a 100644
---- a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-+++ b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-@@ -73,14 +73,7 @@ struct odvp_attr {
- 	struct device_attribute attr;
- };
- 
--static ssize_t data_vault_read(struct file *file, struct kobject *kobj,
--	     struct bin_attribute *attr, char *buf, loff_t off, size_t count)
--{
--	memcpy(buf, attr->private + off, count);
--	return count;
--}
--
--static BIN_ATTR_RO(data_vault, 0);
-+static BIN_ATTR_SIMPLE_RO(data_vault);
- 
- static struct bin_attribute *data_attributes[] = {
- 	&bin_attr_data_vault,
-diff --git a/init/initramfs.c b/init/initramfs.c
-index da79760..5193fae 100644
---- a/init/initramfs.c
-+++ b/init/initramfs.c
-@@ -575,15 +575,7 @@ static int __init initramfs_async_setup(char *str)
- #include <linux/initrd.h>
- #include <linux/kexec.h>
- 
--static ssize_t raw_read(struct file *file, struct kobject *kobj,
--			struct bin_attribute *attr, char *buf,
--			loff_t pos, size_t count)
--{
--	memcpy(buf, attr->private + pos, count);
--	return count;
--}
--
--static BIN_ATTR(initrd, 0440, raw_read, NULL, 0);
-+static BIN_ATTR(initrd, 0440, sysfs_bin_attr_simple_read, NULL, 0);
- 
- void __init reserve_initrd_mem(void)
- {
-diff --git a/kernel/module/sysfs.c b/kernel/module/sysfs.c
-index d964167..26efe13 100644
---- a/kernel/module/sysfs.c
-+++ b/kernel/module/sysfs.c
-@@ -146,17 +146,6 @@ struct module_notes_attrs {
- 	struct bin_attribute attrs[] __counted_by(notes);
- };
- 
--static ssize_t module_notes_read(struct file *filp, struct kobject *kobj,
--				 struct bin_attribute *bin_attr,
--				 char *buf, loff_t pos, size_t count)
--{
--	/*
--	 * The caller checked the pos and count against our size.
--	 */
--	memcpy(buf, bin_attr->private + pos, count);
--	return count;
--}
--
- static void free_notes_attrs(struct module_notes_attrs *notes_attrs,
- 			     unsigned int i)
- {
-@@ -205,7 +194,7 @@ static void add_notes_attrs(struct module *mod, const struct load_info *info)
- 			nattr->attr.mode = 0444;
- 			nattr->size = info->sechdrs[i].sh_size;
- 			nattr->private = (void *)info->sechdrs[i].sh_addr;
--			nattr->read = module_notes_read;
-+			nattr->read = sysfs_bin_attr_simple_read;
- 			++nattr;
- 		}
- 		++loaded;
--- 
-2.43.0
+Good Day 
+E.L.M Loan invite you to partner with us and benefit in our new Loan and Project funding program. Agricultural finance ,or home loans at a fixed interest rate of 2% per annual. We also offer business and corporate loans at 3% rate and loan for business expansion. email contact: 
 
+------=_Part_1120_441898654.1712423544352
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><body><div style=3D"font-family: arial, helvetica, sans-serif; font-s=
+ize: 12pt; color: #000000"><div><br></div><div><br></div><div data-marker=
+=3D"__SIG_PRE__"><p style=3D"margin: 0px; font-variant: normal; letter-spac=
+ing: normal; line-height: normal; text-align: start; text-indent: 0px; text=
+-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webki=
+t-text-stroke-width: 0px; background: white;" data-mce-style=3D"margin: 0px=
+; font-variant: normal; letter-spacing: normal; line-height: normal; text-a=
+lign: start; text-indent: 0px; text-transform: none; white-space: normal; w=
+idows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; background: wh=
+ite;">Good Day<br>E.L.M Loan invite you to partner with us and benefit in o=
+ur new Loan and Project funding program. Agricultural finance ,or home loan=
+s at a fixed interest rate of 2% per annual. We also offer business and cor=
+porate loans at 3% rate and loan for business expansion. email contact: </p=
+></div></div></body></html>
+------=_Part_1120_441898654.1712423544352--
