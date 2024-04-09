@@ -2,69 +2,40 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B375489C7AE
-	for <lists+intel-gvt-dev@lfdr.de>; Mon,  8 Apr 2024 17:01:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D42489D41E
+	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Apr 2024 10:22:48 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 3F4A91126B6;
-	Mon,  8 Apr 2024 15:01:38 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 1DCE5112B8E;
+	Tue,  9 Apr 2024 08:22:47 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=kernel.org header.i=@kernel.org header.b="iPVzIBvT";
+	dkim=pass (2048-bit key; secure) header.d=quirkbyte.pl header.i=@quirkbyte.pl header.b="cu/hAH5C";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 81F4C1126B7
+Received: from mail.quirkbyte.pl (mail.quirkbyte.pl [94.177.238.152])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 420F6112B8E
  for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Apr 2024 15:01:35 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 91C21612A5
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Apr 2024 15:01:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9F04C43601
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon,  8 Apr 2024 15:01:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1712588493;
- bh=EITVdlJtkrnylLXhed9Pr1DfYAyVTQ3XvaUDh63E534=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=iPVzIBvT/iSK03mJ74WyCdtfwrYQ0FIvhL5K8YMXOWzUcxtAW1X9DNCrqtBiFjfyi
- tl90sPwPpZ5rbnlWkWlrmucbJbApIpssRcLEk4bwAVt6FxwLnhmycj60p3s5ZulGuY
- Oi6kb5XzN6oeZLDaCEoYGMUGaCwA36s9aVa2vFCs+0r3L2ACNZZS6RJMIMK7lmGxXl
- LZaKWREq5eaTZ8dEmqubeluPfq1pepZhLI9FVjpANsP8XqyeISOYtrQC8gZ/KN/t0I
- J4RLdMza2ntow+e8CC8hAcBjXsrybDusTaZepo397svH4xSl9ToXUzq+mYubuhRT/b
- 17pKAxdggeVsA==
-Received: by mail-ot1-f44.google.com with SMTP id
- 46e09a7af769-6ea1572136eso453457a34.1
- for <intel-gvt-dev@lists.freedesktop.org>;
- Mon, 08 Apr 2024 08:01:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=1;
- AJvYcCXE6AKfksMyEorvwsecxKipTeQiRYJUuV/1GglIWOqT7ZJFfkN3f1xJ5+nLLp9P8Kzbpf2JDS2wU9GPNt01DMq59GlDvvpUWR73EPBzotVHjT17RQ==
-X-Gm-Message-State: AOJu0YznddcSpghjZWplTbMkFJgr2yZyEG+zlXlly0XW4nRBzJ75npWB
- pPlzfLemZhCH8vs48ovHXeIa3cwA/kVToPqU9/uJUq3sbiFVzAXOHsoaRBDwNzoxQiUy59MDcAP
- VXlPAP2xr5dUcnMM6KJAuchn5E5A=
-X-Google-Smtp-Source: AGHT+IE7BjvtTOsOgPqYkXR1Qq+KOOG/nJtiEyKbfNUuvRcPpCIK8D3B6ZYbWXxS6qJ87RK9Jxd6UH195uv+p6a4TTw=
-X-Received: by 2002:a05:6808:603:b0:3c5:f534:e2c7 with SMTP id
- y3-20020a056808060300b003c5f534e2c7mr2839026oih.1.1712588493105; Mon, 08 Apr
- 2024 08:01:33 -0700 (PDT)
+ Tue,  9 Apr 2024 08:22:45 +0000 (UTC)
+Received: by mail.quirkbyte.pl (Postfix, from userid 1002)
+ id 88C8E8319C; Tue,  9 Apr 2024 10:16:33 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=quirkbyte.pl; s=mail;
+ t=1712650596; bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=;
+ h=Date:From:To:Subject:From;
+ b=cu/hAH5Cqfkcw/d+AWRfd9+ugvF3jnTqnmEzSWvul+MDP9vWjdd2bj2dNLZA4jNz+
+ TeTOmUygH7aOC8nsVL2bKslflPmdo4WY+dJ3r+Bg2tVeHa2DJzkPJJTfmjx9F9pbiA
+ zRwr7kgzJo/H5yJZnNwdIaD/edyECTleaJnZ5Crf3OHGqc9QcW4YfMtgMX4n92fyZR
+ +ujBwU4CUO2TcfKomqmaMBTlpAwlUGppbZ2scBHuRFgHKx7AYN8dElHpSDz+t0vmmX
+ n5z01Xis6FzeJaTCrhA+kZHq4M+lS0nOWcqoSFiGiZtaVyZS7vdS1gVvalp6cMfWSR
+ uu4UmhcXquUXw==
+Received: by mail.quirkbyte.pl for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue,  9 Apr 2024 08:15:38 GMT
+Message-ID: <20240409084235-0.1.2c.1bxpb.0.qgpfekbffe@quirkbyte.pl>
+Date: Tue,  9 Apr 2024 08:15:38 GMT
+From: "Norbert Karecki" <norbert.karecki@quirkbyte.pl>
+To: <intel-gvt-dev@lists.freedesktop.org>
+Subject: Fotowoltaika - propozycja instalacji
+X-Mailer: mail.quirkbyte.pl
 MIME-Version: 1.0
-References: <cover.1712410202.git.lukas@wunner.de>
-In-Reply-To: <cover.1712410202.git.lukas@wunner.de>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Mon, 8 Apr 2024 17:01:22 +0200
-X-Gmail-Original-Message-ID: <CAJZ5v0hOHCSp8-8EZjuGAOR0QSH3CcvokG3uBGAKFFpTrkqQRA@mail.gmail.com>
-Message-ID: <CAJZ5v0hOHCSp8-8EZjuGAOR0QSH3CcvokG3uBGAKFFpTrkqQRA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Deduplicate bin_attribute simple read() callbacks
-To: Lukas Wunner <lukas@wunner.de>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, 
- linux-kernel@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>, 
- linuxppc-dev@lists.ozlabs.org, linux-acpi@vger.kernel.org, 
- Jean Delvare <jdelvare@suse.com>, Ard Biesheuvel <ardb@kernel.org>,
- linux-efi@vger.kernel.org, 
- Zhenyu Wang <zhenyuw@linux.intel.com>, Zhi Wang <zhi.wang.linux@gmail.com>, 
- intel-gvt-dev@lists.freedesktop.org, 
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, 
- Luis Chamberlain <mcgrof@kernel.org>, linux-modules@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
@@ -82,41 +53,23 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Sat, Apr 6, 2024 at 3:52=E2=80=AFPM Lukas Wunner <lukas@wunner.de> wrote=
-:
->
-> For my upcoming PCI device authentication v2 patches, I have the need
-> to expose a simple buffer in virtual memory as a bin_attribute.
->
-> It turns out we've duplicated the ->read() callback for such simple
-> buffers a fair number of times across the tree.
->
-> So instead of reinventing the wheel, I decided to introduce a common
-> helper and eliminate all duplications I could find.
->
-> I'm open to a bikeshedding discussion on the sysfs_bin_attr_simple_read()
-> name. ;)
->
-> Lukas Wunner (2):
->   sysfs: Add sysfs_bin_attr_simple_read() helper
->   treewide: Use sysfs_bin_attr_simple_read() helper
->
->  arch/powerpc/platforms/powernv/opal.c              | 10 +-------
->  drivers/acpi/bgrt.c                                |  9 +-------
->  drivers/firmware/dmi_scan.c                        | 12 ++--------
->  drivers/firmware/efi/rci2-table.c                  | 10 +-------
->  drivers/gpu/drm/i915/gvt/firmware.c                | 26 +++++-----------=
------
->  .../intel/int340x_thermal/int3400_thermal.c        |  9 +-------
->  fs/sysfs/file.c                                    | 27 ++++++++++++++++=
-++++++
->  include/linux/sysfs.h                              | 15 ++++++++++++
->  init/initramfs.c                                   | 10 +-------
->  kernel/module/sysfs.c                              | 13 +----------
->  10 files changed, 56 insertions(+), 85 deletions(-)
->
-> --
+Dzie=C5=84 dobry,
+=20
+Czy rozwa=C5=BCali Pa=C5=84stwo monta=C5=BC systemu fotowoltaicznego?
+=20
+Instalacja fotowoltaiczna jest najlepszym sposobem na obni=C5=BCenie wyso=
+ko=C5=9Bci rachunk=C3=B3w za pr=C4=85d (pozostaj=C4=85 tylko op=C5=82aty =
+sta=C5=82e) i zabezpieczenie si=C4=99 przed rosn=C4=85cymi cenami energii=
+ elektrycznej. Jest to w pe=C5=82ni odnawialne i bezemisyjne =C5=BAr=C3=B3=
+d=C5=82o energii, dzi=C4=99ki czemu przyczyniamy si=C4=99 do ochrony =C5=9B=
+rodowiska naturalnego.
+=20
+Dzia=C5=82amy od wielu lat na rynku energetycznym. Przygotujemy projekt, =
+wycen=C4=99 oraz kompleksowo wykonamy i zg=C5=82osimy realizacj=C4=99 do =
+zak=C5=82adu energetycznego.=20
+=20
+Czy chc=C4=85 Pa=C5=84stwo pozna=C4=87 nasz=C4=85 propozycj=C4=99? =20
 
-For the series
 
-Acked-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Pozdrawiam
+Norbert Karecki
