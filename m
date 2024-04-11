@@ -2,42 +2,52 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D42489D41E
-	for <lists+intel-gvt-dev@lfdr.de>; Tue,  9 Apr 2024 10:22:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A5238A1543
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 11 Apr 2024 15:07:20 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 1DCE5112B8E;
-	Tue,  9 Apr 2024 08:22:47 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id EAFAB10F091;
+	Thu, 11 Apr 2024 13:07:18 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=quirkbyte.pl header.i=@quirkbyte.pl header.b="cu/hAH5C";
+	dkim=pass (1024-bit key; unprotected) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="nEAigv/e";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail.quirkbyte.pl (mail.quirkbyte.pl [94.177.238.152])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 420F6112B8E
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 9810810F091
  for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  9 Apr 2024 08:22:45 +0000 (UTC)
-Received: by mail.quirkbyte.pl (Postfix, from userid 1002)
- id 88C8E8319C; Tue,  9 Apr 2024 10:16:33 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=quirkbyte.pl; s=mail;
- t=1712650596; bh=V4qwQGqC7KpJoyielzRpnopuINFIOvKXsSgJ3ZENIXU=;
- h=Date:From:To:Subject:From;
- b=cu/hAH5Cqfkcw/d+AWRfd9+ugvF3jnTqnmEzSWvul+MDP9vWjdd2bj2dNLZA4jNz+
- TeTOmUygH7aOC8nsVL2bKslflPmdo4WY+dJ3r+Bg2tVeHa2DJzkPJJTfmjx9F9pbiA
- zRwr7kgzJo/H5yJZnNwdIaD/edyECTleaJnZ5Crf3OHGqc9QcW4YfMtgMX4n92fyZR
- +ujBwU4CUO2TcfKomqmaMBTlpAwlUGppbZ2scBHuRFgHKx7AYN8dElHpSDz+t0vmmX
- n5z01Xis6FzeJaTCrhA+kZHq4M+lS0nOWcqoSFiGiZtaVyZS7vdS1gVvalp6cMfWSR
- uu4UmhcXquUXw==
-Received: by mail.quirkbyte.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Tue,  9 Apr 2024 08:15:38 GMT
-Message-ID: <20240409084235-0.1.2c.1bxpb.0.qgpfekbffe@quirkbyte.pl>
-Date: Tue,  9 Apr 2024 08:15:38 GMT
-From: "Norbert Karecki" <norbert.karecki@quirkbyte.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: Fotowoltaika - propozycja instalacji
-X-Mailer: mail.quirkbyte.pl
+ Thu, 11 Apr 2024 13:07:15 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 6AD82CE2F5A;
+ Thu, 11 Apr 2024 13:07:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 171F6C433F1;
+ Thu, 11 Apr 2024 13:07:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1712840831;
+ bh=jBDcfNa+ZA0GhG6LAA8y9wdXr1NILjkk4RiSds6k6CM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=nEAigv/eqYtD+nsLaUlG13p5KlC4W5zHhp72SVBIi+SAijs3tSDYQHkjOz8atq0vF
+ YHn+MDCqfVqEJm7JLB4lMHJtirV0VLuYgEmqShGnDjWGqMR5VUT0324OZlMJaDNg8P
+ efibU29MYTA1wtA6bod9kF/GFyaPmhRldp5GKdYI=
+Date: Thu, 11 Apr 2024 15:07:08 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Lukas Wunner <lukas@wunner.de>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, linux-kernel@vger.kernel.org,
+ Michael Ellerman <mpe@ellerman.id.au>,
+ linuxppc-dev@lists.ozlabs.org, linux-acpi@vger.kernel.org,
+ Jean Delvare <jdelvare@suse.com>, Ard Biesheuvel <ardb@kernel.org>,
+ linux-efi@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.wang.linux@gmail.com>, intel-gvt-dev@lists.freedesktop.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ linux-pm@vger.kernel.org, Luis Chamberlain <mcgrof@kernel.org>,
+ linux-modules@vger.kernel.org
+Subject: Re: [PATCH 1/2] sysfs: Add sysfs_bin_attr_simple_read() helper
+Message-ID: <2024041101-haggler-devouring-9dcf@gregkh>
+References: <cover.1712410202.git.lukas@wunner.de>
+ <5ed62b197a442ec6db53d8746d9d806dd0576e2d.1712410202.git.lukas@wunner.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5ed62b197a442ec6db53d8746d9d806dd0576e2d.1712410202.git.lukas@wunner.de>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,23 +63,25 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
-=20
-Czy rozwa=C5=BCali Pa=C5=84stwo monta=C5=BC systemu fotowoltaicznego?
-=20
-Instalacja fotowoltaiczna jest najlepszym sposobem na obni=C5=BCenie wyso=
-ko=C5=9Bci rachunk=C3=B3w za pr=C4=85d (pozostaj=C4=85 tylko op=C5=82aty =
-sta=C5=82e) i zabezpieczenie si=C4=99 przed rosn=C4=85cymi cenami energii=
- elektrycznej. Jest to w pe=C5=82ni odnawialne i bezemisyjne =C5=BAr=C3=B3=
-d=C5=82o energii, dzi=C4=99ki czemu przyczyniamy si=C4=99 do ochrony =C5=9B=
-rodowiska naturalnego.
-=20
-Dzia=C5=82amy od wielu lat na rynku energetycznym. Przygotujemy projekt, =
-wycen=C4=99 oraz kompleksowo wykonamy i zg=C5=82osimy realizacj=C4=99 do =
-zak=C5=82adu energetycznego.=20
-=20
-Czy chc=C4=85 Pa=C5=84stwo pozna=C4=87 nasz=C4=85 propozycj=C4=99? =20
+On Sat, Apr 06, 2024 at 03:52:01PM +0200, Lukas Wunner wrote:
+> When drivers expose a bin_attribute in sysfs which is backed by a buffer
+> in memory, a common pattern is to set the @private and @size members in
+> struct bin_attribute to the buffer's location and size.
+> 
+> The ->read() callback then merely consists of a single memcpy() call.
+> It's not even necessary to perform bounds checks as these are already
+> handled by sysfs_kf_bin_read().
+> 
+> However each driver is so far providing its own ->read() implementation.
+> The pattern is sufficiently frequent to merit a public helper, so add
+> sysfs_bin_attr_simple_read() as well as BIN_ATTR_SIMPLE_RO() and
+> BIN_ATTR_SIMPLE_ADMIN_RO() macros to ease declaration of such
+> bin_attributes and reduce LoC and .text section size.
+> 
+> Signed-off-by: Lukas Wunner <lukas@wunner.de>
+> ---
+>  fs/sysfs/file.c       | 27 +++++++++++++++++++++++++++
+>  include/linux/sysfs.h | 15 +++++++++++++++
+>  2 files changed, 42 insertions(+)
 
-
-Pozdrawiam
-Norbert Karecki
+Reviewed-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
