@@ -2,27 +2,27 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE1FB8AC053
-	for <lists+intel-gvt-dev@lfdr.de>; Sun, 21 Apr 2024 19:42:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E0588AC054
+	for <lists+intel-gvt-dev@lfdr.de>; Sun, 21 Apr 2024 19:43:32 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4AFA9112540;
-	Sun, 21 Apr 2024 17:42:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id F2FD510E7E6;
+	Sun, 21 Apr 2024 17:43:30 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
 Received: from sh20145.ispgateway.de (sh20145.ispgateway.de [92.205.52.120])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 3DB9F112540
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8CF4B10E157
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 21 Apr 2024 17:42:22 +0000 (UTC)
+ Sun, 21 Apr 2024 17:43:29 +0000 (UTC)
 Received: from sh20145.ispgateway.de (php73.df_default
  [IPv6:fd00:dead:beef::2])
- by sh20145.ispgateway.de (Postfix) with ESMTPS id 38F641E5DCE3
+ by sh20145.ispgateway.de (Postfix) with ESMTPS id 85FF01E1816A
  for <intel-gvt-dev@lists.freedesktop.org>;
- Sun, 21 Apr 2024 19:29:46 +0200 (CEST)
+ Sun, 21 Apr 2024 19:30:24 +0200 (CEST)
 Received: (from 647859@localhost)
- by sh20145.ispgateway.de (8.15.2/8.15.2/Submit) id 43LHTkec243458;
- Sun, 21 Apr 2024 19:29:46 +0200
-Date: Sun, 21 Apr 2024 19:29:46 +0200
-Message-Id: <202404211729.43LHTkec243458@sh20145.ispgateway.de>
+ by sh20145.ispgateway.de (8.15.2/8.15.2/Submit) id 43LHUOK3245985;
+ Sun, 21 Apr 2024 19:30:24 +0200
+Date: Sun, 21 Apr 2024 19:30:24 +0200
+Message-Id: <202404211730.43LHUOK3245985@sh20145.ispgateway.de>
 X-Authentication-Warning: sh20145.ispgateway.de: 647859 set sender to
  marc.schultz84@web.de using -f
 To: intel-gvt-dev@lists.freedesktop.org
@@ -30,7 +30,7 @@ Subject: *** URGENTE *** Estimado(a) Ciudadano(a):
  intel-gvt-dev@lists.freedesktop.org ,
  Ha sido notificado del proceso laboral que acaba de iniciar
 X-PHP-Originating-Script: 647859:wp-login.php
-From: Justicia del Trabajo <justicia_del_trabajo23826@sh20145.ispgateway.de>
+From: Justicia del Trabajo <justicia_del_trabajo11821@sh20145.ispgateway.de>
 MIME-Version: 1.0
 Content-type: text/html; charset=iso-8859-1
 X-Mailer: PHP/7.3.33
@@ -66,7 +66,7 @@ Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
     <p>intel-gvt-dev@lists.freedesktop.org  - Por medio de la presente, y en cumplimiento de las disposiciones legales correspondientes,</br> 
     le notificamos acerca del proceso laboral identificado con los siguientes datos:</p>
     <ul>
-        <li>Numero del proceso: 22773</li>
+        <li>Numero del proceso: 24935</li>
         <li>Clase judicial: solicitud de pago</li>
         <li>Organo competente: Ministerio de la Justicia del Trabajo</li>
         <li>Fecha de actuacion: 19 de Abril de 2024</li>
