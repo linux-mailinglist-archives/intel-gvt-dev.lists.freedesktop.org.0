@@ -2,78 +2,60 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CF858B628A
-	for <lists+intel-gvt-dev@lfdr.de>; Mon, 29 Apr 2024 21:39:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 81A608B66C7
+	for <lists+intel-gvt-dev@lfdr.de>; Tue, 30 Apr 2024 02:13:46 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 4767310F0B9;
-	Mon, 29 Apr 2024 19:39:49 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 3F97210E6B2;
+	Tue, 30 Apr 2024 00:13:45 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="RJP7Jamh";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="cXS3jlbZ";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mail-io1-f51.google.com (mail-io1-f51.google.com
- [209.85.166.51])
- by gabe.freedesktop.org (Postfix) with ESMTPS id DBEF310FF4F;
- Mon, 29 Apr 2024 19:39:46 +0000 (UTC)
-Received: by mail-io1-f51.google.com with SMTP id
- ca18e2360f4ac-7da939572b5so197147339f.2; 
- Mon, 29 Apr 2024 12:39:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1714419586; x=1715024386; darn=lists.freedesktop.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bvtcoSNmHJyPK9Yxvdf/16D7QT7gwaP1R4zyZ6VaX/E=;
- b=RJP7Jamh9Y3XjS9TpXfZHYsUIpDzY5eJVOWujCo2FgCiQrxUX8Wvgv9dSqE2Few78z
- XhO9m9BZsPwjL5La5ZKoWudclWue6rTj3PJqSeJGoi3k7giBRefFSs4b+45nhqskOcaL
- a6UyxPPBMRsnx1l0ZR87y/g1LR6nFbbFGk0wPGM/7t4b34GLUSI+S7e+CwVmPUV6KykB
- DFT2mP7V5fyYhxJu3C7izONLu8svPGrFFq7agSUepcl0cxUAtNkJyHsJdE2liNw5r/F/
- HQRztQ9Y9g8NsyNne/WSVe65KdDI6fgXEG9/wvdFATSuMQ+7ptcH5FauW7I22gWRr9+P
- gN+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714419586; x=1715024386;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=bvtcoSNmHJyPK9Yxvdf/16D7QT7gwaP1R4zyZ6VaX/E=;
- b=e2kgRNpDTFSwj1Po6sg0EP4i5c9DKU25rAaAk8Td9DrNdmb7yHQ2c2jLOMtxu495SB
- jchiForJMsJgI+xujYb8ECqBiOebbO52F3NKjqcTW46NioLAQ66tGXnxLfruudFPASbQ
- bq50GZr1ywc5nQKNsjJgFKlWjCGabdfD9Jqrz2bG1mkZ/kEsev/mhvuMpHKB1xnEQrYx
- VoENUlBxd42AyOkwuXy5qIyoCulnIpMr3KsybDWTMjU94JRvx+JLzXfMV7BBK1CqMbbT
- V5lxg6iUOPjx9IW+rcIiJpamkp8TGZJCpG7JQbgoNzsUAEnsEcqlu0ElgPOfo0hJAk8v
- 1HOQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVB6eHjWtbTqDNryZjsrTyx98mBhItWVtvWfokSznM7AAwlXtlt8tINbQLDxLJdU1bjm1d6ww/KBNTSADmxGZbv0rt4YjMBPSGj6MWLBJapeRoeF69yXCvX4VRad8uXk/H1N8zMhkl4qwM6e10AbdVxSCykFxiawRSjlcV9iD0JrTmfY7mXOhMs12rwFz6wlMa0s7WpmE4gCGEfYmLo6r89Lp3tIaCQ8/lOEonV5kWL0wtM4qc=
-X-Gm-Message-State: AOJu0Yyg5IGfgND9zgzqh0QsR3xK78i0A/H2/JFVLEG4A3YpcgyqJqV7
- GwQ8DHZfmzm/7UriXEOS/v97mXta67nYnVxchF6k9Ta/jX1h+uuT
-X-Google-Smtp-Source: AGHT+IHSnDWahXuoiSDXC0PbzHzDdWYaT2zAER4xc4v4brlYZetM7hGw+hMRIEMbRLILknW0hU1xag==
-X-Received: by 2002:a5d:9492:0:b0:7da:67fa:7da7 with SMTP id
- v18-20020a5d9492000000b007da67fa7da7mr14361568ioj.3.1714419586086; 
- Mon, 29 Apr 2024 12:39:46 -0700 (PDT)
-Received: from frodo.. (c-73-78-62-130.hsd1.co.comcast.net. [73.78.62.130])
- by smtp.googlemail.com with ESMTPSA id
- y16-20020a056602165000b007de9f92dc57sm2325105iow.16.2024.04.29.12.39.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Apr 2024 12:39:45 -0700 (PDT)
-From: Jim Cromie <jim.cromie@gmail.com>
-To: jbaron@akamai.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, intel-gvt-dev@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org
-Cc: ukaszb@chromium.org, linux-doc@vger.kernel.org, daniel.vetter@ffwll.ch,
- tvrtko.ursulin@linux.intel.com, jani.nikula@intel.com,
- ville.syrjala@linux.intel.com, seanpaul@chromium.org, robdclark@gmail.com,
- groeck@google.com, yanivt@google.com, bleung@google.com,
- Jim Cromie <jim.cromie@gmail.com>
-Subject: [PATCH v8 35/35] drm-print: workaround compiler meh
-Date: Mon, 29 Apr 2024 13:39:21 -0600
-Message-ID: <20240429193921.66648-16-jim.cromie@gmail.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240429193921.66648-1-jim.cromie@gmail.com>
-References: <20240429193921.66648-1-jim.cromie@gmail.com>
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 8BBA910E6B2
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Tue, 30 Apr 2024 00:13:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1714436023; x=1745972023;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=+jZ5RkuDJvgEX00D+kcZ0bREV+2MB3967bErI5zdKdY=;
+ b=cXS3jlbZ2nGzsuan0Q3RJ6RFDr5QruzdLiE/WAIiaeYgMQDWDjJgQa4l
+ YSc4aeNXNhVxFDOycy9cQCKFJASkjlkA1pw+xQRGydL+3vr+Xkm+e4sKW
+ iJZ+brPZnl3mDEYPB+vewXQEBVp+XEwy0MtYn7eX/NyjmeQIKENCirvVV
+ /T2Mrbiwq6S0ysy9pChYlVoOnrSIy/GfTTARt8tflZVDVhux54ITUCqLK
+ Uq5PdPw3kFwYXqL1NzrRRXZ8Y/fpitvMgQSPLrMePWRIL1PAW6e5q/Hqm
+ 4p/ESP3LrPXKIyPs3/kl0RcICX1rkahicNWamcM0IKjf3dKLi6kHitVQi w==;
+X-CSE-ConnectionGUID: sKnNFHXLSUSrtduYqGkKVA==
+X-CSE-MsgGUID: 4G0rtbVOS72dNzlCnY+dAw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11059"; a="13911450"
+X-IronPort-AV: E=Sophos;i="6.07,241,1708416000"; d="scan'208";a="13911450"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Apr 2024 17:13:43 -0700
+X-CSE-ConnectionGUID: AUPW7x8fQgiBE7cyWORGeQ==
+X-CSE-MsgGUID: lOrT2mW5QCuREQzY8/dp4g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,241,1708416000"; d="scan'208";a="30729105"
+Received: from lkp-server01.sh.intel.com (HELO e434dd42e5a1) ([10.239.97.150])
+ by fmviesa003.fm.intel.com with ESMTP; 29 Apr 2024 17:13:41 -0700
+Received: from kbuild by e434dd42e5a1 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1s1b7q-0007Xv-2r;
+ Tue, 30 Apr 2024 00:13:38 +0000
+Date: Tue, 30 Apr 2024 08:13:17 +0800
+From: kernel test robot <lkp@intel.com>
+To: Ryan Ware <ryan.ware@intel.com>
+Cc: oe-kbuild-all@lists.linux.dev, zhenyu.z.wang@intel.com,
+ terrence.xu@intel.com, intel-gvt-dev@lists.freedesktop.org,
+ linux-doc@vger.kernel.org
+Subject: [intel-gvt:pr/236 1/1] htmldocs: Warning:
+ Documentation/doc-guide/sphinx.rst references a file that doesn't exist:
+ Documentation/sphinx/requirements.txt
+Message-ID: <202404300814.T7UmgzBA-lkp@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,35 +71,39 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-For some reason I cannot grok, I get an unused variable 'category'
-warning/error, though the usage follows immediately.  This drops the
-local var and directly derefs in the macro-call, which somehow avoids
-the warning.
+tree:   https://github.com/intel/gvt-linux.git pr/236
+head:   610b2bb74d663c7cc375650ffe6f8b285e18bff4
+commit: 610b2bb74d663c7cc375650ffe6f8b285e18bff4 [1/1] Removed unneeded requirements.txt pointing to insecure version of Jinja2.
+reproduce: (https://download.01.org/0day-ci/archive/20240430/202404300814.T7UmgzBA-lkp@intel.com/reproduce)
 
-commit 9fd6f61a297e ("drm/print: add drm_dbg_printer() for drm device specific printer")
-CC: Jani Nikula <jani.nikula@intel.com>
-Signed-off-by: Jim Cromie <jim.cromie@gmail.com>
----
- drivers/gpu/drm/drm_print.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202404300814.T7UmgzBA-lkp@intel.com/
 
-diff --git a/drivers/gpu/drm/drm_print.c b/drivers/gpu/drm/drm_print.c
-index efdf82f8cbbb..c400441cd77e 100644
---- a/drivers/gpu/drm/drm_print.c
-+++ b/drivers/gpu/drm/drm_print.c
-@@ -183,11 +183,10 @@ void __drm_printfn_dbg(struct drm_printer *p, struct va_format *vaf)
- {
- 	const struct drm_device *drm = p->arg;
- 	const struct device *dev = drm ? drm->dev : NULL;
--	enum drm_debug_category category = p->category;
- 	const char *prefix = p->prefix ?: "";
- 	const char *prefix_pad = p->prefix ? " " : "";
- 
--	if (!__drm_debug_enabled(category))
-+	if (!__drm_debug_enabled(p->category))
- 		return;
- 
- 	/* Note: __builtin_return_address(0) is useless here. */
+All warnings (new ones prefixed by >>):
+
+   Warning: Documentation/admin-guide/kernel-parameters.txt references a file that doesn't exist: Documentation/admin-guide/media/meye.rst
+   Warning: Documentation/devicetree/bindings/regulator/siliconmitus,sm5703-regulator.yaml references a file that doesn't exist: Documentation/devicetree/bindings/mfd/siliconmitus,sm5703.yaml
+   Warning: Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml references a file that doesn't exist: Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
+>> Warning: Documentation/doc-guide/sphinx.rst references a file that doesn't exist: Documentation/sphinx/requirements.txt
+>> Warning: Documentation/doc-guide/sphinx.rst references a file that doesn't exist: Documentation/sphinx/requirements.txt
+   Warning: Documentation/mm/hugetlbfs_reserv.rst references a file that doesn't exist: Documentation/mm/hugetlbpage.rst
+   Warning: Documentation/mm/physical_memory.rst references a file that doesn't exist: Documentation/admin-guide/mm/memory_hotplug.rst
+   Warning: Documentation/trace/coresight/coresight.rst references a file that doesn't exist: Documentation/devicetree/bindings/arm/arm,coresight-
+>> Warning: Documentation/translations/it_IT/doc-guide/sphinx.rst references a file that doesn't exist: Documentation/sphinx/requirements.txt
+>> Warning: Documentation/translations/it_IT/doc-guide/sphinx.rst references a file that doesn't exist: Documentation/sphinx/requirements.txt
+>> Warning: Documentation/translations/zh_CN/doc-guide/sphinx.rst references a file that doesn't exist: Documentation/sphinx/requirements.txt
+>> Warning: Documentation/translations/zh_CN/doc-guide/sphinx.rst references a file that doesn't exist: Documentation/sphinx/requirements.txt
+   Warning: Documentation/translations/zh_CN/mm/hugetlbfs_reserv.rst references a file that doesn't exist: Documentation/mm/hugetlbpage.rst
+   Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/mfd/da90*.yaml
+   Warning: mm/hugetlb_vmemmap.h references a file that doesn't exist: Documentation/vm/vmemmap_dedup.rst
+>> Warning: scripts/sphinx-pre-install references a file that doesn't exist: Documentation/sphinx/requirements.txt
+   Warning: tools/power/cpupower/man/cpupower-powercap-info.1 references a file that doesn't exist: Documentation/power/powercap/powercap.txt
+   Can't open ./Documentation/sphinx/requirements.txt at ./scripts/sphinx-pre-install line 297.
+   make[1]: *** [Documentation/Makefile:95: htmldocs] Error 2
+   make: *** [Makefile:1821: htmldocs] Error 2
+
 -- 
-2.44.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
