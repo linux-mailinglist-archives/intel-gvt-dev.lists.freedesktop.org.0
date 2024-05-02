@@ -2,64 +2,63 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B51E8B81FC
-	for <lists+intel-gvt-dev@lfdr.de>; Tue, 30 Apr 2024 23:40:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 720F58B9F3E
+	for <lists+intel-gvt-dev@lfdr.de>; Thu,  2 May 2024 19:07:47 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id BF46210E664;
-	Tue, 30 Apr 2024 21:40:23 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4E22410E557;
+	Thu,  2 May 2024 17:07:46 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (1024-bit key; unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.b="dsoh69Pe";
+	dkim=pass (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="eJmzMzv/";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from linux.microsoft.com (linux.microsoft.com [13.77.154.182])
- by gabe.freedesktop.org (Postfix) with ESMTP id 8184310E662;
- Tue, 30 Apr 2024 21:40:22 +0000 (UTC)
-Received: from [100.65.32.120] (unknown [20.236.11.185])
- by linux.microsoft.com (Postfix) with ESMTPSA id 2953021112E1;
- Tue, 30 Apr 2024 14:40:21 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 2953021112E1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1714513221;
- bh=N5FvQ/TypNHdjNMqYFIqXh66AahkR8SgB9HzMwk5dOg=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=dsoh69PeBK5TTLU3vn54yAjgk6HEgw6uX5/96K1j6MEq+uhUAt3mt7u2D+71GOFNI
- WvGANH7w+I/8RenBbMN5ykkWz3Uk5CrLxIasJ2xUAitAkekfx5YEX9aKxDjas/zyYs
- t0b5kEvCuz8TxGtWmnMzMga/jwInlSVIoFyEUWbA=
-Message-ID: <92189a8c-00dc-4b79-8fd0-3670b80d0db2@linux.microsoft.com>
-Date: Tue, 30 Apr 2024 14:40:18 -0700
+Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com
+ [209.85.218.44])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 5543A10E557
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu,  2 May 2024 17:07:44 +0000 (UTC)
+Received: by mail-ej1-f44.google.com with SMTP id
+ a640c23a62f3a-a5200afe39eso969541766b.1
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 02 May 2024 10:07:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1714669662; x=1715274462; darn=lists.freedesktop.org;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=OQDxYmAwyCcSiqvw38mibPbcEjYHrB2F8Hwhpvd4guo=;
+ b=eJmzMzv/MHgdguxKEudAPJ077Let/eP7USRhLWVSuy2GsTJyYzBlRwaUqBx0SlPPTr
+ cY1rIHuU22y7YBea0XLTN3hXyCUPGR0sUey0qzwMnnzw3N1jNmuK6PDfuKxtA/daaiLB
+ ZkmdZVHWNCEKEGIFoRqvsN7ME2iwmNDNN5mXEunlvrwR8d8y7C7/sCx63YbdZXnF9luP
+ 9cZuInzC3ntTW/kZygesmyUbO7XD+1CD6Mf2ypyJ7hr/4iBEmdNyg/3ttLKmFR7jyWF3
+ RDpg97wXG92ivP2Etwxsz3PJ8z+ekd9ya3/cOtYfNFSK640DH5FV6Ps32JIkE7xr2t2A
+ EipQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1714669662; x=1715274462;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=OQDxYmAwyCcSiqvw38mibPbcEjYHrB2F8Hwhpvd4guo=;
+ b=Rd3y7SKVHhU5PhmBPLz0eCykHhsC09fOKG/vzA8Tf26YnFZgn91W2L9mOX9OdVsWMw
+ g1MyKwr3gkTKjig1V7xBSKDlL/ifVF2SJorRBe3ySHyl0IqUWRb93OBg4V/6kXNledxm
+ 7BSJ6P7S4Yf3Q8/2mQkrZcEnDgGiXgsnjPgT+4BaS/P5sMRYSwkYLgw1Dv328il0fFPL
+ X09AOwGaN8gDa9iWB8A3HRJ5CUhNUcijafAKcKatszCjtWxqpLjAl7oqZYkMgoS4w6JG
+ YjDFjUF6H7QtBFIeSrRjjkgDXjOvXIDiczSCIGTohf4wpDvChmPf92R+Mt/hO2Z011UM
+ J+hA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVv+/2nZ7Kb//foqU0GaIlD1ehyO3Hig5nT8RN/0nn4lkCfb75sNqSMDMTxX/raa2TB3v/NFUrSpp95yu+3X/gR92Wp3ONsZp6V+JWUzZ67uxd/5g==
+X-Gm-Message-State: AOJu0Yza+Gq4Mx3UscMT+Q3LaugE4n/mKGWfXA4zY6wtvCiRdIXaoa8f
+ pC6kueO6iHizAfgX48clyooS1RMxeAPa36zlae88kW5oyGztujcAxIUQX9/mOBeqc6NAbD4FkwM
+ zmwIEZsYIL4jP5Gk2/EsPbeP2Us8=
+X-Google-Smtp-Source: AGHT+IEPz15vL1pCtef+D/v9TMtDIp3QF2zgG8qhRtvJ6jVxxmER4Lx+K1rnvLDrJceseOUIMKUmlNP3oAvjGudOuik=
+X-Received: by 2002:a17:906:f2d4:b0:a52:28f:5e61 with SMTP id
+ gz20-20020a170906f2d400b00a52028f5e61mr116776ejb.27.1714669662413; Thu, 02
+ May 2024 10:07:42 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 03/12] drm/i915: Make I2C terminology more inclusive
-To: Rodrigo Vivi <rodrigo.vivi@intel.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, David Airlie <airlied@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.wang.linux@gmail.com>,
- "open list:INTEL DRM DISPLAY FOR XE AND I915 DRIVERS"
- <intel-gfx@lists.freedesktop.org>,
- "open list:INTEL DRM DISPLAY FOR XE AND I915 DRIVERS"
- <intel-xe@lists.freedesktop.org>,
- "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:INTEL GVT-g DRIVERS (Intel GPU Virtualization)"
- <intel-gvt-dev@lists.freedesktop.org>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- "open list:RADEON and AMDGPU DRM DRIVERS" <amd-gfx@lists.freedesktop.org>,
- "open list:DRM DRIVER FOR NVIDIA GEFORCE/QUADRO GPUS"
- <nouveau@lists.freedesktop.org>,
- "open list:I2C SUBSYSTEM HOST DRIVERS" <linux-i2c@vger.kernel.org>,
- "open list:BTTV VIDEO4LINUX DRIVER" <linux-media@vger.kernel.org>,
- "open list:FRAMEBUFFER LAYER" <linux-fbdev@vger.kernel.org>
-References: <20240430173812.1423757-1-eahariha@linux.microsoft.com>
- <20240430173812.1423757-4-eahariha@linux.microsoft.com>
- <ZjFUwjMFMcvJr5KI@intel.com>
-Content-Language: en-CA
-From: Easwar Hariharan <eahariha@linux.microsoft.com>
-In-Reply-To: <ZjFUwjMFMcvJr5KI@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+From: Vincent Lamal <samtosky11001@gmail.com>
+Date: Thu, 2 May 2024 17:07:43 +0100
+Message-ID: <CAMy-g7LnU5puQ+6T2re=06rEHfXJkROjvDfsaeQQ4AC682wf0g@mail.gmail.com>
+Subject: Disclosure Banking
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="00000000000022ab7606177ba4cf"
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,63 +71,31 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: vincenttlamal@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On 4/30/2024 1:29 PM, Rodrigo Vivi wrote:
-> On Tue, Apr 30, 2024 at 05:38:02PM +0000, Easwar Hariharan wrote:
->> I2C v7, SMBus 3.2, and I3C 1.1.1 specifications have replaced "master/slave"
->> with more appropriate terms. Inspired by and following on to Wolfram's
->> series to fix drivers/i2c/[1], fix the terminology for users of
->> I2C_ALGOBIT bitbanging interface, now that the approved verbiage exists
->> in the specification.
->>
->> Compile tested, no functionality changes intended
->>
->> [1]: https://lore.kernel.org/all/20240322132619.6389-1-wsa+renesas@sang-engineering.com/
->>
->> Signed-off-by: Easwar Hariharan <eahariha@linux.microsoft.com>
-> 
-> I'm glad to see this change!
-> 
-> Reviewed-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
-> 
->> ---
->>  drivers/gpu/drm/i915/display/dvo_ch7017.c     | 14 ++++-----
->>  drivers/gpu/drm/i915/display/dvo_ch7xxx.c     | 18 +++++------
->>  drivers/gpu/drm/i915/display/dvo_ivch.c       | 16 +++++-----
->>  drivers/gpu/drm/i915/display/dvo_ns2501.c     | 18 +++++------
->>  drivers/gpu/drm/i915/display/dvo_sil164.c     | 18 +++++------
->>  drivers/gpu/drm/i915/display/dvo_tfp410.c     | 18 +++++------
->>  drivers/gpu/drm/i915/display/intel_bios.c     | 22 +++++++-------
->>  drivers/gpu/drm/i915/display/intel_ddi.c      |  2 +-
->>  .../gpu/drm/i915/display/intel_display_core.h |  2 +-
->>  drivers/gpu/drm/i915/display/intel_dsi.h      |  2 +-
->>  drivers/gpu/drm/i915/display/intel_dsi_vbt.c  | 20 ++++++-------
->>  drivers/gpu/drm/i915/display/intel_dvo.c      | 14 ++++-----
->>  drivers/gpu/drm/i915/display/intel_dvo_dev.h  |  2 +-
->>  drivers/gpu/drm/i915/display/intel_gmbus.c    |  4 +--
->>  drivers/gpu/drm/i915/display/intel_sdvo.c     | 30 +++++++++----------
->>  drivers/gpu/drm/i915/display/intel_vbt_defs.h |  4 +--
->>  drivers/gpu/drm/i915/gvt/edid.c               | 28 ++++++++---------
->>  drivers/gpu/drm/i915/gvt/edid.h               |  4 +--
->>  drivers/gpu/drm/i915/gvt/opregion.c           |  2 +-
->>  19 files changed, 119 insertions(+), 119 deletions(-)
-> 
-> The chances of conflicts are high with this many changes,
-> but should be easy enough to deal with later, so feel free
-> to move with this i915 patch on any other tree and we catch-up
-> later.
-> 
-> Acked-by: Rodrigo Vivi <rodrigo.vivi@intel.com>
-> 
+--00000000000022ab7606177ba4cf
+Content-Type: text/plain; charset="UTF-8"
 
-Thanks for the review and ack! I actually thought that this might end up going in as individual
-patches via the various respective trees since it's now completely independent of Wolfram's enabling
-series with the drop of the final patch that was treewide.
+Greetings,
 
-What do you think?
+ I write to seek your collaboration, to stand as a beneficiary for a
+financial deposit under the Non-Disclosure Banking,ready for
+execution/transmission as a contract payout. Details will be made available
+upon your readiness to execute this transaction.
 
-Thanks,
-Easwar
+Kind regards,
+Vincent Lamal.
 
+--00000000000022ab7606177ba4cf
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Greetings,<br><br>=C2=A0I write to seek your collaboration=
+, to stand as a beneficiary for a financial deposit under the Non-Disclosur=
+e Banking,ready for execution/transmission as a contract payout. Details wi=
+ll be made available upon your readiness to execute this transaction.<br><b=
+r>Kind regards,<br>Vincent Lamal.<br></div>
+
+--00000000000022ab7606177ba4cf--
