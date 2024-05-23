@@ -2,34 +2,82 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D0538CCB30
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 May 2024 05:34:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A77EA8CCAD9
+	for <lists+intel-gvt-dev@lfdr.de>; Thu, 23 May 2024 04:51:41 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id C193E10E92A;
-	Thu, 23 May 2024 03:34:19 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 7446310F632;
+	Thu, 23 May 2024 02:51:40 +0000 (UTC)
+Authentication-Results: gabe.freedesktop.org;
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=gmail.com header.i=@gmail.com header.b="Ca2HeFCr";
+	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 109367 seconds by postgrey-1.36 at gabe;
- Thu, 23 May 2024 03:34:18 UTC
-Received: from sentia.sentiasystems.com (sentia.sentiasystems.com
- [23.91.115.93])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 16AD310E92A;
- Thu, 23 May 2024 03:34:17 +0000 (UTC)
-Received: from User (Unknown [165.140.85.94])
- by sentia.sentiasystems.com with ESMTP
- ; Thu, 16 May 2024 15:52:00 -0700
-Message-ID: <8321E214-CD45-43C1-A191-BD861652F7D3@sentia.sentiasystems.com>
-From: "Alex Yves"<alexyveslomee@gmail.com>
-Subject: Re: Change of beneficiary bank details...
-Date: Thu, 16 May 2024 18:54:24 -0400
+Received: from mail-pj1-f49.google.com (mail-pj1-f49.google.com
+ [209.85.216.49])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 3957910F632
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Thu, 23 May 2024 02:51:39 +0000 (UTC)
+Received: by mail-pj1-f49.google.com with SMTP id
+ 98e67ed59e1d1-2ba0cb1ea68so1725929a91.0
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed, 22 May 2024 19:51:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1716432698; x=1717037498; darn=lists.freedesktop.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
+ :reply-to; bh=2t+NNcAooBs+1uLVQmd6CHKgztQaFCVL8iN2oZTgqXk=;
+ b=Ca2HeFCra7K/VMPhld5SJZs7IVqcPbA+oVO8rjGTAOPwK36nDGyBZxGW7X21tI7my1
+ Ys83Nq3clrnLoEKnBWrmdrpEjran/X9WuQgT6OVffD5GSSfmG0ID+5eUYcH8wWF08H1u
+ KGrBcMzr/Gv8p0bHWGbeXMwJ4I1NKwQvNgeqJa3VFIsQVaNArNW1IJDG0aHWcskpyCeK
+ VM20i7tWAsV5u1dSoYDiQGrUGiEcZVlokEix7ESGCVx1QjKP1XIU8O96i0nt57eZAW5b
+ h/UNmePOhA0J79Y/oQv6VRqpLB2AZQ8X6v1q8vqGQLutcwiAix4NP+R4XLQC/Uyp7OcF
+ LeRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1716432698; x=1717037498;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=2t+NNcAooBs+1uLVQmd6CHKgztQaFCVL8iN2oZTgqXk=;
+ b=rozTwVIyTaipFGHI19KUTQvh9CCTCVU6kMzWjys+1LfweWYP3im+z8SANId0yCDNN6
+ IGe126ozM4H7nIvqYrjyHtQdJh3oETC2hDGUz5wLCphPFUtMDYIhUCSJFFXVYQXXpGQS
+ RVhed0P+VuJoWm7YlJQOK/JCsTB74NmcnDQCW4/duasWnXglhWG1auSY6r63crmQFbaL
+ 52neseH4lUwSIH6qpB7h4g7pI9u5Zr6yBp/OZeA+XXHYmY4ShPkAK68vH/+oRnGpwhHC
+ xaKPBjU/lRquXzg5mx9sEajOnhHXO8XJBPGz7sue2zR6PECwMzAvzIvCoczxa4jKNsvs
+ 9Ekw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUEON4ztbdw/76qDvJUWECEjpOzoieOK7o/AK++ngn6g5IC87f3sfAoVZYtETVNZpcvNCmvbOSMHlG6epBaTAGNTqNqBYJkiF1PdcYsD+jVEvdx2g==
+X-Gm-Message-State: AOJu0Yxum0H11SkFi9ig3/SdtWJ5rRooPr4ZhYD/wqrTJV6iVtKRLcE+
+ 8y8c/7WAqmTEpAYKr64dtDhlycIHin99hYsucSFkMJlmLmteDjEo
+X-Google-Smtp-Source: AGHT+IFkp6UpIh1AGPSwzeu7PRXoylLdjeBnYEOtYMQKu1m9NKdsV0nftrMR0T4y+aBKEkMG7hxvGw==
+X-Received: by 2002:a17:90a:a506:b0:2ad:6294:7112 with SMTP id
+ 98e67ed59e1d1-2bd9f456c77mr4103774a91.14.1716432698305; 
+ Wed, 22 May 2024 19:51:38 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2bdd9f0b3d3sm575494a91.26.2024.05.22.19.51.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 May 2024 19:51:37 -0700 (PDT)
+Date: Wed, 22 May 2024 19:51:35 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Lukas Wunner <lukas@wunner.de>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ linux-kernel@vger.kernel.org, Michael Ellerman <mpe@ellerman.id.au>,
+ linuxppc-dev@lists.ozlabs.org, linux-acpi@vger.kernel.org,
+ Jean Delvare <jdelvare@suse.com>, Ard Biesheuvel <ardb@kernel.org>,
+ linux-efi@vger.kernel.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
+ Zhi Wang <zhi.wang.linux@gmail.com>, intel-gvt-dev@lists.freedesktop.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ linux-pm@vger.kernel.org, Luis Chamberlain <mcgrof@kernel.org>,
+ linux-modules@vger.kernel.org
+Subject: Re: [PATCH 2/2] treewide: Use sysfs_bin_attr_simple_read() helper
+Message-ID: <e12b0027-b199-4de7-b83d-668171447ccc@roeck-us.net>
+References: <cover.1712410202.git.lukas@wunner.de>
+ <92ee0a0e83a5a3f3474845db6c8575297698933a.1712410202.git.lukas@wunner.de>
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <92ee0a0e83a5a3f3474845db6c8575297698933a.1712410202.git.lukas@wunner.de>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,36 +90,61 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
-Reply-To: yvesalexlome@gmail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dear esteemed customer
+Hi,
 
-RE: FINAL NOTICE!
+On Sat, Apr 06, 2024 at 03:52:02PM +0200, Lukas Wunner wrote:
+> Deduplicate ->read() callbacks of bin_attributes which are backed by a
+> simple buffer in memory:
+> 
+> Use the newly introduced sysfs_bin_attr_simple_read() helper instead,
+> either by referencing it directly or by declaring such bin_attributes
+> with BIN_ATTR_SIMPLE_RO() or BIN_ATTR_SIMPLE_ADMIN_RO().
+> 
+> Aside from a reduction of LoC, this shaves off a few bytes from vmlinux
+> (304 bytes on an x86_64 allyesconfig).
+> 
+> No functional change intended.
+> 
 
-Subject matter, acknowledgment of your death, the sole beneficiary and order to change of banking details
+Not really; see below.
 
-We received a new payment order dated April 19, 2024, to transfer the sum of $5,000,000.00 USD plus accrued interest of $50,000 USD, totaling $5,050,000.00 USD, to you. We sent two different email notifications to you a few weeks ago regarding this new development, and it's surprising that we haven't received any acknowledgement emails from you up until this time. I am sending you this email again as a reminder and to have your consent regarding the authorization letter we received from barrister Wang, Li, Zhang, and Liu with a copy of United States Passport No. 498206725 and was in the company of other counsels who undoubtedly claimed to be your representatives. I am requesting that you personally consent to this claim by barrister Wang, Li, Zhang, and Liu, who equally submitted a bank account with the HSBC Bank as your legally acceptable receiving bank details for the fund transfer. Please confirm the stated account details below, as we noticed that the account name is not your nam
- e:
+> Signed-off-by: Lukas Wunner <lukas@wunner.de>
+> Acked-by: Michael Ellerman <mpe@ellerman.id.au> (powerpc)
+> ---
+...
+> index da79760..5193fae 100644
+> --- a/init/initramfs.c
+> +++ b/init/initramfs.c
+> @@ -575,15 +575,7 @@ static int __init initramfs_async_setup(char *str)
+>  #include <linux/initrd.h>
+>  #include <linux/kexec.h>
+>  
+> -static ssize_t raw_read(struct file *file, struct kobject *kobj,
+> -			struct bin_attribute *attr, char *buf,
+> -			loff_t pos, size_t count)
+> -{
+> -	memcpy(buf, attr->private + pos, count);
+> -	return count;
+> -}
+> -
+> -static BIN_ATTR(initrd, 0440, raw_read, NULL, 0);
+> +static BIN_ATTR(initrd, 0440, sysfs_bin_attr_simple_read, NULL, 0);
+>  
 
-Bank Name: HSBC Bank.
-Bank Address: 452 5th Ave, New York, NY 10018, United States
-Account number: 301896710676
-Swift Code: MRMDUS33
-Account Name: Abbas Abdullah Ali.
-Address: 16820 6th Avenue WLynnwood, WA 98037, USA
+sysfs_bin_attr_simple_read is only declared and available if CONFIG_SYSFS=y.
+With m68k:m5208evb_defconfig + CONFIG_BLK_DEV_INITRD=y, this results in
 
+/opt/buildbot/slave/qemu-m68k/build/init/initramfs.c:578:31:
+	error: 'sysfs_bin_attr_simple_read' undeclared here (not in a function)
 
-It is our banking rules that we must have direct email or telephone contact with the fund beneficiary first before we can finally release the fund; therefore, I am officially contacting you directly on this authorization letter and the new bank account details submitted by barrister Wang, Li, Zhang, Liu for the remittance of your $5,050,000.00 USD.
+This happens because CONFIG_SYSFS=n and there is no dummy function for
+sysfs_bin_attr_simple_read(). Presumably the problem will be seen for all
+configurations with CONFIG_BLK_DEV_INITRD=y and CONFIG_SYSFS=n.
 
-Thank you for your attention, and I look forward to your prompt answer.
+On a side note, init/initramfs.c does not directly include linux/sysfs.h.
+I don't know if that might cause problems with other builds.
 
-Best Regards
-
-Alex YVES
-Manager, Lomé Union Depot
-Route du 15, next to Adawlato, Assigame, and Grand Marché de
-Lomé Togo
-Phone: +228 9807 8165
-
+Guenter
