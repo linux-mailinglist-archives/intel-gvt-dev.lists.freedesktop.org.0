@@ -2,45 +2,56 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8FBF8CE225
-	for <lists+intel-gvt-dev@lfdr.de>; Fri, 24 May 2024 10:16:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 13CF08D095B
+	for <lists+intel-gvt-dev@lfdr.de>; Mon, 27 May 2024 19:28:39 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 7EE7310E398;
-	Fri, 24 May 2024 08:16:40 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id 4953110E004;
+	Mon, 27 May 2024 17:28:37 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; secure) header.d=creationavenue.pl header.i=@creationavenue.pl header.b="3GFzDEmu";
+	dkim=fail reason="signature verification failed" (2048-bit key; unprotected) header.d=dairikab.go.id header.i=@dairikab.go.id header.b="wk24IsQ5";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-X-Greylist: delayed 553 seconds by postgrey-1.36 at gabe;
- Fri, 24 May 2024 08:16:38 UTC
-Received: from mail.creationavenue.pl (mail.creationavenue.pl [217.61.16.184])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 5858110E398
+Received: from mail.dairikab.go.id (unknown [103.186.192.16])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id 2F8CB10E004
  for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 May 2024 08:16:38 +0000 (UTC)
-Received: by mail.creationavenue.pl (Postfix, from userid 1002)
- id B9D8084DE4; Fri, 24 May 2024 10:06:02 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=creationavenue.pl;
- s=mail; t=1716537970;
- bh=1F4FVCK4DzOL2u2oBOYihvniNbY82w7FCsnShuMJXBE=;
- h=Date:From:To:Subject:From;
- b=3GFzDEmumKRObwHzjCjIfawh9B22ixLJNrdrhKQEdQxPNWX4NkEh/Mz6Ao96EgE5M
- lqB1pqnNZ5/C7Q+XYC4QVuarvrbyklNDMNr5uB4p1RpooJ6xoileDjpj2dC1QUKWCy
- yMI8YNKwrVEbWq2/M4bYhnxZUF0agreVoikFzXEukBFQPOqgo2zpkm2YM+G3AfyC35
- 25hD0p5Qssxycn1wP9A7NbvQtvX9iFJt7yMGNzGPJg/tfS1tMpzEEPMMUjuW6+86kv
- SzxCZQaFvbgyVX4/sDAIUXPIl7jxy44ID+MDQvcv+Ti5rKadj3WCV1ICSAXKXMcV+I
- v4o26aMgIE1jw==
-Received: by mail.creationavenue.pl for <intel-gvt-dev@lists.freedesktop.org>;
- Fri, 24 May 2024 08:05:40 GMT
-Message-ID: <20240524084501-0.1.3u.b128.0.mkzocrb7z0@creationavenue.pl>
-Date: Fri, 24 May 2024 08:05:40 GMT
-From: "Aneta Grochowska" <aneta.grochowska@creationavenue.pl>
-To: <intel-gvt-dev@lists.freedesktop.org>
-Subject: =?UTF-8?Q?Wszcz=C4=99cie_post=C4=99powania_restrukturyzacyjnego_?=
-X-Mailer: mail.creationavenue.pl
+ Mon, 27 May 2024 17:28:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.dairikab.go.id (Postfix) with ESMTP id 571A74A0BD56;
+ Sat, 25 May 2024 13:07:38 +0700 (WIB)
+Received: from mail.dairikab.go.id ([127.0.0.1])
+ by localhost (mail.dairikab.go.id [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id jfz5OSixGV9l; Sat, 25 May 2024 13:07:38 +0700 (WIB)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.dairikab.go.id (Postfix) with ESMTP id 5E31D489B89A;
+ Sat, 25 May 2024 10:22:14 +0700 (WIB)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.dairikab.go.id 5E31D489B89A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dairikab.go.id;
+ s=7AEC4404-F04A-11EB-AB9E-BF45B53556D9; t=1716607334;
+ bh=Wvz5EhN4Xid2D6oijHwMEg/L7Ra4SmVJT8sv5jghmOI=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=wk24IsQ5yvrnWc3exKYscH5a/yxrq9SNNSEufI4V0tKB1/mS3nT/Y8J4uGHgqIdCw
+ rPG8vG9JAVcEPpbDPEYfwp/iJpqVwI+f4+0x/EDax7bGgn4rq6BdmF1NtMEdHsoTUb
+ C0Xg+1lbdMKlmRUJMkl81sE8XBKBEoYyBSqA4AL6kxw+D2tAXKhrc3NSt6suVHliCT
+ JzLOV1g58gg6XnKxTyk/lma9k1Q4jgI8/fHmfdpT+H0mxAuAQvO6LbqwwaLKeJYMoI
+ tfpovLEW00zwOXNmQcIYDrdQWBoMBzkPcn2iaJovuqHoIpQOzaZWoiN3tYIqLKG9Ba
+ E9wsGti1CrnQA==
+X-Virus-Scanned: amavisd-new at dairikab.go.id
+Received: from mail.dairikab.go.id ([127.0.0.1])
+ by localhost (mail.dairikab.go.id [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id 9cqK06OnHv3U; Sat, 25 May 2024 10:22:14 +0700 (WIB)
+Received: from [103.195.236.221] (unknown [103.195.236.221])
+ by mail.dairikab.go.id (Postfix) with ESMTPSA id 68F42489B89F;
+ Sat, 25 May 2024 09:57:07 +0700 (WIB)
+Content-Type: text/plain; charset="iso-8859-1"
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+Content-Description: Mail message body
+Subject: I ANTICIPATE YOUR URGENT!!
+To: Recipients <puskesmas.kutabuluh@dairikab.go.id>
+From: puskesmas.kutabuluh@dairikab.go.id
+Date: Sat, 25 May 2024 09:57:06 +0700
+Message-Id: <20240525025708.68F42489B89F@mail.dairikab.go.id>
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,26 +64,33 @@ List-Post: <mailto:intel-gvt-dev@lists.freedesktop.org>
 List-Help: <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=help>
 List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>, 
  <mailto:intel-gvt-dev-request@lists.freedesktop.org?subject=subscribe>
+Reply-To: DonLuisMunozParrondo@mail.com
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Dzie=C5=84 dobry,
+Hello Dear,
 
-kontaktuj=C4=99 si=C4=99 w sprawie mo=C5=BCliwo=C5=9Bci obni=C5=BCenia Pa=
-=C5=84stwa zobowi=C4=85za=C5=84 finansowych.
+I hope this message finds you well. Upon reviewing your profile, I was insp=
+ired by your character and felt compelled to reach out regarding a business=
+ opportunity that could be mutually beneficial. Specifically, I am seeking =
+a trustworthy individual for a transaction involving an inheritance claim l=
+eft behind by the late Mr. Burhan, tragically passed away from COVID-19 on =
+March 2, 2020, at the age of 71. He left behind a substantial deposit of $7=
+,500,000 (Seven Million Five Hundred Thousand United States Dollars) in his=
+ account with our Bank. Despite his passing, no one has come forward to cla=
+im these funds. The bank's board of directors has instructed me as his Acco=
+unt Officer before his sudden death to locate his next of kin in order to r=
+elease the deposit. However, as Mr. Burhan did not specify a next of kin in=
+ his security file with the bank, I am reaching out to you for a sincere co=
+llaboration in partnership to actualize this potential.
 
-Jako kancelaria prawna na co dzie=C5=84 skutecznie zajmujemy si=C4=99 zaw=
-ieszaniem sp=C5=82at kredyt=C3=B3w i po=C5=BCyczek, umorzeniem odsetek lu=
-b cz=C4=99=C5=9Bci zobowi=C4=85za=C5=84 oraz ochron=C4=85 przed egzekucj=C4=
-=85 maj=C4=85tku firm.
+I propose to share the proceeds from this transaction based on a percentage=
+ ratio that I believe will be agreeable to you. Upon successful completion =
+of the transaction, you will receive 40%, while I will take 50%, and 10% wi=
+ll be allocated for any incurred expenses. I will provide you with further =
+details upon receiving your satisfactory reply via my personal email:(DonLu=
+isMunozParrondo@mail.com)
 
-Podj=C4=99cie wsp=C3=B3=C5=82pracy z naszymi specjalistami, pomo=C5=BCe P=
-a=C5=84stwu osi=C4=85gn=C4=85=C4=87 wy=C5=BCsz=C4=85 wydajno=C5=9B=C4=87 =
-oraz znaczne oszcz=C4=99dno=C5=9Bci czasu i koszt=C3=B3w.
-
-Ch=C4=99tnie przeanalizujemy Pa=C5=84stwa sytuacj=C4=99 i przedstawimy pl=
-an dzia=C5=82ania. S=C4=85 Pa=C5=84stwo zainteresowani?
-
-
-Pozdrawiam
-Aneta Grochowska
+Best regards,
+Don, luis Munoz Parrondo@mail.com
+(DonLuisMunozParrondo@mail.com)
