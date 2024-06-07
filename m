@@ -2,56 +2,54 @@ Return-Path: <intel-gvt-dev-bounces@lists.freedesktop.org>
 X-Original-To: lists+intel-gvt-dev@lfdr.de
 Delivered-To: lists+intel-gvt-dev@lfdr.de
 Received: from gabe.freedesktop.org (gabe.freedesktop.org [131.252.210.177])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7519C9008C5
-	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Jun 2024 17:26:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D2F59008C7
+	for <lists+intel-gvt-dev@lfdr.de>; Fri,  7 Jun 2024 17:26:19 +0200 (CEST)
 Received: from gabe.freedesktop.org (localhost [127.0.0.1])
-	by gabe.freedesktop.org (Postfix) with ESMTP id 505D610ECB8;
-	Fri,  7 Jun 2024 15:26:10 +0000 (UTC)
+	by gabe.freedesktop.org (Postfix) with ESMTP id E4F6810ECB8;
+	Fri,  7 Jun 2024 15:26:17 +0000 (UTC)
 Authentication-Results: gabe.freedesktop.org;
-	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="bnsH8xaE";
+	dkim=pass (2048-bit key; unprotected) header.d=intel.com header.i=@intel.com header.b="PFsg5tuw";
 	dkim-atps=neutral
 X-Original-To: intel-gvt-dev@lists.freedesktop.org
 Delivered-To: intel-gvt-dev@lists.freedesktop.org
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by gabe.freedesktop.org (Postfix) with ESMTPS id C0FE210ECB8;
- Fri,  7 Jun 2024 15:26:09 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by gabe.freedesktop.org (Postfix) with ESMTPS id D580E10ECB8;
+ Fri,  7 Jun 2024 15:26:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717773970; x=1749309970;
+ t=1717773977; x=1749309977;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=DNgc7F4WzCL2tRkf25GFqCdHb22+anV34UcNBsCVl7o=;
- b=bnsH8xaEnpNWIAyqKdNWxMRG45Y4Syr0pw1kp/QokOI8OHl5vrqx38WW
- NvM2wEwIkJBinhyIkA7cFu1QxsZlt3s+TxgRDFV71LbD8PoWg8VAdmtRf
- EbO9UeDdAEzEDT9gi2USevz05EbhMzY8PG5VODZOsBelMOEB6WN908Lhh
- xU0Ys7qJGlx9eJBoKcag3nIRoIvGsfaRHb7Ftc8yibi6ANJA+eLhrBotO
- nDI2PN9o0hlbEGh+koXHGooWVo6dbOoWwbPPCoZIb21vzpXloPH/FbJt6
- M7H3mLzPueYc3F2JPM1XSRP+ucHoO8fU9DG6VliS0fChsU/xkfMfT3K+j Q==;
-X-CSE-ConnectionGUID: wl3IWdcsT0+6Ff1L/Y/DNA==
-X-CSE-MsgGUID: NsqwyordTjmuYRk3AYNluQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11096"; a="14633400"
-X-IronPort-AV: E=Sophos;i="6.08,221,1712646000"; d="scan'208";a="14633400"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jun 2024 08:26:10 -0700
-X-CSE-ConnectionGUID: CaBGRPAnSG+ixlDKvH41+Q==
-X-CSE-MsgGUID: U58IP7rZToG3GP3IV9us+w==
+ bh=AiQWcW36Rsf8BX9yjLxuUHa8h9YCVnqH8y7OVrPu/Zk=;
+ b=PFsg5tuw+CaBF10aBm6OXDQGqJVxEoqL80V7TVIQ/Kbwfn4cVtznE/5T
+ N6TqzURo/iyB7pmSSkN/nwbNTMUpxxySoi5hwP7P4i7dwc7F7I+JtSfFC
+ ZEvhsB7D8DmIDWRGbe1PnxyTGtkte2IYoeh0DAQcSEEctGP9kXwCHJ3io
+ gUHPCnWSAQ/W2B5pKC63eG8yyOUiwLIuOdbseTJcQLs/RgkH6uDgd4uUN
+ QHyg3cgsFb8IivJLmzmgO18OJCECoi55A70WVrit9gr6kis9fTyD3Bhka
+ RGrR7Cct8IZfelYUQMdXiQ/LShvr5W8dgtMS6Zg9rbckrp4K4T/tH9+xC g==;
+X-CSE-ConnectionGUID: 9DDi2iDORROtFC7kPPdRhg==
+X-CSE-MsgGUID: Ei/up+AeTTulnb4uzKAXsA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11096"; a="14726097"
+X-IronPort-AV: E=Sophos;i="6.08,221,1712646000"; d="scan'208";a="14726097"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jun 2024 08:26:16 -0700
+X-CSE-ConnectionGUID: pj8EoihFQPiRsytBKI0vrg==
+X-CSE-MsgGUID: pXkIb8sKS1K/xIBvOK2QHQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,221,1712646000"; d="scan'208";a="43491251"
+X-IronPort-AV: E=Sophos;i="6.08,221,1712646000"; d="scan'208";a="69516492"
 Received: from cpetruta-mobl1.ger.corp.intel.com (HELO localhost)
  ([10.245.246.72])
- by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jun 2024 08:26:07 -0700
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jun 2024 08:26:13 -0700
 From: Jani Nikula <jani.nikula@intel.com>
 To: intel-gfx@lists.freedesktop.org,
 	intel-gvt-dev@lists.freedesktop.org
 Cc: rodrigo.vivi@intel.com, ville.syrjala@linux.intel.com,
- jani.nikula@intel.com, Zhenyu Wang <zhenyuw@linux.intel.com>,
- Zhi Wang <zhi.wang.linux@gmail.com>
-Subject: [PATCH v2 4/6] drm/i915/gvt: do not use implict dev_priv in
- DSPSURF_TO_PIPE()
-Date: Fri,  7 Jun 2024 18:25:38 +0300
-Message-Id: <2ff78ebd0dc84178f5feacee7ef2a6cb4132b9ae.1717773890.git.jani.nikula@intel.com>
+ jani.nikula@intel.com
+Subject: [PATCH v2 5/6] drm/i915: relocate some DSPCNTR reg bit definitions
+Date: Fri,  7 Jun 2024 18:25:39 +0300
+Message-Id: <85409fbe5073797c0dc17df43eeb25abe9ff889f.1717773890.git.jani.nikula@intel.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1717773890.git.jani.nikula@intel.com>
 References: <cover.1717773890.git.jani.nikula@intel.com>
@@ -73,37 +71,45 @@ List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gvt-dev>,
 Errors-To: intel-gvt-dev-bounces@lists.freedesktop.org
 Sender: "intel-gvt-dev" <intel-gvt-dev-bounces@lists.freedesktop.org>
 
-Do not rely on having dev_priv local variable, pass it to the macro.
+Some plane B/C specific bits were left next to the unused _DSPBCNTR
+macro. Move them next to the DSPCNTR() macro.
 
-Cc: Zhenyu Wang <zhenyuw@linux.intel.com>
-Cc: Zhi Wang <zhi.wang.linux@gmail.com>
-Cc: intel-gvt-dev@lists.freedesktop.org
 Signed-off-by: Jani Nikula <jani.nikula@intel.com>
 ---
- drivers/gpu/drm/i915/gvt/handlers.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/i915/display/i9xx_plane_regs.h | 2 ++
+ drivers/gpu/drm/i915/i915_reg.h                | 2 --
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/i915/gvt/handlers.c b/drivers/gpu/drm/i915/gvt/handlers.c
-index f79dd6cfc75b..0f09344d3c20 100644
---- a/drivers/gpu/drm/i915/gvt/handlers.c
-+++ b/drivers/gpu/drm/i915/gvt/handlers.c
-@@ -1009,14 +1009,14 @@ static int south_chicken2_mmio_write(struct intel_vgpu *vgpu,
- 	return 0;
- }
+diff --git a/drivers/gpu/drm/i915/display/i9xx_plane_regs.h b/drivers/gpu/drm/i915/display/i9xx_plane_regs.h
+index a2ba55fa2b30..5d7ba824f354 100644
+--- a/drivers/gpu/drm/i915/display/i9xx_plane_regs.h
++++ b/drivers/gpu/drm/i915/display/i9xx_plane_regs.h
+@@ -38,10 +38,12 @@
+ #define   DISP_STEREO_POLARITY_SECOND	REG_BIT(18)
+ #define   DISP_ALPHA_PREMULTIPLY	REG_BIT(16) /* CHV pipe B */
+ #define   DISP_ROTATE_180		REG_BIT(15) /* i965+ */
++#define   DISP_ALPHA_TRANS_ENABLE	REG_BIT(15) /* pre-g4x plane B */
+ #define   DISP_TRICKLE_FEED_DISABLE	REG_BIT(14) /* g4x+ */
+ #define   DISP_TILED			REG_BIT(10) /* i965+ */
+ #define   DISP_ASYNC_FLIP		REG_BIT(9) /* g4x+ */
+ #define   DISP_MIRROR			REG_BIT(8) /* CHV pipe B */
++#define   DISP_SPRITE_ABOVE_OVERLAY	REG_BIT(0) /* pre-g4x plane B/C */
  
--#define DSPSURF_TO_PIPE(offset) \
-+#define DSPSURF_TO_PIPE(dev_priv, offset) \
- 	calc_index(offset, DSPSURF(dev_priv, PIPE_A), DSPSURF(dev_priv, PIPE_B), DSPSURF(dev_priv, PIPE_C))
+ #define _DSPAADDR				0x70184 /* pre-i965 */
+ #define DSPADDR(dev_priv, plane)		_MMIO_PIPE2(dev_priv, plane, _DSPAADDR)
+diff --git a/drivers/gpu/drm/i915/i915_reg.h b/drivers/gpu/drm/i915/i915_reg.h
+index 7daf902772e4..2a14dd9ef4a0 100644
+--- a/drivers/gpu/drm/i915/i915_reg.h
++++ b/drivers/gpu/drm/i915/i915_reg.h
+@@ -2226,8 +2226,6 @@
  
- static int pri_surf_mmio_write(struct intel_vgpu *vgpu, unsigned int offset,
- 		void *p_data, unsigned int bytes)
- {
- 	struct drm_i915_private *dev_priv = vgpu->gvt->gt->i915;
--	u32 pipe = DSPSURF_TO_PIPE(offset);
-+	u32 pipe = DSPSURF_TO_PIPE(dev_priv, offset);
- 	int event = SKL_FLIP_EVENT(pipe, PLANE_PRIMARY);
- 
- 	write_vreg(vgpu, offset, p_data, bytes);
+ /* Display B control */
+ #define _DSPBCNTR		(DISPLAY_MMIO_BASE(dev_priv) + 0x71180)
+-#define   DISP_ALPHA_TRANS_ENABLE	REG_BIT(15)
+-#define   DISP_SPRITE_ABOVE_OVERLAY	REG_BIT(0)
+ #define _DSPBADDR		(DISPLAY_MMIO_BASE(dev_priv) + 0x71184)
+ #define _DSPBSTRIDE		(DISPLAY_MMIO_BASE(dev_priv) + 0x71188)
+ #define _DSPBPOS		(DISPLAY_MMIO_BASE(dev_priv) + 0x7118C)
 -- 
 2.39.2
 
